@@ -45,7 +45,7 @@ Learn about the core components of full-text search:
 Learn how to build full-text search queries using {{es}}'s query languages:
 
 * [Full-text queries using Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md)
-* [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions)
+* [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md)
 
 **Advanced topics**
 

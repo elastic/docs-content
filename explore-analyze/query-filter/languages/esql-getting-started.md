@@ -114,13 +114,13 @@ You can adjust the editor’s height by dragging its bottom border to your likin
 
 ## Your first {{esql}} query [esql-getting-started-first-query]
 
-Each {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands). A source command produces a table, typically with data from {{es}}.
+Each {{esql}} query starts with a [source command](elasticsearch://reference/query-languages/esql/commands/source-commands.md). A source command produces a table, typically with data from {{es}}.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-source-command.svg
 :alt: A source command producing a table from {{es}}
 :::
 
-The [`FROM`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-from) source command returns a table with documents from a data stream, index, or alias. Each row in the resulting table represents a document. This query returns up to 1000 documents from the `sample_data` index:
+The [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from) source command returns a table with documents from a data stream, index, or alias. Each row in the resulting table represents a document. This query returns up to 1000 documents from the `sample_data` index:
 
 ```esql
 FROM sample_data
@@ -141,13 +141,13 @@ from sample_data
 
 ## Processing commands [esql-getting-started-limit]
 
-A source command can be followed by one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands), separated by a pipe character: `|`. Processing commands change an input table by adding, removing, or changing rows and columns. Processing commands can perform filtering, projection, aggregation, and more.
+A source command can be followed by one or more [processing commands](elasticsearch://reference/query-languages/esql/commands/processing-commands.md), separated by a pipe character: `|`. Processing commands change an input table by adding, removing, or changing rows and columns. Processing commands can perform filtering, projection, aggregation, and more.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-limit.png
 :alt: A processing command changing an input table
 :::
 
-For example, you can use the [`LIMIT`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-limit) command to limit the number of rows that are returned, up to a maximum of 10,000 rows:
+For example, you can use the [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-limit) command to limit the number of rows that are returned, up to a maximum of 10,000 rows:
 
 ```esql
 FROM sample_data
@@ -171,7 +171,7 @@ FROM sample_data | LIMIT 3
 :alt: A processing command sorting an input table
 :::
 
-Another processing command is the [`SORT`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-sort) command. By default, the rows returned by `FROM` don’t have a defined sort order. Use the `SORT` command to sort rows on one or more columns:
+Another processing command is the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command. By default, the rows returned by `FROM` don’t have a defined sort order. Use the `SORT` command to sort rows on one or more columns:
 
 ```esql
 FROM sample_data
@@ -181,14 +181,14 @@ FROM sample_data
 
 ### Query the data [esql-getting-started-where]
 
-Use the [`WHERE`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-where) command to query the data. For example, to find all events with a duration longer than 5ms:
+Use the [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) command to query the data. For example, to find all events with a duration longer than 5ms:
 
 ```esql
 FROM sample_data
 | WHERE event_duration > 5000000
 ```
 
-`WHERE` supports several [operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-operators). For example, you can use [`LIKE`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-like) to run a wildcard query against the `message` column:
+`WHERE` supports several [operators](elasticsearch://reference/query-languages/esql/functions-operators/operators.md). For example, you can use [`LIKE`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-like) to run a wildcard query against the `message` column:
 
 ```esql
 FROM sample_data
@@ -198,7 +198,7 @@ FROM sample_data
 
 ### More processing commands [esql-getting-started-more-commands]
 
-There are many other processing commands, like [`KEEP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-keep) and [`DROP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-drop) to keep or drop columns, [`ENRICH`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich) to enrich a table with data from indices in {{es}}, and [`DISSECT`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-dissect) and [`GROK`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-grok) to process data. Refer to [Processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands) for an overview of all processing commands.
+There are many other processing commands, like [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) and [`DROP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-drop) to keep or drop columns, [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) to enrich a table with data from indices in {{es}}, and [`DISSECT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-dissect) and [`GROK`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-grok) to process data. Refer to [Processing commands](elasticsearch://reference/query-languages/esql/commands/processing-commands.md) for an overview of all processing commands.
 
 
 ## Chain processing commands [esql-getting-started-chaining]
@@ -225,14 +225,14 @@ The order of processing commands is important. First limiting the result set to 
 
 ## Compute values [esql-getting-started-eval]
 
-Use the [`EVAL`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-eval) command to append columns to a table, with calculated values. For example, the following query appends a `duration_ms` column. The values in the column are computed by dividing `event_duration` by 1,000,000. In other words: `event_duration` converted from nanoseconds to milliseconds.
+Use the [`EVAL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-eval) command to append columns to a table, with calculated values. For example, the following query appends a `duration_ms` column. The values in the column are computed by dividing `event_duration` by 1,000,000. In other words: `event_duration` converted from nanoseconds to milliseconds.
 
 ```esql
 FROM sample_data
 | EVAL duration_ms = event_duration/1000000.0
 ```
 
-`EVAL` supports several [functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-functions). For example, to round a number to the closest number with the specified number of digits, use the [`ROUND`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-round) function:
+`EVAL` supports several [functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-functions). For example, to round a number to the closest number with the specified number of digits, use the [`ROUND`](elasticsearch://reference/query-languages/esql/functions-operators/math-functions.md#esql-round) function:
 
 ```esql
 FROM sample_data
@@ -242,7 +242,7 @@ FROM sample_data
 
 ## Calculate statistics [esql-getting-started-stats]
 
-{{esql}} can not only be used to query your data, you can also use it to aggregate your data. Use the [`STATS`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-stats-by) command to calculate statistics. For example, the median duration:
+{{esql}} can not only be used to query your data, you can also use it to aggregate your data. Use the [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) command to calculate statistics. For example, the median duration:
 
 ```esql
 FROM sample_data
@@ -286,9 +286,9 @@ FROM sample_data
 
 ## Create a histogram [esql-getting-started-histogram]
 
-To track statistics over time, {{esql}} enables you to create histograms using the [`BUCKET`](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-bucket) function. `BUCKET` creates human-friendly bucket sizes and returns a value for each row that corresponds to the resulting bucket the row falls into.
+To track statistics over time, {{esql}} enables you to create histograms using the [`BUCKET`](elasticsearch://reference/query-languages/esql/functions-operators/grouping-functions.md#esql-bucket) function. `BUCKET` creates human-friendly bucket sizes and returns a value for each row that corresponds to the resulting bucket the row falls into.
 
-Combine `BUCKET` with [`STATS`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-stats-by) to create a histogram. For example, to count the number of events per hour:
+Combine `BUCKET` with [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) to create a histogram. For example, to count the number of events per hour:
 
 ```esql
 FROM sample_data
@@ -306,7 +306,7 @@ FROM sample_data
 
 ## Enrich data [esql-getting-started-enrich]
 
-{{esql}} enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) a table with data from indices in {{es}}, using the [`ENRICH`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich) command.
+{{esql}} enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) a table with data from indices in {{es}}, using the [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) command.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-enrich.png
 :alt: esql enrich
@@ -396,7 +396,7 @@ Your data may contain unstructured strings that you want to [structure](elastics
 
 By extracting the IP address from these messages, you can determine which IP has accepted the most client connections.
 
-To structure unstructured strings at query time, you can use the {{esql}} [`DISSECT`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-dissect) and [`GROK`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-grok) commands. `DISSECT` works by breaking up a string using a delimiter-based pattern. `GROK` works similarly, but uses regular expressions. This makes `GROK` more powerful, but generally also slower.
+To structure unstructured strings at query time, you can use the {{esql}} [`DISSECT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-dissect) and [`GROK`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-grok) commands. `DISSECT` works by breaking up a string using a delimiter-based pattern. `GROK` works similarly, but uses regular expressions. This makes `GROK` more powerful, but generally also slower.
 
 In this case, no regular expressions are needed, as the `message` is straightforward: "Connected to ", followed by the server IP. To match this string, you can use the following `DISSECT` command:
 

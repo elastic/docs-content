@@ -12,12 +12,12 @@ This feature is in technical preview. It may change in the future, and you shoul
 
 Automatic Migration for detection rules helps you quickly convert SIEM rules from the Splunk Processing Language (SPL) to the Elasticsearch Query Language ({{esql}}). If comparable Elastic-authored rules exist, it simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules on the fly so you can verify and edit them instead of writing them from scratch.
 
-You can ingest your data before migrating your rules, or migrate your rules first in which case the tool will recommend which data sources you need to power your migrated rules. 
+You can ingest your data before migrating your rules, or migrate your rules first in which case the tool will recommend which data sources you need to power your migrated rules.
 
 ::::{admonition} Requirements
 * The `SIEM migrations: All` Security sub-feature privilege.
 * A working [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
-* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription. 
+* {{stack}} users: an [Enterprise](https://www.elastic.co/pricing) subscription.
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ecloud}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
@@ -29,7 +29,7 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 1. Find **Get started** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under **Configure AI provider**, select a configured model or [add a new one](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). For information on how different models perform, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 3. Next, under **Migrate rules & add data**, click **Translate your existing SIEM rules to Elastic**, then **Upload rules**.
-4. Follow the instructions on the **Upload Splunk SIEM rules** flyout to export your rules from Splunk as JSON. 
+4. Follow the instructions on the **Upload Splunk SIEM rules** flyout to export your rules from Splunk as JSON.
 
    :::{image} /solutions/images/security-siem-migration-1.png
    :alt: the Upload Splunk SIEM rules flyout
@@ -45,30 +45,30 @@ You can ingest your data before migrating your rules, or migrate your rules firs
    | rest /servicesNS/-/-/saved/searches
    | search is_scheduled=1 AND eai:acl.app=splunksysmonsecurity
    | where disabled=0
-   | table id, title, search, description, action.escu.eli5, 
+   | table id, title, search, description, action.escu.eli5,
    ```
    The above sample query would download rules related to just the `splunksysmonsecurity` app.
 
-   We don't recommend downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since most of the data will be irrelevant to SIEM rule migration. 
+   We don't recommend downloading all searches (for example with `| rest /servicesNS/-/-/saved/searches`) since most of the data will be irrelevant to SIEM rule migration.
    ::::
 
-5. Select your JSON file and click **Upload**. 
+5. Select your JSON file and click **Upload**.
    ::::{note}
    If the file is large, you may need to separate it into multiple parts and upload them individually to avoid exceeding your LLM's context window.
    ::::
 
 6. After you upload your Splunk rules, Automatic Migration will detect whether they use any Splunk macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated rules will have a `partially translated` status. If you upload them now, you don't have to wait on the page for them to be processed — a notification will appear when processing is complete.
 
-7. Click **Translate** to start the rule translation process. You don't need to stay on this page. A notification will appear when the process is complete. 
+7. Click **Translate** to start the rule translation process. You don't need to stay on this page. A notification will appear when the process is complete.
 
-8. When migration is complete, click the notification or return to the **Get started** page then click **View translated rules** to open the **Translated rules** page. 
+8. When migration is complete, click the notification or return to the **Get started** page then click **View translated rules** to open the **Translated rules** page.
 
 
 ## The Translated rules page
 
-This section describes the **Translated rules** page's interface and explains how the data that appears here is derived. 
+This section describes the **Translated rules** page's interface and explains how the data that appears here is derived.
 
-When you upload a new batch of rules, they are assigned a name and number, for example `SIEM rule migration 1`, or `SIEM rule migration 2`. Use the **Migrations** dropdown menu in the upper right to select which batch appears. 
+When you upload a new batch of rules, they are assigned a name and number, for example `SIEM rule migration 1`, or `SIEM rule migration 2`. Use the **Migrations** dropdown menu in the upper right to select which batch appears.
 
 ::::{image} /solutions/images/security-siem-migration-processed-rules.png
 :alt: The translated rules page
@@ -105,12 +105,12 @@ The table's fields are as follows:
 
 ## Finalize translated rules
 
-Once you're on the **Translated rules** page, to install any rules that were partially translated or not translated, you will need to edit them. Optionally, you can also edit custom rules that were successfully translated to finetune them. 
+Once you're on the **Translated rules** page, to install any rules that were partially translated or not translated, you will need to edit them. Optionally, you can also edit custom rules that were successfully translated to finetune them.
 
 :::{note}
-You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page. 
+You cannot edit Elastic-authored rules using this interface, but after they are installed you can [edit them](/solutions/security/detect-and-alert/manage-detection-rules.md) from the **Rules** page.
 :::
-  
+
 ### Edit a custom rule
 
 Click the rule's name to open the rule's details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
@@ -153,4 +153,4 @@ No matter how many times you use Automatic Migration, migration data will contin
 
 **How does Automatic Migration handle Splunk rules which lookup other indices?**
 
-Rules that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation. 
+Rules that fall into this category will typically appear with a status of partially translated. You can use the [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) capability to help in this situation.

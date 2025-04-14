@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-enable-kibana.html
 applies_to:
-  stack: 
+  stack:
 ---
 
 # Step 2: Enable Universal Profiling in Kibana [profiling-self-managed-enable-kibana]
@@ -31,7 +31,7 @@ In ECE, you don’t need to perform any additional steps to enable the Universal
 
 ## Kubernetes [_kubernetes]
 
-If you’re using ECK, add the previous configuration line to the `kibana.k8s.elastic.co/v1` CRD, placing it under the `spec.config` key. Refer to the [ECK documentation](../../../deploy-manage/deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md#k8s-kibana-configuration) for more on configuring {{kib}}.
+If you’re using ECK, add the previous configuration line to the `kibana.k8s.elastic.co/v1` CRD, placing it under the `spec.config` key. Refer to the [ECK documentation](/deploy-manage/deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md#k8s-kibana-configuration) for more on configuring {{kib}}.
 
 If you’re not using ECK, edit the `secret` or `configMap` holding the `kibana.yml` configuration file. Add the previously mentioned config line, and then perform a rolling restart of the Kibana deployment to reload the configuration.
 
