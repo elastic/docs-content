@@ -25,7 +25,7 @@ outputs:
 
 To receive the events in {{ls}}, you also need to create a {{ls}} configuration pipeline. The {{ls}} configuration pipeline listens for incoming {{agent}} connections, processes received events, and then sends the events to {{es}}.
 
-Be aware that the structure of the documents sent from {{agent}} to {{ls}} must not be modified by the pipeline. We recommend that the pipeline doesn’t edit or remove the fields and their contents. Editing the structure of the documents coming from {{agent}} can prevent the {{es}} ingest pipelines associated to the integrations in use to work correctly. We cannot guarantee that the {{es}} ingest pipelines associated to the integrations using {agent} can work with missing or modified fields.
+Be aware that the structure of the documents sent from {{agent}} to {{ls}} must not be modified by the pipeline. We recommend that the pipeline doesn’t edit or remove the fields and their contents. Editing the structure of the documents coming from {{agent}} can prevent the {{es}} ingest pipelines associated to the integrations in use to work correctly. We cannot guarantee that the {{es}} ingest pipelines associated to the integrations using {{agent}} can work with missing or modified fields.
 
 The following {{ls}} pipeline definition example configures a pipeline that listens on port `5044` for incoming {{agent}} connections and routes received events to {{es}}.
 
@@ -74,13 +74,38 @@ The `logstash` output supports the following settings, grouped by category. Many
 
 ## Commonly used settings [output-logstash-commonly-used-settings]
 
-| Setting | Description |
-| --- | --- |
-| $$$output-logstash-enabled-setting$$$<br>`enabled`<br> | (boolean) Enables or disables the output. If set to `false`, the output is disabled.<br> |
-| $$$output-logstash-escape_html-setting$$$<br>`escape_html`<br> | (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.<br><br>**Default:** `false`<br> |
-| $$$output-logstash-hosts-setting$$$<br>`hosts`<br> | (list) The list of known {{ls}} servers to connect to. If load balancing is disabled, but multiple hosts are configured, one host is selected randomly (there is no precedence). If one host becomes unreachable, another one is selected randomly.<br><br>All entries in this list can contain a port number. If no port is specified, `5044` is used.<br> |
-| $$$output-logstash-proxy_url-setting$$$<br>`proxy_url`<br> | (string) The URL of the SOCKS5 proxy to use when connecting to the {{ls}} servers. The value must be a URL with a scheme of `socks5://`. The protocol used to communicate to {{ls}} is not based on HTTP, so you cannot use a web proxy.<br><br>If the SOCKS5 proxy server requires client authentication, embed a username and password in the URL as shown in the example.<br><br>When using a proxy, hostnames are resolved on the proxy server instead of on the client. To change this behavior, set `proxy_use_local_resolver`.<br><br>```yaml<br>outputs:<br>  default:<br>    type: logstash<br>    hosts: ["remote-host:5044"]<br>    proxy_url: socks5://user:password@socks5-proxy:2233<br>```<br> |
-| $$$output-logstash-proxy_use_local_resolver-setting$$$<br>`proxy_use_` `local_resolver`<br> | (boolean) Determines whether {{ls}} hostnames are resolved locally when using a proxy. If `false` and a proxy is used, name resolution occurs on the proxy server.<br><br>**Default:** `false`<br> |
+`enabled` $$$output-logstash-enabled-setting$$$
+:   (boolean) Enables or disables the output. If set to `false`, the output is disabled.
+
+`escape_html` $$$output-logstash-escape_html-setting$$$
+:   (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.
+
+    **Default:** `false`
+
+`hosts` $$$output-logstash-hosts-setting$$$
+:   (list) The list of known {{ls}} servers to connect to. If load balancing is disabled, but multiple hosts are configured, one host is selected randomly (there is no precedence). If one host becomes unreachable, another one is selected randomly.
+
+    All entries in this list can contain a port number. If no port is specified, `5044` is used.
+
+`proxy_url` $$$output-logstash-proxy_url-setting$$$
+:   (string) The URL of the SOCKS5 proxy to use when connecting to the {{ls}} servers. The value must be a URL with a scheme of `socks5://`. The protocol used to communicate to {{ls}} is not based on HTTP, so you cannot use a web proxy.
+
+    If the SOCKS5 proxy server requires client authentication, embed a username and password in the URL as shown in the example.
+
+    When using a proxy, hostnames are resolved on the proxy server instead of on the client. To change this behavior, set `proxy_use_local_resolver`.
+
+    ```yaml
+    outputs:
+      default:
+        type: logstash
+        hosts: ["remote-host:5044"]
+        proxy_url: socks5://user:password@socks5-proxy:2233
+    ```
+
+`proxy_use_local_resolver` $$$output-logstash-proxy_use_local_resolver-setting$$$
+:   (boolean) Determines whether {{ls}} hostnames are resolved locally when using a proxy. If `false` and a proxy is used, name resolution occurs on the proxy server.
+
+    **Default:** `false`
 
 
 ## Authentication settings [output-logstash-authentication-settings]
@@ -119,29 +144,114 @@ This sample configuration forwards events to the output when there are enough ev
   queue.mem.flush.timeout: 5s
 ```
 
-| Setting | Description |
-| --- | --- |
-| $$$output-logstash-queue.mem.events-setting$$$<br>`queue.mem.events`<br> | The number of events the queue can store. This value should be evenly divisible by the smaller of `queue.mem.flush.min_events` or `bulk_max_size` to avoid sending partial batches to the output.<br><br>**Default:** `3200 events`<br> |
-| $$$output-logstash-queue.mem.flush.min_events-setting$$$<br>`queue.mem.flush.min_events`<br> | `flush.min_events` is a legacy parameter, and new configurations should prefer to control batch size with `bulk_max_size`. As of 8.13, there is never a performance advantage to limiting batch size with `flush.min_events` instead of `bulk_max_size`<br><br>**Default:** `1600 events`<br> |
-| $$$output-logstash-queue.mem.flush.timeout-setting$$$<br>`queue.mem.flush.timeout`<br> | (int) The maximum wait time for `queue.mem.flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.<br><br>**Default:** `10s`<br> |
+`queue.mem.events` $$$output-logstash-queue.mem.events-setting$$$
+:   The number of events the queue can store. This value should be evenly divisible by the smaller of `queue.mem.flush.min_events` or `bulk_max_size` to avoid sending partial batches to the output.
+
+    **Default:** `3200 events`
+
+`queue.mem.flush.min_events` $$$output-logstash-queue.mem.flush.min_events-setting$$$
+:   `flush.min_events` is a legacy parameter, and new configurations should prefer to control batch size with `bulk_max_size`. As of 8.13, there is never a performance advantage to limiting batch size with `flush.min_events` instead of `bulk_max_size`
+
+    **Default:** `1600 events`
+
+`queue.mem.flush.timeout` $$$output-logstash-queue.mem.flush.timeout-setting$$$
+:   (int) The maximum wait time for `queue.mem.flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.
+
+    **Default:** `10s`
 
 
 ## Performance tuning settings [output-logstash-performance-tuning-settings]
 
 Settings that may affect performance.
 
-| Setting | Description |
-| --- | --- |
-| $$$output-logstash-backoff.init-setting$$$<br>`backoff.init`<br> | (string) The number of seconds to wait before trying to reconnect to {{ls}} after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.<br><br>**Default:** `1s`<br> |
-| $$$output-logstash-backoff.max-setting$$$<br>`backoff.max`<br> | (string) The maximum number of seconds to wait before attempting to connect to {{es}} after a network error.<br><br>**Default:** `60s`<br> |
-| $$$output-logstash-bulk_max_size-setting$$$<br>`bulk_max_size`<br> | (int) The maximum number of events to bulk in a single {{ls}} request.<br><br>Events can be collected into batches. {{agent}} will split batches larger than `bulk_max_size` into multiple batches.<br><br>Specifying a larger batch size can improve performance by lowering the overhead of sending events. However big batch sizes can also increase processing times, which might result in API errors, killed connections, timed-out publishing requests, and, ultimately, lower throughput.<br><br>Set this value to `0` to turn off the splitting of batches. When splitting is turned off, the queue determines the number of events to be contained in a batch.<br><br>**Default:** `2048`<br> |
-| $$$output-logstash-compression_level-setting$$$<br>`compression_level`<br> | (int) The gzip compression level. Set this value to `0` to disable compression. The compression level must be in the range of `1` (best speed) to `9` (best compression).<br><br>Increasing the compression level reduces network usage but increases CPU usage.<br><br>**Default:** `3`<br> |
-| $$$output-logstash-loadbalance-setting$$$<br>`loadbalance`<br> | If `true` and multiple {{ls}} hosts are configured, the output plugin load balances published events onto all {{ls}} hosts. If `false`, the output plugin sends all events to one host (determined at random) and switches to another host if the selected one becomes unresponsive.<br><br>With `loadbalance` enabled:<br><br>* {{agent}} reads batches of events and sends each batch to one {{ls}} worker dynamically, based on a work-queue shared between the outputs.<br>* If a connection drops, {{agent}} takes the disconnected {{ls}} worker out of its pool.<br>* {{agent}} tries to reconnect. If it succeeds, it re-adds the {{ls}} worker to the pool.<br>* If one of the {{ls}} nodes is slow but "healthy", it sends a keep-alive signal until the full batch of data is processed. This prevents {{agent}} from sending further data until it receives an acknowledgement signal back from {{ls}}. {{agent}} keeps all events in memory until after that acknowledgement occurs.<br><br>Without `loadbalance` enabled:<br><br>* {{agent}} picks a random {{ls}} host and sends batches of events to it. Due to the random algorithm, the load on the {{ls}} nodes should be roughly equal.<br>* In case of any errors, {{agent}} picks another {{ls}} node, also at random. If a connection to a host fails, the host is retried only if there are errors on the new connection.<br><br>**Default:** `false`<br><br>Example:<br><br>```yaml<br>outputs:<br>  default:<br>    type: logstash<br>    hosts: ["localhost:5044", "localhost:5045"]<br>    loadbalance: true<br>```<br> |
-| $$$output-logstash-max_retries-setting$$$<br>`max_retries`<br> | (int) The number of times to retry publishing an event after a publishing failure. After the specified number of retries, the events are typically dropped.<br><br>Set `max_retries` to a value less than 0 to retry until all events are published.<br><br>**Default:** `3`<br> |
-| $$$output-logstash-pipelining-setting$$$<br>`pipelining`<br> | (int) The number of batches to send asynchronously to {{ls}} while waiting for an ACK from {{ls}}. The output becomes blocking after the specified number of batches are written. Specify `0` to turn off pipelining.<br><br>**Default:** `2`<br> |
-| $$$output-logstash-slow_start-setting$$$<br>`slow_start`<br> | (boolean) If `true`, only a subset of events in a batch of events is transferred per transaction. The number of events to be sent increases up to `bulk_max_size` if no error is encountered. On error, the number of events per transaction is reduced again.<br><br>**Default:** `false`<br> |
-| $$$output-logstash-timeout-setting$$$<br>`timeout`<br> | (string) The number of seconds to wait for responses from the {{ls}} server before timing out.<br><br>**Default:** `30s`<br> |
-| $$$output-logstash-ttl-setting$$$<br>`ttl`<br> | (string) Time to live for a connection to {{ls}} after which the connection will be reestablished. This setting is useful when {{ls}} hosts represent load balancers. Because connections to {{ls}} hosts are sticky, operating behind load balancers can lead to uneven load distribution across instances. Specify a TTL on the connection to achieve equal connection distribution across instances.<br><br>**Default:** `0` (turns off the feature)<br><br>::::{note} <br>The `ttl` option is not yet supported on an asynchronous {{ls}} client (one with the `pipelining` option set).<br>::::<br><br> |
-| $$$output-logstash-worker-setting$$$<br>`worker`<br> | (int) The number of workers per configured host publishing events. Example: If you have two hosts and three workers, in total six workers are started (three for each host).<br><br>**Default:** `1`<br> |
+
+`backoff.init` $$$output-logstash-backoff.init-setting$$$
+:   (string) The number of seconds to wait before trying to reconnect to {{ls}} after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.
+
+    **Default:** `1s`
+
+`backoff.max` $$$output-logstash-backoff.max-setting$$$
+:   (string) The maximum number of seconds to wait before attempting to connect to {{es}} after a network error.
+
+    **Default:** `60s`
+
+`bulk_max_size` $$$output-logstash-bulk_max_size-setting$$$
+:   (int) The maximum number of events to bulk in a single {{ls}} request.
+
+    Events can be collected into batches. {{agent}} will split batches larger than `bulk_max_size` into multiple batches.
+
+    Specifying a larger batch size can improve performance by lowering the overhead of sending events. However big batch sizes can also increase processing times, which might result in API errors, killed connections, timed-out publishing requests, and, ultimately, lower throughput.
+
+    Set this value to `0` to turn off the splitting of batches. When splitting is turned off, the queue determines the number of events to be contained in a batch.
+
+    **Default:** `2048`
+
+`compression_level` $$$output-logstash-compression_level-setting$$$
+:   (int) The gzip compression level. Set this value to `0` to disable compression. The compression level must be in the range of `1` (best speed) to `9` (best compression).
+
+    Increasing the compression level reduces network usage but increases CPU usage.
+
+    **Default:** `3`
+
+`loadbalance` $$$output-logstash-loadbalance-setting$$$
+:   If `true` and multiple {{ls}} hosts are configured, the output plugin load balances published events onto all {{ls}} hosts. If `false`, the output plugin sends all events to one host (determined at random) and switches to another host if the selected one becomes unresponsive.
+
+    With `loadbalance` enabled:
+    * {{agent}} reads batches of events and sends each batch to one {{ls}} worker dynamically, based on a work-queue shared between the outputs.
+    * If a connection drops, {{agent}} takes the disconnected {{ls}} worker out of its pool.
+    * {{agent}} tries to reconnect. If it succeeds, it re-adds the {{ls}} worker to the pool.
+    * If one of the {{ls}} nodes is slow but "healthy", it sends a keep-alive signal until the full batch of data is processed. This prevents {{agent}} from sending further data until it receives an acknowledgement signal back from {{ls}}. {{agent}} keeps all events in memory until after that acknowledgement occurs.
+
+    Without `loadbalance` enabled:
+    * {{agent}} picks a random {{ls}} host and sends batches of events to it. Due to the random algorithm, the load on the {{ls}} nodes should be roughly equal.
+    * In case of any errors, {{agent}} picks another {{ls}} node, also at random. If a connection to a host fails, the host is retried only if there are errors on the new connection.
+
+    **Default:** `false`
+
+    Example:
+
+    ```yaml
+    outputs:
+      default:
+        type: logstash
+        hosts: ["localhost:5044", "localhost:5045"]
+        loadbalance: true
+    ```
+
+`max_retries` $$$output-logstash-max_retries-setting$$$
+:   (int) The number of times to retry publishing an event after a publishing failure. After the specified number of retries, the events are typically dropped.
+
+    Set `max_retries` to a value less than 0 to retry until all events are published.
+
+    **Default:** `3`
+
+`pipelining` $$$output-logstash-pipelining-setting$$$
+:   (int) The number of batches to send asynchronously to {{ls}} while waiting for an ACK from {{ls}}. The output becomes blocking after the specified number of batches are written. Specify `0` to turn off pipelining.
+
+    **Default:** `2`
+
+`slow_start` $$$output-logstash-slow_start-setting$$$
+:   (boolean) If `true`, only a subset of events in a batch of events is transferred per transaction. The number of events to be sent increases up to `bulk_max_size` if no error is encountered. On error, the number of events per transaction is reduced again.
+
+    **Default:** `false`
+
+`timeout` $$$output-logstash-timeout-setting$$$
+:   (string) The number of seconds to wait for responses from the {{ls}} server before timing out.
+
+    **Default:** `30s`
+
+`ttl` $$$output-logstash-ttl-setting$$$
+:   (string) Time to live for a connection to {{ls}} after which the connection will be reestablished. This setting is useful when {{ls}} hosts represent load balancers. Because connections to {{ls}} hosts are sticky, operating behind load balancers can lead to uneven load distribution across instances. Specify a TTL on the connection to achieve equal connection distribution across instances.
+
+    **Default:** `0` (turns off the feature)
+
+    ::::{note}
+    The `ttl` option is not yet supported on an asynchronous {{ls}} client (one with the `pipelining` option set).
+    ::::
+
+`worker` $$$output-logstash-worker-setting$$$
+:   (int) The number of workers per configured host publishing events. Example: If you have two hosts and three workers, in total six workers are started (three for each host).
+
+    **Default:** `1`
 
 

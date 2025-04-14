@@ -19,7 +19,7 @@ Note that network policies alone are not sufficient for security. You should com
 {{eck}} also supports [IP traffic filtering](/deploy-manage/security/ip-filtering-basic.md).
 :::
 
-::::{note} 
+::::{note}
 There are several efforts to support multi-tenancy on Kubernetes, including the [official working group for multi-tenancy](https://github.com/kubernetes-sigs/multi-tenancy) and community extensions such as [loft](https://loft.sh) and [kiosk](https://github.com/kiosk-sh/kiosk), that can make configuration and management easier. You might need to employ network policies such the ones described in this section to have fine-grained control over {{stack}} applications deployed by your tenants.
 ::::
 
@@ -44,7 +44,7 @@ The operator Pod label depends on how the operator has been installed. Check the
 | YAML manifests | `control-plane: elastic-operator`<br> |
 | Helm Charts | `app.kubernetes.io/name: elastic-operator`<br> |
 
-::::{note} 
+::::{note}
 The examples in this section assume that the ECK operator has been installed using the Helm chart.
 ::::
 
@@ -52,11 +52,11 @@ The examples in this section assume that the ECK operator has been installed usi
 
 Run `kubectl get endpoints kubernetes -n default` to obtain the API server IP address for your cluster.
 
-::::{note} 
+::::{note}
 The following examples assume that the Kubernetes API server IP address is `10.0.0.1`.
 ::::
 
-## Isolating the operator [k8s-network-policies-operator-isolation] 
+## Isolating the operator [k8s-network-policies-operator-isolation]
 
 The minimal set of permissions required are as follows:
 
@@ -109,7 +109,7 @@ spec:
 ```
 
 
-## Isolating {{es}} [k8s-network-policies-elasticsearch-isolation] 
+## Isolating {{es}} [k8s-network-policies-elasticsearch-isolation]
 
 |     |     |
 | --- | --- |
@@ -171,7 +171,7 @@ spec:
 ```
 
 
-## Isolating {{kib}} [k8s-network-policies-kibana-isolation] 
+## Isolating {{kib}} [k8s-network-policies-kibana-isolation]
 
 |     |     |
 | --- | --- |
@@ -201,7 +201,7 @@ spec:
   - ports:
     - port: 53
       protocol: UDP
-    # [Optional] If Agent is deployed, this is to allow {{kib}} to access the Elastic Package Registry (https://epr.elastic.co).
+    # [Optional] If Agent is deployed, this is to allow Kibana to access the Elastic Package Registry (https://epr.elastic.co).
     # - port: 443
     #   protocol: TCP
   ingress:
@@ -222,7 +222,7 @@ spec:
 ```
 
 
-## Isolating APM Server [k8s-network-policies-apm-server-isolation] 
+## Isolating APM Server [k8s-network-policies-apm-server-isolation]
 
 |     |     |
 | --- | --- |
@@ -277,9 +277,9 @@ spec:
       common.k8s.elastic.co/type: apm-server
 ```
 
-## Isolating Beats [k8s-network-policies-beats-isolation] 
+## Isolating Beats [k8s-network-policies-beats-isolation]
 
-::::{note} 
+::::{note}
 Some {{beats}} may require additional access rules than what is listed here. For example, {{heartbeat}} will require a rule to allow access to the endpoint it is monitoring.
 ::::
 
@@ -325,9 +325,9 @@ spec:
 ```
 
 
-## Isolating Elastic Agent and Fleet [k8s-network-policies-agent-isolation] 
+## Isolating Elastic Agent and Fleet [k8s-network-policies-agent-isolation]
 
-::::{note} 
+::::{note}
 Some {{agent}} policies may require additional access rules other than those listed here.
 ::::
 
@@ -396,9 +396,9 @@ spec:
       common.k8s.elastic.co/type: agent
 ```
 
-## Isolating Logstash [k8s-network-policies-logstash-isolation] 
+## Isolating Logstash [k8s-network-policies-logstash-isolation]
 
-::::{note} 
+::::{note}
 {{ls}} may require additional access rules than those listed here, depending on plugin usage.
 ::::
 

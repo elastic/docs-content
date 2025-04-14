@@ -93,7 +93,7 @@ Expand-Archive .\elastic-agent-{{stack-version}}-windows-x86_64.zip
 
 ::::::{tab-item} DEB
 
-:::tip
+:::{tip}
 To simplify upgrading to future versions of Elastic Agent, we recommended that you use the tarball distribution instead of the RPM distribution.
 You can install Elastic Agent in an unprivileged mode that does not require root privileges.
 :::
@@ -106,7 +106,7 @@ sudo dpkg -i elastic-agent-{{stack-version}}-amd64.deb
 
 ::::::{tab-item} RPM
 
-:::tip
+:::{tip}
 To simplify upgrading to future versions of Elastic Agent, we recommended that you use the tarball distribution instead of the RPM distribution.
 You can install Elastic Agent in an unprivileged mode that does not require root privileges.
 :::

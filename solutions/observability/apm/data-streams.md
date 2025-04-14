@@ -43,22 +43,20 @@ Metrics
     * APM service summary metrics: `metrics-apm.service_summary.<metricset.interval>-<namespace>`
     * Application metrics: `metrics-apm.app.<service.name>-<namespace>`
 
-        Application metrics include the instrumented service’s name—​defined in each {{apm-agent}}'s configuration—​in the data stream name. Service names therefore must follow certain index naming rules.
+      Application metrics include the instrumented service’s name—​defined in each {{apm-agent}}'s configuration—​in the data stream name. Service names therefore must follow certain index naming rules.
 
-        ::::{dropdown} Service name rules
-        * Service names are case-insensitive and must be unique. For example, you cannot have a service named `Foo` and another named `foo`.
-        * Special characters will be removed from service names and replaced with underscores (`_`). Special characters include:
+      ::::{dropdown} Service name rules
+      * Service names are case-insensitive and must be unique. For example, you cannot have a service named `Foo` and another named `foo`.
+      * Special characters will be removed from service names and replaced with underscores (`_`). Special characters include:
+          ```text
+          '\\', '/', '*', '?', '"', '<', '>', '|', ' ', ',', '#', ':', '-'
+          ```
+      ::::
 
-            ```text
-            '\\', '/', '*', '?', '"', '<', '>', '|', ' ', ',', '#', ':', '-'
-            ```
+      ::::{important}
+      Additional storage efficiencies provided by [Synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) are available to users with an [appropriate license](https://www.elastic.co/subscriptions).
 
-        ::::
-
-        ::::{important}
-        Additional storage efficiencies provided by [Synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) are available to users with an [appropriate license](https://www.elastic.co/subscriptions).
-
-        ::::
+      ::::
 
 Logs
 :   Logs include application error events and application logs. Logs are stored in the following data streams:

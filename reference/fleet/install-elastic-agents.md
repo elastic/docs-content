@@ -94,7 +94,7 @@ The servers {{agent}} flavor is installed using the `elastic-agent install --ins
 * `pf-elastic-symbolizer` - a server side component of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 * `pf-elastic-collector` - a server side component of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 
-Beginning in version 9.0, for {{agents}} to have the full functionality that was supported by default in pre-9.x versions, you need to install the servers {[agent]} flavor.
+Beginning in version 9.0, for {{agents}} to have the full functionality that was supported by default in pre-9.x versions, you need to install the servers {{agent}} flavor.
 
 ### Flavors for container package installs
 
