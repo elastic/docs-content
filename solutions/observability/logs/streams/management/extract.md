@@ -6,8 +6,7 @@ applies_to:
 
 Unstructured log messages need to be parsed into meaningful fields so you can filter and analyze them quickly. Common fields to extract include timestamp and the log level, but you can also extract information like IP addresses, usernames, or ports.
 
-Use the **Extract field** tab on the **Manage stream** page to process your data. Changes are immediately available as a preview and tested end-to-end.
-The UI simulates your changes, so you can see them immediately.
+Use the **Extract field** tab on the **Manage stream** page to process your data. The UI simulates your changes and provides an immediate preview that's tested end-to-end.
 
 The UI also shows indexing problems, such as mapping conflicts, so you can address them before applying changes.
 
@@ -53,17 +52,9 @@ Processors support these comparators:
 - exists
 - not exists
 
-### Ignore failures [streams-ignore-failures]
-
-Turn on **Ignore failure** to ignore the processor if it fails. This is useful if you want to continue processing the document even if the processor fails.
-
-### Ignore missing fields [streams-ignore-missing-fields]
-
-Turn on **Ignore missing fields** to ignore the processor if the field is not present. This is useful if you want to continue processing the document even if the field is not present.
-
 ### Preview changes [streams-preview-changes]
 
-Under **Processors for field extraction**, set pipeline processors to modify your documents. **Data preview** shows you a preview of the results, with additional filtering options depending on the outcome of the simulation.
+Under **Processors for field extraction**, when you set pipeline processors to modify your documents, **Data preview** shows you a preview of the results with additional filtering options depending on the outcome of the simulation.
 
 When you add or edit processors, the **Data preview** updates automatically.
 
@@ -82,11 +73,19 @@ If you edit the stream again, note the following:
 
 ![Screenshot of the Grok processor UI](<../../../../images/logs-streams-grok.png>)
 
+### Ignore failures [streams-ignore-failures]
+
+Turn on **Ignore failure** to ignore the processor if it fails. This is useful if you want to continue processing the document even if the processor fails.
+
+### Ignore missing fields [streams-ignore-missing-fields]
+
+Turn on **Ignore missing fields** to ignore the processor if the field is not present. This is useful if you want to continue processing the document even if the field is not present.
+
 ## Detect and handle failures [streams-detect-failures]
 
 Documents fail processing for different reasons. Streams helps you to easily find and handle failures before deploying changes.
 
-The following example shows not all messages matched the provided grok pattern:
+The following example shows not all messages matched the provided Grok pattern:
 
 ![Screenshot showing some failed documents](<../../../../images/logs-streams-parsed.png>)
 
@@ -144,7 +143,7 @@ Streams then creates and manages the `<data_stream_name>@stream.processing` pipe
 ### User interaction with pipelines
 
 Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by Streams.
-You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor Streams created may cause unexpected behavior.
+You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor crated by Streams may cause unexpected behavior.
 
 ## Known limitations [streams-known-limitations]
 
