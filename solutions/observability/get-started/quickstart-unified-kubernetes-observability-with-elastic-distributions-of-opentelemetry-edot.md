@@ -14,7 +14,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-In this quickstart guide, you’ll learn how to send Kubernetes logs, metrics, and application traces to Elasticsearch, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](https://github.com/elastic/opentelemetry/tree/main) (EDOT) Collectors and SDK instances.
+In this quickstart guide, you’ll learn how to send Kubernetes logs, metrics, and application traces to Elasticsearch, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](https://elastic.github.io/opentelemetry/) (EDOT) Collectors and SDK instances.
 
 All the components will be deployed through the [opentelemetry-kube-stack](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) helm chart. They include:
 
@@ -23,7 +23,7 @@ All the components will be deployed through the [opentelemetry-kube-stack](https
 * `Deployment` EDOT Collector configured for cluster level metrics.
 * `Instrumentation` object for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/).
 
-For a more detailed description of the components and advanced configuration, refer to the [elastic/opentelemetry](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.md) GitHub repository.
+For a more detailed description of the components and advanced configuration, refer to the [elastic/opentelemetry](https://elastic.github.io/opentelemetry/) GitHub repository.
 
 
 ## Prerequisites [_prerequisites_2]
@@ -74,7 +74,7 @@ For a more detailed description of the components and advanced configuration, re
 3. Follow the on-screen instructions to install all needed components.
 
     ::::{note}
-    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.md#cert-manager) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
+    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](https://elastic.github.io/opentelemetry/use-cases/kubernetes/customization.html#cert-manager-integrated-installation) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
 
     ::::
 
@@ -104,7 +104,7 @@ For a more detailed description of the components and advanced configuration, re
 4. Follow the on-screen instructions to install all needed components.
 
     ::::{note}
-    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/README.md#cert-manager) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
+    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](https://elastic.github.io/opentelemetry/use-cases/kubernetes/customization.html#cert-manager-integrated-installation) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
 
     ::::
 
@@ -136,7 +136,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 ## Troubleshooting and more [_troubleshooting_and_more]
 
-* To troubleshoot deployment and installation, refer to [installation verification](https://github.com/elastic/opentelemetry/tree/main/docs/kubernetes/operator#installation-verification).
-* For application instrumentation details, refer to [Instrumenting applications with EDOT SDKs on Kubernetes](https://github.com/elastic/opentelemetry/blob/main/docs/kubernetes/operator/instrumenting-applications.md).
-* To customize the configuration, refer to [custom configuration](https://github.com/elastic/opentelemetry/tree/main/docs/kubernetes/operator#custom-configuration).
+* To troubleshoot deployment and installation, refer to [installation verification](https://elastic.github.io/opentelemetry/use-cases/kubernetes/deployment.html#installation-verification).
+* For application instrumentation details, refer to [Instrumenting applications with EDOT SDKs on Kubernetes](https://elastic.github.io/opentelemetry/use-cases/kubernetes/instrumenting-applications.html).
+* To customize the configuration, refer to [custom configuration](https://elastic.github.io/opentelemetry/use-cases/kubernetes/customization.html).
 * Refer to [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.

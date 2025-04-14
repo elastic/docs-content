@@ -11,7 +11,7 @@ applies_to:
 # Use OpenTelemetry with APM [apm-open-telemetry]
 
 ::::{note}
-For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](https://github.com/elastic/opentelemetry).
+For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](https://elastic.github.io/opentelemetry/).
 ::::
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
