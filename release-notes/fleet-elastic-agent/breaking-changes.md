@@ -6,7 +6,6 @@ navigation_title: "Breaking changes"
 Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the {{fleet}} and {{agent}} breaking changes and take the necessary steps to mitigate any issues. To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
 
 % ## Next version [fleet-elastic-agent-nextversion-breaking-changes]
-% **Release date:** Month day, year
 
 % ::::{dropdown} Title of breaking change 
 % Description of the breaking change.
@@ -18,7 +17,6 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % ::::
 
 ## 9.0.0 [fleet-elastic-agent-900-breaking-changes]
-**Release date:** April 2, 2025
 
 ::::{dropdown} Removed deprecated `epm` Fleet APIs
 Removed `GET/POST/DELETE /epm/packages/:pkgkey` APIs in favor of the `GET/POST/DELETE /epm/packages/:pkgName/:pkgVersion`.

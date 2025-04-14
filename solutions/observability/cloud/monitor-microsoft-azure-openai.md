@@ -260,7 +260,7 @@ From here, you’ll find visualizations of important metrics for your Azure Open
 
 ![screenshot of the Azure OpenAI integration dashboard](/solutions/images/observability-azure-openai-dashboard.png "")
 
-For more on dashboards and visualization, refer to the [Dashboards and visualizations](../../../explore-analyze/dashboards.md) documentation.
+For more on dashboards and visualization, refer to the [Dashboards and visualizations](/explore-analyze/dashboards.md) documentation.
 
 
 ### View logs and metrics with Discover [azure-openai-discover]
@@ -276,7 +276,7 @@ From here, filter your data and dive deeper into individual logs to find informa
 :screenshot:
 :::
 
-For more on using Discover and creating data views, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
+For more on using Discover and creating data views, refer to the [Discover](/explore-analyze/discover.md) documentation.
 
 ## Step 6: Monitor Microsoft Azure OpenAI APM with OpenTelemetry [azure-openai-apm]
 
@@ -451,7 +451,7 @@ After ingesting your data, you can filter and explore it using Discover in {{kib
 :screenshot:
 :::
 
-Then, use these fields to create visualizations and build dashboards. Refer to the [Dashboard and visualizations](../../../explore-analyze/dashboards.md) documentation for more information.
+Then, use these fields to create visualizations and build dashboards. Refer to the [Dashboard and visualizations](/explore-analyze/dashboards.md) documentation for more information.
 
 :::{image} /solutions/images/observability-azure-openai-apm-dashboard.png
 :alt: screenshot of the Azure OpenAI APM dashboard
@@ -465,4 +465,4 @@ Now that you know how to find and visualize your Azure OpenAI logs and metrics, 
 
 * **Alerts**: Create threshold rules to notify you when your metrics or logs reach or exceed a specified value: Refer to [Metric threshold](../incident-management/create-metric-threshold-rule.md) and [Log threshold](../incident-management/create-log-threshold-rule.md) for more on setting up alerts.
 * **SLOs**: Set measurable targets for your Azure OpenAI service performance based on your metrics. Once defined, you can monitor your SLOs with dashboards and alerts and track their progress against your targets over time. Refer to [Service-level objectives (SLOs)](../incident-management/service-level-objectives-slos.md) for more on setting up and tracking SLOs.
-* **Machine learning (ML) jobs**: Set up ML jobs to find anomalous events and patterns in your Azure OpenAI data. Refer to [Finding anomalies](../../../explore-analyze/machine-learning/anomaly-detection/ml-ad-finding-anomalies.md) for more on setting up ML jobs.
+* **Machine learning (ML) jobs**: Set up ML jobs to find anomalous events and patterns in your Azure OpenAI data. Refer to [Finding anomalies](/explore-analyze/machine-learning/anomaly-detection/ml-ad-finding-anomalies.md) for more on setting up ML jobs.

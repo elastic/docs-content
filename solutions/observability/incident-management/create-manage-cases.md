@@ -8,7 +8,7 @@ mapped_pages:
 
 ::::{note}
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create and manage cases. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Editor** role or higher is required to create and manage cases. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -17,7 +17,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
 
 1. Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create case**.
-3. (Optional) If you defined [templates](../../../solutions/observability/incident-management/configure-case-settings.md#observability-case-templates), select one to use its default field values. [preview]
+3. (Optional) If you defined [templates](/solutions/observability/incident-management/configure-case-settings.md#observability-case-templates), select one to use its default field values. [preview]
 4. Give the case a name, severity, and description.
 
     ::::{tip}
@@ -29,10 +29,10 @@ Open a new case to keep track of issues and share the details with colleagues. T
 
     **For Observability serverless projects**, you can add users who are assigned the Editor user role (or a more permissive role) for the project.
 
-    **For Elastic Stack**, You can add users only if they meet the necessary [prerequisites](../../../solutions/observability/incident-management/configure-access-to-cases.md).
+    **For Elastic Stack**, You can add users only if they meet the necessary [prerequisites](/solutions/observability/incident-management/configure-access-to-cases.md).
 
-6. If you defined [custom fields](../../../solutions/observability/incident-management/configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
-7. (Optional) Under External incident management system, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can [create one](../../../solutions/observability/incident-management/configure-case-settings.md).
+6. If you defined [custom fields](/solutions/observability/incident-management/configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
+7. (Optional) Under External incident management system, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can [create one](/solutions/observability/incident-management/configure-case-settings.md).
 8. After you’ve completed all of the required fields, click **Create case**.
 
 ::::{tip}
@@ -75,7 +75,7 @@ There is a 10 MiB size limit for images. For all other MIME types, the limit is 
 
 To send a case to an external system, click the ![push](/solutions/images/serverless-importAction.svg "") button in the *External incident management system* section of the individual case page. This information is not sent automatically. If you make further changes to the shared case fields, you should push the case again.
 
-For more information about configuring connections to external incident management systems, refer to [Configure case settings](../../../solutions/observability/incident-management/configure-case-settings.md).
+For more information about configuring connections to external incident management systems, refer to [Configure case settings](/solutions/observability/incident-management/configure-case-settings.md).
 
 
 ## Manage existing cases [observability-create-a-new-case-manage-existing-cases]

@@ -408,7 +408,9 @@ PS > cd 'C:\Program Files\Filebeat'
 PS C:\Program Files\Filebeat> .\install-service-filebeat.ps1
 ```
 
-NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
+```{note}
+If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
+```
 ::::::
 
 :::::::
@@ -1134,7 +1136,9 @@ tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
   PS C:\Program Files\Metricbeat> .\install-service-metricbeat.ps1
   ```
 
-NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
+```{note}
+If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
+```
 ::::::
 
 :::::::
@@ -1472,7 +1476,7 @@ java -jar /tmp/apm-agent-attach-1.17.0-standalone.jar --pid 30730 \
 This above message will return something like this:
 
 ```text
-2020-07-10 15:04:48.144  INFO Attaching the Elastic {{apm-agent}} to 30730
+2020-07-10 15:04:48.144  INFO Attaching the Elastic APM agent to 30730
 2020-07-10 15:04:49.649  INFO Done
 ```
 
@@ -1760,7 +1764,9 @@ tar xzvf heartbeat-{{stack-version}}-linux-x86_64.tar.gz
   PS C:\Program Files\Heartbeat> .\install-service-heartbeat.ps1
   ```
 
-NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-heartbeat.ps1`.
+```{note}
+If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-heartbeat.ps1`.
+```
 ::::::
 
 :::::::

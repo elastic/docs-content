@@ -35,17 +35,56 @@ Each event is annotated with the following information:
 {{agent}} processors execute *before* ingest pipelines, which means that they process the raw event data rather than the final event sent to {{es}}. For related limitations, refer to [What are some limitations of using processors?](/reference/fleet/agent-processors.md#limitations)
 ::::
 
+`address`
+:   (Optional) URL of the agent API used to request the metadata.
 
-| Name | Required | Default | Description |
-| --- | --- | --- | --- |
-| `address` | No | `http://127.0.0.1:4646` | URL of the agent API used to request the metadata. |
-| `namespace` | No |  | Namespace to watch. If set, only events for allocations in this namespace are annotated. |
-| `region` | No |  | Region to watch. If set, only events for allocations in this region are annotated. |
-| `secret_id` | No |  | SecretID to use when connecting with the agent API. This is an example ACL policy to apply to the token.<br><br>```json<br>namespace "*" {<br>  policy = "read"<br>}<br>node {<br>  policy = "read"<br>}<br>agent {<br>  policy = "read"<br>}<br>```<br> |
-| `refresh_interval` | No | `30s` | Interval used to update the cached metadata. |
-| `cleanup_timeout` | No | `60s` | Time to wait before cleaning up an allocation’s associated resources after it has been removed.This is useful if you expect to receive events after an allocation has been removed, which can happen when collecting logs. |
-| `scope` | No | `node` | Scope of the resources to watch.Specify `node` to get metadata for the allocations in a single agent, or `global`, to get metadata for allocations running on any agent. |
-| `node` | No |  | When using `scope: node`, use `node` to specify the name of the local node if it cannot be discovered automatically.<br><br>For example, you can use the following configuration when {{agent}} is collecting events from all the allocations in the cluster:<br><br>```yaml<br>  - add_nomad_metadata:<br>      scope: global<br>```<br> |
+    **Default**: `http://127.0.0.1:4646`
+
+`namespace`
+:   (Optional) Namespace to watch. If set, only events for allocations in this namespace are annotated.
+
+`region`
+:   (Optional) Region to watch. If set, only events for allocations in this region are annotated.
+
+`secret_id`
+:   (Optional) SecretID to use when connecting with the agent API. This is an example ACL policy to apply to the token.
+
+    ```json
+    namespace "*" {
+      policy = "read"
+    }
+    node {
+      policy = "read"
+    }
+    agent {
+      policy = "read"
+    }
+    ```
+
+`refresh_interval`
+:   (Optional) Interval used to update the cached metadata.
+
+    **Default**: `30s`
+
+`cleanup_timeout`
+:   (Optional) Time to wait before cleaning up an allocation’s associated resources after it has been removed.This is useful if you expect to receive events after an allocation has been removed, which can happen when collecting logs.
+
+    **Default**: `60s`
+
+`scope`
+:   (Optional) Scope of the resources to watch.Specify `node` to get metadata for the allocations in a single agent, or `global`, to get metadata for allocations running on any agent.
+
+    **Default**: `node`
+
+`node`
+:   (Optional) When using `scope: node`, use `node` to specify the name of the local node if it cannot be discovered automatically.
+
+    For example, you can use the following configuration when {{agent}} is collecting events from all the allocations in the cluster:
+
+    ```yaml
+      - add_nomad_metadata:
+          scope: global
+    ```
 
 
 ## Indexers and matchers [_indexers_and_matchers]

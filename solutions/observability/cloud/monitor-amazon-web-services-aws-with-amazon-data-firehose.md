@@ -53,7 +53,7 @@ For advanced use cases, source records can be transformed by invoking a custom L
 From the **Destination settings** panel, specify the following settings:
 
 * **Elastic endpoint URL**: Enter the Elastic endpoint URL of your Elasticsearch cluster. To find the Elasticsearch endpoint, go to the {{ecloud}} Console and select **Connection details**. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
-* **API key**: Enter the encoded Elastic API key. This can be created in Kibana by following the instructions under [API Keys](../../../deploy-manage/api-keys.md). If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least "auto_configure" & "write" permissions for the indices you will be using with this delivery stream.
+* **API key**: Enter the encoded Elastic API key. This can be created in Kibana by following the instructions under [API Keys](/deploy-manage/api-keys.md). If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least "auto_configure" & "write" permissions for the indices you will be using with this delivery stream.
 * **Content encoding**: To reduce the data transfer costs, use GZIP encoding.
 * **Retry duration**: Determines how long Firehose continues retrying the request in the event of an error. A duration between 60 and 300 seconds should be suitable for most use cases.
 * **Parameters**:
