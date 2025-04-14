@@ -67,8 +67,7 @@ tar xzvf apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
 $$$apm-installing-on-windows$$$
 **Windows:**
 
-1. Download the APM Server Windows zip file from the
-https://www.elastic.co/downloads/apm/apm-server[downloads page].
+1. Download the APM Server Windows zip file from the [downloads page](https://www.elastic.co/downloads/apm/apm-server).
 
 1. Extract the contents of the zip file into `C:\Program Files`.
 
@@ -733,9 +732,9 @@ const apm = initApm({
 ::::::
 
 ::::::{tab-item} OpenTelemetry
-Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}.
+Elastic integrates with OpenTelemetry using the Elastic Distribution of OpenTelemetry (EDOT), allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}.
 
-For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](/solutions/observability/apm/use-opentelemetry-with-apm.md).
+For more information on how to combine Elastic and OpenTelemetry, see the [EDOT documentation](https://elastic.github.io/opentelemetry/).
 ::::::
 
 :::::::

@@ -35,7 +35,7 @@ To learn more about the metrics shown on this page, refer to the [Metrics refere
 
 If you haven’t added data yet, click **Add data** to search for and install an Elastic integration.
 
-Need help getting started? Follow the steps in [Get started with system metrics](../../../solutions/observability/infra-and-hosts/get-started-with-system-metrics.md).
+Need help getting started? Follow the steps in [Get started with system metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md).
 
 ::::
 
@@ -45,12 +45,12 @@ The **Hosts** page provides several ways to view host metrics:
 * Overview tiles show the number of hosts returned by your search plus averages of key metrics, including CPU usage, normalized load, and memory usage. Max disk usage is also shown.
 * The Host limit controls the maximum number of hosts shown on the page. The default is 50, which means the page shows data for the top 50 hosts based on the most recent timestamps. You can increase the host limit to see data for more hosts, but doing so may impact query performance.
 * The Hosts table shows a breakdown of metrics for each host along with an alert count for any hosts with active alerts. You may need to page through the list or change the number of rows displayed on each page to see all of your hosts.
-* Each host name is an active link to a [host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details) page, where you can explore enhanced metrics and other observability data related to the selected host.
+* Each host name is an active link to a [host details](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details) page, where you can explore enhanced metrics and other observability data related to the selected host.
 * Table columns are sortable, but note that the sorting behavior is applied to the already returned data set.
 * The tabs at the bottom of the page show an overview of the metrics, logs, and alerts for all hosts returned by your search.
 
 ::::{tip}
-For more information about creating and viewing alerts, refer to [Alerting](../../../solutions/observability/incident-management/alerting.md).
+For more information about creating and viewing alerts, refer to [Alerting](/solutions/observability/incident-management/alerting.md).
 
 ::::
 
@@ -60,7 +60,7 @@ For more information about creating and viewing alerts, refer to [Alerting](../.
 
 The **Hosts** page provides several mechanisms for filtering the data on the page:
 
-* Enter a search query using [{{kib}} Query Language](../../../explore-analyze/query-filter/languages/kql.md) to show metrics that match your search criteria. For example, to see metrics for hosts running on linux, enter `host.os.type : "linux"`. Otherwise you’ll see metrics for all your monitored hosts (up to the number of hosts specified by the host limit).
+* Enter a search query using [{{kib}} Query Language](/explore-analyze/query-filter/languages/kql.md) to show metrics that match your search criteria. For example, to see metrics for hosts running on linux, enter `host.os.type : "linux"`. Otherwise you’ll see metrics for all your monitored hosts (up to the number of hosts specified by the host limit).
 * Select additional criteria to filter the view:
 
     * In the **Operating System** list, select one or more operating systems to include (or exclude) metrics for hosts running the selected operating systems.
@@ -77,14 +77,14 @@ The **Hosts** page provides several mechanisms for filtering the data on the pag
 
 % Stateful only for filtering data?
 
-To learn more about filtering data in {{kib}}, refer to [{{kib}} concepts](../../../explore-analyze/query-filter/filtering.md).
+To learn more about filtering data in {{kib}}, refer to [{{kib}} concepts](/explore-analyze/query-filter/filtering.md).
 
 
 ## View metrics [analyze-hosts-inspect-data]
 
 On the **Metrics** tab, view metrics trending over time, including CPU usage, normalized load, memory usage, disk usage, and other metrics related to disk IOPs and throughput. Place your cursor over a line to view metrics at a specific point in time. From within each visualization, you can choose to open the visualization in Lens.
 
-To see metrics for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
+To see metrics for a specific host, refer to [View host details](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
 
 
 ### Open in Lens [analyze-hosts-open-in-lens]
@@ -98,7 +98,7 @@ Metrics visualizations are powered by Lens, meaning you can continue your analys
 
 In Lens, you can examine all the fields and formulas used to create the visualization, make modifications to the visualization, and save your changes.
 
-For more information about using Lens, refer to the [{{kib}} documentation about Lens](../../../explore-analyze/visualize/lens.md).
+For more information about using Lens, refer to the [{{kib}} documentation about Lens](/explore-analyze/visualize/lens.md).
 
 
 ## View logs [analyze-hosts-view-logs]
@@ -110,7 +110,7 @@ On the **Logs** tab of the **Hosts** page, view logs for the systems you are mon
 :screenshot:
 :::
 
-To see logs for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
+To see logs for a specific host, refer to [View host details](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
 
 
 ## View alerts [analyze-hosts-view-alerts]
@@ -128,7 +128,7 @@ From the **Actions** menu, you can choose to:
 :screenshot:
 :::
 
-To see alerts for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
+To see alerts for a specific host, refer to [View host details](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
 
 ::::{note}
 **Why are alerts missing from the Hosts page?**
@@ -138,7 +138,7 @@ If your rules are triggering alerts that don’t appear on the **Hosts** page, e
 * For Metric threshold or Custom threshold rules, select `host.name` in the **Group alerts by** field.
 * For Inventory rules, select **Host** for the node type under **Conditions**.
 
-To learn more about creating and managing rules, refer to [Alerting](../../../solutions/observability/incident-management/alerting.md).
+To learn more about creating and managing rules, refer to [Alerting](/solutions/observability/incident-management/alerting.md).
 
 ::::
 
@@ -231,7 +231,7 @@ The processes listed in the **Top processes** table are based on an aggregation 
 
 % Stateful only for Profiling
 
-:::::{dropdown} **Universal Profiling**
+:::::{dropdown} Universal Profiling
 The **Universal Profiling** tab shows CPU usage down to the application code level. From here, you can find the sources of resource usage, and identify code that can be optimized to reduce infrastructure costs. The Universal Profiling tab has the following views.
 
 |     |     |
@@ -239,7 +239,7 @@ The **Universal Profiling** tab shows CPU usage down to the application code lev
 | **Flamegraph** | A visual representation of the functions that consume the most resources. Each rectangle represents a function. The rectangle width represents the time spent in the function. The number of stacked rectangles represents the stack depth, or the number of functions called to reach the current function. |
 | **Top 10 Functions** | A list of the most expensive lines of code on your host. See the most frequently sampled functions, broken down by CPU time, annualized CO2, and annualized cost estimates. |
 
-For more on Universal Profiling, refer to the [Universal Profiling](../../../solutions/observability/infra-and-hosts/universal-profiling.md) docs.
+For more on Universal Profiling, refer to the [Universal Profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) docs.
 
 :::{image} /solutions/images/observability-universal-profiling-overlay.png
 :alt: Host Universal Profiling
@@ -291,7 +291,7 @@ To drill down and analyze the metric anomaly, select **Actions** → **Open in A
 * **Editor:** Has limited access. Editors can run pre-configured queries, but may have restricted permissions for setting up and scheduling new queries, especially queries that require broader access or permissions adjustments.
 * **Viewer**: Has read-only access to data, including viewing Osquery results if configured by a user with higher permissions. Viewers cannot initiate or schedule Osquery queries themselves.
 
-To learn more about roles, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+To learn more about roles, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -302,14 +302,14 @@ You must have an active [{{agent}}](https://www.elastic.co/guide/en/fleet/curren
 ::::
 
 
-The **Osquery** tab allows you to build SQL statements to query your host data. You can create and run live or saved queries against the {{agent}}. Osquery results are stored in {{es}} so that you can use the {{stack}} to search, analyze, and visualize your host metrics. To create saved queries and add scheduled query groups, refer to [Osquery](../../../solutions/security/investigate/osquery.md).
+The **Osquery** tab allows you to build SQL statements to query your host data. You can create and run live or saved queries against the {{agent}}. Osquery results are stored in {{es}} so that you can use the {{stack}} to search, analyze, and visualize your host metrics. To create saved queries and add scheduled query groups, refer to [Osquery](/solutions/security/investigate/osquery.md).
 
 To view more information about the query, click the **Status** tab. A query status can result in `success`, `error` (along with an error message), or `pending` (if the {{agent}} is offline).
 
 Other options include:
 
-* View in Discover to search, filter, and view information about the structure of host metric fields. To learn more, refer to [Discover](../../../explore-analyze/discover.md).
-* View in Lens to create visualizations based on your host metric fields. To learn more, refer to [Lens](../../../explore-analyze/visualize/lens.md).
+* View in Discover to search, filter, and view information about the structure of host metric fields. To learn more, refer to [Discover](/explore-analyze/discover.md).
+* View in Lens to create visualizations based on your host metric fields. To learn more, refer to [Lens](/explore-analyze/visualize/lens.md).
 * View the results in full screen mode.
 * Add, remove, reorder, and resize columns.
 * Sort field names in ascending or descending order.
@@ -333,9 +333,9 @@ The metrics shown on the **Hosts** page are also available when viewing hosts on
 
 There are a few reasons why you may see dashed lines in your charts.
 
-* [The chart interval is too short](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#dashed-interval)
-* [Data is missing](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#dashed-missing)
-* [The chart interval is too short and data is missing](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#observability-analyze-hosts-the-chart-interval-is-too-short-and-data-is-missing)
+* [The chart interval is too short](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md#dashed-interval)
+* [Data is missing](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md#dashed-missing)
+* [The chart interval is too short and data is missing](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md#observability-analyze-hosts-the-chart-interval-is-too-short-and-data-is-missing)
 
 
 ### The chart interval is too short [dashed-interval]

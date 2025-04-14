@@ -43,6 +43,7 @@ toc:
               - file: search/semantic-search/semantic-search-inference.md
               - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
               - file: search/semantic-search/cohere-es.md
+          - file: search/using-openai-compatible-models.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
@@ -92,8 +93,6 @@ toc:
           - file: observability/get-started/create-an-observability-project.md
           - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
           - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
-          - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
-          - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
           - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
           - file: observability/get-started/add-data-from-splunk.md
@@ -126,11 +125,6 @@ toc:
                       - file: observability/apm/real-user-monitoring-rum.md
                       - file: observability/apm/create-upload-source-maps-rum.md
                   - file: observability/apm/use-opentelemetry-with-apm.md
-                    children:
-                      - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
-                      - file: observability/apm/collect-metrics.md
-                      - file: observability/apm/limitations.md
-                      - file: observability/apm/resource-attributes.md
                   - file: observability/apm/apm-k8s-attacher.md
                   - file: observability/apm/monitor-aws-lambda-functions.md
                   - file: observability/apm/jaeger.md
@@ -379,7 +373,6 @@ toc:
                   - file: observability/infra-and-hosts/step-4-run-backend-applications.md
                   - file: observability/infra-and-hosts/step-5-next-steps.md
               - file: observability/infra-and-hosts/operate-universal-profiling-backend.md
-              - file: observability/infra-and-hosts/universal-profiling-issues.md
           - file: observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md
           - file: observability/infra-and-hosts/tutorial-observe-nginx-instances.md
             children:

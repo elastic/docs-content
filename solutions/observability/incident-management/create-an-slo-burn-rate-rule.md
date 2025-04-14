@@ -12,9 +12,9 @@ navigation_title: "SLO burn rate"
 
 ::::{important}
 
-**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-**For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+**For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 
@@ -89,7 +89,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -122,7 +122,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
@@ -162,5 +162,5 @@ The following variables are specific to this rule type. You can also specify [va
 
 Learn how to view alerts and triage SLO burn rate breaches:
 
-* [View alerts](../../../solutions/observability/incident-management/view-alerts.md)
-* [SLO burn rate breaches](../../../solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
+* [View alerts](/solutions/observability/incident-management/view-alerts.md)
+* [SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
