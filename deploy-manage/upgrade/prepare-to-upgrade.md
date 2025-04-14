@@ -19,11 +19,11 @@ Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use
 
 To upgrade from 8.17.0 or earlier to 9.0.0, you must first upgrade to the latest 8.18 patch release. This allows you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and perform a rolling upgrade. Upgrading to the latest 8.18 patch release is required even if you choose a full {{es}} cluster restart. If you're using 7.x and earlier, you may need to complete multiple upgrades or perform a full-cluster restart to reach the latest 8.18 patch release before upgrading to 9.0.0.
 
-Alternatively, you can create a 9.0 deployment and reindex from remote. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
+Alternatively, you can create a 9.0.0 deployment and reindex from remote. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
 
 :::{note}
-For flexible upgrade scheduling, 8.18.0 {{beats}} and {{ls}} are compatible with 9.0.0 {{es}}.
-By default, 8.x {{es}} clients are compatible with 9.0.0 and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.0.0 {{es}} server.
+For flexible upgrade scheduling, 8.18.0 {{beats}} and {{ls}} are compatible with 9.x {{es}}.
+By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} server.
 :::
 
 Review the following best practices to upgrade your deployments.
@@ -42,14 +42,14 @@ Review the following best practices to upgrade your deployments.
 
     To successfully upgrade, resolve all critical issues. If you make additional changes, create a snapshot to back up your data.
 
-1. To identify if your applications use unsupported features or behave differently in 9.0.0, review the deprecation logs in the Upgrade Assistant.
+1. To identify if your applications use unsupported features or behave differently in 9.x, review the deprecation logs in the Upgrade Assistant.
 
 4. Major version upgrades can include breaking changes that require additional steps to ensure your applications function as expected. Review the [breaking changes](../../release-notes/index.md) for each product you use to learn more about potential impacts on your application. Ensure you test with the new version before upgrading existing deployments.
 
 1. Make the recommended changes to ensure your clients continue operating as expected after the upgrade.
 
     :::{note}
-       As a temporary solution, use the 8.x syntax to submit requests to 9.0.0 with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
+       As a temporary solution, use the 8.x syntax to submit requests to 9.x with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
     :::
 
 1. If you use {{es}} plugins, ensure each plugin is compatible with the {{es}} version you're upgrading.
@@ -82,7 +82,7 @@ Review the following best practices to upgrade your deployments.
 1. If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters cannot monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
 
     :::{note}
-    If you use {{ccs}}, 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
+    If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
 
     If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md). To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**.
 
@@ -91,9 +91,9 @@ Review the following best practices to upgrade your deployments.
 
 1. To reduce overhead on the cluster during the upgrade, close {{ml}} jobs. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
 
-1. If you have `.ml-anomalies-*`anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate anomaly detection results](#anomaly-migration).
+1. If you have `.ml-anomalies-*`anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.x. For more information, refer to [Migrate anomaly detection results](#anomaly-migration).
 
-1. If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.0.0. For more information, refer to [Migrate transform destination indices](#transform-migration).
+1. If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.x. For more information, refer to [Migrate transform destination indices](#transform-migration).
 
 
 ## Reindex to upgrade [reindex-to-upgrade]
