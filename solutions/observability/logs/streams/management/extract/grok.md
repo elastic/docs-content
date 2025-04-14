@@ -16,6 +16,7 @@ This functionality uses the {{es}} Grok pipeline processor. Refer to [Grok proce
 The Grok processor uses a set of predefined patterns to match the log messages and extract the fields.
 You can also define your own pattern definitions by expanding the `Optional fields` section. This will allow you to define your own patterns and use them in the Grok processor.
 The patterns are defined in the following format:
+
 ```
 {
   "MY_DATE": "%{YEAR}-%{MONTHNUM}-%{MONTHDAY}"
@@ -26,8 +27,6 @@ The above pattern can then be used in the processor
 ```
 %{MY_DATE:date}
 ```
-
-% need to complete this portion "The patterns are defined in the TODO."
 
 ## Generate Patterns [streams-grok-patterns]
 Requires an LLM Connector to be configured.

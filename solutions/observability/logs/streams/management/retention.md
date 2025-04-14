@@ -11,10 +11,10 @@ Use the **Data retention** tab on the **Manage stream** page to set how long you
 
 The **Data retention** page is made up of the following components that can help you determine how long you want your stream to retain data:
 
-% this list doesn't show all of the components in the screenshot. Should we add the other components, or is the screenshot out of date?
-
+- **Retention period**: The minimum number of days after which the data is deleted
+- **Source**: The origin of the data retention policy.
 - **Ingestion**: Estimated ingestion per day and month calculated based on the size of all data in the stream and divided by the age of the stream. This is an estimate, and the actual ingestion may vary.
-- **Size**: The total size of the data in the stream. This is all data currently in the stream.
+- **Total doc count**: The total number of documents in the stream.
 - **Ingestion Rate**: Estimated ingestion rate per time bucket. The bucket interval is dynamic and adjusts based on the selected time range. The ingestion rate is calculated based on the average document size in a stream, multiplied by the number of documents in the bucket. This is an estimate, and the actual ingestion rate may vary.
 
 ## Edit the data retention period [streams-update-data-retention]
