@@ -106,7 +106,7 @@ Exposing a local endpoint to the internet can introduce security risks. Anyone w
 
 ## Connecting the local LLM to Playground
 
-:::{include} ../_snippets/connect-local-llm-to-playgound.md
+:::{include} ../_snippets/connect-local-llm-to-playground.md
 :::
 
 ## Using the local LLM with the {{infer}} API
