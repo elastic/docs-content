@@ -16,5 +16,5 @@ This section covers security measures specific to:
 
 :::{note}
 * For security features at deployment level, refer to [](./secure-your-cluster-deployment.md).
-* For details on security mechanisms applied by default in Elastic Cloud SaaS platform, refer to [](../security.md#managed-security-in-elastic-cloud).
+* For details on security mechanisms applied by default in {{ecloud}} SaaS platform, refer to [](../security.md#managed-security-in-elastic-cloud).
 :::

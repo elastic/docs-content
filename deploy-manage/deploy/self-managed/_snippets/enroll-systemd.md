@@ -9,7 +9,7 @@
 
     * A host address to access {{kib}}
     * A six digit verification code
-  
+
     For example:
 
     ```sh

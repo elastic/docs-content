@@ -31,7 +31,7 @@ To create a new dashboard, click **Create Dashboard** and begin adding visualiza
 
 You can also add other types of panels — such as filters, links, and text — and add controls like time sliders.
 
-For more information about creating dashboards, refer to [Create your first dashboard](../../../explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md).
+For more information about creating dashboards, refer to [Create your first dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md).
 
 ::::{note}
 The tutorial about creating your first dashboard is written for {{kib}} users, but the steps for serverless are very similar. To load the sample data in serverless, go to **Project Settings** → **Integrations** in the navigation pane, then search for "sample data".

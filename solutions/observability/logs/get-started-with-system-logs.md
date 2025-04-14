@@ -10,7 +10,7 @@ applies_to:
 
 ::::{note}
 
-**For Observability Serverless projects**, the **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+**For Observability Serverless projects**, the **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
@@ -35,6 +35,6 @@ After the agent is installed and successfully streaming log data, you can view t
 Now that you’ve added logs and explored your data, learn how to onboard other types of data:
 
 * [Stream any log file](stream-any-log-file.md)
-* [Get started with traces and APM](../apps/get-started-with-apm.md)
+* [Get started with traces and APM](/solutions/observability/apm/get-started.md)
 
 To onboard other types of data, select **Add Data** from the main menu.

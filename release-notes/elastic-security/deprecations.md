@@ -8,7 +8,6 @@ Over time, certain Elastic functionality becomes outdated and is replaced or rem
 Review the deprecated functionality for {{elastic-sec}}. While deprecations have no immediate impact, we strongly encourage you update your implementation after you upgrade. To learn how to upgrade, check out [Upgrade](/deploy-manage/upgrade.md).
 
 % ## Next version
-% **Release date:** Month day, year
 
 % ::::{dropdown} Deprecation title
 % Description of the deprecation.
@@ -18,7 +17,6 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % ::::
 
 ## 9.0.0 [elastic-security-900-deprecations]
-**Release date:** April 8, 2025
 
 ::::{dropdown} Renames the `integration-assistant` plugin
 Renames the `integration-assistant` plugin to `automatic-import` to match the associated feature.

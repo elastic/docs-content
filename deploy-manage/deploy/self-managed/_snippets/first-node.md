@@ -12,7 +12,7 @@ Update the {{es}} configuration on this first node so that other hosts are able 
 
 3. By default, {{es}} runs on `localhost`. For {{es}} instances on other nodes to be able to join the cluster, you need to set up {{es}} to run on a routable, external IP address.
 
-    Uncomment the line `#network.host: 192.168.0.1` and replace the default address with `0.0.0.0`. The `0.0.0.0` setting enables {{es}} to listen for connections on all available network interfaces. In a production environment, you might want to [use a different value](elasticsearch:///reference/elasticsearch/configuration-reference/networking-settings.md#common-network-settings), such as a static IP address or a reference to a [network interface of the host](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values).
+    Uncomment the line `#network.host: 192.168.0.1` and replace the default address with `0.0.0.0`. The `0.0.0.0` setting enables {{es}} to listen for connections on all available network interfaces. In a production environment, you might want to [use a different value](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#common-network-settings), such as a static IP address or a reference to a [network interface of the host](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values).
 
     ```yaml
     network.host: 0.0.0.0

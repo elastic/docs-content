@@ -18,7 +18,6 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % ::::
 
 ## 9.0.0 [elastic-observability-900-breaking-changes]
-**Release date:** April 2, 2025
 
 ::::{dropdown} Profiling now defaults to 19Hz sampling frequency
 For more information, check [#202278]({{kib-pull}}202278).
@@ -37,15 +36,5 @@ To explore your logs, use the contextual experience in Discover.
 
 To view log streams, use Discover sessions.
 
-
 ::::
 
-::::{dropdown} Removed Logs Explorer
-Logs Explorer has been removed. 
-
-
-For more information, check [#203685]({{kib-pull}}203685).
-
-**Action**<br>
-Use the improved logs exploration experience in Discover.
-::::

@@ -6,11 +6,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elasticsearch-specification.html
 ---
 
-# Elasticsearch configuration [k8s-elasticsearch-specification]
+# {{es}} configuration [k8s-elasticsearch-specification]
 
-This section covers various Elasticsearch cluster configuration scenarios when using ECK. For configuration topics relevant to both {{es}} and {{kib}}, see the [](./configure-deployments.md).
+This section covers various {{es}} cluster configuration scenarios when using ECK. For configuration topics relevant to both {{es}} and {{kib}}, see the [](./configure-deployments.md).
 
-Before deploying and running ECK in production, review the basic and advanced settings available on this page. These configurations integrate Elasticsearch, Kubernetes, and ECK operator functionality to help you fine-tune your deployment.
+Before deploying and running ECK in production, review the basic and advanced settings available on this page. These configurations integrate {{es}}, Kubernetes, and ECK operator functionality to help you fine-tune your deployment.
 
 ## Key concepts
 
@@ -29,12 +29,12 @@ Before deploying and running ECK in production, review the basic and advanced se
 
 ## Scheduling and lifecycle management
 
-* [Advanced Elasticsearch node scheduling](advanced-elasticsearch-node-scheduling.md): Integrate standard Kubernetes scheduling options with your {{es}} nodes.
+* [Advanced {{es}} node scheduling](advanced-elasticsearch-node-scheduling.md): Integrate standard Kubernetes scheduling options with your {{es}} nodes.
 * [Update strategy](update-strategy.md): Control how the changes are applied to the cluster.
 * [Pod disruption budget](pod-disruption-budget.md): Integrate Kubernetes Pod disruption budgets in your cluster.
 * [Security Context](security-context.md): Kubernetes security context and kernel capabilities.
 * [Readiness probe](readiness-probe.md): Customize `readinessProbe` in certain use cases.
-* [Pod PreStop hook](pod-prestop-hook.md): Prevent disruptions when terminating Elasticsearch Pods.
+* [Pod PreStop hook](pod-prestop-hook.md): Prevent disruptions when terminating {{es}} Pods.
 
 ## TLS/SSL Certificates
 

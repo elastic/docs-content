@@ -11,7 +11,7 @@ mapped_pages:
 
 To perform an offline installation without a private Docker registry, you have to download the available Docker Images on each host.
 
-1. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md). Note that for ECE version 4.0, if you want to use Elastic Stack version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images (the version 8.x images are required for system deployments).
+1. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md). Note that for ECE version 4.0, if you want to use {{stack}} version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images (the version 8.x images are required for system deployments).
 
     ```sh
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
@@ -24,10 +24,10 @@ To perform an offline installation without a private Docker registry, you have t
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
-    For example, for Elastic Cloud Enterprise 4.0.0 and the Elastic Stack versions it shipped with, you need:
+    For example, for {{ece}} 4.0.0 and the {{stack}} versions it shipped with, you need:
 
-    * Elastic Cloud Enterprise 4.0.0
-    * Elasticsearch 9.0.0, Kibana 9.0.0, and APM 9.0.0
+    * {{ece}} 4.0.0
+    * {es} 9.0.0, {{kib}} 9.0.0, and APM 9.0.0
 
 2. Create .tar files of the images:
 
@@ -42,7 +42,7 @@ To perform an offline installation without a private Docker registry, you have t
     docker save -o apm.9.0.0.tar docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
-3. Copy the .tar files to a location on your network where they are available to each host where you plan to install Elastic Cloud Enterprise. Alternatively, you can copy the .tar files to each host directly.
+3. Copy the .tar files to a location on your network where they are available to each host where you plan to install {{ece}}. Alternatively, you can copy the .tar files to each host directly.
 4. On each host, load the images into Docker, replacing `FILE_PATH` with the correct path to the .tar files:
 
     ```sh
@@ -63,7 +63,7 @@ To perform an offline installation without a private Docker registry, you have t
     curl -L -O https://download.elastic.co/cloud/elastic-cloud-enterprise.sh
     ```
 
-7. Copy the installation script to each host where you plan to install Elastic Cloud Enterprise or make it available on your network.
+7. Copy the installation script to each host where you plan to install {{ece}} or make it available on your network.
 8. Invoke the installation script on each host:
 
    ::::{note}

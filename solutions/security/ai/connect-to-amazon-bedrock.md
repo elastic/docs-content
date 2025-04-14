@@ -85,8 +85,6 @@ Create the access keys that will authenticate your Elastic connector:
 5. Select **Third-party service**, check the box under **Confirmation**, click **Next**, then click **Create access key**.
 6. Click **Download .csv file** to download the key. Store it securely.
 
-The following video demonstrates these steps.
-
 The following video demonstrates these steps (click to watch).
 
 [![bedrock-accesskey-video](https://play.vidyard.com/8oXgP1fbaQCqjWUgncF9at.jpg)](https://videos.elastic.co/watch/8oXgP1fbaQCqjWUgncF9at?)

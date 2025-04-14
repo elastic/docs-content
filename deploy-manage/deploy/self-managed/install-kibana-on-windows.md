@@ -64,15 +64,15 @@ By default, {{kib}} runs in the foreground, prints its logs to `STDOUT`, and can
 
 The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
 
-This is very convenient because you don’t have to create any directories to start using Kibana, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
+This is very convenient because you don’t have to create any directories to start using {{kib}}, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
 
 | Type | Description | Default Location | Setting |
 | --- | --- | --- | --- |
 | home | {{kib}} home directory or `$KIBANA_HOME` | Directory created by unpacking the archive |  |
 | bin | Binary scripts including `kibana` to start the {{kib}} server    and `kibana-plugin` to install plugins | `$KIBANA_HOME\bin` |  |
 | config | Configuration files including `kibana.yml` | `$KIBANA_HOME\config` | `[KBN_PATH_CONF](configure-kibana.md)` |
-|  | data | `The location of the data files written to disk by {{kib}} and its plugins` | `$KIBANA_HOME\data` |
-|  | plugins | `Plugin files location. Each plugin will be contained in a subdirectory.` | `$KIBANA_HOME\plugins` |
+|  | data | The location of the data files written to disk by {{kib}} and its plugins | `$KIBANA_HOME\data` |
+|  | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `$KIBANA_HOME\plugins` |
 
 ## Next steps
 

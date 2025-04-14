@@ -6,6 +6,7 @@ toc:
       - file: deploy/deployment-comparison.md
       - file: deploy/elastic-cloud.md
         children:
+          - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
           - file: deploy/elastic-cloud/create-an-organization.md
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
@@ -29,7 +30,6 @@ toc:
                       - file: deploy/elastic-cloud/heroku-reference-regions.md
           - file: deploy/elastic-cloud/serverless.md
             children:
-              - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
               - file: deploy/elastic-cloud/create-serverless-project.md
               - file: deploy/elastic-cloud/regions.md
               - file: deploy/elastic-cloud/project-settings.md
@@ -59,8 +59,8 @@ toc:
               - file: deploy/elastic-cloud/change-hardware.md
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
+              - file: deploy/elastic-cloud/restrictions-known-problems.md
           - file: deploy/elastic-cloud/tools-apis.md
-          - file: deploy/elastic-cloud/restrictions-known-problems.md
       - file: deploy/cloud-enterprise.md
         children:
           - file: deploy/cloud-enterprise/ece-architecture.md
@@ -96,7 +96,6 @@ toc:
                       - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
                         children:
                           - file: deploy/cloud-enterprise/migrate-to-podman-5.md
-                  - file: deploy/cloud-enterprise/log-into-cloud-ui.md
                   - file: deploy/cloud-enterprise/post-installation-steps.md
                   - file: deploy/cloud-enterprise/install-ece-on-additional-hosts.md
                     children:
@@ -132,6 +131,7 @@ toc:
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
                   - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
+          - file: deploy/cloud-enterprise/log-into-cloud-ui.md
           - file: deploy/cloud-enterprise/working-with-deployments.md
             children:
               - file: deploy/cloud-enterprise/deployment-templates.md

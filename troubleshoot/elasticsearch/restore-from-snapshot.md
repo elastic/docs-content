@@ -15,7 +15,7 @@ mapped_pages:
 Elasticsearch is using snapshots to store a copy of your data outside a cluster. You can restore a snapshot to recover indices and data streams for which there are no copies of the shards in the cluster. This can happen if the data (indices or data streams) was deleted or if the cluster membership changed and the current nodes in the system do not contain a copy of the data anymore.
 
 ::::{important}
-Restoring the missing data requires you to have a backup of the affected indices and data streams that is up-to-date enough for your use case. Please do not proceed without confirming this.
+Restoring the missing data requires you to have a backup of the affected indices and data streams that is up-to-date enough for your use case. Don't proceed without confirming this.
 ::::
 
 
@@ -30,7 +30,7 @@ In order to restore the indices and data streams that are missing data:
 2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.

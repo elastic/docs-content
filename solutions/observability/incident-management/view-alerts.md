@@ -8,7 +8,7 @@ mapped_pages:
 
 ::::{note}
 
-**For Observability serverless projects**, the **Editor** role or higher is required to perform this task. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Editor** role or higher is required to perform this task. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -18,7 +18,7 @@ You can track and manage alerts for your applications and SLOs from the **Alerts
 % Stateful only for the following note
 
 ::::{note}
-You can centrally manage rules from the [{{kib}} Management UI](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md) that provides a set of built-in [rule types](../../../explore-analyze/alerts-cases/alerts/rule-types.md) and [connectors](../../../deploy-manage/manage-connectors.md) for you to use. Click **Manage Rules**.
+You can centrally manage rules from the [{{kib}} Management UI](/explore-analyze/alerts-cases/alerts/create-manage-rules.md) that provides a set of built-in [rule types](/explore-analyze/alerts-cases/alerts/rule-types.md) and [connectors](/deploy-manage/manage-connectors.md) for you to use. Click **Manage Rules**.
 ::::
 
 :::{image} /solutions/images/serverless-observability-alerts-view.png
@@ -29,7 +29,7 @@ You can centrally manage rules from the [{{kib}} Management UI](../../../explore
 
 ## Filter alerts [observability-view-alerts-filter-alerts]
 
-To help you get started with your analysis faster, use the KQL bar to create structured queries using [{{kib}} Query Language](../../../explore-analyze/query-filter/languages/kql.md).
+To help you get started with your analysis faster, use the KQL bar to create structured queries using [{{kib}} Query Language](/explore-analyze/query-filter/languages/kql.md).
 
 You can use the time filter to define a specific date and time range. By default, this filter is set to search for the last 15 minutes.
 
@@ -85,10 +85,10 @@ To view the alert in the app that triggered it:
 Use the toolbar buttons in the upper-left of the alerts table to customize the columns you want displayed:
 
 * **Columns**: Reorder the columns.
-* **x* fields sorted**: Sort the table by one or more columns.
+* **x fields sorted**: Sort the table by one or more columns.
 * **Fields**: Select the fields to display in the table.
 
-For example, click **Fields** and choose the `Maintenance Windows` field. If an alert was affected by a maintenance window, its identifier appears in the new column. For more information about their impact on alert notifications, refer to [{{maint-windows-cap}}](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md).
+For example, click **Fields** and choose the `Maintenance Windows` field. If an alert was affected by a maintenance window, its identifier appears in the new column. For more information about their impact on alert notifications, refer to [{{maint-windows-cap}}](/explore-analyze/alerts-cases/alerts/maintenance-windows.md).
 
 You can also use the toolbar buttons in the upper-right to customize the display options or view the table in full-screen mode.
 
@@ -111,7 +111,7 @@ To add an alert to a new case:
 1. Select **Add to new case**.
 2. Enter a case name, add relevant tags, and include a case description.
 3. Under **External incident management system**, select a connector. If you’ve previously added one, that connector displays as the default selection. Otherwise, the default setting is `No connector selected`.
-4. After you’ve completed all of the required fields, click **Create case**. A notification message confirms you successfully created the case. To view the case details, click the notification link or go to the [Cases](../../../solutions/observability/incident-management/cases.md) page.
+4. After you’ve completed all of the required fields, click **Create case**. A notification message confirms you successfully created the case. To view the case details, click the notification link or go to the [Cases](/solutions/observability/incident-management/cases.md) page.
 
 
 ### Add an alert to an existing case [observability-view-alerts-add-an-alert-to-an-existing-case]

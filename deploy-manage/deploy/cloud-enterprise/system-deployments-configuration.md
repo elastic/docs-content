@@ -8,7 +8,7 @@ mapped_pages:
 
 # System deployments configuration [ece-system-clusters-configuration]
 
-When installing ECE, you will notice that several Elasticsearch clusters get created as part of the installation process. Those are the *system deployments* which are part of the ECE control plane. You must make sure that they are configured and sized correctly to ensure you have a production-ready installation.
+When installing ECE, you will notice that several {{es}} clusters get created as part of the installation process. Those are the *system deployments* which are part of the ECE control plane. You must make sure that they are configured and sized correctly to ensure you have a production-ready installation.
 
 We will review each cluster and provide recommendations to make sure that you are following best practices when starting your ECE journey.
 
@@ -27,7 +27,7 @@ Logging and metrics - `logging-and-metrics`
 :   As part of an ECE environment, a Beats sidecar with Filebeat and Metricbeat is installed on each ECE host. The logs and metrics collected by those beats are indexed in the `logging-and-metrics` cluster. This includes ECE service logs, such as proxy logs, director logs, and more. It also includes hosted deployments logs, security cluster audit logs, and metrics, such as CPU and disk usage. Data is collected from all hosts. This information is critical in order to be able to monitor ECE and troubleshoot issues. You can also use this data to configure watches to alert you in case of an issue, or machine learning jobs that can provide alerts based on anomalies or forecasting.
 
 Security - `security`
-:   When you enable the user management feature, you trigger the creation of a third system deployment named `security`. This cluster stores all security-related configurations, such as native users and the related native realm, integration with SAML or LDAP as external authentication providers and their role mapping, and the realm ordering. The health of this cluster is critical to provide access to the ECE Cloud UI and REST API. To learn more, check [Configure role-based access control](../../users-roles/cloud-enterprise-orchestrator/manage-users-roles.md). Beginning with Elastic Cloud Enterprise 2.5.0 the `security` cluster is created automatically for you. It is recommended to use the [dedicated API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-update-security-deployment) to manage the cluster.
+:   When you enable the user management feature, you trigger the creation of a third system deployment named `security`. This cluster stores all security-related configurations, such as native users and the related native realm, integration with SAML or LDAP as external authentication providers and their role mapping, and the realm ordering. The health of this cluster is critical to provide access to the ECE Cloud UI and REST API. To learn more, check [Configure role-based access control](../../users-roles/cloud-enterprise-orchestrator/manage-users-roles.md). Beginning with {{ece}} 2.5.0 the `security` cluster is created automatically for you. It is recommended to use the [dedicated API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-update-security-deployment) to manage the cluster.
 
 
 ## High availability [ece_high_availability] 
@@ -36,7 +36,7 @@ ECE supports the concept of [availability zones](ece-ha.md) and requires three a
 
 The system deployments are created when you install ECE or enable the user management feature, at which point they are not yet configured for high availability. As soon as you finish the installation process, you should change the configuration to ensure your system deployments are highly available and deployed across two or three availability zones. To configure your system deployments to be highly available, navigate to the **Edit** page for the cluster and change the number of availability zones under **Fault tolerance**.
 
-For the `logging-and-metrics` cluster, you might want to also make sure that your Kibana instance and other components are deployed across multiple availability zones, since you will often access that cluster using Kibana. You can change the availability zones for Kibana on the same **Edit** page.
+For the `logging-and-metrics` cluster, you might want to also make sure that your {{kib}} instance and other components are deployed across multiple availability zones, since you will often access that cluster using {{kib}}. You can change the availability zones for {{kib}} on the same **Edit** page.
 
 ::::{note} 
 For the `security` cluster, the number of zones must be set to 3 for high availability, otherwise you may encounter errors when trying to upgrade ECE versions.
@@ -66,7 +66,7 @@ When sizing your `logging-and-metrics` cluster, consider:
 
 In the case of the `admin-console-elasticsearch` and `security` system deployments, the team managing ECE and assigned to the platform admin role should have permission to change each system deployment configuration and also to access each cluster itself.
 
-The `logging-and-metrics` cluster is different since, as an ECE admin, you likely want to provide users with access to the cluster in order to troubleshoot issues without your assistance, for example. In order to manage access to that cluster, you can configure roles that will provide access to the relevant indices, map those to users, and manage access to Kibana by leveraging the Elastic security integration with your authentication provider, such as LDAP, SAML, or AD. To configure one of those security realms, check [LDAP](../../users-roles/cluster-or-deployment-auth/ldap.md), [Active Directory](../../users-roles/cluster-or-deployment-auth/active-directory.md) or [SAML](../../users-roles/cluster-or-deployment-auth/saml.md).
+The `logging-and-metrics` cluster is different since, as an ECE admin, you likely want to provide users with access to the cluster in order to troubleshoot issues without your assistance, for example. In order to manage access to that cluster, you can configure roles that will provide access to the relevant indices, map those to users, and manage access to {{kib}} by leveraging the Elastic security integration with your authentication provider, such as LDAP, SAML, or AD. To configure one of those security realms, check [LDAP](../../users-roles/cluster-or-deployment-auth/ldap.md), [Active Directory](../../users-roles/cluster-or-deployment-auth/active-directory.md) or [SAML](../../users-roles/cluster-or-deployment-auth/saml.md).
 
 ::::{note} 
 The `logging-and-metrics` cluster is only intended for troubleshooting ECE deployment issues. If your use case involves modifying or normalizing logs from {{es}} or {{kib}}, use a separate [dedicated monitoring deployment](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) instead.

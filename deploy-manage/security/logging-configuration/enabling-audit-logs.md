@@ -61,7 +61,7 @@ Audit logs are disabled by default and must be explicitly enabled.
 To learn how to consume these logs in an {{es}} cluster, refer to [](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md).
 :::::
 
-:::::{tab-item} Elastic Cloud Hosted
+:::::{tab-item} {{ech}}
 
 To enable audit logging in an {{ech}} deployment:
 
@@ -71,11 +71,11 @@ To enable audit logging in an {{ech}} deployment:
 
 3. From your deployment menu, go to the **Edit** page.
 
-4. To enable auditing for Elasticsearch:
+4. To enable auditing for {{es}}:
     * In the **Elasticsearch** section, select **Manage user settings and extensions**. For deployments with existing user settings, you may have to expand the **Edit elasticsearch.yml** caret for each node instead.
     * Add the setting `xpack.security.audit.enabled: true`.
 
-5. To enable auditing for Kibana:
+5. To enable auditing for {{kib}}:
     * In the **Kibana** section, select **Edit user settings**. For deployments with existing user settings, you may have to expand the **Edit kibana.yml** caret instead.
     * Add the setting `xpack.security.audit.enabled: true`.
 
@@ -102,7 +102,7 @@ To enable audit logging in an ECE deployment:
 5. To enable auditing for {{kib}}:
     * In the **Kibana** section, select **Edit user settings**. For deployments with existing user settings, you may have to expand the **Edit kibana.yml** caret instead.
     * Add the setting `xpack.security.audit.enabled: true`.
-    * If your Elastic Stack version is below 7.6.0, add the setting `logging.quiet: false`.
+    * If your {{stack}} version is below 7.6.0, add the setting `logging.quiet: false`.
 
 6. Select **Save**.
 
