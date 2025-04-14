@@ -30,12 +30,6 @@ Access detailed reference documentation on field and object schemas as well as t
 
 **Learn more in [Observability](observability/index.md)**
 
-## Search UI
-
-Explore reference content on Search UI and how you can develop fast, modern, and engaging search experiences.
-
-**Learn more in [Search UI](search-ui://reference/index.md)**
-
 ## Elasticsearch and index management
 
 Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
@@ -54,7 +48,7 @@ Visualize and analyze your data with Kibana. Configure advanced settings, explor
 
 **Learn more in [Kibana](kibana://reference/index.md)**
 
-## Plugins
+## Elasticsearch plugins
 
 Extend the functionality of your Elastic Stack with a variety of plugins. From analysis and discovery to snapshot/restore and store plugins, customize your setup to fit your requirements.
 
@@ -72,17 +66,23 @@ Access syntax references, function libraries, and best practices for Painless sc
 
 **Learn more in [Painless scripting](elasticsearch://reference/scripting-languages/painless/painless.md)**
 
+## ECS (Elastic Common Schema) reference
+
+Standardize your data with ECS. Access logging libraries, field references, and categorization fields to ensure consistency and compatibility across your data sources.
+
+**Learn more in [ECS](ecs://reference/index.md)**
+
 ## Data analysis
 
 Unlock insights with powerful data analysis tools. Utilize text analysis components, aggregations, and function references to derive meaningful conclusions from your data.
 
 **Learn more in [Data analysis](data-analysis/index.md)**
 
-## ECS (Elastic Common Schema) reference
+## Search UI library
 
-Standardize your data with ECS. Access logging libraries, field references, and categorization fields to ensure consistency and compatibility across your data sources.
+Explore reference content on the Search UI library and how you can develop fast, modern, and engaging search experiences.
 
-**Learn more in [ECS](ecs://reference/index.md)**
+**Learn more in [Search UI](search-ui://reference/index.md)**
 
 ## Cloud
 

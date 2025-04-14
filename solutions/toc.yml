@@ -43,6 +43,7 @@ toc:
               - file: search/semantic-search/semantic-search-inference.md
               - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
               - file: search/semantic-search/cohere-es.md
+          - file: search/using-openai-compatible-models.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
