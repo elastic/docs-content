@@ -9,29 +9,125 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 |     |     |
 | --- | --- |
-| $$$es-output-hosts-setting$$$<br>**Hosts**<br> | The {{es}} URLs where {{agent}}s will send data. By default, {{es}} is exposed on the following ports:<br><br>`9200`<br>:   Default {{es}} port for self-managed clusters<br><br>`443`<br>:   Default {{es}} port for {{ecloud}}<br><br>**Examples:**<br><br>* `https://192.0.2.0:9200`<br>* `https://1d7a52f5eb344de18ea04411fe09e564.fleet.eu-west-1.aws.qa.cld.elstc.co:443`<br>* `https://[2001:db8::1]:9200`<br><br>Refer to the [{{fleet-server}}](/reference/fleet/fleet-server.md) documentation for default ports and other configuration details.<br> |
-| $$$es-trusted-fingerprint-yaml-setting$$$<br>**{{es}} CA trusted fingerprint**<br> | HEX encoded SHA-256 of a CA certificate. If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally. To learn more about trusted fingerprints, refer to the [{{es}} security documentation](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).<br> |
-| $$$es-agent-proxy-output$$$<br>**Proxy**<br> | Select a proxy URL for {{agent}} to connect to {{es}}. To learn about proxy configuration, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).<br> |
-| $$$es-output-advanced-yaml-setting$$$<br>**Advanced YAML configuration**<br> | YAML settings that will be added to the {{es}} output section of each policy that uses this output. Make sure you specify valid YAML. The UI does not currently provide validation.<br><br>See [Advanced YAML configuration](#es-output-settings-yaml-config) for descriptions of the available settings.<br> |
-| $$$es-agent-integrations-output$$$<br>**Make this output the default for agent integrations**<br> | When this setting is on, {{agent}}s use this output to send data if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).<br> |
-| $$$es-agent-monitoring-output$$$<br>**Make this output the default for agent monitoring**<br> | When this setting is on, {{agent}}s use this output to send [agent monitoring data](/reference/fleet/monitor-elastic-agent.md) if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).<br> |
-| $$$es-agent-performance-tuning$$$<br>**Performance tuning**<br> | Choose one of the menu options to tune your {{agent}} performance when sending data to an {{es}} output. You can optimize for throughput, scale, latency, or you can choose a balanced (the default) set of performance specifications. Refer to [Performance tuning settings](#es-output-settings-performance-tuning-settings) for details about the setting values and their potential impact on performance.<br><br>You can also use the [Advanced YAML configuration](#es-output-settings-yaml-config) field to set custom values. Note that if you adjust any of the performance settings described in the following **Advanced YAML configuration*** section, the ***Performance tuning*** option automatically changes to `Custom` and cannot be changed.<br><br>Performance tuning preset values take precedence over any settings that may be defined separately. If you want to change any setting, you need to use the `Custom` ***Performance tuning*** option and specify the settings in the ***Advanced YAML configuration*** field.<br><br>For example, if you would like to use the balanced preset values except that you prefer a higher compression level, you can do so as follows:<br><br>1. In {{fleet}}, open the ***Settings*** tab.<br>2. In the ***Outputs*** section, select ***Add output*** to create a new output, or select the edit icon to edit an existing output.<br>3. In the ***Add new output*** or the ***Edit output*** flyout, set ***Performance tuning** to `Custom`.<br>4. Refer to the list of [performance tuning preset values](#es-output-settings-performance-tuning-settings), and add the settings you prefer into the **Advanced YAML configuration** field. For the `balanced` presets, the yaml configuration would be as shown:<br><br>    ```yaml<br>    bulk_max_size: 1600<br>    worker: 1<br>    queue.mem.events: 3200<br>    queue.mem.flush.min_events: 1600<br>    queue.mem.flush.timeout: 10s<br>    compression_level: 1<br>    idle_connection_timeout: 3s<br>    ```<br><br>5. Adjust any settings as preferred. For example, you can update the `compression_level` setting to `4`.<br><br>When you create an {{agent}} policy using this output, the output will use the balanced preset options except with the higher compression level, as specified.<br> |
+
+**Hosts** $$$es-output-hosts-setting$$$
+:   The {{es}} URLs where {{agent}}s will send data. By default, {{es}} is exposed on the following ports:
+
+    `9200`
+    :   Default {{es}} port for self-managed clusters
+
+    `443`
+    :   Default {{es}} port for {{ecloud}}
+
+    **Examples:**
+    * `https://192.0.2.0:9200`
+    * `https://1d7a52f5eb344de18ea04411fe09e564.fleet.eu-west-1.aws.qa.cld.elstc.co:443`
+    * `https://[2001:db8::1]:9200`
+
+    Refer to the [{{fleet-server}}](/reference/fleet/fleet-server.md) documentation for default ports and other configuration details.
+
+**{{es}} CA trusted fingerprint** $$$es-trusted-fingerprint-yaml-setting$$$
+:   HEX encoded SHA-256 of a CA certificate. If this certificate is present in the chain during the handshake, it will be added to the `certificate_authorities` list and the handshake will continue normally. To learn more about trusted fingerprints, refer to the [{{es}} security documentation](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+
+**Proxy** $$$es-agent-proxy-output$$$
+:   Select a proxy URL for {{agent}} to connect to {{es}}. To learn about proxy configuration, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
+
+**Advanced YAML configuration** $$$es-output-advanced-yaml-setting$$$
+:   YAML settings that will be added to the {{es}} output section of each policy that uses this output. Make sure you specify valid YAML. The UI does not currently provide validation.
+    See [Advanced YAML configuration](#es-output-settings-yaml-config) for descriptions of the available settings.
+
+**Make this output the default for agent integrations** $$$es-agent-integrations-output$$$
+:   When this setting is on, {{agent}}s use this output to send data if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).
+
+**Make this output the default for agent monitoring** $$$es-agent-monitoring-output$$$
+:   When this setting is on, {{agent}}s use this output to send [agent monitoring data](/reference/fleet/monitor-elastic-agent.md) if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).
+
+**Performance tuning** $$$es-agent-performance-tuning$$$
+:   Choose one of the menu options to tune your {{agent}} performance when sending data to an {{es}} output. You can optimize for throughput, scale, latency, or you can choose a balanced (the default) set of performance specifications. Refer to [Performance tuning settings](#es-output-settings-performance-tuning-settings) for details about the setting values and their potential impact on performance.
+
+    You can also use the [Advanced YAML configuration](#es-output-settings-yaml-config) field to set custom values. Note that if you adjust any of the performance settings described in the following **Advanced YAML configuration*** section, the ***Performance tuning*** option automatically changes to `Custom` and cannot be changed.
+
+    Performance tuning preset values take precedence over any settings that may be defined separately. If you want to change any setting, you need to use the `Custom` ***Performance tuning*** option and specify the settings in the ***Advanced YAML configuration*** field.
+
+    For example, if you would like to use the balanced preset values except that you prefer a higher compression level, you can do so as follows:
+    1. In {{fleet}}, open the ***Settings*** tab.
+    2. In the ***Outputs*** section, select ***Add output*** to create a new output, or select the edit icon to edit an existing output.
+    3. In the ***Add new output*** or the ***Edit output*** flyout, set ***Performance tuning** to `Custom`.
+    4. Refer to the list of [performance tuning preset values](#es-output-settings-performance-tuning-settings), and add the settings you prefer into the **Advanced YAML configuration** field. For the `balanced` presets, the yaml configuration would be as shown:
+
+      ```yaml
+      bulk_max_size: 1600
+      worker: 1
+      queue.mem.events: 3200
+      queue.mem.flush.min_events: 1600
+      queue.mem.flush.timeout: 10s
+      compression_level: 1
+      idle_connection_timeout: 3s
+      ```
+
+    5. Adjust any settings as preferred. For example, you can update the `compression_level` setting to `4`.
+    When you create an {{agent}} policy using this output, the output will use the balanced preset options except with the higher compression level, as specified.
 
 ## Advanced YAML configuration [es-output-settings-yaml-config]
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$<br>`allow_older_versions`<br> | Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.<br><br>Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.<br><br>**Default:** `true`<br> |
-| $$$output-elasticsearch-fleet-settings-backoff.init-setting$$$<br>`backoff.init`<br> | (string) The number of seconds to wait before trying to reconnect to {{es}} after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.<br><br>**Default:** `1s`<br> |
-| $$$output-elasticsearch-fleet-settings-backoff.max-setting$$$<br>`backoff.max`<br> | (string) The maximum number of seconds to wait before attempting to connect to {{es}} after a network error.<br><br>**Default:** `60s`<br> |
-| $$$output-elasticsearch-fleet-settings-bulk_max_size-setting$$$<br>`bulk_max_size`<br> | (int) The maximum number of events to bulk in a single {{es}} bulk API index request.<br><br>Events can be collected into batches. {{agent}} will split batches larger than `bulk_max_size` into multiple batches.<br><br>Specifying a larger batch size can improve performance by lowering the overhead of sending events. However big batch sizes can also increase processing times, which might result in API errors, killed connections, timed-out publishing requests, and, ultimately, lower throughput.<br><br>Setting `bulk_max_size` to values less than or equal to 0 turns off the splitting of batches. When splitting is disabled, the queue decides on the number of events to be contained in a batch.<br><br>**Default:** `1600`<br> |
-| $$$output-elasticsearch-fleet-settings-compression_level-setting$$$<br>`compression_level`<br> | (int) The gzip compression level. Set this value to `0` to disable compression. The compression level must be in the range of `1` (best speed) to `9` (best compression).<br><br>Increasing the compression level reduces network usage but increases CPU usage.<br> |
-| $$$output-elasticsearch-fleet-settings-max_retries-setting$$$<br>`max_retries`<br> | (int) The number of times to retry publishing an event after a publishing failure. After the specified number of retries, the events are typically dropped.<br><br>Set `max_retries` to a value less than 0 to retry until all events are published.<br><br>**Default:** `3`<br> |
-| $$$output-elasticsearch-fleet-settings-queue.mem.events-setting$$$<br>`queue.mem.events`<br> | The number of events the queue can store. This value should be evenly divisible by the smaller of `queue.mem.flush.min_events` or `bulk_max_size` to avoid sending partial batches to the output.<br><br>**Default:** `3200 events`<br> |
-| $$$output-elasticsearch-fleet-settings-queue.mem.flush.min_events-setting$$$<br>`queue.mem.flush.min_events`<br> | `flush.min_events` is a legacy parameter, and new configurations should prefer to control batch size with `bulk_max_size`. As of 8.13, there is never a performance advantage to limiting batch size with `flush.min_events` instead of `bulk_max_size`<br><br>**Default:** `1600 events`<br> |
-| $$$output-elasticsearch-fleet-settings-queue.mem.flush.timeout-setting$$$<br>`queue.mem.flush.timeout`<br> | (int) The maximum wait time for `queue.mem.flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.<br><br>**Default:** `10s`<br> |
-| $$$output-elasticsearch-fleet-settings-timeout-setting$$$<br>`timeout`<br> | (string) The HTTP request timeout in seconds for the {{es}} request.<br><br>**Default:** `90s`<br> |
-| $$$output-elasticsearch-fleet-settings-worker-setting$$$<br>`worker`<br> | (int) The number of workers per configured host publishing events. Example: If you have two hosts and three workers, in total six workers are started (three for each host).<br><br>**Default:** `1`<br> |
+`allow_older_versions` $$$output-elasticsearch-fleet-settings-allow_older_versions-setting$$$
+:   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
+    Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
+
+    **Default:** `true`
+
+`backoff.init` $$$output-elasticsearch-fleet-settings-backoff.init-setting$$$
+:   (string) The number of seconds to wait before trying to reconnect to {{es}} after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.
+
+    **Default:** `1s`
+
+`backoff.max` $$$output-elasticsearch-fleet-settings-backoff.max-setting$$$
+:   (string) The maximum number of seconds to wait before attempting to connect to {{es}} after a network error.
+
+    **Default:** `60s`
+
+`bulk_max_size` $$$output-elasticsearch-fleet-settings-bulk_max_size-setting$$$
+:   (int) The maximum number of events to bulk in a single {{es}} bulk API index request.
+    Events can be collected into batches. {{agent}} will split batches larger than `bulk_max_size` into multiple batches.
+    Specifying a larger batch size can improve performance by lowering the overhead of sending events. However big batch sizes can also increase processing times, which might result in API errors, killed connections, timed-out publishing requests, and, ultimately, lower throughput.
+    Setting `bulk_max_size` to values less than or equal to 0 turns off the splitting of batches. When splitting is disabled, the queue decides on the number of events to be contained in a batch.
+
+    **Default:** `1600`
+
+`compression_level` $$$output-elasticsearch-fleet-settings-compression_level-setting$$$
+:   (int) The gzip compression level. Set this value to `0` to disable compression. The compression level must be in the range of `1` (best speed) to `9` (best compression).
+    Increasing the compression level reduces network usage but increases CPU usage.
+
+`max_retries` $$$output-elasticsearch-fleet-settings-max_retries-setting$$$
+:   (int) The number of times to retry publishing an event after a publishing failure. After the specified number of retries, the events are typically dropped.
+    Set `max_retries` to a value less than 0 to retry until all events are published.
+
+    **Default:** `3`
+
+`queue.mem.events` $$$output-elasticsearch-fleet-settings-queue.mem.events-setting$$$
+:   The number of events the queue can store. This value should be evenly divisible by the smaller of `queue.mem.flush.min_events` or `bulk_max_size` to avoid sending partial batches to the output.
+
+    **Default:** `3200 events`
+
+`queue.mem.flush.min_events` $$$output-elasticsearch-fleet-settings-queue.mem.flush.min_events-setting$$$
+:   `flush.min_events` is a legacy parameter, and new configurations should prefer to control batch size with `bulk_max_size`. As of 8.13, there is never a performance advantage to limiting batch size with `flush.min_events` instead of `bulk_max_size`
+
+    **Default:** `1600 events`
+
+`queue.mem.flush.timeout` $$$output-elasticsearch-fleet-settings-queue.mem.flush.timeout-setting$$$
+:   (int) The maximum wait time for `queue.mem.flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.
+
+    **Default:** `10s`
+
+`timeout` $$$output-elasticsearch-fleet-settings-timeout-setting$$$
+:   (string) The HTTP request timeout in seconds for the {{es}} request.
+
+    **Default:** `90s`
+
+`worker` $$$output-elasticsearch-fleet-settings-worker-setting$$$
+:   (int) The number of workers per configured host publishing events. Example: If you have two hosts and three workers, in total six workers are started (three for each host).
+
+    **Default:** `1`
 
 
 ## Performance tuning settings [es-output-settings-performance-tuning-settings]
