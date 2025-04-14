@@ -169,7 +169,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Please note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 
@@ -334,7 +334,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
     sudo install -o elastic -g elastic -d -m 700 /mnt/data/docker
     ```
 
-25. If you want to use FirewallD, please ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
+25. If you want to use FirewallD, ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
 
     ```sh
     sudo systemctl disable firewalld

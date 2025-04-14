@@ -32,7 +32,7 @@ Mapping explosion may surface as the following performance symptoms:
 If your index mapped fields expect to contain a large, arbitrary set of keys, you may instead consider:
 
 * Setting [`index.mapping.total_fields.ignore_dynamic_beyond_limit`](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) to `true`. Instead of rejecting documents that exceed the field limit, this will ignore dynamic fields once the limit is reached.
-* Using the [flattened](elasticsearch://reference/elasticsearch/mapping-reference/flattened.md) data type. Please note, however, that flattened objects is [not fully supported in {{kib}}](https://github.com/elastic/kibana/issues/25820) yet. For example, this could apply to sub-mappings like { `host.name` , `host.os`, `host.version` }. Desired fields are still accessed by [runtime fields](../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md).
+* Using the [flattened](elasticsearch://reference/elasticsearch/mapping-reference/flattened.md) data type. Note, however, that flattened objects is [not fully supported in {{kib}}](https://github.com/elastic/kibana/issues/25820) yet. For example, this could apply to sub-mappings like { `host.name` , `host.os`, `host.version` }. Desired fields are still accessed by [runtime fields](../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md).
 * Disable [dynamic mappings](../../manage-data/data-store/mapping.md). This cannot effect current index mapping, but can apply going forward via an [index template](../../manage-data/data-store/templates.md).
 
 Modifying to the [nested](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) data type would not resolve the core issue.

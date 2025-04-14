@@ -20,7 +20,7 @@ The drawback of an audited system is represented by the inevitable performance p
 **Audit events ignore policies** are a finer way to tune the verbosity of the audit trail. These policies define rules that match audit events which will be *ignored* (read as: not printed). Rules match on the values of attributes of audit events and complement the `include` or `exclude` method. Imagine the corpus of audit events and the policies chopping off unwanted events. With a sole exception, all audit events are subject to the ignore policies. The exception are events of type `security_config_change`, which cannot be filtered out, unless excluded altogether.
 
 ::::{important}
-When utilizing audit events ignore policies you are acknowledging potential accountability gaps that could render illegitimate actions undetectable. Please take time to review these policies whenever your system architecture changes.
+When utilizing audit events ignore policies you are acknowledging potential accountability gaps that could render illegitimate actions undetectable. Take time to review these policies whenever your system architecture changes.
 ::::
 
 A policy is a named set of filter rules. Each filter rule applies to a single event attribute, one of the `users`, `realms`, `actions`, `roles` or `indices` attributes. The filter rule defines a list of [Lucene regexp](elasticsearch://reference/query-languages/query-dsl/regexp-syntax.md), **any** of which has to match the value of the audit event attribute for the rule to match. A policy matches an event if **all** the rules comprising it match the event. An audit event is ignored, therefore not printed, if it matches **any** policy. All other non-matching events are printed as usual.

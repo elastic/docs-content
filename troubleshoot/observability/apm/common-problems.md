@@ -185,7 +185,7 @@ In the agent logs, you won’t see a sign of failures as the APM server asynchro
 stack: all
 ```
 
-Tail-based sampling requires minimal memory to run, and there should not be a noticeable increase in RSS memory usage. However, since tail-based sampling writes data to disk, it is possible to see a significant increase in OS page cache memory usage due to disk IO. If you see a drop in throughput and excessive disk activity after enabling tail-based sampling, please ensure that there is enough memory headroom in the system for OS page cache to perform disk IO efficiently.
+Tail-based sampling requires minimal memory to run, and there should not be a noticeable increase in RSS memory usage. However, since tail-based sampling writes data to disk, it is possible to see a significant increase in OS page cache memory usage due to disk IO. If you see a drop in throughput and excessive disk activity after enabling tail-based sampling, ensure that there is enough memory headroom in the system for OS page cache to perform disk IO efficiently.
 
 
 ## Too many unique transaction names [troubleshooting-too-many-transactions]

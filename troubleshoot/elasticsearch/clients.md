@@ -4,13 +4,14 @@ navigation_title: "Clients"
 
 # Troubleshoot {{es}} clients
 
-Use the topics in this section to troubleshoot issues you encounter while using the official [Elasticsearch clients](/reference/elasticsearch-clients/index.md):
+For troubleshooting tips for the official {{es}} clients, refer to the client docs:
 
-* [](/troubleshoot/elasticsearch/elasticsearch-client-java-api-client/java.md)
-* [](/troubleshoot/elasticsearch/elasticsearch-client-net-api/net.md)
-* [](/troubleshoot/elasticsearch/elasticsearch-client-javascript-api/nodejs.md)
-* [](/troubleshoot/elasticsearch/elasticsearch-client-ruby-api/ruby.md)
-
-## Additional resources
-* [Troubleshooting overview](/troubleshoot/index.md)
-* [Contact us](/troubleshoot/index.md#contact-us)
+- [Go](go-elasticsearch://reference/index.md)
+- [Java](elasticsearch-java://reference/index.md)
+- [JavaScript](elasticsearch-js://reference/index.md)
+- [.NET](elasticsearch-net://reference/index.md)
+- [PHP](elasticsearch-php://reference/index.md)
+- [Python](elasticsearch-py://reference/index.md)
+  - [Eland](eland://reference/index.md) (Python client and toolkit for DataFrames and machine learning)
+- [Ruby](elasticsearch-ruby://reference/index.md)
+- [Rust](elasticsearch-rs://reference/index.md)

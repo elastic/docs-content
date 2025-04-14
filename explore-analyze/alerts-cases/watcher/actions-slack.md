@@ -149,7 +149,7 @@ bin/elasticsearch-keystore add xpack.notification.slack.account.monitoring.secur
 ```
 
 ::::{warning}
-You can no longer configure Slack accounts using `elasticsearch.yml` settings. Please use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
+You can no longer configure Slack accounts using `elasticsearch.yml` settings. Use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
 
 ::::
 

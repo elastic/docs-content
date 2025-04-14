@@ -49,4 +49,4 @@ To access logs and metrics for your deployment:
     After you select one of the links, {{kib}} opens and shows you a view of the monitoring metrics for the logs or metrics that you selected.
 
 
-If you are looking for an {{es}} or {{kib}} diagnostic to share with Elastic support, go to the **Operations** page for the deployment and download the diagnostic bundle to attach to your ticket. If logs or an ECE diagnostic are requested by Elastic support, please [run the ECE diagnostics tool](../../../troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md).
+If you are looking for an {{es}} or {{kib}} diagnostic to share with Elastic support, go to the **Operations** page for the deployment and download the diagnostic bundle to attach to your ticket. If logs or an ECE diagnostic are requested by Elastic support, [run the ECE diagnostics tool](../../../troubleshoot/deployments/cloud-enterprise/run-ece-diagnostics-tool.md).
