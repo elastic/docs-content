@@ -57,7 +57,7 @@ Afterwards, you can:
 
 * Learn how to [update your deployment](./cloud-on-k8s/update-deployments.md)
 * Check out [our recipes](./cloud-on-k8s/recipes.md) for multiple use cases
-* Find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/samples)
+* Find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/samples)
 
 ## Supported versions [k8s-supported]
 
@@ -70,7 +70,7 @@ ECK is compatible with the following Kubernetes distributions and related techno
 * Kubernetes 1.28-1.32
 * OpenShift 4.14-4.18
 * Google Kubernetes Engine (GKE), Azure Kubernetes Service (AKS), and Amazon Elastic Kubernetes Service (EKS)
-* Helm: 3.2.0+
+* Helm: {{eck_helm_minimum_version}}+
 
 ECK should work with all conformant **installers** listed in these [FAQs](https://github.com/cncf/k8s-conformance/blob/master/faq.md#what-is-a-distribution-hosted-platform-and-an-installer). Distributions include source patches and so may not work as-is with ECK.
 

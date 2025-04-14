@@ -39,7 +39,7 @@ Providing this secret is sufficient to use your own certificate if it is from a 
 
     * Set `serviceMonitor.insecureSkipVerify` to `false` to enable TLS validation.
     * Set `serviceMonitor.caSecret` to the name of an existing Kubernetes secret within the Prometheus namespace that contains the CA in PEM format in a file called `ca.crt`.
-    * Set the `spec.secrets` field of the `Prometheus` custom resource, or `prometheus.prometheusSpec.secrets` when using the Helm chart such that the CA secret is mounted into the Prometheus pod at `serviceMonitor.caMountDirectory` (assuming you are using the Prometheus operator). See the [ECK Helm chart values file](https://github.com/elastic/cloud-on-k8s/tree/2.16/deploy/eck-operator/values.yaml) for more information.
+    * Set the `spec.secrets` field of the `Prometheus` custom resource, or `prometheus.prometheusSpec.secrets` when using the Helm chart such that the CA secret is mounted into the Prometheus pod at `serviceMonitor.caMountDirectory` (assuming you are using the Prometheus operator). See the [ECK Helm chart values file](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/deploy/eck-operator/values.yaml) for more information.
 
 
 Refer to [](k8s-prometheus-requirements.md) for more information on creating the CA secret.
