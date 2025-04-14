@@ -20,7 +20,7 @@ Explore the reference documentation for [Elastic APIs]({{apis}}).
 
 ## Security
 
-Access detailed reference documentation on field and object schemas as well as the diffferent commands used to manage and troubleshoot Elastic Endpoint.
+Access detailed reference documentation on field and object schemas as well as the different commands used to manage and troubleshoot Elastic Endpoint.
 
 **Learn more in [Security](security/index.md)**
 
