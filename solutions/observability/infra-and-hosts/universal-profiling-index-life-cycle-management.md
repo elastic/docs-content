@@ -54,7 +54,7 @@ Complete the following steps to configure a custom index lifecycle policy.
 5. Click **Save policy**.
 
 ::::{tip}
-See [Manage the index lifecycle](../../../manage-data/lifecycle/index-lifecycle-management.md) to learn more about {{ilm-init}} policies.
+See [Manage the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md) to learn more about {{ilm-init}} policies.
 ::::
 
 
