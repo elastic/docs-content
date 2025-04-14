@@ -3,8 +3,8 @@ applies_to:
     serverless: preview
 ---
 
-:::{note}
-Streams is currently in Technical Preview and available only on Elastic Cloud Serverless deployments. Features and UI may change.
+:::{warning}
+Streams is currently in Technical Preview and only available on Elastic Cloud Serverless deployments. This feature may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 :::
 
 # Streams
