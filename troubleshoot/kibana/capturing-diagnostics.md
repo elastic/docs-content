@@ -112,6 +112,6 @@ The following are common errors that you might encounter when running the diagno
 
     The provided user has insufficient admin permissions to run the diagnostic tool. Use another user, or grant the user `role:superuser` privileges.
 
-* `{{kib}} Server is not Ready yet`
+* `Kibana Server is not Ready yet`
 
-    This indicates issues with {{kib}}'s dependencies blocking full start-up. To investigate, check [Error: {{kib}}} server is not ready yet](/troubleshoot/kibana/error-server-not-ready.md).
+    This indicates issues with {{kib}}'s dependencies blocking full start-up. To investigate, check [Error: {{kib}} server is not ready yet](/troubleshoot/kibana/error-server-not-ready.md).

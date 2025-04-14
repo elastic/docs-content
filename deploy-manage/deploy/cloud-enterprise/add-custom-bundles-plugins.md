@@ -262,7 +262,7 @@ To import a JVM trust store:
     1. The URL for the bundle ZIP file must be always available. Make sure you host the plugin artefacts internally in a highly available environment.
     2. Wildcards are allowed here, since the certificates are independent from the {{es}} version.
 
-4. (Optional) If you prefer to use a different file name and/or password for the trust store, you also need to add an additional configuration section to the cluster metadata before adding the bundle. This configuration should be added to the `{{es}} cluster data` section of the [advanced configuration](./advanced-cluster-configuration.md) page:
+4. (Optional) If you prefer to use a different file name and/or password for the trust store, you also need to add an additional configuration section to the cluster metadata before adding the bundle. This configuration should be added to the `Elasticsearch cluster data` section of the [advanced configuration](./advanced-cluster-configuration.md) page:
 
     ```sh
       "jvm_trust_store": {
