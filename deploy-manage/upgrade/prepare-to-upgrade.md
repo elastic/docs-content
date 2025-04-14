@@ -57,7 +57,7 @@ Review the following best practices to upgrade your deployments.
 1. Before upgrading your production deployment, test the upgrade using an isolated environment. Ensure the test and production environments use the same settings.
 
     :::{note}
-    The upgraded version of {{es}} may interact with its environment in different ways from the version you are currently running. It is possible that your environment behaves incorrectly in a way that does not matter to the version of {{es}} that you are currently running, but which does matter to the upgraded version. In this case, the upgraded version will not work correctly until you address the incorrect behaviour in your environment.
+    The upgraded version of {{es}} may interact with its environment in different ways from the version you are currently running. It is possible that your environment behaves incorrectly in a way that does not matter to the version of {{es}} that you are currently running, but which does matter to the upgraded version. In this case, the upgraded version will not work correctly until you address the incorrect behavior in your environment.
     :::
 
     :::{tip}
