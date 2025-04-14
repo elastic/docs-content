@@ -7,7 +7,7 @@ applies_to:
 
 Use the **Data retention** page under the **Management** tab to determine how long your stream retains data and to get insight into your stream's data ingestion and storage size.
 
-![alt text](<retention.png>)
+![Screenshot of the data retention UI](<../../../../images/logs-streams-retention.png>)
 
 The **Data retention** page is made up of the following components that can help you determine how long you want your stream to retain data:
 

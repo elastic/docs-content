@@ -80,7 +80,7 @@ If you edit the stream again, note the following:
 - Changing existing processors or re-ordering them may cause unexpected results. Because the the pipeline may have already processed the documents used for sampling, the UI cannot accurately simulate changes to existing data.
 - Adding a new processor and moving it before an existing processor may cause unexpected results. The UI only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 
-![alt text](<grok.png>)
+![Screenshot of the Grok processor UI](<../../../../images/logs-streams-grok.png>)
 
 ## Detect and handle failures [streams-detect-failures]
 
@@ -88,15 +88,15 @@ Documents fail processing for different reasons. Streams helps you to easily fin
 
 The following example shows not all messages matched the provided grok pattern:
 
-![alt text](<parsed.png>)
+![Screenshot showing some failed documents](<../../../../images/logs-streams-parsed.png>)
 
 You can filter your documents by selecting **Parsed** or **Failed** at the top of the table. Select **Failed** to see the documents that failed:
 
-![alt text](<failures.png>)
+![Screenshot showing the documents UI with Failed selected](<../../../../images/logs-streams-failures.png>)
 
 Failures are displayed at the bottom of the process editor:
 
-![alt text](<processor-failures.png>)
+![Screenshot showing failure notifications](<../../../../images/logs-streams-processor-failures.png>)
 
 These failures may be something you should address, but in some cases they also act as more of a warning.
 
@@ -104,13 +104,13 @@ These failures may be something you should address, but in some cases they also 
 
 As part of processing, Streams also checks for mapping conflicts by simulating the change end to end. If a mapping conflict is detected, Streams marks the processor as failed and displays a failure message:
 
-![alt text](<mapping-conflicts.png>)
+![Screenshot showing mapping conflict notifications](<../../../../images/logs-streams-mapping-conflicts.png>)
 
 ## Processor statistics and detected fields [streams-stats-and-detected-fields]
 
 Once saved, the processor also gives you a quick look at how successful the processing was for this step and which fields were added.
 
-![alt text](<field-stats.png>)
+![Screenshot showing field stats](<../../../../images/logs-streams-field-stats.png>)
 
 ## Advanced: How and where do these changes get applied to the underlying datastream? [streams-applied-changes]
 
@@ -131,7 +131,7 @@ Streams then adds a pipeline processor to the end of that `@custom` pipeline. Th
 // Example processor added to the relevant @custom pipeline
 {
   "pipeline": {
-    "name": "<data_stream_name>@stream.processing", // e.g., logs-my-app-default@stream.processing
+    "name": "<data_stream_name>@stream.processing", // for example, logs-my-app-default@stream.processing
     "if": "ctx._index == '<data_stream_name>'",
     "ignore_missing_pipeline": true,
     "description": "Call the stream's managed pipeline - do not change this manually but instead use the Streams UI or API"
@@ -139,7 +139,7 @@ Streams then adds a pipeline processor to the end of that `@custom` pipeline. Th
 }
 ```
 
-Streams then creates and manages the `<data_stream_name>@stream.processing` pipeline, placing the processors you configured in the UI (Grok, Set, etc.) inside it.
+Streams then creates and manages the `<data_stream_name>@stream.processing` pipeline, adding the [processors](#streams-add-processors) you configured in the UI.
 
 ### User interaction with pipelines
 
@@ -148,8 +148,8 @@ You can still add your own processors manually to the `@custom` pipeline if need
 
 ## Known limitations [streams-known-limitations]
 
-- The UI does not support all processors. We are working on adding more processors in the future.
-- The UI does not support all processor options. We are working on adding more options in the future.
-- The simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
-- Dots in field names are not supported. A workaround you can take is to use a dot expand processor in the @custom pipeline. This is a processor you will have to add manually at this point.
-- Providing any arbitrary JSON in the UI is not supported. We are working on adding this in the future.
+- Streams does not support all processors. We are working on adding more processors in the future.
+- Streams does not support all processor options. We are working on adding more options in the future.
+- The data preview simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
+- Dots in field names are not supported. You can use the dot expand processor in the `@custom` pipeline as a workaround. You need to manually add the dot processor.
+- Providing any arbitrary JSON in the Streams UI is not supported. We are working on adding this in the future.

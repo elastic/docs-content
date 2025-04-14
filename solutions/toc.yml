@@ -404,9 +404,6 @@ toc:
                 - file: observability/logs/streams/management/extract/dissect.md
                 - file: observability/logs/streams/management/extract/grok.md
                 - file: observability/logs/streams/management/extract/key-value.md
-                - hidden: observability/logs/streams/dashboards.md
-                - hidden: observability/logs/streams/overview.md
-                - hidden: observability/logs/streams/management/management.md
             - file: observability/logs/streams/management/retention.md
             - file: observability/logs/streams/management/advanced.md
       - file: observability/incident-management.md

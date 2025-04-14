@@ -29,7 +29,7 @@ The above pattern can then be used in the processor
 Requires an LLM Connector to be configured. TOOD: Elastic LLM?
 Instead of writing the grok patterns by hand, you can use the **Generate Patterns** button to generate the patterns for you.
 
-![generated patterns](<../patterns.png>)
+![generated patterns](<../../../../../images/logs-streams-patterns.png>)
 
 Patterns can be accepted by clicking the plus icon next to the pattern. This will add the pattern to the list of patterns to be used in the grok processor.
 

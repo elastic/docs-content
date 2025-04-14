@@ -13,29 +13,30 @@ Streams provides a single, centralized UI within {{kib}} that streamlines common
 - [Extract fields](../streams/management/extract.md) from your documents.
 - [Change the data retention](../streams/management/retention.md) of a stream.
 
-A Stream in this interface directly corresponds to an {{es}} data stream (for example, `logs-myapp-default`). Operations performed here configure that specific data stream.
+A Stream directly corresponds to an {{es}} data stream (for example, `logs-myapp-default`). Operations performed in the Streams UI configure that specific data stream.
 
 
 ## Required permissions
+
 Streams requires the following Elastic Cloud Serverless roles:
 
-- Admin: ability to manage all Streams
-- Editor/ Viewer: limited access, unable to perform all actions 
+- Admin: ability to manage all Streams.
+- Editor/Viewer: limited access, unable to perform all actions.
 
 ## Access Streams
+
 To access Streams:
 
 - From the navigation menu, select **Streams**.
 
-- From discover, expand a document's details flyout.
-Select the **Stream** link or action associated with the document's data stream to open the Streams interface, filtered to show only the selected stream. Note that this only works for documents stored in a data stream.
+- From discover, expand a document's details flyout and select **Stream** or an action associated with the document's data stream. The UI opens filtered to show only the selected stream. This only works for documents stored in a data stream.
 
 
 ## Overview tab [streams-overview-tab]
 
 The **Overview** tab provides key metrics for the selected stream, such as data retention, document count, storage size, and average ingestion.
 
-![Screenshot of the Overview tab UI](<overview.png>)
+![Screenshot of the Overview tab UI](<../../../images/logs-streams-overview.png>)
 
 the **Overview** tab is made up of the following components:
 
@@ -54,13 +55,13 @@ The **Dashboards** tab is where you can add dashboards to your stream. [Dashboar
 
 Add a dashboard to your stream by selecting it from the list of available dashboards.
 
-![Screenshot of the dashboards UI](<dashboards.png>)
+![Screenshot of the dashboards UI](<../../../images/logs-streams-dashboard.png>)
 
 Added dashboards are also shown on the [**Overview** tab](#streams-overview-tab) as quick links.
 
-## Management tab
+## Management tab [streams-management-tab]
 
-The **Management** tab is where you'll interact with and configure your stream:
+The **Management** tab is where you can interact with and configure your stream:
 
 % Probably want a screenshot here for consistency with the other tabs?
 
