@@ -304,7 +304,7 @@ Security
 
 
 Connections ({{ech}} only)
-:   If your application connecting to {{ech}} runs under the Java security manager, you should at least disable the caching of positive hostname resolutions. To learn more, check the [Java API Client documentation](elasticsearch-java://reference/_others.md).
+:   If your application connecting to {{ech}} runs under the Java security manager, you should at least disable the caching of positive hostname resolutions. To learn more, check the [Java API Client documentation](elasticsearch-java://reference/transport/rest5-client/config/others.md).
 
 Schema
 :   When the example code was run an index mapping was created automatically. The field types were selected by {{es}} based on the content seen when the first record was ingested, and updated as new fields appeared in the data. It would be more efficient to specify the fields and field types in advance to optimize performance. Refer to the Elastic Common Schema documentation and Field Type documentation when you are designing the schema for your production use cases.

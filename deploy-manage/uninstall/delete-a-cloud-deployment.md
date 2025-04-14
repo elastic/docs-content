@@ -6,15 +6,16 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-stop.html
-navigation_title: "Delete a cloud deployment"
+navigation_title: "Delete an orchestrated deployment"
 applies_to:
   deployment:
     ess:
     ece:
+    eck:
   serverless:
 ---
 
-# Delete an Enterprise or Hosted deployment or a Serverless project
+# Delete an orchestrated deployment
 
 This page provides instructions for deleting several types of cloud deployments, and outlines key considerations before proceeding.
 
@@ -90,3 +91,33 @@ To restore a terminated deployment,
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 3. In the **Deployment Management** section, select **Restore** and then acknowledge the confirmation message.
 
+## {{eck}} [elastic-cloud-kubernetes]
+
+To delete a deployment managed by {{eck}}, remove the corresponding {{es}}, {{kib}}, and any other related custom resources from your Kubernetes cluster. This action deletes all associated pods and their persistent data.
+
+To delete an {{es}} cluster created with {{eck}}:
+
+1. Run the following command to delete the {{es}} custom resource:
+
+   ```shell
+   kubectl delete elasticsearch <elasticsearch-resource-name>
+   ```
+   For example:
+
+   ```shell
+   kubectl delete elasticsearch test-deployment
+   ```
+   :::{warning}
+   This deletes the custom resource and all associated resources, such as {{es}} nodes, services, and persistent data volumes. By default, this also deletes the data stored in those volumes, but you can [configure](/deploy-manage/deploy/cloud-on-k8s/volume-claim-templates.md#k8s_controlling_volume_claim_deletion) the `volumeClaimDeletePolicy` field in the {{es}} resource manifest to retain the volumes if you plan to recreate the cluster later.
+   :::
+
+
+2. If you also deployed {{kib}} or other stack components, delete those resources as well:
+
+   ```shell
+   kubectl delete kibana <kibana-resource-name>
+   ```
+   
+:::{{tip}}
+To fully uninstall {{eck}} from your cluster including all managed resources and the ECK operator, refer to the [](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md) guide.
+:::

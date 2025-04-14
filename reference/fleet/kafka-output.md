@@ -76,21 +76,42 @@ The `kafka` output supports the following settings, grouped by category. Many of
 
 ## Commonly used settings [output-kafka-commonly-used-settings]
 
-| Setting | Description |
-| --- | --- |
-| $$$output-kafka-enabled-setting$$$<br>`enabled`<br> | (boolean) Enables or disables the output. If set to `false`, the output is disabled.<br> |
-| $$$kafka-hosts-setting$$$<br>`hosts`<br> | The addresses your {{agent}}s will use to connect to one or more Kafka brokers.<br><br>Following is an example `hosts` setting with three hosts defined:<br><br>```yaml<br>    hosts:<br>      - 'localhost:9092'<br>      - 'mykafkahost01:9092'<br>      - 'mykafkahost02:9092'<br>```<br> |
-| $$$kafka-version-setting$$$<br>`version`<br> | Kafka protocol version that {{agent}} will request when connecting. Defaults to 1.0.0.<br><br>The protocol version controls the Kafka client features available to {{agent}}; it does not prevent {{agent}} from connecting to Kafka versions newer than the protocol version.<br> |
+`enabled` $$$output-kafka-enabled-setting$$$
+:   (boolean) Enables or disables the output. If set to `false`, the output is disabled.
+
+`hosts` $$$kafka-hosts-setting$$$
+:   The addresses your {{agent}}s will use to connect to one or more Kafka brokers.
+
+    Following is an example `hosts` setting with three hosts defined:
+
+    ```yml
+    hosts:
+      - 'localhost:9092'
+      - 'mykafkahost01:9092'
+      - 'mykafkahost02:9092'
+    ```
+`version` $$$kafka-version-setting$$$
+:   Kafka protocol version that {{agent}} will request when connecting. Defaults to 1.0.0.
+
+    The protocol version controls the Kafka client features available to {{agent}}; it does not prevent {{agent}} from connecting to Kafka versions newer than the protocol version.
 
 
 ## Authentication settings [output-kafka-authentication-settings]
 
-| Setting | Description |
-| --- | --- |
-| $$$kafka-username-setting$$$<br>`username`<br> | The username for connecting to Kafka. If username is configured, the password must be configured as well.<br> |
-| $$$kafka-password-setting$$$<br>`password`<br> | The password for connecting to Kafka.<br> |
-| $$$kafka-sasl.mechanism-setting$$$<br>`sasl.mechanism`<br> | The SASL mechanism to use when connecting to Kafka. It can be one of:<br><br>* `PLAIN` for SASL/PLAIN.<br>* `SCRAM-SHA-256` for SCRAM-SHA-256.<br>* `SCRAM-SHA-512` for SCRAM-SHA-512. If `sasl.mechanism` is not set, `PLAIN` is used if `username` and `password` are provided. Otherwise, SASL authentication is disabled.<br> |
-| $$$kafka-ssl-setting$$$<br>`ssl`<br> | When sending data to a secured cluster through the `kafka` output, {{agent}} can use SSL/TLS. For a list of available settings, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options).<br> |
+`username` $$$kafka-username-setting$$$
+:   The username for connecting to Kafka. If username is configured, the password must be configured as well.
+
+`password` $$$kafka-password-setting$$$
+:   The password for connecting to Kafka.
+
+`sasl.mechanism` $$$kafka-sasl.mechanism-setting$$$
+:   The SASL mechanism to use when connecting to Kafka. It can be one of:
+    * `PLAIN` for SASL/PLAIN.
+    * `SCRAM-SHA-256` for SCRAM-SHA-256.
+    * `SCRAM-SHA-512` for SCRAM-SHA-512. If `sasl.mechanism` is not set, `PLAIN` is used if `username` and `password` are provided. Otherwise, SASL authentication is disabled.
+
+`ssl` $$$kafka-ssl-setting$$$
+:   When sending data to a secured cluster through the `kafka` output, {{agent}} can use SSL/TLS. For a list of available settings, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options).
 
 
 ## Memory queue settings [output-kafka-memory-queue-settings]
@@ -117,20 +138,28 @@ This sample configuration forwards events to the output when there are enough ev
   queue.mem.flush.timeout: 5s
 ```
 
-| Setting | Description |
-| --- | --- |
-| $$$output-kafka-queue.mem.events-setting$$$<br>`queue.mem.events`<br> | The number of events the queue can store. This value should be evenly divisible by the smaller of `queue.mem.flush.min_events` or `bulk_max_size` to avoid sending partial batches to the output.<br><br>**Default:** `3200 events`<br> |
-| $$$output-kafka-queue.mem.flush.min_events-setting$$$<br>`queue.mem.flush.min_events`<br> | `flush.min_events` is a legacy parameter, and new configurations should prefer to control batch size with `bulk_max_size`. As of 8.13, there is never a performance advantage to limiting batch size with `flush.min_events` instead of `bulk_max_size`<br><br>**Default:** `1600 events`<br> |
-| $$$output-kafka-queue.mem.flush.timeout-setting$$$<br>`queue.mem.flush.timeout`<br> | (int) The maximum wait time for `queue.mem.flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.<br><br>**Default:** `10s`<br> |
+`queue.mem.events` $$$output-kafka-queue.mem.events-setting$$$
+:   The number of events the queue can store. This value should be evenly divisible by the smaller of `queue.mem.flush.min_events` or `bulk_max_size` to avoid sending partial batches to the output.
+
+    **Default:** `3200 events`
+
+`queue.mem.flush.min_events` $$$output-kafka-queue.mem.flush.min_events-setting$$$
+:   `flush.min_events` is a legacy parameter, and new configurations should prefer to control batch size with `bulk_max_size`. As of 8.13, there is never a performance advantage to limiting batch size with `flush.min_events` instead of `bulk_max_size`
+
+    **Default:** `1600 events`
+
+`queue.mem.flush.timeout` $$$output-kafka-queue.mem.flush.timeout-setting$$$
+:   (int) The maximum wait time for `queue.mem.flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.
+
+    **Default:** `10s`
 
 
 ## Topics settings [output-kafka-topics-settings]
 
 Use these options to set the Kafka topic for each {{agent}} event.
 
-| Setting | Description |
-| --- | --- |
-| $$$kafka-topic-setting$$$<br>`topic`<br> | The default Kafka topic used for produced events.<br> |
+`topic` $$$kafka-topic-setting$$$
+:   The default Kafka topic used for produced events.
 
 
 ## Partition settings [output-kafka-partition-settings]
@@ -145,44 +174,129 @@ In the following example, after each event is published to a partition, the part
         group_events: 1
 ```
 
-| Setting | Description |
-| --- | --- |
-| $$$kafka-random.group-events-setting$$$<br>`random.group_events`<br> | Sets the number of events to be published to the same partition, before the partitioner selects a new partition by random. The default value is 1 meaning after each event a new partition is picked randomly.<br> |
-| $$$kafka-round_robin.group_events-setting$$$<br>`round_robin.group_events`<br> | Sets the number of events to be published to the same partition, before the partitioner selects the next partition. The default value is 1 meaning after each event the next partition will be selected.<br> |
-| $$$kafka-hash.hash-setting$$$<br>`hash.hash`<br> | List of fields used to compute the partitioning hash value from. If no field is configured, the events key value will be used.<br> |
-| $$$kafka-hash.random-setting$$$<br>`hash.random`<br> | Randomly distribute events if no hash or key value can be computed.<br> |
+`random.group_events` $$$kafka-random.group-events-setting$$$
+:   Sets the number of events to be published to the same partition, before the partitioner selects a new partition by random. The default value is 1 meaning after each event a new partition is picked randomly.
+
+`round_robin.group_events` $$$kafka-round_robin.group_events-setting$$$
+:   Sets the number of events to be published to the same partition, before the partitioner selects the next partition. The default value is 1 meaning after each event the next partition will be selected.
+
+`hash.hash` $$$kafka-hash.hash-setting$$$
+:   List of fields used to compute the partitioning hash value from. If no field is configured, the events key value will be used.
+
+`hash.random` $$$kafka-hash.random-setting$$$
+:   Randomly distribute events if no hash or key value can be computed.
 
 
 ## Header settings [output-kafka-header-settings]
 
 A header is a key-value pair, and multiple headers can be included with the same key. Only string values are supported. These headers will be included in each produced Kafka message.
 
-| Setting | Description |
-| --- | --- |
-| $$$kafka-key-setting$$$<br>`key`<br> | The key to set in the Kafka header.<br> |
-| $$$kafka-value-setting$$$<br>`value`<br> | The value to set in the Kafka header.<br> |
-| $$$kafka-client_id-setting$$$<br>`client_id`<br> | The configurable ClientID used for logging, debugging, and auditing purposes. The default is `Elastic`. The Client ID is part of the protocol to identify where the messages are coming from.<br> |
+`key` $$$kafka-key-setting$$$
+:   The key to set in the Kafka header.
+
+`value` $$$kafka-value-setting$$$
+:   The value to set in the Kafka header.
+
+`client_id` $$$kafka-client_id-setting$$$
+:   The configurable ClientID used for logging, debugging, and auditing purposes. The default is `Elastic`. The Client ID is part of the protocol to identify where the messages are coming from.
 
 
 ## Other configuration settings [output-kafka-configuration-settings]
 
 You can specify these various other options in the `kafka-output` section of the agent configuration file.
 
-| Setting | Description |
-| --- | --- |
-| $$$output-kafka-backoff.init-setting$$$<br>`backoff.init`<br> | (string) The number of seconds to wait before trying to reconnect to Kafka after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.<br><br>**Default:** `1s`<br> |
-| $$$kafka-backoff.max-setting$$$<br>`backoff.max`<br> | (string) The maximum number of seconds to wait before attempting to connect to Kafka after a network error.<br><br>**Default:** `60s`<br> |
-| $$$kafka-broker_timeout-setting$$$<br>`broker_timeout`<br> | The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `required_acks` setting further in).<br><br>**Default:** `30` (seconds)<br> |
-| $$$kafka-bulk_flush_frequency-setting$$$<br>`bulk_flush_frequency`<br> | (int) Duration to wait before sending bulk Kafka request. `0`` is no delay.<br><br>**Default:** `0`<br> |
-| $$$kafka-bulk_max_size-setting$$$<br>`bulk_max_size`<br> | (int) The maximum number of events to bulk in a single Kafka request.<br><br>**Default:** `2048`<br> |
-| $$$kafka-channel_buffer_size-setting$$$<br>`channel_buffer_size`<br> | (int) Per Kafka broker number of messages buffered in output pipeline.<br><br>**Default:** `256`<br> |
-| $$$kafka-codec-setting$$$<br>`codec`<br> | Output codec configuration. You can specify either the `json` or `format` codec. By default the `json` codec is used.<br><br>**`json.pretty`**: If `pretty` is set to true, events will be nicely formatted. The default is false.<br><br>**`json.escape_html`**: If `escape_html` is set to true, html symbols will be escaped in strings. The default is false.<br><br>Example configuration that uses the `json` codec with pretty printing enabled to write events to the console:<br><br>```yaml<br>output.console:<br>  codec.json:<br>    pretty: true<br>    escape_html: false<br>```<br><br>**`format.string`**: Configurable format string used to create a custom formatted message.<br><br>Example configurable that uses the `format` codec to print the events timestamp and message field to console:<br><br>```yaml<br>output.console:<br>  codec.format:<br>    string: '%{[@timestamp]} %{[message]}'<br>```<br> |
-| $$$kafka-compression-setting$$$<br>`compression`<br> | Select a compression codec to use. Supported codecs are `snappy`, `lz4` and `gzip`.<br> |
-| $$$kafka-compression_level-setting$$$<br>`compression_level`<br> | For the `gzip` codec you can choose a compression level. The level must be in the range of `1` (best speed) to `9` (best compression).<br><br>Increasing the compression level reduces the network usage but increases the CPU usage.<br><br>**Default:** `4`.<br> |
-| $$$kafka-keep_alive-setting$$$<br>`keep_alive`<br> | (string) The keep-alive period for an active network connection. If `0s`, keep-alives are disabled.<br><br>**Default:** `0s`<br> |
-| $$$kafka-max_message_bytes-setting$$$<br>`max_message_bytes`<br> | (int) The maximum permitted size of JSON-encoded messages. Bigger messages will be dropped. This value should be equal to or less than the broker’s `message.max.bytes`.<br><br>**Default:** `1000000` (bytes)<br> |
-| $$$kafka-metadata-setting$$$<br>`metadata`<br> | Kafka metadata update settings. The metadata contains information about brokers, topics, partition, and active leaders to use for publishing.<br><br>**`refresh_frequency`**<br>:   Metadata refresh interval. Defaults to 10 minutes.<br><br>**`full`**<br>:   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.<br><br>**`retry.max`**<br>:   Total number of metadata update retries. The default is 3.<br><br>**`retry.backoff`**<br>:   Waiting time between retries. The default is 250ms.<br> |
-| $$$kafka-required_acks-setting$$$<br>`required_acks`<br> | The ACK reliability level required from broker. 0=no response, 1=wait for local commit, -1=wait for all replicas to commit. The default is 1.<br><br>Note: If set to 0, no ACKs are returned by Kafka. Messages might be lost silently on error.<br><br>**Default:** `1` (wait for local commit)<br> |
-| $$$kafka-timeout-setting$$$<br>`timeout`<br> | The number of seconds to wait for responses from the Kafka brokers before timing out. The default is 30 (seconds).<br><br>**Default:** `1000000` (bytes)<br> |
+`backoff.init` $$$output-kafka-backoff.init-setting$$$
+:   (string) The number of seconds to wait before trying to reconnect to Kafka after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.
+
+    **Default:** `1s`
+
+`backoff.max` $$$kafka-backoff.max-setting$$$
+:   (string) The maximum number of seconds to wait before attempting to connect to Kafka after a network error.
+
+    **Default:** `60s`
+
+`broker_timeout` $$$kafka-broker_timeout-setting$$$
+:   The maximum length of time a Kafka broker waits for the required number of ACKs before timing out (see the `required_acks` setting further in).
+
+    **Default:** `30` (seconds)
+
+`bulk_flush_frequency` $$$kafka-bulk_flush_frequency-setting$$$
+:   (int) Duration to wait before sending bulk Kafka request. `0` is no delay.
+
+    **Default:** `0`
+
+`bulk_max_size` $$$kafka-bulk_max_size-setting$$$
+:   (int) The maximum number of events to bulk in a single Kafka request.
+
+    **Default:** `2048`
+
+`channel_buffer_size` $$$kafka-channel_buffer_size-setting$$$
+:   (int) Per Kafka broker number of messages buffered in output pipeline.
+
+    **Default:** `256`
+
+`codec` $$$kafka-codec-setting$$$
+:   Output codec configuration. You can specify either the `json` or `format` codec. By default the `json` codec is used.
+    **`json.pretty`**: If `pretty` is set to true, events will be nicely formatted. The default is false.
+    **`json.escape_html`**: If `escape_html` is set to true, html symbols will be escaped in strings. The default is false.
+    Example configuration that uses the `json` codec with pretty printing enabled to write events to the console:
+
+    ```yml
+    output.console:
+      codec.json:
+        pretty: true
+        escape_html: false
+    ```
+
+    **`format.string`**: Configurable format string used to create a custom formatted message.
+    Example configurable that uses the `format` codec to print the events timestamp and message field to console:
+
+    ```yml
+    output.console:
+      codec.format:
+        string: '%{[@timestamp]} %{[message]}'
+    ```
+
+`compression` $$$kafka-compression-setting$$$
+:   Select a compression codec to use. Supported codecs are `snappy`, `lz4` and `gzip`.
+
+`compression_level` $$$kafka-compression_level-setting$$$
+:   For the `gzip` codec you can choose a compression level. The level must be in the range of `1` (best speed) to `9` (best compression).
+    Increasing the compression level reduces the network usage but increases the CPU usage.
+
+    **Default:** `4`.
+
+`keep_alive` $$$kafka-keep_alive-setting$$$
+:   (string) The keep-alive period for an active network connection. If `0s`, keep-alives are disabled.
+
+    **Default:** `0s`
+
+`max_message_bytes` $$$kafka-max_message_bytes-setting$$$
+:   (int) The maximum permitted size of JSON-encoded messages. Bigger messages will be dropped. This value should be equal to or less than the broker’s `message.max.bytes`.
+
+    **Default:** `1000000` (bytes)
+
+`metadata` $$$kafka-metadata-setting$$$
+:   Kafka metadata update settings. The metadata contains information about brokers, topics, partition, and active leaders to use for publishing.
+    `refresh_frequency`
+    :   Metadata refresh interval. Defaults to 10 minutes.
+
+    `full`
+    :   Strategy to use when fetching metadata. When this option is `true`, the client will maintain a full set of metadata for all the available topics. When set to `false` it will only refresh the metadata for the configured topics. The default is false.
+
+    `retry.max`
+    :   Total number of metadata update retries. The default is 3.
+
+    `retry.backoff`
+    :   Waiting time between retries. The default is 250ms.
+
+`required_acks` $$$kafka-required_acks-setting$$$
+:   The ACK reliability level required from broker. 0=no response, 1=wait for local commit, -1=wait for all replicas to commit. The default is 1.
+    Note: If set to 0, no ACKs are returned by Kafka. Messages might be lost silently on error.
+    **Default:** `1` (wait for local commit)
+
+`timeout` $$$kafka-timeout-setting$$$
+:   The number of seconds to wait for responses from the Kafka brokers before timing out. The default is 30 (seconds).
+    **Default:** `1000000` (bytes)
 
 

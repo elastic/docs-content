@@ -17,6 +17,18 @@ Known issues are significant defects or limitations that may impact your impleme
 
 :::
 
+:::{dropdown} Installing an {{elastic-defend}} integration or a new agent policy upgrades installed prebuilt rules, reverting user customizations and overwriting user-added actions and exceptions
+
+**{{stack}} versions: 9.0.0**
+
+On April 10, 2025, it was discovered that when you install a new {{elastic-defend}} integration or agent policy, the installed prebuilt detection rules upgrade to their latest versions (if any new versions are available). The upgraded rules lose any user-added rule actions, exceptions, and customizations.  
+
+**Workaround**
+
+To resolve this issue, before you add an {{elastic-defend}} integration to a policy in {{fleet}}, apply any pending prebuilt rule updates. This will prevent rule actions, exceptions, and customizations from being overwritten.
+
+:::
+
 :::{dropdown} The technical preview badge incorrectly displays on the alert suppression fields for event correlation rules
 
 **{{stack}} versions: 9.0.0**
