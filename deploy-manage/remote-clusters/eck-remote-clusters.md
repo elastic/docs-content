@@ -39,7 +39,7 @@ To enable the API key security model you must first enable the remote cluster se
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: {{es}}
+kind: Elasticsearch
 metadata:
   name: cluster-two
   namespace: ns-two
@@ -63,7 +63,7 @@ Permissions have to be included under the `apiKey` field. The API model of the {
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: {{es}}
+kind: Elasticsearch
 metadata:
   name: cluster-one
   namespace: ns-one
@@ -99,7 +99,7 @@ The following example describes how to configure `cluster-two` as a remote clust
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: {{es}}
+kind: Elasticsearch
 metadata:
   name: cluster-one
   namespace: ns-one
@@ -172,7 +172,7 @@ If `cluster-two` is also managed by an ECK instance, proceed as follows:
 
     ```yaml
     apiVersion: elasticsearch.k8s.elastic.co/v1
-    kind: {{es}}
+    kind: Elasticsearch
     metadata:
       name: cluster-two
     spec:
@@ -195,7 +195,7 @@ Expose the transport layer of `cluster-one`.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: {{es}}
+kind: Elasticsearch
 metadata:
   name: cluster-one
 spec:

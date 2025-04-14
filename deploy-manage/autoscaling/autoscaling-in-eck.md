@@ -47,7 +47,7 @@ kind: ElasticsearchAutoscaler
 metadata:
   name: autoscaling-sample
 spec:
-  ## The name of the {{es}} cluster to be scaled automatically.
+  ## The name of the Elasticsearch cluster to be scaled automatically.
   elasticsearchRef:
     name: elasticsearch-sample
   ## The autoscaling policies.
@@ -301,7 +301,7 @@ You should adjust those settings manually to match the size of your deployment w
 
 ## Autoscaling stateless applications on ECK [k8s-stateless-autoscaling]
 
-::::{note} 
+::::{note}
 This section only applies to stateless applications. Check [{{es}} autoscaling](#k8s-autoscaling) for more details about automatically scaling {{es}}.
 ::::
 

@@ -18,14 +18,14 @@ spec:
   - name: masters
     count: 3
     config:
-      # On {{es}} versions before 7.9.0, replace the node.roles configuration with the following:
+      # On Elasticsearch versions before 7.9.0, replace the node.roles configuration with the following:
       # node.master: true
       node.roles: ["master"]
       xpack.ml.enabled: true
   - name: data
     count: 10
     config:
-      # On {{es}} versions before 7.9.0, replace the node.roles configuration with the following:
+      # On Elasticsearch versions before 7.9.0, replace the node.roles configuration with the following:
       # node.master: false
       # node.data: true
       # node.ingest: true
@@ -34,7 +34,7 @@ spec:
       node.roles: ["data", "ingest", "ml", "transform"]
 ```
 
-::::{warning} 
+::::{warning}
 ECK parses {{es}} configuration and normalizes it to YAML. Consequently, some {{es}} configuration schema are impossible to express with ECK and, therefore, must be set using [dynamic cluster settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#cluster-setting-types). For example:
 ```yaml
 spec:
