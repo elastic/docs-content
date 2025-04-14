@@ -120,7 +120,7 @@ To access our previous documentation system, which contains the documentation fo
 
 You can access the previous version of a specific page, where available, by clicking the **View previous version** link in the sidebar. 
 
-The following products versions are documented on this site:
+The following product versions are documented on this site:
 
 #### Core products and deployment methods
 
