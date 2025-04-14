@@ -4,14 +4,16 @@ applies_to:
 ---
 # Grok processor [streams-grok-processor]
 
-The grok processor is used to parse unstructured log messages and extract fields from them. It uses a set of predefined patterns to match the log messages and extract the fields. The grok processor is very powerful and can be used to parse a wide variety of log formats.
+The grok processor parses unstructured log messages and extracts fields from them. It uses a set of predefined patterns to match the log messages and extract the fields. The grok processor is very powerful and can parse a wide variety of log formats.
 
-You can provide multiple patterns to the Grok processor. The Grok processor will try to match the log message against each pattern in the order they are provided. If a pattern matches, the fields will be extracted and the remaining patterns will not be used. If a pattern does not match, the grok processor will try the next pattern. If no patterns match, the grok processor will fail and you can troubleshoot the issue. See below for more information.
-It is recommended to start with the most common patterns first and then add more specific patterns later. This will help to reduce the number of runs the grok processor has to do and will improve the performance of the pipeline.
+You can provide multiple patterns to the Grok processor. The Grok processor will try to match the log message against each pattern in the order they are provided. If a pattern matches, the fields will be extracted and the remaining patterns will not be used.
+If a pattern does not match, the grok processor will try the next pattern. If no patterns match, the grok processor will fail and you can troubleshoot the issue. Refer to [generate patterns](#streams-grok-patterns) for more information.
+
+Start with the most common patterns first and then add more specific patterns later. This reduces the number of runs the grok processor has to do and improves the performance of the pipeline.
 
 This functionality uses the {{es}} grok pipeline processor. Refer to [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) in the {{es}} docs for more information.
 
-The grok processor uses a set of predefined patterns to match the log messages and extract the fields. The patterns are defined in the TODO.
+The grok processor uses a set of predefined patterns to match the log messages and extract the fields.
 In addition you can also define your own pattern definitions by expanding the `Optional fields` section. This will allow you to define your own patterns and use them in the grok processor.
 The patterns are defined in the following format:
 ```
@@ -25,9 +27,13 @@ The above pattern can then be used in the processor
 %{MY_DATE:date}
 ```
 
+% need to complete this portion "The patterns are defined in the TODO."
+
 ## Generate Patterns [streams-grok-patterns]
-Requires an LLM Connector to be configured. TOOD: Elastic LLM?
+Requires an LLM Connector to be configured.
 Instead of writing the grok patterns by hand, you can use the **Generate Patterns** button to generate the patterns for you.
+
+% TODO Elastic LLM?
 
 ![generated patterns](<../../../../../images/logs-streams-patterns.png>)
 

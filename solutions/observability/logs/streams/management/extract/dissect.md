@@ -4,7 +4,7 @@ applies_to:
 ---
 # Dissect processor [streams-dissect-processor]
 
-The dissect processor is used to parse structured log messages and extract fields from them. Unlike grok, it does not use a set of predefined patterns to match the log messages. Instead, it uses a set of delimiters to split the log message into fields.
+The dissect processor parses structured log messages and extract fields from them. Unlike grok, it does not use a set of predefined patterns to match the log messages. Instead, it uses a set of delimiters to split the log message into fields.
 Dissect is much faster than grok and can parse slightly more structured log messages.
 
 This functionality uses the {{es}} dissect pipeline processor. Refer to [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) in the {{es}} docs for more information.

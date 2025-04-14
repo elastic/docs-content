@@ -25,11 +25,11 @@ Streams requires the following Elastic Cloud Serverless roles:
 
 ## Access Streams
 
-To access Streams:
+Access streams in one of the following ways:
 
 - From the navigation menu, select **Streams**.
 
-- From discover, expand a document's details flyout and select **Stream** or an action associated with the document's data stream. The UI opens filtered to show only the selected stream. This only works for documents stored in a data stream.
+- From **Discover**, expand a document's details flyout and select **Stream** or an action associated with the document's data stream. Streams will open filtered to only the selected stream. This only works for documents stored in a data stream.
 
 
 ## Overview tab [streams-overview-tab]
@@ -51,7 +51,7 @@ the **Overview** tab is made up of the following components:
 
 ## Dashboards tab [streams-dashboard-tab]
 
-The **Dashboards** tab is where you can add dashboards to your stream. [Dashboards](../../../../explore-analyze/dashboards.md) are visualizations that group important assets for your stream.
+The **Dashboards** tab is where you can add dashboards to your stream. [Dashboards](../../../../explore-analyze/dashboards.md) are visualizations that group together important assets for your stream.
 
 Add a dashboard to your stream by selecting it from the list of available dashboards.
 
@@ -61,7 +61,7 @@ Added dashboards are also shown on the [**Overview** tab](#streams-overview-tab)
 
 ## Management tab [streams-management-tab]
 
-The **Management** tab is where you can interact with and configure your stream:
+The **Management** tab is where you can interact with and configure your stream in the following ways:
 
 % Probably want a screenshot here for consistency with the other tabs?
 
