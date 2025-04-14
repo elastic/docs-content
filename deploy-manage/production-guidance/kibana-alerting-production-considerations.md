@@ -81,7 +81,7 @@ Another related setting is `xpack.alerting.rules.maxScheduledPerMinute`, which l
 
 ### Rules that run for a long time [_rules_that_run_for_a_long_time]
 
-Rules that run for a long time typically do so because they are issuing resource-intensive {{es}} queries or performing CPU-intensive processing. This can block the event loop, making {{kib}} inaccessible while the rule runs. By default, rule processing is cancelled after `5m` but this can be overriden using the `xpack.alerting.rules.run.timeout` configuration. This value can also be configured per rule type using `xpack.alerting.rules.run.ruleTypeOverrides`. For example, the following configuration sets the global timeout value to `1m` while allowing **Index Threshold** rules to run for `10m` before being cancelled.
+Rules that run for a long time typically do so because they are issuing resource-intensive {{es}} queries or performing CPU-intensive processing. This can block the event loop, making {{kib}} inaccessible while the rule runs. By default, rule processing is cancelled after `5m` but this can be overridden using the `xpack.alerting.rules.run.timeout` configuration. This value can also be configured per rule type using `xpack.alerting.rules.run.ruleTypeOverrides`. For example, the following configuration sets the global timeout value to `1m` while allowing **Index Threshold** rules to run for `10m` before being cancelled.
 
 ```yaml
 xpack.alerting.rules.run:

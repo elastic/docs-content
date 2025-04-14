@@ -64,7 +64,7 @@ Aside from the pipeline itself, you have a few configuration options which contr
 
 For Elastic web crawler and connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. These settings can be changed there directly, or through the Kibana UI at **Search > Content > Indices > <your index> > Pipelines > Settings**.
 
-You can also change the deployment wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. These settings can be changed there directly, or from the Kibana UI at **Search > Content > Settings** tab. Changing the deployment wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overriden by the index-specific settings.
+You can also change the deployment wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. These settings can be changed there directly, or from the Kibana UI at **Search > Content > Settings** tab. Changing the deployment wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overridden by the index-specific settings.
 
 
 ### Using the API [ingest-pipeline-search-pipeline-settings-using-the-api]
