@@ -39,9 +39,9 @@ After switching to {{esql}} mode, the query bar shows your previous KQL or Lucen
 from kibana_sample_data_logs | limit 10
 ```
 
-Every query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md). In this query, the source command is [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
+Every query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands). In this query, the source command is [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
 
-A source command can be followed by one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md). In this query, the processing command is [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-limit). `LIMIT` limits the number of rows that are retrieved.
+A source command can be followed by one or more [processing commands](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-processing-commands). In this query, the processing command is [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-limit). `LIMIT` limits the number of rows that are retrieved.
 
 ::::{tip}
 Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries that will help you get started.
