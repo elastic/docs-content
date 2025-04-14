@@ -51,7 +51,7 @@ spec:
     #  node.store.allow_mmap: false
     podTemplate:
       spec:
-        # This init container ensures that the `max_map_count` setting has been applied before starting {{es}}.
+        # This init container ensures that the `max_map_count` setting has been applied before starting Elasticsearch.
         # This is not required, but is encouraged when using the previously mentioned Daemonset to set max_map_count.
         # Do not use this if setting config.node.store.allow_mmap: false
         initContainers:

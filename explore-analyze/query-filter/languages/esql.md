@@ -16,7 +16,7 @@ mapped_pages:
 
 **Elasticsearch Query Language ({{esql}})** is a piped query language for filtering, transforming, and analyzing data.
 
-You can author {{esql}} queries to find specific events, perform statistical analysis, and generate visualizations. It supports a wide range of [commands, functions and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md) to perform various data operations, such as filtering, aggregation, time-series analysis, and more. Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
+You can author {{esql}} queries to find specific events, perform statistical analysis, and generate visualizations. It supports a wide range of [commands](elasticsearch://reference/query-languages/esql/esql-commands.md), [functions, and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md) to perform various data operations, such as filtering, aggregation, time-series analysis, and more. Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
 
 ::::{note}
 **{{esql}}'s compute architecture**
