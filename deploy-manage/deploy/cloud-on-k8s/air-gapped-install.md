@@ -47,7 +47,7 @@ Once the ECK operator image is copied internally, replace the original image nam
 
 ## Override the default container registry [k8s-container-registry-override]
 
-When creating custom resources ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash), the operator defaults to using container images pulled from the `docker.elastic.co` registry. If you are in an environment where external network access is restricted, you can configure the operator to use a different default container registry by starting the operator with the `--container-registry` command-line flag. Check [*Configure ECK*](../../../deploy-manage/deploy/cloud-on-k8s/configure-eck.md) for more information on how to configure the operator using command-line flags and environment variables.
+When creating custom resources ({{eck_resources_list}}), the operator defaults to using container images pulled from the `docker.elastic.co` registry. If you are in an environment where external network access is restricted, you can configure the operator to use a different default container registry by starting the operator with the `--container-registry` command-line flag. Check [*Configure ECK*](../../../deploy-manage/deploy/cloud-on-k8s/configure-eck.md) for more information on how to configure the operator using command-line flags and environment variables.
 
 The operator expects container images to be located at specific repositories in the default container registry. Make sure that your container images are stored in the right repositories and are tagged correctly with the Stack version number. For example, if your private registry is `my.registry` and you wish to deploy components from Stack version 8.16.1, the following image names should exist:
 
