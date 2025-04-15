@@ -46,7 +46,7 @@ Streamline data ingestion with tools like Fleet and Elastic Agent, APM, and Beat
 
 Visualize and analyze your data with Kibana. Configure advanced settings, explore plugins, and utilize command line tools to enhance your data insights.
 
-**Learn more in [Kibana](kibana://reference/index.md)**
+**Learn more in [Kibana](kibana://reference/elasticsearch/index.md)**
 
 ## Elasticsearch plugins
 
