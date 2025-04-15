@@ -87,7 +87,7 @@ bin/elasticsearch-keystore add xpack.notification.jira.account.monitoring.secure
 bin/elasticsearch-keystore add xpack.notification.jira.account.monitoring.secure_password
 ```
 ::::{warning}
-Storing sensitive data (`url`, `user` and `password`) in the configuration file or the cluster settings is insecure and has been deprecated. Please use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
+Storing sensitive data (`url`, `user` and `password`) in the configuration file or the cluster settings is insecure and has been deprecated. Use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
 
 ::::
 

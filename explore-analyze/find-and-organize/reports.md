@@ -10,7 +10,7 @@ mapped_pages:
 
 {{kib}} provides you with several options to share saved searches, dashboards, and visualizations.
 
-For example, in **Discover**, you can create and download comma-separated values (CSV) files for saved searches.
+For example, in **Discover**, you can create and download comma-separated values (CSV) reports for saved searches.
 
 To view and manage reports, go to **Management** > **Reporting**.
 

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
-  - https://www.elastic.co/guide/en/fleet/master/otel-agent-transform.html
+  - https://www.elastic.co/guide/en/fleet/current/otel-agent-transform.html
+  # That link will 404 until 8.18 is current
+  # (see https://www.elastic.co/guide/en/fleet/8.18/otel-agent-transform.html)
 ---
 
 # Transform an installed {{agent}} to run as an OTel Collector [otel-agent-transform]
@@ -32,8 +34,8 @@ You’ll need the following:
 
 To change a running standalone {{agent}} to run as an OTel Collector:
 
-1. Create a directory where the OTel Collector can save its state. In this example we use `<{{agent}} install directory>/data/otelcol`.
-2. Open the `<{{agent}} install directory>/otel_samples/platformlogs_hostmetrics.yml` file for editing.
+1. Create a directory where the OTel Collector can save its state. In this example we use `<Elastic Agent install directory>/data/otelcol`.
+2. Open the `<Elastic Agent install directory>/otel_samples/platformlogs_hostmetrics.yml` file for editing.
 3. Set environment details to be used by OTel Collector:
 
     * **Option 1:** Define environment variables for the {{agent}} service:

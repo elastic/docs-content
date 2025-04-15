@@ -10,7 +10,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
 ---
 
-% Scope: landing page for manually handling TLS certificates, and for information about TLS in Elastic Stack in general.
+% Scope: landing page for manually handling TLS certificates, and for information about TLS in {{stack}} in general.
 # TLS encryption for cluster communications
 
 This page explains how to secure communications and set up TLS certificates in your {{stack}} deployments.
@@ -34,7 +34,7 @@ Keep this distinction in mind when configuring security settings.
 
 Both {{es}} and {{kib}}, the core components of the {{stack}}, expose service endpoints that must be secured. {{es}} handles traffic at two levels:
 * The **transport layer** (defaults to port `9300`), used for internal communication between nodes in the cluster.
-* The **HTTP layer** (defaults to port `9200`), used by external clients — including Kibana — to send requests using the REST API.
+* The **HTTP layer** (defaults to port `9200`), used by external clients — including {{kib}} — to send requests using the REST API.
 
 Additionally, {{kib}} functions as a web server, exposing its own **HTTP endpoint** (defaults to port `5601`) to users, and also acts as a client when sending requests to {{es}}.
 

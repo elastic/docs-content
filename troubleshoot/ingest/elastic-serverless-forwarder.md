@@ -43,7 +43,7 @@ To help with debugging, you can increase the amount of logging detail by adding 
 
 Version 1.6.0 introduces a new event ID format that prevents duplicate ID errors when a high volume of events is ingested to {{es}}. This new format combines a timestamp with data specific to the relevant AWS resource, extracted from the AWS Lambda event received by the forwarder.
 
-The timestamp is used as a prefix for the ID, because identifiers that gradually increase over time generally result in better indexing performance in {{es}}, based on sorting order rather than completely random identifiers. For more information, please refer to [this Elastic blog on event-based data](https://www.elastic.co/blog/efficient-duplicate-prevention-for-event-based-data-in-elasticsearch).
+The timestamp is used as a prefix for the ID, because identifiers that gradually increase over time generally result in better indexing performance in {{es}}, based on sorting order rather than completely random identifiers. For more information, refer to [this Elastic blog on event-based data](https://www.elastic.co/blog/efficient-duplicate-prevention-for-event-based-data-in-elasticsearch).
 
 ::::{note}
 If old events that are already published to {{es}} using a version of Elastic Serverless Forwarder before v1.6.0 are ingested again, they will be treated as new events and published to {{es}} as duplicates.

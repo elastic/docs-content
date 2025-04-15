@@ -17,6 +17,6 @@ For high disk usage, an email alert is activated when the space consumed on one 
 
 We also send an email alert if one of the nodes in your cluster is restarted due to an out-of-memory condition.
 
-These alerts are sent to all users within an {{ecloud}} organization, as well as to the email addresses listed as operational email contacts. This means that an external distribution list or automated service can receive notifications without the need to be added to the organization directly.
+By default, these alerts are sent to all users within an {{ecloud}} organization.
 
-To configure recipients external to an {{ecloud}} organization for these notifications, update the list of [operational email contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md).
+Alternatively, you can configure recipients external to an {{ecloud}} organization for these notifications by updating the list of [operational email contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md). These can be any email address, meaning that an external distribution list or automated service can receive notifications without the need to be added to the organization directly. If you specify operational email contacts, then only these contacts and the organization owner will receive operational emails.

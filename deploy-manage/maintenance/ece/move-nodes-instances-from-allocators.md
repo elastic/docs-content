@@ -8,9 +8,9 @@ applies_to:
 
 # Move nodes or instances from allocators [ece-move-nodes]
 
-You might need to move Elasticsearch nodes, Kibana instances, and other components of the Elastic Stack between allocators from time to time for a number of reasons:
+You might need to move {{es}} nodes, {{kib}} instances, and other components of the {{stack}} between allocators from time to time for a number of reasons:
 
-* To prepare for removing the allocator role from the first host on which you installed Elastic Cloud Enterprise.
+* To prepare for removing the allocator role from the first host on which you installed {{ece}}.
 * To avoid downtime during maintenance: You can create a new allocator, move all deployments from an existing allocator to the new one, and then deal with the allocator that needs maintenance.
 * To make room on an allocator: You can move some smaller deployments to another allocator if you need additional room for a larger one on an allocator.
 * To move deployments after a failure: When host failures happen, you can move all deployments from the affected allocator to a healthy allocator quickly before spending any time on fixing the failure.
@@ -21,11 +21,11 @@ When you move all nodes from an existing allocator to the new one, ECE migrates 
 
 ## Before you begin [ece_before_you_begin_9]
 
-Before you move the nodes and instances that are part of a deployment, you need to make sure that you have sufficient capacity on another allocator. For example: If you have a deployment with a single 32 GB Elasticsearch node and a 4 GB Kibana instance, the allocator that you are moving the deployment to needs to have at least 36 GB of capacity. Note that moving nodes does not actually move the same node onto a different allocator. Under the covers, Elastic Cloud Enterprise creates a new node and then migrates the data for you.
+Before you move the nodes and instances that are part of a deployment, you need to make sure that you have sufficient capacity on another allocator. For example: If you have a deployment with a single 32 GB {{es}} node and a 4 GB {{kib}} instance, the allocator that you are moving the deployment to needs to have at least 36 GB of capacity. Note that moving nodes does not actually move the same node onto a different allocator. Under the covers, {{ece}} creates a new node and then migrates the data for you.
 
-Elastic Cloud Enterprise will adhere to the high availability configuration when moving nodes, so make sure you have the additional capacity available in the relevant availability zone.  For example: If you selected to deploy your cluster accross 3 availability zones, nodes can only move to an allocator in the same availability zone as the failed allocator. This is meant to ensure that the cluster can tolerate the failure of 2 availability zones.
+{{ece}} will adhere to the high availability configuration when moving nodes, so make sure you have the additional capacity available in the relevant availability zone.  For example: If you selected to deploy your cluster accross 3 availability zones, nodes can only move to an allocator in the same availability zone as the failed allocator. This is meant to ensure that the cluster can tolerate the failure of 2 availability zones.
 
-If you followed our recommendation and [tagged your allocators](../../deploy/cloud-enterprise/ece-configuring-ece-tag-allocators.md) to indicate what allocators you want components of the Elastic Stack to run on, the spare capacity you plan to use must be available on an allocator with the same tags. If you did not tag your allocators and edit the default instance configurations, ECE will move nodes and instances to wherever there is space.
+If you followed our recommendation and [tagged your allocators](../../deploy/cloud-enterprise/ece-configuring-ece-tag-allocators.md) to indicate what allocators you want components of the {{stack}} to run on, the spare capacity you plan to use must be available on an allocator with the same tags. If you did not tag your allocators and edit the default instance configurations, ECE will move nodes and instances to wherever there is space.
 
 When you move all nodes from an existing allocator to the new one, ECE migrates the data to new nodes. The migration can take some time, especially when clusters contain large amounts of data and have a heavy workload. Is your cluster under a heavy workload? You might need to [stop routing requests](deployments-maintenance.md) first.
 

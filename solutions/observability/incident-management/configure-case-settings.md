@@ -10,7 +10,7 @@ mapped_pages:
 
 ::::{note}
 
-For Observability serverless projects, the **Editor** role or higher is required to create and edit connectors. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+For Observability serverless projects, the **Editor** role or higher is required to create and edit connectors. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -33,21 +33,21 @@ To close cases when they are sent to an external system, select **Automatically 
 
 If you are using an external incident management system, you can integrate Elastic Observability cases with that system using *connectors*. These third-party systems are supported:
 
-* {ibm-r}
+* {{ibm-r}}
 * {{jira}} (including {{jira}} Service Desk)
-* {sn-itsm}
-* {sn-sir}
-* {swimlane}
+* {{sn-itsm}}
+* {{sn-sir}}
+* {{swimlane}}
 * TheHive
-* {webhook-cm}
+* {{webhook-cm}}
 
 You need to create a connector to send cases, which stores the information required to interact with an external system. For each case, you can send the title, description, and comment when you choose to push the case — for the **Webhook - Case Management** connector, you can also send the status and severity fields.
 
 ::::{important}
-To send cases to external systems, you need the appropriate license, and your role must have the **Cases** {{kib}} privilege as a user. For more details, refer to [Configure access to cases](../../../solutions/observability/incident-management/configure-access-to-cases.md).
+To send cases to external systems, you need the appropriate license, and your role must have the **Cases** {{kib}} privilege as a user. For more details, refer to [Configure access to cases](/solutions/observability/incident-management/configure-access-to-cases.md).
 ::::
 
-After creating a connector, you can set your cases to [automatically close](../../../solutions/observability/incident-management/configure-case-settings.md#close-connector-observability) when they are sent to an external system.
+After creating a connector, you can set your cases to [automatically close](/solutions/observability/incident-management/configure-case-settings.md#close-connector-observability) when they are sent to an external system.
 
 
 ### Create a connector [new-connector-observability]
@@ -77,7 +77,7 @@ After creating a connector, you can set your cases to [automatically close](../.
 You can create additional connectors, update existing connectors, and change the connector used to send cases to external systems.
 
 ::::{tip}
-You can also configure which connector is used for each case individually. Refer to [Create and manage cases](../../../solutions/observability/incident-management/create-manage-cases.md).
+You can also configure which connector is used for each case individually. Refer to [Create and manage cases](/solutions/observability/incident-management/create-manage-cases.md).
 
 ::::
 

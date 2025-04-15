@@ -29,6 +29,7 @@ Use filter pills to focus in on the specific data you want.
 :::{image} /explore-analyze/images/kibana-dashboard_filter_pills_8.15.0.png
 :alt: Filter pills
 :screenshot:
+:width: 500px
 :::
 
 
@@ -56,6 +57,7 @@ The query bar lets you build filters using [{{kib}} Query Language (KQL)](../que
 
 :::{image} /explore-analyze/images/kibana-dashboard-filter-kql.png
 :alt: KQL filter dynamically suggesting values
+:width: 400px
 :::
 
 
@@ -70,6 +72,7 @@ The global time range menu is located right next to the query bar, in the dashbo
 
 :::{image} /explore-analyze/images/kibana-dashboard-global-time-range.png
 :alt: Time range menu with multiple time range suggestions
+:width: 500px
 :::
 
 
@@ -77,7 +80,7 @@ The global time range menu is located right next to the query bar, in the dashbo
 
 **To apply a panel-level time range:**
 
-1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
+1. Hover over the panel and click ![Settings icon](/explore-analyze/images/kibana-settings-icon-hover-action.png "kibana-settings-icon-hover-action =4%x4%"). The **Settings** flyout appears.
 2. Turn on **Apply a custom time range**.
 3. Enter the time range you want to view, then click **Apply**.
 

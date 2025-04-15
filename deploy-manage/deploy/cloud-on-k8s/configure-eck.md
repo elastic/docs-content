@@ -119,7 +119,7 @@ If you use [Operator Lifecycle Manager (OLM)](https://github.com/operator-framew
 
 * Update your [Subscription](https://github.com/operator-framework/operator-lifecycle-manager/blob/master/doc/design/subscription-config.md) to mount the ConfigMap under `/conf`.
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: operators.coreos.com/v1alpha1
     kind: Subscription
     metadata:

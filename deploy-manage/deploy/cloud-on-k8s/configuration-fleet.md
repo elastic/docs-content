@@ -241,7 +241,7 @@ spec:
 ...
 ```
 
-Please note that the environment variables related to policy selection mentioned in the {{agent}} [docs](/reference/fleet/agent-environment-variables.md) like `FLEET_SERVER_POLICY_ID` will be managed by the ECK operator.
+Note that the environment variables related to policy selection mentioned in the {{agent}} [docs](/reference/fleet/agent-environment-variables.md) like `FLEET_SERVER_POLICY_ID` will be managed by the ECK operator.
 
 
 ## Running as a non-root user [k8s-elastic-agent-running-as-a-non-root-user]

@@ -8,12 +8,12 @@ applies_to:
 
 # Upgrade the {{stack}} on a self-managed cluster
 
-If you've installed the {{stack}} on your own self-managed infrastructure, once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), you'll need to upgrade each of your Elastic components individually. 
+If you've installed the {{stack}} on your own self-managed infrastructure, once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), you'll need to upgrade each of your Elastic components individually.
 
-It's important that you upgrade your components in this order: 
+It's important that you upgrade your components in this order:
 * [{{es}}](/deploy-manage/upgrade/deployment-or-cluster/elasticsearch.md)
 * [{{kib}}](/deploy-manage/upgrade/deployment-or-cluster/kibana.md)
-* [Elastic APM](../../../solutions/observability/apps/upgrade.md)
+* [Elastic APM](/solutions/observability/apm/upgrade.md)
 * [Ingest components](/deploy-manage/upgrade/ingest-components.md)
 
 :::{important}
