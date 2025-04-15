@@ -19,11 +19,11 @@ kubectl -n elastic-system \
   get pods -o=jsonpath='{.items[].status.containerStatuses}' | jq
 ```
 
-```json
+```json subs=true
 [
   {
     "containerID": "containerd://...",
-    "image": "docker.elastic.co/eck/eck-operator:2.16.1",
+    "image": "docker.elastic.co/eck/eck-operator:{{eck_version}}",
     "imageID": "docker.elastic.co/eck/eck-operator@sha256:...",
     "lastState": {
       "terminated": {

@@ -285,7 +285,7 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
             :::
 
         2. For the **Platform** page settings, select **Web** then **Next**.
-        3. In the **Application settings** choose a **Name** for your application, for example `{{kib}} OIDC`.
+        3. In the **Application settings** choose a **Name** for your application, for example _{{kib}} OIDC_.
         4. Set the **Base URI** to `KIBANA_ENDPOINT_URL`.
         5. Set the **Login redirect URI**.
 

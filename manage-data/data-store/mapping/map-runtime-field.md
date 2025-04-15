@@ -100,7 +100,7 @@ You can alternatively prefix the field you want to retrieve values for with `par
 
 ## Ignoring script errors on runtime fields [runtime-errorhandling]
 
-Scripts can throw errors at runtime, e.g. on accessing missing or invalid values in documents or because of performing invalid operations. The `on_script_error` parameter can be used to control error behaviour when this happens. Setting this parameter to `continue` will have the effect of silently ignoring all errors on this runtime field. The default `fail` value will cause a shard failure which gets reported in the search response.
+Scripts can throw errors at runtime, e.g. on accessing missing or invalid values in documents or because of performing invalid operations. The `on_script_error` parameter can be used to control error behavior when this happens. Setting this parameter to `continue` will have the effect of silently ignoring all errors on this runtime field. The default `fail` value will cause a shard failure which gets reported in the search response.
 
 
 ## Updating and removing runtime fields [runtime-updating-scripts]

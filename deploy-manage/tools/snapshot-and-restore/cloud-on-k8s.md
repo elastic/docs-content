@@ -79,7 +79,7 @@ Using ECK, you can automatically inject secure settings into a cluster node by p
       name: elasticsearch-sample
     spec:
       version: 8.16.1
-      # Inject secure settings into {{es}} nodes from a k8s secret reference
+      # Inject secure settings into Elasticsearch nodes from a k8s secret reference
       secureSettings:
       - secretName: gcs-credentials
     ```

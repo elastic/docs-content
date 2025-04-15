@@ -33,7 +33,7 @@ This approach requires minimal configuration as the CloudFormation template crea
 * `S3BackupMode`: Source record backup in Amazon S3, failed data only or all data. Default is `FailedDataOnly`.
 * `S3BufferInterval`: The Kinesis Firehose S3 buffer interval, in seconds. Default is `300`.
 * `S3BufferSize`: The Kinesis Firehose S3 buffer size, in MiB. Default is `5`.
-* `S3BackupBucketARN`: By default, an S3 bucket for backup will be created. You can override this behaviour by providing an ARN of an existing S3 bucket that ensures the data can be recovered if record processing transformation does not produce the desired results.
+* `S3BackupBucketARN`: By default, an S3 bucket for backup will be created. You can override this behavior by providing an ARN of an existing S3 bucket that ensures the data can be recovered if record processing transformation does not produce the desired results.
 * `Attributes`: List of attribute name-value pairs for HTTP endpoint separated by commas. For example "name1=value1,name2=value2".
 
 ::::

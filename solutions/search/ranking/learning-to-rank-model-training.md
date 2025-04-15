@@ -102,7 +102,7 @@ Building your dataset is a critical step in the training process. This involves 
 ```python
 from eland.ml.ltr import FeatureLogger
 
-# Create a feature logger that will be used to query {{es}} to retrieve the features:
+# Create a feature logger that will be used to query Elasticsearch to retrieve the features:
 feature_logger = FeatureLogger(es_client, MOVIE_INDEX, ltr_config)
 ```
 
