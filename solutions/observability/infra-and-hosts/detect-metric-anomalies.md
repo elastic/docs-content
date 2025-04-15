@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-metric-anomalies.html
   - https://www.elastic.co/guide/en/serverless/current/observability-detect-metric-anomalies.html
 applies_to:
@@ -11,7 +11,7 @@ applies_to:
 
 ::::{note}
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 

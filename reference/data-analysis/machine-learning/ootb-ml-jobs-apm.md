@@ -7,7 +7,7 @@ mapped_pages:
 
 This {{anomaly-job}} appears in the {{apm-app}} and the {{ml-app}} app when you have data from APM Agents or an APM Server in your cluster. It is available only if data exists that matches the query specified in the [manifest file](https://github.com/elastic/kibana/blob/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/apm_transaction/manifest.json).
 
-For more information about {{anomaly-detect}} in the {{apm-app}}, refer to [{{ml-cap}} integration](/solutions/observability/apps/integrate-with-machine-learning.md).
+For more information about {{anomaly-detect}} in the {{apm-app}}, refer to [{{ml-cap}} integration](/solutions/observability/apm/machine-learning.md).
 
 
 ## Transactions [apm-transaction-jobs]

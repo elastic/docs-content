@@ -25,7 +25,7 @@ The `symbtool` binary currently requires a Linux machine.
 
 ## Use the `symbtool` binary [profiling-use-symbtool]
 
-Before using the `symbtool` binary, create an [Elasticsearch API token](../../../deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key). Pass this token using the `-t` or `--api-key` argument.
+Before using the `symbtool` binary, create an [Elasticsearch API token](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key). Pass this token using the `-t` or `--api-key` argument.
 
 You also need to copy the **Symbols** endpoint from the deployment overview page. Pass this URL using the `-u` or `--url` argument.
 

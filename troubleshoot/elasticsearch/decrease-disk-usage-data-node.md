@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Decrease disk usage
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/decrease-disk-usage-data-node.html
@@ -22,7 +29,7 @@ Reducing the replicas of an index can potentially reduce search throughput and d
 2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Stack Management > Index Management**.
@@ -91,7 +98,7 @@ In order to estimate how many replicas need to be removed, first you need to est
 4. The next step is to list all the indices and choose which replicas to reduce.
 
     ::::{note}
-    The following command orders the indices with descending number of replicas and primary store size. We do this to help you choose which replicas to reduce under the assumption that the more replicas you have the smaller the risk if you remove a copy and the bigger the replica the more space will be released. This does not take into consideration any functional requirements, so please see it as a mere suggestion.
+    The following command orders the indices with descending number of replicas and primary store size. We do this to help you choose which replicas to reduce under the assumption that the more replicas you have the smaller the risk if you remove a copy and the bigger the replica the more space will be released. This does not take into consideration any functional requirements, so see it as a mere suggestion.
     ::::
 
 

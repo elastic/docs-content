@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/security-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
 applies_to:
@@ -10,7 +10,7 @@ applies_to:
 
 # AI Assistant
 
-The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversion using natural language and much more.
+The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity operations team. It allows users to interact with {{elastic-sec}} for tasks such as alert investigation, incident response, and query generation or conversation using natural language and much more.
 
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
@@ -38,7 +38,7 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 
 Elastic does not store or examine prompts or results used by AI Assistant, or use this data for model training. This includes anything you send the model, such as alert or event data, detection rule configurations, queries, and prompts. However, any data you provide to AI Assistant will be processed by the third-party large language model (LLM) provider you connected to as part of AI Assistant setup.
 
-Elastic does not control third-party tools, and assumes no responsibility or liability for their content, operation, or use, nor for any loss or damage that may arise from your using such tools. Please exercise caution when using AI tools with personal, sensitive, or confidential information. Any data you submit may be used by the provider for AI training or other purposes. There is no guarantee that the provider will keep any information you provide secure or confidential. You should familiarize yourself with the privacy practices and terms of use of any generative AI tools prior to use.
+Elastic does not control third-party tools, and assumes no responsibility or liability for their content, operation, or use, nor for any loss or damage that may arise from your using such tools. Exercise caution when using AI tools with personal, sensitive, or confidential information. Any data you submit may be used by the provider for AI training or other purposes. There is no guarantee that the provider will keep any information you provide secure or confidential. You should familiarize yourself with the privacy practices and terms of use of any generative AI tools prior to use.
 
 ::::{note}
 Elastic can automatically anonymize event data that you provide to AI Assistant as context. To learn more, refer to [Configure AI Assistant](/solutions/security/ai/ai-assistant.md#configure-ai-assistant).
@@ -75,7 +75,7 @@ You can also chat with AI Assistant from several particular pages in {{elastic-s
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
 
 ::::{note}
-Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security".
+Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security" or open the menu in the upper-right of the AI Assistant chat window.
 ::::
 
 
@@ -87,16 +87,16 @@ Use these features to adjust and act on your conversations with AI Assistant:
 * (Optional) Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…​**.
 * (Optional) Select a *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}.
 
-    :::{image} /solutions/images/security-quick-prompts.png
-    :alt: Quick Prompts highlighted below a conversation
-    :screenshot:
-    :::
+   :::{image} /solutions/images/security-quick-prompts.png
+   :alt: Quick Prompts highlighted below a conversation
+   :screenshot:
+   :::
 
 * System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
 
-    :::{image} /solutions/images/security-assistant-settings-system-prompts.png
-    :alt: The Security AI settings menu's System Prompts tab
-    :::
+   :::{image} /solutions/images/security-assistant-settings-system-prompts.png
+   :alt: The Security AI settings menu's System Prompts tab
+   :::
 
 * Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
@@ -117,11 +117,20 @@ AI Assistant can remember particular information you tell it to remember. For ex
 
 ## Configure AI Assistant [configure-ai-assistant]
 
-The **Security AI settings** page allows you to configure AI Assistant. To access it, use the global search field to search for "AI Assistant for Security".
+To adjust AI Assistant's settings from the chat window, click the **More** (three dots) button in the upper-right.
+
+::::{image} /solutions/images/security-attack-discovery-more-popover.png
+:alt: AI Assistant's more options popover
+:screenshot:
+::::
+
+The first three options (**AI Assistant settings**, **Knowledge Base**, and **Anonymization**) open the corresponding tabs of the **Security AI settings** page. The **Chat options** affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the knowledge base, and content from Elastic's Security Labs and product documentation.
+
+The **Security AI settings** page provides a range of configuration options for AI Assistant. To access it directly, use the global search field to search for "AI Assistant for Security".
 
 It has the following tabs:
 
-* **Conversations:** When you open AI Assistant from certain pages, such as ***Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
+* **Conversations:** When you open AI Assistant from certain pages, such as **Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
 * **Connectors:** Manage all LLM connectors.
 * **System Prompts:** Edit existing System Prompts or create new ones. To create a new System Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the System Prompt’s text. Under **Contexts**, select where the System Prompt should appear.
 * **Quick Prompts:** Modify existing Quick Prompts or create new ones. To create a new Quick Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the Quick Prompt’s text.
@@ -137,7 +146,7 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 ::::
 
 
-The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed*** toggled on are included in events provided to AI Assistant. ***Allowed*** fields with ***Anonymized** set to **Yes** are included, but with their values obfuscated.
+The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated.
 
 ::::{note}
 You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](/solutions/images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
@@ -165,7 +174,7 @@ The **Knowledge base** tab of the **Security AI settings** page allows you to en
 
 Elastic AI Assistant allows you to take full advantage of the {{elastic-sec}} platform to improve your security operations. It can help you write an {{esql}} query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
 
-To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an {{esql}} query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Please provide comments explaining the query you just gave."
+To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an {{esql}} query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Provide comments explaining the query you just gave."
 
 In addition to practical advice, AI Assistant can offer conceptual advice, tips, and best practices for enhancing your security measures. You can ask it, for example:
 

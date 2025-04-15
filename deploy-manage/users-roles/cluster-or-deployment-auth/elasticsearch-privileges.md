@@ -9,7 +9,7 @@ applies_to:
     self:
 ---
 
-# Elasticsearch privileges [security-privileges]
+# {{es}} privileges [security-privileges]
 
 This section lists the privileges that you can assign to a role.
 

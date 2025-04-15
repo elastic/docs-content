@@ -38,7 +38,7 @@ Summary
 :   A summary of what change was applied, when the change was performed, and how long it took.
 
 Applied by
-:   The user who submitted the configuration change. `System` indicates configuration changes initiated automatically by the Elastic Cloud Enterprise platform.
+:   The user who submitted the configuration change. `System` indicates configuration changes initiated automatically by the {{ece}} platform.
 
 Actions
 :   Select **Details** for an expanded view of each step in the configuration change, including the start time, end time, and duration. You can select **Reapply** to re-run the configuration change.

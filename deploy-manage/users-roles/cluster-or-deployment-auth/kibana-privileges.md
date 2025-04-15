@@ -9,7 +9,7 @@ applies_to:
     self:
 ---
 
-# Kibana privileges [kibana-privileges]
+# {{kib}} privileges [kibana-privileges]
 
 {{kib}} privileges grant users access to features within {{kib}}. Roles have privileges to determine whether users have write or read access.
 

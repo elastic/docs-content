@@ -27,7 +27,7 @@ xpack.security.operator_privileges.enabled: true
 If the node is already running before you make this change, you must restart the node for the feature to take effect.
 
 ::::{warning} 
-The feature needs to be either enabled or disabled consistently across all nodes in a cluster. Otherwise, you can get inconsistent behaviour depending on which node first receives a request and which node executes it.
+The feature needs to be either enabled or disabled consistently across all nodes in a cluster. Otherwise, you can get inconsistent behavior depending on which node first receives a request and which node executes it.
 ::::
 
 

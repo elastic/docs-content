@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alert-suppression.html
   - https://www.elastic.co/guide/en/serverless/current/security-alert-suppression.html
 applies_to:
@@ -131,6 +131,7 @@ With alert suppression, detection alerts aren’t created for the grouped source
 
     :::{image} /solutions/images/security-timeline-button.png
     :alt: Investigate in timeline button
+    :width: 350px
     :screenshot:
     :::
 

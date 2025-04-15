@@ -14,7 +14,13 @@ You may also consider subscribing to incident notices reported on the {{ecloud}}
 
 ## Enable logs and metrics [ec_enable_logs_and_metrics]
 
-After you have created a new deployment, you should enable shipping logs and metrics to a monitoring deployment:
+After you have created a new deployment, you should enable shipping logs and metrics to a monitoring deployment.
+
+**Before you start**
+
+Enabling logs and metrics increases the resource consumption of the deployment. For production systems, we recommend sizing deployments with logs and metrics enabled to at least 4 GB of RAM on each Elasticsearch instance.
+
+To enable logs and metrics:
 
 1. Go to the [Deployments](https://cloud.elastic.co/deployments) page in {{ecloud}}.
 2. Find your deployment and go to the **Logs and Metrics** page.

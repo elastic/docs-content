@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/index.html
   - https://www.elastic.co/guide/en/serverless/current/intro.html
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
@@ -31,7 +31,7 @@ Elastic provides three serverless solutions available on {{ecloud}}. Follow thes
 
 Afterwards, you can:
 
-* Learn about the [cloud organization](../../cloud-organization.md) that is the umbrella for all of your Elastic Cloud resources, users, and account settings.
+* Learn about the [cloud organization](../../cloud-organization.md) that is the umbrella for all of your {{ecloud}} resources, users, and account settings.
 * Learn about how {{es-serverless}} is [billed](../../cloud-organization/billing/serverless-project-billing-dimensions.md).
 * Learn how to [create an API key](../../api-keys/serverless-project-api-keys.md). This key provides access to the API that enables you to manage your deployments.
 * Learn how manage [users and roles](../../users-roles/cloud-organization.md) in your {{es-serverless}} deployment.
@@ -45,12 +45,12 @@ Afterwards, you can:
 
 **Optimized data storage:** Your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. The size of the cache layer and the volume of data it holds depend on [settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) that you can configure for each project.
 
-**Dedicated experiences:** All serverless solutions are built on the Elastic Search Platform and include the core capabilities of the Elastic Stack. They also each offer a distinct experience and specific capabilities that help you focus on your data, goals, and use cases.
+**Dedicated experiences:** All serverless solutions are built on the Elastic Search Platform and include the core capabilities of the {{stack}}. They also each offer a distinct experience and specific capabilities that help you focus on your data, goals, and use cases.
 
 **Pay per usage:** Each serverless project type includes product-specific and usage-based pricing.
 
-**Data and performance control**. Control your project data and query performance against your project data. 
-  * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams. 
+**Data and performance control**. Control your project data and query performance against your project data.
+  * **Data:** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project, and you define the retention settings for your data streams.
   * **Performance:** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined settings you can edit.
 
 ## Monitor serverless status [general-serverless-status]
@@ -67,7 +67,7 @@ Migration paths between hosted deployments and serverless projects are currently
 
 **How can I move data to or from serverless projects?**
 
-We are working on data migration tools! In the interim, [use Logstash](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-logstash.html) with Elasticsearch input and output plugins to move data to and from serverless projects.
+We are working on data migration tools! In the interim, [use Logstash](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-logstash.html) with {{es}} input and output plugins to move data to and from serverless projects.
 
 **How does serverless ensure compatibility between software versions?**
 

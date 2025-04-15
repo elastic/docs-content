@@ -362,7 +362,7 @@ Which returns:
 
 ## Enrich across clusters [ccq-enrich]
 
-Enrich in {{esql}} across clusters operates similarly to [local enrich](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich). If the enrich policy and its enrich indices are consistent across all clusters, simply write the enrich command as you would without remote clusters. In this default mode, {{esql}} can execute the enrich command on either the local cluster or the remote clusters, aiming to minimize computation or inter-cluster data transfer. Ensuring that the policy exists with consistent data on both the local cluster and the remote clusters is critical for ES|QL to produce a consistent query result.
+Enrich in {{esql}} across clusters operates similarly to [local enrich](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich). If the enrich policy and its enrich indices are consistent across all clusters, simply write the enrich command as you would without remote clusters. In this default mode, {{esql}} can execute the enrich command on either the local cluster or the remote clusters, aiming to minimize computation or inter-cluster data transfer. Ensuring that the policy exists with consistent data on both the local cluster and the remote clusters is critical for ES|QL to produce a consistent query result.
 
 ::::{tip}
 Enrich in {{esql}} across clusters using the API key based security model was introduced in version **8.15.0**. Cross cluster API keys created in versions prior to 8.15.0 will need to replaced or updated to use the new required permissions. Refer to the example in the [API key authentication](#esql-ccs-security-model-api-key) section.
@@ -418,7 +418,7 @@ FROM my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001
 | LIMIT 10
 ```
 
-A `_remote` enrich cannot be executed after a [stats](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-stats-by) command. The following example would result in an error:
+A `_remote` enrich cannot be executed after a [stats](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) command. The following example would result in an error:
 
 ```esql
 FROM my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001

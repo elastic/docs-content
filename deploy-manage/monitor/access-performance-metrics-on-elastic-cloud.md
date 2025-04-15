@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saas-metrics-accessing.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-saas-metrics-accessing.html
 applies_to:
@@ -15,14 +15,14 @@ For advanced views or production monitoring, [enable logging and monitoring](/de
 
 :::{tip}
 For {{ece}} deployments, you can use [platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md) to access preconfigured performance metrics.
-::: 
+:::
 
 To access cluster performance metrics:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list. For example, you might want to select **Is unhealthy** and **Has master problems** to get a short list of deployments that need attention.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list. For example, you might want to select **Is unhealthy** and **Has master problems** to get a short list of deployments that need attention.
 
 3. From your deployment menu, go to the **Performance** page.
 

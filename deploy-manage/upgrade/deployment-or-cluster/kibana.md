@@ -1,12 +1,13 @@
 ---
 applies_to:
+  stack:
   deployment:
     self: all
 ---
 
 # Upgrade {{kib}} [upgrade-kibana]
 
-When you upgrade {{kib}}, you also upgrade the {{observability}} and {{elastic-sec}} solutions, which use {{kib}} as their main interface. 
+When you upgrade {{kib}}, you also upgrade the {{observability}} and {{elastic-sec}} solutions, which use {{kib}} as their main interface.
 
 ::::{warning}
 {{kib}} automatically runs saved object migrations when required. To roll back to an earlier version in case of an upgrade failure, you **must** have a [backup snapshot](../../tools/snapshot-and-restore.md) that includes the `kibana` feature state. Snapshots include this feature state by default.
@@ -54,7 +55,7 @@ To upgrade {{kib}}:
 2. To install the `deb` or `rpm` package:
 
     a. Use `rpm` or `dpkg`. This installs all files in their proper locations and will not overwrite the config files.
-    b. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, see [{{kib}} plugins](kibana://reference/kibana-plugins.md).
+    b. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 3. To install from a `zip` or `tar.gz` archive:
 
@@ -66,10 +67,14 @@ To upgrade {{kib}}:
     If you use {{monitor-features}}, you must re-use the data directory when you upgrade {{kib}}. Otherwise, the {{kib}} instance is assigned a new persistent UUID and becomes a new instance in the monitoring data.
     ::::
 
-    d. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, see [{{kib}} plugins](kibana://reference/kibana-plugins.md).
+    d. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 4. Start {{kib}}.
 
 ::::{note}
-{{kib}} 8.0.0 and later uses a new logging system, so the log formats have changed. For additional information, see [Logging configuration changes](kibana://extend/logging-config-changes.md).
+{{kib}} 8.0.0 and later uses a new logging system, so the log formats have changed. For additional information, refer to [Logging configuration changes](kibana://extend/logging-config-changes.md).
 ::::
+
+## Next steps
+
+Once you've successfully upgraded {{kib}}, [upgrade Elastic APM](/solutions/observability/apm/upgrade.md), then [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md).

@@ -13,7 +13,7 @@ applies_to:
 
 ::::{note}
 
-The **Admin** role or higher is required to create projects. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+The **Admin** role or higher is required to create projects. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
@@ -27,7 +27,7 @@ An {{obs-serverless}} project allows you to run {{obs-serverless}} in an autosca
 5. (Optional) Click **Edit settings** to change your project settings:
 
     * **Cloud provider**: The cloud platform where you’ll deploy your project. We currently support Amazon Web Services (AWS).
-    * **Region**: The [region](../../../deploy-manage/deploy/elastic-cloud/regions.md) where your project will live.
+    * **Region**: The [region](/deploy-manage/deploy/elastic-cloud/regions.md) where your project will live.
 
 6. Click **Create project**. It takes a few minutes to create your project.
 7. When the project is ready, click **Continue**.
@@ -46,5 +46,5 @@ To return to the onboarding page later, select **Add data** from the main menu.
 Learn how to add data to your project and start using {{obs-serverless}} features:
 
 * [Get started with system logs](../logs/get-started-with-system-logs.md)
-* [Get started with traces and APM](../apps/get-started-with-apm.md)
+* [Get started with traces and APM](/solutions/observability/apm/get-started.md)
 * [Get started with system metrics](../infra-and-hosts/get-started-with-system-metrics.md)

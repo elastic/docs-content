@@ -15,7 +15,7 @@ The secrets should contain a key-value pair for each secure setting you want to 
 
 To allow the operator to inject the settings into the application, you must reference your secrets in the `spec.secureSettings` field of your {{es}} or {{kib}} object definition. Next, you’ll find examples for both {{es}} and {{kib}}.
 
-## Elasticsearch basic usage [k8s_basic_usage]
+## {{es}} basic usage [k8s_basic_usage]
 
 It is possible to reference several secrets:
 
@@ -126,7 +126,7 @@ stringData:
     }
 ```
 
-## Kibana secure settings [k8s-kibana-secure-settings]
+## {{kib}} secure settings [k8s-kibana-secure-settings]
 
 Similar to {{es}} secure settings, you can use Kubernetes secrets to manage keystore settings for {{kib}}.
 

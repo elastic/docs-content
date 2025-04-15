@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ers-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-ers-requirements.html
 applies_to:
@@ -114,4 +114,4 @@ To turn on the entity store, you need the following:
 
 #### {{kib}}
 
-**All** for the **Security** and **Saved Objects Management** features 
+**All** for the **Security** and **Saved Objects Management** features

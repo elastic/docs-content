@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/endpoint-protection-intro.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-protection-intro.html
 applies_to:
