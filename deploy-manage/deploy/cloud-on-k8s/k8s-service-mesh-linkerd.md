@@ -52,7 +52,7 @@ podTemplate:
       linkerd.io/inject: enabled
 ```
 
-If automatic sidecar injection is enabled and [auto mounting of service account tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server) is not disabled on your Kubernetes cluster, examples defined elsewhere in the ECK documentation will continue to work under Linkerd without requiring any modifications. However, as the default behaviour of ECK is to enable TLS for {{es}}, {{kib}} and APM Server resources, you will not be able to view detailed traffic information from Linkerd dashboards and command-line utilities. The following sections illustrate the optional configuration necessary to enhance the integration of {{stack}} applications with Linkerd.
+If automatic sidecar injection is enabled and [auto mounting of service account tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server) is not disabled on your Kubernetes cluster, examples defined elsewhere in the ECK documentation will continue to work under Linkerd without requiring any modifications. However, as the default behavior of ECK is to enable TLS for {{es}}, {{kib}} and APM Server resources, you will not be able to view detailed traffic information from Linkerd dashboards and command-line utilities. The following sections illustrate the optional configuration necessary to enhance the integration of {{stack}} applications with Linkerd.
 
 ### {{es}} [k8s-service-mesh-linkerd-elasticsearch]
 

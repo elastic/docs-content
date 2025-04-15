@@ -176,7 +176,7 @@ If your `tls.crt` is signed by an intermediate CA you may need both the Root CA 
 kubectl create secret generic my-cert --from-file=ca.crt --from-file=tls.crt --from-file=tls.key
 ```
 
-Alternatively you can also bring your own CA certificate including a private key and let ECK issue certificates with it. Any certificate SANs you have configured as decribed in [Reserve static IP and custom domain](#k8s-static-ip-custom-domain) will also be respected when issuing certificates with this CA certificate.
+Alternatively you can also bring your own CA certificate including a private key and let ECK issue certificates with it. Any certificate SANs you have configured as described in [Reserve static IP and custom domain](#k8s-static-ip-custom-domain) will also be respected when issuing certificates with this CA certificate.
 
 Create a Kubernetes secret with:
 

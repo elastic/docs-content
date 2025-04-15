@@ -66,7 +66,7 @@ Every index and every shard requires some memory and CPU resources. In most case
 
 Segments play a big role in a shard’s resource usage. Most shards contain several segments, which store its index data. {{es}} keeps some segment metadata in heap memory so it can be quickly retrieved for searches. As a shard grows, its segments are [merged](elasticsearch://reference/elasticsearch/index-settings/merge.md) into fewer, larger segments. This decreases the number of segments, which means less metadata is kept in heap memory.
 
-Every mapped field also carries some overhead in terms of memory usage and disk space. By default {{es}} will automatically create a mapping for every field in every document it indexes, but you can switch off this behaviour to [take control of your mappings](../../../manage-data/data-store/mapping/explicit-mapping.md).
+Every mapped field also carries some overhead in terms of memory usage and disk space. By default {{es}} will automatically create a mapping for every field in every document it indexes, but you can switch off this behavior to [take control of your mappings](../../../manage-data/data-store/mapping/explicit-mapping.md).
 
 Moreover every segment requires a small amount of heap memory for each mapped field. This per-segment-per-field heap overhead includes a copy of the field name, encoded using ISO-8859-1 if applicable or UTF-16 otherwise. Usually this is not noticeable, but you may need to account for this overhead if your shards have high segment counts and the corresponding mappings contain high field counts and/or very long field names.
 

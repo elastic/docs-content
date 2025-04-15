@@ -80,7 +80,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
 ```
 
-This is ECK default behaviour if you don’t specify any `affinity` option. To explicitly disable the default behaviour, set an empty affinity object:
+This is ECK default behavior if you don’t specify any `affinity` option. To explicitly disable the default behavior, set an empty affinity object:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1

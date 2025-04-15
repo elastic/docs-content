@@ -17,6 +17,38 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 
 % ### Fixes [elastic-cloud-serverless-releasedate-fixes]
 
+## April 14, 2025 [serverless-changelog-04142025]
+
+### Features and enhancements [serverless-changelog-04142025-features-enhancements]
+* Enables archiving of conversations in the Elastic Observability Serverless AI Assistant [#216012]({{kib-pull}}216012)
+* Moves job and trained model management features into **Stack Management** [#204290]({{kib-pull}}204290)
+* Adds Engine initialization API to Elastic Security Serverless [#215663]({{kib-pull}}215663)
+* Allows creating an ES|QL control by entering a question mark (`?`) in the query [#216839]({{kib-pull}}216839)
+* Improves UI handling of multiple CVEs and package fields [#216411]({{kib-pull}}216411)
+* Adds support for Windows MSI commands for Fleet and Elastic Agent installations [#217217]({{kib-pull}}217217)
+* Reuses shared integration policies when duplicating agent policies in Fleet [#217872]({{kib-pull}}217872)
+* Enables adding badges to all list items in the side navigation except the section header [#217301]({{kib-pull}}217301)
+
+### Fixes [serverless-changelog-04142025-fixes]
+* Fixes error message when previewing index templates used by data streams [#217604]({{kib-pull}}217604)
+* Wraps text in search bars [#217556]({{kib-pull}}217556)
+* Adds support for `textBased` layers in ES|QL visualizations [#216358]({{kib-pull}}216358)
+* Corrects the alert count displayed in **Monitor** details [#216761]({{kib-pull}}216761)
+* Fixes the **Save visualization** action on the Monitors **Overview** tab [#216695]({{kib-pull}}216695)
+* Removes direct function calling from the chat input Elastic Observability Serverless AI Assistant [#217359]({{kib-pull}}217359)
+* Adds missing `aria-label` attributes to some buttons under the Services and Services Groups pages [#217325]({{kib-pull}}217325)
+* Improves knowledge base installation flow and inference endpoint management [#214133]({{kib-pull}}214133)
+* Improves `aria-label` for `EuiCodeBlock` on the APM onboarding page [#217292]({{kib-pull}}217292)
+* Adds `source` and `target` fields to the `Dataset Quality Navigated` event [#217575]({{kib-pull}}217575)
+* Improves `aria-label` attributes for latency correlations [#217512]({{kib-pull}}217512)
+* Fixes navigation to the **Search Connectors** page [#217749]({{kib-pull}}217749)
+* Sorts the **Environment** dropdown alphabetically in the APM UI [#217710]({{kib-pull}}217710)
+* Ensures the Request Inspector shows accurate request and response data for successful scenarios [#216519]({{kib-pull}}216519)
+* Fixes the `Change Point Detection` embeddable in dashboards [#217178]({{kib-pull}}217178)
+* Fixes page crashes caused by the **Use full data** button [#217291]({{kib-pull}}217291)
+* Filters inference connectors that lack existing endpoints in **Connectors** [#217641]({{kib-pull}}217641)
+* Fixes focusability and keyboard access issues with the **Export** tab in the **Share this dashboard** modal [#217313]({{kib-pull}}217313)
+
 ## April 7, 2025 [serverless-changelog-04072025]
 
 ### Features and enhancements [elastic-cloud-serverless-04072025-features-enhancements]

@@ -204,7 +204,6 @@ $$$azure-integration-azure-tenant-info$$$What Azure tenant information does Elas
 
     * Data defined in the marketplace [Saas fulfillment Subscription APIs](https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-fulfillment-subscription-api).
     * The following additional data:
-
         * Marketplace subscription ID
         * Marketplace plan ID
         * Azure Account ID
@@ -222,7 +221,6 @@ $$$azure-integration-cli-api$$$What other methods are available to deploy {{es}}
 :   Use any of the following methods:
 
     * **Deploy using Azure tools**
-
         * The Azure console
         * [Azure Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/elastic_cloud_elasticsearch)
         * The [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/elastic?view=azure-cli-latest)
@@ -230,14 +228,12 @@ $$$azure-integration-cli-api$$$What other methods are available to deploy {{es}}
         * [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.elastic/?view=azps-8.0.0#elastic)
 
     * **Deploy using official Azure SDKs**
-
         * [Python](https://github.com/Azure/azure-sdk-for-python/blob/main/README.md)
         * [Java](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-elastic_1.0.0-beta.1/README.md)
         * [.NET](https://github.com/Azure/azure-sdk-for-net/blob/main/README.md)
         * [Rust](https://github.com/Azure/azure-sdk-for-rust/blob/main/services/README.md)
 
     * **Deploy using {{ecloud}}**
-
         * The {{ecloud}} [console](https://cloud.elastic.co?page=docs&placement=docs-body)
         * The {{ecloud}} [REST API](cloud://reference/cloud-hosted/ec-api-restful.md)
         * The {{ecloud}} [command line tool](ecctl://reference/index.md)
@@ -248,7 +244,6 @@ $$$azure-integration-cli-api$$$What other methods are available to deploy {{es}}
 
 $$$azure-integration-migrate$$$How do I migrate my data from the classic Azure marketplace account to the native integration?
 :   First create a new account configured with {{ecloud}} Azure Native ISV Service, then perform the migration as follows:
-
     1. From your classic Azure marketplace account, navigate to the deployment and [configure a custom snapshot repository using Azure Blog Storage](../../tools/snapshot-and-restore/ec-azure-snapshotting.md).
     2. Using the newly configured snapshot repository, [create a snapshot](../../tools/snapshot-and-restore/create-snapshots.md) of the data to migrate.
     3. Navigate to Azure and log in as the user that manages the {{es}} resources.
