@@ -34,7 +34,7 @@ Access detailed reference documentation on field and object schemas as well as t
 
 Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
 
-**Learn more in [Elasticsearch and index management](elasticsearch://reference/index.md)**
+**Learn more in [Elasticsearch and index management](elasticsearch://reference/elasticsearch/index.md)**
 
 ## Ingestion tools
 
@@ -46,7 +46,7 @@ Streamline data ingestion with tools like Fleet and Elastic Agent, APM, and Beat
 
 Visualize and analyze your data with Kibana. Configure advanced settings, explore plugins, and utilize command line tools to enhance your data insights.
 
-**Learn more in [Kibana](kibana://reference/elasticsearch/index.md)**
+**Learn more in [Kibana](kibana://reference/index.md)**
 
 ## Elasticsearch plugins
 
