@@ -13,7 +13,7 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 ## Metrics and logs ingestion for LLM APIs (via Elastic integrations)
 
-Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which source you can use and which type of data -- log or metrics -- you can collect.
+Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which type of data -- log or metrics -- you can collect.
 
 | **LLM Provider**  | **Metrics** | **Logs** | 
 |--------|------------|------------|
