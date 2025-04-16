@@ -1,0 +1,18 @@
+name: "Label new issues for triage"
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  add-needs-triage-label:
+    name: Add `triage` label
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add the triage label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: |
+            triage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
