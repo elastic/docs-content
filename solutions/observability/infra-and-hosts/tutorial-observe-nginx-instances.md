@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-nginx.html
 applies_to:
-  stack: 
+  stack:
 ---
 
 # Tutorial: Observe your nginx instances [monitor-nginx]
@@ -13,7 +13,7 @@ applies_to:
 ::::
 
 
-Use the [nginx Elastic integration](https://docs.elastic.co/en/integrations/nginx) and the {{agent}} to collect valuable metrics and logs from your nginx instances. Then, use built-in dashboards and tools like Logs Explorer in {{kib}} to visualize and monitor your nginx data from one place. This data provides valuable insight into your nginx instances—for example:
+Use the [nginx Elastic integration](https://docs.elastic.co/en/integrations/nginx) and the {{agent}} to collect valuable metrics and logs from your nginx instances. Then, use built-in dashboards and tools like Discover to visualize and monitor your nginx data from one place. This data provides valuable insight into your nginx instances—for example:
 
 * A spike in error logs for a certain resource may mean you have a deleted resource that is still needed.
 * Access logs can show when a service’s peak times are, and, from this, when it might be best to perform things like maintenance.
@@ -197,33 +197,20 @@ The **Metrics Nginx overview** shows visual representations of total requests, p
 
 ### View logs [monitor-nginx-explore-logs]
 
-After your nginx logs are ingested, view and explore your logs using [Logs Explorer](#monitor-nginx-logs-explorer) or the [nginx logs dashboards](#monitor-nginx-logs-dashboard).
+After your nginx logs are ingested, view and explore your logs using [Discover](#monitor-nginx-discover) or the [nginx logs dashboards](#monitor-nginx-logs-dashboard).
 
 
-#### Logs Explorer [monitor-nginx-logs-explorer]
+#### Discover [monitor-nginx-discover]
 
-With Logs Explorer, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
+With Discover, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
 
-To open **Logs Explorer**, find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Filter your results to see logs from the nginx integration from the data selector:
 
-1. Under **Integrations**, select **Nginx**.
+1. From the **Data view** menu, select all logs.
 
-    :::{image} /solutions/images/observability-nginx-data-selector.png
-    :alt: nginx integration in the data selector
-    :screenshot:
-    :::
-
-2. Select either **access** logs or **error** logs to view the logs you’re looking for.
-
-The **Documents** table now shows your nginx logs:
-
-:::{image} /solutions/images/observability-nginx-logs-explorer.png
-:alt: Logs Explorer showing nginx error logs
-:screenshot:
-:::
-
+2. Filter the log results using the KQL search bar. Enter `data_stream.dataset : "nginx.error"` to show nginx error logs or `data_stream.dataset : "nginx.access"` to show nginx access logs.
 
 #### nginx logs dashboards [monitor-nginx-logs-dashboard]
 
@@ -288,7 +275,7 @@ These anomaly detection jobs are available when you have data that matches the q
 
 ### Before you begin [monitor-nginx-ml-prereqs]
 
-Verify that your environment is set up properly to use the {{ml-features}}. If {{es}} {{security-features}} are enabled, you need a user with permissions to manage {{anomaly-jobs}}. Refer to [Set up ML features](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
+Verify that your environment is set up properly to use the {{ml-features}}. If {{es}} {{security-features}} are enabled, you need a user with permissions to manage {{anomaly-jobs}}. Refer to [Set up ML features](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 
 
 ### Add nginx ML jobs [monitor-nginx-ml-add-jobs]
@@ -310,11 +297,11 @@ Back on the **Anomaly Detection Jobs** page, you should see the nginx anomaly de
 
 View your anomaly detection job results using the Anomaly Explorer or Single Metric Viewer found under **Anomaly Detection** in the Machine Learning menu. The Anomaly Explorer shows the results from all or any combination of your nginx ML jobs. The Single Metric Viewer focuses on a specific job. These tools offer a comprehensive view of anomalies and help find patterns and irregularities across data points and time intervals.
 
-Refer to [View anomaly detection job results](../../../explore-analyze/machine-learning/anomaly-detection/ml-ad-view-results.md) for more on viewing and understanding your anomaly detection job results.
+Refer to [View anomaly detection job results](/explore-analyze/machine-learning/anomaly-detection/ml-ad-view-results.md) for more on viewing and understanding your anomaly detection job results.
 
 
 ### Set up alerts [monitor-nginx-ml-alert]
 
 With the nginx ML jobs detecting anomalies, you can set rules to generate alerts when your jobs meet specific conditions. For example, you could set up a rule on the `low_request_rate_nginx` job to alert when low request rates hit a specific severity threshold. When you get alerted, you can make sure your server isn’t experiencing issues.
 
-Refer to [Generating alerts for anomaly detection jobs](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md) for more on setting these rules and generating alerts.
+Refer to [Generating alerts for anomaly detection jobs](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md) for more on setting these rules and generating alerts.

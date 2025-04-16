@@ -10,7 +10,7 @@ applies_to:
 
 # Index-level shard allocation
 
-In Elasticsearch, per-index settings allow you to control the allocation of shards to nodes through index-level shard allocation settings. These settings enable you to specify preferences or constraints for where shards of a particular index should reside. This includes allocating shards to nodes with specific attributes or avoiding certain nodes. This level of control helps optimize resource utilization, balance load, and ensure data redundancy and availability according to your deployment's specific requirements. For additional details, check out:
+In {{es}}, per-index settings allow you to control the allocation of shards to nodes through index-level shard allocation settings. These settings enable you to specify preferences or constraints for where shards of a particular index should reside. This includes allocating shards to nodes with specific attributes or avoiding certain nodes. This level of control helps optimize resource utilization, balance load, and ensure data redundancy and availability according to your deployment's specific requirements. For additional details, check out:
 
 * [Shard allocation filtering](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md): Controlling which shards are allocated to which nodes.
 * [Delayed allocation](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md): Delaying allocation of unassigned shards caused by a node leaving.

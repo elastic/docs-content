@@ -8,7 +8,7 @@ mapped_pages:
 
 # Deploy an orchestrator [k8s-quickstart]
 
-With Elastic Cloud on Kubernetes (ECK), you can extend the basic Kubernetes orchestration capabilities to easily deploy, secure, upgrade your {{es}} cluster, along with other Elastic applications.
+With {{eck}} (ECK), you can extend the basic Kubernetes orchestration capabilities to easily deploy, secure, upgrade your {{es}} cluster, along with other Elastic applications.
 
 In this section, you'll learn how to do the following:
 

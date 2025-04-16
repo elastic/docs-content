@@ -53,7 +53,7 @@ You can set instance access roles at two levels:
 * [{{ech}} predefined roles](#ech-predefined-roles)
 * [{{serverless-full}} predefined roles](#general-assign-user-roles-table)
 
-If you're using {{serverless-full}}, you can optionally [create custom roles in a project](/deploy-manage/users-roles/cloud-organization/user-roles.md). All custom roles grant the same access as the `Viewer` instance access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges.To assign a custom role to users, go to **Instance access roles** and select it from the list under the specific project it was created in.
+If you're using {{serverless-full}}, you can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md). All custom roles grant the same access as the `Viewer` instance access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges.To assign a custom role to users, go to **Instance access roles** and select it from the list under the specific project it was created in.
 
 ## {{ech}} predefined roles [ech-predefined-roles]
 

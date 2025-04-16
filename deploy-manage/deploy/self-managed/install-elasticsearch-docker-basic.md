@@ -10,7 +10,7 @@ navigation_title: Single-node cluster
 Use Docker commands to start a single-node {{es}} cluster for development or testing. You can then run additional Docker commands to add nodes to the test cluster or run {{kib}}.
 
 ::::{tip}
-* If you just want to test {{es}} in local development, refer to [Run {{es}} locally](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). Please note that this setup is not suitable for production environments.
+* If you just want to test {{es}} in local development, refer to [Run {{es}} locally](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). Note that this setup is not suitable for production environments.
 * This setup doesn’t run multiple {{es}} nodes or {{kib}} by default. To create a multi-node cluster with {{kib}}, use Docker Compose instead. See [Start a multi-node cluster with Docker Compose](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-compose.md).
 ::::
 

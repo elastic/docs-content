@@ -37,7 +37,7 @@ $$$nlp-model-adaptive-resources$$$
 
 Model allocations are independent units of work for NLP tasks. If you set the numbers of threads and allocations for a model manually, they remain constant even when not all the available resources are fully used or when the load on the model requires more resources. Instead of setting the number of allocations manually, you can enable adaptive allocations to set the number of allocations based on the load on the process. This can help you to manage performance and cost more easily. (Refer to the [pricing calculator](https://cloud.elastic.co/pricing) to learn more about the possible costs.)
 
-When adaptive allocations are enabled, the number of allocations of the model is set automatically based on the current load. When the load is high, a new model allocation is automatically created. When the load is low, a model allocation is automatically removed. You can explicitely set the minimum and maximum number of allocations; autoscaling will occur within these limits.
+When adaptive allocations are enabled, the number of allocations of the model is set automatically based on the current load. When the load is high, a new model allocation is automatically created. When the load is low, a model allocation is automatically removed. You can explicitly set the minimum and maximum number of allocations; autoscaling will occur within these limits.
 
 ::::{note}
 If you set the minimum number of allocations to 1, you will be charged even if the system is not using those resources.
@@ -52,7 +52,7 @@ You can enable adaptive allocations by using:
 If the new allocations fit on the current {{ml}} nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your {{ml}} node will be scaled up if {{ml}} autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 :::{note}
-When you create inference endpoints on {{serverless-short}} using Kibana, adaptive allocations are automatically turned on, and there is no option to disable them.
+When you create inference endpoints on {{serverless-short}} using {{kib}}, adaptive allocations are automatically turned on, and there is no option to disable them.
 :::
 
 ### Optimizing for typical use cases [optimizing-for-typical-use-cases]
@@ -68,7 +68,7 @@ You can enable adaptive resources for your models when starting or updating the 
 
 You can choose from three levels of resource usage for your trained model deployment; autoscaling will occur within the selected level’s range.
 
-Refer to the tables in the [Model deployment resource matrix](#model-deployment-resource-matrix) section to find out the setings for the level you selected.
+Refer to the tables in the [Model deployment resource matrix](#model-deployment-resource-matrix) section to find out the settings for the level you selected.
 
 :::{image} /deploy-manage/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
 :alt: ELSER deployment with adaptive resources enabled.
@@ -78,7 +78,7 @@ Refer to the tables in the [Model deployment resource matrix](#model-deployment-
 
 In {{serverless-full}}, Search projects are given access to more processing resources, while Security and Observability projects have lower limits. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
 
-On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in Kibana for Observability and Security projects.
+On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in {{kib}} for Observability and Security projects.
 
 ## Model deployment resource matrix [model-deployment-resource-matrix]
 

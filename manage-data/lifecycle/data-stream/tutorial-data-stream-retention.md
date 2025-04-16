@@ -58,7 +58,7 @@ We define 4 different types of retention:
 * The effective retention, or `effective_retention`, which is the retention applied at a data stream on a given moment. Effective retention cannot be set, it is derived by taking into account all the configured retention listed above and is calculated as it is described [here](#effective-retention-calculation).
 
 ::::{note}
-Global default and max retention do not apply to data streams internal to elastic. Internal data streams are recognised either by having the `system` flag set to `true` or if their name is prefixed with a dot (`.`).
+Global default and max retention do not apply to data streams internal to elastic. Internal data streams are recognized either by having the `system` flag set to `true` or if their name is prefixed with a dot (`.`).
 ::::
 
 

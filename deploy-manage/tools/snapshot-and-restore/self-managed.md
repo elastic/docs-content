@@ -64,7 +64,7 @@ Other repository types are available through official plugins:
 
 You can also use alternative storage implementations with these repository types, as long as the alternative implementation is fully compatible. For instance, [MinIO](https://minio.io) provides an alternative implementation of the AWS S3 API and you can use MinIO with the [`s3` repository type](s3-repository.md).
 
-Note that some storage systems claim to be compatible with these repository types without emulating their behaviour in full. {{es}} requires full compatibility. In particular the alternative implementation must support the same set of API endpoints, return the same errors in case of failures, and offer equivalent consistency guarantees and performance even when accessed concurrently by multiple nodes. Incompatible error codes, consistency or performance may be particularly hard to track down since errors, consistency failures, and performance issues are usually rare and hard to reproduce.
+Note that some storage systems claim to be compatible with these repository types without emulating their behavior in full. {{es}} requires full compatibility. In particular the alternative implementation must support the same set of API endpoints, return the same errors in case of failures, and offer equivalent consistency guarantees and performance even when accessed concurrently by multiple nodes. Incompatible error codes, consistency or performance may be particularly hard to track down since errors, consistency failures, and performance issues are usually rare and hard to reproduce.
 
 You can perform some basic checks of the suitability of your storage system using the [Repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) API. If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible and is therefore unsuitable for use as a snapshot repository. You will need to work with the supplier of your storage system to address any incompatibilities you encounter.
 
@@ -120,7 +120,7 @@ The API returns:
 
 Depending on the concrete repository implementation the numbers shown for bytes free as well as the number of blobs removed will either be an approximation or an exact result. Any non-zero value for the number of blobs removed implies that unreferenced blobs were found and subsequently cleaned up.
 
-Please note that most of the cleanup operations executed by this endpoint are automatically executed when deleting any snapshot from a repository. If you regularly delete snapshots, you will in most cases not get any or only minor space savings from using this functionality and should lower your frequency of invoking it accordingly.
+Note that most of the cleanup operations executed by this endpoint are automatically executed when deleting any snapshot from a repository. If you regularly delete snapshots, you will in most cases not get any or only minor space savings from using this functionality and should lower your frequency of invoking it accordingly.
 
 ## Back up a repository [snapshots-repository-backup]
 

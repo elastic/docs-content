@@ -30,7 +30,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
@@ -134,7 +134,7 @@ In order to diagnose the unassigned shards, follow the next steps:
 
 7. Change the settings using the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) and [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) APIs to the correct values in order to allow the index to be allocated.
 
-For more guidance on fixing the most common causes for unassinged shards please follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status) or contact [Elastic Support](https://support.elastic.co).
+For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status) or contact [Elastic Support](https://support.elastic.co).
 ::::::
 
 ::::::{tab-item} Self-managed
@@ -234,7 +234,7 @@ In order to diagnose the unassigned shards follow the next steps:
 
 4. Change the settings using the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) and [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) APIs to the correct values in order to allow the index to be allocated.
 
-For more guidance on fixing the most common causes for unassinged shards please follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status).
+For more guidance on fixing the most common causes for unassinged shards follow [this guide](red-yellow-cluster-status.md#fix-red-yellow-cluster-status).
 ::::::
 
 :::::::
