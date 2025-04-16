@@ -79,7 +79,7 @@ If there is no response on any port, it’s possible that no ZooKeeper ports are
 
 If the inline shell script command doesn’t work, you can run the check directly from the director host. This can happen for example when your user lacks permissions to access Docker. This approach avoids entering the container and doesn't require installing additional tools like `telnet` or `nc`, relying instead on `curl`, which is typically available by default on most Linux systems.
 
-1. Run the equivalent inline shell script directly on the host terminal (outside of the zookeeper container)
+1. Run the equivalent inline shell script directly on the host terminal, outside of the zookeeper container
     ```
     for i in $(seq 2191 2199); do 
       output=$(echo mntr | curl -s telnet://localhost:$i | grep -E "server_state|leader|follower|not currently serving|zk_znode_count"); 
