@@ -90,6 +90,6 @@ If the inline shell script command doesn’t work, you can run the check directl
       fi 
     done
     ```
-2. Look for the following lines in the output (just as noted above)
+2. Look for the following lines in the output
   *  `zk_server_state leader` or `zk_server_state follower` — indicates the node’s ZooKeeper role
 
