@@ -74,7 +74,10 @@ Make sure the ZooKeeper container is running on all the Director nodes. If anoth
 If there is no response on any port, it’s possible that no ZooKeeper ports are currently listening (for ex. running on a non-Director role host, or the ZooKeeper Docker container is not running)
 
 
-If the inline shell script command doesn’t work (e.g. your user lacks permissions to access docker), you can run the check directly from the director host. This approach avoids entering the container and doesn't require installing additional tools like `telnet` or `nc`, relying instead on `curl`, which is typically available by default on most Linux systems.
+
+### Alternative: Check at host level 
+
+If the inline shell script command doesn’t work, you can run the check directly from the director host. This can happen for example when your user lacks permissions to access Docker. This approach avoids entering the container and doesn't require installing additional tools like `telnet` or `nc`, relying instead on `curl`, which is typically available by default on most Linux systems.
 
 1. Run the equivalent inline shell script directly on the host terminal (outside of the zookeeper container)
     ```
