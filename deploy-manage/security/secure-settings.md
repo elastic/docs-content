@@ -115,6 +115,8 @@ In self-managed deployments, you're responsible for configuring and maintaining 
 
 {{es}} provides the [`elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) command-line tool to help with this task. It allows you to list, add, remove, and update secure settings, as well as protect the keystore with a password if wanted.
 
+For docker examples, refer to [](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#docker-keystore-bind-mount).
+
 :::{important}
 Secure settings must be specified on every node, and must have the same values across the cluster to ensure consistent behavior.
 
