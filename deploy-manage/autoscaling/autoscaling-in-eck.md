@@ -18,7 +18,7 @@ Configure autoscaling for {{es}} deployments in {{eck}}. Learn how to enable aut
 ::::
 
 
-ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in {{es}} 7.11 to adjust automatically the number of Pods and the allocated resources in a tier.
+ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in {{es}} 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for {{es}} [data tiers](/manage-data/lifecycle/data-tiers.md) and machine learning nodes.
 
 ### Supported Resources for Autoscaling per Elasticsearch Tier
 
