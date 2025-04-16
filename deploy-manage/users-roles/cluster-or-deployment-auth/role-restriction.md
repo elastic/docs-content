@@ -10,7 +10,7 @@ applies_to:
 
 # Role restriction [role-restriction]
 
-Role restriction can be used to specify conditions under which a role should be effective. When conditions are not met, the role will be disabled, which will result in access being denied. Not specifying restriction means the role is not restricted and thus always effective. This is the default behaviour.
+Role restriction can be used to specify conditions under which a role should be effective. When conditions are not met, the role will be disabled, which will result in access being denied. Not specifying restriction means the role is not restricted and thus always effective. This is the default behavior.
 
 Currently, the role restriction is only supported for [API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key), with limitation that the API key can only have a single role descriptor.
 

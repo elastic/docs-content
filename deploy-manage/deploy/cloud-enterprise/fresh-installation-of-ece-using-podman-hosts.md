@@ -42,7 +42,7 @@ This section provides guidelines and recommendations to install ECE using a Podm
 
 2. Add additional Podman hosts
 
-    Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [ECE installation](./install-ece-procedures.md) documentation to adapt the command line parameters to your environment including fetching the role token.
+    Refer to the official [Install {{ece}} on an additional host](install-ece-on-additional-hosts.md) and [ECE installation](./install-ece-procedures.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
     [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 

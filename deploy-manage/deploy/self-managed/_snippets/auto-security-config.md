@@ -1,4 +1,4 @@
-When you start {{es}} for the first time, it automatically performs the following security setup:
+When you start your first {{es}} node for the first time, it automatically performs the following security setup:
 
 * Generates [TLS certificates](#stack-security-certificates) for the [transport and HTTP layers](/deploy-manage/security/secure-cluster-communications.md#communication-channels)
 * Applies TLS configuration settings to `elasticsearch.yml`

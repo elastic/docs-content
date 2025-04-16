@@ -48,7 +48,7 @@ You have several options for installing the {{es}} Debian package:
 2. Save the repository definition to `/etc/apt/sources.list.d/elastic-9.x.list`:
 
     ```sh
-    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
     ```
 
 3. Install the {{kib}} Debian package:
@@ -102,7 +102,12 @@ sudo dpkg -i kibana-{{stack-version}}-amd64.deb
 :::{include} _snippets/new-enrollment-token.md
 :::
 
-## Step 4: Run {{kib}} with `systemd` [deb-running-systemd]
+## Step 4 (Optional): Make {{kib}} externally accessible
+
+:::{include} _snippets/kibana-ip.md
+:::
+
+## Step 5: Run {{kib}} with `systemd` [deb-running-systemd]
 
 To configure {{kib}} to start automatically when the system starts, run the following commands:
 
@@ -121,12 +126,12 @@ sudo systemctl stop kibana.service
 These commands provide no feedback as to whether {{kib}} was started successfully or not. Log information can be accessed using `journalctl -u kibana.service`.
 
 
-## Step 5: Enroll {{kib}} with {{es}}
+## Step 6: Enroll {{kib}} with {{es}}
 
 :::{include} _snippets/enroll-systemd.md
 :::
 
-## Step 6: Configure {{kib}} using the config file [deb-configuring]
+## Step 7: Configure {{kib}} using the config file [deb-configuring]
 
 {{kib}} loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [](configure-kibana.md).
 

@@ -11,7 +11,7 @@ mapped_pages:
 
 ::::{note}
 
-The **Editor** role or higher is required to create anomaly detection rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+The **Editor** role or higher is required to create anomaly detection rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
@@ -29,7 +29,7 @@ Create an anomaly detection rule to check for anomalies in one or more anomaly d
 To create an anomaly detection rule:
 
 1. In your {{obs-serverless}} project, go to **Machine learning** → **Jobs**.
-2. In the list of anomaly detection jobs, find the job you want to check for anomalies. Haven’t created a job yet? [Create one now](../../../explore-analyze/machine-learning/anomaly-detection.md).
+2. In the list of anomaly detection jobs, find the job you want to check for anomalies. Haven’t created a job yet? [Create one now](/explore-analyze/machine-learning/anomaly-detection.md).
 3. From the **Actions** menu next to the job, select **Create alert rule**.
 4. Specify a name and optional tags for the rule. You can use these tags later to filter alerts.
 5. Verify that the correct job is selected and configure the alert details:
@@ -103,7 +103,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -136,7 +136,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.anomalyExplorerUrl`
 :   URL to open in the Anomaly Explorer.

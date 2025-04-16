@@ -241,7 +241,7 @@ The log collection for Kubernetes autodiscovered pods can be supported by using 
 3. Deploy Elastic Agent Manifest
 4. Elastic Agent should be able to discover all containers inside kuernetes cluster and to collect available logs.
 
-The previous default behaviour can be disabled with `hints.default_container_logs: false`. So this will disable the automatic logs collection from all discovered pods. Users need specifically to annotate their pod with following annotations:
+The previous default behavior can be disabled with `hints.default_container_logs: false`. So this will disable the automatic logs collection from all discovered pods. Users need specifically to annotate their pod with following annotations:
 
 ```yaml
 annotations:

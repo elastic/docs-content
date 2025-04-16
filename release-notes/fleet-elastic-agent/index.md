@@ -16,7 +16,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % For each new version section, include the Fleet and Elastic Agent and Kibana changes.
 
 % ## version.next [fleet-elastic-agent-next-release-notes]
-% **Release date:** Month day, year
 
 % ### Features and enhancements [fleet-elastic-agent-next-features-enhancements]
 % *
@@ -26,7 +25,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 
 ## 9.0.0 [fleet-elastic-agent-900-release-notes]
-**Release date:** April 2, 2025
 
 ### Features and enhancements [fleet-elastic-agent-900-features-enhancements]
 * New setting allowing automatic deletion of unenrolled agents in Fleet settings [#195544]({{kib-pull}}195544)

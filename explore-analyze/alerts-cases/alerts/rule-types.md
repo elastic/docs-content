@@ -41,7 +41,7 @@ If you create a rule in the {{observability}} app, its alerts are not visible in
 
 ## Security rules [security-rules]
 
-Security rules detect suspicious source events with pre-built or custom rules and create alerts when a rule’s conditions are met. For more information, refer to [Security rules](security-docs://reference/prebuilt-rules/index.md).
+Security rules detect suspicious source events with pre-built or custom rules and create alerts when a rule’s conditions are met. For more information, refer to [Security rules](detection-rules://index.md).
 
 ::::{note}
 Alerts associated with security rules are visible only in the {{security-app}}; they are not visible in **{{stack-manage-app}} > {{rules-ui}}**.
