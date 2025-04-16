@@ -2,8 +2,6 @@ toc:
   - file: index.md
   - toc: security
   - toc: observability
-  - toc: search
-  # The next one should be child of ☝️
   - toc: elasticsearch-clients
   - toc: ingestion-tools
   # The next two should be children of ☝️

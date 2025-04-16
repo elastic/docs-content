@@ -23,7 +23,7 @@ Each integration comes prepackaged with assets that support all of your observab
 
 
 ::::{note}
-Please be aware that some integrations may function differently across different spaces. Also, some might only work in the default space. We recommend reviewing the specific integration documentation for any space-related considerations.
+Be aware that some integrations may function differently across different spaces. Also, some might only work in the default space. We recommend reviewing the specific integration documentation for any space-related considerations.
 
 ::::
 

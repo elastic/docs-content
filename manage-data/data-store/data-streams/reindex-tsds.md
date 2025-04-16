@@ -27,7 +27,7 @@ To avoid these limitations, use the process that is outlined below:
     3. Set `index.number_of_replicas` to zero and unset the `index.lifecycle.name` index setting.
 
 3. Run the reindex operation to completion.
-4. Revert the overriden index settings in the destination index template.
+4. Revert the overridden index settings in the destination index template.
 5. Invoke the `rollover` api to create a new backing index that can receive new documents.
 
 ::::{note}

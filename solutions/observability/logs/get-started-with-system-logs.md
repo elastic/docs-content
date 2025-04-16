@@ -10,12 +10,12 @@ applies_to:
 
 ::::{note}
 
-**For Observability Serverless projects**, the **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+**For Observability Serverless projects**, the **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
 
-In this guide you’ll learn how to onboard system log data from a machine or server, then observe the data in **Logs Explorer**.
+In this guide you’ll learn how to onboard system log data from a machine or server, then observe the data in **Discover**.
 
 To onboard system log data:
 
@@ -26,20 +26,15 @@ To onboard system log data:
 
 After the agent is installed and successfully streaming log data, you can view the data in the UI:
 
-1. From the navigation menu, go to **Discover** and select the **Logs Explorer** tab. The view shows all log datasets. Notice you can add fields, change the view, expand a document to see details, and perform other actions to explore your data.
-2. Click **All log datasets** and select **System** → **syslog** to show syslog logs.
-
-:::{image} /solutions/images/serverless-log-explorer-select-syslogs.png
-:alt: Screen capture of the Logs Explorer showing syslog dataset selected
-:screenshot:
-:::
+1. From the navigation menu, go to **Discover**.
+1. Select **All logs** from the **Data views** menu. The view shows all log datasets. Notice you can add fields, change the view, expand a document to see details, and perform other actions to explore your data.
 
 
 ## Next steps [observability-get-started-with-logs-next-steps]
 
-Now that you’ve added system logs and explored your data, learn how to onboard other types of data:
+Now that you’ve added logs and explored your data, learn how to onboard other types of data:
 
 * [Stream any log file](stream-any-log-file.md)
-* [Get started with traces and APM](../apps/get-started-with-apm.md)
+* [Get started with traces and APM](/solutions/observability/apm/get-started.md)
 
 To onboard other types of data, select **Add Data** from the main menu.

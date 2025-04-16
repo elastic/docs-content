@@ -30,7 +30,7 @@ Monitoring consists of two components:
 With logging and monitoring enabled for a deployment, metrics are collected for {{es}}, {{kib}}, and APM with Fleet Server.
 
 :::{admonition} Simplify monitoring with AutoOps
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. 
+If you’re using {{ech}}, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. 
 
 For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::
@@ -38,7 +38,7 @@ For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/aut
 ## Before you begin [logging-and-monitoring-limitations]
 
 * Some limitations apply when you use monitoring on ECH or ECE. To learn more, check the monitoring [restrictions and limitations](#restrictions-monitoring).
-* Enabling logs and monitoring consumes extra resources on a deployment. For production systems, we recommend sizing deployments with logs and monitoring enabled to at least 4 GB of RAM on each Elasticsearch instance.
+* Enabling logs and monitoring consumes extra resources on a deployment. For production systems, we recommend sizing deployments with logs and monitoring enabled to at least 4 GB of RAM on each {{es}} instance.
 
 ## Monitoring for production use [logging-and-monitoring-production]
 
@@ -67,17 +67,15 @@ Elastic manages the installation and configuration of the monitoring agent for y
 
 **Before you start**
 
-- Enabling logging and monitoring increases the resource consumption of the deployment. For production systems, we recommend sizing deployments with logging and monitoring enabled to at least 4 GB of RAM on each Elasticsearch instance.
+- Enabling logging and monitoring increases the resource consumption of the deployment. For production systems, we recommend sizing deployments with logging and monitoring enabled to at least 4 GB of RAM on each {{es}} instance.
 - Enabling logging and monitoring can trigger a plan change on your deployment. You can monitor the plan change progress from the deployment's **Activity** page.
 
 To enable monitoring on your deployment:
 
-1. Log into [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) (ECH) or [the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) (ECE).
-2. On the **Deployments** page, select your deployment.
+:::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-
-3. From your deployment menu, go to the **Logs and metrics** page.
+3. Under the deployment's name in the navigation menu, select **Logs and metrics**.
 4. Under **Ship to a deployment**, select **Enable**.
 5. Choose where to send your logs and metrics. Select **Save**.
 
@@ -118,7 +116,7 @@ When shipping logs to a monitoring deployment there are more logging features av
 * [Slow query and index logging](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
-After you’ve enabled log delivery on your deployment, you can [add the Elasticsearch user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.
+After you’ve enabled log delivery on your deployment, you can [add the {{es}} user settings](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.
 
 
 ### For {{kib}} [extra-logging-features-kibana]

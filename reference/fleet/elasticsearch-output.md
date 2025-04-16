@@ -52,14 +52,46 @@ The `elasticsearch` output type supports the following settings, grouped by cate
 
 ## Commonly used settings [output-elasticsearch-commonly-used-settings]
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-enabled-setting$$$<br>`enabled`<br> | (boolean) Enables or disables the output. If set to `false`, the output is disabled.<br><br>**Default:** `true`<br> |
-| $$$output-elasticsearch-hosts-setting$$$<br>`hosts`<br> | (list) The list of {{es}} nodes to connect to. The events are distributed to these nodes in round robin order. If one node becomes unreachable, the event is automatically sent to another node. Each {{es}} node can be defined as a `URL` or `IP:PORT`. For example: `http://192.15.3.2`, `https://es.found.io:9230` or `192.24.3.2:9300`. If no port is specified, `9200` is used.<br><br>::::{note} <br>When a node is defined as an `IP:PORT`, the *scheme* and *path* are taken from the `protocol` and `path` settings.<br>::::<br><br><br>```yaml<br>outputs:<br>  default:<br>    type: elasticsearch<br>    hosts: ["10.45.3.2:9220", "10.45.3.1:9230"] <1><br>    protocol: https<br>    path: /elasticsearch<br>```<br><br>1. In this example, the {{es}} nodes are available at `https://10.45.3.2:9220/elasticsearch` and `https://10.45.3.1:9230/elasticsearch`.<br><br><br>Note that Elasticsearch Nodes in the [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment are exposed on port 443.<br> |
-| $$$output-elasticsearch-protocol-setting$$$<br>`protocol`<br> | (string) The name of the protocol {{es}} is reachable on. The options are: `http` or `https`. The default is `http`. However, if you specify a URL for `hosts`, the value of `protocol` is overridden by whatever scheme you specify in the URL.<br> |
-| $$$output-elasticsearch-proxy_disable-setting$$$<br>`proxy_disable`<br> | (boolean) If set to `true`, all proxy settings, including `HTTP_PROXY` and `HTTPS_PROXY` variables, are ignored.<br><br>**Default:** `false`<br> |
-| $$$output-elasticsearch-proxy_headers-setting$$$<br>`proxy_headers`<br> | (string) Additional headers to send to proxies during CONNECT requests.<br> |
-| $$$output-elasticsearch-proxy_url-setting$$$<br>`proxy_url`<br> | (string) The URL of the proxy to use when connecting to the {{es}} servers. The value may be either a complete URL or a `host[:port]`, in which case the `http` scheme is assumed. If a value is not specified through the configuration file then proxy environment variables are used. See the [Go documentation](https://golang.org/pkg/net/http/#ProxyFromEnvironment) for more information about the environment variables.<br> |
+`enabled` $$$output-elasticsearch-enabled-setting$$$
+:   (boolean) Enables or disables the output. If set to `false`, the output is disabled.
+
+    **Default:** `true`
+
+`hosts` $$$output-elasticsearch-hosts-setting$$$
+:   (list) The list of {{es}} nodes to connect to. The events are distributed to these nodes in round robin order. If one node becomes unreachable, the event is automatically sent to another node. Each {{es}} node can be defined as a `URL` or `IP:PORT`. For example: `http://192.15.3.2`, `https://es.found.io:9230` or `192.24.3.2:9300`. If no port is specified, `9200` is used.
+
+    ::::{note}
+    When a node is defined as an `IP:PORT`, the *scheme* and *path* are taken from the `protocol` and `path` settings.
+    ::::
+
+
+    ```yaml
+    outputs:
+      default:
+        type: elasticsearch
+        hosts: ["10.45.3.2:9220", "10.45.3.1:9230"] <1>
+        protocol: https
+        path: /elasticsearch
+    ```
+
+    1. In this example, the {{es}} nodes are available at `https://10.45.3.2:9220/elasticsearch` and `https://10.45.3.1:9230/elasticsearch`.
+
+
+    Note that Elasticsearch Nodes in the [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment are exposed on port 443.
+
+`protocol` $$$output-elasticsearch-protocol-setting$$$
+:   (string) The name of the protocol {{es}} is reachable on. The options are: `http` or `https`. The default is `http`. However, if you specify a URL for `hosts`, the value of `protocol` is overridden by whatever scheme you specify in the URL.
+
+`proxy_disable` $$$output-elasticsearch-proxy_disable-setting$$$
+:   (boolean) If set to `true`, all proxy settings, including `HTTP_PROXY` and `HTTPS_PROXY` variables, are ignored.
+
+    **Default:** `false`
+
+`proxy_headers` $$$output-elasticsearch-proxy_headers-setting$$$
+:   (string) Additional headers to send to proxies during CONNECT requests.
+
+`proxy_url` $$$output-elasticsearch-proxy_url-setting$$$
+:   (string) The URL of the proxy to use when connecting to the {{es}} servers. The value may be either a complete URL or a `host[:port]`, in which case the `http` scheme is assumed. If a value is not specified through the configuration file then proxy environment variables are used. See the [Go documentation](https://golang.org/pkg/net/http/#ProxyFromEnvironment) for more information about the environment variables.
 
 
 ## Authentication settings [output-elasticsearch-authentication-settings]
@@ -82,10 +114,15 @@ outputs:
     password: "your-password"
 ```
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-password-setting$$$<br>`password`<br> | (string) The basic authentication password for connecting to {{es}}.<br> |
-| $$$output-elasticsearch-username-setting$$$<br>`username`<br> | (string) The basic authentication username for connecting to {{es}}.<br><br>This user needs the privileges required to publish events to {{es}}.<br><br>Note that in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment you need to use [token-based (API key) authentication](#output-elasticsearch-apikey-authentication-settings).<br> |
+`password` $$$output-elasticsearch-password-setting$$$
+:   (string) The basic authentication password for connecting to {{es}}.
+
+`username` $$$output-elasticsearch-username-setting$$$
+:   (string) The basic authentication username for connecting to {{es}}.
+
+    This user needs the privileges required to publish events to {{es}}.
+
+    Note that in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment you need to use [token-based (API key) authentication](#output-elasticsearch-apikey-authentication-settings).
 
 
 ### Token-based (API key) authentication [output-elasticsearch-apikey-authentication-settings]
@@ -98,9 +135,8 @@ outputs:
     api_key: "KnR6yE41RrSowb0kQ0HWoA"
 ```
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-api_key-setting$$$<br>`api_key`<br> | (string) Instead of using a username and password, you can use [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) to secure communication with {{es}}. The value must be the ID of the API key and the API key joined by a colon: `id:api_key`. Token-based authentication is required in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment.<br> |
+`api_key` $$$output-elasticsearch-api_key-setting$$$
+:   (string) Instead of using a username and password, you can use [API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) to secure communication with {{es}}. The value must be the ID of the API key and the API key joined by a colon: `id:api_key`. Token-based authentication is required in an [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment.
 
 
 ### Public Key Infrastructure (PKI) certificates [output-elasticsearch-pki-certs-authentication-settings]
@@ -146,34 +182,142 @@ The service principal name for the {{es}} instance is constructed from these opt
 
 `HTTP/my-elasticsearch.elastic.co@ELASTIC.CO`
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-kerberos.auth_type-setting$$$<br>`kerberos.auth_type`<br> | (string) The type of authentication to use with Kerberos KDC:<br><br>`password`<br>:   When specified, also set `kerberos.username` and `kerberos.password`.<br><br>`keytab`<br>:   When specified, also set `kerberos.username` and `kerberos.keytab`. The keytab must contain the keys of the selected principal, or authentication fails.<br><br>**Default:** `password`<br> |
-| $$$output-elasticsearch-kerberos.config_path$$$<br>`kerberos.config_path`<br> | (string) Path to the `krb5.conf`. {{agent}} uses this setting to find the Kerberos KDC to retrieve a ticket.<br> |
-| $$$output-elasticsearch-kerberos.enabled-setting$$$<br>`kerberos.enabled`<br> | (boolean) Enables or disables the Kerberos configuration.<br><br>::::{note} <br>Kerberos settings are disabled if either `enabled` is set to `false` or the `kerberos` section is missing.<br>::::<br><br> |
-| $$$output-elasticsearch-kerberos.enable_krb5_fast$$$<br>`kerberos.enable_krb5_fast`<br> | (boolean) If `true`, enables Kerberos FAST authentication. This may conflict with some Active Directory installations.<br><br>**Default:** `false`<br> |
-| $$$output-elasticsearch-kerberos.keytab$$$<br>`kerberos.keytab`<br> | (string) If `kerberos.auth_type` is `keytab`, provide the path to the keytab of the selected principal.<br> |
-| $$$output-elasticsearch-kerberos.password$$$<br>`kerberos.password`<br> | (string) If `kerberos.auth_type` is `password`, provide a password for the selected principal.<br> |
-| $$$output-elasticsearch-kerberos.realm$$$<br>`kerberos.realm`<br> | (string) Name of the realm where the output resides.<br> |
-| $$$output-elasticsearch-kerberos.username$$$<br>`kerberos.username`<br> | (string) Name of the principal used to connect to the output.<br> |
+`kerberos.auth_type` $$$output-elasticsearch-kerberos.auth_type-setting$$$
+:   (string) The type of authentication to use with Kerberos KDC:
+
+    `password`
+    :   When specified, also set `kerberos.username` and `kerberos.password`.
+
+    `keytab`
+    :   When specified, also set `kerberos.username` and `kerberos.keytab`. The keytab must contain the keys of the selected principal, or authentication fails.
+
+    **Default:** `password`
+
+`kerberos.config_path` $$$output-elasticsearch-kerberos.config_path$$$
+:   (string) Path to the `krb5.conf`. {{agent}} uses this setting to find the Kerberos KDC to retrieve a ticket.
+
+`kerberos.enabled` $$$output-elasticsearch-kerberos.enabled-setting$$$
+:   (boolean) Enables or disables the Kerberos configuration.
+
+    ::::{note}
+    Kerberos settings are disabled if either `enabled` is set to `false` or the `kerberos` section is missing.
+    ::::
+
+`kerberos.enable_krb5_fast` $$$output-elasticsearch-kerberos.enable_krb5_fast$$$
+:   (boolean) If `true`, enables Kerberos FAST authentication. This may conflict with some Active Directory installations.
+
+    **Default:** `false`
+
+`kerberos.keytab` $$$output-elasticsearch-kerberos.keytab$$$
+:   (string) If `kerberos.auth_type` is `keytab`, provide the path to the keytab of the selected principal.
+
+`kerberos.password` $$$output-elasticsearch-kerberos.password$$$
+:   (string) If `kerberos.auth_type` is `password`, provide a password for the selected principal.
+
+`kerberos.realm` $$$output-elasticsearch-kerberos.realm$$$
+:   (string) Name of the realm where the output resides.
+
+`kerberos.username` $$$output-elasticsearch-kerberos.username$$$
+:   (string) Name of the principal used to connect to the output.
 
 
 ### Compatibility setting [output-elasticsearch-compatibility-setting]
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-allow_older_versions-setting$$$<br>`allow_older_versions`<br> | Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.<br><br>Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.<br><br>**Default:** `true`<br> |
+`allow_older_versions` $$$output-elasticsearch-allow_older_versions-setting$$$
+:   Allow {{agent}} to connect and send output to an {{es}} instance that is running an earlier version than the agent version.
+
+    Note that this setting does not affect {{agent}}'s ability to connect to {{fleet-server}}. {{fleet-server}} will not accept a connection from an agent at a later major or minor version. It will accept a connection from an agent at a later patch version. For example, an {{agent}} at version 8.14.3 can connect to a {{fleet-server}} on version 8.14.0, but an agent at version 8.15.0 or later is not able to connect.
+
+    **Default:** `true`
 
 
 ### Data parsing, filtering, and manipulation settings [output-elasticsearch-data-parsing-settings]
 
 Settings used to parse, filter, and transform data.
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-escape_html-setting$$$<br>`escape_html`<br> | (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.<br><br>**Default:** `false`<br> |
-| $$$output-elasticsearch-pipeline-setting$$$<br>`pipeline`<br> | (string) A format string value that specifies the [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to write events to.<br><br>```yaml<br>outputs:<br>  default:<br>    type: elasticsearchoutput.elasticsearch:<br>    hosts: ["http://localhost:9200"]<br>    pipeline: my_pipeline_id<br>```<br><br>You can set the ingest pipeline dynamically by using a format string to access any event field. For example, this configuration uses a custom field, `fields.log_type`, to set the pipeline for each event:<br><br>```yaml<br>outputs:<br>  default:<br>    type: elasticsearch  hosts: ["http://localhost:9200"]<br>    pipeline: "%{[fields.log_type]}_pipeline"<br>```<br><br>With this configuration, all events with `log_type: normal` are sent to a pipeline named `normal_pipeline`, and all events with `log_type: critical` are sent to a pipeline named `critical_pipeline`.<br><br>::::{tip} <br>To learn how to add custom fields to events, see the `fields` option.<br>::::<br><br><br>See the `pipelines` setting for other ways to set the ingest pipeline dynamically.<br> |
-| $$$output-elasticsearch-pipelines-setting$$$<br>`pipelines`<br> | An array of pipeline selector rules. Each rule specifies the [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to use for events that match the rule. During publishing, {{agent}} uses the first matching rule in the array. Rules can contain conditionals, format string-based fields, and name mappings. If the `pipelines` setting is missing or no rule matches, the `pipeline` setting is used.<br><br>Rule settings:<br><br>**`pipeline`**<br>:   The pipeline format string to use. If this string contains field references, such as `%{[fields.name]}`, the fields must exist, or the rule fails.<br><br>**`mappings`**<br>:   A dictionary that takes the value returned by `pipeline` and maps it to a new name.<br><br>**`default`**<br>:   The default string value to use if `mappings` does not find a match.<br><br>**`when`**<br>:   A condition that must succeed in order to execute the current rule.<br><br>All the conditions supported by processors are also supported here.<br><br>The following example sends events to a specific pipeline based on whether the `message` field contains the specified string:<br><br>```yaml<br>outputs:<br>  default:<br>    type: elasticsearch  hosts: ["http://localhost:9200"]<br>    pipelines:<br>      - pipeline: "warning_pipeline"<br>        when.contains:<br>          message: "WARN"<br>      - pipeline: "error_pipeline"<br>        when.contains:<br>          message: "ERR"<br>```<br><br>The following example sets the pipeline by taking the name returned by the `pipeline` format string and mapping it to a new name that’s used for the pipeline:<br><br>```yaml<br>outputs:<br>  default:<br>    type: elasticsearch<br>    hosts: ["http://localhost:9200"]<br>    pipelines:<br>      - pipeline: "%{[fields.log_type]}"<br>        mappings:<br>          critical: "sev1_pipeline"<br>          normal: "sev2_pipeline"<br>        default: "sev3_pipeline"<br>```<br><br>With this configuration, all events with `log_type: critical` are sent to `sev1_pipeline`, all events with `log_type: normal` are sent to a `sev2_pipeline`, and all other events are sent to `sev3_pipeline`.<br> |
+`escape_html` $$$output-elasticsearch-escape_html-setting$$$
+:   (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.
+
+    **Default:** `false`
+
+`pipeline` $$$output-elasticsearch-pipeline-setting$$$
+:   (string) A format string value that specifies the [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to write events to.
+
+    ```yaml
+    outputs:
+      default:
+        type: elasticsearchoutput.elasticsearch:
+        hosts: ["http://localhost:9200"]
+        pipeline: my_pipeline_id
+    ```
+
+    You can set the ingest pipeline dynamically by using a format string to access any event field. For example, this configuration uses a custom field, `fields.log_type`, to set the pipeline for each event:
+
+    ```yaml
+    outputs:
+      default:
+        type: elasticsearch  hosts: ["http://localhost:9200"]
+        pipeline: "%{[fields.log_type]}_pipeline"
+    ```
+
+    With this configuration, all events with `log_type: normal` are sent to a pipeline named `normal_pipeline`, and all events with `log_type: critical` are sent to a pipeline named `critical_pipeline`.
+
+    ::::{tip}
+    To learn how to add custom fields to events, see the `fields` option.
+    ::::
+
+    See the `pipelines` setting for other ways to set the ingest pipeline dynamically.
+
+`pipelines` $$$output-elasticsearch-pipelines-setting$$$
+:   An array of pipeline selector rules. Each rule specifies the [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to use for events that match the rule. During publishing, {{agent}} uses the first matching rule in the array. Rules can contain conditionals, format string-based fields, and name mappings. If the `pipelines` setting is missing or no rule matches, the `pipeline` setting is used.
+
+    Rule settings:
+
+    **`pipeline`**
+    :   The pipeline format string to use. If this string contains field references, such as `%{[fields.name]}`, the fields must exist, or the rule fails.
+
+    **`mappings`**
+    :   A dictionary that takes the value returned by `pipeline` and maps it to a new name.
+
+    **`default`**
+    :   The default string value to use if `mappings` does not find a match.
+
+    **`when`**
+    :   A condition that must succeed in order to execute the current rule.
+
+    All the conditions supported by processors are also supported here.
+
+    The following example sends events to a specific pipeline based on whether the `message` field contains the specified string:
+
+    ```yaml
+    outputs:
+      default:
+        type: elasticsearch  hosts: ["http://localhost:9200"]
+        pipelines:
+          - pipeline: "warning_pipeline"
+            when.contains:
+              message: "WARN"
+          - pipeline: "error_pipeline"
+            when.contains:
+              message: "ERR"
+    ```
+
+    The following example sets the pipeline by taking the name returned by the `pipeline` format string and mapping it to a new name that’s used for the pipeline:
+
+    ```yaml
+    outputs:
+      default:
+        type: elasticsearch
+        hosts: ["http://localhost:9200"]
+        pipelines:
+          - pipeline: "%{[fields.log_type]}"
+            mappings:
+              critical: "sev1_pipeline"
+              normal: "sev2_pipeline"
+            default: "sev3_pipeline"
+    ```
+
+    With this configuration, all events with `log_type: critical` are sent to `sev1_pipeline`, all events with `log_type: normal` are sent to a `sev2_pipeline`, and all other events are sent to `sev3_pipeline`.
 
 
 
@@ -181,11 +325,26 @@ Settings used to parse, filter, and transform data.
 
 Settings that modify the HTTP requests sent to {{es}}.
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-headers-setting$$$<br>`headers`<br> | Custom HTTP headers to add to each request created by the {{es}} output.<br><br>Example:<br><br>```yaml<br>outputs:<br>  default:<br>    type: elasticsearch<br>    headers:<br>      X-My-Header: Header contents<br>```<br><br>Specify multiple header values for the same header name by separating them with a comma.<br> |
-| $$$output-elasticsearch-parameters-setting$$$<br>`parameters`<br> | Dictionary of HTTP parameters to pass within the URL with index operations.<br> |
-| $$$output-elasticsearch-path-setting$$$<br>`path`<br> | (string) An HTTP path prefix that is prepended to the HTTP API calls. This is useful for the cases where {{es}} listens behind an HTTP reverse proxy that exports the API under a custom prefix.<br> |
+`headers` $$$output-elasticsearch-headers-setting$$$
+:   Custom HTTP headers to add to each request created by the {{es}} output.
+
+    Example:
+
+    ```yaml
+    outputs:
+      default:
+        type: elasticsearch
+        headers:
+          X-My-Header: Header contents
+    ```
+
+    Specify multiple header values for the same header name by separating them with a comma.
+
+`parameters` $$$output-elasticsearch-parameters-setting$$$
+:   Dictionary of HTTP parameters to pass within the URL with index operations.
+
+`path` $$$output-elasticsearch-path-setting$$$
+:   (string) An HTTP path prefix that is prepended to the HTTP API calls. This is useful for the cases where {{es}} listens behind an HTTP reverse proxy that exports the API under a custom prefix.
 
 
 ## Memory queue settings [output-elasticsearch-memory-queue-settings]
@@ -212,11 +371,20 @@ This sample configuration forwards events to the output when there are enough ev
   queue.mem.flush.timeout: 5s
 ```
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-queue.mem.events-setting$$$<br>`queue.mem.events`<br> | The number of events the queue can store. This value should be evenly divisible by the smaller of `queue.mem.flush.min_events` or `bulk_max_size` to avoid sending partial batches to the output.<br><br>**Default:** `3200 events`<br> |
-| $$$output-elasticsearch-queue.mem.flush.min_events-setting$$$<br>`queue.mem.flush.min_events`<br> | `flush.min_events` is a legacy parameter, and new configurations should prefer to control batch size with `bulk_max_size`. As of 8.13, there is never a performance advantage to limiting batch size with `flush.min_events` instead of `bulk_max_size`<br><br>**Default:** `1600 events`<br> |
-| $$$output-elasticsearch-queue.mem.flush.timeout-setting$$$<br>`queue.mem.flush.timeout`<br> | (int) The maximum wait time for `queue.mem.flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.<br><br>**Default:** `10s`<br> |
+`queue.mem.events` $$$output-elasticsearch-queue.mem.events-setting$$$
+:   The number of events the queue can store. This value should be evenly divisible by the smaller of `queue.mem.flush.min_events` or `bulk_max_size` to avoid sending partial batches to the output.
+
+    **Default:** `3200 events`
+
+`queue.mem.flush.min_events` $$$output-elasticsearch-queue.mem.flush.min_events-setting$$$
+:   `flush.min_events` is a legacy parameter, and new configurations should prefer to control batch size with `bulk_max_size`. As of 8.13, there is never a performance advantage to limiting batch size with `flush.min_events` instead of `bulk_max_size`
+
+    **Default:** `1600 events`
+
+`queue.mem.flush.timeout` $$$output-elasticsearch-queue.mem.flush.timeout-setting$$$
+:   (int) The maximum wait time for `queue.mem.flush.min_events` to be fulfilled. If set to 0s, events are available to the output immediately.
+
+    **Default:** `10s`
 
 
 ## Performance tuning settings [output-elasticsearch-performance-tuning-settings]
@@ -227,15 +395,73 @@ Use the `preset` option to automatically configure the group of performance tuni
 
 The performance tuning `preset` values take precedence over any settings that may be defined separately. If you want to change any setting, set `preset` to `custom` and specify the performance tuning settings individually.
 
-| Setting | Description |
-| --- | --- |
-| $$$output-elasticsearch-backoff.init-setting$$$<br>`backoff.init`<br> | (string) The number of seconds to wait before trying to reconnect to {{es}} after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.<br><br>**Default:** `1s`<br> |
-| $$$output-elasticsearch-backoff.max-setting$$$<br>`backoff.max`<br> | (string) The maximum number of seconds to wait before attempting to connect to {{es}} after a network error.<br><br>**Default:** `60s`<br> |
-| $$$output-elasticsearch-bulk_max_size-setting$$$<br>`bulk_max_size`<br> | (int) The maximum number of events to bulk in a single {{es}} bulk API index request.<br><br>Events can be collected into batches. {{agent}} will split batches larger than `bulk_max_size` into multiple batches.<br><br>Specifying a larger batch size can improve performance by lowering the overhead of sending events. However big batch sizes can also increase processing times, which might result in API errors, killed connections, timed-out publishing requests, and, ultimately, lower throughput.<br><br>Setting `bulk_max_size` to values less than or equal to 0 turns off the splitting of batches. When splitting is disabled, the queue decides on the number of events to be contained in a batch.<br><br>**Default:** `1600`<br> |
-| $$$output-elasticsearch-compression_level-setting$$$<br>`compression_level`<br> | (int) The gzip compression level. Set this value to `0` to disable compression. The compression level must be in the range of `1` (best speed) to `9` (best compression).<br><br>Increasing the compression level reduces network usage but increases CPU usage.<br><br>**Default:** `1`<br> |
-| $$$output-elasticsearch-max_retries-setting$$$<br>`max_retries`<br> | (int) The number of times to retry publishing an event after a publishing failure. After the specified number of retries, the events are typically dropped.<br><br>Set `max_retries` to a value less than 0 to retry until all events are published.<br><br>**Default:** `3`<br> |
-| $$$output-elasticsearch-preset-setting$$$<br>`preset`<br> | Configures the full group of [performance tuning settings](#output-elasticsearch-performance-tuning-settings) to optimize your {{agent}} performance when sending data to an {{es}} output.<br><br>Refer to [Performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) for a table showing the group of values associated with any preset, and another table showing EPS (events per second) results from testing the different preset options.<br><br>Performance tuning preset settings:<br><br>**`balanced`**<br>:   Configure the default tuning setting values for "out-of-the-box" performance.<br><br>**`throughput`**<br>:   Optimize the {{es}} output for throughput.<br><br>**`scale`**<br>:   Optimize the {{es}} output for scale.<br><br>**`latency`**<br>:   Optimize the {{es}} output to reduce latence.<br><br>**`custom`**<br>:   Use the `custom` option to fine-tune the performance tuning settings individually.<br><br>**Default:** `balanced`<br> |
-| $$$output-elasticsearch-timeout-setting$$$<br>`timeout`<br> | (string) The HTTP request timeout in seconds for the {{es}} request.<br><br>**Default:** `90s`<br> |
-| $$$output-elasticsearch-worker-setting$$$<br>`worker`<br> | (int) The number of workers per configured host publishing events. Example: If you have two hosts and three workers, in total six workers are started (three for each host).<br><br>**Default:** `1`<br> |
+`backoff.init` $$$output-elasticsearch-backoff.init-setting$$$
+:   (string) The number of seconds to wait before trying to reconnect to {{es}} after a network error. After waiting `backoff.init` seconds, {{agent}} tries to reconnect. If the attempt fails, the backoff timer is increased exponentially up to `backoff.max`. After a successful connection, the backoff timer is reset.
+
+    **Default:** `1s`
+
+`backoff.max` $$$output-elasticsearch-backoff.max-setting$$$
+:   (string) The maximum number of seconds to wait before attempting to connect to {{es}} after a network error.
+
+    **Default:** `60s`
+
+`bulk_max_size` $$$output-elasticsearch-bulk_max_size-setting$$$
+:   (int) The maximum number of events to bulk in a single {{es}} bulk API index request.
+
+    Events can be collected into batches. {{agent}} will split batches larger than `bulk_max_size` into multiple batches.
+
+    Specifying a larger batch size can improve performance by lowering the overhead of sending events. However big batch sizes can also increase processing times, which might result in API errors, killed connections, timed-out publishing requests, and, ultimately, lower throughput.
+
+    Setting `bulk_max_size` to values less than or equal to 0 turns off the splitting of batches. When splitting is disabled, the queue decides on the number of events to be contained in a batch.
+
+    **Default:** `1600`
+
+`compression_level` $$$output-elasticsearch-compression_level-setting$$$
+:   (int) The gzip compression level. Set this value to `0` to disable compression. The compression level must be in the range of `1` (best speed) to `9` (best compression).
+
+    Increasing the compression level reduces network usage but increases CPU usage.
+
+    **Default:** `1`
+
+`max_retries` $$$output-elasticsearch-max_retries-setting$$$
+:   (int) The number of times to retry publishing an event after a publishing failure. After the specified number of retries, the events are typically dropped.
+
+    Set `max_retries` to a value less than 0 to retry until all events are published.
+
+    **Default:** `3`
+
+`preset` $$$output-elasticsearch-preset-setting$$$
+:   Configures the full group of [performance tuning settings](#output-elasticsearch-performance-tuning-settings) to optimize your {{agent}} performance when sending data to an {{es}} output.
+
+    Refer to [Performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) for a table showing the group of values associated with any preset, and another table showing EPS (events per second) results from testing the different preset options.
+
+    Performance tuning preset settings:
+
+    **`balanced`**
+    :   Configure the default tuning setting values for "out-of-the-box" performance.
+
+    **`throughput`**
+    :   Optimize the {{es}} output for throughput.
+
+    **`scale`**
+    :   Optimize the {{es}} output for scale.
+
+    **`latency`**
+    :   Optimize the {{es}} output to reduce latence.
+
+    **`custom`**
+    :   Use the `custom` option to fine-tune the performance tuning settings individually.
+
+    **Default:** `balanced`
+
+`timeout` $$$output-elasticsearch-timeout-setting$$$
+:   (string) The HTTP request timeout in seconds for the {{es}} request.
+
+    **Default:** `90s`
+
+`worker` $$$output-elasticsearch-worker-setting$$$
+:   (int) The number of workers per configured host publishing events. Example: If you have two hosts and three workers, in total six workers are started (three for each host).
+
+    **Default:** `1`
 
 

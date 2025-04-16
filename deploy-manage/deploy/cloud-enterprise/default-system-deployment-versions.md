@@ -8,7 +8,7 @@ mapped_pages:
 
 # Default system deployment versions [ece-system-deployment-versions]
 
-When installing or upgrading {{ece}}, its associated system deployments run by default on the Elastic Stack versions listed in the following table.
+When installing or upgrading {{ece}}, its associated system deployments run by default on the {{stack}} versions listed in the following table.
 
 Note that since version 2.7.0, system deployments are automatically upgraded when upgrading {{ece}}. Don’t attempt to upgrade system deployments manually. Instead, follow the [ECE upgrade instructions](../../upgrade/orchestrator/upgrade-cloud-enterprise.md).
 

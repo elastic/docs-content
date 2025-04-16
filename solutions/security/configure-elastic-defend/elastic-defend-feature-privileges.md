@@ -36,7 +36,7 @@ For each of the following sub-feature privileges, select the type of access you 
 |     |     |
 | --- | --- |
 | **Endpoint List** | Access the [Endpoints](/solutions/security/manage-elastic-defend/endpoints.md) page, which lists all hosts running {{elastic-defend}}, and associated integration details. |
-| **Endpoint Insights** |Access [endpoint insights](/solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md) to check if your hosts have third-party AV software installed. |
+| **Endpoint Insights** |Access [Automatic Troubleshooting](/solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md) to check if your hosts have third-party AV software installed. |
 | **Trusted Applications** | Access the [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) page to remediate conflicts with other software, such as antivirus or endpoint security applications. |
 | **Host Isolation Exceptions** | Access the [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md) page to add specific IP addresses that isolated hosts can still communicate with. |
 | **Blocklist** | Access the [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) page to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious. |

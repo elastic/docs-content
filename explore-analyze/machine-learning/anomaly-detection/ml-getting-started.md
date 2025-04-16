@@ -315,4 +315,4 @@ In general, it is a good idea to start with single metric {{anomaly-jobs}} for y
 
 If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](/reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
 
-If you encounter problems, we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](http://support.elastic.co). Or post in the [Elastic forum](https://discuss.elastic.co/).
+If you encounter problems, we’re here to help. If you are an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](http://support.elastic.co). Or post in the [Elastic forum](https://discuss.elastic.co/).

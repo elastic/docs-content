@@ -28,7 +28,7 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 
 To troubleshoot a cluster in this state, first ensure the cluster has a [stable master](discovery-troubleshooting.md). Next, focus on the nodes unexpectedly leaving the cluster ahead of all other issues. It will not be possible to solve other issues until the cluster has a stable master node and stable node membership.
 
-Diagnostics and statistics are usually not useful in an unstable cluster. These tools only offer a view of the state of the cluster at a single point in time. Instead, look at the cluster logs to see the pattern of behaviour over time. Focus particularly on logs from the elected master. When a node leaves the cluster, logs for the elected master include a message like this (with line breaks added to make it easier to read):
+Diagnostics and statistics are usually not useful in an unstable cluster. These tools only offer a view of the state of the cluster at a single point in time. Instead, look at the cluster logs to see the pattern of behavior over time. Focus particularly on logs from the elected master. When a node leaves the cluster, logs for the elected master include a message like this (with line breaks added to make it easier to read):
 
 ```text
 [2022-03-21T11:02:35,513][INFO ][o.e.c.c.NodeLeftExecutor] [instance-0000000000]

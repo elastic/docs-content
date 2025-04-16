@@ -97,18 +97,72 @@ This configuration disables the default indexers and matchers, and then enables 
 {{agent}} processors execute *before* ingest pipelines, which means that they process the raw event data rather than the final event sent to {{es}}. For related limitations, refer to [What are some limitations of using processors?](/reference/fleet/agent-processors.md#limitations)
 ::::
 
+`host`
+:   (Optional) Node to scope {{agent}} to in case it cannot be accurately detected, as when running {{agent}} in host network mode.
 
-| Name | Required | Default | Description |
-| --- | --- | --- | --- |
-| `host` | No |  | Node to scope {{agent}} to in case it cannot be accurately detected, as when running {{agent}} in host network mode. |
-| `scope` | No | `node` | Whether the processor should have visibility at the node level (`node`) or at the entire cluster level (`cluster`). |
-| `namespace` | No |  | Namespace to collect the metadata from. If no namespaces is specified, collects metadata from all namespaces. |
-| `add_resource_metadata` | No |  | Filters and configuration for adding extra metadata to the event. This setting accepts the following settings:<br><br>* `node` or `namespace`: Labels and annotations filters for the extra metadata coming from node and namespace. By default all labels are included, but annotations are not. To change the default behavior, you can set `include_labels`, `exclude_labels`, and `include_annotations`. These settings are useful when storing labels and annotations that require special handling to avoid overloading the storage output. Wildcards are supported in these settings by using `use_regex_include: true` in combination with `include_labels`, and respectively by setting `use_regex_exclude: true` in combination with `exclude_labels`. To turn off enrichment of `node` or `namespace` metadata individually, set `enabled: false`.<br>* `deployment`: If the resource is `pod` and it is created from a `deployment`, the deployment name is not added by default. To enable this behavior, set `deployment: true`.<br>* `cronjob`: If the resource is `pod` and it is created from a `cronjob`, the cronjob name is not added by default. To enable this behavior, set `cronjob: true`.<br><br>::::{dropdown} Expand this to see an example<br>```yaml<br>      add_resource_metadata:<br>        namespace:<br>          include_labels: ["namespacelabel1"]<br>          # use_regex_include: false<br>          # use_regex_exclude: false<br>          # exclude_labels: ["namespacelabel2"]<br>          #labels.dedot: true<br>          #annotations.dedot: true<br>        node:<br>          # use_regex_include: false<br>          include_labels: ["nodelabel2"]<br>          include_annotations: ["nodeannotation1"]<br>          # use_regex_exclude: false<br>          # exclude_annotations: ["nodeannotation2"]<br>          #labels.dedot: true<br>          #annotations.dedot: true<br>        deployment: true<br>        cronjob: true<br>```<br><br>::::<br><br> |
-| `kube_config` | No | `KUBECONFIG` environment variable, if present | Config file to use as the configuration for the Kubernetes client. |
-| `kube_client_options` | No |  | Additional configuration options for the Kubernetes client. Currently client QPS and burst are supported. If this setting is not configured, the Kubernetes client’s [default QPS and burst](https://pkg.go.dev/k8s.io/client-go/rest#pkg-constants) is used.<br><br>::::{dropdown} Expand this to see an example<br>```yaml<br>      kube_client_options:<br>        qps: 5<br>        burst: 10<br>```<br><br>::::<br><br> |
-| `cleanup_timeout` | No | `60s` | Time of inactivity before stopping the running configuration for a container. |
-| `sync_period` | No |  | Timeout for listing historical resources. |
-| `labels.dedot` | No | `true` | Whether to replace dots (`.`) in labels with underscores (`_`).<br>`annotations.dedot` |
+`scope`
+:   (Optional) Whether the processor should have visibility at the node level (`node`) or at the entire cluster level (`cluster`).
+
+    **Default**: `node`
+
+`namespace`
+:   (Optional) Namespace to collect the metadata from. If no namespaces is specified, collects metadata from all namespaces.
+
+`add_resource_metadata`
+:   (Optional) Filters and configuration for adding extra metadata to the event. This setting accepts the following settings:
+    * `node` or `namespace`: Labels and annotations filters for the extra metadata coming from node and namespace. By default all labels are included, but annotations are not. To change the default behavior, you can set `include_labels`, `exclude_labels`, and `include_annotations`. These settings are useful when storing labels and annotations that require special handling to avoid overloading the storage output. Wildcards are supported in these settings by using `use_regex_include: true` in combination with `include_labels`, and respectively by setting `use_regex_exclude: true` in combination with `exclude_labels`. To turn off enrichment of `node` or `namespace` metadata individually, set `enabled: false`.
+    * `deployment`: If the resource is `pod` and it is created from a `deployment`, the deployment name is not added by default. To enable this behavior, set `deployment: true`.
+    * `cronjob`: If the resource is `pod` and it is created from a `cronjob`, the cronjob name is not added by default. To enable this behavior, set `cronjob: true`.
+
+    ::::{dropdown} Expand this to see an example
+    ```yaml
+          add_resource_metadata:
+            namespace:
+              include_labels: ["namespacelabel1"]
+              # use_regex_include: false
+              # use_regex_exclude: false
+              # exclude_labels: ["namespacelabel2"]
+              #labels.dedot: true
+              #annotations.dedot: true
+            node:
+              # use_regex_include: false
+              include_labels: ["nodelabel2"]
+              include_annotations: ["nodeannotation1"]
+              # use_regex_exclude: false
+              # exclude_annotations: ["nodeannotation2"]
+              #labels.dedot: true
+              #annotations.dedot: true
+            deployment: true
+            cronjob: true
+    ```
+    ::::
+
+`kube_config`
+:   (Optional) `KUBECONFIG` environment variable, if present | Config file to use as the configuration for the Kubernetes client.
+
+`kube_client_options`
+:   (Optional) Additional configuration options for the Kubernetes client. Currently client QPS and burst are supported. If this setting is not configured, the Kubernetes client’s [default QPS and burst](https://pkg.go.dev/k8s.io/client-go/rest#pkg-constants) is used.
+
+    ::::{dropdown} Expand this to see an example
+    ```yaml
+          kube_client_options:
+            qps: 5
+            burst: 10
+    ```
+    ::::
+
+`cleanup_timeout`
+:   (Optional) Time of inactivity before stopping the running configuration for a container.
+
+    **Default**: `60s`
+
+`sync_period`
+:   (Optional) Timeout for listing historical resources.
+
+`labels.dedot`
+:   (Optional) Whether to replace dots (`.`) in labels with underscores (`_`). `annotations.dedot`
+
+    **Default**: `true`
 
 
 ## Indexers and matchers [kubernetes-indexers-and-matchers]
@@ -194,12 +248,9 @@ Available matchers are:
 
     `resource_type`
     :   (Optional) Type of the resource to obtain the ID of. Valid `resource_type`:
-
         * `pod`: to make the lookup based on the Pod UID. When `resource_type` is set to `pod`, `logs_path` must be set as well, supported path in this case:
-
             * `/var/lib/kubelet/pods/` used to read logs from mounted into the Pod volumes, those logs end up under `/var/lib/kubelet/pods/<pod UID>/volumes/<volume name>/...` To use `/var/lib/kubelet/pods/` as a `log_path`, `/var/lib/kubelet/pods` must be mounted into the filebeat Pods.
             * `/var/log/pods/` Note: when using `resource_type: 'pod'` logs will be enriched only with Pod metadata: Pod id, Pod name, etc., not container metadata.
-
         * `container`: to make the lookup based on the container ID, `logs_path` must be set to `/var/log/containers/`. It defaults to `container`.
 
 

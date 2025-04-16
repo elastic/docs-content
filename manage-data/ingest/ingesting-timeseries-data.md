@@ -42,7 +42,7 @@ Beats require that you install a separate Beat for each type of data you want to
 
 [OpenTelemetry](https://opentelemetry.io/docs) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. Elastic is a member of the Cloud Native Computing Foundation (CNCF) and active contributor to the OpenTelemetry project.
 
-In addition to supporting upstream OTel development, Elastic provides [Elastic Distributions of OpenTelemetry](https://github.com/elastic/opentelemetry), specifically designed to work with Elastic Observability. We’re also expanding [{{agent}}](https://www.elastic.co/guide/en/fleet/current) to use OTel collection.
+In addition to supporting upstream OTel development, Elastic provides [Elastic Distributions of OpenTelemetry](https://elastic.github.io/opentelemetry/), specifically designed to work with Elastic Observability. We’re also expanding [{{agent}}](https://www.elastic.co/guide/en/fleet/current) to use OTel collection.
 
 
 ## Logstash [ingest-logstash]

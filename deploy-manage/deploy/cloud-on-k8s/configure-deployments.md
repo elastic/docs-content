@@ -31,7 +31,7 @@ ECK also facilitates configuration and operation activities with advanced featur
 
 * [**Secure settings**](/deploy-manage/security/k8s-secure-settings.md): Configure {{es}} and {{kib}} keystore settings through Kubernetes secrets.
 
-* [**Elastic Stack configuration policies**](elastic-stack-configuration-policies.md): Organize your {{es}} and {{kib}} configuration settings through `StackConfigPolicy` resources that can be referenced within your deployments. This helps to keep your manifests simplified.
+* [**{{stack}} configuration policies**](elastic-stack-configuration-policies.md): Organize your {{es}} and {{kib}} configuration settings through `StackConfigPolicy` resources that can be referenced within your deployments. This helps to keep your manifests simplified.
 
 ::::{important}
 Explore the [Security](/deploy-manage/security.md) and [Users and roles](/deploy-manage/users-roles.md) sections to to learn more about how to secure and control access your deployments.

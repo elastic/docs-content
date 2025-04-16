@@ -22,9 +22,10 @@ The deployment **Health** page provides detailed information on health issues, i
 
 To view the health for a deployment:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or [Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
-3. In your deployment menu, select **Health**.
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
+
+3. Under the deployment's name in the navigation menu, select **Health**.
 
 The **Health** page provides the following information:
 
@@ -117,7 +118,7 @@ deployment:
   ess:
 ```
 
-Elastic Cloud allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. [vCPU boosting](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
+{{ecloud}} allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. [vCPU boosting](/deploy-manage/deploy/elastic-cloud/ec-vcpu-boost-instance.md) is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
 
 You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
 
@@ -138,7 +139,7 @@ We’ve compiled some guidelines to help you ensure the health of your deploymen
 :   Provide instructions on how to troubleshoot issues related to unassigned shards.
 
 [](/troubleshoot/monitoring/performance.md)
-:   Address performance degradation on a smaller size Elasticsearch cluster.
+:   Address performance degradation on a smaller size {{es}} cluster.
 
 [](/troubleshoot/monitoring/high-availability.md)
 :   High availability involves more than setting multiple availability zones (although that’s really important!). Learn how to assess performance and workloads to determine if your deployment has adequate resources to mitigate a potential node failure.

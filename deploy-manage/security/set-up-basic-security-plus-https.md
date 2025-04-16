@@ -8,7 +8,7 @@ mapped_pages:
 ---
 
 % Scope: HTTP certificates setup / manual configuration / multi or single node cluster
-% original title: Set up basic security for the Elastic Stack plus secured HTTPS traffic
+% original title: Set up basic security for the {{stack}} plus secured HTTPS traffic
 # Set up HTTPS [security-basic-setup-https]
 
 Enabling TLS on the HTTP layer, widely known as HTTPS, ensures that all client communications with your cluster are encrypted, adding a critical layer of security.

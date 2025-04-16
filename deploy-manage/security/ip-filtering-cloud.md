@@ -57,7 +57,7 @@ To create a rule set:
     :::{tab-item} {{ech}}
     :sync: ech
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
     3. Under the **Features** tab, open the **Traffic filters** page.
     :::
     :::{tab-item} {{ece}}
@@ -112,7 +112,7 @@ You can edit a rule set name or change the allowed traffic sources using IPv4, o
     :::{tab-item} {{ech}}
     :sync: ech
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
     3. Under the **Features** tab, open the **Traffic filters** page.
     :::
     :::{tab-item} {{ece}}
@@ -141,7 +141,7 @@ To delete a rule set with all its rules:
     :::{tab-item} {{ech}}
     :sync: ech
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
     3. Under the **Features** tab, open the **Traffic filters** page.
     :::
     :::{tab-item} {{ece}}

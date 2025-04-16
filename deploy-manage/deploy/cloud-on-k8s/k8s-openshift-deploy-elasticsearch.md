@@ -6,11 +6,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift-deploy-elasticsearch.html
 ---
 
-# Deploy an Elasticsearch instance with a route [k8s-openshift-deploy-elasticsearch]
+# Deploy an {{es}} instance with a route [k8s-openshift-deploy-elasticsearch]
 
-Use the following code to create an Elasticsearch cluster `elasticsearch-sample` and a "passthrough" route to access it:
+Use the following code to create an {{es}} cluster `elasticsearch-sample` and a "passthrough" route to access it:
 
-::::{note} 
+::::{note}
 A namespace other than the default namespaces (default, kube-system, kube-**, openshift-**, etc) is required such that default [Security Context Constraint](https://docs.openshift.com/container-platform/4.12/authentication/managing-security-context-constraints.html) (SCC) permissions are applied automatically. Elastic resources will not work properly in any of the default namespaces.
 ::::
 
@@ -45,8 +45,8 @@ spec:
 EOF
 ```
 
-## Elasticsearch plugins [k8s-openshift-es-plugins]
+## {{es}} plugins [k8s-openshift-es-plugins]
 
-Elasticsearch plugins cannot be installed at runtime in most OpenShift environments. This is because the plugin installer must run as root, but Elasticsearch is restricted from running as root. To add plugins to Elasticsearch, you can use custom images as described in [*Create custom images*](create-custom-images.md).
+{{es}} plugins cannot be installed at runtime in most OpenShift environments. This is because the plugin installer must run as root, but {{es}} is restricted from running as root. To add plugins to {{es}}, you can use custom images as described in [*Create custom images*](create-custom-images.md).
 
 

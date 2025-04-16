@@ -31,12 +31,12 @@ The **Open Events** panel lists open events sorted by severity and time. When th
 The **Events History** panel lists events that happened at some point and that have been triggered, but some conditions changed and are no longer active. For example, when your cluster experiences a peak in search rate, that might trigger a "Too many tasks on queue" event. Now, your cluster is more relaxed in terms of search rate, so this event is no longer an issue, but it was recorded for historical reasons. Events history is also sorted by severity first and then by time.
 
 
-## Deployment Info [ec-deployment-information]
+## Deployment Resources [ec-deployment-resources]
 
-The **Deployment Info** panel provides a quick overview of the {{es}} cluster resources in the selected deployment, such as {{es}} version, cluster status (indicated by the colors green, yellow, or red) at the top right, number of nodes distributed by role, and resources metrics.
+The **Deployment Resources** panel provides a quick overview of Elasticsearch cluster resource usage. The resources are presented based on their respective data tiers and include JVM memory usage, CPU usage, and storage usage over time. You can view essential cluster information such as the Elasticsearch version, total number of nodes, total shards, and total used storage.
 
-:::{image} /deploy-manage/images/cloud-autoops-deployment-info.png
-:alt: The AutoOps Deployment Info
+:::{image} /deploy-manage/images/cloud-autoops-deployment-resources.png
+:alt: The AutoOps Resources panel
 :::
 
 

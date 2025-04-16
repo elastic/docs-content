@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/explore-metrics.html
 applies_to:
-  stack: 
+  stack:
 ---
 
 # Explore infrastructure metrics over time [explore-metrics]
@@ -47,7 +47,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
 3. Select **Actions** in the top right-hand corner of one of the graphs and then click **Add filter**.
 
-    This graph now displays the metrics only for that host. The filter has added a [{{kib}} Query Language](../../../explore-analyze/query-filter/languages/kql.md) filter for `host.name` in the second row of the Metrics Explorer configuration.
+    This graph now displays the metrics only for that host. The filter has added a [{{kib}} Query Language](/explore-analyze/query-filter/languages/kql.md) filter for `host.name` in the second row of the Metrics Explorer configuration.
 
 4. Let’s analyze some host-specific metrics. In the **of** field, delete each one of the system load metrics.
 5. To explore the outbound network traffic, enter the `host.network.egress.bytes` metric. This is a monotonically increasing value, so from the aggregation dropdown, select `Rate`.

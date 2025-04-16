@@ -5,7 +5,7 @@ mapped_pages:
 
 # Run Elastic Agent on Azure AKS managed by Fleet [running-on-aks-managed-by-fleet]
 
-Please follow the steps to run the {{agent}} on [Run {{agent}} on Kubernetes managed by {{fleet}}](/reference/fleet/running-on-kubernetes-managed-by-fleet.md) page.
+Follow the steps to run the {{agent}} on [Run {{agent}} on Kubernetes managed by {{fleet}}](/reference/fleet/running-on-kubernetes-managed-by-fleet.md) page.
 
 
 ## Important notes: [_important_notes_4]
