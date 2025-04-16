@@ -16,10 +16,6 @@ https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/edit-stack-settin
 
 ## cloud enterprise
 https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/edit-stack-settings
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/edit-stack-settings-elasticsearch
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/edit-stack-settings-kibana
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/edit-stack-settings-apm
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/edit-stack-settings-enterprise
 
 ## eck
 https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s/node-configuration
@@ -35,7 +31,9 @@ https://www.elastic.co/docs/deploy-manage/deploy/self-managed/configure-kibana
 
 ## Available settings
 
-###es
+The available {{stack}} settings differ depending on your deployment type.
+
+### {{es}} settings
 
 For a complete list of settings that you can apply to your {{es}} cluster, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
 
@@ -44,8 +42,7 @@ However, some unmarked settings might be supported on {{ece}}.
 
 {{ech}} and {{ece}} block the configuration of certain settings that could break your cluster if misconfigured. If a setting is not supported, you will get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
 
-
-###kib
+### {{kib}} settings
 
 {{ech}} supports most of the standard {{kib}} settings. 
 
@@ -56,9 +53,12 @@ However, some unmarked settings might be supported on {{ece}}.
 
 Some settings are managed by ECK, it is not recommended to change them, refer to [Settings managed by ECK](settings-managed-by-eck.md) for more details.
 
-###apm
+### Other
+ 
+For APM and Enterprise Search, refer to the product's documentation:
 
-###ent srch
+* [APM](/reference/apm/observability/apm-settings.md)
+* [Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/8.18/configuration.html)
 
 ## Configure {{stack}} settings
 
