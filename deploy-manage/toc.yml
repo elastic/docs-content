@@ -359,6 +359,7 @@ toc:
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
+  - file: configuration-files.md
   - file: tools.md
     children:
       - file: tools/snapshot-and-restore.md
@@ -614,6 +615,7 @@ toc:
       - file: api-keys/elastic-cloud-api-keys.md
       - file: api-keys/elastic-cloud-enterprise-api-keys.md
   - file: manage-connectors.md
+  - file: plugins-bundles.md
   - file: remote-clusters.md
     children:
       - file: remote-clusters/ec-enable-ccs.md
