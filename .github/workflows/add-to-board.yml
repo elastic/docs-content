@@ -29,8 +29,8 @@ jobs:
           "team:Obs":        "649",
           "team:Security":   "1034",
           "team:Platform":   "1232",
-          "team:DocsEng":   "1625",
-          "team:Pojects": "1415"
+          "team:DocsEng":    "1625",
+          "team:Projects":    "1415"
         }
     steps:
       - name: Remove needs‑triage label
