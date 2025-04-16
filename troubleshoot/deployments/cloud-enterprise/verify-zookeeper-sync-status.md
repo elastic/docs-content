@@ -14,6 +14,9 @@ It is recommended to check the ZooKeeper sync status before starting any mainten
 * The ECE UI **Settings** page displays all ZooKeeper nodes as connected, but not all the nodes have completed the syncing with the latest ZooKeeper state.
 * Connected ZooKeeper nodes participate in the quorum, but they don’t appear in the ECE UI **Settings** page. For example, if the host is removed, ECE no longer cares about it and keeps the ZooKeeper container part of the quorum.
 
+
+### Check at container level
+
 To check that ZooKeeper is in sync with the correct number of followers, run the following steps:
 
 1. Run the inline shell script command on each Director node:
