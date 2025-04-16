@@ -133,18 +133,18 @@ If integration syncing reports connection errors or fails to report the syncing 
     ```
     This should return the list of synced integrations with their sync status.
 
-2. If the above query returns an error, verify your setup on the target cluster:
+2. If the above query returns an error, verify your setup on the remote cluster:
 
     1. Go to **Stack Management > Remote Clusters**.
     2. Check that the main cluster is connected as a remote cluster.
     4. Go to **Stack Management > Cross-Cluster Replication**.
-    3. Check that {{ccr}} using the main cluster as remote is correctly set up. In particular, check that the name of the follower index `fleet-synced-integrations-ccr-<output name>` contains the name of the remote {{es}} output on the main cluster.
+    3. Check that {{ccr}} using the main cluster as remote is correctly set up and active. In particular, check that the name of the follower index `fleet-synced-integrations-ccr-<output name>` contains the name of the remote {{es}} output on the main cluster.
 
 3. Then verify your setup in the main cluster:
 
     1. In {{fleet}}, open the **Settings** tab.
-    1. Check that the remote {{es}} output is healthy.
-    2. Edit the remote {{es}} output and check that the value of the **Remote Kibana URL** field is correct. Note that an incorrect value will not cause the output to become unhealthy but will affect integration syncing.
+    1. Check that the remote {{es}} output is healthy. In particular, check that the remote host URL matches one of the Elasticsearch hosts on the remote cluster.
+    2. Edit the remote {{es}} output and check that the remote {{kib}} URL is correct, as well as the validity and privileges of the remote {{kib}} API key. Note that an incorrect value in either of these fields will not cause the output to become unhealthy, but will affect integration syncing.
 
 #### Integrations are not installed on the remote cluster
 
@@ -164,7 +164,7 @@ If integration syncing reports connection errors or fails to report the syncing 
     1. Go to **Management > Dev Tools**
     2. Run the following query:
     ```sh
-    GET fleet-synced-integrations-ccr-remote1/_search
+    GET fleet-synced-integrations-ccr-<output name>/_search
     ```
     The response should match the the contents of the leader index on the main cluster.
 
