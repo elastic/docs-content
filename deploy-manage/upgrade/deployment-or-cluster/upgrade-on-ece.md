@@ -1,16 +1,20 @@
 ---
 navigation_title: "Upgrade on {{ece}}"
+applies_to:
+  stack:
+  deployment:
+   ece:
 ---
 
 # Upgrade your deployment on {{ece}} (ECE)
 
-Similar to {{ech}}, a single click in the {{ecloud}} console can upgrade a deployment running on ECE to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, and all of your deployment components are upgraded simultaneously.
+A single click in the {{ecloud}} console can upgrade a deployment running on ECE to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, Elastic APM, and all of your deployment components are upgraded simultaneously.
 
-Once you're prepared to upgrade, do the following: 
+Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), do the following: 
 
 % Note: Add a link once confirmed where prepare to upgrade will reside in TOC. 
 
-1. Ensure your current ECE and Docker or Podman versions are [compatible](https://www.elastic.co/support/matrix/#elastic-cloud-enterprise) with the {{stack}} version you're upgrading to. For example, if you're upgrading to 9.0.0, the minimum required version is ECE 3.0. If you don’t have a compatible version installed, [upgrade your orchestrator](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md).  
+1. Ensure your current ECE and Docker or Podman versions are [compatible](https://www.elastic.co/support/matrix/#elastic-cloud-enterprise) with the {{stack}} version you're upgrading to. For example, if you're upgrading to 9.0.0, the minimum required version is ECE 4.0. If you don’t have a compatible version installed, [upgrade your orchestrator](/deploy-manage/upgrade/orchestrator/upgrade-cloud-enterprise.md).  
 2. Download the most recent [stack pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece_most_recent_elastic_stack_packs) for the version you’re upgrading to, then [add the stack pack](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece-manage-elastic-stack-add) to your installation using the Cloud UI. 
 3. If not configured already, [assign a snapshots repository](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) to your deployment to enable snapshots and back up your data. Although this is optional, we recommend this step.
  
@@ -26,7 +30,7 @@ Once you're prepared to upgrade, do the following:
 3. Click **Upgrade**, then **Confirm upgrade**. The new configuration takes a few minutes to create.
 
    ::::{note} 
-   If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Deployments** page and restart the upgrade.
+   If any incompatibilities are detected when you attempt to upgrade, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. After resolving the issues, return to the **Deployments** page and restart the upgrade. Also check the [release notes](/release-notes/index.md) to stay aware of changes and known issues for the version you're upgrading to.
    ::::
 
 **Security realm settings**

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-beats-logstash.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-beats-logstash.html
 applies_to:
@@ -94,16 +94,18 @@ sudo ./metricbeat setup \
 ```
 
 1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
-Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the metricbeat.yml.
+2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
 
-You might encounter similar permissions hurdles as you work through multiple sections of this document. These permission requirements are there for a good reason, a security safeguard to prevent unauthorized access and modification of key Elastic files.
+    ::::{important}
+    Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the metricbeat.yml.
 
-If this isn’t a production environment and you want a fast-pass with less permissions hassles, then you can disable strict permission checks from the command line by using `--strict.perms=false` when executing Beats (for example, `./metricbeat --strict.perms=false`).
+    You might encounter similar permissions hurdles as you work through multiple sections of this document. These permission requirements are there for a good reason, a security safeguard to prevent unauthorized access and modification of key Elastic files.
 
-Depending on your system, you may also find that some commands need to be run as root, by prefixing `sudo` to the command.
+    If this isn’t a production environment and you want a fast-pass with less permissions hassles, then you can disable strict permission checks from the command line by using `--strict.perms=false` when executing Beats (for example, `./metricbeat --strict.perms=false`).
 
-::::
+    Depending on your system, you may also find that some commands need to be run as root, by prefixing `sudo` to the command.
+
+    ::::
 
 
 
@@ -182,9 +184,11 @@ sudo ./filebeat setup \
 ```
 
 1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the filebeat.yml.
-::::
+2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
+
+    ::::{important}
+    Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the filebeat.yml.
+    ::::
 
 
 
@@ -195,7 +199,7 @@ Your results should be similar to the following:
 Index setup finished.
 Loading dashboards (Kibana must be running and reachable)
 Loaded dashboards
-Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Please use the ML app instead.
+Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Use the ML app instead.
 See more: /explore-analyze/machine-learning.md
 Loaded machine learning job configurations
 Loaded Ingest pipelines

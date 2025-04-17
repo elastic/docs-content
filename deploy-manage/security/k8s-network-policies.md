@@ -15,7 +15,11 @@ This section describes how to use network policies to isolate the ECK operator a
 
 Note that network policies alone are not sufficient for security. You should complement them with strict RBAC policies, resource quotas, node taints, and other available security mechanisms to ensure that tenants cannot access, modify, or disrupt resources belonging to each other.
 
-::::{note} 
+:::{tip}
+{{eck}} also supports [IP traffic filtering](/deploy-manage/security/ip-filtering-basic.md).
+:::
+
+::::{note}
 There are several efforts to support multi-tenancy on Kubernetes, including the [official working group for multi-tenancy](https://github.com/kubernetes-sigs/multi-tenancy) and community extensions such as [loft](https://loft.sh) and [kiosk](https://github.com/kiosk-sh/kiosk), that can make configuration and management easier. You might need to employ network policies such the ones described in this section to have fine-grained control over {{stack}} applications deployed by your tenants.
 ::::
 
@@ -40,7 +44,7 @@ The operator Pod label depends on how the operator has been installed. Check the
 | YAML manifests | `control-plane: elastic-operator`<br> |
 | Helm Charts | `app.kubernetes.io/name: elastic-operator`<br> |
 
-::::{note} 
+::::{note}
 The examples in this section assume that the ECK operator has been installed using the Helm chart.
 ::::
 
@@ -48,18 +52,18 @@ The examples in this section assume that the ECK operator has been installed usi
 
 Run `kubectl get endpoints kubernetes -n default` to obtain the API server IP address for your cluster.
 
-::::{note} 
+::::{note}
 The following examples assume that the Kubernetes API server IP address is `10.0.0.1`.
 ::::
 
-## Isolating the operator [k8s-network-policies-operator-isolation] 
+## Isolating the operator [k8s-network-policies-operator-isolation]
 
 The minimal set of permissions required are as follows:
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 443 of the Kubernetes API server.<br>* UDP port 53 for DNS lookup.<br>* TCP port 9200 of {{es}} nodes on managed namespace.<br> |
-| Ingress (incoming) | * TCP port 9443 for webhook requests from the Kubernetes API server.<br> |
+| Egress (outgoing) | • TCP port 443 of the Kubernetes API server.<br>• UDP port 53 for DNS lookup.<br>• TCP port 9200 of {{es}} nodes on managed namespace.<br> |
+| Ingress (incoming) | • TCP port 9443 for webhook requests from the Kubernetes API server.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -105,12 +109,12 @@ spec:
 ```
 
 
-## Isolating Elasticsearch [k8s-network-policies-elasticsearch-isolation] 
+## Isolating {{es}} [k8s-network-policies-elasticsearch-isolation]
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9300 to other {{es}} nodes in the namespace (transport port).<br>* UDP port 53 for DNS lookup.<br> |
-| Ingress (incoming) | * TCP port 9200 from the operator and other pods in the namespace.<br>* TCP port 9300 from other {{es}} nodes in the namespace (transport port).<br> |
+| Egress (outgoing) | • TCP port 9300 to other {{es}} nodes in the namespace (transport port).<br>• UDP port 53 for DNS lookup.<br> |
+| Ingress (incoming) | • TCP port 9200 from the operator and other pods in the namespace.<br>• TCP port 9300 from other {{es}} nodes in the namespace (transport port).<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -167,12 +171,12 @@ spec:
 ```
 
 
-## Isolating Kibana [k8s-network-policies-kibana-isolation] 
+## Isolating {{kib}} [k8s-network-policies-kibana-isolation]
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
-| Ingress (incoming) | * TCP port 5601 from other pods in the namespace.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
+| Ingress (incoming) | • TCP port 5601 from other pods in the namespace.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -218,12 +222,12 @@ spec:
 ```
 
 
-## Isolating APM Server [k8s-network-policies-apm-server-isolation] 
+## Isolating APM Server [k8s-network-policies-apm-server-isolation]
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* TCP port 5601 to {{kib}} instances in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
-| Ingress (incoming) | * TCP port 8200 from other pods in the namespace.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• TCP port 5601 to {{kib}} instances in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
+| Ingress (incoming) | • TCP port 8200 from other pods in the namespace.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -273,16 +277,16 @@ spec:
       common.k8s.elastic.co/type: apm-server
 ```
 
-## Isolating Beats [k8s-network-policies-beats-isolation] 
+## Isolating Beats [k8s-network-policies-beats-isolation]
 
-::::{note} 
+::::{note}
 Some {{beats}} may require additional access rules than what is listed here. For example, {{heartbeat}} will require a rule to allow access to the endpoint it is monitoring.
 ::::
 
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* TCP port 5601 to {{kib}} instances in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• TCP port 5601 to {{kib}} instances in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -321,16 +325,16 @@ spec:
 ```
 
 
-## Isolating Elastic Agent and Fleet [k8s-network-policies-agent-isolation] 
+## Isolating Elastic Agent and Fleet [k8s-network-policies-agent-isolation]
 
-::::{note} 
+::::{note}
 Some {{agent}} policies may require additional access rules other than those listed here.
 ::::
 
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* TCP port 5601 to {{kib}} instances in the namespace.<br>* TCP port 8220 to {{fleet}} instances in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• TCP port 5601 to {{kib}} instances in the namespace.<br>• TCP port 8220 to {{fleet}} instances in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -392,16 +396,16 @@ spec:
       common.k8s.elastic.co/type: agent
 ```
 
-## Isolating Logstash [k8s-network-policies-logstash-isolation] 
+## Isolating Logstash [k8s-network-policies-logstash-isolation]
 
-::::{note} 
+::::{note}
 {{ls}} may require additional access rules than those listed here, depending on plugin usage.
 ::::
 
 
 |     |     |
 | --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
+| Egress (outgoing) | • TCP port 9200 to {{es}} nodes in the namespace.<br>• UDP port 53 for DNS lookup.<br> |
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -429,3 +433,6 @@ spec:
       common.k8s.elastic.co/type: logstash
 ```
 
+## Isolating Enterprise Search [k8s-network-policies-enterprise-search-isolation]
+
+Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example of Enterprise Search isolation using network policies in previous {{stack}} versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/{{eck_release_branch}}/k8s_prerequisites.html#k8s-network-policies-enterprise-search-isolation).

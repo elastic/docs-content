@@ -5,7 +5,7 @@ applies_to:
 ---
 # Deploy an orchestrator
 
-Elastic Cloud Enterprise (ECE) provides a centralized platform that allows organizations to run Elasticsearch, Kibana, and other Elastic Stack components across multiple machines, whether in a private or public cloud, virtual machines, or your own premises.
+{{ece}} (ECE) provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines, whether in a private or public cloud, virtual machines, or your own premises.
 
 ::::{note}
 This section focuses on deploying the ECE orchestrator. If you want to deploy {{es}}, {{kib}} or other {{stack}} applications on ECE, refer to [](./working-with-deployments.md).

@@ -9,9 +9,9 @@ mapped_pages:
 
 Several types of {{es}} API keys exist:
 
-* **Personal/User** API key: allows external services to access the Elastic Stack on behalf of a user.
+* **Personal/User** API key: allows external services to access the {{stack}} on behalf of a user.
 * **Cross-cluster** API key: allows other clusters to connect to this cluster.
-* **Managed** API key: created and managed by Kibana to run background tasks.
+* **Managed** API key: created and managed by {{kib}} to run background tasks.
 
 To manage API keys in {{kib}}, go to the **API Keys** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -40,7 +40,7 @@ Refer to the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/
 Refer to the [Create cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) documentation to learn more about creating cross-cluster API keys.
 
 
-## Update an API key [udpate-api-key]
+## Update an API key [update-api-key]
 
 To update an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and then click on the name of the key. You cannot update the name or the type of API key.
 

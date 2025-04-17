@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ingest-aws-securityhub-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-aws-securityhub-data.html
 applies_to:
@@ -23,4 +23,5 @@ In order to enrich your {{elastic-sec}} workflows with third-party cloud securit
 
 After you’ve completed these steps, AWS Security Hub data will appear on the Misconfigurations tab of the [Findings](/solutions/security/cloud/findings-page.md) page.
 
-Any available findings data will also appear in the entity details flyouts for related [alerts](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section). If alerts are present for a user or host that has findings data from AWS Security Hub, the findings will appear on the [users](/solutions/security/explore/users-page.md#user-details-flyout), and [hosts](/solutions/security/explore/hosts-page.md#host-details-flyout) flyouts.
+Any available findings data will also appear in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) for related alerts. If alerts are present for a user or host that has findings data from AWS Security Hub, the findings will appear on the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout).
+

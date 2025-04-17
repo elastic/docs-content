@@ -9,6 +9,5 @@ navigation_title: Elastic Inference
 
 There are several ways to perform {{infer}} in the {{stack}}. This page provides a brief overview of the different methods:
 
-* [Using EIS (Elastic Inference Service)](elastic-inference/eis.md)
 * [Using the {{infer}} API](elastic-inference/inference-api.md)
 * [Trained models deployed in your cluster](machine-learning/nlp/ml-nlp-overview.md)

@@ -1,5 +1,3 @@
-The password for the `elastic` user and the enrollment token for {{kib}} are output to your terminal.
-
 We recommend storing the `elastic` password as an environment variable in your shell. For example:
 
 ```sh subs=true

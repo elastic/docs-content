@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Other nodes out of disk
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-other-node-out-of-disk.html
