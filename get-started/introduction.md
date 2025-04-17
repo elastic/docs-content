@@ -26,7 +26,7 @@ The {{stack}} is used for a wide and growing range of use cases. Here are a few 
 - **Logs, metrics, and traces**: Collect, store, and analyze logs, metrics, and traces from applications, systems, and services.
 - **Application performance monitoring (APM)**: Monitor and analyze the performance of business-critical software applications.
 - **Real user monitoring (RUM)**: Monitor, quantify, and analyze user interactions with web applications.
-- **OpenTelemetry**: Reuse your existing instrumentation to send telemetry data to the Elastic Stack using the OpenTelemetry standard.
+- ****: Reuse your existing instrumentation to send telemetry data to the Elastic Stack using the OpenTelemetry standard.
 
 [**Get started with {{observability}} →**](../solutions/observability/get-started.md)
 
