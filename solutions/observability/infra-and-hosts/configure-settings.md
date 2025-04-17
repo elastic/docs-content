@@ -8,7 +8,7 @@ mapped_pages:
 
 ::::{note}
 
-The **Editor** role or higher is required to configure settings. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+The **Editor** role or higher is required to configure settings. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -34,6 +34,6 @@ If the fields are grayed out and cannot be edited, you may not have sufficient p
 % Stateful only for spaces.
 
 ::::{tip}
-If [Spaces](../../../deploy-manage/manage-spaces.md) are enabled in your {{kib}} instance, any configuration changes you make here are specific to the current space. You can make different subsets of data available by creating multiple spaces with different data source configurations.
+If [Spaces](/deploy-manage/manage-spaces.md) are enabled in your {{kib}} instance, any configuration changes you make here are specific to the current space. You can make different subsets of data available by creating multiple spaces with different data source configurations.
 
 ::::

@@ -37,7 +37,7 @@ $$$nlp-model-adaptive-resources$$$
 
 Model allocations are independent units of work for NLP tasks. If you set the numbers of threads and allocations for a model manually, they remain constant even when not all the available resources are fully used or when the load on the model requires more resources. Instead of setting the number of allocations manually, you can enable adaptive allocations to set the number of allocations based on the load on the process. This can help you to manage performance and cost more easily. (Refer to the [pricing calculator](https://cloud.elastic.co/pricing) to learn more about the possible costs.)
 
-When adaptive allocations are enabled, the number of allocations of the model is set automatically based on the current load. When the load is high, a new model allocation is automatically created. When the load is low, a model allocation is automatically removed. You can explicitely set the minimum and maximum number of allocations; autoscaling will occur within these limits.
+When adaptive allocations are enabled, the number of allocations of the model is set automatically based on the current load. When the load is high, a new model allocation is automatically created. When the load is low, a model allocation is automatically removed. You can explicitly set the minimum and maximum number of allocations; autoscaling will occur within these limits.
 
 ::::{note}
 If you set the minimum number of allocations to 1, you will be charged even if the system is not using those resources.
@@ -68,7 +68,7 @@ You can enable adaptive resources for your models when starting or updating the 
 
 You can choose from three levels of resource usage for your trained model deployment; autoscaling will occur within the selected level’s range.
 
-Refer to the tables in the [Model deployment resource matrix](#model-deployment-resource-matrix) section to find out the setings for the level you selected.
+Refer to the tables in the [Model deployment resource matrix](#model-deployment-resource-matrix) section to find out the settings for the level you selected.
 
 :::{image} /deploy-manage/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
 :alt: ELSER deployment with adaptive resources enabled.

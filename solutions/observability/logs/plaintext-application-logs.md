@@ -14,21 +14,21 @@ Ingest and parse plaintext logs, including existing logs, from any programming l
 Plaintext logs require some additional setup that structured logs do not require:
 
 * To search, filter, and aggregate effectively, you need to parse plaintext logs using an ingest pipeline to extract structured fields. Parsing is based on log format, so you might have to maintain different settings for different applications.
-* To [correlate plaintext logs](../../../solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs), you need to inject IDs into log messages and parse them using an ingest pipeline.
+* To [correlate plaintext logs](/solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs), you need to inject IDs into log messages and parse them using an ingest pipeline.
 
 To ingest, parse, and correlate plaintext logs:
 
-1. Ingest plaintext logs with [{{filebeat}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) or [{{agent}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) and parse them before indexing with an ingest pipeline.
-2. [Correlate plaintext logs with an {{apm-agent}}.](../../../solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs)
-3. [View logs in Discover](../../../solutions/observability/logs/plaintext-application-logs.md#view-plaintext-logs)
+1. Ingest plaintext logs with [{{filebeat}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) or [{{agent}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) and parse them before indexing with an ingest pipeline.
+2. [Correlate plaintext logs with an {{apm-agent}}.](/solutions/observability/logs/plaintext-application-logs.md#correlate-plaintext-logs)
+3. [View logs in Discover](/solutions/observability/logs/plaintext-application-logs.md#view-plaintext-logs)
 
 
 ## Ingest logs [ingest-plaintext-logs]
 
 Send application logs to {{es}} using one of the following shipping tools:
 
-* [{{filebeat}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) A lightweight data shipper that sends log data to {{es}}.
-* [{{agent}}](../../../solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) A single agent for logs, metrics, security data, and threat prevention. Combined with Fleet, you can centrally manage {{agent}} policies and lifecycles directly from {{kib}}.
+* [{{filebeat}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-filebeat) A lightweight data shipper that sends log data to {{es}}.
+* [{{agent}}](/solutions/observability/logs/plaintext-application-logs.md#ingest-plaintext-logs-with-the-agent) A single agent for logs, metrics, security data, and threat prevention. Combined with Fleet, you can centrally manage {{agent}} policies and lifecycles directly from {{kib}}.
 
 
 ### Ingest logs with {{filebeat}} [ingest-plaintext-logs-with-filebeat]
@@ -44,22 +44,36 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 
 ::::::{tab-item} DEB
 ```sh subs=true
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
+sudo dpkg -i filebeat-{{version}}-amd64.deb
+```
+::::::
+
+::::::{tab-item} RPM
+```sh subs=true
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version}}-x86_64.rpm
+```
+::::::
+
+::::::{tab-item} macOS
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
-::::::{tab-item} RPM
+::::::{tab-item} Linux
 ```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
 ::::::
 
-::::::{tab-item} macOS
-1. Download the {{filebeat}} Windows zip file: `https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip`
+::::::{tab-item} Windows
+1. Download the [{{filebeat}} Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip).
 2. Extract the contents of the zip file into `C:\Program Files`.
-3. Rename the `filebeat-{{version}}-windows-x86_64` directory to `{{filebeat}}`.
+3. Rename the _filebeat-{{version}}-windows-x86_64_ directory to _{{filebeat}}_.
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 5. From the PowerShell prompt, run the following commands to install {{filebeat}} as a Windows service:
 
@@ -68,22 +82,7 @@ tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
     PS C:\Program Files\{filebeat}> .\install-service-filebeat.ps1
     ```
 
-
 If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
-::::::
-
-::::::{tab-item} Linux
-```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
-sudo dpkg -i filebeat-{{version}}-amd64.deb
-```
-::::::
-
-::::::{tab-item} Windows
-```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
-sudo rpm -vi filebeat-{{version}}-x86_64.rpm
-```
 ::::::
 
 :::::::
@@ -98,7 +97,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.svg "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```console
@@ -143,7 +142,7 @@ filebeat.inputs:
 
 {{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. To load these assets:
 
-From the {{filebeat}} installation directory, set the [index template](../../../manage-data/data-store/templates.md) by running the command that aligns with your system:
+From the {{filebeat}} installation directory, set the [index template](/manage-data/data-store/templates.md) by running the command that aligns with your system:
 
 :::::::{tab-set}
 
@@ -257,7 +256,7 @@ PUT _ingest/pipeline/filebeat* <1>
 4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](ecs://reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 
-Refer to [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields) for more on using ingest pipelines to parse your log data.
+Refer to [Extract structured fields](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields) for more on using ingest pipelines to parse your log data.
 
 After creating your pipeline, specify the pipeline for filebeat in the `filebeat.yml` file:
 
@@ -351,4 +350,4 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
 ## View logs [view-plaintext-logs]
 
-To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. You can also select **All logs** from the **Data views** menu as it includes the `filebeat-*` index pattern by default. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more information.
+To view logs ingested by {{filebeat}}, go to **Discover** from the main menu and create a data view based on the `filebeat-*` index pattern. You can also select **All logs** from the **Data views** menu as it includes the `filebeat-*` index pattern by default. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md) for more information.

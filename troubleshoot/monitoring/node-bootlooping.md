@@ -49,8 +49,16 @@ If you’re unable to remediate the failing plan’s root cause, you can attempt
 The most frequent cause of a failed deployment configuration change is due to invalid or mislocated [secure settings](/deploy-manage/security/secure-settings.md). This can frequently be discovered by searching {{es}} logs for one of the following error messages:
 
 ```sh
+# Typical Error Message 
+#------------------------------
+[ERROR][org.elasticsearch.bootstrap.Elasticsearch] ... fatal exception while booting Elasticsearch
 IllegalStateException: security initialization failed
+
 java.lang.IllegalArgumentException: unknown secure setting
+
+org.elasticsearch.common.settings.SettingsException: 
+The configuration setting [xpack.security.authc.realms.foobar.foobar1.foobar2.client_secret] is required
+#------------------------------
 ```
 
 These are settings typically added to the keystore for the purpose of:
@@ -61,7 +69,6 @@ These are settings typically added to the keystore for the purpose of:
 The keystore allows you to safely store sensitive settings, such as passwords, as a key/value pair. You can then access a secret value from a settings file by referencing its key. Importantly, not all settings can be stored in the keystore, and the keystore does not validate the settings that you add. Adding unsupported settings can cause {{es}} or other components to fail to restart. To check whether a setting is supported in the keystore, look for a "Secure" qualifier in the [lists of reloadable settings](/deploy-manage/security/secure-settings.md).
 
 The following sections detail some secure settings problems that can result in a configuration change error that can prevent a deployment from restarting. You might diagnose these plan failures via the logs or via their [related exit codes](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#fatal-errors) `1`, `3`, and `78`.
-
 
 ### Invalid or outdated values [ec-config-change-errors-old-values]
 
@@ -90,6 +97,13 @@ When you configure third-party authentication, it’s important that all require
 ### Wrong location [ec-config-change-errors-wrong-location]
 
 In some cases, settings may accidentally be added to the keystore that should have been added to the [{{es}} user settings file](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md). It’s always a good idea to check the [lists of reloadable settings](/deploy-manage/security/secure-settings.md) to determine if a setting can be stored in the keystore. Settings that can safely be added to the keystore are flagged as `Secure`.
+
+### Missing or improperly configured
+
+The error message `The configuration setting [...] is required` indicates that the corresponding setting is configured and present in the Elasticsearch instance via [Elasticsearch user settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ec-add-user-settings), but is either missing or improperly configured in [secure settings](/deploy-manage/security/secure-settings.md). Please review your [secure settings](/deploy-manage/security/secure-settings.md) to ensure they are configured correctly.
+
+Additionally, if you configure these settings via a client tool, such as the [Terraform Provider for Elastic Cloud](https://github.com/elastic/terraform-provider-ec), or through an API and encounter the error, try configuring the settings directly in the Cloud UI to isolate the cause. If configuring in the Cloud UI does not result in the same error, it suggests that the keystore setting is valid, and the method of configuration should be examined. Conversely, if the same error is reported, it suggests that the keystore setting may be invalid and should be reviewed.
+
 
 
 ## Expired custom plugins or bundles [ec-config-change-errors-expired-bundle-extension]

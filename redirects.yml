@@ -6,6 +6,8 @@ redirects:
   'deploy-manage/security/install-stack-demo-secure.md': '!deploy-manage/security/self-setup.md'
   'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
+  'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
+
   # Related to https://github.com/elastic/docs-content/pull/1069
   'solutions/observability/apps/llm-observability.md': 'solutions/observability/applications/llm-observability.md'
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'
@@ -185,3 +187,22 @@ redirects:
   'solutions/observability/apps/inspect-uptime-duration-anomalies.md': 'solutions/observability/uptime/inspect-duration-anomalies.md'
   'solutions/observability/apps/configure-settings.md': 'solutions/observability/uptime/configure-settings.md'
   'solutions/observability/apps/tutorial-monitor-java-application.md': 'solutions/observability/applications/tutorial-monitor-java-application.md'
+  # we can't redirect to the search-ui book so this is the next best option
+  'reference/search/index.md': 'reference/index.md'
+
+# Related to https://github.com/elastic/docs-content/pull/1108
+  'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/apache-errors.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/error-no-such-method.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/java.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/missing-required-property.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-java-api-client/typed-keys-serialization.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-javascript-api/nodejs.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-net-api/audit-trail.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-net-api/debug-information.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-net-api/debug-mode.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-net-api/debugging.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-net-api/logging-with-fiddler.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-net-api/logging-with-onrequestcompleted.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-net-api/logging.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-net-api/net.md': 'troubleshoot/elasticsearch/clients.md'
+  'troubleshoot/elasticsearch/elasticsearch-client-ruby-api/ruby.md': 'troubleshoot/elasticsearch/clients.md'

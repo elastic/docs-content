@@ -16,7 +16,7 @@ Follow the steps described in [Install the Universal Profiling Agent](get-starte
 
 The agent logs will show that the agent is sending data to the backend, and navigating to Kibana you should be able to see data in the **Stacktraces** view. Inspect the backend services logs to verify that the data is being received and ingested. If needed, re-configure the backend services with `verbose: true` to get more detailed logs.
 
-If you find issues in the logs, refer to [Troubleshooting Universal Profiling backend](../../../troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment/troubleshoot-universal-profiling-backend.md).
+If you find issues in the logs, refer to [Troubleshooting Universal Profiling backend](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment/troubleshoot-universal-profiling-backend.md).
 
 
 ## Operating the backend [_operating_the_backend]

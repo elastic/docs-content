@@ -230,7 +230,7 @@ tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
 
 2. Extract the contents of the zip file into `C:\Program Files`.
 
-3. Rename the `metricbeat-{{stack-version}}-windows-x86_64` directory to `Metricbeat`.
+3. Rename the _metricbeat-{{stack-version}}-windows-x86\_64_ directory to _Metricbeat_.
 
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
 
@@ -241,7 +241,9 @@ tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
   PS C:\Program Files\Metricbeat> .\install-service-metricbeat.ps1
   ```
 
-NOTE: If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
+```{note}
+If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
+```
 ::::::
 
 :::::::

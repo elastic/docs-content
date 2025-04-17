@@ -151,10 +151,10 @@ elastic_licensing_enterprise_resource_units_total{license_level="enterprise"} 1
 # HELP elastic_licensing_memory_gibibytes_apm Memory used by APM server in GiB
 # TYPE elastic_licensing_memory_gibibytes_apm gauge
 elastic_licensing_memory_gibibytes_apm{license_level="enterprise"} 0.5
-# HELP elastic_licensing_memory_gibibytes_elasticsearch Memory used by {{es}} in GiB
+# HELP elastic_licensing_memory_gibibytes_elasticsearch Memory used by Elasticsearch in GiB
 # TYPE elastic_licensing_memory_gibibytes_elasticsearch gauge
 elastic_licensing_memory_gibibytes_elasticsearch{license_level="enterprise"} 18
-# HELP elastic_licensing_memory_gibibytes_kibana Memory used by {{kib}} in GiB
+# HELP elastic_licensing_memory_gibibytes_kibana Memory used by Kibana in GiB
 # TYPE elastic_licensing_memory_gibibytes_kibana gauge
 elastic_licensing_memory_gibibytes_kibana{license_level="enterprise"} 1
 # HELP elastic_licensing_memory_gibibytes_logstash Memory used by Logstash in GiB
