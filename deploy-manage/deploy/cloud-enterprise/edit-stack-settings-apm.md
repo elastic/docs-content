@@ -62,9 +62,9 @@ To change APM settings:
 If a setting is not supported by {{ece}}, you get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
 ::::
 
+## Examples
 
-
-## Example: Enable RUM and increase the rate limit (legacy) [ece_example_enable_rum_and_increase_the_rate_limit_legacy]
+### Enable RUM and increase the rate limit (legacy) [ece_example_enable_rum_and_increase_the_rate_limit_legacy]
 
 When capturing the user interaction with clients with real user monitoring (RUM), particularly for situations with concurrent clients, you can increase the number of times each IP address can send a request to the RUM endpoint. Version 6.5 includes an additional settings for the LRU cache.
 
@@ -80,7 +80,7 @@ apm-server:
 ```
 
 
-## Example: Disable RUM (legacy) [ece_example_disable_rum_legacy]
+### Disable RUM (legacy) [ece_example_disable_rum_legacy]
 
 If you know that you won’t be tracking RUM data, you can disable the endpoint proactively.
 
@@ -91,7 +91,7 @@ apm-server:
 ```
 
 
-## Example: Adjust the event limits configuration (legacy) [ece_example_adjust_the_event_limits_configuration_legacy]
+### Adjust the event limits configuration (legacy) [ece_example_adjust_the_event_limits_configuration_legacy]
 
 If the size of the HTTP request frequently exceeds the maximum, you might need to change the limit on the APM Server and adjust the relevant settings in the agent.
 
