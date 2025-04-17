@@ -24,20 +24,16 @@ Check your security provider’s release notes for information on TLS support.
 :   SSL v3 is supported on all {{es}} [compatible JDKs](../deploy/self-managed/installing-elasticsearch.md#jvm-version) but is disabled by default. See [Enabling additional SSL/TLS versions on your JDK](#jdk-enable-tls-protocol).
 
 `TLSv1`
-:   TLS v1.0 is supported on all {{es}} [compatible JDKs](../deploy/self-managed/installing-elasticsearch.md#jvm-version). Some newer JDKs, including the JDK bundled with {{es}}, disable TLS v1.0 by default. See [Enabling additional SSL/TLS versions on your JDK](#jdk-enable-tls-protocol).
+:   TLS v1.0 is supported on all {{es}} [compatible JDKs](../deploy/self-managed/installing-elasticsearch.md#jvm-version) but is disabled by default. See [Enabling additional SSL/TLS versions on your JDK](#jdk-enable-tls-protocol).
 
 `TLSv1.1`
-:   TLS v1.1 is supported on all {{es}} [compatible JDKs](../deploy/self-managed/installing-elasticsearch.md#jvm-version). Some newer JDKs, including the JDK bundled with {{es}}, disable TLS v1.1 by default. See [Enabling additional SSL/TLS versions on your JDK](#jdk-enable-tls-protocol).
+:   TLS v1.1 is supported on all {{es}} [compatible JDKs](../deploy/self-managed/installing-elasticsearch.md#jvm-version) but is disabled by default. See [Enabling additional SSL/TLS versions on your JDK](#jdk-enable-tls-protocol).
 
 `TLSv1.2`
 :   TLS v1.2 is supported on all {{es}} [compatible JDKs](../deploy/self-managed/installing-elasticsearch.md#jvm-version). It is enabled by default on all JDKs that are supported by {{es}}, including the bundled JDK.
 
 `TLSv1.3`
-:   TLS v1.3 is supported on JDK11 and later, and JDK8 builds newer than 8u261 (including the most recent release of each JDK8 distribution that {{es}} supports). TLS v1.3 is supported and enabled by default on the JDK that is bundled with {{es}}.
-
-    ::::{note}
-    Although {{es}} supports running on older JDK8 builds without TLS v1.3, we recommend upgrading to a JDK version that includes TLS v1.3 for better support and updates.
-    ::::
+:   TLS v1.3 is supported on all {{es}} [compatible JDKs](../deploy/self-managed/installing-elasticsearch.md#jvm-version). It is enabled by default on all JDKs that are supported by {{es}}, including the bundled JDK.
 
 
 ## Enabling additional SSL/TLS versions on your JDK [jdk-enable-tls-protocol]
@@ -59,10 +55,6 @@ For the {{es}} **bundled JDK**, the configuration file is in a sub directory of 
 * Windows: `$ES_HOME/jdk/conf/security/java.security`
 * macOS:`$ES_HOME/jdk.app/Contents/Home/conf/security/java.security`
 
-For **JDK8**, the configuration file is within the `jre/lib/security` directory of the Java installation. If `$JAVA_HOME` points to the home directory of the JDK that you use to run {{es}}, then the configuration file will be in:
-
-* `$JAVA_HOME/jre/lib/security/java.security`
-
 For **JDK11 or later**, the configuration file is within the `conf/security` directory of the Java installation. If `$JAVA_HOME` points to the home directory of the JDK that you use to run {{es}}, then the configuration file will be in:
 
 * `$JAVA_HOME/conf/security/java.security`
@@ -72,11 +64,12 @@ For **JDK11 or later**, the configuration file is within the `conf/security` dir
 
 Within the JDK configuration file is a line that starts with `jdk.tls.disabledAlgorithms=`. This setting controls which protocols and algorithms are *disabled* in your JDK. The value of that setting will typically span multiple lines.
 
-For example, in OpenJDK 16 the setting is:
+For example, in OpenJDK 21 the setting is:
 
 ```text
-jdk.tls.disabledAlgorithms=SSLv3, TLSv1, TLSv1.1, RC4, DES, MD5withRSA, \
-    DH keySize < 1024, EC keySize < 224, 3DES_EDE_CBC, anon, NULL
+jdk.tls.disabledAlgorithms=SSLv3, TLSv1, TLSv1.1, DTLSv1.0, RC4, DES, \
+    MD5withRSA, DH keySize < 1024, EC keySize < 224, 3DES_EDE_CBC, anon, NULL, \
+    ECDH
 ```
 
 Create a new file in your in your {{es}} configuration directory named `es.java.security`. Copy the `jdk.tls.disabledAlgorithms` setting from the JDK’s default configuration file into `es.java.security`. You do not need to copy any other settings.
@@ -86,11 +79,12 @@ Create a new file in your in your {{es}} configuration directory named `es.java.
 
 Edit the `es.java.security` file in your {{es}} configuration directory, and modify the `jdk.tls.disabledAlgorithms` setting so that any SSL or TLS versions that you wish to use are no longer listed.
 
-For example, to enable TLSv1.1 on OpenJDK 16 (which uses the `jdk.tls.disabledAlgorithms` settings shown previously), the `es.java.security` file would contain the previously disabled TLS algorithms *except* `TLSv1.1`:
+For example, to enable TLSv1.1 on OpenJDK 21 (which uses the `jdk.tls.disabledAlgorithms` settings shown previously), the `es.java.security` file would contain the previously disabled TLS algorithms *except* `TLSv1.1`:
 
 ```text
-jdk.tls.disabledAlgorithms=SSLv3, TLSv1, RC4, DES, MD5withRSA, \
-    DH keySize < 1024, EC keySize < 224, 3DES_EDE_CBC, anon, NULL
+jdk.tls.disabledAlgorithms=SSLv3, TLSv1, DTLSv1.0, RC4, DES, \
+    MD5withRSA, DH keySize < 1024, EC keySize < 224, 3DES_EDE_CBC, anon, NULL, \
+    ECDH
 ```
 
 
