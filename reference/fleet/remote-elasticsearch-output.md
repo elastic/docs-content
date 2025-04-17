@@ -116,7 +116,7 @@ You can also use the API to view the list of synced integrations with their sync
     This should return the list of synced integrations with their sync status.
 
 ::::{note}
-Syncing can take up to 5 minutes after an integration is installed, updated or removed on the main cluster.
+Syncing can take up to five minutes after an integration is installed, updated, or removed on the main cluster.
 ::::
 
 
@@ -140,15 +140,15 @@ If integration syncing reports connection errors or fails to report the syncing 
     4. Go to **Stack Management > Cross-Cluster Replication**.
     3. Check that {{ccr}} using the main cluster as remote is correctly set up and active. In particular, check that the name of the follower index `fleet-synced-integrations-ccr-<output name>` contains the name of the remote {{es}} output on the main cluster.
 
-3. Then verify your setup in the main cluster:
+3. Verify your setup in the main cluster:
 
     1. In {{fleet}}, open the **Settings** tab.
-    1. Check that the remote {{es}} output is healthy. In particular, check that the remote host URL matches one of the Elasticsearch hosts on the remote cluster.
+    1. Check that the remote {{es}} output is healthy. In particular, check that the remote host URL matches one of the {{es}} hosts on the remote cluster.
     2. Edit the remote {{es}} output and check that the remote {{kib}} URL is correct, as well as the validity and privileges of the remote {{kib}} API key. Note that an incorrect value in either of these fields will not cause the output to become unhealthy, but will affect integration syncing.
 
 #### Integrations are not installed on the remote cluster
 
-1. In the main cluster, look for errors in the integration syncing status of the remote {{es}} output in {{fleet}} **Settings** or using the API as described [above](#troubleshooting).
+1. In the main cluster, look for errors in the integration syncing status of the remote {{es}} output in {{fleet}} **Settings** or using the API as described [previously](#troubleshooting).
 
 2. Check the contents of the leader index:
 
@@ -168,7 +168,7 @@ If integration syncing reports connection errors or fails to report the syncing 
     ```
     The response should match the the contents of the leader index on the main cluster.
 
-4. If there is a mismatch between the leader and follower index, wait up to 5 minutes for the next sync to be completed in each cluster. You can check this by inspecting {{kib}} logs and looking for the line: `[SyncIntegrationsTask] runTask ended: success`.
+4. If there is a mismatch between the leader and follower index, wait up to five minutes for the next sync to be completed in each cluster. You can check this by inspecting {{kib}} logs and looking for the line: `[SyncIntegrationsTask] runTask ended: success`.
 
 #### Uninstalled integrations are not uninstalled on the remote cluster
 
