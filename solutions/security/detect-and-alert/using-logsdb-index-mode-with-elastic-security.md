@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detections-logsdb-index-mode-impact.html
   - https://www.elastic.co/guide/en/serverless/current/detections-logsdb-index-mode-impact.html
 applies_to:
@@ -23,8 +23,7 @@ When the `_source` is reconstructed, [modifications](elasticsearch://reference/e
 
 Continue reading to learn how logsdb index mode affects CPU and storage usage and specific {{elastic-sec}} components. 
 
-::::{note} 
-
+::::{note}
 The following statement applies to {{stack}} users only:
 
 Logsdb index mode is fully supported, and is recommended for all {{elastic-sec}} deployments. Users with existing {{elastic-sec}} deployments are advised to fully understand and accept the documented changes to detection alert documents, runtime fields, and rule actions (refer to the sections below), and ensure that their deployment has sufficient excess hot data tier CPU  capacity to support the logsdb ingest and indexing process. Enabling logsdb index mode without sufficient excess hot data tier CPU capacity may result in data ingestion backups and/or security detection rule timeouts and errors.

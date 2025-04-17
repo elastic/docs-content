@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/setup.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
   - https://www.elastic.co/guide/en/elastic-stack/current/index.html
@@ -9,7 +9,7 @@ mapped_urls:
 
 # Deploy and manage
 
-To get started with Elastic, you need to choose a deployment method and deploy {{stack}} components. 
+To get started with Elastic, you need to choose a deployment method and deploy {{stack}} components.
 
 In this section, you'll learn about how to deploy and manage all aspects of your Elastic environment. You'll learn how to design resilient, highly available clusters and deployments, and how to maintain and scale your environment to grow with your use case.
 
@@ -23,9 +23,9 @@ To get started quickly, you can set up a [local development and testing environm
 
 Learn how to design and deploy a production-ready Elastic environment.
 
-* [](/deploy-manage/deploy.md): Understand your deployment options and choose the approach that best fits your needs. 
-  
-  If you already know how you want to deploy, you can jump to the documentation for your preferred deployment method: 
+* [](/deploy-manage/deploy.md): Understand your deployment options and choose the approach that best fits your needs.
+
+  If you already know how you want to deploy, you can jump to the documentation for your preferred deployment method:
   * [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)
   * [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
   * [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md)

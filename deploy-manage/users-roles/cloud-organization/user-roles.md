@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-user-privileges.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
 applies_to:
@@ -15,7 +15,7 @@ Within an {{ecloud}} organization, users can have one or more roles and each rol
 
 You can assign user roles when you [invite users to join your organization](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-invite-users). You can also edit the roles assigned to a user later.
 
-On this page, you'll learn the following: 
+On this page, you'll learn the following:
 
 * [How to edit a user's roles](#edit-a-users-roles)
 * The [types of roles](#types-of-roles) available, the levels where they can be applied, and the [scope](#ec-role-scoping) of each role type
@@ -26,7 +26,7 @@ On this page, you'll learn the following:
 To edit the roles assigned to a user:
 
 1. Go to the user icon on the header bar and select **Organization**.
-2. Find the user on the **Members** tab of the **Organization** page. Click the member name to view their roles. 
+2. Find the user on the **Members** tab of the **Organization** page. Click the member name to view their roles.
 3. Click **Edit** to change the user's roles.
 
 ## Types of roles
@@ -48,12 +48,12 @@ You can set instance access roles at two levels:
 * **Globally**, for all {{ech}} deployments, or for all {{serverless-full}} projects of the time type ({{es-serverless}}, {{observability}}, or {{elastic-sec}}). In this case, the role will also apply to new deployments, or projects of the specified type type, created later.
 * **Individually**, for specific deployments or projects only. To do that, you have to leave the **Role for all hosted deployments** field, or the **Role for all** for the project type, blank.
 
-{{ech}} deployments and {{serverless-full}} projects each have a set of predefined instance access roles available: 
+{{ech}} deployments and {{serverless-full}} projects each have a set of predefined instance access roles available:
 
 * [{{ech}} predefined roles](#ech-predefined-roles)
 * [{{serverless-full}} predefined roles](#general-assign-user-roles-table)
 
-If you're using {{serverless-full}}, you can optionally [create custom roles in a project](/deploy-manage/users-roles/cloud-organization/user-roles.md). All custom roles grant the same access as the `Viewer` instance access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges.To assign a custom role to users, go to **Instance access roles** and select it from the list under the specific project it was created in.
+If you're using {{serverless-full}}, you can optionally [create custom roles in a project](/deploy-manage/users-roles/serverless-custom-roles.md). All custom roles grant the same access as the `Viewer` instance access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges.To assign a custom role to users, go to **Instance access roles** and select it from the list under the specific project it was created in.
 
 ## {{ech}} predefined roles [ech-predefined-roles]
 

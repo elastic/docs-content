@@ -21,10 +21,10 @@ You can enable access to SLOs in two different ways:
     * [**SLO Editor**](#slo-all-access) — Create, edit, and manage SLOs and their historical summaries.
     * [**SLO Viewer**](#slo-read-access) — Check SLOs and their historical summaries.
 
-* Using the `editor` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices. Users assigned to this role can create, edit, and manage SLOs.
+* Using the `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices. Users assigned to this role can create, edit, and manage SLOs.
 
     ::::{note}
-    The `editor` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) grants write access to *all* {{kib}} apps. If you want to limit access to the SLOs only, you have to manually create and assign the mentioned roles.
+    The `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) grants write access to *all* {{kib}} apps. If you want to limit access to the SLOs only, you have to manually create and assign the mentioned roles.
 
     ::::
 
@@ -39,7 +39,7 @@ To create a role:
 
 Set the following privileges for the SLO Editor role:
 
-1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability-*` to the **Indices** field and `read`, `view_index_metadata`, `write`, and `manage` to the **Privileges** field.
+1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability.*` to the **Indices** field and `read`, `view_index_metadata`, `write`, and `manage` to the **Privileges** field.
 2. Click **Add index privilege**.
 3. In the **Indices** field, add the indices for which you plan to create SLOs. Then, add `read` and `view_index_metadata` to the **Privileges** field. The following example shows `logs-*`, but you can specify any indices.
 
@@ -64,7 +64,7 @@ Set the following privileges for the SLO Editor role:
 
 Set the following privileges for the SLO Read role:
 
-1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability-*` to the **Indices** field and `read` and `view_index_metadata` to the **Privileges** field.
+1. Under **Index privileges** in the **Elasticsearch** section, add `.slo-observability.*` to the **Indices** field and `read` and `view_index_metadata` to the **Privileges** field.
 
     :::{image} /solutions/images/observability-slo-es-priv-viewer.png
     :alt: Index privileges for SLO Viewer role

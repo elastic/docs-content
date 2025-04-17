@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-disable-data-tier.html
   - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
@@ -103,9 +103,10 @@ To add a warm, cold, or frozen tier when you create a deployment:
 
 To add a data tier to an existing deployment:
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or the {{ece}} admin console.
-2. On the **Deployments** page, select your deployment.
-3. In your deployment menu, select **Edit**.
+:::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
+:::
+
+3. Under the deployment's name in the navigation menu, select **Edit**.
 4. Click **+ Add capacity** for any data tiers to add.
 5. Click **Save** at the bottom of the page to save your changes.
 
@@ -115,9 +116,9 @@ To add a data tier to an existing deployment:
 Disabling a data tier, attempting to scale nodes down in size, reducing availability zones, or reverting an [autoscaling](/deploy-manage/autoscaling.md) change can all result in cluster instability, cluster inaccessibility, and even data corruption or loss in extreme cases.
 
 To avoid this, especially for [production environments](/deploy-manage/production-guidance.md), and in addition to making configuration changes to your indices and ILM as described on this page:
-* Review the disk size, CPU, JVM memory pressure, and other [performance metrics](/deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) of your deployment **before** attempting to perform the scaling down action. 
+* Review the disk size, CPU, JVM memory pressure, and other [performance metrics](/deploy-manage/monitor/access-performance-metrics-on-elastic-cloud.md) of your deployment **before** attempting to perform the scaling down action.
 * Make sure that you have enough resources and [availability zones](/deploy-manage/production-guidance/availability-and-resilience.md) to handle your workloads after scaling down.
-* Check that your [deployment hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) (for {{ech}}) or [deployment template](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) (for {{ece}}) is correct for your business use case. For example, if you need to scale due to CPU pressure increases and are using a *Storage Optimized* hardware profile, consider switching to a *CPU Optimized* configuration instead. 
+* Check that your [deployment hardware profile](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) (for {{ech}}) or [deployment template](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) (for {{ece}}) is correct for your business use case. For example, if you need to scale due to CPU pressure increases and are using a *Storage Optimized* hardware profile, consider switching to a *CPU Optimized* configuration instead.
 
 Read [https://www.elastic.co/cloud/shared-responsibility](https://www.elastic.co/cloud/shared-responsibility) for additional details.
 If in doubt, reach out to Support.
@@ -128,10 +129,10 @@ The process of disabling a data tier depends on whether we are dealing with [sea
 The hot and warm tiers store regular indices, while the frozen tier stores searchable snapshots. However, the cold tier can store either regular indices or searchable snapshots. To check if a cold tier contains searchable snapshots perform the following request:
 
 ```sh
-# cold data tier searchable snapshot indices 
+# cold data tier searchable snapshot indices
 GET /_cat/indices/restored-*
 
-# frozen data tier searchable snapshot indices 
+# frozen data tier searchable snapshot indices
 GET /_cat/indices/partial-*
 ```
 
@@ -154,9 +155,9 @@ To make sure that all data can be migrated from the data tier you want to disabl
     ::::{tab-item} {{ech}}
 
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. From the **Deployments** page, select your deployment.
+    2. From the **Hosted deployments** page, select your deployment.
 
-        On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+        On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
     3. Filter the list of instances by the Data tier you want to disable.
 

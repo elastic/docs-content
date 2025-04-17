@@ -32,7 +32,7 @@ With RBAC, interacting with API endpoints now requires a [bearer token](cloud://
 
 ## Before you begin [ece_before_you_begin_8]
 
-To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](cloud://release-notes/cloud-enterprise/known-issues.md).
+To prepare for RBAC, you should review the {{ece}} [limitations and known issues](cloud://release-notes/cloud-enterprise/known-issues.md).
 
 
 ## Available roles and permissions [ece-user-role-permissions]

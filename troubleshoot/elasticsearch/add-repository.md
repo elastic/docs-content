@@ -8,9 +8,9 @@ mapped_pages:
 
 There are several situations where the [Health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) might report an issue regarding the integrity of snapshot repositories in the cluster. The following pages explain the recommended actions for diagnosing corrupted, unknown, and invalid repositories:
 
-* [Diagnosing corrupted repositories](diagnosing-corrupted-repositories.md)
-* [Diagnosing unknown repositories](diagnosing-unknown-repositories.md)
-* [Diagnosing invalid repositories](diagnosing-invalid-repositories.md)
+* [](diagnosing-corrupted-repositories.md)
+* [](diagnosing-unknown-repositories.md)
+* [](diagnosing-invalid-repositories.md)
 
 
 

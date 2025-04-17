@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/self-healing-rollback.html
   - https://www.elastic.co/guide/en/serverless/current/security-self-healing-rollback.html
 applies_to:
@@ -18,7 +18,7 @@ This can help contain the impact of malicious activity, as {{elastic-defend}} no
 :class: note
 * Self-healing rollback is only supported for Windows endpoints.
 * In {{stack}}, this feature requires a [Platinum or Enterprise subscription](https://www.elastic.co/pricing).
-* In {{serverless-short}}, this feature requires the Endpoint Protection Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md). 
+* In {{serverless-short}}, this feature requires the Endpoint Protection Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
 
 

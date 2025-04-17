@@ -6,9 +6,9 @@ applies_to:
   serverless: all
 ---
 
-# Elasticsearch billing dimensions [elasticsearch-billing]
+# {{es}} billing dimensions [elasticsearch-billing]
 
-Elasticsearch is priced based on consumption of the underlying infrastructure that supports your use case, with the performance characteristics you need. Measurements are in Virtual Compute Units (VCUs). Each VCU represents a fraction of RAM, CPU, and local disk for caching.
+{{es}} is priced based on consumption of the underlying infrastructure that supports your use case, with the performance characteristics you need. Measurements are in Virtual Compute Units (VCUs). Each VCU represents a fraction of RAM, CPU, and local disk for caching.
 
 The number of VCUs you need is determined by:
 
@@ -23,7 +23,7 @@ For detailed {{es-serverless}} project rates, see the [{{es-serverless}} pricing
 
 ## VCU types: Search, Indexing, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
 
-Elasticsearch uses three VCU types:
+{{es}} uses three VCU types:
 
 * **Indexing:** The VCUs used to index incoming documents.
 * **Search:** The VCUs used to return search results, with the latency and queries per second (QPS) you require.
@@ -44,4 +44,4 @@ You can control costs using the following strategies:
 * **Machine learning trained model autoscaling:** Configure your trained model deployment to allow it to scale down to zero allocations when there are no active inference requests:
 
     * When starting or updating a trained model deployment, [Enable adaptive resources](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources) and set the VCU usage level to **Low**.
-    * When using the inference API for Elasticsearch or ELSER, [enable `adaptive_allocations`](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations).
+    * When using the inference API for {{es}} or ELSER, [enable `adaptive_allocations`](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations).

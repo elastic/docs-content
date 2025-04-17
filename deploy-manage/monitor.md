@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
 applies_to:
@@ -56,7 +56,7 @@ deployment:
   ess:
 ```
 
-{{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployment and resolving health issues when they arise: 
+{{ece}} and {{ech}} provide out of the box tools for monitoring the health of your deployment and resolving health issues when they arise:
 
 * [Cluster health information](/deploy-manage/monitor/cloud-health-perf.md#ec-es-cluster-health), including [health warnings](/deploy-manage/monitor/cloud-health-perf.md#ec-es-health-warnings)
 * A [JVM memory pressure indicator](/deploy-manage/monitor/ec-memory-pressure.md)
@@ -93,7 +93,7 @@ In addition to monitoring your cluster or deployment health and performance, you
 Learn how to enable monitoring of your orchestrator:
 
 * [ECK operator metrics](/deploy-manage/monitor/orchestrators/eck-metrics-configuration.md): Open and secure a metrics endpoint that can be used to monitor the operator’s performance and health. This endpoint can be scraped by third-party Kubernetes monitoring tools.
-* [ECK platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md): Learn about how ECE collects monitoring data for your installation in the `logging-and-metrics` deployment, and how to access monitoring data.
+* [ECE platform monitoring](/deploy-manage/monitor/orchestrators/ece-platform-monitoring.md): Learn about how ECE collects monitoring data for your installation in the `logging-and-metrics` deployment, and how to access monitoring data.
 
 :::{admonition} Monitoring {{ecloud}}
 Elastic monitors [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) service metrics and performance as part of [our shared responsibility](https://www.elastic.co/cloud/shared-responsibility). We provide service availability information on our [service status page](/deploy-manage/cloud-organization/service-status.md).

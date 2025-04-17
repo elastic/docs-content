@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-autoscaling.html
 applies_to:
   deployment:
@@ -19,11 +19,11 @@ By default, {{serverless-full}} automatically scales your {{es}} resources based
 
 ## Cluster autoscaling
 
-::::{admonition} Indirect use only 
+::::{admonition} Indirect use only
 This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
 
-Cluster autoscaling allows an operator to create tiers of nodes that monitor themselves and determine if scaling is needed based on an operator-defined policy. An Elasticsearch cluster can use the autoscaling API to report when additional resources are required. For example, an operator can define a policy that scales a warm tier based on available disk space. Elasticsearch monitors disk space in the warm tier. If it predicts low disk space for current and future shard copies, the autoscaling API reports that the cluster needs to scale. It remains the responsibility of the operator to add the additional resources that the cluster signals it requires.
+Cluster autoscaling allows an operator to create tiers of nodes that monitor themselves and determine if scaling is needed based on an operator-defined policy. An {{es}} cluster can use the autoscaling API to report when additional resources are required. For example, an operator can define a policy that scales a warm tier based on available disk space. {{es}} monitors disk space in the warm tier. If it predicts low disk space for current and future shard copies, the autoscaling API reports that the cluster needs to scale. It remains the responsibility of the operator to add the additional resources that the cluster signals it requires.
 
 A policy is composed of a list of roles and a list of deciders. The policy governs the nodes matching the roles. The deciders provide independent estimates of the capacity required. See [Autoscaling deciders](../deploy-manage/autoscaling/autoscaling-deciders.md) for details on available deciders.
 
@@ -42,7 +42,7 @@ Trained model autoscaling automatically adjusts the resources allocated to train
 Trained model autoscaling supports:
 * Scaling trained model deployments
 
-::::{note} 
+::::{note}
 Autoscaling is not supported on Debian 8.
 ::::
 
