@@ -7,7 +7,6 @@ on:
 permissions:
   issues: write
   contents: read
-  projects: write
 
 jobs:
   route:
@@ -15,11 +14,11 @@ jobs:
     if: >
       contains(
         [
-          'team:obs',
-          'team:security',
-          'team:platform',
-          'team:docs-eng',
-          'team:docs-projects'
+          'team:Obs',
+          'team:Security',
+          'team:Platform',
+          'team:DocsEng',
+          'team:Projects'
         ],
         github.event.label.name
       )
@@ -30,18 +29,18 @@ jobs:
           "team:Security":   "1034",
           "team:Platform":   "1232",
           "team:DocsEng":    "1625",
-          "team:Projects":    "1415"
+          "team:Projects":   "1415"
         }
     steps:
-      - name: Remove needs‑triage label
+      - name: Remove needs-team label
         uses: actions-ecosystem/action-remove-labels@v1
         with:
-          labels: needs-triage
+          labels: needs-team
 
       - name: Add issue to the right project
         uses: actions/add-to-project@v1
         with:
           project-url: https://github.com/orgs/elastic/projects/${{ fromJson(env.PROJECT_ID_MAP)[github.event.label.name] }}
-          github-token: ${{ secrets.TRIAGE_TOKEN }}
+          github-token: ${{ secrets.ADD_TO_BOARD_TOKEN }}
           labeled: ${{ github.event.label.name }}
           label-operator: OR
