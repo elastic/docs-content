@@ -448,7 +448,7 @@ Include the `openPit` and `pitKeepAlive` parameters in your initial request:
 curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&openPit=true&pitKeepAlive=5m'
 ```
 
-And use the returned values in your new request to retrieve the next set of 10,000 agents:
+You can then use the returned values in a new request to retrieve the next set of 10,000 agents:
 
 ```shell
 curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&searchAfter=<nextSearchAfter>&pitId=<pit id>&pitKeepAlive=5m'
