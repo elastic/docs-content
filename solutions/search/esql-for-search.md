@@ -171,5 +171,5 @@ Refer to [{{esql}} limitations](elasticsearch://reference/query-languages/esql/l
 
 ### Related blog posts [esql-for-search-blogs]
 
-% TODO* https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[{{esql}}, you know for Search]: Introducing scoring and semantic search
+https://www.elastic.co/search-labs/blog/esql-introducing-scoring-semantic-search[{{esql}}, you know for Search]: Introducing scoring and semantic search
 - [Introducing full text filtering in {{esql}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr): Overview of {{esql}}'s text filtering capabilities
