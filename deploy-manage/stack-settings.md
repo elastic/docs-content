@@ -10,23 +10,6 @@ navigation_title: "Stack settings"
 
 # Elastic Stack settings
 
-<!--
-## cloud hosted
-https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/edit-stack-settings
-
-## cloud enterprise
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise/edit-stack-settings
-
-## eck
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s/node-configuration
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s/k8s-kibana-advanced-configuration#k8s-kibana-configuration
-
-## self
-https://www.elastic.co/docs/deploy-manage/deploy/self-managed/configure-elasticsearch
-https://www.elastic.co/docs/deploy-manage/deploy/self-managed/configure-kibana
--->
-
 {{stack}} settings allow you to customize {{es}}, {{kib}}, and other {{stack}} products to suit your needs. 
 
 ## Available settings
@@ -35,23 +18,24 @@ The available {{stack}} settings differ depending on your deployment type.
 
 ### {{es}} settings
 
-For a complete list of settings that you can apply to your {{es}} cluster, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
+{{es}} settings can be found in the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
 
-Settings supported on {{ece}} and {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")). 
-However, some unmarked settings might be supported on {{ece}}. 
-
-{{ech}} and {{ece}} block the configuration of certain settings that could break your cluster if misconfigured. If a setting is not supported, you will get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
+| Deployment type | Applicable settings | 
+| --- | --- |
+| Self managed | All {{es}} settings can be applied to a self-managed cluster. |
+| {{ece}}<br><br>{{ech}} | Settings supported on {{ece}} and {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")). However, some unmarked settings might also be supported.<br><br>{{ech}} and {{ece}} block the configuration of certain settings that could break your cluster if misconfigured. If a setting is not supported, you will get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported. |
+| {{eck}} | Most {{es}} settings can be applied to an ECK-managed {{es}} cluster.<br><br>Some settings are managed by ECK.  It is not recommended to change these managed settings. For a complete list, refer to [Settings managed by ECK](/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck.md). |
 
 ### {{kib}} settings
 
-{{ech}} supports most of the standard {{kib}} settings. 
+{{es}} settings can be found in the [{{kib}} configuration reference](kibana:///reference/configuration-reference/index.md).
 
-Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions.
+| Deployment type | Applicable settings | 
+| --- | --- |
+| Self managed<br><br>{{eck}} | All {{kib}} settings can be applied to a self-managed or ECK instance. |
+| {{ece}}<br><br>{{ech}} | Settings supported on {{ece}} and {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")). However, some unmarked settings might also be supported.<br><br>{{ech}} and {{ece}} block the configuration of certain settings that could break your cluster if misconfigured. If a setting is not supported, you will get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported. |
+| {{eck}} | Most {{es}} settings can be applied to an ECK-managed {{es}} cluster.<br><br>Some settings are managed by ECK.  It is not recommended to change these managed settings. For a complete list, refer to [Settings managed by ECK](/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck.md). |
 
-Settings supported on {{ece}} and {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")). 
-However, some unmarked settings might be supported on {{ece}}. 
-
-Some settings are managed by ECK, it is not recommended to change them, refer to [Settings managed by ECK](settings-managed-by-eck.md) for more details.
 
 ### Other
  
@@ -114,7 +98,7 @@ The method and location where you can update your {{stack}} settings depends on 
 
 Most settings can be changed on a running cluster using the [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API.
 
-You can also set {{es}} settings in `elasticsearch.yml`.  Some settings require a cluster restart. To learn more, refer to [Static vs. dynamic {{es}} settings](#static-dynamic).
+You can also set {{es}} settings in `elasticsearch.yml`.  Some settings require a cluster restart. To learn more, refer to [Dynamic and static {{es}} settings](#static-dynamic).
 
 To learn more about configuring {{es}} in a self-managed environment, refer to [](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 
@@ -161,9 +145,11 @@ Some settings are sensitive, and relying on filesystem permissions to protect th
 
 Secure settings are often referred to as **keystore settings**, since they must be added to the product-specific keystore rather than the standard `elasticsearch.yml` or `kibana.yml` files. Unlike regular settings, they are encrypted and protected at rest, and they cannot be read or modified through the usual configuration files or environment variables.
 
+If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart in self managed clusters and ECH and ECE deployments. If the required secure settings are not yet in place, the nodes might fail to start. Adding secure settings does not trigger a restart.
+
 To learn how to interact with secure settings, refer to [](/deploy-manage/security/secure-settings.md).
 
-## Static vs. dynamic {{es}} settings [static-dynamic]
+## Dynamic and static {{es}} settings [static-dynamic]
 
 {{es}} cluster and node settings can be categorized based on how they are configured:
 
