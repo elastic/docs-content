@@ -22,7 +22,7 @@ ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elast
 
 ### Supported Resources for Autoscaling per Elasticsearch Tier
 
-| Tiers | Storage | Memory | Cpu |
+| Tiers | Storage | Memory | CPU |
 | --- | ---| --- | --- |
 | Data Nodes (except Frozen) | Yes | Calculated proportionally to the required amount of storage | Calculated proportionally to the required amount of memory
 | Frozen Nodes | Yes | Yes | Calculated proportionally to the required amount of memory
