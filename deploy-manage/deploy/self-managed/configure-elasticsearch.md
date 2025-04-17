@@ -17,7 +17,7 @@ This topic describes how to configure a self-managed {{es}} cluster. Other deplo
 
 To learn how to configure `elasticsearch.yml` for other deployment types, refer to [](/deploy-manage/stack-settings.md).
 
-JVM and log4j configuration is not available in all deployment types. To learn how to configure limited JVM options in {{eck}}, refer to [](deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md).
+JVM and log4j configuration is not available in all deployment types. To learn how to configure limited JVM options in {{eck}}, refer to [](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md).
 :::
 
 ## Available settings
