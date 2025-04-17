@@ -217,7 +217,7 @@ You can follow this with the `execute` response action to upload and run scripts
 
 
 ::::{note}
-The default file size maximum is 25 MB, configurable in `kibana.yml` with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes (the maximum is `104857600` bytes, or 100 MB).
+The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes (the maximum is `104857600` bytes, or 100 MB).
 ::::
 
 

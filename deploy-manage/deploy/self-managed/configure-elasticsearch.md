@@ -12,6 +12,14 @@ applies_to:
 
 The configuration files should contain settings which are node-specific (such as `node.name` and paths), or settings which a node requires in order to be able to join a cluster, such as `cluster.name` and `network.host`.
 
+:::{note}
+This topic describes how to configure a self-managed {{es}} cluster. Other deployment types must be configured using different steps.
+
+To learn how to configure `elasticsearch.yml` for other deployment types, refer to [](/deploy-manage/stack-settings.md).
+
+JVM and log4j configuration is not available in all deployment types. To learn how to configure limited JVM options in {{eck}}, refer to [](deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md).
+:::
+
 ## Available settings
 
 For a complete list of settings that you can apply to your {{es}} cluster, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).

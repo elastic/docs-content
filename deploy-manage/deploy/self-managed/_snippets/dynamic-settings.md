@@ -6,7 +6,7 @@ If you configure the same setting using multiple methods, {{es}} applies the set
 
 1. Transient setting
 2. Persistent setting
-3. `elasticsearch.yml` setting
+3. `elasticsearch.yml`setting
 4. Default setting value
 
 For example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting. However, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.

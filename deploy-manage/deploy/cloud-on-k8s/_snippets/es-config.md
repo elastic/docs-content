@@ -1,6 +1,6 @@
 Any setting defined in the `elasticsearch.yml` configuration file can also be defined for a set of {{es}} nodes in the `spec.nodeSets[?].config` section.
 
-Some settings are managed by ECK, it is not recommended to change them, refer to [Settings managed by ECK](settings-managed-by-eck.md) for more details.
+Some settings are managed by ECK. It is not recommended to change these managed settings. For a complete list, refer to [Settings managed by ECK](settings-managed-by-eck.md).
 
 ```yaml
 spec:

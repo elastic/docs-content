@@ -41,7 +41,7 @@ For additional information about the available logging settings, refer to the [{
 
 Levels are ordered, so `off` > `fatal` > `error` > `warn` > `info` > `debug` > `trace` > `all`.
 
-A log record will be logged by the logger if its level is higher than or equal to the level of its logger. For example: If the output of an API call is configured to log at the `info` level and the parameters passed to the API call are set to `debug`, with a global logging configuration in `kibana.yml` set to `debug`, both the output *and* parameters are logged. If the log level is set to `info`, the debug logs are ignored, meaning that you’ll only get a record for the API output and *not* for the parameters.
+A log record will be logged by the logger if its level is higher than or equal to the level of its logger. For example: If the output of an API call is configured to log at the `info` level and the parameters passed to the API call are set to `debug`, with a global logging configuration in [`kibana.yml`](/deploy-manage/stack-settings.md) set to `debug`, both the output *and* parameters are logged. If the log level is set to `info`, the debug logs are ignored, meaning that you’ll only get a record for the API output and *not* for the parameters.
 
 Logging set at a plugin level is always respected, regardless of the `root` logger level. In other words, if root logger is set to fatal and pluginA logging is set to `debug`, debug logs are only shown for pluginA, with other logs only reporting on `fatal`.
 
@@ -109,7 +109,7 @@ With `json` layout log messages will be formatted as JSON strings in [ECS format
 
 ## Logger hierarchy [logger-hierarchy]
 
-Every logger has a unique name that follows a hierarchical naming rule. The logger is considered to be an ancestor of another logger if its name followed by a `.` is a prefix of the descendant logger. For example, a logger named `a.b` is an ancestor of logger `a.b.c`. All top-level loggers are descendants of a special `root` logger at the top of the logger hierarchy. The `root` logger always exists, is fully configured and logs to `info` level by default. The `root` logger must also be configured if any other logging configuration is specified in your `kibana.yml`.
+Every logger has a unique name that follows a hierarchical naming rule. The logger is considered to be an ancestor of another logger if its name followed by a `.` is a prefix of the descendant logger. For example, a logger named `a.b` is an ancestor of logger `a.b.c`. All top-level loggers are descendants of a special `root` logger at the top of the logger hierarchy. The `root` logger always exists, is fully configured and logs to `info` level by default. The `root` logger must also be configured if any other logging configuration is specified in your [`kibana.yml`](/deploy-manage/stack-settings.md).
 
 You can configure *[log level](/deploy-manage/monitor/logging-configuration/kibana-log-levels.md)* and *appenders* for a specific logger. If a logger only has a *log level* configured, then the *appenders* configuration applied to the logger is inherited from the ancestor logger, up to the `root` logger.
 

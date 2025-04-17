@@ -23,7 +23,7 @@ Some systems, such as Active Directory, have a temporary lock-out period after s
 
 ## Configure a realm chain
 
-The default realm chain contains the `file` and `native` realms. To explicitly configure a realm chain, specify the chain in the `elasticsearch.yml` file.
+The default realm chain contains the `file` and `native` realms. To explicitly configure a realm chain, specify the chain in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
 If your realm chain does not contain `file` or `native` realm or does not disable them explicitly, `file` and `native` realms will be added automatically to the beginning of the realm chain in that order. To opt out from this automatic behavior, you can explicitly configure the `file` and `native` realms with the `order` and `enabled` settings.
 

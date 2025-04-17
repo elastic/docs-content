@@ -10,7 +10,13 @@ navigation_title: "Stack settings"
 
 # Elastic Stack settings
 
-{{stack}} settings allow you to customize {{es}}, {{kib}}, and other {{stack}} products to suit your needs. 
+{{stack}} settings allow you to customize {{es}}, {{kib}}, and other {{stack}} products to suit your needs.
+
+:::{admonition} Serverless manages these settings for you
+In {{serverless-full}}, cluster-level settings and node-level settings are not required by end users, and are fully managed by Elastic.
+
+Certain [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md) allow you to customize your project’s performance and general data retention, and enable or disable project features.
+:::
 
 ## Available settings
 
@@ -49,7 +55,8 @@ For APM and Enterprise Search, refer to the product's documentation:
 The way that you configure your {{stack}} settings is determined by your deployment type.
 
 :::{warning}
-You can also update [dynamic {{es}} cluster settings](#dynamic-cluster-settings) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} and {{ece}} don’t reject unsafe setting changes made using this API, and should be used with caution in these contexts.
+* You can also update [dynamic {{es}} cluster settings](#dynamic-cluster-settings) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} and {{ece}} don’t reject unsafe setting changes made using this API, and should be used with caution in these contexts.
+* If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart in self managed clusters and ECH and ECE deployments. If the required secure settings are not yet in place, the nodes might fail to start. Adding secure settings does not trigger a restart.
 :::
 
 :::::{tab-set}
