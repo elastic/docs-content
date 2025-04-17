@@ -29,7 +29,7 @@ jobs:
           "team:Security":  "1034"
         }
     steps:
-      - name: Remove needs‑team label
+      - name: Remove needs-team label
         uses: actions-ecosystem/action-remove-labels@v1
         with:
           labels: needs-team
