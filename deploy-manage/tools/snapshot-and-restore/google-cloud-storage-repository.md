@@ -103,7 +103,7 @@ Snapshot or restore jobs that are in progress are not preempted by a **reload** 
 
 ## Client settings [repository-gcs-client]
 
-The client used to connect to Google Cloud Storage has a number of settings available. Client setting names are of the form `gcs.client.CLIENT_NAME.SETTING_NAME` and are specified inside `elasticsearch.yml`. The default client name looked up by a `gcs` repository is called `default`, but can be customized with the repository setting `client`.
+The client used to connect to Google Cloud Storage has a number of settings available. Client setting names are of the form `gcs.client.CLIENT_NAME.SETTING_NAME` and are specified inside [`elasticsearch.yml`](/deploy-manage/stack-settings.md). The default client name looked up by a `gcs` repository is called `default`, but can be customized with the repository setting `client`.
 
 For example:
 

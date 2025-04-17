@@ -24,7 +24,7 @@ The following steps guide you through creating a Certificate Signing Request (CS
 
 2. Unzip the `csr-bundle.zip` file to obtain the `kibana-server.csr` unsigned security certificate and the `kibana-server.key` unencrypted private key.
 3. Submit the `kibana-server.csr` certificate signing request to your organization’s security team or certificate authority to obtain a signed certificate. The resulting certificate might be in different formats, such as a `.crt` file like `kibana-server.crt`.
-4. Open `kibana.yml` and add the following lines to configure {{kib}} HTTPS endpoint to use the server certificate and unencrypted private key.
+4. Open [`kibana.yml`](/deploy-manage/stack-settings.md) and add the following lines to configure {{kib}} HTTPS endpoint to use the server certificate and unencrypted private key.
 
     ```yaml
     server.ssl.certificate: $KBN_PATH_CONF/kibana-server.crt
@@ -35,7 +35,7 @@ The following steps guide you through creating a Certificate Signing Request (CS
     `$KBN_PATH_CONF` contains the path for the {{kib}} configuration files. If you installed {{kib}} using archive distributions (`zip` or `tar.gz`), the path defaults to `$KBN_HOME/config`. If you used package distributions (Debian or RPM), the path defaults to `/etc/kibana`.
     ::::
 
-5. Add the following line to `kibana.yml` to enable HTTPS for incoming connections.
+5. Add the following line to [`kibana.yml`](/deploy-manage/stack-settings.md) to enable HTTPS for incoming connections.
 
     ```yaml
     server.ssl.enabled: true

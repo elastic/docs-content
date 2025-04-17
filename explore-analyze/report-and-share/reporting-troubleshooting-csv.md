@@ -48,7 +48,7 @@ Some users may benefit from using the [scroll API](elasticsearch://reference/ela
 1. Search is limited to 500 shards at the very most.
 2. In cases where the data shards are unavailable or time out, the export may return partial data.
 
-If you prefer the internal implementation of CSV export to use the scroll API, you can configure this in `kibana.yml`:
+If you prefer the internal implementation of CSV export to use the scroll API, you can configure this in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.reporting.csv.scroll.strategy: scroll

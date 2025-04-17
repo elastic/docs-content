@@ -43,7 +43,7 @@ The Login Selector UI can also be disabled or enabled with `xpack.security.authc
 ::::
 
 
-Here is how your `kibana.yml` and Login Selector UI can look like if you deal with multiple authentication providers:
+Here is how your [`kibana.yml`](/deploy-manage/stack-settings.md) and Login Selector UI can look like if you deal with multiple authentication providers:
 
 ```yaml
 xpack.security.loginHelp: "**Help** info with a [link](...)"
@@ -74,7 +74,7 @@ xpack.security.authc.providers:
 For more information, refer to [authentication security settings](kibana://reference/configuration-reference/security-settings.md#authentication-security-settings).
 
 ::::{tip}
-If you have multiple authentication providers configured, you can use the `auth_provider_hint` URL query parameter to create a deep link to any provider and bypass the Login Selector UI. Using the `kibana.yml` above as an example, you can add `?auth_provider_hint=basic1` to the login page URL, which will take you directly to the basic login page.
+If you have multiple authentication providers configured, you can use the `auth_provider_hint` URL query parameter to create a deep link to any provider and bypass the Login Selector UI. Using the [`kibana.yml`](/deploy-manage/stack-settings.md) above as an example, you can add `?auth_provider_hint=basic1` to the login page URL, which will take you directly to the basic login page.
 ::::
 
 
@@ -97,7 +97,7 @@ Prior to configuring {{kib}}, ensure that token support is enabled in {{es}}. Se
 You can configure only one token provider per {{kib}} instance.
 ::::
 
-To enable the token authentication provider in {{kib}}, set the following value in your `kibana.yml`:
+To enable the token authentication provider in {{kib}}, set the following value in your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.security.authc.providers:
@@ -120,7 +120,7 @@ PKI authentication is a [subscription feature](https://www.elastic.co/subscripti
 
 Prior to configuring {{kib}}, ensure that the PKI realm is enabled in {{es}} and configured to permit delegation. See [Configuring a PKI realm](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) for more information.
 
-To enable the PKI authentication provider in {{kib}}, you must first [configure {{kib}} to encrypt communications between the browser and {{kib}} server](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http). You must also enable TLS client authentication and include the certificate authority (CA) used to sign client certificates into a list of CAs trusted by {{kib}} in your `kibana.yml`:
+To enable the PKI authentication provider in {{kib}}, you must first [configure {{kib}} to encrypt communications between the browser and {{kib}} server](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http). You must also enable TLS client authentication and include the certificate authority (CA) used to sign client certificates into a list of CAs trusted by {{kib}} in your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ::::{note}
 You can configure only one PKI provider per {{kib}} instance.
@@ -279,7 +279,7 @@ During logout, both the {{kib}} session and {{es}} access/refresh token pair are
 
 Kerberos authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). Make sure that Kerberos is enabled and configured in {{es}} before setting it up in {{kib}}. See [Kerberos authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
 
-Next, to enable Kerberos in {{kib}}, you will need to enable the Kerberos authentication provider in the `kibana.yml` configuration file, as follows:
+Next, to enable Kerberos in {{kib}}, you will need to enable the Kerberos authentication provider in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, as follows:
 
 ::::{note}
 You can configure only one Kerberos provider per {{kib}} instance.
@@ -325,7 +325,7 @@ You can configure only one anonymous authentication provider per {{kib}} instanc
 ::::
 
 
-You must have a user account that can authenticate to {{es}} using a username and password, for instance from the [Native](native.md) or [LDAP](ldap.md) security realms, so that you can use these credentials to impersonate the anonymous users. Here is how your `kibana.yml` might look:
+You must have a user account that can authenticate to {{es}} using a username and password, for instance from the [Native](native.md) or [LDAP](ldap.md) security realms, so that you can use these credentials to impersonate the anonymous users. Here is how your [`kibana.yml`](/deploy-manage/stack-settings.md) might look:
 
 ```yaml
 xpack.security.authc.providers:
@@ -385,7 +385,7 @@ API keys are intended for programmatic access to {{kib}} and {{es}}. Do not use 
 ::::
 
 
-By default {{kib}} supports [`ApiKey`](/deploy-manage/api-keys/elasticsearch-api-keys.md) authentication scheme *and* any scheme supported by the currently enabled authentication provider. For example, `Basic` authentication scheme is automatically supported when basic authentication provider is enabled, or `Bearer` scheme when any of the token based authentication providers is enabled (Token, SAML, OpenID Connect, PKI or Kerberos). But it’s also possible to add support for any other authentication scheme in the `kibana.yml` configuration file, as follows:
+By default {{kib}} supports [`ApiKey`](/deploy-manage/api-keys/elasticsearch-api-keys.md) authentication scheme *and* any scheme supported by the currently enabled authentication provider. For example, `Basic` authentication scheme is automatically supported when basic authentication provider is enabled, or `Bearer` scheme when any of the token based authentication providers is enabled (Token, SAML, OpenID Connect, PKI or Kerberos). But it’s also possible to add support for any other authentication scheme in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, as follows:
 
 ::::{note}
 Don’t forget to explicitly specify the default `apikey` and `bearer` schemes when you just want to add a new one to the list.

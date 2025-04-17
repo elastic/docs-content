@@ -138,7 +138,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
 
         Each certificate will have its own private key, and will be issued for a specific hostname or IP address.
 
-    7. When prompted, enter the name of the first node in your cluster. It’s helpful to use the same node name as the value for the `node.name` parameter in the `elasticsearch.yml` file.
+    7. When prompted, enter the name of the first node in your cluster. It’s helpful to use the same node name as the value for the `node.name` parameter in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
     8. Enter all hostnames used to connect to your first node. These hostnames will be added as DNS names in the Subject Alternative Name (SAN) field in your certificate.
 
         List every hostname and variant used to connect to your cluster over HTTPS.

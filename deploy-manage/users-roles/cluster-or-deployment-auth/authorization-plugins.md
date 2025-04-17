@@ -86,7 +86,7 @@ To use a security extension:
     * If you're using {{ece}}, then refer to [](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md).
     * If you're using {{eck}}, then refer to [](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
 
-2. Add any configuration parameters for implementations in the extension to the `elasticsearch.yml` file. The settings are not namespaced and you have access to any settings when constructing the extensions, although it is recommended to have a namespacing convention for extensions to keep your `elasticsearch.yml` configuration easy to understand.
+2. Add any configuration parameters for implementations in the extension to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. The settings are not namespaced and you have access to any settings when constructing the extensions, although it is recommended to have a namespacing convention for extensions to keep your `elasticsearch.yml` configuration easy to understand.
 
     For example, if you have a custom roles provider that resolves roles from reading a blob in an S3 bucket on AWS, then you would specify settings in `elasticsearch.yml` such as:
 

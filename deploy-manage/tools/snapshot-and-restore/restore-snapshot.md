@@ -208,7 +208,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
 1. If you [backed up the cluster’s configuration files](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md#back-up-config-files), you can restore them to each node. This step is optional and requires a [full cluster restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md).
 
-    After you shut down a node, copy the backed-up configuration files over to the node’s `$ES_PATH_CONF` directory. Before restarting the node, ensure `elasticsearch.yml` contains the appropriate node roles, node name, and other node-specific settings.
+    After you shut down a node, copy the backed-up configuration files over to the node’s `$ES_PATH_CONF` directory. Before restarting the node, ensure [`elasticsearch.yml`](/deploy-manage/stack-settings.md) contains the appropriate node roles, node name, and other node-specific settings.
 
     If you choose to perform this step, you must repeat this process on each node in the cluster.
 

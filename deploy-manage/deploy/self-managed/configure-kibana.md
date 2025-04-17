@@ -10,7 +10,7 @@ applies_to:
 
 The {{kib}} server reads properties from the `kibana.yml` file on startup. 
 
-The location of this file differs depending on how you installed {{kib}}
+The location of this file differs depending on how you installed {{kib}}:
 
 * **Archive distributions (`.tar.gz` or `.zip`)**: Default location is `$KIBANA_HOME/config`
 * **Package distributions (Debian or RPM)**: Default location is `/etc/kibana`

@@ -203,7 +203,7 @@ $$$bootstrap-checks-xpack-role-mappings$$$
 
 If you authenticate users with realms other than `native` or `file` realms, you must create role mappings. These role mappings define which roles are assigned to each user.
 
-If you use files to manage the role mappings, you must configure a YAML file and copy it to each node in the cluster. By default, role mappings are stored in `ES_PATH_CONF/role_mapping.yml`. Alternatively, you can specify a different role mapping file for each type of realm and specify its location in the `elasticsearch.yml` file. For more information, see [Using role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file).
+If you use files to manage the role mappings, you must configure a YAML file and copy it to each node in the cluster. By default, role mappings are stored in `ES_PATH_CONF/role_mapping.yml`. Alternatively, you can specify a different role mapping file for each type of realm and specify its location in the [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) file. For more information, see [Using role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file).
 
 To pass this bootstrap check, the role mapping files must exist and must be valid. The Distinguished Names (DNs) that are listed in the role mappings files must also be valid.
 :::
@@ -227,7 +227,7 @@ $$$bootstrap-checks-xpack-token-ssl$$$
 
 If you use {{es}} {{security-features}} and the built-in token service is enabled, you must configure your cluster to use SSL/TLS for the HTTP interface. HTTPS is required in order to use the token service.
 
-In particular, if `xpack.security.authc.token.enabled` is set to `true` in the `elasticsearch.yml` file, you must also set `xpack.security.http.ssl.enabled` to `true`. For more information about these settings, see [Security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) and [Advanced HTTP settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-settings).
+In particular, if `xpack.security.authc.token.enabled` is set to `true` in the [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) file, you must also set `xpack.security.http.ssl.enabled` to `true`. For more information about these settings, see [Security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) and [Advanced HTTP settings](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#http-settings).
 
 To pass this bootstrap check, you must enable HTTPS or disable the built-in token service.
 

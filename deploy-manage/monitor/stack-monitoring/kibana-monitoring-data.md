@@ -34,11 +34,11 @@ deployment:
 
     If the monitoring data is stored on a dedicated monitoring cluster, it is accessible even when the cluster you’re monitoring is not. If you have at least a gold license, you can send data from multiple clusters to the same monitoring cluster and view them all through the same instance of {{kib}}.
 
-    By default, data is retrieved from the cluster specified in the `elasticsearch.hosts` value in the `kibana.yml` file. If you want to retrieve it from a different cluster, set `monitoring.ui.elasticsearch.hosts`.
+    By default, data is retrieved from the cluster specified in the `elasticsearch.hosts` value in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. If you want to retrieve it from a different cluster, set `monitoring.ui.elasticsearch.hosts`.
 
     To learn more about typical monitoring architectures, see [How monitoring works](../stack-monitoring.md) and [Monitoring in a production environment](elasticsearch-monitoring-self-managed.md).
 
-2. Verify that `monitoring.ui.enabled` is set to `true`, which is the default value, in the `kibana.yml` file. For more information, see [Monitoring settings](kibana://reference/configuration-reference/monitoring-settings.md).
+2. Verify that `monitoring.ui.enabled` is set to `true`, which is the default value, in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For more information, see [Monitoring settings](kibana://reference/configuration-reference/monitoring-settings.md).
 3. If the Elastic {{security-features}} are enabled on the monitoring cluster, you must provide a user ID and password so {{kib}} can retrieve the data.
 
     1. Create a user that has the `monitoring_user` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md) on the monitoring cluster.
@@ -47,7 +47,7 @@ deployment:
         Make sure the `monitoring_user` role has read privileges on `metrics-*` indices. If it doesn’t, create a new role with `read` and `read_cross_cluster` index privileges on `metrics-*`, then assign the new role (along with `monitoring_user`) to your user.
         ::::
 
-    2. Add the `monitoring.ui.elasticsearch.username` and `monitoring.ui.elasticsearch.password` settings in the `kibana.yml` file. If these settings are omitted, {{kib}} uses the `elasticsearch.username` and `elasticsearch.password` setting values. For more information, see [Configuring security in {{kib}}](../../security.md).
+    2. Add the `monitoring.ui.elasticsearch.username` and `monitoring.ui.elasticsearch.password` settings in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. If these settings are omitted, {{kib}} uses the `elasticsearch.username` and `elasticsearch.password` setting values. For more information, see [Configuring security in {{kib}}](../../security.md).
 
 4. (Optional) If you're using a self-managed cluster, then optionally configure {{kib}} to encrypt communications between the {{kib}} server and the monitoring cluster. See [Encrypt TLS communications in {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 5. If the Elastic {{security-features}} are enabled on the {{kib}} server, only users that have the authority to access {{kib}} indices and to read the monitoring indices can use the monitoring dashboards.

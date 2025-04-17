@@ -28,7 +28,7 @@ For more information, refer to [{{kib}} {{fleet}} APIs](/reference/fleet/fleet-a
 
 ## Option 2. Create agent policies with preconfiguration [use-preconfiguration-to-create-policy]
 
-Add preconfigured policies to `kibana.yml` config.
+Add preconfigured policies to [`kibana.yml`](/deploy-manage/stack-settings.md) config.
 
 For example, the following example adds a {{fleet-server}} policy for self-managed setup:
 

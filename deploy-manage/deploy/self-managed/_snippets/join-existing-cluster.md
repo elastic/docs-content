@@ -25,7 +25,7 @@ If you can't access the first node, then modify your network configuration befor
 
    Answer the `Do you want to continue` prompt with `yes` (`y`). The new {{es}} node will be reconfigured.
 
-4. Open the new Elasticsearch instance's `elasticsearch.yml` file in a text editor.
+4. Open the new Elasticsearch instance's [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) file in a text editor.
    
    The `elasticsearch-reconfigure-node` tool has updated several settings. For example:
 

@@ -138,7 +138,7 @@ In the following example, the watch input executes a search with a date histogra
 
 ## Configuring Slack Accounts [configuring-slack]
 
-You configure the accounts {{watcher}} can use to communicate with Slack in the `xpack.notification.slack` namespace in `elasticsearch.yml`.
+You configure the accounts {{watcher}} can use to communicate with Slack in the `xpack.notification.slack` namespace in [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
 You need a Slack App with the [Incoming Webhooks feature](https://api.slack.com/messaging/webhooks) to configure a Slack account. Use the generated webhook URL to set up your Slack account in {{es}}.
 
@@ -149,7 +149,7 @@ bin/elasticsearch-keystore add xpack.notification.slack.account.monitoring.secur
 ```
 
 ::::{warning}
-You can no longer configure Slack accounts using `elasticsearch.yml` settings. Use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
+You can no longer configure Slack accounts using [`elasticsearch.yml`](/deploy-manage/stack-settings.md) settings. Use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
 
 ::::
 

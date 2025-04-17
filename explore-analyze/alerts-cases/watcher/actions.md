@@ -140,7 +140,7 @@ PUT _watcher/watch/log_event_watch
 
 1. There will be at least 15 minutes between subsequent action executions (applies to both `email_administrator` and `notify_pager` actions)
 
-If you do not define a throttle period at the action or watch level, the global default throttle period is applied. Initially, this is set to 5 seconds. To change the global default, configure the `xpack.watcher.execution.default_throttle_period` setting in `elasticsearch.yml`:
+If you do not define a throttle period at the action or watch level, the global default throttle period is applied. Initially, this is set to 5 seconds. To change the global default, configure the `xpack.watcher.execution.default_throttle_period` setting in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.watcher.execution.default_throttle_period: 15m

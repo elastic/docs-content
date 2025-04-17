@@ -75,7 +75,7 @@ To use a custom realm:
     * If you're using {{eck}}, then refer to [](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
 
 
-2. Add a realm configuration of the appropriate realm type to `elasticsearch.yml` under the `xpack.security.authc.realms` namespace. You must define your realm within the namespace that matches the type defined by the extension. The options you can set depend on the settings exposed by the custom realm. At a minimum, you must explicitly set the `order` attribute to control the order in which the realms are consulted during authentication. You must also make sure each configured realm has a distinct `order` setting. In the event that two or more realms have the same `order`, the node will fail to start.
+2. Add a realm configuration of the appropriate realm type to [`elasticsearch.yml`](/deploy-manage/stack-settings.md) under the `xpack.security.authc.realms` namespace. You must define your realm within the namespace that matches the type defined by the extension. The options you can set depend on the settings exposed by the custom realm. At a minimum, you must explicitly set the `order` attribute to control the order in which the realms are consulted during authentication. You must also make sure each configured realm has a distinct `order` setting. In the event that two or more realms have the same `order`, the node will fail to start.
 
     ::::{important} 
     When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.

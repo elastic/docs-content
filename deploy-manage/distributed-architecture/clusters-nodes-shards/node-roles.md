@@ -14,7 +14,7 @@ Each node performs one or more roles. Roles control the behavior of the node in 
 
 ## Set node roles [set-node-roles]
 
-You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](../../deploy/self-managed/configure-elasticsearch.md). If you set `node.roles`, the node is only assigned the roles you specify. If you don’t set `node.roles`, the node is assigned the following roles:
+You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). If you set `node.roles`, the node is only assigned the roles you specify. If you don’t set `node.roles`, the node is assigned the following roles:
 
 * `master`
 * `data`
@@ -62,7 +62,7 @@ Similarly, each master-eligible node maintains the following data on disk:
 
 Each node checks the contents of its data path at startup. If it discovers unexpected data then it will refuse to start. This is to avoid importing unwanted [dangling indices](elasticsearch://reference/elasticsearch/configuration-reference/local-gateway.md#dangling-indices) which can lead to a red cluster health. To be more precise, nodes without the `data` role will refuse to start if they find any shard data on disk at startup, and nodes without both the `master` and `data` roles will refuse to start if they have any index metadata on disk at startup.
 
-It is possible to change the roles of a node by adjusting its `elasticsearch.yml` file and restarting it. This is known as *repurposing* a node. In order to satisfy the checks for unexpected data described above, you must perform some extra steps to prepare a node for repurposing when starting the node without the `data` or `master` roles.
+It is possible to change the roles of a node by adjusting its [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file and restarting it. This is known as *repurposing* a node. In order to satisfy the checks for unexpected data described above, you must perform some extra steps to prepare a node for repurposing when starting the node without the `data` or `master` roles.
 
 * If you want to repurpose a data node by removing the `data` role then you should first use an [allocation filter](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) to safely migrate all the shard data onto other nodes in the cluster.
 * If you want to repurpose a node to have neither the `data` nor `master` roles then it is simplest to start a brand-new node with an empty data path and the desired roles. You may find it safest to use an [allocation filter](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) to migrate the shard data elsewhere in the cluster first.

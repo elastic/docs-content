@@ -36,7 +36,7 @@ bin/elasticsearch-keystore add azure.client.default.key
 bin/elasticsearch-keystore add azure.client.secondary.sas_token
 ```
 
-Other Azure repository client settings must be set in `elasticsearch.yml` before the node starts. For example:
+Other Azure repository client settings must be set in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) before the node starts. For example:
 
 ```yaml
 azure.client.default.timeout: 10s
@@ -76,7 +76,7 @@ In progress snapshot or restore jobs will not be preempted by a **reload** of th
 
 ## Client settings [repository-azure-client-settings]
 
-The following list describes the available client settings. Those that must be stored in the keystore are marked as ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings)); the other settings must be stored in the `elasticsearch.yml` file. The default `CLIENT_NAME` is `default` but you may configure a client with a different name and specify that client by name when registering a repository.
+The following list describes the available client settings. Those that must be stored in the keystore are marked as ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings)); the other settings must be stored in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. The default `CLIENT_NAME` is `default` but you may configure a client with a different name and specify that client by name when registering a repository.
 
 `azure.client.CLIENT_NAME.account` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The Azure account name, which is used by the repository’s internal Azure client. This setting is required for all clients.

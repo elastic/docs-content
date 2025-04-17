@@ -184,7 +184,7 @@ This is convenient because you don’t have to create any directories to start u
 | --- | --- | --- | --- |
 | home | {{es}} home directory or `$ES_HOME` | Directory created by unpacking the archive |  |
 | bin | Binary scripts including `elasticsearch` to start a node    and `elasticsearch-plugin` to install plugins | `$ES_HOME/bin` |  |
-| conf | Configuration files, including `elasticsearch.yml` | `$ES_HOME/config` | [`ES_PATH_CONF`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location) |
+| conf | Configuration files including `elasticsearch.yml` | `$ES_HOME/config` | [`ES_PATH_CONF`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#config-files-location) |
 | conf | Generated TLS keys and certificates for the transport and HTTP layer. | `$ES_HOME/config/certs` |  |
 | data | The location of the data files of each index / shard allocated    on the node. | `$ES_HOME/data` | [`path.data`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |
 | logs | Log files location. | `$ES_HOME/logs` | [`path.logs`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) |

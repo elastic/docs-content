@@ -24,7 +24,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 
 1. Disable the default collection of {{kib}} monitoring metrics.
 
-    Add the following setting in the {{kib}} configuration file (`kibana.yml`):
+    Add the following setting in the {{kib}} configuration file ([`kibana.yml`](/deploy-manage/stack-settings.md)):
 
     ```yaml
     monitoring.kibana.collection.enabled: false
@@ -36,7 +36,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 3. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is disabled (`false`).
 
     ::::{note}
-    You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
+    You can specify this setting in either the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
     ::::
 
 

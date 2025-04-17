@@ -187,7 +187,7 @@ There are two workarounds for this:
 
 ### Enable CORS on {{es}} [search-application-security-cors-elasticsearch] 
 
-This is the simplest option. Enable CORS on {{es}} by adding the following to your `elasticsearch.yml` file:
+This is the simplest option. Enable CORS on {{es}} by adding the following to your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
 ```yaml
 http.cors.allow-origin: "*" # Only use unrestricted value for local development
@@ -197,14 +197,6 @@ http.cors.allow-credentials: true
 http.cors.allow-methods: OPTIONS, POST
 http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept
 ```
-
-On Elastic Cloud, you can do this by [editing your {{es}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ec-add-user-settings).
-
-1. From your deployment menu, go to the **Edit** page.
-2. In the **{{es}}** section, select **Manage user settings and extensions**.
-3. Update the user settings with the configuration above.
-4. Select **Save changes**.
-
 
 ### Proxy the request through a server that supports CORS [search-application-security-cors-proxy-request] 
 

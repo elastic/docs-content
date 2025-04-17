@@ -18,7 +18,7 @@ To embed {{kib}} dashboards or grant access to {{kib}} without requiring credent
 
 Incoming requests to {{es}} are considered to be *anonymous* if no authentication token can be extracted from the incoming request. By default, anonymous requests are rejected and an authentication error is returned (status code `401`).
 
-To enable anonymous access, you assign one or more roles to anonymous users in the `elasticsearch.yml` configuration file. For example, the following configuration assigns anonymous users `role1` and `role2`:
+To enable anonymous access, you assign one or more roles to anonymous users in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file. For example, the following configuration assigns anonymous users `role1` and `role2`:
 
 ```yaml
 xpack.security.authc:

@@ -57,7 +57,7 @@ PUT /_cluster/settings
 
 Other ways to change log levels include:
 
-1. `elasticsearch.yml`:
+1. [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
     ```yaml
     logger.org.elasticsearch.discovery: DEBUG

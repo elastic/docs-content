@@ -121,7 +121,7 @@ Alternatively, you can submit Change Password API requests for each built-in use
 
 ## Adding built-in user passwords to {{kib}} [add-built-in-user-kibana]
 
-After the `kibana_system` user password is set, you need to update the {{kib}} server with the new password by setting `elasticsearch.password` in the `kibana.yml` configuration file:
+After the `kibana_system` user password is set, you need to update the {{kib}} server with the new password by setting `elasticsearch.password` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file:
 
 ```yaml
 elasticsearch.password: kibanapassword

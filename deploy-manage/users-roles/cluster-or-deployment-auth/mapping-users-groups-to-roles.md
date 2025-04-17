@@ -126,11 +126,11 @@ If you're using a self-managed cluster, then the file must be present on each no
 
 By default, role mappings are stored in `ES_PATH_CONF/role_mapping.yml`. In self-managed clusters, `ES_PATH_CONF` is `ES_HOME/config` (zip/tar installations) or `/etc/elasticsearch` (package installations).
 
-To specify a different location, you configure the `files.role_mapping` setting in the [Active Directory](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings), [LDAP](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings), and [PKI](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) realm settings in `elasticsearch.yml`.
+To specify a different location, you configure the `files.role_mapping` setting in the [Active Directory](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings), [LDAP](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings), and [PKI](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) realm settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
 Within the role mapping file, the security roles are keys and groups and users are values. The mappings can have a many-to-many relationship. When you map roles to groups, the roles of a user in that group are the combination of the roles assigned to that group and the roles assigned to that user.
 
-By default, {{es}} checks role mapping files for changes every 5 seconds. If you're using a self-managed {{es}} cluster, you can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file. Because this is a common setting in {{es}}, changing its value might effect other schedules in the system.
+By default, {{es}} checks role mapping files for changes every 5 seconds. If you're using a self-managed {{es}} cluster, you can change this default behavior by changing the `resource.reload.interval.high` setting in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. Because this is a common setting in {{es}}, changing its value might effect other schedules in the system.
 
 ## Realm specific details [_realm_specific_details]
 

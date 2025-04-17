@@ -14,7 +14,7 @@ mapped_pages:
 
 Encrypting sensitive information means that a malicious party with access to the {{kib}} internal indices won’t be able to extract that information without also knowing the encryption key.
 
-Example `kibana.yml`:
+Example [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.encryptedSavedObjects:
@@ -39,7 +39,7 @@ Many policies and best practices stipulate that encryption keys should be period
 
 When you change an encryption key, be sure to keep the old one for some time. Although {{kib}} only uses a new encryption key to encrypt all new and updated data, it still may need the old one to decrypt data that was encrypted using the old key. It’s possible to have multiple old keys used only for decryption. {{kib}} doesn’t automatically re-encrypt existing saved objects with the new encryption key. Re-encryption only happens when you update existing object or use the [rotate encryption key API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects).
 
-Here is how your `kibana.yml` might look if you use key rotation functionality:
+Here is how your [`kibana.yml`](/deploy-manage/stack-settings.md) might look if you use key rotation functionality:
 
 ```yaml
 xpack.encryptedSavedObjects:

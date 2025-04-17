@@ -54,7 +54,7 @@ The API should return `"connected" : true`. When using [API key authentication](
 
 ### Enabling the remote cluster server [remote-clusters-troubleshooting-enable-server]
 
-When using API key authentication, cross-cluster traffic happens on the remote cluster interface, instead of the transport interface. The remote cluster interface is not enabled by default. This means a node is not ready to accept incoming cross-cluster requests by default, while it is ready to send outgoing cross-cluster requests. Ensure you’ve enabled the remote cluster server on every node of the remote cluster. In `elasticsearch.yml`:
+When using API key authentication, cross-cluster traffic happens on the remote cluster interface, instead of the transport interface. The remote cluster interface is not enabled by default. This means a node is not ready to accept incoming cross-cluster requests by default, while it is ready to send outgoing cross-cluster requests. Ensure you’ve enabled the remote cluster server on every node of the remote cluster. In [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
 * Set [`remote_cluster_server.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
 * Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
@@ -154,7 +154,7 @@ Once you know the cause, you should be able to fix it by adjusting the remote cl
 
 Often, the issue is on the local cluster. For example, fix it by configuring necessary trusted CAs (`xpack.security.remote_cluster_client.ssl.certificate_authorities`).
 
-If you change the `elasticsearch.yml` file, the associated cluster needs to be restarted for the changes to take effect.
+If you change the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file, the associated cluster needs to be restarted for the changes to take effect.
 
 
 

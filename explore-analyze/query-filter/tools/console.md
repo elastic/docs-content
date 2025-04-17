@@ -235,6 +235,6 @@ Go to the **Config** tab of **Console** to customize its display, autocomplete, 
 
 ## Disable Console [disable-console]
 
-If you don’t want to use **Console**, you can disable it by setting `console.ui.enabled` to `false` in your `kibana.yml` configuration file. Changing this setting causes the server to regenerate assets on the next startup, which might cause a delay before pages start being served.
+If you don’t want to use **Console**, you can disable it by setting `console.ui.enabled` to `false` in your [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. Changing this setting causes the server to regenerate assets on the next startup, which might cause a delay before pages start being served.
 
 You can also choose to only disable the persistent console that shows in the footer of several Kibana pages. To do that, go to **Stack Management** > **Advanced Settings**, and turn off the `devTools:enablePersistentConsole` setting.

@@ -77,7 +77,7 @@ The `project.key` (or `project.id`), the `issuetype.name` (or `issuetype.id`) an
 
 ## Configuring Jira accounts [configuring-jira]
 
-You configure the accounts {{watcher}} can use to communicate with Jira in the `xpack.notification.jira` namespace in `elasticsearch.yml`.
+You configure the accounts {{watcher}} can use to communicate with Jira in the `xpack.notification.jira` namespace in [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
 {{watcher}} supports Basic Authentication for Jira Software. To configure a Jira account you need to specify (see [secure settings](../../../deploy-manage/security/secure-settings.md)):
 

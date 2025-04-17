@@ -14,7 +14,7 @@ This guide will explain how to set up and configure a Fleet-managed APM Server.
 You need {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it. When setting these components up, you need:
 
 * {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. [Learn how to install the {{stack}} on your own hardware](/get-started/the-stack.md).
-* Secure, encrypted connection between {{kib}} and {{es}}. For more information, see [Start the {{stack}} with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+* Secure, encrypted connection between {{kib}} and {{es}}. For more information, refer to [](/deploy-manage/security/self-setup.md).
 * Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 * {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
 * In the {{es}} configuration, the [built-in API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
@@ -24,21 +24,21 @@ You need {{es}} for storing and searching your data, and {{kib}} for visualizing
 
 For testing purposes, you can use the following settings to get started quickly, but make sure you properly secure the {{stack}} before sending real data.
 
-elasticsearch.yml example:
+[`elasticsearch.yml`](/deploy-manage/stack-settings.md) example:
 
 ```yaml
 xpack.security.enabled: true
 xpack.security.authc.api_key.enabled: true
 ```
 
-kibana.yml example:
+[`kibana.yml`](/deploy-manage/stack-settings.md) example:
 
 ```yaml
 elasticsearch.username: "kibana_system" <1>
 xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
 ```
 
-1. The password should be stored in the {{kib}} keystore as described in the [{{es}} security documentation](/deploy-manage/security/set-up-minimal-security.md).
+1. The password should be stored in the {{kib}} keystore as described in the [{{es}} security documentation](/deploy-manage/security/secure-settings.md).
 
 ## Step 1: Set up Fleet [_step_1_set_up_fleet]
 
@@ -142,8 +142,8 @@ An internet connection is required to install the APM integration via the Fleet 
 ::::{dropdown} If you don’t have an internet connection
 If your environment has network traffic restrictions, there are other ways to install the APM integration. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 
-Option 1: Update `kibana.yml`
-:   Update `kibana.yml` to include the following, then restart {{kib}}.
+Option 1: Update [`kibana.yml`](/deploy-manage/stack-settings.md)
+:   Update [`kibana.yml`](/deploy-manage/stack-settings.md) to include the following, then restart {{kib}}.
 
 ```yaml
 xpack.fleet.packages:

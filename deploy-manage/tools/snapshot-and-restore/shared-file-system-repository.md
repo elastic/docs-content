@@ -15,7 +15,7 @@ This repository type is only available if you run {{es}} on your own hardware. S
 
 Use a shared file system repository to store snapshots on a shared file system.
 
-To register a shared file system repository, first mount the file system to the same location on all master and data nodes. Then add the file system’s path or parent directory to the `path.repo` setting in `elasticsearch.yml` for each master and data node. For running clusters, this requires a [rolling restart](../../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) of each node.
+To register a shared file system repository, first mount the file system to the same location on all master and data nodes. Then add the file system’s path or parent directory to the `path.repo` setting in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) for each master and data node. For running clusters, this requires a [rolling restart](../../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) of each node.
 
 Supported `path.repo` values vary by platform:
 

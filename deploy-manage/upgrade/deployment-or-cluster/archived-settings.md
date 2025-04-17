@@ -31,7 +31,7 @@ PUT _cluster/settings
 }
 ```
 
-{{es}} doesn’t archive transient cluster settings or settings in `elasticsearch.yml`. If a node includes an unsupported setting in `elasticsearch.yml`, it will return an error at startup.
+{{es}} doesn’t archive transient cluster settings or settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). If a node includes an unsupported setting in `elasticsearch.yml`, it will return an error at startup.
 
 
 ## Archived index settings [archived-index-settings] 

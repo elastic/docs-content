@@ -51,7 +51,7 @@ To complete this tutorial, you’ll need:
 
     * Self-managed cluster: Assign `data_hot` and `data_warm` roles to nodes as described in [*Data tiers*](../data-tiers.md).
 
-        For example, include the `data_warm` node role in the `elasticsearch.yml` file of each node in the warm tier:
+        For example, include the `data_warm` node role in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file of each node in the warm tier:
 
         ```yaml
         node.roles: [ data_warm ]

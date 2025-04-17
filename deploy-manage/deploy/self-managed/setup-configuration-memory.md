@@ -45,7 +45,7 @@ Some platforms still swap off-heap memory when using a memory lock. To prevent o
 ::::
 
 
-To enable a memory lock, set `bootstrap.memory_lock` to `true` in `elasticsearch.yml`:
+To enable a memory lock, set `bootstrap.memory_lock` to `true` in [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
 
 ```yaml
 bootstrap.memory_lock: true

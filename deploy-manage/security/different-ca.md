@@ -207,7 +207,7 @@ This process is different for each client, so refer to your client’s documenta
 
         Each certificate will have its own private key, and will be issued for a specific hostname or IP address.
 
-    7. When prompted, enter the name of the first node in your cluster. Use the same node name as the value for the `node.name` parameter in the `elasticsearch.yml` file.
+    7. When prompted, enter the name of the first node in your cluster. Use the same node name as the value for the `node.name` parameter in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
     8. Enter all hostnames used to connect to your first node. These hostnames will be added as DNS names in the Subject Alternative Name (SAN) field in your certificate.
 
         List every hostname and variant used to connect to your cluster over HTTPS.
@@ -296,7 +296,7 @@ When you ran the `elasticsearch-certutil` tool with the `http` option, it create
     `KBN_PATH_CONF` contains the path for the {{kib}} configuration files. If you installed {{kib}} using archive distributions (`zip` or `tar.gz`), the path defaults to `KBN_HOME/config`. If you used package distributions (Debian or RPM), the path defaults to `/etc/kibana`.
     ::::
 
-2. If you modified the filename for the `elasticsearch-ca.pem` file, edit `kibana.yml` and update the configuration to specify the location of the security certificate for the HTTP layer.
+2. If you modified the filename for the `elasticsearch-ca.pem` file, edit [`kibana.yml`](/deploy-manage/stack-settings.md) and update the configuration to specify the location of the security certificate for the HTTP layer.
 
     ```yaml
     elasticsearch.ssl.certificateAuthorities: KBN_PATH_CONF/elasticsearch-ca.pem

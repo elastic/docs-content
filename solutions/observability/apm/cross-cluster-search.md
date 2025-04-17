@@ -18,7 +18,7 @@ If you’re using the {{ech}}, see [Enable cross-cluster search](/deploy-manage/
 
 To add remote clusters directly in {{kib}}, find `Remote Clusters` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). All you need is a name for the remote cluster and the seed node(s). Remember the names of your remote clusters, you’ll need them in step two. See [managing remote clusters](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md) for detailed information on the setup process.
 
-Alternatively, you can [configure remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) in {{es}}'s `elasticsearch.yml` file.
+Alternatively, you can [configure remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) in {{es}}'s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
 **Step 2. Edit the default Applications UI {{data-sources}}.**
 
@@ -31,7 +31,7 @@ You can also specify certain clusters to display data from, for example, `cluste
 There are two ways to edit the default {{data-source}}:
 
 * In the Applications UI — Find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
-* In `kibana.yml` — Update the [`xpack.apm.indices.*`](kibana://reference/configuration-reference/apm-settings.md) configuration values to include remote clusters.
+* In [`kibana.yml`](/deploy-manage/stack-settings.md) — Update the [`xpack.apm.indices.*`](kibana://reference/configuration-reference/apm-settings.md) configuration values to include remote clusters.
 
 ::::{tip}
 

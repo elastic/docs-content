@@ -159,14 +159,14 @@ To set up {{fleet-server}} on {{ecloud}}:
 
 To enable {{fleet}} and set up {{fleet-server}} on a self-managed cluster:
 
-1. In the {{es}} configuration file, `config/elasticsearch.yml`, set the following security settings to enable security and API keys:
+1. In the {{es}} configuration file, [`config/elasticsearch.yml`](/deploy-manage/stack-settings.md), set the following security settings to enable security and API keys:
 
     ```yaml
     xpack.security.enabled: true
     xpack.security.authc.api_key.enabled: true
     ```
 
-2. In the {{kib}} configuration file, `config/kibana.yml`, enable {{fleet}} and specify your user credentials:
+2. In the {{kib}} configuration file, [`config/kibana.yml`](/deploy-manage/stack-settings.md), enable {{fleet}} and specify your user credentials:
 
     ```yaml
     xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
@@ -456,7 +456,7 @@ One common problem is that the default {{fleet-server}} port of `8220` isn’t o
 
 To save API keys and encrypt them in {{es}}, {{fleet}} requires an encryption key.
 
-To provide an API key, in the `kibana.yml` configuration file, set the `xpack.encryptedSavedObjects.encryptionKey` property.
+To provide an API key, in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, set the `xpack.encryptedSavedObjects.encryptionKey` property.
 
 ```yaml
 xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
