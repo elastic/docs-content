@@ -218,8 +218,14 @@ The header claims indicate the token type and the algorithm used to sign the tok
 :   (Required, String) Indicates the algorithm that was used to sign the token, such as `HS256`. The algorithm must be in the realm’s allow list.
 
 `typ`
-:   (Optional, String) Indicates the token type, which must be `JWT`.
-
+:   (Optional, String) Indicates the token type.
+  
+    For an ID token, this must be 
+    - `JWT`
+  
+    For access tokens, this must be one of
+    - `JWT`
+    - `at+jwt` {applies_to}`stack: ga 9.1`
 
 ### Payload claims [jwt-validation-payload]
 
