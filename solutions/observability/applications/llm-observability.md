@@ -13,14 +13,14 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 ## Metrics and logs ingestion for LLM APIs (via Elastic integrations)
 
-Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which source you can use and which type of data -- log or metrics -- you can collect.
+Elastic’s LLM integrations now support the most widely adopted models, including OpenAI, Azure OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which type of data -- log or metrics -- you can collect.
 
-| **LLM Provider**  | **Source**  | **Metrics** | **Logs** | 
+| **LLM Provider**  | **Metrics** | **Logs** | 
 |--------|------------|------------|
-| [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)| [AWS CloudWatch Logs](https://github.com/elastic/integrations/tree/main/packages/aws_bedrock#compatibility) | ✅ | ✅ |  
-| [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)| [Azure Monitor and Event Hubs](https://github.com/elastic/integrations/tree/main/packages/azure_openai#azure-openai-integration) | ✅ | ✅ | 
-| [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | [GCP Cloud Monitoring](https://github.com/elastic/integrations/tree/main/packages/gcp_vertexai#overview)  | ✅ | 🚧 | 
-| [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html) | [OpenAI Usage API](https://platform.openai.com/docs/api-reference/usage) | ✅| 🚧 | 
+| [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)| ✅ | ✅ |  
+| [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)| ✅ | ✅ | 
+| [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | ✅ | 🚧 | 
+| [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html) | ✅| 🚧 | 
 
 ## APM tracing for LLM models (via instrumentation)
 
