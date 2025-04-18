@@ -17,7 +17,7 @@ helm repo update
 ```
 
 ::::{note}
-The minimum supported version of Helm is 3.2.0.
+The minimum supported version of Helm is {{eck_helm_minimum_version}}.
 ::::
 
 The {{stack}} (`eck-stack`) Helm chart is built on top of individual charts such as `eck-elasticsearch` and `eck-kibana`. For more details on its structure and dependencies, refer to the [chart repository](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-stack/).
@@ -39,15 +39,15 @@ helm install es-kb-quickstart elastic/eck-stack -n elastic-stack --create-namesp
 
 ### Customize {{es}} and {{kib}} installation with example values [k8s-eck-stack-helm-customize]
 
-You can find example Helm values files for deploying and managing more advanced {{es}} and {{kib}} setups [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/deploy/eck-stack/examples).
+You can find example Helm values files for deploying and managing more advanced {{es}} and {{kib}} setups [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/deploy/eck-stack/examples).
 
 To use one or more of these example configurations, use the `--values` Helm option, as seen in the following section.
 
 ```sh
 # Install an eck-managed Elasticsearch and Kibana using the Elasticsearch node roles example with hot, warm, and cold data tiers, and the Kibana example customizing the http service.
 helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/elasticsearch/hot-warm-cold.yaml \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/kibana/http-configuration.yaml
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/elasticsearch/hot-warm-cold.yaml \
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/kibana/http-configuration.yaml
 ```
 
 ## Fleet Server with Elastic Agents along with {{es}} and {{kib}} [k8s-install-fleet-agent-elasticsearch-kibana-helm]
@@ -57,7 +57,7 @@ The following section builds upon the previous section, and allows installing Fl
 ```sh
 # Install an eck-managed Elasticsearch, Kibana, Fleet Server, and managed Elastic Agents using custom values.
 helm install eck-stack-with-fleet elastic/eck-stack \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/agent/fleet-agents.yaml -n elastic-stack
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/agent/fleet-agents.yaml -n elastic-stack
 ```
 
 ## Logstash along with {{es}}, {{kib}} and Beats [k8s-install-logstash-elasticsearch-kibana-helm]
@@ -67,7 +67,7 @@ The following section builds upon the previous sections, and allows installing L
 ```sh
 # Install an eck-managed Elasticsearch, Kibana, Beats and Logstash using custom values.
 helm install eck-stack-with-logstash elastic/eck-stack \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/logstash/basic-eck.yaml -n elastic-stack
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/logstash/basic-eck.yaml -n elastic-stack
 ```
 
 ## Standalone Elastic APM Server along with {{es}} and {{kib}} [k8s-install-apm-server-elasticsearch-kibana-helm]
@@ -77,12 +77,12 @@ The following section builds upon the previous sections, and allows installing a
 ```sh
 # Install an eck-managed Elasticsearch, Kibana, and standalone APM Server using custom values.
 helm install eck-stack-with-apm-server elastic/eck-stack \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
+    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
 
 ## Enterprise Search server along with {{es}} and {{kib}} [k8s-install-enterprise-search-elasticsearch-kibana-helm]
 
-Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example deployment of {{es}} version 8.x, {{kib}} 8.x, and an 8.x Enterprise Search server using the Helm chart, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-stack-helm-chart.html).
+Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example deployment of {{es}} version 8.x, {{kib}} 8.x, and an 8.x Enterprise Search server using the Helm chart, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/{{eck_release_branch}}/k8s-stack-helm-chart.html).
 
 ## Install individual components of the {{stack}} [k8s-eck-stack-individual-components]
 

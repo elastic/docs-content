@@ -15,7 +15,7 @@ The following guides provide specific instructions for deploying and configuring
 * [{{ls}}](logstash.md)
 
 ::::{note}
-Enterprise Search is not available in {{stack}} versions 9.0 and later. To deploy or manage Enterprise Search in earlier versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-enterprise-search.html).
+Enterprise Search is not available in {{stack}} versions 9.0 and later. To deploy or manage Enterprise Search in earlier versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/{{eck_release_branch}}/k8s-enterprise-search.html).
 ::::
 
 When orchestrating any of these applications, also consider the following topics:
