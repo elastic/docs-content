@@ -63,7 +63,9 @@ body:
         - 'N/A'
         - '8.17'
         - '8.18'
+        - '8.19'
         - '9.0'
+        - '9.1'
       default: 0
     validations:
       required: true
