@@ -405,3 +405,51 @@ Example response (formatted for readability):
    "total" : 4
 }
 ```
+
+## List all {{agents}} [list-agents-api]
+
+Use the [Get agents API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-fleet-agents) to retrieve a list of currently enrolled {{agents}}:
+
+```shell
+curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents
+```
+
+By default, a maximum of 10,000 agents are returned, with 20 agents listed per page.
+
+### List all {{agents}} with `perPage` setting [list-agents-api-perpage]
+
+The following query returns the same list, showing 10,000 {{agents}} per page:
+
+```shell
+curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000'
+```
+
+### List the next set of 10,000 {{agents}} [list-agents-api-next-set]
+```{applies_to}
+stack: ga 9.1
+```
+
+Beginning with {{stack}} version 9.1, the previous query response includes a `nextSearchAfter` parameter that you can pass in a subsequent call, to retrieve the next page of 10,000 enrolled agents:
+
+```shell
+curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&searchAfter=<nextSearchAfter>'
+```
+
+### List all {{agents}} for a point in time [list-agents-api-point-in-time]
+```{applies_to}
+stack: ga 9.1
+```
+
+Beginning with {{stack}} version 9.1, you can also capture a point-in-time ID (`pitId`) parameter from the `Get agents API` response, and use that together with the `nextSearchAfter` parameter to capture the next page of 10,000 enrolled agents for a specific point in time.
+
+Include the `openPit` and `pitKeepAlive` parameters in your initial request:
+
+```shell
+curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&openPit=true&pitKeepAlive=5m'
+```
+
+You can then use the returned values in a new request to retrieve the next set of 10,000 agents:
+
+```shell
+curl -X GET 'http://<user>:<pass>@<kibana url>/api/fleet/agents?perPage=10000&searchAfter=<nextSearchAfter>&pitId=<pit id>&pitKeepAlive=5m'
+```
