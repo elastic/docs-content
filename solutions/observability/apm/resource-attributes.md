@@ -9,19 +9,23 @@ applies_to:
 
 # Resource attributes [apm-open-telemetry-resource-attributes]
 
-A resource attribute is a key/value pair containing information about the entity producing telemetry. Resource attributes are mapped to Elastic Common Schema (ECS) fields like `service.*`, `cloud.*`, `process.*`, etc. These fields describe the service and the environment that the service runs in.
+A resource attribute is a key-value pair containing information about the entity producing telemetry. Resource attributes are mapped to Elastic Common Schema (ECS) fields like `service.*`, `cloud.*`, `process.*`, and so on. These fields describe the service and the environment that the service runs in.
 
-The examples shown here set the Elastic (ECS) `service.environment` field for the resource, i.e. service, that is producing trace events. Note that Elastic maps the OpenTelemetry `deployment.environment` field to the ECS `service.environment` field on ingestion.
+The examples set the Elastic (ECS) `service.environment` field for the resource that's producing trace events. Elastic maps the OpenTelemetry `deployment.environment` field to the ECS `service.environment` field on ingestion.
 
-**OpenTelemetry agent**
+## Setting resource attributes
 
-Use the `OTEL_RESOURCE_ATTRIBUTES` environment variable to pass resource attributes at process invocation.
+You can set resource attributes through the environment variables or by editing the configuration of the resource processor of the Collector.
+
+### OpenTelemetry configuration
+
+Use the `OTEL_RESOURCE_ATTRIBUTES` environment variable to pass resource attributes at process invocation. For example:
 
 ```bash
 export OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production
 ```
 
-**OpenTelemetry collector**
+### Resource processor
 
 Use the [resource processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor) to set or apply changes to resource attributes.
 
@@ -36,13 +40,119 @@ processors:
 ...
 ```
 
-::::{tip}
-Need to add event attributes instead? Use attributes—​not to be confused with resource attributes—​to add data to span, log, or metric events. Attributes can be added as a part of the OpenTelemetry instrumentation process or with the [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor).
+## Handling of unmapped attributes
 
-::::
+Only a subset of OpenTelemetry resource attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, it's stored under `labels.*`, with `.` (dots) replaced by `_` (underscores).
 
-% Stateful only after this?
+The following table shows how OTel resource attributes are mapped to ECS fields and how they're stored if unmapped.
 
-Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}.
+| OpenTelemetry attribute | Mapped ECS field | If unmapped, stored as |
+|------------------------|------------------|------------------------|
+| `service.name` | `service.name` | - |
+| `service.version` | `service.version` | - |
+| `deployment.environment` | `service.environment` | - |
+| `cloud.provider` | `cloud.provider` | - |
+| `cloud.account.id` | `cloud.account.id` | - |
+| `otel.library.name` | ❌ Not mapped | `labels.otel_library_name` |
+| `custom.attribute.with.dots` | ❌ Not mapped | `labels.custom_attribute_with_dots` |
 
-For more information on how to combine Elastic and OpenTelemetry, see [OpenTelemetry integration](/solutions/observability/apm/use-opentelemetry-with-apm.md).
+For example, if an OpenTelemetry resource contains:
+
+```json
+{
+  "service.name": "user-service",
+  "deployment.environment": "production",
+  "otel.library.name": "my-lib",
+  "custom.attribute.with.dots": "value"
+}
+```
+
+Elastic APM stores the following:
+
+```json
+{
+  "service.name": "user-service",
+  "service.environment": "production",
+  "labels": {
+    "otel_library_name": "my-lib",
+    "custom_attribute_with_dots": "value"
+  }
+}
+```
+
+## APM transactions and spans
+
+Not all OpenTelemetry spans are mapped the same way:
+
+- Root spans (entry points) are mapped to APM transactions.
+- Child spans (internal operations, DB queries) are mapped to APM spans.
+
+| OpenTelemetry span kind | Mapped to APM | Example |
+|------------------------|---------------|---------|
+| `SERVER` | Transaction | Incoming HTTP request (`GET /users/{id}`) |
+| `CONSUMER` | Transaction | Message queue consumer event |
+| `CLIENT` | Span | Outgoing database query (`SELECT * FROM users`) |
+| `PRODUCER` | Span | Sending a message to a queue |
+| `INTERNAL` | Span | Internal function execution |
+
+The following example shows OpenTelemetry spans:
+
+```json
+[
+  {
+    "traceId": "abcd1234",
+    "spanId": "root5678",
+    "parentId": null,
+    "name": "GET /users/{id}",
+    "kind": "SERVER"
+  },
+  {
+    "traceId": "abcd1234",
+    "spanId": "db1234",
+    "parentId": "root5678",
+    "name": "SELECT FROM users",
+    "kind": "CLIENT"
+  }
+]
+```
+
+The previous OTel spans are stored by Elastic APM as follows:
+
+```
+Transaction: GET /users/{id}
+ ├── Span: SELECT FROM users
+```
+
+## Conditional attribute translation
+
+Some OpenTelemetry attributes are conditionally converted based on their value type.
+
+The following table shows how OTel resource attributes are converted.
+
+| OpenTelemetry Resource attribute | Incoming value type | Converted value | APM field |
+|------------------------|---------------------|----------------|-----------|
+| `http.status_code` | `200` (Integer) | `"200"` (String) | `http.response.status_code` |
+| `feature.enabled` | `true` (Boolean) | `"enabled"` (String) | `labels.feature_enabled` |
+| `http.request_headers` | `["accept:json", "auth:token"]` (Array) | `"accept:json, auth:token"` (String) | `labels.http_request_headers` |
+
+Consider the following resource attributes:
+
+```json
+{
+  "http.status_code": 200,
+  "feature.enabled": true,
+  "http.request_headers": ["accept:json", "auth:token"]
+}
+```
+
+The previous resource attributes are stored by Elastic APM as follows:
+
+```json
+{
+  "http.response.status_code": "200",
+  "labels": {
+    "feature_enabled": "enabled",
+    "http_request_headers": "accept:json, auth:token"
+  }
+}
+```
