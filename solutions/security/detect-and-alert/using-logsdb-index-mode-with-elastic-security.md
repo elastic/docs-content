@@ -10,25 +10,30 @@ applies_to:
 
 # Using logsdb index mode with Elastic Security [detections-logsdb-index-mode-impact]
 
-::::{note}
-To use the [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source) feature, you must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
+::::{admonition} Requirements
+To use the [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source) feature in the {{stack}}, you must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::
 
 
-This topic explains the impact of using logsdb index mode with {{elastic-sec}} and {{sec-serverless}}.
+This topic explains the impact of using logsdb index mode with {{elastic-sec}} and {{sec-serverless}}. You must have the appropriate subscription to use this feature in {{stack}}. In {{serverless-short}}, logsdb index mode is enabled by default. 
 
 With logsdb index mode, the original `_source` field is not stored in the index but can be reconstructed using [synthetic `_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
 When the `_source` is reconstructed, [modifications](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications) are possible. Therefore, there could be a mismatch between users' expectations and how fields are formatted.
 
-Continue reading to find out how this affects specific {{elastic-sec}} components.
+Continue reading to learn how logsdb index mode affects CPU and storage usage and specific {{elastic-sec}} components. 
 
 ::::{note}
 The following statement applies to {{stack}} users only:
 
-Logsdb is not recommended for {{elastic-sec}} at this time. Users must fully understand and accept the documented changes to detection alert documents (see below), and ensure their deployment has excess hot data tier CPU resource capacity before enabling logsdb mode, as logsdb mode requires additional CPU resources during the ingest/indexing process. Enabling logsdb without sufficient hot data tier CPU may result in data ingestion backups and/or security detection rule timeouts and errors.
+Logsdb index mode is fully supported, and is recommended for all {{elastic-sec}} deployments. Users with existing {{elastic-sec}} deployments are advised to fully understand and accept the documented changes to detection alert documents, runtime fields, and rule actions (refer to the sections below), and ensure that their deployment has sufficient excess hot data tier CPU  capacity to support the logsdb ingest and indexing process. Enabling logsdb index mode without sufficient excess hot data tier CPU capacity may result in data ingestion backups and/or security detection rule timeouts and errors.
+
 ::::
 
+
+## CPU and storage  [logsdb-cpu-storage]
+
+Logsdb index mode significantly reduces storage needs by using slightly more CPU during ingest. After enabling logsdb index mode for your data sources, you may need to adjust cluster sizing in response to the new CPU and storage needs. To learn more about how logsdb index mode optimizes CPU and storage usage, check out [our blog](https://www.elastic.co/search-labs/blog/elasticsearch-logsdb-index-mode).
 
 
 ## Alerts [logsdb-alerts]
@@ -78,3 +83,4 @@ The following will not work with synthetic source (logsdb index mode enabled):
 "source": """  emit(params._source['agent.name'] + "_____" + doc['agent.name'].value );  """
 ```
 
+Also note that runtime fields with scripts that reference `params._source` may need to be updated. Scripts that currently use dotted field names to access source fields must be converted to use the nested access pattern instead, unless the object being accessed has `subobjects` set to `false`. Fields that are not mapped also need to be accessed in scripts using the nested access pattern (for example, `params._source['foo']['bar']['baz']` or `params._source.foo.bar.baz`, not `params._source['foo.bar.baz']`). To learn more about how synthetic source names fields and changes that you may need to make to your scripts, refer to [Fields named as they are mapped](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-modifications-field-names).
