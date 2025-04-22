@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/release-notes.html
   - https://www.elastic.co/guide/en/security/current/whats-new.html
 ---
-# {{elastic-sec}} release notes [elastic-security-release-notes]
+# {{elastic-sec}} release notes [elastic-security-X.X.X-release-notes]
 
 Review the changes, fixes, and more in each version of {{elastic-sec}}.
 

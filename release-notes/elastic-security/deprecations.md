@@ -7,7 +7,7 @@ Over time, certain Elastic functionality becomes outdated and is replaced or rem
 
 Review the deprecated functionality for {{elastic-sec}}. While deprecations have no immediate impact, we strongly encourage you update your implementation after you upgrade. To learn how to upgrade, check out [Upgrade](/deploy-manage/upgrade.md).
 
-% ## Next version
+% ## Next version [elastic-security-X.X.X-deprecations]
 
 % ::::{dropdown} Deprecation title
 % Description of the deprecation.

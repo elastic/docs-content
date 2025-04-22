@@ -14,12 +14,23 @@ It is recommended to check the ZooKeeper sync status before starting any mainten
 * The ECE UI **Settings** page displays all ZooKeeper nodes as connected, but not all the nodes have completed the syncing with the latest ZooKeeper state.
 * Connected ZooKeeper nodes participate in the quorum, but they don’t appear in the ECE UI **Settings** page. For example, if the host is removed, ECE no longer cares about it and keeps the ZooKeeper container part of the quorum.
 
+
+### Check at container level
+
 To check that ZooKeeper is in sync with the correct number of followers, run the following steps:
 
-1. Run the one-line command on each Director node:
+1. Run the inline shell script command on each Director node:
 
     ```sh
-    docker exec frc-zookeeper-servers-zookeeper sh -c 'for i in $(seq 2191 2199); do echo trying port: $i;echo mntr | nc localhost ${i} 2>/dev/null | grep "not currently serving";echo mntr | nc localhost ${i} 2>/dev/null| grep leader; echo mntr | $(which nc) localhost ${i} 2>/dev/null | grep follower ; done'
+    docker exec frc-zookeeper-servers-zookeeper sh -c '
+    for i in $(seq 2191 2199); do 
+      output=$(echo mntr | curl -s telnet://localhost:$i | grep -E "server_state|leader|follower|not currently serving|zk_znode_count"); 
+      if [ -n "$output" ]; then 
+        echo "ZK mntr Response from port $i:"; 
+        echo "$output"; 
+        break; 
+      fi 
+    done'
     ```
 
     ::::{note} 
@@ -32,53 +43,32 @@ To check that ZooKeeper is in sync with the correct number of followers, run the
     * All followers are listed as synced
 
 
-The one-line command can return the following types of output:
+The inline shell script command can return the following types of output:
 
 * If the host is the current ZooKeeper Leader, the command returns the Leader’s info including follower count and follower sync status.
 
     ```
-    trying port: 2191
+    ZK mntr Response from port 2191:
     zk_server_state leader
-    zk_followers    2
+    zk_znode_count  783
     zk_synced_followers     2
-    trying port: 2192
-    trying port: 2193
-    trying port: 2194
-    trying port: 2195
-    trying port: 2196
-    trying port: 2197
-    trying port: 2198
-    trying port: 2199
+    ...
     ```
 
 * If the host is a follower, the command returns only the follower state, and continues until it finds the Leader:
 
     ```
-    trying port: 2191
-    trying port: 2192
-    trying port: 2193
+    ZK mntr Response from port 2193:
     zk_server_state follower
-    trying port: 2194
-    trying port: 2195
-    trying port: 2196
-    trying port: 2197
-    trying port: 2198
-    trying port: 2199
+    zk_znode_count  777
+    ...
     ```
 
 * If the ZooKeeper container is up and listening, but the current node doesn’t have the quorum, the command returns the message `This ZooKeeper instance is not currently serving requests`:
 
     ```
-    trying port: 2191
-    trying port: 2192
+    ZK mntr Response from port 2192:
     This ZooKeeper instance is not currently serving requests
-    trying port: 2193
-    trying port: 2194
-    trying port: 2195
-    trying port: 2196
-    trying port: 2197
-    trying port: 2198
-    trying port: 2199
     ```
 
 
@@ -86,32 +76,23 @@ Make sure the ZooKeeper container is running on all the Director nodes. If anoth
 
 If there is no response on any port, it’s possible that no ZooKeeper ports are currently listening (for ex. running on a non-Director role host, or the ZooKeeper Docker container is not running)
 
-```
-trying port: 2191
-trying port: 2192
-trying port: 2193
-trying port: 2194
-trying port: 2195
-trying port: 2196
-trying port: 2197
-trying port: 2198
-trying port: 2199
-```
 
-If the one line command doesn’t work, use telnet:
 
-1. Run `docker ps | grep zoo` to reveal the port in use by the ZooKeeper container on the current host. The port won’t change once the container is started.
-2. Install and run telnet, `telnet localhost <port #>` then type `mntr`
+### Alternative: Check at host level 
 
-    * The port is in the range from 2191 to 2199.
-    * for example `telnet localhost 2191`
+If the inline shell script command doesn’t work, you can run the check directly from the director host. This can happen for example when your user lacks permissions to access Docker. This approach avoids entering the container and doesn't require installing additional tools like `telnet` or `nc`, relying instead on `curl`, which is typically available by default on most Linux systems.
 
-3. Look for the following output lines:
-
-    * `zk_server_state leader` or `zk_server_state follower` to indicate node leadership
-    * Lines indicating the follower count and sync status when run against a Leader node
-
-        * `zk_followers    2`
-        * `zk_synced_followers     2`
-
+1. Run the equivalent inline shell script directly on the host terminal, outside of the zookeeper container
+    ```
+    for i in $(seq 2191 2199); do 
+      output=$(echo mntr | curl -s telnet://localhost:$i | grep -E "server_state|leader|follower|not currently serving|zk_znode_count"); 
+      if [ -n "$output" ]; then 
+        echo "ZK mntr Response from port $i:"; 
+        echo "$output"; 
+        break; 
+      fi 
+    done
+    ```
+2. Look for the following lines in the output
+  *  `zk_server_state leader` or `zk_server_state follower` — indicates the node’s ZooKeeper role
 

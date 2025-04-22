@@ -272,6 +272,8 @@ subs:
   kib-pull:   "https://github.com/elastic/kibana/pull/"
   stack-version: "9.0.0"
   eck_version: "3.0.0"
+  eck_release_branch: "3.0"
+  eck_helm_minimum_version: "3.2.0"
   eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   eck_resources_list_short: "APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   apm_server_version: "9.0.0"
