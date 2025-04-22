@@ -42,19 +42,19 @@ processors:
 
 ## Handling of unmapped attributes
 
-Only a subset of OpenTelemetry resource attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, it's stored under `labels.*`, with `.` (dots) replaced by `_` (underscores).
+Only a subset of OpenTelemetry resource attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, it's stored under `labels.*`, with dots replaced by underscores.
 
 The following table shows how OTel resource attributes are mapped to ECS fields and how they're stored if unmapped.
 
-| OpenTelemetry attribute | Mapped ECS field | If unmapped, stored as |
-|------------------------|------------------|------------------------|
+| OTel resource attribute | Mapped ECS field | If unmapped, stored as |
+|-------------------------|------------------|------------------------|
 | `service.name` | `service.name` | - |
 | `service.version` | `service.version` | - |
 | `deployment.environment` | `service.environment` | - |
 | `cloud.provider` | `cloud.provider` | - |
 | `cloud.account.id` | `cloud.account.id` | - |
-| `otel.library.name` | ❌ Not mapped | `labels.otel_library_name` |
-| `custom.attribute.with.dots` | ❌ Not mapped | `labels.custom_attribute_with_dots` |
+
+When an attribute doesn't have a direct ECS field mapping, the system stores it under the `labels` namespace and replaces dots with underscores in the attribute key to comply with field name limitations.
 
 For example, if an OpenTelemetry resource contains:
 
@@ -84,8 +84,8 @@ Elastic APM stores the following:
 
 Not all OpenTelemetry spans are mapped the same way:
 
-- Root spans (entry points) are mapped to APM transactions.
-- Child spans (internal operations, DB queries) are mapped to APM spans.
+- Root spans, such as entry points, are mapped to APM transactions.
+- Child spans, such as internal operations and DB queries, are mapped to APM spans.
 
 | OpenTelemetry span kind | Mapped to APM | Example |
 |------------------------|---------------|---------|
@@ -131,9 +131,9 @@ The following table shows how OTel resource attributes are converted.
 
 | OpenTelemetry Resource attribute | Incoming value type | Converted value | APM field |
 |------------------------|---------------------|----------------|-----------|
-| `http.status_code` | `200` (Integer) | `"200"` (String) | `http.response.status_code` |
-| `feature.enabled` | `true` (Boolean) | `"enabled"` (String) | `labels.feature_enabled` |
-| `http.request_headers` | `["accept:json", "auth:token"]` (Array) | `"accept:json, auth:token"` (String) | `labels.http_request_headers` |
+| `http.status_code` | `200` (Integer) | `200` (Integer) | `http.response.status_code` |
+| `feature.enabled` | `true` (Boolean) | `true` (Boolean) | `labels.feature_enabled` |
+| `http.request_headers` | `["accept:json", "auth:token"]` (Array) | Individual array values as separate labels | `labels.http_request_headers.0`, `labels.http_request_headers.1` |
 
 Consider the following resource attributes:
 
@@ -149,10 +149,11 @@ The previous resource attributes are stored by Elastic APM as follows:
 
 ```json
 {
-  "http.response.status_code": "200",
+  "http.response.status_code": 200,
   "labels": {
-    "feature_enabled": "enabled",
-    "http_request_headers": "accept:json, auth:token"
+    "feature_enabled": true,
+    "http_request_headers.0": "accept:json",
+    "http_request_headers.1": "auth:token"
   }
 }
 ```
