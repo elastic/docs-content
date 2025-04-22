@@ -118,7 +118,7 @@ into {{heartbeat}}'s expected location for `heartbeat.yml`.
 Elastic Synthetics runs Chromium without the extra protection of its process
 [sandbox](https://chromium.googlesource.com/chromium/src/+/master/docs/linux/sandboxing.md)
 for greater compatibility with Linux server distributions.
-Add the `sandbox: true` option to a given browser monitor in {heartbeat} to enable sandboxing.
+Add the `sandbox: true` option to a given browser monitor in {{heartbeat}} to enable sandboxing.
 This may require using a custom seccomp policy with docker, which brings its own added risks.
 This is generally safe when run against sites whose content you trust,
 and with a recent version of Elastic Synthetics and Chromium.
