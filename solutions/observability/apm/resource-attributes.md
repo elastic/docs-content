@@ -109,10 +109,6 @@ Some OpenTelemetry attributes are conditionally converted based on their value t
 
 The following table shows how OpenTelemetry resource attributes are converted.
 
-# Conditionally Converted Attributes in `traces.go`
-
-This document lists the conditionally converted attributes in the `traces.go` file. It details the source OpenTelemetry (OTel) attributes, their corresponding Elastic Common Schema (ECS) fields, and the transformation or conversion applied.
-
 | OTel Attribute                                      | ECS Field                                 | Comment                                                                                                                                                                                                                                                |
 |----------------------------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `http.scheme`, `http.host`, `http.target`, `http.url`, `http.path`, `http.query` | `event.Url`                               | Constructs the URL by combining the scheme, host, and target attributes. Uses `http.url` if provided.                                                                                                           |
