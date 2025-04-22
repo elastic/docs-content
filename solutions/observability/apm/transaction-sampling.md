@@ -272,7 +272,7 @@ Trace events are matched to policies in the order specified. Each policy list mu
 Note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
 
-### Example configuration [_example_configuration]
+### Example configuration A [_example_configuration_a]
 
 This example defines three tail-based sampling polices:
 
@@ -289,6 +289,20 @@ This example defines three tail-based sampling polices:
 1. Samples 100% of traces in `production` with the trace name `"GET /very_important_route"`
 2. Samples 1% of traces in `production` with the trace name `"GET /not_important_route"`
 3. Default policy to sample all remaining traces at 10%, e.g. traces in a different environment, like `dev`, or traces with any other name
+
+### Example configuration B [_example_configuration_b]
+
+For a trace that originates in Service A and ends in Service B without error, what would the sampling be?
+
+```yaml
+- sample_rate: 0.3
+  service.name: B
+- sample_rate: 0.5
+  service.name: A
+- sample_rate: 1.0 # Always set a default
+```
+
+In the example, only 50% of traces will be sampled. The service that start the trace (Service A) has precedence over child services (Service B). The order of services does not matter, what matters, is in what service the trace event start. Service A, is were the trace starts, and therefore will always have precedence over "child" services that only create spans (Service B). If we start at Service B instead, pass on the context to Service A, which then adds a child span, then, the policy of `service.name: B` will take precedence over that of `service.name: A`. This is because we are working on the *trace level* rather than the *service level*.
 
 ### Configuration reference [_configuration_reference]
 
