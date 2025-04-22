@@ -2,16 +2,16 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "{{esql}} query API"
+navigation_title: "{{esql}} `_query` API"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-rest.html
 ---
 
+# Use the {{esql}} `_query` API [esql-rest]
 
-
-# {{esql}} query API [esql-rest]
-
-
+::::{tip}
+The [Search and filter with {{esql}}](/solutions/search/esql-search-tutorial.md) tutorial provides a hands-on introduction to the {{esql}} query API.
+::::
 
 ## Overview [esql-rest-overview]
 
