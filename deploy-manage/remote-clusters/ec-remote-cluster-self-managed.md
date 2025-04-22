@@ -132,7 +132,7 @@ A deployment can be configured to trust all or specific deployments in any envir
         Trust management will not work properly in clusters without an `otherName` value specified, as is the case by default in an out-of-the-box [{{es}} installation](../deploy/self-managed/installing-elasticsearch.md). To have the {{es}} certutil generate new certificates with the `otherName` attribute, use the file input with the `cn` attribute as in the example below.
         ::::
 
-5. . Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
+5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
 6. Select **Create trust** to complete the configuration.
 7. Configure the self-managed cluster to trust this deployment, so that both deployments are configured to trust each other:
 

@@ -78,7 +78,7 @@ The {{regression}} evaluation type offers the following metrics to evaluate the 
 * Mean squared error (MSE)
 * Mean squared logarithmic error (MSLE)
 * Pseudo-Huber loss
-* R-squared (R^2^)
+* R-squared (R²)
 
 ### Mean squared error [ml-dfanalytics-mse]
 
@@ -94,7 +94,7 @@ MSLE is a variation of mean squared error. It can be used for cases when the tar
 
 ### R-squared [ml-dfanalytics-r-squared]
 
-R-squared (R^2^) represents the goodness of fit and measures how much of the variation in the data the predictions are able to explain. The value of R^2^ are less than or equal to 1, where 1 indicates that the predictions and true values are equal. A value of 0 is obtained when all the predictions are set to the mean of the true values. A value of 0.5 for R^2^ would indicate that the predictions are 1 - 0.5 ^(1/2)^ (about 30%) closer to true values than their mean.
+R-squared (R²) represents the goodness of fit and measures how much of the variation in the data the predictions are able to explain. The value of R² are less than or equal to 1, where 1 indicates that the predictions and true values are equal. A value of 0 is obtained when all the predictions are set to the mean of the true values. A value of 0.5 for R² would indicate that the predictions are 1 - 0.5 ^(1/2) (about 30%) closer to true values than their mean.
 
 ### {{feat-imp-cap}} [dfa-regression-feature-importance]
 

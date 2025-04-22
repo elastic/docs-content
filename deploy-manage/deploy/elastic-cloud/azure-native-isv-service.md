@@ -303,13 +303,13 @@ $$$azure-integration-whats-included$$$What is included in my {{ecloud}} deployme
 $$$azure-integration-how-to-access$$$How can I access my {{ecloud}} deployment?
 :   Navigate to the deployment overview page in Azure:
 
-    1. Select a deployment to open the deployment overview page.
+    Select a deployment to open the deployment overview page.
 
-        You now have a few options to access your deployment:
+    Then you have a few options to access your deployment:
 
-        * **{{es}} endpoint** - the URL for the {{es}} cluster itself
-        * **{{kib}} endpoint** - the UI for the {{stack}}, a great way for new users to get started
-        * **{{ecloud}}** - Open the **Advanced Settings** link to access the deployment in the {{ecloud}} console, to change the size of the deployment or upgrade it.
+    * **{{es}} endpoint** - the URL for the {{es}} cluster itself
+    * **{{kib}} endpoint** - the UI for the {{stack}}, a great way for new users to get started
+    * **{{ecloud}}** - Open the **Advanced Settings** link to access the deployment in the {{ecloud}} console, to change the size of the deployment or upgrade it.
 
 
 $$$azure-integration-modify-deployment$$$How can I modify my {{ecloud}} deployment?
