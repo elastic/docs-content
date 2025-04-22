@@ -34,8 +34,6 @@ Note that each line in the query represents a step in the data processing pipeli
 - The `SORT` clause sorts the data by the `@timestamp` field in descending order
 - The `LIMIT` clause restricts the output to the top 3 results
 
-If you want to emphasize the distinction between programmatic access and user interface access, here's a refined version:
-
 ### User interfaces
 
 You can interact with {{esql}} in two ways:
