@@ -8,7 +8,7 @@ applies_to:
 
 # Resolve a cluster before {{ccs}} [_advantages_of_using_this_endpoint_before_a_ccs]
 
-You can use the [`_resolve/cluster`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster) endpoint before cross-cluster search to determine which remote clusters to include. This helps you identify clusters or indices that should be excluded from your search.
+You can use the [`_resolve/cluster`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster) endpoint before cross-cluster search to identify clusters or indices to exclude from your search.
 
 You may want to exclude a cluster or index from a search when:
 
