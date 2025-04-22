@@ -112,9 +112,6 @@ The following table shows how OpenTelemetry resource attributes are converted.
 # Conditionally Converted Attributes in `traces.go`
 
 This document lists the conditionally converted attributes in the `traces.go` file. It details the source OpenTelemetry (OTel) attributes, their corresponding Elastic Common Schema (ECS) fields, and the transformation or conversion applied.
-# Conditionally Converted Attributes in `traces.go`
-
-This document lists the conditionally converted attributes in the `traces.go` file. It details the source OpenTelemetry (OTel) attributes, their corresponding Elastic Common Schema (ECS) fields, and the transformation or conversion applied.
 
 | OTel Attribute                                      | ECS Field                                 | Comment                                                                                                                                                                                                                                                |
 |----------------------------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
