@@ -427,15 +427,15 @@ When {{ecloud}} can’t reach the encryption key, your deployment may become ina
 
     Within 30 minutes maximum, {{ecloud}} locks the directories in which your deployment data live and prompts you to delete your deployment as an increased security measure.<br>
 
-    While it is locked, the deployment retains all data but is not readable or writable*:
+    While it is locked, the deployment retains all data but is not readable or writable[¹](#footnote-1):
 
     * If access to the key is never restored, the deployment data does not become accessible again
     * When restoring access to the key, the deployment becomes operational again:
 
         * If Elastic didn’t have to perform any platform operations on your instances during the locked period, operations are restored with minimum downtime.
-        * If Elastic performed some platform operations on your instances during the locked period, restoring operations can require some downtime. It’s also possible that some data can’t be restored** depending on the available snapshots.
+        * If Elastic performed some platform operations on your instances during the locked period, restoring operations can require some downtime. It’s also possible that some data can’t be restored[²](#footnote-1) depending on the available snapshots.
 
 
-**During the locked directory period, Elastic may need to perform platform operations on the machines hosting your instances that result in data loss on the {{es}} data nodes but not the deployment snapshots.*
+¹ $$$footnote-1$$$ During the locked directory period, Elastic may need to perform platform operations on the machines hosting your instances that result in data loss on the {{es}} data nodes but not the deployment snapshots.
 
-***Elastic recommends that you keep snapshots of your deployment in custom snapshot repositories in your own CSP account for data recovery purposes.*
+² $$$footnote-2$$$ Elastic recommends that you keep snapshots of your deployment in custom snapshot repositories in your own CSP account for data recovery purposes.

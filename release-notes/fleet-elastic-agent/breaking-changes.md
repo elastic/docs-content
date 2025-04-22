@@ -7,7 +7,7 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 
 % ## Next version [fleet-elastic-agent-nextversion-breaking-changes]
 
-% ::::{dropdown} Title of breaking change 
+% ::::{dropdown} Title of breaking change
 % Description of the breaking change.
 % For more information, check [PR #](PR link).
 
@@ -51,7 +51,7 @@ For more information, check [#5481]({{agent-pull}}5481).
 ::::
 
 ::::{dropdown} Removed `username` and `password` default values for {{agent}}
-The default values for `username` and `password` have been removed for when {{agent}} is running in container mode. The {es} `api_key` can now be set in that mode using the `ELASTICSEARCH_API_KEY` environment variable.
+The default values for `username` and `password` have been removed for when {{agent}} is running in container mode. The {{es}} `api_key` can now be set in that mode using the `ELASTICSEARCH_API_KEY` environment variable.
 
 For more information, check [#5536]({{agent-pull}}5536).
 ::::
@@ -69,7 +69,7 @@ For more information, check [#6461]({{agent-pull}}6461) and [#2489]({{agent-pull
 ::::
 
 ::::{dropdown} Changed the default {{agent}} installation and upgrade
-The default {{agent}} installation and ugprade have been changed to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components. Additional components can be included using flags. 
+The default {{agent}} installation and ugprade have been changed to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components. Additional components can be included using flags.
 
 For more information, check [#6542]({{agent-pull}}6542).
 ::::
@@ -91,7 +91,7 @@ For more information, check [#198799]({{kib-pull}}198799).
 ::::
 
 ::::{dropdown} Removed deprecated `topics` property for kafka output in favor of the `topic` property
-Removed deprecated property `topics` from output APIs in response and requests (`(GET|POST|PUT) /api/fleet/outputs`) in favor of the `topic` property. 
+Removed deprecated property `topics` from output APIs in response and requests (`(GET|POST|PUT) /api/fleet/outputs`) in favor of the `topic` property.
 
 For more information, check [#199226]({{kib-pull}}199226).
 ::::

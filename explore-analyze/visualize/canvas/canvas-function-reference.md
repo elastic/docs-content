@@ -12,7 +12,7 @@ Behind the scenes, Canvas is driven by a powerful expression language, with doze
 
 The Canvas expression language also supports [TinyMath functions](canvas-tinymath-functions.md), which perform complex math calculations.
 
-A ***** denotes a required argument.
+A **\*** denotes a required argument.
 
 A † denotes an argument can be passed multiple times.
 
@@ -58,7 +58,7 @@ This sets the color of the metric text to `"red"` if the context passed into `me
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* ***** †<br>Alias: `condition` | `boolean` | The conditions to check. |
+| *Unnamed* **\*** †<br>Alias: `condition` | `boolean` | The conditions to check. |
 
 **Returns:** `boolean`
 
@@ -91,7 +91,7 @@ This renames the `time` column to `time_in_ms` and converts the type of the colu
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `column` | `string` | The name of the column to alter. |
+| *Unnamed* **\***<br>Alias: `column` | `string` | The name of the column to alter. |
 | `name` | `string` | The resultant column name. Leave blank to not rename. |
 | `type` | `string` | The type to convert the column to. Leave blank to not change the type. |
 
@@ -129,7 +129,7 @@ This filters out any rows that don’t contain `"elasticsearch"`, `"kibana"` or 
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* ***** †<br>Alias: `condition` | `boolean` | The conditions to check. |
+| *Unnamed* **\*** †<br>Alias: `condition` | `boolean` | The conditions to check. |
 
 **Returns:** `boolean`
 
@@ -195,7 +195,7 @@ The image asset stored with the ID `"asset-c661a7cc-11be-45a1-a401-d7592ea7917a"
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `id` | `string` | The ID of the asset to retrieve. |
+| *Unnamed* **\***<br>Alias: `id` | `string` | The ID of the asset to retrieve. |
 
 **Returns:** `string`
 
@@ -284,7 +284,7 @@ This sets the color of the progress indicator and the color of the label to `"gr
 | --- | --- | --- |
 | *Unnamed*<br>Alias: `when` | `any` | The value compared to the *context* to see if they are equal. The `when` argument is ignored when the `if` argument is also specified. |
 | `if` | `boolean` | This value indicates whether the condition is met. The `if` argument overrides the `when` argument when both are provided. |
-| `then` ***** | `any` | The value returned if the condition is met. |
+| `then` **\*** | `any` | The value returned if the condition is met. |
 
 **Returns:** `case`
 
@@ -546,7 +546,7 @@ This creates a `datatable` with `fruit` and `stock` columns with two rows. This 
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `data` | `string` | The CSV data to use. |
+| *Unnamed* **\***<br>Alias: `data` | `string` | The CSV data to use. |
 | `delimiter` | `string` | The data separation character. |
 | `newline` | `string` | The row separation character. |
 
@@ -666,10 +666,10 @@ This creates a dropdown filter element. It requires a data source and uses the u
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| `filterColumn` ***** | `string` | The column or field that you want to filter. |
+| `filterColumn` **\*** | `string` | The column or field that you want to filter. |
 | `filterGroup` | `string` | The group name for the filter. |
 | `labelColumn` | `string` | The column or field to use as the label in the dropdown control |
-| `valueColumn` ***** | `string` | The column or field from which to extract the unique values for the dropdown control. |
+| `valueColumn` **\*** | `string` | The column or field from which to extract the unique values for the dropdown control. |
 
 **Returns:** `render`
 
@@ -685,8 +685,8 @@ Returns an embeddable with the provided configuration
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `config` | `string` | The base64 encoded embeddable input object |
-| `type` ***** | `string` | The embeddable type |
+| *Unnamed* **\***<br>Alias: `config` | `string` | The base64 encoded embeddable input object |
+| `type` **\*** | `string` | The embeddable type |
 
 **Returns:** `embeddable`
 
@@ -728,7 +728,7 @@ This changes all values in the project column that don’t equal `"kibana"` or `
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `value` | `boolean`, `number`, `string`, `null` | The value compared to the *context*. |
+| *Unnamed* **\***<br>Alias: `value` | `boolean`, `number`, `string`, `null` | The value compared to the *context*. |
 
 **Returns:** `boolean`
 
@@ -871,9 +871,9 @@ exactly column="project" value="beats"
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| `column` *****<br>Aliases: `c`, `field` | `string` | The column or field that you want to filter. |
+| `column` **\***<br>Aliases: `c`, `field` | `string` | The column or field that you want to filter. |
 | `filterGroup` | `string` | The group name for the filter. |
-| `value` *****<br>Aliases: `v`, `val` | `string` | The value to match exactly, including white space and capitalization. |
+| `value` **\***<br>Aliases: `v`, `val` | `string` | The value to match exactly, including white space and capitalization. |
 
 **Returns:** `filter`
 
@@ -914,7 +914,7 @@ This uses `filterrows` to only keep data from India (`IN`), the United States (`
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Aliases: `exp`, `expression`, `fn`, `function` | `boolean` | An expression to pass into each row in the `datatable`. The expression should return a `boolean`. A `true` value preserves the row, and a `false` value removes it. |
+| *Unnamed* **\***<br>Aliases: `exp`, `expression`, `fn`, `function` | `boolean` | An expression to pass into each row in the `datatable`. The expression should return a `boolean`. A `true` value preserves the row, and a `false` value removes it. |
 
 **Returns:** `datatable`
 
@@ -1045,7 +1045,7 @@ This transforms the dates in the `time` field into strings that look like `"Jan 
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `format` | `string` | A MomentJS format. For example, `"MM/DD/YYYY"`. See [https://momentjs.com/docs/#/displaying/](https://momentjs.com/docs/#/displaying/). |
+| *Unnamed* **\***<br>Alias: `format` | `string` | A MomentJS format. For example, `"MM/DD/YYYY"`. See [https://momentjs.com/docs/#/displaying/](https://momentjs.com/docs/#/displaying/). |
 
 **Returns:** `string`
 
@@ -1080,7 +1080,7 @@ The `formatnumber` subexpression receives the same `context` as the `progress` f
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `format` | `string` | A Numeral pattern format string. For example, `"0.0a"` or `"0%"`. |
+| *Unnamed* **\***<br>Alias: `format` | `string` | A Numeral pattern format string. For example, `"0.0a"` or `"0%"`. |
 
 **Returns:** `string`
 
@@ -1110,7 +1110,7 @@ Returns whether the *context* is greater than the argument.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `value` | `number`, `string` | The value compared to the *context*. |
+| *Unnamed* **\***<br>Alias: `value` | `number`, `string` | The value compared to the *context*. |
 
 **Returns:** `boolean`
 
@@ -1123,7 +1123,7 @@ Returns whether the *context* is greater or equal to the argument.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `value` | `number`, `string` | The value compared to the *context*. |
+| *Unnamed* **\***<br>Alias: `value` | `number`, `string` | The value compared to the *context*. |
 
 **Returns:** `boolean`
 
@@ -1155,7 +1155,7 @@ Performs conditional logic.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `condition` | `boolean` | A `true` or `false` indicating whether a condition is met, usually returned by a sub-expression. When unspecified, the original *context* is returned. |
+| *Unnamed* **\***<br>Alias: `condition` | `boolean` | A `true` or `false` indicating whether a condition is met, usually returned by a sub-expression. When unspecified, the original *context* is returned. |
 | `else` | `any` | The return value when the condition is `false`. When unspecified and the condition is not met, the original *context* is returned. |
 | `then` | `any` | The return value when the condition is `true`. When unspecified and the condition is met, the original *context* is returned. |
 
@@ -1187,7 +1187,7 @@ Concatenates values from rows in a `datatable` into a single string.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `column` | `string` | The column or field from which to extract the values. |
+| *Unnamed* **\***<br>Alias: `column` | `string` | The column or field from which to extract the values. |
 | `distinct` | `boolean` | Extract only unique values?<br>Default: `true` |
 | `quote` | `string` | The quote character to wrap around each extracted value.<br>Default: `"'"` |
 | `separator`<br>Aliases: `delimiter`, `sep` | `string` | The delimiter to insert between each extracted value.<br>Default: `","` |
@@ -1227,7 +1227,7 @@ Returns whether the *context* is less than the argument.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `value` | `number`, `string` | The value compared to the *context*. |
+| *Unnamed* **\***<br>Alias: `value` | `number`, `string` | The value compared to the *context*. |
 
 **Returns:** `boolean`
 
@@ -1240,7 +1240,7 @@ Returns whether the *context* is less than or equal to the argument.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `value` | `number`, `string` | The value compared to the *context*. |
+| *Unnamed* **\***<br>Alias: `value` | `number`, `string` | The value compared to the *context*. |
 
 **Returns:** `boolean`
 
@@ -1256,9 +1256,9 @@ Returns an object with the center coordinates and zoom level of the map.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| `lat` ***** | `number` | Latitude for the center of the map |
-| `lon` ***** | `number` | Longitude for the center of the map |
-| `zoom` ***** | `number` | Zoom level of the map |
+| `lat` **\*** | `number` | Latitude for the center of the map |
+| `lon` **\*** | `number` | Longitude for the center of the map |
+| `zoom` **\*** | `number` | Zoom level of the map |
 
 **Returns:** `mapCenter`
 
@@ -1271,9 +1271,9 @@ Adds a column calculated as the result of other columns. Changes are made only w
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Aliases: `column`, `name` | `string` | The name of the resulting column. Names are not required to be unique. |
+| *Unnamed* **\***<br>Aliases: `column`, `name` | `string` | The name of the resulting column. Names are not required to be unique. |
 | `copyMetaFrom` | `string`, `null` | If set, the meta object from the specified column id is copied over to the specified target column. If the column doesn’t exist it silently fails.<br>Default: `null` |
-| `expression` *****<br>Aliases: `exp`, `fn`, `function` | `boolean`, `number`, `string`, `null` | An expression that is executed on every row, provided with a single-row `datatable` context and returning the cell value. |
+| `expression` **\***<br>Aliases: `exp`, `fn`, `function` | `boolean`, `number`, `string`, `null` | An expression that is executed on every row, provided with a single-row `datatable` context and returning the cell value. |
 | `id` | `string`, `null` | An optional id of the resulting column. When no id is provided, the id will be looked up from the existing column by the provided name argument. If no column with this name exists yet, a new column with this name and an identical id will be added to the table.<br>Default: `null` |
 
 **Returns:** `datatable`
@@ -1281,7 +1281,11 @@ Adds a column calculated as the result of other columns. Changes are made only w
 
 ### `markdown` [markdown_fn]
 
-Adds an element that renders Markdown text. TIP: Use the [`markdown`](#markdown_fn) function for single numbers, metrics, and paragraphs of text.
+Adds an element that renders Markdown text.
+
+:::{tip}
+Use the [`markdown`](#markdown_fn) function for single numbers, metrics, and paragraphs of text.
+:::
 
 **Accepts:** `datatable`, `null`
 
@@ -1316,11 +1320,11 @@ Adds a column by evaluating `TinyMath` on each row. This function is optimized f
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Aliases: `column`, `name` | `string` | The name of the resulting column. Names are not required to be unique. |
+| *Unnamed* **\***<br>Aliases: `column`, `name` | `string` | The name of the resulting column. Names are not required to be unique. |
 | *Unnamed*<br>Alias: `expression` | `string` | An evaluated `TinyMath` expression. See [canvas-tinymath-functions.md](/reference/data-analysis/kibana/tinymath-functions.md). |
 | `castColumns` † | `string` | The column ids that are cast to numbers before the formula is applied. |
 | `copyMetaFrom` | `string`, `null` | If set, the meta object from the specified column id is copied over to the specified target column. If the column doesn’t exist it silently fails.<br>Default: `null` |
-| `id` ***** | `string` | id of the resulting column. Must be unique. |
+| `id` **\*** | `string` | id of the resulting column. Must be unique. |
 | `onError` | `string` | In case the `TinyMath` evaluation fails or returns NaN, the return value is specified by onError. When `'throw'`, it will throw an exception, terminating expression execution (default). |
 
 **Returns:** `datatable`
@@ -1353,7 +1357,7 @@ Returns whether the *context* is not equal to the argument.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `value` | `boolean`, `number`, `string`, `null` | The value compared to the *context*. |
+| *Unnamed* **\***<br>Alias: `value` | `boolean`, `number`, `string`, `null` | The value compared to the *context*. |
 
 **Returns:** `boolean`
 
@@ -1650,7 +1654,7 @@ Adds a column with the same static value in every row. See also [`alterColumn`](
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Aliases: `column`, `name` | `string` | The name of the new column. |
+| *Unnamed* **\***<br>Aliases: `column`, `name` | `string` | The name of the new column. |
 | `value` | `string`, `number`, `boolean`, `null` | The value to insert in each row in the new column. TIP: use a sub-expression to rollup other columns into a static value.<br>Default: `null` |
 
 **Returns:** `datatable`
@@ -1677,7 +1681,7 @@ Performs conditional logic with multiple conditions. See also [`case`](#case_fn)
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* ***** †<br>Alias: `case` | `case` | The conditions to check. |
+| *Unnamed* **\*** †<br>Alias: `case` | `case` | The conditions to check. |
 | `default`<br>Alias: `finally` | `any` | The value returned when no conditions are met. When unspecified and no conditions are met, the original *context* is returned. |
 
 **Returns:** Depends on your input and arguments
@@ -1771,8 +1775,8 @@ An object that represents a span of time.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| `from` ***** | `string` | The start of the time range |
-| `to` ***** | `string` | The end of the time range |
+| `from` **\*** | `string` | The start of the time range |
+| `to` **\*** | `string` | The end of the time range |
 
 **Returns:** `timerange`
 
@@ -1801,7 +1805,7 @@ Returns a UI settings parameter value.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `parameter` | `string` | The parameter name. |
+| *Unnamed* **\***<br>Alias: `parameter` | `string` | The parameter name. |
 | `default` | `any` | A default value in case of the parameter is not set. |
 
 **Returns:** Depends on your input and arguments
@@ -1815,7 +1819,7 @@ Retrieves a URL parameter to use in an expression. The [`urlparam`](#urlparam_fn
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Aliases: `param`, `var`, `variable` | `string` | The URL hash parameter to retrieve. |
+| *Unnamed* **\***<br>Aliases: `param`, `var`, `variable` | `string` | The URL hash parameter to retrieve. |
 | `default` | `string` | The string returned when the URL parameter is unspecified.<br>Default: `""` |
 
 **Returns:** `string`
@@ -1832,7 +1836,7 @@ Updates the Kibana global context.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* *****<br>Alias: `name` | `string` | Specify the name of the variable. |
+| *Unnamed* **\***<br>Alias: `name` | `string` | Specify the name of the variable. |
 
 **Returns:** Depends on your input and arguments
 
@@ -1845,7 +1849,7 @@ Updates the Kibana global context.
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| *Unnamed* ***** †<br>Alias: `name` | `string` | Specify the name of the variable. |
+| *Unnamed* **\*** †<br>Alias: `name` | `string` | Specify the name of the variable. |
 | `value` †<br>Alias: `val` | `any` | Specify the value for the variable. When unspecified, the input context is used. |
 
 **Returns:** Depends on your input and arguments

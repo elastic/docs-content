@@ -56,7 +56,7 @@ For more information about adaptive allocations and resources, refer to the trai
 
 ## Default {{infer}} endpoints [default-enpoints]
 
-Your {{es}} deployment contains preconfigured {{infer}} endpoints which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. The following list contains the default {infer} endpoints listed by `inference_id`:
+Your {{es}} deployment contains preconfigured {{infer}} endpoints which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. The following list contains the default {{infer}} endpoints listed by `inference_id`:
 
 * `.elser-2-elasticsearch`: uses the [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) built-in trained model for `sparse_embedding` tasks (recommended for English language tex). The `model_id` is `.elser_model_2_linux-x86_64`.
 * `.multilingual-e5-small-elasticsearch`: uses the [E5](../../explore-analyze/machine-learning/nlp/ml-nlp-e5.md) built-in trained model for `text_embedding` tasks (recommended for non-English language texts). The `model_id` is `.e5_model_2_linux-x86_64`.

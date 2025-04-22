@@ -45,14 +45,14 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 **Performance tuning** $$$es-agent-performance-tuning$$$
 :   Choose one of the menu options to tune your {{agent}} performance when sending data to an {{es}} output. You can optimize for throughput, scale, latency, or you can choose a balanced (the default) set of performance specifications. Refer to [Performance tuning settings](#es-output-settings-performance-tuning-settings) for details about the setting values and their potential impact on performance.
 
-    You can also use the [Advanced YAML configuration](#es-output-settings-yaml-config) field to set custom values. Note that if you adjust any of the performance settings described in the following **Advanced YAML configuration*** section, the ***Performance tuning*** option automatically changes to `Custom` and cannot be changed.
+    You can also use the [Advanced YAML configuration](#es-output-settings-yaml-config) field to set custom values. Note that if you adjust any of the performance settings described in the following **Advanced YAML configuration** section, the **Performance tuning** option automatically changes to `Custom` and cannot be changed.
 
-    Performance tuning preset values take precedence over any settings that may be defined separately. If you want to change any setting, you need to use the `Custom` ***Performance tuning*** option and specify the settings in the ***Advanced YAML configuration*** field.
+    Performance tuning preset values take precedence over any settings that may be defined separately. If you want to change any setting, you need to use the `Custom` **Performance tuning** option and specify the settings in the **Advanced YAML configuration** field.
 
     For example, if you would like to use the balanced preset values except that you prefer a higher compression level, you can do so as follows:
-    1. In {{fleet}}, open the ***Settings*** tab.
-    2. In the ***Outputs*** section, select ***Add output*** to create a new output, or select the edit icon to edit an existing output.
-    3. In the ***Add new output*** or the ***Edit output*** flyout, set ***Performance tuning** to `Custom`.
+    1. In {{fleet}}, open the **Settings** tab.
+    2. In the **Outputs** section, select **Add output** to create a new output, or select the edit icon to edit an existing output.
+    3. In the **Add new output** or the **Edit output** flyout, set **Performance tuning** to `Custom`.
     4. Refer to the list of [performance tuning preset values](#es-output-settings-performance-tuning-settings), and add the settings you prefer into the **Advanced YAML configuration** field. For the `balanced` presets, the yaml configuration would be as shown:
 
       ```yaml

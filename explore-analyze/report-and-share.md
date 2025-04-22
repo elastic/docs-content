@@ -91,7 +91,7 @@ In the following dashboard, the shareable container is highlighted:
 
     * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
 
-3. Generate the report by clicking **Export file***, ***Generate CSV***, or ***Generate PDF**, depending on the object you want to export.
+3. Generate the report by clicking **Export file**, **Generate CSV**, or **Generate PDF**, depending on the object you want to export.
 
    ::::{note}
    You can use the **Copy POST URL** option instead to generate the report from outside Kibana or from Watcher.

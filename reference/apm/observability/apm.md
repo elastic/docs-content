@@ -8,7 +8,7 @@ mapped_pages:
 Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly.
 
 :::{image} /reference/apm/images/observability-apm-app-landing.png
-:alt: Applications UI in {kib}
+:alt: Applications UI in {{kib}}
 :screenshot:
 :::
 

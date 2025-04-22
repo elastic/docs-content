@@ -85,9 +85,8 @@ Interaction to next paint (INP)
 ::::{note}
 Previous {{kib}} versions included the metric [First input delay (FID)](https://web.dev/fid/) in the User Experience app. Starting with version 8.12, FID was replaced with *Interaction to next paint (INP)*. The APM RUM agent started collecting INP data in version 5.16.0. If you use an earlier version of the RUM agent with {{kib}} version 8.12 or later, it will *not* capture INP data and there will be *no data* to show in the User Experience app:
 
-|     |     |     |
-| --- | --- | --- |
 |  | **Kibana version ≥ 8.12** | **Kibana version < 8.12** |
+| --- | --- | --- |
 | **RUM agent version ≥ 5.16.0** | INP data will be visible. | FID data will be visible. |
 | **RUM agent version < 5.16.0** | The INP section will be empty. | FID data will be visible. |
 
