@@ -20,7 +20,7 @@ Periodically, you might need to upgrade an {{ece}} installation as new versions 
 Before initiating the ECE upgrade process, review the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to ensure the operating system (OS), Docker, or Podman versions you're running are compatible with the ECE version you’re upgrading to. We recommend that Docker, Podman, and the operating system are at the target version before starting the ECE upgrade.
 
 :::{note}
-During the upgrade window, there might be a short time period when you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04 and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
+During the upgrade window, there might be a short period of time during which you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 18.09 on SLES 12 and plan to upgrade to ECE 3.8 on the same OS, you will need to upgrade Docker to version 24.0 or 25.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
 :::
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]

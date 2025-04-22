@@ -17,6 +17,12 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 
 % ### Fixes [elastic-cloud-serverless-releasedate-fixes]
 
+## April 21, 2025 [serverless-changelog-04212025]
+
+### Fixes [serverless-changelog-04212025-fixes]
+* Fixes prebuilt rules force upgrade on Elastic Security Serverless Endpoint policy creation [#217959]({{kib-pull}}217959) 
+* Fixes related integrations render performance on Elastic Security Serverless rule editing pages [#217254]({{kib-pull}}217254)
+
 ## April 14, 2025 [serverless-changelog-04142025]
 
 ### Features and enhancements [serverless-changelog-04142025-features-enhancements]
