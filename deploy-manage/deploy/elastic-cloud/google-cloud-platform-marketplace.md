@@ -38,7 +38,7 @@ To subscribe to {{ecloud}} through the GCP Marketplace:
 7. After signing up, check your inbox to verify the email address you signed up with. Upon verification, you will be asked to create a password, and once created your organization will be set up and you will be logged into it.
 
     ::::{note} 
-    Immediately after your first login to {{ecloud}} you may briefly see a banner on the {{ecloud}} user console saying that your account is disconnected. There is sometimes a short delay in activation, but refreshing the page is generally enough time to allow its completion. If this issue persists, please contact support.
+    Immediately after your first login to {{ecloud}} you may briefly see a banner on the {{ecloud}} user console saying that your account is disconnected. There is sometimes a short delay in activation, but refreshing the page is generally enough time to allow its completion. If this issue persists, contact support.
     ::::
 
 
@@ -62,7 +62,7 @@ To prevent downtime, do not remove the currently used billing account before the
 
 {{ecloud}} subscriptions through GCP Marketplace are associated with a GCP billing account.  In order to change the billing account associated with an {{ecloud}} organization:
 
-* for customers under a Private Offer contract: please reach out to Elastic support and provide the GCP Billing Account, as well as the contact of any reseller information for approval.
+* for customers under a Private Offer contract: reach out to Elastic support and provide the GCP Billing Account, as well as the contact of any reseller information for approval.
 * for pay-as-you-go customers: you need to have purchased and subscribed to {{ecloud}} on the new billing account using the details above—but do not create a new Elastic user or organization (that is, you can skip Steps 5 and 6 in the subscription instructions, above). Once you successfully subscribed with the new billing account, you can contact Elastic support and provide the new billing account ID you wish to move to, which you can find from [GCP’s billing page](https://console.cloud.google.com/billing). The ID is in the format `000000-000000-000000`.
 
 If you cancel your {{ecloud}} order on GCP through the [marketplace orders page](https://console.cloud.google.com/marketplace/orders) before the switch to the new billing account has been done, any running deployments will immediately enter a degraded state known as maintenance mode and they will be scheduled for termination in five days.

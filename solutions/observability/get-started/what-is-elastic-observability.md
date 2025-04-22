@@ -26,7 +26,7 @@ In **Discover**, you can quickly search and filter your log data, get informatio
 :class: screenshot
 :::
 
-[Learn more about log monitoring →](../../../solutions/observability/logs.md)
+[Learn more about log monitoring →](/solutions/observability/logs.md)
 
 
 ## Application performance monitoring (APM) [observability-serverless-observability-overview-application-performance-monitoring-apm]
@@ -60,7 +60,7 @@ On the {{observability}} **Overview** page, the **Hosts** table shows your top h
 
 You can then drill down into the {{infrastructure-app}} by clicking **Show inventory**. Here you can monitor and filter your data by hosts, pods, containers,or EC2 instances and create custom groupings such as availability zones or namespaces.
 
-[Learn more about infrastructure monitoring → ](../../../solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md)
+[Learn more about infrastructure monitoring → ](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md)
 
 
 % Stateful only for RUM.
@@ -92,7 +92,7 @@ Simulate actions and requests that an end user would perform on your site at pre
 
 Build stack traces to get visibility into your system without application source code changes or instrumentation. Use flamegraphs to explore system performance and identify the most expensive lines of code, increase CPU resource efficiency, debug performance regressions, and reduce cloud spend.
 
-[Learn more about Universal Profiling →](../../../solutions/observability/infra-and-hosts/universal-profiling.md)
+[Learn more about Universal Profiling →](/solutions/observability/infra-and-hosts/universal-profiling.md)
 
 
 ## Alerting [observability-serverless-observability-overview-alerting]
@@ -106,7 +106,7 @@ On the **Alerts** page, the **Alerts** table provides a snapshot of alerts occur
 :screenshot:
 :::
 
-[Learn more about alerting → ](../../../solutions/observability/incident-management/alerting.md)
+[Learn more about alerting → ](/solutions/observability/incident-management/alerting.md)
 
 
 ## Service-level objectives (SLOs) [observability-serverless-observability-overview-service-level-objectives-slos]
@@ -120,7 +120,7 @@ From the SLO overview list, you can see all of your SLOs and a quick summary of 
 :screenshot:
 :::
 
-[Learn more about SLOs → ](../../../solutions/observability/incident-management/service-level-objectives-slos.md)
+[Learn more about SLOs → ](/solutions/observability/incident-management/service-level-objectives-slos.md)
 
 ## Cases [observability-serverless-observability-overview-cases]
 
@@ -131,7 +131,7 @@ Collect and share information about observability issues by creating cases. Case
 :screenshot:
 :::
 
-[Learn more about cases → ](../../../solutions/observability/incident-management/cases.md)
+[Learn more about cases → ](/solutions/observability/incident-management/cases.md)
 
 ## Machine learning and AIOps [observability-serverless-observability-overview-aiops]
 
@@ -146,4 +146,4 @@ Reduce the time and effort required to detect, understand, investigate, and reso
 :screenshot:
 :::
 
-[Learn more about machine learning and AIOps →](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md)
+[Learn more about machine learning and AIOps →](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md)

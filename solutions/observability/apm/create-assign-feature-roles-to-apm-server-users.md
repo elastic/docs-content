@@ -10,7 +10,6 @@ applies_to:
 
 ::::{note}
 Kibana custom roles are *not* compatible with [{{serverless-full}}](https://docs.elastic.co/serverless).
-
 ::::
 
 Manage access on a feature-by-feature basis by creating several custom feature-related *roles* and assigning one or more of these roles to each *user or group* based on which features they need to access.
@@ -23,7 +22,6 @@ In general, there are three types of privileges you’ll work with when creating
 * **{{es}} cluster privileges**: Manage the actions a user can perform against your cluster.
 * **{{es}} index privileges**: Control access to the data in specific indices of your cluster.
 * **{{kib}} space privileges**: Grant users write or read access to features and apps within {{kib}}.
-
 ::::
 
 The following are common roles that APM Server users might need:
@@ -32,6 +30,7 @@ The following are common roles that APM Server users might need:
 * [**Central configuration management role**](#apm-privileges-agent-central-config): Allows a user to view APM Agent central configurations, which is **required** when [central configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) is enabled (it is enabled by default).
 * [**Monitoring role**](#apm-privileges-to-publish-monitoring): Allows a user to publish monitoring data, view monitoring data, or both.
 * [**RUM source mapping role**](#apm-privileges-rum-source-mapping): Allows a user to read RUM source maps.
+* [**Tail-based sampling role**](#apm-privileges-tail-based-sampling): Allows a user to use [tail-based sampling](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling).
 
 ::::{admonition} Example: Assigning multiple roles to an APM Server user
 If you want to create an APM Server user who can use the Elastic APM Real User Monitoring (RUM) JavaScript Agent to ingest data from a frontend application and you use central configuration to manage APM agents, you would need to assign these three roles to the user:
@@ -39,7 +38,6 @@ If you want to create an APM Server user who can use the Elastic APM Real User M
 * [Writer role](#apm-privileges-to-publish-events)
 * [Central configuration management role](#apm-privileges-agent-central-config)
 * [RUM source mapping role](#apm-privileges-rum-source-mapping)
-
 ::::
 
 ## Create a *writer* role [apm-privileges-to-publish-events]
@@ -48,7 +46,6 @@ APM users that publish events to {{es}} *must* have privileges to write to APM d
 
 ::::{note}
 This is not needed when APM Server doesn’t write to {{es}} directly. For example, in some cases you may configure APM Server to write to another output like Logstash, Kafka, or any other output supported by libbeat. In these cases, different authentication credentials will need to be passed to [`apm-server.agent.config.elasticsearch`](/solutions/observability/apm/configure-apm-agent-central-configuration.md#apm-agent-config-elasticsearch).
-
 ::::
 
 To grant an APM Server user the required privileges for writing events to {{es}}:
@@ -69,7 +66,6 @@ If you have explicitly disabled Elastic security *and* you are *not* using tail-
 
 ::::{note}
 Assign additional APM feature roles to users as needed including the *Central configuration management role*, which is [required in most cases](#apm-central-config-role-note).
-
 ::::
 
 ## Create a *central configuration management* role [apm-privileges-agent-central-config]
@@ -78,7 +74,6 @@ Assign additional APM feature roles to users as needed including the *Central co
 :name: apm-central-config-role-note
 
 The privileges included in this role are **required** for all users when [central configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) is enabled (it is enabled by default). You need this role unless central configuration management has been explicitly disabled in the Applications UI.
-
 ::::
 
 $$$apm-privileges-agent-central-config-server$$$
@@ -108,7 +103,6 @@ The previous privileges should be sufficient for APM agent central configuration
 
 ::::{note}
 Assign additional APM feature roles to users as needed including the *Writer role*, which is [required in most cases](#apm-privileges-to-publish-events).
-
 ::::
 
 ::::{tip}
@@ -130,7 +124,6 @@ Looking for privileges and roles needed to use central configuration from the Ap
 
 ::::{important}
 **{{ecloud}} users:** This section does not apply to [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service). Monitoring on {{ecloud}} is enabled by clicking the **Enable** button in the **Monitoring** panel.
-
 ::::
 
 #### Internal collection [apm-privileges-to-publish-monitoring-internal]
@@ -161,7 +154,6 @@ If you don’t use the `apm_system` user, you can create a custom role:
 
 ::::{note}
 Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
-
 ::::
 
 #### {{metricbeat}} collection [apm-privileges-to-publish-monitoring-metricbeat]
@@ -194,7 +186,6 @@ If you don’t use the `remote_monitoring_user` user, you can create a custom us
 
 ::::{note}
 Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
-
 ::::
 
 ### View monitoring data [apm-privileges-to-publish-monitoring-view]
@@ -216,7 +207,6 @@ To grant users the required privileges for viewing monitoring data:
 
 ::::{note}
 Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
-
 ::::
 
 ## Create a *source map* role [apm-privileges-rum-source-map]
@@ -232,7 +222,20 @@ To grant an APM Server user with the required privileges for reading RUM source 
 
 ::::{note}
 Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
-
 ::::
 
 The previous privileges should be sufficient for RUM source mapping to work properly as long as APM Server communicates with {{es}} successfully. If it fails, it may fallback to read source maps through {{kib}} if configured, which requires additional {{kib}} privileges. For more details, refer to the [{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-sourcemaps) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-sourcemaps) API documentation.
+
+## Create a *tail-based sampling* role [apm-privileges-tail-based-sampling]
+
+If [tail-based sampling](/solutions/observability/apm/tail-based-sampling.md) is enabled, the user will need additional privileges.
+
+APM Server users need the following privileges to read tail-based sampling indices from {{es}}:
+
+| Type | Privilege | Purpose |
+| --- | --- | --- |
+| Index | `read` on `traces-apm.sampled` index | Allow APM Server to read tail-based sampling indices from {{es}} |
+
+::::{note}
+Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
+::::

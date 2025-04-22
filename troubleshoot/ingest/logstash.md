@@ -75,7 +75,7 @@ Try adding these values to the `jvm.options` file.
 **Notes:**
 
 * These settings allow Logstash to start without warnings.
-* This workaround has been tested with simple pipelines. If you have experiences to share, please comment in the [issue](https://github.com/elastic/logstash/issues/10496).
+* This workaround has been tested with simple pipelines. If you have experiences to share, comment in the [issue](https://github.com/elastic/logstash/issues/10496).
 
 
 ### *Permission denied - NUL* errors on Windows [ts-windows-permission-denied-NUL]
@@ -239,7 +239,7 @@ input {stdin{}} output {stdout{}}
 
 For more complex pipelines, the problem could be caused by a series of plugins in a specific order. Troubleshooting these pipelines usually requires trial and error. Start by systematically removing input and output plugins until you’re left with the minimum set that manifest the issue.
 
-We want to expand this section to make it more helpful. If you have troubleshooting tips to share, please:
+We want to expand this section to make it more helpful. If you have troubleshooting tips to share:
 
 * create an issue at [https://github.com/elastic/logstash/issues](https://github.com/elastic/logstash/issues), or
 * create a pull request with your proposed changes at [https://github.com/elastic/logstash](https://github.com/elastic/logstash).
@@ -283,7 +283,7 @@ Without setting this flag, json log would contain objects like:
 }
 ```
 
-Please note the duplication of `message` field, while being technically valid json, it is not always parsed correctly.
+Note the duplication of `message` field, while being technically valid json, it is not always parsed correctly.
 
 **Solution** In `config/logstash.yml` enable the strict json flag:
 

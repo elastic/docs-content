@@ -17,7 +17,7 @@ The process involves two main steps:
 2. [Update the {{stack}} pack included in your ECE installation to point to your modified Docker image.](#ece-modify-stack-pack)
 
 
-## Before you begin [ece_before_you_begin_5] 
+## Before you begin [ece_before_you_begin_5]
 
 Note the following restrictions:
 
@@ -27,7 +27,7 @@ Note the following restrictions:
 * The Dockerfile used in this example includes an optimization process that is relatively expensive and may require a machine with several GB of RAM to run successfully.
 
 
-## Extend a {{kib}} Docker image to include additional plugins [ece-create-modified-docker-image] 
+## Extend a {{kib}} Docker image to include additional plugins [ece-create-modified-docker-image]
 
 This example runs a Dockerfile to install the [analyze_api_ui plugin](https://github.com/johtani/analyze-api-ui-plugin) or [kibana-enhanced-table](https://github.com/fbaligand/kibana-enhanced-table) into different versions of {{kib}} Docker image. The contents of the Dockerfile varies depending on the version of the {{stack}} pack that you want to modify.
 
@@ -46,7 +46,7 @@ This example runs a Dockerfile to install the [analyze_api_ui plugin](https://gi
     * The version of the image
     * The plugin name and version number
 
-        ::::{important} 
+        ::::{important}
         When you modify a {{kib}} Docker image, make sure you maintain the original image structure and only add the additional plugins.
         ::::
 
@@ -73,7 +73,7 @@ This example runs a Dockerfile to install the [analyze_api_ui plugin](https://gi
 
 
 
-## Modify the {{stack}} pack to point to your modified image [ece-modify-stack-pack] 
+## Modify the {{stack}} pack to point to your modified image [ece-modify-stack-pack]
 
 Follow these steps to update the {{stack}} pack zip files in your ECE setup to point to your modified Docker image:
 
@@ -85,7 +85,7 @@ Follow these steps to update the {{stack}} pack zip files in your ECE setup to p
 
     set -eo pipefail
 
-    # Repack a stackpack to modify the {{kib}} image it points to
+    # Repack a stackpack to modify the Kibana image it points to
 
     NO_COLOR='\033[0m'
     ERROR_COLOR='\033[1;31m'
@@ -152,7 +152,7 @@ Follow these steps to update the {{stack}} pack zip files in your ECE setup to p
 
 
 
-## Common causes of problems [ece-custom-plugin-problems] 
+## Common causes of problems [ece-custom-plugin-problems]
 
 1. If the custom Docker image is not available, make sure that the image has been uploaded to your Docker repository or loaded locally onto each ECE allocator.
 2. If the container takes a long time to start, the problem might be that the `reoptimize` step in the Dockerfile did not complete successfully.

@@ -12,7 +12,7 @@ mapped_pages:
 
 # {{eck}} [k8s-overview]
 
-Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of {{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
+Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of {{eck_resources_list}} on Kubernetes.
 
 ## ECK overview
 
@@ -28,7 +28,7 @@ This section provides everything you need to install, configure, and manage {{st
 
 - [](./cloud-on-k8s/deploy-an-orchestrator.md): ECK installation methods and configuration options. Deploy ECK on managed Kubernetes platforms like GKE, AKS, and EKS, on self-managed Kubernetes clusters, on OpenShift, and even in air-gapped environments.
 - [](./cloud-on-k8s/manage-deployments.md): Handle {{es}} clusters and {{kib}} instances through ECK.
-- [](./cloud-on-k8s/orchestrate-other-elastic-applications.md): Run APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
+- [](./cloud-on-k8s/orchestrate-other-elastic-applications.md): Run {{eck_resources_list_short}} on Kubernetes.
 - [](./cloud-on-k8s/tools-apis.md): A collection of tools and APIs available in ECK based environments.
 
 Other sections of the documentation include the following important topics around ECK:
@@ -57,7 +57,7 @@ Afterwards, you can:
 
 * Learn how to [update your deployment](./cloud-on-k8s/update-deployments.md)
 * Check out [our recipes](./cloud-on-k8s/recipes.md) for multiple use cases
-* Find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/samples)
+* Find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/samples)
 
 ## Supported versions [k8s-supported]
 
@@ -70,7 +70,7 @@ ECK is compatible with the following Kubernetes distributions and related techno
 * Kubernetes 1.28-1.32
 * OpenShift 4.14-4.18
 * Google Kubernetes Engine (GKE), Azure Kubernetes Service (AKS), and Amazon Elastic Kubernetes Service (EKS)
-* Helm: 3.2.0+
+* Helm: {{eck_helm_minimum_version}}+
 
 ECK should work with all conformant **installers** listed in these [FAQs](https://github.com/cncf/k8s-conformance/blob/master/faq.md#what-is-a-distribution-hosted-platform-and-an-installer). Distributions include source patches and so may not work as-is with ECK.
 

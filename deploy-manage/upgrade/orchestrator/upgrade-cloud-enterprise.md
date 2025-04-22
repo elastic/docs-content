@@ -126,7 +126,7 @@ To upgrade an {{ece}} installation, download the latest installation script. Log
 * If your ECE installation was set up using **Podman** instead of Docker, append the `--podman` flag when running the upgrade command.
 * If your installation uses **SELinux**, append the `--selinux` flag when running the upgrade command.
 * If you configured a **custom Docker registry** during installation using the `--docker-registry` or `--ece-docker-repository` parameters, include the same parameters when running the upgrade.
-* Starting in ECE 3.8.0, `upgrade` requires `--user` and `--pass` arguments, or a path to the `bootstrap-secrets.json` file, if the file does not exist already at the expected default path. Please see [elastic-cloud-enterprise.sh upgrade](cloud://reference/cloud-enterprise/ece-installation-script-upgrade.md) for details.
+* Starting in ECE 3.8.0, `upgrade` requires `--user` and `--pass` arguments, or a path to the `bootstrap-secrets.json` file, if the file does not exist already at the expected default path. See [elastic-cloud-enterprise.sh upgrade](cloud://reference/cloud-enterprise/ece-installation-script-upgrade.md) for details.
 ::::
 
 ```sh

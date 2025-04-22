@@ -9,7 +9,7 @@ mapped_pages:
 # Wildcard DNS record [ece-wildcard-dns]
 
 ::::{warning} 
-We do not recommend using `ip.es.io` for production systems. Please set up your own domain name and DNS resolver for production. We do not guarantee uptime with `ip.es.io`.
+Don't use `ip.es.io` for production systems. Set up your own domain name and DNS resolver for production. We do not guarantee uptime with `ip.es.io`.
 ::::
 
 By default, {{ece}} uses the external `ip.es.io` service provided by Elastic to resolve virtual {{es}} cluster host names in compliance with RFC1918. The service works by resolving host names of the form `<ip>.ip.es.io` to `<ip>`. In the case of {{ece}}, each cluster is assigned a virtual host name of the form `<cluster id>.<proxy ip address>.ip.es.io:<port>`, such as `6dfc65aae62341e18a8b7692dcc97186.10.8.156.132.ip.es.io:9243`. The `ip.es.io` service simply resolves the virtual host name of the cluster to the proxy address which is specified during installation, `10.8.156.132` in our example, so that client requests are sent to the proxy. The proxy then extracts the cluster ID from the virtual host name of the cluster and uses its internal routing table to route the request to the right allocator.

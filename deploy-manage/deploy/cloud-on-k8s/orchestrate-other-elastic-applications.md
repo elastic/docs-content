@@ -3,7 +3,7 @@
 This section explains how to deploy and configure various {{stack}} applications within {{eck}} (ECK).
 
 ::::{tip}
-This content applies to APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash applications. To orchestrate an {{es}} cluster or {{kib}}, refer to [](./manage-deployments.md).
+This content applies to {{eck_resources_list_short}} applications. To orchestrate an {{es}} cluster or {{kib}}, refer to [](./manage-deployments.md).
 ::::
 
 The following guides provide specific instructions for deploying and configuring each application on ECK:
@@ -15,7 +15,7 @@ The following guides provide specific instructions for deploying and configuring
 * [{{ls}}](logstash.md)
 
 ::::{note}
-Enterprise Search is not available in {{stack}} versions 9.0 and later. To deploy or manage Enterprise Search in earlier versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s-enterprise-search.html).
+Enterprise Search is not available in {{stack}} versions 9.0 and later. To deploy or manage Enterprise Search in earlier versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/{{eck_release_branch}}/k8s-enterprise-search.html).
 ::::
 
 When orchestrating any of these applications, also consider the following topics:

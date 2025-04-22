@@ -72,7 +72,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         ```
 
 4. Install Podman:
-    
+
     * For Podman 4
 
         * Install the latest available version `4.*` using dnf.
@@ -139,7 +139,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Please note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 
@@ -304,7 +304,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     sudo install -o elastic -g elastic -d -m 700 /mnt/data/docker
     ```
 
-25. If you want to use FirewallD, please ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
+25. If you want to use FirewallD, ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
 
     ```sh
     sudo systemctl disable firewalld
@@ -322,7 +322,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     vm.max_map_count=262144
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
-    # Decrease the maximum number of TCP retransmissions to 5 as recommended for {{es}} TCP retransmission timeout.
+    # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
     # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early

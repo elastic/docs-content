@@ -112,7 +112,6 @@ serverless: unavailable
 **Support for tail-based sampling**
 
 Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](/solutions/observability/apm/configure-output.md), tail-based sampling is *not* supported.
-
 ::::
 
 In tail-based sampling, the sampling decision for each trace is made after the trace has completed. This means all traces will be analyzed against a set of rules, or policies, which will determine the rate at which they are sampled.
@@ -195,7 +194,7 @@ stack:
 serverless:
 ```
 
-A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data1. Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
+A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data.[¹](#footnote-1) Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
 
 Some visualizations in the {{apm-app}}, like latency, are powered by aggregated transaction and span [metrics](/solutions/observability/apm/metrics.md). The way these metrics are calculated depends on the sampling method used:
 
@@ -207,7 +206,7 @@ For all sampling methods, metrics are weighted by the inverse sampling rate of t
 
 These calculation methods ensure that the APM app provides the most accurate metrics possible given the sampling strategy in use, while also accounting for the head-based sampling rate to estimate the full population of traces.
 
-1 Real User Monitoring (RUM) traces are an exception to this rule. The {{kib}} apps that utilize RUM data depend on transaction events, so non-sampled RUM traces retain transaction data — only span data is dropped.
+¹ $$$footnote-1$$$ Real User Monitoring (RUM) traces are an exception to this rule. The {{kib}} apps that utilize RUM data depend on transaction events, so non-sampled RUM traces retain transaction data — only span data is dropped.
 
 ## Sample rates [_sample_rates]
 
@@ -261,12 +260,16 @@ stack:
 serverless: unavailable
 ```
 
+::::{note}
+Enhanced privileges are required to use tail-based sampling. For more information, refer to [Create a tail-based sampling role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-tail-based-sampling).
+::::
+
 Enable tail-based sampling with [Enable tail-based sampling](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
 
 Trace events are matched to policies in the order specified. Each policy list must conclude with a default policy — one that only specifies a sample rate. This default policy is used to catch remaining trace events that don’t match a stricter policy. Requiring this default policy ensures that traces are only dropped intentionally. If you enable tail-based sampling and send a transaction that does not match any of the policies, APM Server will reject the transaction with the error `no matching policy`.
 
 ::::{important}
-Please note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
+Note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
 
 ### Example configuration [_example_configuration]

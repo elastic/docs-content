@@ -56,6 +56,14 @@ To create an API key:
                     "allow_restricted_indices": true
                 }
             ]
+        },
+        "apm_tail_based_sampling": {
+            "index": [
+                {
+                    "names": ["traces-apm.sampled"],
+                    "privileges": ["read"]
+                }
+            ]
         }
     }
     ```
@@ -156,6 +164,14 @@ POST /_security/api_key
           "allow_restricted_indices": true
         }
       ]
+    },
+    "apm_tail_based_sampling": {
+        "index": [
+            {
+                "names": ["traces-apm.sampled"],
+                "privileges": ["read"]
+            }
+        ]
     }
   }
 }

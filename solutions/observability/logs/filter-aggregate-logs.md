@@ -13,20 +13,20 @@ Filter and aggregate your log data to find specific information, gain insight, a
 
 This guide shows you how to:
 
-* [Filter logs](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter): Narrow down your log data by applying specific criteria.
-* [Aggregate logs](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-aggregate): Analyze and summarize data to find patterns and gain insight.
+* [Filter logs](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter): Narrow down your log data by applying specific criteria.
+* [Aggregate logs](/solutions/observability/logs/filter-aggregate-logs.md#logs-aggregate): Analyze and summarize data to find patterns and gain insight.
 
 
 ## Before you get started [logs-filter-and-aggregate-prereq]
 
 ::::{note}
 
-**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines and set the index template. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines and set the index template. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
 
-The examples on this page use the following ingest pipeline and index template, which you can set in **Developer Tools**. If you haven’t used ingest pipelines and index templates to parse your log data and extract structured fields yet, start with the [Parse and organize logs](../../../solutions/observability/logs/parse-route-logs.md) documentation.
+The examples on this page use the following ingest pipeline and index template, which you can set in **Developer Tools**. If you haven’t used ingest pipelines and index templates to parse your log data and extract structured fields yet, start with the [Parse and organize logs](/solutions/observability/logs/parse-route-logs.md) documentation.
 
 Set the ingest pipeline with the following command:
 
@@ -73,15 +73,15 @@ PUT _index_template/logs-example-default-template
 
 Filter your data using the fields you’ve extracted so you can focus on log data with specific log levels, timestamp ranges, or host IPs. You can filter your log data in different ways:
 
-* [Filter logs in Discover](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover): Filter and visualize log data in Discover.
-* [Filter logs with Query DSL](../../../solutions/observability/logs/filter-aggregate-logs.md#logs-filter-qdsl): Filter log data from Developer Tools using Query DSL.
+* [Filter logs in Discover](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover): Filter and visualize log data in Discover.
+* [Filter logs with Query DSL](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter-qdsl): Filter log data from Developer Tools using Query DSL.
 
 
 ### Filter logs in Discover [logs-filter-discover]
 
 Discover is a tool that provides views of your log data based on data views and index patterns. To open **Discover**, find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From Discover, open the `logs-*` or `All logs` data views from the **Data views** menu. From here, you can use the [{{kib}} Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data that’s displayed. For example, you might want to look into an event that occurred within a specific time range.
+From Discover, open the `logs-*` or `All logs` data views from the **Data views** menu. From here, you can use the [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data that’s displayed. For example, you might want to look into an event that occurred within a specific time range.
 
 Add some logs with varying timestamps and log levels to your data stream:
 
@@ -124,12 +124,12 @@ Under the **Documents** tab, you’ll see the filtered log data matching your qu
 :screenshot:
 :::
 
-For more on using Discover, refer to the [Discover](../../../explore-analyze/discover.md) documentation.
+For more on using Discover, refer to the [Discover](/explore-analyze/discover.md) documentation.
 
 
 ### Filter logs with Query DSL [logs-filter-qdsl]
 
-[Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md) is a JSON-based language that sends requests and retrieves data from indices and data streams. You can filter your log data using Query DSL from **Developer Tools**.
+[Query DSL](/explore-analyze/query-filter/languages/querydsl.md) is a JSON-based language that sends requests and retrieves data from indices and data streams. You can filter your log data using Query DSL from **Developer Tools**.
 
 For example, you might want to troubleshoot an issue that happened on a specific date or at a specific time. To do this, use a boolean query with a [range query](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) to filter for the specific timestamp range and a [term query](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) to filter for `WARN` and `ERROR` log levels.
 
@@ -344,4 +344,4 @@ The results should show an aggregate of logs that occurred within your timestamp
 }
 ```
 
-For more on aggregation types and available aggregations, refer to the [Aggregations](../../../explore-analyze/query-filter/aggregations.md) documentation.
+For more on aggregation types and available aggregations, refer to the [Aggregations](/explore-analyze/query-filter/aggregations.md) documentation.
