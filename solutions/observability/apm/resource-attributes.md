@@ -136,8 +136,7 @@ Consider the following resource attributes:
 ```json
 {
   "http.status_code": 200,
-  "feature.enabled": true,
-  "http.request_headers": ["accept:json", "auth:token"]
+  "feature.enabled": true
 }
 ```
 
