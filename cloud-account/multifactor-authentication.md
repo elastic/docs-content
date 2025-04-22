@@ -20,6 +20,12 @@ Elastic recommends that you enable multiple methods so that you can still access
 
 If you use only a Google or Microsoft account to log in, then you can’t configure MFA in {{ecloud}}. You can check and manage your multifactor authentication options in your Google or Microsoft account security settings.
 
+::::{warning}
+
+Disabling MFA poses a significant security risk, and as such, we do not provide the option to disable this feature.
+
+::::
+
 ::::{note} 
 You can no longer configure SMS as a multifactor authentication method. If you already use SMS for multifactor authentication, then you can continue using it. You’ll be prompted to switch to a new MFA method in the future.
 
