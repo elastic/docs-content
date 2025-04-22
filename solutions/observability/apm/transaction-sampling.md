@@ -304,6 +304,35 @@ For a trace that originates in Service A and ends in Service B without error, wh
 
 In the example, only 50% of traces will be sampled. The service that start the trace (Service A) has precedence over child services (Service B). The order of services does not matter, what matters, is in what service the trace event start. Service A, is were the trace starts, and therefore will always have precedence over "child" services that only create spans (Service B). If we start at Service B instead, pass on the context to Service A, which then adds a child span, then, the policy of `service.name: B` will take precedence over that of `service.name: A`. This is because we are working on the *trace level* rather than the *service level*.
 
+### Example configuration C [_example_configuration_c]
+
+For a trace that originates in A and has an error in B, what would the sampling be?
+
+```yaml
+# Example A
+- sample_rate: 0.2
+  service.name: A
+- sample_rate: 0.5
+  trace.outcome: failure
+- sample_rate: 1.0 # Always set a default
+
+# Example B
+- sample_rate: 0.2
+  trace.outcome: failure
+- sample_rate: 0.5
+  service.name: alice
+- sample_rate: 1.0
+```
+
+- In Example A, we are stating that we want a 20% sample rate for trace events originating from Service A, but for all other failed traces we want a sample rate of 50%.
+- However, in Example B, we want all failed traces to sample at 20%, including Service A.
+
+The order matters for `trace` policies relative to `service` policies. This has to do with how to define *specificity* in a distributed system. A *trace*, is an abstract concept that "spans" over a range of distributed services. This is by definition, since we want to be able to "trace" an event across multiple service. So then, when we define a policy on the trace level (such as `trace.outcome: failure`), we are implicitly defining this policy for a range of services.
+
+If you want to always capture all failed traces, you should define it at the top of your policy list with a value of 1.0. And then define more specific policies for specific services to capture edge cases. If an error happens in a child (Service B), ensure to propagate this error back up to the parent (Service A), which then makes the decision as to whether you want to trace as a whole to fail or not. This logic has to happen on the application layer.
+
+A child failing doesn't imply a distributed trace should fail. It is possible that the child call is just a nice-to-have and there are backup plans when that fails. For example, an application can fail to call a cache, but it can still read/write to a database directly. The trace shouldn't fail just because the cache isn't available.
+
 ### Configuration reference [_configuration_reference]
 
 #### Top-level tail-based sampling settings [_top_level_tail_based_sampling_settings]
