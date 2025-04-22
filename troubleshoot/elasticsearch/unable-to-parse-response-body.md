@@ -6,50 +6,47 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: unable to parse response body"
-# is mapped_pages needed for newly created docs?
+navigation_title: "Error: Unable to parse response body"
 ---
 
-# Fix unable to parse response body error [unable-to-parse-response-body]
+# Fix error: Unable to parse response body [unable-to-parse-response-body]
 
 ```console
 Error: Unable to parse response body
 ```
 
-This error occurs when {{es}} cannot understand the response body it received, possibly due to incorrect formatting or syntax. To resolve this, ensure that the response body is in the correct format (usually JSON) and that all syntax is correct. If the error persists, check the {{es}} logs for more detailed error messages. It could also be due to a bug in the {{es}} version you’re using, so consider updating to the latest version.
+This error occurs when {{es}} cannot process a response body, possibly due to incorrect formatting or syntax. To resolve this issue, make sure the response body is in the correct format (usually JSON) and that all syntax is correct. 
 
-## Issues with REST
+If the error persists, start with these general steps:
+- Check the {{es}} logs for more detailed error messages. 
+- Update {{es}} to the latest version.
+
+If you're using the high-level Java REST client, continue to the next section.
+
+## Java REST client
 
 :::{warning}
-Deprecated in 7.15.0.
-
-The Java REST Client is deprecated in favor of the [Java API Client](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html).
+The Java REST client is deprecated. Use the [Java API client](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html) instead.
 :::
 
 
-This error is typically related to the REST High Level Client and it occurs whenever the client cannot parse the response received by {{es}}’s low-level client.
+This error can occur when the high-level Java REST client cannot parse the response received by the low-level {{es}} client.
 
-### What it means
+The REST high-level client acts as a wrapper around the low-level client. The low-level client ultimately performs the HTTP request to the cluster. If the response returned to the high-level client is malformed or does not comply with the expected schema, the client throws the `unable to parse response body` exception.
 
-The REST High Level Client acts as a wrapper around the low-level client. The latter will ultimately perform the HTTP request to the cluster. If for any reason the response returned to the High Level Client is broken or does not comply with the schema it is expecting, then it will throw the “Unable to parse response body” exception.
+Use the following sections to identify and fix the root cause of the error.
 
-### Why it occurs
+### Version mismatch
 
-Below are a few scenarios where users reported receiving this error, and the likely causes:
+{{es}} does not guarantee compatibility between different major versions. Make sure the client version matches the {{es}} version. For more details, refer to the [{{es}} Java server compatibility policy](elasticsearch-java://reference/index.md#_elasticsearch_server_compatibility_policy). 
 
-#### Version mismatch between the client and the cluster
+### Reverse proxy with path prefix
 
-{{es}} does not guarantee that it will maintain the compatibility between different major versions. If you’re running a 6.x cluster, but your application uses a 7.x version of the High Level Client, this could be what is causing the issue, due to differences in the response schema.
+If your cluster is behind a reverse proxy and you have set a path prefix to access it, make sure to configure the high-level client to include the path prefix so the proxy routes the request to the cluster correctly. 
 
-You can learn more about the [compatibility for the High Level REST client](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-compatibility.html) (deprecated). 
+For example, suppose you have an Nginx reverse proxy receiving connections at `mycompany.com:80`, and the `/elasticsearch` path prefix is set to proxy connections to a cluster running in your infrastructure. The `/elasticsearch` path prefix must be configured on the client you're using to access the cluster &mdash; not just on the host (`mycompany.com`).
 
-#### The cluster is behind a reverse proxy with a path prefix
-
-If your cluster is behind a reverse proxy and you have set a path prefix to access it, you need to make sure to correctly configure the High Level Client so it reaches and gets a response from the cluster itself, as opposed to from the reverse proxy. If your client is getting the response from the reverse proxy service this could be what is causing the “Unable to parse response body” exception.
-
-Suppose you have an Nginx reverse proxy receiving connections at `mycompany.com:80` and you have set the `/elasticsearch` path prefix that will proxy connections to a cluster running inside your infrastructure. In this case you should make sure the path prefix is properly configured in the configuration file of the client you’re using to access the cluster, not only the host (`mycompany.com` in this case).
-
-If you have an app that uses the High Level Client to access the cluster you can use the `setPathPrefix()` to set the path prefix, like so:
+Use `setPathPrefix()` to set the path prefix:
 
 ```java
 new RestHighLevelClient(
@@ -59,21 +56,24 @@ new RestHighLevelClient(
 );
 ```
 
-This [post](https://discuss.elastic.co/t/resthighlevelclient-accessing-an-elastic-http-endpoint-behind-reverse-proxy/117306) and [this post](https://discuss.elastic.co/t/issue-with-highlevelrestclient-with-the-host-xyz-com-8080-elasticsearch/186384) might be helpful to resolve the issue.
+For more context, refer to these Elastic community forum posts:
 
-#### You are reaching the HTTP size limit
+- [RestHighLevelClient - Accessing an elastic http endpoint behind reverse proxy](https://discuss.elastic.co/t/resthighlevelclient-accessing-an-elastic-http-endpoint-behind-reverse-proxy/117306)
+- [Issue with HighLevelRestClient with the host = xyz.com:8080/elasticsearch](https://discuss.elastic.co/t/issue-with-highlevelrestclient-with-the-host-xyz-com-8080-elasticsearch/186384)
 
-Some users have reported the “Unable to parse response body” error when bulk indexing a huge volume of data. This happens because {{es}} by default has a maximum size of HTTP request body of 100MB. You can change this by adjusting the `http.max_content_length` setting in the {{es}} configuration file.
+### HTTP size limit
+
+The `unable to parse response body` error can occur when bulk indexing a large volume of data. By default, {{es}} has a maximum HTTP request body size of 100 MB. To raise this limit, increase the value of `http.max_content_length` in the {{es}} configuration file.
 
 ```yaml
 http.max_content_length: 200mb
 ```
 
-This [post](https://discuss.elastic.co/t/bulk-indexing-with-java-high-level-rest-client-gives-error-unable-to-parse-response-body/161696) is an example of such a case and could be helpful if you’re facing a similar situation.
+For an example of an HTTP size limit issue, refer to this Elastic community forum post: [Bulk indexing with java high level rest client gives error](https://discuss.elastic.co/t/bulk-indexing-with-java-high-level-rest-client-gives-error-unable-to-parse-response-body/161696)
 
-#### The cluster is running on Kubernetes and its entrypoint is through an Ingress Controller
+### Kubernetes with ingress controller
 
-If you have your cluster running inside a Kubernetes cluster and the entrypoint for the {{es}} service is through an Ingress Controller, then you should double check your Ingress configuration, since it is a moving piece between your clients and your cluster.
+If your {{es}} cluster runs on Kubernetes and is exposed through an ingress controller, check your ingress controller configuration. Misrouted or malformed responses from the controller can cause parsing errors in the client.
 
-Check out this post [to see an example of misconfiguration in the Ingress Controller](https://discuss.elastic.co/t/resthighlevelclient-unable-to-parse-response-body/240809) related to redirecting incoming connections through SSL, which was not actually configured and therefore was the root cause of the problem that ultimately caused the “Unable to parse response body” exception.
+For an example of incorrect SSL redirection in an ingress controller, refer to this Elastic community forum post: [RestHighLevelClient - Unable to parse response body](https://discuss.elastic.co/t/resthighlevelclient-unable-to-parse-response-body/240809)
 

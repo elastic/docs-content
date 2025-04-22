@@ -1,10 +1,10 @@
 ---
-navigation_title: Errors
+navigation_title: Error reference
 ---
 
-# Troubleshoot errors in {{es}} 
+# Troubleshoot common errors in {{es}} 
 
-Use the topics in this section to troubleshoot errors in your {{es}} deployments.
+Use the topics in this section to troubleshoot common errors in {{es}} deployments.
 
 * [](/troubleshoot/elasticsearch/all-shards-failed.md)
 * [](/troubleshoot/elasticsearch/failed-to-parse-field-of-type.md)

@@ -7,7 +7,6 @@ applies_to:
     ece: 
     self: 
 navigation_title: "Error: updating number_of_replicas for indices"
-# is mapped_pages needed for newly created docs?
 ---
 
 # Fix error when updating number_of_replicas for indices in Elasticsearch [updating-number-of-replicas-for-indices-error]

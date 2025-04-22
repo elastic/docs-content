@@ -6,37 +6,35 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: unable to retrieve node fs stats"
+navigation_title: "Error: Unable to retrieve node fs stats"
 # is mapped_pages needed for newly created docs?
 ---
 
-# Fix unable to retrieve node fs stats error [unable-to-retrieve-node-fs-stats]
+# Fix error: Unable to retrieve node fs stats [unable-to-retrieve-node-fs-stats]
 
-```
+```console
 Error: unable to retrieve node fs stats
 ```
 
-This error occurs when the {{es}} client (like {{kib}}) cannot fetch version information from one or more {{es}} nodes. This may happen due to network issues, incorrect configuration, or unavailable nodes. 
+This error occurs when {{kib}} or another {{es}} client can't fetch version information from an {{es}} node. Without version information, the client can't confirm compatibility or proceed with requests.
 
-To resolve this
+Possible causes include network issues, incorrect configuration, or unavailable nodes. To diagnose, first try these general actions:
 
-1. Ensure that the nodes are up and running
-2. Check the network connectivity between the client and the nodes
-3. Verify the configuration settings. 
+- Ensure that all nodes are up and running.
+- Check the network connectivity between the client and the nodes.
+- Verify configuration settings.
 
-If the issue persists, consider checking the {{es}} logs for more detailed error information.
+If the issue persists, check the {{es}} logs for details, then continue with the tips below.
 
-## What it means
+## Check potential causes
 
-This log message typically comes from {{kib}} when it tries to connect to {{es}} during its startup routine. {{kib}} acts as a client to {{es}} and requires access to:
+This error typically appears in the {{kib}} logs during startup. Because {{kib}} acts as a client to {{es}}, it requires access to several resources:
 
-- The cluster’s host and port
-- Authentication credentials (if required)
-- TLS settings (if applicable)
+- The cluster's host and port
+- Authentication credentials, if required
+- TLS settings, if applicable
 
-If {{kib}} can’t reach the nodes listed in its configuration, it can’t determine if the versions are compatible, and it throws this error.
-
-## Potential causes
+If {{kib}} can't reach the configured nodes, it can't verify version compatibility and logs the `unable to retrieve` error. Check these possible access issues:
 
 - One or more entries in `elasticsearch.hosts` are unreachable or misconfigured
 - The `KBN_PATH_CONF` environment variable points to a different config file
@@ -44,13 +42,13 @@ If {{kib}} can’t reach the nodes listed in its configuration, it can’t deter
 
 ## Configuration locations
 
-Settings are defined in `kibana.yml`, usually located at `$KIBANA_HOME/config`. You can override its path with:
+Settings are defined in `kibana.yml`, usually located at `$KIBANA_HOME/config`. You can change the path as needed:
 
-```console
+```bash
 KBN_PATH_CONF=/home/kibana/config ./bin/kibana
 ```
 
-Relevant settings:
+Check the relevant settings:
 
 ```yaml
 elasticsearch.hosts: ["http://localhost:9200"]
@@ -58,21 +56,19 @@ elasticsearch.username: "kibana"
 elasticsearch.password: "your_password"
 elasticsearch.ssl.certificateAuthorities: ["path/to/ca.crt"]
 ```
-{{kib}} tries every endpoint in `elasticsearch.hosts`, so even one unreachable node can cause the log. Use `https` if your cluster requires encrypted communication.
-
-## How to resolve it
+{{kib}} tries every endpoint in `elasticsearch.hosts`, so even one unreachable node can cause the error. Use `https` if your cluster requires encrypted communication.
 
 ### Test connectivity
 
-Try to connect to each host in `elasticsearch.hosts` using `curl`:
+Use `curl` to test the connection to each host in `elasticsearch.hosts`:
 
-```console
+```bash
 curl http://es01:9200/
 ```
 
-If using TLS:
+If you're using TLS, try one of the following:
 
-```console
+```bash
 # Insecure test
 curl -u elastic -k https://es01:9200/
 
@@ -80,9 +76,9 @@ curl -u elastic -k https://es01:9200/
 curl -u elastic --cacert ~/certs/ca/ca.crt https://es01:9200/
 ```
 
-You should see a response like:
+Example response:
 
-```console-result
+```json
 {
   "name" : "node01",
   "cluster_name" : "elasticsearch",
@@ -100,5 +96,5 @@ You should see a response like:
 }
 ```
 
-If all else fails, refer to your {{kib}} logs for more details and context.
+If you're still encountering issues, check the {{kib}} logs for more details and context.
 

@@ -6,23 +6,23 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: all shards failed"
+navigation_title: "Error: All shards failed"
 # is mapped_pages needed for newly created docs?
 ---
 
-# Fix all shards failed error [all-shards-failed]
+# Fix error: All shards failed [all-shards-failed]
 
-```
+```console
 Error: all shards failed
 ```
 
-This error indicates that {{es}} failed to retrieve a response from any shard involved in a query. This can result from shard allocation issues, misconfiguration, insufficient resources, or unsupported operations such as aggregating on text fields. 
+The `all shards failed` error indicates that {{es}} couldn't get a successful response from any of the shards involved in the query. Possible causes include shard allocation issues, misconfiguration, insufficient resources, or unsupported operations such as aggregating on text fields. 
 
-##  Improper use of text fields
+##  Unsupported operations on text fields
 
-Text fields aren't optimized for operations like sorting or aggregations by default. Attempting these operations may trigger the error.
+The `all shards failed` error can occur when you try to sort or aggregate on `text` fields. These fields are designed for full-text search and don't support exact-value operations like sorting and aggregation.
 
-To fix, use the `.keyword` sub-field:
+To fix this issue, use a `.keyword` subfield:
 
 ```console
 GET my-index/_search
@@ -37,7 +37,7 @@ GET my-index/_search
 }
 ```
 
-If no `.keyword` sub-field exists, update the mapping to handle [multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md):
+If no `.keyword` subfield exists, define a [multi-field](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md#types-multi-fields) mapping:
 
 ```console
 PUT my-index
@@ -57,11 +57,11 @@ PUT my-index
 }
 ```
 
-## Metric aggregations on text fields
+### Metric aggregations on text fields
 
-[Metric aggregations](elasticsearch://reference/aggregations/metrics.md) require numeric fields. Attempting them on text fields will fail.
+The `all shards failed` error can also occur when you use a metric aggregation on a text field. [Metric aggregations](elasticsearch://reference/aggregations/metrics.md) require numeric fields. 
 
-Use a script to convert the text to numeric:
+You can use a script to convert the text value to a number at query time:
 
 ```console
 GET my-index/_search
@@ -97,19 +97,19 @@ PUT my-index
 
 A shard failure during recovery can prevent successful queries.
 
-To confirm, check cluster health:
+To identify the cause, check the cluster health:
 
 ```console
 GET _cluster/health
 ```
 
-Identify and resolve the cause. If necessary, and as a last resort, delete the problematic index.
+As a last resort, you can delete the problematic index.
 
 ## Misused global aggregation
 
-[Global aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-global-aggregation.md) must be top-level. Nesting them incorrectly causes errors.
+[Global aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-global-aggregation.md) must be defined at the top level of the aggregations object. Nesting can cause errors.
 
-To fix, structure the query so the `global` aggregation is top-level:
+To fix this issue, structure the query so that the `global` aggregation appears at the top level:
 
 ```console
 GET my-index/_search
@@ -132,9 +132,9 @@ GET my-index/_search
 
 ## Reverse_nested usage errors
 
-The [reverse_nested](elasticsearch://reference/aggregations/search-aggregations-bucket-reverse-nested-aggregation.md) aggregation must appear within a `nested` context.
+Using a [`reverse_nested`](elasticsearch://reference/aggregations/search-aggregations-bucket-reverse-nested-aggregation.md) aggregation outside of a `nested` context causes errors.
 
-To fix, structure the query so the `reverse_nested` aggregation is within a `nested` context:
+To fix this issue, structure the query so that the `reverse_nested` aggregation is inside a `nested` aggregation:
 
 ```console
 GET my-index/_search

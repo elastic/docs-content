@@ -7,7 +7,6 @@ applies_to:
     ece: 
     self: 
 navigation_title: "Error: memory locking requested for elasticsearch process but memory is not locked"
-# is mapped_pages needed for newly created docs?
 ---
 
 # Fix memory locking error in Elasticsearch [memory-locking-error]
