@@ -40,19 +40,42 @@ processors:
 ...
 ```
 
-## Handling of unmapped attributes
+## OTel resource attribute to ECS field mapping
 
-Only a subset of OpenTelemetry resource attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, it's stored under `labels.*`, with dots replaced by underscores.
+The following table summarizes the mapping between OpenTelemetry resource attributes and Elastic Common Schema (ECS) fields.
 
-The following table shows how OTel resource attributes are mapped to ECS fields and how they're stored if unmapped.
+| OTel Attribute                          | ECS Field                               |
+|-----------------------------------------|-----------------------------------------|
+| `http.method`                           | `http.method`                           |
+| `http.url`, `http.target`, `http.path`  | `url.original`                          |
+| `http.host`                             | `host.hostname`                         |
+| `http.scheme`                           | `url.scheme`                            |
+| `http.status_code`                      | `http.response.status_code`             |
+| `http.user_agent`                       | `user_agent.original`                   |
+| `net.peer.name`, `net.peer.ip`          | `source.domain`, `source.ip`            |
+| `net.peer.port`                         | `source.port`                           |
+| `net.host.name`                         | `host.hostname`                         |
+| `net.host.port`                         | `host.port`                             |
+| `db.system`                             | `span.db.type`                          |
+| `db.name`, `db.instance`                | `span.db.instance`                      |
+| `db.statement`                          | `span.db.statement`                     |
+| `rpc.system`                            | `rpc.system`                            |
+| `rpc.service`                           | `rpc.service`                           |
+| `rpc.method`                            | `rpc.method`                            |
+| `messaging.system`                      | `span.messaging.system`                 |
+| `messaging.destination`                 | `span.messaging.destination.name`       |
+| `messaging.operation`                   | `span.messaging.operation`              |
+| `service.name`                          | `service.name`                          |
+| `service.version`                       | `service.version`                       |
+| `service.instance.id`                   | `service.instance.id`                   |
+| `exception.type`                        | `error.type`                            |
+| `exception.message`                     | `error.message`                         |
+| `exception.stacktrace`                  | `error.stacktrace`                      |
+| `data_stream.dataset`                   | `data_stream.dataset`                   |
+| `data_stream.namespace`                 | `data_stream.namespace`                 |
 
-| OTel resource attribute | Mapped ECS field | If unmapped, stored as |
-|-------------------------|------------------|------------------------|
-| `service.name` | `service.name` | - |
-| `service.version` | `service.version` | - |
-| `deployment.environment` | `service.environment` | - |
-| `cloud.provider` | `cloud.provider` | - |
-| `cloud.account.id` | `cloud.account.id` | - |
+
+### Handling of unmapped attributes
 
 When an attribute doesn't have a direct ECS field mapping, the system stores it under the `labels` namespace and replaces dots with underscores in the attribute key to comply with field name limitations.
 
@@ -80,60 +103,40 @@ Elastic APM stores the following:
 }
 ```
 
-## APM transactions and spans
-
-Not all OpenTelemetry spans are mapped the same way:
-
-- Root spans, such as entry points, are mapped to APM transactions.
-- Child spans, such as internal operations and DB queries, are mapped to APM spans.
-
-| OpenTelemetry span kind | Mapped to APM | Example |
-|------------------------|---------------|---------|
-| `SERVER` | Transaction | Incoming HTTP request (`GET /users/{id}`) |
-| `CONSUMER` | Transaction | Message queue consumer event |
-| `CLIENT` | Span | Outgoing database query (`SELECT * FROM users`) |
-| `PRODUCER` | Span | Sending a message to a queue |
-| `INTERNAL` | Span | Internal function execution |
-
-The following example shows OpenTelemetry spans:
-
-```json
-[
-  {
-    "traceId": "abcd1234",
-    "spanId": "root5678",
-    "parentId": null,
-    "name": "GET /users/{id}",
-    "kind": "SERVER"
-  },
-  {
-    "traceId": "abcd1234",
-    "spanId": "db1234",
-    "parentId": "root5678",
-    "name": "SELECT FROM users",
-    "kind": "CLIENT"
-  }
-]
-```
-
-The previous OTel spans are stored by Elastic APM as follows:
-
-```
-Transaction: GET /users/{id}
- ├── Span: SELECT FROM users
-```
-
-## Conditional attribute translation
+### Conditional attribute translation
 
 Some OpenTelemetry attributes are conditionally converted based on their value type.
 
-The following table shows how OTel resource attributes are converted.
+The following table shows how OpenTelemetry resource attributes are converted.
 
-| OpenTelemetry Resource attribute | Incoming value type | Converted value | APM field |
-|------------------------|---------------------|----------------|-----------|
-| `http.status_code` | `200` (Integer) | `200` (Integer) | `http.response.status_code` |
-| `feature.enabled` | `true` (Boolean) | `true` (Boolean) | `labels.feature_enabled` |
-| `http.request_headers` | `["accept:json", "auth:token"]` (Array) | Individual array values as separate labels | `labels.http_request_headers.0`, `labels.http_request_headers.1` |
+# Conditionally Converted Attributes in `traces.go`
+
+This document lists the conditionally converted attributes in the `traces.go` file. It details the source OpenTelemetry (OTel) attributes, their corresponding Elastic Common Schema (ECS) fields, and the transformation or conversion applied.
+# Conditionally Converted Attributes in `traces.go`
+
+This document lists the conditionally converted attributes in the `traces.go` file. It details the source OpenTelemetry (OTel) attributes, their corresponding Elastic Common Schema (ECS) fields, and the transformation or conversion applied.
+
+| OTel Attribute                                      | ECS Field                                 | Comment                                                                                                                                                                                                                                                |
+|----------------------------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `http.scheme`, `http.host`, `http.target`, `http.url`, `http.path`, `http.query` | `event.Url`                               | Constructs the URL by combining the scheme, host, and target attributes. Uses `http.url` if provided.                                                                                                           |
+| `http.status_code`, `http.response.status_code`    | `http.Response.StatusCode`               | Converts the status code directly into the ECS field.                                                                                                                                                                                                 |
+| `http.method`, `http.request.method`               | `http.Request.Method`                    | Maps the HTTP method to the ECS field.                                                                                                                                                                                                                 |
+| `net.peer.ip`, `net.peer.port`, `net.peer.name`    | `event.Source`                            | Sets the source IP, port, and domain. Uses `net.peer.name` as the domain and `net.peer.ip` as the IP address.                                                                                                   |
+| `net.host.name`, `net.host.port`, `server.address`, `server.port` | `event.Destination`                       | Sets the destination IP, port, and domain. Uses `net.host.name` or `server.address` as the domain.                                                                                                             |
+| `messaging.system`, `messaging.destination`, `messaging.destination.name` | `event.Transaction.Message.QueueName`    | Populates the message queue name based on these attributes.                                                                                                                                                                                           |
+| `db.system`, `db.name`, `db.statement`, `db.user`  | `event.Span.Db`                           | Converts database-related attributes into the ECS database field. For example, `db.statement` is assigned directly to `Db.Statement`.                                                                           |
+| `rpc.system`, `rpc.service`, `rpc.method`          | `event.Service.Target`                    | Maps RPC attributes, such as the system and service, to the ECS service target fields.                                                                                                                         |
+| `telemetry.sdk.elastic_export_timestamp`           | Adjusts `event.Timestamp`                 | Adjusts the timestamp of spans and transactions based on the provided export timestamp.                                                                                                                         |
+| `sampler.type`, `sampler.param`                    | `Transaction.RepresentativeCount` or `Span.RepresentativeCount` | Uses the sampling type and parameter to calculate the representative count. For probabilistic sampling, the count is calculated as `1 / probability`.                                                           |
+| `data_stream.dataset`, `data_stream.namespace`     | `event.DataStream.Dataset`, `event.DataStream.Namespace` | Sanitizes the dataset and namespace values by replacing disallowed characters and truncating them to the maximum length.                                                                                         |
+| `exception.type`, `exception.message`, `exception.stacktrace`, `exception.escaped` | `Error.Exception`                         | Maps exception attributes to the ECS error exception fields (type, message, and stacktrace).                                                                                                                   |
+| `elastic.profiler_stack_trace_ids`                 | `Transaction.ProfilerStackTraceIds`       | Converts the profiler stack trace IDs to a list.                                                                                                                                                                                                      |
+| `http.user_agent`, `user_agent.original`           | `UserAgent.Original`                      | Maps the user agent string directly to the ECS field.                                                                                                                                                                                                 |
+| `network.connection.type`, `network.connection.subtype`, `network.carrier.*` | `Network.Connection`, `Network.Carrier`   | Maps the network connection type, subtype, and carrier details to the ECS fields.                                                                                                                                                                     |
+| `span.kind`                                        | `Transaction.Type` or `Span.Type`         | Determines the transaction or span type based on the span's kind. For example, `SpanKindConsumer` results in a transaction type of `messaging`.                                                                 |
+| `peer.service`                                     | `Destination.Service.Name`                | Maps the peer service name to the destination service name.                                                                                                                                                                                            |
+| `message_bus.destination`, `messaging.temp_destination` | `Destination.Service.Resource`            | Appends the message bus destination or queue name to the service resource.                                                                                                                                                                             |
+| `elastic.is_child`, `is_child`                     | `Span.ChildIds`                           | Determines if a span link is a child span and populates the `ChildIds` field accordingly.                                                                                                                                                              |
 
 Consider the following resource attributes:
 
