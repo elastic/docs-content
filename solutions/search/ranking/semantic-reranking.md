@@ -88,7 +88,7 @@ To use semantic re-ranking in {{es}}, you need to:
 
 1. **Select and configure a re-ranking model**. You have the following options:
 
-    1. Use the Elastic Rerank cross-encoder model via the [inference API's {{es}} service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch).
+    1. Use the Elastic Rerank cross-encoder model through a preconfigured `.rerank-v1-elasticsearch` endpoint or create a custom one using the [inference API's {{es}} service](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch).
     2. Use the [Cohere Rerank inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-cohere) to create a `rerank` endpoint.
     3. Use the [Google Vertex AI inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-googlevertexai) to create a `rerank` endpoint.
     4. Upload a model to {{es}} from Hugging Face with [Eland](eland://reference/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-elasticsearch) with the `rerank` endpoint type.
