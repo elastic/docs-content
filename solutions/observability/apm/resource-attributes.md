@@ -147,9 +147,7 @@ The previous resource attributes are stored by Elastic APM as follows:
 {
   "http.response.status_code": 200,
   "labels": {
-    "feature_enabled": true,
-    "http_request_headers.0": "accept:json",
-    "http_request_headers.1": "auth:token"
+    "feature_enabled": true
   }
 }
 ```
