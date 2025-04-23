@@ -7,15 +7,17 @@ applies_to:
   serverless:
 ---
 
-# Resource attributes [apm-open-telemetry-resource-attributes]
+# Attributes and labels [apm-open-telemetry-resource-attributes]
 
-A resource attribute is a key-value pair containing information about the entity producing telemetry. Resource attributes are mapped to Elastic Common Schema (ECS) fields like `service.*`, `cloud.*`, `process.*`, and so on. These fields describe the service and the environment that the service runs in.
+In OpenTelemetry, an attribute is a key-value pair. Attributes are similar to [labels](/solutions/observability/apm/metadata.md#apm-data-model-labels) in that they add metadata to transactions, spans, and other entities.
 
-The examples set the Elastic (ECS) `service.environment` field for the resource that's producing trace events. Elastic maps the OpenTelemetry `deployment.environment` field to the ECS `service.environment` field on ingestion.
+Resource attributes are a type of attribute that contains information about the entities that produce telemetry. Resource attributes map to Elastic Common Schema (ECS) fields like `service.*`, `cloud.*`, `process.*`, and so on. These fields describe the service and its environment.
+
+For example, Elastic maps the OpenTelemetry `deployment.environment` field to the ECS `service.environment` field on ingestion.
 
 ## Setting resource attributes
 
-You can set resource attributes through the environment variables or by editing the configuration of the resource processor of the Collector.
+You can set resource attributes through environment variables or by editing the configuration of the resource processor of the OpenTelemetry Collector.
 
 ### OpenTelemetry agent
 
@@ -42,7 +44,7 @@ processors:
 
 ## Handling of unmapped attributes
 
-Only a subset of OpenTelemetry resource attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, the systems stores it under `labels.*`, with dots replaced by underscores.
+When sending telemetry to APM Server, only a subset of OpenTelemetry attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, the system stores it under `labels.*`, with dots replaced by underscores.
 
 For example, if an OpenTelemetry resource contains:
 
@@ -77,26 +79,4 @@ Scope attributes are translated as follows:
 | scope.name | service.framework.name |
 | scope.version | service.framework.version |
 
-## Conditional attributes translation
-
-Some OpenTelemetry attributes are conditionally converted based on their value type.
-
-Consider the following resource attributes:
-
-```json
-{
-  "http.status_code": 200,
-  "feature.enabled": true
-}
-```
-
-The previous resource attributes are stored by Elastic APM as follows:
-
-```json
-{
-  "http.response.status_code": 200,
-  "labels": {
-    "feature_enabled": true
-  }
-}
-```
+Unmapped scope attributes are ignored.
