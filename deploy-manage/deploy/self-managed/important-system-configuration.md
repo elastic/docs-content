@@ -25,6 +25,10 @@ The following settings **must** be considered before going to production:
 For examples of applying the relevant settings in a Docker environment, refer to [](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md).
 :::
 
+:::{tip}
+If you plan to use shared filesystem repositories, there are a few things to be aware of. Refer to [](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) for guidance and troubleshooting tips.
+:::
+
 ::::{admonition} Use dedicated hosts
 :::{include} _snippets/dedicated-hosts.md
 :::
