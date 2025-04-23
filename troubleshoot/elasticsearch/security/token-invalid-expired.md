@@ -19,7 +19,7 @@ Error: token expired
 Error: invalid token
 ```
 
-These errors occur when {{es}} receives a request containing an invalid or expired token during authentication. It's typically caused by missing, incorrect, or outdated tokens. If an invalid or expired token is used, {{es}} rejects the request.
+These errors occur when {{es}} receives a request containing an invalid or expired token during authentication. They're typically caused by missing, incorrect, or outdated tokens. If an invalid or expired token is used, {{es}} rejects the request.
 
 ## Invalid token
 
