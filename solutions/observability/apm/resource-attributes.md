@@ -68,7 +68,7 @@ Elastic APM stores the following:
 }
 ```
 
-### Conditional attribute translation
+## Conditional attribute translation
 
 Some OpenTelemetry attributes are conditionally converted based on their value type.
 
