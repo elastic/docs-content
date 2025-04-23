@@ -1,15 +1,15 @@
 ---
 applies_to:
   stack: ga
-  serverless: ga
-navigation_title: "Using {{esql}} across clusters"
+  serverless: unavailable
+navigation_title: "Query across clusters"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-cross-clusters.html
 ---
 
 
 
-# Using ES|QL across clusters [esql-cross-clusters]
+# Use ES|QL across clusters [esql-cross-clusters]
 
 
 ::::{warning}
