@@ -27,7 +27,7 @@ To learn more about the metrics shown on this page, refer to the [Metrics refere
 
 If you haven’t added data yet, click **Add data** to search for and install an Elastic integration.
 
-Need help getting started? Follow the steps in [Get started with system metrics](../../../solutions/observability/infra-and-hosts/get-started-with-system-metrics.md).
+Need help getting started? Follow the steps in [Get started with system metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md).
 
 ::::
 
@@ -50,7 +50,7 @@ You can sort by resource, group the resource by specific fields related to it, a
 :screenshot:
 :::
 
-You can also use the search bar to create structured queries using [{{kib}} Query Language](../../../explore-analyze/query-filter/languages/kql.md). For example, enter `host.hostname : "host1"` to view only the information for `host1`.
+You can also use the search bar to create structured queries using [{{kib}} Query Language](/explore-analyze/query-filter/languages/kql.md). For example, enter `host.hostname : "host1"` to view only the information for `host1`.
 
 To examine the metrics for a specific time, use the time filter to select the date and time.
 
@@ -152,7 +152,7 @@ The **Universal Profiling** tab shows CPU usage down to the application code lev
 | **Flamegraph** | A visual representation of the functions that consume the most resources. Each rectangle represents a function. The rectangle width represents the time spent in the function. The number of stacked rectangles represents the stack depth, or the number of functions called to reach the current function. |
 | **Top 10 Functions** | A list of the most expensive lines of code on your host. See the most frequently sampled functions, broken down by CPU time, annualized CO2, and annualized cost estimates. |
 
-For more on Universal Profiling, refer to the [Universal Profiling](../../../solutions/observability/infra-and-hosts/universal-profiling.md) docs.
+For more on Universal Profiling, refer to the [Universal Profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) docs.
 
 :::{image} /solutions/images/observability-universal-profiling-overlay.png
 :alt: Host Universal Profiling
@@ -205,7 +205,7 @@ To drill down and analyze the metric anomaly, select **Actions** → **Open in A
 * **Editor:** Has limited access. Editors can run pre-configured queries, but may have restricted permissions for setting up and scheduling new queries, especially queries that require broader access or permissions adjustments.
 * **Viewer**: Has read-only access to data, including viewing Osquery results if configured by a user with higher permissions. Viewers cannot initiate or schedule Osquery queries themselves.
 
-To learn more about roles, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+To learn more about roles, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -216,14 +216,14 @@ You must have an active [{{agent}}](https://www.elastic.co/guide/en/fleet/curren
 ::::
 
 
-The **Osquery** tab allows you to build SQL statements to query your host data. You can create and run live or saved queries against the {{agent}}. Osquery results are stored in {{es}} so that you can use the {{stack}} to search, analyze, and visualize your host metrics. To create saved queries and add scheduled query groups, refer to [Osquery](../../../solutions/security/investigate/osquery.md).
+The **Osquery** tab allows you to build SQL statements to query your host data. You can create and run live or saved queries against the {{agent}}. Osquery results are stored in {{es}} so that you can use the {{stack}} to search, analyze, and visualize your host metrics. To create saved queries and add scheduled query groups, refer to [Osquery](/solutions/security/investigate/osquery.md).
 
 To view more information about the query, click the **Status** tab. A query status can result in `success`, `error` (along with an error message), or `pending` (if the {{agent}} is offline).
 
 Other options include:
 
-* View in Discover to search, filter, and view information about the structure of host metric fields. To learn more, refer to [Discover](../../../explore-analyze/discover.md).
-* View in Lens to create visualizations based on your host metric fields. To learn more, refer to [Lens](../../../explore-analyze/visualize/lens.md).
+* View in Discover to search, filter, and view information about the structure of host metric fields. To learn more, refer to [Discover](/explore-analyze/discover.md).
+* View in Lens to create visualizations based on your host metric fields. To learn more, refer to [Lens](/explore-analyze/visualize/lens.md).
 * View the results in full screen mode.
 * Add, remove, reorder, and resize columns.
 * Sort field names in ascending or descending order.
@@ -361,6 +361,6 @@ Select your resource, and from the **Metric** filter menu, click **Add metric**.
 
 Depending on the features you have installed and configured, you can view logs or traces relating to a specific resource. For example, in the high-level view, when you click a Kubernetes Pod resource, you can choose:
 
-* **Kubernetes Pod logs** to [view corresponding logs](../../../solutions/observability/logs.md) in the {{logs-app}}.
+* **Kubernetes Pod logs** to [view corresponding logs](/solutions/observability/logs.md) in the {{logs-app}}.
 * **Kubernetes Pod APM traces** to [view corresponding APM traces](/solutions/observability/apm/index.md) in the {{apm-app}}.
 * **Kubernetes Pod in Uptime** to [view related uptime information](/solutions/observability/synthetics/index.md) in the {{uptime-app}}.

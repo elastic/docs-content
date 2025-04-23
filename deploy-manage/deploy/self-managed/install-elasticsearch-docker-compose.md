@@ -54,7 +54,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
     ```txt
     ...
-    # Port to expose {{es}} HTTP API to the host
+    # Port to expose Elasticsearch HTTP API to the host
     #ES_PORT=9200
     ES_PORT=127.0.0.1:9200
     ...

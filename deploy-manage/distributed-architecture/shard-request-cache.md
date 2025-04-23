@@ -85,7 +85,7 @@ Requests where `size` is greater than 0 will not be cached even if the request c
 
 ## Cache key [_cache_key]
 
-A hash of the whole JSON body is used as the cache key. This means that if the JSON changes — for instance if keys are output in a different order — then the cache key will not be recognised.
+A hash of the whole JSON body is used as the cache key. This means that if the JSON changes — for instance if keys are output in a different order — then the cache key will not be recognized.
 
 ::::{tip}
 Most JSON libraries support a *canonical* mode which ensures that JSON keys are always emitted in the same order. This canonical mode can be used in the application to ensure that a request is always serialized in the same way.

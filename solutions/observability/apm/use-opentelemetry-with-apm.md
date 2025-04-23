@@ -10,11 +10,8 @@ applies_to:
 
 # Use OpenTelemetry with APM [apm-open-telemetry]
 
-:::{include} _snippets/apm-server-vs-mis.md
-:::
-
 ::::{note}
-For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](https://github.com/elastic/opentelemetry).
+For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](https://elastic.github.io/opentelemetry/).
 ::::
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
@@ -27,10 +24,6 @@ Elastic integrates with OpenTelemetry, allowing you to reuse your existing instr
 * [AWS Lambda collector exporter](/solutions/observability/apm/use-opentelemetry-with-apm.md#apm-otel-lambda)
 
 ## Elastic Distributions of OpenTelemetry language SDKs [apm-otel-elastic-distros]
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
 
 Elastic offers several distributions of OpenTelemetry language SDKs. A *distribution* is a customized version of an upstream OpenTelemetry repository. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/).
 
@@ -46,15 +39,14 @@ With an Elastic Distribution of OpenTelemetry language SDK you have access to al
 
 Get started with an Elastic Distribution of OpenTelemetry language SDK:
 
-* [**Elastic Distribution of OpenTelemetry Java →**](https://github.com/elastic/elastic-otel-java)
-* [preview] [**Elastic Distribution of OpenTelemetry .NET →**](https://github.com/elastic/elastic-otel-dotnet)
-* [preview] [**Elastic Distribution of OpenTelemetry Node.js →**](https://github.com/elastic/elastic-otel-node)
-* [preview] [**Elastic Distribution of OpenTelemetry Python →**](https://github.com/elastic/elastic-otel-python)
-* [preview] [**Elastic Distribution of OpenTelemetry PHP →**](https://github.com/elastic/elastic-otel-php)
+* [**Elastic Distribution of OpenTelemetry Java →**](https://elastic.github.io/opentelemetry/edot-sdks/java/index.html)
+* [**Elastic Distribution of OpenTelemetry .NET →**](https://elastic.github.io/opentelemetry/edot-sdks/dotnet/index.html)
+* [**Elastic Distribution of OpenTelemetry Node.js →**](https://elastic.github.io/opentelemetry/edot-sdks/nodejs/index.html)
+* [**Elastic Distribution of OpenTelemetry Python →**](https://elastic.github.io/opentelemetry/edot-sdks/python/index.html)
+* [**Elastic Distribution of OpenTelemetry PHP →**](https://elastic.github.io/opentelemetry/edot-sdks/php/index.html)
 
 ::::{note}
 For more details about OpenTelemetry distributions in general, visit the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/distributions).
-
 ::::
 
 ## Upstream OpenTelemetry API/SDK + Elastic APM agent [apm-otel-api-sdk-elastic-agent]

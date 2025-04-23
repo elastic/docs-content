@@ -17,7 +17,7 @@ The next step is to run the backend applications. To do this:
 
 Both the collector and symbolizer need to authenticate to Elasticsearch to process profiling data. For this, you need to create an API key for each application.
 
-Refer to [Create an API key](../../../deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to create an API key using {{kib}}. Select a **User API key** and assign the following permissions  under **Control security privileges**:
+Refer to [Create an API key](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to create an API key using {{kib}}. Select a **User API key** and assign the following permissions  under **Control security privileges**:
 
 ```json
 {
@@ -459,7 +459,7 @@ sudo journalctl -xu pf-elastic-collector
 sudo journalctl -xu pf-elastic-symbolizer
 ```
 
-Refer to [Troubleshooting Universal Profiling backend](../../../troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment/troubleshoot-universal-profiling-backend.md) for more information on troubleshooting possible errors in the logs.
+Refer to [Troubleshooting Universal Profiling backend](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment/troubleshoot-universal-profiling-backend.md) for more information on troubleshooting possible errors in the logs.
 
 
 ### OCI containers [profiling-self-managed-running-linux-container]

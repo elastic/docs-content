@@ -11,7 +11,7 @@ mapped_pages:
 
 ::::{note}
 
-The **Editor** role or higher is required to create Elasticsearch query rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+The **Editor** role or higher is required to create Elasticsearch query rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
@@ -36,7 +36,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
 
 1. Define your query
 
-    If you use [query DSL](../../../explore-analyze/query-filter/languages/querydsl.md), you must select an index and time field then provide your query. Only the `query`, `fields`, `_source` and `runtime_mappings` fields are used, other DSL fields are not considered. For example:
+    If you use [query DSL](/explore-analyze/query-filter/languages/querydsl.md), you must select an index and time field then provide your query. Only the `query`, `fields`, `_source` and `runtime_mappings` fields are used, other DSL fields are not considered. For example:
 
     ```sh
     {
@@ -46,9 +46,9 @@ When you create an {{es}} query rule, your choice of query type affects the info
     }
     ```
 
-    If you use [KQL](../../../explore-analyze/query-filter/languages/kql.md) or [Lucene](../../../explore-analyze/query-filter/languages/lucene-query-syntax.md), you must specify a data view then define a text-based query. For example, `http.request.referrer: "https://example.com"`.
+    If you use [KQL](/explore-analyze/query-filter/languages/kql.md) or [Lucene](/explore-analyze/query-filter/languages/lucene-query-syntax.md), you must specify a data view then define a text-based query. For example, `http.request.referrer: "https://example.com"`.
 
-    If you use [ES|QL](../../../explore-analyze/query-filter/languages/esql.md), you must provide a source command followed by an optional series of processing commands, separated by pipe characters (|). For example:
+    If you use [ES|QL](/explore-analyze/query-filter/languages/esql.md), you must provide a source command followed by an optional series of processing commands, separated by pipe characters (|). For example:
 
     ```sh
     FROM kibana_sample_data_logs
@@ -135,7 +135,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -170,7 +170,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.conditions`
 :   A string that describes the threshold condition. Example: `count greater than 4`.
@@ -192,7 +192,7 @@ The following variables are specific to this rule type. You can also specify [va
     {{/context.hits}}
     ```
 
-    The documents returned by `context.hits` include the [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field. If the {{es}} query search API’s [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
+    The documents returned by `context.hits` include the [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field. If the {{es}} query search API’s [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](/manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
 
     ```txt
     {{#context.hits}}

@@ -298,10 +298,10 @@ The remote cluster logs `client did not trust this server's certificate`:
 
 Even if TLS verification is not an issue, the connection fails due to missing credentials.
 
-The local cluster logs `Please ensure you have configured remote cluster credentials`:
+The local cluster logs `Make sure you have configured remote cluster credentials`:
 
 ```txt
-Caused by: java.lang.IllegalArgumentException: Cross cluster requests through the dedicated remote cluster server port require transport header [_cross_cluster_access_credentials] but none found. **Please ensure you have configured remote cluster credentials** on the cluster originating the request.
+Caused by: java.lang.IllegalArgumentException: Cross cluster requests through the dedicated remote cluster server port require transport header [_cross_cluster_access_credentials] but none found. **Make sure you have configured remote cluster credentials** on the cluster originating the request.
 ```
 
 This does not show up in the logs of the remote cluster.

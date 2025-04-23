@@ -180,7 +180,7 @@ Some of the common SAML problems are shown below with tips on how to resolve the
 
     To resolve this issue, ensure that in your {{kib}} configuration `xpack.security.sameSiteCookies` is not set to `Strict`. Depending on your configuration, you may be able to rely on the default value or explicitly set the value to `None`.
 
-    For further information, please read [MDN SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
+    For further information, read [MDN SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
 
     If you serve multiple {{kib}} installations behind a load balancer make sure to use the [same security configuration](/deploy-manage/production-guidance/kibana-load-balance-traffic.md#load-balancing-kibana) for all installations.
 

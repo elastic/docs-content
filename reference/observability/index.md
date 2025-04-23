@@ -10,12 +10,7 @@ mapped_pages:
 
 % TO-DO: Add links to "What is Elastic Observability?"%
 
-This section contains reference information for Elastic Observability features, including:
-
-* Fields reference
-  * Logs Discover fields
-  * Infrastructure app fields
-* Elastic Entity Model
+This section contains field reference information Infrastructure app fields.
 
 You can use these APIs to interface with Elastic Observability features:
 

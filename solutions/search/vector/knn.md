@@ -55,7 +55,7 @@ Exact, brute-force kNN guarantees accurate results but doesn’t scale well with
 ## Approximate kNN [approximate-knn]
 
 ::::{warning}
-Compared to other types of search, approximate kNN search has specific resource requirements. In particular, all vector data must fit in the node’s page cache for it to be efficient. Please consult the [approximate kNN search tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for important notes on configuration and sizing.
+Compared to other types of search, approximate kNN search has specific resource requirements. In particular, all vector data must fit in the node’s page cache for it to be efficient. See the [approximate kNN search tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for important notes on configuration and sizing.
 ::::
 
 To run an approximate kNN search, use the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) to search one or more `dense_vector` fields with indexing enabled.

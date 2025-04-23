@@ -1,7 +1,4 @@
 toc:
   - file: index.md
   - file: fields-and-object-schemas.md
-    children:
-      - file: fields-and-object-schemas/metrics-app-fields.md
-  - file: serverless/infrastructure-app-fields.md
   - hidden: elastic-entity-model.md

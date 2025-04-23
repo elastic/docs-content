@@ -11,6 +11,7 @@ mapped_pages:
 * [View details for an agent](#view-agent-details)
 * [View agent activity](#view-agent-activity)
 * [View agent logs](#view-agent-logs)
+* [Change the logging level](#change-logging-level)
 * [Collect {{agent}} diagnostics](#collect-agent-diagnostics)
 * [View the {{agent}} metrics dashboard](#view-agent-metrics)
 * [Change {{agent}} monitoring settings](#change-agent-monitoring)
@@ -141,14 +142,9 @@ On the **Logs** tab you can filter, search, and explore the agent logs:
 
 The logging level for monitored agents is set to `info` by default. You can change the agent logging level, for example, to turn on debug logging remotely:
 
-1. After navigating to the **Logs** tab as described in [View agent logs](#view-agent-logs), scroll down to find the **Agent logging level** setting.
-
-    :::{image} images/agent-set-logging-level.png
-    :alt: Logs tab showing the agent logging level setting
-    :screenshot:
-    :::
-
-2. Select an **Agent logging level**:
+1. In {{fleet}}, open the **Agents** tab.
+2. In the **Host** column, click the agent’s name.
+3. On the **Settings** tab, select an **Agent logging level**:
 
     |     |     |
     | --- | --- |
@@ -157,7 +153,11 @@ The logging level for monitored agents is set to `info` by default. You can chan
     | `info`<br> | Logs informational messages, including the number of events that are published.Also logs any warnings, errors, or critical errors. |
     | `debug`<br> | Logs debug messages, including a detailed printout of all events flushed. Alsologs informational messages, warnings, errors, and critical errors. |
 
-3. Click **Apply changes** to apply the updated logging level to the agent.
+    :::{note}
+    Prior to version 9.1 the **Agent logging level** setting is located on the **Logs** tab.
+    :::
+
+When you select a new setting the change is saved automatically.
 
 
 ## Collect {{agent}} diagnostics [collect-agent-diagnostics]

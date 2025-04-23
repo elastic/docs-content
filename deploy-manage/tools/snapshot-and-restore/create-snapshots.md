@@ -282,7 +282,7 @@ The API returns:
     },
     {
       "name": "kibana",
-      "description": "Manages {{kib}} configuration and reports"
+      "description": "Manages Kibana configuration and reports"
     },
     {
       "name": "security",

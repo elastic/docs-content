@@ -20,23 +20,23 @@ mapped_pages:
 **Resolution:**
 
 `WARN: received plaintext http traffic on a https channel, closing connection`
-:   Indicates that there was an incoming plaintext http request. This typically occurs when an external applications attempts to make an unencrypted call to the REST interface. Please ensure that all applications are using `https` when calling the REST interface with SSL enabled.
+:   Indicates that there was an incoming plaintext http request. This typically occurs when an external applications attempts to make an unencrypted call to the REST interface. Make sure that all applications are using `https` when calling the REST interface with SSL enabled.
 
 
 `org.elasticsearch.common.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record:`
-:   Indicates that there was incoming plaintext traffic on an SSL connection. This typically occurs when a node is not configured to use encrypted communication and tries to connect to nodes that are using encrypted communication. Please verify that all nodes are using the same setting for `xpack.security.transport.ssl.enabled`.
+:   Indicates that there was incoming plaintext traffic on an SSL connection. This typically occurs when a node is not configured to use encrypted communication and tries to connect to nodes that are using encrypted communication. Verify that all nodes are using the same setting for `xpack.security.transport.ssl.enabled`.
 
 For more information about this setting, see [Security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
 
 
 `java.io.StreamCorruptedException: invalid internal transport message format, got`
-:   Indicates an issue with data received on the transport interface in an unknown format. This can happen when a node with encrypted communication enabled connects to a node that has encrypted communication disabled. Please verify that all nodes are using the same setting for `xpack.security.transport.ssl.enabled`.
+:   Indicates an issue with data received on the transport interface in an unknown format. This can happen when a node with encrypted communication enabled connects to a node that has encrypted communication disabled. Verify that all nodes are using the same setting for `xpack.security.transport.ssl.enabled`.
 
 For more information about this setting, see [Security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
 
 
 `java.lang.IllegalArgumentException: empty text`
-:   This exception is typically seen when a `https` request is made to a node that is not using `https`. If `https` is desired, please ensure the following setting is in `elasticsearch.yml`:
+:   This exception is typically seen when a `https` request is made to a node that is not using `https`. If `https` is desired, ensure the following setting is in `elasticsearch.yml`:
 
 ```yaml
 xpack.security.http.ssl.enabled: true

@@ -454,8 +454,7 @@ $$$monitor-http-response$$$
 :   Controls the indexing of the HTTP response body contents to the `http.response.body.contents` field.
 
     **`include_body`** (`"on_error"` | `"never"` | `"always"`)
-    :   Set `response.include_body` to one of the options listed below.
-
+    :   Set `response.include_body` to one of the options listed below:
         * `on_error`: Include the body if an error is encountered during the check. This is the default.
         * `never`: Never include the body.
         * `always`: Always include the body with checks.

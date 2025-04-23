@@ -116,11 +116,11 @@ For contributors and those interested in the technical details, see the [Elastic
 
 In April 2025, we released our new documentation site. This site includes documentation for our latest product versions.
 
-You can access the previous version of a page, where available, by clicking the **View previous version** link in the sidebar. 
+To access our previous documentation system, which contains the documentation for releases prior to those listed below, go to [elastic.co/guide](https://elastic.co/guide).
 
-% not sure about curator
+You can access the previous version of a specific page, where available, by clicking the **View previous version** link in the sidebar. 
 
-The following products versions are documented on this site:
+The following product versions are documented on this site:
 
 #### Core products and deployment methods
 

@@ -254,7 +254,7 @@ You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, yo
     * Finally, it keeps the default Timeline fields (`@timestamp`, `message`, `event.category`, `event.action`, `host.name`, `source.ip`, `destination.ip`, and `user.name`) in the output.
 
         ::::{tip}
-        When querying indices that tend to be large (for example, `logs-*`), performance can be impacted by the number of fields returned in the output. To optimize performance, we recommend using the [`KEEP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-keep) command to specify fields that you want returned. For example, add the clause `KEEP @timestamp, user.name` to the end of your query to specify that you only want the `@timestamp` and `user.name` fields returned.
+        When querying indices that tend to be large (for example, `logs-*`), performance can be impacted by the number of fields returned in the output. To optimize performance, we recommend using the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command to specify fields that you want returned. For example, add the clause `KEEP @timestamp, user.name` to the end of your query to specify that you only want the `@timestamp` and `user.name` fields returned.
         ::::
 
 

@@ -8,7 +8,7 @@ applies_to:
 This section provides detailed guidance on deploying, configuring, and managing {{es}} and {{kib}} within ECK. A **deployment** refers to an {{es}} cluster, optionally with one or more {{kib}} instances connected to it.
 
 ::::{tip}
-This content focuses on {{es}} and {{kib}} deployments. To orchestrate other {{stack}} applications such as APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash, refer to the [Orchestrating other {{stack}} applications](./orchestrate-other-elastic-applications.md).
+This content focuses on {{es}} and {{kib}} deployments. To orchestrate other {{stack}} applications such as {{eck_resources_list_short}}, refer to the [Orchestrating other {{stack}} applications](./orchestrate-other-elastic-applications.md).
 ::::
 
 ## What You'll Learn

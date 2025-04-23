@@ -17,7 +17,7 @@ This documentation is only relevant for APM Server binary users. Fleet-managed p
 
 The `path` section of the `apm-server.yml` config file contains configuration options that define where APM Server looks for its files. For example, APM Server looks for the {{es}} template file in the configuration path and writes log files in the logs path.
 
-Please see the [Installation layout](/solutions/observability/apm/installation-layout.md) section for more details.
+See the [Installation layout](/solutions/observability/apm/installation-layout.md) section for more details.
 
 Here is an example configuration:
 

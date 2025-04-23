@@ -55,7 +55,7 @@ As application architectures are shifting from monolithic to more distributed, s
 :screenshot:
 :::
 
-Don’t forget; by definition, a distributed trace includes more than one transaction. When viewing distributed traces in the timeline waterfall, you’ll see this icon: ![APM icon](/solutions/images/observability-transaction-icon.png ""), which indicates the next transaction in the trace. For easier problem isolation, transactions can be collapsed in the waterfall by clicking the icon to the left of the transactions. Transactions can also be expanded and viewed in detail by clicking on them.
+Don’t forget; by definition, a distributed trace includes more than one transaction. When viewing distributed traces in the timeline waterfall, you’ll see this icon: ![APM icon](/solutions/images/observability-transaction-icon.svg), which indicates the next transaction in the trace. For easier problem isolation, transactions can be collapsed in the waterfall by clicking the icon to the left of the transactions. Transactions can also be expanded and viewed in detail by clicking on them.
 
 After exploring these traces, you can return to the full trace by clicking **View full trace**.
 
