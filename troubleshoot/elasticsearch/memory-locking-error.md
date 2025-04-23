@@ -6,7 +6,7 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: memory locking requested for elasticsearch process but memory is not locked"
+navigation_title: "Error: Memory locking requested but memory is not locked"
 ---
 
 # Fix memory locking error in Elasticsearch [memory-locking-error]
