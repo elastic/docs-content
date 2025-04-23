@@ -63,8 +63,8 @@ body:
       description: Is this work targeted for a particular release version? If so, which one?
       placeholder: |
         For example:
-        "8.13.0"; 
-        "This feature has been in production since 8.11.0"; 
+        "8.19.0"; 
+        "This feature has been in production since 8.15.0"; 
         "N/A"
     validations:
       required: true
@@ -96,4 +96,4 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting this issue! For urgent issues, we encourage you to send a message in the #docs Slack channel.
+        Thanks for submitting this issue! Remember to contact a writer directly or to send a message in the #docs Slack channel.
