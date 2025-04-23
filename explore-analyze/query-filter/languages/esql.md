@@ -1,7 +1,4 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-getting-started.html
@@ -10,13 +7,83 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql.html
 ---
 
-# ES|QL [esql]
-
-## What's {{esql}}? [_the_esql_compute_engine]
+# {{esql}} [esql]
 
 **Elasticsearch Query Language ({{esql}})** is a piped query language for filtering, transforming, and analyzing data.
 
-You can author {{esql}} queries to find specific events, perform statistical analysis, and generate visualizations. It supports a wide range of [commands](elasticsearch://reference/query-languages/esql/esql-commands.md), [functions, and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md) to perform various data operations, such as filtering, aggregation, time-series analysis, and more. Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
+## What's {{esql}}? [_the_esql_compute_engine]
+
+You can author {{esql}} queries to find specific events, perform statistical analysis, and create visualizations. It supports a wide range of commands, functions, and operators to perform various data operations, such as filter, aggregation, time-series analysis, and more. It initially supported a subset of the features available in Query DSL, but it is rapidly evolving with every {{serverless-full}} and Stack release.
+
+{{esql}} is designed to be easy to read and write, making it accessible for users with varying levels of technical expertise. It is particularly useful for data analysts, security professionals, and developers who need to work with large datasets in Elasticsearch.
+
+## How does it work? [search-analyze-data-esql]
+
+{{esql}} uses pipes (`|`) to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
+
+Here's a simple example of an {{esql}} query:
+
+```esql
+FROM sample_data
+| SORT @timestamp DESC
+| LIMIT 3
+```
+
+Note that each line in the query represents a step in the data processing pipeline:
+- The `FROM` clause specifies the index or data stream to query
+- The `SORT` clause sorts the data by the `@timestamp` field in descending order
+- The `LIMIT` clause restricts the output to the top 3 results
+
+### User interfaces
+
+You can interact with {{esql}} in two ways:
+
+- **Programmatic access**: Use {{esql}} syntax with the {{es}} `_query` endpoint.
+
+- **Interactive interfaces**: Work with {{esql}} through Elastic user interfaces including Kibana Discover, Dashboards, Dev Tools, and analysis tools in Elastic Security and Observability.
+
+## Documentation
+
+### Usage guides
+- **Get started**
+  - [Get started in docs](/explore-analyze/query-filter/languages/esql-getting-started.md)
+  - [Training course](https://www.elastic.co/training/introduction-to-esql)
+- **{{esql}} interfaces**
+  - [Use the query API](/explore-analyze/query-filter/languages/esql-rest.md)
+  - [Use {{esql}} in Kibana](/explore-analyze/query-filter/languages/esql-kibana.md)
+  - [Use {{esql}} in Elastic Security](/explore-analyze/query-filter/languages/esql-elastic-security.md)
+- **{{esql}} for search use cases**
+  - [{{esql}} for search landing page](/solutions/search/esql-for-search.md)
+  - [{{esql}} for search tutorial](/solutions/search/esql-search-tutorial.md)
+- **Query multiple sources**
+  - [Query multiple indices](/explore-analyze/query-filter/languages/esql-multi-index.md)
+  - [Query across clusters](/explore-analyze/query-filter/languages/esql-cross-clusters.md)
+
+### Reference documentation
+
+:::{note}
+The {{esql}} reference documentation lives in the {{es}} reference section of the Elastic docs.
+:::
+
+#### Core references
+* [{{esql}} reference](elasticsearch://reference/query-languages/esql.md)
+* [{{esql}} syntax](elasticsearch://reference/query-languages/esql/esql-syntax.md)
+
+#### Commands, functions, and operators
+* [Commands](elasticsearch://reference/query-languages/esql/esql-commands.md)
+* [Functions and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md)
+
+#### Field types
+* [Metadata fields](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md)
+* [Multivalued fields](elasticsearch://reference/query-languages/esql/esql-multivalued-fields.md)
+
+#### Advanced features
+* [DISSECT and GROK](elasticsearch://reference/query-languages/esql/esql-process-data-with-dissect-grok.md)
+* [ENRICH](elasticsearch://reference/query-languages/esql/esql-enrich-data.md)
+* [LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md)
+
+#### Limitations
+* [Limitations](elasticsearch://reference/query-languages/esql/limitations.md)
 
 ::::{note}
 **{{esql}}'s compute architecture**
@@ -25,39 +92,3 @@ You can author {{esql}} queries to find specific events, perform statistical ana
 
 The new {{esql}} execution engine was designed with performance in mind — it operates on blocks at a time instead of per row, targets vectorization and cache locality, and embraces specialization and multi-threading. It is a separate component from the existing Elasticsearch aggregation framework with different performance characteristics.
 ::::
-
-## How does it work? [search-analyze-data-esql]
-
-The {{es}} Query Language ({{esql}}) makes use of "pipes" (|) to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
-
-You can use it:
-- In your queries to {{es}} APIs, using the [`_query` endpoint](/explore-analyze/query-filter/languages/esql-rest.md) that accepts queries written in {{esql}} syntax.
-- Within various {{kib}} tools such as Discover and Dashboards, to explore your data and build powerful visualizations.
-
-Learn more about using {{esql}} for Search use cases in this tutorial: [Search and filter with {{esql}}](/solutions/search/esql-search-tutorial.md).
-
-## Next steps
-
-Find more details about {{esql}} in the following documentation pages:
-- [{{esql}} reference](elasticsearch://reference/query-languages/esql.md):
-  - Reference documentation for the [{{esql}} syntax](elasticsearch://reference/query-languages/esql/esql-syntax.md):
-    - Reference for [commands](elasticsearch://reference/query-languages/esql/esql-commands.md), and [functions and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md)
-    - How to work with [metadata fields](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md) and [multivalued fields](elasticsearch://reference/query-languages/esql/esql-multivalued-fields.md)
-    - How to work with [DISSECT and GROK](elasticsearch://reference/query-languages/esql/esql-process-data-with-dissect-grok.md), [ENRICH](elasticsearch://reference/query-languages/esql/esql-enrich-data.md), and [LOOKUP join](elasticsearch://reference/query-languages/esql/esql-lookup-join.md)
-
-
-- Using {{esql}}:
-  - An overview of using the [`_query` API endpoint](/explore-analyze/query-filter/languages/esql-rest.md).
-  - [Using {{esql}} for search](/solutions/search/esql-for-search.md).
-  - [Using {{esql}} in {{kib}}](../../../explore-analyze/query-filter/languages/esql-kibana.md).
-  - [Using {{esql}} in {{elastic-sec}}](/explore-analyze/query-filter/languages/esql-elastic-security.md).
-  - [Using {{esql}} with multiple indices](/explore-analyze/query-filter/languages/esql-multi-index.md).
-  - [Using {{esql}} across clusters](/explore-analyze/query-filter/languages/esql-cross-clusters.md).
-  - [Task management](/explore-analyze/query-filter/languages/esql-task-management.md).
-
-
-- [Limitations](elasticsearch://reference/query-languages/esql/limitations.md): The current limitations of {{esql}}.
-
-- [Examples](/explore-analyze/query-filter/languages/esql.md): A few examples of what you can do with {{esql}}.
-
-To get started, you can also try [our ES|QL training course](https://www.elastic.co/training/introduction-to-esql).
