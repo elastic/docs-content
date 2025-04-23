@@ -30,12 +30,6 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
 
-## Errors [troubleshooting-errors]
-
-* [](/troubleshoot/elasticsearch/all-shards-failed.md)
-* [](/troubleshoot/elasticsearch/failed-to-parse-field-of-type.md)
-* [](/troubleshoot/elasticsearch/unable-to-retrieve-node-fs-stats.md)
-* [](/troubleshoot/elasticsearch/unable-to-parse-response-body.md)
 
 ## Management [troubleshooting-management]
 
