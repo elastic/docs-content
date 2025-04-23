@@ -10,5 +10,3 @@ Use the topics in this section to troubleshoot common errors in {{es}} deploymen
 * [](/troubleshoot/elasticsearch/failed-to-parse-field-of-type.md)
 * [](/troubleshoot/elasticsearch/unable-to-retrieve-node-fs-stats.md)
 * [](/troubleshoot/elasticsearch/unable-to-parse-response-body.md)
-* [](/troubleshoot/elasticsearch/updating-number-of-replicas-to-for-indices.md)
-* [](/troubleshoot/elasticsearch/memory-locking-error.md)

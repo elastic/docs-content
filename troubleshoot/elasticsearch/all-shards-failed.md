@@ -6,8 +6,7 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: All shards failed"
-# is mapped_pages needed for newly created docs?
+navigation_title: "Error: all shards failed"
 ---
 
 # Fix error: All shards failed [all-shards-failed]

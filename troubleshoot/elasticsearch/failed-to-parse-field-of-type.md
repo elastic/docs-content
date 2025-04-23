@@ -6,8 +6,7 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: failed to parse field of type in document with id"
-# is mapped_pages needed for newly created docs?
+navigation_title: "Error: Failed to parse field of type in document with id"
 ---
 
 # Fix error: Failed to parse field [failed-to-parse-field-of-type]
@@ -50,16 +49,10 @@ PUT test
 }
 ```
 
-## Troubleshoot and resolve the error
+To check the data type of the field causing the error, first get the mapping:
 
-1. Check the mapping of your index:
+    ```console
+        GET your-index-name/_mapping
+    ```
 
-```console
-GET your-index-name/_mapping
-```
-
-2. Confirm the data type of the field causing the error.
-
-3. Ensure the incoming data matches the expected type.
-
-4. If necessary, create a new index with the correct mapping and reindex your data.
+Make sure the incoming data matches the expected type. If not, you'll need to fix the data or update the mapping. If necessary, create a new index with the correct mapping and reindex your data.

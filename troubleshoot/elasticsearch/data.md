@@ -15,7 +15,6 @@ Use the topics in this section to troubleshoot data-related issues in your {{es}
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
 
-
 ## Additional resources
 * [](/troubleshoot/elasticsearch/fix-watermark-errors.md)
 * [Troubleshooting overview](/troubleshoot/index.md)

@@ -6,8 +6,7 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: Unable to retrieve node fs stats"
-# is mapped_pages needed for newly created docs?
+navigation_title: "Error: unable to retrieve node fs stats"
 ---
 
 # Fix error: Unable to retrieve node fs stats [unable-to-retrieve-node-fs-stats]
