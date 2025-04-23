@@ -6,10 +6,10 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: token invalid or expired"
+navigation_title: "Error: Token invalid or expired"
 ---
 
-# Fix token invalid or expired error in Elasticsearch [token-invalid-expired]
+# Fix errors: Invalid token or token expired in {{es}} [token-invalid-expired]
 
 ```console
 Error: token expired
@@ -21,7 +21,7 @@ This error occurs when {{es}} receives a request containing an invalid or expire
 
 ## Invalid token
 
-An invalid token will cause {{es}} to reject a request. Common causes include:
+{{es}} rejects requests with invalid authentication tokens. Common causes include:
 
 - The token is expired or revoked
 - The token format is incorrect or malformed

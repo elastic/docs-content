@@ -6,7 +6,7 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: all shards failed"
+navigation_title: "Error: All shards failed"
 ---
 
 # Fix error: All shards failed [all-shards-failed]
