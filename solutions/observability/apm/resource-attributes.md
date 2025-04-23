@@ -68,7 +68,16 @@ Elastic APM stores the following:
 }
 ```
 
-## Conditional attribute translation
+## Scope attributes translation
+
+Scope attributes are translated as follows:
+
+| OpenTelemetry attribute | Elastic APM field |
+|-------------------------|-------------------|
+| scope.name | service.framework.name |
+| scope.version | service.framework.version |
+
+## Conditional attributes translation
 
 Some OpenTelemetry attributes are conditionally converted based on their value type.
 
