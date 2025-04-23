@@ -6,7 +6,7 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: token expired"
+navigation_title: "Error: Token expired"
 # is mapped_pages needed for newly created docs?
 ---
 

@@ -9,7 +9,7 @@ applies_to:
 navigation_title: "Error: updating number_of_replicas for indices"
 ---
 
-# Fix error when updating number_of_replicas for indices in Elasticsearch [updating-number-of-replicas-for-indices-error]
+# Fix error when updating number_of_replicas for indices in {{es}} [updating-number-of-replicas-for-indices-error]
 
 ```console
 updating number_of_replicas to [] for indices [].
@@ -29,24 +29,21 @@ If the value is missing or malformed, the update fails.
 
 ## How to resolve it
 
-1. **Use a valid integer** when setting `number_of_replicas`.
-2. **Check node count** – You must have enough nodes to accommodate the requested replicas.
-3. **Ensure correct syntax** when using the API:
+- Use a valid integer when setting `number_of_replicas`.
+- Make sure you have enough nodes to accommodate the requested replicas. If needed, reduce the replica count to match available resources.
+- Check the syntax of your API request:
 
-   ```json
+   ```bash
    PUT /my-index/_settings
    {
      "index": {
        "number_of_replicas": 2
      }
    }
-   ```
-
-4. If needed, **reduce the replica count** to match available resources.
 
 ## Dynamic replica allocation
 
-{{es}} supports dynamic replica scaling using `index.auto_expand_replicas`. This allows replica counts to adjust based on the number of available nodes.
+Instead of directly updating the number of replicas, you can use dynamic replica scaling by configuring `index.auto_expand_replicas`. This setting adjusts the replica count based on the number of available nodes.
 
 Example configuration:
 
@@ -54,16 +51,14 @@ Example configuration:
 index.auto_expand_replicas: 0-5
 ```
 
-With this setting, {{es}} will scale replicas from 0 up to 5 as nodes are added or removed.
-
 To disable automatic expansion:
 
 ```yaml
 index.auto_expand_replicas: false
 ```
 
-## Additional considerations
+## Tips
 
-- If the replica count is changing unexpectedly, verify your **index templates** and **cluster settings**.
-- Update index templates to enforce consistent replica configuration for newly created indices.
+- If the replica count is changing unexpectedly, verify your index templates and cluster settings.
+- To apply a consistent replica configuration to new indices, update the relevant index templates.
 

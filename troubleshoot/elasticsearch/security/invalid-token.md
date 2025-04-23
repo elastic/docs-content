@@ -6,11 +6,11 @@ applies_to:
     ess: 
     ece: 
     self: 
-navigation_title: "Error: invalid token"
+navigation_title: "Error: Invalid token"
 # is mapped_pages needed for newly created docs?
 ---
 
-# Fix invalid token error [invalid-token]
+# Fix error: Invalid token [invalid-token]
 
 ```console
 Error: invalid token
