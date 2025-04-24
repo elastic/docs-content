@@ -13,7 +13,7 @@ In OpenTelemetry, an attribute is a key-value pair. Attributes are similar to [l
 
 Resource attributes are a type of attribute that contains information about the entities that produce telemetry. Resource attributes map to Elastic Common Schema (ECS) fields like `service.*`, `cloud.*`, `process.*`, and so on. These fields describe the service and its environment.
 
-For example, Elastic maps the OpenTelemetry `deployment.environment` field to the ECS `service.environment` field on ingestion.
+For example, Elastic APM maps the OpenTelemetry `deployment.environment` field to the ECS `service.environment` field on ingestion.
 
 ## Setting resource attributes
 
