@@ -44,7 +44,7 @@ processors:
 
 ## Handling of unmapped attributes
 
-When sending telemetry to APM Server, only a subset of OpenTelemetry attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, the system stores it under `labels.*`, with dots replaced by underscores.
+When sending telemetry to Elastic APM, only a subset of OpenTelemetry attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, the system stores it under `labels.*`, with dots replaced by underscores.
 
 For example, if an OpenTelemetry resource contains:
 
