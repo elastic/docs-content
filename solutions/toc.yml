@@ -131,7 +131,7 @@ toc:
                       - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
                       - file: observability/apm/collect-metrics.md
                       - file: observability/apm/limitations.md
-                      - file: observability/apm/resource-attributes.md
+                      - file: observability/apm/attributes.md
                   - file: observability/apm/apm-k8s-attacher.md
                   - file: observability/apm/monitor-aws-lambda-functions.md
                   - file: observability/apm/jaeger.md
