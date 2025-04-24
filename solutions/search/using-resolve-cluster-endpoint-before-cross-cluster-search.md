@@ -3,17 +3,19 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_advantages_of_using_this_endpoint_before_a_cross_cluster_search.html
 applies_to:
   stack:
-  serverless:
+  serverless: unavailable
 ---
 
-# Advantages of using this endpoint before a {{ccs}} [_advantages_of_using_this_endpoint_before_a_ccs]
+# Resolve a cluster before {{ccs}} [_advantages_of_using_this_endpoint_before_a_ccs]
+
+You can use the [`_resolve/cluster`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-cluster) endpoint before cross-cluster search to identify clusters or indices to exclude from your search.
 
 You may want to exclude a cluster or index from a search when:
 
-1. A remote cluster could not be connected to and is configured with `skip_unavailable`=`false`. Executing a {{ccs}} under those conditions will cause [the entire search to fail](/solutions/search/cross-cluster-search.md#cross-cluster-search-failures).
-2. A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the `remote1` cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a {{ccs}}.
-3. The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the "error" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)
-4. A remote cluster is an older version that does not support the feature you want to use in your search.
+1. A remote cluster is unavailable and configured with `skip_unavailable`=`false`. Executing a {{ccs}} under those conditions will cause [the entire search to fail](/solutions/search/cross-cluster-search.md#cross-cluster-search-failures).
+2. A cluster has no matching indices, aliases or data streams for the index expression, or your user does not have permissions to search them. For example, if your index expression is `logs*,remote1:logs*` and the `remote1` cluster has no matching indices, that cluster will return no results if included in a {{ccs}}.
+3. The index expression, combined with any query parameters you specify, might trigger exceptions. In these cases, the "error" field in the `_resolve/cluster` response will be present. This is also where security/permission errors will be shown.
+4. A remote cluster is running an older version that does not support features needed for your search.
 
 ## {{api-examples-title}} [resolve-cluster-api-example]
 
