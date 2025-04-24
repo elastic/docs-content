@@ -46,6 +46,8 @@ processors:
 
 When sending telemetry to Elastic APM, only a subset of OpenTelemetry attributes are directly mapped to ECS fields. If an attribute doesn't have a predefined ECS mapping, the system stores it under `labels.*`, with dots replaced by underscores.
 
+Unmapped resource attributes are treated as global labels in Elastic APM, meaning they apply to all telemetry data from the resource. In contrast, unmapped record-level attributes, such as those specific to a log record, span, or data point, are stored as normal labels associated only with that specific record.
+
 For example, if an OpenTelemetry resource contains:
 
 ```json
