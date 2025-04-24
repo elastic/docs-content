@@ -52,8 +52,8 @@ Follow the steps in these guides to get started quickly:
 
 * [Quickstart: Monitor hosts with {{agent}}](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md)
 * [Quickstart: Monitor your Kubernetes cluster with {{agent}}](/solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md)
-* [Quickstart: Monitor hosts with OpenTelemetry](https://elastic.github.io/opentelemetry/quickstart//)
-* [Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT)](https://elastic.github.io/opentelemetry/use-cases/kubernetes/)
+* [Quickstart: Monitor hosts with OpenTelemetry](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md)
+* [Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT)](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md)
 * [Quickstart: Collect data with AWS Firehose](/solutions/observability/get-started/quickstart-collect-data-with-aws-firehose.md)
 
 

@@ -18,7 +18,7 @@ The examples in this section are for illustration purposes only. They should not
 ## Single pipeline defined in CRD [k8s-logstash-configuration-single-pipeline-crd]
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-eck.yaml
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/logstash/logstash-eck.yaml
 ```
 
 Deploys Logstash with a single pipeline defined in the CRD
@@ -27,7 +27,7 @@ Deploys Logstash with a single pipeline defined in the CRD
 ## Single Pipeline defined in Secret [k8s-logstash-configuration-single-pipeline-secret]
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-pipeline-as-secret.yaml
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/logstash/logstash-pipeline-as-secret.yaml
 ```
 
 Deploys Logstash with a single pipeline defined in a secret, referenced by a `pipelineRef`
@@ -36,7 +36,7 @@ Deploys Logstash with a single pipeline defined in a secret, referenced by a `pi
 ## Pipeline configuration in mounted volume [k8s-logstash-configuration-pipeline-volume]
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-pipeline-as-volume.yaml
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/logstash/logstash-pipeline-as-volume.yaml
 ```
 
 Deploys Logstash with a single pipeline defined in a secret, mounted as a volume, and referenced by `path.config`
@@ -45,7 +45,7 @@ Deploys Logstash with a single pipeline defined in a secret, mounted as a volume
 ## Writing to a custom {{es}} index [k8s-logstash-configuration-custom-index]
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-es-role.yaml
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/logstash/logstash-es-role.yaml
 ```
 
 Deploys Logstash and {{es}}, and creates an updated version of the `eck_logstash_user_role` to write to a user specified index.
@@ -54,7 +54,7 @@ Deploys Logstash and {{es}}, and creates an updated version of the `eck_logstash
 ## Creating persistent volumes for PQ and DLQ [k8s-logstash-configuration-pq-dlq]
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-volumes.yaml
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/logstash/logstash-volumes.yaml
 ```
 
 Deploys Logstash, Beats and {{es}}. Logstash is configured with two pipelines:
@@ -66,7 +66,7 @@ Deploys Logstash, Beats and {{es}}. Logstash is configured with two pipelines:
 ## {{es}} and {{kib}} Stack Monitoring [k8s-logstash-configuration-stack-monitoring]
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-monitored.yaml
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/logstash/logstash-monitored.yaml
 ```
 
 Deploys an {{es}} and {{kib}} monitoring cluster, and a Logstash that will send its monitoring information to this cluster. You can view the stack monitoring information in the monitoring cluster’s Kibana
@@ -75,7 +75,7 @@ Deploys an {{es}} and {{kib}} monitoring cluster, and a Logstash that will send 
 ## Multiple pipelines/multiple {{es}} clusters [k8s-logstash-configuration-multiple-pipelines]
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/logstash/logstash-multi.yaml
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/logstash/logstash-multi.yaml
 ```
 
 Deploys {{es}} in prod and qa configurations, running in separate namespaces. Logstash is configured with a multiple pipeline→pipeline configuration, with a source pipeline routing to `prod` and `qa` pipelines.

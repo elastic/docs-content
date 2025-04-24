@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/release-notes.html
   - https://www.elastic.co/guide/en/security/current/whats-new.html
 ---
-# {{elastic-sec}} release notes [elastic-security-release-notes]
+# {{elastic-sec}} release notes [elastic-security-X.X.X-release-notes]
 
 Review the changes, fixes, and more in each version of {{elastic-sec}}.
 
@@ -13,7 +13,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
 
 % ## version.next [elastic-security-next-release-notes]
-% **Release date:** Month day, year
 
 % ### Features and enhancements [elastic-security-next-features-enhancements]
 % *
@@ -22,7 +21,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % *
 
 ## 9.0.0 [elastic-security-900-release-notes]
-**Release date:** April 8, 2025
 
 ::::{NOTE}
 All features introduced in 8.18.0 are also available in 9.0.0.
