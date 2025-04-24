@@ -41,8 +41,8 @@ Headers for the Tile Service JSON manifest describing the basemaps available.
 
 ::::::{tab-item} Curl Example
 ::::{dropdown}
-```bash
-curl -I 'https://tiles.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=9.0.0-beta1' \
+```bash subs=true
+curl -I 'https://tiles.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -121,8 +121,8 @@ Headers for a vector tile asset in *protobuffer* format from the Tile Service.
 
 ::::::{tab-item} Curl Example
 ::::{dropdown}
-```bash
-$ curl -I 'https://tiles.maps.elastic.co/data/v3/1/1/0.pbf?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=9.0.0-beta1' \
+```bash subs=true
+$ curl -I 'https://tiles.maps.elastic.co/data/v3/1/1/0.pbf?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -284,8 +284,8 @@ Headers for the File Service JSON manifest that declares all the datasets availa
 
 ::::::{tab-item} Curl example
 ::::{dropdown}
-```bash
-curl -I 'https://vector.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=9.0.0-beta1' \
+```bash subs=true
+curl -I 'https://vector.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -375,8 +375,8 @@ Headers for a sample Dataset from the File Service in TopoJSON format.
 
 ::::::{tab-item} Curl example
 ::::{dropdown}
-```bash
-curl -I 'https://vector.maps.elastic.co/files/world_countries_v7.topo.json?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version=9.0.0-beta1' \
+```bash subs=true
+curl -I 'https://vector.maps.elastic.co/files/world_countries_v7.topo.json?elastic_tile_service_tos=agree&my_app_name=kibana&my_app_version={{version}}' \
 -H 'User-Agent: curl/7.81.0' \
 -H 'Accept: */*' \
 -H 'Accept-Encoding: gzip, deflate, br'
@@ -484,26 +484,21 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 1. Pull the {{hosted-ems}} Docker image.
 
-   ::::{warning}
-   Version 9.0.0-beta1 of {{hosted-ems}} has not yet been released. No Docker image is currently available for this version.
-   ::::
-
-
-    ```bash
-    docker pull docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+    ```bash subs=true
+    docker pull docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
     ```
 
 2. Optional: Install [Cosign](https://docs.sigstore.dev/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
 
-    ```sh
+    ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+    cosign verify --key cosign.pub docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
-    ```sh
-    Verification for docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1 --
+    ```sh subs=true
+    Verification for docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}} --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -512,9 +507,9 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 3. Start {{hosted-ems}} and expose the default port `8080`:
 
-    ```bash
+    ```bash subs=true
     docker run --rm --init --publish 8080:8080 \
-      docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+      docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
     ```
 
     Once {{hosted-ems}} is running, follow instructions from the webpage at `localhost:8080` to define a configuration file and optionally download a more detailed basemaps database.
@@ -534,7 +529,7 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 |     |     |
 | --- | --- |
-| $$$ems-host$$$`host` | Specifies the host of the backend server. To allow remote users to connect, set the value to the IP address or DNS name of the {{hosted-ems}} container. **Default: *your-hostname***. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-host). |
+| $$$ems-host$$$`host` | Specifies the host of the backend server. To allow remote users to connect, set the value to the IP address or DNS name of the {{hosted-ems}} container. **Default: _your-hostname_**. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-host). |
 | `port` | Specifies the port used by the backend server. Default: **`8080`**. [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-port). |
 | `basePath` | Specify a path at which to mount the server if you are running behind a proxy. This setting cannot end in a slash (`/`). [Equivalent {{kib}} setting](kibana://reference/configuration-reference/general-settings.md#server-basepath). |
 | `ui` | Controls the display of the status page and the layer preview. **Default: `true`** |
@@ -566,10 +561,10 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 One way to configure {{hosted-ems}} is to provide `elastic-maps-server.yml` via bind-mounting. With `docker-compose`, the bind-mount can be specified like this:
 
-```yaml
+```yaml subs=true
 services:
   ems-server:
-    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
     volumes:
       - ./elastic-maps-server.yml:/usr/src/app/server/config/elastic-maps-server.yml
 ```
@@ -586,10 +581,10 @@ All information that you include in environment variables is visible through the
 
 These variables can be set with `docker-compose` like this:
 
-```yaml
+```yaml subs=true
 services:
   ems-server:
-    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:9.0.0-beta1
+    image: docker.elastic.co/elastic-maps-service/elastic-maps-server:{{version}}
     environment:
       ELASTICSEARCH_HOST: http://elasticsearch.example.org
       ELASTICSEARCH_USERNAME: 'ems'

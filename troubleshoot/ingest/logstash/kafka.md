@@ -92,9 +92,6 @@ For Kafka Broker versions 0.10.2.1 to 1.0.x: The problem is caused by a bug in K
 
 For older versions of Kafka or if the above does not fully resolve the issue: The problem can also be caused by setting the value for `poll_timeout_ms` too low relative to the rate at which the Kafka Brokers receive events themselves (or if Brokers periodically idle between receiving bursts of events). Increasing the value set for `poll_timeout_ms` proportionally decreases the number of offsets commits in this scenario. For example, raising it by 10x will lead to 10x fewer offset commits.
 
-
-#
-
 **Symptoms**
 
 Logstash Kafka input randomly logs errors from the configured codec and/or reads events incorrectly (partial reads, mixing data between multiple events etc.).

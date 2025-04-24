@@ -147,7 +147,7 @@ namespace MyApp
 }
 ```
 
-During initialization, the agent checks if an additional logger was configured-- the agent only does this once, so it’s important to set it as early in the process as possible, typically in the `Application_Start` method.
+During initialization, the agent checks if an additional logger was configured—the agent only does this once, so it’s important to set it as early in the process as possible, typically in the `Application_Start` method.
 
 
 ### General .NET applications [collect-logs-general]
