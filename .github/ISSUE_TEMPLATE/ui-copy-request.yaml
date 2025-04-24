@@ -36,36 +36,18 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: doc-set
+    id: product-area
     attributes:
-      label: Which documentation set does this change impact?
-      description: ESS, serverless, or both?
+      label: Which product area does this mainly concern?
       options:
-        - ESS and serverless
-        - ESS only
-        - Serverless only
-        - Unknown / Not applicable
+        - Cloud UI
+        - Search solution
+        - Observability solution
+        - Security solution
+        - Kibana Analytics (Discover, Dashboards...)
+        - Kibana Management
+        - Something else
       default: 0
-    validations:
-      required: true
-  - type: textarea
-    id: doc-set-differences
-    attributes:
-      label: Feature differences
-      description: If you selected both ESS and serverless above, please describe how, if at all, the feature differs in each deployment method.
-      placeholder: The feature is identical in ESS and serverless.
-    validations:
-      required: true
-  - type: textarea
-    id: software-version
-    attributes:
-      label: Software version
-      description: Is this work targeted for a particular release version? If so, which one?
-      placeholder: |
-        For example:
-        "8.19.0"; 
-        "This feature has been in production since 8.15.0"; 
-        "N/A"
     validations:
       required: true
   - type: textarea
