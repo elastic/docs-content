@@ -111,7 +111,7 @@ POST _security/role/slm-read-only
 
 ### Create an {{slm-init}} policy [create-slm-policy]
 
-To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore*** > ***Policies**. To create a policy, click **Create policy**.
+To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**. To create a policy, click **Create policy**.
 
 You can also manage {{slm-init}} using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm). To create a policy, use the [create {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle).
 

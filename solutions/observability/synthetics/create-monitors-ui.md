@@ -48,7 +48,7 @@ To use the UI to add a lightweight monitor:
     If you’ve [added a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), you’ll see your the {{private-location}} in the list of *Locations*.
 
     ```{image} /solutions/images/serverless-private-locations-monitor-locations.png
-    :alt: Screenshot of Monitor locations options including a {private-location}
+    :alt: Screenshot of Monitor locations options including a {{private-location}}
     :screenshot:
     ```
 

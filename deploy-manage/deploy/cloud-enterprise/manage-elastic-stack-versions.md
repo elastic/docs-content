@@ -45,7 +45,7 @@ $$$ece-elastic-stack-stackpacks-recent$$$
 
 Following is the full list of available packs containing {{stack}} versions. Note that Enterprise Search was introduced with ECE 2.6.0 and requires that version or higher.
 
-::::{dropdown} **Expand to view the full list**
+::::{dropdown} Expand to view the full list
 | Required downloads | Minimum required ECE version |
 | --- | --- |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.0](https://download.elastic.co/cloud-enterprise/versions/9.0.0.zip) | ECE 4.0.0 |

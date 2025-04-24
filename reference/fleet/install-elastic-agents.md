@@ -123,11 +123,11 @@ We tested using an AWS `m7i.large` instance type with 2 vCPUs, 8.0 GB of memory,
 
 | Resource | Throughput | Scale |
 | --- | --- | --- |
-| **CPU*** | ~67% | ~20% |
-| **RSS memory size*** | ~280 MB | ~220 MB |
+| **CPU**[^1^](#footnote-1) | ~67% | ~20% |
+| **RSS memory size**[^1^](#footnote-1) | ~280 MB | ~220 MB |
 | **Write network throughput** | ~3.5 MB/s | 480 KB/s |
 
-* including all monitoring processes
+^1^ $$$footnote-1$$$ including all monitoring processes
 
 Adding integrations will increase the memory used by the agent and its processes.
 

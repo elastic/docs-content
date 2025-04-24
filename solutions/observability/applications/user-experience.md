@@ -51,13 +51,13 @@ You won’t be able to fix any problems from viewing these metrics alone, but yo
 
 ::::{dropdown} Metric reference
 First contentful paint
-:   Focuses on the initial rendering and measures the time from when the page starts loading to when any part of the page’s content is displayed on the screen. The agent uses the [Paint timing API](https://www.w3.org/TR/paint-timing/#first-contentful-paint) available in the browser to capture the timing information.[¹](#footnote-1)
+:   Focuses on the initial rendering and measures the time from when the page starts loading to when any part of the page’s content is displayed on the screen. The agent uses the [Paint timing API](https://www.w3.org/TR/paint-timing/#first-contentful-paint) available in the browser to capture the timing information.[^1^](#footnote-1)
 
 Total blocking time
-:   The sum of the blocking time (duration above 50 ms) for each long task that occurs between the First contentful paint and the time when the transaction is completed. Total blocking time is a great companion metric for [Time to interactive](https://web.dev/tti/) (TTI) which is lab metric and not available in the field through browser APIs. The agent captures TBT based on the number of long tasks that occurred during the page load lifecycle.[²](#footnote-2)
+:   The sum of the blocking time (duration above 50 ms) for each long task that occurs between the First contentful paint and the time when the transaction is completed. Total blocking time is a great companion metric for [Time to interactive](https://web.dev/tti/) (TTI) which is lab metric and not available in the field through browser APIs. The agent captures TBT based on the number of long tasks that occurred during the page load lifecycle.[^2^](#footnote-2)
 
 `Long Tasks`
-:   A long task is any user activity or browser task that monopolize the UI thread for extended periods (greater than 50 milliseconds) and block other critical tasks (frame rate or input latency) from being executed.[³](#footnote-3)
+:   A long task is any user activity or browser task that monopolize the UI thread for extended periods (greater than 50 milliseconds) and block other critical tasks (frame rate or input latency) from being executed.[^3^](#footnote-3)
 
 Number of long tasks
 :   The number of long tasks.
@@ -77,17 +77,16 @@ These metrics tell an important story about how users experience your website. B
 [Core Web Vitals](https://web.dev/vitals/) is a recent initiative from Google to introduce a new set of metrics that better categorize good and bad sites by quantifying the real-world user experience. This is done by looking at three key metrics: loading performance, visual stability, and interactivity:
 
 Largest contentful paint (LCP)
-:   Loading performance. LCP is the timestamp when the main content of a page has likely loaded. To users, this is the *perceived* loading speed of your site. To provide a good user experience, Google recommends an LCP of fewer than 2.5 seconds.[⁴](#footnote-4)
+:   Loading performance. LCP is the timestamp when the main content of a page has likely loaded. To users, this is the *perceived* loading speed of your site. To provide a good user experience, Google recommends an LCP of fewer than 2.5 seconds.[^4^](#footnote-4)
 
 Interaction to next paint (INP)
-:   Responsiveness to user interactions. The INP value comes from measuring the latency of all click, tap, and keyboard interactions that happen throughout a single page visit and choosing the longest interaction observed. To provide a good user experience, Google recommends an INP of fewer than 200 milliseconds.[⁵](#footnote-5)
+:   Responsiveness to user interactions. The INP value comes from measuring the latency of all click, tap, and keyboard interactions that happen throughout a single page visit and choosing the longest interaction observed. To provide a good user experience, Google recommends an INP of fewer than 200 milliseconds.[^5^](#footnote-5)
 
 ::::{note}
 Previous {{kib}} versions included the metric [First input delay (FID)](https://web.dev/fid/) in the User Experience app. Starting with version 8.12, FID was replaced with *Interaction to next paint (INP)*. The APM RUM agent started collecting INP data in version 5.16.0. If you use an earlier version of the RUM agent with {{kib}} version 8.12 or later, it will *not* capture INP data and there will be *no data* to show in the User Experience app:
 
-|     |     |     |
-| --- | --- | --- |
 |  | **Kibana version ≥ 8.12** | **Kibana version < 8.12** |
+| --- | --- | --- |
 | **RUM agent version ≥ 5.16.0** | INP data will be visible. | FID data will be visible. |
 | **RUM agent version < 5.16.0** | The INP section will be empty. | FID data will be visible. |
 
@@ -96,10 +95,10 @@ RUM agent version ≥ 5.16.0 will continue to collect FID metrics so, while FID
 ::::
 
 Cumulative layout shift (CLS)
-:   Visual stability. Is content moving around because of `async` resource loading or dynamic content additions? CLS measures these frustrating unexpected layout shifts. To provide a good user experience, Google recommends a CLS score of less than `.1`.[⁶](#footnote-6)
+:   Visual stability. Is content moving around because of `async` resource loading or dynamic content additions? CLS measures these frustrating unexpected layout shifts. To provide a good user experience, Google recommends a CLS score of less than `.1`.[^6^](#footnote-6)
 
 ::::{tip}
-[Beginning in May 2021](https://webmasters.googleblog.com/2020/11/timing-for-page-experience.md), Google will start using Core Web Vitals as part of their ranking algorithm and will open up the opportunity for websites to rank in the "top stories" position without needing to leverage [AMP](https://amp.dev/).[⁷](#footnote-7)
+[Beginning in May 2021](https://webmasters.googleblog.com/2020/11/timing-for-page-experience.md), Google will start using Core Web Vitals as part of their ranking algorithm and will open up the opportunity for websites to rank in the "top stories" position without needing to leverage [AMP](https://amp.dev/).[^7^](#footnote-7)
 ::::
 
 ### Load/view distribution [user-experience-distribution]
@@ -130,10 +129,10 @@ Have a question? Want to leave feedback? Visit the [{{user-experience}} discussi
 
 #### References [user-experience-references]
 
-¹ $$$footnote-1$$$ More information: [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Glossary/First_contentful_paint)<br>
-² $$$footnote-2$$$ More information: [web.dev](https://web.dev/tbt/)<br>
-³ $$$footnote-3$$$ More information: [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Long_Tasks_API)<br>
-⁴ $$$footnote-4$$$ Source: [web.dev](https://web.dev/lcp/)<br>
-⁵ $$$footnote-5$$$ Source: [web.dev](https://web.dev/articles/inp)<br>
-⁶ $$$footnote-6$$$ Source: [web.dev](https://web.dev/cls/)<br>
-⁷ $$$footnote-7$$$ Source: [webmasters.googleblog.com](https://webmasters.googleblog.com/2020/05/evaluating-page-experience.md)<br>
+^1^ $$$footnote-1$$$ More information: [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Glossary/First_contentful_paint)<br>
+^2^ $$$footnote-2$$$ More information: [web.dev](https://web.dev/tbt/)<br>
+^3^ $$$footnote-3$$$ More information: [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Long_Tasks_API)<br>
+^4^ $$$footnote-4$$$ Source: [web.dev](https://web.dev/lcp/)<br>
+^5^ $$$footnote-5$$$ Source: [web.dev](https://web.dev/articles/inp)<br>
+^6^ $$$footnote-6$$$ Source: [web.dev](https://web.dev/cls/)<br>
+^7^ $$$footnote-7$$$ Source: [webmasters.googleblog.com](https://webmasters.googleblog.com/2020/05/evaluating-page-experience.md)<br>
