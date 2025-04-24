@@ -70,7 +70,7 @@ evaluate the rule conditions. It is recommended to select an interval that is
 close to the bucket span of the job.
 ::::
 
-As the last step in the rule creation process, define its [Actions](#actions)
+As the last step in the rule creation process, define its [actions](#ml-configuring-alert-actions).
 
 ## {{anomaly-jobs-cap}} health rules [creating-anomaly-jobs-health-rules]
 
