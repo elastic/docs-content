@@ -2,11 +2,10 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Getting started"
+navigation_title: "Get started"
 ---
 
-# Getting started with {{esql}} queries [esql-getting-started]
-
+# Get started with {{esql}} queries [esql-getting-started]
 
 This guide shows how you can use {{esql}} to query and aggregate your data.
 
