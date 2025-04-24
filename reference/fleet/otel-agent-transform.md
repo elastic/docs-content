@@ -23,7 +23,7 @@ In order to configure an installed standalone {{agent}} to run as an OTel Collec
 You’ll need the following:
 
 1. A suitable [{{es}} API key](grant-access-to-elasticsearch.md#create-api-key-standalone-agent) for authenticating on Elasticsearch
-2. An installed standalone {agent}
+2. An installed standalone {{agent}}
 3. A valid OTel Collector configuration. In this example we’ll use the OTel sample configuration included in the {{agent}} repository: `otel_samples/platformlogs_hostmetrics.yml`.
 
     * [Linux version](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml)
@@ -41,13 +41,13 @@ To change a running standalone {{agent}} to run as an OTel Collector:
     * **Option 1:** Define environment variables for the {{agent}} service:
 
         * `ELASTIC_ENDPOINT`: The URL of the {{es}} instance where data will be sent
-        * `ELASTIC_API_KEY`: The API Key to use to authenticate with {es}
+        * `ELASTIC_API_KEY`: The API Key to use to authenticate with {{es}}
         * `STORAGE_DIR`: The directory where the OTel Collector can persist its state
 
     * **Option 2:** Replace the environment variable references in the sample configuration with the corresponding values:
 
         * `${env:ELASTIC_ENDPOINT}`:The URL of the {{es}} instance where data will be sent
-        * `${env:ELASTIC_API_KEY}`: The API Key to use to authenticate with {es}
+        * `${env:ELASTIC_API_KEY}`: The API Key to use to authenticate with {{es}}
         * `${env:STORAGE_DIR}`: The directory where the OTel Collector can persist its state
 
 4. Save the opened OTel configuration as `elastic-agent.yml`, overwriting the default configuration of the installed agent.

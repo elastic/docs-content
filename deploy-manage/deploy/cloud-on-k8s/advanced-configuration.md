@@ -17,7 +17,11 @@ This section covers the following topics:
 
 ## Use APM Agent central configuration [k8s-apm-agent-central-configuration]
 
-[APM Agent configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) [7.5.1] allows you to configure your APM Agents centrally from the {{kib}} APM app. To use this feature, the APM Server needs to be configured with connection details of the {{kib}} instance. If {{kib}} is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
+:::{admonition} Added in 7.5.1
+APM Agent central configuration was added in 7.5.1.
+:::
+
+[APM Agent configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) allows you to configure your APM Agents centrally from the {{kib}} APM app. To use this feature, the APM Server needs to be configured with connection details of the {{kib}} instance. If {{kib}} is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
 
 ```yaml
 cat <<EOF | kubectl apply -f -

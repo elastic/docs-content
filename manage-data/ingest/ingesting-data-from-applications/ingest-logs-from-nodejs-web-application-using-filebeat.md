@@ -289,7 +289,7 @@ filebeat.inputs:
 ```
 
 ::::{tip}
-You can specify a wildcard (***) character to indicate that all log files in the specified directory should be read. You can also use a wildcard to read logs from multiple directories. For example `/var/log/*/*.log`.
+You can specify a wildcard (*\**) character to indicate that all log files in the specified directory should be read. You can also use a wildcard to read logs from multiple directories. For example `/var/log/*/*.log`.
 ::::
 
 
@@ -356,7 +356,7 @@ The Filebeat data view is now available in Elasticsearch. To verify:
 
 1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the {{kib}} main menu and select **Management** > **{{kib}}** > **Data views**.
-3. In the search bar, search for *filebeat*. You should get *filebeat-** in the search results.
+3. In the search bar, search for *filebeat*. You should get _filebeat-*_ in the search results.
 
 **Optional: Use an API key to authenticate**
 
@@ -467,8 +467,8 @@ The next step is to confirm that the log data has successfully found it’s way 
 
 1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the {{kib}} main menu and select **Management** > **{{kib}}** > **Data views**.
-3. In the search bar, search for *filebeat*. You should get *filebeat-** in the search results.
-4. Select *filebeat-**.
+3. In the search bar, search for *filebeat*. You should get _filebeat-*_ in the search results.
+4. Select _filebeat-*_.
 
 The filebeat data view shows a list of fields and their details.
 
@@ -479,7 +479,7 @@ Now it’s time to create visualizations based off of the application log data.
 
 1. Open the Kibana main menu and select **Dashboard**, then **Create dashboard**.
 2. Select **Create visualization**. The [Lens](../../../explore-analyze/visualize/lens.md) visualization editor opens.
-3. In the data view dropdown box, select **filebeat-***, if it isn’t already selected.
+3. In the data view dropdown box, select **filebeat-\***, if it isn’t already selected.
 4. In the **CHART TYPE** dropdown box, select **Bar vertical stacked**, if it isn’t already selected.
 5. Check that the [time filter](../../../explore-analyze/query-filter/filtering.md) is set to **Last 15 minutes**.
 6. From the **Available fields** list, drag and drop the **@timestamp** field onto the visualization builder.

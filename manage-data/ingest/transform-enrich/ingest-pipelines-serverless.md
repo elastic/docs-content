@@ -38,7 +38,7 @@ The **New pipeline from CSV** option lets you use a file with comma-separated va
 
 ## Test pipelines [ingest-pipelines-test-pipelines]
 
-Before you use a pipeline in production, you should test it using sample documents. When creating or editing a pipeline in **{{ingest-pipelines-app}}**, click **Add documents***. In the ***Documents** tab, provide sample documents and click **Run the pipeline**:
+Before you use a pipeline in production, you should test it using sample documents. When creating or editing a pipeline in **{{ingest-pipelines-app}}**, click **Add documents**. In the **Documents** tab, provide sample documents and click **Run the pipeline**:
 
 :::{image} /manage-data/images/serverless-ingest-pipelines-test.png
 :alt: Test a pipeline in {{ingest-pipelines-app}}
