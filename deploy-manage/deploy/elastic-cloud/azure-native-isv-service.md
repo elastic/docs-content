@@ -73,6 +73,7 @@ Check the following sections to learn more about the Azure Native ISV Service:
     * [What Azure tenant information does Elastic have access to?](#azure-integration-azure-tenant-info)
     * [What other methods are available to deploy {{es}}?](#azure-integration-cli-api)
     * [How do I migrate my data from the classic Azure marketplace account to the {{ecloud}} Azure Native ISV Service?](#azure-integration-migrate)
+    * [Can multiple Azure users deploy the the same {{ecloud}} Elastic Cloud organization?](#azure-integration-multiple-users)
     * [Can I invite users to my organization, even if they cannot receive emails?](#azure-integration-no-inbox)
 
 * **Billing**
@@ -253,6 +254,9 @@ $$$azure-integration-migrate$$$How do I migrate my data from the classic Azure m
     7. In the same set of steps, restore the snapshot data from the snapshot repository that you registered.
     8. Confirm the data has moved successfully into your new {{es}} resource on Azure.
     9. To remove the old Azure subscription and the old deployments, go to the [Azure SaaS page](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.SaaS%2Fresources) and unsubscribe from the {{ecloud}} ({{es}}) marketplace subscription. This action triggers the existing deployments termination.
+
+$$$azure-integration-multiple-users$$$Can multiple Azure users deploy the the same {{ecloud}} Elastic Cloud organization?
+:   Yes! Before another user creates a native resource from the Azure Portal, invite them to your {{ecloud}} Organization at https://cloud.elastic.co/account/members. When they create the resource, it will get added to the existing Organization instead of creating a new one, and allow you to benefit from consolidated billing, RBAC, and other benefits of an {{ecloud}} organization.
 
 
 $$$azure-integration-no-inbox$$$Can I invite users to my organization, even if they cannot receive emails?
