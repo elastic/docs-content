@@ -1,7 +1,7 @@
 You can test that your {{es}} node is running by sending an HTTPS request to port `9200` on `localhost`:
 
 ```sh subs=true
-curl --cacert {{es-conf}}{{slash}}certs{{slash}}http_ca.crt {{escape}} <1>
+curl --cacert {{es-conf}}{{slash}}certs{{slash}}http_ca.crt <1>
 -u elastic:$ELASTIC_PASSWORD https://localhost:9200 <2>
 ```
 1. `--cacert`: Path to the generated `http_ca.crt` certificate for the HTTP layer.

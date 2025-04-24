@@ -294,4 +294,4 @@ For faster responses, {{es}} caches the results of frequently run aggregations i
 
 ## Limits for `long` values [limits-for-long-values]
 
-When running aggregations, {{es}} uses [`double`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) values to hold and represent numeric data. As a result, aggregations on [`long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) numbers greater than `253` are approximate.
+When running aggregations, {{es}} uses [`double`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) values to hold and represent numeric data. As a result, aggregations on [`long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) numbers greater than `2`^`53`^ are approximate.

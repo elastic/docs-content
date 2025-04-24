@@ -476,3 +476,48 @@ Support for span compression is available in the following agents and can be con
 | **.NET agent** | [`SpanCompressionSameKindMaxDuration`](apm-agent-dotnet://reference/config-core.md#config-span-compression-exact-match-max-duration) |
 | **Node.js agent** | [`spanCompressionSameKindMaxDuration`](apm-agent-nodejs://reference/configuration.md#span-compression-exact-match-max-duration) |
 | **Python agent** | [`span_compression_same_kind_max_duration`](apm-agent-python://reference/configuration.md#config-span-compression-exact-match-max_duration) |
+
+## OpenTelemetry and Elastic APM spans
+
+OpenTelemetry spans are mapped to Elastic APM transactions and spans as follows:
+
+- Root spans, such as entry points, are mapped to APM transactions.
+- Child spans, such as internal operations and DB queries, are mapped to APM spans.
+
+The following table summarizes the mapping between OpenTelemetry span kinds and Elastic APM entities.
+
+| OpenTelemetry span kind | Mapped to APM | Example |
+|-------------------------|---------------|---------|
+| `SERVER` | Transaction | Incoming HTTP request (`GET /users/{id}`) |
+| `CONSUMER` | Transaction | Message queue consumer event |
+| `CLIENT` | Span | Outgoing database query (`SELECT * FROM users`) |
+| `PRODUCER` | Span | Sending a message to a queue |
+| `INTERNAL` | Span | Internal function execution |
+
+The following example shows OpenTelemetry spans:
+
+```json
+[
+  {
+    "traceId": "abcd1234",
+    "spanId": "root5678",
+    "parentId": null,
+    "name": "GET /users/{id}",
+    "kind": "SERVER"
+  },
+  {
+    "traceId": "abcd1234",
+    "spanId": "db1234",
+    "parentId": "root5678",
+    "name": "SELECT FROM users",
+    "kind": "CLIENT"
+  }
+]
+```
+
+The previous OTel spans are stored by Elastic APM as follows:
+
+```
+Transaction: GET /users/{id}
+ ├── Span: SELECT FROM users
+```
