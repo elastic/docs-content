@@ -70,7 +70,7 @@ To confirm that an {{integrations-server}} is available in your deployment:
 Don’t see the agent? Make sure your deployment includes an {{integrations-server}} instance. This instance is required to use {{fleet}}.
 
 :::{image} images/integrations-server-hosted-container.png
-:alt: Hosted {integrations-server}
+:alt: Hosted {{integrations-server}}
 :screenshot:
 :::
 

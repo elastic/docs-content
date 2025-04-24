@@ -141,7 +141,7 @@ There are many options for ingesting data into {{es}}, including:
 * [Elastic connectors](elasticsearch://reference/search-connectors/index.md) for data synced from third-party sources
 * The {{es}} [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) for JSON documents
 
-    ::::{dropdown} **Expand** for example
+    ::::{dropdown} Expand for example
     To add a few documents to an index called `books` run the following in Dev Tools Console:
 
     ```console

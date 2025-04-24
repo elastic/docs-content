@@ -373,7 +373,7 @@ Allow anonymous access only for specified agents and/or services. This is primar
 :   Specifies the minimum log level. One of *debug*, *info*, *warning*, or *error*. Defaults to *info*.
 
 `logging.selectors`
-:   The list of debugging-only selector tags used by different APM Server components. Use *** to enable debug output for all components. For example, add *publish* to display all the debug messages related to event publishing.
+:   The list of debugging-only selector tags used by different APM Server components. Use *\** to enable debug output for all components. For example, add *publish* to display all the debug messages related to event publishing.
 
 `logging.metrics.enabled`
 :   If enabled, APM Server periodically logs its internal metrics that have changed in the last period. Defaults to *true*.

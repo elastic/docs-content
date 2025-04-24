@@ -10,9 +10,9 @@ mapped_pages:
 Use environment variables to configure {{agent}} when running in a containerized environment. Variables on this page are grouped by action type:
 
 * [Common variables](#env-common-vars)
-* [Configure {{kib}}:](#env-prepare-kibana-for-fleet) prepare the {{fleet}} plugin in {kib}
-* [Configure {{fleet-server}}:](#env-bootstrap-fleet-server) bootstrap {{fleet-server}} on an {agent}
-* [Configure {{agent}} and {{fleet}}:](#env-enroll-agent) enroll an {agent}
+* [Configure {{kib}}:](#env-prepare-kibana-for-fleet) prepare the {{fleet}} plugin in {{kib}}
+* [Configure {{fleet-server}}:](#env-bootstrap-fleet-server) bootstrap {{fleet-server}} on an {{agent}}
+* [Configure {{agent}} and {{fleet}}:](#env-enroll-agent) enroll an {{agent}}
 
 
 ## Common variables [env-common-vars]

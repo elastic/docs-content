@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_cli_configuration.html
 applies_to:
   deployment:
-    self: 
+    self:
     ece:
     eck:
 ---
@@ -18,7 +18,7 @@ If you are planning to ingest your logs using {{es}} or another tool, we recomme
 You can't configure these settings in an {{ech}} deployment.
 :::
 
-The {{kib}} logging system has three main components: *loggers*, *appenders* and *layouts*. 
+The {{kib}} logging system has three main components: *loggers*, *appenders* and *layouts*.
 
 * **Loggers** define what logging settings should be applied to a particular logger.
 * [Appenders](#logging-appenders) define where log messages are displayed (for example, stdout or console) and stored (for example, file on the disk).
@@ -70,7 +70,7 @@ The following conversions are provided out of the box:
 
 * **message**: Outputs the application supplied message associated with the logging event.
 
-* **meta**: Outputs the entries of `meta` object data in ***json** format, if one is present in the event. Example of `%meta` output:
+* **meta**: Outputs the entries of `meta` object data in **json** format, if one is present in the event. Example of `%meta` output:
 
     ```bash
     // Meta{from: 'v7', to: 'v8'}
@@ -391,7 +391,7 @@ logging:
       level: debug
 ```
 
-## Logging configuration using the CLI [logging-cli-migration] 
+## Logging configuration using the CLI [logging-cli-migration]
 
 You can specify your logging configuration using the CLI. For convenience, the `--verbose` and `--silent` flags exist as shortcuts and will continue to be supported beyond v7.
 

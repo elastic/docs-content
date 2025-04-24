@@ -12,22 +12,22 @@ You can set the debug level to capture debugging output about the Elastic Loggin
 
 1. Disable the plugin:
 
-    ```sh
-    docker plugin disable elastic/elastic-logging-plugin:9.0.0-beta1
+    ```sh subs=true
+    docker plugin disable elastic/elastic-logging-plugin:{{version}}
     ```
 
 2. Set the debug level:
 
-    ```sh
-    docker plugin set elastic/elastic-logging-plugin:9.0.0-beta1 LOG_DRIVER_LEVEL=debug
+    ```sh subs=true
+    docker plugin set elastic/elastic-logging-plugin:{{version}} LOG_DRIVER_LEVEL=debug
     ```
 
     Where valid settings for `LOG_DRIVER_LEVEL` are `debug`, `info`, `warning`, or `error`.
 
 3. Enable the plugin:
 
-    ```sh
-    docker plugin enable elastic/elastic-logging-plugin:9.0.0-beta1
+    ```sh subs=true
+    docker plugin enable elastic/elastic-logging-plugin:{{version}}
     ```
 
 

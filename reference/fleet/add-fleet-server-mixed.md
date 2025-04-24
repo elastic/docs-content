@@ -31,7 +31,7 @@ To deploy a self-managed {{fleet-server}} on-premises to work with an {{ech}} de
 * {{stack}} 7.13 or later
 
     * For version compatibility, {{es}} must be at the same or a later version than {{fleet-server}}, and {{fleet-server}} needs to be at the same or a later version than {{agent}} (not including patch releases).
-    * {{kib}} should be on the same minor version as {es}
+    * {{kib}} should be on the same minor version as {{es}}
 
 * {{ece}} 2.9 or later—​allows you to use a hosted {{fleet-server}} on {{ecloud}}.
 

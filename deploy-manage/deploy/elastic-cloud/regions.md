@@ -43,10 +43,6 @@ The following Azure regions are currently available:
 
 ## Google Cloud Platform (GCP) regions [regions-gcp-regions]
 
-```yaml {applies_to}
-serverless: preview
-```
-
 The following GCP regions are currently available:
 
 | Region | Name |

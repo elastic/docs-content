@@ -29,7 +29,7 @@ Choose which SLO to monitor and then define multiple burn rate windows with appr
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create an SLO burn rate rule directly from **Observability*** → ***SLOs**. Click the more options icon (![More options](/solutions/images/serverless-boxesVertical.svg "")) to the right of the SLO you want to add a burn rate rule for, and select **![Bell](/solutions/images/serverless-bell.svg "") Create new alert rule** from the menu.
+These steps show how to use the **Alerts** UI. You can also create an SLO burn rate rule directly from **Observability** → **SLOs**. Click the more options icon (![More options](/solutions/images/serverless-boxesVertical.svg "")) to the right of the SLO you want to add a burn rate rule for, and select **![Bell](/solutions/images/serverless-bell.svg "") Create new alert rule** from the menu.
 
 When you use the UI to create an SLO, a default SLO burn rate alert rule is created automatically. The burn rate rule will use the default configuration and no connector. You must configure a connector if you want to receive alerts for SLO breaches.
 

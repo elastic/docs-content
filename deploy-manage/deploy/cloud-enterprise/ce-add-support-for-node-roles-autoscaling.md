@@ -30,7 +30,7 @@ There are a number of fields that need to be added to each {{es}} node in order 
 
 The following example is based on the `default` system owned deployment template that already supports `node_roles`. This template will be used as a reference for the next sections:
 
-::::{dropdown} Reference example with support for `node_roles`
+::::{dropdown} Reference example with support for node_roles
 :name: ece-node-roles-support-example
 
 ```json
@@ -363,7 +363,7 @@ It is recommended to add the `id` field to each {{es}} topology element in the d
 
 The existing template contains three {{es}} topology elements and two resources (`elasticsearch` and `kibana`).
 
-::::{dropdown} Custom example without support for `node_roles`
+::::{dropdown} Custom example without support for node_roles
 ```json
 {
   ...
@@ -471,7 +471,7 @@ Then, it is only necessary to add the four {{es}} topology elements (`warm`, `co
 
 After adding support for `node_roles`, the resulting deployment template should look similar to the following:
 
-::::{dropdown} Custom example with support for `node_roles`
+::::{dropdown} Custom example with support for node_roles
 :name: example-with-support-for-node-roles
 
 ```json
@@ -772,7 +772,7 @@ These fields represent the default settings for the deployment. However, autosca
 
 Similar to the `node_roles` example, the following one is also based on the `default` deployment template that already supports `node_roles` and autoscaling. This template will be used as a reference for the next sections:
 
-::::{dropdown} Reference example with support for `node_roles` and autoscaling
+::::{dropdown} Reference example with support for node_roles and autoscaling
 ```json
 {
   ...
@@ -1102,7 +1102,7 @@ To update a custom deployment template:
 
 After adding support for autoscaling to the [example](#ece-node-roles-support-example) presented in the previous section, the resulting deployment template should look similar to the following:
 
-::::{dropdown} Custom example with support for `node_roles` and autoscaling
+::::{dropdown} Custom example with support for node_roles and autoscaling
 ```json
 {
   ...
@@ -1780,7 +1780,7 @@ After the migration plan has finished, we recommend following the [Migrate index
 
 The following is an example of a deployment plan that does not contain `node_roles`:
 
-::::{dropdown} Example deployment plan with `node_type`
+::::{dropdown} Example deployment plan with node_type
 ```json
 {
   "name": "Example deployment",
@@ -1924,7 +1924,7 @@ The following is an example of a deployment plan that does not contain `node_rol
 
 After adding support for `node_roles` to the example deployment plan, the resulting plan should look similar to the following:
 
-::::{dropdown} Example deployment plan with `node_roles`
+::::{dropdown} Example deployment plan with node_roles
 ```json
 {
   "name": "Example deployment",

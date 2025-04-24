@@ -537,8 +537,9 @@ SELECT SCORE(), * FROM library WHERE MATCH(name, 'dune') ORDER BY page_count DES
 1.8893257      |Frank Herbert  |Dune Messiah       |331            |1969-10-15T00:00:00Z
 ```
 
-NOTE: Trying to return `score` from a non full-text query will return the same value for all results, as all are equally relevant.
-
+:::{note}
+Trying to return `score` from a non full-text query will return the same value for all results, as all are equally relevant.
+:::
 
 ## LIMIT [sql-syntax-limit]
 

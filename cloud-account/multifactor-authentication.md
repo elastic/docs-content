@@ -8,23 +8,19 @@ applies:
 
 # Multifactor authentication [ec-account-security-mfa]
 
-If you use a password-based login, Elastic requires you to enable multifactor authentication (MFA) for added security on your {{ecloud}} account.
-
-You can choose from the following methods:
+Multifactor authentication (MFA) is **mandatory** when you log in to {{ecloud}} using a standard email/password combination, and can't be turned off. It helps protecting your account by adding an extra identity verification step when you log in. You can choose and define the MFA method to use based on your preference:
 
 * Set up an **authenticator app** such as Google Authenticator, Microsoft Authenticator, or Okta Verify. These apps generate a time-based one-time password (TOTP) that you enter along with your password when you log in.
 * Authenticate using a **hardware security key or biometric data**, such as a YubiKey or a fingerprint reader.
 * Receive a verification code through **email**. You enter this code along with your password when you log in.
 
+::::{note} 
+You can no longer configure SMS as a multifactor authentication method. 
+::::
+
 Elastic recommends that you enable multiple methods so that you can still access your account if you lose access to one method.
 
 If you use only a Google or Microsoft account to log in, then you can’t configure MFA in {{ecloud}}. You can check and manage your multifactor authentication options in your Google or Microsoft account security settings.
-
-::::{note} 
-You can no longer configure SMS as a multifactor authentication method. If you already use SMS for multifactor authentication, then you can continue using it. You’ll be prompted to switch to a new MFA method in the future.
-
-::::
-
 
 ## Configure an authenticator app [ec-account-security-mfa-authenticator]
 

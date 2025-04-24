@@ -19,7 +19,7 @@ See [Transaction sampling](/solutions/observability/apm/transaction-sampling.md)
 
 ## Enable span compression [enable_span_compression]
 
-In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. These repeated, similar spans often don’t provide added benefit, especially if they are of very short duration. Span compression takes these similar spans and compresses them into a single span-- retaining important information but reducing processing and storage overhead.
+In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. These repeated, similar spans often don’t provide added benefit, especially if they are of very short duration. Span compression takes these similar spans and compresses them into a single span—retaining important information but reducing processing and storage overhead.
 
 See [Span compression](/solutions/observability/apm/spans.md#apm-spans-span-compression) to learn more.
 

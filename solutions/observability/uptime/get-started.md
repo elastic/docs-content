@@ -38,7 +38,9 @@ If you’ve used the Elastic Synthetics integration to create monitors in the pa
 
 Elastic provides Docker images that you can use to run monitors. Start by pulling the {{heartbeat}} Docker image.
 
-Version 9.0.0-beta1 has not yet been released.
+```sh subs=true
+docker pull docker.elastic.co/beats/heartbeat:{{version}}
+```
 
 ## Configure [uptime-set-up-config]
 
@@ -72,7 +74,55 @@ If you previously used {{heartbeat}} to set up **`browser`** monitor, you can fi
 
 After configuring the monitor, run it in Docker and connect the monitor to the {{stack}}.
 
-Version 9.0.0-beta1 has not yet been released.
+You'll need to retrieve your {{es}} credentials for either an [{{ecloud}} ID](beats://reference/heartbeat/configure-cloud-id.md) or another [{{es}} Cluster](beats://reference/heartbeat/elasticsearch-output.md).
+
+The example below, shows how to run synthetics tests indexing data into {{es}}.
+You'll need to insert your actual `cloud.id` and `cloud.auth` values to successfully index data to your cluster.
+
+% We do NOT use <1> references in the below example, because they create whitespace after the trailing \
+% when copied into a shell, which creates mysterious errors when copy and pasting!
+
+```sh subs=true
+docker run \
+  --rm \
+  --name=heartbeat \
+  --user=heartbeat \
+  --volume="$PWD/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml:ro" \
+  --cap-add=NET_RAW \
+  docker.elastic.co/beats/heartbeat:{{version}} heartbeat -e \
+  -E cloud.id={cloud-id} \
+  -E cloud.auth=elastic:{cloud-pass}
+```
+
+If you aren't using {{ecloud}}, replace `-E cloud.id` and `-E cloud.auth` with your {{es}} hosts,
+username, and password:
+
+```sh subs=true
+docker run \
+  --rm \
+  --name=heartbeat \
+  --user=heartbeat \
+  --volume="$PWD/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml:ro" \
+  --cap-add=NET_RAW \
+  docker.elastic.co/beats/heartbeat:{{version}} heartbeat -e \
+  -E output.elasticsearch.hosts=["localhost:9200"] \
+  -E output.elasticsearch.username=elastic \
+  -E output.elasticsearch.password=changeme
+```
+
+Note the `--volume` option, which mounts local directories into the
+container. Here, we mount the `heartbeat.yml` from the working directory,
+into {{heartbeat}}'s expected location for `heartbeat.yml`.
+
+:::{warning}
+Elastic Synthetics runs Chromium without the extra protection of its process
+[sandbox](https://chromium.googlesource.com/chromium/src/+/master/docs/linux/sandboxing.md)
+for greater compatibility with Linux server distributions.
+Add the `sandbox: true` option to a given browser monitor in {{heartbeat}} to enable sandboxing.
+This may require using a custom seccomp policy with docker, which brings its own added risks.
+This is generally safe when run against sites whose content you trust,
+and with a recent version of Elastic Synthetics and Chromium.
+:::
 
 ## View in {{kib}} [uptime-set-up-kibana]
 
