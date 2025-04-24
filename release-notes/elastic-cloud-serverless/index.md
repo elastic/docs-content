@@ -55,7 +55,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 * Fixes the wrong source validation in case of unknown patterns in ES|QL [#218352](https://github.com/elastic/kibana/pull/218352)
 * Fixes vCPU usage message in the Machine Learning start deployment dialog [#218557](https://github.com/elastic/kibana/pull/218557)
 * Removes the listing limit warning [#217945](https://github.com/elastic/kibana/pull/217945)
-* Fixes an issue where the placeholder in the monaco editor would dissapear when a value is set [#217828](https://github.com/elastic/kibana/pull/217828)
+* Fixes an issue where the placeholder in the monaco editor would disappear when a value is set [#217828](https://github.com/elastic/kibana/pull/217828)
 * Fixes an issue where the Saved Objects Rotate Encryption Key API would not affect sharable encrypted object types that exist in all spaces [#217625](https://github.com/elastic/kibana/pull/217625)
 * Fixes an issue where refreshing multiple tabs when you log out will simultaneously log in successfully [#212148](https://github.com/elastic/kibana/pull/212148)
 
