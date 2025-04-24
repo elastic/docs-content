@@ -16,7 +16,7 @@ To open the **Infrastructure inventory** page in:
 - **Serverless,** go to **Infrastructure inventory** in your Observability Serverless project.
 
 :::{image} /solutions/images/observability-metrics-app.png
-:alt: Infrastructure UI in {kib}
+:alt: Infrastructure UI in {{kib}}
 :screenshot:
 :::
 

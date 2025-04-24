@@ -44,7 +44,7 @@ Select the mechanism that {{agent}} uses to authenticate with Kafka.
     Encryption
     :   Set this option for traffic between {{agent}} and Kafka to use transport layer security.
 
-        When **Encryption*** is selected, the ***Server SSL certificate authorities** and **Verification mode** mode options become available.
+        When **Encryption** is selected, the **Server SSL certificate authorities** and **Verification mode** mode options become available.
 
 
 **Username / Password** $$$kafka-output-authentication-basic$$$

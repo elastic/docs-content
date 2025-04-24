@@ -121,7 +121,7 @@ Now that you’ve {{agent}} and data is flowing, you can set up the {{k8s}} inte
 1. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
 2. Run a search for `Kubernetes` and then select the {{k8s}} integration card.
 3. On the {{k8s}} integration page, click **Add Kubernetes** to add the integration to your {{agent}} policy.
-4. Scroll to the bottom of **Add Kubernetes integration** page. Under **Where to add this integration?*** select the ***Existing hosts** tab. On the **Agent policies** menu, select the agent policy that you created previously in the [Install {{agent}}](#agent-fleet-managed-helm-example-install-agent) steps.
+4. Scroll to the bottom of **Add Kubernetes integration** page. Under **Where to add this integration?** select the **Existing hosts** tab. On the **Agent policies** menu, select the agent policy that you created previously in the [Install {{agent}}](#agent-fleet-managed-helm-example-install-agent) steps.
 
     You can leave all of the other integration settings at their default values.
 

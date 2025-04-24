@@ -27,7 +27,7 @@ To perform an offline installation without a private Docker registry, you have t
     For example, for {{ece}} 4.0.0 and the {{stack}} versions it shipped with, you need:
 
     * {{ece}} 4.0.0
-    * {es} 9.0.0, {{kib}} 9.0.0, and APM 9.0.0
+    * {{es}} 9.0.0, {{kib}} 9.0.0, and APM 9.0.0
 
 2. Create .tar files of the images:
 

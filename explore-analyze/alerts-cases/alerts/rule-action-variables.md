@@ -64,7 +64,8 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 `alerts.all.data`
 :   An array of objects for all alerts. The following object properties are examples; it is not a comprehensive list.
 
-    ::::{dropdown} Properties of the alerts.all.data objects
+    **Properties of the alerts.all.data objects**:
+
     `kibana.alert.end`
     :   Datetime stamp of alert end. [preview]
 
@@ -82,8 +83,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     `kibana.alert.status`
     :   Alert status (for example, active or OK). [preview]
-
-    ::::
 
 `alerts.new.count`
 :   The count of new alerts.
@@ -91,7 +90,8 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 `alerts.new.data`
 :   An array of objects for new alerts. The following object properties are examples; it is not a comprehensive list.
 
-    ::::{dropdown} Properties of the alerts.new.data objects
+    **Properties of the alerts.new.data objects**:
+
     `kibana.alert.end`
     :   Datetime stamp of alert end. [preview]
 
@@ -109,8 +109,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     `kibana.alert.status`
     :   Alert status (for example, active or OK). [preview]
-
-    ::::
 
 `alerts.ongoing.count`
 :   The count of ongoing alerts.
@@ -118,7 +116,8 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 `alerts.ongoing.data`
 :   An array of objects for ongoing alerts. The following object properties are examples; it is not a comprehensive list.
 
-    ::::{dropdown} Properties of the alerts.ongoing.data objects
+    **Properties of the alerts.ongoing.data objects**:
+
     `kibana.alert.end`
     :   Datetime stamp of alert end. [preview]
 
@@ -136,8 +135,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     `kibana.alert.status`
     :   Alert status (for example, active or OK). [preview]
-
-    ::::
 
 `alerts.recovered.count`
 :   The count of recovered alerts.
@@ -145,7 +142,8 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 `alerts.recovered.data`
 :   An array of objects for recovered alerts. The following object properties are examples; it is not a comprehensive list.
 
-    ::::{dropdown} Properties of the alerts.recovered.data objects
+    **Properties of the alerts.recovered.data objects**:
+
     `kibana.alert.end`
     :   Datetime stamp of alert end. [preview]
 
@@ -163,8 +161,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     `kibana.alert.status`
     :   Alert status (for example, active or OK). [preview]
-
-    ::::
 
 ### Action frequency: For each alert [alert-action-variables]
 

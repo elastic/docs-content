@@ -222,7 +222,7 @@ kubectl get elasticsearchautoscaler autoscaling-sample \
     -o jsonpath='{ .status.conditions }' | jq
 ```
 
-```json
+```json subs=true
 [
  {
    "lastTransitionTime": "2022-09-09T08:07:10Z",

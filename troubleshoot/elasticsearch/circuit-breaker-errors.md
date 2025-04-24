@@ -1,11 +1,11 @@
 ---
 applies_to:
-  stack: 
+  stack:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker-errors.html
 ---
@@ -51,7 +51,7 @@ Caused by: org.elasticsearch.common.breaker.CircuitBreakingException: [parent] D
 
 **Check JVM memory usage**
 
-If you’ve enabled Stack Monitoring, you can view JVM memory usage in {{kib}}. In the main menu, click **Stack Monitoring**. On the Stack Monitoring **Overview*** page, click ***Nodes**. The **JVM Heap** column lists the current memory usage for each node.
+If you’ve enabled Stack Monitoring, you can view JVM memory usage in {{kib}}. In the main menu, click **Stack Monitoring**. On the Stack Monitoring **Overview** page, click **Nodes**. The **JVM Heap** column lists the current memory usage for each node.
 
 You can also use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to get the current `heap.percent` for each node.
 

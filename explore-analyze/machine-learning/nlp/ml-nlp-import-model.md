@@ -43,7 +43,7 @@ Trained models must be in a TorchScript representation for use with {{stack-ml-f
     3. Specify the identifier for the model in the Hugging Face model hub.
     4. Specify the type of NLP task. Supported values are `fill_mask`, `ner`, `question_answering`, `text_classification`, `text_embedding`, `text_expansion`, `text_similarity`, and `zero_shot_classification`.
 
-For more details, refer to [](eland://reference/machine-learning.md#ml-nlp-pytorch).
+For more details, refer to the [Eland documentation](eland://reference/machine-learning.md#ml-nlp-pytorch).
 
 ## Import with Docker [ml-nlp-import-docker]
 

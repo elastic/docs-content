@@ -79,7 +79,7 @@ Inline actions include the following (some actions are unavailable in some conte
 * **Filter Out**: Add a filter that excludes the selected value.
 * **Add to timeline**: Add a filter to Timeline for the selected value.
 * **Toggle column in table**: Add or remove the selected field as a column in the alerts or events table. (This action is only available on an alert’s or event’s details flyout.)
-* **Show top *x***: Display a pop-up window that shows the selected field’s top events or detection alerts.
+* **Show top _x_**: Display a pop-up window that shows the selected field’s top events or detection alerts.
 * **Copy to Clipboard**: Copy the selected field-value pair to paste elsewhere.
 
 
