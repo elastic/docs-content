@@ -51,7 +51,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [fleet-elastic-agent-900-fixes]
 * Fixes a validation error that occurs on multi-text input fields in {{fleet}} [#205768]({{kib-pull}}205768)
 * Adds a context timeout to the bulker flush in {{fleet-server}} so it times out if it takes more time than the deadline [#3986]({{fleet-server-pull}}3986)
-* Removes a race condition that may occur when remote {es} outputs are used in {{fleet-server}} [#4171]({{fleet-server-pull}}4171)
+* Removes a race condition that may occur when remote {{es}} outputs are used in {{fleet-server}} [#4171]({{fleet-server-pull}}4171)
 * Uses the chi/middleware.Throttle package to track in-flight requests and return a 429 response when the limit is reached in {{fleet-server}} [#4402]({{fleet-server-pull}}4402) and [#4400]({{fleet-server-issue}}4400)
 * Fixes logical race conditions in the kubernetes_secrets provider in {{agent}} [#6623]({{agent-pull}}6623)
 * Resolves the proxy to inject into agent component configurations using the Go http package in {{agent}} [#6675]({{agent-pull}}6675) and [#6209]({{agent-issue}}6209)

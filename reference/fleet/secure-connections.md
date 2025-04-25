@@ -205,13 +205,13 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             :   CA certificate that the current {{fleet-server}} uses to connect to {{es}}.
 
             `certificate-authorities`
-            :   List of paths to PEM-encoded CA certificate files that should be trusted for the other {{agents}} to connect to this {fleet-server}
+            :   List of paths to PEM-encoded CA certificate files that should be trusted for the other {{agents}} to connect to this {{fleet-server}}
 
             `fleet-server-cert`
-            :   The path for the PEM-encoded certificate (or certificate chain) which is associated with the fleet-server-cert-key to expose this {{fleet-server}} HTTPS endpoint to the other {agents}
+            :   The path for the PEM-encoded certificate (or certificate chain) which is associated with the fleet-server-cert-key to expose this {{fleet-server}} HTTPS endpoint to the other {{agents}}
 
             `fleet-server-cert-key`
-            :   Private key to use to expose this {{fleet-server}} HTTPS endpoint to the other {agents}
+            :   Private key to use to expose this {{fleet-server}} HTTPS endpoint to the other {{agents}}
 
             `elastic-agent-cert`
             :   The certificate to use as the client certificate for {{agent}}'s connections to {{fleet-server}}.
