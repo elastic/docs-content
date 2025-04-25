@@ -71,7 +71,7 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 | APM Server binary | `sampling.tail.interval` |
 | Fleet-managed | `Interval` |
 
-### Interval [sampling-tail-ttl-ref]
+### TTL [sampling-tail-ttl-ref]
 
 FIXME
 
