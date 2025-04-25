@@ -82,6 +82,7 @@ The basic {{agent}} flavor is installed by default using the `elastic-agent inst
 * `endpoint-security` - used to implement [{{elastic-defend}}](../../solutions/security/configure-elastic-defend.md).
 * `pf-host-agent` - used to collect profiling data from hosts as part of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 
+It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-journald.html).
 This basic package is suitable for most use cases and it offers a reduced size on disk.
 
 #### Servers flavor [elastic-agent-servers-flavor-regular]
@@ -108,7 +109,7 @@ For containerized environments, the servers {{agent}} flavor is installed using 
 
 #### Complete flavor [elastic-agent-complete-flavor]
 
-For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-journald.html). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
+For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 
