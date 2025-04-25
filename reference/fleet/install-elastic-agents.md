@@ -134,12 +134,12 @@ Adding integrations will increase the memory used by the agent and its processes
 
 ### Size on disk [_size_on_disk]
 
-The disk requirements for {{agent}} vary by operating system and {{stack}} version. With version 8.14 we have significantly reduced the size of the {{agent}} binary. Further reductions are planned to be made in future releases.
+The disk requirements for {{agent}} vary by operating system and {{stack}} version.
 
-| Operating system | 8.13 | 8.14 | 8.15 |
+| Operating system | 8.13 | 8.14 | 8.15 | 8.18 | 9.0 |
 | --- | --- | --- | --- |
-| **Linux** | 1800 MB | 1018 MB | 1060 MB |
-| **macOS** | 1100 MB | 619 MB | 680 MB |
-| **Windows** | 891 MB | 504 MB | 500 MB |
+| **Linux** | 1800 MB | 1018 MB | 1060 MB | 1.5 GB | 1.5 GB |
+| **macOS** | 1100 MB | 619 MB | 680 MB | 775 MB | 7755 MB |
+| **Windows** | 891 MB | 504 MB | 500 MB | 678 MB | 705 MB |
 
 During upgrades, double the disk space is required to store the new {{agent}} binary. After the upgrade completes, the original {{agent}} is removed from disk to free up the space.
