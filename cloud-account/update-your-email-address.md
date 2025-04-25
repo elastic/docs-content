@@ -1,9 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-update-email-address.html
-applies:
+applies_to:
   serverless: all
-  hosted: all
+  deployment:
+    ess: all
 ---
 
 # Update your email address [ec-update-email-address]
