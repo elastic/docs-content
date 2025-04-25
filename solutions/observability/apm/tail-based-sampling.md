@@ -71,6 +71,16 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 | APM Server binary | `sampling.tail.interval` |
 | Fleet-managed | `Interval` |
 
+### Interval [sampling-tail-ttl-ref]
+
+FIXME
+
+|     |                     |
+| --- |---------------------|
+| APM Server binary | `sampling.tail.ttl` |
+| Fleet-managed | `TTL`               |
+
+
 ### Policies [sampling-tail-policies-ref]
 
 Criteria used to match a root transaction to a sample rate.
