@@ -108,7 +108,7 @@ For containerized environments, the servers {{agent}} flavor is installed using 
 
 #### Complete flavor [elastic-agent-complete-flavor]
 
-For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-journald.html). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
+For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](beats://reference/filebeat/filebeat-input-journald.md). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 

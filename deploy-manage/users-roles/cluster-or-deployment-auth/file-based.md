@@ -158,7 +158,7 @@ stringData:
 
 **Using a tool**
 
-To avoid editing these files manually, you can use the [elasticsearch-users](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool:
+To avoid editing these files manually, you can use the [elasticsearch-users](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) tool:
 
 ::::{tab-set}
 

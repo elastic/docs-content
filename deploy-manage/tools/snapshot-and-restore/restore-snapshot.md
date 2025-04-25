@@ -277,7 +277,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
         }
         ```
 
-3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool.
+3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) tool.
 
     For example, the following command creates a user named `restore_user`.
 

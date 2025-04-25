@@ -129,7 +129,7 @@ Granting the privilege to generate reports also grants the user the privilege to
 With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
 
 :::{note}
-This API request needs to be run against the [{{kib}} API endpoint](https://www.elastic.co/guide/en/kibana/current/api.html).
+This API request needs to be run against the [{{kib}} API endpoint](https://www.elastic.co/docs/api/doc/kibana/).
 :::
 
 ```console

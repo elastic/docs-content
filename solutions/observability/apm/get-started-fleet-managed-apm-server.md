@@ -161,7 +161,7 @@ POST kbn:/api/fleet/epm/packages/apm/9.0.0
 { "force": true }
 ```
 
-See [Kibana API](https://www.elastic.co/guide/en/kibana/current/api.html) to learn more about how to use the Kibana APIs.
+See [Kibana API](https://www.elastic.co/docs/api/doc/kibana/) to learn more about how to use the Kibana APIs.
 
 ::::
 

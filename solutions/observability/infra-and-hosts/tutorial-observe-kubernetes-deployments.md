@@ -30,7 +30,7 @@ This guide describes how to use Elastic {{observability}} to observe all layers 
 * Centralize the data in the {{stack}}
 * Explore the data in real-time using tailored dashboards and {{observability}} UIs
 
-This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html).
+This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md).
 
 
 ## Monitoring architecture [kubernetes-monitoring-architecture]

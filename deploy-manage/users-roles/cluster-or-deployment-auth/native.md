@@ -100,7 +100,7 @@ deployment:
   self: all
 ```
 
-You can also reset passwords for users in the native realm through the command line using the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) tool.
+You can also reset passwords for users in the native realm through the command line using the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool.
 
 For example, the following command changes the password for a user with the username `user1` to an auto-generated value, and prints the new password to the terminal:
 

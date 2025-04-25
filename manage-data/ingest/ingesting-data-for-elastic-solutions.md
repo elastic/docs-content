@@ -39,7 +39,7 @@ To use [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) and [Elast
 * [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
 
     * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
-    * [{{es}} language clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
+    * [{{es}} language clients](/reference/elasticsearch-clients/index.md)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
     * [Elastic connectors](elasticsearch://reference/search-connectors/index.md)
 
@@ -51,7 +51,7 @@ With [Elastic Observability](https://www.elastic.co/observability), you can moni
 
 **Guides for popular Observability use cases**
 
-* [Monitor applications and systems with Elastic Observability](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html)
+* [Monitor applications and systems with Elastic Observability](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md)
 * [Get started with logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
 
     * [Step 1: Add the {{agent}} System integration](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#add-system-integration)
@@ -99,7 +99,7 @@ Bring your ideas and use {{es}} and the {{stack}} to store, search, and visualiz
 * [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
 
     * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
-    * [{{es}} language clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
+    * [{{es}} language clients](/reference/elasticsearch-clients/index.md)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
     * [Elastic connectors](elasticsearch://reference/search-connectors/index.md)
 
