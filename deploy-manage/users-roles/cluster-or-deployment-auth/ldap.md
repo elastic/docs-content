@@ -4,7 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-ldap.html
 applies_to:
   deployment:
+    self:
     ece:
+    eck:
 navigation_title: LDAP
 ---
 
