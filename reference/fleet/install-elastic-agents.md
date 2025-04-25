@@ -134,7 +134,7 @@ Adding integrations will increase the memory used by the agent and its processes
 
 ### Size on disk [_size_on_disk]
 
-The disk requirements for {{agent}} vary by operating system and {{stack}} version. With version 8.14 we have significantly reduced the size of the {{agent}} binary. Further reductions are planned to be made in future releases.
+The disk requirements for {{agent}} vary by operating system and {{stack}} version.
 
 | Operating system | 8.13 | 8.14 | 8.15 | 8.18 | 9.0 |
 | --- | --- | --- | --- |
