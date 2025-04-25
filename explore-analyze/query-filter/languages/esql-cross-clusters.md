@@ -284,13 +284,13 @@ Which returns:
 ```
 
 1. How long the entire search (across all clusters) took, in milliseconds.
-2. This section of counters shows all possible cluster search states and how many cluster searches are currently in that state. The clusters can have one of the following statuses: **running**, **successful** (searches on all shards were successful), **skipped** (the search failed on a cluster marked with `skip_unavailable`=`true`), **failed** (the search failed on a cluster marked with `skip_unavailable`=`false`) or **partial** (the search was [interrupted](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-stop-api.html) before finishing).
+2. This section of counters shows all possible cluster search states and how many cluster searches are currently in that state. The clusters can have one of the following statuses: **running**, **successful** (searches on all shards were successful), **skipped** (the search failed on a cluster marked with `skip_unavailable`=`true`), **failed** (the search failed on a cluster marked with `skip_unavailable`=`false`) or **partial** (the search was [interrupted](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-esql) before finishing).
 3. The `_clusters/details` section shows metadata about the search on each cluster.
 4. If you included indices from the local cluster you sent the request to in your {{ccs}}, it is identified as "(local)".
 5. How long (in milliseconds) the search took on each cluster. This can be useful to determine which clusters have slower response times than others.
 6. The shard details for the search on that cluster, including a count of shards that were skipped due to the can-match phase results. Shards are skipped when they cannot have any matching data and therefore are not included in the full ES|QL query.
 7. The `is_partial` field is set to `true` if the search has partial results for any reason, for example due to partial shard failures,
-failures in remote clusters, or if the async query was stopped by calling the [async query stop API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-stop-api.html).
+failures in remote clusters, or if the async query was stopped by calling the [async query stop API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-esql).
 
 The cross-cluster metadata can be used to determine whether any data came back from a cluster. For instance, in the query below, the wildcard expression for `cluster-two` did not resolve to a concrete index (or indices). The cluster is, therefore, marked as *skipped* and the total number of shards searched is set to zero.
 

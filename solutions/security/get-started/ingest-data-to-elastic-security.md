@@ -118,5 +118,5 @@ To populate **Network** data, enable Packetbeat protocols and Filebeat modules:
     * [Cisco ASA firewall module](beats://reference/filebeat/filebeat-module-cisco.md)
     * [AWS module](beats://reference/filebeat/filebeat-module-aws.md)
     * [CEF module](beats://reference/filebeat/filebeat-module-cef.md)
-    * [Google Cloud module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-googlecloud.html)
+    * [Google Cloud module](beats://reference/filebeat/filebeat-module-gcp.md)
     * [NetFlow module](beats://reference/filebeat/filebeat-module-netflow.md)

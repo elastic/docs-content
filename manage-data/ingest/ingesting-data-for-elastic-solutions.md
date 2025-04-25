@@ -77,8 +77,8 @@ You can detect and respond to threats when you use [Elastic Security](https://ww
 
 **Guides for popular Security use cases**
 
-* [Use Elastic Security for SIEM](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-siem-security.html)
-* [Protect hosts with endpoint threat intelligence from Elastic Security](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-endpoint-security.html)
+* [Use Elastic Security for SIEM](https://www.elastic.co/getting-started/security/detect-threats-in-my-data-with-siem)
+* [Protect hosts with endpoint threat intelligence from Elastic Security](https://www.elastic.co/getting-started/security/secure-my-hosts-with-endpoint-security)
 
 **Resources**
 

@@ -357,7 +357,7 @@ xpack.security.authc.providers:
 
 One of the most popular use cases for anonymous access is when you embed {{kib}} into other applications and don’t want to force your users to log in to view it. If you configured {{kib}} to use anonymous access as the sole authentication mechanism, you don’t need to do anything special while embedding {{kib}}.
 
-For information on how to embed, refer to [Embed {{kib}} content in a web page](https://www.elastic.co/guide/en/kibana/current/embedding.html).
+For information on how to embed, refer to [Embed {{kib}} content in a web page](/explore-analyze/report-and-share.md#embed-code).
 
 
 #### Anonymous access session [anonymous-access-session]

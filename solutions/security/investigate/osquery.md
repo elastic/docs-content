@@ -254,7 +254,7 @@ When you save queries or add queries to a pack, you can optionally map Osquery r
 
 ::::{note}
 * Some ECS fields are restricted and cannot be mapped. These are not available in the ECS dropdown.
-* Some ECS fields are restricted to a set of allowed values, like [event.category](https://www.elastic.co/guide/en/ecs/current/ecs-event.html#field-event-category). Use the [ECS Field Reference](ecs://reference/ecs-field-reference.md) for help when mapping fields.
+* Some ECS fields are restricted to a set of allowed values, like [event.category](ecs://reference/ecs-event.md#field-event-category). Use the [ECS Field Reference](ecs://reference/ecs-field-reference.md) for help when mapping fields.
 * Osquery date fields have a variety of data types (including integer, text, or bigint). When mapping an Osquery date field to an ECS date field, you might need to use SQL operators in the query to get an {{es}}-compatible [date](elasticsearch://reference/elasticsearch/mapping-reference/date.md) type.
 
 ::::
