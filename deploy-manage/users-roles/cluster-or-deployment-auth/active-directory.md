@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-ad.html
 applies_to:
   deployment:
-    self:
-    ess:
     ece:
-    eck:
 navigation_title: "Active Directory"
 ---
 
