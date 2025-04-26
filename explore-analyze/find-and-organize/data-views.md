@@ -511,6 +511,18 @@ The `{{value}}` template string URL-encodes the contents of the field. When a fi
 
 When the formatter type is **Image**, the `{{value}}` template string specifies the name of an image at the specified URI.
 
+You can render base64 images from data within a document by using the following **URL Template**:
+
+```text
+data:image/png;base64,{{value}}
+```
+
+For example:
+![Data view editing to load base64 encoded PNG data](/explore-analyze/images/url_image_base64_load_format.png "")
+
+The above configuration will render a PNG file in discover to appear like this:
+![Sample output of PNG loading in Discover](/explore-analyze/images/elastic_logo_b64_rendered_in_discover "")
+
 When the formatter type is **Audio**, the `{{value}}` template string specifies the name of an audio file at the specified URI.
 
 To pass unescaped values directly to the URL, use the `{{rawValue}}` string.
