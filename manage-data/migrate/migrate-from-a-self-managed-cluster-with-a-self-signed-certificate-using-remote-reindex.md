@@ -1,10 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-reindex.html
-applies:
+applies_to:
   serverless: unavailable
-  hosted: all
-  ece: unavailable
+  deployment:
+    ess: all
 navigation_title: Reindex from a self-managed cluster
 ---
 

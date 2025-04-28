@@ -23,6 +23,10 @@ From the {{ecloud}} Console you can customize {{es}}, {{kib}}, and related produ
 
 ### Elasticsearch settings
 
+:::{important}
+If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
+:::
+
 {{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster.
 
 For a list of supported settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Settings supported on {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")). 

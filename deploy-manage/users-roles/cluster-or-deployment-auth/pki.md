@@ -4,7 +4,6 @@ mapped_pages:
 applies_to:
   deployment:
     self:
-    ess:
     ece:
     eck:
 ---

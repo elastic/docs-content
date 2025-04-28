@@ -213,7 +213,11 @@ The following settings are supported:
 
 
 `application_name`
-:   [6.3.0] Name used by the client when it uses the Google Cloud Storage service.
+:   :::{admonition} Deprecated in 6.3.0
+    This setting was deprecated in 6.3.0.
+    :::
+
+    Name used by the client when it uses the Google Cloud Storage service.
 
 ### Recommended bucket permission [repository-gcs-bucket-permission]
 

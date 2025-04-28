@@ -28,7 +28,7 @@ Some of the features described here require an Elastic license. For more informa
 
 | Commands |  |
 | --- | --- |
-| [`apikey`](#apm-apikey-command) | Manage API Keys for communication between APM agents and server. [8.6.0] |
+| [`apikey`](#apm-apikey-command) | Manage API Keys for communication between APM agents and server.<br><br>**This was deprecated in 8.6.0.** Create API Keys through Kibana or the Elasticsearch REST API. Refer to [API keys](/solutions/observability/apm/api-keys.md). |
 | [`export`](#apm-export-command) | Exports the configuration, index template, or {{ilm-init}} policy to stdout. |
 | [`help`](#apm-help-command) | Shows help for any command. |
 | [`keystore`](#apm-keystore-command) | Manages the [secrets keystore](/solutions/observability/apm/secrets-keystore-for-secure-settings.md). |
@@ -65,21 +65,21 @@ apm-server apikey SUBCOMMAND [FLAGS]
 
     The user requesting to create an API Key needs to have APM privileges used by the APM Server. A superuser, by default, has these privileges.
 
-    ::::{dropdown} Expand for more information on assigning these privileges to other users
-    To create an APM Server user with the required privileges for creating and managing API keys:
+::::{dropdown} Expand for more information on assigning these privileges to other users
+To create an APM Server user with the required privileges for creating and managing API keys:
 
-    1. Create an **API key role**, called something like `apm_api_key`, that has the following `cluster` level privileges:
+1. Create an **API key role**, called something like `apm_api_key`, that has the following `cluster` level privileges:
 
-        | Privilege | Purpose |
-        | --- | --- |
-        | `manage_own_api_key` | Allow APM Server to create, retrieve, and invalidate API keys |
+    | Privilege | Purpose |
+    | --- | --- |
+    | `manage_own_api_key` | Allow APM Server to create, retrieve, and invalidate API keys |
 
-    2. Depending on what the **API key role** will be used for, also assign the appropriate `apm` application-level privileges:
-        * To **receive Agent configuration**, assign `config_agent:read`.
-        * To **ingest agent data**, assign `event:write`.
-        * To **upload source maps**, assign `sourcemap:write`.
+2. Depending on what the **API key role** will be used for, also assign the appropriate `apm` application-level privileges:
+    * To **receive Agent configuration**, assign `config_agent:read`.
+    * To **ingest agent data**, assign `event:write`.
+    * To **upload source maps**, assign `sourcemap:write`.
 
-    ::::
+::::
 
 **`info`**
 :   Query API Key(s). `--id` or `--name` required.
@@ -172,9 +172,9 @@ Also see [Global flags](#apm-global-flags).
 
 **EXAMPLES**
 
-```sh
+```sh subs=true
 apm-server export config
-apm-server export template --es.version 9.0.0-beta1 --index myindexname
+apm-server export template --es.version {{version}} --index myindexname
 ```
 
 ## `help` command [apm-help-command]

@@ -37,7 +37,7 @@ To help with debugging, you can increase the amount of logging detail by adding 
 
 1. Select the serverless forwarder **application** from **Lambda > Functions**
 2. Click **Configuration** and select **Environment Variables** and choose **Edit**
-3. Click **Add environment variable** and enter `LOG_LEVEL` as **Key*** and `DEBUG` as ***Value** and click **Save**
+3. Click **Add environment variable** and enter `LOG_LEVEL` as **Key** and `DEBUG` as **Value** and click **Save**
 
 ## Using the Event ID format (version 1.6.0 and above) [aws-serverless-troubleshooting-event-id-format]
 

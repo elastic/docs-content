@@ -27,7 +27,12 @@ Open a new case to keep track of issues and share their details with colleagues.
    ::::
 
 4. Optionally, add a category, assignees, and tags. You can add users only if they meet the necessary [prerequisites](setup-cases.md).
-5. If you defined any [custom fields](manage-cases-settings.md#case-custom-fields), they appear in the **Additional fields** section. [8.15.0]
+5. If you defined any [custom fields](manage-cases-settings.md#case-custom-fields), they appear in the **Additional fields** section.
+
+    :::{admonition} Added in 8.15.0
+    This functionality was added in 8.15.0.
+    :::
+
 6. For the **External incident management system**, select a connector. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
 7. After you’ve completed all of the required fields, click **Create case**.
 

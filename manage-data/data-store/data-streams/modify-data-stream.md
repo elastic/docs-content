@@ -499,3 +499,24 @@ POST _aliases
 }
 ```
 
+## Modify the backing indices of a data stream [data-streams-modify-backing-indices]
+
+Use the [modify API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream) to modify the backing indices of a data stream. Multiple actions can be specified in a single modify request, and they will be executed atomically.
+
+```console
+POST /_data_stream/_modify
+{
+  "actions": [
+    {
+      "add_backing_index": {
+        "data_stream": "my-data-stream",
+        "index": "new-index"
+      },
+      "remove_backing_index": {
+        "data_stream": "my-data-stream",
+        "index": "old-index"
+      }
+    }
+  ]
+}
+```

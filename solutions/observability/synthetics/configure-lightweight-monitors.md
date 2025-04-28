@@ -640,7 +640,6 @@ $$$monitor-tcp-hosts$$$
 
     * **A hostname and port, such as `localhost:12345`.** Synthetics connects to the port on the specified host. If the monitor is [configured to use SSL](beats://reference/heartbeat/configuration-ssl.md), Synthetics establishes an SSL/TLS-based connection. Otherwise, it establishes a TCP connection.
     * **A full URL using the syntax `scheme://<host>:[port]`**, where:
-
         * `scheme` is one of `tcp`, `plain`, `ssl` or `tls`. If `tcp` or `plain` is specified, Synthetics establishes a TCP connection even if the monitor is configured to use SSL. If `tls` or `ssl` is specified, Synthetics establishes an SSL connection. However, if the monitor is not configured to use SSL, the system defaults are used (currently not supported on Windows).
         * `host` is the hostname.
         * `port` is the port number.
