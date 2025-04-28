@@ -58,6 +58,8 @@ The instructions below cover how to manage {{es}} keystore settings for each dep
 % ### ECE and ECH
 You can manage {{es}} secure settings in the **Security > {{es}} keystore** section of your deployment page in the {{ecloud}} Console or ECE Cloud UI.
 
+If a feature requires both standard `elasticsearch.yml` settings and secure settings, configure the secure settings first. Updating standard settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
+
 :::{note}
 {{ece}} also supports managing {{es}} keystore of your deployments through its [RESTful API](https://www.elastic.co/docs/api/doc/cloud-enterprise/). Refer to [Configure {{es}} keystore through ECE API](cloud://reference/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md) for an example.
 :::
