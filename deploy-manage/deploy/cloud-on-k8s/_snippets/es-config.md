@@ -1,4 +1,4 @@
-Any setting defined in the `elasticsearch.yml` configuration file can also be defined for a set of {{es}} nodes in the `spec.nodeSets[?].config` section.
+{{es}} settings that are typically defined in the `elasticsearch.yml` configuration file can be specified for a set of nodes in the `spec.nodeSets[?].config` section of the {{es}} resource manifest.
 
 Some settings are managed by ECK. It is not recommended to change these managed settings. For a complete list, refer to [Settings managed by ECK](/deploy-manage/deploy/cloud-on-k8s/settings-managed-by-eck.md).
 
