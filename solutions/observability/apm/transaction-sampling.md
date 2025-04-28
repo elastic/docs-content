@@ -272,7 +272,7 @@ Trace events are matched to policies in the order specified. Each policy list mu
 Note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
 
-### Example configuration A [_example_configuration_a]
+### Example configuration 1 [_example_configuration_1]
 
 This example defines three tail-based sampling polices:
 
@@ -290,9 +290,9 @@ This example defines three tail-based sampling polices:
 2. Samples 1% of traces in `production` with the trace name `"GET /not_important_route"`
 3. Default policy to sample all remaining traces at 10%, e.g. traces in a different environment, like `dev`, or traces with any other name
 
-### Example configuration B [_example_configuration_b]
+### Example configuration 2 [_example_configuration_2]
 
-When a trace originates in Service A and then calls Service B (without errors), the sampling rate is determined by the service where the trace starts:
+When a trace originates in Service A and then calls Service B, the sampling rate is determined by the service where the trace starts:
 
 ```yaml
 - sample_rate: 0.3
@@ -302,14 +302,14 @@ When a trace originates in Service A and then calls Service B (without errors), 
 - sample_rate: 1.0  # Fallback: always set a default
 ```
 
-- Because Service A is the root of the trace, its policy (0.5) takes precedence over Service B's policy (0.3).
+- Because Service A is the root of the trace, its policy (0.5) is applied while Service B's policy (0.3) is ignored.
 - If instead the trace began in Service B (and then passed to Service A), the policy for Service B would apply.
 
-> **Key point**: Tail‑based sampling rules are evaluated at the *trace level* based on where the trace was initiated, not on downstream spans (*service level*).
+> **Key point**: Tail‑based sampling rules are evaluated at the *trace level* based on which service initiated the distributed trace, not the service of the transaction or span.
 
-### Example configuration C [_example_configuration_c]
+### Example configuration 3 [_example_configuration_3]
 
-When you need to combine service‑specific policies with outcomes (e.g. failures), policy order defines specificity:
+Policies are evaluated **in order** and applies the first one whose match conditions are all met. That means, in practice, order policies from most specific (narrow matchers) to most general, ending with a catch-all (fallback).
 
 ```yaml
 # Example A: prioritize service origin, then failures
@@ -317,7 +317,7 @@ When you need to combine service‑specific policies with outcomes (e.g. failure
   service.name: A
 - sample_rate: 0.5
   trace.outcome: failure
-- sample_rate: 1.0  # Default
+- sample_rate: 1.0  # catch-all
 
 # Example B: prioritize failures, then a specific service
 - sample_rate: 0.2
@@ -329,10 +329,6 @@ When you need to combine service‑specific policies with outcomes (e.g. failure
 
 - In Example A, traces from Service A are sampled at 20%, and all other failed traces (regardless of service) are sampled at 50%.
 - In Example B, every failed trace is sampled at 20%, including those originating from Service A.
-
-Policies targeting the trace (e.g. `trace.outcome: failure`) apply across all services and should appear before more specific, service‑level rules if you want them to take precedence.
-
-> **Key point**: Define failure policy at the top to ensure capturing all failed traces, then define more specific policies for specific services to capture edge cases.
 
 ### Configuration reference [_configuration_reference]
 
