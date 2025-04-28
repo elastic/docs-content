@@ -182,7 +182,7 @@ PUT _watcher/watch/cluster_health_watch
 }
 ```
 
-For {{watcher}} to send email, you must configure an email account in your `elasticsearch.yml` configuration file and restart Elasticsearch. To add an email account, set the `xpack.notification.email.account` property.
+For {{watcher}} to send email, you must configure an email account in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file and restart {{es}}. To add an email account, set the `xpack.notification.email.account` property.
 
 For example, the following snippet configures a single Gmail account named `work`:
 

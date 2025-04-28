@@ -40,7 +40,7 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 
 On the remote cluster:
 
-1. Enable the remote cluster server on every node of the remote cluster. In `elasticsearch.yml`:
+1. Enable the remote cluster server on every node of the remote cluster. In [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
     1. Set [`remote_cluster_server.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
     2. Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
@@ -83,7 +83,7 @@ On the remote cluster:
 3. On every node of the remote cluster:
 
     1. Copy the `cross-cluster.p12` file from the earlier step to the `config` directory. If you didn’t create a wildcard certificate, make sure you copy the correct node-specific p12 file.
-    2. Add following configuration to `elasticsearch.yml`:
+    2. Add following configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
         ```yaml
         xpack.security.remote_cluster_server.ssl.enabled: true
@@ -135,11 +135,11 @@ On the local cluster:
 
     2. Remove the existing remote cluster definition by setting the remote cluster settings to `null`.
 
-3. If you’ve statically configured the remote cluster (via `elasticsearch.yml`), copy the `cluster.remote` settings from `elasticsearch.yml`, and store them in a safe place. You may need them later in case you need to [roll back](#remote-clusters-migration-rollback).
+3. If you’ve statically configured the remote cluster (via `elasticsearch.yml`), copy the `cluster.remote` settings from `elasticsearch.yml` and store them in a safe place. You may need them later in case you need to [roll back](#remote-clusters-migration-rollback).
 4. On every node of the local cluster:
 
     1. Copy the `ca.crt` file generated on the remote cluster earlier into the `config` directory, renaming the file `remote-cluster-ca.crt`.
-    2. Add following configuration to `elasticsearch.yml`:
+    2. Add following configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
         ```yaml
         xpack.security.remote_cluster_client.ssl.enabled: true
@@ -178,7 +178,7 @@ On the local cluster:
         1. The remote cluster alias. Use the same alias that was used before the migration.
         2. The remote cluster address with the remote cluster port, which defaults to `9443`.
 
-6. If you’ve statically configured the remote cluster (via `elasticsearch.yml`):
+6. If you’ve statically configured the remote cluster (via [`elasticsearch.yml`](/deploy-manage/stack-settings.md)):
 
     1. Update the `cluster.remote` settings in `elasticsearch.yml` on each node of the local cluster. Change the port into the remote cluster port, which defaults to `9443`.
     2. Restart the local cluster to load changes to the keystore and settings.

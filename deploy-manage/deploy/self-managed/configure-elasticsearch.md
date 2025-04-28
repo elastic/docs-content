@@ -12,6 +12,14 @@ applies_to:
 
 The configuration files should contain settings which are node-specific (such as `node.name` and paths), or settings which a node requires in order to be able to join a cluster, such as `cluster.name` and `network.host`.
 
+:::{note}
+This topic describes how to configure a self-managed {{es}} cluster. Other deployment types must be configured using different steps.
+
+To learn how to configure `elasticsearch.yml` for other deployment types, refer to [](/deploy-manage/stack-settings.md).
+
+JVM and log4j configuration is not available in all deployment types. To learn how to configure limited JVM options in {{eck}}, refer to [](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md).
+:::
+
 ## Available settings
 
 For a complete list of settings that you can apply to your {{es}} cluster, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
@@ -27,7 +35,7 @@ For a list of settings that must be configured before using your cluster in prod
 * `jvm.options` for configuring {{es}} JVM settings
 * `log4j2.properties` for configuring {{es}} logging
 
-These files are located in the config directory, whose default location depends on whether or not the installation is from an archive distribution (`tar.gz` or `zip`) or a package distribution (Debian or RPM packages).
+These files are located in the config directory, whose default location depends on whether the installation is from an archive distribution (`tar.gz` or `zip`) or a package distribution (Debian or RPM packages).
 
 ### Archive distributions
 
@@ -50,54 +58,15 @@ The location of the config directory can be changed by setting the `ES_PATH_CONF
 
 You need to edit the `ES_PATH_CONF=/etc/elasticsearch` entry in the relevant file for your package to change the config directory location.
 
-
 ## Config file format [_config_file_format] 
 
-The configuration format is [YAML](https://yaml.org/). Here is an example of changing the path of the data and logs directories:
-
-```yaml
-path:
-    data: /var/lib/elasticsearch
-    logs: /var/log/elasticsearch
-```
-
-Settings can also be flattened as follows:
-
-```yaml
-path.data: /var/lib/elasticsearch
-path.logs: /var/log/elasticsearch
-```
-
-In YAML, you can format non-scalar values as sequences:
-
-```yaml
-discovery.seed_hosts:
-   - 192.168.1.10:9300
-   - 192.168.1.11
-   - seeds.mydomain.com
-```
-
-Though less common, you can also format non-scalar values as arrays:
-
-```yaml
-discovery.seed_hosts: ["192.168.1.10:9300", "192.168.1.11", "seeds.mydomain.com"]
-```
-
+:::{include} _snippets/config-file-format.md
+:::
 
 ## Environment variable substitution [_environment_variable_substitution] 
 
-Environment variables referenced with the `${...}` notation within the configuration file will be replaced with the value of the environment variable. For example:
-
-```yaml
-node.name:    ${HOSTNAME}
-network.host: ${ES_NETWORK_HOST}
-```
-
-Values for environment variables must be simple strings. Use a comma-separated string to provide values that {{es}} will parse as a list. For example, {{es}} will split the following string into a list of values for the `${HOSTNAME}` environment variable:
-
-```yaml
-export HOSTNAME="host1,host2"
-```
+:::{include} _snippets/env-var-setting-subs.md
+:::
 
 ## Cluster and node setting types [cluster-setting-types] 
 
@@ -105,31 +74,13 @@ Cluster and node settings can be categorized based on how they are configured:
 
 ### Dynamic [dynamic-cluster-setting]
 
-You can configure and update dynamic settings on a running cluster using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). You can also configure dynamic settings locally on an unstarted or shut down node using `elasticsearch.yml`.
-
-Updates made using the cluster update settings API can be *persistent*, which apply across cluster restarts, or *transient*, which reset after a cluster restart. You can also reset transient or persistent settings by assigning them a `null` value using the API.
-
-If you configure the same setting using multiple methods, {{es}} applies the settings in following order of precedence:
-
-1. Transient setting
-2. Persistent setting
-3. `elasticsearch.yml` setting
-4. Default setting value
-
-For example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting. However, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.
-
-Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to configure dynamic cluster settings. Only use `elasticsearch.yml` for static cluster settings and node settings. The API doesn’t require a restart and ensures a setting’s value is the same on all nodes.
-
-::::{warning} 
-We no longer recommend using transient cluster settings. Use persistent cluster settings instead. If a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration.
-::::
-
+:::{include} _snippets/dynamic-settings.md
+:::
 
 ### Static [static-cluster-setting]
 
-Static settings can only be configured on an unstarted or shut down node using `elasticsearch.yml`.
-
-Static settings must be set on every relevant node in the cluster.
+:::{include} _snippets/static-settings.md
+:::
 
 ## Additional topics
 

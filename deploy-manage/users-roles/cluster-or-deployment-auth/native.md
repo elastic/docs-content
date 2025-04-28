@@ -38,7 +38,7 @@ xpack.security.authc.realms.native.native1:
   enabled: false
 ```
 
-You can configure a `native` realm in the `xpack.security.authc.realms.native` namespace in `elasticsearch.yml`. Explicitly configuring a native realm enables you to set the order in which it appears in the realm chain, temporarily disable the realm, and control its cache options.
+You can configure a `native` realm in the `xpack.security.authc.realms.native` namespace in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). Explicitly configuring a native realm enables you to set the order in which it appears in the realm chain, temporarily disable the realm, and control its cache options.
 
 1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.native` namespace. It is recommended that you explicitly set the `order` attribute for the realm.
 

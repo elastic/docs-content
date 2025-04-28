@@ -58,7 +58,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
 3. Configure {{es}} with a PKI realm and a native realm.
 
-    By default, {{es}} provides a native realm for authenticating with a username and password. However, to support both a PKI realm (for {{kib}}) and a native realm (for end users), you must configure each realm in `elasticsearch.yml`:
+    By default, {{es}} provides a native realm for authenticating with a username and password. However, to support both a PKI realm (for {{kib}}) and a native realm (for end users), you must configure each realm in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
     ```yaml
     xpack.security.authc.realms.pki.realm1.order: 1
@@ -68,7 +68,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
 4. Configure {{es}} to request client certificates.
 
-    By default, {{es}} will not request a client certificate when establishing a TLS connection. To change this, you must set up optional client certificate authentication in `elasticsearch.yml`:
+    By default, {{es}} will not request a client certificate when establishing a TLS connection. To change this, you must set up optional client certificate authentication in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
     ```yaml
     xpack.security.http.ssl.client_authentication: "optional"
@@ -89,7 +89,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
     1. If your certificate and private key are contained in a PKCS#12 file:
 
-        Specify your PKCS#12 file in `kibana.yml`:
+        Specify your PKCS#12 file in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
         ```yaml
         elasticsearch.ssl.keystore.path: "/path/to/kibana-client.p12"
@@ -107,7 +107,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
     2. Otherwise, if your certificate and private key are in PEM format:
 
-        Specify your certificate and private key in `kibana.yml`:
+        Specify your certificate and private key in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
         ```yaml
         elasticsearch.ssl.certificate: "/path/to/kibana-client.crt"
@@ -122,7 +122,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
 8. Configure {{kib}} *not* to use a username and password for {{es}}.
 
-    You must remove the `elasticsearch.username` and `elasticsearch.password` settings from `kibana.yml`. If these are present, {{kib}} will attempt to use them to authenticate to {{es}} via the native realm.
+    You must remove the `elasticsearch.username` and `elasticsearch.password` settings from [`kibana.yml`](/deploy-manage/stack-settings.md). If these are present, {{kib}} will attempt to use them to authenticate to {{es}} via the native realm.
 
 9. Restart {{kib}}.
 

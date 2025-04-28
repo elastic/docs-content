@@ -32,7 +32,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 1. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is is disabled (`false`).
 
     ::::{note}
-    You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{stack-security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
+    You can specify this setting in either the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node or across the cluster as a dynamic cluster setting. If {{stack-security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
     ::::
 
 
@@ -63,8 +63,8 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 
         For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
-2. Verify that `monitoring.enabled` and `monitoring.kibana.collection.enabled` are set to `true` in the `kibana.yml` file. These are the default values. For more information, see [Monitoring settings in {{kib}}](kibana://reference/configuration-reference/monitoring-settings.md).
-3. Identify where to send monitoring data. {{kib}} automatically sends metrics to the {{es}} cluster specified in the `elasticsearch.hosts` setting in the `kibana.yml` file. This property has a default value of `http://localhost:9200`.<br>
+2. Verify that `monitoring.enabled` and `monitoring.kibana.collection.enabled` are set to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. These are the default values. For more information, see [Monitoring settings in {{kib}}](kibana://reference/configuration-reference/monitoring-settings.md).
+3. Identify where to send monitoring data. {{kib}} automatically sends metrics to the {{es}} cluster specified in the `elasticsearch.hosts` setting in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. This property has a default value of `http://localhost:9200`.<br>
 
     ::::{tip}
     In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster.
@@ -75,7 +75,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 
 4. If {{security-features}} are enabled on the production cluster:
 
-    1. Verify that there is a valid user ID and password in the `elasticsearch.username` and `elasticsearch.password` settings in the `kibana.yml` file. These values are used when {{kib}} sends monitoring data to the production cluster.
+    1. Verify that there is a valid user ID and password in the `elasticsearch.username` and `elasticsearch.password` settings in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. These values are used when {{kib}} sends monitoring data to the production cluster.
     2. [Configure encryption for traffic between {{kib}} and {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 
 5. [Start {{kib}}](../../maintenance/start-stop-services/start-stop-kibana.md).

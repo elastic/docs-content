@@ -26,7 +26,7 @@ You can configure only one file realm on {{es}} nodes.
 
 You don’t need to explicitly configure a `file` realm. The `file` and `native` realms are added to the realm chain by default. Unless configured otherwise, the `file` realm is added first, followed by the `native` realm. You can define only one `file` realm per node.
 
-1. (Optional) Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.file` namespace. At a minimum, you must set the realm’s `order` attribute.
+1. (Optional) Add a realm configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md) under the `xpack.security.authc.realms.file` namespace. At a minimum, you must set the realm’s `order` attribute.
 
     For example, the following snippet shows a `file` realm configuration that sets the `order` to zero so the realm is checked first:
 
@@ -42,7 +42,7 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
 
 2. If you're using a self-managed {{es}} cluster, optionally change how often the `users` and `users_roles` files are checked.
 
-    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file.
+    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
     :::{{warning}}
     Because `resource.reload.interval.high` is a common setting in {{es}}, changing its value may effect other schedules in the system.

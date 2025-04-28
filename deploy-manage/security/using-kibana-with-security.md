@@ -21,7 +21,7 @@ Set an encryption key so that sessions are not invalidated. You can optionally c
 When {{kib}} traffic is balanced across multiple instances connected to the same deployment, it is critical to configure these settings with identical values across all instances. Refer to [](/deploy-manage/production-guidance/kibana-load-balance-traffic.md) for more information.
 ::::
 
-1. Set the `xpack.security.encryptionKey` property in the `kibana.yml` configuration file. You can use any text string that is 32 characters or longer as the encryption key. Refer to [`xpack.security.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-security-encryptionkey).
+1. Set the `xpack.security.encryptionKey` property in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. You can use any text string that is 32 characters or longer as the encryption key. Refer to [`xpack.security.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#xpack-security-encryptionkey).
 
     ```yaml
     xpack.security.encryptionKey: "something_at_least_32_characters"
@@ -38,7 +38,7 @@ The {{kib}} server can instruct browsers to enable additional security controls 
 
 1. Enable `HTTP Strict Transport Security (HSTS)`.
 
-    Use [`strictTransportSecurity`](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-strictTransportSecurity) to ensure that browsers will only attempt to access [{{kib}} with SSL/TLS encryption](./set-up-basic-security-plus-https.md#encrypt-kibana-browser). This is designed to prevent manipulator-in-the-middle attacks. To configure this with a lifetime of one year in your `kibana.yml`:
+    Use [`strictTransportSecurity`](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-strictTransportSecurity) to ensure that browsers will only attempt to access [{{kib}} with SSL/TLS encryption](./set-up-basic-security-plus-https.md#encrypt-kibana-browser). This is designed to prevent manipulator-in-the-middle attacks. To configure this with a lifetime of one year in your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
     ```js
     server.securityResponseHeaders.strictTransportSecurity: "max-age=31536000"
@@ -50,7 +50,7 @@ The {{kib}} server can instruct browsers to enable additional security controls 
 
 2. Disable embedding.
 
-    Use [`disableEmbedding`](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-disableEmbedding) to ensure that {{kib}} cannot be embedded in other websites. To configure this in your `kibana.yml`:
+    Use [`disableEmbedding`](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-disableEmbedding) to ensure that {{kib}} cannot be embedded in other websites. To configure this in your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
     ```js
     server.securityResponseHeaders.disableEmbedding: true
@@ -60,7 +60,7 @@ The {{kib}} server can instruct browsers to enable additional security controls 
 
 {{kib}} uses a Content Security Policy (CSP) to prevent the browser from allowing unsafe scripting, but older browsers will silently ignore this policy. If your organization does not need to support very old versions of our supported browsers, we recommend that you enable {{kib}}'s `strict` mode for the CSP. This will block access to {{kib}} for any browser that does not enforce even a rudimentary set of CSP protections.
 
-To do this, set `csp.strict` to `true` in your `kibana.yml`:
+To do this, set `csp.strict` to `true` in your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```js
 csp.strict: true

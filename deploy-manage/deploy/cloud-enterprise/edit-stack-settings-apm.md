@@ -21,7 +21,7 @@ Starting in {{stack}} version 8.0, how you change APM settings and the settings 
 Standalone APM Server (legacy)
 :   Deployments created prior to {{stack}} version 8.0 are in legacy mode. Upgrading to or past {{stack}} 8.0 does not remove you from legacy mode.
 
-    Check [Edit standalone APM settings (legacy)](#ece-edit-apm-standalone-settings-ece)for information on how to configure Elastic APM in this mode.
+    Check [Edit standalone APM settings (legacy)](#ece-edit-apm-standalone-settings-ece) for information on how to configure Elastic APM in this mode.
 
 
 To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apm/switch-to-elastic-apm-integration.md).

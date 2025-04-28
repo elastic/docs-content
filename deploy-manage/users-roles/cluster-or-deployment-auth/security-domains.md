@@ -48,7 +48,7 @@ Security domains must be configured consistently across all nodes in cluster. In
 
 To configure a security domain:
 
-1. Add a security domain configuration to `elasticsearch.yml` in the `xpack.security.authc.domains` namespace:
+1. Add a security domain configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md) in the `xpack.security.authc.domains` namespace:
 
     ```yaml
     xpack:
