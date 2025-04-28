@@ -34,7 +34,7 @@ The steps for setting up data tiers vary based on your deployment type:
 ::::::
 
 ::::::{tab-item} Self-managed
-To assign a node to a data tier, add the respective [node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) to the node’s `elasticsearch.yml` file. Changing an existing node’s roles requires a [rolling restart](../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
+To assign a node to a data tier, add the respective [node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) to the node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. Changing an existing node’s roles requires a [rolling restart](../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
 
 ```yaml
 # Content tier

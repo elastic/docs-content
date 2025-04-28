@@ -17,7 +17,7 @@ mapped_pages:
 
 Some settings are sensitive, and relying on filesystem permissions to protect their values is not sufficient. For this use case, {{es}} and {{kib}} provide secure keystores to store sensitive configuration values such as passwords, API keys, and tokens.
 
-Secure settings are often referred to as **keystore settings**, since they must be added to the product-specific keystore rather than the standard `elasticsearch.yml` or `kibana.yml` files. Unlike regular settings, they are encrypted and protected at rest, and they cannot be read or modified through the usual configuration files or environment variables.
+Secure settings are often referred to as **keystore settings**, since they must be added to the product-specific keystore rather than the standard [`elasticsearch.yml` or `kibana.yml files](/deploy-manage/stack-settings.md). Unlike regular settings, they are encrypted and protected at rest, and they cannot be read or modified through the usual configuration files or environment variables.
 
 Keystore settings must be handled using a specific tool or method depending on the deployment type. The following table summarizes how {{es}} and {{kib}} keystores are supported and managed across different deployment models:
 
@@ -32,6 +32,10 @@ Keystore settings must be handled using a specific tool or method depending on t
 This section describes how to configure and manage secure settings in each keystore depending on the deployment model:
 * [{{es}} secure settings](./secure-settings.md#elasticsearch)
 * [{{kib}} secure settings](./secure-settings.md#kibana)
+
+:::{tip}
+For information about the APM keystore, refer to [](/solutions/observability/apm/secrets-keystore-for-secure-settings.md).
+:::
 
 ## {{es}} secure settings [elasticsearch]
 
@@ -117,6 +121,8 @@ In self-managed deployments, you're responsible for configuring and maintaining 
 
 {{es}} provides the [`elasticsearch-keystore`](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) command-line tool to help with this task. It allows you to list, add, remove, and update secure settings, as well as protect the keystore with a password if wanted.
 
+For docker examples, refer to [](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-configure.md#docker-keystore-bind-mount).
+
 :::{important}
 Secure settings must be specified on every node, and must have the same values across the cluster to ensure consistent behavior.
 
@@ -133,7 +139,7 @@ bin/elasticsearch-keystore create -p
 
 You are prompted to enter a keystore password, but setting one is optional. If you press Enter without typing a password, the keystore file will be created without password protection.
 
-The command creates a file named `elasticsearch.keystore` alongside the `elasticsearch.yml` file.
+The command creates a file named `elasticsearch.keystore` alongside the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
 #### List settings in the keystore
 
@@ -203,7 +209,7 @@ deployment:
   eck: ga
 ```
 
-{{kib}} supports secure settings through its own keystore, similar to the {{es}} keystore. It provides a way to protect sensitive configuration values, such as authentication credentials or encryption keys, by storing them securely outside of `kibana.yml`.
+{{kib}} supports secure settings through its own keystore, similar to the {{es}} keystore. It provides a way to protect sensitive configuration values, such as authentication credentials or encryption keys, by storing them securely outside of [`kibana.yml`](/deploy-manage/stack-settings.md).
 
 ::::{note}
 Unlike with {{es}} keystore, any valid {{kib}} setting can be stored securely in the keystore. However, as with {{es}}, adding invalid, unsupported, or extraneous settings will cause {{kib}} to fail to start. Always ensure the setting exists and is properly formatted in the [configuration reference](kibana://reference/configuration-reference.md) before adding it to the keystore.

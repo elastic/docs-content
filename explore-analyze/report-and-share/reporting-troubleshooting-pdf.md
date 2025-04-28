@@ -56,7 +56,7 @@ There is currently a known limitation with the data table visualization that onl
 
 ## Connection refused errors [reporting-troubleshooting-pdf-connection-refused]
 
-If PDF or PNG reports are not working due to a "connection refused" or "unable to connect" type of error, ensure that the `kibana.yml` file uses the setting of `server.host: 0.0.0.0`. Also verify that no firewall rules or other routing rules prevent local services from accessing this address. Find out more at [Set the `server.host` for the headless browser](../report-and-share.md#set-reporting-server-host).
+If PDF or PNG reports are not working due to a "connection refused" or "unable to connect" type of error, ensure that the [`kibana.yml`](/deploy-manage/stack-settings.md) file uses the setting of `server.host: 0.0.0.0`. Also verify that no firewall rules or other routing rules prevent local services from accessing this address. Find out more at [Set the `server.host` for the headless browser](../report-and-share.md#set-reporting-server-host).
 
 
 ## File permissions [reporting-troubleshooting-file-permissions]

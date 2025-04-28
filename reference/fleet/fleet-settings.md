@@ -6,7 +6,7 @@ mapped_pages:
 # Fleet settings [fleet-settings]
 
 ::::{note}
-The settings described here are configurable through the {{fleet}} UI. Refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md) for a list of settings that you can configure in the `kibana.yml` configuration file.
+The settings described here are configurable through the {{fleet}} UI. Refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md) for a list of settings that you can configure in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 ::::
 
 

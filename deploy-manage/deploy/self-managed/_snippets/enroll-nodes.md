@@ -6,7 +6,7 @@ Before you enroll your new node, make sure that it is able to access the first n
 If you can't access the first node, then modify your network configuration before proceeding.
 :::
 
-1. Using a text editor, update the `cluster.name` in `elasticsearch.yml` to match the other nodes in your cluster. 
+1. Using a text editor, update the `cluster.name` in [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) to match the other nodes in your cluster. 
    
    :::{note}
    If this value isn't updated and you attempt to join an existing cluster, then the connection will fail with the following error:

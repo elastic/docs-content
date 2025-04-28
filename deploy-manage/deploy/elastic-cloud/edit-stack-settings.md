@@ -17,45 +17,11 @@ mapped_pages:
 
 # Edit {{stack}} settings
 
-% What needs to be done: Refine
+From the {{ecloud}} Console you can customize {{es}}, {{kib}}, and related products to suit your needs. These editors append your changes to the appropriate YAML configuration file and they affect all users of that cluster.
 
-% Use migrated content from existing pages that map to this page:
+## Available settings
 
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-add-user-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-editing-user-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-add-user-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-manage-kibana-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-manage-kibana-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-editing-user-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-manage-apm-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-manage-apm-settings.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-manage-appsearch-settings.md
-%      Notes: specify cluster 8.x or lower
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-manage-enterprise-search-settings.md
-%      Notes: specify cluster 8.x or lower
-
-$$$ec-add-user-settings$$$
-
-$$$ech-es-elasticsearch-settings$$$
-
-$$$xpack-monitoring-history-duration$$$
-
-$$$ech-edit-apm-standalone-settings$$$
-
-$$$ech-apm-settings$$$
-
-$$$csp-strict$$$
-
-$$$ec-appsearch-settings$$$
-
-$$$ec-es-elasticsearch-settings$$$
-
-From the {{ecloud}} Console you can customize {{es}}, {{kib}}, and related products to suit your needs. These editors append your changes to the appropriate YAML configuration file and they affect all users of that cluster. In each editor you can:
-
-
-## Edit {{es}} user settings [ec-add-user-settings]
-
-Change how {{es}} runs by providing your own user settings. {{ech}} appends these settings to each node’s `elasticsearch.yml` configuration file.
+### Elasticsearch settings
 
 :::{important}
 If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
@@ -63,12 +29,21 @@ If a feature requires both standard `elasticsearch.yml` settings and [secure set
 
 {{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster.
 
-For a list of supported settings, check [Supported {{es}} settings](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
+For a list of supported settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Settings supported on {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")). 
 
-::::{warning}
-You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} doesn’t reject unsafe setting changes made using this API. Use it with caution.
-::::
+### Kibana settings
 
+{{ech}} supports most of the standard {{kib}} settings. 
+
+Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions.
+
+For a list of supported settings, check [{{kib}} settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
+
+### APM settings
+
+Refer to [APM configuration reference](/solutions/observability/apm/configure-apm-server.md) for information on how to configure the {{fleet}}-managed APM integration.
+
+## Edit settings [ec-add-user-settings]
 
 To add or edit user settings:
 
@@ -77,42 +52,15 @@ To add or edit user settings:
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From your deployment menu, go to the **Edit** page.
-4. In the **Elasticsearch** section, select **Manage user settings and extensions**.
-5. Update the user settings.
-6. Select **Save changes**.
+1. Under the deployment's name in the navigation menu, select **Edit**.
+2. Look for the **Manage user settings and extensions** and **Edit user settings** links for each deployment, and select the one corresponding to the component you want to update, such as {{es}} or {{kib}}.
+3. Apply the necessary settings in the **Users Settings** tab of the editor and select **Back** when finished.
+4. Select **Save** to apply the changes to the deployment. Saving your changes initiates a configuration plan change that restarts the affected components for you.
 
 ::::{note}
 In some cases, you may get a warning saying "User settings are different across {{es}} instances". To fix this issue, ensure that your user settings (including the comments sections and whitespaces) are identical across all {{es}} nodes (not only the data tiers, but also the Master, Machine Learning, and Coordinating nodes).
 ::::
 
-## Edit {{kib}} user settings [ec-manage-kibana-settings]
-
-{{ech}} supports most of the standard {{kib}} and X-Pack settings. Through a YAML editor in the console, you can append {{kib}} properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
-
-Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions.
-
-For a list of supported settings, check [{{kib}} settings](kibana://reference/cloud/elastic-cloud-kibana-settings.md).
-
-To change {{kib}} settings:
-
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-
-    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-3. From your deployment menu, go to the **Edit** page.
-4. In the **Kibana** section, select **Edit user settings**. For deployments with existing user settings, you may have to expand the **Edit kibana.yml** caret instead.
-5. Update the user settings.
-6. Select **Save changes**.
-
-Saving your changes initiates a configuration plan change that restarts {{kib}} automatically for you.
-
-::::{note}
-If a setting is not supported by {{ech}}, you will get an error message when you try to save.
+::::{warning}
+You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} doesn’t reject unsafe setting changes made using this API. Use it with caution.
 ::::
-
-## Edit APM user settings [ec-manage-apm-settings]
-
-Change how Elastic APM runs by providing your own user settings.
-Check [APM configuration reference](/solutions/observability/apm/configure-apm-server.md) for information on how to configure the {{fleet}}-managed APM integration.

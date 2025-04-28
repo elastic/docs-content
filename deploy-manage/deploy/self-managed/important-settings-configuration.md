@@ -28,7 +28,7 @@ applies_to:
 
 For [macOS `.tar.gz`](install-elasticsearch-from-archive-on-linux-macos.md), [Linux `.tar.gz`](install-elasticsearch-from-archive-on-linux-macos.md), and [Windows `.zip`](install-elasticsearch-with-zip-on-windows.md) installations, `data` and `logs` are subdirectories of `$ES_HOME` by default. However, files in `$ES_HOME` risk deletion during an upgrade.
 
-In production, we strongly recommend you set the `path.data` and `path.logs` in `elasticsearch.yml` to locations outside of `$ES_HOME`. [Docker](install-elasticsearch-with-docker.md), [Debian](install-elasticsearch-with-debian-package.md), and [RPM](install-elasticsearch-with-rpm.md) installations write data and log to locations outside of `$ES_HOME` by default.
+In production, we strongly recommend you set the `path.data` and `path.logs` in [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) to locations outside of `$ES_HOME`. [Docker](install-elasticsearch-with-docker.md), [Debian](install-elasticsearch-with-debian-package.md), and [RPM](install-elasticsearch-with-rpm.md) installations write data and log to locations outside of `$ES_HOME` by default.
 
 Supported `path.data` and `path.logs` values vary by platform:
 
@@ -87,7 +87,7 @@ Changing the name of a cluster requires a [full cluster restart](../../maintenan
 
 ## Node name setting [node-name]
 
-{{es}} uses `node.name` as a human-readable identifier for a particular instance of {{es}}. This name is included in the response of many APIs. The node name defaults to the hostname of the machine when {{es}} starts, but can be configured explicitly in `elasticsearch.yml`:
+{{es}} uses `node.name` as a human-readable identifier for a particular instance of {{es}}. This name is included in the response of many APIs. The node name defaults to the hostname of the machine when {{es}} starts, but can be configured explicitly in [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md):
 
 ```yaml
 node.name: prod-data-2
