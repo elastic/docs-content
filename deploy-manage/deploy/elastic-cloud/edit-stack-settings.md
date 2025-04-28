@@ -57,6 +57,10 @@ From the {{ecloud}} Console you can customize {{es}}, {{kib}}, and related produ
 
 Change how {{es}} runs by providing your own user settings. {{ech}} appends these settings to each node’s `elasticsearch.yml` configuration file.
 
+:::{important}
+If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
+:::
+
 {{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster.
 
 For a list of supported settings, check [Supported {{es}} settings](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
