@@ -13,7 +13,7 @@ navigation_title: LDAP
 # LDAP user authentication [ldap-realm]
 
 :::{{warning}}
-LDAP user authentication is not configurable on Elastic Cloud Hosted environment.
+This type of user authentication cannot be configured on Elastic Cloud Hosted deployments.
 :::
 
 You can configure the {{stack}} {{security-features}} to communicate with a Lightweight Directory Access Protocol (LDAP) server to authenticate users. See [Configuring an LDAP realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#ldap-realm-configuration).

@@ -25,5 +25,9 @@ For many external realms, you need to perform extra steps to use the realm to lo
 
 {{es}} provides the following built-in external realms:
 
+:::{{note}}
+ldap, active_directory and pki user authentication cannot be configured on Elastic Cloud Hosted deployments.
+:::
+
 :::{include} ../_snippets/external-realms.md
 :::
