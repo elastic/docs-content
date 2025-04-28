@@ -13,6 +13,6 @@ Elastic APM supports [routing APM data](/solutions/observability/apm/data-stream
 
 To automatically route OTLP data, set the `data_stream.dataset` and `data_stream.namespace` attributes. These attributes map to the respective [ECS fields](ecs://reference/ecs-data_stream.md).
 
-You can set the `data_stream` attributes at resource level, scope level, span level, or span event level. Elastic parses the attributes in increasing order of precedence. For example, span event `data_stream` attributes override the span `data_stream` attributes. This implies that `data_stream` attributes are inherited from previous levels. If a span doesn't specify `data_stream` attributes, it uses the scope attributes.
+You can set the `data_stream` attributes at resource level, scope level, and record level. Elastic parses the attributes in increasing order of precedence. For example, record `data_stream` attributes override the scope `data_stream` attributes. This implies that `data_stream` attributes are inherited from previous levels. If a scope does not specify `data_stream` attributes, it uses the resource attributes.
 
 For guidance on how to set resource attributes in OpenTelemetry, refer to [setting resource attributes](/solutions/observability/apm/attributes.md#setting-resource-attributes).
