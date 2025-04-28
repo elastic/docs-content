@@ -12,7 +12,7 @@ mapped_pages:
 Change how {{es}} runs by providing your own user settings. User settings are appended to the `elasticsearch.yml` configuration file for your cluster and provide custom configuration options.
 
 :::{important}
-If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes may fail to start. In contrast, adding secure settings does not trigger a restart.
+If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes might fail to start. Adding secure settings does not trigger a restart.
 :::
 
 {{ece}} automatically rejects `elasticsearch.yml` settings that could break your cluster, including some zen discovery and security settings.
