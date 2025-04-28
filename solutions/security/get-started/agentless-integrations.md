@@ -24,6 +24,8 @@ To learn more about agentless CSPM deployments, refer to the getting started gui
 
 ::::{warning}
 Agentless deployment for the following integrations is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
+
+While agentless deployment for these integrations is in beta, for a single {{serverless-full}} project a maxium of five agentless deployments are currently supported.
 ::::
 
 1. AbuseCH
