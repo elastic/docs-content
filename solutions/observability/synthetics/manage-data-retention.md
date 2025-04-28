@@ -17,14 +17,14 @@ There are six data streams recorded by synthetic monitors: `http`, `tcp`, `icmp`
 
 There are six data streams recorded by synthetic monitors:
 
-| Data stream | Data includes | Default retention period |  |
-| --- | --- | --- | --- |
-| `http` | The URL that was checked, the status of the check, and any errors that occurred | 1 year |  |
-| `tcp` | The URL that was checked, the status of the check, and any errors that occurred | 1 year |  |
-| `icmp` | The URL that was checked, the status of the check, and any errors that occurred | 1 year |  |
-| `browser` | The URL that was checked, the status of the check, and any errors that occurred | 1 year |  |
-| `browser.screenshot` | Binary image data used to construct a screenshot and metadata with information related to de-duplicating this data | 14 days |  |
-| `browser.network` | Detailed metadata around requests for resources required by the pages being checked | 14 days |  |
+| Data stream | Data includes | Default retention period |
+| --- | --- | --- |
+| `http` | The URL that was checked, the status of the check, and any errors that occurred | 1 year |
+| `tcp` | The URL that was checked, the status of the check, and any errors that occurred | 1 year |
+| `icmp` | The URL that was checked, the status of the check, and any errors that occurred | 1 year |
+| `browser` | The URL that was checked, the status of the check, and any errors that occurred | 1 year |
+| `browser.screenshot` | Binary image data used to construct a screenshot and metadata with information related to de-duplicating this data | 14 days |
+| `browser.network` | Detailed metadata around requests for resources required by the pages being checked | 14 days |
 
 All types of checks record core metadata. Browser-based checks store two additional types of data: network and screenshot documents. These browser-specific indices are usually many times larger than the core metadata. The relative sizes of each vary depending on the sites being checked with network data usually being the larger of the two by a significant factor.
 

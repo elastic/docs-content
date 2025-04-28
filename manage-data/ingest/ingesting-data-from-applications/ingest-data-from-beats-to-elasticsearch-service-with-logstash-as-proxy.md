@@ -77,7 +77,7 @@ Metricbeat has [many modules](beats://reference/metricbeat/metricbeat-modules.md
 
 **Load the Metricbeat Kibana dashboards**
 
-Metricbeat comes packaged with example dashboards, visualizations, and searches for visualizing Metricbeat data in Kibana. Before you can use the dashboards, you need to create the data view (formerly *index pattern*) *metricbeat-**, and load the dashboards into Kibana. This needs to be done from a local Beats machine that has access to the {{esh}} or {{ece}} deployment.
+Metricbeat comes packaged with example dashboards, visualizations, and searches for visualizing Metricbeat data in Kibana. Before you can use the dashboards, you need to create the data view (formerly *index pattern*) _metricbeat-*_, and load the dashboards into Kibana. This needs to be done from a local Beats machine that has access to the {{esh}} or {{ece}} deployment.
 
 ::::{note}
 Beginning with Elastic Stack version 8.0, Kibana *index patterns* have been renamed to *data views*. To learn more, check the Kibana [What’s new in 8.0](https://www.elastic.co/guide/en/kibana/8.0/whats-new.html#index-pattern-rename) page.
@@ -172,7 +172,7 @@ The system module is now enabled in Filebeat and it will be used the next time F
 
 **Load the Filebeat Kibana dashboards**
 
-Filebeat comes packaged with example Kibana dashboards, visualizations, and searches for visualizing Filebeat data in Kibana. Before you can use the dashboards, you need to create the data view *filebeat-**, and load the dashboards into Kibana. This needs to be done from a Beats machine that has access to the Internet.
+Filebeat comes packaged with example Kibana dashboards, visualizations, and searches for visualizing Filebeat data in Kibana. Before you can use the dashboards, you need to create the data view _filebeat-*_, and load the dashboards into Kibana. This needs to be done from a Beats machine that has access to the Internet.
 
 1. Open a command line instance and then go to *<localpath>/filebeat-<version>/*
 2. Run the following command:
@@ -207,7 +207,7 @@ Loaded Ingest pipelines
 
 1. Exit the CLI.
 
-The data views for *filebeat-** and *metricbeat-** are now available in {{es}}. To verify:
+The data views for _filebeat-*_ and _metricbeat-*_ are now available in {{es}}. To verify:
 
 1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the Kibana main menu and select **Management** and go to **Kibana** > **Data views**.

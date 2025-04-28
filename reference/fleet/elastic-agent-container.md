@@ -298,7 +298,7 @@ agent.monitoring:
 
 The above configuration exposes a monitoring endpoint at `http://localhost:6791/processes`.
 
-::::{dropdown} `http://localhost:6791/processes` output
+::::{dropdown} http://localhost:6791/processes output
 ```json
 {
    "processes":[
@@ -344,7 +344,7 @@ The above configuration exposes a monitoring endpoint at `http://localhost:6791/
 
 Each process ID in the `/processes` output can be accessed for more details.
 
-::::{dropdown} `http://localhost:6791/processes/{{process-name}}` output
+::::{dropdown} http://localhost:6791/processes/\{\{process-name\}\} output
 ```json
 {
    "beat":{

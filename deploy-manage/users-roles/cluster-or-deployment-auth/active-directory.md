@@ -5,7 +5,6 @@ mapped_pages:
 applies_to:
   deployment:
     self:
-    ess:
     ece:
     eck:
 navigation_title: "Active Directory"

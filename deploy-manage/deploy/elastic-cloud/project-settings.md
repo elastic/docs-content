@@ -61,7 +61,7 @@ For {{elastic-sec}} projects, edit the **Project features** to select a feature 
 | Feature tier | Description and add-ons |
 | :--- | :--- |
 | **Security Analytics Essentials** | Standard security analytics, detections, investigations, and collaborations. Allows these add-ons:<br><br>* **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>* **Cloud Protection Essentials**: Cloud native security features.<br> |
-| **Security Analytics Complete** | Everything in **Security Analytics Essentials*** plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>* **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>* **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.<br> |
+| **Security Analytics Complete** | Everything in **Security Analytics Essentials** plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>* **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>* **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.<br> |
 
 ### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
 

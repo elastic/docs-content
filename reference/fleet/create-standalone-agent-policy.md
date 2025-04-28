@@ -51,7 +51,7 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
     :::
 
 
-The downloaded policy already contains a default {{es}} address and port for your setup. You may need to change them if you use a proxy or load balancer. Modify the policy, as required, making sure that you provide credentials for connecting to {es}
+The downloaded policy already contains a default {{es}} address and port for your setup. You may need to change them if you use a proxy or load balancer. Modify the policy, as required, making sure that you provide credentials for connecting to {{es}}
 
 If you need to add integrations to the policy *after* deploying it, you’ll need to run through these steps again and re-deploy the updated policy to the host where {{agent}} is running.
 

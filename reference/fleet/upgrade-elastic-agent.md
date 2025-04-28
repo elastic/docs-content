@@ -67,7 +67,7 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
 2. From the **Actions** menu next to the agent, choose **Upgrade agent**.
 
     :::{image} images/upgrade-single-agent.png
-    :alt: Menu for upgrading a single {agent}
+    :alt: Menu for upgrading a single {{agent}}
     :screenshot:
     :::
 
@@ -76,7 +76,7 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
     In certain cases the latest available {{agent}} version may not be recognized by {{kib}}. For instance, this occurs when the {{kib}} version is lower than the {{agent}} version. You can specify a custom version for {{agent}} to upgrade to by entering the version into the **Upgrade version** text field.
 
     :::{image} images/upgrade-agent-custom.png
-    :alt: Menu for upgrading a single {agent}
+    :alt: Menu for upgrading a single {{agent}}
     :screenshot:
     :::
 
