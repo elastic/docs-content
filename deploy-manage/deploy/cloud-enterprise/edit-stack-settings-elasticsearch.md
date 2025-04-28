@@ -35,9 +35,7 @@ To add or edit {{es}} user settings:
     If you encounter the **Edit elasticsearch.yml** carets, be sure to make your changes on all {{es}} node types.
     ::::
 
-## Examples
-
-### Enable email notifications [ece_enable_email_notifications_from_gmail]
+## Example: enable email notifications [ece_enable_email_notifications_from_gmail]
 
 To enable email notifications in your {{es}} cluster, you need to configure an email account and related settings. For complete instructions, refer to [Configuring email accounts](/explore-analyze/alerts-cases/watcher/actions-email.md#configuring-email).
 
