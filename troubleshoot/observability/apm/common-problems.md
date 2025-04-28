@@ -60,7 +60,7 @@ If you see requests coming through the APM Server but they are not accepted (a r
 
 **Instrumentation gaps**
 
-APM agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](https://www.elastic.co/guide/en/apm/agent/index.html) for details on what is automatically instrumented.
+APM agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -79,7 +79,7 @@ If no requests are logged, it might be that SSL is [misconfigured](#apm-ssl-clie
 
 If you see requests coming through the APM Server but they are not accepted (response code other than `202`), consider the response code to narrow down the possible causes (see sections below).
 
-Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](https://www.elastic.co/guide/en/apm/agent/index.html) for details on what is automatically instrumented.
+Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 
 APM Server currently relies on {{es}} to create indices that do not exist. As a result, {{es}} must be configured to allow [automatic index creation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for APM indices.
 ::::::
@@ -231,7 +231,7 @@ While this can happen with any APM agent, it typically occurs with the RUM agent
 
 The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](apm-agent-rum-js://reference/agent-api.md#observe) for more information.
 
-If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](https://www.elastic.co/guide/en/apm/agent) to adjust how you’re naming your transactions.
+If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](/reference/apm-agents/index.md) to adjust how you’re naming your transactions.
 
 
 ## Unknown route [troubleshooting-unknown-route]
@@ -245,7 +245,7 @@ Elastic APM agents come with built-in support for popular frameworks out-of-the-
 
 "Unknown route" indicates that the APM agent can’t determine what to name the request, perhaps because the technology you’re using isn’t supported, the agent has been installed incorrectly, or because something is happening to the request that the agent doesn’t understand.
 
-To resolve this, you’ll need to head over to the relevant [APM agent documentation](https://www.elastic.co/guide/en/apm/agent). Specifically, view the agent’s supported technologies page. You can also use the agent’s public API to manually set a name for the transaction.
+To resolve this, you’ll need to head over to the relevant [APM agent documentation](/reference/apm-agents/index.md). Specifically, view the agent’s supported technologies page. You can also use the agent’s public API to manually set a name for the transaction.
 
 
 ## Fields are not searchable [troubleshooting-fields-unsearchable]

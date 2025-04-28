@@ -43,7 +43,7 @@ The best approach for ingesting data is the *simplest option* that *meets your n
 
 In most cases, the *simplest option* for ingesting time series data is using {{agent}} paired with an Elastic integration.
 
-* Install [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) on the computer(s) from which you want to collect data.
+* Install [Elastic Agent](/reference/fleet/index.md) on the computer(s) from which you want to collect data.
 * Add the [Elastic integration](https://docs.elastic.co/en/integrations) for the data source to your deployment.
 
 Integrations are available for many popular platforms and services, and are a good place to start for ingesting data into Elastic solutions—​Observability, Security, and Search—​or your own search application.

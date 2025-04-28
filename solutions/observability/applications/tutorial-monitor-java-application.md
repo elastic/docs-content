@@ -1422,7 +1422,7 @@ This is a Spring Boot application. The `UserProfileController.showProfile()` met
 
 The Java {{apm-agent}} can instrument specific frameworks automatically. Spring and Spring Boot are supported well, and the above data was created by adding the agent to the Spring Boot application; there is no configuration necessary.
 
-There are currently agents for Go, .NET, Node, Python, Ruby, and the browser (RUM). Agents keep getting added so you may want to check the [APM agent documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
+There are currently agents for Go, .NET, Node, Python, Ruby, and the browser (RUM). Agents keep getting added so you may want to check the [APM agent documentation](/reference/apm-agents/index.md).
 
 ### Add the {{apm-agent}} to your code [_add_the_apm_agent_to_your_code]
 
