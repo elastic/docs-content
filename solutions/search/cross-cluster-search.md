@@ -982,9 +982,9 @@ If `skip_unavailable` is `true`, a {{ccs}}:
 * Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [`ignore_unavailable`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index).
 * Ignores the [`allow_partial_search_results`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-allow_partial_search_results) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
 
-You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the elasticsearch.yml config file. For example:
+You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file. For example:
 
-```
+```yml
 cluster:
     remote:
         cluster_one:
@@ -995,7 +995,7 @@ cluster:
             skip_unavailable: true
 ```
 
-Or you can set the cluster.remote settings via the [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API as shown [here](#ccs-remote-cluster-setup).
+Or you can set the `cluster.remote` settings via the [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API as shown [here](#ccs-remote-cluster-setup).
 
 When a remote cluster configured with `skip_unavailable: true` (such as `cluster_two` above) is disconnected or unavailable during a {{ccs}}, {{es}} won’t include matching documents from that cluster in the final results and the search will be considered successful (HTTP status 200 OK).
 

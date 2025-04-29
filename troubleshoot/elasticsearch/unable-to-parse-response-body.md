@@ -1,11 +1,11 @@
 ---
 applies_to:
-  stack: 
+  stack:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 navigation_title: "Error: Unable to parse response body"
 ---
 
@@ -15,10 +15,10 @@ navigation_title: "Error: Unable to parse response body"
 Error: Unable to parse response body
 ```
 
-This error occurs when {{es}} cannot process a response body, possibly due to incorrect formatting or syntax. To resolve this issue, make sure the response body is in the correct format (usually JSON) and that all syntax is correct. 
+This error occurs when {{es}} cannot process a response body, possibly due to incorrect formatting or syntax. To resolve this issue, make sure the response body is in the correct format (usually JSON) and that all syntax is correct.
 
 If the error persists, start with these general steps:
-- Check the {{es}} logs for more detailed error messages. 
+- Check the {{es}} logs for more detailed error messages.
 - Update {{es}} to the latest version.
 
 If you're using the high-level Java REST client, continue to the next section.
@@ -26,7 +26,7 @@ If you're using the high-level Java REST client, continue to the next section.
 ## Java REST client
 
 :::{warning}
-The Java REST client is deprecated. Use the [Java API client](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html) instead.
+The Java REST client is deprecated. Use the [Java API client](elasticsearch-java://reference/index.md) instead.
 :::
 
 
@@ -38,11 +38,11 @@ Use the following sections to identify and fix the root cause of the error.
 
 ### Version mismatch
 
-{{es}} does not guarantee compatibility between different major versions. Make sure the client version matches the {{es}} version. For more details, refer to the [{{es}} Java server compatibility policy](elasticsearch-java://reference/index.md#_elasticsearch_server_compatibility_policy). 
+{{es}} does not guarantee compatibility between different major versions. Make sure the client version matches the {{es}} version. For more details, refer to the [{{es}} Java server compatibility policy](elasticsearch-java://reference/index.md#_elasticsearch_server_compatibility_policy).
 
 ### Reverse proxy with path prefix
 
-If your cluster is behind a reverse proxy and you have set a path prefix to access it, make sure to configure the high-level client to include the path prefix so the proxy routes the request to the cluster correctly. 
+If your cluster is behind a reverse proxy and you have set a path prefix to access it, make sure to configure the high-level client to include the path prefix so the proxy routes the request to the cluster correctly.
 
 For example, suppose you have an Nginx reverse proxy receiving connections at `mycompany.com:80`, and the `/elasticsearch` path prefix is set to proxy connections to a cluster running in your infrastructure. The `/elasticsearch` path prefix must be configured on the client you're using to access the cluster &mdash; not just on the host (`mycompany.com`).
 

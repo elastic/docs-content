@@ -104,5 +104,5 @@ POST /.ds-*-apm*/_update_by_query?expand_wildcards=all
 ```
 
 ::::{tip}
-Remember to also change the service name in the [{{apm-agent}} configuration](https://www.elastic.co/guide/en/apm/agent/index.html).
+Remember to also change the service name in the [{{apm-agent}} configuration](/reference/apm-agents/index.md).
 ::::

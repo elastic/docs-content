@@ -25,7 +25,7 @@ GET .watches/_mapping
 If the index mappings are missing, follow these steps to restore the correct mappings:
 
 1. Stop the Elasticsearch node.
-2. Add `xpack.watcher.index.rest.direct_access : true` to `elasticsearch.yml`.
+2. Add `xpack.watcher.index.rest.direct_access : true` to [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 3. Restart the Elasticsearch node.
 4. Delete the `.watches` index:
 
@@ -36,7 +36,7 @@ If the index mappings are missing, follow these steps to restore the correct map
 5. Disable direct access to the `.watches` index:
 
     1. Stop the Elasticsearch node.
-    2. Remove `xpack.watcher.index.rest.direct_access : true` from `elasticsearch.yml`.
+    2. Remove `xpack.watcher.index.rest.direct_access : true` from [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
     3. Restart the Elasticsearch node.
 
 

@@ -101,7 +101,7 @@ If you're using a self-managed cluster, then perform the following additional st
 
 * Enable the token service.
 
-    The {{es}} SAML implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your `elasticsearch.yml` file:
+    The {{es}} SAML implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
     ```yaml
     xpack.security.authc.token.enabled: true
@@ -121,7 +121,7 @@ This realm has a few mandatory settings, and a number of optional settings. The 
 
 This guide will walk you through the most common settings.
 
-Create a realm by adding the following to your `elasticsearch.yml` configuration file. Each configuration value is explained below.
+Create a realm by adding the following to your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file. Each configuration value is explained below.
 
 If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
@@ -639,7 +639,7 @@ SAML authentication in {{kib}} requires additional settings in addition to the s
 
 If you're using a self-managed cluster, then, because OIDC requires {{es}} nodes to use TLS on the HTTP interface, you must configure {{kib}} to use a `https` URL to connect to {{es}}, and you may need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates that {{es}} has been configured to use.
 
-SAML authentication in {{kib}} is subject to the following timeout settings in `kibana.yml`:
+SAML authentication in {{kib}} is subject to the following timeout settings in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 * [`xpack.security.session.idleTimeout`](/deploy-manage/security/kibana-session-management.md#session-idle-timeout)
 * [`xpack.security.session.lifespan`](/deploy-manage/security/kibana-session-management.md#session-lifespan)

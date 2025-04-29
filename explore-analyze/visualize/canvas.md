@@ -36,7 +36,7 @@ A *workpad* provides you with a space where you can build presentations of your 
 To create workpads, you must meet the minimum requirements.
 
 * If you need to set up {{kib}}, use [our free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs).
-* Make sure you have [data indexed into {{es}}](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-general-purpose.html#gp-gs-add-data) and a [data view](../find-and-organize/data-views.md).
+* Make sure you have [data indexed into {{es}}](/manage-data/ingest.md) and a [data view](../find-and-organize/data-views.md).
 * Have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 * Make sure you have sufficient privileges to create and save workpads. When the read-only indicator appears, you have insufficient privileges, and the options to create and save workpads are unavailable. For more information, refer to [Granting access to {{kib}}](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 

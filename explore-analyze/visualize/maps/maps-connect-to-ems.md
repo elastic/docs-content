@@ -628,4 +628,4 @@ With {{hosted-ems}} running, add the `map.emsUrl` configuration key in your [kib
 
 ### Logging [elastic-maps-server-logging]
 
-Logs are generated in [ECS JSON format](https://www.elastic.co/guide/en/ecs/current) and emitted to the standard output and to `/var/log/elastic-maps-server/elastic-maps-server.log`. The server won’t rotate the logs automatically but the `logrotate` tool is installed in the image. Mount `/dev/null` to the default log path if you want to disable the output to that file.
+Logs are generated in [ECS JSON format](ecs://reference/index.md) and emitted to the standard output and to `/var/log/elastic-maps-server/elastic-maps-server.log`. The server won’t rotate the logs automatically but the `logrotate` tool is installed in the image. Mount `/dev/null` to the default log path if you want to disable the output to that file.

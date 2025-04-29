@@ -28,7 +28,7 @@ Starting from ECK `2.6.1` and {{es}} `8.6.1`, {{stack}} configuration policies a
 * [Index templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template)
 * [Components templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template)
 * [Role mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping)
-* [{{es}} Configuration](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) (configuration settings for {{es}} that will go into `elasticsearch.yml`) [ECK 2.11.0]
+* [{{es}} Configuration](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) (configuration settings for {{es}} that will go into [`elasticsearch.yml`](/deploy-manage/stack-settings.md)) [ECK 2.11.0]
 * [{{es}} Secure Settings](../../security/secure-settings.md) [ECK 2.11.0]
 * [Secret Mounts](#k8s-stack-config-policy-specifics-secret-mounts) [ECK 2.11.0]
 
@@ -58,13 +58,13 @@ At least one of `spec.elasticsearch` or `spec.kibana` needs to be defined with a
     * `indexLifecyclePolicies` are index lifecycle policies, to automatically manage the index lifecycle.
     * `indexTemplates.componentTemplates` are component templates that are building blocks for constructing index templates that specify index mappings, settings, and aliases.
     * `indexTemplates.composableIndexTemplates` are index templates to define settings, mappings, and aliases that can be applied automatically to new indices.
-    * `config` are the settings that go into the `elasticsearch.yml` file.
+    * `config` are the settings that go into the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
     * `secretMounts` are the additional user created secrets that need to be mounted to the {{es}} Pods.
     * `secureSettings` is a list of Secrets containing Secure Settings to inject into the keystore(s) of the {{es}} cluster(s) to which this policy applies, similar to the [{{es}} Secure Settings](../../security/secure-settings.md).
 
 * `spec.kibana` describes the settings to configure for {{kib}}.
 
-    * `config` are the settings that go into the `kibana.yml` file.
+    * `config` are the settings that go into the [`kibana.yml`](/deploy-manage/stack-settings.md) file.
     * `secureSettings` is a list of Secrets containing Secure Settings to inject into the keystore(s) of the {{kib}} instance(s) to which this policy applies, similar to the [{{kib}} Secure Settings](../../security/k8s-secure-settings.md).
 
 
