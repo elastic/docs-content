@@ -18,7 +18,7 @@ The shard-level request cache module caches the local results on each shard. Thi
 You can control the size and expiration of the cache at the node level using the [shard request cache settings](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md).
 
 ::::{important}
-By default, the requests cache will only cache the results of search requests where `size=0`, so it will not cache `hits`, but it will cache `hits.total`,  [aggregations](/explore-analyze/query-filter/aggregations.md), and [suggestions](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html).
+By default, the requests cache will only cache the results of search requests where `size=0`, so it will not cache `hits`, but it will cache `hits.total`,  [aggregations](/explore-analyze/query-filter/aggregations.md), and [suggestions](elasticsearch://reference/elasticsearch/rest-apis/search-suggesters.md).
 
 Most queries that use `now` (see [Date Math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math)) cannot be cached.
 
@@ -85,7 +85,7 @@ Requests where `size` is greater than 0 will not be cached even if the request c
 
 ## Cache key [_cache_key]
 
-A hash of the whole JSON body is used as the cache key. This means that if the JSON changes — for instance if keys are output in a different order — then the cache key will not be recognised.
+A hash of the whole JSON body is used as the cache key. This means that if the JSON changes — for instance if keys are output in a different order — then the cache key will not be recognized.
 
 ::::{tip}
 Most JSON libraries support a *canonical* mode which ensures that JSON keys are always emitted in the same order. This canonical mode can be used in the application to ensure that a request is always serialized in the same way.

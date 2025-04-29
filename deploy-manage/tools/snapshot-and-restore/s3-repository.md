@@ -48,7 +48,7 @@ PUT _snapshot/my_s3_repository
 }
 ```
 
-Most client settings can be added to the `elasticsearch.yml` configuration file with the exception of the secure settings, which you add to the {{es}} keystore. For more information about creating and updating the {{es}} keystore, see [Secure settings](../../security/secure-settings.md).
+Most client settings can be added to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file with the exception of the secure settings, which you add to the {{es}} keystore. For more information about creating and updating the {{es}} keystore, see [Secure settings](../../security/secure-settings.md).
 
 For example, if you want to use specific credentials to access S3 then run the following commands to add these credentials to the keystore.
 
@@ -75,7 +75,7 @@ bin/elasticsearch-keystore remove s3.client.default.session_token
 
 Define the relevant secure settings in each node’s keystore before starting the node. The secure settings described here are all [reloadable](../../security/secure-settings.md#reloadable-secure-settings) so you may update the keystore contents on each node while the node is running and then call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to apply the updated settings to the nodes in the cluster. After this API completes, {{es}} will use the updated setting values for all future snapshot operations, but ongoing operations may continue to use older setting values.
 
-The following list contains the available client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the `elasticsearch.yml` file.
+The following list contains the available client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
 `access_key` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   An S3 access key. If set, the `secret_key` setting must also be specified. If unset, the client will use the instance or container role instead.
@@ -384,7 +384,7 @@ By default {{es}} communicates with your storage system using HTTPS, and validat
 
 [MinIO](https://minio.io) is an example of a storage system that provides an S3-compatible API. The `s3` repository type allows {{es}} to work with MinIO-backed repositories as well as repositories stored on AWS S3. Other S3-compatible storage systems may also work with {{es}}, but these are not covered by the {{es}} test suite.
 
-There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3’s behaviour in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency and performance at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
+There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3’s behavior in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency and performance at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
 
 You can perform some basic checks of the suitability of your storage system using the [repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, these checks do not guarantee full compatibility.
 

@@ -45,7 +45,7 @@ discovery.seed_hosts:
 
 The file-based seed hosts provider configures a list of hosts via an external file.  {{es}} reloads this file when it changes, so that the list of seed nodes can change dynamically without needing to restart each node. For example, this gives a convenient mechanism for an {{es}} instance that is run in a Docker container to be dynamically supplied with a list of IP addresses to connect to when those IP addresses may not be known at node startup.
 
-To enable file-based discovery, configure the `file` hosts provider as follows in the `elasticsearch.yml` file:
+To enable file-based discovery, configure the `file` hosts provider as follows in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
 ```yaml
 discovery.seed_providers: file
@@ -53,7 +53,7 @@ discovery.seed_providers: file
 
 Then create a file at `$ES_PATH_CONF/unicast_hosts.txt` in the format described below. Any time a change is made to the `unicast_hosts.txt` file the new changes will be picked up by {{es}} and the new hosts list will be used.
 
-Note that the file-based discovery plugin augments the unicast hosts list in `elasticsearch.yml`: if there are valid seed addresses in `discovery.seed_hosts` then {{es}} uses those addresses in addition to those supplied in `unicast_hosts.txt`.
+Note that the file-based discovery plugin augments the unicast hosts list in [`elasticsearch.yml`](/deploy-manage/stack-settings.md): if there are valid seed addresses in `discovery.seed_hosts` then {{es}} uses those addresses in addition to those supplied in `unicast_hosts.txt`.
 
 The `unicast_hosts.txt` file contains one node entry per line. Each node entry consists of the host (host name or IP address) and an optional transport port number. If the port number is specified, it must come immediately after the host (on the same line) separated by a `:`. If the port number is not specified, {{es}} will implicitly use the first port in the port range given by `transport.profiles.default.port`, or by `transport.port` if `transport.profiles.default.port` is not set.
 

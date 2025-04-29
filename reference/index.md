@@ -20,7 +20,7 @@ Explore the reference documentation for [Elastic APIs]({{apis}}).
 
 ## Security
 
-Access detailed reference documentation on field and object schemas as well as the diffferent commands used to manage and troubleshoot Elastic Endpoint.
+Access detailed reference documentation on field and object schemas as well as the different commands used to manage and troubleshoot Elastic Endpoint.
 
 **Learn more in [Security](security/index.md)**
 
@@ -34,7 +34,7 @@ Access detailed reference documentation on field and object schemas as well as t
 
 Customize your Elastic Stack setup with our configuration reference guides. Explore JVM settings, client documentation, Elasticsearch privileges, and index lifecycle actions to find the detailed information you need to configure your environment to your specific needs.
 
-**Learn more in [Elasticsearch and index management](elasticsearch://reference/index.md)**
+**Learn more in [Elasticsearch and index management](elasticsearch://reference/elasticsearch/index.md)**
 
 ## Ingestion tools
 

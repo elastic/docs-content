@@ -19,10 +19,8 @@ The field data types in the following table are the only [field data types](elas
 
 $$$dynamic-field-mapping-types$$$
 
-|     |     |
-| --- | --- |
-|  | {{es}} data type |
-| JSON data type | `"dynamic":"true"` | `"dynamic":"runtime"` |
+| JSON data type | {{es}} data type<br>(`"dynamic":"true"`) | {{es}} data type<br>(`"dynamic":"runtime"`) |
+| --- | --- | --- |
 | `null` | No field added | No field added |
 | `true` or `false` | `boolean` | `boolean` |
 | `double` | `float` | `double` |

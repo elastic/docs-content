@@ -1437,7 +1437,7 @@ The visualization automatically injects a `"projection"`, which you can use to c
 
 ##### Enable URL loading from any domain [vega-url-loading]
 
-**Vega** can load data from any URL. To enable, set `vis_type_vega.enableExternalUrls: true` in `kibana.yml`, then restart {{kib}}.
+**Vega** can load data from any URL. To enable, set `vis_type_vega.enableExternalUrls: true` in [`kibana.yml`](/deploy-manage/stack-settings.md), then restart {{kib}}.
 
 The files that the external URLs load must allow [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). The remote URL must include `Access-Control-Allow-Origin`, which allows requests from the {{kib}} URL.
 

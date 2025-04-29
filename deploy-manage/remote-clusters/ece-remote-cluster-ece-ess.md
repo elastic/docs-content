@@ -78,7 +78,7 @@ If you later need to update the remote connection with different permissions, yo
 ::::::{tab-item} TLS certificate (deprecated)
 ### Configuring trust with clusters in {{ecloud}} [ece-trust-ec]
 
-A deployment can be configured to trust all or specific deployments from an organization in [{{ecloud}}](https://www.elastic.co/guide/en/cloud/current):
+A deployment can be configured to trust all or specific deployments from an organization in [{{ecloud}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md):
 
 1. From the **Security** menu, select **Remote Connections > Add trusted environment** and select **{{ecloud}} Organization**.
 2. Enter the organization ID (which can be found near the organization name).

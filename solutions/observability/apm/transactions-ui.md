@@ -60,7 +60,7 @@ By default, transaction groups are sorted by *Impact*. Impact helps show the mos
 ::::{important}
 If you only see one route in the Transactions table, or if you have transactions named "unknown route", it could be a symptom that the APM agent either wasn’t installed correctly or doesn’t support your framework.
 
-For further details, including troubleshooting and custom implementation instructions, refer to the documentation for each [APM Agent](https://www.elastic.co/guide/en/apm/agent) you’ve implemented.
+For further details, including troubleshooting and custom implementation instructions, refer to the documentation for each [APM Agent](/reference/apm-agents/index.md) you’ve implemented.
 
 ::::
 

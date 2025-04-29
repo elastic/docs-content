@@ -39,13 +39,11 @@ The simplest way to use NLP models in the {{stack}} is through the [`semantic_te
 
 For an end-to-end tutorial, refer to [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md).
 
-
 ### Option 2: Inference API [_infer_api_workflow]
 
 The {{infer}} API workflow is more complex but offers greater control over the {{infer}} endpoint configuration. You need to create an {{infer}} endpoint, provide various model-related settings and parameters, define an index mapping, and set up an {{infer}} ingest pipeline with the appropriate settings.
 
-For an end-to-end tutorial, refer to [Semantic search with the {{infer}} API](../../explore-analyze/elastic-inference/inference-api.md).
-
+For an end-to-end tutorial, refer to [Semantic search with the {{infer}} API](semantic-search/semantic-search-inference.md).
 
 ### Option 3: Manual model deployment [_model_deployment_workflow]
 

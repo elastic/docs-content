@@ -139,7 +139,7 @@ Address List
 
 {{watcher}} can send email using any SMTP email service. Email messages can contain basic HTML tags. You can control which groups of tags are allowed by [Configuring HTML Sanitization Options](#email-html-sanitization).
 
-You configure the accounts {{watcher}} can use to send email in the `xpack.notification.email` namespace in `elasticsearch.yml`. The password for the specified SMTP user is stored securely in the [{{es}} keystore](../../../deploy-manage/security/secure-settings.md).
+You configure the accounts {{watcher}} can use to send email in the `xpack.notification.email` namespace in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). The password for the specified SMTP user is stored securely in the [{{es}} keystore](../../../deploy-manage/security/secure-settings.md).
 
 If your email account is configured to require two step verification, you need to generate and use a unique App Password to send email from {{watcher}}. Authentication will fail if you use your primary password.
 
@@ -282,7 +282,7 @@ bin/elasticsearch-keystore add xpack.notification.email.account.exchange_account
 
 The `email` action supports sending messages with an HTML body. However, for security reasons, {{watcher}} [sanitizes](https://en.wikipedia.org/wiki/HTML_sanitization) the HTML.
 
-You can control which HTML features are allowed or disallowed by configuring the `xpack.notification.email.html.sanitization.allow` and `xpack.notification.email.html.sanitization.disallow` settings in `elasticsearch.yml`. You can specify individual HTML elements and [HTML feature groups](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#html-feature-groups). By default, {{watcher}} allows the following features: `body`, `head`, `_tables`, `_links`, `_blocks`, `_formatting` and `img:embedded`.
+You can control which HTML features are allowed or disallowed by configuring the `xpack.notification.email.html.sanitization.allow` and `xpack.notification.email.html.sanitization.disallow` settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). You can specify individual HTML elements and [HTML feature groups](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#html-feature-groups). By default, {{watcher}} allows the following features: `body`, `head`, `_tables`, `_links`, `_blocks`, `_formatting` and `img:embedded`.
 
 For example, the following settings allow the HTML to contain tables and block elements, but disallow  `<h4>`, `<h5>` and `<h6>` tags.
 

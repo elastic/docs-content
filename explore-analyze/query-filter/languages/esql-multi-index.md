@@ -2,15 +2,12 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Using {{esql}} to query multiple indices"
+navigation_title: "Query multiple indices"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-multi-index.html
 ---
 
-
-
-# Using ES|QL to query multiple indices [esql-multi-index]
-
+# Use ES|QL to query multiple indices [esql-multi-index]
 
 With {{esql}}, you can execute a single query across multiple indices, data streams, or aliases. To do so, use wildcards and date arithmetic. The following example uses a comma-separated list and a wildcard:
 

@@ -2,9 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-invite-users.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
-applies:
+applies_to:
   serverless: all
-  hosted: all
+  deployment:
+    ess: all
 ---
 
 # Join or leave an organization

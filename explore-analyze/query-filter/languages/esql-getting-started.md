@@ -2,11 +2,10 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Getting started"
+navigation_title: "Get started"
 ---
 
-# Getting started with {{esql}} queries [esql-getting-started]
-
+# Get started with {{esql}} queries [esql-getting-started]
 
 This guide shows how you can use {{esql}} to query and aggregate your data.
 
@@ -232,7 +231,7 @@ FROM sample_data
 | EVAL duration_ms = event_duration/1000000.0
 ```
 
-`EVAL` supports several [functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-functions). For example, to round a number to the closest number with the specified number of digits, use the [`ROUND`](elasticsearch://reference/query-languages/esql/functions-operators/math-functions.md#esql-round) function:
+`EVAL` supports several [functions](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-eval). For example, to round a number to the closest number with the specified number of digits, use the [`ROUND`](elasticsearch://reference/query-languages/esql/functions-operators/math-functions.md#esql-round) function:
 
 ```esql
 FROM sample_data

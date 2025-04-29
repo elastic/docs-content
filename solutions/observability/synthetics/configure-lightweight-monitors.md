@@ -454,8 +454,7 @@ $$$monitor-http-response$$$
 :   Controls the indexing of the HTTP response body contents to the `http.response.body.contents` field.
 
     **`include_body`** (`"on_error"` | `"never"` | `"always"`)
-    :   Set `response.include_body` to one of the options listed below.
-
+    :   Set `response.include_body` to one of the options listed below:
         * `on_error`: Include the body if an error is encountered during the check. This is the default.
         * `never`: Never include the body.
         * `always`: Always include the body with checks.
@@ -641,7 +640,6 @@ $$$monitor-tcp-hosts$$$
 
     * **A hostname and port, such as `localhost:12345`.** Synthetics connects to the port on the specified host. If the monitor is [configured to use SSL](beats://reference/heartbeat/configuration-ssl.md), Synthetics establishes an SSL/TLS-based connection. Otherwise, it establishes a TCP connection.
     * **A full URL using the syntax `scheme://<host>:[port]`**, where:
-
         * `scheme` is one of `tcp`, `plain`, `ssl` or `tls`. If `tcp` or `plain` is specified, Synthetics establishes a TCP connection even if the monitor is configured to use SSL. If `tls` or `ssl` is specified, Synthetics establishes an SSL connection. However, if the monitor is not configured to use SSL, the system defaults are used (currently not supported on Windows).
         * `host` is the hostname.
         * `port` is the port number.

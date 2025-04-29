@@ -94,7 +94,7 @@ The servers {{agent}} flavor is installed using the `elastic-agent install --ins
 * `pf-elastic-symbolizer` - a server side component of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 * `pf-elastic-collector` - a server side component of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 
-Beginning in version 9.0, for {{agents}} to have the full functionality that was supported by default in pre-9.x versions, you need to install the servers {[agent]} flavor.
+Beginning in version 9.0, for {{agents}} to have the full functionality that was supported by default in pre-9.x versions, you need to install the servers {{agent}} flavor.
 
 ### Flavors for container package installs
 
@@ -108,7 +108,7 @@ For containerized environments, the servers {{agent}} flavor is installed using 
 
 #### Complete flavor [elastic-agent-complete-flavor]
 
-For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-journald.html). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
+For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](beats://reference/filebeat/filebeat-input-journald.md). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 
@@ -123,23 +123,23 @@ We tested using an AWS `m7i.large` instance type with 2 vCPUs, 8.0 GB of memory,
 
 | Resource | Throughput | Scale |
 | --- | --- | --- |
-| **CPU*** | ~67% | ~20% |
-| **RSS memory size*** | ~280 MB | ~220 MB |
+| **CPU**[^1^](#footnote-1) | ~67% | ~20% |
+| **RSS memory size**[^1^](#footnote-1) | ~280 MB | ~220 MB |
 | **Write network throughput** | ~3.5 MB/s | 480 KB/s |
 
-* including all monitoring processes
+^1^ $$$footnote-1$$$ including all monitoring processes
 
 Adding integrations will increase the memory used by the agent and its processes.
 
 
 ### Size on disk [_size_on_disk]
 
-The disk requirements for {{agent}} vary by operating system and {{stack}} version. With version 8.14 we have significantly reduced the size of the {{agent}} binary. Further reductions are planned to be made in future releases.
+The disk requirements for {{agent}} vary by operating system and {{stack}} version.
 
-| Operating system | 8.13 | 8.14 | 8.15 |
+| Operating system | 8.13 | 8.14 | 8.15 | 8.18 | 9.0 |
 | --- | --- | --- | --- |
-| **Linux** | 1800 MB | 1018 MB | 1060 MB |
-| **macOS** | 1100 MB | 619 MB | 680 MB |
-| **Windows** | 891 MB | 504 MB | 500 MB |
+| **Linux** | 1800 MB | 1018 MB | 1060 MB | 1.5 GB | 1.5 GB |
+| **macOS** | 1100 MB | 619 MB | 680 MB | 775 MB | 7755 MB |
+| **Windows** | 891 MB | 504 MB | 500 MB | 678 MB | 705 MB |
 
 During upgrades, double the disk space is required to store the new {{agent}} binary. After the upgrade completes, the original {{agent}} is removed from disk to free up the space.

@@ -84,6 +84,23 @@ In the example in *Figure 4*, `Service A` and `Service B` are Elastic-monitored 
 :title: Using the `restart` trace continuation strategy
 :::
 
+### OpenTelemetry [_opentelemetry]
+
+Head-based sampling is implemented directly in the APM agents and SDKs. The sample rate must be propagated between services and the managed intake service in order to produce accurate metrics.
+
+OpenTelemetry offers multiple samplers. However, most samplers do not propagate the sample rate. This results in inaccurate span-based metrics, like APM throughput, latency, and error metrics.
+
+For accurate span-based metrics when using head-based sampling with OpenTelemetry, you must use a [consistent probability sampler](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/). These samplers propagate the sample rate between services and the managed intake service, resulting in accurate metrics.
+
+::::{note}
+OpenTelemetry does not offer consistent probability samplers in all languages. OpenTelemetry users should consider using tail-based sampling instead.
+
+Refer to the documentation of your favorite OpenTelemetry agent or SDK for more information on the availability of consistent probability samplers.
+
+::::
+
+% Stateful only for tail-based sampling
+
 ## Tail-based sampling [apm-tail-based-sampling]
 
 ```{applies_to}
@@ -95,7 +112,6 @@ serverless: unavailable
 **Support for tail-based sampling**
 
 Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](/solutions/observability/apm/configure-output.md), tail-based sampling is *not* supported.
-
 ::::
 
 In tail-based sampling, the sampling decision for each trace is made after the trace has completed. This means all traces will be analyzed against a set of rules, or policies, which will determine the rate at which they are sampled.
@@ -115,6 +131,12 @@ In this example, `Service A` initiates four transactions. If our sample rate is 
 :::{image} /solutions/images/observability-dt-sampling-example-3.png
 :alt: Distributed tracing and tail based sampling example one
 :::
+
+### OpenTelemetry with tail-based sampling [_opentelemetry_with_tail_based_sampling]
+
+Tail-based sampling is implemented entirely in APM Server, and will work with traces sent by either Elastic APM agents or OpenTelemetry SDKs.
+
+Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/apm/limitations.md#apm-open-telemetry-tbs) when using [tailsamplingprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor), we recommend using APM Server tail-based sampling instead.
 
 ### Tail-based sampling performance and requirements [_tail_based_sampling_performance_and_requirements]
 
@@ -172,7 +194,7 @@ stack:
 serverless:
 ```
 
-A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data.[¹](#footnote-1) Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
+A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data.[^1^](#footnote-1) Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
 
 Some visualizations in the {{apm-app}}, like latency, are powered by aggregated transaction and span [metrics](/solutions/observability/apm/metrics.md). The way these metrics are calculated depends on the sampling method used:
 
@@ -184,7 +206,7 @@ For all sampling methods, metrics are weighted by the inverse sampling rate of t
 
 These calculation methods ensure that the APM app provides the most accurate metrics possible given the sampling strategy in use, while also accounting for the head-based sampling rate to estimate the full population of traces.
 
-¹ $$$footnote-1$$$ Real User Monitoring (RUM) traces are an exception to this rule. The {{kib}} apps that utilize RUM data depend on transaction events, so non-sampled RUM traces retain transaction data — only span data is dropped.
+^1^ $$$footnote-1$$$ Real User Monitoring (RUM) traces are an exception to this rule. The {{kib}} apps that utilize RUM data depend on transaction events, so non-sampled RUM traces retain transaction data — only span data is dropped.
 
 ## Sample rates [_sample_rates]
 
@@ -237,6 +259,10 @@ Each agent provides a configuration value used to set the transaction sample rat
 stack:
 serverless: unavailable
 ```
+
+::::{note}
+Enhanced privileges are required to use tail-based sampling. For more information, refer to [Create a tail-based sampling role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-tail-based-sampling).
+::::
 
 Enable tail-based sampling with [Enable tail-based sampling](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-enabled-ref). When enabled, trace events are mapped to sampling policies. Each sampling policy must specify a sample rate, and can optionally specify other conditions. All of the policy conditions must be true for a trace event to match it.
 

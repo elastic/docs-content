@@ -16,7 +16,7 @@ This tutorial explains how to add a custom ingest pipeline to an Elastic Integra
 
 Create a custom ingest pipeline that will be called by the default integration pipeline. In this tutorial, we’ll create a pipeline that adds a new field to our documents.
 
-1. In {{kib}}, navigate to **Stack Management** → **Ingest Pipelines*** → ***Create pipeline** → **New pipeline**.
+1. In {{kib}}, navigate to **Stack Management** → **Ingest Pipelines** → **Create pipeline** → **New pipeline**.
 2. Name your pipeline. We’ll call this one, `add_field`.
 3. Select **Add a processor**. Fill out the following information:
 

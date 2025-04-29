@@ -3,7 +3,7 @@
 This section explains how to deploy and configure various {{stack}} applications within {{eck}} (ECK).
 
 ::::{tip}
-This content applies to APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash applications. To orchestrate an {{es}} cluster or {{kib}}, refer to [](./manage-deployments.md).
+This content applies to {{eck_resources_list_short}} applications. To orchestrate an {{es}} cluster or {{kib}}, refer to [](./manage-deployments.md).
 ::::
 
 The following guides provide specific instructions for deploying and configuring each application on ECK:

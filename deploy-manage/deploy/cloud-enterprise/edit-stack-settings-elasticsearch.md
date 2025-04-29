@@ -9,13 +9,17 @@ mapped_pages:
 
 # Add {{es}} user settings [ece-add-user-settings]
 
-Change how {{es}} runs by providing your own user settings. User settings are appended to the `elasticsearch.yml` configuration file for your cluster and provide custom configuration options. {{ece}} supports many of the user settings for the version of {{es}} that your cluster is running.
+Change how {{es}} runs by providing your own user settings. User settings are appended to the `elasticsearch.yml` configuration file for your cluster and provide custom configuration options.
 
-::::{note}
-ECE blocks the configuration of certain settings that could break your cluster if misconfigured, including some zen discovery and security settings. For a list of settings that are generally safe in cloud environments, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
-::::
+:::{important}
+If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes might fail to start. Adding secure settings does not trigger a restart.
+:::
 
-To change {{es}} user settings:
+{{ece}} automatically rejects `elasticsearch.yml` settings that could break your cluster, including some zen discovery and security settings.
+
+For a list of supported settings, check [Supported {{es}} settings](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
+
+To add or edit {{es}} user settings:
 
 1. [Log into the Cloud UI](./log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
@@ -31,10 +35,20 @@ To change {{es}} user settings:
     If you encounter the **Edit elasticsearch.yml** carets, be sure to make your changes on all {{es}} node types.
     ::::
 
-## Example: enable email notifications from Gmail [ece_enable_email_notifications_from_gmail]
+## Example: enable email notifications [ece_enable_email_notifications_from_gmail]
 
-You can configure email notifications to Gmail for a user that you specify. For details, refer to [Configuring email actions](../../../explore-analyze/alerts-cases/watcher/actions-email.md).
+To enable email notifications in your {{es}} cluster, you need to configure an email account and related settings. For complete instructions, refer to [Configuring email accounts](/explore-analyze/alerts-cases/watcher/actions-email.md#configuring-email).
 
-::::{important}
-Before you add the `xpack.notification.email*` setting in {{es}} user settings, make sure you add the account SMTP password to the keystore as a [secret value](../../../deploy-manage/security/secure-settings.md).
-::::
+```yaml
+xpack.notification.email.account:
+    gmail_account:
+        profile: gmail
+        smtp:
+            auth: true
+            starttls.enable: true
+            host: smtp.gmail.com
+            port: 587
+            user: <username>
+```
+
+Before you add the `xpack.notification.email*` user settings, make sure to store the SMTP password in the keystore as a [secure setting](../../../deploy-manage/security/secure-settings.md). In the previous example, use the key `xpack.notification.email.account.gmail_account.smtp.secure_password`.

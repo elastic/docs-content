@@ -13,7 +13,7 @@ applies_to:
 You can add exceptions to a rule from the rule details page, the Alerts table, the alert details flyout, or the Shared Exception Lists page. When you add an exception, you can also close all alerts that meet the exception’s criteria.
 
 ::::{important}
-* To ensure an exception is successfully applied, ensure that the fields you’ve defined for its query are correctly and consistently mapped in their respective indices. Refer to [ECS](https://www.elastic.co/guide/en/ecs/current) to learn more about supported mappings.
+* To ensure an exception is successfully applied, ensure that the fields you’ve defined for its query are correctly and consistently mapped in their respective indices. Refer to [ECS](ecs://reference/index.md) to learn more about supported mappings.
 * Be careful when adding exceptions to [event correlation](create-detection-rule.md#create-eql-rule) rules. Exceptions are evaluated against every event in the sequence, and if an exception matches any events that are necessary to complete the sequence, alerts are not created.
 
     To exclude values from a specific event in the sequence, update the rule’s EQL statement. For example:

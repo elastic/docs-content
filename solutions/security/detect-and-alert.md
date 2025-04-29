@@ -22,7 +22,7 @@ In addition to creating [your own rules](/solutions/security/detect-and-alert/cr
 There are several special prebuilt rules you need to know about:
 
 * [**Endpoint protection rules**](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md): Automatically create alerts based on {{elastic-defend}}'s threat monitoring and prevention.
-* [**External Alerts**](https://www.elastic.co/guide/en/security/current/external-alerts.html): Automatically creates an alert for all incoming third-party system alerts (for example, Suricata alerts).
+* [**External Alerts**](detection-rules://rules/promotions/external_alerts.md): Automatically creates an alert for all incoming third-party system alerts (for example, Suricata alerts).
 
 If you want to receive notifications via external systems, such as Slack or email, when alerts are created, use the {{kib}} [Alerting and Actions](/explore-analyze/alerts-cases.md) framework.
 
@@ -59,7 +59,7 @@ Cold [data tiers](/manage-data/lifecycle/data-tiers.md) store time series data t
 
 Data tiers are a powerful and useful tool. When using them, keep the following in mind:
 
-* To avoid rule failures, do not modify {{ilm}} policies for {elastic-sec}-controlled indices, such as alert and list indices.
+* To avoid rule failures, do not modify {{ilm}} policies for {{elastic-sec}}-controlled indices, such as alert and list indices.
 * Source data must have an {{ilm}} policy that keeps it in the hot or warm tiers for at least 24 hours before moving to cold or frozen tiers.
 
 ## Limited support for indicator match rules [support-indicator-rules]
@@ -85,7 +85,7 @@ Depending on your privileges and whether detection system indices have already b
     If you get this message, a user with specific privileges must visit the **Alerts** or **Rules** page before you can view detection alerts and rules. Refer to [Enable and access detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui) for a list of all the requirements.
 
     ::::{note}
-    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.encryptedSavedObjects.encryptionKey`](/solutions/security/detect-and-alert.md#detections-permissions) setting has not been added to the `kibana.yml` file. For more information, refer to [Configure self-managed {{stack}} deployments](/solutions/security/detect-and-alert/detections-requirements.md#detections-on-prem-requirements).
+    For **self-managed** {{stack}} deployments only, this message may be displayed when the [`xpack.encryptedSavedObjects.encryptionKey`](/solutions/security/detect-and-alert.md#detections-permissions) setting has not been added to the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For more information, refer to [Configure self-managed {{stack}} deployments](/solutions/security/detect-and-alert/detections-requirements.md#detections-on-prem-requirements).
     ::::
 
 * **`Detection engine permissions required`**
@@ -106,6 +106,6 @@ To learn how your rules and alerts are affected by using the [logsdb index mode]
 
 Utilize the [Detection-as-Code](https://dac-reference.readthedocs.io/en/latest/dac_concept_and_workflows.html) (DaC) principles to externally manage your detection rules.
 
-The {{elastic-sec}} Labs team uses the [detection-rules](https://github.com/elastic/detection-rules) repo to develop, test, and release {{elastic-sec}}'s[ prebuilt rules](https://github.com/elastic/detection-rules/tree/main/rules). The repo provides DaC features and allows you to customize settings to simplify the setup for managing user rules with the DaCe pipeline.
+The {{elastic-sec}} Labs team uses the [detection-rules](https://github.com/elastic/detection-rules) repo to develop, test, and release {{elastic-sec}}'s[ prebuilt rules](https://github.com/elastic/detection-rules/tree/main/rules). The repo provides DaC features and allows you to customize settings to simplify the setup for managing user rules with the DaC pipeline.
 
 To get started, refer to the [DaC documentation](https://github.com/elastic/detection-rules/blob/main/README.md#detections-as-code-dac).

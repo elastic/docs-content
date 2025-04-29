@@ -8,7 +8,7 @@ mapped_pages:
 
 # Create custom images [k8s-custom-images]
 
-You can create your own custom application images ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) instead of using the base images provided by Elastic. You might want to do this to have a canonical image with all the necessary plugins pre-loaded rather than [installing them through an init container](init-containers-for-plugin-downloads.md) each time a Pod starts.  You must use the official image as the base for custom images. For example, if you want to create an {{es}} 8.16.1 image with the [ICU Analysis Plugin](elasticsearch://reference/elasticsearch-plugins/analysis-icu.md), you can do the following:
+You can create your own custom application images ({{eck_resources_list}}) instead of using the base images provided by Elastic. You might want to do this to have a canonical image with all the necessary plugins pre-loaded rather than [installing them through an init container](init-containers-for-plugin-downloads.md) each time a Pod starts.  You must use the official image as the base for custom images. For example, if you want to create an {{es}} 8.16.1 image with the [ICU Analysis Plugin](elasticsearch://reference/elasticsearch-plugins/analysis-icu.md), you can do the following:
 
 1. Create a `Dockerfile` containing:
 

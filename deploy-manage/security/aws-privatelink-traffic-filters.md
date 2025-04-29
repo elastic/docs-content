@@ -130,7 +130,7 @@ The mapping will be different for your region. Our production VPC Service for `u
     :screenshot:
     :::
 
-    The security group for the endpoint should at minimum allow for inbound connectivity from your instances CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connnectibity to the endpoint on ports 443 and 9243.
+    The security group for the endpoint should at minimum allow for inbound connectivity from your instances CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243.
 
 2. Create a DNS record.
 
@@ -279,7 +279,7 @@ Response:
 ::::{note}
 If you are using AWS PrivateLink together with Fleet, and enrolling the Elastic Agent with a PrivateLink URL, you need to configure Fleet Server to use and propagate the PrivateLink URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the PrivateLink URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<Private hosted zone domain name>:443`.
 
-Similarly, the {{es}} host needs to be updated to propagate the Privatelink URL. The {{es}} URL needs to follow this pattern: `https://<{{es}} cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
+Similarly, the {{es}} host needs to be updated to propagate the Privatelink URL. The {{es}} URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
 
 The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [{{kib}} settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
 
