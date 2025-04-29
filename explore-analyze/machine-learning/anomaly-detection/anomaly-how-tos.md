@@ -12,7 +12,7 @@ mapped_pages:
 
 Though it is quite simple to analyze your data and provide quick {{ml}} results, gaining deep insights might require some additional planning and configuration. The guides in this section describe some best practices for generating useful {{ml}} results and insights from your data.
 
-* [Generating alerts for {{anomaly-jobs}}](ml-configuring-alerts.md)
+* [Generating alerts for {{anomaly-jobs}}](ml-configuring-alerts.md): Learn how to create alert rules that notify you when anomalies are detected or when jobs encounter health issues.
 * [Aggregating data for faster performance](ml-configuring-aggregation.md)
 * [Using runtime fields in {{dfeeds}}](ml-configuring-transform.md)
 * [Customizing detectors with custom rules](ml-configuring-detector-custom-rules.md)

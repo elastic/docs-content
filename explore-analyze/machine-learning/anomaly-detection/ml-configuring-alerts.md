@@ -8,7 +8,11 @@ mapped_pages:
 
 # Generating alerts for anomaly detection jobs [ml-configuring-alerts]
 
-{{kib}} {{alert-features}} include support for {{ml}} rules, which run scheduled checks for anomalies in one or more {{anomaly-jobs}} or check the health of the job with certain conditions. If the conditions of the rule are met, an alert is created and the associated action is triggered. For example, you can create a rule to check an {{anomaly-job}} every fifteen minutes for critical anomalies and to notify you in an email. To learn more about {{kib}} {{alert-features}}, refer to [Alerting](../../alerts-cases/alerts/alerting-getting-started.md).
+This guide explains how to create an alert that automatically notifies you when an anomaly is detected in your machine learning jobs, or when a problem occurs that affects job performance.
+
+{{kib}} {{alert-features}} include support for {{ml}} rules, which run scheduled checks for anomalies in one or more {{anomaly-jobs}} or check the health of the job with certain conditions. If the conditions of the rule are met, an alert is created and the associated action is triggered. 
+
+For example, you can create a rule to check an {{anomaly-job}} every fifteen minutes for critical anomalies and to notify you in an email. To learn more about {{kib}} {{alert-features}}, refer to [Alerting](../../alerts-cases/alerts/alerting-getting-started.md).
 
 The following {{ml}} rules are available:
 
@@ -24,53 +28,55 @@ If you have created rules for specific {{anomaly-jobs}} and you want to monitor 
 
 In **{{stack-manage-app}} > {{rules-ui}}**, you can create both types of {{ml}} rules. In the **{{ml-app}}** app, you can create only {{anomaly-detect}} alert rules; create them from the {{anomaly-job}} wizard after you start the job or from the {{anomaly-job}} list.
 
+## Prerequisites [prerequisites]
+
+Before you begin, make sure that:
+
+- You have at least one running {{anomaly-job}}.
+- You have appropriate user permissions to create and manage alert rules.
+- (Optional) You have set up connectors for sending notifications (such as Slack, email, or webhooks).
+
 ## {{anomaly-detect-cap}} alert rules [creating-anomaly-alert-rules]
 
-When you create an {{anomaly-detect}} alert rule, you must select the job that
-the rule applies to.
+{{anomaly-detect-cap}} alert rules monitor if the {{anomaly-job}} results contain anomalies that match the rule conditions.
 
-You must also select a type of {{ml}} result. In particular, you can create rules
-based on bucket, record, or influencer results.
+To set up an {{anomaly-detect}} alert rule:
 
-:::{image} /explore-analyze/images/ml-anomaly-alert-severity.png
-:alt: Selecting result type, severity, and test interval
-:screenshot:
-:::
-
-For each rule, you can configure the `anomaly_score` that triggers the action. 
+1. Go to **{{stack-manage-app}} > {{rules-ui}}** and click **Create rule**.
+2. Select the {{anomaly-job}} that the rule applies to.
+3. Select a type of {{ml}} result. You can create rules based on bucket, record, or influencer results.
+4. (Optional) Configure the `anomaly_score` that triggers the action. 
 The `anomaly_score` indicates the significance of a given anomaly compared to 
 previous anomalies. The default severity threshold is 75 which means every 
 anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
-
-You can select whether you want to include interim results. Interim results are 
-created by the {{anomaly-job}}  before a bucket is finalized. These results might 
-disappear after the bucket is fully processed. Include interim results if you 
+5. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
+    - Include interim results if you 
 want to be notified earlier about a potential anomaly even if it might be a 
-false positive. If you want to get notified only about anomalies of fully 
-processed buckets, do not include interim results.
+false positive. 
+    - Don't include interim results if you want to get notified only about anomalies of fully 
+processed buckets.
 
-You can also configure advanced settings. _Lookback interval_ sets an interval 
-that is used to query previous anomalies during each condition check. Its value 
-is derived from the bucket span of the job and the query delay of the {{{dfeed}}  by 
-default. It is not recommended to set the lookback interval lower than the 
-default value as it might result in missed anomalies. _Number of latest buckets_ 
-sets how many buckets to check to obtain the highest anomaly from all the 
-anomalies that are found during the _Lookback interval_. An alert is created 
-based on the anomaly with the highest anomaly score from the most anomalous 
-bucket.
+:::{image} /explore-analyze/images/ml-anomaly-alert-severity.jpg
+:alt: Selecting result type, severity, and interim results
+:screenshot:
+:::
 
-You can also test the configured conditions against your existing data and check 
-the sample results by providing a valid interval for your data. The generated 
+6. (Optional) Configure the _Lookback interval_ to define how far back to query previous anomalies during each condition check. Its value is derived from the bucket span of the job and the query delay of the {{dfeed}} by default. It is not recommended to set the lookback interval lower than the default value, as it might result in missed anomalies.
+
+7. (Optional) Configure the _Number of latest buckets_ to specify how many buckets to check to obtain the highest anomaly score found during the _Lookback interval_. The alert is created based on the highest scoring anomaly from the most anomalous bucket.
+
+8. (Optional) Test the configured conditions against your existing data by providing a valid interval. The generated 
 preview contains the number of potentially created alerts during the relative 
 time range you defined.
 
-::::{tip}
-You must also provide a _check interval_ that defines how often to
-evaluate the rule conditions. It is recommended to select an interval that is
-close to the bucket span of the job.
-::::
+9. Define the _check interval_ to specify how often to evaluate the rule conditions. It is recommended to select an interval that is close to the bucket span of the job.
 
-As the last step in the rule creation process, define its [actions](#ml-configuring-alert-actions).
+:::{image} /explore-analyze/images/ml-anomaly-alert-advanced.png
+:alt: Selecting result type, severity, and interim results
+:screenshot:
+:::
+
+Next, define the [actions](#ml-configuring-alert-actions) that occur when the rule conditions are met.
 
 ## {{anomaly-jobs-cap}} health rules [creating-anomaly-jobs-health-rules]
 
