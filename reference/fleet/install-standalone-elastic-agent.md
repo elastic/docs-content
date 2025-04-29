@@ -29,8 +29,8 @@ To install and run {{agent}} standalone:
 
     ::::::{tab-item} macOS
     ```shell subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
-    tar xzvf elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-darwin-aarch64.tar.gz 
+    tar xzvf elastic-agent-{{stack-version}}-darwin-aarch64.tar.gz
     ```
     ::::::
 
