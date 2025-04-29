@@ -28,11 +28,3 @@ On April 10, 2025, it was discovered that when you install a new {{elastic-defen
 To resolve this issue, before you add an {{elastic-defend}} integration to a policy in {{fleet}}, apply any pending prebuilt rule updates. This will prevent rule actions, exceptions, and customizations from being overwritten.
 
 :::
-
-:::{dropdown} The technical preview badge incorrectly displays on the alert suppression fields for event correlation rules
-
-**{{stack}} versions: 9.0.0**
-
-On April 8, 2025, it was discovered that alert suppression for event correlation rules is incorrectly shown as being in technical preview when you create a new rule. For more information, check [#1021](https://github.com/elastic/docs-content/issues/1021).
-
-:::

@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/release-notes.html
   - https://www.elastic.co/guide/en/security/current/whats-new.html
 ---
-# {{elastic-sec}} release notes [elastic-security-X.X.X-release-notes]
+# {{elastic-sec}} release notes 
 
 Review the changes, fixes, and more in each version of {{elastic-sec}}.
 
@@ -12,13 +12,21 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
 
-% ## version.next [elastic-security-next-release-notes]
+% ## version.next [elastic-security-X.X.X-notes]
 
-% ### Features and enhancements [elastic-security-next-features-enhancements]
+% ### Features and enhancements [elastic-security-X.X.X-features-enhancements]
 % *
 
-% ### Fixes [elastic-security-next-fixes]
+% ### Fixes [elastic-security-X.X.X-fixes]
 % *
+
+## 9.0.1 [elastic-security-9.0.1-release-notes]
+
+### Features and enhancements [elastic-security-9.0.1-features-enhancements]
+There are no new features or enhancements.
+
+### Fixes [elastic-security-9.0.1-fixes]
+* Removes the technical preview badge from alert suppression fields for event correlation rules. 
 
 ## 9.0.0 [elastic-security-900-release-notes]
 
