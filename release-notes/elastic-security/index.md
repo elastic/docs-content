@@ -26,7 +26,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 There are no new features or enhancements.
 
 ### Fixes [elastic-security-9.0.1-fixes]
-* Removes the technical preview badge from alert suppression fields for event correlation rules. 
+* Removes the technical preview badge from alert suppression fields for event correlation rules 
+* Fixes a bug that caused installed prebuilt detection rules to upgrade to their latest available versions and lose their rule actions, exceptions, and customizations when you installed a new {{elastic-defend}} integration or {{agent}} policy ({{kib-pull}}217959)
 
 ## 9.0.0 [elastic-security-900-release-notes]
 
