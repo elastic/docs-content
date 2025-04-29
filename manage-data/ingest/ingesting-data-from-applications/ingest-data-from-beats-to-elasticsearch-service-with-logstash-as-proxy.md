@@ -77,7 +77,7 @@ Metricbeat has [many modules](beats://reference/metricbeat/metricbeat-modules.md
 
 **Load the Metricbeat Kibana dashboards**
 
-Metricbeat comes packaged with example dashboards, visualizations, and searches for visualizing Metricbeat data in Kibana. Before you can use the dashboards, you need to create the data view (formerly *index pattern*) *metricbeat-**, and load the dashboards into Kibana. This needs to be done from a local Beats machine that has access to the {{esh}} or {{ece}} deployment.
+Metricbeat comes packaged with example dashboards, visualizations, and searches for visualizing Metricbeat data in Kibana. Before you can use the dashboards, you need to create the data view (formerly *index pattern*) _metricbeat-*_, and load the dashboards into Kibana. This needs to be done from a local Beats machine that has access to the {{esh}} or {{ece}} deployment.
 
 ::::{note}
 Beginning with Elastic Stack version 8.0, Kibana *index patterns* have been renamed to *data views*. To learn more, check the Kibana [What’s new in 8.0](https://www.elastic.co/guide/en/kibana/8.0/whats-new.html#index-pattern-rename) page.
@@ -94,16 +94,18 @@ sudo ./metricbeat setup \
 ```
 
 1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
-Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the metricbeat.yml.
+2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
 
-You might encounter similar permissions hurdles as you work through multiple sections of this document. These permission requirements are there for a good reason, a security safeguard to prevent unauthorized access and modification of key Elastic files.
+    ::::{important}
+    Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the metricbeat.yml.
 
-If this isn’t a production environment and you want a fast-pass with less permissions hassles, then you can disable strict permission checks from the command line by using `--strict.perms=false` when executing Beats (for example, `./metricbeat --strict.perms=false`).
+    You might encounter similar permissions hurdles as you work through multiple sections of this document. These permission requirements are there for a good reason, a security safeguard to prevent unauthorized access and modification of key Elastic files.
 
-Depending on your system, you may also find that some commands need to be run as root, by prefixing `sudo` to the command.
+    If this isn’t a production environment and you want a fast-pass with less permissions hassles, then you can disable strict permission checks from the command line by using `--strict.perms=false` when executing Beats (for example, `./metricbeat --strict.perms=false`).
 
-::::
+    Depending on your system, you may also find that some commands need to be run as root, by prefixing `sudo` to the command.
+
+    ::::
 
 
 
@@ -170,7 +172,7 @@ The system module is now enabled in Filebeat and it will be used the next time F
 
 **Load the Filebeat Kibana dashboards**
 
-Filebeat comes packaged with example Kibana dashboards, visualizations, and searches for visualizing Filebeat data in Kibana. Before you can use the dashboards, you need to create the data view *filebeat-**, and load the dashboards into Kibana. This needs to be done from a Beats machine that has access to the Internet.
+Filebeat comes packaged with example Kibana dashboards, visualizations, and searches for visualizing Filebeat data in Kibana. Before you can use the dashboards, you need to create the data view _filebeat-*_, and load the dashboards into Kibana. This needs to be done from a Beats machine that has access to the Internet.
 
 1. Open a command line instance and then go to *<localpath>/filebeat-<version>/*
 2. Run the following command:
@@ -182,9 +184,11 @@ sudo ./filebeat setup \
 ```
 
 1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the filebeat.yml.
-::::
+2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
+
+    ::::{important}
+    Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the filebeat.yml.
+    ::::
 
 
 
@@ -195,7 +199,7 @@ Your results should be similar to the following:
 Index setup finished.
 Loading dashboards (Kibana must be running and reachable)
 Loaded dashboards
-Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Please use the ML app instead.
+Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Use the ML app instead.
 See more: /explore-analyze/machine-learning.md
 Loaded machine learning job configurations
 Loaded Ingest pipelines
@@ -203,7 +207,7 @@ Loaded Ingest pipelines
 
 1. Exit the CLI.
 
-The data views for *filebeat-** and *metricbeat-** are now available in {{es}}. To verify:
+The data views for _filebeat-*_ and _metricbeat-*_ are now available in {{es}}. To verify:
 
 1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the Kibana main menu and select **Management** and go to **Kibana** > **Data views**.

@@ -254,7 +254,7 @@ Some {{ls}} plugins need to write "checkpoints" to local storage in order to kee
 
 Not all external data sources have mechanisms to track state internally, and {{ls}} checkpoints can help persist data.
 
-In the plugin documentation, look for configurations that call for a `path` with a settings like `sincedb`, `sincedb_path`, `sequence_path`, or `last_run_metadata_path`. Check out specific plugin documentation in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current) for details.
+In the plugin documentation, look for configurations that call for a `path` with a settings like `sincedb`, `sincedb_path`, `sequence_path`, or `last_run_metadata_path`. Check out specific plugin documentation in the [Logstash Reference](logstash://reference/index.md) for details.
 
 ```yaml
 spec:
@@ -379,7 +379,7 @@ Examples of these plugins include [`logstash-input-kafka`](logstash-docs-md://ls
 Some plugins have additional requirements and guidelines for optimal performance in a {{ls}} ECK environment.
 
 * [{{ls}} integration plugin](#k8s-logstash-plugin-considerations-ls-integration)
-* [Elasticsearch output plugin](#k8s-logstash-plugin-considerations-es-output)
+* [{{es}} output plugin](#k8s-logstash-plugin-considerations-es-output)
 * [Elastic_integration filter plugin](#k8s-logstash-plugin-considerations-integration-filter)
 * [Elastic Agent input and Beats input plugins](#k8s-logstash-plugin-considerations-agent-beats)
 
@@ -393,7 +393,7 @@ Use these guidelines *in addition* to the general guidelines provided in [Scalin
 When your pipeline uses the [`Logstash integration`](logstash-docs-md://lsr/plugins-integrations-logstash.md) plugin, add `keepalive=>false` to the [logstash-output](logstash-docs-md://lsr/plugins-outputs-logstash.md) definition to ensure that load balancing works correctly rather than keeping affinity to the same pod.
 
 
-### Elasticsearch output plugin [k8s-logstash-plugin-considerations-es-output]
+### {{es}} output plugin [k8s-logstash-plugin-considerations-es-output]
 
 The [`elasticsearch output`](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md) plugin requires certain roles to be configured in order to enable {{ls}} to communicate with {{es}}.
 

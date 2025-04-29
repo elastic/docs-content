@@ -77,7 +77,7 @@ The `project.key` (or `project.id`), the `issuetype.name` (or `issuetype.id`) an
 
 ## Configuring Jira accounts [configuring-jira]
 
-You configure the accounts {{watcher}} can use to communicate with Jira in the `xpack.notification.jira` namespace in `elasticsearch.yml`.
+You configure the accounts {{watcher}} can use to communicate with Jira in the `xpack.notification.jira` namespace in [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
 {{watcher}} supports Basic Authentication for Jira Software. To configure a Jira account you need to specify (see [secure settings](../../../deploy-manage/security/secure-settings.md)):
 
@@ -87,7 +87,7 @@ bin/elasticsearch-keystore add xpack.notification.jira.account.monitoring.secure
 bin/elasticsearch-keystore add xpack.notification.jira.account.monitoring.secure_password
 ```
 ::::{warning}
-Storing sensitive data (`url`, `user` and `password`) in the configuration file or the cluster settings is insecure and has been deprecated. Please use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
+Storing sensitive data (`url`, `user` and `password`) in the configuration file or the cluster settings is insecure and has been deprecated. Use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
 
 ::::
 

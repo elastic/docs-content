@@ -27,7 +27,12 @@ Open a new case to keep track of issues and share their details with colleagues.
    ::::
 
 4. Optionally, add a category, assignees, and tags. You can add users only if they meet the necessary [prerequisites](setup-cases.md).
-5. If you defined any [custom fields](manage-cases-settings.md#case-custom-fields), they appear in the **Additional fields** section. [8.15.0]
+5. If you defined any [custom fields](manage-cases-settings.md#case-custom-fields), they appear in the **Additional fields** section.
+
+    :::{admonition} Added in 8.15.0
+    This functionality was added in 8.15.0.
+    :::
+
 6. For the **External incident management system**, select a connector. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
 7. After you’ve completed all of the required fields, click **Create case**.
 
@@ -47,7 +52,7 @@ For self-managed {{kib}}:
 
 1. Create a preconfigured email connector.
    ::::{note}
-   At this time, email notifications support only preconfigured connectors, which are defined in the `kibana.yml` file. For examples, refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) and [Configure email accounts for well-known services](kibana://reference/connectors-kibana/email-action-type.md#configuring-email).
+   At this time, email notifications support only preconfigured connectors, which are defined in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For examples, refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) and [Configure email accounts for well-known services](kibana://reference/connectors-kibana/email-action-type.md#configuring-email).
    ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting in kibana.yml to the name of your email connector.

@@ -1,12 +1,12 @@
 ---
-navigation_title: "Kibana task manager monitoring"
+navigation_title: "{{kib}} task manager monitoring"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-health-monitoring.html
 applies_to:
   stack: preview
 ---
 
-# Kibana task manager health monitoring [task-manager-health-monitoring]
+# {{kib}} task manager health monitoring [task-manager-health-monitoring]
 
 
 ::::{warning}
@@ -67,7 +67,7 @@ deployment:
   eck:
 ```
 
-In self-managed deployments, you can configure health stats to be logged in the {{kib}} `DEBUG` logger at a regular cadence. To enable Task Manager debug logging in your {{kib}} instance, add the following to your `kibana.yml`:
+In self-managed deployments, you can configure health stats to be logged in the {{kib}} `DEBUG` logger at a regular cadence. To enable Task Manager debug logging in your {{kib}} instance, add the following to your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 logging:
@@ -85,11 +85,11 @@ By default, the health API runs at a regular cadence, and each time it runs, it 
 
 This message looks like:
 
-```txt
-Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your Kibana.yml to enable debug logging`
+```txt subs=true
+Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your {{kib}}.yml to enable debug logging`
 ```
 
-If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) to `true` in your `kibana.yml`. This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.
+If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) to `true` in your [`kibana.yml`](/deploy-manage/stack-settings.md). This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.
 
 
 ## Making sense of Task Manager health stats [making-sense-of-task-manager-health-stats]
@@ -112,7 +112,7 @@ The Runtime `status` indicates whether task executions have exceeded any of the 
 ::::{important}
 Some tasks (such as [connectors](../manage-connectors.md)) will incorrectly report their status as successful even if the task failed. The runtime and workload block will return data about success and failures and will not take this into consideration.
 
-To get a better sense of action failures, please refer to the [Event log index](../../explore-analyze/alerts-cases/alerts/event-log-index.md) for more accurate context into failures and successes.
+To get a better sense of action failures, refer to the [Event log index](../../explore-analyze/alerts-cases/alerts/event-log-index.md) for more accurate context into failures and successes.
 
 ::::
 

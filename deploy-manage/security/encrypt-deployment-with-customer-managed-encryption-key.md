@@ -24,12 +24,12 @@ Using a customer-managed key allows you to strengthen the security of your deplo
 
 Using a customer-managed key helps protect against threats related to the management and control of encryption keys. It does not directly protect against any specific types of attacks or threats. However, the ability to keep control over your own keys can help mitigate certain types of threats such as:
 
-* **Insider threats.** By using a customer-managed key, Elastic does not have access to your encryption keys [1]. This can help prevent unauthorized access to data by insiders with malicious intent.
+* **Insider threats.** By using a customer-managed key, Elastic does not have access to your encryption keys [^1^](#footnote-1). This can help prevent unauthorized access to data by insiders with malicious intent.
 * **Compromised physical infrastructure.** If a data center is physically compromised, the hosts are shut off. With customer-managed key encryption, that’s a second layer of protection that any malicious intruder would have to bypass, in addition to the existing built-in hardware encryption.
 
 Using a customer-managed key can help comply with regulations or security requirements, but it is not a complete security solution by itself. There are other types of threats that it does not protect against.
 
-[1] You set up your customer-managed keys and their access in your key management service. When you provide a customer-managed key identifier to {{ecloud}}, we do not access or store the cryptographic material associated with that key. Customer-managed keys are not directly used to encrypt deployment or snapshot data. {{ecloud}} accesses your customer-managed keys to encrypt and decrypt data encryption keys, which, in turn, are used to encrypt the data.
+^1^ $$$footnote-1$$$ You set up your customer-managed keys and their access in your key management service. When you provide a customer-managed key identifier to {{ecloud}}, we do not access or store the cryptographic material associated with that key. Customer-managed keys are not directly used to encrypt deployment or snapshot data. {{ecloud}} accesses your customer-managed keys to encrypt and decrypt data encryption keys, which, in turn, are used to encrypt the data.
 
 When a deployment encrypted with a customer-managed key is deleted or terminated, its data is locked first before being deleted, ensuring a fully secure deletion process.
 
@@ -427,15 +427,15 @@ When {{ecloud}} can’t reach the encryption key, your deployment may become ina
 
     Within 30 minutes maximum, {{ecloud}} locks the directories in which your deployment data live and prompts you to delete your deployment as an increased security measure.<br>
 
-    While it is locked, the deployment retains all data but is not readable or writable*:
+    While it is locked, the deployment retains all data but is not readable or writable[^2^](#footnote-2):
 
     * If access to the key is never restored, the deployment data does not become accessible again
     * When restoring access to the key, the deployment becomes operational again:
 
         * If Elastic didn’t have to perform any platform operations on your instances during the locked period, operations are restored with minimum downtime.
-        * If Elastic performed some platform operations on your instances during the locked period, restoring operations can require some downtime. It’s also possible that some data can’t be restored** depending on the available snapshots.
+        * If Elastic performed some platform operations on your instances during the locked period, restoring operations can require some downtime. It’s also possible that some data can’t be restored[^3^](#footnote-3) depending on the available snapshots.
 
 
-**During the locked directory period, Elastic may need to perform platform operations on the machines hosting your instances that result in data loss on the {{es}} data nodes but not the deployment snapshots.*
+^2^ $$$footnote-2$$$ During the locked directory period, Elastic may need to perform platform operations on the machines hosting your instances that result in data loss on the {{es}} data nodes but not the deployment snapshots.
 
-***Elastic recommends that you keep snapshots of your deployment in custom snapshot repositories in your own CSP account for data recovery purposes.*
+^3^ $$$footnote-3$$$ Elastic recommends that you keep snapshots of your deployment in custom snapshot repositories in your own CSP account for data recovery purposes.

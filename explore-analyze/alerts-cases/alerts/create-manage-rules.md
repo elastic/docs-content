@@ -8,7 +8,7 @@ mapped_pages:
 
 # Create and manage rules [create-and-manage-rules]
 
-The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](security-docs://reference/prebuilt-rules/index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
+The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
 
 You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rules** in {{kib}} or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -29,7 +29,7 @@ Access to rules is granted based on your {{alert-features}} privileges. For more
 
 ## Create and edit rules [create-edit-rules]
 
-Some rules must be created within the context of a {{kib}} app like [Metrics](https://www.elastic.co/guide/en/kibana/current/observability.html#metrics-app), [**APM**](https://www.elastic.co/guide/en/kibana/current/observability.html#apm-app), or [Uptime](https://www.elastic.co/guide/en/kibana/current/observability.html#uptime-app), but others are generic. Generic rule types can be created in **{{rules-ui}}** by clicking the **Create rule** button. This will launch a flyout that guides you through selecting a rule type and configuring its conditions and actions.
+Some rules must be created within the context of a {{kib}} app like [Metrics](/solutions/observability/infra-and-hosts.md), [**APM**](/solutions/observability/apm/index.md), or [Uptime](/solutions/observability/uptime/index.md), but others are generic. Generic rule types can be created in **{{rules-ui}}** by clicking the **Create rule** button. This will launch a flyout that guides you through selecting a rule type and configuring its conditions and actions.
 
 After a rule is created, you can open the action menu (…) and select **Edit rule** to re-open the flyout and change the rule properties.
 

@@ -9,61 +9,19 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-about.html
 ---
 
-# Elastic Cloud Hosted
+# {{ech}}
 
-% What needs to be done: Refine
+**{{ech}} is the {{stack}}, managed through {{ecloud}} deployments.**
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/338
+It is also formerly known as {{es}} Service.
 
-% Use migrated content from existing pages that map to this page:
+{{ech}} allows you to manage one or more instances of the {{stack}} through **deployments**. These deployments are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
 
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-prepare-production.md
-%      Notes: link roundup is good but the plan for prod content is not needed here
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-faq-getting-started.md
-%      Notes: extract what we can from faq
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-about.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-configure.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$faq-aws-difference$$$
-
-$$$faq-aws$$$
-
-$$$faq-config$$$
-
-$$$faq-elastic$$$
-
-$$$faq-full-stack$$$
-
-$$$faq-limit$$$
-
-$$$faq-subscriptions$$$
-
-$$$faq-trial$$$
-
-$$$faq-vs-aws$$$
-
-$$$faq-what$$$
-
-$$$faq-where$$$
-
-$$$faq-x-pack$$$
-
-**{{ech}} is the Elastic Stack, managed through {{ecloud}} deployments.**
-
-It is also formerly known as Elasticsearch Service.
-
-{{ech}} allows you to manage one or more instances of the Elastic Stack through **deployments**. These deployments are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
-
-A **hosted deployment** helps you manage an Elasticsearch cluster and instances of other Elastic products, like Kibana or APM instances, in one place. Spin up, scale, upgrade, and delete your Elastic Stack products without having to manage each one separately. In a deployment, everything works together.
+A **hosted deployment** helps you manage an {{es}} cluster and instances of other Elastic products, like {{kib}} or APM instances, in one place. Spin up, scale, upgrade, and delete your {{stack}} products without having to manage each one separately. In a deployment, everything works together.
 
 ::::{note}
-{{ech}} is one of the two deployment options available on {{ecloud}}. [Depending on your needs](../elastic-cloud.md), you can also run [Elastic Cloud Serverless projects](/deploy-manage/deploy/elastic-cloud/serverless.md).
+{{ech}} is one of the two deployment options available on {{ecloud}}. [Depending on your needs](../elastic-cloud.md), you can also run [{{serverless-full}} projects](/deploy-manage/deploy/elastic-cloud/serverless.md).
 ::::
-
 
 **Hardware profiles to optimize deployments for your usage.**
 
@@ -78,7 +36,7 @@ You can use these presets, or start from them to get the unique configuration yo
 Building a rich search experience, gaining actionable insight into your environment, or protecting your systems and endpoints? You can implement each of these major use cases, and more, with the solutions that are pre-built in each Elastic deployment.
 
 :::{image} /deploy-manage/images/cloud-ec-stack-components.png
-:alt: Elastic Stack components and solutions with Enterprise Search
+:alt: {{stack}} components and solutions with Enterprise Search
 :width: 75%
 :::
 
@@ -86,12 +44,12 @@ Building a rich search experience, gaining actionable insight into your environm
 Enterprise Search is not available in {{stack}} 9.0+.
 :::
 
-These solutions help you accomplish your use cases: Ingest data into the deployment and set up specific capabilities of the Elastic Stack.
+These solutions help you accomplish your use cases: Ingest data into the deployment and set up specific capabilities of the {{stack}}.
 
 Of course, you can choose to follow your own path and use Elastic components available in your deployment to ingest, visualize, and analyze your data independently from solutions.
 
 
-## How to operate {{ech}}? [ec_how_to_operate_elasticsearch_service]
+## How to operate {{ech}} [ec_how_to_operate_elasticsearch_service]
 
 **Where to start?**
 
@@ -101,7 +59,7 @@ Of course, you can choose to follow your own path and use Elastic components ava
     * [Sign Up for a Trial](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) - Sign up, check what your free trial includes and when we require a credit card.
     * [Sign Up from Marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md) - Consolidate billing portals by signing up through one of the available marketplaces.
 
-* [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) - Get up and running very quickly. Select your desired configuration and let Elastic deploy Elasticsearch, Kibana, and the Elastic products that you need for you. In a deployment, everything works together, everything runs on hardware that is optimized for your use case.
+* [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) - Get up and running very quickly. Select your desired configuration and let Elastic deploy {{es}}, {{kib}}, and the Elastic products that you need for you. In a deployment, everything works together, everything runs on hardware that is optimized for your use case.
 * [Connect your data to your deployment](/manage-data/ingest.md) - Ingest and index the data you want, from a variety of sources, and take action on it.
 
 **Adjust the capacity and capabilities of your deployments for production**
@@ -110,7 +68,13 @@ There are a few things that can help you make sure that your production deployme
 
 **Secure your environment**
 
-Control which users and services can access your deployments by [securing your environment](/deploy-manage/security/secure-your-cluster-deployment.md). [Add authentication mechanisms](/deploy-manage/users-roles.md), configure [traffic filtering](/deploy-manage/security/traffic-filtering.md) for private link, encrypt your deployment data and snapshots at rest [with your own key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md), [manage trust](/deploy-manage/remote-clusters.md) with {{es}} clusters from other environments, and more.
+:::{include} /deploy-manage/_snippets/ecloud-security.md
+:::
+
+Refer to [](/deploy-manage/security.md) for more details.
+
+:::{include} /deploy-manage/security/_snippets/complete-security.md
+:::
 
 **Monitor your deployments and keep them healthy**
 
@@ -120,13 +84,13 @@ Control which users and services can access your deployments by [securing your e
 
 Find more information about {{ech}} on the following pages:
 
-* [Subscription Levels](/deploy-manage/license.md)
-* [Version Policy](/deploy-manage/deploy/elastic-cloud/available-stack-versions.md)
-* [{{ech}} Hardware](cloud://reference/cloud-hosted/hardware.md)
-* [{{ech}} Regions](cloud://reference/cloud-hosted/regions.md)
-* [Service Status](/deploy-manage/cloud-organization/service-status.md)
+* [](/deploy-manage/license.md)
+* [](/deploy-manage/deploy/elastic-cloud/available-stack-versions.md)
+* [{{ech}} hardware](cloud://reference/cloud-hosted/hardware.md)
+* [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)
+* [](/deploy-manage/cloud-organization/service-status.md)
 * [Getting help](/troubleshoot/index.md)
-* [Restrictions and known problems](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md)
+* [](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md)
 
 :::{dropdown} {{ech}} FAQ
 
@@ -135,8 +99,8 @@ $$$ec-faq-getting-started$$$
 This frequently-asked-questions list helps you with common questions while you get {{ech}} up and running for the first time. For questions about {{ech}} configuration options or billing, check the [Technical FAQ](/deploy-manage/index.md) and the [Billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq.md).
 
 * [What is {{ech}}?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-what)
-* [Is {{ech}}, formerly known as Elasticsearch Service, the same as Amazon’s {{es}} Service?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-aws-difference)
-* [Can I run the full Elastic Stack in {{ech}}?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-full-stack)
+* [Is {{ech}}, formerly known as {{es}} Service, the same as Amazon’s {{es}} Service?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-aws-difference)
+* [Can I run the full {{stack}} in {{ech}}?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-full-stack)
 * [Can I try {{ech}} for free?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-trial)
 * [What if I need to change the size of my {{es}} cluster at a later time?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-config)
 * [Do you offer support subscriptions?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-subscriptions)
@@ -144,20 +108,19 @@ This frequently-asked-questions list helps you with common questions while you g
 * [What is the difference between {{ech}} and the Amazon {{es}} Service?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-vs-aws)
 * [Can I use {{ech}} on platforms other than AWS?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-aws)
 * [Do you offer Elastic’s commercial products?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-elastic)
-* [Is my {{es}} cluster protected by X-Pack?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-x-pack)
 * [Is there a limit on the number of documents or indexes I can have in my cluster?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#faq-limit)
 
 $$$faq-what$$$**What is {{ech}}?**
-:   {{ech}} is hosted and managed {{es}} and {{kib}} brought to you by the creators of {{es}}. {{ech}} is part of Elastic Cloud and ships with features that you can only get from the company behind {{es}}, {{kib}}, {{beats}}, and {{ls}}. {{es}} is a full text search engine that suits a range of uses, from search on websites to big data analytics and more.
+:   {{ech}} is hosted and managed {{es}} and {{kib}} brought to you by the creators of {{es}}. {{ech}} is part of {{ecloud}} and ships with features that you can only get from the company behind {{es}}, {{kib}}, {{beats}}, and {{ls}}. {{es}} is a full text search engine that suits a range of uses, from search on websites to big data analytics and more.
 
-$$$faq-aws-difference$$$**Is {{ech}}, formerly known as Elasticsearch Service, the same as Amazon’s {{es}} Service?**
+$$$faq-aws-difference$$$**Is {{ech}}, formerly known as {{es}} Service, the same as Amazon’s {{es}} Service?**
 :   {{ech}} is not the same as the Amazon {{es}} service. To learn more about the differences, check our [AWS {{es}} Service](https://www.elastic.co/aws-elasticsearch-service) comparison.
 
-$$$faq-full-stack$$$**Can I run the full Elastic Stack in {{ech}}?**
-:   Many of the products that are part of the Elastic Stack are readily available in {{ech}}, including {{es}}, {{kib}}, plugins, and features such as monitoring and security. Use other Elastic Stack products directly with {{ech}}. For example, both Logstash and Beats can send their data to {{ech}}. What is run is determined by the [subscription level](https://www.elastic.co/cloud/as-a-service/subscriptions).
+$$$faq-full-stack$$$**Can I run the full {{stack}} in {{ech}}?**
+:   Many of the products that are part of the {{stack}} are readily available in {{ech}}, including {{es}}, {{kib}}, plugins, and features such as monitoring and security. Use other {{stack}} products directly with {{ech}}. For example, both Logstash and Beats can send their data to {{ech}}. What is run is determined by the [subscription level](https://www.elastic.co/cloud/as-a-service/subscriptions).
 
 $$$faq-trial$$$**Can I try {{ech}} for free?**
-:   Yes, sign up for a 14-day free trial. The trial starts the moment a cluster is created. During the free trial period get access to a deployment to explore Elastic solutions for Search, Observability, Security, or the latest version of the Elastic Stack.
+:   Yes, sign up for a 14-day free trial. The trial starts the moment a cluster is created. During the free trial period get access to a deployment to explore Elastic solutions for Search, Observability, Security, or the latest version of the {{stack}}.
 
 
 $$$faq-config$$$**What if I need to change the size of my {{es}} cluster at a later time?**
@@ -167,12 +130,12 @@ $$$faq-subscriptions$$$**Do you offer support?**
 :   Yes, all subscription levels for {{ech}} include support, handled by email or through the Elastic Support Portal. Different subscription levels include different levels of support. For the Standard subscription level, there is no service-level agreement (SLA) on support response times. Gold and Platinum subscription levels include an SLA on response times to tickets and dedicated resources. To learn more, check [Getting Help](/troubleshoot/index.md).
 
 $$$faq-where$$$**Where are deployments hosted?**
-:   We host our {{es}} clusters on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. Check out which [regions we support](https://www.elastic.co/guide/en/cloud/current/ec-reference-regions.html) and what [hardware we use](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html). New data centers are added all the time.
+:   We host our {{es}} clusters on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. Check out which [regions we support](cloud://reference/cloud-hosted/regions.md) and what [hardware we use](cloud://reference/cloud-hosted/hardware.md). New data centers are added all the time.
 
 $$$faq-vs-aws$$$**What is the difference between {{ech}} and the Amazon {{es}} Service?**
 :   {{ech}} is the only hosted and managed {{es}} service built, managed, and supported by the company behind {{es}}, {{kib}}, {{beats}}, and {{ls}}. With {{ech}}, you always get the latest versions of the software. Our service is built on best practices and years of experience hosting and managing thousands of {{es}} clusters in the Cloud and on premise. For more information, check the following Amazon and Elastic {{es}} Service [comparison page](https://www.elastic.co/aws-elasticsearch-service).
 
-    Please note that there is no formal partnership between Elastic and Amazon Web Services (AWS), and Elastic does not provide any support on the AWS {{es}} Service.
+    Note that there is no formal partnership between Elastic and Amazon Web Services (AWS), and Elastic does not provide any support on the AWS {{es}} Service.
 
 
 $$$faq-aws$$$**Can I use {{ech}} on platforms other than AWS?**
@@ -191,13 +154,9 @@ $$$faq-elastic$$$**Do you offer Elastic’s commercial products?**
 
     [Contact us](https://www.elastic.co/cloud/contact) to learn more.
 
-
-$$$faq-x-pack$$$**Is my Elasticsearch cluster protected by X-Pack?**
-:   Yes, X-Pack security features offer the full power to protect your {{ech}} deployment with basic authentication and role-based access control.
-
 $$$faq-limit$$$**Is there a limit on the number of documents or indexes I can have in my cluster?**
 :   No. We do not enforce any artificial limit on the number of indexes or documents you can store in your cluster.
 
-    That said, there is a limit to how many indexes Elasticsearch can cope with. Every shard of every index is a separate Lucene index, which in turn comprises several files. A process cannot have an unlimited number of open files. Also, every shard has its associated control structures in memory. So, while we will let you make as many indexes as you want, there are limiting factors. Our larger plans provide your processes with more dedicated memory and CPU-shares, so they are capable of handling more indexes. The number of indexes or documents you can fit in a given plan therefore depends on their structure and use.
+    That said, there is a limit to how many indexes {{es}} can cope with. Every shard of every index is a separate Lucene index, which in turn comprises several files. A process cannot have an unlimited number of open files. Also, every shard has its associated control structures in memory. So, while we will let you make as many indexes as you want, there are limiting factors. Our larger plans provide your processes with more dedicated memory and CPU-shares, so they are capable of handling more indexes. The number of indexes or documents you can fit in a given plan therefore depends on their structure and use.
 
 :::

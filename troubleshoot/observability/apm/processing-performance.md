@@ -19,7 +19,7 @@ We tested several scenarios to help you understand how to size the APM Server so
 
 * For each hardware template, testing with several sizes: 1 GB, 4 GB, 8 GB, and 32 GB.
 * For each size, using a fixed number of APM agents: 10 agents for 1 GB, 30 agents for 4 GB, 60 agents for 8 GB, and 240 agents for 32 GB.
-* In all scenarios, using medium sized events. Events include [transactions](../../../solutions/observability/apps/transactions.md) and [spans](../../../solutions/observability/apps/spans.md).
+* In all scenarios, using medium sized events. Events include [transactions](/solutions/observability/apm/transactions.md) and [spans](/solutions/observability/apm/spans.md).
 
 ::::{note}
 You will also need to scale up {{es}} accordingly, potentially with an increased number of shards configured. For more details on scaling {{es}}, refer to the [{{es}} documentation](../../../deploy-manage/index.md).
@@ -43,5 +43,5 @@ RUM deserves special consideration. The RUM agent runs in browsers, and there ca
 ::::
 
 
-Alternatively or in addition to scaling the APM Server, consider decreasing the ingestion volume. Read more in [Reduce storage](../../../solutions/observability/apps/reduce-storage.md).
+Alternatively or in addition to scaling the APM Server, consider decreasing the ingestion volume. Read more in [Reduce storage](/solutions/observability/apm/reduce-storage.md).
 

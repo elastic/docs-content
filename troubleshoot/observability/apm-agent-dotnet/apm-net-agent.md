@@ -12,10 +12,10 @@ applies_to:
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions. As a first step, ensure your stack is compatible with the Agent’s [supported technologies](apm-agent-dotnet://reference/supported-technologies.md).
 
-Don’t worry if you can’t figure out what the problem is; we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If not, post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
+Don’t worry if you can’t figure out what the problem is; we’re here to help. If you are an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If not, post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
 
 ::::{important}
-**Please attach your debug logs** so that we can analyze the problem. Upload the **complete** logs to a service like [https://gist.github.com](https://gist.github.com). The logs should include everything from the application startup up until the first request has been executed.
+**Attach your debug logs** so that we can analyze the problem. Upload the **complete** logs to a service like [https://gist.github.com](https://gist.github.com). The logs should include everything from the application startup up until the first request has been executed.
 ::::
 
 
@@ -147,7 +147,7 @@ namespace MyApp
 }
 ```
 
-During initialization, the agent checks if an additional logger was configured-- the agent only does this once, so it’s important to set it as early in the process as possible, typically in the `Application_Start` method.
+During initialization, the agent checks if an additional logger was configured—the agent only does this once, so it’s important to set it as early in the process as possible, typically in the `Application_Start` method.
 
 
 ### General .NET applications [collect-logs-general]

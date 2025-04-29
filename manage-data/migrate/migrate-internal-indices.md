@@ -2,7 +2,6 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-data-internal.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data-internal.html
-applies:
 applies_to:
   stack: ga
   deployment:

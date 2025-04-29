@@ -30,7 +30,7 @@ This guide describes how to use Elastic {{observability}} to observe all layers 
 * Centralize the data in the {{stack}}
 * Explore the data in real-time using tailored dashboards and {{observability}} UIs
 
-This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html).
+This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md).
 
 
 ## Monitoring architecture [kubernetes-monitoring-architecture]
@@ -207,7 +207,7 @@ Collecting metrics from `kube-state-metrics` is on by default. The `kube-state-m
 
 With the Kubernetes integration, you can collect a number of metrics using the `kube-state-metrics`. Expand the following list to see all available metrics from `kube-state-metrics`.
 
-::::{dropdown} Expand to see available metrics from `kube-state-metrics`
+::::{dropdown} Expand to see available metrics from kube-state-metrics
 **Container metrics**
 :   Monitor Container performance to ensure efficiency and stability in pods. Learn more at [`kube-state-metrics` container metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_container).
 
@@ -543,10 +543,10 @@ There are many ways to deploy APM when working with Kubernetes, but this guide a
 If you want to manage APM yourself, there are a few alternative options:
 
 ::::{dropdown} Expand alternatives
-* [{{ecloud}} on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/) — The Elastic recommended approach for managing APM Server deployed with Kubernetes. Built on the Kubernetes Operator pattern, ECK extends basic Kubernetes orchestration capabilities to support the setup and management of APM Server on Kubernetes.
+* [{{ecloud}} on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md) — The Elastic recommended approach for managing APM Server deployed with Kubernetes. Built on the Kubernetes Operator pattern, ECK extends basic Kubernetes orchestration capabilities to support the setup and management of APM Server on Kubernetes.
 * Deploy APM Server as a DaemonSet — Ensure a running instance of APM Server on each node in your cluster. Useful when all pods in a node should share a single APM Server instance.
 * Deploy APM Server as a sidecar — For environments that should not share an APM Server, like when directing traces from multiple applications to separate {{es}} clusters.
-* [Download and install APM Server](../apps/get-started-with-apm.md) — The classic, non-Kubernetes option.
+* [Download and install APM Server](/solutions/observability/apm/get-started.md) — The classic, non-Kubernetes option.
 
 ::::
 
@@ -554,7 +554,7 @@ If you want to manage APM yourself, there are a few alternative options:
 
 ### Step 2: Save your secret token [_step_2_save_your_secret_token]
 
-A [secret token](../apps/secret-token.md) is used to secure communication between APM agents and APM Server. To create or update your secret token in {{kib}}:
+A [secret token](/solutions/observability/apm/secret-token.md) is used to secure communication between APM agents and APM Server. To create or update your secret token in {{kib}}:
 
 1. Find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Agent policies** tab, select the policy you would like to configure.
@@ -571,7 +571,7 @@ kubectl create secret generic apm-secret --from-literal=ELASTIC_APM_SECRET_TOKEN
 1. Create the secret in the same namespace that you’ll be deploying your applications in.
 
 
-If you’re managing APM Server yourself, see [secret token](../apps/secret-token.md) for instructions on how to set up your secret token.
+If you’re managing APM Server yourself, see [secret token](/solutions/observability/apm/secret-token.md) for instructions on how to set up your secret token.
 
 If you are using ECK to set up APM Server, the operator automatically generates an `{{APM-server-name}}-apm-token` secret for you.
 

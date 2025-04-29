@@ -7,7 +7,7 @@ applies_to:
 
 # Upgrade {{kib}} [upgrade-kibana]
 
-When you upgrade {{kib}}, you also upgrade the {{observability}} and {{elastic-sec}} solutions, which use {{kib}} as their main interface. 
+When you upgrade {{kib}}, you also upgrade the {{observability}} and {{elastic-sec}} solutions, which use {{kib}} as their main interface.
 
 ::::{warning}
 {{kib}} automatically runs saved object migrations when required. To roll back to an earlier version in case of an upgrade failure, you **must** have a [backup snapshot](../../tools/snapshot-and-restore.md) that includes the `kibana` feature state. Snapshots include this feature state by default.
@@ -77,4 +77,4 @@ To upgrade {{kib}}:
 
 ## Next steps
 
-Once you've successfully upgraded {{kib}}, [upgrade Elastic APM](../../../solutions/observability/apps/upgrade.md), then [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md).  
+Once you've successfully upgraded {{kib}}, [upgrade Elastic APM](/solutions/observability/apm/upgrade.md), then [upgrade your ingest components](/deploy-manage/upgrade/ingest-components.md).

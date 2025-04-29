@@ -119,4 +119,4 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
 ## Next steps [elasticsearch-next-steps]
 
 * Once you’ve added data to your {{es-serverless}} project, you can use [Playground](rag/playground.md) to test and tweak {{es}} queries and chat with your data, using GenAI.
-* You can also try our hands-on [quick start tutorials](https://www.elastic.co/guide/en/elasticsearch/reference/current/quickstart.html#quickstart-list) in the core {{es}} documentation.
+* You can also try our hands-on [quick start tutorials](/solutions/search/api-quickstarts.md) in the core {{es}} documentation.

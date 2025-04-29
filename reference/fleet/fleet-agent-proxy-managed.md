@@ -14,7 +14,7 @@ This page describes where a proxy server is allowed in your deployment and how t
 {{fleet}} central management enables you to define your proxy servers and then configure an output or the {{fleet-server}} to be reachable through any of these proxies. This also enables you to modify the proxy server details if needed without having to re-install {{agents}}.
 
 :::{image} images/agent-proxy-server-managed-deployment.png
-:alt: Image showing connections between {{fleet}} managed {agent}
+:alt: Image showing connections between {{fleet}} managed {{agent}}
 :::
 
 In this scenario Fleet Server and Elasticsearch are deployed in {{ecloud}} and reachable on port 443.
@@ -76,7 +76,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
     :::::{admonition}
     ::::{warning}
-    If agents are unable to reach the configured proxy server, they will not be able to write data to the output that has the proxy server configured. When changing the proxy of an output, please ensure that the affected agents all have connectivity to the proxy itself.
+    If agents are unable to reach the configured proxy server, they will not be able to write data to the output that has the proxy server configured. When changing the proxy of an output, ensure that the affected agents all have connectivity to the proxy itself.
     ::::
 
 
@@ -99,7 +99,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
     :::::{admonition}
     ::::{warning}
-    If agents are unable to reach the configured proxy server, they will not be able to download binaries from the agent download source that has the proxy server configured. When changing the proxy of an agent binary source, please ensure that the affected agents all have connectivity to the proxy itself.
+    If agents are unable to reach the configured proxy server, they will not be able to download binaries from the agent download source that has the proxy server configured. When changing the proxy of an agent binary source, ensure that the affected agents all have connectivity to the proxy itself.
     ::::
 
 

@@ -9,7 +9,7 @@ mapped_pages:
 
 # The {{stack}}
 
-This section provides an overview of the {{stack}} and its components — powered by [{{es}} and {{kib}}](introduction.md).
+This section provides an overview of the {{stack}} and its components.
 
 $$$kibana-navigation-search$$$
 
@@ -45,7 +45,7 @@ Trying to decide which ingest component to use? Refer to [Adding data to {{es}}]
 
 #### APM [stack-components-apm]
 
-Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly. [Learn more about APM](/solutions/observability/apps/application-performance-monitoring-apm.md).
+Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly. [Learn more about APM](/solutions/observability/apm/index.md).
 
 #### {{beats}} [stack-components-beats]
 
@@ -77,7 +77,7 @@ Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use t
 
 #### {{es}} clients [stack-components-elasticsearch-clients]
 
-The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others. Both official and community contributed clients are available. [Learn more about the {{es}} clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
+The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others. Both official and community contributed clients are available. [Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
 
 ## Version compatibility
 ```{applies_to}

@@ -111,7 +111,7 @@ You can also consume logs using [stack monitoring](/deploy-manage/monitor/stack-
 
 You can also collect and index the following types of logs from other components in your deployments:
 
-[**APM**](/solutions/observability/apps/configure-logging.md)
+[**APM**](/solutions/observability/apm/configure-logging.md)
 
 * `apm*.log*`
 

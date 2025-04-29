@@ -40,4 +40,4 @@ You can update the settings for an installed integration at any time:
 If you haven’t deployed any {{agent}}s yet or set up agent policies, start with one of our quick start guides:
 
 * [Get started with logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
-* [Get started with application traces and APM](/solutions/observability/apps/get-started-with-apm.md)
+* [Get started with application traces and APM](/solutions/observability/apm/get-started.md)

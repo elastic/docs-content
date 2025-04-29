@@ -54,7 +54,7 @@ In this step, you load the data that you later use to create embeddings from it.
 
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
-Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names**, assign `id` to the first column and `content` to the second. Click **Apply**, then **Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ## Reindex the data [semantic-text-reindex-data]
@@ -127,7 +127,7 @@ GET semantic-embeddings/_search
 :::{tab-item} ES|QL
 :sync: esql
 
-The ES|QL approach uses the [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators), which automatically detects the `semantic_text` field and performs the search on it. The query uses `METADATA _score` to sort by `_score` in descending order.
+The ES|QL approach uses the [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator), which automatically detects the `semantic_text` field and performs the search on it. The query uses `METADATA _score` to sort by `_score` in descending order.
 
 
 ```console
@@ -142,7 +142,7 @@ POST /_query?format=txt
 }
 ```
 1. The `METADATA _score` clause is used to return the score of each document
-2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-operators) is used on the `content` field for standard keyword matching
+2. The [match (`:`) operator](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) is used on the `content` field for standard keyword matching
 3. Sorts by descending score to display the most relevant results first
 4. Limits the results to 1000 documents
 

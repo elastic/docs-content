@@ -94,7 +94,7 @@ To add a new integration to one or more {{agent}} policies:
 6. In Step 2 on the page, you have two options:
 
     1. If you’d like to create a new policy for your {{agent}}s, on the **New hosts** tab specify a name for the new agent policy and choose whether or not to collect system logs and metrics. Collecting logs and metrics will add the System integration to the new agent policy.
-    2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you’d like to add the integration to. Please note this this feature, known as "reusable integrations", requires an [Enterprise subscription](https://www.elastic.co/subscriptions).
+    2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you’d like to add the integration to. Note this this feature, known as "reusable integrations", requires an [Enterprise subscription](https://www.elastic.co/subscriptions).
 
 7. Click **Save and continue** to confirm your settings.
 

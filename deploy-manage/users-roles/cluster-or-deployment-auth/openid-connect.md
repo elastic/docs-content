@@ -64,7 +64,7 @@ If you're using a self-managed cluster, then perform the following additional st
 
 * Enable the token service.
 
-    The {{es}} OIDC implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your `elasticsearch.yml` file:
+    The {{es}} OIDC implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
     ```yaml
     xpack.security.authc.token.enabled: true
@@ -78,7 +78,7 @@ OpenID Connect based authentication is enabled by configuring the appropriate re
 
 This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [OpenID Connect realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings). This guide will explore the most common settings.
 
-1. Create an OpenID Connect (the realm type is `oidc`) realm in your `elasticsearch.yml` file similar to what is shown below.
+1. Create an OpenID Connect (the realm type is `oidc`) realm in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file similar to what is shown below.
 
     If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
@@ -350,7 +350,7 @@ You can't use [role mapping files](/deploy-manage/users-roles/cluster-or-deploym
 
 ### Example: using the role mapping API
 
-If you want all your users authenticating with OpenID Connect to get access to Kibana, issue the following request to Elasticsearch:
+If you want all your users authenticating with OpenID Connect to get access to {{kib}}, issue the following request to {{es}}:
 
 ```sh
 POST /_security/role_mapping/CLOUD_OIDC_TO_KIBANA_ADMIN <1>
@@ -415,7 +415,7 @@ OpenID Connect authentication in {{kib}} requires additional settings in additio
 
 If you're using a self-managed cluster, then, because OIDC requires {{es}} nodes to use TLS on the HTTP interface, you must configure {{kib}} to use a `https` URL to connect to {{es}}, and you may need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates that {{es}} has been configured to use.
 
-OpenID Connect authentication in {{kib}} is subject to the following timeout settings in `kibana.yml`:
+OpenID Connect authentication in {{kib}} is subject to the following timeout settings in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 * [`xpack.security.session.idleTimeout`](/deploy-manage/security/kibana-session-management.md#session-idle-timeout)
 * [`xpack.security.session.lifespan`](/deploy-manage/security/kibana-session-management.md#session-lifespan)
@@ -440,10 +440,10 @@ xpack.security.authc.providers:
 The configuration values used in the example above are:
 
 `xpack.security.authc.providers`
-:   Add an `oidc` provider to instruct {{kib}} to use OpenID Connect single sign-on as the authentication method. This instructs Kibana to attempt to initiate an SSO flow every time a user attempts to access a URL in {{kib}}, if the user is not already authenticated.
+:   Add an `oidc` provider to instruct {{kib}} to use OpenID Connect single sign-on as the authentication method. This instructs {{kib}} to attempt to initiate an SSO flow every time a user attempts to access a URL in {{kib}}, if the user is not already authenticated.
 
 `xpack.security.authc.providers.oidc.<provider-name>.realm`
-:   The name of the OpenID Connect realm in {{es}} that should handle authentication for this Kibana instance.
+:   The name of the OpenID Connect realm in {{es}} that should handle authentication for this {{kib}} instance.
 
 ### Supporting OIDC and basic authentication in {{kib}}
 
@@ -529,7 +529,7 @@ On a high level, the custom web application would need to perform the following 
     }
     ```
 
-    Elasticsearch will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests and a refresh token that can be later used to refresh the given access token as described in [Get token](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
+    {{es}} will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests and a refresh token that can be later used to refresh the given access token as described in [Get token](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
 
 4. At some point, if necessary, the custom web application can log the user out by using the [OIDC logout API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-logout) passing the access token and refresh token as parameters. For example:
 

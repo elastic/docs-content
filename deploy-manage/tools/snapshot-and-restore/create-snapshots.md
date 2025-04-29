@@ -56,7 +56,7 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 {{slm-cap}} ({{slm-init}}) is the easiest way to regularly back up a cluster. An {{slm-init}} policy automatically takes snapshots on a preset schedule. The policy can also delete snapshots based on retention rules you define.
 
 ::::{tip}
-Elastic Cloud Hosted deployments automatically include the `cloud-snapshot-policy` {{slm-init}} policy. Elastic Cloud Hosted uses this policy to take periodic snapshots of your cluster. For more information, see the [Manage snapshot repositories in Elastic Cloud Hosted documentation](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
+{{ech}} deployments automatically include the `cloud-snapshot-policy` {{slm-init}} policy. {{ech}} uses this policy to take periodic snapshots of your cluster. For more information, see the [Manage snapshot repositories in {{ech}} documentation](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 ::::
 
 ### {{slm-init}} security [slm-security]
@@ -111,7 +111,7 @@ POST _security/role/slm-read-only
 
 ### Create an {{slm-init}} policy [create-slm-policy]
 
-To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore*** > ***Policies**. To create a policy, click **Create policy**.
+To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**. To create a policy, click **Create policy**.
 
 You can also manage {{slm-init}} using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm). To create a policy, use the [create {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle).
 

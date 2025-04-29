@@ -537,7 +537,7 @@ $$$glossary-no-op$$$ no-op
 
 $$$glossary-node$$$ node
 :   1. A single {{es}} server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
-2. In {{eck}}, it can refer to either an [Elasticsearch Node](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html) or a [Kubernetes Node](https://kubernetes.io/docs/concepts/architecture/nodes/) depending on the context. ECK maps an Elasticsearch node to a Kubernetes Pod which can get scheduled onto any available Kubernetes node that can satisfy the [resource requirements](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md) and [node constraints](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) defined in the [pod template](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md).
+2. In {{eck}}, it can refer to either an [Elasticsearch Node](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) or a [Kubernetes Node](https://kubernetes.io/docs/concepts/architecture/nodes/) depending on the context. ECK maps an Elasticsearch node to a Kubernetes Pod which can get scheduled onto any available Kubernetes node that can satisfy the [resource requirements](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md) and [node constraints](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) defined in the [pod template](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md).
 
 $$$NodeSet$$$NodeSet
 :   A set of Elasticsearch nodes that share the same Elasticsearch configuration and a Kubernetes Pod template. Multiple NodeSets can be defined in the Elasticsearch CRD to achieve a cluster topology consisting of groups of Elasticsearch nodes with different node roles, resource requirements and hardware configurations (Kubernetes node constraints).
@@ -712,7 +712,7 @@ $$$glossary-space$$$ space
 :   A place for organizing [dashboards](/reference/glossary/index.md#glossary-dashboard), [visualizations](/reference/glossary/index.md#glossary-visualization), and other [saved objects](/reference/glossary/index.md#glossary-saved-object) by category. For example, you might have different spaces for each team, use case, or individual. See [Spaces](/deploy-manage/manage-spaces.md).
 
 $$$glossary-span$$$ span
-:   Information about the execution of a specific code path. [Spans](/solutions/observability/apps/spans.md) measure from the start to the end of an activity and can have a parent/child relationship with other spans.
+:   Information about the execution of a specific code path. [Spans](/solutions/observability/apm/spans.md) measure from the start to the end of an activity and can have a parent/child relationship with other spans.
 
 $$$glossary-split$$$ split
 :   Adds more [primary shards](/reference/glossary/index.md#glossary-primary-shard) to an [index](/reference/glossary/index.md#glossary-index).
@@ -772,7 +772,7 @@ $$$glossary-trained-model$$$ trained model
 :   A {{ml}} model that is trained and tested against a labeled data set and can be referenced in an ingest pipeline or in a pipeline aggregation to perform {{classification}} or {{reganalysis}} or [{{nlp}}](/reference/glossary/index.md#glossary-nlp) on new data.
 
 $$$glossary-transaction$$$ transaction
-:   A special kind of [span](/reference/glossary/index.md#glossary-span) that has additional attributes associated with it. [Transactions](/solutions/observability/apps/transactions.md) describe an event captured by an Elastic [APM agent](/reference/glossary/index.md#glossary-apm-agent) instrumenting a service.
+:   A special kind of [span](/reference/glossary/index.md#glossary-span) that has additional attributes associated with it. [Transactions](/solutions/observability/apm/transactions.md) describe an event captured by an Elastic [APM agent](/reference/glossary/index.md#glossary-apm-agent) instrumenting a service.
 
 $$$glossary-tsvb$$$ TSVB
 :   A time series data visualizer that allows you to combine an infinite number of aggregations to display complex data. See [TSVB](/explore-analyze/dashboards.md).

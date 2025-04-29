@@ -93,8 +93,9 @@ You can configure {{kib}} to automatically discard all corrupt objects and trans
 migrations.discardCorruptObjects: "8.4.0"
 ```
 
-**WARNING:** Enabling the flag above will cause the system to discard all corrupt objects, as well as those causing transform errors. Thus, it is HIGHLY recommended that you carefully review the list of conflicting objects in the logs.
-
+:::{warning}
+Enabling the flag above will cause the system to discard all corrupt objects, as well as those causing transform errors. Thus, it is HIGHLY recommended that you carefully review the list of conflicting objects in the logs.
+:::
 
 ## Documents for unknown saved objects [unknown-saved-object-types]
 

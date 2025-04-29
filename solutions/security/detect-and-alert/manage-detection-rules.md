@@ -105,7 +105,7 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
     To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) rule actions, go to the **Actions** tab and click the bell icon.
     ::::
 
-4. If available, select **Overwrite all selected *x*** to overwrite the settings on the rules. For example, if you’re adding tags to multiple rules, selecting **Overwrite all selected rules tags** removes all the rules' original tags and replaces them with the tags you specify.
+4. If available, select **Overwrite all selected _x_** to overwrite the settings on the rules. For example, if you’re adding tags to multiple rules, selecting **Overwrite all selected rules tags** removes all the rules' original tags and replaces them with the tags you specify.
 5. Click **Save**.
 
 

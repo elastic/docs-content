@@ -27,7 +27,7 @@ The **Filter by** section controls the scope of the rule. The rule will only che
 
 ## Conditions [observability-monitor-status-alert-conditions]
 
-Conditions for each rule will be applied to all monitors that match the filters in the [**Filter by** section](../../../solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-filters). You can choose the number of times the monitor has to be down relative to either a number of checks run or a time range in which checks were run, and the minimum number of locations the monitor must be down in.
+Conditions for each rule will be applied to all monitors that match the filters in the [**Filter by** section](/solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-filters). You can choose the number of times the monitor has to be down relative to either a number of checks run or a time range in which checks were run, and the minimum number of locations the monitor must be down in.
 
 ::::{note}
 Retests are included in the number of checks.
@@ -51,25 +51,25 @@ In this example, the conditions will be met any time a `browser` monitor is down
 
 Extend your rules by connecting them to actions that use the following supported built-in integrations.
 
-* [Cases](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html)
-* [D3 Security](https://www.elastic.co/guide/en/kibana/current/d3security-action-type.html)
-* [Email](https://www.elastic.co/guide/en/kibana/current/email-action-type.html)
-* [{{ibm-r}}](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html)
-* [Index](https://www.elastic.co/guide/en/kibana/current/index-action-type.html)
-* [Jira](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html)
-* [Microsoft Teams](https://www.elastic.co/guide/en/kibana/current/teams-action-type.html)
-* [Observability AI Assistant](https://www.elastic.co/guide/en/kibana/current/obs-ai-assistant-action-type.html)
-* [{{opsgenie}}](https://www.elastic.co/guide/en/kibana/current/opsgenie-action-type.html)
-* [PagerDuty](https://www.elastic.co/guide/en/kibana/current/pagerduty-action-type.html)
-* [Server log](https://www.elastic.co/guide/en/kibana/current/server-log-action-type.html)
-* [{{sn-itom}}](https://www.elastic.co/guide/en/kibana/current/servicenow-itom-action-type.html)
-* [{{sn-itsm}}](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html)
-* [{{sn-sir}}](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html)
-* [Slack](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html)
-* [{{swimlane}}](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html)
-* [Torq](https://www.elastic.co/guide/en/kibana/current/torq-action-type.html)
-* [{{webhook}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html)
-* [xMatters](https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html)
+* [Cases](kibana://reference/connectors-kibana/cases-action-type.md)
+* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -111,7 +111,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.checkedAt`
 :   Timestamp of the monitor run.
@@ -174,7 +174,7 @@ serverless: unavailable
 
 If you are using the Uptime monitor status rule with the Uptime app, you should migrate the Uptime monitor and the Uptime monitor status rule to Elastic Synthetics and the Synthetics monitor rule.
 
-If you are using the Uptime monitor status rule with a monitor created with Elastic Synthetics, you should migrate the Uptime monitor status rule to the Synthetics monitor rule. Learn how in [Migrate from the Uptime rule to the Synthetics rule](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule).
+If you are using the Uptime monitor status rule with a monitor created with Elastic Synthetics, you should migrate the Uptime monitor status rule to the Synthetics monitor rule. Learn how in [Migrate from the Uptime rule to the Synthetics rule](/solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule).
 
 ::::
 
@@ -217,7 +217,7 @@ The final step when creating a rule is to select one or more actions to take whe
 
 You can extend your rules by connecting them to actions that use the following supported built-in integrations. Actions are {{kib}} services or integrations with third-party systems that run as background tasks on the {{kib}} server when rule conditions are met.
 
-You can configure action types on the [Settings](../../../solutions/observability/apps/configure-settings.md#configure-uptime-alert-connectors) page.
+You can configure action types on the [Settings](/solutions/observability/uptime/configure-settings.md#configure-uptime-alert-connectors) page.
 
 :::{image} /solutions/images/observability-uptime-alert-connectors.png
 :alt: Uptime rule connectors
@@ -263,8 +263,8 @@ To receive a notification when the alert recovers, select **Run when Recovered**
 
 If you are currently using the Uptime monitor status with a monitor created with Elastic Synthetics, you should migrate the Uptime monitor status rule to:
 
-* If you were using the Uptime rule for **synthetic monitor *status* checks**, you can recreate similar functionality using the [Synthetics monitor rule](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-rule).
-* If you were using the Uptime rule for **synthetic monitor *availability* checks**, there is no equivalent in the Synthetics monitor rule. Instead, you can use the [Synthetics availability SLI](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli) to create similar functionality.
+* If you were using the Uptime rule for **synthetic monitor *status* checks**, you can recreate similar functionality using the [Synthetics monitor rule](/solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-rule).
+* If you were using the Uptime rule for **synthetic monitor *availability* checks**, there is no equivalent in the Synthetics monitor rule. Instead, you can use the [Synthetics availability SLI](/solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli) to create similar functionality.
 
 
 ### Uptime status check to Synthetics monitor rule [migrate-monitor-rule-synthetics-rule]
@@ -278,7 +278,7 @@ The KQL syntax that you used in the Uptime monitor status rule is also valid in 
 #### Conditions [monitor-status-alert-checks-conditions]
 
 ::::{note}
-If you are using the *Uptime availability condition* refer to [Uptime availability check to Synthetics availability SLI](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli).
+If you are using the *Uptime availability condition* refer to [Uptime availability check to Synthetics availability SLI](/solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli).
 
 ::::
 
@@ -293,12 +293,12 @@ If you’re using the Uptime status check condition, you can recreate similar ef
 
 #### Actions [monitor-status-alert-checks-actions]
 
-The default messages for the Uptime monitor status rule and Synthetics monitor status rule are different, but you can recreate similar messages using [Synthetics monitor status rule action variables](../../../solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-action-variables).
+The default messages for the Uptime monitor status rule and Synthetics monitor status rule are different, but you can recreate similar messages using [Synthetics monitor status rule action variables](/solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-action-variables).
 
 
 ### Uptime availability check to Synthetics availability SLI [migrate-monitor-rule-synthetics-sli]
 
-SLOs allow you to set clear, measurable targets for your service performance, based on factors like availability. The [Synthetics availability SLI](../../../solutions/observability/incident-management/create-an-slo.md#synthetics-availability-sli) is a service-level indicator (SLI) based on the availability of your synthetic monitors.
+SLOs allow you to set clear, measurable targets for your service performance, based on factors like availability. The [Synthetics availability SLI](/solutions/observability/incident-management/create-an-slo.md#synthetics-availability-sli) is a service-level indicator (SLI) based on the availability of your synthetic monitors.
 
 
 #### Filters [monitor-status-alert-checks-filters-uptime]
@@ -318,4 +318,4 @@ Use the following Synthetics availability SLI fields to replace the Uptime monit
 
 #### Actions [monitor-status-alert-checks-actions-uptime]
 
-After creating a new SLO using the Synthetics availability SLI, you can use the SLO burn rate rule. For more information about configuring the rule, see [Create an SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md).
+After creating a new SLO using the Synthetics availability SLI, you can use the SLO burn rate rule. For more information about configuring the rule, see [Create an SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md).

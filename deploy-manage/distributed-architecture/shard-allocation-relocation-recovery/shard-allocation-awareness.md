@@ -26,11 +26,11 @@ Learn more about [designing resilient clusters](../../production-guidance/availa
 
 To enable shard allocation awareness:
 
-1. Specify the location of each node with a [custom node attribute](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes). For example, if you want Elasticsearch to distribute shards across different racks, you might use an awareness attribute called `rack_id`.
+1. Specify the location of each node with a [custom node attribute](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes). For example, if you want {{es}} to distribute shards across different racks, you might use an awareness attribute called `rack_id`.
 
     You can set custom attributes in two ways:
 
-    * By editing the `elasticsearch.yml` config file:
+    * By editing the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file:
 
         ```yaml
         node.attr.rack_id: rack_one
@@ -42,7 +42,7 @@ To enable shard allocation awareness:
         ./bin/elasticsearch -Enode.attr.rack_id=rack_one
         ```
 
-2. Tell {{es}} to take one or more awareness attributes into account when allocating shards by setting `cluster.routing.allocation.awareness.attributes` in **every** master-eligible node’s `elasticsearch.yml` config file.
+2. Tell {{es}} to take one or more awareness attributes into account when allocating shards by setting `cluster.routing.allocation.awareness.attributes` in **every** master-eligible node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file.
 
     ```yaml
     cluster.routing.allocation.awareness.attributes: rack_id <1>

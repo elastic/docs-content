@@ -1,6 +1,6 @@
 # Plan your upgrade
 
-There are a number of things you need to plan for before performing the actual upgrade, so create a test plan. Consider the following recommendations: 
+There are several things you need to plan for before performing the actual upgrade, so create a test plan. Consider the following recommendations: 
 
 * Plan for an appropriate amount of time to complete the upgrade. Depending on your configuration and the size of your cluster, the process can take up to a few weeks or more to complete.
 * Consider opening a [support case](https://support.elastic.co/) with Elastic to alert our Elastic Support team of your system change. If you need additional assistance, [Elastic Consulting Services](https://www.elastic.co/consulting) provides the technical expertise and step-by-step approach for upgrading your Elastic deployment.
@@ -18,7 +18,7 @@ If you’re running {{es}} in FIPS 140-2 mode, we recommend using  [Bouncy Castl
 
 ## Conduct a component inventory
 
-It is very important to map all the components that are being used on the {{stack}}. When you upgrade your deployment, you also may need to upgrade all the other components. You should record whether each component is used, and if it is, also record the current version. While not comprehensive, here’s a list of components you should check: 
+It is very important to map all the components that are being used on the {{stack}}. When you upgrade your deployment, you also may need to upgrade all the other components. You should record whether any users use each component, and if so, also record the current version. While not comprehensive, here’s a list of components you should check: 
 
 * {{es}}
 * {{es}} Hadoop
@@ -77,8 +77,6 @@ Self-managed infrastructure – either on-prem or on public cloud, includes:
 * {{ece}} (ECE)
 * {{eck}} (ECK)
 
-For ECE and ECK, ensure the operator is running a version compatible with the {{stack}} version you’re upgrading to. If not, you need to upgrade that before you can upgrade your cluster. 
+For ECE and ECK, ensure the operator is running a version compatible with the {{stack}} version you’re upgrading to. If not, you need to upgrade that before [upgrading your cluster](/deploy-manage/upgrade/deployment-or-cluster.md). 
 
-If you’re running the {{stack}} on your own self-managed infrastructure, you must upgrade each component individually. 
-
-% Refer to the diagram below for a visualization of the different deployment methods. 
+If you’re running the {{stack}} on your own self-managed infrastructure, you must [upgrade each component individually](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md). 

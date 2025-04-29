@@ -1,5 +1,6 @@
 ---
 mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-with-elasticsearch.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data-the-search-api.html

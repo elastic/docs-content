@@ -119,7 +119,7 @@ To illustrate how these settings work in concert let us look at two examples whe
 * A 4000 GB disk will result in a shared cache sized at 3900 GB. 90% of 4000 GB is 3600 GB, leaving 400 GB headroom. The default `max_headroom` of 100 GB takes effect, and the result is therefore 3900 GB.
 * A 400 GB disk will result in a shared cache sized at 360 GB.
 
-You can configure the settings in `elasticsearch.yml`:
+You can configure the settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.searchable.snapshot.shared_cache.size: 4TB

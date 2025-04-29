@@ -355,7 +355,7 @@ Start {{agent}} with {{fleet-server}} (running on a custom CA). This example ass
 * `ca.crt`: Root CA certificate
 * `fleet-server.crt`: {{fleet-server}} certificate
 * `fleet-server.key`: {{fleet-server}} private key
-* `elasticsearch-ca.crt`: CA certificate to use to connect to {es}
+* `elasticsearch-ca.crt`: CA certificate to use to connect to {{es}}
 
 ```shell
 elastic-agent enroll \
@@ -483,7 +483,7 @@ If you installed {{agent}} from a DEB or RPM package, the `install` command will
 
 You must run this command as the root user (or Administrator on Windows) to write files to the correct locations. This command overwrites the `elastic-agent.yml` file in the agent directory.
 
-The syntax for running this command varies by platform. For platform-specific examples, refer to [*Install {{agent}}s*](/reference/fleet/install-elastic-agents.md).
+The syntax for running this command varies by platform. As well, various flavors of the agent install package are available, allowing you to control the installed package size on disk and the set of included components. For platform-specific examples and for details about the available flavors, refer to [*Install {{agent}}s*](/reference/fleet/install-elastic-agents.md).
 
 
 ### Synopsis [_synopsis_5]
@@ -754,7 +754,7 @@ Start {{agent}} with {{fleet-server}} (running on a custom CA). This example ass
 * `ca.crt`: Root CA certificate
 * `fleet-server.crt`: {{fleet-server}} certificate
 * `fleet-server.key`: {{fleet-server}} private key
-* `elasticsearch-ca.crt`: CA certificate to use to connect to {es}
+* `elasticsearch-ca.crt`: CA certificate to use to connect to {{es}}
 
 ```shell
 elastic-agent install \
