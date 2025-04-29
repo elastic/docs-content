@@ -299,17 +299,19 @@ When a trace originates in Service A and then calls Service B, the sampling rate
   service.name: B
 - sample_rate: 0.5
   service.name: A
-- sample_rate: 1.0  # Fallback: always set a default
+- sample_rate: 0.1  # Fallback: always set a default
 ```
 
 - Because Service A is the root of the trace, its policy (0.5) is applied while Service B's policy (0.3) is ignored.
 - If instead the trace began in Service B (and then passed to Service A), the policy for Service B would apply.
 
-> **Key point**: Tail‑based sampling rules are evaluated at the *trace level* based on which service initiated the distributed trace, not the service of the transaction or span.
+:::{note}
+Tail‑based sampling rules are evaluated at the *trace level* based on which service initiated the distributed trace, not the service of the transaction or span.
+:::
 
 ### Example configuration 3 [_example_configuration_3]
 
-Policies are evaluated **in order** and applies the first one whose match conditions are all met. That means, in practice, order policies from most specific (narrow matchers) to most general, ending with a catch-all (fallback).
+Policies are evaluated **in order** and the first one that meets all match conditions is applied. That means, in practice, order policies from most specific (narrow matchers) to most general, ending with a catch-all (fallback).
 
 ```yaml
 # Example A: prioritize service origin, then failures
@@ -317,14 +319,16 @@ Policies are evaluated **in order** and applies the first one whose match condit
   service.name: A
 - sample_rate: 0.5
   trace.outcome: failure
-- sample_rate: 1.0  # catch-all
+- sample_rate: 0.1  # catch-all
+```
 
+```yaml
 # Example B: prioritize failures, then a specific service
 - sample_rate: 0.2
   trace.outcome: failure
 - sample_rate: 0.5
-  service.name: alice
-- sample_rate: 1.0
+  service.name: A
+- sample_rate: 0.1
 ```
 
 - In Example A, traces from Service A are sampled at 20%, and all other failed traces (regardless of service) are sampled at 50%.
