@@ -273,5 +273,5 @@ In addition to being more complicated (date histogram and a terms aggregation, p
 
 ## Conclusion [_conclusion]
 
-This quickstart should have provided a concise overview of the core functionality that Rollup exposes. There are more tips and things to consider when setting up Rollups, which you can find throughout the rest of this section. You may also explore the [REST API](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-api-quickref.html) for an overview of what is available.
+This quickstart should have provided a concise overview of the core functionality that Rollup exposes. There are more tips and things to consider when setting up Rollups, which you can find throughout the rest of this section. You may also explore the [REST API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-jobs) for an overview of what is available.
 

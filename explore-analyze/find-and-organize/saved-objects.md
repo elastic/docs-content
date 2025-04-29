@@ -167,7 +167,7 @@ When you import a saved object and it is created with a different ID, if 1. it c
 If you are using the saved objects APIs directly, you should be aware of these changes:
 
 ::::{warning}
-Some of the saved objects APIs are deprecated since version 8.7.0. For more information, refer to the [API docs](https://www.elastic.co/guide/en/kibana/current/saved-objects-api.html)
+Some of the saved objects APIs are deprecated since version 8.7.0. For more information, refer to the [API docs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects)
 ::::
 
 

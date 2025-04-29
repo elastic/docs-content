@@ -70,7 +70,7 @@ $$$ec-restrictions-apis-kibana$$$
 * {{es}} plugins, are not enabled by default for security purposes. Reach out to support if you would like to enable {{es}} plugins support on your account.
 * Some {{es}} plugins do not apply to {{ecloud}}. For example, you won’t ever need to change discovery, as {{ecloud}} handles how nodes discover one another.
 % * In {{es}} 5.0 and later, site plugins are no longer supported. This change does not affect the site plugins {{ecloud}} might provide out of the box, such as Kopf or Head, since these site plugins are serviced by our proxies and not {{es}} itself.
-% * In {{es}} 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html) if you want more detailed information or perform index management actions.
+% * In {{es}} 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](/manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) if you want more detailed information or perform index management actions.
 
 
 ## Watcher [ec-restrictions-watcher]

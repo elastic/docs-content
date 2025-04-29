@@ -8,5 +8,5 @@
 **Advanced options**
 
 * [**Self-managed**](/deploy-manage/deploy/self-managed.md): Install, configure, and run Elastic on your own premises.
-* [**{{ece}}**](https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html): Deploy {{ecloud}} on public or private clouds, virtual machines, or your own premises.
+* [**{{ece}}**](/deploy-manage/deploy/cloud-enterprise.md): Deploy {{ecloud}} on public or private clouds, virtual machines, or your own premises.
 * [**{{eck}}**](/deploy-manage/deploy/cloud-on-k8s.md): Deploy {{eck}}.

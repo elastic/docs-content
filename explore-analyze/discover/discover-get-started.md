@@ -28,7 +28,7 @@ Select the data you want to explore, and then specify the time range in which to
 1. Find **Discover** in the navigation menu or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the data you want to explore.
    ::::{tip}
-   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
+   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
    You can also [try {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
@@ -69,7 +69,7 @@ You can later filter the data that shows in the chart and in the table by specif
 3. Select the **Plus** icon to add fields to the results table. You can also drag them from the list into the table.
 
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
-   
+
    When you add fields to the table, the **Summary** column is replaced.
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
@@ -127,7 +127,7 @@ In the following example, we’re adding 2 fields: A simple "Hello world" field,
 If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
 
 1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
-   
+
    ![Top values for the day_of_week field](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
 
 2. In the popup, click **Visualize**.

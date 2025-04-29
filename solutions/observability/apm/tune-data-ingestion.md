@@ -27,7 +27,7 @@ Large payloads may result in request timeouts. You can reduce the payload size b
 
 Optionally you can also [reduce the sample rate](/solutions/observability/apm/reduce-storage.md#apm-reduce-sample-rate) or [reduce the amount of stack traces](/solutions/observability/apm/reduce-storage.md#observability-apm-reduce-stacktrace).
 
-Read more in the [agents documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
+Read more in the [agents documentation](/reference/apm-agents/index.md).
 
 ### Adjust anonymous auth rate limit [apm-adjust-event-rate]
 

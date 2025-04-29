@@ -28,7 +28,7 @@ You can ingest:
 Elastic offer tools designed to ingest specific types of general content. The content type determines the best ingest option.
 
 * To index **documents** directly into {{es}}, use the {{es}} [document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document).
-* To send **application data** directly to {{es}}, use an [{{es}} language client](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
+* To send **application data** directly to {{es}}, use an [{{es}} language client](/reference/elasticsearch-clients/index.md).
 * To index **web page content**, use the Elastic [web crawler](https://www.elastic.co/web-crawler).
 * To sync **data from third-party sources**, use [connectors](elasticsearch://reference/search-connectors/index.md). A connector syncs content from an original data source to an {{es}} index. Using connectors you can create *searchable*, read-only replicas of your data sources.
 * To index **single files** for testing in a non-production environment, use the {{kib}} [file uploader](ingest/upload-data-files.md).
@@ -43,7 +43,7 @@ The best approach for ingesting data is the *simplest option* that *meets your n
 
 In most cases, the *simplest option* for ingesting time series data is using {{agent}} paired with an Elastic integration.
 
-* Install [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) on the computer(s) from which you want to collect data.
+* Install [Elastic Agent](/reference/fleet/index.md) on the computer(s) from which you want to collect data.
 * Add the [Elastic integration](https://docs.elastic.co/en/integrations) for the data source to your deployment.
 
 Integrations are available for many popular platforms and services, and are a good place to start for ingesting data into Elastic solutions—​Observability, Security, and Search—​or your own search application.

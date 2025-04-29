@@ -22,7 +22,7 @@ This page is handy list of the most important APIs and tools you need to build, 
 | [`_explain`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-explain) | Provides detailed explanation of how a specific document matches a query with scoring breakdown |
 | [`_count`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-count) | Returns count of documents matching a query without retrieving results |
 | [`_validate/query`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-validate-query) | Validates query syntax without executing the search |
-| [`_analyze`](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html) | Performs analysis for [full-text search](./full-text.md) on a text string and returns the resulting tokens. |
+| [`_analyze`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) | Performs analysis for [full-text search](./full-text.md) on a text string and returns the resulting tokens. |
 
 ### Ingestion & mapping APIs
 
