@@ -25,23 +25,23 @@ To install and run {{agent}} standalone:
 
 1. On your host, download and extract the installation package.
 
-    ::::{tab-set}
+    :::::::{tab-set}
 
-    :::{tab-item} macOS
+    ::::::{tab-item} macOS
     ```shell subs=true
     curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
     tar xzvf elastic-agent-{{stack-version}}-darwin-x86_64.tar.gz
     ```
-    :::
+    ::::::
 
-    :::{tab-item} Linux
+    ::::::{tab-item} Linux
     ```shell subs=true
     curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
     tar xzvf elastic-agent-{{stack-version}}-linux-x86_64.tar.gz
     ```
-    :::
+    ::::::
 
-    :::{tab-item} Windows
+    ::::::{tab-item} Windows
     ```shell subs=true
     # PowerShell 5.0+
     wget https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-windows-x86_64.zip -OutFile elastic-agent-{{stack-version}}-windows-x86_64.zip
@@ -52,14 +52,14 @@ To install and run {{agent}} standalone:
     1. Download the {{agent}} Windows zip file from the [download page](https://www.elastic.co/downloads/beats/elastic-agent).
 
     2. Extract the contents of the zip file.
-    :::
+    ::::::
 
-    :::{tab-item} DEB
+    ::::::{tab-item} DEB
 
-    ::::::{important}
+    :::::{important}
     * To simplify upgrading to future versions of {{agent}}, we recommended that you use the tarball distribution instead of the DEB distribution.
     * You can install {{agent}} in an `unprivileged` mode that does not require `root` privileges. Refer to [Run {{agent}} without administrative privileges](./elastic-agent-unprivileged.md) for details.
-    ::::::
+    :::::
 
     ```shell subs=true
     curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
@@ -80,18 +80,18 @@ To install and run {{agent}} standalone:
     ELASTIC_AGENT_FLAVOR=servers sudo -E dpkg -i elastic-agent-{{stack-version}}-amd64.deb
     ```
 
-    ::::::{note}
+    :::::{note}
     If you need to uninstall an {{agent}} package on Debian Linux, note that the `dpkg -r` command to remove a package leaves the flavor file in place. Instead, `dpkg -P` must to be used to purge all package content and reset the flavor.
+    :::::
+
     ::::::
 
-    :::
+    ::::::{tab-item} RPM
 
-    :::{tab-item} RPM
-
-    ::::::{important}
+    :::::{important}
     * To simplify upgrading to future versions of {{agent}}, we recommended that you use the tarball distribution instead of the RPM distribution.
     * You can install {{agent}} in an `unprivileged` mode that does not require `root` privileges. Refer to [Run {{agent}} without administrative privileges](./elastic-agent-unprivileged.md) for details.
-    ::::::
+    :::::
 
     ```shell subs=true
     curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-x86_64.rpm
@@ -112,11 +112,11 @@ To install and run {{agent}} standalone:
     ELASTIC_AGENT_FLAVOR=servers sudo -E rpm -vi elastic-agent-{{stack-version}}-x86_64.rpm
     ```
 
-    :::
+    ::::::
 
-    ::::
-
-    The commands shown are for AMD platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
+    :::::::
+    
+    The commands shown are for Intel platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
 
 
 
