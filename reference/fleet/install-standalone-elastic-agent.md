@@ -116,7 +116,7 @@ To install and run {{agent}} standalone:
 
     :::::::
     
-    The commands shown are for Intel platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
+    The commands shown are for either the Intel or ARM platform, but packages for both are available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
 
 
 
