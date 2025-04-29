@@ -96,10 +96,13 @@ When the {{agent}} is running you can add a new {{private-location}} in the UI:
 
 1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Go to **Settings**.
-2. Go to the **{{private-location}}s** tab.
-3. Click **Add location**.
-4. Give your new location a unique *Location name* and select the *Agent policy* you created above.
-5. Click **Save**.
+1. Go to the **{{private-location}}s** tab.
+1. Click **Create location**.
+1. Give your new location a unique _Location name_.
+1. Select the _Agent policy_ you created above.
+1. (Optional) In _Tags_ select [tags](/explore-analyze/find-and-organize/tags.md) to assign to this location.
+1. (Optional) In _Spaces_ specify the [spaces](/deploy-manage/manage-spaces.md) where this location will be available.
+1. Click **Save**.
 
 ::::{important}
 It is not currently possible to use custom CAs for synthetics browser tests in private locations without following a workaround. To learn more about the workaround, refer to the following GitHub issue: [elastic/synthetics#717](https://github.com/elastic/synthetics/issues/717).

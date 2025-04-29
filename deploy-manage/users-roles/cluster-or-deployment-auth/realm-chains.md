@@ -27,7 +27,7 @@ The default realm chain contains the `file` and `native` realms. To explicitly c
 
 If your realm chain does not contain `file` or `native` realm or does not disable them explicitly, `file` and `native` realms will be added automatically to the beginning of the realm chain in that order. To opt out from this automatic behavior, you can explicitly configure the `file` and `native` realms with the `order` and `enabled` settings.
 
-Each realm has a unique name that identifies it. Each type of realm dictates its own set of required and optional settings. There are also settings that are common to all realms. To explore these settings, refer to [Realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#realm-settings).
+Each realm has a unique name that identifies it. Each type of realm dictates its own set of required and optional settings. There are also settings that are common to all realms. To explore these settings, refer to [Realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#realm-settings).
 
 The following snippet configures a realm chain that enables the `file` realm, two LDAP realms, and an Active Directory realm, and disables the `native` realm.
 

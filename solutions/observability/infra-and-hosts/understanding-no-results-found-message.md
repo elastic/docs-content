@@ -8,7 +8,7 @@ applies_to:
 
 # Understanding "no results found" message [observability-handle-no-results-found-message]
 
-To correctly render visualizations in the Observability UI, all metrics used by the UI must be present in the collected data. For a description of these metrics, refer to [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html).
+To correctly render visualizations in the Observability UI, all metrics used by the UI must be present in the collected data. For a description of these metrics, refer to [Metrics reference](/reference/data-analysis/observability/index.md).
 
 There are several reasons why metrics might be missing from the collected data:
 
@@ -35,7 +35,7 @@ This could be for any of these reasons:
     ::::
 
 
-* You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](https://www.elastic.co/guide/en/fleet/current/edit-or-delete-integration-policy.html) to begin collecting the missing metrics. For example:
+* You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](/reference/fleet/edit-delete-integration-policy.md) to begin collecting the missing metrics. For example:
 
     :::{image} /solutions/images/serverless-turn-on-system-metrics.png
     :alt: Screenshot showing system cpu and diskio metrics selected for collection

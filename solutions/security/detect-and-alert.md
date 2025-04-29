@@ -22,7 +22,7 @@ In addition to creating [your own rules](/solutions/security/detect-and-alert/cr
 There are several special prebuilt rules you need to know about:
 
 * [**Endpoint protection rules**](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md): Automatically create alerts based on {{elastic-defend}}'s threat monitoring and prevention.
-* [**External Alerts**](https://www.elastic.co/guide/en/security/current/external-alerts.html): Automatically creates an alert for all incoming third-party system alerts (for example, Suricata alerts).
+* [**External Alerts**](detection-rules://rules/promotions/external_alerts.md): Automatically creates an alert for all incoming third-party system alerts (for example, Suricata alerts).
 
 If you want to receive notifications via external systems, such as Slack or email, when alerts are created, use the {{kib}} [Alerting and Actions](/explore-analyze/alerts-cases.md) framework.
 
