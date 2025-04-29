@@ -20,7 +20,7 @@ New to Elastic {{observability}}? Discover more about our observability features
 Learn about key features available to help you get value from your observability data:
 
 * [What is Elastic {{observability}}?](/solutions/observability/get-started/what-is-elastic-observability.md)
-* [What’s new in Elastic Stack](https://www.elastic.co/guide/en/observability/current/whats-new.html)
+* [What’s new in Elastic Stack](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
 
 

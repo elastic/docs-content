@@ -15,7 +15,7 @@ When you log in, {{kib}} creates a session that is used to authenticate subseque
 
 When your session expires, or you log out, {{kib}} will invalidate your cookie and remove session information from the index. {{kib}} also periodically invalidates and removes any expired sessions that weren’t explicitly invalidated.
 
-To manage user sessions programmatically, {{kib}} exposes [session management APIs](https://www.elastic.co/guide/en/kibana/current/session-management-api.html). For details, check out [Session and cookie security settings](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings).
+To manage user sessions programmatically, {{kib}} exposes [session management APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-user-session). For details, check out [Session and cookie security settings](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings).
 
 ## Session idle timeout [session-idle-timeout]
 
