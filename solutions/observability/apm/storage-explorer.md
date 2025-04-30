@@ -56,7 +56,7 @@ To reduce the number of spans a service generates, enable [span compression](/so
 
 ### Reduce the number of metrics [_reduce_the_number_of_metrics]
 
-To reduce the number of system, runtime, and application metrics, tune the APM agent or agents that are collecting the data. You can disable the collection of specific metrics with the **disable metrics** configuration. Or, you can set the **metrics interval** to zero seconds to deactivate metrics entirely. Most APM agents support both options. See the relevant [APM agent configuration options](https://www.elastic.co/guide/en/apm/agent) for more details.
+To reduce the number of system, runtime, and application metrics, tune the APM agent or agents that are collecting the data. You can disable the collection of specific metrics with the **disable metrics** configuration. Or, you can set the **metrics interval** to zero seconds to deactivate metrics entirely. Most APM agents support both options. See the relevant [APM agent configuration options](/reference/apm-agents/index.md) for more details.
 
 ### Reduce the number of errors [_reduce_the_number_of_errors]
 

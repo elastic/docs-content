@@ -18,6 +18,10 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 
 ## 9.0.0 [elastic-security-900-deprecations]
 
+::::{dropdown} Removes Defend for Containers (D4C)
+Defend for Containers is no longer supported starting with {{stack}} 9.0. 
+::::
+
 ::::{dropdown} Renames the integration-assistant plugin
 Renames the `integration-assistant` plugin to `automatic-import` to match the associated feature.
 For more information, refer to [#207325]({{kib-pull}}207325).

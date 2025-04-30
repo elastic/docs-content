@@ -24,16 +24,16 @@ Integrations offer advantages beyond easier data collection—​advantages such
 
 Info on {{agent}} and agent integrations:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
 * [{{agent}} integrations](https://docs.elastic.co/en/integrations)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 
 This basic architecture is a common approach for ingesting data for the [Elastic Observability](https://www.elastic.co/observability) and [Elastic Security](https://www.elastic.co/security) solutions:
 
-* [Elastic Observability tutorials](https://www.elastic.co/guide/en/observability/current/observability-tutorials.html)
+* [Elastic Observability tutorials](/solutions/observability/get-started.md#_get_started_with_other_features)
 * [Ingest data to Elastic Security](../../../solutions/security/get-started/ingest-data-to-elastic-security.md)
 
 
