@@ -12,6 +12,10 @@ navigation_title: LDAP
 
 # LDAP user authentication [ldap-realm]
 
+:::{{warning}}
+This type of user authentication cannot be configured on {{ech}} deployments.
+:::
+
 You can configure the {{stack}} {{security-features}} to communicate with a Lightweight Directory Access Protocol (LDAP) server to authenticate users. See [Configuring an LDAP realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#ldap-realm-configuration).
 
 To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to user roles.

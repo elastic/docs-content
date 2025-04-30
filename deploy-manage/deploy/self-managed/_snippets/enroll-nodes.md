@@ -19,7 +19,7 @@ If you can't access the first node, then modify your network configuration befor
 2. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the `elasticsearch-create-enrollment-token` tool to generate an enrollment token for your new nodes.
 
     ```sh subs=true
-    bin{{slash}}elasticsearch-create-enrollment-token -s node
+    .{{slash}}bin{{slash}}elasticsearch-create-enrollment-token -s node
     ```
 
     Copy the enrollment token, which you’ll use to enroll new nodes with your {{es}} cluster.
@@ -29,7 +29,7 @@ If you can't access the first node, then modify your network configuration befor
 3. From the installation directory of your new node, start {{es}} and pass the enrollment token with the `--enrollment-token` parameter.
 
     ```sh subs=true
-    bin{{slash}}elasticsearch --enrollment-token <enrollment-token>
+    .{{slash}}bin{{slash}}elasticsearch --enrollment-token <enrollment-token>
     ```
 
     {{es}} automatically generates certificates and keys in the following directory:
