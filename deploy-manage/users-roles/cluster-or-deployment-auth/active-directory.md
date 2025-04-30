@@ -12,6 +12,11 @@ navigation_title: "Active Directory"
 
 # Active Directory user authentication [active-directory-realm]
 
+:::{{warning}}
+This type of user authentication cannot be configured on {{ech}} deployments.
+:::
+
+
 You can configure {{stack}} {{security-features}} to communicate with Active Directory to authenticate users.
 
 :::{{tip}}
