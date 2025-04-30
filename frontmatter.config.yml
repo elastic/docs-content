@@ -1,0 +1,105 @@
+valid_items:
+  - key: applies_to
+    type: object
+    children:
+      - key: stack
+        type: string
+      - key: deployment
+        type: object
+        children:
+          - key: eck
+            type: string
+          - key: ess
+            type: string
+          - key: ece
+            type: string
+          - key: self
+            type: string
+      - key: serverless
+        type: object
+        children:
+          - key: security
+            type: string
+          - key: elasticsearch
+            type: string
+          - key: observability
+            type: string
+      - key: product
+        type: string
+  - key: layout
+    type: string
+    valid_values:
+      - archive
+      - landing-page
+      - not-found
+  - key: mapped_pages
+    type: array
+  - key: navigation_title
+    type: string
+  - key: products
+    type: array
+    valid_values:
+      - APM
+      - APM .NET Agent
+      - APM Android Agent
+      - APM Attacher
+      - APM AWS Lambda extension
+      - APM Go Agent
+      - APM iOS Agent
+      - APM Java Agent
+      - APM Node.js Agent
+      - APM PHP Agent
+      - APM Python Agent
+      - APM Ruby Agent
+      - APM RUM Agent
+      - Beats Logging plugin
+      - Cloud Control ECCTL
+      - Cloud Enterprise
+      - Cloud Hosted
+      - Cloud Kubernetes
+      - Cloud Native Ingest
+      - Cloud Serverless
+      - Cloud Terraform
+      - ECS Logging
+      - ECS Logging .NET
+      - ECS Logging Go Logrus
+      - ECS Logging Go Zap
+      - ECS Logging Go Zerolog
+      - ECS Logging Java
+      - ECS Logging Node.js
+      - ECS Logging PHP
+      - ECS Logging Python
+      - ECS Logging Ruby
+      - Elastic Agent
+      - Elastic Common Schema (ECS)
+      - Elastic Products platform
+      - Elastic Stack
+      - Elasticsearch
+      - Elasticsearch .NET Client
+      - Elasticsearch Apache Hadoop
+      - Elasticsearch Cloud Hosted Heroku
+      - Elasticsearch community clients
+      - Elasticsearch Curator
+      - Elasticsearch Eland Python Client
+      - Elasticsearch Go Client
+      - Elasticsearch Groovy Client
+      - Elasticsearch Java Client
+      - Elasticsearch JavaScript Client
+      - Elasticsearch Painless scripting language
+      - Elasticsearch Perl Client
+      - Elasticsearch PHP Client
+      - Elasticsearch plugins
+      - Elasticsearch Python Client
+      - Elasticsearch Resiliency Status
+      - Elasticsearch Ruby Client
+      - Elasticsearch Rust Client
+      - Fleet
+      - Ingest
+      - Integrations
+      - Kibana
+      - Logstash
+      - Machine Learning
+      - Observability
+      - Reference Architectures
+      - Search UI
+      - Security
