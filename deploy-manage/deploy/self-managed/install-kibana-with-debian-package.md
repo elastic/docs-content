@@ -1,8 +1,7 @@
 ---
-navigation_title: "Install with Debian package"
+navigation_title: "Debian"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/deb.html
-navigation_title: "Debian"
 applies_to:
   deployment:
     self:
