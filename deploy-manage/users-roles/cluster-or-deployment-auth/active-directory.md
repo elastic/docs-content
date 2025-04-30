@@ -13,7 +13,7 @@ navigation_title: "Active Directory"
 # Active Directory user authentication [active-directory-realm]
 
 :::{{warning}}
-This type of user authentication cannot be configured on Elastic Cloud Hosted deployments.
+This type of user authentication cannot be configured on {{ech}} deployments.
 :::
 
 
