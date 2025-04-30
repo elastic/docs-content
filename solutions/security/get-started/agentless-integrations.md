@@ -12,13 +12,13 @@ applies_to:
 
 Agentless integrations provide a means to ingest data while avoiding the orchestration, management, and maintenance needs associated with standard ingest infrastructure. Using agentless integrations makes manual agent deployment unnecessary, allowing you to focus on your data instead of the agent that collects it.
 
-We support the following agentless integrations: 
+::::{important}
+There are currently no additional costs associated with deploying agentless integrations. 
+::::
 
 ## Generally available (GA) agentless integrations
 
-::::{note}
-For a single {{serverless-full}} project, a maxium of 30 agentless deployments are supported.
-::::
+We fully support the following agentless integrations: 
 
 Cloud security posture management (CSPM). Using this integration’s agentless deployment option, you can enable Elastic’s CSPM capabilities just by providing the necessary credentials. Agentless CSPM deployments support AWS, Azure, and GCP accounts.
 
@@ -28,8 +28,6 @@ To learn more about agentless CSPM deployments, refer to the getting started gui
 
 ::::{warning}
 Agentless deployment for the following integrations is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-
-While agentless deployment for these integrations is in beta, for a single {{serverless-full}} project a maxium of five agentless deployments are currently supported.
 ::::
 
 1. AbuseCH
