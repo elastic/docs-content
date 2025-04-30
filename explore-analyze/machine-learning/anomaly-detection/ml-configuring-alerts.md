@@ -32,9 +32,9 @@ In **{{stack-manage-app}} > {{rules-ui}}**, you can create both types of {{ml}} 
 
 Before you begin, make sure that:
 
-- You have at least one running [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs).
-- You have appropriate [user permissions](/deploy-manage/users-roles) to create and manage alert rules.
--  If you would like to send notifications about alerts (such as Slack messages, emails, or webhooks), make sure you have configured the necessary [connectors](/deploy-manage/manage-connectors#creating-new-connector).
+- You have at least one running [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md).
+- You have appropriate [user permissions](/deploy-manage/users-roles.md) to create and manage alert rules.
+-  If you would like to send notifications about alerts (such as Slack messages, emails, or webhooks), make sure you have configured the necessary [connectors](/reference/kibana/connectors-kibana).
 
 ## {{anomaly-detect-cap}} alert rules [creating-anomaly-alert-rules]
 
@@ -42,7 +42,7 @@ Before you begin, make sure that:
 
 To set up an {{anomaly-detect}} alert rule:
 
-1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects).
+1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **{{anomaly-detect-cap}}** rule type.
 
 :::{image} /explore-analyze/images/ml-anomaly-create-anomaly-detection.png
@@ -105,7 +105,7 @@ Next, define the [actions](#ml-configuring-alert-actions) that occur when the ru
 
 To set up an {{anomaly-jobs}} alert rule:
 
-1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects).
+1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **{{anomaly-jobs-cap}}** rule type.
 
 :::{image} /explore-analyze/images/ml-anomaly-create-anomaly-job-health.png
