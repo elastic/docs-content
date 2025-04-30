@@ -34,7 +34,7 @@ Before you begin, make sure that:
 
 - You have at least one running [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md).
 - You have appropriate [user permissions](/deploy-manage/users-roles.md) to create and manage alert rules.
--  If you would like to send notifications about alerts (such as Slack messages, emails, or webhooks), make sure you have configured the necessary [connectors](/reference/kibana/connectors-kibana).
+-  If you would like to send notifications about alerts (such as Slack messages, emails, or webhooks), make sure you have configured the necessary [connectors](/reference/kibana/connectors-kibana.md).
 
 ## {{anomaly-detect-cap}} alert rules [creating-anomaly-alert-rules]
 
