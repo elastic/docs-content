@@ -28,6 +28,7 @@ There are no new features or enhancements.
 ### Fixes [elastic-security-9.0.1-fixes]
 * Removes the technical preview badge from alert suppression fields for event correlation rules 
 * Fixes a bug that caused installed prebuilt detection rules to upgrade to their latest available versions when you installed a new {{elastic-defend}} integration or {{agent}} policy [#217959]({{kib-pull}}217959)
+* Fixes a bug that prevented you form scrolling in modals ({kibana-pull}218697[#218697]).
 
 ## 9.0.0 [elastic-security-900-release-notes]
 
