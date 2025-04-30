@@ -32,9 +32,9 @@ In **{{stack-manage-app}} > {{rules-ui}}**, you can create both types of {{ml}} 
 
 Before you begin, make sure that:
 
-- You have at least one running {{anomaly-job}}.
-- You have appropriate user permissions to create and manage alert rules.
-- (Optional) You have set up connectors for sending notifications (such as Slack, email, or webhooks).
+- You have at least one running [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs).
+- You have appropriate [user permissions](/deploy-manage/users-roles) to create and manage alert rules.
+-  If you would like to send notifications about alerts (such as Slack messages, emails, or webhooks), make sure you have configured the necessary [connectors](/deploy-manage/manage-connectors#creating-new-connector).
 
 ## {{anomaly-detect-cap}} alert rules [creating-anomaly-alert-rules]
 
@@ -42,37 +42,58 @@ Before you begin, make sure that:
 
 To set up an {{anomaly-detect}} alert rule:
 
-1. Go to **{{stack-manage-app}} > {{rules-ui}}** and click **Create rule**.
-2. Select the {{anomaly-job}} that the rule applies to.
-3. Select a type of {{ml}} result. You can create rules based on bucket, record, or influencer results.
-4. (Optional) Configure the `anomaly_score` that triggers the action. 
+1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects).
+2. Select the **{{anomaly-detect-cap}}** rule type.
+
+:::{image} /explore-analyze/images/ml-anomaly-create-anomaly-detection.png
+:alt: Selecting Anomaly detection rule type
+:screenshot:
+:::
+
+3. Select the {{anomaly-job}} that the rule applies to.
+4. Select a type of {{ml}} result. You can create rules based on bucket or record results.
+5. (Optional) Configure the `anomaly_score` that triggers the action. 
 The `anomaly_score` indicates the significance of a given anomaly compared to 
 previous anomalies. The default severity threshold is 75 which means every 
 anomaly with an `anomaly_score` of 75 or higher triggers the associated action.
-5. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
+6. Select whether you want to include interim results. Interim results are created before a bucket is finalized and might disappear after full processing.
     - Include interim results if you 
 want to be notified earlier about a potential anomaly even if it might be a 
 false positive. 
     - Don't include interim results if you want to get notified only about anomalies of fully 
 processed buckets.
 
-:::{image} /explore-analyze/images/ml-anomaly-alert-severity.jpg
+:::{image} /explore-analyze/images/ml-anomaly-alert.jpg
 :alt: Selecting result type, severity, and interim results
 :screenshot:
 :::
 
-6. (Optional) Configure the _Lookback interval_ to define how far back to query previous anomalies during each condition check. Its value is derived from the bucket span of the job and the query delay of the {{dfeed}} by default. It is not recommended to set the lookback interval lower than the default value, as it might result in missed anomalies.
+7. (Optional) Configure **Advanced settings**:
+   - Configure the _Lookback interval_ to define how far back to query previous anomalies during each condition check. Its value is derived from the bucket span of the job and the query delay of the {{dfeed}} by default. It is not recommended to set the lookback interval lower than the default value, as it might result in missed anomalies.
+   - Configure the _Number of latest buckets_ to specify how many buckets to check to obtain the highest anomaly score found during the _Lookback interval_. The alert is created based on the highest scoring anomaly from the most anomalous bucket.
 
-7. (Optional) Configure the _Number of latest buckets_ to specify how many buckets to check to obtain the highest anomaly score found during the _Lookback interval_. The alert is created based on the highest scoring anomaly from the most anomalous bucket.
+::::{tip}
+You can preview how the rule would perform on existing data:
 
-8. (Optional) Test the configured conditions against your existing data by providing a valid interval. The generated 
-preview contains the number of potentially created alerts during the relative 
-time range you defined.
+ - Define the _check interval_ to specify how often the rule conditions are evaluated. It’s recommended to set this close to the job’s bucket span. 
+ - Click **Test**.
+ 
+ The preview shows how many alerts would have been triggered during the selected time range.
+::::
 
-9. Define the _check interval_ to specify how often to evaluate the rule conditions. It is recommended to select an interval that is close to the bucket span of the job.
+:::{image} /explore-analyze/images/ml-anomaly-alert-advanced.jpg 
+:alt: Advanced settings and testing the rule condition
+:screenshot:
+:::
 
-:::{image} /explore-analyze/images/ml-anomaly-alert-advanced.png
-:alt: Selecting result type, severity, and interim results
+8. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
+9. (Optional) Configure **Advanced options**:
+   - Define the number of consecutive matches required before an alert is triggered under **Alert delay**.
+   - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts.
+     - You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
+
+:::{image} /explore-analyze/images/ml-anomaly-rule-schedule-advanced.jpg
+:alt: Rule schedule and advanced settings
 :screenshot:
 :::
 
@@ -80,54 +101,55 @@ Next, define the [actions](#ml-configuring-alert-actions) that occur when the ru
 
 ## {{anomaly-jobs-cap}} health rules [creating-anomaly-jobs-health-rules]
 
-When you create an {{anomaly-jobs}} health rule, you must select the job or group
-that the rule applies to. If you assign more jobs to the group, they are
-included the next time the rule conditions are checked.
+{{anomaly-jobs-cap}} health rules monitor job health and alerts if an operational issue occurred that may prevent the job from detecting anomalies. 
 
-You can also use a special character (`*`) to apply the rule to all your jobs. 
-Jobs created after the rule are automatically included. You can exclude jobs 
-that are not critically important by using the _Exclude_ field.
+To set up an {{anomaly-jobs}} alert rule:
 
-Enable the health check types that you want to apply. All checks are enabled by 
-default. At least one check needs to be enabled to create the rule. The 
-following health checks are available:
+1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects).
+2. Select the **{{anomaly-jobs-cap}}** rule type.
 
-Datafeed is not started
-:   Notifies if the corresponding {{dfeed}} of the job is not started but the job is 
+:::{image} /explore-analyze/images/ml-anomaly-create-anomaly-job-health.png
+:alt: Selecting Anomaly detection jobs health rules type
+:screenshot:
+:::
+
+3. Include jobs and groups:
+   - Select the job or group that the rule applies to. If you add more jobs to the selected group later, they are automatically included the next time the rule conditions are checked. To apply the rule to all your jobs, you can use a special character (`*`). This ensures that any jobs created after the rule is saved are automatically included.
+   - (Optional) To exclude jobs that are not critically important, use the **Exclude** field.
+
+4. Enable the health check types you want to apply. All checks are enabled by default. At least one check needs to be enabled to create the rule. The following health checks are available:
+
+   - **Datafeed is not started:** Notifies if the corresponding {{dfeed}} of the job is not started but the job is 
   in an opened state. The notification message recommends the necessary 
   actions to solve the error.
 
-Model memory limit reached
-:   Notifies if the model memory status of the job reaches the soft or hard model 
-  memory limit. Optimize your job by following 
-  [these guidelines](/explore-analyze/machine-learning/anomaly-detection/anomaly-detection-scale.md) or consider 
-  [amending the model memory limit](/explore-analyze/machine-learning/anomaly-detection/anomaly-detection-scale.md#set-model-memory-limit).
+   - **Model memory limit reached**: Notifies if the model memory status of the job reaches the soft or hard model 
+   memory limit. Optimize your job by following [these guidelines](/explore-analyze/machine-learning/anomaly-detection/anomaly-detection-scale.md) or consider [amending the model memory limit](/explore-analyze/machine-learning/anomaly-detection/anomaly-detection-scale.md#set-model-memory-limit).
 
-Data delay has occurred
-:    Notifies when the job missed some data. You can define the threshold for the 
-  amount of missing documents you get alerted on by setting 
-  _Number of documents_. You can control the lookback interval for checking 
-  delayed data with _Time interval_. Refer to the 
-  [Handling delayed data](/explore-analyze/machine-learning/anomaly-detection/ml-delayed-data-detection.md) page to see what to do about delayed data.
+   - **Data delay has occurred:** Notifies when the job missed some data. You can define the threshold for the 
+   amount of missing documents you get alerted on by setting _Number of documents_. You can control the lookback interval for checking delayed data with _Time interval_. Refer to the [Handling delayed data](/explore-analyze/machine-learning/anomaly-detection/ml-delayed-data-detection.md) page to see what to do about delayed data.
 
-Errors in job messages
-:    Notifies when the job messages contain error messages. Review the 
-  notification; it contains the error messages, the corresponding job IDs and 
-  recommendations on how to fix the issue. This check looks for job errors 
-  that occur after the rule is created; it does not look at historic behavior.
+   - **Errors in job messages:** Notifies when the job messages contain error messages. Review the 
+   notification; it contains the error messages, the corresponding job IDs and recommendations on how to fix the issue. This check looks for job errors that occur after the rule is created; it does not look at historic behavior.
 
-:::{image} /explore-analyze/images/ml-health-check-config.png
+:::{image} /explore-analyze/images/ml-health-check-config.jpg
 :alt: Selecting health checkers
 :screenshot:
 :::
 
-::::{tip}
-You must also provide a _check interval_ that defines how often to
-evaluate the rule conditions. It is recommended to select an interval that is
-close to the bucket span of the job.
-::::
+5. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**. It is recommended to select an interval that is close to the bucket span of the job.
 
-As the last step in the rule creation process, define its actions.
+6. (Optional) Configure **Advanced options**:
+   - Define the number of consecutive matches required before an alert is triggered under **Alert delay**.
+   - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts.
+     - You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
+
+:::{image} /explore-analyze/images/ml-anomaly-rule-schedule-advanced.jpg
+:alt: Rule schedule and advanced settings
+:screenshot:
+:::
+
+Next, define the [actions](#ml-configuring-alert-actions) that occur when the rule conditions are met.
 
 ## Actions [ml-configuring-alert-actions]
 
