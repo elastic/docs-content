@@ -20,7 +20,7 @@ To open the **Infrastructure inventory** page in:
 :screenshot:
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html).
+To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md).
 
 ::::{note}
 **Don’t see any metrics?**
@@ -168,7 +168,7 @@ The **Logs** tab displays logs relating to the host that you have selected. By d
 |  |  |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document. The content of this field depends on the type of log message. If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-base.html) base field, `message`, is used. |
+| **Message** | The message extracted from the document. The content of this field depends on the type of log message. If no special log message type is detected, the [Elastic Common Schema (ECS)](ecs://reference/ecs-base.md) base field, `message`, is used. |
 
 To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Logs**.
 
@@ -211,7 +211,7 @@ To learn more about roles, refer to [Assign user roles and privileges](/deploy-m
 
 
 ::::{important}
-You must have an active [{{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration.
+You must have an active [{{agent}}](/reference/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration.
 
 ::::
 
@@ -320,7 +320,7 @@ The **Logs** tab displays logs relating to the container that you have selected.
 |  |  |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document. The content of this field depends on the type of log message. If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-base.html) base field, `message`, is used. |
+| **Message** | The message extracted from the document. The content of this field depends on the type of log message. If no special log message type is detected, the [Elastic Common Schema (ECS)](ecs://reference/ecs-base.md) base field, `message`, is used. |
 
 To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Logs**.
 

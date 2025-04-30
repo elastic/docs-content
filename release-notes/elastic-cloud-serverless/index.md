@@ -9,13 +9,36 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
-% Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
 
-% ## version.next [elastic-cloud-serverless-changelog-releasedate]
+## April 28, 2025 [serverless-changelog-04282025]
 
-% ### Features and enhancements [elastic-cloud-serverless-releasedate-features-enhancements]
+### Features and enhancements [serverless-changelog-04282025-features-enhancements]
 
-% ### Fixes [elastic-cloud-serverless-releasedate-fixes]
+* Adds the option to use the logical `AND` when filtering Monitors by multiple tags or locations [#217985](https://github.com/elastic/kibana/pull/217985)
+* Makes Attack Discovery alerts persistent and searchable [#218906](https://github.com/elastic/kibana/pull/218906)
+* Improves edit ReadMe functionality for custom integrations [#215259](https://github.com/elastic/kibana/pull/215259)
+* Removes metrics and logs from the `get_service_stats` API [#218346](https://github.com/elastic/kibana/pull/218346)
+* Allows you to customize the table tab [#218686](https://github.com/elastic/kibana/pull/218686)
+* Enables keyboard navigation for the create annotations form [#217918](https://github.com/elastic/kibana/pull/217918)
+
+
+### Fixes [serverless-changelog-04282025-fixes]
+
+* Fixes keyword format in metric visualizations [#218233](https://github.com/elastic/kibana/pull/218233)
+* Fixes monitor history histogram and group by location issue [#218550](https://github.com/elastic/kibana/pull/218550)
+* Prevents other conditions from changing when you change the condition type of a monitor status rule [#216426](https://github.com/elastic/kibana/pull/216426)
+* Filters out null values from `sourceDataStreams` [#218772](https://github.com/elastic/kibana/pull/218772)
+* Fixes span url link when `transactionId` is missing in span links [#218232](https://github.com/elastic/kibana/pull/218232)
+* Fixes logical `AND` behavior when a filter is removed [#218910](https://github.com/elastic/kibana/pull/218910)
+* Fixes a bug that prevented index template creation [#218901](https://github.com/elastic/kibana/pull/218901)
+* Prevents unnecessary suggestion requests [#218927](https://github.com/elastic/kibana/pull/218927)
+* Uses fields instead of `_source` in the metadata endpoint [#218869](https://github.com/elastic/kibana/pull/218869)
+* Fills gaps in table tooltips [#218926](https://github.com/elastic/kibana/pull/218926)
+* Makes output and fleet server non-editable for agentless integration policies [#218905](https://github.com/elastic/kibana/pull/218905)
+* Improves anomaly charts object safety [#217552](https://github.com/elastic/kibana/pull/217552)
+* Fixes title announcements in the details step of the anomaly detection job wizard [#218570](https://github.com/elastic/kibana/pull/218570)
+* Fixes incorrect optimization for endpoint artifacts [#216437](https://github.com/elastic/kibana/pull/216437)
+
 
 ## April 21, 2025 [serverless-changelog-04212025]
 

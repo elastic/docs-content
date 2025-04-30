@@ -60,7 +60,7 @@ Once you have the endpoint, use it in your client application. To test connectiv
 
 ## Connect using Cloud ID [ece-cloud-id]
 
-The Cloud ID reduces the number of steps required to start sending data from [Beats](https://www.elastic.co/guide/en/beats/libbeat/current/index.html) or [Logstash](https://www.elastic.co/guide/en/logstash/current/index.html) to your hosted {{es}} cluster on ECE, by assigning a unique ID to your cluster.
+The Cloud ID reduces the number of steps required to start sending data from [Beats](beats://reference/index.md) or [Logstash](logstash://reference/index.md) to your hosted {{es}} cluster on ECE, by assigning a unique ID to your cluster.
 
 ::::{note}
 Connections through Cloud IDs are only supported in Beats and Logstash.

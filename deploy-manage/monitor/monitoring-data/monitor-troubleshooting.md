@@ -48,7 +48,7 @@ The **Stack Monitoring** page in {{kib}} is empty.
 
 **Resolution:**
 
-1. Confirm that {{kib}} is seeking monitoring data from the appropriate {{es}} URL. By default, data is retrieved from the cluster specified in the `elasticsearch.hosts` setting in the `kibana.yml` file. If you want to retrieve it from a different monitoring cluster, set `monitoring.ui.elasticsearch.hosts`. See [Monitoring settings](kibana://reference/configuration-reference/monitoring-settings.md).
+1. Confirm that {{kib}} is seeking monitoring data from the appropriate {{es}} URL. By default, data is retrieved from the cluster specified in the `elasticsearch.hosts` setting in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. If you want to retrieve it from a different monitoring cluster, set `monitoring.ui.elasticsearch.hosts`. See [Monitoring settings](kibana://reference/configuration-reference/monitoring-settings.md).
 2. Confirm that there is monitoring data available at that URL. It is stored in indices such as `.monitoring-kibana-*` and `.monitoring-es-*` or `metrics-kibana.stack_monitoring.*`, depending on which method is used to collect monitoring data. At a minimum, you must have monitoring data for the {{es}} production cluster. Once that data exists, {{kib}} can display monitoring data for other products in the cluster.
 3. Set the time filter to “Last 1 hour”.  When monitoring data appears in your cluster, the page automatically refreshes with the monitoring summary.
 4. If using {{agent}}, ensure that all integration assets have been installed in the monitoring cluster.

@@ -56,7 +56,7 @@ Create a Markdown visualization and then create a PDF report. If this succeeds, 
 
 ## Verbose logging [reporting-troubleshooting-verbose-logs]
 
-{{kib}} server logs have a lot of useful information for troubleshooting and understanding how things work. The full logs from {{report-features}} are a good place to look when you encounter problems. In `kibana.yml`:
+{{kib}} server logs have a lot of useful information for troubleshooting and understanding how things work. The full logs from {{report-features}} are a good place to look when you encounter problems. In [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 logging.root.level: all

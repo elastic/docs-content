@@ -3,7 +3,7 @@ navigation_title: "AWS S3 repository"
 
 applies_to:
   deployment:
-    ece: 
+    ece:
 ---
 
 # Configure a snapshot repository using AWS S3 [ece-aws-custom-repository]
@@ -41,7 +41,7 @@ To add a snapshot repository:
 
         Used for Microsoft Azure, Google Cloud Platform, or for some Amazon S3 repositories where you need to provide additional configuration parameters not supported by the S3 repository option. Configurations must be specified in a valid JSON format. For example:
 
-        Amazon S3 (check [supported settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html#repository-s3-repository)):
+        Amazon S3 (check [supported settings](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-repository)):
 
         ```json
         {

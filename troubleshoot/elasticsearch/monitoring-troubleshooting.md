@@ -1,11 +1,11 @@
 ---
 applies_to:
-  stack: 
+  stack:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 navigation_title: Monitoring
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-troubleshooting.html
@@ -36,7 +36,7 @@ In some cases, you can also retrieve this information via APIs:
 
 * For Beat instances, use the HTTP endpoint to retrieve the `uuid` property. For example, refer to [Configure an HTTP endpoint for {{filebeat}} metrics](beats://reference/filebeat/http-endpoint.md).
 * For {{kib}} instances, use the [status endpoint](/troubleshoot/kibana/access.md) to retrieve the `uuid` property.
-* For {{ls}} nodes, use the [monitoring APIs root resource](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html) to retrieve the `id` property.
+* For {{ls}} nodes, use the [monitoring APIs root resource](logstash://reference/monitoring-logstash.md) to retrieve the `id` property.
 
 ::::{tip}
 When you install {{es}}, {{ls}}, {{kib}}, APM Server, or Beats, their `path.data` directory should be non-existent or empty; do not copy this directory from other installations.

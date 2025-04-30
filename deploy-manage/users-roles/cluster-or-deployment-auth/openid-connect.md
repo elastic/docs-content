@@ -64,7 +64,7 @@ If you're using a self-managed cluster, then perform the following additional st
 
 * Enable the token service.
 
-    The {{es}} OIDC implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your `elasticsearch.yml` file:
+    The {{es}} OIDC implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
     ```yaml
     xpack.security.authc.token.enabled: true
@@ -78,7 +78,7 @@ OpenID Connect based authentication is enabled by configuring the appropriate re
 
 This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [OpenID Connect realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings). This guide will explore the most common settings.
 
-1. Create an OpenID Connect (the realm type is `oidc`) realm in your `elasticsearch.yml` file similar to what is shown below.
+1. Create an OpenID Connect (the realm type is `oidc`) realm in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file similar to what is shown below.
 
     If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
@@ -415,7 +415,7 @@ OpenID Connect authentication in {{kib}} requires additional settings in additio
 
 If you're using a self-managed cluster, then, because OIDC requires {{es}} nodes to use TLS on the HTTP interface, you must configure {{kib}} to use a `https` URL to connect to {{es}}, and you may need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates that {{es}} has been configured to use.
 
-OpenID Connect authentication in {{kib}} is subject to the following timeout settings in `kibana.yml`:
+OpenID Connect authentication in {{kib}} is subject to the following timeout settings in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 * [`xpack.security.session.idleTimeout`](/deploy-manage/security/kibana-session-management.md#session-idle-timeout)
 * [`xpack.security.session.lifespan`](/deploy-manage/security/kibana-session-management.md#session-lifespan)

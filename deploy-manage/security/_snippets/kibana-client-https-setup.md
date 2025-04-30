@@ -5,7 +5,7 @@ If you obtained the {{es}} certificates using a different method, you must provi
 ::::
 
 1. Copy the `elasticsearch-ca.pem` file to the {{kib}} configuration directory, as defined by the `$KBN_PATH_CONF` path.
-2. Open `kibana.yml` and add the following line to specify the location of the security certificate for the HTTP layer.
+2. Open [`kibana.yml`](/deploy-manage/stack-settings.md) and add the following line to specify the location of the security certificate for the HTTP layer.
 
     ```yaml
     elasticsearch.ssl.certificateAuthorities: $KBN_PATH_CONF/elasticsearch-ca.pem

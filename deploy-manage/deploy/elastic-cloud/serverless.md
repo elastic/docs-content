@@ -67,7 +67,7 @@ Migration paths between hosted deployments and serverless projects are currently
 
 **How can I move data to or from serverless projects?**
 
-We are working on data migration tools! In the interim, [use Logstash](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-logstash.html) with {{es}} input and output plugins to move data to and from serverless projects.
+We are working on data migration tools! In the interim, [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from serverless projects.
 
 **How does serverless ensure compatibility between software versions?**
 

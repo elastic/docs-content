@@ -9,13 +9,11 @@ Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluste
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your main {{es}} cluster.
 
-::::{warning}
-A bug has been found that causes {{elastic-defend}} response actions to stop working when a remote {{es}} output is configured for an agent. This bug is currently being investigated and is expected to be resolved in an upcoming release.
-::::
-
-
 ::::{note}
-Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+Note the following restrictions with the remote {es} output:
+
+* Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+* Using {{elastic-defend}} is currently not supported when a remote {{es}} output is configured for an agent.
 ::::
 
 ## Configuration
@@ -80,7 +78,7 @@ Remote clusters require access to the [{{package-registry}}](/reference/fleet/in
 1. Configure {{ccr}} on the remote cluster.
 
     1. In the remote cluster, open the {{kib}} menu and go to **Stack Management > Remote Clusters**.
-    2. Refer to [Remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html) to add your main cluster (where the remote {{es}} output is configured) as a remote cluster.
+    2. Refer to [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) to add your main cluster (where the remote {{es}} output is configured) as a remote cluster.
     3. Go to **Stack Management > Cross-Cluster Replication**.
     4. Create a follower index named `fleet-synced-integrations-ccr-<output name>` that replicates the `fleet-synced-integrations` leader index on the main cluster.
     5. Resume replication once the follower index is created.
