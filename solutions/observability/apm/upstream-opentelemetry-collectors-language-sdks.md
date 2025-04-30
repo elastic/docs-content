@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Upstream OpenTelemetry Collectors and language SDKs [apm-open-telemetry-direct]

@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-setup-kibana.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Step 3: Set up Universal Profiling in Kibana [profiling-self-managed-setup-kibana]

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-on-kubernetes-using-helm.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Install Elastic Agent on Kubernetes using Helm [install-on-kubernetes-using-helm]

@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # View and analyze risk score data [analyze-risk-score-data]

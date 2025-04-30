@@ -1,17 +1,23 @@
 ---
+navigation_title: OpenID Connect
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-realm.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-secure-clusters-oidc.html
   - https://www.elastic.co/guide/en/cloud/current/ec-secure-clusters-oidc.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-oidc.html
-navigation_title: OpenID Connect
 applies_to:
+  stack:
   deployment:
-    self:
     ess:
     ece:
     eck:
+    self:
+products:
+  - Elasticsearch
+  - Cloud Enterprise
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # OpenID Connect authentication [oidc-realm]

@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - Observability
 ---
 
 # APM APIs [apm-apis]

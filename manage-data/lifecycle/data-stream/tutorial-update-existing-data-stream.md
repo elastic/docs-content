@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - Elasticsearch
 ---
 
 # Tutorial: Update existing data stream [tutorial-manage-existing-data-stream]

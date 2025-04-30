@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - Cloud Hosted
 ---
 
 # Event Settings [ec-autoops-event-settings]

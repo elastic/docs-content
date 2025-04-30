@@ -1,7 +1,12 @@
 ---
-navigation_title: "Agent download"
+navigation_title: Agent download
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-standalone-download.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Configure download settings for standalone {{agent}} upgrades [elastic-agent-standalone-download]

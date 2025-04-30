@@ -3,8 +3,11 @@ navigation_title: Update TLS certificates
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs.html
 applies_to:
+  stack:
   deployment:
-    self: all  
+    self: all
+products:
+  - Elasticsearch
 ---
 
 # Update TLS certificates [update-node-certs]

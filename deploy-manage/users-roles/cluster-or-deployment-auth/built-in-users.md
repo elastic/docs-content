@@ -1,10 +1,13 @@
 ---
+navigation_title: Built-in users
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html
 applies_to:
+  stack:
   deployment:
     self:
-navigation_title: "Built-in users"
+products:
+  - Elasticsearch
 ---
 
 # Built-in users in self-managed clusters [built-in-users]

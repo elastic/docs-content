@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Unbalanced clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unbalanced-cluster.html
+applies_to:
+  stack:
+  deployment:
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - Elasticsearch
 ---
 
 % marciw move so this is with other cluster topics

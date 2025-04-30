@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-observability-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-alerts.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # View alerts [observability-view-alerts]

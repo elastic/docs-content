@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-server-api.html
 applies_to:
   serverless:
+products:
+  - Cloud Serverless
 ---
 
 # Managed intake service event API [observability-apm-server-api]

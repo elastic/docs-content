@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # Endpoint protection rules [endpoint-protection-rules]

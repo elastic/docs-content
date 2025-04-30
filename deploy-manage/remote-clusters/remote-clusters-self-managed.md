@@ -1,10 +1,13 @@
 ---
-applies_to:
-  deployment:
-    self: ga
 navigation_title: Self-managed {{stack}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html
+applies_to:
+  stack:
+  deployment:
+    self: ga
+products:
+  - Elasticsearch
 ---
 
 # Remote clusters with self-managed installations [remote-clusters]

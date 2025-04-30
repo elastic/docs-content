@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Incident management [incident-management]

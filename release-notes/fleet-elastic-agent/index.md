@@ -1,7 +1,12 @@
 ---
-navigation_title: "Fleet and Elastic Agent"
+navigation_title: Fleet and Elastic Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/release-notes.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # {{fleet}} and {{agent}} release notes [fleet-elastic-agent-release-notes]

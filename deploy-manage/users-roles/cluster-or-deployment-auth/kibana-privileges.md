@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-privileges.html
 applies_to:
+  stack:
   deployment:
-    ece:
     ess:
+    ece:
     eck:
     self:
+products:
+  - Kibana
 ---
 
 # {{kib}} privileges [kibana-privileges]

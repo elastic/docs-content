@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Remove the add-on [ech-getting-started-removing]

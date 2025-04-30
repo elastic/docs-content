@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Grant users access to secured resources [observability-synthetics-feature-roles]

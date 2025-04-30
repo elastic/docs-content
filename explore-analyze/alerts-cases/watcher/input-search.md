@@ -1,10 +1,12 @@
 ---
+navigation_title: Search input
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-search.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Search input"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-search.html
+products:
+  - Elasticsearch
 ---
 
 # Search input [input-search]

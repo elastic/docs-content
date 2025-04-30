@@ -2,6 +2,11 @@
 navigation_title: "{{agent}}s"
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/manage-agents.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # {{agent}}s [manage-agents]

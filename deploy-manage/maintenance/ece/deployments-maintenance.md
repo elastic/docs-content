@@ -3,7 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-maintenance-mode-deployments.html
 applies_to:
   deployment:
-     ece:
+    ece:
+products:
+  - Cloud Enterprise
 ---
 
 # Deployments maintenance [ece-maintenance-mode-deployments]

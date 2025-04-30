@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # Event capture and {{elastic-defend}} [endpoint-event-capture]

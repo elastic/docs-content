@@ -1,9 +1,11 @@
 ---
-navigation_title: "Switch a self-installation"
+navigation_title: Switch a self-installation
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Switch a self-installation to the APM integration [apm-integration-upgrade-steps]

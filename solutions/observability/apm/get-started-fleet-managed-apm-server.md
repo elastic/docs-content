@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/get-started-with-fleet-apm-server.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Fleet-managed APM Server [get-started-with-fleet-apm-server]

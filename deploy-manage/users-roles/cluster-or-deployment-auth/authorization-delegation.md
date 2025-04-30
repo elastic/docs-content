@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-authorization-delegation.html
 applies_to:
+  stack:
   deployment:
+    ess:
     ece:
     eck:
-    ess:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Authorization delegation [configuring-authorization-delegation]

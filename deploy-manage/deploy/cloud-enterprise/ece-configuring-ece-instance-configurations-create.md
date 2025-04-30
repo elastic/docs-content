@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-instance-configurations-create.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-instance-configurations-create.html
+products:
+  - Cloud Enterprise
 ---
 
 # Create instance configurations [ece-configuring-ece-instance-configurations-create]

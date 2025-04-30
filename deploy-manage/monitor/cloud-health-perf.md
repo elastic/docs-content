@@ -1,11 +1,14 @@
 ---
+navigation_title: Cloud deployment health
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
-navigation_title: "Cloud deployment health"
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
+products:
+  - Elasticsearch
 ---
 
 # Cloud deployment health and performance metrics

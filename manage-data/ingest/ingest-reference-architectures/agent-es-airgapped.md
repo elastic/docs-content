@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-es-airgapped.html
+applies_to:
+  stack:
+products:
+  - Ingest
 ---
 
 # Elastic Agent to Elasticsearch: Air-gapped environment [agent-es-airgapped]

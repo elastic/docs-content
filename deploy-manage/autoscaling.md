@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-autoscaling.html
 applies_to:
+  stack:
   deployment:
-    ece: ga
     ess: ga
+    ece: ga
     eck: ga
   serverless: all
+products:
+  - Elasticsearch
 ---
 
 # Autoscaling

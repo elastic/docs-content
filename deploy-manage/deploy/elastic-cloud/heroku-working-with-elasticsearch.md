@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Work with {{es}} [ech-working-with-elasticsearch]

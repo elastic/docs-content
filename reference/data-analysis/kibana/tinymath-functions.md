@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tinymath-functions.html
+applies_to:
+  stack:
+products:
+  - Kibana
 ---
 
 # TinyMath functions [canvas-tinymath-functions]

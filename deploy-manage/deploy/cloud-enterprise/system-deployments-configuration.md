@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-system-clusters-configuration.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-system-clusters-configuration.html
+products:
+  - Cloud Enterprise
 ---
 
 # System deployments configuration [ece-system-clusters-configuration]

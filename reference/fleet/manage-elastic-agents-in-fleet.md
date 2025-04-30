@@ -1,7 +1,12 @@
 ---
-navigation_title: "Manage {{agent}}s in {{fleet}}"
+navigation_title: Manage {{agent}}s in {{fleet}}
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/manage-agents-in-fleet.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Centrally manage {{agent}}s in {{fleet}} [manage-agents-in-fleet]

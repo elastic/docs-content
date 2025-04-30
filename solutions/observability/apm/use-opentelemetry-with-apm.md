@@ -1,11 +1,15 @@
 ---
-navigation_title: "OpenTelemetry"
+navigation_title: OpenTelemetry
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry.html
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Cloud Serverless
+  - Observability
 ---
 
 # Use OpenTelemetry with APM [apm-open-telemetry]

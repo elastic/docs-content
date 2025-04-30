@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/common-script-uses.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/common-script-uses.html
+products:
+  - Elasticsearch
 ---
 
 # Common scripting use cases [common-script-uses]

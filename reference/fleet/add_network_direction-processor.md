@@ -1,7 +1,12 @@
 ---
-navigation_title: "add_network_direction"
+navigation_title: add_network_direction
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_network_direction-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Add network direction [add_network_direction-processor]

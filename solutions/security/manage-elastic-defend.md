@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # Manage {{elastic-defend}} [sec-manage-intro]

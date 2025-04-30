@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Get started [observability-synthetics-get-started]

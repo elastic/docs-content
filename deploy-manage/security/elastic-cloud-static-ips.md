@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-static-ips.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-static-ips.html
+products:
+  - Cloud Hosted
 ---
 
 # {{ecloud}} Static IPs [ec-static-ips]

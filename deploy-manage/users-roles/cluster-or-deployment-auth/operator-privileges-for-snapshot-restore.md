@@ -2,10 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/operator-only-snapshot-and-restore.html
 applies_to:
+  stack:
   deployment:
-    ess: 
-    ece: 
-    eck: 
+    ess:
+    ece:
+    eck:
+products:
+  - Elasticsearch
 ---
 
 # Operator privileges for snapshot and restore [operator-only-snapshot-and-restore]

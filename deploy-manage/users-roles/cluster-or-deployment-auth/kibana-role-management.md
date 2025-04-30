@@ -1,13 +1,16 @@
 ---
+navigation_title: Using Kibana
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html
 applies_to:
+  stack:
   deployment:
-    ece:
     ess:
+    ece:
     eck:
     self:
-navigation_title: Using Kibana
+products:
+  - Kibana
 ---
 
 # Role management using {{kib}} [kibana-role-management]

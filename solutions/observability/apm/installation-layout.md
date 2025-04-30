@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-directory-layout.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Installation layout [apm-directory-layout]

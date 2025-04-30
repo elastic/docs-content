@@ -11,6 +11,10 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - Cloud Hosted
+  - Cloud Serverless
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Service status

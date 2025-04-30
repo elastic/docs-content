@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # Optimize {{elastic-defend}} [endpoint-artifacts]

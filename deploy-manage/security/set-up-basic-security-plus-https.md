@@ -1,10 +1,13 @@
 ---
-navigation_title: "Set up HTTPS"
-applies_to:
-  deployment:
-    self: ga
+navigation_title: Set up HTTPS
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
+applies_to:
+  stack:
+  deployment:
+    self: ga
+products:
+  - Elasticsearch
 ---
 
 % Scope: HTTP certificates setup / manual configuration / multi or single node cluster

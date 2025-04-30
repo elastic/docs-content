@@ -1,10 +1,13 @@
 ---
+navigation_title: Install with Docker
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
-navigation_title: "Install with Docker"
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Install {{es}} with Docker [docker]

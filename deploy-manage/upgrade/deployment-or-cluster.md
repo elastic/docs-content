@@ -14,10 +14,17 @@ mapped_pages:
 applies_to:
   stack:
   deployment:
-    eck:
     ess:
     ece:
+    eck:
     self:
+products:
+  - Kibana
+  - Cloud Enterprise
+  - Elasticsearch Cloud Hosted Heroku
+  - Cloud Hosted
+  - Cloud Kubernetes
+  - Elasticsearch
 ---
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]

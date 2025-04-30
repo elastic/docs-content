@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-kubernetes-pod-metrics.html
   - https://www.elastic.co/guide/en/observability/current/kubernetes-pod-metrics.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Cloud Serverless
+  - Observability
 ---
 
 # Kubernetes pod metrics [observability-kubernetes-pod-metrics]

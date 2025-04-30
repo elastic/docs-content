@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - Cloud Hosted
 ---
 
 # AutoOps FAQ [ec-autoops-faq]

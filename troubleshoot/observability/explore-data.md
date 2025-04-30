@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - Observability
 ---
 
 # Explore data [exploratory-data-visualizations]

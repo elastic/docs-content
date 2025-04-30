@@ -1,10 +1,12 @@
 ---
+navigation_title: Overview
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-overview.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Overview"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-overview.html
+products:
+  - Machine Learning
 ---
 
 # Overview [ml-dfa-overview]

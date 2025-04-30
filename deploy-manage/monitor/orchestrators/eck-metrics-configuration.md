@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: all
+products:
+  - Cloud Kubernetes
 ---
 
 # ECK operator metrics [k8s-configure-operator-metrics]

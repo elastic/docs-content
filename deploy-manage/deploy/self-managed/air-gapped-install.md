@@ -4,7 +4,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline.html
 applies_to:
   deployment:
+    ece:
     self:
+products:
+  - Cloud Enterprise
 ---
 
 # Air gapped install

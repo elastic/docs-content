@@ -1,7 +1,12 @@
 ---
-navigation_title: "detect_mime_type"
+navigation_title: detect_mime_type
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/detect_mime_type-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Detect mime type [detect_mime_type-processor]

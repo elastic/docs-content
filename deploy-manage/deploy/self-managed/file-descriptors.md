@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/file-descriptors.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Increase the file descriptor limit [file-descriptors]

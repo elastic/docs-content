@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-proxy.html
+applies_to:
+  stack:
+products:
+  - Ingest
 ---
 
 # Elastic Agent to proxy to Elasticsearch [agent-proxy]

@@ -1,10 +1,12 @@
 ---
-navigation_title: "Container engines"
+navigation_title: Container engines
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-containers.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-containers.html
+products:
+  - Cloud Enterprise
 ---
 
 # Troubleshoot container engines [ece-troubleshooting-containers]

@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Important settings configuration [important-settings]

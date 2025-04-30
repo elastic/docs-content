@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/configuring-kubernetes-metadata.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Configuring Kubernetes metadata enrichment on Elastic Agent [configuring-kubernetes-metadata]

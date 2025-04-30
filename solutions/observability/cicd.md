@@ -1,7 +1,11 @@
 ---
-navigation_title: "CI/CD"
+navigation_title: CI/CD
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/ci-cd-observability.html
+applies_to:
+  stack:
+products:
+  - Observability
 ---
 
 

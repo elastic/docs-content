@@ -1,7 +1,12 @@
 ---
-navigation_title: "Command reference"
+navigation_title: Command reference
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # {{agent}} command reference [elastic-agent-cmd-options]

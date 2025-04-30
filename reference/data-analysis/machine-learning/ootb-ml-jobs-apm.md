@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apm.html
+applies_to:
+  stack:
+products:
+  - Machine Learning
 ---
 
 # APM {{anomaly-detect}} configurations [ootb-ml-jobs-apm]

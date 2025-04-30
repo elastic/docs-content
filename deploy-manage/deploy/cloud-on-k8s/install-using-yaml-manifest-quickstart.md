@@ -6,6 +6,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: all
+products:
+  - Cloud Kubernetes
 ---
 
 # Install ECK using the YAML manifests [k8s-install-yaml-manifests]

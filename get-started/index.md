@@ -4,6 +4,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/index.html
+applies_to:
+  stack:
+products:
+  - Elasticsearch
+  - Elastic Products platform
+  - Elastic Stack
 ---
 # Get started
 

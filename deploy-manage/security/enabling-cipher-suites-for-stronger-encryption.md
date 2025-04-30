@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ciphers.html
 applies_to:
+  stack:
   deployment:
     self: all
+products:
+  - Elasticsearch
 ---
 
 # Enabling cipher suites for stronger encryption [ciphers]

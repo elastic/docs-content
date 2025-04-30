@@ -2,10 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/pki-realm.html
 applies_to:
+  stack:
   deployment:
-    self:
     ece:
     eck:
+    self:
+products:
+  - Elasticsearch
 ---
 
 # PKI [pki-realm]

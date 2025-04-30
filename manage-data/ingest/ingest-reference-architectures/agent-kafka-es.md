@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-kafka-es.html
+applies_to:
+  stack:
+products:
+  - Ingest
 ---
 
 # Elastic Agent to Elasticsearch with Kafka as middleware message queue [agent-kafka-es]

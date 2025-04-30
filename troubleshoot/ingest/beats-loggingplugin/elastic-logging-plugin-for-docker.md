@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - Beats Logging plugin
 ---
 
 # Elastic Logging Plugin for Docker [log-driver-troubleshooting]

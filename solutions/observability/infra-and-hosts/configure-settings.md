@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/configure-settings.html
   - https://www.elastic.co/guide/en/serverless/current/observability-configure-intra-settings.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Configure settings [observability-configure-intra-settings]

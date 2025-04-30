@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: all
   serverless: all
+products:
+  - Cloud Serverless
 ---
 
 # Get started with system logs [observability-get-started-with-logs]

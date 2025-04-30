@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece: all
+products:
+  - Cloud Enterprise
 ---
 
 # Set the retention period for logging and metrics indices [ece-monitoring-ece-set-retention]

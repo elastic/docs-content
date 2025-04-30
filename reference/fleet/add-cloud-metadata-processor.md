@@ -1,7 +1,12 @@
 ---
-navigation_title: "add_cloud_metadata"
+navigation_title: add_cloud_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-cloud-metadata-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Add cloud metadata [add-cloud-metadata-processor]

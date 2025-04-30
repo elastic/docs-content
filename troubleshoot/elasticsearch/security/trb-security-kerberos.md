@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Kerberos
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-kerberos.html
+applies_to:
+  stack:
+  deployment:
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - Elasticsearch
 ---
 
 # Common Kerberos exceptions [trb-security-kerberos]

@@ -1,12 +1,15 @@
 ---
 mapped_pages:
-- https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache.html
 applies_to:
+  stack:
   deployment:
-    ece:
     ess:
+    ece:
     eck:
     self:
+products:
+  - Elasticsearch
 ---
 
 # The shard request cache [shard-request-cache]

@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece:
+products:
+  - Cloud Enterprise
 ---
 
 # Minio on-premise repository [ece-configuring-minio]

@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-probabilistic-profiling.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Configure probabilistic profiling [profiling-probabilistic-profiling]

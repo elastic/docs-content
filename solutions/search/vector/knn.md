@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - Elasticsearch
+  - Cloud Serverless
 ---
 
 # kNN search [knn-search]

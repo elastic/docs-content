@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Transforms
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-troubleshooting.html
+applies_to:
+  stack:
+  deployment:
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - Elasticsearch
 ---
 
 # Troubleshoot transforms [transform-troubleshooting]

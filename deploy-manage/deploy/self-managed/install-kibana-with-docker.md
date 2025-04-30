@@ -1,10 +1,13 @@
 ---
-navigation_title: "Docker"
+navigation_title: Docker
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/docker.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Kibana
 ---
 
 

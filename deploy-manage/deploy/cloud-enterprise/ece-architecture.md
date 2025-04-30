@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-architecture.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-containerization.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - Cloud Enterprise
 ---
 
 # Service-oriented architecture [ece-architecture]

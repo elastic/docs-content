@@ -1,7 +1,11 @@
 ---
-navigation_title: "Roll back to a previous version"
+navigation_title: Roll back to a previous version
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/upgrade-migrations-rolling-back.html
+applies_to:
+  stack:
+products:
+  - Kibana
 ---
 
 # Roll back to a previous version of {{kib}} [upgrade-migrations-rolling-back]

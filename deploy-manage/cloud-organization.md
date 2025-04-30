@@ -5,6 +5,8 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - Cloud Hosted
 ---
 
 # Manage your Cloud organization [ec-organizations]

@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-deploy.html
+applies_to:
+  stack:
+products:
+  - Elasticsearch
 ---
 
 # Deployment options [elasticsearch-intro-deploy]

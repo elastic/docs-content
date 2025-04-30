@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-plugins-guide.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-plugins-guide.html
+products:
+  - Cloud Hosted
 ---
 
 # Manage plugins and extensions through the API [ec-plugins-guide]

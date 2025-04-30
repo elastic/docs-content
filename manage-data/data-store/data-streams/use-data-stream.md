@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - Elasticsearch
 ---
 
 # Use a data stream [use-a-data-stream]

@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # {{data-sources-cap}} and {{elastic-sec}} [security-data-views-in-sec]

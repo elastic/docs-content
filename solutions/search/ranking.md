@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - Elasticsearch
 ---
 
 # Ranking and reranking [re-ranking-overview]

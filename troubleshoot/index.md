@@ -1,11 +1,22 @@
 ---
-navigation_title: "Troubleshoot"
+navigation_title: Troubleshoot
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/get-support-help.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/troubleshooting-and-faqs.html
   - https://www.elastic.co/guide/en/cloud/current/ec-get-help.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-get-help.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-help.html
+applies_to:
+  stack:
+  deployment:
+    ess:
+    ece:
+products:
+  - Elastic Products platform
+  - Elastic Stack
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
+  - Cloud Enterprise
 ---
 
 # Troubleshooting

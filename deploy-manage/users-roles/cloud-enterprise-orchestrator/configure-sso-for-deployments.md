@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece: all
+products:
+  - Cloud Enterprise
 ---
 
 # Configure SSO for deployments [ece-deployment-sso]

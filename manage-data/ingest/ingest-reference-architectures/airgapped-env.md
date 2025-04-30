@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/airgapped-env.html
+applies_to:
+  stack:
+products:
+  - Ingest
 ---
 
 # Elastic air-gapped architectures [airgapped-env]

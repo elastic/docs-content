@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece:
+products:
+  - Cloud Enterprise
 ---
 
 # Azure Storage repository [ece-configure-azure-snapshotting]

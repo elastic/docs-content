@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece:
+products:
+  - Cloud Enterprise
 ---
 
 # Google Cloud Storage (GCS) repository [ece-configure-gcp-snapshotting]

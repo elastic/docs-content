@@ -1,10 +1,12 @@
 ---
 navigation_title: Configure default templates
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-configure-system-templates.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-configure-system-templates.html
+products:
+  - Cloud Enterprise
 ---
 
 # Configure default system deployment templates [ece-configuring-ece-configure-system-templates]

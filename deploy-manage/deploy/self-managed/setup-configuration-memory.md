@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Disable swapping [setup-configuration-memory]

@@ -3,11 +3,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-roles.html
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-authorization.html
 applies_to:
+  stack:
   deployment:
+    ess:
     ece:
     eck:
-    ess:
     self:
+products:
+  - Elasticsearch
+  - Kibana
 ---
 
 # Built-in roles [built-in-roles]

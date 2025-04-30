@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-integrations-server-apm-switch.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-integrations-server-apm-switch.html
+products:
+  - Cloud Hosted
 ---
 
 # Switch from APM to Integrations Server payload [ec-integrations-server-apm-switch]

@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: all
+products:
+  - Cloud Kubernetes
 ---
 
 # Prometheus requirements [k8s-prometheus-requirements]

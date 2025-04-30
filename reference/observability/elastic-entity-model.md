@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/elastic-entity-model.html
   - https://www.elastic.co/guide/en/serverless/current/observability-elastic-entity-model.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Elastic Entity Model [elastic-entity-model]

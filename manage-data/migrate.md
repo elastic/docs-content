@@ -6,10 +6,14 @@ mapped_pages:
 applies_to:
   stack: ga
   deployment:
-    eck: unavailable
     ess: ga
     ece: ga
+    eck: unavailable
   serverless: unavailable
+products:
+  - Cloud Hosted
+  - Cloud Enterprise
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Migrate your {{es}} data

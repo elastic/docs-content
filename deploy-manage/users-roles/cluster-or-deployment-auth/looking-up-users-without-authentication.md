@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/user-lookup.html
 applies_to:
+  stack:
   deployment:
     ess:
     ece:
     eck:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Looking up users without authentication [user-lookup]

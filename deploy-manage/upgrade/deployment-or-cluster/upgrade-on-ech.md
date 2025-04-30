@@ -1,13 +1,15 @@
 ---
+navigation_title: Upgrade on {{ech}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v7.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v6.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v5.html
-navigation_title: "Upgrade on {{ech}}"
 applies_to:
   stack:
   deployment:
     ess:
+products:
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Upgrade on {{ech}} (ECH)

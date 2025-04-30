@@ -3,11 +3,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cluster-health-notifications.html
   - https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
+products:
+  - Cloud Hosted
+  - Kibana
 ---
 
 # Stack monitoring alerts [kibana-alerts]

@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Install the add-on [ech-getting-started-installing]

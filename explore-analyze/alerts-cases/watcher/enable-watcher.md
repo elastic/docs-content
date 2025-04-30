@@ -1,9 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-watcher.html
+applies_to:
+  stack: ga
+  deployment:
+    ess:
+  serverless: ga
+products:
+  - Cloud Hosted
 ---
 
 # Enable Watcher [enable-watcher]

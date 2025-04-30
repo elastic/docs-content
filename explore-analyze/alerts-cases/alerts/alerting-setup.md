@@ -1,10 +1,12 @@
 ---
+navigation_title: Set up
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/alerting-setup.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Set up"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/alerting-setup.html
+products:
+  - Kibana
 ---
 
 # Set up [alerting-setup]

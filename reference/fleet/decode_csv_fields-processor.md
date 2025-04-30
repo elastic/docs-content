@@ -1,7 +1,12 @@
 ---
-navigation_title: "decode_csv_fields"
+navigation_title: decode_csv_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_csv_fields-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Decode CSV fields [decode_csv_fields-processor]

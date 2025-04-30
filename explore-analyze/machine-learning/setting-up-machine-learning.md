@@ -1,10 +1,12 @@
 ---
+navigation_title: Setup and security
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/setup.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Setup and security"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/setup.html
+products:
+  - Machine Learning
 ---
 
 # Setting up machine learning [setup]

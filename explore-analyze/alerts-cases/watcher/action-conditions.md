@@ -1,10 +1,12 @@
 ---
+navigation_title: Adding conditions to actions
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/action-conditions.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Adding conditions to actions"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/action-conditions.html
+products:
+  - Elasticsearch
 ---
 
 # Adding conditions to actions [action-conditions]

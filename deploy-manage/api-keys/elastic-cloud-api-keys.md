@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html
 applies_to:
   deployment:
     ess: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html
+products:
+  - Cloud Hosted
 ---
 
 # {{ecloud}} API keys [ec-api-authentication]

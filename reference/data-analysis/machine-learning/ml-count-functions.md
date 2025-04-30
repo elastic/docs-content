@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html
+applies_to:
+  stack:
+products:
+  - Machine Learning
 ---
 
 # Count functions [ml-count-functions]

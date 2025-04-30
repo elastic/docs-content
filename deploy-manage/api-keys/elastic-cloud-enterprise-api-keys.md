@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restful-api-authentication.html
 applies_to:
   deployment:
     ece: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restful-api-authentication.html
+products:
+  - Cloud Enterprise
 ---
 
 # {{ece}} API keys [ece-restful-api-authentication]

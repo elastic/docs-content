@@ -1,7 +1,12 @@
 ---
+navigation_title: Tools and APIs
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-work-with-apis.html
-navigation_title: Tools and APIs
+applies_to:
+  deployment:
+    ess:
+products:
+  - Cloud Hosted
 ---
 
 # Tools and APIs for your Cloud organization [ec-work-with-apis]

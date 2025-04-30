@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-ssl-landing.html
 applies_to:
   stack: all
+products:
+  - Observability
 ---
 
 # SSL/TLS settings [apm-configuration-ssl-landing]

@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - APM PHP Agent
 ---
 
 # Agent is not instrumenting code [_agent_is_not_instrumenting_code]

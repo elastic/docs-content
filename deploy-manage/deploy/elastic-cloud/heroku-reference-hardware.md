@@ -1,12 +1,14 @@
 ---
+navigation_title: Hardware
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-reference-hardware.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-aws-instance-configuration.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-default-aws-configurations.html
-navigation_title: Hardware
 applies_to:
   deployment:
     ess:
+products:
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # {{heroku}} hardware [ech-reference-hardware]

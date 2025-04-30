@@ -1,11 +1,15 @@
 ---
-navigation_title: "Use a Synthetics project"
+navigation_title: Use a Synthetics project
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-get-started-project.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-get-started-project.html
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Create monitors with a Synthetics project [observability-synthetics-get-started-project]

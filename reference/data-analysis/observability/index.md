@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/metrics-reference.html
   - https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Metrics reference [metrics-reference]

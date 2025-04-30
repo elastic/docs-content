@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-time-functions.html
+applies_to:
+  stack:
+products:
+  - Machine Learning
 ---
 
 # Time functions [ml-time-functions]

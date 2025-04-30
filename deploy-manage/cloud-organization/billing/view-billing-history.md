@@ -6,6 +6,9 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - Cloud Hosted
+  - Cloud Serverless
 ---
 
 # View your billing history [ec-billing-history]

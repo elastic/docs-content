@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/restart-cluster.html
 applies_to:
+  stack:
   deployment:
-     self:
+    self:
+products:
+  - Elasticsearch
 ---
 
 # Full Cluster restart and rolling restart procedures [restart-cluster]

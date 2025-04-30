@@ -4,10 +4,12 @@ mapped_pages:
 applies_to:
   stack:
   deployment:
-    eck:
     ess:
     ece:
+    eck:
     self:
+products:
+  - Kibana
 ---
 
 # Saved object migrations [saved-object-migrations]

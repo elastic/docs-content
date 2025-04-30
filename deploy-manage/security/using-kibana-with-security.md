@@ -1,10 +1,13 @@
 ---
-applies_to:
-  deployment:
-    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
   - https://www.elastic.co/guide/en/kibana/current/Security-production-considerations.html
+applies_to:
+  stack:
+  deployment:
+    self: ga
+products:
+  - Kibana
 ---
 
 # Configure security in {{kib}} [using-kibana-with-security]

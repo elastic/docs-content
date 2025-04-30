@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-to-apm-integration.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Switch to the Elastic APM integration [apm-upgrade-to-apm-integration]

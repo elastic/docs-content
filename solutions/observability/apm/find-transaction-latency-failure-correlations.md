@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Find transaction latency and failure correlations [observability-apm-find-transaction-latency-and-failure-correlations]

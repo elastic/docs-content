@@ -6,6 +6,9 @@ applies_to:
   stack: preview
   serverless:
     security: preview
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # Attack Discovery

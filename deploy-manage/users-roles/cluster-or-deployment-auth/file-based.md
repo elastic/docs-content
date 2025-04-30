@@ -1,12 +1,16 @@
 ---
+navigation_title: File-based
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
 applies_to:
+  stack:
   deployment:
-    self: all
     eck: all
-navigation_title: "File-based"
+    self: all
+products:
+  - Elasticsearch
+  - Cloud Kubernetes
 ---
 
 # File-based user authentication [file-realm]

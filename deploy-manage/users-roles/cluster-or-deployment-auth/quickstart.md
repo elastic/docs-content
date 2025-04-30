@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
+products:
+  - Kibana
 ---
 
 # Quickstart [tutorial-secure-access-to-kibana]

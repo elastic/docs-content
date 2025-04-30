@@ -1,12 +1,17 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
-  serverless: ga
+navigation_title: Tools and APIs
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-http-apis.html
   - https://www.elastic.co/guide/en/tpec/current/index.html
-navigation_title: "Tools and APIs"
+applies_to:
+  stack:
+  deployment:
+    ess: ga
+    ece:
+  serverless: ga
+products:
+  - Cloud Serverless
+  - Cloud Terraform
 ---
 
 # Tools and APIs for {{ecloud}}

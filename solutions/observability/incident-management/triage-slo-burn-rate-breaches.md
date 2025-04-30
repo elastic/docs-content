@@ -1,9 +1,15 @@
 ---
+navigation_title: SLO burn rate breaches
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/triage-slo-burn-rate-breaches.html
   - https://www.elastic.co/guide/en/serverless/current/observability-triage-slo-burn-rate-breaches.html
-
-navigation_title: "SLO burn rate breaches"
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Triage SLO burn rate breaches [triage-slo-burn-rate-breaches]

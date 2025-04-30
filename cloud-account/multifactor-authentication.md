@@ -2,9 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-account-security-mfa.html
 applies_to:
-  serverless: all
   deployment:
     ess: all
+  serverless: all
+products:
+  - Cloud Hosted
 ---
 
 # Multifactor authentication [ec-account-security-mfa]

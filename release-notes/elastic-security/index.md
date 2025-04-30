@@ -1,8 +1,12 @@
 ---
-navigation_title: "Elastic Security"
+navigation_title: Elastic Security
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/release-notes.html
   - https://www.elastic.co/guide/en/security/current/whats-new.html
+applies_to:
+  stack:
+products:
+  - Security
 ---
 # {{elastic-sec}} release notes [elastic-security-X.X.X-release-notes]
 

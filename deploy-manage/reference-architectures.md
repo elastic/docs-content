@@ -3,11 +3,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/reference-architectures/current/reference-architectures-overview.html
   - https://www.elastic.co/guide/en/reference-architectures/current/index.html
 applies_to:
+  stack:
   deployment:
-    self: all
     ess: all
     ece: all
     eck: all
+    self: all
+products:
+  - Reference Architectures
 ---
 
 # Reference architectures [reference-architectures-overview]

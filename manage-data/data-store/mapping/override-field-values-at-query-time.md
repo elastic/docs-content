@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - Elasticsearch
 ---
 
 # Override field values at query time [runtime-override-values]

@@ -1,13 +1,15 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability.html
-
 applies_to:
+  stack:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - Elasticsearch
 ---
 
 

@@ -2,10 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-restriction.html
 applies_to:
-  ece:
-  eck:
-  ess:
-  self:
+  stack:
+products:
+  - Elasticsearch
 ---
 
 # Role restriction [role-restriction]

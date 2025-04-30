@@ -1,9 +1,11 @@
 ---
-navigation_title: "Switch an {{ecloud}} cluster"
+navigation_title: Switch an {{ecloud}} cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps-ess.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Switch an Elastic Cloud cluster to the APM integration [apm-integration-upgrade-steps-ess]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-cloud-id.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-cloud-id.html
+products:
+  - Cloud Hosted
 ---
 
 # Find your Cloud ID [ec-cloud-id]

@@ -1,7 +1,11 @@
 ---
-navigation_title: "Elastic Observability"
+navigation_title: Elastic Observability
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/whats-new.html
+applies_to:
+  stack:
+products:
+  - Observability
 ---
 
 # Elastic {{observability}} release notes [elastic-observability-release-notes]

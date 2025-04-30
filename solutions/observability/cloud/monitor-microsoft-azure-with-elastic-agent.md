@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-azure-elastic-agent.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Monitor Microsoft Azure with Elastic Agent [monitor-azure-elastic-agent]

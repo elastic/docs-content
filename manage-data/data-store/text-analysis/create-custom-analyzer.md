@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - Elasticsearch
 ---
 
 # Create a custom analyzer [analysis-custom-analyzer]

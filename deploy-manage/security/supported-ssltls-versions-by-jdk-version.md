@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/jdk-tls-versions.html
 applies_to:
+  stack:
   deployment:
     self: all
+products:
+  - Elasticsearch
 ---
 
 # Supported SSL/TLS versions by JDK version [jdk-tls-versions]

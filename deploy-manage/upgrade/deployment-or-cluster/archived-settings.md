@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/archived-settings.html
+applies_to:
+  stack:
+products:
+  - Elasticsearch
 ---
 
 # Archived settings [archived-settings]

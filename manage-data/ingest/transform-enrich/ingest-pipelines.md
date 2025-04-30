@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
 applies_to:
   stack: ga
+products:
+  - Elasticsearch
 ---
 
 # Elasticsearch ingest pipelines [ingest]

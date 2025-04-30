@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-finding-outliers.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-finding-outliers.html
+products:
+  - Machine Learning
 ---
 
 # Finding outliers [ml-dfa-finding-outliers]

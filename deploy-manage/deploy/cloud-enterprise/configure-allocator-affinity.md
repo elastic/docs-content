@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-allocator-affinity.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-allocator-affinity.html
+products:
+  - Cloud Enterprise
 ---
 
 # Configure allocator affinity [ece-configuring-allocator-affinity]

@@ -4,10 +4,12 @@ mapped_pages:
 applies_to:
   stack:
   deployment:
-    eck:
     ess:
     ece:
-    self:  
+    eck:
+    self:
+products:
+  - Kibana
 ---
 
 # Upgrade Assistant [upgrade-assistant]

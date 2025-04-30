@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - Cloud Hosted
 ---
 
 # Access isolation for the found-snapshots repository [ec-snapshot-repository-migration]

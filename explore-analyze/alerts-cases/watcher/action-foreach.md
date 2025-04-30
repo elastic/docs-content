@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/action-foreach.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/action-foreach.html
+products:
+  - Elasticsearch
 ---
 
 # Running an action for each element in an array [action-foreach]

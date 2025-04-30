@@ -1,7 +1,11 @@
 ---
-navigation_title: "Elastic Cloud Serverless"
+navigation_title: Elastic Cloud Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/serverless-changelog.html
+applies_to:
+  serverless:
+products:
+  - Cloud Serverless
 ---
 
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
@@ -211,7 +215,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 
 ## March 24, 2025 [serverless-changelog-03242025]
 
-### Features and enhancements [elastic-cloud-serverless-0324025-features-enhancements] 
+### Features and enhancements [elastic-cloud-serverless-0324025-features-enhancements]
 * Enables smoother scrolling in Kibana [#214512]({{kib-pull}}214512)
 * Adds `context.grouping` action variable in Custom threshold and APM rules [#212895]({{kib-pull}}212895)
 * Adds the ability to create an APM availability or latency SLO for all services [#214653]({{kib-pull}}214653)
@@ -255,7 +259,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 
 ## March 17, 2025 [serverless-changelog-03172025]
 
-### Features and enhancements [elastic-cloud-serverless-0317025-features-enhancements] 
+### Features and enhancements [elastic-cloud-serverless-0317025-features-enhancements]
 
 * Enables read-only editor mode in Lens to explore panel configuration [#208554]({{kib-pull}}208554)
 * Allows you to share Observability AI Assistant conversations [#211854]({{kib-pull}}211854)

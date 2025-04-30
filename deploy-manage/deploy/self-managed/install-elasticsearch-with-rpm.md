@@ -1,16 +1,18 @@
 ---
+navigation_title: Install with RPM package
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
+applies_to:
+  stack:
+  deployment:
+    self:
+products:
+  - Elasticsearch
 sub:
   es-conf: "/etc/elasticsearch"
   slash: "/"
   distro: "RPM"
   export: "export"
-escape: "\\"
-navigation_title: "Install with RPM package"
-applies_to:
-  deployment:
-    self:
 ---
 
 # Install {{es}} with RPM [rpm]

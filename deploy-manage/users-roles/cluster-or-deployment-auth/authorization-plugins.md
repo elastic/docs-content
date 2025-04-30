@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/custom-roles-authorization.html
 applies_to:
+  stack:
   deployment:
+    ess:
     ece:
     eck:
-    ess:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Authorization plugins [custom-roles-authorization]

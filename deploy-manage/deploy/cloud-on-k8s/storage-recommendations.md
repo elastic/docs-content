@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-storage-recommendations.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-storage-recommendations.html
+products:
+  - Cloud Kubernetes
 ---
 
 # Storage recommendations [k8s-storage-recommendations]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-software-prereq.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-software-prereq.html
+products:
+  - Cloud Enterprise
 ---
 
 # Software prerequisites [ece-software-prereq]

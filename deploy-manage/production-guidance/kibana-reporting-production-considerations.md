@@ -1,10 +1,13 @@
 ---
-navigation_title: "Reporting production considerations"
+navigation_title: Reporting production considerations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-production-considerations.html
 applies_to:
+  stack:
   deployment:
     self: all
+products:
+  - Kibana
 ---
 
 # {{kib}} reporting in production environments [reporting-production-considerations]

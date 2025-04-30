@@ -1,7 +1,12 @@
 ---
-navigation_title: "decode_xml_wineventlog"
+navigation_title: decode_xml_wineventlog
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_xml_wineventlog-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Decode XML Wineventlog [decode_xml_wineventlog-processor]

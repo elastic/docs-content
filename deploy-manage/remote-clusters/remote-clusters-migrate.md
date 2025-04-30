@@ -1,10 +1,13 @@
 ---
-applies_to:
-  deployment:
-    self: ga
-navigation_title: "Migrate from certificate to API key authentication"
+navigation_title: Migrate from certificate to API key authentication
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-migrate.html
+applies_to:
+  stack:
+  deployment:
+    self: ga
+products:
+  - Elasticsearch
 ---
 
 

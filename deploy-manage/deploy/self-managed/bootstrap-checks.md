@@ -17,8 +17,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks-all-permission.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks-discovery-configuration.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Bootstrap checks [bootstrap-checks]

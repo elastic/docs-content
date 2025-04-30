@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-production.html
 applies_to:
+  stack:
   deployment:
     self: all
+products:
+  - Elasticsearch
 ---
 
 # Monitoring in a production environment [monitoring-production]

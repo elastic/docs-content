@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/http-clients.html
 applies_to:
+  stack:
   deployment:
-    self: all
-    eck: all
     ess: all
     ece: all
+    eck: all
+    self: all
+products:
+  - Elasticsearch
 ---
 
 # Securing HTTP client applications

@@ -1,16 +1,21 @@
 ---
+navigation_title: Native
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/native-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
 applies_to:
+  stack:
   deployment:
-    self: all
     ess: all
     ece: all
     eck: all
-navigation_title: "Native"
+    self: all
+products:
+  - Elasticsearch
+  - Cloud Kubernetes
+  - Kibana
 ---
 
 # Native user authentication [native-realm]

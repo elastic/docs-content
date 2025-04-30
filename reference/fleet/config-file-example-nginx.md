@@ -1,7 +1,12 @@
 ---
-navigation_title: "Nginx HTTP Server"
+navigation_title: Nginx HTTP Server
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/config-file-example-nginx.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Config file example: Nginx HTTP Server [config-file-example-nginx]

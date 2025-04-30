@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/near-real-time.html
 applies_to:
   stack:
+products:
+  - Elasticsearch
 ---
 
 # Near real-time search [near-real-time]

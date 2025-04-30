@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
 ---
 
 # Create an Elastic Defend policy using API [create-defend-policy-api]

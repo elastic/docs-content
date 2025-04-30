@@ -6,6 +6,9 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]

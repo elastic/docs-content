@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
+applies_to:
+  stack:
+products:
+  - Elasticsearch
 ---
 
 # Use cases [introduction]

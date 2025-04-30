@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-running-with-systemd.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # APM Server and systemd [apm-running-with-systemd]

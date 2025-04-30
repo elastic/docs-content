@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - Cloud Serverless
+  - Kibana
 ---
 
 # Upload data files [upload-data-kibana]

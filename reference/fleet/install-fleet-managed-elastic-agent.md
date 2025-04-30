@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Install Fleet-managed Elastic Agents [install-fleet-managed-elastic-agent]

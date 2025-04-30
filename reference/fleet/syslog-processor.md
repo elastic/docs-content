@@ -1,7 +1,12 @@
 ---
-navigation_title: "syslog"
+navigation_title: syslog
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/syslog-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Syslog [syslog-processor]

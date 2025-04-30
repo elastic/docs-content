@@ -4,6 +4,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-python-logs.html
 applies_to:
   stack: ga
+  deployment:
+    ess:
+    ece:
+products:
+  - Cloud Hosted
+  - Cloud Enterprise
 ---
 
 # Ingest logs from a Python application using Filebeat

@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/advanced-kubernetes-managed-by-fleet.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Advanced Elastic Agent configuration managed by Fleet [advanced-kubernetes-managed-by-fleet]

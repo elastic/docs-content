@@ -1,9 +1,13 @@
 ---
-navigation_title: "Restrictions for {{serverless-full}}"
-applies_to:
-  serverless: all
+navigation_title: Restrictions for {{serverless-full}}
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-serverless-restrictions.html
+applies_to:
+  stack:
+  serverless: all
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # {{fleet}} and {{agent}} restrictions for {{serverless-full}} [fleet-agent-serverless-restrictions]

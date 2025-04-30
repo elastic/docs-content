@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-logs.html
+applies_to:
+  stack:
+products:
+  - Observability
 ---
 
 # Explore logs [monitor-logs]

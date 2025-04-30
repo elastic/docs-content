@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-enrich.html
+applies_to:
+  stack:
+products:
+  - Ingest
 ---
 
 # Elastic Agent to Logstash (for enrichment) to Elasticsearch [ls-enrich]

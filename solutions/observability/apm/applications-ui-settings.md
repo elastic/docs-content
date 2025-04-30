@@ -1,11 +1,15 @@
 ---
-navigation_title: "Settings"
+navigation_title: Settings
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-settings-in-kibana.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-kibana-settings.html
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Applications UI settings [observability-apm-kibana-settings]

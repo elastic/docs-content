@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/aggregation-options.html
   - https://www.elastic.co/guide/en/serverless/current/observability-aggregationOptions.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Aggregation options [aggregation-options]

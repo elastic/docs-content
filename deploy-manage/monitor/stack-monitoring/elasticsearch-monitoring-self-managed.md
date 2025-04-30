@@ -4,8 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-production.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-monitoring.html
 applies_to:
+  stack:
   deployment:
     self: all
+products:
+  - Elasticsearch
 ---
 
 # Enable stack monitoring for {{es}} on a self-managed cluster

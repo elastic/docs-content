@@ -3,11 +3,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/how-monitoring-works.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
+products:
+  - Elasticsearch
 ---
 
 # Stack monitoring

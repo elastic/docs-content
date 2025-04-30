@@ -7,6 +7,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # Troubleshoot {{elastic-defend}} [ts-management]

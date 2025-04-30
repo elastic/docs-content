@@ -5,8 +5,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Deploy an {{es}} cluster

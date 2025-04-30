@@ -1,10 +1,13 @@
 ---
-navigation_title: "Debian"
+navigation_title: Debian
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/deb.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Kibana
 ---
 
 

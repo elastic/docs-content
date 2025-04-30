@@ -2,6 +2,11 @@
 navigation_title: Versioning and availability
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/introducing-elastic-documentation.html
+applies_to:
+  stack:
+products:
+  - Elastic Products platform
+  - Elastic Stack
 ---
 
 # Understanding versioning and availability

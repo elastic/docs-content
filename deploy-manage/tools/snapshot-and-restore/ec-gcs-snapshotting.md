@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Configure a snapshot repository using GCS [ec-gcs-snapshotting]

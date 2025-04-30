@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/create-and-manage-rules.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/create-and-manage-rules.html
+products:
+  - Kibana
 ---
 
 # Create and manage rules [create-and-manage-rules]

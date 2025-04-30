@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/index.html
   - https://www.elastic.co/guide/en/ingest/current/use-case-arch.html
+applies_to:
+  stack:
+products:
+  - Ingest
 ---
 
 # Ingest architectures [ingest-architectures]

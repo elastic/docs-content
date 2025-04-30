@@ -6,6 +6,9 @@ applies_to:
   deployment:
     ess: all
     ece: all
+products:
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # JVM memory pressure indicator [ec-memory-pressure]

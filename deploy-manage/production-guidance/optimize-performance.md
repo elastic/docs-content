@@ -3,11 +3,14 @@ navigation_title: Performance optimizations
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/how-to.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
+products:
+  - Elasticsearch
 ---
 
 # {{es}} performance optimizations [how-to]

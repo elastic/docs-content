@@ -1,7 +1,12 @@
 ---
-navigation_title: "replace"
+navigation_title: replace
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/replace-fields.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Replace fields from events [replace-fields]

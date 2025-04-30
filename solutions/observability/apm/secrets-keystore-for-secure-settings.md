@@ -1,9 +1,11 @@
 ---
-navigation_title: "Secrets keystore"
+navigation_title: Secrets keystore
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-keystore.html
 applies_to:
   stack: all
+products:
+  - Observability
 ---
 
 # Secrets keystore for secure settings [apm-keystore]

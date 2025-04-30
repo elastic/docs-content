@@ -1,10 +1,13 @@
 ---
-navigation_title: "High availability and load balancing"
+navigation_title: High availability and load balancing
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/production.html
 applies_to:
+  stack:
   deployment:
     self: all
+products:
+  - Kibana
 ---
 
 # High Availability and load balancing in Kibana

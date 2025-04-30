@@ -1,10 +1,12 @@
 ---
+navigation_title: Search {{watcher-transform}}
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-search.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Search {{watcher-transform}}"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-search.html
+products:
+  - Elasticsearch
 ---
 
 # Search payload transform [transform-search]

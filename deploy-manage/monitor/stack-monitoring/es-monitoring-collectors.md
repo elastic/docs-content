@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-monitoring-collectors.html
 applies_to:
+  stack:
   deployment:
     self: deprecated 7.16.0
+products:
+  - Elasticsearch
 ---
 
 

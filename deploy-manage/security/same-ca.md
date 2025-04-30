@@ -1,9 +1,13 @@
 ---
-applies_to:
-  self: ga
-navigation_title: "With the same CA"
+navigation_title: With the same CA
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs-same.html
+applies_to:
+  stack:
+  deployment:
+    self:
+products:
+  - Elasticsearch
 ---
 
 

@@ -2,10 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_cli_configuration.html
 applies_to:
+  stack:
   deployment:
-    self:
     ece:
     eck:
+    self:
+products:
+  - Kibana
 ---
 
 # Advanced {{kib}} logging settings

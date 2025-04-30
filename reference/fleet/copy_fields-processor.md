@@ -1,7 +1,12 @@
 ---
-navigation_title: "copy_fields"
+navigation_title: copy_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/copy_fields-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Copy fields [copy_fields-processor]

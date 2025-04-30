@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
 ---
 
 # Entity store [entity-store]

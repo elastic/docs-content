@@ -1,10 +1,12 @@
 ---
+navigation_title: Regions
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-reference-regions.html
-navigation_title: Regions
 applies_to:
   deployment:
     ess:
+products:
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # {{heroku}} regions [ech-reference-regions]

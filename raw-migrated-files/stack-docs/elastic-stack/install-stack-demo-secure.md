@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elastic-stack/current/install-stack-demo-secure.html
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elastic-stack/current/install-stack-demo-secure.html
+products:
+  - Ingest
 ---
 
 # Tutorial: Securing a self-managed {{stack}} [install-stack-demo-secure]

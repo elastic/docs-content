@@ -1,7 +1,12 @@
 ---
-navigation_title: "convert"
+navigation_title: convert
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/convert-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Convert field type [convert-processor]

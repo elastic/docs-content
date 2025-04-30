@@ -2,6 +2,10 @@
 navigation_title: Security
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-troubleshooting.html
+applies_to:
+  stack:
+products:
+  - Elasticsearch
 ---
 
 # Troubleshoot security in {{es}} [security-troubleshooting]

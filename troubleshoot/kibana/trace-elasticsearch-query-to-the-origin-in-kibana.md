@@ -1,13 +1,16 @@
 ---
-navigation_title: "Trace {{es}} query"
+navigation_title: Trace {{es}} query
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-trace-query.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
-    self: all
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-trace-query.html
+    self: all
+products:
+  - Kibana
 ---
 
 # Trace an {{es}} query in {{kib}} [kibana-troubleshooting-trace-query]

@@ -1,13 +1,17 @@
 ---
 navigation_title: Manage TLS encryption
-applies_to:
-  deployment:
-    self:
-    eck:
-    ece:
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
+applies_to:
+  stack:
+  deployment:
+    ece:
+    eck:
+    self:
+products:
+  - Elasticsearch
+  - Kibana
 ---
 
 % Scope: landing page for manually handling TLS certificates, and for information about TLS in {{stack}} in general.

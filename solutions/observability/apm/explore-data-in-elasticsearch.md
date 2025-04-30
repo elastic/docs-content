@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-exploring-es-data.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Explore data in Elasticsearch [apm-exploring-es-data]

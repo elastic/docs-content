@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/import-geospatial-data.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/import-geospatial-data.html
+products:
+  - Kibana
 ---
 
 # Import geospatial data [import-geospatial-data]

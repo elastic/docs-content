@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-aws-metrics.html
   - https://www.elastic.co/guide/en/observability/current/aws-metrics.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Cloud Serverless
+  - Observability
 ---
 
 # AWS metrics [observability-aws-metrics]

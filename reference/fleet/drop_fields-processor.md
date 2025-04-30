@@ -1,7 +1,12 @@
 ---
-navigation_title: "drop_fields"
+navigation_title: drop_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/drop_fields-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Drop fields from events [drop_fields-processor]

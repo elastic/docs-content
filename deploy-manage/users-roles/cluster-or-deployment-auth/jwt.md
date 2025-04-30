@@ -1,16 +1,22 @@
 ---
+navigation_title: JWT
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/jwt-auth-realm.html
 applies_to:
+  stack:
   deployment:
-    self:
     ess:
     ece:
     eck:
-navigation_title: "JWT"
+    self:
+products:
+  - Cloud Hosted
+  - Cloud Enterprise
+  - Elasticsearch Cloud Hosted Heroku
+  - Elasticsearch
 ---
 
 # JWT authentication [jwt-auth-realm]

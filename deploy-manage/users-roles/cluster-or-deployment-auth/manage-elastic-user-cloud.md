@@ -1,13 +1,17 @@
 ---
+navigation_title: ECH and ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-password-reset-elastic.html
   - https://www.elastic.co/guide/en/cloud/current/ec-password-reset.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-password-reset.html
 applies_to:
   deployment:
-    ece:
     ess:
-navigation_title: ECH and ECE
+    ece:
+products:
+  - Cloud Enterprise
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Reset the `elastic` user password in {{ech}} and {{ece}} [ec-password-reset]

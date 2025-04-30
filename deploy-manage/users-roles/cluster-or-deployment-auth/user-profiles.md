@@ -2,10 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html
 applies_to:
+  stack:
   deployment:
-    ess: 
-    ece: 
-    eck: 
+    ess:
+    ece:
+    eck:
+products:
+  - Elasticsearch
 ---
 
 # User profiles [user-profile]

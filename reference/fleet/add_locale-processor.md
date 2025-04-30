@@ -1,7 +1,12 @@
 ---
-navigation_title: "add_locale"
+navigation_title: add_locale
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_locale-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Add the local time zone [add_locale-processor]

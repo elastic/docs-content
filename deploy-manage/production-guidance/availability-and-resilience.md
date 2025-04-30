@@ -3,11 +3,14 @@ navigation_title: Design for resilience
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
+products:
+  - Elasticsearch
 ---
 
 # Design for resilience [high-availability-cluster-design]

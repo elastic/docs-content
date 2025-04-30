@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-engine.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-engine.html
+products:
+  - Elasticsearch
 ---
 
 # Advanced scripts using script engines [modules-scripting-engine]

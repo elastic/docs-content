@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ece: ga
-    ess: ga
 navigation_title: With {{ecloud}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-ece-ess.html
+applies_to:
+  deployment:
+    ess: ga
+    ece: ga
+products:
+  - Cloud Enterprise
 ---
 
 # Access deployments of an {{ecloud}} organization [ece-remote-cluster-ece-ess]

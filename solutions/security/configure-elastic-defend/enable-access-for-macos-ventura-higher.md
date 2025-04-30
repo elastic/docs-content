@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
 ---
 
 # Enable access for macOS Ventura and higher [deploy-elastic-endpoint-ven]

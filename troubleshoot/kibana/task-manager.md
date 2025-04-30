@@ -1,9 +1,11 @@
 ---
-navigation_title: "Task Manager"
-applies_to:
-  stack: preview
+navigation_title: Task Manager
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-troubleshooting.html
+applies_to:
+  stack: preview
+products:
+  - Kibana
 ---
 
 # Troubleshoot {{kib}} Task Manager [task-manager-troubleshooting]

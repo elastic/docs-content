@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - Elasticsearch
 ---
 
 # Tutorial: Migrate ILM managed data stream to data stream lifecycle [tutorial-migrate-data-stream-from-ilm-to-dsl]

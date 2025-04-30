@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-change-hardware-for-a-specific-resource.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-change-hardware-for-a-specific-resource.html
+products:
+  - Cloud Hosted
 ---
 
 # Change hardware [ec-change-hardware-for-a-specific-resource]

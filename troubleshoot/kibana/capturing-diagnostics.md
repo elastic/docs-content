@@ -1,13 +1,16 @@
 ---
-navigation_title: "Diagnostics"
+navigation_title: Diagnostics
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/kibana-diagnostic.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
-    self: all
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/kibana-diagnostic.html
+    self: all
+products:
+  - Kibana
 ---
 
 

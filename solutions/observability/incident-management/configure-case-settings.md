@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/manage-cases-settings.html
   - https://www.elastic.co/guide/en/serverless/current/observability-case-settings.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Configure case settings [manage-cases-settings]

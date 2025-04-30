@@ -1,9 +1,11 @@
 ---
 mapped_pages:
-  -  https://www.elastic.co/guide/en/cloud-enterprise/current/ece-uninstall.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-uninstall.html
 applies_to:
   deployment:
     ece:
+products:
+  - Cloud Enterprise
 ---
 
 # Uninstall {{ece}} [ece-uninstall]

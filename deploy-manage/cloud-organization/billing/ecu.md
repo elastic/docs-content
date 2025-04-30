@@ -5,6 +5,8 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - Cloud Hosted
 ---
 
 # Elastic Consumption Units [ec-billing-ecu]

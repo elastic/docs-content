@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-config.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Elastic APM agent configuration API [apm-api-config]

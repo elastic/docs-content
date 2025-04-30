@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-function-reference.html
+applies_to:
+  stack:
+products:
+  - Kibana
 ---
 
 # Canvas function reference [canvas-function-reference]

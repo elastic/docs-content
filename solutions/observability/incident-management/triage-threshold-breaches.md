@@ -1,9 +1,15 @@
 ---
+navigation_title: Threshold breaches
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/triage-threshold-breaches.html
   - https://www.elastic.co/guide/en/serverless/current/observability-triage-threshold-breaches.html
-
-navigation_title: "Threshold breaches"
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Triage threshold breaches [triage-threshold-breaches]

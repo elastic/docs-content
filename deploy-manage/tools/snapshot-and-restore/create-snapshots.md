@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html
 applies_to:
+  stack:
   deployment:
-    eck:
     ess:
     ece:
+    eck:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Create snapshots [snapshots-take-snapshot]

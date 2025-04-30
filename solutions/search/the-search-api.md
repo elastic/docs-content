@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - Cloud Serverless
 ---
 # The `_search` API [search-your-data]
 

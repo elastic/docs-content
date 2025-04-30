@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ece: ga
 navigation_title: Within the same ECE environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-same-ece.html
+applies_to:
+  deployment:
+    ece: ga
+products:
+  - Cloud Enterprise
 ---
 
 # Access other deployments of the same {{ece}} environment [ece-remote-cluster-same-ece]

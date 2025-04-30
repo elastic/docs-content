@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-access-agreement.html
 applies_to:
+  stack:
   deployment:
-    ess: 
-    ece: 
-    eck: 
-    self: 
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - Kibana
 ---
 
 # {{kib}} access agreement [xpack-security-access-agreement]

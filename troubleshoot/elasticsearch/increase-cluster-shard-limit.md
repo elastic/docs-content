@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Total number of shards per node reached
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-cluster-shard-limit.html
+applies_to:
+  stack:
+  deployment:
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - Elasticsearch
 ---
 
 % marciw move to a new Unassigned shards subsection

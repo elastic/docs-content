@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
+applies_to:
+  stack:
+products:
+  - Elastic Products platform
+  - Elastic Stack
 ---
 
 # Reference [api-reference]

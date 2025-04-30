@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Performance metrics on {{ecloud}} [ec-saas-metrics-accessing]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-claim-traffic-filter-link-id-through-the-api.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-claim-traffic-filter-link-id-through-the-api.html
+products:
+  - Cloud Hosted
 ---
 
 # Claim traffic filter link ID ownership through the API [ec-claim-traffic-filter-link-id-through-the-api]

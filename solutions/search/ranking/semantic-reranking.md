@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - Elasticsearch
 ---
 
 # Semantic reranking [semantic-reranking]

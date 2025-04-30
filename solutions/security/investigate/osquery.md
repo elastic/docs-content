@@ -7,6 +7,10 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - Security
+  - Cloud Serverless
+  - Kibana
 ---
 
 # Osquery [osquery]

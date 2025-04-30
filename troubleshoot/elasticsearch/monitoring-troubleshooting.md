@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack:
-  deployment:
-    eck:
-    ess:
-    ece:
-    self:
 navigation_title: Monitoring
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-troubleshooting.html
+applies_to:
+  stack:
+  deployment:
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - Elasticsearch
 ---
 
 # Troubleshoot monitoring [monitoring-troubleshooting]

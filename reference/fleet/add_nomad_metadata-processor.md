@@ -1,7 +1,12 @@
 ---
-navigation_title: "add_nomad_metadata"
+navigation_title: add_nomad_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_nomad_metadata-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Add Nomad metadata [add_nomad_metadata-processor]

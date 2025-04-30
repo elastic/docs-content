@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: ga 3.0.0
+products:
+  - Cloud Kubernetes
 ---
 
 # Upgrade {{eck}} [k8s-upgrading-eck]

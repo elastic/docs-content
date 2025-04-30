@@ -1,7 +1,12 @@
 ---
-navigation_title: "Upgrade an integration"
+navigation_title: Upgrade an integration
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Upgrade an {{agent}} integration [upgrade-integration]

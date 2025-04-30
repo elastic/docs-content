@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-for-input.html
+applies_to:
+  stack:
+products:
+  - Ingest
 ---
 
 # Logstash to Elasticsearch [ls-for-input]

@@ -7,6 +7,9 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Troubleshoot logs [logs-troubleshooting]

@@ -5,7 +5,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
 applies_to:
   stack: ga
+  deployment:
+    ess:
+    ece:
   serverless: ga
+products:
+  - Elasticsearch
+  - Cloud Enterprise
+  - Cloud Hosted
 ---
 
 # Data tiers

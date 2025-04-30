@@ -1,7 +1,12 @@
 ---
-navigation_title: "Scenario 2"
+navigation_title: Scenario 2
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario2.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Scenario 2: Apply an ILM policy to specific data streams generated from Fleet integrations across all namespaces [data-streams-scenario2]

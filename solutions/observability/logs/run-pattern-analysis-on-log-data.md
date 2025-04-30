@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-run-log-pattern-analysis.html
 applies_to:
   stack: all
+products:
+  - Cloud Serverless
 ---
 
 # Run a pattern analysis on log data [observability-run-log-pattern-analysis]

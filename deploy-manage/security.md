@@ -1,7 +1,4 @@
 ---
-applies_to:
-  deployment: all
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-files.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-cluster.html
@@ -12,6 +9,17 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-security-principles.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
+applies_to:
+  stack:
+  deployment: all
+  serverless: ga
+products:
+  - Elasticsearch
+  - Kibana
+  - Cloud Kubernetes
+  - Cloud Enterprise
+  - Elasticsearch Cloud Hosted Heroku
+  - Cloud Hosted
 ---
 
 # Security

@@ -1,10 +1,13 @@
 ---
-navigation_title: "Monitoring"
-applies_to:
-  deployment:
-    self: all
+navigation_title: Monitoring
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitor-troubleshooting.html
+applies_to:
+  stack:
+  deployment:
+    self: all
+products:
+  - Kibana
 ---
 
 # Troubleshoot {{kib}} monitoring [monitor-troubleshooting]

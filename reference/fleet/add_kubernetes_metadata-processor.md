@@ -1,7 +1,12 @@
 ---
-navigation_title: "add_kubernetes_metadata"
+navigation_title: add_kubernetes_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_kubernetes_metadata-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Add Kubernetes metadata [add_kubernetes_metadata-processor]

@@ -1,9 +1,11 @@
 ---
-navigation_title: "Serverless billing dimensions"
+navigation_title: Serverless billing dimensions
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-billing.html
 applies_to:
   serverless: all
+products:
+  - Cloud Serverless
 ---
 
 # Serverless project billing dimensions [general-serverless-billing]

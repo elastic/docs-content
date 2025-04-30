@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/token-authentication-services.html
 applies_to:
+  stack:
   deployment:
     ess:
     ece:
     eck:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Token-based authentication services [token-authentication-services]

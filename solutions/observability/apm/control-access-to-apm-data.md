@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-spaces.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # Control access to APM data [apm-spaces]

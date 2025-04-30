@@ -1,7 +1,12 @@
 ---
-navigation_title: "rate_limit"
+navigation_title: rate_limit
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/rate_limit-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Rate limit the flow of events [rate_limit-processor]

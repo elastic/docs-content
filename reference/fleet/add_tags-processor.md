@@ -1,7 +1,12 @@
 ---
-navigation_title: "add_tags"
+navigation_title: add_tags
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_tags-processor.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Add tags [add_tags-processor]

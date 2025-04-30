@@ -1,11 +1,15 @@
 ---
-navigation_title: "Drill down into data"
+navigation_title: Drill down into data
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-ui-drill-down.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-ui-drill-down.html
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Drill down into application data [apm-ui-drill-down]

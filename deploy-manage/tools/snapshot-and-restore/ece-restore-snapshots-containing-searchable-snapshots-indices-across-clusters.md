@@ -6,6 +6,9 @@ applies_to:
   deployment:
     ess:
     ece:
+products:
+  - Cloud Hosted
+  - Cloud Enterprise
 ---
 
 # Restore snapshots containing searchable snapshots indices across clusters [ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters]

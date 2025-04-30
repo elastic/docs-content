@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Cloud Serverless
+  - Observability
 ---
 
 # Configure Synthetics settings [synthetics-settings]

@@ -1,9 +1,15 @@
 ---
+navigation_title: Inventory
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/infrastructure-threshold-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-inventory-threshold-alert-rule.html
-
-navigation_title: "Inventory"
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Create an inventory rule [observability-create-inventory-threshold-alert-rule]

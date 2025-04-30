@@ -2,6 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-alerting.html
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Alerting [observability-alerting]

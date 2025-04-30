@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html
 applies_to:
+  stack:
   deployment:
     ess:
     ece:
     eck:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Service accounts [service-accounts]

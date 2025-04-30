@@ -4,6 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-handle-no-results-found-message.html
 applies_to:
   stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Understanding "no results found" message [observability-handle-no-results-found-message]

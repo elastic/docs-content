@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-storage-explorer.html
 applies_to:
   stack: all
+products:
+  - Observability
 ---
 
 # Storage Explorer [apm-storage-explorer]

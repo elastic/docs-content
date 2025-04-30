@@ -1,9 +1,15 @@
 ---
+navigation_title: SLO burn rate
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-burn-rate-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-slo-burn-rate-alert-rule.html
-
-navigation_title: "SLO burn rate"
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Create an SLO burn rate rule [observability-create-slo-burn-rate-alert-rule]

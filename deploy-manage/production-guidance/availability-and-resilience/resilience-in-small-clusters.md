@@ -2,9 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
 applies_to:
+  stack:
   deployment:
-    self: all
     eck: all
+    self: all
+products:
+  - Elasticsearch
 ---
 
 # Resilience in small clusters [high-availability-cluster-small-clusters]

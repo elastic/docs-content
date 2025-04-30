@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-custom-index-template.html
 applies_to:
   stack:
+products:
+  - Observability
 ---
 
 # View the Elasticsearch index template [apm-custom-index-template]

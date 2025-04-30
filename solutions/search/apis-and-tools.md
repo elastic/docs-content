@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - Cloud Serverless
 ---
 
 # APIs and tools

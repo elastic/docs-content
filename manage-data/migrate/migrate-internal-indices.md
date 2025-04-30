@@ -5,10 +5,13 @@ mapped_pages:
 applies_to:
   stack: ga
   deployment:
-    eck: unavailable
     ess: ga
     ece: unavailable
+    eck: unavailable
   serverless: unavailable
+products:
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Migrate internal indices

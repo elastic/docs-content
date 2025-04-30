@@ -1,7 +1,12 @@
 ---
-navigation_title: "Environment variables"
+navigation_title: Environment variables
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-environment-variables.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # {{agent}} environment variables [agent-environment-variables]

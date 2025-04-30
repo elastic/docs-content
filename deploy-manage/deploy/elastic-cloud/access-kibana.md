@@ -1,11 +1,14 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-access-kibana.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-access-kibana.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-enable-kibana2.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Access {{kib}} [ec-access-kibana]

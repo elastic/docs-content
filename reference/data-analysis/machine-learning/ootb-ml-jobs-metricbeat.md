@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-metricbeat.html
+applies_to:
+  stack:
+products:
+  - Machine Learning
 ---
 
 # {{metricbeat}} {{anomaly-detect}} configurations [ootb-ml-jobs-metricbeat]

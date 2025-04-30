@@ -4,6 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuring-howto-apm-server.html
 applies_to:
   stack:
+  deployment:
+    ess:
+products:
+  - Cloud Hosted
+  - Observability
 ---
 
 # Configure APM Server [apm-configuring-howto-apm-server]

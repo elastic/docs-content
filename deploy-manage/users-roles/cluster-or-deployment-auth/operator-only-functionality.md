@@ -2,10 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/operator-only-functionality.html
 applies_to:
+  stack:
   deployment:
     ess:
     ece:
     eck:
+products:
+  - Elasticsearch
 ---
 
 # Operator-only functionality [operator-only-functionality]

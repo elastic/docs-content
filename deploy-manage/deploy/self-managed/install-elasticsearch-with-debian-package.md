@@ -1,16 +1,19 @@
 ---
+navigation_title: Install with Debian package
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
+applies_to:
+  stack:
+  deployment:
+    self:
+products:
+  - Elasticsearch
 sub:
   es-conf: "/etc/elasticsearch"
   slash: "/"
   distro: "Debian"
   export: "export "
   escape: "\\"
-navigation_title: Install with Debian package
-applies_to:
-  deployment:
-    self:
 ---
 
 # Install {{es}} with a Debian package [deb]
@@ -47,7 +50,7 @@ You have several options for installing the {{es}} Debian package:
 
 * [From the APT repository](#deb-repo)
 * [Manually](#install-deb)
-  
+
 ### Install from the APT repository [deb-repo]
 
 1. You may need to install the `apt-transport-https` package on Debian before proceeding:

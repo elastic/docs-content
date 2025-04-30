@@ -1,9 +1,15 @@
 ---
+navigation_title: Custom threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/custom-threshold-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-custom-threshold-alert-rule.html
-
-navigation_title: "Custom threshold"
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 # Create a custom threshold rule [observability-create-custom-threshold-alert-rule]

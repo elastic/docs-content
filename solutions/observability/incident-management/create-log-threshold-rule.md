@@ -1,7 +1,11 @@
 ---
-navigation_title: "Log threshold"
+navigation_title: Log threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-threshold-alert.html
+applies_to:
+  stack:
+products:
+  - Observability
 ---
 
 

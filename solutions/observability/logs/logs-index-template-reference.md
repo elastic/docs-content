@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: all
   serverless: all
+products:
+  - Observability
 ---
 
 # Logs index template reference [logs-index-template]

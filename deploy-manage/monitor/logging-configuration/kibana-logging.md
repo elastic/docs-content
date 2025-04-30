@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/logging-configuration.html
 applies_to:
+  stack:
   deployment:
-    self: 
-    eck:
-    ece: 
     ess:
+    ece:
+    eck:
+    self:
+products:
+  - Kibana
 ---
 
 # {{kib}} logging [logging-configuration]

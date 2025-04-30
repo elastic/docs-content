@@ -1,7 +1,12 @@
 ---
-navigation_title: "decode_json_fields"
+navigation_title: decode_json_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode-json-fields.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Decode JSON fields [decode-json-fields]

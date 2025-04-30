@@ -1,4 +1,5 @@
 ---
+navigation_title: Delete an orchestrated deployment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-delete-deployment.html
@@ -6,13 +7,16 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-stop.html
-navigation_title: "Delete an orchestrated deployment"
 applies_to:
   deployment:
     ess:
     ece:
     eck:
   serverless:
+products:
+  - Elasticsearch Cloud Hosted Heroku
+  - Cloud Enterprise
+  - Cloud Hosted
 ---
 
 # Delete an orchestrated deployment

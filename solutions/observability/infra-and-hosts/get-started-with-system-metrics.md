@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - Observability
+  - Cloud Serverless
 ---
 
 % Stateful get started is much more detailed, but I'm not sure it needs to be. I've considerably pared it down here, but we should go through the actual steps in here.

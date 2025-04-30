@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitor-apm.html
 applies_to:
   stack: all
+products:
+  - Observability
 ---
 
 # Monitor APM Server [apm-monitor-apm]

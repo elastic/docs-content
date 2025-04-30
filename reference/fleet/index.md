@@ -5,6 +5,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/fleet.html
   - https://www.elastic.co/guide/en/fleet/current/fleet-overview.html
   - https://www.elastic.co/guide/en/fleet/current/index.html
+applies_to:
+  stack:
+products:
+  - Cloud Serverless
+  - Fleet Elastic Agent
+  - Kibana
 ---
 
 # Fleet and Elastic Agent [fleet-and-elastic-agent]

@@ -1,12 +1,15 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/xpack-security-session-management.html
 applies_to:
+  stack:
   deployment:
     ess: ga
     ece: ga
     eck: ga
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/xpack-security-session-management.html
+products:
+  - Kibana
 ---
 
 # {{kib}} session management [xpack-security-session-management]

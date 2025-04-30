@@ -1,10 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vnet.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-vnet.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - Cloud Hosted
+  - Elasticsearch Cloud Hosted Heroku
 ---
 
 # Azure Private Link traffic filters

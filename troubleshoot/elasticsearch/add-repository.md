@@ -2,6 +2,10 @@
 navigation_title: Broken repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-repository.html
+applies_to:
+  stack:
+products:
+  - Elasticsearch
 ---
 
 # Troubleshoot broken repositories [add-repository]

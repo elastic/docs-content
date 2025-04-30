@@ -1,10 +1,13 @@
 ---
+navigation_title: Self-managed
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html
-navigation_title: "Self-managed"
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - Elasticsearch
 ---
 
 # Manage snapshot repositories in self-managed deployments [snapshots-register-repository]

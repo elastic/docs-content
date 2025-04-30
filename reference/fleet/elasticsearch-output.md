@@ -2,6 +2,11 @@
 navigation_title: "{{es}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Configure the {{es}} output [elasticsearch-output]

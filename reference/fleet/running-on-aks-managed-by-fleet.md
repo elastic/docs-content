@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/running-on-aks-managed-by-fleet.html
+applies_to:
+  stack:
+products:
+  - Fleet
+  - Elastic Agent
 ---
 
 # Run Elastic Agent on Azure AKS managed by Fleet [running-on-aks-managed-by-fleet]

@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Preferred data tier
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-tier.html
+applies_to:
+  stack:
+  deployment:
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - Elasticsearch
 ---
 
 % marciw move this page to a new index allocation subsection

@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-elasticsearch-nodes.html
 applies_to:
+  stack:
   deployment:
-     self:
+    self:
+products:
+  - Elasticsearch
 sub:
   slash: "\\"
 ---
