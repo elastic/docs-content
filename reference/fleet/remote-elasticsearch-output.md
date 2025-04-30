@@ -9,13 +9,11 @@ Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluste
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your main {{es}} cluster.
 
-::::{warning}
-A bug has been found that causes {{elastic-defend}} response actions to stop working when a remote {{es}} output is configured for an agent. This bug is currently being investigated and is expected to be resolved in an upcoming release.
-::::
-
-
 ::::{note}
-Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+Note the following restrictions with the remote {es} output:
+
+* Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+* Using {{elastic-defend}} is currently not supported when a remote {{es}} output is configured for an agent.
 ::::
 
 ## Configuration
