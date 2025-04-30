@@ -208,20 +208,20 @@ If you’re using 8.2 or earlier versions of {{beats}} or {{agent}} with {{stack
 
 The following Elastic prebuilt rules use the new `v3` {{ml}} jobs to generate alerts. Duplicate their associated `v1`/`v2` prebuilt rules *before* updating them if you need continued coverage from the `v1`/`v2` {{ml}} jobs:
 
-* [Unusual Linux Network Port Activity](https://www.elastic.co/guide/en/security/current/unusual-linux-network-port-activity.html): `v3_linux_anomalous_network_port_activity`
-* [Unusual Linux Network Connection Discovery](https://www.elastic.co/guide/en/security/current/unusual-linux-network-connection-discovery.html): `v3_linux_anomalous_network_connection_discovery`
-* [Anomalous Process For a Linux Population](https://www.elastic.co/guide/en/security/current/anomalous-process-for-a-linux-population.html): `v3_linux_anomalous_process_all_hosts`
-* [Unusual Linux Username](https://www.elastic.co/guide/en/security/current/unusual-linux-username.html): `v3_linux_anomalous_user_name`
-* [Unusual Linux Process Calling the Metadata Service](https://www.elastic.co/guide/en/security/current/unusual-linux-process-calling-the-metadata-service.html): `v3_linux_rare_metadata_process`
-* [Unusual Linux User Calling the Metadata Service](https://www.elastic.co/guide/en/security/current/unusual-linux-user-calling-the-metadata-service.html): `v3_linux_rare_metadata_user`
-* [Unusual Process For a Linux Host](https://www.elastic.co/guide/en/security/current/unusual-process-for-a-linux-host.html): `v3_rare_process_by_host_linux`
-* [Unusual Process For a Windows Host](https://www.elastic.co/guide/en/security/current/unusual-process-for-a-windows-host.html): `v3_rare_process_by_host_windows`
-* [Unusual Windows Network Activity](https://www.elastic.co/guide/en/security/current/unusual-windows-network-activity.html): `v3_windows_anomalous_network_activity`
-* [Unusual Windows Path Activity](https://www.elastic.co/guide/en/security/current/unusual-windows-path-activity.html): `v3_windows_anomalous_path_activity`
-* [Anomalous Windows Process Creation](https://www.elastic.co/guide/en/security/current/anomalous-windows-process-creation.html): `v3_windows_anomalous_process_creation`
-* [Anomalous Process For a Windows Population](https://www.elastic.co/guide/en/security/current/anomalous-process-for-a-windows-population.html): `v3_windows_anomalous_process_all_hosts`
-* [Unusual Windows Username](https://www.elastic.co/guide/en/security/current/unusual-windows-username.html): `v3_windows_anomalous_user_name`
-* [Unusual Windows Process Calling the Metadata Service](https://www.elastic.co/guide/en/security/current/unusual-windows-process-calling-the-metadata-service.html): `v3_windows_rare_metadata_process`
-* [Unusual Windows User Calling the Metadata Service](https://www.elastic.co/guide/en/security/current/unusual-windows-user-calling-the-metadata-service.html): `v3_windows_rare_metadata_user`
+* [Unusual Linux Network Port Activity](detection-rules://rules/ml/ml_linux_anomalous_network_port_activity.md): `v3_linux_anomalous_network_port_activity`
+* [Unusual Linux Network Connection Discovery](detection-rules://rules/ml/discovery_ml_linux_system_network_connection_discovery.md): `v3_linux_anomalous_network_connection_discovery`
+* [Anomalous Process For a Linux Population](detection-rules://rules/ml/persistence_ml_linux_anomalous_process_all_hosts.md): `v3_linux_anomalous_process_all_hosts`
+* [Unusual Linux Username](detection-rules://rules/ml/initial_access_ml_linux_anomalous_user_name.md): `v3_linux_anomalous_user_name`
+* [Unusual Linux Process Calling the Metadata Service](detection-rules://rules/ml/credential_access_ml_linux_anomalous_metadata_process.md): `v3_linux_rare_metadata_process`
+* [Unusual Linux User Calling the Metadata Service](detection-rules://rules/ml/credential_access_ml_linux_anomalous_metadata_user.md): `v3_linux_rare_metadata_user`
+* [Unusual Process For a Linux Host](detection-rules://rules/ml/persistence_ml_rare_process_by_host_linux.md): `v3_rare_process_by_host_linux`
+* [Unusual Process For a Windows Host](detection-rules://rules/ml/persistence_ml_rare_process_by_host_windows.md): `v3_rare_process_by_host_windows`
+* [Unusual Windows Network Activity](detection-rules://rules/ml/ml_windows_anomalous_network_activity.md): `v3_windows_anomalous_network_activity`
+* [Unusual Windows Path Activity](detection-rules://rules/ml/persistence_ml_windows_anomalous_path_activity.md): `v3_windows_anomalous_path_activity`
+* [Anomalous Windows Process Creation](detection-rules://rules/ml/persistence_ml_windows_anomalous_process_creation.md): `v3_windows_anomalous_process_creation`
+* [Anomalous Process For a Windows Population](detection-rules://rules/ml/persistence_ml_windows_anomalous_process_all_hosts.md): `v3_windows_anomalous_process_all_hosts`
+* [Unusual Windows Username](detection-rules://rules/ml/initial_access_ml_windows_anomalous_user_name.md): `v3_windows_anomalous_user_name`
+* [Unusual Windows Process Calling the Metadata Service](detection-rules://rules/ml/credential_access_ml_windows_anomalous_metadata_process.md): `v3_windows_rare_metadata_process`
+* [Unusual Windows User Calling the Metadata Service](detection-rules://rules/ml/credential_access_ml_windows_anomalous_metadata_user.md): `v3_windows_rare_metadata_user`
 
 :::::

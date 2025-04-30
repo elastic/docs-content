@@ -30,7 +30,7 @@ For more detail about how agents communicate their status to {{fleet}}, refer to
 To view the overall status of your {{fleet}}-managed agents, in {{kib}}, go to **Management → {{fleet}} → Agents**.
 
 :::{image} images/kibana-fleet-agents.png
-:alt: Agents tab showing status of each {agent}
+:alt: Agents tab showing status of each {{agent}}
 :screenshot:
 :::
 

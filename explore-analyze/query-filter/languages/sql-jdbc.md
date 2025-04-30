@@ -11,7 +11,7 @@ mapped_pages:
 {{es}}'s SQL jdbc driver is a rich, fully featured JDBC driver for {{es}}. It is Type 4 driver, meaning it is a platform independent, stand-alone, Direct to Database, pure Java driver that converts JDBC calls to Elasticsearch SQL.
 
 
-## Installation [sql-jdbc-installation] 
+## Installation [sql-jdbc-installation]
 
 The JDBC driver can be obtained from:
 
@@ -21,11 +21,11 @@ Dedicated page
 Maven dependency
 :   [Maven](https://maven.apache.org/)-compatible tools can retrieve it automatically as a dependency:
 
-```xml
+```xml subs=true
 <dependency>
   <groupId>org.elasticsearch.plugin</groupId>
   <artifactId>x-pack-sql-jdbc</artifactId>
-  <version>9.0.0-beta1</version>
+  <version>{{version}}</version>
 </dependency>
 ```
 
@@ -41,12 +41,12 @@ from [Maven Central Repository](https://search.maven.org/artifact/org.elasticsea
 ```
 
 
-## Version compatibility [jdbc-compatibility] 
+## Version compatibility [jdbc-compatibility]
 
 Your driver must be compatible with your {{es}} version.
 
-::::{important} 
-The driver version cannot be newer than the {{es}} version. For example, {{es}} version 7.10.0 is not compatible with 9.0.0-beta1 drivers.
+::::{important}
+The driver version cannot be newer than the {{es}} version. For example, {{es}} version 7.10.0 is not compatible with {{version}} drivers.
 ::::
 
 
@@ -55,7 +55,7 @@ The driver version cannot be newer than the {{es}} version. For example, {{es}} 
 | 7.7.0 and earlier versions | * The same version.<br> | {{es}} 7.6.1 is only compatible with 7.6.1 drivers. |
 
 
-## Setup [jdbc-setup] 
+## Setup [jdbc-setup]
 
 The driver main class is `org.elasticsearch.xpack.sql.jdbc.EsDriver`. Note the driver implements the JDBC 4.0 `Service Provider` mechanism meaning it is registered automatically as long as it is available in the classpath.
 
@@ -83,7 +83,7 @@ jdbc:[es|elasticsearch]://[[http|https]://]?[host[:port]]?/[prefix]?[\?[option=v
 The driver recognized the following properties:
 
 
-#### Essential [jdbc-cfg] 
+#### Essential [jdbc-cfg]
 
 $$$jdbc-cfg-timezone$$$
 
@@ -91,7 +91,7 @@ $$$jdbc-cfg-timezone$$$
 :   Timezone used by the driver *per connection* indicated by its `ID`. **Highly** recommended to set it (to, say, `UTC`) as the JVM timezone can vary, is global for the entire JVM and can’t be changed easily when running under a security manager.
 
 
-#### Network [jdbc-cfg-network] 
+#### Network [jdbc-cfg-network]
 
 `connect.timeout` (default `30000`)
 :   Connection timeout (in milliseconds). That is the maximum amount of time waiting to make a connection to the server.
@@ -109,7 +109,7 @@ $$$jdbc-cfg-timezone$$$
 :   Query timeout (in milliseconds). That is the maximum amount of time waiting for a query to return.
 
 
-### Basic Authentication [jdbc-cfg-auth] 
+### Basic Authentication [jdbc-cfg-auth]
 
 `user`
 :   Basic Authentication user name
@@ -118,7 +118,7 @@ $$$jdbc-cfg-timezone$$$
 :   Basic Authentication password
 
 
-### SSL [jdbc-cfg-ssl] 
+### SSL [jdbc-cfg-ssl]
 
 `ssl` (default `false`)
 :   Enable SSL
@@ -145,7 +145,7 @@ $$$jdbc-cfg-timezone$$$
 :   SSL protocol to be used
 
 
-### Proxy [_proxy] 
+### Proxy [_proxy]
 
 `proxy.http`
 :   Http proxy host name
@@ -154,19 +154,19 @@ $$$jdbc-cfg-timezone$$$
 :   SOCKS proxy host name
 
 
-### Mapping [_mapping] 
+### Mapping [_mapping]
 
 `field.multi.value.leniency` (default `true`)
 :   Whether to be lenient and return the first value (without any guarantees of what that will be - typically the first in natural ascending order) for fields with multiple values (true) or throw an exception.
 
 
-### Index [_index] 
+### Index [_index]
 
 `index.include.frozen` (default `false`)
 :   Whether to include frozen indices in the query execution or not (default).
 
 
-### Cluster [_cluster] 
+### Cluster [_cluster]
 
 `catalog`
 :   Default catalog (cluster) for queries. If unspecified, the queries execute on the data in the local cluster only.
@@ -175,13 +175,13 @@ $$$jdbc-cfg-timezone$$$
 
 
 
-### Error handling [_error_handling] 
+### Error handling [_error_handling]
 
 `allow.partial.search.results` (default `false`)
 :   Whether to return partial results in case of shard failure or fail the query throwing the underlying exception (default).
 
 
-### Troubleshooting [_troubleshooting] 
+### Troubleshooting [_troubleshooting]
 
 `debug` (default `false`)
 :   Setting it to `true` will enable the debug logging.
@@ -190,7 +190,7 @@ $$$jdbc-cfg-timezone$$$
 :   The destination of the debug logs. By default, they are sent to standard error. Value `out` will redirect the logging to standard output. A file path can also be specified.
 
 
-### Additional [_additional] 
+### Additional [_additional]
 
 `validate.properties` (default `true`)
 :   If disabled, it will ignore any misspellings or unrecognizable properties. When enabled, an exception will be thrown if the provided property cannot be recognized.

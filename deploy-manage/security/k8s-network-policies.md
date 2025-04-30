@@ -196,7 +196,7 @@ spec:
       podSelector:
         matchLabels:
           common.k8s.elastic.co/type: elasticsearch
-          # [Optional] Restrict to a single {es} cluster named hulk.
+          # [Optional] Restrict to a single Elasticsearch cluster named hulk.
           # elasticsearch.k8s.elastic.co/cluster-name=hulk
   - ports:
     - port: 53
@@ -435,4 +435,4 @@ spec:
 
 ## Isolating Enterprise Search [k8s-network-policies-enterprise-search-isolation]
 
-Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example of Enterprise Search isolation using network policies in previous {{stack}} versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/{{eck_release_branch}}/k8s_prerequisites.html#k8s-network-policies-enterprise-search-isolation).
+Enterprise Search is not available in {{stack}} versions 9.0 and later. For an example of Enterprise Search isolation using network policies in previous {{stack}} versions, refer to the [previous ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/2.16/k8s_prerequisites.html#k8s-network-policies-enterprise-search-isolation).

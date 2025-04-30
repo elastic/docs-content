@@ -355,7 +355,7 @@ Start {{agent}} with {{fleet-server}} (running on a custom CA). This example ass
 * `ca.crt`: Root CA certificate
 * `fleet-server.crt`: {{fleet-server}} certificate
 * `fleet-server.key`: {{fleet-server}} private key
-* `elasticsearch-ca.crt`: CA certificate to use to connect to {es}
+* `elasticsearch-ca.crt`: CA certificate to use to connect to {{es}}
 
 ```shell
 elastic-agent enroll \
@@ -754,7 +754,7 @@ Start {{agent}} with {{fleet-server}} (running on a custom CA). This example ass
 * `ca.crt`: Root CA certificate
 * `fleet-server.crt`: {{fleet-server}} certificate
 * `fleet-server.key`: {{fleet-server}} private key
-* `elasticsearch-ca.crt`: CA certificate to use to connect to {es}
+* `elasticsearch-ca.crt`: CA certificate to use to connect to {{es}}
 
 ```shell
 elastic-agent install \

@@ -17,7 +17,11 @@ This section covers the following topics:
 
 ## Use APM Agent central configuration [k8s-apm-agent-central-configuration]
 
-[APM Agent configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) [7.5.1] allows you to configure your APM Agents centrally from the {{kib}} APM app. To use this feature, the APM Server needs to be configured with connection details of the {{kib}} instance. If {{kib}} is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
+:::{admonition} Added in 7.5.1
+APM Agent central configuration was added in 7.5.1.
+:::
+
+[APM Agent configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) allows you to configure your APM Agents centrally from the {{kib}} APM app. To use this feature, the APM Server needs to be configured with connection details of the {{kib}} instance. If {{kib}} is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -171,4 +175,4 @@ By default the operator manages a private CA and generates a self-signed certifi
 
 This behavior and the relevant configuration is identical to what is done for {{es}} and {{kib}}. Check [Setting up your own certificate](/deploy-manage/security/secure-cluster-communications.md) for more information on how to use your own certificate to configure the TLS endpoint of the APM Server.
 
-For more details on how to configure the APM agents to work with custom certificates, check the [APM agents documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
+For more details on how to configure the APM agents to work with custom certificates, check the [APM agents documentation](/reference/apm-agents/index.md).

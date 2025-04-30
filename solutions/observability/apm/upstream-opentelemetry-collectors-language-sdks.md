@@ -175,7 +175,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 1. [preview] The OpenTelemetry logs intake via APM Server is currently in technical preview.
 
 `OTEL_RESOURCE_ATTRIBUTES`
-:   Fields that describe the service and the environment that the service runs in. See [resource attributes](/solutions/observability/apm/resource-attributes.md) for more information.
+:   Fields that describe the service and the environment that the service runs in. See [attributes](/solutions/observability/apm/attributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
 :   APM Server URL. The host and port that APM Server listens for events on.
@@ -216,7 +216,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 1. [preview]  The OpenTelemetry logs intake via Elastic is currently in technical preview.
 
 `OTEL_RESOURCE_ATTRIBUTES`
-:   Fields that describe the service and the environment that the service runs in. See [resource attributes](/solutions/observability/apm/resource-attributes.md) for more information.
+:   Fields that describe the service and the environment that the service runs in. See [attributes](/solutions/observability/apm/attributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
 :   Elastic URL. The host and port that Elastic listens for APM events on.
@@ -265,5 +265,5 @@ For more information on how APM Server services gRPC requests, see [Muxing gRPC 
 ## Next steps [apm-open-telemetry-direct-next]
 
 * [Collect metrics](/solutions/observability/apm/collect-metrics.md)
-* Add [Resource attributes](/solutions/observability/apm/resource-attributes.md)
+* Add [resource attributes](/solutions/observability/apm/attributes.md)
 * Learn about the [limitations of this integration](/solutions/observability/apm/limitations.md)

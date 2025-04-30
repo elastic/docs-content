@@ -129,7 +129,7 @@ Granting the privilege to generate reports also grants the user the privilege to
 With [{{kib}} application privileges](#grant-user-access), you can use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to grant access to the {{report-features}}, using **All** privileges, or sub-feature privileges.
 
 :::{note}
-This API request needs to be run against the [{{kib}} API endpoint](https://www.elastic.co/guide/en/kibana/current/api.html).
+This API request needs to be run against the [{{kib}} API endpoint](https://www.elastic.co/docs/api/doc/kibana/).
 :::
 
 ```console
@@ -229,7 +229,7 @@ To automatically generate reports with {{watcher}}, you must configure {{watcher
 
 1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [Getting started with security](/deploy-manage/security.md).
 2. Configure TLS/SSL encryption for the {{kib}} server. For more information, see [*Encrypt TLS communications in {{kib}}*](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
-3. Specify the {{kib}} server CA certificate chain in `elasticsearch.yml`:
+3. Specify the {{kib}} server CA certificate chain in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
     If you are using your own CA to sign the {{kib}} server certificate, then you need to specify the CA certificate chain in {{es}} to properly establish trust in TLS connections between {{watcher}} and {{kib}}. If your CA certificate chain is contained in a PKCS #12 trust store, specify it like so:
 
@@ -282,7 +282,7 @@ The screenshotting plugin used for {{report-features}} has a built-in utility to
 
 ### Set the `server.host` for the headless browser [set-reporting-server-host]
 
-If using PNG/PDF {{report-features}} in a production environment, it is preferred to use the setting of `server.host: 0.0.0.0` in the `kibana.yml` configuration file. This allows the headless browser used for PDF/PNG reporting to reach {{kib}} over a local interface, while also allowing the {{kib}} server to listen on outward-facing network interfaces, as it makes the {{kib}} server accessible from any network interface on the machine. Make sure that no firewall rules or other routing rules prevent local services from accessing this address.
+If using PNG/PDF {{report-features}} in a production environment, it is preferred to use the setting of `server.host: 0.0.0.0` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. This allows the headless browser used for PDF/PNG reporting to reach {{kib}} over a local interface, while also allowing the {{kib}} server to listen on outward-facing network interfaces, as it makes the {{kib}} server accessible from any network interface on the machine. Make sure that no firewall rules or other routing rules prevent local services from accessing this address.
 
 
 ### Ensure {{es}} allows built-in templates [reporting-elasticsearch-configuration]

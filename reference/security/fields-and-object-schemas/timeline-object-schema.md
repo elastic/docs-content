@@ -19,10 +19,8 @@ All column, dropzone, and filter fields must be [ECS fields](ecs://reference/ind
 
 This screenshot maps the Timeline UI components to their JSON objects:
 
-:::{image} /reference/images/security-timeline-object-ui.png
-:alt: timeline object ui
-:screenshot:
-:::
+% TO DO: Use `:class: screenshot`
+![timeline object ui](../images/security-timeline-object-ui.png)
 
 1. [Title](#timeline-object-title) (`title`)
 2. [Global notes](#timeline-object-global-notes) (`globalNotes`)

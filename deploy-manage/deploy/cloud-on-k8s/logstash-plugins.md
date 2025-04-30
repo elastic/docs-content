@@ -254,7 +254,7 @@ Some {{ls}} plugins need to write "checkpoints" to local storage in order to kee
 
 Not all external data sources have mechanisms to track state internally, and {{ls}} checkpoints can help persist data.
 
-In the plugin documentation, look for configurations that call for a `path` with a settings like `sincedb`, `sincedb_path`, `sequence_path`, or `last_run_metadata_path`. Check out specific plugin documentation in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current) for details.
+In the plugin documentation, look for configurations that call for a `path` with a settings like `sincedb`, `sincedb_path`, `sequence_path`, or `last_run_metadata_path`. Check out specific plugin documentation in the [Logstash Reference](logstash://reference/index.md) for details.
 
 ```yaml
 spec:

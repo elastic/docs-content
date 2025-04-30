@@ -90,12 +90,12 @@ output {
 
 Every event sent to {{ls}} contains a special field called [`@metadata`](logstash://reference/event-dependent-configuration.md#metadata) that you can use in {{ls}} for conditionals, filtering, indexing and more. APM Server sends the following `@metadata` to {{ls}}:
 
-```json
+```json subs=true
 {
     ...
     "@metadata": {
       "beat": "apm-server", <1>
-      "version": "9.0.0-beta1" <2>
+      "version": "{{version}}" <2>
     }
 }
 ```
@@ -218,7 +218,7 @@ The `proxy_use_local_resolver` option determines if {{ls}} hostnames are resolve
 
 #### `index` [apm-logstash-index]
 
-The index root name to write events to. The default is `apm-server`. For example `"apm"` generates `"[apm-]9.0.0-beta1-YYYY.MM.DD"` indices (for example, `"apm-9.0.0-beta1-2017.04.26"`).
+The index root name to write events to. The default is `apm-server`. For example `"apm"` generates `"[apm-]VERSION-YYYY.MM.DD"` indices (for example, _"apm-{{version}}-2017.04.26"_).
 
 ::::{note}
 This parameter’s value will be assigned to the `metadata.beat` field. It can then be accessed in {{ls}}'s output section as `%{[@metadata][beat]}`.

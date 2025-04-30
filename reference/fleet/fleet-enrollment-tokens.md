@@ -36,7 +36,7 @@ To create an enrollment token:
     Note that the token name you specify must be unique so as to avoid conflict with any existing API keys.
 
     :::{image} images/create-token.png
-    :alt: Enrollment tokens tab in {fleet}
+    :alt: Enrollment tokens tab in {{fleet}}
     :screenshot:
     :::
 
