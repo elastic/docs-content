@@ -1,0 +1,64 @@
+name: Comment on removed .md files
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  detect-removed-markdown:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+
+            // Get all files in the PR
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+
+            // Filter for removed .md files
+            const removedMd = files
+              .filter(f => f.status === 'removed' && f.filename.endsWith('.md'))
+              .map(f => `- \`${f.filename}\``);
+
+            if (removedMd.length > 0) {
+              // Prepare comment body
+              const body = [
+                "## :warning: Markdown Files Removed",
+                "",
+                removedMd.length === 1 
+                  ? "The following Markdown file was removed in this PR:" 
+                  : `The following ${removedMd.length} Markdown files were removed in this PR:`,
+                ...removedMd,
+                "",
+                "### Action Required",
+                "",
+                "We currently do not have an easy way to implement redirects for removed files. If possible, please:",
+                "",
+                "- Keep files whenever possible and exclude them from the TOC by using [`exclude`](https://docs-v3-preview.elastic.dev/elastic/docs-builder/tree/main/configure/content-set/navigation#exclude)",
+                "- Add a notice at the top of the file indicating that the page has moved with a link to the new location",
+                "- Ensure you've updated `redirects.yml` accordingly if the file must be removed",
+                "",
+                "Thank you!"
+              ].join("\n");
+
+              // Post the comment on the PR
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body
+              });
+              
+              console.log(`Comment added about ${removedMd.length} removed Markdown files`);
+            } else {
+              console.log("No Markdown files were removed in this PR");
+            }
