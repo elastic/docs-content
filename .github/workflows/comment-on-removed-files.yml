@@ -28,24 +28,51 @@ jobs:
             const removedMd = files
               .filter(f => f.status === 'removed' && f.filename.endsWith('.md'))
               .map(f => `- \`${f.filename}\``);
+            
+            // Filter for renamed .md files
+            const renamedMd = files
+              .filter(f => f.status === 'renamed' && f.filename.endsWith('.md'))
+              .map(f => `- \`${f.previous_filename}\` → \`${f.filename}\``);
 
-            if (removedMd.length > 0) {
+            // Create a comment if there are any removed or renamed files
+            if (removedMd.length > 0 || renamedMd.length > 0) {
+              // Build sections based on what changes were detected
+              const sections = [];
+            
+              // Add removed files section if there are any
+              if (removedMd.length > 0) {
+                sections.push(
+                  removedMd.length === 1 
+                    ? "The following Markdown file was **removed** in this PR:" 
+                    : `The following ${removedMd.length} Markdown files were **removed** in this PR:`,
+                  ...removedMd,
+                  ""
+                );
+              }
+              
+              // Add renamed files section if there are any
+              if (renamedMd.length > 0) {
+                sections.push(
+                  renamedMd.length === 1
+                    ? "The following Markdown file was **renamed** in this PR:"
+                    : `The following ${renamedMd.length} Markdown files were **renamed** in this PR:`,
+                  ...renamedMd,
+                  ""
+                );
+              }
+
               // Prepare comment body
               const body = [
-                "## :warning: Markdown Files Removed",
+                "## :warning: Markdown file changes detected",
                 "",
-                removedMd.length === 1 
-                  ? "The following Markdown file was removed in this PR:" 
-                  : `The following ${removedMd.length} Markdown files were removed in this PR:`,
-                ...removedMd,
-                "",
+                ...sections,
                 "### Action Required",
                 "",
-                "We currently do not have an easy way to implement redirects for removed files. If possible, please:",
+                "We currently do not have an easy way to implement redirects for removed or renamed files. If possible, please:",
                 "",
-                "- Keep files whenever possible and exclude them from the TOC by using [`exclude`](https://docs-v3-preview.elastic.dev/elastic/docs-builder/tree/main/configure/content-set/navigation#exclude)",
+                "- Keep files whenever possible and hide them from the TOC by using [`hidden`](https://elastic.github.io/docs-builder/configure/content-set/navigation/#hidden-files)",
                 "- Add a notice at the top of the file indicating that the page has moved with a link to the new location",
-                "- Ensure you've updated `redirects.yml` accordingly if the file must be removed",
+                "- Ensure you've updated `redirects.yml` accordingly if files must be removed or renamed",
                 "",
                 "Thank you!"
               ].join("\n");
@@ -58,7 +85,7 @@ jobs:
                 body
               });
               
-              console.log(`Comment added about ${removedMd.length} removed Markdown files`);
+              console.log("Comment added about renamed or removed Markdown files");
             } else {
               console.log("No Markdown files were removed in this PR");
             }
