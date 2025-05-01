@@ -3,123 +3,70 @@ name: "Docs preview comment"
 on:
   pull_request:
     types: [opened, reopened, synchronize]
-  deployment_status:
-    types: [created]
 
 jobs:
-  build-in-progress:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Post “build in progress” comment
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const pr = context.payload.pull_request;
-            const prNumber = pr.number;
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-
-            const body = [
-              "⏳ **Docs preview build in progress**",
-              "",
-              "Your docs preview build is running. This comment will be updated with preview links when it completes."
-            ].join("\n");
-
-            // Look for an existing in-progress comment
-            const { data: comments } = await github.rest.issues.listComments({
-              owner, repo, issue_number: prNumber
-            });
-            const botComment = comments.find(c =>
-              c.user.type === 'Bot' &&
-              c.body.startsWith("⏳ **Docs preview build in progress**")
-            );
-
-            if (botComment) {
-              await github.rest.issues.updateComment({
-                owner, repo,
-                comment_id: botComment.id,
-                body
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner, repo,
-                issue_number: prNumber,
-                body
-              });
-            }
-
   preview-links:
-    if: >
-      github.event.deployment.environment == 'docs-preview' &&
-      github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Post preview links comment
+      - name: Comment preview links for changed docs
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            // Get PR number from the deployment.task ("docs-preview-<PR#>")
-            const task = context.payload.deployment.task || '';
-            const prNumber = Number(task.split('-').pop());
-            const repo    = context.repo.repo;
-            const baseUrl = `https://docs-v3-preview.elastic.dev/${owner}/${repo}/pull/${prNumber}`;
+            const pr     = context.payload.pull_request;
+            const prNum  = pr.number;
+            const owner  = context.repo.owner;
+            const repo   = context.repo.repo;
+            const base   = `https://docs-v3-preview.elastic.dev/${owner}/${repo}/pull/${prNum}`;
 
-            // List PR files
+            // 1) List all files in this PR
             const { data: files } = await github.rest.pulls.listFiles({
-              owner, repo, pull_number: prNumber
+              owner, repo, pull_number: prNum
             });
 
-            // Filter out removed, non-.md, and anything in a _snippets folder
-            const changed = files
+            // 2) Filter to only added/modified .md files (skip removed and _snippets/)
+            const links = files
               .filter(f =>
                 f.status !== 'removed' &&
                 /\.md$/i.test(f.filename) &&
                 !/(^|\/)_snippets\//i.test(f.filename)
               )
               .map(f => {
-                // Convert index.md ⇒ trailing slash; otherwise strip .md
-                let path = f.filename.replace(/\/index\.md$/i, '/');
-                if (path === f.filename) {
-                  path = path.replace(/\.md$/i, '');
-                }
-                return `- [\`${f.filename}\`](${baseUrl}/${path})`;
+                let p = f.filename.replace(/\/index\.md$/i, '/');
+                if (p === f.filename) p = p.replace(/\.md$/i, '');
+                return `- [\`${f.filename}\`](${base}/${p})`;
               });
 
-            if (!changed.length) return; // nothing to do
+            if (!links.length) return;  // nothing to do
 
+            // 3) Build the comment body
             const body = [
               "🔍 **Preview links for changed docs:**",
               "",
-              ...changed,
+              ...links,
               "",
-              `You can also browse the full preview at ${baseUrl}/`
+              "🔔 *The preview site may take up to **5 minutes** to finish building. These links will become live once it completes.*"
             ].join("\n");
 
-            // Find existing bot comment (in-progress or previous links)
+            // 4) Post or update a single bot comment
             const { data: comments } = await github.rest.issues.listComments({
-              owner, repo, issue_number: prNumber
+              owner, repo, issue_number: prNum
             });
-            const botComment = comments.find(c =>
+            const existing = comments.find(c =>
               c.user.type === 'Bot' &&
-              (
-                c.body.startsWith("⏳ **Docs preview build in progress**") ||
-                c.body.startsWith("🔍 **Preview links for changed docs:**")
-              )
+              c.body.startsWith("🔍 **Preview links for changed docs:**")
             );
 
-            if (botComment) {
+            if (existing) {
               await github.rest.issues.updateComment({
                 owner, repo,
-                comment_id: botComment.id,
+                comment_id: existing.id,
                 body
               });
             } else {
               await github.rest.issues.createComment({
                 owner, repo,
-                issue_number: prNumber,
+                issue_number: prNum,
                 body
               });
             }
