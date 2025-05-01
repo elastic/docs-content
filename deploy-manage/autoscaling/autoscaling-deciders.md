@@ -10,6 +10,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-fixed-decider.html
 applies_to:
   stack:
+  deployment:
+    ess:
+    ece:
+    eck:
 products:
   - Elasticsearch
 ---

@@ -4,6 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/securing-aliases.html
 applies_to:
   stack:
+  deployment:
+    ess:
+    ece:
+    eck:
+    self:
 products:
   - Elasticsearch
 ---
@@ -44,7 +49,7 @@ GET .ds-my-data-stream-2099.03.09-000003/_doc/2
 
 Use [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to control access to an [alias](../../../manage-data/data-store/aliases.md). Privileges on an index or data stream do not grant privileges on its aliases. For information about managing aliases, see [*Aliases*](../../../manage-data/data-store/aliases.md).
 
-::::{important} 
+::::{important}
 Don’t use [filtered aliases](../../../manage-data/data-store/aliases.md#filter-alias) in place of [document level security](controlling-access-at-document-field-level.md). {{es}} doesn’t always apply alias filters.
 ::::
 

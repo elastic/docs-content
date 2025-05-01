@@ -2,8 +2,6 @@
 navigation_title: Elasticsearch query
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-create-elasticsearch-query-rule.html
-applies_to:
-  serverless:
 products:
   - Cloud Serverless
 ---

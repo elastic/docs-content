@@ -3,6 +3,7 @@ navigation_title: Elastic Cloud Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/serverless-changelog.html
 applies_to:
+  stack:
   serverless:
 products:
   - Cloud Serverless

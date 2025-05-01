@@ -2,8 +2,6 @@
 navigation_title: Anomaly detection
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-aiops-generate-anomaly-alerts.html
-applies_to:
-  serverless:
 products:
   - Cloud Serverless
 ---

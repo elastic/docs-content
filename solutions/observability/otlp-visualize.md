@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/otlp-visualize.html
 applies_to:
   serverless:
+products:
+  - Cloud Serverless
 ---
 
 # Visualize OTLP data

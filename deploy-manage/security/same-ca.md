@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
   deployment:
-    self:
+    self: ga
 products:
   - Elasticsearch
 ---

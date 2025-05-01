@@ -1,10 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
+  - https://www.elastic.co/guide/en/serverless/current/ingest-pipelines.html
 applies_to:
   stack: ga
+  serverless: ga
 products:
   - Elasticsearch
+  - Cloud Serverless
 ---
 
 # Elasticsearch ingest pipelines [ingest]
@@ -18,10 +21,6 @@ A pipeline consists of a series of configurable tasks called [processors](elasti
 :::
 
 You can create and manage ingest pipelines using {{kib}}'s **Ingest Pipelines** feature or the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). {{es}} stores pipelines in the [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state).
-
-:::{note}
-To run an {{es}} pipeline in {{serverless-full}}, refer to [{{es}} Ingest pipelines (Serverless)](./ingest-pipelines-serverless.md).
-:::
 
 ## Prerequisites [ingest-prerequisites]
 

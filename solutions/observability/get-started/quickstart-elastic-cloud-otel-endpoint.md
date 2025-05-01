@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
   serverless:
+products:
+  - Cloud Serverless
 ---
 
 # Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint

@@ -3,6 +3,8 @@ navigation_title: Compare Cloud Hosted and Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-differences.html
 applies_to:
+  deployment:
+    ess:
   serverless:
 products:
   - Cloud Serverless
