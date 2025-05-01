@@ -9,3 +9,5 @@ In {{ech}}, you can augment these security features in the following ways:
 {{ech}} doesn't support custom SSL certificates, which means that a custom CNAME for an {{ech}} endpoint such as *mycluster.mycompanyname.com* also is not supported.
 
 Refer to [{{ecloud}} security](https://www.elastic.co/cloud/security) for more details about Elastic security and privacy programs.
+
+test snippet update
