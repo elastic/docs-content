@@ -1,0 +1,72 @@
+name: "Comment preview links for changed docs"
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+
+jobs:
+  preview-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Comment preview URLs for changed .md files
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            const prNumber = pr.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const previewBase = `https://docs-v3-preview.elastic.dev/${owner}/${repo}/pull/${prNumber}`;
+
+            // 1) Gather changed .md files
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner, repo, pull_number: prNumber
+            });
+            const changed = files
+              .filter(f => f.status !== 'removed' && /\.md$/i.test(f.filename))
+              .map(f => {
+                let path = f.filename.replace(/\/index\.md$/i, '/');
+                if (path === f.filename) path = path.replace(/\.md$/i, '');
+                return `- [\`${f.filename}\`](${previewBase}/${path})`;
+              });
+            if (!changed.length) return;
+
+            // 2) Build comment body
+            const body = [
+              "🔍 **Preview links for changed docs:**",
+              "",
+              ...changed,
+              "",
+              `You can also browse the full preview at ${previewBase}/`
+            ].join("\n");
+
+            // 3) Look for an existing bot comment to update
+            const { data: comments } = await github.rest.issues.listComments({
+              owner, repo, issue_number: prNumber
+            });
+            const botComment = comments.find(c =>
+              c.user.type === 'Bot' &&
+              c.body.startsWith("🔍 **Preview links for changed docs:**")
+            );
+
+            if (botComment) {
+              // update the old comment
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: botComment.id,
+                body
+              });
+            } else {
+              // create a new one
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: prNumber,
+                body
+              });
+            }
