@@ -137,6 +137,7 @@ toc:
       - file: security/detection-rules.md
       - file: security/elastic-defend.md
       - file: security/indicators-of-compromise.md
+      - file: security/agentless-integrations.md
   - file: ingest.md
     children:
       # - file: ingest/enterprise-search/crawls.md
