@@ -9,13 +9,11 @@ Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluste
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your main {{es}} cluster.
 
-::::{warning}
-A bug has been found that causes {{elastic-defend}} response actions to stop working when a remote {{es}} output is configured for an agent. This bug is currently being investigated and is expected to be resolved in an upcoming release.
-::::
-
-
 ::::{note}
-Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+Note the following restrictions with the remote {es} output:
+
+* Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+* Using {{elastic-defend}} is currently not supported when a remote {{es}} output is configured for an agent.
 ::::
 
 ## Configuration
@@ -60,6 +58,10 @@ After the output is created, you can update an {{agent}} policy to use the new o
 The remote {{es}} cluster is now configured.
 
 If you have chosen not to automatically synchronize integrations, you need to make sure that for any integrations that have been [added to your {{agent}} policy](/reference/fleet/add-integration-to-policy.md), the integration assets have been installed on the remote {{es}} cluster. Refer to [Install and uninstall {{agent}} integration assets](/reference/fleet/install-uninstall-integration-assets.md) for the steps.
+
+::::{note}
+When you use a remote {{es}} output, {{fleet-server}} performs a test to ensure connectivity to the remote cluster. The result of that connectivity test is used to report the ES Remote output as healthy or unhealthy on the **Fleet** > **Settings** > **Outputs** page, under the **Status** column. In some cases, the remote {{es}} output used for data from {{agent}} may be reachable only by those agents and not by {{fleet-server}}, so the unhealthy state and an associated `Unable to connect` error that appears on the UI can be ignored.
+::::
 
 ## Automatic integrations synchronization
 
