@@ -53,7 +53,7 @@ Before you configure SAML SSO, familiarize yourself with the following risks and
 
 * If you enforce SSO authentication, you can be locked out of {{ecloud}} if your IdP is unavailable or misconfigured. You might need to work with Elastic Support to regain access to your account. To avoid being locked out, you should maintain and store an [{{ecloud}} API key](../../api-keys/elastic-cloud-api-keys.md#ec-api-keys) with organization owner level privileges so that an administrator can disable enforcement in an emergency.
 * If you do not enforce SSO authentication, users can still log in without authenticating with your IdP. You need to manage these users in {{ecloud}}.
-* {{ecloud}} passwords are invalidated each time a user logs in using SSO. If a user needs sign in with their email and password again, they need to [change their password](../../../cloud-account/change-your-password-2.md).
+* {{ecloud}} passwords are invalidated each time a user logs in using SSO. If a user needs sign in with their email and password again, they need to [change their password](../../../cloud-account/change-your-password.md).
 * Role mappings only take effect when your organization’s members authenticate using SSO. If SSO authentication is not enforced, users might have roles that are inconsistent with the role mapping when they log in using other methods.
 * Roles manually assigned using the {{ecloud}} Console are overwritten by the role mapping when the user logs in using SSO.
 

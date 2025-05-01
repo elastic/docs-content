@@ -13,11 +13,11 @@ applies_to:
 Your {{ecloud}} account allows you to manage your personal settings, including your email address, password, and authentication methods. You can perform the following tasks at any time from your user profile:
 
 * [Update your email address](/cloud-account/update-your-email-address.md)
-<!-- * [Add an additional login method](/cloud-account/add-a-login-method.md): Choose from password-based login, Google sign-in, and Microsoft sign-in. -->
+* [Add an additional login method](/cloud-account/add-a-login-method.md): Choose from password-based login, Google sign-in, and Microsoft sign-in.
 
 If you use password-based login, then you can perform the following additional tasks:
 
-* [Change your password](/cloud-account/change-your-password-2.md)
+* [Change your password](/cloud-account/change-your-password.md)
 * [Configure multifactor authentication](/cloud-account/multifactor-authentication.md)
 
 Additionally, you can manage your organization membership, including joining or leaving an organization. Refer to [Join or leave an organization](/cloud-account/join-or-leave-an-organization.md) for more information.
