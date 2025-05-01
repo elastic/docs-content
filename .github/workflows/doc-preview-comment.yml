@@ -51,9 +51,9 @@ jobs:
             }
 
   preview-links:
-    if: |
-      github.event_name == 'workflow_run' &&
-      github.event.workflow_run.conclusion == 'success'
+    if: >
+      github.event.deployment.environment == 'docs-preview' &&
+      github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Post preview links comment
@@ -61,9 +61,9 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            // Get PR number from the completed workflow_run
-            const prNumber = context.payload.workflow_run.pull_requests[0].number;
-            const owner   = context.repo.owner;
+            // Get PR number from the deployment.task ("docs-preview-<PR#>")
+            const task = context.payload.deployment.task || '';
+            const prNumber = Number(task.split('-').pop());
             const repo    = context.repo.repo;
             const baseUrl = `https://docs-v3-preview.elastic.dev/${owner}/${repo}/pull/${prNumber}`;
 
