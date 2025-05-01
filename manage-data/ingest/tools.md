@@ -13,7 +13,8 @@ applies_to:
   serverless: ga
 products:
   - Cloud Hosted
-  - Fleet Elastic Agent
+  - Fleet
+  - Elastic Agent
   - Kibana
   - Cloud Serverless
 ---

@@ -1,4 +1,16 @@
 valid_items:
+  - key: layout
+    type: string
+    valid_values:
+      - archive
+      - landing-page
+      - not-found
+  - key: navigation_title
+    type: string
+  - key: description
+    type: string
+  - key: mapped_pages
+    type: array
   - key: applies_to
     type: object
     children:
@@ -26,16 +38,6 @@ valid_items:
             type: string
       - key: product
         type: string
-  - key: layout
-    type: string
-    valid_values:
-      - archive
-      - landing-page
-      - not-found
-  - key: mapped_pages
-    type: array
-  - key: navigation_title
-    type: string
   - key: products
     type: array
     valid_values:
@@ -103,3 +105,5 @@ valid_items:
       - Reference Architectures
       - Search UI
       - Security
+  - key: sub
+    type: object

@@ -9,7 +9,8 @@ applies_to:
   stack:
 products:
   - Cloud Serverless
-  - Fleet Elastic Agent
+  - Fleet
+  - Elastic Agent
   - Kibana
 ---
 
