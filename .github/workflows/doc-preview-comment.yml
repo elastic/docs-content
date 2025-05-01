@@ -3,9 +3,8 @@ name: "Docs preview comment"
 on:
   pull_request:
     types: [opened, reopened, synchronize]
-  workflow_run:
-    workflows: ["preview-build"]
-    types: [completed]
+  deployment_status:
+    types: [created]
 
 jobs:
   build-in-progress:
