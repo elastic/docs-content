@@ -22,5 +22,3 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * To view more information about a data stream, such as its generation or its current index lifecycle policy, click the stream’s name. From this view, you can navigate to **Discover** to further explore data within the data stream.
 * To view information about the stream’s backing indices, click the number in the **Indices** column.
 * [preview] To modify the data retention value, select an index, open the **Manage**  menu, and click **Edit data retention**.
-
-test
