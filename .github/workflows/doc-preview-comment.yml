@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
   workflow_run:
-    workflows: ["docs-build"]
+    workflows: ["preview-build"]
     types: [completed]
 
 jobs:
