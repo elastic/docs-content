@@ -33,7 +33,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * In {{agent}}, use `fullnameOverride` to set the fully qualified application names in the EDOT Kube-Stack Helm chart. [#7754]({{agent-pull}}7754) [#7754]({{agent-issue}}7754)
 
 ### Fixes [fleet-elastic-agent-9.0.1-fixes]
-* In {{agent}}, fix Managed OTLP Helm config to use the current image repository [#7882]({{agent-pull}}7882)
+* In the EDOT Collector, fix Managed OTLP Helm config to use the current image repository [#7882]({{agent-pull}}7882)
 
 ## 9.0.0 [fleet-elastic-agent-900-release-notes]
 
