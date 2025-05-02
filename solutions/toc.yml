@@ -467,6 +467,7 @@ toc:
               - file: security/get-started/automatic-migration.md
               - file: security/get-started/automatic-import.md
               - file: security/get-started/agentless-integrations.md
+              - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md

@@ -10,6 +10,10 @@ applies_to:
 
 # PKI [pki-realm]
 
+:::{{warning}}
+This type of user authentication cannot be configured on {{ech}} deployments.
+:::
+
 You can configure {{es}} to use Public Key Infrastructure (PKI) certificates to authenticate users. In this scenario, clients connecting directly to {{es}} must present X.509 certificates. First, the certificates must be accepted for authentication on the SSL/TLS layer on {{es}}. Then they are optionally further validated by a PKI realm. See [PKI authentication for clients connecting directly to {{es}}](#pki-realm-for-direct-clients).
 
 You can also use PKI certificates to authenticate to {{kib}}, however this requires some additional configuration. On {{es}}, this configuration enables {{kib}} to act as a proxy for SSL/TLS authentication and to submit the client certificates to {{es}} for further validation by a PKI realm. See [PKI authentication for clients connecting to {{kib}}](#pki-realm-for-proxied-clients).
