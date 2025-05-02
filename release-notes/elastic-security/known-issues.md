@@ -28,7 +28,7 @@ To resolve this issue, before you add an {{elastic-defend}} integration to a pol
 
 **Resolved**<br> 
 
-{{stack}} 9.0.1
+Resolved in {{stack}} 9.0.1
 
 :::
 
@@ -40,7 +40,7 @@ On April 8, 2025, it was discovered that alert suppression for event correlation
 
 **Resolved**<br> 
 
-{{stack}} 9.0.1
+Resolved in {{stack}} 9.0.1
 
 :::
 
@@ -53,11 +53,11 @@ An `IRQL_NOT_LESS_EQUAL` [bugcheck](https://learn.microsoft.com/en-us/windows-ha
 
 **Workaround**<br> 
 
-If you can't upgrade, either disable Trellix Access Protection or add a https://docs.trellix.com/bundle/endpoint-security-10.6.0-threat-prevention-client-interface-reference-guide-windows/page/GUID-6AC245A1-5E5D-4BAF-93B0-FE7FD33571E6.html[Trellix Access Protection exclusion] for the Base Filtering Engine service (`C:\Windows\System32\svchost.exe`). 
+If you can't upgrade, either disable Trellix Access Protection or add a [Trellix Access Protection exclusion](https://docs.trellix.com/bundle/endpoint-security-10.6.0-threat-prevention-client-interface-reference-guide-windows/page/GUID-6AC245A1-5E5D-4BAF-93B0-FE7FD33571E6.html) for the Base Filtering Engine service (`C:\Windows\System32\svchost.exe`). 
 
 **Resolved**<br> 
 
-{{elastic-defend}} 9.0.1
+Resolved in {{elastic-defend}} 9.0.1
 
 :::
 
@@ -70,17 +70,15 @@ An unbounded kernel non-paged memory growth issue in {{elastic-defend}}'s kernel
 
 **Workaround**<br> 
 
-If you can't upgrade, turn off the relevant event source at the kernel level using your {{elastic-defend}}  [advanced policy settings (optional)](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings):
+If you can't upgrade, turn off the relevant event source at the kernel level using your {{elastic-defend}} [advanced policy settings (optional)](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings):
 
 * Network Events - Set the `windows.advanced.kernel.network` advanced setting to `false`.
 * Registry Events - Set the `windows.advanced.kernel.registry` advanced setting to `false`.
 
-::::{note}
-Clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
-::::
+Note that clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
 
 **Resolved**<br> 
 
-{{elastic-defend}} 8.17.6, 8.18.1, 9.0.1
+Resolved in {{elastic-defend}} 9.0.1
 
 :::
