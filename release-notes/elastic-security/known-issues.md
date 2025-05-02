@@ -76,7 +76,7 @@ If you can't upgrade, turn off the relevant event source at the kernel level usi
 * Registry Events - Set the `windows.advanced.kernel.registry` advanced setting to `false`.
 
 ::::{note}
-Clearing the corresponding checkbox under <<event-collection,Event Collection>> is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
+Clearing the corresponding checkbox under [event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection) is insufficient, as {{elastic-defend}} may still process these event sources internally to support other features.
 ::::
 
 **Resolved**<br> 
