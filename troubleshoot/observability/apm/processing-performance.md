@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Observability
+  - observability
 ---
 
 # Processing and performance [apm-processing-and-performance]

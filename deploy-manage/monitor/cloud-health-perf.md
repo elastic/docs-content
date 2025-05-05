@@ -8,7 +8,7 @@ applies_to:
     ess: all
     ece: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Cloud deployment health and performance metrics

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Type Conversion Functions [sql-functions-type-conversion]

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Paginating through a large response [sql-pagination]

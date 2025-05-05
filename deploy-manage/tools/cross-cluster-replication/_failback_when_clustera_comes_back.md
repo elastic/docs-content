@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Failback when clusterA comes back [_failback_when_clustera_comes_back]

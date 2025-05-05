@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Test connectors [testing-connectors]

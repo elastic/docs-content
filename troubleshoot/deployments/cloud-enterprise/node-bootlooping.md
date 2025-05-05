@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Troubleshoot node bootlooping in {{ece}} [ece-config-change-errors]

@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Deploy a medium installation [ece-install-medium]

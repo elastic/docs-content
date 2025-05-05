@@ -6,7 +6,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Machine Learning
+  - machine-learning
 ---
 
 # View the results [ml-ad-view-results]

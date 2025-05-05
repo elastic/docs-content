@@ -8,10 +8,10 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Cloud Serverless
-  - Fleet
-  - Elastic Agent
-  - Kibana
+  - cloud-serverless
+  - fleet
+  - elastic-agent
+  - kibana
 ---
 
 # Fleet and Elastic Agent [fleet-and-elastic-agent]

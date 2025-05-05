@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Create filters from a map [maps-create-filter-from-map]

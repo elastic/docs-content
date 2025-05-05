@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Create custom images [k8s-custom-images]

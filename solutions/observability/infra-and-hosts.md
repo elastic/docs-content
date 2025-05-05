@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Infrastructure and host monitoring [infrastructure-and-host-monitoring-intro]

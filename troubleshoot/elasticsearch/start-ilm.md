@@ -11,7 +11,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 % TODO reframe how-to stuff as troubleshooting content

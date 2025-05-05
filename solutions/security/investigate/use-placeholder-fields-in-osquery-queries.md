@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
+  - security
+  - cloud-serverless
 ---
 
 # Use placeholder fields in Osquery queries [security-osquery-placeholder-fields]

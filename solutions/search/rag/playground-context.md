@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Kibana
+  - kibana
 ---
 
 # Optimize model context [playground-context]

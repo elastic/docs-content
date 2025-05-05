@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Fix repeated snapshot policy failures [repeated-snapshot-failures]

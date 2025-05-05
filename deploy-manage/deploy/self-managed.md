@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Self-managed cluster

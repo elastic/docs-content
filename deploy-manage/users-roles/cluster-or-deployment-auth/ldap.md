@@ -10,8 +10,8 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
-  - Cloud Enterprise
+  - elasticsearch
+  - cloud-enterprise
 ---
 
 # LDAP user authentication [ldap-realm]

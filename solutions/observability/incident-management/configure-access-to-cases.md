@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Configure access to cases [grant-cases-access]

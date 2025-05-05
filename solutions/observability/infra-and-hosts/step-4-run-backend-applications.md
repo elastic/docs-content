@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Step 4: Run the backend applications [profiling-self-managed-running]

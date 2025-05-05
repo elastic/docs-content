@@ -7,7 +7,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]

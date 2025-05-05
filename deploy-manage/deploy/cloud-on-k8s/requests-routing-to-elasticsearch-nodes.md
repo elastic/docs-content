@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Requests routing to {{es}} nodes [k8s-traffic-splitting]

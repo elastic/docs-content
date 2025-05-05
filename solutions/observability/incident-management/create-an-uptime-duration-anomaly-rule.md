@@ -6,7 +6,7 @@ applies_to:
   stack: deprecated 8.15.0
   serverless: unavailable
 products:
-  - Observability
+  - observability
 ---
 
 # Create an uptime duration anomaly rule [duration-anomaly-alert]

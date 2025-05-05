@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Exploring dashboards [_use_and_filter_dashboards]

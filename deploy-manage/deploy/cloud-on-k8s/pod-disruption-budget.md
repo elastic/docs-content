@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Pod disruption budget [k8s-pod-disruption-budget]

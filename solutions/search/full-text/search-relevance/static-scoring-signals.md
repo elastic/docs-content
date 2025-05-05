@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Incorporating static relevance signals into the score [static-scoring-signals]

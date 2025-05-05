@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Create monitors with a Synthetics project [observability-synthetics-get-started-project]

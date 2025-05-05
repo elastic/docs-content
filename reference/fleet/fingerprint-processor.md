@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Generate a fingerprint of an event [fingerprint-processor]

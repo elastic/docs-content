@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Enable Integrations Server through the API [ece-integrations-server-api-example]

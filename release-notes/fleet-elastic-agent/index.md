@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # {{fleet}} and {{agent}} release notes [fleet-elastic-agent-release-notes]

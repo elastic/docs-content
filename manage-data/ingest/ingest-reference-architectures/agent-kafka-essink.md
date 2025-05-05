@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Ingest
+  - ingest
 ---
 
 # Elastic Agent to Logstash to Kafka to Kafka ES Sink to Elasticsearch: Kafka as middleware message queue [agent-kafka-essink]

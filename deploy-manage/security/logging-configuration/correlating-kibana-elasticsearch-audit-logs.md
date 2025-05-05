@@ -11,7 +11,7 @@ applies_to:
     self: all
   serverless: unavailable
 products:
-  - Kibana
+  - kibana
 ---
 
 # Correlating audit events [xpack-security-ecs-audit-correlation]

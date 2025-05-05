@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Ingest
+  - ingest
 ---
 
 # Elastic Agent to Elasticsearch: Agent installed [agent-installed]

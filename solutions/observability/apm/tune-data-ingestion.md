@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Observability
+  - observability
 ---
 
 # Tune data ingestion [apm-tune-data-ingestion]

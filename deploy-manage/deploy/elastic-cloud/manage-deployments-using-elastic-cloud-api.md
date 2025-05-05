@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Manage deployments using the {{ecloud}} API [ec-api-deployment-crud]

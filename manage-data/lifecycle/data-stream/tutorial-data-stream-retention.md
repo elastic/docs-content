@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Tutorial: Data stream retention [tutorial-manage-data-stream-retention]

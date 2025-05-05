@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Lucene expressions language [modules-scripting-expression]

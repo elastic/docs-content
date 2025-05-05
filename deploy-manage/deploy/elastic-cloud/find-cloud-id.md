@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Find your Cloud ID [ec-cloud-id]

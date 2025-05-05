@@ -6,8 +6,8 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # APM agent log sending [observability-send-application-logs]

@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
+  - security
+  - cloud-serverless
 ---
 
 # Elastic Security ECS field reference [siem-field-reference]

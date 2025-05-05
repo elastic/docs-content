@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Troubleshoot ECK resources and logs  [k8s-troubleshooting-methods]

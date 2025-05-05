@@ -8,9 +8,9 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elastic Products platform
-  - Elastic Stack
-  - Kibana
+  - elastic-products-platform
+  - elastic-stack
+  - kibana
 ---
 
 # The {{stack}}

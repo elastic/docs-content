@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Set up OpenID Connect with Azure, Google, or Okta [ec-securing-clusters-oidc-op]

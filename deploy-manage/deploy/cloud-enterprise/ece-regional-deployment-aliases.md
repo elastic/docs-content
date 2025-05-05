@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Custom endpoint aliases [ece-regional-deployment-aliases]

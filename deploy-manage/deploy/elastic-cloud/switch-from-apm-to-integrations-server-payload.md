@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Switch from APM to Integrations Server payload [ec-integrations-server-apm-switch]

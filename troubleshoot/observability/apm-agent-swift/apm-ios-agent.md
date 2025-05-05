@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - APM iOS Agent
+  - apm-ios-agent
 ---
 
 # Troubleshoot APM iOS Agent [troubleshooting]

@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Ingest pipelines for search use cases [ingest-pipeline-search]

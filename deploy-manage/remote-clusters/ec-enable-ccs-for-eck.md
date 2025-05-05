@@ -7,7 +7,7 @@ applies_to:
     ess: ga
     eck: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Remote clusters between {{ech}} and ECK [ec-enable-ccs-for-eck]

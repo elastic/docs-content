@@ -7,11 +7,11 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 sub:
-  es-conf: "/etc/elasticsearch"
-  slash: "/"
-  escape: "\\"
+  es-conf: /etc/elasticsearch
+  slash: /
+  escape: \
 ---
 
 % Scope: Automatic setup

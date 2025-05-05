@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: ga
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Remote clusters with {{eck}} [k8s-remote-clusters]

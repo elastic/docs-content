@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Add plugins [modules-plugins]

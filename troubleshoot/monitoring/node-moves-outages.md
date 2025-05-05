@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess: all
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Troubleshoot node moves and outages [ec-deployment-node-move]

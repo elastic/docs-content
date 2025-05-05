@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Connect to the APM Server [k8s-apm-connecting]

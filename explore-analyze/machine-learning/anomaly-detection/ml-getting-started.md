@@ -6,7 +6,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Machine Learning
+  - machine-learning
 ---
 
 # Tutorial: Getting started with anomaly detection [ml-getting-started]

@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Cloud Serverless
-  - Observability
+  - cloud-serverless
+  - observability
 ---
 
 # Configure Synthetics settings [synthetics-settings]

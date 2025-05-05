@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # DbVisualizer [sql-client-apps-dbvis]

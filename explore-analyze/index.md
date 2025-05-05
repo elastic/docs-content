@@ -9,8 +9,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Cloud Serverless
-  - Kibana
+  - cloud-serverless
+  - kibana
 ---
 
 # Explore and analyze

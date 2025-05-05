@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Add an integration to an {{agent}} policy [add-integration-to-policy]

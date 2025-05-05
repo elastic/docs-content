@@ -10,8 +10,8 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
-  - Kibana
+  - elasticsearch
+  - kibana
 ---
 
 # User authentication

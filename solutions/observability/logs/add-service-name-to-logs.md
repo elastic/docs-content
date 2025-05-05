@@ -6,8 +6,8 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Add a service name to logs [observability-add-logs-service-name]

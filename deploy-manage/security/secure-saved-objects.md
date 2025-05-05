@@ -8,7 +8,7 @@ applies_to:
     eck: ga
     self: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Secure {{kib}} saved objects [xpack-security-secure-saved-objects]

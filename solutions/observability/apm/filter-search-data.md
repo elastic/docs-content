@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Filter and search application data [apm-filter-and-search-data]

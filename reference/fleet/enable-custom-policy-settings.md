@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Enable custom settings in an agent policy [enable-custom-policy-settings]

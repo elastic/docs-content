@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Shard allocation awareness [shard-allocation-awareness]

@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Task queue backlog [task-queue-backlog]

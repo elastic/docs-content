@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Get started with rollups using the API

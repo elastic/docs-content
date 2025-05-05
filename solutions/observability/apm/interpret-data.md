@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Interpret application data [observability-apm-interpret-data]

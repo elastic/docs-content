@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Beats Logging plugin
+  - beats-logging-plugin
 ---
 
 # Elastic Logging Plugin for Docker [log-driver-troubleshooting]

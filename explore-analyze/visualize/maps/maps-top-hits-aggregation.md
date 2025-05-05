@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Display the most relevant documents per entity [maps-top-hits-aggregation]

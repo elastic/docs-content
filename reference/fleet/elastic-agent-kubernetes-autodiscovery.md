@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Kubernetes autodiscovery with Elastic Agent [elastic-agent-kubernetes-autodiscovery]

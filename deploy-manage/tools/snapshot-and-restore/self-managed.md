@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Manage snapshot repositories in self-managed deployments [snapshots-register-repository]

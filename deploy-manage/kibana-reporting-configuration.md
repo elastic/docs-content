@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Kibana
+  - kibana
 ---
 
 % this anchor belongs to `kibana reporting production considerations doc`

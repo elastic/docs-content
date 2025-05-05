@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # View and analyze data [apm-view-and-analyze-data]

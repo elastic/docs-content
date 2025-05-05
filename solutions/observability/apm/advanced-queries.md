@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Use advanced queries on your application data [apm-advanced-queries]

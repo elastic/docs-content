@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Explore fields and data with Discover [discover-get-started]

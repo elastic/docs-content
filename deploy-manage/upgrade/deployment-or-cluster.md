@@ -19,12 +19,12 @@ applies_to:
     eck:
     self:
 products:
-  - Kibana
-  - Cloud Enterprise
-  - Elasticsearch Cloud Hosted Heroku
-  - Cloud Hosted
-  - Cloud Kubernetes
-  - Elasticsearch
+  - kibana
+  - cloud-enterprise
+  - elasticsearch-cloud-hosted-heroku
+  - cloud-hosted
+  - cloud-kubernetes
+  - elasticsearch
 ---
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]

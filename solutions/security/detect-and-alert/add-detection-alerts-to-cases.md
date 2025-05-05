@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
+  - security
+  - cloud-serverless
 ---
 
 # Add detection alerts to cases [security-signals-to-cases]

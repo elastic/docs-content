@@ -7,7 +7,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Elasticsearch clients [elasticsearch-clients]

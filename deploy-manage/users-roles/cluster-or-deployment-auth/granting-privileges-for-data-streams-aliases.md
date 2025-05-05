@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Granting privileges for data streams and aliases [securing-aliases]

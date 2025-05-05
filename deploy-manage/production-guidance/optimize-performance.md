@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # {{es}} performance optimizations [how-to]

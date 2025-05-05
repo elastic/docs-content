@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Machine Learning
+  - machine-learning
 ---
 
 # Apache {{anomaly-detect}} configurations [ootb-ml-jobs-apache]

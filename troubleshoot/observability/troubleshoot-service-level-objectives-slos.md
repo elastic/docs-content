@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability: all
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Troubleshoot service-level objectives (SLOs) [slo-troubleshoot-slos]

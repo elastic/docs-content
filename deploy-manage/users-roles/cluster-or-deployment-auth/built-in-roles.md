@@ -10,8 +10,8 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
-  - Kibana
+  - elasticsearch
+  - kibana
 ---
 
 # Built-in roles [built-in-roles]

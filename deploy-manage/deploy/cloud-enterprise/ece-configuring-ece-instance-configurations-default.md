@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Default instance configurations [ece-configuring-ece-instance-configurations-default]

@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Work with params and secrets [observability-synthetics-params-secrets]

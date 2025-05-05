@@ -8,7 +8,7 @@ applies_to:
     ece:
     eck:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # User profiles [user-profile]

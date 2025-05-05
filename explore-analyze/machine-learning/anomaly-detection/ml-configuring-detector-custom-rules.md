@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Machine Learning
+  - machine-learning
 ---
 
 # Customizing detectors with custom rules [ml-configuring-detector-custom-rules]

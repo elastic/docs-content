@@ -7,13 +7,13 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 sub:
-  es-conf: "/etc/elasticsearch"
-  slash: "/"
-  distro: "Debian"
+  es-conf: /etc/elasticsearch
+  slash: /
+  distro: Debian
   export: "export "
-  escape: "\\"
+  escape: \
 ---
 
 # Install {{es}} with a Debian package [deb]

@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Manage your Integrations Server [ece-manage-integrations-server]

@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Set the retention period for logging and metrics indices [ece-monitoring-ece-set-retention]

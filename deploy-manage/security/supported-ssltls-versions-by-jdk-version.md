@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Supported SSL/TLS versions by JDK version [jdk-tls-versions]

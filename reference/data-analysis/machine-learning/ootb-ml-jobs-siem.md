@@ -8,9 +8,9 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
-  - Machine Learning
+  - security
+  - cloud-serverless
+  - machine-learning
 ---
 
 # Security {{anomaly-detect}} configurations

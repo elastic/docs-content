@@ -6,7 +6,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Discover sessions: Save a search for reuse [save-open-search]

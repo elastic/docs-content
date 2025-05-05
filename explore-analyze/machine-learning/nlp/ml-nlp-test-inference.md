@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Machine Learning
+  - machine-learning
 ---
 
 # Try it out [ml-nlp-test-inference]

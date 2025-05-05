@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Observability
+  - observability
 ---
 
 # Real user monitoring (User Experience) [user-experience]

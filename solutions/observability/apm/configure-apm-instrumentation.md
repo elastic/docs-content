@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Observability
+  - observability
 ---
 
 # Configure APM instrumentation [apm-configuration-instrumentation]

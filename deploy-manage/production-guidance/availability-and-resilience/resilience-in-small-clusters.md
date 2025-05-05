@@ -7,7 +7,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Resilience in small clusters [high-availability-cluster-small-clusters]

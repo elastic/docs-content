@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Reading and writing documents [docs-replication]

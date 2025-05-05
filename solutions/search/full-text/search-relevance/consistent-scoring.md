@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Getting consistent scoring [consistent-scoring]

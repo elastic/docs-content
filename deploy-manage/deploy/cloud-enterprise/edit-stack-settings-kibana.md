@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Add {{kib}} user settings [ece-manage-kibana-settings]

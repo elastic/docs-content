@@ -7,12 +7,12 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 sub:
-  es-conf: "/etc/elasticsearch"
-  slash: "/"
-  distro: "RPM"
-  export: "export"
+  es-conf: /etc/elasticsearch
+  slash: /
+  distro: RPM
+  export: export
 ---
 
 # Install {{es}} with RPM [rpm]

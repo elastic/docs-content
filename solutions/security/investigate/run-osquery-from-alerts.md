@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
+  - security
+  - cloud-serverless
 ---
 
 # Run Osquery from alerts [security-alerts-run-osquery]

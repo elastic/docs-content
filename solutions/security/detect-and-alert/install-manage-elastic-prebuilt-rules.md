@@ -8,8 +8,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
+  - security
+  - cloud-serverless
 ---
 
 # Install and manage Elastic prebuilt rules [security-prebuilt-rules-management]

@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Change hardware [ec-change-hardware-for-a-specific-resource]

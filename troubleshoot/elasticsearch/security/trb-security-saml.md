@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Common SAML issues [trb-security-saml]

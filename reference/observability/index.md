@@ -6,8 +6,8 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - Cloud Serverless
-  - Observability
+  - cloud-serverless
+  - observability
 ---
 # Observability
 

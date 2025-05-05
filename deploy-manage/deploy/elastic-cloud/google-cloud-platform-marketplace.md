@@ -6,7 +6,7 @@ applies_to:
     ess: ga
   serverless: unavailable
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Google Cloud Platform Marketplace [ec-billing-gcp]

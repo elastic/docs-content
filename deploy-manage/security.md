@@ -14,12 +14,12 @@ applies_to:
   deployment: all
   serverless: ga
 products:
-  - Elasticsearch
-  - Kibana
-  - Cloud Kubernetes
-  - Cloud Enterprise
-  - Elasticsearch Cloud Hosted Heroku
-  - Cloud Hosted
+  - elasticsearch
+  - kibana
+  - cloud-kubernetes
+  - cloud-enterprise
+  - elasticsearch-cloud-hosted-heroku
+  - cloud-hosted
 ---
 
 # Security

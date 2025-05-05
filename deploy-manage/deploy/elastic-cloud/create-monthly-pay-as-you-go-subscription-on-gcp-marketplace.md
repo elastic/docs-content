@@ -6,7 +6,7 @@ applies_to:
     ess: ga
   serverless: unavailable
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Create a monthly pay-as-you-go subscription on GCP Marketplace [ec-gcp-marketplace-conversion]

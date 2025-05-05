@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Configure security in {{kib}} [using-kibana-with-security]

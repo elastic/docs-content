@@ -7,7 +7,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - APM Ruby Agent
+  - apm-ruby-agent
 ---
 
 # Troubleshoot APM Ruby Agent [debugging]

@@ -7,7 +7,7 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Cloud organization users [ec-organizations]

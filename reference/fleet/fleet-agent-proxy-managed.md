@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Fleet managed Elastic Agent connectivity using a proxy server [fleet-agent-proxy-managed]

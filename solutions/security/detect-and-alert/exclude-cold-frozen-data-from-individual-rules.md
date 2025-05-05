@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Security
+  - security
 ---
 
 # Exclude cold and frozen data from individual rules [exclude-cold-frozen-data-individual-rules]

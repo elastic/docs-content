@@ -6,7 +6,7 @@ applies_to:
     ess: ga
   serverless: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Create a monthly pay-as-you-go subscription on AWS Marketplace [ec-aws-marketplace-conversion]

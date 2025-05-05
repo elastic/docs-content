@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Observability
+  - observability
 ---
 
 # SSL/TLS settings [apm-configuration-ssl-landing]

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Track, visualize, and alert on assets in real time [asset-tracking-tutorial]

@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Ingest
+  - ingest
 ---
 
 # Elastic Agent to Elasticsearch: APIs for collection [agent-apis]

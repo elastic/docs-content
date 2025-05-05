@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - Kibana
+  - kibana
 ---
 
 # {{kib}} reporting in production environments [reporting-production-considerations]

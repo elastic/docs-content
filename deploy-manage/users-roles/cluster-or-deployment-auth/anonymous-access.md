@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Anonymous access [anonymous-access]

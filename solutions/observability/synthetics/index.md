@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Synthetic monitoring [monitor-uptime-synthetics]

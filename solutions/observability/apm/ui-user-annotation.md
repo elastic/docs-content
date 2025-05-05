@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Applications UI annotation user [apm-app-annotation-user-create]

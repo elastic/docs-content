@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Simplified log ingestion [elastic-agent-simplified-input-configuration]

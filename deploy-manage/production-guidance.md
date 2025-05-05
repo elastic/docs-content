@@ -8,7 +8,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 % scope: the scope of this page is just a brief introduction to prod guidance at {{stack}} level, links to ES and KIB,

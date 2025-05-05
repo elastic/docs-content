@@ -9,7 +9,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Configuring monitoring data streams and indices [config-monitoring-indices]

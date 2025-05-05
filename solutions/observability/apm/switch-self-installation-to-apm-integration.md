@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Switch a self-installation to the APM integration [apm-integration-upgrade-steps]

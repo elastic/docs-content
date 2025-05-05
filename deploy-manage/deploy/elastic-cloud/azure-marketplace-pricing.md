@@ -6,7 +6,7 @@ applies_to:
     ess: ga
   serverless: preview
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Azure Marketplace pricing [ec-azure-marketplace-pricing]

@@ -6,7 +6,7 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - Cloud Native Ingest
+  - cloud-native-ingest
 ---
 
 

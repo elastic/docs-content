@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Visualize Library [visualize-library]

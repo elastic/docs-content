@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Observability
+  - observability
 ---
 
 # Monitor the APM Server binary [apm-monitoring]

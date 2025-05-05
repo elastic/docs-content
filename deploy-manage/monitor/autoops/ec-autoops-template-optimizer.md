@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: all
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Template Optimizer [ec-autoops-template-optimizer]

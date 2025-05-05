@@ -7,8 +7,8 @@ applies_to:
     ess:
     ece:
 products:
-  - Cloud Hosted
-  - Cloud Enterprise
+  - cloud-hosted
+  - cloud-enterprise
 ---
 
 # Restore snapshot into an existing deployment [ece-restore-snapshots-into-existing-deployment]

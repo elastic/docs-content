@@ -7,7 +7,7 @@ applies_to:
   serverless:
     security: preview all
 products:
-  - Kibana
+  - kibana
 ---
 
 # Manage the integration [manage-osquery-integration]

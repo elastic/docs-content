@@ -8,7 +8,7 @@ applies_to:
     eck:
     self:
 products:
-  - Kibana
+  - kibana
 ---
 
 # Advanced {{kib}} logging settings

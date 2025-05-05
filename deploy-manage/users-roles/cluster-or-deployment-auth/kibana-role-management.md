@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - Kibana
+  - kibana
 ---
 
 # Role management using {{kib}} [kibana-role-management]

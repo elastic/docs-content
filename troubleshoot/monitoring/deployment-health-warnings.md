@@ -7,8 +7,8 @@ applies_to:
   deployment:
     ess: all
 products:
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Troubleshoot deployment health warnings [ec-deployment-no-op]

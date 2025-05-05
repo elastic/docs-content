@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elastic Products platform
-  - Elastic Stack
+  - elastic-products-platform
+  - elastic-stack
 ---
 
 # Reference [api-reference]

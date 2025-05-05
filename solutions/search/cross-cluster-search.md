@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless: unavailable
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Cross-cluster search [modules-cross-cluster-search]

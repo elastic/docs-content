@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless:
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Project settings

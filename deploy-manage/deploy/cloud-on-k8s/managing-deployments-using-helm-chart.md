@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # {{stack}} Helm chart [k8s-stack-helm-chart]

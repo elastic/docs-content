@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck:
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Uninstall {{eck}} [k8s-uninstalling-eck]

@@ -6,8 +6,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Machine Learning
-  - Kibana
+  - machine-learning
+  - kibana
 ---
 
 # Anomaly detection [ml-ad-overview]

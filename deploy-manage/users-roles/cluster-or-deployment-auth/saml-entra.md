@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 # Set up SAML with Microsoft Entra ID [ec-securing-clusters-saml-azure]
 

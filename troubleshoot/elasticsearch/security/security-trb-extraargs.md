@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Error: Extra arguments were provided [security-trb-extraargs]

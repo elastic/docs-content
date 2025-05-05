@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Change hardware profiles [ec-change-hardware-profile]

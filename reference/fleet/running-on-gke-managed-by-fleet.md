@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Run Elastic Agent on GKE managed by Fleet [running-on-gke-managed-by-fleet]

@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: all
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Dismiss Events [ec-autoops-dismiss-event]

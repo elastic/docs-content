@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 % document scope: this document focuses on the Deployment -> Edit page, how ECE applies changes, and links to other configurable features

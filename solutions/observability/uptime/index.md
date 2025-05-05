@@ -5,7 +5,7 @@ applies_to:
   stack: deprecated 8.15.0
   serverless: unavailable
 products:
-  - Observability
+  - observability
 ---
 
 # Uptime monitoring (deprecated) [uptime-intro]

@@ -7,8 +7,8 @@ applies_to:
     ess:
     ece:
 products:
-  - Cloud Hosted
-  - Cloud Enterprise
+  - cloud-hosted
+  - cloud-enterprise
 ---
 
 # Restore a snapshot across clusters [ece-restore-across-clusters]

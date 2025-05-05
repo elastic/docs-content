@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Deploy Docker images with anyuid SCC [k8s-openshift-anyuid-workaround]

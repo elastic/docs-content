@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 # The `_search` API [search-your-data]
 

@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # {{agent}} environment variables [agent-environment-variables]

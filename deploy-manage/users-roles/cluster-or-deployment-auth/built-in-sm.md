@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 # Set passwords for native and built-in users in self-managed clusters[ change-passwords-native-users]
 

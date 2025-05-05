@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Enabling cipher suites for stronger encryption [ciphers]

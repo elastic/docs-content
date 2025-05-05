@@ -8,8 +8,8 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - Cloud Hosted
-  - Cloud Serverless
+  - cloud-hosted
+  - cloud-serverless
 ---
 
 # Billing

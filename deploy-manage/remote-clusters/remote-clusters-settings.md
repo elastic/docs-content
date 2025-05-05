@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Remote cluster settings [remote-clusters-settings]

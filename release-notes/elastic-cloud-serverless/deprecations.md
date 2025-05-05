@@ -1,5 +1,5 @@
 ---
-navigation_title: "Deprecations"
+navigation_title: Deprecations
 ---
 
 # {{serverless-full}} deprecations [elastic-cloud-serverless-deprecations]

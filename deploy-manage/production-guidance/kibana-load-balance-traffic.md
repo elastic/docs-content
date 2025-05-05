@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - Kibana
+  - kibana
 ---
 
 # High Availability and load balancing in Kibana

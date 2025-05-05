@@ -9,8 +9,8 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
-  - Cloud Kubernetes
+  - elasticsearch
+  - cloud-kubernetes
 ---
 
 # File-based user authentication [file-realm]

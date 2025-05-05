@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: preview
 products:
-  - Observability
+  - observability
 ---
 
 # Add data from Splunk [splunk-get-started]

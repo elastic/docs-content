@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Machine Learning
+  - machine-learning
 ---
 
 # Supplied {{anomaly-detect}} configurations [ootb-ml-jobs]

@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Deploy an {{es}} cluster [k8s-deploy-elasticsearch]

@@ -1,5 +1,5 @@
 ---
-navigation_title: "Known issues"
+navigation_title: Known issues
 ---
 
 # {{elastic-sec}} known issues [elastic-security-known-issues]

@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Kibana
+  - kibana
 ---
 
 # Check {{kib}} server status [access]

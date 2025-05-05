@@ -10,8 +10,8 @@ applies_to:
     ece:
   serverless: ga
 products:
-  - Cloud Serverless
-  - Cloud Terraform
+  - cloud-serverless
+  - cloud-terraform
 ---
 
 # Tools and APIs for {{ecloud}}

@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Machine Learning
+  - machine-learning
 ---
 
 # Rare functions [ml-rare-functions]

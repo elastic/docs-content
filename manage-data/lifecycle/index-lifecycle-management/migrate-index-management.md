@@ -10,8 +10,8 @@ applies_to:
     ece:
   serverless: ga
 products:
-  - Cloud Enterprise
-  - Cloud Hosted
+  - cloud-enterprise
+  - cloud-hosted
 ---
 
 # Migrate to index lifecycle management

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Logstash pipelines [logstash-pipelines]

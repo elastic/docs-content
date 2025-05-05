@@ -6,8 +6,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
-  - Cloud Serverless
+  - kibana
+  - cloud-serverless
 ---
 
 # Search profiler [xpack-profiler]

@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Troubleshoot security in {{es}} [security-troubleshooting]

@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 

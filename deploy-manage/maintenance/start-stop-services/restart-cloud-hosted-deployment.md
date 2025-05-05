@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Restart an {{ech}} deployment

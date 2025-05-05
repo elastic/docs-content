@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Kibana
+  - kibana
 ---
 
 # Integrate with third-party services

@@ -10,9 +10,9 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
-  - Observability
-  - Cloud Serverless
+  - kibana
+  - observability
+  - cloud-serverless
 ---
 
 # AI assistant

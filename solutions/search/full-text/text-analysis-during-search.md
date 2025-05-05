@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Text analysis during search [analysis]

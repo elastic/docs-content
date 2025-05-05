@@ -6,10 +6,10 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Cloud Serverless
-  - Elasticsearch
-  - Elastic Products platform
-  - Elastic Stack
+  - cloud-serverless
+  - elasticsearch
+  - elastic-products-platform
+  - elastic-stack
 ---
 
 # Deploy

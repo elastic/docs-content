@@ -21,7 +21,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Bootstrap checks [bootstrap-checks]

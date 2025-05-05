@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 % Scope: enable security, reset passwords and configure kibana to use authentication. Alternative approach to the automatic security configuration.

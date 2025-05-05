@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: all
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # How to access AutoOps [ec-autoops-how-to-access]

@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Kibana
+  - kibana
 ---
 
 # Find your connection details [search-space-connection-details]

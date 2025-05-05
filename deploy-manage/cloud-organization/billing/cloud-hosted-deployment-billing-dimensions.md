@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess: all
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Cloud Hosted deployment billing dimensions [ec-billing-dimensions]

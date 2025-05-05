@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Shard allocation, relocation, and recovery [shard-allocation-relocation-recovery]

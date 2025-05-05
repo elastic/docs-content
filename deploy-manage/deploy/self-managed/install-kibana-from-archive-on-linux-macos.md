@@ -7,9 +7,9 @@ applies_to:
   deployment:
     self:
 products:
-  - Kibana
+  - kibana
 sub:
-  ipcommand: "ifconfig"
+  ipcommand: ifconfig
 ---
 
 # Install {{kib}} from archive on Linux or macOS [targz]

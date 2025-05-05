@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Migrate the cross-cluster search deployment template [ec-migrate-ccs]

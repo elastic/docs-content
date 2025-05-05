@@ -6,9 +6,9 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 sub:
-  slash: "\\"
+  slash: \
 ---
 
 # Add and Remove {{es}} nodes [add-elasticsearch-nodes]

@@ -6,7 +6,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Security
+  - security
 ---
 # {{elastic-sec}} release notes [elastic-security-X.X.X-release-notes]
 

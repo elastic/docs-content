@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: ga 3.0.0
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Upgrade {{eck}} [k8s-upgrading-eck]

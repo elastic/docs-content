@@ -7,8 +7,8 @@ applies_to:
   stack: beta
   serverless: beta
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Data set quality monitoring [observability-monitor-datasets]

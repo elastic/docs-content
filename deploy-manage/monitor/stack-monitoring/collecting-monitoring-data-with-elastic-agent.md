@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 

@@ -9,9 +9,9 @@ applies_to:
     ess:
     ece:
 products:
-  - Cloud Enterprise
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - cloud-enterprise
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Reset the `elastic` user password in {{ech}} and {{ece}} [ec-password-reset]

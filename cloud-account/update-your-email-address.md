@@ -6,7 +6,7 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Update your email address [ec-update-email-address]

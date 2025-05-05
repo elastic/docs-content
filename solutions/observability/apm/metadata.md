@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Observability
+  - observability
 ---
 
 # Metadata [apm-data-model-metadata]

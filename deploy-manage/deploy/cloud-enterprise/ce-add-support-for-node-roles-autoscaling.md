@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Updating custom templates to support node_roles and autoscaling [ce-add-support-for-node-roles-and-autoscaling]

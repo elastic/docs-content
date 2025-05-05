@@ -13,11 +13,11 @@ applies_to:
     eck: ga
     self: ga
 products:
-  - Cloud Enterprise
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
-  - Elasticsearch
-  - Kibana
+  - cloud-enterprise
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
+  - elasticsearch
+  - kibana
 ---
 
 # Secure your settings

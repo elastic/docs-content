@@ -7,7 +7,7 @@ applies_to:
   deployment:
     eck:
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # {{eck}} managed credentials

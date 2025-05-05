@@ -6,8 +6,8 @@ applies_to:
   stack:
   serverless:
 products:
-  - Kibana
-  - Cloud Serverless
+  - kibana
+  - cloud-serverless
 ---
 
 # Connectors [connector-management]

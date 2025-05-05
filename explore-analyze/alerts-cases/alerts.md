@@ -9,9 +9,9 @@ applies_to:
     ess:
   serverless: ga
 products:
-  - Kibana
-  - Cloud Serverless
-  - Cloud Hosted
+  - kibana
+  - cloud-serverless
+  - cloud-hosted
 ---
 
 # Alerts

@@ -6,7 +6,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - Observability
+  - observability
 ---
 
 # APM Server response codes [apm-common-response-codes]

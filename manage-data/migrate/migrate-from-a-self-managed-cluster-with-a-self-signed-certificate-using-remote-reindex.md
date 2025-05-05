@@ -7,7 +7,7 @@ applies_to:
     ess: all
   serverless: unavailable
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Migrate from a self-managed cluster with a self-signed certificate using remote reindex [ec-remote-reindex]

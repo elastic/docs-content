@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   serverless:
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Managed intake service event API [observability-apm-server-api]

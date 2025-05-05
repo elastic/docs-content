@@ -6,8 +6,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Explore logs in Discover [explore-logs]

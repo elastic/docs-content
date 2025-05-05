@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - Elasticsearch Cloud Hosted Heroku
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Install the add-on [ech-getting-started-installing]

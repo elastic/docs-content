@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Use an {{es}} cluster managed by ECK [k8s-apm-eck-managed-es]

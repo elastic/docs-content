@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Manage your license in {{eck}} [k8s-licensing]

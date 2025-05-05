@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Example: Use standalone Elastic Agent with {{ech}} to monitor nginx [example-standalone-monitor-nginx]

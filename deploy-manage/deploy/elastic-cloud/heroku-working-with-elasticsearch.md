@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - Elasticsearch Cloud Hosted Heroku
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Work with {{es}} [ech-working-with-elasticsearch]

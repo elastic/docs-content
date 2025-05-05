@@ -7,8 +7,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Elasticsearch
-  - Cloud Serverless
+  - elasticsearch
+  - cloud-serverless
 ---
 
 # Data streams [data-streams]

@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Cloud Serverless
-  - Observability
+  - cloud-serverless
+  - observability
 ---
 
 # Quickstart: Monitor your Kubernetes cluster with {{agent}} [monitor-k8s-logs-metrics-with-elastic-agent]

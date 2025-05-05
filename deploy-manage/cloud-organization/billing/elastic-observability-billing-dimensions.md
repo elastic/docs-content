@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless: all
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Elastic for Observability billing dimensions [observability-billing]

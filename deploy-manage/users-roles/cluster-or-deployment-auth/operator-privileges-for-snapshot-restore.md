@@ -8,7 +8,7 @@ applies_to:
     ece:
     eck:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Operator privileges for snapshot and restore [operator-only-snapshot-and-restore]

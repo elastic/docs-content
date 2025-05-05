@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless: unavailable
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Resolve a cluster before {{ccs}} [_advantages_of_using_this_endpoint_before_a_ccs]

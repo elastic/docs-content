@@ -11,8 +11,8 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
-  - Cloud Serverless
+  - elasticsearch
+  - cloud-serverless
 ---
 
 # Troubleshoot searches [troubleshooting-searches]

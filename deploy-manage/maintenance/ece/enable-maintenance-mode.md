@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Enable maintenance mode [ece-maintenance-mode]

@@ -7,15 +7,15 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 sub:
   es-conf: "%ES_HOME%\\config"
-  slash: "\\"
-  export: "$"
-  escape: "^"
-  auto: ".bat"
-  ipcommand: "ipconfig /all"
-  ipvalue: "inet"
+  slash: \
+  export: $
+  escape: ^
+  auto: .bat
+  ipcommand: ipconfig /all
+  ipvalue: inet
 ---
 
 # Install {{es}} with .zip on Windows [zip-windows]

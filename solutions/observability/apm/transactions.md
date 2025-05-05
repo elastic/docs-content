@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Observability
+  - observability
 ---
 
 # Transactions [apm-data-model-transactions]

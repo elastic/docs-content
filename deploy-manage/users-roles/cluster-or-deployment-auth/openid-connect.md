@@ -14,10 +14,10 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
-  - Cloud Enterprise
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - elasticsearch
+  - cloud-enterprise
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # OpenID Connect authentication [oidc-realm]

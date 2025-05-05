@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Add remote clusters using API key authentication [remote-clusters-api-key]

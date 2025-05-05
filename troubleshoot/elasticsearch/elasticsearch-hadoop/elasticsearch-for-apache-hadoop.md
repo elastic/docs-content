@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch Apache Hadoop
+  - elasticsearch-apache-hadoop
 ---
 
 # Troubleshoot Elasticsearch for Apache Hadoop [troubleshooting]

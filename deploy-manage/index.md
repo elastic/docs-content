@@ -11,9 +11,9 @@ applies_to:
     ess:
     ece:
 products:
-  - Kibana
-  - Cloud Hosted
-  - Cloud Enterprise
+  - kibana
+  - cloud-hosted
+  - cloud-enterprise
 ---
 
 # Deploy and manage

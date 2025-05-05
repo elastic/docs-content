@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]

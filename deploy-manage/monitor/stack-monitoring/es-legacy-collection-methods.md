@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: deprecated 7.16.0
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 

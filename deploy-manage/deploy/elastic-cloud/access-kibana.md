@@ -7,8 +7,8 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Access {{kib}} [ec-access-kibana]

@@ -5,7 +5,7 @@ applies_to:
   serverless:
     security: all
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Create a Security project [security-create-project]

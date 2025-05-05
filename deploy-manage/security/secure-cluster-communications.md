@@ -10,8 +10,8 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
-  - Kibana
+  - elasticsearch
+  - kibana
 ---
 
 % Scope: landing page for manually handling TLS certificates, and for information about TLS in {{stack}} in general.

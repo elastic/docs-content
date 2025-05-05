@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Use case: use Elasticsearch to manage time series data [use-elasticsearch-for-time-series-data]

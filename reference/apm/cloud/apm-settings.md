@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # APM settings for Elastic Cloud [ec-manage-apm-settings]

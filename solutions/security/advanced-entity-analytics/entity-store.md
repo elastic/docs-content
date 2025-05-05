@@ -6,7 +6,7 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
+  - security
 ---
 
 # Entity store [entity-store]

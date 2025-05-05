@@ -9,7 +9,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Configuring data streams created by Metricbeat 8 [config-monitoring-data-streams-metricbeat-8]

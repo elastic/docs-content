@@ -5,7 +5,7 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Get started with system logs [observability-get-started-with-logs]

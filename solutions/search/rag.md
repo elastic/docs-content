@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # RAG [_retrieval_augmented_generation]

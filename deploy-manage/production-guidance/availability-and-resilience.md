@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Design for resilience [high-availability-cluster-design]

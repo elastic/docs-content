@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Configure the Kibana endpoint [apm-setup-kibana-endpoint]

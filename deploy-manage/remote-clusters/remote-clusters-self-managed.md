@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Remote clusters with self-managed installations [remote-clusters]

@@ -8,7 +8,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 % scope: initial security setup in self-managed deployments, following the automatic or manual (minimal, basic, https) procedures

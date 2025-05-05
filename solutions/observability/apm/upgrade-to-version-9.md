@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Upgrade to version 9.0 [apm-upgrading-to-9.0]

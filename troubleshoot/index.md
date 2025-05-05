@@ -12,11 +12,11 @@ applies_to:
     ess:
     ece:
 products:
-  - Elastic Products platform
-  - Elastic Stack
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
-  - Cloud Enterprise
+  - elastic-products-platform
+  - elastic-stack
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
+  - cloud-enterprise
 ---
 
 # Troubleshooting

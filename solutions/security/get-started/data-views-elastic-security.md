@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
+  - security
+  - cloud-serverless
 ---
 
 # {{data-sources-cap}} and {{elastic-sec}} [security-data-views-in-sec]

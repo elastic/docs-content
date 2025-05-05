@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - Kibana
+  - kibana
 ---
 
 # {{kib}} access agreement [xpack-security-access-agreement]

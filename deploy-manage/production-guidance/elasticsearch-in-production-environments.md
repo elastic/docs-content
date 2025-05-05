@@ -12,9 +12,9 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - elasticsearch
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Run {{es}} in production [scalability]

@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability: all
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Troubleshoot Synthetics [synthetics-troubleshooting]

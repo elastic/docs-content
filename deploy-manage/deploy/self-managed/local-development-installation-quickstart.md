@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Local development installation (quickstart) [run-elasticsearch-locally]

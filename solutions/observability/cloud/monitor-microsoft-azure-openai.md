@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Monitor Microsoft Azure OpenAI [monitor-azure-openai]

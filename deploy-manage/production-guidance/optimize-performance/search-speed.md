@@ -9,7 +9,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Tune for search speed [tune-for-search-speed]

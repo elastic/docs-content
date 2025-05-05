@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - APM RUM Agent
+  - apm-rum-agent
 ---
 
 # Troubleshoot APM Real User Monitoring JavaScript Agent [troubleshooting]

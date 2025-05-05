@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Kibana
+  - kibana
 ---
 
 # Troubleshooting [playground-troubleshooting]

@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Example: Install standalone Elastic Agent on Kubernetes using Helm [example-kubernetes-standalone-agent-helm]

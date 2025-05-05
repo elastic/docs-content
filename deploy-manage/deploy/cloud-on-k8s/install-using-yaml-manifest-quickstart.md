@@ -7,7 +7,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Install ECK using the YAML manifests [k8s-install-yaml-manifests]

@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Troubleshoot shard capacity health issues [troubleshooting-shards-capacity-issues]

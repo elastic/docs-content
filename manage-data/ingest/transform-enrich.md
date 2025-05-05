@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Ingest
+  - ingest
 ---
 
 # Transform and enrich data [ingest-addl-proc]

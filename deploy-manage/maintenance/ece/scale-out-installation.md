@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Scale out your installation [ece-add-capacity]

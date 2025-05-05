@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Run eck-diagnostics [k8s-take-eck-dump]

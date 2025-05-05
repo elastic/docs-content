@@ -7,7 +7,7 @@ applies_to:
     ess:
   serverless: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Solutions and use cases

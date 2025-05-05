@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Scenario 1: Apply an ILM policy to all data streams generated from Fleet integrations across all namespaces [data-streams-scenario1]

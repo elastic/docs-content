@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: ga
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Access other deployments of the same {{ece}} environment [ece-remote-cluster-same-ece]

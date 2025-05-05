@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Create a failed transaction rate threshold rule [observability-create-failed-transaction-rate-threshold-alert-rule]

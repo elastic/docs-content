@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Kibana
+  - kibana
 ---
 
 # Install {{kib}}

@@ -8,8 +8,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
+  - security
+  - cloud-serverless
 ---
 
 # Deploy {{elastic-defend}} on macOS with mobile device management [deploy-with-mdm]

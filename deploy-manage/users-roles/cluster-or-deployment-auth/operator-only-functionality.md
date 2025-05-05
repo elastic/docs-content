@@ -8,7 +8,7 @@ applies_to:
     ece:
     eck:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Operator-only functionality [operator-only-functionality]

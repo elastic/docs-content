@@ -6,8 +6,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Elasticsearch
-  - Cloud Serverless
+  - elasticsearch
+  - cloud-serverless
 ---
 
 # Elasticsearch ingest pipelines [ingest]

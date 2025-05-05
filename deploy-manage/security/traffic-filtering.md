@@ -12,9 +12,9 @@ applies_to:
     self: ga
   serverless: unavailable
 products:
-  - Cloud Enterprise
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - cloud-enterprise
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Traffic filtering

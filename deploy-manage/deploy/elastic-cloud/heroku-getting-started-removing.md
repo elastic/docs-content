@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - Elasticsearch Cloud Hosted Heroku
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Remove the add-on [ech-getting-started-removing]

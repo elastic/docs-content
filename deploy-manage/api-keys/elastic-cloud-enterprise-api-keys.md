@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: ga
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # {{ece}} API keys [ece-restful-api-authentication]

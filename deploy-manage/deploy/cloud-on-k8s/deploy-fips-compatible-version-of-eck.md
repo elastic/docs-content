@@ -7,7 +7,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Deploy a FIPS compatible version of ECK [k8s-fips]

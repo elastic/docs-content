@@ -6,7 +6,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Logstash
+  - logstash
 ---
 
 # Troubleshoot Logstash plugin for Kafka [ts-kafka]

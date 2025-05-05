@@ -14,11 +14,11 @@ applies_to:
     self: all
   serverless: unavailable
 products:
-  - Elasticsearch
-  - Kibana
-  - Cloud Enterprise
-  - Cloud Kubernetes
-  - Cloud Hosted
+  - elasticsearch
+  - kibana
+  - cloud-enterprise
+  - cloud-kubernetes
+  - cloud-hosted
 ---
 
 # Enable audit logging [enable-audit-logging]

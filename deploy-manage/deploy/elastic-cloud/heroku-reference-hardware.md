@@ -8,7 +8,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - Elasticsearch Cloud Hosted Heroku
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # {{heroku}} hardware [ech-reference-hardware]

@@ -11,7 +11,7 @@ applies_to:
     self: all
   serverless: unavailable
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # {{es}} logfile audit output [audit-log-output]

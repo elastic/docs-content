@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Increase the maximum number of threads [max-number-of-threads]

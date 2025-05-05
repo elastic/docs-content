@@ -6,7 +6,7 @@ applies_to:
   stack: beta
   serverless: beta
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Search applications [search-application-overview]

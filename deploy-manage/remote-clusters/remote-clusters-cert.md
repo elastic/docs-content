@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Add remote clusters using TLS certificate authentication [remote-clusters-cert]

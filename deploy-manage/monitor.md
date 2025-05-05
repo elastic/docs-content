@@ -10,8 +10,8 @@ applies_to:
     eck: all
     self: all
 products:
-  - Elasticsearch
-  - Cloud Hosted
+  - elasticsearch
+  - cloud-hosted
 ---
 
 # Monitoring

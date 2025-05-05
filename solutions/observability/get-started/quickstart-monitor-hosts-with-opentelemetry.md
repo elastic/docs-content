@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Quickstart: Monitor hosts with OpenTelemetry [quickstart-monitor-hosts-with-otel]

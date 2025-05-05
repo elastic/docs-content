@@ -8,7 +8,7 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Manage IP traffic filters in ECK and self-managed clusters

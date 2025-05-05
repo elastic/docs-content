@@ -7,8 +7,8 @@ applies_to:
     ess:
     ece:
 products:
-  - Cloud Hosted
-  - Cloud Enterprise
+  - cloud-hosted
+  - cloud-enterprise
 ---
 
 # Restore snapshots containing searchable snapshots indices across clusters [ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters]

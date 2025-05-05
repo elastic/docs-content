@@ -9,7 +9,7 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Deploy an {{es}} cluster

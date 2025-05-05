@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   serverless: ga
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Serverless project API keys [api-keys]

@@ -14,9 +14,9 @@ applies_to:
     eck:
   serverless:
 products:
-  - Elasticsearch Cloud Hosted Heroku
-  - Cloud Enterprise
-  - Cloud Hosted
+  - elasticsearch-cloud-hosted-heroku
+  - cloud-enterprise
+  - cloud-hosted
 ---
 
 # Delete an orchestrated deployment

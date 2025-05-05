@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # Access other deployments of the same {{ecloud}} organization [ec-remote-cluster-same-ess]

@@ -6,7 +6,7 @@ applies_to:
     ess: ga
   serverless: ga
 products:
-  - Cloud Hosted
+  - cloud-hosted
 ---
 
 # AWS Marketplace [ec-billing-aws]

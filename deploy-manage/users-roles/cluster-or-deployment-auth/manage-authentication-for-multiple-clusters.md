@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck:
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Manage authentication for multiple clusters [k8s-auth-config-using-stack-config-policy]

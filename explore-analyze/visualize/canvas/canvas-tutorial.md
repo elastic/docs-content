@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Kibana
+  - kibana
 ---
 
 # Tutorial: Create a workpad for monitoring sales [canvas-tutorial]

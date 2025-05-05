@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Bring your own dense vectors [bring-your-own-vectors]

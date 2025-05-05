@@ -7,9 +7,9 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elasticsearch
-  - Elastic Products platform
-  - Elastic Stack
+  - elasticsearch
+  - elastic-products-platform
+  - elastic-stack
 ---
 # Get started
 

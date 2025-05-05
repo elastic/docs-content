@@ -6,8 +6,8 @@ applies_to:
   stack:
   serverless: all
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # {{fleet}} and {{agent}} restrictions for {{serverless-full}} [fleet-agent-serverless-restrictions]

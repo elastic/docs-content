@@ -41,69 +41,69 @@ valid_items:
   - key: products
     type: array
     valid_values:
-      - APM
-      - APM .NET Agent
-      - APM Android Agent
-      - APM Attacher
-      - APM AWS Lambda extension
-      - APM Go Agent
-      - APM iOS Agent
-      - APM Java Agent
-      - APM Node.js Agent
-      - APM PHP Agent
-      - APM Python Agent
-      - APM Ruby Agent
-      - APM RUM Agent
-      - Beats Logging plugin
-      - Cloud Control ECCTL
-      - Cloud Enterprise
-      - Cloud Hosted
-      - Cloud Kubernetes
-      - Cloud Native Ingest
-      - Cloud Serverless
-      - Cloud Terraform
-      - ECS Logging
-      - ECS Logging .NET
-      - ECS Logging Go Logrus
-      - ECS Logging Go Zap
-      - ECS Logging Go Zerolog
-      - ECS Logging Java
-      - ECS Logging Node.js
-      - ECS Logging PHP
-      - ECS Logging Python
-      - ECS Logging Ruby
-      - Elastic Agent
-      - Elastic Common Schema (ECS)
-      - Elastic Products platform
-      - Elastic Stack
-      - Elasticsearch
-      - Elasticsearch .NET Client
-      - Elasticsearch Apache Hadoop
-      - Elasticsearch Cloud Hosted Heroku
-      - Elasticsearch community clients
-      - Elasticsearch Curator
-      - Elasticsearch Eland Python Client
-      - Elasticsearch Go Client
-      - Elasticsearch Groovy Client
-      - Elasticsearch Java Client
-      - Elasticsearch JavaScript Client
-      - Elasticsearch Painless scripting language
-      - Elasticsearch Perl Client
-      - Elasticsearch PHP Client
-      - Elasticsearch plugins
-      - Elasticsearch Python Client
-      - Elasticsearch Resiliency Status
-      - Elasticsearch Ruby Client
-      - Elasticsearch Rust Client
-      - Fleet
-      - Ingest
-      - Integrations
-      - Kibana
-      - Logstash
-      - Machine Learning
-      - Observability
-      - Reference Architectures
-      - Search UI
-      - Security
+      - apm
+      - apm-dotnet-agent
+      - apm-android-agent
+      - apm-attacher
+      - apm-aws-lambda-extension
+      - apm-go-agent
+      - apm-ios-agent
+      - apm-java-agent
+      - apm-node-agent
+      - apm-php-agent
+      - apm-python-agent
+      - apm-ruby-agent
+      - apm-rum-agent
+      - beats-logging-plugin
+      - cloud-control-ecctl
+      - cloud-enterprise
+      - cloud-hosted
+      - cloud-kubernetes
+      - cloud-native-ingest
+      - cloud-serverless
+      - cloud-terraform
+      - ecs-logging
+      - ecs-logging-dotnet
+      - ecs-logging-go-logrus
+      - ecs-logging-go-zap
+      - ecs-logging-go-zerolog
+      - ecs-logging-java
+      - ecs-logging-node
+      - ecs-logging-php
+      - ecs-logging-python
+      - ecs-logging-ruby
+      - elastic-agent
+      - ecs
+      - elastic-products-platform
+      - elastic-stack
+      - elasticsearch
+      - elasticsearch-dotnet-client
+      - elasticsearch-apache-hadoop
+      - elasticsearch-cloud-hosted-heroku
+      - elasticsearch-community-clients
+      - elasticsearch-curator
+      - elasticsearch-eland-python-client
+      - elasticsearch-go-client
+      - elasticsearch-groovy-client
+      - elasticsearch-java-client
+      - elasticsearch-java-script-client
+      - elasticsearch-painless-scripting-language
+      - elasticsearch-perl-client
+      - elasticsearch-php-client
+      - elasticsearch-plugins
+      - elasticsearch-python-client
+      - elasticsearch-resiliency-status
+      - elasticsearch-ruby-client
+      - elasticsearch-rust-client
+      - fleet
+      - ingest
+      - integrations
+      - kibana
+      - logstash
+      - machine-learning
+      - observability
+      - reference-architectures
+      - search-ui
+      - security
   - key: sub
     type: object

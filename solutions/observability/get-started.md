@@ -8,8 +8,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Cloud Serverless
-  - Observability
+  - cloud-serverless
+  - observability
 ---
 
 # Get started with Elastic Observability [observability-get-started]

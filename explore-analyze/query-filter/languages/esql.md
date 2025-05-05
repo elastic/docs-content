@@ -8,8 +8,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Elasticsearch
-  - Kibana
+  - elasticsearch
+  - kibana
 ---
 
 # {{esql}} [esql]

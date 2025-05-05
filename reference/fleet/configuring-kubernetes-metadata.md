@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Fleet
-  - Elastic Agent
+  - fleet
+  - elastic-agent
 ---
 
 # Configuring Kubernetes metadata enrichment on Elastic Agent [configuring-kubernetes-metadata]

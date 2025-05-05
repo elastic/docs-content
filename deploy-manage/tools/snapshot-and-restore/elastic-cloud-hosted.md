@@ -7,8 +7,8 @@ applies_to:
   deployment:
     ess:
 products:
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Manage snapshot repositories in {{ech}}

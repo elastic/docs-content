@@ -7,8 +7,8 @@ applies_to:
   deployment:
     ess:
 products:
-  - Cloud Hosted
-  - Observability
+  - cloud-hosted
+  - observability
 ---
 
 # Configure APM Server [apm-configuring-howto-apm-server]

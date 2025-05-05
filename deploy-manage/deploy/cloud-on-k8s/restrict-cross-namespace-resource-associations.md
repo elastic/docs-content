@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Restrict cross-namespace resource associations [k8s-restrict-cross-namespace-associations]

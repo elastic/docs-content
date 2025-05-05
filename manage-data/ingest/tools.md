@@ -12,11 +12,11 @@ applies_to:
     ess:
   serverless: ga
 products:
-  - Cloud Hosted
-  - Fleet
-  - Elastic Agent
-  - Kibana
-  - Cloud Serverless
+  - cloud-hosted
+  - fleet
+  - elastic-agent
+  - kibana
+  - cloud-serverless
 ---
 
 # Ingest tools overview

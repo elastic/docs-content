@@ -6,7 +6,7 @@ applies_to:
   stack: deprecated 8.15.0
   serverless: unavailable
 products:
-  - Observability
+  - observability
 ---
 
 # Get started with Uptime [uptime-get-started]

@@ -9,7 +9,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Kibana
+  - kibana
 ---
 
 

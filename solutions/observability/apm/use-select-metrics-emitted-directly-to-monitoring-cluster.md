@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - Observability
+  - observability
 ---
 
 # Use the select metrics emitted directly to your monitoring cluster [apm-monitoring-local-collection]

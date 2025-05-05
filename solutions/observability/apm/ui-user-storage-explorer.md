@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Applications UI storage explorer user [apm-app-storage-explorer-user-create]

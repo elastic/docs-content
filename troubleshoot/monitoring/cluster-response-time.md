@@ -7,8 +7,8 @@ applies_to:
   deployment:
     ess: all
 products:
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Troubleshoot slow cluster response time [ec-scenario_why_are_my_cluster_response_times_suddenly_so_much_worse]

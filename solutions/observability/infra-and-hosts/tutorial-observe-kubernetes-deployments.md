@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Tutorial: Observe your Kubernetes deployments [monitor-kubernetes]

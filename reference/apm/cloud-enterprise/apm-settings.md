@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # APM settings for Elastic Cloud Enterprise [ece-manage-apm-settings]

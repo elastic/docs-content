@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: deprecated
 products:
-  - Observability
+  - observability
 ---
 
 # Integrate with Jaeger (deprecated) [apm-jaeger-integration]

@@ -9,7 +9,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Reference Architectures
+  - reference-architectures
 ---
 
 # Hot/Frozen - High Availability [hot-frozen-architecture]

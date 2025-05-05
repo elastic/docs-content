@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability: all
 products:
-  - Observability
-  - Cloud Serverless
+  - observability
+  - cloud-serverless
 ---
 
 # Common problems [apm-common-problems]

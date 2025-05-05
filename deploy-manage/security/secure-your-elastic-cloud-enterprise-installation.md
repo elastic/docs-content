@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: ga
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Secure your {{ece}} installation [ece-securing-considerations]

@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Reference Architectures
+  - reference-architectures
 ---
 
 # Reference architectures [reference-architectures-overview]

@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Migrate ECE on Podman hosts to SELinux enforce [ece-migrate-to-selinux-in-enforcing-mode]

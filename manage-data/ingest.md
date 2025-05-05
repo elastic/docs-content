@@ -12,10 +12,10 @@ applies_to:
     ess:
   serverless: ga
 products:
-  - Cloud Hosted
-  - Kibana
-  - Cloud Serverless
-  - Elasticsearch
+  - cloud-hosted
+  - kibana
+  - cloud-serverless
+  - elasticsearch
 ---
 
 # Ingestion

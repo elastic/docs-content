@@ -7,7 +7,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Configure a SUSE host [ece-configure-hosts-sles12]

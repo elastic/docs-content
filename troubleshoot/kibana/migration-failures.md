@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - Kibana
+  - kibana
 ---
 
 # Troubleshoot {{kib}} migration and upgrades [resolve-migrations-failures]

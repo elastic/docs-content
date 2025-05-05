@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - Cloud Serverless
-  - Observability
+  - cloud-serverless
+  - observability
 ---
 
 # Traces [apm-data-model-traces]

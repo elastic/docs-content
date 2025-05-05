@@ -7,12 +7,12 @@ applies_to:
   deployment:
     self:
 products:
-  - Elasticsearch
+  - elasticsearch
 sub:
-  es-conf: "$ES_HOME/config"
-  slash: "/"
+  es-conf: $ES_HOME/config
+  slash: /
   export: "export "
-  escape: "\\"
+  escape: \
   auto: " -d"
 ---
 

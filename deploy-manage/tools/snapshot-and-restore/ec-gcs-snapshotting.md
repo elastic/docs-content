@@ -6,8 +6,8 @@ applies_to:
   deployment:
     ess:
 products:
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
 ---
 
 # Configure a snapshot repository using GCS [ec-gcs-snapshotting]

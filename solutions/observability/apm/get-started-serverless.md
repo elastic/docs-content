@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless:
 products:
-  - Cloud Serverless
+  - cloud-serverless
 ---
 
 # Get started with traces and APM [observability-apm-get-started]

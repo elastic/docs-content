@@ -7,7 +7,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - Logstash
+  - logstash
 ---
 
 # Troubleshoot health report pipelines

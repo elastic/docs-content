@@ -7,7 +7,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - APM Node.js Agent
+  - apm-node-agent
 ---
 
 # Troubleshoot APM Node.js Agent [troubleshooting]

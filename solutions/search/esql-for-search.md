@@ -5,7 +5,7 @@ applies_to:
   stack: preview
   serverless: preview
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 % ℹ️ 8.x version of this doc lives in elasticsearch repo

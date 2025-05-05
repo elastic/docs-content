@@ -5,7 +5,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - Ingest
+  - ingest
 ---
 
 # Tutorial: Securing a self-managed {{stack}} [install-stack-demo-secure]

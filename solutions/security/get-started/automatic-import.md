@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: preview
 products:
-  - Security
-  - Cloud Serverless
+  - security
+  - cloud-serverless
 ---
 
 # Automatic import

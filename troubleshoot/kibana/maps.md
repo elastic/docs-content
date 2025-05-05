@@ -6,7 +6,7 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - Kibana
+  - kibana
 ---
 
 

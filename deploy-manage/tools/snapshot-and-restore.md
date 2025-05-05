@@ -14,10 +14,10 @@ applies_to:
     eck:
     self:
 products:
-  - Elasticsearch
-  - Cloud Hosted
-  - Elasticsearch Cloud Hosted Heroku
-  - Cloud Enterprise
+  - elasticsearch
+  - cloud-hosted
+  - elasticsearch-cloud-hosted-heroku
+  - cloud-enterprise
 ---
 
 # Snapshot and restore

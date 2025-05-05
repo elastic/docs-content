@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Updating custom templates to support Integrations Server [ece-ce-add-support-for-integrations-server]

@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Elasticsearch
+  - elasticsearch
 ---
 
 # Semantic search with the inference API [semantic-search-inference]

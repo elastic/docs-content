@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - Observability
+  - observability
 ---
 
 # Upgrade a self-installation of APM Server standalone to 9.0 [apm-upgrade-9.0-self-standalone]

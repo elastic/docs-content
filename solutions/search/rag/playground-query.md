@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - Kibana
+  - kibana
 ---
 
 # View and modify queries [playground-query]

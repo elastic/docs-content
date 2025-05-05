@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck:
 products:
-  - Cloud Kubernetes
+  - cloud-kubernetes
 ---
 
 # Securing the metrics endpoint [k8s-securing-the-metrics-endpoint]

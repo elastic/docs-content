@@ -8,9 +8,9 @@ applies_to:
   serverless:
     security: all
 products:
-  - Security
-  - Cloud Serverless
-  - Kibana
+  - security
+  - cloud-serverless
+  - kibana
 ---
 
 # Osquery [osquery]

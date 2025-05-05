@@ -7,7 +7,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - APM Java Agent
+  - apm-java-agent
 ---
 
 # Troubleshoot APM Java Agent [trouble-shooting]

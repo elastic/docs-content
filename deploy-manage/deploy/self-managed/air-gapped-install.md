@@ -7,7 +7,7 @@ applies_to:
     ece:
     self:
 products:
-  - Cloud Enterprise
+  - cloud-enterprise
 ---
 
 # Air gapped install
