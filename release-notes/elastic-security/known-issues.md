@@ -34,7 +34,7 @@ Resolved in {{stack}} 9.0.1
 
 :::{dropdown} The technical preview badge incorrectly displays on the alert suppression fields for event correlation rules
 
-Applies to: {{stack}} 9.0.0
+Applies to: {{stack}} 9.0.0 and 9.0.1
 
 On April 8, 2025, it was discovered that alert suppression for event correlation rules is incorrectly shown as being in technical preview when you create a new rule. For more information, check [#1021](https://github.com/elastic/docs-content/issues/1021).
 
