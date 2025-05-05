@@ -901,7 +901,7 @@ Approximate kNN search always uses the [`dfs_query_then_fetch`](https://www.elas
 
 When using [quantized vectors](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for kNN search, you can optionally rescore results to balance performance and accuracy, by doing:
 
-* **Oversampling**: Retrieve more candidates per shard. The default is `3.0` in `bbq`.
+* **Oversampling**: Retrieve more candidates per shard. Starting in `9.1.0`, the default oversampling factor is 3, but only for the `bbq` quantization method. Other quantization methods must explicitly specify an oversample value either in the field mapping or at query time.
 * **Rescoring**: Use the original vector values for re-calculating the score on the oversampled candidates.
 
 As the non-quantized, original vectors are used to calculate the final score on the top results, rescoring combines:
