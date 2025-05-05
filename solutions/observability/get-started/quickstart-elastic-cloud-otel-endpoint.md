@@ -129,7 +129,7 @@ Don't have a collector or SDK running? No problem. Spin up an EDOT collector in 
 
 #### I just want to use the instrumentation [instrumentation-please]
 
-See [application use-cases](https://elastic.github.io/opentelemetry/use-cases/application/) for more information.
+See [application use-cases](https://elastic.github.io/opentelemetry/edot-sdks/index.html) for more information.
 
 ## Troubleshoot
 

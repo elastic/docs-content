@@ -8,7 +8,7 @@ While LLMs hold incredible transformative potential, they also bring complex cha
 To keep your LLM-powered applications reliable, efficient, cost-effective, and easy to troubleshoot, Elastic provides a powerful LLM observability framework including key metrics, logs, and traces, along with pre-configured, out-of-the-box dashboards that deliver deep insights into model prompts and responses, performance, usage, and costs.
 Elastic’s end-to-end LLM observability is delivered through the following methods:
 
-- Metrics and logs ingestion for LLM APIs (via [Elastic integrations](https://www.elastic.co/guide/en/integrations/current/introduction.html))
+- Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
 - APM tracing for LLM Models (via [instrumentation](https://elastic.github.io/opentelemetry/))
 
 ## Metrics and logs ingestion for LLM APIs (via Elastic integrations)
@@ -17,10 +17,10 @@ Elastic’s LLM integrations now support the most widely adopted models, includi
 
 | **LLM Provider**  | **Source**  | **Metrics** | **Logs** |
 |--------|------------|------------|
-| [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)| [AWS CloudWatch Logs](https://github.com/elastic/integrations/tree/main/packages/aws_bedrock#compatibility) | ✅ | ✅ |
-| [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)| [Azure Monitor and Event Hubs](https://github.com/elastic/integrations/tree/main/packages/azure_openai#azure-openai-integration) | ✅ | ✅ |
-| [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | [GCP Cloud Monitoring](https://github.com/elastic/integrations/tree/main/packages/gcp_vertexai#overview)  | ✅ | 🚧 |
-| [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html) | [OpenAI Usage API](https://platform.openai.com/docs/api-reference/usage) | ✅| 🚧 |
+| [Amazon Bedrock](integration-docs://reference/aws_bedrock/index.md)| [AWS CloudWatch Logs](https://github.com/elastic/integrations/tree/main/packages/aws_bedrock#compatibility) | ✅ | ✅ |
+| [Azure OpenAI](integration-docs://reference/azure_openai/index.md)| [Azure Monitor and Event Hubs](https://github.com/elastic/integrations/tree/main/packages/azure_openai#azure-openai-integration) | ✅ | ✅ |
+| [GCP Vertex AI](integration-docs://reference/gcp_vertexai/index.md) | [GCP Cloud Monitoring](https://github.com/elastic/integrations/tree/main/packages/gcp_vertexai#overview)  | ✅ | 🚧 |
+| [OpenAI](integration-docs://reference/openai/index.md) | [OpenAI Usage API](https://platform.openai.com/docs/api-reference/usage) | ✅| 🚧 |
 
 ## APM tracing for LLM models (via instrumentation)
 
@@ -42,7 +42,7 @@ Check [these instructions](https://elastic.github.io/opentelemetry/use-cases/llm
 
 ### Understand LLM performance and reliability
 
-For an SRE team optimizing a customer support system powered by Azure OpenAI, Elastic’s [Azure OpenAI integration](https://www.elastic.co/guide/en/integrations/current/azure_openai.html) provides critical insights. They can quickly identify which model variants experience higher latency or error rates, enabling smarter decisions on model deployment or even switching providers based on real-time performance metrics.
+For an SRE team optimizing a customer support system powered by Azure OpenAI, Elastic’s [Azure OpenAI integration](integration-docs://reference/azure_openai/index.md) provides critical insights. They can quickly identify which model variants experience higher latency or error rates, enabling smarter decisions on model deployment or even switching providers based on real-time performance metrics.
 
 :::{image} /solutions/images/llm-performance-reliability.png
 :alt:  LLM performance and reliability

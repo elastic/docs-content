@@ -37,14 +37,14 @@ When you install Elastic prebuilt rules, the {{elastic-defend}} is enabled by de
 
 The following endpoint protection rules give you more granular control over how you handle the generated alerts. These rules are tailored for each of {{elastic-defend}}'s endpoint protection features—malware, ransomware, memory threats, and malicious behavior. Enabling these rules allows you to configure more specific actions based on the protection feature and whether the malicious activity was prevented or detected.
 
-* Behavior - Detected - Elastic Defend
-* Behavior - Prevented - Endpoint Defend
-* Malicious File - Detected - Elastic Defend
-* Malicious File - Prevented - Elastic Defend
-* Memory Signature - Detected - Elastic Defend
-* Memory Signature - Prevented - Elastic Defend
-* Ransomware - Detected - Elastic Defend
-* Ransomware - Prevented - Elastic Defend
+* Behavior - Detected - {{elastic-defend}}
+* Behavior - Prevented - {{elastic-defend}}
+* Malicious File - Detected - {{elastic-defend}}
+* Malicious File - Prevented - {{elastic-defend}}
+* Memory Signature - Detected - {{elastic-defend}}
+* Memory Signature - Prevented - {{elastic-defend}}
+* Ransomware - Detected - {{elastic-defend}}
+* Ransomware - Prevented - {{elastic-defend}}
 
 ::::{note}
 If you choose to use the feature-specific protection rules, we recommend that you disable the Endpoint Security rule, as using both will result in duplicate alerts.

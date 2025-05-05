@@ -44,7 +44,7 @@ The first value is a number, followed by what appears to be an IP address. You c
 
 ## Migrating to Elastic Common Schema (ECS) [grok-ecs]
 
-To ease migration to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current), a new set of ECS-compliant patterns is available in addition to the existing patterns. The new ECS pattern definitions capture event field names that are compliant with the schema.
+To ease migration to the [Elastic Common Schema (ECS)](ecs://reference/index.md), a new set of ECS-compliant patterns is available in addition to the existing patterns. The new ECS pattern definitions capture event field names that are compliant with the schema.
 
 The ECS pattern set has all of the pattern definitions from the legacy set, and is a drop-in replacement. Use the [`ecs-compatability`](logstash-docs-md://lsr/plugins-filters-grok.md#plugins-filters-grok-ecs_compatibility) setting to switch modes.
 

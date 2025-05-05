@@ -12,6 +12,10 @@ navigation_title: LDAP
 
 # LDAP user authentication [ldap-realm]
 
+:::{{warning}}
+This type of user authentication cannot be configured on {{ech}} deployments.
+:::
+
 You can configure the {{stack}} {{security-features}} to communicate with a Lightweight Directory Access Protocol (LDAP) server to authenticate users. See [Configuring an LDAP realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#ldap-realm-configuration).
 
 To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to user roles.
@@ -303,7 +307,7 @@ xpack:
 
 You can also specify the individual server certificates rather than the CA certificate, but this is only recommended if you have a single LDAP server or the certificates are self-signed
 
-For more information about these settings, see [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings).
+For more information about these settings, see [LDAP realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).
 
 ::::{note}
 By default, when you configure {{es}} to connect to an LDAP server using SSL/TLS, it attempts to verify the hostname or IP address specified with the `url` attribute in the realm configuration with the values in the certificate. If the values in the certificate and realm configuration do not match, {{es}} does not allow a connection to the LDAP server. This is done to protect against man-in-the-middle attacks. If necessary, you can disable this behavior by setting the `ssl.verification_mode` property to `certificate`.
