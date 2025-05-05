@@ -59,8 +59,8 @@ To delete an {{ece}} deployment:
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-3. Terminate the deployment.
-4. Select **Delete deployment** and follow the steps to delete the deployment permanently.
+3. From the **Actions** menu, [terminate the deployment](#terminate-a-deployment).
+4. From the **Actions** menu, select **Delete deployment** and follow the steps to delete the deployment permanently.
 
 :::{warning}
 Deleting a deployment cannot be undone.
@@ -77,7 +77,7 @@ To terminate an {{ece}} deployment,
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-3. In the **Deployment Management** section, select **Terminate deployment**.
+3. From the **Actions** menu, select **Terminate deployment**.
 
 
 ### Restore a deployment
@@ -89,7 +89,7 @@ To restore a terminated deployment,
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-3. In the **Deployment Management** section, select **Restore** and then acknowledge the confirmation message.
+3. From the **Actions** menu, select **Restore deployment** and then acknowledge the confirmation message.
 
 ## {{eck}} [elastic-cloud-kubernetes]
 
