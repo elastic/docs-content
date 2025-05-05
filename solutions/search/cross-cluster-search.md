@@ -1117,7 +1117,7 @@ $$$ccs-version-compatibility$$$
 | Local cluster version | 7.17 | 8.0 – 8.17 | 8.18 | 9.0 |
 | 7.17 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
 | 8.0 – 8.17 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
-| 8.18 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
+| 8.18 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
 | 9.0 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "")  | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "")  | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
 
 ::::{important}
