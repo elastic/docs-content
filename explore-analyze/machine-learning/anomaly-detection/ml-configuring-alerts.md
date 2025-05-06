@@ -8,23 +8,18 @@ mapped_pages:
 
 # Generating alerts for anomaly detection jobs [ml-configuring-alerts]
 
-This guide explains how to create an alert that automatically notifies you when an anomaly is detected in your machine learning jobs, or when a problem occurs that affects job performance.
+This guide explains how to create alerts that notify you automatically when an anomaly is detected in a [machine learning job]([{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md)), or when issues occur that affect job performance.
 
-{{kib}} {{alert-features}} include support for {{ml}} rules, which run scheduled checks for anomalies in one or more {{anomaly-jobs}} or check the health of the job with certain conditions. If the conditions of the rule are met, an alert is created and the associated action is triggered. 
+{{kib}}'s {{alert-features}} support two types of {{ml}} rules, which run scheduled checks on your {{anomaly-jobs}}:
 
-For example, you can create a rule to check an {{anomaly-job}} every fifteen minutes for critical anomalies and to notify you in an email. To learn more about {{kib}} {{alert-features}}, refer to [Alerting](../../alerts-cases/alerts/alerting-getting-started.md).
+[{{anomaly-detect-cap}} alert](#creating-anomaly-alert-rules)
+:   Checks job results for anomalies that match your defined conditions and raises an alert when found.
 
-The following {{ml}} rules are available:
+[{{anomaly-jobs-cap}} health](#creating-anomaly-jobs-health-rules)
+:   Monitors the operational status of a job and alerts you if issues occur (such as a stopped datafeed or memory limit errors). 
+    Use this rule type when you’ve already created anomaly detection rules and want to ensure those jobs continue to run reliably.
 
-{{anomaly-detect-cap}} alert
-:   Checks if the {{anomaly-job}} results contain anomalies that match the rule conditions.
-
-{{anomaly-jobs-cap}} health
-:   Monitors job health and alerts if an operational issue occurred that may prevent the job from detecting anomalies.
-
-::::{tip}
-If you have created rules for specific {{anomaly-jobs}} and you want to monitor whether these jobs work as expected, {{anomaly-jobs}} health rules are ideal for this purpose.
-::::
+If the conditions of a rule are met, an alert is created, and any associated actions (such as sending an email or Slack message) are triggered. For example, you can configure a rule that checks a job every 15 minutes for anomalies with a high score and sends a notification when one is found.
 
 In **{{stack-manage-app}} > {{rules-ui}}**, you can create both types of {{ml}} rules. In the **{{ml-app}}** app, you can create only {{anomaly-detect}} alert rules; create them from the {{anomaly-job}} wizard after you start the job or from the {{anomaly-job}} list.
 
@@ -34,7 +29,7 @@ Before you begin, make sure that:
 
 - You have at least one running [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md).
 - You have appropriate [user permissions](/deploy-manage/users-roles.md) to create and manage alert rules.
--  If you would like to send notifications about alerts (such as Slack messages, emails, or webhooks), make sure you have configured the necessary [connectors](/reference/kibana/connectors-kibana.md).
+-  If you would like to send notifications about alerts (such as Slack messages, emails, or webhooks), make sure you have configured the necessary [connectors](https://www.elastic.co/docs/reference/kibana/connectors-kibana).
 
 ## {{anomaly-detect-cap}} alert rules [creating-anomaly-alert-rules]
 
@@ -50,8 +45,8 @@ To set up an {{anomaly-detect}} alert rule:
 :screenshot:
 :::
 
-3. Select the {{anomaly-job}} that the rule applies to.
-4. Select a type of {{ml}} result. You can create rules based on bucket or record results.
+3. Select the [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) that the rule applies to.
+4. Select a type of {{ml}} result. You can create rules based on bucket, record, or influencer results.
 5. (Optional) Configure the `anomaly_score` that triggers the action. 
 The `anomaly_score` indicates the significance of a given anomaly compared to 
 previous anomalies. The default severity threshold is 75 which means every 
@@ -89,8 +84,7 @@ You can preview how the rule would perform on existing data:
 8. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
 9. (Optional) Configure **Advanced options**:
    - Define the number of consecutive matches required before an alert is triggered under **Alert delay**.
-   - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts.
-     - You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
+   - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts. You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
 
 :::{image} /explore-analyze/images/ml-anomaly-rule-schedule-advanced.jpg
 :alt: Rule schedule and advanced settings
@@ -141,8 +135,7 @@ To set up an {{anomaly-jobs}} alert rule:
 
 6. (Optional) Configure **Advanced options**:
    - Define the number of consecutive matches required before an alert is triggered under **Alert delay**.
-   - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts.
-     - You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
+   - Enable or disable **Flapping Detection** to reduce noise from frequently changing alerts. You can customize the flapping detection settings if you need different thresholds for detecting flapping behavior.
 
 :::{image} /explore-analyze/images/ml-anomaly-rule-schedule-advanced.jpg
 :alt: Rule schedule and advanced settings
@@ -153,40 +146,54 @@ Next, define the [actions](#ml-configuring-alert-actions) that occur when the ru
 
 ## Actions [ml-configuring-alert-actions]
 
-You can optionally send notifications when the rule conditions are met and when
-they are no longer met. In particular, these rules support:
+You can send notifications when the rule conditions are met and when they are no longer met. These rules support:
 
-* alert summaries
-* actions that run when the anomaly score matches the conditions (for {{anomaly-detect}} alert rules)
-* actions that run when an issue is detected (for {{anomaly-jobs}} health rules)
-* recovery actions that run when the conditions are no longer met
+* **Alert summaries:** Combine multiple alerts into a single notification, sent at regular intervals.
+* **Per-alert actions for anomaly detection:** Trigger an action when an anomaly score meets the defined condition.
+* **Per-alert actions for job health:** Trigger an action when an issue is detected in a job’s health status (for example, a stopped datafeed or memory issue).
+* **Recovery actions:** Notify when a previously triggered alert returns to a normal state.
 
+To set up an action:
+
+1. Select a connector. 
+
+:::{important}
 Each action uses a connector, which stores connection information for a {{kib}}
 service or supported third-party integration, depending on where you want to
 send the notifications. For example, you can use a Slack connector to send a
 message to a channel. Or you can use an index connector that writes a JSON
 object to a specific index. For details about creating connectors, refer to
 [Connectors](/deploy-manage/manage-connectors.md#creating-new-connector).
+:::
 
-After you select a connector, you must set the action frequency. You can choose
-to create a summary of alerts on each check interval or on a custom interval.
-For example, send slack notifications that summarize the new, ongoing, and
-recovered alerts:
+2. Set the action frequency. Choose whether you want to send:
+
+   * **Summary of alerts**: Groups multiple alerts into a single notification at each check interval or on a custom schedule.
+   * **A notification for each alert**: Sends individual alerts as they are triggered, recovered, or change state.
+
+
+::::{dropdown} Example: Summary of alerts
+You can choose to create a summary of alerts on:
+  * **Each check interval**: Sends a summary every time the rule runs (for example, every 5 minutes).
+  * **Custom interval**: Sends a summary less often, on a schedule you define (for example, every hour), which helps reduce notification noise. A custom action interval cannot be shorter than the rule's check interval.
+
+For example, send slack notifications that summarize the new, ongoing, and recovered alerts:
 
 :::{image} /explore-analyze/images/ml-anomaly-alert-action-summary.png
 :alt: Adding an alert summary action to the rule
 :screenshot:
 :::
-
-::::{tip}
-If you choose a custom action interval, it cannot be shorter than the
-rule's check interval.
 ::::
 
-Alternatively, you can set the action frequency such that actions run for each
-alert. Choose how often the action runs (at each check interval, only when the
-alert status changes, or at a custom action interval). For {{anomaly-detect}}
-alert rules, you must also choose whether the action runs when the anomaly score
+::::{dropdown} Example: For each alert
+
+Choose how often the action runs: 
+
+ * at each check interval, 
+ * only when the alert status changes, or 
+ * at a custom action interval. 
+ 
+For *{{anomaly-detect}} alert rules*, you must also choose whether the action runs when the anomaly score
 matches the condition or when the alert recovers:
 
 :::{image} /explore-analyze/images/ml-anomaly-alert-action-score-matched.png
@@ -194,7 +201,7 @@ matches the condition or when the alert recovers:
 :screenshot:
 :::
 
-In {{anomaly-jobs}} health rules, choose whether the action runs when the issue is
+For *{{anomaly-jobs}} health rules*, choose whether the action runs when the issue is
 detected or when it is recovered:
 
 :::{image} /explore-analyze/images/ml-health-check-action.png
@@ -202,12 +209,11 @@ detected or when it is recovered:
 :screenshot:
 :::
 
-You can further refine the rule by specifying that actions run only when they
-match a KQL query or when an alert occurs within a specific time frame.
+::::
 
-There is a set of variables that you can use to customize the notification
-messages for each action. Click the icon above the message text box to get the
-list of variables or refer to [action variables](#action-variables). For example:
+3. Specify that actions run only when they match a KQL query or occur within a specific time frame.
+
+4. Use variables to customize the notification message. Click the icon above the message field to view available variables, or refer to [action variables](#action-variables). For example:
 
 :::{image} /explore-analyze/images/ml-anomaly-alert-messages.png
 :alt: Customizing your message
@@ -239,67 +245,67 @@ You can also specify [variables common to all rules](/explore-analyze/alerts-cas
 
 Every {{anomaly-detect}} alert has the following action variables:
 
-**`context.anomalyExplorerUrl`^*^**
+`context.anomalyExplorerUrl`^*^
 :   URL to open in the Anomaly Explorer.
 
-**`context.isInterim`**
+`context.isInterim`
 :   Indicates if top hits contain interim results.
 
-**`context.jobIds`^*^**
+`context.jobIds`^*^
 :   List of job IDs that triggered the alert.
 
-**`context.message`^*^**
+`context.message`^*^
 :   A preconstructed message for the alert.
 
-**`context.score`**
+`context.score`
 :   Anomaly score at the time of the notification action.
 
-**`context.timestamp`**
+`context.timestamp`
 :   The bucket timestamp of the anomaly.
 
-**`context.timestampIso8601`**
+`context.timestampIso8601`
 :   The bucket timestamp of the anomaly in ISO8601 format.
 
-**`context.topInfluencers`**
+`context.topInfluencers`
 :   The list of top influencers. Limited to a maximum of 3 documents.
 
 :::{dropdown} Properties of `context.topInfluencers`
-**`influencer_field_name`**
+`influencer_field_name`
 :   The field name of the influencer.
 
-**`influencer_field_value`**
+`influencer_field_value`
 :   The entity that influenced, contributed to, or was to blame for the anomaly.
 
-**`score`**
+`score`
 :   The influencer score. A normalized score between 0–100 which shows the influencer’s overall contribution to the anomalies.
 :::
 
-**`context.topRecords`**
+`context.topRecords`
 :   The list of top records. Limited to a maximum of 3 documents.
 
 :::{dropdown} Properties of `context.topRecords`
-**`actual`**
+`actual`
 :   The actual value for the bucket.
 
-**`by_field_value`**
+`by_field_value`
 :   The value of the by field.
 
-**`field_name`**
+`field_name`
 :   Certain functions require a field to operate on, for example, `sum()`. For those functions, this value is the name of the field to be analyzed.
 
-**`function`**
+`function`
 :   The function in which the anomaly occurs, as specified in the detector configuration. For example, `max`.
 
-**`over_field_name`**
+`over_field_name`
 :   The field used to split the data.
 
-**`partition_field_value`**
+`partition_field_value`
 :   The field used to segment the analysis.
 
-**`score`**
+`score`
 :   A normalized score between 0–100, which is based on the probability of the anomalousness of this record.
 
-**`typical`**
+`typical`
 :   The typical value for the bucket, according to analytical modeling.
 :::
 
@@ -311,102 +317,102 @@ type of check. You can find the possible properties for all the checks below.
 
 ####  Datafeed is not started
 
-**`context.message`^*^**
+`context.message`^*^
 :   A preconstructed message for the alert.
 
-**`context.results`**
+`context.results`
 :   Contains the following properties:
 
 :::{dropdown} Properties of `context.results`
-**`datafeed_id`^*^**
+`datafeed_id`^*^
 :   The datafeed identifier.
 
-**`datafeed_state`^*^**
+`datafeed_state`^*^
 :   The state of the datafeed. It can be `starting`, `started`, `stopping`, or `stopped`.
 
-**`job_id`^*^**
+`job_id`^*^
 :   The job identifier.
 
-**`job_state`^*^**
+`job_state`^*^
 :   The state of the job. It can be `opening`, `opened`, `closing`, `closed`, or `failed`.
 :::
 
 ####  Model memory limit reached
 
-**`context.message`^*^**
+`context.message`^*^
 :   A preconstructed message for the rule.
 
-**`context.results`**
+`context.results`
 :   Contains the following properties:
 
 :::{dropdown} Properties of `context.results`
-**`job_id`^*^**
+`job_id`^*^
 :   The job identifier.
 
-**`memory_status`^*^**
+`memory_status`^*^
 :   The status of the mathematical model. It can have one of the following values:  
     - `soft_limit`: The model used more than 60% of the configured memory limit and older unused models will be pruned to free up space. In categorization jobs, no further category examples will be stored.  
     - `hard_limit`: The model used more space than the configured memory limit. As a result, not all incoming data was processed.  
     The `memory_status` is `ok` for recovered alerts.
 
-**`model_bytes`^*^**
+`model_bytes`^*^
 :   The number of bytes of memory used by the models.
 
-**`model_bytes_exceeded`^*^**
+`model_bytes_exceeded`^*^
 :   The number of bytes over the high limit for memory usage at the last allocation failure.
 
-**`model_bytes_memory_limit`^*^**
+`model_bytes_memory_limit`^*^
 :   The upper limit for model memory usage.
 
-**`log_time`^*^**
+`log_time`^*^
 :   The timestamp of the model size statistics according to server time. Time formatting is based on the Kibana settings.
 
-**`peak_model_bytes`^*^**
+`peak_model_bytes`^*^
 :   The peak number of bytes of memory ever used by the model.
 :::
 
 ####  Data delay has occurred
 
-**`context.message`^*^**
+`context.message`^*^
 :   A preconstructed message for the rule.
 
-**`context.results`**
+`context.results`
 :   For recovered alerts, `context.results` is either empty (when there is no delayed data) or the same as for an active alert (when the number of missing documents is less than the *Number of documents* threshold set by the user).  
     Contains the following properties:
 
 :::{dropdown} Properties of `context.results`
-**`annotation`^*^**
+`annotation`^*^
 :   The annotation corresponding to the data delay in the job.
 
-**`end_timestamp`^*^**
+`end_timestamp`^*^
 :   Timestamp of the latest finalized buckets with missing documents. Time formatting is based on the Kibana settings.
 
-**`job_id`^*^**
+`job_id`^*^
 :   The job identifier.
 
-**`missed_docs_count`^*^**
+`missed_docs_count`^*^
 :   The number of missed documents.
 :::
 
 ####  Error in job messages
 
-**`context.message`^*^**
+`context.message`^*^
 :   A preconstructed message for the rule.
 
-**`context.results`**
+`context.results`
 :   Contains the following properties:
 
 :::{dropdown} Properties of `context.results`
-**`timestamp`**
+`timestamp`
 :   Timestamp of the latest finalized buckets with missing documents.
 
-**`job_id`**
+`job_id`
 :   The job identifier.
 
-**`message`**
+`message`
 :   The error message.
 
-**`node_name`**
+`node_name`
 :   The name of the node that runs the job.
 :::
 
