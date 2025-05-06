@@ -5,11 +5,6 @@ mapped_pages:
 
 # Example: Install standalone Elastic Agent on Kubernetes using Helm [example-kubernetes-standalone-agent-helm]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 This example demonstrates how to install standalone {{agent}} on a Kubernetes system using a Helm chart, gather Kubernetes metrics and send them to an {{es}} cluster in {{ecloud}}, and then view visualizations of those metrics in {{kib}}.
 
 For an overview of the {{agent}} Helm chart and its benefits, refer to [Install {{agent}} on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md).
