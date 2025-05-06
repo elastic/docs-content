@@ -77,7 +77,7 @@ Some settings that could break your cluster if set incorrectly are blocklisted. 
 ### Version 8.19+ and 9.1+ [ec_version_8_19_and_9_1]
 
 `apm-server.sampling.tail.ttl`
-:   Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases the required storage space.
+:   Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases storage space requirements.
 
 ### Version 8.0+ [ec_version_8_0_3]
 
