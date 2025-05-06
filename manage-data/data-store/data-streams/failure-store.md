@@ -47,7 +47,7 @@ After a matching data stream is created, its failure store will be enabled.
 
 Enabling the failure store via [index templates](../templates.md) can only affect data streams that are newly created. Existing data streams that use a template will not apply any changes to the template's `data_stream_options` after they have been created.
 
-To modify an existing data stream's options, use the [put data stream options](wip) API:
+To modify an existing data stream's options, use the [put data stream options](failure-store#wip) API:
 
 ```console
 PUT my-datastream-existing/_options
@@ -76,7 +76,7 @@ PUT my-datastream-existing/_options
 
 ### Enable failure store via cluster setting [set-up-failure-store-cluster-setting]
 
-If you have a large number of existing data streams you may want an easier way to control if failures should be redirected. Instead of enabling the failure store using the [put data stream options](wip) API, you can instead configure a set of patterns in the [cluster settings](wip) which will enable the failure store feature by default.
+If you have a large number of existing data streams you may want an easier way to control if failures should be redirected. Instead of enabling the failure store using the [put data stream options](failure-store#wip) API, you can instead configure a set of patterns in the [cluster settings](failure-store#wip) which will enable the failure store feature by default.
 
 Configure a list of patterns using the `data_streams.failure_store.enabled` dynamic cluster setting. If a data stream matches a pattern in this setting and does not have the failure store explicitly disabled in its options, then the failure store will default to being enabled for that matching data stream.
 
@@ -101,7 +101,7 @@ Once a failure store is enabled for a data stream it will begin redirecting docu
 
 Each data stream's failure store is made up of a list of indices that are dedicated to storing failed documents. These indices function much like a data stream's normal backing indices: There is a write index that accepts failed documents, they can be rolled over, and are automatically cleaned up over time subject to a lifecycle policy.
 
-When a document bound for a data stream encounters a problem during its ingestion, the response is annotated with the `failure_store` field which describes how {{es}} responded to that problem. The `failure_store` field is present on both the [bulk](wip) and [index](wip) API responses when applicable. Clients can use this information to augment their behavior based on the response from {{es}}.
+When a document bound for a data stream encounters a problem during its ingestion, the response is annotated with the `failure_store` field which describes how {{es}} responded to that problem. The `failure_store` field is present on both the [bulk](failure-store#wip) and [index](failure-store#wip) API responses when applicable. Clients can use this information to augment their behavior based on the response from {{es}}.
 
 Here we have a bulk operation that sends two documents. Both are writing to the `id` field which is mapped as a `long` field type. The first document will be accepted, but the second document would cause a failure because the value `invalid_text` cannot be parsed as a `long`. This second document will be redirected to the failure store: 
 
@@ -263,14 +263,14 @@ Once you have accumulated some failures, they can be searched much like a regula
 :::{warning}
 Documents redirected to the failure store in the event of a failed ingest pipeline will be stored in their original, unprocessed form. If an ingest pipeline normally redacts sensitive information from a document, then failed documents in their original, unprocessed form may contain sensitive information.
 
-Furthermore, failed documents are likely to be structured differently than normal data in a data stream, and thus are not supported by [document level security](wip) or [field level security](wip).
+Furthermore, failed documents are likely to be structured differently than normal data in a data stream, and thus are not supported by [document level security](failure-store#wip) or [field level security](failure-store#wip).
 
-To limit visibility on potentially sensitive data, users require the [`read_failure_store`](wip) index privilege for a data stream in order to search that data stream's failure store data.
+To limit visibility on potentially sensitive data, users require the [`read_failure_store`](failure-store#wip) index privilege for a data stream in order to search that data stream's failure store data.
 :::
 
 Searching a data stream's failure store can be done by making use of the existing search APIs available in {{es}}. 
 
-To indicate that the search should be performed on failure store data, use the [index component selector syntax](wip) to indicate which part of the data stream to target in the search operation. Appending the `::failures` suffix to the name of the data stream indicates that the operation should be performed against that data stream's failure store instead of its regular backing indices.
+To indicate that the search should be performed on failure store data, use the [index component selector syntax](failure-store#wip) to indicate which part of the data stream to target in the search operation. Appending the `::failures` suffix to the name of the data stream indicates that the operation should be performed against that data stream's failure store instead of its regular backing indices.
 
 :::::{tab-set}
 
@@ -409,7 +409,7 @@ Failure documents have a uniform structure that is handled internally by {{es}}.
     :   (`keyword`) The index that the document was being written to when it failed.
 
     `document.source`
-    :   (unmapped object) The body of the document. This field is unmapped and unindexed to ensure failures are indexed reliably. If you need to include fields from the document source in your queries, use [runtime fields](wip) on the search request.
+    :   (unmapped object) The body of the document. This field is unmapped and unindexed to ensure failures are indexed reliably. If you need to include fields from the document source in your queries, use [runtime fields](failure-store#wip) on the search request.
 
 `error`
 :   (`object`) Information about the failure that prevented this document from being indexed.
@@ -430,7 +430,7 @@ Failure documents have a uniform structure that is handled internally by {{es}}.
     :   (`keyword`, optional array) If the failure occurred in an ingest pipeline, this will contain the list of pipelines that the document had visited up until the failure.
 
     `error.processor_tag`
-    :   (`keyword`, optional) If the failure occurred in an ingest processor that is annotated with a [tag](wip), the tag contents will be present here.
+    :   (`keyword`, optional) If the failure occurred in an ingest processor that is annotated with a [tag](failure-store#wip), the tag contents will be present here.
 
     `error.processor_type`
     :   (`keyword`, optional) If the failure occurred in an ingest processor, this will contain the processor type. (e.g. `script`, `append`, `enrich`, etc.)
@@ -442,7 +442,7 @@ Failure data can accumulate in a data stream over time. To help manage this accu
 
 ### Failure store rollover [manage-failure-store-rollover]
 
-A data stream treats its failure store much like a secondary set of [backing indices](wip). Multiple dedicated hidden indices serve search requests for the failure store, while one index acts as the current write index. You can use the [rollover](wip) API to rollover the failure store. Much like the regular indices in a data stream, a new write index will be created in the failure store to accept new failure documents.
+A data stream treats its failure store much like a secondary set of [backing indices](failure-store#wip). Multiple dedicated hidden indices serve search requests for the failure store, while one index acts as the current write index. You can use the [rollover](failure-store#wip) API to rollover the failure store. Much like the regular indices in a data stream, a new write index will be created in the failure store to accept new failure documents.
 
 ```console
 POST my-datastream::failures/_rollover
@@ -463,7 +463,7 @@ POST my-datastream::failures/_rollover
 
 ### Failure store lifecycle [manage-failure-store-lifecycle]
 
-Failure stores have their retention managed using an internal [data stream lifecycle](wip). A thirty day (30d) retention is applied to failure store data. You can view the active lifecycle for a failure store index by calling the [get data stream API](wip):
+Failure stores have their retention managed using an internal [data stream lifecycle](failure-store#wip). A thirty day (30d) retention is applied to failure store data. You can view the active lifecycle for a failure store index by calling the [get data stream API](failure-store#wip):
 
 ```console
 GET _data_stream/my-datastream
@@ -526,7 +526,7 @@ GET _data_stream/my-datastream
 4. The retention is currently determined by the default.  
 
 :::{note}
-The default retention respects any maximum retention values. If [maximum retention](wip) is configured lower than thirty days then the maximum retention will be used as the default value.
+The default retention respects any maximum retention values. If [maximum retention](failure-store#wip) is configured lower than thirty days then the maximum retention will be used as the default value.
 :::
 
 You can update the default retention period for failure stores in your deployment by updating the `data_streams.lifecycle.retention.failures_default` cluster setting. Data streams that have no retention configured on their failure stores will use this value to determine their retention period.
@@ -540,7 +540,7 @@ PUT _cluster/settings
 }
 ```
 
-You can also specify the failure store retention period for a data stream on its data stream options. These can be specified via the index template for new data streams, or via the [put data stream options](wip) API for existing data streams.
+You can also specify the failure store retention period for a data stream on its data stream options. These can be specified via the index template for new data streams, or via the [put data stream options](failure-store#wip) API for existing data streams.
 
 ```console
 PUT _data_stream/my-datastream/_options
@@ -558,7 +558,7 @@ PUT _data_stream/my-datastream/_options
 
 ### Add and remove from failure store [manage-failure-store-indices]
 
-Failure stores support adding and removing indices from them using the [modify data stream](wip) API.
+Failure stores support adding and removing indices from them using the [modify data stream](failure-store#wip) API.
 
 ```console
 POST _data_stream/_modify
@@ -607,3 +607,5 @@ TBD
 TBD
 
 # WIP [wip]
+
+Placeholder link
