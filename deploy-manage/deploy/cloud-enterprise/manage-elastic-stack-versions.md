@@ -33,7 +33,7 @@ The following are the most recently released {{stack}} packs for version 9.x, 8.
 
 $$$ece-elastic-stack-stackpacks-recent$$$
 
-| Required downloads | Minimum required ECE version |
+| Stack pack download link | Minimum required ECE version |
 | --- | --- |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.1](https://download.elastic.co/cloud-enterprise/versions/9.0.1.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.1](https://download.elastic.co/cloud-enterprise/versions/8.18.1.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
@@ -46,7 +46,7 @@ $$$ece-elastic-stack-stackpacks-recent$$$
 Following is the full list of available packs containing {{stack}} versions. Note that Enterprise Search was introduced with ECE 2.6.0 and requires that version or higher.
 
 ::::{dropdown} Expand to view the full list
-| Required downloads | Minimum required ECE version |
+| Stack pack download link | Minimum required ECE version |
 | --- | --- |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.1](https://download.elastic.co/cloud-enterprise/versions/9.0.1.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.0](https://download.elastic.co/cloud-enterprise/versions/9.0.0.zip) | ECE 4.0.0 |
