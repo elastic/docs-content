@@ -29,7 +29,7 @@ This guide takes you through these steps:
 To get started, you need:
 
 * A local install of the [Helm](https://helm.sh/) {{k8s}} package manager.
-* An [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) hosted {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server.md) component included.
+* An [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) hosted {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server) component included.
 * An active {{k8s}} cluster.
 
 ## Installation overview
