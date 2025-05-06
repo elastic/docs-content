@@ -8,7 +8,7 @@ mapped_pages:
 
 # Generating alerts for anomaly detection jobs [ml-configuring-alerts]
 
-This guide explains how to create alerts that notify you automatically when an anomaly is detected in a [machine learning job]([{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md)), or when issues occur that affect job performance.
+This guide explains how to create alerts that notify you automatically when an anomaly is detected in a [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md), or when issues occur that affect job performance.
 
 {{kib}}'s {{alert-features}} support two types of {{ml}} rules, which run scheduled checks on your {{anomaly-jobs}}:
 
@@ -17,7 +17,10 @@ This guide explains how to create alerts that notify you automatically when an a
 
 [{{anomaly-jobs-cap}} health](#creating-anomaly-jobs-health-rules)
 :   Monitors the operational status of a job and alerts you if issues occur (such as a stopped datafeed or memory limit errors). 
-    Use this rule type when you’ve already created anomaly detection rules and want to ensure those jobs continue to run reliably.
+    
+:::{tip}
+If you have created rules for specific {{anomaly-jobs}} and you want to monitor whether these jobs work as expected, {{anomaly-jobs}} health rules are ideal for this purpose.
+:::
 
 If the conditions of a rule are met, an alert is created, and any associated actions (such as sending an email or Slack message) are triggered. For example, you can configure a rule that checks a job every 15 minutes for anomalies with a high score and sends a notification when one is found.
 
