@@ -16,6 +16,16 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.0.1 [fleet-elastic-agent-9.0.1-breaking-changes]
+
+::::{dropdown} Disabled the `process` scraper of the `hostmetrics` receiver in the Elastic Distribution of OTel Collector
+
+**Impact**<br>
+This scraper collects metrics for all available processes of a host without an easy way to limit this to only report top N process for example. This results in quite big amount of timeseries. Since this is not quite critical for any of the available UIs or dashboards we decide to disable it temporarily until we find a better solution. Users that specifically need these metrics can also enable it back manually.
+
+For more information, check [#198434]({{agent-pull}}7894).
+::::
+
 ## 9.0.0 [fleet-elastic-agent-900-breaking-changes]
 
 ::::{dropdown} Removed deprecated epm Fleet APIs

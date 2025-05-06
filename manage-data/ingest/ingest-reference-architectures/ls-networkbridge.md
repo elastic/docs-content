@@ -23,15 +23,15 @@ Example
 
 Info on configuring {{agent}}:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
 * [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 Info on {{ls}} and {{ls}} plugins:
 
-* [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
+* [{{ls}} Reference](logstash://reference/index.md)
 * [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

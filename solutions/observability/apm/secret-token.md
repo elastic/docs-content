@@ -76,5 +76,5 @@ In addition to setting the secret token, ensure the configured server URL uses `
 * **.NET agent**: [`ServerUrl`](apm-agent-dotnet://reference/config-reporter.md#config-server-url)
 * **Node.js agent**: [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-url)
 * **PHP agent**: [`server_url`](apm-agent-php://reference/configuration-reference.md#config-server-url)
-* **Python agent**: [`server_url`](https://www.elastic.co/guide/en/apm/agent/python/current/)
+* **Python agent**: [`server_url`](apm-agent-python://reference/index.md)
 * **Ruby agent**: [`server_url`](apm-agent-ruby://reference/configuration.md#config-server-url)

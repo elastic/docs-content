@@ -126,7 +126,7 @@ Use this option to set the Kafka topic for each {{agent}} event.
 **Default topic** $$$kafka-output-topics-default$$$
 :   Set a default topic to use for events sent by {{agent}} to the Kafka output.
 
-    You can set a static topic, for example `elastic-agent`, or you can choose to set a topic dynamically based on an [Elastic Common Scheme (ECS)][Elastic Common Schema (ECS)](ecs://reference/index.md)) field. Available fields include:
+    You can set a static topic, for example `elastic-agent`, or you can choose to set a topic dynamically based on an [Elastic Common Schema (ECS)](ecs://reference/index.md) field. Available fields include:
 
     * `data_stream_type`
     * `data_stream.dataset`

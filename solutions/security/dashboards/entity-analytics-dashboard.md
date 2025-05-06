@@ -11,7 +11,7 @@ applies_to:
 # Entity Analytics dashboard
 
 
-The Entity Analytics dashboard provides a centralized view of emerging insider threats - including host risk, user risk, and anomalies from within your network. Use it to triage, investigate, and respond to these emerging threats.
+The Entity Analytics dashboard provides a centralized view of emerging insider threats—including host risk, user risk, service risk, and anomalies from within your network. Use it to triage, investigate, and respond to these emerging threats.
 
 ::::{admonition} Requirements
 In {{stack}}, a [Platinum subscription](https://www.elastic.co/pricing/) or higher is required.
