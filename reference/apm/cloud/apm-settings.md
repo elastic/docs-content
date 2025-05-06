@@ -51,6 +51,10 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apm/configure-apm-server.md).
 ::::
 
+### Version 9.0+ [ec_version_9_0]
+
+`apm-server.sampling.tail.ttl`
+:   Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases the required storage space.
 
 ### Version 8.0+ [ec_version_8_0_3]
 
@@ -120,9 +124,6 @@ The following `apm-server.auth.anonymous.*` settings can be configured to restri
 
 `apm-server.sampling.tail.interval`
 :   Synchronization interval for multiple APM Servers. Should be in the order of tens of seconds or low minutes.
-
-`apm-server.sampling.tail.ttl`
-:   FIXME
 
 `logging.level`
 :   Sets the minimum log level. The default log level is error. Available log levels are: error, warning, info, or debug.

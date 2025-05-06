@@ -73,7 +73,7 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 
 ### TTL [sampling-tail-ttl-ref]
 
-FIXME
+Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases the required storage space.  Default: `30m` (30 minutes). (duration)
 
 |     |                     |
 | --- |---------------------|
