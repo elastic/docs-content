@@ -88,7 +88,7 @@ shasum -a 512 kibana-{{stack-version}}-amd64.deb <1>
 sudo dpkg -i kibana-{{stack-version}}-amd64.deb
 ```
 
-1. 	Compare the SHA produced by shasum with the [published SHA](https://artifacts.elastic.co/downloads/kibana/kibana-9.0.0-amd64.deb.sha512).
+1. 	Compare the SHA produced by shasum with the [published SHA](https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-amd64.deb.sha512).
 
 % version manually specified in the link above
 

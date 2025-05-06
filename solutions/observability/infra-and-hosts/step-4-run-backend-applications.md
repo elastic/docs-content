@@ -500,15 +500,15 @@ docker logs pf-elastic-symbolizer
     For x86_64
 
     ```shell subs=true
-    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version}}-linux-x86_64.tar.gz" | tar xzf -
-    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version}}-linux-x86_64.tar.gz" | tar xzf -
+    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{stack-version}}-linux-x86_64.tar.gz" | tar xzf -
+    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{stack-version}}-linux-x86_64.tar.gz" | tar xzf -
     ```
 
     For ARM64
 
     ```shell subs=true
-    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version}}-linux-arm64.tar.gz" | tar xzf -
-    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version}}-linux-arm64.tar.gz" | tar xzf -
+    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{stack-version}}-linux-arm64.tar.gz" | tar xzf -
+    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{stack-version}}-linux-arm64.tar.gz" | tar xzf -
     ```
 
 2. Copy the `pf-elastic-collector` and `pf-elastic-symbolizer` binaries to a directory in the machine’s `PATH`.

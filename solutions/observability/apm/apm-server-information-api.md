@@ -51,7 +51,7 @@ curl --verbose -X GET http://127.0.0.1:8200
 
 Example APM Server information request with GET, with a [Secret token](/solutions/observability/apm/secret-token.md):
 
-```sh
+```sh subs=true
 curl -X GET http://127.0.0.1:8200/ \
   -H "Authorization: Bearer secret_token"
 
@@ -59,7 +59,7 @@ curl -X GET http://127.0.0.1:8200/ \
   "build_date": "2021-12-18T19:59:06Z",
   "build_sha": "24fe620eeff5a19e2133c940c7e5ce1ceddb1445",
   "publish_ready": true,
-  "version": "9.0.0"
+  "version": "{{stack-version}}"
 }
 ```
 

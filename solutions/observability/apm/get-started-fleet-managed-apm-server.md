@@ -156,8 +156,8 @@ See [Configure Kibana](kibana://reference/configuration-reference/general-settin
 Option 2: Use the {{fleet}} API
 :   Use the {{fleet}} API to install the APM integration. To be successful, this needs to be run against the {{kib}} API, not the {{es}} API.
 
-```yaml
-POST kbn:/api/fleet/epm/packages/apm/9.0.0
+```yaml subs=true
+POST kbn:/api/fleet/epm/packages/apm/{{stack-version}}
 { "force": true }
 ```
 

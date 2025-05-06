@@ -36,32 +36,32 @@ $$$apm-deb$$$
 **deb:**
 
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-amd64.deb
-sudo dpkg -i apm-server-{{apm_server_version}}-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{stack-version}}-amd64.deb
+sudo dpkg -i apm-server-{{stack-version}}-amd64.deb
 ```
 
 $$$apm-rpm$$$
 **RPM:**
 
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-x86_64.rpm
-sudo rpm -vi apm-server-{{apm_server_version}}-x86_64.rpm
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{stack-version}}-x86_64.rpm
+sudo rpm -vi apm-server-{{stack-version}}-x86_64.rpm
 ```
 
 $$$apm-linux$$$
 **Other Linux:**
 
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
-tar xzvf apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf apm-server-{{stack-version}}-linux-x86_64.tar.gz
 ```
 
 $$$apm-mac$$$
 **Mac:**
 
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
-tar xzvf apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf apm-server-{{stack-version}}-darwin-x86_64.tar.gz
 ```
 
 $$$apm-installing-on-windows$$$
@@ -775,10 +775,10 @@ To add the apm-server repository for APT:
     sudo apt-get install apt-transport-https
     ```
 
-1. Save the repository definition to `/etc/apt/sources.list.d/elastic-9.0.0.list`:
+1. Save the repository definition to `/etc/apt/sources.list.d/elastic-{{stack-version}}.list`:
 
-    ```shell
-    echo "deb https://artifacts.elastic.co/packages/9.0.0-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-9.0.0-prerelease.list
+    ```shell subs=true
+    echo "deb https://artifacts.elastic.co/packages/{{stack-version}}-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-{{stack-version}}-prerelease.list
     ```
 
     :::{warning}
@@ -815,10 +815,10 @@ To add the apm-server repository for YUM:
 
 1. Create a file with a .repo extension (for example, elastic.repo) in your /etc/yum.repos.d/ directory and add the following lines:
 
-    ```shell
-    [elastic-9.0.0]
-    name=Elastic repository for 9.0.0 packages
-    baseurl=https://artifacts.elastic.co/packages/9.0.0/yum
+    ```shell subs=true
+    [elastic-{{stack-version}}]
+    name=Elastic repository for {{stack-version}} packages
+    baseurl=https://artifacts.elastic.co/packages/{{stack-version}}/yum
     gpgcheck=1
     gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
     enabled=1
@@ -853,27 +853,27 @@ Obtaining APM Server for Docker is as simple as issuing a `docker pull` command 
 
 1. Pull the Docker image:
 
-    ```shell
-    docker pull docker.elastic.co/apm/apm-server:9.0.0
+    ```shell subs=true
+    docker pull docker.elastic.co/apm/apm-server:{{stack-version}}
     ```
 
     Alternately, you can use the hardened [Wolfi](https://wolfi.dev/) image:
 
-    ```shell
-    docker pull docker.elastic.co/apm/apm-server-wolfi:9.0.0
+    ```shell subs=true
+    docker pull docker.elastic.co/apm/apm-server-wolfi:{{stack-version}}
     ```
 
 1. Verify the Docker image:
 
-    ```shell
+    ```shell subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/apm/apm-server:9.0.0
+    cosign verify --key cosign.pub docker.elastic.co/apm/apm-server:{{stack-version}}
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
-    ```shell
-    Verification for docker.elastic.co/apm/apm-server:9.0.0 --
+    ```shell subs=true
+    Verification for docker.elastic.co/apm/apm-server:{{stack-version}} --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -896,13 +896,13 @@ curl -L -O https://raw.githubusercontent.com/elastic/apm-server/master/apm-serve
 
 One way to configure APM Server on Docker is to provide `apm-server.docker.yml` via a volume mount. With `docker run`, the volume mount can be specified like this.
 
-```sh
+```sh subs=true
 docker run -d \
   -p 8200:8200 \
   --name=apm-server \
   --user=apm-server \
   --volume="$(pwd)/apm-server.docker.yml:/usr/share/apm-server/apm-server.yml:ro" \
-  docker.elastic.co/apm/apm-server:9.0.0 \
+  docker.elastic.co/apm/apm-server:{{stack-version}} \
   --strict.perms=false -e \
   -E output.elasticsearch.hosts=["elasticsearch:9200"] <1> <2>
 ```
@@ -918,7 +918,7 @@ The `apm-server.docker.yml` downloaded earlier should be customized for your env
 
 It’s possible to embed your APM Server configuration in a custom image. Here is an example Dockerfile to achieve this:
 
-```dockerfile
-FROM docker.elastic.co/apm/apm-server:9.0.0
+```dockerfile subs=true
+FROM docker.elastic.co/apm/apm-server:{{stack-version}}
 COPY --chmod=0644 --chown=1000:1000 apm-server.yml /usr/share/apm-server/apm-server.yml
 ```

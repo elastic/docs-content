@@ -51,8 +51,8 @@ You can find {{agent}} Docker images [here](https://www.docker.elastic.co/r/elas
 
 Download the manifest file:
 
-```sh
-curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/v9.0.0/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml
+```sh subs=true
+curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/v{{stack-version}}/deploy/kubernetes/elastic-agent-standalone-kubernetes.yaml
 ```
 
 ::::{note}
