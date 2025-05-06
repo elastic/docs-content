@@ -108,7 +108,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 1. Install {{es}} as a service. The name of the service and the value of `ES_JAVA_HOME` will be made available during install:
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
+    .\bin\elasticsearch-service.bat install
     ```
 
     Response:
@@ -127,7 +127,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 2. Start {{es}} as a service. When {{es}} starts, authentication is enabled by default:
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>bin\elasticsearch-service.bat start
+    .\bin\elasticsearch-service.bat start
     ```
 
     ::::{note}
@@ -137,16 +137,12 @@ You can install {{es}} as a service that runs in the background or starts automa
 3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>\bin\elasticsearch-reset-password -u elastic
+    .\bin\elasticsearch-reset-password -u elastic
     ```
 
 #### Manage {{es}} as a service on Windows [windows-service-manage]
 
-Run the `elasticsearch-service.bat` script in the `bin\` folder to install, remove, manage, or configure the service and potentially start and stop the service from the command line.
-
-```sh subs=true
-C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat
-```
+Use the `elasticsearch-service.bat` script located in the `bin\` folder to install, remove, manage, start, or stop the service from the command line. Starting and stopping are only available if the service is already installed.
 
 Usage:
 ```

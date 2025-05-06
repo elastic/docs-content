@@ -18,7 +18,6 @@ This section describes common problems you might encounter when using APM Server
 * [Common SSL-related problems](#apm-common-ssl-problems)
 * [I/O Timeout](#apm-io-timeout)
 * [Field limit exceeded](#apm-field-limit-exceeded)
-* [Tail-based sampling causing high system memory usage and high disk IO](#apm-tail-based-sampling-memory-disk-io)
 
 **Applications UI**:
 
@@ -178,14 +177,6 @@ In the agent logs, you won’t see a sign of failures as the APM server asynchro
 ```txt
 {\"type\":\"illegal_argument_exception\",\"reason\":\"Limit of total fields [1000] in [INDEX_NAME] has been exceeded\"}
 ```
-
-
-## Tail-based sampling causing high system memory usage and high disk IO [apm-tail-based-sampling-memory-disk-io]
-```yaml {applies_to}
-stack: all
-```
-
-Tail-based sampling requires minimal memory to run, and there should not be a noticeable increase in RSS memory usage. However, since tail-based sampling writes data to disk, it is possible to see a significant increase in OS page cache memory usage due to disk IO. If you see a drop in throughput and excessive disk activity after enabling tail-based sampling, ensure that there is enough memory headroom in the system for OS page cache to perform disk IO efficiently.
 
 
 ## Too many unique transaction names [troubleshooting-too-many-transactions]

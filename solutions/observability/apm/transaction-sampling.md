@@ -272,7 +272,7 @@ Trace events are matched to policies in the order specified. Each policy list mu
 Note that from version `9.0.0` APM Server has an unlimited storage limit, but will stop writing when the disk where the database resides reaches 80% usage. Due to how the limit is calculated and enforced, the actual disk space may still grow slightly over this disk usage based limit, or any configured storage limit.
 ::::
 
-### Example configuration [_example_configuration]
+### Example configuration 1 [_example_configuration_1]
 
 This example defines three tail-based sampling polices:
 
@@ -289,6 +289,50 @@ This example defines three tail-based sampling polices:
 1. Samples 100% of traces in `production` with the trace name `"GET /very_important_route"`
 2. Samples 1% of traces in `production` with the trace name `"GET /not_important_route"`
 3. Default policy to sample all remaining traces at 10%, e.g. traces in a different environment, like `dev`, or traces with any other name
+
+### Example configuration 2 [_example_configuration_2]
+
+When a trace originates in Service A and then calls Service B, the sampling rate is determined by the service where the trace starts:
+
+```yaml
+- sample_rate: 0.3
+  service.name: B
+- sample_rate: 0.5
+  service.name: A
+- sample_rate: 0.1  # Fallback: always set a default
+```
+
+- Because Service A is the root of the trace, its policy (0.5) is applied while Service B's policy (0.3) is ignored.
+- If instead the trace began in Service B (and then passed to Service A), the policy for Service B would apply.
+
+:::{note}
+Tail‑based sampling rules are evaluated at the *trace level* based on which service initiated the distributed trace, not the service of the transaction or span.
+:::
+
+### Example configuration 3 [_example_configuration_3]
+
+Policies are evaluated **in order** and the first one that meets all match conditions is applied. That means, in practice, order policies from most specific (narrow matchers) to most general, ending with a catch-all (fallback).
+
+```yaml
+# Example A: prioritize service origin, then failures
+- sample_rate: 0.2
+  service.name: A
+- sample_rate: 0.5
+  trace.outcome: failure
+- sample_rate: 0.1  # catch-all
+```
+
+```yaml
+# Example B: prioritize failures, then a specific service
+- sample_rate: 0.2
+  trace.outcome: failure
+- sample_rate: 0.5
+  service.name: A
+- sample_rate: 0.1
+```
+
+- In Example A, traces from Service A are sampled at 20%, and all other failed traces (regardless of service) are sampled at 50%.
+- In Example B, every failed trace is sampled at 20%, including those originating from Service A.
 
 ### Configuration reference [_configuration_reference]
 
