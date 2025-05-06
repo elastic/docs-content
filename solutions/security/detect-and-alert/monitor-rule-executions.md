@@ -39,6 +39,12 @@ For detailed information on a rule, the alerts it generated, and associated erro
 
 For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The time filter on the left allows you to select a time range for viewing gap data. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps within the selected time range. The **Only rules with gaps** filter on the right lets you only display rules with unfilled or partially filled gaps.
 
+::::{note}
+In {{serverless-short}}, the panel also displays the following:
+- **Total execution success**: The total success rate of all rule executions that occurred within the selected time range. 
+- **Last execution status summary**: The number of sucessful, failed, and warning statuses reported for the last execution of each rule.
+::::
+
 Within the table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select in the panel above the table. If a rule has no gaps, the columns display a dash (`––`).
 
 ::::{tip}
