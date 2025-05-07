@@ -34,10 +34,10 @@ To get started, you need:
 
 ## Installation overview
 
-The default installation shown in this example deploys the following components to monitor your Kubernetes cluster:
+The installation and configuration steps shown in this example deploys the following components to monitor your Kubernetes cluster:
 
 * {{agent}}, deployed as a `DaemonSet`, connected to {{fleet}}, and configured to collect:
-    * Host level metrics and logs through the [System Integration](integration-docs://reference/system/index.md).
+    * Host level metrics and logs through the [System Integration](integration-docs://reference/system/index.md). This enables the monitoring of Kubernetes nodes at OS level.
     * Kubernetes node and cluster-level metrics and logs through the [Kubernetes Integration](integration-docs://reference/kubernetes/index.md). For cluster-level metrics collection, one of the agents will act as a [leader](./kubernetes_leaderelection-provider.md).
 * A default installation of `kube-state-metrics` (KSM), configured as a dependency of the chart. KSM is required by the Kubernetes integration to collect cluster-level metrics.
 
@@ -84,6 +84,7 @@ Before installing, add the Elastic Helm repository and verify the available vers
     ```sh
     helm install demo elastic/elastic-agent \
     --set agent.fleet.enabled=true \
+    --set system.enabled=true \
     --set agent.fleet.url=<Fleet-URL> \ # Substitute Fleet-URL with the URL that you copied earlier
     --set agent.fleet.token=<Fleet-token> \ # Substitute Fleet-token with the enrollment token that you copied earlier.
     --set agent.fleet.preset=perNode
@@ -95,9 +96,21 @@ Before installing, add the Elastic Helm repository and verify the available vers
     * `demo`: The name for this specific installation of the chart, known as the **release name**. You can choose any name you like.
     * `elastic/elastic-agent`: The name of the chart to install, using the format `<repository>/<chart-name>`.
     * `--set agent.fleet.enabled=true`: Enables {{fleet}}-managed {{agent}}, which is disabled (`false`) by default.
+    * `--set system.enabled=true`: Adds the required volumes and mounts to enable host monitoring through the System integration.
     * `--set agent.fleet.url=<Fleet-URL>`: Specifies the address where {{agent}} connects to {{fleet}} Server in your {{ecloud}} deployment.
     * `--set agent.fleet.token=<Fleet-token>`: Sets the enrollment token that {{agent}} uses to authenticate with {{fleet}} Server.
     * `--set agent.fleet.preset=perNode`: Runs the agent as a `DaemonSet`, to collect node-level metrics and logs. Refer to [](install-on-kubernetes-using-helm.md) for more details and use cases for this parameter.
+
+    After your updates, the command should be similar to:
+
+    ```sh
+    helm install demo elastic/elastic-agent \
+    --set agent.fleet.enabled=true \
+    --set system.enabled=true \
+    --set agent.fleet.url=https://256575858845283fxxxxxxxd5265d2b4.fleet.us-central1.gcp.foundit.no:443 \
+    --set agent.fleet.token=eSVvFDUvSUNPFldFdhhZNFwvS5xxxxxxxxxxxxFEWB1eFF1YedUQ1NWFXwr== \
+    --set agent.fleet.preset=perNode
+    ```
 
     ::::{tip}
     For a full list of all available values settings and descriptions, refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent) and default [values.yaml](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml).
@@ -111,16 +124,6 @@ Before installing, add the Elastic Helm repository and verify the available vers
     * `--set kube-state-metrics.enabled=false`: In case you already have KSM installed in your cluster, and you don't want to install a second instance.
     * `--set kube-state-metrics.fullnameOverride=ksm`: If you want to deploy KSM with a different release name (it defaults to `kube-state-metrics`). This can be useful if you have already a default installation of KSM and you want a second one.
     ::::
-
-8. After your updates, the command should be similar to:
-
-    ```sh
-    helm install demo elastic/elastic-agent \
-    --set agent.fleet.enabled=true \
-    --set agent.fleet.url=https://256575858845283fxxxxxxxd5265d2b4.fleet.us-central1.gcp.foundit.no:443 \
-    --set agent.fleet.token=eSVvFDUvSUNPFldFdhhZNFwvS5xxxxxxxxxxxxFEWB1eFF1YedUQ1NWFXwr== \
-    --set agent.fleet.preset=perNode
-    ```
 
 9. Run the command.
 
@@ -201,6 +204,8 @@ The uninstall should be confirmed as shown:
 release "demo" uninstalled
 ```
 
-As a reminder, for full details about using the {{agent}} Helm chart refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent).
+## Next steps
+
+For full details about using the {{agent}} Helm chart refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent).
 
 Refer also to the [examples](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples) section of the GitHub repository for advanced use cases, such as integrating {{agent}}s with [KSM autosharding](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-ksm-sharding), or configuring [mutual TLS authentication](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-certificates) between {{agent}}s and the {{fleet}} Server.
