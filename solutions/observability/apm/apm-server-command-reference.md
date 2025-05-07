@@ -174,7 +174,7 @@ Also see [Global flags](#apm-global-flags).
 
 ```sh subs=true
 apm-server export config
-apm-server export template --es.version {{version}} --index myindexname
+apm-server export template --es.version {{stack-version}} --index myindexname
 ```
 
 ## `help` command [apm-help-command]

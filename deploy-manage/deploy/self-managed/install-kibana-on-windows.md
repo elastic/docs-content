@@ -20,7 +20,7 @@ applies_to:
 
 ## Step 1: Download and install the `.zip` package [install-windows]
 
-Download the .zip windows archive for {{kib}} {{stack-version}} from [https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/kibana/kibana-9.0.0-windows-x86_64.zip)
+Download the .zip windows archive for {{kib}} {{stack-version}} from [https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-windows-x86_64.zip)
 
 Unzip it with your favorite unzip tool. This will create a folder called kibana-{{stack-version}}-windows-x86_64, which we will refer to as `$KIBANA_HOME`. In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
 
