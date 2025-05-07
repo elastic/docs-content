@@ -36,7 +36,7 @@ To get started, you need:
 
 The installation and configuration steps shown in this example deploys the following components to monitor your Kubernetes cluster:
 
-* {{agent}}, deployed as a `DaemonSet`, connected to {{fleet}}, and configured to collect:
+* {{agent}}, deployed as a `DaemonSet`, connected to {{fleet}}, and configured through a {{fleet}} policy to collect:
     * Host level metrics and logs through the [System Integration](integration-docs://reference/system/index.md). This enables the monitoring of Kubernetes nodes at OS level.
     * Kubernetes node and cluster-level metrics and logs through the [Kubernetes Integration](integration-docs://reference/kubernetes/index.md). For cluster-level metrics collection, one of the agents will act as a [leader](./kubernetes_leaderelection-provider.md).
 * A default installation of `kube-state-metrics` (KSM), configured as a dependency of the chart. KSM is required by the Kubernetes integration to collect cluster-level metrics.
@@ -48,28 +48,8 @@ By default, all resources are installed in the namespace defined by your current
 
 ## Add the Elastic Helm repository [preparations]
 
-Before installing, add the Elastic Helm repository and verify the available versions of the `elastic-agent` chart. If the repository is already configured, run `helm repo update` to ensure you have the latest package information.
-
-1. Set up Helm repository:
-
-    ```sh
-    helm repo add elastic https://helm.elastic.co/
-    helm repo update
-    ```
-
-2. Verify chart versions:
-
-    ```sh
-    helm search repo elastic-agent --versions
-    ```
-
-    The previous command returns something similar to:
-
-    ```sh
-    NAME                 	CHART VERSION	APP VERSION	DESCRIPTION
-    elastic/elastic-agent	9.0.0        	9.0.0      	Elastic-Agent Helm Chart
-    elastic/elastic-agent	8.18.0       	8.18.0     	Elastic-Agent Helm Chart
-    ```
+:::{include} _snippets/agent_add_helm_repository.md
+:::
 
 ## Install {{agent}} [agent-fleet-managed-helm-example-install-agent]
 
