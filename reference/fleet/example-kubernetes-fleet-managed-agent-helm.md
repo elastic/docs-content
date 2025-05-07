@@ -19,7 +19,7 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
 
 This guide takes you through these steps:
 
-* [Set up Helm repository](#preparations)
+* [Add the Elastic Helm repository](#preparations)
 * [Install {{agent}}](#agent-fleet-managed-helm-example-install-agent)
 * [Install the Kubernetes integration](#agent-fleet-managed-helm-example-install-integration)
 * [Tidy up](#agent-fleet-managed-helm-example-tidy-up)
@@ -29,7 +29,7 @@ This guide takes you through these steps:
 To get started, you need:
 
 * A local install of the [Helm](https://helm.sh/) {{k8s}} package manager.
-* An [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) hosted {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server) component included.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server) component included.
 * An active {{k8s}} cluster.
 
 ## Installation overview
@@ -46,7 +46,7 @@ By default, all resources are installed in the namespace defined by your current
 % we will uncomment the next line when the use cases are documented in the landing page :)
 % For other architectures and use cases, refer to [Advanced use cases](./install-on-kubernetes-using-helm.md#advanced-use-cases).
 
-## Preparations [preparations]
+## Add the Elastic Helm repository [preparations]
 
 Before installing, add the Elastic Helm repository and verify the available versions of the `elastic-agent` chart. If the repository is already configured, run `helm repo update` to ensure you have the latest package information.
 
