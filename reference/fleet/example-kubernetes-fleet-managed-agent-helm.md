@@ -72,7 +72,7 @@ By default, all resources are installed in the namespace defined by your current
 
     Note that the command has these properties:
 
-    * `helm install`: Runs the Helm CLI install tool. Use `helm upgrade` to modify or update an existing release.
+    * `helm install`: Runs the Helm CLI install tool. You can use `helm upgrade` to modify or update an installed release.
     * `demo`: The name for this specific installation of the chart, known as the **release name**. You can choose any name you like.
     * `elastic/elastic-agent`: The name of the chart to install, using the format `<repository>/<chart-name>`.
     * `--set agent.fleet.enabled=true`: Enables {{fleet}}-managed {{agent}}, which is disabled (`false`) by default.
@@ -105,7 +105,7 @@ By default, all resources are installed in the namespace defined by your current
     * `--set kube-state-metrics.fullnameOverride=ksm`: If you want to deploy KSM with a different release name (it defaults to `kube-state-metrics`). This can be useful if you have already a default installation of KSM and you want a second one.
     ::::
 
-9. Run the command.
+8. Run the command.
 
     The command output should confirm that {{agent}} has been installed:
 
@@ -116,23 +116,23 @@ By default, all resources are installed in the namespace defined by your current
     ...
     ```
 
-10. Run the `kubectl get pods -n default` command to confirm that the {{agent}} pod is running:
+9. Run the `kubectl get pods -n default` command to confirm that the {{agent}} pod is running:
 
     ```sh
     NAME                       READY   STATUS    RESTARTS      AGE
     agent-pernode-demo-86mst   1/1     Running   0          12s
     ```
 
-11. In the **Add agent** flyout, wait a minute or so for confirmation that {{agent}} has successfully enrolled with {{fleet}} and that data is flowing:
+10. In the **Add agent** flyout, wait a minute or so for confirmation that {{agent}} has successfully enrolled with {{fleet}} and that data is flowing:
 
     :::{image} images/helm-example-nodes-enrollment-confirmation.png
     :alt: Screen capture of Add Agent UI showing that the agent has enrolled in Fleet
     :screenshot:
     :::
 
-12. In {{fleet}}, open the **Agents** tab and see that an **Agent-pernode-demo-#** agent is running.
-13. Select the agent to view its details.
-14. On the **Agent details** tab, on the **Integrations** pane, expand `system-1` to confirm that logs and metrics are incoming. You can click either the `Logs` or `Metrics` link to view details.
+11. In {{fleet}}, open the **Agents** tab and see that an **Agent-pernode-demo-#** agent is running.
+12. Select the agent to view its details.
+13. On the **Agent details** tab, on the **Integrations** pane, expand `system-1` to confirm that logs and metrics are incoming. You can click either the `Logs` or `Metrics` link to view details.
 
     :::{image} images/helm-example-nodes-logs-and-metrics.png
     :alt: Screen capture of the Logs and Metrics view on the Integrations pane
