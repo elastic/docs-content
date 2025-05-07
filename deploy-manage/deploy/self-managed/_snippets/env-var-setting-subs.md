@@ -1,4 +1,4 @@
-Environment variables referenced with the `${...}` notation within the configuration file will be replaced with the value of the environment variable. For example:
+Environment variables referenced with the `${...}` notation within the `elasticsearch.yml` configuration file will be replaced with the value of the environment variable. For example:
 
 ```yaml
 node.name:    ${HOSTNAME}
