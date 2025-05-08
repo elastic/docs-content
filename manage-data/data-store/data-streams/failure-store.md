@@ -101,7 +101,7 @@ The failure store is meant to ease the burden of detecting and handling failures
 
 Once a failure store is enabled for a data stream it will begin redirecting documents that fail due to common ingestion problems instead of returning errors in write operations. Clients are notified in a non-intrusive way when a document is redirected to the failure store.
 
-Each data stream's failure store is made up of a list of indices that are dedicated to storing failed documents. These indices function much like a data stream's normal backing indices: There is a write index that accepts failed documents, they can be rolled over, and are automatically cleaned up over time subject to a lifecycle policy.
+Each data stream's failure store is made up of a list of indices that are dedicated to storing failed documents. These failure indices function much like a data stream's normal backing indices: There is a write index that accepts failed documents, they can be rolled over, and are automatically cleaned up over time subject to a lifecycle policy. Failure indices are lazily created the first time they are needed to store a failed document.
 
 When a document bound for a data stream encounters a problem during its ingestion, the response is annotated with the `failure_store` field which describes how {{es}} responded to that problem. The `failure_store` field is present on both the [bulk](./failure-store.md) and [index](./failure-store.md) API responses when applicable. Clients can use this information to augment their behavior based on the response from {{es}}.
 
