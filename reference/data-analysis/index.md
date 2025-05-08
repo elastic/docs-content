@@ -3,7 +3,7 @@
 This section contains reference information for data analysis features, including:
 
 * [Supplied {{anomaly-detect}} configurations](/reference/data-analysis/machine-learning/supplied-anomaly-detection-configurations.md)
-* [Function reference](/reference/data-analysis/machine-learning/machine-learning-functions.md)
+* [Function reference for anomaly detection jobs](/reference/data-analysis/machine-learning/machine-learning-functions.md)
 * [Metrics reference](/reference/data-analysis/observability/index.md)
 * [Canvas functions](/reference/data-analysis/kibana/canvas-functions.md)
 * [Text analysis components](elasticsearch://reference/text-analysis/index.md)
