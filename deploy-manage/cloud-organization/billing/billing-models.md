@@ -71,13 +71,13 @@ Based on these four key concepts, the prepaid consumption lifecycle is as follow
 1. You purchase credits expressed in ECU, typically at a discount.
 2. You begin using {{ecloud}} resources.
 3. At every billing cycle (which takes place on the first of each month), the previous month's usage, expressed in ECU, is deducted from your ECU balance.
-4. If your ECU balance is depleted before the credit expiration date, you are invoiced for on-demand usage in arrears at list price. On-demand usage is expressed in ECU, and is converted to currency amounts for invoicing purposes.¹
+4. If your ECU balance is depleted before the credit expiration date, you are invoiced for on-demand usage in arrears at list price. On-demand usage is expressed in ECU, and is converted to currency amounts for invoicing purposes.[^1^](#footnote-1)
 5. At the end of the contract period, any credits remaining in your balance are forfeited.
-6. During the contract period, you can purchase additional credits at any time (as an add-on). This can be done with the same discount as the original purchase. Credits purchased through an add-on have the same expiration as the original purchase.²
+6. During the contract period, you can purchase additional credits at any time (as an add-on). This can be done with the same discount as the original purchase. Credits purchased through an add-on have the same expiration as the original purchase.[^2^](#footnote-2)
 
-¹ When you renew your contract or commit to a multi-year contract, any on-demand usage incurred in the years other than the last are billed with the same discount as the original purchase.
+^1^ $$$footnote-1$$$ When you renew your contract or commit to a multi-year contract, any on-demand usage incurred in the years other than the last are billed with the same discount as the original purchase.
 
-² Purchasing credits through early renewals, or through add-ons with different expiration dates will be available in the near future.
+^2^ $$$footnote-2$$$ Purchasing credits through early renewals, or through add-ons with different expiration dates will be available in the near future.
 
 ::::{note}
 Existing annual+overages customers will be able to switch to prepaid consumption when they renew or sign a new contract. Existing manual burndown customers will be migrated gradually to prepaid consumption in the near future. Exceptions apply.

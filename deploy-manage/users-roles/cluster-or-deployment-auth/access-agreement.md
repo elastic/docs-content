@@ -21,7 +21,7 @@ You need to acknowledge the access agreement only once per session, and {{kib}} 
 ::::
 
 
-Here is an example of defining an access agreement in `kibana.yml`:
+Here is an example of defining an access agreement in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.security.authc.providers:

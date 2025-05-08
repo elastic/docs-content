@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html
 applies_to:
   stack:
-  serverless:
+  serverless: unavailable
 ---
 
 # Cross-cluster search [modules-cross-cluster-search]
@@ -982,9 +982,9 @@ If `skip_unavailable` is `true`, a {{ccs}}:
 * Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [`ignore_unavailable`](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index).
 * Ignores the [`allow_partial_search_results`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-allow_partial_search_results) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
 
-You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the elasticsearch.yml config file. For example:
+You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file. For example:
 
-```
+```yml
 cluster:
     remote:
         cluster_one:
@@ -995,7 +995,7 @@ cluster:
             skip_unavailable: true
 ```
 
-Or you can set the cluster.remote settings via the [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API as shown [here](#ccs-remote-cluster-setup).
+Or you can set the `cluster.remote` settings via the [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API as shown [here](#ccs-remote-cluster-setup).
 
 When a remote cluster configured with `skip_unavailable: true` (such as `cluster_two` above) is disconnected or unavailable during a {{ccs}}, {{es}} won’t include matching documents from that cluster in the final results and the search will be considered successful (HTTP status 200 OK).
 
@@ -1114,11 +1114,12 @@ $$$ccs-version-compatibility$$$
 |     |     |
 | --- | --- |
 |  | Remote cluster version |
-| Local cluster version | 7.17 | 8.0 – 8.17 | 8.18 | 9.0 |
-| 7.17 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
-| 8.0 – 8.17 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
-| 8.18 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 9.0 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "")  | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "")  | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
+| Local cluster version | 7.17 | 8.0 – 8.16 | 8.17 | 8.18 | 9.0 |
+| 7.17 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
+| 8.0 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
+| 8.1 – 8.17 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") |
+| 8.18 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
+| 9.0 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "")  | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |  ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
 
 ::::{important}
 For the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search), the local and remote clusters must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).

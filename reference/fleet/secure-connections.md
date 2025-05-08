@@ -90,10 +90,10 @@ For the steps in this section, imagine you have the following files:
 
 |     |     |
 | --- | --- |
-| `ca.crt` | The CA certificate to use to connect to {{fleet-server}}. This is theCA used to [generate a certificate and key](#generate-fleet-server-certs)for {{fleet-server}}. |
+| `ca.crt` | The CA certificate to use to connect to {{fleet-server}}. This is the CA used to [generate a certificate and key](#generate-fleet-server-certs) for {{fleet-server}}. |
 | `fleet-server.crt` | The certificate you generated for {{fleet-server}}. |
 | `fleet-server.key` | The private key you generated for {{fleet-server}}.<br>If the `fleet-server.key` file is encrypted with a passphrase, the passphrase will need to be specified through a file. |
-| `elasticsearch-ca.crt` | The CA certificate to use to connect to {{es}}. This is the CA used to generatecerts for {{es}} (see [Prerequisites](#prereqs)).<br>Note that the CA certificate’s SHA-256 fingerprint (hash) may be used instead of the `elasticsearch-ca.crt` file for securing connections to {{es}}. |
+| `elasticsearch-ca.crt` | The CA certificate to use to connect to {{es}}. This is the CA used to generate certs for {{es}} (see [Prerequisites](#prereqs)).<br>Note that the CA certificate’s SHA-256 fingerprint (hash) may be used instead of the `elasticsearch-ca.crt` file for securing connections to {{es}}. |
 
 To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
@@ -205,13 +205,13 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
             :   CA certificate that the current {{fleet-server}} uses to connect to {{es}}.
 
             `certificate-authorities`
-            :   List of paths to PEM-encoded CA certificate files that should be trusted for the other {{agents}} to connect to this {fleet-server}
+            :   List of paths to PEM-encoded CA certificate files that should be trusted for the other {{agents}} to connect to this {{fleet-server}}
 
             `fleet-server-cert`
-            :   The path for the PEM-encoded certificate (or certificate chain) which is associated with the fleet-server-cert-key to expose this {{fleet-server}} HTTPS endpoint to the other {agents}
+            :   The path for the PEM-encoded certificate (or certificate chain) which is associated with the fleet-server-cert-key to expose this {{fleet-server}} HTTPS endpoint to the other {{agents}}
 
             `fleet-server-cert-key`
-            :   Private key to use to expose this {{fleet-server}} HTTPS endpoint to the other {agents}
+            :   Private key to use to expose this {{fleet-server}} HTTPS endpoint to the other {{agents}}
 
             `elastic-agent-cert`
             :   The certificate to use as the client certificate for {{agent}}'s connections to {{fleet-server}}.

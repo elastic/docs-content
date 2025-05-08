@@ -9,7 +9,7 @@ mapped_pages:
 
 # Limitations [ml-limitations]
 
-The following limitations and known problems apply to the 9.0.0-beta1 release of the Elastic {{ml-features}}. The limitations are grouped into four categories:
+The following limitations and known problems apply to the {{version}} release of the Elastic {{ml-features}}. The limitations are grouped into four categories:
 
 * [Platform limitations](#ad-platform-limitations) are related to the platform that hosts the {{ml}} feature of the {{stack}}.
 * [Configuration limitations](#ad-config-limitations) apply to the configuration process of the {{anomaly-jobs}}.

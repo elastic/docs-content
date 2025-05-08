@@ -67,7 +67,7 @@ deployment:
   eck:
 ```
 
-In self-managed deployments, you can configure health stats to be logged in the {{kib}} `DEBUG` logger at a regular cadence. To enable Task Manager debug logging in your {{kib}} instance, add the following to your `kibana.yml`:
+In self-managed deployments, you can configure health stats to be logged in the {{kib}} `DEBUG` logger at a regular cadence. To enable Task Manager debug logging in your {{kib}} instance, add the following to your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 logging:
@@ -89,7 +89,7 @@ This message looks like:
 Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your {{kib}}.yml to enable debug logging`
 ```
 
-If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) to `true` in your `kibana.yml`. This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.
+If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) to `true` in your [`kibana.yml`](/deploy-manage/stack-settings.md). This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.
 
 
 ## Making sense of Task Manager health stats [making-sense-of-task-manager-health-stats]

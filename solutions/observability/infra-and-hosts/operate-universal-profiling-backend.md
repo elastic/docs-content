@@ -3,7 +3,7 @@ navigation_title: "Operate the backend"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-ops.html
 applies_to:
-  stack: 
+  stack:
 ---
 
 
@@ -121,7 +121,7 @@ The following sections show the most relevant metrics exposed by the backend bin
 * `collection_agent.indexing.bulk_indexer_failure_count`: number of times the bulk indexer failed to ingest data in Elasticsearch.
 * `collection_agent.indexing.document_count.*`: counter that represents the number of documents ingested in Elasticsearch for each index; can be used to calculate the rate of ingestion for each index.
 * `grpc_server_handling_seconds`: histogram of the time spent by the gRPC server to handle requests.
-* `grpc_server_msg_received_total: count of messages received by the gRPC server; can be used to calculate the rate of ingestion for each RPC.
+* `grpc_server_msg_received_total`: count of messages received by the gRPC server; can be used to calculate the rate of ingestion for each RPC.
 * `grpc_server_handled_total`: count of messages processed by the gRPC server; can be used to calculate the availability of the gRPC server for each RPC.
 
 **Symbolizer metrics**

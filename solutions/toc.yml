@@ -131,7 +131,8 @@ toc:
                       - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
                       - file: observability/apm/collect-metrics.md
                       - file: observability/apm/limitations.md
-                      - file: observability/apm/resource-attributes.md
+                      - file: observability/apm/attributes.md
+                      - file: observability/apm/data-stream-routing.md
                   - file: observability/apm/apm-k8s-attacher.md
                   - file: observability/apm/monitor-aws-lambda-functions.md
                   - file: observability/apm/jaeger.md
@@ -466,6 +467,7 @@ toc:
               - file: security/get-started/automatic-migration.md
               - file: security/get-started/automatic-import.md
               - file: security/get-started/agentless-integrations.md
+              - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md

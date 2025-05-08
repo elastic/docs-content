@@ -2,7 +2,7 @@
 navigation_title: "Uptime duration anomaly"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/duration-anomaly-alert.html
-applies:
+applies_to:
   stack: deprecated 8.15.0
   serverless: unavailable
 ---

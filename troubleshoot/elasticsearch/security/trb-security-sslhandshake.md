@@ -20,7 +20,7 @@ mapped_pages:
 **Resolution:**
 
 `java.security.cert.CertificateException: No name matching node01.example.com found`
-:   Indicates that a client connection was made to `node01.example.com` but the certificate returned did not contain the name `node01.example.com`. In most cases, the issue can be resolved by ensuring the name is specified during certificate creation. For more information, see [Encrypt internode communications with TLS](../../../deploy-manage/security/secure-cluster-communications.md#encrypt-internode-communication). Another scenario is when the environment does not wish to use DNS names in certificates at all. In this scenario, all settings in `elasticsearch.yml` should only use IP addresses including the `network.publish_host` setting.
+:   Indicates that a client connection was made to `node01.example.com` but the certificate returned did not contain the name `node01.example.com`. In most cases, the issue can be resolved by ensuring the name is specified during certificate creation. For more information, see [Encrypt internode communications with TLS](../../../deploy-manage/security/secure-cluster-communications.md#encrypt-internode-communication). Another scenario is when the environment does not wish to use DNS names in certificates at all. In this scenario, all settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) should only use IP addresses including the `network.publish_host` setting.
 
 
 `java.security.cert.CertificateException: No subject alternative names present`

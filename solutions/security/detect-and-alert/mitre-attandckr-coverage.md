@@ -17,7 +17,7 @@ Mirroring the MITRE ATT&CK® framework, columns represent major tactics, and cel
 To access the **MITRE ATT&CK® coverage** page, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **MITRE ATT&CK® coverage**.
 
 ::::{note}
-This page only includes the detection rules you currently have installed, and only rules that are mapped to MITRE ATT&CK®. The coverage page maps detections to the following [MITRE ATT&CK® version](https://attack.mitre.org/resources/updates/updates-april-2024) used by {{elastic-sec}}: `v15.1`. Elastic prebuilt rules that aren’t installed and custom rules that are either unmapped or mapped to a deprecated tactic or technique will not appear on the coverage map.
+This page only includes the detection rules you currently have installed, and only rules that are mapped to MITRE ATT&CK®. The coverage page maps detections to the following [MITRE ATT&CK® version](https://attack.mitre.org/resources/updates/updates-april-2024) used by {{elastic-sec}}: `v16.1`. Elastic prebuilt rules that aren’t installed and custom rules that are either unmapped or mapped to a deprecated tactic or technique will not appear on the coverage map.
 
 You can map custom rules to tactics in **Advanced settings** when creating or editing a rule.
 

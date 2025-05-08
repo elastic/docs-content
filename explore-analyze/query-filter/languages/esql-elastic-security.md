@@ -2,15 +2,12 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Using {{esql}} in {{elastic-sec}}"
+navigation_title: "{{elastic-sec}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-elastic-security.html
 ---
 
-
-
-# Using ES|QL in Elastic Security [esql-elastic-security]
-
+# Use ES|QL in {{elastic-sec}} [esql-elastic-security]
 
 You can use {{esql}} in {{elastic-sec}} to investigate events in Timeline and create detection rules. Use the Elastic AI Assistant to build {{esql}} queries, or answer questions about the {{esql}} query language.
 
