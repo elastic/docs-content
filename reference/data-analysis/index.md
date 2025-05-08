@@ -9,4 +9,4 @@ This section contains reference information for data analysis features, includin
 * [Text analysis components](elasticsearch://reference/text-analysis/index.md)
 * [Aggregations](elasticsearch://reference/aggregations/index.md)
 
-Visit the [Explore and analyze](/explore-analyse/index.md) section to learn how to use the Elasticsearch platform to explore and analyze your data effectively.
+Visit the [Explore and analyze](/explore-analyze/index.md) section to learn how to use the Elasticsearch platform to explore and analyze your data effectively.
