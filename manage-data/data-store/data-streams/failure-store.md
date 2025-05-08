@@ -529,7 +529,7 @@ GET _data_stream/my-datastream
 The default retention respects any maximum retention values. If [maximum retention](./failure-store.md) is configured lower than thirty days then the maximum retention will be used as the default value.
 :::
 
-You can update the default retention period for failure stores in your deployment by updating the `data_streams.lifecycle.retention.failures_default` cluster setting. Data streams that have no retention configured on their failure stores will use this value to determine their retention period.
+You can update the default retention period for failure stores in your deployment by updating the `data_streams.lifecycle.retention.failures_default` cluster setting. New and existing data streams that have no retention configured on their failure stores will use this value to determine their retention period.
 
 ```console
 PUT _cluster/settings
