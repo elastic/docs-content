@@ -61,7 +61,7 @@ PUT my-datastream-existing/_options
 1. The failure store option will now be enabled.
 
 
-The failure store redirection can be suspended using this API as well. When the failure store is disabled, only failed document redirection is halted. Any existing failure data in the data stream will remain until removed by deletion or by retention.
+The failure store redirection can be suspended using this API as well. When the failure store is disabled, only failed document redirection is halted. Any existing failure data in the data stream will remain until removed by manual deletion or by retention.
 
 ```console
 PUT my-datastream-existing/_options
