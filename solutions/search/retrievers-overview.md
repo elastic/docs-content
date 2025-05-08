@@ -13,7 +13,7 @@ A retriever is an abstraction that was added to the `_search` API in **8.14.0** 
 This syntax enables the configuration of multi-stage retrieval pipelines within a single `_search` call. This simplifies your search application logic, because you no longer need to configure complex searches via multiple {{es}} calls or implement additional client-side logic to combine results from different queries.
 
 ::::{note}
-This document provides a general overview of the retriever abstraction. For a full syntax reference and implementation overview, check out the [reference documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) in the `_search` API docs.
+This document provides a general overview of the retriever abstraction. For a full syntax reference and implementation overview, check out the [reference documentation](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md) in the `_search` API docs.
 ::::
 
 ::::{tip}
@@ -24,13 +24,12 @@ Prefer to start with some sample code? Check out [](retrievers-examples.md) for 
 
 Retrievers come in various types, each tailored for different search operations. The following retrievers are currently available:
 
-* [**Standard Retriever**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever). Returns top documents from a traditional [query](/explore-analyze/query-filter/languages/querydsl.md). Mimics a traditional query but in the context of a retriever framework. This ensures backward compatibility as existing `_search` requests remain supported. That way you can transition to the new abstraction at your own pace without mixing syntaxes.
-* [**kNN Retriever**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever). Returns top documents from a [knn search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn), in the context of a retriever framework.
-* [**Linear Retriever**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever). Combines the top results from multiple sub-retrievers using a weighted sum of their scores. Allows to specify different weights for each retriever, as well as independently normalize the scores from each result set.
-* [**RRF Retriever**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever). Combines and ranks multiple first-stage retrievers using the reciprocal rank fusion (RRF) algorithm. Allows you to combine multiple result sets with different relevance indicators into a single result set. An RRF retriever is a **compound retriever**, where its `filter` element is propagated to its sub retrievers.
-* [**Rule Retriever**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever). Applies [query rules](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rules) to the query before returning results.
-* [**Text Similarity Re-ranker Retriever**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever). Used for [semantic reranking](ranking/semantic-reranking.md). Requires first creating a `rerank` task using the [{{es}} Inference API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
-
+* [**Standard Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#standard-retriever). Returns top documents from a traditional [query](/explore-analyze/query-filter/languages/querydsl.md). Mimics a traditional query but in the context of a retriever framework. This ensures backward compatibility as existing `_search` requests remain supported. That way you can transition to the new abstraction at your own pace without mixing syntaxes.
+* [**kNN Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever). Returns top documents from a [knn search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#search-api-knn), in the context of a retriever framework.
+* [**Linear Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#linear-retriever). Combines the top results from multiple sub-retrievers using a weighted sum of their scores. Allows to specify different weights for each retriever, as well as independently normalize the scores from each result set.
+* [**RRF Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever). Combines and ranks multiple first-stage retrievers using the reciprocal rank fusion (RRF) algorithm. Allows you to combine multiple result sets with different relevance indicators into a single result set. An RRF retriever is a **compound retriever**, where its `filter` element is propagated to its sub retrievers.
+* [**Rule Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rule-retriever). Applies [query rules](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rules) to the query before returning results.
+* [**Text Similarity Re-ranker Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#text-similarity-reranker-retriever).
 
 ## What makes retrievers useful? [retrievers-overview-why-are-they-useful]
 

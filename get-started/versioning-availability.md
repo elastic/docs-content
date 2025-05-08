@@ -77,13 +77,13 @@ Badges can appear in two places:
 
 Here are some examples to help you understand how to read the availability badges.
 
-#### Example #1: Stack only feature
+#### Example #1: Stack-only feature
 
 ```yaml {applies_to}
 stack: ga 9.1
 ```
 - **Deployment type**: Elastic Stack
-- **Version**: 9.1
+- **Version**: 9.1.0+
 - **Lifecycle**: Generally Available (GA) — default state
 
 #### Example #2: Serverless-only feature with project differences
