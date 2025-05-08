@@ -1,4 +1,4 @@
-The configuration format is [YAML](https://yaml.org/). Here is an example of changing the path of the data and logs directories in {{es}}:
+The `elasticsearch.yml` configuration format is [YAML](https://yaml.org/). Here is an example of changing the path of the data and logs directories in {{es}}:
 
 ```yaml
 path:
