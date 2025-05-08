@@ -17,7 +17,7 @@ Each data stream has its own failure store that can be enabled to accept failure
 You can specify on a data stream's template if it should enable the failure store when it is first created. The `data_stream_options` field in a [template](../templates.md) contains the settings required to enable a data stream's failure store.
 
 :::{note}
-Unlike the `settings` and `mappings` fields on an [index template](../templates.md) which are repeatedly applied to new data stream write indices over time, the `data_stream_options` section of a template is applied to a data stream only once when the data stream is first created. To configure existing data streams, use the put data stream options API.
+Unlike the `settings` and `mappings` fields on an [index template](../templates.md) which are repeatedly applied to new data stream write indices on rollover, the `data_stream_options` section of a template is applied to a data stream only once when the data stream is first created. To configure existing data streams, use the put data stream options API.
 :::
 
 To enable the failure store on a new data stream, enable it in the `data_stream_options` of the template:
