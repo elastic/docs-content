@@ -145,7 +145,7 @@ spec:
 ```
 
 1. The `secretName` and `name` attributes are mutually exclusive, you have to choose one or the other.
-2. The `namespace` and `serviceName` attributes can only be used in conjunction with `name`, not with `secretName` and only to reference clusters managed by the same ECK instance.
+2. The `namespace` and `serviceName` attributes can only be used in conjunction with `name`, not with `secretName`, and only to reference clusters managed by the same ECK instance.
 
 The referenced Secret must contain the following connection information:
 
