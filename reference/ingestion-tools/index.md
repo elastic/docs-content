@@ -14,4 +14,4 @@ This section contains reference information for ingestion tools, including:
 * ES for Apache Hadoop
 * Elastic in integrations
 
-For more information about the ingestion tools, check out the [Ingest tools overview](docs-content://manage-data/ingest/tools.md) documentation.
+For introductory content and broader overviews, check out the [Ingest tools overview](/manage-data/ingest/tools.md) documentation.
