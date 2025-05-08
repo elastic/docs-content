@@ -70,7 +70,7 @@ Not every access token is formatted as a JSON Web Token (JWT). For it to be comp
 
 ## Configure {{es}} to use a JWT realm [jwt-realm-configuration]
 
-To use JWT authentication, create the realm in the `elasticsearch.yml` file to configure it within the {{es}} authentication chain.
+To use JWT authentication, create the realm in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file to configure it within the {{es}} authentication chain.
 
 The JWT realm has a few mandatory settings, plus optional settings that are described in [JWT realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-jwt-settings).
 
@@ -335,7 +335,7 @@ If you use this API in the JWT realm, the following claims are available for rol
 
 If you [delegate authorization](../../../deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) to other realms from the JWT realm, only the `principal` claim is available for role lookup. When delegating the assignment and lookup of roles to another realm from the JWT realm, claims for `dn`, `groups`, `mail`, `metadata`, and `name` are not used for the {{es}} user’s values. Only the JWT `principal` claim is passed to the delegated authorization realms. The realms that are delegated for authorization - not the JWT realm - become responsible for populating all of the {{es}} user’s values.
 
-The following example shows how you define delegation authorization in the `elasticsearch.yml` file to multiple other realms from the JWT realm. A JWT realm named `jwt2` is delegating authorization to multiple realms:
+The following example shows how you define delegation authorization in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file to multiple other realms from the JWT realm. A JWT realm named `jwt2` is delegating authorization to multiple realms:
 
 ```yaml
 xpack.security.authc.realms.jwt.jwt2.authorization_realms: file1,native1,ldap1,ad1
@@ -480,7 +480,7 @@ HMAC UTF-8: hmac-oidc-key-string-for-hs256-algorithm
 
 ### JWT realm settings [hmac-oidc-example-jwt-realm]
 
-To define a JWT realm, add the following realm settings to `elasticsearch.yml`.
+To define a JWT realm, add the following realm settings to [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
 ```yaml
 xpack.security.authc.realms.jwt.jwt8.order: 8 <1>

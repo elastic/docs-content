@@ -10,6 +10,10 @@ applies_to:
 
 # PKI [pki-realm]
 
+:::{{warning}}
+This type of user authentication cannot be configured on {{ech}} deployments.
+:::
+
 You can configure {{es}} to use Public Key Infrastructure (PKI) certificates to authenticate users. In this scenario, clients connecting directly to {{es}} must present X.509 certificates. First, the certificates must be accepted for authentication on the SSL/TLS layer on {{es}}. Then they are optionally further validated by a PKI realm. See [PKI authentication for clients connecting directly to {{es}}](#pki-realm-for-direct-clients).
 
 You can also use PKI certificates to authenticate to {{kib}}, however this requires some additional configuration. On {{es}}, this configuration enables {{kib}} to act as a proxy for SSL/TLS authentication and to submit the client certificates to {{es}} for further validation by a PKI realm. See [PKI authentication for clients connecting to {{kib}}](#pki-realm-for-proxied-clients).
@@ -18,7 +22,7 @@ You can also use PKI certificates to authenticate to {{kib}}, however this requi
 
 To use PKI in {{es}}, you configure a PKI realm, enable client authentication on the desired network layers (transport or http), and map the Distinguished Names (DNs) from the `Subject` field in the user certificates to roles. You create the mappings in a role mapping file or use the role mappings API.
 
-1. Add a realm configuration for a `pki` realm to `elasticsearch.yml` under the `xpack.security.authc.realms.pki` namespace. You must explicitly set the `order` attribute. See [PKI realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) for all of the options you can set for a `pki` realm.
+1. Add a realm configuration for a `pki` realm to [`elasticsearch.yml`](/deploy-manage/stack-settings.md) under the `xpack.security.authc.realms.pki` namespace. You must explicitly set the `order` attribute. See [PKI realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) for all of the options you can set for a `pki` realm.
 
     For example, the following snippet shows the most basic `pki` realm configuration:
 
@@ -104,7 +108,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
 
       The `certificate_authorities` option can be used as an alternative to the `truststore.path` setting, when the certificate files are PEM formatted. The setting accepts a list. The two options are exclusive, they cannot be both used simultaneously.
 
-    2. If the trust store is password protected, the password should be configured by adding the appropriate `secure_password` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md). For example, in a self-managed cluster, the following command adds the password for the example realm above:
+    1. If the trust store is password protected, the password should be configured by adding the appropriate `secure_password` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md). For example, in a self-managed cluster, the following command adds the password for the example realm above:
 
     ```shell
     bin/elasticsearch-keystore add \

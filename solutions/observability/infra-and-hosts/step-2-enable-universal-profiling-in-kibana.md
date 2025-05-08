@@ -25,7 +25,7 @@ In ECE, you don’t need to perform any additional steps to enable the Universal
 
 ## Self-managed Elastic stack [_self_managed_elastic_stack]
 
-1. Edit the Kibana YAML configuration file, usually named `kibana.yml` by adding previous configuration line.
+1. Edit the Kibana YAML configuration file, usually named [`kibana.yml`](/deploy-manage/stack-settings.md) by adding previous configuration line.
 2. Restart Kibana to reload the configuration.
 
 
@@ -33,7 +33,7 @@ In ECE, you don’t need to perform any additional steps to enable the Universal
 
 If you’re using ECK, add the previous configuration line to the `kibana.k8s.elastic.co/v1` CRD, placing it under the `spec.config` key. Refer to the [ECK documentation](/deploy-manage/deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md#k8s-kibana-configuration) for more on configuring {{kib}}.
 
-If you’re not using ECK, edit the `secret` or `configMap` holding the `kibana.yml` configuration file. Add the previously mentioned config line, and then perform a rolling restart of the Kibana deployment to reload the configuration.
+If you’re not using ECK, edit the `secret` or `configMap` holding the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. Add the previously mentioned config line, and then perform a rolling restart of the Kibana deployment to reload the configuration.
 
 Continue to [Step 3: Set up Universal Profiling in {{kib}}](step-3-set-up-universal-profiling-in-kibana.md).
 

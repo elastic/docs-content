@@ -56,6 +56,7 @@ Use [explicit mapping](/manage-data/data-store/mapping/explicit-mapping.md) to d
 Defining your own mappings enables you to:
 
 * Define which string fields should be treated as full-text fields.
+* Define which text field can be automatically vectorized by a semantic search machine learning model. 
 * Define which fields contain numbers, dates, or geolocations.
 * Use data types that cannot be automatically detected (such as `geo_point` and `geo_shape`.)
 * Choose date value [formats](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md), including custom date formats.

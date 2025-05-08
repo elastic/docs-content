@@ -35,7 +35,7 @@ For details about tuning rules for specific categories:
 
 Organizations frequently use uncommon and in-house applications. Occasionally, these can trigger unwanted alerts. To stop a rule matching on an application, add an exception for the required application.
 
-For example, to prevent the [Unusual Process Execution Path - Alternate Data Stream](https://www.elastic.co/guide/en/security/current/unusual-process-execution-path-alternate-data-stream.html) rule from producing alerts for an in-house application named `myautomatedbuild`:
+For example, to prevent the [Unusual Process Execution Path - Alternate Data Stream](detection-rules://rules/windows/defense_evasion_unusual_dir_ads.md) rule from producing alerts for an in-house application named `myautomatedbuild`:
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, search for and then click on the **Unusual Process Execution Path - Alternate Data Stream** rule.
@@ -99,11 +99,11 @@ Another useful technique is to assign lower risk scores to rules triggered by au
 
 Normal user activity may sometimes trigger one or more of these rules:
 
-* [Suspicious MS Office Child Process](https://www.elastic.co/guide/en/security/current/suspicious-ms-office-child-process.html)
-* [Suspicious MS Outlook Child Process](https://www.elastic.co/guide/en/security/current/suspicious-ms-outlook-child-process.html)
-* [System Shells via Services](https://www.elastic.co/guide/en/security/current/system-shells-via-services.html)
-* [Unusual Parent-Child Relationship](https://www.elastic.co/guide/en/security/current/unusual-parent-child-relationship.html)
-* [Windows Script Executing PowerShell](https://www.elastic.co/guide/en/security/current/windows-script-executing-powershell.html)
+* [Suspicious MS Office Child Process](detection-rules://rules/windows/initial_access_suspicious_ms_office_child_process.md)
+* [Suspicious MS Outlook Child Process](detection-rules://rules/windows/initial_access_suspicious_ms_outlook_child_process.md)
+* [System Shells via Services](detection-rules://rules/windows/persistence_system_shells_via_services.md)
+* [Unusual Parent-Child Relationship](detection-rules://rules/windows/privilege_escalation_unusual_parentchild_relationship.md)
+* [Windows Script Executing PowerShell](detection-rules://rules/windows/initial_access_script_executing_powershell.md)
 
 While all rules can be adjusted as needed, use care when adding exceptions to these rules. Exceptions could result in an undetected client-side execution, or a persistence or malware threat going unnoticed.
 
@@ -143,7 +143,7 @@ Take the following steps to tune indicator match rules:
 
 In cloud-based organizations, remote workers sometimes access services over the internet. The security policies of home networks probably differ from the security policies of managed corporate networks, and these rules might need tuning to reduce noise from legitimate administrative activities:
 
-* [RDP (Remote Desktop Protocol) from the Internet](https://www.elastic.co/guide/en/security/current/rdp-remote-desktop-protocol-from-the-internet.html)
+* [RDP (Remote Desktop Protocol) from the Internet](detection-rules://rules/network/command_and_control_rdp_remote_desktop_protocol_from_the_internet.md)
 
 ::::{tip}
 If your organization is widely distributed and the workforce travels a lot, use the `windows_anomalous_user_name_ecs`, `linux_anomalous_user_name_ecs`, and `suspicious_login_activity_ecs` [{{ml}}](/solutions/security/advanced-entity-analytics/anomaly-detection.md) jobs to detect suspicious authentication activity.

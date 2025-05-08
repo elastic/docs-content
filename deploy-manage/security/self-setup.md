@@ -11,7 +11,7 @@ mapped_pages:
 % scope: initial security setup in self-managed deployments, following the automatic or manual (minimal, basic, https) procedures
 # Set up security in self-managed deployments
 
-This section explains how to perform the initial security setup for self-managed deployments, including configuring TLS certificates to secure {{es}} and {{kib}} endpoints, setting passwords for built-in users, and generating enrollment tokens to connect {{kib}} or additional {{es}} nodes to the cluster.
+This section explains the initial security setup for self-managed deployments, including configuring TLS certificates to secure {{es}} and {{kib}} endpoints, setting passwords for built-in users, and generating enrollment tokens to connect {{kib}} or additional {{es}} nodes to the cluster.
 
 Self-managed deployments support two approaches for the initial setup: automatic and manual. Note that securing {{kib}} always requires some manual configuration.
 
@@ -24,11 +24,11 @@ Since version 8.0, {{es}} automatically enables security features on first start
 The automatic configuration:
 
 * Generates TLS certificates for the [transport and HTTP layers](./secure-cluster-communications.md#communication-channels)
-* Applies TLS configuration settings to `elasticsearch.yml`
+* Applies TLS configuration settings to [`elasticsearch.yml`](/deploy-manage/stack-settings.md)
 * Sets a password for the `elastic` superuser
 * Creates an enrollment token to securely connect {{kib}} to {{es}}
 
-This automatic setup is the quickest way to get started and ensures your cluster is protected by default.
+This automatic setup is the quickest way to get started and ensures your cluster is protected by default. To start this process, follow one of our [{{es}} installation guides](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 
 ::::{warning}
 The automatic configuration does not enable TLS on the {{kib}} HTTP endpoint. To encrypt browser traffic to {{kib}}, follow the steps in [](./set-up-basic-security-plus-https.md#encrypt-kibana-browser).

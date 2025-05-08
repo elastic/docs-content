@@ -19,7 +19,7 @@ If indicator data is not appearing in the Indicators table after you installed a
     * **{{agent}} integrations** - `logs_ti*`
     * **{{filebeat}} integrations** - `filebeat-*`
 
-* Ensure the indicator data you’re ingesting is mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current).
+* Ensure the indicator data you’re ingesting is mapped to [Elastic Common Schema (ECS)](ecs://reference/index.md).
 
 ::::{note}
 These troubleshooting steps also apply to the [Threat Intelligence view](/solutions/security/get-started/enable-threat-intelligence-integrations.md).

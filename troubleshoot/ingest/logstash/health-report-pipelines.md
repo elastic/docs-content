@@ -59,7 +59,7 @@ The issue typically stems from one or more causes:
 * a plugin consuming more resources than expected, and/or
 * insufficient resources being allocated to the pipeline.
 
-To address the issue, observe the [Plugin flow rates](https://www.elastic.co/guide/en/logstash/current/node-stats-api.html#plugin-flow-rates) from the [Node Stats API](https://www.elastic.co/guide/en/logstash/current/node-stats-api.html), and identify which plugins have the highest `worker_utilization`. This will tell you which plugins are spending the most of the pipeline’s worker resources.
+To address the issue, observe the [Plugin flow rates](https://www.elastic.co/docs/api/doc/logstash#plugin-flow-rates) from the [Node Stats API](https://www.elastic.co/docs/api/doc/logstash), and identify which plugins have the highest `worker_utilization`. This will tell you which plugins are spending the most of the pipeline’s worker resources.
 
 * If the offending plugin connects to a downstream service or another pipeline that is exerting back-pressure, the issue needs to be addressed in the downstream service or pipeline.
 * If the offending plugin connects to a downstream service with high network latency, throughput for the pipeline may be improved by [allocating more worker resources to the pipeline](logstash://reference/tuning-logstash.md#tuning-logstash-settings).

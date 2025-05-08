@@ -9,13 +9,78 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
-% Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
+## May 5, 2025 [serverless-changelog-050525]
 
-% ## version.next [elastic-cloud-serverless-changelog-releasedate]
+### Features and enhancements [serverless-changelog-050525-features-enhancements]
 
-% ### Features and enhancements [elastic-cloud-serverless-releasedate-features-enhancements]
+* Adds grouping per row to the {{esql}} rule type [#212135](https://github.com/elastic/kibana/pull/212135)
+* Adds a compact view on the Monitors overview page in {{obs-serverless}} [#219060](https://github.com/elastic/kibana/pull/219060)
+* Adds backend schema changes for investigation guides in {{obs-serverless}} [#216377](https://github.com/elastic/kibana/pull/216377)
+* Adds the `context.grouping` action variable for the SLO Burn rate and {{esql}} rules in {{obs-serverless}} [#213550](https://github.com/elastic/kibana/pull/213550)
+* Updates the styles for the color formatter to appear like a badge in Discover [#189391](https://github.com/elastic/kibana/pull/189391)
+* Enhances the handling of missing `service.environment` attributes in {{obs-serverless}} [#217899](https://github.com/elastic/kibana/pull/217899)
+* Adds `logging_level` to the agent central configuration for the EDOT Java agent in {{obs-serverless}} [#219722](https://github.com/elastic/kibana/pull/219722)
+* Updates {{kib}} MITRE data to `v16.1` [#215026](https://github.com/elastic/kibana/pull/215026)
+* Makes the {{fleet}} agents tag filter searchable and sortable [#219639](https://github.com/elastic/kibana/pull/219639)
+* Adds logic to exclude the `temperature` parameter from the body request of some OpenAI models [#218887](https://github.com/elastic/kibana/pull/218887)
+* Adds the ability to switch between relative and absolute time range in Discover [#218056](https://github.com/elastic/kibana/pull/218056)
 
-% ### Fixes [elastic-cloud-serverless-releasedate-fixes]
+### Fixes [serverless-changelog-050525-fixes]
+
+* Fixes ignored dynamic templates [#219875](https://github.com/elastic/kibana/pull/219875)
+% Dashboards and visualizations 
+* Syncs the Dashboard {{esql}} query and filters with the corresponding one in Visualizations [#218997](https://github.com/elastic/kibana/pull/218997)
+* Fixes the option list control, making two requests upon refreshing [#219625](https://github.com/elastic/kibana/pull/219625)
+* Ensures that an individual alert is sent per monitor configuration when the "Receive distinct alerts per location" toggle is unchecked in {{obs-serverless}} [#219291](https://github.com/elastic/kibana/pull/219291)
+* Fixes an error that occurred when you interacted with the monitor status rule flyout's numeric controls in {{obs-serverless}} [#218994](https://github.com/elastic/kibana/pull/218994)
+* Fixes an issue where the Observability AI Assistant flyout reopened after navigating to another page URL [#219420](https://github.com/elastic/kibana/pull/219420)
+* Fixes an issue with alerts filtering when the service environment was not defined in {{obs-serverless}} [#219228](https://github.com/elastic/kibana/pull/219228)
+* Handles missing `trace` in API response [#219512](https://github.com/elastic/kibana/pull/219512)
+* Correctly displays an error message if there are failures when creating anomaly detection jobs [#219364](https://github.com/elastic/kibana/pull/219364)
+* Adds optional chaining to prevent undefined error in `custom_link_flyout.tsx` in {{obs-serverless}} [#219668](https://github.com/elastic/kibana/pull/219668)
+* Corrects quotes in {{esql}} queries for function arguments in {{obs-serverless}} [#217680](https://github.com/elastic/kibana/pull/217680)
+* Queries alerts using the `alert.start` field in {{obs-serverless}} [#219651](https://github.com/elastic/kibana/pull/219651)
+* Fixes a scroll error for the Rules flyout in {{sec-serverless}} [#218697](https://github.com/elastic/kibana/pull/218697)
+* Adds a privilege check for enabling the **Run Engine** button in {{sec-serverless}}  [#213054](https://github.com/elastic/kibana/pull/213054)
+* Removes checks for an unused connector role in {{sec-serverless}} [#219358](https://github.com/elastic/kibana/pull/219358)
+* Fixes the rule import error message display [#218701](https://github.com/elastic/kibana/pull/218701)
+* Fixes the capability required for the SIEM Migrations Topic in {{fleet}} [#219427](https://github.com/elastic/kibana/pull/219427)
+* Ensures the ability to change providers without error in {{ml-cap}} [#219020](https://github.com/elastic/kibana/pull/219020)
+* Fixes broken icons in integrations from the Home plugin [#219206](https://github.com/elastic/kibana/pull/219206)
+
+
+
+
+
+## April 28, 2025 [serverless-changelog-04282025]
+
+### Features and enhancements [serverless-changelog-04282025-features-enhancements]
+
+* Adds the option to use the logical `AND` when filtering Monitors by multiple tags or locations [#217985](https://github.com/elastic/kibana/pull/217985)
+* Makes Attack Discovery alerts persistent and searchable [#218906](https://github.com/elastic/kibana/pull/218906)
+* Improves edit ReadMe functionality for custom integrations [#215259](https://github.com/elastic/kibana/pull/215259)
+* Removes metrics and logs from the `get_service_stats` API [#218346](https://github.com/elastic/kibana/pull/218346)
+* Allows you to customize the table tab [#218686](https://github.com/elastic/kibana/pull/218686)
+* Enables keyboard navigation for the create annotations form [#217918](https://github.com/elastic/kibana/pull/217918)
+
+
+### Fixes [serverless-changelog-04282025-fixes]
+
+* Fixes keyword format in metric visualizations [#218233](https://github.com/elastic/kibana/pull/218233)
+* Fixes monitor history histogram and group by location issue [#218550](https://github.com/elastic/kibana/pull/218550)
+* Prevents other conditions from changing when you change the condition type of a monitor status rule [#216426](https://github.com/elastic/kibana/pull/216426)
+* Filters out null values from `sourceDataStreams` [#218772](https://github.com/elastic/kibana/pull/218772)
+* Fixes span url link when `transactionId` is missing in span links [#218232](https://github.com/elastic/kibana/pull/218232)
+* Fixes logical `AND` behavior when a filter is removed [#218910](https://github.com/elastic/kibana/pull/218910)
+* Fixes a bug that prevented index template creation [#218901](https://github.com/elastic/kibana/pull/218901)
+* Prevents unnecessary suggestion requests [#218927](https://github.com/elastic/kibana/pull/218927)
+* Uses fields instead of `_source` in the metadata endpoint [#218869](https://github.com/elastic/kibana/pull/218869)
+* Fills gaps in table tooltips [#218926](https://github.com/elastic/kibana/pull/218926)
+* Makes output and fleet server non-editable for agentless integration policies [#218905](https://github.com/elastic/kibana/pull/218905)
+* Improves anomaly charts object safety [#217552](https://github.com/elastic/kibana/pull/217552)
+* Fixes title announcements in the details step of the anomaly detection job wizard [#218570](https://github.com/elastic/kibana/pull/218570)
+* Fixes incorrect optimization for endpoint artifacts [#216437](https://github.com/elastic/kibana/pull/216437)
+
 
 ## April 21, 2025 [serverless-changelog-04212025]
 

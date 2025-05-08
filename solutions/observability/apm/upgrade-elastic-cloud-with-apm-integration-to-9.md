@@ -20,6 +20,6 @@ Follow these steps to upgrade:
 3. Upgrade your {{ecloud}} instance to 9.0. Refer to [Upgrade your deployment](/deploy-manage/upgrade/deployment-or-cluster.md) for details. As a part of this process, the APM integration will automatically upgrade to version 9.0.
 
 ::::{note}
-{{ece}} users require additional TLS setup. Refer to [Add APM user settings](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html) for more information.
+{{ece}} users require additional TLS setup. Refer to [Add APM user settings](/solutions/observability/apm/configure-apm-server.md) for more information.
 ::::
 

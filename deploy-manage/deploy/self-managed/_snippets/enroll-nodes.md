@@ -6,7 +6,7 @@ Before you enroll your new node, make sure that it is able to access the first n
 If you can't access the first node, then modify your network configuration before proceeding.
 :::
 
-1. Using a text editor, update the `cluster.name` in `elasticsearch.yml` to match the other nodes in your cluster. 
+1. Using a text editor, update the `cluster.name` in [`elasticsearch.yml`](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) to match the other nodes in your cluster. 
    
    :::{note}
    If this value isn't updated and you attempt to join an existing cluster, then the connection will fail with the following error:
@@ -19,7 +19,7 @@ If you can't access the first node, then modify your network configuration befor
 2. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the `elasticsearch-create-enrollment-token` tool to generate an enrollment token for your new nodes.
 
     ```sh subs=true
-    bin{{slash}}elasticsearch-create-enrollment-token -s node
+    .{{slash}}bin{{slash}}elasticsearch-create-enrollment-token -s node
     ```
 
     Copy the enrollment token, which you’ll use to enroll new nodes with your {{es}} cluster.
@@ -29,7 +29,7 @@ If you can't access the first node, then modify your network configuration befor
 3. From the installation directory of your new node, start {{es}} and pass the enrollment token with the `--enrollment-token` parameter.
 
     ```sh subs=true
-    bin{{slash}}elasticsearch --enrollment-token <enrollment-token>
+    .{{slash}}bin{{slash}}elasticsearch --enrollment-token <enrollment-token>
     ```
 
     {{es}} automatically generates certificates and keys in the following directory:

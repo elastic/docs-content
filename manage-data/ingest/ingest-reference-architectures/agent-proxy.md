@@ -34,7 +34,7 @@ Currently {{agent}} is not able to present a certificate for connectivity to {{f
 
 Info on {{agent}} and agent integrations:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
 * [{{agent}} integrations](https://docs.elastic.co/en/integrations)
 
 Info on using a proxy server:
@@ -43,5 +43,5 @@ Info on using a proxy server:
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

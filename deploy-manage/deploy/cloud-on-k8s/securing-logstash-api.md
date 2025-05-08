@@ -10,7 +10,7 @@ mapped_pages:
 
 ## Enable HTTPS [k8s-logstash-https]
 
-Access to the [Logstash Monitoring APIs](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html#monitoring-api-security) use HTTPS by default - the operator will set the values  `api.ssl.enabled: true`, `api.ssl.keystore.path` and `api.ssl.keystore.password`.
+Access to the [Logstash Monitoring APIs](logstash://reference/monitoring-logstash.md#monitoring-api-security) use HTTPS by default - the operator will set the values  `api.ssl.enabled: true`, `api.ssl.keystore.path` and `api.ssl.keystore.password`.
 
 You can further secure the {{ls}} Monitoring APIs by requiring HTTP Basic authentication by setting `api.auth.type: basic`, and providing the relevant credentials `api.auth.basic.username` and `api.auth.basic.password`:
 

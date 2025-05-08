@@ -52,7 +52,7 @@ For self-managed {{kib}}:
 
 1. Create a preconfigured email connector.
    ::::{note}
-   At this time, email notifications support only preconfigured connectors, which are defined in the `kibana.yml` file. For examples, refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) and [Configure email accounts for well-known services](kibana://reference/connectors-kibana/email-action-type.md#configuring-email).
+   At this time, email notifications support only preconfigured connectors, which are defined in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For examples, refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) and [Configure email accounts for well-known services](kibana://reference/connectors-kibana/email-action-type.md#configuring-email).
    ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting in kibana.yml to the name of your email connector.

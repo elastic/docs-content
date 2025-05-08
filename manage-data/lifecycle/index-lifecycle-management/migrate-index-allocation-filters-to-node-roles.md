@@ -62,7 +62,7 @@ When you add a data tier to an {{ech}} deployment, one or more nodes are automat
 ],
 ```
 
-If you are directly managing your own cluster, configure the appropriate roles for each node in `elasticsearch.yml`. For example, the following setting configures a node to be a data-only node in the hot and content tiers.
+If you are directly managing your own cluster, configure the appropriate roles for each node in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). For example, the following setting configures a node to be a data-only node in the hot and content tiers.
 
 ```yaml
 node.roles [ data_hot, data_content ]
