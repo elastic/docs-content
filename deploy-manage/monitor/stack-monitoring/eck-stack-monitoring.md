@@ -118,7 +118,7 @@ If Logs stack monitoring is configured for a Beat, and custom container argument
 
 If you want to connect to a monitoring {{es}} cluster not managed by ECK, you can reference a Secret instead of an {{es}} cluster in the `monitoring` section through the `secretName` attribute.
 
-Next example sends cluster metrics to a remote monitoring cluster not managed by ECK, whereas cluster logs are sent to a remote cluster handled by ECK.
+The next example sends cluster metrics to a remote monitoring cluster not managed by ECK, whereas cluster logs are sent to a remote cluster handled by ECK:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
