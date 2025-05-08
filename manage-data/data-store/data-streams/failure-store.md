@@ -409,7 +409,7 @@ Failure documents have a uniform structure that is handled internally by {{es}}.
     :   (`keyword`) The index that the document was being written to when it failed.
 
     `document.source`
-    :   (unmapped object) The body of the document. This field is unmapped and unindexed to ensure failures are indexed reliably. If you need to include fields from the document source in your queries, use [runtime fields](./failure-store.md) on the search request.
+    :   (unmapped object) The body of the original document. This field is unmapped and only present in the failure document's source. This prevents mapping conflicts in the failure store when redirecting failed documents. If you need to include fields from the original document's source in your queries, use [runtime fields](./failure-store.md) on the search request.
 
 `error`
 :   (`object`) Information about the failure that prevented this document from being indexed.
