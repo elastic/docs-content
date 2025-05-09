@@ -17,17 +17,17 @@
 /manage-data/ingestion/                     @elastic/ingest-docs
 
 /reference/                                 @elastic/platform-docs
-/reference/data-analysis/	                @elastic/docs
+/reference/data-analysis/                   @elastic/docs
 /reference/data-analysis/observability/     @elastic/experience-docs
-/reference/data-analysis/kibana/ 	        @elastic/platform-docs
-/reference/data-analysis/machine-learning/	@elastic/platform-docs
-/reference/data-analysis/observability/    	@elastic/experience-docs
-/reference/elasticsearch/clients/	        @elastic/platform-docs
-/reference/glossary	                        @elastic/docs
-/reference/ingestion-tools	                @elastic/ingest-docs
-/reference/observability	                @elastic/experience-docs
-/reference/search	                        @elastic/platform-docs
-/reference/security	                        @elastic/experience-docs
+/reference/data-analysis/kibana/            @elastic/platform-docs
+/reference/data-analysis/machine-learning/  @elastic/platform-docs
+/reference/data-analysis/observability/     @elastic/experience-docs
+/reference/elasticsearch/clients/           @elastic/platform-docs
+/reference/glossary/                        @elastic/docs
+/reference/ingestion-tools/                 @elastic/ingest-docs
+/reference/observability/                   @elastic/experience-docs
+/reference/search/                          @elastic/platform-docs
+/reference/security/                        @elastic/experience-docs
 
 /release-notes/                             @elastic/docs
 
@@ -46,13 +46,13 @@
 /solutions/security/                        @elastic/experience-docs
 
 /troubleshoot/                              @elastic/docs
-/troubleshoot/deployments                   @elastic/platform-docs
-/troubleshoot/elasticsearch                 @elastic/platform-docs
-/troubleshoot/ingest                        @elastic/ingest-docs
-/troubleshoot/kibana                        @elastic/platform-docs
-/troubleshoot/monitoring                    @elastic/platform-docs @elastic/experience-docs
-/troubleshoot/observability                 @elastic/ingest-docs @elastic/experience-docs
-/troubleshoot/security                      @elastic/ingest-docs @elastic/experience-docs
+/troubleshoot/deployments/                  @elastic/platform-docs
+/troubleshoot/elasticsearch/                @elastic/platform-docs
+/troubleshoot/ingest/                       @elastic/ingest-docs
+/troubleshoot/kibana/                       @elastic/platform-docs
+/troubleshoot/monitoring/                   @elastic/platform-docs @elastic/experience-docs
+/troubleshoot/observability/                @elastic/ingest-docs @elastic/experience-docs
+/troubleshoot/security/                     @elastic/ingest-docs @elastic/experience-docs
 
 # Raw migrated files
 /raw-migrated-files/                        @elastic/docs
