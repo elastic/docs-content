@@ -1,16 +1,17 @@
 # Ingestion tools
 
-% TO-DO: Add links to "What are Ingestion tools?"%
-
 This section contains reference information for ingestion tools, including:
 
 * Fleet and agent
 * APM
 * Beats
-* Enrich processor reference
+* Processor reference
 * Logstash
+* Logstash Plugins
+* Logstash Versioned Plugin Reference
 * Elastic Serverless forwarder for AWS
 * Search connectors
-* ES Hadoop
+* ES for Apache Hadoop
+* Elastic in integrations
 
-This document is intended for programmers who want to interact with the ingestion tools and doesn't contain information about the API libraries.
+For introductory content and broader overviews, check out the [Ingest tools overview](/manage-data/ingest/tools.md) documentation.

@@ -17,7 +17,11 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-## 9.0.0 [elastic-observability-900-breaking-changes]
+## 9.0.1 [elastic-observability-9.0.1-breaking-changes]
+
+There are no breaking changes in Elastic {{observability}} 9.0.1.
+
+## 9.0.0 [elastic-observability-9.0.0-breaking-changes]
 
 ::::{dropdown} Profiling now defaults to 19Hz sampling frequency
 For more information, check [#202278]({{kib-pull}}202278).

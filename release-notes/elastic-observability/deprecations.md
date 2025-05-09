@@ -16,7 +16,11 @@ Review the deprecated functionality for Elastic {{observability}}. While depreca
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-## 9.0.0 [elastic-observability-900-deprecations]
+## 9.0.1 [elastic-observability-9.0.1-deprecations]
+
+There are no deprecations in Elastic {{observability}} 9.0.1.
+
+## 9.0.0 [elastic-observability-9.0.0-deprecations]
 
 ::::{dropdown} Removed Logs Explorer
 Logs Explorer has been removed. 
