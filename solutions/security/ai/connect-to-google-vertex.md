@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/connect-to-vertex.html
   - https://www.elastic.co/guide/en/serverless/current/security-connect-to-google-vertex.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Connect to Google Vertex
@@ -13,7 +17,7 @@ mapped_urls:
 % - [x] ./raw-migrated-files/security-docs/security/connect-to-vertex.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/security-connect-to-google-vertex.md
 
-This page provides step-by-step instructions for setting up a Google Vertex AI connector for the first time. This connector type enables you to leverage Vertex AI’s large language models (LLMs) within {{elastic-sec}}. You’ll first need to enable Vertex AI, then generate an API key, and finally configure the connector in your {{elastic-sec}} project.
+This page provides step-by-step instructions for setting up a Google Vertex AI connector for the first time. This connector type enables you to leverage Vertex AI’s large language models (LLMs) within {{elastic-sec}}. You’ll first need to enable Vertex AI, then generate a key, and finally configure the connector in your {{elastic-sec}} project.
 
 ::::{important}
 Before continuing, you should have an active project in one of Google Vertex AI’s [supported regions](https://cloud.google.com/vertex-ai/docs/general/locations#feature-availability).
@@ -28,18 +32,7 @@ Before continuing, you should have an active project in one of Google Vertex AI�
 
 The following video demonstrates these steps.
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/vFhtbiCZiKhvdZGy2FjyeT.jpg"
-  data-uuid="vFhtbiCZiKhvdZGy2FjyeT"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![connect-vertex-api-video](https://play.vidyard.com/vFhtbiCZiKhvdZGy2FjyeT.jpg)](https://videos.elastic.co/watch/vFhtbiCZiKhvdZGy2FjyeT?)
 
 
 ::::{note}
@@ -59,22 +52,10 @@ For more information about enabling the Vertex AI API, refer to [Google’s docu
 
 The following video demonstrates these steps.
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/tmresYYiags2w2nTv3Gac8.jpg"
-  data-uuid="tmresYYiags2w2nTv3Gac8"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![create-vertex-account-video](https://play.vidyard.com/tmresYYiags2w2nTv3Gac8.jpg)](https://videos.elastic.co/watch/tmresYYiags2w2nTv3Gac8?)
 
 
-
-## Generate an API key [_generate_an_api_key]
+## Generate a key [_generate_an_api_key]
 
 1. Return to Vertex AI’s **Credentials** menu and click **Manage service accounts**.
 2. Search for the service account you just created, select it, then click the link that appears under **Email**.
@@ -83,18 +64,7 @@ The following video demonstrates these steps.
 
 The following video demonstrates these steps.
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/hrcy3F9AodwhJcV1i2yqbG.jpg"
-  data-uuid="hrcy3F9AodwhJcV1i2yqbG"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![create-vertex-key-video](https://play.vidyard.com/hrcy3F9AodwhJcV1i2yqbG.jpg)](https://videos.elastic.co/watch/hrcy3F9AodwhJcV1i2yqbG?)
 
 
 
@@ -108,20 +78,10 @@ Finally, configure the connector in your Elastic deployment:
 4. Under **URL**, enter the URL for your region.
 5. Enter your **GCP Region** and **GCP Project ID**.
 6. Under **Default model**, specify either `gemini-1.5.pro` or `gemini-1.5-flash`. [Learn more about the models](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models).
-7. Under **Authentication**, enter your API key.
+7. Under **Authentication**, enter your credentials JSON.
 8. Click **Save**.
 
 The following video demonstrates these steps.
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/8L2WPm2HKN1cH872Gs5uvL.jpg"
-  data-uuid="8L2WPm2HKN1cH872Gs5uvL"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+
+[![configure-gemini-connector-video](https://play.vidyard.com/8L2WPm2HKN1cH872Gs5uvL.jpg)](https://videos.elastic.co/watch/8L2WPm2HKN1cH872Gs5uvL?)

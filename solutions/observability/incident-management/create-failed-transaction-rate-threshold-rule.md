@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-failed-transaction-rate-threshold-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-failed-transaction-rate-threshold-alert-rule.html
 
@@ -11,16 +11,16 @@ navigation_title: "Failed transaction rate threshold"
 
 ::::{note}
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create failed transaction rate threshold rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Editor** role or higher is required to create failed transaction rate threshold rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
 
 You can create a failed transaction rate threshold rule to alert you when the rate of transaction errors in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name. Add actions to raise alerts via services or third-party integrations e.g. mail, Slack, Jira.
 
-:::{image} ../../../images/serverless-alerts-create-rule-failed-transaction-rate.png
+:::{image} /solutions/images/serverless-alerts-create-rule-failed-transaction-rate.png
 :alt: Create rule for failed transaction rate threshold alert
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -53,25 +53,25 @@ To add actions to rules, you must first create a connector for that service (for
 :::::{dropdown} Connector types
 Connectors provide a central place to store connection information for services and integrations with third party systems. The following connectors are available when defining actions for alerting rules:
 
-* [Cases](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html)
-* [D3 Security](https://www.elastic.co/guide/en/kibana/current/d3security-action-type.html)
-* [Email](https://www.elastic.co/guide/en/kibana/current/email-action-type.html)
-* [{{ibm-r}}](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html)
-* [Index](https://www.elastic.co/guide/en/kibana/current/index-action-type.html)
-* [Jira](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html)
-* [Microsoft Teams](https://www.elastic.co/guide/en/kibana/current/teams-action-type.html)
-* [Observability AI Assistant](https://www.elastic.co/guide/en/kibana/current/obs-ai-assistant-action-type.html)
-* [{{opsgenie}}](https://www.elastic.co/guide/en/kibana/current/opsgenie-action-type.html)
-* [PagerDuty](https://www.elastic.co/guide/en/kibana/current/pagerduty-action-type.html)
-* [Server log](https://www.elastic.co/guide/en/kibana/current/server-log-action-type.html)
-* [{{sn-itom}}](https://www.elastic.co/guide/en/kibana/current/servicenow-itom-action-type.html)
-* [{{sn-itsm}}](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html)
-* [{{sn-sir}}](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html)
-* [Slack](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html)
-* [{{swimlane}}](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html)
-* [Torq](https://www.elastic.co/guide/en/kibana/current/torq-action-type.html)
-* [{{webhook}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html)
-* [xMatters](https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html)
+* [Cases](kibana://reference/connectors-kibana/cases-action-type.md)
+* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -79,7 +79,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -89,30 +89,30 @@ After you select a connector, you must set the action frequency. You can choose 
 
 Alternatively, you can set the action frequency to **For each alert** and specify the conditions each alert must meet for the action to run. For example, you can send an email only when the alert status changes to critical.
 
-:::{image} ../../../images/serverless-alert-action-frequency.png
+:::{image} /solutions/images/serverless-alert-action-frequency.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 With the **Run when** menu you can choose if an action runs when the threshold for an alert is reached, or when the alert is recovered. For example, you can add a corresponding action for each state to ensure you are alerted when the rule is triggered and also when it recovers.
 
-:::{image} ../../../images/serverless-alert-apm-action-frequency-recovered.png
+:::{image} /solutions/images/serverless-alert-apm-action-frequency-recovered.png
 :alt: Choose between threshold met or recovered
-:class: screenshot
+:screenshot:
 :::
 
 :::::
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
@@ -178,6 +178,6 @@ Based on the criteria above, define the following rule details:
 
 Next, select the **Email** connector and click **Create a connector**. Fill out the required details: sender, host, port, etc., and select **Save**.
 
-A default message is provided as a starting point for your alert. You can use the Mustache template syntax (`{{variable}}`) to pass additional alert values at the time a condition is detected to an action. A list of available variables can be accessed by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "").
+A default message is provided as a starting point for your alert. You can use the Mustache template syntax (`{{variable}}`) to pass additional alert values at the time a condition is detected to an action. A list of available variables can be accessed by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "").
 
 Select **Save**. The alert has been created and is now active!

@@ -1,58 +1,59 @@
 ---
+navigation_title: Without a private Docker registry
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline-no-registry.html
 ---
 
-# Without a private Docker registry [ece-install-offline-no-registry]
+# Air-gapped install without a private Docker registry [ece-install-offline-no-registry]
 
 To perform an offline installation without a private Docker registry, you have to download the available Docker Images on each host.
 
-1. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md). Note that for ECE version 3.0, if you want to use Elastic Stack version 8.0 in your deployments, you need to download and make available both the version 7.x and version 8.x Docker images (the version 7.x images are required for system deployments).
+1. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md). Note that for ECE version 4.0, if you want to use {{stack}} version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images (the version 8.x images are required for system deployments).
 
     ```sh
-    docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:3.8.1
-    docker pull docker.elastic.co/cloud-assets/elasticsearch:7.17.27-0
-    docker pull docker.elastic.co/cloud-assets/kibana:7.17.27-0
-    docker pull docker.elastic.co/cloud-assets/apm:7.17.27-0
-    docker pull docker.elastic.co/cloud-assets/enterprise-search:7.17.27-0
-    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.1
-    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.17.1
-    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.1
-    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1
+    docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0
+    docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0
+    docker pull docker.elastic.co/cloud-release/kibana-cloud:9.0.0
+    docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
-    For example, for Elastic Cloud Enterprise 3.8.1 and the Elastic Stack versions it shipped with, you need:
+    For example, for {{ece}} 4.0.0 and the {{stack}} versions it shipped with, you need:
 
-    * Elastic Cloud Enterprise 3.8.1
-    * Elasticsearch 8.17.1, Kibana 8.17.1, and APM 8.17.1
+    * {{ece}} 4.0.0
+    * {{es}} 9.0.0, {{kib}} 9.0.0, and APM 9.0.0
 
 2. Create .tar files of the images:
 
     ```sh
-    docker save -o ece.3.8.1.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:3.8.1
-    docker save -o es.7.17.27-0.tar docker.elastic.co/cloud-assets/elasticsearch:7.17.27-0
-    docker save -o kibana.7.17.27-0.tar docker.elastic.co/cloud-assets/kibana:7.17.27-0
-    docker save -o apm.7.17.27-0.tar docker.elastic.co/cloud-assets/apm:7.17.27-0
-    docker save -o enterprise-search.7.17.27-0.tar docker.elastic.co/cloud-assets/enterprise-search:7.17.27-0
-    docker save -o es.8.17.1.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.1
-    docker save -o kibana.8.17.1.tar docker.elastic.co/cloud-release/kibana-cloud:8.17.1
-    docker save -o apm.8.17.1.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.1
-    docker save -o enterprise-search.8.17.1.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.1
+    docker save -o ece.4.0.0.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
+    docker save -o es.8.18.0.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
+    docker save -o kibana.8.18.0.tar docker.elastic.co/cloud-release/kibana-cloud:8.18.0
+    docker save -o apm.8.18.0.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
+    docker save -o enterprise-search.8.18.0.tar docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0
+    docker save -o es.9.0.0.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0
+    docker save -o kibana.9.0.0.tar docker.elastic.co/cloud-release/kibana-cloud:9.0.0
+    docker save -o apm.9.0.0.tar docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
-3. Copy the .tar files to a location on your network where they are available to each host where you plan to install Elastic Cloud Enterprise. Alternatively, you can copy the .tar files to each host directly.
+3. Copy the .tar files to a location on your network where they are available to each host where you plan to install {{ece}}. Alternatively, you can copy the .tar files to each host directly.
 4. On each host, load the images into Docker, replacing `FILE_PATH` with the correct path to the .tar files:
 
     ```sh
-    docker load < FILE_PATH/ece.3.8.1.tar
-    docker load < FILE_PATH/es.7.17.27-0.tar
-    docker load < FILE_PATH/kibana.7.17.27-0.tar
-    docker load < FILE_PATH/apm.7.17.27-0.tar
-    docker load < FILE_PATH/enterprise-search.7.17.27-0.tar
-    docker load < FILE_PATH/es.8.17.1.tar
-    docker load < FILE_PATH/kibana.8.17.1.tar
-    docker load < FILE_PATH/apm.8.17.1.tar
-    docker load < FILE_PATH/enterprise-search.8.17.1.tar
+    docker load < FILE_PATH/ece.4.0.0.tar
+    docker load < FILE_PATH/es.8.18.0.tar
+    docker load < FILE_PATH/kibana.8.18.0.tar
+    docker load < FILE_PATH/apm.8.18.0.tar
+    docker load < FILE_PATH/enterprise-search.8.18.0.tar
+    docker load < FILE_PATH/es.9.0.0.tar
+    docker load < FILE_PATH/kibana.9.0.0.tar
+    docker load < FILE_PATH/apm.9.0.0.tar
     ```
 
 5. Optional: Remove the .tar files after installation.
@@ -62,8 +63,12 @@ To perform an offline installation without a private Docker registry, you have t
     curl -L -O https://download.elastic.co/cloud/elastic-cloud-enterprise.sh
     ```
 
-7. Copy the installation script to each host where you plan to install Elastic Cloud Enterprise or make it available on your network.
+7. Copy the installation script to each host where you plan to install {{ece}} or make it available on your network.
 8. Invoke the installation script on each host:
+
+   ::::{note}
+   The installation commands for this method are the same as in a standard installation. Refer to [](./install-ece-procedures.md) for details on the installation steps and the parameters required by the installation script, which vary based on your installation size.
+   ::::
 
     1. On the first host:
 
@@ -79,4 +84,4 @@ To perform an offline installation without a private Docker registry, you have t
           --roles-token 'TOKEN'
         ```
 
-
+   Once the installation is complete, refer to [](./log-into-cloud-ui.md) to access Cloud UI.

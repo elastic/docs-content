@@ -43,11 +43,11 @@ Choose the data you want to visualize.
 
 Edit and delete.
 
-1. Hover over the panel and click ![Edit visualization icon](../../images/kibana-edit-visualization-icon.png "") to edit the visualization. The **Edit visualization** flyout appears.
+1. Hover over the panel and click ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") to edit the visualization. The **Edit visualization** flyout appears.
 2. To change the aggregation **Quick function**, click the field in the flyout.
-3. To delete a field, click ![Actions menu icon to delete a field](../../images/kibana-trash_can.png "") next to the field.
-4. To duplicate a layer, click ![Actions menu to duplicate Lens visualization layers](../../images/kibana-vertical-actions-menu.png "") in the flyout, then select **Duplicate layer**.
-5. To clear the layer configuration, click ![Actions menu to clear Lens visualization layers](../../images/kibana-vertical-actions-menu.png "") in the flyout, then select **Clear layer**.
+3. To delete a field, click ![Actions menu icon to delete a field](/explore-analyze/images/kibana-trash_can.png "kibana-trash_can =5%x5%") next to the field.
+4. To duplicate a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Duplicate layer**.
+5. To clear the layer configuration, click ![Actions menu to clear Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") in the flyout, then select **Clear layer**.
 6. Click **Apply and close**.
 
 ::::{tip}
@@ -66,7 +66,8 @@ Change the fields list to display a different {{data-source}}, different time ra
 
 * If the fields list is empty, change the [time filter](../query-filter/filtering.md).
 * To add fields, open the {{data-source}} dropdown, then select **Add a field to this {{data-source}}**.
-  ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](../../images/kibana-lens_dataViewDropDown_8.4.0.png "")
+  ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](/explore-analyze/images/kibana-lens_dataViewDropDown_8.4.0.png "")
+  
   For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
 
 
@@ -119,9 +120,9 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 1. Select the field in the fields list or layer pane. Most fields have an inner and outer select state. The inner state opens a panel with detailed information or options. The outer state allows you to drag the field. Tab through the fields until you get the outer state on the field.
 
-   :::{image} ../../images/kibana-lens_drag_drop_2.png
+   :::{image} /explore-analyze/images/kibana-lens_drag_drop_2.png
    :alt: Lens drag and drop focus state
-   :class: screenshot
+   :screenshot:
    :::
 
 2. Complete the following actions:
@@ -131,9 +132,9 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
     * To reorder the fields on the layer pane, use the Up and Down arrows.
     * To duplicate an action, use the Left and Right arrows, then select the **Drop a field or click to add** field you want to use.
 
-      :::{image} ../../images/kibana-lens_drag_drop_3.gif
+      :::{image} /explore-analyze/images/kibana-lens_drag_drop_3.gif
       :alt: Using drag and drop to reorder
-      :class: screenshot
+      :screenshot:
       :::
 
 3. To confirm the action, press Space bar. To cancel, press Esc.
@@ -173,7 +174,7 @@ Formulas allow you to perform math on aggregated data. The most common formulas 
         ```
 
         ::::{tip}
-        For detailed information on formulas, click ![Formula reference icon](../../images/kibana-formula_reference.png "").
+        For detailed information on formulas, click ![Formula reference icon](/explore-analyze/images/kibana-formula_reference.png "").
         ::::
 
 3. To accurately display the formula, select **Percent** from the **Value format** dropdown.
@@ -194,7 +195,7 @@ For a time shift example, refer to [Compare time ranges](../dashboards/create-da
 
 To create partition charts, such as pie charts, configure one or more **Slice by** dimensions to define the partitions, and a **Metric** dimension to define the size. To create partition charts with multiple metrics, use the layer settings. Multiple metrics are unsupported for mosaic visualizations.
 
-1. In the layer pane, click ![Actions menu for the partition visualization layer](../../images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
+1. In the layer pane, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
 2. Select **Multiple metrics**.
 3. Click **X**.
 
@@ -208,7 +209,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Data sampling allows you to improve the visualization loading time. To decrease the loading time, use a lower sampling percentage, which also decreases the accuracy. Use low sampling percentages on large datasets.
 
-1. In the **Edit visualization** flyout, click ![Actions menu for the partition visualization layer](../../images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
+1. In the **Edit visualization** flyout, click ![Actions menu for the partition visualization layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Layer settings**.
 2. To select the **Sampling** percentage, use the slider.
 3. Click **Apply and close**.
 4. Click **Save**.
@@ -223,9 +224,9 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Annotations allow you to call out specific points in your visualizations that are important, such as significant changes in the data. You can add annotations for any {{data-source}}, add text and icons, specify the line format and color, and more.
 
-:::{image} ../../images/kibana-lens_annotations_8.2.0.png
+:::{image} /explore-analyze/images/kibana-lens_annotations_8.2.0.png
 :alt: Lens annotations
-:class: screenshot
+:screenshot:
 :::
 
 Annotations support two placement types:
@@ -240,15 +241,15 @@ Create a new annotation layer.
 1. In the layer pane, click **Add layer > Annotations > New annotation**.
 2. Select the {{data-source}} for the annotation.
 3. From the fields list, drag a field to the **Add an annotation** field.
-4. To use global filters in the annotation, click ![Actions menu for the annotations layer](../../images/kibana-lens_layerActions_8.5.0.png ""), then select **Keep global filters** from the dropdown.
+4. To use global filters in the annotation, click ![Actions menu for the annotations layer](/explore-analyze/images/kibana-lens_layerActions_8.5.0.png ""), then select **Keep global filters** from the dropdown.
 
-    When you add the visualization to dashboards, ![Visualization modifier popup](../../images/kibana-lens_visualizationModifierPopup_8.8.0.png "") appears, which allows you to view settings changes to the visualization.
+    When you add the visualization to dashboards, ![Visualization modifier popup](/explore-analyze/images/kibana-lens_visualizationModifierPopup_8.8.0.png "") appears, which allows you to view settings changes to the visualization.
 
 
 Create static annotations.
 
 1. Select **Static date**.
-2. In the **Annotation date** field, click ![Annodation date icon in Lens](../../images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
+2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
 3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
 
 Create custom query annotations.
@@ -269,7 +270,7 @@ Specify the annotation appearance.
 
 Save the annotation group to the library.
 
-1. In the layer pane, on your annotation layer, click ![Save button on annotations layer](../../images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
+1. In the layer pane, on your annotation layer, click ![Save button on annotations layer](/explore-analyze/images/kibana-lens_saveAnnotationLayerButton_8.9.0.png "").
 2. Enter the **Title**, **Description**, and add any applicable [**Tags**](../find-and-organize/tags.md).
 3. Click **Save group**.
 
@@ -285,9 +286,9 @@ With reference lines, you can identify specific values in your visualizations wi
 
 For example, to track the number of bytes in the 75th percentile, add a shaded **Percentile** reference line to your time series visualization.
 
-:::{image} ../../images/kibana-lens_referenceLine_7.16.png
+:::{image} /explore-analyze/images/kibana-lens_referenceLine_7.16.png
 :alt: Lens drag and drop focus state
-:class: screenshot
+:screenshot:
 :::
 
 1. In the layer pane, click **Add layer > Reference lines**.
@@ -350,9 +351,9 @@ The following component menus are available:
 
 #### Customize a visualization legend [customize-visualization-legend]
 
-When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](../../images/kibana-legend-icon.svg "") icon.
+When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") icon.
 
-:::{image} ../../images/kibana-legend-popover-8.16.0.png
+:::{image} /explore-analyze/images/kibana-legend-popover-8.16.0.png
 :alt: Menu with options to customize the legend of a visualization
 :::
 
@@ -397,7 +398,7 @@ All statistics are computed based on the selected time range and the aggregated 
 
 For example, if the metric plotted in the chart is `Median(system.memory)` and the time range is **last 24 hours**, when you show the **Max** statistic in the Legend, the value that shows corresponds to the `Max[Median(system.memory)]` for the last 24 hours.
 
-:::{image} ../../images/kibana-statistics-in-legends.png
+:::{image} /explore-analyze/images/kibana-statistics-in-legends.png
 :alt: Additional statistics shown in the legend of a memory consumption bar chart
 :::
 
@@ -637,7 +638,7 @@ In the color palette editor, if you select **Value type: Number** the colors are
 
 The **Primary metric** refers to the large number displayed in each tile.
 
-![Illustration of where to find the primary metric in a metric visualization.](../../images/kibana-lens_primaryMetric.png "")
+![Illustration of where to find the primary metric in a metric visualization.](/explore-analyze/images/kibana-lens_primaryMetric.png "")
 
 If you select **Value type: Percent**, the primary metric values are mapped to a range between 0 and 100 percent. The bounds of the range depend on your configuration.
 

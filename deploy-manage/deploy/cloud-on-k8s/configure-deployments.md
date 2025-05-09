@@ -29,7 +29,9 @@ Additionally, the following topics apply to both {{es}} and {{kib}}, and in some
 
 ECK also facilitates configuration and operation activities with advanced features, such as:
 
-* [**Elastic Stack configuration policies**](elastic-stack-configuration-policies.md): Organize your {{es}} and {{kib}} configuration settings through `StackConfigPolicy` resources that can be referenced within your deployments. This helps to keep your manifests simplified.
+* [**Secure settings**](/deploy-manage/security/k8s-secure-settings.md): Configure {{es}} and {{kib}} keystore settings through Kubernetes secrets.
+
+* [**{{stack}} configuration policies**](elastic-stack-configuration-policies.md): Organize your {{es}} and {{kib}} configuration settings through `StackConfigPolicy` resources that can be referenced within your deployments. This helps to keep your manifests simplified.
 
 ::::{important}
 Explore the [Security](/deploy-manage/security.md) and [Users and roles](/deploy-manage/users-roles.md) sections to to learn more about how to secure and control access your deployments.

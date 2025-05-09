@@ -2,6 +2,9 @@
 navigation_title: "Kafka"
 mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/ts-plugins.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Troubleshoot Logstash plugin for Kafka [ts-kafka]
@@ -64,7 +67,7 @@ From a performance perspective, decreasing the `max_poll_records` value is prefe
 
 By default, the kafka input plugin checks connectivity and validates the schema registry during plugin registration before events are processed. In some circumstances, this process may fail when it tries to validate an authenticated schema registry, causing the plugin to crash.
 
-The plugin offers a `schema_registry_validation` setting to change the default behavior. This setting allows the plugin to skip validation during registration, which allows the plugin to continue and events to be processed. See the [kafka input plugin documentation](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-kafka.md#plugins-inputs-kafka-schema_registry_validation) for more information about the plugin and other configuration options.
+The plugin offers a `schema_registry_validation` setting to change the default behavior. This setting allows the plugin to skip validation during registration, which allows the plugin to continue and events to be processed. See the [kafka input plugin documentation](logstash-docs-md://lsr/plugins-inputs-kafka.md#plugins-inputs-kafka-schema_registry_validation) for more information about the plugin and other configuration options.
 
 ::::{note}
 An incorrectly configured schema registry will still stop the plugin from processing events.
@@ -88,9 +91,6 @@ Logstash’s Kafka Input is causing a much higher number of commits to the offse
 For Kafka Broker versions 0.10.2.1 to 1.0.x: The problem is caused by a bug in Kafka. [https://issues.apache.org/jira/browse/KAFKA-6362](https://issues.apache.org/jira/browse/KAFKA-6362) The client’s best option is upgrading their Kafka Brokers to version 1.1 or newer.
 
 For older versions of Kafka or if the above does not fully resolve the issue: The problem can also be caused by setting the value for `poll_timeout_ms` too low relative to the rate at which the Kafka Brokers receive events themselves (or if Brokers periodically idle between receiving bursts of events). Increasing the value set for `poll_timeout_ms` proportionally decreases the number of offsets commits in this scenario. For example, raising it by 10x will lead to 10x fewer offset commits.
-
-
-#
 
 **Symptoms**
 

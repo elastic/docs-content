@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-log-anomalies.html
+applies_to:
+  stack: all
 ---
 
 # Inspect log anomalies [inspect-log-anomalies]
@@ -12,10 +14,10 @@ When the {{anomaly-detect}} features of {{ml}} are enabled, you can use the **Lo
 * A significant drop in the log rate might suggest that a piece of infrastructure stopped responding, and thus we’re serving fewer requests.
 * A spike in the log rate could denote a DDoS attack. This may lead to an investigation of IP addresses from incoming requests.
 
-You can also view log anomalies directly in the [{{ml-app}} app](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md).
+You can also view log anomalies directly in the [{{ml-app}} app](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md).
 
 ::::{note}
-This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
+This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
 
@@ -33,16 +35,16 @@ Create a {{ml}} job to detect anomalous log entry rates automatically.
 
 ## Anomalies chart [anomalies-chart]
 
-The Anomalies chart shows an overall, color-coded visualization of the log entry rate, partitioned according to the value of the Elastic Common Schema (ECS) [`event.dataset`](asciidocalypse://docs/ecs/docs/reference/ecs-event.md) field. This chart helps you quickly spot increases or decreases in each partition’s log rate.
+The Anomalies chart shows an overall, color-coded visualization of the log entry rate, partitioned according to the value of the Elastic Common Schema (ECS) [`event.dataset`](ecs://reference/ecs-event.md) field. This chart helps you quickly spot increases or decreases in each partition’s log rate.
 
 If you have a lot of log partitions, use the following to filter your data:
 
 * Hover over a time range to see the log rate for each partition.
 * Click or hover on a partition name to show, hide, or highlight the partition values.
 
-:::{image} ../../../images/observability-anomalies-chart.png
+:::{image} /solutions/images/observability-anomalies-chart.png
 :alt: Anomalies chart
-:class: screenshot
+:screenshot:
 :::
 
 The chart shows the time range where anomalies were detected. The typical rate values are shown in gray, while the anomalous regions are color-coded and superimposed on top.

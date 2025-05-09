@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/sec-manage-intro.html
   - https://www.elastic.co/guide/en/serverless/current/security-manage-endpoint-protection.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Manage {{elastic-defend}} [sec-manage-intro]

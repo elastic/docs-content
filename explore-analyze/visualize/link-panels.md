@@ -8,11 +8,11 @@ mapped_pages:
 
 # Link panels [dashboard-links]
 
-You can use **Links** panels to create links to other dashboards or external websites. When creating links to other dashboards, you have the option to carry the time range, query, and filters to apply over to the linked dashboard. Links to external websites follow the [`externalUrl.policy`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/url-drilldown-settings.md#external-URL-policy) settings. **Links** panels support vertical and horizontal layouts and may be saved to the **Library** for use in other dashboards.
+You can use **Links** panels to create links to other dashboards or external websites. When creating links to other dashboards, you have the option to carry the time range, query, and filters to apply over to the linked dashboard. Links to external websites follow the [`externalUrl.policy`](kibana://reference/configuration-reference/url-drilldown-settings.md#external-url-policy) settings. **Links** panels support vertical and horizontal layouts and may be saved to the **Library** for use in other dashboards.
 
-:::{image} ../../images/kibana-dashboard_links_panel.png
+:::{image} /explore-analyze/images/kibana-dashboard_links_panel.png
 :alt: A screenshot displaying the new links panel
-:class: screenshot
+:screenshot:
 :::
 
 * [Add a links panel](#add-links-panel)
@@ -51,12 +51,12 @@ To add a previously saved links panel to another dashboard:
 
 To edit links panels:
 
-1. Hover over the panel and click ![Edit links icon](../../images/kibana-edit-visualization-icon.png "") to edit the link. The **Edit links panel** flyout appears.
-2. Click ![Edit link icon](../../images/kibana-edit-link-icon.png "") next to the link.
+1. Hover over the panel and click ![Edit links icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") to edit the link. The **Edit links panel** flyout appears.
+2. Click ![Edit link icon](/explore-analyze/images/kibana-edit-link-icon.png "kibana-edit-link-icon =4%x4%") next to the link.
 
-   :::{image} ../../images/kibana-edit-links-panel.png
+   :::{image} /explore-analyze/images/kibana-edit-links-panel.png
    :alt: A screenshot displaying the Edit icon next to the link
-   :class: screenshot
+   :screenshot:
    :::
 
 3. Edit the link as needed and then click **Update link**.

@@ -3,12 +3,12 @@ navigation_title: "AWS S3 repository"
 
 applies_to:
   deployment:
-    ece: 
+    ece:
 ---
 
 # Configure a snapshot repository using AWS S3 [ece-aws-custom-repository]
 
-To store Elasticsearch snapshots in AWS S3, you need to configure a snapshot repository in Elastic Cloud Enterprise (ECE). This guide explains how to add an Amazon S3 repository using the Cloud UI and provides details on required settings and advanced configurations.
+To store {{es}} snapshots in AWS S3, you need to configure a snapshot repository in {{ece}} (ECE). This guide explains how to add an Amazon S3 repository using the Cloud UI and provides details on required settings and advanced configurations.
 
 To add a snapshot repository:
 
@@ -17,7 +17,7 @@ To add a snapshot repository:
 3. Select **Add Repository** to add an existing repository.
 4. Provide a name for the repository configuration.
 
-    ECE Snapshot Repository names are now required to meet the same standards as S3 buckets. Refer to the official AWS documentation on [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.md).
+    ECE Snapshot Repository names are now required to meet the same standards as S3 buckets. Refer to the official AWS documentation on [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 
 5. Select one of the supported repository types and specify the necessary settings:
 
@@ -41,7 +41,7 @@ To add a snapshot repository:
 
         Used for Microsoft Azure, Google Cloud Platform, or for some Amazon S3 repositories where you need to provide additional configuration parameters not supported by the S3 repository option. Configurations must be specified in a valid JSON format. For example:
 
-        Amazon S3 (check [supported settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html#repository-s3-repository)):
+        Amazon S3 (check [supported settings](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-repository)):
 
         ```json
         {

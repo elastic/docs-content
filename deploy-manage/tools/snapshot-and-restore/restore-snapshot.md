@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Restore a snapshot
@@ -49,7 +51,7 @@ When restoring data from a snapshot, keep the following in mind:
 
 ## Get a list of available snapshots
 
-To view a list of available snapshots in Kibana, go to **Stack Management > Snapshot and Restore**.
+To view a list of available snapshots in {{kib}}, go to **Stack Management > Snapshot and Restore**.
 
 You can also use the get repository API and the get snapshot API to find snapshots that are available to restore. First, use the get repository API to fetch a list of registered snapshot repositories.
 
@@ -206,7 +208,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
 1. If you [backed up the cluster’s configuration files](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md#back-up-config-files), you can restore them to each node. This step is optional and requires a [full cluster restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md).
 
-    After you shut down a node, copy the backed-up configuration files over to the node’s `$ES_PATH_CONF` directory. Before restarting the node, ensure `elasticsearch.yml` contains the appropriate node roles, node name, and other node-specific settings.
+    After you shut down a node, copy the backed-up configuration files over to the node’s `$ES_PATH_CONF` directory. Before restarting the node, ensure [`elasticsearch.yml`](/deploy-manage/stack-settings.md) contains the appropriate node roles, node name, and other node-specific settings.
 
     If you choose to perform this step, you must repeat this process on each node in the cluster.
 
@@ -275,7 +277,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
         }
         ```
 
-3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool.
+3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) tool.
 
     For example, the following command creates a user named `restore_user`.
 
@@ -285,7 +287,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
     Use this file realm user to authenticate requests until the restore operation is complete.
 
-4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-management-settings.html#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
+4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
 
     ```console
     PUT _cluster/settings
@@ -462,7 +464,7 @@ Before you start a restore operation, ensure the new cluster has enough capacity
 
 * Add nodes or upgrade your hardware to increase capacity.
 * Restore fewer indices and data streams.
-* Reduce the [number of replicas](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-number-of-replicas) for restored indices.
+* Reduce the [number of replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) for restored indices.
 
     For example, the following restore snapshot API request uses the `index_settings` option to set `index.number_of_replicas` to `1`.
 

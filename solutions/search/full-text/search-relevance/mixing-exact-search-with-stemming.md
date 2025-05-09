@@ -8,7 +8,7 @@ applies_to:
 
 # Mixing exact search with stemming [mixing-exact-search-with-stemming]
 
-When building a search application, stemming is often a must as it is desirable for a query on `skiing` to match documents that contain `ski` or `skis`. But what if a user wants to search for `skiing` specifically? The typical way to do this would be to use a [multi-field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md) in order to have the same content indexed in two different ways:
+When building a search application, stemming is often a must as it is desirable for a query on `skiing` to match documents that contain `ski` or `skis`. But what if a user wants to search for `skiing` specifically? The typical way to do this would be to use a [multi-field](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) in order to have the same content indexed in two different ways:
 
 ```console
 PUT index
@@ -199,7 +199,7 @@ GET index/_search
 
 In the above case, since `ski` was in-between quotes, it was searched on the `body.exact` field due to the `quote_field_suffix` parameter, so only document `1` matched. This allows users to mix exact search with stemmed search as they like.
 
-::::{note} 
+::::{note}
 If the choice of field passed in `quote_field_suffix` does not exist the search will fall back to using the default field for the query string.
 ::::
 

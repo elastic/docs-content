@@ -6,7 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-crud.html
 ---
 
-# Manage deployments using the Elastic Cloud API [ec-api-deployment-crud]
+# Manage deployments using the {{ecloud}} API [ec-api-deployment-crud]
 
 The following examples demonstrate Create, Read, Update and Delete operations on a `deployments` resource. If you haven’t created an API Key yet, you can follow the [Authentication documentation](../../api-keys/elastic-cloud-api-keys.md).
 
@@ -38,12 +38,12 @@ curl \
 When you create a new deployment through the API, you have two options:
 
 1. **Use default values.** The simplest option is to create the deployment using a set of default values that are gathered automatically from a deployment template specified in the API request.
-2. **Configure the deployment settings manually.** With this option, the API request to create a new deployment is very descriptive, with many settings to tweak. If you use this option we recommend that you configure your desired deployment in the Elastic Cloud UI and copy the JSON payload.
+2. **Configure the deployment settings manually.** With this option, the API request to create a new deployment is very descriptive, with many settings to tweak. If you use this option we recommend that you configure your desired deployment in the {{ecloud}} UI and copy the JSON payload.
 
 
 ### Create a deployment using default values [ec-api-examples-deployment-simple]
 
-This example requires minimal information in the API payload, and creates a deployment with default settings and a default name. You just need to specify one of the [available deployment templates](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md) in your API request header and the deployment is created using default settings from that template.
+This example requires minimal information in the API payload, and creates a deployment with default settings and a default name. You just need to specify one of the [available deployment templates](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) in your API request header and the deployment is created using default settings from that template.
 
 ```sh
 curl -XPOST \
@@ -59,7 +59,7 @@ curl -XPOST \
 ```
 
 1. Optional: You can specify a version for the deployment. If this field is omitted a default version is used.
-2. Required: One of the [available regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md) must be provided in the request.
+2. Required: One of the [available regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) must be provided in the request.
 
 
 A `resource` field can be included in this request (check the following, manual example for the field details). When a `resource` is present, the content of the request is used instead of any default values provided by the the deployment template.
@@ -69,9 +69,9 @@ A `resource` field can be included in this request (check the following, manual 
 
 This example creates a new deployment named "my-first-api-deployment" with the following characteristics:
 
-* Version 8.17.1 of the Elastic Stack
-* Elasticsearch cluster in two zones with 4 GB of memory for each node
-* 1 GB single zone Kibana instance and 1 GB Integrations Server instance
+* Version 8.17.1 of the {{stack}}
+* {{es}} cluster in two zones with 4 GB of memory for each node
+* 1 GB single zone {{kib}} instance and 1 GB Integrations Server instance
 
 ```sh
 curl -XPOST \
@@ -262,11 +262,11 @@ curl -XPOST \
 '
 ```
 
-1. [Available Regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md)
-2. Availability zones for the Elasticsearch cluster
-3. [Available instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md)
-4. Memory allocated for each Elasticsearch node
-5. [Available templates](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md)
+1. [Available Regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md)
+2. Availability zones for the {{es}} cluster
+3. [Available instance configurations](cloud://reference/cloud-hosted/ec-regions-templates-instances.md)
+4. Memory allocated for each {{es}} node
+5. [Available templates](cloud://reference/cloud-hosted/ec-regions-templates-instances.md)
 6. Availability zones for Kibana
 7. Memory allocated for Kibana
 8. Availability zones for Integrations Server
@@ -286,7 +286,7 @@ You are able to create deployments with *non* [End-of-life (EOL) versions](avail
 
 ## Update a deployment [ec_update_a_deployment]
 
-Modify the Elasticsearch resource by increasing the amount of memory to 8 GB.
+Modify the {{es}} resource by increasing the amount of memory to 8 GB.
 
 ```sh
 curl -XPUT \
@@ -342,7 +342,7 @@ curl -XPUT \
 ```
 
 1. Give the deployment a new name
-2. Increase the amount of memory allocated for each Elasticsearch node to 8 GB
+2. Increase the amount of memory allocated for each {{es}} node to 8 GB
 
 
 ::::{tip}

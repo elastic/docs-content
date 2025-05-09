@@ -2,23 +2,13 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/saved-objects.html
   - https://www.elastic.co/guide/en/kibana/current/managing-saved-objects.html
   - https://www.elastic.co/guide/en/kibana/current/saved-object-ids.html
 ---
 
 # Saved objects [saved-objects]
-
-% What needs to be done: Refine
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/docs-content/serverless/saved-objects.md
-% - [ ] ./raw-migrated-files/kibana/kibana/managing-saved-objects.md
-% - [ ] ./raw-migrated-files/kibana/kibana/saved-object-ids.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$managing-saved-objects-copy-to-space$$$
 
@@ -42,9 +32,9 @@ Edit, import, export, and copy your saved objects. These objects include dashboa
 
 You can find the **Saved Objects** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../images/kibana-management-saved-objects.png
+:::{image} /explore-analyze/images/kibana-management-saved-objects.png
 :alt: Saved Objects
-:class: screenshot
+:screenshot:
 :::
 
 ## Permissions [_required_permissions_5]
@@ -59,7 +49,7 @@ Granting access to `Saved Objects Management` authorizes users to manage all sav
 ## View and delete [saved-objects-view-and-delete]
 
 * To view and edit a saved object in its associated application, click the object title.
-* To show objects that use this object, so you know the impact of deleting it, click the actions icon ![More actions](../../images/serverless-boxesHorizontal.svg "") and then select **Relationships**.
+* To show objects that use this object, so you know the impact of deleting it, click the actions icon ![More actions](/explore-analyze/images/serverless-boxesHorizontal.svg "") and then select **Relationships**.
 * To delete one or more objects, select their checkboxes, and then click **Delete**.
 
 
@@ -80,7 +70,7 @@ Import multiple objects in a single operation.
 4. Click **Import**.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportPayloadBytes) setting limits the overall size of the file that you can import.
+The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedobjects-maximportexportsize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](kibana://reference/configuration-reference/general-settings.md#savedobjects-maximportpayloadbytes) setting limits the overall size of the file that you can import.
 ::::
 
 
@@ -94,7 +84,7 @@ Export objects by selection or type.
 {{kib}} creates an NDJSON with all your saved objects. By default, the NDJSON includes child objects related to the saved objects. Exported dashboards include their associated {{data-sources}}.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects that you can export.
+The [`savedObjects.maxImportExportSize`](kibana://reference/configuration-reference/general-settings.md#savedobjects-maximportexportsize) configuration setting limits the number of saved objects that you can export.
 ::::
 
 
@@ -102,7 +92,7 @@ The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/conf
 
 Copy saved objects and their related objects between spaces.
 
-1. Click the actions icon ![Actions](../../images/serverless-boxesHorizontal.svg "").
+1. Click the actions icon ![Actions](/explore-analyze/images/serverless-boxesHorizontal.svg "").
 2. Click **Copy to spaces**.
 3. Specify whether to automatically overwrite any objects that already exist in the target spaces, or resolve them on a per-object basis.
 4. Select the spaces in which to copy the object.
@@ -116,9 +106,8 @@ With each release, {{kib}} introduces changes to the way saved objects are store
 
 However, saved objects can only be imported into the same version, a newer minor on the same major, or the next major. Exported saved objects are not backward compatible and cannot be imported into an older version of {{kib}}. For example:
 
-|     |     |     |
-| --- | --- | --- |
 | Exporting version | Importing version | Compatible? |
+| --- | --- | --- |
 | 8.7.0 | 8.8.1 | Yes |
 | 7.8.1 | 8.3.0 | Yes |
 | 8.3.0 | 8.11.1 | Yes |
@@ -126,9 +115,9 @@ However, saved objects can only be imported into the same version, a newer minor
 | 7.8.1 | 9.0.0 | No |
 
 ## Saved Object IDs [saved-object-ids]
-::::{applies_to}
-:stack:
-::::
+```{applies_to}
+stack:
+```
 
 In the past, many saved object types could have the same ID in different [spaces](/deploy-manage/manage-spaces.md). For example, if you copied dashboard "123" from the one space to another space, the second dashboard would also have an ID of "123". While the saved object ID is not something that users would interact with directly, many aspects of {{kib}} rely on it, notably URLs. If you have a "deep link" URL to a saved dashboard, that URL includes the saved object ID.
 
@@ -138,7 +127,7 @@ We have made several enhancements to minimize the impact, and this document desc
 
 ### Impact upon upgrading to version 8.x or later [saved-object-ids-impact-upon-upgrading]
 
-Every time you upgrade {{kib}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/internal-upgrade-processes/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
+Every time you upgrade {{kib}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/deployment-or-cluster/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
 
 In practical terms, **any old saved objects that exist in a custom space will have their IDs changed to a new UUID**, while saved objects in the Default space will be unchanged. This is how we can ensure that every saved object ID is unique. For example: if you had dashboard "123" in the Default space and dashboard "123" in Another space, after the upgrade you would have dashboard "123" in the Default space and dashboard "456" in Another space.
 
@@ -149,7 +138,7 @@ After you upgrade, or if you set up a new {{kib}} instance using version 8.x or 
 
 #### Accessing saved objects using old URLs [saved-object-ids-impact-when-using-legacy-urls]
 
-When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](asciidocalypse://docs/kibana/docs/extend/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
+When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](kibana://extend/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
 
 
 #### Importing and copying saved objects [saved-object-ids-impact-when-using-import-and-copy]
@@ -178,7 +167,7 @@ When you import a saved object and it is created with a different ID, if 1. it c
 If you are using the saved objects APIs directly, you should be aware of these changes:
 
 ::::{warning}
-Some of the saved objects APIs are deprecated since version 8.7.0. For more information, refer to the [API docs](https://www.elastic.co/guide/en/kibana/current/saved-objects-api.html)
+Some of the saved objects APIs are deprecated since version 8.7.0. For more information, refer to the [API docs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects)
 ::::
 
 

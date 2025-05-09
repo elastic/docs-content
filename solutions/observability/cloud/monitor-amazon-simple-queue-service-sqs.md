@@ -2,6 +2,8 @@
 navigation_title: "SQS"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-sqs.html
+applies_to:
+  stack:
 ---
 
 
@@ -24,8 +26,7 @@ To collect SQS metrics, you typically need to install the Elastic [Amazon SQS in
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
-:::::{dropdown} **Quick guide: Add data**
-::::{note}
+:::::{dropdown} Quick guide: Add data
 1. In the Observability UI, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for and select the **Amazon SQS** integration.
 3. Read the overview to make sure you understand integration requirements and other considerations.
@@ -49,7 +50,7 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 
 9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](/reference/fleet/index.md).
 
 ::::
 
@@ -57,16 +58,16 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 :::::
 
 
-{{agent}} is currently the preferred way to add SQS metrics. For other ways, refer to [Adding data to {{es}}](../../../manage-data/ingest.md).
+{{agent}} is currently the preferred way to add SQS metrics. For other ways, refer to [Adding data to {{es}}](/manage-data/ingest.md).
 
 
 ## Dashboards [dashboard-sqs]
 
 For example, to see an overview of your SQS metrics in {{kib}}, go to the **Dashboard** app and navigate to the **[Metrics AWS] SQS Overview** dashboard.
 
-:::{image} ../../../images/observability-sqs-dashboard.png
+:::{image} /solutions/images/observability-sqs-dashboard.png
 :alt: Screenshot showing the SQS overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

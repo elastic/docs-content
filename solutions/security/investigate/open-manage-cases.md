@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cases-open-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Open and manage cases [security-cases-open-manage]
@@ -23,7 +27,7 @@ Open a new case to keep track of security issues and share their details with co
 
 
     ::::{tip}
-    You can insert a Timeline link in the case description by clicking the Timeline icon (![Timeline icon](../../../images/security-add-timeline-button.png "title =20x20")).
+    You can insert a Timeline link in the case description by clicking the Timeline icon (![Timeline icon](/solutions/images/security-add-timeline-button.png "title =20x20")).
     ::::
 
 4. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/solutions/security/investigate/cases-requirements.md).
@@ -37,12 +41,12 @@ Open a new case to keep track of security issues and share their details with co
     ::::
 
 
-:::{image} ../../../images/security-cases-ui-open.png
+:::{image} /solutions/images/security-cases-ui-open.png
 :alt: Shows an open case
-:class: screenshot
+:screenshot:
 :::
 
-% This wasn't in the Serverless docs. Might be an ESS-only feature.
+% Check with Lisa if email notifications is an ESS-only feature. Not in Serverless docs: https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
 
 ## Add email notifications [cases-ui-notifications]
 
@@ -60,11 +64,11 @@ For self-managed {{kib}}:
 1. Create a preconfigured email connector.
 
     ::::{note}
-    At this time, email notifications support only [preconfigured email connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md), which are defined in the `kibana.yml` file.
+    At this time, email notifications support only [preconfigured email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md), which are defined in the [`kibana.yml`](/deploy-manage/stack-settings.md) file.
     ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting to the name of your email connector.
-3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](/deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting.
+3. If you want the email notifications to contain links back to the case, you must configure the [server.publicBaseUrl](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting.
 
 When you subsequently add assignees to cases, they receive an email.
 
@@ -73,9 +77,9 @@ When you subsequently add assignees to cases, they receive an email.
 
 From the Cases page, you can search existing cases and filter them by attributes such as assignees, categories, severity, status, and tags. You can also select multiple cases and use bulk actions to delete cases or change their attributes. General case metrics, including how long it takes to close cases, are provided above the table.
 
-:::{image} ../../../images/security-cases-home-page.png
+:::{image} /solutions/images/security-cases-home-page.png
 :alt: Case UI Home
-:class: screenshot
+:screenshot:
 :::
 
 To explore a case, click on its name. You can then:
@@ -84,7 +88,7 @@ To explore a case, click on its name. You can then:
 * [Add and manage comments](/solutions/security/investigate/open-manage-cases.md#cases-manage-comments)
 
     ::::{tip}
-    Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](../../../images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
+    Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](/solutions/images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
     ::::
 
 * Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts) and [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case) attached to the case
@@ -110,9 +114,9 @@ Click on an existing case to access its summary. The case summary, located under
 * **In progress duration**: How long the case has been in the `In progress` state
 * **Duration from creation to close**: Time elapsed from when the case was created to when it was closed
 
-:::{image} ../../../images/security-cases-summary.png
+:::{image} /solutions/images/security-cases-summary.png
 :alt: Shows you a summary of the case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -120,9 +124,9 @@ Click on an existing case to access its summary. The case summary, located under
 
 To edit, delete, or quote a comment, select the appropriate option from the **More actions** menu (**…​**).
 
-:::{image} ../../../images/security-cases-manage-comments.png
+:::{image} /solutions/images/security-cases-manage-comments.png
 :alt: Shows you a summary of the case
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -130,9 +134,9 @@ To edit, delete, or quote a comment, select the appropriate option from the **Mo
 
 To explore the alerts attached to a case, click the **Alerts** tab. In the table, alerts are organized from oldest to newest. To [view alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md), click the **View details** button.
 
-:::{image} ../../../images/security-cases-alert-tab.png
+:::{image} /solutions/images/security-cases-alert-tab.png
 :alt: Shows you the Alerts tab
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -145,14 +149,14 @@ Each case can have a maximum of 1,000 alerts.
 
 To upload files to a case, click the **Files** tab:
 
-:::{image} ../../../images/security-cases-files.png
+:::{image} /solutions/images/security-cases-files.png
 :alt: A list of files attached to a case
-:class: screenshot
+:screenshot:
 :::
 
-You can set file types and sizes by configuring your [{{kib}} case settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/cases-settings.md).
+You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
 
-% The following note was grabbed from the Serverless docs. Check if this is Serverless only or if it's for both.
+% Check with Lisa whether following note is only applicable to Serverless or if it's for ESS too.
 
 ::::{note}
 There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
@@ -173,9 +177,9 @@ This functionality is in beta and is subject to change. The design and code is l
 
 Add a Lens visualization to your case to portray event and alert data through charts and graphs.
 
-:::{image} ../../../images/security-add-vis-to-case.gif
+:::{image} /solutions/images/security-add-vis-to-case.gif
 :alt: Shows how to add a visualization to a case
-:class: screenshot
+:screenshot:
 :::
 
 To add a Lens visualization to a comment within your case:
@@ -200,9 +204,9 @@ Alternatively, while viewing a [dashboard](/solutions/security/dashboards.md) yo
 
 After a visualization has been added to a case, you can modify or interact with it by clicking the **Open Visualization** option in the case’s comment menu.
 
-:::{image} ../../../images/security-cases-open-vis.png
+:::{image} /solutions/images/security-cases-open-vis.png
 :alt: Shows where the Open Visualization option is
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -239,9 +243,9 @@ Go to the **Similar cases** tab to access other cases with the same observables.
 ::::
 
 
-:::{image} ../../../images/security-cases-add-observables.png
+:::{image} /solutions/images/security-cases-add-observables.png
 :alt: Shows you where to add observables
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -249,9 +253,10 @@ Go to the **Similar cases** tab to access other cases with the same observables.
 
 Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the Cases page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…​), select **Copy Case ID**.
 
-:::{image} ../../../images/security-cases-copy-case-id.png
-:alt: Copy Case ID option in More actions menu 30%
-:class: screenshot
+:::{image} /solutions/images/security-cases-copy-case-id.png
+:alt: Copy Case ID option in More actions menu
+:width: 250px
+:screenshot:
 :::
 
 
@@ -296,9 +301,9 @@ To export a case:
     ::::
 
 
-:::{image} ../../../images/security-cases-export-button.png
+:::{image} /solutions/images/security-cases-export-button.png
 :alt: Shows the export saved objects workflow
-:class: screenshot
+:screenshot:
 :::
 
 

@@ -1,21 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/about-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-about-rules.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
-# About detection rules
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/about-rules.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-about-rules.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$rule-types$$$
+# About detection rules [security-about-rules]
 
 Rules run periodically and search for source events, matches, sequences, or {{ml}} job anomaly results that meet their criteria. When a rule’s criteria are met, a detection alert is created.
 
@@ -25,7 +18,7 @@ Rules run periodically and search for source events, matches, sequences, or {{ml
 You can create the following types of rules:
 
 * [**Custom query**](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule): Query-based rule, which searches the defined indices and creates an alert when one or more documents match the rule’s query.
-* [**Machine learning](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule)**: {{ml-cap}} rule, which creates an alert when a {{ml}} job discovers an anomaly above the defined threshold (see [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md)).
+* [**Machine learning**](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule): {{ml-cap}} rule, which creates an alert when a {{ml}} job discovers an anomaly above the defined threshold (see [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md)).
 
     For {{ml}} rules, the associated {{ml}} job must be running. If the {{ml}} job isn’t running, the rule will:
 
@@ -37,23 +30,23 @@ You can create the following types of rules:
     For example, if the threshold `field` is `source.ip` and its `value` is `10`, an alert is generated for every source IP address that appears in at least 10 of the rule’s search results.
 
 * [**Event correlation**](/solutions/security/detect-and-alert/create-detection-rule.md#create-eql-rule): Searches the defined indices and creates an alert when results match an [Event Query Language (EQL)](/explore-analyze/query-filter/languages/eql.md) query.
-* [**Indicator match**](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule): Creates an alert when {{elastic-sec}} index field values match field values defined in the specified indicator index patterns. For example, you can create an indicator index for IP addresses and use this index to create an alert whenever an event’s `destination.ip` equals a value in the index. Indicator index field mappings should be [ECS-compliant](https://www.elastic.co/guide/en/ecs/current). For information on creating {{es}} indices and field types, see [Index some documents](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-general-purpose.html#gp-gs-add-data), [Create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create), and [Field data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). If you have indicators in a standard file format, such as CSV or JSON, you can also use the Machine Learning Data Visualizer to import your indicators into an indicator index. See [Explore the data in {{kib}}](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-visualizer) and use the **Import Data** option to import your indicators.
+* [**Indicator match**](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule): Creates an alert when {{elastic-sec}} index field values match field values defined in the specified indicator index patterns. For example, you can create an indicator index for IP addresses and use this index to create an alert whenever an event’s `destination.ip` equals a value in the index. Indicator index field mappings should be [ECS-compliant](ecs://reference/index.md). For information on creating {{es}} indices and field types, see [Index some documents](/manage-data/ingest.md), [Create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create), and [Field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). If you have indicators in a standard file format, such as CSV or JSON, you can also use the Machine Learning Data Visualizer to import your indicators into an indicator index. See [Explore the data in {{kib}}](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-visualizer) and use the **Import Data** option to import your indicators.
 
     ::::{tip}
     You can also use value lists as the indicator match index. See [Use value lists with indicator match rules](/solutions/security/detect-and-alert/create-detection-rule.md#indicator-value-lists) at the end of this topic for more information.
     ::::
 
 * [**New terms**](/solutions/security/detect-and-alert/create-detection-rule.md#create-new-terms-rule): Generates an alert for each new term detected in source documents within a specified time range. You can also detect a combination of up to three new terms (for example, a `host.ip` and `host.id` that have never been observed together before).
-* [**ES|QL**](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule): Searches the defined indices and creates an alert when results match an [Elasticsearch Query Language (ES|QL)](/explore-analyze/query-filter/languages/esql.md) query.
+* [**ES|QL**](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule): Searches the defined indices and creates an alert when results match an [Elasticsearch Query Language {{esql}}](/explore-analyze/query-filter/languages/esql.md) query.
 
     ::::{note}
-    {{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
+    {{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](kibana://reference/advanced-settings.md). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
     ::::
 
 
-:::{image} ../../../images/security-all-rules.png
+:::{image} /solutions/images/security-all-rules.png
 :alt: Shows the Rules page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -62,7 +55,7 @@ You can create the following types of rules:
 When you create a rule, you must either specify the {{es}} index pattens for which you’d like the rule to run, or select a [data view field](/solutions/security/get-started/data-views-elastic-security.md) as the data source. If you select a data view, you can select [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) associated with that data view to create a query for the rule (with the exception of {{ml}} rules, which do not use queries).
 
 ::::{note}
-To access data views, ensure you have the [required permissions](/explore-analyze/find-and-organize/data-views.md#data-views-read-only-access).
+To access data views in {{stack}}, you must have the [required permissions](/explore-analyze/find-and-organize/data-views.md#data-views-read-only-access). To access them in {{serverless-short}}, you must have the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md) with the right privileges.
 ::::
 
 

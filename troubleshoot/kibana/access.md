@@ -1,5 +1,7 @@
 ---
 navigation_title: "Server status"
+applies_to:
+  stack: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/access.html#status
 ---
@@ -27,7 +29,7 @@ mapped_pages:
 % 
 % 1. Point your web browser to the machine where you are running {{kib}} and specify the port number. For example, `localhost:5601` or `http://YOURDOMAIN.com:5601`.
 % 
-%     To remotely connect to {{kib}}, set [server.host](../../deploy-manage/deploy/self-managed/configure.md#server-host) to a non-loopback address.
+%     To remotely connect to {{kib}}, set [server.host](kibana://reference/configuration-reference/general-settings.md#server-host) to a non-loopback address.
 % 
 % 2. Log on to your account.
 % 3. Go to the home page, then click **{{kib}}**.
@@ -43,9 +45,9 @@ The status page displays information about the server resource usage and install
 
 To view the {{kib}} status page, use the status endpoint. For example, `localhost:5601/status`.
 
-:::{image} ../../images/kibana-kibana-status-page-7_14_0.png
+:::{image} /troubleshoot/images/kibana-kibana-status-page-7_14_0.png
 :alt: Kibana server status page
-:class: screenshot
+:screenshot:
 :::
 
 For JSON-formatted server status details, use the `localhost:5601/api/status` API endpoint.

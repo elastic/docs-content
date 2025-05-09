@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Create snapshots [snapshots-take-snapshot]
@@ -26,12 +28,12 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 
 * To use {{kib}}'s **Snapshot and Restore** feature, you must have the following permissions:
 
-    * [Cluster privileges](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-    * [Index privilege](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the `monitor` index
+    * [Cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
+    * [Index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the `monitor` index
 
 * You can only take a snapshot from a running cluster with an elected [master node](../../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role).
 * A snapshot repository must be [registered](self-managed.md) and available to the cluster.
-* The cluster’s global metadata must be readable. To include an index in a snapshot, the index and its metadata must also be readable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) or [index blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md) that prevent read access.
+* The cluster’s global metadata must be readable. To include an index in a snapshot, the index and its metadata must also be readable. Ensure there aren’t any [cluster blocks](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) or [index blocks](elasticsearch://reference/elasticsearch/index-settings/index-block.md) that prevent read access.
 
 
 ## Considerations [create-snapshot-considerations]
@@ -41,7 +43,7 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 * Each snapshot is logically independent. You can delete a snapshot without affecting other snapshots.
 * Taking a snapshot can temporarily pause shard allocations. See [Snapshots and shard allocation](../snapshot-and-restore.md#snapshots-shard-allocation).
 * Taking a snapshot doesn’t block indexing or other requests. However, the snapshot won’t include changes made after the snapshot process starts.
-* You can take multiple snapshots at the same time. The [`snapshot.max_concurrent_operations`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#snapshot-max-concurrent-ops) cluster setting limits the maximum number of concurrent snapshot operations.
+* You can take multiple snapshots at the same time. The [`snapshot.max_concurrent_operations`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#snapshot-max-concurrent-ops) cluster setting limits the maximum number of concurrent snapshot operations.
 * If you include a data stream in a snapshot, the snapshot also includes the stream’s backing indices and metadata.
 
     You can also include only specific backing indices in a snapshot. However, the snapshot won’t include the data stream’s metadata or its other backing indices.
@@ -54,12 +56,12 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 {{slm-cap}} ({{slm-init}}) is the easiest way to regularly back up a cluster. An {{slm-init}} policy automatically takes snapshots on a preset schedule. The policy can also delete snapshots based on retention rules you define.
 
 ::::{tip}
-Elastic Cloud Hosted deployments automatically include the `cloud-snapshot-policy` {{slm-init}} policy. Elastic Cloud Hosted uses this policy to take periodic snapshots of your cluster. For more information, see the [Manage snapshot repositories in Elastic Cloud Hosted documentation](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
+{{ech}} deployments automatically include the `cloud-snapshot-policy` {{slm-init}} policy. {{ech}} uses this policy to take periodic snapshots of your cluster. For more information, see the [Manage snapshot repositories in {{ech}} documentation](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 ::::
 
 ### {{slm-init}} security [slm-security]
 
-The following [cluster privileges](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) control access to the {{slm-init}} actions when {{es}} {{security-features}} are enabled:
+The following [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) control access to the {{slm-init}} actions when {{es}} {{security-features}} are enabled:
 
 `manage_slm`
 :   Allows a user to perform all {{slm-init}} actions, including creating and updating policies and starting and stopping {{slm-init}}.
@@ -109,7 +111,7 @@ POST _security/role/slm-read-only
 
 ### Create an {{slm-init}} policy [create-slm-policy]
 
-To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore*** > ***Policies**. To create a policy, click **Create policy**.
+To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**. To create a policy, click **Create policy**.
 
 You can also manage {{slm-init}} using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm). To create a policy, use the [create {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle).
 
@@ -134,7 +136,7 @@ PUT _slm/policy/nightly-snapshots
 ```
 
 1. When to take snapshots, written in [Cron syntax](/explore-analyze/alerts-cases/watcher/schedule-types.md#schedule-cron).
-2. Snapshot name. Supports [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names). To prevent naming conflicts, the policy also appends a UUID to each snapshot name.
+2. Snapshot name. Supports [date math](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names). To prevent naming conflicts, the policy also appends a UUID to each snapshot name.
 3. [Registered snapshot repository](self-managed.md) used to store the policy’s snapshots.
 4. Data streams and indices to include in the policy’s snapshots.
 5. If `true`, the policy’s snapshots include the cluster state. This also includes all feature states by default. To only include specific feature states, see [Back up a specific feature state](#back-up-specific-feature-state).
@@ -157,7 +159,7 @@ The snapshot process runs in the background. To monitor its progress, see [Monit
 
 ### {{slm-init}} retention [slm-retention-task]
 
-{{slm-init}} snapshot retention is a cluster-level task that runs separately from a policy’s snapshot schedule. To control when the {{slm-init}} retention task runs, configure the [`slm.retention_schedule`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-retention-schedule) cluster setting.
+{{slm-init}} snapshot retention is a cluster-level task that runs separately from a policy’s snapshot schedule. To control when the {{slm-init}} retention task runs, configure the [`slm.retention_schedule`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-retention-schedule) cluster setting.
 
 ```console
 PUT _cluster/settings
@@ -186,7 +188,7 @@ A snapshot repository can safely scale to thousands of snapshots. However, to ma
 
 ## Manually create a snapshot [manually-create-snapshot]
 
-To take a snapshot without an {{slm-init}} policy, use the [create snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create). The snapshot name supports [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names).
+To take a snapshot without an {{slm-init}} policy, use the [create snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create). The snapshot name supports [date math](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names).
 
 ```console
 # PUT _snapshot/my_repository/<my_snapshot_{now/d}>
@@ -252,7 +254,7 @@ If you delete a snapshot that’s in progress, {{es}} cancels it. The snapshot p
 If you run {{es}} on your own hardware, we recommend that, in addition to backups, you take regular backups of the files in each node’s [`$ES_PATH_CONF` directory](../../deploy/self-managed/configure-elasticsearch.md#config-files-location) using the file backup software of your choice. Snapshots don’t back up these files. Also note that these files will differ on each node, so each node’s files should be backed up individually.
 
 ::::{important}
-The `elasticsearch.keystore`, TLS keys, and [SAML](../../deploy/self-managed/configure-elasticsearch.md#ref-saml-settings), [OIDC](../../deploy/self-managed/configure-elasticsearch.md#ref-oidc-settings), and [Kerberos](../../deploy/self-managed/configure-elasticsearch.md#ref-kerberos-settings) realms private key files contain sensitive information. Consider encrypting your backups of these files.
+The `elasticsearch.keystore`, TLS keys, and [SAML](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings), [OIDC](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings), and [Kerberos](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings) realms private key files contain sensitive information. Consider encrypting your backups of these files.
 ::::
 
 
@@ -322,7 +324,7 @@ Any index or data stream that’s part of the feature state will display in a sn
 
 ## Dedicated cluster state snapshots [cluster-state-snapshots]
 
-Some feature states contain sensitive data. For example, the `security` feature state includes system indices that may contain user names and encrypted password hashes. Because passwords are stored using [cryptographic hashes](../../deploy/self-managed/configure-elasticsearch.md#hashing-settings), the disclosure of a snapshot would not automatically enable a third party to authenticate as one of your users or use API keys. However, it would disclose confidential information, and if a third party can modify snapshots, they could install a back door.
+Some feature states contain sensitive data. For example, the `security` feature state includes system indices that may contain user names and encrypted password hashes. Because passwords are stored using [cryptographic hashes](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings), the disclosure of a snapshot would not automatically enable a third party to authenticate as one of your users or use API keys. However, it would disclose confidential information, and if a third party can modify snapshots, they could install a back door.
 
 To better protect this data, consider creating a dedicated repository and {{slm-init}} policy for snapshots of the cluster state. This lets you strictly limit and audit access to the repository.
 

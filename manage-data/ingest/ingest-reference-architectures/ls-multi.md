@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash for routing to multiple Elasticsearch clusters and additional destinations [ls-multi]
 
-:::{image} ../../../images/ingest-ea-ls-multi.png
+:::{image} /manage-data/images/ingest-ea-ls-multi.png
 :alt: Image showing {{agent}} collecting and routing data to multiple destinations
 :::
 
@@ -56,16 +56,16 @@ output {
 
 Info on configuring {{agent}}:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 Info on {{ls}} and {{ls}} outputs:
 
-* [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
-* [{{ls}} output plugins](asciidocalypse://docs/logstash/docs/reference/output-plugins.md)
+* [{{ls}} Reference](logstash://reference/index.md)
+* [{{ls}} {{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
+* [{{ls}} output plugins](logstash-docs-md://lsr/output-plugins.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

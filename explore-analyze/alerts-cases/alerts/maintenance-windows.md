@@ -2,14 +2,14 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maintenance-windows.html
   - https://www.elastic.co/guide/en/serverless/current/maintenance-windows.html
 ---
 
 # Maintenance windows
 
-This content applies to: [![Observability](../../../images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](../../../images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
 
 
 ::::{warning}
@@ -40,24 +40,24 @@ In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-se
 
 When you create a maintenance window, you must provide a name and a schedule. You can optionally configure it to repeat daily, monthly, yearly, or on a custom interval.
 
-:::{image} ../../../images/kibana-create-maintenance-window.png
+:::{image} /explore-analyze/images/kibana-create-maintenance-window.png
 :alt: The Create Maintenance Window user interface in {{kib}}
-:class: screenshot
+:screenshot:
 :::
 
 By default, maintenance windows affect all categories of rules. The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting).
 
 If you turn on **Filter alerts**, you can use KQL to filter the alerts affected by the maintenance window:
 
-:::{image} ../../../images/kibana-create-maintenance-window-filter.png
+:::{image} /explore-analyze/images/kibana-create-maintenance-window-filter.png
 :alt: The Create Maintenance Window user interface in {{kib}} with alert filters turned on
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
 
 * You can select only a single category when you turn on filters.
-* Some rules are not affected by maintenance window filters because their alerts do not contain requisite data. In particular, [{{stack-monitor-app}}](../../../deploy-manage/monitor/monitoring-data/kibana-alerts.md), [tracking containment](../../../explore-analyze/alerts-cases/alerts/geo-alerting.md), [{{anomaly-jobs}} health](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md), and [transform health](../../../explore-analyze/transforms/transform-alerts.md) rules are not affected by the filters.
+* Some rules are not affected by maintenance window filters because their alerts do not contain requisite data. In particular, [{{stack-monitor-app}}](../../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md), [tracking containment](../../../explore-analyze/alerts-cases/alerts/geo-alerting.md), [{{anomaly-jobs}} health](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md), and [transform health](../../../explore-analyze/transforms/transform-alerts.md) rules are not affected by the filters.
 
 ::::
 

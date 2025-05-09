@@ -11,13 +11,11 @@ applies_to:
 
 # Collecting monitoring data with Elastic Agent [configuring-elastic-agent]
 
-
-In 8.5 and later, you can use {{agent}} to collect data about {{es}} and ship it to the monitoring cluster, rather than [using {{metricbeat}}](collecting-monitoring-data-with-metricbeat.md) or routing it through exporters as described in [Legacy collection methods](es-legacy-collection-methods.md).
-
+You can use {{agent}} to collect data about {{es}} and ship it to the monitoring cluster.
 
 ## Prerequisites [_prerequisites_11]
 
-* (Optional) Create a monitoring cluster as described in [*Monitoring in a production environment*](elasticsearch-monitoring-self-managed.md).
+* (Optional) Create a monitoring cluster as described in [](elasticsearch-monitoring-self-managed.md).
 * Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
 
@@ -36,8 +34,8 @@ To collect {{es}} monitoring data, add an {{es}} integration to an {{agent}} and
 
 5. Configure the integration name and optionally add a description. Make sure you configure all required settings:
 
-    1. Under **Collect Elasticsearch logs**, modify the log paths to match your {{es}} environment.
-    2. Under **Collect Elasticsearch metrics**, make sure the hosts setting points to your {{es}} host URLs. By default, the integration collects {{es}} monitoring metrics from `localhost:9200`. If that host and port number are not correct, update the `hosts` setting. If you configured {{es}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:9200`.
+    1. Under **Collect {{es}} logs**, modify the log paths to match your {{es}} environment.
+    2. Under **Collect {{es}} metrics**, make sure the hosts setting points to your {{es}} host URLs. By default, the integration collects {{es}} monitoring metrics from `localhost:9200`. If that host and port number are not correct, update the `hosts` setting. If you configured {{es}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:9200`.
     3. Expand **Advanced options**. If the Elastic {{security-features}} are enabled, enter the username and password of a user that has the `remote_monitoring_collector` role.
     4. Specify the scope:
 
@@ -48,7 +46,7 @@ To collect {{es}} monitoring data, add an {{es}} integration to an {{agent}} and
 7. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an integration for collecting monitoring data from {{es}}.
 8. If an {{agent}} is already assigned to the policy and deployed to the host where {{es}} is running, you’re done. Otherwise, you need to deploy an {{agent}}. To deploy an {{agent}}:
 
-    1. Go to **{{fleet}} → Agents**, then click **Add agent**.
+    1. Go to **{{fleet}} > Agents**, then click **Add agent**.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}. Make sure you choose the agent policy you created earlier.
 
 9. Wait a minute or two until incoming data is confirmed.

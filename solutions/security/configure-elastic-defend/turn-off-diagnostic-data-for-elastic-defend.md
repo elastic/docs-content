@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/endpoint-diagnostic-data.html
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-diagnostic-data.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Turn off diagnostic data for {{elastic-defend}} [endpoint-diagnostic-data]
@@ -9,7 +13,7 @@ mapped_urls:
 By default, {{elastic-defend}} streams diagnostic data to your cluster, which Elastic uses to tune protection features. You can stop producing this diagnostic data by configuring the advanced settings in the {{elastic-defend}} integration policy.
 
 ::::{note}
-{{elastic-sec}} also collects usage telemetry, which includes {{elastic-defend}} diagnostic data. You can modify telemetry preferences in [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/telemetry-settings.md).
+{{elastic-sec}} also collects usage telemetry, which includes {{elastic-defend}} diagnostic data. You can modify telemetry preferences in [Advanced Settings](kibana://reference/configuration-reference/telemetry-settings.md).
 ::::
 
 

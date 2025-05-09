@@ -1,29 +1,26 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/detection-response-dashboard.html
   - https://www.elastic.co/guide/en/serverless/current/security-detection-response-dashboard.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Detection & Response dashboard
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/detection-response-dashboard.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-detection-response-dashboard.md
-
 The Detection & Response dashboard provides focused visibility into the day-to-day operations of your security environment. It helps security operations managers and analysts quickly monitor recent and high priority detection alerts and cases, and identify the hosts and users associated with alerts.
 
-:::{image} ../../../images/security-detection-response-dashboard.png
+:::{image} /solutions/images/security-detection-response-dashboard.png
 :alt: Overview of Detection & Response dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Interact with various dashboard elements:
 
 * Use the date and time picker in the upper-right to specify a time range for displaying information on the dashboard.
-* In sections that list alert counts, click a number to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "")) to open the alerts in Timeline.
+* In sections that list alert counts, click a number to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](/solutions/images/security-timeline-button-osquery.png "title =20x20")) to open the alerts in Timeline.
 * Click the name of a detection rule, case, host, or user to open its details page.
 
 The following sections are included:

@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-up-authentication.html
   - https://www.elastic.co/guide/en/kibana/current/kibana-authentication.html
 applies_to:
@@ -11,16 +11,6 @@ applies_to:
 ---
 
 # User authentication
-
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/347
-
-% Scope notes: reference ECE SSO, cloud SSO
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/kibana-authentication.md
 
 Authentication identifies an individual. To gain access to restricted resources, a user must prove their identity, using passwords, credentials, or some other means (typically referred to as authentication tokens).
 
@@ -63,8 +53,8 @@ If you use {{serverless-full}}, then you can only manage authentication at the [
 
 ### Advanced topics
 
-* Learn about [internal users](/deploy-manage/users-roles/cluster-or-deployment-auth/internal-users.md), which are responsible for the operations that take place inside an Elasticsearch cluster.
-* Learn about [service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md), which are used for integration with external services that connect to Elasticsearch.
+* Learn about [internal users](/deploy-manage/users-roles/cluster-or-deployment-auth/internal-users.md), which are responsible for the operations that take place inside an {{es}} cluster.
+* Learn about [service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md), which are used for integration with external services that connect to {{es}}.
 * Learn about the [services used for token-based authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services.md).
 * Learn about the [services used by orchestrators](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md).
 * Manage [user profiles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-profiles.md).

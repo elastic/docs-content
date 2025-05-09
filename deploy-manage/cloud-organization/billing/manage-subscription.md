@@ -1,9 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-check-subscription.html
   - https://www.elastic.co/guide/en/cloud/current/ec-subscription-overview.html
   - https://www.elastic.co/guide/en/cloud/current/ec-select-subscription-level.html
   - https://www.elastic.co/guide/en/cloud/current/ec-licensing.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-licensing.html
 applies_to:
   deployment:
     ess: all
@@ -12,14 +13,14 @@ applies_to:
 
 # Manage your subscription
 
-When you decide to add your credit card and become a paying customer, you can choose a subscription level. 
+When you decide to add your credit card and become a paying customer, you can choose a subscription level.
 
 Depending on whether you're using {{ech}} deployment or {{serverless-full}} projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
 
 * [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service/pricing)
 * [{{serverless-full}}](https://www.elastic.co/pricing/serverless-search)
 
-You can find more details about your subscription in the [Billing overview page](https://cloud.elastic.co/billing/overview), in the **Subscription level** section. 
+You can find more details about your subscription in the [Billing overview page](https://cloud.elastic.co/billing/overview), in the **Subscription level** section.
 
 
 ## Change your subscription level [ec-select-subscription-level]
@@ -41,9 +42,10 @@ To change your subscription level:
 
 ### Feature usage notifications [ec_feature_usage_notifications]
 
-:::{applies_to}
-:hosted: all
-:::
+```{applies_to}
+deployment:
+  ess: all
+```
 
 If you try to change your subscription to a lower level, but you are using features that belong either to your current level or to a higher one, you need to make some changes before you can proceed, as described in **Review required feature changes**.
 
@@ -64,7 +66,7 @@ You can [change your subscription level](/deploy-manage/cloud-organization/billi
 :   Make sure that there are no applications that use the SQL [JDBC](/explore-analyze/query-filter/languages/sql-jdbc.md) or [ODBC](/explore-analyze/query-filter/languages/sql-odbc.md) clients.
 
 `Field-level or document-level security`
-:   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) or the Kibana [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) page.
+:   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) or the {{kib}} [Roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) page.
 
 ::::{note}
 After you have made your changes to the deployment, it can take up to one hour to clear the notification banner.

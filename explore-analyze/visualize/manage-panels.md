@@ -72,13 +72,13 @@ There are three types of **Discover** interactions you can add to dashboard pane
 
 * **Panel interactions** — Opens panel data in **Discover**, including the dashboard-level filters, but not the panel-level filters.
 
-    To enable panel interactions, configure [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](../../deploy-manage/deploy/self-managed/configure.md#settings-explore-data-in-context) in kibana.yml. If you are using 7.13.0 and earlier, panel interactions are enabled by default.
+    To enable panel interactions, configure [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-context) in kibana.yml. If you are using 7.13.0 and earlier, panel interactions are enabled by default.
 
     To use panel interactions, open the panel menu and click **Explore underlying data**.
 
 * **Series data interactions** — Opens the series data in **Discover**.
 
-    To enable series data interactions, configure [`xpack.discoverEnhanced.actions.exploreDataInChart.enabled`](../../deploy-manage/deploy/self-managed/configure.md#settings-explore-data-in-chart) in kibana.yml. If you are using 7.13.0 and earlier, data series interactions are enabled by default.
+    To enable series data interactions, configure [`xpack.discoverEnhanced.actions.exploreDataInChart.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-chart) in kibana.yml. If you are using 7.13.0 and earlier, data series interactions are enabled by default.
 
     To use series data interactions, click a data series in the panel.
 

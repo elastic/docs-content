@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/native-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
@@ -15,12 +15,12 @@ navigation_title: "Native"
 
 # Native user authentication [native-realm]
 
-The easiest way to manage and authenticate users is with the internal `native` realm. You can use [Elasticsearch REST APIs](#native-users-api) or [Kibana](#managing-native-users) to add and remove users, assign user roles, and manage user passwords.
+The easiest way to manage and authenticate users is with the internal `native` realm. You can use [{{es}} REST APIs](#native-users-api) or [Kibana](#managing-native-users) to add and remove users, assign user roles, and manage user passwords.
 
 In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-pw-cmd-line).
 
 :::{{tip}}
-This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}. 
+This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}.
 
 You can also manage and authenticate users natively at the following levels:
 
@@ -38,24 +38,24 @@ xpack.security.authc.realms.native.native1:
   enabled: false
 ```
 
-You can configure a `native` realm in the `xpack.security.authc.realms.native` namespace in `elasticsearch.yml`. Explicitly configuring a native realm enables you to set the order in which it appears in the realm chain, temporarily disable the realm, and control its cache options.
+You can configure a `native` realm in the `xpack.security.authc.realms.native` namespace in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). Explicitly configuring a native realm enables you to set the order in which it appears in the realm chain, temporarily disable the realm, and control its cache options.
 
 1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.native` namespace. It is recommended that you explicitly set the `order` attribute for the realm.
 
-    ::::{note} 
+    ::::{note}
     You can configure only one native realm on {{es}} nodes.
     ::::
 
 
-    See [Native realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-native-settings) for all of the options you can set for the `native` realm. For example, the following snippet shows a `native` realm configuration that sets the `order` to zero so the realm is checked first:
+    See [Native realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-native-settings) for all of the options you can set for the `native` realm. For example, the following snippet shows a `native` realm configuration that sets the `order` to zero so the realm is checked first:
 
     ```yaml
     xpack.security.authc.realms.native.native1:
       order: 0
     ```
 
-    ::::{note} 
-    To limit exposure to credential theft and mitigate credential compromise, the native realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted `sha-256` hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the `bcrypt` hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+    ::::{note}
+    To limit exposure to credential theft and mitigate credential compromise, the native realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted `sha-256` hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the `bcrypt` hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
     ::::
 
 2. Restart {{es}}.
@@ -73,14 +73,14 @@ Elastic enables you to easily manage users in {{kib}} on the **Stack Management 
 4. Optional: assign [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) to the user.
 5. Click **Create user**.
 
-:::{image} ../../../images/kibana-tutorial-secure-access-example-1-user.png
+:::{image} /deploy-manage/images/kibana-tutorial-secure-access-example-1-user.png
 :alt: Create user UI
-:class: screenshot
+:screenshot:
 :::
 
 ## Manage native users using the `user` API [native-users-api]
 
-You can manage users through the Elasticsearch `user` API. 
+You can manage users through the {{es}} `user` API.
 
 For example, you can change a user's password:
 
@@ -100,7 +100,7 @@ deployment:
   self: all
 ```
 
-You can also reset passwords for users in the native realm through the command line using the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) tool.
+You can also reset passwords for users in the native realm through the command line using the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool.
 
 For example, the following command changes the password for a user with the username `user1` to an auto-generated value, and prints the new password to the terminal:
 

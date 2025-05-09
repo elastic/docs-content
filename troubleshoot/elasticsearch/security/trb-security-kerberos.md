@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Kerberos
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-kerberos.html
@@ -15,16 +22,16 @@ mapped_pages:
 `Failure unspecified at GSS-API level (Mechanism level: Checksum failed)`
 :   When you see this error message on the HTTP client side, then it may be related to an incorrect password.
 
-When you see this error message in the {{es}} server logs, then it may be related to the {{es}} service keytab. The keytab file is present but it failed to log in as the user. Please check the keytab expiry. Also check whether the keytab contain up-to-date credentials; if not, replace them.
+When you see this error message in the {{es}} server logs, then it may be related to the {{es}} service keytab. The keytab file is present but it failed to log in as the user. Check the keytab expiry. Also check whether the keytab contain up-to-date credentials; if not, replace them.
 
-You can use tools like `klist` or `ktab` to list principals inside the keytab and validate them. You can use `kinit` to see if you can acquire initial tickets using the keytab. Please check the tools and their documentation in your Kerberos environment.
+You can use tools like `klist` or `ktab` to list principals inside the keytab and validate them. You can use `kinit` to see if you can acquire initial tickets using the keytab. Check the tools and their documentation in your Kerberos environment.
 
-Kerberos depends on proper hostname resolution, so please check your DNS infrastructure. Incorrect DNS setup, DNS SRV records or configuration for KDC servers in `krb5.conf` can cause problems with hostname resolution.
+Kerberos depends on proper hostname resolution, so check your DNS infrastructure. Incorrect DNS setup, DNS SRV records or configuration for KDC servers in `krb5.conf` can cause problems with hostname resolution.
 
 
 `Failure unspecified at GSS-API level (Mechanism level: Request is a replay (34))`
 `Failure unspecified at GSS-API level (Mechanism level: Clock skew too great (37))`
-:   To prevent replay attacks, Kerberos V5 sets a maximum tolerance for computer clock synchronization and it is typically 5 minutes. Please check whether the time on the machines within the domain is in sync.
+:   To prevent replay attacks, Kerberos V5 sets a maximum tolerance for computer clock synchronization and it is typically 5 minutes. Check whether the time on the machines within the domain is in sync.
 
 
 `gss_init_sec_context() failed: An unsupported mechanism was requested`
@@ -36,7 +43,7 @@ Make sure that:
 * You have installed curl version 7.49 or above as older versions of curl have known Kerberos bugs.
 * The curl installed on your machine has `GSS-API`, `Kerberos` and `SPNEGO` features listed when you invoke command `curl -V`. If not, you will need to compile `curl` version with this support.
 
-To download latest curl version visit [https://curl.haxx.se/download.html](https://curl.haxx.se/download.md)
+To download latest curl version visit [https://curl.haxx.se/download.html](https://curl.haxx.se/download.html)
 
 
 As Kerberos logs are often cryptic in nature and many things can go wrong as it depends on external services like DNS and NTP. You might have to enable additional debug logs to determine the root cause of the issue.
@@ -47,7 +54,7 @@ As Kerberos logs are often cryptic in nature and many things can go wrong as it 
 xpack.security.authc.realms.kerberos.<realm-name>.krb.debug: true
 ```
 
-For detailed information, see [Kerberos realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
+For detailed information, see [Kerberos realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
 
 Sometimes you may need to go deeper to understand the problem during SPNEGO GSS context negotiation or look at the Kerberos message exchange. To enable Kerberos/SPNEGO debug logging on JVM, add following JVM system properties:
 
@@ -55,5 +62,5 @@ Sometimes you may need to go deeper to understand the problem during SPNEGO GSS 
 
 `-Dsun.security.spnego.debug=true`
 
-For more information about JVM system properties, see [Set JVM options](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options).
+For more information about JVM system properties, see [Set JVM options](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options).
 

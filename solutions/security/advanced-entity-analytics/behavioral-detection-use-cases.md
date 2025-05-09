@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/behavioral-detection-use-cases.html
   - https://www.elastic.co/guide/en/serverless/current/security-behavioral-detection-use-cases.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Behavioral detection use cases
@@ -32,5 +36,5 @@ Here’s a list of integrations for various behavioral detection use cases:
 * [Living off the Land Attack Detection](https://docs.elastic.co/en/integrations/problemchild)
 * [Network Beaconing Identification](https://docs.elastic.co/en/integrations/beaconing)
 
-To learn more about {{ml}} jobs enabled by these integrations, refer to the [Prebuilt jobs page](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-jobs.md).
+To learn more about {{ml}} jobs enabled by these integrations, refer to [](/reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md).
 

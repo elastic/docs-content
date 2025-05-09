@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-run-log-pattern-analysis.html
+applies_to:
+  stack: all
 ---
 
 # Run a pattern analysis on log data [observability-run-log-pattern-analysis]
@@ -16,18 +18,18 @@ Log pattern analysis works on every text field.
 
 To run a log pattern analysis:
 
-1. In your {{obs-serverless}} project, go to **Discover** and select the **Logs Explorer** tab.
-2. Select an integration, and apply any filters that you want.
+1. In your {{obs-serverless}} project, go to **Discover** and select the **All logs** from the **Data view** menu.
+2. Apply any filters that you want.
 3. If you don’t see any results, expand the time range, for example, to **Last 15 days**.
 4. In the **Available fields** list, select the text field you want to analyze, then click **Run pattern analysis**.
 
-    ![Run log pattern analysis](../../../images/serverless-run-log-pattern-analysis.png "")
+    ![Run log pattern analysis](/solutions/images/serverless-run-log-pattern-analysis.png "")
 
     The results of the analysis are shown in a table:
 
-    :::{image} ../../../images/serverless-log-pattern-analysis.png
+    :::{image} /solutions/images/serverless-log-pattern-analysis.png
     :alt: Log pattern analysis of the message field
-    :class: screenshot
+    :screenshot:
     :::
 
-5. (Optional) Select one or more patterns, then choose to filter for (or filter out) documents that match the selected patterns. **Logs Explorer** only displays documents that match (or don’t match) the selected patterns. The filter options enable you to remove unimportant messages and focus on the more important, actionable data during troubleshooting.
+5. (Optional) Select one or more patterns, then choose to filter for (or filter out) documents that match the selected patterns. Discover only displays documents that match (or don’t match) the selected patterns. The filter options enable you to remove unimportant messages and focus on the more important, actionable data during troubleshooting.

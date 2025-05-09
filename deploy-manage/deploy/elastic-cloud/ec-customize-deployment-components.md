@@ -19,11 +19,11 @@ Autoscaling reduces some of the manual effort required to manage a deployment by
 
 ## {{es}} [ec-cluster-size]
 
-Depending upon how much data you have and what queries you plan to run, you need to select a cluster size that fits your needs. There is no silver bullet for deciding how much memory you need other than simply testing it. The [cluster performance metrics](../../monitor/stack-monitoring.md) in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) can tell you if your cluster is sized appropriately. You can also [enable deployment monitoring](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) for more detailed performance metrics. Fortunately, you can change the amount of memory allocated to the cluster later without any downtime for HA deployments.
+Depending upon how much data you have and what queries you plan to run, you need to select a cluster size that fits your needs. There is no silver bullet for deciding how much memory you need other than simply testing it. The [cluster performance metrics](../../monitor/stack-monitoring.md) in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) can tell you if your cluster is sized appropriately. You can also [enable deployment monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) for more detailed performance metrics. Fortunately, you can change the amount of memory allocated to the cluster later without any downtime for HA deployments.
 
 To change a cluster’s topology, from deployment management, select **Edit deployment** from the **Actions** dropdown. Next, select a storage and RAM setting from the **Size per zone** drop-down list, and save your changes. When downsizing the cluster, make sure to have enough resources to handle the current load, otherwise your cluster will be under stress.
 
-:::{image} ../../../images/cloud-ec-capacity.png
+:::{image} /deploy-manage/images/cloud-ec-capacity.png
 :alt: Capacity slider to adjust {{es}} cluster size
 :::
 
@@ -50,14 +50,14 @@ We recommend using at least 4GB RAM for dedicated master nodes.
 
 High availability is achieved by running a cluster with replicas in multiple data centers (availability zones), to prevent against downtime when infrastructure problems occur or when resizing or upgrading deployments. We offer the options of running in one, two, or three data centers.
 
-:::{image} ../../../images/cloud-ec-fault-tolerance.png
+:::{image} /deploy-manage/images/cloud-ec-fault-tolerance.png
 :alt: High availability features
 :::
 
 Running in two data centers or availability zones is our default high availability configuration. It provides reasonably high protection against infrastructure failures and intermittent network problems. You might want three data centers if you need even higher fault tolerance. Just one zone might be sufficient, if the cluster is mainly used for testing or development.
 
 ::::{important}
-Some [regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/regions.md) might have only two availability zones.
+Some [regions](cloud://reference/cloud-hosted/regions.md) might have only two availability zones.
 ::::
 
 
@@ -72,7 +72,7 @@ The node capacity you choose is per data center. The reason for this is that the
 
 You can review your {{es}} shard activity from the {{ecloud}} Console. When viewing a hosted deployment details, at the bottom of the {{es}} page, you can hover over each part of the shard visualization for specific numbers.
 
-:::{image} ../../../images/cloud-ec-shard-activity.gif
+:::{image} /deploy-manage/images/cloud-ec-shard-activity.gif
 :alt: Shard activity
 :::
 
@@ -121,7 +121,7 @@ In production systems, you might need to control what {{es}} data users can acce
 
 ## {{integrations-server}} [ec_integrations_server]
 
-{{integrations-server}} connects observability and security data from Elastic Agents and APM to Elasticsearch. An {{integrations-server}} instance is created automatically as part of every deployment.
+{{integrations-server}} connects observability and security data from Elastic Agents and APM to {{es}}. An {{integrations-server}} instance is created automatically as part of every deployment.
 
 Refer to [Manage your Integrations Server](manage-integrations-server.md) to learn more.
 

@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-common-problems.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-troubleshooting.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Common problems [apm-common-problems]
@@ -14,7 +18,6 @@ This section describes common problems you might encounter when using APM Server
 * [Common SSL-related problems](#apm-common-ssl-problems)
 * [I/O Timeout](#apm-io-timeout)
 * [Field limit exceeded](#apm-field-limit-exceeded)
-* [Tail-based sampling causing high system memory usage and high disk IO](#apm-tail-based-sampling-memory-disk-io)
 
 **Applications UI**:
 
@@ -37,7 +40,7 @@ If no data shows up in {{es}}, first make sure that your APM components are prop
 ::::::{tab-item} Fleet-managed
 **Is {{agent}} healthy?**
 
-In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn more.
+In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](/reference/fleet/monitor-elastic-agent.md) to learn more.
 
 **Is APM Server happy?**
 
@@ -56,7 +59,7 @@ If you see requests coming through the APM Server but they are not accepted (a r
 
 **Instrumentation gaps**
 
-APM agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](https://www.elastic.co/guide/en/apm/agent/index.html) for details on what is automatically instrumented.
+APM agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -75,7 +78,7 @@ If no requests are logged, it might be that SSL is [misconfigured](#apm-ssl-clie
 
 If you see requests coming through the APM Server but they are not accepted (response code other than `202`), consider the response code to narrow down the possible causes (see sections below).
 
-Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](https://www.elastic.co/guide/en/apm/agent/index.html) for details on what is automatically instrumented.
+Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 
 APM Server currently relies on {{es}} to create indices that do not exist. As a result, {{es}} must be configured to allow [automatic index creation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for APM indices.
 ::::::
@@ -158,7 +161,7 @@ APM agent --> Load Balancer  --> APM Server
    10s            15s               3600s
 ```
 
-The APM Server timeout can be configured by updating the [maximum duration for reading an entire request](../../../solutions/observability/apps/general-configuration-options.md#apm-read_timeout).
+The APM Server timeout can be configured by updating the [maximum duration for reading an entire request](/solutions/observability/apm/general-configuration-options.md#apm-read_timeout).
 
 
 ## Field limit exceeded [apm-field-limit-exceeded]
@@ -174,14 +177,6 @@ In the agent logs, you won’t see a sign of failures as the APM server asynchro
 ```txt
 {\"type\":\"illegal_argument_exception\",\"reason\":\"Limit of total fields [1000] in [INDEX_NAME] has been exceeded\"}
 ```
-
-
-## Tail-based sampling causing high system memory usage and high disk IO [apm-tail-based-sampling-memory-disk-io]
-```yaml {applies_to}
-stack: all
-```
-
-Tail-based sampling requires minimal memory to run, and there should not be a noticeable increase in RSS memory usage. However, since tail-based sampling writes data to disk, it is possible to see a significant increase in OS page cache memory usage due to disk IO. If you see a drop in throughput and excessive disk activity after enabling tail-based sampling, please ensure that there is enough memory headroom in the system for OS page cache to perform disk IO efficiently.
 
 
 ## Too many unique transaction names [troubleshooting-too-many-transactions]
@@ -209,7 +204,7 @@ https://www.elastic.co/guide/en/infrastructure/guide/current/index.html
 
 These URLs, like most, include unique names. If we named transactions based on each unique URL, we’d end up with the problem described above—a very large number of different transaction names. Instead, we should strip away the unique information and group our transactions based on common information. In this case, that means naming all blog transactions, `/blog`, and all documentation transactions, `/guide`.
 
-If you feel like you’d be losing valuable information by following this naming convention, don’t fret! You can always add additional metadata to your transactions using [labels](/solutions/observability/apps/metadata.md#apm-data-model-labels) (indexed) or [custom context](/solutions/observability/apps/metadata.md#apm-data-model-custom) (non-indexed).
+If you feel like you’d be losing valuable information by following this naming convention, don’t fret! You can always add additional metadata to your transactions using [labels](/solutions/observability/apm/metadata.md#apm-data-model-labels) (indexed) or [custom context](/solutions/observability/apm/metadata.md#apm-data-model-custom) (non-indexed).
 
 After ensuring you’ve correctly named your transactions, you might still see errors in the Applications UI related to transaction group limit reached:
 
@@ -223,11 +218,11 @@ You will see this warning if your results have more than `1000` unique transacti
 
 **More information**
 
-While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](asciidocalypse://docs/apm-agent-rum-js/docs/reference/custom-transaction-name.md).
+While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](apm-agent-rum-js://reference/custom-transaction-name.md).
 
-The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#observe) for more information.
+The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](apm-agent-rum-js://reference/agent-api.md#observe) for more information.
 
-If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](https://www.elastic.co/guide/en/apm/agent) to adjust how you’re naming your transactions.
+If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](/reference/apm-agents/index.md) to adjust how you’re naming your transactions.
 
 
 ## Unknown route [troubleshooting-unknown-route]
@@ -235,13 +230,13 @@ If your problem is occurring in a different APM agent, the tips above still appl
 stack: all
 ```
 
-The [transaction overview](../../../solutions/observability/apps/transactions-2.md) will only display helpful information when the transactions in your services are named correctly. If you’re seeing "GET unknown route" or "unknown route" in the Applications UI, it could be a sign that something isn’t working as it should.
+The [transaction overview](/solutions/observability/apm/transactions-ui.md) will only display helpful information when the transactions in your services are named correctly. If you’re seeing "GET unknown route" or "unknown route" in the Applications UI, it could be a sign that something isn’t working as it should.
 
 Elastic APM agents come with built-in support for popular frameworks out-of-the-box. This means, among other things, that the APM agent will try to automatically name HTTP requests. As an example, the Node.js agent uses the route that handled the request, while the Java agent uses the Servlet name.
 
 "Unknown route" indicates that the APM agent can’t determine what to name the request, perhaps because the technology you’re using isn’t supported, the agent has been installed incorrectly, or because something is happening to the request that the agent doesn’t understand.
 
-To resolve this, you’ll need to head over to the relevant [APM agent documentation](https://www.elastic.co/guide/en/apm/agent). Specifically, view the agent’s supported technologies page. You can also use the agent’s public API to manually set a name for the transaction.
+To resolve this, you’ll need to head over to the relevant [APM agent documentation](/reference/apm-agents/index.md). Specifically, view the agent’s supported technologies page. You can also use the agent’s public API to manually set a name for the transaction.
 
 
 ## Fields are not searchable [troubleshooting-fields-unsearchable]
@@ -257,7 +252,7 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 
 **Ensure a field is searchable** There are two things you can do to if you’d like to ensure a field is searchable:
 
-1. Index your additional data as [labels](/solutions/observability/apps/metadata.md) instead. These are dynamic by default, which means they will be indexed and become searchable and aggregatable.
+1. Index your additional data as [labels](/solutions/observability/apm/metadata.md) instead. These are dynamic by default, which means they will be indexed and become searchable and aggregatable.
 2. Create a custom mapping for the field.
 
 
@@ -266,7 +261,7 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 stack: all
 ```
 
-If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/distributed-tracing.md).
+If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](apm-agent-rum-js://reference/distributed-tracing.md).
 
 This setting is necessary, for example, for cross-origin requests. If you have a basic web application that provides data via an API on `localhost:4000`, and serves HTML from `localhost:4001`, you’d need to set `distributedTracingOrigins: ['https://localhost:4000']` to ensure the origin is monitored as a part of distributed tracing. In other words, `distributedTracingOrigins` is consulted prior to the APM agent adding the distributed tracing `traceparent` header to each request.
 
@@ -288,26 +283,5 @@ It’s likely that there is a problem correlating APM and infrastructure data. T
 
 To fix this, make sure these two fields match exactly.
 
-For example, if the APM agent is not configured to use the correct host name, the host name might be set to the container name or the Kubernetes pod name. To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](../../../solutions/observability/apps/elastic-apm-events-intake-api.md#apm-api-kubernetes-data).
-
-
-## Common response codes [observability-apm-troubleshooting-common-response-codes]
-```yaml {applies_to}
-serverless: all
-```
-
-
-### HTTP 400: Data decoding error / Data validation error [bad-request]
-
-The most likely cause for this error is using an incompatible version of an {{apm-agent}}. See [minimum supported APM agent versions](../../../solutions/observability/apps/elastic-apm-agents.md#observability-apm-agents-elastic-apm-agents-minimum-supported-versions) to verify compatibility.
-
-
-### HTTP 400: Event too large [event-too-large]
-
-APM agents communicate with the Managed intake service by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](../../../solutions/observability/apps/spans.md) or [reducing collected stack trace information](../../../solutions/observability/apps/reduce-storage.md#observability-apm-reduce-stacktrace).
-
-
-### HTTP 401: Invalid token [unauthorized]
-
-The API key is invalid.
+For example, if the APM agent is not configured to use the correct host name, the host name might be set to the container name or the Kubernetes pod name. To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/elastic-apm-events-intake-api.md#apm-api-kubernetes-data).
 

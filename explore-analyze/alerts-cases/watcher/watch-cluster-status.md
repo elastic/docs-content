@@ -85,7 +85,7 @@ PUT _watcher/watch/cluster_health_watch
 
 It would be a good idea to create a user with the minimum privileges required for use with such a watch configuration.
 
-Depending on how your cluster is configured, there may be additional settings required before the watch can access your cluster such as keystores, truststores, or certificates. For more information, see [{{watcher}} settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md).
+Depending on how your cluster is configured, there may be additional settings required before the watch can access your cluster such as keystores, truststores, or certificates. For more information, see [{{watcher}} settings](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md).
 
 If you check the watch history, you’ll see that the cluster status is recorded as part of the `watch_record` each time the watch executes.
 
@@ -182,7 +182,7 @@ PUT _watcher/watch/cluster_health_watch
 }
 ```
 
-For {{watcher}} to send email, you must configure an email account in your `elasticsearch.yml` configuration file and restart Elasticsearch. To add an email account, set the `xpack.notification.email.account` property.
+For {{watcher}} to send email, you must configure an email account in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file and restart {{es}}. To add an email account, set the `xpack.notification.email.account` property.
 
 For example, the following snippet configures a single Gmail account named `work`:
 

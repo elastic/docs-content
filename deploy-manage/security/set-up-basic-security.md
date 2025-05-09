@@ -1,34 +1,30 @@
 ---
-navigation_title: "Set up basic security"
+navigation_title: "Set up transport TLS"
+applies_to:
+  deployment:
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
 ---
 
+% Scope: TLS certificates setup / multi-node cluster / manual configuration
+% original title: Set up basic security for the {{stack}}
+# Set up transport TLS [security-basic-setup]
 
+Configuring TLS between nodes is the basic security setup to prevent unauthorized nodes from accessing to your {{es}} cluster, and it's required by multi-node clusters. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
 
-# Set up basic security [security-basic-setup]
+This document focuses on the **manual configuration** of TLS for [{{es}} transport protocol](./secure-cluster-communications.md#encrypt-internode-communication) in self-managed environments. Use this approach if you want to provide your own TLS certificates, generate them with Elastic’s tools, or have full control over the configuration. Alternatively, {{es}} can [automatically generate and configure HTTPS certificates](./self-auto-setup.md) for you.
 
-
-When you start {{es}} for the first time, passwords are generated for the `elastic` user and TLS is automatically configured for you. If you configure security manually *before* starting your {{es}} nodes, the auto-configuration process will respect your security configuration. You can adjust your TLS configuration at any time, such as [updating node certificates](updating-certificates.md).
-
-::::{important} 
-If your cluster has multiple nodes, then you must configure TLS between nodes. [Production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters will not start if you do not enable TLS.
+::::{note}
+For other deployment types, such as {{ech}}, {{ece}}, or {{eck}}, refer to [](./secure-cluster-communications.md).
 ::::
 
+In this guide, you will learn how to:
 
-The transport layer relies on mutual TLS for both encryption and authentication of nodes. Correctly applying TLS ensures that a malicious node cannot join the cluster and exchange data with other nodes. While implementing username and password authentication at the HTTP layer is useful for securing a local cluster, the security of communication between nodes requires TLS.
+* [Generate a Certificate Authority (CA) and a server certificate using the `elasticsearch-certutil` tool](#generate-certificates).
+* [Configure your {{es}} nodes to use the generated certificate for the transport layer](#encrypt-internode-communication).
 
-Configuring TLS between nodes is the basic security setup to prevent unauthorized nodes from accessing to your cluster.
-
-::::{admonition} Understanding transport contexts
-Transport Layer Security (TLS) is the name of an industry standard protocol for applying security controls (such as encryption) to network communications. TLS is the modern name for what used to be called Secure Sockets Layer (SSL). The {{es}} documentation uses the terms TLS and SSL interchangeably.
-
-Transport Protocol is the name of the protocol that {{es}} nodes use to communicate with one another. This name is specific to {{es}} and distinguishes the transport port (default `9300`) from the HTTP port (default `9200`). Nodes communicate with one another using the transport port, and REST clients communicate with {{es}} using the HTTP port.
-
-Although the word *transport* appears in both contexts, they mean different things. It’s possible to apply TLS to both the {{es}} transport port and the HTTP port. We know that these overlapping terms can be confusing, so to clarify, in this scenario we’re applying TLS to the {{es}} transport port. In [the next scenario](secure-http-communications.md), we’ll apply TLS to the {{es}} HTTP port.
-
-::::
-
+Refer to [Transport TLS/SSL settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) for the complete list of available settings in {{es}}.
 
 ## Generate the certificate authority [generate-certificates]
 
@@ -72,7 +68,7 @@ The transport networking layer is used for internal communication between nodes 
 
 Now that you’ve generated a certificate authority and certificates, you’ll update your cluster to use these files.
 
-::::{note} 
+::::{note}
 {{es}} monitors all files such as certificates, keys, keystores, or truststores that are configured as values of TLS-related node settings. If you update any of these files, such as when your hostnames change or your certificates are due to expire, {{es}} reloads them. The files are polled for changes at a frequency determined by the global {{es}} `resource.reload.interval.high` setting, which defaults to 5 seconds.
 ::::
 
@@ -81,7 +77,7 @@ Complete the following steps **for each node in your cluster**. To join the same
 
 1. Open the `$ES_PATH_CONF/elasticsearch.yml` file and make the following changes:
 
-    1. Add the [`cluster-name`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting and enter a name for your cluster:
+    1. Add the [`cluster-name`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name) setting and enter a name for your cluster:
 
         ```yaml
         cluster.name: my-cluster
@@ -105,7 +101,7 @@ Complete the following steps **for each node in your cluster**. To join the same
         xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
         ```
 
-        1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
+        1. If you want to use hostname verification, set the verification mode to `full`. You should generate a different certificate for each host that matches the DNS or IP address. See the `xpack.security.transport.ssl.verification_mode` parameter in [TLS settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings).
 
 2. If you entered a password when creating the node certificate, run the following commands to store the password in the {{es}} keystore:
 
@@ -122,16 +118,15 @@ Complete the following steps **for each node in your cluster**. To join the same
 
     For example, if you installed {{es}} with an archive distribution (`tar.gz` or `.zip`), you can enter `Ctrl+C` on the command line to stop {{es}}.
 
-    ::::{warning} 
+    ::::{warning}
     You must perform a full cluster restart. Nodes that are configured to use TLS for transport cannot communicate with nodes that use unencrypted transport connection (and vice-versa).
     ::::
-
 
 
 ## What’s next? [encrypting-internode-whatsnext]
 
 Congratulations! You’ve encrypted communications between the nodes in your cluster and can pass the [TLS bootstrap check](../deploy/self-managed/bootstrap-checks.md#bootstrap-checks-tls).
 
-To add another layer of security, [Set up basic security for the Elastic Stack plus secured HTTPS traffic](secure-http-communications.md). In addition to configuring TLS on the transport interface of your {{es}} cluster, you configure TLS on the HTTP interface for both {{es}} and {{kib}}.
+To add another layer of security, [set up HTTP TLS](./set-up-basic-security-plus-https.md) to encrypt client communications with both {{es}} and {{kib}}.
 
-
+For other tasks related with TLS encryption in self-managed deployments, refer to [](./self-tls.md).

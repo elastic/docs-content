@@ -1,17 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/esql-queries-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant-esql-queries.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Generate, customize, and learn about ES|QL queries
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/esql-queries-assistant.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-assistant-esql-queries.md
 
 Elastic AI Assistant can help you learn about and leverage the Elasticsearch Query Language ({{esql}}) in many ways, including:
 

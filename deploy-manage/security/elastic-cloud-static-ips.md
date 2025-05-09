@@ -1,44 +1,48 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-static-ips.html
 ---
 
-# Elastic Cloud Static IPs [ec-static-ips]
+# {{ecloud}} Static IPs [ec-static-ips]
 
-{{ecloud}} provides a range of static IP addresses that enable you to allow or deny IP ranges. There are two types of static IP addresses, [ingress](#ec-ingress) and [egress](#ec-egress), and they each have their own set of use cases. In general, static IPs can be used to introduce network controls (for example, firewall rules) for traffic that goes to and from {{ecloud}} deployments over the Internet. Use of static IPs is not applicable to private cloud service provider connections (for example, AWS/Azure PrivateLink, GCP Private Service Connect). It is important to note that static IP addresses are [subject to change](#ec-warning), and not all [cloud provider regions](#ec-regions) are currently fully supported for ingress and egress static IPs.
+{{ecloud}} provides a range of static IP addresses that enable you to allow or deny IP ranges. There are two types of static IP addresses, [ingress](#ec-ingress) and [egress](#ec-egress), and they each have their own set of use cases. In general, static IPs can be used to introduce network controls (for example, firewall rules) for traffic that goes to and from {{ecloud}} deployments over the Internet. Use of static IPs is not applicable to private cloud service provider connections (for example, AWS/Azure PrivateLink, GCP Private Service Connect). 
+
+Static IP addresses are [subject to change](#ec-warning), and not all [cloud provider regions](#ec-regions) are currently fully supported for ingress and egress static IPs. For this reason, we generally do not recommend that you use firewall rules to allow or restrict certain IP ranges. Consider using [private link](/deploy-manage/security/private-link-traffic-filters.md) traffic filters for deployment endpoints on {{ech}}. However, in situations where using Private Link services do not meet requirements (for example, secure traffic **from** {{ecloud}}), static IP ranges can be used.
 
 
-## Ingress Static IPs: Traffic To Elastic Cloud [ec-ingress] 
+## Ingress Static IPs: Traffic to {{ecloud}} [ec-ingress] 
 
 Suitable usage of ingress static IPs to introduce network controls:
 
-* All traffic **towards Elastic Cloud deployments** from the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (e.g. Elasticsearch traffic, Kibana traffic, etc) uses Ingress Static IPs as network destination
+* All traffic **towards {{ecloud}} deployments** from the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (e.g. {{es}} traffic, {{kib}} traffic, etc) uses Ingress Static IPs as network destination
 
 Not suitable usage of ingress static IPs to introduce network controls:
 
 * Traffic over private cloud service provider connections (e.g. AWS Privatelink, GCP Private Service Connect, Azure Private Link)
 * Traffic to the [Cloud Console](http://cloud.elastic.co)
-* Traffic to non Elastic Cloud websites and services hosted by Elastic (e.g. www.elastic.co)
+* Traffic to non {{ecloud}} websites and services hosted by Elastic (e.g. www.elastic.co)
 
 
-## Egress Static IPs: Traffic From Elastic Cloud [ec-egress] 
+## Egress Static IPs: Traffic From {{ecloud}} [ec-egress] 
 
 Suitable usage of egress static IPs to introduce network controls:
 
-* Traffic **from Elastic Cloud deployments** towards the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (e.g. custom Slack alerts, Email alerts, Kibana alerts, etc.) uses Egress Static IPs as network source
-* Cross-cluster replication/cross-cluster search traffic **from Elastic Cloud deployments** towards on-premises Elastic Cloud Enterprise deployments protected by on-premises firewalls or Elastic Cloud Enterprise traffic filters
+* Traffic **from {{ecloud}} deployments** towards the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (e.g. custom Slack alerts, Email alerts, {{kib}} alerts, etc.) uses Egress Static IPs as network source
+* Cross-cluster replication/cross-cluster search traffic **from {{ecloud}} deployments** towards on-premises {{ece}} deployments protected by on-premises firewalls or {{ece}} traffic filters
 
 Not suitable usage of egress static IPs to introduce network controls:
 
-* Snapshot traffic that stays within the same cloud provider and regional boundaries (e.g. an Elastic Cloud deployment hosted in aws-us-east-1 using an S3 bucket also hosted in aws-us-east-1 as a snapshot repository)
+* Snapshot traffic that stays within the same cloud provider and regional boundaries (e.g. an {{ecloud}} deployment hosted in aws-us-east-1 using an S3 bucket also hosted in aws-us-east-1 as a snapshot repository)
 
 
 ## Supported Regions [ec-regions] 
 
-::::{dropdown} **AWS**
-|     |     |     |
+::::{dropdown} AWS
+| Region | Ingress Static IPs | Egress Static IPs |
 | --- | --- | --- |
-| **Region** | **Ingress Static IPs** | **Egress Static IPs** |
 | aws-af-south-1 | No | Yes |
 | aws-ap-east-1 | No | Yes |
 | aws-ap-northeast-1 | No | Yes |
@@ -63,10 +67,9 @@ Not suitable usage of egress static IPs to introduce network controls:
 ::::
 
 
-::::{dropdown} **Azure**
-|     |     |     |
+::::{dropdown} Azure
+| Region | Ingress Static IPs | Egress Static IPs |
 | --- | --- | --- |
-| **Region** | **Ingress Static IPs** | **Egress Static IPs** |
 | azure-australiaeast | Yes | Yes |
 | azure-brazilsouth | Yes | Yes |
 | azure-canadacentral | Yes | Yes |
@@ -87,10 +90,9 @@ Not suitable usage of egress static IPs to introduce network controls:
 ::::
 
 
-::::{dropdown} **GCP**
-|     |     |     |
+::::{dropdown} GCP
+| Region | Ingress Static IPs | Egress Static IPs |
 | --- | --- | --- |
-| **Region** | **Ingress Static IPs** | **Egress Static IPs** |
 | gcp-asia-east1 | Yes | No |
 | gcp-asia-northeast1 | Yes | No |
 | gcp-asia-northeast3 | Yes | No |
@@ -118,7 +120,7 @@ Not suitable usage of egress static IPs to introduce network controls:
 ::::{warning} 
 :name: ec-warning
 
-Static IP ranges are subject to change. You will need to update your firewall rules when they change to prevent service disruptions. We will announce changes at least 8 weeks in advance (see [example](https://status.elastic.co/incidents/1xs411x77wgh)). Please subscribe to the [Elastic Cloud Status Page](https://status.elastic.co/) to remain up to date with any changes to the Static IP ranges which you will need to update at your side.
+Static IP ranges are subject to change. You will need to update your firewall rules when they change to prevent service disruptions. We will announce changes at least 8 weeks in advance (see [example](https://status.elastic.co/incidents/1xs411x77wgh)). Subscribe to the [{{ecloud}} status page](https://status.elastic.co/) to remain up to date with any changes to the Static IP ranges which you will need to update at your side.
 ::::
 
 

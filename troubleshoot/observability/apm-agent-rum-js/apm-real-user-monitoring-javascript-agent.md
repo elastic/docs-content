@@ -2,6 +2,8 @@
 navigation_title: "APM Real User Monitoring JavaScript Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/rum-js/current/troubleshooting.html
+applies_to:
+  stack: all
 ---
 
 # Troubleshoot APM Real User Monitoring JavaScript Agent [troubleshooting]
@@ -80,12 +82,12 @@ The effect of this will remain until the tab or browser is closed.
 
 In the unlikely event the agent causes disruptions to a production application, you can disable the agent while you troubleshoot.
 
-To disable the agent, set [`active`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md#active) to `false`.
+To disable the agent, set [`active`](apm-agent-rum-js://reference/configuration.md#active) to `false`.
 
 
 ## Get in touch [get-in-touch] 
 
-If you have any questions, please create a new topic in the [Elastic APM discuss forum](https://discuss.elastic.co/c/apm).
+If you have any questions, create a new topic in the [Elastic APM discuss forum](https://discuss.elastic.co/c/apm).
 
-For bug reports and feature requests, please [create an issue](https://github.com/elastic/apm-agent-rum-js/issues/new) on our [github repo](https://github.com/elastic/apm-agent-rum-js) and include as much information as possible. See [Debugging](#debugging) for how to gather debugging information.
+For bug reports and feature requests, [create an issue](https://github.com/elastic/apm-agent-rum-js/issues/new) on our [github repo](https://github.com/elastic/apm-agent-rum-js) and include as much information as possible. See [Debugging](#debugging) for how to gather debugging information.
 

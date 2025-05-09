@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/offline-endpoint.html
+applies_to:
+  stack: all
 ---
 
 # Configure offline endpoints and air-gapped environments [offline-endpoint]
@@ -45,7 +47,7 @@ docker run -v "$PWD"/nginx.conf:/etc/nginx/conf.d/default.conf:ro -p 80:80 nginx
 ```
 
 ::::{important}
-This example script is not appropriate for production environments. We recommend configuring the Nginx server to use [TLS](http://nginx.org/en/docs/http/configuring_https_servers.md) according to your IT policies. Refer to [Nginx documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/) for more information on downloading and configuring Nginx.
+This example script is not appropriate for production environments. We recommend configuring the Nginx server to use [TLS](http://nginx.org/en/docs/http/configuring_https_servers.html) according to your IT policies. Refer to [Nginx documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/) for more information on downloading and configuring Nginx.
 ::::
 
 
@@ -71,7 +73,7 @@ docker run -p 80:80 -v "$PWD"/httpd.conf:/usr/local/apache2/conf/httpd.conf http
 ```
 
 ::::{important}
-This example script is not appropriate for production environments. We recommend configuring httpd to use [TLS](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.md) according to your IT policies. Refer to [Apache documentation](https://httpd.apache.org) for more information on downloading and configuring Apache httpd.
+This example script is not appropriate for production environments. We recommend configuring httpd to use [TLS](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.html) according to your IT policies. Refer to [Apache documentation](https://httpd.apache.org) for more information on downloading and configuring Apache httpd.
 ::::
 
 
@@ -87,9 +89,9 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 * `mac.advanced.artifacts.global.base_url`
 * `windows.advanced.artifacts.global.base_url`
 
-:::{image} ../../../images/security-offline-adv-settings.png
+:::{image} /solutions/images/security-offline-adv-settings.png
 :alt: Integration policy advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -133,7 +135,7 @@ docker run -v "$PWD"/nginx.conf:/etc/nginx/conf.d/default.conf:ro -v "$PWD"/stat
 ```
 
 ::::{important}
-This example script is not appropriate for production environments. We recommend configuring the Nginx server to use [TLS](http://nginx.org/en/docs/http/configuring_https_servers.md) according to your IT policies. Refer to [Nginx documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/) for more information on downloading and configuring Nginx.
+This example script is not appropriate for production environments. We recommend configuring the Nginx server to use [TLS](http://nginx.org/en/docs/http/configuring_https_servers.html) according to your IT policies. Refer to [Nginx documentation](https://docs.nginx.com/nginx/admin-guide/installing-nginx/) for more information on downloading and configuring Nginx.
 ::::
 
 
@@ -153,7 +155,7 @@ docker run -p 80:80 -v "$PWD/static":/usr/local/apache2/htdocs/ -v "$PWD"/my-htt
 ```
 
 ::::{important}
-This example script is not appropriate for production environments. We recommend configuring httpd to use [TLS](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.md) according to your IT policies. Refer to [Apache documentation](https://httpd.apache.org) for more information on downloading and configuring Apache httpd.
+This example script is not appropriate for production environments. We recommend configuring httpd to use [TLS](https://httpd.apache.org/docs/trunk/ssl/ssl_howto.html) according to your IT policies. Refer to [Apache documentation](https://httpd.apache.org) for more information on downloading and configuring Apache httpd.
 ::::
 
 
@@ -169,9 +171,9 @@ Set the `advanced.artifacts.global.base_url` advanced setting for each [{{elasti
 * `mac.advanced.artifacts.global.base_url`
 * `windows.advanced.artifacts.global.base_url`
 
-:::{image} ../../../images/security-offline-adv-settings.png
+:::{image} /solutions/images/security-offline-adv-settings.png
 :alt: Integration policy advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -181,8 +183,8 @@ Download the most recent artifact files from the Elastic global artifact server,
 
 Below is an example script that downloads all the global artifact updates. There are different artifact files for each version of {{elastic-endpoint}}. Change the value of the `ENDPOINT_VERSION` variable in the example script to match the deployed version of {{elastic-endpoint}}.
 
-```sh
-export ENDPOINT_VERSION=9.0.0-beta1 && wget -P downloads/endpoint/manifest https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip && zcat -q downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip | jq -r '.artifacts | to_entries[] | .value.relative_url' | xargs -I@ curl "https://artifacts.security.elastic.co@" --create-dirs -o ".@"
+```sh subs=true
+export ENDPOINT_VERSION={{version}} && wget -P downloads/endpoint/manifest https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip && zcat -q downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip | jq -r '.artifacts | to_entries[] | .value.relative_url' | xargs -I@ curl "https://artifacts.security.elastic.co@" --create-dirs -o ".@"
 ```
 
 This command will download files and directory structure that should be directly copied to the file server.
@@ -196,16 +198,16 @@ Each new global artifact update release increments a version identifier that you
 
 To confirm the latest version of the artifacts for a given {{elastic-endpoint}} version, check the published version. This example script checks the version:
 
-```sh
-curl -s https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-9.0.0-beta1.zip | zcat -q | jq -r .manifest_version
+```sh subs=true
+curl -s https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-{{version}}.zip | zcat -q | jq -r .manifest_version
 ```
 
 Replace `https://artifacts.security.elastic.co` in the command above with your local mirror server to validate that the artifacts are served correctly.
 
 After updating the {{elastic-endpoint}} configuration to read from the mirror server, use {{kib}}'s [Discover view](../../../explore-analyze/discover.md) to search the `metrics-*` data view for `endpoint.policy` response documents, then check the installed version (`Endpoint.policy.applied.artifacts.global.version`) and compare with the output from the command above:
 
-:::{image} ../../../images/security-offline-endpoint-version-discover.png
+:::{image} /solutions/images/security-offline-endpoint-version-discover.png
 :alt: Searching for `endpoint.policy` in Discover
-:class: screenshot
+:screenshot:
 :::
 

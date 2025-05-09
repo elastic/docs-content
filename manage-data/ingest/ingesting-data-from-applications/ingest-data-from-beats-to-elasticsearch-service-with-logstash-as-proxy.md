@@ -1,67 +1,18 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-search-use-cases-beats-logstash.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-beats-logstash.html
+applies_to:
+  stack: ga
 ---
 
 # Ingest data from Beats with Logstash as a proxy
-
-% What needs to be done: Refine
-
-% Scope notes: Merge ESS and ECE versions (should be pretty much identical)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-search-use-cases-beats-logstash.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-getting-started-search-use-cases-beats-logstash.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-beats-logstash-connect-securely$$$
-
-$$$ec-beats-logstash-elasticsearch$$$
-
-$$$ec-beats-logstash-filebeat$$$
-
-$$$ec-beats-logstash-listen$$$
-
-$$$ec-beats-logstash-logstash$$$
-
-$$$ec-beats-logstash-metricbeat-send$$$
-
-$$$ec-beats-logstash-metricbeat$$$
-
-$$$ec-beats-logstash-stdout$$$
-
-$$$ec-beats-logstash-trial$$$
-
-$$$ec-beats-logstash-view-kibana$$$
-
-$$$ece-beats-logstash-connect-securely$$$
-
-$$$ece-beats-logstash-deployment$$$
-
-$$$ece-beats-logstash-elasticsearch$$$
-
-$$$ece-beats-logstash-filebeat$$$
-
-$$$ece-beats-logstash-listen$$$
-
-$$$ece-beats-logstash-logstash$$$
-
-$$$ece-beats-logstash-metricbeat-send$$$
-
-$$$ece-beats-logstash-metricbeat$$$
-
-$$$ece-beats-logstash-stdout$$$
-
-$$$ece-beats-logstash-view-kibana$$$
 
 This guide explains how to ingest data from Filebeat and Metricbeat to {{ls}} as an intermediary, and then send that data to your {{ech}} or {{ece}} deployment. Using {{ls}} as a proxy limits your Elastic stack traffic through a single, external-facing firewall exception or rule. Consider the following features of this type of setup:
 
 * You can send multiple instances of Beats data through your local network’s demilitarized zone (DMZ) to {{ls}}. {{ls}} then acts as a proxy through your firewall to send the Beats data to your deployment, as shown in the following diagram:
 
-    ![A diagram showing data from multiple Beats into Logstash](../../../images/cloud-ec-logstash-beats-dataflow.png "")
+    ![A diagram showing data from multiple Beats into Logstash](/manage-data/images/cloud-ec-logstash-beats-dataflow.png "")
 
 * This proxying reduces the firewall exceptions or rules necessary for Beats to communicate with your {{ech}} or {{ece}} deployment. It’s common to have many Beats dispersed across a network, each installed close to the data that it monitors, and each Beat individually communicating with a deployment. Multiple Beats support multiple servers. Rather than configure each Beat to send its data directly to your {{ech}} or {{ece}} deployment, you can use {{ls}} to proxy this traffic through one firewall exception or rule.
 * This setup is not suitable in simple scenarios when there is only one or a couple of Beats in use. {{ls}} makes the most sense for proxying when there are many Beats.
@@ -122,11 +73,11 @@ If you have multiple servers with metrics data, repeat the following steps to co
 
 **About Metricbeat modules**
 
-Metricbeat has [many modules](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-modules.md) available that collect common metrics. You can [configure additional modules](asciidocalypse://docs/beats/docs/reference/metricbeat/configuration-metricbeat.md) as needed. For this example we’re using Metricbeat’s default configuration, which has the [System module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-system.md) enabled. The System module allows you to monitor servers with the default set of metrics: *cpu*, *load*, *memory*, *network*, *process*, *process_summary*, *socket_summary*, *filesystem*, *fsstat*, and *uptime*.
+Metricbeat has [many modules](beats://reference/metricbeat/metricbeat-modules.md) available that collect common metrics. You can [configure additional modules](beats://reference/metricbeat/configuration-metricbeat.md) as needed. For this example we’re using Metricbeat’s default configuration, which has the [System module](beats://reference/metricbeat/metricbeat-module-system.md) enabled. The System module allows you to monitor servers with the default set of metrics: *cpu*, *load*, *memory*, *network*, *process*, *process_summary*, *socket_summary*, *filesystem*, *fsstat*, and *uptime*.
 
 **Load the Metricbeat Kibana dashboards**
 
-Metricbeat comes packaged with example dashboards, visualizations, and searches for visualizing Metricbeat data in Kibana. Before you can use the dashboards, you need to create the data view (formerly *index pattern*) *metricbeat-**, and load the dashboards into Kibana. This needs to be done from a local Beats machine that has access to the {{esh}} or {{ece}} deployment.
+Metricbeat comes packaged with example dashboards, visualizations, and searches for visualizing Metricbeat data in Kibana. Before you can use the dashboards, you need to create the data view (formerly *index pattern*) _metricbeat-*_, and load the dashboards into Kibana. This needs to be done from a local Beats machine that has access to the {{esh}} or {{ece}} deployment.
 
 ::::{note}
 Beginning with Elastic Stack version 8.0, Kibana *index patterns* have been renamed to *data views*. To learn more, check the Kibana [What’s new in 8.0](https://www.elastic.co/guide/en/kibana/8.0/whats-new.html#index-pattern-rename) page.
@@ -143,16 +94,18 @@ sudo ./metricbeat setup \
 ```
 
 1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
-Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md) of the metricbeat.yml.
+2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
 
-You might encounter similar permissions hurdles as you work through multiple sections of this document. These permission requirements are there for a good reason, a security safeguard to prevent unauthorized access and modification of key Elastic files.
+    ::::{important}
+    Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the metricbeat.yml.
 
-If this isn’t a production environment and you want a fast-pass with less permissions hassles, then you can disable strict permission checks from the command line by using `--strict.perms=false` when executing Beats (for example, `./metricbeat --strict.perms=false`).
+    You might encounter similar permissions hurdles as you work through multiple sections of this document. These permission requirements are there for a good reason, a security safeguard to prevent unauthorized access and modification of key Elastic files.
 
-Depending on your system, you may also find that some commands need to be run as root, by prefixing `sudo` to the command.
+    If this isn’t a production environment and you want a fast-pass with less permissions hassles, then you can disable strict permission checks from the command line by using `--strict.perms=false` when executing Beats (for example, `./metricbeat --strict.perms=false`).
 
-::::
+    Depending on your system, you may also find that some commands need to be run as root, by prefixing `sudo` to the command.
+
+    ::::
 
 
 
@@ -193,7 +146,7 @@ The next step is to configure Filebeat to send operational data to Logstash. As 
 
 **Enable the Filebeat system module**
 
-Filebeat has [many modules](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-modules.md) available that collect common log types. You can [configure additional modules](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-filebeat-modules.md) as needed. For this example we’re using Filebeat’s [System module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-system.md). This module reads in the various system log files (with information including login successes or failures, sudo command usage, and other key usage details) based on the detected operating system. For this example, a Linux-based OS is used and Filebeat ingests logs from the */var/log/* folder. It’s important to verify that Filebeat is given permission to access your logs folder through standard file and folder permissions.
+Filebeat has [many modules](beats://reference/filebeat/filebeat-modules.md) available that collect common log types. You can [configure additional modules](beats://reference/filebeat/configuration-filebeat-modules.md) as needed. For this example we’re using Filebeat’s [System module](beats://reference/filebeat/filebeat-module-system.md). This module reads in the various system log files (with information including login successes or failures, sudo command usage, and other key usage details) based on the detected operating system. For this example, a Linux-based OS is used and Filebeat ingests logs from the */var/log/* folder. It’s important to verify that Filebeat is given permission to access your logs folder through standard file and folder permissions.
 
 1. Go to *<localpath>/filebeat-<version>/modules.d/* where *<localpath>* is the directory where Filebeat is installed.
 2. Filebeat requires at least one fileset to be enabled. In file *<localpath>/filebeat-<version>/modules.d/system.yml.disabled*, under both `syslog` and `auth` set `enabled` to `true`:
@@ -219,7 +172,7 @@ The system module is now enabled in Filebeat and it will be used the next time F
 
 **Load the Filebeat Kibana dashboards**
 
-Filebeat comes packaged with example Kibana dashboards, visualizations, and searches for visualizing Filebeat data in Kibana. Before you can use the dashboards, you need to create the data view *filebeat-**, and load the dashboards into Kibana. This needs to be done from a Beats machine that has access to the Internet.
+Filebeat comes packaged with example Kibana dashboards, visualizations, and searches for visualizing Filebeat data in Kibana. Before you can use the dashboards, you need to create the data view _filebeat-*_, and load the dashboards into Kibana. This needs to be done from a Beats machine that has access to the Internet.
 
 1. Open a command line instance and then go to *<localpath>/filebeat-<version>/*
 2. Run the following command:
@@ -231,9 +184,11 @@ sudo ./filebeat setup \
 ```
 
 1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md) of the filebeat.yml.
-::::
+2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
+
+    ::::{important}
+    Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of the filebeat.yml.
+    ::::
 
 
 
@@ -244,7 +199,7 @@ Your results should be similar to the following:
 Index setup finished.
 Loading dashboards (Kibana must be running and reachable)
 Loaded dashboards
-Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Please use the ML app instead.
+Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Use the ML app instead.
 See more: /explore-analyze/machine-learning.md
 Loaded machine learning job configurations
 Loaded Ingest pipelines
@@ -252,7 +207,7 @@ Loaded Ingest pipelines
 
 1. Exit the CLI.
 
-The data views for *filebeat-** and *metricbeat-** are now available in {{es}}. To verify:
+The data views for _filebeat-*_ and _metricbeat-*_ are now available in {{es}}. To verify:
 
 1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the Kibana main menu and select **Management** and go to **Kibana** > **Data views**.
@@ -295,7 +250,7 @@ Now the Filebeat and Metricbeat are set up, let’s configure a {{ls}} pipeline 
     1. {{ls}} listens for Beats input on the default port of 5044. Only one line is needed to do this. {{ls}} can handle input from many Beats of the same and also of varying types (Metricbeat, Filebeat, and others).
     2. This sends output to the standard output, which displays through your command line interface. This plugin enables you to verify the data before you send it to {{es}}, in a later step.
 
-3. Save the new *beats.conf* file in your Logstash folder. To learn more about the file format and options, check [{{ls}} Configuration Examples](asciidocalypse://docs/logstash/docs/reference/config-examples.md).
+3. Save the new *beats.conf* file in your Logstash folder. To learn more about the file format and options, check [{{ls}} Configuration Examples](logstash://reference/config-examples.md).
 
 
 ## Output {{ls}} data to stdout [ec-beats-logstash-stdout]
@@ -437,7 +392,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
     ```
 
     1. Use the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-    2. the default usename is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/filebeat/feature-roles.md) for information on the writer role and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/filebeat/feature-roles.md) documentation.
+    2. the default usename is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check the [Grant access to secured resources](beats://reference/filebeat/feature-roles.md) for information on the writer role and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Grant access to secured resources](beats://reference/filebeat/feature-roles.md) documentation.
 
 
     Following are some additional details about the configuration file settings:
@@ -529,9 +484,9 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
 ::::{note}
 In this guide, you manually launch each of the Elastic stack applications through the command line interface. In production, you may prefer to configure {{ls}}, Metricbeat, and Filebeat to run as System Services. Check the following pages for the steps to configure each application to run as a service:
 
-* [Running {{ls}} as a service on Debian or RPM](asciidocalypse://docs/logstash/docs/reference/running-logstash.md)
-* [Metricbeat and systemd](asciidocalypse://docs/beats/docs/reference/metricbeat/running-with-systemd.md)
-* [Start filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-starting.md)
+* [Running {{ls}} as a service on Debian or RPM](logstash://reference/running-logstash.md)
+* [Metricbeat and systemd](beats://reference/metricbeat/running-with-systemd.md)
+* [Start filebeat](beats://reference/filebeat/filebeat-starting.md)
 
 ::::
 
@@ -548,7 +503,7 @@ In this section, you log into {{ech}} or {{ece}}, open Kibana, and view the Kiba
 3. In the search box, search for *metricbeat system*. The search results show several dashboards available for you to explore.
 4. In the search results, choose *[Metricbeat System] Overview ECS*. A Metricbeat dashboard opens:
 
-![A screencapture of the Kibana dashboard named Metricbeat System Overview ECS](../../../images/cloud-ec-logstash-beats-metricbeat-dashboard.png "")
+![A screencapture of the Kibana dashboard named Metricbeat System Overview ECS](/manage-data/images/cloud-ec-logstash-beats-metricbeat-dashboard.png "")
 
 **View the Filebeat dashboard**
 
@@ -556,7 +511,7 @@ In this section, you log into {{ech}} or {{ece}}, open Kibana, and view the Kiba
 2. In the search box, search for *filebeat system*.
 3. In the search results, choose *[Filebeat System] Syslog dashboard ECS*. A Filebeat dashboard displaying your Filebeat data:
 
-![A screencapture of the Kibana dashboard named Filebeat System ECS](../../../images/cloud-ec-logstash-beats-filebeat-dashboard.png "")
+![A screencapture of the Kibana dashboard named Filebeat System ECS](/manage-data/images/cloud-ec-logstash-beats-filebeat-dashboard.png "")
 
 Now, you should have a good understanding of how to configure {{ls}} to ingest data from multiple Beats. You have the basics needed to begin experimenting with your own combination of Beats and modules.
 

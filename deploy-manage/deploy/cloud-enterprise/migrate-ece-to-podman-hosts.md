@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-podman.html
 ---
@@ -18,26 +21,15 @@ Using Docker or Podman as container runtime is a configuration local to the host
 ::::
 
 
-:::{image} ../../../images/cloud-enterprise-podman-migration-overview-1.png
+:::{image} /deploy-manage/images/cloud-enterprise-podman-migration-overview-1.png
 :alt: Migration Overview
 :::
 
 ::::{note}
-When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* When copy-pasting commands, verify that characters like quotes (“) are encoded correctly in the console where you copy the command to.
+* Steps that run commands starting with `sudo` can be run as any sudoers user. Otherwise, the corresponding user is mentioned as part of the step description.
+* Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
 ::::
-
-
-::::{note}
-Steps that run commands starting with `sudo` can be run as any sudoers user.
-::::
-
-
-::::{note}
-Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Otherwise the ECE installer script needs to be adjusted.
-::::
-
-
-Otherwise, when the file content changes, the corresponding user is mentioned as part of the step description.
 
 1. Make sure you are running a healthy x-node ECE environment ready to be upgraded. All nodes use the Docker container runtime.
 2. Upgrade to ECE 3.3.0+ following the [Upgrade your installation](../../upgrade/orchestrator/upgrade-cloud-enterprise.md) guideline. Skip this step if your existing ECE installation already runs ECE >= 3.3.0.
@@ -50,13 +42,13 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
     **Example 1** You want to migrate the Docker host `192.168.44.74` with the role `Allocator` to a podman host. Copy the role `allocator`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-1.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-1.png
     :alt: Migrate Allocator
     :::
 
     **Example 2** You want to migrate the Docker host `192.168.44.10` with the roles `Allocator`, `Controller`, `Director`, and `Proxy` to a podman host. Copy the roles `allocator`, `coordinator`, `director`, `proxy`.
 
-    :::{image} ../../../images/cloud-enterprise-podman-migration-fetch-roles-2.png
+    :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-fetch-roles-2.png
     :alt: Migrate Allocator
     :::
 
@@ -109,19 +101,58 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
         SELINUX=enforcing
         ```
 
-4. Install podman:
+4. Install Podman:
 
-    * For RHEL 8 and Rocky Linux, install version `4.*`.
+    * For Podman 4
 
-        ```sh
-        sudo dnf install podman-4.* podman-remote-4.*
-        ```
+        * Install the latest available version `4.*` using dnf.
 
-    * For RHEL 9, install the latest available version `4.*` using dnf.
+            ```sh
+            sudo dnf install podman-4.* podman-remote-4.*
+            ```
 
-        ```sh
-        sudo dnf install podman-4.* podman-remote-4.*
-        ```
+        * To prevent automatic Podman major version updates, configure the Podman version to be locked at version `4.*` while still allowing minor and patch updates.
+
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
+
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-4.*'
+            sudo dnf versionlock add --raw 'podman-remote-4.*'
+
+            ## Verify that podman-4.* and podman-remote-4.* appear in the output
+            sudo dnf versionlock list
+            ```
+
+    * For Podman 5
+
+        * Install version `5.2.2-13.*` using dnf.
+
+            :::{note}
+            As mentioned in [Migrating to Podman 5](migrate-to-podman-5.md) it is recommended to install Podman `5.2.2-13` since this is the latest supported version.
+
+            If you decide to install a previous Podman 5 version, make sure to replace `5.2.2-13` with the desired version in the commands below.
+
+            The version lock is still required for previous versions, to prevent automatic in-place updates that may be affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
+            :::
+
+            ```sh
+            sudo dnf install podman-5.2.2-13.* podman-remote-5.2.2-13.*
+            ```
+        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2-13.*`.
+
+            ```sh
+            ## Install versionlock
+            sudo dnf install 'dnf-command(versionlock)'
+
+            ## Lock major version
+            sudo dnf versionlock add --raw 'podman-5.2.2-13.*'
+            sudo dnf versionlock add --raw 'podman-remote-5.2.2-13.*'
+
+            ## Verify that podman-5.2.2-13.* and podman-remote-5.2.2-13.* appear in the output
+            sudo dnf versionlock list
+            ```
 
 5. [This step is for RHEL 9 and Rocky Linux 9 only] Switch the network stack from Netavark to CNI:
 
@@ -138,7 +169,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Please note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 
@@ -267,7 +298,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
     sudo install -o elastic -g elastic -d -m 700 /mnt/data
     ```
 
-21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
+21. As a sudoers user, modify the entry for the XFS volume in the `/etc/fstab` file to add `pquota,prjquota`. The default filesystem path used by {{ece}} is `/mnt/data`.
 
     ::::{note}
     Replace `/dev/nvme1n1` in the following example with the corresponding device on your host, and add this example configuration as a single line to `/etc/fstab`.
@@ -303,7 +334,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
     sudo install -o elastic -g elastic -d -m 700 /mnt/data/docker
     ```
 
-25. If you want to use FirewallD, please ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
+25. If you want to use FirewallD, ensure you meet the [networking prerequisites](ece-networking-prereq.md). Otherwise, you can disable it with:
 
     ```sh
     sudo systemctl disable firewalld
@@ -385,7 +416,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
     1. Use the ECE installer script together with the `--podman` flag to add the additional host as a podman-based host.
 
-        Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](install-ece-onprem.md) documentation to adapt the command line parameters to your environment including fetching the role token.
+        Refer to the official [Install {{ece}} on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](./install.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
         [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 
@@ -423,13 +454,13 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
         The following screenshot shows the state where the correct roles have been applied. Both hosts in ece-zone-1 have the same color.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-correct-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-correct-role-1.png
         :alt: Correct role
         :::
 
         The following screenshot shows the state where incorrect roles have been applied. The hosts in ece-zone-1 do not have the same coloring.
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-wrong-role-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-wrong-role-1.png
         :alt: Wrong role
         :::
 
@@ -449,7 +480,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
         ::::
 
 
-        :::{image} ../../../images/cloud-enterprise-podman-migration-move-instances-1.png
+        :::{image} /deploy-manage/images/cloud-enterprise-podman-migration-move-instances-1.png
         :alt: Move instances
         :::
 

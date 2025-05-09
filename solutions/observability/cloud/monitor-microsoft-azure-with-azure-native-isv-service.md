@@ -1,12 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-azure-native.html
+applies_to:
+  stack:
 ---
 
 # Monitor Microsoft Azure with the Azure Native ISV Service [monitor-azure-native]
 
 ::::{note}
-The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Azure integrated marketplace. The service includes native capabilities for consolidating Azure logs and metrics in Elastic. For more information, refer to [Azure Native ISV Service](../../../deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md).
+The {{ecloud}} Azure Native ISV Service allows you to deploy managed instances of the {{stack}} directly in Azure, through the Azure integrated marketplace. The service includes native capabilities for consolidating Azure logs and metrics in Elastic. For more information, refer to [Azure Native ISV Service](/deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md).
 
 **Using {{agent}} to monitor Azure?** Refer to [Monitor Microsoft Azure with {{agent}}](monitor-microsoft-azure-with-elastic-agent.md).
 
@@ -57,17 +59,17 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
     ::::
 
 
-    :::{image} ../../../images/observability-monitor-azure-native-create-elastic-resource.png
+    :::{image} /solutions/images/observability-monitor-azure-native-create-elastic-resource.png
     :alt: Screenshot of Elastic resource creation in Azure
-    :class: screenshot
+    :screenshot:
     :::
 
 7. To create the {{es}} deployment, click **Create**.
 8. After deployment is complete, click **Go to resource**. Here you can view and configure your deployment details. To access the cluster, click **{{kib}}**.
 
-    :::{image} ../../../images/observability-monitor-azure-native-elastic-deployment.png
+    :::{image} /solutions/images/observability-monitor-azure-native-elastic-deployment.png
     :alt: Screenshot of deployment details for Elastic resource in Azure
-    :class: screenshot
+    :screenshot:
     :::
 
 9. Click **Accept** (if necessary) to grant permissions to use your Azure account, then log in to {{ecloud}} using your Azure credentials as a single sign-on.
@@ -81,9 +83,9 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
 1. In the Azure portal, go to your {{es}} resource page and click **Ingest logs and metrics from Azure Services**.
 2. Under **Logs**, select both checkboxes to collect subscription activity logs and Azure resource logs. Click **Save**.
 
-    :::{image} ../../../images/observability-monitor-azure-native-elastic-config-logs-metrics.png
+    :::{image} /solutions/images/observability-monitor-azure-native-elastic-config-logs-metrics.png
     :alt: Screenshot of logs and metrics configuration for Elastic resource in Azure
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{note}
@@ -96,7 +98,7 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
     ::::
 
 3. In {{kib}}, under **{{observability}}**, find **Overview** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Refresh the page until you see some data. This may take a few minutes.
-4. To analyze your subscription and resource logs, click **Show Logs Explorer**.
+4. To analyze your subscription and resource logs, click **Show Logs**.
 
 
 ## Step 3: Ingest logs and metrics from your virtual machines (VMs) [azure-ingest-VM-logs-metrics]
@@ -104,13 +106,13 @@ To ingest Azure subscription and resource logs into Elastic, you use the Azure N
 1. In the Azure portal, go to your {{es}} resource and click **Virtual machines**.
 2. Select the VMs that you want to collect logs and metrics from, click **Install Extension**, and then click **OK**.
 
-    :::{image} ../../../images/observability-monitor-azure-native-elastic-vms.png
+    :::{image} /solutions/images/observability-monitor-azure-native-elastic-vms.png
     :alt: Screenshot that shows VMs selected for logs and metrics collection
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Wait until the extension is installed and sending data (if the list does not update, click **Refresh** ).
-4. Back in {{kib}}, view the **Logs Explorer** again. Notice that you can filter the view to show logs for a specific instance, for example `cloud.instance.name : "ingest-tutorial-linux"`.
+4. Back in {{kib}}, view the **Discover** again. Notice that you can filter the view to show logs for a specific instance, for example `cloud.instance.name : "ingest-tutorial-linux"`.
 5. To view VM metrics, go to **Infrastructure inventory** and then select a VM. (To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).)
 
     To explore the data further, click **Open as page**.

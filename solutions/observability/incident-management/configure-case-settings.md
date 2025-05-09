@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/manage-cases-settings.html
   - https://www.elastic.co/guide/en/serverless/current/observability-case-settings.html
 ---
@@ -10,15 +10,15 @@ mapped_urls:
 
 ::::{note}
 
-For Observability serverless projects, the **Editor** role or higher is required to create and edit connectors. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+For Observability serverless projects, the **Editor** role or higher is required to create and edit connectors. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
 To change case closure options and add custom fields, templates, and connectors for external incident management systems, go to **Cases** → **Settings**.
 
-:::{image} ../../../images/observability-cases-settings.png
+:::{image} /solutions/images/observability-cases-settings.png
 :alt: View case settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -33,21 +33,21 @@ To close cases when they are sent to an external system, select **Automatically 
 
 If you are using an external incident management system, you can integrate Elastic Observability cases with that system using *connectors*. These third-party systems are supported:
 
-* {ibm-r}
+* {{ibm-r}}
 * {{jira}} (including {{jira}} Service Desk)
-* {sn-itsm}
-* {sn-sir}
-* {swimlane}
+* {{sn-itsm}}
+* {{sn-sir}}
+* {{swimlane}}
 * TheHive
-* {webhook-cm}
+* {{webhook-cm}}
 
 You need to create a connector to send cases, which stores the information required to interact with an external system. For each case, you can send the title, description, and comment when you choose to push the case — for the **Webhook - Case Management** connector, you can also send the status and severity fields.
 
 ::::{important}
-To send cases to external systems, you need the appropriate license, and your role must have the **Cases** {{kib}} privilege as a user. For more details, refer to [Configure access to cases](../../../solutions/observability/incident-management/configure-access-to-cases.md).
+To send cases to external systems, you need the appropriate license, and your role must have the **Cases** {{kib}} privilege as a user. For more details, refer to [Configure access to cases](/solutions/observability/incident-management/configure-access-to-cases.md).
 ::::
 
-After creating a connector, you can set your cases to [automatically close](../../../solutions/observability/incident-management/configure-case-settings.md#close-connector-observability) when they are sent to an external system.
+After creating a connector, you can set your cases to [automatically close](/solutions/observability/incident-management/configure-case-settings.md#close-connector-observability) when they are sent to an external system.
 
 
 ### Create a connector [new-connector-observability]
@@ -55,20 +55,20 @@ After creating a connector, you can set your cases to [automatically close](../.
 1. From the **Incident management system** list, select **Add new connector**.
 2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **TheHive**, or **{{webhook-cm}}**.
 
-    :::{image} ../../../images/serverless-observability-cases-add-connector.png
+    :::{image} /solutions/images/serverless-observability-cases-add-connector.png
     :alt: Add a connector to send cases to an external source
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Enter your required settings. For connector configuration details, refer to:
 
-    * [{{ibm-r}} connector](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html)
-    * [{{jira}} connector](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html)
-    * [{{sn-itsm}} connector](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html)
-    * [{{sn-sir}} connector](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html)
-    * [{{swimlane}} connector](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html)
-    * [TheHive connector](https://www.elastic.co/guide/en/kibana/current/thehive-action-type.html)
-    * [{{webhook-cm}} connector](https://www.elastic.co/guide/en/kibana/current/cases-webhook-action-type.html)
+    * [{{ibm-r}} connector](kibana://reference/connectors-kibana/resilient-action-type.md)
+    * [{{jira}} connector](kibana://reference/connectors-kibana/jira-action-type.md)
+    * [{{sn-itsm}} connector](kibana://reference/connectors-kibana/servicenow-action-type.md)
+    * [{{sn-sir}} connector](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+    * [{{swimlane}} connector](kibana://reference/connectors-kibana/swimlane-action-type.md)
+    * [TheHive connector](kibana://reference/connectors-kibana/thehive-action-type.md)
+    * [{{webhook-cm}} connector](kibana://reference/connectors-kibana/cases-webhook-action-type.md)
 
 4. Click **Save**.
 
@@ -77,7 +77,7 @@ After creating a connector, you can set your cases to [automatically close](../.
 You can create additional connectors, update existing connectors, and change the connector used to send cases to external systems.
 
 ::::{tip}
-You can also configure which connector is used for each case individually. Refer to [Create and manage cases](../../../solutions/observability/incident-management/create-manage-cases.md).
+You can also configure which connector is used for each case individually. Refer to [Create and manage cases](/solutions/observability/incident-management/create-manage-cases.md).
 
 ::::
 
@@ -99,9 +99,9 @@ To create a custom field:
 
 1. In the **Custom fields** section, click **Add field**.
 
-    :::{image} ../../../images/observability-cases-add-custom-field.png
+    :::{image} /solutions/images/observability-cases-add-custom-field.png
     :alt: Add a custom field in case settings
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
@@ -124,9 +124,9 @@ To create a template:
 
 1. In the **Templates** section, click **Add template**.
 
-    :::{image} ../../../images/serverless-observability-cases-templates.png
+    :::{image} /solutions/images/serverless-observability-cases-templates.png
     :alt: Add a case template
-    :class: screenshot
+    :screenshot:
     :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.

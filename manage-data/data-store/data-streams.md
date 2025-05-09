@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-data-streams
   - https://www.elastic.co/guide/en/serverless/current/index-management.html#index-management-manage-data-streams
@@ -30,15 +30,15 @@ Keep in mind that some features such as [Time Series Data Streams (TSDS)](../dat
 
 ## Backing indices [backing-indices]
 
-A data stream consists of one or more [hidden](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-hidden), auto-generated backing indices.
+A data stream consists of one or more [hidden](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-hidden), auto-generated backing indices.
 
-:::{image} ../../images/elasticsearch-reference-data-streams-diagram.svg
+:::{image} /manage-data/images/elasticsearch-reference-data-streams-diagram.svg
 :alt: data streams diagram
 :::
 
 A data stream requires a matching [index template](templates.md). The template contains the mappings and settings used to configure the stream’s backing indices.
 
-Every document indexed to a data stream must contain a `@timestamp` field, mapped as a [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md) field type. If the index template doesn’t specify a mapping for the `@timestamp` field, {{es}} maps `@timestamp` as a `date` field with default options.
+Every document indexed to a data stream must contain a `@timestamp` field, mapped as a [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) field type. If the index template doesn’t specify a mapping for the `@timestamp` field, {{es}} maps `@timestamp` as a `date` field with default options.
 
 The same index template can be used for multiple data streams. You cannot delete an index template in use by a data stream.
 
@@ -49,7 +49,7 @@ The name pattern for the backing indices is an implementation detail and no inte
 
 When you submit a read request to a data stream, the stream routes the request to all its backing indices.
 
-:::{image} ../../images/elasticsearch-reference-data-streams-search-request.svg
+:::{image} /manage-data/images/elasticsearch-reference-data-streams-search-request.svg
 :alt: data streams search request
 :::
 
@@ -58,7 +58,7 @@ When you submit a read request to a data stream, the stream routes the request t
 
 The most recently created backing index is the data stream’s write index. The stream adds new documents to this index only.
 
-:::{image} ../../images/elasticsearch-reference-data-streams-index-request.svg
+:::{image} /manage-data/images/elasticsearch-reference-data-streams-index-request.svg
 :alt: data streams index request
 :::
 

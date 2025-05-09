@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
 applies_to:
@@ -18,7 +18,7 @@ The `file` realm is useful as a fallback or recovery realm. For example in cases
 You can configure only one file realm on {{es}} nodes.
 
 ::::{important}
-* In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this. 
+* In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this.
 * You can't add or manage users in the `file` realm using the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security), or using the {{kib}} **Management > Security > Users** page.
 ::::
 
@@ -26,7 +26,7 @@ You can configure only one file realm on {{es}} nodes.
 
 You don’t need to explicitly configure a `file` realm. The `file` and `native` realms are added to the realm chain by default. Unless configured otherwise, the `file` realm is added first, followed by the `native` realm. You can define only one `file` realm per node.
 
-1. (Optional) Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.file` namespace. At a minimum, you must set the realm’s `order` attribute.
+1. (Optional) Add a realm configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md) under the `xpack.security.authc.realms.file` namespace. At a minimum, you must set the realm’s `order` attribute.
 
     For example, the following snippet shows a `file` realm configuration that sets the `order` to zero so the realm is checked first:
 
@@ -42,14 +42,14 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
 
 2. If you're using a self-managed {{es}} cluster, optionally change how often the `users` and `users_roles` files are checked.
 
-    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file 
-    
+    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
+
     :::{{warning}}
     Because `resource.reload.interval.high` is a common setting in {{es}}, changing its value may effect other schedules in the system.
     :::
 
-3. Restart {{es}}. 
-   
+3. Restart {{es}}.
+
    In {{eck}}, this change is propagated automatically.
 
 
@@ -59,7 +59,7 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
 
 **In an {{eck}} deployment**, you can pass file realm user information in two ways:
 
-1. Using [`users` and `user_roles`](#using-users-and-users_roles-files) files, which are passed using file realm content secrets 
+1. Using [`users` and `user_roles`](#using-users-and-users_roles-files) files, which are passed using file realm content secrets
 2. [Using Kubernetes basic authentication secrets](#k8s-basic)
 
 You can reference several secrets in the {{es}} specification. ECK aggregates their content into a single secret, mounted in every {{es}} Pod.
@@ -85,7 +85,7 @@ jacknich:{PBKDF2}50000$z1CLJt0MEFjkIK5iEfgvfnA6xq7lF25uasspsTKSo5Q=$XxCVLbaKDimO
 ```
 
 :::{tip}
-To limit exposure to credential theft and mitigate credential compromise, the file realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted sha-256 hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the bcrypt hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+To limit exposure to credential theft and mitigate credential compromise, the file realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted sha-256 hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the bcrypt hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
 :::
 
 #### `users_roles`
@@ -158,7 +158,7 @@ stringData:
 
 **Using a tool**
 
-To avoid editing these files manually, you can use the [elasticsearch-users](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool:
+To avoid editing these files manually, you can use the [elasticsearch-users](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) tool:
 
 ::::{tab-set}
 

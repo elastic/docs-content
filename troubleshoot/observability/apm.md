@@ -2,6 +2,10 @@
 navigation_title: "APM"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-troubleshoot-apm.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 
@@ -12,11 +16,11 @@ mapped_pages:
 This section provides solutions to common questions and problems, and processing and performance guidance.
 
 * [Common problems](/troubleshoot/observability/apm/common-problems.md)
-* [What happens when APM Server or {{es}} is down?](../../solutions/observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md)
-* [APM Server response codes](../../solutions/observability/apps/apm-server-response-codes.md)
-* [Processing and performance](../../solutions/observability/apps/processing-performance.md)
-* [APM Server binary debugging](../../solutions/observability/apps/enable-apm-server-binary-debugging.md)
-* [APM Server performance diagnostic](../../solutions/observability/apps/apm-server-performance-diagnostic.md)
+* [What happens when APM Server or {{es}} is down?](/troubleshoot/observability/apm/what-happens-when-apm-server-elasticsearch-is-down.md)
+* [APM Server response codes](/troubleshoot/observability/apm/apm-server-response-codes.md)
+* [Processing and performance](/troubleshoot/observability/apm/processing-performance.md)
+* [APM Server binary debugging](/troubleshoot/observability/apm/enable-apm-server-binary-debugging.md)
+* [APM Server performance diagnostic](/troubleshoot/observability/apm/apm-server-performance-diagnostic.md)
 
 For additional help with other APM components, see the links below.
 
@@ -26,7 +30,7 @@ For additional help with other APM components, see the links below.
 {{agent}}, the Applications UI, and each {{apm-agent}} has its own troubleshooting guide:
 
 * [**{{fleet}} and {{agent}}** troubleshooting](../ingest/fleet/fleet-elastic-agent.md)
-* [**Android agent** FAQ](asciidocalypse://docs/apm-agent-android/docs/reference/faq.md)
+* [**Android agent** FAQ](apm-agent-android://reference/faq.md)
 * [**.NET agent** troubleshooting](/troubleshoot/observability/apm-agent-dotnet/apm-net-agent.md)
 * [**Go agent** troubleshooting](/troubleshoot/observability/apm-agent-go/apm-go-agent.md)
 * [**iOS agent** troubleshooting](/troubleshoot/observability/apm-agent-swift/apm-ios-agent.md)

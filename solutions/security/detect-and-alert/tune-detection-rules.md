@@ -1,29 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/tuning-detection-signals.html
   - https://www.elastic.co/guide/en/serverless/current/security-tune-detection-signals.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
-# Tune detection rules
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/tuning-detection-signals.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-tune-detection-signals.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$tune-indicator-rules$$$
-
-$$$filter-rule-process$$$
-
-$$$tune-authorized-processes$$$
-
-$$$tune-network-rules$$$
-
-$$$tune-windows-rules$$$
+# Tune detection rules [security-tune-detection-signals]
 
 Using the {{security-app}}, you can tune prebuilt and custom detection rules to optimize alert generation. To reduce noise, you can:
 
@@ -50,16 +35,16 @@ For details about tuning rules for specific categories:
 
 Organizations frequently use uncommon and in-house applications. Occasionally, these can trigger unwanted alerts. To stop a rule matching on an application, add an exception for the required application.
 
-For example, to prevent the [Unusual Process Execution Path - Alternate Data Stream](https://www.elastic.co/guide/en/security/current/unusual-process-execution-path-alternate-data-stream.html) rule from producing alerts for an in-house application named `myautomatedbuild`:
+For example, to prevent the [Unusual Process Execution Path - Alternate Data Stream](detection-rules://rules/windows/defense_evasion_unusual_dir_ads.md) rule from producing alerts for an in-house application named `myautomatedbuild`:
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, search for and then click on the **Unusual Process Execution Path - Alternate Data Stream** rule.
 
     The **Unusual Process Execution Path - Alternate Data Stream** rule details page is displayed.
 
-    :::{image} ../../../images/security-rule-details-page.png
+    :::{image} /solutions/images/security-rule-details-page.png
     :alt: Rule details page
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Select the **Rule exceptions** tab, then click **Add rule exception**.
@@ -69,9 +54,9 @@ For example, to prevent the [Unusual Process Execution Path - Alternate Data Str
     * **Operator**: `is`
     * **Value**: `myautomatedbuild`
 
-        :::{image} ../../../images/security-process-exception.png
+        :::{image} /solutions/images/security-process-exception.png
         :alt: Add Rule Exception UI
-        :class: screenshot
+        :screenshot:
         :::
 
 5. Click **Add rule exception**.
@@ -102,9 +87,9 @@ Another useful technique is to assign lower risk scores to rules triggered by au
     * Lower the `Risk score` (**Edit rule settings** → **About** tab).
     * Add an exception so the rule only matches the user or process name excluded in original prebuilt rules. (`user.name is not <user-name>` or `process.name is not <process-name>`).
 
-        :::{image} ../../../images/security-process-specific-exception.png
+        :::{image} /solutions/images/security-process-specific-exception.png
         :alt: Example of `is not` exception in the Add Rule Exception UI
-        :class: screenshot
+        :screenshot:
         :::
 
 4. Click **Add rule exception**.
@@ -114,11 +99,11 @@ Another useful technique is to assign lower risk scores to rules triggered by au
 
 Normal user activity may sometimes trigger one or more of these rules:
 
-* [Suspicious MS Office Child Process](https://www.elastic.co/guide/en/security/current/suspicious-ms-office-child-process.html)
-* [Suspicious MS Outlook Child Process](https://www.elastic.co/guide/en/security/current/suspicious-ms-outlook-child-process.html)
-* [System Shells via Services](https://www.elastic.co/guide/en/security/current/system-shells-via-services.html)
-* [Unusual Parent-Child Relationship](https://www.elastic.co/guide/en/security/current/unusual-parent-child-relationship.html)
-* [Windows Script Executing PowerShell](https://www.elastic.co/guide/en/security/current/windows-script-executing-powershell.html)
+* [Suspicious MS Office Child Process](detection-rules://rules/windows/initial_access_suspicious_ms_office_child_process.md)
+* [Suspicious MS Outlook Child Process](detection-rules://rules/windows/initial_access_suspicious_ms_outlook_child_process.md)
+* [System Shells via Services](detection-rules://rules/windows/persistence_system_shells_via_services.md)
+* [Unusual Parent-Child Relationship](detection-rules://rules/windows/privilege_escalation_unusual_parentchild_relationship.md)
+* [Windows Script Executing PowerShell](detection-rules://rules/windows/initial_access_script_executing_powershell.md)
 
 While all rules can be adjusted as needed, use care when adding exceptions to these rules. Exceptions could result in an undetected client-side execution, or a persistence or malware threat going unnoticed.
 
@@ -154,11 +139,11 @@ Take the following steps to tune indicator match rules:
 
 
 
-### Noise from common cloud-based network traffic [_noise_from_common_cloud_based_network_traffic]
+### Noise from common cloud-based network traffic [security-tune-detection-signals-noise-from-common-cloud-based-network-traffic]
 
 In cloud-based organizations, remote workers sometimes access services over the internet. The security policies of home networks probably differ from the security policies of managed corporate networks, and these rules might need tuning to reduce noise from legitimate administrative activities:
 
-* [RDP (Remote Desktop Protocol) from the Internet](https://www.elastic.co/guide/en/security/current/rdp-remote-desktop-protocol-from-the-internet.html)
+* [RDP (Remote Desktop Protocol) from the Internet](detection-rules://rules/network/command_and_control_rdp_remote_desktop_protocol_from_the_internet.md)
 
 ::::{tip}
 If your organization is widely distributed and the workforce travels a lot, use the `windows_anomalous_user_name_ecs`, `linux_anomalous_user_name_ecs`, and `suspicious_login_activity_ecs` [{{ml}}](/solutions/security/advanced-entity-analytics/anomaly-detection.md) jobs to detect suspicious authentication activity.

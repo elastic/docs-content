@@ -2,21 +2,11 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-getting-started.html
 ---
 
 # Reporting and sharing [reporting-getting-started]
-
-% What needs to be done: Refine
-
-% Scope notes: reference prod considerations
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/reporting-getting-started.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$install-reporting-packages$$$
 
@@ -43,7 +33,7 @@ $$$securing-reporting$$$
 
 ## Permissions
 
-To be able to share objects or generate reports, you must have a role that allows these actions on the specific {{es}} indices and {{kib}} applications containing the data that you want to share. Check [Configuring reporting](/deploy-manage/deploy/kibana-reporting-configuration.md) for more information.
+To be able to share objects or generate reports, you must have a role that allows these actions on the specific {{es}} indices and {{kib}} applications containing the data that you want to share. Check [Configuring reporting](/deploy-manage/kibana-reporting-configuration.md) for more information.
 
 ## Share with a direct link [share-a-direct-link]
 
@@ -58,7 +48,7 @@ To access the object shared with the link, users need to authenticate.
 
 Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
 
-:::{image} ../images/share-dashboard.gif
+:::{image} /explore-analyze/images/share-dashboard.gif
 :alt: getting a shareable link for a dashboard
 :::
 
@@ -85,9 +75,9 @@ To change the output size, change the size of the browser, which resizes the sha
 
 In the following dashboard, the shareable container is highlighted:
 
-:::{image} ../images/kibana-shareable-container.png
+:::{image} /explore-analyze/images/kibana-shareable-container.png
 :alt: Shareable Container
-:class: screenshot
+:screenshot:
 :::
 
 1. Open the saved Discover session, dashboard, visualization, or workpad you want to share.
@@ -101,7 +91,7 @@ In the following dashboard, the shareable container is highlighted:
 
     * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
 
-3. Generate the report by clicking **Export file***, ***Generate CSV***, or ***Generate PDF**, depending on the object you want to export.
+3. Generate the report by clicking **Export file**, **Generate CSV**, or **Generate PDF**, depending on the object you want to export.
 
    ::::{note}
    You can use the **Copy POST URL** option instead to generate the report from outside Kibana or from Watcher.
@@ -130,16 +120,16 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 
 To work around the limitations, use filters to create multiple smaller reports, or extract the data you need directly with the Elasticsearch APIs.
 
-For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](/explore-analyze/query-filter/languages/esql-rest.md) or [SQL](/explore-analyze/query-filter/languages/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
+For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](/explore-analyze/query-filter/languages/esql-rest.md) or [SQL](/explore-analyze/query-filter/languages/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
 
-[Reporting parameters](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
+[Reporting parameters](kibana://reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
 
 
 ### PNG/PDF report limitations [pdf-limitations]
 
 We recommend using PNG/PDF reports to export moderate amounts of data only. The feature enables a high-level export capability, but it’s not intended for bulk export. If you need to export several pages of image data, consider using multiple report jobs to export a small number of pages at a time. If the screenshot of exported dashboard contains a large number of pixels, consider splitting the large dashboard into smaller artifacts to use less memory and CPU resources.
 
-For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-with-docker.md) or using [Elastic Cloud](https://cloud.elastic.co).
+For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md) or using [Elastic Cloud](https://cloud.elastic.co).
 
 
 ## Create JSON files [download-as-json]

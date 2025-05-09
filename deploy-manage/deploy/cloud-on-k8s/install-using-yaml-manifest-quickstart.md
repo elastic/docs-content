@@ -1,6 +1,6 @@
 ---
 navigation_title: YAML manifests
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-install-yaml-manifests.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-eck.html
 applies_to:
@@ -10,13 +10,13 @@ applies_to:
 
 # Install ECK using the YAML manifests [k8s-install-yaml-manifests]
 
-In this guide, you'll learn how to deploy ECK using Elastic-provided YAML manifests. This method is the quickest way to get started with ECK if you have full administrative access to the Kubernetes cluster. 
+In this guide, you'll learn how to deploy ECK using Elastic-provided YAML manifests. This method is the quickest way to get started with ECK if you have full administrative access to the Kubernetes cluster.
 
 To learn about other installation methods, refer to [](/deploy-manage/deploy/cloud-on-k8s/install.md).
 
 During the installation, the following components are installed or updated:
 
-* `CustomResourceDefinition` objects for all supported resource types (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash).
+* `CustomResourceDefinition` objects for all supported resource types ({{eck_resources_list}}).
 * `Namespace` named `elastic-system` to hold all operator resources.
 * `ServiceAccount`, `ClusterRole` and `ClusterRoleBinding` to allow the operator to manage resources throughout the cluster.
 * `ValidatingWebhookConfiguration` to validate Elastic custom resources on admission.
@@ -39,7 +39,7 @@ To deploy the ECK operator:
 
 1. Install Elastic's [custom resource definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) with [`create`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/):
 
-    ```sh
+    ```sh subs=true
     kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
     ```
 
@@ -58,7 +58,7 @@ To deploy the ECK operator:
 
 2. Using [`kubectl apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/), install the operator with its RBAC rules:
 
-    ```sh
+    ```sh subs=true
     kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
     ```
 

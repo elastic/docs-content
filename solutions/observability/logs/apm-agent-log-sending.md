@@ -1,7 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-send-application.html
   - https://www.elastic.co/guide/en/serverless/current/observability-send-application-logs.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # APM agent log sending [observability-send-application-logs]
@@ -32,4 +35,4 @@ The Elastic APM agent for Java.
 
 ## Get started [observability-send-application-logs-get-started]
 
-See the [Java agent](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-sending) documentation to get started.
+See the [Java agent](apm-agent-java://reference/logs.md#log-sending) documentation to get started.

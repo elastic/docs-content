@@ -1,7 +1,8 @@
 ---
 navigation_title: "Resources and logs"
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-troubleshooting-methods.html
 ---
@@ -297,7 +298,7 @@ This can also be done for Kibana and APM Server.
 
 ## Suspend Elasticsearch [k8s-suspend-elasticsearch]
 
-In exceptional cases, you might need to suspend the Elasticsearch process while using `kubectl exec` (as in the [previous section](#k8s-exec-into-containers)) to troubleshoot. One such example where Elasticsearch has to be stopped are the unsafe operations on Elasticsearch nodes that can be executed with the [elasticsearch-node](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/node-tool.md) tool.
+In exceptional cases, you might need to suspend the Elasticsearch process while using `kubectl exec` (as in the [previous section](#k8s-exec-into-containers)) to troubleshoot. One such example where Elasticsearch has to be stopped are the unsafe operations on Elasticsearch nodes that can be executed with the [elasticsearch-node](elasticsearch://reference/elasticsearch/command-line-tools/node-tool.md) tool.
 
 To suspend an Elasticearch node, while keeping the corresponding Pod running, you can annotate the Elasticsearch resource with the `eck.k8s.elastic.co/suspend` annotation. The value should be a comma-separated list of the names of the Pods whose Elasticsearch process you want to suspend.
 

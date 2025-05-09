@@ -12,7 +12,7 @@ applies_to:
 
 # Reference architectures [reference-architectures-overview]
 
-Elasticsearch reference architectures are blueprints for deploying Elasticsearch clusters tailored to different use cases. Whether you’re handling logs or metrics these reference architectures focus on scalability, reliability, and cost efficiency. Use these guidelines to deploy Elasticsearch for your use case.
+{{es}} reference architectures are blueprints for deploying {{es}} clusters tailored to different use cases. Whether you’re handling logs or metrics these reference architectures focus on scalability, reliability, and cost efficiency. Use these guidelines to deploy {{es}} for your use case.
 
 These architectures are designed by architects and engineers to provide standardized, proven solutions that help you to follow best practices when deploying {{es}}.
 
@@ -25,9 +25,8 @@ These reference architectures are recommendations and should be adapted to fit y
 
 ## Architectures [reference-architectures-time-series]
 
-|     |     |
+| Architecture | When to use |
 | --- | --- |
-| **Architecture** | **When to use** |
 | [*Hot/Frozen - High Availability*](/deploy-manage/reference-architectures/hotfrozen-high-availability.md)<br>A high availability architecture that is cost optimized for large time-series datasets. | * Have a requirement for cost effective long term data storage (many months or years).<br>* Provide insights and alerts using logs, metrics, traces, or various event types to ensure optimal performance and quick issue resolution for applications.<br>* Apply Machine Learning and Search AI to assist in dealing with the large amount of data.<br>* Deploy an architecture model that allows for maximum flexibility between storage cost and performance.<br> |
 | Additional architectures are on the way.<br>Stay tuned for updates. |  |
 

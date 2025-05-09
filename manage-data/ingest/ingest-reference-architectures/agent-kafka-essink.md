@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash to Kafka to Kafka ES Sink to Elasticsearch: Kafka as middleware message queue [agent-kafka-essink]
 
-:::{image} ../../../images/ingest-ls-kafka-essink.png
+:::{image} /manage-data/images/ingest-ls-kafka-essink.png
 :alt: Image showing {{agent}} collecting data and using Kafka as a message queue enroute to {{es}}
 :::
 
@@ -26,17 +26,17 @@ Notes
 
 Info on {{agent}} and agent integrations:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
 * [{{agent}} integrations](https://docs.elastic.co/en/integrations)
 
 Info on {{ls}} and {{ls}} plugins:
 
-* [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {{agent}} input](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-elastic_agent.md)
-* [{{ls}} Kafka output](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-kafka.md)
+* [{{ls}} Reference](logstash://reference/index.md)
+* [{{ls}} {{agent}} input](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md)
+* [{{ls}} Kafka output](logstash-docs-md://lsr/plugins-outputs-kafka.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 * ES sink [ToDo: Add link]
 

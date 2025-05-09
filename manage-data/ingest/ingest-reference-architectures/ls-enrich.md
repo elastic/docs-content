@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash (for enrichment) to Elasticsearch [ls-enrich]
 
-:::{image} ../../../images/ingest-ea-ls-enrich.png
+:::{image} /manage-data/images/ingest-ea-ls-enrich.png
 :alt: Image showing {{agent}} collecting data
 :::
 
@@ -30,17 +30,17 @@ Examples
 
 Info on configuring {{agent}}:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
-For info on {{ls}} for enriching data, check out these sections in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
+For info on {{ls}} for enriching data, check out these sections in the [Logstash Reference](logstash://reference/index.md):
 
-* [{{ls}} {{agent}} input](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-elastic_agent.md)
-* [{{ls}} plugins for enriching data](asciidocalypse://docs/logstash/docs/reference/lookup-enrichment.md)
-* [Logstash filter plugins](asciidocalypse://docs/logstash/docs/reference/filter-plugins.md)
-* [{{ls}} {{es}} output](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
+* [{{ls}} {{agent}} input](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md)
+* [{{ls}} plugins for enriching data](logstash://reference/lookup-enrichment.md)
+* [Logstash filter plugins](logstash-docs-md://lsr/filter-plugins.md)
+* [{{ls}} {{es}} output](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

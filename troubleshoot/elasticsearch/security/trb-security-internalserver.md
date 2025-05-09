@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Kibana internal server error
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-internalserver.html
@@ -12,5 +19,5 @@ mapped_pages:
 
 **Resolution:**
 
-If the Security plugin is enabled in {{es}} but disabled in {{kib}}, you must still set `elasticsearch.username` and `elasticsearch.password` in `kibana.yml`. Otherwise, {{kib}} cannot connect to {{es}}.
+If the Security plugin is enabled in {{es}} but disabled in {{kib}}, you must still set `elasticsearch.username` and `elasticsearch.password` in [`kibana.yml`](/deploy-manage/stack-settings.md). Otherwise, {{kib}} cannot connect to {{es}}.
 

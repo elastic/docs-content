@@ -9,9 +9,9 @@ mapped_pages:
 # Create a log threshold rule [logs-threshold-alert]
 
 
-:::{image} ../../../images/observability-log-threshold-alert.png
+:::{image} /solutions/images/observability-log-threshold-alert.png
 :alt: Log threshold alert configuration
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -60,9 +60,9 @@ When group by fields are selected, but no documents contain the selected field(s
 ::::
 
 
-:::{image} ../../../images/observability-log-threshold-alert-group-by.png
+:::{image} /solutions/images/observability-log-threshold-alert-group-by.png
 :alt: Log threshold rule group by
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -70,9 +70,9 @@ When group by fields are selected, but no documents contain the selected field(s
 
 To determine how many log entries would match each part of your configuration, you can view a chart preview for each condition. This is useful for determining how many log entries would match each part of your configuration. When a group by is set, the chart displays a bar per group. To view the preview, select the arrow next to the condition.
 
-:::{image} ../../../images/observability-log-threshold-alert-chart-previews.png
+:::{image} /solutions/images/observability-log-threshold-alert-chart-previews.png
 :alt: Log threshold chart previews
-:class: screenshot
+:screenshot:
 :::
 
 The shaded area denotes the threshold that has been selected.
@@ -84,9 +84,9 @@ To understand how one query compares to another query, create a ratio rule. This
 
 The following example triggers an alert when there are twice as many error logs to warning logs.
 
-:::{image} ../../../images/observability-log-threshold-alert-ratio.png
+:::{image} /solutions/images/observability-log-threshold-alert-ratio.png
 :alt: Log threshold ratio rule
-:class: screenshot
+:screenshot:
 :::
 
 ::::{important}
@@ -100,24 +100,24 @@ As it is not possible to divide by 0, when the document count of query A or quer
 
 Extend your rules by connecting them to actions that use the following supported built-in integrations.
 
-* [D3 Security](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/d3security-action-type.md)
-* [Email](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md)
-* [{{ibm-r}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md)
-* [Index](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/index-action-type.md)
-* [Jira](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md)
-* [Microsoft Teams](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/teams-action-type.md)
-* [Observability AI Assistant connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md)
-* [{{opsgenie}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/opsgenie-action-type.md)
-* [PagerDuty](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pagerduty-action-type.md)
-* [Server log](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/server-log-action-type.md)
-* [{{sn-itom}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-itom-action-type.md)
-* [{{sn-itsm}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md)
-* [{{sn-sir}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md)
-* [Slack](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md)
-* [{{swimlane}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md)
-* [Torq](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/torq-action-type.md)
-* [{{webhook}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md)
-* [xMatters](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/xmatters-action-type.md)
+* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant connector](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -127,9 +127,9 @@ Some connector types are paid commercial features, while others are free. For a 
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Fired` or `Recovered`.
 
-:::{image} ../../../images/observability-log-threshold-run-when-selection.png
+:::{image} /solutions/images/observability-log-threshold-run-when-selection.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -137,9 +137,9 @@ You can also further refine the conditions under which actions run by specifying
 * **If alert matches query**: Enter a KQL query that defines field-value pairs or query conditions that must be met for notifications to send. The query only searches alert documents in the indices specified for the rule.
 * **If alert is generated during timeframe**: Set timeframe details. Notifications are only sent if alerts are generated within the timeframe you define.
 
-:::{image} ../../../images/observability-logs-threshold-conditional-alert.png
+:::{image} /solutions/images/observability-logs-threshold-conditional-alert.png
 :alt: Configure a conditional alert
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -147,12 +147,12 @@ You can also further refine the conditions under which actions run by specifying
 
 Use the default notification message or customize it. You can add more context to the message by clicking the icon above the message text box and selecting from a list of available variables.
 
-:::{image} ../../../images/observability-logs-threshold-alert-default-message.png
+:::{image} /solutions/images/observability-logs-threshold-alert-default-message.png
 :alt: Default notification message for log threshold rules with open "Add variable" popup listing available action variables
-:class: screenshot
+:screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
@@ -191,9 +191,9 @@ When setting a **group by**, we recommend using the **more than** comparator for
 
 When a rule check is performed, a query is built based on the configuration of the rule. For the vast majority of cases it shouldn’t be necessary to know what these queries are. However, to determine an optimal configuration or to aid with debugging, it might be useful to see the structure of these queries. Below is an example {{es}} query for the following configuration:
 
-:::{image} ../../../images/observability-log-threshold-alert-es-query-ungrouped.png
+:::{image} /solutions/images/observability-log-threshold-alert-es-query-ungrouped.png
 :alt: Log threshold ungrouped {{es}} query example
-:class: screenshot
+:screenshot:
 :::
 
 ```json
@@ -243,9 +243,9 @@ When a rule check is performed, a query is built based on the configuration of t
 2. Taken from the **Timestamp** setting
 
 
-:::{image} ../../../images/observability-log-threshold-alert-es-query-grouped.png
+:::{image} /solutions/images/observability-log-threshold-alert-es-query-grouped.png
 :alt: Log threshold grouped {{es}} query example
-:class: screenshot
+:screenshot:
 :::
 
 ```json
@@ -332,7 +332,7 @@ When a rule check is performed, a query is built based on the configuration of t
 
 ## Settings [settings]
 
-With log threshold rules, it’s not possible to set an explicit index pattern as part of the configuration. The index pattern is instead inferred from **Log indices** on the [Settings](../logs/configure-data-sources.md) page of the {{logs-app}}.
+With log threshold rules, it’s not possible to set an explicit index pattern as part of the configuration. The index pattern is instead inferred from **Log sources** at **Stack Management** → **Advanced settings** under **Observability**.
 
 With each execution of the rule check, the **Log indices** setting is checked, but it is not stored when the rule is created.
 

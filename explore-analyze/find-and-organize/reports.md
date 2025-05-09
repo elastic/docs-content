@@ -10,13 +10,13 @@ mapped_pages:
 
 {{kib}} provides you with several options to share saved searches, dashboards, and visualizations.
 
-For example, in **Discover**, you can create and download comma-separated values (CSV) files for saved searches.
+For example, in **Discover**, you can create and download comma-separated values (CSV) reports for saved searches.
 
 To view and manage reports, go to **Management** > **Reporting**.
 
-:::{image} ../../images/serverless-reports-management.png
+:::{image} /explore-analyze/images/serverless-reports-management.png
 :alt: {{reports-app}}
-:class: screenshot
+:screenshot:
 :::
 
 You can download or view details about the report by clicking the icons in the actions menu.

@@ -1,7 +1,9 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-repository-azure-migration.html
 applies_to:
   deployment:
-    ess: 
+    ess:
 ---
 
 # Repository isolation on Azure [ec-snapshot-repository-azure-migration]
@@ -34,11 +36,11 @@ If you no longer need the old snapshots, you can remove the repository. By doing
 3. With **Remove Access**, the snapshot repository will be removed.
 
 ::::{note}
-If the repository is still in use (for example by mounted searchable snapshots), it can’t be removed. Please first remove any indices stored in this repository.
+If the repository is still in use (for example by mounted searchable snapshots), it can’t be removed. Remove any indices stored in this repository first.
 ::::
 
 
-:::{image} ../../../images/cloud-ec-elasticsearch-snapshots-of-other-deployments.png
+:::{image} /deploy-manage/images/cloud-ec-elasticsearch-snapshots-of-other-deployments.png
 :alt: View of the old snapshot repository in the Cloud UI
 :::
 

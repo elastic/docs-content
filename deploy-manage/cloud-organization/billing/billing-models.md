@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-models.html
 applies_to:
   deployment:
@@ -17,7 +17,7 @@ You can be billed for {{ecloud}} using one of the following billing models:
 
 Regardless of your billing model, all {{ecloud}} usage is metered and billed in [Elastic Consumption Units (ECU)](/deploy-manage/cloud-organization/billing/ecu.md).
 
-## Monthly, billed by Elastic [ec-monthly-direct] 
+## Monthly, billed by Elastic [ec-monthly-direct]
 
 When you sign up for {{ecloud}} by [adding your credit card details](/deploy-manage/cloud-organization/billing/add-billing-details.md) in the {{ecloud}} Console, you are billed on a monthly basis.
 
@@ -27,7 +27,7 @@ All usage is expressed and charged in US dollars only.
 
 Refer to our [Billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq.md) for more details about monthly invoicing.
 
-## Monthly, billed through a marketplace [ec-monthly-marketplace] 
+## Monthly, billed through a marketplace [ec-monthly-marketplace]
 
 You can sign up for {{ecloud}} [from a marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md). In this case, all usage is reported hourly to the marketplace.
 
@@ -35,11 +35,11 @@ At the marketplace’s billing cycle, all usage is aggregated and charged as par
 
 {{ecloud}} usage appears as a single invoice line with the total amount charged. For a detailed breakdown of your usage, visit the [Usage page](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) in the {{ecloud}} Console.
 
-::::{note} 
+::::{note}
 Marketplaces typically invoice you in arrears on the first of each month. There are exceptions, however, such as in the case of the [GCP billing cycle](https://cloud.google.com/billing/docs/how-to/billing-cycle).
 ::::
 
-## Prepaid consumption [ec-prepaid-consumption] 
+## Prepaid consumption [ec-prepaid-consumption]
 
 All new and renewing {{ecloud}} annual customers are automatically enrolled into the prepaid consumption billing model.
 
@@ -71,14 +71,14 @@ Based on these four key concepts, the prepaid consumption lifecycle is as follow
 1. You purchase credits expressed in ECU, typically at a discount.
 2. You begin using {{ecloud}} resources.
 3. At every billing cycle (which takes place on the first of each month), the previous month's usage, expressed in ECU, is deducted from your ECU balance.
-4. If your ECU balance is depleted before the credit expiration date, you are invoiced for on-demand usage in arrears at list price. On-demand usage is expressed in ECU, and is converted to currency amounts for invoicing purposes.¹
+4. If your ECU balance is depleted before the credit expiration date, you are invoiced for on-demand usage in arrears at list price. On-demand usage is expressed in ECU, and is converted to currency amounts for invoicing purposes.[^1^](#footnote-1)
 5. At the end of the contract period, any credits remaining in your balance are forfeited.
-6. During the contract period, you can purchase additional credits at any time (as an add-on). This can be done with the same discount as the original purchase. Credits purchased through an add-on have the same expiration as the original purchase.²
+6. During the contract period, you can purchase additional credits at any time (as an add-on). This can be done with the same discount as the original purchase. Credits purchased through an add-on have the same expiration as the original purchase.[^2^](#footnote-2)
 
-¹ When you renew your contract or commit to a multi-year contract, any on-demand usage incurred in the years other than the last are billed with the same discount as the original purchase.
+^1^ $$$footnote-1$$$ When you renew your contract or commit to a multi-year contract, any on-demand usage incurred in the years other than the last are billed with the same discount as the original purchase.
 
-² Purchasing credits through early renewals, or through add-ons with different expiration dates will be available in the near future.
+^2^ $$$footnote-2$$$ Purchasing credits through early renewals, or through add-ons with different expiration dates will be available in the near future.
 
-::::{note} 
+::::{note}
 Existing annual+overages customers will be able to switch to prepaid consumption when they renew or sign a new contract. Existing manual burndown customers will be migrated gradually to prepaid consumption in the near future. Exceptions apply.
 ::::

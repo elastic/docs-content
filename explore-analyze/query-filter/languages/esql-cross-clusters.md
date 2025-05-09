@@ -1,15 +1,15 @@
 ---
 applies_to:
   stack: ga
-  serverless: ga
-navigation_title: "Using {{esql}} across clusters"
+  serverless: unavailable
+navigation_title: "Query across clusters"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-cross-clusters.html
 ---
 
 
 
-# Using ES|QL across clusters [esql-cross-clusters]
+# Use ES|QL across clusters [esql-cross-clusters]
 
 
 ::::{warning}
@@ -169,7 +169,7 @@ PUT _cluster/settings
 }
 ```
 
-1. Since `skip_unavailable` was not set on `cluster_three`, it uses the default of `false`. See the [Optional remote clusters](#ccq-skip-unavailable-clusters) section for details.
+1. Since `skip_unavailable` was not set on `cluster_three`, it uses the default of `true`. See the [Optional remote clusters](#ccq-skip-unavailable-clusters) section for details.
 
 
 
@@ -202,7 +202,7 @@ FROM *:my-index-000001
 
 ## Cross-cluster metadata [ccq-cluster-details]
 
-Using the `"include_ccs_metadata": true` option, users can request that ES|QL {{ccs}} responses include metadata about the search on each cluster (when the response format is JSON). Here we show an example using the async search endpoint. {{ccs-cap}} metadata is also present in the synchronous search endpoint response when requested.
+Using the `"include_ccs_metadata": true` option, users can request that ES|QL {{ccs}} responses include metadata about the search on each cluster (when the response format is JSON). Here we show an example using the async search endpoint. {{ccs-cap}} metadata is also present in the synchronous search endpoint response when requested. If the search returns partial results and there are partial shard or remote cluster failures, `_clusters` metadata containing the failures will be included in the response regardless of the `include_ccs_metadata` parameter.
 
 ```console
 POST /_query/async?format=json
@@ -284,13 +284,13 @@ Which returns:
 ```
 
 1. How long the entire search (across all clusters) took, in milliseconds.
-2. This section of counters shows all possible cluster search states and how many cluster searches are currently in that state. The clusters can have one of the following statuses: **running**, **successful** (searches on all shards were successful), **skipped** (the search failed on a cluster marked with `skip_unavailable`=`true`), **failed** (the search failed on a cluster marked with `skip_unavailable`=`false`) or **partial** (the search was [interrupted](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-stop-api.html) before finishing).
+2. This section of counters shows all possible cluster search states and how many cluster searches are currently in that state. The clusters can have one of the following statuses: **running**, **successful** (searches on all shards were successful), **skipped** (the search failed on a cluster marked with `skip_unavailable`=`true`), **failed** (the search failed on a cluster marked with `skip_unavailable`=`false`) or **partial** (the search was [interrupted](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-esql) before finishing or has partially failed).
 3. The `_clusters/details` section shows metadata about the search on each cluster.
 4. If you included indices from the local cluster you sent the request to in your {{ccs}}, it is identified as "(local)".
 5. How long (in milliseconds) the search took on each cluster. This can be useful to determine which clusters have slower response times than others.
 6. The shard details for the search on that cluster, including a count of shards that were skipped due to the can-match phase results. Shards are skipped when they cannot have any matching data and therefore are not included in the full ES|QL query.
-7. The `is_partial` field is set to `true` if the search has partial results for any reason, for example if it was interrupted before finishing using the [async query stop API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-stop-api.html).
-
+7. The `is_partial` field is set to `true` if the search has partial results for any reason, for example due to partial shard failures,
+failures in remote clusters, or if the async query was stopped by calling the [async query stop API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-esql).
 
 The cross-cluster metadata can be used to determine whether any data came back from a cluster. For instance, in the query below, the wildcard expression for `cluster-two` did not resolve to a concrete index (or indices). The cluster is, therefore, marked as *skipped* and the total number of shards searched is set to zero.
 
@@ -312,7 +312,7 @@ Which returns:
 {
   "is_running": false,
   "took": 55,
-  "is_partial": false,
+  "is_partial": true, <3>
   "columns": [
      ...
   ],
@@ -321,9 +321,9 @@ Which returns:
   ],
   "_clusters": {
     "total": 2,
-    "successful": 2,
+    "successful": 1,
     "running": 0,
-    "skipped": 0,
+    "skipped": 1, <1>
     "partial": 0,
     "failed": 0,
     "details": {
@@ -356,12 +356,13 @@ Which returns:
 
 1. This cluster is marked as *skipped*, since there were no matching indices on that cluster.
 2. Indicates that no shards were searched (due to not having any matching indices).
+3. Since one of the clusters is skipped, the search result is marked as partial.
 
 
 
 ## Enrich across clusters [ccq-enrich]
 
-Enrich in {{esql}} across clusters operates similarly to [local enrich](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-enrich). If the enrich policy and its enrich indices are consistent across all clusters, simply write the enrich command as you would without remote clusters. In this default mode, {{esql}} can execute the enrich command on either the local cluster or the remote clusters, aiming to minimize computation or inter-cluster data transfer. Ensuring that the policy exists with consistent data on both the local cluster and the remote clusters is critical for ES|QL to produce a consistent query result.
+Enrich in {{esql}} across clusters operates similarly to [local enrich](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich). If the enrich policy and its enrich indices are consistent across all clusters, simply write the enrich command as you would without remote clusters. In this default mode, {{esql}} can execute the enrich command on either the local cluster or the remote clusters, aiming to minimize computation or inter-cluster data transfer. Ensuring that the policy exists with consistent data on both the local cluster and the remote clusters is critical for ES|QL to produce a consistent query result.
 
 ::::{tip}
 Enrich in {{esql}} across clusters using the API key based security model was introduced in version **8.15.0**. Cross cluster API keys created in versions prior to 8.15.0 will need to replaced or updated to use the new required permissions. Refer to the example in the [API key authentication](#esql-ccs-security-model-api-key) section.
@@ -417,7 +418,7 @@ FROM my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001
 | LIMIT 10
 ```
 
-A `_remote` enrich cannot be executed after a [stats](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-stats-by) command. The following example would result in an error:
+A `_remote` enrich cannot be executed after a [stats](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) command. The following example would result in an error:
 
 ```esql
 FROM my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001
@@ -468,10 +469,9 @@ FROM my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001
 
 ## Optional remote clusters [ccq-skip-unavailable-clusters]
 
-{{ccs-cap}} for {{esql}} currently does not respect the `skip_unavailable` setting. As a result, if a remote cluster specified in the request is unavailable or failed, {{ccs}} for {{esql}} queries will fail regardless of the setting.
-
-We are actively working to align the behavior of {{ccs}} for {{esql}} with other {{ccs}} APIs.
-
+If a remote cluster disconnects from the querying cluster, {{ccs}} for {{esql}} will set it to `skipped`
+and continue the query with other clusters, unless the remote cluster's `skip_unavailable` setting is set to `false`,
+in which case the query will fail.
 
 ## Query across clusters during an upgrade [ccq-during-upgrade]
 

@@ -1,6 +1,9 @@
 ---
 navigation_title: "Unavailable shards"
-mapped_urls:
+applies_to:
+  deployment:
+    ess: all
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_are_shards_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_are_shards_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-analyze_shards_with-api.html
@@ -28,15 +31,19 @@ A formerly-healthy cluster might have unassigned shards because nodes have dropp
 
 If a cluster has unassigned shards, you might see an error message such as this on the Elastic Cloud console:
 
-:::{image} /images/cloud-ec-unhealthy-deployment.png
+:::{image} /troubleshoot/images/cloud-ec-unhealthy-deployment.png
 :alt: Unhealthy deployment error message
+:::
+
+:::{important}
+ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::
 
 If your issue is not addressed here, then [contact Elastic support for help](/troubleshoot/index.md).
 
 ## Analyze unassigned shards using the {{es}} API [ec-analyze_shards_with-api]
 
-You can retrieve information about the status of your cluster, indices, and shards using the {{es}} API. To access the API you can either use the [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md), or the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md). If you have your own way to run the {{es}} API, check [How to access the API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-access.md). This section shows you how to:
+You can retrieve information about the status of your cluster, indices, and shards using the {{es}} API. To access the API you can either use the [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md), or the [Elasticsearch API console](cloud://reference/cloud-hosted/ec-api-console.md). If you have your own way to run the {{es}} API, check [How to access the API](cloud://reference/cloud-hosted/ec-api-access.md). This section shows you how to:
 
 * [Check cluster health](/troubleshoot/monitoring/unavailable-shards.md#ec-check-cluster-health)
 * [Check unhealthy indices](/troubleshoot/monitoring/unavailable-shards.md#ec-check-unhealthy-indices)
@@ -160,7 +167,7 @@ The response is as follows:
 
 #### Check {{es}} cluster logs [ec-check-es-cluster-logs]
 
-To determine the allocation issue, you can [check the logs](/deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-check-logs). This is easier if you have set up a dedicated monitoring deployment.
+To determine the allocation issue, you can [check the logs](/deploy-manage/monitor.md#logging). This is easier if you have set up a dedicated monitoring deployment.
 
 
 ## Analyze unassigned shards using the Kibana UI [ec-analyze_shards_with-kibana]
@@ -173,13 +180,13 @@ If you are shipping logs and metrics to a monitoring deployment, go through the 
 4. Click **Save**. It might take a few minutes to apply the configuration changes.
 5. Click **View** to open the Kibana UI and get more details on metrics and logs.
 
-:::{image} /images/cloud-ec-logs-metrics-page.png
+:::{image} /troubleshoot/images/cloud-ec-logs-metrics-page.png
 :alt: Log and metrics page
 :::
 
 The unhealthy indices appear with a red or yellow status.
 
-:::{image} /images/cloud-ec-red-yellow-indices.png
+:::{image} /troubleshoot/images/cloud-ec-red-yellow-indices.png
 :alt: Unhealthy indices in red or yellow status
 :::
 
@@ -221,7 +228,7 @@ Review the topic for your deployment architecture:
 
 To learn more, review the following topics:
 
-* [Cluster-level shard allocation and routing settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
+* [Cluster-level shard allocation and routing settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
 * [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md)
 
 
@@ -235,7 +242,7 @@ During the routine system maintenance performed by Elastic, it might happen that
 
 **Resolutions**
 
-Configure an [highly available cluster](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md) to keep your service running. Also, consider taking the following actions to bring your deployment back to health and recover your data from the snapshot.
+Configure an [highly available cluster](/deploy-manage/production-guidance.md) to keep your service running. Also, consider taking the following actions to bring your deployment back to health and recover your data from the snapshot.
 
 * [Close the red indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close)
 * [Restore the indices](/deploy-manage/tools/snapshot-and-restore.md) from the last successful snapshot
@@ -263,7 +270,7 @@ When shards cannot be assigned, due to [data tier allocation](/manage-data/lifec
 
 * Make sure nodes are available in each data tier and have sufficient disk space.
 * [Check the index settings](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) and ensure shards can be allocated to the expected data tier.
-* Check the [ILM policy](/manage-data/lifecycle/index-lifecycle-management.md) and check for issues with the [allocate action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md).
+* Check the [ILM policy](/manage-data/lifecycle/index-lifecycle-management.md) and check for issues with the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md).
 * Inspect the [index templates](/manage-data/data-store/templates.md) and check for issues with the index settings.
 
 
@@ -304,7 +311,7 @@ The bugs also affect searchable snapshots. If you still have data in the cluster
 
 **Symptom**
 
-The parameter [`cluster.max_shards_per_node`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) limits the total number of primary and replica shards for the cluster. If your cluster has a number of shards beyond this limit, you might get the following message:
+The parameter [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) limits the total number of primary and replica shards for the cluster. If your cluster has a number of shards beyond this limit, you might get the following message:
 
 `Validation Failed: 1: this action would add [2] shards, but this cluster currently has [1000]/[1000] maximum normal shards open`
 

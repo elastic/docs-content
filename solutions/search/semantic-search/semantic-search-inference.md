@@ -25,10 +25,11 @@ The following examples use the:
 * models available through [Azure AI Studio](https://ai.azure.com/explore/models?selectedTask=embeddings) or [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)
 * `text-embedding-004` model for [Google Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/text-embeddings-api)
 * `mistral-embed` model for [Mistral](https://docs.mistral.ai/getting-started/models/)
-* `amazon.titan-embed-text-v1` model for [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.md)
+* `amazon.titan-embed-text-v1` model for [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html)
 * `ops-text-embedding-zh-001` model for [AlibabaCloud AI](https://help.aliyun.com/zh/open-search/search-platform/developer-reference/text-embedding-api-details)
 
-You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API. For a list of recommended models available on HuggingFace, refer to [the supported model list](../inference-api/huggingface-inference-integration.md#inference-example-hugging-face-supported-models).
+You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API.
+For a list of recommended models available on HuggingFace, refer to the supported model list in the [API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put-hugging-face).
 
 Click the name of the service you want to use on any of the widgets below to review the corresponding instructions.
 
@@ -320,7 +321,7 @@ PUT _inference/text_embedding/alibabacloud_ai_search_embeddings <1>
 
 ## Create the index mapping [infer-service-mappings]
 
-The mapping of the destination index - the index that contains the embeddings that the model will create based on your input text - must be created. The destination index must have a field with the [`dense_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) field type for most models and the [`sparse_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) field type for the sparse vector models like in the case of the `elasticsearch` service to index the output of the used model.
+The mapping of the destination index - the index that contains the embeddings that the model will create based on your input text - must be created. The destination index must have a field with the [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) field type for most models and the [`sparse_vector`](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) field type for the sparse vector models like in the case of the `elasticsearch` service to index the output of the used model.
 
 :::::::{tab-set}
 
@@ -561,7 +562,7 @@ PUT amazon-bedrock-embeddings
 
 1. The name of the field to contain the generated tokens. It must be referenced in the {{infer}} pipeline configuration in the next step.
 2. The field to contain the tokens is a `dense_vector` field.
-3. The output dimensions of the model. This value may be different depending on the underlying model used. See the [Amazon Titan model](https://docs.aws.amazon.com/bedrock/latest/userguide/titan-multiemb-models.md) or the [Cohere Embeddings model](https://docs.cohere.com/reference/embed) documentation.
+3. The output dimensions of the model. This value may be different depending on the underlying model used. See the [Amazon Titan model](https://docs.aws.amazon.com/bedrock/latest/userguide/titan-multiemb-models.html) or the [Cohere Embeddings model](https://docs.cohere.com/reference/embed) documentation.
 4. For Amazon Bedrock embeddings, the `dot_product` function should be used to calculate similarity for Amazon titan models, or `cosine` for Cohere models.
 5. The name of the field from which to create the dense vector representation. In this example, the name of the field is `content`. It must be referenced in the {{infer}} pipeline configuration in the next step.
 6. The field type which is text in this example.
@@ -597,7 +598,7 @@ PUT alibabacloud-ai-search-embeddings
 
 ## Create an ingest pipeline with an inference processor [infer-service-inference-ingest-pipeline]
 
-Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) and use the model you created above to infer against the data that is being ingested in the pipeline.
+Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md) and use the model you created above to infer against the data that is being ingested in the pipeline.
 
 :::::::{tab-set}
 
@@ -829,7 +830,7 @@ In this step, you load the data that you later use in the {{infer}} ingest pipel
 
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
-Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names**, assign `id` to the first column and `content` to the second. Click **Apply**, then **Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ## Ingest the data through the {{infer}} ingest pipeline [reindexing-data-infer]

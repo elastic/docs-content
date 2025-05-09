@@ -2,6 +2,8 @@
 applies_to:
   stack: ga
   serverless: ga
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-watcher.html
 ---
 
 # Enable Watcher [enable-watcher]
@@ -45,7 +47,7 @@ The following quotas apply when using the Elastic email service:
 
 ### Slack and PagerDuty integration [advanced-usage]
 
-Under the hood, Alerting is configured through `elasticsearch.yml`. If you want to customize your Alerting settings, you can provide custom `elasticsearch.yml` snippet which is appended to your configuration.
+Under the hood, Alerting is configured through [`elasticsearch.yml`](/deploy-manage/stack-settings.md). If you want to customize your Alerting settings, you can provide custom `elasticsearch.yml` snippet which is appended to your configuration.
 
 To provide the custom snippet, you can use the console [Elasticsearch settings editor](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) for your deployment.
 
@@ -59,7 +61,7 @@ There are three steps to integrate Elasticsearch with Slack:
 
 To add a webhook in Slack, select the settings icon, then choose **Add an app** and search for `webhook`.
 
-The following example shows a configuration with multiple Slack accounts (`account1`, `account2`, and `account3`) specified in `elasticsearch.yml`:
+The following example shows a configuration with multiple Slack accounts (`account1`, `account2`, and `account3`) specified in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
 ```sh
 xpack.notification.slack:
@@ -128,7 +130,7 @@ PUT _watcher/watch/test-alarm
 
 **In Elasticsearch versions before 7.0:**, you are not required to use the Elasticsearch keystore. Instead, you can use the console Elasticsearch settings editor for your deployment.
 
-:::{image} ../../../images/cloud-user-settings.png
+:::{image} /explore-analyze/images/cloud-user-settings.png
 :alt: Advanced Alerting configuration
 :::
 
@@ -164,4 +166,4 @@ An example on how to configure a new account from the Elastic cloud console:
 
 6. The new email account is now set up. It will now be used by default for watcher email actions.
 
-For a full reference of all available settings, see the [Elasticsearch documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#email-notification-settings).
+For a full reference of all available settings, see the [Elasticsearch documentation](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#email-notification-settings).

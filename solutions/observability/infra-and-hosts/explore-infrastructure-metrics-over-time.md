@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/explore-metrics.html
+applies_to:
+  stack:
 ---
 
 # Explore infrastructure metrics over time [explore-metrics]
@@ -11,12 +13,12 @@ Additionally, for detailed analyses of your metrics, you can annotate and save v
 
 To open **Metrics Explorer**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/observability-metrics-explorer.png
+:::{image} /solutions/images/observability-metrics-explorer.png
 :alt: Metrics Explorer
-:class: screenshot
+:screenshot:
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference.md) documentation.
+To learn more about the metrics shown on this page, refer to the [Metrics reference](/reference/data-analysis/observability/index.md) documentation.
 
 ::::{tip}
 If there are no metrics to display, {{kib}} prompts you to add a metrics integration. Click **Add a metrics integration** to get started. If you want to add more data in the future, click **Add data** from any page in the {{infrastructure-app}}.
@@ -38,14 +40,14 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     There is now an individual graph displaying the average values of the metrics for each host.
 
-    :::{image} ../../../images/observability-metrics-explorer-filter.png
+    :::{image} /solutions/images/observability-metrics-explorer-filter.png
     :alt: Metrics Explorer query
-    :class: screenshot
+    :screenshot:
     :::
 
 3. Select **Actions** in the top right-hand corner of one of the graphs and then click **Add filter**.
 
-    This graph now displays the metrics only for that host. The filter has added a [{{kib}} Query Language](../../../explore-analyze/query-filter/languages/kql.md) filter for `host.name` in the second row of the Metrics Explorer configuration.
+    This graph now displays the metrics only for that host. The filter has added a [{{kib}} Query Language](/explore-analyze/query-filter/languages/kql.md) filter for `host.name` in the second row of the Metrics Explorer configuration.
 
 4. Let’s analyze some host-specific metrics. In the **of** field, delete each one of the system load metrics.
 5. To explore the outbound network traffic, enter the `host.network.egress.bytes` metric. This is a monotonically increasing value, so from the aggregation dropdown, select `Rate`.
@@ -57,9 +59,9 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     In this visualization the max of `host.network.egress.bytes` is displayed, filtered by `host.name` and `system.network.name`.
 
-    :::{image} ../../../images/observability-metrics-time-series.png
+    :::{image} /solutions/images/observability-metrics-time-series.png
     :alt: Time series chart
-    :class: screenshot
+    :screenshot:
     :::
 
     The `derivative` aggregation is used to calculate the difference between each bucket. By default, the value of units is automatically set to `1s`, along with the `positive only` aggregation.

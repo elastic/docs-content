@@ -2,6 +2,8 @@
 navigation_title: "GCP"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-gcp.html
+applies_to:
+  stack:
 ---
 
 
@@ -23,9 +25,9 @@ If you don’t want to provision VM and install data shippers due to process and
 You’ll learn how to:
 
 * Set up a GCP Service Account.
-* Ingest metrics using the [{{metricbeat}} Google Cloud Platform module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-gcp.md) and view those metrics in {{kib}}.
+* Ingest metrics using the [{{metricbeat}} Google Cloud Platform module](beats://reference/metricbeat/metricbeat-module-gcp.md) and view those metrics in {{kib}}.
 * Export GCP audit logs through Pub/Sub topics.
-* Ingest logs using the [{{filebeat}} Google Cloud module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-gcp.md) and view those logs in {{kib}}.
+* Ingest logs using the [{{filebeat}} Google Cloud module](beats://reference/filebeat/filebeat-module-gcp.md) and view those logs in {{kib}}.
 
 
 ## Before you begin [_before_you_begin_2]
@@ -39,13 +41,13 @@ Google Cloud Platform implements [service accounts](https://cloud.google.com/com
 
 First, to access the service account menu, click **Menu** → **IAM & Admin** → **Service Accounts**.
 
-:::{image} ../../../images/observability-monitor-gcp-service-account-menu.png
+:::{image} /solutions/images/observability-monitor-gcp-service-account-menu.png
 :alt: Service account menu
 :::
 
 Next, click **Create Service Account**. Define the new service account name (for example, "gcp-monitor") and the description (for example, "Service account to monitor GCP services using the {{stack}}").
 
-:::{image} ../../../images/observability-monitor-gcp-service-account-name.png
+:::{image} /solutions/images/observability-monitor-gcp-service-account-name.png
 :alt: Service account name
 :::
 
@@ -59,25 +61,25 @@ To monitor GCP services, you need to add these roles to the service account:
 
 **Compute Viewer**:
 
-:::{image} ../../../images/observability-monitor-gcp-service-account-roles-compute-viewer.png
+:::{image} /solutions/images/observability-monitor-gcp-service-account-roles-compute-viewer.png
 :alt: Service account roles compute viewer
 :::
 
 **Monitoring Viewer**:
 
-:::{image} ../../../images/observability-monitor-gcp-service-account-roles-monitoring-viewer.png
+:::{image} /solutions/images/observability-monitor-gcp-service-account-roles-monitoring-viewer.png
 :alt: Service account roles monitoring viewer
 :::
 
 **Pub/Sub Subscriber**:
 
-:::{image} ../../../images/observability-monitor-gcp-service-account-roles-pubsub-subscriber.png
+:::{image} /solutions/images/observability-monitor-gcp-service-account-roles-pubsub-subscriber.png
 :alt: Service account roles pub/sub subscriber
 :::
 
 The final result should be the following:
 
-:::{image} ../../../images/observability-monitor-gcp-service-account-roles-final.png
+:::{image} /solutions/images/observability-monitor-gcp-service-account-roles-final.png
 :alt: Service account roles result
 :::
 
@@ -85,13 +87,13 @@ Click **Continue**, then skip granting users access to this service. Finally, cl
 
 Next, to use the service account, click **Manage keys**.
 
-:::{image} ../../../images/observability-monitor-gcp-service-account-manage-keys.png
+:::{image} /solutions/images/observability-monitor-gcp-service-account-manage-keys.png
 :alt: Service account manage keys
 :::
 
 Then, add a new JSON key type by selecting **Create new key**.
 
-:::{image} ../../../images/observability-monitor-gcp-service-account-create-key.png
+:::{image} /solutions/images/observability-monitor-gcp-service-account-create-key.png
 :alt: Service account create key
 :::
 
@@ -118,23 +120,52 @@ Download and install {{metricbeat}}.
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-amd64.deb
+sudo dpkg -i metricbeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi metricbeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Metricbeat has not yet been released.
+1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `metricbeat-[version]-windows-x86_64` directory to `Metricbeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Metricbeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Metricbeat'
+  PS C:\Program Files\Metricbeat> .\install-service-metricbeat.ps1
+  ```
+
+```{note}
+If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-metricbeat.ps1`.
+```
 ::::::
 
 :::::::
@@ -151,7 +182,7 @@ Version 9.0.0-beta1 of Metricbeat has not yet been released.
 
 
 ::::{important}
-Setting up {{metricbeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](asciidocalypse://docs/beats/docs/reference/metricbeat/privileges-to-setup-beats.md), and a more restrictive role for event publishing (which you will do next).
+Setting up {{metricbeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](beats://reference/metricbeat/privileges-to-setup-beats.md), and a more restrictive role for event publishing (which you will do next).
 
 ::::
 
@@ -161,7 +192,7 @@ Setting up {{metricbeat}} is an admin-level task that requires extra privileges.
 
 Next, you are going to configure {{metricbeat}} output to {{ecloud}}.
 
-1. Use the {{metricbeat}} keystore to store [secure settings](asciidocalypse://docs/beats/docs/reference/metricbeat/keystore.md). Store the Cloud ID in the keystore.
+1. Use the {{metricbeat}} keystore to store [secure settings](beats://reference/metricbeat/keystore.md). Store the Cloud ID in the keystore.
 
     ```bash
     ./metricbeat keystore create
@@ -225,10 +256,10 @@ Now that the output is working, you are going to set up the input (GCP).
 
 ## Step 3: Configure {{metricbeat}} Google Cloud Platform module [_step_3_configure_metricbeat_google_cloud_platform_module]
 
-To collect metrics from Google Cloud Platform, use the [Google Cloud Platform](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-gcp.md) module. This module periodically fetches monitoring metrics from Google Cloud Platform using [Stackdriver Monitoring API](https://cloud.google.com/monitoring/api/metrics_gcp) for Google Cloud Platform services.
+To collect metrics from Google Cloud Platform, use the [Google Cloud Platform](beats://reference/metricbeat/metricbeat-module-gcp.md) module. This module periodically fetches monitoring metrics from Google Cloud Platform using [Stackdriver Monitoring API](https://cloud.google.com/monitoring/api/metrics_gcp) for Google Cloud Platform services.
 
 ::::{warning}
-Extra GCP charges on Stackdriver Monitoring API requests may be generated by this module. Please see [rough estimation of the number of API calls](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-gcp.md#gcp-api-requests) for more details.
+Extra GCP charges on Stackdriver Monitoring API requests may be generated by this module. See [rough estimation of the number of API calls](beats://reference/metricbeat/metricbeat-module-gcp.md#gcp-api-requests) for more details.
 
 ::::
 
@@ -273,7 +304,7 @@ Extra GCP charges on Stackdriver Monitoring API requests may be generated by thi
 
 5. Finally, log into {{kib}} and open the **[{{metricbeat}} GCP] Compute Overview** dashboard.
 
-    ![{{metricbeat}} compute overview dashboard](../../../images/observability-monitor-gcp-compute-overview-dashboard.png "")
+    ![{{metricbeat}} compute overview dashboard](/solutions/images/observability-monitor-gcp-compute-overview-dashboard.png "")
 
 
 
@@ -289,23 +320,52 @@ Download and install {{filebeat}}.
 :::::::{tab-set}
 
 ::::::{tab-item} DEB
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-amd64.deb
+sudo dpkg -i filebeat-{{stack-version}}-amd64.deb
+```
 ::::::
 
 ::::::{tab-item} RPM
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{stack-version}}-x86_64.rpm
+```
 ::::::
 
 ::::::{tab-item} MacOS
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Linux
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+```shell subs=true
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{stack-version}}-linux-x86_64.tar.gz
+```
 ::::::
 
 ::::::{tab-item} Windows
-Version 9.0.0-beta1 of Filebeat has not yet been released.
+1. Download the [Filebeat Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-windows-x86_64.zip).
+
+2. Extract the contents of the zip file into `C:\Program Files`.
+
+3. Rename the `filebeat-[stack-version]-windows-x86_64` directory to `Filebeat`.
+
+4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
+
+5. From the PowerShell prompt, run the following commands to install Filebeat as a Windows service:
+
+  ```shell subs=true
+  PS > cd 'C:\Program Files\Filebeat'
+  PS C:\Program Files\Filebeat> .\install-service-filebeat.ps1
+  ```
+
+```{note}
+If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
+```
 ::::::
 
 :::::::
@@ -322,7 +382,7 @@ Version 9.0.0-beta1 of Filebeat has not yet been released.
 
 
 ::::{important}
-Setting up {{filebeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](asciidocalypse://docs/beats/docs/reference/filebeat/privileges-to-setup-beats.md) and a more restrictive role for event publishing (which you will do next).
+Setting up {{filebeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](beats://reference/filebeat/privileges-to-setup-beats.md) and a more restrictive role for event publishing (which you will do next).
 
 ::::
 
@@ -332,7 +392,7 @@ Setting up {{filebeat}} is an admin-level task that requires extra privileges. A
 
 Next, you are going to configure {{filebeat}} output to {{ecloud}}.
 
-1. Use the {{filebeat}} keystore to store [secure settings](asciidocalypse://docs/beats/docs/reference/filebeat/keystore.md). Store the Cloud ID in the keystore.
+1. Use the {{filebeat}} keystore to store [secure settings](beats://reference/filebeat/keystore.md). Store the Cloud ID in the keystore.
 
     ```bash
     ./filebeat keystore create
@@ -364,7 +424,7 @@ Next, you are going to configure {{filebeat}} output to {{ecloud}}.
     }
     ```
 
-    1. {{filebeat}} needs extra cluster permissions to publish logs, which differs from the {{metricbeat}} configuration. You can find more details [here](asciidocalypse://docs/beats/docs/reference/filebeat/feature-roles.md).
+    1. {{filebeat}} needs extra cluster permissions to publish logs, which differs from the {{metricbeat}} configuration. You can find more details [here](beats://reference/filebeat/feature-roles.md).
 
 3. The response contains an `api_key` and an `id` field, which can be stored in the {{filebeat}} keystore in the following format: `id:api_key`.
 
@@ -403,41 +463,41 @@ Now that the output is working, you are going to set up the input (GCP).
 
 ## Step 5: Configure {{filebeat}} Google Cloud module [_step_5_configure_filebeat_google_cloud_module]
 
-To collect logs from Google Cloud Platform, use the [Google Cloud Platform](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-gcp.md) module. This module periodically fetches logs that have been exported from Stackdriver to a Google Pub/Sub topic sink. There are three available filesets: `audit`, `vpcflow`, `firewall`. This tutorial covers the `audit` fileset.
+To collect logs from Google Cloud Platform, use the [Google Cloud Platform](beats://reference/filebeat/filebeat-module-gcp.md) module. This module periodically fetches logs that have been exported from Stackdriver to a Google Pub/Sub topic sink. There are three available filesets: `audit`, `vpcflow`, `firewall`. This tutorial covers the `audit` fileset.
 
 1. Go to the **Logs Router** page to configure GCP to export logs to a Pub/Sub topic. Use the search bar to find the page:
 
-    :::{image} ../../../images/observability-monitor-gcp-navigate-logs-router.png
+    :::{image} /solutions/images/observability-monitor-gcp-navigate-logs-router.png
     :alt: Navigate to Logs Router page
     :::
 
     To set up the logs routing sink, click  **Create sink**. Set **sink name** as `monitor-gcp-audit-sink`. Select the **Cloud Pub/Sub topic** as the **sink service** and **Create new Cloud Pub/Sub topic** named `monitor-gcp-audit`:
 
-    :::{image} ../../../images/observability-monitor-gcp-create-pubsub-topic.png
+    :::{image} /solutions/images/observability-monitor-gcp-create-pubsub-topic.png
     :alt: Create Pub/Sub topic
     :::
 
     Finally, under **Choose logs to include in sink**, add `logName:"cloudaudit.googleapis.com"` (it includes all audit logs). Click **create sink**.  It will look something like the following:
 
-    :::{image} ../../../images/observability-monitor-gcp-create-sink.png
+    :::{image} /solutions/images/observability-monitor-gcp-create-sink.png
     :alt: Create logs routing sink
     :::
 
 2. Now go to the **Pub/Sub** page to add a subscription to the topic you just created. Use the search bar to find the page:
 
-    :::{image} ../../../images/observability-monitor-gcp-pub-sub.png
+    :::{image} /solutions/images/observability-monitor-gcp-pub-sub.png
     :alt: GCP Pub/Sub
     :::
 
     To add a subscription to the `monitor-gcp-audit` topic click **Create subscription**:
 
-    :::{image} ../../../images/observability-monitor-gcp-pub-sub-create-subscription.png
+    :::{image} /solutions/images/observability-monitor-gcp-pub-sub-create-subscription.png
     :alt: Create GCP Pub/Sub Subscription
     :::
 
     Set `monitor-gcp-audit-sub` as the **Subscription ID** and leave the **Delivery type** as pull:
 
-    :::{image} ../../../images/observability-monitor-gcp-pub-sub-subscription-id.png
+    :::{image} /solutions/images/observability-monitor-gcp-pub-sub-subscription-id.png
     :alt: GCP Pub/Sub Subscription ID
     :::
 
@@ -480,6 +540,6 @@ To collect logs from Google Cloud Platform, use the [Google Cloud Platform](asci
 
 6. Finally, log into {{kib}} and open the **[{{filebeat}} GCP] Audit** dashboard.
 
-    :::{image} ../../../images/observability-monitor-gcp-audit-overview-dashboard.png
+    :::{image} /solutions/images/observability-monitor-gcp-audit-overview-dashboard.png
     :alt: {{filebeat}} audit overview dashboard
     :::

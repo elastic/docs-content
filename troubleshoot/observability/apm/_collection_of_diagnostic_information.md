@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/php/current/_collection_of_diagnostic_information.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 ---
 
 # Collection of diagnostic information [_collection_of_diagnostic_information]
@@ -30,7 +34,7 @@ If there are multiple PHP processes in your system, we allow you to specify dire
 * `%t` - In this place, the agent will substitute the UNIX timestamp.
 
 ::::{important} 
-After setting the path, remember to **fully restart the process** for which you are collecting diagnostic information. This may vary depending on the context, such as PHP, PHP-FPM, Apache, or PHP-CGI. Diagnostic information will be recorded after the first HTTP request is made or at the beginning of script execution for PHP-CLI.<br> <br> Please also be aware that the information contained in the output file may include sensitive data, such as passwords, security tokens or environment variables from your system. Make sure to review the data and mask sensitive information before sharing the file publicly.<br> <br> After collecting diagnostic information, remember to disable this feature and restore the previous configuration in php.ini or the environment variable.
+After setting the path, remember to **fully restart the process** for which you are collecting diagnostic information. This may vary depending on the context, such as PHP, PHP-FPM, Apache, or PHP-CGI. Diagnostic information will be recorded after the first HTTP request is made or at the beginning of script execution for PHP-CLI.<br> <br> Be aware that the information contained in the output file may include sensitive data, such as passwords, security tokens or environment variables from your system. Make sure to review the data and mask sensitive information before sharing the file publicly.<br> <br> After collecting diagnostic information, remember to disable this feature and restore the previous configuration in php.ini or the environment variable.
 ::::
 
 

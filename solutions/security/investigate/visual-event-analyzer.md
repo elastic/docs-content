@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/visual-event-analyzer.html
   - https://www.elastic.co/guide/en/serverless/current/security-visual-event-analyzer.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Visual event analyzer [security-visual-event-analyzer]
@@ -9,7 +13,7 @@ mapped_urls:
 {{elastic-sec}} allows any event detected by {{elastic-endpoint}} to be analyzed using a process-based visual analyzer, which shows a graphical timeline of processes that led up to the alert and the events that occurred immediately after. Examining events in the visual event analyzer is useful to determine the origin of potentially malicious activity and other areas in your environment that may be compromised. It also enables security analysts to drill down into all related hosts, processes, and other events to aid in their investigations.
 
 ::::{tip}
-If you’re experiencing performance degradation, you can [exclude cold and frozen tier data](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-tiers) from analyzer queries. This setting is only available for the {{stack}}. 
+If you’re experiencing performance degradation, you can [exclude cold and frozen tier data](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-tiers) from analyzer queries. This setting is only available for the {{stack}}.
 ::::
 
 
@@ -40,14 +44,9 @@ To find events that can be visually analyzed:
 
 3. Events that can be visually analyzed are denoted by a cubical **Analyze event** icon. Select this option to open the event in the visual analyzer. The event analyzer is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout.
 
-    ::::{tip}
-    Turn on the `securitySolution:enableVisualizationsInFlyout` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#visualizations-in-flyout) to access the event analyzer from the **Visualize** tab in the alert or event details flyout.
-    ::::
-
-
-    :::{image} ../../../images/security-analyze-event-button.png
+    :::{image} /solutions/images/security-analyze-event-button.png
     :alt: analyze event button
-    :class: screenshot
+    :screenshot:
     :::
 
     ::::{note}
@@ -55,9 +54,9 @@ To find events that can be visually analyzed:
     ::::
 
 
-    :::{image} ../../../images/security-analyze-event-timeline.png
+    :::{image} /solutions/images/security-analyze-event-timeline.png
     :alt: analyze event timeline
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -77,44 +76,44 @@ To understand what fields were used to create the process, select the **Process 
 * `ID`: Event field that uniquely identifies a node
 * `EDGE`: Event field which indicates the relationship between two nodes
 
-:::{image} ../../../images/security-process-schema.png
+:::{image} /solutions/images/security-process-schema.png
 :alt: process schema
-:class: screenshot
+:screenshot:
 :::
 
 Click the **Legend** to show the state of each process node.
 
-:::{image} ../../../images/security-node-legend.png
+:::{image} /solutions/images/security-node-legend.png
 :alt: node legend
-:class: screenshot
+:screenshot:
 :::
 
 Use the date and time filter to analyze the event within a specific time range. By default, the selected time range matches that of the table from which you opened the alert.
 
-:::{image} ../../../images/security-date-range-selection.png
+:::{image} /solutions/images/security-date-range-selection.png
 :alt: date range selection
-:class: screenshot
+:screenshot:
 :::
 
 Select a different data view to further filter the alert’s related events.
 
-:::{image} ../../../images/security-data-view-selection.png
+:::{image} /solutions/images/security-data-view-selection.png
 :alt: data view selection
-:class: screenshot
+:screenshot:
 :::
 
 To expand the analyzer to a full screen, select the **Full Screen** icon above the left panel.
 
-:::{image} ../../../images/security-full-screen-analyzer.png
+:::{image} /solutions/images/security-full-screen-analyzer.png
 :alt: full screen analyzer
-:class: screenshot
+:screenshot:
 :::
 
 The left panel contains a list of all processes related to the event, starting with the event chain’s first process. **Analyzed Events** — the event you selected to analyze from the events list or Timeline — are highlighted with a light blue outline around the cube.
 
-:::{image} ../../../images/security-process-list.png
+:::{image} /solutions/images/security-process-list.png
 :alt: process list
-:class: screenshot
+:screenshot:
 :::
 
 In the graphical view, you can:
@@ -125,9 +124,9 @@ In the graphical view, you can:
 * Determine how much time passed between each process
 * Identify all events related to each process
 
-:::{image} ../../../images/security-graphical-view.png
+:::{image} /solutions/images/security-graphical-view.png
 :alt: graphical view
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -143,9 +142,9 @@ To learn more about each related process, select the process in the left panel o
 * Any other relevant process information
 * Any associated alerts
 
-:::{image} ../../../images/security-process-details.png
+:::{image} /solutions/images/security-process-details.png
 :alt: process details
-:class: screenshot
+:screenshot:
 :::
 
 When you first select a process, it appears in a loading state. If loading data for a given process fails, click **Reload `{{process-name}}`** beneath the process to reload the data.
@@ -154,16 +153,16 @@ Access event details by selecting that event’s URL at the top of the process d
 
 Events are categorized based on the `event.category` value.
 
-:::{image} ../../../images/security-event-type.png
+:::{image} /solutions/images/security-event-type.png
 :alt: event type
-:class: screenshot
+:screenshot:
 :::
 
 When you select an `event.category` pill, all the events within that category are listed in the left panel. To display more details about a specific event, select it from the list.
 
-:::{image} ../../../images/security-event-details.png
+:::{image} /solutions/images/security-event-details.png
 :alt: event details
-:class: screenshot
+:screenshot:
 :::
 
 ::::{note}
@@ -172,11 +171,11 @@ When you select an `event.category` pill, all the events within that category ar
 ::::
 
 
-To examine alerts associated with the event, select the alert pill (***x* alert**). The left pane lists the total number of associated alerts, and alerts are ordered from oldest to newest. Each alert shows the type of event that produced it (`event.category`), the event timestamp (`@timestamp`), and rule that generated the alert (`kibana.alert.rule.name`). Click on the rule name to open the alert’s details.
+To examine alerts associated with the event, select the alert pill (**_x_ alert**). The left pane lists the total number of associated alerts, and alerts are ordered from oldest to newest. Each alert shows the type of event that produced it (`event.category`), the event timestamp (`@timestamp`), and rule that generated the alert (`kibana.alert.rule.name`). Click on the rule name to open the alert’s details.
 
 In the example screenshot below, five alerts were generated by the analyzed event (`lsass.exe`). The left pane displays the associated alerts and basic information about each one.
 
-:::{image} ../../../images/security-alert-pill.png
+:::{image} /solutions/images/security-alert-pill.png
 :alt: alert pill
-:class: screenshot
+:screenshot:
 :::

@@ -1,8 +1,11 @@
 ---
 navigation_title: "Logstash"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/troubleshooting.html
   - https://www.elastic.co/guide/en/logstash/current/ts-logstash.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Troubleshoot Logstash [ts-logstash]
@@ -14,7 +17,7 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/logstash/logstash/troubleshooting.md
 % - [ ] ./raw-migrated-files/logstash/logstash/ts-logstash.md
 
-This page helps you troubleshoot Logstash. 
+This page helps you troubleshoot Logstash.
 
 
 ## Installation and setup [ts-install]
@@ -72,7 +75,7 @@ Try adding these values to the `jvm.options` file.
 **Notes:**
 
 * These settings allow Logstash to start without warnings.
-* This workaround has been tested with simple pipelines. If you have experiences to share, please comment in the [issue](https://github.com/elastic/logstash/issues/10496).
+* This workaround has been tested with simple pipelines. If you have experiences to share, comment in the [issue](https://github.com/elastic/logstash/issues/10496).
 
 
 ### *Permission denied - NUL* errors on Windows [ts-windows-permission-denied-NUL]
@@ -95,7 +98,7 @@ This issue affects some OpenJDK-derived JVM versions (Adoptium, OpenJDK, and Azu
 
 **Work around**
 
-* Use the [bundled JDK](asciidocalypse://docs/logstash/docs/reference/getting-started-with-logstash.md#ls-jvm) included with Logstash
+* Use the [bundled JDK](logstash://reference/getting-started-with-logstash.md#ls-jvm) included with Logstash
 * Or, try adding this value to the `jvm.options` file, and restarting Logstash
 
     ```sh
@@ -183,7 +186,7 @@ Symptoms of persistent queue problems include {{ls}} or one or more pipelines no
 message=>"java.io.IOException: Page file size is too small to hold elements"
 ```
 
-See the [troubleshooting information](asciidocalypse://docs/logstash/docs/reference/persistent-queues.md#troubleshooting-pqs) in the persistent queue section for more information on remediating problems with persistent queues.
+See the [troubleshooting information](logstash://reference/persistent-queues.md#troubleshooting-pqs) in the persistent queue section for more information on remediating problems with persistent queues.
 
 
 ## Data ingestion [ts-ingest]
@@ -216,7 +219,7 @@ pool size = 16, active threads = 16, queued tasks = 200, completed tasks =
 
 ## Performance [ts-performance]
 
-For general performance tuning tips and guidelines, see [*Performance tuning*](asciidocalypse://docs/logstash/docs/reference/performance-tuning.md).
+For general performance tuning tips and guidelines, see [*Performance tuning*](logstash://reference/performance-tuning.md).
 
 
 ## Troubleshooting a pipeline [ts-pipeline]
@@ -236,7 +239,7 @@ input {stdin{}} output {stdout{}}
 
 For more complex pipelines, the problem could be caused by a series of plugins in a specific order. Troubleshooting these pipelines usually requires trial and error. Start by systematically removing input and output plugins until you’re left with the minimum set that manifest the issue.
 
-We want to expand this section to make it more helpful. If you have troubleshooting tips to share, please:
+We want to expand this section to make it more helpful. If you have troubleshooting tips to share:
 
 * create an issue at [https://github.com/elastic/logstash/issues](https://github.com/elastic/logstash/issues), or
 * create a pull request with your proposed changes at [https://github.com/elastic/logstash](https://github.com/elastic/logstash).
@@ -280,7 +283,7 @@ Without setting this flag, json log would contain objects like:
 }
 ```
 
-Please note the duplication of `message` field, while being technically valid json, it is not always parsed correctly.
+Note the duplication of `message` field, while being technically valid json, it is not always parsed correctly.
 
 **Solution** In `config/logstash.yml` enable the strict json flag:
 

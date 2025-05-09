@@ -1,9 +1,10 @@
 ---
+applies_to:
+  self: ga
 navigation_title: "With a different CA"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs-different.html
 ---
-
 
 
 # Different CA [update-node-certs-different]
@@ -15,7 +16,7 @@ If you have to trust a new CA from your organization, or you need to generate a 
 
 Create a new CA certificate, or get the CA certificate of your organization, and add it to your existing CA truststore. After you finish updating your certificates for all nodes, you can remove the old CA certificate from your truststore (but not before!).
 
-::::{note} 
+::::{note}
 The following examples use PKCS#12 files, but the same steps apply to JKS keystores.
 ::::
 
@@ -24,7 +25,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
 
     In this example, the keystore and truststore are using different files. Your configuration might use the same file for both the keystore and the truststore.
 
-    ::::{note} 
+    ::::{note}
     These instructions assume that the provided certificate is signed by a trusted CA and the verification mode is set to `certificate`. This setting ensures that nodes to not attempt to perform hostname verification.
 
     ::::
@@ -54,7 +55,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
     1. Enter a name for the compressed output file that will contain your certificate and key, or accept the default name of `elastic-stack-ca.zip`.
     2. Unzip the output file. The resulting directory contains a CA certificate (`ca.crt`) and a private key (`ca.key`).
 
-        ::::{important} 
+        ::::{important}
         Keep these file in a secure location as they contain the private key for your CA.
         ::::
 
@@ -92,12 +93,12 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
 
 
 
-### Generate a new certificate for each node in your cluster [node-certs-different-nodes] 
+### Generate a new certificate for each node in your cluster [node-certs-different-nodes]
 
 Now that your CA truststore is updated, use your new CA certificate to sign a certificate for your nodes.
 
-::::{note} 
-If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate.
+::::{note}
+If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate.
 ::::
 
 
@@ -126,7 +127,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
 
 3. Replace your existing keystore with the new keystore, ensuring that the file names match. For example, `elastic-certificates.p12`.
 
-    ::::{important} 
+    ::::{important}
     If your [keystore password is changing](same-ca.md#cert-password-updates), then save the keystore with a new filename so that {{es}} doesn’t attempt to reload the file before you update the password.
     ::::
 
@@ -167,7 +168,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
 
 
 
-### What’s next? [transport-layer-newca-whatsnext] 
+### What’s next? [transport-layer-newca-whatsnext]
 
 Well done! You’ve updated the keystore for the transport layer. You can also [update the keystore for the HTTP layer](#node-certs-different-http) if necessary. If you’re not updating the keystore for the HTTP layer, then you’re all set.
 
@@ -176,8 +177,8 @@ Well done! You’ve updated the keystore for the transport layer. You can also [
 
 You can generate certificates for the HTTP layer using your new CA certificate and private key. Other components such as {{kib}} or any of the Elastic language clients verify this certificate when they connect to {{es}}.
 
-::::{note} 
-If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate instead of using self-signed certificates that the `elasticsearch-certutil` tool generates.
+::::{note}
+If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate instead of using self-signed certificates that the `elasticsearch-certutil` tool generates.
 ::::
 
 
@@ -206,7 +207,7 @@ This process is different for each client, so refer to your client’s documenta
 
         Each certificate will have its own private key, and will be issued for a specific hostname or IP address.
 
-    7. When prompted, enter the name of the first node in your cluster. Use the same node name as the value for the `node.name` parameter in the `elasticsearch.yml` file.
+    7. When prompted, enter the name of the first node in your cluster. Use the same node name as the value for the `node.name` parameter in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
     8. Enter all hostnames used to connect to your first node. These hostnames will be added as DNS names in the Subject Alternative Name (SAN) field in your certificate.
 
         List every hostname and variant used to connect to your cluster over HTTPS.
@@ -245,7 +246,7 @@ This process is different for each client, so refer to your client’s documenta
 
 6. Replace your existing keystore with the new keystore, ensuring that the file names match. For example, `node1-http.p12`.
 
-    ::::{important} 
+    ::::{important}
     If your [keystore password is changing](same-ca.md#cert-password-updates), then save the keystore with a new filename so that {{es}} doesn’t attempt to reload the file before you update the password.
     ::::
 
@@ -280,7 +281,7 @@ This process is different for each client, so refer to your client’s documenta
 12. Complete the remaining steps for a [rolling restart](../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling), beginning with the step to **Reenable shard allocation**.
 
 
-### What’s next? [http-kibana-newca-whatsnext] 
+### What’s next? [http-kibana-newca-whatsnext]
 
 Well done! You’ve updated the keystore for the HTTP layer. You can now [update encryption between {{kib}} and {{es}}](#node-certs-different-kibana).
 
@@ -291,11 +292,11 @@ When you ran the `elasticsearch-certutil` tool with the `http` option, it create
 
 1. Copy the `elasticsearch-ca.pem` file to the {{kib}} configuration directory, as defined by the `KBN_PATH_CONF` path.
 
-    ::::{note} 
+    ::::{note}
     `KBN_PATH_CONF` contains the path for the {{kib}} configuration files. If you installed {{kib}} using archive distributions (`zip` or `tar.gz`), the path defaults to `KBN_HOME/config`. If you used package distributions (Debian or RPM), the path defaults to `/etc/kibana`.
     ::::
 
-2. If you modified the filename for the `elasticsearch-ca.pem` file, edit `kibana.yml` and update the configuration to specify the location of the security certificate for the HTTP layer.
+2. If you modified the filename for the `elasticsearch-ca.pem` file, edit [`kibana.yml`](/deploy-manage/stack-settings.md) and update the configuration to specify the location of the security certificate for the HTTP layer.
 
     ```yaml
     elasticsearch.ssl.certificateAuthorities: KBN_PATH_CONF/elasticsearch-ca.pem

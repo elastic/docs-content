@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/conf-map-ui.html
   - https://www.elastic.co/guide/en/serverless/current/security-conf-map-ui.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Configure network map data
@@ -21,7 +25,7 @@ To see source and destination connections lines on the map, you must configure `
 
 ## Permissions required [prereq-perms]
 
-To view the map in {{stack}}, you need a role with at least `Read` [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#adding_kibana_privileges) for the `Maps` feature. In serverless, you need the appropriate [predefined user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with at least `Read` privileges for the `Maps` feature.
+To view the map in {{stack}}, you need a role with at least `Read` [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for the `Maps` feature. In serverless, you need the appropriate [predefined user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with at least `Read` privileges for the `Maps` feature.
 
 
 ## Create {{kib}} data views [kibana-index-pattern]
@@ -33,7 +37,7 @@ For example, to display data that is stored in indices matching the index patter
 
 ## Add geoIP data [geoip-data]
 
-When the ECS [source.geo.location and destination.geo.location](asciidocalypse://docs/ecs/docs/reference/ecs-geo.md) fields are mapped, network data is displayed on the map.
+When the ECS [source.geo.location and destination.geo.location](ecs://reference/ecs-geo.md) fields are mapped, network data is displayed on the map.
 
 If you use Beats, configure a geoIP processor to add data to the relevant fields:
 
@@ -129,5 +133,5 @@ If you want to add your network’s internal IP addresses to the map, define geo
 
 
 ::::{tip}
-You can also enrich your data with other [host fields](asciidocalypse://docs/beats/docs/reference/packetbeat/add-host-metadata.md).
+You can also enrich your data with other [host fields](beats://reference/packetbeat/add-host-metadata.md).
 ::::

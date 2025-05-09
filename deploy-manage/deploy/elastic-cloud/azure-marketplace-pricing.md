@@ -23,9 +23,8 @@ The pricing plan update enables us to align with market trends and adapt to chan
 
 These pricing changes will apply to customers who are currently paying for Azure Marketplace services in non-USD currencies. If you are paying in USD, your pricing and billing will remain unchanged.
 
-|     |     |     |
-| --- | --- | --- |
 | Currency | Price | Elastic Billing Units for Azure† |
+| --- | --- | --- |
 | USD | 1.00 | $0.10 per 1000 units |
 | AUD | 1.60 | $0.16 per 1000 units |
 | BRL | 5.40 | R$0.54 per 1000 units |
@@ -52,4 +51,4 @@ For customers paying in non-USD currencies, any future prepaid fees, or on-deman
 
 ## Our commitment to you [ec_our_commitment_to_you]
 
-We understand that pricing adjustments can raise questions or concerns, and we are here to support you throughout this process. Should you have any inquiries or need assistance, please reach out to your Elastic account representative or Elastic Support at `support@elastic.co`.
+We understand that pricing adjustments can raise questions or concerns, and we are here to support you throughout this process. Should you have any inquiries or need assistance, reach out to your Elastic account representative or Elastic Support at `support@elastic.co`.

@@ -1,5 +1,8 @@
 ---
 navigation_title: "Alerts"
+applies_to:
+  stack: all
+  serverless: all
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 ---
@@ -32,9 +35,9 @@ The following debugging tools are available:
 
 **{{rules-ui}}** in **{{stack-manage-app}}** lists the rules available in the space you’re currently in. When you click a rule name, you are navigated to the [details page](../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#rule-details) for the rule, where you can see currently active alerts. The start date on this page indicates when a rule is triggered, and for what alerts. In addition, the duration of the condition indicates how long the instance is active.
 
-:::{image} ../../images/kibana-rule-details-alerts-inactive.png
+:::{image} /troubleshoot/images/kibana-rule-details-alerts-inactive.png
 :alt: Alerting management details
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -42,9 +45,9 @@ The following debugging tools are available:
 
 When creating or editing an index threshold rule, you see a graph of the data the rule will operate against, from some date in the past until now, updated every 5 seconds.
 
-:::{image} ../../images/kibana-index-threshold-chart.png
+:::{image} /troubleshoot/images/kibana-index-threshold-chart.png
 :alt: Index Threshold chart
-:class: screenshot
+:screenshot:
 :::
 
 The end date is related to the check interval for the rule. You can use this view to see if the rule is getting the data you expect, and visually compare to the threshold value (a horizontal line in the graph). If the graph does not contain any lines except for the threshold line, then the rule has an issue, for example, no data is available given the specified index and fields or there is a permission error. Diagnosing these may be difficult - but there may be log messages for error conditions.
@@ -81,9 +84,9 @@ The result of this HTTP request (and printed to stdout by [kbn-action](https://g
 
 The **{{stack-manage-app}}** > **{{rules-ui}}** page contains an error banner that helps to identify the errors for the rules:
 
-:::{image} ../../images/kibana-rules-management-health.png
+:::{image} /troubleshoot/images/kibana-rules-management-health.png
 :alt: Rule management page with the errors banner
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -98,7 +101,7 @@ Task Manager provides a visible status which can be used to diagnose issues and 
 
 When a rule is created, a task is created, scheduled to run at the interval specified. For example, when a rule is created and configured to check every 5 minutes, then the underlying task will be expected to run every 5 minutes. In practice, after each time the rule runs, the task is scheduled to run again in 5 minutes, rather than being scheduled to run every 5 minutes indefinitely.
 
-If you use the [alerting APIs](https://www.elastic.co/guide/en/kibana/current/alerting-apis.html), such as the get rule API or find rules API, you’ll get an object that contains rule details:
+If you use the [alerting APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting), such as the get rule API or find rules API, you’ll get an object that contains rule details:
 
 ```txt
 {
@@ -162,7 +165,7 @@ For example:
 }
 ```
 
-For the rule to work, this task must be in a healthy state. Its health information is available in the [Task Manager health API](https://www.elastic.co/guide/en/kibana/current/task-manager-api-health.html) or in verbose logs if debug logging is enabled. When diagnosing the health state of the task, you will most likely be interested in the following fields:
+For the rule to work, this task must be in a healthy state. Its health information is available in the [Task Manager health API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health) or in verbose logs if debug logging is enabled. When diagnosing the health state of the task, you will most likely be interested in the following fields:
 
 `status`
 :   This is the current status of the task.  Is Task Manager currently running? Is Task Manager idle,  and you’re waiting for it to run?  Or has Task Manager has tried to run and failed?
@@ -184,7 +187,7 @@ In addition to the above methods, refer to the following approaches and common i
 
 ### Temporarily throttle all tasks [alerting-kibana-throttle]
 
-If cluster performance becomes degraded from excessive or expensive rules and {{kib}} is sluggish or unresponsive, you can temporarily reduce load to the Task Manager by updating its [settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md):
+If cluster performance becomes degraded from excessive or expensive rules and {{kib}} is sluggish or unresponsive, you can temporarily reduce load to the Task Manager by updating its [settings](kibana://reference/configuration-reference/task-manager-settings.md):
 
 ```txt
 xpack.task_manager.capacity: 5
@@ -200,7 +203,7 @@ This approach should be used only temporarily as a last resort to restore functi
 
 ## Limitations [alerting-limitations]
 
-The following limitations and known problems apply to the 9.0.0-beta1 release of the {{kib}} {{alert-features}}:
+The following limitations and known problems apply to the {{version}} release of the {{kib}} {{alert-features}}:
 
 
 ### Alert visibility [_alert_visibility]

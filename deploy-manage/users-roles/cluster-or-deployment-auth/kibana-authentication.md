@@ -1,11 +1,11 @@
 ---
-navigation_title: "Kibana authentication"
+navigation_title: "{{kib}} authentication"
 applies_to:
   deployment:
-    ess: 
-    ece: 
-    eck: 
-    self: 
+    ess:
+    ece:
+    eck:
+    self:
 ---
 
 # Authentication in {{kib}} [kibana-authentication]
@@ -43,7 +43,7 @@ The Login Selector UI can also be disabled or enabled with `xpack.security.authc
 ::::
 
 
-Here is how your `kibana.yml` and Login Selector UI can look like if you deal with multiple authentication providers:
+Here is how your [`kibana.yml`](/deploy-manage/stack-settings.md) and Login Selector UI can look like if you deal with multiple authentication providers:
 
 ```yaml
 xpack.security.loginHelp: "**Help** info with a [link](...)"
@@ -66,15 +66,15 @@ xpack.security.authc.providers:
     enabled: false
 ```
 
-:::{image} ../../../images/kibana-kibana-login.png
+:::{image} /deploy-manage/images/kibana-kibana-login.png
 :alt: Login Selector UI
-:class: screenshot
+:screenshot:
 :::
 
-For more information, refer to [authentication security settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#authentication-security-settings).
+For more information, refer to [authentication security settings](kibana://reference/configuration-reference/security-settings.md#authentication-security-settings).
 
 ::::{tip}
-If you have multiple authentication providers configured, you can use the `auth_provider_hint` URL query parameter to create a deep link to any provider and bypass the Login Selector UI. Using the `kibana.yml` above as an example, you can add `?auth_provider_hint=basic1` to the login page URL, which will take you directly to the basic login page.
+If you have multiple authentication providers configured, you can use the `auth_provider_hint` URL query parameter to create a deep link to any provider and bypass the Login Selector UI. Using the [`kibana.yml`](/deploy-manage/stack-settings.md) above as an example, you can add `?auth_provider_hint=basic1` to the login page URL, which will take you directly to the basic login page.
 ::::
 
 
@@ -97,7 +97,7 @@ Prior to configuring {{kib}}, ensure that token support is enabled in {{es}}. Se
 You can configure only one token provider per {{kib}} instance.
 ::::
 
-To enable the token authentication provider in {{kib}}, set the following value in your `kibana.yml`:
+To enable the token authentication provider in {{kib}}, set the following value in your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.security.authc.providers:
@@ -120,7 +120,7 @@ PKI authentication is a [subscription feature](https://www.elastic.co/subscripti
 
 Prior to configuring {{kib}}, ensure that the PKI realm is enabled in {{es}} and configured to permit delegation. See [Configuring a PKI realm](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) for more information.
 
-To enable the PKI authentication provider in {{kib}}, you must first [configure {{kib}} to encrypt communications between the browser and {{kib}} server](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http). You must also enable TLS client authentication and include the certificate authority (CA) used to sign client certificates into a list of CAs trusted by {{kib}} in your `kibana.yml`:
+To enable the PKI authentication provider in {{kib}}, you must first [configure {{kib}} to encrypt communications between the browser and {{kib}} server](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http). You must also enable TLS client authentication and include the certificate authority (CA) used to sign client certificates into a list of CAs trusted by {{kib}} in your [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ::::{note}
 You can configure only one PKI provider per {{kib}} instance.
@@ -158,7 +158,7 @@ Note that with `server.ssl.clientAuthentication` set to `required`, users are as
 
 ## SAML single sign-on [saml]
 
-SAML authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in to {{kib}} with an external Identity Provider, such as Okta or Auth0. Make sure that SAML is enabled and configured in {{es}} before setting it up in {{kib}}. See [Configuring SAML single sign-on on the Elastic Stack](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+SAML authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in to {{kib}} with an external Identity Provider, such as Okta or Auth0. Make sure that SAML is enabled and configured in {{es}} before setting it up in {{kib}}. See [Configuring SAML single sign-on on the {{stack}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
 Enable SAML authentication by specifying which SAML realm in {{es}} should be used:
 
@@ -261,7 +261,7 @@ The following sections apply both to [SAML single sign-on](#saml) and [OpenID Co
 
 #### Access and refresh tokens [_access_and_refresh_tokens]
 
-Once the user logs in to {{kib}} with SSO, either using SAML or OpenID Connect, {{es}} issues access and refresh tokens that {{kib}} encrypts and stores as a part of its own session. This way, the user isn’t redirected to the Identity Provider for every request that requires authentication. It also means that the {{kib}} session depends on the [`xpack.security.session.idleTimeout` and `xpack.security.session.lifespan`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-session-and-cookie-settings) settings, and the user is automatically logged out if the session expires. An access token that is stored in the session can expire, in which case {{kib}} will automatically renew it with a one-time-use refresh token and store it in the same session.
+Once the user logs in to {{kib}} with SSO, either using SAML or OpenID Connect, {{es}} issues access and refresh tokens that {{kib}} encrypts and stores as a part of its own session. This way, the user isn’t redirected to the Identity Provider for every request that requires authentication. It also means that the {{kib}} session depends on the [`xpack.security.session.idleTimeout` and `xpack.security.session.lifespan`](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings) settings, and the user is automatically logged out if the session expires. An access token that is stored in the session can expire, in which case {{kib}} will automatically renew it with a one-time-use refresh token and store it in the same session.
 
 {{kib}} can only determine if an access token has expired if it receives a request that requires authentication. If both access and refresh tokens have already expired (for example, after 24 hours of inactivity), {{kib}} initiates a new "handshake" and redirects the user to the external authentication provider (SAML Identity Provider or OpenID Connect Provider) Depending on {{es}} and the external authentication provider configuration, the user might be asked to re-enter credentials.
 
@@ -279,7 +279,7 @@ During logout, both the {{kib}} session and {{es}} access/refresh token pair are
 
 Kerberos authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). Make sure that Kerberos is enabled and configured in {{es}} before setting it up in {{kib}}. See [Kerberos authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
 
-Next, to enable Kerberos in {{kib}}, you will need to enable the Kerberos authentication provider in the `kibana.yml` configuration file, as follows:
+Next, to enable Kerberos in {{kib}}, you will need to enable the Kerberos authentication provider in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, as follows:
 
 ::::{note}
 You can configure only one Kerberos provider per {{kib}} instance.
@@ -325,7 +325,7 @@ You can configure only one anonymous authentication provider per {{kib}} instanc
 ::::
 
 
-You must have a user account that can authenticate to {{es}} using a username and password, for instance from the [Native](native.md) or [LDAP](ldap.md) security realms, so that you can use these credentials to impersonate the anonymous users. Here is how your `kibana.yml` might look:
+You must have a user account that can authenticate to {{es}} using a username and password, for instance from the [Native](native.md) or [LDAP](ldap.md) security realms, so that you can use these credentials to impersonate the anonymous users. Here is how your [`kibana.yml`](/deploy-manage/stack-settings.md) might look:
 
 ```yaml
 xpack.security.authc.providers:
@@ -357,14 +357,14 @@ xpack.security.authc.providers:
 
 One of the most popular use cases for anonymous access is when you embed {{kib}} into other applications and don’t want to force your users to log in to view it. If you configured {{kib}} to use anonymous access as the sole authentication mechanism, you don’t need to do anything special while embedding {{kib}}.
 
-For information on how to embed, refer to [Embed {{kib}} content in a web page](https://www.elastic.co/guide/en/kibana/current/embedding.html).
+For information on how to embed, refer to [Embed {{kib}} content in a web page](/explore-analyze/report-and-share.md#embed-code).
 
 
 #### Anonymous access session [anonymous-access-session]
 
 {{kib}} maintains a separate [session](/deploy-manage/security/kibana-session-management.md) for every anonymous user, as it does for all other authentication mechanisms.
 
-You can configure [session idle timeout](/deploy-manage/security/kibana-session-management.md#session-idle-timeout) and [session lifespan](/deploy-manage/security/kibana-session-management.md#session-lifespan) for anonymous sessions the same as you do for any other session with the exception that idle timeout is explicitly disabled for anonymous sessions by default. The global [`xpack.security.session.idleTimeout`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-session-and-cookie-settings) setting doesn’t affect anonymous sessions. To change the idle timeout for anonymous sessions, you must configure the provider-level [`xpack.security.authc.providers.anonymous.<provider-name>.session.idleTimeout`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#anonymous-authentication-provider-settings) setting.
+You can configure [session idle timeout](/deploy-manage/security/kibana-session-management.md#session-idle-timeout) and [session lifespan](/deploy-manage/security/kibana-session-management.md#session-lifespan) for anonymous sessions the same as you do for any other session with the exception that idle timeout is explicitly disabled for anonymous sessions by default. The global [`xpack.security.session.idleTimeout`](kibana://reference/configuration-reference/security-settings.md#security-session-and-cookie-settings) setting doesn’t affect anonymous sessions. To change the idle timeout for anonymous sessions, you must configure the provider-level [`xpack.security.authc.providers.anonymous.<provider-name>.session.idleTimeout`](kibana://reference/configuration-reference/security-settings.md#anonymous-authentication-provider-settings) setting.
 
 
 ## HTTP authentication [http-authentication]
@@ -385,7 +385,7 @@ API keys are intended for programmatic access to {{kib}} and {{es}}. Do not use 
 ::::
 
 
-By default {{kib}} supports [`ApiKey`](/deploy-manage/api-keys/elasticsearch-api-keys.md) authentication scheme *and* any scheme supported by the currently enabled authentication provider. For example, `Basic` authentication scheme is automatically supported when basic authentication provider is enabled, or `Bearer` scheme when any of the token based authentication providers is enabled (Token, SAML, OpenID Connect, PKI or Kerberos). But it’s also possible to add support for any other authentication scheme in the `kibana.yml` configuration file, as follows:
+By default {{kib}} supports [`ApiKey`](/deploy-manage/api-keys/elasticsearch-api-keys.md) authentication scheme *and* any scheme supported by the currently enabled authentication provider. For example, `Basic` authentication scheme is automatically supported when basic authentication provider is enabled, or `Bearer` scheme when any of the token based authentication providers is enabled (Token, SAML, OpenID Connect, PKI or Kerberos). But it’s also possible to add support for any other authentication scheme in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, as follows:
 
 ::::{note}
 Don’t forget to explicitly specify the default `apikey` and `bearer` schemes when you just want to add a new one to the list.
@@ -404,13 +404,13 @@ With this configuration, you can send requests to {{kib}} with the `Authorizatio
 Once you create a dashboard or a visualization, you might want to share it with your colleagues or friends. The easiest way to do this is to share a direct link to your dashboard or visualization. However, some users might not have access to your {{kib}}. With the {{kib}} embedding functionality, you can display the content you created in {{kib}} to an internal company website or a personal web page.
 
 $$$embedding-cookies$$$
-To minimize security risk, embedding with iframes requires careful consideration. By default, modern web browsers enforce the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) to restrict the behavior of framed pages. When {{stack-security-features}} are enabled on your cluster, make sure the browsers can transmit session cookies to a {{kib}} server. The setting you need to be aware of is [`xpack.security.sameSiteCookies`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-security-sameSiteCookies). To support modern browsers, you must set it to `None`:
+To minimize security risk, embedding with iframes requires careful consideration. By default, modern web browsers enforce the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) to restrict the behavior of framed pages. When {{stack-security-features}} are enabled on your cluster, make sure the browsers can transmit session cookies to a {{kib}} server. The setting you need to be aware of is [`xpack.security.sameSiteCookies`](kibana://reference/configuration-reference/security-settings.md#xpack-security-samesitecookies). To support modern browsers, you must set it to `None`:
 
 ```yaml
 xpack.security.sameSiteCookies: "None"
 ```
 
-For more information about possible values and implications, refer to [xpack.security.sameSiteCookies](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-security-sameSiteCookies). For more information about iframe and cookies, refer to [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) and [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite).
+For more information about possible values and implications, refer to [xpack.security.sameSiteCookies](kibana://reference/configuration-reference/security-settings.md#xpack-security-samesitecookies). For more information about iframe and cookies, refer to [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) and [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite).
 
 If you’re embedding {{kib}} in a website that supports single sign-on (SSO) with SAML, OpenID Connect, Kerberos, or PKI, it’s highly advisable to configure {{kib}} as a part of the SSO setup. Operating in a single and properly configured security domain provides you with the most secure and seamless user experience.
 

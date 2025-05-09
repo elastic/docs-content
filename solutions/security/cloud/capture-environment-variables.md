@@ -1,24 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/environment-variable-capture.html
   - https://www.elastic.co/guide/en/serverless/current/security-environment-variable-capture.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Capture environment variables
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/environment-variable-capture.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-environment-variable-capture.md
-
-::::{admonition} Requirements
-* This feature requires {{stack}} version 8.6 or higher.
-* In {{stack}} version 8.6, this feature is only available for Linux.
-
-::::
-
 
 You can configure an {{agent}} policy to capture up to five environment variables (`env vars`).
 
@@ -48,6 +38,6 @@ To view environment variables in the **Events** table:
 1. Click the **Events** tab on the **Hosts**, **Network**, or **Users** pages, then click **Fields** in the Events table.
 2. Search for the `process.env_vars` field, select it, and click **Close**. A new column appears containing captured environment variable data.
 
-:::{image} ../../../images/security-env-var-capture-detail.png
+:::{image} /solutions/images/security-env-var-capture-detail.png
 :alt: The Events table with the "process.env_vars" column highlighted
 :::

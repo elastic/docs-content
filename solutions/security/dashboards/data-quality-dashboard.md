@@ -1,38 +1,33 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/data-quality-dash.html
   - https://www.elastic.co/guide/en/serverless/current/security-data-quality-dash.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Data Quality dashboard
 
-% What needs to be done: Align serverless/stateful
+The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](ecs://reference/index.md) (ECS). Successful [mapping](/manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}} and {{kib}}.
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/data-quality-dash.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-data-quality-dash.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$data-quality-dash-check-indices$$$
-
-The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md) (ECS). Successful [mapping](/manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}} and {{kib}}.
-
-:::{image} ../../../images/security-data-qual-dash.png
+:::{image} /solutions/images/security-data-qual-dash.png
 :alt: The Data Quality dashboard
-:class: screenshot
+:screenshot:
 :::
 
 Use the Data Quality dashboard to:
 
 * Check one or multiple indices for unsuccessful mappings, to help you identify problems (the indices used by {{elastic-sec}} appear by default).
-* View the amount of data stored in each of your indices.
+* View the amount of data and number of documents stored in each of your indices.
 * View detailed information about the fields in checked indices.
 * Track unsuccessful mappings by creating a case or Markdown report based on data quality results.
 
+
 ::::{note}
-The Data Quality dashboard doesn’t show data from cold or frozen [data tiers](/manage-data/lifecycle/data-tiers.md). It also doesn’t display data from remote clusters using cross-cluster search. To view data from another cluster, log in to that cluster’s {{kib}} instance.
+* On {{serverless-short}} deployments, index `Size` data is not available.
+* The Data Quality dashboard doesn’t show data from cold or frozen [data tiers](/manage-data/lifecycle/data-tiers.md). It also doesn’t display data from remote clusters using cross-cluster search. To view data from another cluster, log in to that cluster’s {{kib}} instance.
 ::::
 
 
@@ -82,26 +77,26 @@ Click a node in the treemap to expand the corresponding index.
 
 ## Learn more about checked index fields [_learn_more_about_checked_index_fields]
 
-After an index is checked, a **Pass** or **Fail*** status appears. ***Fail*** indicates mapping problems in an index. To view index check details, including which fields weren’t successfully mapped, click the ***Check now** button under **Actions**.
+After an index is checked, a **Pass** or **Fail** status appears. **Fail** indicates mapping problems in an index. To view index check details, including which fields weren’t successfully mapped, click the **Check now** button under **Actions**.
 
-:::{image} ../../../images/security-data-qual-dash-detail.png
+:::{image} /solutions/images/security-data-qual-dash-detail.png
 :alt: An expanded index with some failed results in the Data Quality dashboard
-:class: screenshot
+:screenshot:
 :::
 
 The index check flyout provides more information about the status of fields in that index. Each of its tabs describe fields grouped by mapping status.
 
 ::::{note}
-Fields in the **Same family** category have the correct search behavior, but might have different storage or performance characteristics (for example, you can index strings to both `text` and `keyword` fields). To learn more, refer to [Field data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md).
+Fields in the **Same family** category have the correct search behavior, but might have different storage or performance characteristics (for example, you can index strings to both `text` and `keyword` fields). To learn more, refer to [Field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md).
 ::::
 
 
 
 ## View historical data quality results [_view_historical_data_quality_results]
 
-You can review an index’s data quality history by clicking **View history** under **Actions***, or by clicking the ***History*** tab in the details flyout. You can filter the results by time and ***Pass** / **Fail** status. Click a historical check to expand it and view more details.
+You can review an index’s data quality history by clicking **View history** under **Actions**, or by clicking the **History** tab in the details flyout. You can filter the results by time and **Pass** / **Fail** status. Click a historical check to expand it and view more details.
 
-:::{image} ../../../images/security-data-qual-dash-history.png
+:::{image} /solutions/images/security-data-qual-dash-history.png
 :alt: The Data Quality dashboard
 :::
 

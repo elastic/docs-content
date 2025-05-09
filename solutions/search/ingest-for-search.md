@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-ingestion-overview.html#es-ingestion-overview-general-content
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-api.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-pipeline-search.html
@@ -27,7 +27,7 @@ There are several methods to ingest data into {{es}} for search use cases. Choos
 If you just want to do a quick test, you can load [sample data](/manage-data/ingest/sample-data.md) into your {{es}} cluster using the UI.
 ::::
 
-## Use APIs [es-ingestion-overview-apis] 
+## Use APIs [es-ingestion-overview-apis]
 
 You can use the [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-document) to add data to your {{es}} indices, using any HTTP client, including the [{{es}} client libraries](/solutions/search/site-or-app/clients.md).
 

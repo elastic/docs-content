@@ -1,12 +1,12 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data2.html
 applies_to:
   stack: ga
   deployment:
-    eck: unavailable 
+    eck: unavailable
     ess: ga
     ece: ga
   serverless: unavailable
@@ -14,7 +14,7 @@ applies_to:
 
 # Migrate your {{es}} data
 
-You might have switched to {{ech}}, {{ece}}, or Elasticsearch Add-On for Heroku for any number of reasons, and you’re likely wondering how to get your existing {{es}} data into your new infrastructure. Along with easily creating as many new deployments with {{es}} clusters that you need, you have several options for moving your data over. Choose the option that works best for you:
+You might have switched to {{ech}} or {{ece}} for any number of reasons, and you’re likely wondering how to get your existing {{es}} data into your new infrastructure. Along with easily creating as many new deployments with {{es}} clusters that you need, you have several options for moving your data over. Choose the option that works best for you:
 
 * Index your data from the original source, which is the simplest method and provides the greatest flexibility for the {{es}} version and ingestion method.
 * Reindex from a remote cluster, which rebuilds the index from scratch.
@@ -36,7 +36,7 @@ Restore from a snapshot
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an Elasticsearch version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility) for details). If you have not already done so, you will need to [set up snapshots for your old cluster](/deploy-manage/tools/snapshot-and-restore/self-managed.md) using a repository that can be accessed from the new cluster.
 
 Migrating internal {{es}} indices
-:   For {{ech}} and Elasticsearch Add-On for Heroku, if you are migrating internal {{es}} indices from another cluster, specifically the `.kibana` index or the `.security` index, there are two options:
+:   For {{ech}}, if you are migrating internal {{es}} indices from another cluster, specifically the `.kibana` index or the `.security` index, there are two options:
 
     * Use the steps on this page to reindex the internal indices from a remote cluster. The steps for reindexing internal indices and regular, data indices are the same.
     * Check [Migrating internal indices](migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
@@ -55,7 +55,7 @@ If the original source isn’t available or has other issues that make it non-vi
 
 Through the {{es}} reindex API, you can connect your new {{es}} Service deployment remotely to your old {{es}} cluster. This pulls the data from your old cluster and indexes it into your new one. Reindexing essentially rebuilds the index from scratch and it can be more resource intensive to run.
 
-1. Log in to {{ech}}, {{ece}}, or Elasticsearch Add-On for Heroku.
+1. Log in to {{ech}} or {{ece}}.
 2. Select a deployment or create one.
 3. If the old {{es}} cluster is on a remote host (any type of host accessible over the internet), you need to make sure that the host can be accessed. Access is determined by the {{es}} `reindex.remote.whitelist` user setting.
 
@@ -146,30 +146,30 @@ For {{ece}} users, while it is most common to have Amazon S3 buckets, you should
 3. Add the snapshot repository:
 
     ::::{tab-set}
-    
-    :::{tab-item} {{ech}} and Elasticsearch Add-On for Heroku
+
+    :::{tab-item} {{ech}}
 
     From the [console](https://cloud.elastic.co?page=docs&placement=docs-body) of the **new** {{es}} cluster, add the snapshot repository.
-    
+
     For details, check our guidelines for:
     * [Amazon Web Services (AWS) Storage](../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
     * [Google Cloud Storage (GCS)](../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
     * [Azure Blob Storage](../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md).
-    
+
     If you’re migrating [searchable snapshots](../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and     destination clusters.
-    
+
     If the source cluster is still writing to the repository, you need to set the destination cluster’s repository connection to `readonly:true` to avoid data corruption. Refer to [backup a repository](../deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) for details.
     :::
-        
+
     :::{tab-item} {{ece}}
-    
+
     From the Cloud UI of the **new** {{es}} cluster add the snapshot repository.
-    
+
     For details about configuring snapshot repositories on Amazon Web Services (AWS), Google Cloud Storage (GCS), or Azure Blob Storage, check [manage Snapshot Repositories](../deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
-    
+
     If you’re migrating [searchable snapshots](../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and     destination clusters.
     :::
-        
+
     ::::
 
 4. Start the Restore process.

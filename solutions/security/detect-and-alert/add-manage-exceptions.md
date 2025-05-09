@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/add-exceptions.html
   - https://www.elastic.co/guide/en/serverless/current/security-add-exceptions.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Add and manage exceptions [add-exceptions]
@@ -9,7 +13,7 @@ mapped_urls:
 You can add exceptions to a rule from the rule details page, the Alerts table, the alert details flyout, or the Shared Exception Lists page. When you add an exception, you can also close all alerts that meet the exception’s criteria.
 
 ::::{important}
-* To ensure an exception is successfully applied, ensure that the fields you’ve defined for its query are correctly and consistently mapped in their respective indices. Refer to [ECS](https://www.elastic.co/guide/en/ecs/current) to learn more about supported mappings.
+* To ensure an exception is successfully applied, ensure that the fields you’ve defined for its query are correctly and consistently mapped in their respective indices. Refer to [ECS](ecs://reference/index.md) to learn more about supported mappings.
 * Be careful when adding exceptions to [event correlation](create-detection-rule.md#create-eql-rule) rules. Exceptions are evaluated against every event in the sequence, and if an exception matches any events that are necessary to complete the sequence, alerts are not created.
 
     To exclude values from a specific event in the sequence, update the rule’s EQL statement. For example:
@@ -38,9 +42,9 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
         2. In the Rules table, search for the rule that you want to add an exception to, then click its name to open the rule details.
         3. Scroll down the rule details page, select the **Rule exceptions** tab, then click **Add rule exception**.
 
-            :::{image} ../../../images/security-rule-exception-tab.png
+            :::{image} /solutions/images/security-rule-exception-tab.png
             :alt: Detail of rule exceptions tab
-            :class: screenshot
+            :screenshot:
             :::
 
     * To add an exception from the Alerts table:
@@ -93,7 +97,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
             ::::
 
-        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\\path\\*\\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
+        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\\path\\*\\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
 
             ::::{note}
             Some characters must be escaped with a backslash, such as `\\` for a literal backslash, `\*` for an asterisk, and `\?` for a question mark. Windows paths must be divided with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider.
@@ -113,9 +117,9 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
         In the following example, the exception was created from the Rules page and prevents the rule from generating alerts when the `svchost.exe` process runs on hostname `siem-kibana`.
 
-        :::{image} ../../../images/security-add-exception-ui.png
+        :::{image} /solutions/images/security-add-exception-ui.png
         :alt: add exception ui
-        :class: screenshot
+        :screenshot:
         :::
 
 4. Click **AND** or **OR** to create multiple conditions and define their relationships.
@@ -156,7 +160,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
 
 ::::{important}
-[Binary fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/binary.md) are not supported in detection rule exceptions.
+[Binary fields](elasticsearch://reference/elasticsearch/mapping-reference/binary.md) are not supported in detection rule exceptions.
 
 ::::
 
@@ -186,9 +190,9 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
     The **Add Endpoint Exception** flyout opens.
 
-    :::{image} ../../../images/security-endpoint-add-exp.png
+    :::{image} /solutions/images/security-endpoint-add-exp.png
     :alt: endpoint add exp
-    :class: screenshot
+    :screenshot:
     :::
 
 2. If required, modify the conditions.
@@ -199,7 +203,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
 
     ::::{note}
-    * Fields with conflicts are marked with a warning icon (![Field conflict warning icon](../../../images/security-field-warning-icon.png "")). Using these fields might cause unexpected exceptions behavior. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
+    * Fields with conflicts are marked with a warning icon (![Field conflict warning icon](/solutions/images/security-field-warning-icon.png "title =20x20")). Using these fields might cause unexpected exceptions behavior. For more information, refer to [Troubleshooting type conflicts and unmapped fields](../../../troubleshoot/security/detection-rules.md#rule-exceptions-field-conflicts).
     * The `is one of` and `is not one of` operators support identical, case-sensitive values. For example, if you want to match the values `Windows` and `windows`, add both values to the **Value** field.
 
     ::::
@@ -268,9 +272,9 @@ Only these objects require nested conditions to ensure the exception functions c
 
 Creates an exception that excludes all LFC-signed trusted processes:
 
-:::{image} ../../../images/security-nested-exp.png
+:::{image} /solutions/images/security-nested-exp.png
 :alt: nested exp
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -283,9 +287,9 @@ To view a rule’s exceptions:
 
     From the list, you can filter, edit, and delete exceptions. You can also toggle between **Active exceptions** and **Expired exceptions**.
 
-    :::{image} ../../../images/security-manage-default-rule-list.png
+    :::{image} /solutions/images/security-manage-default-rule-list.png
     :alt: A default rule list
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -299,7 +303,7 @@ Changes that you make to the exception also apply to other rules that use the ex
 ::::
 
 
-:::{image} ../../../images/security-exception-affects-multiple-rules.png
+:::{image} /solutions/images/security-exception-affects-multiple-rules.png
 :alt: Exception that affects multiple rules
-:class: screenshot
+:screenshot:
 :::

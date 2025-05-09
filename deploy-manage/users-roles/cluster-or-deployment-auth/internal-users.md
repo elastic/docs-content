@@ -20,5 +20,5 @@ The {{stack-security-features}} use eight *internal* users (`_system`, `_xpack`,
 
 These users are only used by requests that originate from within the cluster. For this reason, they cannot be used to authenticate against the API and there is no password to manage or reset.
 
-From time-to-time you may find a reference to one of these users inside your logs, including [audit logs](../../monitor/logging-configuration/enabling-audit-logs.md).
+From time-to-time you may find a reference to one of these users inside your logs, including [audit logs](../../security/logging-configuration/enabling-audit-logs.md).
 

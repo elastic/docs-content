@@ -8,7 +8,7 @@ mapped_pages:
 
 # Rule action variables [rule-action-variables]
 
-Alerting rules can use the [Mustache](https://mustache.github.io/mustache.5.md) template syntax (`{{variable name}}`) to pass values when the actions run.
+Alerting rules can use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to pass values when the actions run.
 
 ## Common variables [common-rule-action-variables]
 
@@ -20,9 +20,9 @@ The available variables differ by rule type, however there are some common varia
 
 Some cases exist where the variable values will be "escaped" when used in a context where escaping is needed. For example:
 
-* For the [email connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md), the `message` action configuration property escapes any characters that would be interpreted as Markdown.
-* For the [Slack connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md), the `message` action configuration property escapes any characters that would be interpreted as Slack Markdown.
-* For the [Webhook connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md), the `body` action configuration property escapes any characters that are invalid in JSON string values.
+* For the [email connector](kibana://reference/connectors-kibana/email-action-type.md), the `message` action configuration property escapes any characters that would be interpreted as Markdown.
+* For the [Slack connector](kibana://reference/connectors-kibana/slack-action-type.md), the `message` action configuration property escapes any characters that would be interpreted as Slack Markdown.
+* For the [Webhook connector](kibana://reference/connectors-kibana/webhook-action-type.md), the `body` action configuration property escapes any characters that are invalid in JSON string values.
 
 Mustache also supports "triple braces" of the form `{{{variable name}}}`, which indicates no escaping should be done at all. Use this form with caution, since it could end up rendering the variable content such that the resulting parameter is invalid or formatted incorrectly.
 
@@ -34,7 +34,7 @@ All rule types pass the following variables:
 :   The date the rule scheduled the action, in ISO format.
 
 `kibanaBaseUrl`
-:   The configured [`server.publicBaseUrl`](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl). If not configured, this will be empty.
+:   The configured [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl). If not configured, this will be empty.
 
 `rule.id`
 :   The rule identifier.
@@ -64,7 +64,8 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 `alerts.all.data`
 :   An array of objects for all alerts. The following object properties are examples; it is not a comprehensive list.
 
-    ::::{dropdown} Properties of the alerts.all.data objects
+    **Properties of the alerts.all.data objects**:
+
     `kibana.alert.end`
     :   Datetime stamp of alert end. [preview]
 
@@ -82,8 +83,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     `kibana.alert.status`
     :   Alert status (for example, active or OK). [preview]
-
-    ::::
 
 `alerts.new.count`
 :   The count of new alerts.
@@ -91,7 +90,8 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 `alerts.new.data`
 :   An array of objects for new alerts. The following object properties are examples; it is not a comprehensive list.
 
-    ::::{dropdown} Properties of the alerts.new.data objects
+    **Properties of the alerts.new.data objects**:
+
     `kibana.alert.end`
     :   Datetime stamp of alert end. [preview]
 
@@ -109,8 +109,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     `kibana.alert.status`
     :   Alert status (for example, active or OK). [preview]
-
-    ::::
 
 `alerts.ongoing.count`
 :   The count of ongoing alerts.
@@ -118,7 +116,8 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 `alerts.ongoing.data`
 :   An array of objects for ongoing alerts. The following object properties are examples; it is not a comprehensive list.
 
-    ::::{dropdown} Properties of the alerts.ongoing.data objects
+    **Properties of the alerts.ongoing.data objects**:
+
     `kibana.alert.end`
     :   Datetime stamp of alert end. [preview]
 
@@ -136,8 +135,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     `kibana.alert.status`
     :   Alert status (for example, active or OK). [preview]
-
-    ::::
 
 `alerts.recovered.count`
 :   The count of recovered alerts.
@@ -145,7 +142,8 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 `alerts.recovered.data`
 :   An array of objects for recovered alerts. The following object properties are examples; it is not a comprehensive list.
 
-    ::::{dropdown} Properties of the alerts.recovered.data objects
+    **Properties of the alerts.recovered.data objects**:
+
     `kibana.alert.end`
     :   Datetime stamp of alert end. [preview]
 
@@ -163,8 +161,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     `kibana.alert.status`
     :   Alert status (for example, active or OK). [preview]
-
-    ::::
 
 ### Action frequency: For each alert [alert-action-variables]
 
@@ -221,7 +217,7 @@ You can enhance the values contained in Mustache variables when the Mustache tem
 
 ### Rendering objects as JSON [_rendering_objects_as_json]
 
-Some connectors (such as the [Webhook connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md)) expect JSON values to be passed as parameters when the connector is invoked. The following capabilities are available:
+Some connectors (such as the [Webhook connector](kibana://reference/connectors-kibana/webhook-action-type.md)) expect JSON values to be passed as parameters when the connector is invoked. The following capabilities are available:
 
 * Array values referenced in braces have a predefined rendering by Mustache as string versions of the array elements, joined with a comma (`,`). To render array values as JSON, access the `asJSON` property of the array, instead of the array directly. For example, given a Mustache variable `context.values` that has the value `[1, 4, 9]` the Mustache template `{{context.values}}` will render as `1,4,9`, and the Mustache template `{{context.values.asJSON}}` will render as `[1,4,9]`.
 * The [ParseHjson lambda](#parse-hjson-lambda) Mustache lambda makes it easier to create JSON in your templates by using [Hjson](https://hjson.github.io/), a syntax extension to JSON, rather than strict JSON.
@@ -435,4 +431,4 @@ You can create the following Mustache template in the email action for your rule
 
 When rendered into Markdown and then HTML and viewed in an email client, it looks like this:
 
-![Email template rendered in an email client](../../../images/kibana-email-mustache-template-rendered.png "")
+![Email template rendered in an email client](/explore-analyze/images/kibana-email-mustache-template-rendered.png "")

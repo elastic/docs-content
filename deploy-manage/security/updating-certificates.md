@@ -1,9 +1,13 @@
 ---
+navigation_title: Update TLS certificates
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs.html
+applies_to:
+  deployment:
+    self: all  
 ---
 
-# Updating certificates [update-node-certs]
+# Update TLS certificates [update-node-certs]
 
 You might need to update your TLS certificates if your current node certificates expire soon, you’re adding new nodes to your secured cluster, or a security breach has broken the trust of your certificate chain. Use the [SSL certificate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) API to check when your certificates are expiring.
 
@@ -17,7 +21,7 @@ Regardless of the scenario, {{es}} monitors the SSL resources for updates by def
 
 Because {{es}} doesn’t reload the `elasticsearch.yml` configuration, you must use **the same file names** if you want to take advantage of automatic certificate and key reloading.
 
-If you need to update the `elasticsearch.yml` configuration or change passwords for keys or keystores that are stored in the [secure settings](secure-settings.md), then you must complete a [rolling restart](#use-rolling-restarts). {{es}} will not automatically reload changes for passwords stored in the secure settings.
+If you need to update the `elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration or change passwords for keys or keystores that are stored in the [secure settings](secure-settings.md), then you must complete a [rolling restart](#use-rolling-restarts). {{es}} will not automatically reload changes for passwords stored in the secure settings.
 
 ::::{admonition} Rolling restarts are preferred
 :name: use-rolling-restarts

@@ -1,24 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cspm-get-started-gcp.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-get-started-gcp.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Get started with CSPM for GCP
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cspm-get-started-gcp.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cspm-get-started-gcp.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cspm-gcp-agent-based$$$
-
-$$$cspm-gcp-agentless$$$
-
 
 ## Overview [cspm-overview-gcp]
 
@@ -42,20 +32,18 @@ You can set up CSPM for GCP either by enrolling a single project, or by enrollin
 
 ## Agentless deployment [cspm-gcp-agentless]
 
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
-
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
-4. Select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Account** to onboard an individual account.
+4. Select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-account`.
-6. Click **Advanced options**, then select **Agentless (BETA)**.
+6. Under **Deployment Options**, select **Agentless**.
 7. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
+::::{admonition} Important
+Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
+::::
 
 ## Agent-based deployment [cspm-gcp-agent-based]
 
@@ -65,7 +53,7 @@ This functionality is in beta and is subject to change. The design and code is l
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
-4. Under **Configure integration**, select **GCP**, then either **GCP Organization** (recommended) or **Single Account**.
+4. Under **Configure integration**, select **GCP**, then either **GCP Organization** (recommended) or **Single Project**.
 5. Give your integration a name that matches the purpose or team of the GCP account you want to monitor, for example, `dev-gcp-project`.
 
 
@@ -92,9 +80,9 @@ For most users, the simplest option is to use a Google Cloud Shell script to aut
 4. Copy the command that appears, then click **Launch Google Cloud Shell**. It opens in a new window.
 5. Check the box to trust Elastic’s `cloudbeat` repo, then click **Confirm**
 
-    :::{image} ../../../images/security-cspm-cloudshell-trust.png
-    :alt: The cloud shell confirmation popup
-    :::
+:::{image} /solutions/images/security-cspm-cloudshell-trust.png
+:alt: The cloud shell confirmation popup
+:::
 
 6. In Google Cloud Shell, execute the command you copied. Once it finishes, return to {{kib}} and wait for the confirmation of data received from your new integration. Then you can click **View Assets** to see your data.
 
@@ -135,6 +123,10 @@ gcloud organizations add-iam-policy-binding <ORG_ID> \
     --member=serviceAccount:<SA_NAME>@<PROJECT_ID>.iam.gserviceaccount.com \
     --role=roles/browser
 ```
+
+::::{important}
+If running this command results in a warning related to conditions, try running it again with `--condition=None`.
+::::
 
 ::::{note}
 The `Cloud Asset Viewer` role grants read access to cloud asset metadata. The `Browser` role grants read access to the project hierarchy.
@@ -188,6 +180,10 @@ gcloud projects add-iam-policy-binding <PROJECT_ID> \
     --member=serviceAccount:<SA_NAME>@<PROJECT_ID>.iam.gserviceaccount.com \
     --role=roles/browser
 ```
+
+::::{important}
+If running this command results in a warning related to conditions, try running it again with `--condition=None`.
+::::
 
 ::::{note}
 The `Cloud Asset Viewer` role grants read access to cloud asset metadata. The `Browser` role grants read access to the project hierarchy.

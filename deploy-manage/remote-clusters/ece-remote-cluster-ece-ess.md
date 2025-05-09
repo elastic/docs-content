@@ -78,7 +78,7 @@ If you later need to update the remote connection with different permissions, yo
 ::::::{tab-item} TLS certificate (deprecated)
 ### Configuring trust with clusters in {{ecloud}} [ece-trust-ec]
 
-A deployment can be configured to trust all or specific deployments from an organization in [{{ecloud}}](https://www.elastic.co/guide/en/cloud/current):
+A deployment can be configured to trust all or specific deployments from an organization in [{{ecloud}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md):
 
 1. From the **Security** menu, select **Remote Connections > Add trusted environment** and select **{{ecloud}} Organization**.
 2. Enter the organization ID (which can be found near the organization name).
@@ -152,9 +152,9 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
     * **Server name**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.
 
-      :::{image} ../../images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
+      :::{image} /deploy-manage/images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
       :alt: Remote Cluster Parameters in Deployment
-      :class: screenshot
+      :screenshot:
       :::
 
       ::::{note}
@@ -248,4 +248,4 @@ The response includes just the remote clusters from the same ECE environment. In
 
 ## Configure roles and users [ece_configure_roles_and_users_3]
 
-To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
+To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).

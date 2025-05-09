@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/shared-exception-lists.html
   - https://www.elastic.co/guide/en/serverless/current/security-shared-exception-lists.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Create and manage shared exception lists [shared-exception-lists]
@@ -15,9 +19,9 @@ Shared exception lists allow you to group exceptions together and then apply the
 % ::::
 
 
-:::{image} ../../../images/security-rule-exceptions-page.png
+:::{image} /solutions/images/security-rule-exceptions-page.png
 :alt: Shared Exception Lists page
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -60,7 +64,7 @@ Add exception items:
 
             ::::
 
-        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\path\*\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
+        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\path\*\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
 
             ::::{important}
             Using wildcards can impact performance. To create a more efficient exception using wildcards, use multiple conditions and make them as specific as possible. For example, adding conditions using `process.name` or `file.name` can help limit the scope of wildcard matching.
@@ -101,13 +105,13 @@ Apply shared exception lists to rules:
 4. Click **Save**.
 5. (Optional) To verify that the shared exception list was added to the rules you selected:
 
-    1. Open a rule’s details page (**Rules → Detection rules (SIEM) → *Rule name***).
+    1. Open a rule’s details page (**Rules → Detection rules (SIEM) → Rule name**).
     2. Scroll down the page, and then select the **Rule exceptions** tab.
     3. Navigate to the exception items that are included in the shared exception list. Click the **Affects shared list** link to view the associated shared exception lists.
 
-        :::{image} ../../../images/security-associated-shared-exception-list.png
+        :::{image} /solutions/images/security-associated-shared-exception-list.png
         :alt: Associated shared exceptions
-        :class: screenshot
+        :screenshot:
         :::
 
 
@@ -124,9 +128,9 @@ The Shared Exception Lists page displays each shared exception list on an indivi
 
 To view the details of an exception item within a shared exception list, expand a row.
 
-:::{image} ../../../images/security-view-filter-shared-exception.png
+:::{image} /solutions/images/security-view-filter-shared-exception.png
 :alt: Associated shared exceptions
-:class: screenshot
+:screenshot:
 :::
 
 To filter exception lists by a specific value, enter a value in the search bar. You can search the following attributes:
@@ -156,7 +160,7 @@ To export or delete an exception list, select the required action button on the 
 * If an exception list is linked to any rules, you’ll get a warning asking you to confirm the deletion.
 * If an exception list contains expired exceptions, you can choose whether to include them in the exported file.
 
-:::{image} ../../../images/security-actions-exception-list.png
+:::{image} /solutions/images/security-actions-exception-list.png
 :alt: Detail of Exception lists table with export and delete buttons highlighted
-:class: screenshot
+:screenshot:
 :::

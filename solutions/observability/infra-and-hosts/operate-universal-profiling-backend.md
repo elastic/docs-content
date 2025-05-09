@@ -2,6 +2,8 @@
 navigation_title: "Operate the backend"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-ops.html
+applies_to:
+  stack:
 ---
 
 
@@ -74,7 +76,7 @@ Avoid using debug logs in production, as they can be very verbose and impact bac
 
 Logs are formatted as "key=value" pairs, and {{es}} and {{kib}} can automatically parse them into fields.
 
-A log collector, such as Filebeat, can collect and send logs to {{es}} for indexing and analysis. Depending on how it’s installed, a Filebeat input of type `journald` (for OS packages), `log` (for binaries), or `container` can be used to process the logs. Refer to the [filebeat documentation](asciidocalypse://docs/beats/docs/reference/filebeat/configuring-howto-filebeat.md) for more information.
+A log collector, such as Filebeat, can collect and send logs to {{es}} for indexing and analysis. Depending on how it’s installed, a Filebeat input of type `journald` (for OS packages), `log` (for binaries), or `container` can be used to process the logs. Refer to the [filebeat documentation](beats://reference/filebeat/configuring-howto-filebeat.md) for more information.
 
 
 ### Metrics [profiling-self-managed-ops-monitoring-metrics]
@@ -119,7 +121,7 @@ The following sections show the most relevant metrics exposed by the backend bin
 * `collection_agent.indexing.bulk_indexer_failure_count`: number of times the bulk indexer failed to ingest data in Elasticsearch.
 * `collection_agent.indexing.document_count.*`: counter that represents the number of documents ingested in Elasticsearch for each index; can be used to calculate the rate of ingestion for each index.
 * `grpc_server_handling_seconds`: histogram of the time spent by the gRPC server to handle requests.
-* `grpc_server_msg_received_total: count of messages received by the gRPC server; can be used to calculate the rate of ingestion for each RPC.
+* `grpc_server_msg_received_total`: count of messages received by the gRPC server; can be used to calculate the rate of ingestion for each RPC.
 * `grpc_server_handled_total`: count of messages processed by the gRPC server; can be used to calculate the availability of the gRPC server for each RPC.
 
 **Symbolizer metrics**
@@ -295,6 +297,39 @@ ingress:
 ```
 
 For symbolizer, the connection routing should be configured to use the HTTP protocol. There is usually no need to customize annotations for this type of service, but the chart provides similar configuration options.
+
+### Input TLS configuration [_input_tls_configuration]
+
+Terminating the TLS connection is not currently supported at the application level, even if the `pf-elastic-collector` and `pf-elastic-symbolizer` configurations include an `ssl` section.
+Instead, you should use an ingress-controller to terminate TLS connections and forward unencrypted traffic to the backend services.
+
+To enable TLS termination, configure the `tls` section in the `ingress` resource, as shown in the previous section.
+Both the collector and symbolizer Helm charts support an `ingress.tls` section, which lets you specify the TLS secret name and hosts that the certificate should be used for.
+
+We recommend using a certificate manager like [cert-manager](https://cert-manager.io/) to automate certificate provisioning and renewal for ingress resources.
+
+Refer to the [Kubernetes Ingress documentation](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#tlshttps) for an example of how to configure TLS termination with NGINX ingress controller.
+
+In general, the steps are:
+
+1. Store your TLS certificate in a Kubernetes secret in the same namespace as the collector and/or symbolizer.
+
+   ```bash
+   kubectl -n universal-profiling create secret tls my-tls-secret --cert=path/to/cert.pem --key=path/to/key.pem
+   ```
+
+2. Configure the `ingress.tls` section in the Helm values file used to run the backend applications, for example:
+
+    ```yaml
+    ingress:
+      <other configs...>
+      tls:
+        - secretName: my-tls-secret
+          hosts:
+            - my-host.com
+    ```
+
+3. Deploy the charts using `helm upgrade` and passing in the updated values files.
 
 
 ### Output TLS configuration [_output_tls_configuration]

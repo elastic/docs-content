@@ -17,9 +17,9 @@ You can also use it to estimate the probability of a time series value occurring
 
 Each forecast has a unique ID, which you can use to distinguish between forecasts that you created at different times. You can create a forecast by using the [forecast {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-forecast) or by using {{kib}}. For example:
 
-:::{image} ../../../images/machine-learning-overview-forecast.jpg
+:::{image} /explore-analyze/images/machine-learning-overview-forecast.jpg
 :alt: Example screenshot from the Machine Learning Single Metric Viewer in Kibana
-:class: screenshot
+:screenshot:
 :::
 
 The yellow line in the chart represents the predicted data values. The shaded yellow area represents the bounds for the predicted values, which also gives an indication of the confidence of the predictions.

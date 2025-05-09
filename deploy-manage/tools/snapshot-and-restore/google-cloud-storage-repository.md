@@ -1,7 +1,9 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html
 applies_to:
   deployment:
-    self: 
+    self:
 ---
 
 # Google Cloud Storage repository [repository-gcs]
@@ -32,7 +34,7 @@ For more detailed instructions, see the [Google Cloud documentation](https://clo
 
 ### Service authentication [repository-gcs-service-authentication]
 
-The repository must authenticate the requests it makes to the Google Cloud Storage service. It is common for Google client libraries to employ a strategy named [application default credentials](https://cloud.google.com/docs/authentication/production#providing_credentials_to_your_application). However, that strategy is only **partially supported** by Elasticsearch. The repository operates under the Elasticsearch process, which runs with the security manager enabled. The security manager obstructs the "automatic" credential discovery when the environment variable `GOOGLE_APPLICATION_CREDENTIALS` is used to point to a local file on disk. It can, however, retrieve the service account that is attached to the resource that is running Elasticsearch, or fall back to the default service account that Compute Engine, Kubernetes Engine or App Engine provide. Alternatively, you must configure [service account](#repository-gcs-using-service-account) credentials if you are using an environment that does not support automatic credential discovery.
+The repository must authenticate the requests it makes to the Google Cloud Storage service. It is common for Google client libraries to employ a strategy named [application default credentials](https://cloud.google.com/docs/authentication/production#providing_credentials_to_your_application). However, that strategy is only **partially supported** by {{es}}. The repository operates under the {{es}} process, which runs with the security manager enabled. The security manager obstructs the "automatic" credential discovery when the environment variable `GOOGLE_APPLICATION_CREDENTIALS` is used to point to a local file on disk. It can, however, retrieve the service account that is attached to the resource that is running {{es}}, or fall back to the default service account that Compute Engine, Kubernetes Engine or App Engine provide. Alternatively, you must configure [service account](#repository-gcs-using-service-account) credentials if you are using an environment that does not support automatic credential discovery.
 
 
 ### Using a service account [repository-gcs-using-service-account]
@@ -68,7 +70,7 @@ A JSON service account file looks like this:
 }
 ```
 
-To provide this file to the repository, it must be stored in the [Elasticsearch keystore](../../security/secure-settings.md). You must add a `file` setting with the name `gcs.client.NAME.credentials_file` using the `add-file` subcommand. `NAME` is the name of the client configuration for the repository. The implicit client name is `default`, but a different client name can be specified in the repository settings with the `client` key.
+To provide this file to the repository, it must be stored in the [{{es}} keystore](../../security/secure-settings.md). You must add a `file` setting with the name `gcs.client.NAME.credentials_file` using the `add-file` subcommand. `NAME` is the name of the client configuration for the repository. The implicit client name is `default`, but a different client name can be specified in the repository settings with the `client` key.
 
 ::::{note}
 Passing the file path via the GOOGLE_APPLICATION_CREDENTIALS environment variable is **not** supported.
@@ -101,7 +103,7 @@ Snapshot or restore jobs that are in progress are not preempted by a **reload** 
 
 ## Client settings [repository-gcs-client]
 
-The client used to connect to Google Cloud Storage has a number of settings available. Client setting names are of the form `gcs.client.CLIENT_NAME.SETTING_NAME` and are specified inside `elasticsearch.yml`. The default client name looked up by a `gcs` repository is called `default`, but can be customized with the repository setting `client`.
+The client used to connect to Google Cloud Storage has a number of settings available. Client setting names are of the form `gcs.client.CLIENT_NAME.SETTING_NAME` and are specified inside [`elasticsearch.yml`](/deploy-manage/stack-settings.md). The default client name looked up by a `gcs` repository is called `default`, but can be customized with the repository setting `client`.
 
 For example:
 
@@ -116,7 +118,7 @@ PUT _snapshot/my_gcs_repository
 }
 ```
 
-Some settings are sensitive and must be stored in the [Elasticsearch keystore](../../security/secure-settings.md). This is the case for the service account file:
+Some settings are sensitive and must be stored in the [{{es}} keystore](../../security/secure-settings.md). This is the case for the service account file:
 
 ```sh
 bin/elasticsearch-keystore add-file gcs.client.default.credentials_file /path/service-account.json
@@ -192,10 +194,10 @@ The following settings are supported:
 :   When set to `true` metadata files are stored in compressed format. This setting doesn’t affect index files that are already compressed by default. Defaults to `true`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `readonly`
 :   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
@@ -211,7 +213,11 @@ The following settings are supported:
 
 
 `application_name`
-:   [6.3.0] Name used by the client when it uses the Google Cloud Storage service.
+:   :::{admonition} Deprecated in 6.3.0
+    This setting was deprecated in 6.3.0.
+    :::
+
+    Name used by the client when it uses the Google Cloud Storage service.
 
 ### Recommended bucket permission [repository-gcs-bucket-permission]
 

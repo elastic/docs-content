@@ -1,17 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/dashboards-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-dashboards-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Dashboards
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/dashboards-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-dashboards-overview.md
 
 The {{security-app}}'s default dashboards provide useful visualizations of your security environment. To view them in {{elastic-sec}}, select **Dashboards** from the navigation menu. From the Dashboards page, you can access the default dashboards, as well as create and access custom dashboards.
 
@@ -23,7 +20,7 @@ To create a new custom dashboard, click **Create Dashboard**. You can control wh
 
 To create a new tag or edit existing tags, open the **Tags** menu and click **Manage tags**.
 
-:::{image} ../../images/security-dashboards-landing-page.png
+:::{image} /solutions/images/security-dashboards-landing-page.png
 :alt: The dashboards landing page
 :::
 

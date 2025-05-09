@@ -1,15 +1,17 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-parse.html
   - https://www.elastic.co/guide/en/serverless/current/observability-parse-log-data.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Parse and route logs [observability-parse-log-data]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
-**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines that parse and route logs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines that parse and route logs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -20,8 +22,8 @@ After parsing, you can use the structured fields to further organize your logs b
 
 Refer to the following sections for more on parsing and organizing your log data:
 
-* [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields): Extract structured fields like timestamps, log levels, or IP addresses to make querying and filtering your data easier.
-* [Reroute log data to specific data streams](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-reroute-log-data-to-specific-data-streams): Route data from the generic data stream to a target data stream for more granular control over data retention, permissions, and processing.
+* [Extract structured fields](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields): Extract structured fields like timestamps, log levels, or IP addresses to make querying and filtering your data easier.
+* [Reroute log data to specific data streams](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-reroute-log-data-to-specific-data-streams): Route data from the generic data stream to a target data stream for more granular control over data retention, permissions, and processing.
 
 
 ## Extract structured fields [observability-parse-log-data-extract-structured-fields]
@@ -97,7 +99,7 @@ While you can search for phrases in the `message` field, you can’t use this fi
 * **message** (`Disk usage exceeds 90%.`): You can search for phrases or words in the message field.
 
 ::::{note}
-These fields are part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md). The ECS defines a common set of fields that you can use across Elastic when storing data, including log and metric data.
+These fields are part of the [Elastic Common Schema (ECS)](ecs://reference/index.md). The ECS defines a common set of fields that you can use across Elastic when storing data, including log and metric data.
 
 ::::
 
@@ -122,17 +124,17 @@ When you added the log to Elastic in the previous section, the `@timestamp` fiel
 
 When looking into issues, you want to filter for logs by when the issue occurred not when the log was added to Elastic. To do this, extract the timestamp from the unstructured `message` field to the structured `@timestamp` field by completing the following:
 
-1. [Use an ingest pipeline to extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field)
-2. [Test the pipeline with the simulate pipeline API](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api)
-3. [Configure a data stream with an index template](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template)
-4. [Create a data stream](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-create-a-data-stream)
+1. [Use an ingest pipeline to extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field)
+2. [Test the pipeline with the simulate pipeline API](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api)
+3. [Configure a data stream with an index template](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template)
+4. [Create a data stream](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-create-a-data-stream)
 
 
 #### Use an ingest pipeline to extract the `@timestamp` field [observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field]
 
-Ingest pipelines consist of a series of processors that perform common transformations on incoming documents before they are indexed. To extract the `@timestamp` field from the example log, use an ingest pipeline with a [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md). The dissect processor extracts structured fields from unstructured log messages based on a pattern you set.
+Ingest pipelines consist of a series of processors that perform common transformations on incoming documents before they are indexed. To extract the `@timestamp` field from the example log, use an ingest pipeline with a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md). The dissect processor extracts structured fields from unstructured log messages based on a pattern you set.
 
-Elastic can parse string timestamps that are in `yyyy-MM-dd'T'HH:mm:ss.SSSZ` and `yyyy-MM-dd` formats into date fields. Since the log example’s timestamp is in one of these formats, you don’t need additional processors. More complex or nonstandard timestamps require a [date processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/date-processor.md) to parse the timestamp into a date field.
+Elastic can parse string timestamps that are in `yyyy-MM-dd'T'HH:mm:ss.SSSZ` and `yyyy-MM-dd` formats into date fields. Since the log example’s timestamp is in one of these formats, you don’t need additional processors. More complex or nonstandard timestamps require a [date processor](elasticsearch://reference/enrich-processor/date-processor.md) to parse the timestamp into a date field.
 
 Use the following command to extract the timestamp from the `message` field into the `@timestamp` field:
 
@@ -153,7 +155,7 @@ PUT _ingest/pipeline/logs-example-default
 
 The previous command sets the following values for your ingest pipeline:
 
-* `_ingest/pipeline/logs-example-default`: The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+* `_ingest/pipeline/logs-example-default`: The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 * `field`: The field you’re extracting data from, `message` in this case.
 * `pattern`: The pattern of the elements in your log data. The `%{@timestamp} %{{message}}` pattern extracts the timestamp, `2023-08-08T13:45:12.123Z`, to the `@timestamp` field, while the rest of the message, `WARN 192.168.1.101 Disk usage exceeds 90%.`, stays in the `message` field. The dissect processor looks for the space as a separator defined by the pattern.
 
@@ -240,20 +242,20 @@ The previous command sets the following values for your index template:
 
 The example index template above sets the following component templates:
 
-* `logs@mappings`: general mappings for log data streams that include disabling automatic date detection from `string` fields and specifying mappings for [`data_stream` ECS fields](asciidocalypse://docs/ecs/docs/reference/ecs-data_stream.md).
+* `logs@mappings`: general mappings for log data streams that include disabling automatic date detection from `string` fields and specifying mappings for [`data_stream` ECS fields](ecs://reference/ecs-data_stream.md).
 * `logs@settings`: general settings for log data streams including the following:
 
     * The default lifecycle policy that rolls over when the primary shard reaches 50 GB or after 30 days.
     * The default pipeline uses the ingest timestamp if there is no specified `@timestamp` and places a hook for the `logs@custom` pipeline. If a `logs@custom` pipeline is installed, it’s applied to logs ingested into this data stream.
-    * Sets the [`ignore_malformed`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-malformed.md) flag to `true`. When ingesting a large batch of log data, a single malformed field like an IP address can cause the entire batch to fail. When set to true, malformed fields with a mapping type that supports this flag are still processed.
+    * Sets the [`ignore_malformed`](elasticsearch://reference/elasticsearch/mapping-reference/ignore-malformed.md) flag to `true`. When ingesting a large batch of log data, a single malformed field like an IP address can cause the entire batch to fail. When set to true, malformed fields with a mapping type that supports this flag are still processed.
     * `logs@custom`: a predefined component template that is not installed by default. Use this name to install a custom component template to override or extend any of the default mappings or settings.
-    * `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md).
+    * `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](ecs://reference/index.md).
 
 
 
 #### Create a data stream [observability-parse-log-data-create-a-data-stream]
 
-Create your data stream using the [data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
+Create your data stream using the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
 
 ```console
 POST logs-example-default/_doc
@@ -304,8 +306,8 @@ You can now use the `@timestamp` field to sort your logs by the date and time th
 Check the following common issues and solutions with timestamps:
 
 * **Timestamp failure:** If your data has inconsistent date formats, set `ignore_failure` to `true` for your date processor. This processes logs with correctly formatted dates and ignores those with issues.
-* **Incorrect timezone:** Set your timezone using the `timezone` option on the [date processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/date-processor.md).
-* **Incorrect timestamp format:** Your timestamp can be a Java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. For more information on timestamp formats, refer to the [mapping date format](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md).
+* **Incorrect timezone:** Set your timezone using the `timezone` option on the [date processor](elasticsearch://reference/enrich-processor/date-processor.md).
+* **Incorrect timestamp format:** Your timestamp can be a Java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. For more information on timestamp formats, refer to the [mapping date format](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md).
 
 
 ### Extract the `log.level` field [observability-parse-log-data-extract-the-loglevel-field]
@@ -318,14 +320,14 @@ Extracting the `log.level` field lets you filter by severity and focus on critic
 
 To extract and use the `log.level` field:
 
-1. [Add the `log.level` field to the dissect processor pattern in your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-loglevel-to-your-ingest-pipeline)
-2. [Test the pipeline with the simulate API.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
-3. [Query your logs based on the `log.level` field.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-loglevel)
+1. [Add the `log.level` field to the dissect processor pattern in your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-loglevel-to-your-ingest-pipeline)
+2. [Test the pipeline with the simulate API.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
+3. [Query your logs based on the `log.level` field.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-loglevel)
 
 
 #### Add `log.level` to your ingest pipeline [observability-parse-log-data-add-loglevel-to-your-ingest-pipeline]
 
-Add the `%{log.level}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section with this command:
+Add the `%{log.level}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section with this command:
 
 ```console
 PUT _ingest/pipeline/logs-example-default
@@ -348,7 +350,7 @@ Now your pipeline will extract these fields:
 * The `log.level` field: `WARN`
 * The `message` field: `192.168.1.101 Disk usage exceeds 90%.`
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 #### Test the pipeline with the simulate API [observability-parse-log-data-test-the-pipeline-with-the-simulate-api]
@@ -476,7 +478,7 @@ The results should show only the high-severity logs:
 
 Extracting the `host.ip` field lets you filter logs by host IP addresses allowing you to focus on specific hosts that you’re having issues with or find disparities between hosts.
 
-The `host.ip` field is part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
+The `host.ip` field is part of the [Elastic Common Schema (ECS)](ecs://reference/index.md). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](elasticsearch://reference/elasticsearch/mapping-reference/ip.md). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
 
 This section shows you how to extract the `host.ip` field from the following example logs and query based on the extracted fields:
 
@@ -489,14 +491,14 @@ This section shows you how to extract the `host.ip` field from the following exa
 
 To extract and use the `host.ip` field:
 
-1. [Add the `host.ip` field to your dissect processor in your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-hostip-to-your-ingest-pipeline)
-2. [Test the pipeline with the simulate API.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
-3. [Query your logs based on the `host.ip` field.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-hostip)
+1. [Add the `host.ip` field to your dissect processor in your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-hostip-to-your-ingest-pipeline)
+2. [Test the pipeline with the simulate API.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
+3. [Query your logs based on the `host.ip` field.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-hostip)
 
 
 #### Add `host.ip` to your ingest pipeline [observability-parse-log-data-add-hostip-to-your-ingest-pipeline]
 
-Add the `%{host.ip}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section:
+Add the `%{host.ip}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section:
 
 ```console
 PUT _ingest/pipeline/logs-example-default
@@ -520,7 +522,7 @@ Your pipeline will extract these fields:
 * The `host.ip` field: `192.168.1.101`
 * The `message` field: `Disk usage exceeds 90%.`
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 #### Test the pipeline with the simulate API [observability-parse-log-data-test-the-pipeline-with-the-simulate-api-1]
@@ -676,7 +678,7 @@ Because all of the example logs are in this range, you’ll get the following re
 
 ##### Range queries [observability-parse-log-data-range-queries]
 
-Use [range queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) to query logs in a specific range.
+Use [range queries](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) to query logs in a specific range.
 
 The following command searches for IP addresses greater than or equal to `192.168.1.100` and less than or equal to `192.168.1.102`.
 
@@ -744,7 +746,7 @@ You’ll get the following results only showing logs in the range you’ve set:
 
 ## Reroute log data to specific data streams [observability-parse-log-data-reroute-log-data-to-specific-data-streams]
 
-By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/reroute-processor.md) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
+By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](elasticsearch://reference/enrich-processor/reroute-processor.md) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
 
 This section shows you how to use a reroute processor to send the high-severity logs (`WARN` or `ERROR`) from the following example logs to a specific data stream and keep the regular logs (`DEBUG` and `INFO`) in the default data stream:
 
@@ -756,16 +758,16 @@ This section shows you how to use a reroute processor to send the high-severity 
 ```
 
 ::::{note}
-When routing data to different data streams, we recommend picking a field with a limited number of distinct values to prevent an excessive increase in the number of data streams. For more details, refer to the [Size your shards](../../../deploy-manage/production-guidance/optimize-performance/size-shards.md) documentation.
+When routing data to different data streams, we recommend picking a field with a limited number of distinct values to prevent an excessive increase in the number of data streams. For more details, refer to the [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) documentation.
 
 ::::
 
 
 To use a reroute processor:
 
-1. [Add a reroute processor to your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline)
-2. [Add the example logs to your data stream.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-logs-to-a-data-stream)
-3. [Query your logs and verify the high-severity logs were routed to the new data stream.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-verify-the-reroute-processor-worked)
+1. [Add a reroute processor to your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline)
+2. [Add the example logs to your data stream.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-logs-to-a-data-stream)
+3. [Query your logs and verify the high-severity logs were routed to the new data stream.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-verify-the-reroute-processor-worked)
 
 
 ### Add a reroute processor to the ingest pipeline [observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline]
@@ -800,7 +802,7 @@ The previous command sets the following values for your reroute processor:
 * `if`: Conditionally runs the processor. In the example, `"ctx.log?.level == 'WARN' || ctx.log?.level == 'ERROR'",` means the processor runs when the `log.level` field is `WARN` or `ERROR`.
 * `dataset`: the data stream dataset to route your document to if the previous condition is `true`. In the example, logs with a `log.level` of `WARN` or `ERROR` are routed to the `logs-critical-default` data stream.
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 ### Add logs to a data stream [observability-parse-log-data-add-logs-to-a-data-stream]

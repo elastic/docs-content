@@ -2,6 +2,8 @@
 navigation_title: "Kinesis data streams"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-kinesis.html
+applies_to:
+  stack:
 ---
 
 
@@ -19,7 +21,7 @@ By default, Kinesis Data Streams sends stream-level (basic level) metrics to Clo
 aws kinesis enable-enhanced-monitoring --stream-name samplestream --shard-level-metrics ALL
 ```
 
-For more details, refer to the [EnableEnhancedMonitoring](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.md) documentation.
+For more details, refer to the [EnableEnhancedMonitoring](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_EnableEnhancedMonitoring.html) documentation.
 
 
 ## Get started [get-started-kinesis]
@@ -28,8 +30,7 @@ To collect Kinesis data stream metrics from Amazon CloudWatch, you typically nee
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
-:::::{dropdown} **Quick guide: Add data**
-::::{note}
+:::::{dropdown} Quick guide: Add data
 1. In the Observability UI, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for and select the **Amazon Kinesis Data Stream** integration.
 3. Read the overview to make sure you understand integration requirements and other considerations.
@@ -53,7 +54,7 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 
 9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](/reference/fleet/index.md).
 
 ::::
 
@@ -61,16 +62,16 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 :::::
 
 
-{{agent}} is currently the preferred way to add Kinesis data stream metrics. For other ways, refer to [Adding data to {{es}}](../../../manage-data/ingest.md).
+{{agent}} is currently the preferred way to add Kinesis data stream metrics. For other ways, refer to [Adding data to {{es}}](/manage-data/ingest.md).
 
 
 ## Dashboards [dashboard-kinesis]
 
 {{kib}} provides a full data analytics platform with out-of-the-box dashboards that you can clone and enhance to satisfy your custom visualization use cases. For example, to see an overview of your Kinesis data streams in {{kib}}, go to the **Dashboard** app and navigate to the **[Metrics AWS] Kinesis Overview** dashboard.
 
-:::{image} ../../../images/observability-kinesis-dashboard.png
+:::{image} /solutions/images/observability-kinesis-dashboard.png
 :alt: Screenshot showing the Kinesis overview dashboard
-:class: screenshot
+:screenshot:
 :::
 
 

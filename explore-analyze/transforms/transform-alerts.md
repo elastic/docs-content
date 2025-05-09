@@ -17,9 +17,9 @@ You can create {{transform}} rules under **{{stack-manage-app}} > {{rules-ui}}**
 1. Click **Create rule** and select the {{transform}} health rule type.
 2. Give a name to the rule and optionally provide tags.
 3. Select the {{transform}} or {{transforms}} to include. You can also use a special character (`*`) to apply the rule to all your {{transforms}}. {{transforms-cap}} created after the rule are automatically included.
-   :::{image} ../../images/elasticsearch-reference-transform-check-config.png
+   :::{image} /explore-analyze/images/elasticsearch-reference-transform-check-config.png
    :alt: Selecting health check
-   :class: screenshot
+   :screenshot:
    :::
 
 4. The following health checks are available and enabled by default:
@@ -47,9 +47,9 @@ For each action, you must choose a connector, which provides connection informat
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send notifications that summarize the new, ongoing, and recovered alerts:
 
-:::{image} ../../images/elasticsearch-reference-transform-alert-summary-actions.png
+:::{image} /explore-analyze/images/elasticsearch-reference-transform-alert-summary-actions.png
 :alt: Setting action frequency to summary of alerts
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}
@@ -62,9 +62,9 @@ You can further refine the conditions under which actions run by specifying that
 
 There is a set of variables that you can use to customize the notification messages for each action. Click the icon above the message text box to get the list of variables or refer to [Action variables](#transform-action-variables).
 
-:::{image} ../../images/elasticsearch-reference-transform-alert-actions.png
+:::{image} /explore-analyze/images/elasticsearch-reference-transform-alert-actions.png
 :alt: Selecting action variables
-:class: screenshot
+:screenshot:
 :::
 
 After you save the configurations, the rule appears in the **{{rules-ui}}** list where you can check its status and see the overview of its configuration information.

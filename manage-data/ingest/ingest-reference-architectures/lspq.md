@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic Agent to Logstash to Elasticsearch: Logstash Persistent Queue (PQ) for buffering [lspq]
 
-:::{image} ../../../images/ingest-ea-lspq-es.png
+:::{image} /manage-data/images/ingest-ea-lspq-es.png
 :alt: Image showing {{agent}} collecting data
 :::
 
@@ -20,19 +20,19 @@ Use when
 
 Info on configuring {{agent}}:
 
-* [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Fleet and Elastic Agent Guide](/reference/fleet/index.md)
+* [Configuring outputs for {{agent}}](/reference/fleet/elastic-agent-output-configuration.md)
 
 For info on {{ls}} plugins:
 
-* [{{agent}} input](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-elastic_agent.md)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
+* [{{agent}} input](logstash-docs-md://lsr/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](logstash-docs-md://lsr/plugins-outputs-elasticsearch.md)
 
-For info on using {{ls}} for buffering and data resiliency, check out this section in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
+For info on using {{ls}} for buffering and data resiliency, check out this section in the [Logstash Reference](logstash://reference/index.md):
 
-* [{{ls}} Persistent Queues (PQ)](asciidocalypse://docs/logstash/docs/reference/persistent-queues.md)
+* [{{ls}} Persistent Queues (PQ)](logstash://reference/persistent-queues.md)
 
 Info on {{es}}:
 
-* [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
+* [{{es}} Guide](elasticsearch://reference/index.md)
 

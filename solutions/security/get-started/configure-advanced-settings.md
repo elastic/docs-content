@@ -1,44 +1,21 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/advanced-settings.html
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
-# Configure advanced settings
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/advanced-settings.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-advanced-settings.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$update-sec-indices$$$
-
-$$$exclude-cold-frozen-data-rule-executions$$$
-
-$$$exclude-cold-frozen-tiers$$$
-
-$$$ip-reputation-links$$$
-
-$$$manage-alert-tags$$$
-
-$$$max-notes-alerts-events$$$
-
-$$$show-related-integrations$$$
-
-$$$update-threat-intel-indices$$$
-
-$$$visualizations-in-flyout$$$
+# Configure advanced settings [security-advanced-settings]
 
 The advanced settings determine:
 
 * Which indices {{elastic-sec}} uses to retrieve data
 * {{ml-cap}} anomaly score display threshold
 * The navigation menu style used throughout the {{security-app}}
-* Whether the news feed is displayed on the [*Overview dashboard*](/solutions/security/dashboards/overview-dashboard.md)
+* Whether the news feed is displayed on the [Overview dashboard](/solutions/security/dashboards/overview-dashboard.md)
 * The default time interval used to filter {{elastic-sec}} pages
 * The default {{elastic-sec}} pages refresh time
 * Which IP reputation links appear on [IP detail](/solutions/security/explore/network-page.md) pages
@@ -46,7 +23,12 @@ The advanced settings determine:
 * Whether related integrations are displayed on the Rules page tables
 * The options provided in the alert tag menu
 
-To change these settings, you need `All` privileges for the **Advanced Settings** [{{kib}} feature](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+::::{admonition} Requirements
+Your role must have the appropriate privileges to change advanced settings:
+- In {{stack}}, you must have `All` privileges for the **Advanced Settings** [{{kib}} feature](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- In {{serverless-short}}, you need either the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with `All` privileges.
+
+::::
 
 ::::{warning}
 Modifying advanced settings can affect Kibana performance and cause problems that are difficult to diagnose. Setting a property value to a blank field reverts to the default behavior, which might not be compatible with other configuration settings. Deleting a custom setting removes it from Kibana permanently.
@@ -54,13 +36,13 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 
 
-## Access advanced settings [_access_advanced_settings]
+## Access advanced settings [security-advanced-settings-access-advanced-settings]
 
-To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
+To access advanced settings, go to **Stack Management** → **Advanced Settings** in {{stack}} or **Project Settings** → **Stack Management** → **Advanced Settings** in {{serverless-short}}, then scroll down to **Security Solution** settings.
 
-:::{image} ../../../images/security-solution-advanced-settings.png
+:::{image} /solutions/images/security-solution-advanced-settings.png
 :alt: solution advanced settings
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -68,14 +50,24 @@ To access advanced settings, go to **Stack Management** → **Advanced Settings*
 
 The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices.
 
+The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices:
+
+* `apm-*-transaction*`
+* `auditbeat-*`
+* `endgame-*`
+* `filebeat-*`
+* `logs-*`
+* `packetbeat-*`
+* `winlogbeat-*`
+
 ::::{note}
 Index patterns use wildcards to specify a set of indices. For example, the `filebeat-*` index pattern means all indices starting with `filebeat-` are available in the {{security-app}}.
 ::::
 
 
-All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md) and [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
+All of the default index patterns match [{{beats}}](beats://reference/index.md) and [{{agent}}](/reference/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
-You can add or remove any indices and index patterns as required. For background information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
+You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}}, there is no limit. For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
 ::::{note}
 If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cloud logs are excluded from all queries in the {{security-app}} by default. This is to avoid adding data from cloud monitoring to the app.
@@ -83,14 +75,18 @@ If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cl
 
 
 ::::{important}
-{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [*Elastic Security ECS field reference*](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
+{{elastic-sec}} requires [ECS-compliant data](ecs://reference/index.md). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [Elastic Security ECS field reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
 ::::
 
 
 
 ## Update default Elastic Security threat intelligence indices [update-threat-intel-indices]
 
-The `securitySolution:defaultThreatIndex` advanced setting specifies threat intelligence indices that {{elastic-sec}} features query for ingested threat indicators. This setting affects features that query threat intelligence indices, such as the Threat Intelligence view on the Overview page, indicator match rules, and the alert enrichment query. You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
+The `securitySolution:defaultThreatIndex` advanced setting specifies threat intelligence indices that {{elastic-sec}} features query for ingested threat indicators. This setting affects features that query threat intelligence indices, such as the Threat Intelligence view on the Overview page, indicator match rules, and the alert enrichment query.
+
+
+
+You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
 
 ::::{important}
 Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) for more information.
@@ -133,12 +129,7 @@ Including data from cold and frozen [data tiers](/manage-data/lifecycle/data-tie
 
 ## Access the event analyzer and Session View from the event or alert details flyout [visualizations-in-flyout]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
-The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout. This setting is turned off by default.
+The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout.
 
 
 ## Change the default search interval and data refresh time [_change_the_default_search_interval_and_data_refresh_time]
@@ -149,14 +140,14 @@ These settings determine the default time interval and refresh rate {{elastic-se
 * `securitySolution:refreshIntervalDefaults`: Default refresh rate
 
 ::::{note}
-Refer to [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md) for information about the syntax. The UI [time filter](/explore-analyze/query-filter/filtering.md) overrides the default values.
+Refer to [Date Math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md) for information about the syntax. The UI [time filter](/explore-analyze/query-filter/filtering.md) overrides the default values.
 ::::
 
 
 
 ## Display reputation links on IP detail pages [ip-reputation-links]
 
-On IP details pages (**Security** → **Network** → IP address), links to external sites for verifying the IP address’s reputation are displayed. By default, links to these sites are listed: [TALOS](https://talosintelligence.com/) and [VIRUSTOTAL](https://www.virustotal.com/).
+On IP details pages (**Security** → **Network** → **IP address**), links to external sites for verifying the IP address’s reputation are displayed. By default, links to these sites are listed: [TALOS](https://talosintelligence.com/) and [VIRUSTOTAL](https://www.virustotal.com/).
 
 The `securitySolution:ipReputationLinks` field determines which IP reputation sites are listed. To modify the listed sites, edit the field’s JSON array. These fields must be defined in each array element:
 
@@ -195,7 +186,7 @@ The `securitySolution:alertTags` field determines which options display in the a
 
 ## Set the maximum notes limit for alerts and events [max-notes-alerts-events]
 
-The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 1000.
+The `securitySolution:maxUnassociatedNotes` field determines the maximum number of [notes](/solutions/security/investigate/notes.md) that you can attach to alerts and events. The maximum limit and default value is 10000.
 
 
 ## Exclude cold and frozen data from rules [exclude-cold-frozen-data-rule-executions]

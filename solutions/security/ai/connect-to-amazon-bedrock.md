@@ -1,22 +1,19 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/assistant-connect-to-bedrock.html
   - https://www.elastic.co/guide/en/serverless/current/security-connect-to-bedrock.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Connect to Amazon Bedrock
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/assistant-connect-to-bedrock.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-connect-to-bedrock.md
-
 This page provides step-by-step instructions for setting up an Amazon Bedrock connector for the first time. This connector type enables you to leverage large language models (LLMs) within {{kib}}. You’ll first need to configure AWS, then configure the connector in {{kib}}.
 
 ::::{note}
-Only Amazon Bedrock’s `Anthropic` models are supported: `Claude` and `Claude instant`.
+All models in Amazon Bedrock's `Claude` model group are supported.
 ::::
 
 
@@ -55,20 +52,9 @@ First, configure an IAM policy with the necessary permissions:
 
 4. Click **Next**. Name your policy.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/ek6NpHaj6u4keZyEjPWXcT.jpg"
-  data-uuid="ek6NpHaj6u4keZyEjPWXcT"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![azure-openai-configure-model-video](https://play.vidyard.com/ek6NpHaj6u4keZyEjPWXcT.jpg)](https://videos.elastic.co/watch/ek6NpHaj6u4keZyEjPWXcT?)
 
 
 
@@ -82,20 +68,9 @@ Next, assign the policy you just created to a new user:
 4. In the **Permissions policies** field, search for the policy you created earlier, select it, and click **Next**.
 5. Review the configuration then click **Create user**.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/5BQb2P818SMddRo6gA79hd.jpg"
-  data-uuid="5BQb2P818SMddRo6gA79hd"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![bedrock-iam-video](https://play.vidyard.com/5BQb2P818SMddRo6gA79hd.jpg)](https://videos.elastic.co/watch/5BQb2P818SMddRo6gA79hd?)
 
 
 
@@ -107,24 +82,12 @@ Create the access keys that will authenticate your Elastic connector:
 2. Search for the user you just created, and click its name.
 3. Go to the **Security credentials** tab.
 4. Under **Access keys**, click **Create access key**.
-5. Select **Third-party service**, check the box under **Confirmation***, click ***Next**, then click **Create access key**.
+5. Select **Third-party service**, check the box under **Confirmation**, click **Next**, then click **Create access key**.
 6. Click **Download .csv file** to download the key. Store it securely.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/8oXgP1fbaQCqjWUgncF9at.jpg"
-  data-uuid="8oXgP1fbaQCqjWUgncF9at"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
-
+[![bedrock-accesskey-video](https://play.vidyard.com/8oXgP1fbaQCqjWUgncF9at.jpg)](https://videos.elastic.co/watch/8oXgP1fbaQCqjWUgncF9at?)
 
 
 ### Enable model access [_enable_model_access]
@@ -134,24 +97,12 @@ Make sure the supported Amazon Bedrock LLMs are enabled:
 1. Search the AWS console for Amazon Bedrock.
 2. From the Amazon Bedrock page, click **Get started**.
 3. Select **Model access** from the left navigation menu, then click **Manage model access**.
-4. Check the boxes for **Claude** and/or **Claude Instant**, depending which model or models you plan to use.
+4. Check the box for the model or models you plan to use.
 5. Click **Save changes**.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/Z7zpHq4N9uvUxegBUMbXDj.jpg"
-  data-uuid="Z7zpHq4N9uvUxegBUMbXDj"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
-
+[![bedrock-model-video](https://play.vidyard.com/Z7zpHq4N9uvUxegBUMbXDj.jpg)](https://videos.elastic.co/watch/Z7zpHq4N9uvUxegBUMbXDj?)
 
 
 ## Configure the Amazon Bedrock connector [_configure_the_amazon_bedrock_connector]
@@ -159,14 +110,16 @@ The following video demonstrates these steps.
 Finally, configure the connector in {{kib}}:
 
 1. Log in to {{kib}}.
-2. . Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **Amazon Bedrock**.
+2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **Amazon Bedrock**.
 3. Name your connector.
 4. (Optional) Configure the Amazon Bedrock connector to use a different AWS region where Anthropic models are supported by editing the **URL** field, for example by changing `us-east-1` to `eu-central-1`.
-5. (Optional) Add one of the following strings if you want to use a model other than the default:
+5. (Optional) Add one of the following strings if you want to use a model other than the default. Note that these URLs should have a prefix of `us.` or `eu.`, depending on your region, for example `us.anthropic.claude-3-5-sonnet-20240620-v1:0` or `eu.anthropic.claude-3-5-sonnet-20240620-v1:0`.
 
-    1. For Haiku: `anthropic.claude-3-haiku-20240307-v1:0`
-    2. For Sonnet: `anthropic.claude-3-sonnet-20240229-v1:0`
-    3. For Opus: `anthropic.claude-3-opus-20240229-v1:0`
+    * Sonnet 3.5: `us.anthropic.claude-3-5-sonnet-20240620-v1:0` or `eu.anthropic.claude-3-5-sonnet-20240620-v1:0`
+    * Sonnet 3.5 v2: `us.anthropic.claude-3-5-sonnet-20241022-v2:0` or `eu.anthropic.claude-3-5-sonnet-20241022-v2:0`
+    * Sonnet 3.7: `us.anthropic.claude-3-7-sonnet-20250219-v1:0` or `eu.anthropic.claude-3-7-sonnet-20250219-v1:0`
+    * Haiku 3.5: `us.anthropic.claude-3-5-haiku-20241022-v1:0` or `eu.anthropic.claude-3-5-haiku-20241022-v1:0`
+    * Opus: `us.anthropic.claude-3-opus-20240229-v1:0` or `eu.anthropic.claude-3-opus-20240229-v1:0`
 
 6. Enter the **Access Key** and **Secret** that you generated earlier, then click **Save**.
 
@@ -174,21 +127,10 @@ Finally, configure the connector in {{kib}}:
 
 
 ::::{important}
-If you’re using [provisioned throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.md), your ARN becomes the model ID, and the connector settings **URL** value must be [encoded](https://www.urlencoder.org/) to work. For example, if the non-encoded ARN is `arn:aws:bedrock:us-east-2:123456789102:provisioned-model/3Ztr7hbzmkrqy1`, the encoded ARN would be `arn%3Aaws%3Abedrock%3Aus-east-2%3A123456789102%3Aprovisioned-model%2F3Ztr7hbzmkrqy1`.
+If you’re using [provisioned throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html), your ARN becomes the model ID, and the connector settings **URL** value must be [encoded](https://www.urlencoder.org/) to work. For example, if the non-encoded ARN is `arn:aws:bedrock:us-east-2:123456789102:provisioned-model/3Ztr7hbzmkrqy1`, the encoded ARN would be `arn%3Aaws%3Abedrock%3Aus-east-2%3A123456789102%3Aprovisioned-model%2F3Ztr7hbzmkrqy1`.
 ::::
 
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/QJe4RcTJbp6S6m9CkReEXs.jpg"
-  data-uuid="QJe4RcTJbp6S6m9CkReEXs"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![bedrock-configure-model-video](https://play.vidyard.com/QJe4RcTJbp6S6m9CkReEXs.jpg)](https://videos.elastic.co/watch/QJe4RcTJbp6S6m9CkReEXs?)

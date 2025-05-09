@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/asset-criticality.html
   - https://www.elastic.co/guide/en/serverless/current/security-asset-criticality.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Asset criticality [asset-criticality]
@@ -26,7 +30,7 @@ For example, you can assign **Extreme impact** to business-critical entities, or
 
 ## View and assign asset criticality [_view_and_assign_asset_criticality]
 
-Entities do not have a default asset criticality level. You can either assign asset criticality to your entities individually, or [bulk assign](#bulk-assign-asset-criticality) it to multiple entities by importing a text file. Alternatively, you can assign and manage asset criticality records through the [*Asset criticality API*](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-entity-analytics-api).
+Entities do not have a default asset criticality level. You can either assign asset criticality to your entities individually, or [bulk assign](#bulk-assign-asset-criticality) it to multiple entities by importing a text file. Alternatively, you can assign and manage asset criticality records through the [Asset criticality API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-entity-analytics-api).
 
 When you assign, change, or unassign an individual entity’s asset criticality level, that entity’s risk score is immediately recalculated.
 
@@ -39,31 +43,31 @@ You can view, assign, change, or unassign asset criticality from the following p
 
 * The [host details page](../explore/hosts-page.md#host-details-page) and [user details page](../explore/users-page.md#user-details-page):
 
-    :::{image} ../../../images/security-assign-asset-criticality-host-details.png
+    :::{image} /solutions/images/security-assign-asset-criticality-host-details.png
     :alt: Assign asset criticality from the host details page
-    :class: screenshot
+    :screenshot:
     :::
 
-* The [host details flyout](../explore/hosts-page.md#host-details-flyout) and [user details flyout](../explore/users-page.md#user-details-flyout):
+* The [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout):
 
-    :::{image} ../../../images/security-assign-asset-criticality-host-flyout.png
+    :::{image} /solutions/images/security-assign-asset-criticality-host-flyout.png
     :alt: Assign asset criticality from the host details flyout
-    :class: screenshot
+    :screenshot:
     :::
 
-* The host details flyout and user details flyout in [Timeline](../investigate/timeline.md):
+* The entity details flyout in [Timeline](../investigate/timeline.md):
 
-    :::{image} ../../../images/security-assign-asset-criticality-timeline.png
+    :::{image} /solutions/images/security-assign-asset-criticality-timeline.png
     :alt: Assign asset criticality from the host details flyout in Timeline
-    :class: screenshot
+    :screenshot:
     :::
 
 
 If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the [**Entities** section](../dashboards/entity-analytics-dashboard.md#entity-entities) of the Entity Analytics dashboard:
 
-:::{image} ../../../images/security-entities-section.png
+:::{image} /solutions/images/security-entities-section.png
 :alt: Entities section
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -73,14 +77,15 @@ You can bulk assign asset criticality to multiple entities by importing a CSV, T
 
 The file must contain three columns, with each entity record listed on a separate row:
 
-1. The first column should indicate whether the entity is a `host` or a `user`.
-2. The second column should specify the entity’s `host.name` or `user.name`.
+1. The first column should indicate whether the entity is a `host`, `user`, or `service`.
+2. The second column should specify the entity’s `host.name`, `user.name`, or `service.name`.
 3. The third column should specify one of the following asset criticality levels:
 
     * `extreme_impact`
     * `high_impact`
     * `medium_impact`
     * `low_impact`
+    * `unassigned` (available in {{serverless-short}} only)
 
 
 The maximum file size is 1 MB.
@@ -91,6 +96,7 @@ File structure example:
 user,user-001,low_impact
 user,user-002,medium_impact
 host,host-001,extreme_impact
+service,service-001,extreme_impact
 ```
 
 To import a file:
@@ -130,12 +136,12 @@ The risk scoring engine dynamically factors in an entity’s asset criticality, 
 
 To view the impact of asset criticality on an entity’s risk score, follow these steps:
 
-1. Open the [host details flyout](../explore/hosts-page.md#host-details-flyout) or [user details flyout](../explore/users-page.md#user-details-flyout). The risk summary section shows asset criticality’s contribution to the overall risk score.
+1. Open the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout). The risk summary section shows asset criticality’s contribution to the overall risk score.
 2. Click **View risk contributions** to open the flyout’s left panel.
 3. In the **Risk contributions** section, verify the entity’s criticality level from the time the alert was generated.
 
-:::{image} ../../../images/security-asset-criticality-impact.png
+:::{image} /solutions/images/security-asset-criticality-impact.png
 :alt: View asset criticality impact on host risk score
-:class: screenshot
+:screenshot:
 :::
 

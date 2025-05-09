@@ -1,16 +1,20 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/network-page-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-network-page-overview.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Network page
 
 The Network page provides key network activity metrics in an interactive map, and network event tables that enable interaction with Timeline. You can drag and drop items of interest from the Network view to Timeline for further investigation.
 
-:::{image} ../../../images/security-network-ui.png
+:::{image} /solutions/images/security-network-ui.png
 :alt: network ui
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -53,7 +57,7 @@ There are also tabs for viewing and investigating specific types of data:
 * **Events**: All network events. To display alerts received from external monitoring tools, scroll down to the events table and select **Show only external alerts** on the right.
 * **Flows**: Source and destination IP addresses and countries.
 * **DNS**: DNS network queries.
-* **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](/solutions/observability/apps/application-performance-monitoring-apm.md) are monitored by default).
+* **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](/solutions/observability/apm/index.md) are monitored by default).
 * **TLS**: Handshake details.
 * **Anomalies**: Anomalies discovered by [machine learning jobs](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 
@@ -77,9 +81,9 @@ The IP’s details page includes the following sections:
 * **Alert metrics**: The total number of alerts by severity, rule, and status (`Open`, `Acknowledged`, or `Closed`).
 * **Data tables**: The same data tables as on the main Network page, except with values for the selected IP address instead of all IP addresses.
 
-:::{image} ../../../images/security-IP-detail-pg.png
+:::{image} /solutions/images/security-IP-detail-pg.png
 :alt: IP details page
-:class: screenshot
+:screenshot:
 :::
 
 

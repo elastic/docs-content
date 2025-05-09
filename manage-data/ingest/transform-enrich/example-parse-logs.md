@@ -24,14 +24,14 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
 1. In {{kib}}, open the main menu and click **Stack Management** > **Ingest Pipelines**.
 
-    :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-list.png
+    :::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-list.png
     :alt: Kibana's Ingest Pipelines list view
-    :class: screenshot
+    :screenshot:
     :::
 
 2. Click **Create pipeline > New pipeline**.
 3. Set **Name** to `my-pipeline` and optionally add a description for the pipeline.
-4. Add a [grok processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/grok-processor.md) to parse the log message:
+4. Add a [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) to parse the log message:
 
     1. Click **Add a processor** and select the **Grok** processor type.
     2. Set **Field** to `message` and **Patterns** to the following [grok pattern](../../../explore-analyze/scripting/grok.md):
@@ -47,15 +47,15 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
     | Processor type | Field | Additional options | Description |
     | --- | --- | --- | --- |
-    | [**Date**](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/date-processor.md) | `@timestamp` | **Formats**: `dd/MMM/yyyy:HH:mm:ss Z` | `Format '@timestamp' as 'dd/MMM/yyyy:HH:mm:ss Z'` |
-    | [**GeoIP**](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md) | `source.ip` | **Target field**: `source.geo` | `Add 'source.geo' GeoIP data for 'source.ip'` |
-    | [**User agent**](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/user-agent-processor.md) | `user_agent` |  | `Extract fields from 'user_agent'` |
+    | [**Date**](elasticsearch://reference/enrich-processor/date-processor.md) | `@timestamp` | **Formats**: `dd/MMM/yyyy:HH:mm:ss Z` | `Format '@timestamp' as 'dd/MMM/yyyy:HH:mm:ss Z'` |
+    | [**GeoIP**](elasticsearch://reference/enrich-processor/geoip-processor.md) | `source.ip` | **Target field**: `source.geo` | `Add 'source.geo' GeoIP data for 'source.ip'` |
+    | [**User agent**](elasticsearch://reference/enrich-processor/user-agent-processor.md) | `user_agent` |  | `Extract fields from 'user_agent'` |
 
     Your form should look similar to this:
 
-    :::{image} ../../../images/elasticsearch-reference-ingest-pipeline-processor.png
+    :::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-processor.png
     :alt: Processors for Ingest Pipelines
-    :class: screenshot
+    :screenshot:
     :::
 
     The four processors will run sequentially:<br> Grok > Date > GeoIP > User agent<br> You can reorder processors using the arrow icons.
@@ -135,7 +135,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
     }
     ```
 
-12. To verify, search the data stream to retrieve the document. The following search uses [`filter_path`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) to return only the [document source](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md).
+12. To verify, search the data stream to retrieve the document. The following search uses [`filter_path`](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) to return only the [document source](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md).
 
     ```console
     GET my-data-stream/_search?filter_path=hits.hits._source

@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Snapshot policy failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repeated-snapshot-failures.html
@@ -8,7 +15,7 @@ mapped_pages:
 
 Repeated snapshot failures are usually an indicator of a problem with your deployment. Continuous failures of automated snapshots can leave a deployment without recovery options in cases of data loss or outages.
 
-Elasticsearch keeps track of the number of repeated failures when executing automated snapshots. If an automated snapshot fails too many times without a successful execution, the health API will report a warning. The number of repeated failures before reporting a warning is controlled by the [`slm.health.failed_snapshot_warn_threshold`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-health-failed-snapshot-warn-threshold) setting.
+Elasticsearch keeps track of the number of repeated failures when executing automated snapshots. If an automated snapshot fails too many times without a successful execution, the health API will report a warning. The number of repeated failures before reporting a warning is controlled by the [`slm.health.failed_snapshot_warn_threshold`](elasticsearch://reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-health-failed-snapshot-warn-threshold) setting.
 
 In the event that an automated {{slm}} policy execution is experiencing repeated failures, follow these steps to get more information about the problem:
 
@@ -23,14 +30,14 @@ In order to check the status of failing {{slm}} policies we need to go to Kibana
 2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) the {{slm}} policy:
@@ -167,6 +174,5 @@ In the event that snapshots are failing for other reasons check the logs on the 
 
 :::::::
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
-
+If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [](/deploy-manage/monitor/autoops.md).
 ::::

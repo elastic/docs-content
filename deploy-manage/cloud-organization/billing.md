@@ -1,7 +1,8 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-billing.html
+  - https://www.elastic.co/guide/en/serverless/current/general-billing-stop-project.html
 applies_to:
   deployment:
     ess: all
@@ -18,10 +19,10 @@ Elastic charges a recurring fee for using our offerings on {{ecloud}}. In this s
 
 * [{{ech}} deployments](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md)
 * [{{serverless-full}}](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
-  * [Elasticsearch projects](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md)
+  * [{{es}} projects](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md)
   * [Elastic Observability projects](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
   * [Elastic Security projects](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md)
-  
+
 For more information, you can also refer to our [{{ech}}](https://www.elastic.co/pricing) and [{{serverless-full}}](https://www.elastic.co/pricing/serverless-search) pricing pages.
 
 ## Billing models

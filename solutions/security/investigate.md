@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/investigations-tools.html
   - https://www.elastic.co/guide/en/serverless/current/security-investigate-events.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Investigation tools [security-investigate-events]

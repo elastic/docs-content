@@ -1,8 +1,12 @@
 ---
 navigation_title: "Deploy on macOS with MDM"
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/deploy-with-mdm.html
   - https://www.elastic.co/guide/en/serverless/current/security-deploy-with-mdm.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Deploy {{elastic-defend}} on macOS with mobile device management [deploy-with-mdm]
@@ -36,9 +40,9 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 4. Save the configuration.
 
-:::{image} ../../../images/security-system-extension-jamf.png
+:::{image} /solutions/images/security-system-extension-jamf.png
 :alt: system extension jamf
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -67,9 +71,9 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 6. Save the configuration.
 
-:::{image} ../../../images/security-content-filtering-jamf.png
+:::{image} /solutions/images/security-content-filtering-jamf.png
 :alt: content filtering jamf
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -90,9 +94,9 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 5. Save the configuration.
 
-:::{image} ../../../images/security-notifications-jamf.png
+:::{image} /solutions/images/security-notifications-jamf.png
 :alt: notifications jamf
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -137,9 +141,9 @@ In Jamf, create a configuration profile for {{elastic-endpoint}}. Follow these s
 
 5. Save the configuration.
 
-:::{image} ../../../images/security-fda-jamf.png
+:::{image} /solutions/images/security-fda-jamf.png
 :alt: fda jamf
-:class: screenshot
+:screenshot:
 :::
 
 After you complete these steps, generate the mobile configuration profile and install it onto the macOS machines. Once the profile is installed, {{elastic-defend}} can be deployed without the need for user interaction.

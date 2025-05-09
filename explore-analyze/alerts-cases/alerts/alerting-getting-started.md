@@ -7,9 +7,9 @@ navigation_title: Getting started with alerts
 
 # Getting started with alerting [alerting-getting-started]
 
-Alerting enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules.md), [**Maps**](../../../explore-analyze/alerts-cases/alerts/geo-alerting.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](../../../explore-analyze/alerts-cases/alerts/rule-types.md#stack-rules) for you to use.
+Alerting enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](../../../explore-analyze/alerts-cases/alerts/geo-alerting.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](../../../explore-analyze/alerts-cases/alerts/rule-types.md#stack-rules) for you to use.
 
-:::{image} ../../../images/kibana-alerting-overview.png
+:::{image} /explore-analyze/images/kibana-alerting-overview.png
 :alt: {{rules-ui}} UI
 :::
 
@@ -36,7 +36,7 @@ For example, when monitoring a set of servers, a rule might:
 * Check every minute (schedule).
 * Send a warning email message via SMTP with subject `CPU on {{server}} is high` (action).
 
-:::{image} ../../../images/kibana-what-is-a-rule.svg
+:::{image} /explore-analyze/images/kibana-what-is-a-rule.svg
 :alt: Three components of a rule
 :::
 
@@ -89,7 +89,7 @@ When checking for a condition, a rule might identify multiple occurrences of the
 
 Using the server monitoring example, each server with average CPU > 0.9 is tracked as an alert. This means a separate email is sent for each server that exceeds the threshold whenever the alert status changes.
 
-:::{image} ../../../images/kibana-alerts.svg
+:::{image} /explore-analyze/images/kibana-alerts.svg
 :alt: {{kib}} tracks each detected condition as an alert and takes action on each alert
 :::
 
@@ -97,7 +97,7 @@ Using the server monitoring example, each server with average CPU > 0.9 is track
 
 A rule consists of conditions, actions, and a schedule. When conditions are met, alerts are created that render actions and invoke them. To make action setup and update easier, actions use connectors that centralize the information used to connect with {{kib}} services and third-party integrations. The following example ties these concepts together:
 
-:::{image} ../../../images/kibana-rule-concepts-summary.svg
+:::{image} /explore-analyze/images/kibana-rule-concepts-summary.svg
 :alt: Rules
 :::
 
@@ -119,4 +119,4 @@ Functionally, the {{alert-features}} differ in that:
 * {{kib}} rules track and persist the state of each detected condition through alerts. This makes it possible to mute and throttle individual alerts, and detect changes in state such as resolution.
 * Actions are linked to alerts. Actions are fired for each occurrence of a detected condition, rather than for the entire rule.
 
-At a higher level, the {{alert-features}} allow rich integrations across use cases like [**APM**](https://www.elastic.co/guide/en/kibana/current/observability.html#apm-app), [**Metrics**](https://www.elastic.co/guide/en/kibana/current/observability.html#metrics-app), [**Security**](https://www.elastic.co/guide/en/kibana/current/xpack-siem.html), and [**Uptime**](https://www.elastic.co/guide/en/kibana/current/observability.html#uptime-app). Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across {{kib}}.
+At a higher level, the {{alert-features}} allow rich integrations across use cases like [**APM**](/solutions/observability/apm/index.md), [**Metrics**](/solutions/observability/infra-and-hosts.md), [**Security**](/solutions/security.md), and [**Uptime**](/solutions/observability/uptime/index.md). Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across {{kib}}.

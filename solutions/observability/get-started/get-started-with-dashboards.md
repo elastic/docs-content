@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-dashboards.html
+applies_to:
+  serverless:
 ---
 
 # Get started with dashboards [observability-dashboards]
@@ -11,9 +13,9 @@ You can also create new dashboards and visualizations based on your data views t
 
 In your Observability project, go to **Dashboards** to see installed dashboards or create your own. This example shows dashboards loaded by the System integration:
 
-:::{image} ../../../images/serverless-dashboards.png
+:::{image} /solutions/images/serverless-dashboards.png
 :alt: Screenshot showing list of System dashboards
-:class: screenshot
+:screenshot:
 :::
 
 Notice you can filter the list of dashboards:
@@ -29,7 +31,7 @@ To create a new dashboard, click **Create Dashboard** and begin adding visualiza
 
 You can also add other types of panels — such as filters, links, and text — and add controls like time sliders.
 
-For more information about creating dashboards, refer to [Create your first dashboard](../../../explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md).
+For more information about creating dashboards, refer to [Create your first dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md).
 
 ::::{note}
 The tutorial about creating your first dashboard is written for {{kib}} users, but the steps for serverless are very similar. To load the sample data in serverless, go to **Project Settings** → **Integrations** in the navigation pane, then search for "sample data".

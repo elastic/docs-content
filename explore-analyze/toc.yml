@@ -9,13 +9,17 @@ toc:
           - file: query-filter/languages/esql.md
             children:
               - file: query-filter/languages/esql-getting-started.md
-              - file: query-filter/languages/esql-rest.md
-              - file: query-filter/languages/esql-kibana.md
-              - file: query-filter/languages/esql-elastic-security.md
-              - file: query-filter/languages/esql-multi-index.md
-              - file: query-filter/languages/esql-cross-clusters.md
-              - file: query-filter/languages/esql-task-management.md
+              - file: query-filter/languages/esql-where.md
+                children:
+                  - file: query-filter/languages/esql-rest.md
+                  - file: query-filter/languages/esql-kibana.md
+                  - file: query-filter/languages/esql-elastic-security.md
+              - file: query-filter/languages/esql-multi.md
+                children:
+                  - file: query-filter/languages/esql-multi-index.md
+                  - file: query-filter/languages/esql-cross-clusters.md
               - file: query-filter/languages/esql-examples.md
+              - file: query-filter/languages/esql-task-management.md
           - file: query-filter/languages/sql.md
             children:
               - file: query-filter/languages/sql-overview.md
@@ -116,6 +120,9 @@ toc:
       - file: transforms/transform-examples.md
       - file: transforms/transform-painless-examples.md
       - file: transforms/transform-limitations.md
+  - file: elastic-inference.md
+    children:
+      - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
@@ -190,7 +197,6 @@ toc:
               - file: machine-learning/nlp/ml-nlp-import-model.md
               - file: machine-learning/nlp/ml-nlp-deploy-model.md
               - file: machine-learning/nlp/ml-nlp-test-inference.md
-          - file: machine-learning/nlp/ml-nlp-auto-scale.md
           - file: machine-learning/nlp/ml-nlp-inference.md
           - file: machine-learning/nlp/ml-nlp-apis.md
           - file: machine-learning/nlp/ml-nlp-built-in-models.md

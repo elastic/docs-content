@@ -24,9 +24,9 @@ If your data is located outside of {{es}}, you cannot use {{kib}} to create your
 
 You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job). {{kib}} also provides wizards to simplify the process, which vary depending on whether you are using the {{ml-app}} app, {{security-app}} or {{observability}} apps. To open **Anomaly Detection**, find **{{ml-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
-:::{image} ../../../images/machine-learning-ml-create-job.png
+:::{image} /explore-analyze/images/machine-learning-ml-create-job.png
 :alt: Create New Job
-:class: screenshot
+:screenshot:
 :::
 
 * The single metric wizard creates simple jobs that have a single detector. A *detector* applies an analytical function to specific fields in your data. In addition to limiting the number of detectors, the single metric wizard omits many of the more advanced configuration options.
@@ -45,7 +45,7 @@ The {{ml-features}} use the concept of a *bucket* to divide the time series into
 
 The *bucket span* is part of the configuration information for an {{anomaly-job}}. It defines the time interval that is used to summarize and model the data. This is typically between 5 minutes to 1 hour and it depends on your data characteristics. When you set the bucket span, take into account the granularity at which you want to analyze, the frequency of the input data, the typical duration of the anomalies, and the frequency at which alerting is required.
 
-The bucket span must contain a valid [time interval](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units). When you create an {{anomaly-job}} in {{kib}}, you can choose to estimate a bucket span value based on your data characteristics. If you choose a value that is larger than one day or is significantly different than the estimated value, you receive an informational message.
+The bucket span must contain a valid [time interval](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units). When you create an {{anomaly-job}} in {{kib}}, you can choose to estimate a bucket span value based on your data characteristics. If you choose a value that is larger than one day or is significantly different than the estimated value, you receive an informational message.
 
 ### Detectors [ml-ad-detectors]
 
@@ -129,7 +129,9 @@ One way to update the roles that are stored within the {{dfeed}} without changin
 
 ::::
 
-If the data that you want to analyze is not stored in {{es}}, you cannot use {{dfeeds}}. You can however send batches of data directly to the job by using the [post data to jobs API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-data). [7.11.0]
+:::{admonition} Deprecated in 7.11.0
+If the data that you want to analyze is not stored in {{es}}, you cannot use {{dfeeds}}. You can however send batches of data directly to the job by using the [post data to jobs API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-data).
+:::
 
 ## Open the job [ml-ad-open-job]
 
@@ -188,9 +190,9 @@ To reduce the number of snapshots consuming space on your cluster, at the end of
 
 You can see the list of model snapshots for each job with the [get model snapshots API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-model-snapshots) or in the **Model snapshots** tab on the **Job Management** page in {{kib}}:
 
-:::{image} ../../../images/machine-learning-ml-model-snapshots.png
+:::{image} /explore-analyze/images/machine-learning-ml-model-snapshots.png
 :alt: Example screenshot with a list of model snapshots
-:class: screenshot
+:screenshot:
 :::
 
 ::::{tip}

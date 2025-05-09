@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Total number of shards for an index exceeded
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-shard-limit.html
@@ -10,7 +17,7 @@ mapped_pages:
 
 Elasticsearch tries to take advantage of all the available resources by distributing data (index shards) among nodes in the cluster.
 
-Users might want to influence this data distribution by configuring the [index.routing.allocation.total_shards_per_node](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) index setting to a custom value (for e.g. `1` in case of a highly trafficked index). Various configurations limiting how many shards an index can have located on one node can lead to shards being unassigned due to the cluster not having enough nodes to satisfy the index configuration.
+Users might want to influence this data distribution by configuring the [index.routing.allocation.total_shards_per_node](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) index setting to a custom value (for e.g. `1` in case of a highly trafficked index). Various configurations limiting how many shards an index can have located on one node can lead to shards being unassigned due to the cluster not having enough nodes to satisfy the index configuration.
 
 In order to fix this follow the next steps:
 
@@ -25,14 +32,14 @@ In order to get the shards assigned we’ll need to increase the number of shard
 2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
+    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
     ::::
 
 3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} ../../images/elasticsearch-reference-kibana-console.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
     :alt: {{kib}} Console
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Inspect the `index.routing.allocation.total_shards_per_node` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:
@@ -128,5 +135,5 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
 ::::::
 
 :::{tip}}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, and real-time issue detection with resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::

@@ -21,7 +21,7 @@ After you [set up a data stream](set-up-data-stream.md), you can do the followin
 * [Update or delete documents in a backing index](#update-delete-docs-in-a-backing-index)
 
 
-## Add documents to a data stream [add-documents-to-a-data-stream] 
+## Add documents to a data stream [add-documents-to-a-data-stream]
 
 To add an individual document, use the [index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create). [Ingest pipelines](../../ingest/transform-enrich/ingest-pipelines.md) are supported.
 
@@ -51,7 +51,7 @@ PUT /my-data-stream/_bulk?refresh
 ```
 
 
-## Search a data stream [search-a-data-stream] 
+## Search a data stream [search-a-data-stream]
 
 The following search APIs support data streams:
 
@@ -62,7 +62,7 @@ The following search APIs support data streams:
 * [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
 
 
-## Get statistics for a data stream [get-stats-for-a-data-stream] 
+## Get statistics for a data stream [get-stats-for-a-data-stream]
 
 Use the [data stream stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-data-streams-stats-1) to get statistics for one or more data streams:
 
@@ -71,7 +71,7 @@ GET /_data_stream/my-data-stream/_stats?human=true
 ```
 
 
-## Manually roll over a data stream [manually-roll-over-a-data-stream] 
+## Manually roll over a data stream [manually-roll-over-a-data-stream]
 
 Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to manually [roll over](../data-streams.md#data-streams-rollover) a data stream. You have two options when manually rolling over:
 
@@ -91,7 +91,7 @@ Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operati
 
 
 
-## Open closed backing indices [open-closed-backing-indices] 
+## Open closed backing indices [open-closed-backing-indices]
 
 You cannot search a [closed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close) backing index, even by searching its data stream. You also cannot [update](#update-docs-in-a-data-stream-by-query) or [delete](#delete-docs-in-a-data-stream-by-query) documents in a closed index.
 
@@ -108,7 +108,7 @@ POST /my-data-stream/_open/
 ```
 
 
-## Reindex with a data stream [reindex-with-a-data-stream] 
+## Reindex with a data stream [reindex-with-a-data-stream]
 
 Use the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to copy documents from an existing index, alias, or data stream to a data stream. Because data streams are [append-only](../data-streams.md#data-streams-append-only), a reindex into a data stream must use an `op_type` of `create`. A reindex cannot update existing documents in a data stream.
 
@@ -126,7 +126,7 @@ POST /_reindex
 ```
 
 
-## Update documents in a data stream by query [update-docs-in-a-data-stream-by-query] 
+## Update documents in a data stream by query [update-docs-in-a-data-stream-by-query]
 
 Use the [update by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) to update documents in a data stream that match a provided query:
 
@@ -148,7 +148,7 @@ POST /my-data-stream/_update_by_query
 ```
 
 
-## Delete documents in a data stream by query [delete-docs-in-a-data-stream-by-query] 
+## Delete documents in a data stream by query [delete-docs-in-a-data-stream-by-query]
 
 Use the [delete by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query) to delete documents in a data stream that match a provided query:
 
@@ -164,13 +164,13 @@ POST /my-data-stream/_delete_by_query
 ```
 
 
-## Update or delete documents in a backing index [update-delete-docs-in-a-backing-index] 
+## Update or delete documents in a backing index [update-delete-docs-in-a-backing-index]
 
 If needed, you can update or delete documents in a data stream by sending requests to the backing index containing the document. You’ll need:
 
-* The [document ID](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-id-field.md)
+* The [document ID](elasticsearch://reference/elasticsearch/mapping-reference/mapping-id-field.md)
 * The name of the backing index containing the document
-* If updating the document, its [sequence number and primary term](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control.md)
+* If updating the document, its [sequence number and primary term](elasticsearch://reference/elasticsearch/rest-apis/optimistic-concurrency-control.md)
 
 To get this information, use a [search request](#search-a-data-stream):
 

@@ -14,7 +14,7 @@ All cross-cluster requests from the local cluster are bound by the API key’s p
 
 On the local cluster side, not every local user needs to access every piece of data allowed by the API key. An administrator of the local cluster can further configure additional permission constraints on local users so each user only gets access to the necessary remote data. Note it is only possible to further reduce the permissions allowed by the API key for individual local users. It is impossible to increase the permissions to go beyond what is allowed by the API key.
 
-In this model, cross-cluster operations use [a dedicated server port](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (remote cluster interface) for communication between clusters. A remote cluster must enable this port for local clusters to connect. Configure Transport Layer Security (TLS) for this port to maximize security (as explained in [Establish trust with a remote cluster](#remote-clusters-security-api-key)).
+In this model, cross-cluster operations use [a dedicated server port](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (remote cluster interface) for communication between clusters. A remote cluster must enable this port for local clusters to connect. Configure Transport Layer Security (TLS) for this port to maximize security (as explained in [Establish trust with a remote cluster](#remote-clusters-security-api-key)).
 
 The local cluster must trust the remote cluster on the remote cluster interface. This means that the local cluster trusts the remote cluster’s certificate authority (CA) that signs the server certificate used by the remote cluster interface. When establishing a connection, all nodes from the local cluster that participate in cross-cluster communication verify certificates from nodes on the other side, based on the TLS trust configuration.
 
@@ -29,7 +29,7 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 
 ## Prerequisites [remote-clusters-prerequisites-api-key]
 
-* The {{es}} security features need to be enabled on both clusters, on every node. Security is enabled by default. If it’s disabled, set `xpack.security.enabled` to `true` in `elasticsearch.yml`. Refer to [General security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings).
+* The {{es}} security features need to be enabled on both clusters, on every node. Security is enabled by default. If it’s disabled, set `xpack.security.enabled` to `true` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). Refer to [General security settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings).
 * The nodes of the local and remote clusters must be on {{stack}} 8.14 or later.
 * The local and remote clusters must have an appropriate license. For more information, refer to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions).
 
@@ -43,11 +43,11 @@ If a remote cluster is part of an {{ech}} deployment, it has a valid certificate
 
 ### On the remote cluster [remote-clusters-security-api-key-remote-action]
 
-1. Enable the remote cluster server on every node of the remote cluster. In `elasticsearch.yml`:
+1. Enable the remote cluster server on every node of the remote cluster. In [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
-    1. Set [`remote_cluster_server.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
-    2. Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
-    3. Optionally, configure the remote server port using [`remote_cluster.port`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (defaults to `9443`).
+    1. Set [`remote_cluster_server.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
+    2. Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
+    3. Optionally, configure the remote server port using [`remote_cluster.port`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (defaults to `9443`).
 
 2. Next, generate a certificate authority (CA) and a server certificate/key pair. On one of the nodes of the remote cluster, from the directory where {{es}} has been installed:
 
@@ -81,12 +81,12 @@ If a remote cluster is part of an {{ech}} deployment, it has a valid certificate
     4. If the remote cluster has multiple nodes, you can either:
 
         * create a single wildcard certificate for all nodes;
-        * or, create separate certificates for each node either manually or in batch with the [silent mode](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-silent).
+        * or, create separate certificates for each node either manually or in batch with the [silent mode](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md#certutil-silent).
 
 3. On every node of the remote cluster:
 
     1. Copy the `cross-cluster.p12` file from the earlier step to the `config` directory. If you didn’t create a wildcard certificate, make sure you copy the correct node-specific p12 file.
-    2. Add following configuration to `elasticsearch.yml`:
+    2. Add following configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
         ```yaml
         xpack.security.remote_cluster_server.ssl.enabled: true
@@ -111,7 +111,7 @@ If a remote cluster is part of an {{ech}} deployment, it has a valid certificate
 1. On every node of the local cluster:
 
     1. Copy the `ca.crt` file generated on the remote cluster earlier into the `config` directory, renaming the file `remote-cluster-ca.crt`.
-    2. Add following configuration to `elasticsearch.yml`:
+    2. Add following configuration to [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
         ```yaml
         xpack.security.remote_cluster_client.ssl.enabled: true
@@ -139,7 +139,7 @@ You must have the `manage` cluster privilege to connect remote clusters.
 ::::
 
 
-The local cluster uses the [remote cluster interface](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) to establish communication with remote clusters. The coordinating nodes in the local cluster establish [long-lived](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) TCP connections with specific nodes in the remote cluster. {{es}} requires these connections to remain open, even if the connections are idle for an extended period.
+The local cluster uses the [remote cluster interface](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) to establish communication with remote clusters. The coordinating nodes in the local cluster establish [long-lived](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) TCP connections with specific nodes in the remote cluster. {{es}} requires these connections to remain open, even if the connections are idle for an extended period.
 
 To add a remote cluster from Stack Management in {{kib}}:
 
@@ -147,7 +147,7 @@ To add a remote cluster from Stack Management in {{kib}}:
 2. Enter a name (*cluster alias*) for the remote cluster.
 3. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster followed by the remote cluster port (defaults to `9443`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9443` or `192.168.1.1:9443`.
 
-Alternatively, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to add a remote cluster. You can also use this API to dynamically configure remote clusters for *every* node in the local cluster. To configure remote clusters on individual nodes in the local cluster, define static settings in `elasticsearch.yml` for each node.
+Alternatively, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to add a remote cluster. You can also use this API to dynamically configure remote clusters for *every* node in the local cluster. To configure remote clusters on individual nodes in the local cluster, define static settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) for each node.
 
 The following request adds a remote cluster with an alias of `cluster_one`. This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
 
@@ -206,7 +206,7 @@ The API response indicates that the local cluster is connected to the remote clu
 
 Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to dynamically configure remote settings on every node in the cluster. The following request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
 
-The `seeds` parameter specifies the hostname and [remote cluster port](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) (default `9443`) of a seed node in the remote cluster.
+The `seeds` parameter specifies the hostname and [remote cluster port](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) (default `9443`) of a seed node in the remote cluster.
 
 The `mode` parameter determines the configured connection mode, which defaults to [`sniff`](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode). Because `cluster_one` doesn’t specify a `mode`, it uses the default. Both `cluster_two` and `cluster_three` explicitly use different modes.
 
@@ -288,7 +288,7 @@ PUT _cluster/settings
 
 ### Statically configure remote clusters [_statically_configure_remote_clusters]
 
-If you specify settings in `elasticsearch.yml`, only the nodes with those settings can connect to the remote cluster and serve remote cluster requests.
+If you specify settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md), only the nodes with those settings can connect to the remote cluster and serve remote cluster requests.
 
 ::::{note}
 Remote cluster settings that are specified using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) take precedence over settings that you specify in `elasticsearch.yml` for individual nodes.
@@ -321,7 +321,7 @@ cluster:
 
 ## Configure roles and users [remote-clusters-privileges-api-key]
 
-To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-indices-priv) or [remote cluster privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-cluster-priv) on the local cluster.
+To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-indices-priv) or [remote cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-remote-cluster-priv) on the local cluster.
 
 You can manage users and roles from Stack Management in {{kib}} by selecting **Security > Roles** from the side navigation. You can also use the [role management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) to add, update, remove, and retrieve roles dynamically.
 

@@ -60,9 +60,9 @@ yarn add @elastic/search-ui @elastic/react-search-ui @elastic/react-search-ui-vi
 
 Get started quickly with Search UI and your favorite Elastic product by following one of the tutorials below:
 
-* [Elasticsearch](asciidocalypse://docs/search-ui/docs/tutorials-elasticsearch.md)
-* [Elastic App Search (⚠️ DEPRECATED)](asciidocalypse://docs/search-ui/docs/tutorials-app-search.md)
-* [Elastic Workplace Search (⚠️ DEPRECATED)](asciidocalypse://docs/search-ui/docs/tutorials-workplace-search.md)
+* [Elasticsearch](search-ui://reference/tutorials-elasticsearch.md)
+* [Elastic App Search (⚠️ DEPRECATED)](search-ui://reference/tutorials-app-search.md)
+* [Elastic Workplace Search (⚠️ DEPRECATED)](search-ui://reference/tutorials-workplace-search.md)
 
 
 ## Use Cases 🛠️ [overview-use-cases]
@@ -70,7 +70,7 @@ Get started quickly with Search UI and your favorite Elastic product by followin
 
 ### Ecommerce [overview-ecommerce]
 
-Search UI works great in the ecommerce use-case. Check out our [ecommerce guide](asciidocalypse://docs/search-ui/docs/ecommerce.md) that includes demo and code examples, as well as general guidance for ecommerce search.
+Search UI works great in the ecommerce use-case. Check out our [ecommerce guide](search-ui://reference/ecommerce.md) that includes demo and code examples, as well as general guidance for ecommerce search.
 
 
 ## FAQ 🔮 [overview-faq]
@@ -87,14 +87,14 @@ Search UI is "headless". You can use vanilla JavaScript or write support for it 
 
 You can!
 
-Read the [Custom Styles and Layout Guide](asciidocalypse://docs/search-ui/docs/basic-usage.md) to learn more, or check out the [Seattle Indies Expo Demo](https://github.com/elastic/seattle-indies-expo-search).
+Read the [Custom Styles and Layout Guide](search-ui://reference/basic-usage.md) to learn more, or check out the [Seattle Indies Expo Demo](https://github.com/elastic/seattle-indies-expo-search).
 
 
 ### Can I build my own Components? [overview-can-i-build-my-own-components]
 
 Yes! Absolutely.
 
-Check out the [Build Your Own Component Guide](asciidocalypse://docs/search-ui/docs/guides-creating-own-components.md).
+Check out the [Build Your Own Component Guide](search-ui://reference/guides-creating-own-components.md).
 
 
 ### Does Search UI only work with App Search? [overview-does-search-ui-only-work-with-app-search]
@@ -103,17 +103,17 @@ Nope! We do have two first party connectors: Site Search and App Search.
 
 But Search UI is headless. You can use *any* Search API.
 
-Read the [Building a custom connector](asciidocalypse://docs/search-ui/docs/guides-building-custom-connector.md) to learn more about building your own connector for your API.
+Read the [Building a custom connector](search-ui://reference/guides-building-custom-connector.md) to learn more about building your own connector for your API.
 
 
 ### How do I use this with Elasticsearch? [overview-how-do-i-use-this-with-elasticsearch]
 
-Read the [Elasticsearch Connector](asciidocalypse://docs/search-ui/docs/api-connectors-elasticsearch.md) docs.
+Read the [Elasticsearch Connector](search-ui://reference/api-connectors-elasticsearch.md) docs.
 
 
 ### Where do I report issues with the Search UI? [overview-where-do-i-report-issues-with-the-search-ui]
 
-If something is not working as expected, please open an [issue](https://github.com/elastic/search-ui/issues/new).
+If something is not working as expected, open an [issue](https://github.com/elastic/search-ui/issues/new).
 
 
 ### Where can I go to get help? [overview-where-can-i-go-to-get-help]
@@ -126,12 +126,12 @@ The Enterprise Search team at Elastic maintains this library and are happy to he
 We welcome contributors to the project. Before you begin, a couple notes…​
 
 * Read the [Search UI Contributor’s Guide](https://github.com/elastic/search-ui/blob/main/CONTRIBUTING.md).
-* Prior to opening a pull request, please:
+* Prior to opening a pull request:
 
     * Create an issue to [discuss the scope of your proposal](https://github.com/elastic/search-ui/issues).
     * Sign the [Contributor License Agreement](https://www.elastic.co/contributor-agreement/). We are not asking you to assign copyright to us, but to give us the right to distribute your code without restriction. We ask this of all contributors in order to assure our users of the origin and continuing existence of the code. You only need to sign the CLA once.
 
-* Please write simple code and concise documentation, when appropriate.
+* Write simple code and concise documentation, when appropriate.
 
 
 ## License 📗 [overview-license]

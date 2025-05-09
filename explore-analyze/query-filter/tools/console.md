@@ -3,43 +3,33 @@ applies_to:
   stack: ga
   serverless: ga
 navigation_title: Console
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/console-kibana.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-console.html
+  - https://www.elastic.co/guide/en/serverless/current/devtools-run-api-requests-in-the-console.html
 ---
 
 # Run API requests with Console [console-kibana]
-
-% What needs to be done: Refine
-
-% Scope notes: Add mentions of query tools (search profiler...)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/console-kibana.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-api-console.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$configuring-console$$$
 
 $$$import-export-console-requests$$$
 
 
-**Console** is an interactive UI for sending requests to [{{es}} APIs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md) and [{{kib}} APIs](https://www.elastic.co/docs/api) and viewing their responses.
+**Console** is an interactive UI for sending requests to [{{es}} APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md) and [{{kib}} APIs](https://www.elastic.co/docs/api) and viewing their responses.
 
-:::{image} ../../../images/kibana-console.png
+:::{image} /explore-analyze/images/kibana-console.png
 :alt: Console
-:class: screenshot
+:screenshot:
 :::
 
 To go to **Console**, find **Dev Tools** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 You can also find Console directly on certain Search solution and Elasticsearch serverless project pages, where you can expand it from the footer. This Console, called **Persistent Console**, has the same capabilities and shares the same history as the Console in **Dev Tools**.
 
-:::{image} ../../../images/kibana-persistent-console.png
+:::{image} /explore-analyze/images/kibana-persistent-console.png
 :alt: Console
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -115,9 +105,9 @@ GET /_search
 
 Click **Variables** to create, edit, and delete variables.
 
-:::{image} ../../../images/kibana-variables.png
+:::{image} /explore-analyze/images/kibana-variables.png
 :alt: Variables
-:class: screenshot
+:screenshot:
 :::
 
 You can refer to these variables in the paths and bodies of your requests. Each variable can be referenced multiple times.
@@ -245,6 +235,6 @@ Go to the **Config** tab of **Console** to customize its display, autocomplete, 
 
 ## Disable Console [disable-console]
 
-If you don’t want to use **Console**, you can disable it by setting `console.ui.enabled` to `false` in your `kibana.yml` configuration file. Changing this setting causes the server to regenerate assets on the next startup, which might cause a delay before pages start being served.
+If you don’t want to use **Console**, you can disable it by setting `console.ui.enabled` to `false` in your [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. Changing this setting causes the server to regenerate assets on the next startup, which might cause a delay before pages start being served.
 
 You can also choose to only disable the persistent console that shows in the footer of several Kibana pages. To do that, go to **Stack Management** > **Advanced Settings**, and turn off the `devTools:enablePersistentConsole` setting.

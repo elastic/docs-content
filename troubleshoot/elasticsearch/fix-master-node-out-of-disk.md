@@ -1,4 +1,11 @@
 ---
+applies_to:
+  stack: 
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 navigation_title: Master nodes out of disk
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-master-node-out-of-disk.html
@@ -17,9 +24,9 @@ mapped_pages:
 2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
 3. Go to `Actions > Edit deployment` and then go to the `Master instances` section:
 
-    :::{image} ../../images/elasticsearch-reference-increase-disk-capacity-master-node.png
+    :::{image} /troubleshoot/images/elasticsearch-reference-increase-disk-capacity-master-node.png
     :alt: Increase disk capacity of master nodes
-    :class: screenshot
+    :screenshot:
     :::
 
 4. Choose a larger than the pre-selected capacity configuration from the drop-down menu and click `save`. Wait for the plan to be applied and the problem should be resolved.
@@ -28,7 +35,7 @@ mapped_pages:
 ::::::{tab-item} Self-managed
 In order to increase the disk capacity of a master node, you will need to replace **all** the master nodes with master nodes of higher disk capacity.
 
-1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved via the following command:
+1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved via the following command:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*
@@ -54,7 +61,7 @@ In order to increase the disk capacity of a master node, you will need to replac
       }
     ```
 
-    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
+    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
 
 2. The next step is to find out the current disk usage, this will allow to calculate how much extra space is needed. In the following example, we show only the master nodes for readability purposes:
 

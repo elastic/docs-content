@@ -2,6 +2,9 @@
 navigation_title: "Azure Event Hub"
 mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/ts-plugins.html#ts-azure
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Troubleshoot Logstash plugin for Azure Event Hub [ts-azure]

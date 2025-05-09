@@ -1,8 +1,12 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/use-osquery.html
   - https://www.elastic.co/guide/en/serverless/current/security-query-operating-systems.html
   - https://www.elastic.co/guide/en/kibana/current/osquery.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Osquery [osquery]
@@ -16,7 +20,7 @@ With Osquery, you can:
 * View a history of past queries and their results
 * Save queries and build a library of queries for specific use cases
 
-To use Osquery, you must add the [Osquery manager integration](manage-integration.md) to an {{agent}} policy. After completing that step, you can use the Osquery features that are available in your solution. 
+To use Osquery, you must add the [Osquery manager integration](manage-integration.md) to an {{agent}} policy. After completing that step, you can use the Osquery features that are available in your solution.
 
 % The following Osquery features are available from {{elastic-sec}}:
 
@@ -45,7 +49,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
     * **Query**: Select a saved query or enter a new one in the text box. After you enter the query, you can expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](#osquery-map-fields)  included in the results from the live query (optional).
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
     * **Pack**: Select from available query packs. After you select a pack, all of the queries in the pack are displayed.
@@ -55,9 +59,9 @@ To inspect hosts, run a query against one or more agents or policies, then view 
         ::::
 
 
-        :::{image} ../../../images/kibana-enter-query.png
+        :::{image} /solutions/images/kibana-enter-query.png
         :alt: Select saved query dropdown name showing query name and description
-        :class: screenshot
+        :screenshot:
         :::
 
 6. Click **Submit**.
@@ -68,10 +72,10 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 
 7. Review the results and do any of the following:
 
-    * Click **View in Discover** (![View in Discover icon](../../../images/kibana-discover-button-osquery.png "title =20x20")) to explore the results in **Discover**.
-    * Click **View in Lens** (![View in Lens icon](../../../images/kibana-lens-button-osquery.png "title =20x20")) to navigate to **Lens**, where you can use the drag-and-drop **Lens** editor to create visualizations.
-    * Click **Add to Case** (![Add to Case icon](../../../images/kibana-case-button-osquery.png "title =20x20")) to add the query results to a new or existing case.
-    * Click the view details icon (![View details icon](../../../images/kibana-view-osquery-details.png "title =20x20")) to examine the query ID and statement.
+    * Click **View in Discover** (![View in Discover icon](/solutions/images/kibana-discover-button-osquery.png "title =20x20")) to explore the results in **Discover**.
+    * Click **View in Lens** (![View in Lens icon](/solutions/images/kibana-lens-button-osquery.png "title =20x20")) to navigate to **Lens**, where you can use the drag-and-drop **Lens** editor to create visualizations.
+    * Click **Add to Case** (![Add to Case icon](/solutions/images/kibana-case-button-osquery.png "title =20x20")) to add the query results to a new or existing case.
+    * Click the view details icon (![View details icon](/solutions/images/kibana-view-osquery-details.png "title =20x20")) to examine the query ID and statement.
 
 8. To view more information about the request, such as failures, open the **Status** tab.
 
@@ -80,12 +84,12 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 
 The **Live queries history** section on the **Live queries** tab shows a log of queries run over the last 30 days. From the Live queries table, you can:
 
-* Click the run icon (![Right-pointing triangle](../../../images/kibana-play-icon.png "")) to rerun a single query or a query pack.
-* Click the table icon (![Table icon](../../../images/kibana-table-icon.png "")) to examine the [results](#osquery-results) for a single query or a query pack. From the results table, you can also find the query [status](#osquery-status).
+* Click the run icon (![Right-pointing triangle](/solutions/images/kibana-play-icon.png "")) to rerun a single query or a query pack.
+* Click the table icon (![Table icon](/solutions/images/kibana-table-icon.png "")) to examine the [results](#osquery-results) for a single query or a query pack. From the results table, you can also find the query [status](#osquery-status).
 
-    :::{image} ../../../images/kibana-live-query-check-results.png
+    :::{image} /solutions/images/kibana-live-query-check-results.png
     :alt: Results of OSquery
-    :class: screenshot
+    :screenshot:
     :::
 
 
@@ -123,7 +127,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
     * Click **Add query** and then add a saved query or enter a new query. Each query must include a unique query ID and the interval at which it should run. Optionally, set the minimum Osquery version and platform, specify a timeout period, or [map ECS fields](#osquery-map-fields). When you add a saved query to a pack, this adds a copy of the query. A connection is not maintained between saved queries and packs.
 
         ::::{note}
-        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+        Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
         ::::
 
     * Upload queries from a `.conf` query pack by dragging the pack to the drop zone under the query table. To explore the community packs that Osquery publishes, click **Example packs**.
@@ -138,9 +142,9 @@ You can run packs as live queries or schedule packs to run for one or more agent
 
     Details include the last time each query ran, how many results were returned, and the number of agents the query ran against. If there are errors, expand the row to view the details, including an option to view more information in the Logs.
 
-    :::{image} ../../../images/kibana-scheduled-pack.png
+    :::{image} /solutions/images/kibana-scheduled-pack.png
     :alt: Shows queries in the pack and details about each query
-    :class: screenshot
+    :screenshot:
     :::
 
 3. View scheduled query results in [**Discover**](../../../explore-analyze/discover.md) or the drag-and-drop [**Lens**](../../../explore-analyze/visualize/lens.md) editor.
@@ -161,7 +165,7 @@ Once you save a query, you can only edit it from the **Saved queries** tab:
     * The unique identifier (required).
     * A brief description.
     * The SQL query (required). Osquery supports multi-line queries.
-    * A timeout period (optional). Increase the query’s default timeout period to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
+    * A timeout period (optional). Increase the query’s default timeout period to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `86400` (24 hours).
     * The [ECS fields](#osquery-map-fields) to populate when the query is run (optional). These fields are also copied in when you add this query to a pack.
     * The defaults to set when you add the query to a pack.
 
@@ -171,7 +175,7 @@ Once you save a query, you can only edit it from the **Saved queries** tab:
 
 3. Click **Test configuration** to test the query and any mapped fields:
 
-    * From the **Test query** panel, select agents or groups to test the query, then click **Submit** to run a live query. Result columns with the ![mapping](../../../images/kibana-mapped-icon.png "") icon are mapped. Hover over the icon to see the mapped ECS field.
+    * From the **Test query** panel, select agents or groups to test the query, then click **Submit** to run a live query. Result columns with the ![mapping](/solutions/images/kibana-mapped-icon.png "") icon are mapped. Hover over the icon to see the mapped ECS field.
 
 4. Click **Save** or **Update**.
 
@@ -187,7 +191,7 @@ The prebuilt Osquery packs are included with the integration and can be optional
 
 You can modify the scheduled agent policies for a prebuilt pack, but you cannot edit queries in the pack. To edit the queries, you must first create a copy of the pack.
 
-For information about the prebuilt packs that are available, refer to [*Prebuilt packs reference*](https://www.elastic.co/guide/en/kibana/current/prebuilt-packs.html).
+For information about the prebuilt packs that are available, refer to [*Prebuilt packs reference*](kibana://reference/osquery-manager-prebuilt-packs.md).
 
 
 #### Load and activate prebuilt Elastic packs [load-prebuilt-packs]
@@ -232,14 +236,14 @@ A set of saved queries are included with the integration and available to run as
 
 ## Map result fields to ECS [osquery-map-fields]
 
-When you save queries or add queries to a pack, you can optionally map Osquery results or static values to fields in the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html) (ECS). This standardizes your Osquery data for use across detections, machine learning, and any other areas that rely on ECS-compliant data. When the query is run, the results include the original `osquery.<fields>` and the mapped ECS fields. For example, if you update a query to map `osquery.name` to `user.name`, the query results include both fields.
+When you save queries or add queries to a pack, you can optionally map Osquery results or static values to fields in the [Elastic Common Schema](ecs://reference/index.md) (ECS). This standardizes your Osquery data for use across detections, machine learning, and any other areas that rely on ECS-compliant data. When the query is run, the results include the original `osquery.<fields>` and the mapped ECS fields. For example, if you update a query to map `osquery.name` to `user.name`, the query results include both fields.
 
 1. Edit saved queries or queries in a pack to map fields:
 
     * For saved queries: Open the **Saved queries** tab, and then click the edit icon for the query that you want to map.
     * For packs: Open the **Packs** tab, edit a pack, and then click the edit icon for the query that you want to map.
 
-2. In the **ECS mapping** section, select an ***ECS field** to map.
+2. In the **ECS mapping** section, select an **ECS field** to map.
 3. In the **Value** column, use the dropdown on the left to choose what type of value to map to the ECS field:
 
     * **Osquery value**: Select an Osquery field. The fields available are based on the SQL query entered, and only include fields that the query returns. When the query runs, the ECS field is set dynamically to the value of the Osquery field selected.
@@ -250,8 +254,8 @@ When you save queries or add queries to a pack, you can optionally map Osquery r
 
 ::::{note}
 * Some ECS fields are restricted and cannot be mapped. These are not available in the ECS dropdown.
-* Some ECS fields are restricted to a set of allowed values, like [event.category](https://www.elastic.co/guide/en/ecs/current/ecs-event.html#field-event-category). Use the [ECS Field Reference](https://www.elastic.co/guide/en/ecs/current/ecs-field-reference.html) for help when mapping fields.
-* Osquery date fields have a variety of data types (including integer, text, or bigint). When mapping an Osquery date field to an ECS date field, you might need to use SQL operators in the query to get an {{es}}-compatible [date](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) type.
+* Some ECS fields are restricted to a set of allowed values, like [event.category](ecs://reference/ecs-event.md#field-event-category). Use the [ECS Field Reference](ecs://reference/ecs-field-reference.md) for help when mapping fields.
+* Osquery date fields have a variety of data types (including integer, text, or bigint). When mapping an Osquery date field to an ECS date field, you might need to use SQL operators in the query to get an {{es}}-compatible [date](elasticsearch://reference/elasticsearch/mapping-reference/date.md) type.
 
 ::::
 

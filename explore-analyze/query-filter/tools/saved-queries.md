@@ -2,18 +2,11 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/save-load-delete-query.html
 ---
 
 # Saved queries [save-load-delete-query]
-
-% What needs to be done: Refine
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/search-analyze.md
-% - [ ] ./raw-migrated-files/kibana/kibana/save-load-delete-query.md
 
 Have you ever built a query that you wanted to reuse? With saved queries, you can save your query text, filters, and time range for reuse anywhere a query bar is present.
 
@@ -28,7 +21,7 @@ If you have insufficient privileges to manage saved queries, you will be unable 
 
 ## Save a query [_save_a_query]
 
-1. Once you’ve built a query worth saving, click the save query icon ![save query icon](../../../images/kibana-saved-query-icon.png "").
+1. Once you’ve built a query worth saving, click the save query icon ![save query icon](/explore-analyze/images/kibana-saved-query-icon.png "").
 2. In the menu, select the item to save the query.
 3. Enter a unique name.
 4. Choose whether to include or exclude filters and a time range. By default, filters are automatically included, but the time filter is not.

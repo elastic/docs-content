@@ -17,9 +17,9 @@ In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select th
 
 When you create an {{es}} query rule, your choice of query type affects the information you must provide. For example:
 
-:::{image} ../../../images/kibana-rule-types-es-query-conditions.png
+:::{image} /explore-analyze/images/kibana-rule-types-es-query-conditions.png
 :alt: Define the condition to detect
-:class: screenshot
+:screenshot:
 :::
 
 1. Define your query
@@ -36,7 +36,13 @@ When you create an {{es}} query rule, your choice of query type affects the info
 
     If you use [KQL](../../query-filter/languages/kql.md) or [Lucene](../../query-filter/languages/lucene-query-syntax.md), you must specify a data view then define a text-based query. For example, `http.request.referrer: "https://example.com"`.
 
-    If you use [ES|QL](../../query-filter/languages/esql.md), you must provide a source command followed by an optional series of processing commands, separated by pipe characters (|). [8.16.0] For example:
+    If you use [ES|QL](../../query-filter/languages/esql.md), you must provide a source command followed by an optional series of processing commands, separated by pipe characters (|).
+
+    :::{admonition} Added in 8.16.0
+    This functionality was added in 8.16.0.
+    :::
+
+    For example:
 
     ```sh
     FROM kibana_sample_data_logs
@@ -52,7 +58,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
     :   Specify how to calculate the value that is compared to the threshold. The value is calculated by aggregating a numeric field within the time window. The aggregation options are: `count`, `average`, `sum`, `min`, and `max`. When using `count` the document count is used and an aggregation field is not necessary.
 
     Over or Grouped Over
-    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
+    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
 
     Threshold
     :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
@@ -70,16 +76,16 @@ Use the **Test query** feature to verify that your query is valid.
 
 If you use query DSL, KQL, or Lucene, the query runs against the selected indices using the configured time window. The number of documents that match the query is displayed. For example:
 
-:::{image} ../../../images/kibana-rule-types-es-query-valid.png
+:::{image} /explore-analyze/images/kibana-rule-types-es-query-valid.png
 :alt: Test {{es}} query returns number of matches when valid
-:class: screenshot
+:screenshot:
 :::
 
 If you use an ES|QL query, a table is displayed. For example:
 
-:::{image} ../../../images/kibana-rule-types-esql-query-valid.png
+:::{image} /explore-analyze/images/kibana-rule-types-esql-query-valid.png
 :alt: Test ES|QL query returns a table when valid
-:class: screenshot
+:screenshot:
 :::
 
 If the query is not valid, an error occurs.
@@ -96,16 +102,16 @@ For each action, you must choose a connector, which provides connection informat
 
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. For example, send email notifications that summarize the new, ongoing, and recovered alerts at a custom interval:
 
-:::{image} ../../../images/kibana-es-query-rule-action-summary.png
+:::{image} /explore-analyze/images/kibana-es-query-rule-action-summary.png
 :alt: UI for defining alert summary action in an {{es}} query rule
-:class: screenshot
+:screenshot:
 :::
 
 Alternatively, you can set the action frequency such that actions run for each alert. Choose how often the action runs (at each check interval, only when the alert status changes, or at a custom action interval). You must also choose an action group, which indicates whether the action runs when the query is matched or when the alert is recovered. Each connector supports a specific set of actions for each action group. For example:
 
-:::{image} ../../../images/kibana-es-query-rule-action-query-matched.png
+:::{image} /explore-analyze/images/kibana-es-query-rule-action-query-matched.png
 :alt: UI for defining a recovery action
-:class: screenshot
+:screenshot:
 :::
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
@@ -125,9 +131,9 @@ Elasticsearch query rule '{{rule.name}}' is active:
 
 Rules use rule action variables and Mustache templates to pass contextual details into the alert notifications. There is a set of [variables common to all rules](create-manage-rules.md#defining-rules-actions-variables) and a set that is specific to this rule. To view the list of variables in {{kib}}, click the "add rule variable" button. For example:
 
-:::{image} ../../../images/kibana-es-query-rule-action-variables.png
+:::{image} /explore-analyze/images/kibana-es-query-rule-action-variables.png
 :alt: Passing rule values to an action
-:class: screenshot
+:screenshot:
 :::
 
 The following variables are specific to the {{es}} query rule:
@@ -150,7 +156,7 @@ The following variables are specific to the {{es}} query rule:
     {{/context.hits}}
     ```
 
-    The documents returned by `context.hits` include the [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) field. If the {{es}} query search API’s [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
+    The documents returned by `context.hits` include the [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) field. If the {{es}} query search API’s [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
 
     ```handlebars
     {{#context.hits}}
@@ -162,7 +168,7 @@ The following variables are specific to the {{es}} query rule:
     1. The `fields` parameter here is used to access the `day_of_week` runtime field.
 
 
-    As the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
+    As the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
 
     ```handlebars
     {{#context.hits}}

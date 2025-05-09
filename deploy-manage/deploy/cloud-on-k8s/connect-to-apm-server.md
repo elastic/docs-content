@@ -16,7 +16,7 @@ This section covers the following topics:
 
 ## APM Server service [k8s-apm-service]
 
-The APM Server is exposed with a Service. For information on accessing it, check [How to access Elastic Stack services](accessing-services.md).
+The APM Server is exposed with a Service. For information on accessing it, check [How to access {{stack}} services](accessing-services.md).
 
 To retrieve the list of all the APM Services, use the following command:
 
@@ -40,11 +40,11 @@ This token is stored in a secret named `{{APM-server-name}}-apm-token` and can b
 kubectl get secret/apm-server-quickstart-apm-token -o go-template='{{index .data "secret-token" | base64decode}}'
 ```
 
-For more information, check [APM Server Reference](https://www.elastic.co/guide/en/apm/server/current/index.html).
+For more information, check [APM Server Reference](/solutions/observability/apm/index.md).
 
 
 ## APM Server API keys [k8s-apm-api-keys]
 
-If you want to configure API keys to authorize requests to the APM Server, instead of using the APM Server CLI, you have to create API keys using the Elasticsearch  [create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/7.14/security-api-create-api-key.html), check the [APM Server documentation](/solutions/observability/apps/api-keys.md).
+If you want to configure API keys to authorize requests to the APM Server, instead of using the APM Server CLI, you have to create API keys using the {{es}}  [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key), check the [APM Server documentation](/solutions/observability/apm/api-keys.md).
 
 

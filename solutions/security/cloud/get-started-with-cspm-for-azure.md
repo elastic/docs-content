@@ -1,26 +1,14 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/cspm-get-started-azure.html
   - https://www.elastic.co/guide/en/serverless/current/security-cspm-get-started-azure.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # Get started with CSPM for Azure
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cspm-get-started-azure.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cspm-get-started-azure.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cspm-azure-agent-based$$$
-
-$$$cspm-azure-agentless$$$
-
-$$$cspm-azure-client-secret$$$
-
 
 ## Overview [cspm-overview-azure]
 
@@ -44,11 +32,6 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 
 ## Agentless deployment [cspm-azure-agentless]
 
-::::{warning}
-This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
-::::
-
-
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
@@ -58,6 +41,9 @@ This functionality is in beta and is subject to change. The design and code is l
 7. Next, you’ll need to authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
+::::{admonition} Important
+Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
+::::
 
 ## Agent-based deployment [cspm-azure-agent-based]
 
@@ -67,7 +53,7 @@ This functionality is in beta and is subject to change. The design and code is l
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
-4. Under **Configure integration**, select **Azure***, then select either ***Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
+4. Under **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
 5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CSPM-dev-1`.
 
 
@@ -123,7 +109,7 @@ This method involves creating an Azure VM (or using an existing one), giving it 
 After assigning the role:
 
 1. Return to the **Add CSPM** page in {{kib}}.
-2. Under **Configure integration**, select **Azure***. Under ***Setup access**, select **Manual**.
+2. Under **Configure integration**, select **Azure**. Under **Setup access**, select **Manual**.
 3. Under **Where to add this integration**, select **New hosts**.
 4. Click **Save and continue**, then follow the instructions to install {{agent}} on your Azure VM.
 

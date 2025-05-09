@@ -1,14 +1,17 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started-with-metrics.html
+applies_to:
+  stack:
+  serverless:
 ---
 
 % Stateful get started is much more detailed, but I'm not sure it needs to be. I've considerably pared it down here, but we should go through the actual steps in here.
 
 # Get started with system metrics [logs-metrics-get-started]
 
-In this guide you’ll learn how to onboard system metrics data from a machine or server, then observe the data in Elastic Observability. This guide describes how to use a {{fleet}}-managed {{agent}}. To get started quickly with a standalone agent that does not require {{fleet}}, follow the steps described in the [quickstart](../../../solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md).
+In this guide you’ll learn how to onboard system metrics data from a machine or server, then observe the data in Elastic Observability. This guide describes how to use a {{fleet}}-managed {{agent}}. To get started quickly with a standalone agent that does not require {{fleet}}, follow the steps described in the [quickstart](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md).
 
 
 ## Prerequisites [logs-metrics-prereqs]
@@ -33,7 +36,7 @@ To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or
 :::{tab-item} Serverless
 :sync: serverless
 
-The **Admin** role or higher is required to onboard system metrics data. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+The **Admin** role or higher is required to onboard system metrics data. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 :::
 
@@ -60,16 +63,16 @@ In this step, add the System integration to monitor host logs and metrics.
 4. Configure the integration name and optionally add a description. Make sure that **Collect logs from System instances** and **Collect metrics from System instances** are turned on.
 5. Expand each configuration section to verify that the settings are correct for your host. For example, if you’re  deploying {{agent}} on macOS hosts, you need to add a new path to the *System syslog logs* section by clicking **Add row** and specifying `/var/log/system.log`.
 
-    :::{image} ../../../images/observability-kibana-agent-add-log-path.png
+    :::{image} /solutions/images/observability-kibana-agent-add-log-path.png
     :alt: Configuration page for adding log paths to the {{agent}} System integration
-    :class: screenshot
+    :screenshot:
     :::
 
 6. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains a system integration policy for the configuration you just specified.
 
-    :::{image} ../../../images/observability-kibana-system-policy.png
+    :::{image} /solutions/images/observability-kibana-system-policy.png
     :alt: Configuration page for adding the {{agent}} System integration
-    :class: screenshot
+    :screenshot:
     :::
 
 7. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout.
@@ -83,7 +86,7 @@ In this step, add the System integration to monitor host logs and metrics.
 :::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](../../../solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Project Settings** → **Integrations**.
 3. Type **System** in the search bar, then select the integration to see more details about it.
 4. Click **Add System**.
@@ -104,9 +107,9 @@ The **Add agent** flyout has two options: **Enroll in {{fleet}}** and **Run stan
 
 2. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step.
 
-    :::{image} ../../../images/observability-kibana-agent-flyout.png
+    :::{image} /solutions/images/observability-kibana-agent-flyout.png
     :alt: Add agent flyout in {{kib}}
-    :class: screenshot
+    :screenshot:
     :::
 
     It takes about a minute for {{agent}} to enroll in {{fleet}}, download the configuration specified in the policy you just created, and start collecting data.
@@ -114,7 +117,7 @@ The **Add agent** flyout has two options: **Enroll in {{fleet}}** and **Run stan
 Notice that you can also configure the integration to collect logs.
 
 ::::{note}
-** What if {{agent}} is already running on my host?**
+**What if {{agent}} is already running on my host?**
 
 Do not try to deploy a second {{agent}} to the same system. You have a couple options:
 
@@ -129,13 +132,13 @@ Do not try to deploy a second {{agent}} to the same system. You have a couple op
 ::::
 
 
-After the agent is installed and successfully streaming metrics data, go to **Infrastructure** → **Infrastructure inventory** or **Hosts** to see a metrics-driven view of your infrastructure. To learn more, refer to [View infrastructure metrics by resource type](../../../solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md) or [Analyze and compare hosts](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md).
+After the agent is installed and successfully streaming metrics data, go to **Infrastructure** → **Infrastructure inventory** or **Hosts** to see a metrics-driven view of your infrastructure. To learn more, refer to [View infrastructure metrics by resource type](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md) or [Analyze and compare hosts](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md).
 
 
 ## Next steps [observability-get-started-with-metrics-next-steps]
 
 Now that you’ve added metrics and explored your data, learn how to onboard other types of data:
 
-* [Get started with system logs](../../../solutions/observability/logs/get-started-with-system-logs.md)
-* [Stream any log file](../../../solutions/observability/logs/stream-any-log-file.md)
-* [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md)
+* [Get started with system logs](/solutions/observability/logs/get-started-with-system-logs.md)
+* [Stream any log file](/solutions/observability/logs/stream-any-log-file.md)
+* [Get started with traces and APM](/solutions/observability/apm/get-started.md)

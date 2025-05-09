@@ -133,7 +133,7 @@ SELECT * FROM "emp" LIMIT 1;
 1953-09-02T00:00:00Z|10001          |Georgi         |M              |1986-06-26T00:00:00.000Z|2              |Facello        |Georgi Facello |57305
 ```
 
-The name can be a [pattern](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) pointing to multiple indices (likely requiring quoting as mentioned above) with the restriction that **all** resolved concrete tables have **exact mapping**.
+The name can be a [pattern](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) pointing to multiple indices (likely requiring quoting as mentioned above) with the restriction that **all** resolved concrete tables have **exact mapping**.
 
 ```sql
 SELECT emp_no FROM "e*p" LIMIT 1;
@@ -507,7 +507,7 @@ Ordering by aggregation is possible for up to **10000** entries for memory consu
 When doing full-text queries in the `WHERE` clause, results can be returned based on their [score](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/relevance-intro.html) or *relevance* to the given query.
 
 ::::{note}
-When doing multiple text queries in the `WHERE` clause then, their scores will be combined using the same rules as {{es}}'s [bool query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md).
+When doing multiple text queries in the `WHERE` clause then, their scores will be combined using the same rules as {{es}}'s [bool query](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md).
 ::::
 
 
@@ -537,8 +537,9 @@ SELECT SCORE(), * FROM library WHERE MATCH(name, 'dune') ORDER BY page_count DES
 1.8893257      |Frank Herbert  |Dune Messiah       |331            |1969-10-15T00:00:00Z
 ```
 
-NOTE: Trying to return `score` from a non full-text query will return the same value for all results, as all are equally relevant.
-
+:::{note}
+Trying to return `score` from a non full-text query will return the same value for all results, as all are equally relevant.
+:::
 
 ## LIMIT [sql-syntax-limit]
 

@@ -2,43 +2,24 @@
 applies_to:
   stack: ga
   serverless: ga
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-spaces.html
   - https://www.elastic.co/guide/en/serverless/current/spaces.html
 ---
 
-# Manage spaces [xpack-spaces]
-
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/348
-
-% Scope notes: Create a new landing page including the content that is relevant for both serverless and stateful Highlight the differences in subheadings for serverless and stateful Link to solution topics on spaces
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/xpack-spaces.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/spaces.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$spaces-control-feature-visibility$$$
-
-$$$spaces-control-user-access$$$
-
-$$$spaces-managing$$$
+# Spaces [xpack-spaces]
 
 **Spaces** let you organize your content and users according to your needs.
 
-- Each space has its own saved objects. 
+- Each space has its own saved objects.
 - Users can only access the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
 - In {{stack}} deployments on version 8.16 and later, each space has its own navigation, called solution view.
 
 {{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the top menu.
 
-:::{image} ../images/kibana-change-space.png
+:::{image} /deploy-manage/images/kibana-change-space.png
 :alt: Change current space menu
-:class: screenshot
+:screenshot:
 :::
 
 To go to **Spaces**, find **Stack Management** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
@@ -46,23 +27,23 @@ To go to **Spaces**, find **Stack Management** in the navigation menu or use the
 
 ## Required permissions [_required_privileges_3]
 
-* **Serverless projects:** `Admin` role or equivalent 
+* **Serverless projects:** `Admin` role or equivalent
 * **{{stack}} deployments:** `kibana_admin` or equivalent
 
 
 ## Create a space [spaces-managing]
 
-The maximum number of spaces that you can have differs by deployment type: 
+The maximum number of spaces that you can have differs by deployment type:
 
 * **Serverless projects:** Maximum of 100 spaces.
-* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the full list of Space settings in [this document](asciidocalypse://docs/kibana/docs/reference/configuration-reference/spaces-settings.md).
+* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the [full list of Space settings](kibana://reference/configuration-reference/spaces-settings.md).
 
-To create a space: 
+To create a space:
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} {{serverless-short}}
+::::{tab-item} {{serverless-short}}
 :sync: serverless
 
 1. Click **Create space** or select the space you want to edit.
@@ -73,9 +54,9 @@ To create a space:
 
 3. Customize the avatar of the space to your liking.
 4. Save the space.
-:::
+::::
 
-:::{tab-item} {{stack}}
+::::{tab-item} {{stack}}
 :sync: stack
 
 1. Select **Create space** and provide a name, description, and URL identifier.
@@ -89,18 +70,19 @@ To create a space:
 
 3. If you selected the **Classic** solution view, you can customize the **Feature visibility** as you need it to be for that space.
 
-   % This is hacking since proper admonition blocks are currently breaking my tabs
-   > **Note:** Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   :::{note}
+   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   :::
 
 4. Customize the avatar of the space to your liking.
 5. Save your new space by selecting **Create space**.
-:::
-
 ::::
+
+:::::
 
 You can edit all of the space settings you just defined at any time, except for the URL identifier.
 
-Elastic also allows you to manage spaces using APIs: 
+Elastic also allows you to manage spaces using APIs:
 
 * **Serverless projects:** [Spaces API](https://www.elastic.co/docs/api/doc/serverless/operation/operation-get-spaces-space)
 * **{{stack}} deployments:** [Spaces API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-spaces-copy-saved-objects)
@@ -123,7 +105,7 @@ Users can access spaces based on the roles that they have.
   - For {{stack}} deployments, check [Creating or editing a role](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 
-If you're managing an {{stack}} deployment, then you can also assign roles and define permissions for a space from the **Permissions** tab of the space settings. 
+If you're managing an {{stack}} deployment, then you can also assign roles and define permissions for a space from the **Permissions** tab of the space settings.
 
 When a role is assigned to *All Spaces*, you can’t remove its access from the space settings. You must instead edit the role to give it more granular access to individual spaces.
 
@@ -147,9 +129,9 @@ serverless: unavailable
 
 You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object as they enter each space.
 
-To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
+To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](kibana://reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
 
-:::{image} ../images/kibana-spaces-configure-landing-page.png
+:::{image} /deploy-manage/images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page
-:class: screenshot
+:screenshot:
 :::

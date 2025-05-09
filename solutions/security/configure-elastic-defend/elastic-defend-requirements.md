@@ -1,7 +1,11 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/security/current/elastic-endpoint-deploy-reqs.html
   - https://www.elastic.co/guide/en/serverless/current/security-elastic-endpoint-deploy-reqs.html
+applies_to:
+  stack: all
+  serverless:
+    security: all
 ---
 
 # {{elastic-defend}} requirements [elastic-endpoint-deploy-reqs]

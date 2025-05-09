@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/custom-threshold-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-custom-threshold-alert-rule.html
 
@@ -11,7 +11,7 @@ navigation_title: "Custom threshold"
 
 ::::{note}
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -22,9 +22,9 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 2. Click **Manage Rules** → **Create rule**.
 3. Under **Select rule type**, select **Custom threshold**.
 
-:::{image} ../../../images/serverless-custom-threshold-rule.png
+:::{image} /solutions/images/serverless-custom-threshold-rule.png
 :alt: Rule details (custom threshold)
-:class: screenshot
+:screenshot:
 :::
 
 
@@ -32,7 +32,7 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 
 Specify the following settings to define the data the rule applies to:
 
-* **Select a data view:** Click the data view field to search for and select a data view that points to the indices or data streams that you’re creating a rule for. You can also create a *new* data view by clicking **Create a data view**. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more on creating data views.
+* **Select a data view:** Click the data view field to search for and select a data view that points to the indices or data streams that you’re creating a rule for. You can also create a *new* data view by clicking **Create a data view**. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md) for more on creating data views.
 * **Define query filter (optional):** Use a query filter to narrow down the data that the rule applies to. For example, set a query filter to a specific host name using the query filter `host.name:host-1` to only apply the rule to that host.
 
 
@@ -43,7 +43,7 @@ Set the conditions for the rule to detect using aggregations, an equation, and a
 
 ### Set aggregations [custom-threshold-aggregation]
 
-Aggregations summarize your data to make it easier to analyze. Set any of the following aggregation types to gather data to create your rule: `Average`, `Max`, `Min`, `Cardinality`, `Count`, `Sum,` `Percentile`, or `Rate`. For more information about these options, refer to [Aggregation options](../../../solutions/observability/incident-management/aggregation-options.md).
+Aggregations summarize your data to make it easier to analyze. Set any of the following aggregation types to gather data to create your rule: `Average`, `Max`, `Min`, `Cardinality`, `Count`, `Sum,` `Percentile`, or `Rate`. For more information about these options, refer to [Aggregation options](/solutions/observability/incident-management/aggregation-options.md).
 
 For example, to gather the total number of log documents with a log level of `warn`:
 
@@ -127,10 +127,10 @@ The behavior of the alert depends on whether any **group alerts by** fields are 
     * If `host-1` reports CPU usage below the threshold of 80%, the alert status is changed to recovered.
 
 
-::::{note} 
+::::{note}
 **How to untrack decommissioned hosts**
 
-If a host (for example, `host-1`) is decommissioned, you probably no longer want to see "no data" alerts about it. To mark an alert as untracked: Go to the Alerts table, click the ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon to expand the "More actions" menu, and click *Mark as untracked*.
+If a host (for example, `host-1`) is decommissioned, you probably no longer want to see "no data" alerts about it. To mark an alert as untracked: Go to the Alerts table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to expand the "More actions" menu, and click *Mark as untracked*.
 
 ::::
 
@@ -145,25 +145,25 @@ To add actions to rules, you must first create a connector for that service (for
 :::::{dropdown} Connector types
 Connectors provide a central place to store connection information for services and integrations with third party systems. The following connectors are available when defining actions for alerting rules:
 
-* [Cases](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html)
-* [D3 Security](https://www.elastic.co/guide/en/kibana/current/d3security-action-type.html)
-* [Email](https://www.elastic.co/guide/en/kibana/current/email-action-type.html)
-* [{{ibm-r}}](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html)
-* [Index](https://www.elastic.co/guide/en/kibana/current/index-action-type.html)
-* [Jira](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html)
-* [Microsoft Teams](https://www.elastic.co/guide/en/kibana/current/teams-action-type.html)
-* [Observability AI Assistant](https://www.elastic.co/guide/en/kibana/current/obs-ai-assistant-action-type.html)
-* [{{opsgenie}}](https://www.elastic.co/guide/en/kibana/current/opsgenie-action-type.html)
-* [PagerDuty](https://www.elastic.co/guide/en/kibana/current/pagerduty-action-type.html)
-* [Server log](https://www.elastic.co/guide/en/kibana/current/server-log-action-type.html)
-* [{{sn-itom}}](https://www.elastic.co/guide/en/kibana/current/servicenow-itom-action-type.html)
-* [{{sn-itsm}}](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html)
-* [{{sn-sir}}](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html)
-* [Slack](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html)
-* [{{swimlane}}](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html)
-* [Torq](https://www.elastic.co/guide/en/kibana/current/torq-action-type.html)
-* [{{webhook}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html)
-* [xMatters](https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html)
+* [Cases](kibana://reference/connectors-kibana/cases-action-type.md)
+* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -171,7 +171,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -179,9 +179,9 @@ For more information on creating connectors, refer to [Connectors](../../../depl
 :::::{dropdown} Action frequency
 After you select a connector, you must set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you can set the action frequency such that you choose how often the action runs (for example, at each check interval, only when the alert status changes, or at a custom action interval). In this case, you must also select the specific threshold condition that affects when actions run: `Alert`, `No Data`, or `Recovered`.
 
-:::{image} ../../../images/serverless-custom-threshold-run-when.png
+:::{image} /solutions/images/serverless-custom-threshold-run-when.png
 :alt: Configure when a rule is triggered
-:class: screenshot
+:screenshot:
 :::
 
 You can also further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame:
@@ -189,23 +189,23 @@ You can also further refine the conditions under which actions run by specifying
 * **If alert matches query**: Enter a KQL query that defines field-value pairs or query conditions that must be met for notifications to send. The query only searches alert documents in the indices specified for the rule.
 * **If alert is generated during timeframe**: Set timeframe details. Notifications are only sent if alerts are generated within the timeframe you define.
 
-:::{image} ../../../images/serverless-logs-threshold-conditional-alert.png
+:::{image} /solutions/images/serverless-logs-threshold-conditional-alert.png
 :alt: Configure a conditional alert
-:class: screenshot
+:screenshot:
 :::
 
 :::::
 
 
 :::::{dropdown} Action variables
-Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](../../../images/serverless-indexOpen.svg "") and selecting from a list of available variables.
+Use the default notification message or customize it. You can add more context to the message by clicking the Add variable icon ![Add variable](/solutions/images/serverless-indexOpen.svg "") and selecting from a list of available variables.
 
-:::{image} ../../../images/serverless-action-variables-popup.png
+:::{image} /solutions/images/serverless-action-variables-popup.png
 :alt: Action variables list
-:class: screenshot
+:screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.

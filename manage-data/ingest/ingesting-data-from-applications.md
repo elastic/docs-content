@@ -1,22 +1,12 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-ingest-guides.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-ingest-guides.html
+applies_to:
+  stack: ga
 ---
 
 # Ingesting data from applications
-
-% What needs to be done: Refine
-
-% GitHub issue: docs-projects#387
-
-% Scope notes: The ESS and ECE versions should be identical, but they'll still need to be combined.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-ingest-guides.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-ingest-guides.md
-
 
 The following tutorials demonstrate how you can use the Elasticsearch language clients to ingest data from an application into a deployment in {{ech}} or {{ece}}.
 
@@ -38,7 +28,7 @@ The following tutorials demonstrate how you can use the Elasticsearch language c
 [Ingest logs from a Node.js web application using Filebeat](ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md)
 :   Get HTTP request logs from a Node.js web application and deliver them securely into your {{ech}} or {{ece}} deployment. You’ll set up Filebeat to monitor an ECS-formatted log file and then view real-time visualizations of the log events as HTTP requests occur on your Node.js web server.
 
-::::{tip} 
+::::{tip}
 You can use [Elasticsearch ingest pipelines](transform-enrich/ingest-pipelines.md) to preprocess incoming data. This enables you to optimize how your data is indexed, and simplifies tasks such as extracting error codes from a log file and mapping geographic locations to IP addresses.
 ::::
 
