@@ -36,8 +36,8 @@ The installation and configuration steps shown in this example deploys the follo
 * A default installation of [`kube-state-metrics` (KSM)](https://github.com/kubernetes/kube-state-metrics), configured as a dependency of the Helm chart. KSM is required by the Kubernetes integration to collect cluster-level metrics.
 
 * A group of {{agent}}s deployed as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), connected to {{fleet}}, and configured through a {{fleet}} policy to collect:
-    * Host-level metrics and logs through the [System Integration](integration-docs://reference/system/index.md): This enables the monitoring of your Kubernetes nodes at OS level. {{agent}} Pods will collect system metrics and logs from their own hosts.
-    * Kubernetes metrics and logs through the [Kubernetes Integration](integration-docs://reference/kubernetes/index.md): This enables Kubernetes monitoring at both cluster and node levels. All {{agent}} Pods will collect node-level Kubernetes metrics and logs from their own hosts, while one of the agents will also collect cluster-level metrics and events, acting as a [leader](./kubernetes_leaderelection-provider.md).
+    * Host-level metrics and logs through the [System integration](integration-docs://reference/system/index.md): This enables the monitoring of your Kubernetes nodes at OS level. {{agent}} Pods will collect system metrics and logs from their own hosts.
+    * Kubernetes metrics and logs through the [Kubernetes integration](integration-docs://reference/kubernetes/index.md): This enables Kubernetes monitoring at both cluster and node levels. All {{agent}} Pods will collect node-level Kubernetes metrics and logs from their own hosts, while one of the agents will also collect cluster-level metrics and events, acting as a [leader](./kubernetes_leaderelection-provider.md).
 
 By default, all resources are installed in the namespace defined by your current `kubectl` context. You can override this by specifying a different namespace using the `--namespace` option during installation.
 
@@ -161,7 +161,7 @@ Now that you’ve {{agent}} and data is flowing, you can set up the {{k8s}} inte
 3. On the {{k8s}} integration page, click **Add Kubernetes** to add the integration to your {{agent}} policy.
 4. Scroll to the bottom of **Add Kubernetes integration** page. Under **Where to add this integration?** select the **Existing hosts** tab. On the **Agent policies** menu, select the agent policy that you created previously in the [Install {{agent}}](#agent-fleet-managed-helm-example-install-agent) steps.
 
-    You can leave all of the other integration settings at their default values. For details about the available inputs and data sets, refer to the [Kubernetes Integration](integration-docs://reference/kubernetes/index.md) documentation.
+    You can leave all of the other integration settings at their default values. For details about the available inputs and data sets, refer to the [Kubernetes integration](integration-docs://reference/kubernetes/index.md) documentation.
 
     ::::{important}
     All inputs under the **Collect Kubernetes metrics from kube-state-metrics** section default to `kube-state-metrics:8080` as the destination host. This works if you deployed KSM (kube-state-metrics) alongside {{agent}} during the chart installation, which is the default behavior, as both components are installed in the same namespace.
