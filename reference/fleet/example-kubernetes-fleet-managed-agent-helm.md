@@ -3,6 +3,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-kubernetes-fleet-managed-agent-helm.html
 applies_to:
   stack: ga 8.18
+  serverless: all
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Example: Install Fleet-managed Elastic Agent on Kubernetes using Helm [example-kubernetes-fleet-managed-agent-helm]
@@ -25,7 +31,7 @@ This guide takes you through these steps:
 To get started, you need:
 
 * A local install of the [Helm](https://helm.sh/) {{k8s}} package manager.
-* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server) component included.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server) component. An {{serverless-full}} project also meets this requirement.
 * An active {{k8s}} cluster.
 
 ## Installation overview [overview]
