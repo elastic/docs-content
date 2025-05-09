@@ -1,28 +1,54 @@
 # Unless a later match takes precedence, someone on the docs team must review all PRs to this repo
-*                           @elastic/docs
+*                                           @elastic/docs
 
 # Templates, workflows, and config
-/.github/                   @elastic/doc-leads
-/.github/workflows/         @elastic/docs-engineering
-/acrolinx/                  @elastic/doc-leads
+/.github/                                   @elastic/doc-leads
+/.github/workflows/                         @elastic/docs-engineering
+/acrolinx/                                  @elastic/doc-leads
 
-# V3 docs
-/cloud-account/             @elastic/platform-docs
-/deploy-manage/             @elastic/platform-docs
-/explore-analyze/           @elastic/platform-docs
-/extend/                    @elastic/platform-docs
-/get-started/               @elastic/platform-docs
-/manage-data/               @elastic/platform-docs
-/reference/                 @elastic/platform-docs
-/release-notes/             @elastic/docs
-/solutions/                 @elastic/obs-docs @elastic/search-docs @elastic/security-docs
-/solutions/observability/   @elastic/obs-docs
-/solutions/search/          @elastic/search-docs
-/solutions/security         @elastic/security-docs
-/troubleshoot/              @elastic/docs
+# The docs
+/cloud-account/                             @elastic/platform-docs
+/deploy-manage/                             @elastic/platform-docs
+/explore-analyze/                           @elastic/platform-docs
+/extend/                                    @elastic/platform-docs
+/get-started/                               @elastic/platform-docs
 
-# What should we do with these files?
-/raw-migrated-files/
+/manage-data/                               @elastic/platform-docs
+/manage-data/ingestion/                     @elastic/ingest-docs
+
+/reference/                                 @elastic/platform-docs
+/reference/data-analysis/	                @elastic/docs
+/reference/data-analysis/observability/     @elastic/experience-docs
+/reference/data-analysis/kibana/ 	        @elastic/platform-docs
+/reference/data-analysis/machine-learning/	@elastic/platform-docs
+/reference/data-analysis/observability/    	@elastic/experience-docs
+/reference/elasticsearch/clients/	        @elastic/platform-docs
+/reference/glossary	                        @elastic/docs
+/reference/ingestion-tools	                @elastic/ingest-docs
+/reference/observability	                @elastic/experience-docs
+/reference/search	                        @elastic/platform-docs
+/reference/security	                        @elastic/experience-docs
+
+/release-notes/                             @elastic/docs
+
+/release-notes/apm-agents/                  @elastic/ingest-docs
+/release-notes/elastic-cloud-serverless/    ??
+/release-notes/elastic-observability/       @elastic/ingest-docs @elastic/experience-docs
+/release-notes/elastic-security/            @elastic/ingest-docs @elastic/experience-docs
+/release-notes/elasticsearch-clients/       ??
+/release-notes/fleet-elastic-agent/         @elastic/ingest-docs
+/release-notes/intro/                       @elastic/docs
+
+/solutions/                                 @elastic/experience-docs @elastic/platform-docs
+/solutions/observability/                   @elastic/experience-docs
+/solutions/observability/get-started/       @elastic/ingest-docs
+/solutions/search/                          @elastic/platform-docs
+/solutions/security/                        @elastic/experience-docs
+
+/troubleshoot/                              @elastic/docs
+
+# Raw migrated files
+/raw-migrated-files/                        @elastic/docs
 
 # Legacy serverless docs
 /serverless/                                @elastic/platform-docs
