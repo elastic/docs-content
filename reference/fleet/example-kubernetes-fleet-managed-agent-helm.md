@@ -123,12 +123,18 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     ...
     ```
 
-9. Run the `kubectl get pods -n default` command to confirm that the {{agent}} Pods are running:
+9. Run the `kubectl get pods -n default` command to confirm that the {{agent}} Pods are running. You should see one {{agent}} Pod running on each Kubernetes node:
 
     ```sh
     NAME                       READY   STATUS    RESTARTS      AGE
     agent-pernode-demo-86mst   1/1     Running   0          12s
     ```
+
+    ::::{note}
+    If your Kubernetes nodes have [`taints`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) configured, you may need to add `tolerations` to the {{agent}} DaemonSet during installation to ensure the Pods can run on tainted nodes.
+
+    You can do this by setting the `presets.perNode.tolerations[]` value, which accepts standard Kubernetes toleration definitions.
+    ::::    
 
 10. In the **Add agent** flyout, wait a minute or so for confirmation that {{agent}} has successfully enrolled with {{fleet}} and that data is flowing:
 
