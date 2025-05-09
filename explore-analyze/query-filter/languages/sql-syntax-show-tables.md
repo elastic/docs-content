@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # SHOW TABLES [sql-syntax-show-tables]

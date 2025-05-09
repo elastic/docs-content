@@ -14,9 +14,9 @@ applies_to:
     ess: ga
     ece: ga
 products:
-  - elasticsearch-cloud-hosted-heroku
-  - cloud-hosted
-  - cloud-enterprise
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Autoscaling in {{ece}} and {{ech}}

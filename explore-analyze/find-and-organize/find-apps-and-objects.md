@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Find apps and objects [kibana-navigation-search]

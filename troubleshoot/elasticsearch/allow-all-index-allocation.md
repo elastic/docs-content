@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 % Need to retitle to be about the problem, not the solution

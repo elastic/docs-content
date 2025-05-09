@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - machine-learning
+  - id: machine-learning
 ---
 
 # Deploy the model in your cluster [ml-nlp-deploy-model]

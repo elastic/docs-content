@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: ga
 products:
-  - kibana
+  - id: kibana
 ---
 
 # {{es}} API keys [api-keys]

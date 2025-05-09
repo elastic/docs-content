@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - observability
+  - id: observability
 ---
 
 # Categorize log entries [categorize-logs]

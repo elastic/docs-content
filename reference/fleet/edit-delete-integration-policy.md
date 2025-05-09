@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Edit or delete an {{agent}} integration policy [edit-or-delete-integration-policy]

@@ -6,7 +6,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # An NLP end-to-end tutorial [nlp-example]

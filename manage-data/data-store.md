@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # The Elasticsearch data store [elasticsearch-intro-what-is-es]

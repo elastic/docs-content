@@ -7,7 +7,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]

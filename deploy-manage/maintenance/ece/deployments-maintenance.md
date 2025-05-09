@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Deployments maintenance [ece-maintenance-mode-deployments]

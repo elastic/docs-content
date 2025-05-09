@@ -9,9 +9,9 @@ applies_to:
     ess: ga
     ece: ga
 products:
-  - cloud-enterprise
-  - cloud-hosted
-  - elasticsearch-cloud-hosted-heroku
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Manage IP traffic filters in ECH or ECE

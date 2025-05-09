@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - elasticsearch-cloud-hosted-heroku
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Access the console [ech-getting-started-accessing]

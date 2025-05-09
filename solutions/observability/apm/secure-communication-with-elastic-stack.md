@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # Secure communication with the Elastic Stack [apm-secure-comms-stack]

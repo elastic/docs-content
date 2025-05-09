@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Using a proxy server with Elastic Agent and Fleet [fleet-agent-proxy-support]

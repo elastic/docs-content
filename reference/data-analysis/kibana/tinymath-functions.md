@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - kibana
+  - id: kibana
 ---
 
 # TinyMath functions [canvas-tinymath-functions]

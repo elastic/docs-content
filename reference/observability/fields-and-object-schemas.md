@@ -7,8 +7,8 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Fields and object schemas [fields-reference]

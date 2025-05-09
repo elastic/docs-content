@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Settings managed by ECK [k8s-reserved-settings]

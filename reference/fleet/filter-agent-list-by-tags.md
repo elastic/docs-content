@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Add tags to filter the Agents list [filter-agent-list-by-tags]

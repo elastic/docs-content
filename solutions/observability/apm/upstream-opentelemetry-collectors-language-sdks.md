@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Upstream OpenTelemetry Collectors and language SDKs [apm-open-telemetry-direct]

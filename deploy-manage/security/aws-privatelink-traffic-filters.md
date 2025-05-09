@@ -6,8 +6,8 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - cloud-hosted
-  - elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # AWS PrivateLink traffic filters

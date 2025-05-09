@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - elasticsearch-cloud-hosted-heroku
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # {{heroku}} regions [ech-reference-regions]

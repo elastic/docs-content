@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Update Strategy [k8s-logstash-update-strategy]

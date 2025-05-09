@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Perform ECE hosts maintenance [ece-perform-host-maintenance]

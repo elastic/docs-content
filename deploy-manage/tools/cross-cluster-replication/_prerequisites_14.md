@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Prerequisites [_prerequisites_14]

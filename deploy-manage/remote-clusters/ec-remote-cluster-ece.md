@@ -7,7 +7,7 @@ applies_to:
     ess: ga
     ece: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Access deployments of an {{ece}} environment [ec-remote-cluster-ece]

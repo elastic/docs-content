@@ -7,8 +7,8 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - elasticsearch-cloud-hosted-heroku
-  - cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
 ---
 
 # Add plugins and extensions [ec-adding-plugins]

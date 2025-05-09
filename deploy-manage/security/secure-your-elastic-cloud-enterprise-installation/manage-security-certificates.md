@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: ga
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Manage security certificates [ece-manage-certificates]

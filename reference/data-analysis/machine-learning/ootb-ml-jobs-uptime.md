@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - machine-learning
+  - id: machine-learning
 ---
 
 # Uptime {{anomaly-detect}} configurations [ootb-ml-jobs-uptime]

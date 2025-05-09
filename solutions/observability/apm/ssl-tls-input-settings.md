@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - observability
+  - id: observability
 ---
 
 # SSL/TLS input settings [apm-agent-server-ssl]

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Heat map layer [heatmap-layer]

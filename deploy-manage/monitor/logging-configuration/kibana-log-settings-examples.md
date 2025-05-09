@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Examples [log-settings-examples]

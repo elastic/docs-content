@@ -10,8 +10,8 @@ applies_to:
     eck: all
     self: all
 products:
-  - cloud-hosted
-  - kibana
+  - id: cloud-hosted
+  - id: kibana
 ---
 
 # Stack monitoring alerts [kibana-alerts]

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - machine-learning
+  - id: machine-learning
 ---
 
 # Working with data frame analytics at scale [ml-dfa-scale]

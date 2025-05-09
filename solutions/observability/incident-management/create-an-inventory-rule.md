@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create an inventory rule [observability-create-inventory-threshold-alert-rule]

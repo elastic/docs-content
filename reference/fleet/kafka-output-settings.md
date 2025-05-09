@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Kafka output settings [kafka-output-settings]

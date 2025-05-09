@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Remote clusters with {{ech}} [ec-enable-ccs]

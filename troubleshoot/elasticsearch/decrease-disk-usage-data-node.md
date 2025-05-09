@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Decrease the disk usage of data nodes [decrease-disk-usage-data-node]

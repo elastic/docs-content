@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: deprecated 8.15.0
 products:
-  - observability
+  - id: observability
 ---
 
 # Troubleshoot Uptime mapping issues [troubleshoot-uptime-mapping-issues]

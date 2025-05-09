@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Install {{kib}} on Windows [windows]

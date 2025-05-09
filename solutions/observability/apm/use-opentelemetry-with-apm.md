@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Use OpenTelemetry with APM [apm-open-telemetry]

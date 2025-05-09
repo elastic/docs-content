@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: preview
 products:
-  - security
-  - cloud-serverless
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Add Osquery Response Actions [security-osquery-response-action]

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Filter a single layer [maps-layer-based-filtering]

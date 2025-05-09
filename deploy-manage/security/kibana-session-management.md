@@ -9,7 +9,7 @@ applies_to:
     eck: ga
     self: ga
 products:
-  - kibana
+  - id: kibana
 ---
 
 # {{kib}} session management [xpack-security-session-management]

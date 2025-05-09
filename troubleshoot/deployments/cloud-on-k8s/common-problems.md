@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Troubleshoot common Elastic Cloud on Kubernetes issues [k8s-common-problems]

@@ -14,9 +14,9 @@ applies_to:
     ess: all
     ece: all
 products:
-  - cloud-enterprise
-  - elasticsearch-cloud-hosted-heroku
-  - cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
 ---
 
 # Enable stack monitoring on ECH and ECE deployments

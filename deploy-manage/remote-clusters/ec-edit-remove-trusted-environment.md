@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Edit or remove a trusted environment [ec-edit-remove-trusted-environment]

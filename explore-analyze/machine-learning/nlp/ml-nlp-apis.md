@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - machine-learning
+  - id: machine-learning
 ---
 
 # API quick reference [ml-nlp-apis]

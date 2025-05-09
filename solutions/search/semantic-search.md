@@ -6,8 +6,8 @@ applies_to:
   stack:
   serverless:
 products:
-  - elasticsearch
-  - cloud-serverless
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Semantic search [semantic-search]

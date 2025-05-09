@@ -13,9 +13,9 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
-  - cloud-kubernetes
-  - kibana
+  - id: elasticsearch
+  - id: cloud-kubernetes
+  - id: kibana
 ---
 
 # Defining roles [defining-roles]

@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Tutorial: Full-text search and filtering with Query DSL [full-text-filter-tutorial]

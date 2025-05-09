@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - machine-learning
+  - id: machine-learning
 ---
 
 # {{metricbeat}} {{anomaly-detect}} configurations [ootb-ml-jobs-metricbeat]

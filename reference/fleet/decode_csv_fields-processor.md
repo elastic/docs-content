@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Decode CSV fields [decode_csv_fields-processor]

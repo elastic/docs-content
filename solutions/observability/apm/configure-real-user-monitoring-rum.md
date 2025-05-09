@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - observability
+  - id: observability
 ---
 
 # Configure Real User Monitoring (RUM) [apm-configuration-rum]

@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Troubleshoot failed certificate verification with curl on Mac [trb-security-maccurl]

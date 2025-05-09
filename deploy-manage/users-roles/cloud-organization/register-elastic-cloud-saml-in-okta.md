@@ -7,7 +7,7 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Register {{ecloud}} SAML in Okta [ec-saml-sso-okta]

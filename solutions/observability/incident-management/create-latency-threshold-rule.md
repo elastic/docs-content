@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create a latency threshold rule [observability-create-latency-threshold-alert-rule]

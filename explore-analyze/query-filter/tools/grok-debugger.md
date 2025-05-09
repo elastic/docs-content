@@ -6,8 +6,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - kibana
-  - cloud-serverless
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Grok debugger [xpack-grokdebugger]

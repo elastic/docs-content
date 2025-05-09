@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # APM Agent explorer [apm-agent-explorer]

@@ -11,8 +11,8 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
-  - kibana
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Map external users and groups to roles [mapping-roles]

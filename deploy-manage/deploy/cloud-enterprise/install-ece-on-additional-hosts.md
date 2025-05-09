@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Install ECE on additional hosts [ece-installing-additional]

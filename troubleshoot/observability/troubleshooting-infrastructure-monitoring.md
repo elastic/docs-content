@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability: all
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Troubleshoot infrastructure monitoring [troubleshooting-infrastructure-monitoring]

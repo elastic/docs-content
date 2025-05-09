@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Semantic search with `semantic_text` [semantic-search-semantic-text]

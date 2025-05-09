@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Move nodes or instances from allocators [ece-move-nodes]

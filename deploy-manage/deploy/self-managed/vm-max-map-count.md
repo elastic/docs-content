@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Increase virtual memory [vm-max-map-count]

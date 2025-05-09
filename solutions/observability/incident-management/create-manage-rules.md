@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create and manage rules [observability-create-manage-rules]

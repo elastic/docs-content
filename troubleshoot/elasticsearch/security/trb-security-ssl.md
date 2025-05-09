@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Common SSL/TLS exceptions [trb-security-ssl]

@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Repository isolation on Azure [ec-snapshot-repository-azure-migration]

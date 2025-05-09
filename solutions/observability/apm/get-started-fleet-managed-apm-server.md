@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # Fleet-managed APM Server [get-started-with-fleet-apm-server]

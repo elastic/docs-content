@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Using a custom ingest pipeline with the Kubernetes Integration [ingest-pipeline-kubernetes]

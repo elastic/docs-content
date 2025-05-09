@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Security limitations [security-limitations]

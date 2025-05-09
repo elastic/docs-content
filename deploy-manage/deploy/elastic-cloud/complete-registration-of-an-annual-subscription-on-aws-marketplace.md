@@ -6,7 +6,7 @@ applies_to:
     ess: ga
   serverless: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Complete the registration of an annual subscription on AWS Marketplace [ec-marketplace-aws-prepaid-signup]

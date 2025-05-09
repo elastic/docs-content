@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: preview
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Troubleshoot {{kib}} Task Manager [task-manager-troubleshooting]

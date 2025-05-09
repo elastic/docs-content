@@ -6,7 +6,7 @@ applies_to:
   serverless:
     security: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Osquery FAQ [osquery-faq]

@@ -6,7 +6,7 @@ mapped_pages:
 applies_to:
   serverless:
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # {{serverless-full}}

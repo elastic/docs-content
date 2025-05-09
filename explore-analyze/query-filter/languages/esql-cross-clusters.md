@@ -6,7 +6,7 @@ applies_to:
   stack: ga
   serverless: unavailable
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 

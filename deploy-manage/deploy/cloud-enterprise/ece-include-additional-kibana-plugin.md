@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Include additional {{kib}} plugins [ece-include-additional-kibana-plugin]

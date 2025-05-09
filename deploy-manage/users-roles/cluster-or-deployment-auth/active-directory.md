@@ -10,8 +10,8 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
-  - cloud-enterprise
+  - id: elasticsearch
+  - id: cloud-enterprise
 ---
 
 # Active Directory user authentication [active-directory-realm]

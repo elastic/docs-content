@@ -6,7 +6,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - apm-php-agent
+  - id: apm-php-agent
 ---
 
 # Collection of diagnostic information [_collection_of_diagnostic_information]

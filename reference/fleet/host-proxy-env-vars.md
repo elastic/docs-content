@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Proxy Server connectivity using default host variables [host-proxy-env-vars]

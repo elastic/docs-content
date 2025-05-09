@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Bootstrapping a cluster [modules-discovery-bootstrap-cluster]

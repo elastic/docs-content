@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Configure default system deployment templates [ece-configuring-ece-configure-system-templates]

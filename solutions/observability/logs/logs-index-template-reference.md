@@ -5,7 +5,7 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - observability
+  - id: observability
 ---
 
 # Logs index template reference [logs-index-template]

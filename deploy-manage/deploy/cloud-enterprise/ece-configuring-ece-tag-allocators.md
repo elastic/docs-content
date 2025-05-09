@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Tag your allocators [ece-configuring-ece-tag-allocators]

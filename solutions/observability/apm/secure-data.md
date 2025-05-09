@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - observability
+  - id: observability
 ---
 
 # Application data security [apm-data-security]

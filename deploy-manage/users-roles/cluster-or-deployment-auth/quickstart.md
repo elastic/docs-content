@@ -9,7 +9,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Quickstart [tutorial-secure-access-to-kibana]

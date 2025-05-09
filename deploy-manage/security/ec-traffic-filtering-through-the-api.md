@@ -7,8 +7,8 @@ applies_to:
     ess:
     ece:
 products:
-  - cloud-hosted
-  - cloud-enterprise
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Manage traffic filters through the API [ec-traffic-filtering-through-the-api]

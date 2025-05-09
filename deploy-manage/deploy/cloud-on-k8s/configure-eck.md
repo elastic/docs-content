@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Apply ECK configuration settings [k8s-operator-config]

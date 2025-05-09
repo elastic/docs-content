@@ -10,8 +10,8 @@ applies_to:
     eck: all
     self: all
 products:
-  - cloud-enterprise
-  - cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Cluster or deployment users

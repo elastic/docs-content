@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - security
+  - id: security
 ---
 
 # Cross-cluster search and detection rules [rules-cross-cluster-search]

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - machine-learning
+  - id: machine-learning
 ---
 
 # Adding custom URLs to data frame analytics jobs [ml-dfa-custom-urls]

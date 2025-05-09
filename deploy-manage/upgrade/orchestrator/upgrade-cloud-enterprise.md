@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 % The upgrade procedure is expected to change with ECE 3.8.0 release. This document is currently a temporary draft, pending to be refined.

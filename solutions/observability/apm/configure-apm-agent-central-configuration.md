@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # Configure APM agent central configuration [apm-configure-agent-config]

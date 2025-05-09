@@ -10,9 +10,9 @@ applies_to:
   serverless:
     security: all
 products:
-  - security
-  - cloud-serverless
-  - kibana
+  - id: security
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # {{elastic-sec}} overview [es-overview]

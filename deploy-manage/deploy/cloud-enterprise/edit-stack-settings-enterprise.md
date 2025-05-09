@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Add Enterprise Search user settings [ece-manage-enterprise-search-settings]

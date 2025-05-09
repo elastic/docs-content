@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Trace an {{es}} query in {{kib}} [kibana-troubleshooting-trace-query]

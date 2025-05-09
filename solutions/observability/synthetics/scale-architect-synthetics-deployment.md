@@ -8,8 +8,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Scale and architect a Synthetics deployment [synthetics-scale-and-architect]

@@ -9,7 +9,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Tune for disk usage [tune-for-disk-usage]

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Create a simple dashboard to monitor website logs [create-a-dashboard-of-panels-with-web-server-data]

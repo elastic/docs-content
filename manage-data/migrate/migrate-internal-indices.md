@@ -10,8 +10,8 @@ applies_to:
     eck: unavailable
   serverless: unavailable
 products:
-  - cloud-hosted
-  - elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Migrate internal indices

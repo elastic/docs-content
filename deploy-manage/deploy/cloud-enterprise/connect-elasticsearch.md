@@ -7,7 +7,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Connect to {{es}} [ece-connect]

@@ -7,9 +7,9 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - elastic-stack
-  - cloud-kubernetes
-  - ecs
+  - id: elastic-stack
+  - id: cloud-kubernetes
+  - id: ecs
 ---
 
 # Glossary [terms]

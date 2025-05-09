@@ -13,10 +13,10 @@ applies_to:
     eck:
     self:
 products:
-  - cloud-hosted
-  - cloud-enterprise
-  - elasticsearch-cloud-hosted-heroku
-  - elasticsearch
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: elasticsearch
 ---
 
 # JWT authentication [jwt-auth-realm]

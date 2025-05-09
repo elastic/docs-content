@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: ga
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 % Scope: TLS certificates setup / multi-node cluster / manual configuration

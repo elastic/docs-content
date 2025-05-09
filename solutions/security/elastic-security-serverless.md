@@ -6,7 +6,7 @@ applies_to:
   serverless:
     security: all
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # {{sec-serverless}} [what-is-security-serverless]

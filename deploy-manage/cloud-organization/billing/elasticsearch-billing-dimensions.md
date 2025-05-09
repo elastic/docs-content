@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless: all
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # {{es}} billing dimensions [elasticsearch-billing]

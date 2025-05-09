@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure logging for standalone {{agent}}s [elastic-agent-standalone-logging-config]

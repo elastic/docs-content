@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Canvas function reference [canvas-function-reference]

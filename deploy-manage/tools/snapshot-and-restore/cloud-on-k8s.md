@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck:
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Manage snapshot repositories in {{eck}} [k8s-snapshots]

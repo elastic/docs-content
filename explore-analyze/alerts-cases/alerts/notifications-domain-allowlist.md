@@ -7,7 +7,7 @@ applies_to:
     ess:
   serverless: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Notifications domain allowlist [organizations-notifications-domain-allowlist]

@@ -9,7 +9,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Deploy ECK on GKE Autopilot [k8s-autopilot]

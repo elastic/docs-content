@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Create auto-follow patterns [ccr-auto-follow-create]

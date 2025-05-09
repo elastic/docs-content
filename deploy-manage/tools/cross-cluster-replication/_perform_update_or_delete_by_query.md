@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Perform update or delete by query [_perform_update_or_delete_by_query]

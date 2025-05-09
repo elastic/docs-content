@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - ingest
+  - id: ingest
 ---
 
 # Elastic air-gapped architectures [airgapped-env]

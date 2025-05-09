@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # {{es}} log4j configuration [logging]

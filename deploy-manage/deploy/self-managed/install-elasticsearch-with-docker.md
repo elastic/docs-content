@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Install {{es}} with Docker [docker]

@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - security
-  - cloud-serverless
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Optimizing anomaly results [tuning-anomaly-results]

@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Delaying allocation when a node leaves [delayed-allocation]

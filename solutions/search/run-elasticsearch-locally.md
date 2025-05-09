@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Run {{es}} locally [run-elasticsearch-locally]

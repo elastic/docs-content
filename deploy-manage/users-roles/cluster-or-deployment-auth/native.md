@@ -13,9 +13,9 @@ applies_to:
     eck: all
     self: all
 products:
-  - elasticsearch
-  - cloud-kubernetes
-  - kibana
+  - id: elasticsearch
+  - id: cloud-kubernetes
+  - id: kibana
 ---
 
 # Native user authentication [native-realm]

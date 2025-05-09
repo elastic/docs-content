@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - observability
+  - id: observability
 ---
 
 # Monitor a Fleet-managed APM Server [apm-monitor-apm-self-install]

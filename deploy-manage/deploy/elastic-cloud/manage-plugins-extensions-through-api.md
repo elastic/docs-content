@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Manage plugins and extensions through the API [ec-plugins-guide]

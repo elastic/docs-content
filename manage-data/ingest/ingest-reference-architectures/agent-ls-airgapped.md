@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - ingest
+  - id: ingest
 ---
 
 # Elastic Agent to Logstash: Air-gapped environment [agent-ls-airgapped]

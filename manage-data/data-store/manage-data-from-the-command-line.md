@@ -9,8 +9,8 @@ applies_to:
     ece:
   serverless: ga
 products:
-  - cloud-hosted
-  - cloud-enterprise
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Manage data from the command line

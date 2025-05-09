@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Rebuilding a broken Zookeeper quorum [ece-troubleshooting-zookeeper-quorum]

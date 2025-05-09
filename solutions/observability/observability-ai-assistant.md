@@ -6,7 +6,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - observability
+  - id: observability
 ---
 
 # {{obs-ai-assistant}} [obs-ai-assistant]

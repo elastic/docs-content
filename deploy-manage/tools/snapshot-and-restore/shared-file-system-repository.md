@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Shared file system repository [snapshots-filesystem-repository]

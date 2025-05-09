@@ -7,7 +7,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Running in air-gapped environments [k8s-air-gapped]

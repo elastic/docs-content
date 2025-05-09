@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # Step 2: Enable Universal Profiling in Kibana [profiling-self-managed-enable-kibana]

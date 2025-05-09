@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - machine-learning
+  - id: machine-learning
 ---
 
 # Count functions [ml-count-functions]

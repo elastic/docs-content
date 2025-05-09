@@ -6,8 +6,8 @@ applies_to:
   stack:
   serverless:
 products:
-  - cloud-serverless
-  - kibana
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Playground [playground]

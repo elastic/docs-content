@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Client libraries [elasticsearch-clients]

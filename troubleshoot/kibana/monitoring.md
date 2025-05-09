@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Troubleshoot {{kib}} monitoring [monitor-troubleshooting]

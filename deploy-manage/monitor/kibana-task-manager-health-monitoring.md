@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: preview
 products:
-  - kibana
+  - id: kibana
 ---
 
 # {{kib}} task manager health monitoring [task-manager-health-monitoring]

@@ -8,7 +8,7 @@ applies_to:
     ece:
     eck:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Operator privileges [operator-privileges]

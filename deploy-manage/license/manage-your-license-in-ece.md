@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Manage your license in {{ece}} [ece-add-license]

@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Quorum-based decision making [modules-discovery-quorums]

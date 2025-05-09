@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - observability
+  - id: observability
 ---
 
 # Secure communication with APM agents [apm-secure-agent-communication]

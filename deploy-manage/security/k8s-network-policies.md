@@ -6,7 +6,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Kubernetes network policies [k8s-network-policies]

@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Restrictions and known problems [ec-restrictions]

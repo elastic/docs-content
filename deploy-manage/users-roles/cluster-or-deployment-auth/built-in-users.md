@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Built-in users in self-managed clusters [built-in-users]

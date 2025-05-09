@@ -9,8 +9,8 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - kibana
-  - cloud-hosted
+  - id: kibana
+  - id: cloud-hosted
 ---
 
 # Troubleshoot {{ecloud}}

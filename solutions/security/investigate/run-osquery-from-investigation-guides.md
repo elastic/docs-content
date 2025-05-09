@@ -7,8 +7,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - security
-  - cloud-serverless
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Run Osquery from investigation guides [security-invest-guide-run-osquery]

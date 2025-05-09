@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: all
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Event Settings [ec-autoops-event-settings]

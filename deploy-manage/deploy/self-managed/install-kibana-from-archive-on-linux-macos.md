@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - kibana
+  - id: kibana
 sub:
   ipcommand: ifconfig
 ---

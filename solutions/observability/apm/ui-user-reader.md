@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # APM reader user [apm-app-reader]

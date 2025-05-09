@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: ga
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Configure the TLS version [ece-configure-tls-version]

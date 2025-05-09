@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless: all
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Check Serverless status and get updates [general-serverless-status]

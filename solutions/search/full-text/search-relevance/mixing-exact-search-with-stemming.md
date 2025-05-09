@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Mixing exact search with stemming [mixing-exact-search-with-stemming]

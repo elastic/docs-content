@@ -7,7 +7,7 @@ applies_to:
     ess:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Reading indices from older {{es}} versions [archive-indices]

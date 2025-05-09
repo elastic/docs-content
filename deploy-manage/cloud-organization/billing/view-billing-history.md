@@ -7,8 +7,8 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - cloud-hosted
-  - cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # View your billing history [ec-billing-history]

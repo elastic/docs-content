@@ -6,7 +6,7 @@ applies_to:
     elasticsearch:
     security:
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Serverless project custom roles [custom-roles]

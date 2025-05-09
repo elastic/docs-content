@@ -11,9 +11,9 @@ applies_to:
     eck: unavailable
   serverless: unavailable
 products:
-  - cloud-hosted
-  - cloud-enterprise
-  - elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Migrate your {{es}} data

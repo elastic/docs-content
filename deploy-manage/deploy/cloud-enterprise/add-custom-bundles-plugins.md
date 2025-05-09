@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Add custom bundles and plugins to your deployment [ece-add-custom-bundle-plugin]

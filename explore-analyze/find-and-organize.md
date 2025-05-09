@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Find and organize content

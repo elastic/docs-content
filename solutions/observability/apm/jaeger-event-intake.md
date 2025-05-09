@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: deprecated
 products:
-  - observability
+  - id: observability
 ---
 
 # Jaeger event intake [apm-api-jaeger]

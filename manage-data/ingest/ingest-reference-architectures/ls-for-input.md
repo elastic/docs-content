@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - ingest
+  - id: ingest
 ---
 
 # Logstash to Elasticsearch [ls-for-input]

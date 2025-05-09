@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Using Kibana server logs [kibana-troubleshooting-kibana-server-logs]

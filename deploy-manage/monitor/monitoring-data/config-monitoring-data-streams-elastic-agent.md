@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Configuring data streams created by Elastic Agent [config-monitoring-data-streams-elastic-agent]

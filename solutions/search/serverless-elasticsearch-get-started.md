@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless:
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Get started with {{es}} Serverless [elasticsearch-get-started]

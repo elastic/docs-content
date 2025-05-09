@@ -12,9 +12,9 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - cloud-hosted
-  - cloud-serverless
-  - elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
+  - id: cloud-serverless
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Service status

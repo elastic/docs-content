@@ -8,7 +8,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Enable stack monitoring for {{es}} on a self-managed cluster

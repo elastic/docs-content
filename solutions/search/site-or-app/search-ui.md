@@ -7,7 +7,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - search-ui
+  - id: search-ui
 ---
 
 # What is Search UI? [overview]

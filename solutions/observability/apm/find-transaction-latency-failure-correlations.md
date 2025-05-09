@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Find transaction latency and failure correlations [observability-apm-find-transaction-latency-and-failure-correlations]

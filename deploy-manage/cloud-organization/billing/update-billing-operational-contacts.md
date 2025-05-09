@@ -6,7 +6,7 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Update billing and operational contacts [ec-billing-contacts]

@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # Switch to the Elastic APM integration [apm-upgrade-to-apm-integration]

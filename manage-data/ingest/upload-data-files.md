@@ -6,8 +6,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - cloud-serverless
-  - kibana
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Upload data files [upload-data-kibana]

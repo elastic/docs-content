@@ -8,9 +8,9 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - kibana
+  - id: cloud-serverless
+  - id: observability
+  - id: kibana
 ---
 
 # Observability

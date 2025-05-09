@@ -8,8 +8,8 @@ applies_to:
     ess:
     ece:
 products:
-  - cloud-hosted
-  - cloud-enterprise
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Ingest logs from a Python application using Filebeat

@@ -9,7 +9,7 @@ applies_to:
     eck: ga
   serverless: all
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Autoscaling

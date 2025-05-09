@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # Migrate from the Elastic Synthetics integration [synthetics-migrate-from-integration]

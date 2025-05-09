@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - kibana
+  - id: kibana
 ---
 
 # {{kib}} task management [task-manager-production-considerations]

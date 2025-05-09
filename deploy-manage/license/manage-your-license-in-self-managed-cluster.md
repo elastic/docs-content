@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Manage your license in a self-managed cluster [managing-licenses]

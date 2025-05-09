@@ -6,7 +6,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Tutorial: Analyze eCommerce data with aggregations using Query DSL [aggregations-tutorial]

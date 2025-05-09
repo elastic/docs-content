@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Migrate {{fleet}}-managed {{agent}}s from one cluster to another [migrate-elastic-agent]

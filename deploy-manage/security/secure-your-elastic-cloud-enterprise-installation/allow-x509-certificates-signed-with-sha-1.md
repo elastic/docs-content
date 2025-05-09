@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: ga
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Allow x509 Certificates Signed with SHA-1 [ece-allow-x509-sha1]

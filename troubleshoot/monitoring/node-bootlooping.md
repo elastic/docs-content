@@ -7,8 +7,8 @@ applies_to:
   deployment:
     ess: all
 products:
-  - cloud-hosted
-  - elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Troubleshoot node bootlooping in {{ech}} [ec-config-change-errors]

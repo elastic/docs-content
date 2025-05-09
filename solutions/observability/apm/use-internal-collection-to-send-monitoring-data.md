@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - observability
+  - id: observability
 ---
 
 # Use internal collection to send monitoring data [apm-monitoring-internal-collection]

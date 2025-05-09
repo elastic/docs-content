@@ -7,7 +7,7 @@ applies_to:
   deployment:
     eck:
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Manage HTTP certificates on ECK

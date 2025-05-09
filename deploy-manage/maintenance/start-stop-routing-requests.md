@@ -7,8 +7,8 @@ applies_to:
     ess:
     ece:
 products:
-  - cloud-enterprise
-  - cloud-hosted
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Start and stop routing requests [maintenance-mode-routing]

@@ -5,8 +5,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - elastic-products-platform
-  - elastic-stack
+  - id: elastic-products-platform
+  - id: elastic-stack
 ---
 
 # Understanding versioning and availability

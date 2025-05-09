@@ -6,7 +6,7 @@ applies_to:
     ess: ga
   serverless: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Subscribe from a marketplace [ec-marketplaces]

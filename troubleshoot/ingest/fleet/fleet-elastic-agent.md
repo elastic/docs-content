@@ -5,8 +5,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet and Elastic Agent [troubleshooting-intro]

@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   serverless:
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Create a serverless project [serverless-get-started]

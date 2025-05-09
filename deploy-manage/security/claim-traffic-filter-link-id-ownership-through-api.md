@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Claim traffic filter link ID ownership through the API [ec-claim-traffic-filter-link-id-through-the-api]

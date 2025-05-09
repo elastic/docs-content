@@ -6,7 +6,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - observability
+  - id: observability
 ---
 
 # Inspect [inspect]

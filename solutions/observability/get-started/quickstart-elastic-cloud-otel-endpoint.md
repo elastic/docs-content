@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   serverless:
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint

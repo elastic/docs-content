@@ -7,7 +7,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - apm-python-agent
+  - id: apm-python-agent
 ---
 
 # Troubleshoot APM Python Agent [troubleshooting]

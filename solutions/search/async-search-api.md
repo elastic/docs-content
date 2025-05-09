@@ -6,7 +6,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Long running searches with the Async Search API [async-search-intro]

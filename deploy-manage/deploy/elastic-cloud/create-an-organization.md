@@ -9,8 +9,8 @@ applies_to:
     ess: ga
   serverless: ga
 products:
-  - cloud-hosted
-  - cloud-serverless
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Sign up and create an organization

@@ -10,9 +10,9 @@ applies_to:
     ece:
   serverless: ga
 products:
-  - elasticsearch
-  - cloud-enterprise
-  - cloud-hosted
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Data tiers

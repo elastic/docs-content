@@ -7,8 +7,8 @@ applies_to:
   serverless:
     observability: all
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Understand "no results found" message [handle-no-results-found-message]

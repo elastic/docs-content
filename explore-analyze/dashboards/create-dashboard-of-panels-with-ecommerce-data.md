@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Create a dashboard with time series charts [create-a-dashboard-of-panels-with-ecommerce-data]

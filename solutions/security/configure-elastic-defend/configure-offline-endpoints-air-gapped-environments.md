@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - security
+  - id: security
 ---
 
 # Configure offline endpoints and air-gapped environments [offline-endpoint]

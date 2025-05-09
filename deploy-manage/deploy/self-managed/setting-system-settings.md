@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Configure system settings [setting-system-settings]

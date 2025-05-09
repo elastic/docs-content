@@ -7,7 +7,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 % document scope: This doc focuses on everything that can be achieved from the deployment UI

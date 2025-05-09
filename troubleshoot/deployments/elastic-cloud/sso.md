@@ -7,7 +7,7 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Troubleshoot {{ecloud}} SSO [ec_troubleshoot_sso]

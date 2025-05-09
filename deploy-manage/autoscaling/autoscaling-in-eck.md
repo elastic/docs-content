@@ -7,7 +7,7 @@ applies_to:
   deployment:
     eck: ga
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 # Autoscaling in {{eck}}
 

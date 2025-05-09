@@ -9,10 +9,10 @@ applies_to:
   serverless:
     observability:
 products:
-  - observability
-  - cloud-serverless
-  - elastic-products-platform
-  - elastic-stack
+  - id: observability
+  - id: cloud-serverless
+  - id: elastic-products-platform
+  - id: elastic-stack
 ---
 
 # Quickstart: Monitor hosts with {{agent}} [quickstart-monitor-hosts-with-elastic-agent]

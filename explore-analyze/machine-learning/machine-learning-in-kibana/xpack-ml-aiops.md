@@ -8,8 +8,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - kibana
-  - cloud-serverless
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # AIOps Labs [xpack-ml-aiops]

@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # {{kib}} task manager: performance and scaling guide [task-manager-production-considerations]

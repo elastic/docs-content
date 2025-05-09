@@ -7,7 +7,7 @@ applies_to:
     ece: ga
     eck: ga
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Remote clusters between {{ece}} and ECK [ece-enable-ccs-for-eck]

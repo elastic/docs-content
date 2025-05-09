@@ -11,10 +11,10 @@ applies_to:
     ess:
   serverless: ga
 products:
-  - elasticsearch
-  - cloud-hosted
-  - kibana
-  - cloud-serverless
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Watcher

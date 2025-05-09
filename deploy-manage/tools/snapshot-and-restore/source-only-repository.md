@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Source-only repository [snapshots-source-only-repository]

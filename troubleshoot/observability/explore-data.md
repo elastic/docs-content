@@ -6,7 +6,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - observability
+  - id: observability
 ---
 
 # Explore data [exploratory-data-visualizations]

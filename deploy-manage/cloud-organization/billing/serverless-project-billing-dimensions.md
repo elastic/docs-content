@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless: all
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Serverless project billing dimensions [general-serverless-billing]

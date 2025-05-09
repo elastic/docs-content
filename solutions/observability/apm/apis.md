@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - observability
+  - id: observability
 ---
 
 # APM APIs [apm-apis]

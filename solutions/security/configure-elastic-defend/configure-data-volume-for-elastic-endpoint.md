@@ -8,8 +8,8 @@ applies_to:
   serverless:
     security: all
 products:
-  - security
-  - cloud-serverless
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Configure data volume for {{elastic-endpoint}} [endpoint-data-volume]

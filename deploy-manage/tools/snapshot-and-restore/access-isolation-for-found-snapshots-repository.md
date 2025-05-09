@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Access isolation for the found-snapshots repository [ec-snapshot-repository-migration]

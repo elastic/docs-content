@@ -6,8 +6,8 @@ applies_to:
   deployment:
     ess:
 products:
-  - cloud-hosted
-  - elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Configure a snapshot repository using Azure Blob storage [ec-azure-snapshotting]

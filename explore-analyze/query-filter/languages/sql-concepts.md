@@ -7,7 +7,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Conventions and Terminology [sql-concepts]

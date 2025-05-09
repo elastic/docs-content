@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Increase the file descriptor limit [file-descriptors]

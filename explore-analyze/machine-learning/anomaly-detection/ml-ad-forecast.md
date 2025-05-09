@@ -6,8 +6,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - machine-learning
-  - cloud-serverless
+  - id: machine-learning
+  - id: cloud-serverless
 ---
 
 # Forecast future behavior [ml-ad-forecast]

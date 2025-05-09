@@ -5,7 +5,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Deploy an {{es}} instance with a route [k8s-openshift-deploy-elasticsearch]

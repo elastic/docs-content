@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Configure privileges for cross-cluster replication [_configure_privileges_for_ccr_2]

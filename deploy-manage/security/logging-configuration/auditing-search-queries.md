@@ -10,7 +10,7 @@ applies_to:
     self: all
   serverless: unavailable
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Audit {{es}} search queries [auditing-search-queries]

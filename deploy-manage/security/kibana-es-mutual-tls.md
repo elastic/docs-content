@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Mutual TLS authentication between {{kib}} and {{es}} [elasticsearch-mutual-tls]

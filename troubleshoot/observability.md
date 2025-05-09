@@ -7,7 +7,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - observability
+  - id: observability
 ---
 
 # Troubleshoot Observability [troubleshooting]

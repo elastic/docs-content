@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   serverless: all
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Elastic for Security billing dimensions [security-billing]

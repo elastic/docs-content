@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self:
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Start and stop {{kib}} [start-stop]

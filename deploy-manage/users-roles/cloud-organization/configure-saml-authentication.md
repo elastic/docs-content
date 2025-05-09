@@ -7,7 +7,7 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Configure {{ecloud}} SAML single sign-on [ec-saml-sso]

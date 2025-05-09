@@ -7,7 +7,7 @@ applies_to:
     ess: ga
     ece: ga
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Access deployments of an {{ecloud}} organization [ece-remote-cluster-ece-ess]

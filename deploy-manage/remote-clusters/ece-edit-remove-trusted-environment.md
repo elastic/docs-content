@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece: ga
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Edit or remove a trusted environment [ece-edit-remove-trusted-environment]

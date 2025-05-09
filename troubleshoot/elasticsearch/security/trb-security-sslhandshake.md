@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Troubleshoot SSLHandshakeException and failed node connections [trb-security-sslhandshake]

@@ -10,7 +10,7 @@ applies_to:
     self: all
   serverless: all
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Users and roles

@@ -8,8 +8,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - machine-learning
-  - cloud-serverless
+  - id: machine-learning
+  - id: cloud-serverless
 ---
 
 # What is Elastic Machine Learning? [machine-learning-intro]

@@ -5,7 +5,7 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - ingest
+  - id: ingest
 ---
 
 # Ingesting time series data [ingest-tools]

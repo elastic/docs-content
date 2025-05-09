@@ -6,8 +6,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - machine-learning
-  - kibana
+  - id: machine-learning
+  - id: kibana
 ---
 
 # Data frame analytics [ml-dfanalytics]

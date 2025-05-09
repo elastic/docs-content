@@ -12,7 +12,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Controlling access at the document and field level [field-and-document-access-control]

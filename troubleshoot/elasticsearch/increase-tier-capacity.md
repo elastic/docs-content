@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Warning: Not enough nodes to allocate all shard replicas [increase-tier-capacity]

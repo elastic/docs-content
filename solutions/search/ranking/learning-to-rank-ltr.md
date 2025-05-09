@@ -5,7 +5,7 @@ applies_to:
   stack:
   serverless:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Learning To Rank (LTR) [learning-to-rank]

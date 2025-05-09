@@ -10,7 +10,7 @@ applies_to:
     eck: all
     self: all
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Error: {{kib}} server is not ready yet [not-ready]

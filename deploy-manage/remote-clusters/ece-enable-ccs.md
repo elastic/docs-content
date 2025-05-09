@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ece: ga
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Remote clusters with {{ece}} [ece-enable-ccs]

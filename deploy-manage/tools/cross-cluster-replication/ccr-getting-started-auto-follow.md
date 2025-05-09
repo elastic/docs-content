@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Create an auto-follow pattern to replicate time series indices [ccr-getting-started-auto-follow]

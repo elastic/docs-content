@@ -6,7 +6,7 @@ applies_to:
     ess: all
   serverless: all
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Elastic Consumption Units [ec-billing-ecu]

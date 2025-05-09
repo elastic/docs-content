@@ -7,7 +7,7 @@ applies_to:
   deployment:
     ece: all
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Fresh installation of ECE using Podman hosts [ece-install-using-podman]

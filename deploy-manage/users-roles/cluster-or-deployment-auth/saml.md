@@ -19,11 +19,11 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
-  - cloud-enterprise
-  - cloud-hosted
-  - elasticsearch-cloud-hosted-heroku
-  - cloud-kubernetes
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-kubernetes
 ---
 
 # SAML authentication [saml-realm]

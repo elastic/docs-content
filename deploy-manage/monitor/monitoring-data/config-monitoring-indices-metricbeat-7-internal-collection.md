@@ -6,7 +6,7 @@ applies_to:
   deployment:
     self: all
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Configuring indices created by Metricbeat 7 or internal collection [config-monitoring-indices-metricbeat-7-internal-collection]

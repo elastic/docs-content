@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - machine-learning
+  - id: machine-learning
 ---
 
 # Nginx {{anomaly-detect}} configurations [ootb-ml-jobs-nginx]

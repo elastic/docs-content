@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - kibana
+  - id: kibana
 ---
 
 # Roll back to a previous version of {{kib}} [upgrade-migrations-rolling-back]

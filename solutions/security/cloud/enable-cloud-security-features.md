@@ -5,7 +5,7 @@ applies_to:
   serverless:
     security: all
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Enable cloud security features in {{serverless-short}} [security-enable-cloudsec]

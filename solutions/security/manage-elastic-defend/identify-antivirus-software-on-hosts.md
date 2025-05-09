@@ -6,7 +6,7 @@ applies_to:
   serverless:
     security: preview
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Identify antivirus software on your hosts [identify-third-party-av-products]

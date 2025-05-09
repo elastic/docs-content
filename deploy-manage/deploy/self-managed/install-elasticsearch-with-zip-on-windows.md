@@ -7,7 +7,7 @@ applies_to:
   deployment:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 sub:
   es-conf: "%ES_HOME%\\config"
   slash: \

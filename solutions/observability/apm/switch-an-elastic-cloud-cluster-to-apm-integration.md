@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - observability
+  - id: observability
 ---
 
 # Switch an Elastic Cloud cluster to the APM integration [apm-integration-upgrade-steps-ess]

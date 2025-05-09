@@ -9,7 +9,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Create a follower index to replicate a specific index [ccr-getting-started-follower-index]

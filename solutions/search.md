@@ -7,9 +7,9 @@ applies_to:
   stack:
   serverless:
 products:
-  - elasticsearch
-  - cloud-serverless
-  - kibana
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Elasticsearch

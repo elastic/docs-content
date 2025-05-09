@@ -7,7 +7,7 @@ applies_to:
     ece: ga
     self: ga
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Access clusters of a self-managed environment [ece-remote-cluster-self-managed]

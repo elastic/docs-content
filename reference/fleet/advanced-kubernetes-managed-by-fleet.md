@@ -4,8 +4,8 @@ mapped_pages:
 applies_to:
   stack:
 products:
-  - fleet
-  - elastic-agent
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Advanced Elastic Agent configuration managed by Fleet [advanced-kubernetes-managed-by-fleet]

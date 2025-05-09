@@ -8,9 +8,9 @@ applies_to:
   serverless:
     security: all
 products:
-  - security
-  - cloud-serverless
-  - machine-learning
+  - id: security
+  - id: cloud-serverless
+  - id: machine-learning
 ---
 
 # Security {{anomaly-detect}} configurations

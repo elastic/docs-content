@@ -10,7 +10,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Enable stack monitoring on ECK deployments [k8s-stack-monitoring]

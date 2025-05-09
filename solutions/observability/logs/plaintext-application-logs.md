@@ -6,8 +6,8 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - observability
-  - cloud-serverless
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Plaintext application logs [logs-plaintext]

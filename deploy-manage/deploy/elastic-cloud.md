@@ -6,7 +6,7 @@ applies_to:
     ess: ga
   serverless: ga
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # {{ecloud}} [intro]

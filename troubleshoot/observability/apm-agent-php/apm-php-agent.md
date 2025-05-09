@@ -7,7 +7,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - apm-php-agent
+  - id: apm-php-agent
 ---
 
 # Troubleshoot APM PHP Agent [troubleshooting]

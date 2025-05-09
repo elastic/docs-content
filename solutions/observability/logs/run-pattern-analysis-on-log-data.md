@@ -4,7 +4,7 @@ mapped_pages:
 applies_to:
   stack: all
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Run a pattern analysis on log data [observability-run-log-pattern-analysis]

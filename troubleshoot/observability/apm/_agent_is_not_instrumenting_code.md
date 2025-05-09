@@ -6,7 +6,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - apm-php-agent
+  - id: apm-php-agent
 ---
 
 # Agent is not instrumenting code [_agent_is_not_instrumenting_code]

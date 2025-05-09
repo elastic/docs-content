@@ -7,7 +7,7 @@ applies_to:
     ess:
   serverless:
 products:
-  - cloud-serverless
+  - id: cloud-serverless
 ---
 
 # Compare {{ech}} and Serverless [elasticsearch-differences]

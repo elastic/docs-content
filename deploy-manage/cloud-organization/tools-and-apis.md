@@ -6,7 +6,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Tools and APIs for your Cloud organization [ec-work-with-apis]

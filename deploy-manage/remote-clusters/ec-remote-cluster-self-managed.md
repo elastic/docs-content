@@ -7,7 +7,7 @@ applies_to:
     ess: ga
     self: ga
 products:
-  - cloud-hosted
+  - id: cloud-hosted
 ---
 
 # Access clusters of a self-managed environment [ec-remote-cluster-self-managed]

@@ -10,9 +10,9 @@ applies_to:
     ece:
   serverless: ga
 products:
-  - kibana
-  - cloud-enterprise
-  - cloud-serverless
+  - id: kibana
+  - id: cloud-enterprise
+  - id: cloud-serverless
 ---
 
 # Run API requests with Console [console-kibana]

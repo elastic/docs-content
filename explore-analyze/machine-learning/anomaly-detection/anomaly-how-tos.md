@@ -7,8 +7,8 @@ applies_to:
   stack: ga
   serverless: ga
 products:
-  - machine-learning
-  - cloud-serverless
+  - id: machine-learning
+  - id: cloud-serverless
 ---
 
 # How-tos [anomaly-how-tos]

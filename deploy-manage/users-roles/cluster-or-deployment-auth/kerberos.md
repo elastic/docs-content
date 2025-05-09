@@ -13,10 +13,10 @@ applies_to:
     eck:
     self:
 products:
-  - cloud-enterprise
-  - cloud-hosted
-  - elasticsearch-cloud-hosted-heroku
-  - elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: elasticsearch
 ---
 
 # Kerberos authentication [kerberos-realm]

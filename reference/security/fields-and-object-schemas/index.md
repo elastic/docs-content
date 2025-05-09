@@ -6,7 +6,7 @@ applies_to:
   serverless:
     security: all
 products:
-  - security
+  - id: security
 ---
 
 # Fields and object schemas [security-ref-intro]

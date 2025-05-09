@@ -7,7 +7,7 @@ applies_to:
   deployment:
     eck: all
 products:
-  - cloud-kubernetes
+  - id: cloud-kubernetes
 ---
 
 # Accessing services [k8s-accessing-elastic-services]

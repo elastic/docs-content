@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ece:
 products:
-  - cloud-enterprise
+  - id: cloud-enterprise
 ---
 
 # Google Cloud Storage (GCS) repository [ece-configure-gcp-snapshotting]

@@ -10,7 +10,7 @@ applies_to:
     eck:
     self:
 products:
-  - elasticsearch
+  - id: elasticsearch
 ---
 
 # Allow Elasticsearch to allocate the data in the system [allow-all-cluster-allocation]
