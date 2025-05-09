@@ -1,26 +1,23 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-kubernetes-fleet-managed-agent-helm.html
+applies_to:
+  stack: ga 8.18
 ---
 
 # Example: Install Fleet-managed Elastic Agent on Kubernetes using Helm [example-kubernetes-fleet-managed-agent-helm]
 
 This example demonstrates how to install a {{fleet}}-managed {{agent}} on a {{k8s}} system using a Helm chart, collect {{k8s}} metrics and logs using the [Kubernetes Integration](integration-docs://reference/kubernetes/index.md), and send the data to an {{es}} cluster in {{ecloud}} for visualization in {{kib}}.
 
+Although this tutorial uses an {{ech}} deployment, the same steps can be adapted for other deployment types. For self-managed, {{eck}}, or {{ece}} deployments, you might need to provide the {{fleet}} Server CA certificate during the {{agent}} installation, as outlined below.
+
 For an overview of the {{agent}} Helm chart and its benefits, refer to [Install {{agent}} on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md).
-
-::::{note}
-This guide deploys a single set of {{agent}} DaemonSet pods to collect all metrics, which works well for small to medium-sized {{k8s}} clusters. 
-
-For larger clusters, or when kube-state-metrics (KSM) metrics collection becomes a performance bottleneck, we recommend a more scalable architecture: move the KSM metric collection to a separate set of agents deployed as sidecars alongside KSM, with autosharding enabled.
-
-This can be easily implemented with the Helm chart. For details, refer to the [KSM autosharding example](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-ksm-sharding).
-::::
 
 This guide takes you through these steps:
 
+* [Installation overview](#overview)
 * [Add the Elastic Helm repository](#preparations)
-* [Install {{agent}}](#agent-fleet-managed-helm-example-install-agent)
+* [Create a {{fleet}} policy and install {{agent}}](#agent-fleet-managed-helm-example-install-agent)
 * [Install the Kubernetes integration](#agent-fleet-managed-helm-example-install-integration)
 * [Tidy up](#agent-fleet-managed-helm-example-tidy-up)
 
@@ -32,16 +29,26 @@ To get started, you need:
 * An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server) component included.
 * An active {{k8s}} cluster.
 
-## Installation overview
+## Installation overview [overview]
 
 The installation and configuration steps shown in this example deploys the following components to monitor your Kubernetes cluster:
 
-* {{agent}}, deployed as a `DaemonSet`, connected to {{fleet}}, and configured through a {{fleet}} policy to collect:
-    * Host level metrics and logs through the [System Integration](integration-docs://reference/system/index.md). This enables the monitoring of Kubernetes nodes at OS level.
-    * Kubernetes node and cluster-level metrics and logs through the [Kubernetes Integration](integration-docs://reference/kubernetes/index.md). For cluster-level metrics collection, one of the agents will act as a [leader](./kubernetes_leaderelection-provider.md).
-* A default installation of `kube-state-metrics` (KSM), configured as a dependency of the chart. KSM is required by the Kubernetes integration to collect cluster-level metrics.
+* A default installation of [`kube-state-metrics` (KSM)](https://github.com/kubernetes/kube-state-metrics), configured as a dependency of the Helm chart. KSM is required by the Kubernetes integration to collect cluster-level metrics.
+
+* A group of {{agent}}s deployed as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), connected to {{fleet}}, and configured through a {{fleet}} policy to collect:
+    * Host-level metrics and logs through the [System Integration](integration-docs://reference/system/index.md): This enables the monitoring of your Kubernetes nodes at OS level. {{agent}} Pods will collect system metrics and logs from their own hosts.
+    * Kubernetes metrics and logs through the [Kubernetes Integration](integration-docs://reference/kubernetes/index.md): This enables Kubernetes monitoring at both cluster and node levels. All {{agent}} Pods will collect node-level Kubernetes metrics and logs from their own hosts, while one of the agents will also collect cluster-level metrics and events, acting as a [leader](./kubernetes_leaderelection-provider.md).
 
 By default, all resources are installed in the namespace defined by your current `kubectl` context. You can override this by specifying a different namespace using the `--namespace` option during installation.
+
+::::{note}
+The proposed approach of a single {{agent}} DaemonSet to collect all metrics works well for small to medium-sized {{k8s}} clusters. 
+
+For larger clusters, or when kube-state-metrics (KSM) metrics collection becomes a performance bottleneck, we recommend a more scalable architecture: move the KSM metric collection to a separate set of agents deployed as sidecars alongside KSM, with autosharding enabled.
+
+This can be easily implemented with the Helm chart. For details, refer to the [KSM autosharding example](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-ksm-sharding).
+::::
+
 
 % we will uncomment the next line when the use cases are documented in the landing page :)
 % For other architectures and use cases, refer to [Advanced use cases](./install-on-kubernetes-using-helm.md#advanced-use-cases).
@@ -51,7 +58,7 @@ By default, all resources are installed in the namespace defined by your current
 :::{include} _snippets/agent_add_helm_repository.md
 :::
 
-## Install {{agent}} [agent-fleet-managed-helm-example-install-agent]
+## Create a {{fleet}} policy and install {{agent}} [agent-fleet-managed-helm-example-install-agent]
 
 1. Open your {{ecloud}} deployment, and from the navigation menu select **Fleet**.
 2. From the **Agents** tab, select **Add agent**.
@@ -70,7 +77,7 @@ By default, all resources are installed in the namespace defined by your current
     --set agent.fleet.preset=perNode
     ```
 
-    Note that the command has these properties:
+    The command has these properties:
 
     * `helm install`: Runs the Helm CLI install tool. You can use `helm upgrade` to modify or update an installed release.
     * `demo`: The name for this specific installation of the chart, known as the **release name**. You can choose any name you like.
@@ -79,7 +86,7 @@ By default, all resources are installed in the namespace defined by your current
     * `--set system.enabled=true`: Adds the required volumes and mounts to enable host monitoring through the System integration.
     * `--set agent.fleet.url=<Fleet-URL>`: Specifies the address where {{agent}} connects to {{fleet}} Server in your {{ecloud}} deployment.
     * `--set agent.fleet.token=<Fleet-token>`: Sets the enrollment token that {{agent}} uses to authenticate with {{fleet}} Server.
-    * `--set agent.fleet.preset=perNode`: Runs the agent as a `DaemonSet`, to collect node-level metrics and logs. Refer to [](install-on-kubernetes-using-helm.md) for more details and use cases for this parameter.
+    * `--set agent.fleet.preset=perNode`: Runs the agent as a `DaemonSet`, which is required for the purpose of this example. Refer to [](install-on-kubernetes-using-helm.md) for more details and use cases for this parameter.
 
     After your updates, the command should be similar to:
 
@@ -116,7 +123,7 @@ By default, all resources are installed in the namespace defined by your current
     ...
     ```
 
-9. Run the `kubectl get pods -n default` command to confirm that the {{agent}} pod is running:
+9. Run the `kubectl get pods -n default` command to confirm that the {{agent}} Pods are running:
 
     ```sh
     NAME                       READY   STATUS    RESTARTS      AGE

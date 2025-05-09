@@ -1,4 +1,4 @@
-Before installing, add the Elastic Helm repository and verify the available versions of the `elastic-agent` chart. If the repository is already configured, run `helm repo update` to ensure you have the latest package information.
+Before installing, add the Elastic Helm repository to your local Helm configuration and verify the available versions of the `elastic-agent` chart. If the repository is already configured, run `helm repo update` to ensure you have the latest package information.
 
 1. Set up Helm repository:
 
