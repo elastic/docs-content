@@ -52,7 +52,7 @@ Enabling the failure store via [index templates](../templates.md) can only affec
 To modify an existing data stream's options, use the [put data stream options](./failure-store.md) API:
 
 ```console
-PUT my-datastream-existing/_options
+PUT _data_stream/my-datastream-existing/_options
 {
   "failure_store": {
     "enabled": true <1>
@@ -66,7 +66,7 @@ PUT my-datastream-existing/_options
 The failure store redirection can be disabled using this API as well. When the failure store is deactivated, only failed document redirection is halted. Any existing failure data in the data stream will remain until removed by manual deletion or by retention.
 
 ```console
-PUT my-datastream-existing/_options
+PUT _data_stream/my-datastream-existing/_options
 {
   "failure_store": {
     "enabled": false <1>
@@ -78,9 +78,7 @@ PUT my-datastream-existing/_options
 
 ### Enable failure store via cluster setting [set-up-failure-store-cluster-setting]
 
-If you have a large number of existing data streams you may want an easier way to control if failures should be redirected. Instead of enabling the failure store using the [put data stream options](./failure-store.md) API, you can instead configure a set of patterns in the [cluster settings](./failure-store.md) which will enable the failure store feature by default.
-
-Configure a list of patterns using the `data_streams.failure_store.enabled` dynamic cluster setting. If a data stream matches a pattern in this setting and does not have the failure store explicitly disabled in its options, then the failure store will default to being enabled for that matching data stream.
+If you have a large number of existing data streams you may want to enable their failure stores in one place. Instead of updating each of their options individually, set `data_streams.failure_store.enabled` to a list of index patterns in the [cluster settings](./failure-store.md). Any data streams that match one of these patterns will operate with their failure store enabled.
 
 ```console
 PUT _cluster/settings
@@ -90,8 +88,28 @@ PUT _cluster/settings
   }
 }
 ```
-
 1. Indices that match `my-datastream-*` or `logs-*` will redirect failures to the failure store unless explicitly disabled.
+
+Matching data streams will ignore this configuration if the failure store is explicitly enabled or disabled in their [data stream options](./failure-store.md).
+
+```console
+PUT _cluster/settings
+{
+  "persistent" : {
+    "data_streams.failure_store.enabled" : [ "my-datastream-*", "logs-*" ] <1>
+  }
+}
+```
+```console
+PUT _data_stream/my-datastream-1/_options
+{
+  "failure_store": {
+    "enabled": false <2>
+  }
+}
+```
+1. Enabling the failure stores for `my-datastream-*` and `logs-*`
+2. The failure store for `my-datastream-1` is disabled even though it matches `my-datastream-*`.
 
 ## Using a failure store [use-failure-store]
 
