@@ -46,6 +46,13 @@
 /solutions/security/                        @elastic/experience-docs
 
 /troubleshoot/                              @elastic/docs
+/troubleshoot/deployments                   @elastic/platform-docs
+/troubleshoot/elasticsearch                 @elastic/platform-docs
+/troubleshoot/ingest                        @elastic/ingest-docs
+/troubleshoot/kibana                        @elastic/platform-docs
+/troubleshoot/monitoring                    @elastic/platform-docs @elastic/experience-docs
+/troubleshoot/observability                 @elastic/ingest-docs @elastic/experience-docs
+/troubleshoot/security                      @elastic/ingest-docs @elastic/experience-docs
 
 # Raw migrated files
 /raw-migrated-files/                        @elastic/docs
