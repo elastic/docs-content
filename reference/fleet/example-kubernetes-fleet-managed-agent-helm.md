@@ -169,7 +169,7 @@ Now that you’ve {{agent}} and data is flowing, you can set up the {{k8s}} inte
     If your KSM instance runs in a different namespace than {{agent}}, or if it uses a different service name, update the `host` setting in each data set of the integration to point to the KSM service.
     ::::
 
-5. Click **Save and continue**. When prompted, select to **Add Elastic Agent later** since you’ve already added it using Helm.
+5. Click **Save and continue**. When prompted, select **Add Elastic Agent later**, because you’ve already added the agent using Helm.
 6. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard.
 
     On the dashboard, you can view the status of your {{k8s}} pods, including metrics on memory usage, CPU usage, and network throughput.
@@ -199,6 +199,6 @@ release "demo" uninstalled
 
 ## Next steps
 
-For full details about using the {{agent}} Helm chart refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent).
+For full details about using the {{agent}} Helm chart, refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent).
 
-Refer also to the [examples](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples) section of the GitHub repository for advanced use cases, such as integrating {{agent}}s with [KSM autosharding](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-ksm-sharding), or configuring [mutual TLS authentication](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-certificates) between {{agent}}s and the {{fleet}} Server.
+Refer to the [examples](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples) section of the GitHub repository for advanced use cases, such as integrating {{agent}}s with [KSM autosharding](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-ksm-sharding), or configuring [mutual TLS authentication](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-certificates) between {{agent}}s and the {{fleet}} Server.
