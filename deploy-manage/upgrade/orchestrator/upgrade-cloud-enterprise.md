@@ -115,7 +115,7 @@ If your ECE installation is still using the default, auto-generated certificates
 
 If the license version is not 4 or higher, you must request an updated license from [Elastic Support](/troubleshoot/index.md#contact-us). Once you receive your new license, make sure {{ece}} is upgraded to at least version 2.5.0, and then upload the new license in the Settings page under the Platform menu.
 
-In versions from 2.6 to 2.10 included, some or all platform certificates are generated with a 398-day expiration. Installations that ran on these versions, even temporarily, must have their certificates rotated manually before expiry. For details, check our [KB article](https://support.elastic.co/knowledge/ECE-Certificate-Rotation).
+In versions from 2.6 to 2.10 included, some or all platform certificates are generated with a 398-day expiration. Installations that ran on these versions, even temporarily, must have their certificates rotated manually before expiry. For details, check our [KB article](https://ela.st/ece-certificate-rotation).
 
 
 ## Perform the upgrade [ece-upgrade-steps]
