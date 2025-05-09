@@ -109,7 +109,7 @@ PUT _data_stream/my-datastream-1/_options
 }
 ```
 1. Enabling the failure stores for `my-datastream-*` and `logs-*`
-2. The failure store for `my-datastream-1` is disabled even though it matches `my-datastream-*`.
+2. The failure store for `my-datastream-1` is disabled even though it matches `my-datastream-*`. The data stream options override the cluster setting.
 
 ## Using a failure store [use-failure-store]
 
