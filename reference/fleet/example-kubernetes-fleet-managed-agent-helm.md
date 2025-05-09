@@ -15,7 +15,6 @@ For an overview of the {{agent}} Helm chart and its benefits, refer to [Install 
 
 This guide takes you through these steps:
 
-* [Installation overview](#overview)
 * [Add the Elastic Helm repository](#preparations)
 * [Create a {{fleet}} policy and install {{agent}}](#agent-fleet-managed-helm-example-install-agent)
 * [Install the Kubernetes integration](#agent-fleet-managed-helm-example-install-integration)
@@ -35,7 +34,7 @@ The installation and configuration steps shown in this example deploys the follo
 
 * A default installation of [`kube-state-metrics` (KSM)](https://github.com/kubernetes/kube-state-metrics), configured as a dependency of the Helm chart. KSM is required by the Kubernetes integration to collect cluster-level metrics.
 
-* A group of {{agent}}s deployed as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), connected to {{fleet}}, and configured through a {{fleet}} policy to collect:
+* A group of {{agent}}s deployed as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), connected to {{fleet}}, and configured through a {{fleet}} policy to collect the following metrics and logs:
     * Host-level metrics and logs through the [System integration](integration-docs://reference/system/index.md): This enables the monitoring of your Kubernetes nodes at OS level. {{agent}} Pods will collect system metrics and logs from their own hosts.
     * Kubernetes metrics and logs through the [Kubernetes integration](integration-docs://reference/kubernetes/index.md): This enables Kubernetes monitoring at both cluster and node levels. All {{agent}} Pods will collect node-level Kubernetes metrics and logs from their own hosts, while one of the agents will also collect cluster-level metrics and events, acting as a [leader](./kubernetes_leaderelection-provider.md).
 
@@ -53,12 +52,12 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
 % we will uncomment the next line when the use cases are documented in the landing page :)
 % For other architectures and use cases, refer to [Advanced use cases](./install-on-kubernetes-using-helm.md#advanced-use-cases).
 
-## Add the Elastic Helm repository [preparations]
+## Step 1: Add the Elastic Helm repository [preparations]
 
 :::{include} _snippets/agent_add_helm_repository.md
 :::
 
-## Create a {{fleet}} policy and install {{agent}} [agent-fleet-managed-helm-example-install-agent]
+## Step 2: Create a {{fleet}} policy and install {{agent}} [agent-fleet-managed-helm-example-install-agent]
 
 1. Open your {{ecloud}} deployment, and from the navigation menu select **Fleet**.
 2. From the **Agents** tab, select **Add agent**.
@@ -152,7 +151,7 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     :screenshot:
     :::
 
-## Install the Kubernetes integration [agent-fleet-managed-helm-example-install-integration]
+## Step 3: Install the Kubernetes integration [agent-fleet-managed-helm-example-install-integration]
 
 Now that you’ve {{agent}} and data is flowing, you can set up the {{k8s}} integration.
 
