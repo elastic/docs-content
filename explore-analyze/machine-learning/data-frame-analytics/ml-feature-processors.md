@@ -35,7 +35,7 @@ With this encoding technique, it is not possible to get back to the categorical 
 
 *The figure shows a simple frequency encoding example. The Animal_freq value of `cat` is 0.5 as the feature is present at half of the number of related values. The labels `dog` and `crocodile` occur only once each. For this reason, the Animal_freq value of these labels is 0.25.*
 
-## Multi encoding [multi-encoding]  
+## Multi encoding [multi-encoding]
 
 Multi encoding enables you to use multiple processors in the same {{dfanalytics-job}}.
 You can define an ordered sequence of processors in which the output of a processor can be forwarded to the next processor as an input.

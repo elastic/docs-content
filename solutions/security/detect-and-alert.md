@@ -22,7 +22,7 @@ In addition to creating [your own rules](/solutions/security/detect-and-alert/cr
 There are several special prebuilt rules you need to know about:
 
 * [**Endpoint protection rules**](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md): Automatically create alerts based on {{elastic-defend}}'s threat monitoring and prevention.
-* [**External Alerts**](https://www.elastic.co/guide/en/security/current/external-alerts.html): Automatically creates an alert for all incoming third-party system alerts (for example, Suricata alerts).
+* [**External Alerts**](detection-rules://rules/promotions/external_alerts.md): Automatically creates an alert for all incoming third-party system alerts (for example, Suricata alerts).
 
 If you want to receive notifications via external systems, such as Slack or email, when alerts are created, use the {{kib}} [Alerting and Actions](/explore-analyze/alerts-cases.md) framework.
 
@@ -53,7 +53,7 @@ Cold [data tiers](/manage-data/lifecycle/data-tiers.md) store time series data t
 ### Best practices [best-practices-data-tiers]
 
 * **Retention in hot tier**: We recommend keeping data in the hot tier ({{ilm-cap}} hot phase) for at least 24 hours. {{ilm-cap}} policies that move ingested data from the hot phase to another phase (for example, cold or frozen) in less than 24 hours may cause performance issues and/or rule execution errors.
-* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't support replicas, shard unavailability can cause partial rule run failures. Shard unavailability may be also encountered during or after {{stack}} upgrades. If this happens, you can [manually rerun](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) rules over the affected time period once the shards are available.
+* **Replicas for mission-critical data**: Your data should have replicas if it must be highly available. Since frozen tiers don't have replicas by default, shard unavailability can cause partial rule run failures. Shard unavailability may be also encountered during or after {{stack}} upgrades. If this happens, you can [manually rerun](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) rules over the affected time period once the shards are available.
 
 ### Limitations [limitations-data-tiers]
 

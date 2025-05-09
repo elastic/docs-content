@@ -32,8 +32,8 @@ For a list of settings that must be configured before using your cluster in prod
 {{es}} has three configuration files:
 
 * `elasticsearch.yml` for configuring {{es}}
-* `jvm.options` for configuring {{es}} JVM settings
-* `log4j2.properties` for configuring {{es}} logging
+* `jvm.options` for configuring {{es}} [JVM settings](elasticsearch://reference/elasticsearch/jvm-settings.md)
+* `log4j2.properties` for configuring [{{es}} logging](/deploy-manage/monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md)
 
 These files are located in the config directory, whose default location depends on whether the installation is from an archive distribution (`tar.gz` or `zip`) or a package distribution (Debian or RPM packages).
 

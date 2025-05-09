@@ -16,11 +16,11 @@ All {{ml}} {{anomaly-detect}} endpoints have the following base:
 
 The main resources can be accessed with a variety of endpoints:
 
-* [`/anomaly_detectors/`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly): Create and manage {{anomaly-jobs}}
-* [`/calendars/`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly): Create and manage calendars and scheduled events
-* [`/datafeeds/`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly): Select data from {{es}} to be analyzed
-* [`/filters/`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly): Create and manage filters for custom rules
-* [`/results/`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly): Access the results of an {{anomaly-job}}
-* [`/model_snapshots/`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly): Manage model snapshots
+* [`/anomaly_detectors/`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-close-job): Create and manage {{anomaly-jobs}}
+* [`/calendars/`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-calendars-2): Create and manage calendars and scheduled events
+* [`/datafeeds/`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-datafeeds): Select data from {{es}} to be analyzed
+* [`/filters/`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-filters-1): Create and manage filters for custom rules
+* [`/results/`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-buckets): Access the results of an {{anomaly-job}}
+* [`/model_snapshots/`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-model-snapshots): Manage model snapshots
 
 For a full list, see [{{ml-cap}} {{anomaly-detect}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly).

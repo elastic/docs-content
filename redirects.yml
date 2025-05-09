@@ -207,3 +207,6 @@ redirects:
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/logging.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-net-api/net.md': 'troubleshoot/elasticsearch/clients.md'
   'troubleshoot/elasticsearch/elasticsearch-client-ruby-api/ruby.md': 'troubleshoot/elasticsearch/clients.md'
+
+# Related to https://github.com/elastic/docs-content/pull/1329
+  'manage-data/ingest/transform-enrich/ingest-pipelines-serverless.md': 'manage-data/ingest/transform-enrich/ingest-pipelines.md'
