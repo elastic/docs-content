@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/es-output-settings.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Elasticsearch output settings [es-output-settings]

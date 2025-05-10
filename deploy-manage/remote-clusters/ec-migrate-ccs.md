@@ -1,10 +1,12 @@
 ---
+navigation_title: Migrate the CCS deployment template
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-migrate-ccs.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-migrate-ccs.html
-navigation_title: "Migrate the CCS deployment template"
+products:
+  - id: cloud-hosted
 ---
 
 # Migrate the cross-cluster search deployment template [ec-migrate-ccs]

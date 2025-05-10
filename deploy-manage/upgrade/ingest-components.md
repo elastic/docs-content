@@ -2,10 +2,10 @@
 applies_to:
   stack:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self:  
+    eck:
+    ess:
+    ece:
+    self:
 ---
 # Upgrade your ingest components
 

@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
 ---
 
 # Built-in data filters [apm-filtering]

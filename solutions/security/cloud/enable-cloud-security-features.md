@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   serverless:
     security: all
+products:
+  - id: cloud-serverless
 ---
 
 # Enable cloud security features in {{serverless-short}} [security-enable-cloudsec]

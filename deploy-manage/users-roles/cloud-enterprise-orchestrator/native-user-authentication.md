@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Native users [ece-add-native-users]

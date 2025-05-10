@@ -1,10 +1,12 @@
 ---
-navigation_title: "Kibana"
+navigation_title: Kibana
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting.html
 applies_to:
   stack: all
   serverless: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting.html
+products:
+  - id: kibana
 ---
 
 # Troubleshoot Kibana [kibana-troubleshooting]

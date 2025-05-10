@@ -1,10 +1,12 @@
 ---
+navigation_title: Search and filter with Query DSL
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-filter-tutorial.html
-navigation_title: "Search and filter with Query DSL"
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Full-text search and filtering with Query DSL [full-text-filter-tutorial]

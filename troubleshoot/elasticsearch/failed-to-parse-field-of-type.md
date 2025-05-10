@@ -1,11 +1,11 @@
 ---
 applies_to:
-  stack: 
+  stack:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 navigation_title: "Error: Failed to parse field of type in document with id"
 ---
 

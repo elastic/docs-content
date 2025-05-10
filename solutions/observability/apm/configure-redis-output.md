@@ -1,9 +1,11 @@
 ---
-navigation_title: "Redis"
+navigation_title: Redis
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-redis-output.html
 applies_to:
   stack: all
+products:
+  - id: observability
 ---
 
 # Configure the Redis output [apm-redis-output]

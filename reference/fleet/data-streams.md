@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Data streams [data-streams]

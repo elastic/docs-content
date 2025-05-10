@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-plugins.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-plugins.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Logstash plugins [k8s-logstash-plugins]

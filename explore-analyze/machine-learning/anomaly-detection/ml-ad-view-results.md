@@ -1,10 +1,12 @@
 ---
+navigation_title: View the results
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-view-results.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "View the results"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-view-results.html
+products:
+  - id: machine-learning
 ---
 
 # View the results [ml-ad-view-results]

@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 navigation_title: Getting started
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-getting-started.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Getting Started with SQL [sql-getting-started]

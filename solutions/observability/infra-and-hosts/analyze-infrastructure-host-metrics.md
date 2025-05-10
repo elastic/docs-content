@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Analyze infrastructure and host metrics [observability-infrastructure-monitoring]

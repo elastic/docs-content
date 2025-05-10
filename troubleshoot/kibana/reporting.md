@@ -1,10 +1,12 @@
 ---
-navigation_title: "Reporting"
+navigation_title: Reporting
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting.html
 applies_to:
   stack: all
   serverless: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting.html
+products:
+  - id: kibana
 ---
 
 

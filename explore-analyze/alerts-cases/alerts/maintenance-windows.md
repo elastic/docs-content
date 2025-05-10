@@ -1,10 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maintenance-windows.html
   - https://www.elastic.co/guide/en/serverless/current/maintenance-windows.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Maintenance windows

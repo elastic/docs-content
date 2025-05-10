@@ -1,7 +1,12 @@
 ---
-navigation_title: "decode_xml"
+navigation_title: decode_xml
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_xml-processor.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Decode XML [decode_xml-processor]

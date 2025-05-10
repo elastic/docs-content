@@ -1,10 +1,12 @@
 ---
-navigation_title: "Run downsampling using data stream lifecycle"
+navigation_title: Run downsampling using data stream lifecycle
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/downsampling-dsl.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 

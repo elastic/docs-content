@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
+products:
+  - id: kibana
 ---
 
 # ES|QL [esql-visualizations]

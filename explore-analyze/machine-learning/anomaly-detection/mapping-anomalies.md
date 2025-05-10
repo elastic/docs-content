@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/mapping-anomalies.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/mapping-anomalies.html
+products:
+  - id: machine-learning
 ---
 
 # Mapping anomalies by location [mapping-anomalies]

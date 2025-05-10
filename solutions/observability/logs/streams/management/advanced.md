@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: preview
+  serverless: preview
 ---
 # Configure advanced settings [streams-advanced-settings]
 

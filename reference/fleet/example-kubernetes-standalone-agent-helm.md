@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-kubernetes-standalone-agent-helm.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Example: Install standalone Elastic Agent on Kubernetes using Helm [example-kubernetes-standalone-agent-helm]

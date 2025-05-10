@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet enrollment tokens [fleet-enrollment-tokens]

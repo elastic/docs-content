@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Query DSL

@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-generate-roles-token.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-revoke-roles-token.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage roles tokens

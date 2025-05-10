@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/anomaly-detection-scale.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/anomaly-detection-scale.html
+products:
+  - id: machine-learning
 ---
 
 # Working with anomaly detection at scale [anomaly-detection-scale]

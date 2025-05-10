@@ -1,10 +1,12 @@
 ---
+navigation_title: Finding anomalies
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-finding-anomalies.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Finding anomalies"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-finding-anomalies.html
+products:
+  - id: machine-learning
 ---
 
 # Finding anomalies [ml-ad-finding-anomalies]

@@ -1,7 +1,12 @@
 ---
-navigation_title: "Secure connections"
+navigation_title: Secure connections
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Secure {{agent}} connections [secure]

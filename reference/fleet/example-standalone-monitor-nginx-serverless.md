@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-standalone-monitor-nginx-serverless.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Example: Use standalone Elastic Agent with Elastic Cloud Serverless to monitor nginx [example-standalone-monitor-nginx-serverless]

@@ -1,10 +1,12 @@
 ---
 navigation_title: With your private Docker registry
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline-with-registry.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline-with-registry.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Air-gapped install with a private Docker registry [ece-install-offline-with-registry]

@@ -8,7 +8,15 @@ mapped_pages:
   - https://github.com/elastic/ingest-docs/pull/1373
 applies_to:
   stack: ga
+  deployment:
+    ess:
   serverless: ga
+products:
+  - id: cloud-hosted
+  - id: fleet
+  - id: elastic-agent
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Ingest tools overview

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Standalone Elastic Agent [k8s-elastic-agent]

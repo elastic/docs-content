@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/run-pattern-analysis-discover.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/run-pattern-analysis-discover.html
+products:
+  - id: kibana
 ---
 
 # Run a pattern analysis on your log data [run-pattern-analysis-discover]

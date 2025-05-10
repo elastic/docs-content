@@ -1,11 +1,14 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-through-the-api.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-through-the-api.html
 applies_to:
   deployment:
     ess:
     ece:
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-through-the-api.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-through-the-api.html
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Manage traffic filters through the API [ec-traffic-filtering-through-the-api]

@@ -4,6 +4,9 @@ mapped_pages:
 applies_to:
   stack: ga 8.18
   serverless: all
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Example: Install Fleet-managed Elastic Agent on Kubernetes using Helm [example-kubernetes-fleet-managed-agent-helm]

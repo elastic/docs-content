@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-odbc-installation.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-odbc-installation.html
+products:
+  - id: elasticsearch
 ---
 
 # Driver installation [sql-odbc-installation]

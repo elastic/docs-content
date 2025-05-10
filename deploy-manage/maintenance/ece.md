@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-     ece:
+    ece:
 ---
 
 # ECE maintenance

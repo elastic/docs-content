@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-networking-prereq.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-networking-prereq.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Networking prerequisites [ece-networking-prereq]

@@ -1,10 +1,12 @@
 ---
-navigation_title: "Secure data"
+navigation_title: Secure data
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-security.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
 ---
 
 # Application data security [apm-data-security]

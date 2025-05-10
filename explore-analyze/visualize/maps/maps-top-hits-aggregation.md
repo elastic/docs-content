@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-top-hits-aggregation.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-top-hits-aggregation.html
+products:
+  - id: kibana
 ---
 
 # Display the most relevant documents per entity [maps-top-hits-aggregation]

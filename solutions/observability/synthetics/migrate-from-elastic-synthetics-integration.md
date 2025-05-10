@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-migrate-from-integration.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Migrate from the Elastic Synthetics integration [synthetics-migrate-from-integration]

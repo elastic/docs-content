@@ -6,6 +6,8 @@ applies_to:
   deployment:
     ess:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Reading indices from older {{es}} versions [archive-indices]

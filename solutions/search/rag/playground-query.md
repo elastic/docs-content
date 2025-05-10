@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: kibana
 ---
 
 # View and modify queries [playground-query]

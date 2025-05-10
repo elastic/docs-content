@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/geospatial-analysis.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/geospatial-analysis.html
+products:
+  - id: elasticsearch
 ---
 
 # Geospatial analysis [geospatial-analysis]

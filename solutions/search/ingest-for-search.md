@@ -7,6 +7,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Ingest for search use cases

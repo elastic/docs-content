@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Common problems [apm-common-problems]

@@ -1,10 +1,12 @@
 ---
+navigation_title: Examples
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-examples.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Examples"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-examples.html
+products:
+  - id: elasticsearch
 ---
 
 # Examples [transform-examples]

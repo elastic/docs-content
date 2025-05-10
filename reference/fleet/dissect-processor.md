@@ -1,7 +1,12 @@
 ---
-navigation_title: "dissect"
+navigation_title: dissect
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/dissect-processor.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Dissect strings [dissect-processor]

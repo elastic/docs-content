@@ -4,8 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-maintenance-mode-routing.html
 applies_to:
   deployment:
-     ece:
-     ess:
+    ess:
+    ece:
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Start and stop routing requests [maintenance-mode-routing]

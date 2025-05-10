@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: cloud-serverless
 ---
 
 # Asset management [security-asset-management]

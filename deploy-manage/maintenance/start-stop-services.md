@@ -1,9 +1,9 @@
 ---
 applies_to:
   deployment:
-     ess:
-     ece:
-     self:
+    ess:
+    ece:
+    self:
 ---
 
 # Start and stop services

@@ -1,9 +1,11 @@
 ---
-navigation_title: "Server status"
-applies_to:
-  stack: all
+navigation_title: Server status
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/access.html#status
+applies_to:
+  stack: all
+products:
+  - id: kibana
 ---
 
 # Check {{kib}} server status [access]

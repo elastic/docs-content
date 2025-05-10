@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-reverting-model-snapshot.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-reverting-model-snapshot.html
+products:
+  - id: machine-learning
 ---
 
 # Reverting to a model snapshot [ml-reverting-model-snapshot]

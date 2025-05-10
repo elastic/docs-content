@@ -2,8 +2,11 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-plugins.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Add plugins [modules-plugins]

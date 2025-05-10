@@ -8,7 +8,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-intro.html
 applies_to:
   stack: ga
+  deployment:
+    ess:
   serverless: ga
+products:
+  - id: cloud-hosted
+  - id: kibana
+  - id: cloud-serverless
+  - id: elasticsearch
 ---
 
 # Ingestion

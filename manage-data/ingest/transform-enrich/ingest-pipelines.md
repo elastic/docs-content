@@ -1,9 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
+  - https://www.elastic.co/guide/en/serverless/current/ingest-pipelines.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Elasticsearch ingest pipelines [ingest]

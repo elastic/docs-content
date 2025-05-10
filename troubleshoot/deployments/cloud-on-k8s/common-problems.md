@@ -1,10 +1,12 @@
 ---
-navigation_title: "Common issues"
+navigation_title: Common issues
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-common-problems.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-common-problems.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Troubleshoot common Elastic Cloud on Kubernetes issues [k8s-common-problems]

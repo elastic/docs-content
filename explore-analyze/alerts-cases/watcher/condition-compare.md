@@ -1,10 +1,12 @@
 ---
+navigation_title: Compare condition
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-compare.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Compare condition"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-compare.html
+products:
+  - id: elasticsearch
 ---
 
 # Compare condition [condition-compare]

@@ -3,11 +3,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-up-authentication.html
   - https://www.elastic.co/guide/en/kibana/current/kibana-authentication.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # User authentication

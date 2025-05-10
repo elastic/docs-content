@@ -1,10 +1,12 @@
 ---
+navigation_title: AI Assistant
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
-navigation_title: "AI Assistant"
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: observability
 ---
 
 # {{obs-ai-assistant}} [obs-ai-assistant]

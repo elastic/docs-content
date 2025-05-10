@@ -1,5 +1,5 @@
 ---
-navigation_title: "Breaking changes"
+navigation_title: Breaking changes
 ---
 
 # Elastic {{observability}} breaking changes [elastic-observability-breaking-changes]

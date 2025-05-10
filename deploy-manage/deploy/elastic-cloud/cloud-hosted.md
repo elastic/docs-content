@@ -1,12 +1,14 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/index.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-getting-started.html
   - https://www.elastic.co/guide/en/cloud/current/ec-about.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # {{ech}}

@@ -1,13 +1,15 @@
 ---
+navigation_title: Use Elastic prebuilt rules
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/prebuilt-rules-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-prebuilt-rules-management.html
-
-navigation_title: "Use Elastic prebuilt rules"
 applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Install and manage Elastic prebuilt rules [security-prebuilt-rules-management]

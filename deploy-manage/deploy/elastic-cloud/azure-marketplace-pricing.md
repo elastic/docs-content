@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-azure-marketplace-pricing.html
 applies_to:
   deployment:
     ess: ga
   serverless: preview
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-azure-marketplace-pricing.html
+products:
+  - id: cloud-hosted
 ---
 
 # Azure Marketplace pricing [ec-azure-marketplace-pricing]

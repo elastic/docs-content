@@ -1,10 +1,12 @@
 ---
 navigation_title: Apply configuration settings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Apply ECK configuration settings [k8s-operator-config]

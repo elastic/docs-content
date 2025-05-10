@@ -1,10 +1,12 @@
 ---
-navigation_title: "Elastic Cloud Enterprise"
+navigation_title: Elastic Cloud Enterprise
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Troubleshoot Elastic Cloud Enterprise

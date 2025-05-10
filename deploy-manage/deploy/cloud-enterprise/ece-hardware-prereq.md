@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-hardware-prereq.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-hardware-prereq.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Hardware prerequisites [ece-hardware-prereq]

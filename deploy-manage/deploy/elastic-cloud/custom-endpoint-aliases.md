@@ -1,10 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-regional-deployment-aliases.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-regional-deployment-aliases.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Custom endpoint aliases

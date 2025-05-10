@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-azure-marketplace-native.html
 applies_to:
   deployment:
     ess: ga
   serverless: preview
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-azure-marketplace-native.html
+products:
+  - id: cloud-hosted
 ---
 
 # Azure Native ISV Service [ec-azure-marketplace-native]

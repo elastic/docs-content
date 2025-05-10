@@ -1,5 +1,5 @@
 ---
-navigation_title: "SLOs"
+navigation_title: SLOs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-troubleshoot-slos.html
   - https://www.elastic.co/guide/en/serverless/current/slo-troubleshoot-slos.html
@@ -7,6 +7,9 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Troubleshoot service-level objectives (SLOs) [slo-troubleshoot-slos]

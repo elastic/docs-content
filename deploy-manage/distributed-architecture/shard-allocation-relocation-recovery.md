@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-relocation-recovery.html
 applies_to:
   stack:
+products:
+  - id: elasticsearch
 ---
 
 # Shard allocation, relocation, and recovery [shard-allocation-relocation-recovery]

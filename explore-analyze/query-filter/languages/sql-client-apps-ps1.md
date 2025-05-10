@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-ps1.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-ps1.html
+products:
+  - id: elasticsearch
 ---
 
 # Microsoft PowerShell [sql-client-apps-ps1]

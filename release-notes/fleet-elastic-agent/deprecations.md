@@ -1,5 +1,5 @@
 ---
-navigation_title: "Deprecations"
+navigation_title: Deprecations
 ---
 
 # {{fleet}} and {{agent}} deprecations [fleet-elastic-agent-deprecations]

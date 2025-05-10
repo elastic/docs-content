@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-java-app.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Tutorial: Monitor a Java application [monitor-java-app]

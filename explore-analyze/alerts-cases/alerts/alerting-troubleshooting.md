@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
+products:
+  - id: kibana
 ---
 
 # Troubleshooting and limitations [alerting-troubleshooting]

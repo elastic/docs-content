@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-like-rlike-operators.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-like-rlike-operators.html
+products:
+  - id: elasticsearch
 ---
 
 # LIKE and RLIKE Operators [sql-like-rlike-operators]

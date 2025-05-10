@@ -1,5 +1,5 @@
 ---
-navigation_title: "Upgrade Elastic on a self-managed cluster"
+navigation_title: Upgrade Elastic on a self-managed cluster
 applies_to:
   stack:
   deployment:

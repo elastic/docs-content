@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/controlling-user-cache.html
 applies_to:
+  stack:
   deployment:
     ess:
     ece:
     eck:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Controlling the user cache [controlling-user-cache]

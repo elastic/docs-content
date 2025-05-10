@@ -1,10 +1,12 @@
 ---
+navigation_title: Compatible third party models
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-model-ref.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Compatible third party models"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-model-ref.html
+products:
+  - id: machine-learning
 ---
 
 # Compatible third party models [ml-nlp-model-ref]

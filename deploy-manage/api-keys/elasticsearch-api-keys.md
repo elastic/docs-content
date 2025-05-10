@@ -1,8 +1,10 @@
 ---
-applies_to:
-  stack: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/api-keys.html
+applies_to:
+  stack: ga
+products:
+  - id: kibana
 ---
 
 # {{es}} API keys [api-keys]

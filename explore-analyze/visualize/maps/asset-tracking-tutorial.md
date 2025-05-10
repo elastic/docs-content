@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/asset-tracking-tutorial.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/asset-tracking-tutorial.html
+products:
+  - id: kibana
 ---
 
 # Track, visualize, and alert on assets in real time [asset-tracking-tutorial]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-activity-page.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-activity-page.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Keep track of deployment activity [ece-activity-page]

@@ -1,9 +1,11 @@
 ---
-navigation_title: "APM agent central configuration"
+navigation_title: APM agent central configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configure-agent-config.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Configure APM agent central configuration [apm-configure-agent-config]

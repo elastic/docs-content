@@ -1,11 +1,15 @@
 ---
-navigation_title: "Create custom links"
+navigation_title: Create custom links
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-custom-links.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-create-custom-links.html
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Custom links in the Applications UI [apm-custom-links]

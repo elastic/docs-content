@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/reports.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/reports.html
+products:
+  - id: cloud-serverless
 ---
 
 # Reports [reports]

@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
 ---
 
 # Fields and object schemas [security-ref-intro]

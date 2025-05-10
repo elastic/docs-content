@@ -1,7 +1,12 @@
 ---
-navigation_title: "add_docker_metadata"
+navigation_title: add_docker_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_docker_metadata-processor.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Add Docker metadata [add_docker_metadata-processor]

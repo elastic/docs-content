@@ -1,11 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 navigation_title: Conventions
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-concepts.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_mapping_concepts_across_sql_and_elasticsearch.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Conventions and Terminology [sql-concepts]

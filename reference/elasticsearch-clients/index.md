@@ -1,8 +1,13 @@
 ---
+navigation_title: Clients
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/client/index.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-clients.html
-navigation_title: Clients
+applies_to:
+  stack:
+  serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Elasticsearch clients [elasticsearch-clients]

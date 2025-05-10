@@ -1,10 +1,12 @@
 ---
+navigation_title: Painless examples
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-painless-examples.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Painless examples"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-painless-examples.html
+products:
+  - id: elasticsearch
 ---
 
 # Painless examples [transform-painless-examples]

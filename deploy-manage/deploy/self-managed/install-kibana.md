@@ -3,8 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/setup.html
   - https://www.elastic.co/guide/en/kibana/current/install.html
 applies_to:
+  stack:
   deployment:
     self:
+products:
+  - id: kibana
 ---
 
 # Install {{kib}}

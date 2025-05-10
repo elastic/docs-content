@@ -5,6 +5,8 @@ applies_to:
   stack: preview 9.0
   serverless:
     security: preview
+products:
+  - id: cloud-serverless
 ---
 
 # Identify antivirus software on your hosts [identify-third-party-av-products]

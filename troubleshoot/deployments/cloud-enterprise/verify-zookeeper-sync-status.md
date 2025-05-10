@@ -1,10 +1,12 @@
 ---
-navigation_title: "ZooKeeper sync status"
+navigation_title: ZooKeeper sync status
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-zookeeper-sync.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-zookeeper-sync.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Verify ZooKeeper sync status [ece-zookeeper-sync]

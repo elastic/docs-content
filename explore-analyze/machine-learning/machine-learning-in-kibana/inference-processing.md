@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-pipeline-search-inference.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-pipeline-search-inference.html
+products:
+  - id: elasticsearch
 ---
 
 # {{infer-cap}} processing [ingest-pipeline-search-inference]

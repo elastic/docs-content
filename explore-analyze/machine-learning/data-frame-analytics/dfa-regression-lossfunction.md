@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/dfa-regression-lossfunction.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/dfa-regression-lossfunction.html
+products:
+  - id: machine-learning
 ---
 
 # Loss functions for regression analyses [dfa-regression-lossfunction]

@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: ingest
 ---
 
 # Ingesting data for Elastic solutions [ingest-for-solutions]

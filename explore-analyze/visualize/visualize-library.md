@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/visualize-library.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/visualize-library.html
+products:
+  - id: cloud-serverless
 ---
 
 # Visualize Library [visualize-library]

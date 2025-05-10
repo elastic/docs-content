@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     eck: all
-navigation_title: "Tools and APIs"
+navigation_title: Tools and APIs
 ---
 
 # Tools and APIs for {{eck}}

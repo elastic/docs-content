@@ -1,9 +1,11 @@
 ---
-navigation_title: "Self-hosted infrastructure"
+navigation_title: Self-hosted infrastructure
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed.html
 applies_to:
-  stack: 
+  stack:
+products:
+  - id: observability
 ---
 
 

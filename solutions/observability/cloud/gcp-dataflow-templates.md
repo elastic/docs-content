@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/gcp-dataflow.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # GCP Dataflow templates [gcp-dataflow]

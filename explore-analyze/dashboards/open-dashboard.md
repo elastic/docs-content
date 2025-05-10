@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/open-the-dashboard.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/open-the-dashboard.html
+products:
+  - id: kibana
 ---
 
 # Edit a dashboard [open-the-dashboard]

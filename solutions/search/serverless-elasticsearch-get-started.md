@@ -1,9 +1,11 @@
 ---
-navigation_title: "Get started on Serverless"
+navigation_title: Get started on Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Get started with {{es}} Serverless [elasticsearch-get-started]

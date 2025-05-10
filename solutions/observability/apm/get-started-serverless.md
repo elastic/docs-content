@@ -1,9 +1,11 @@
 ---
-navigation_title: "Elastic Cloud Serverless"
+navigation_title: Elastic Cloud Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Get started with traces and APM [observability-apm-get-started]

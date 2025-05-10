@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Manage index templates [manage-index-templates]

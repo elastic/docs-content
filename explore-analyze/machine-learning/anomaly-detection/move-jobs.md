@@ -1,10 +1,12 @@
 ---
+navigation_title: Exporting and importing machine learning jobs
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/move-jobs.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Exporting and importing machine learning jobs"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/move-jobs.html
+products:
+  - id: machine-learning
 ---
 
 # Exporting and importing machine learning jobs [move-jobs]

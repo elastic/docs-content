@@ -1,10 +1,12 @@
 ---
+navigation_title: ELSER
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-elser.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "ELSER"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-elser.html
+products:
+  - id: machine-learning
 ---
 
 # ELSER [ml-nlp-elser]

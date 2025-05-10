@@ -1,10 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-grokdebugger.html
   - https://www.elastic.co/guide/en/serverless/current/devtools-debug-grok-expressions.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Grok debugger [xpack-grokdebugger]

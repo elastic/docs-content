@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # vCPU boosting and credits [ec-vcpu-boost-instance]

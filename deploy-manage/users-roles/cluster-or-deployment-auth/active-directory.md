@@ -1,13 +1,17 @@
 ---
+navigation_title: Active Directory
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/active-directory-realm.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-ad.html
 applies_to:
+  stack:
   deployment:
-    self:
     ece:
     eck:
-navigation_title: "Active Directory"
+    self:
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
 ---
 
 # Active Directory user authentication [active-directory-realm]

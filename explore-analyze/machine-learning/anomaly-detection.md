@@ -1,10 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml-anomalies.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
+  - id: kibana
 ---
 
 # Anomaly detection [ml-ad-overview]

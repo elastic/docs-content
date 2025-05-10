@@ -1,10 +1,12 @@
 ---
 navigation_title: "{{ece}}"
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-considerations.html
 applies_to:
   deployment:
     ece: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-considerations.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Secure your {{ece}} installation [ece-securing-considerations]

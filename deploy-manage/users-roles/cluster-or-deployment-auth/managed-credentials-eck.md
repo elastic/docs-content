@@ -1,11 +1,13 @@
 ---
+navigation_title: ECK managed credentials
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-rotate-credentials.html
 applies_to:
   deployment:
     eck:
-navigation_title: ECK managed credentials
+products:
+  - id: cloud-kubernetes
 ---
 
 # {{eck}} managed credentials

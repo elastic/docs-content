@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-transport-settings.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-transport-settings.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage transport certificates on ECK [k8s-transport-settings]

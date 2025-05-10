@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Attributes and labels [apm-open-telemetry-resource-attributes]

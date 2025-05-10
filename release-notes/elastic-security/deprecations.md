@@ -1,5 +1,5 @@
 ---
-navigation_title: "Deprecations"
+navigation_title: Deprecations
 ---
 
 # {{elastic-sec}} deprecations [elastic-security-deprecations]

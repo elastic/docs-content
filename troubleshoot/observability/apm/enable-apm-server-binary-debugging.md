@@ -1,9 +1,11 @@
 ---
-navigation_title: "APM Server binary debugging"
+navigation_title: APM Server binary debugging
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-enable-apm-server-debugging.html
 applies_to:
   stack: all
+products:
+  - id: observability
 ---
 
 

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-system-deployment-versions.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-system-deployment-versions.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Default system deployment versions [ece-system-deployment-versions]

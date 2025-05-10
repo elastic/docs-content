@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-change-allocator-disconnect-timeout.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-change-allocator-disconnect-timeout.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Change allocator disconnect timeout [ece-change-allocator-disconnect-timeout]

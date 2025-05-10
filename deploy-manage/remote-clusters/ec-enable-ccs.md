@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 navigation_title: Elastic Cloud Hosted
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Remote clusters with {{ech}} [ec-enable-ccs]

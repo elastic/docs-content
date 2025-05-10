@@ -1,10 +1,12 @@
 ---
+navigation_title: Conditions
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Conditions"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition.html
+products:
+  - id: elasticsearch
 ---
 
 # Conditions [condition]

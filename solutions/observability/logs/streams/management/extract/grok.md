@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: preview
+  serverless: preview
 ---
 # Grok processor [streams-grok-processor]
 

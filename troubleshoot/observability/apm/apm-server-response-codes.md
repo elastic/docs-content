@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
 ---
 
 # APM Server response codes [apm-common-response-codes]

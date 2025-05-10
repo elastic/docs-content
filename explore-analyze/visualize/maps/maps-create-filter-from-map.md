@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-create-filter-from-map.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-create-filter-from-map.html
+products:
+  - id: kibana
 ---
 
 # Create filters from a map [maps-create-filter-from-map]

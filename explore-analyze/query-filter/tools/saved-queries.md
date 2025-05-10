@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/save-load-delete-query.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/save-load-delete-query.html
+products:
+  - id: kibana
 ---
 
 # Saved queries [save-load-delete-query]

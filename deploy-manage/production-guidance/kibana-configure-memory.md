@@ -1,5 +1,5 @@
 ---
-navigation_title: "Configure memory"
+navigation_title: Configure memory
 applies_to:
   deployment:
     self: all

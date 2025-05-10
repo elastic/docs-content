@@ -4,6 +4,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-glossary.html
   - https://www.elastic.co/guide/en/ecs/current/ecs-glossary.html
+applies_to:
+  stack:
+products:
+  - id: elastic-stack
+  - id: cloud-kubernetes
+  - id: ecs
 ---
 
 # Glossary [terms]

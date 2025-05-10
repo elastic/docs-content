@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-lang-ident.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-lang-ident.html
+products:
+  - id: machine-learning
 ---
 
 # Language identification [ml-nlp-lang-ident]

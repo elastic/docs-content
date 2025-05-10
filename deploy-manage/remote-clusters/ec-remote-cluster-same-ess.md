@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 navigation_title: Within the same {{ecloud}} organization
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-same-ess.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Access other deployments of the same {{ecloud}} organization [ec-remote-cluster-same-ess]

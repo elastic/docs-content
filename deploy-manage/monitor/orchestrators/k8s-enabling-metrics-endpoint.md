@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Enabling the metrics endpoint [k8s-enabling-the-metrics-endpoint]

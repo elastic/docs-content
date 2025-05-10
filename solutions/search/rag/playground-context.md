@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: kibana
 ---
 
 # Optimize model context [playground-context]

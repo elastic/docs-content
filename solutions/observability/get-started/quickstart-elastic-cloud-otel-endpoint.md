@@ -1,8 +1,10 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint
@@ -64,7 +66,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
     The response should be similar to:
 
     ```txt
-    {"partialSuccess":{}}% 
+    {"partialSuccess":{}}%
     ```
 
 ### Send data to your Elastic Cloud Managed OTLP endpoint
@@ -100,7 +102,7 @@ See the [EDOT Language SDK documentation](https://elastic.github.io/opentelemetr
 
 Configure your OTel SDK with the following environment variables:
 
-* Elastic Cloud Managed OTLP endpoint: `OTEL_EXPORTER_OTLP_ENDPOINT` 
+* Elastic Cloud Managed OTLP endpoint: `OTEL_EXPORTER_OTLP_ENDPOINT`
 * Elastic API key: `OTEL_EXPORTER_OTLP_HEADERS`
 
 For example:

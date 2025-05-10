@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Playground [playground]

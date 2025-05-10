@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-plugins.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-plugins.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Install {{kib}} plugins [k8s-kibana-plugins]

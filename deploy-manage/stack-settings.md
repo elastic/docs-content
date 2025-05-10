@@ -5,7 +5,7 @@ applies_to:
     eck:
     self:
     ess:
-navigation_title: "Stack settings"
+navigation_title: Stack settings
 ---
 
 # Elastic Stack settings

@@ -1,10 +1,12 @@
 ---
+navigation_title: E5
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-e5.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "E5"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-e5.html
+products:
+  - id: machine-learning
 ---
 
 # E5 [ml-nlp-e5]

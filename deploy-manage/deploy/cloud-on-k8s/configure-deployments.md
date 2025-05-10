@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-orchestrating-elastic-stack-applications.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configure deployments [k8s-orchestrating-elastic-stack-applications]

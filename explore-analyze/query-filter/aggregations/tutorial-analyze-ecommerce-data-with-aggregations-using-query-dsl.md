@@ -1,10 +1,12 @@
 ---
+navigation_title: Basics
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/aggregations-tutorial.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Basics"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/aggregations-tutorial.html
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Analyze eCommerce data with aggregations using Query DSL [aggregations-tutorial]

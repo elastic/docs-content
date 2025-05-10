@@ -1,11 +1,13 @@
 ---
+navigation_title: With a self-managed cluster
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-self-managed.html
 applies_to:
   deployment:
     ess: ga
     self: ga
-navigation_title: With a self-managed cluster
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-self-managed.html
+products:
+  - id: cloud-hosted
 ---
 
 # Access clusters of a self-managed environment [ec-remote-cluster-self-managed]

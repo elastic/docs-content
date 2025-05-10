@@ -3,7 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-securing-the-metrics-endpoint.html
 applies_to:
   deployment:
-    eck: 
+    eck:
+products:
+  - id: cloud-kubernetes
 ---
 
 # Securing the metrics endpoint [k8s-securing-the-metrics-endpoint]

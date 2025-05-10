@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-nginx.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Tutorial: Observe your nginx instances [monitor-nginx]

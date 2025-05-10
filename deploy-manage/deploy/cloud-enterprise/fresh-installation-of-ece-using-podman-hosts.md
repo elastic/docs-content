@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: Deploy using Podman
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-using-podman-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-using-podman-onprem.html
-navigation_title: Deploy using Podman
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Fresh installation of ECE using Podman hosts [ece-install-using-podman]

@@ -1,11 +1,13 @@
 ---
-navigation_title: "Observability"
+navigation_title: Observability
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/troubleshooting.html
 applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
 ---
 
 # Troubleshoot Observability [troubleshooting]

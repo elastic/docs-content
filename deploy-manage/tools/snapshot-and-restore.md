@@ -7,11 +7,17 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restoring-snapshots.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-snapshots.html
 applies_to:
+  stack:
   deployment:
-    eck:
     ess:
     ece:
+    eck:
     self:
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-enterprise
 ---
 
 # Snapshot and restore

@@ -1,10 +1,12 @@
 ---
+navigation_title: Access fields in a document
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/script-fields-api.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Access fields in a document"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/script-fields-api.html
+products:
+  - id: elasticsearch
 ---
 
 

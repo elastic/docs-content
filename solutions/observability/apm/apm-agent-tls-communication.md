@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-tls.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # APM agent TLS communication [apm-agent-tls]

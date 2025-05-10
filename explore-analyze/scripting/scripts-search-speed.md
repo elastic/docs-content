@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/scripts-and-search-speed.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/scripts-and-search-speed.html
+products:
+  - id: elasticsearch
 ---
 
 # Scripts, caching, and search speed [scripts-and-search-speed]

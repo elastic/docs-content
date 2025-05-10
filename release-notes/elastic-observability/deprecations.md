@@ -1,5 +1,5 @@
 ---
-navigation_title: "Deprecations"
+navigation_title: Deprecations
 ---
 
 # Elastic {{observability}} deprecations [elastic-observability-deprecations]

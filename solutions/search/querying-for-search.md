@@ -1,13 +1,16 @@
 ---
+navigation_title: Build search queries
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-with-elasticsearch.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data-the-search-api.html
-navigation_title: Build search queries
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Build your search queries

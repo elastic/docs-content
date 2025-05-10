@@ -1,11 +1,14 @@
 ---
-navigation_title: "Node bootlooping"
-applies_to:
-  deployment:
-    ess: all
+navigation_title: Node bootlooping
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-config-change-errors.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-config-change-errors.html
+applies_to:
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Troubleshoot node bootlooping in {{ech}} [ec-config-change-errors]

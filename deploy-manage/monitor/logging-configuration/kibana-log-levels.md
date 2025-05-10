@@ -1,9 +1,9 @@
 ---
 applies_to:
   deployment:
-    self: 
+    self:
     eck:
-    ece: 
+    ece:
     ess:
 ---
 

@@ -1,5 +1,5 @@
 ---
-navigation_title: "Self-managed"
+navigation_title: Self-managed
 applies_to:
   deployment:
     self: ga

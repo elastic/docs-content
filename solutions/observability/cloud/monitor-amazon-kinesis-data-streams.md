@@ -1,9 +1,11 @@
 ---
-navigation_title: "Kinesis data streams"
+navigation_title: Kinesis data streams
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-kinesis.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 

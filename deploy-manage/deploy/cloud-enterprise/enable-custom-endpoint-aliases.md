@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-deployment-aliases.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-deployment-aliases.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Enable custom endpoint aliases [ece-configuring-deployment-aliases]

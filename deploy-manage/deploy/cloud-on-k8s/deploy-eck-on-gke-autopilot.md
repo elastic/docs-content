@@ -1,13 +1,15 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot-setting-virtual-memory.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot-deploy-the-operator.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot-deploy-elasticsearch.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot-deploy-agent-beats.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy ECK on GKE Autopilot [k8s-autopilot]

@@ -1,5 +1,5 @@
 ---
-navigation_title: "Users and roles"
+navigation_title: Users and roles
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-settings-access.html
 applies_to:
@@ -9,6 +9,8 @@ applies_to:
     eck: all
     self: all
   serverless: all
+products:
+  - id: cloud-serverless
 ---
 
 # Users and roles

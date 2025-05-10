@@ -1,9 +1,11 @@
 ---
-navigation_title: "Serverless status"
-applies_to:
-  serverless: all
+navigation_title: Serverless status
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
+applies_to:
+  serverless: all
+products:
+  - id: cloud-serverless
 ---
 
 # Check Serverless status and get updates [general-serverless-status]

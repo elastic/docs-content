@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/introduction.html#kibana-navigation-search
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/introduction.html#kibana-navigation-search
+products:
+  - id: kibana
 ---
 
 # Find apps and objects [kibana-navigation-search]

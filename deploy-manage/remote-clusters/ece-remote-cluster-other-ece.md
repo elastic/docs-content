@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ece: ga
 navigation_title: With a different ECE environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-other-ece.html
+applies_to:
+  deployment:
+    ece: ga
+products:
+  - id: cloud-enterprise
 ---
 
 # Access deployments of another {{ece}} environment [ece-remote-cluster-other-ece]

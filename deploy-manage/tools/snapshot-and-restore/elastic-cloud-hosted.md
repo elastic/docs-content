@@ -1,11 +1,14 @@
 ---
+navigation_title: "{{ech}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
-navigation_title: "{{ech}}"
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Manage snapshot repositories in {{ech}}

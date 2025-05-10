@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-painless.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-painless.html
+products:
+  - id: elasticsearch
 ---
 
 # Painless scripting language [modules-scripting-painless]

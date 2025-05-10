@@ -4,6 +4,9 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet and Elastic Agent [troubleshooting-intro]

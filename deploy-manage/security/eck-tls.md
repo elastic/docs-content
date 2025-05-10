@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 navigation_title: ECK
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-security.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage TLS certificates on ECK

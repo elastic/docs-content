@@ -1,13 +1,17 @@
 ---
+navigation_title: In ECH or ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-ip.html
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-ip.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-ip.html
 applies_to:
-  deployment: 
+  deployment:
     ess: ga
     ece: ga
-navigation_title: In ECH or ECE
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Manage IP traffic filters in ECH or ECE

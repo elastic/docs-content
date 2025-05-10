@@ -1,11 +1,13 @@
 ---
+navigation_title: In ECK
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autoscaling.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stateless-autoscaling.html
 applies_to:
   deployment:
     eck: ga
-navigation_title: "In ECK"
+products:
+  - id: cloud-kubernetes
 ---
 # Autoscaling in {{eck}}
 

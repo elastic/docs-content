@@ -1,10 +1,12 @@
 ---
+navigation_title: "{{eck}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-snapshots.html
-navigation_title: "{{eck}}"
 applies_to:
   deployment:
     eck:
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage snapshot repositories in {{eck}} [k8s-snapshots]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-manage-integrations-server.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-manage-integrations-server.html
+products:
+  - id: cloud-hosted
 ---
 
 # Manage your Integrations server [ec-manage-integrations-server]

@@ -1,11 +1,13 @@
 ---
-navigation_title: "Health report pipelines"
+navigation_title: Health report pipelines
 mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/health-report-pipeline-status.html
   - https://www.elastic.co/guide/en/logstash/current/health-report-pipeline-flow-worker-utilization.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: logstash
 ---
 
 # Troubleshoot health report pipelines

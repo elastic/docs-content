@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-tls-version.html
 applies_to:
   deployment:
     ece: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-tls-version.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure the TLS version [ece-configure-tls-version]

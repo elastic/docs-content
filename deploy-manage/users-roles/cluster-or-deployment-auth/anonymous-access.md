@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/anonymous-access.html
 applies_to:
+  stack:
   deployment:
-    ess: 
-    ece: 
-    eck: 
-    self: 
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Anonymous access [anonymous-access]

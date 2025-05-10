@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-crud.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-crud.html
+products:
+  - id: cloud-hosted
 ---
 
 # Manage deployments using the {{ecloud}} API [ec-api-deployment-crud]

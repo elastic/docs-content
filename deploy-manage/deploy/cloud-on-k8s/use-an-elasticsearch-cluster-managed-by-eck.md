@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-eck-managed-es.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-eck-managed-es.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Use an {{es}} cluster managed by ECK [k8s-apm-eck-managed-es]

@@ -1,10 +1,12 @@
 ---
-navigation_title: "Search using LTR"
+navigation_title: Search using LTR
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/learning-to-rank-search-usage.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 

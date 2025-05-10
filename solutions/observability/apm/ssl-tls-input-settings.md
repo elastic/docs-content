@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-server-ssl.html
 applies_to:
   stack: all
+products:
+  - id: observability
 ---
 
 # SSL/TLS input settings [apm-agent-server-ssl]

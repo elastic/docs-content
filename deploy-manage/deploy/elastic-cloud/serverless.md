@@ -5,6 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # {{serverless-full}}

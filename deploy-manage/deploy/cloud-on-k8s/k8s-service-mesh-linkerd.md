@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-mesh-linkerd.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-mesh-linkerd.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Linkerd [k8s-service-mesh-linkerd]

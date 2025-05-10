@@ -1,10 +1,12 @@
 ---
+navigation_title: Triggers
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/trigger.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Triggers"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/trigger.html
+products:
+  - id: elasticsearch
 ---
 
 # Triggers [trigger]

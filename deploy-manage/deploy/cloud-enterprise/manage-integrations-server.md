@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-integrations-server.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-integrations-server.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage your Integrations Server [ece-manage-integrations-server]

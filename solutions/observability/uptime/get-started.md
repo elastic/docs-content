@@ -1,10 +1,12 @@
 ---
-navigation_title: "Get started"
+navigation_title: Get started
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/uptime-get-started.html
 applies_to:
   stack: deprecated 8.15.0
   serverless: unavailable
+products:
+  - id: observability
 ---
 
 # Get started with Uptime [uptime-get-started]

@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: preview
+  serverless: preview
 ---
 
 :::{warning}

@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-concepts-analysts.html
   - https://www.elastic.co/guide/en/kibana/current/set-time-filter.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Filtering in Kibana

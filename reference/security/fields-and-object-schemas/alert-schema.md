@@ -1,11 +1,14 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/security/current/alert-schema.html
+  - https://www.elastic.co/guide/en/serverless/current/security-alert-schema.html
 applies_to:
   stack: all
   serverless:
     security: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/current/alert-schema.html
-  - https://www.elastic.co/guide/en/serverless/current/security-alert-schema.html
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Alert schema [alert-schema]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/manage-cases.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/manage-cases.html
+products:
+  - id: kibana
 ---
 
 # Open and manage cases [manage-cases]

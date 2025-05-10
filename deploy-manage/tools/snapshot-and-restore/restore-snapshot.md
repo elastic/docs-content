@@ -2,11 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html
 applies_to:
+  stack:
   deployment:
-    eck:
     ess:
     ece:
+    eck:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Restore a snapshot

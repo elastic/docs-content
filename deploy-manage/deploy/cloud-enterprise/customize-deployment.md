@@ -1,10 +1,12 @@
 ---
 navigation_title: Customize deployment components
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-customize-deployment.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-customize-deployment.html
+products:
+  - id: cloud-enterprise
 ---
 
 % document scope: this document focuses on the Deployment -> Edit page, how ECE applies changes, and links to other configurable features

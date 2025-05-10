@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift-anyuid-workaround.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift-anyuid-workaround.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy Docker images with anyuid SCC [k8s-openshift-anyuid-workaround]

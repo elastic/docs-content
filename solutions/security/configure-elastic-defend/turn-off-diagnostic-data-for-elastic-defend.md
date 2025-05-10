@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Turn off diagnostic data for {{elastic-defend}} [endpoint-diagnostic-data]

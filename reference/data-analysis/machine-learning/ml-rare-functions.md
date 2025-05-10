@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-rare-functions.html
+applies_to:
+  stack:
+products:
+  - id: machine-learning
 ---
 
 # Rare functions [ml-rare-functions]

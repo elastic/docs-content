@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-regression.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-regression.html
+products:
+  - id: machine-learning
 ---
 
 # Predicting numerical values with regression [ml-dfa-regression]

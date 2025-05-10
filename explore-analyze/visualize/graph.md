@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
+products:
+  - id: kibana
 ---
 
 # Graph [xpack-graph]

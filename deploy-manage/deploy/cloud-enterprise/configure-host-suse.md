@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: SUSE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-onprem.html
-navigation_title: SUSE
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure a SUSE host [ece-configure-hosts-sles12]

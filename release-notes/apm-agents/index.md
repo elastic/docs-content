@@ -1,5 +1,5 @@
 ---
-navigation_title: "Elastic APM agents"
+navigation_title: Elastic APM agents
 ---
 
 # Elastic APM agents release notes [elastic-apm--agents-release-notes]

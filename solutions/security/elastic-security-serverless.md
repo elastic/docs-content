@@ -1,10 +1,12 @@
 ---
-navigation_title: "Elastic Security Serverless"
+navigation_title: Elastic Security Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/what-is-security-serverless.html
 applies_to:
   serverless:
     security: all
+products:
+  - id: cloud-serverless
 ---
 
 # {{sec-serverless}} [what-is-security-serverless]

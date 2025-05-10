@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-aws-marketplace-conversion.html
 applies_to:
   deployment:
     ess: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-aws-marketplace-conversion.html
+products:
+  - id: cloud-hosted
 ---
 
 # Create a monthly pay-as-you-go subscription on AWS Marketplace [ec-aws-marketplace-conversion]

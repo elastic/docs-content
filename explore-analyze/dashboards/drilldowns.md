@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/drilldowns.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/drilldowns.html
+products:
+  - id: kibana
 ---
 
 # Add drilldowns [drilldowns]

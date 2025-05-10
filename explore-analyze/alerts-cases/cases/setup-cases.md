@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/setup-cases.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/setup-cases.html
+products:
+  - id: kibana
 ---
 
 # Configure access to cases [setup-cases]

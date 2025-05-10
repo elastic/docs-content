@@ -1,11 +1,13 @@
 ---
-navigation_title: "Amazon Data Firehose"
+navigation_title: Amazon Data Firehose
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-firehose-troubleshooting.html
 applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
 ---
 
 

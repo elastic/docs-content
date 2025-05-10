@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-config-env.html
 applies_to:
   stack: all
+products:
+  - id: observability
 ---
 
 # Use environment variables in the configuration [apm-config-env]

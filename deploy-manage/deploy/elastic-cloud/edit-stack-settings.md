@@ -1,7 +1,4 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-add-user-settings.html
   - https://www.elastic.co/guide/en/cloud/current/ec-editing-user-settings.html
@@ -13,6 +10,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-manage-apm-settings.html
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-appsearch-settings.html
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-enterprise-search-settings.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Edit {{stack}} settings

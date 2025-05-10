@@ -4,7 +4,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-working-with-elasticsearch.html
 applies_to:
   stack: ga
+  deployment:
+    ess:
+    ece:
   serverless: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Manage data from the command line

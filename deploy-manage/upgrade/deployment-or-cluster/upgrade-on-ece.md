@@ -1,9 +1,9 @@
 ---
-navigation_title: "Upgrade on {{ece}}"
+navigation_title: Upgrade on {{ece}}
 applies_to:
   stack:
   deployment:
-   ece:
+    ece:
 ---
 
 # Upgrade your deployment on {{ece}} (ECE)

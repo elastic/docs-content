@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ingest-pipeline-search.html
 applies_to:
   stack:
+products:
+  - id: elasticsearch
 ---
 
 # Ingest pipelines for search use cases [ingest-pipeline-search]

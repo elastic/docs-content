@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-categories.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-categories.html
+products:
+  - id: machine-learning
 ---
 
 # Detecting anomalous categories of data [ml-configuring-categories]

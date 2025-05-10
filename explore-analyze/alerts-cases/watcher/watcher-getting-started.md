@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-getting-started.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-getting-started.html
+products:
+  - id: elasticsearch
 ---
 
 # Getting started with Watcher [watcher-getting-started]

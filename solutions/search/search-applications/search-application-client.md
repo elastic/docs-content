@@ -1,10 +1,12 @@
 ---
-navigation_title: "Search Application client guide"
+navigation_title: Search Application client guide
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-client.html
 applies_to:
   stack: beta
   serverless: beta
+products:
+  - id: elasticsearch
 ---
 
 

@@ -1,7 +1,12 @@
 ---
-navigation_title: "decode_cef"
+navigation_title: decode_cef
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_cef-processor.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Decode CEF [decode_cef-processor]

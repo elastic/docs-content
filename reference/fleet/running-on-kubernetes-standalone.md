@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Run Elastic Agent Standalone on Kubernetes [running-on-kubernetes-standalone]

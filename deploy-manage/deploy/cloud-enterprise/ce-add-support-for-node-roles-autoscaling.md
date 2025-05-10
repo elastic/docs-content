@@ -1,10 +1,12 @@
 ---
 navigation_title: Data tiers and autoscaling support
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ce-add-support-for-node-roles-and-autoscaling.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ce-add-support-for-node-roles-and-autoscaling.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Updating custom templates to support node_roles and autoscaling [ce-add-support-for-node-roles-and-autoscaling]

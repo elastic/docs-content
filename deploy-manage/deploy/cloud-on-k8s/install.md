@@ -1,10 +1,12 @@
 ---
 navigation_title: Install
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-installing-eck.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-installing-eck.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Install ECK [k8s-installing-eck]

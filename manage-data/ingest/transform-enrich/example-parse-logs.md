@@ -1,10 +1,12 @@
 ---
-navigation_title: "Example"
+navigation_title: Example
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/common-log-format-example.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 

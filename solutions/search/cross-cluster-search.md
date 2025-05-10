@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
 # Cross-cluster search [modules-cross-cluster-search]

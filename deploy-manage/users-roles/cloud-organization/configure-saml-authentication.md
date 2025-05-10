@@ -1,11 +1,13 @@
 ---
-navigation_title: "Configure SAML SSO"
+navigation_title: Configure SAML SSO
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-hosted
 ---
 
 # Configure {{ecloud}} SAML single sign-on [ec-saml-sso]

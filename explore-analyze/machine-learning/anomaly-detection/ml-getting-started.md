@@ -1,10 +1,12 @@
 ---
+navigation_title: Tutorial
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Tutorial"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
+products:
+  - id: machine-learning
 ---
 
 # Tutorial: Getting started with anomaly detection [ml-getting-started]

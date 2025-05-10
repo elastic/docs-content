@@ -1,8 +1,10 @@
 ---
-applies_to:
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/api-keys.html
+applies_to:
+  serverless: ga
+products:
+  - id: cloud-serverless
 ---
 
 # Serverless project API keys [api-keys]

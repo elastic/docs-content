@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-detector-custom-rules.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-detector-custom-rules.html
+products:
+  - id: machine-learning
 ---
 
 # Customizing detectors with custom rules [ml-configuring-detector-custom-rules]

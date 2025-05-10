@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-deploy-model.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-deploy-model.html
+products:
+  - id: machine-learning
 ---
 
 # Deploy the model in your cluster [ml-nlp-deploy-model]

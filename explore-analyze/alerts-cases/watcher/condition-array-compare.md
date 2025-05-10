@@ -1,10 +1,12 @@
 ---
+navigation_title: Array compare condition
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-array-compare.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Array compare condition"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-array-compare.html
+products:
+  - id: elasticsearch
 ---
 
 # Array compare condition [condition-array-compare]

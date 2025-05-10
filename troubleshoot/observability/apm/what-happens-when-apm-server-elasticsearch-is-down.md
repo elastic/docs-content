@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-server-es-down.html
 applies_to:
   stack: all
+products:
+  - id: observability
 ---
 
 # APM Server or Elasticsearch is down [apm-server-es-down]

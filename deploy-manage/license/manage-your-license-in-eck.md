@@ -1,10 +1,12 @@
 ---
 navigation_title: "{{eck}}"
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-licensing.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-licensing.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage your license in {{eck}} [k8s-licensing]

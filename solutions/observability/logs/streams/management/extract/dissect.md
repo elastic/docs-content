@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: preview
+  serverless: preview
 ---
 # Dissect processor [streams-dissect-processor]
 

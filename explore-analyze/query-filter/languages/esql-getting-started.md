@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Get started"
+navigation_title: Get started
 ---
 
 # Get started with {{esql}} queries [esql-getting-started]

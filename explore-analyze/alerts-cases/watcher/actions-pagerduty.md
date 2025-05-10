@@ -1,10 +1,12 @@
 ---
+navigation_title: PagerDuty action
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-pagerduty.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "PagerDuty action"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-pagerduty.html
+products:
+  - id: elasticsearch
 ---
 
 # PagerDuty action [actions-pagerduty]

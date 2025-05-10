@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-resize-deployment.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-resize-deployment.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Resize deployment [ece-resize-deployment]

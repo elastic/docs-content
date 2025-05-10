@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-allow-x509-sha1.html
 applies_to:
   deployment:
     ece: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-allow-x509-sha1.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Allow x509 Certificates Signed with SHA-1 [ece-allow-x509-sha1]

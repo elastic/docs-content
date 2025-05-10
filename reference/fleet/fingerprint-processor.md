@@ -1,7 +1,12 @@
 ---
-navigation_title: "fingerprint"
+navigation_title: fingerprint
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fingerprint-processor.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Generate a fingerprint of an event [fingerprint-processor]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-search-across-multiple-indices.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-search-across-multiple-indices.html
+products:
+  - id: kibana
 ---
 
 # Search across multiple indices [maps-search-across-multiple-indices]

@@ -1,10 +1,12 @@
 ---
+navigation_title: Actions
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Actions"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions.html
+products:
+  - id: elasticsearch
 ---
 
 # Actions [actions]

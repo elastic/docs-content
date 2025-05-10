@@ -1,7 +1,12 @@
 ---
-navigation_title: "Policies"
+navigation_title: Policies
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-policy.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{agent}} policies [agent-policy]

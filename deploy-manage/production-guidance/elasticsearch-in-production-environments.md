@@ -5,11 +5,16 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-planning.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-planning.html
 applies_to:
+  stack:
   deployment:
     ess: all
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Run {{es}} in production [scalability]

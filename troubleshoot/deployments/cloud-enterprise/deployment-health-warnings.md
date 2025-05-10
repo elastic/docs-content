@@ -1,10 +1,12 @@
 ---
-navigation_title: "Deployment health warnings"
+navigation_title: Deployment health warnings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deployment-no-op.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deployment-no-op.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Troubleshoot deployment health warnings [ece-deployment-no-op]

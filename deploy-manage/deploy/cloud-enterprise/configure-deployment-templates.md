@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-templates.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-templates.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage deployment templates [ece-configuring-ece-templates]

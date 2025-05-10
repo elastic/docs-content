@@ -1,7 +1,12 @@
 ---
-navigation_title: "Upgrade {{agent}}s"
+navigation_title: Upgrade {{agent}}s
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html
+applies_to:
+  stack:
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Upgrade {{fleet}}-managed {{agent}}s [upgrade-elastic-agent]

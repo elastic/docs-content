@@ -1,10 +1,12 @@
 ---
-navigation_title: "Get started in Kibana"
+navigation_title: Get started in Kibana
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/data-rollups.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: kibana
 ---
 
 # Get started with the rollups in {{kib}}

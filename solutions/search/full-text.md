@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Full-text search [full-text-search]

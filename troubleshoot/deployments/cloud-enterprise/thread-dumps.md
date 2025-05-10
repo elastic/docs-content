@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-capture-thread-dumps.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-capture-thread-dumps.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Thread dumps [ece-capture-thread-dumps]

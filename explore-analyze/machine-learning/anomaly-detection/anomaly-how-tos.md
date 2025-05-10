@@ -1,11 +1,14 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "How-tos"
+navigation_title: How-tos
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html
   - https://www.elastic.co/guide/en/serverless/current/observability-aiops-tune-anomaly-detection-job.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
+  - id: cloud-serverless
 ---
 
 # How-tos [anomaly-how-tos]

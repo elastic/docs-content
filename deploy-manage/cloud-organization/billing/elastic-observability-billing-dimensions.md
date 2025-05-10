@@ -1,9 +1,11 @@
 ---
-navigation_title: "Elastic for Observability"
+navigation_title: Elastic for Observability
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-billing.html
 applies_to:
   serverless: all
+products:
+  - id: cloud-serverless
 ---
 
 # Elastic for Observability billing dimensions [observability-billing]

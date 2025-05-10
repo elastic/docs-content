@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Dense and sparse workflows using ingest pipelines [semantic-search-deployed-nlp-model]

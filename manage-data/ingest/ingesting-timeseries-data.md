@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: ingest
 ---
 
 # Ingesting time series data [ingest-tools]

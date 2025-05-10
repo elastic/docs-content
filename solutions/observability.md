@@ -6,6 +6,11 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - id: cloud-serverless
+  - id: observability
+  - id: kibana
 ---
 
 # Observability

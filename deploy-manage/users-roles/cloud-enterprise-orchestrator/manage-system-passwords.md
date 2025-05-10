@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage system passwords[ece-manage-system-passwords]

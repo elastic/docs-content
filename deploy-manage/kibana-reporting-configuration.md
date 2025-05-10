@@ -3,11 +3,14 @@ navigation_title: Configure {{kib}} reporting
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/secure-reporting.html
 applies_to:
+  stack:
   deployment:
-    self: all
+    ess: all
     ece: all
     eck: all
-    ess: all
+    self: all
+products:
+  - id: kibana
 ---
 
 % this anchor belongs to `kibana reporting production considerations doc`

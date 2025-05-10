@@ -2,9 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-and-management-settings.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-manage-project.html
-
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Project settings

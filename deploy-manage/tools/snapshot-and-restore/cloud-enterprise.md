@@ -1,10 +1,12 @@
 ---
+navigation_title: "{{ece}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-repositories.html
-navigation_title: "{{ece}}"
 applies_to:
   deployment:
     ece:
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage snapshot repositories in {{ece}} [ece-manage-repositories]

@@ -1,5 +1,5 @@
 ---
-navigation_title: "Tools and APIs"
+navigation_title: Tools and APIs
 applies_to:
   deployment:
     self:
