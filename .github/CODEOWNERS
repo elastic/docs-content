@@ -32,10 +32,10 @@
 /release-notes/                             @elastic/docs
 
 /release-notes/apm-agents/                  @elastic/ingest-docs
-/release-notes/elastic-cloud-serverless/    ??
+/release-notes/elastic-cloud-serverless/    @elastic/platform-docs
 /release-notes/elastic-observability/       @elastic/ingest-docs @elastic/experience-docs
 /release-notes/elastic-security/            @elastic/ingest-docs @elastic/experience-docs
-/release-notes/elasticsearch-clients/       ??
+/release-notes/elasticsearch-clients/       @elastic/platform-docs
 /release-notes/fleet-elastic-agent/         @elastic/ingest-docs
 /release-notes/intro/                       @elastic/docs
 
