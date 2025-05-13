@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-podman.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-podman.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Migrate ECE to Podman hosts [ece-migrate-to-podman]

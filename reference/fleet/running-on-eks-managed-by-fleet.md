@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/running-on-eks-managed-by-fleet.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure Elastic Agent Add-On on Amazon EKS[configure-elastic-agent-on-eks]
@@ -37,7 +40,7 @@ You can create a managed node group with either of the following:
 
 ### Step 2: Select the Elastic Agent Add-On
 
-To see all available add-ons, check the [AWS Add-ons](https://docs.aws.amazon.com/eks/latest/userguide/workloads-add-ons-available-eks.html). You can also view the most current list of available add-ons using `eksctl`, the AWS Management Console, or the AWS CLI. 
+To see all available add-ons, check the [AWS Add-ons](https://docs.aws.amazon.com/eks/latest/userguide/workloads-add-ons-available-eks.html). You can also view the most current list of available add-ons using `eksctl`, the AWS Management Console, or the AWS CLI.
 
 ### Step 3: Configure Elastic Agent Add-On
 
@@ -58,8 +61,8 @@ Make sure  the configuration override is selected in case there are conflicts.
 
 Review the data and add the Elastic Agent EKS add-on to your cluster.
 
-Once created, you can see the Elastic Agent Add-on is **Active** on the AWS EKS console. 
-Elastic Agent runs as a daemonset, so it is present on each node. 
+Once created, you can see the Elastic Agent Add-on is **Active** on the AWS EKS console.
+Elastic Agent runs as a daemonset, so it is present on each node.
 
 ### Step 5: View your data in {{kib}} [_step_6_view_your_data_in_kib]
 

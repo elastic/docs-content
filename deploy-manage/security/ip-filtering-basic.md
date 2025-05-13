@@ -1,11 +1,13 @@
 ---
+navigation_title: In ECK and Self Managed
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ip-filtering.html
 applies_to:
   deployment:
     self:
     eck:
-navigation_title: In ECK and Self Managed
+products:
+  - id: elasticsearch
 ---
 
 # Manage IP traffic filters in ECK and self-managed clusters

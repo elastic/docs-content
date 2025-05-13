@@ -2,7 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/observability-introduction.html
   - https://www.elastic.co/guide/en/serverless/current/observability-serverless-observability-overview.html
-
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # What is Elastic {{observability}}? [observability-introduction]

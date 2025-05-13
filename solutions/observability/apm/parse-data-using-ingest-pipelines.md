@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-ingest-pipelines.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Parse data using ingest pipelines [apm-ingest-pipelines]

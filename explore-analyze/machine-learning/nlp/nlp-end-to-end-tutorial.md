@@ -1,10 +1,12 @@
 ---
+navigation_title: End-to-end tutorial
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/nlp-example.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "End-to-end tutorial"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/nlp-example.html
+products:
+  - id: elasticsearch
 ---
 
 # An NLP end-to-end tutorial [nlp-example]

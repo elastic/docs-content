@@ -1,5 +1,5 @@
 ---
-navigation_title: "Enable on ECH and ECE"
+navigation_title: Enable on ECH and ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-logging-and-monitoring.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restrictions-monitoring.html
@@ -13,6 +13,10 @@ applies_to:
   deployment:
     ece: all
     ess: all
+products:
+  - id: cloud-enterprise
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
 ---
 
 # Enable stack monitoring on ECH and ECE deployments

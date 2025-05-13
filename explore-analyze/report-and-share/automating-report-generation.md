@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/automating-report-generation.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/automating-report-generation.html
+products:
+  - id: kibana
 ---
 
 # Automatically generate reports [automating-report-generation]

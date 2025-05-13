@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-powerbi.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-powerbi.html
+products:
+  - id: elasticsearch
 ---
 
 # Microsoft Power BI Desktop [sql-client-apps-powerbi]

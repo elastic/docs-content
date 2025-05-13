@@ -1,9 +1,11 @@
 ---
-navigation_title: "Self-managed cluster"
-applies_to:
-  self:
+navigation_title: Self-managed cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/managing-licenses.html
+applies_to:
+  self:
+products:
+  - id: kibana
 ---
 
 # Manage your license in a self-managed cluster [managing-licenses]

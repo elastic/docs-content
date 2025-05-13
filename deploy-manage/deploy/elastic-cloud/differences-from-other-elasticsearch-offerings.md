@@ -1,10 +1,12 @@
 ---
-navigation_title: "Compare Cloud Hosted and Serverless"
+navigation_title: Compare Cloud Hosted and Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-differences.html
 applies_to:
   serverless:
   ess:
+products:
+  - id: cloud-serverless
 ---
 
 # Compare {{ech}} and Serverless [elasticsearch-differences]

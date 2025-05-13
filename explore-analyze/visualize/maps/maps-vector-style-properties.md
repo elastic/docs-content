@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-vector-style-properties.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-vector-style-properties.html
+products:
+  - id: kibana
 ---
 
 # Vector style properties [maps-vector-style-properties]

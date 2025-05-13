@@ -1,9 +1,11 @@
 ---
-navigation_title: "Cross-cluster search"
+navigation_title: Cross-cluster search
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-cross-cluster-search.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Cross-cluster search with application data [apm-cross-cluster-search]

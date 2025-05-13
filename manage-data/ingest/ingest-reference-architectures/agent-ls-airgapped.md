@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-ls-airgapped.html
+products:
+  - id: ingest
 ---
 
 # Elastic Agent to Logstash: Air-gapped environment [agent-ls-airgapped]

@@ -10,6 +10,10 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Run {{es}} in production [scalability]

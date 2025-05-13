@@ -4,6 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configure-cloud-id.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Configure the output for {{ech}} [apm-configure-cloud-id]

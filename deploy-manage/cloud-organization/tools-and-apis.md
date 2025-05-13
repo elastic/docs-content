@@ -1,12 +1,14 @@
 ---
+navigation_title: Tools and APIs
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-work-with-apis.html
-navigation_title: Tools and APIs
+products:
+  - id: cloud-hosted
 ---
 
 # Tools and APIs for your Cloud organization [ec-work-with-apis]
 
-You can use the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/) to manage your {{ecloud}} organization, members, costs, billing, and more. 
+You can use the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/) to manage your {{ecloud}} organization, members, costs, billing, and more.
 
 * Refer to [](/deploy-manage/api-keys/elastic-cloud-api-keys.md) to learn how to generate an API key to access this API.
 * Refer to [{{ecloud}} RESTful API](cloud://reference/cloud-hosted/ec-api-restful.md) for usage information and examples.

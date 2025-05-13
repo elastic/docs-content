@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/rules-cross-cluster-search.html
 applies_to:
   stack: all
+products:
+  - id: security
 ---
 
 # Cross-cluster search and detection rules [rules-cross-cluster-search]

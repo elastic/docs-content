@@ -1,13 +1,15 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-overview.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-advanced-topics.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-supported.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_learn_more_about_eck.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # {{eck}} [k8s-overview]

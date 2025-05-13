@@ -4,6 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/configuring-monitoring.html
 applies_to:
   self: all
+products:
+  - id: kibana
 ---
 
 

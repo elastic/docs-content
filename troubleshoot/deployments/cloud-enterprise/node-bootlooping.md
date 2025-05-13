@@ -1,10 +1,12 @@
 ---
-navigation_title: "Node bootlooping"
+navigation_title: Node bootlooping
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-config-change-errors.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-config-change-errors.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Troubleshoot node bootlooping in {{ece}} [ece-config-change-errors]

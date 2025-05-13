@@ -10,6 +10,10 @@ applies_to:
     ess: ga
     ece: ga
   serverless: unavailable
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Migrate your {{es}} data

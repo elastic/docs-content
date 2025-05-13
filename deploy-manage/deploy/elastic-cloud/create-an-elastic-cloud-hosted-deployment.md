@@ -1,12 +1,15 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-create-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-prepare-production.html
   - https://www.elastic.co/guide/en/cloud/current/ec-configure-deployment-settings.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-configure-deployment-settings.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Create an {{ech}} deployment [ec-create-deployment]

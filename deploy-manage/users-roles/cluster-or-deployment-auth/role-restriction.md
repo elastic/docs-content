@@ -6,6 +6,8 @@ applies_to:
   eck:
   ess:
   self:
+products:
+  - id: elasticsearch
 ---
 
 # Role restriction [role-restriction]

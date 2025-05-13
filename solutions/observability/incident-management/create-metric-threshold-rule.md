@@ -1,7 +1,9 @@
 ---
-navigation_title: "Metric threshold"
+navigation_title: Metric threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/metrics-threshold-alert.html
+products:
+  - id: observability
 ---
 
 

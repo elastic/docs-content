@@ -1,10 +1,12 @@
 ---
+navigation_title: Email action
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Email action"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html
+products:
+  - id: elasticsearch
 ---
 
 # Email action [actions-email]

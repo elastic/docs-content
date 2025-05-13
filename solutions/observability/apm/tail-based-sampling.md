@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-tail-based-samling-config.html
 applies_to:
   stack: all
+products:
+  - id: observability
 ---
 
 # Tail-based sampling [apm-tail-based-sampling-config]

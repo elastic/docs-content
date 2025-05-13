@@ -6,6 +6,10 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Data tiers

@@ -1,16 +1,18 @@
 ---
+navigation_title: Install on Linux or MacOS
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
-sub:
-  es-conf: "$ES_HOME/config"
-  slash: "/"
-  export: "export "
-  escape: "\\"
-  auto: " -d"
-navigation_title: "Install on Linux or MacOS"
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: $ES_HOME/config
+  slash: /
+  export: "export "
+  escape: \
+  auto: " -d"
 ---
 
 # Install {{es}} from archive on Linux or MacOS [targz]

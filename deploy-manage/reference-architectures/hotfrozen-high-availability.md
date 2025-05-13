@@ -7,6 +7,8 @@ applies_to:
     ess: all
     ece: all
     eck: all
+products:
+  - id: reference-architectures
 ---
 
 # Hot/Frozen - High Availability [hot-frozen-architecture]

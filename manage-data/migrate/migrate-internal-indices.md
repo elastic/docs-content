@@ -9,6 +9,9 @@ applies_to:
     ess: ga
     ece: unavailable
   serverless: unavailable
+products:
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Migrate internal indices

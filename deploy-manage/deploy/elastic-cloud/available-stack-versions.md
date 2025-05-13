@@ -1,10 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-version-policy.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-version-policy.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Available stack versions [ec-version-policy]

@@ -1,10 +1,12 @@
 ---
+navigation_title: Add custom bundles and plugins
 mapped_pages:
-    - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html
-navigation_title: "Add custom bundles and plugins"
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html
 applies_to:
   deployment:
     ece:
+products:
+  - id: cloud-enterprise
 ---
 
 # Add custom bundles and plugins to your deployment [ece-add-custom-bundle-plugin]

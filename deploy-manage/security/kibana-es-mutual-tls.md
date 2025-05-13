@@ -1,10 +1,12 @@
 ---
 navigation_title: Mutual authentication
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
 applies_to:
   deployment:
     self: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/elasticsearch-mutual-tls.html
+products:
+  - id: kibana
 ---
 
 # Mutual TLS authentication between {{kib}} and {{es}} [elasticsearch-mutual-tls]

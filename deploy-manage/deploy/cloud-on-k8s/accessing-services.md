@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-accessing-elastic-services.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-request-elasticsearch-endpoint.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-services.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Accessing services [k8s-accessing-elastic-services]

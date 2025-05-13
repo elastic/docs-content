@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   self:
+products:
+  - id: elasticsearch
 ---
 
 # Shard allocation awareness [shard-allocation-awareness]

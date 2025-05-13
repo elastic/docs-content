@@ -6,6 +6,8 @@ mapped_pages:
 applies_to:
   stack:
   self:
+products:
+  - id: elasticsearch
 ---
 
 # Index-level shard allocation

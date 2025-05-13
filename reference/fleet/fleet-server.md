@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # What is Fleet Server? [fleet-server]

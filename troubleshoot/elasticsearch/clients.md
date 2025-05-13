@@ -1,5 +1,5 @@
 ---
-navigation_title: "Clients"
+navigation_title: Clients
 ---
 
 # Troubleshoot {{es}} clients

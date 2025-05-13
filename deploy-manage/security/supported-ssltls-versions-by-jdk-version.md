@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # Supported SSL/TLS versions by JDK version [jdk-tls-versions]

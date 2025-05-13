@@ -18,6 +18,13 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: kibana
+  - id: cloud-enterprise
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: elasticsearch
 ---
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]

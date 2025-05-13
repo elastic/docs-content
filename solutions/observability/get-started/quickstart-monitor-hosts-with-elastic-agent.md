@@ -7,6 +7,11 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: cloud-serverless
+  - id: elastic-products-platform
+  - id: elastic-stack
 ---
 
 # Quickstart: Monitor hosts with {{agent}} [quickstart-monitor-hosts-with-elastic-agent]

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-multi.html
+products:
+  - id: ingest
 ---
 
 # Elastic Agent to Logstash for routing to multiple Elasticsearch clusters and additional destinations [ls-multi]

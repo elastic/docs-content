@@ -12,6 +12,11 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-enterprise
 ---
 
 # Snapshot and restore

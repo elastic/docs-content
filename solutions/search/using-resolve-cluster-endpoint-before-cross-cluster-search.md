@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
 # Resolve a cluster before {{ccs}} [_advantages_of_using_this_endpoint_before_a_ccs]

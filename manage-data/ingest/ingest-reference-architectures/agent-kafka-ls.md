@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-kafka-ls.html
+products:
+  - id: ingest
 ---
 
 # Elastic Agent to Logstash to Kafka to Logstash to Elasticsearch: Kafka as middleware message queue [agent-kafka-ls]

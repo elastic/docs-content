@@ -3,6 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/intro.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-deploy.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/get-elastic.html
+products:
+  - id: cloud-serverless
+  - id: elasticsearch
+  - id: elastic-products-platform
+  - id: elastic-stack
 ---
 
 # Deploy

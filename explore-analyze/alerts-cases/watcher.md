@@ -1,13 +1,18 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-alerting.html
   - https://www.elastic.co/guide/en/cloud/current/ec-watcher.html
   - https://www.elastic.co/guide/en/kibana/current/watcher-ui.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-differences.html#elasticsearch-differences-serverless-features-replaced
   - https://www.elastic.co/guide/en/kibana/current/secure-reporting.html#securing-reporting
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Watcher

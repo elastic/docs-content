@@ -1,9 +1,11 @@
 ---
-navigation_title: "Self-installation standalone"
+navigation_title: Self-installation standalone
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-8.0-self-standalone.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Upgrade a self-installation of APM Server standalone to 9.0 [apm-upgrade-9.0-self-standalone]

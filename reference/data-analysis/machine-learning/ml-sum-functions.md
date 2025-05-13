@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-sum-functions.html
+products:
+  - id: machine-learning
 ---
 
 # Sum functions [ml-sum-functions]

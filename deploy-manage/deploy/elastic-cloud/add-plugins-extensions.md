@@ -6,6 +6,9 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
+products:
+  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
 ---
 
 # Add plugins and extensions [ec-adding-plugins]

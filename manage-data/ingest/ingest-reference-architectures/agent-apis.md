@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-apis.html
+products:
+  - id: ingest
 ---
 
 # Elastic Agent to Elasticsearch: APIs for collection [agent-apis]

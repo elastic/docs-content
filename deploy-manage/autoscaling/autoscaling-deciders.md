@@ -12,6 +12,8 @@ applies_to:
   ece:
   eck:
   ess:
+products:
+  - id: elasticsearch
 ---
 
 # Autoscaling deciders [autoscaling-deciders]

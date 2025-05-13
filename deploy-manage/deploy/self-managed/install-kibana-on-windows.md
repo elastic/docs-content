@@ -1,11 +1,9 @@
 ---
-navigation_title: "Install on Windows"
+navigation_title: Windows
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/windows.html
-navigation_title: "Windows"
-applies_to:
-  deployment:
-    self:
+products:
+  - id: kibana
 ---
 
 # Install {{kib}} on Windows [windows]

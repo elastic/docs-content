@@ -1,12 +1,14 @@
 ---
+navigation_title: For data streams and aliases
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/securing-aliases.html
-navigation_title: "For data streams and aliases"
 applies_to:
   ece:
   eck:
   ess:
   self:
+products:
+  - id: elasticsearch
 ---
 
 # Granting privileges for data streams and aliases [securing-aliases]

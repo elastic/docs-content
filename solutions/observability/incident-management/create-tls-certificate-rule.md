@@ -1,7 +1,9 @@
 ---
-navigation_title: "TLS certificate"
+navigation_title: TLS certificate
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/tls-certificate-alert.html
+products:
+  - id: observability
 ---
 
 # Create a TLS certificate rule [tls-certificate-alert]

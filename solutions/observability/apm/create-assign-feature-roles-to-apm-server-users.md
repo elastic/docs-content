@@ -1,9 +1,11 @@
 ---
-navigation_title: "Use feature roles"
+navigation_title: Use feature roles
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-feature-roles.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Create and assign feature roles to APM Server users [apm-feature-roles]

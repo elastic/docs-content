@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: apm-php-agent
 ---
 
 # Collection of diagnostic information [_collection_of_diagnostic_information]

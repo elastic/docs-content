@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/host-proxy-env-vars.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Proxy Server connectivity using default host variables [host-proxy-env-vars]
