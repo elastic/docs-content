@@ -8,7 +8,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
 ---
 
 # {{heroku}} hardware [ech-reference-hardware]
@@ -19,7 +19,7 @@ products:
 All instances are set to UTC timezone.
 ::::
 
-The {{heroku}} runs exclusively on AWS. To understand the available hardware, refer to the following resources: 
+The {{heroku}} runs exclusively on AWS. To understand the available hardware, refer to the following resources:
 
 * [The {{ech}} hardware overview](cloud://reference/cloud-hosted/hardware.md)
 * [AWS hardware](cloud://reference/cloud-hosted/aws.md)

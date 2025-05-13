@@ -21,7 +21,6 @@ applies_to:
 products:
   - id: kibana
   - id: cloud-enterprise
-  - id: elasticsearch-cloud-hosted-heroku
   - id: cloud-hosted
   - id: cloud-kubernetes
   - id: elasticsearch

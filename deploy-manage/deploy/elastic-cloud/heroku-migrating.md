@@ -5,7 +5,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
 ---
 
 # Migrate between plans [ech-migrating]

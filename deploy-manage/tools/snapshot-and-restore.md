@@ -15,7 +15,6 @@ applies_to:
 products:
   - id: elasticsearch
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
   - id: cloud-enterprise
 ---
 

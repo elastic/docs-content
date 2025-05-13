@@ -7,7 +7,6 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Customize deployment components [ec-customize-deployment-components]

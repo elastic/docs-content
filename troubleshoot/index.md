@@ -10,7 +10,6 @@ products:
   - id: elastic-products-platform
   - id: elastic-stack
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
   - id: cloud-enterprise
 ---
 

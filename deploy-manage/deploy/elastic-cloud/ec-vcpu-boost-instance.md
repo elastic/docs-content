@@ -7,7 +7,6 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # vCPU boosting and credits [ec-vcpu-boost-instance]

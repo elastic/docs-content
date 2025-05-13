@@ -11,7 +11,6 @@ applies_to:
 products:
   - id: cloud-enterprise
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Reset the `elastic` user password in {{ech}} and {{ece}} [ec-password-reset]

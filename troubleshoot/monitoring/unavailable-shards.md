@@ -11,7 +11,6 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Diagnose unavailable shards [ec-scenario_why_are_shards_unavailable]

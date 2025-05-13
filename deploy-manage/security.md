@@ -17,7 +17,6 @@ products:
   - id: kibana
   - id: cloud-kubernetes
   - id: cloud-enterprise
-  - id: elasticsearch-cloud-hosted-heroku
   - id: cloud-hosted
 ---
 

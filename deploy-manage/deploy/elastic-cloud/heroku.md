@@ -9,7 +9,7 @@ applies_to:
   deployment:
     ess:
 products:
-  - id: elasticsearch-cloud-hosted-heroku
+  - id: cloud-hosted
 ---
 
 # {{es}} Add-On for Heroku [ech-getting-started]

@@ -8,7 +8,6 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Troubleshoot cluster availability using performance metrics [ec-scenario_is_my_cluster_really_highly_available]

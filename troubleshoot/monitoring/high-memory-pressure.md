@@ -8,7 +8,6 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Troubleshoot high memory pressure

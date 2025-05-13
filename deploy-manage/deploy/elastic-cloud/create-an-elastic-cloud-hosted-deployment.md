@@ -9,7 +9,6 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Create an {{ech}} deployment [ec-create-deployment]
@@ -26,7 +25,7 @@ You can also create a deployment using the [{{ecloud}} API](https://www.elastic.
     :alt: Log in to create a deployment
     :::
 
-1. Select a solution view for your deployment. Solution views define the navigation and set of features that will be first available in your deployment. You can change it later, or [create different spaces](/deploy-manage/manage-spaces.md) with different solution views within your deployment. 
+1. Select a solution view for your deployment. Solution views define the navigation and set of features that will be first available in your deployment. You can change it later, or [create different spaces](/deploy-manage/manage-spaces.md) with different solution views within your deployment.
 
     To learn more about what each solution offers, check [Elasticsearch](/solutions/search/get-started.md), [Observability](/solutions/observability/get-started.md), and [Security](/solutions/security/get-started.md).
 

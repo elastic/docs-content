@@ -15,7 +15,6 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Edit {{stack}} settings
@@ -32,11 +31,11 @@ If a feature requires both standard `elasticsearch.yml` settings and [secure set
 
 {{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster.
 
-For a list of supported settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Settings supported on {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")). 
+For a list of supported settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md). Settings supported on {{ech}} are indicated by an {{ecloud}} icon (![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ecloud}}")).
 
 ### Kibana settings
 
-{{ech}} supports most of the standard {{kib}} settings. 
+{{ech}} supports most of the standard {{kib}} settings.
 
 Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions.
 

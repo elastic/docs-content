@@ -8,7 +8,6 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Access {{kib}} [ec-access-kibana]

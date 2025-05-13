@@ -14,7 +14,6 @@ applies_to:
     eck:
   serverless:
 products:
-  - id: elasticsearch-cloud-hosted-heroku
   - id: cloud-enterprise
   - id: cloud-hosted
 ---
@@ -121,7 +120,7 @@ To delete an {{es}} cluster created with {{eck}}:
    ```shell
    kubectl delete kibana <kibana-resource-name>
    ```
-   
+
 :::{{tip}}
 To fully uninstall {{eck}} from your cluster including all managed resources and the ECK operator, refer to the [](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md) guide.
 :::

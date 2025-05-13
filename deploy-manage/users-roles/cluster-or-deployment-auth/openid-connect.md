@@ -16,7 +16,6 @@ products:
   - id: elasticsearch
   - id: cloud-enterprise
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # OpenID Connect authentication [oidc-realm]

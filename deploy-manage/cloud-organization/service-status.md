@@ -14,7 +14,6 @@ applies_to:
 products:
   - id: cloud-hosted
   - id: cloud-serverless
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Service status

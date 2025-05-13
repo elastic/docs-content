@@ -13,7 +13,6 @@ applies_to:
 products:
   - id: cloud-hosted
   - id: cloud-enterprise
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Migrate your {{es}} data

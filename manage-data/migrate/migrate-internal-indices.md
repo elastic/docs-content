@@ -11,7 +11,6 @@ applies_to:
   serverless: unavailable
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Migrate internal indices

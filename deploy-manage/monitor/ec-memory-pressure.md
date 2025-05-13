@@ -8,7 +8,6 @@ applies_to:
     ece: all
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # JVM memory pressure indicator [ec-memory-pressure]

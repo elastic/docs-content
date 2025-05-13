@@ -8,7 +8,6 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Troubleshoot performance degrading over time[ec-scenario_why_is_performance_degrading_over_time]

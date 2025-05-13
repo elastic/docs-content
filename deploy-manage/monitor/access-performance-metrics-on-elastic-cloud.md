@@ -7,7 +7,6 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Performance metrics on {{ecloud}} [ec-saas-metrics-accessing]

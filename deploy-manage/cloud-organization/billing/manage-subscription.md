@@ -12,7 +12,6 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Manage your subscription

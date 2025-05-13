@@ -14,7 +14,6 @@ applies_to:
 products:
   - id: cloud-enterprise
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Traffic filtering

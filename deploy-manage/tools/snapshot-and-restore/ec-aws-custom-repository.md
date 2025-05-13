@@ -8,7 +8,6 @@ applies_to:
     ess:
 products:
   - id: cloud-hosted
-  - id: elasticsearch-cloud-hosted-heroku
 ---
 
 # Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]
