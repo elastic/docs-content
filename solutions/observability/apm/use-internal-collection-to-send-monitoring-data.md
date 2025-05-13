@@ -6,6 +6,7 @@ applies_to:
   stack: all
 products:
   - id: observability
+  - id: apm
 ---
 
 # Use internal collection to send monitoring data [apm-monitoring-internal-collection]

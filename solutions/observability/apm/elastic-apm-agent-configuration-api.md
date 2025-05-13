@@ -5,6 +5,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Elastic APM agent configuration API [apm-api-config]

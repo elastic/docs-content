@@ -5,6 +5,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # APM Server binary [get-started-with-apm-server-binary]

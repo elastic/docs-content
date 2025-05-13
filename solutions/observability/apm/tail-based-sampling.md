@@ -5,6 +5,7 @@ applies_to:
   stack: all
 products:
   - id: observability
+  - id: apm
 ---
 
 # Tail-based sampling [apm-tail-based-sampling-config]

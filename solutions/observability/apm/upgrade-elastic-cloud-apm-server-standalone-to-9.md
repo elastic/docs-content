@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Upgrade Elastic Cloud APM Server standalone to 8. [apm-upgrade-8.0-cloud-standalone]

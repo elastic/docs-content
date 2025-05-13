@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Cross-cluster search with application data [apm-cross-cluster-search]

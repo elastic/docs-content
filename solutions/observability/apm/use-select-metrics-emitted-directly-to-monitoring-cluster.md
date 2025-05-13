@@ -6,6 +6,7 @@ applies_to:
   stack: all
 products:
   - id: observability
+  - id: apm
 ---
 
 # Use the select metrics emitted directly to your monitoring cluster [apm-monitoring-local-collection]

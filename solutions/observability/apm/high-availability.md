@@ -5,6 +5,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # High Availability [apm-high-availability]

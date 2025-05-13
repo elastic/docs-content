@@ -5,6 +5,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Secure communication with the Elastic Stack [apm-secure-comms-stack]

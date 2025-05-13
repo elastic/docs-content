@@ -6,6 +6,7 @@ applies_to:
   stack: deprecated
 products:
   - id: observability
+  - id: apm
 ---
 
 # Integrate with Jaeger (deprecated) [apm-jaeger-integration]

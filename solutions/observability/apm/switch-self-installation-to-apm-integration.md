@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Switch a self-installation to the APM integration [apm-integration-upgrade-steps]

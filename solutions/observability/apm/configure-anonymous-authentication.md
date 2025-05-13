@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Configure anonymous authentication [apm-configuration-anonymous]

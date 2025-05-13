@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Create and assign feature roles to APM Server users [apm-feature-roles]

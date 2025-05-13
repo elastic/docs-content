@@ -5,6 +5,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Explore data in Elasticsearch [apm-exploring-es-data]

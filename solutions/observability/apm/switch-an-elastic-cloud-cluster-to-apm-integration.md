@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Switch an Elastic Cloud cluster to the APM integration [apm-integration-upgrade-steps-ess]

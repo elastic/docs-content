@@ -5,6 +5,7 @@ applies_to:
   stack: all
 products:
   - id: observability
+  - id: apm
 ---
 
 # Storage Explorer [apm-storage-explorer]

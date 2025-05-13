@@ -6,6 +6,7 @@ applies_to:
   stack: all
 products:
   - id: observability
+  - id: apm
 ---
 
 # Secrets keystore for secure settings [apm-keystore]

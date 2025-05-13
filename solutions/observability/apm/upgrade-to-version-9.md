@@ -5,6 +5,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Upgrade to version 9.0 [apm-upgrading-to-9.0]

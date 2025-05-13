@@ -6,6 +6,7 @@ applies_to:
   stack: all
 products:
   - id: observability
+  - id: apm
 ---
 
 # Use Metricbeat to send monitoring data [apm-monitoring-metricbeat-collection]

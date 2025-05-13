@@ -6,6 +6,7 @@ applies_to:
   stack: all
 products:
   - id: observability
+  - id: apm
 ---
 
 # Monitor a Fleet-managed APM Server [apm-monitor-apm-self-install]

@@ -6,6 +6,7 @@ applies_to:
   serverless:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Errors [apm-data-model-errors]

@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Upgrade a self-installation of the APM integration to 9.0 [apm-upgrade-9.0-self-integration]

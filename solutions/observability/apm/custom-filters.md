@@ -6,6 +6,7 @@ applies_to:
   serverless:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Custom filters [apm-custom-filter]

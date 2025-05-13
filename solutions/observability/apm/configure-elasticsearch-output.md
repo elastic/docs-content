@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Configure the Elasticsearch output [apm-elasticsearch-output]

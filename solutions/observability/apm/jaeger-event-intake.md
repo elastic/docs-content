@@ -5,6 +5,7 @@ applies_to:
   stack: deprecated
 products:
   - id: observability
+  - id: apm
 ---
 
 # Jaeger event intake [apm-api-jaeger]

@@ -6,6 +6,7 @@ applies_to:
   serverless:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Secure communication with APM agents [apm-secure-agent-communication]

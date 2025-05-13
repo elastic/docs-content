@@ -6,6 +6,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Upgrade Elastic Cloud with the APM integration to 8.0 [apm-upgrade-8.0-cloud-integration]

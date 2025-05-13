@@ -7,6 +7,7 @@ applies_to:
   serverless:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Application data security [apm-data-security]

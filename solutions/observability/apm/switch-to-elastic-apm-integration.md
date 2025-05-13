@@ -5,6 +5,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Switch to the Elastic APM integration [apm-upgrade-to-apm-integration]

@@ -5,6 +5,7 @@ applies_to:
   stack:
 products:
   - id: observability
+  - id: apm
 ---
 
 # Explore mobile sessions with Discover [apm-mobile-session-explorer]
