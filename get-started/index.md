@@ -6,7 +6,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/index.html
 products:
   - id: elasticsearch
-  - id: elastic-products-platform
   - id: elastic-stack
 ---
 # Get started

@@ -51,17 +51,16 @@ valid_items:
           - cloud-enterprise
           - cloud-hosted
           - cloud-kubernetes
-          - cloud-native-ingest
           - cloud-serverless
           - cloud-terraform
+          - ecs
           - ecs-logging
           - elastic-agent
-          - ecs
-          - elastic-products-platform
+          - elastic-serverless-forwarder
           - elastic-stack
           - elasticsearch
           - elasticsearch-client
-          - painless
+          - elasticsearch-curator
           - fleet
           - ingest
           - integrations
@@ -69,6 +68,7 @@ valid_items:
           - logstash
           - machine-learning
           - observability
+          - painless
           - search-ui
           - security
   - key: sub

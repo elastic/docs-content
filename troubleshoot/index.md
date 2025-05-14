@@ -7,7 +7,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-get-help.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-help.html
 products:
-  - id: elastic-products-platform
   - id: elastic-stack
   - id: cloud-hosted
   - id: cloud-enterprise

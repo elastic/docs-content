@@ -2,7 +2,6 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
 products:
-  - id: elastic-products-platform
   - id: elastic-stack
 ---
 

@@ -10,7 +10,6 @@ applies_to:
 products:
   - id: observability
   - id: cloud-serverless
-  - id: elastic-products-platform
   - id: elastic-stack
 ---
 

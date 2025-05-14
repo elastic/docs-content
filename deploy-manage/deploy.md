@@ -6,7 +6,6 @@ mapped_pages:
 products:
   - id: cloud-serverless
   - id: elasticsearch
-  - id: elastic-products-platform
   - id: elastic-stack
 ---
 
