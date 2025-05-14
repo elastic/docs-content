@@ -7,12 +7,12 @@ applies_to:
   serverless:
     observability: all
 products:
-  - id: apm-java-agent
+  - id: apm-agent
 ---
 
 # Troubleshoot APM Java Agent [trouble-shooting]
 
-Something isn’t quite working as expected? Here are some guidelines how to find out what’s going wrong. 
+Something isn’t quite working as expected? Here are some guidelines how to find out what’s going wrong.
 
 As a first step, check if your stack is compatible with the currently [supported technologies](apm-agent-java://reference/set-up-apm-java-agent.md#supported-technologies).
 

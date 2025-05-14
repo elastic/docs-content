@@ -7,7 +7,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - id: apm-dotnet-agent
+  - id: apm-agent
 ---
 
 # Troubleshoot APM .NET agent

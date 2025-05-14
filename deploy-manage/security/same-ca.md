@@ -3,7 +3,8 @@ navigation_title: With the same CA
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs-same.html
 applies_to:
-  self: ga
+  deployment:
+    self: ga
 products:
   - id: elasticsearch
 ---

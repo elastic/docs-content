@@ -3,7 +3,8 @@ navigation_title: "{{ece}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-license.html
 applies_to:
-  ece:
+  deployment:
+    ece:
 products:
   - id: cloud-enterprise
 ---

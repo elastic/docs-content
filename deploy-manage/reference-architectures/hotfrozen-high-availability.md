@@ -8,7 +8,9 @@ applies_to:
     ece: all
     eck: all
 products:
-  - id: reference-architectures
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-hosted
 ---
 
 # Hot/Frozen - High Availability [hot-frozen-architecture]

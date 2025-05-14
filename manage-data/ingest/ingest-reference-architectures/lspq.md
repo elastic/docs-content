@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/lspq.html
 products:
-  - id: ingest
+  - id: elastic-agent
+  - id: logstash
 ---
 
 # Elastic Agent to Logstash to Elasticsearch: Logstash Persistent Queue (PQ) for buffering [lspq]

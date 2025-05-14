@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/airgapped-env.html
 products:
-  - id: ingest
+  - id: elastic-agent
 ---
 
 # Elastic air-gapped architectures [airgapped-env]

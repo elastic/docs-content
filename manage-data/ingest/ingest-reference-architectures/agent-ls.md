@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-ls.html
 products:
-  - id: ingest
+  - id: elastic-agent
+  - id: logstash
 ---
 
 # Elastic Agent to Logstash to Elasticsearch [agent-ls]

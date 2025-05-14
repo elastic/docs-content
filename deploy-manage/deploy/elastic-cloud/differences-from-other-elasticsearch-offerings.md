@@ -4,7 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-differences.html
 applies_to:
   serverless:
-  ess:
+  deployment:
+    ess:
 products:
   - id: cloud-serverless
 ---

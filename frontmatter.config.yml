@@ -45,19 +45,8 @@ valid_items:
         type: string
         valid_values:
           - apm
-          - apm-dotnet-agent
-          - apm-android-agent
-          - apm-attacher
-          - apm-aws-lambda-extension
-          - apm-go-agent
-          - apm-ios-agent
-          - apm-java-agent
-          - apm-node-agent
-          - apm-php-agent
-          - apm-python-agent
-          - apm-ruby-agent
-          - apm-rum-agent
-          - beats-logging-plugin
+          - apm-agent
+          - beats
           - cloud-control-ecctl
           - cloud-enterprise
           - cloud-hosted
@@ -66,38 +55,13 @@ valid_items:
           - cloud-serverless
           - cloud-terraform
           - ecs-logging
-          - ecs-logging-dotnet
-          - ecs-logging-go-logrus
-          - ecs-logging-go-zap
-          - ecs-logging-go-zerolog
-          - ecs-logging-java
-          - ecs-logging-node
-          - ecs-logging-php
-          - ecs-logging-python
-          - ecs-logging-ruby
           - elastic-agent
           - ecs
           - elastic-products-platform
           - elastic-stack
           - elasticsearch
-          - elasticsearch-dotnet-client
-          - elasticsearch-apache-hadoop
-          - elasticsearch-cloud-hosted-heroku
-          - elasticsearch-community-clients
-          - elasticsearch-curator
-          - elasticsearch-eland-python-client
-          - elasticsearch-go-client
-          - elasticsearch-groovy-client
-          - elasticsearch-java-client
-          - elasticsearch-java-script-client
-          - elasticsearch-painless-scripting-language
-          - elasticsearch-perl-client
-          - elasticsearch-php-client
-          - elasticsearch-plugins
-          - elasticsearch-python-client
-          - elasticsearch-resiliency-status
-          - elasticsearch-ruby-client
-          - elasticsearch-rust-client
+          - elasticsearch-client
+          - painless
           - fleet
           - ingest
           - integrations
@@ -105,7 +69,6 @@ valid_items:
           - logstash
           - machine-learning
           - observability
-          - reference-architectures
           - search-ui
           - security
   - key: sub

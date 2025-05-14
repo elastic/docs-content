@@ -6,7 +6,7 @@ applies_to:
   stack: all
   serverless: all
 products:
-  - id: cloud-native-ingest
+  - id: elastic-serverless-forwarder
 ---
 
 

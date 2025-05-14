@@ -2,7 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-networkbridge.html
 products:
-  - id: ingest
+  - id: elastic-agent
+  - id: logstash
 ---
 
 # Elastic Agent to Logstash to Elasticsearch: Logstash as a proxy [ls-networkbridge]

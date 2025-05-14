@@ -10,7 +10,7 @@ applies_to:
     ece:
     self:
 products:
-  - id: elasticsearch-apache-hadoop
+  - id: elasticsearch
 ---
 
 # Troubleshoot Elasticsearch for Apache Hadoop [troubleshooting]

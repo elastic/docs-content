@@ -7,7 +7,7 @@ applies_to:
   serverless:
     observability: all
 products:
-  - id: apm-go-agent
+  - id: apm-agent
 ---
 
 # Troubleshoot APM Go Agent
