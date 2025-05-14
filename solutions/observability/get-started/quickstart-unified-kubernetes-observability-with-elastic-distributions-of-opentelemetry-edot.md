@@ -74,7 +74,7 @@ For a more detailed description of the components and advanced configuration, re
 3. Follow the on-screen instructions to install all needed components.
 
     ::::{note}
-    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](opentelemetry://reference/use-cases/llm/index.md#supported-technologies/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
+    The default installation deploys the OpenTelemetry Operator with a self-signed TLS certificate valid for 365 days. This certificate **won’t be renewed** unless the Helm Chart release is manually updated. Refer to the [cert-manager integrated installation](opentelemetry://reference/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) guide to enable automatic certificate generation and renewal using [cert-manager](https://cert-manager.io/docs/installation/).
 
     ::::
 
@@ -136,7 +136,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 ## Troubleshooting and more [_troubleshooting_and_more]
 
-* To troubleshoot deployment and installation, refer to [installation verification](opentelemetry://reference/use-cases/kubernetes/deployment.md#installation-verification).
+* To troubleshoot deployment and installation, refer to [installation verification](opentelemetry://reference/use-cases/kubernetes/deployment.md#verify-the-installation).
 * For application instrumentation details, refer to [Instrumenting applications with EDOT SDKs on Kubernetes](opentelemetry://reference/use-cases/kubernetes/instrumenting-applications.md).
 * To customize the configuration, refer to [custom configuration](opentelemetry://reference/use-cases/kubernetes/customization.md).
 * Refer to [Observability overview](/solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
