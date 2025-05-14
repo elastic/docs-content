@@ -6,6 +6,10 @@ applies_to:
     self:
     ess:
 navigation_title: Stack settings
+products:
+   - id: elastic-stack
+   - id: elasticsearch
+   - id: kibana
 ---
 
 # Elastic Stack settings
