@@ -47,7 +47,9 @@ For more information on how to use API keys for authentication, check the sectio
 Prior to ECE 3.5.0, regardless of the use of this API, the [CPU quota](#ece-alloc-cpu) used the memory specified at installation time.
 ::::
 
-
+::::{important}
+CPU quotas cannot be removed (CPU hard limit) or updated when running ECE on Podman. 
+::::
 
 ### Examples [ece_examples]
 
