@@ -26,7 +26,7 @@ Want to get started quickly? See [Get started with traces and APM](/solutions/ob
 Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service in the language its written in:
 
 * [**Elastic APM agents**](/solutions/observability/apm/elastic-apm-agents.md): Elastic APM agents are instrumentation libraries written in the same language as your service.
-* [**OpenTelemetry**](/solutions/observability/apm/use-opentelemetry-with-apm.md): OpenTelemetry is an open source set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. Elastic offers [Elastic Distributions of OpenTelemetry (EDOT)](https://elastic.github.io/opentelemetry/edot-sdks/index.html), which are customized versions of [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/) that are optimized to work with an Elastic backend.
+* [**OpenTelemetry**](/solutions/observability/apm/use-opentelemetry-with-apm.md): OpenTelemetry is an open source set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications. Elastic offers [Elastic Distributions of OpenTelemetry (EDOT)](opentelemetry://reference/edot-sdks/index.md), which are customized versions of [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/) that are optimized to work with an Elastic backend.
 
 **Not sure which method is right for you?** Compare the available options below.
 

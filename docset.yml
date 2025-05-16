@@ -54,6 +54,7 @@ cross_links:
   - kibana
   - logstash
   - logstash-docs-md
+  - opentelemetry
   - search-ui
 
 toc:
@@ -77,6 +78,7 @@ subs:
   ech:   "Elastic Cloud Hosted"
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
+  edot:  "Elastic Distribution of OpenTelemetry"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
   es-serverless:   "Elasticsearch Serverless"
