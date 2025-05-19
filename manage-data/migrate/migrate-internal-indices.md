@@ -11,16 +11,25 @@ applies_to:
   serverless: unavailable
 ---
 
-# Migrate internal indices
+<!--
+% https://elastic.slack.com/archives/C0D8ST60Y/p1747255969103089
 
-When you migrate your {{es}} data into a new infrastructure you may also want to migrate your {{es}} internal indices, specifically the `.kibana` index and the `.security` index.
+::::{note}
+If you want to migrate also {{es}} system indices, such as `.security`, or `.kibana`, select the **Restore feature state** option and
 
-There are two ways to migrate the internal {{es}} indices:
+/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-feature-state
 
-1. Reindex the indices from a remote cluster.
-2. Restore the indices from a snapshot.
+/deploy-manage/tools/snapshot-and-restore.md#feature-state
+::::
+-->
 
-To reindex internal indices from a remote cluster, you can follow the same steps that you use to reindex regular indices when you [migrate your {{es}} data indices](../migrate.md#ech-reindex-remote).
+# Migrate system indices
+
+When you migrate your {{es}} data into a new infrastructure you may also want to migrate your {{es}} system internal indices, specifically the `.kibana` index and the `.security` index.
+
+In {{es}} 8.0 and later versions, the snapshot and restore of [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) is the only way to back up and restore system indices and system data streams.
+
+## Migrate system indices through snapshot and restore
 
 To restore internal indices from a snapshot, the procedure is a bit different from migrating {{es}} data indices. Use these steps to restore internal indices from a snapshot:
 

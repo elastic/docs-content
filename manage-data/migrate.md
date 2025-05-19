@@ -20,7 +20,7 @@ You might have switched to {{ech}} or {{ece}} for any number of reasons, and you
 * Reindex from a remote cluster, which rebuilds the index from scratch.
 * Restore from a snapshot, which copies the existing indices.
 
-### Before you begin [ec_migrate_before_you_begin]
+## Before you begin [ec_migrate_before_you_begin]
 
 Depending on which option that you choose, you might have limitations or need to do some preparation beforehand.
 
@@ -35,33 +35,36 @@ Reindex from a remote cluster
 Restore from a snapshot
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an Elasticsearch version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility) for details). If you have not already done so, you will need to [set up snapshots for your old cluster](/deploy-manage/tools/snapshot-and-restore/self-managed.md) using a repository that can be accessed from the new cluster.
 
-Migrating internal {{es}} indices
-:   For {{ech}}, if you are migrating internal {{es}} indices from another cluster, specifically the `.kibana` index or the `.security` index, there are two options:
+Migrating system {{es}} indices
+:   In {{es}} 8.0 and later versions, [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) are the only way to back up and restore system indices and system data streams, such as `.kibana` or `.security`.
+    
+    Check [Migrating internal indices](./migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
 
-    * Use the steps on this page to reindex the internal indices from a remote cluster. The steps for reindexing internal indices and regular, data indices are the same.
-    * Check [Migrating internal indices](migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
-
-::::{warning}
-Before you migrate your {{es}} data, [define your index mappings](/manage-data/data-store/mapping.md) on the new cluster. Index mappings are unable to migrate during reindex operations.
-::::
-
-### Index from the source [ec-index-source]
+## Index from the source [ec-index-source]
 
 If you still have access to the original data source, outside of your old {{es}} cluster, you can load the data from there. This might be the simplest option, allowing you to choose the {{es}} version and take advantage of the latest features. You have the option to use any ingestion method that you want—​Logstash, Beats, the {{es}} clients, or whatever works best for you.
 
 If the original source isn’t available or has other issues that make it non-viable, there are still two more migration options, getting the data from a remote cluster or restoring from a snapshot.
 
-### Reindex from a remote cluster [ech-reindex-remote]
+## Reindex from a remote cluster [ech-reindex-remote]
 
-Through the {{es}} reindex API, you can connect your new {{es}} Service deployment remotely to your old {{es}} cluster. This pulls the data from your old cluster and indexes it into your new one. Reindexing essentially rebuilds the index from scratch and it can be more resource intensive to run.
+Through the {{es}} [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex), you can connect your new {{es}} deployment remotely to your old {{es}} cluster. This pulls the data from your old cluster and indexes it into your new one. Reindexing essentially rebuilds the index from scratch and it can be more resource intensive to run than a [snapshot restore](#ec-restore-snapshots).
+
+::::{warning}
+Reindex operations do not migrate index mappings, settings, or associated index templates from the source cluster.
+
+Before migrating your {{es}} data, define the necessary [mappings](/manage-data/data-store/mapping.md) and [templates](/manage-data/data-store/templates.md) on the new cluster. The easiest way to do this is to copy the relevant index templates from the old cluster to the new one in advance.
+::::
+
+Follow these steps to reindex data remotely:
 
 1. Log in to {{ech}} or {{ece}}.
 2. Select a deployment or create one.
-3. If the old {{es}} cluster is on a remote host (any type of host accessible over the internet), you need to make sure that the host can be accessed. Access is determined by the {{es}} `reindex.remote.whitelist` user setting.
+3. Ensure that the new {{es}} cluster can access the remote source cluster to perform the reindex operation. Access is controlled by the {{es}} `reindex.remote.whitelist` user setting.
 
     Domains matching the pattern `["*.io:*", "*.com:*"]` are allowed by default, so if your remote host URL matches that pattern you do not need to explicitly define `reindex.remote.whitelist`.
 
-    Otherwise, if your remote endpoint is not covered by the default settings, adjust the setting to add the remote {{es}} cluster as an allowed host:
+    Otherwise, if your remote endpoint is not covered by the default pattern, adjust the setting to add the remote {{es}} cluster as an allowed host:
 
     1. From your deployment menu, go to the **Edit** page.
     2. In the **Elasticsearch** section, select **Manage user settings and extensions**. For deployments with existing user settings, you may have to expand the **Edit elasticsearch.yml** caret for each node type instead.
@@ -75,8 +78,9 @@ Through the {{es}} reindex API, you can connect your new {{es}} Service deployme
 
     4. Save your changes.
 
-4. From the **API Console** or in the Kibana Console app, create the destination index.
-5. Copy the index from the remote cluster:
+4. Using the **API Console** or within {{kib}}, either create the destination index with the appropriate settings and [mappings](/manage-data/data-store/mapping.md), or ensure that the relevant [index templates](/manage-data/data-store/templates.md) are in place.
+
+5. Using the **API Console** or [{{kib}} DevTools Console](/explore-analyze/query-filter/tools/console.md), reindex the data remotely from the old cluster:
 
     ```sh
     POST _reindex
@@ -104,86 +108,49 @@ Through the {{es}} reindex API, you can connect your new {{es}} Service deployme
     GET INDEX-NAME/_search?pretty
     ```
 
-7. You can remove the reindex.remote.whitelist user setting that you added previously.
+7. If you are not planning to reindex more data from the remote, you can remove the `reindex.remote.whitelist` user setting that you added previously.
 
+## Restore from a snapshot [ec-restore-snapshots]
 
-### Restore from a snapshot [ec-restore-snapshots]
+Restoring from a snapshot is often the fastest and most reliable way to migrate data between {{es}} clusters. It preserves mappings, settings, and optionally parts of the cluster state such as index templates, component templates, and system indices.
 
-If you cannot connect to a remote index for whatever reason, such as if it’s in a non-working state, you can try restoring from the most recent working snapshot.
+System indices can be easily restored by including their corresponding [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) in the restore operation, allowing you to retain internal configurations related to security, {{kib}}, or other stack features.
+
+This method is especially useful when you want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state.
+
+To use this method, the new cluster must have access to the snapshot repository that contains data from the old cluster. Also ensure that both clusters use [compatible versions](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
+
+For more information, refer to [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster)
 
 ::::{note}
 For {{ece}} users, while it is most common to have Amazon S3 buckets, you should be able to restore from any addressable external storage that has your {{es}} snapshots.
 ::::
 
-1. On your old {{es}} cluster, choose an option to get the name of your snapshot repository bucket:
+### Step 1: Set up the repository in the new cluster
 
-    ```sh
-    GET /_snapshot
-    GET /_snapshot/_all
-    ```
+::::{include} ./migrate/_snippets/setup-repo.md
+::::
 
-2. Get the snapshot name:
+### Step 2: Run the snapshot restore
 
-    ```sh
-    GET /_snapshot/NEW-REPOSITORY-NAME/_all
-    ```
+Once the repository has been registered and verified, you are ready to restore any data from any of its snapshots to your new cluster.
 
-    The output for each entry provides a `"snapshot":` value which is the snapshot name.
+For extra details about the contents of a snapshot refer to [](/deploy-manage/tools/snapshot-and-restore.md#snapshot-contents).
 
-    ```json
-    {
-      "snapshots": [
-        {
-          "snapshot": "scheduled-1527616008-instance-0000000004",
-          ...
-        },
-        ...
-      ]
-    }
-    ```
+To start the restore process:
 
+1. Open Kibana and go to **Management** > **Snapshot and Restore**.
+2. Under the **Snapshots** tab, you can find the available snapshots from your newly added snapshot repository. Select any snapshot to view its details, and from there you can choose to restore it.
+3. Select **Restore**.
+4. Select the index or indices you wish to restore.
+5. Optionally, configure additional restore options, such as **Restore aliases**, **Restore global state**, or **Restore feature state**.
 
-3. Add the snapshot repository:
+    Refer to [Restore a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) for more details about restore operations in {{es}}.
+    
+6. Select **Restore snapshot** to begin the process.
 
-    ::::{tab-set}
-
-    :::{tab-item} {{ech}}
-
-    From the [console](https://cloud.elastic.co?page=docs&placement=docs-body) of the **new** {{es}} cluster, add the snapshot repository.
-
-    For details, check our guidelines for:
-    * [Amazon Web Services (AWS) Storage](../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
-    * [Google Cloud Storage (GCS)](../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
-    * [Azure Blob Storage](../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md).
-
-    If you’re migrating [searchable snapshots](../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and     destination clusters.
-
-    If the source cluster is still writing to the repository, you need to set the destination cluster’s repository connection to `readonly:true` to avoid data corruption. Refer to [backup a repository](../deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) for details.
-    :::
-
-    :::{tab-item} {{ece}}
-
-    From the Cloud UI of the **new** {{es}} cluster add the snapshot repository.
-
-    For details about configuring snapshot repositories on Amazon Web Services (AWS), Google Cloud Storage (GCS), or Azure Blob Storage, check [manage Snapshot Repositories](../deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
-
-    If you’re migrating [searchable snapshots](../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and     destination clusters.
-    :::
-
-    ::::
-
-4. Start the Restore process.
-
-    1. Open Kibana and go to **Management** > **Snapshot and Restore**.
-    2. Under the **Snapshots** tab, you can find the available snapshots from your newly added snapshot repository. Select any snapshot to view its details, and from there you can choose to restore it.
-    3. Select **Restore**.
-    4. Select the indices you wish to restore.
-    5. Configure any additional index settings.
-    6. Select **Restore snapshot** to begin the process.
-
-5. Verify that the new index is restored in your deployment with this query:
+7. Verify that the new index is restored in your deployment with this query:
 
     ```sh
     GET INDEX_NAME/_search?pretty
     ```
-
