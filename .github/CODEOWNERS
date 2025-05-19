@@ -33,8 +33,8 @@
 
 /release-notes/apm-agents/                  @elastic/ingest-docs
 /release-notes/elastic-cloud-serverless/    @elastic/admin-docs
-/release-notes/elastic-observability/       @elastic/ingest-docs @elastic/experience-docs
-/release-notes/elastic-security/            @elastic/ingest-docs @elastic/experience-docs
+/release-notes/elastic-observability/       @elastic/ski-docs
+/release-notes/elastic-security/            @elastic/ski-docs
 /release-notes/elasticsearch-clients/       @elastic/developer-docs
 /release-notes/fleet-elastic-agent/         @elastic/ingest-docs
 /release-notes/intro/                       @elastic/docs
@@ -51,8 +51,8 @@
 /troubleshoot/ingest/                       @elastic/ingest-docs
 /troubleshoot/kibana/                       @elastic/admin-docs
 /troubleshoot/monitoring/                   @elastic/admin-docs @elastic/experience-docs
-/troubleshoot/observability/                @elastic/ingest-docs @elastic/experience-docs
-/troubleshoot/security/                     @elastic/ingest-docs @elastic/experience-docs
+/troubleshoot/observability/                @elastic/ski-docs
+/troubleshoot/security/                     @elastic/ski-docs
 
 # Raw migrated files
 /raw-migrated-files/                        @elastic/docs
