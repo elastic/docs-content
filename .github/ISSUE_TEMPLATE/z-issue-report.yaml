@@ -1,14 +1,12 @@
-name: "Docs issue"
-description: Report documentation issues such as inaccuracies, broken links, typos, or missing information.
-title: "[Issue]: "
-labels: ["triage"]
+name: "Website issue"
+description: This issue template should only be used when navigating directly from elastic.co.
+title: "[Website]: "
+labels: ["source:web"]
 body:
   - type: markdown
     attributes:
       value: |
-        Hi 👋. Thanks for taking the time to fill out this issue report!
-        This form will create an issue that Elastic's docs team will triage and prioritize.
-        You can also open a PR instead.
+        Hi 👋. Thanks for taking the time to fill out this issue report! This form will create an issue that Elastic's docs team will triage and prioritize. You can also open a PR instead.
   - type: dropdown
     attributes:
       label: Type of issue
