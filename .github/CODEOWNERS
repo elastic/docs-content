@@ -7,50 +7,50 @@
 /acrolinx/                                  @elastic/doc-leads
 
 # The docs
-/cloud-account/                             @elastic/platform-docs
-/deploy-manage/                             @elastic/platform-docs
-/explore-analyze/                           @elastic/platform-docs
-/extend/                                    @elastic/platform-docs
-/get-started/                               @elastic/platform-docs
+/cloud-account/                             @elastic/admin-docs
+/deploy-manage/                             @elastic/admin-docs
+/explore-analyze/                           @elastic/core-docs
+/extend/                                    @elastic/core-docs
+/get-started/                               @elastic/core-docs
 
-/manage-data/                               @elastic/platform-docs
+/manage-data/                               @elastic/admin-docs
 /manage-data/ingestion/                     @elastic/ingest-docs
 
-/reference/                                 @elastic/platform-docs
+/reference/                                 @elastic/core-docs
 /reference/data-analysis/                   @elastic/docs
 /reference/data-analysis/observability/     @elastic/experience-docs
-/reference/data-analysis/kibana/            @elastic/platform-docs
-/reference/data-analysis/machine-learning/  @elastic/platform-docs
+/reference/data-analysis/kibana/            @elastic/admin-docs
+/reference/data-analysis/machine-learning/  @elastic/developer-docs
 /reference/data-analysis/observability/     @elastic/experience-docs
-/reference/elasticsearch/clients/           @elastic/platform-docs
+/reference/elasticsearch/clients/           @elastic/developer-docs
 /reference/glossary/                        @elastic/docs
 /reference/ingestion-tools/                 @elastic/ingest-docs
 /reference/observability/                   @elastic/experience-docs
-/reference/search/                          @elastic/platform-docs
+/reference/search/                          @elastic/developer-docs
 /reference/security/                        @elastic/experience-docs
 
 /release-notes/                             @elastic/docs
 
 /release-notes/apm-agents/                  @elastic/ingest-docs
-/release-notes/elastic-cloud-serverless/    @elastic/platform-docs
+/release-notes/elastic-cloud-serverless/    @elastic/admin-docs
 /release-notes/elastic-observability/       @elastic/ingest-docs @elastic/experience-docs
 /release-notes/elastic-security/            @elastic/ingest-docs @elastic/experience-docs
-/release-notes/elasticsearch-clients/       @elastic/platform-docs
+/release-notes/elasticsearch-clients/       @elastic/developer-docs
 /release-notes/fleet-elastic-agent/         @elastic/ingest-docs
 /release-notes/intro/                       @elastic/docs
 
-/solutions/                                 @elastic/experience-docs @elastic/platform-docs
+/solutions/                                 @elastic/experience-docs @elastic/developer-docs 
 /solutions/observability/                   @elastic/experience-docs
 /solutions/observability/get-started/       @elastic/ingest-docs
-/solutions/search/                          @elastic/platform-docs
+/solutions/search/                          @elastic/developer-docs
 /solutions/security/                        @elastic/experience-docs
 
 /troubleshoot/                              @elastic/docs
-/troubleshoot/deployments/                  @elastic/platform-docs
-/troubleshoot/elasticsearch/                @elastic/platform-docs
+/troubleshoot/deployments/                  @elastic/admin-docs
+/troubleshoot/elasticsearch/                @elastic/admin-docs
 /troubleshoot/ingest/                       @elastic/ingest-docs
-/troubleshoot/kibana/                       @elastic/platform-docs
-/troubleshoot/monitoring/                   @elastic/platform-docs @elastic/experience-docs
+/troubleshoot/kibana/                       @elastic/admin-docs
+/troubleshoot/monitoring/                   @elastic/admin-docs @elastic/experience-docs
 /troubleshoot/observability/                @elastic/ingest-docs @elastic/experience-docs
 /troubleshoot/security/                     @elastic/ingest-docs @elastic/experience-docs
 
@@ -58,5 +58,5 @@
 /raw-migrated-files/                        @elastic/docs
 
 # Legacy serverless docs
-/serverless/                                @elastic/platform-docs
+/serverless/                                @elastic/admin-docs
 /serverless/serverless-changelog.asciidoc   @elastic/docs
