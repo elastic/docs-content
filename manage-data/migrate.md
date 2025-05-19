@@ -130,7 +130,7 @@ For more information, refer to [Restore into a different cluster](/deploy-manage
 For {{ece}} users, while it is most common to have Amazon S3 buckets, you should be able to restore from any addressable external storage that has your {{es}} snapshots.
 ::::
 
-The following steps assume you already have a snapshot repository configured in the old cluster with at least one valid snapshot.
+The following steps assume you already have a snapshot repository configured in the old cluster with at least one valid snapshot containing the data you want to migrate.
 
 ### Step 1: Set up the repository in the new cluster [migrate-repo-setup]
 
@@ -160,7 +160,7 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
     Considerations:
 
       * If you’re migrating [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and destination clusters.
-      * If the old cluster still has write access to the repository, register the repository as read-only, using the `readonly: true` option.
+      * If the old cluster still has write access to the repository, register the repository as read-only to avoid data corruption. This can be done using the `readonly: true` option.
 
     To configure a custom snapshot repository for your {{ech}} or {{ece}} deployment, follow the steps for the storage provider used by your existing repository:
 

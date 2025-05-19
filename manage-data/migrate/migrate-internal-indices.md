@@ -7,7 +7,7 @@ applies_to:
   deployment:
     eck: unavailable
     ess: ga
-    ece: unavailable
+    ece: ga
   serverless: unavailable
 ---
 
@@ -37,7 +37,3 @@ POST _snapshot/REPOSITORY/SNAPSHOT_NAME/_restore
   ]
 }
 ```
-
-Tips:
-* Get the list of available snapshots in the repository with `GET _snapshot/REPOSITORY/_all`, or with `GET _cat/snapshots/REPOSITORY`.
-* Each snapshot shows its available feature states in the xxxx section of the details.
