@@ -42,7 +42,7 @@ Start by storing the document in the `logs-example-default` data stream:
 2. In the **Console** tab, add the example log to Elastic using the following command:
 
     ```console
-    POST logs-example-default/_doc
+    POST logs-test-default/_doc
     {
     "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
     }
@@ -51,7 +51,7 @@ Start by storing the document in the `logs-example-default` data stream:
 3. Then, you can retrieve the document with the following search:
 
     ```console
-    GET /logs-example-default/_search
+    GET /logs-test-default/_search
     ```
 
 
@@ -254,6 +254,10 @@ The example index template above sets the following component templates:
 
 
 #### Create a data stream [observability-parse-log-data-create-a-data-stream]
+
+:::{note}
+To ensure your logs data is run through the correct pipeline, make sure you create your ingest pipeline and index template before creating your data stream.
+:::
 
 Create your data stream using the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
 
