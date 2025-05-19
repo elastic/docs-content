@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-connect-to-unmanaged-resources.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-connect-to-unmanaged-resources.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Connect to external Elastic resources [k8s-connect-to-unmanaged-resources]

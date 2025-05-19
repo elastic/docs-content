@@ -6,6 +6,8 @@ applies_to:
     self:
     ece:
     eck:
+products:
+  - id: elasticsearch
 ---
 
 # PKI [pki-realm]

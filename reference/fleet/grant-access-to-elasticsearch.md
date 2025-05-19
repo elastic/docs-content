@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/grant-access-to-elasticsearch.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Grant standalone Elastic Agents access to Elasticsearch [grant-access-to-elasticsearch]

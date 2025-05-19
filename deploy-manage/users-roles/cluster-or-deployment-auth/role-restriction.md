@@ -2,10 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-restriction.html
 applies_to:
-  ece:
-  eck:
-  ess:
-  self:
+  deployment:
+    ece:
+    eck:
+    ess:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Role restriction [role-restriction]
@@ -22,13 +25,13 @@ Workflows allow to restrict the role to be effective exclusively when calling ce
 `search_application_query`
 :   This workflow restricts the role to the [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search) only.
 
-::::{note} 
+::::{note}
 Workflow names are case-sensitive.
 ::::
 
 
 
-### Examples [_examples_5] 
+### Examples [_examples_5]
 
 The following example creates an API key with a restriction to the `search_application_query` workflow, which allows to call only [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search):
 

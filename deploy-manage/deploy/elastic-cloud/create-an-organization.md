@@ -1,13 +1,16 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
-  serverless: ga
 navigation_title: Sign up
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-trial.html
   - https://www.elastic.co/guide/en/serverless/current/general-sign-up-trial.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-existing-email.html
+applies_to:
+  deployment:
+    ess: ga
+  serverless: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Sign up and create an organization

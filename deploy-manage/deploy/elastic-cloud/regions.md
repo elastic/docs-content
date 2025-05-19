@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/regions.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Regions [regions]

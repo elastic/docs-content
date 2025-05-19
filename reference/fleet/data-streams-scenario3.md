@@ -1,7 +1,10 @@
 ---
-navigation_title: "Scenario 3"
+navigation_title: Scenario 3
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-scenario3.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Scenario 3: Apply an ILM policy with integrations using multiple namespaces [data-streams-scenario3]

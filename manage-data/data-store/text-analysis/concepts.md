@@ -1,10 +1,12 @@
 ---
-navigation_title: "Concepts"
+navigation_title: Concepts
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-concepts.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 

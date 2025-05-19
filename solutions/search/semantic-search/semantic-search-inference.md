@@ -1,10 +1,12 @@
 ---
-navigation_title: "Semantic search with the {{infer}} API"
+navigation_title: Semantic search with the {{infer}} API
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-inference.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Semantic search with the inference API [semantic-search-inference]

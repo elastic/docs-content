@@ -8,6 +8,10 @@ applies_to:
     ess: all
     ece: all
     eck: all
+products:
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-hosted
 ---
 
 # Reference architectures [reference-architectures-overview]

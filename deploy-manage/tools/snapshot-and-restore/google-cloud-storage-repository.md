@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Google Cloud Storage repository [repository-gcs]

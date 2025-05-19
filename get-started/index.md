@@ -4,12 +4,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/index.html
+products:
+  - id: elasticsearch
+  - id: elastic-stack
 ---
 # Get started
 
 ## Overview [what-is-es]
 
-[{{es}}](https://github.com/elastic/elasticsearch) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time. [{{kib}}](https://github.com/elastic/kibana) is the graphical user interface for {{es}}. It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the Elastic Stack. 
+[{{es}}](https://github.com/elastic/elasticsearch) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time. [{{kib}}](https://github.com/elastic/kibana) is the graphical user interface for {{es}}. It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the Elastic Stack.
 
 {{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with {{kib}}, it powers these Elastic solutions and use cases:
 

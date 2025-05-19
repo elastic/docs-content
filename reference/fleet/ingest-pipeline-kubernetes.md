@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/ingest-pipeline-kubernetes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Using a custom ingest pipeline with the Kubernetes Integration [ingest-pipeline-kubernetes]

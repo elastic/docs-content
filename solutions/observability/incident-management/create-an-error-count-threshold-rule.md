@@ -1,9 +1,11 @@
 ---
+navigation_title: Error count threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-error-count-threshold-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-error-count-threshold-alert-rule.html
-
-navigation_title: "Error count threshold"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create an error count threshold rule [observability-create-error-count-threshold-alert-rule]

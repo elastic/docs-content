@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-source-map-how-to.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Create and upload source maps (RUM) [apm-source-map-how-to]

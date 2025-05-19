@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-settings.html
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-settings.html
+products:
+  - id: elasticsearch
 ---
 
 # Remote cluster settings [remote-clusters-settings]

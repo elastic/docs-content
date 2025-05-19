@@ -1,18 +1,20 @@
 ---
+navigation_title: Install on Windows
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
-sub:
-  es-conf: "%ES_HOME%\\config"
-  slash: "\\"
-  export: "$"
-  escape: "^"
-  auto: ".bat"
-  ipcommand: "ipconfig /all"
-  ipvalue: "inet"
-navigation_title: Install on Windows
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: "%ES_HOME%\\config"
+  slash: \
+  export: $
+  escape: ^
+  auto: .bat
+  ipcommand: ipconfig /all
+  ipvalue: inet
 ---
 
 # Install {{es}} with .zip on Windows [zip-windows]

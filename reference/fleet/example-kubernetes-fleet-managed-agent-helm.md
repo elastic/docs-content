@@ -4,6 +4,9 @@ mapped_pages:
 applies_to:
   stack: ga 8.18
   serverless: all
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Example: Install Fleet-managed Elastic Agent on Kubernetes using Helm [example-kubernetes-fleet-managed-agent-helm]
@@ -42,7 +45,7 @@ The installation and configuration steps shown in this example deploys the follo
 By default, all resources are installed in the namespace defined by your current `kubectl` context. You can override this by specifying a different namespace using the `--namespace` option during installation.
 
 ::::{note}
-The proposed approach of a single {{agent}} DaemonSet to collect all metrics works well for small to medium-sized {{k8s}} clusters. 
+The proposed approach of a single {{agent}} DaemonSet to collect all metrics works well for small to medium-sized {{k8s}} clusters.
 
 For larger clusters, or when kube-state-metrics (KSM) metrics collection becomes a performance bottleneck, we recommend a more scalable architecture: move the KSM metric collection to a separate set of agents deployed as sidecars alongside KSM, with autosharding enabled.
 
@@ -134,7 +137,7 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     If your Kubernetes nodes have [`taints`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) configured, you may need to add `tolerations` to the {{agent}} DaemonSet during installation to ensure the Pods can run on tainted nodes.
 
     You can do this by setting the `presets.perNode.tolerations[]` value, which accepts standard Kubernetes toleration definitions.
-    ::::    
+    ::::
 
 10. In the **Add agent** flyout, wait a minute or so for confirmation that {{agent}} has successfully enrolled with {{fleet}} and that data is flowing:
 

@@ -1,10 +1,12 @@
 ---
+navigation_title: Feature processors
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-feature-processors.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Feature processors"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-feature-processors.html
+products:
+  - id: machine-learning
 ---
 
 # Feature processors [ml-feature-processors]

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-container.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Run Elastic Agent in a container [elastic-agent-container]

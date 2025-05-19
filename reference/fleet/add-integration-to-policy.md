@@ -1,7 +1,10 @@
 ---
-navigation_title: "Add an integration to an {{agent}} policy"
+navigation_title: Add an integration to an {{agent}} policy
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-integration-to-policy.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Add an integration to an {{agent}} policy [add-integration-to-policy]

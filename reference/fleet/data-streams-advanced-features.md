@@ -1,7 +1,10 @@
 ---
-navigation_title: "Advanced data stream features"
+navigation_title: Advanced data stream features
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-advanced-features.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Enabling and disabling advanced indexing features for {{fleet}}-managed data streams [data-streams-advanced-features]

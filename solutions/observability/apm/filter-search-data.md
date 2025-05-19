@@ -1,11 +1,15 @@
 ---
-navigation_title: "Filter and search data"
+navigation_title: Filter and search data
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-filter-and-search-data.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-filter-and-search-data.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Filter and search application data [apm-filter-and-search-data]

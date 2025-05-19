@@ -2,7 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-updating.html
 applies_to:
-  stack: 
+  stack:
+products:
+  - id: observability
 ---
 
 # Step 1: Update the stack [profiling-self-managed-updating]

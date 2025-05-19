@@ -1,7 +1,9 @@
 ---
-navigation_title: "Get started using the API"
+navigation_title: Get started using the API
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-getting-started.html
+products:
+  - id: elasticsearch
 ---
 
 # Get started with rollups using the API

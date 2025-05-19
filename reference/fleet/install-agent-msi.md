@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-agent-msi.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Install Elastic Agent from an MSI package [install-agent-msi]

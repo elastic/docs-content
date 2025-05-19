@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/hints-annotations-autodiscovery.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Hints annotations based autodiscover [hints-annotations-autodiscovery]

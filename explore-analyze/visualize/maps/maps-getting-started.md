@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-getting-started.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-getting-started.html
+products:
+  - id: kibana
 ---
 
 # Build a map to compare metrics by country or region [maps-getting-started]

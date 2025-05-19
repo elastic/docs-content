@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-role-write.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Writer role [synthetics-role-write]

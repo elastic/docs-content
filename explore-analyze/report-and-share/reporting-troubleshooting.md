@@ -1,10 +1,12 @@
 ---
+navigation_title: Troubleshooting
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Troubleshooting"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting.html
+products:
+  - id: kibana
 ---
 
 

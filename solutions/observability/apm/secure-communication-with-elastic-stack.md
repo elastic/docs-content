@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-secure-comms-stack.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Secure communication with the Elastic Stack [apm-secure-comms-stack]

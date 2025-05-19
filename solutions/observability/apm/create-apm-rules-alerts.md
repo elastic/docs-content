@@ -1,11 +1,15 @@
 ---
-navigation_title: "Create rules and alerts"
+navigation_title: Create rules and alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-alerts.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Create APM rules and alerts [apm-alerts]

@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-customize-deployment-components.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-customize-deployment-components.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Customize deployment components [ec-customize-deployment-components]

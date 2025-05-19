@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Define runtime fields in a search request [runtime-search-request]

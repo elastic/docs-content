@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-ilm-tutorial.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Tutorials: Customize data retention policies [data-streams-ilm-tutorial]
