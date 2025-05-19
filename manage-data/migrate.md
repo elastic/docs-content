@@ -14,11 +14,15 @@ applies_to:
 
 # Migrate your {{es}} data
 
-You might have switched to {{ech}} or {{ece}} for any number of reasons, and you’re likely wondering how to get your existing {{es}} data into your new infrastructure. Along with easily creating as many new deployments with {{es}} clusters that you need, you have several options for moving your data over. Choose the option that works best for you:
+You might have switched to {{ech}} (ECH) or {{ece}} (ECE) for any number of reasons, and you’re likely wondering how to get your existing {{es}} data into your new infrastructure. Along with easily creating as many new deployments with {{es}} clusters that you need, you have several options for moving your data over. Choose the option that works best for you:
 
 * Index your data from the original source, which is the simplest method and provides the greatest flexibility for the {{es}} version and ingestion method.
 * Reindex from a remote cluster, which rebuilds the index from scratch.
 * Restore from a snapshot, which copies the existing indices.
+
+::::{note}
+This guide focuses on migrating data from a self-managed cluster to an ECH or ECE deployment. Refer to [](/deploy-manage/tools/snapshot-and-restore/ece-restore-across-clusters.md) if the clusters are in the same ECH or ECE environments.
+::::
 
 ## Before you begin [ec_migrate_before_you_begin]
 
@@ -36,9 +40,9 @@ Restore from a snapshot
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an Elasticsearch version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility) for details). If you have not already done so, you will need to [set up snapshots for your old cluster](/deploy-manage/tools/snapshot-and-restore/self-managed.md) using a repository that can be accessed from the new cluster.
 
 Migrating system {{es}} indices
-:   In {{es}} 8.0 and later versions, [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) are the only way to back up and restore system indices and system data streams, such as `.kibana` or `.security`.
+:   In {{es}} 8.0 and later versions, snapshot and restore of [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) are the only way to back up and restore system indices and system data streams, such as `.kibana` or `.security`.
     
-    Check [Migrating internal indices](./migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
+    Check [Migrate system indices](./migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
 
 ## Index from the source [ec-index-source]
 
@@ -53,7 +57,7 @@ Through the {{es}} [reindex API](https://www.elastic.co/docs/api/doc/elasticsear
 ::::{warning}
 Reindex operations do not migrate index mappings, settings, or associated index templates from the source cluster.
 
-Before migrating your {{es}} data, define the necessary [mappings](/manage-data/data-store/mapping.md) and [templates](/manage-data/data-store/templates.md) on the new cluster. The easiest way to do this is to copy the relevant index templates from the old cluster to the new one in advance.
+Before migrating your {{es}} data, define the necessary [mappings](/manage-data/data-store/mapping.md) and [templates](/manage-data/data-store/templates.md) on the new cluster. The easiest way to do this is to copy the relevant index templates from the old cluster to the new one before starting reindex operations.
 ::::
 
 Follow these steps to reindex data remotely:
@@ -118,7 +122,7 @@ System indices can be easily restored by including their corresponding [feature 
 
 This method is especially useful when you want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state.
 
-To use this method, the new cluster must have access to the snapshot repository that contains data from the old cluster. Also ensure that both clusters use [compatible versions](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
+To use this method, the new cluster must have access to the snapshot repository that contains the data from the old cluster. Also ensure that both clusters use [compatible versions](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
 
 For more information, refer to [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster)
 
@@ -126,14 +130,60 @@ For more information, refer to [Restore into a different cluster](/deploy-manage
 For {{ece}} users, while it is most common to have Amazon S3 buckets, you should be able to restore from any addressable external storage that has your {{es}} snapshots.
 ::::
 
-### Step 1: Set up the repository in the new cluster
+The following steps assume you already have a snapshot repository configured in the old cluster with at least one valid snapshot.
 
-::::{include} ./migrate/_snippets/setup-repo.md
+### Step 1: Set up the repository in the new cluster [migrate-repo-setup]
+
+In this step, you’ll configure a snapshot repository in the new cluster that points to the storage location used by the old cluster. This allows the new cluster to access and restore snapshots created in the original environment.
+
+::::{tip}
+If your new {{ech}} or {{ece}} deployment cannot connect to the same repository used by your self-managed cluster, for example if it's a private NFS share, consider one of these alternatives:
+
+* [Back up your repository](/deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) to a supported storage system such as AWS S3, Google Cloud Storage, or Azure Blob Storage, and then configure your new cluster to use that location for the data migration.
+* Expose the repository contents over `ftp`, `http`, or `https`, and use a [read-only URL repository](/deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md) type in your new deployment to access the snapshots.
 ::::
 
-### Step 2: Run the snapshot restore
+1. On your old {{es}} cluster, retrieve the snapshot repository configuration:
 
-Once the repository has been registered and verified, you are ready to restore any data from any of its snapshots to your new cluster.
+    ```sh
+    GET /_snapshot/_all
+    ```
+
+    Take note of the repository name and type (for example, `s3`, `gcs`, or `azure`), its base path, and any additional settings. Authentication credentials are often stored in the [secure settings](/deploy-manage/security/secure-settings.md) on each node. You’ll need to replicate all this configuration when registering the repository in the new ECH or ECE deployment.
+
+    If your old cluster has multiple repositories configured, identify the repository with the snapshots containing the data that you want to migrate.
+
+2. Add the snapshot repository on the new cluster:
+
+    The new cluster must register a snapshot repository that points to the same physical storage location used by the old cluster. This ensures the new cluster can access the existing snapshots.
+
+    Considerations:
+
+      * If you’re migrating [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and destination clusters.
+      * If the old cluster still has write access to the repository, register the repository as read-only, using the `readonly: true` option.
+
+    To configure a custom snapshot repository for your {{ech}} or {{ece}} deployment, follow the steps for the storage provider used by your existing repository:
+
+    * **Amazon Web Services (AWS) Storage**
+        * [Store credentials in the keystore](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md#ec-snapshot-secrets-keystore)
+        * [Create the repository](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md#ec-create-aws-repository)
+    * **Google Cloud Storage (GCS)**
+        * [Store credentials in the keystore](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md#ec-configure-gcs-keystore)
+        * [Create the repository](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md#ec-create-gcs-repository)
+    * **Azure Blob Storage**
+        * [Store credentials in the keystore](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-configure-azure-keystore).
+        * [Create the repository](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-create-azure-repository).
+    
+    ::::{important}
+    Although the previous instructions are focused on {{ech}}, you should follow the same steps for {{ece}} by configuring the repository directly **at the deployment level**.
+
+    **Do not** configure the repository as an [ECE-managed repository](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), which is intended for automatic snapshots of deployments. In this case, you need to add a custom repository that already contains snapshots from another cluster.
+    ::::
+
+
+### Step 2: Run the snapshot restore [migrate-restore]
+
+Once the repository has been registered and verified, you are ready to restore any data from any of its snapshots to your new cluster. You can do this using {{kib}} management UI, or directly with the {{es}} API.
 
 For extra details about the contents of a snapshot refer to [](/deploy-manage/tools/snapshot-and-restore.md#snapshot-contents).
 
@@ -145,7 +195,7 @@ To start the restore process:
 4. Select the index or indices you wish to restore.
 5. Optionally, configure additional restore options, such as **Restore aliases**, **Restore global state**, or **Restore feature state**.
 
-    Refer to [Restore a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) for more details about restore operations in {{es}}.
+    Refer to [Restore a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) for more details about restore operations in {{es}}, including API based examples.
     
 6. Select **Restore snapshot** to begin the process.
 

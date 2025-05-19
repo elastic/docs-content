@@ -11,112 +11,33 @@ applies_to:
   serverless: unavailable
 ---
 
-<!--
-% https://elastic.slack.com/archives/C0D8ST60Y/p1747255969103089
-
-::::{note}
-If you want to migrate also {{es}} system indices, such as `.security`, or `.kibana`, select the **Restore feature state** option and
-
-/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-feature-state
-
-/deploy-manage/tools/snapshot-and-restore.md#feature-state
-::::
--->
-
 # Migrate system indices
 
 When you migrate your {{es}} data into a new infrastructure you may also want to migrate your {{es}} system internal indices, specifically the `.kibana` index and the `.security` index.
 
 In {{es}} 8.0 and later versions, the snapshot and restore of [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) is the only way to back up and restore system indices and system data streams.
 
-## Migrate system indices through snapshot and restore
+## Migrate system indices using snapshot and restore
 
-To restore internal indices from a snapshot, the procedure is a bit different from migrating {{es}} data indices. Use these steps to restore internal indices from a snapshot:
+To restore system indices from a snapshot, follow the same procedure described in [](../migrate.md#ec-restore-snapshots) and select the appropriate **feature states** when preparing the restore operation, such as `kibana` or `security`.
 
-1. On your old {{es}} cluster, choose an option to get the name of your snapshot repository bucket:
+For more details about restoring feature states, or the entire cluster state, refer to [](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-feature-state).
 
-    ```sh
-    GET /_snapshot
-    GET /_snapshot/_all
-    ```
+The following example describes how to restore the `security` feature using the [restore snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore):
 
-2. Get the snapshot name:
+```sh
+POST _snapshot/REPOSITORY/SNAPSHOT_NAME/_restore
+{
+  "indices": "-*",
+  "ignore_unavailable": true,
+  "include_global_state": false,
+  "include_aliases": false,
+  "feature_states": [
+    "security"
+  ]
+}
+```
 
-    ```sh
-    GET /_snapshot/NEW-REPOSITORY-NAME/_all
-    ```
-
-    The output for each entry provides a `"snapshot":` value which is the snapshot name.
-
-    ```
-      {
-      "snapshots": [
-        {
-          "snapshot": "scheduled-1527616008-instance-0000000004",
-    ```
-
-
-
-3. To restore internal {{es}} indices, you need to register the snapshot repository in `read-only` mode.
-
-    First, add the authentication information for the repository to the {{ech}} keystore, following the steps for your cloud provider:
-    * [AWS S3](../../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md#ec-snapshot-secrets-keystore)
-    * [Google Cloud Storage](../../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md#ec-configure-gcs-keystore)
-    * [Azure Blog storage](../../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-configure-azure-keystore)
-
-    Next, register a read-only repository. Open an {{es}} [API console](../../explore-analyze/query-filter/tools/console.md) and run the [Read-only URL repository](../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md) API call.
-
-4. Once the repository has been registered and verified, you are ready to restore the internal indices to your new cluster, either all at once or individually.
-
-    * **Restore all internal indices**
-
-        Run the following API call to restore all internal indices from a snapshot to the cluster:
-
-        ```sh
-        POST /_snapshot/repo/snapshot/_restore
-        {
-          "indices": ".*",
-          "ignore_unavailable": true,
-          "include_global_state": false,
-          "include_aliases": false,
-          "rename_pattern": ".(.+)",
-          "rename_replacement": "restored_security_$1"
-        }
-        ```
-
-    * **Restore an individual internal index**
-
-        ::::{warning}
-        When restoring internal indices, ensure that the `include_aliases` parameter is set to `false`. Not doing so will make Kibana inaccessible. If you do run the restore without `include_aliases`, the restored index can be deleted or the alias reference to it can be removed. This will have to be done from either the API console or a curl command as Kibana will not be accessible.
-        ::::
-
-        Run the following API call to restore one internal index from a snapshot to the cluster:
-
-        ```sh
-        POST /_snapshot/repo/snapshot/_restore
-        {
-          "indices": ".kibana",
-          "ignore_unavailable": true,
-          "include_global_state": false,
-          "include_aliases": false,
-          "rename_pattern": ".(.+)",
-          "rename_replacement": "restored_security_$1"
-        }
-        ```
-
-        Next, the restored index needs to be reindexed into the internal index, as shown:
-
-        ```sh
-        POST _reindex
-        {
-          "source": {
-            "index": "restored_kibana"
-          },
-          "dest": {
-            "index": ".kibana"
-          }
-        }
-        ```
-
-
-Your internal {{es}} index or indices should now be available in your new {{es}} cluster. Once verified, the `restored_*` indices are safe to delete.
+Tips:
+* Get the list of available snapshots in the repository with `GET _snapshot/REPOSITORY/_all`, or with `GET _cat/snapshots/REPOSITORY`.
+* Each snapshot shows its available feature states in the xxxx section of the details.
