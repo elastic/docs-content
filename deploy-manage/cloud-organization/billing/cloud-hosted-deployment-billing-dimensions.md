@@ -1,10 +1,12 @@
 ---
-navigation_title: "Hosted billing dimensions"
+navigation_title: Hosted billing dimensions
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-dimensions.html
 applies_to:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Cloud Hosted deployment billing dimensions [ec-billing-dimensions]

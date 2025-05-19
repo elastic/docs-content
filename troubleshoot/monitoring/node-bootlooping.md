@@ -1,11 +1,13 @@
 ---
-navigation_title: "Node bootlooping"
-applies_to:
-  deployment:
-    ess: all
+navigation_title: Node bootlooping
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-config-change-errors.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-config-change-errors.html
+applies_to:
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Troubleshoot node bootlooping in {{ech}} [ec-config-change-errors]
@@ -49,14 +51,14 @@ If you’re unable to remediate the failing plan’s root cause, you can attempt
 The most frequent cause of a failed deployment configuration change is due to invalid or mislocated [secure settings](/deploy-manage/security/secure-settings.md). This can frequently be discovered by searching {{es}} logs for one of the following error messages:
 
 ```sh
-# Typical Error Message 
+# Typical Error Message
 #------------------------------
 [ERROR][org.elasticsearch.bootstrap.Elasticsearch] ... fatal exception while booting Elasticsearch
 IllegalStateException: security initialization failed
 
 java.lang.IllegalArgumentException: unknown secure setting
 
-org.elasticsearch.common.settings.SettingsException: 
+org.elasticsearch.common.settings.SettingsException:
 The configuration setting [xpack.security.authc.realms.foobar.foobar1.foobar2.client_secret] is required
 #------------------------------
 ```

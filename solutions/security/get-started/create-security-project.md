@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   serverless:
     security: all
+products:
+  - id: cloud-serverless
 ---
 
 # Create a Security project [security-create-project]

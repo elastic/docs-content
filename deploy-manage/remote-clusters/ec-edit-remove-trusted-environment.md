@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-edit-remove-trusted-environment.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-edit-remove-trusted-environment.html
+products:
+  - id: cloud-hosted
 ---
 
 # Edit or remove a trusted environment [ec-edit-remove-trusted-environment]

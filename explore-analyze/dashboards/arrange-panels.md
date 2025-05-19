@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/arrange-panels.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/arrange-panels.html
+products:
+  - id: kibana
 ---
 
 # Organize dashboard panels [arrange-panels]

@@ -1,10 +1,12 @@
 ---
+navigation_title: Query multiple indices
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-multi-index.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Query multiple indices"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-multi-index.html
+products:
+  - id: elasticsearch
 ---
 
 # Use ES|QL to query multiple indices [esql-multi-index]

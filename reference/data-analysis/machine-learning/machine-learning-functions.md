@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-functions.html
+products:
+  - id: machine-learning
 ---
 
 # Function reference [ml-functions]

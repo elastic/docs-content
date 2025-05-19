@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Examples"
+navigation_title: Examples
 ---
 
 # {{esql}} examples [esql-examples]

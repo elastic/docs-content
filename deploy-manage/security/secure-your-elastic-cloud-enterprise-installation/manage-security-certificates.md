@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-certificates.html
 applies_to:
   deployment:
     ece: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-certificates.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage security certificates [ece-manage-certificates]

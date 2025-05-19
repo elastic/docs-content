@@ -1,14 +1,16 @@
 ---
-navigation_title: "Unavailable shards"
-applies_to:
-  deployment:
-    ess: all
+navigation_title: Unavailable shards
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_are_shards_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_are_shards_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-analyze_shards_with-api.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-analyze_shards_with-kibana.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-remediate-issues-allocation-explain-API.html
+applies_to:
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Diagnose unavailable shards [ec-scenario_why_are_shards_unavailable]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-tableau-desktop.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-tableau-desktop.html
+products:
+  - id: elasticsearch
 ---
 
 # Tableau Desktop [sql-client-apps-tableau-desktop]

@@ -1,10 +1,12 @@
 ---
-navigation_title: "Run downsampling with ILM"
+navigation_title: Run downsampling with ILM
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/downsampling-ilm.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 

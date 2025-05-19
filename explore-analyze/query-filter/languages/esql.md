@@ -5,6 +5,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-using.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-examples.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # {{esql}} [esql]

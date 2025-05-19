@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Data allocation
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/allow-all-cluster-allocation.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Allow Elasticsearch to allocate the data in the system [allow-all-cluster-allocation]

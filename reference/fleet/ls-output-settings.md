@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/ls-output-settings.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Logstash output settings [ls-output-settings]

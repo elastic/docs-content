@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-apm-settings.html#ec-apm-settings
+products:
+  - id: cloud-hosted
 ---
 
 # APM settings for Elastic Cloud [ec-manage-apm-settings]

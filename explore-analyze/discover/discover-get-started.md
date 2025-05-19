@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/discover-get-started.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/discover-get-started.html
+products:
+  - id: kibana
 ---
 
 # Explore fields and data with Discover [discover-get-started]

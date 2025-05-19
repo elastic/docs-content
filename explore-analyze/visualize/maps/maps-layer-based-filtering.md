@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-layer-based-filtering.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-layer-based-filtering.html
+products:
+  - id: kibana
 ---
 
 # Filter a single layer [maps-layer-based-filtering]

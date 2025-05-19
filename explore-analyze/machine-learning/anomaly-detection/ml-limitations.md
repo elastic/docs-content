@@ -1,10 +1,12 @@
 ---
+navigation_title: Limitations
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-limitations.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Limitations"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-limitations.html
+products:
+  - id: machine-learning
 ---
 
 # Limitations [ml-limitations]

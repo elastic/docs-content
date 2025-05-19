@@ -19,6 +19,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Bootstrap checks [bootstrap-checks]
