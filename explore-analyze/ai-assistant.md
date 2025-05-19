@@ -1,7 +1,4 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-ai-assistant.html
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
@@ -9,6 +6,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-ai-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/ai-assistant-knowledge-base.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # AI assistant

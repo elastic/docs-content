@@ -1,7 +1,10 @@
 ---
-navigation_title: "parse_aws_vpc_flow_log"
+navigation_title: parse_aws_vpc_flow_log
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/processor-parse-aws-vpc-flow-log.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Parse AWS VPC Flow Log [processor-parse-aws-vpc-flow-log]

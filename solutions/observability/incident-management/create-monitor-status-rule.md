@@ -1,9 +1,11 @@
 ---
+navigation_title: Monitor Status
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-status-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-status-alert.html
-
-navigation_title: "Monitor Status"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 

@@ -1,5 +1,9 @@
 ---
 navigation_title: Traffic filtering
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-deployment-configuration.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-deployment-configuration.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-deployment-configuration.html
 applies_to:
   deployment:
     ess: ga
@@ -7,10 +11,9 @@ applies_to:
     eck: ga
     self: ga
   serverless: unavailable
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-deployment-configuration.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-deployment-configuration.html
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-deployment-configuration.html
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Traffic filtering

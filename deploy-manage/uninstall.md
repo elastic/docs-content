@@ -1,10 +1,10 @@
 ---
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
   serverless:
 ---
 

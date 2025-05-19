@@ -1,7 +1,9 @@
 ---
-navigation_title: "Configure SLO access"
+navigation_title: Configure SLO access
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-privileges.html
+products:
+  - id: observability
 ---
 
 

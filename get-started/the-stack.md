@@ -5,6 +5,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/index.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
   - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
+products:
+  - id: elastic-stack
+  - id: kibana
 ---
 
 # The {{stack}}

@@ -1,11 +1,14 @@
 ---
-navigation_title: "Scale and architect a deployment"
+navigation_title: Scale and architect a deployment
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-scale-and-architect.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-scale-and-architect.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Scale and architect a Synthetics deployment [synthetics-scale-and-architect]

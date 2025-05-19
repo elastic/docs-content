@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/get-started-with-apm-server-binary.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # APM Server binary [get-started-with-apm-server-binary]

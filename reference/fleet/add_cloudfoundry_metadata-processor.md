@@ -1,7 +1,10 @@
 ---
-navigation_title: "add_cloudfoundry_metadata"
+navigation_title: add_cloudfoundry_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_cloudfoundry_metadata-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Add Cloud Foundry metadata [add_cloudfoundry_metadata-processor]

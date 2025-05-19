@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secure-connections.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure SSL/TLS for self-managed Fleet Servers [secure-connections]

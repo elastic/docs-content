@@ -1,9 +1,12 @@
 ---
-navigation_title: "Self-installation APM integration"
+navigation_title: Self-installation APM integration
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-upgrade-8.0-self-integration.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Upgrade a self-installation of the APM integration to 9.0 [apm-upgrade-9.0-self-integration]

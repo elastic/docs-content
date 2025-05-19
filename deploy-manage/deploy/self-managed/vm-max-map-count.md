@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Increase virtual memory [vm-max-map-count]

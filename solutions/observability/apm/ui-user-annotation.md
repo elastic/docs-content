@@ -1,9 +1,12 @@
 ---
-navigation_title: "Create an annotation user"
+navigation_title: Create an annotation user
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-annotation-user-create.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Applications UI annotation user [apm-app-annotation-user-create]

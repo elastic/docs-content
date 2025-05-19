@@ -1,11 +1,13 @@
 ---
-navigation_title: "Search UI"
+navigation_title: Search UI
 mapped_pages:
   - https://www.elastic.co/guide/en/search-ui/current/overview.html
   - https://www.elastic.co/guide/en/search-ui/current/index.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: search-ui
 ---
 
 # What is Search UI? [overview]

@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Invalid repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-invalid-repositories.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Diagnose invalid repositories [diagnosing-invalid-repositories]

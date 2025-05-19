@@ -6,6 +6,9 @@ applies_to:
   serverless: all
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Join or leave an organization
