@@ -1,12 +1,15 @@
 ---
-navigation_title: "Elastic Cloud"
+navigation_title: Elastic Cloud
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-monitoring-diagnose-resolve.html
 applies_to:
   deployment:
     ess: all
   serverless: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-monitoring-diagnose-resolve.html
+products:
+  - id: kibana
+  - id: cloud-hosted
 ---
 
 # Troubleshoot {{ecloud}}

@@ -1,16 +1,21 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
-    ece: ga
-    eck: ga
-    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-keystore.html
   - https://www.elastic.co/guide/en/cloud/current/ec-configuring-keystore.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-configuring-keystore.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html
   - https://www.elastic.co/guide/en/kibana/current/secure-settings.html
+applies_to:
+  deployment:
+    ess: ga
+    ece: ga
+    eck: ga
+    self: ga
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Secure your settings

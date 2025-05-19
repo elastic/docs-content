@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Data streams [data-streams]

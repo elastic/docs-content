@@ -7,6 +7,10 @@ applies_to:
     ess: all
     ece: all
     eck: all
+products:
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-hosted
 ---
 
 # Hot/Frozen - High Availability [hot-frozen-architecture]

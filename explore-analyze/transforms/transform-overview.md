@@ -1,10 +1,12 @@
 ---
+navigation_title: Overview
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-overview.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Overview"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-overview.html
+products:
+  - id: elasticsearch
 ---
 
 # Overview [transform-overview]

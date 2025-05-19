@@ -10,6 +10,9 @@ applies_to:
     ess: ga
     ece: ga
   serverless: unavailable
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Migrate your {{es}} data

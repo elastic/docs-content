@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 navigation_title: "{{esql}} `_query` API"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-rest.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Use the {{esql}} `_query` API [esql-rest]

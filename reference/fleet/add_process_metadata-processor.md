@@ -1,7 +1,10 @@
 ---
-navigation_title: "add_process_metadata"
+navigation_title: add_process_metadata
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_process_metadata-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Add process metadata [add_process_metadata-processor]

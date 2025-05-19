@@ -4,7 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/stopping-elasticsearch.html
 applies_to:
   deployment:
-     self:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Start and stop {{es}}

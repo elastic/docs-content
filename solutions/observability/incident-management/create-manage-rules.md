@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts-rules.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-manage-rules.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create and manage rules [observability-create-manage-rules]

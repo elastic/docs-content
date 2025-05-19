@@ -1,11 +1,14 @@
 ---
-navigation_title: "Applications and services"
+navigation_title: Applications and services
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/application-and-service-monitoring.html
   - https://www.elastic.co/guide/en/observability/current/application-and-service-monitoring.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Application and service monitoring [application-and-service-monitoring]

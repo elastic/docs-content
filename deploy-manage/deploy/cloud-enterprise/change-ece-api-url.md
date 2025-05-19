@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-config-api-base-url.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-config-api-base-url.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Change the ECE API URL [ece-config-api-base-url]

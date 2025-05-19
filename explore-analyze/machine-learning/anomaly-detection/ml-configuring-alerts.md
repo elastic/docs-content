@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-alerts.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-alerts.html
+products:
+  - id: machine-learning
 ---
 
 # Generating alerts for anomaly detection jobs [ml-configuring-alerts]

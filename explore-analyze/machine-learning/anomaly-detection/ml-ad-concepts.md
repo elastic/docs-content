@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-concepts.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-concepts.html
+products:
+  - id: machine-learning
 ---
 
 # Advanced concepts [ml-ad-concepts]

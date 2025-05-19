@@ -1,13 +1,16 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-explore-your-data.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html#visualize-and-analyze
   - https://www.elastic.co/guide/en/kibana/current/get-started.html
   - https://www.elastic.co/guide/en/kibana/current/accessibility.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Explore and analyze

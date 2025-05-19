@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-managing-compute-resources.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-managing-compute-resources.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage compute resources [k8s-managing-compute-resources]

@@ -7,6 +7,8 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Cross-cluster replication [xpack-ccr]

@@ -5,6 +5,8 @@ applies_to:
   deployment:
     self: all
     eck: all
+products:
+  - id: elasticsearch
 ---
 
 # Resilience in small clusters [high-availability-cluster-small-clusters]

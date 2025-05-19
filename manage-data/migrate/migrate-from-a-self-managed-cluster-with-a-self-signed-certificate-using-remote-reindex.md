@@ -1,11 +1,13 @@
 ---
+navigation_title: Reindex from a self-managed cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-reindex.html
 applies_to:
   serverless: unavailable
   deployment:
     ess: all
-navigation_title: Reindex from a self-managed cluster
+products:
+  - id: cloud-hosted
 ---
 
 # Migrate from a self-managed cluster with a self-signed certificate using remote reindex [ec-remote-reindex]

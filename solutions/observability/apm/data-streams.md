@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-streams.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Data streams [apm-data-streams]

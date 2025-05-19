@@ -1,17 +1,20 @@
 ---
-navigation_title: "OpenTelemetry"
+navigation_title: OpenTelemetry
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry.html
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Use OpenTelemetry with APM [apm-open-telemetry]
 
 ::::{note}
-For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](https://elastic.github.io/opentelemetry/).
+For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).
 ::::
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
@@ -39,11 +42,11 @@ With an Elastic Distribution of OpenTelemetry language SDK you have access to al
 
 Get started with an Elastic Distribution of OpenTelemetry language SDK:
 
-* [**Elastic Distribution of OpenTelemetry Java →**](https://elastic.github.io/opentelemetry/edot-sdks/java/index.html)
-* [**Elastic Distribution of OpenTelemetry .NET →**](https://elastic.github.io/opentelemetry/edot-sdks/dotnet/index.html)
-* [**Elastic Distribution of OpenTelemetry Node.js →**](https://elastic.github.io/opentelemetry/edot-sdks/nodejs/index.html)
-* [**Elastic Distribution of OpenTelemetry Python →**](https://elastic.github.io/opentelemetry/edot-sdks/python/index.html)
-* [**Elastic Distribution of OpenTelemetry PHP →**](https://elastic.github.io/opentelemetry/edot-sdks/php/index.html)
+* [**Elastic Distribution of OpenTelemetry Java →**](opentelemetry://reference/edot-sdks/java/index.md)
+* [**Elastic Distribution of OpenTelemetry .NET →**](opentelemetry://reference/edot-sdks/dotnet/index.md)
+* [**Elastic Distribution of OpenTelemetry Node.js →**](opentelemetry://reference/edot-sdks/nodejs/index.md)
+* [**Elastic Distribution of OpenTelemetry Python →**](opentelemetry://reference/edot-sdks/python/index.md)
+* [**Elastic Distribution of OpenTelemetry PHP →**](opentelemetry://reference/edot-sdks/php/index.md)
 
 ::::{note}
 For more details about OpenTelemetry distributions in general, visit the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/distributions).

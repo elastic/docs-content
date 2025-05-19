@@ -1,12 +1,14 @@
 ---
+navigation_title: Hardware
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-reference-hardware.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-aws-instance-configuration.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-default-aws-configurations.html
-navigation_title: Hardware
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # {{heroku}} hardware [ech-reference-hardware]
@@ -17,7 +19,7 @@ applies_to:
 All instances are set to UTC timezone.
 ::::
 
-The {{heroku}} runs exclusively on AWS. To understand the available hardware, refer to the following resources: 
+The {{heroku}} runs exclusively on AWS. To understand the available hardware, refer to the following resources:
 
 * [The {{ech}} hardware overview](cloud://reference/cloud-hosted/hardware.md)
 * [AWS hardware](cloud://reference/cloud-hosted/aws.md)

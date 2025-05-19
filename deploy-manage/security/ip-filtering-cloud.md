@@ -1,20 +1,23 @@
 ---
+navigation_title: In ECH or ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-ip.html
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-ip.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-ip.html
 applies_to:
-  deployment: 
+  deployment:
     ess: ga
     ece: ga
-navigation_title: In ECH or ECE
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Manage IP traffic filters in ECH or ECE
 
-Traffic filtering, by IP address or CIDR block, is one of the security layers available in {{ece}} and {{ech}}. It allows you to limit how your deployments can be accessed. 
+Traffic filtering, by IP address or CIDR block, is one of the security layers available in {{ece}} and {{ech}}. It allows you to limit how your deployments can be accessed.
 
-There are types of filters are available for filtering by IP address or CIDR block: 
+There are types of filters are available for filtering by IP address or CIDR block:
 
 * **Ingress or inbound IP filters**: These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the UI.
 * **Egress or outbound IP filters** (ECH only): These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is in beta and is currently only available through the [Traffic Filtering API](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
@@ -25,7 +28,7 @@ To learn how traffic filter rules work together, refer to [traffic filter rules]
 
 To learn how to manage IP traffic filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
 
-:::{note} 
+:::{note}
 To learn how to create IP traffic filters for self-managed clusters or {{eck}} deployments, refer to [](ip-filtering-basic.md).
 :::
 
@@ -35,7 +38,7 @@ deployment:
   ece:
 ```
 
-On {{ece}}, make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) handles the `X-Forwarded-For` header appropriately for HTTP requests to prevent IP address spoofing. Make sure the proxy protocol v2 is enabled for HTTP and transport protocols (9243 and 9343). 
+On {{ece}}, make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) handles the `X-Forwarded-For` header appropriately for HTTP requests to prevent IP address spoofing. Make sure the proxy protocol v2 is enabled for HTTP and transport protocols (9243 and 9343).
 
 This step is not required in {{ech}}.
 
@@ -73,13 +76,13 @@ To create a rule set:
 5. Select the region for the rule set.
 6. Select if this rule set should be automatically attached to new deployments.
 
-    ::::{note} 
+    ::::{note}
     Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
     ::::
 
 7.  Add one or more rules using IPv4, or a range of addresses with CIDR.
 
-    ::::{note} 
+    ::::{note}
     DNS names are not supported in rules.
     ::::
 

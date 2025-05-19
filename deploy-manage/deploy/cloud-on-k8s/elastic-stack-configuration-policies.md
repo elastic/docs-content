@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-config-policy.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-config-policy.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # {{stack}} configuration policies [k8s-stack-config-policy]

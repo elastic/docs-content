@@ -8,6 +8,8 @@ applies_to:
     ece: all
     eck: all
     ess: all
+products:
+  - id: kibana
 ---
 
 % this anchor belongs to `kibana reporting production considerations doc`

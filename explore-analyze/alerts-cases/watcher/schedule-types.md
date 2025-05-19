@@ -1,11 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/_schedule_types.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/_schedule_types.html
-  # That link will 404 until 8.18 is current
-  # (see https://www.elastic.co/guide/en/elasticsearch/reference/8.18/_schedule_types.html)
+products:
+  - id: elasticsearch
 ---
 
 # Schedule Types [_schedule_types]

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-elastic-agents-in-containers.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Install Elastic Agents in a containerized environment [install-elastic-agents-in-containers]
