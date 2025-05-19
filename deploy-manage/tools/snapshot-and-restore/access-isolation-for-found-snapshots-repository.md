@@ -18,8 +18,8 @@ If a deployment can access the snapshots of other deployments, a notification wi
 
 The process for enabling access isolation depends on your cloud provider:
 
-* [Azure deployments](/deploy-manage/tools/snapshot-and-restore/repository-isolation-on-aws-gcp.md)
-* [AWS & GCP deployments](/deploy-manage/tools/snapshot-and-restore/repository-isolation-on-azure.md)
+* [Azure deployments](/deploy-manage/tools/snapshot-and-restore/repository-isolation-on-azure.md)
+* [AWS & GCP deployments](/deploy-manage/tools/snapshot-and-restore/repository-isolation-on-aws-gcp.md)
 
 
 
