@@ -15,7 +15,7 @@ Selecting a mobile service brings you to the **Mobile service overview**. The **
 For example, see:
 
 * Crash Rate (Crashes per session)
-* Slowest App load time — coming soon
+* Slowest App load time — coming soon
 * Number of sessions
 * Number of HTTP requests
 * Map showing the total number of HTTP requests based on country and region

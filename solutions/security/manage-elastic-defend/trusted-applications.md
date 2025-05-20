@@ -25,7 +25,7 @@ You must have the **Trusted Applications** [privilege](/solutions/security/confi
 ::::
 
 
-Trusted applications create blindspots for {{elastic-defend}}, because the applications are no longer monitored for threats. One avenue attackers use to exploit these blindspots is by DLL (Dynamic Link Library) side-loading, where they leverage processes signed by trusted vendors — such as antivirus software — to execute their malicious DLLs. Such activity appears to originate from the trusted application’s process.
+Trusted applications create blindspots for {{elastic-defend}}, because the applications are no longer monitored for threats. One avenue attackers use to exploit these blindspots is by DLL (Dynamic Link Library) side-loading, where they leverage processes signed by trusted vendors — such as antivirus software — to execute their malicious DLLs. Such activity appears to originate from the trusted application’s process.
 
 Trusted applications might still generate alerts in some cases, such as if the application’s process events indicate malicious behavior. To reduce false positive alerts, add an [Endpoint alert exception](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions), which prevents {{elastic-defend}} from generating alerts. To compare trusted applications with other endpoint artifacts, refer to [](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md).
 
@@ -91,7 +91,7 @@ You can individually modify each trusted application. You can also change the po
 
 To edit a trusted application:
 
-1. Click the actions menu (**…​**) on the trusted application you want to edit, then select **Edit trusted application**.
+1. Click the actions menu (**… **) on the trusted application you want to edit, then select **Edit trusted application**.
 2. Modify details as needed.
 3. Click **Save**.
 
@@ -102,5 +102,5 @@ You can delete a trusted application, which removes it entirely from all {{elast
 
 To delete a trusted application:
 
-1. Click the actions menu (**…​**) on the trusted application you want to delete, then select **Delete trusted application**.
+1. Click the actions menu (**… **) on the trusted application you want to delete, then select **Delete trusted application**.
 2. On the dialog that opens, verify that you are removing the correct application, then click **Delete**. A confirmation message is displayed.

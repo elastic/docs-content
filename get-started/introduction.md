@@ -40,7 +40,7 @@ The {{stack}} is used for a wide and growing range of use cases. Here are a few 
 
 [**Get started with {{elastic-sec}} →**](../solutions/security/get-started.md)
 
-This is just a sample of search, observability, and security use cases enabled by {{ecloud}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
+This is just a sample of search, observability, and security use cases enabled by {{ecloud}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
 
 % TODO: cleanup these links, consolidate with Explore and analyze
 

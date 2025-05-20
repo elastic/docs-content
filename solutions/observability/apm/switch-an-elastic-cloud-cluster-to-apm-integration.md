@@ -56,4 +56,4 @@ Go to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs
 :alt: scale APM
 :::
 
-Congratulations — you now have the latest and greatest in Elastic APM!
+Congratulations — you now have the latest and greatest in Elastic APM!

@@ -20,7 +20,7 @@ When a trace travels through multiple services, as is common in a microservice a
 
 ### Why is distributed tracing important? [apm-why-distributed-tracing]
 
-Distributed tracing enables you to analyze performance throughout your microservice architecture by tracing the entirety of a request — from the initial web request on your front-end service all the way to database queries made on your back-end services.
+Distributed tracing enables you to analyze performance throughout your microservice architecture by tracing the entirety of a request — from the initial web request on your front-end service all the way to database queries made on your back-end services.
 
 Tracking requests as they propagate through your services provides an end-to-end picture of where your application is spending time, where errors are occurring, and where bottlenecks are forming. Distributed tracing eliminates individual service’s data silos and reveals what’s happening outside of service borders.
 
@@ -331,7 +331,7 @@ public Response onIncomingRequest(Request request) throws Exception {
 ::::::
 
 ::::::{tab-item} .NET
-Deserialize the incoming distributed tracing context, and pass it to any of the [`StartTransaction`](apm-agent-dotnet://reference/public-api.md#api-start-transaction) or [`CaptureTransaction`](apm-agent-dotnet://reference/public-api.md#convenient-capture-transaction) APIs — all of which have an optional `DistributedTracingData` parameter. This will create a new transaction or span as a child of the incoming trace context.
+Deserialize the incoming distributed tracing context, and pass it to any of the [`StartTransaction`](apm-agent-dotnet://reference/public-api.md#api-start-transaction) or [`CaptureTransaction`](apm-agent-dotnet://reference/public-api.md#convenient-capture-transaction) APIs — all of which have an optional `DistributedTracingData` parameter. This will create a new transaction or span as a child of the incoming trace context.
 
 Example starting a new transaction:
 

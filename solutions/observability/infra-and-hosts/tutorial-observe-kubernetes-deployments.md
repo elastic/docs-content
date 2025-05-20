@@ -533,7 +533,7 @@ From the **Data view** menu, select `All logs`. From here, you can quickly searc
 
 Quickly triage and troubleshoot application performance problems with the help of Elastic application performance monitoring (APM).
 
-Think of a latency spike — APM can help you narrow the scope of your investigation to a single service. Because you’ve also ingested and correlated logs and metrics, you can then link the problem to CPU and memory utilization or error log entries of a particular Kubernetes pod.
+Think of a latency spike — APM can help you narrow the scope of your investigation to a single service. Because you’ve also ingested and correlated logs and metrics, you can then link the problem to CPU and memory utilization or error log entries of a particular Kubernetes pod.
 
 
 ### Step 1: Set up APM [_step_1_set_up_apm]
@@ -545,10 +545,10 @@ There are many ways to deploy APM when working with Kubernetes, but this guide a
 If you want to manage APM yourself, there are a few alternative options:
 
 ::::{dropdown} Expand alternatives
-* [{{ecloud}} on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md) — The Elastic recommended approach for managing APM Server deployed with Kubernetes. Built on the Kubernetes Operator pattern, ECK extends basic Kubernetes orchestration capabilities to support the setup and management of APM Server on Kubernetes.
-* Deploy APM Server as a DaemonSet — Ensure a running instance of APM Server on each node in your cluster. Useful when all pods in a node should share a single APM Server instance.
-* Deploy APM Server as a sidecar — For environments that should not share an APM Server, like when directing traces from multiple applications to separate {{es}} clusters.
-* [Download and install APM Server](/solutions/observability/apm/get-started.md) — The classic, non-Kubernetes option.
+* [{{ecloud}} on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md) — The Elastic recommended approach for managing APM Server deployed with Kubernetes. Built on the Kubernetes Operator pattern, ECK extends basic Kubernetes orchestration capabilities to support the setup and management of APM Server on Kubernetes.
+* Deploy APM Server as a DaemonSet — Ensure a running instance of APM Server on each node in your cluster. Useful when all pods in a node should share a single APM Server instance.
+* Deploy APM Server as a sidecar — For environments that should not share an APM Server, like when directing traces from multiple applications to separate {{es}} clusters.
+* [Download and install APM Server](/solutions/observability/apm/get-started.md) — The classic, non-Kubernetes option.
 
 ::::
 
@@ -672,7 +672,7 @@ Before your application starts, copy the agent from the init container into a sh
 The Java command line needs a way to pick up this `javaagent` configuration. You can use the standard JVM TI [JAVA_TOOL_OPTIONS](https://docs.oracle.com/javase/8/docs/platform/jvmti/jvmti.md#tooloptions) environment variable to do this. It doesn’t have to be explicitly specified and is picked up automatically by the JVM when it starts.
 
 ::::{tip}
-For JVMs that don’t support this option, you can use any other environment variable — either one already defined in your startup script, like `JAVA_OPTS` in some servlet container scripts, or add a dedicated empty one that will have no effect if it’s not set.
+For JVMs that don’t support this option, you can use any other environment variable — either one already defined in your startup script, like `JAVA_OPTS` in some servlet container scripts, or add a dedicated empty one that will have no effect if it’s not set.
 ::::
 
 
@@ -814,7 +814,7 @@ npm install elastic-apm-node --save
 
 **Start the agent**
 
-It’s important that the agent is started before you require any other modules in your Node.js application — before `express`, `http`, etc.
+It’s important that the agent is started before you require any other modules in your Node.js application — before `express`, `http`, etc.
 
 ```js
 var apm = require('elastic-apm-node').start()
