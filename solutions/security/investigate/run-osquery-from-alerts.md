@@ -28,7 +28,7 @@ To run Osquery from an alert:
 1. Do one of the following from the Alerts table:
 
     * Click the **View details** button to open the Alert details flyout, then click **Take action → Run Osquery**.
-    * Select the **More actions** menu (**…​**), then select **Run Osquery**.
+    * Select the **More actions** menu (**…**), then select **Run Osquery**.
 
 2. Choose to run a single query or a query pack.
 3. Select one or more {{agent}}s or groups to query. Start typing in the search field to get suggestions for {{agent}}s by name, ID, platform, and policy.

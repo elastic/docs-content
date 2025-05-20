@@ -91,7 +91,7 @@ If you’ve worked with rollups before, you may be cautious around averages. If 
 
 For this reason, other systems tend to either omit the ability to average or store the average at multiple intervals to support more flexible querying.
 
-Instead, the {{rollup-features}} save the `count` and `sum` for the defined time interval. This allows us to reconstruct the average at any interval greater-than or equal to the defined interval. This gives maximum flexibility for minimal storage costs…​ and you don’t have to worry about average accuracies (no average of averages here!)
+Instead, the {{rollup-features}} save the `count` and `sum` for the defined time interval. This allows us to reconstruct the average at any interval greater-than or equal to the defined interval. This gives maximum flexibility for minimal storage costs… and you don’t have to worry about average accuracies (no average of averages here!)
 
 ::::
 
@@ -120,7 +120,7 @@ POST _rollup/job/sensor/_start
 
 ## Searching the rolled results [_searching_the_rolled_results]
 
-After the job has run and processed some data, we can use the [Rollup search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-rollup-search) endpoint to do some searching. The Rollup feature is designed so that you can use the same Query DSL syntax that you are accustomed to…​ it just happens to run on the rolled up data instead.
+After the job has run and processed some data, we can use the [Rollup search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-rollup-search) endpoint to do some searching. The Rollup feature is designed so that you can use the same Query DSL syntax that you are accustomed to… it just happens to run on the rolled up data instead.
 
 For example, take this query:
 

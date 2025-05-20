@@ -10,7 +10,7 @@ products:
 
 # Mobile service overview [apm-mobile-service-overview]
 
-Selecting a mobile service brings you to the **Mobile service overview**. The **Mobile service overview** contains a wide variety of charts and tables that provide high-level visibility into how a mobile service is performing for your users—​enabling you to make data-driven decisions about how to improve your user experience.
+Selecting a mobile service brings you to the **Mobile service overview**. The **Mobile service overview** contains a wide variety of charts and tables that provide high-level visibility into how a mobile service is performing for your users—enabling you to make data-driven decisions about how to improve your user experience.
 
 For example, see:
 
@@ -27,7 +27,7 @@ All of these metrics & insights can help SREs and developers better understand t
 
 ## Quick stats [mobile-service-stats]
 
-Understand the impact of slow application load times and variations in application crash rate on user traffic (coming soon). Visualize session and HTTP trends, and see where your users are located—​enabling you to optimize your infrastructure deployment and routing topology.
+Understand the impact of slow application load times and variations in application crash rate on user traffic (coming soon). Visualize session and HTTP trends, and see where your users are located—enabling you to optimize your infrastructure deployment and routing topology.
 
 Note: due to the way crash rate is calculated (crashes per session) it is possible to have greater than 100% rate, due to fact that a session may contain multiple crashes.
 

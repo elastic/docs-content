@@ -10,7 +10,7 @@ products:
 
 # View the Elasticsearch index template [apm-custom-index-template]
 
-Index templates are used to configure the backing indices of data streams as they are created. These index templates are composed of multiple component templates—​reusable building blocks that configure index mappings, settings, and aliases.
+Index templates are used to configure the backing indices of data streams as they are created. These index templates are composed of multiple component templates—reusable building blocks that configure index mappings, settings, and aliases.
 
 The default APM index templates can be viewed in {{kib}}. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Index Templates** and search for `apm`. Select any of the APM index templates to view their relevant component templates.
 

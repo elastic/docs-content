@@ -18,7 +18,7 @@ Once the driver has been installed, in order for an application to be able to co
 
 DSN (*data source name*) is a generic name given to the set of parameters an ODBC driver needs to connect to a database.
 
-We will refer to these parameters as *connection parameters* or *DSN* (despite some of these parameters configuring some other aspects of a driver’s functions; e.g. logging, buffer sizes…​).
+We will refer to these parameters as *connection parameters* or *DSN* (despite some of these parameters configuring some other aspects of a driver’s functions; e.g. logging, buffer sizes…).
 
 Using a DSN is the most widely used, simplest and safest way of performing the driver configuration. Constructing a connection string, on the other hand, is the most crude way and consequently the least common method.
 
@@ -70,7 +70,7 @@ The configuration steps are similar for all the above points. Following is an ex
 
 #### 2.1 Launch Elasticsearch SQL ODBC Driver DSN Editor [_2_1_launch_elasticsearch_sql_odbc_driver_dsn_editor]
 
-Click on the *System DSN* tab, then on the *Add…​* button:
+Click on the *System DSN* tab, then on the *Add…* button:
 
 $$$system_add$$$
 ![administrator system add](/explore-analyze/images/elasticsearch-reference-administrator_system_add.png "")
@@ -192,7 +192,7 @@ One of the following SSL options can be chosen:
   ::::
 
 
-  If using the file browser to locate the certificate - by pressing the *Browse…​* button - only files with *.pem* and *.der* extensions will be considered by default. Choose *All Files (*.*)* from the drop down, if your file ends with a different extension:
+  If using the file browser to locate the certificate - by pressing the *Browse…* button - only files with *.pem* and *.der* extensions will be considered by default. Choose *All Files (*.*)* from the drop down, if your file ends with a different extension:
 
   $$$dsn_editor_cert$$$
   ![dsn editor security cert](/explore-analyze/images/elasticsearch-reference-dsn_editor_security_cert.png "")
