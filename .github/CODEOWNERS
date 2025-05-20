@@ -9,7 +9,7 @@
 # The docs
 /cloud-account/                             @elastic/admin-docs
 /deploy-manage/                             @elastic/admin-docs
-/explore-analyze/                           @elastic/core-docs
+/explore-analyze/                           @elastic/core-docs @elastic/experience-docs 
 /extend/                                    @elastic/core-docs
 /get-started/                               @elastic/core-docs
 
@@ -19,7 +19,7 @@
 /reference/                                 @elastic/core-docs
 /reference/data-analysis/                   @elastic/docs
 /reference/data-analysis/observability/     @elastic/experience-docs
-/reference/data-analysis/kibana/            @elastic/admin-docs
+/reference/data-analysis/kibana/            @elastic/admin-docs @elastic/experience-docs 
 /reference/data-analysis/machine-learning/  @elastic/developer-docs
 /reference/data-analysis/observability/     @elastic/experience-docs
 /reference/elasticsearch/clients/           @elastic/developer-docs
@@ -41,7 +41,7 @@
 
 /solutions/                                 @elastic/experience-docs @elastic/developer-docs 
 /solutions/observability/                   @elastic/experience-docs
-/solutions/observability/get-started/       @elastic/ingest-docs
+/solutions/observability/get-started/       @elastic/ingest-docs @elastic/experience-docs 
 /solutions/search/                          @elastic/developer-docs
 /solutions/security/                        @elastic/experience-docs
 
@@ -49,7 +49,7 @@
 /troubleshoot/deployments/                  @elastic/admin-docs
 /troubleshoot/elasticsearch/                @elastic/admin-docs
 /troubleshoot/ingest/                       @elastic/ingest-docs
-/troubleshoot/kibana/                       @elastic/admin-docs
+/troubleshoot/kibana/                       @elastic/admin-docs @elastic/experience-docs 
 /troubleshoot/monitoring/                   @elastic/admin-docs @elastic/experience-docs
 /troubleshoot/observability/                @elastic/ski-docs
 /troubleshoot/security/                     @elastic/ski-docs
