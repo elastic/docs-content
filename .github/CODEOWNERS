@@ -44,7 +44,7 @@
 
 /solutions/                                 @elastic/experience-docs @elastic/developer-docs 
 /solutions/observability/                   @elastic/experience-docs
-/solutions/observability/get-started/       @elastic/ingest-docs @elastic/experience-docs 
+/solutions/observability/get-started/       @elastic/ski-docs
 /solutions/search/                          @elastic/developer-docs
 /solutions/security/                        @elastic/experience-docs
 
