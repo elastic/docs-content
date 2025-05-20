@@ -7,6 +7,8 @@ applies_to:
     ece:
     eck:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Looking up users without authentication [user-lookup]

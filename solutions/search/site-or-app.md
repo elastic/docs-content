@@ -1,5 +1,5 @@
 ---
-navigation_title: "Add search to your app"
+navigation_title: Add search to your app
 applies_to:
   stack:
   serverless:

@@ -5,6 +5,8 @@ applies_to:
   serverless: all
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Update your email address [ec-update-email-address]

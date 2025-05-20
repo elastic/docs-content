@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: RHEL
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-onprem.html
-navigation_title: RHEL
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]

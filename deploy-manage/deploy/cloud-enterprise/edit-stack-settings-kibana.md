@@ -1,10 +1,12 @@
 ---
 navigation_title: Kibana user settings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana-settings.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana-settings.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Add {{kib}} user settings [ece-manage-kibana-settings]

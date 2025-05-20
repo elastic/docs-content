@@ -1,10 +1,12 @@
 ---
+navigation_title: Script condition
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-script.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Script condition"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-script.html
+products:
+  - id: elasticsearch
 ---
 
 # Script condition [condition-script]

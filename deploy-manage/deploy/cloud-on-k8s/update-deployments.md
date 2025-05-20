@@ -1,10 +1,12 @@
 ---
 navigation_title: Applying updates
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Update your deployments [k8s-update-deployment]

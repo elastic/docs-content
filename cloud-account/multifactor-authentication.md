@@ -5,6 +5,8 @@ applies_to:
   serverless: all
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Multifactor authentication [ec-account-security-mfa]

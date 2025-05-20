@@ -1,5 +1,5 @@
 ---
-navigation_title: "Install {{elastic-defend}}"
+navigation_title: Install {{elastic-defend}}
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/install-endpoint.html
   - https://www.elastic.co/guide/en/serverless/current/security-install-edr.html
@@ -7,6 +7,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Install the {{elastic-defend}} integration

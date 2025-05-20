@@ -7,13 +7,11 @@ applies_to:
 
 # Security
 
-This section of the documentation contains reference information for [{{elastic-sec}}](/solutions/security.md) features, including:
+This section contains reference information for {{elastic-sec}} features, including:
 
-* Prebuilt rules
-* Downloadable rule updates
-* Prebuilt jobs
-* Fields and object schemas
-* Endpoint command reference
-* Prebuilt anomaly detection jobs
+* [Fields and object schemas](/reference/security/fields-and-object-schemas/index.md)
+* [Endpoint command reference](/reference/security/endpoint-command-reference.md)
+* [Detection Rules Overview](detection-rules://index.md)
 
-You can use [APIs](/solutions/security/apis.md) to interface with {{elastic-sec}} features.
+To learn more about Security features and how to get started, refer to [{{elastic-sec}}](/solutions/security.md).
+To interface with {{elastic-sec}} features, you can use these [APIs](/solutions/security/apis.md). 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/filter-agent-list-by-tags.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Add tags to filter the Agents list [filter-agent-list-by-tags]

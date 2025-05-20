@@ -5,6 +5,8 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-hosted
 ---
 
 # Add your billing details [ec-billing-details]

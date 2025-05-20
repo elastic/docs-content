@@ -3,9 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana.html
 applies_to:
   deployment:
-     ess:
-     ece:
-     self:
+    ess:
+    ece:
+    self:
+products:
+  - id: cloud-enterprise
 ---
 
 # Maintenance [maintenance]

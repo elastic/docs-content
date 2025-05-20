@@ -1,5 +1,5 @@
 ---
-mapped_urls:
+mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
   serverless:
@@ -64,7 +64,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
     The response should be similar to:
 
     ```txt
-    {"partialSuccess":{}}% 
+    {"partialSuccess":{}}%
     ```
 
 ### Send data to your Elastic Cloud Managed OTLP endpoint
@@ -94,13 +94,13 @@ For more information, see [OTLP Collector configuration](https://opentelemetry.i
 **Elastic Distributions of OpenTelemetry (EDOT) Collector configuration**
 
 Configure an EDOT Collector using the same method described above in **OpenTelemetry Collector configuration**.
-See the [EDOT Language SDK documentation](https://elastic.github.io/opentelemetry/edot-collector/index.html) for more information.
+See the [EDOT Language SDK documentation](opentelemetry://reference/edot-collector/index.md) for more information.
 
 **OpenTelemetry SDK configuration**
 
 Configure your OTel SDK with the following environment variables:
 
-* Elastic Cloud Managed OTLP endpoint: `OTEL_EXPORTER_OTLP_ENDPOINT` 
+* Elastic Cloud Managed OTLP endpoint: `OTEL_EXPORTER_OTLP_ENDPOINT`
 * Elastic API key: `OTEL_EXPORTER_OTLP_HEADERS`
 
 For example:
@@ -115,21 +115,21 @@ For more information, see [OTLP Exporter configuration](https://opentelemetry.io
 **Elastic Distributions of OpenTelemetry (EDOT) SDK configuration**
 
 Configure an EDOT SDK using the same method described above in **OpenTelemetry SDK configuration**.
-See the [EDOT Language SDK documentation](https://elastic.github.io/opentelemetry/edot-sdks/index.html) for more information.
+See the [EDOT Language SDK documentation](opentelemetry://reference/edot-sdks/index.md) for more information.
 
 #### I need an OTel Collector/SDK [no-sdk-running]
 
 Don't have a collector or SDK running? No problem. Spin up an EDOT collector in just a few steps:
 
-* [Kubernetes Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/k8s.html)
-* [Hosts & VMs Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/hosts_vms.html)
+* [Kubernetes Quickstart](opentelemetry://reference/quickstart/serverless/k8s.md)
+* [Hosts & VMs Quickstart](opentelemetry://reference/quickstart/serverless/hosts_vms.md)
 
 % Commenting out Docker until the docs are ready
-% * [Docker Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/docker.html)
+% * [Docker Quickstart](opentelemetry://reference/quickstart/serverless/docker.md)
 
 #### I just want to use the instrumentation [instrumentation-please]
 
-See [application use-cases](https://elastic.github.io/opentelemetry/edot-sdks/index.html) for more information.
+See [application use-cases](opentelemetry://reference/edot-sdks/index.md) for more information.
 
 ## Troubleshoot
 

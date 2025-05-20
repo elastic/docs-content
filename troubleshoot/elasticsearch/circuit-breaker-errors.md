@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker-errors.html
 applies_to:
   stack:
   deployment:
@@ -6,8 +8,8 @@ applies_to:
     ess:
     ece:
     self:
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker-errors.html
+products:
+  - id: elasticsearch
 ---
 
 # Circuit breaker errors [circuit-breaker-errors]

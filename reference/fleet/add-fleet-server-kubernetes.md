@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-kubernetes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Deploy Fleet Server on Kubernetes [add-fleet-server-kubernetes]

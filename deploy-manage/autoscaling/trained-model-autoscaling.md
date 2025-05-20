@@ -8,6 +8,9 @@ applies_to:
     eck:
     ece:
   serverless:
+products:
+  - id: cloud-serverless
+  - id: machine-learning
 ---
 
 # Trained model autoscaling

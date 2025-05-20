@@ -1,10 +1,12 @@
 ---
+navigation_title: Chain input
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-chain.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Chain input"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-chain.html
+products:
+  - id: elasticsearch
 ---
 
 # Chain input [input-chain]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html
+products:
+  - id: elasticsearch
 ---
 
 # Accessing document fields and special variables [modules-scripting-fields]

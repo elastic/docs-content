@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Interfaces"
+navigation_title: Interfaces
 ---
 
 # Where can I use {{esql}}?

@@ -9,6 +9,11 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: cloud-hosted
+  - id: kibana
+  - id: cloud-serverless
+  - id: elasticsearch
 ---
 
 # Ingestion

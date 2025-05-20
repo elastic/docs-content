@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-kafka-essink.html
+products:
+  - id: elastic-agent
+  - id: logstash
 ---
 
 # Elastic Agent to Logstash to Kafka to Kafka ES Sink to Elasticsearch: Kafka as middleware message queue [agent-kafka-essink]

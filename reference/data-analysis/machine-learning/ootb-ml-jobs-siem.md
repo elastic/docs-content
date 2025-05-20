@@ -7,6 +7,10 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: machine-learning
 ---
 
 # Security {{anomaly-detect}} configurations

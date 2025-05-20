@@ -1,9 +1,11 @@
 ---
-navigation_title: "Monitor {{aws}} with Elastic Serverless Forwarder"
+navigation_title: Monitor {{aws}} with Elastic Serverless Forwarder
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-esf.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-provider.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Agent provider [agent-provider]

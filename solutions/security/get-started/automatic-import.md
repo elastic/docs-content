@@ -6,6 +6,9 @@ applies_to:
   stack: preview
   serverless:
     security: preview
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Automatic import
