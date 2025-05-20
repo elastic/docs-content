@@ -151,7 +151,7 @@ Supported Windows Installer command line arguments can be viewed using:
 msiexec.exe /help
 ```
 
-…​or by consulting the [Windows Installer SDK Command-Line Options](https://msdn.microsoft.com/en-us/library/windows/desktop/aa367988(v=vs.85).aspx).
+…or by consulting the [Windows Installer SDK Command-Line Options](https://msdn.microsoft.com/en-us/library/windows/desktop/aa367988(v=vs.85).aspx).
 
 ### Command line options [odbc-msi-command-line-options]
 

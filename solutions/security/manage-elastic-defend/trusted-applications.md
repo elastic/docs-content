@@ -91,7 +91,7 @@ You can individually modify each trusted application. You can also change the po
 
 To edit a trusted application:
 
-1. Click the actions menu (**…​**) on the trusted application you want to edit, then select **Edit trusted application**.
+1. Click the actions menu (**…**) on the trusted application you want to edit, then select **Edit trusted application**.
 2. Modify details as needed.
 3. Click **Save**.
 
@@ -102,5 +102,5 @@ You can delete a trusted application, which removes it entirely from all {{elast
 
 To delete a trusted application:
 
-1. Click the actions menu (**…​**) on the trusted application you want to delete, then select **Delete trusted application**.
+1. Click the actions menu (**…**) on the trusted application you want to delete, then select **Delete trusted application**.
 2. On the dialog that opens, verify that you are removing the correct application, then click **Delete**. A confirmation message is displayed.

@@ -97,7 +97,7 @@ Apply shared exception lists to rules:
 2. Do one of the following:
 
     * Select a shared exception list’s name to open its details page, then click **Link rules**.
-    * Find the shared exception list you want to assign to rules, then from the **More actions** menu (**…​**), select **Link rules**.
+    * Find the shared exception list you want to assign to rules, then from the **More actions** menu (**…**), select **Link rules**.
 
 3. Click the toggles in the **Link** column to select the rules you want to link to the exception list.
 

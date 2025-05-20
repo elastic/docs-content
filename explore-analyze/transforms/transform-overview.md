@@ -62,7 +62,7 @@ As in the case of a pivot, a latest {{transform}} can run once or continuously. 
 
 {{transforms-cap}} perform search aggregations on the source indices then index the results into the destination index. Therefore, a {{transform}} never takes less time or uses less resources than the aggregation and indexing processes.
 
-If your {{transform}} must process a lot of historic data, it has high resource usage initially—​particularly during the first checkpoint.
+If your {{transform}} must process a lot of historic data, it has high resource usage initially—particularly during the first checkpoint.
 
 For better performance, make sure that your search aggregations and queries are optimized and that your {{transform}} is processing only necessary data. Consider whether you can apply a source query to the {{transform}} to reduce the scope of data it processes. Also consider whether the cluster has sufficient resources in place to support both the composite aggregation search and the indexing of its results.
 

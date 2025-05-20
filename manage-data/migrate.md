@@ -50,7 +50,7 @@ Before you migrate your {{es}} data, [define your index mappings](/manage-data/d
 
 ### Index from the source [ec-index-source]
 
-If you still have access to the original data source, outside of your old {{es}} cluster, you can load the data from there. This might be the simplest option, allowing you to choose the {{es}} version and take advantage of the latest features. You have the option to use any ingestion method that you want—​Logstash, Beats, the {{es}} clients, or whatever works best for you.
+If you still have access to the original data source, outside of your old {{es}} cluster, you can load the data from there. This might be the simplest option, allowing you to choose the {{es}} version and take advantage of the latest features. You have the option to use any ingestion method that you want—Logstash, Beats, the {{es}} clients, or whatever works best for you.
 
 If the original source isn’t available or has other issues that make it non-viable, there are still two more migration options, getting the data from a remote cluster or restoring from a snapshot.
 

@@ -136,7 +136,7 @@ Changes to component templates are not applied retroactively to existing indices
 
 Use the [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) feature in {{es}} to manage your {{agent}} data stream indices as they age. For example, create a new index after a certain period of time, or delete stale indices to enforce data retention standards.
 
-Installed integrations may have one or many associated data streams—​each with an associated {{ilm-init}} policy. By default, these data streams use an {{ilm-init}} policy that matches their data type. For example, the data stream `metrics-system.logs-*`, uses the metrics {{ilm-init}} policy as defined in the `metrics-system.logs` index template.
+Installed integrations may have one or many associated data streams—each with an associated {{ilm-init}} policy. By default, these data streams use an {{ilm-init}} policy that matches their data type. For example, the data stream `metrics-system.logs-*`, uses the metrics {{ilm-init}} policy as defined in the `metrics-system.logs` index template.
 
 Want to customize your index lifecycle management? See [Tutorials: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md).
 
