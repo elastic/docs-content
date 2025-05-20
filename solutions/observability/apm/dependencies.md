@@ -13,7 +13,7 @@ products:
 
 # Dependencies [apm-dependencies]
 
-APM agents collect details about external calls made from instrumented services. Sometimes, these external calls resolve into a downstream service that’s instrumented — in these cases, you can utilize [distributed tracing](/solutions/observability/apm/trace-sample-timeline.md#distributed-tracing) to drill down into problematic downstream services. Other times, though, it’s not possible to instrument a downstream dependency — like with a database or third-party service. **Dependencies** gives you a window into these uninstrumented, downstream dependencies.
+APM agents collect details about external calls made from instrumented services. Sometimes, these external calls resolve into a downstream service that’s instrumented — in these cases, you can utilize [distributed tracing](/solutions/observability/apm/trace-sample-timeline.md#distributed-tracing) to drill down into problematic downstream services. Other times, though, it’s not possible to instrument a downstream dependency — like with a database or third-party service. **Dependencies** gives you a window into these uninstrumented, downstream dependencies.
 
 :::{image} /solutions/images/observability-dependencies.png
 :alt: Dependencies view in the Applications UI

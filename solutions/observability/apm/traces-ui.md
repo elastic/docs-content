@@ -19,7 +19,7 @@ Traces link together related transactions to show an end-to-end performance of h
 
 **Traces** displays your application’s entry (root) transactions. Transactions with the same name are grouped together and only shown once in this table. If you’re using [distributed tracing](/solutions/observability/apm/trace-sample-timeline.md#distributed-tracing), this view is key to finding the critical paths within your application.
 
-By default, transactions are sorted by *Impact*. Impact helps show the most used and slowest endpoints in your service — in other words, it’s the collective amount of pain a specific endpoint is causing your users. If there’s a particular endpoint you’re worried about, select it to view its [transaction details](/solutions/observability/apm/transactions-ui.md#transaction-details).
+By default, transactions are sorted by *Impact*. Impact helps show the most used and slowest endpoints in your service — in other words, it’s the collective amount of pain a specific endpoint is causing your users. If there’s a particular endpoint you’re worried about, select it to view its [transaction details](/solutions/observability/apm/transactions-ui.md#transaction-details).
 
 You can also use queries to filter and search the transactions shown on this page. Note that only properties available on root transactions are searchable. For example, you can’t search for `label.tier: 'high'`, as that field is only available on non-root transactions.
 

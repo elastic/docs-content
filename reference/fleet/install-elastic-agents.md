@@ -39,7 +39,7 @@ You have a few options for installing and managing an {{agent}}:
 
 * **Install {{agent}} in a containerized environment**
 
-    You can run {{agent}} inside of a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the Elastic Docker registry, and we provide deployment manifests for running on Kubernetes.
+    You can run {{agent}} inside of a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the Elastic Docker registry, and we provide deployment manifests for running on Kubernetes.
 
     Refer to:
 
@@ -54,7 +54,7 @@ You have a few options for installing and managing an {{agent}}:
 
     * [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md)
     * [Scaling {{agent}} on {{k8s}}](/reference/fleet/scaling-on-kubernetes.md)
-    * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
+    * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 
 
 ::::{admonition} Restrictions in {{serverless-short}}

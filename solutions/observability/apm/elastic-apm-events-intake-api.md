@@ -14,7 +14,7 @@ products:
 Most users do not need to interact directly with the events intake API.
 ::::
 
-The events intake API is what we call the internal protocol that APM agents use to talk to the APM Server. Agents communicate with the Server by sending events — captured pieces of information — in an HTTP request. Events can be:
+The events intake API is what we call the internal protocol that APM agents use to talk to the APM Server. Agents communicate with the Server by sending events — captured pieces of information — in an HTTP request. Events can be:
 
 * Transactions
 * Spans

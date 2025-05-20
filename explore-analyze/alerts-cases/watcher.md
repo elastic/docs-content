@@ -33,7 +33,7 @@ All of these use-cases share a few key properties:
 
 * The relevant data or changes in data can be identified with a periodic Elasticsearch query.
 * The results of the query can be checked against a condition.
-* One or more actions are taken if the condition is true — an email is sent, a 3rd party system is notified, or the query results are stored.
+* One or more actions are taken if the condition is true — an email is sent, a 3rd party system is notified, or the query results are stored.
 
 ## How watches work [_how_watches_work]
 

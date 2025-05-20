@@ -10,7 +10,7 @@ products:
 
 # Dynamic mapping [dynamic-mapping]
 
-One of the most important features of {{es}} is that it tries to get out of your way and let you start exploring your data as quickly as possible. To index a document, you don’t have to first create an index, define a mapping type, and define your fields — you can just index a document and the index, type, and fields will display automatically:
+One of the most important features of {{es}} is that it tries to get out of your way and let you start exploring your data as quickly as possible. To index a document, you don’t have to first create an index, define a mapping type, and define your fields — you can just index a document and the index, type, and fields will display automatically:
 
 ```json
 PUT data/_doc/1 <1>

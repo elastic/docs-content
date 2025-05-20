@@ -89,7 +89,7 @@ The following is a list of the roles that a node can perform in a cluster. A nod
 
 :name: coordinating-node
 
-Requests like search requests or bulk-indexing requests may involve data held on different data nodes. A search request, for example, is executed in two phases which are coordinated by the node which receives the client request — the *coordinating node*.
+Requests like search requests or bulk-indexing requests may involve data held on different data nodes. A search request, for example, is executed in two phases which are coordinated by the node which receives the client request — the *coordinating node*.
 
 In the *scatter* phase, the coordinating node forwards the request to the data nodes which hold the data. Each data node executes the request locally and returns its results to the coordinating node. In the *gather* phase, the coordinating node reduces each data node’s results into a single global result set.
 
@@ -266,7 +266,7 @@ If you take away the ability to be able to handle master duties, to hold data, a
 Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state), like every other node, and they use the cluster state to route requests directly to the appropriate place(s).
 
 ::::{warning}
-Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the elected master node must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.
+Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the elected master node must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.
 ::::
 
 

@@ -92,7 +92,7 @@ Selecting a transaction group will bring you to the **transaction** details. Thi
 
 ### Latency distribution [transaction-duration-distribution]
 
-The latency distribution shows a plot of all transaction durations for the given time period. The following screenshot shows a typical distribution and indicates most of our requests were served quickly — awesome! The requests on the right are taking longer than average; we probably need to focus on them.
+The latency distribution shows a plot of all transaction durations for the given time period. The following screenshot shows a typical distribution and indicates most of our requests were served quickly — awesome! The requests on the right are taking longer than average; we probably need to focus on them.
 
 :::{image} /solutions/images/observability-apm-transaction-duration-dist.png
 :alt: Example view of latency distribution graph

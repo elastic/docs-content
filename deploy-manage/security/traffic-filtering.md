@@ -108,7 +108,7 @@ To identify which rule sets are automatically applied to new deployments in your
     :::
     ::::
 
-2. Select each of the rule sets — **Include by default** is checked when this rule set is automatically applied to all new deployments in its region.
+2. Select each of the rule sets — **Include by default** is checked when this rule set is automatically applied to all new deployments in its region.
 
 #### View rejected requests
 
