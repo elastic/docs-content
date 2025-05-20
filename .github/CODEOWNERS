@@ -15,7 +15,7 @@
 
 /manage-data/                               @elastic/admin-docs
 /manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs 
-/manage-data/ingestion/                     @elastic/ingest-docs
+/manage-data/ingest/                        @elastic/ingest-docs
 
 /reference/                                 @elastic/docs
 /reference/apm-agents/                      @elastic/ingest-docs
