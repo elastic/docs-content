@@ -12,7 +12,7 @@ products:
 
 # {{esql}} [esql]
 
-:::{note}
+:::{tip}
 Looking for the {{esql}} syntax reference? Refer to the [reference documentation](elasticsearch://reference/query-languages/esql.md).
 :::
 
