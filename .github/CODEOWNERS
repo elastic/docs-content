@@ -14,15 +14,18 @@
 /get-started/                               @elastic/core-docs
 
 /manage-data/                               @elastic/admin-docs
+/manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs 
 /manage-data/ingestion/                     @elastic/ingest-docs
 
 /reference/                                 @elastic/core-docs
+/reference/apm-agents/                      @elastic/ingest-docs
 /reference/data-analysis/                   @elastic/docs
 /reference/data-analysis/observability/     @elastic/experience-docs
-/reference/data-analysis/kibana/            @elastic/admin-docs @elastic/experience-docs 
+/reference/data-analysis/kibana/            @elastic/experience-docs 
 /reference/data-analysis/machine-learning/  @elastic/developer-docs
 /reference/data-analysis/observability/     @elastic/experience-docs
 /reference/elasticsearch/clients/           @elastic/developer-docs
+/reference/fleet/                           @elastic/ingest-docs
 /reference/glossary/                        @elastic/docs
 /reference/ingestion-tools/                 @elastic/ingest-docs
 /reference/observability/                   @elastic/experience-docs
