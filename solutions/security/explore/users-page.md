@@ -28,7 +28,7 @@ The Users page has the following sections:
 KPI charts show the total number of users and successful and failed user authentications within the time range specified in the date picker. Data in the KPI charts is visualized through linear and bar graphs.
 
 ::::{tip}
-Hover inside a KPI chart to display the actions menu (**…​**), where you can perform these actions: inspect, open in Lens, and add to a new or existing case.
+Hover inside a KPI chart to display the actions menu (**…**), where you can perform these actions: inspect, open in Lens, and add to a new or existing case.
 ::::
 
 

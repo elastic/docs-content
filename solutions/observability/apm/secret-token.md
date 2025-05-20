@@ -31,7 +31,7 @@ Secret tokens are not applicable for the RUM Agent, as there is no way to preven
 % This should be checked and updated, it doesn't looks like it's there by default vv
 
 ::::{note}
-{{ech}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} Console under the deployment's **APM & Fleet** page.
+{{ech}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} Console under the deployment's **APM & Fleet** page.
 ::::
 
 :::::::{tab-set}

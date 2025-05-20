@@ -1158,7 +1158,7 @@ DAY_NAME(datetime_exp) <1>
 
 **Output**: string
 
-**Description**: Extract the day of the week from a date/datetime in text format (`Monday`, `Tuesday`…​).
+**Description**: Extract the day of the week from a date/datetime in text format (`Monday`, `Tuesday`…).
 
 ```sql
 SELECT DAY_NAME(CAST('2018-02-19T10:23:27Z' AS TIMESTAMP)) AS day;
@@ -1326,7 +1326,7 @@ MONTH_NAME(datetime_exp) <1>
 
 **Output**: string
 
-**Description**: Extract the month from a date/datetime in text format (`January`, `February`…​).
+**Description**: Extract the month from a date/datetime in text format (`January`, `February`…).
 
 ```sql
 SELECT MONTH_NAME(CAST('2018-02-19T10:23:27Z' AS TIMESTAMP)) AS month;

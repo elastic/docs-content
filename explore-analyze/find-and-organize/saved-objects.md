@@ -152,8 +152,8 @@ Historically, whether you imported or copied a saved object, {{kib}} would creat
 
 If you import a saved object using the "Check for existing objects" option, {{kib}} will take the following steps:
 
-1. If {{kib}} finds a matching saved object with the exact same ID in the target space, that will be the import destination — you can **overwrite** that destination or **skip** it.
-2. Otherwise, if {{kib}} finds a matching saved object with a *different* ID that has the same origin, that will be the import destination — again, you can **overwrite** that destination or **skip** it.
+1. If {{kib}} finds a matching saved object with the exact same ID in the target space, that will be the import destination — you can **overwrite** that destination or **skip** it.
+2. Otherwise, if {{kib}} finds a matching saved object with a *different* ID that has the same origin, that will be the import destination — again, you can **overwrite** that destination or **skip** it.
 3. Otherwise, if a saved object with the exact same ID exists in a *different* space, then {{kib}} will generate a random ID for the import destination, preserving the saved object’s origin.
 4. Otherwise, {{kib}} creates the saved object with the given ID.
 

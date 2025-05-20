@@ -194,7 +194,7 @@ The `securitySolution:maxUnassociatedNotes` field determines the maximum number 
 
 ## Exclude cold and frozen data from rules [exclude-cold-frozen-data-rule-executions]
 
-To ensure the rules in your {{kib}} space exclude query results from cold and frozen tiers when executing, specify cold and frozen [data tiers](/manage-data/lifecycle/data-tiers.md) in the `excludedDataTiersForRuleExecution` field. Multiple data tiers must be separated by commas, for example: `data_frozen`, `data_cold`. This setting is turned off by default; turning it on can improve rule performance and reduce execution time.
+To ensure the rules in your {{kib}} space exclude query results from cold and frozen tiers when executing, specify cold and frozen [data tiers](/manage-data/lifecycle/data-tiers.md) in the `excludedDataTiersForRuleExecution` field. Multiple data tiers must be separated by commas, for example: `data_frozen`, `data_cold`. This setting is turned off by default; turning it on can improve rule performance and reduce execution time.
 
 This setting does not apply to {{ml}} rules because {{ml}} anomalies are not stored in cold or frozen data tiers.
 

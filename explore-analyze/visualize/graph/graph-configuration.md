@@ -18,7 +18,7 @@ When a user saves a graph workspace in Kibana, it is stored in the `.kibana` ind
 **data**
 :   The visualized content (the vertices and connections displayed in the workspace).
 
-The data in a saved workspace is like a report—​it is a saved snapshot that potentially summarizes millions of raw documents. Once saved, these summaries are no longer controlled by security policies. Because the original documents might be deleted after a workspace is saved, there’s no practical basis for checking permissions for the data in a saved workspace.
+The data in a saved workspace is like a report—it is a saved snapshot that potentially summarizes millions of raw documents. Once saved, these summaries are no longer controlled by security policies. Because the original documents might be deleted after a workspace is saved, there’s no practical basis for checking permissions for the data in a saved workspace.
 
 For this reason, you can configure the save policy for graph workspaces to ensure appropriate handling of your data. You can allow all users to save only the configuration information for a graph, require all users to explicitly include the workspace data, or completely disable the ability to save a workspace.
 

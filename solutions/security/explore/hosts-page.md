@@ -28,7 +28,7 @@ The Hosts page has the following sections:
 KPI charts show metrics for hosts and unique IPs within the time range specified in the date picker. This data is visualized using linear or bar graphs.
 
 ::::{tip}
-Hover inside a KPI chart to display the actions menu (**…​**), where you can perform these actions: inspect, open in Lens, and add to a new or existing case.
+Hover inside a KPI chart to display the actions menu (**…**), where you can perform these actions: inspect, open in Lens, and add to a new or existing case.
 ::::
 
 

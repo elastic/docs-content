@@ -61,7 +61,7 @@ Use the OpenTelemetry API/SDKs with [Elastic APM agents](/solutions/observabilit
 :screenshot:
 :::
 
-This allows you to reuse your existing OpenTelemetry instrumentation to create Elastic APM transactions and spans — ​avoiding vendor lock-in and having to redo manual instrumentation.
+This allows you to reuse your existing OpenTelemetry instrumentation to create Elastic APM transactions and spans — avoiding vendor lock-in and having to redo manual instrumentation.
 
 However, not all features of the OpenTelemetry API are supported when using this approach, and not all Elastic APM agents support this approach.
 

@@ -38,7 +38,7 @@ Other Windows and macOS variants (and all Linux distributions) do not have self-
 
 For {{stack}} version >= 7.11.0, self-protection defines the following permissions:
 
-* Users — even Administrator/root — **cannot** delete {{elastic-endpoint}} files (located at `c:\Program Files\Elastic\Endpoint` on Windows, and `/Library/Elastic/Endpoint` on macOS).
+* Users — even Administrator/root — **cannot** delete {{elastic-endpoint}} files (located at `c:\Program Files\Elastic\Endpoint` on Windows, and `/Library/Elastic/Endpoint` on macOS).
 * Users **cannot** terminate the {{elastic-endpoint}} program or service.
 * Administrator/root users **can** read {{elastic-endpoint}}'s files. On Windows, the easiest way to read {{elastic-endpoint}} files is to start an Administrator `cmd.exe` prompt. On macOS, an Administrator can use the `sudo` command.
 * Administrator/root users **can** stop the {{elastic-agent}}'s service. On Windows, run the `sc stop "Elastic Agent"` command. On macOS, run the `sudo launchctl stop elastic-agent` command.

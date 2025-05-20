@@ -88,7 +88,7 @@ See [Running on Docker](#apm-running-on-docker) for deploying Docker containers.
 
 ## Step 2: Set up and configure [apm-server-configuration]
 
-Configure APM by editing the `apm-server.yml` configuration file. The location of this file varies by platform—​see the [Installation layout](/solutions/observability/apm/installation-layout.md) for help locating it.
+Configure APM by editing the `apm-server.yml` configuration file. The location of this file varies by platform—see the [Installation layout](/solutions/observability/apm/installation-layout.md) for help locating it.
 
 A minimal configuration file might look like this:
 

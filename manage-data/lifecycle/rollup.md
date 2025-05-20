@@ -20,7 +20,7 @@ While your analysts and data scientists may wish you stored that data indefinite
 
 Storage cost is a fixed quantity. It takes X money to store Y data. But the utility of a piece of data often changes with time. Sensor data gathered at millisecond granularity is extremely useful right now, reasonably useful if from a few weeks ago, and only marginally useful if older than a few months.
 
-So while the cost of storing a millisecond of sensor data from ten years ago is fixed, the value of that individual sensor reading often diminishes with time. It’s not useless — it could easily contribute to a useful analysis — but it’s reduced value often leads to deletion rather than paying the fixed storage cost.
+So while the cost of storing a millisecond of sensor data from ten years ago is fixed, the value of that individual sensor reading often diminishes with time. It’s not useless — it could easily contribute to a useful analysis — but it’s reduced value often leads to deletion rather than paying the fixed storage cost.
 
 
 ## Rollup stores historical data at reduced granularity [_rollup_stores_historical_data_at_reduced_granularity]
@@ -54,6 +54,6 @@ If you were to query the raw data, you’d only see the most recent month. And i
 
 ## Rollup is multi-interval aware [_rollup_is_multi_interval_aware]
 
-Finally, Rollup is capable of intelligently utilizing the best interval available. If you’ve worked with summarizing features of other products, you’ll find that they can be limiting. If you configure rollups at daily intervals…​ your queries and charts can only work with daily intervals. If you need a monthly interval, you have to create another rollup that explicitly stores monthly averages, etc.
+Finally, Rollup is capable of intelligently utilizing the best interval available. If you’ve worked with summarizing features of other products, you’ll find that they can be limiting. If you configure rollups at daily intervals…  your queries and charts can only work with daily intervals. If you need a monthly interval, you have to create another rollup that explicitly stores monthly averages, etc.
 
 The Rollup feature stores data in such a way that queries can identify the smallest available interval and use that for their processing. If you store rollups at a daily interval, queries can be executed on daily or longer intervals (weekly, monthly, etc) without the need to explicitly configure a new rollup job. This helps alleviate one of the major disadvantages of a rollup system; reduced flexibility relative to raw data.

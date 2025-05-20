@@ -25,7 +25,7 @@ Learn more about Observability rules and how to create them:
 
 % Serverless rules below, need to make sure we aren't missing some from stateful. Stateful page seems out of date.
 
-| Rule type | Name | Detects when…​ |
+| Rule type | Name | Detects when… |
 | --- | --- | --- |
 | AIOps | [Anomaly detection](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | Anomalies match specific conditions. |
 | APM | [APM anomaly](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | The latency, throughput, or failed transaction rate of a service is abnormal. |

@@ -18,7 +18,7 @@ products:
 ::::{admonition} Keep it simple
 :class: tip
 
-The flexibility to specify analyzers at different levels and for different times is great…​ *but only when it’s needed*.
+The flexibility to specify analyzers at different levels and for different times is great… *but only when it’s needed*.
 
 In most cases, a simple approach works best: Specify an analyzer for each `text` field, as outlined in [Specify the analyzer for a field](#specify-index-field-analyzer).
 
