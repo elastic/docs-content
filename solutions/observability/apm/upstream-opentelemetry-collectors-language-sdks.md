@@ -13,17 +13,14 @@ products:
 
 # Upstream OpenTelemetry Collectors and language SDKs [apm-open-telemetry-direct]
 
-:::{include} _snippets/apm-server-vs-mis.md
-:::
-
-::::{note}
-This is one of several approaches you can use to integrate Elastic with OpenTelemetry. **To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).**
-::::
-
 The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means trace data and metrics collected from your applications and infrastructure can be sent directly to the {{stack}}.
 
 * Send data to Elastic from an upstream [OpenTelemetry Collector](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-connect-open-telemetry-collector)
 * Send data to Elastic from an upstream [OpenTelemetry language SDK](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel)
+
+::::{note}
+This is one of several approaches you can use to integrate Elastic with OpenTelemetry. To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).
+::::
 
 ## Send data from an upstream OpenTelemetry Collector [apm-connect-open-telemetry-collector]
 
@@ -265,6 +262,10 @@ The preferred approach is to deploy a L4 (TCP) load balancer (e.g. [NLB](https:/
 For more information on how to configure an AWS ALB to support gRPC, see this AWS blog post: [Application Load Balancer Support for End-to-End HTTP/2 and gRPC](https://aws.amazon.com/blogs/aws/new-application-load-balancer-support-for-end-to-end-http-2-and-grpc/).
 
 For more information on how APM Server services gRPC requests, see [Muxing gRPC and HTTP/1.1](https://github.com/elastic/apm-server/blob/main/dev_docs/otel.md#muxing-grpc-and-http11).
+
+
+:::{include} _snippets/apm-server-vs-mis.md
+:::
 
 ## Next steps [apm-open-telemetry-direct-next]
 
