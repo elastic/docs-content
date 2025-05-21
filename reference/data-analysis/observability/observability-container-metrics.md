@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-container-metrics.html
   - https://www.elastic.co/guide/en/observability/current/container-metrics.html
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Container metrics [observability-container-metrics]

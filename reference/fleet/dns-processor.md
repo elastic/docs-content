@@ -1,7 +1,10 @@
 ---
-navigation_title: "dns"
+navigation_title: dns
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/dns-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # DNS Reverse Lookup [dns-processor]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-bundles-plugins.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-bundles-plugins.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Custom configuration files and plugins [k8s-bundles-plugins]

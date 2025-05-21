@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/migrate-beats-to-agent.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Migrate from Beats to Elastic Agent [migrate-beats-to-agent]

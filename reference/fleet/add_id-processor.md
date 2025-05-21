@@ -1,7 +1,10 @@
 ---
-navigation_title: "add_id"
+navigation_title: add_id
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_id-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Generate an ID for an event [add_id-processor]

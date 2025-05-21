@@ -1,14 +1,16 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: Install ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-installing.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-public.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-your-infra.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-onprem.html
-navigation_title: Install ECE
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Install {{ece}} [ece-installing]

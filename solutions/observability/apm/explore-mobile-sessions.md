@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-mobile-session-explorer.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Explore mobile sessions with Discover [apm-mobile-session-explorer]

@@ -1,5 +1,5 @@
 ---
-navigation_title: "Breaking changes"
+navigation_title: Breaking changes
 ---
 
 # {{fleet}} and {{agent}} breaking changes [fleet-elastic-agent-breaking-changes]

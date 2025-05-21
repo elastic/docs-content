@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-regional-deployment-aliases.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-regional-deployment-aliases.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Custom endpoint aliases [ece-regional-deployment-aliases]

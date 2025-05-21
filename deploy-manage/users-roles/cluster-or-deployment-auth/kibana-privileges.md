@@ -7,6 +7,8 @@ applies_to:
     ess:
     eck:
     self:
+products:
+  - id: kibana
 ---
 
 # {{kib}} privileges [kibana-privileges]

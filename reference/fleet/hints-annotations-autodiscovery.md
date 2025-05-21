@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/hints-annotations-autodiscovery.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Hints annotations based autodiscover [hints-annotations-autodiscovery]
@@ -391,7 +394,7 @@ When things do not work as expected, you may need to troubleshoot your setup. He
     tail -f /etc/elastic-agent/data/logs/elastic-agent-*.ndjson
     ```
 
-    Verify that the hints feature is enabled in the config and look for hints-related logs like: "Generated hints mappings are …​" In these logs, you can find the mappings that are extracted out of the annotations and determine if the values can populate a specific input.
+    Verify that the hints feature is enabled in the config and look for hints-related logs like: "Generated hints mappings are …" In these logs, you can find the mappings that are extracted out of the annotations and determine if the values can populate a specific input.
 
 3. View the {{metricbeat}} logs:
 

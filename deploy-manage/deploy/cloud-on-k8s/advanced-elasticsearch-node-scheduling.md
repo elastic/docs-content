@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-advanced-node-scheduling.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-advanced-node-scheduling.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Advanced {{es}} node scheduling [k8s-advanced-node-scheduling]

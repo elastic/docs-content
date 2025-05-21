@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-vector-style-properties.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-vector-style-properties.html
+products:
+  - id: kibana
 ---
 
 # Vector style properties [maps-vector-style-properties]
@@ -22,8 +24,8 @@ You can add text labels to your Point features by configuring label style proper
 | **Label visibility** | Specifies the zoom range for which labels are displayed. |
 | **Label color** | The text color. |
 | **Label size** | The size of the text, in pixels. |
-| **Label border color** | The color of the label border. |
-| **Label border width** | The width of the label border. |
+| **Label border color** | The color of the label border. |
+| **Label border width** | The width of the label border. |
 
 You can symbolize Point features as **Circle markers** or **Icons**.
 
@@ -73,8 +75,8 @@ Manage your custom icons in [settings](maps-settings.md).
 | **Label visibility** | Specifies the zoom range for which labels are displayed. |
 | **Label color** | The text color. |
 | **Label size** | The size of the text, in pixels. |
-| **Label border color** | The color of the label border. |
-| **Label border width** | The width of the label border. |
+| **Label border color** | The color of the label border. |
+| **Label border width** | The width of the label border. |
 
 
 ## Line style properties [line-style-properties]
@@ -87,5 +89,5 @@ Manage your custom icons in [settings](maps-settings.md).
 | **Label visibility** | Specifies the zoom range for which labels are displayed. |
 | **Label color** | The text color. |
 | **Label size** | The size of the text, in pixels. |
-| **Label border color** | The color of the label border. |
-| **Label border width** | The width of the label border. |
+| **Label border color** | The color of the label border. |
+| **Label border width** | The width of the label border. |

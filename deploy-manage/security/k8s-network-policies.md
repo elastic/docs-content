@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-network-policies.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_prerequisites.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Kubernetes network policies [k8s-network-policies]

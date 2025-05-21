@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ece: ga
 navigation_title: Elastic Cloud Enterprise
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html
+applies_to:
+  deployment:
+    ece: ga
+products:
+  - id: cloud-enterprise
 ---
 
 # Remote clusters with {{ece}} [ece-enable-ccs]

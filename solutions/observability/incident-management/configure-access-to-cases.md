@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/grant-cases-access.html
+products:
+  - id: observability
 ---
 
 # Configure access to cases [grant-cases-access]

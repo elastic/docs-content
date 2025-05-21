@@ -1,10 +1,12 @@
 ---
+navigation_title: CSV
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting-csv.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "CSV"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting-csv.html
+products:
+  - id: kibana
 ---
 
 

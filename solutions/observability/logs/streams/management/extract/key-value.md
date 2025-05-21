@@ -1,7 +1,7 @@
 ---
 navigation_title: KV processor
 applies_to:
-    serverless: preview
+  serverless: preview
 ---
 # Key value processor [streams-kv-processor]
 

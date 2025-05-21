@@ -1,7 +1,10 @@
 ---
-navigation_title: "Apache HTTP Server"
+navigation_title: Apache HTTP Server
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/config-file-example-apache.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Config file example: Apache HTTP Server [config-file-example-apache]

@@ -1,14 +1,15 @@
 ---
-navigation_title: "Uni-directional disaster recovery"
+navigation_title: Uni-directional disaster recovery
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-disaster-recovery-uni-directional-tutorial.html
-
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 

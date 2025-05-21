@@ -1,9 +1,11 @@
 ---
-navigation_title: "Index lifecycle management"
+navigation_title: Index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-index-lifecycle-management.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 

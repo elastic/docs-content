@@ -1,7 +1,10 @@
 ---
-navigation_title: "View integration policies"
+navigation_title: View integration policies
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/view-integration-policies.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # View {{agent}} integration policies [view-integration-policies]

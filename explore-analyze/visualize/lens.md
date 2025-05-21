@@ -1,10 +1,12 @@
 ---
+navigation_title: Lens
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/lens.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Lens"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/lens.html
+products:
+  - id: kibana
 ---
 
 

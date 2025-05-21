@@ -1,13 +1,15 @@
 ---
-navigation_title: "Migration and upgrades"
+navigation_title: Migration and upgrades
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/resolve-migrations-failures.html
 applies_to:
   deployment:
     ess: all
     ece: all
     self: all
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/resolve-migrations-failures.html
+products:
+  - id: kibana
 ---
 
 # Troubleshoot {{kib}} migration and upgrades [resolve-migrations-failures]

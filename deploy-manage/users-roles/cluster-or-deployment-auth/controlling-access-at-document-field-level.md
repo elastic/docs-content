@@ -1,4 +1,5 @@
 ---
+navigation_title: Control access at the document and field level
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/document-level-security.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/field-level-security.html
@@ -9,7 +10,8 @@ applies_to:
     eck:
     ess:
     self:
-navigation_title: Control access at the document and field level
+products:
+  - id: elasticsearch
 ---
 
 # Controlling access at the document and field level [field-and-document-access-control]

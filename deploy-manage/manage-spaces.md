@@ -1,10 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-spaces.html
   - https://www.elastic.co/guide/en/serverless/current/spaces.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Spaces [xpack-spaces]

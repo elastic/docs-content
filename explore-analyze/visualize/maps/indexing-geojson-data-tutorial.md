@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/indexing-geojson-data-tutorial.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/indexing-geojson-data-tutorial.html
+products:
+  - id: kibana
 ---
 
 # Tutorial: Index GeoJSON data [indexing-geojson-data-tutorial]

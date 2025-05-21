@@ -1,11 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/_throttling.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/_throttling.html
-  # That link will 404 until 8.18 is current
-  # (see https://www.elastic.co/guide/en/elasticsearch/reference/8.18/_throttling.html)
+products:
+  - id: elasticsearch
 ---
 
 # Throttling [_throttling]

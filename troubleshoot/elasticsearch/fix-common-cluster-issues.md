@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Common cluster issues
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-common-cluster-issues.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Fix common cluster issues [fix-common-cluster-issues]

@@ -1,11 +1,13 @@
 ---
-navigation_title: "Self-managed security setup"
-applies_to:
-  deployment:
-    self: ga
+navigation_title: Self-managed security setup
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/manually-configure-security.html
   - https://www.elastic.co/guide/en/elastic-stack/current/install-stack-demo-secure.html
+applies_to:
+  deployment:
+    self: ga
+products:
+  - id: elasticsearch
 ---
 
 % scope: initial security setup in self-managed deployments, following the automatic or manual (minimal, basic, https) procedures
