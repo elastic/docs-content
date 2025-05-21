@@ -1,11 +1,15 @@
 ---
-navigation_title: "Act on data"
+navigation_title: Act on data
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-act-on-data.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-act-on-data.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Act on application data

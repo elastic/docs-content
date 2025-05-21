@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-inputs-list.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Elastic Agent inputs [elastic-agent-inputs-list]

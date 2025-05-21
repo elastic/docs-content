@@ -1,12 +1,15 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml-aiops.html
   - https://www.elastic.co/guide/en/serverless/current/observability-machine-learning.html
   - https://www.elastic.co/guide/en/serverless/current/observability-aiops-analyze-spikes.html
   - https://www.elastic.co/guide/en/serverless/current/observability-aiops-detect-change-points.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # AIOps Labs [xpack-ml-aiops]

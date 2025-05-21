@@ -1,7 +1,10 @@
 ---
-navigation_title: "extract_array"
+navigation_title: extract_array
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/extract_array-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Extract array [extract_array-processor]

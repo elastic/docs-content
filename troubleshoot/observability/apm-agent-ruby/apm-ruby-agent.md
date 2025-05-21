@@ -1,18 +1,20 @@
 ---
-navigation_title: "APM Ruby Agent"
+navigation_title: APM Ruby Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/ruby/current/debugging.html
 applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: apm-agent
 ---
 
 # Troubleshoot APM Ruby Agent [debugging]
 
 Hopefully the agent Just Works™, but depending on your situation the agent might need some tuning.
 
-First, to learn more about what’s going on inside the agent, you can increase the amount of log messages it writes. To do this, set the log level with the option `log_level = 0` — `0` being the level of most messages, `DEBUG`.
+First, to learn more about what’s going on inside the agent, you can increase the amount of log messages it writes. To do this, set the log level with the option `log_level = 0` — `0` being the level of most messages, `DEBUG`.
 
 In your `config/elastic_apm.yml`:
 

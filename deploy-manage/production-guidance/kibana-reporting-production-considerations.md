@@ -1,10 +1,12 @@
 ---
-navigation_title: "Reporting production considerations"
+navigation_title: Reporting production considerations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-production-considerations.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: kibana
 ---
 
 # {{kib}} reporting in production environments [reporting-production-considerations]
@@ -39,7 +41,7 @@ By default, if your system does support sandboxing, {{kib}} will **enable it aut
 
 #### Recommendation
 
-Even if sandboxing is likely supported (e.g., kernel 3.8+), we recommend explicitly enabling it to ensure protection is active and avoid relying on auto-detection. To do that, add the following setting to your `kibana.yml` configuration file:
+Even if sandboxing is likely supported (e.g., kernel 3.8+), we recommend explicitly enabling it to ensure protection is active and avoid relying on auto-detection. To do that, add the following setting to your [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file:
 
 ```yaml
 xpack.screenshotting.browser.chromium.disableSandbox: false

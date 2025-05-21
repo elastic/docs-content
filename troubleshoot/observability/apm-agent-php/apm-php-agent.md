@@ -1,11 +1,13 @@
 ---
-navigation_title: "APM PHP Agent"
+navigation_title: APM PHP Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/php/current/troubleshooting.html
 applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: apm-agent
 ---
 
 # Troubleshoot APM PHP Agent [troubleshooting]

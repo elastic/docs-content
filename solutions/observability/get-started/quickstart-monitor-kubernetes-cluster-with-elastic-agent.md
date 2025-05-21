@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Quickstart: Monitor your Kubernetes cluster with {{agent}} [monitor-k8s-logs-metrics-with-elastic-agent]

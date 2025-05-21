@@ -1,11 +1,13 @@
 ---
+navigation_title: In ECK and Self Managed
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ip-filtering.html
 applies_to:
   deployment:
     self:
     eck:
-navigation_title: In ECK and Self Managed
+products:
+  - id: elasticsearch
 ---
 
 # Manage IP traffic filters in ECK and self-managed clusters
@@ -25,7 +27,7 @@ If a node’s IP address is on the denylist, the {{es}} {{security-features}} al
 
 The {{es}} {{security-features}} contain an access control feature that allows or rejects hosts, domains, or subnets. If the [{{operator-feature}}](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) is enabled, only operator users can update these settings.
 
-You configure IP filtering by specifying the `xpack.security.transport.filter.allow` and `xpack.security.transport.filter.deny` settings in `elasticsearch.yml`. Allow rules take precedence over the deny rules.
+You configure IP filtering by specifying the `xpack.security.transport.filter.allow` and `xpack.security.transport.filter.deny` settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). Allow rules take precedence over the deny rules.
 
 :::{important}
 Unless explicitly specified, `xpack.security.http.filter.*` and `xpack.security.remote_cluster.filter.*` settings default to the corresponding `xpack.security.transport.filter.*` setting’s value.
@@ -40,7 +42,7 @@ xpack.security.transport.filter.deny: "192.168.0.0/24"
 The `_all` keyword can be used to deny all connections that are not explicitly allowed.
 
 ```yaml
-xpack.security.transport.filter.allow: [ "192.168.0.1", "192.168.0.2", "192.168.0.3", "192.168.0.4" ]
+xpack.security.transport.filter.allow: [ "192.168.0.1", "192.168.0.2", "192.168.0.3", "192.168.0.4" ]
 xpack.security.transport.filter.deny: _all
 ```
 
@@ -61,7 +63,7 @@ xpack.security.transport.filter.deny: '*.google.com'
 
 ## Disable IP filtering
 
-Disabling IP filtering can slightly improve performance under some conditions. To disable IP filtering entirely, set the value of the `xpack.security.transport.filter.enabled` setting in the `elasticsearch.yml` configuration file to `false`.
+Disabling IP filtering can slightly improve performance under some conditions. To disable IP filtering entirely, set the value of the `xpack.security.transport.filter.enabled` setting in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to `false`.
 
 ```yaml
 xpack.security.transport.filter.enabled: false

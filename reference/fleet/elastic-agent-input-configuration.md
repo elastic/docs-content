@@ -1,7 +1,10 @@
 ---
-navigation_title: "Inputs"
+navigation_title: Inputs
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-input-configuration.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure inputs for standalone {{agent}}s [elastic-agent-input-configuration]

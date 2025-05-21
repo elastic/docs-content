@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-medium-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-medium-onprem.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Deploy a medium installation [ece-install-medium]

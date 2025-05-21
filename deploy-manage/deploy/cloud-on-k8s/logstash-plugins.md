@@ -1,16 +1,18 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-plugins.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-plugins.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Logstash plugins [k8s-logstash-plugins]
 
 The power of {{ls}} is in the plugins--[inputs](logstash-docs-md://lsr/input-plugins.md), [outputs](logstash-docs-md://lsr/output-plugins.md), [filters](logstash-docs-md://lsr/filter-plugins.md), and [codecs](logstash-docs-md://lsr/codec-plugins.md).
 
-In {{ls}} on ECK, you can use the same plugins that you use for other {{ls}} instances—​including Elastic-supported, community-supported, and custom plugins. However, you may have other factors to consider, such as how you configure your {{k8s}} resources, how you specify additional resources, and how you scale your {{ls}} installation.
+In {{ls}} on ECK, you can use the same plugins that you use for other {{ls}} instances—including Elastic-supported, community-supported, and custom plugins. However, you may have other factors to consider, such as how you configure your {{k8s}} resources, how you specify additional resources, and how you scale your {{ls}} installation.
 
 In this section, we’ll cover:
 
@@ -254,7 +256,7 @@ Some {{ls}} plugins need to write "checkpoints" to local storage in order to kee
 
 Not all external data sources have mechanisms to track state internally, and {{ls}} checkpoints can help persist data.
 
-In the plugin documentation, look for configurations that call for a `path` with a settings like `sincedb`, `sincedb_path`, `sequence_path`, or `last_run_metadata_path`. Check out specific plugin documentation in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current) for details.
+In the plugin documentation, look for configurations that call for a `path` with a settings like `sincedb`, `sincedb_path`, `sequence_path`, or `last_run_metadata_path`. Check out specific plugin documentation in the [Logstash Reference](logstash://reference/index.md) for details.
 
 ```yaml
 spec:

@@ -1,10 +1,12 @@
 ---
+navigation_title: Named entity recognition
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-ner-example.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Named entity recognition"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-ner-example.html
+products:
+  - id: machine-learning
 ---
 
 # Named entity recognition [ml-nlp-ner-example]
@@ -21,7 +23,7 @@ To follow along the process on this page, you must have:
 
 ## Deploy a NER model [ex-ner-deploy]
 
-You can use the [Eland client](https://www.elastic.co/guide/en/elasticsearch/client/eland/current) to install the {{nlp}} model. Use the prebuilt Docker image to run the Eland install model commands. Pull the latest image with:
+You can use the [Eland client](eland://reference/index.md) to install the {{nlp}} model. Use the prebuilt Docker image to run the Eland install model commands. Pull the latest image with:
 
 ```shell
 docker pull docker.elastic.co/eland/eland

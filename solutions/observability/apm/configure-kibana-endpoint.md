@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-setup-kibana-endpoint.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Configure the Kibana endpoint [apm-setup-kibana-endpoint]

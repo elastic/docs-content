@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Common problems [apm-common-problems]
@@ -18,7 +21,6 @@ This section describes common problems you might encounter when using APM Server
 * [Common SSL-related problems](#apm-common-ssl-problems)
 * [I/O Timeout](#apm-io-timeout)
 * [Field limit exceeded](#apm-field-limit-exceeded)
-* [Tail-based sampling causing high system memory usage and high disk IO](#apm-tail-based-sampling-memory-disk-io)
 
 **Applications UI**:
 
@@ -60,7 +62,7 @@ If you see requests coming through the APM Server but they are not accepted (a r
 
 **Instrumentation gaps**
 
-APM agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](https://www.elastic.co/guide/en/apm/agent/index.html) for details on what is automatically instrumented.
+APM agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -79,7 +81,7 @@ If no requests are logged, it might be that SSL is [misconfigured](#apm-ssl-clie
 
 If you see requests coming through the APM Server but they are not accepted (response code other than `202`), consider the response code to narrow down the possible causes (see sections below).
 
-Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](https://www.elastic.co/guide/en/apm/agent/index.html) for details on what is automatically instrumented.
+Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](/reference/apm-agents/index.md) for details on what is automatically instrumented.
 
 APM Server currently relies on {{es}} to create indices that do not exist. As a result, {{es}} must be configured to allow [automatic index creation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for APM indices.
 ::::::
@@ -180,14 +182,6 @@ In the agent logs, you won’t see a sign of failures as the APM server asynchro
 ```
 
 
-## Tail-based sampling causing high system memory usage and high disk IO [apm-tail-based-sampling-memory-disk-io]
-```yaml {applies_to}
-stack: all
-```
-
-Tail-based sampling requires minimal memory to run, and there should not be a noticeable increase in RSS memory usage. However, since tail-based sampling writes data to disk, it is possible to see a significant increase in OS page cache memory usage due to disk IO. If you see a drop in throughput and excessive disk activity after enabling tail-based sampling, ensure that there is enough memory headroom in the system for OS page cache to perform disk IO efficiently.
-
-
 ## Too many unique transaction names [troubleshooting-too-many-transactions]
 ```yaml {applies_to}
 stack: all
@@ -231,7 +225,7 @@ While this can happen with any APM agent, it typically occurs with the RUM agent
 
 The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](apm-agent-rum-js://reference/agent-api.md#observe) for more information.
 
-If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](https://www.elastic.co/guide/en/apm/agent) to adjust how you’re naming your transactions.
+If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](/reference/apm-agents/index.md) to adjust how you’re naming your transactions.
 
 
 ## Unknown route [troubleshooting-unknown-route]
@@ -245,7 +239,7 @@ Elastic APM agents come with built-in support for popular frameworks out-of-the-
 
 "Unknown route" indicates that the APM agent can’t determine what to name the request, perhaps because the technology you’re using isn’t supported, the agent has been installed incorrectly, or because something is happening to the request that the agent doesn’t understand.
 
-To resolve this, you’ll need to head over to the relevant [APM agent documentation](https://www.elastic.co/guide/en/apm/agent). Specifically, view the agent’s supported technologies page. You can also use the agent’s public API to manually set a name for the transaction.
+To resolve this, you’ll need to head over to the relevant [APM agent documentation](/reference/apm-agents/index.md). Specifically, view the agent’s supported technologies page. You can also use the agent’s public API to manually set a name for the transaction.
 
 
 ## Fields are not searchable [troubleshooting-fields-unsearchable]
@@ -257,7 +251,7 @@ In Elasticsearch, index templates are used to define settings and mappings that 
 
 As an example, some APM agents store cookie values in `http.request.cookies`. Since `http.request` has disabled dynamic indexing, and `http.request.cookies` is not declared in a custom mapping, the values in `http.request.cookies` are not indexed and thus not searchable.
 
-**Ensure an APM data view exists** As a first step, you should ensure the correct data view exists. In {{kib}}, go to **Stack Management** > **Data views**. You should see the APM data view—​the default is `traces-apm*,apm-*,logs-apm*,apm-*,metrics-apm*,apm-*`. If you don’t, the data view doesn’t exist. To fix this, navigate to the Applications UI in {{kib}} and select **Add data**. In the APM tutorial, click **Load Kibana objects** to create the APM data view.
+**Ensure an APM data view exists** As a first step, you should ensure the correct data view exists. In {{kib}}, go to **Stack Management** > **Data views**. You should see the APM data view—the default is `traces-apm*,apm-*,logs-apm*,apm-*,metrics-apm*,apm-*`. If you don’t, the data view doesn’t exist. To fix this, navigate to the Applications UI in {{kib}} and select **Add data**. In the APM tutorial, click **Load Kibana objects** to create the APM data view.
 
 **Ensure a field is searchable** There are two things you can do to if you’d like to ensure a field is searchable:
 

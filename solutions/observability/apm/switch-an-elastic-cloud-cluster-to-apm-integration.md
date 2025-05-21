@@ -1,9 +1,12 @@
 ---
-navigation_title: "Switch an {{ecloud}} cluster"
+navigation_title: Switch an {{ecloud}} cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps-ess.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Switch an Elastic Cloud cluster to the APM integration [apm-integration-upgrade-steps-ess]
@@ -53,4 +56,4 @@ Go to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs
 :alt: scale APM
 :::
 
-Congratulations — you now have the latest and greatest in Elastic APM!
+Congratulations — you now have the latest and greatest in Elastic APM!

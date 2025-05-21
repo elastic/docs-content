@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Nodes [ec-autoops-nodes-view]

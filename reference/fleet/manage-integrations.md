@@ -1,7 +1,10 @@
 ---
-navigation_title: "Manage integrations"
+navigation_title: Manage integrations
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/integrations.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Manage {{agent}} integrations [integrations]

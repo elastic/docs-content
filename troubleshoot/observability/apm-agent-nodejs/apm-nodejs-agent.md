@@ -1,11 +1,13 @@
 ---
-navigation_title: "APM Node.js Agent"
+navigation_title: APM Node.js Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/nodejs/current/troubleshooting.html
 applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: apm-agent
 ---
 
 # Troubleshoot APM Node.js Agent [troubleshooting]

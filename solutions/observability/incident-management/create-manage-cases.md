@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/manage-cases.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-a-new-case.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create and manage cases [observability-create-a-new-case]

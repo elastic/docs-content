@@ -1,10 +1,12 @@
 ---
 navigation_title: Deploy a {{kib}} instance
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-kibana.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-kibana.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy a {{kib}} instance [k8s-deploy-kibana]

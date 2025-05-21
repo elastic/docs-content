@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/set-inactivity-timeout.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Set inactivity timeout [set-inactivity-timeout]

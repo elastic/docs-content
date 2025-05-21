@@ -5,21 +5,22 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Upstream OpenTelemetry Collectors and language SDKs [apm-open-telemetry-direct]
-
-:::{include} _snippets/apm-server-vs-mis.md
-:::
-
-::::{note}
-This is one of several approaches you can use to integrate Elastic with OpenTelemetry. **To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).**
-::::
 
 The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means trace data and metrics collected from your applications and infrastructure can be sent directly to the {{stack}}.
 
 * Send data to Elastic from an upstream [OpenTelemetry Collector](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-connect-open-telemetry-collector)
 * Send data to Elastic from an upstream [OpenTelemetry language SDK](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel)
+
+::::{note}
+This is one of several approaches you can use to integrate Elastic with OpenTelemetry. To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).
+::::
 
 ## Send data from an upstream OpenTelemetry Collector [apm-connect-open-telemetry-collector]
 
@@ -253,14 +254,18 @@ When using a layer 7 (L7) proxy like AWS ALB, requests must be proxied in a way 
 
 Many L7 load balancers handle HTTP and gRPC traffic separately and rely on explicitly defined routes and service configurations to correctly proxy requests. Since APM Server serves both protocols on the same port, it may not be compatible with some L7 load balancers. For example, to work around this issue in [Ingress NGINX Controller for Kubernetes](https://github.com/kubernetes/ingress-nginx), either:
 
-* Use the `otlp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
-* Use the `otlphttp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
+* Use the `otlp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
+* Use the `otlphttp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
 
 The preferred approach is to deploy a L4 (TCP) load balancer (e.g. [NLB](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html) on AWS) in front of APM Server, which forwards raw TCP traffic transparently without protocol inspection.
 
 For more information on how to configure an AWS ALB to support gRPC, see this AWS blog post: [Application Load Balancer Support for End-to-End HTTP/2 and gRPC](https://aws.amazon.com/blogs/aws/new-application-load-balancer-support-for-end-to-end-http-2-and-grpc/).
 
 For more information on how APM Server services gRPC requests, see [Muxing gRPC and HTTP/1.1](https://github.com/elastic/apm-server/blob/main/dev_docs/otel.md#muxing-grpc-and-http11).
+
+
+:::{include} _snippets/apm-server-vs-mis.md
+:::
 
 ## Next steps [apm-open-telemetry-direct-next]
 

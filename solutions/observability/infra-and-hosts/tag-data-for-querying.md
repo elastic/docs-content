@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-tag-data-query.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Tag data for querying [profiling-tag-data-query]
