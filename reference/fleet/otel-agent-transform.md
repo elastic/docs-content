@@ -7,7 +7,7 @@ products:
   - id: edot-collector
 ---
 
-# [Transform an installed](https://www.elastic.co/docs/reference/fleet/otel-agent) {{agent}} to run as an EDOT Collector [otel-agent-transform]
+# Transform an installed {{agent}} to run as an EDOT Collector [otel-agent-transform]
 
 If you have a currently installed standalone {{agent}}, you can configure it to run as an [Elastic Distribution of OpenTelemetry Collector](otel-agent.md). This allows you to run {{agent}} both as a service and in an OTel Collector mode.
 
