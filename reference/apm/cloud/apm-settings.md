@@ -53,6 +53,10 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apm/configure-apm-server.md).
 ::::
 
+### Version 9.1+ [ec_version_9_1]
+
+`apm-server.sampling.tail.discard_on_write_failure`
+:   Defines the indexing behavior when trace events fail to be written to storage (e.g. when the storage limit is reached). When set to `false`, traces will be indexed, significantly increasing the indexing load. When set to `true`, traces will be discarded, there will be data loss potentially resulting in broken traces. The default is `false`. 
 
 ### Version 8.0+ [ec_version_8_0_3]
 
