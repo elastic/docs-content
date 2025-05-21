@@ -257,8 +257,8 @@ When using a layer 7 (L7) proxy like AWS ALB, requests must be proxied in a way 
 
 Many L7 load balancers handle HTTP and gRPC traffic separately and rely on explicitly defined routes and service configurations to correctly proxy requests. Since APM Server serves both protocols on the same port, it may not be compatible with some L7 load balancers. For example, to work around this issue in [Ingress NGINX Controller for Kubernetes](https://github.com/kubernetes/ingress-nginx), either:
 
-* Use the `otlp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
-* Use the `otlphttp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
+* Use the `otlp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
+* Use the `otlphttp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
 
 The preferred approach is to deploy a L4 (TCP) load balancer (e.g. [NLB](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html) on AWS) in front of APM Server, which forwards raw TCP traffic transparently without protocol inspection.
 

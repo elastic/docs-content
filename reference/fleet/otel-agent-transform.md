@@ -4,6 +4,7 @@ mapped_pages:
 products:
   - id: fleet
   - id: elastic-agent
+  - id: edot-collector
 ---
 
 # [Transform an installed](https://www.elastic.co/docs/reference/fleet/otel-agent) {{agent}} to run as an EDOT Collector [otel-agent-transform]
@@ -87,4 +88,4 @@ To change a running standalone {{agent}} to run as an OTel Collector:
              └─ status: StatusOK
     ```
 
-6.  Host logs and metrics are now being collected and ingested by the {{agent}} service running an OTel Collector instance. For further details about OpenTelemetry Collector components supported by {{agent}}, refer to [Components](opentelemetry://reference/opentelemetry/edot-collector/components.md).
+6.  Host logs and metrics are now being collected and ingested by the {{agent}} service running an OTel Collector instance. For further details about OpenTelemetry Collector components supported by {{agent}}, refer to [Components](opentelemetry://reference/edot-collector/components.md).
