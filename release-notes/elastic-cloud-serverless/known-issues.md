@@ -14,8 +14,6 @@ Known issues are significant defects or limitations that may impact your impleme
 % **Workaround** 
 % Workaround description.
 
-:::
-
 ## Active
 
 There are no active known issues. 
