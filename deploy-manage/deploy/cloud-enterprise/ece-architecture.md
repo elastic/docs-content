@@ -102,7 +102,7 @@ Each Elastic Cloud Enterprise service runs as a dedicated Docker container. Thes
 | `frc-directors-director`                            | Director      | Manages ZooKeeper and internal certificates; maintains Stunnel and quorum. |
 | `frc-proxies-proxyv2`                               | Proxy         | Routes user traffic; uses ZooKeeper to map deployment IDs to cluster nodes. |
 | `frc-proxies-route-server`                          | Proxy         | Manages internal routing and port mapping for cluster access. |
-| `frc-runners-runner`                                | All roles     | Deploys containers locally per host role definitions. |
+| `frc-runners-runner`                                | All roles     | Runs on every ECE host and provides a supervisor service to deploy and manage containers according to their defined roles, ensuring they are online and healthy. |
 | `frc-services-forwarders-services-forwarder`        | All roles     | Routes internal service data across the ECE platform. |
 | `frc-zookeeper-servers-zookeeper`                   | Director      | Consistent distributed store used to track ECE state and coordinate communication between services. |
 
