@@ -1,7 +1,10 @@
 ---
-navigation_title: "add_labels"
+navigation_title: add_labels
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_labels-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Add labels [add_labels-processor]

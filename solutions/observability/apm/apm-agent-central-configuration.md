@@ -1,9 +1,12 @@
 ---
-navigation_title: "Centrally configure APM agents in Kibana"
+navigation_title: Centrally configure APM agents in Kibana
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # APM agent central configuration [apm-agent-configuration]

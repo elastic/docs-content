@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/document-explorer.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/document-explorer.html
+products:
+  - id: kibana
 ---
 
 # Customize the Discover view [document-explorer]

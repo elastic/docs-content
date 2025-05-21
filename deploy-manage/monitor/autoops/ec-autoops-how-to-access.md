@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # How to access AutoOps [ec-autoops-how-to-access]

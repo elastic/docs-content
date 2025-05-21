@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-proxy-config.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # When to configure proxy settings [elastic-agent-proxy-config]

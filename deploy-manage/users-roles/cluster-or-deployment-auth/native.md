@@ -1,4 +1,5 @@
 ---
+navigation_title: Native
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/native-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
@@ -10,7 +11,10 @@ applies_to:
     ess: all
     ece: all
     eck: all
-navigation_title: "Native"
+products:
+  - id: elasticsearch
+  - id: cloud-kubernetes
+  - id: kibana
 ---
 
 # Native user authentication [native-realm]

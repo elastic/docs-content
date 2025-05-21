@@ -1,7 +1,10 @@
 ---
-navigation_title: "urldecode"
+navigation_title: urldecode
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/urldecode-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # URL Decode [urldecode-processor]

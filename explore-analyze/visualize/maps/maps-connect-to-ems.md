@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html
+products:
+  - id: kibana
 ---
 
 # Connect to Elastic Maps Service [maps-connect-to-ems]

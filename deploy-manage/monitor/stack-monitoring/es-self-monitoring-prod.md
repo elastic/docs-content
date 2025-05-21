@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # Monitoring in a production environment [monitoring-production]

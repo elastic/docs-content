@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-post-installation.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-post-installation.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Post-installation steps [ece-getting-started-post-installation]

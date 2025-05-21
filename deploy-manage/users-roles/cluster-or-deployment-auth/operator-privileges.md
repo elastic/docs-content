@@ -3,9 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/operator-privileges.html
 applies_to:
   deployment:
-    ess: 
-    ece: 
-    eck: 
+    ess:
+    ece:
+    eck:
+products:
+  - id: elasticsearch
 ---
 
 # Operator privileges [operator-privileges]

@@ -6,6 +6,8 @@ applies_to:
   deployment:
     ess: all
     ece: all
+products:
+  - id: cloud-hosted
 ---
 
 # JVM memory pressure indicator [ec-memory-pressure]

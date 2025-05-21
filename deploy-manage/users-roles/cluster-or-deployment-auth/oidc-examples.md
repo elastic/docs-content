@@ -1,13 +1,15 @@
 ---
+navigation_title: With Azure, Google, or Okta
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-oidc-op.html
-navigation_title: With Azure, Google, or Okta
 applies_to:
   deployment:
     self:
     ess:
     ece:
     eck:
+products:
+  - id: cloud-hosted
 ---
 
 # Set up OpenID Connect with Azure, Google, or Okta [ec-securing-clusters-oidc-op]

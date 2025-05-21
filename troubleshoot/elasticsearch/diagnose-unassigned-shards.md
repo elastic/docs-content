@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Unassigned shards
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnose-unassigned-shards.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 % marciw move to a new Unassigned shards subsection

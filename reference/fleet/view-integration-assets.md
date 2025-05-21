@@ -1,7 +1,10 @@
 ---
-navigation_title: "View integration assets"
+navigation_title: View integration assets
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/view-integration-assets.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # View {{agent}} integration assets [view-integration-assets]

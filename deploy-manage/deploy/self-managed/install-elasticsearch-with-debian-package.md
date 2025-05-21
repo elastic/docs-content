@@ -1,16 +1,18 @@
 ---
+navigation_title: Install with Debian package
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
-sub:
-  es-conf: "/etc/elasticsearch"
-  slash: "/"
-  distro: "Debian"
-  export: "export "
-  escape: "\\"
-navigation_title: Install with Debian package
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: /etc/elasticsearch
+  slash: /
+  distro: Debian
+  export: "export "
+  escape: \
 ---
 
 # Install {{es}} with a Debian package [deb]
