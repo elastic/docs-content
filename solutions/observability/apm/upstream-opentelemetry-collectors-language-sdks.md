@@ -19,7 +19,7 @@ The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means tr
 * Send data to Elastic from an upstream [OpenTelemetry language SDK](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel)
 
 ::::{note}
-This is one of several approaches you can use to integrate Elastic with OpenTelemetry. **To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).**
+This is one of several approaches you can use to integrate Elastic with OpenTelemetry. To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).
 ::::
 
 ## Send data from an upstream OpenTelemetry Collector [apm-connect-open-telemetry-collector]
