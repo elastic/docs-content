@@ -5,7 +5,7 @@ applies_to:
     eck: ga
     ess: ga
     self: ga
-    serverless: unavailable
+  serverless: unavailable
 ---
 
 # Remote clusters [remote-clusters]

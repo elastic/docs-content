@@ -1,11 +1,13 @@
 ---
-navigation_title: "SAML single sign-on (SSO)"
+navigation_title: SAML single sign-on (SSO)
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 applies_to:
   deployment:
     ess: all
   serverless: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
+products:
+  - id: cloud-hosted
 ---
 
 # Troubleshoot {{ecloud}} SSO [ec_troubleshoot_sso]

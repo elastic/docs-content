@@ -6,6 +6,9 @@ applies_to:
   deployment:
     ess:
     ece:
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Restore a snapshot across clusters [ece-restore-across-clusters]

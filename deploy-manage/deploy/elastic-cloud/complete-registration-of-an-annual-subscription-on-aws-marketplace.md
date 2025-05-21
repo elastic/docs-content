@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-marketplace-aws-prepaid-signup.html
 applies_to:
   deployment:
     ess: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-marketplace-aws-prepaid-signup.html
+products:
+  - id: cloud-hosted
 ---
 
 # Complete the registration of an annual subscription on AWS Marketplace [ec-marketplace-aws-prepaid-signup]

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/remote-elasticsearch-output.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Remote Elasticsearch output [remote-elasticsearch-output]

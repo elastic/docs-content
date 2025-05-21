@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Azure repository [repository-azure]
@@ -195,7 +197,7 @@ PUT _snapshot/my_backup
 
 ## Repository validation rules [repository-azure-validation]
 
-According to the [containers naming guide](https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers—​Blobs—​and-Metadata), a container name must be a valid DNS name, conforming to the following naming rules:
+According to the [containers naming guide](https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers—Blobs—and-Metadata), a container name must be a valid DNS name, conforming to the following naming rules:
 
 * Container names must start with a letter or number, and can contain only letters, numbers, and the dash (-) character.
 * Every dash (-) character must be immediately preceded and followed by a letter or number; consecutive dashes are not permitted in container names.

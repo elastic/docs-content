@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-powerbi.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-powerbi.html
+products:
+  - id: elasticsearch
 ---
 
 # Microsoft Power BI Desktop [sql-client-apps-powerbi]
@@ -24,7 +26,7 @@ Elastic does not endorse, promote or provide support for this application; for n
 
 ## Data loading [_data_loading]
 
-First, you’ll need to choose ODBC as the source to load data from. Once launched, click on the *Get Data* button (under *Home* tab), then on the *More…​* button at the bottom of the list:
+First, you’ll need to choose ODBC as the source to load data from. Once launched, click on the *Get Data* button (under *Home* tab), then on the *More…* button at the bottom of the list:
 
 $$$apps_pbi_fromodbc1$$$
 ![apps pbi fromodbc1](/explore-analyze/images/elasticsearch-reference-apps_pbi_fromodbc1.png "")

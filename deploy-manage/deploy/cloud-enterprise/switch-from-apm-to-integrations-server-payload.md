@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-integrations-server-apm-switch.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-integrations-server-apm-switch.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Switch from APM to Integrations Server payload [ece-integrations-server-apm-switch]

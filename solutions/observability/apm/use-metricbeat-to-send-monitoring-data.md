@@ -1,9 +1,12 @@
 ---
-navigation_title: "Use {{metricbeat}} collection"
+navigation_title: Use {{metricbeat}} collection
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-metricbeat-collection.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Use Metricbeat to send monitoring data [apm-monitoring-metricbeat-collection]

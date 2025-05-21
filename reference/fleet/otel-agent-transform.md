@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/otel-agent-transform.html
-  # That link will 404 until 8.18 is current
-  # (see https://www.elastic.co/guide/en/fleet/8.18/otel-agent-transform.html)
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Transform an installed {{agent}} to run as an OTel Collector [otel-agent-transform]

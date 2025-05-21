@@ -1,16 +1,20 @@
 ---
+navigation_title: Kerberos
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/cloud/current/ec-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/kerberos-realm.html
-navigation_title: Kerberos
 applies_to:
   deployment:
     self:
     ess:
     ece:
     eck:
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: elasticsearch
 ---
 
 # Kerberos authentication [kerberos-realm]

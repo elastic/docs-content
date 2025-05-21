@@ -1,9 +1,12 @@
 ---
-navigation_title: "Kafka"
+navigation_title: Kafka
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-kafka-output.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Configure the Kafka output [apm-kafka-output]

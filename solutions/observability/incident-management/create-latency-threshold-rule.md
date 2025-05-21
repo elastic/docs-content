@@ -1,9 +1,11 @@
 ---
+navigation_title: Latency threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-latency-threshold-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-latency-threshold-alert-rule.html
-
-navigation_title: "Latency threshold"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create a latency threshold rule [observability-create-latency-threshold-alert-rule]

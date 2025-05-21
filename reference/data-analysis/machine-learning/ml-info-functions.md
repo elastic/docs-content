@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-info-functions.html
+products:
+  - id: machine-learning
 ---
 
 # Information content functions [ml-info-functions]

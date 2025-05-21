@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kafka-output-settings.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Kafka output settings [kafka-output-settings]

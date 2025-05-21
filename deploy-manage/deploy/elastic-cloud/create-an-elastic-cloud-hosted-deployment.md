@@ -1,12 +1,14 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-create-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-prepare-production.html
   - https://www.elastic.co/guide/en/cloud/current/ec-configure-deployment-settings.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-configure-deployment-settings.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Create an {{ech}} deployment [ec-create-deployment]
@@ -23,7 +25,7 @@ You can also create a deployment using the [{{ecloud}} API](https://www.elastic.
     :alt: Log in to create a deployment
     :::
 
-1. Select a solution view for your deployment. Solution views define the navigation and set of features that will be first available in your deployment. You can change it later, or [create different spaces](/deploy-manage/manage-spaces.md) with different solution views within your deployment. 
+1. Select a solution view for your deployment. Solution views define the navigation and set of features that will be first available in your deployment. You can change it later, or [create different spaces](/deploy-manage/manage-spaces.md) with different solution views within your deployment.
 
     To learn more about what each solution offers, check [Elasticsearch](/solutions/search/get-started.md), [Observability](/solutions/observability/get-started.md), and [Security](/solutions/security/get-started.md).
 

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-selinux-in-enforcing-mode.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-to-selinux-in-enforcing-mode.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Migrate ECE on Podman hosts to SELinux enforce [ece-migrate-to-selinux-in-enforcing-mode]

@@ -1,10 +1,12 @@
 ---
-navigation_title: "Semantic search with ELSER (ingest pipelines)"
+navigation_title: Semantic search with ELSER (ingest pipelines)
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-elser.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 

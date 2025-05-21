@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/create-dashboard.html
+products:
+  - id: kibana
 ---
 
 # Create a dashboard [create-dashboard]

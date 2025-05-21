@@ -1,13 +1,13 @@
 ---
+navigation_title: Osquery manager integration
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-osquery-integration.html
-
-navigation_title: "Osquery manager integration"
-
 applies_to:
   stack: preview all
   serverless:
     security: preview all
+products:
+  - id: kibana
 ---
 
 # Manage the integration [manage-osquery-integration]

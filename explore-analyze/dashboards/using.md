@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
+products:
+  - id: kibana
 ---
 
 # Exploring dashboards [_use_and_filter_dashboards]

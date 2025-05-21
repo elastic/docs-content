@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-installed.html
+products:
+  - id: elastic-agent
 ---
 
 # Elastic Agent to Elasticsearch: Agent installed [agent-installed]
