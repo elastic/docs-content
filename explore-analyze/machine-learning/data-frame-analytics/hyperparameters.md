@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/hyperparameters.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/hyperparameters.html
+products:
+  - id: machine-learning
 ---
 
 # Hyperparameter optimization [hyperparameters]

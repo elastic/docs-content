@@ -1,10 +1,12 @@
 ---
 navigation_title: Configure index management
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-templates-index-management.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-templates-index-management.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure index management for deployment templates [ece-configure-templates-index-management]

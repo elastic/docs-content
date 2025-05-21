@@ -5,6 +5,8 @@ applies_to:
   stack: preview 9.0
   serverless:
     security: preview
+products:
+  - id: cloud-serverless
 ---
 
 # Identify antivirus software on your hosts [identify-third-party-av-products]
@@ -24,7 +26,10 @@ After you’ve installed {{elastic-defend}} on one or more hosts, you can use *A
 To use this feature, you need:
 
 * In serverless, a Security Analytics Complete [subscription](https://www.elastic.co/pricing/serverless-security).
-* The **Endpoint Insights: Read** or **Endpoint Insights: All** security sub-feature privilege.
+* The **Automatic Troubleshooting: Read** or **Automatic Troubleshooting: All** security [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+   :::{note}
+   In {{stack}} 9.0.0, this privilege is called **Endpoint Insights**.
+   :::
 * A working [LLM connector](../ai/set-up-connectors-for-large-language-models-llm.md) for AI Assistant.
 ::::
 

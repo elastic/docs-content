@@ -1,13 +1,18 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-alerting.html
   - https://www.elastic.co/guide/en/cloud/current/ec-watcher.html
   - https://www.elastic.co/guide/en/kibana/current/watcher-ui.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-differences.html#elasticsearch-differences-serverless-features-replaced
   - https://www.elastic.co/guide/en/kibana/current/secure-reporting.html#securing-reporting
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Watcher
@@ -28,7 +33,7 @@ All of these use-cases share a few key properties:
 
 * The relevant data or changes in data can be identified with a periodic Elasticsearch query.
 * The results of the query can be checked against a condition.
-* One or more actions are taken if the condition is true — an email is sent, a 3rd party system is notified, or the query results are stored.
+* One or more actions are taken if the condition is true — an email is sent, a 3rd party system is notified, or the query results are stored.
 
 ## How watches work [_how_watches_work]
 

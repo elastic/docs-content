@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/dynamic-input-configuration.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Variables and conditions in input configurations [dynamic-input-configuration]

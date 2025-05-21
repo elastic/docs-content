@@ -1,10 +1,12 @@
 ---
-navigation_title: "Index lifecycle"
+navigation_title: Index lifecycle
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 

@@ -1,10 +1,12 @@
 ---
-navigation_title: "Resources and logs"
+navigation_title: Resources and logs
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-troubleshooting-methods.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-troubleshooting-methods.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Troubleshoot ECK resources and logs  [k8s-troubleshooting-methods]

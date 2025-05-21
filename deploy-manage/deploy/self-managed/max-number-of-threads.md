@@ -1,10 +1,12 @@
 ---
+navigation_title: Increase max number of threads
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/max-number-of-threads.html
-navigation_title: Increase max number of threads
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Increase the maximum number of threads [max-number-of-threads]

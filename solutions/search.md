@@ -1,11 +1,15 @@
 ---
-applies_to:
-  stack:
-  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html
   - https://www.elastic.co/guide/en/serverless/current/what-is-elasticsearch-serverless.html
   - https://www.elastic.co/guide/en/kibana/current/search-space.html
+applies_to:
+  stack:
+  serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Elasticsearch

@@ -1,9 +1,12 @@
 ---
-navigation_title: "Command reference"
+navigation_title: Command reference
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-command-line-options.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # APM Server command reference [apm-command-line-options]

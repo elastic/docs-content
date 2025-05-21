@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/use-elasticsearch-for-time-series-data.html
+products:
+  - id: elasticsearch
 ---
 
 # Use case: use Elasticsearch to manage time series data [use-elasticsearch-for-time-series-data]

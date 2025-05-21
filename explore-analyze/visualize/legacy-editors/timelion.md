@@ -224,7 +224,7 @@ Move the legend to the north west position  with two columns, then click **Updat
 :screenshot:
 :::
 
- 
+ 
 
 
 ### Save and add the panel [save-the-timelion-panel]
@@ -347,7 +347,7 @@ Customize and format the visualization using the following functions, then click
 :screenshot:
 :::
 
- 
+ 
 
 
 ### Save and add the panel [save-the-network-timelion-panel]
@@ -532,7 +532,7 @@ Customize and format the visualization using the following functions, then click
 :screenshot:
 :::
 
- 
+ 
 
 
 ### Save and add the panel [save-the-outlier-timelion-panel]

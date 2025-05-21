@@ -1,13 +1,15 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-jvm-memory-pressure.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # High JVM memory pressure [high-jvm-memory-pressure]

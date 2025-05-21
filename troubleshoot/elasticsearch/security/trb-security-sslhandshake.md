@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: SSLHandshakeException
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-sslhandshake.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot SSLHandshakeException and failed node connections [trb-security-sslhandshake]

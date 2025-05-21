@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 navigation_title: "{{transforms-cap}} at scale"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-scale.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Transforms at scale [transform-scale]

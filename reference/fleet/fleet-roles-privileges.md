@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-roles-and-privileges.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Required roles and privileges [fleet-roles-and-privileges]

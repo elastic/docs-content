@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Kibana Fleet APIs [fleet-api-docs]
