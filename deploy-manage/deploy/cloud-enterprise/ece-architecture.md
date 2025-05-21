@@ -95,7 +95,7 @@ Each Elastic Cloud Enterprise service runs as a dedicated Docker container. Thes
 | `frc-allocators-allocator`                          | Allocator     | Manages container lifecycle for Elasticsearch and Kibana; reports host capacity to ZooKeeper. |
 | `frc-beats-runners-beats-runner`                    | All roles     | Collects metrics from local containers for monitoring and health checks. |
 | `frc-blueprints-blueprint`                          | Director      | Coordinates container startup by providing configuration data to runners based on their role and token. |
-| `frc-client-forwarders-client-forwarder`            | All roles     | Manages communication between nodes and ZooKeeper. |
+| `frc-client-forwarders-client-forwarder`            | All roles     | Manages communication between hosts and ZooKeeper. |
 | `frc-cloud-uis-cloud-ui`                            | Controller    | Web frontend for the ECE UI, served to users in the browser. |
 | `frc-constructors-constructor`                      | Controller    | Schedules changes via ZooKeeper; assigns clusters to allocators and balances zones. |
 | `frc-container-task-services-container-task-service`| Allocator     | Supports autoscaling and tracks feature usage. |
