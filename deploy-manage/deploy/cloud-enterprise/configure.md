@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-ece.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure ECE [ece-configuring-ece]

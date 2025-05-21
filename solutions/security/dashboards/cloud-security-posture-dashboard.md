@@ -10,6 +10,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Cloud Security Posture dashboard

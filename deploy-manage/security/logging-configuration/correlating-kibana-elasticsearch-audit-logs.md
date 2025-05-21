@@ -9,6 +9,8 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: kibana
 ---
 
 # Correlating audit events [xpack-security-ecs-audit-correlation]

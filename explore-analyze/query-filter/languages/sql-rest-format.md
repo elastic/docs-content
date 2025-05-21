@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-format.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-format.html
+products:
+  - id: elasticsearch
 ---
 
 # Response Data Formats [sql-rest-format]

@@ -1,7 +1,9 @@
 ---
-navigation_title: "Anomaly detection"
+navigation_title: Anomaly detection
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-aiops-generate-anomaly-alerts.html
+products:
+  - id: cloud-serverless
 ---
 
 
@@ -41,7 +43,7 @@ To create an anomaly detection rule:
 
 6. For the result type:
 
-    | Choose…​ | To generate an alert based on…​ |
+    | Choose… | To generate an alert based on… |
     | --- | --- |
     | **Bucket** | How unusual the anomaly was within the bucket of time |
     | **Record** | What individual anomalies are present in a time range |

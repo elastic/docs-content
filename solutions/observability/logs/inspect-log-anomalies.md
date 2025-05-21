@@ -3,11 +3,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-log-anomalies.html
 applies_to:
   stack: all
+products:
+  - id: observability
 ---
 
 # Inspect log anomalies [inspect-log-anomalies]
 
-When the {{anomaly-detect}} features of {{ml}} are enabled, you can use the **Logs Anomalies** page to detect and inspect log anomalies and the log partitions where the log anomalies occur. This means you can easily see anomalous behavior without significant human intervention — no more manually sampling log data, calculating rates, and determining if rates are expected.
+When the {{anomaly-detect}} features of {{ml}} are enabled, you can use the **Logs Anomalies** page to detect and inspect log anomalies and the log partitions where the log anomalies occur. This means you can easily see anomalous behavior without significant human intervention — no more manually sampling log data, calculating rates, and determining if rates are expected.
 
 **Anomalies** automatically highlight periods where the log rate is outside expected bounds and therefore may be anomalous. For example:
 

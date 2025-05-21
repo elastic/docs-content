@@ -1,10 +1,12 @@
 ---
-navigation_title: "Elastic Cloud Enterprise"
+navigation_title: Elastic Cloud Enterprise
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Troubleshoot Elastic Cloud Enterprise
@@ -24,4 +26,4 @@ The **Deployments** page in the Cloud UI provides several ways to find deploymen
     :alt: Add a filter
     :::
 
-    Looking for all deployments of a specific version, because you want to upgrade them? Easy. Or what about that deployments you noticed before lunch that seemed to be spending an awfully long time changing its configuration—​is it done? Just add a filter to find any ongoing configuration changes.
+    Looking for all deployments of a specific version, because you want to upgrade them? Easy. Or what about that deployments you noticed before lunch that seemed to be spending an awfully long time changing its configuration—is it done? Just add a filter to find any ongoing configuration changes.

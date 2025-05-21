@@ -1,11 +1,9 @@
 ---
-navigation_title: "Install on Windows"
+navigation_title: Windows
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/windows.html
-navigation_title: "Windows"
-applies_to:
-  deployment:
-    self:
+products:
+  - id: kibana
 ---
 
 # Install {{kib}} on Windows [windows]
@@ -62,7 +60,7 @@ By default, {{kib}} runs in the foreground, prints its logs to `STDOUT`, and can
 
 ## Directory layout of `.zip` archive [windows-layout]
 
-The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
+The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
 
 This is very convenient because you don’t have to create any directories to start using {{kib}}, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
 

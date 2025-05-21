@@ -1,4 +1,5 @@
 ---
+navigation_title: Heroku
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-getting-started.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-about.html
@@ -7,7 +8,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
-navigation_title: Heroku
+products:
+  - id: cloud-hosted
 ---
 
 # {{es}} Add-On for Heroku [ech-getting-started]

@@ -1,15 +1,16 @@
 ---
-navigation_title: "Enable on ECK"
+navigation_title: Enable on ECK
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_how_it_works.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_when_to_use_it.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_override_the_beats_pod_template.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.html
-
 applies_to:
   deployment:
     eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Enable stack monitoring on ECK deployments [k8s-stack-monitoring]

@@ -1,10 +1,12 @@
 ---
+navigation_title: Chain {{watcher-transform}}
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-chain.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Chain {{watcher-transform}}"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-chain.html
+products:
+  - id: elasticsearch
 ---
 
 # Chain payload transform [transform-chain]

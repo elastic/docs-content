@@ -1,5 +1,5 @@
 ---
-navigation_title: "MCP server"
+navigation_title: MCP server
 applies_to:
   stack:
   serverless:

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-health-status.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Elastic Agent health status [agent-health-status]

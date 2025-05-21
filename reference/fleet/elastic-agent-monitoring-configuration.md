@@ -1,7 +1,10 @@
 ---
-navigation_title: "Monitoring"
+navigation_title: Monitoring
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-monitoring-configuration.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure monitoring for standalone {{agent}}s [elastic-agent-monitoring-configuration]

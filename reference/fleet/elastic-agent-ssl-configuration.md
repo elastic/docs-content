@@ -1,7 +1,10 @@
 ---
-navigation_title: "SSL/TLS"
+navigation_title: SSL/TLS
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-ssl-configuration.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure SSL/TLS for standalone {{agent}}s [elastic-agent-ssl-configuration]

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Install Fleet-managed Elastic Agents [install-fleet-managed-elastic-agent]

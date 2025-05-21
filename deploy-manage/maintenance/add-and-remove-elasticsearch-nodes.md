@@ -3,9 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-elasticsearch-nodes.html
 applies_to:
   deployment:
-     self:
+    self:
+products:
+  - id: elasticsearch
 sub:
-  slash: "\\"
+  slash: \
 ---
 
 # Add and Remove {{es}} nodes [add-elasticsearch-nodes]

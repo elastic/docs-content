@@ -1,6 +1,6 @@
 ---
 applies_to:
-    serverless: preview
+  serverless: preview
 ---
 
 # Date processor [streams-date-processor]

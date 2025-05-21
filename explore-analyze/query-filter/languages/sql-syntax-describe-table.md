@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-syntax-describe-table.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-syntax-describe-table.html
+products:
+  - id: elasticsearch
 ---
 
 # DESCRIBE TABLE [sql-syntax-describe-table]

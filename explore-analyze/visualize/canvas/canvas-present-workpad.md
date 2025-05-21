@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/canvas-present-workpad.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/canvas-present-workpad.html
+products:
+  - id: kibana
 ---
 
 # Present your workpad [canvas-present-workpad]

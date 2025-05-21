@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Snapshot policy failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repeated-snapshot-failures.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Fix repeated snapshot policy failures [repeated-snapshot-failures]

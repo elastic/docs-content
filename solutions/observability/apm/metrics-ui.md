@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Metrics [apm-metrics]
