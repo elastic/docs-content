@@ -1,10 +1,12 @@
 ---
+navigation_title: Plan your analysis
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-plan.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Plan your analysis"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-plan.html
+products:
+  - id: machine-learning
 ---
 
 # Plan your analysis [ml-ad-plan]

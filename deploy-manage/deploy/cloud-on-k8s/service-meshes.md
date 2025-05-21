@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-meshes.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-meshes.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Service meshes [k8s-service-meshes]

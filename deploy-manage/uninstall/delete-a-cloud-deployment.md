@@ -1,4 +1,5 @@
 ---
+navigation_title: Delete an orchestrated deployment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-delete-deployment.html
@@ -6,13 +7,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-stop.html
-navigation_title: "Delete an orchestrated deployment"
 applies_to:
   deployment:
     ess:
     ece:
     eck:
   serverless:
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Delete an orchestrated deployment
@@ -117,7 +120,7 @@ To delete an {{es}} cluster created with {{eck}}:
    ```shell
    kubectl delete kibana <kibana-resource-name>
    ```
-   
+
 :::{{tip}}
 To fully uninstall {{eck}} from your cluster including all managed resources and the ECK operator, refer to the [](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md) guide.
 :::

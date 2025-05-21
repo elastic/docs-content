@@ -1,10 +1,12 @@
 ---
-navigation_title: "Search API and templates"
+navigation_title: Search API and templates
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-api.html
 applies_to:
   stack: beta
   serverless: beta
+products:
+  - id: elasticsearch
 ---
 
 

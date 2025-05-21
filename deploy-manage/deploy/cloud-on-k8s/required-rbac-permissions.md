@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-eck-permissions.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-eck-permissions.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Required RBAC permissions [k8s-eck-permissions]

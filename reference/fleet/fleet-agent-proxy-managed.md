@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-managed.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet managed Elastic Agent connectivity using a proxy server [fleet-agent-proxy-managed]

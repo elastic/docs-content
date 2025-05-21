@@ -1,10 +1,12 @@
 ---
 navigation_title: Elasticsearch user settings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-user-settings.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-user-settings.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Add {{es}} user settings [ece-add-user-settings]

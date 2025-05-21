@@ -10,6 +10,9 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
 ---
 
 # Run {{es}} in production [scalability]
@@ -60,7 +63,7 @@ The following topics, covered in other sections of the documentation, offer valu
   [Elastic integrations](https://www.elastic.co/integrations) provide default index lifecycle policies, and you can [build your own policies for your custom integrations](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md).
   ::::
 
-### Security and monitoring [security-and-monitoring] 
+### Security and monitoring [security-and-monitoring]
 
 As with any enterprise system, you need tools to secure, manage, and monitor your deployments. Security, monitoring, and administrative features that are integrated into {{es}} enable you to use [Kibana](/get-started/the-stack.md) as a control center for managing a cluster.
 

@@ -4,7 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs.html
 applies_to:
   deployment:
-    self: all  
+    self: all
+products:
+  - id: elasticsearch
 ---
 
 # Update TLS certificates [update-node-certs]

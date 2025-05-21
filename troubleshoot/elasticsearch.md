@@ -1,7 +1,9 @@
 ---
-navigation_title: "Elasticsearch"
+navigation_title: Elasticsearch
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting.html
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot {{es}} [troubleshooting]

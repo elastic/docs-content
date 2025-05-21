@@ -8,6 +8,9 @@ applies_to:
     eck:
     ess:
     self:
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Built-in roles [built-in-roles]

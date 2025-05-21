@@ -1,10 +1,12 @@
 ---
-navigation_title: "Minimal security setup"
+navigation_title: Minimal security setup
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-minimal-setup.html
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-minimal-setup.html
+products:
+  - id: elasticsearch
 ---
 
 % Scope: enable security, reset passwords and configure kibana to use authentication. Alternative approach to the automatic security configuration.

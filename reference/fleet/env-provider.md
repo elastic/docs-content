@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/env-provider.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Env Provider [env-provider]

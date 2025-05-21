@@ -7,6 +7,8 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # Tune approximate kNN search [tune-knn-search]

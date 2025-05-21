@@ -7,6 +7,8 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Create snapshots [snapshots-take-snapshot]

@@ -1,5 +1,5 @@
 ---
-navigation_title: "Detection rules"
+navigation_title: Detection rules
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ts-detection-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-ts-detection-rules.html
@@ -9,6 +9,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Troubleshoot detection rules [ts-detection-rules]

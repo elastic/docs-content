@@ -1,9 +1,11 @@
 ---
 mapped_pages:
-  -  https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-uninstalling-eck.html
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-uninstalling-eck.html
 applies_to:
   deployment:
     eck:
+products:
+  - id: cloud-kubernetes
 ---
 
 # Uninstall {{eck}} [k8s-uninstalling-eck]

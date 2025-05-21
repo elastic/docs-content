@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Not enough nodes to allocate shard replicas
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-tier-capacity.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Warning: Not enough nodes to allocate all shard replicas [increase-tier-capacity]

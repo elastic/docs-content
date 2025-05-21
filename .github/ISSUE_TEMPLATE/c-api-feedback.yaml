@@ -1,7 +1,7 @@
 name: "API docs feedback"
 description: Tell us about your experience with Elastic API documentation.
-title: "[Feedback]: "
-labels: ["feedback", "community"]
+title: "[API]: "
+labels: ["api-feedback"]
 body:
   - type: markdown
     attributes:
