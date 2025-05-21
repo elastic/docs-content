@@ -1,7 +1,10 @@
 ---
-navigation_title: "timestamp"
+navigation_title: timestamp
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/timestamp-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Timestamp [timestamp-processor]

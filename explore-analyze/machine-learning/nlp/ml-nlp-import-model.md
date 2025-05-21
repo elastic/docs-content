@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html
+products:
+  - id: machine-learning
 ---
 
 # Import the trained model and vocabulary [ml-nlp-import-model]

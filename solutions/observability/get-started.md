@@ -1,4 +1,5 @@
 ---
+navigation_title: Get started
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started.html
   - https://www.elastic.co/guide/en/observability/current/observability-get-started.html
@@ -6,7 +7,9 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Get started"
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Get started with Elastic Observability [observability-get-started]

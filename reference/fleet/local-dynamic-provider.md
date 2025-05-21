@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/local-dynamic-provider.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Local dynamic provider [local-dynamic-provider]

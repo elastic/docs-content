@@ -8,6 +8,8 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
 # Audit {{es}} search queries [auditing-search-queries]

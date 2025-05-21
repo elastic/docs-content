@@ -7,6 +7,8 @@ applies_to:
     ece:
     eck:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Controlling the user cache [controlling-user-cache]

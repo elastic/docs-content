@@ -1,16 +1,18 @@
 ---
+navigation_title: Install on Linux or MacOS
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
-sub:
-  es-conf: "$ES_HOME/config"
-  slash: "/"
-  export: "export "
-  escape: "\\"
-  auto: " -d"
-navigation_title: "Install on Linux or MacOS"
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: $ES_HOME/config
+  slash: /
+  export: "export "
+  escape: \
+  auto: " -d"
 ---
 
 # Install {{es}} from archive on Linux or MacOS [targz]
@@ -176,7 +178,7 @@ Because the initial node in the cluster is bootstrapped as a single-node cluster
 
 ## Directory layout of archives [targz-layout]
 
-The archive distributions are entirely self-contained. All files and directories are, by default, contained within `$ES_HOME` — the directory created when unpacking the archive.
+The archive distributions are entirely self-contained. All files and directories are, by default, contained within `$ES_HOME` — the directory created when unpacking the archive.
 
 This is convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} is as easy as removing the `$ES_HOME` directory. However, you should change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
 

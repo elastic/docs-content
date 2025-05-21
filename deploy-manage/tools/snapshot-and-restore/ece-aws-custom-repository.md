@@ -1,6 +1,5 @@
 ---
-navigation_title: "AWS S3 repository"
-
+navigation_title: AWS S3 repository
 applies_to:
   deployment:
     ece:

@@ -1,11 +1,13 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/xpack-security-secure-saved-objects.html
 applies_to:
   deployment:
     ece: ga
     eck: ga
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/xpack-security-secure-saved-objects.html
+products:
+  - id: kibana
 ---
 
 # Secure {{kib}} saved objects [xpack-security-secure-saved-objects]

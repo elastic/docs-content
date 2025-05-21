@@ -1,4 +1,5 @@
 ---
+navigation_title: Submit requests on behalf of other users
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html
 applies_to:
@@ -7,7 +8,8 @@ applies_to:
     eck:
     ess:
     self:
-navigation_title: Submit requests on behalf of other users
+products:
+  - id: elasticsearch
 ---
 
 # Submitting requests on behalf of other users [run-as-privilege]

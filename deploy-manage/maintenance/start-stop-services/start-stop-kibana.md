@@ -3,7 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/start-stop.html
 applies_to:
   deployment:
-     self:
+    self:
+products:
+  - id: kibana
 ---
 
 # Start and stop {{kib}} [start-stop]

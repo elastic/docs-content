@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-settings-changing-outputs.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Considerations when changing outputs [fleet-settings-changing-outputs]

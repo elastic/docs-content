@@ -1,9 +1,12 @@
 ---
-navigation_title: "Kubernetes"
+navigation_title: Kubernetes
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-k8s-attacher.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # APM K8S Attacher [apm-k8s-attacher]

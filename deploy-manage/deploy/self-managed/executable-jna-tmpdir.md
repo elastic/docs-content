@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Ensure JNA temporary directory permits executables [executable-jna-tmpdir]

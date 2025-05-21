@@ -1,7 +1,6 @@
 name: "Internal documentation request (Elastic employees)"
-description: Request a documentation change or enhancement for any supported release.
-title: "[REQUEST]: "
-labels: ["request", "Team:Docs"]
+description: An issue template for Elastic employees to request improvements, additions, or changes to the documentation.
+title: "[Internal]: "
 body:
   - type: markdown
     attributes:

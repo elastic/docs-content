@@ -1,10 +1,12 @@
 ---
+navigation_title: Text embedding and semantic search
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Text embedding and semantic search"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
+products:
+  - id: machine-learning
 ---
 
 # Text embedding and semantic search [ml-nlp-text-emb-vector-search-example]

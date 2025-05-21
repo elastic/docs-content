@@ -1,14 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-on-kubernetes-using-helm.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Install Elastic Agent on Kubernetes using Helm [install-on-kubernetes-using-helm]
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
 
 Starting with {{stack}} version 8.16, a Helm chart is available for installing {{agent}} in a Kubernetes environment. A Helm-based install offers several advantages, including simplified deployment, availability in marketplaces, streamlined ugrades, as well as quick rollbacks whenever they’re needed.
 

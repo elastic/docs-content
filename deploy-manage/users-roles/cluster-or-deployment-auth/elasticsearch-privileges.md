@@ -7,6 +7,8 @@ applies_to:
     eck:
     ess:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # {{es}} privileges [security-privileges]

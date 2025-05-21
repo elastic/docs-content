@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/structure-config-file.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Structure of a config file [structure-config-file]

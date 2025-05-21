@@ -1,10 +1,12 @@
 ---
-navigation_title: "Zookeeper quorum"
+navigation_title: Zookeeper quorum
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-zookeeper-quorum.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-zookeeper-quorum.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Rebuilding a broken Zookeeper quorum [ece-troubleshooting-zookeeper-quorum]

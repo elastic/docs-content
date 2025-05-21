@@ -1,10 +1,12 @@
 ---
 navigation_title: Integrations server support
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-ce-add-support-for-integrations-server.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-ce-add-support-for-integrations-server.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Updating custom templates to support Integrations Server [ece-ce-add-support-for-integrations-server]

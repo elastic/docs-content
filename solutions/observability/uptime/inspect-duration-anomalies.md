@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: deprecated 8.15.0
   serverless: unavailable
+products:
+  - id: observability
 ---
 
 # Inspect uptime duration anomalies [inspect-uptime-duration-anomalies]

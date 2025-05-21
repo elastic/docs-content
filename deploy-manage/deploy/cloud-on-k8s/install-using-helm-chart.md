@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Install using a Helm chart [k8s-install-helm]

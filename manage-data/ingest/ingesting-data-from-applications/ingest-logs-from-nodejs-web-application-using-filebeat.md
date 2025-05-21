@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-node-logs.html
 applies_to:
   stack: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Ingest logs from a Node.js web application using Filebeat

@@ -1,9 +1,12 @@
 ---
-navigation_title: "Advanced setup"
+navigation_title: Advanced setup
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-setting-up-and-running.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # APM Server advanced setup [apm-setting-up-and-running]

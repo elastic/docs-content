@@ -1,5 +1,5 @@
 ---
-navigation_title: "Elasticsearch Clients"
+navigation_title: Elasticsearch Clients
 ---
 
 # Elasticsearch Clients release notes [elasticsearch-clients-release-notes]

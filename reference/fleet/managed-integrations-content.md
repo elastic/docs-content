@@ -1,7 +1,10 @@
 ---
-navigation_title: "Managed integrations content"
+navigation_title: Managed integrations content
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/managed-integrations-content.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Managed integrations content [managed-integrations-content]

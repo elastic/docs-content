@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Quickstart: Collect data with AWS Firehose [collect-data-with-aws-firehose]
