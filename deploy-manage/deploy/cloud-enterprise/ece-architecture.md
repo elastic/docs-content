@@ -97,7 +97,7 @@ Each Elastic Cloud Enterprise service runs as a dedicated Docker container. Thes
 | `frc-blueprints-blueprint`                          | Director      | Coordinates container startup by providing configuration data to runners based on their role and token. |
 | `frc-client-forwarders-client-forwarder`            | All roles     | Manages communication between hosts and ZooKeeper. |
 | `frc-cloud-uis-cloud-ui`                            | Controller    | Web frontend for the ECE UI, served to users in the browser. |
-| `frc-constructors-constructor`                      | Controller    | Schedules changes via ZooKeeper; assigns clusters to allocators and balances zones. |
+| `frc-constructors-constructor`                      | Controller    | Schedules and coordinates deployment changes through ZooKeeper; assigns instances to allocators and balances zones. |
 | `frc-container-task-services-container-task-service`| Allocator     | Supports autoscaling and tracks feature usage. |
 | `frc-directors-director`                            | Director      | Manages ZooKeeper and internal certificates; maintains Stunnel and quorum. |
 | `frc-proxies-proxyv2`                               | Proxy         | Routes user traffic; uses ZooKeeper to map deployment IDs to cluster nodes. |
