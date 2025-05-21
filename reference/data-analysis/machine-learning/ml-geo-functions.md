@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-geo-functions.html
+products:
+  - id: machine-learning
 ---
 
 # Geographic functions [ml-geo-functions]

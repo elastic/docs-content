@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    eck:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-tls-certificates.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-custom-http-certificate.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-http-configuration.html
+applies_to:
+  deployment:
+    eck:
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage HTTP certificates on ECK

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-change-hardware-profile.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-change-hardware-profile.html
+products:
+  - id: cloud-hosted
 ---
 
 # Change hardware profiles [ec-change-hardware-profile]

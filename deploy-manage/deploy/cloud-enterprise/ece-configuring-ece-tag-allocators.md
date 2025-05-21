@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-tag-allocators.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-tag-allocators.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Tag your allocators [ece-configuring-ece-tag-allocators]

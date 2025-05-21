@@ -1,11 +1,13 @@
 ---
+navigation_title: Reindex from a self-managed cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-reindex.html
-applies:
+applies_to:
   serverless: unavailable
-  hosted: all
-  ece: unavailable
-navigation_title: Reindex from a self-managed cluster
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Migrate from a self-managed cluster with a self-signed certificate using remote reindex [ec-remote-reindex]
@@ -54,7 +56,7 @@ The `Destination` cluster should be the same or newer version as the `Source` cl
 ## Step 4: Enable bundle and add `reindex` settings on the `Destination` cluster. [ec-remote-reindex-step4]
 
 1. From your deployment page, go to the **Edit** page, click **Manage user settings and extensions**, select tab **Extensions** then enable `my_source_ca`.
-2. Switch tab to **User settings**, append the following settings to the `elasticsearch.yml`.  This step adds `source_server` to the `reindex.remote.whitelist`, points source CA bundle to be trusted by the `Destination` cluster using the setting `reindex.ssl.certificate_authorities`.
+2. Switch tab to **User settings**, append the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md).  This step adds `source_server` to the `reindex.remote.whitelist`, points source CA bundle to be trusted by the `Destination` cluster using the setting `reindex.ssl.certificate_authorities`.
 
     ```text
     reindex.remote.whitelist: ["$SOURCE_SERVER:$PORT"]

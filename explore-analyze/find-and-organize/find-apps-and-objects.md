@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/introduction.html#kibana-navigation-search
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/introduction.html#kibana-navigation-search
+products:
+  - id: kibana
 ---
 
 # Find apps and objects [kibana-navigation-search]
@@ -26,7 +28,7 @@ You can search for objects by type, name, and tag. To get the most from the sear
     | Search by type | `type:dashboard`<br>Available types: `application`, `canvas-workpad`, `dashboard`, `data-view`, `lens`, `maps`, `query`, `search`, `visualization` |
     | Search by tag | `tag:mytagname`<br>`tag:"tag name with spaces"` |
     | Search by type and name | `type:dashboard my_dashboard_title` |
-    | Advanced searches | `tag:(tagname1 or tagname2) my_dashboard_title`<br>`type:lens tag:(tagname1 or tagname2)`<br>`type:(dashboard or canvas-workpad) logs`<br> |
+    | Advanced searches | `tag:(tagname1 or tagname2) my_dashboard_title`<br>`type:lens tag:(tagname1 or tagname2)`<br>`type:(dashboard or canvas-workpad) logs`<br> |
 
 
 This example searches for visualizations with the tag `design` .

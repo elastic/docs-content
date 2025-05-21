@@ -6,6 +6,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]

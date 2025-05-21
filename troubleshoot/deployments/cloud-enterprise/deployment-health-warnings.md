@@ -1,10 +1,12 @@
 ---
-navigation_title: "Deployment health warnings"
+navigation_title: Deployment health warnings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deployment-no-op.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deployment-no-op.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Troubleshoot deployment health warnings [ece-deployment-no-op]
@@ -21,7 +23,7 @@ To resolve a single health warning, we recommended first running a _no-op_ (no o
 
 To run a no-op plan:
 
-1. [Log into the Cloud UI](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-login.html).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Select a deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.

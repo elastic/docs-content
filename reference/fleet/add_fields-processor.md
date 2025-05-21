@@ -1,7 +1,10 @@
 ---
-navigation_title: "add_fields"
+navigation_title: add_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add_fields-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Add fields [add_fields-processor]

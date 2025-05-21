@@ -4,7 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-other.html
 applies_to:
   deployment:
-     ess:
+    ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Restart an {{ech}} deployment

@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-no-kernel-version-check.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Override kernel version check [profiling-no-kernel-version-check]

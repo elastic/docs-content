@@ -1,10 +1,12 @@
 ---
-navigation_title: "Set up transport TLS"
+navigation_title: Set up transport TLS
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html
+products:
+  - id: elasticsearch
 ---
 
 % Scope: TLS certificates setup / multi-node cluster / manual configuration

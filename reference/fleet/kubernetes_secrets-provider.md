@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kubernetes_secrets-provider.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Kubernetes Secrets Provider [kubernetes_secrets-provider]

@@ -27,8 +27,9 @@ toc:
           - file: elastic-agent-container.md
           - file: running-on-kubernetes-managed-by-fleet.md
           - file: install-on-kubernetes-using-helm.md
-          - file: example-kubernetes-standalone-agent-helm.md
-          - file: example-kubernetes-fleet-managed-agent-helm.md
+            children:
+              - file: example-kubernetes-standalone-agent-helm.md
+              - file: example-kubernetes-fleet-managed-agent-helm.md
           - file: advanced-kubernetes-managed-by-fleet.md
           - file: configuring-kubernetes-metadata.md
           - file: running-on-gke-managed-by-fleet.md

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
+products:
+  - id: elastic-stack
 ---
 
 # Reference [api-reference]
@@ -56,7 +58,7 @@ Extend the functionality of your Elastic Stack with a variety of plugins. From a
 
 ## Query languages
 
-Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL, and Kibana Query Language. 
+Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL, and Kibana Query Language.
 
 **Learn more in [Query languages](elasticsearch://reference/query-languages/index.md)**
 

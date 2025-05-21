@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-secret-token.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Secret token [apm-secret-token]
@@ -28,7 +31,7 @@ Secret tokens are not applicable for the RUM Agent, as there is no way to preven
 % This should be checked and updated, it doesn't looks like it's there by default vv
 
 ::::{note}
-{{ech}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} Console under the deployment's **APM & Fleet** page.
+{{ech}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} Console under the deployment's **APM & Fleet** page.
 ::::
 
 :::::::{tab-set}
@@ -76,5 +79,5 @@ In addition to setting the secret token, ensure the configured server URL uses `
 * **.NET agent**: [`ServerUrl`](apm-agent-dotnet://reference/config-reporter.md#config-server-url)
 * **Node.js agent**: [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-url)
 * **PHP agent**: [`server_url`](apm-agent-php://reference/configuration-reference.md#config-server-url)
-* **Python agent**: [`server_url`](https://www.elastic.co/guide/en/apm/agent/python/current/)
+* **Python agent**: [`server_url`](apm-agent-python://reference/index.md)
 * **Ruby agent**: [`server_url`](apm-agent-ruby://reference/configuration.md#config-server-url)

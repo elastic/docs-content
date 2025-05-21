@@ -4,7 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-node-certs.html
 applies_to:
   deployment:
-    self: all  
+    self: all
+products:
+  - id: elasticsearch
 ---
 
 # Update TLS certificates [update-node-certs]
@@ -21,7 +23,7 @@ Regardless of the scenario, {{es}} monitors the SSL resources for updates by def
 
 Because {{es}} doesn’t reload the `elasticsearch.yml` configuration, you must use **the same file names** if you want to take advantage of automatic certificate and key reloading.
 
-If you need to update the `elasticsearch.yml` configuration or change passwords for keys or keystores that are stored in the [secure settings](secure-settings.md), then you must complete a [rolling restart](#use-rolling-restarts). {{es}} will not automatically reload changes for passwords stored in the secure settings.
+If you need to update the `elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration or change passwords for keys or keystores that are stored in the [secure settings](secure-settings.md), then you must complete a [rolling restart](#use-rolling-restarts). {{es}} will not automatically reload changes for passwords stored in the secure settings.
 
 ::::{admonition} Rolling restarts are preferred
 :name: use-rolling-restarts

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-managed-by-fleet.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Run Elastic Agent on Kubernetes managed by Fleet [running-on-kubernetes-managed-by-fleet]

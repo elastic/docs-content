@@ -1,11 +1,15 @@
 ---
-navigation_title: "Settings"
+navigation_title: Settings
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-settings-in-kibana.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-kibana-settings.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Applications UI settings [observability-apm-kibana-settings]
@@ -60,7 +64,7 @@ To change APM settings, select **Settings** from any **Applications** page. The 
 
 ## APM Indices [apm-indices-settings]
 
-The Applications UI uses data views to query APM indices. In non-serverless versions, change the default APM indices that the Applications UI queries by opening the Applications UI and select **Settings** → **Indices**. Index settings in the Applications UI take precedence over those set in `kibana.yml`.
+The Applications UI uses data views to query APM indices. In non-serverless versions, change the default APM indices that the Applications UI queries by opening the Applications UI and select **Settings** → **Indices**. Index settings in the Applications UI take precedence over those set in [`kibana.yml`](/deploy-manage/stack-settings.md).
 
 APM indices are {{kib}} Spaces-aware; Changes to APM index settings will only apply to the currently enabled space. See [Control access to APM data](/solutions/observability/apm/control-access-to-apm-data.md) for more information.
 

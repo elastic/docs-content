@@ -1,13 +1,15 @@
 ---
+navigation_title: Role mapping properties
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-mapping-resources.html
-navigation_title: "Role mapping properties"
 applies_to:
   deployment:
     ece:
     eck:
     ess:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Role mapping resource properties [role-mapping-resources]

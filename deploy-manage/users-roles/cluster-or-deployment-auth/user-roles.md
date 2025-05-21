@@ -7,6 +7,8 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # User roles [authorization]

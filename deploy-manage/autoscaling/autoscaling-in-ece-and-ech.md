@@ -1,4 +1,5 @@
 ---
+navigation_title: In ECE and ECH
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-autoscaling.html
   - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
@@ -12,7 +13,9 @@ applies_to:
   deployment:
     ece: ga
     ess: ga
-navigation_title: "In ECE and ECH"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Autoscaling in {{ece}} and {{ech}}

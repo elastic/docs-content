@@ -1,9 +1,12 @@
 ---
-navigation_title: "Secure access to the Applications UI"
+navigation_title: Secure access to the Applications UI
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-users.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Secure access to the Applications UI [apm-app-users]

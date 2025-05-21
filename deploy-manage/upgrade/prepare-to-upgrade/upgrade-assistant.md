@@ -7,7 +7,9 @@ applies_to:
     eck:
     ess:
     ece:
-    self:  
+    self:
+products:
+  - id: kibana
 ---
 
 # Upgrade Assistant [upgrade-assistant]

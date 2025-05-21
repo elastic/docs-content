@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-kubernetes-autodiscovery.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Kubernetes autodiscovery with Elastic Agent [elastic-agent-kubernetes-autodiscovery]

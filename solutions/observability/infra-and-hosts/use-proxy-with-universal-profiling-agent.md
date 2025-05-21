@@ -1,9 +1,11 @@
 ---
-navigation_title: "Use a proxy"
+navigation_title: Use a proxy
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-use-a-proxy.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 

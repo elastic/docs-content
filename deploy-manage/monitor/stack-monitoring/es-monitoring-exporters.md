@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self: deprecated 7.16.0
+products:
+  - id: elasticsearch
 ---
 
 
@@ -24,14 +26,14 @@ There are two types of exporters in {{es}}:
 
 Both exporters serve the same purpose: to set up the monitoring cluster and route monitoring data. However, they perform these tasks in very different ways. Even though things happen differently, both exporters are capable of sending all of the same data.
 
-Exporters are configurable at both the node and cluster level. Cluster-wide settings, which are updated with the [`_cluster/settings` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), take precedence over settings in the `elasticsearch.yml` file on each node. When you update an exporter, it is completely replaced by the updated version of the exporter.
+Exporters are configurable at both the node and cluster level. Cluster-wide settings, which are updated with the [`_cluster/settings` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), take precedence over settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file on each node. When you update an exporter, it is completely replaced by the updated version of the exporter.
 
 ::::{important}
 It is critical that all nodes share the same setup. Otherwise, monitoring data might be routed in different ways or to different places.
 ::::
 
 
-When the exporters route monitoring data into the monitoring cluster, they use `_bulk` indexing for optimal performance. All monitoring data is forwarded in bulk to all enabled exporters on the same node. From there, the exporters serialize the monitoring data and send a bulk request to the monitoring cluster. There is no queuing—​in memory or persisted to disk—​so any failure during the export results in the loss of that batch of monitoring data. This design limits the impact on {{es}} and the assumption is that the next pass will succeed.
+When the exporters route monitoring data into the monitoring cluster, they use `_bulk` indexing for optimal performance. All monitoring data is forwarded in bulk to all enabled exporters on the same node. From there, the exporters serialize the monitoring data and send a bulk request to the monitoring cluster. There is no queuing—in memory or persisted to disk—so any failure during the export results in the loss of that batch of monitoring data. This design limits the impact on {{es}} and the assumption is that the next pass will succeed.
 
 Routing monitoring data involves indexing it into the appropriate monitoring indices. Once the data is indexed, it exists in a monitoring index that, by default, is named with a daily index pattern. For {{es}} monitoring data, this is an index that matches `.monitoring-es-6-*`. From there, the data lives inside the monitoring cluster and must be curated or cleaned up as necessary. If you do not curate the monitoring data, it eventually fills up the nodes and the cluster might fail due to lack of disk space.
 

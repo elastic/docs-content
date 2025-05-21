@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apache.html
+products:
+  - id: machine-learning
 ---
 
 # Apache {{anomaly-detect}} configurations [ootb-ml-jobs-apache]

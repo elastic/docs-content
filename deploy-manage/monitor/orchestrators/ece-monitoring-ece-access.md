@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Platform monitoring deployment logs and metrics [ece-monitoring-ece-access]

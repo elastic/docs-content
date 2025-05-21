@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # View detection alert details [security-view-alert-details]
@@ -43,7 +46,7 @@ From the right panel, you can also:
 
     ::::{note}
     For {{stack}} users only:
-    If you’ve configured the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting in the `kibana.yml` file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
+    If you’ve configured the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting in the [`kibana.yml`](/deploy-manage/stack-settings.md) file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
     ::::
 
 

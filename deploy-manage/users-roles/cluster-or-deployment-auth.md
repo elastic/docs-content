@@ -1,5 +1,5 @@
 ---
-navigation_title: "Cluster or deployment"
+navigation_title: Cluster or deployment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters.html
   - https://www.elastic.co/guide/en/cloud/current/ec-security.html
@@ -9,6 +9,9 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Cluster or deployment users

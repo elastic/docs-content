@@ -1,15 +1,18 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Searches
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
   - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Troubleshoot searches [troubleshooting-searches]
@@ -232,7 +235,7 @@ For static settings, you need to create a new index with the correct settings. N
 
 ## Find slow queries [troubleshooting-slow-searches]
 
-[Slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) can help pinpoint slow performing search requests. Enabling [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the `elasticsearch.yml` configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
+[Slow logs](elasticsearch://reference/elasticsearch/index-settings/slow-log.md) can help pinpoint slow performing search requests. Enabling [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
 ```yaml
 xpack.security.audit.enabled: true

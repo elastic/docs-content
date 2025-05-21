@@ -1,11 +1,14 @@
 ---
-applies_to:
-  stack: all
-  serverless: all
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/fields-reference.html
   - https://www.elastic.co/guide/en/observability/current/metrics-app-fields.html
   - https://www.elastic.co/guide/en/serverless/current/observability-infrastructure-monitoring-required-fields.html
+applies_to:
+  stack: all
+  serverless: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Fields and object schemas [fields-reference]

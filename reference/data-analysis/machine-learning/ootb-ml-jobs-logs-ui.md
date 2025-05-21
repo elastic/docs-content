@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-logs-ui.html
+products:
+  - id: machine-learning
 ---
 
 # Logs {{anomaly-detect}} configurations [ootb-ml-jobs-logs-ui]

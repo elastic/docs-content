@@ -4,6 +4,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Custom filters [apm-custom-filter]
@@ -17,7 +20,7 @@ stack:
 serverless: unavailable
 ```
 
-Ingest pipelines specify a series of processors that transform data in a specific way. Transformation happens prior to indexing—​inflicting no performance overhead on the monitored application. Pipelines are a flexible and easy way to filter or obfuscate Elastic APM data.
+Ingest pipelines specify a series of processors that transform data in a specific way. Transformation happens prior to indexing—inflicting no performance overhead on the monitored application. Pipelines are a flexible and easy way to filter or obfuscate Elastic APM data.
 
 Features of this approach:
 

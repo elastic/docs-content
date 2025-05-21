@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-vpc.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # AWS PrivateLink traffic filters

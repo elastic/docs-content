@@ -5,7 +5,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery-prioritization.html
 applies_to:
   stack:
-  self:
+  deployment:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Index-level shard allocation
@@ -31,7 +34,7 @@ For example, you could use a custom node attribute to indicate a node’s perfor
 
 To filter based on a custom node attribute:
 
-1. Specify the filter characteristics with a custom node attribute in each node’s `elasticsearch.yml` configuration file. For example, if you have `small`, `medium`, and `big` nodes, you could add a `size` attribute to filter based on node size.
+1. Specify the filter characteristics with a custom node attribute in each node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file. For example, if you have `small`, `medium`, and `big` nodes, you could add a `size` attribute to filter based on node size.
 
     ```yaml
     node.attr.size: medium

@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Increase disk capacity
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-capacity-data-node.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Increase the disk capacity of data nodes [increase-capacity-data-node]

@@ -3,10 +3,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-access-agreement.html
 applies_to:
   deployment:
-    ess: 
-    ece: 
-    eck: 
-    self: 
+    ess:
+    ece:
+    eck:
+    self:
+products:
+  - id: kibana
 ---
 
 # {{kib}} access agreement [xpack-security-access-agreement]
@@ -21,7 +23,7 @@ You need to acknowledge the access agreement only once per session, and {{kib}} 
 ::::
 
 
-Here is an example of defining an access agreement in `kibana.yml`:
+Here is an example of defining an access agreement in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.security.authc.providers:

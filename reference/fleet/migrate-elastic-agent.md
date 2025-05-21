@@ -1,7 +1,10 @@
 ---
-navigation_title: "Migrate {{agent}}s"
+navigation_title: Migrate {{agent}}s
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/migrate-elastic-agent.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Migrate {{fleet}}-managed {{agent}}s from one cluster to another [migrate-elastic-agent]

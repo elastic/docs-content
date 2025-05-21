@@ -9,6 +9,9 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-serverless
+  - id: cloud-hosted
 ---
 
 # Manage your subscription
