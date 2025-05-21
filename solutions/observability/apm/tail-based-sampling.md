@@ -77,10 +77,10 @@ Time-to-live (TTL) for trace events stored in the local storage of the APM Serve
 
 Default: `30m` (30 minutes). (duration)
 
-|     |                     |
-| --- |---------------------|
+|     |     |
+| --- | --- |
 | APM Server binary | `sampling.tail.ttl` |
-| Fleet-managed | `TTL`               |
+| Fleet-managed (version 9.1+) | `TTL` |
 
 
 ### Policies [sampling-tail-policies-ref]
