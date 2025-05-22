@@ -59,7 +59,7 @@ When adaptive allocations are enabled:
 * Allocations scale down to a minimum of 0 when the load decreases, saving resources.
 
 ::::{warning}
-If you don't use adaptive allocations, the deployment will always use a fixed amount of resources, which can lead to unnecessary usage and higher costs.
+If you don't use adaptive allocations, the deployment will always consume a fixed amount of resources, regardless of actual usage. This can lead to inefficient resource utilization and higher costs.
 ::::
 
 For more information about adaptive allocations and resources, refer to the [trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) documentation.
