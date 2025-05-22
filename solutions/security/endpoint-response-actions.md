@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Endpoint response actions
@@ -34,7 +37,7 @@ Response actions are supported on all endpoint platforms (Linux, macOS, and Wind
 
 Launch the response console from any of the following places in {{elastic-sec}}:
 
-* **Endpoints** page → **Actions** menu (**…​**) → **Respond**
+* **Endpoints** page → **Actions** menu (**…**) → **Respond**
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
 * Host details page → **Respond**

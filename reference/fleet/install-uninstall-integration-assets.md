@@ -1,7 +1,10 @@
 ---
-navigation_title: "Install and uninstall integration assets"
+navigation_title: Install and uninstall integration assets
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-uninstall-integration-assets.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Install and uninstall {{agent}} integration assets [install-uninstall-integration-assets]

@@ -4,6 +4,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Metadata [apm-data-model-metadata]

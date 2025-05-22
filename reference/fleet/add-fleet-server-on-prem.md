@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Deploy on-premises and self-managed [add-fleet-server-on-prem]

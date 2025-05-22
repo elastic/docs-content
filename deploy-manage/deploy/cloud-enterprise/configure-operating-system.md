@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-os-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-os-onprem.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure your operating system [ece-configure-os]

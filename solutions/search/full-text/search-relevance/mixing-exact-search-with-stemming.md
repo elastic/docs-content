@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Mixing exact search with stemming [mixing-exact-search-with-stemming]

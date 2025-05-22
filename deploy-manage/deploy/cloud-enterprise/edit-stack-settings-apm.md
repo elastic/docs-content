@@ -1,10 +1,12 @@
 ---
 navigation_title: APM user settings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Add APM user settings [ece-manage-apm-settings]

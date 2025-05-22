@@ -1,11 +1,9 @@
 ---
-navigation_title: "Install with RPM"
+navigation_title: RPM
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rpm.html
-navigation_title: "RPM"
-applies_to:
-  deployment:
-    self:
+products:
+  - id: kibana
 ---
 
 # Install {{kib}} with RPM [rpm]

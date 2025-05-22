@@ -1,10 +1,12 @@
 ---
-navigation_title: "Collecting log data with {{filebeat}}"
+navigation_title: Collecting log data with {{filebeat}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-filebeat.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 

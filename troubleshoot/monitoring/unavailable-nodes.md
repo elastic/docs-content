@@ -1,8 +1,5 @@
 ---
-navigation_title: "Unavailable nodes"
-applies_to:
-  deployment:
-    ess: all
+navigation_title: Unavailable nodes
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_why_is_my_node_unavailable.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_why_is_my_node_unavailable.html
@@ -11,6 +8,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-jvm-heap-usage-exceed-allowed-threshold.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-cpu-usage-exceed-allowed-threshold.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-nodes-unavailable-missing.html
+applies_to:
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 % TODO fix the layout and formatting

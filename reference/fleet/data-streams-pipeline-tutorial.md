@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams-pipeline-tutorial.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Tutorial: Transform data with custom ingest pipelines [data-streams-pipeline-tutorial]

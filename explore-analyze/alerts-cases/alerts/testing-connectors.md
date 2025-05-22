@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/testing-connectors.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/testing-connectors.html
+products:
+  - id: kibana
 ---
 
 # Test connectors [testing-connectors]

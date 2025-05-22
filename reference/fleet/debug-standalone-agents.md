@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/debug-standalone-agents.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Debug standalone Elastic Agents [debug-standalone-agents]

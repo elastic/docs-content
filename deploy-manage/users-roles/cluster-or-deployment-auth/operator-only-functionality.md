@@ -6,6 +6,8 @@ applies_to:
     ess:
     ece:
     eck:
+products:
+  - id: elasticsearch
 ---
 
 # Operator-only functionality [operator-only-functionality]

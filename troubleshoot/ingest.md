@@ -1,5 +1,5 @@
 ---
-navigation_title: "Ingest tools"
+navigation_title: Ingest tools
 applies_to:
   stack: ga
   serverless: ga

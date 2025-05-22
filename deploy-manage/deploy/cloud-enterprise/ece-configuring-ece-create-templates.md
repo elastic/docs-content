@@ -1,10 +1,12 @@
 ---
 navigation_title: Create templates
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-create-templates.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-create-templates.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Create deployment templates [ece-configuring-ece-create-templates]

@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-gcp-marketplace-conversion.html
 applies_to:
   deployment:
     ess: ga
   serverless: unavailable
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-gcp-marketplace-conversion.html
+products:
+  - id: cloud-hosted
 ---
 
 # Create a monthly pay-as-you-go subscription on GCP Marketplace [ec-gcp-marketplace-conversion]

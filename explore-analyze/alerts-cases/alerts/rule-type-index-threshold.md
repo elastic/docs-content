@@ -1,10 +1,12 @@
 ---
+navigation_title: Index threshold
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/rule-type-index-threshold.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Index threshold"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/rule-type-index-threshold.html
+products:
+  - id: kibana
 ---
 
 # Index threshold [rule-type-index-threshold]

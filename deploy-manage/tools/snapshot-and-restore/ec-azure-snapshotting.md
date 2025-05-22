@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Configure a snapshot repository using Azure Blob storage [ec-azure-snapshotting]

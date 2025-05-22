@@ -9,6 +9,8 @@ applies_to:
     ess: ga
     ece: unavailable
   serverless: unavailable
+products:
+  - id: cloud-hosted
 ---
 
 # Migrate internal indices

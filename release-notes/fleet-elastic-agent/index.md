@@ -1,7 +1,10 @@
 ---
-navigation_title: "Fleet and Elastic Agent"
+navigation_title: Fleet and Elastic Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/release-notes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{fleet}} and {{agent}} release notes [fleet-elastic-agent-release-notes]
@@ -23,6 +26,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.0.1 [fleet-elastic-agent-9.0.1-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.1-features-enhancements]
+
+* Reuse shared integration policies when duplicating {{agent}} policies in {{fleet}} [#217872](https://github.com/elastic/kibana/pull/217872)
+* Update OTel components to v0.121.0 [#7686]({{agent-pull}}7686)
+* Add nopexporter to Elastic Distribution of OTel Collector (EDOT) Collector [#7788]({{agent-pull}}7788)
+* In {{agent}}, use `fullnameOverride` to set the fully qualified application names in the EDOT Kube-Stack Helm chart. [#7754]({{agent-pull}}7754) [#7381]({{agent-issue}}7381)
+
+### Fixes [fleet-elastic-agent-9.0.1-fixes]
+* In the EDOT Collector, fix Managed OTLP Helm config to use the current image repository [#7882]({{agent-pull}}7882)
 
 ## 9.0.0 [fleet-elastic-agent-900-release-notes]
 

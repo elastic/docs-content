@@ -1,5 +1,5 @@
 ---
-navigation_title: "Run {{kib}} in production"
+navigation_title: Run {{kib}} in production
 applies_to:
   deployment:
     ess: all

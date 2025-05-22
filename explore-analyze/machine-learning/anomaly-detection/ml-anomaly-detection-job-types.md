@@ -1,10 +1,12 @@
 ---
+navigation_title: Job types
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-anomaly-detection-job-types.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Job types"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-anomaly-detection-job-types.html
+products:
+  - id: machine-learning
 ---
 
 

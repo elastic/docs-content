@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state-overview.html
 applies_to:
   stack:
+products:
+  - id: elasticsearch
 ---
 
 # Cluster state [cluster-state-overview]

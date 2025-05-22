@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: SAML
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-saml.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Common SAML issues [trb-security-saml]
