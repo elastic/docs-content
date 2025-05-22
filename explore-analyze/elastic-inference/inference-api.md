@@ -9,15 +9,18 @@ products:
   - id: kibana
 ---
 
-# Integrate with third-party services
+# Inference integrations
 
-{{es}} provides a machine learning [inference API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-get-1) to create and manage inference endpoints to integrate with machine learning models provide by popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
+{{es}} provides a machine learning [inference API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-get-1) to create and manage inference endpoints that integrate with services such as Elasticsearch (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
-Learn how to integrate with specific services in the subpages of this section.
+You can create a new inference endpoint:
+
+- using the [Create an inference endpoint API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-put-1)
+- through the [Inference endpoints UI](#add-inference-endpoints).
 
 ## Inference endpoints UI [inference-endpoints]
 
-You can also manage inference endpoints using the UI.
+You can manage inference endpoints using the UI.
 
 The **Inference endpoints** page provides an interface for managing inference endpoints.
 
@@ -33,7 +36,7 @@ Available actions:
 * Copy the inference endpoint ID
 * Delete endpoints
 
-## Add new inference endpoint
+## Add new inference endpoint [add-inference-endpoints]
 
 To add a new interference endpoint using the UI:
 
@@ -42,18 +45,24 @@ To add a new interference endpoint using the UI:
 1. Provide the required configuration details.
 1. Select **Save** to create the endpoint.
 
+If your inference endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to reduce resource usage and save costs.
+
+
 ## Adaptive allocations [adaptive-allocations]
 
 Adaptive allocations allow inference services to dynamically adjust the number of model allocations based on the current load.
+This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for third-party services like Alibaba Cloud, Cohere, or OpenAI.
 
 When adaptive allocations are enabled:
 
 * The number of allocations scales up automatically when the load increases.
 * Allocations scale down to a minimum of 0 when the load decreases, saving resources.
 
-For more information about adaptive allocations and resources, refer to the trained model autoscaling documentation.
+::::{warning}
+If you don't use adaptive allocations, the deployment will always use a fixed amount of resources, which can lead to unnecessary usage and higher costs.
+::::
 
-% TO DO: Add a link to trained model autoscaling when the page is available.%
+For more information about adaptive allocations and resources, refer to the [trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling) documentation.
 
 ## Default {{infer}} endpoints [default-enpoints]
 
