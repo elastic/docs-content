@@ -77,6 +77,9 @@ Define the relevant secure settings in each node’s keystore before starting th
 
 The following list contains the available client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
+`region`
+:   Specifies the region to use. When configured this value will determine the signing region and regional endpoint to use, unless the endpoint is overridden via the `endpoint` setting. If not specified, we will attempt to determine the region automatically using the SDK.
+
 `access_key` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   An S3 access key. If set, the `secret_key` setting must also be specified. If unset, the client will use the instance or container role instead.
 
@@ -126,8 +129,6 @@ In versions `7.0`, `7.1`, `7.2` and `7.3` all bucket operations used the [now-de
 `disable_chunked_encoding`
 :   Whether chunked encoding should be disabled or not. If `false`, chunked encoding is enabled and will be used where appropriate. If `true`, chunked encoding is disabled and will not be used, which may mean that snapshot operations consume more resources and take longer to complete. It should only be set to `true` if you are using a storage service that does not support chunked encoding. See the [AWS Java SDK documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#disableChunkedEncoding--) for details. Defaults to `false`.
 
-`region`
-:   Specifies the signing region to use. If not specified, the SDK will attempt to guess the signing region to use, but it is recommended to configure this explicitly. Defaults to empty string which means that the SDK will try to automatically determine the correct signing region.
 
 ## Repository settings [repository-s3-repository]
 
