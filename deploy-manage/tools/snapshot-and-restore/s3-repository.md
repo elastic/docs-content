@@ -92,6 +92,9 @@ The following list contains the available client settings. Those that must be st
 `endpoint`
 :   The S3 service endpoint to connect to. This defaults to the regional endpoint corresponding to the configured `region`, but the [AWS documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) lists alternative S3 endpoints. If you are using an [S3-compatible service](#repository-s3-compatible-services) then you should set this to the service’s endpoint. The endpoint should specify the protocol and host name, e.g. `https://s3.ap-southeast-4.amazonaws.com`, `http://minio.local:9000`. When using HTTPS, this repository type validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the root certificate authority is in this truststore using the JVM’s `keytool` tool. If you have a custom certificate authority for your S3 repository and you use the {{es}} [bundled JDK](../../deploy/self-managed/installing-elasticsearch.md#jvm-version), then you will need to reinstall your CA certificate every time you upgrade {{es}}.
 
+`protocol`
+:    The protocol to use to connect to S3. Valid values are either `http` or `https`. Defaults to `https`. Note that this setting is deprecated since 8.19 and is only used if `endpoint` is set to a URL that does not include a scheme. Users should migrate to including the scheme in the `endpoint` setting. 
+
 `proxy.host`
 :   The host name of a proxy to connect to S3 through.
 
