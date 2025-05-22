@@ -68,7 +68,7 @@ You can individually modify each host isolation exception and change the policie
 
 To edit a host isolation exception:
 
-1. Click the actions menu (**…​**) for the exception you want to edit, then select **Edit Exception**.
+1. Click the actions menu (**…**) for the exception you want to edit, then select **Edit Exception**.
 2. Modify details as needed.
 3. Click **Save**. The newly modified exception appears at the top of the list.
 
@@ -79,5 +79,5 @@ You can delete a host isolation exception, which removes it entirely from all {{
 
 To delete a host isolation exception:
 
-1. Click the actions menu (**…​**) on the exception you want to delete, then select **Delete Exception**.
+1. Click the actions menu (**…**) on the exception you want to delete, then select **Delete Exception**.
 2. On the dialog that opens, verify that you are removing the correct host isolation exception, then click **Delete**. A confirmation message is displayed.

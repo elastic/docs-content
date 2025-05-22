@@ -28,7 +28,7 @@ You need to have a compatible visualization on **Dashboard** to create an {{anom
 ::::
 
 1. Go to **Analytics > Dashboard** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). Select a dashboard with a compatible visualization.
-2. Open the **Options (…​) menu** for the panel, then select **More**.
+2. Open the **Options (…) menu** for the panel, then select **More**.
 3. Select **Create {{anomaly-job}}**. The option is only displayed if the visualization can be converted to an {{anomaly-job}} configuration.
 4. (Optional) Select the layer from which the {{anomaly-job}} is created.
 

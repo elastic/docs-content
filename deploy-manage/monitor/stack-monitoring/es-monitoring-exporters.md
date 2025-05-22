@@ -33,7 +33,7 @@ It is critical that all nodes share the same setup. Otherwise, monitoring data m
 ::::
 
 
-When the exporters route monitoring data into the monitoring cluster, they use `_bulk` indexing for optimal performance. All monitoring data is forwarded in bulk to all enabled exporters on the same node. From there, the exporters serialize the monitoring data and send a bulk request to the monitoring cluster. There is no queuing—​in memory or persisted to disk—​so any failure during the export results in the loss of that batch of monitoring data. This design limits the impact on {{es}} and the assumption is that the next pass will succeed.
+When the exporters route monitoring data into the monitoring cluster, they use `_bulk` indexing for optimal performance. All monitoring data is forwarded in bulk to all enabled exporters on the same node. From there, the exporters serialize the monitoring data and send a bulk request to the monitoring cluster. There is no queuing—in memory or persisted to disk—so any failure during the export results in the loss of that batch of monitoring data. This design limits the impact on {{es}} and the assumption is that the next pass will succeed.
 
 Routing monitoring data involves indexing it into the appropriate monitoring indices. Once the data is indexed, it exists in a monitoring index that, by default, is named with a daily index pattern. For {{es}} monitoring data, this is an index that matches `.monitoring-es-6-*`. From there, the data lives inside the monitoring cluster and must be curated or cleaned up as necessary. If you do not curate the monitoring data, it eventually fills up the nodes and the cluster might fail due to lack of disk space.
 

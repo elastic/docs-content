@@ -10,7 +10,7 @@ products:
 
 # Real user monitoring (User Experience) [user-experience]
 
-{{user-experience}} provides a way to quantify and analyze the perceived performance of your web application. Unlike testing environments, {{user-experience}} data reflects real-world user experiences. Drill down further by looking at data by URL, operating system, browser, and location — all of which can impact how your application performs on end-user machines.
+{{user-experience}} provides a way to quantify and analyze the perceived performance of your web application. Unlike testing environments, {{user-experience}} data reflects real-world user experiences. Drill down further by looking at data by URL, operating system, browser, and location — all of which can impact how your application performs on end-user machines.
 
 Powered by the APM Real user monitoring (RUM) agent, all it takes is a few lines of code to begin surfacing key user experience metrics.
 
@@ -21,7 +21,7 @@ Powered by the APM Real user monitoring (RUM) agent, all it takes is a few lines
 
 ## Why is {{user-experience}} important? [why-user-experience]
 
-Search engines are placing increasing importance on user experience when organically ranking websites. Elastic makes it easy to view your website data in the context of Google Core Web Vitals — metrics that score three key areas of user experience: loading performance, visual stability, and interactivity. These Core Web Vitals are set to become the main performance measurement in Google ranking factors. If you’re a content-based site that wants to appear in the “Top Stories” section of Google search results, you must have good Core Web Vitals.
+Search engines are placing increasing importance on user experience when organically ranking websites. Elastic makes it easy to view your website data in the context of Google Core Web Vitals — metrics that score three key areas of user experience: loading performance, visual stability, and interactivity. These Core Web Vitals are set to become the main performance measurement in Google ranking factors. If you’re a content-based site that wants to appear in the “Top Stories” section of Google search results, you must have good Core Web Vitals.
 
 ## How does {{user-experience}} work? [how-user-experience-works]
 
@@ -87,12 +87,12 @@ Interaction to next paint (INP)
 ::::{note}
 Previous {{kib}} versions included the metric [First input delay (FID)](https://web.dev/fid/) in the User Experience app. Starting with version 8.12, FID was replaced with *Interaction to next paint (INP)*. The APM RUM agent started collecting INP data in version 5.16.0. If you use an earlier version of the RUM agent with {{kib}} version 8.12 or later, it will *not* capture INP data and there will be *no data* to show in the User Experience app:
 
-|  | **Kibana version ≥ 8.12** | **Kibana version < 8.12** |
+|  | **Kibana version ≥ 8.12** | **Kibana version < 8.12** |
 | --- | --- | --- |
-| **RUM agent version ≥ 5.16.0** | INP data will be visible. | FID data will be visible. |
-| **RUM agent version < 5.16.0** | The INP section will be empty. | FID data will be visible. |
+| **RUM agent version ≥ 5.16.0** | INP data will be visible. | FID data will be visible. |
+| **RUM agent version < 5.16.0** | The INP section will be empty. | FID data will be visible. |
 
-RUM agent version ≥ 5.16.0 will continue to collect FID metrics so, while FID metrics are not shown in the User Experience app in {{kib}} versions 8.12 and later, you can choose to visualize FID metrics in a [custom dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md) or using [Lens](/explore-analyze/visualize/lens.md).
+RUM agent version ≥ 5.16.0 will continue to collect FID metrics so, while FID metrics are not shown in the User Experience app in {{kib}} versions 8.12 and later, you can choose to visualize FID metrics in a [custom dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md) or using [Lens](/explore-analyze/visualize/lens.md).
 
 ::::
 
@@ -105,9 +105,9 @@ Cumulative layout shift (CLS)
 
 ### Load/view distribution [user-experience-distribution]
 
-Operating system, browser family, and geographic location can all have a massive impact on how visitors experience your website. This data can help you understand when and where your users are visiting from, and can help you prioritize optimizations — for example, prioritizing improvements for the most popular browsers visiting your site.
+Operating system, browser family, and geographic location can all have a massive impact on how visitors experience your website. This data can help you understand when and where your users are visiting from, and can help you prioritize optimizations — for example, prioritizing improvements for the most popular browsers visiting your site.
 
-Don’t forget, this data also influences search engine page rankings and placement in top stories for content sites — without requiring the use of AMP.
+Don’t forget, this data also influences search engine page rankings and placement in top stories for content sites — without requiring the use of AMP.
 
 :::{image} /solutions/images/observability-visitor-breakdown.png
 :alt: {{user-experience}} visitor breakdown

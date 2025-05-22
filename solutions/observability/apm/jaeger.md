@@ -132,4 +132,4 @@ There are some limitations and differences between Elastic APM and Jaeger that y
 * Elastic APM’s [Learn about data types](/solutions/observability/apm/data-types.md) is different than Jaegers. For Jaeger trace data to work with Elastic’s data model, we rely on spans being tagged with the appropriate [`span.kind`](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
 
     * Server Jaeger spans are mapped to Elastic APM [Transactions](/solutions/observability/apm/transactions.md).
-    * Client Jaeger spans are mapped to Elastic APM [Spans](/solutions/observability/apm/spans.md) — unless the span is the root, in which case it is mapped to an Elastic APM [Transactions](/solutions/observability/apm/transactions.md).
+    * Client Jaeger spans are mapped to Elastic APM [Spans](/solutions/observability/apm/spans.md) — unless the span is the root, in which case it is mapped to an Elastic APM [Transactions](/solutions/observability/apm/transactions.md).

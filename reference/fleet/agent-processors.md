@@ -93,7 +93,7 @@ Processors have the following limitations.
 
 The {{stack}} provides several options for processing data collected by {{agent}}. The option you choose depends on what you need to do:
 
-| If you need to…​ | Do this…​ |
+| If you need to… | Do this… |
 | --- | --- |
 | Sanitize or enrich raw data at the source | Use an {{agent}} processor |
 | Convert data to ECS, normalize field data, or enrich incoming data | Use [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md#pipelines-for-fleet-elastic-agent) |

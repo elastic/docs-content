@@ -40,7 +40,7 @@ There are several ways to drill down:
 You can start an investigation using the map, and the map refreshes to show related data when you run a query or update the time range.
 
 ::::{tip}
-To add and remove layers, click on the **Options** menu (**…​**) in the top right corner of the map.
+To add and remove layers, click on the **Options** menu (**…**) in the top right corner of the map.
 ::::
 
 
