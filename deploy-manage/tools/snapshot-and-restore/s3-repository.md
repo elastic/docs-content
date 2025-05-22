@@ -129,10 +129,6 @@ In versions `7.0`, `7.1`, `7.2` and `7.3` all bucket operations used the [now-de
 `region`
 :   Specifies the signing region to use. If not specified, the SDK will attempt to guess the signing region to use, but it is recommended to configure this explicitly. Defaults to empty string which means that the SDK will try to automatically determine the correct signing region.
 
-`signer_override`
-:   Allows specifying the name of the signature algorithm to use for signing requests by the S3 client. Specifying this setting should not be necessary for most use cases. It should be considered an expert level setting to support S3-compatible APIs that do not support the signing algorithm that the SDK automatically determines for them. See the [AWS Java SDK documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html#setSignerOverride-java.lang.String-) for details. Defaults to empty string which means that no signing algorithm override will be used.
-
-
 ## Repository settings [repository-s3-repository]
 
 The `s3` repository type supports a number of settings to customize how data is stored in S3. These can be specified when creating the repository. For example:
