@@ -11,9 +11,9 @@ products:
 
 # Example: Install standalone Elastic Agent on Kubernetes using Helm [example-kubernetes-standalone-agent-helm]
 
-This example demonstrates how to install standalone {{agent}} on a {{k8s}} system using a Helm chart, collect {{k8s}} metrics and logs, and send them to an {{es}} cluster in {{ecloud}} for visualization in {{kib}}.
+This example shows how to install the standalone {{agent}} on a {{k8s}} system using a Helm chart, collect {{k8s}} metrics and logs, and send them to an {{es}} cluster in {{ecloud}} for visualization in {{kib}}.
 
-Although this tutorial uses an {{ech}} deployment, the same steps can be adapted for other deployment types. For self-managed, {{eck}}, or {{ece}} deployments, you might need to provide the {{es}} CA certificate during the {{agent}} installation, as outlined below.
+Although this tutorial uses an {{ech}} deployment, you can adapt the same steps for other deployment types. For self-managed, {{eck}}, or {{ece}} deployments, you might need to provide the {{es}} CA certificate during the {{agent}} installation, as outlined in the following sections.
 
 For an overview of the {{agent}} Helm chart and its benefits, refer to [Install {{agent}} on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md).
 
@@ -42,7 +42,7 @@ This example uses an API key for authentication and authorization, but the Helm 
 
 ## Installation overview
 
-The installation and configuration steps shown in this example deploys the following components to monitor your Kubernetes cluster:
+The installation and configuration steps shown in this example deploy the following components to monitor your Kubernetes cluster:
 
 * A default installation of [`kube-state-metrics` (KSM)](https://github.com/kubernetes/kube-state-metrics), configured as a dependency of the Helm chart. KSM is required by the Kubernetes integration to collect cluster-level metrics.
 
