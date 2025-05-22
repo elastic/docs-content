@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Using logsdb index mode with Elastic Security [detections-logsdb-index-mode-impact]

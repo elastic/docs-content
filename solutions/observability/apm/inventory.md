@@ -1,11 +1,15 @@
 ---
-navigation_title: "Inventory"
+navigation_title: Inventory
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inventory.html
   - https://www.elastic.co/guide/en/serverless/current/observability-inventory.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Inventory [inventory]

@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: RHEL
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-onprem.html
-navigation_title: RHEL
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]
@@ -139,7 +141,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 

@@ -1,7 +1,10 @@
 ---
-navigation_title: "Edit or delete an integration policy"
+navigation_title: Edit or delete an integration policy
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/edit-or-delete-integration-policy.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Edit or delete an {{agent}} integration policy [edit-or-delete-integration-policy]

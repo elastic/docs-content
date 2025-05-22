@@ -1,10 +1,12 @@
 ---
-navigation_title: "Alerts"
+navigation_title: Alerts
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 applies_to:
   stack: all
   serverless: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
+products:
+  - id: kibana
 ---
 
 # Troubleshoot {{kib}} alerts [alerting-troubleshooting]

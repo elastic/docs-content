@@ -2,6 +2,8 @@
 navigation_title: Versioning and availability
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/introducing-elastic-documentation.html
+products:
+  - id: elastic-stack
 ---
 
 # Understanding versioning and availability
@@ -118,7 +120,7 @@ In April 2025, we released our new documentation site. This site includes docume
 
 To access our previous documentation system, which contains the documentation for releases prior to those listed below, go to [elastic.co/guide](https://elastic.co/guide).
 
-You can access the previous version of a specific page, where available, by clicking the **View previous version** link in the sidebar. 
+You can access the previous version of a specific page, where available, by clicking the **View previous version** link in the sidebar.
 
 The following product versions are documented on this site:
 
@@ -145,9 +147,9 @@ The following product versions are documented on this site:
 | Other ECS logging libraries | All |
 | {{es}} API clients | 9.0.0+ |
 | {{es}} for Apache Hadoop | 9.0.0+ |
-| Curator | 8.0+ | 
+| Curator | 8.0+ |
 | Elastic Cloud Control (ECCTL) | 1.14+ |
-| Elastic Serverless Forwarder | All | 
+| Elastic Serverless Forwarder | All |
 | Elastic integrations | All |
 | Elastic Search UI library | All |
 
@@ -158,12 +160,12 @@ The following product versions are documented on this site:
 | APM Android agent | 1.x+ |
 | APM .NET agent | 1.x+ |
 | APM Go agent | 2.x+ |
-| APM iOS agent | 1.x+ | 
-| APM Java agent | 1.x+ | 
+| APM iOS agent | 1.x+ |
+| APM Java agent | 1.x+ |
 | APM Node.js agent | 4.x+ |
 | APM PHP agent | All |
 | APM Python agent | 6.x+ |
-| APM Ruby agent | 4.x+ | 
+| APM Ruby agent | 4.x+ |
 | APM Real User Monitoring JavaScript agent | 5.x+ |
 | APM attacher for Kubernetes | All |
 

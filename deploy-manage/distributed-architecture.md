@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Distributed architecture [_data_store_architecture]

@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo.html
   - https://www.elastic.co/guide/en/serverless/current/observability-slos.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 # Service-level objectives (SLOs) [observability-slos]
 

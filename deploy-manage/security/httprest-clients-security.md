@@ -7,6 +7,8 @@ applies_to:
     eck: all
     ess: all
     ece: all
+products:
+  - id: elasticsearch
 ---
 
 # Securing HTTP client applications

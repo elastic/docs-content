@@ -1,9 +1,12 @@
 ---
-navigation_title: "Logging"
+navigation_title: Logging
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-logging.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Configure logging [apm-configuration-logging]

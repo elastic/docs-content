@@ -1,7 +1,10 @@
 ---
-navigation_title: "registered_domain"
+navigation_title: registered_domain
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/registered_domain-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Registered Domain [registered_domain-processor]

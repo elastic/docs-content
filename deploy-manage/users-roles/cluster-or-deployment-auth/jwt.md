@@ -1,4 +1,5 @@
 ---
+navigation_title: JWT
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-JWT.html
@@ -10,7 +11,10 @@ applies_to:
     ess:
     ece:
     eck:
-navigation_title: "JWT"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # JWT authentication [jwt-auth-realm]

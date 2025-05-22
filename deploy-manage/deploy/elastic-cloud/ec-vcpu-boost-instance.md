@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # vCPU boosting and credits [ec-vcpu-boost-instance]

@@ -1,10 +1,12 @@
 ---
-navigation_title: "Monitoring"
+navigation_title: Monitoring
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/monitor-troubleshooting.html
 applies_to:
   deployment:
     self: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/monitor-troubleshooting.html
+products:
+  - id: kibana
 ---
 
 # Troubleshoot {{kib}} monitoring [monitor-troubleshooting]

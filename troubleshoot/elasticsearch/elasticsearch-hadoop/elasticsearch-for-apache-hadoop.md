@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Apache Hadoop
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/hadoop/current/troubleshooting.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot Elasticsearch for Apache Hadoop [troubleshooting]

@@ -1,9 +1,11 @@
 ---
+navigation_title: APM anomaly
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-anomaly-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-anomaly-alert-rule.html
-
-navigation_title: "APM anomaly"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create an APM anomaly rule [observability-create-anomaly-alert-rule]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html
+products:
+  - id: elasticsearch
 ---
 
 # Add remote clusters using TLS certificate authentication [remote-clusters-cert]

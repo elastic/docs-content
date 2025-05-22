@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-load-balancers.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-load-balancers.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Load balancers [ece-load-balancers]

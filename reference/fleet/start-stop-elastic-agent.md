@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/start-stop-elastic-agent.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Start and stop Elastic Agents on edge hosts [start-stop-elastic-agent]

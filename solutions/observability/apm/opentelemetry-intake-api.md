@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-otlp.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # OpenTelemetry intake API [apm-api-otlp]

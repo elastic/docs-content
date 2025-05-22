@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Automate rollover [getting-started-index-lifecycle-management]

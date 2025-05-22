@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Manage data from the command line

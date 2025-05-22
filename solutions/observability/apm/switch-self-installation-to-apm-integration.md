@@ -1,9 +1,12 @@
 ---
-navigation_title: "Switch a self-installation"
+navigation_title: Switch a self-installation
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Switch a self-installation to the APM integration [apm-integration-upgrade-steps]
@@ -54,4 +57,4 @@ You’ll configure the APM integration in this step. See [Configure APM Server](
 
 Once data from upgraded APM agents is visible in the Applications UI, it’s safe to stop the APM Server process.
 
-Congratulations — you now have the latest and greatest in Elastic APM!
+Congratulations — you now have the latest and greatest in Elastic APM!
