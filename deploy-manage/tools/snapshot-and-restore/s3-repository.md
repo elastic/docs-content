@@ -113,11 +113,6 @@ The following list contains the available client settings. Those that must be st
 `max_retries`
 :   The number of retries to use when an S3 request fails. The default value is `3`.
 
-`use_throttle_retries`
-:   Whether retries should be throttled (i.e. should back off). Must be `true` or `false`. Defaults to `true`.
-
-Deprecated: This setting is ignored since version 8.19, retries are always throttled.
-
 `path_style_access`
 :   Whether to force the use of the path style access pattern. If `true`, the path style access pattern will be used. If `false`, the access pattern will be automatically determined by the AWS Java SDK (See [AWS documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#setPathStyleAccessEnabled-java.lang.Boolean-) for details). Defaults to `false`.
 
