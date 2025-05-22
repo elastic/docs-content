@@ -87,7 +87,7 @@ Policies map trace events to a sample rate. Each policy must specify a sample ra
 
 ### Discard On Write Failure [sampling-tail-discard-on-write-failure-ref]
 
-Defines the indexing behavior when trace events fail to be written to storage (e.g. when the storage limit is reached). When set to `false`, traces will be indexed, significantly increasing the indexing load. When set to `true`, traces will be discarded, there will be data loss potentially resulting in broken traces.
+Defines the indexing behavior when trace events fail to be written to storage (e.g. when the storage limit is reached). When set to `false`, traces will bypass sampling and always be indexed, significantly increasing the indexing load. When set to `true`, traces will be discarded, there will be data loss potentially resulting in broken traces. The default is `false`.
 
 Default: `false`. (bool)
 
