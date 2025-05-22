@@ -214,7 +214,7 @@ All that’s left is to compile and run your application. That’s it!
 
 **Learn more in the agent reference**
 
-Read more in the [APM Android Agent Reference](apm-agent-android://reference/index.md).
+Read more in the [APM Android Agent Reference](opentelemetry://reference/edot-sdks/android/index.md).
 ::::::
 
 ::::::{tab-item} Go
@@ -340,7 +340,7 @@ var config = AgentConfigBuilder()
 
 **Learn more in the agent reference**
 
-Read more in the [APM iOS Agent Reference](apm-agent-ios://reference/index.md).
+Read more in the [APM iOS Agent Reference](opentelemetry://reference/edot-sdks/ios/index.md).
 ::::::
 
 ::::::{tab-item} Java
