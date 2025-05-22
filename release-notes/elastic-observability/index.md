@@ -32,7 +32,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes issue with updating SLOs created in a version later than 8.18 that were failing due to an invalid ingest pipeline [#221158](https://github.com/elastic/kibana/pull/221158).
 * Fixes `error_marker.tsx` to support mobile-services [#220424](https://github.com/elastic/kibana/pull/220424).
 * Fixes alerts environment query follow up [#219571](https://github.com/elastic/kibana/pull/219571).
-* Fixes the alerts query to include environment not defined value [#219228](https://github.com/elastic/kibana/pull/219228).
+* Fixes the alerts query to include "environment not defined" value [#219228](https://github.com/elastic/kibana/pull/219228).
 
 ## 9.0.1 [elastic-observability-9.0.1-release-notes]
 
