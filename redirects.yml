@@ -210,3 +210,18 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/1329
   'manage-data/ingest/transform-enrich/ingest-pipelines-serverless.md': 'manage-data/ingest/transform-enrich/ingest-pipelines.md'
+
+# Related to https://github.com/elastic/opentelemetry/issues/228
+  'reference/apm/agents/android': 'reference/opentelemetry/edot-sdks/android'
+  'reference/apm/agents/android/getting-started': 'reference/opentelemetry/edot-sdks/android/getting-started'
+  'reference/apm/agents/android/configuration': 'reference/opentelemetry/edot-sdks/android/configuration'
+  'reference/apm/agents/android/manual-instrumentation': 'reference/opentelemetry/edot-sdks/android/manual-instrumentation'
+  'reference/apm/agents/android/automatic-instrumentation': 'reference/opentelemetry/edot-sdks/android/automatic-instrumentation'
+  'reference/apm/agents/android/faq': 'reference/opentelemetry/edot-sdks/android'
+  'reference/apm/agents/android/how-tos': 'reference/opentelemetry/edot-sdks/android/how-tos'
+  'reference/apm/agents/android/troubleshooting': 'reference/opentelemetry/edot-sdks/android/troubleshooting'
+  'reference/apm/agents/ios': 'reference/opentelemetry/edot-sdks/ios'
+  'reference/apm/agents/ios/supported-technologies': 'reference/opentelemetry/edot-sdks/ios/supported-technologies'
+  'reference/apm/agents/ios/set-up-apm-ios-agent': 'reference/opentelemetry/edot-sdks/ios/set-up-apm-ios-agent'
+  'reference/apm/agents/ios/configuration': 'reference/opentelemetry/edot-sdks/ios/configuration'
+  'reference/apm/agents/ios/instrumentation': 'reference/opentelemetry/edot-sdks/ios/instrumentation'
