@@ -45,13 +45,12 @@ To add a new interference endpoint using the UI:
 1. Provide the required configuration details.
 1. Select **Save** to create the endpoint.
 
-If your inference endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to reduce resource usage and save costs.
-
+If your inference endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
 
 ## Adaptive allocations [adaptive-allocations]
 
 Adaptive allocations allow inference services to dynamically adjust the number of model allocations based on the current load.
-This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for third-party services like Alibaba Cloud, Cohere, or OpenAI.
+This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for third-party services like Alibaba Cloud, Cohere, or OpenAI, because those models are hosted externally and not deployed within your Elasticsearch cluster.
 
 When adaptive allocations are enabled:
 
