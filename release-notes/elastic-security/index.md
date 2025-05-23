@@ -23,7 +23,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
-## 9.0.1 [elastic-security-9.0.2-release-notes]
+## 9.0.2 [elastic-security-9.0.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.2-features-enhancements]
 There are no new features or enhancements.
