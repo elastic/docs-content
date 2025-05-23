@@ -29,7 +29,7 @@ This guide shows you how to:
 ::::
 
 
-The examples on this page use the following ingest pipeline and index template. The pipeline and template need to be set before you create your data stream in the following steps. Set them in **Developer Tools**, which can be found by searching for `Developer Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+The examples on this page use the following ingest pipeline and index template. The pipeline and template need to be set before you create your data stream in the following steps. Set them in **Developer Tools**, which you can find by searching for `Developer Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 If you haven't used ingest pipelines and index templates to parse your log data and extract structured fields yet, start with the [Parse and organize logs](/solutions/observability/logs/parse-route-logs.md) documentation.
 

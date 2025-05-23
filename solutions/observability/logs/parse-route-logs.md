@@ -259,7 +259,7 @@ The example index template above sets the following component templates:
 #### Create a data stream [observability-parse-log-data-create-a-data-stream]
 
 :::{note}
-To ensure your logs data is run through the correct pipeline, make sure you create your ingest pipeline and index template before creating your data stream.
+To ensure your logs data is run through the correct pipeline, create your ingest pipeline and index template before creating your data stream.
 :::
 
 Create your data stream using the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
