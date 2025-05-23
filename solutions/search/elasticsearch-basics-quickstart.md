@@ -326,7 +326,7 @@ PUT /my-explicit-mappings-books
 }
 ```
 
-1. Disables dynamic mapping for the index. Documents containing fields not defined in the mapping will be rejected.
+1. Disables dynamic mapping for the index. Fields not defined in the mapping will still be stored in the document's `_source` field, but they won’t be indexed or searchable.
 2. The `properties` object defines the fields and their data types for documents in this index.
 
 
