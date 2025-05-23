@@ -69,9 +69,9 @@ Follow these steps to reindex data remotely:
 2. Select a deployment or create one.
 3. Ensure that the new {{es}} cluster can access the remote source cluster to perform the reindex operation. Access is controlled by the {{es}} `reindex.remote.whitelist` user setting.
 
-    Domains matching the pattern `["*.io:*", "*.com:*"]` are allowed by default, so if your remote host URL matches that pattern you do not need to explicitly define `reindex.remote.whitelist`.
+    Domains matching the patterns `["*.io:*", "*.com:*"]` are allowed by default, so if your remote host URL matches that pattern you do not need to explicitly define `reindex.remote.whitelist`.
 
-    Otherwise, if your remote endpoint is not covered by the default pattern, adjust the setting to add the remote {{es}} cluster as an allowed host:
+    Otherwise, if your remote endpoint is not covered by the default patterns, adjust the setting to add the remote {{es}} cluster as an allowed host:
 
     1. From your deployment menu, go to the **Edit** page.
     2. In the **Elasticsearch** section, select **Manage user settings and extensions**. For deployments with existing user settings, you may have to expand the **Edit elasticsearch.yml** caret for each node type instead.
@@ -121,7 +121,7 @@ Follow these steps to reindex data remotely:
 
 Restoring from a snapshot is often the fastest and most reliable way to migrate data between {{es}} clusters. It preserves mappings, settings, and optionally parts of the cluster state such as index templates, component templates, and system indices.
 
-System indices can be easily restored by including their corresponding [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) in the restore operation, allowing you to retain internal configurations related to security, {{kib}}, or other stack features.
+System indices can be restored by including their corresponding [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) in the restore operation, allowing you to retain internal configurations related to security, {{kib}}, or other stack features.
 
 This method is especially useful when you want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state.
 
@@ -133,14 +133,14 @@ For more information, refer to [Restore into a different cluster](/deploy-manage
 For {{ece}} users, while it is most common to have Amazon S3 buckets, you should be able to restore from any addressable external storage that has your {{es}} snapshots.
 ::::
 
-The following steps assume you already have a snapshot repository configured in the old cluster with at least one valid snapshot containing the data you want to migrate.
+The following steps assume you already have a snapshot repository configured in the old cluster, with at least one valid snapshot containing the data you want to migrate.
 
 ### Step 1: Set up the repository in the new cluster [migrate-repo-setup]
 
 In this step, you’ll configure a snapshot repository in the new cluster that points to the storage location used by the old cluster. This allows the new cluster to access and restore snapshots created in the original environment.
 
 ::::{tip}
-If your new {{ech}} or {{ece}} deployment cannot connect to the same repository used by your self-managed cluster, for example if it's a private NFS share, consider one of these alternatives:
+If your new {{ech}} or {{ece}} deployment cannot connect to the same repository used by your self-managed cluster, for example if it's a private NFS share, consider one of the following alternatives:
 
 * [Back up your repository](/deploy-manage/tools/snapshot-and-restore/self-managed.md#snapshots-repository-backup) to a supported storage system such as AWS S3, Google Cloud Storage, or Azure Blob Storage, and then configure your new cluster to use that location for the data migration.
 * Expose the repository contents over `ftp`, `http`, or `https`, and use a [read-only URL repository](/deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md) type in your new deployment to access the snapshots.
@@ -156,7 +156,7 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
 
     If your old cluster has multiple repositories configured, identify the repository with the snapshots containing the data that you want to migrate.
 
-2. Add the snapshot repository on the new cluster:
+2. Add the snapshot repository on the new cluster.
 
     The new cluster must register a snapshot repository that points to the same physical storage location used by the old cluster. This ensures the new cluster can access the existing snapshots.
 
@@ -165,7 +165,7 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
       * If you’re migrating [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and destination clusters.
       * If the old cluster still has write access to the repository, register the repository as read-only to avoid data corruption. This can be done using the `readonly: true` option.
 
-    To configure a custom snapshot repository for your {{ech}} or {{ece}} deployment, follow the steps for the storage provider used by your existing repository:
+    To connect the existing snapshot repository to your new deployment, follow the steps for the storage provider where the repository is hosted:
 
     * **Amazon Web Services (AWS) Storage**
         * [Store credentials in the keystore](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md#ec-snapshot-secrets-keystore)
@@ -178,7 +178,7 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
         * [Create the repository](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md#ec-create-azure-repository).
     
     ::::{important}
-    Although the previous instructions are focused on {{ech}}, you should follow the same steps for {{ece}} by configuring the repository directly **at the deployment level**.
+    Although these instructions are focused on {{ech}}, you should follow the same steps for {{ece}} by configuring the repository directly **at the deployment level**.
 
     **Do not** configure the repository as an [ECE-managed repository](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md), which is intended for automatic snapshots of deployments. In this case, you need to add a custom repository that already contains snapshots from another cluster.
     ::::
@@ -186,9 +186,9 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
 
 ### Step 2: Run the snapshot restore [migrate-restore]
 
-Once the repository has been registered and verified, you are ready to restore any data from any of its snapshots to your new cluster. You can do this using {{kib}} management UI, or directly with the {{es}} API.
+After the repository has been registered and verified, you are ready to restore any data from any of its snapshots to your new cluster. You can do this using {{kib}} management UI, or using the {{es}} API.
 
-For extra details about the contents of a snapshot refer to [](/deploy-manage/tools/snapshot-and-restore.md#snapshot-contents).
+For details about the contents of a snapshot, refer to [](/deploy-manage/tools/snapshot-and-restore.md#snapshot-contents).
 
 To start the restore process:
 
