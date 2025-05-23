@@ -52,7 +52,7 @@ The Endpoints list provides the following data:
 * **IP address**: All IP addresses associated with the hostname.
 * **Version**: The {{agent}} version currently running.
 * **Last active**: A date and timestamp of the last time the {{agent}} was active.
-* **Actions**: Select the context menu (**…​**) to do the following:
+* **Actions**: Select the context menu (**…**) to do the following:
 
     * **Isolate host**: [Isolate the host](/solutions/security/endpoint-response-actions/isolate-host.md) from your network, blocking communication until the host is released.
     * **Respond**: Open the [response console](/solutions/security/endpoint-response-actions.md) to perform response actions directly on the host.

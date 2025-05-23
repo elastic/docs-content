@@ -25,7 +25,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 ## Prerequisites
 
 * An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
-* A system forwarding logs, metrics, or traces in OTLP (any OTel Collector or SDK—EDOT or community).
+* A system forwarding logs, metrics, or traces in OTLP (any EDOT Collector or SDK—EDOT or community).
 
 ### Limitations
 
@@ -69,18 +69,18 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ### Send data to your Elastic Cloud Managed OTLP endpoint
 
-* [I have an OTel Collector/SDK running](#otel-sdk-running)
-* [I need an OTel Collector/SDK](#no-sdk-running)
+* [I have an EDOT Collector/SDK running](#otel-sdk-running)
+* [I need an EDOT Collector/SDK](#no-sdk-running)
 * [I just want to use the instrumentation](#instrumentation-please)
 
-#### I have an OTel Collector/SDK running [otel-sdk-running]
+#### I have an EDOT Collector/SDK running [otel-sdk-running]
 
 If you have an OpenTelemetry Collector or SDK exporting telemetry data,
 configure it with the endpoint and API key generated in the previous steps.
 
 **OpenTelemetry Collector configuration**
 
-Configure your OTel Collector as follows:
+Configure your EDOT Collector as follows:
 
 ```yaml
 exporters:
@@ -117,7 +117,7 @@ For more information, see [OTLP Exporter configuration](https://opentelemetry.io
 Configure an EDOT SDK using the same method described above in **OpenTelemetry SDK configuration**.
 See the [EDOT Language SDK documentation](opentelemetry://reference/edot-sdks/index.md) for more information.
 
-#### I need an OTel Collector/SDK [no-sdk-running]
+#### I need an EDOT Collector/SDK [no-sdk-running]
 
 Don't have a collector or SDK running? No problem. Spin up an EDOT collector in just a few steps:
 
@@ -143,7 +143,7 @@ Exporting failed. Dropping data.
 "Unauthenticated desc = ApiKey prefix not found"
 ```
 
-You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK. See [I have an OTel Collector/SDK running](#otel-sdk-running) for more information.
+You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK. See [I have an EDOT Collector/SDK running](#otel-sdk-running) for more information.
 
 **Error: too many requests**
 

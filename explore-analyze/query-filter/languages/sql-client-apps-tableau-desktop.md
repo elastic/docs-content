@@ -36,7 +36,7 @@ Move the {{es}} Connector for Tableau to the Tableau Desktop connectors director
 * Windows: `C:\Users\[Windows User]\Documents\My Tableau Repository\Connectors`
 * Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
 
-Launch Tableau Desktop. In the menu, click **More…​** and select **Elasticsearch by Elastic** as the data source.
+Launch Tableau Desktop. In the menu, click **More…** and select **Elasticsearch by Elastic** as the data source.
 
 $$$apps_tableau_desktop_from_connector$$$
 ![Select Elasticsearch by Elastic as the data source](/explore-analyze/images/elasticsearch-reference-apps_tableau_desktop_from_connector.png "")

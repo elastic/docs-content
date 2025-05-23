@@ -90,7 +90,7 @@ To restart a transform that’s not running:
 
 1. Go to **Kibana** → **Stack Management** → **Data** → **Transforms**.
 2. Enter `endpoint.metadata` in the search box to find the transforms for {{elastic-defend}}.
-3. Click the **Actions** menu (**…​**) and do one of the following for each transform, depending on the value in the **Status** column:
+3. Click the **Actions** menu (**…**) and do one of the following for each transform, depending on the value in the **Status** column:
 
     * `stopped`: Select **Start** to restart the transform.
     * `failed`: Select **Stop** to first stop the transform, and then select **Start** to restart it.

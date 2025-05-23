@@ -13,7 +13,7 @@ products:
 
 You can configure an {{ech}} deployment to remotely access or (be accessed by) a cluster from:
 
-* Another {{ech}} deployment of your {{ecloud}} organization, across any region or cloud provider (AWS, GCP, Azure…​)
+* Another {{ech}} deployment of your {{ecloud}} organization, across any region or cloud provider (AWS, GCP, Azure…)
 * An {{ech}} deployment of another {{ecloud}} organization
 * A deployment in an {{ece}} installation
 * A deployment in an {{eck}} installation

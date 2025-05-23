@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-kubernetes-standalone-agent-helm.html
+applies_to:
+  stack: ga 8.18
+  serverless: all
 products:
   - id: fleet
   - id: elastic-agent
@@ -8,86 +11,140 @@ products:
 
 # Example: Install standalone Elastic Agent on Kubernetes using Helm [example-kubernetes-standalone-agent-helm]
 
-This example demonstrates how to install standalone {{agent}} on a Kubernetes system using a Helm chart, gather Kubernetes metrics and send them to an {{es}} cluster in {{ecloud}}, and then view visualizations of those metrics in {{kib}}.
+This example shows how to install the standalone {{agent}} on a {{k8s}} system using a Helm chart, collect {{k8s}} metrics and logs, and send them to an {{es}} cluster in {{ecloud}} for visualization in {{kib}}.
+
+Although this tutorial uses an {{ech}} deployment, you can adapt the same steps for other deployment types. For self-managed, {{eck}}, or {{ece}} deployments, you might need to provide the {{es}} CA certificate during the {{agent}} installation, as outlined in the following sections.
 
 For an overview of the {{agent}} Helm chart and its benefits, refer to [Install {{agent}} on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md).
 
 This guide takes you through these steps:
 
-* [Install {{agent}}](#agent-standalone-helm-example-install)
-* [Upgrade your {{agent}} configuration](#agent-standalone-helm-example-upgrade)
-* [Change {{agent}}'s running mode](#agent-standalone-helm-example-change-mode)
+* [Add the Elastic Helm repository](#preparations)
+* [Install {{agent}}s](#agent-standalone-helm-example-install)
+* [Update {{agent}} configuration examples](#agent-standalone-helm-example-upgrade)
 * [Tidy up](#agent-standalone-helm-example-tidy-up)
-
 
 ## Prerequisites [agent-standalone-helm-example-prereqs]
 
 To get started, you need:
 
 * A local install of the [Helm](https://helm.sh/) {{k8s}} package manager.
-* An [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) hosted {{es}} cluster on version 8.16 or higher.
-* An [{{es}} API key](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent).
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) {{es}} cluster on version 8.18 or higher. An {{serverless-full}} project also meets this requirement.
+* An [{{es}} API key](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent) with the privileges described in the referenced document.
 * An active {{k8s}} cluster.
-* A local clone of the [elastic/elastic-agent](https://github.com/elastic/elastic-agent/tree/8.16) GitHub repository. Make sure to use the `8.16` branch to ensure that {{agent}} has full compatibility with the Helm chart.
 
+<!--
+% We will uncomment this as soon as we document other authentication options in the main page
+::::{note}
+This example uses an API key for authentication and authorization, but the Helm chart supports other methods too. Refer to [link to main page](link-tbd.md) for more details.
+::::
+-->
 
-## Install {{agent}} [agent-standalone-helm-example-install]
+## Installation overview
+
+The installation and configuration steps shown in this example deploy the following components to monitor your Kubernetes cluster:
+
+* A default installation of [`kube-state-metrics` (KSM)](https://github.com/kubernetes/kube-state-metrics), configured as a dependency of the Helm chart. KSM is required by the Kubernetes integration to collect cluster-level metrics.
+
+* A group of standalone {{agent}}s, deployed as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), and configured to collect the following host level data:
+    * Host level metrics and logs through the [System Integration](integration-docs://reference/system/index.md). This enables the monitoring of your Kubernetes nodes at OS level. {{agent}} Pods will collect system metrics and logs from their own hosts.
+    * Kubernetes node-level metrics and logs through the [Kubernetes Integration](integration-docs://reference/kubernetes/index.md): This integration collects {{k8s}} metrics and Pods' logs related to the node where each {{agent}} Pod runs. It focuses on node-level visibility only, not cluster-wide metrics, which are handled separately.
+
+* A standalone {{agent}}, deployed as a `Deployment` of 1 replica, and configured to collect {{k8s}} cluster-level metrics and events through the [Kubernetes integration](integration-docs://reference/kubernetes/index.md): This complements the node-level data gathered by the DaemonSet, providing full visibility into the cluster's state and workloads. Some of this data is retrieved from kube-state-metrics.
+
+By default, all resources are installed in the namespace defined by your current `kubectl` context. You can override this by specifying a different namespace using the `--namespace` option during installation.
+
+<!--
+% maybe not needed, as ksm autosharding in this case is just an extra flag during install
+::::{note}
+The proposed approach of an {{agent}} DaemonSet for node-level data and a Deployment for cluster-level data works well for small to medium-sized {{k8s}} clusters.
+
+For larger clusters, or when kube-state-metrics (KSM) metrics collection becomes a performance bottleneck, we recommend a more scalable architecture: move the KSM metric collection to a separate set of agents deployed as sidecars alongside KSM, with autosharding enabled.
+
+This can be easily implemented with the Helm chart. For details, refer to the [KSM autosharding example](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/fleet-managed-ksm-sharding).
+::::
+
+% we will uncomment the next line when the use cases are documented in the landing page :)
+% For other architectures and use cases, refer to [Advanced use cases](./install-on-kubernetes-using-helm.md#advanced-use-cases).
+-->
+
+## Step 1: Add the Elastic Helm repository [preparations]
+
+:::{include} _snippets/agent_add_helm_repository.md
+:::
+
+## Step 2: Install {{agent}}s [agent-standalone-helm-example-install]
 
 1. Open your {{ecloud}} deployment, and from the navigation menu select **Manage this deployment**.
 2. In the **Applications** section, copy the {{es}} endpoint and make a note of the endpoint value.
-3. Open a terminal shell and change into a directory in your local clone of the `elastic-agent` repo.
-4. Copy this command.
+3. Open a terminal shell on your local system where the Helm tool is installed and you have access to the {{k8s}} cluster.
+4. Copy and prepare the command to install the chart:
 
     ```sh
-    helm install demo ./deploy/helm/elastic-agent \
+    helm install demo elastic/elastic-agent \
     --set kubernetes.enabled=true \
+    --set system.enabled=true \
     --set outputs.default.type=ESPlainAuthAPI \
-    --set outputs.default.url=<ES-endpoint>:443 \
-    --set outputs.default.api_key="API_KEY"
+    --set outputs.default.url=<ES-endpoint>:443 \ <1>
+    --set outputs.default.api_key="API_KEY" <2>
+    ```
+    1. Substitute <ES-endpoint> with the {{es}} endpoint value that you copied earlier. Be sure to include the right port, as the agent might default to port 9200 if no port is specified.
+    2. Substitute API_KEY with your [API key in `Beats` format](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent).
+
+    The command has these properties:
+
+    * `helm install`: Runs the Helm CLI install tool. You can use `helm upgrade` to modify or update an installed release.
+    * `demo`: The name for this specific installation of the chart, known as the **release name**. You can choose any name.
+    * `elastic/elastic-agent`: The name of the chart to install, using the format `<repository>/<chart-name>`.
+    * `--set kubernetes.enabled=true`: Adds and configures the {{k8s}} integration. This setting is enabled by default.
+    * `--set system.enabled=true`: Adds and configures the system integration, which is disabled by default.
+    * `--set outputs.default.type=ESPlainAuthAPI`: Sets the authentication method for the {{es}} output to require an API key. This setting defaults to `ESPlainAuthBasic`.
+    * `--set outputs.default.api_key="API_KEY"`: Sets the API key that {{agent}} will use to authenticate with your {{es}} cluster.
+    * `--set outputs.default.url=<ES-endpoint>:443`: Sets the address of the {{es}} endpoint, where the {{agent}} will send all collected data.
+
+    After your updates, the command should be similar to:
+
+    ```sh
+    helm install demo elastic/elastic-agent \
+    --set kubernetes.enabled=true \
+    --set system.enabled=true \
+    --set outputs.default.type=ESPlainAuthAPI \
+    --set outputs.default.url=https://demo.es.us-central1.gcp.foundit.no:443 \
+    --set outputs.default.api_key="A6ecaHNTJUFFcJI6esf4:5HJPxxxxxxxPS4KwSBeVEs"
     ```
 
-    Note that the command has these properties:
+    ::::{tip}
+    For a full list of all available values settings and descriptions, refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent) and default [values.yaml](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml).
 
-    * `helm install` runs the Helm CLI install tool.
-    * `demo` gives a name to the installed chart. You can choose any name.
-    * `./deploy/helm/elastic-agent` is a local path to the Helm chart to install (in time it’s planned to have a public URL for the chart).
-    * `--set kubernetes.enabled=true` enables the {{k8s}} integration. The CLI parameter overrides the default `false` value for `kubernetes.enabled` in the {{agent}} [values.yaml](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml) file.
-    * `--set outputs.default.type=ESPlainAuthAPI` sets the authentication method for the {{es}} output to require an API key (again, overriding the value set by default in the {{agent}} [values.yaml](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml) file).
-    * `--set outputs.default.url=<ES-endpoint>:443` sets the address of your {{ecloud}} deployment, where {{agent}} will send its output over port 443.
-    * `--set outputs.default.api_key="API_KEY"` sets the API key that {{agent}} will use to authenticate with your {{es}} cluster.
-
-        ::::{tip}
-        For a full list of all available YAML settings and descriptions, refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent).
-        ::::
-
-5. Update the command to replace:
-
-    1. `<ES-endpoint>` with the {{es}} endpoint value that you copied earlier.
-    2. `<API_KEY>` with your API key name.
-
-        After your updates, the command should look something like this:
-
-        ```sh
-        helm install demo ./deploy/helm/elastic-agent \
-        --set kubernetes.enabled=true \
-        --set outputs.default.type=ESPlainAuthAPI \
-        --set outputs.default.url=https://demo.es.us-central1.gcp.foundit.no:443 \
-        --set outputs.default.api_key="A6ecaHNTJUFFcJI6esf4:5HJPxxxxxxxPS4KwSBeVEs"
-        ```
+    The following options could be useful for special use cases:
+    * `--namespace <namespace>`: Allows to install all resources in a specific namespace.
+    * `--version <version>`: Installs a specific version of the Helm chart and {{agent}}. Refer to [Preparations](#preparations) to check available versions.
+    * `--set agent.version=<version>`: Installs a specific version of {{agent}}. By default, the chart installs the agent version that matches its own.
+    * `--set-file 'outputs.default.certificate_authorities[0].value=/local-path/to/es-ca.crt'`: Specifies the CA certificate that {{agent}} should trust when connecting to {{es}}. This is typically required when {{es}} uses a certificate signed by a private CA. Not needed for clusters hosted on {{ecloud}}.
+    * `--set kube-state-metrics.enabled=false`: Prevents the installation of kube-state-metrics. Useful if KSM is already installed in your cluster.
+    * `--set kubernetes.state.host`: Sets the kube-state-metrics endpoint used in the Kubernetes integration input streams. Useful if you already have KSM installed and you are not deploying it with the chart.
+    * `--set kubernetes.state.enabled=false`: Disables all input streams related to kube-state-metrics in the Kubernetes integration configuration.
+    * `--set kube-state-metrics.fullnameOverride=ksm`: Overrides the default release name (`kube-state-metrics`) used for the KSM deployment. Useful if you already have a KSM instance deployed and want to install a second one with a different name.    
+    * `--set kubernetes.state.agentAsSidecar.enabled=true`: Enables [KSM autosharding](https://github.com/kubernetes/kube-state-metrics?tab=readme-ov-file#automated-sharding) by deploying KSM as a `StatefulSet` with {{agents}} as sidecar containers. This setup is useful and recommended for large Kubernetes clusters to distribute the metric collection load. To scale KSM in this configuration, use the `kube-state-metrics.replicas` setting.
+    ::::
 
 6. Run the command.
 
-    The command output should confirm that three {{agents}} have been installed as well as the {{k8s}} integration:
+    The command output should confirm that two {{agents}} have been installed (one `DaemonSet` and one `Deployment`), along with the {{k8s}} and system integrations, and that kube-state-metrics has also been deployed in the same namespace.
 
     ```sh
     ...
+    Release "demo" is installed at "default" namespace
+
     Installed agents:
-      - clusterWide [deployment - standalone mode]
-      - ksmSharded [statefulset - standalone mode]
-      - perNode [daemonset - standalone mode]
+    - clusterWide [deployment - standalone mode]
+    - perNode [daemonset - standalone mode]
+
+    Installed kube-state-metrics at "default" namespace.
 
     Installed integrations:
-      - kubernetes [built-in chart integration]
+    - kubernetes [built-in chart integration]
+    - system [built-in chart integration]
     ...
     ```
 
@@ -95,14 +152,16 @@ To get started, you need:
 
     ```sh
     NAME                                      READY   STATUS    RESTARTS   AGE
-    agent-clusterwide-demo-77c65f6c7b-trdms   1/1     Running   0          5m18s
-    agent-ksmsharded-demo-0                   2/2     Running   0          5m18s
-    agent-pernode-demo-c7d75                  1/1     Running   0          5m18s
+    agent-clusterwide-demo-5fc46c54d5-7vhjz   1/1     Running   0          5m35s
+    agent-pernode-demo-2fp77                  1/1     Running   0          5m34s
+    agent-pernode-demo-q9f8n                  1/1     Running   0          5m34s
+    agent-pernode-demo-twrtw                  1/1     Running   0          5m35s
+    kube-state-metrics-6bc97757c4-x9rkg       1/1     Running   0          5m35s
     ```
 
 8. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
 9. Run a search for `Kubernetes` and then select the {{k8s}} integration card.
-10. On the {{k8s}} integration page, select **Install Kubernetes assets**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
+10. On the {{k8s}} integration **Settings** page, select **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
 11. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
 
     On the dashboard, you can view the status of your {{k8s}} nodes, including metrics on memory, CPU, and filesystem usage, network throughput, and more.
@@ -120,57 +179,79 @@ To get started, you need:
     :::
 
 
-
-## Upgrade your {{agent}} configuration [agent-standalone-helm-example-upgrade]
+## Update {{agent}} configuration [agent-standalone-helm-example-upgrade]
 
 Now that you have {{agent}} installed, collecting, and sending data successfully, let’s try changing the agent configuration settings.
 
-In the previous install example, three {{agent}} nodes were installed. One of these nodes, `agent-ksmsharded-demo-0`, is installed to enable the [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) service. Let’s suppose that you don’t need those metrics and would like to upgrade your configuration accordingly.
+### Example: disable kube-state-metrics and input streams
 
-1. Copy the command that you used earlier to install {{agent}}:
+In the previous installation example, two {{agents}}, per-node and cluster-wide, were installed, along with kube-state-metrics. Let’s suppose that you don’t need metrics related to kube-state-metrics and would like to upgrade your configuration accordingly.
+
+::::{note}
+This is only an example of how to update the configuration of an installed Helm chart. Disabling kube-state-metrics will prevent several Kubernetes dashboards in {{kib}} from displaying data.
+::::
+
+The following values will help achieve that goal:
+
+* `kubernetes.state.enabled=false`: Disables all input streams related to kube-state-metrics in the Kubernetes integration configuration of the cluster-wide {{agent}}.
+* `kube-state-metrics.enabled=false`: Prevents the installation of the kube-state-metrics component.
+
+To update the configuration of an installed release:
+
+1. Start by copying the same command you used previously to install {{agent}}, for example:
 
     ```sh
-    helm install demo ./deploy/helm/elastic-agent \
+    helm install demo elastic/elastic-agent \
     --set kubernetes.enabled=true \
+    --set system.enabled=true \
     --set outputs.default.type=ESPlainAuthAPI \
-    --set outputs.default.url=<ES-endpoint>:443 \
-    --set outputs.default.api_key="API_KEY"
+    --set outputs.default.url=https://demo.es.us-central1.gcp.foundit.no:443 \
+    --set outputs.default.api_key="A6ecaHNTJUFFcJI6esf4:5HJPxxxxxxxPS4KwSBeVEs"
     ```
 
 2. Update the command as follows:
 
-    1. Change `install` to upgrade.
-    2. Add a parameter `--set kubernetes.state.enabled=false`. This will override the default `true` value for the setting `kubernetes.state` in the {{agent}} [values.yaml](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml) file.
+    1. Replace `install` with `upgrade`, keeping the same release name (`demo` in this example).
+    2. Modify the parameters as needed:
 
         ```sh
-        helm upgrade demo ./deploy/helm/elastic-agent \
+        helm upgrade demo elastic/elastic-agent \
         --set kubernetes.enabled=true \
+        --set system.enabled=true \
         --set kubernetes.state.enabled=false \
+        --set kube-state-metrics.enabled=false \
         --set outputs.default.type=ESPlainAuthAPI \
-        --set outputs.default.url=<ES-endpoint>:443 \
-        --set outputs.default.api_key="API_KEY"
+        --set outputs.default.url=https://demo.es.us-central1.gcp.foundit.no:443 \
+        --set outputs.default.api_key="A6ecaHNTJUFFcJI6esf4:5HJPxxxxxxxPS4KwSBeVEs"
         ```
 
 3. Run the command.
 
-    The command output should confirm that now only two {{agents}} are installed together with the {{k8s}} integration:
+    After running the command, kube-state-metrics will no longer be running, and the `agent-clusterwide-demo` instance will be configured without any state-related data streams.
+
+    The upgrade output should look similar to the following:
 
     ```sh
     ...
     Installed agents:
-      - clusterWide [deployment - standalone mode]
-      - perNode [daemonset - standalone mode]
+    - clusterWide [deployment - standalone mode]
+    - perNode [daemonset - standalone mode]
 
     Installed integrations:
-      - kubernetes [built-in chart integration]
+    - kubernetes [built-in chart integration]
+    - system [built-in chart integration]
     ...
     ```
 
+    To review the full contents of the installed release, run:
 
-You’ve upgraded your configuration to run only two {{agents}}, without the kube-state-metrics service. You can similarly upgrade your agent to change other settings defined in the in the {{agent}} [values.yaml](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml) file.
+    ```sh
+    helm get manifest demo
+    ```
 
+You’ve upgraded your configuration to run without the kube-state-metrics service. You can similarly upgrade your agent to change other settings defined in the in the {{agent}} [values.yaml](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/elastic-agent/values.yaml) file.
 
-## Change {{agent}}'s running mode [agent-standalone-helm-example-change-mode]
+### Example: change {{agent}}'s running mode [agent-standalone-helm-example-change-mode]
 
 By default {{agent}} runs under the `elastic` user account. For some use cases you may want to temporarily change an agent to run with higher privileges.
 
@@ -178,14 +259,16 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
 
     ```sh
     NAME                                      READY   STATUS    RESTARTS   AGE
-    agent-clusterwide-demo-77c65f6c7b-trdms   1/1     Running   0          5m18s
-    agent-pernode-demo-c7d75                  1/1     Running   0          5m18s
+    agent-clusterwide-demo-7b5df89b75-sfhd7   1/1     Running   0          14m
+    agent-pernode-demo-fm6tr                  1/1     Running   0          14m
+    agent-pernode-demo-hh6xb                  1/1     Running   0          14m
+    agent-pernode-demo-szrp9                  1/1     Running   0          14m
     ```
 
 2. Now, run the `kubectl exec` command to enter one of the running {{agents}}, substituting the correct pod name returned from the previous command. For example:
 
     ```sh
-    kubectl exec -it pods/agent-pernode-demo-c7d75 -- bash
+    kubectl exec -it pods/agent-pernode-demo-fm6tr -- bash
     ```
 
 3. From inside the pod, run the Linux `ps aux` command to view the running processes.
@@ -219,9 +302,9 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
 6. Run the `helm upgrade` command again, this time adding the parameter `--set agent.unprivileged=false` to override the default `true` value for that setting.
 
     ```sh
-    helm upgrade demo ./deploy/helm/elastic-agent \
+    helm upgrade demo elastic/elastic-agent \
     --set kubernetes.enabled=true \
-    --set kubernetes.state.enabled=false \
+    --set system.enabled=true \
     --set outputs.default.type=ESPlainAuthAPI \
     --set outputs.default.url=<ES-endpoint>:443 \
     --set outputs.default.api_key="API_KEY" \
@@ -234,6 +317,8 @@ By default {{agent}} runs under the `elastic` user account. For some use cases y
     NAME                                      READY   STATUS    RESTARTS   AGE
     agent-clusterwide-demo-77c65f6c7b-trdms   1/1     Running   0          5m18s
     agent-pernode-demo-s6s7z                  1/1     Running   0          5m18s
+    agent-pernode-demo-v6rf8                  1/1     Running   0          5m18s
+    agent-pernode-demo-6zx8l                  1/1     Running   0          5m18s
     ```
 
 8. Re-run the `kubectl exec` command to enter one of the running {{agents}}, substituting the correct pod name. For example:
@@ -276,4 +361,8 @@ The uninstall should be confirmed as shown:
 release "demo" uninstalled
 ```
 
-As a reminder, for full details about using the {{agent}} Helm chart refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent).
+## Next steps
+
+For full details about using the {{agent}} Helm chart, refer to the [{{agent}} Helm Chart Readme](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent).
+
+Refer to the [examples](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples) section of the GitHub repository for advanced use cases.
