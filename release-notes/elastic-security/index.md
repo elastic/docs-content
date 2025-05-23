@@ -29,7 +29,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 There are no new features or enhancements.
 
 ### Fixes [elastic-security-9.0.2-fixes]
-* Fixes a bug that caused an error toast to appear when you changed entity asset criticality from the entity flyout [#219858]({{kib-pull}}219858)
+* Fixes a bug that caused an error message to appear when you changed entity asset criticality from the entity flyout [#219858]({{kib-pull}}219858)
 
 ## 9.0.1 [elastic-security-9.0.1-release-notes]
 
