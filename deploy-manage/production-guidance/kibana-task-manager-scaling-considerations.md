@@ -33,12 +33,12 @@ If you lose this index, all scheduled alerts and actions are lost.
 
 {{kib}} background tasks are managed as follows:
 
-* An {{es}} task index is polled for overdue tasks at 3-second intervals. You can change this interval using the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.
-* Tasks are claimed by updating them in the {{es}} index, using optimistic concurrency control to prevent conflicts. Each {{kib}} instance can run a maximum of 10 concurrent tasks, so a maximum of 10 tasks are claimed each interval.
+* An {{es}} task index is polled for overdue tasks every 500 milliseconds. When the task load is low, the polling rate backs off to every 3 seconds. You can set a fixed interval using the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.
+* Tasks are claimed by updating them in the {{es}} index using optimistic concurrency control to prevent conflicts. By default, each {{kib}} instance can run 10 normal size tasks concurrently, which is taken into account when claiming tasks at each interval.
 * Tasks are run on the {{kib}} server.
 * Task Manager ensures that tasks:
 
-    * Are only executed once
+    * Are ran by only one Kibana node at a time, preventing concurrent runs across nodes
     * Are retried when they fail (if configured to do so)
     * Are rescheduled to run again at a future point in time (if configured to do so)
 
@@ -72,9 +72,9 @@ However, there is a relatively straight forward method you can follow to produce
 
 ### Default scale [task-manager-default-scaling]
 
-By default, {{kib}} polls for tasks at a rate of 10 tasks every 3 seconds. This means that you can expect a single {{kib}} instance to support up to 200 *tasks per minute* (`200/tpm`).
+By default, {{kib}} polls for tasks at a rate of 10 normal size tasks every 500 milliseconds. When the task load is low, the polling rate backs off to every 3 seconds. This means that you can expect a single {{kib}} instance to support up to 1200 *tasks per minute* (`1200/tpm`).
 
-In practice, a {{kib}} instance will only achieve the upper bound of `200/tpm` if the duration of task execution is below the polling rate of 3 seconds. For the most part, the duration of tasks is below that threshold, but it can vary greatly as {{es}} and {{kib}} usage grow and task complexity increases (such as alerts executing heavy queries across large datasets).
+In practice, a {{kib}} instance will only achieve the upper bound of `1200/tpm` if the duration of task execution is below the polling rate of 500 milliseconds. The duration of tasks can vary greatly as {{es}} and {{kib}} usage grow and task complexity increases (such as alerts executing heavy queries across large datasets).
 
 By [estimating a rough throughput requirement](#task-manager-rough-throughput-estimation), you can estimate the number of {{kib}} instances required to reliably execute tasks in a timely manner. An appropriate number of {{kib}} instances can be estimated to match the required scale.
 
@@ -83,7 +83,7 @@ For details on monitoring the health of {{kib}} Task Manager, follow the guidanc
 
 ### Scaling horizontally [task-manager-scaling-horizontally]
 
-At times, the sustainable approach might be to expand the throughput of your cluster by provisioning additional {{kib}} instances. By default, each additional {{kib}} instance will add an additional 10 tasks that your cluster can run concurrently, but you can also scale each {{kib}} instance vertically, if your diagnosis indicates that they can handle the additional workload.
+At times, the sustainable approach might be to expand the throughput of your cluster by provisioning additional {{kib}} instances. By default, each additional {{kib}} instance will add an additional 10 normal size tasks that your cluster can run concurrently, but you can also scale each {{kib}} instance vertically, if your diagnosis indicates that they can handle the additional workload.
 
 
 ### Scaling vertically [task-manager-scaling-vertically]
@@ -92,7 +92,7 @@ Other times it, might be preferable to increase the throughput of individual {{k
 
 Tweak the capacity with the [`xpack.task_manager.capacity`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which enables each {{kib}} instance to pull a higher number of tasks per interval. This setting can impact the performance of each instance as the workload will be higher.
 
-Tweak the poll interval with the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which enables each {{kib}} instance to pull scheduled tasks at a higher rate. This setting can impact the performance of the {{es}} cluster as the workload will be higher.
+Tweak the poll interval with the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which enables each {{kib}} instance to pull scheduled tasks at a higher rate. This setting can impact the performance of the {{es}} cluster as the workload will be higher and the default values are sufficient for most use cases.
 
 
 ### Choosing a scaling strategy [task-manager-choosing-scaling-strategy]
@@ -119,7 +119,7 @@ Predicting the required throughput a deployment might need to support Task Manag
 
 Throughput is best thought of as a measurements in tasks per minute.
 
-A default {{kib}} instance can support up to `200/tpm`.
+A default {{kib}} instance can support up to `1200/tpm`.
 
 
 #### Automatic estimation [_automatic_estimation]
@@ -152,7 +152,7 @@ When evaluating the proposed {{kib}} instance number under `proposed.provisioned
 
 By [evaluating the workload](../../troubleshoot/kibana/task-manager.md#task-manager-health-evaluate-the-workload), you can make a rough estimate as to the required throughput as a *tasks per minute* measurement.
 
-For example, suppose your current workload reveals a required throughput of `440/tpm`.  You can address this scale by provisioning 3 {{kib}} instances, with an upper throughput of `600/tpm`. This scale would provide approximately 25% additional capacity to handle ad-hoc non-recurring tasks and potential growth in recurring tasks.
+For example, suppose your current workload reveals a required throughput of `2640/tpm`.  You can address this scale by provisioning 3 {{kib}} instances, with an upper throughput of `3600/tpm`. This scale would provide approximately 25% additional capacity to handle ad-hoc non-recurring tasks and potential growth in recurring tasks.
 
 Given a deployment of 100 recurring tasks, estimating the required throughput depends on the scheduled cadence. Suppose you expect to run 50 tasks at a cadence of `10s`, the other 50 tasks at `20m`. In addition, you expect a couple dozen non-recurring tasks every minute.
 
@@ -164,7 +164,7 @@ For this reason, we recommend grouping tasks by *tasks per minute* and *tasks pe
 
 It is highly recommended that you maintain at least 20% additional capacity, beyond your expected workload, as spikes in ad-hoc tasks is possible at times of high activity (such as a spike in actions in response to an active alert).
 
-Given the predicted workload, you can estimate a lower bound throughput of `340/tpm` (`6/tpm` * 50 + `3/tph` * 50 + 20% buffer). As a default, a {{kib}} instance provides a throughput of `200/tpm`. A good starting point for your deployment is to provision 2 {{kib}} instances. You could then monitor their performance and reassess as the required throughput becomes clearer.
+Given the predicted workload, you can estimate a lower bound throughput of `3240/tpm` (`6/tpm` * 300 + `3/tph` * 300 + 20% buffer). As a default, a {{kib}} instance provides a throughput of `1200/tpm`. A good starting point for your deployment is to provision 3 {{kib}} instances. You could then monitor their performance and reassess as the required throughput becomes clearer.
 
 Although this is a *rough* estimate, the  *tasks per minute* provides the lower bound needed to execute tasks on time.
 

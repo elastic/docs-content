@@ -28,12 +28,12 @@ If you lose this index, all scheduled alerts and actions are lost.
 
 {{kib}} background tasks are managed as follows:
 
-* An {{es}} task index is polled for overdue tasks at 3-second intervals. You can change this interval using the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.
-* Tasks are claimed by updating them in the {{es}} index, using optimistic concurrency control to prevent conflicts. Each {{kib}} instance can run a maximum of 10 concurrent tasks, so a maximum of 10 tasks are claimed each interval.
+* An {{es}} task index is polled for overdue tasks every 500 milliseconds. When the task load is low, the polling rate backs off to every 3 seconds. You can set a fixed interval using the [`xpack.task_manager.poll_interval`](kibana://reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.
+* Tasks are claimed by updating them in the {{es}} index using optimistic concurrency control to prevent conflicts. By default, each {{kib}} instance can run 10 normal size tasks concurrently, which is taken into account when claiming tasks at each interval.
 * {{es}} and {{kib}} instances use the system clock to determine the current time. To ensure schedules are triggered when expected, synchronize the clocks of all nodes in the cluster using a time service such as [Network Time Protocol](http://www.ntp.org/).
 * Tasks are run on the {{kib}} server.
 * Task Manager ensures that tasks:
-  * Are only executed once
+  * Are ran by only one Kibana node at a time, preventing concurrent runs across nodes
   * Are retried when they fail (if configured to do so)
   * Are rescheduled to run again at a future point in time (if configured to do so)
 ::::{important}
