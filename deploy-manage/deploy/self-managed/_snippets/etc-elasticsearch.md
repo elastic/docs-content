@@ -4,7 +4,13 @@ The `setgid` flag applies group permissions on the `/etc/elasticsearch` director
 
 {{es}} loads its configuration from the `/etc/elasticsearch/elasticsearch.yml` file by default. The format of this config file is explained in [](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 
-The {{distro}} package also has a system configuration file ({{pkg-conf}}), which allows you to set the following parameters:
+The {{distro}} package also has a system configuration file at the following path:
+ 
+```txt subs=true
+{{pkg-conf}}
+```
+
+In this file, you can set the following parameters:
 
 | Parameter | Description |
 | --- | --- |
