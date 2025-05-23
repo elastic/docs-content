@@ -21,6 +21,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.0.2 [elastic-observability-9.0.2-release-notes]
+
+### Enhancements [elastic-observability-9.0.2-features-enhancements]
+
+* Enhanced the handling of missing `service.environment` attributes [#217899](https://github.com/elastic/kibana/pull/217899).
+
+### Fixes [elastic-observability-9.0.2-fixes]
+
+* Fixes issue with updating SLOs created in a version later than 8.18 that were failing due to an invalid ingest pipeline [#221158]({{kib-pull}}221158).
+* Fixes `error_marker.tsx` to support mobile-services [#220424]({{kib-pull}}220424).
+* Fixes alerts environment query follow up [#219571]({{kib-pull}}219571).
+* Fixes the alerts query to include "environment not defined" value [#219228]({{kib-pull}}219228).
+
 ## 9.0.1 [elastic-observability-9.0.1-release-notes]
 
 ### Fixes [elastic-observability-9.0.1-fixes]
