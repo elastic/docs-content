@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-customize-deployment.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-configure-settings.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-configure.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Configure

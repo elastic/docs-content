@@ -1,7 +1,10 @@
 ---
-navigation_title: "convert"
+navigation_title: convert
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/convert-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Convert field type [convert-processor]

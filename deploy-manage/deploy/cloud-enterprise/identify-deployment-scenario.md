@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deploy-scenario.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deploy-scenario.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Identify the deployment scenario [ece-deploy-scenario]

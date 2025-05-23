@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Discovery
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-troubleshooting.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Troubleshoot discovery [discovery-troubleshooting]

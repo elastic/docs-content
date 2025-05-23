@@ -7,6 +7,8 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Searchable snapshots [searchable-snapshots]

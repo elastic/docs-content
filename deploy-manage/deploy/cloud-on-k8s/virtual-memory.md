@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-virtual-memory.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-virtual-memory.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Virtual memory [k8s-virtual-memory]

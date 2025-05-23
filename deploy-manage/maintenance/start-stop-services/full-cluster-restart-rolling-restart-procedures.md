@@ -3,7 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/restart-cluster.html
 applies_to:
   deployment:
-     self:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Full Cluster restart and rolling restart procedures [restart-cluster]

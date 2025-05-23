@@ -1,10 +1,12 @@
 ---
 navigation_title: High availability
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-ha.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-ha.html
+products:
+  - id: cloud-enterprise
 ---
 
 # High availability in ECE

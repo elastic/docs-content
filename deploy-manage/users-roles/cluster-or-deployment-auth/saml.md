@@ -1,4 +1,5 @@
 ---
+navigation_title: SAML
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-realm.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece_sign_outgoing_saml_message.html
@@ -10,13 +11,17 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/echsign-outgoing-saml-message.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html
-navigation_title: SAML
 applies_to:
   deployment:
     self:
     ess:
     ece:
     eck:
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: cloud-kubernetes
 ---
 
 # SAML authentication [saml-realm]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/rule-action-variables.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/rule-action-variables.html
+products:
+  - id: kibana
 ---
 
 # Rule action variables [rule-action-variables]

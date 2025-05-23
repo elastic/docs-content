@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-stack-getting-started.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-deployments.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-monitoring-deployments.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 % document scope: This doc focuses on everything that can be achieved from the deployment UI

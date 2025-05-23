@@ -1,5 +1,5 @@
 ---
-navigation_title: "Upgrade your ECE or ECK orchestrator"
+navigation_title: Upgrade your ECE or ECK orchestrator
 applies_to:
   deployment:
     ece:

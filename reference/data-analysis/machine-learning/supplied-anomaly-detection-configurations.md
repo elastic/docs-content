@@ -1,7 +1,9 @@
 ---
-navigation_title: "Supplied configurations"
+navigation_title: Supplied configurations
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs.html
+products:
+  - id: machine-learning
 ---
 
 # Supplied {{anomaly-detect}} configurations [ootb-ml-jobs]

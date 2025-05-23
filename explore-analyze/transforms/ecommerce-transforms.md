@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/ecommerce-transforms.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/ecommerce-transforms.html
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Transforming the eCommerce sample data [ecommerce-transforms]

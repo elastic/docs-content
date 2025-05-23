@@ -7,6 +7,9 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Billing

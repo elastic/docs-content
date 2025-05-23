@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-anonymous-auth.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Anonymous authentication [apm-anonymous-auth]

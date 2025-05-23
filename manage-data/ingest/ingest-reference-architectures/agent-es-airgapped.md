@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-es-airgapped.html
+products:
+  - id: elastic-agent
 ---
 
 # Elastic Agent to Elasticsearch: Air-gapped environment [agent-es-airgapped]
