@@ -12,7 +12,7 @@ If you have an `Enterprise` [{{stack}} subscription](https://www.elastic.co/subs
 
 Integration-level outputs are very useful for certain scenarios. For example:
 
-* You can may want to send security logs monitored by an {{agent}} to one {{ls}} output, while informational logs are sent to a another {{ls}} output.
+* You may want to send security logs monitored by an {{agent}} to one {{ls}} output, while informational logs are sent to another {{ls}} output.
 * If you operate multiple {{beats}} on a system and want to migrate these to {{agent}}, integration-level outputs enable you to maintain the distinct outputs that are currently used by each Beat.
 
 
