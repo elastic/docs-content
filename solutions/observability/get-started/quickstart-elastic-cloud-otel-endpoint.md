@@ -36,7 +36,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ### Get your native OTLP endpoint credentials
 
-1. [create a new Observability project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new Observability project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 
 1. In your {{obs-serverless}} project, go to **Add Data**.
 
