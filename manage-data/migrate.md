@@ -6,10 +6,8 @@ mapped_pages:
 applies_to:
   stack: ga
   deployment:
-    eck: unavailable
     ess: ga
     ece: ga
-  serverless: unavailable
 products:
   - id: cloud-hosted
   - id: cloud-enterprise
@@ -42,10 +40,11 @@ Reindex from a remote cluster
 Restore from a snapshot
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an Elasticsearch version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility) for details). If you have not already done so, you will need to [set up snapshots for your old cluster](/deploy-manage/tools/snapshot-and-restore/self-managed.md) using a repository that can be accessed from the new cluster.
 
-Migrating system {{es}} indices
-:   In {{es}} 8.0 and later versions, snapshot and restore of [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) are the only way to back up and restore system indices and system data streams, such as `.kibana` or `.security`.
+:::{admonition} Migrating system {{es}} indices
+In {{es}} 8.0 and later versions, to back up and restore system indices and system data streams such as `.kibana` or `.security`, you must snapshot and restore the related feature's [feature state](/deploy-manage/tools/snapshot-and-restore.md#feature-state).
     
-    Check [Migrate system indices](./migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
+Refer to [Migrate system indices](./migrate/migrate-internal-indices.md) to learn how to restore the internal {{es}} system indices from a snapshot.
+:::
 
 ## Index from the source [ec-index-source]
 
@@ -109,6 +108,8 @@ Follow these steps to reindex data remotely:
     }
     ```
 
+    For additional options and details, refer to the [reindex API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
+
 6. Verify that the new index is present:
 
     ```sh
@@ -158,8 +159,6 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
 
 2. Add the snapshot repository on the new cluster.
 
-    The new cluster must register a snapshot repository that points to the same physical storage location used by the old cluster. This ensures the new cluster can access the existing snapshots.
-
     Considerations:
 
       * If you’re migrating [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and destination clusters.
@@ -186,7 +185,9 @@ If your new {{ech}} or {{ece}} deployment cannot connect to the same repository 
 
 ### Step 2: Run the snapshot restore [migrate-restore]
 
-After the repository has been registered and verified, you are ready to restore any data from any of its snapshots to your new cluster. You can do this using {{kib}} management UI, or using the {{es}} API.
+After the repository has been registered and verified, you are ready to restore any data from any of its snapshots to your new cluster.
+
+You can run a restore operation using the {{kib}} Management UI, or using the {{es}} API. Refer to [Restore a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) for more details, including API-based examples.
 
 For details about the contents of a snapshot, refer to [](/deploy-manage/tools/snapshot-and-restore.md#snapshot-contents).
 
@@ -197,13 +198,12 @@ To start the restore process:
 3. Select **Restore**.
 4. Select the index or indices you wish to restore.
 5. Optionally, configure additional restore options, such as **Restore aliases**, **Restore global state**, or **Restore feature state**.
-
-    Refer to [Restore a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) for more details about restore operations in {{es}}, including API based examples.
-    
 6. Select **Restore snapshot** to begin the process.
 
-7. Verify that the new index is restored in your deployment with this query:
+7. Verify that each restored index is available in your deployment. You can do this using {{kib}} **Index Management** UI, or by running this query:
 
     ```sh
     GET INDEX_NAME/_search?pretty
     ```
+
+    If you have restored many indices you can also run `GET _cat/indices?s=index` to list all indices for verification.

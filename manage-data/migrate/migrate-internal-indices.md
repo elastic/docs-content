@@ -5,19 +5,17 @@ mapped_pages:
 applies_to:
   stack: ga
   deployment:
-    eck: unavailable
     ess: ga
     ece: ga
-  serverless: unavailable
 products:
   - id: cloud-hosted
 ---
 
 # Migrate system indices
 
-When you migrate your {{es}} data into a new infrastructure, you might also want to migrate your {{es}} system internal indices, specifically the `.kibana` index and the `.security` index.
+When you migrate your {{es}} data into a new infrastructure, you might also want to migrate system-level indices and data streams, such as those used by {{kib}} or security features (for example, `.kibana` and `.security`).
 
-In {{es}} 8.0 and later versions, the snapshot and restore of [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) is the only way to back up and restore system indices and system data streams.
+Starting in {{es}} 8.0, you can use [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) to back up and restore all system indices and system data streams. This is the only available method for migrating this data.
 
 ## Migrate system indices using snapshot and restore
 
