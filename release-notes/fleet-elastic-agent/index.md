@@ -28,29 +28,21 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ## 9.0.2 [fleet-elastic-agent-9.0.2-release-notes]
 
-[discrete]
-[[enhancements-9.0.2]]
-=== Enhancements
+### Features and enhancements [fleet-elastic-agent-9.0.2-features-enhancements]
 
 fleet-server::
 
-* Update Go Version To V1.24.3. {fleet-server-pull}https://github.com/elastic/fleet-server/pull/4891[#https://github.com/elastic/fleet-server/pull/4891]
-
-[discrete]
-[[security-updates-9.0.2]]
-=== Security updates
+* Update Go Version To V1.24.3. [https://github.com/elastic/fleet-server/pull/4891]({{fleet-server-pull}}4891)
 
 elastic-agent::
 
-* Upgrade Go Version To 1.24.3. {elastic-agent-pull}https://github.com/elastic/elastic-agent/pull/8109[#https://github.com/elastic/elastic-agent/pull/8109]
+* Upgrade Go Version To 1.24.3. [https://github.com/elastic/elastic-agent/pull/8109]({{agent-pull}}8109)
 
-[discrete]
-[[bug-fixes-9.0.2]]
-=== Bug fixes
+### Fixes [fleet-elastic-agent-9.0.2-fixes]
 
 elastic-agent::
 
-* Preserve Agent Run State On Deb And Rpm Upgrades. {elastic-agent-pull}https://github.com/elastic/elastic-agent/pull/7999[#https://github.com/elastic/elastic-agent/pull/7999] {elastic-agent-issue}https://github.com/elastic/elastic-agent/issues/3832[#https://github.com/elastic/elastic-agent/issues/3832]
+* Preserve Agent Run State On Deb And Rpm Upgrades. [https://github.com/elastic/elastic-agent/pull/7999]({{agent-pull}}7999) [https://github.com/elastic/elastic-agent/issues/3832]({{agent-issue}}3832)
 
 ## 9.0.1 [fleet-elastic-agent-9.0.1-release-notes]
 
