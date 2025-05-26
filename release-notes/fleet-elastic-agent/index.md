@@ -32,17 +32,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 fleet-server::
 
-* Update Go Version To V1.24.3. [https://github.com/elastic/fleet-server/pull/4891]({{fleet-server-pull}}4891)
-
-elastic-agent::
-
-* Upgrade Go Version To 1.24.3. [https://github.com/elastic/elastic-agent/pull/8109]({{agent-pull}}8109)
+* Updates Go version to v1.24.3 in {{fleet}} [#4891]({{fleet-server-pull}}4891)
+	
+* Updates Go version to v1.24.3 in {{agent}} [#8109]({{agent-pull}}8109)
 
 ### Fixes [fleet-elastic-agent-9.0.2-fixes]
 
-elastic-agent::
-
-* Preserve Agent Run State On Deb And Rpm Upgrades. [https://github.com/elastic/elastic-agent/pull/7999]({{agent-pull}}7999) [https://github.com/elastic/elastic-agent/issues/3832]({{agent-issue}}3832)
+* Improves the upgrade process for {{agent}} installed using DEB or RPM packages by copying the run directory from the previous installation into the new version's folder [#7999]({{agent-pull}}7999) [#3832]({{agent-issue}}3832)
 
 ## 9.0.1 [fleet-elastic-agent-9.0.1-release-notes]
 
