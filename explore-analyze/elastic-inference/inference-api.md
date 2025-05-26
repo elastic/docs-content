@@ -57,32 +57,80 @@ When adaptive allocations are enabled:
 * The number of allocations scales up automatically when the load increases.
 * Allocations scale down to a minimum of 0 when the load decreases, saving resources.
 
-### Scaling behavior across configurations [adaptive-allocations-behavior]
+### Allocation scaling behavior
 
-Depending on how adaptive allocations are configured, the actual behavior may vary.
+The behavior of allocations depends on several factors:
+
+- Platform (Elastic Cloud Hosted, Elastic Cloud Enterprise, or Serverless)
+- Usage level (low, medium, or high)
+- Optimization type (ingest or search)
+
+The tables below apply when adaptive resource settings are [configured through the UI](/deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources).
+
+#### Adaptive resources enabled
 
 ::::{tab-set}
 
-:::{tab-item} Configure from the UI
-If adaptive resources are [enabled from the UI](/deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources), whether the model can scale down to zero allocations depends on the following factors:
-  - The selected usage level (low, medium, high)
-  - Whether the model is optimized for [search](/deploy-manage/autoscaling/trained-model-autoscaling.md#search-optimized) or [ingest](/deploy-manage/autoscaling/trained-model-autoscaling.md#ingest-optimized)
-  - The platform type (for example, Elastic Cloud Hosted, Elastic Cloud Enterprise, or Serverless)
+:::{tab-item} ECH, ECE
+| Usage level | Optimization | Allocations |
+|-------------|--------------|-------------------------------|
+| Low         | Ingest       | 0 to 2 if available, dynamically |
+| Medium      | Ingest       | 1 to 32 dynamically |
+| High        | Ingest       | 1 to limit set in the Cloud console*, dynamically |
+| Low         | Search       | 1 |
+| Medium      | Search       | 1 to 2 (if threads=16), dynamically |
+| High        | Search       | 1 to limit set in the Cloud console*, dynamically |
 
-In some configurations, the model may not scale down to zero, even if the load is low. 
-
-If adaptive resources are disabled from the UI, the deployment always maintains at least 1 or 2 allocations, depending on the usage level and optimization setting.
+\* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
 :::
 
-:::{tab-item} Configure through API
-When adaptive allocations are [enabled via API](/deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations), the system can scale down to 0 allocations if load is low, unless the `min_number_of_allocations` greater than 0 is explicitly set.
 
-If adaptive allocations are disabled from the API, the number of model allocations is fixed and set explicitly using the `num_allocations` parameter.
- 
+:::{tab-item} Serverless
+| Usage level | Optimization | Allocations |
+|-------------|--------------|-------------------------------|
+| Low         | Ingest       | 0 to 2 dynamically |
+| Medium      | Ingest       | 1 to 32 dynamically |
+| High        | Ingest       | 1 to 512 for Search<br>1 to 128 for Security and Observability |
+| Low         | Search       | 0 to 1 dynamically |
+| Medium      | Search       | 1 to 2 (if threads=16), dynamically |
+| High        | Search       | 1 to 32 (if threads=16), dynamically<br>1 to 128 for Security and Observability |
 :::
 
 ::::
+
+#### Adaptive resources disabled
+
+::::{tab-set}
+
+:::{tab-item} ECH, ECE
+| Usage level | Optimization | Allocations |
+|-------------|--------------|-------------------------------|
+| Low         | Ingest       | 2 if available, otherwise 1, statically |
+| Medium      | Ingest       | The smaller of 32 or the limit set in the Cloud console*, statically |
+| High        | Ingest       | Maximum available set in the Cloud console*, statically |
+| Low         | Search       | 1 if available, statically |
+| Medium      | Search       | 2 (if threads=16) statically |
+| High        | Search       | Maximum available set in the Cloud console*, statically |
+
+\* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
+
+:::
+
+:::{tab-item} Serverless
+| Usage level | Optimization | Allocations |
+|-------------|--------------|-------------------------------|
+| Low         | Ingest       | Exactly 32 |
+| Medium      | Ingest       | 1 to 32 dynamically |
+| High        | Ingest       | 512 for Search<br>No static allocations for Security and Observability |
+| Low         | Search       | 1 statically |
+| Medium      | Search       | 2 statically (if threads=16) |
+| High        | Search       | 32 statically (if threads=16) for Search<br>No static allocations for Security and Observability |
+:::
+
+::::
+
+You can also configure adaptive allocations via the API using parameters like `num_allocations`, `min_number_of_allocations`, and `threads_per_allocation`. Refer to [Enable autoscaling through APIs](/deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations) for details.
 
 ::::{warning}
 If you don't use adaptive allocations, the deployment will always consume a fixed amount of resources, regardless of actual usage. This can lead to inefficient resource utilization and higher costs.
