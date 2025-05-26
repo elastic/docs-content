@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/esql-for-search.html
 applies_to:
-  stack: preview
-  serverless: preview
+  stack: ga
+  serverless: ga
 products:
   - id: elasticsearch
 ---
