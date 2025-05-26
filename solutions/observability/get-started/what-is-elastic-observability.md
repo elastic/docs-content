@@ -33,7 +33,7 @@ In **Discover**, you can quickly search and filter your log data, get informatio
 
 ## Application performance monitoring (APM) [observability-serverless-observability-overview-application-performance-monitoring-apm]
 
-Instrument your code and collect performance data and errors at runtime by installing APM agents like Java, Go, .NET, and many more. Then use Observability to monitor your software services and applications in real time:
+Instrument your code and collect performance data and errors at runtime by installing APM agents for Java, Go, .NET, and many more. Then use Observability to monitor your software services and applications in real time:
 
 * Visualize detailed performance information on your services.
 * Identify and analyze errors.

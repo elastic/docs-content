@@ -53,12 +53,12 @@ Our quickstarts dramatically reduce your time-to-value by offering a fast path t
 
 Follow the steps in these guides to get started quickly:
 
-* [Quickstart: Monitor hosts with {{agent}}](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md)
-* [Quickstart: Monitor your Kubernetes cluster with {{agent}}](/solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md)
-* [Quickstart: Monitor hosts with OpenTelemetry](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md)
-* [Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT)](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md)
-* [Quickstart: Collect data with AWS Firehose](/solutions/observability/get-started/quickstart-collect-data-with-aws-firehose.md)
-
+* [**Quickstart: Monitor hosts with OpenTelemetry**](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md)
+* [**Quickstart: Monitor Kubernetes with OpenTelemetry**](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md)
+* [**Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint**](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md)
+* [**Get started with Logs**](/solutions/observability/logs/get-started-with-system-logs.md): Add your log data to {{observability}} and start exploring your logs.
+* [**Get started with traces and APM**](/solutions/observability/apm/get-started.md): Collect Application Performance Monitoring (APM) data and visualize it in real time.
+* [**Get started with metrics**](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md): Add your metrics data to {{observability}} and visualize it in real time.
 
 ### Get started with other features [_get_started_with_other_features]
 
@@ -70,7 +70,6 @@ Want to use {{fleet}} or some other feature not covered in the quickstarts? Foll
 * [Get started with application traces and APM](/solutions/observability/apm/get-started-fleet-managed-apm-server.md)
 * [Get started with synthetic monitoring](/solutions/observability/synthetics/index.md)
 * [Get started with Universal Profiling](/solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md)
-
 
 ## Additional guides [_additional_guides]
 

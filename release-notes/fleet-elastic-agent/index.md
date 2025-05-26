@@ -26,6 +26,20 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.0.2 [fleet-elastic-agent-9.0.2-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.2-features-enhancements]
+
+fleet-server::
+
+* Updates Go version to v1.24.3 in {{fleet}} [#4891]({{fleet-server-pull}}4891)
+	
+* Updates Go version to v1.24.3 in {{agent}} [#8109]({{agent-pull}}8109)
+
+### Fixes [fleet-elastic-agent-9.0.2-fixes]
+
+* Improves the upgrade process for {{agent}} installed using DEB or RPM packages by copying the run directory from the previous installation into the new version's folder [#7999]({{agent-pull}}7999) [#3832]({{agent-issue}}3832)
+
 ## 9.0.1 [fleet-elastic-agent-9.0.1-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.0.1-features-enhancements]
