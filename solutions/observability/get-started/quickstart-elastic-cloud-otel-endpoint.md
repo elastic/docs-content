@@ -9,6 +9,10 @@ applies_to:
 
 In this quickstart guide, you'll learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic.
 
+::::{warning}
+This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+::::
+
 ## What is the Elastic Cloud Managed OTLP endpoint?
 
 The Managed OTLP Endpoint is a fully managed offering exclusively for Elastic Cloud users (initially available in Elastic Cloud Serverless only) that simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage.
@@ -151,7 +155,6 @@ The Managed endpoint has per-project rate limits in place. If you hit this limit
 
 ## Provide feedback
 
-We love to hear from you!
 Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup#/domain-signup).
 
 For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
