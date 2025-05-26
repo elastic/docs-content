@@ -140,11 +140,11 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
     ```sh
     xpack.security.authc.providers:
       oidc.oidc1:
-          order: 0
-          realm: oidc1
-          description: "Log in with Azure"
+        order: 0
+        realm: oidc1
+        description: "Log in with Azure"
       basic.basic1:
-          order: 1
+        order: 1
     ```
 
 ## Setting up OpenID Connect with Google [ec-securing-oidc-google]
@@ -253,11 +253,11 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
     ```sh
     xpack.security.authc.providers:
       oidc.oidc1:
-          order: 0
-          realm: oidc1
-          description: "Log in with Google"
+        order: 0
+        realm: oidc1
+        description: "Log in with Google"
       basic.basic1:
-          order: 1
+        order: 1
     ```
 
 ## Setting up OpenID Connect with Okta [ec-securing-oidc-okta]
@@ -362,9 +362,9 @@ Remember to add this configuration for each node type in the [User settings](../
     ```sh
     xpack.security.authc.providers:
       oidc.oidc1:
-          order: 0
-          realm: oidc1
-          description: "Log in with Okta"
+        order: 0
+        realm: oidc1
+        description: "Log in with Okta"
       basic.basic1:
-          order: 1
+        order: 1
     ```
