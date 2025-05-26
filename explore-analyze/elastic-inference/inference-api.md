@@ -57,6 +57,33 @@ When adaptive allocations are enabled:
 * The number of allocations scales up automatically when the load increases.
 * Allocations scale down to a minimum of 0 when the load decreases, saving resources.
 
+### Scaling behavior across configurations [adaptive-allocations-behavior]
+
+Depending on how adaptive allocations are configured, the actual behavior may vary.
+
+::::{tab-set}
+
+:::{tab-item} Configure from the UI
+If adaptive resources are [enabled from the UI](/deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources), whether the model can scale down to zero allocations depends on the following factors:
+  - The selected usage level (low, medium, high)
+  - Whether the model is optimized for [search](/deploy-manage/autoscaling/trained-model-autoscaling.md#search-optimized) or [ingest](/deploy-manage/autoscaling/trained-model-autoscaling.md#ingest-optimized)
+  - The platform type (for example, Elastic Cloud Hosted, Elastic Cloud Enterprise, or Serverless)
+
+In some configurations, the model may not scale down to zero, even if the load is low. 
+
+If adaptive resources are disabled from the UI, the deployment always maintains at least 1 or 2 allocations, depending on the usage level and optimization setting.
+
+:::
+
+:::{tab-item} Configure through API
+When adaptive allocations are [enabled via API](/deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations), the system can scale down to 0 allocations if load is low, unless the `min_number_of_allocations` greater than 0 is explicitly set.
+
+If adaptive allocations are disabled from the API, the number of model allocations is fixed and set explicitly using the `num_allocations` parameter.
+ 
+:::
+
+::::
+
 ::::{warning}
 If you don't use adaptive allocations, the deployment will always consume a fixed amount of resources, regardless of actual usage. This can lead to inefficient resource utilization and higher costs.
 ::::
