@@ -22,12 +22,14 @@ You might have switched to {{ech}} (ECH) or {{ece}} (ECE) for any number of reas
 * Restore from a snapshot, which copies the existing indices.
 
 ::::{note}
-This guide focuses on migrating data from a self-managed cluster to an ECH or ECE deployment. Refer to [](/deploy-manage/tools/snapshot-and-restore/ece-restore-across-clusters.md) if the clusters are in the same ECH or ECE environments.
+Although this guide focuses on migrating data from a self-managed cluster to an {{ech}} or {{ece}} deployment, the steps can also be adapted for other scenarios, such as when the source cluster is managed by {{eck}}, or when migrating from {{ece}} to {{ech}}.
+
+If both the source and destination clusters belong to the same {{ech}} or {{ece}} environment, refer to [](/deploy-manage/tools/snapshot-and-restore/ece-restore-across-clusters.md).
 ::::
 
 ## Before you begin [ec_migrate_before_you_begin]
 
-Depending on which option that you choose, you might have limitations or need to do some preparation beforehand.
+Depending on which option you choose, you might have limitations or need to do some preparation beforehand.
 
 Indexing from the source
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data.

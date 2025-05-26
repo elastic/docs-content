@@ -15,7 +15,9 @@ products:
 
 When you migrate your {{es}} data into a new infrastructure, you might also want to migrate system-level indices and data streams, such as those used by {{kib}} or security features (for example, `.kibana` and `.security`).
 
-Starting in {{es}} 8.0, you can use [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) to back up and restore all system indices and system data streams. This is the only available method for migrating this data.
+Starting in {{es}} 8.0, you can use [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) to back up and restore all system indices and system data streams. This is the only available method for migrating this type of data.
+
+However, using snapshot and restore for system indices does not mean you must use it for everything. You can still migrate other data by re-indexing from the source or a remote cluster.
 
 ## Migrate system indices using snapshot and restore
 
