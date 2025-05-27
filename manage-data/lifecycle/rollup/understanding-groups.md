@@ -19,7 +19,7 @@ Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-
 
 To preserve flexibility, Rollup Jobs are defined based on how future queries may need to use the data. Traditionally, systems force the admin to make decisions about what metrics to rollup and on what interval. E.g. The average of `cpu_time` on an hourly basis. This is limiting; if, in the future, the admin wishes to see the average of `cpu_time` on an hourly basis *and* partitioned by `host_name`, they are out of luck.
 
-Of course, the admin can decide to rollup the `[hour, host]` tuple on an hourly basis, but as the number of grouping keys grows, so do the number of tuples the admin needs to configure. Furthermore, these `[hours, host]` tuples are only useful for hourly rollups…​ daily, weekly, or monthly rollups all require new configurations.
+Of course, the admin can decide to rollup the `[hour, host]` tuple on an hourly basis, but as the number of grouping keys grows, so do the number of tuples the admin needs to configure. Furthermore, these `[hours, host]` tuples are only useful for hourly rollups… daily, weekly, or monthly rollups all require new configurations.
 
 Rather than force the admin to decide ahead of time which individual tuples should be rolled up, Elasticsearch’s Rollup jobs are configured based on which groups are potentially useful to future queries. For example, this configuration:
 
@@ -109,7 +109,7 @@ You’ll notice that the second aggregation is not only substantially larger, it
 }
 ```
 
-Ultimately, when configuring `groups` for a job, think in terms of how you might wish to partition data in a query at a future date…​ then include those in the config. Because Rollup Search allows any order or combination of the grouped fields, you just need to decide if a field is useful for aggregating later, and how you might wish to use it (terms, histogram, etc).
+Ultimately, when configuring `groups` for a job, think in terms of how you might wish to partition data in a query at a future date… then include those in the config. Because Rollup Search allows any order or combination of the grouped fields, you just need to decide if a field is useful for aggregating later, and how you might wish to use it (terms, histogram, etc).
 
 ## Calendar vs fixed time intervals [rollup-understanding-group-intervals]
 

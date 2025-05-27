@@ -25,7 +25,7 @@ Proxy certificate
     If you wish to enable [custom endpoint aliases](../../deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) in ECE 2.10 or later, also follow the directions for adding Subject Alternative Name (SAN) entries to support these aliases.
 
     ::::{note} 
-    If you plan to deploy [Integration Servers](../../deploy/cloud-enterprise/manage-integrations-server.md), you must add two additional wildcard subdomains, `*.fleet.<your-domain>` and `*.apm.<your-domain>`, to the Subject Alternative Names (SANs) attached to the proxy wildcard certificate. Based on the previous example, your proxy certificates should end up with those three wildcards: `*.example.com, `*.fleet.example.com`, and `*.apm.example.com`.
+    If you plan to deploy [Integration Servers](../../deploy/cloud-enterprise/manage-integrations-server.md), you must add two additional wildcard subdomains, `*.fleet.<your-domain>` and `*.apm.<your-domain>`, to the Subject Alternative Names (SANs) attached to the proxy wildcard certificate. Based on the previous example, your proxy certificates should end up with those three wildcards: `*.example.com`, `*.fleet.example.com`, and `*.apm.example.com`.
     ::::
 
 

@@ -19,7 +19,7 @@ In the search input’s `request` object, you specify:
 * The [search type](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
 * The search request body
 
-The search request body supports the full Elasticsearch Query DSL—​it’s the same as the body of an Elasticsearch `_search` request.
+The search request body supports the full Elasticsearch Query DSL—it’s the same as the body of an Elasticsearch `_search` request.
 
 For example, the following input retrieves all `event` documents from the `logs` index:
 

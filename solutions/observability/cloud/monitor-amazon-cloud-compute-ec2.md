@@ -52,7 +52,7 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
     1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout. If you accidentally close the popup or the flyout doesn’t open, go to **{{fleet}} → Agents**, then click **Add agent** to access the flyout.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}.
 
-9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
+9. When incoming data is confirmed—after a minute or two—click **View assets** to access the dashboards.
 
 For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](/reference/fleet/index.md).
 

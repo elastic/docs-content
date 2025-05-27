@@ -43,9 +43,9 @@ You cannot update {{dfanalytics}} configurations. Instead, delete the {{dfanalyt
 
 When you create a {{dfanalytics-job}} and the inference step of the process fails due to the model is too large to fit into JVM, follow the steps in [this GitHub issue](https://github.com/elastic/elasticsearch/issues/76093) for a workaround.
 
-### {{dfanalytics-jobs-cap}} cannot use more than 232 documents for training [dfa-training-docs]
+### {{dfanalytics-jobs-cap}} cannot use more than 2^32^ documents for training [dfa-training-docs]
 
-A {{dfanalytics-job}} that would use more than 232 documents for training cannot be started. The limitation applies only for documents participating in training the model. If your source index contains more than 232 documents, set the `training_percent` to a value that represents less than 232 documents.
+A {{dfanalytics-job}} that would use more than 2^32^ documents for training cannot be started. The limitation applies only for documents participating in training the model. If your source index contains more than 2^32^ documents, set the `training_percent` to a value that represents less than 2^32^ documents.
 
 ### Trained models created in 7.8 are not backwards compatible [dfa-inference-bwc]
 

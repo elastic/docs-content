@@ -75,26 +75,21 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
     To configure {{es}} for OIDC, [update your {{es}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
-    xpack:
-        security:
-        authc:
-            realms:
-            oidc:
-                oidc1:
-                order: 2
-                rp.client_id: "<Application (client) ID>"
-                rp.response_type: "code"
-                rp.requested_scopes: ["openid", "email"]
-                rp.redirect_uri: "KIBANA_ENDPOINT_URL/api/security/oidc/callback"
-                op.issuer: "https://login.microsoftonline.com/<Directory (tenant) ID>/v2.0"
-                op.authorization_endpoint: "https://login.microsoftonline.com/<Directory (tenant) ID>/oauth2/v2.0/authorize"
-                op.token_endpoint: "https://login.microsoftonline.com/<Directory (tenant) ID>/oauth2/v2.0/token"
-                op.userinfo_endpoint: "https://graph.microsoft.com/oidc/userinfo"
-                op.endsession_endpoint: "https://login.microsoftonline.com/<Directory (tenant) ID>/oauth2/v2.0/logout"
-                rp.post_logout_redirect_uri: "KIBANA_ENDPOINT_URL/logged_out"
-                op.jwkset_path: "https://login.microsoftonline.com/<Directory (tenant) ID>/discovery/v2.0/keys"
-                claims.principal: email
-                claim_patterns.principal: "^([^@]+)@YOUR_DOMAIN\\.TLD$"
+    xpack.security.authc.realms.oidc.oidc1:
+      order: 2
+      rp.client_id: "<Application (client) ID>"
+      rp.response_type: "code"
+      rp.requested_scopes: ["openid", "email"]
+      rp.redirect_uri: "KIBANA_ENDPOINT_URL/api/security/oidc/callback"
+      op.issuer: "https://login.microsoftonline.com/<Directory (tenant) ID>/v2.0"
+      op.authorization_endpoint: "https://login.microsoftonline.com/<Directory (tenant) ID>/oauth2/v2.0/authorize"
+      op.token_endpoint: "https://login.microsoftonline.com/<Directory (tenant) ID>/oauth2/v2.0/token"
+      op.userinfo_endpoint: "https://graph.microsoft.com/oidc/userinfo"
+      op.endsession_endpoint: "https://login.microsoftonline.com/<Directory (tenant) ID>/oauth2/v2.0/logout"
+      rp.post_logout_redirect_uri: "KIBANA_ENDPOINT_URL/logged_out"
+      op.jwkset_path: "https://login.microsoftonline.com/<Directory (tenant) ID>/discovery/v2.0/keys"
+      claims.principal: email
+      claim_patterns.principal: "^([^@]+)@YOUR_DOMAIN\\.TLD$"
     ```
 
     Where:
@@ -144,11 +139,11 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
     ```sh
     xpack.security.authc.providers:
-        oidc.oidc1:
+      oidc.oidc1:
         order: 0
         realm: oidc1
         description: "Log in with Azure"
-        basic.basic1:
+      basic.basic1:
         order: 1
     ```
 
@@ -192,24 +187,19 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
     To configure {{es}} for OIDC, [update your {{es}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
-    xpack:
-        security:
-        authc:
-            realms:
-            oidc:
-                oidc1:
-                order: 2
-                rp.client_id: "YOUR_CLIENT_ID"
-                rp.response_type: "code"
-                rp.requested_scopes: ["openid", "email"]
-                rp.redirect_uri: "<KIBANA_ENDPOINT_URL>/api/security/oidc/callback"
-                op.issuer: "https://accounts.google.com"
-                op.authorization_endpoint: "https://accounts.google.com/o/oauth2/v2/auth"
-                op.token_endpoint: "https://oauth2.googleapis.com/token"
-                op.userinfo_endpoint: "https://openidconnect.googleapis.com/v1/userinfo"
-                op.jwkset_path: "https://www.googleapis.com/oauth2/v3/certs"
-                claims.principal: email
-                claim_patterns.principal: "^([^@]+)@YOUR_DOMAIN\\.TLD$"
+    xpack.security.authc.realms.oidc.oidc1:
+      order: 2
+      rp.client_id: "YOUR_CLIENT_ID"
+      rp.response_type: "code"
+      rp.requested_scopes: ["openid", "email"]
+      rp.redirect_uri: "<KIBANA_ENDPOINT_URL>/api/security/oidc/callback"
+      op.issuer: "https://accounts.google.com"
+      op.authorization_endpoint: "https://accounts.google.com/o/oauth2/v2/auth"
+      op.token_endpoint: "https://oauth2.googleapis.com/token"
+      op.userinfo_endpoint: "https://openidconnect.googleapis.com/v1/userinfo"
+      op.jwkset_path: "https://www.googleapis.com/oauth2/v3/certs"
+      claims.principal: email
+      claim_patterns.principal: "^([^@]+)@YOUR_DOMAIN\\.TLD$"
     ```
 
     Where:
@@ -262,11 +252,11 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
 
     ```sh
     xpack.security.authc.providers:
-        oidc.oidc1:
+      oidc.oidc1:
         order: 0
         realm: oidc1
         description: "Log in with Google"
-        basic.basic1:
+      basic.basic1:
         order: 1
     ```
 
@@ -308,25 +298,20 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
     To configure {{es}} for OIDC, [update your {{es}} user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
-    xpack:
-        security:
-        authc:
-            realms:
-            oidc:
-                oidc1:
-                order: 2
-                rp.client_id: "YOUR_CLIENT_ID"
-                rp.response_type: "code"
-                rp.requested_scopes: ["openid", "email"]
-                rp.redirect_uri: "KIBANA_ENDPOINT_URL/api/security/oidc/callback"
-                op.issuer: "https://YOUR_OKTA_DOMAIN"
-                op.authorization_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/authorize"
-                op.token_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/token"
-                op.userinfo_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/userinfo"
-                op.endsession_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/logout"
-                op.jwkset_path: "https://YOUR_OKTA_DOMAIN/oauth2/v1/keys"
-                claims.principal: email
-                claim_patterns.principal: "^([^@]+)@YOUR_DOMAIN\\.TLD$"
+    xpack.security.authc.realms.oidc.oidc1:
+      order: 2
+      rp.client_id: "YOUR_CLIENT_ID"
+      rp.response_type: "code"
+      rp.requested_scopes: ["openid", "email"]
+      rp.redirect_uri: "KIBANA_ENDPOINT_URL/api/security/oidc/callback"
+      op.issuer: "https://YOUR_OKTA_DOMAIN"
+      op.authorization_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/authorize"
+      op.token_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/token"
+      op.userinfo_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/userinfo"
+      op.endsession_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/logout"
+      op.jwkset_path: "https://YOUR_OKTA_DOMAIN/oauth2/v1/keys"
+      claims.principal: email
+      claim_patterns.principal: "^([^@]+)@YOUR_DOMAIN\\.TLD$"
     ```
 
     Where:
@@ -376,10 +361,10 @@ Remember to add this configuration for each node type in the [User settings](../
 
     ```sh
     xpack.security.authc.providers:
-        oidc.oidc1:
+      oidc.oidc1:
         order: 0
         realm: oidc1
         description: "Log in with Okta"
-        basic.basic1:
+      basic.basic1:
         order: 1
     ```

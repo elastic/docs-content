@@ -122,13 +122,13 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
     :screenshot:
     :::
 
-4. On the **Add Elastic APM integration** page, define the host and port where APM Server will listen. Make a note of this value—​you’ll need it later.
+4. On the **Add Elastic APM integration** page, define the host and port where APM Server will listen. Make a note of this value—you’ll need it later.
 
     ::::{tip}
     Using Docker or Kubernetes? Set the host to `0.0.0.0` to bind to all interfaces.
     ::::
 
-5. Under **Agent authorization**, set a Secret token. This will be used to authorize requests from APM agents to the APM Server. Make a note of this value—​you’ll need it later.
+5. Under **Agent authorization**, set a Secret token. This will be used to authorize requests from APM agents to the APM Server. Make a note of this value—you’ll need it later.
 6. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an APM integration policy for the configuration you just specified.
 7. To view the new policy, click **Agent policy 1**.
 

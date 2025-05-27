@@ -21,7 +21,7 @@ Sitting between {{es}} and the disk is the filesystem cache. Documents in the in
 :name: img-pre-refresh
 :::
 
-Lucene allows new segments to be written and opened, making the documents they contain visible to search ​without performing a full commit. This is a much lighter process than a commit to disk, and can be done frequently without degrading performance.
+Lucene allows new segments to be written and opened, making the documents they contain visible to search without performing a full commit. This is a much lighter process than a commit to disk, and can be done frequently without degrading performance.
 
 :::{image} /manage-data/images/elasticsearch-reference-lucene-written-not-committed.png
 :alt: The buffer contents are written to a segment, which is searchable, but is not yet committed

@@ -91,13 +91,13 @@ toc:
         children:
           - file: observability/get-started/what-is-elastic-observability.md
           - file: observability/get-started/create-an-observability-project.md
-          - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
-          - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
           - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
           - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
-          - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
+          - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
+          - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
           - file: observability/get-started/add-data-from-splunk.md
+          - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/get-started-with-dashboards.md
       - file: observability/applications/index.md
         children:
@@ -121,11 +121,6 @@ toc:
                   - file: observability/apm/metadata.md
               - file: observability/apm/collect-application-data.md
                 children:
-                  - file: observability/apm/elastic-apm-agents.md
-                    children:
-                      - file: observability/apm/apm-agent-central-configuration.md
-                      - file: observability/apm/real-user-monitoring-rum.md
-                      - file: observability/apm/create-upload-source-maps-rum.md
                   - file: observability/apm/use-opentelemetry-with-apm.md
                     children:
                       - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
@@ -133,6 +128,11 @@ toc:
                       - file: observability/apm/limitations.md
                       - file: observability/apm/attributes.md
                       - file: observability/apm/data-stream-routing.md
+                  - file: observability/apm/elastic-apm-agents.md
+                    children:
+                      - file: observability/apm/apm-agent-central-configuration.md
+                      - file: observability/apm/real-user-monitoring-rum.md
+                      - file: observability/apm/create-upload-source-maps-rum.md
                   - file: observability/apm/apm-k8s-attacher.md
                   - file: observability/apm/monitor-aws-lambda-functions.md
                   - file: observability/apm/jaeger.md

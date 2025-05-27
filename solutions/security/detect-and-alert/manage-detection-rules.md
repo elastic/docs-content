@@ -77,7 +77,7 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
 
-    * Edit a single rule: Select the **All actions** menu (**…​**) on a rule, then select **Edit rule settings**. Alternatively, open the rule’s details page and click **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](/solutions/security/detect-and-alert/create-detection-rule.md).
+    * Edit a single rule: Select the **All actions** menu (**…**) on a rule, then select **Edit rule settings**. Alternatively, open the rule’s details page and click **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](/solutions/security/detect-and-alert/create-detection-rule.md).
     * Bulk edit multiple rules: Select the rules you want to edit, then select an action from the **Bulk actions** menu:
 
         ::::{note}
@@ -124,7 +124,7 @@ When duplicating a rule with exceptions, you can choose to duplicate the rule an
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, do one of the following:
 
-    * Select the **All actions** menu (**…​**) on a rule, then select an action.
+    * Select the **All actions** menu (**…**) on a rule, then select an action.
     * Select all the rules you want to modify, then select an action from the **Bulk actions** menu.
     * To enable or disable a single rule, switch on the rule’s **Enabled** toggle.
     * To [snooze](/solutions/security/detect-and-alert/manage-detection-rules.md#snooze-rule-actions) actions for rules, click the bell icon.
@@ -143,7 +143,7 @@ Before manually running rules, make sure you properly understand and plan for ru
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, do one of the following:
 
-    * Select the **All actions** menu (**…​**) on a rule, then select **Manual run**.
+    * Select the **All actions** menu (**…**) on a rule, then select **Manual run**.
     * Select all the rules you want to manually run, select the **Bulk actions** menu, then select **Manual run**.
 
 3. Specify when the manual run starts and ends. The default selection is the current day starting three hours in the past. The rule will search for events during the selected time range.

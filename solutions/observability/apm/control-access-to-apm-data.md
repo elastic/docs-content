@@ -10,7 +10,7 @@ products:
 
 # Control access to APM data [apm-spaces]
 
-Starting in version 8.2.0, the Applications UI is [Kibana space](/deploy-manage/manage-spaces.md) aware. This allows you to separate your data—​and access to that data—​by team, use case, service environment, or any other filter that you choose.
+Starting in version 8.2.0, the Applications UI is [Kibana space](/deploy-manage/manage-spaces.md) aware. This allows you to separate your data—and access to that data—by team, use case, service environment, or any other filter that you choose.
 
 To take advantage of this feature, your APM data needs to be written to different data streams. One way to accomplish this is with different namespaces. For example, you can send production data to an APM integration with a namespace of `production`, while sending staging data to a different APM integration with a namespace of `staging`.
 
@@ -41,7 +41,7 @@ The default index settings also query the `apm-*` data view. This data view matc
 
 Instead of querying the default APM data views, we can create filtered aliases for the Applications UI to query. A filtered alias is a secondary name for a group of data streams that has a user-defined filter to limit the documents that the alias can access.
 
-To separate `staging` and `production` APM data, we’d need to create six filtered aliases—​three aliases for each service environment:
+To separate `staging` and `production` APM data, we’d need to create six filtered aliases—three aliases for each service environment:
 
 | Index setting | `production` env | `staging` env |
 | --- | --- | --- |

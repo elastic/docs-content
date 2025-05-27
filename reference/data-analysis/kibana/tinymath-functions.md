@@ -33,13 +33,13 @@ abs([-1 , -2, 3, -4]) // returns [1, 2, 3, 4]
 ```
 
 
-## add( …​args ) [_add_args]
+## add( …args ) [_add_args]
 
 Calculates the sum of one or more numbers/arrays passed into the function. If at least one array of numbers is passed into the function, the function will calculate the sum by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
 **Returns**: `number` | `Array.<number>`. The sum of all numbers in `args` if `args` contains only numbers. Returns an array of sums of the elements at each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
 
@@ -92,13 +92,13 @@ ceil([1.1, 2.2, 3.3]) // returns [2, 3, 4]
 ```
 
 
-## clamp( …​a, min, max ) [_clamp_a_min_max]
+## clamp( …a, min, max ) [_clamp_a_min_max]
 
 Restricts value to a given range and returns closed available value. If only `min` is provided, values are restricted to only a lower bound.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​a | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …a | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 | min | number &#124; Array.<number> | (optional) The minimum value this function will return. |
 | max | number &#124; Array.<number> | (optional) The maximum value this function will return. |
 
@@ -325,13 +325,13 @@ log([10, 100, 1000, 10000, 100000]) // returns [1, 2, 3, 4, 5]
 ```
 
 
-## max( …​args ) [_max_args]
+## max( …args ) [_max_args]
 
 Finds the maximum value of one of more numbers/arrays of numbers passed into the function. If at least one array of numbers is passed into the function, the function will find the maximum by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
 **Returns**: `number` | `Array.<number>`. The maximum value of all numbers if `args` contains only numbers. Returns an array with the the maximum values at each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
 
@@ -346,13 +346,13 @@ max([1, 9], 4, [3, 5]) // returns [max([1, 4, 3]), max([9, 4, 5])] = [4, 9]
 ```
 
 
-## mean( …​args ) [_mean_args]
+## mean( …args ) [_mean_args]
 
 Finds the mean value of one of more numbers/arrays of numbers passed into the function. If at least one array of numbers is passed into the function, the function will find the mean by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
 **Returns**: `number` | `Array.<number>`. The mean value of all numbers if `args` contains only numbers. Returns an array with the the mean values of each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
 
@@ -365,13 +365,13 @@ mean([1, 9], 5, [3, 4]) // returns [mean([1, 5, 3]), mean([9, 5, 4])] = [3, 6]
 ```
 
 
-## median( …​args ) [_median_args]
+## median( …args ) [_median_args]
 
 Finds the median value(s) of one of more numbers/arrays of numbers passed into the function. If at least one array of numbers is passed into the function, the function will find the median by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
 **Returns**: `number` | `Array.<number>`. The median value of all numbers if `args` contains only numbers. Returns an array with the the median values of each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
 
@@ -385,13 +385,13 @@ median([1, 9], 2, 4, [3, 5]) // returns [median([1, 2, 4, 3]), median([9, 2, 4, 
 ```
 
 
-## min( …​args ) [_min_args]
+## min( …args ) [_min_args]
 
 Finds the minimum value of one of more numbers/arrays of numbers passed into the function. If at least one array of numbers is passed into the function, the function will find the minimum by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
 **Returns**: `number` | `Array.<number>`. The minimum value of all numbers if `args` contains only numbers. Returns an array with the the minimum values of each index, including all scalar numbers in `args` in the calculation at each index if `a` is an array.
 
@@ -432,13 +432,13 @@ mod([14, 42, 65, 108], [5, 4, 14, 2]) // returns [5, 2, 9, 0]
 ```
 
 
-## mode( …​args ) [_mode_args]
+## mode( …args ) [_mode_args]
 
 Finds the mode value(s) of one of more numbers/arrays of numbers passed into the function. If at least one array of numbers is passed into the function, the function will find the mode by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
 **Returns**: `number` | `Array.<Array.<number>>`. An array of mode value(s) of all numbers if `args` contains only numbers. Returns an array of arrays with mode value(s) of each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
 
@@ -518,13 +518,13 @@ random(-10,10) // returns a random number between -10 (inclusive) and 10 (exclus
 ```
 
 
-## range( …​args ) [_range_args]
+## range( …args ) [_range_args]
 
 Finds the range of one of more numbers/arrays of numbers passed into the function. If at least one array of numbers is passed into the function, the function will find the range by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
 **Returns**: `number` | `Array.<number>`. The range value of all numbers if `args` contains only numbers. Returns an array with the range values at each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
 
@@ -537,13 +537,13 @@ range([1, 9], 4, [3, 5]) // returns [range([1, 4, 3]), range([9, 4, 5])] = [3, 5
 ```
 
 
-## range( …​args ) [_range_args_2]
+## range( …args ) [_range_args_2]
 
 Finds the range of one of more numbers/arrays of numbers into the function. If at least one array of numbers is passed into the function, the function will find the range by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| …​args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
+| …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
 **Returns**: `number` | `Array.<number>`. The range value of all numbers if `args` contains only numbers. Returns an array with the the range values at each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
 
@@ -661,7 +661,7 @@ subtract([14, 42, 65, 108], [2, 7, 5, 12]) // returns [12, 35, 52, 96]
 ```
 
 
-## sum( …​args ) [_sum_args]
+## sum( …args ) [_sum_args]
 
 Calculates the sum of one or more numbers/arrays passed into the function. If at least one array is passed, the function will sum up one or more numbers/arrays of numbers and distinct values of an array. Sum accepts arrays of different lengths.
 
