@@ -20,8 +20,6 @@ You can create a new inference endpoint:
 
 ## Inference endpoints UI [inference-endpoints]
 
-You can manage inference endpoints using the UI.
-
 The **Inference endpoints** page provides an interface for managing inference endpoints.
 
 :::{image} /explore-analyze/images/kibana-inference-endpoints-ui.png
