@@ -89,7 +89,7 @@ This basic package is suitable for most use cases and it offers a reduced size o
 
 #### Servers flavor [elastic-agent-servers-flavor-regular]
 
-The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELATIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
+The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELASTIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
 
 * `apm-server` - implements the Elastic [APM Server](/solutions/observability/apm/get-started.md).
 * `cloudbeat` - implements [Cloud Security Posture Management (CSPM)](../../solutions/security/cloud/cloud-security-posture-management.md) integrations.
