@@ -918,7 +918,7 @@ All forms of quantization will result in some accuracy loss and as the quantizat
 * `int4` requires some rescoring for higher accuracy and larger recall scenarios. Generally, oversampling by 1.5x-2x recovers most of the accuracy loss.
 * `bbq` requires rescoring except on exceptionally large indices or models specifically designed for quantization. We have found that between 3x-5x oversampling is generally sufficient. But for fewer dimensions or vectors that do not quantize well, higher oversampling may be required.
 
-#### `rescore_vector` 
+#### The `rescore_vector` option
 ```{applies_to}
 stack: preview 9.0, ga 9.1
 ```
