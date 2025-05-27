@@ -35,11 +35,11 @@ toc:
               - file: deploy/elastic-cloud/project-settings.md
           - file: deploy/elastic-cloud/cloud-hosted.md
             children:
-              - file: deploy/elastic-cloud/elastic-cloud-hosted-planning.md
               - file: deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md
                 children:
                   - file: deploy/elastic-cloud/available-stack-versions.md
               - file: deploy/elastic-cloud/access-kibana.md
+              - file: deploy/elastic-cloud/elastic-cloud-hosted-planning.md
               - file: deploy/elastic-cloud/manage-deployments.md
                 children:
                   - file: deploy/elastic-cloud/configure.md
