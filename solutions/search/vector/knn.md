@@ -918,7 +918,11 @@ All forms of quantization will result in some accuracy loss and as the quantizat
 * `int4` requires some rescoring for higher accuracy and larger recall scenarios. Generally, oversampling by 1.5x-2x recovers most of the accuracy loss.
 * `bbq` requires rescoring except on exceptionally large indices or models specifically designed for quantization. We have found that between 3x-5x oversampling is generally sufficient. But for fewer dimensions or vectors that do not quantize well, higher oversampling may be required.
 
-You can use the `rescore_vector` [preview] option to automatically perform reranking. When a rescore `oversample` parameter is specified, the approximate kNN search will:
+#### The `rescore_vector` option
+```{applies_to}
+stack: preview 9.0, ga 9.1
+```
+You can use the `rescore_vector` option to automatically perform reranking. When a rescore `oversample` parameter is specified, the approximate kNN search will:
 
 * Retrieve `num_candidates` candidates per shard.
 * From these candidates, the top `k * oversample` candidates per shard will be rescored using the original vectors.
