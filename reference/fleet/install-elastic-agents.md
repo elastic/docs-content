@@ -39,7 +39,7 @@ You have a few options for installing and managing an {{agent}}:
 
 * **Install {{agent}} in a containerized environment**
 
-    You can run {{agent}} inside of a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the Elastic Docker registry, and we provide deployment manifests for running on Kubernetes.
+    You can run {{agent}} inside of a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the Elastic Docker registry, and we provide deployment manifests for running on Kubernetes.
 
     Refer to:
 
@@ -54,7 +54,7 @@ You have a few options for installing and managing an {{agent}}:
 
     * [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md)
     * [Scaling {{agent}} on {{k8s}}](/reference/fleet/scaling-on-kubernetes.md)
-    * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
+    * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 
 
 ::::{admonition} Restrictions in {{serverless-short}}
@@ -89,7 +89,7 @@ This basic package is suitable for most use cases and it offers a reduced size o
 
 #### Servers flavor [elastic-agent-servers-flavor-regular]
 
-The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELATIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
+The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELASTIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
 
 * `apm-server` - implements the Elastic [APM Server](/solutions/observability/apm/get-started.md).
 * `cloudbeat` - implements [Cloud Security Posture Management (CSPM)](../../solutions/security/cloud/cloud-security-posture-management.md) integrations.

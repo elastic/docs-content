@@ -148,7 +148,7 @@ GET .watcher-history*/_search?pretty
 
 ## Take action [health-take-action]
 
-Recording `watch_records` in the watch history is nice, but the real power of {{watcher}} is being able to do something in response to an alert. A watch’s [actions](actions.md) define what to do when the watch condition is true—​you can send emails, call third-party webhooks, or write documents to an Elasticsearch index or log when the watch condition is met.
+Recording `watch_records` in the watch history is nice, but the real power of {{watcher}} is being able to do something in response to an alert. A watch’s [actions](actions.md) define what to do when the watch condition is true—you can send emails, call third-party webhooks, or write documents to an Elasticsearch index or log when the watch condition is met.
 
 For example, you could add an action to index the cluster status information when the status is RED.
 

@@ -63,7 +63,7 @@ Below is a comparison of how you used the {{agent}} integration to create monito
 
 Find more details in [Use {{project-monitors-cap}}](/solutions/observability/synthetics/create-monitors-with-projects.md).
 
-**How to use the UI ([read more](#synthetics-migrate-integration-ui))**:
+**How to use the UI ([read more](#synthetics-migrate-integration-ui))**:
 
 * **{{agent}} integration**:
 

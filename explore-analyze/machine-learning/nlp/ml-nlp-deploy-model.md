@@ -33,7 +33,7 @@ You can define the resource usage level of the NLP model during model deployment
 * Medium: This level limits resources to 32 vCPUs, which may be suitable for development, testing, and demos depending on your parameters. It is not recommended for production use.
 * High: This level may use the maximum number of vCPUs available for this deployment from the Cloud console. If the maximum is 2 vCPUs or fewer, this level is equivalent to the medium or low level.
 
-For the resource levels when adaptive resources are enabled, refer to <[*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md).
+For the resource levels when adaptive resources are enabled, refer to [Trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md).
 
 ## Request queues and search priority [infer-request-queues]
 

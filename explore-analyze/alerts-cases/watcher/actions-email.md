@@ -130,7 +130,7 @@ See [Automating report generation](../../report-and-share/automating-report-gene
 $$$email-address$$$
 
 Email Address
-:   An email address can contain two possible parts—​the address itself and an optional personal name as described in [RFC 822](http://www.ietf.org/rfc/rfc822.txt). The address can be represented either as a string of the form `user@host.domain` or `Personal Name <user@host.domain>`. You can also specify an email address as an object that contains `name` and `address` fields.
+:   An email address can contain two possible parts—the address itself and an optional personal name as described in [RFC 822](http://www.ietf.org/rfc/rfc822.txt). The address can be represented either as a string of the form `user@host.domain` or `Personal Name <user@host.domain>`. You can also specify an email address as an object that contains `name` and `address` fields.
 
 $$$address-list$$$
 

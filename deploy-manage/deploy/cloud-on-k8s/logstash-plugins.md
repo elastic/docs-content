@@ -12,7 +12,7 @@ products:
 
 The power of {{ls}} is in the plugins--[inputs](logstash-docs-md://lsr/input-plugins.md), [outputs](logstash-docs-md://lsr/output-plugins.md), [filters](logstash-docs-md://lsr/filter-plugins.md), and [codecs](logstash-docs-md://lsr/codec-plugins.md).
 
-In {{ls}} on ECK, you can use the same plugins that you use for other {{ls}} instances—​including Elastic-supported, community-supported, and custom plugins. However, you may have other factors to consider, such as how you configure your {{k8s}} resources, how you specify additional resources, and how you scale your {{ls}} installation.
+In {{ls}} on ECK, you can use the same plugins that you use for other {{ls}} instances—including Elastic-supported, community-supported, and custom plugins. However, you may have other factors to consider, such as how you configure your {{k8s}} resources, how you specify additional resources, and how you scale your {{ls}} installation.
 
 In this section, we’ll cover:
 

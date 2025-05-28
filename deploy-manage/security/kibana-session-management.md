@@ -30,7 +30,7 @@ xpack.security.session.idleTimeout: "3d"
 
 ## Session lifespan [session-lifespan]
 
-You can use `xpack.security.session.lifespan` to configure the maximum session duration or "lifespan" — also known as the "absolute timeout". This and `xpack.security.session.idleTimeout` are both highly recommended. By default, a maximum session lifespan is 30 days. To define another lifespan, set the property in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. The lifespan is formatted as a duration of `<count>[ms|s|m|h|d|w|M|Y]` (e.g. *20m*, *24h*, *7d*, *1w*). For example, set the lifespan to expire sessions after 7 days:
+You can use `xpack.security.session.lifespan` to configure the maximum session duration or "lifespan" — also known as the "absolute timeout". This and `xpack.security.session.idleTimeout` are both highly recommended. By default, a maximum session lifespan is 30 days. To define another lifespan, set the property in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file. The lifespan is formatted as a duration of `<count>[ms|s|m|h|d|w|M|Y]` (e.g. *20m*, *24h*, *7d*, *1w*). For example, set the lifespan to expire sessions after 7 days:
 
 ```yaml
 xpack.security.session.lifespan: "7d"

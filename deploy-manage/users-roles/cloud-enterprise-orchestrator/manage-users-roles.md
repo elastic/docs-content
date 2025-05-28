@@ -85,7 +85,7 @@ During setup, you can map users according to their properties to {{ece}} roles.
 
 ## Step 3: Change the order of provider profiles [ece-provider-order]
 
-{{ece}} performs authentication checks against the configured providers, in order. When a match is found, the user search stops. The roles specified by that first profile match dictate which permissions the user is granted—​regardless of what permissions might be available in another, lower-order profile.
+{{ece}} performs authentication checks against the configured providers, in order. When a match is found, the user search stops. The roles specified by that first profile match dictate which permissions the user is granted—regardless of what permissions might be available in another, lower-order profile.
 
 To change the provider order:
 

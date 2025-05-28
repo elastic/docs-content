@@ -29,7 +29,9 @@ This guide shows you how to:
 ::::
 
 
-The examples on this page use the following ingest pipeline and index template, which you can set in **Developer Tools**. If you haven’t used ingest pipelines and index templates to parse your log data and extract structured fields yet, start with the [Parse and organize logs](/solutions/observability/logs/parse-route-logs.md) documentation.
+The examples on this page use the following ingest pipeline and index template. The pipeline and template need to be set before you create your data stream in the following steps. Set them in **Developer Tools**, which you can find by searching for `Developer Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+If you haven't used ingest pipelines and index templates to parse your log data and extract structured fields yet, start with the [Parse and organize logs](/solutions/observability/logs/parse-route-logs.md) documentation.
 
 Set the ingest pipeline with the following command:
 
@@ -94,16 +96,16 @@ Add some logs with varying timestamps and log levels to your data stream:
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-09-15T08:15:20.234Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-04-15T08:15:20.234Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-09-14T10:30:45.789Z ERROR 192.168.1.102 Critical system failure detected." }
+{ "message": "2025-04-14T10:30:45.789Z ERROR 192.168.1.102 Critical system failure detected." }
 { "create": {} }
-{ "message": "2023-09-10T14:20:45.789Z ERROR 192.168.1.105 Database connection lost." }
+{ "message": "2025-04-10T14:20:45.789Z ERROR 192.168.1.105 Database connection lost." }
 { "create": {} }
-{ "message": "2023-09-20T09:40:32.345Z INFO 192.168.1.106 User logout initiated." }
+{ "message": "2025-04-20T09:40:32.345Z INFO 192.168.1.106 User logout initiated." }
 ```
 
-For this example, let’s look for logs with a `WARN` or `ERROR` log level that occurred on September 14th or 15th. From Discover:
+For this example, let’s look for logs with a `WARN` or `ERROR` log level that occurred on April 14th or 15th. From Discover:
 
 1. Make sure **All logs** is selected in the **Data views** menu.
 1. Add the following KQL query in the search bar to filter for logs with log levels of `WARN` or `ERROR`:
@@ -111,11 +113,11 @@ For this example, let’s look for logs with a `WARN` or `ERROR` log level that 
     ```text
     log.level: ("ERROR" or "WARN")
     ```
-1. Click the current time range, select **Absolute**, and set the **Start date** to `Sep 14, 2023 @ 00:00:00.000`.
+1. Click the current time range, select **Absolute**, and set the **Start date** to `Apr 14, 2025 @ 00:00:00.000`.
 
     ![Set the time range start date](../../images/serverless-logs-start-date.png "")
 
-1. Click the end of the current time range, select **Absolute**, and set the **End date** to `Sep 15, 2023 @ 23:59:59.999`.
+1. Click the end of the current time range, select **Absolute**, and set the **End date** to `Apr 15, 2025 @ 23:59:59.999`.
 
     ![Set the time range end date](/solutions/images/serverless-logs-end-date.png "")
 
@@ -141,16 +143,16 @@ First, from **Developer Tools**, add some logs with varying timestamps and log l
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-09-15T08:15:20.234Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-04-15T08:15:20.234Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-09-14T10:30:45.789Z ERROR 192.168.1.102 Critical system failure detected." }
+{ "message": "2025-04-14T10:30:45.789Z ERROR 192.168.1.102 Critical system failure detected." }
 { "create": {} }
-{ "message": "2023-09-10T14:20:45.789Z ERROR 192.168.1.105 Database connection lost." }
+{ "message": "2025-04-10T14:20:45.789Z ERROR 192.168.1.105 Database connection lost." }
 { "create": {} }
-{ "message": "2023-09-20T09:40:32.345Z INFO 192.168.1.106 User logout initiated." }
+{ "message": "2025-04-20T09:40:32.345Z INFO 192.168.1.106 User logout initiated." }
 ```
 
-Let’s say you want to look into an event that occurred between September 14th and 15th. The following boolean query filters for logs with timestamps during those days that also have a log level of `ERROR` or `WARN`.
+Let’s say you want to look into an event that occurred between April 14th and 15th. The following boolean query filters for logs with timestamps during those days that also have a log level of `ERROR` or `WARN`.
 
 ```console
 POST /logs-example-default/_search
@@ -161,8 +163,8 @@ POST /logs-example-default/_search
         {
           "range": {
             "@timestamp": {
-              "gte": "2023-09-14T00:00:00",
-              "lte": "2023-09-15T23:59:59"
+              "gte": "2025-04-14T00:00:00",
+              "lte": "2025-04-15T23:59:59"
             }
           }
         },
@@ -186,7 +188,7 @@ The filtered results should show `WARN` and `ERROR` logs that occurred within th
     ...
     "hits": [
       {
-        "_index": ".ds-logs-example-default-2023.09.25-000001",
+        "_index": ".ds-logs-example-default-2025.04.25-000001",
         "_id": "JkwPzooBTddK4OtTQToP",
         "_score": 0,
         "_source": {
@@ -194,11 +196,11 @@ The filtered results should show `WARN` and `ERROR` logs that occurred within th
           "log": {
             "level": "WARN"
           },
-          "@timestamp": "2023-09-15T08:15:20.234Z"
+          "@timestamp": "2025-04-15T08:15:20.234Z"
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.09.25-000001",
+        "_index": ".ds-logs-example-default-2025.04.25-000001",
         "_id": "A5YSzooBMYFrNGNwH75O",
         "_score": 0,
         "_source": {
@@ -206,7 +208,7 @@ The filtered results should show `WARN` and `ERROR` logs that occurred within th
           "log": {
             "level": "ERROR"
           },
-          "@timestamp": "2023-09-14T10:30:45.789Z"
+          "@timestamp": "2025-04-14T10:30:45.789Z"
         }
       }
     ]
@@ -226,19 +228,19 @@ First, from **Developer Tools**, add some logs with varying log levels to your d
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-09-15T08:15:20.234Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-04-15T08:15:20.234Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-09-14T10:30:45.789Z ERROR 192.168.1.102 Critical system failure detected." }
+{ "message": "2025-04-14T10:30:45.789Z ERROR 192.168.1.102 Critical system failure detected." }
 { "create": {} }
-{ "message": "2023-09-15T12:45:55.123Z INFO 192.168.1.103 Application successfully started." }
+{ "message": "2025-04-15T12:45:55.123Z INFO 192.168.1.103 Application successfully started." }
 { "create": {} }
-{ "message": "2023-09-14T15:20:10.789Z WARN 192.168.1.104 Network latency exceeding threshold." }
+{ "message": "2025-04-14T15:20:10.789Z WARN 192.168.1.104 Network latency exceeding threshold." }
 { "create": {} }
-{ "message": "2023-09-10T14:20:45.789Z ERROR 192.168.1.105 Database connection lost." }
+{ "message": "2025-04-10T14:20:45.789Z ERROR 192.168.1.105 Database connection lost." }
 { "create": {} }
-{ "message": "2023-09-20T09:40:32.345Z INFO 192.168.1.106 User logout initiated." }
+{ "message": "2025-04-20T09:40:32.345Z INFO 192.168.1.106 User logout initiated." }
 { "create": {} }
-{ "message": "2023-09-21T15:20:55.678Z DEBUG 192.168.1.102 Database connection established." }
+{ "message": "2025-04-21T15:20:55.678Z DEBUG 192.168.1.102 Database connection established." }
 ```
 
 Next, run this command to aggregate your log data using the `log.level` field:
@@ -300,8 +302,8 @@ GET /logs-example-default/_search
   "query": {
     "range": {
       "@timestamp": {
-        "gte": "2023-09-14T00:00:00",
-        "lte": "2023-09-15T23:59:59"
+        "gte": "2025-04-14T00:00:00",
+        "lte": "2025-04-15T23:59:59"
       }
     }
   },

@@ -69,7 +69,7 @@ Global default and max retention do not apply to data streams internal to elasti
 
 * By setting the `data_retention` on the data stream level. This retention can be configured in two ways:
 
-     — For new data streams, it can be defined in the index template that would be applied during the data stream’s creation. You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template), for example:
+     — For new data streams, it can be defined in the index template that would be applied during the data stream’s creation. You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template), for example:
 
     ```console
     PUT _index_template/template
@@ -88,7 +88,7 @@ Global default and max retention do not apply to data streams internal to elasti
     }
     ```
 
-     — For an existing data stream, it can be set via the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
+     — For an existing data stream, it can be set via the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
     ```console
     PUT _data_stream/my-data-stream/_lifecycle
