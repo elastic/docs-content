@@ -1,10 +1,12 @@
 ---
 navigation_title: Apply configuration settings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Apply ECK configuration settings [k8s-operator-config]
@@ -91,7 +93,7 @@ data:
     ubi-only: false
 ```
 
-Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section of the operator container — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
+Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section of the operator container — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
 
 ## Configure ECK under Operator Lifecycle Manager [k8s-operator-config-olm]
 
@@ -119,7 +121,7 @@ If you use [Operator Lifecycle Manager (OLM)](https://github.com/operator-framew
 
 * Update your [Subscription](https://github.com/operator-framework/operator-lifecycle-manager/blob/master/doc/design/subscription-config.md) to mount the ConfigMap under `/conf`.
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: operators.coreos.com/v1alpha1
     kind: Subscription
     metadata:

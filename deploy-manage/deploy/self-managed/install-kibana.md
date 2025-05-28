@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: kibana
 ---
 
 # Install {{kib}}
@@ -52,6 +54,11 @@ Running different patch version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.0
 ## Installation order
 
 :::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::
+
+## Default ports
+
+:::{include} _snippets/ports.md
 :::
 
 ## Third-party dependencies

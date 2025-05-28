@@ -1,7 +1,4 @@
 ---
-applies_to:
-  deployment: all
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-files.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-cluster.html
@@ -12,6 +9,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-security-principles.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
+applies_to:
+  deployment: all
+  serverless: ga
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-kubernetes
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Security
@@ -25,28 +31,19 @@ The availability and configurability of security features vary by deployment typ
 :::{include} /deploy-manage/security/_snippets/complete-security.md
 :::
 
-## Managed security in Elastic Cloud
+## Managed security in {{ecloud}} [managed-security-in-elastic-cloud]
 ```yaml {applies_to}
 deployment:
   ess: all
 serverless: all
 ```
 
-{{ecloud}} has built-in security. For example, HTTPS communications between {{ecloud}} and the internet, as well as inter-node communications, are secured automatically, and cluster data is encrypted at rest.
-
-In {{ech}}, you can augment these Security features in the following ways:
-* Configure [traffic filtering](/deploy-manage/security/traffic-filtering.md) to prevent unauthorized access to your deployments.
-* Encrypt your deployment with a [customer-managed encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md).
-* [Secure your settings](/deploy-manage/security/secure-settings.md) using {{es}} and {{kib}} keystores.
-* Use the list of [{{ecloud}} static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) to allow or restrict communications in your infrastructure.
-
-{{ech}} doesn't support custom SSL certificates, which means that a custom CNAME for an {{ech}} endpoint such as *mycluster.mycompanyname.com* also is not supported.
+:::{include} /deploy-manage/_snippets/ecloud-security.md
+:::
 
 ::::{note}
 Serverless projects are fully managed and secured by Elastic, and do not have any configurable Security features at the project level.
 ::::
-
-Refer to [{{ecloud}} security](https://www.elastic.co/cloud/security) for more details about Elastic security and privacy programs.
 
 ## Securing your orchestrator
 ```yaml {applies_to}

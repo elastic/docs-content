@@ -1,5 +1,5 @@
 ---
-navigation_title: "Known issues"
+navigation_title: Known issues
 ---
 
 # {{fleet}} and {{agent}} known issues [fleet-elastic-agent-known-issues]
@@ -16,3 +16,5 @@ Known issues are significant defects or limitations that may impact your impleme
 % Workaround description.
 
 :::
+
+_No known issues_

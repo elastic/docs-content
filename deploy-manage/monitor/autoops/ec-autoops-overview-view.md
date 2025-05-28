@@ -4,11 +4,13 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Overview [ec-autoops-overview-view]
 
-The **Overview** page displays the current status of customer deployments in Elastic Cloud Hosted that are linked to the same Elastic organization.
+The **Overview** page displays the current status of customer deployments in {{ech}} that are linked to the same Elastic organization.
 
 :::{image} /deploy-manage/images/cloud-autoops-overview-page.png
 :alt: The Overview page

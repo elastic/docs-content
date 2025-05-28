@@ -1,11 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/scaling-on-kubernetes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Scaling Elastic Agent on Kubernetes [scaling-on-kubernetes]
 
-For more information on how to deploy {{agent}} on {{k8s}}, please review these pages:
+For more information on how to deploy {{agent}} on {{k8s}}, review these pages:
 
 * [Run {{agent}} on Kubernetes managed by {{fleet}}](/reference/fleet/running-on-kubernetes-managed-by-fleet.md).
 * [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md).

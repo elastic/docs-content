@@ -4,7 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-other.html
 applies_to:
   deployment:
-     ess:
+    ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Restart an {{ech}} deployment
@@ -23,7 +25,7 @@ Note that if you are looking to restart {{es}} to clear out [deployment activity
 
 ## Restart an {{es}} resource by using an API [ec_restart_an_elasticsearch_resource]
 
-Restart an Elasticsearch resource by calling the following API request:
+Restart an {{es}} resource by calling the following API request:
 
 ```sh
 curl -XPOST \

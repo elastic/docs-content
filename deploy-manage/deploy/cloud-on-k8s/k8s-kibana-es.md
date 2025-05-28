@@ -1,12 +1,14 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-es.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-es.html
+products:
+  - id: cloud-kubernetes
 ---
 
-# Connect to an Elasticsearch cluster [k8s-kibana-es]
+# Connect to an {{es}} cluster [k8s-kibana-es]
 
 You can connect an {{es}} cluster that is either managed by ECK or not managed by ECK.
 

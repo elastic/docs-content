@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-vpc.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # AWS PrivateLink traffic filters
@@ -36,7 +38,7 @@ Check [interface endpoint availability zone considerations](https://docs.aws.ama
 
 Elastic [charges](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) for inter-node traffic regardless of whether nodes are in the same or different availability zones (AZ). As a result, placing the deployment nodes within a single AZ, instead of two or three, does not reduce inter-node costs.
 
-On the customer VPC side, the inter-availability zone data transfer, within the same AWS region, towards AWS PrivateLink endpoints, [is free of charge](https://aws.amazon.com/about-aws/whats-new/2022/04/aws-data-transfer-price-reduction-privatelink-transit-gateway-client-vpn-services/). As a result, you do not incur charges for cross-AZ data transfer within your VPC when the target is the AWS Privatelink Elastic Cloud service endpoint. We recommend you set up the VPC endpoints in all supported Elastic Cloud AZs for a particular region for maximum traffic throughput and resiliency.
+On the customer VPC side, the inter-availability zone data transfer, within the same AWS region, towards AWS PrivateLink endpoints, [is free of charge](https://aws.amazon.com/about-aws/whats-new/2022/04/aws-data-transfer-price-reduction-privatelink-transit-gateway-client-vpn-services/). As a result, you do not incur charges for cross-AZ data transfer within your VPC when the target is the AWS Privatelink {{ecloud}} service endpoint. We recommend you set up the VPC endpoints in all supported {{ecloud}} AZs for a particular region for maximum traffic throughput and resiliency.
 
 If Elastic and your VPC overlap in two AZs or less, you can create subnets and VPC PrivateLink endpoints in your VPC within the same availability zones where Elastic PrivateLink service has presence.
 
@@ -130,7 +132,7 @@ The mapping will be different for your region. Our production VPC Service for `u
     :screenshot:
     :::
 
-    The security group for the endpoint should at minimum allow for inbound connectivity from your instances CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connnectibity to the endpoint on ports 443 and 9243.
+    The security group for the endpoint should at minimum allow for inbound connectivity from your instances CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243.
 
 2. Create a DNS record.
 
@@ -279,7 +281,7 @@ Response:
 ::::{note}
 If you are using AWS PrivateLink together with Fleet, and enrolling the Elastic Agent with a PrivateLink URL, you need to configure Fleet Server to use and propagate the PrivateLink URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the PrivateLink URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<Private hosted zone domain name>:443`.
 
-Similarly, the {{es}} host needs to be updated to propagate the Privatelink URL. The {{es}} URL needs to follow this pattern: `https://<{{es}} cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
+Similarly, the {{es}} host needs to be updated to propagate the Privatelink URL. The {{es}} URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
 
 The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [{{kib}} settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
 

@@ -1,10 +1,12 @@
 ---
+navigation_title: Run a job
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Run a job"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html
+products:
+  - id: machine-learning
 ---
 
 # Run a job [ml-ad-run-jobs]
@@ -129,7 +131,9 @@ One way to update the roles that are stored within the {{dfeed}} without changin
 
 ::::
 
-If the data that you want to analyze is not stored in {{es}}, you cannot use {{dfeeds}}. You can however send batches of data directly to the job by using the [post data to jobs API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-data). [7.11.0]
+:::{admonition} Deprecated in 7.11.0
+If the data that you want to analyze is not stored in {{es}}, you cannot use {{dfeeds}}. You can however send batches of data directly to the job by using the [post data to jobs API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-data).
+:::
 
 ## Open the job [ml-ad-open-job]
 

@@ -1,12 +1,14 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/duplicate-dashboards.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/duplicate-dashboards.html
+products:
+  - id: kibana
 ---
 
-# Duplicate dashboards [duplicate-dashboards]
+# Duplicate a dashboard [duplicate-dashboards]
 
 1. Open the dashboard you want to duplicate.
 2. In **View** mode, click **Duplicate** in the toolbar.

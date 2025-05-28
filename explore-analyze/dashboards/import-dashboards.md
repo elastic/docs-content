@@ -1,14 +1,16 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/_import_dashboards.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/_import_dashboards.html
+products:
+  - id: kibana
 ---
 
-# Import dashboards [_import_dashboards]
+# Import a dashboard [_import_dashboards]
 
-You can import dashboards from the **Saved Objects** page under **Stack Management**. Refer to [Manage saved objects](../find-and-organize/saved-objects.md).
+You can import dashboards from the [Saved Objects](../find-and-organize/saved-objects.md) page under **Stack Management**.
 
 When importing dashboards, you also import their related objects, such as data views and visualizations. Import options allow you to define how the import should behave with these related objects.
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/data-streams.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Data streams [data-streams]
@@ -101,7 +104,7 @@ You can edit a `@custom` component template to customize your {{es}} indices:
 5. Search for the name of the data stream’s custom component template and click the edit icon.
 6. Add any custom index settings, metadata, or mappings. For example, you may want to:
 
-    * Customize the index lifecycle policy applied to a data stream. See [Configure a custom index lifecycle policy](/solutions/observability/apps/index-lifecycle-management.md#apm-data-streams-custom-policy) in the APM Guide for a walk-through.
+    * Customize the index lifecycle policy applied to a data stream. See [Configure a custom index lifecycle policy](/solutions/observability/apm/index-lifecycle-management.md#apm-data-streams-custom-policy) in the APM Guide for a walk-through.
 
         Specify lifecycle name in the **index settings**:
 
@@ -133,7 +136,7 @@ Changes to component templates are not applied retroactively to existing indices
 
 Use the [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) feature in {{es}} to manage your {{agent}} data stream indices as they age. For example, create a new index after a certain period of time, or delete stale indices to enforce data retention standards.
 
-Installed integrations may have one or many associated data streams—​each with an associated {{ilm-init}} policy. By default, these data streams use an {{ilm-init}} policy that matches their data type. For example, the data stream `metrics-system.logs-*`, uses the metrics {{ilm-init}} policy as defined in the `metrics-system.logs` index template.
+Installed integrations may have one or many associated data streams—each with an associated {{ilm-init}} policy. By default, these data streams use an {{ilm-init}} policy that matches their data type. For example, the data stream `metrics-system.logs-*`, uses the metrics {{ilm-init}} policy as defined in the `metrics-system.logs` index template.
 
 Want to customize your index lifecycle management? See [Tutorials: Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md).
 

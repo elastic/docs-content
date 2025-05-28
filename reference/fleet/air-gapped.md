@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/air-gapped.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Air-gapped environments [air-gapped]
@@ -95,7 +98,7 @@ For more information, refer to [Using a proxy server with {{agent}} and {{fleet}
 ## Host your own {{package-registry}} [air-gapped-diy-epr]
 
 ::::{note}
-The {{package-registry}} packages include signatures used in [package verification](/reference/fleet/package-signatures.md). By default, {{fleet}} uses the Elastic public GPG key to verify package signatures. If you ever need to change this GPG key, use the `xpack.fleet.packageVerification.gpgKeyPath` setting in `kibana.yml`. For more information, refer to [{{fleet}} settings](kibana://reference/configuration-reference/fleet-settings.md).
+The {{package-registry}} packages include signatures used in [package verification](/reference/fleet/package-signatures.md). By default, {{fleet}} uses the Elastic public GPG key to verify package signatures. If you ever need to change this GPG key, use the `xpack.fleet.packageVerification.gpgKeyPath` setting in [`kibana.yml`](/deploy-manage/stack-settings.md). For more information, refer to [{{fleet}} settings](kibana://reference/configuration-reference/fleet-settings.md).
 ::::
 
 
@@ -107,8 +110,8 @@ There are different distributions available:
 
 * {{stack-version}} (recommended): *docker.elastic.co/package-registry/distribution:{{stack-version}}* - Selection of packages from the production repository released with {{stack}} {{stack-version}}.
 * lite-{{stack-version}}: *docker.elastic.co/package-registry/distribution:lite-{{stack-version}}* - Subset of the most commonly used packages from the production repository released with {{stack}} {{stack-version}}. This image is a good candidate to start using {{fleet}} in air-gapped environments.
-* production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
-* lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Please note that this image is updated every time a new version of a package gets published.
+* production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Note that this image is updated every time a new version of a package gets published.
+* lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). Note that this image is updated every time a new version of a package gets published.
 
 
 To update the distribution image, re-pull the image and then restart the docker container.

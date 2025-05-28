@@ -6,11 +6,13 @@ toc:
       - file: deploy/deployment-comparison.md
       - file: deploy/elastic-cloud.md
         children:
+          - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
           - file: deploy/elastic-cloud/create-an-organization.md
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
                 children:
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
+                  - hidden: deploy/elastic-cloud/complete-registration-of-an-annual-subscription-on-aws-marketplace.md
                   - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md
                   - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
                   - file: deploy/elastic-cloud/aws-marketplace.md
@@ -28,7 +30,6 @@ toc:
                       - file: deploy/elastic-cloud/heroku-reference-regions.md
           - file: deploy/elastic-cloud/serverless.md
             children:
-              - file: deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md
               - file: deploy/elastic-cloud/create-serverless-project.md
               - file: deploy/elastic-cloud/regions.md
               - file: deploy/elastic-cloud/project-settings.md
@@ -38,6 +39,7 @@ toc:
                 children:
                   - file: deploy/elastic-cloud/available-stack-versions.md
               - file: deploy/elastic-cloud/access-kibana.md
+              - file: deploy/elastic-cloud/elastic-cloud-hosted-planning.md
               - file: deploy/elastic-cloud/manage-deployments.md
                 children:
                   - file: deploy/elastic-cloud/configure.md
@@ -58,8 +60,8 @@ toc:
               - file: deploy/elastic-cloud/change-hardware.md
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
+              - file: deploy/elastic-cloud/restrictions-known-problems.md
           - file: deploy/elastic-cloud/tools-apis.md
-          - file: deploy/elastic-cloud/restrictions-known-problems.md
       - file: deploy/cloud-enterprise.md
         children:
           - file: deploy/cloud-enterprise/ece-architecture.md
@@ -93,7 +95,8 @@ toc:
                       - file: deploy/cloud-enterprise/deploy-large-installation.md
                       - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts.md
                       - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
-                  - file: deploy/cloud-enterprise/log-into-cloud-ui.md
+                        children:
+                          - file: deploy/cloud-enterprise/migrate-to-podman-5.md
                   - file: deploy/cloud-enterprise/post-installation-steps.md
                   - file: deploy/cloud-enterprise/install-ece-on-additional-hosts.md
                     children:
@@ -129,6 +132,7 @@ toc:
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
                   - file: deploy/cloud-enterprise/ece-include-additional-kibana-plugin.md
+          - file: deploy/cloud-enterprise/log-into-cloud-ui.md
           - file: deploy/cloud-enterprise/working-with-deployments.md
             children:
               - file: deploy/cloud-enterprise/deployment-templates.md
@@ -356,6 +360,7 @@ toc:
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
+  - file: stack-settings.md
   - file: tools.md
     children:
       - file: tools/snapshot-and-restore.md
@@ -797,7 +802,8 @@ toc:
               - file: upgrade/deployment-or-cluster/kibana.md
                 children:
                   - file: upgrade/deployment-or-cluster/saved-object-migrations.md
-                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md    
+                  - file: upgrade/deployment-or-cluster/kibana-roll-back.md
+          - file: upgrade/deployment-or-cluster/enterprise-search.md   
       - file: upgrade/ingest-components.md        
   - file: uninstall.md
     children:

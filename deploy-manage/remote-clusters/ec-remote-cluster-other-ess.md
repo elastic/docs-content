@@ -1,15 +1,21 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 navigation_title: With a different {{ecloud}} organization
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-other-ess.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Access deployments of another {{ecloud}} organization [ec-remote-cluster-other-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ecloud}} organization.
+
+::::{note}
+If traffic filtering is enabled on the remote cluster, the remote cluster administrator must configure a traffic filter of type remote cluster, using either the organization ID or the Elasticsearch cluster ID as the filtering criteria. For detailed instructions, refer to [Remote clusters and traffic filtering](/deploy-manage/remote-clusters/ec-enable-ccs.md#ec-ccs-ccr-traffic-filtering).
+::::
 
 ## Allow the remote connection [ec_allow_the_remote_connection_2]
 
@@ -51,9 +57,9 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Hosted deployments** page to view all of your deployments.
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the deployment menu, select **Security**.
 4. Locate **Remote connections** and select **Add an API key**.
@@ -233,7 +239,6 @@ curl -X GET -H "Authorization: ApiKey $EC_API_KEY" https://api.elastic-cloud.com
 ::::{note}
 The response will include just the remote clusters from the same {{ecloud}} organization. In order to obtain the whole list of remote clusters, use {{kib}} or the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
 ::::
-
 
 ## Configure roles and users [ec_configure_roles_and_users_2]
 

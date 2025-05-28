@@ -1,10 +1,12 @@
 ---
-navigation_title: "Bring your own dense vectors"
+navigation_title: Bring your own dense vectors
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bring-your-own-vectors.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Bring your own dense vectors [bring-your-own-vectors]

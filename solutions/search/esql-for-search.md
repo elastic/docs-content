@@ -1,7 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/esql-for-search.html
 applies_to:
-  stack: preview
-  serverless: preview
+  stack: preview 9.0, ga 9.1
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 % ℹ️ 8.x version of this doc lives in elasticsearch repo
@@ -22,7 +26,7 @@ The following table summarizes the key search features available in [{{esql}}](/
 
 | Feature | Available since | Description |
 |---------|----------------|-------------|
-| [Full text search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions) | 8.17 | Perform basic text searches with `MATCH` function or match operator (`:`) |
+| [Full text search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md) | 8.17 | Perform basic text searches with `MATCH` function or match operator (`:`) |
 | [Query string function](#esql-for-search-query-string) | 8.17 | Execute complex queries with `QSTR` using Query String syntax |
 | [Relevance scoring](#esql-for-search-scoring) | 8.18/9.0 | Calculate and sort by relevance with `METADATA _score` |
 | Enhanced match options | 8.18/9.0 | Configure text searches with additional parameters for the `MATCH` function |
@@ -85,7 +89,7 @@ These full-text functions address several key limitations that existed for text 
 Refer to this blog for more context: [Introducing full text filtering in {{esql}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr).
 
 ::::{tip}
-See [Match field parameters](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-match) for more advanced options using match.
+See [Match field parameters](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) for more advanced options using match.
 ::::
 
 ::::{important}
@@ -94,7 +98,7 @@ These queries match documents but don't automatically sort by relevance. To get 
 
 ### Query string (`QSTR`) function [esql-for-search-query-string]
 
-The [`qstr` function](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-qstr) provides the same functionality as the Query DSL's `query_string` query. This is for advanced use cases, such as wildcard searches, searches across multiple fields, and more.
+The [`qstr` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-qstr) provides the same functionality as the Query DSL's `query_string` query. This is for advanced use cases, such as wildcard searches, searches across multiple fields, and more.
 
 ```esql
 FROM articles METADATA _score
@@ -107,7 +111,7 @@ For complete details, refer to the [Query DSL `query_string` docs](elasticsearch
 
 ### `KQL` function [esql-for-search-kql]
 
-Use the [KQL function](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-kql) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your {{esql}} queries:
+Use the [KQL function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-kql) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your {{esql}} queries:
 
 ```esql
 FROM logs*
@@ -142,7 +146,7 @@ FROM articles METADATA _score
 
 ```esql
 FROM books METADATA _score
-| WHERE match(semantic_title, "fantasy adventure", { "boost": 0.75 }) 
+| WHERE match(semantic_title, "fantasy adventure", { "boost": 0.75 })
     OR match(title, "fantasy adventure", { "boost": 0.25 })
 | SORT _score DESC
 ```
@@ -155,12 +159,12 @@ Refer to [{{esql}} limitations](elasticsearch://reference/query-languages/esql/l
 
 ### Tutorials and how-to guides [esql-for-search-tutorials]
 
-- [Search and filter with {{esql}}](esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {esql}
+- [Search and filter with {{esql}}](esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {{esql}}
 - [Semantic search with semantic_text](semantic-search/semantic-search-semantic-text.md): Learn how to use the `semantic_text` field type
 
 ### Technical reference [esql-for-search-reference]
 
-- [Search functions](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions): Complete reference for all search functions
+- [Search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md): Complete reference for all search functions
 - [Limitations](elasticsearch://reference/query-languages/esql/limitations.md#esql-limitations-full-text-search): Current limitations for search in {{esql}}
 
 ### Background concepts [esql-for-search-concepts]
@@ -171,5 +175,5 @@ Refer to [{{esql}} limitations](elasticsearch://reference/query-languages/esql/l
 
 ### Related blog posts [esql-for-search-blogs]
 
-% TODO* https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[{{esql}}, you know for Search]: Introducing scoring and semantic search
+- [{{esql}}, you know for Search](https://www.elastic.co/search-labs/blog/esql-introducing-scoring-semantic-search): Introducing scoring and semantic search
 - [Introducing full text filtering in {{esql}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr): Overview of {{esql}}'s text filtering capabilities

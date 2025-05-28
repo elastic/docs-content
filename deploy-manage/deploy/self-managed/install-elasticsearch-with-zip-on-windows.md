@@ -1,16 +1,20 @@
 ---
+navigation_title: Install on Windows
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
-sub:
-  es-conf: "%ES_HOME%\\config"
-  slash: "\\"
-  export: "$"
-  escape: "^"
-  auto: ".bat"
-navigation_title: Install on Windows
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: "%ES_HOME%\\config"
+  slash: \
+  export: $
+  escape: ^
+  auto: .bat
+  ipcommand: ipconfig /all
+  ipvalue: inet
 ---
 
 # Install {{es}} with .zip on Windows [zip-windows]
@@ -51,15 +55,33 @@ cd C:\Program Files\elasticsearch-{{stack-version}}
 :::{include} _snippets/enable-auto-indices.md
 :::
 
-## Step 3: Run {{es}}
+## Step 3: Set up the node for connectivity
+
+:::{include} _snippets/cluster-formation-brief.md
+:::
+
+* If you're installing the first node in a multi-node cluster across multiple hosts, then you need to [configure the node so that other hosts are able to connect to it](#first-node).
+
+* If you're installing additional nodes for a cluster, then you need to [generate an enrollment token and pass it when starting {{es}} for the first time](#existing-cluster).
+
+### Set up a node as the first node in a multi-host cluster [first-node]
+
+:::{include} _snippets/first-node.md
+:::
+
+### Enroll the node in an existing cluster [existing-cluster]
+
+:::{include} _snippets/enroll-nodes.md
+:::
+
+## Step 4: Run {{es}}
 
 You have several options for starting {{es}}:
 
 * [Run from the command line](#command-line)
-* [Run the node to be enrolled in an existing cluster](#existing-cluster)
 * [Install and run as a service](#windows-service)
 
-You can run {{es}} [from the command line](#command-line), or install and run {{es}} [as a service](#windows-service).
+If you're starting a node that will be enrolled in an existing cluster, refer to [Enroll the node in an existing cluster](#existing-cluster).
 
 ### Run {{es}} from the command line [command-line]
 
@@ -71,17 +93,14 @@ You can run {{es}} [from the command line](#command-line), or install and run {{
 :::{include} _snippets/auto-security-config.md
 :::
 
+The password for the `elastic` user and the enrollment token for {{kib}} are output to your terminal.
+
 :::{include} _snippets/pw-env-var.md
 :::
 
 #### Configure {{es}} on the command line [windows-configuring]
 
 :::{include} _snippets/cmd-line-config.md
-:::
-
-### Enroll the node in an existing cluster [existing-cluster]
-
-:::{include} _snippets/enroll-nodes.md
 :::
 
 ### Install and run {{es}} as a service on Windows [windows-service]
@@ -91,7 +110,11 @@ You can install {{es}} as a service that runs in the background or starts automa
 1. Install {{es}} as a service. The name of the service and the value of `ES_JAVA_HOME` will be made available during install:
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
+    .\bin\elasticsearch-service.bat install
+    ```
+
+    Response:
+    ```
     Installing service      :  "elasticsearch-service-x64"
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
     The service 'elasticsearch-service-x64' has been installed.
@@ -106,7 +129,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 2. Start {{es}} as a service. When {{es}} starts, authentication is enabled by default:
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>bin\elasticsearch-service.bat start
+    .\bin\elasticsearch-service.bat start
     ```
 
     ::::{note}
@@ -116,16 +139,12 @@ You can install {{es}} as a service that runs in the background or starts automa
 3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>\bin\elasticsearch-reset-password -u elastic
+    .\bin\elasticsearch-reset-password -u elastic
     ```
 
 #### Manage {{es}} as a service on Windows [windows-service-manage]
 
-Run the `elasticsearch-service.bat` script in the `bin\` folder to install, remove, manage, or configure the service and potentially start and stop the service from the command line.
-
-```sh subs=true
-C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat
-```
+Use the `elasticsearch-service.bat` script located in the `bin\` folder to install, remove, manage, start, or stop the service from the command line. Starting and stopping are only available if the service is already installed.
 
 Usage:
 ```
@@ -162,8 +181,8 @@ The {{es}} service can be configured prior to installation by setting the follow
 | `SERVICE_ID` | A unique identifier for the service. Useful if installing multiple instances on the same machine. Defaults to `elasticsearch-service-x64`. |
 | `SERVICE_USERNAME` | The user to run as, defaults to the local system account. |
 | `SERVICE_PASSWORD` | The password for the user specified in `%SERVICE_USERNAME%`. |
-| `SERVICE_DISPLAY_NAME` | The name of the service. Defaults to `{{es}}<version> %SERVICE_ID%`. |
-| `SERVICE_DESCRIPTION` | The description of the service. Defaults to `{{es}}<version> Windows Service - https://elastic.co`. |
+| `SERVICE_DISPLAY_NAME` | The name of the service. Defaults to `Elasticsearch<version> %SERVICE_ID%`. |
+| `SERVICE_DESCRIPTION` | The description of the service. Defaults to `Elasticsearch<version> Windows Service - https://elastic.co`. |
 | `ES_JAVA_HOME` | The installation directory of the desired JVM to run the service under. |
 | `SERVICE_LOG_DIR` | Service log directory, defaults to `%ES_HOME%\logs`. Note that this does not control the path for the {{es}} logs; the path for these is set via the setting `path.logs` in the `elasticsearch.yml` configuration file, or on the command line. |
 | `ES_PATH_CONF` | Configuration file directory (which needs to include `elasticsearch.yml`, `jvm.options`, and `log4j2.properties` files), defaults to `%ES_HOME%\config`. |
@@ -194,9 +213,20 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 
 * The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service, but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. Upgrading across JVM types (e.g. JRE versus SE) is not supported, and requires the service to be reinstalled.
 
-## Step 4: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
+## Step 5: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
 
 :::{include} _snippets/check-es-running.md
+:::
+
+## Step 6 (Multi-node clusters only): Update the config files [update-config-files]
+
+If you are deploying a multi-node cluster, then the enrollment process adds all existing nodes to each newly enrolled node's `discovery.seed_hosts` setting. However, you need to go back to all of the nodes in the cluster and edit them so each node in the cluster can restart and rejoin the cluster as expected.
+
+:::{note}
+Because the initial node in the cluster is bootstrapped as a single-node cluster, it won't have `discovery.seed_hosts` configured. This setting is mandatory for multi-node clusters and must be added manually to the first node.
+:::
+
+:::{include} _snippets/clean-up-multinode.md
 :::
 
 ## Connect clients to {{es}} [_connect_clients_to_es_4]
@@ -216,7 +246,7 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 
 ## Directory layout of `.zip` archive [windows-layout]
 
-The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `%ES_HOME%` — the directory created when unpacking the archive.
+The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `%ES_HOME%` — the directory created when unpacking the archive.
 
 This is very convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} is as easy as removing the `%ES_HOME%` directory. However, it is advisable to change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
 

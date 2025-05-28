@@ -7,17 +7,19 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: kibana
 ---
 
 
 
-# Kibana metrics [kibana-page]
+# {{kib}} metrics [kibana-page]
 
 
 To view the key metrics that indicate the overall health of {{kib}} itself, click **Overview** in the {{kib}} section of the **Stack Monitoring** page.
 
 :::{image} /deploy-manage/images/kibana-monitoring-kibana-overview.png
-:alt: Kibana Overview
+:alt: {{kib}} Overview
 :screenshot:
 :::
 

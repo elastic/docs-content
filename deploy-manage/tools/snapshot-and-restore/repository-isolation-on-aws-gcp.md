@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Repository isolation on AWS and GCP [ec-snapshot-repository-aws-gcp-migration]
@@ -29,7 +31,7 @@ If you no longer need access to the snapshot of another deployment, you can remo
 3. With **Remove Access**, the snapshot repository will be removed.
 
 ::::{note}
-If the repository is still in use (for example by mounted searchable snapshots), it can’t be removed. Please first remove any indices stored in this repository.
+If the repository is still in use (for example by mounted searchable snapshots), it can’t be removed. Remove any indices stored in this repository first.
 ::::
 
 

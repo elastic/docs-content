@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Logs data stream [logs-data-stream]
@@ -20,12 +22,16 @@ In benchmarks, log data stored in a logs data stream used ~2.5 times less disk s
 
 ## Create a logs data stream [how-to-use-logsds]
 
+::::{important}
+Fleet integrations use [index templates](../templates.md) managed by Elastic. To modify these backing templates, update their [composite `custom` templates](/solutions/observability/logs/logs-index-template-reference.md##custom-logs-template-edit).
+::::
+
 To create a logs data stream, set your [template](../templates.md) `index.mode` to `logsdb`:
 
 ```console
 PUT _index_template/my-index-template
 {
-  "index_patterns": ["logs-*"],
+  "index_patterns": ["my-datastream-*"],
   "data_stream": { },
   "template": {
      "settings": {
@@ -139,7 +145,7 @@ By default, `logsdb` index mode sets `ignore_malformed` to `true`. With this set
 
 ### `ignore_above` [logs-db-ignore-above]
 
-In `logsdb` index mode, the `index.mapping.ignore_above` setting is applied by default at the index level to ensure efficient storage and indexing of large keyword fields.The index-level default for `ignore_above` is 8191 *characters.* Using UTF-8 encoding, this results in a limit of 32764 bytes, depending on character encoding.
+In `logsdb` index mode, the `index.mapping.ignore_above` setting is applied by default at the index level to ensure efficient storage and indexing of large keyword fields. This applies to all members of the keyword type family (keyword, constant_keyword, and wildcard). The index-level default for `ignore_above` is 8191 *characters.* Using UTF-8 encoding, this results in a limit of 32764 bytes, depending on character encoding.
 
 The mapping-level `ignore_above` setting takes precedence. If a specific field has an `ignore_above` value defined in its mapping, that value overrides the index-level `index.mapping.ignore_above` value. This default behavior helps to optimize indexing performance by preventing excessively large string values from being indexed.
 

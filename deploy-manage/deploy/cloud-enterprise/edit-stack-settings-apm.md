@@ -1,10 +1,12 @@
 ---
 navigation_title: APM user settings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Add APM user settings [ece-manage-apm-settings]
@@ -15,16 +17,16 @@ Starting in {{stack}} version 8.0, how you change APM settings and the settings 
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
 
     * This mode requires SSL/TLS configuration. Check [TLS configuration for {{fleet}}-managed mode](#ece-edit-apm-fleet-tls) for details.
-    * Check [APM integration input settings](/solutions/observability/apps/configure-apm-server.md) for all other Elastic APM configuration options in this mode.
+    * Check [APM integration input settings](/solutions/observability/apm/configure-apm-server.md) for all other Elastic APM configuration options in this mode.
 
 
 Standalone APM Server (legacy)
 :   Deployments created prior to {{stack}} version 8.0 are in legacy mode. Upgrading to or past {{stack}} 8.0 does not remove you from legacy mode.
 
-    Check [Edit standalone APM settings (legacy)](#ece-edit-apm-standalone-settings-ece)for information on how to configure Elastic APM in this mode.
+    Check [Edit standalone APM settings (legacy)](#ece-edit-apm-standalone-settings-ece) for information on how to configure Elastic APM in this mode.
 
 
-To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apps/switch-to-elastic-apm-integration.md).
+To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apm/switch-to-elastic-apm-integration.md).
 
 
 ## TLS configuration for {{fleet}}-managed mode [ece-edit-apm-fleet-tls]
@@ -34,15 +36,15 @@ Users running {{stack}} versions 7.16 or 7.17 need to manually configure TLS. Th
 Pick one of the following options:
 
 1. Upload and configure a publicly signed {{es}} TLS certificates. Check [Encrypt traffic in clusters with a self-managed Fleet Server](/reference/fleet/secure-connections.md) for details.
-2. Change the {{es}} hosts where {{agent}}s send data from the default public URL, to the internal URL. In {{kib}}, navigate to **Fleet** and select the **Elastic Cloud agent policy**. Click **Fleet settings** and update the {{es}} hosts URL. For example, if the current URL is `https://123abc.us-central1.gcp.foundit.no:9244`, change it to `http://123abc.containerhost:9244`.
+2. Change the {{es}} hosts where {{agent}}s send data from the default public URL, to the internal URL. In {{kib}}, navigate to **Fleet** and select the **{{ecloud}} agent policy**. Click **Fleet settings** and update the {{es}} hosts URL. For example, if the current URL is `https://123abc.us-central1.gcp.foundit.no:9244`, change it to `http://123abc.containerhost:9244`.
 
 
 ## Edit standalone APM settings (legacy) [ece-edit-apm-standalone-settings-ece]
 
-Elastic Cloud Enterprise supports most of the legacy APM settings. Through a YAML editor in the console, you can append your APM Server properties to the `apm-server.yml` file. Your changes to the configuration file are read on startup.
+{{ece}} supports most of the legacy APM settings. Through a YAML editor in the console, you can append your APM Server properties to the `apm-server.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
-Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](/solutions/observability/apps/configure-apm-server.md).
+Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](/solutions/observability/apm/configure-apm-server.md).
 ::::
 
 
@@ -59,12 +61,12 @@ To change APM settings:
 6. Select **Save changes**.
 
 ::::{note}
-If a setting is not supported by Elastic Cloud Enterprise, you get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
+If a setting is not supported by {{ece}}, you get an error message when you try to save. We suggest changing one setting with each save, so you know which one is not supported.
 ::::
 
+## Examples
 
-
-## Example: Enable RUM and increase the rate limit (legacy) [ece_example_enable_rum_and_increase_the_rate_limit_legacy]
+### Enable RUM and increase the rate limit (legacy) [ece_example_enable_rum_and_increase_the_rate_limit_legacy]
 
 When capturing the user interaction with clients with real user monitoring (RUM), particularly for situations with concurrent clients, you can increase the number of times each IP address can send a request to the RUM endpoint. Version 6.5 includes an additional settings for the LRU cache.
 
@@ -80,7 +82,7 @@ apm-server:
 ```
 
 
-## Example: Disable RUM (legacy) [ece_example_disable_rum_legacy]
+### Disable RUM (legacy) [ece_example_disable_rum_legacy]
 
 If you know that you won’t be tracking RUM data, you can disable the endpoint proactively.
 
@@ -91,7 +93,7 @@ apm-server:
 ```
 
 
-## Example: Adjust the event limits configuration (legacy) [ece_example_adjust_the_event_limits_configuration_legacy]
+### Adjust the event limits configuration (legacy) [ece_example_adjust_the_event_limits_configuration_legacy]
 
 If the size of the HTTP request frequently exceeds the maximum, you might need to change the limit on the APM Server and adjust the relevant settings in the agent.
 

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/manage-cases-settings.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/manage-cases-settings.html
+products:
+  - id: kibana
 ---
 
 # Configure case settings [manage-cases-settings]
@@ -51,7 +53,11 @@ To update a connector, click **Update <connector name>** and edit the connector 
 
 ## Custom fields [case-custom-fields]
 
-You can add optional and required fields for customized case collaboration. [8.15.0]
+:::{admonition} Added in 8.15.0
+This functionality was added in 8.15.0.
+:::
+
+You can add optional and required fields for customized case collaboration.
 
 To create a custom field:
 

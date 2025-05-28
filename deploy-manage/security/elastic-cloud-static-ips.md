@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-static-ips.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-static-ips.html
+products:
+  - id: cloud-hosted
 ---
 
 # {{ecloud}} Static IPs [ec-static-ips]
@@ -120,7 +122,7 @@ Not suitable usage of egress static IPs to introduce network controls:
 ::::{warning} 
 :name: ec-warning
 
-Static IP ranges are subject to change. You will need to update your firewall rules when they change to prevent service disruptions. We will announce changes at least 8 weeks in advance (see [example](https://status.elastic.co/incidents/1xs411x77wgh)). Please subscribe to the [{{ecloud}} status page](https://status.elastic.co/) to remain up to date with any changes to the Static IP ranges which you will need to update at your side.
+Static IP ranges are subject to change. You will need to update your firewall rules when they change to prevent service disruptions. We will announce changes at least 8 weeks in advance (see [example](https://status.elastic.co/incidents/1xs411x77wgh)). Subscribe to the [{{ecloud}} status page](https://status.elastic.co/) to remain up to date with any changes to the Static IP ranges which you will need to update at your side.
 ::::
 
 

@@ -7,6 +7,8 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # Tune for search speed [tune-for-search-speed]
@@ -47,7 +49,7 @@ deployment:
 
 Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](elasticsearch://reference/elasticsearch/index-settings/store.md#file-system)).
 
-Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing Elasticsearch [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
+Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing {{es}} [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
 
 You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE,SIZE`. Consult the documentation of your distribution on how to alter this value (for example with a `udev` rule to persist across reboots, or via [blockdev --setra](https://man7.org/linux/man-pages/man8/blockdev.8.html) as a transient setting). We recommend a value of `128KiB` for readahead.
 
@@ -335,7 +337,7 @@ PUT index
 
 ## Warm up the filesystem cache [_warm_up_the_filesystem_cache]
 
-If the machine running Elasticsearch is restarted, the filesystem cache will be empty, so it will take some time before the operating system loads hot regions of the index into memory so that search operations are fast. You can explicitly tell the operating system which files should be loaded into memory eagerly depending on the file extension using the [`index.store.preload`](elasticsearch://reference/elasticsearch/index-settings/preloading-data-into-file-system-cache.md) setting.
+If the machine running {{es}} is restarted, the filesystem cache will be empty, so it will take some time before the operating system loads hot regions of the index into memory so that search operations are fast. You can explicitly tell the operating system which files should be loaded into memory eagerly depending on the file extension using the [`index.store.preload`](elasticsearch://reference/elasticsearch/index-settings/preloading-data-into-file-system-cache.md) setting.
 
 ::::{warning}
 Loading data into the filesystem cache eagerly on too many indices or too many files will make search *slower* if the filesystem cache is not large enough to hold all the data. Use with caution.
@@ -365,7 +367,7 @@ So what is the right number of replicas? If you have a cluster that has `num_nod
 
 ## Tune your queries with the Search Profiler [_tune_your_queries_with_the_search_profiler]
 
-The [Profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html) provides detailed information about how each component of your queries and aggregations impacts the time it takes to process the request.
+The [Profile API](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md) provides detailed information about how each component of your queries and aggregations impacts the time it takes to process the request.
 
 The [Search Profiler](../../../explore-analyze/query-filter/tools/search-profiler.md) in {{kib}} makes it easy to navigate and analyze the profile results and give you insight into how to tune your queries to improve performance and reduce load.
 
@@ -386,7 +388,7 @@ The [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) 
 
 There is a general rule that the cost of a filter is mostly a function of the number of matched documents. Imagine that you have an index containing cycles. There are a large number of bicycles and many searches perform a filter on `cycle_type: bicycle`. This very common filter is unfortunately also very costly since it matches most documents. There is a simple way to avoid running this filter: move bicycles to their own index and filter bicycles by searching this index instead of adding a filter to the query.
 
-Unfortunately this can make client-side logic tricky, which is where `constant_keyword` helps. By mapping `cycle_type` as a `constant_keyword` with value `bicycle` on the index that contains bicycles, clients can keep running the exact same queries as they used to run on the monolithic index and Elasticsearch will do the right thing on the bicycles index by ignoring filters on `cycle_type` if the value is `bicycle` and returning no hits otherwise.
+Unfortunately this can make client-side logic tricky, which is where `constant_keyword` helps. By mapping `cycle_type` as a `constant_keyword` with value `bicycle` on the index that contains bicycles, clients can keep running the exact same queries as they used to run on the monolithic index and {{es}} will do the right thing on the bicycles index by ignoring filters on `cycle_type` if the value is `bicycle` and returning no hits otherwise.
 
 Here is what mappings could look like:
 
@@ -443,7 +445,7 @@ GET bicycles,other_cycles/_search
 }
 ```
 
-On the `bicycles` index, Elasticsearch will simply ignore the `cycle_type` filter and rewrite the search request to the one below:
+On the `bicycles` index, {{es}} will simply ignore the `cycle_type` filter and rewrite the search request to the one below:
 
 ```console
 GET bicycles,other_cycles/_search
@@ -456,7 +458,7 @@ GET bicycles,other_cycles/_search
 }
 ```
 
-On the `other_cycles` index, Elasticsearch will quickly figure out that `bicycle` doesn’t exist in the terms dictionary of the `cycle_type` field and return a search response with no hits.
+On the `other_cycles` index, {{es}} will quickly figure out that `bicycle` doesn’t exist in the terms dictionary of the `cycle_type` field and return a search response with no hits.
 
 This is a powerful way of making queries cheaper by putting common values in a dedicated index. This idea can also be combined across multiple fields: for instance if you track the color of each cycle and your `bicycles` index ends up having a majority of black bikes, you could split it into a `bicycles-black` and a `bicycles-other-colors` indices.
 

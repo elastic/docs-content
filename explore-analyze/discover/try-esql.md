@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/try-esql.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/try-esql.html
+products:
+  - id: kibana
 ---
 
 # Using ES|QL [try-esql]
@@ -59,7 +61,7 @@ To load the sample data:
    ::::
 
 
-Let’s add `geo.dest` to our query, to find out the geographical destination of the visits, and limit the results.
+Let’s add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
 
 1. Copy the query below:
 
@@ -135,7 +137,7 @@ FROM kibana_sample_data_ecommerce
 
 ### ES|QL and LOOKUP JOINs
 
-The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
+The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
 
 ![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-support.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Using a proxy server with Elastic Agent and Fleet [fleet-agent-proxy-support]

@@ -1,7 +1,10 @@
 ---
-navigation_title: "decode_base64_field"
+navigation_title: decode_base64_field
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_base64_field-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Decode Base64 fields [decode_base64_field-processor]

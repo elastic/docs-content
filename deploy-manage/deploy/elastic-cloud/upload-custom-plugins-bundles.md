@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-bundles.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Upload custom plugins and bundles
@@ -85,7 +87,7 @@ Bundles
 
     The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the `synonym-filter`.
 
-    To learn more about analyzing with synonyms, check [Synonym token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
+    To learn more about analyzing with synonyms, check [Synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
 
     **GeoIP database bundle**
 
@@ -105,7 +107,7 @@ Bundles
 You must upload your files before you can apply them to your cluster configuration:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 3. Under **Features**, select **Extensions**.
 4. Select **Upload extension**.
 5. Complete the extension fields, including the {{es}} version.
@@ -133,9 +135,9 @@ Refer to [Managing plugins and extensions through the API](../../../deploy-manag
 After uploading your files, you can select to enable them when creating a new {{es}} deployment. For existing deployments, you must update your deployment configuration to use the new files:
 
 1. Log in to the [{{ech}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the **Actions** dropdown, select **Edit deployment**.
 4. Select **Manage user settings and extensions**.
@@ -164,9 +166,9 @@ To update an extension with a new file version,
 1. Prepare a new plugin or bundle.
 2. On the **Extensions** page, [upload a new extension](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin).
 3. Make your new files available by uploading them.
-4. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+4. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 5. From the **Actions** dropdown, select **Edit deployment**.
 6. Select **Manage user settings and extensions**.
@@ -248,4 +250,4 @@ https://api.elastic-cloud.com/api/v1/deployments/extensions \
 }'
 ```
 
-Please refer to the [Extensions API reference](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-extensions) for the complete set of HTTP methods and payloads.
+Refer to [Extensions API reference](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-extensions) for the complete set of HTTP methods and payloads.

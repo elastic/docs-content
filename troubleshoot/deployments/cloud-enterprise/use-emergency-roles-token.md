@@ -1,10 +1,12 @@
 ---
-navigation_title: "Emergency roles token"
+navigation_title: Emergency roles token
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-emergency.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-emergency.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Use the emergency roles token [ece-troubleshooting-emergency]

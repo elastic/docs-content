@@ -3,12 +3,15 @@ navigation_title: "Self-managed: {{kib}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/configuring-monitoring.html
 applies_to:
-  self: all
+  deployment:
+    self: all
+products:
+  - id: kibana
 ---
 
 
 
-# Kibana monitoring self-managed [configuring-monitoring]
+# {{kib}} monitoring self-managed [configuring-monitoring]
 
 
 If you enable the {{monitor-features}} in your cluster, there are a few methods available to collect metrics about {{kib}}:

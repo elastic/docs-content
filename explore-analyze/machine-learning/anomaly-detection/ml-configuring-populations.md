@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-anomaly-detection-job-types.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/master/ml-configuring-populations.html
+products:
+  - id: machine-learning
 ---
 
 # Performing population analysis [ml-configuring-populations]

@@ -1,14 +1,16 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
+products:
+  - id: kibana
 ---
 
 # Sharing dashboards [share-the-dashboard]
 
-To share a dashboard with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share a dashboard with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting and sharing](../report-and-share.md).
 
 :::{image} /explore-analyze/images/share-dashboard-copy-link.gif
 :alt: getting a shareable link for a dashboard

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/certificates-rotation.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Rotate SSL/TLS CA certificates [certificates-rotation]

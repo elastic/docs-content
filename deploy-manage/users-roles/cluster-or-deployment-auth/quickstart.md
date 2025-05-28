@@ -7,11 +7,13 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: kibana
 ---
 
 # Quickstart [tutorial-secure-access-to-kibana]
 
-If you plan to use native Elasticsearch user and role management, then you can manage your users and roles completely within your {{kib}} instance. 
+If you plan to use native {{es}} user and role management, then you can manage your users and roles completely within your {{kib}} instance. 
 
 You can use native access management features to give your users access to only the surfaces and features they need. For example, some users might only need to view your dashboards, while others might need to manage your fleet of Elastic agents and run machine learning jobs to detect anomalous behavior in your network.
 
@@ -21,7 +23,7 @@ This guide introduces you to three basic user and access management features: [s
 
 Do you have multiple teams using {{kib}}? Do you want a “playground” to experiment with new visualizations or rules? If so, then [{{kib}} Spaces](../../manage-spaces.md) can help.
 
-Think of a space as another instance of {{kib}}. A space allows you to organize your [dashboards](../../../explore-analyze/dashboards.md), [rules](../../../explore-analyze/alerts-cases/alerts.md), [machine learning jobs](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md), and much more into their own categories. For example, you might have a **Marketing** space for your marketers to track the results of their campaigns, and an **Engineering** space for your developers to [monitor application performance](/solutions/observability/apps/application-performance-monitoring-apm.md).
+Think of a space as another instance of {{kib}}. A space allows you to organize your [dashboards](../../../explore-analyze/dashboards.md), [rules](../../../explore-analyze/alerts-cases/alerts.md), [machine learning jobs](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md), and much more into their own categories. For example, you might have a **Marketing** space for your marketers to track the results of their campaigns, and an **Engineering** space for your developers to [monitor application performance](/solutions/observability/apm/index.md).
 
 The assets you create in one space are isolated from other spaces, so when you enter a space, you only see the assets that belong to that space.
 
@@ -30,13 +32,13 @@ Refer to the [Spaces documentation](/deploy-manage/manage-spaces.md) for more in
 
 ## Roles [_roles]
 
-After your spaces are set up, the next step to securing access is to provision your roles. Roles are a collection of privileges that allow you to perform actions in {{kib}} and Elasticsearch. Roles are assigned to users, and to [system accounts](built-in-users.md) that power the Elastic Stack.
+After your spaces are set up, the next step to securing access is to provision your roles. Roles are a collection of privileges that allow you to perform actions in {{kib}} and {{es}}. Roles are assigned to users, and to [system accounts](built-in-users.md) that power the {{stack}}.
 
-You can create your own roles, or use any of the [built-in roles](built-in-roles.md). Some built-in roles are intended for Elastic Stack components and should not be assigned to end users directly.
+You can create your own roles, or use any of the [built-in roles](built-in-roles.md). Some built-in roles are intended for {{stack}} components and should not be assigned to end users directly.
 
 An example of a built-in role is `kibana_admin`. Assigning this role to your users will grant access to all of {{kib}}'s features. This includes the ability to manage spaces.
 
-Built-in roles are great for getting started with the Elastic Stack, and for system administrators who do not need more restrictive access. However, if you need to control access with more precision, you can create [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+Built-in roles are great for getting started with the {{stack}}, and for system administrators who do not need more restrictive access. However, if you need to control access with more precision, you can create [custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 As an administrator, you have the ability to create your own roles to describe exactly the kind of access your users should have. For example, you might create a `marketing_user` role, which you then assign to all users in your marketing department. This role would grant access to all of the necessary data and features for this team to be successful, without granting them access they don’t require.
 
@@ -99,7 +101,7 @@ To create the role:
 
     1. From the **Spaces** dropdown, select the `Marketing` space.
     2. Expand the **Analytics** section, and select the **Read** privilege for **Dashboard**.
-    3. Click **Add Kibana privilege**.
+    3. Click **Add {{kib}} privilege**.
 
 6. Click **Create role**.
 

@@ -1,21 +1,23 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: Install ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-installing.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-public.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-your-infra.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-onprem.html
-navigation_title: Install ECE
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
-# Install Elastic Cloud Enterprise [ece-installing]
+# Install {{ece}} [ece-installing]
 
 You can deploy {{ece}} (ECE) on public or private clouds, virtual machines, or on-premises.
 
-In ECE, a host refers to any server, VM, or cloud instance where the ECE software is installed. An ECE platform consists of multiple hosts working together to orchestrate Elastic Stack applications.
+In ECE, a host refers to any server, VM, or cloud instance where the ECE software is installed. An ECE platform consists of multiple hosts working together to orchestrate {{stack}} applications.
 
 For public cloud deployments, you can choose from the following providers:
 

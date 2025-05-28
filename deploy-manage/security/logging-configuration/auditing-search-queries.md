@@ -8,9 +8,11 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
-# Audit Elasticsearch search queries [auditing-search-queries]
+# Audit {{es}} search queries [auditing-search-queries]
 
 There is no [audit event type](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) specifically dedicated to search queries. Search queries are analyzed and then processed; the processing triggers authorization actions that are audited. However, the original raw query, as submitted by the client, is not accessible downstream when authorization auditing occurs.
 
@@ -22,7 +24,7 @@ To make certain audit events include the request body, configure the following s
 xpack.security.audit.logfile.events.emit_request_body: true
 ```
 
-You can apply this setting through [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), as described in [](./configuring-audit-logs.md). Alternatively, you can modify `elasticsearch.yml` in all nodes and restart for the changes to take effect.
+You can apply this setting through [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), as described in [](./configuring-audit-logs.md). Alternatively, you can modify [`elasticsearch.yml`](/deploy-manage/stack-settings.md) in all nodes and restart for the changes to take effect.
 
 ::::{important}
 No filtering is performed when auditing, so sensitive data might be audited in plain text when audit events include the request body. Also, the request body can contain malicious content that can break a parser consuming the audit logs.

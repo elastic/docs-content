@@ -9,14 +9,17 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-machine-learning-decider.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-fixed-decider.html
 applies_to:
-  ece:
-  eck:
-  ess:
+  deployment:
+    ece:
+    eck:
+    ess:
+products:
+  - id: elasticsearch
 ---
 
 # Autoscaling deciders [autoscaling-deciders]
 
-[Autoscaling](/deploy-manage/autoscaling.md) in Elasticsearch enables dynamic resource allocation based on predefined policies. A key component of this mechanism is autoscaling deciders, which independently assess resource requirements and determine when scaling actions are necessary. Deciders analyze various factors, such as storage usage, indexing rates, and machine learning workloads, to ensure clusters maintain optimal performance without manual intervention.
+[Autoscaling](/deploy-manage/autoscaling.md) in {{es}} enables dynamic resource allocation based on predefined policies. A key component of this mechanism is autoscaling deciders, which independently assess resource requirements and determine when scaling actions are necessary. Deciders analyze various factors, such as storage usage, indexing rates, and machine learning workloads, to ensure clusters maintain optimal performance without manual intervention.
 
 ::::{admonition} Indirect use only
 This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
@@ -96,7 +99,7 @@ The [autoscaling](../../deploy-manage/autoscaling.md) frozen shards decider (`fr
 ### Configuration settings [autoscaling-frozen-shards-decider-settings]
 
 `memory_per_shard`
-:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) The memory needed per shard, in bytes. Defaults to 2000 shards per 64 GB node (roughly 32 MB per shard). Notice that this is total memory, not heap, assuming that the Elasticsearch default heap sizing mechanism is used and that nodes are not bigger than 64 GB.
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) The memory needed per shard, in bytes. Defaults to 2000 shards per 64 GB node (roughly 32 MB per shard). Notice that this is total memory, not heap, assuming that the {{es}} default heap sizing mechanism is used and that nodes are not bigger than 64 GB.
 
 ## Frozen storage decider [autoscaling-frozen-storage-decider]
 

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configuration [k8s-elastic-agent-fleet-configuration]
@@ -241,7 +243,7 @@ spec:
 ...
 ```
 
-Please note that the environment variables related to policy selection mentioned in the {{agent}} [docs](/reference/fleet/agent-environment-variables.md) like `FLEET_SERVER_POLICY_ID` will be managed by the ECK operator.
+Note that the environment variables related to policy selection mentioned in the {{agent}} [docs](/reference/fleet/agent-environment-variables.md) like `FLEET_SERVER_POLICY_ID` will be managed by the ECK operator.
 
 
 ## Running as a non-root user [k8s-elastic-agent-running-as-a-non-root-user]

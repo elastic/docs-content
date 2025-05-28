@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Self-managed cluster
@@ -48,7 +50,7 @@ Learn how to install and configure {{es}}. {{es}} is the distributed search and 
   * [](/deploy-manage/deploy/self-managed/plugins.md): Learn about how to extend {{es}} functionality with plugins.
 
     :::{note}
-    For a complete list of settings that you can apply to your {{es}} cluster, refer to the [Elasticsearch configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
+    For a complete list of settings that you can apply to your {{es}} cluster, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
     :::
 
 ### Deploying Kibana

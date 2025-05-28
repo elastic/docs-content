@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Password setup failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-setup.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Diagnose password setup connection failures [trb-security-setup]
@@ -37,7 +39,7 @@ The [elasticsearch-setup-passwords command](elasticsearch://reference/elasticsea
     PKIX path building failed:
     sun.security.provider.certpath.SunCertPathBuilderException:
     unable to find valid certification path to requested target
-    Please check the elasticsearch SSL settings under
+    Check the elasticsearch SSL settings under
     xpack.security.http.ssl.
     ...
     ERROR: Failed to establish SSL connection to elasticsearch at
@@ -52,7 +54,7 @@ The [elasticsearch-setup-passwords command](elasticsearch://reference/elasticsea
     failed: java.security.cert.CertificateException:
     No subject alternative DNS name matching
     elasticsearch.example.com found.
-    Please check the elasticsearch SSL settings under
+    Check the elasticsearch SSL settings under
     xpack.security.http.ssl.
     ...
     ERROR: Failed to establish SSL connection to elasticsearch at

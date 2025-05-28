@@ -1,10 +1,12 @@
 ---
+navigation_title: Tools and APIs
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-console.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-console.html
-navigation_title: "Tools and APIs"
+products:
+  - id: cloud-enterprise
 ---
 # Tools and APIs for {{ece}}
 
@@ -44,7 +46,7 @@ Refer to [{{es}} API conventions](elasticsearch://reference/elasticsearch/rest-a
 :::{include} /deploy-manage/deploy/_snippets/cloud-api-console.md
 :::
 
-## Elastic Cloud Control: command-line interface for {{ecloud}}
+## {{ecloud}} Control: command-line interface for {{ecloud}}
 
 :::{include} /deploy-manage/deploy/_snippets/ecctl.md
 :::

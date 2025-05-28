@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-apm-settings.html#ec-apm-settings
+products:
+  - id: cloud-hosted
 ---
 
 # APM settings for Elastic Cloud [ec-manage-apm-settings]
@@ -10,7 +12,7 @@ Change how Elastic APM runs by providing your own user settings. Starting in {{s
 {{fleet}}-managed APM integration
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
 
-    Check [APM configuration reference](/solutions/observability/apps/configure-apm-server.md) for information on how to configure Elastic APM in this mode.
+    Check [APM configuration reference](/solutions/observability/apm/configure-apm-server.md) for information on how to configure Elastic APM in this mode.
 
 
 Standalone APM Server (legacy)
@@ -19,7 +21,7 @@ Standalone APM Server (legacy)
     Check [Edit standalone APM settings (legacy)](#ec-edit-apm-standalone-settings) and [Supported standalone APM settings (legacy)](#ec-apm-settings) for information on how to configure Elastic APM in this mode.
 
 
-To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apps/switch-to-elastic-apm-integration.md).
+To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apm/switch-to-elastic-apm-integration.md).
 
 ## Edit standalone APM settings (legacy) [ec-edit-apm-standalone-settings]
 
@@ -28,9 +30,9 @@ User settings are appended to the `apm-server.yml` configuration file for your i
 To add user settings:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
+2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
-    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From your deployment menu, go to the **Edit** page.
 4. In the **APM** section, select **Edit user settings**. (For existing deployments with user settings, you may have to expand the **Edit apm-server.yml** caret instead.)
@@ -48,7 +50,7 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 {{ech}} supports the following setting when running APM in standalone mode (legacy).
 
 ::::{tip}
-Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apps/configure-apm-server.md).
+Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apm/configure-apm-server.md).
 ::::
 
 
@@ -228,7 +230,7 @@ Allow anonymous access only for specified agents and/or services. This is primar
 :   Specifies the maximum allowed size of an event for processing by the server, in bytes. Defaults to `307200`.
 
 `output.elasticsearch.pipelines`
-:   Adds an array for pipeline selector configurations that support conditionals, format string-based field access, and name mappings used to [parse data using ingest node pipelines](/solutions/observability/apps/application-performance-monitoring-apm.md).
+:   Adds an array for pipeline selector configurations that support conditionals, format string-based field access, and name mappings used to [parse data using ingest node pipelines](/solutions/observability/apm/index.md).
 
 `apm-server.register.ingest.pipeline.enabled`
 :   Loads the pipeline definitions to Elasticsearch when the APM Server starts up. Defaults to `false`.
@@ -357,7 +359,7 @@ Allow anonymous access only for specified agents and/or services. This is primar
 :   Specifies the minimum log level. One of *debug*, *info*, *warning*, or *error*. Defaults to *info*.
 
 `logging.selectors`
-:   The list of debugging-only selector tags used by different APM Server components. Use *** to enable debug output for all components. For example, add *publish* to display all the debug messages related to event publishing.
+:   The list of debugging-only selector tags used by different APM Server components. Use *\** to enable debug output for all components. For example, add *publish* to display all the debug messages related to event publishing.
 
 `logging.metrics.enabled`
 :   If enabled, APM Server periodically logs its internal metrics that have changed in the last period. Defaults to *true*.

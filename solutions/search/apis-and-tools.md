@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # APIs and tools
@@ -22,7 +24,7 @@ This page is handy list of the most important APIs and tools you need to build, 
 | [`_explain`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-explain) | Provides detailed explanation of how a specific document matches a query with scoring breakdown |
 | [`_count`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-count) | Returns count of documents matching a query without retrieving results |
 | [`_validate/query`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-validate-query) | Validates query syntax without executing the search |
-| [`_analyze`](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html) | Performs analysis for [full-text search](./full-text.md) on a text string and returns the resulting tokens. |
+| [`_analyze`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) | Performs analysis for [full-text search](./full-text.md) on a text string and returns the resulting tokens. |
 
 ### Ingestion & mapping APIs
 
@@ -60,10 +62,6 @@ These tools are documented in the **Explore & Analyze** section:
 | [Grok Debugger](/explore-analyze/query-filter/tools/grok-debugger.md) | Build and debug grok patterns before you use them in your data processing pipelines. |
 | [Painless Lab](/explore-analyze/scripting/painless-lab.md) | Test and debug Painless scripts in real-time. |
 
-### Playground
-
-Use [Playground](rag/playground.md) to combine your {{es}} data with the power of large language models (LLMs) for retrieval augmented generation (RAG), using a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
-
 ### Search UI
 
 [Elastic Search UI](./site-or-app/search-ui.md) is a library of JavaScript and React tools for building search experiences, optimized for use with {{es}}.
@@ -73,3 +71,17 @@ Check out the Elasticsearch Labs [blog](https://www.elastic.co/search-labs) to l
 
 The accompanying [GitHub repository](https://www.github.com/elastic/elasticsearch-labs) contains hands-on Python notebooks and sample apps to help you get started with these advanced search features.
 :::
+
+## Generative AI tools
+
+### Playground
+
+Use [Playground](rag/playground.md) to combine your {{es}} data with the power of large language models (LLMs) for retrieval augmented generation (RAG), using a chat interface. Playground is also very useful for testing and debugging your {{es}} queries, using the [retrievers](retrievers-overview.md) syntax with the `_search` endpoint.
+
+### {{es}} Model Context Protocol (MCP) server
+
+Connect to your Elasticsearch data directly from any MCP Client (like Claude Desktop) using the Model Context Protocol (MCP).
+
+This server enables connecting agents to your Elasticsearch data and allows you to interact with your Elasticsearch indices through natural language conversations.
+
+Learn more in the [elastic/mcp-server-elasticsearch](https://github.com/elastic/mcp-server-elasticsearch?tab=readme-ov-file#elasticsearch-mcp-server) GitHub repository.

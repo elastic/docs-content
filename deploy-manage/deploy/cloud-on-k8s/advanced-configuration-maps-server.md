@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-advanced-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-advanced-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Advanced configuration [k8s-maps-advanced-configuration]
@@ -13,7 +15,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-If you already looked at the [Elasticsearch on ECK](elasticsearch-configuration.md) documentation, some of these concepts might sound familiar to you. The resource definitions in ECK share the same philosophy when you want to:
+If you already looked at the [{{es}} on ECK](elasticsearch-configuration.md) documentation, some of these concepts might sound familiar to you. The resource definitions in ECK share the same philosophy when you want to:
 
 * Customize the Pod configuration
 * Customize the product configuration
@@ -58,7 +60,7 @@ stringData:
     logging.level: debug
 ```
 
-Refer to [Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for adjusting compute resources for Elastic Maps Server.
+Refer to [Set compute resources for {{kib}}, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for adjusting compute resources for Elastic Maps Server.
 
 
 ## Scale out an Elastic Maps Server deployment [k8s-maps-scaling]

@@ -12,7 +12,7 @@ applies_to:
 
 When auditing security events, a single client request might generate multiple audit events across multiple cluster nodes, potentially leading to a high volume of log data and I/O operations. To maintain clarity and ensure logs remain actionable, {{es}} and {{kib}} provide configuration mechanisms to control what events are logged and which can be ignored.
 
-### Elasticsearch auditing configuration
+### {{es}} auditing configuration
 
 {{es}} configuration options include:
 
@@ -21,16 +21,16 @@ When auditing security events, a single client request might generate multiple a
   * [{{es}} ignore policies settings](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md#audit-event-ignore-policies): Use ignore policies for fine-grained control over which audit events are printed to the log file.
 
     ::::{tip}
-    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are dynamic. This means you can configure them using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying `elasticsearch.yml`.
+    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are dynamic. This means you can configure them using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
     ::::
 
 For a complete description of event details and format, refer to the following resources:
   * [{{es}} audit events details and schema](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md)
   * [{{es}} log entry output format](./logfile-audit-output.md#audit-log-entry-format)
 
-### Kibana auditing configuration
+### {{kib}} auditing configuration
 
-To control the logs that are outputted by Kibana, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
+To control the logs that are outputted by {{kib}}, you can use [{{kib}} ignore filters](kibana://reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
 
 In self-managed systems, you can optionally configure audit logs location, and file/rolling file using [{{kib}} audit logging settings](kibana://reference/configuration-reference/security-settings.md#audit-logging-settings).
 

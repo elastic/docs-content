@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-tableau-desktop.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-tableau-desktop.html
+products:
+  - id: elasticsearch
 ---
 
 # Tableau Desktop [sql-client-apps-tableau-desktop]
@@ -11,7 +13,7 @@ mapped_pages:
 Use the {{es}} JDBC driver and dedicated {{es}} Tableau Connector to access {{es}} data from Tableau Desktop.
 
 ::::{important}
-Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, please reach out to its vendor.
+Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, reach out to its vendor.
 ::::
 
 
@@ -34,7 +36,7 @@ Move the {{es}} Connector for Tableau to the Tableau Desktop connectors director
 * Windows: `C:\Users\[Windows User]\Documents\My Tableau Repository\Connectors`
 * Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
 
-Launch Tableau Desktop. In the menu, click **More…​** and select **Elasticsearch by Elastic** as the data source.
+Launch Tableau Desktop. In the menu, click **More…** and select **Elasticsearch by Elastic** as the data source.
 
 $$$apps_tableau_desktop_from_connector$$$
 ![Select Elasticsearch by Elastic as the data source](/explore-analyze/images/elasticsearch-reference-apps_tableau_desktop_from_connector.png "")

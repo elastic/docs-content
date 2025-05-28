@@ -1,0 +1,75 @@
+valid_items:
+  - key: layout
+    type: string
+    valid_values:
+      - archive
+      - landing-page
+      - not-found
+  - key: navigation_title
+    type: string
+  - key: description
+    type: string
+  - key: mapped_pages
+    type: array
+  - key: applies_to
+    type: object
+    children:
+      - key: stack
+        type: string
+      - key: deployment
+        type: object
+        children:
+          - key: eck
+            type: string
+          - key: ess
+            type: string
+          - key: ece
+            type: string
+          - key: self
+            type: string
+      - key: serverless
+        type: object
+        children:
+          - key: security
+            type: string
+          - key: elasticsearch
+            type: string
+          - key: observability
+            type: string
+      - key: product
+        type: string
+  - key: products
+    type: array
+    children:
+      - key: id
+        type: string
+        valid_values:
+          - apm
+          - apm-agent
+          - beats
+          - cloud-control-ecctl
+          - cloud-enterprise
+          - cloud-hosted
+          - cloud-kubernetes
+          - cloud-serverless
+          - cloud-terraform
+          - ecs
+          - ecs-logging
+          - elastic-agent
+          - elastic-serverless-forwarder
+          - elastic-stack
+          - elasticsearch
+          - elasticsearch-client
+          - elasticsearch-curator
+          - fleet
+          - ingest
+          - integrations
+          - kibana
+          - logstash
+          - machine-learning
+          - observability
+          - painless
+          - search-ui
+          - security
+  - key: sub
+    type: object

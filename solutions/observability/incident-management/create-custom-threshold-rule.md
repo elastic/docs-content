@@ -1,9 +1,11 @@
 ---
+navigation_title: Custom threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/custom-threshold-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-custom-threshold-alert-rule.html
-
-navigation_title: "Custom threshold"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create a custom threshold rule [observability-create-custom-threshold-alert-rule]
@@ -11,7 +13,7 @@ navigation_title: "Custom threshold"
 
 ::::{note}
 
-**For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -32,7 +34,7 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 
 Specify the following settings to define the data the rule applies to:
 
-* **Select a data view:** Click the data view field to search for and select a data view that points to the indices or data streams that you’re creating a rule for. You can also create a *new* data view by clicking **Create a data view**. Refer to [Create a data view](../../../explore-analyze/find-and-organize/data-views.md) for more on creating data views.
+* **Select a data view:** Click the data view field to search for and select a data view that points to the indices or data streams that you’re creating a rule for. You can also create a *new* data view by clicking **Create a data view**. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md) for more on creating data views.
 * **Define query filter (optional):** Use a query filter to narrow down the data that the rule applies to. For example, set a query filter to a specific host name using the query filter `host.name:host-1` to only apply the rule to that host.
 
 
@@ -43,7 +45,7 @@ Set the conditions for the rule to detect using aggregations, an equation, and a
 
 ### Set aggregations [custom-threshold-aggregation]
 
-Aggregations summarize your data to make it easier to analyze. Set any of the following aggregation types to gather data to create your rule: `Average`, `Max`, `Min`, `Cardinality`, `Count`, `Sum,` `Percentile`, or `Rate`. For more information about these options, refer to [Aggregation options](../../../solutions/observability/incident-management/aggregation-options.md).
+Aggregations summarize your data to make it easier to analyze. Set any of the following aggregation types to gather data to create your rule: `Average`, `Max`, `Min`, `Cardinality`, `Count`, `Sum,` `Percentile`, or `Rate`. For more information about these options, refer to [Aggregation options](/solutions/observability/incident-management/aggregation-options.md).
 
 For example, to gather the total number of log documents with a log level of `warn`:
 
@@ -145,25 +147,25 @@ To add actions to rules, you must first create a connector for that service (for
 :::::{dropdown} Connector types
 Connectors provide a central place to store connection information for services and integrations with third party systems. The following connectors are available when defining actions for alerting rules:
 
-* [Cases](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html)
-* [D3 Security](https://www.elastic.co/guide/en/kibana/current/d3security-action-type.html)
-* [Email](https://www.elastic.co/guide/en/kibana/current/email-action-type.html)
-* [{{ibm-r}}](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html)
-* [Index](https://www.elastic.co/guide/en/kibana/current/index-action-type.html)
-* [Jira](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html)
-* [Microsoft Teams](https://www.elastic.co/guide/en/kibana/current/teams-action-type.html)
-* [Observability AI Assistant](https://www.elastic.co/guide/en/kibana/current/obs-ai-assistant-action-type.html)
-* [{{opsgenie}}](https://www.elastic.co/guide/en/kibana/current/opsgenie-action-type.html)
-* [PagerDuty](https://www.elastic.co/guide/en/kibana/current/pagerduty-action-type.html)
-* [Server log](https://www.elastic.co/guide/en/kibana/current/server-log-action-type.html)
-* [{{sn-itom}}](https://www.elastic.co/guide/en/kibana/current/servicenow-itom-action-type.html)
-* [{{sn-itsm}}](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html)
-* [{{sn-sir}}](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html)
-* [Slack](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html)
-* [{{swimlane}}](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html)
-* [Torq](https://www.elastic.co/guide/en/kibana/current/torq-action-type.html)
-* [{{webhook}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html)
-* [xMatters](https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html)
+* [Cases](kibana://reference/connectors-kibana/cases-action-type.md)
+* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -171,7 +173,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -205,7 +207,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.

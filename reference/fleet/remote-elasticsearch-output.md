@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/remote-elasticsearch-output.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Remote Elasticsearch output [remote-elasticsearch-output]
@@ -9,13 +12,11 @@ Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluste
 
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your main {{es}} cluster.
 
-::::{warning}
-A bug has been found that causes {{elastic-defend}} response actions to stop working when a remote {{es}} output is configured for an agent. This bug is currently being investigated and is expected to be resolved in an upcoming release.
-::::
-
-
 ::::{note}
-Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+Note the following restrictions with the remote {es} output:
+
+* Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+* Using {{elastic-defend}} is currently not supported when a remote {{es}} output is configured for an agent.
 ::::
 
 ## Configuration
@@ -61,6 +62,10 @@ The remote {{es}} cluster is now configured.
 
 If you have chosen not to automatically synchronize integrations, you need to make sure that for any integrations that have been [added to your {{agent}} policy](/reference/fleet/add-integration-to-policy.md), the integration assets have been installed on the remote {{es}} cluster. Refer to [Install and uninstall {{agent}} integration assets](/reference/fleet/install-uninstall-integration-assets.md) for the steps.
 
+::::{note}
+When you use a remote {{es}} output, {{fleet-server}} performs a test to ensure connectivity to the remote cluster. The result of that connectivity test is used to report the ES Remote output as healthy or unhealthy on the **Fleet** > **Settings** > **Outputs** page, under the **Status** column. In some cases, the remote {{es}} output used for data from {{agent}} may be reachable only by those agents and not by {{fleet-server}}, so the unhealthy state and an associated `Unable to connect` error that appears on the UI can be ignored.
+::::
+
 ## Automatic integrations synchronization
 
 ```{applies_to}
@@ -80,7 +85,7 @@ Remote clusters require access to the [{{package-registry}}](/reference/fleet/in
 1. Configure {{ccr}} on the remote cluster.
 
     1. In the remote cluster, open the {{kib}} menu and go to **Stack Management > Remote Clusters**.
-    2. Refer to [Remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html) to add your main cluster (where the remote {{es}} output is configured) as a remote cluster.
+    2. Refer to [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) to add your main cluster (where the remote {{es}} output is configured) as a remote cluster.
     3. Go to **Stack Management > Cross-Cluster Replication**.
     4. Create a follower index named `fleet-synced-integrations-ccr-<output name>` that replicates the `fleet-synced-integrations` leader index on the main cluster.
     5. Resume replication once the follower index is created.
@@ -94,3 +99,82 @@ Remote clusters require access to the [{{package-registry}}](/reference/fleet/in
     3. Run the API request.
     4. Copy the encoded value of the generated API key.
     5. Back in the main cluster, paste the value you copied into the **Remote Kibana API Key** field.
+
+4. Choose whether uninstalled integrations should also be uninstalled on the remote cluster.
+
+### Troubleshooting
+
+When integration syncing is enabled for a remote {{es}} output, the current sync status is reported in **{{fleet}} Settings** in the **Outputs** table. To see a detailed breakdown of the integration syncing status, click on the **Integration syncing** status badge.
+
+You can also use the API to view the list of synced integrations with their sync status:
+
+1. In the main cluster, go to **{{fleet}} Settings** and edit the remote {{es}} output to check.
+
+2. Copy the output ID from the address in your browser.
+
+3. Go to **Management > Dev Tools**.
+
+4. Run the following query using the copied output ID:
+    ```sh
+    GET kbn:/api/fleet/remote_synced_integrations/<remote_output_id>/remote_status
+    ```
+    This should return the list of synced integrations with their sync status.
+
+::::{note}
+Syncing can take up to five minutes after an integration is installed, updated, or removed on the main cluster.
+::::
+
+
+#### Integration syncing status failure
+
+If integration syncing reports connection errors or fails to report the syncing status, take the following steps to verify your setup.
+
+1. In the remote cluster, check the integration sync status using the API:
+
+    1. Go to **Management > Dev Tools**.
+    2. Run the following query:
+    ```sh
+    GET kbn:/api/fleet/remote_synced_integrations/status
+    ```
+    This should return the list of synced integrations with their sync status.
+
+2. If the above query returns an error, verify your setup on the remote cluster:
+
+    1. Go to **Stack Management > Remote Clusters**.
+    2. Check that the main cluster is connected as a remote cluster.
+    4. Go to **Stack Management > Cross-Cluster Replication**.
+    3. Check that {{ccr}} using the main cluster as remote is correctly set up and active. In particular, check that the name of the follower index `fleet-synced-integrations-ccr-<output name>` contains the name of the remote {{es}} output on the main cluster.
+
+3. Verify your setup in the main cluster:
+
+    1. In {{fleet}}, open the **Settings** tab.
+    1. Check that the remote {{es}} output is healthy. In particular, check that the remote host URL matches one of the {{es}} hosts on the remote cluster.
+    2. Edit the remote {{es}} output and check that the remote {{kib}} URL is correct, as well as the validity and privileges of the remote {{kib}} API key. Note that an incorrect value in either of these fields will not cause the output to become unhealthy, but will affect integration syncing.
+
+#### Integrations are not installed on the remote cluster
+
+1. In the main cluster, look for errors in the integration syncing status of the remote {{es}} output in {{fleet}} **Settings** or using the API as described [previously](#troubleshooting).
+
+2. Check the contents of the leader index:
+
+    1. Go to **Management > Dev Tools**.
+    2. Run the following query
+    ```sh
+    GET fleet-synced-integrations/_search
+    ```
+    The response payload should include the list of integrations with their install status.
+
+3. In the remote cluster, check the contents of the follower index:
+
+    1. Go to **Management > Dev Tools**
+    2. Run the following query:
+    ```sh
+    GET fleet-synced-integrations-ccr-<output name>/_search
+    ```
+    The response should match the the contents of the leader index on the main cluster.
+
+4. If there is a mismatch between the leader and follower index, wait up to five minutes for the next sync to be completed in each cluster. You can check this by inspecting {{kib}} logs and looking for the line: `[SyncIntegrationsTask] runTask ended: success`.
+
+#### Uninstalled integrations are not uninstalled on the remote cluster
+
+This can happen when the integration cannot be uninstalled on the remote cluster, for instance if it has integration policies assigned to agent policies. To inspect the reason why an integration failed to be uninstalled in the remote cluster, review the integration syncing status of the remote {{es}} output in {{fleet}} **Settings** or using the API as described [above](#troubleshooting).

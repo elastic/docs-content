@@ -1,8 +1,7 @@
 ---
-navigation_title: Run Elasticsearch in production
+navigation_title: Run {{es}} in production
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-planning.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-planning.html
 applies_to:
   deployment:
@@ -10,6 +9,9 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
+  - id: cloud-hosted
 ---
 
 # Run {{es}} in production [scalability]
@@ -34,7 +36,7 @@ Your responsibilities when running {{es}} in production depend on the [deploymen
 
 * **Self-managed {{es}}**: You are responsible for setting up and managing nodes, clusters, shards, and replicas. This includes managing the underlying infrastructure, scaling, and ensuring high availability through failover and backup strategies.
 
-* **{{ech}}**: Elastic can [autoscale](../autoscaling.md) resources in response to workload changes. You can choose from different hardware profiles and deployment architectures to apply sensible defaults for your use case. A good understanding of nodes, shards, and replicas is important, as you are still responsible for managing your data and ensuring cluster performance.
+* **{{ech}}**: Elastic can [autoscale](../autoscaling.md) resources in response to workload changes. You can choose from different hardware profiles and deployment architectures to apply sensible defaults for your use case. A good understanding of nodes, shards, and replicas is important, as you are still responsible for managing your data and ensuring cluster performance. Also review the [plan for production](../../deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md) for how to plan your deployment for production.
 
 * **{{ece}}**: Similar to {{ech}}, ECE manages {{es}} deployments and automates cluster operations, including scaling and orchestration. However, you are responsible for maintaining the platform itself, including the ECE hosts, operating system updates, and software upgrades. At the deployment level, you must also manage data, monitor performance, and handle shard strategies and capacity planning.
 
@@ -60,7 +62,7 @@ The following topics, covered in other sections of the documentation, offer valu
   [Elastic integrations](https://www.elastic.co/integrations) provide default index lifecycle policies, and you can [build your own policies for your custom integrations](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md).
   ::::
 
-### Security and monitoring [security-and-monitoring] 
+### Security and monitoring [security-and-monitoring]
 
 As with any enterprise system, you need tools to secure, manage, and monitor your deployments. Security, monitoring, and administrative features that are integrated into {{es}} enable you to use [Kibana](/get-started/the-stack.md) as a control center for managing a cluster.
 

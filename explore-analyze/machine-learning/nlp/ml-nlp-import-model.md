@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-import-model.html
+products:
+  - id: machine-learning
 ---
 
 # Import the trained model and vocabulary [ml-nlp-import-model]
@@ -39,11 +41,11 @@ Trained models must be in a TorchScript representation for use with {{stack-ml-f
     ```
 
     1. Specify the Elastic Cloud identifier. Alternatively, use `--url`.
-    2. Provide authentication details to access your cluster. Refer to [Authentication methods](https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-authentication.html) to learn more.
+    2. Provide authentication details to access your cluster. Refer to [Authentication methods](#ml-nlp-authentication) to learn more.
     3. Specify the identifier for the model in the Hugging Face model hub.
     4. Specify the type of NLP task. Supported values are `fill_mask`, `ner`, `question_answering`, `text_classification`, `text_embedding`, `text_expansion`, `text_similarity`, and `zero_shot_classification`.
 
-For more details, refer to [](eland://reference/machine-learning.md#ml-nlp-pytorch).
+For more details, refer to the [Eland documentation](eland://reference/machine-learning.md#ml-nlp-pytorch).
 
 ## Import with Docker [ml-nlp-import-docker]
 

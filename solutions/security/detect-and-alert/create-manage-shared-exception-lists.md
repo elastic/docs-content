@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Create and manage shared exception lists [shared-exception-lists]
@@ -94,7 +97,7 @@ Apply shared exception lists to rules:
 2. Do one of the following:
 
     * Select a shared exception list’s name to open its details page, then click **Link rules**.
-    * Find the shared exception list you want to assign to rules, then from the **More actions** menu (**…​**), select **Link rules**.
+    * Find the shared exception list you want to assign to rules, then from the **More actions** menu (**…**), select **Link rules**.
 
 3. Click the toggles in the **Link** column to select the rules you want to link to the exception list.
 
@@ -105,7 +108,7 @@ Apply shared exception lists to rules:
 4. Click **Save**.
 5. (Optional) To verify that the shared exception list was added to the rules you selected:
 
-    1. Open a rule’s details page (**Rules → Detection rules (SIEM) → *Rule name***).
+    1. Open a rule’s details page (**Rules → Detection rules (SIEM) → Rule name**).
     2. Scroll down the page, and then select the **Rule exceptions** tab.
     3. Navigate to the exception items that are included in the shared exception list. Click the **Affects shared list** link to view the associated shared exception lists.
 

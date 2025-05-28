@@ -1,11 +1,15 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-getting-started.html
   - https://www.elastic.co/guide/en/serverless/current/rules.html
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations-notifications-domain-allowlist.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
+  - id: cloud-hosted
 ---
 
 # Alerts

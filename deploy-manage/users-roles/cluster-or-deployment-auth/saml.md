@@ -1,4 +1,5 @@
 ---
+navigation_title: SAML
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-realm.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece_sign_outgoing_saml_message.html
@@ -10,13 +11,17 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/echsign-outgoing-saml-message.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html
-navigation_title: SAML
 applies_to:
   deployment:
     self:
     ess:
     ece:
     eck:
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: cloud-kubernetes
 ---
 
 # SAML authentication [saml-realm]
@@ -38,7 +43,7 @@ To configure SAML, you need to perform the following steps:
 1. [Configure the prerequisites](#prerequisites)
 2. [Create one or more SAML realms](#saml-create-realm)
 3. [Configure role mappings](#saml-role-mapping)
-4. [Configure Kibana to use SAML as the authentication provider](#saml-configure-kibana)
+4. [Configure {{kib}} to use SAML as the authentication provider](#saml-configure-kibana)
 
 Additional steps outlined in this document are optional.
 
@@ -101,7 +106,7 @@ If you're using a self-managed cluster, then perform the following additional st
 
 * Enable the token service.
 
-    The {{es}} SAML implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your `elasticsearch.yml` file:
+    The {{es}} SAML implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
     ```yaml
     xpack.security.authc.token.enabled: true
@@ -121,7 +126,7 @@ This realm has a few mandatory settings, and a number of optional settings. The 
 
 This guide will walk you through the most common settings.
 
-Create a realm by adding the following to your `elasticsearch.yml` configuration file. Each configuration value is explained below.
+Create a realm by adding the following to your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file. Each configuration value is explained below.
 
 If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
@@ -152,7 +157,6 @@ idp.metadata.path
 
     :::{tip}
     If you want to pass a file path, then review the following:
-
     * File path settings are resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated.
     * If you're using {{ece}} or {{ech}}, then you must upload the file [as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
     * If you're using {{eck}}, then install the file as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
@@ -591,7 +595,7 @@ PUT /_security/role_mapping/saml-example
 }
 ```
 
-1. The `example_role` role is **not** a builtin Elasticsearch role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) and [Kibana features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
+1. The `example_role` role is **not** a builtin {{es}} role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) and [{{kib}} features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 
 ### Example: Role mapping API, using SAML attributes
 
@@ -640,7 +644,7 @@ SAML authentication in {{kib}} requires additional settings in addition to the s
 
 If you're using a self-managed cluster, then, because OIDC requires {{es}} nodes to use TLS on the HTTP interface, you must configure {{kib}} to use a `https` URL to connect to {{es}}, and you may need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates that {{es}} has been configured to use.
 
-SAML authentication in {{kib}} is subject to the following timeout settings in `kibana.yml`:
+SAML authentication in {{kib}} is subject to the following timeout settings in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 * [`xpack.security.session.idleTimeout`](/deploy-manage/security/kibana-session-management.md#session-idle-timeout)
 * [`xpack.security.session.lifespan`](/deploy-manage/security/kibana-session-management.md#session-lifespan)
@@ -668,7 +672,7 @@ The configuration values used in the example above are:
 :   Add `saml` provider to instruct {{kib}} to use SAML SSO as the authentication method.
 
 `xpack.security.authc.providers.saml.<provider-name>.realm`
-:   Set this to the name of the SAML realm that you have used in your [Elasticsearch realm configuration](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm), for instance: `saml1`
+:   Set this to the name of the SAML realm that you have used in your [{{es}} realm configuration](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm), for instance: `saml1`
 
 ### Supporting SAML and basic authentication in {{kib}} [saml-kibana-basic]
 
@@ -795,7 +799,7 @@ On a high level, the custom web application would need to perform the following 
     }
     ```
 
-    Elasticsearch will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests. It also supplies a refresh token that can be later used to refresh the given access token as described in [get token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
+    {{es}} will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests. It also supplies a refresh token that can be later used to refresh the given access token as described in [get token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
 
 4. The response to calling `/_security/saml/authenticate` will contain only the username of the authenticated user. If you need to get the values for the SAML Attributes that were contained in the SAML Response for that user, you can call the Authenticate API `/_security/_authenticate/` using the access token as a `Bearer` token and the SAML attribute values will be contained in the response as part of the [User metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-user-metadata).
 

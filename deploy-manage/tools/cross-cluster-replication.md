@@ -7,6 +7,8 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Cross-cluster replication [xpack-ccr]
@@ -58,7 +60,7 @@ In a uni-directional configuration, the cluster containing follower indices must
 
 ## Multi-cluster architectures [ccr-multi-cluster-architectures]
 
-Use {{ccr}} to construct several multi-cluster architectures within the Elastic Stack:
+Use {{ccr}} to construct several multi-cluster architectures within the {{stack}}:
 
 * [Disaster recovery](#ccr-disaster-recovery) in case a primary cluster fails, with a secondary cluster serving as a hot backup
 * [Data locality](#ccr-data-locality) to maintain multiple copies of the dataset close to the application servers (and users), and reduce costly latency

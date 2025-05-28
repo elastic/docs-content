@@ -1,5 +1,5 @@
 ---
-navigation_title: "Breaking changes"
+navigation_title: Breaking changes
 ---
 
 # Elastic {{observability}} breaking changes [elastic-observability-breaking-changes]
@@ -17,8 +17,11 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-## 9.0.0 [elastic-observability-900-breaking-changes]
-**Release date:** April 2, 2025
+## 9.0.1 [elastic-observability-9.0.1-breaking-changes]
+
+There are no breaking changes in Elastic {{observability}} 9.0.1.
+
+## 9.0.0 [elastic-observability-9.0.0-breaking-changes]
 
 ::::{dropdown} Profiling now defaults to 19Hz sampling frequency
 For more information, check [#202278]({{kib-pull}}202278).
@@ -37,15 +40,5 @@ To explore your logs, use the contextual experience in Discover.
 
 To view log streams, use Discover sessions.
 
-
 ::::
 
-::::{dropdown} Removed Logs Explorer
-Logs Explorer has been removed. 
-
-
-For more information, check [#203685]({{kib-pull}}203685).
-
-**Action**<br>
-Use the improved logs exploration experience in Discover.
-::::

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/dashboard.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/dashboard.html
+products:
+  - id: kibana
 ---
 
 # Dashboards [dashboard]
@@ -13,8 +15,6 @@ Dashboards are the best way to visualize and share insights from your {{es}} dat
 A **dashboard** is made of one or more **panels** that you can organize as you like. Each panel can display various types of content: **visualizations** such as charts, tables, metrics, and maps, **static annotations** like text or images, or even **specialized views** for Machine Learning or Observability data.
 
 ![Example dashboard](/explore-analyze/images/kibana-dashboard-overview.png "")
-
-There are several [panel editors](visualize.md#panels-editors) in {{kib}} that let you create and configure different types of visualizations.
 
 At any time, you can [share a dashboard](dashboards/sharing.md) you’ve created with your team, in {{kib}} or outside.
 

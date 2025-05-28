@@ -9,9 +9,11 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
-# Elasticsearch logfile audit output [audit-log-output]
+# {{es}} logfile audit output [audit-log-output]
 
 The `logfile` audit output is the only output for auditing. By default, it writes data to the `<clustername>_audit.json` file in the logs directory. The file is also rotated and archived daily or upon reaching the 1GB file size limit.
 

@@ -1,14 +1,16 @@
 ---
-navigation_title: "Elasticsearch"
+navigation_title: Elasticsearch
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-billing.html
 applies_to:
   serverless: all
+products:
+  - id: cloud-serverless
 ---
 
-# Elasticsearch billing dimensions [elasticsearch-billing]
+# {{es}} billing dimensions [elasticsearch-billing]
 
-Elasticsearch is priced based on consumption of the underlying infrastructure that supports your use case, with the performance characteristics you need. Measurements are in Virtual Compute Units (VCUs). Each VCU represents a fraction of RAM, CPU, and local disk for caching.
+{{es}} is priced based on consumption of the underlying infrastructure that supports your use case, with the performance characteristics you need. Measurements are in Virtual Compute Units (VCUs). Each VCU represents a fraction of RAM, CPU, and local disk for caching.
 
 The number of VCUs you need is determined by:
 
@@ -23,7 +25,7 @@ For detailed {{es-serverless}} project rates, see the [{{es-serverless}} pricing
 
 ## VCU types: Search, Indexing, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
 
-Elasticsearch uses three VCU types:
+{{es}} uses three VCU types:
 
 * **Indexing:** The VCUs used to index incoming documents.
 * **Search:** The VCUs used to return search results, with the latency and queries per second (QPS) you require.
@@ -40,8 +42,8 @@ Elasticsearch uses three VCU types:
 You can control costs using the following strategies:
 
 * **Search Power setting:** [Search Power](../../deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying, or you can reduce provisioned resources to cut costs.
-* **Time series data retention:** By limiting the number of days of [time series data](../../../solutions/search/ingest-for-search.md#elasticsearch-ingest-time-series-data) that are available for caching, you can reduce the number of search VCUs required.
+* **Search boost window**: By limiting the number of days of [time series data](../../../solutions/search/ingest-for-search.md#elasticsearch-ingest-time-series-data) that are available for caching, you can reduce the number of search VCUs required.
 * **Machine learning trained model autoscaling:** Configure your trained model deployment to allow it to scale down to zero allocations when there are no active inference requests:
 
     * When starting or updating a trained model deployment, [Enable adaptive resources](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources) and set the VCU usage level to **Low**.
-    * When using the inference API for Elasticsearch or ELSER, [enable `adaptive_allocations`](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations).
+    * When using the inference API for {{es}} or ELSER, [enable `adaptive_allocations`](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations).

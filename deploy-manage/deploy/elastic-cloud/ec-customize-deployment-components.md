@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-customize-deployment-components.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-customize-deployment-components.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Customize deployment components [ec-customize-deployment-components]
@@ -121,7 +123,7 @@ In production systems, you might need to control what {{es}} data users can acce
 
 ## {{integrations-server}} [ec_integrations_server]
 
-{{integrations-server}} connects observability and security data from Elastic Agents and APM to Elasticsearch. An {{integrations-server}} instance is created automatically as part of every deployment.
+{{integrations-server}} connects observability and security data from Elastic Agents and APM to {{es}}. An {{integrations-server}} instance is created automatically as part of every deployment.
 
 Refer to [Manage your Integrations Server](manage-integrations-server.md) to learn more.
 

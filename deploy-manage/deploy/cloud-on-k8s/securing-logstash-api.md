@@ -1,16 +1,18 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-securing-api.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-securing-api.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Securing Logstash API [k8s-logstash-securing-api]
 
 ## Enable HTTPS [k8s-logstash-https]
 
-Access to the [Logstash Monitoring APIs](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html#monitoring-api-security) use HTTPS by default - the operator will set the values  `api.ssl.enabled: true`, `api.ssl.keystore.path` and `api.ssl.keystore.password`.
+Access to the [Logstash Monitoring APIs](logstash://reference/monitoring-logstash.md#monitoring-api-security) use HTTPS by default - the operator will set the values  `api.ssl.enabled: true`, `api.ssl.keystore.path` and `api.ssl.keystore.password`.
 
 You can further secure the {{ls}} Monitoring APIs by requiring HTTP Basic authentication by setting `api.auth.type: basic`, and providing the relevant credentials `api.auth.basic.username` and `api.auth.basic.password`:
 
@@ -75,7 +77,7 @@ spec:
 
 ## Provide your own certificate [k8s-logstash-http-custom-tls]
 
-If you want to use your own certificate, the required configuration is similar to Elasticsearch. Configure the certificate in `api` Service. Check [Custom HTTP certificate](../../security/secure-cluster-communications.md).
+If you want to use your own certificate, the required configuration is similar to {{es}}. Configure the certificate in `api` Service. Check [Custom HTTP certificate](../../security/secure-cluster-communications.md).
 
 ```yaml
 apiVersion: logstash.k8s.elastic.co/v1alpha1

@@ -1,7 +1,10 @@
 ---
-navigation_title: "Logging"
+navigation_title: Logging
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-standalone-logging-config.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure logging for standalone {{agent}}s [elastic-agent-standalone-logging-config]

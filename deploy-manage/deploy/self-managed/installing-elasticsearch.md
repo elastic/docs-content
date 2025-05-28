@@ -7,6 +7,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Deploy an {{es}} cluster
@@ -52,6 +54,8 @@ Each linked guide provides the following details:
 * Archive or package contents information
 * Security certificate and key information
 
+Special considerations such as firewalls and proxy servers are not covered.
+
 Before you start, make sure that you [configure your system](/deploy-manage/deploy/self-managed/important-system-configuration.md).
 
 | Format | Description | Instructions |
@@ -63,7 +67,7 @@ Before you start, make sure that you [configure your system](/deploy-manage/depl
 
 ### {{es}} container images [elasticsearch-docker-images]
 
-You can also run {{es}} inside a docket container image. Docker container images may be downloaded from the Elastic Docker Registry.
+You can also run {{es}} inside a docker container image. Docker container images may be downloaded from the Elastic Docker Registry.
 
 You can [use Docker Compose](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-compose.md) to deploy multiple nodes at once.
 
@@ -77,6 +81,11 @@ You can [use Docker Compose](/deploy-manage/deploy/self-managed/install-elastics
 ## Installation order
 
 :::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::
+
+## Required ports
+
+:::{include} _snippets/ports.md
 :::
 
 ## Supported operating systems and JVMs [supported-platforms]

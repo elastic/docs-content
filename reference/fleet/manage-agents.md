@@ -2,6 +2,9 @@
 navigation_title: "{{agent}}s"
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/manage-agents.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{agent}}s [manage-agents]

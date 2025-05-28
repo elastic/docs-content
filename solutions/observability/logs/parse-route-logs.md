@@ -5,13 +5,16 @@ mapped_pages:
 applies_to:
   stack: all
   serverless: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Parse and route logs [observability-parse-log-data]
 
 ::::{note}
 
-**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines that parse and route logs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the **Admin** role or higher is required to create ingest pipelines that parse and route logs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
@@ -22,8 +25,8 @@ After parsing, you can use the structured fields to further organize your logs b
 
 Refer to the following sections for more on parsing and organizing your log data:
 
-* [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields): Extract structured fields like timestamps, log levels, or IP addresses to make querying and filtering your data easier.
-* [Reroute log data to specific data streams](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-reroute-log-data-to-specific-data-streams): Route data from the generic data stream to a target data stream for more granular control over data retention, permissions, and processing.
+* [Extract structured fields](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields): Extract structured fields like timestamps, log levels, or IP addresses to make querying and filtering your data easier.
+* [Reroute log data to specific data streams](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-reroute-log-data-to-specific-data-streams): Route data from the generic data stream to a target data stream for more granular control over data retention, permissions, and processing.
 
 
 ## Extract structured fields [observability-parse-log-data-extract-structured-fields]
@@ -33,7 +36,7 @@ Make your logs more useful by extracting structured fields from your unstructure
 Follow the steps below to see how the following unstructured log data is indexed by default:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 ```
 
 Start by storing the document in the `logs-example-default` data stream:
@@ -42,16 +45,16 @@ Start by storing the document in the `logs-example-default` data stream:
 2. In the **Console** tab, add the example log to Elastic using the following command:
 
     ```console
-    POST logs-example-default/_doc
+    POST logs-test-default/_doc
     {
-    "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+    "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
     }
     ```
 
 3. Then, you can retrieve the document with the following search:
 
     ```console
-    GET /logs-example-default/_search
+    GET /logs-test-default/_search
     ```
 
 
@@ -64,11 +67,11 @@ The results should look like this:
     ...
     "hits": [
       {
-        "_index": ".ds-logs-example-default-2023.08.09-000001",
+        "_index": ".ds-logs-example-default-2025.05.09-000001",
         ...
         "_source": {
-          "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.",
-          "@timestamp": "2023-08-09T17:19:27.73312243Z"
+          "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.",
+          "@timestamp": "2025-05-09T17:19:27.73312243Z"
         }
       }
     ]
@@ -93,7 +96,7 @@ GET logs-example-default/_search
 
 While you can search for phrases in the `message` field, you can’t use this field to filter log data. Your message, however, contains all of the following potential fields you can extract and use to filter and aggregate your log data:
 
-* **@timestamp** (`2023-08-08T13:45:12.123Z`): Extracting this field lets you sort logs by date and time. This is helpful when you want to view your logs in the order that they occurred or identify when issues happened.
+* **@timestamp** (`2025-05-08T13:45:12.123Z`): Extracting this field lets you sort logs by date and time. This is helpful when you want to view your logs in the order that they occurred or identify when issues happened.
 * **log.level** (`WARN`): Extracting this field lets you filter logs by severity. This is helpful if you want to focus on high-severity WARN or ERROR-level logs, and reduce noise by filtering out low-severity INFO-level logs.
 * **host.ip** (`192.168.1.101`): Extracting this field lets you filter logs by the host IP addresses. This is helpful if you want to focus on specific hosts that you’re having issues with or if you want to find disparities between hosts.
 * **message** (`Disk usage exceeds 90%.`): You can search for phrases or words in the message field.
@@ -112,8 +115,8 @@ When you added the log to Elastic in the previous section, the `@timestamp` fiel
 ```json
         ...
         "_source": {
-          "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.",  <1>
-          "@timestamp": "2023-08-09T17:19:27.73312243Z"  <2>
+          "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.",  <1>
+          "@timestamp": "2025-05-09T17:19:27.73312243Z"  <2>
         }
         ...
 ```
@@ -124,10 +127,10 @@ When you added the log to Elastic in the previous section, the `@timestamp` fiel
 
 When looking into issues, you want to filter for logs by when the issue occurred not when the log was added to Elastic. To do this, extract the timestamp from the unstructured `message` field to the structured `@timestamp` field by completing the following:
 
-1. [Use an ingest pipeline to extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field)
-2. [Test the pipeline with the simulate pipeline API](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api)
-3. [Configure a data stream with an index template](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template)
-4. [Create a data stream](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-create-a-data-stream)
+1. [Use an ingest pipeline to extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field)
+2. [Test the pipeline with the simulate pipeline API](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api)
+3. [Configure a data stream with an index template](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template)
+4. [Create a data stream](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-create-a-data-stream)
 
 
 #### Use an ingest pipeline to extract the `@timestamp` field [observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field]
@@ -157,7 +160,7 @@ The previous command sets the following values for your ingest pipeline:
 
 * `_ingest/pipeline/logs-example-default`: The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 * `field`: The field you’re extracting data from, `message` in this case.
-* `pattern`: The pattern of the elements in your log data. The `%{@timestamp} %{{message}}` pattern extracts the timestamp, `2023-08-08T13:45:12.123Z`, to the `@timestamp` field, while the rest of the message, `WARN 192.168.1.101 Disk usage exceeds 90%.`, stays in the `message` field. The dissect processor looks for the space as a separator defined by the pattern.
+* `pattern`: The pattern of the elements in your log data. The `%{@timestamp} %{{message}}` pattern extracts the timestamp, `2025-05-08T13:45:12.123Z`, to the `@timestamp` field, while the rest of the message, `WARN 192.168.1.101 Disk usage exceeds 90%.`, stays in the `message` field. The dissect processor looks for the space as a separator defined by the pattern.
 
 
 #### Test the pipeline with the simulate pipeline API [observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api]
@@ -172,7 +175,7 @@ POST _ingest/pipeline/logs-example-default/_simulate
   "docs": [
     {
       "_source": {
-        "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+        "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
       }
     }
   ]
@@ -191,7 +194,7 @@ The results should show the `@timestamp` field extracted from the `message` fiel
         "_version": "-3",
         "_source": {
           "message": "WARN 192.168.1.101 Disk usage exceeds 90%.",
-          "@timestamp": "2023-08-08T13:45:12.123Z"
+          "@timestamp": "2025-05-08T13:45:12.123Z"
         },
         ...
       }
@@ -255,12 +258,16 @@ The example index template above sets the following component templates:
 
 #### Create a data stream [observability-parse-log-data-create-a-data-stream]
 
+:::{note}
+To ensure your logs data is run through the correct pipeline, create your ingest pipeline and index template before creating your data stream.
+:::
+
 Create your data stream using the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
 
 ```console
 POST logs-example-default/_doc
 {
-  "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+  "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
 }
 ```
 
@@ -281,12 +288,12 @@ You should see the pipeline has extracted the `@timestamp` field:
       ...
       "hits": [
         {
-          "_index": ".ds-logs-example-default-2023.08.09-000001",
+          "_index": ".ds-logs-example-default-2025.05.09-000001",
           "_id": "RsWy3IkB8yCtA5VGOKLf",
           "_score": 1,
           "_source": {
             "message": "WARN 192.168.1.101 Disk usage exceeds 90%.",
-            "@timestamp": "2023-08-08T13:45:12.123Z"  <1>
+            "@timestamp": "2025-05-08T13:45:12.123Z"  <1>
           }
         }
       ]
@@ -315,19 +322,19 @@ Check the following common issues and solutions with timestamps:
 Extracting the `log.level` field lets you filter by severity and focus on critical issues. This section shows you how to extract the `log.level` field from this example log:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 ```
 
 To extract and use the `log.level` field:
 
-1. [Add the `log.level` field to the dissect processor pattern in your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-loglevel-to-your-ingest-pipeline)
-2. [Test the pipeline with the simulate API.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
-3. [Query your logs based on the `log.level` field.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-loglevel)
+1. [Add the `log.level` field to the dissect processor pattern in your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-loglevel-to-your-ingest-pipeline)
+2. [Test the pipeline with the simulate API.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
+3. [Query your logs based on the `log.level` field.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-loglevel)
 
 
 #### Add `log.level` to your ingest pipeline [observability-parse-log-data-add-loglevel-to-your-ingest-pipeline]
 
-Add the `%{log.level}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section with this command:
+Add the `%{log.level}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section with this command:
 
 ```console
 PUT _ingest/pipeline/logs-example-default
@@ -346,11 +353,11 @@ PUT _ingest/pipeline/logs-example-default
 
 Now your pipeline will extract these fields:
 
-* The `@timestamp` field: `2023-08-08T13:45:12.123Z`
+* The `@timestamp` field: `2025-05-08T13:45:12.123Z`
 * The `log.level` field: `WARN`
 * The `message` field: `192.168.1.101 Disk usage exceeds 90%.`
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 #### Test the pipeline with the simulate API [observability-parse-log-data-test-the-pipeline-with-the-simulate-api]
@@ -363,7 +370,7 @@ POST _ingest/pipeline/logs-example-default/_simulate
   "docs": [
     {
       "_source": {
-        "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+        "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
       }
     }
   ]
@@ -385,7 +392,7 @@ The results should show the `@timestamp` and the `log.level` fields extracted fr
           "log": {
             "level": "WARN"
           },
-          "@timestamp": "2023-8-08T13:45:12.123Z",
+          "@timestamp": "2025-5-08T13:45:12.123Z",
         },
         ...
       }
@@ -402,10 +409,10 @@ Once you’ve extracted the `log.level` field, you can query for high-severity l
 Let’s say you have the following logs with varying severities:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
-2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
-2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
-2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
+2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
+2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
 ```
 
 Add them to your data stream using this command:
@@ -413,13 +420,13 @@ Add them to your data stream using this command:
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
+{ "message": "2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
+{ "message": "2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
+{ "message": "2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
 ```
 
 Then, query for documents with a log level of `WARN` or `ERROR` with this command:
@@ -445,7 +452,7 @@ The results should show only the high-severity logs:
   ...
     "hits": [
       {
-        "_index": ".ds-logs-example-default-2023.08.14-000001",
+        "_index": ".ds-logs-example-default-2025.05.14-000001",
         "_id": "3TcZ-4kB3FafvEVY4yKx",
         "_score": 1,
         "_source": {
@@ -453,11 +460,11 @@ The results should show only the high-severity logs:
           "log": {
             "level": "WARN"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z"
+          "@timestamp": "2025-05-08T13:45:12.123Z"
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.14-000001",
+        "_index": ".ds-logs-example-default-2025.05.14-000001",
         "_id": "3jcZ-4kB3FafvEVY4yKx",
         "_score": 1,
         "_source": {
@@ -465,7 +472,7 @@ The results should show only the high-severity logs:
           "log": {
             "level": "ERROR"
           },
-          "@timestamp": "2023-08-08T13:45:14.003Z"
+          "@timestamp": "2025-05-08T13:45:14.003Z"
         }
       }
     ]
@@ -483,22 +490,22 @@ The `host.ip` field is part of the [Elastic Common Schema (ECS)](ecs://reference
 This section shows you how to extract the `host.ip` field from the following example logs and query based on the extracted fields:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
-2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
-2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
-2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
+2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
+2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
 ```
 
 To extract and use the `host.ip` field:
 
-1. [Add the `host.ip` field to your dissect processor in your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-hostip-to-your-ingest-pipeline)
-2. [Test the pipeline with the simulate API.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
-3. [Query your logs based on the `host.ip` field.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-hostip)
+1. [Add the `host.ip` field to your dissect processor in your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-hostip-to-your-ingest-pipeline)
+2. [Test the pipeline with the simulate API.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-test-the-pipeline-with-the-simulate-api)
+3. [Query your logs based on the `host.ip` field.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-query-logs-based-on-hostip)
 
 
 #### Add `host.ip` to your ingest pipeline [observability-parse-log-data-add-hostip-to-your-ingest-pipeline]
 
-Add the `%{host.ip}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section:
+Add the `%{host.ip}` option to the dissect processor pattern in the ingest pipeline you created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-use-an-ingest-pipeline-to-extract-the-timestamp-field) section:
 
 ```console
 PUT _ingest/pipeline/logs-example-default
@@ -517,12 +524,12 @@ PUT _ingest/pipeline/logs-example-default
 
 Your pipeline will extract these fields:
 
-* The `@timestamp` field: `2023-08-08T13:45:12.123Z`
+* The `@timestamp` field: `2025-05-08T13:45:12.123Z`
 * The `log.level` field: `WARN`
 * The `host.ip` field: `192.168.1.101`
 * The `message` field: `Disk usage exceeds 90%.`
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 #### Test the pipeline with the simulate API [observability-parse-log-data-test-the-pipeline-with-the-simulate-api-1]
@@ -535,7 +542,7 @@ POST _ingest/pipeline/logs-example-default/_simulate
   "docs": [
     {
       "_source": {
-        "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+        "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
       }
     }
   ]
@@ -554,7 +561,7 @@ The results should show the `host.ip`, `@timestamp`, and `log.level` fields extr
           "host": {
             "ip": "192.168.1.101"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z",
+          "@timestamp": "2025-05-08T13:45:12.123Z",
           "message": "Disk usage exceeds 90%.",
           "log": {
             "level": "WARN"
@@ -577,13 +584,13 @@ Before querying your logs, add them to your data stream using this command:
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
+{ "message": "2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
+{ "message": "2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
+{ "message": "2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
 ```
 
 
@@ -611,14 +618,14 @@ Because all of the example logs are in this range, you’ll get the following re
   "hits": {
     ...
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "ak4oAIoBl7fe5ItIixuB",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.101"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z",
+          "@timestamp": "2025-05-08T13:45:12.123Z",
           "message": "Disk usage exceeds 90%.",
           "log": {
             "level": "WARN"
@@ -626,14 +633,14 @@ Because all of the example logs are in this range, you’ll get the following re
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "a04oAIoBl7fe5ItIixuC",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.103"
           },
-          "@timestamp": "2023-08-08T13:45:14.003Z",
+          "@timestamp": "2025-05-08T13:45:14.003Z",
           "message": "Database connection failed.",
           "log": {
             "level": "ERROR"
@@ -641,14 +648,14 @@ Because all of the example logs are in this range, you’ll get the following re
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "bE4oAIoBl7fe5ItIixuC",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.104"
           },
-          "@timestamp": "2023-08-08T13:45:15.004Z",
+          "@timestamp": "2025-05-08T13:45:15.004Z",
           "message": "Debugging connection issue.",
           "log": {
             "level": "DEBUG"
@@ -656,14 +663,14 @@ Because all of the example logs are in this range, you’ll get the following re
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "bU4oAIoBl7fe5ItIixuC",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.102"
           },
-          "@timestamp": "2023-08-08T13:45:16.005Z",
+          "@timestamp": "2025-05-08T13:45:16.005Z",
           "message": "User changed profile picture.",
           "log": {
             "level": "INFO"
@@ -709,14 +716,14 @@ You’ll get the following results only showing logs in the range you’ve set:
   "hits": {
     ...
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "ak4oAIoBl7fe5ItIixuB",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.101"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z",
+          "@timestamp": "2025-05-08T13:45:12.123Z",
           "message": "Disk usage exceeds 90%.",
           "log": {
             "level": "WARN"
@@ -724,14 +731,14 @@ You’ll get the following results only showing logs in the range you’ve set:
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "bU4oAIoBl7fe5ItIixuC",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.102"
           },
-          "@timestamp": "2023-08-08T13:45:16.005Z",
+          "@timestamp": "2025-05-08T13:45:16.005Z",
           "message": "User changed profile picture.",
           "log": {
             "level": "INFO"
@@ -751,23 +758,23 @@ By default, an ingest pipeline sends your log data to a single data stream. To s
 This section shows you how to use a reroute processor to send the high-severity logs (`WARN` or `ERROR`) from the following example logs to a specific data stream and keep the regular logs (`DEBUG` and `INFO`) in the default data stream:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
-2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
-2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
-2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
+2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
+2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
 ```
 
 ::::{note}
-When routing data to different data streams, we recommend picking a field with a limited number of distinct values to prevent an excessive increase in the number of data streams. For more details, refer to the [Size your shards](../../../deploy-manage/production-guidance/optimize-performance/size-shards.md) documentation.
+When routing data to different data streams, we recommend picking a field with a limited number of distinct values to prevent an excessive increase in the number of data streams. For more details, refer to the [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) documentation.
 
 ::::
 
 
 To use a reroute processor:
 
-1. [Add a reroute processor to your ingest pipeline.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline)
-2. [Add the example logs to your data stream.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-logs-to-a-data-stream)
-3. [Query your logs and verify the high-severity logs were routed to the new data stream.](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-verify-the-reroute-processor-worked)
+1. [Add a reroute processor to your ingest pipeline.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline)
+2. [Add the example logs to your data stream.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-add-logs-to-a-data-stream)
+3. [Query your logs and verify the high-severity logs were routed to the new data stream.](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-verify-the-reroute-processor-worked)
 
 
 ### Add a reroute processor to the ingest pipeline [observability-parse-log-data-add-a-reroute-processor-to-the-ingest-pipeline]
@@ -802,7 +809,7 @@ The previous command sets the following values for your reroute processor:
 * `if`: Conditionally runs the processor. In the example, `"ctx.log?.level == 'WARN' || ctx.log?.level == 'ERROR'",` means the processor runs when the `log.level` field is `WARN` or `ERROR`.
 * `dataset`: the data stream dataset to route your document to if the previous condition is `true`. In the example, logs with a `log.level` of `WARN` or `ERROR` are routed to the `logs-critical-default` data stream.
 
-In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
+In addition to setting an ingest pipeline, you need to set an index template. Use the index template created in the [Extract the `@timestamp` field](/solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-configure-a-data-stream-with-an-index-template) section.
 
 
 ### Add logs to a data stream [observability-parse-log-data-add-logs-to-a-data-stream]
@@ -812,13 +819,13 @@ Add the example logs to your data stream with this command:
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
+{ "message": "2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
+{ "message": "2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
+{ "message": "2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
 ```
 
 
@@ -843,7 +850,7 @@ Your should see similar results to the following showing that the high-severity 
           "host": {
             "ip": "192.168.1.101"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z",
+          "@timestamp": "2025-05-08T13:45:12.123Z",
           "message": "Disk usage exceeds 90%.",
           "log": {
             "level": "WARN"
@@ -859,7 +866,7 @@ Your should see similar results to the following showing that the high-severity 
           "host": {
             "ip": "192.168.1.103"
            },
-          "@timestamp": "2023-08-08T13:45:14.003Z",
+          "@timestamp": "2025-05-08T13:45:14.003Z",
           "message": "Database connection failed.",
           "log": {
             "level": "ERROR"

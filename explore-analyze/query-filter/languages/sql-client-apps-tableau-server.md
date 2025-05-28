@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-tableau-server.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-tableau-server.html
+products:
+  - id: elasticsearch
 ---
 
 # Tableau Server [sql-client-apps-tableau-server]
@@ -11,7 +13,7 @@ mapped_pages:
 Use the {{es}} JDBC driver and dedicated {{es}} Tableau Connector to access {{es}} data from Tableau Server.
 
 ::::{important}
-Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, please reach out to its vendor.
+Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, reach out to its vendor.
 ::::
 
 

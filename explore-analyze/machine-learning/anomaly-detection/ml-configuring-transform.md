@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-transform.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-transform.html
+products:
+  - id: machine-learning
 ---
 
 # Altering data in your datafeed with runtime fields [ml-configuring-transform]

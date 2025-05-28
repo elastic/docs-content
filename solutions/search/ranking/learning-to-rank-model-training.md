@@ -1,10 +1,12 @@
 ---
-navigation_title: "Deploy and manage LTR models"
+navigation_title: Deploy and manage LTR models
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/learning-to-rank-model-training.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 
@@ -102,7 +104,7 @@ Building your dataset is a critical step in the training process. This involves 
 ```python
 from eland.ml.ltr import FeatureLogger
 
-# Create a feature logger that will be used to query {{es}} to retrieve the features:
+# Create a feature logger that will be used to query Elasticsearch to retrieve the features:
 feature_logger = FeatureLogger(es_client, MOVIE_INDEX, ltr_config)
 ```
 

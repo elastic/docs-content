@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/prebuilt-ml-jobs.html
+  - https://www.elastic.co/guide/en/serverless/current/security-prebuilt-ml-jobs.html
   - https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-siem.html
 applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: machine-learning
 ---
 
 # Security {{anomaly-detect}} configurations

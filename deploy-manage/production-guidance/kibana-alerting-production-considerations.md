@@ -1,5 +1,5 @@
 ---
-navigation_title: "Optimize alerting performance"
+navigation_title: Optimize alerting performance
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-production-considerations.html
 applies_to:
@@ -8,11 +8,13 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: kibana
 ---
 
 
 
-# Kibana alerting: performance and scaling [alerting-production-considerations]
+# {{kib}} alerting: performance and scaling [alerting-production-considerations]
 
 
 Alerting runs both rule checks and actions as persistent background tasks managed by the Task Manager.
@@ -62,7 +64,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-Alerts and actions log activity in a set of "event log" data streams, one per Kibana version, named `.kibana-event-log-{{VERSION}}`.  These data streams are configured with a lifecycle data retention of 90 days. This can be updated to other values via the standard data stream lifecycle APIs.  Note that the event log data contains the data shown in the alerting pages in {{kib}}, so reducing the data retention period will result in less data being available to view.
+Alerts and actions log activity in a set of "event log" data streams, one per {{kib}} version, named `.kibana-event-log-{{VERSION}}`.  These data streams are configured with a lifecycle data retention of 90 days. This can be updated to other values via the standard data stream lifecycle APIs.  Note that the event log data contains the data shown in the alerting pages in {{kib}}, so reducing the data retention period will result in less data being available to view.
 
 For more information on data stream lifecycle management, see: [Data stream lifecycle](../../manage-data/lifecycle/data-stream.md).
 
@@ -81,7 +83,7 @@ Another related setting is `xpack.alerting.rules.maxScheduledPerMinute`, which l
 
 ### Rules that run for a long time [_rules_that_run_for_a_long_time]
 
-Rules that run for a long time typically do so because they are issuing resource-intensive {{es}} queries or performing CPU-intensive processing. This can block the event loop, making {{kib}} inaccessible while the rule runs. By default, rule processing is cancelled after `5m` but this can be overriden using the `xpack.alerting.rules.run.timeout` configuration. This value can also be configured per rule type using `xpack.alerting.rules.run.ruleTypeOverrides`. For example, the following configuration sets the global timeout value to `1m` while allowing **Index Threshold** rules to run for `10m` before being cancelled.
+Rules that run for a long time typically do so because they are issuing resource-intensive {{es}} queries or performing CPU-intensive processing. This can block the event loop, making {{kib}} inaccessible while the rule runs. By default, rule processing is cancelled after `5m` but this can be overridden using the `xpack.alerting.rules.run.timeout` configuration. This value can also be configured per rule type using `xpack.alerting.rules.run.ruleTypeOverrides`. For example, the following configuration sets the global timeout value to `1m` while allowing **Index Threshold** rules to run for `10m` before being cancelled.
 
 ```yaml
 xpack.alerting.rules.run:

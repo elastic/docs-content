@@ -1,4 +1,5 @@
 ---
+navigation_title: In ECE and ECH
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-autoscaling.html
   - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
@@ -12,7 +13,9 @@ applies_to:
   deployment:
     ece: ga
     ess: ga
-navigation_title: "In ECE and ECH"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Autoscaling in {{ece}} and {{ech}}
@@ -39,7 +42,7 @@ Currently, autoscaling behavior is as follows:
 
 * **Data tiers**
 
-    * Each Elasticsearch [data tier](../../manage-data/lifecycle/data-tiers.md) scales upward based on the amount of available storage. When we detect more storage is needed, autoscaling will scale up each data tier independently to ensure you can continue and ingest more data to your hot and content tier, or move data to the warm, cold, or frozen data tiers.
+    * Each {{es}} [data tier](../../manage-data/lifecycle/data-tiers.md) scales upward based on the amount of available storage. When we detect more storage is needed, autoscaling will scale up each data tier independently to ensure you can continue and ingest more data to your hot and content tier, or move data to the warm, cold, or frozen data tiers.
     * In addition to scaling up existing data tiers, a new data tier will be automatically added when necessary, based on your [index lifecycle management policies](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html).
     * To control the maximum size of each data tier and ensure it will not scale above a certain size, you can use the maximum size per zone field.
     * Autoscaling based on memory or CPU, as well as autoscaling downward, is not currently supported. In case you want to adjust the size of your data tier to add more memory or CPU, or in case you deleted data and want to scale it down, you can set the current size per zone of each data tier manually.
@@ -53,7 +56,7 @@ Currently, autoscaling behavior is as follows:
     * The determination of when to scale is based on the expected memory and CPU requirements for the currently configured machine learning jobs and trained models.
 
 ::::{note}
-For any Elasticsearch component the number of availability zones is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
+For any {{es}} component the number of availability zones is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
 ::::
 
 ## When does autoscaling occur?[ec-autoscaling-factors]
@@ -68,7 +71,7 @@ For a data tier, an autoscaling event can be triggered in the following cases:
 
 * Through ILM  policies. For example, if a deployment has only hot nodes and autoscaling is enabled, it automatically creates warm or cold nodes, if an ILM policy is trying to move data from hot to warm or cold nodes.
 
-On machine learning nodes, scaling is determined by an estimate of the memory and CPU requirements for the currently configured jobs and trained models. When a new machine learning job tries to start, it looks for a node with adequate native memory and CPU capacity. If one cannot be found, it stays in an `opening` state. If this waiting job exceeds the queueing limit set in the machine learning decider, a scale up is requested. Conversely, as machine learning jobs run, their memory and CPU usage might decrease or other running jobs might finish or close. In this case, if the duration of decreased resource usage exceeds the set value for `down_scale_delay`, a scale down is requested. Check [Machine learning decider](autoscaling-deciders.md)for more detail. To learn more about machine learning jobs in general, check [Create anomaly detection jobs](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-create-job)
+On machine learning nodes, scaling is determined by an estimate of the memory and CPU requirements for the currently configured jobs and trained models. When a new machine learning job tries to start, it looks for a node with adequate native memory and CPU capacity. If one cannot be found, it stays in an `opening` state. If this waiting job exceeds the queueing limit set in the machine learning decider, a scale up is requested. Conversely, as machine learning jobs run, their memory and CPU usage might decrease or other running jobs might finish or close. In this case, if the duration of decreased resource usage exceeds the set value for `down_scale_delay`, a scale down is requested. Check [Machine learning decider](autoscaling-deciders.md) for more detail. To learn more about machine learning jobs in general, check [Create anomaly detection jobs](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-create-job).
 
 On a highly available deployment, autoscaling events are always applied to instances in each availability zone simultaneously, to ensure consistency.
 
@@ -81,7 +84,7 @@ In {{ece}} deployments, a warning is also issued in the ECE `service-constructor
 
 The following are known limitations and restrictions with autoscaling:
 
-* Autoscaling will not run if the cluster is unhealthy or if the last Elasticsearch plan failed.
+* Autoscaling will not run if the cluster is unhealthy or if the last {{es}} plan failed.
 
 In {{ech}} the following additional limitations apply:
 
@@ -96,16 +99,12 @@ In {{ece}}, the following additional limitations apply:
 
 To enable or disable autoscaling on a deployment:
 
-1. Log in to the ECE [Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md) or [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-2. On the **Deployments** page, select your deployment.
-
-    Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-
-3. In your deployment menu, select **Edit**.
-4. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
-5. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
+4. Under the deployment's name in the navigation menu, select **Edit**.
+5. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
+6. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
 
 When autoscaling has been enabled, the autoscaled nodes resize according to the [autoscaling settings](#ec-autoscaling-update). Current sizes are shown on the deployment overview page.
 
@@ -115,13 +114,10 @@ When autoscaling has been disabled, you need to adjust the size of data tiers an
 
 Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
 
-1. Log in to the ECE [Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md) or [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+:::{include} ../_snippets/find-manage-deployment-ech-and-ece.md
+:::
 
-2. On the **Deployments** page, select your deployment.
-
-    Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-
-3. In your deployment menu, select **Edit**.
+3. Under the deployment's name in the navigation menu, select **Edit**.
 4. To update a data tier:
 
     1. Use the dropdown box to set the **Maximum size per zone** to the largest amount of resources that should be allocated to the data tier automatically. The resources will not scale above this value.
@@ -136,12 +132,12 @@ Each autoscaling setting is configured with a default value. You can adjust thes
 
 % ECE NOTE
 ::::{note} - {{ece}}
-On Elastic Cloud Enterprise, system-owned deployment templates include the default values for all deployment autoscaling settings.
+On {{ece}}, system-owned deployment templates include the default values for all deployment autoscaling settings.
 ::::
 
 ## Autoscaling example [ec-autoscaling-example]
 
-To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample Elastic Cloud Enterprise or {{ech}} deployment.
+To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample {{ece}} or {{ech}} deployment.
 
 1. Enable autoscaling:
 
@@ -152,14 +148,13 @@ To help you better understand the available autoscaling settings, this example d
 
 2. View and adjust autoscaling settings on data tiers:
 
-    1. Open the **Edit** page for your deployment to get the current and maximum size per zone of each Elasticsearch data tier. In this example, the hot data and content tier has the following settings:
+    1. Open the **Edit** page for your deployment to get the current and maximum size per zone of each {{es}} data tier. In this example, the hot data and content tier has the following settings:
 
-        |     |     |     |
-        | --- | --- | --- |
-        | **Current size per zone** | **Maximum size per zone** |  |
-        | 45GB storage | 1.41TB storage |  |
-        | 1GB RAM | 32GB RAM |  |
-        | Up to 2.5 vCPU | 5 vCPU |  |
+        | Current size per zone | Maximum size per zone |
+        | --- | --- |
+        | 45GB storage | 1.41TB storage |
+        | 1GB RAM | 32GB RAM |
+        | Up to 2.5 vCPU | 5 vCPU |
 
         The fault tolerance for the data tier is set to 2 availability zones.
 
@@ -173,11 +168,10 @@ To help you better understand the available autoscaling settings, this example d
 
     1. From the deployment **Edit** page you can check the minimum and maximum size of your deployment’s machine learning instances. In this example, the machine learning instance has the following settings:
 
-        |     |     |     |
-        | --- | --- | --- |
-        | **Minimum size per zone** | **Maximum size per zone** |  |
-        | 1GB RAM | 64GB RAM |  |
-        | 0.5 vCPU up to 8 vCPU | 32 vCPU |  |
+        | Minimum size per zone | Maximum size per zone |
+        | --- | --- |
+        | 1GB RAM | 64GB RAM |
+        | 0.5 vCPU up to 8 vCPU | 32 vCPU |
 
         The fault tolerance for the machine learning instance is set to 1 availability zone.
 
@@ -204,8 +198,8 @@ To learn more about the {{ece}} API, see the [RESTful API](cloud://reference/clo
 
 Note the following requirements when you run this API request:
 
-* All Elasticsearch components must be included in the request, even if they are not enabled (that is, if they have a zero size). All components are included in this example.
-* The request requires a format that supports data tiers. Specifically, all Elasticsearch components must contain the following properties:
+* All {{es}} components must be included in the request, even if they are not enabled (that is, if they have a zero size). All components are included in this example.
+* The request requires a format that supports data tiers. Specifically, all {{es}} components must contain the following properties:
 
     * `id`
     * `node_attributes`
@@ -225,7 +219,7 @@ $$$ece-autoscaling-api-example-requirements-table$$$
 | data tier | ✓ | ✕ | ✓ |
 | machine learning node | ✕ | ✓ | ✓ |
 | coordinating and master nodes | ✓ | ✕ | ✕ |
-| Kibana | ✓ | ✕ | ✕ |
+| {{kib}} | ✓ | ✕ | ✕ |
 | APM | ✓ | ✕ | ✕ |
 
 * ✓ = Include the property.

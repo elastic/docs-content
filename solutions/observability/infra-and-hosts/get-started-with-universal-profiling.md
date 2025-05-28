@@ -1,9 +1,11 @@
 ---
-navigation_title: "Get started"
+navigation_title: Get started
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 
@@ -18,7 +20,7 @@ On this page, you’ll learn how to configure and use Universal Profiling. This 
 * Installing the Universal Profiling Agent
 * Installing the Universal Profiling Agent integration
 
-We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](../../../troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
+We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
 
 
 ## Prerequisites [profiling-prereqs]

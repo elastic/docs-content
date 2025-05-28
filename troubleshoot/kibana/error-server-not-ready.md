@@ -1,13 +1,15 @@
 ---
 navigation_title: "Error: Server not ready"
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/access.html#not-ready
 applies_to:
   deployment:
     ess: all
     ece: all
     self: all
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/access.html#not-ready
+products:
+  - id: kibana
 ---
 
 # Error: {{kib}} server is not ready yet [not-ready]

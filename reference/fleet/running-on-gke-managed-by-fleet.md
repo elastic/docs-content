@@ -1,11 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/running-on-gke-managed-by-fleet.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Run Elastic Agent on GKE managed by Fleet [running-on-gke-managed-by-fleet]
 
-Please follow the steps to run the {{agent}} on [Run {{agent}} on Kubernetes managed by {{fleet}}](/reference/fleet/running-on-kubernetes-managed-by-fleet.md) page.
+Follow the steps to run the {{agent}} on [Run {{agent}} on Kubernetes managed by {{fleet}}](/reference/fleet/running-on-kubernetes-managed-by-fleet.md) page.
 
 
 ### Important notes: [_important_notes_2]

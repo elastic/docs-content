@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-psc.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-psc.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # GCP Private Service Connect traffic filters
@@ -224,7 +226,7 @@ Response:
 ::::{note}
 If you are using Private Service Connect together with Fleet, and enrolling the Elastic Agent with a Private Service Connect URL, you need to configure Fleet Server to use and propagate the Private Service Connect URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the Private Service Connect URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<private zone DNS name>:443`.
 
-Similarly, the {{es}} host needs to be updated to propagate the Private Service Connect URL. The {{es}} URL needs to follow this pattern: `https://<{{es}} cluster ID/deployment alias>.es.<private zone DNS name>:443`.
+Similarly, the {{es}} host needs to be updated to propagate the Private Service Connect URL. The {{es}} URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<private zone DNS name>:443`.
 
 The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [{{kib}} settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
 

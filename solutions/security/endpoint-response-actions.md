@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Endpoint response actions
@@ -34,7 +37,7 @@ Response actions are supported on all endpoint platforms (Linux, macOS, and Wind
 
 Launch the response console from any of the following places in {{elastic-sec}}:
 
-* **Endpoints** page → **Actions** menu (**…​**) → **Respond**
+* **Endpoints** page → **Actions** menu (**…**) → **Respond**
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
 * Host details page → **Respond**
@@ -160,6 +163,10 @@ Required privilege (in {{stack}}) or custom role privilege (in {{serverless-shor
 
 Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
 
+::::{note}
+The maximum file size that can be retrieved using `get-file` is `104857600` bytes, or 100 MB.
+::::
+
 ::::{tip}
 You can use the [Osquery manager integration](/solutions/security/investigate/osquery.md) to query a host’s operating system and gain insight into its files and directories, then use `get-file` to retrieve specific files.
 ::::
@@ -213,7 +220,7 @@ You can follow this with the `execute` response action to upload and run scripts
 
 
 ::::{note}
-The default file size maximum is 25 MB, configurable in `kibana.yml` with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes (the maximum is `104857600` bytes, or 100 MB).
+The default file size maximum is 25 MB, configurable in [`kibana.yml`](/deploy-manage/stack-settings.md) with the `xpack.securitySolution.maxUploadResponseActionFileBytes` setting. You must enter the value in bytes (the maximum is `104857600` bytes, or 100 MB).
 ::::
 
 

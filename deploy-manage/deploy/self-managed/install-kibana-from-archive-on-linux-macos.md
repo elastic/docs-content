@@ -1,17 +1,17 @@
 ---
-navigation_title: "Install from archive on Linux or macOS"
+navigation_title: Linux and MacOS
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/targz.html
-navigation_title: "Linux and MacOS"
-applies_to:
-  deployment:
-    self:
+products:
+  - id: kibana
+sub:
+  ipcommand: ifconfig
 ---
 
 # Install {{kib}} from archive on Linux or macOS [targz]
 
 
-{{kib}} is provided for Linux and Darwin as a `.tar.gz` package. These packages are the easiest formats to use when trying out Kibana.
+{{kib}} is provided for Linux and Darwin as a `.tar.gz` package. These packages are the easiest formats to use when trying out {{kib}}.
 
 :::{include} _snippets/trial.md
 :::
@@ -39,7 +39,7 @@ cd kibana-{{stack-version}}/ <2>
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$KIBANA_HOME`.
 
-## MacOS [install-darwin64]
+### MacOS [install-darwin64]
 
 The Darwin archive for {{kib}} {{stack-version}} can be downloaded and installed as follows:
 
@@ -79,7 +79,12 @@ Alternatively, you can add a security override if a Gatekeeper popup appears by 
 :::{include} _snippets/new-enrollment-token.md
 :::
 
-## Step 3: Run {{kib}} from the command line [targz-running]
+## Step 3 (Optional): Make {{kib}} externally accessible
+
+:::{include} _snippets/kibana-ip.md
+:::
+
+## Step 4: Run {{kib}} from the command line [targz-running]
 
 {{kib}} can be started from the command line as follows:
 
@@ -91,16 +96,16 @@ By default, {{kib}} runs in the foreground, prints its logs to the standard outp
 :::{include} _snippets/enroll-steps.md
 :::
 
-## Step 4: Configure {{kib}} using the config file [targz-configuring]
+## Configure {{kib}} using the config file [targz-configuring]
 
 {{kib}} loads its configuration from the `$KIBANA_HOME/config/kibana.yml` file by default. The format of this config file is explained in [](configure-kibana.md).
 
 
 ## Directory layout of `.tar.gz` archives [targz-layout]
 
-The `.tar.gz` packages are entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
+The `.tar.gz` packages are entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
 
-This is very convenient because you don’t have to create any directories to start using Kibana, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
+This is very convenient because you don’t have to create any directories to start using {{kib}}, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
 
 | Type | Description | Default Location | Setting |
 | --- | --- | --- | --- |

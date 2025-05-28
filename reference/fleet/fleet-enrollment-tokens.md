@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet enrollment tokens [fleet-enrollment-tokens]
@@ -36,7 +39,7 @@ To create an enrollment token:
     Note that the token name you specify must be unique so as to avoid conflict with any existing API keys.
 
     :::{image} images/create-token.png
-    :alt: Enrollment tokens tab in {fleet}
+    :alt: Enrollment tokens tab in {{fleet}}
     :screenshot:
     :::
 

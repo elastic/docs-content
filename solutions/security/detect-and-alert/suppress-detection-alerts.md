@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Suppress detection alerts [security-alert-suppression]
@@ -131,6 +134,7 @@ With alert suppression, detection alerts aren’t created for the grouped source
 
     :::{image} /solutions/images/security-timeline-button.png
     :alt: Investigate in timeline button
+    :width: 350px
     :screenshot:
     :::
 

@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Access the console [ech-getting-started-accessing]
@@ -11,7 +13,7 @@ applies_to:
 You use the console to manage your cluster from a web browser. Tasks that are available from the console include upgrading versions, configuring security features, working with custom plugins, and more.
 
 :::{image} /deploy-manage/images/cloud-heroku-ech-console.png
-:alt: [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body)
+:alt: [{{es}} Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body)
 :::
 
 To access the console in a browser from the Heroku CLI:

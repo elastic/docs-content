@@ -1,10 +1,12 @@
 ---
+navigation_title: Change passwords
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
 applies_to:
   deployment:
     self:
-navigation_title: Change passwords
+products:
+  - id: elasticsearch
 ---
 # Set passwords for native and built-in users in self-managed clusters[ change-passwords-native-users]
 
@@ -47,7 +49,7 @@ POST /_security/user/user1/_password
 
 ## Using the `user` API [native-users-api]
 
-You can manage users through the Elasticsearch `user` API.
+You can manage users through the {{es}} `user` API.
 
 For example, you can change a user's password:
 

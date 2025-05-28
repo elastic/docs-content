@@ -1,10 +1,12 @@
 ---
-navigation_title: "High availability and load balancing"
+navigation_title: High availability and load balancing
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/production.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: kibana
 ---
 
 # High Availability and load balancing in Kibana
@@ -72,7 +74,7 @@ To access multiple load-balanced {{kib}} deployments from the same browser, expl
 This prevents cookie conflicts between {{kib}} instances, ensuring seamless high availability and maintaining the session active in case of an instance failure.
 
 ::::{note}
-In this context, a Kibana cluster or deployment refers to multiple Kibana instances connected to the same {{es}} cluster.
+In this context, a {{kib}} cluster or deployment refers to multiple {{kib}} instances connected to the same {{es}} cluster.
 ::::
 
 ## High availability across multiple {{es}} nodes [high-availability]

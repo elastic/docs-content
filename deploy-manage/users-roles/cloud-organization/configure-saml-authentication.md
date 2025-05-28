@@ -1,11 +1,13 @@
 ---
-navigation_title: "Configure SAML SSO"
+navigation_title: Configure SAML SSO
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-hosted
 ---
 
 # Configure {{ecloud}} SAML single sign-on [ec-saml-sso]
@@ -23,7 +25,7 @@ On this page, you'll learn the following:
 * The [risks and considerations for using SAML SSO](#ec_risks_and_considerations)
 * How to [implement and test SAML SSO](#set-up-sso)
 * How to [enforce SAML SSO](#enforce-sso) for your organization
-* How to [map groups returned by your IdP to Elastic Cloud roles](#role-mappings)
+* How to [map groups returned by your IdP to {{ecloud}} roles](#role-mappings)
 * How to [disable SAML SSO](#ec_disable_sso)
 
 For detailed examples of implementing SAML SSO using common identity providers, refer to the following topics:

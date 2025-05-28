@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/use-elasticsearch-for-time-series-data.html
+products:
+  - id: elasticsearch
 ---
 
 # Use case: use Elasticsearch to manage time series data [use-elasticsearch-for-time-series-data]
@@ -24,7 +26,7 @@ The steps for setting up data tiers vary based on your deployment type:
 
 ::::::{tab-item} {{ech}}
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-2. Add or select your deployment from the {{ecloud}} home page or the **Deployments** page.
+2. Add or select your deployment from the {{ecloud}} home page or the **Hosted deployments** page.
 3. From your deployment menu, select **Edit deployment**.
 4. To enable a data tier, click **Add capacity**.
 
@@ -34,7 +36,7 @@ The steps for setting up data tiers vary based on your deployment type:
 ::::::
 
 ::::::{tab-item} Self-managed
-To assign a node to a data tier, add the respective [node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) to the node’s `elasticsearch.yml` file. Changing an existing node’s roles requires a [rolling restart](../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
+To assign a node to a data tier, add the respective [node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) to the node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. Changing an existing node’s roles requires a [rolling restart](../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
 
 ```yaml
 # Content tier
@@ -253,7 +255,7 @@ When creating your component templates, include:
 * Your lifecycle policy in the `index.lifecycle.name` index setting.
 
 ::::{tip}
-Use the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current) when mapping your fields. ECS fields integrate with several {{stack}} features by default.
+Use the [Elastic Common Schema (ECS)](ecs://reference/index.md) when mapping your fields. ECS fields integrate with several {{stack}} features by default.
 
 If you’re unsure how to map your fields, use [runtime fields](data-store/mapping/define-runtime-fields-in-search-request.md) to extract fields from [unstructured content](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#mapping-unstructured-content) at search time. For example, you can index a log message to a `wildcard` field and later extract IP addresses and other data from this field during a search.
 

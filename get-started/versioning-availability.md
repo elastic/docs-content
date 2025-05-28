@@ -2,9 +2,13 @@
 navigation_title: Versioning and availability
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/introducing-elastic-documentation.html
+products:
+  - id: elastic-stack
 ---
 
 # Understanding versioning and availability
+
+On this page, you'll learn about our versioning systems, how to understand how we talk about versions and feature availability in our documentation, and where to find docs for your product version.
 
 ## Elastic Stack versioning
 
@@ -75,13 +79,13 @@ Badges can appear in two places:
 
 Here are some examples to help you understand how to read the availability badges.
 
-#### Example #1: Stack only feature
+#### Example #1: Stack-only feature
 
 ```yaml {applies_to}
 stack: ga 9.1
 ```
 - **Deployment type**: Elastic Stack
-- **Version**: 9.1
+- **Version**: 9.1.0+
 - **Lifecycle**: Generally Available (GA) — default state
 
 #### Example #2: Serverless-only feature with project differences
@@ -109,3 +113,61 @@ deployment:
 :::{tip}
 For contributors and those interested in the technical details, see the [Elastic docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/) for more information on how these badges are implemented.
 :::
+
+## Find docs for your product version
+
+In April 2025, we released our new documentation site. This site includes documentation for our latest product versions.
+
+To access our previous documentation system, which contains the documentation for releases prior to those listed below, go to [elastic.co/guide](https://elastic.co/guide).
+
+You can access the previous version of a specific page, where available, by clicking the **View previous version** link in the sidebar.
+
+The following product versions are documented on this site:
+
+#### Core products and deployment methods
+
+| Product | Version |
+| --- | --- |
+| {{stack}}<br><br>Includes {{es}}, {{kib}}, {{ls}}, {{fleet}}, <br>{{agent}}, Beats, APM, and query languages | 9.0.0+ |
+| Security solution | 9.0.0+ |
+| Observability solution | 9.0.0+ |
+| {{serverless-full}} (all project types) | All |
+| {{ech}} | All*  |
+| {{ece}} | 4.0.0+ |
+| {{eck}} | 3.0.0+ |
+
+\* Excludes release notes before January 2025
+
+#### Schemas, libraries, and tools
+
+| Product | Version |
+| --- | --- |
+| Elastic Common Schema | 9.0.0+ |
+| ECS logging Java library | 1.x+ |
+| Other ECS logging libraries | All |
+| {{es}} API clients | 9.0.0+ |
+| {{es}} for Apache Hadoop | 9.0.0+ |
+| Curator | 8.0+ |
+| Elastic Cloud Control (ECCTL) | 1.14+ |
+| Elastic Serverless Forwarder | All |
+| Elastic integrations | All |
+| Elastic Search UI library | All |
+
+#### APM agents and tools
+
+| Product | Version |
+| --- | --- |
+| APM Android agent | 1.x+ |
+| APM .NET agent | 1.x+ |
+| APM Go agent | 2.x+ |
+| APM iOS agent | 1.x+ |
+| APM Java agent | 1.x+ |
+| APM Node.js agent | 4.x+ |
+| APM PHP agent | All |
+| APM Python agent | 6.x+ |
+| APM Ruby agent | 4.x+ |
+| APM Real User Monitoring JavaScript agent | 5.x+ |
+| APM attacher for Kubernetes | All |
+
+
+

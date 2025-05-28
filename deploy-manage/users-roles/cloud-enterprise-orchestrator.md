@@ -1,11 +1,11 @@
 ---
-navigation_title: "ECE orchestrator"
+navigation_title: ECE orchestrator
 applies_to:
   deployment:
     ece: all
 ---
 
-# Elastic Cloud Enterprise orchestrator users
+# {{ece}} orchestrator users
 
 Control access to your {{ece}} [orchestrator](/deploy-manage/deploy/cloud-enterprise/deploy-an-orchestrator.md) and deployments. 
 

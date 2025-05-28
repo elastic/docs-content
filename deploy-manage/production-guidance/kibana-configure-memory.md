@@ -1,13 +1,13 @@
 ---
-navigation_title: "Configure memory"
+navigation_title: Configure memory
 applies_to:
   deployment:
     self: all
 ---
 
-# Configure Kibana memory
+# Configure {{kib}} memory
 
-Kibana has a default memory limit that scales based on total memory available. In some scenarios, such as large reporting jobs, detection rules, managing alerting workflows, or working with SLOs, it may make sense to tweak memory limits to meet more specific performance requirements.
+{{kib}} has a default memory limit that scales based on total memory available. In some scenarios, such as large reporting jobs, detection rules, managing alerting workflows, or working with SLOs, it may make sense to tweak memory limits to meet more specific performance requirements.
 
 ## Limit memory usage [memory]
 

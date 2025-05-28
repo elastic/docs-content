@@ -6,6 +6,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Install ECK using the YAML manifests [k8s-install-yaml-manifests]
@@ -16,7 +18,7 @@ To learn about other installation methods, refer to [](/deploy-manage/deploy/clo
 
 During the installation, the following components are installed or updated:
 
-* `CustomResourceDefinition` objects for all supported resource types (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash).
+* `CustomResourceDefinition` objects for all supported resource types ({{eck_resources_list}}).
 * `Namespace` named `elastic-system` to hold all operator resources.
 * `ServiceAccount`, `ClusterRole` and `ClusterRoleBinding` to allow the operator to manage resources throughout the cluster.
 * `ValidatingWebhookConfiguration` to validate Elastic custom resources on admission.

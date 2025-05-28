@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 navigation_title: "{{transforms-cap}} at scale"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-scale.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Transforms at scale [transform-scale]
@@ -45,7 +47,7 @@ Use the [Preview {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearc
 
 ## 3. Profile and optimize your search queries (search) [search-queries]
 
-If you have defined a {{transform}} source index `query`, ensure it is as efficient as possible. Use the **Search Profiler** under **Dev Tools** in {{kib}} to get detailed timing information about the execution of individual components in the search request. Alternatively, you can use the [Profile](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html). The results give you insight into how search requests are executed at a low level so that you can understand why certain requests are slow, and take steps to improve them.
+If you have defined a {{transform}} source index `query`, ensure it is as efficient as possible. Use the **Search Profiler** under **Dev Tools** in {{kib}} to get detailed timing information about the execution of individual components in the search request. Alternatively, you can use the [Profile](elasticsearch://reference/elasticsearch/rest-apis/search-profile.md). The results give you insight into how search requests are executed at a low level so that you can understand why certain requests are slow, and take steps to improve them.
 
 {{transforms-cap}} execute standard {{es}} search requests. There are different ways to write {{es}} queries, and some of them are more efficient than others. Consult [*Tune for search speed*](../../deploy-manage/production-guidance/optimize-performance/search-speed.md) to learn more about {{es}} performance tuning.
 

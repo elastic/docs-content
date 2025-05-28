@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Connect to Amazon Bedrock
@@ -84,8 +87,6 @@ Create the access keys that will authenticate your Elastic connector:
 4. Under **Access keys**, click **Create access key**.
 5. Select **Third-party service**, check the box under **Confirmation**, click **Next**, then click **Create access key**.
 6. Click **Download .csv file** to download the key. Store it securely.
-
-The following video demonstrates these steps.
 
 The following video demonstrates these steps (click to watch).
 

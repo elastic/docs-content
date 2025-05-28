@@ -7,6 +7,8 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: kibana
 ---
 
 # Visualizing monitoring data [xpack-monitoring]
@@ -22,7 +24,7 @@ Review the following topics to learn more about the metrics and visualizations a
 * [](/deploy-manage/monitor/monitoring-data/beats-page.md)
 * [](/deploy-manage/monitor/monitoring-data/logstash-page.md)
 
-From the **Stack Monitoring** section, you can also configure [Kibana alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) for stack monitoring metrics.
+From the **Stack Monitoring** section, you can also configure [{{kib}} alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) for stack monitoring metrics.
 
 If you're having trouble accessing your monitoring data within the **Stack Monitoring** section, then refer to [](/deploy-manage/monitor/monitoring-data/monitor-troubleshooting.md).
 

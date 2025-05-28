@@ -1,15 +1,17 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
+products:
+  - id: kibana
 ---
 
 # Run a search session in the background [search-sessions]
 
 ::::{admonition} Deprecated and disabled by default
-Search Sessions are deprecated. They are disabled by default and will be removed in a future version. You can enable search sessions again by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the `kibana.yml` configuration file.
+Search Sessions are deprecated. They are disabled by default and will be removed in a future version. You can enable search sessions again by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 ::::
 
 
@@ -37,7 +39,9 @@ You’re trying to understand a trend you see on a dashboard. You need to look a
    Your search session begins automatically. The icon after the dashboard title displays the current state of the search session. A clock icon indicates the search session is in progress. A checkmark indicates that the search session is complete.
 
 2. To continue a search in the background, click the clock icon, and then click **Save session**.
+
    ![Search Session indicator displaying the current state of the search](/explore-analyze/images/kibana-search-session-awhile.png "title =50%")
+   
    Once you save a search session, you can start a new search, navigate to a different application, or close the browser.
 
 3. To view your saved search sessions, go to the **Search Sessions** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md). For a saved or completed session, you can also open this view from the search sessions popup.

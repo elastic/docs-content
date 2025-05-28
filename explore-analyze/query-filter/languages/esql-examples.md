@@ -2,12 +2,10 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Examples"
+navigation_title: Examples
 ---
 
 # {{esql}} examples [esql-examples]
-
-
 
 ## Aggregating and enriching windows event logs [_aggregating_and_enriching_windows_event_logs] 
 

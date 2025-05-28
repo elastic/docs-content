@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack: all
   serverless: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # ECS formatted application logs [logs-ecs-application]
@@ -13,8 +16,8 @@ Logs formatted in Elastic Common Schema (ECS) don’t require manual parsing, an
 
 You can format your logs in ECS format the following ways:
 
-* [ECS loggers](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ecs-loggers): plugins for your logging libraries that reformat your logs into ECS format.
-* [APM agent ECS reformatting](../../../solutions/observability/logs/ecs-formatted-application-logs.md#apm-agent-ecs-reformatting): Java, Ruby, and Python {{apm-agent}}s automatically reformat application logs to ECS format without a logger.
+* [ECS loggers](/solutions/observability/logs/ecs-formatted-application-logs.md#ecs-loggers): plugins for your logging libraries that reformat your logs into ECS format.
+* [APM agent ECS reformatting](/solutions/observability/logs/ecs-formatted-application-logs.md#apm-agent-ecs-reformatting): Java, Ruby, and Python {{apm-agent}}s automatically reformat application logs to ECS format without a logger.
 
 
 ## ECS loggers [ecs-loggers]
@@ -41,9 +44,9 @@ Java, Ruby, and Python {{apm-agent}}s can automatically reformat application log
 
 To set up log ECS reformatting:
 
-1. [Enable {{apm-agent}} reformatting](../../../solutions/observability/logs/ecs-formatted-application-logs.md#enable-log-ecs-reformatting)
-2. [Ingest logs with {{filebeat}} or {{agent}}](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs)
-3. [View logs in Logs Explorer](../../../solutions/observability/logs/ecs-formatted-application-logs.md#view-ecs-logs)
+1. [Enable {{apm-agent}} reformatting](/solutions/observability/logs/ecs-formatted-application-logs.md#enable-log-ecs-reformatting)
+2. [Ingest logs with {{filebeat}} or {{agent}}](/solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs)
+3. [View logs in Discover](/solutions/observability/logs/ecs-formatted-application-logs.md#view-ecs-logs)
 
 
 ### Enable log ECS reformatting [enable-log-ecs-reformatting]
@@ -59,8 +62,8 @@ Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration o
 
 After enabling log ECS reformatting, send your application logs to your project using one of the following shipping tools:
 
-* [{{filebeat}}](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs-with-filebeat): A lightweight data shipper that sends log data to your project.
-* [{{agent}}](../../../solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs-with-agent): A single agent for logs, metrics, security data, and threat prevention. With Fleet, you can centrally manage {{agent}} policies and lifecycles directly from your project.
+* [{{filebeat}}](/solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs-with-filebeat): A lightweight data shipper that sends log data to your project.
+* [{{agent}}](/solutions/observability/logs/ecs-formatted-application-logs.md#ingest-ecs-logs-with-agent): A single agent for logs, metrics, security data, and threat prevention. With Fleet, you can centrally manage {{agent}} policies and lifecycles directly from your project.
 
 
 #### Ingest logs with {{filebeat}} [ingest-ecs-logs-with-filebeat]
@@ -76,22 +79,36 @@ Install {{filebeat}} on the server you want to monitor by running the commands t
 
 ::::::{tab-item} DEB
 ```sh subs=true
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
+sudo dpkg -i filebeat-{{version}}-amd64.deb
+```
+::::::
+
+::::::{tab-item} RPM
+```sh subs=true
+curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version}}-x86_64.rpm
+```
+::::::
+
+::::::{tab-item} macOS
+```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-darwin-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
-::::::{tab-item} RPM
+::::::{tab-item} Linux
 ```sh subs=true
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-linux-x86_64.tar.gz
 tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
 ```
 ::::::
 
-::::::{tab-item} macOS
-1. Download the {{filebeat}} Windows zip file: `https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip`
+::::::{tab-item} Windows
+1. Download the [{{filebeat}} Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-windows-x86_64.zip).
 2. Extract the contents of the zip file into `C:\Program Files`.
-3. Rename the `filebeat-{{version}}-windows-x86_64` directory to `{{filebeat}}`.
+3. Rename the _filebeat-{{version}}-windows-x86\_64_ directory to _Filebeat_:
 4. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select **Run As Administrator**).
 5. From the PowerShell prompt, run the following commands to install {{filebeat}} as a Windows service:
 
@@ -100,22 +117,7 @@ tar xzvf filebeat-{{version}}-linux-x86_64.tar.gz
     PS C:\Program Files\{filebeat}> .\install-service-filebeat.ps1
     ```
 
-
 If script execution is disabled on your system, you need to set the execution policy for the current session to allow the script to run. For example: `PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1`.
-::::::
-
-::::::{tab-item} Linux
-```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-amd64.deb
-sudo dpkg -i filebeat-{{version}}-amd64.deb
-```
-::::::
-
-::::::{tab-item} Windows
-```sh subs=true
-curl -L -O https\://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version}}-x86_64.rpm
-sudo rpm -vi filebeat-{{version}}-x86_64.rpm
-```
 ::::::
 
 :::::::
@@ -130,7 +132,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.svg "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```console
@@ -173,7 +175,7 @@ filebeat.inputs:
 
 #### Step 4: Set up and start {{filebeat}} [step-4-ecs-set-up-and-start-filebeat]
 
-From the {{filebeat}} installation directory, set the [index template](../../../manage-data/data-store/templates.md) by running the command that aligns with your system:
+From the {{filebeat}} installation directory, set the [index template](/manage-data/data-store/templates.md) by running the command that aligns with your system:
 
 :::::::{tab-set}
 
@@ -218,11 +220,11 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/filebeat/master/command-line-options.html)). To specify flags, start Filebeat in the foreground.
+If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](beats://reference/filebeat/command-line-options.md)). To specify flags, start Filebeat in the foreground.
 ::::
 
 
-Also see [Filebeat and systemd](https://www.elastic.co/guide/en/beats/filebeat/master/running-with-systemd.html).
+Also see [Filebeat and systemd](beats://reference/filebeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} RPM
@@ -231,11 +233,11 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/filebeat/master/command-line-options.html)). To specify flags, start Filebeat in the foreground.
+If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](beats://reference/filebeat/command-line-options.md)). To specify flags, start Filebeat in the foreground.
 ::::
 
 
-Also see [Filebeat and systemd](https://www.elastic.co/guide/en/beats/filebeat/master/running-with-systemd.html).
+Also see [Filebeat and systemd](beats://reference/filebeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} MacOS
@@ -314,7 +316,7 @@ To add the custom logs integration to your project:
 
 ## View logs [view-ecs-logs]
 
-Refer to the [Filter and aggregate logs](../../../solutions/observability/logs/filter-aggregate-logs.md) documentation for more information on viewing and filtering your logs in {{kib}}.
+Refer to the [Filter and aggregate logs](/solutions/observability/logs/filter-aggregate-logs.md) documentation for more information on viewing and filtering your logs in {{kib}}.
 
 
 % What needs to be done: Align serverless/stateful

@@ -3,6 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/intro.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-deploy.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/get-elastic.html
+products:
+  - id: cloud-serverless
+  - id: elasticsearch
+  - id: elastic-stack
 ---
 
 # Deploy
@@ -24,7 +28,7 @@ This section focuses on deploying and managing {{es}} and {{kib}}, as well as su
 
 To learn how to deploy optional {{stack}} components, refer to the following sections:
 * [Fleet and Elastic Agent](/reference/fleet/index.md)
-* [APM](/solutions/observability/apps/application-performance-monitoring-apm.md)
+* [APM](/solutions/observability/apm/index.md)
 * [Beats](beats://reference/index.md)
 * [Logstash](logstash://reference/index.md)
 :::
@@ -69,7 +73,7 @@ Consider orchestration if you:
 - Need to build a multi-tenant platform (ECE)
 
 Orchestrators manage the lifecycle of your Elastic deployments but don't change how the core products work. When using an orchestrated deployment:
-- You'll still use the same Elasticsearch and Kibana features and configurations
+- You'll still use the same {{es}} and {{kib}} features and configurations
 - Most product documentation remains applicable
 - You can add other Elastic products as needed
 - The orchestrator handles operational tasks while you focus on using and configuring the products

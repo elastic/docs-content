@@ -1,11 +1,9 @@
 ---
-navigation_title: "Install with RPM"
+navigation_title: RPM
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rpm.html
-navigation_title: "RPM"
-applies_to:
-  deployment:
-    self:
+products:
+  - id: kibana
 ---
 
 # Install {{kib}} with RPM [rpm]
@@ -43,7 +41,7 @@ You have the following options for installing the {{es}} RPM package:
 
 Create a file called `kibana.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
 
-```sh
+```sh subs=true
 [kibana-9.X]
 name={{kib}} repository for 9.x packages
 baseurl=https://artifacts.elastic.co/packages/9.x/yum
@@ -91,7 +89,13 @@ sudo rpm --install kibana-{{stack-version}}-x86_64.rpm
 :::{include} _snippets/new-enrollment-token.md
 :::
 
-## Step 4: Run {{kib}} with `systemd` [rpm-running-systemd]
+## Step 4 (Optional): Make {{kib}} externally accessible
+
+:::{include} _snippets/kibana-ip.md
+:::
+
+
+## Step 5: Run {{kib}} with `systemd` [rpm-running-systemd]
 
 To configure {{kib}} to start automatically when the system starts, run the following commands:
 
@@ -110,12 +114,12 @@ sudo systemctl stop kibana.service
 These commands provide no feedback as to whether {{kib}} was started successfully or not. Log information can be accessed using `journalctl -u kibana.service`.
 
 
-## Step 5: Enroll {{kib}} with {{es}}
+## Step 6: Enroll {{kib}} with {{es}}
 
 :::{include} _snippets/enroll-systemd.md
 :::
 
-## Step 6: Configure {{kib}} using the config file [rpm-configuring]
+## Step 7: Configure {{kib}} using the config file [rpm-configuring]
 
 {{kib}} loads its configuration from the `/etc/kibana/kibana.yml` file by default.  The format of this config file is explained in [](configure-kibana.md).
 

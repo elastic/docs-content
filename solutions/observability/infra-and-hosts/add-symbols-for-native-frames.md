@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-add-symbols.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Add symbols for native frames [profiling-add-symbols]
@@ -14,8 +16,8 @@ To see function names and line numbers in traces of applications written in prog
 
 Click the appropriate link for your system to download the `symbtool` binary:
 
-* [x86_64](https://artifacts.elastic.co/downloads/prodfiler/symbtool-9.0.0-beta1-linux-x86_64.tar.gz)
-* [ARM64](https://artifacts.elastic.co/downloads/prodfiler/symbtool-9.0.0-beta1-linux-arm64.tar.gz)
+* [x86_64](https://artifacts.elastic.co/downloads/prodfiler/symbtool-{{version}}-linux-x86_64.tar.gz)
+* [ARM64](https://artifacts.elastic.co/downloads/prodfiler/symbtool-{{version}}-linux-arm64.tar.gz)
 
 ::::{note}
 The `symbtool` binary currently requires a Linux machine.
@@ -25,7 +27,7 @@ The `symbtool` binary currently requires a Linux machine.
 
 ## Use the `symbtool` binary [profiling-use-symbtool]
 
-Before using the `symbtool` binary, create an [Elasticsearch API token](../../../deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key). Pass this token using the `-t` or `--api-key` argument.
+Before using the `symbtool` binary, create an [Elasticsearch API token](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key). Pass this token using the `-t` or `--api-key` argument.
 
 You also need to copy the **Symbols** endpoint from the deployment overview page. Pass this URL using the `-u` or `--url` argument.
 

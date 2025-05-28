@@ -1,14 +1,16 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-quickstart.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-quickstart.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Quickstart [k8s-logstash-quickstart]
 
-Add the following specification to create a minimal {{ls}} deployment that will listen to a Beats agent or Elastic Agent configured to send to Logstash on port 5044, create the service and write the output to an Elasticsearch cluster named `quickstart`, created in the [Elasticsearch quickstart](deploy-an-orchestrator.md).
+Add the following specification to create a minimal {{ls}} deployment that will listen to a Beats agent or Elastic Agent configured to send to Logstash on port 5044, create the service and write the output to an {{es}} cluster named `quickstart`, created in the [{{es}} quickstart](deploy-an-orchestrator.md).
 
 ```yaml
 cat <<'EOF' | kubectl apply -f -

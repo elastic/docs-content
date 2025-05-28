@@ -1,13 +1,15 @@
 ---
-applies_to:
-  deployment:
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/index.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
-# Elastic Cloud Enterprise [Elastic-Cloud-Enterprise-overview]
+# {{ece}} [Elastic-Cloud-Enterprise-overview]
 
 {{ece}} (ECE) is an Elastic self-managed solution for deploying, orchestrating, and managing {{es}} clusters at scale. It provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines.
 

@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-kubernetes.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Tutorial: Observe your Kubernetes deployments [monitor-kubernetes]
@@ -30,7 +32,7 @@ This guide describes how to use Elastic {{observability}} to observe all layers 
 * Centralize the data in the {{stack}}
 * Explore the data in real-time using tailored dashboards and {{observability}} UIs
 
-This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html).
+This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md).
 
 
 ## Monitoring architecture [kubernetes-monitoring-architecture]
@@ -207,7 +209,7 @@ Collecting metrics from `kube-state-metrics` is on by default. The `kube-state-m
 
 With the Kubernetes integration, you can collect a number of metrics using the `kube-state-metrics`. Expand the following list to see all available metrics from `kube-state-metrics`.
 
-::::{dropdown} Expand to see available metrics from `kube-state-metrics`
+::::{dropdown} Expand to see available metrics from kube-state-metrics
 **Container metrics**
 :   Monitor Container performance to ensure efficiency and stability in pods. Learn more at [`kube-state-metrics` container metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_container).
 
@@ -519,30 +521,19 @@ For more on using the **Metrics Explorer** page, refer to [Explore infrastructur
 
 ### View Kubernetes logs [monitor-k8s-explore-logs]
 
-Find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
+From the **Data view** menu, select `All logs`. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
 
-:::{image} /solutions/images/observability-log-explorer.png
-:alt: screenshot of the logs explorer main page
-:screenshot:
-:::
-
-From **Logs Explorer**, you can select the Kubernetes integration from the data selector to view your Kubernetes data.
-
-![screenshot of the logs explorer main page](/solutions/images/observability-logs-explorer-applications.png "")
-
-From here, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
-
-* [Logs Explorer](../logs/logs-explorer.md) for an over view of Logs Explorer.
-* [Filter logs in Logs Explorer](../logs/filter-aggregate-logs.md#logs-filter-logs-explorer) for more on filtering logs in Logs Explorer.
+* [Explore logs in Discover](../logs/discover-logs.md) for an overview of viewing your logs in Discover.
+* [Filter logs in Discover](../logs/filter-aggregate-logs.md#logs-filter-discover) for more on filtering logs in Discover.
 
 
 ## Part 4: Monitor application performance [monitor-kubernetes-application-performance]
 
 Quickly triage and troubleshoot application performance problems with the help of Elastic application performance monitoring (APM).
 
-Think of a latency spike — APM can help you narrow the scope of your investigation to a single service. Because you’ve also ingested and correlated logs and metrics, you can then link the problem to CPU and memory utilization or error log entries of a particular Kubernetes pod.
+Think of a latency spike — APM can help you narrow the scope of your investigation to a single service. Because you’ve also ingested and correlated logs and metrics, you can then link the problem to CPU and memory utilization or error log entries of a particular Kubernetes pod.
 
 
 ### Step 1: Set up APM [_step_1_set_up_apm]
@@ -554,10 +545,10 @@ There are many ways to deploy APM when working with Kubernetes, but this guide a
 If you want to manage APM yourself, there are a few alternative options:
 
 ::::{dropdown} Expand alternatives
-* [{{ecloud}} on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/) — The Elastic recommended approach for managing APM Server deployed with Kubernetes. Built on the Kubernetes Operator pattern, ECK extends basic Kubernetes orchestration capabilities to support the setup and management of APM Server on Kubernetes.
-* Deploy APM Server as a DaemonSet — Ensure a running instance of APM Server on each node in your cluster. Useful when all pods in a node should share a single APM Server instance.
-* Deploy APM Server as a sidecar — For environments that should not share an APM Server, like when directing traces from multiple applications to separate {{es}} clusters.
-* [Download and install APM Server](../apps/get-started-with-apm.md) — The classic, non-Kubernetes option.
+* [{{ecloud}} on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md) — The Elastic recommended approach for managing APM Server deployed with Kubernetes. Built on the Kubernetes Operator pattern, ECK extends basic Kubernetes orchestration capabilities to support the setup and management of APM Server on Kubernetes.
+* Deploy APM Server as a DaemonSet — Ensure a running instance of APM Server on each node in your cluster. Useful when all pods in a node should share a single APM Server instance.
+* Deploy APM Server as a sidecar — For environments that should not share an APM Server, like when directing traces from multiple applications to separate {{es}} clusters.
+* [Download and install APM Server](/solutions/observability/apm/get-started.md) — The classic, non-Kubernetes option.
 
 ::::
 
@@ -565,7 +556,7 @@ If you want to manage APM yourself, there are a few alternative options:
 
 ### Step 2: Save your secret token [_step_2_save_your_secret_token]
 
-A [secret token](../apps/secret-token.md) is used to secure communication between APM agents and APM Server. To create or update your secret token in {{kib}}:
+A [secret token](/solutions/observability/apm/secret-token.md) is used to secure communication between APM agents and APM Server. To create or update your secret token in {{kib}}:
 
 1. Find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Agent policies** tab, select the policy you would like to configure.
@@ -582,7 +573,7 @@ kubectl create secret generic apm-secret --from-literal=ELASTIC_APM_SECRET_TOKEN
 1. Create the secret in the same namespace that you’ll be deploying your applications in.
 
 
-If you’re managing APM Server yourself, see [secret token](../apps/secret-token.md) for instructions on how to set up your secret token.
+If you’re managing APM Server yourself, see [secret token](/solutions/observability/apm/secret-token.md) for instructions on how to set up your secret token.
 
 If you are using ECK to set up APM Server, the operator automatically generates an `{{APM-server-name}}-apm-token` secret for you.
 
@@ -681,7 +672,7 @@ Before your application starts, copy the agent from the init container into a sh
 The Java command line needs a way to pick up this `javaagent` configuration. You can use the standard JVM TI [JAVA_TOOL_OPTIONS](https://docs.oracle.com/javase/8/docs/platform/jvmti/jvmti.md#tooloptions) environment variable to do this. It doesn’t have to be explicitly specified and is picked up automatically by the JVM when it starts.
 
 ::::{tip}
-For JVMs that don’t support this option, you can use any other environment variable — either one already defined in your startup script, like `JAVA_OPTS` in some servlet container scripts, or add a dedicated empty one that will have no effect if it’s not set.
+For JVMs that don’t support this option, you can use any other environment variable — either one already defined in your startup script, like `JAVA_OPTS` in some servlet container scripts, or add a dedicated empty one that will have no effect if it’s not set.
 ::::
 
 
@@ -823,7 +814,7 @@ npm install elastic-apm-node --save
 
 **Start the agent**
 
-It’s important that the agent is started before you require any other modules in your Node.js application — before `express`, `http`, etc.
+It’s important that the agent is started before you require any other modules in your Node.js application — before `express`, `http`, etc.
 
 ```js
 var apm = require('elastic-apm-node').start()
