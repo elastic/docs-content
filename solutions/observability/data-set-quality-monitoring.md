@@ -11,17 +11,17 @@ products:
   - id: cloud-serverless
 ---
 
-# Data set quality monitoring [observability-monitor-datasets]
+# Data set quality [observability-monitor-datasets]
 
-The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. Use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
+The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. You can then use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
 
-To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
+To open the **Data Set Quality** page, find it under **Stack Management** in the main menu or search for "data set quality" using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
 
 ## Required roles and privileges
 
-With the `viewer` role, users can view the Data Sets Quality summary.
-
-You need the `monitor` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index to view the Active Data Sets and Estimated Data summaries on the Data set quality page.
+Users with the [`viewer` role](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) can only view the **Data Set Quality** summary. To view the **Active Data Sets** and **Estimated Data** summaries, you need the `monitor` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index.
 
 ## Monitor data sets
 
@@ -37,30 +37,26 @@ Opening the details of a specific data set shows the degraded documents history,
 
 ## Investigate issues [observability-monitor-datasets-investigate-issues]
 
-The Data Set Quality page provides several ways to help you investigate issues. From the data set table, you can open the data set’s details page, open failed docs sent to the failure store in Discover, and view ignored fields.
+The Data Set Quality page provides several ways to help you investigate issues. From the data set table, you can open the data set’s details page, open failed docs sent to the failure store in Discover (serverless only), and view ignored fields.
 
-### Failure store
+### Find failed documents with failure store
 ```{applies_to}
 serverless: ga
 ```
 
+To help diagnose issues with ingestion or mapping, documents that are rejected during ingestion are sent to a dedicated data stream called failure store. From the **Data Set Quality** page, data streams with documents in the failure store will show a percentage in the **Failed docs (%)** column. The failed docs percentage gives you a quick look at the magnitude of potential problems in your ingestion process.
+
 #### Required privileges
 
-You need the `read_failure_store` or `all` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to access failure store.
+Accessing failure store requires the `read_failure_store` or `all` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices).
 
-#### Diagnose issues with failure store
+#### Find failed documents
 
-To help diagnose issues with ingestion or mapping, documents that are rejected during ingestion are sent to a dedicated data stream called failure store. From the Data Set Quality page, data streams with documents in the failure store will show a percentage in the **Failed docs (%)**. The failed docs percentage gives you a quick overview of the magnitude of potential problems in your ingestion process.
+Select the percentage in the **Failed docs (%)** column for a specific data stream to open Discover and see the raw documents that were sent to failure store.
 
-Select the percentage for a specific data stream to open Discover and see the raw documents that were sent to failure store.
-
-% screenshot.
-
-To diagnose issues in a specific data stream:
+To see how persistent a problem is in a specific data set, you can view the number of failed documents over a selected time range:
 1. Select the data set name from the main table.
-1. Open **failed documents**.
-
-% screenshot
+1. Select the **Failed docs** tab under **Document trends**.
 
 ### Find ignored fields in data sets [observability-monitor-datasets-find-ignored-fields-in-data-sets]
 
@@ -69,7 +65,7 @@ To open the details page for a data set with poor or degraded quality and view i
 1. From the data set table, select a data set name.
 2. Scroll down to **Quality issues**.
 
-The **Quality issues** section shows fields that have been ignored, the number of documents that contain ignored fields, the timestamp of last occurrence of the field being ignored, and failed documents.
+The **Quality issues** section shows fields that have been ignored, the number of documents that contain ignored fields, the timestamp of last occurrence of the field being ignored, and failed documents (serverless only).
 
 % Screenshot
 
