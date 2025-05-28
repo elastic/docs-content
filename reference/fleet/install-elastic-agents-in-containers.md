@@ -8,7 +8,7 @@ products:
 
 # Install Elastic Agents in a containerized environment [install-elastic-agents-in-containers]
 
-You can run {{agent}} inside of a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the Elastic Docker registry, and we provide deployment manifests for running on Kubernetes.
+You can run {{agent}} inside of a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the Elastic Docker registry, and we provide deployment manifests for running on Kubernetes.
 
 To learn how to run {{agent}}s in a containerized environment, see:
 
@@ -24,7 +24,7 @@ To learn how to run {{agent}}s in a containerized environment, see:
 * [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md)
 * [Scaling {{agent}} on {{k8s}}](/reference/fleet/scaling-on-kubernetes.md)
 * [Using a custom ingest pipeline with the {{k8s}} Integration](/reference/fleet/ingest-pipeline-kubernetes.md)
-* [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
+* [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 
 ::::{note}
 Enrollment handling for {{agent}} in a containerized environment has some special nuances.

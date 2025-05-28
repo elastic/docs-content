@@ -9,6 +9,10 @@ applies_to:
 
 In this quickstart guide, you'll learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic.
 
+::::{warning}
+This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+::::
+
 ## What is the Elastic Cloud Managed OTLP endpoint?
 
 The Managed OTLP Endpoint is a fully managed offering exclusively for Elastic Cloud users (initially available in Elastic Cloud Serverless only) that simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage.
@@ -25,7 +29,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 ## Prerequisites
 
 * An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
-* A system forwarding logs, metrics, or traces in OTLP (any OTel Collector or SDK—EDOT or community).
+* A system forwarding logs, metrics, or traces in OTLP (any EDOT Collector or SDK—EDOT or community).
 
 ### Limitations
 
@@ -36,7 +40,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ### Get your native OTLP endpoint credentials
 
-1. [create a new Observability project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new Observability project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 
 1. In your {{obs-serverless}} project, go to **Add Data**.
 
@@ -69,18 +73,18 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ### Send data to your Elastic Cloud Managed OTLP endpoint
 
-* [I have an OTel Collector/SDK running](#otel-sdk-running)
-* [I need an OTel Collector/SDK](#no-sdk-running)
+* [I have an EDOT Collector/SDK running](#otel-sdk-running)
+* [I need an EDOT Collector/SDK](#no-sdk-running)
 * [I just want to use the instrumentation](#instrumentation-please)
 
-#### I have an OTel Collector/SDK running [otel-sdk-running]
+#### I have an EDOT Collector/SDK running [otel-sdk-running]
 
 If you have an OpenTelemetry Collector or SDK exporting telemetry data,
 configure it with the endpoint and API key generated in the previous steps.
 
 **OpenTelemetry Collector configuration**
 
-Configure your OTel Collector as follows:
+Configure your EDOT Collector as follows:
 
 ```yaml
 exporters:
@@ -94,7 +98,7 @@ For more information, see [OTLP Collector configuration](https://opentelemetry.i
 **Elastic Distributions of OpenTelemetry (EDOT) Collector configuration**
 
 Configure an EDOT Collector using the same method described above in **OpenTelemetry Collector configuration**.
-See the [EDOT Language SDK documentation](https://elastic.github.io/opentelemetry/edot-collector/index.html) for more information.
+See the [EDOT Language SDK documentation](opentelemetry://reference/edot-collector/index.md) for more information.
 
 **OpenTelemetry SDK configuration**
 
@@ -115,21 +119,21 @@ For more information, see [OTLP Exporter configuration](https://opentelemetry.io
 **Elastic Distributions of OpenTelemetry (EDOT) SDK configuration**
 
 Configure an EDOT SDK using the same method described above in **OpenTelemetry SDK configuration**.
-See the [EDOT Language SDK documentation](https://elastic.github.io/opentelemetry/edot-sdks/index.html) for more information.
+See the [EDOT Language SDK documentation](opentelemetry://reference/edot-sdks/index.md) for more information.
 
-#### I need an OTel Collector/SDK [no-sdk-running]
+#### I need an EDOT Collector/SDK [no-sdk-running]
 
 Don't have a collector or SDK running? No problem. Spin up an EDOT collector in just a few steps:
 
-* [Kubernetes Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/k8s.html)
-* [Hosts & VMs Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/hosts_vms.html)
+* [Kubernetes Quickstart](opentelemetry://reference/quickstart/serverless/k8s.md)
+* [Hosts & VMs Quickstart](opentelemetry://reference/quickstart/serverless/hosts_vms.md)
 
 % Commenting out Docker until the docs are ready
-% * [Docker Quickstart](https://elastic.github.io/opentelemetry/quickstart/serverless/docker.html)
+% * [Docker Quickstart](opentelemetry://reference/quickstart/serverless/docker.md)
 
 #### I just want to use the instrumentation [instrumentation-please]
 
-See [application use-cases](https://elastic.github.io/opentelemetry/edot-sdks/index.html) for more information.
+See [application use-cases](opentelemetry://reference/edot-sdks/index.md) for more information.
 
 ## Troubleshoot
 
@@ -143,7 +147,7 @@ Exporting failed. Dropping data.
 "Unauthenticated desc = ApiKey prefix not found"
 ```
 
-You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK. See [I have an OTel Collector/SDK running](#otel-sdk-running) for more information.
+You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK. See [I have an EDOT Collector/SDK running](#otel-sdk-running) for more information.
 
 **Error: too many requests**
 
@@ -151,7 +155,6 @@ The Managed endpoint has per-project rate limits in place. If you hit this limit
 
 ## Provide feedback
 
-We love to hear from you!
 Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup#/domain-signup).
 
 For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).

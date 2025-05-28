@@ -161,121 +161,12 @@ You can now apply your newly created API keys in the configuration of each of yo
 * **Python agent**: [`api_key`](apm-agent-python://reference/configuration.md#config-api-key)
 * **Ruby agent**: [`api_key`](apm-agent-ruby://reference/configuration.md#config-api-key)
 
-## Alternate API key creation methods [apm-configure-api-key-alternative]
+## Alternate API key creation method [apm-configure-api-key-alternative]
 
 ```{applies_to}
 stack:
 serverless: unavailable
 ```
-
-API keys can also be created and validated outside of {{kib}}:
-
-* [APM Server API key workflow](#apm-create-api-key-workflow-apm-server)
-* [{{es}} API key workflow](#apm-create-api-key-workflow-es)
-
-### APM Server API key workflow [apm-create-api-key-workflow-apm-server]
-
-This API creation method only works with the APM Server binary.
-
-::::{admonition} Deprecated in 8.6.0.
-:class: warning
-
-Users should create API Keys through {{kib}} or the {{es}} REST API
-::::
-
-APM Server provides a command line interface for creating, retrieving, invalidating, and verifying API keys. Keys created using this method can only be used for communication with APM Server.
-
-#### `apikey` subcommands [apm-create-api-key-subcommands]
-
-**`create`**
-:   Create an API Key with the specified privilege(s). No required flags.
-
-    The user requesting to create an API Key needs to have APM privileges used by the APM Server. A superuser, by default, has these privileges.
-
-::::{dropdown} Expand for more information on assigning these privileges to other users
-To create an APM Server user with the required privileges for creating and managing API keys:
-1. Create an **API key role**, called something like `apm_api_key`, that has the following `cluster` level privileges:
-
-    | Privilege | Purpose |
-    | --- | --- |
-    | `manage_own_api_key` | Allow APM Server to create, retrieve, and invalidate API keys |
-
-2. Depending on what the **API key role** will be used for, also assign the appropriate `apm` application-level privileges:
-    * To **receive Agent configuration**, assign `config_agent:read`.
-    * To **ingest agent data**, assign `event:write`.
-    * To **upload source maps**, assign `sourcemap:write`.
-::::
-
-**`info`**
-:   Query API Key(s). `--id` or `--name` required.
-
-**`invalidate`**
-:   Invalidate API Key(s). `--id` or `--name` required.
-
-**`verify`**
-:   Check if a credentials string has the given privilege(s). `--credentials` required.
-
-#### Privileges [apm-create-api-key-privileges]
-
-If privileges are not specified at creation time, the created key will have all privileges.
-
-* `--agent-config` grants the `config_agent:read` privilege
-* `--ingest` grants the `event:write` privilege
-* `--sourcemap` grants the `sourcemap:write` privilege
-
-#### Create an API key [apm-create-api-key-workflow]
-
-Create an API key with the `create` subcommand.
-
-The following example creates an API key with a `name` of `java-001`, and gives the "agent configuration" and "ingest" privileges.
-
-```sh
-apm-server apikey create --ingest --agent-config --name java-001
-```
-
-The response will look similar to this:
-
-```console-result
-Name ........... java-001
-Expiration ..... never
-Id ............. qT4tz28B1g59zC3uAXfW
-API Key ........ rH55zKd5QT6wvs3UbbkxOA (won't be shown again)
-Credentials .... cVQ0dHoyOEIxZzU5ekMzdUFYZlc6ckg1NXpLZDVRVDZ3dnMzVWJia3hPQQ== (won't be shown again)
-```
-
-You should always verify the privileges of an API key after creating it. Verification can be done using the `verify` subcommand.
-
-The following example verifies that the `java-001` API key has the "agent configuration" and "ingest" privileges.
-
-```sh
-apm-server apikey verify --agent-config --ingest --credentials cVQ0dHoyOEIxZzU5ekMzdUFYZlc6ckg1NXpLZDVRVDZ3dnMzVWJia3hPQQ==
-```
-
-If the API key has the requested privileges, the response will look similar to this:
-
-```console-result
-Authorized for privilege "event:write"...:          Yes
-Authorized for privilege "config_agent:read"...:    Yes
-```
-
-To invalidate an API key, use the `invalidate` subcommand. Due to {{es}} caching, there may be a delay between when this subcommand is executed and when it takes effect.
-
-The following example invalidates the `java-001` API key.
-
-```sh
-apm-server apikey invalidate --name java-001
-```
-
-The response will look similar to this:
-
-```console-result
-Invalidated keys ... qT4tz28B1g59zC3uAXfW
-Error count ........ 0
-```
-
-A full list of `apikey` subcommands and flags is available in the [API key command reference](/solutions/observability/apm/apm-server-command-reference.md#apm-apikey-command).
-
-### {{es}} API key workflow [apm-create-api-key-workflow-es]
 
 It is also possible to create API keys using the {{es}} [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
 

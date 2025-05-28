@@ -23,7 +23,7 @@ The **Infrastructure** tab provides information about the containers, pods, and 
 
 * **Pods**: Uses the `kubernetes.pod.name` from the [APM metrics data streams](/solutions/observability/apm/metrics.md).
 * **Containers**: Uses the `container.id` from the [APM metrics data streams](/solutions/observability/apm/metrics.md).
-* **Hosts**: If the application is containerized—​if the APM metrics documents include `container.id`—the `host.name` is used from the infrastructure data streams (filtered by `container.id`). If not, `host.hostname` is used from the APM metrics data streams.
+* **Hosts**: If the application is containerized—if the APM metrics documents include `container.id`—the `host.name` is used from the infrastructure data streams (filtered by `container.id`). If not, `host.hostname` is used from the APM metrics data streams.
 
 :::{image} /solutions/images/serverless-infra.png
 :alt: Example view of the Infrastructure tab in the Applications UI

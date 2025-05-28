@@ -10,7 +10,7 @@ products:
 
 # Storage Explorer [apm-storage-explorer]
 
-Analyze your APM data and manage costs with **storage explorer**. For example, analyze the storage footprint of each of your services to see which are producing large amounts of data—​then change the sample rate of a service to lower the amount of data ingested. Or, expand the time filter to visualize data trends over time so that you can better forecast and prepare for future storage needs.
+Analyze your APM data and manage costs with **storage explorer**. For example, analyze the storage footprint of each of your services to see which are producing large amounts of data—then change the sample rate of a service to lower the amount of data ingested. Or, expand the time filter to visualize data trends over time so that you can better forecast and prepare for future storage needs.
 
 :::{image} /solutions/images/observability-storage-explorer-overview.png
 :alt: APM Storage Explorer

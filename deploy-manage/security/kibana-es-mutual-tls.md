@@ -13,7 +13,7 @@ products:
 
 Secure Sockets Layer (SSL) and Transport Layer Security (TLS) provide encryption for data-in-transit. While these terms are often used interchangeably, {{kib}} supports only TLS, which supersedes the old SSL protocols.
 
-TLS requires X.509 certificates to authenticate the communicating parties and perform encryption of data-in-transit. Each certificate contains a public key and has and an associated — but separate — private key; these keys are used for cryptographic operations. {{kib}} supports certificates and private keys in PEM or PKCS#12 format.
+TLS requires X.509 certificates to authenticate the communicating parties and perform encryption of data-in-transit. Each certificate contains a public key and has and an associated — but separate — private key; these keys are used for cryptographic operations. {{kib}} supports certificates and private keys in PEM or PKCS#12 format.
 
 In a standard TLS configuration, the server presents a signed certificate to authenticate itself to the client. In a mutual TLS configuration, the client also presents a signed certificate to authenticate itself to the server.
 

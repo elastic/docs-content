@@ -34,7 +34,7 @@ To add alerts to a new case:
 
 1. Do one of the following:
 
-    * To add a single alert to a case, select the **More actions** menu (**…​**) in the Alerts table or **Take action** in the alert details flyout, then select **Add to a new case**.
+    * To add a single alert to a case, select the **More actions** menu (**…**) in the Alerts table or **Take action** in the alert details flyout, then select **Add to a new case**.
     * To add multiple alerts, select the alerts, then select **Add to a new case** from the **Bulk actions** menu.
 
 2. Give the case a name, assign a severity level, and provide a description. You can use [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) syntax in the case description.
@@ -60,7 +60,7 @@ To add alerts to an existing case:
 
 1. Do one of the following:
 
-    * To add a single alert to a case, select the **More actions** menu (**…​**) in the Alerts table or **Take action** in the alert details flyout, then select **Add to existing case**.
+    * To add a single alert to a case, select the **More actions** menu (**…**) in the Alerts table or **Take action** in the alert details flyout, then select **Add to existing case**.
     * To add multiple alerts, select the alerts, then select **Add to an existing case** from the **Bulk actions** menu.
 
 2. From the **Select case** dialog box, select the case to which you want to attach the alert. A confirmation message is displayed with an option to view the updated case. Click the link in the notification or go to the Cases page to view the case’s details.

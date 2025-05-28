@@ -784,13 +784,7 @@ elastic-agent install --url=https://fleet-server:8220 \
 
 ## elastic-agent otel [elastic-agent-otel-command]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
-Run {{agent}} as an [OpenTelemetry Collector](/reference/fleet/otel-agent.md).
-
+Run {{agent}} as an [Elastic Distribution of OpenTelemetry Collector (EDOT Collector)](/reference/fleet/otel-agent.md).
 
 ### Synopsis [_synopsis_6]
 
@@ -802,7 +796,6 @@ elastic-agent otel [command]
 ::::{note}
 You can also run the `./otelcol` command, which calls `./elastic-agent otel` and passes any arguments to it.
 ::::
-
 
 
 ### Available commands [_available_commands]
@@ -828,13 +821,13 @@ You can also run the `./otelcol` command, which calls `./elastic-agent otel` and
 
 ### Examples [_examples_15]
 
-Run {{agent}} as on OTel Collector using the supplied `otel.yml` configuration file.
+Run {{agent}} as an EDOT Collector using the supplied `otel.yml` configuration file.
 
 ```shell
 ./elastic-agent otel --config otel.yml
 ```
 
-Change the default verbosity setting in the {{agent}} OTel configuration from `detailed` to `normal`.
+Change the default verbosity setting in the {{agent}} EDOT Collector configuration from `detailed` to `normal`.
 
 ```shell
 ./elastic-agent otel --config otel.yml --set "exporters::debug::verbosity=normal"

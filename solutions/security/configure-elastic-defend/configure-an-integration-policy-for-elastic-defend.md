@@ -48,8 +48,8 @@ To configure an integration policy:
 4. Click the **Trusted applications**, **Event filters**, **Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md), [Event filters](/solutions/security/manage-elastic-defend/event-filters.md), [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
 
     * Expand and view an artifact: Click the arrow next to its name.
-    * View an artifact’s details: Click the actions menu (**…​**), then select **View full details**.
-    * Unassign an artifact: Click the actions menu (**…​**), then select **Remove from policy**. This does not delete the artifact; this just unassigns it from the current policy.
+    * View an artifact’s details: Click the actions menu (**…**), then select **View full details**.
+    * Unassign an artifact: Click the actions menu (**…**), then select **Remove from policy**. This does not delete the artifact; this just unassigns it from the current policy.
     * Assign an existing artifact: Click **Assign *x* to policy**, then select an item from the flyout. This view lists any existing artifacts that aren’t already assigned to the current policy.
 
     ::::{note}

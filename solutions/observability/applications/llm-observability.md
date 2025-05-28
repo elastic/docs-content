@@ -9,7 +9,7 @@ To keep your LLM-powered applications reliable, efficient, cost-effective, and e
 Elastic’s end-to-end LLM observability is delivered through the following methods:
 
 - Metrics and logs ingestion for LLM APIs (via [Elastic integrations](integration-docs://reference/index.md))
-- APM tracing for LLM Models (via [instrumentation](https://elastic.github.io/opentelemetry/))
+- APM tracing for LLM Models (via [instrumentation](opentelemetry://reference/index.md))
 
 ## Metrics and logs ingestion for LLM APIs (via Elastic integrations)
 
@@ -32,11 +32,11 @@ You can instrument the application with one of the following Elastic Distributio
 - [Node.js](https://github.com/elastic/elastic-otel-node)
 - [Java](https://github.com/elastic/elastic-otel-java)
 
-EDOT includes many types of LLM instrumentation. This [table](https://elastic.github.io/opentelemetry/use-cases/llm/#supported-technologies) lists the supported technologies.
+EDOT includes many types of LLM instrumentation. This [table](opentelemetry://reference/use-cases/llms/index.md#supported-technologies) lists the supported technologies.
 
 ### Getting started
 
-Check [these instructions](https://elastic.github.io/opentelemetry/use-cases/llm/) on how to setup and collect OpenTelemetry data for your LLM applications.
+Check [these instructions](opentelemetry://reference/use-cases/llms/index.md) on how to setup and collect OpenTelemetry data for your LLM applications.
 
 ## Use cases
 

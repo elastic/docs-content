@@ -46,7 +46,7 @@ deployment:
     1. Create a user that has the `monitoring_user` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md) on the monitoring cluster.
 
         ::::{note}
-        Make sure the `monitoring_user` role has read privileges on `metrics-*` indices. If it doesn’t, create a new role with `read` and `read_cross_cluster` index privileges on `metrics-*`, then assign the new role (along with `monitoring_user`) to your user.
+        Make sure the `monitoring_user` role has read privileges on `metrics-*` indices. If it doesn’t, create a new role with `read` and `read_cross_cluster` index privileges on `metrics-*`, then assign the new role (along with `monitoring_user`) to your user.
         ::::
 
     2. Add the `monitoring.ui.elasticsearch.username` and `monitoring.ui.elasticsearch.password` settings in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. If these settings are omitted, {{kib}} uses the `elasticsearch.username` and `elasticsearch.password` setting values. For more information, see [Configuring security in {{kib}}](../../security.md).

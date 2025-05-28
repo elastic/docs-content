@@ -39,6 +39,7 @@ toc:
                 children:
                   - file: deploy/elastic-cloud/available-stack-versions.md
               - file: deploy/elastic-cloud/access-kibana.md
+              - file: deploy/elastic-cloud/elastic-cloud-hosted-planning.md
               - file: deploy/elastic-cloud/manage-deployments.md
                 children:
                   - file: deploy/elastic-cloud/configure.md
