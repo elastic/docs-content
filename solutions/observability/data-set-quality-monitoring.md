@@ -13,18 +13,17 @@ products:
 
 # Data set quality monitoring [observability-monitor-datasets]
 
-::::{note}:
+The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. Use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
 
-**Required roles and privileges**
+To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
+
+## Required roles and privileges
 
 With the `viewer` role, users can view the Data Sets Quality summary.
 
 You need the `monitor` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for the `logs-*-*` index to view the Active Data Sets and Estimated Data summaries on the Data set quality page.
-::::
 
-The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. Use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
-
-To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
+## Monitor data sets
 
 The quality of your data sets is based on the percentage of degraded documents in each data set. A degraded document in a data set contains the [`_ignored`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-ignored-field.md) property because one or more of its fields were ignored during indexing. Fields are ignored for a variety of reasons. For example, when the [`ignore_malformed`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-ignored-field.md) parameter is set to true, if a document field contains the wrong data type, the malformed field is ignored and the rest of the document is indexed.
 
@@ -41,14 +40,15 @@ Opening the details of a specific data set shows the degraded documents history,
 The Data Set Quality page provides several ways to help you investigate issues. From the data set table, you can open the data set’s details page, open failed docs sent to the failure store in Discover, and view ignored fields.
 
 ### Failure store
+```{applies_to}
+serverless: ga
+```
 
-::::{note}:
-
-**Required privileges**
+#### Required privileges
 
 You need the `read_failure_store` or `all` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to access failure store.
 
-::::
+#### Diagnose issues with failure store
 
 To help diagnose issues with ingestion or mapping, documents that are rejected during ingestion are sent to a dedicated data stream called failure store. From the Data Set Quality page, data streams with documents in the failure store will show a percentage in the **Failed docs (%)**. The failed docs percentage gives you a quick overview of the magnitude of potential problems in your ingestion process.
 
