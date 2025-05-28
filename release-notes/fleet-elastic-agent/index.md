@@ -30,8 +30,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [fleet-elastic-agent-9.0.2-features-enhancements]
 
-fleet-server::
-
 * Updates Go version to v1.24.3 in {{fleet}} [#4891]({{fleet-server-pull}}4891)
 	
 * Updates Go version to v1.24.3 in {{agent}} [#8109]({{agent-pull}}8109)
