@@ -177,7 +177,7 @@ POST my-datastream/_bulk
 }
 ```
 
-1. The response code is 200 OK, and the response body does not report any errors encountered.
+1. The response code is `200 OK`, and the response body does not report any errors encountered.
 2. The first document is accepted into the data stream's write index.
 3. The second document encountered a problem during ingest and was redirected to the data stream's failure store.
 4. The response is annotated with a field indicating that the failure store was used to persist the second document.
@@ -231,7 +231,7 @@ If the document could have been redirected to a data stream's failure store but 
 
 1. The failure is returned to the client as normal when the failure store is not enabled.
 2. The response is annotated with a flag indicating the failure store could have accepted the document, but it was not enabled.
-3. Status of 400 Bad Request due to the mapping problem.
+3. The response status is `400 Bad Request` due to the mapping problem.
 
 
 If the document was redirected to a data stream's failure store but that failed document could not be stored (e.g. due to shard unavailability or a similar problem), then the `failure_store` field on the response will be `failed`, and the response will display the error for the original failure, as well as a suppressed error detailing why the failure could not be stored:
@@ -273,7 +273,7 @@ If the document was redirected to a data stream's failure store but that failed 
 2. The document could not be redirected because the failure store was not able to accept writes at this time due to an unforeseeable issue.
 3. The complete exception tree is present on the response.
 4. The response is annotated with a flag indicating the failure store would have accepted the document, but it was not able to.
-5. Status of 400 Bad Request due to the original mapping problem.
+5. The response status is `400 Bad Request` due to the original mapping problem.
 
 
 ### Searching failures [use-failure-store-searching]
@@ -377,7 +377,7 @@ Caused by: j.l.IllegalArgumentException: For input string: "invalid_text"
 
 1. The document belongs to a failure store index on the data stream.
 2. The failure document timestamp is when the failure occurred in {{es}}.
-3. The document that was sent is captured inside the failure document. Failure documents capture the id of the document at time of failure, along with which data stream the document was being written to, and the contents of the document. The `document.source` fields are unmapped to ensure failures are always captured.
+3. The document that was sent is captured inside the failure document. Failure documents capture the ID of the document at time of failure, along with which data stream the document was being written to, and the contents of the document. The `document.source` fields are unmapped to ensure failures are always captured.
 4. The failure document captures information about the error encountered, like the type of error, the error message, and a compressed stack trace.
 ::::
 
@@ -422,7 +422,7 @@ Failure documents have a uniform structure that is handled internally by {{es}}.
 :   (`object`) The document at time of failure. If the document failed in an ingest pipeline, then the document will be the unprocessed version of the document as it arrived in the original indexing request. If the document failed due to a mapping issue, then the document will be as it was after any ingest pipelines were applied to it.
     
     `document.id`
-    :   (`keyword`) The id of the original document at the time of failure.
+    :   (`keyword`) The ID of the original document at the time of failure.
     
     `document.routing`
     :   (`keyword`, optional) The routing of the original document at the time of failure if it was specified.
@@ -443,7 +443,7 @@ Failure documents have a uniform structure that is handled internally by {{es}}.
     :   (`text`) A compressed stack trace from {{es}} for the failure.
 
     `error.type`
-    :   (`keyword`) The type classification of failure. Values are the same type returned within failed indexing API responses.
+    :   (`keyword`) The type classification of the failure. Values are the same type returned within failed indexing API responses.
 
     `error.pipeline`
     :   (`keyword`, optional) If the failure occurred in an ingest pipeline, this will contain the name of the pipeline.
@@ -601,7 +601,7 @@ GET my-datastream-ingest::failures/_search
 
 We can see that the document failed on the second processor in the pipeline. The first processor would have added a `@timestamp` field. Since the pipeline failed, we find that it has no `@timestamp` field added because it did not save any changes from before the pipeline failed.
 
-The second place failures can occur is during indexing. After the documents have been processed by any applicable pipelines, they are parsed using the index mappings before being indexed into the shard. If a document is sent to the failure store due to a failure in this process, then it will be stored as it was after any ingestion had occurred. This is because the original document is overwritten by the ingest pipeline changes by this point. This has the benefit of being able to see what the document looked like during the mapping and indexing phase of the write operation.
+The second time when failures can occur is during indexing. After the documents have been processed by any applicable pipelines, they are parsed using the index mappings before being indexed into the shard. If a document is sent to the failure store due to a failure in this process, then it will be stored as it was after any ingestion had occurred. This is because, by this point, the original document has already been overwritten by the ingest pipeline changes. This has the benefit of allowing you to see what the document looked like during the mapping and indexing phase of the write operation.
 
 Building on the example above, we send a document that has a text value where we expect a numeric value:
 
@@ -1146,7 +1146,7 @@ Navigate to the data view page in Kibana and add a new data view. Set the index 
 ::::
 
 ::::{step} Create new rule
-Navigate to Management / Alerts and Insights / Rules. Create a new rule. Choose the Elasticsearch query option.
+Navigate to Management / Alerts and Insights / Rules. Create a new rule. Choose the {{es}} query option.
 
 :::{image} /manage-data/images/elasticsearch-reference-management_failure_store_alerting_create_rule.png
 :alt: create a new alerting rule and select the elasticsearch query option 
