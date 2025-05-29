@@ -6,7 +6,7 @@ applies_to:
 
 # Failure store [failure-store]
 
-Failure stores are a secondary set of indices inside a data stream dedicated to storing failed documents. Failed documents are any documents that cause ingest pipeline exceptions or have a structure that conflicts with a data stream's mappings. These failures normally cause the indexing operation to fail, returning the error message in the response. 
+A failure store is a secondary set of indices inside a data stream, dedicated to storing failed documents. A failed document is any document that, without the failure store enabled, would cause an ingest pipeline exception or that has a structure that conflicts with a data stream's mappings. In the absence of the failure store, a failed document would cause the indexing operation to fail, with an error message returned in the operation response.
 
 When a data stream's failure store is enabled, these failures are instead captured in a separate index and persisted to be analysed later. Clients receive a successful response with a flag indicating the failure was redirected. Failure stores do not capture failures caused by backpressure or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
 
