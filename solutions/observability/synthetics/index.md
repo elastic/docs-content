@@ -43,7 +43,7 @@ To set up your first monitor, refer to [Get started](/solutions/observability/sy
 
 Real browser synthetic monitoring enables you to test critical actions and requests that an end-user would make on your site at predefined intervals and in a controlled environment. Synthetic monitoring extends traditional end-to-end testing techniques because it allows your tests to run continuously on the cloud. The result is rich, consistent, and repeatable data that you can trend and alert on.
 
-For example, you can test popular user journeys, like logging in, adding items to a cart, and checking out — actions that need to work for your users consistently.
+For example, you can test popular user journeys, like logging in, adding items to a cart, and checking out — actions that need to work for your users consistently.
 
 You can run an automated Synthetics project on a real Chromium browser and view each synthetic monitoring journey in your Observability project side-by-side with your other monitors.
 

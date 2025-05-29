@@ -94,7 +94,7 @@ Before starting the upgrade process, verify that your setup meets the following 
   :::
 
   - Ensure that your system deployments are at their [expected versions](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md). Since ECE 3.6.1, the upgrade process automatically upgrades system deployments to the required version. If the {{ece}} platform was upgraded successfully and yet one or more system deployments were not upgraded to [their expected version](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md) during the very last phase of the {{ece}} upgrade, you can re-run the `elastic-cloud-enterprise.sh upgrade --cloud-enterprise-version <your target version>` command to retry system deployment upgrade only.
-  - Check that your deployments are running on {{stack}} version 7.0.0 or above.
+  - Check that your deployments are running on {{stack}} version 8.0.0 or above.
 - Before running the upgrade command, ensure that you include the same installation flags that were used during the initial setup. Some deployment configurations, such as those using Podman or SELinux, require specific flags to be passed again during the upgrade. Failure to do so may result in compatibility errors.
 
 ## Certificate rotation [ece-upgrade-certificates]

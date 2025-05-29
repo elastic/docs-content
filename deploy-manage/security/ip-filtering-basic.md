@@ -42,7 +42,7 @@ xpack.security.transport.filter.deny: "192.168.0.0/24"
 The `_all` keyword can be used to deny all connections that are not explicitly allowed.
 
 ```yaml
-xpack.security.transport.filter.allow: [ "192.168.0.1", "192.168.0.2", "192.168.0.3", "192.168.0.4" ]
+xpack.security.transport.filter.allow: [ "192.168.0.1", "192.168.0.2", "192.168.0.3", "192.168.0.4" ]
 xpack.security.transport.filter.deny: _all
 ```
 

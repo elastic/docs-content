@@ -31,7 +31,7 @@ xpack.security.authc:
 ```
 
 1. The username/principal of the anonymous user. Defaults to `_es_anonymous_user` if not specified.
-2. The roles to associate with the anonymous user. If no roles are specified, anonymous access is disabled—​anonymous requests will be rejected and return an authentication error.
+2. The roles to associate with the anonymous user. If no roles are specified, anonymous access is disabled—anonymous requests will be rejected and return an authentication error.
 3. When `true`, a 403 HTTP status code is returned if the anonymous user does not have the permissions needed to perform the requested action and the user will NOT be prompted to provide credentials to access the requested resource. When `false`, a 401 HTTP status code is returned if the anonymous user does not have the necessary permissions and the user is prompted for credentials to access the requested resource. If you are using anonymous access in combination with HTTP, you might need to set `authz_exception` to `false` if your client does not support preemptive basic authentication. Defaults to `true`.
 
 

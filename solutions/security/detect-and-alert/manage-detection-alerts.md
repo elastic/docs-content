@@ -176,7 +176,7 @@ You can set an alert’s status to indicate whether it needs to be investigated 
 
 To change an alert’s status, do one of the following:
 
-* In the Alerts table, click **More actions** (**…​**) in the alert’s row, then select a status.
+* In the Alerts table, click **More actions** (**…**) in the alert’s row, then select a status.
 * In the Alerts table, select the alerts you want to change, click **Selected *x* alerts** at the upper-left above the table, and then select a status.
 
     :::{image} /solutions/images/security-alert-change-status.png
@@ -208,7 +208,7 @@ To display alert tags in the Alerts table, click **Fields** and add the `kibana.
 
 To apply or remove alert tags on individual alerts, do one of the following:
 
-* In the Alerts table, click **More actions** (**…​**) in an alert’s row, then click **Apply alert tags**. Select or unselect tags, then click **Apply tags**.
+* In the Alerts table, click **More actions** (**…**) in an alert’s row, then click **Apply alert tags**. Select or unselect tags, then click **Apply tags**.
 * In an alert’s details flyout, click **Take action → Apply alert tags**. Select or unselect tags, then click **Apply tags**.
 
 To apply or remove alert tags on multiple alerts, select the alerts you want to change, then click **Selected *x* alerts** at the upper-left above the table. Click **Apply alert tags**, select or unselect tags, then click **Apply tags**.
@@ -230,8 +230,8 @@ Users are not notified when they’ve been assigned to, or unassigned from, aler
 
 | Action | Instructions |
 | --- | --- |
-| Assign users to an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…​**) in an alert’s row, then click **Assign alert**. Select users, then click **Apply**.<br> - **Alert details flyout**: Click **Take action → Assign alert**. Alternatively, click the **Assign alert** icon at the top of the alert details flyout, select users, then click **Apply**.<br> |
-| Unassign all users from an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…​**) in an alert’s row, then click **Unassign alert**.<br> - **Alert details flyout**: Click **Take action → Unassign alert**.<br> |
+| Assign users to an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…**) in an alert’s row, then click **Assign alert**. Select users, then click **Apply**.<br> - **Alert details flyout**: Click **Take action → Assign alert**. Alternatively, click the **Assign alert** icon at the top of the alert details flyout, select users, then click **Apply**.<br> |
+| Unassign all users from an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…**) in an alert’s row, then click **Unassign alert**.<br> - **Alert details flyout**: Click **Take action → Unassign alert**.<br> |
 | Assign users to multiple alerts | From the Alerts table, select the alerts you want to change. Click **Selected *x* alerts** at the upper-left above the table, then click **Assign alert**. Select users, then click **Apply**.<br><br> **Note**: Users assigned to some of the selected alerts will be displayed as unassigned in the selection list. Selecting said users will assign them to all alerts they haven’t been assigned to yet.<br><br> |
 | Unassign users from multiple alerts | From the Alerts table, select the alerts you want to change and click **Selected *x* alerts** at the upper-left above the table. Click **Unassign alert** to remove users from the alert. |
 
@@ -264,7 +264,7 @@ Click the **Assignees** filter above the Alerts table, then select the users you
 
 You can add exceptions to the rule that generated an alert directly from the Alerts table. Exceptions prevent a rule from generating alerts even when its criteria are met.
 
-To add an exception, click the **More actions** menu (**…​**) in the Alerts table, then select **Add exception**. Alternatively, select **Take action** → **Add rule exception** in the alert details flyout.
+To add an exception, click the **More actions** menu (**…**) in the Alerts table, then select **Add exception**. Alternatively, select **Take action** → **Add rule exception** in the alert details flyout.
 
 For information about exceptions and how to use them, refer to [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md).
 

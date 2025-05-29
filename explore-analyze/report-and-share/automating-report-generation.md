@@ -20,7 +20,7 @@ Create the POST URL that triggers a report to generate PDF and CSV reports.
 To create the POST URL for PDF reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
-2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report.
+2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report.
 
     * If you are using **Dashboard** or **Visualize Library**, from the toolbar, click **Share > Export**, select the PDF option then click **Copy POST URL**.
     * If you are using **Canvas**, from the toolbar, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.

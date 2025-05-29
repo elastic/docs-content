@@ -209,7 +209,7 @@ When the upgrade process for multiple agents has been detected to have stalled, 
 
 1. On the **Agents** tab, select any set of the agents that are indicated to be stuck, and click **Actions**.
 2. From the **Actions** menu, select **Restart upgrade <number> agents**.
-3. In the **Restart upgrade…​** window, select an upgrade version.
+3. In the **Restart upgrade…** window, select an upgrade version.
 4. Select the amount of time available for the maintenance window. The upgrades are spread out uniformly across this maintenance window to avoid exhausting network resources.
 
     To force selected agents to upgrade immediately when the upgrade is triggered, select **Immediately**. Avoid using this setting for batches of more than 10 agents.

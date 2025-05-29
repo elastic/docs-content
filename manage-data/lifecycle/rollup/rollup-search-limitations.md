@@ -40,7 +40,7 @@ To help simplify the problem, we have limited search to just one rollup index at
 
 A perhaps obvious limitation, but rollups can only aggregate on data that has been stored in the rollups. If you don’t configure the rollup job to store metrics about the `price` field, you won’t be able to use the `price` field in any query or aggregation.
 
-For example, the `temperature` field in the following query has been stored in a rollup job…​ but not with an `avg` metric. Which means the usage of `avg` here is not allowed:
+For example, the `temperature` field in the following query has been stored in a rollup job… but not with an `avg` metric. Which means the usage of `avg` here is not allowed:
 
 ```console
 GET sensor_rollup/_rollup_search

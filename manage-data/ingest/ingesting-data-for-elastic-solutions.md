@@ -9,7 +9,7 @@ products: []
 
 # Ingesting data for Elastic solutions [ingest-for-solutions]
 
-Elastic solutions—​Security, Observability, and Search—​are loaded with features and functionality to help you get value and insights from your data. [Elastic Agent](/reference/fleet/index.md) and [Elastic integrations](https://docs.elastic.co/en/integrations) can help, and are the best place to start.
+Elastic solutions—Security, Observability, and Search—are loaded with features and functionality to help you get value and insights from your data. [Elastic Agent](/reference/fleet/index.md) and [Elastic integrations](https://docs.elastic.co/en/integrations) can help, and are the best place to start.
 
 When you use integrations with solutions, you have an integrated experience that offers easier implementation and decreases the time it takes to get insights and value from your data.
 
