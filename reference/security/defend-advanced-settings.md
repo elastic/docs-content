@@ -33,7 +33,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.alerts.hash.md5`
 :   Added in 8.16.0.
 
-    *Compute and include MD5 hashes in alerts? This will increase CPU usage and alert sizes. If any user exceptionlists, trustlists, or blocklists reference this hash type, Endpoint will ignore this setting and automatically enable this hash type. Default: `false`*
+    *Compute and include MD5 hashes in alerts? This will increase CPU usage and alert sizes. If any user exceptionlists, trustlists, or blocklists reference this hash type, Endpoint will ignore this setting and automatically enable this hash type. Default: `false`.*
 
     {{elastic-endpoint}} doesn't generate MD5 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default.
 
@@ -41,7 +41,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.alerts.hash.sha1`
 :   Added in 8.16.0.
 
-    *Compute and include SHA-1 hashes in alerts? This will increase CPU usage and alert sizes. If any user exceptionlists, trustlists, or blocklists reference this hash type, Endpoint will ignore this setting and automatically enable this hash type. Default: `false`*
+    *Compute and include SHA-1 hashes in alerts? This will increase CPU usage and alert sizes. If any user exceptionlists, trustlists, or blocklists reference this hash type, Endpoint will ignore this setting and automatically enable this hash type. Default: `false`.*
 
     {{elastic-endpoint}} doesn't generate SHA-1 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default.
 
@@ -49,7 +49,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.alerts.rollback.self_healing.enabled`
 :   Added in 8.4.0.
 
-    *Self-healing erases attack artifacts when prevention alerts are triggered. Warning: data loss can occur. Default: `false`*
+    *Self-healing erases attack artifacts when prevention alerts are triggered. Warning: data loss can occur. Default: `false`.*
 
     When a prevention alert is generated, {{elastic-endpoint}} can [roll back](/solutions/security/configure-elastic-defend/configure-self-healing-rollback-for-windows-endpoints.md) recent filesystem changes likely associated with the attack. Use this setting to enable the self-healing rollback feature.
     
@@ -61,7 +61,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.alerts.rollback.self_healing.registry_enabled`
 :   Added in 8.8.0.
 
-    *Enables self-healing of registry based malware artifacts. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`*
+    *Enables self-healing of registry based malware artifacts. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`.*
 
     As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can roll back recent registry changes when an attack occurs. Use this setting to enable this feature.
     
@@ -73,7 +73,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.alerts.rollback.self_healing.process_enabled`
 :   Added in 8.8.0.
 
-    *Enables automatic removal of malware processes when a related prevention alert fires, including processes which were not directly involved in the alert. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`*
+    *Enables automatic removal of malware processes when a related prevention alert fires, including processes which were not directly involved in the alert. Requires `rollback.self_healing.enabled` to also be enabled. Default: `true`.*
 
     As an extension to the base-level self-healing rollback feature, {{elastic-endpoint}} can terminate recently spawned processes when an attack occurs. Use this setting to enable this feature.
 
@@ -101,7 +101,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.global.base_url`
 :   Added in 7.9.0.
 
-    *Base URL from which to download global artifact manifests. Default: `https://artifacts.security.elastic.co`*
+    *Base URL from which to download global artifact manifests. Default: `https://artifacts.security.elastic.co`.*
 
     Specifies the base URL from which to download global protection artifact updates. Modify this setting when [configuring air-gapped environments](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md) to receive protection updates.
 
@@ -117,7 +117,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.global.channel`
 :   Added in 8.18.0.
 
-    *The release channel to use for receiving global artifacts. The default is `staged rollout`. Set to `rapid` to receive candidate artifacts as soon as available. Set to `stable` to only receive stable artifacts. Default: `staged rollout`*
+    *The release channel to use for receiving global artifacts. The default is `staged rollout`. Set to `rapid` to receive candidate artifacts as soon as available. Set to `stable` to only receive stable artifacts. Default: `staged rollout`.*
 
     Global protection artifact updates are publicly released in stages to ensure stability across the {{elastic-defend}} user base. Use this setting to opt specific endpoints in (such as test or lab machines) or out (such as mission-critical systems) of the staged rollout process.
 
@@ -141,7 +141,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.global.proxy_disable`
 :   Added in 8.8.0.
 
-    *If the proxy setting should be used when downloading global artifact manifests. Default: `false`*
+    *If the proxy setting should be used when downloading global artifact manifests. Default: `false`.*
 
     By default, {{elastic-endpoint}} doesn't attempt to use a proxy when downloading global protection artifact updates. Modify this setting to change this.
 
@@ -149,7 +149,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.global.proxy_url`
 :   Added in 8.8.0.
 
-    *Proxy server to use when downloading global artifact manifests. Default: `none`*
+    *Proxy server to use when downloading global artifact manifests. Default: `none`.*
 
     Use this setting to configure a proxy server when downloading global protection artifacts.
 
@@ -173,7 +173,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.user.proxy_disable`
 :   Added in 8.8.0.
 
-    *If the proxy setting should be used when downloading user artifact manifests. Default: `false`*
+    *If the proxy setting should be used when downloading user artifact manifests. Default: `false`.*
 
     Use this setting to enable the use of a proxy when communicating with the {{fleet}} server. 
 
@@ -181,7 +181,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.user.proxy_url`
 :   Added in 8.8.0.
 
-    *Proxy server to use when downloading user artifact manifests. Default: `none`*
+    *Proxy server to use when downloading user artifact manifests. Default: `none`.*
 
     Use this setting to configure a proxy server when communicating with the {{fleet}} server. We typically recommend [configuring proxy settings at the {{elastic-agent}} level](/reference/fleet/fleet-agent-proxy-support.md) to ensure consistent and centralized proxy handling.
 
@@ -217,7 +217,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.diagnostic.rollback_telemetry_enabled`
 :   Added in 8.1.0.
 
-    *Enable diagnostic rollback telemetry. Default: `true`*
+    *Enable diagnostic rollback telemetry. Default: `true`.*
 
     Use this setting to disable the diagnostic (testing) self-healing features without affecting other diagnostic functionalities.
 
@@ -225,9 +225,9 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.document_enrichment.fields`
 :   Added in 8.11.0.
 
-    *A comma-delimited set of key=value pairs of values to add into all Endpoint documents. Each key must begin with `Custom`. An example is `Custom.key=value1,Custom.key2=value2`*
+    *A comma-delimited set of key=value pairs of values to add into all Endpoint documents. Each key must begin with `Custom`. An example is `Custom.key=value1,Custom.key2=value2`.*
 
-    Use this setting to add custom key/value pairs into all {{elastic-endpoint}} documents, with the described limitation. It works similarly to the [**Custom fields** {{elastic-agent}} policy configuration](/reference/fleet/agent-policy.md#add-custom-fields), which {{elastic-endpoint}} doesn't support.
+    Use this setting to add custom key/value pairs into all {{elastic-endpoint}} documents. It works similarly to the [**Custom fields** {{elastic-agent}} policy configuration](/reference/fleet/agent-policy.md#add-custom-fields), which {{elastic-endpoint}} doesn't support.
 
     
 `[linux,mac,windows].advanced.elasticsearch.delay`
@@ -265,7 +265,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.event_filter.default`
 :   Added in 8.3.0.
 
-    *Download default event filter rules from Elastic. Default: `true`*
+    *Download default event filter rules from Elastic. Default: `true`.*
 
     By default, {{elastic-endpoint}} doesn't generate and stream events to {{es}} for system activity known to be noisy and of limited security value, based on dynamic rules Elastic maintains. Use this setting to disable that suppression.
 
@@ -289,15 +289,15 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.ancestry_in_all_events`
 :   Added in 8.15.0.
 
-    *Include ancestor process entity IDs in all event types, by default it is only included in alerts and process events. Default: `false`*
+    *Include ancestor process entity IDs in all event types, by default it is only included in alerts and process events. Default: `false`.*
 
-    Prior to 8.15, {{elastic-endpoint}} included `process.ancestry` in all event documents. `process.ancestry` is used to improve the speed at which Analyze Events is rendered and is primarily only needed in process events. In 8.15, this was changed to limit data volume.
+    Prior to 8.15, {{elastic-endpoint}} included `process.ancestry` in all event documents. This field helps render the event analyzer more quickly and is primarily needed for process events. In 8.15, this was changed to limit data volume.
 
 
 `windows.advanced.events.api`
 :   Added in 8.8.0.
 
-    *Controls whether ETW API events are enabled. Set to `false` to disable ETW event collection. Default: `true`*
+    *Controls whether ETW API events are enabled. Set to `false` to disable ETW event collection. Default: `true`.*
 
     Use this setting to disable API event collection, even if other {{elastic-endpoint}} features require them.
     
@@ -317,73 +317,73 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.api_verbose`
 :   Added in 8.11.0.
 
-    *Controls whether high volume API events are sent to {{es}}. Event filtering is recommended if enabled. Default: `false`*
+    *Controls whether high volume API events are sent to {{es}}. Event filtering is recommended if enabled. Default: `false`.*
 
 
 `windows.advanced.events.callstacks.emit_in_events`
 :   Added in 8.8.0.
 
-    *If set, callstacks will be included in regular events where they are collected. Otherwise, they are only included in events that trigger behavioral protection rules. Note that setting this may significantly increase data volumes. Default: `false`*
+    *If set, callstacks will be included in regular events where they are collected. Otherwise, they are only included in events that trigger behavioral protection rules. Note that setting this may significantly increase data volumes. Default: `false`.*
 
 
 `windows.advanced.events.callstacks.exclude_hotpatch_extension_pages`
 :   Added in 8.15.2.
 
-    *Exclude Windows 11 24H2 hotpatch extension pages, which resemble injected code, from callstack module stomp scanning. Default: `true`*
+    *Exclude Windows 11 24H2 hotpatch extension pages, which resemble injected code, from callstack module stomp scanning. Default: `true`.*
 
 
 `windows.advanced.events.callstacks.file`
 :   Added in 8.8.0.
 
-    *Collect callstacks during file events? Default: `true`*
+    *Collect callstacks during file events? Default: `true`.*
 
 
 `windows.advanced.events.callstacks.image_load`
 :   Added in 8.8.0.
 
-    *Collect callstacks during image/library load events? Default: `true`*
+    *Collect callstacks during image/library load events? Default: `true`.*
 
 
 `windows.advanced.events.callstacks.include_network_images`
 :   Added in 8.9.0.
 
-    *Should executables and DLLs on network shares be parsed for callstack symbols? This may cause Endpoint to hang on some networks. Default: `true`*
+    *Should executables and DLLs on network shares be parsed for callstack symbols? This may cause Endpoint to hang on some networks. Default: `true`.*
 
 
 `windows.advanced.events.callstacks.process`
 :   Added in 8.8.0.
 
-    *Collect callstacks during process events? Default: `true`*
+    *Collect callstacks during process events? Default: `true`.*
 
 
 `windows.advanced.events.callstacks.registry`
 :   Added in 8.8.0.
 
-    *Collect callstacks during registry events? Default: `true`*
+    *Collect callstacks during registry events? Default: `true`.*
 
 
 `windows.advanced.events.callstacks.timeout_microseconds`
 :   Added in 8.12.0.
 
-    *Maximum runtime of inline callstack collection/enrichment. Default: `100000`*
+    *Maximum runtime of inline callstack collection/enrichment. Default: `100000`.*
 
 
 `windows.advanced.events.callstacks.use_hardware`
 :   Added in 8.16.0.
 
-    *Use hardware callstacks (e.g. Intel CET) if supported by the OS and CPU. Default: `true`*
+    *Use hardware callstacks (e.g. Intel CET) if supported by the OS and CPU. Default: `true`.*
 
 
 `windows.advanced.events.check_debug_registers`
 :   Added in 8.11.0.
 
-    *Check debug registers inline to detect the use of hardware breakpoints. Malware may use hardware breakpoints to forge benign-looking call stacks. Default: `true`*
+    *Check debug registers inline to detect the use of hardware breakpoints. Malware may use hardware breakpoints to forge benign-looking call stacks. Default: `true`.*
 
 
 `[linux,mac,windows].advanced.events.deduplicate_network_events`
 :   Added in 8.15.0.
 
-    *A value of `false` disables network events deduplication. Default: `true`*
+    *A value of `false` disables network events deduplication. Default: `true`.*
 
     To limit data volume, {{elastic-endpoint}} doesn't emit network events for [repeated connections](/solutions/security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md#network-event-deduplication) based on the Src-IP/Dst-IP/Dst-Port/PID tuple grouping. Use this setting to disable that suppression.
 
@@ -391,7 +391,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.deduplicate_network_events_below_bytes`
 :   Added in 8.15.0.
 
-    *Deduplication transfer threshold in bytes. Events exceeding the transfer will not be deduplicated. A value `0` means disabled. Default: `1048576` (1MB)*
+    *Deduplication transfer threshold in bytes. Events exceeding the transfer will not be deduplicated. A value `0` means disabled. Default: `1048576` (1MB).*
 
     Specify a transfer size threshold for events you want to deduplicate. Connections below the threshold are deduplicated, and connections above it are not deduplicated. This allows [network event deduplication](/solutions/security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md#network-event-deduplication) to be applied only to low data volume connections.
 
@@ -407,13 +407,13 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.disable_image_load_suppression_cache`
 :   Added in 8.12.1.
 
-    *The image load suppression cache improves system performance by enabling Endpoint to inform its kernel driver about DLLs to avoid eventing upon as they are not of interest. This feature improves system responsiveness and reduces Endpoint CPU usage. Use this setting only for troubleshooting if image load events are not being generated as expected. Default: `false`*
+    *The image load suppression cache improves system performance by enabling Endpoint to inform its kernel driver about DLLs to avoid eventing upon as they are not of interest. This feature improves system responsiveness and reduces Endpoint CPU usage. Use this setting only for troubleshooting if image load events are not being generated as expected. Default: `false`.*
 
 
 `windows.advanced.events.disable_registry_write_suppression`
 :   Added in 8.12.1.
 
-    *Registry write suppression improves system performance by enabling Endpoint to inform its driver that certain types of registry operations are uninteresting. Once deemed uninteresting, the driver can quickly drop these events, improving system responsiveness and reducing Endpoint CPU usage. Use this setting only for troubleshooting if registry events are not functioning as expected. Default: `false`*
+    *Registry write suppression improves system performance by enabling Endpoint to inform its driver that certain types of registry operations are uninteresting. Once deemed uninteresting, the driver can quickly drop these events, improving system responsiveness and reducing Endpoint CPU usage. Use this setting only for troubleshooting if registry events are not functioning as expected. Default: `false`.*
 
 
 `linux.advanced.events.enable_caps`
@@ -421,7 +421,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *This setting ensures thread capability arrays are not pruned from Linux process events before being sent to {{es}}. At the expense of higher Endpoint data volumes, a `true` value will ensure capability matching detection rules running within the {{stack}} can match. Detection rules running within {{elastic-defend}} are unaffected because capabilities are conditionally pruned after rule processing. Default is `false`.*
 
-    Use this setting to enable reporting of process capabilities on Linux. {{elastic-endpoint}} began reporting these capabilities in 8.11.0, but this was disabled by default in 8.14.0 due to data volume concerns
+    Use this setting to enable reporting of process capabilities on Linux. {{elastic-endpoint}} began reporting these capabilities in 8.11.0, but this was disabled by default in 8.14.0 due to data volume concerns.
 
 
 `windows.advanced.events.event_on_access.file_paths`
@@ -439,13 +439,13 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.file.max_hash_size_mb`
 :   Added in 8.16.0.
 
-    *Attempt to include `file.hash.sha256` in file events. Hashing is asynchronous, best-effort, and is not guaranteed to succeed, especially on network drives. WARNING: File hashing is a very CPU- and I/O-intensive process. WARNING: This feature will increase Endpoint's CPU and I/O, and may adversely affect system responsiveness, especially during I/O-intensive activity such as directory copies and compilation. WARNING: Event processing will be delayed due to the time spent hashing, causing Endpoint's Behavioral and Ransomware protections to fire later than normal, potentially allowing threats to inflict additional damage. Set to `off` to disable this feature. Set to `0` to hash all files up to 1 GiB. Otherwise, this sets the maximum to-be-hashed file size in MiB. Default: `off`*
+    *Attempt to include `file.hash.sha256` in file events. Hashing is asynchronous, best-effort, and is not guaranteed to succeed, especially on network drives. WARNING: File hashing is a very CPU- and I/O-intensive process. WARNING: This feature will increase Endpoint's CPU and I/O, and may adversely affect system responsiveness, especially during I/O-intensive activity such as directory copies and compilation. WARNING: Event processing will be delayed due to the time spent hashing, causing Endpoint's Behavioral and Ransomware protections to fire later than normal, potentially allowing threats to inflict additional damage. Set to `off` to disable this feature. Set to `0` to hash all files up to 1 GiB. Otherwise, this sets the maximum to-be-hashed file size in MiB. Default: `off`.*
 
 
 `[linux,mac,windows].advanced.events.hash.md5`
 :   Added in 8.16.0.
 
-    *Compute and include MD5 hashes for processes and libraries in events. This will increase CPU usage and event sizes. Default: `false`*
+    *Compute and include MD5 hashes for processes and libraries in events. This will increase CPU usage and event sizes. Default: `false`.*
 
     {{elastic-endpoint}} doesn't generate MD5 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default.
 
@@ -453,7 +453,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.hash.sha1`
 :   Added in 8.16.0.
 
-    *Compute and include SHA-1 hashes for processes and libraries in events? This will increase CPU usage and event sizes. Default: `false`*
+    *Compute and include SHA-1 hashes for processes and libraries in events? This will increase CPU usage and event sizes. Default: `false`.*
 
     {{elastic-endpoint}} doesn't generate SHA-1 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default.
 
@@ -461,7 +461,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.hash.sha256`
 :   Added in 8.16.0.
 
-    *Compute and include SHA-256 hashes for processes and libraries in events? This will increase CPU usage and event sizes. Default: `true`*
+    *Compute and include SHA-256 hashes for processes and libraries in events? This will increase CPU usage and event sizes. Default: `true`.*
 
     {{elastic-endpoint}} doesn't generate SHA-256 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-256 hashing; starting with 8.18, users are opted out by default.
 
@@ -481,7 +481,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.memory_scan`
 :   Added in: 8.14.0.
 
-    *On behavior alerts, this feature enables an additional scan of identified memory regions against well-known malware signatures. Default: `true`*
+    *On behavior alerts, this feature enables an additional scan of identified memory regions against well-known malware signatures. Default: `true`.*
 
     Additional memory scanning of behavior alerts provides more context for responders analyzing alerts. Use this setting to disable this feature.
 
@@ -489,7 +489,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.process.creation_flags`
 :   Added in 8.13.0.
 
-    *Enables an additional enrichment for process events. Use this setting only for troubleshooting if process events are not functioning as expected. Default: `true`*
+    *Enables an additional enrichment for process events. Use this setting only for troubleshooting if process events are not functioning as expected. Default: `true`.*
 
     Use this setting to control whether {{elastic-endpoint}} captures process creation flags, such as `CREATE_SUSPENDED`, in process events.
 
@@ -497,7 +497,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.process_ancestry_length`
 :   Added in 8.15.0.
 
-    *Maximum number of process ancestry entries to include in process events. Default: `5`*
+    *Maximum number of process ancestry entries to include in process events. Default: `5`.*
 
     Use this setting to control how many ancestor processes {{elastic-endpoint}} includes in the `process.ancestry` field. Prior to 8.15, this field contained the last 20 ancestor processes; starting with 8.15, it was reduced to the last 5, to limit data volume.
 
@@ -505,13 +505,13 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.registry.enforce_registry_filters`
 :   Added in 8.15.0.
 
-    *Reduce data volume by filtering out registry events which are not relevant to behavioral protections. Default: `true`*
+    *Reduce data volume by filtering out registry events which are not relevant to behavioral protections. Default: `true`.*
 
 
 `linux.advanced.fanotify.ignore_unknown_filesystems`
 :   Added in 8.4.0.
 
-    *Whether fanotify should ignore unknown filesystems. When `true`, only CI tested filesystems will be marked by default; additional filesystems can be added or removed with `monitored_filesystems` and `ignored_filesystems`, respectively. When `false`, only an internally curated list of filesystems will be ignored, all others will be marked; additional filesystems can be ignored via `ignored_filesystems`. `monitored_filesystems` is ignored when `ignore_unknown_filesystems` is `false`. Default: `true`*
+    *Whether fanotify should ignore unknown filesystems. When `true`, only CI tested filesystems will be marked by default; additional filesystems can be added or removed with `monitored_filesystems` and `ignored_filesystems`, respectively. When `false`, only an internally curated list of filesystems will be ignored, all others will be marked; additional filesystems can be ignored via `ignored_filesystems`. `monitored_filesystems` is ignored when `ignore_unknown_filesystems` is `false`. Default: `true`.*
 
     Use this setting to control how {{elastic-endpoint}} handles unknown filesystems when using fanotify to monitor for malware. Filesystems that aren't monitored won't generate malware alerts.
 
@@ -535,13 +535,13 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.fanotify.seccomp_restricted`
 :   Added in 8.13.1.
 
-    *Prevent the Defend permission checking thread from calling the open/openat syscalls when running on kernels which require `FAN_OPEN_PERM` (older than 5.0). Will avoid potential deadlocks with other antivirus products at the cost of racy hash-based trusted application entries. Ignored when running on newer kernels. Default: `false`*
+    *Prevent the Defend permission checking thread from calling the open/openat syscalls when running on kernels which require `FAN_OPEN_PERM` (older than 5.0). Will avoid potential deadlocks with other antivirus products at the cost of racy hash-based trusted application entries. Ignored when running on newer kernels. Default: `false`.*
 
 
 `[linux,mac,windows].advanced.file_cache.file_object_cache_size`
 :   Added in 8.12.0.
 
-    *Maximum size of the file cache. Larger values can improve performance but increase memory usage. Default: `5000`*
+    *Maximum size of the file cache. Larger values can improve performance but increase memory usage. Default: `5000`.*
 
     Elastic caches information about recently read files in memory. Use this setting to control the number of recent file entries to cache.
 
@@ -563,7 +563,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.host_isolation.allowed`
 :   Added in 8.6.1.
 
-    *A value of `false` disallows host isolation activity on Linux endpoints, regardless of whether host isolation is supported. Note that if a host is currently not isolated, it will refuse to isolate, and likewise, a host will refuse to release if it is currently isolated. A value of `true` will allow Linux endpoints to isolate if supported. Default:`true`*
+    *A value of `false` disallows host isolation activity on Linux endpoints, regardless of whether host isolation is supported. Note that if a host is currently not isolated, it will refuse to isolate, and likewise, a host will refuse to release if it is currently isolated. A value of `true` will allow Linux endpoints to isolate if supported. Default:`true`.*
 
     Use this setting to control whether host isolation activity on Linux is allowed. If disabled, the host will remain unisolated even when isolation is requested.
 
@@ -571,7 +571,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `mac.advanced.image_load.capture`
 :   Added in 8.11.0.
 
-    *Collect and send image load events to {{es}}. Take caution, this can lead to very high data volumes. Adding an event filter to drop unwanted events is strongly recommended. Default: `false`*
+    *Collect and send image load events to {{es}}. Take caution, this can lead to very high data volumes. Adding an event filter to drop unwanted events is strongly recommended. Default: `false`.*
     
     If malicious behavior protection is enabled, {{elastic-endpoint}} by default monitors for image load events, but doesn't emit them to {{es}} due to high data volume. Use this setting to allow those events to be emitted to {{es}}, regardless of whether malicious behavior protection is enabled.
 
@@ -591,7 +591,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.kernel.capture_mode`
 :   Added in 8.2.0.
 
-    *Allows users to control whether kprobes or ebpf are used to gather data. Options are `kprobe`, `ebpf`, or `auto`. `Auto` uses ebpf if possible, otherwise uses kprobe. Default: `auto`*
+    *Allows users to control whether kprobes or ebpf are used to gather data. Options are `kprobe`, `ebpf`, or `auto`. `Auto` uses ebpf if possible, otherwise uses kprobe. Default: `auto`.*
 
     On Linux, {{elastic-endpoint}} can monitor system events using kprobes or eBPF. By default, {{elastic-endpoint}} automatically chooses the best option, but you can use this setting to override that behavior.
 
@@ -611,7 +611,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.kernel.dev_drives.harden`
 :   Added in 8.16.0.
 
-    *Controls whether malware protection is applied to dev drives. Default: `false`*
+    *Controls whether malware protection is applied to dev drives. Default: `false`.*
 
 
 `mac.advanced.kernel.fileaccess`
@@ -659,7 +659,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.kernel.image_and_process_file_timestamp`
 :   Added in 8.4.0.
 
-    *Collect executable/dll timestamps for process and asynchronous image load events. Default: `true`*
+    *Collect executable/dll timestamps for process and asynchronous image load events. Default: `true`.*
 
 
 `[mac,windows].advanced.kernel.network`
@@ -677,7 +677,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `mac.advanced.kernel.network_extension.enable_content_filtering`
 :   Added in 8.1.0.
 
-    *Enable or disable the network content filter, this will enable/disable network eventing. Host isolation will fail if this option is disabled. Default: `true`*
+    *Enable or disable the network content filter, this will enable/disable network eventing. Host isolation will fail if this option is disabled. Default: `true`.*
 
     Use this setting to enable or disable the macOS network content filter.
     
@@ -689,7 +689,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `mac.advanced.kernel.network_extension.enable_packet_filtering`
 :   Added in 8.1.0.
 
-    *Enable or disable the network packet filter. Host isolation will fail if this option is disabled. Default: `true`*
+    *Enable or disable the network packet filter. Host isolation will fail if this option is disabled. Default: `true`.*
 
     Use this setting to enable or disable the macOS network packet filter.
     
@@ -713,7 +713,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.kernel.ppl.harden_am_images`
 :   Added in 8.9.0.
 
-    *Apply the `windows.advanced.kernel.ppl.harden_images` mitigation to Anti-Malware PPL as well. Disable this if third-party Anti-Malware is blocked from loading DLLs over the network. If this happens, there will be Event ID 8 events in the `Microsoft-Windows-Security-Mitigations/Kernel Mode` event log. Default: `true`*.
+    *Apply the `windows.advanced.kernel.ppl.harden_images` mitigation to Anti-Malware PPL as well. Disable this if third-party Anti-Malware is blocked from loading DLLs over the network. If this happens, there will be Event ID 8 events in the `Microsoft-Windows-Security-Mitigations/Kernel Mode` event log. Default: `true`.*
 
 
 `windows.advanced.kernel.ppl.harden_images`
@@ -811,7 +811,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.malware.networkshare`
 :   Added in 8.9.0.
 
-    *Controls whether malware protection is applied to network drives. Default: `true`*
+    *Controls whether malware protection is applied to network drives. Default: `true`.*
 
 
 `[linux,mac,windows].advanced.malware.quarantine`
@@ -885,7 +885,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.memory_protection.shellcode_trampoline_detection`
 :   Added in 8.1.0.
 
-    *Enable trampoline-based shellcode injection detection as a part of memory protection. Default: `true`*
+    *Enable trampoline-based shellcode injection detection as a part of memory protection. Default: `true`.*
 
     Use this setting to disable scanning memory for trampolines, even if Memory Threat protection is enabled.  Memory Threat protection will remain effective even without this scan.
 
@@ -915,7 +915,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.set_extended_host_information`
 :   Added in 8.16.0.
 
-    *Include more details about hosts in events? Set to `false` to receive only `id`, `name`, and `os`. Setting to `true` will increase event size. Default: `false`*.
+    *Include more details about hosts in events? Set to `false` to receive only `id`, `name`, and `os`. Setting to `true` will increase event size. Default: `false`.*
 
     {{elastic-endpoint}} only includes minimal information in the host fieldset in each event. Use this setting to also include extended information from the `alerts` and `metrics-*` documents. This setting was made available in 8.16; starting with 8.18, this behavior is disabled by default.
 
@@ -941,7 +941,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.utilization_limits.cpu`
 :   Added in 8.3.0.
 
-    *The percentage of the aggregate system CPU to which Endpoint is restricted. The range is `20`-`100%`. Values under `20` are ignored and trigger a policy warning. Default: `50`*
+    *The percentage of the aggregate system CPU to which Endpoint is restricted. The range is `20`-`100%`. Values under `20` are ignored and trigger a policy warning. Default: `50`.*
  
     :::{important}
     Setting the limit too low will impact system performance, since {{elastic-endpoint}} pauses application loads during malware scans.
