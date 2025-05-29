@@ -47,7 +47,7 @@ After a matching data stream is created, its failure store will be enabled.
 
 ### Set up for existing data streams [set-up-failure-store-existing]
 
-Enabling the failure store via [index templates](../templates.md) can only affect data streams that are newly created. Existing data streams that use a template will not apply any changes to the template's `data_stream_options` after they have been created.
+Enabling the failure store via [index templates](../templates.md) can only affect data streams that are newly created. Existing data streams that use a template are not affected by changes to the template's `data_stream_options` field.
 
 To modify an existing data stream's options, use the [put data stream options](./failure-store.md) API:
 
