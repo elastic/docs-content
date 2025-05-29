@@ -40,7 +40,7 @@ curl -X PUT \
   -H 'Content-Type: application/json' \
   -d '{"capacity":<Capacity_Value_in_MB>}'
 ```
-1. For information on how to use API keys for authentication, refer to [Access the API from the Command Line](cloud://reference/cloud-enterprise/ece-api-command-line.md).
+1. For information on how to use API keys for authentication, refer to [Access the API from the command line](cloud://reference/cloud-enterprise/ece-api-command-line.md).
 
 After applying the change, log in to the allocator host you updated and restart the allocator service:
 
