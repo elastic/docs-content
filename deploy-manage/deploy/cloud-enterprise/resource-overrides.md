@@ -50,9 +50,9 @@ We strongly recommend making this change only under the guidance of Elastic Supp
 
 To disable CPU limits of your deployment instances, choose one of the following methods:
 
-* Open the **Operations** page of the deployment UI, and select **Turn off** in the `CPU hard limit` section.
+* Open the **Operations** page of the deployment UI, and select **Turn off** in the **CPU hard limit** section.
 
-* Use the [advanced editor](./advanced-cluster-configuration.md), and in the **{{es}} cluster data** section, look for the :
+* Use the [advanced editor](./advanced-cluster-configuration.md), and in the **{{es}} cluster data** section, look for the following setting:
 
   ```yaml
         "resources": {
