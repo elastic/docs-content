@@ -209,8 +209,8 @@ PUT _index_template/my-index-template
 You can also specify index aliases in [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) requests.
 
 ```console
-# PUT <my-index-{now/d}-000001>
-PUT %3Cmy-index-%7Bnow%2Fd%7D-000001%3E
+# Index with index aliases
+PUT <my-index-{now/d}-000001>
 {
   "aliases": {
     "my-alias": {}
