@@ -8,8 +8,6 @@ applies_to:
 
 This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents, and field type mappings](../../manage-data/data-store/index-basics.md). You’ll learn how to create an index, add data as documents, work with dynamic and explicit mappings, and perform your first basic searches.
 
-You can follow this guide using any {{es}} deployment. If you already have one up and running, you can skip ahead to the [first step below](#getting-started-index-creation). If you don’t have one yet, see the [requirements](#getting-started-requirements) for setting up a local instance using Docker.
-
 ::::{tip}
 The code examples in this tutorial are in [Console](../../explore-analyze/query-filter/tools/console.md) syntax by default. You can [convert into other programming languages](../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
 
@@ -17,7 +15,9 @@ The code examples in this tutorial are in [Console](../../explore-analyze/query-
 
 ## Requirements [getting-started-requirements]
 
-You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. If you don’t have one yet, run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+You can follow this guide using any {{es}} deployment. If you already have one up and running, you can skip ahead to the [first step below](#getting-started-index-creation).
+
+If not, you’ll need a running {{es}} cluster, along with {{kib}}, to use the Dev Tools API Console. Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
