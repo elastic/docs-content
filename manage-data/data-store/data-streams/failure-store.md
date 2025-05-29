@@ -12,7 +12,7 @@ When a data stream's failure store is enabled, these failures are instead captur
 
 ## Set up a data stream failure store [set-up-failure-store]
 
-Each data stream has its own failure store that can be enabled to accept failures. By default, this failure store is disabled and any ingestion problems are raised in the response to write operations.
+Each data stream has its own failure store that can be enabled to accept failed documents. By default, this failure store is disabled and any ingestion problems are raised in the response to write operations.
 
 ### Set up for new data streams [set-up-failure-store-new]
 
