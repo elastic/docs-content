@@ -13,6 +13,10 @@ products:
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ecloud}} organization.
 
+::::{note}
+If traffic filtering is enabled on the remote cluster, the remote cluster administrator must configure a traffic filter of type remote cluster, using either the organization ID or the Elasticsearch cluster ID as the filtering criteria. For detailed instructions, refer to [Remote clusters and traffic filtering](/deploy-manage/remote-clusters/ec-enable-ccs.md#ec-ccs-ccr-traffic-filtering).
+::::
+
 ## Allow the remote connection [ec_allow_the_remote_connection]
 
 Before you start, consider the security model that you would prefer to use for authenticating remote connections between clusters, and follow the corresponding steps.
@@ -272,7 +276,6 @@ curl -X GET -H "Authorization: ApiKey $EC_API_KEY" https://api.elastic-cloud.com
 ::::{note}
 The response will include just the remote clusters from the same {{ecloud}} organization. In order to obtain the whole list of remote clusters, use {{kib}} or the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
 ::::
-
 
 ## Configure roles and users [ec_configure_roles_and_users]
 
