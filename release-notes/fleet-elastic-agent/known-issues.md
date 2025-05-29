@@ -17,4 +17,14 @@ Known issues are significant defects or limitations that may impact your impleme
 
 :::
 
-_No known issues_
+:::dropdown [macOS] Osquery integration fails to start on fresh agent installs
+
+**Affects version: 9.1.0 (macOS only)**
+
+On May 26th, 2025, a known issue was discovered that causes the `osquery` integration to fail on new Elastic Agent installations on macOS. During the installation process, the required `osquery.app/` directory is removed, which prevents the integration from starting.
+
+For more information, check [Issue #8245](https://github.com/elastic/elastic-agent/issues/8245).
+
+**Workaround** 
+As a workaround, you can manually restore the `osquery.app/` directory from a working installation or download it from the [official osquery site](https://osquery.io/downloads/official/), and then restart the Elastic Agent.
+
