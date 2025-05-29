@@ -4,7 +4,13 @@ The `setgid` flag applies group permissions on the `/etc/elasticsearch` director
 
 {{es}} loads its configuration from the `/etc/elasticsearch/elasticsearch.yml` file by default. The format of this config file is explained in [](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 
-The {{distro}} package also has a system configuration file (`/etc/sysconfig/elasticsearch`), which allows you to set the following parameters:
+The {{distro}} package also has a system configuration file at the following path:
+ 
+```txt subs=true
+{{pkg-conf}}
+```
+
+In this file, you can set the following parameters:
 
 | Parameter | Description |
 | --- | --- |
@@ -14,5 +20,5 @@ The {{distro}} package also has a system configuration file (`/etc/sysconfig/ela
 | `RESTART_ON_UPGRADE` | Configure restart on package upgrade, defaults to `false`. This means you will have to restart your {{es}} instance after installing a package  manually. The reason for this is to ensure, that upgrades in a cluster do not result in a continuous shard reallocation resulting in high network traffic and reducing the response times of your cluster. |
 
 ::::{note}
-Distributions that use `systemd` require that system resource limits be configured via `systemd` rather than via the `/etc/sysconfig/elasticsearch` file. See [Systemd configuration](/deploy-manage/deploy/self-managed/setting-system-settings.md#systemd) for more information.
+Distributions that use `systemd` require that system resource limits be configured via `systemd` rather than via the {{pkg-conf}} file. See [Systemd configuration](/deploy-manage/deploy/self-managed/setting-system-settings.md#systemd) for more information.
 ::::
