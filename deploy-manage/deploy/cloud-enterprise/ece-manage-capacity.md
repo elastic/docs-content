@@ -44,10 +44,10 @@ curl -X PUT \
 For more information on how to use API keys for authentication, check the section [Access the API from the Command Line](cloud://reference/cloud-enterprise/ece-api-command-line.md).
 
 ::::{important}
-Prior to ECE 3.5.0, regardless of the use of this API, the [CPU quota](#ece-alloc-cpu) used the memory specified at installation time.
+* When running ECE on Podman, CPU quotas for existing instances cannot be removed or updated. As a result, changing an allocator’s capacity won’t affect the CPU quotas of already running containers.
+
+* In ECE versions prior to 3.5.0, the CPU quota is always calculated using the memory specified at installation time, even if you later update the capacity using the API.
 ::::
-
-
 
 ### Examples [ece_examples]
 
