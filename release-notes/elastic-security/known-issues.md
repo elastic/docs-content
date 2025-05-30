@@ -51,7 +51,7 @@ PUT /_ingest/pipeline/entity_analytics_create_eventIngest_from_timestamp-pipelin
 }
 ```
 
-After you complete this step, risk scores should automatically begin to successfully persist during the entity risk engine's next run. Details for the next run time are described on the  Entity risk score page, where you can also manually run the risk score by clicking **Run Engine**. 
+After you complete this step, risk scores should automatically begin to successfully persist during the entity risk engine's next run. Details for the next run time are described on the **Entity risk score** page, where you can also manually run the risk score by clicking **Run Engine**. 
 
 :::
 
