@@ -4,7 +4,7 @@ When something goes wrong during ingestion it is often not an isolated event. In
 
 ## Troubleshooting nested ingest pipelines [failure-store-recipes-nested-ingest-troubleshoot]
 
-When a document fails in an ingest pipeline it can be difficult to figure out exactly what when wrong and where. When these failures are captured by the failure store during this part of the ingestion process, they will contain additional debugging information. Failed documents will note the type of processor and which pipeline was executing when the failure occurred. Failed documents will also contain a pipeline trace which keeps track of any nested pipeline calls that the document was in at time of failure.
+When a document fails in an ingest pipeline it can be difficult to figure out exactly what went wrong and where. When these failures are captured by the failure store during this part of the ingestion process, they will contain additional debugging information. Failed documents will note the type of processor and which pipeline was executing when the failure occurred. Failed documents will also contain a pipeline trace which keeps track of any nested pipeline calls that the document was in at time of failure.
 
 To demonstrate this, we will follow a failed document through an unfamiliar data stream and ingest pipeline:
 ```console
