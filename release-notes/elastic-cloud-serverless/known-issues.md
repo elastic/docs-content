@@ -22,7 +22,7 @@ On May 30, 2025, it was discovered that the entity risk score feature eventually
 
 **Workaround**
 
-To resolve this issue, manually create the ingest pipeline in each space in which entity risk scoring is turned on. This can be done using a PUT request, which is described in the example below. When reviewing the example, note that `default` in the example ingest pipeline name below is the space ID. 
+To resolve this issue, manually create the ingest pipeline in each space in which you have turned on entity risk scoring. This can be done using a PUT request, which is described in the example below. When reviewing the example, note that `default` in the example ingest pipeline name below is the space ID. 
 
 ```
 PUT /_ingest/pipeline/entity_analytics_create_eventIngest_from_timestamp-pipeline-default
