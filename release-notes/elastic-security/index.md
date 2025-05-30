@@ -20,7 +20,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % *
 
 % ### Fixes [elastic-security-X.X.X-fixes]
+
 % *
+
+## 9.0.2 [elastic-security-9.0.2-release-notes]
+
+### Features and enhancements [elastic-security-9.0.2-features-enhancements]
+There are no new features or enhancements.
+
+### Fixes [elastic-security-9.0.2-fixes]
+* Fixes a bug that caused an error message to appear when you changed entity asset criticality from the entity flyout [#219858]({{kib-pull}}219858)
+* Fixes a bug in {{elastic-defend}} 8.16.0 where {{elastic-endpoint}} would incorrectly report some files as being `.NET`.
 
 ## 9.0.1 [elastic-security-9.0.1-release-notes]
 
