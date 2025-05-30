@@ -33,7 +33,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 * Fixes suggestions after triple quote pair [#221200]({{kib-pull}}221200)
 * Passes app state and global state to locator when redirecting from `/stream` path [#215867]({{kib-pull}}215867)
 * Considers status rule locations only if not an empty array [#220983]({{kib-pull}}220983)
-* Fixes a bug where update of an SLO created in a version older than 8.18 failed due to an invalid ingest pipeline [#221158({{kib-pull}}221158)
+* Fixes a bug where update of an SLO created in a version older than 8.18 failed due to an invalid ingest pipeline [#221158]({{kib-pull}}221158)
 * Checks for documents before starting semantic text migration [#221152]({{kib-pull}}221152)
 * Improves error telemetry [#220938]({{kib-pull}}220938)
 * Retrieves active integrations from installed integrations API [#218988]({{kib-pull}}218988)
