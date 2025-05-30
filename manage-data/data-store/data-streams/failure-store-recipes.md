@@ -30,7 +30,7 @@ POST my-datastream-ingest/_doc
   },
   "_seq_no": 2,
   "_primary_term": 1,
-  "failure_store": "used" // The document was sent to the failure store
+  "failure_store": "used" // The document was sent to the failure store.
 }
 ```
 
@@ -66,7 +66,7 @@ GET my-datastream-ingest::failures/_search
             "index": "my-datastream-ingest",
             "source": { // When an ingest pipeline fails, the document stored is what was originally sent to the cluster.
               "important": {
-                "info": "The rain in Spain falls mainly on the plain" // The important info that we failed to find was originally present on the document.
+                "info": "The rain in Spain falls mainly on the plain" // The important information that we failed to find was originally present in the document.
               },
               "@timestamp": "2025-04-21T00:00:00Z"
             }
@@ -93,7 +93,7 @@ GET my-datastream-ingest::failures/_search
 }
 ```
 
-Despite not knowing the pipelines beforehand, we have some places to start looking. The `ingest-step-2` pipeline cannot find the `important.info` field despite it being present on the document that was sent to the cluster. If we pull that pipeline definition we find the following:
+Despite not knowing the pipelines beforehand, we have some places to start looking. The `ingest-step-2` pipeline cannot find the `important.info` field despite it being present in the document that was sent to the cluster. If we pull that pipeline definition we find the following:
 
 ```console
 GET _ingest/pipeline/ingest-step-2
@@ -126,7 +126,7 @@ GET _ingest/pipeline/ingest-step-1
     "processors": [
       {
         "remove": {
-          "field": "important.info" // A remove processor that is incorrectly getting rid of our important field.
+          "field": "important.info" // A remove processor that is incorrectly removing our important field.
         }
       },
       {
@@ -143,7 +143,7 @@ We find a remove processor in the first pipeline that is the root cause of the p
 
 ## Troubleshooting complicated ingest pipelines [failure-store-recipes-complicated-ingest-troubleshoot]
 
-Ingest processors can be labeled with [tags](./failure-store.md). These tags are user provided information that names or describes the processor's purpose in the pipeline. When documents are redirected to the failure store due to a processor issue, they capture the tag from the processor in which the failure occurred if it exists. Because of this, it is a good practice to tag the processors in your pipeline so that the location of a failure can be identified quickly.
+Ingest processors can be labeled with [tags](./failure-store.md). These tags are user-provided information that names or describes the processor's purpose in the pipeline. When documents are redirected to the failure store due to a processor issue, they capture the tag from the processor in which the failure occurred, if it exists. Because of this behavior, it is a good practice to tag the processors in your pipeline so that the location of a failure can be identified quickly.
 
 Here we have a needlessly complicated pipeline. It is made up of several set and remove processors. Beneficially, they are all tagged with descriptive names.
 ```console
@@ -194,7 +194,7 @@ PUT _ingest/pipeline/complicated-processor
 }
 ```
 
-We ingest some data and find that it was sent to the failure store
+We ingest some data and find that it was sent to the failure store.
 ```console
 POST my-datastream-ingest/_doc?pipeline=complicated-processor
 {
@@ -220,7 +220,7 @@ POST my-datastream-ingest/_doc?pipeline=complicated-processor
 }
 ```
 
-Upon checking the failure, we can quickly identify the tagged processor that caused the problem
+On checking the failure, we can quickly identify the tagged processor that caused the problem.
 ```console
 GET my-datastream-ingest::failures/_search
 ```
@@ -268,7 +268,7 @@ GET my-datastream-ingest::failures/_search
             ],
             "pipeline": "complicated-processor",
             "processor_type": "set", // Helpful, but which set processor on the pipeline could it be?
-            "processor_tag": "copy to new counter again" // The tag of the exact processor that it failed on.
+            "processor_tag": "copy to new counter again" // The tag of the exact processor that the document failed on.
           }
         }
       }
@@ -277,11 +277,11 @@ GET my-datastream-ingest::failures/_search
 }
 ```
 
-Without tags in place it would not be as clear where in the pipeline we encountered the problem. Tags provide a unique identifier for a processor that can be quickly referenced in case of an ingest failure.
+Without tags in place it would not be as clear where in the pipeline the indexing problem occurred. Tags provide a unique identifier for a processor that can be quickly referenced in case of an ingest failure.
 
 ## Alerting on failed ingestion [failure-store-recipes-alerting]
 
-Since failure stores can be searched just like a normal data stream, we can use them as inputs to [alerting rules](./failure-store.md) in Kibana. Here is a simple alerting example to trigger on more than ten failures in the last five minutes for a data stream:
+Since failure stores can be searched just like a normal data stream, we can use them as inputs to [alerting rules](./failure-store.md) in Kibana. Here is a simple alerting example that is triggered when more than ten indexing failures have occurred in the last five minutes for a data stream:
 
 :::::{stepper}
 
@@ -349,17 +349,17 @@ Care should be taken when replaying data into a data stream from a failure store
 
 We recommend a few best practices for remediating failure data.
 
-**Separate your failures beforehand.** As described in the [failure document source](#use-failure-store-document-source) section above, failure documents are structured differently depending on when the document failed during ingestion. We recommend to separate documents by ingest pipeline failures and indexing failures at minimum. Ingest pipeline failures often need to have the original pipeline re-executed, while index failures should skip any pipelines. Further separating failures by index or specific failure type may also be beneficial.
+**Separate your failures beforehand.** As described in the [failure document source](#use-failure-store-document-source) section above, failure documents are structured differently depending on when the document failed during ingestion. We recommend to separate documents by ingest pipeline failures and indexing failures at minimum. Ingest pipeline failures often need to have the original pipeline re-run, while index failures should skip any pipelines. Further separating failures by index or specific failure type may also be beneficial.
 
 **Perform a failure store rollover.** Consider rolling over the failure store before attempting to remediate failures. This will create a new failure index that will collect any new failures during the remediation process.
 
-**Use an ingest pipeline to convert failure documents back into their original document.** Failure documents store failure information along with the document that failed ingestion. The first step for remediating documents should be to use an ingest pipeline to extract the original source from the failure document and discard any other info on it.
+**Use an ingest pipeline to convert failure documents back into their original document.** Failure documents store failure information along with the document that failed ingestion. The first step for remediating documents should be to use an ingest pipeline to extract the original source from the failure document and then discard any other information about the failure.
 
-**Simulate first to avoid repeat failures.** If you must execute a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline was applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure.
+**Simulate first to avoid repeat failures.** If you must run a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline is applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure.
 
 ### Remediating ingest node failures [failure-store-recipes-remediation-ingest]
 
-Failures that occurred during an ingest processor will be stored as they were before any pipelines were executed. To replay the document into the data stream we will need to rerun any applicable pipelines for the document.
+Failures that occurred during ingest processing will be stored as they were before any pipelines were run. To replay the document into the data stream we will need to re-run any applicable pipelines for the document.
 
 :::::{stepper}
 
@@ -466,7 +466,7 @@ Take note of the documents that are returned. We can use these to simulate that 
    ::::
 
 ::::{step} Fix the original problem
-Because ingest pipeline failures need to be reprocessed by their original pipelines, any problems with those pipeline should be fixed before remediating failures. Investigating the pipeline mentioned in the example above shows that there is a processor that expects a field to be present that is not always present.
+Because ingest pipeline failures need to be reprocessed by their original pipelines, any problems with those pipelines should be fixed before remediating failures. Investigating the pipeline mentioned in the example above shows that there is a processor that expects a field to be present that is not always present.
 
 ```console-result
 {
@@ -500,7 +500,7 @@ PUT _ingest/pipeline/my-datastream-default-pipeline
   ]
 }
 ```
-1. Only conditionally run the processor if the field exists.
+1. Conditionally run the processor only if the field exists.
 
 ::::
 
@@ -536,7 +536,7 @@ PUT _ingest/pipeline/my-datastream-remediation-pipeline
 ```
 1. Copy the original index name from the failure document over into the document's metadata. If you use custom document routing, copy that over too.
 2. Capture the source of the original document.
-3. Discard the `error` field since it wont be needed for the remediation.
+3. Discard the `error` field since it won't be needed for the remediation.
 4. Also discard the `document` field.
 5. We extract all the fields from the original document's source back to the root of the document.
 6. Since the pipeline that failed was the default pipeline on `my-datastream-ingest-example`, we will use the `reroute` processor to send any remediated documents to that data stream's default pipeline again to be reprocessed.
@@ -632,10 +632,10 @@ POST _ingest/pipeline/_simulate
 }
 ```
 1. The index has been updated via the reroute processor.
-2. The id has stayed the same.
-3. The source should cleanly match what the original document should have been.
+2. The document ID has stayed the same.
+3. The source should cleanly match the contents of the original document.
 
-Now that the remediation pipeline has been tested, be sure to test the end to end ingestion to verify that no further problems will arise. To do this, we will use the [simulate ingestion API](./failure-store.md) to test multiple pipeline executions.
+Now that the remediation pipeline has been tested, be sure to test the end-to-end ingestion to verify that no further problems will arise. To do this, we will use the [simulate ingestion API](./failure-store.md) to test multiple pipeline executions.
 
 ```console
 POST _ingest/_simulate?pipeline=my-datastream-remediation-pipeline <1>
@@ -699,7 +699,7 @@ POST _ingest/_simulate?pipeline=my-datastream-remediation-pipeline <1>
   ]
 }
 ```
-1. Set the pipeline to be the remediation pipeline name, otherwise, the default pipeline for the document's index is used.
+1. Set the pipeline to be the remediation pipeline name, otherwise the default pipeline for the document's index is used.
 2. The contents of the remediation pipeline in previous steps.
 3. The contents of the previously identified example failure document.
 
@@ -806,7 +806,7 @@ POST _reindex
 1. The failures have been remediated.
 
 :::{tip}
-Since the failure store is enabled on this data stream, it would be wise to check it for any further failures from the reindexing process. Failures that happen at this point in the process may end up as nested failures in the failure store. Remediating nested failures can quickly become a hassle as the original document gets nested multiple levels deep in the failure document. For this reason, it is suggested to remediate data during a quiet period where no other failures will arise. Furthermore, rolling over the failure store before executing the remediation would allow easier discarding of any new nested failures and only operate on the original failure documents.
+Since the failure store is enabled on this data stream, it would be wise to check it for any further failures from the reindexing process. Failures that happen at this point in the process may end up as nested failures in the failure store. Remediating nested failures can quickly become a hassle as the original document gets nested multiple levels deep in the failure document. For this reason, it is suggested to remediate data during a quiet period when no other failures are likely to arise. Furthermore, rolling over the failure store before executing the remediation would allow easier discarding of any new nested failures and only operate on the original failure documents.
 :::
 
 ::::{step} Done
@@ -816,7 +816,7 @@ Since the failure store is enabled on this data stream, it would be wise to chec
 
 ### Remediating mapping and shard failures [failure-store-recipes-remediation-mapping]
 
-As described in the [failure document source](#use-failure-store-document-source) section above, failures that occur due to a mapping or indexing issue will be stored as they were after any pipelines had executed. This means that to replay the document into the data stream we will need to make sure to skip any pipelines that have already run.
+As described in the previous [failure document source](#use-failure-store-document-source) section, failures that occur due to a mapping or indexing issue will be stored as they were after any pipelines had executed. This means that to replay the document into the data stream we will need to make sure to skip any pipelines that have already run.
 
 :::{tip}
 You can greatly simplify this remediation process by writing any ingest pipelines to be idempotent. In that case, any document that has already be processed that passes through a pipeline again would be unchanged.
@@ -869,7 +869,7 @@ POST my-datastream-indexing-example::failures/_search
 3. Further narrow which kind of failure you are attempting to remediate. In this example we are targeting a specific type of error.
 4. Filter on timestamp to only retrieve failures before a certain point in time. This provides a stable set of documents.
 
-Take note of the documents that are returned. We can use these to simulate that our remediation logic makes sense
+Take note of the documents that are returned. We can use these to simulate that our remediation logic makes sense.
 ```console-result
 {
   "took": 1,
@@ -930,7 +930,7 @@ Caused by: j.l.IllegalArgumentException: data stream timestamp field [@timestamp
 
 ::::{step} Fix the original problem
 
-There are a broad set of possible indexing failures. Most of these problems stem from incorrect values for a particular mapping. Sometimes a large number of new fields are dynamically mapped and the maximum number of mapping fields is reached and no more can be added. In our example above, the document being indexed is missing a required timestamp.
+There are a broad set of possible indexing failures. Most of these problems stem from incorrect values for a particular mapping. Sometimes a large number of new fields are dynamically mapped and the maximum number of mapping fields is reached, so no more can be added. In our example above, the document being indexed is missing a required timestamp.
 
 These problems can occur in a number of places: Data sent from a client may be incomplete, ingest pipelines may not be producing the correct result, or the index mapping may need to be updated to account for changes in data.
 
@@ -970,7 +970,7 @@ PUT _ingest/pipeline/my-datastream-remediation-pipeline
 5. We extract all the fields from the original document's source back to the root of the document. The `@timestamp` field is not overwritten and thus will be present in the final document.
 
 :::{important}
-Remember that a document that has failed during indexing has already been processed by the ingest processor! It shouldn't need to be processed again unless you made changes to your pipeline to fix the original problem. Make sure that any fixes applied to the ingest pipeline is reflected in the pipeline logic here.
+Remember that a document that has failed during indexing has already been processed by the ingest processor! It shouldn't need to be processed again unless you made changes to your pipeline to fix the original problem. Make sure that any fixes applied to the ingest pipeline are reflected in the pipeline logic here.
 :::
 
 ::::
@@ -1115,8 +1115,8 @@ POST _reindex
 ```
 1. Read from the failure store.
 2. Only reindex failure documents that match the ones we are replaying.
-3. Set the destination to the data stream the failures originally were sent to. The remediation pipeline above updates the index to be the correct one, but a destination is still required.
-4. Replace the pipeline with the remediation pipeline. This will keep any default pipelines from running.
+3. Set the destination to the data stream the failures originally were sent to. The remediation pipeline in the example updates the index to be the correct one, but a destination is still required.
+4. Replace the original pipeline with the remediation pipeline. This will keep any default pipelines from running.
 
 ```console-result
 {
