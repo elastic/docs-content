@@ -16,7 +16,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} In {{sec-serverless}}, the entity risk score feature may stop persisting risk score documents.
+:::{dropdown} The entity risk score feature may stop persisting risk score documents
 
 Applies to: {{stack}} 9.0.1, 9.0.1, 9.0.2
 
