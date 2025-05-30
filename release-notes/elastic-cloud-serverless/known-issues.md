@@ -20,7 +20,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 On May 30, 2025, it was discovered that the entity risk score feature may stop persisting risk score documents if risk scoring was previously turned on. This is due to a bug that prevents the `entity_analytics_create_eventIngest_from_timestamp-pipeline-<space_name>` ingest pipeline (which is set as a default pipeline for the risk scoring index in an earlier {{serverless-short}} release) from being created when {{kib}} starts up.
 
-While document persistence may initially appear to succeed, it will eventually fail after 0 to 30 days. This is how long it takes for the risk score data stream to roll over and apply its underlying index settings to the new default pipeline.
+While document persistence may initially succeed, it will eventually fail after 0 to 30 days. This is how long it takes for the risk score data stream to roll over and apply its underlying index settings to the new default pipeline.
 
 **Workaround**
 
