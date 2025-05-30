@@ -39,7 +39,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 * Retrieves active integrations from installed integrations API [#218988]({{kib-pull}}218988)
 * Fixes spaces search functionality for spaces created with avatar type as image [#220398]({{kib-pull}}220398)
 * Fixes inability to clear Document ID in data view field editor preview [#220891]({{kib-pull}}220891)
-* Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430({{kib-pull}}220430)
+* Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430]({{kib-pull}}220430)
 * Changes the AI Connector description [#221154]({{kib-pull}}221154)
 
 ## May 19, 2025 [serverless-changelog-05192025]
