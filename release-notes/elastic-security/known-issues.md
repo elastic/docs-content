@@ -20,7 +20,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 Applies to: {{stack}} 9.0.1, 9.0.1, 9.0.2
 
-On May 30, 2025, it was discovered that the entity risk score feature eventually stop persisting risk score documents if risk scoring was turned on in {{stack}} 8.18.0 and before you upgraded to {{stack}} 9.0.0 or higher. This is due to a bug that prevents the default ingest pipeline for the risk scoring index in {{stack}} 8.18.0 (`entity_analytics_create_eventIngest_from_timestamp-pipeline-<space_name>`) to be created when {{kib}} starts up. While document persistence may initially appear to succeed, it eventually fails after 0 to 30 days, which is how long it takes for the risk score data stream to roll over and its underlying index’s settings to take on the new default pipeline.
+On May 30, 2025, it was discovered that the entity risk score feature may eventually stop persisting risk score documents if risk scoring was turned on in {{stack}} 8.18.0 and before you upgraded to {{stack}} 9.0.0 or higher. This is due to a bug that prevents the default ingest pipeline for the risk scoring index in {{stack}} 8.18.0 (`entity_analytics_create_eventIngest_from_timestamp-pipeline-<space_name>`) to be created when {{kib}} starts up. While document persistence may initially appear to succeed, it eventually fails after 0 to 30 days, which is how long it takes for the risk score data stream to roll over and its underlying index’s settings to take on the new default pipeline.
 
 **NOTE:** This bug will not affect you if you created an {{es}} cluster in {{stack}} 8.18.0 or 9.0.0 and higher. It also does not affect you if didn’t enable entity risk scoring until {{stack}} 8.18.0 or 9.0.0 and higher.
 
