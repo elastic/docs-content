@@ -28,7 +28,7 @@ For deployments with nodes in more than one availability zone, you can perform m
 
 When {{kib}} instances are upgraded, all instances are shut down simultaneously, making {{kib}} temporarily inaccessible, even if it's deployed across multiple zones.
 
-Keep in mind that if your indices are not highly available (configured with at least one replica), or if certain components of your deployment run in only one zone, you might experience availability issues for requests that depend on that specific data or component, while the affected nodes are being restarted.
+If your indices are not highly available (configured with at least one replica), or if certain components of your deployment run in only one zone, you might experience availability issues for requests that depend on that specific data or component, while the affected nodes are being restarted.
 
 Refer to [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md) for more information about High Availability (HA) on ECH.
 
