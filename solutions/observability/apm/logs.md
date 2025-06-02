@@ -35,7 +35,7 @@ Logs displayed on this page are filtered on `service.name`
 stack: preview 9.0
 ```
 
-For a more detailed view into your logs, turn on the `observability:newLogsOverview` setting in **Management** → **Stack Management** → **Advanced Settings**. This enhanced logs view provides additional information like the log pattern, the number of events for each log, change type, and the time the change occurred.
+For an enhanced logs view with additional information including the log pattern, the number of events for each log, change type, and the time the change occurred, turn on the `observability:newLogsOverview` setting in **Management** → **Stack Management** → **Advanced Settings**.
 
 ## Integrate with logging frameworks [apm-logs-correlation]
 ```{applies_to}
