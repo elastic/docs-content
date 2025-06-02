@@ -125,7 +125,7 @@ When a document bound for a data stream encounters a problem during its ingestio
 Here we have a bulk operation that sends two documents. Both are writing to the `id` field which is mapped as a `long` field type. The first document will be accepted, but the second document would cause a failure because the value `invalid_text` cannot be parsed as a `long`. This second document will be redirected to the failure store: 
 
 ```console
-POST my-datastream/_bulk
+POST my-datastream-new/_bulk
 {"create":{}}
 {"@timestamp": "2025-05-01T00:00:00Z", "id": 1234} <1>
 {"create":{}}
@@ -141,7 +141,7 @@ POST my-datastream/_bulk
   "items": [
     {
       "create": {
-        "_index": ".ds-my-datastream-2025.05.01-000001", <2>
+        "_index": ".ds-my-datastream-new-2025.05.01-000001", <2>
         "_id": "YUvQipYB_ZAKuDfZRosB",
         "_version": 1,
         "result": "created",
@@ -157,7 +157,7 @@ POST my-datastream/_bulk
     },
     {
       "create": {
-        "_index": ".fs-my-datastream-2025.05.01-000002", <3>
+        "_index": ".fs-my-datastream-new-2025.05.01-000002", <3>
         "_id": "lEu8jZYB_ZAKuDfZNouU",
         "_version": 1,
         "result": "created",
@@ -186,7 +186,7 @@ If the document was redirected to a data stream's failure store due to a problem
 
 ```console-result
 {
-  "_index": ".fs-my-datastream-2025.05.01-000002", <1>
+  "_index": ".fs-my-datastream-new-2025.05.01-000002", <1>
   "_id": "lEu8jZYB_ZAKuDfZNouU",
   "_version": 1,
   "result": "created",
