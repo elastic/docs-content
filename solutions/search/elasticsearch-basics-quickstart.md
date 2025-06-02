@@ -15,9 +15,9 @@ The code examples in this tutorial are in [Console](../../explore-analyze/query-
 
 ## Requirements [getting-started-requirements]
 
-You can follow this guide using any {{es}} deployment. If you already have one up and running, you can skip ahead to the [first step below](#getting-started-index-creation).
+You can follow this guide using any {{es}} deployment. If you already have a deployment up and running, you can skip ahead to the [first step](#getting-started-index-creation).
 
-If not, you’ll need a running {{es}} cluster, along with {{kib}}, to use the Dev Tools API Console. Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+If not, refer to [choose your deployment type](/deploy-manage/deploy#choosing-your-deployment-type) for your options. To get started quickly, you can spin up a cluster [locally in Docker](get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
