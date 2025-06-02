@@ -54,9 +54,17 @@ Accessing failure store requires the `read_failure_store` or `all` [index privil
 
 Select the percentage in the **Failed docs (%)** column for a specific data stream to open Discover and see the raw documents that were sent to failure store.
 
-To see how persistent a problem is in a specific data set, you can view the number of failed documents over a selected time range:
+
+To understand how persistent an issue is, refer to **Document trends** for the number of failed documents over a selected time range:
+
 1. Select the data set name from the main table.
 1. Select the **Failed docs** tab under **Document trends**.
+
+To help diagnose what's causing an issue, refer to **Quality issues** for error messages and failure types related to your documents:
+
+1. From the data set table, select a data set name.
+1. Scroll down to **Quality issues**.
+1. Click the expand icon to open a summary of why
 
 ### Find ignored fields in data sets [observability-monitor-datasets-find-ignored-fields-in-data-sets]
 
