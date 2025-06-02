@@ -143,7 +143,7 @@ We find a remove processor in the first pipeline that is the root cause of the p
 
 ## Troubleshooting complicated ingest pipelines [failure-store-recipes-complicated-ingest-troubleshoot]
 
-Ingest processors can be labeled with [tags](./failure-store.md). These tags are user-provided information that names or describes the processor's purpose in the pipeline. When documents are redirected to the failure store due to a processor issue, they capture the tag from the processor in which the failure occurred, if it exists. Because of this behavior, it is a good practice to tag the processors in your pipeline so that the location of a failure can be identified quickly.
+Ingest processors can be labeled with tags. These tags are user-provided information that names or describes the processor's purpose in the pipeline. When documents are redirected to the failure store due to a processor issue, they capture the tag from the processor in which the failure occurred, if it exists. Because of this behavior, it is a good practice to tag the processors in your pipeline so that the location of a failure can be identified quickly.
 
 Here we have a needlessly complicated pipeline. It is made up of several set and remove processors. Beneficially, they are all tagged with descriptive names.
 ```console
@@ -281,7 +281,8 @@ Without tags in place it would not be as clear where in the pipeline the indexin
 
 ## Alerting on failed ingestion [failure-store-recipes-alerting]
 
-Since failure stores can be searched just like a normal data stream, we can use them as inputs to [alerting rules](./failure-store.md) in Kibana. Here is a simple alerting example that is triggered when more than ten indexing failures have occurred in the last five minutes for a data stream:
+Since failure stores can be searched just like a normal data stream, we can use them as inputs to [alerting rules](../../../explore-analyze/alerts-cases/alerts.md) in
+{{kib}}. Here is a simple alerting example that is triggered when more than ten indexing failures have occurred in the last five minutes for a data stream:
 
 :::::{stepper}
 
@@ -349,7 +350,7 @@ Care should be taken when replaying data into a data stream from a failure store
 
 We recommend a few best practices for remediating failure data.
 
-**Separate your failures beforehand.** As described in the [failure document source](#use-failure-store-document-source) section above, failure documents are structured differently depending on when the document failed during ingestion. We recommend to separate documents by ingest pipeline failures and indexing failures at minimum. Ingest pipeline failures often need to have the original pipeline re-run, while index failures should skip any pipelines. Further separating failures by index or specific failure type may also be beneficial.
+**Separate your failures beforehand.** As described in the previous [failure document source](./failure-store.md#use-failure-store-document-source) section, failure documents are structured differently depending on when the document failed during ingestion. We recommend to separate documents by ingest pipeline failures and indexing failures at minimum. Ingest pipeline failures often need to have the original pipeline re-run, while index failures should skip any pipelines. Further separating failures by index or specific failure type may also be beneficial.
 
 **Perform a failure store rollover.** Consider rolling over the failure store before attempting to remediate failures. This will create a new failure index that will collect any new failures during the remediation process.
 
@@ -544,7 +545,7 @@ PUT _ingest/pipeline/my-datastream-remediation-pipeline
 ::::
 
 ::::{step} Test your pipelines
-Before sending data off to be reindexed, be sure to test the pipelines in question with an example document to make sure they work. First, test to make sure the resulting document from the remediation pipeline is shaped how you expect. We can use the [simulate pipeline API](./failure-store.md) for this.
+Before sending data off to be reindexed, be sure to test the pipelines in question with an example document to make sure they work. First, test to make sure the resulting document from the remediation pipeline is shaped how you expect. We can use the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) for this.
 
 ```console
 POST _ingest/pipeline/_simulate
@@ -635,7 +636,7 @@ POST _ingest/pipeline/_simulate
 2. The document ID has stayed the same.
 3. The source should cleanly match the contents of the original document.
 
-Now that the remediation pipeline has been tested, be sure to test the end-to-end ingestion to verify that no further problems will arise. To do this, we will use the [simulate ingestion API](./failure-store.md) to test multiple pipeline executions.
+Now that the remediation pipeline has been tested, be sure to test the end-to-end ingestion to verify that no further problems will arise. To do this, we will use the [simulate ingestion API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-simulate-ingest) to test multiple pipeline executions.
 
 ```console
 POST _ingest/_simulate?pipeline=my-datastream-remediation-pipeline <1>
@@ -733,7 +734,7 @@ POST _ingest/_simulate?pipeline=my-datastream-remediation-pipeline <1>
 ::::
 
 ::::{step} Reindex the failure documents
-Combine the remediation pipeline with the failure store query together in a [reindex operation](./failure-store.md) to replay the failures.
+Combine the remediation pipeline with the failure store query together in a [reindex operation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to replay the failures.
 
 ```console
 POST _reindex
@@ -816,7 +817,7 @@ Since the failure store is enabled on this data stream, it would be wise to chec
 
 ### Remediating mapping and shard failures [failure-store-recipes-remediation-mapping]
 
-As described in the previous [failure document source](#use-failure-store-document-source) section, failures that occur due to a mapping or indexing issue will be stored as they were after any pipelines had executed. This means that to replay the document into the data stream we will need to make sure to skip any pipelines that have already run.
+As described in the previous [failure document source](./failure-store.md#use-failure-store-document-source) section, failures that occur due to a mapping or indexing issue will be stored as they were after any pipelines had executed. This means that to replay the document into the data stream we will need to make sure to skip any pipelines that have already run.
 
 :::{tip}
 You can greatly simplify this remediation process by writing any ingest pipelines to be idempotent. In that case, any document that has already be processed that passes through a pipeline again would be unchanged.
@@ -976,7 +977,7 @@ Remember that a document that has failed during indexing has already been proces
 ::::
 
 ::::{step} Test your pipeline
-Before sending data off to be reindexed, be sure to test the remedial pipeline with an example document to make sure it works. Most importantly, make sure the resulting document from the remediation pipeline is shaped how you expect. We can use the [simulate pipeline API](./failure-store.md) for this.
+Before sending data off to be reindexed, be sure to test the remedial pipeline with an example document to make sure it works. Most importantly, make sure the resulting document from the remediation pipeline is shaped how you expect. We can use the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) for this.
 
 ```console
 POST _ingest/pipeline/_simulate
@@ -1067,7 +1068,7 @@ Caused by: j.l.IllegalArgumentException: data stream timestamp field [@timestamp
 ::::
 
 ::::{step} Reindex the failure documents
-Combine the remediation pipeline with the failure store query together in a [reindex operation](./failure-store.md) to replay the failures.
+Combine the remediation pipeline with the failure store query together in a [reindex operation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to replay the failures.
 
 ```console
 POST _reindex
