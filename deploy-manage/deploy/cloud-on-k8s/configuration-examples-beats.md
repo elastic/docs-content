@@ -19,7 +19,7 @@ The examples in this section are purely descriptive and should not be considered
 
 ## Metricbeat for Kubernetes monitoring [k8s_metricbeat_for_kubernetes_monitoring]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/metricbeat_hosts.yaml
 ```
 
@@ -31,7 +31,7 @@ Deploys Metricbeat as a DaemonSet that monitors the usage of the following resou
 
 ## Filebeat with autodiscover [k8s_filebeat_with_autodiscover]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/filebeat_autodiscover.yaml
 ```
 
@@ -40,7 +40,7 @@ Deploys Filebeat as a DaemonSet with the autodiscover feature enabled. It collec
 
 ## Filebeat with autodiscover for metadata [k8s_filebeat_with_autodiscover_for_metadata]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/filebeat_autodiscover_by_metadata.yaml
 ```
 
@@ -52,7 +52,7 @@ Deploys Filebeat as a DaemonSet with the autodiscover feature enabled. Logs from
 
 ## Filebeat without autodiscover [k8s_filebeat_without_autodiscover]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/filebeat_no_autodiscover.yaml
 ```
 
@@ -61,7 +61,7 @@ Deploys Filebeat as a DaemonSet with the autodiscover feature disabled. Uses the
 
 ## {{es}} and {{kib}} Stack Monitoring [k8s_elasticsearch_and_kibana_stack_monitoring]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/stack_monitoring.yaml
 ```
 
@@ -75,7 +75,7 @@ In this example, TLS verification is disabled when Metricbeat communicates with 
 
 ## Heartbeat monitoring {{es}} and {{kib}} health [k8s_heartbeat_monitoring_elasticsearch_and_kibana_health]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/heartbeat_es_kb_health.yaml
 ```
 
@@ -84,7 +84,7 @@ Deploys Heartbeat as a single Pod deployment that monitors the health of {{es}} 
 
 ## Auditbeat [k8s_auditbeat]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/auditbeat_hosts.yaml
 ```
 
@@ -93,7 +93,7 @@ Deploys Auditbeat as a DaemonSet that checks file integrity and audits file oper
 
 ## Packetbeat monitoring DNS and HTTP traffic [k8s_packetbeat_monitoring_dns_and_http_traffic]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/packetbeat_dns_http.yaml
 ```
 
@@ -102,7 +102,7 @@ Deploys Packetbeat as a DaemonSet that monitors DNS on port `53` and HTTP(S) tra
 
 ## OpenShift monitoring [k8s_openshift_monitoring]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/beats/openshift_monitoring.yaml
 ```
 
