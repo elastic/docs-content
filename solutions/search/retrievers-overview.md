@@ -32,7 +32,7 @@ Retrievers come in various types, each tailored for different search operations.
 * [**Rescorer retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rescorer-retriever). Re-scores the results produced by its child retriever. Replaces the functionality of the [query rescorer](elasticsearch://reference/elasticsearch/rest-apis/filter-search-results.md#rescore).
 * [**RRF Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rrf-retriever). Combines and ranks multiple first-stage retrievers using the reciprocal rank fusion (RRF) algorithm. Allows you to combine multiple result sets with different relevance indicators into a single result set. An RRF retriever is a **compound retriever**, where its `filter` element is propagated to its sub retrievers.
 * [**Rule Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rule-retriever). Applies [query rules](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rules) to the query before returning results.
-* [**Text Similarity Re-ranker Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#text-similarity-reranker-retriever).
+* [**Text Similarity Re-ranker Retriever**](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#text-similarity-reranker-retriever). Used for semantic reranking.
 
 ## What makes retrievers useful? [retrievers-overview-why-are-they-useful]
 
