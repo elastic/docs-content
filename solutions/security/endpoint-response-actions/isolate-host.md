@@ -120,9 +120,9 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 
 ## Release a host [release-a-host]
 
-::::{dropdown} Release a host from a detection alert
-1. Open a detection alert:
-
+::::{dropdown} Release a host from an event ({{serverless-short only}}) or detection alert
+1. Open an event ({{serverless-short}} only) or a detection alert:
+    * From the event analyzer view: Click an event. ({{serverless-short}} only)
     * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
@@ -132,7 +132,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 ::::
 
 
-::::{dropdown} Release a host from an endpoint
+::::{dropdown} Release a host from an event ({{serverless-short only}}) or detection alert
 1. Find **Endpoints** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then either:
 
     * Select the appropriate endpoint in the **Endpoint** column, and click **Take action → Release host** in the endpoint details flyout.
