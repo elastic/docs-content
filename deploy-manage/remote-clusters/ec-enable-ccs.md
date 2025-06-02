@@ -58,6 +58,7 @@ The steps, information, and authentication method required to configure CCS and 
 Traffic filtering isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
 ::::
 
+API key authentication for remote clusters cannot be used in combination with traffic filtering.
 
 For remote clusters configured using TLS certificate authentication, [traffic filtering](../security/traffic-filtering.md) can be enabled to restrict access to deployments that are used as a local or remote cluster without any impact to cross-cluster search or cross-cluster replication.
 
