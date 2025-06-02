@@ -16,11 +16,21 @@ products:
 
 Once you are [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), a single click in the {{ecloud}} console can upgrade a deployment to a newer version, add more processing capacity, change plugins, and enable or disable high availability, all at the same time. During the upgrade process, {{es}}, {{kib}}, Elastic APM, and all of your deployment components are upgraded simultaneously.
 
-You can perform minor version upgrades, upgrades from 8.18 to 9.0.0, and cluster configuration changes with no downtime. {{ecloud}} only supports upgrades to released versions. Release candidate builds and master snapshots are not supported.
+{{ecloud}} only supports upgrades to released versions. Release candidate builds and master snapshots are not supported.
 
 ::::{important}
 Although it’s simple to upgrade an {{ecloud}} deployment, the new version might include breaking changes that affect your application. Ensure you review breaking changes and deprecation logs, make any necessary changes, and test against the new version before upgrading your production deployment.
 ::::
+
+## Availability during upgrades
+
+For deployments with nodes in more than one availability zone, you can perform minor version upgrades, upgrades from 8.18 to 9.0.0, and cluster configuration changes with no downtime. Deployments with nodes in only one zone might experience downtime during these operations.
+
+When {{kib}} instances are upgraded, all instances are shut down simultaneously, making {{kib}} temporarily inaccessible, even if it's deployed across multiple zones.
+
+If your indices are not highly available (configured with at least one replica), or if certain components of your deployment run in only one zone, you might experience availability issues for requests that depend on that specific data or component, while the affected nodes are being restarted.
+
+Refer to [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md) for more information about High Availability (HA) on ECH.
 
 ## Perform the upgrade [perform-cloud-upgrade]
 

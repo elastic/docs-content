@@ -11,6 +11,37 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## May 26, 2025 [serverless-changelog-05262025]
+
+### Features and enhancements [serverless-changelog-05262025-features-enhancements]
+
+* Suggests full text search in our recommendations [#221239]({{kib-pull}}221239)
+* Flattens grid layout [#218900]({{kib-pull}}218900)
+* Enables ELSER and E5 on EIS [#220993]({{kib-pull}}220993)
+* Links dashboards on the Rule and Alert pages [#219019]({{kib-pull}}219019)
+* Saves `group by` information with dynamic mapping [#219826]({{kib-pull}}219826)
+* Introduces a new endpoint scheme for SIEM migration [#219597]({{kib-pull}}219597)
+* Extends default log pattern on server side to include error information [#219940]({{kib-pull}}219940)
+
+
+### Fixes [serverless-changelog-05262025-fixes]
+
+* Fixes `getTimezone` default value [#220658]({{kib-pull}}220658)
+* Loads correct system color mode at bootstrap [#218417]({{kib-pull}}218417)
+* Fixes embeddables not refreshing on manual refresh or auto-refresh [#221326]({{kib-pull}}221326)
+* Improves Discover session input focus behavior [#220876]({{kib-pull}}220876)
+* Fixes suggestions after triple quote pair [#221200]({{kib-pull}}221200)
+* Passes app state and global state to locator when redirecting from `/stream` path [#215867]({{kib-pull}}215867)
+* Considers status rule locations only if not an empty array [#220983]({{kib-pull}}220983)
+* Fixes a bug where update of an SLO created in a version older than 8.18 failed due to an invalid ingest pipeline [#221158]({{kib-pull}}221158)
+* Checks for documents before starting semantic text migration [#221152]({{kib-pull}}221152)
+* Improves error telemetry [#220938]({{kib-pull}}220938)
+* Retrieves active integrations from installed integrations API [#218988]({{kib-pull}}218988)
+* Fixes spaces search functionality for spaces created with avatar type as image [#220398]({{kib-pull}}220398)
+* Fixes inability to clear Document ID in data view field editor preview [#220891]({{kib-pull}}220891)
+* Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430]({{kib-pull}}220430)
+* Changes the AI Connector description [#221154]({{kib-pull}}221154)
+
 ## May 19, 2025 [serverless-changelog-05192025]
 
 ### Features and enhancements [serverless-changelog-05192025-features-enhancements]
