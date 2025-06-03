@@ -12,7 +12,7 @@ Known issues are significant defects or limitations that may impact your impleme
 % On [Month Day, Year], a known issue was discovered that [description of known issue].
 % For more information, check [Issue #](Issue link).
 
-% **Workaround** 
+% **Workaround**
 % Workaround description.
 
 % :::
@@ -31,7 +31,13 @@ For more information, check [Issue #7794](https://github.com/elastic/elastic-age
 
 **Workaround**
 
-There is no resolution or workaround at this time, but a bug fix is expected in a later maintenance release.
+Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+
+```shell
+icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+```
+
+After the output confirms all files were successfully processed, run the `enroll` command again.
 
 :::
 
@@ -43,7 +49,7 @@ On May 26th, 2025, a known issue was discovered that causes the `osquery` integr
 
 For more information, check [Issue #8245](https://github.com/elastic/elastic-agent/issues/8245).
 
-**Workaround** 
+**Workaround**
 
 As a workaround, you can manually restore the `osquery.app/` directory as follows:
 
