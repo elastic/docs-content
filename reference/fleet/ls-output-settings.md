@@ -22,7 +22,7 @@ The following example configures a {{ls}} pipeline that listens on port `5044` f
 
 The {{ls}} pipeline definition below is an example. See the `Additional Logstash configuration required` steps when creating the {{ls}} output in the Fleet outputs page.
 
-```yaml
+```yaml 
 input {
   elastic_agent {
     port => 5044
@@ -31,7 +31,7 @@ input {
     ssl_certificate_authorities => ["<ca_path>"]
     ssl_certificate => "<server_cert_path>"
     ssl_key => "<server_cert_key_in_pkcs8>"
-    ssl_verify_mode => "force_peer"
+    ssl_client_authentication => "force_peer"
   }
 }
 output {
