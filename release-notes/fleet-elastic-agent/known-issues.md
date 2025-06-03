@@ -17,11 +17,11 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} [Windows] {{agent}} is unable to enroll into {{fleet}} following the {{agent}}'s upgrade
+:::{dropdown} [Windows] {{agent}} is unable to re-enroll into {{fleet}}
 
 **Applies to: {{agent}} 9.0.0 and 9.0.1 (Windows only)**
 
-On April 9, 2025, a known issue was discovered where an {{agent}} installed on Windows and previously enrolled into {{fleet}} is unable to re-enroll after the {{agent}} is upgraded. Attempting to enroll the {{agent}} fails with the following error:
+On April 9, 2025, a known issue was discovered where an {{agent}} installed on Windows and previously enrolled into {{fleet}} is unable to re-enroll. Attempting to enroll the {{agent}} fails with the following error:
 
 ```shell
 Error: the command is executed as root but the program files are not owned by the root user.
