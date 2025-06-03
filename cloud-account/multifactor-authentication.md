@@ -99,7 +99,7 @@ No, the Elastic Cloud default MFA enforcement does not apply when selecting **Lo
 
 **My team uses a generic account or distribution/mailing list and shares the password to access Elastic Cloud. How will my team be able to log in and access our Elastic Cloud organization after the MFA enforcement?**
 
-The only secure and recommended approach is to use one Elastic account for each Elastic Cloud user. You can grant your team members access to that account’s Elastic Cloud organization by inviting and making them organization members. This may involve creating additional Elastic user accounts for each team member, depending on their organization access and ownership needs since we have yet to support multi-organization membership. When each team member has their own account to access your Elastic Cloud organization, they will be able to set up their own MFA  method.
+The only secure and recommended approach is to use one Elastic account for each {{ecloud}} user. You can grant your team members access to that account’s {{ecloud}} organization by inviting and making them organization members. This may involve creating additional Elastic user accounts for each team member, depending on their organization access and ownership needs, because Elastic does not support multi-organization membership. When each team member has their own account to access your {{ecloud}} organization, they will be able to set up their own MFA method.
 
 
 **After I set up an MFA method, will I need to answer an MFA challenge every time I authenticate through Elastic Cloud?**
