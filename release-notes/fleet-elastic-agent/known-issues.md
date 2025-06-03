@@ -17,7 +17,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} [Windows] {{agent}} is unable to enroll into {{fleet}} following the {{agent}}'s upgrade.
+:::{dropdown} [Windows] {{agent}} is unable to enroll into {{fleet}} following the {{agent}}'s upgrade
 
 **Applies to: {{agent}} 9.0.0 and 9.0.1 (Windows only)**
 
@@ -31,13 +31,15 @@ For more information, check [Issue #7794](https://github.com/elastic/elastic-age
 
 **Workaround**
 
-Until a bug fix is available in a later release, you can temporarily resolve the issue by changing the ownership of the {agent} directory:
+Until a bug fix is available in a later release, you can resolve the issue temporarily using the following workaround:
 
-```shell
-icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
-```
+1. Change the ownership of the {{agent}} directory:
 
-After the output confirms all files were successfully processed, run the `enroll` command again.
+  ```shell
+  icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+  ```
+
+2. After the output confirms all files were successfully processed, run the `enroll` command again.
 
 :::
 
