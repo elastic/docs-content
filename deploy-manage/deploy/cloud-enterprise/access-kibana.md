@@ -27,7 +27,7 @@ To access {{kib}}:
 3. Under **Applications**, select the {{kib}} **Open** link and wait for {{kib}} to open.
 
     ::::{note} 
-    Both ports 443 and 9243 can be used to access {{kib}}. SSO only works with 9243 on older deployments, where you will see an option in the Cloud UI to migrate the default to port 443. In addition, any version upgrade will automatically migrate the default port to 443.
+    The default port 9243 of the resulting URL can be also changed to 443.
     ::::
 
 4. Log into {{kib}}. Single sign-on (SSO) is enabled between your {{ece}} account and the {{kib}} instance. If you’re logged in already, then {{kib}} opens without requiring you to log in again. However, if your token has expired, choose from one of these methods to log in:
