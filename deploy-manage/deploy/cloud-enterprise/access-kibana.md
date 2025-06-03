@@ -27,7 +27,7 @@ To access {{kib}}:
 3. Under **Applications**, select the {{kib}} **Open** link and wait for {{kib}} to open.
 
     ::::{note} 
-    The default port 9243 of the resulting URL can be also changed to 443.
+The URL provided to access {{kib}} is based on the [endpoint URL](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md) configured in the ECE **Settings** UI. This URL should resolve either to your [external load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) or directly to the ECE proxies. If you are sending client traffic directly to the ECE proxies, port `9243` must be used, as ECE proxies only listen on this port for {{es}} and {{kib}} traffic.
     ::::
 
 4. Log into {{kib}}. Single sign-on (SSO) is enabled between your {{ece}} account and the {{kib}} instance. If you’re logged in already, then {{kib}} opens without requiring you to log in again. However, if your token has expired, choose from one of these methods to log in:
