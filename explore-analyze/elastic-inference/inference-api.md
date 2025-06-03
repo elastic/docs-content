@@ -48,7 +48,7 @@ If your inference endpoint uses a model deployed in Elastic’s infrastructure, 
 ## Adaptive allocations [adaptive-allocations]
 
 Adaptive allocations allow inference services to dynamically adjust the number of model allocations based on the current load.
-This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for third-party services like Alibaba Cloud, Cohere, or OpenAI, because those models are hosted externally and not deployed within your Elasticsearch cluster.
+This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for third-party services (for example, Alibaba Cloud, Cohere, or OpenAI), because those models are hosted externally and not deployed within your Elasticsearch cluster.
 
 When adaptive allocations are enabled:
 
@@ -59,82 +59,17 @@ When adaptive allocations are enabled:
 
 The behavior of allocations depends on several factors:
 
-- Platform (Elastic Cloud Hosted, Elastic Cloud Enterprise, or Serverless)
+- Deployment type (Elastic Cloud Hosted, Elastic Cloud Enterprise, or Serverless)
 - Usage level (low, medium, or high)
-- Optimization type (ingest or search)
-
-The tables below apply when adaptive resource settings are [configured through the UI](/deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources).
-
-#### Adaptive resources enabled
-
-::::{tab-set}
-
-:::{tab-item} ECH, ECE
-| Usage level | Optimization | Allocations |
-|-------------|--------------|-------------------------------|
-| Low         | Ingest       | 0 to 2 if available, dynamically |
-| Medium      | Ingest       | 1 to 32 dynamically |
-| High        | Ingest       | 1 to limit set in the Cloud console*, dynamically |
-| Low         | Search       | 1 |
-| Medium      | Search       | 1 to 2 (if threads=16), dynamically |
-| High        | Search       | 1 to limit set in the Cloud console*, dynamically |
-
-\* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
-
-:::
-
-
-:::{tab-item} Serverless
-| Usage level | Optimization | Allocations |
-|-------------|--------------|-------------------------------|
-| Low         | Ingest       | 0 to 2 dynamically |
-| Medium      | Ingest       | 1 to 32 dynamically |
-| High        | Ingest       | 1 to 512 for Search<br>1 to 128 for Security and Observability |
-| Low         | Search       | 0 to 1 dynamically |
-| Medium      | Search       | 1 to 2 (if threads=16), dynamically |
-| High        | Search       | 1 to 32 (if threads=16), dynamically<br>1 to 128 for Security and Observability |
-:::
-
-::::
-
-#### Adaptive resources disabled
-
-::::{tab-set}
-
-:::{tab-item} ECH, ECE
-| Usage level | Optimization | Allocations |
-|-------------|--------------|-------------------------------|
-| Low         | Ingest       | 2 if available, otherwise 1, statically |
-| Medium      | Ingest       | The smaller of 32 or the limit set in the Cloud console*, statically |
-| High        | Ingest       | Maximum available set in the Cloud console*, statically |
-| Low         | Search       | 1 if available, statically |
-| Medium      | Search       | 2 (if threads=16) statically |
-| High        | Search       | Maximum available set in the Cloud console*, statically |
-
-\* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
-
-:::
-
-:::{tab-item} Serverless
-| Usage level | Optimization | Allocations |
-|-------------|--------------|-------------------------------|
-| Low         | Ingest       | Exactly 32 |
-| Medium      | Ingest       | 1 to 32 dynamically |
-| High        | Ingest       | 512 for Search<br>No static allocations for Security and Observability |
-| Low         | Search       | 1 statically |
-| Medium      | Search       | 2 statically (if threads=16) |
-| High        | Search       | 32 statically (if threads=16) for Search<br>No static allocations for Security and Observability |
-:::
-
-::::
-
-You can also configure adaptive allocations via the API using parameters like `num_allocations`, `min_number_of_allocations`, and `threads_per_allocation`. Refer to [Enable autoscaling through APIs](/deploy-manage/autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations) for details.
-
-::::{warning}
-If you don't use adaptive allocations, the deployment will always consume a fixed amount of resources, regardless of actual usage. This can lead to inefficient resource utilization and higher costs.
-::::
+- Optimization type ([ingest](/deploy-manage/autoscaling/trained-model-autoscaling.md#ingest-optimized) or [search](/deploy-manage/autoscaling/trained-model-autoscaling.md#search-optimized))
 
 For more information about adaptive allocations and resources, refer to the [trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) documentation.
+
+::::{note}
+If you enable adaptive allocations and set the `min_number_of_allocations` to a value greater than `0`, you will be charged for the machine learning resources associated with your inference endpoint, even if no inference requests are sent.
+
+However, enabling adaptive allocations with a `min_number_of_allocations` greater than `0` helps ensure that the model remains available at all times, without delays due to scaling. This configuration may lead to higher resource usage and associated costs. Consider your workload and availability requirements when choosing the appropriate settings.
+::::
 
 ## Default {{infer}} endpoints [default-enpoints]
 
