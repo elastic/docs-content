@@ -36,7 +36,7 @@ Make your logs more useful by extracting structured fields from your unstructure
 Follow the steps below to see how the following unstructured log data is indexed by default:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 ```
 
 Start by storing the document in the `logs-example-default` data stream:
@@ -45,16 +45,16 @@ Start by storing the document in the `logs-example-default` data stream:
 2. In the **Console** tab, add the example log to Elastic using the following command:
 
     ```console
-    POST logs-example-default/_doc
+    POST logs-test-default/_doc
     {
-    "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+    "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
     }
     ```
 
 3. Then, you can retrieve the document with the following search:
 
     ```console
-    GET /logs-example-default/_search
+    GET /logs-test-default/_search
     ```
 
 
@@ -67,11 +67,11 @@ The results should look like this:
     ...
     "hits": [
       {
-        "_index": ".ds-logs-example-default-2023.08.09-000001",
+        "_index": ".ds-logs-example-default-2025.05.09-000001",
         ...
         "_source": {
-          "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.",
-          "@timestamp": "2023-08-09T17:19:27.73312243Z"
+          "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.",
+          "@timestamp": "2025-05-09T17:19:27.73312243Z"
         }
       }
     ]
@@ -96,7 +96,7 @@ GET logs-example-default/_search
 
 While you can search for phrases in the `message` field, you can’t use this field to filter log data. Your message, however, contains all of the following potential fields you can extract and use to filter and aggregate your log data:
 
-* **@timestamp** (`2023-08-08T13:45:12.123Z`): Extracting this field lets you sort logs by date and time. This is helpful when you want to view your logs in the order that they occurred or identify when issues happened.
+* **@timestamp** (`2025-05-08T13:45:12.123Z`): Extracting this field lets you sort logs by date and time. This is helpful when you want to view your logs in the order that they occurred or identify when issues happened.
 * **log.level** (`WARN`): Extracting this field lets you filter logs by severity. This is helpful if you want to focus on high-severity WARN or ERROR-level logs, and reduce noise by filtering out low-severity INFO-level logs.
 * **host.ip** (`192.168.1.101`): Extracting this field lets you filter logs by the host IP addresses. This is helpful if you want to focus on specific hosts that you’re having issues with or if you want to find disparities between hosts.
 * **message** (`Disk usage exceeds 90%.`): You can search for phrases or words in the message field.
@@ -115,8 +115,8 @@ When you added the log to Elastic in the previous section, the `@timestamp` fiel
 ```json
         ...
         "_source": {
-          "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.",  <1>
-          "@timestamp": "2023-08-09T17:19:27.73312243Z"  <2>
+          "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.",  <1>
+          "@timestamp": "2025-05-09T17:19:27.73312243Z"  <2>
         }
         ...
 ```
@@ -160,7 +160,7 @@ The previous command sets the following values for your ingest pipeline:
 
 * `_ingest/pipeline/logs-example-default`: The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 * `field`: The field you’re extracting data from, `message` in this case.
-* `pattern`: The pattern of the elements in your log data. The `%{@timestamp} %{{message}}` pattern extracts the timestamp, `2023-08-08T13:45:12.123Z`, to the `@timestamp` field, while the rest of the message, `WARN 192.168.1.101 Disk usage exceeds 90%.`, stays in the `message` field. The dissect processor looks for the space as a separator defined by the pattern.
+* `pattern`: The pattern of the elements in your log data. The `%{@timestamp} %{{message}}` pattern extracts the timestamp, `2025-05-08T13:45:12.123Z`, to the `@timestamp` field, while the rest of the message, `WARN 192.168.1.101 Disk usage exceeds 90%.`, stays in the `message` field. The dissect processor looks for the space as a separator defined by the pattern.
 
 
 #### Test the pipeline with the simulate pipeline API [observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api]
@@ -175,7 +175,7 @@ POST _ingest/pipeline/logs-example-default/_simulate
   "docs": [
     {
       "_source": {
-        "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+        "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
       }
     }
   ]
@@ -194,7 +194,7 @@ The results should show the `@timestamp` field extracted from the `message` fiel
         "_version": "-3",
         "_source": {
           "message": "WARN 192.168.1.101 Disk usage exceeds 90%.",
-          "@timestamp": "2023-08-08T13:45:12.123Z"
+          "@timestamp": "2025-05-08T13:45:12.123Z"
         },
         ...
       }
@@ -258,12 +258,16 @@ The example index template above sets the following component templates:
 
 #### Create a data stream [observability-parse-log-data-create-a-data-stream]
 
+:::{note}
+To ensure your logs data is run through the correct pipeline, create your ingest pipeline and index template before creating your data stream.
+:::
+
 Create your data stream using the [data stream naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
 
 ```console
 POST logs-example-default/_doc
 {
-  "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+  "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
 }
 ```
 
@@ -284,12 +288,12 @@ You should see the pipeline has extracted the `@timestamp` field:
       ...
       "hits": [
         {
-          "_index": ".ds-logs-example-default-2023.08.09-000001",
+          "_index": ".ds-logs-example-default-2025.05.09-000001",
           "_id": "RsWy3IkB8yCtA5VGOKLf",
           "_score": 1,
           "_source": {
             "message": "WARN 192.168.1.101 Disk usage exceeds 90%.",
-            "@timestamp": "2023-08-08T13:45:12.123Z"  <1>
+            "@timestamp": "2025-05-08T13:45:12.123Z"  <1>
           }
         }
       ]
@@ -318,7 +322,7 @@ Check the following common issues and solutions with timestamps:
 Extracting the `log.level` field lets you filter by severity and focus on critical issues. This section shows you how to extract the `log.level` field from this example log:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 ```
 
 To extract and use the `log.level` field:
@@ -349,7 +353,7 @@ PUT _ingest/pipeline/logs-example-default
 
 Now your pipeline will extract these fields:
 
-* The `@timestamp` field: `2023-08-08T13:45:12.123Z`
+* The `@timestamp` field: `2025-05-08T13:45:12.123Z`
 * The `log.level` field: `WARN`
 * The `message` field: `192.168.1.101 Disk usage exceeds 90%.`
 
@@ -366,7 +370,7 @@ POST _ingest/pipeline/logs-example-default/_simulate
   "docs": [
     {
       "_source": {
-        "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+        "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
       }
     }
   ]
@@ -388,7 +392,7 @@ The results should show the `@timestamp` and the `log.level` fields extracted fr
           "log": {
             "level": "WARN"
           },
-          "@timestamp": "2023-8-08T13:45:12.123Z",
+          "@timestamp": "2025-5-08T13:45:12.123Z",
         },
         ...
       }
@@ -405,10 +409,10 @@ Once you’ve extracted the `log.level` field, you can query for high-severity l
 Let’s say you have the following logs with varying severities:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
-2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
-2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
-2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
+2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
+2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
 ```
 
 Add them to your data stream using this command:
@@ -416,13 +420,13 @@ Add them to your data stream using this command:
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
+{ "message": "2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
+{ "message": "2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
+{ "message": "2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
 ```
 
 Then, query for documents with a log level of `WARN` or `ERROR` with this command:
@@ -448,7 +452,7 @@ The results should show only the high-severity logs:
   ...
     "hits": [
       {
-        "_index": ".ds-logs-example-default-2023.08.14-000001",
+        "_index": ".ds-logs-example-default-2025.05.14-000001",
         "_id": "3TcZ-4kB3FafvEVY4yKx",
         "_score": 1,
         "_source": {
@@ -456,11 +460,11 @@ The results should show only the high-severity logs:
           "log": {
             "level": "WARN"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z"
+          "@timestamp": "2025-05-08T13:45:12.123Z"
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.14-000001",
+        "_index": ".ds-logs-example-default-2025.05.14-000001",
         "_id": "3jcZ-4kB3FafvEVY4yKx",
         "_score": 1,
         "_source": {
@@ -468,7 +472,7 @@ The results should show only the high-severity logs:
           "log": {
             "level": "ERROR"
           },
-          "@timestamp": "2023-08-08T13:45:14.003Z"
+          "@timestamp": "2025-05-08T13:45:14.003Z"
         }
       }
     ]
@@ -486,10 +490,10 @@ The `host.ip` field is part of the [Elastic Common Schema (ECS)](ecs://reference
 This section shows you how to extract the `host.ip` field from the following example logs and query based on the extracted fields:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
-2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
-2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
-2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
+2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
+2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
 ```
 
 To extract and use the `host.ip` field:
@@ -520,7 +524,7 @@ PUT _ingest/pipeline/logs-example-default
 
 Your pipeline will extract these fields:
 
-* The `@timestamp` field: `2023-08-08T13:45:12.123Z`
+* The `@timestamp` field: `2025-05-08T13:45:12.123Z`
 * The `log.level` field: `WARN`
 * The `host.ip` field: `192.168.1.101`
 * The `message` field: `Disk usage exceeds 90%.`
@@ -538,7 +542,7 @@ POST _ingest/pipeline/logs-example-default/_simulate
   "docs": [
     {
       "_source": {
-        "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
+        "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%."
       }
     }
   ]
@@ -557,7 +561,7 @@ The results should show the `host.ip`, `@timestamp`, and `log.level` fields extr
           "host": {
             "ip": "192.168.1.101"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z",
+          "@timestamp": "2025-05-08T13:45:12.123Z",
           "message": "Disk usage exceeds 90%.",
           "log": {
             "level": "WARN"
@@ -580,13 +584,13 @@ Before querying your logs, add them to your data stream using this command:
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
+{ "message": "2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
+{ "message": "2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
+{ "message": "2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
 ```
 
 
@@ -614,14 +618,14 @@ Because all of the example logs are in this range, you’ll get the following re
   "hits": {
     ...
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "ak4oAIoBl7fe5ItIixuB",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.101"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z",
+          "@timestamp": "2025-05-08T13:45:12.123Z",
           "message": "Disk usage exceeds 90%.",
           "log": {
             "level": "WARN"
@@ -629,14 +633,14 @@ Because all of the example logs are in this range, you’ll get the following re
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "a04oAIoBl7fe5ItIixuC",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.103"
           },
-          "@timestamp": "2023-08-08T13:45:14.003Z",
+          "@timestamp": "2025-05-08T13:45:14.003Z",
           "message": "Database connection failed.",
           "log": {
             "level": "ERROR"
@@ -644,14 +648,14 @@ Because all of the example logs are in this range, you’ll get the following re
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "bE4oAIoBl7fe5ItIixuC",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.104"
           },
-          "@timestamp": "2023-08-08T13:45:15.004Z",
+          "@timestamp": "2025-05-08T13:45:15.004Z",
           "message": "Debugging connection issue.",
           "log": {
             "level": "DEBUG"
@@ -659,14 +663,14 @@ Because all of the example logs are in this range, you’ll get the following re
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "bU4oAIoBl7fe5ItIixuC",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.102"
           },
-          "@timestamp": "2023-08-08T13:45:16.005Z",
+          "@timestamp": "2025-05-08T13:45:16.005Z",
           "message": "User changed profile picture.",
           "log": {
             "level": "INFO"
@@ -712,14 +716,14 @@ You’ll get the following results only showing logs in the range you’ve set:
   "hits": {
     ...
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "ak4oAIoBl7fe5ItIixuB",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.101"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z",
+          "@timestamp": "2025-05-08T13:45:12.123Z",
           "message": "Disk usage exceeds 90%.",
           "log": {
             "level": "WARN"
@@ -727,14 +731,14 @@ You’ll get the following results only showing logs in the range you’ve set:
         }
       },
       {
-        "_index": ".ds-logs-example-default-2023.08.16-000001",
+        "_index": ".ds-logs-example-default-2025.05.16-000001",
         "_id": "bU4oAIoBl7fe5ItIixuC",
         "_score": 1,
         "_source": {
           "host": {
             "ip": "192.168.1.102"
           },
-          "@timestamp": "2023-08-08T13:45:16.005Z",
+          "@timestamp": "2025-05-08T13:45:16.005Z",
           "message": "User changed profile picture.",
           "log": {
             "level": "INFO"
@@ -754,10 +758,10 @@ By default, an ingest pipeline sends your log data to a single data stream. To s
 This section shows you how to use a reroute processor to send the high-severity logs (`WARN` or `ERROR`) from the following example logs to a specific data stream and keep the regular logs (`DEBUG` and `INFO`) in the default data stream:
 
 ```txt
-2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
-2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
-2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
-2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
+2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
+2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
+2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
+2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture.
 ```
 
 ::::{note}
@@ -815,13 +819,13 @@ Add the example logs to your data stream with this command:
 ```console
 POST logs-example-default/_bulk
 { "create": {} }
-{ "message": "2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
+{ "message": "2025-05-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
+{ "message": "2025-05-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
+{ "message": "2025-05-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue." }
 { "create": {} }
-{ "message": "2023-08-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
+{ "message": "2025-05-08T13:45:16.005Z INFO 192.168.1.102 User changed profile picture." }
 ```
 
 
@@ -846,7 +850,7 @@ Your should see similar results to the following showing that the high-severity 
           "host": {
             "ip": "192.168.1.101"
           },
-          "@timestamp": "2023-08-08T13:45:12.123Z",
+          "@timestamp": "2025-05-08T13:45:12.123Z",
           "message": "Disk usage exceeds 90%.",
           "log": {
             "level": "WARN"
@@ -862,7 +866,7 @@ Your should see similar results to the following showing that the high-severity 
           "host": {
             "ip": "192.168.1.103"
            },
-          "@timestamp": "2023-08-08T13:45:14.003Z",
+          "@timestamp": "2025-05-08T13:45:14.003Z",
           "message": "Database connection failed.",
           "log": {
             "level": "ERROR"

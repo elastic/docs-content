@@ -112,7 +112,7 @@ To expand the analyzer to a full screen, select the **Full Screen** icon above t
 :screenshot:
 :::
 
-The left panel contains a list of all processes related to the event, starting with the event chain’s first process. **Analyzed Events** — the event you selected to analyze from the events list or Timeline — are highlighted with a light blue outline around the cube.
+The left panel contains a list of all processes related to the event, starting with the event chain’s first process. **Analyzed Events** — the event you selected to analyze from the events list or Timeline — are highlighted with a light blue outline around the cube.
 
 :::{image} /solutions/images/security-process-list.png
 :alt: process list

@@ -123,7 +123,7 @@ Within a single cluster, indexing and searching can compete for resources. By se
 
 ## Avoid hot spotting [_avoid_hot_spotting]
 
-[Hot Spotting](../../../troubleshoot/elasticsearch/hotspotting.md) can occur when node resources, shards, or requests are not evenly distributed. {{es}} maintains cluster state by syncing it across nodes, so continually hot spotted nodes can cause overall cluster performance degredation.
+[Hot Spotting](../../../troubleshoot/elasticsearch/hotspotting.md) can occur when node resources, shards, or requests are not evenly distributed. {{es}} maintains cluster state by syncing it across nodes, so continually hot spotted nodes can cause overall cluster performance degradation.
 
 
 ## Additional optimizations [_additional_optimizations]

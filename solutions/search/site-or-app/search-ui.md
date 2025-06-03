@@ -125,7 +125,7 @@ The Enterprise Search team at Elastic maintains this library and are happy to he
 
 ## Contribute 🚀 [overview-contribute]
 
-We welcome contributors to the project. Before you begin, a couple notes…​
+We welcome contributors to the project. Before you begin, a couple notes…
 
 * Read the [Search UI Contributor’s Guide](https://github.com/elastic/search-ui/blob/main/CONTRIBUTING.md).
 * Prior to opening a pull request:

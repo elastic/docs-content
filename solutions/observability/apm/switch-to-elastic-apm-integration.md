@@ -14,14 +14,14 @@ The APM integration offers a number of benefits over the standalone method of ru
 
 **{{fleet}}**:
 
-* A single, unified way to add monitoring for logs, metrics, traces, and other types of data to each host — install one thing instead of multiple
-* Central, unified configuration management — no need to edit multiple configuration files
+* A single, unified way to add monitoring for logs, metrics, traces, and other types of data to each host — install one thing instead of multiple
+* Central, unified configuration management — no need to edit multiple configuration files
 
 **Data streams**:
 
 * Reduced number of fields per index, better space efficiency, and faster queries
 * More granular data control
-* Errors and metrics data streams are shared with other data sources — which means better long-term integration with the logs and metrics apps
+* Errors and metrics data streams are shared with other data sources — which means better long-term integration with the logs and metrics apps
 * Removes template inheritance for {{ilm-init}} policies and makes use of new {{es}} index and component templates
 * Fixes _resource 'apm-{{version}}-$type' exists, but it is not an alias_ error
 

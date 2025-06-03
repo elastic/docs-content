@@ -29,8 +29,8 @@ Selecting an error group ID or error message brings you to the **Error group**.
 :screenshot:
 :::
 
-The error group details page visualizes the number of error occurrences over time and compared to a recent time range. This allows you to quickly determine if the error rate is changing or remaining constant. You’ll also see the top 5 affected transactions—​enabling you to quickly narrow down which transactions are most impacted by the selected error.
+The error group details page visualizes the number of error occurrences over time and compared to a recent time range. This allows you to quickly determine if the error rate is changing or remaining constant. You’ll also see the top 5 affected transactions—enabling you to quickly narrow down which transactions are most impacted by the selected error.
 
-Further down, you’ll see an Error sample. The error shown is always the most recent to occur. The sample includes the exception message, culprit, stack trace where the error occurred, and additional contextual information to help debug the issue—​all of which can be copied with the click of a button.
+Further down, you’ll see an Error sample. The error shown is always the most recent to occur. The sample includes the exception message, culprit, stack trace where the error occurred, and additional contextual information to help debug the issue—all of which can be copied with the click of a button.
 
 In some cases, you might also see a Transaction sample ID. This feature allows you to make a connection between the errors and transactions, by linking you to the specific transaction where the error occurred. This allows you to see the whole trace, including which services the request went through.

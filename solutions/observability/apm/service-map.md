@@ -13,7 +13,7 @@ products:
 
 # Service Map [apm-service-maps]
 
-A service map is a real-time visual representation of the instrumented services in your application’s architecture. It shows you how these services are connected, along with high-level metrics like average transaction duration, requests per minute, and errors per minute. If enabled, service maps also integrate with machine learning—​for real time health indicators based on anomaly detection scores. All of these features can help you quickly and visually assess your services' status and health.
+A service map is a real-time visual representation of the instrumented services in your application’s architecture. It shows you how these services are connected, along with high-level metrics like average transaction duration, requests per minute, and errors per minute. If enabled, service maps also integrate with machine learning—for real time health indicators based on anomaly detection scores. All of these features can help you quickly and visually assess your services' status and health.
 
 We currently surface two types of service maps:
 

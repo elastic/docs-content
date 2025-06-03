@@ -121,7 +121,7 @@ Attaching indicators to cases provides more context and available actions for yo
 
 To add indicators to cases:
 
-1. From the Indicators table, click the **More actions** (**…​​**) menu. Alternatively, open an indicator’s details, then select **Take action**.
+1. From the Indicators table, click the **More actions** (**…**) menu. Alternatively, open an indicator’s details, then select **Take action**.
 2. Select one of the following:
 
     * **Add to existing case**: From the **Select case** dialog box, select the case to which you want to attach the indicator.
@@ -157,7 +157,7 @@ When you attach an indicator to a case, the indicator is added as a new comment 
 
 ### Remove indicators from cases [delete-indicator-from-case]
 
-To remove an indicator attached to a case, click the **More actions** (**…​​**) menu → **Delete attachment** in the case comment.
+To remove an indicator attached to a case, click the **More actions** (**…**) menu → **Delete attachment** in the case comment.
 
 :::{image} /solutions/images/security-remove-indicator.png
 :alt: Removing an indicator from a case
@@ -169,7 +169,7 @@ To remove an indicator attached to a case, click the **More actions** (**…​�
 
 Add indicator values to the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md) to prevent selected applications from running on your hosts. You can use MD5, SHA-1, or SHA-256 hash values from `file` type indicators.
 
-You can add indicator values to the blocklist from the Indicators table or the Indicator details flyout. From the Indicators table, select the **More actions** (**…​​**) menu → **Add blocklist entry**.  Alternatively, open an indicator’s details, then select the **Take action** menu → **Add blocklist entry**.
+You can add indicator values to the blocklist from the Indicators table or the Indicator details flyout. From the Indicators table, select the **More actions** (**…**) menu → **Add blocklist entry**.  Alternatively, open an indicator’s details, then select the **Take action** menu → **Add blocklist entry**.
 
 ::::{note}
 Refer to [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) for more information about blocklist entries.

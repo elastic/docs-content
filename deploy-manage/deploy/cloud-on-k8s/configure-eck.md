@@ -93,7 +93,7 @@ data:
     ubi-only: false
 ```
 
-Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section of the operator container — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
+Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section of the operator container — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
 
 ## Configure ECK under Operator Lifecycle Manager [k8s-operator-config-olm]
 
