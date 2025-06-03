@@ -17,7 +17,7 @@ The code examples in this tutorial are in [Console](../../explore-analyze/query-
 
 You can follow this guide using any {{es}} deployment. If you already have a deployment up and running, you can skip ahead to the [first step](#getting-started-index-creation).
 
-If not, refer to [choose your deployment type](/deploy-manage/deploy#choosing-your-deployment-type) for your options. To get started quickly, you can spin up a cluster [locally in Docker](get-started.md):
+If not, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for your options. To get started quickly, you can spin up a cluster [locally in Docker](get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
