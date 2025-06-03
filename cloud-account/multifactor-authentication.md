@@ -99,17 +99,7 @@ No, the Elastic Cloud default MFA enforcement does not apply when selecting **Lo
 
 **My team uses a generic account or distribution/mailing list and shares the password to access Elastic Cloud. How will my team be able to log in and access our Elastic Cloud organization after the MFA enforcement?**
 
-There are ways to work around the limitations of generic account access, but the more secure approach is to use one Elastic account for each Elastic Cloud user.
-
-You can explore the following workarounds:
-
-* Grant your team members access to that account’s Elastic Cloud organization by inviting and making them organization members. This may involve creating additional Elastic user accounts for each team member, depending on their organization access and ownership needs since we have yet to support multi-organization membership. When each team member has their own account to access your Elastic Cloud organization, they will be able to set up their own MFA  method.
-* Use the email MFA method, assuming all of your team members have access to the generic account or distribution list’s mailbox.
-* Keep using the generic account to log in and set up multifactor authentication [using an authenticator app](#ec-account-security-mfa-authenticator).
-
-  During the setup, take a photo of the QR code, or note its numeric version, and share it across your team. This code is sensitive and should be stored and shared securely. For example, it should be stored in an encrypted place using a secure algorithm such as AES-256, and transmitted over a secure encrypted channel such as TLS 1.3.
-
-  This QR code is the "base" number used by the Authenticator app to generate codes based on the current time. There is no danger of synchronization issues. However, there is risk of a breach if the QR code picture or number is compromised.
+The only secure and recommended approach is to use one Elastic account for each {{ecloud}} user. You can grant your team members access to that account’s {{ecloud}} organization by inviting and making them organization members. This may involve creating additional Elastic user accounts for each team member, depending on their organization access and ownership needs, because Elastic does not support multi-organization membership. When each team member has their own account to access your {{ecloud}} organization, they will be able to set up their own MFA method.
 
 
 **After I set up an MFA method, will I need to answer an MFA challenge every time I authenticate through Elastic Cloud?**
