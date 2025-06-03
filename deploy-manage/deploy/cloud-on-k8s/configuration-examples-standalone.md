@@ -19,7 +19,7 @@ The examples in this section are for illustration purposes only and should not b
 
 ## System integration [k8s_system_integration]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/elastic-agent/system-integration.yaml
 ```
 
@@ -28,7 +28,7 @@ Deploys Elastic Agent as a DaemonSet in standalone mode with system integration 
 
 ## Kubernetes integration [k8s_kubernetes_integration]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/elastic-agent/kubernetes-integration.yaml
 ```
 
@@ -37,7 +37,7 @@ Deploys Elastic Agent as a DaemonSet in standalone mode with Kubernetes integrat
 
 ## Multiple {{es}} clusters output [k8s_multiple_elasticsearch_clusters_output]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/elastic-agent/multi-output.yaml
 ```
 
