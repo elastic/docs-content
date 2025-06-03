@@ -36,7 +36,7 @@ When an instance within a deployment has resource overrides, it displays a warni
 
 ## Disabling CPU quotas at deployment level [cpu-hard-limit]
 
-In addition to overriding resources for individual instances, you can also completely disable CPU limits for your deployment from the **Operations** section of the deployment UI.
+In addition to overriding resources for individual instances, you can also completely disable CPU limits for your deployment from the **Operations** page of each deployment.
 
 ::::{note}
 When running ECE on Podman, CPU quotas for existing instances cannot be removed or updated. As a result, disabling the CPU hard limit has no effect on Podman-based allocators.
@@ -61,5 +61,7 @@ To disable CPU limits of your deployment instances, choose one of the following 
           }
         }
   ```
+
+  Set `hard_limit` to `false` to disable CPU limits, or to `true` to enforce strict CPU limits (default behavior).
 
 This change doesn’t require a restart of the deployment.
