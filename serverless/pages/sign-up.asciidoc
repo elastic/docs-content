@@ -43,7 +43,7 @@ During the free 14 day trial, Elastic provides access to one hosted deployment a
 
 * You can have one active deployment at a time
 * The deployment size is limited to 8GB RAM and approximately 360GB of storage, depending on the specified hardware profile
-* Machine learning nodes are available up to 4GB RAM, or up to 8 GB when using Reranker
+* Machine learning nodes are available up to 4GB RAM
 * Custom {es} plugins are not enabled
 
 To learn more about Elastic Cloud Hosted, check our https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html[Elasticsearch Service documentation].
