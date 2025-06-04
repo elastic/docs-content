@@ -27,7 +27,9 @@ To access {{kib}}:
 3. Under **Applications**, select the {{kib}} **Open** link and wait for {{kib}} to open.
 
     ::::{note} 
-The URL provided to access {{kib}} is based on the [endpoint URL](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md) configured in the ECE **Settings** UI. This URL should resolve either to your [external load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) or directly to the ECE proxies. If you are sending client traffic directly to the ECE proxies, port `9243` must be used, as ECE proxies only listen on this port for {{es}} and {{kib}} traffic.
+    The URL provided to access {{kib}} is based on the [endpoint URL](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md) configured in the ECE **Settings** UI. This URL should resolve to your [external load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md), which forwards the traffic to ECE proxies on port `9243`.
+
+    If your load balancer is configured to accept traffic on both ports `9243` and `443`, you can use either port when connecting to {{kib}}. However, [built-in SSO](/deploy-manage/users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md) will only work with the URL configured in ECE **Settings** UI.
     ::::
 
 4. Log into {{kib}}. Single sign-on (SSO) is enabled between your {{ece}} account and the {{kib}} instance. If you’re logged in already, then {{kib}} opens without requiring you to log in again. However, if your token has expired, choose from one of these methods to log in:
