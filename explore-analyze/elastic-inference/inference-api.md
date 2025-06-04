@@ -63,13 +63,13 @@ The behavior of allocations depends on several factors:
 - Usage level (low, medium, or high)
 - Optimization type ([ingest](/deploy-manage/autoscaling/trained-model-autoscaling.md#ingest-optimized) or [search](/deploy-manage/autoscaling/trained-model-autoscaling.md#search-optimized))
 
+::::{important}
+If you enable adaptive allocations and set the `min_number_of_allocations` to a value greater than `0`, you will be charged for the machine learning resources, even if no inference requests are sent.
+
+However, setting the `min_number_of_allocations` to a value greater than `0` keeps the model always available without scaling delays. Choose the configuration that best fits your workload and availability needs.
+:::: 
+
 For more information about adaptive allocations and resources, refer to the [trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) documentation.
-
-::::{note}
-If you enable adaptive allocations and set the `min_number_of_allocations` to a value greater than `0`, you will be charged for the machine learning resources associated with your inference endpoint, even if no inference requests are sent.
-
-However, enabling adaptive allocations with a `min_number_of_allocations` greater than `0` helps ensure that the model remains available at all times, without delays due to scaling. This configuration may lead to higher resource usage and associated costs. Consider your workload and availability requirements when choosing the appropriate settings.
-::::
 
 ## Default {{infer}} endpoints [default-enpoints]
 
