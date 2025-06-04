@@ -290,4 +290,10 @@ npx @elastic/synthetics totp <secret> --issuer <issuer> --label <label>
 :   Name of the provider or service that is assocaited with the account.
 
 `--label <string>`
+
+## Airgapped environments
+
+When we have to deal with airgapped environments we often endup in quite complicated setups and workarounds. Custom certificates are very common and might not be trusted by your NodeJS install or NodeJS container. To circumvent this and still make it work you can execute all `npx` related commands with `NODE_TLS_REJECT_UNAUTHORIZED=0` at the beginning. Thus creating a new project looks like this `NODE_TLS_REJECT_UNAUTHORIZED=0 npx @elastic/synthetics init project-name`. This will ignore any certificate errors.
+
+
 :   Identifier for the account. Defaults to `SyntheticsTOTP`
