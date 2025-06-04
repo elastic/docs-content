@@ -7,7 +7,7 @@ applies_to:
 
 Following are the supported upgrade paths for Podman 5 in {{ece}}.
 
-| **From ↓** ...       **To →**           | Podman 5.2.2-9 | Podman 5.2.2-11 | Podman 5.2.2-13 | Podman 5.2.3 |
+| **From ↓** ...       **To →**           | Podman 5.2.2-9 | Podman 5.2.2-11 | Podman 5.2.2-latest | Podman 5.2.3 |
 |-----------------------------------------|----------------|-----------------|-----------------|--------------|
 | **<vanilla Linux installation> (grow)** | ✓ ^*^          | ✓ ^*^           | ✓               | X            |
 | **Docker (grow-and-shrink)**            | ✓ ^*^          | ✓ ^*^           | ✓               | X            |
@@ -18,11 +18,11 @@ Following are the supported upgrade paths for Podman 5 in {{ece}}.
 
 
 
-^*^ *Supported but not recommended given that a newer version (Podman `5.2.2-13`) is available.*
+^*^ *Supported but not recommended given that a newer version (latest version of Podman `5.2.2`) is available.*
 
-Podman `5.2.2-13` is only supported when conducting a **fresh {{ece}} installation** or performing a **grow-and-shrink update** from Docker or Podman 4.
+The latest version of Podman `5.2.2` is only supported when conducting a **fresh {{ece}} installation** or performing a **grow-and-shrink update** from Docker or Podman 4.
 
-For **in-place updates**, it is recommended to use Podman `5.2.2-9`, since upgrades to versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
+For **in-place updates**, it is recommended to use Podman `5.2.2-9`, since upgrades to versions `5.2.2-11` and latest version of `5.2.2` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
 When performing an in-place update, make sure to configure the Podman version to be locked at version `5.2.2-9.*`, by following the instructions below.
 
 ```sh
