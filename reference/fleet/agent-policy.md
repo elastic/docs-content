@@ -408,4 +408,4 @@ If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elas
 
 ## Integration package policies scaling limitations [integration-policies-scale-limitations]
 
-A single {{agent}} policy supports a maximum of 10000 integration package policies.
+A single {{agent}} policy supports a maximum of 10,000 integration package policies.
