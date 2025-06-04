@@ -406,6 +406,6 @@ A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
 
-## Integration package policies scaling limitations [integration-policies-scale-limitations]
+## Scaling limitations of integration package policies [integration-policies-scale-limitations]
 
 A single {{agent}} policy supports a maximum of 10,000 integration package policies.
