@@ -18,7 +18,7 @@ This feature is part of the Enterprise subscription offering under the name of *
 
 ## Limitations
 
-These limitations apply to remote {es} output:
+These limitations apply to remote {{es}} output:
 
 * Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
 * Using {{elastic-defend}} is currently not supported when a remote {{es}} output is configured for an agent.
