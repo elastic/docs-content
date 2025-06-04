@@ -12,10 +12,36 @@ Known issues are significant defects or limitations that may impact your impleme
 % On [Month Day, Year], a known issue was discovered that [description of known issue].
 % For more information, check [Issue #](Issue link).
 
-% **Workaround** 
+% **Workaround**
 % Workaround description.
 
 % :::
+
+:::{dropdown} [Windows] {{agent}} is unable to re-enroll into {{fleet}}
+
+**Applies to: {{agent}} 9.0.0, 9.0.1, 9.0.2 (Windows only)**
+
+On April 9, 2025, a known issue was discovered where an {{agent}} installed on Windows and previously enrolled into {{fleet}} is unable to re-enroll. Attempting to enroll the {{agent}} fails with the following error:
+
+```shell
+Error: the command is executed as root but the program files are not owned by the root user.
+```
+
+For more information, check [Issue #7794](https://github.com/elastic/elastic-agent/issues/7794).
+
+**Workaround**
+
+Until a bug fix is available in a later release, you can resolve the issue temporarily using the following workaround:
+
+1. Change the ownership of the {{agent}} directory:
+
+  ```shell
+  icacls "C:\Program Files\Elastic\Agent" /setowner "NT AUTHORITY\SYSTEM" /t /l
+  ```
+
+2. After the output confirms all files were successfully processed, run the `enroll` command again.
+
+:::
 
 :::{dropdown} [macOS] Osquery integration fails to start on fresh agent installs
 
@@ -25,7 +51,7 @@ On May 26th, 2025, a known issue was discovered that causes the `osquery` integr
 
 For more information, check [Issue #8245](https://github.com/elastic/elastic-agent/issues/8245).
 
-**Workaround** 
+**Workaround**
 
 As a workaround, you can manually restore the `osquery.app/` directory as follows:
 
