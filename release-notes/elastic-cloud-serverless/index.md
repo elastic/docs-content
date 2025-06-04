@@ -11,6 +11,50 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## June 3, 2025 [serverless-changelog-06032025]
+
+### Features and enhancements [serverless-changelog-06032025-features-enhancements]
+
+* Adds collapsible sections to Dashboards [#220877]({{kib-pull}}220877)
+* Introduces a new `Density` setting for the Lens Data Table[#220252]({{kib-pull}}220252)
+* Allows the "Open in lens" button to open in the same tab [#217528]({{kib-pull}}217528)
+* Allows you to select the data stream type when creating policies for input packages in {{fleet}} [#214216]({{kib-pull}}214216)
+* Adds a single agent migration endpoint in {{fleet}}, allowing a user to migrate an individual agent to another cluster [#220601]({{kib-pull}}220601)
+* Adds shortcuts to the editor in Discover [#221331]({{kib-pull}}221331)
+* Allows you to change the Knowledge Base model after installation in {{obs-serverless}} [#221319]({{kib-pull}}221319)
+* Adds investigation guide configuration to all Observability rules in {{obs-serverless}} [#217106]({{kib-pull}}217106)
+* Remove semantic_text migration from {{obs-serverless}} [#220886]({{kib-pull}}220886)
+* Searches for the CVE ID in all search parameters instead of only the name in {{sec-serverless}} [#221099]({{kib-pull}}221099)
+* Updates the "Highlighted fields" button in the details flyout and enables the feature flag in {{sec-serverless}} [#221862]({{kib-pull}}221862)
+* Introduces new `empty` states for the Change Point Detection page in {{ml-cap}} [#219072]({{kib-pull}}219072)
+
+
+### Fixes [serverless-changelog-06032025-fixes]
+
+* Uses msearch to fetch the alerts for maintenance windows with a scoped query [#221702]({{kib-pull}}221702)
+* Fixes querying installed packages in {{fleet}} [#221624]({{kib-pull}}221624)
+* Fixes an issue that prevented the style components from receiving the correct `colorMode` in {{fleet}} [#221979]({{kib-pull}}221979)
+* Makes the **Pin** button more accessible in Discover [#219230]({{kib-pull}}219230)
+* Fixes an issue where the `Filter by field type` menu screen reader announcements were using duplicated in Discover [#221090]({{kib-pull}}221090)
+* Removes an unneeded tabindex from Discover [#221265]({{kib-pull}}221265)
+* Changes the field list icon when mapping changes from unmapped to mapped in Discover [#221308]({{kib-pull}}221308)
+* Updates the doc viewer table's `aria-label` in Discover [#221736]({{kib-pull}}221736)
+* Shows the ES|QL request URL in the Inspector flyout in Discover [#221816]({{kib-pull}}221816)
+* Fixes index pattern parsing in Discover, which previously led to incomplete index pattern values being displayed [#221084]({{kib-pull}}221084)
+* Ensures a non-aggregatable message is not shown if no data matches on the Dataset quality page in {{obs-serverless}} [#221599]({{kib-pull}}221599)
+* Deletes user instruction if the text is empty in {{obs-serverless}} [#221560]({{kib-pull}}221560)
+* Adjusts the bulk import knowledge base example to ndjson format in {{obs-serverless}} [#221617]({{kib-pull}}221617)
+* Modifies `RuleTypeModalComponent` to filter rule types that have `requiresAppContext` in {{obs-serverless}} [#220005]({{kib-pull}}220005)
+* Correctly nests APM > Synthetics Serverless navigation in {{obs-serverless}} [#222115]({{kib-pull}}222115)
+* Removes the "run soon for sync private location" task in {{obs-serverless}} [#222062]({{kib-pull}}222062)
+* Fixes the error count waterfall navigation reload issue in {{obs-serverless}} [#221664]({{kib-pull}}221664)
+* Fixes the Bedrock model on preconfigured connectors in {{sec-serverless}} [#221411]({{kib-pull}}221411)
+* Removes the hard-coded width settings for the Threat Match mapping components in {{sec-serverless}} [#218628]({{kib-pull}}218628)
+* Fixes the banner title in event preview in {{sec-serverless}}  [#222266]({{kib-pull}}222266)
+* Ensures to only auto deploy Elastic models during file upload in {{ml-cap}} [#221357]({{kib-pull}}221357)
+* Fixes the inference endpoint assignment to the trained model object in {{ml-cap}}  [#222076]({{kib-pull}}222076)
+* Fixes an issue where `/etc/default/kibana` on deb packages and `/etc/sysconfig/kibana` on rpm packages would be overwritten during upgrading [#221276]({{kib-pull}}221276)
+
 ## May 26, 2025 [serverless-changelog-05262025]
 
 ### Features and enhancements [serverless-changelog-05262025-features-enhancements]
