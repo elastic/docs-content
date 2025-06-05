@@ -38,11 +38,11 @@ Depending on the cause of the node movement, the behavior and expectations diffe
 
 * During planned operations, such as hardware upgrades or host patches, the system attempts to gracefully move the node to another host before shutting down the original one. This process allows shard relocation to complete ahead of time, minimizing any potential disruption.
 
-* In contrast, if a node’s host experiences an unexpected outage, the system automatically vacates the node and displays a related `Don't attempt to gracefully move shards` message on the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). Since the node is unavailable, the system skips checks that ensure the node’s shards have been moved before shutting down the node.
+* In contrast, if a node’s host experiences an unexpected outage, the system automatically vacates the node and displays a related `Don't attempt to gracefully move shards` message on the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). Since the node and its data path are already unavailable, the system skips its check to ensure the node’s shards have been moved before shutting down the node.
 
 ### Will it cause an outage to my deployment?
 
-Unless overridden or unable, the system will automatically recover the vacated node’s data automatically from replicas or snapshots. If your cluster has [high availability (HA)](https://www.elastic.co/guide/en/cloud/current/ec-planning.html#ec-ha) configured, all search and indexing requests should continue to work within the reduced capacity until the node is replaced.
+Unless overridden or unable, the system will automatically recover the vacated node’s data automatically from replicas or snapshots. If your cluster has [high availability (HA)](https://www.elastic.co/guide/en/cloud/current/ec-planning.html#ec-ha) configured, all search and indexing requests should continue to work within the reduced capacity as the node is replaced.
 
 Overall, having replicas and multiple availability zones helps minimize service interruption.
 
@@ -58,7 +58,7 @@ As long as these recommendations are followed, system maintenance processes shou
 
 ### Could such a system maintenance be avoided or skipped?
 
-No, these are essential tasks that cannot be delayed or avoided.
+No, these are essential tasks that cannot be delayed nor avoided.
 
 ### I configured multiple availability zones, but I still see data loss during system maintenance. Why?
 
