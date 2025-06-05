@@ -36,7 +36,7 @@ To edit the roles assigned to a user:
 
 There are two types of roles you can assign to users:
 
-* **Oranization-level roles:** These roles apply to the entire organization and are not specific to any serverless project or hosted deployment.
+* **Organization-level roles:** These roles apply to the entire organization and are not specific to any serverless project or hosted deployment.
 * **Cloud resource access roles:** These roles are specific to each serverless project or hosted deployment.
 
 ### Organization-level roles [ec_organization_level_roles]
