@@ -95,7 +95,9 @@ Make sure to run the tool with the `--disableApiCalls` flag. Without this flag, 
 ```
 
 
-# Sample response
+**Sample response**
+
+```bash
 elastic@my-ece-director-host1:~$ ./ece-diagnostics run --disableApiCalls
 - Configuring ECE home folder
     ✓ found /mnt/data/elastic for runner 172.16.15.204
