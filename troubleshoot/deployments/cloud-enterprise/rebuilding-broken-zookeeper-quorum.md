@@ -85,7 +85,7 @@ find /mnt/data/elastic/*/services/zookeeper/data/ -print -exec stat {} \;
 
 ### Collect ECE diagnostics [ece-diagnostics]
 
-Follow [Run ECE diagnostics tool](run-ece-diagnostics-tool.md) to collect ECE diagnostics. 
+Follow [](run-ece-diagnostics-tool.md) to collect ECE diagnostics. 
 
 Make sure to run the tool with the `--disableApiCalls` flag. Without this flag, ECE diagnostics might fail to run.
 
