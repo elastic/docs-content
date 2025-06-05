@@ -94,7 +94,7 @@ In the deployment used as the destination of Stack monitoring:
 
 3. (Optional) Configure an email [connector](/deploy-manage/manage-connectors.md). If you prefer, use the pre-configured `Elastic-CLoud-SMTP`.
 
-4. Edit the rule  **CLUSTER HEALTH** → **Nodes changed** and select the email connector.
+4. Edit the rule  **Cluster alerting** → **{{es}} nodes changed** and select the email connector.
 
 ::::{note}
 If you have only one master node in your cluster, during the master node vacate no notification will be sent. Kibana needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster when you enable logging and monitoring.
