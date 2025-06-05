@@ -67,7 +67,7 @@ Perform the following steps on each host to back up the Zookeeper data directory
 
 ## Determine the Zookeeper leader [ece_determine_the_zookeeper_leader] 
 
-If a Zookeeper quorum is broken, it's crucial to identify the best Zookeeper leader candidate to use for recovery before you start the recovery proces.
+If a Zookeeper quorum is broken, you need to identify the best Zookeeper leader candidate to use for recovery before you start the recovery process.
 
 Collect the following Essential Information (A) and (B) from **all ECE director hosts that have ZK containers running**. This includes any recently created or decommissioned hosts.  Then reach out to [Elastic Support](/troubleshoot/index.md#contact-us).
 
