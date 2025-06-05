@@ -954,7 +954,20 @@ Advanced settings are not recommended for most users. Use them only if you have 
     *How much memory (in MB) should Endpoint aim to keep resident in RAM? This setting affects Private Working Set on Windows. It does not affect the amount of virtual memory that Endpoint requests from the OS (Private Bytes aka Commit Charge). If plenty of unused RAM is available, Windows may give Endpoint more RAM than requested to reduce unnecessary paging and improve performance. If the current Defend configuration requires regularly touching more than the requested amount of memory, then the Private Working Set will be higher than requested here. This value cannot be decreased below 50. Default: `200`.*
 
 
+`windows.advanced.events.image_load.disable_origin_info_collection`
+:   Added in 8.19.0.
 
+    *If set to true, image load events exclude dll.origin_url, dll.origin_referrer_url, and dll.Ext.windows.zone_identifier. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: `false`*
+
+`windows.advanced.events.process.disable_origin_info_collection`
+:   Added in 8.19.0.
+
+    *If set to true, process events exclude process.origin_url, process.origin_referrer_url, and process.Ext.windows.zone_identifier. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: `false`*
+
+`windows.advanced.events.file.disable_origin_info_collection`
+:   Added in 8.19.0.
+
+    *If set to true, file events exclude file origin details: file.origin_url, file.origin_referrer_url, and file.Ext.windows.zone_identifier. These fields show the details of file's Mark of the Web. Default: `false`*
 
 
 
