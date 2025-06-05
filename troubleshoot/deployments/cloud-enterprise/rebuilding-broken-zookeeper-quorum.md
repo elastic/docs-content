@@ -89,9 +89,10 @@ Follow [](run-ece-diagnostics-tool.md) to collect ECE diagnostics.
 
 Make sure to run the tool with the `--disableApiCalls` flag. Without this flag, ECE diagnostics might fail to run.
 
+**Command** 
 ```bash
-# Command
 ./ece-diagnostics run --disableApiCalls
+```
 
 
 # Sample response
