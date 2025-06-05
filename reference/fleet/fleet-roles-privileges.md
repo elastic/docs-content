@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-roles-and-privileges.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Required roles and privileges [fleet-roles-and-privileges]
@@ -49,7 +52,7 @@ To create a new role with access to {{fleet}} and Integrations:
 4. Specify a name for the role.
 5. Leave the {{es}} settings at their defaults, or refer to [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) for descriptions of the available settings.
 6. In the {{kib}} section, select **Assign to space**.
-7. In the **Spaces** menu, select *** All Spaces**. Since many Integrations assets are shared across spaces, the users need the {{kib}} privileges in all spaces.
+7. In the **Spaces** menu, select **All Spaces**. Since many Integrations assets are shared across spaces, the users need the {{kib}} privileges in all spaces.
 8. Expand the **Management** section.
 9. Set **Fleet** privileges to **All**.
 10. Choose the access level that you'd like the role to have with respect to {{fleet}} and integrations:

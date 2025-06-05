@@ -1,7 +1,9 @@
 ---
-navigation_title: "TLS certificate"
+navigation_title: TLS certificate
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/tls-certificate-alert.html
+products:
+  - id: observability
 ---
 
 # Create a TLS certificate rule [tls-certificate-alert]
@@ -12,7 +14,11 @@ In {{kib}}, you can create a rule that notifies you when one or more of your mon
 There are two types of TLS certificate rule:
 
 * [Synthetics TLS certificate rule](#tls-rule-synthetics) for use with [Elastic Synthetics](/solutions/observability/synthetics/index.md).
-* [8.15.0] [Uptime TLS rule](#tls-rule-uptime) for use with the {{uptime-app}}.
+* [Uptime TLS rule](#tls-rule-uptime) for use with the {{uptime-app}}.
+
+  :::{admonition} Deprecated in 8.15.0
+  Uptime was deprecated in 8.15.0. Use Synthetics instead.
+  :::
 
 
 ## Synthetics TLS certificate rule [tls-rule-synthetics]

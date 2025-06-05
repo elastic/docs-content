@@ -1,7 +1,10 @@
 ---
-navigation_title: "decode_duration"
+navigation_title: decode_duration
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/decode_duration-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Decode duration [decode_duration-processor]

@@ -1,11 +1,14 @@
 ---
-navigation_title: "Use the Synthetics UI"
+navigation_title: Use the Synthetics UI
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-get-started-ui.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-get-started-ui.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create monitors in the Synthetics UI [synthetics-get-started-ui]
@@ -48,7 +51,7 @@ To use the UI to add a lightweight monitor:
     If you’ve [added a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), you’ll see your the {{private-location}} in the list of *Locations*.
 
     ```{image} /solutions/images/serverless-private-locations-monitor-locations.png
-    :alt: Screenshot of Monitor locations options including a {private-location}
+    :alt: Screenshot of Monitor locations options including a {{private-location}}
     :screenshot:
     ```
 

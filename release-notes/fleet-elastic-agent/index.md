@@ -1,7 +1,10 @@
 ---
-navigation_title: "Fleet and Elastic Agent"
+navigation_title: Fleet and Elastic Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/release-notes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{fleet}} and {{agent}} release notes [fleet-elastic-agent-release-notes]
@@ -23,6 +26,29 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.0.2 [fleet-elastic-agent-9.0.2-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.2-features-enhancements]
+
+* Updates Go version to v1.24.3 in {{fleet}} [#4891]({{fleet-server-pull}}4891)
+	
+* Updates Go version to v1.24.3 in {{agent}} [#8109]({{agent-pull}}8109)
+
+### Fixes [fleet-elastic-agent-9.0.2-fixes]
+
+* Improves the upgrade process for {{agent}} installed using DEB or RPM packages by copying the run directory from the previous installation into the new version's folder [#7999]({{agent-pull}}7999) [#3832]({{agent-issue}}3832)
+
+## 9.0.1 [fleet-elastic-agent-9.0.1-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.1-features-enhancements]
+
+* Reuse shared integration policies when duplicating {{agent}} policies in {{fleet}} [#217872](https://github.com/elastic/kibana/pull/217872)
+* Update OTel components to v0.121.0 [#7686]({{agent-pull}}7686)
+* Add nopexporter to Elastic Distribution of OTel Collector (EDOT) Collector [#7788]({{agent-pull}}7788)
+* In {{agent}}, use `fullnameOverride` to set the fully qualified application names in the EDOT Kube-Stack Helm chart. [#7754]({{agent-pull}}7754) [#7381]({{agent-issue}}7381)
+
+### Fixes [fleet-elastic-agent-9.0.1-fixes]
+* In the EDOT Collector, fix Managed OTLP Helm config to use the current image repository [#7882]({{agent-pull}}7882)
 
 ## 9.0.0 [fleet-elastic-agent-900-release-notes]
 
@@ -51,7 +77,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [fleet-elastic-agent-900-fixes]
 * Fixes a validation error that occurs on multi-text input fields in {{fleet}} [#205768]({{kib-pull}}205768)
 * Adds a context timeout to the bulker flush in {{fleet-server}} so it times out if it takes more time than the deadline [#3986]({{fleet-server-pull}}3986)
-* Removes a race condition that may occur when remote {es} outputs are used in {{fleet-server}} [#4171]({{fleet-server-pull}}4171)
+* Removes a race condition that may occur when remote {{es}} outputs are used in {{fleet-server}} [#4171]({{fleet-server-pull}}4171)
 * Uses the chi/middleware.Throttle package to track in-flight requests and return a 429 response when the limit is reached in {{fleet-server}} [#4402]({{fleet-server-pull}}4402) and [#4400]({{fleet-server-issue}}4400)
 * Fixes logical race conditions in the kubernetes_secrets provider in {{agent}} [#6623]({{agent-pull}}6623)
 * Resolves the proxy to inject into agent component configurations using the Go http package in {{agent}} [#6675]({{agent-pull}}6675) and [#6209]({{agent-issue}}6209)

@@ -54,6 +54,7 @@ cross_links:
   - kibana
   - logstash
   - logstash-docs-md
+  - opentelemetry
   - search-ui
 
 toc:
@@ -77,12 +78,13 @@ subs:
   ech:   "Elastic Cloud Hosted"
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
+  edot:  "Elastic Distribution of OpenTelemetry"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
-  ess-leadin-short:   "Our hosted Elasticsearch Service is available on AWS, GCP, and Azure, and you can https://cloud.elastic.co/registration{ess-utm-params}[try it for free]."
+  ess-leadin-short:   "Our hosted Elasticsearch Service is available on AWS, GCP, and Azure, and you can try it for free: https://cloud.elastic.co/registration."
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"
@@ -272,6 +274,8 @@ subs:
   kib-pull:   "https://github.com/elastic/kibana/pull/"
   stack-version: "9.0.0"
   eck_version: "3.0.0"
+  eck_release_branch: "3.0"
+  eck_helm_minimum_version: "3.2.0"
   eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   eck_resources_list_short: "APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   apm_server_version: "9.0.0"

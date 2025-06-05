@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-environment-variables.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Set environment variables in an Elastic Agent policy [fleet-agent-environment-variables]

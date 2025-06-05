@@ -12,6 +12,12 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
+  - id: kibana
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
+  - id: cloud-hosted
 ---
 
 # Enable audit logging [enable-audit-logging]
@@ -50,12 +56,12 @@ Audit logs are disabled by default and must be explicitly enabled.
 
 **To enable audit logging in {{es}}**:
 
-1. In all nodes, set `xpack.security.audit.enabled` to `true` in `elasticsearch.yml`.
+1. In all nodes, set `xpack.security.audit.enabled` to `true` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 2. Restart the cluster by following the [rolling restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) procedure.
 
 **To enable audit logging in {{kib}}**:
 
-1. Set `xpack.security.audit.enabled` to `true` in `kibana.yml`.
+1. Set `xpack.security.audit.enabled` to `true` in [`kibana.yml`](/deploy-manage/stack-settings.md).
 2. Restart {{kib}}.
 
 To learn how to consume these logs in an {{es}} cluster, refer to [](/deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md).

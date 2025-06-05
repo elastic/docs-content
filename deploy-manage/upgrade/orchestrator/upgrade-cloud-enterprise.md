@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece:
+products:
+  - id: cloud-enterprise
 ---
 
 % The upgrade procedure is expected to change with ECE 3.8.0 release. This document is currently a temporary draft, pending to be refined.
@@ -20,7 +22,7 @@ Periodically, you might need to upgrade an {{ece}} installation as new versions 
 Before initiating the ECE upgrade process, review the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to ensure the operating system (OS), Docker, or Podman versions you're running are compatible with the ECE version you’re upgrading to. We recommend that Docker, Podman, and the operating system are at the target version before starting the ECE upgrade.
 
 :::{note}
-During the upgrade window, there might be a short time period when you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04 and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
+During the upgrade window, there might be a short period of time during which you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 18.09 on SLES 12 and plan to upgrade to ECE 3.8 on the same OS, you will need to upgrade Docker to version 24.0 or 25.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
 :::
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]
@@ -92,7 +94,7 @@ Before starting the upgrade process, verify that your setup meets the following 
   :::
 
   - Ensure that your system deployments are at their [expected versions](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md). Since ECE 3.6.1, the upgrade process automatically upgrades system deployments to the required version. If the {{ece}} platform was upgraded successfully and yet one or more system deployments were not upgraded to [their expected version](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md) during the very last phase of the {{ece}} upgrade, you can re-run the `elastic-cloud-enterprise.sh upgrade --cloud-enterprise-version <your target version>` command to retry system deployment upgrade only.
-  - Check that your deployments are running on {{stack}} version 7.0.0 or above.
+  - Check that your deployments are running on {{stack}} version 8.0.0 or above.
 - Before running the upgrade command, ensure that you include the same installation flags that were used during the initial setup. Some deployment configurations, such as those using Podman or SELinux, require specific flags to be passed again during the upgrade. Failure to do so may result in compatibility errors.
 
 ## Certificate rotation [ece-upgrade-certificates]
@@ -115,7 +117,7 @@ If your ECE installation is still using the default, auto-generated certificates
 
 If the license version is not 4 or higher, you must request an updated license from [Elastic Support](/troubleshoot/index.md#contact-us). Once you receive your new license, make sure {{ece}} is upgraded to at least version 2.5.0, and then upload the new license in the Settings page under the Platform menu.
 
-In versions from 2.6 to 2.10 included, some or all platform certificates are generated with a 398-day expiration. Installations that ran on these versions, even temporarily, must have their certificates rotated manually before expiry. For details, check our [KB article](https://support.elastic.co/knowledge/ECE-Certificate-Rotation).
+In versions from 2.6 to 2.10 included, some or all platform certificates are generated with a 398-day expiration. Installations that ran on these versions, even temporarily, must have their certificates rotated manually before expiry. For details, check our [KB article](https://ela.st/ece-certificate-rotation).
 
 
 ## Perform the upgrade [ece-upgrade-steps]

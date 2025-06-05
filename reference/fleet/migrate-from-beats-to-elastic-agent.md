@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/migrate-beats-to-agent.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Migrate from Beats to Elastic Agent [migrate-beats-to-agent]
@@ -99,7 +102,7 @@ After deploying an {{agent}} to a host, view details about the agent and inspect
 3. Go back to the main {{fleet}} page and click the **Data streams** tab. You should be able to see the data streams for various logs and metrics from the host. This is out-of-the-box without any extra configuration or dashboard creation:
 
     :::{image} images/migration-agent-data-streams01.png
-    :alt: Screen showing data streams created by the {agent}
+    :alt: Screen showing data streams created by the {{agent}}
     :screenshot:
     :::
 
@@ -113,14 +116,14 @@ After deploying an {{agent}} to a host, view details about the agent and inspect
     For example, filter on `filebeat-*` to see the data ingested by {{filebeat}}.
 
     :::{image} images/migration-event-from-filebeat.png
-    :alt: Screen showing event from {filebeat}
+    :alt: Screen showing event from {{filebeat}}
     :screenshot:
     :::
 
     Next, filter on `logs-*`. Notice that the document contains `data_stream.*` fields that come from logs ingested by the {{agent}}.
 
     :::{image} images/migration-event-from-agent.png
-    :alt: Screen showing event from {agent}
+    :alt: Screen showing event from {{agent}}
     :screenshot:
     :::
 

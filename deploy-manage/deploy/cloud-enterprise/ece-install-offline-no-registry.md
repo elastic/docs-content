@@ -1,10 +1,12 @@
 ---
 navigation_title: Without a private Docker registry
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline-no-registry.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline-no-registry.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Air-gapped install without a private Docker registry [ece-install-offline-no-registry]
@@ -27,7 +29,7 @@ To perform an offline installation without a private Docker registry, you have t
     For example, for {{ece}} 4.0.0 and the {{stack}} versions it shipped with, you need:
 
     * {{ece}} 4.0.0
-    * {es} 9.0.0, {{kib}} 9.0.0, and APM 9.0.0
+    * {{es}} 9.0.0, {{kib}} 9.0.0, and APM 9.0.0
 
 2. Create .tar files of the images:
 

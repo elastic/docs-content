@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configuration [k8s-logstash-configuration]
@@ -174,13 +176,13 @@ Logstash persistent queues (PQs) and dead letter queues (DLQs) are not currently
 
 ## Defining data volumes for Logstash [k8s-logstash-volumes]
 
-[2.9.0]
+:::{admonition} Added in 2.9.0
+This was added in 2.9.0.
+:::
 
 ::::{warning}
 Volume support for Logstash is a breaking change to earlier versions of ECK and requires you to recreate your Logstash resources.
 ::::
-
-
 
 ## Specifying the volume claim settings [k8s-volume-claim-settings]
 
@@ -339,7 +341,7 @@ If the volume driver supports `ExpandInUsePersistentVolumes`, the filesystem is 
 
 If the volume driver does not support `ExpandInUsePersistentVolumes`, you must manually delete Pods after the resize so that they can be recreated automatically with the expanded filesystem.
 
-Any other changes in the volumeClaimTemplates—​such as changing the storage class or decreasing the volume size—​are not allowed. To make changes such as these, you must fully delete the {{ls}} resource, delete and recreate or resize the volume, and create a new {{ls}} resource.
+Any other changes in the volumeClaimTemplates—such as changing the storage class or decreasing the volume size—are not allowed. To make changes such as these, you must fully delete the {{ls}} resource, delete and recreate or resize the volume, and create a new {{ls}} resource.
 
 Before you delete a persistent queue (PQ) volume, ensure that the queue is empty. We recommend setting `queue.drain: true` on the {{ls}} Pods to ensure that the queue is drained when Pods are shutdown. Note that you should also increase the `terminationGracePeriodSeconds` to a large enough value to allow the queue to drain.
 

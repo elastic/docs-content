@@ -1,14 +1,9 @@
 ---
-navigation_title: "Install with Docker"
+navigation_title: Docker
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/docker.html
-navigation_title: "Docker"
-applies_to:
-  deployment:
-    self:
-applies_to:
-  deployment:
-    self:
+products:
+  - id: kibana
 ---
 
 
@@ -188,10 +183,10 @@ All information that you include in environment variables is visible through the
 
 Some example translations are shown here:
 
-| Environment variable | {{kib}} setting | 
+| Environment variable | {{kib}} setting |
 | --- | --- |
 | `SERVER_NAME` | `server.name` |
-| `SERVER_BASEPATH` | `server.basePath`| 
+| `SERVER_BASEPATH` | `server.basePath`|
 | `ELASTICSEARCH_HOSTS` | `elasticsearch.hosts` |
 
 In general, any setting listed in [](configure-kibana.md) can be configured with this technique.

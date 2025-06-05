@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vpc.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-vpc.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # AWS PrivateLink traffic filters
@@ -130,7 +132,7 @@ The mapping will be different for your region. Our production VPC Service for `u
     :screenshot:
     :::
 
-    The security group for the endpoint should at minimum allow for inbound connectivity from your instances CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connnectibity to the endpoint on ports 443 and 9243.
+    The security group for the endpoint should at minimum allow for inbound connectivity from your instances CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243.
 
 2. Create a DNS record.
 

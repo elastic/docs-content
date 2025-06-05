@@ -1,7 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data-the-search-api.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 # The `_search` API [search-your-data]
 

@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Data stream retention [tutorial-manage-data-stream-retention]
@@ -58,7 +60,7 @@ We define 4 different types of retention:
 * The effective retention, or `effective_retention`, which is the retention applied at a data stream on a given moment. Effective retention cannot be set, it is derived by taking into account all the configured retention listed above and is calculated as it is described [here](#effective-retention-calculation).
 
 ::::{note}
-Global default and max retention do not apply to data streams internal to elastic. Internal data streams are recognised either by having the `system` flag set to `true` or if their name is prefixed with a dot (`.`).
+Global default and max retention do not apply to data streams internal to elastic. Internal data streams are recognized either by having the `system` flag set to `true` or if their name is prefixed with a dot (`.`).
 ::::
 
 
@@ -67,7 +69,7 @@ Global default and max retention do not apply to data streams internal to elasti
 
 * By setting the `data_retention` on the data stream level. This retention can be configured in two ways:
 
-     — For new data streams, it can be defined in the index template that would be applied during the data stream’s creation. You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template), for example:
+     — For new data streams, it can be defined in the index template that would be applied during the data stream’s creation. You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template), for example:
 
     ```console
     PUT _index_template/template
@@ -86,7 +88,7 @@ Global default and max retention do not apply to data streams internal to elasti
     }
     ```
 
-     — For an existing data stream, it can be set via the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
+     — For an existing data stream, it can be set via the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
     ```console
     PUT _data_stream/my-data-stream/_lifecycle

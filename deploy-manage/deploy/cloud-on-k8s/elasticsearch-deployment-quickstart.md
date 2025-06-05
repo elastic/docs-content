@@ -1,10 +1,12 @@
 ---
 navigation_title: Deploy an {{es}} cluster
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy an {{es}} cluster [k8s-deploy-elasticsearch]
@@ -44,7 +46,7 @@ The cluster that you deployed in this quickstart guide only allocates a persiste
 ::::
 
 
-For a full description of each `CustomResourceDefinition` (CRD), refer to the [*API Reference*](cloud-on-k8s://reference/api-docs.md) or view the CRD files in the [project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/crds). You can also retrieve information about a CRD from the cluster. For example, describe the {{es}} CRD specification with [`describe`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/):
+For a full description of each `CustomResourceDefinition` (CRD), refer to the [*API Reference*](cloud-on-k8s://reference/api-docs.md) or view the CRD files in the [project repository](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/crds). You can also retrieve information about a CRD from the cluster. For example, describe the {{es}} CRD specification with [`describe`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/):
 
 ```sh
 kubectl describe crd elasticsearch

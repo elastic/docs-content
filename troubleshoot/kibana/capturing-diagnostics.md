@@ -1,13 +1,15 @@
 ---
-navigation_title: "Diagnostics"
+navigation_title: Diagnostics
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/kibana-diagnostic.html
 applies_to:
   deployment:
     ess: all
     ece: all
     self: all
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/kibana-diagnostic.html
+products:
+  - id: kibana
 ---
 
 
@@ -31,7 +33,7 @@ You can generate diagnostic information using this tool before you contact [Elas
 
 The Support Diagnostic tool is included out-of-the-box as a sub-library in:
 
-* {{ece}} - Find the tool under **{{ece}}*** > ***Deployment*** > ***Operations*** > ***Prepare Bundle*** > ***{{kib}}**.
+* {{ece}} - Find the tool under **{{ece}}** > **Deployment** > **Operations** > **Prepare Bundle** > **{{kib}}**.
 * {{eck}} - Run the tool with [`eck-diagnostics`](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md).
 
 You can also get the latest version of the tool by downloading the `diagnostics-X.X.X-dist.zip` file from [the `support-diagnostic` repo](https://github.com/elastic/support-diagnostics/releases/latest).
@@ -41,7 +43,7 @@ You can also get the latest version of the tool by downloading the `diagnostics-
 
 To run a {{kib}} diagnostic:
 
-1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}'s [Task Manager health](https://www.elastic.co/guide/en/kibana/current/task-manager-api-health.html).
+1. In a terminal, verify that your network and user permissions are sufficient to connect by polling {{kib}}'s [Task Manager health](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health).
 
     For example, with the parameters `host:localhost`, `port:5601`, and `username:elastic`, you’d use the following curl request. Adapt these parameters to your context.
 
@@ -73,9 +75,9 @@ To run a {{kib}} diagnostic:
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
-    * `kibana-local` (default, recommended): Polls the [{{kib}} API](https://www.elastic.co/guide/en/kibana/current/api.html), gathers operating system info, and captures cluster and garbage collection (GC) logs.
+    * `kibana-local` (default, recommended): Polls the [{{kib}} API](https://www.elastic.co/docs/api/doc/kibana/), gathers operating system info, and captures cluster and garbage collection (GC) logs.
     * `kibana-remote`: Establishes an SSH session to the applicable target server to pull the same information as `kibana-local`.
-    * `kibana-api`: Polls the [{{kib}} API](https://www.elastic.co/guide/en/kibana/current/api.html). All other data must be collected manually.
+    * `kibana-api`: Polls the [{{kib}} API](https://www.elastic.co/docs/api/doc/kibana/). All other data must be collected manually.
 
     ::::
 

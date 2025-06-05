@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
+products:
+  - id: kibana
 ---
 
 # Troubleshooting and limitations [alerting-troubleshooting]
@@ -92,7 +94,7 @@ Task Manager provides a visible status which can be used to diagnose issues and 
 
 When a rule is created, a task is created, scheduled to run at the interval specified. For example, when a rule is created and configured to check every 5 minutes, then the underlying task will be expected to run every 5 minutes. In practice, after each time the rule runs, the task is scheduled to run again in 5 minutes, rather than being scheduled to run every 5 minutes indefinitely.
 
-If you use the [alerting APIs](https://www.elastic.co/guide/en/kibana/current/alerting-apis.html), such as the get rule API or find rules API, you’ll get an object that contains rule details:
+If you use the [alerting APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting), such as the get rule API or find rules API, you’ll get an object that contains rule details:
 
 ```txt
 {
@@ -156,7 +158,7 @@ For example:
 }
 ```
 
-For the rule to work, this task must be in a healthy state. Its health information is available in the [Task Manager health API](https://www.elastic.co/guide/en/kibana/current/task-manager-api-health.html) or in verbose logs if debug logging is enabled. When diagnosing the health state of the task, you will most likely be interested in the following fields:
+For the rule to work, this task must be in a healthy state. Its health information is available in the [Task Manager health API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-task-manager-health) or in verbose logs if debug logging is enabled. When diagnosing the health state of the task, you will most likely be interested in the following fields:
 
 `status`
 :   This is the current status of the task.  Is Task Manager currently running? Is Task Manager idle,  and you’re waiting for it to run?  Or has Task Manager has tried to run and failed?
@@ -191,7 +193,7 @@ This approach should be used only temporarily as a last resort to restore functi
 
 ## Limitations [alerting-limitations]
 
-The following limitations and known problems apply to the 9.0.0-beta1 release of the {{kib}} {{alert-features}}:
+The following limitations and known problems apply to the {{version}} release of the {{kib}} {{alert-features}}:
 
 ### Alert visibility [_alert_visibility]
 

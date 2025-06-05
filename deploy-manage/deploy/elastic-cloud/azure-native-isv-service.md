@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-azure-marketplace-native.html
 applies_to:
   deployment:
     ess: ga
   serverless: preview
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-azure-marketplace-native.html
+products:
+  - id: cloud-hosted
 ---
 
 # Azure Native ISV Service [ec-azure-marketplace-native]
@@ -73,6 +75,7 @@ Check the following sections to learn more about the Azure Native ISV Service:
     * [What Azure tenant information does Elastic have access to?](#azure-integration-azure-tenant-info)
     * [What other methods are available to deploy {{es}}?](#azure-integration-cli-api)
     * [How do I migrate my data from the classic Azure marketplace account to the {{ecloud}} Azure Native ISV Service?](#azure-integration-migrate)
+    * [Can multiple Azure users deploy to the same {{ecloud}} organization?](#azure-integration-multiple-users)
     * [Can I invite users to my organization, even if they cannot receive emails?](#azure-integration-no-inbox)
 
 * **Billing**
@@ -254,6 +257,9 @@ $$$azure-integration-migrate$$$How do I migrate my data from the classic Azure m
     8. Confirm the data has moved successfully into your new {{es}} resource on Azure.
     9. To remove the old Azure subscription and the old deployments, go to the [Azure SaaS page](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.SaaS%2Fresources) and unsubscribe from the {{ecloud}} ({{es}}) marketplace subscription. This action triggers the existing deployments termination.
 
+$$$azure-integration-multiple-users$$$Can multiple Azure users deploy to the same {{ecloud}} organization?
+:   Yes! Before another user creates a native resource from the Azure Portal, invite them to your {{ecloud}} organization at [https://cloud.elastic.co/account/members](https://cloud.elastic.co/account/members). When they create the resource, it will get added to the existing organization instead of creating a new one, and allow you to benefit from consolidated billing, RBAC, and other benefits of an {{ecloud}} organization.
+
 
 $$$azure-integration-no-inbox$$$Can I invite users to my organization, even if they cannot receive emails?
 :   You can add Azure users as members of your organization even if they don’t have an inbox. Reach out to Elastic support.
@@ -303,13 +309,13 @@ $$$azure-integration-whats-included$$$What is included in my {{ecloud}} deployme
 $$$azure-integration-how-to-access$$$How can I access my {{ecloud}} deployment?
 :   Navigate to the deployment overview page in Azure:
 
-    1. Select a deployment to open the deployment overview page.
+    Select a deployment to open the deployment overview page.
 
-        You now have a few options to access your deployment:
+    Then you have a few options to access your deployment:
 
-        * **{{es}} endpoint** - the URL for the {{es}} cluster itself
-        * **{{kib}} endpoint** - the UI for the {{stack}}, a great way for new users to get started
-        * **{{ecloud}}** - Open the **Advanced Settings** link to access the deployment in the {{ecloud}} console, to change the size of the deployment or upgrade it.
+    * **{{es}} endpoint** - the URL for the {{es}} cluster itself
+    * **{{kib}} endpoint** - the UI for the {{stack}}, a great way for new users to get started
+    * **{{ecloud}}** - Open the **Advanced Settings** link to access the deployment in the {{ecloud}} console, to change the size of the deployment or upgrade it.
 
 
 $$$azure-integration-modify-deployment$$$How can I modify my {{ecloud}} deployment?

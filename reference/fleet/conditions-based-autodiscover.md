@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/conditions-based-autodiscover.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Conditions based autodiscover [conditions-based-autodiscover]
@@ -128,7 +131,7 @@ Inside the container [inspect the output](/reference/fleet/agent-command-referen
 elastic-agent inspect --variables --variables-wait 1s -c /etc/elastic-agent/agent.yml
 ```
 
-::::{dropdown} You should now be able to see the generated policy. If you look for the `scheduler`, it will look similar to this.
+::::{dropdown} You should now be able to see the generated policy. If you look for the scheduler, it will look similar to this.
 ```yaml
 - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
   hosts:

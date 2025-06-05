@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-function-reference.html
+products:
+  - id: kibana
 ---
 
 # Canvas function reference [canvas-function-reference]
@@ -1278,7 +1280,11 @@ Adds a column calculated as the result of other columns. Changes are made only w
 
 ### `markdown` [markdown_fn]
 
-Adds an element that renders Markdown text. TIP: Use the [`markdown`](#markdown_fn) function for single numbers, metrics, and paragraphs of text.
+Adds an element that renders Markdown text.
+
+:::{tip}
+Use the [`markdown`](#markdown_fn) function for single numbers, metrics, and paragraphs of text.
+:::
 
 **Accepts:** `datatable`, `null`
 

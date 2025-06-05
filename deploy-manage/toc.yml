@@ -39,6 +39,7 @@ toc:
                 children:
                   - file: deploy/elastic-cloud/available-stack-versions.md
               - file: deploy/elastic-cloud/access-kibana.md
+              - file: deploy/elastic-cloud/elastic-cloud-hosted-planning.md
               - file: deploy/elastic-cloud/manage-deployments.md
                 children:
                   - file: deploy/elastic-cloud/configure.md
@@ -359,6 +360,7 @@ toc:
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
+  - file: stack-settings.md
   - file: tools.md
     children:
       - file: tools/snapshot-and-restore.md

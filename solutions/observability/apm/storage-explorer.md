@@ -3,11 +3,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-storage-explorer.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Storage Explorer [apm-storage-explorer]
 
-Analyze your APM data and manage costs with **storage explorer**. For example, analyze the storage footprint of each of your services to see which are producing large amounts of data—​then change the sample rate of a service to lower the amount of data ingested. Or, expand the time filter to visualize data trends over time so that you can better forecast and prepare for future storage needs.
+Analyze your APM data and manage costs with **storage explorer**. For example, analyze the storage footprint of each of your services to see which are producing large amounts of data—then change the sample rate of a service to lower the amount of data ingested. Or, expand the time filter to visualize data trends over time so that you can better forecast and prepare for future storage needs.
 
 :::{image} /solutions/images/observability-storage-explorer-overview.png
 :alt: APM Storage Explorer
@@ -56,7 +59,7 @@ To reduce the number of spans a service generates, enable [span compression](/so
 
 ### Reduce the number of metrics [_reduce_the_number_of_metrics]
 
-To reduce the number of system, runtime, and application metrics, tune the APM agent or agents that are collecting the data. You can disable the collection of specific metrics with the **disable metrics** configuration. Or, you can set the **metrics interval** to zero seconds to deactivate metrics entirely. Most APM agents support both options. See the relevant [APM agent configuration options](https://www.elastic.co/guide/en/apm/agent) for more details.
+To reduce the number of system, runtime, and application metrics, tune the APM agent or agents that are collecting the data. You can disable the collection of specific metrics with the **disable metrics** configuration. Or, you can set the **metrics interval** to zero seconds to deactivate metrics entirely. Most APM agents support both options. See the relevant [APM agent configuration options](/reference/apm-agents/index.md) for more details.
 
 ### Reduce the number of errors [_reduce_the_number_of_errors]
 

@@ -91,13 +91,13 @@ toc:
         children:
           - file: observability/get-started/what-is-elastic-observability.md
           - file: observability/get-started/create-an-observability-project.md
-          - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
-          - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
           - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
           - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
-          - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
+          - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
+          - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
           - file: observability/get-started/add-data-from-splunk.md
+          - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/get-started-with-dashboards.md
       - file: observability/applications/index.md
         children:
@@ -121,17 +121,18 @@ toc:
                   - file: observability/apm/metadata.md
               - file: observability/apm/collect-application-data.md
                 children:
-                  - file: observability/apm/elastic-apm-agents.md
-                    children:
-                      - file: observability/apm/apm-agent-central-configuration.md
-                      - file: observability/apm/real-user-monitoring-rum.md
-                      - file: observability/apm/create-upload-source-maps-rum.md
                   - file: observability/apm/use-opentelemetry-with-apm.md
                     children:
                       - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
                       - file: observability/apm/collect-metrics.md
                       - file: observability/apm/limitations.md
-                      - file: observability/apm/resource-attributes.md
+                      - file: observability/apm/attributes.md
+                      - file: observability/apm/data-stream-routing.md
+                  - file: observability/apm/elastic-apm-agents.md
+                    children:
+                      - file: observability/apm/apm-agent-central-configuration.md
+                      - file: observability/apm/real-user-monitoring-rum.md
+                      - file: observability/apm/create-upload-source-maps-rum.md
                   - file: observability/apm/apm-k8s-attacher.md
                   - file: observability/apm/monitor-aws-lambda-functions.md
                   - file: observability/apm/jaeger.md
@@ -403,6 +404,16 @@ toc:
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
+          - file: observability/logs/streams/streams.md
+            children:
+            - file: observability/logs/streams/management/extract.md
+              children:
+                - file: observability/logs/streams/management/extract/date.md
+                - file: observability/logs/streams/management/extract/dissect.md
+                - file: observability/logs/streams/management/extract/grok.md
+                - file: observability/logs/streams/management/extract/key-value.md
+            - file: observability/logs/streams/management/retention.md
+            - file: observability/logs/streams/management/advanced.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -456,6 +467,7 @@ toc:
               - file: security/get-started/automatic-migration.md
               - file: security/get-started/automatic-import.md
               - file: security/get-started/agentless-integrations.md
+              - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md

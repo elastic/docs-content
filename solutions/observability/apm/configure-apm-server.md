@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuring-howto-apm-server.html
 applies_to:
   stack:
+products:
+  - id: cloud-hosted
+  - id: observability
 ---
 
 # Configure APM Server [apm-configuring-howto-apm-server]
@@ -269,7 +272,7 @@ Allow anonymous access only for specified agents and/or services. This is primar
 :   Specifies a list of permitted origins from user agents. The default is `*`, which allows everything.
 
 `apm-server.rum.library_pattern`
-:   Differentiates library frames against specific attributes. Refer to "Configure Real User Monitoring (RUM)" in the [Observability Guide](https://www.elastic.co/guide/en/observability/current) to learn more. The default value is `"node_modules|bower_components|~"`.
+:   Differentiates library frames against specific attributes. Refer to "Configure Real User Monitoring (RUM)" in the [Observability Guide](/solutions/observability/get-started.md) to learn more. The default value is `"node_modules|bower_components|~"`.
 
 `apm-server.rum.exclude_from_grouping`
 :   Configures the RegExp to be matched against a stacktrace frame’s `file_name`.
@@ -373,7 +376,7 @@ Allow anonymous access only for specified agents and/or services. This is primar
 :   Specifies the minimum log level. One of *debug*, *info*, *warning*, or *error*. Defaults to *info*.
 
 `logging.selectors`
-:   The list of debugging-only selector tags used by different APM Server components. Use *** to enable debug output for all components. For example, add *publish* to display all the debug messages related to event publishing.
+:   The list of debugging-only selector tags used by different APM Server components. Use *\** to enable debug output for all components. For example, add *publish* to display all the debug messages related to event publishing.
 
 `logging.metrics.enabled`
 :   If enabled, APM Server periodically logs its internal metrics that have changed in the last period. Defaults to *true*.

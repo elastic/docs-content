@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Shared file system repository [snapshots-filesystem-repository]
@@ -15,7 +17,7 @@ This repository type is only available if you run {{es}} on your own hardware. S
 
 Use a shared file system repository to store snapshots on a shared file system.
 
-To register a shared file system repository, first mount the file system to the same location on all master and data nodes. Then add the file system’s path or parent directory to the `path.repo` setting in `elasticsearch.yml` for each master and data node. For running clusters, this requires a [rolling restart](../../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) of each node.
+To register a shared file system repository, first mount the file system to the same location on all master and data nodes. Then add the file system’s path or parent directory to the `path.repo` setting in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) for each master and data node. For running clusters, this requires a [rolling restart](../../maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) of each node.
 
 Supported `path.repo` values vary by platform:
 
@@ -148,7 +150,7 @@ PUT _snapshot/my_fs_backup
 :   (Required, string) Location of the shared filesystem used to store and retrieve snapshots. This location must be registered in the `path.repo` setting on all master and data nodes in the cluster. Unlike `path.repo`, this setting supports only a single file path.
 
 `max_number_of_snapshots`
-:   (Optional, integer) Maximum number of snapshots the repository can contain. Defaults to `Integer.MAX_VALUE`, which is `2^31-1` or `2147483647`.
+:   (Optional, integer) Maximum number of snapshots the repository can contain. Defaults to `Integer.MAX_VALUE`, which is `2`^`31`^`-1` or `2147483647`.
 
 `max_restore_bytes_per_sec`
 :   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md).

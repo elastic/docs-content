@@ -1,7 +1,10 @@
 ---
-navigation_title: "script"
+navigation_title: script
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/script-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Script Processor [script-processor]

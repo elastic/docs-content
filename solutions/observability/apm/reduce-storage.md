@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Reduce storage [apm-reduce-apm-storage]
@@ -19,7 +23,7 @@ See [Transaction sampling](/solutions/observability/apm/transaction-sampling.md)
 
 ## Enable span compression [enable_span_compression]
 
-In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. These repeated, similar spans often don’t provide added benefit, especially if they are of very short duration. Span compression takes these similar spans and compresses them into a single span-- retaining important information but reducing processing and storage overhead.
+In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. These repeated, similar spans often don’t provide added benefit, especially if they are of very short duration. Span compression takes these similar spans and compresses them into a single span—retaining important information but reducing processing and storage overhead.
 
 See [Span compression](/solutions/observability/apm/spans.md#apm-spans-span-compression) to learn more.
 
@@ -104,5 +108,5 @@ POST /.ds-*-apm*/_update_by_query?expand_wildcards=all
 ```
 
 ::::{tip}
-Remember to also change the service name in the [{{apm-agent}} configuration](https://www.elastic.co/guide/en/apm/agent/index.html).
+Remember to also change the service name in the [{{apm-agent}} configuration](/reference/apm-agents/index.md).
 ::::

@@ -1,13 +1,16 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
-  serverless: ga
 navigation_title: Sign up
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-trial.html
   - https://www.elastic.co/guide/en/serverless/current/general-sign-up-trial.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-existing-email.html
+applies_to:
+  deployment:
+    ess: ga
+  serverless: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Sign up and create an organization
@@ -73,7 +76,7 @@ During the free 14 day trial, Elastic provides access to one hosted deployment a
 
 * You can have one active deployment at a time
 * The deployment size is limited to 8GB RAM and approximately 360GB of storage, depending on the specified hardware profile
-* Machine learning nodes are available up to 4GB RAM
+* Machine learning nodes are available up to 4GB RAM, or up to 8GB when using Reranker
 * Custom {{es}} plugins are not enabled
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
@@ -99,7 +102,7 @@ You can subscribe to {{ecloud}} at any time during your trial. [Billing](../../.
 
 ### Get started with your trial [general-sign-up-trial-how-do-i-get-started-with-my-trial]
 
-Start by checking out some common approaches for [moving data into {{ecloud}}](https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html).
+Start by checking out some common approaches for [moving data into {{ecloud}}](/manage-data/ingest.md).
 
 
 ### Maintain access to your trial projects and data [general-sign-up-trial-what-happens-at-the-end-of-the-trial]

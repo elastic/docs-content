@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-cloud.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Deploy on Elastic Cloud [add-fleet-server-cloud]
@@ -70,7 +73,7 @@ To confirm that an {{integrations-server}} is available in your deployment:
 Don’t see the agent? Make sure your deployment includes an {{integrations-server}} instance. This instance is required to use {{fleet}}.
 
 :::{image} images/integrations-server-hosted-container.png
-:alt: Hosted {integrations-server}
+:alt: Hosted {{integrations-server}}
 :screenshot:
 :::
 

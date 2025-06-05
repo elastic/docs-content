@@ -1,9 +1,12 @@
 ---
-navigation_title: "Use local collection"
+navigation_title: Use local collection
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-local-collection.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Use the select metrics emitted directly to your monitoring cluster [apm-monitoring-local-collection]

@@ -1,5 +1,5 @@
 ---
-navigation_title: "Breaking changes"
+navigation_title: Breaking changes
 ---
 
 # {{fleet}} and {{agent}} breaking changes [fleet-elastic-agent-breaking-changes]
@@ -7,7 +7,7 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 
 % ## Next version [fleet-elastic-agent-nextversion-breaking-changes]
 
-% ::::{dropdown} Title of breaking change 
+% ::::{dropdown} Title of breaking change
 % Description of the breaking change.
 % For more information, check [PR #](PR link).
 
@@ -16,9 +16,19 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.0.1 [fleet-elastic-agent-9.0.1-breaking-changes]
+
+::::{dropdown} Disabled the `process` scraper of the `hostmetrics` receiver in the Elastic Distribution of OTel Collector
+
+**Impact**<br>
+This scraper collects metrics for all available processes of a host without an easy way to limit this to only report top N process for example. This results in quite big amount of timeseries. Since this is not quite critical for any of the available UIs or dashboards we decide to disable it temporarily until we find a better solution. Users that specifically need these metrics can also enable it back manually.
+
+For more information, check [#198434]({{agent-pull}}7894).
+::::
+
 ## 9.0.0 [fleet-elastic-agent-900-breaking-changes]
 
-::::{dropdown} Removed deprecated `epm` Fleet APIs
+::::{dropdown} Removed deprecated epm Fleet APIs
 Removed `GET/POST/DELETE /epm/packages/:pkgkey` APIs in favor of the `GET/POST/DELETE /epm/packages/:pkgName/:pkgVersion`.
 
 **Impact**<br>
@@ -44,14 +54,14 @@ Removed deprecated parameters or responses:
 For more information, check [#198313]({{kib-pull}}198313).
 ::::
 
-::::{dropdown} Removed `cloud defend` support for {{agent}}
+::::{dropdown} Removed cloud defend support for {{agent}}
 Support for `cloud-defend` (Defend for Containers) has been removed. The package has been removed from the {{agent}} packaging scripts and template Kubernetes files.
 
 For more information, check [#5481]({{agent-pull}}5481).
 ::::
 
-::::{dropdown} Removed `username` and `password` default values for {{agent}}
-The default values for `username` and `password` have been removed for when {{agent}} is running in container mode. The {es} `api_key` can now be set in that mode using the `ELASTICSEARCH_API_KEY` environment variable.
+::::{dropdown} Removed username and password default values for {{agent}}
+The default values for `username` and `password` have been removed for when {{agent}} is running in container mode. The {{es}} `api_key` can now be set in that mode using the `ELASTICSEARCH_API_KEY` environment variable.
 
 For more information, check [#5536]({{agent-pull}}5536).
 ::::
@@ -62,14 +72,16 @@ The default Ubuntu-based Docker images used for {{agent}} have been changed to U
 For more information, check [#6427]({{agent-pull}}6427).
 ::::
 
-::::{dropdown} Removed `--path.install` flag declaration from {{agent}} `paths` command
+::::{dropdown} Removed --path.install flag declaration from {{agent}} paths command
 The deprecated `--path.install` flag declaration has been removed from the {{agent}} `paths` command and its use removed from the `container` and `enroll` commands.
 
 For more information, check [#6461]({{agent-pull}}6461) and [#2489]({{agent-pull}}2489).
 ::::
 
 ::::{dropdown} Changed the default {{agent}} installation and upgrade
-The default {{agent}} installation and ugprade have been changed to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components. Additional components can be included using flags. 
+The default {{agent}} installation and ugprade have been changed to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components.
+
+Additional components such as `apm` or `fleet` require passing the `--install-servers` flag or setting the `ELASTIC_AGENT_FLAVOR=servers` environment variable.
 
 For more information, check [#6542]({{agent-pull}}6542).
 ::::
@@ -90,13 +102,13 @@ For more information, check [#198799]({{kib-pull}}198799).
 For more information, check [#198799]({{kib-pull}}198799).
 ::::
 
-::::{dropdown} Removed deprecated `topics` property for kafka output in favor of the `topic` property
-Removed deprecated property `topics` from output APIs in response and requests (`(GET|POST|PUT) /api/fleet/outputs`) in favor of the `topic` property. 
+::::{dropdown} Removed deprecated topics property for kafka output in favor of the topic property
+Removed deprecated property `topics` from output APIs in response and requests (`(GET|POST|PUT) /api/fleet/outputs`) in favor of the `topic` property.
 
 For more information, check [#199226]({{kib-pull}}199226).
 ::::
 
-::::{dropdown} Limit pagination size to 100 when retrieving full policy or `withAgentCount` in Fleet
+::::{dropdown} Limit pagination size to 100 when retrieving full policy or withAgentCount in Fleet
 In addition to the new pagination limit size of 100, retrieving agent policies without agent count is now the new default behavior, and a new query parameter `withAgentCount` was added to retrieve the agent count.
 
 For more information, check [#196887]({{kib-pull}}196887).

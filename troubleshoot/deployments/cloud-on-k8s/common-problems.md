@@ -1,10 +1,12 @@
 ---
-navigation_title: "Common issues"
+navigation_title: Common issues
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-common-problems.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-common-problems.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Troubleshoot common Elastic Cloud on Kubernetes issues [k8s-common-problems]
@@ -19,11 +21,11 @@ kubectl -n elastic-system \
   get pods -o=jsonpath='{.items[].status.containerStatuses}' | jq
 ```
 
-```json
+```json subs=true
 [
   {
     "containerID": "containerd://...",
-    "image": "docker.elastic.co/eck/eck-operator:2.16.1",
+    "image": "docker.elastic.co/eck/eck-operator:{{eck_version}}",
     "imageID": "docker.elastic.co/eck/eck-operator@sha256:...",
     "lastState": {
       "terminated": {

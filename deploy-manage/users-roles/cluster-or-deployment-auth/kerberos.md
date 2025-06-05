@@ -1,16 +1,20 @@
 ---
+navigation_title: Kerberos
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/cloud/current/ec-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-kerberos.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/kerberos-realm.html
-navigation_title: Kerberos
 applies_to:
   deployment:
     self:
     ess:
     ece:
     eck:
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: elasticsearch
 ---
 
 # Kerberos authentication [kerberos-realm]
@@ -89,7 +93,7 @@ If you're using a self-managed cluster, then perform the following additional st
 
 * Enable the token service.
 
-    The {{es}} Kerberos implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your `elasticsearch.yml` file:
+    The {{es}} Kerberos implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
     ```yaml
     xpack.security.authc.token.enabled: true
@@ -151,7 +155,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
    You can configure only one Kerberos realm on {{es}} nodes.
    :::
 
-   To configure a Kerberos realm, there are a few mandatory realm settings and other optional settings that you need to configure in the `elasticsearch.yml` configuration file. Add a realm configuration under the `xpack.security.authc.realms.kerberos` namespace.
+   To configure a Kerberos realm, there are a few mandatory realm settings and other optional settings that you need to configure in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file. Add a realm configuration under the `xpack.security.authc.realms.kerberos` namespace.
 
    The most common configuration for a Kerberos realm is as follows:
 

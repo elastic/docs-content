@@ -1,9 +1,12 @@
 ---
-navigation_title: "Kafka"
+navigation_title: Kafka
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-kafka-output.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Configure the Kafka output [apm-kafka-output]
@@ -135,7 +138,7 @@ output.kafka:
         message: "ERR"
 ```
 
-This configuration results in topics named `critical-9.0.0-beta1`, `error-9.0.0-beta1`, and `logs-9.0.0-beta1`.
+This configuration results in topics named _critical-{{version}}_, _error-{{version}}_, and _logs-{{version}}_.
 
 ### `key` [_key]
 

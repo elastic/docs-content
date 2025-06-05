@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # Configuring data streams created by Elastic Agent [config-monitoring-data-streams-elastic-agent]

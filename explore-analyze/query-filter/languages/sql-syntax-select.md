@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-syntax-select.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-syntax-select.html
+products:
+  - id: elasticsearch
 ---
 
 # SELECT [sql-syntax-select]
@@ -123,7 +125,7 @@ where:
 `table_name`
 :   Represents the name (optionally qualified) of an existing table, either a concrete or base one (actual index) or alias.
 
-If the table name contains special SQL characters (such as `.`,`-`,`*`,etc…​) use double quotes to escape them:
+If the table name contains special SQL characters (such as `.`,`-`,`*`,etc…) use double quotes to escape them:
 
 ```sql
 SELECT * FROM "emp" LIMIT 1;
@@ -537,8 +539,9 @@ SELECT SCORE(), * FROM library WHERE MATCH(name, 'dune') ORDER BY page_count DES
 1.8893257      |Frank Herbert  |Dune Messiah       |331            |1969-10-15T00:00:00Z
 ```
 
-NOTE: Trying to return `score` from a non full-text query will return the same value for all results, as all are equally relevant.
-
+:::{note}
+Trying to return `score` from a non full-text query will return the same value for all results, as all are equally relevant.
+:::
 
 ## LIMIT [sql-syntax-limit]
 

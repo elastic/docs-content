@@ -4,11 +4,13 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Remove the add-on [ech-getting-started-removing]
 
-::::{warning} 
+::::{warning}
 This action will destroy all associated data and cannot be undone.
 ::::
 

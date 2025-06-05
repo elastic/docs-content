@@ -2,9 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-account-user-settings.html
   - https://www.elastic.co/guide/en/serverless/current/general-user-profile.html
-applies:
+applies_to:
   serverless: all
-  hosted: all
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Manage your Cloud account and preferences

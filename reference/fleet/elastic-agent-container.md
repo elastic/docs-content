@@ -1,11 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-container.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Run Elastic Agent in a container [elastic-agent-container]
 
-You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
+You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
 Note that running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don’t currently provide {{agent}} container images for Windows.
 
@@ -298,7 +301,7 @@ agent.monitoring:
 
 The above configuration exposes a monitoring endpoint at `http://localhost:6791/processes`.
 
-::::{dropdown} `http://localhost:6791/processes` output
+::::{dropdown} http://localhost:6791/processes output
 ```json
 {
    "processes":[
@@ -344,7 +347,7 @@ The above configuration exposes a monitoring endpoint at `http://localhost:6791/
 
 Each process ID in the `/processes` output can be accessed for more details.
 
-::::{dropdown} `http://localhost:6791/processes/{{process-name}}` output
+::::{dropdown} http://localhost:6791/processes/\{\{process-name\}\} output
 ```json
 {
    "beat":{

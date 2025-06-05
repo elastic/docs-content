@@ -1,15 +1,17 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
+products:
+  - id: kibana
 ---
 
 # Run a search session in the background [search-sessions]
 
 ::::{admonition} Deprecated and disabled by default
-Search Sessions are deprecated. They are disabled by default and will be removed in a future version. You can enable search sessions again by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the `kibana.yml` configuration file.
+Search Sessions are deprecated. They are disabled by default and will be removed in a future version. You can enable search sessions again by setting [`data.search.sessions.enabled`](kibana://reference/configuration-reference/search-sessions-settings.md) to `true` in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file.
 ::::
 
 

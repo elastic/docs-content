@@ -1,9 +1,11 @@
 ---
 mapped_pages:
-  -  https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-uninstalling-eck.html
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-uninstalling-eck.html
 applies_to:
   deployment:
     eck:
+products:
+  - id: cloud-kubernetes
 ---
 
 # Uninstall {{eck}} [k8s-uninstalling-eck]
@@ -23,9 +25,9 @@ To uninstall the operator:
 
 2. Uninstall the operator:
 
-    ```shell
-    kubectl delete -f https://download.elastic.co/downloads/eck/2.16.1/operator.yaml
-    kubectl delete -f https://download.elastic.co/downloads/eck/2.16.1/crds.yaml
+    ```shell subs=true
+    kubectl delete -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
+    kubectl delete -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
     ```
 
 ::::{warning}

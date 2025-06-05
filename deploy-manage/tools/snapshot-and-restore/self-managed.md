@@ -1,10 +1,12 @@
 ---
+navigation_title: Self-managed
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html
-navigation_title: "Self-managed"
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Manage snapshot repositories in self-managed deployments [snapshots-register-repository]
@@ -42,7 +44,7 @@ You can register and manage snapshot repositories in two ways:
 * {{kib}}'s **Snapshot and Restore** feature
 * {{es}}'s [snapshot repository management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot)
 
-To manage repositories in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore*** > ***Repositories**. To register a snapshot repository, click **Register repository**.
+To manage repositories in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Repositories**. To register a snapshot repository, click **Register repository**.
 
 You can also register a repository using the [Create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository).
 
@@ -64,7 +66,7 @@ Other repository types are available through official plugins:
 
 You can also use alternative storage implementations with these repository types, as long as the alternative implementation is fully compatible. For instance, [MinIO](https://minio.io) provides an alternative implementation of the AWS S3 API and you can use MinIO with the [`s3` repository type](s3-repository.md).
 
-Note that some storage systems claim to be compatible with these repository types without emulating their behaviour in full. {{es}} requires full compatibility. In particular the alternative implementation must support the same set of API endpoints, return the same errors in case of failures, and offer equivalent consistency guarantees and performance even when accessed concurrently by multiple nodes. Incompatible error codes, consistency or performance may be particularly hard to track down since errors, consistency failures, and performance issues are usually rare and hard to reproduce.
+Note that some storage systems claim to be compatible with these repository types without emulating their behavior in full. {{es}} requires full compatibility. In particular the alternative implementation must support the same set of API endpoints, return the same errors in case of failures, and offer equivalent consistency guarantees and performance even when accessed concurrently by multiple nodes. Incompatible error codes, consistency or performance may be particularly hard to track down since errors, consistency failures, and performance issues are usually rare and hard to reproduce.
 
 You can perform some basic checks of the suitability of your storage system using the [Repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) API. If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible and is therefore unsuitable for use as a snapshot repository. You will need to work with the supplier of your storage system to address any incompatibilities you encounter.
 

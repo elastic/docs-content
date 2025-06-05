@@ -3,7 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html
 applies_to:
   stack:
-  self:
+  deployment:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Node roles [node-roles-overview]
@@ -14,7 +17,7 @@ Each node performs one or more roles. Roles control the behavior of the node in 
 
 ## Set node roles [set-node-roles]
 
-You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](../../deploy/self-managed/configure-elasticsearch.md). If you set `node.roles`, the node is only assigned the roles you specify. If you don’t set `node.roles`, the node is assigned the following roles:
+You define a node’s roles by setting `node.roles` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). If you set `node.roles`, the node is only assigned the roles you specify. If you don’t set `node.roles`, the node is assigned the following roles:
 
 * `master`
 * `data`
@@ -62,7 +65,7 @@ Similarly, each master-eligible node maintains the following data on disk:
 
 Each node checks the contents of its data path at startup. If it discovers unexpected data then it will refuse to start. This is to avoid importing unwanted [dangling indices](elasticsearch://reference/elasticsearch/configuration-reference/local-gateway.md#dangling-indices) which can lead to a red cluster health. To be more precise, nodes without the `data` role will refuse to start if they find any shard data on disk at startup, and nodes without both the `master` and `data` roles will refuse to start if they have any index metadata on disk at startup.
 
-It is possible to change the roles of a node by adjusting its `elasticsearch.yml` file and restarting it. This is known as *repurposing* a node. In order to satisfy the checks for unexpected data described above, you must perform some extra steps to prepare a node for repurposing when starting the node without the `data` or `master` roles.
+It is possible to change the roles of a node by adjusting its [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file and restarting it. This is known as *repurposing* a node. In order to satisfy the checks for unexpected data described above, you must perform some extra steps to prepare a node for repurposing when starting the node without the `data` or `master` roles.
 
 * If you want to repurpose a data node by removing the `data` role then you should first use an [allocation filter](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) to safely migrate all the shard data onto other nodes in the cluster.
 * If you want to repurpose a node to have neither the `data` nor `master` roles then it is simplest to start a brand-new node with an empty data path and the desired roles. You may find it safest to use an [allocation filter](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-filtering) to migrate the shard data elsewhere in the cluster first.
@@ -86,7 +89,7 @@ The following is a list of the roles that a node can perform in a cluster. A nod
 
 :name: coordinating-node
 
-Requests like search requests or bulk-indexing requests may involve data held on different data nodes. A search request, for example, is executed in two phases which are coordinated by the node which receives the client request — the *coordinating node*.
+Requests like search requests or bulk-indexing requests may involve data held on different data nodes. A search request, for example, is executed in two phases which are coordinated by the node which receives the client request — the *coordinating node*.
 
 In the *scatter* phase, the coordinating node forwards the request to the data nodes which hold the data. Each data node executes the request locally and returns its results to the coordinating node. In the *gather* phase, the coordinating node reduces each data node’s results into a single global result set.
 
@@ -182,7 +185,7 @@ node.roles: [ data ]
 
 Content data nodes are part of the content tier. Data stored in the content tier is generally a collection of items such as a product catalog or article archive. Unlike time series data, the value of the content remains relatively constant over time, so it doesn’t make sense to move it to a tier with different performance characteristics as it ages. Content data typically has long data retention requirements, and you want to be able to retrieve items quickly regardless of how old they are.
 
-Content tier nodes are usually optimized for query performance—​they prioritize processing power over IO throughput so they can process complex searches and aggregations and return results quickly. While they are also responsible for indexing, content data is generally not ingested at as high a rate as time series data such as logs and metrics. From a resiliency perspective the indices in this tier should be configured to use one or more replicas.
+Content tier nodes are usually optimized for query performance—they prioritize processing power over IO throughput so they can process complex searches and aggregations and return results quickly. While they are also responsible for indexing, content data is generally not ingested at as high a rate as time series data such as logs and metrics. From a resiliency perspective the indices in this tier should be configured to use one or more replicas.
 
 The content tier is required and is often deployed within the same node grouping as the hot tier. System indices and other indices that aren’t part of a data stream are automatically allocated to the content tier.
 
@@ -263,7 +266,7 @@ If you take away the ability to be able to handle master duties, to hold data, a
 Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state), like every other node, and they use the cluster state to route requests directly to the appropriate place(s).
 
 ::::{warning}
-Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the elected master node must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.
+Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the elected master node must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.
 ::::
 
 

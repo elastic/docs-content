@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-directory-layout.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Installation layout [apm-directory-layout]
@@ -26,7 +29,7 @@ View the installation layout and default paths for both Fleet-managed APM Server
 :   Main {{agent}} {{fleet}} encrypted configuration
 
 `/Library/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
-:   Log files for {{agent}} and {{beats}} shippers[¹](#footnote-1)
+:   Log files for {{agent}} and {{beats}} shippers[^1^](#footnote-1)
 
 `/usr/bin/elastic-agent`
 :   Shell wrapper installed into PATH
@@ -45,7 +48,7 @@ You can install {{agent}} in a custom base path other than `/Library`.  When ins
 :   Main {{agent}} {{fleet}} encrypted configuration
 
 `/opt/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
-:   Log files for {{agent}} and {{beats}} shippers[¹](#footnote-1)
+:   Log files for {{agent}} and {{beats}} shippers[^1^](#footnote-1)
 
 `/usr/bin/elastic-agent`
 :   Shell wrapper installed into PATH
@@ -64,7 +67,7 @@ You can install {{agent}} in a custom base path other than `/opt`.  When install
 :   Main {{agent}} {{fleet}} encrypted configuration
 
 `C:\Program Files\Elastic\Agent\data\elastic-agent-*\logs\elastic-agent.ndjson`
-:   Log files for {{agent}} and {{beats}} shippers[¹](#footnote-1)
+:   Log files for {{agent}} and {{beats}} shippers[^1^](#footnote-1)
 
 You can install {{agent}} in a custom base path other than `C:\Program Files`.  When installing {{agent}} with the `.\elastic-agent.exe install` command, use the `--base-path` CLI option to specify the custom base path.
 ::::::
@@ -80,7 +83,7 @@ You can install {{agent}} in a custom base path other than `C:\Program Files`.  
 :   Main {{agent}} {{fleet}} encrypted configuration
 
 `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
-:   Log files for {{agent}} and {{beats}} shippers[¹](#footnote-1)
+:   Log files for {{agent}} and {{beats}} shippers[^1^](#footnote-1)
 
 `/usr/bin/elastic-agent`
 :   Shell wrapper installed into PATH
@@ -97,7 +100,7 @@ You can install {{agent}} in a custom base path other than `C:\Program Files`.  
 :   Main {{agent}} {{fleet}} encrypted configuration
 
 `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
-:   Log files for {{agent}} and {{beats}} shippers[¹](#footnote-1)
+:   Log files for {{agent}} and {{beats}} shippers[^1^](#footnote-1)
 
 `/usr/bin/elastic-agent`
 :   Shell wrapper installed into PATH
@@ -151,5 +154,4 @@ For the deb and rpm distributions, these paths are set in the init script or in 
 
 :::::::
 
-$$$footnote-1$$$
-¹ Logs file names end with a date (`YYYYMMDD`) and optional number: `elastic-agent-YYYYMMDD.ndjson`, `elastic-agent-YYYYMMDD-1.ndjson`, and so on as new files are created during rotation.
+^1^ $$$footnote-1$$$ Logs file names end with a date (`YYYYMMDD`) and optional number: `elastic-agent-YYYYMMDD.ndjson`, `elastic-agent-YYYYMMDD-1.ndjson`, and so on as new files are created during rotation.

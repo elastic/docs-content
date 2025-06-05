@@ -1,7 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/esql-for-search.html
 applies_to:
-  stack: preview
-  serverless: preview
+  stack: preview 9.0, ga 9.1
+  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 % ℹ️ 8.x version of this doc lives in elasticsearch repo
@@ -142,7 +146,7 @@ FROM articles METADATA _score
 
 ```esql
 FROM books METADATA _score
-| WHERE match(semantic_title, "fantasy adventure", { "boost": 0.75 }) 
+| WHERE match(semantic_title, "fantasy adventure", { "boost": 0.75 })
     OR match(title, "fantasy adventure", { "boost": 0.25 })
 | SORT _score DESC
 ```
@@ -155,7 +159,7 @@ Refer to [{{esql}} limitations](elasticsearch://reference/query-languages/esql/l
 
 ### Tutorials and how-to guides [esql-for-search-tutorials]
 
-- [Search and filter with {{esql}}](esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {esql}
+- [Search and filter with {{esql}}](esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {{esql}}
 - [Semantic search with semantic_text](semantic-search/semantic-search-semantic-text.md): Learn how to use the `semantic_text` field type
 
 ### Technical reference [esql-for-search-reference]
@@ -171,5 +175,5 @@ Refer to [{{esql}} limitations](elasticsearch://reference/query-languages/esql/l
 
 ### Related blog posts [esql-for-search-blogs]
 
-% TODO* https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[{{esql}}, you know for Search]: Introducing scoring and semantic search
+- [{{esql}}, you know for Search](https://www.elastic.co/search-labs/blog/esql-introducing-scoring-semantic-search): Introducing scoring and semantic search
 - [Introducing full text filtering in {{esql}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr): Overview of {{esql}}'s text filtering capabilities

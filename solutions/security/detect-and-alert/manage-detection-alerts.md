@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Manage detection alerts [security-alerts-manage]
@@ -35,7 +38,7 @@ The Alerts page offers various ways for you to organize and triage detection ale
 * Use the date and time filter to define a specific time range. By default, this filter is set to search the last 24 hours.
 * Use the drop-down filter controls to filter alerts by up to four fields. By default, you can filter alerts by **Status**, **Severity**, **User**, and **Host**, and you can [edit the controls](/solutions/security/detect-and-alert/manage-detection-alerts.md#drop-down-filter-controls) to use other fields.
 * Visualize and group alerts by specific fields in the visualization section. Use the buttons on the left to select a view type (**Summary**, **Trend**, **Counts**, or **Treemap**), and use the menus on the right to select the ECS fields used for grouping alerts. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md) for more on each view type.
-* Hover over a value to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions). Click the expand icon for more options, including **Show top *x*** and **Copy to Clipboard**. The available options vary based on the type of data.
+* Hover over a value to display available [inline actions](/solutions/security/get-started/elastic-security-ui.md#inline-actions). Click the expand icon for more options, including **Show top _x_** and **Copy to Clipboard**. The available options vary based on the type of data.
 
     :::{image} /solutions/images/security-inline-actions-menu.png
     :alt: Inline additional actions menu
@@ -122,7 +125,7 @@ To interact with grouped alerts:
 Use the toolbar buttons in the upper-left of the Alerts table to customize the columns you want displayed:
 
 * **Columns**: Reorder the columns.
-* **Sort fields *x***: Sort the table by one or more columns.
+* **Sort fields _x_**: Sort the table by one or more columns.
 * **Fields**: Select the fields to display in the table. You can also add [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) to detection alerts and display them in the Alerts table.
 
 Click the **Full screen** button in the upper-right to view the table in full-screen mode.
@@ -173,7 +176,7 @@ You can set an alert’s status to indicate whether it needs to be investigated 
 
 To change an alert’s status, do one of the following:
 
-* In the Alerts table, click **More actions** (**…​**) in the alert’s row, then select a status.
+* In the Alerts table, click **More actions** (**…**) in the alert’s row, then select a status.
 * In the Alerts table, select the alerts you want to change, click **Selected *x* alerts** at the upper-left above the table, and then select a status.
 
     :::{image} /solutions/images/security-alert-change-status.png
@@ -205,7 +208,7 @@ To display alert tags in the Alerts table, click **Fields** and add the `kibana.
 
 To apply or remove alert tags on individual alerts, do one of the following:
 
-* In the Alerts table, click **More actions** (**…​**) in an alert’s row, then click **Apply alert tags**. Select or unselect tags, then click **Apply tags**.
+* In the Alerts table, click **More actions** (**…**) in an alert’s row, then click **Apply alert tags**. Select or unselect tags, then click **Apply tags**.
 * In an alert’s details flyout, click **Take action → Apply alert tags**. Select or unselect tags, then click **Apply tags**.
 
 To apply or remove alert tags on multiple alerts, select the alerts you want to change, then click **Selected *x* alerts** at the upper-left above the table. Click **Apply alert tags**, select or unselect tags, then click **Apply tags**.
@@ -227,8 +230,8 @@ Users are not notified when they’ve been assigned to, or unassigned from, aler
 
 | Action | Instructions |
 | --- | --- |
-| Assign users to an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…​**) in an alert’s row, then click **Assign alert**. Select users, then click **Apply**.<br> - **Alert details flyout**: Click **Take action → Assign alert**. Alternatively, click the **Assign alert** icon at the top of the alert details flyout, select users, then click **Apply**.<br> |
-| Unassign all users from an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…​**) in an alert’s row, then click **Unassign alert**.<br> - **Alert details flyout**: Click **Take action → Unassign alert**.<br> |
+| Assign users to an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…**) in an alert’s row, then click **Assign alert**. Select users, then click **Apply**.<br> - **Alert details flyout**: Click **Take action → Assign alert**. Alternatively, click the **Assign alert** icon at the top of the alert details flyout, select users, then click **Apply**.<br> |
+| Unassign all users from an alert | Choose one of the following:<br><br> - **Alerts table**: Click **More actions** (**…**) in an alert’s row, then click **Unassign alert**.<br> - **Alert details flyout**: Click **Take action → Unassign alert**.<br> |
 | Assign users to multiple alerts | From the Alerts table, select the alerts you want to change. Click **Selected *x* alerts** at the upper-left above the table, then click **Assign alert**. Select users, then click **Apply**.<br><br> **Note**: Users assigned to some of the selected alerts will be displayed as unassigned in the selection list. Selecting said users will assign them to all alerts they haven’t been assigned to yet.<br><br> |
 | Unassign users from multiple alerts | From the Alerts table, select the alerts you want to change and click **Selected *x* alerts** at the upper-left above the table. Click **Unassign alert** to remove users from the alert. |
 
@@ -261,7 +264,7 @@ Click the **Assignees** filter above the Alerts table, then select the users you
 
 You can add exceptions to the rule that generated an alert directly from the Alerts table. Exceptions prevent a rule from generating alerts even when its criteria are met.
 
-To add an exception, click the **More actions** menu (**…​**) in the Alerts table, then select **Add exception**. Alternatively, select **Take action** → **Add rule exception** in the alert details flyout.
+To add an exception, click the **More actions** menu (**…**) in the Alerts table, then select **Add exception**. Alternatively, select **Take action** → **Add rule exception** in the alert details flyout.
 
 For information about exceptions and how to use them, refer to [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md).
 

@@ -1,9 +1,12 @@
 ---
-navigation_title: "Fleet-managed"
+navigation_title: Fleet-managed
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitor-apm-self-install.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Monitor a Fleet-managed APM Server [apm-monitor-apm-self-install]

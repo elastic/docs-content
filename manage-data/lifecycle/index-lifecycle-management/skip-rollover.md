@@ -3,7 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/skipping-rollover.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Skip rollover [skipping-rollover]

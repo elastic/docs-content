@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/es-output-settings.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Elasticsearch output settings [es-output-settings]
@@ -45,14 +48,14 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 **Performance tuning** $$$es-agent-performance-tuning$$$
 :   Choose one of the menu options to tune your {{agent}} performance when sending data to an {{es}} output. You can optimize for throughput, scale, latency, or you can choose a balanced (the default) set of performance specifications. Refer to [Performance tuning settings](#es-output-settings-performance-tuning-settings) for details about the setting values and their potential impact on performance.
 
-    You can also use the [Advanced YAML configuration](#es-output-settings-yaml-config) field to set custom values. Note that if you adjust any of the performance settings described in the following **Advanced YAML configuration*** section, the ***Performance tuning*** option automatically changes to `Custom` and cannot be changed.
+    You can also use the [Advanced YAML configuration](#es-output-settings-yaml-config) field to set custom values. Note that if you adjust any of the performance settings described in the following **Advanced YAML configuration** section, the **Performance tuning** option automatically changes to `Custom` and cannot be changed.
 
-    Performance tuning preset values take precedence over any settings that may be defined separately. If you want to change any setting, you need to use the `Custom` ***Performance tuning*** option and specify the settings in the ***Advanced YAML configuration*** field.
+    Performance tuning preset values take precedence over any settings that may be defined separately. If you want to change any setting, you need to use the `Custom` **Performance tuning** option and specify the settings in the **Advanced YAML configuration** field.
 
     For example, if you would like to use the balanced preset values except that you prefer a higher compression level, you can do so as follows:
-    1. In {{fleet}}, open the ***Settings*** tab.
-    2. In the ***Outputs*** section, select ***Add output*** to create a new output, or select the edit icon to edit an existing output.
-    3. In the ***Add new output*** or the ***Edit output*** flyout, set ***Performance tuning** to `Custom`.
+    1. In {{fleet}}, open the **Settings** tab.
+    2. In the **Outputs** section, select **Add output** to create a new output, or select the edit icon to edit an existing output.
+    3. In the **Add new output** or the **Edit output** flyout, set **Performance tuning** to `Custom`.
     4. Refer to the list of [performance tuning preset values](#es-output-settings-performance-tuning-settings), and add the settings you prefer into the **Advanced YAML configuration** field. For the `balanced` presets, the yaml configuration would be as shown:
 
       ```yaml
@@ -144,7 +147,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 
 For descriptions of each setting, refer to [Advanced YAML configuration](#es-output-settings-yaml-config). For the  `queue.mem.events`, `queue.mem.flush.min_events` and `queue.mem.flush.timeout` settings, refer to the [internal queue configuration settings](beats://reference/filebeat/configuring-internal-queue.md) in the {{filebeat}} documentation.
 
-`Balanced` represents the new default setting (out of the box behaviour). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degredation in EPS (Events Per Second). These relative performance numbers were calculated from a performance testbed which operates in a controlled setting ingesting a large log file.
+`Balanced` represents the new default setting (out of the box behavior). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degredation in EPS (Events Per Second). These relative performance numbers were calculated from a performance testbed which operates in a controlled setting ingesting a large log file.
 
 As mentioned, the `custom` preset allows you to input your own set of parameters for a finer tuning of performance. The following table is a summary of a few data points and how the resulting EPS compares to the `Balanced` setting mentioned above.
 

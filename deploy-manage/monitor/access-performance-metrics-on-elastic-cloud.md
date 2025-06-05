@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Performance metrics on {{ecloud}} [ec-saas-metrics-accessing]

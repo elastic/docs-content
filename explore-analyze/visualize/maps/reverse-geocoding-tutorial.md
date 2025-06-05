@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/reverse-geocoding-tutorial.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/reverse-geocoding-tutorial.html
+products:
+  - id: kibana
 ---
 
 # Map custom regions with reverse geocoding [reverse-geocoding-tutorial]

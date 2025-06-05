@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-elasticsearch-output.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Configure the Elasticsearch output [apm-elasticsearch-output]
@@ -38,7 +41,7 @@ When sending data to a secured cluster through the `elasticsearch` output, APM S
 output.elasticsearch:
   hosts: ["https://myEShost:9200"]
   username: "apm_writer"
-  password: "{pwd}"
+  password: "YOUR_PASSWORD"
 ```
 
 **API key authentication:**
@@ -204,7 +207,7 @@ Authentication is specified in the APM Server configuration file:
     output.elasticsearch:
       hosts: ["https://myEShost:9200"]
       username: "apm_writer" <1>
-      password: "{pwd}"
+      password: "YOUR_PASSWORD"
     ```
 
     1. This user needs the privileges required to publish events to {{es}}. To create a user like this, see [Create a *writer* role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).

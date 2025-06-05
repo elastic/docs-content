@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-running.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Step 4: Run the backend applications [profiling-self-managed-running]
@@ -499,16 +501,16 @@ docker logs pf-elastic-symbolizer
 
     For x86_64
 
-    ```shell
-    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-9.0.0-beta1-linux-x86_64.tar.gz" | tar xzf -
-    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-9.0.0-beta1-linux-x86_64.tar.gz" | tar xzf -
+    ```shell subs=true
+    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version}}-linux-x86_64.tar.gz" | tar xzf -
+    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version}}-linux-x86_64.tar.gz" | tar xzf -
     ```
 
     For ARM64
 
-    ```shell
-    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-9.0.0-beta1-linux-arm64.tar.gz" | tar xzf -
-    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-9.0.0-beta1-linux-arm64.tar.gz" | tar xzf -
+    ```shell subs=true
+    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version}}-linux-arm64.tar.gz" | tar xzf -
+    wget -O- "https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version}}-linux-arm64.tar.gz" | tar xzf -
     ```
 
 2. Copy the `pf-elastic-collector` and `pf-elastic-symbolizer` binaries to a directory in the machine’s `PATH`.

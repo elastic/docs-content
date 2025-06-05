@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-support-matrix.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Synthetics support matrix [synthetics-support-matrix]

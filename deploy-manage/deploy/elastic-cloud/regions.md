@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/regions.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Regions [regions]
@@ -42,10 +44,6 @@ The following Azure regions are currently available:
 | eastus | East US |
 
 ## Google Cloud Platform (GCP) regions [regions-gcp-regions]
-
-```yaml {applies_to}
-serverless: preview
-```
 
 The following GCP regions are currently available:
 

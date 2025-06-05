@@ -5,7 +5,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Data tiers
@@ -48,7 +51,7 @@ Learn more about each data tier, including when and how it should be used.
 
 Data stored in the content tier is generally a collection of items such as a product catalog or article archive. Unlike time series data, the value of the content remains relatively constant over time, so it doesn’t make sense to move it to a tier with different performance characteristics as it ages. Content data typically has long data retention requirements, and you want to be able to retrieve items quickly regardless of how old they are.
 
-Content tier nodes are usually optimized for query performance—​they prioritize processing power over IO throughput so they can process complex searches and aggregations and return results quickly. While they are also responsible for indexing, content data is generally not ingested at as high a rate as time series data such as logs and metrics. From a resiliency perspective the indices in this tier should be configured to use one or more replicas.
+Content tier nodes are usually optimized for query performance—they prioritize processing power over IO throughput so they can process complex searches and aggregations and return results quickly. While they are also responsible for indexing, content data is generally not ingested at as high a rate as time series data such as logs and metrics. From a resiliency perspective the indices in this tier should be configured to use one or more replicas.
 
 The content tier is required and is often deployed within the same node grouping as the hot tier. System indices and other indices that aren’t part of a data stream are automatically allocated to the content tier.
 
@@ -441,7 +444,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
 ### Self-managed deployments [configure-data-tiers-on-premise]
 
-For self-managed deployments, each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) is configured in `elasticsearch.yml`. For example, the highest-performance nodes in a cluster might be assigned to both the hot and content tiers:
+For self-managed deployments, each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) is configured in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). For example, the highest-performance nodes in a cluster might be assigned to both the hot and content tiers:
 
 ```yaml
 node.roles: ["data_hot", "data_content"]

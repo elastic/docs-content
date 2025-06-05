@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-pod-disruption-budget.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-pod-disruption-budget.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Pod disruption budget [k8s-pod-disruption-budget]
@@ -12,7 +14,7 @@ A [Pod Disruption Budget](https://kubernetes.io/docs/tasks/run-application/confi
 
 ECK manages a default PDB per {{es}} resource. It allows one {{es}} Pod to be taken down, as long as the cluster has a `green` health. Single-node clusters are not considered highly available and can always be disrupted.
 
-In the {{es}} specification, you can change the default behaviour as follows:
+In the {{es}} specification, you can change the default behavior as follows:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1

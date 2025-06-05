@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/automating-report-generation.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/automating-report-generation.html
+products:
+  - id: kibana
 ---
 
 # Automatically generate reports [automating-report-generation]
@@ -18,7 +20,7 @@ Create the POST URL that triggers a report to generate PDF and CSV reports.
 To create the POST URL for PDF reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
-2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report.
+2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report.
 
     * If you are using **Dashboard** or **Visualize Library**, from the toolbar, click **Share > Export**, select the PDF option then click **Copy POST URL**.
     * If you are using **Canvas**, from the toolbar, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
@@ -105,7 +107,7 @@ curl \
 
 1. The required `POST` method.
 2. The user credentials for a user with permission to access {{kib}} and {{report-features}}.
-3. The required `kbn-xsrf` header for all `POST` requests to {{kib}}. For more information, refer to [API Request Headers](https://www.elastic.co/guide/en/kibana/current/api.html#api-request-headers).
+3. The required `kbn-xsrf` header for all `POST` requests to {{kib}}. For more information, refer to [API Request Headers](https://www.elastic.co/docs/api/doc/kibana/).
 4. The POST URL. You can copy and paste the URL for any report.
 
 
@@ -154,4 +156,6 @@ If you experience issues with the deprecated report URLs after you upgrade {{kib
 * **Visualize Library** reports:  `/api/reporting/generate/visualization/<visualization-id>`
 * **Discover** reports: `/api/reporting/generate/search/<discover-session-id>`
 
-IMPORTANT: In earlier {{kib}} versions, you could use the `&sync` parameter to append to report URLs that held the request open until the document was fully generated. The `&sync` parameter is now unsupported. If you use the `&sync` parameter in Watcher, you must update the parameter.
+:::{important}
+In earlier {{kib}} versions, you could use the `&sync` parameter to append to report URLs that held the request open until the document was fully generated. The `&sync` parameter is now unsupported. If you use the `&sync` parameter in Watcher, you must update the parameter.
+:::

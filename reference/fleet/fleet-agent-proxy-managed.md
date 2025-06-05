@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-managed.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet managed Elastic Agent connectivity using a proxy server [fleet-agent-proxy-managed]
@@ -14,7 +17,7 @@ This page describes where a proxy server is allowed in your deployment and how t
 {{fleet}} central management enables you to define your proxy servers and then configure an output or the {{fleet-server}} to be reachable through any of these proxies. This also enables you to modify the proxy server details if needed without having to re-install {{agents}}.
 
 :::{image} images/agent-proxy-server-managed-deployment.png
-:alt: Image showing connections between {{fleet}} managed {agent}
+:alt: Image showing connections between {{fleet}} managed {{agent}}
 :::
 
 In this scenario Fleet Server and Elasticsearch are deployed in {{ecloud}} and reachable on port 443.

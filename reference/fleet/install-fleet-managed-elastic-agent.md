@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Install Fleet-managed Elastic Agents [install-fleet-managed-elastic-agent]
@@ -68,7 +71,7 @@ To install an {{agent}} and enroll it in {{fleet}}:
     2. Beginning with version 9.0, {{agent}} packages are available in multiple flavors. The default, "basic" flavor contains the components required for most use data collection use cases. A "servers" flavor is also available with additional components. You can adjust the `elastic-agent install` command as required to choose a different flavor. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
 
         :::{image} images/kibana-agent-flyout.png
-        :alt: Add agent flyout in {kib}
+        :alt: Add agent flyout in {{kib}}
         :screenshot:
         :::
 

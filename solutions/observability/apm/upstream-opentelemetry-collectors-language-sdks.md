@@ -5,21 +5,22 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Upstream OpenTelemetry Collectors and language SDKs [apm-open-telemetry-direct]
-
-:::{include} _snippets/apm-server-vs-mis.md
-:::
-
-::::{note}
-This is one of several approaches you can use to integrate Elastic with OpenTelemetry. **To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).**
-::::
 
 The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means trace data and metrics collected from your applications and infrastructure can be sent directly to the {{stack}}.
 
 * Send data to Elastic from an upstream [OpenTelemetry Collector](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-connect-open-telemetry-collector)
 * Send data to Elastic from an upstream [OpenTelemetry language SDK](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel)
+
+::::{note}
+This is one of several approaches you can use to integrate Elastic with OpenTelemetry. To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).
+::::
 
 ## Send data from an upstream OpenTelemetry Collector [apm-connect-open-telemetry-collector]
 
@@ -175,7 +176,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 1. [preview] The OpenTelemetry logs intake via APM Server is currently in technical preview.
 
 `OTEL_RESOURCE_ATTRIBUTES`
-:   Fields that describe the service and the environment that the service runs in. See [resource attributes](/solutions/observability/apm/resource-attributes.md) for more information.
+:   Fields that describe the service and the environment that the service runs in. See [attributes](/solutions/observability/apm/attributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
 :   APM Server URL. The host and port that APM Server listens for events on.
@@ -216,7 +217,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 1. [preview]  The OpenTelemetry logs intake via Elastic is currently in technical preview.
 
 `OTEL_RESOURCE_ATTRIBUTES`
-:   Fields that describe the service and the environment that the service runs in. See [resource attributes](/solutions/observability/apm/resource-attributes.md) for more information.
+:   Fields that describe the service and the environment that the service runs in. See [attributes](/solutions/observability/apm/attributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
 :   Elastic URL. The host and port that Elastic listens for APM events on.
@@ -253,8 +254,8 @@ When using a layer 7 (L7) proxy like AWS ALB, requests must be proxied in a way 
 
 Many L7 load balancers handle HTTP and gRPC traffic separately and rely on explicitly defined routes and service configurations to correctly proxy requests. Since APM Server serves both protocols on the same port, it may not be compatible with some L7 load balancers. For example, to work around this issue in [Ingress NGINX Controller for Kubernetes](https://github.com/kubernetes/ingress-nginx), either:
 
-* Use the `otlp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
-* Use the `otlphttp` exporter in the OTel collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
+* Use the `otlp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
+* Use the `otlphttp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
 
 The preferred approach is to deploy a L4 (TCP) load balancer (e.g. [NLB](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html) on AWS) in front of APM Server, which forwards raw TCP traffic transparently without protocol inspection.
 
@@ -262,8 +263,12 @@ For more information on how to configure an AWS ALB to support gRPC, see this AW
 
 For more information on how APM Server services gRPC requests, see [Muxing gRPC and HTTP/1.1](https://github.com/elastic/apm-server/blob/main/dev_docs/otel.md#muxing-grpc-and-http11).
 
+
+:::{include} _snippets/apm-server-vs-mis.md
+:::
+
 ## Next steps [apm-open-telemetry-direct-next]
 
 * [Collect metrics](/solutions/observability/apm/collect-metrics.md)
-* Add [Resource attributes](/solutions/observability/apm/resource-attributes.md)
+* Add [resource attributes](/solutions/observability/apm/attributes.md)
 * Learn about the [limitations of this integration](/solutions/observability/apm/limitations.md)

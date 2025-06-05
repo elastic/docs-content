@@ -9,6 +9,8 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
 # {{es}} logfile audit output [audit-log-output]

@@ -1,13 +1,15 @@
 ---
+navigation_title: "{{kib}}"
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Using {{esql}} in {{kib}}"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
+products:
+  - id: elasticsearch
 ---
 
-# Using ES|QL in Kibana [esql-kibana]
+# Use ES|QL in Kibana [esql-kibana]
 
 You can use {{esql}} in {{kib}} to query and aggregate your data, create visualizations, and set up alerts.
 

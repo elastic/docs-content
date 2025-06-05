@@ -1,10 +1,12 @@
 ---
+navigation_title: Email action
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Email action"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html
+products:
+  - id: elasticsearch
 ---
 
 # Email action [actions-email]
@@ -128,7 +130,7 @@ See [Automating report generation](../../report-and-share/automating-report-gene
 $$$email-address$$$
 
 Email Address
-:   An email address can contain two possible parts—​the address itself and an optional personal name as described in [RFC 822](http://www.ietf.org/rfc/rfc822.txt). The address can be represented either as a string of the form `user@host.domain` or `Personal Name <user@host.domain>`. You can also specify an email address as an object that contains `name` and `address` fields.
+:   An email address can contain two possible parts—the address itself and an optional personal name as described in [RFC 822](http://www.ietf.org/rfc/rfc822.txt). The address can be represented either as a string of the form `user@host.domain` or `Personal Name <user@host.domain>`. You can also specify an email address as an object that contains `name` and `address` fields.
 
 $$$address-list$$$
 
@@ -139,7 +141,7 @@ Address List
 
 {{watcher}} can send email using any SMTP email service. Email messages can contain basic HTML tags. You can control which groups of tags are allowed by [Configuring HTML Sanitization Options](#email-html-sanitization).
 
-You configure the accounts {{watcher}} can use to send email in the `xpack.notification.email` namespace in `elasticsearch.yml`. The password for the specified SMTP user is stored securely in the [{{es}} keystore](../../../deploy-manage/security/secure-settings.md).
+You configure the accounts {{watcher}} can use to send email in the `xpack.notification.email` namespace in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). The password for the specified SMTP user is stored securely in the [{{es}} keystore](../../../deploy-manage/security/secure-settings.md).
 
 If your email account is configured to require two step verification, you need to generate and use a unique App Password to send email from {{watcher}}. Authentication will fail if you use your primary password.
 
@@ -282,7 +284,7 @@ bin/elasticsearch-keystore add xpack.notification.email.account.exchange_account
 
 The `email` action supports sending messages with an HTML body. However, for security reasons, {{watcher}} [sanitizes](https://en.wikipedia.org/wiki/HTML_sanitization) the HTML.
 
-You can control which HTML features are allowed or disallowed by configuring the `xpack.notification.email.html.sanitization.allow` and `xpack.notification.email.html.sanitization.disallow` settings in `elasticsearch.yml`. You can specify individual HTML elements and [HTML feature groups](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#html-feature-groups). By default, {{watcher}} allows the following features: `body`, `head`, `_tables`, `_links`, `_blocks`, `_formatting` and `img:embedded`.
+You can control which HTML features are allowed or disallowed by configuring the `xpack.notification.email.html.sanitization.allow` and `xpack.notification.email.html.sanitization.disallow` settings in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). You can specify individual HTML elements and [HTML feature groups](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#html-feature-groups). By default, {{watcher}} allows the following features: `body`, `head`, `_tables`, `_links`, `_blocks`, `_formatting` and `img:embedded`.
 
 For example, the following settings allow the HTML to contain tables and block elements, but disallow  `<h4>`, `<h5>` and `<h6>` tags.
 

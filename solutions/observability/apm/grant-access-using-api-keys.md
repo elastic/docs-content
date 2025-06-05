@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-beats-api-keys.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Grant access using API keys [apm-beats-api-keys]
@@ -54,6 +57,14 @@ To create an API key:
                     "names": [".apm-agent-configuration"],
                     "privileges": ["read"],
                     "allow_restricted_indices": true
+                }
+            ]
+        },
+        "apm_tail_based_sampling": {
+            "index": [
+                {
+                    "names": ["traces-apm.sampled"],
+                    "privileges": ["read"]
                 }
             ]
         }
@@ -156,6 +167,14 @@ POST /_security/api_key
           "allow_restricted_indices": true
         }
       ]
+    },
+    "apm_tail_based_sampling": {
+        "index": [
+            {
+                "names": ["traces-apm.sampled"],
+                "privileges": ["read"]
+            }
+        ]
     }
   }
 }
