@@ -143,14 +143,14 @@ You can’t restore a snapshot to an earlier version of {{es}}. For example, you
 
 Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt will fail.
 
-| Index creation version | 6.8 | 7.0–7.1 | 7.2–7.17 | 8.0–8.2 | 8.3–8.17 |
-|------------------------|-----|---------|---------|---------|---------|
-| 5.0–5.6               | ✅   | ❌       | ❌       | ❌       | ✅ [^1^](#footnote-1)   |
-| 6.0–6.7               | ✅   | ✅       | ✅       | ❌       | ✅ [^1^](#footnote-1)   |
-| 6.8                   | ✅   | ❌       | ✅       | ❌       | ✅ [^1^](#footnote-1)   |
-| 7.0–7.1               | ❌   | ✅       | ✅       | ✅       | ✅       |
-| 7.2–7.17              | ❌   | ❌       | ✅       | ✅       | ✅       |
-| 8.0–8.17              | ❌   | ❌       | ❌       | ✅       | ✅       |
+| Index creation version | 6.8 | 7.0–7.1 | 7.2–7.17 | 8.0–8.2 | 8.3–8.18 | 9.0 |
+|------------------------|-----|---------|---------|---------|---------|-----|
+| 5.0–5.6               | ✅   | ❌       | ❌       | ❌       | ✅ [^1^](#footnote-1)   | ❌ |
+| 6.0–6.7               | ✅   | ✅       | ✅       | ❌       | ✅ [^1^](#footnote-1)   | ❌ |
+| 6.8                   | ✅   | ❌       | ✅       | ❌       | ✅ [^1^](#footnote-1)   | ❌ |
+| 7.0–7.1               | ❌   | ✅       | ✅       | ✅       | ✅       | ✅ |
+| 7.2–7.17              | ❌   | ❌       | ✅       | ✅       | ✅       | ✅ |
+| 8.0–8.17              | ❌   | ❌       | ❌       | ✅       | ✅       | ✅ |
 
 ^1^ $$$footnote-1$$$ Supported with [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
