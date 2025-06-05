@@ -79,7 +79,6 @@ toc:
                   - file: deploy/cloud-enterprise/ece-load-balancers.md
                   - file: deploy/cloud-enterprise/ece-jvm.md
                   - file: deploy/cloud-enterprise/ece-wildcard-dns.md
-                  - file: deploy/cloud-enterprise/ece-manage-capacity.md
               - file: deploy/cloud-enterprise/install.md
                 children:
                   - file: deploy/cloud-enterprise/identify-deployment-scenario.md
@@ -128,6 +127,7 @@ toc:
                   - file: deploy/cloud-enterprise/change-ece-api-url.md
                   - file: deploy/cloud-enterprise/change-endpoint-urls.md
                   - file: deploy/cloud-enterprise/enable-custom-endpoint-aliases.md
+                  - file: deploy/cloud-enterprise/ece-manage-capacity.md
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
