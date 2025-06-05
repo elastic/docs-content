@@ -49,7 +49,7 @@ All actions executed on a host are tracked in the host’s response actions hist
 
 ## Isolate a host [isolate-a-host]
 
-::::{dropdown} Isolate a host from an event (Serverless only) or detection alert
+::::{dropdown} Isolate a host from an event (Serverless only) or a detection alert
 1. Open an event ({{serverless-short}} only) or a detection alert:
     * From the event analyzer view: Click an event. ({{serverless-short}} only)
     * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
