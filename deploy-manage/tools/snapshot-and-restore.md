@@ -150,17 +150,19 @@ Any index you restore from a snapshot must also be compatible with the current c
 | 6.8                   | ✅   | ❌       | ✅       | ❌       | ✅ [^1^](#footnote-1)   | ✅ [^1^](#footnote-1) |
 | 7.0–7.1               | ❌   | ✅       | ✅       | ✅       | ✅       | ✅ [^1^](#footnote-1) [^2^](#footnote-2) |
 | 7.2–7.17              | ❌   | ❌       | ✅       | ✅       | ✅       | ✅ [^1^](#footnote-1) [^2^](#footnote-2) |
-| 8.0–8.17              | ❌   | ❌       | ❌       | ✅       | ✅       | ✅ |
+| 8.0–8.18              | ❌   | ❌       | ❌       | ✅       | ✅       | ✅ |
 
 ^1^ $$$footnote-1$$$ Supported with [archive indices](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
 ^2^ $$$footnote-2$$$ Supported with [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md).
 
-You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 7.6.0 to a cluster running 7.5.0.
+You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 8.18.0 to a cluster running 8.15.0.
 
-A compatible snapshot can contain indices created in an older incompatible version. For example, a snapshot of a 7.17 cluster can contain an index created in 6.8. Restoring the 6.8 index to an 8.18 cluster fails unless you use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). To restore a 7.17 index to a 9.0 cluster, you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) or [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). Keep this in mind if you take a snapshot before upgrading a cluster.
+#### Restoring incompatible indices
 
-As a workaround, you can first restore the index to another cluster running the latest version of {{es}} that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-reindex.html#reindex-from-remote) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) is enabled.
+A compatible snapshot can contain indices created in an older incompatible version. To restore these incompatible indices, you must take additional steps. For example, a snapshot of a 7.17 cluster might contain an index created in 6.8. Restoring the 6.8 index to an 8.18 cluster fails unless you use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). To restore a 7.17 index to a 9.0 cluster, you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) or [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). Keep this in mind if you take a snapshot before upgrading a cluster.
+
+To ensure index compatibility, you can first restore the index to another cluster running the latest version of {{es}} that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-reindex.html#reindex-from-remote) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-source-field.md) is enabled.
 
 Reindexing from remote can take significantly longer than restoring a snapshot. Before you start, test the reindex from remote process with a subset of the data to estimate your time requirements.
 
