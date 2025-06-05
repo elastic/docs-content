@@ -9,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Understanding node moves and their implications [ec-deployment-node-move]
+# Understanding node moves and system maintenance [ec-deployment-node-move]
 
 To ensure that your deployment nodes are located on healthy hosts, we vacate nodes to perform routine system maintenance or to remove a host with hardware issues from service.
 
