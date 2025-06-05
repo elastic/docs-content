@@ -293,7 +293,7 @@ npx @elastic/synthetics totp <secret> --issuer <issuer> --label <label>
 
 ## Airgapped environments
 
-When we have to deal with airgapped environments we often endup in quite complicated setups and workarounds. Custom certificates are very common and might not be trusted by your NodeJS install or NodeJS container. To circumvent this and still make it work you can execute all `npx` related commands with `NODE_TLS_REJECT_UNAUTHORIZED=0` at the beginning. Thus creating a new project looks like this `NODE_TLS_REJECT_UNAUTHORIZED=0 npx @elastic/synthetics init project-name`. This will ignore any certificate errors.
+When working in air-gapped environments, setup can become complex and require workarounds. One common issue is Node.js installations or containers not trusting custom certificates. To bypass certificate errors, prefix `npx` related commands with `NODE_TLS_REJECT_UNAUTHORIZED=0`. For example, `NODE_TLS_REJECT_UNAUTHORIZED=0 npx @elastic/synthetics init project-name`. This allows the command to run even if the certificate isn't trusted.
 
 
 :   Identifier for the account. Defaults to `SyntheticsTOTP`
