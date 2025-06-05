@@ -80,7 +80,7 @@ find /mnt/data/elastic/*/services/zookeeper/data/ -print -exec du -hs {} \;
 find /mnt/data/elastic/*/services/zookeeper/data/ -print -exec stat {} \;
 ```
 
-**Essential Information (B) - ECE Diagnostics**
+### Collect ECE diagnostics [ece-diagnostics]
 
 Follow [Run ECE diagnostics tool](run-ece-diagnostics-tool.md) to collect ECE diagnostics. 
 
