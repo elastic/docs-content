@@ -132,7 +132,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 ::::
 
 
-::::{dropdown} Release a host from an event ({{serverless-short only}}) or detection alert
+::::{dropdown} Release a host from an endpoint
 1. Find **Endpoints** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then either:
 
     * Select the appropriate endpoint in the **Endpoint** column, and click **Take action → Release host** in the endpoint details flyout.
