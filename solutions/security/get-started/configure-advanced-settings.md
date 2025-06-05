@@ -132,6 +132,10 @@ Including data from cold and frozen [data tiers](/manage-data/lifecycle/data-tie
 
 ## Access the event analyzer and Session View from the event or alert details flyout [visualizations-in-flyout]
 
+::::{note}
+Available in {{stack}} 9.0.0 only.
+::::
+
 The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout.
 
 
