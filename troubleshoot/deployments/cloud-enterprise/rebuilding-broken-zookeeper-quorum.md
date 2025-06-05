@@ -112,7 +112,6 @@ elastic@my-ece-director-host1:~$ ./ece-diagnostics run --disableApiCalls
 ✓ collected Docker info and logs (took: 18.976s)
 ```
 
-Once you collect the above essential information, reach out to [Elastic Support](/troubleshoot/index.md#contact-us) to identify the best ZK leader candidate.
 
 ## Recover Zookeeper nodes [ece_recover_zookeeper_nodes] 
 
