@@ -247,7 +247,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *PEM-encoded certificate for {{es}} certificate authority.*
 
-    Use this setting to configure an additional root certificate for validating {{elastic-endpoint}}'s connection to {{es}}.We typically recommend configuring this at the {{fleet}} level.
+    Use this setting to configure an additional root certificate for validating {{elastic-endpoint}}'s connection to {{es}}. We typically recommend configuring this at the {{fleet}} level.
 
 
 `[linux,mac,windows].advanced.elasticsearch.tls.verify_hostname`
