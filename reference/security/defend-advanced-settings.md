@@ -27,7 +27,11 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *A value of `false` disables cloud lookup for alerts. Default: `true`.*
 
-    Before blocking or alerting on malware files, {{elastic-endpoint}} reaches out to an Elastic cloud service ([https://cloud.security.elastic.co](https://cloud.security.elastic.co)) to see if the alert is a known false positive. Use this setting to disable this feature. Enabling or disabling this feature doesn't affect malware prevention's efficacy.
+    Before blocking or alerting on malware files, {{elastic-endpoint}} reaches out to an Elastic cloud service ([https://cloud.security.elastic.co](https://cloud.security.elastic.co)) to see if the alert is a known false positive. Use this setting to disable this feature.
+
+    ::::{note}
+    Disabling cloud lookup for alerts may result in higher false positive rates.
+    ::::
 
 
 `[linux,mac,windows].advanced.alerts.hash.md5`
@@ -87,7 +91,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *A value of `false` disables malicious sample collection for alerts. Default: `true`.*
 
-    To help improve future malware detection, Elastic collects samples of unknown malware files for {{ecloud}} users by default. Use this setting to disable the sample collection.
+    To improve the efficacy of malware and reputation protections, Elastic collects samples of unknown malware files. Use this setting to disable the sample collection.
 
 
 `[linux,mac,windows].advanced.allow_cloud_features`
@@ -959,15 +963,18 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *If set to `true`, image load events exclude `dll.origin_url`, `dll.origin_referrer_url`, and `dll.Ext.windows.zone_identifier`. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: `false`.*
 
+
 `windows.advanced.events.process.disable_origin_info_collection`
 :   Added in 8.19.0.
 
     *If set to `true`, process events exclude `process.origin_url`, `process.origin_referrer_url`, and `process.Ext.windows.zone_identifier`. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: `false`.*
 
+
 `windows.advanced.events.file.disable_origin_info_collection`
 :   Added in 8.19.0.
 
     *If set to `true`, file events exclude file origin details: `file.origin_url`, `file.origin_referrer_url`, and `file.Ext.windows.zone_identifier`. These fields show the details of file's Mark of the Web. Default: `false`.*
+
 
 `windows.advanced.events.security.provider_etw`
 :   Added in 8.19.0.
