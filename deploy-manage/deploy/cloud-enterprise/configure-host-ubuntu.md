@@ -12,17 +12,20 @@ products:
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]
 
-The following instructions show you how to prepare your hosts on 20.04 LTS (Focal Fossa) and Ubuntu 22.04 LTS (Jammy Jellyfish).
+The following instructions show you how to prepare your hosts on 24.04 LTS (Noble Numbat).
 
-* [Install Docker 24.0](#ece-install-docker-ubuntu)
+* [Install Docker 27.0](#ece-install-docker-ubuntu)
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
 * [Update the configurations settings](#ece-update-config-ubuntu)
-* [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu)
+* [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu) 
 
+::::{note}
+Please make sure to run the following steps with a user configured according to [Users and permissions](ece-users-permissions.md)
+::::
 
 ## Install Docker [ece-install-docker-ubuntu]
 
-Install Docker LTS version 24.0 for Ubuntu 20.04 or 22.04.
+Install Docker version 27.0 for Ubuntu 24.04.
 
 ::::{important}
 Make sure to use a combination of Linux distribution and Docker version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
@@ -55,10 +58,10 @@ Docker 25 and higher are not compatible with ECE 3.7.
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-4. Install the correct version of the `docker-ce` package, for Ubuntu 20.04 LTS (Focal Fossa) or Ubuntu 22.04 LTS (Jammy Jellyfish):
+4. Install the correct version of the `docker-ce` package, for Ubuntu 24.04 LTS (Noble Numbat):
 
     ```sh
-    sudo apt install -y docker-ce=5:24.0.* docker-ce-cli=5:24.0.* containerd.io
+    sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
     ```
 
 
