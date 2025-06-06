@@ -14,7 +14,7 @@ products:
 
 The following instructions show you how to prepare your hosts on Ubuntu.
 
-* [Install Docker 24.0](#ece-install-docker-ubuntu)
+* [Install Docker](#ece-install-docker-ubuntu)
 * [Set up XFS quotas](#ece-xfs-setup-ubuntu)
 * [Update the configurations settings](#ece-update-config-ubuntu)
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu)
