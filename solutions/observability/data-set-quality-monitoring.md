@@ -15,7 +15,7 @@ products:
 
 The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. You can then use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
 
-To open the **Data Set Quality** page, find it under **Stack Management** in the main menu or search for "data set quality" using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To open the **Data Set Quality** page, find it under **Stack Management** in the main menu, or search for "data set quality" using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
 
@@ -44,7 +44,7 @@ The Data Set Quality page provides several ways to help you investigate issues. 
 serverless: ga
 ```
 
-To help diagnose issues with ingestion or mapping, documents that are rejected during ingestion are sent to a dedicated data stream called failure store. From the **Data Set Quality** page, data streams with documents in the failure store will show a percentage in the **Failed docs (%)** column. The failed docs percentage gives you a quick look at the magnitude of potential problems in your ingestion process.
+To help diagnose issues with ingestion or mapping, documents that are rejected during ingestion are sent to a dedicated data stream called failure store. On the **Data Set Quality** page, data streams with documents in the failure store will show a percentage in the **Failed docs (%)** column. The failed docs percentage gives you a quick look at the magnitude of potential problems in your ingestion process.
 
 #### Required privileges
 
@@ -53,7 +53,6 @@ Accessing failure store requires the `read_failure_store` or `all` [index privil
 #### Find failed documents
 
 Select the percentage in the **Failed docs (%)** column for a specific data stream to open Discover and see the raw documents that were sent to failure store.
-
 
 To understand how persistent an issue is, refer to **Document trends** for the number of failed documents over a selected time range:
 
@@ -64,7 +63,7 @@ To help diagnose what's causing an issue, refer to **Quality issues** for error 
 
 1. From the data set table, select a data set name.
 1. Scroll down to **Quality issues**.
-1. Click the expand icon to open a summary of why
+1. Click the expand icon to open a summary of why your document failed.
 
 ### Find ignored fields in data sets [observability-monitor-datasets-find-ignored-fields-in-data-sets]
 
@@ -74,8 +73,6 @@ To open the details page for a data set with poor or degraded quality and view i
 1. Scroll down to **Quality issues**.
 
 The **Quality issues** section shows fields that have been ignored, the number of documents that contain ignored fields, the timestamp of last occurrence of the field being ignored, and failed documents (serverless only).
-
-% Screenshot
 
 ### Find ignored fields in individual logs [observability-monitor-datasets-find-ignored-fields-in-individual-logs]
 
