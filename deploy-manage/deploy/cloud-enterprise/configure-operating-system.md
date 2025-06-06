@@ -13,6 +13,6 @@ products:
 
 Before installing {{ece}}, you have to prepare your hosts with one of the following Linux distributions:
 
-* [Ubuntu)](configure-host-ubuntu.md)
+* [Ubuntu](configure-host-ubuntu.md)
 * [Red Hat Enterprise Linux (RHEL) and Rocky Linux](configure-host-rhel.md)
 * [SUSE Linux Enterprise Server (SLES)](configure-host-suse.md)
