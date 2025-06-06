@@ -12,7 +12,7 @@ products:
 # Rebuilding a broken Zookeeper quorum [ece-troubleshooting-zookeeper-quorum]
 
 ::::{warning} 
-This article covers an advanced recovery method involving directly modifying Zookeeper. This process can potentially corrupt your data. Elastic recommends only following this outline after receiving [confirmation by Elastic Support](/troubleshoot/index.md#contact-us).
+This article covers an advanced recovery method involving directly modifying Zookeeper. This process can potentially corrupt your data. Elastic strongly recommends only following this outline after receiving [confirmation by Elastic Support](/troubleshoot/index.md#contact-us).
 ::::
 
 
@@ -67,28 +67,50 @@ Perform the following steps on each host to back up the Zookeeper data directory
 
 ## Determine the Zookeeper leader [ece_determine_the_zookeeper_leader] 
 
-If a Zookeeper quorum is broken, you must establish the best Zookeeper leader to use for recovery before you start the recovery proces.
+If a Zookeeper quorum is broken, you need to identify the best Zookeeper leader candidate to use for recovery before you start the recovery process.
 
-The simplest way to check is using the [Zookeeper sync status](verify-zookeeper-sync-status.md) command.
+Collect the following information from all ECE director hosts that have ZK containers running, including any recently created or decommissioned hosts. After you have gathered the information, reach out to [Elastic Support](/troubleshoot/index.md#contact-us) to identify the best ZK leader candidate.
 
-If this command is not reporting any leaders, then perform the following actions on each director host:
+* [Output of file list and sizes of Zookeeper directories](#zk-file-list-sizes)
+* [ECE diagnostics](#ece-diagnostics)
 
-1. SSH into the host.
-2. Enter the Docker `frc-zookeeper-servers-zookeeper` container and check its `/app/logs/zookeeper.log` logs for `LEADING`:
+### Collect the output of file list and sizes of Zookeeper directories [zk-file-list-sizes]
 
-    ```sh
-    $ docker exec -it frc-zookeeper-servers-zookeeper bash
-    root@XXXXX:/# cat /app/logs/zookeeper.log | grep 'LEADING'
-    ```
+```
+# collect disk usage
+find /mnt/data/elastic/*/services/zookeeper/data/ -print -exec du -hs {} \;
+# collect file status
+find /mnt/data/elastic/*/services/zookeeper/data/ -print -exec stat {} \;
+```
 
-    This command will return results similar to the following:
+### Collect ECE diagnostics [ece-diagnostics]
 
-    ```sh
-    INFO  [QuorumPeer[myid=10](plain=0.0.0.0:2191)(secure=disabled):o.a.z.s.q.QuorumPeer@1549] - LEADING
-    INFO  [QuorumPeer[myid=10](plain=0.0.0.0:2191)(secure=disabled):o.a.z.s.q.Leader@588] - LEADING - LEADER ELECTION TOOK - 225 MS
-    ```
+Follow [](run-ece-diagnostics-tool.md) to collect ECE diagnostics. 
 
-3. If multiple directors report this log, then determine the one with the latest timestamp, which will contain the latest Zookeeper state.
+Make sure to run the tool with the `--disableApiCalls` flag. Without this flag, ECE diagnostics might fail to run.
+
+**Command** 
+```bash
+./ece-diagnostics run --disableApiCalls
+```
+
+
+**Sample response**
+
+```bash
+elastic@my-ece-director-host1:~$ ./ece-diagnostics run --disableApiCalls
+- Configuring ECE home folder
+    ✓ found /mnt/data/elastic for runner 172.16.15.204
+- Log file: /tmp/ecediag-172.16.15.204-20250404-080202.log
+++ Created tar output: /tmp/ecediag-172.16.15.204-20250404-080202.tar.gz
+⚠ skipping collection of ECE metricbeat data (took: 0s)
+⚠ skipping collection of API information for ECE and Elasticsearch (took: 0s)
+✓ collected information on certificates (took: 221ms)
+✓ collected information on client-forwarder connectivity (took: 368ms)
+✓ collected ZooKeeper stats (took: 8.391s)
+✓ collected system information (took: 14.263s)
+✓ collected Docker info and logs (took: 18.976s)
+```
 
 
 ## Recover Zookeeper nodes [ece_recover_zookeeper_nodes] 
