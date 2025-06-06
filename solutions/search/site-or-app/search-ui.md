@@ -27,45 +27,13 @@ A JavaScript library for the fast development of modern, engaging search experie
 Enterprise Search is not available in {{stack}} 9.0+.
 :::
 
-
-## Live demos 👀 [overview-live-demos]
-
-
-### Connectors [overview-connectors]
-
-* [Elasticsearch](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/elasticsearch&file=/src/pages/elasticsearch/index.js)
-* [Elastic Site Search (Swiftype)](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/site-search&file=/src/pages/site-search/index.js)
-* ⚠️ DEPRECATED. [Elastic App Search](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/app-search&file=/src/pages/app-search/index.js)
-* ⚠️ DEPRECATED. [Elastic Workplace Search](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/workplace-search&file=/src/pages/workplace-search/index.js)
-
-
-### Examples [overview-examples]
-
-* [Search as you type](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/search-as-you-type&file=/src/pages/search-as-you-type/index.js)
-* [Search bar in header](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/search-bar-in-header&file=/src/pages/search-bar-in-header/index.js)
-* [Customizing Styles and Components](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/customizing-styles-and-html&file=/src/pages/customizing-styles-and-html/index.js)
-
-
-## Get Started 🌟 [overview-get-started]
-
-
-### Installation [overview-installation]
-
-```sh
-npm install @elastic/search-ui @elastic/react-search-ui @elastic/react-search-ui-views
-# or
-yarn add @elastic/search-ui @elastic/react-search-ui @elastic/react-search-ui-views
-```
-
-
-### Tutorials [overview-tutorials]
-
-Get started quickly with Search UI and your favorite Elastic product by following one of the tutorials below:
-
-* [Elasticsearch](search-ui://reference/tutorials-elasticsearch.md)
-* [Elastic App Search (⚠️ DEPRECATED)](search-ui://reference/tutorials-app-search.md)
-* [Elastic Workplace Search (⚠️ DEPRECATED)](search-ui://reference/tutorials-workplace-search.md)
-
+## Get started 🌟 
+* 📘 [Reference documentation](search-ui://reference/index.md): API docs, tutorials, and usage guides
+    * [Quickstart tutorials](search-ui://reference/tutorials.md)
+    * [Ecommerce examples](search-ui://reference/ecommerce.md)
+    * [Basic usage](search-ui://reference/basic-usage.md)
+    * [API reference](search-ui://reference/api-reference.md)
+* 💻 [GitHub repository](https://github.com/elastic/search-ui): Source code, examples, and issue tracking
 
 ## Use Cases 🛠️ [overview-use-cases]
 
