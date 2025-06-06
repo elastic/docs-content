@@ -115,9 +115,21 @@ It is not currently possible to use custom CAs for synthetics browser tests in p
 
 By default {{private-location}}s are configured to allow two simultaneous browser tests, and an unlimited number of lightweight checks. These limits can be set via the environment variables `SYNTHETICS_LIMIT_{{TYPE}}`, where `{{TYPE}}` is one of `BROWSER`, `HTTP`, `TCP`, and `ICMP` for the container running the {{agent}} docker image.
 
-It is critical to allocate enough memory and CPU capacity to handle configured limits. Start by allocating at least 2 GiB of memory and two cores per browser instance to ensure consistent performance and avoid out-of-memory errors. Then adjust as needed. Resource requirements will vary depending on workload. Much less memory is needed for lightweight monitors. Start by allocating at least 512MiB of memory and two cores for lightweight checks. Then increase allocated memory and CPU based on observed usage patterns.
+### CPU and RAM requirements
 
-These limits are for simultaneous tests, not total tests. For example, if 60 browser tests were scheduled to run once per hour and each took 1 minute to run, that would fully occupy one execution slot. However, it is a good practice to set up execution slots with extra capacity. A good starting point would be to over-allocate by a factor of 5. In the previous example that would mean allocating 5 slots.
+It is critical to allocate enough memory and CPU capacity to handle configured limits. Resource requirements will vary depending on simultaneous workload and monitor complexity:
+
+**For browser monitors**: Start by allocating at least 2 GiB of memory and two cores _per browser instance_ to ensure consistent performance and avoid out-of-memory errors. Then adjust as needed. 
+**For tcp, http, icmp**: Much less memory is needed, start by allocating at least 512MiB of memory and two cores _globally_. While this will be enough to run a large number of lightweight monitors, it is recommended to track the resource usage and adjust accordingly.
+
+Example: For a private location expected to run 2 concurrent browser monitors and 100 HTTP checks, the recommended allocation is 2 * (2 GiB + 2 vCPU) + (512 MiB + 2 vCPU) => 4,5 GiB + 6 vCPU.
+
+### Known limitations on vertical scaling
+
+- A single private location will not scale beyond 10,000 monitors. Exceeding this number will result in agent degradation and inconsistent execution, regardless of the resources allocated.
+- Complex monitor configuration can disproportionately increase the private location policy size, leading to agent communication errors and degradation even if the limit mentioned above hasn't been reached. 
+
+If you're facing one of these scenarios, it is likely that the private location has grown too large and needs to be split into smaller locations, each alloted a portion of the original location monitors.
 
 ## Next steps [synthetics-private-location-next]
 
