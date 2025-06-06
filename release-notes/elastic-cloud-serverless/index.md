@@ -11,9 +11,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
-## June 3, 2025 [serverless-changelog-06032025]
+## June 2, 2025 [serverless-changelog-06022025]
 
-### Features and enhancements [serverless-changelog-06032025-features-enhancements]
+### Features and enhancements [serverless-changelog-06022025-features-enhancements]
 
 * Adds collapsible sections to Dashboards [#220877]({{kib-pull}}220877)
 * Introduces a new `Density` setting for the Lens Data Table[#220252]({{kib-pull}}220252)
@@ -29,7 +29,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 * Introduces new `empty` states for the Change Point Detection page in {{ml-cap}} [#219072]({{kib-pull}}219072)
 
 
-### Fixes [serverless-changelog-06032025-fixes]
+### Fixes [serverless-changelog-06022025-fixes]
 
 * Uses msearch to fetch the alerts for maintenance windows with a scoped query [#221702]({{kib-pull}}221702)
 * Fixes querying installed packages in {{fleet}} [#221624]({{kib-pull}}221624)
