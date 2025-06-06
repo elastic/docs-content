@@ -13,6 +13,8 @@ products:
 
 Each {{ecloud}} account has a primary email associated with it. By default, the primary email address is used to sign up for {{ecloud}} and to log in. If needed, you can change this primary email address.
 
+Your email address is used to uniquely identify you. It can’t be used for more than one {{ecloud}} account, whether that account is a trial account, a standard {{ecloud}} account, or a subscription account through a marketplace. An {{ecloud}} account can belong to only one organization at a time.
+ 
 ## Change your email address (native sign-in)
 
 If you log in using a standard email and password, follow these steps to update your email address:
@@ -34,3 +36,15 @@ If you log in using Google or Microsoft Sign-In, follow these steps to update yo
 ## Changing your email address with an Azure Marketplace account
 
 If your organization is associated with [Azure Marketplace](../deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md), you can’t change your primary email address using the above methods. Instead, [invite another user](../deploy-manage/users-roles/cloud-organization/manage-users.md) with the desired email address to join your organization.
+
+## Sign up using an existing email address [sign-up-existing]
+
+In some situations, you might want to create a new {{ecloud}} account using an email address that is already associated with an existing account. To sign up to {{ecloud}} using an email address associated with another {{ecloud}} account, you must remove the email address from your previous account and replace it with a new address.
+
+1. Use your current email address (for example, `my.preferred.address@foobar.com`) to log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Follow the steps from one of the procedures on this page to update that email address to another email address, such as `my.alternate.address@gmail.com`.
+
+You can now use the email address from step 1 to do the following:
+
+* [Sign up for a new account](/deploy-manage/deploy/elastic-cloud/create-an-organization.md).
+* [Join an existing organization](/cloud-account/join-or-leave-an-organization.md).

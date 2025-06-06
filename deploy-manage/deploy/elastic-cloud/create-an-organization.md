@@ -37,7 +37,8 @@ To sign up:
 2. Choose one of the available sign up methods. You can register with your email address and a password, use a Google or Microsoft account, or [subscribe from a Marketplace](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 :::{note}
-You can only belong to one {{ecloud}} organization at a time. If you want to create or join another organization, you must leave the previous one or use a different email address.
+* You can only belong to one {{ecloud}} organization at a time. If you want to create or join another organization, you must [leave the previous one](/cloud-account/join-or-leave-an-organization.md#ec-leave-organization) or use a different email address.
+* An email address can’t be used for more than one {{ecloud}} account. To make the email address available for a new account, you can [remove it from your existing account](/cloud-account/update-your-email-address.md#sign-up-existing).
 :::
 
 When your first sign up, you create an organization and start with a trial license.
