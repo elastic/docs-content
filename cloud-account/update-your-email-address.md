@@ -41,7 +41,7 @@ If your organization is associated with [Azure Marketplace](../deploy-manage/dep
 
 In some situations, you might want to create a new {{ecloud}} account using an email address that is already associated with an existing account. To sign up to {{ecloud}} using an email address associated with another {{ecloud}} account, you must remove the email address from your previous account and replace it with a new address.
 
-1. Use your current email address (for example, my.preferred.address@foobar.com) to log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Use your current email address (for example, `my.preferred.address@foobar.com`) to log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Follow the steps from one of the procedures on this page to update that email address to another email address, such as `my.alternate.address@gmail.com`.
 
 You can now use the email address from step 1 to do the following:
