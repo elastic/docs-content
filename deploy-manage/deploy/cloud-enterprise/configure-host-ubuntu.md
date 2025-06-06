@@ -21,6 +21,7 @@ The following instructions show you how to prepare your hosts on 24.04 LTS (Nobl
 
 ::::{note}
 Please make sure to run the following steps with a user configured according to [Users and permissions](ece-users-permissions.md)
+The following steps assume that you use the same user that is used to install ECE later on.
 ::::
 
 ## Install Docker [ece-install-docker-ubuntu]
