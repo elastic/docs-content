@@ -11,11 +11,11 @@ products:
 
 # Understanding node moves and system maintenance [ec-deployment-node-move]
 
-To ensure that your deployment nodes are located on healthy hosts, we vacate nodes to perform routine system maintenance or to remove a host with hardware issues from service.
+To ensure that your deployment nodes are located on healthy hosts, we vacate nodes to perform essential system maintenance or to remove a host with hardware issues from service.
 
 All major scheduled maintenance and incidents can be found on the Elastic [status page](https://status.elastic.co/). You can subscribe to that page to be notified about updates.
 
-If events on your deployment don’t correlate to any items listed on the status page, the events are due to minor routine maintenance performed on only a subset of {{ech}} deployments.
+If events on your deployment don’t correlate to any items listed on the status page, the events are due to minor essential maintenance performed on only a subset of {{ech}} deployments.
 
 This document explains the "`Move nodes off of allocator...`" message that appears on the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) in {{ech}} deployments, helping you understand its meaning, implications, and what to expect.
 
@@ -39,6 +39,8 @@ Depending on the cause of the node movement, the behavior and expectations diffe
 * During planned operations, such as hardware upgrades or host patches, the system attempts to gracefully move the node to another host before shutting down the original one. This process allows shard relocation to complete ahead of time, minimizing any potential disruption.
 
 * In contrast, if a node’s host experiences an unexpected outage, the system automatically vacates the node and displays a related `Don't attempt to gracefully move shards` message on the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). Because the node and its data path are already unavailable, the system skips its check to ensure the node’s shards have been moved before shutting down the node.
+
+## Frequently Asked Questions (FAQs) [faq]
 
 ### Will it cause an outage to my deployment?
 
@@ -82,7 +84,7 @@ At a minimum, you should size your deployment to tolerate the temporary loss of 
 
 Please reach out to [Elastic support](/troubleshoot/index.md#contact-us) for help.
 
-## How can I be notified when a node is changed? [email]
+### How can I be notified when a node is changed? [email]
 
 To receive an email when nodes are added or removed from your deployment:
 
