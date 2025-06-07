@@ -11,9 +11,13 @@ products:
 
 # Configure your operating system [ece-configure-os]
 
+::::{important}
+Make sure to use a combination of Linux distribution and Container Engine version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
+::::
+
+
 Before installing {{ece}}, you have to prepare your hosts with one of the following Linux distributions:
 
-* [Ubuntu 20.04 LTS (Focal Fossa) and Ubuntu 22.04 LTS (Jammy Jellyfish)](configure-host-ubuntu.md)
-* [Red Hat Enterprise Linux (RHEL) 8 and 9](configure-host-rhel.md)
-* [Rocky Linux 8 and 9](configure-host-rhel.md)
-* [SUSE Linux Enterprise Server (SLES) 12 SP5 and 15](configure-host-suse.md)
+* [Ubuntu](configure-host-ubuntu.md)
+* [Red Hat Enterprise Linux (RHEL) and Rocky Linux](configure-host-rhel.md)
+* [SUSE Linux Enterprise Server (SLES)](configure-host-suse.md)

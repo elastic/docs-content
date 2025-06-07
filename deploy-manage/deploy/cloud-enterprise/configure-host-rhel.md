@@ -28,6 +28,11 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
+::::{important}
+Make sure to use a combination of Linux distribution and Container Engine version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
+::::
+
+
 ## Configure the host [ece-configure-hosts-rhel8-podman]
 
 1. Install the OS packages `lvm2`, `iptables`, `sysstat`, and `net-tools` by executing:
