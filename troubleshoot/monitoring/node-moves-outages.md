@@ -1,5 +1,5 @@
 ---
-navigation_title: Node moves and HW failures
+navigation_title: Node moves and Hardware failures
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-deployment-node-move.html
 applies_to:
