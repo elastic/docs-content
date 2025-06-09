@@ -2,6 +2,7 @@
 applies_to:
   deployment:
     ess: ga
+navigation_title: "Add private connections"
 ---
 
 # Private link traffic filters

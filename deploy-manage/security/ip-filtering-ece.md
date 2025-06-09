@@ -1,36 +1,28 @@
 ---
-navigation_title: In ECH or Serverless
+navigation_title: In ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-ip.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-ip.html
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-ip.html
 applies_to:
   deployment:
-    ess: ga
     ece: ga
-    serverless: ga
 products:
-  - id: cloud-hosted
-  - id: cloud-serverless
+  - id: cloud-enterprise
 ---
 
-# Manage IP traffic filters in ECH or Serverless
+# Manage IP filters in ECE
 
-Traffic filtering, by IP address or CIDR block, is one of the security layers available in {{ece}} and {{ech}}. It allows you to limit how your deployments can be accessed.
+Filtering by IP address or CIDR block is one of the security layers available in {{ece}}. It allows you to limit how your deployments can be accessed.
 
-There are types of filters are available for filtering by IP address or CIDR block:
+You can only configure ingress or inbound IP filters**. These restrict access to your deployments from a set of IP addresses or CIDR blocks.
 
-* **Ingress or inbound IP filters**: These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the UI.
-* **Egress or outbound IP filters** (ECH only): These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is in beta and is currently only available through the [Traffic Filtering API](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
-
-Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console or Cloud UI.
+Follow the step described here to set up ingress or inbound IP filters through the Cloud UI.
 
 To learn how traffic filter rules work together, refer to [traffic filter rules](/deploy-manage/security/traffic-filtering.md#traffic-filter-rules).
 
 To learn how to manage IP traffic filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
 
 :::{note}
-To learn how to create IP filters for {{ece}} deployments, refer to [](ip-filtering-ece.md).
+To learn how to create IP filters for {{ech}} deployments or {{serverless-full}} projects, refer to [](ip-filtering-cloud.md).
 
 To learn how to create IP filters for self-managed clusters or {{eck}} deployments, refer to [](ip-filtering-basic.md).
 :::
