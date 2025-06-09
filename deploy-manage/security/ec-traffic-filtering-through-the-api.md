@@ -9,11 +9,12 @@ applies_to:
 products:
   - id: cloud-hosted
   - id: cloud-enterprise
+navigation_title: Through the API
 ---
 
-# Manage traffic filters through the API [ec-traffic-filtering-through-the-api]
+# Manage network security through the API [ec-traffic-filtering-through-the-api]
 
-This example demonstrates how to use the {{ecloud}} RESTful API or {{ece}} RESTful API or to manage different types of traffic filters. We cover the following examples:
+This example demonstrates how to use the {{ecloud}} RESTful API or {{ece}} RESTful API or to manage different types of network security rules and policies. We cover the following examples:
 
 * [Create a traffic filter rule set](ec-traffic-filtering-through-the-api.md#ec-create-a-traffic-filter-rule-set)
 
