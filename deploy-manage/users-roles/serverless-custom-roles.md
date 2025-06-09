@@ -11,11 +11,11 @@ products:
 
 # Serverless project custom roles [custom-roles]
 
-Built-in [organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) and [instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) are great for getting started with {{serverless-full}}, and for system administrators who do not need more restrictive access.
+Built-in [organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) and [cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) are great for getting started with {{serverless-full}}, and for system administrators who do not need more restrictive access.
 
 As an administrator, you can also create roles for users with the access they need within specific projects. For example, you might create a `marketing_user` role, which you then assign to all users in your marketing department. This role would grant access to all of the necessary data and features for this team to be successful, without granting them access they don’t require.
 
-All custom roles grant the same access as the `Viewer` instance access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges.
+All custom roles grant the same access as the `Viewer` cloud resource access role with regards to {{ecloud}} privileges. To grant more {{ecloud}} privileges, assign more roles. Users receive a union of all their roles' privileges.
 
 Roles are a collection of privileges that enable users to access project features and data. When you create a custom role, you can assign {{es}} [cluster](#custom-roles-es-cluster-privileges) and [index](#custom-roles-es-index-privileges) privileges and [{{kib}}](#custom-roles-kib-privileges) privileges.
 
