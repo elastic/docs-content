@@ -41,7 +41,7 @@ This guide uses TLS certificates as the security model for remote clusters and f
 
     4. In **Select trusted clusters**, configure the following:
         * Select **Trust clusters whose Common Name follows the Elastic pattern**.
-        * For **Scope ID**, enter `<kubernetes-namespace>.es.local`, replacing `<kubernetes-namespace>` with the namespace of your ECK deployment.
+        * For **Scope ID**, enter `<kubernetes-namespace>.es.local`, replacing `<kubernetes-namespace>` with the namespace of your ECK cluster.
         * In **Trust**, select **All deployments**.
 
     5. In **Name the environment**, enter a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
