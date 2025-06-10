@@ -11,6 +11,46 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## June 9, 2025 [serverless-changelog-06092025]
+
+### Features and enhancements [serverless-changelog-06092025-features-enhancements]
+
+* Ensures the Report UI only displays reports generated in the current space [#221375]({{kib-pull}}221375).
+* Color mapping is now GA. `palette` definitions are deprecated and turning off Legacy mode will replace the palette with an equivalent color mapping configuration in* **Lens**. [#220296]({{kib-pull}}220296).
+* Updates time based charts to use the multi-layer time axis by default, providing a better time window context and improved label positioning. [#210579]({{kib-pull}}210579).
+* Adds an integration flyout to Agent policy details in {{fleet}} [#220229]({{kib-pull}}220229).
+* Enables the `enableSyncIntegrationsOnRemote` feature flag in {{fleet}} [#220215]({{kib-pull}}220215).
+* Enables migration of a single agent to another cluster via the actions menu in {{fleet}}. [#222111]({{kib-pull}}222111).
+* Adds a button allowing users to skip to the next section in the fields list in **Discover** [#221792]({{kib-pull}}221792).
+* Adds the **SLO Management** page to {{obs-serverless}}, allowing users to view definitions, delete SLOs, and purge SLI data without having to consider instances [#222238]({{kib-pull}}222238).
+* Adds a new APM dashboard for the Golang OpenTelemetry runtime metrics in {{obs-serverless}} [#220242]({{kib-pull}}220242).
+* Uses the bulk API to import knowledge base entries in {{obs-serverless}} [#222084]({{kib-pull}}222084).
+* Improves system prompt and instructions for the `context` function in the Elastic Observability AI Assistant to work better with Claude models [#221965]({{kib-pull}}221965).
+* Sets `observabilityAIAssistantAPIClient` as the preferred test for type-safe endpoint calls with scoped users in the Elastic Observability AI Assistant [#222753]({{kib-pull}}222753).
+* Adds a custom script selector component to the **Response console** in {{sec-serverless}} [#204965]({{kib-pull}}204965).
+* Updates the `AssetCriticalityBadge` colors to the Borealis theme in {{sec-serverless}} [#222024]({{kib-pull}}222024).
+* Updates the risk severity colors to the Borealis theme in {{sec-serverless}} [#222061]({{kib-pull}}222061).
+* Enables **Content Connectors** in the **Stack Management** menu in {{sec-serverless}} [#221856]({{kib-pull}}221856).
+* Implements PKI authentication support for the `.gen-ai` connector’s `OpenAI Other` provider [#219984]({{kib-pull}}219984).
+
+### Fixes [serverless-changelog-06092025-fixes]
+
+* Fixes {{kib}} being stuck in a reboot loop when `cancelAlertsOnRuleTimeout` is set to `false` [#222263]({{kib-pull}}222263).
+* Adds saved object version for collapsible sections [#222450]({{kib-pull}}222450).
+* Fixes the `UnenrollInactiveAgentsTask` query in {{fleet}} to un-enroll only those agents that are inactive for longer than `unenroll_timeout` [#222592]({{kib-pull}}222592).
+* Adds **Actions** header to the unified data table in **Discover** [#220824]({{kib-pull}}220824).
+* Fixes `COALESCE` validation in **ES|QL** [#222425]({{kib-pull}}222425).
+* Fixes incorrect suggestions after a named variable such as `?value` is entered in a `WHERE` query in **ES|QL** [#222312]({{kib-pull}}222312).
+* Replaces `onChangedItemIndices` with `onChangeRenderedItems` when determining which service details to fetch in {{obs-serverless}} [#222439]({{kib-pull}}222439).
+* Fixes pagination on the Services **Inventory** page when progressive loading is enabled in {{obs-serverless}} [#220514]({{kib-pull}}220514).
+* Refactors styling for the timeline in {{sec-serverless}} from `styled-components` to `emotion` [#222438]({{kib-pull}}222438).
+* Fixes wrong content appearing when switching tabs in the **Ingest your data** section on the **Get started** page in {{sec-serverless}} [#222271]({{kib-pull}}222271).
+* Fixes incorrect header text in the **Rule exception** flyout in {{sec-serverless}} [#222248]({{kib-pull}}222248).
+* Fixes an issue with adding a field when no pipeline has been generated during import in Machine Learning [#222775]({{kib-pull}}222775).
+* Fixes an issue with the OpenAI connector not using the action proxy configuration for all subactions in Machine Learning [#219617]({{kib-pull}}219617).
+* Fixes an issue with **Anomaly Explorer** where the selected Overall swimlane bucket is not respected for `viewBy jobId` in Machine Learning [#222845]({{kib-pull}}222845).
+* Fixes error handling when one or more connectors is deleted [#221958]({{kib-pull}}221958).
+
 ## June 2, 2025 [serverless-changelog-06022025]
 
 ### Features and enhancements [serverless-changelog-06022025-features-enhancements]
