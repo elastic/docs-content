@@ -79,7 +79,7 @@ AI Assistant receives `open` or `acknowledged` alerts from your environment from
 
 To configure alert access for Knowledge Base:
 
-1. Go the **Security AI settings** page.
+1. Go the **Security AI settings** page. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security."
 2. On the **Knowledge Base** tab, use the slider to select the number of alerts to send to AI Assistant.
 3. Click **Save**.
 
