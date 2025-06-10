@@ -11,7 +11,7 @@ products:
 
 # Understanding node moves and system maintenance [ec-deployment-node-move]
 
-To ensure that your deployment nodes are located on healthy hosts, we vacate nodes to perform essential system maintenance or to remove a host with hardware issues from service.
+To ensure that your deployment nodes are located on healthy hosts, we vacate nodes to perform essential system maintenance or to remove a host with hardware issues from service. These tasks cannot be skipped or delayed.
 
 All major scheduled maintenance and incidents can be found on the Elastic [status page](https://status.elastic.co/). You can subscribe to that page to be notified about updates.
 
@@ -30,25 +30,27 @@ You can [configure email notifications](#email) to be alerted when this situatio
 Potential causes of system maintenance include, but not limited to, situations like:
 
 * A host where the Cloud Service Provider (CSP), like AWS, GCP, or Azure, has reported upcoming hardware deprecation or identified issues requiring remediation.
-* A host that has been abruptly terminated by the Cloud Service Provider (CSP) because of an underlying problem with their infrastructure.
-* Mandatory underlying host OS patch/upgrade activities for security/compliance reasons.
-* Other scheduled maintenance that can be found on the [Elastic status page](https://status.elastic.co/).
+* Abrupt host termination by the CSP due to underlying infrastructure problems.
+* Mandatory host operating system (OS) patching or upgrades for security or compliance reasons.
+* Other scheduled maintenance announced on the [Elastic status page](https://status.elastic.co/).
 
 Depending on the cause of the node movement, the behavior and expectations differ.
 
 * During planned operations, such as hardware upgrades or host patches, the system attempts to gracefully move the node to another host before shutting down the original one. This process allows shard relocation to complete ahead of time, minimizing any potential disruption.
 
-* In contrast, if a node’s host experiences an unexpected outage, the system automatically vacates the node and displays a related `Don't attempt to gracefully move shards` message on the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). Because the node and its data path are already unavailable, the system skips its check to ensure the node’s shards have been moved before shutting down the node.
+* In contrast, if a node’s host experiences an unexpected outage, the system automatically vacates the node and displays a related `Don't attempt to gracefully move shards` message on the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md), skipping the check to ensure the node’s shards have been moved before shutdown.
 
-## Frequently Asked Questions (FAQs) [faq]
+## Behavior during system maintenance [ec-node-behavior-maintenance]
 
-### Will it cause an outage to my deployment?
+The following sections describe how your deployment behaves during maintenance, how to reduce risks such as data loss, and how to stay informed. If you still have questions or concerns about system maintenance activities after reviewing this content, please reach out to [Elastic support](/troubleshoot/index.md#contact-us) for help.
+
+### Availability during node vacate
 
 Unless overridden or unable, the system will automatically recover the vacated node’s data automatically from replicas or snapshots. If your cluster has [high availability (HA)](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) configured, all search and indexing requests should continue to work within the reduced capacity as the node is replaced.
 
 Overall, having replicas and multiple availability zones helps minimize service interruption.
 
-### Under what circumstances could this result in data loss?
+### Data loss risk for non-HA deployments
 
 The system maintenance process always attempts to recover the vacated node's data from replicas or snapshots. However, if the deployment is not configured with HA, including replica shards, the maintenance process may not be able to recover the data from the vacated node.
 
@@ -58,19 +60,17 @@ To minimize this risk, ensure your deployment follows the [high availability bes
 
 As long as these recommendations are followed, system maintenance processes should not impact the availability of the data in the deployment.
 
-### Could such a system maintenance be avoided or skipped?
-
-No, these are essential tasks that cannot be delayed nor avoided.
-
-### I configured multiple availability zones, but I still see data loss during system maintenance. Why?
+### Why data loss can occur even with multiple zones
 
 Configuring multiple availability zones helps your deployment remain available for indexing and search requests if one zone becomes unavailable. However, this alone does not guarantee data availability. To ensure that your data remains accessible, indices must be configured with [replica shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
 
 If an index has no replica shards and its primary shard is located on a node that must be vacated, data loss may occur if the system is unable to move the node gracefully during the maintenance activity.
 
-### What about service degradation or service outage during the system maintenance?
+### Performance considerations during system maintenance
 
-As mentioned in [](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha):
+The performance impact of system maintenance depends on how well the deployment is sized. Well-provisioned clusters with sufficient buffer capacity typically remain unaffected, while deployments already operating near their limits may experience slowdowns, or even intermittent request failures, during node vacating.
+
+High availability assumes not just redundancy in data and zones, but also the ability to absorb the loss or restart of a node without service disruption. As mentioned in [](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha):
 
 ::::{admonition} Availability zones and performance
 Increasing the number of zones should not be used to add more resources. The concept of zones is meant for High Availability (2 zones) and Fault Tolerance (3 zones), but neither will work if the cluster relies on the resources from those zones to be operational.
@@ -80,11 +80,7 @@ The recommendation is to **scale up the resources within a single zone until the
 
 At a minimum, you should size your deployment to tolerate the temporary loss of one node in order to avoid single points of failure and ensure proper HA. For critical systems, ensure that the deployment can continue operating even in the event of losing an entire availability zone.
 
-### What if I still have questions after reviewing this document and its references?
-
-Please reach out to [Elastic support](/troubleshoot/index.md#contact-us) for help.
-
-### How can I be notified when a node is changed? [email]
+### Set up email alerts for node changes [email]
 
 To receive an email when nodes are added or removed from your deployment:
 
