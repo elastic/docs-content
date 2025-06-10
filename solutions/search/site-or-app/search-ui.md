@@ -22,6 +22,21 @@ Search UI supports advanced capabilities like customizable query behavior, smart
 Enterprise Search is not available in {{stack}} 9.0+.
 :::
 
+## Live demos [overview-live-demos]
+
+### Connectors [overview-connectors]
+
+- [Elasticsearch](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/elasticsearch&file=/src/pages/elasticsearch/index.js)
+- [Elastic Site Search (Swiftype)](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/site-search&file=/src/pages/site-search/index.js)
+- ⚠️ DEPRECATED. [Elastic App Search](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/app-search&file=/src/pages/app-search/index.js)
+- ⚠️ DEPRECATED. [Elastic Workplace Search](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/workplace-search&file=/src/pages/workplace-search/index.js)
+
+### Examples [overview-examples]
+
+- [Search as you type](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/search-as-you-type&file=/src/pages/search-as-you-type/index.js)
+- [Search bar in header](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/search-bar-in-header&file=/src/pages/search-bar-in-header/index.js)
+- [Customizing Styles and Components](https://codesandbox.io/s/github/elastic/search-ui/tree/main/examples/sandbox?from-embed=&initialpath=/customizing-styles-and-html&file=/src/pages/customizing-styles-and-html/index.js)
+
 ## Get started
 * [Reference documentation](search-ui://reference/index.md): API docs, tutorials, and usage guides
     * [Quickstart tutorials](search-ui://reference/tutorials.md)
@@ -29,22 +44,3 @@ Enterprise Search is not available in {{stack}} 9.0+.
     * [Basic usage](search-ui://reference/basic-usage.md)
     * [API reference](search-ui://reference/api-reference.md)
 * [GitHub repository](https://github.com/elastic/search-ui): Source code, examples, and issue tracking
-
-## Contribute [overview-contribute]
-
-We welcome contributors to the project. Before you begin, a couple notes…
-
-* Read the [Search UI Contributor’s Guide](https://github.com/elastic/search-ui/blob/main/CONTRIBUTING.md).
-* Prior to opening a pull request:
-
-    * Create an issue to [discuss the scope of your proposal](https://github.com/elastic/search-ui/issues).
-    * Sign the [Contributor License Agreement](https://www.elastic.co/contributor-agreement/). We are not asking you to assign copyright to us, but to give us the right to distribute your code without restriction. We ask this of all contributors in order to assure our users of the origin and continuing existence of the code. You only need to sign the CLA once.
-
-* Write simple code and concise documentation, when appropriate.
-
-
-## License [overview-license]
-
-[Apache-2.0](https://github.com/elastic/search-ui/blob/main/LICENSE.txt) © [Elastic](https://github.com/elastic)
-
-Thank you to all the [contributors](https://github.com/elastic/search-ui/graphs/contributors)!
