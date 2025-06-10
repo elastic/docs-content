@@ -44,7 +44,7 @@ Depending on the cause of the node movement, the behavior and expectations diffe
 
 The following sections describe how your deployment behaves during maintenance, how to reduce risks such as data loss, and how to stay informed. If you still have questions or concerns about system maintenance activities after reviewing this content, please reach out to [Elastic support](/troubleshoot/index.md#contact-us) for help.
 
-### Availability during node vacate
+### Service availability during node vacate
 
 Unless overridden or unable, the system will automatically recover the vacated node’s data automatically from replicas or snapshots. If your cluster has [high availability (HA)](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) configured, all search and indexing requests should continue to work within the reduced capacity as the node is replaced.
 
@@ -60,7 +60,7 @@ To minimize this risk, ensure your deployment follows the [high availability bes
 
 As long as these recommendations are followed, system maintenance processes should not impact the availability of the data in the deployment.
 
-### Why data loss can occur even with multiple zones
+### Data loss risk without replica shards
 
 Configuring multiple availability zones helps your deployment remain available for indexing and search requests if one zone becomes unavailable. However, this alone does not guarantee data availability. To ensure that your data remains accessible, indices must be configured with [replica shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
 
