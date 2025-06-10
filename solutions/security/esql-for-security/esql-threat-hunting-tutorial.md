@@ -27,7 +27,7 @@ FROM windows-security-logs
 | LIMIT 1000
 ```
 
-You can run these queries in [Discover](/explore-analyze/discover.md) or [Timeline](/solutions/security/investigate/timeline#esql-in-timeline) using the `ES|QL` query language.
+You can run these queries in [Discover](/explore-analyze/discover.md) or [Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline) using the `ES|QL` query language.
 
 If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you'll need to use the following syntax:
 
@@ -357,10 +357,10 @@ FROM windows-security-logs
         first_login = MIN(@timestamp),
         last_login = MAX(@timestamp) 
 BY user.name <3>
-| WHERE unique_hosts > 2 <4>
-| EVAL time_span_hours = DATE_DIFF("hour", first_login, last_login) <5>
+| WHERE unique_hosts > 2
+| EVAL time_span_hours = DATE_DIFF("hour", first_login, last_login) <4>
 | EVAL movement_velocity = ROUND(unique_hosts / (time_span_hours + 1), 2)
-| EVAL lateral_movement_score = unique_hosts * criticality_levels <6>
+| EVAL lateral_movement_score = unique_hosts * criticality_levels <5>
 | SORT lateral_movement_score DESC 
 | LIMIT 1000
 ```
@@ -498,12 +498,11 @@ BY user.name, host.name, asset.criticality
 
 ## Additional resources
 
-- Check a curated collection of threat hunting [queries](https://github.com/elastic/detection-rules/tree/main/hunting) in the `elastic/detection-rules` GitHub repo.
+- Explore a curated collection of threat hunting [queries](https://github.com/elastic/detection-rules/tree/main/hunting) in the `elastic/detection-rules` GitHub repo.
   - The corresponding [blog](https://www.elastic.co/security-labs/elevate-your-threat-hunting) provides more information about how to use them in your threat hunting workflows.
 - Explore more threat hunting examples in the following blogs:
   - https://www.elastic.co/blog/security-exfiltration
   - https://www.elastic.co/blog/detecting-command-scripting-interpreter
   - https://www.elastic.co/blog/elastic-security-detecting-credential-dumping
   - https://www.elastic.co/blog/elastic-security-detecting-covert-data-exfiltration
-
 - Learn more about the [{{esql}}](elasticsearch://reference/query-languages/esql.md) language in the reference documentation.
