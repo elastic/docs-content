@@ -36,7 +36,7 @@ GET _cluster/allocation/explain
 }
 ```
 
-%% TEST[continued]
+% TEST[continued]
 
 The API response indicates the shard can only be allocated to a nonexistent
 node.
@@ -75,11 +75,11 @@ node.
 }
 ```
 
-%% TESTRESPONSE[s/"at" : "[^"]*"/"at" : $body.$_path/]
-%% TESTRESPONSE[s/"node_id" : "[^"]*"/"node_id" : $body.$_path/]
-%% TESTRESPONSE[s/"transport_address" : "[^"]*"/"transport_address" : $body.$_path/]
-%% TESTRESPONSE[s/"roles" : \[("[a-z_]*",)*("[a-z_]*")\]/"roles" : $body.$_path/]
-%% TESTRESPONSE[s/"node_attributes" : \{\}/"node_attributes" : $body.$_path/]
+% TESTRESPONSE[s/"at" : "[^"]*"/"at" : $body.$_path/]
+% TESTRESPONSE[s/"node_id" : "[^"]*"/"node_id" : $body.$_path/]
+% TESTRESPONSE[s/"transport_address" : "[^"]*"/"transport_address" : $body.$_path/]
+% TESTRESPONSE[s/"roles" : \[("[a-z_]*",)*("[a-z_]*")\]/"roles" : $body.$_path/]
+% TESTRESPONSE[s/"node_attributes" : \{\}/"node_attributes" : $body.$_path/]
 
 1. The current state of the shard.
 2. The reason for the shard originally becoming unassigned.
@@ -133,7 +133,7 @@ primary shard that has reached the maximum number of allocation retry attempts.
 }
 ```
 
-%% NOTCONSOLE
+% NOTCONSOLE
 
 When {{es}} is unable to allocate a shard, it will attempt to retry allocation up to
 the maximum number of retries allowed. After this, {{es}} will stop attempting to
@@ -163,7 +163,7 @@ primary shard that was previously allocated.
 }
 ```
 
-%% NOTCONSOLE
+% NOTCONSOLE
 
 If a shard is unassigned with an allocation status of `no_valid_shard_copy`, then you should [make sure that all nodes are in the cluster](red-yellow-cluster-status.md#fix-cluster-status-recover-nodes). If all the nodes containing in-sync copies of a shard are lost, then you can [recover the data for the shard](red-yellow-cluster-status.md#fix-cluster-status-restore).
 
@@ -224,7 +224,7 @@ unassigned due to <<delayed-allocation,delayed allocation>>.
 }
 ```
 
-%% NOTCONSOLE
+% NOTCONSOLE
 
 1. The configured delay before allocating a replica shard that does not exist due to the node holding it leaving the cluster.
 2. The remaining delay before allocating the replica shard.
@@ -268,7 +268,7 @@ queued to allocate but currently waiting on other queued shards.
 }
 ```
 
-%% NOTCONSOLE
+% NOTCONSOLE
 
 This is a transient message that might appear when a large amount of shards are allocating.
 
@@ -322,7 +322,7 @@ and must be reallocated.
 }
 ```
 
-%% NOTCONSOLE
+% NOTCONSOLE
 
 1. Whether the shard is allowed to remain on its current node.
 2. The deciders that factored into the decision of why the shard is not allowed to remain on its current node.
@@ -364,7 +364,7 @@ cluster balance.
 }
 ```
 
-%% NOTCONSOLE
+% NOTCONSOLE
 
 1. Whether rebalancing is allowed on the cluster.
 2. Whether the shard can be rebalanced to another node.
@@ -379,6 +379,6 @@ for an arbitrary unassigned primary or replica shard, returning any unassigned p
 GET _cluster/allocation/explain
 ```
 
-%% TEST[catch:bad_request]
+% TEST[catch:bad_request]
 
 If the cluster contains no unassigned shards, the API returns a `400` error.
