@@ -9,15 +9,16 @@ products:
   - id: kibana
 ---
 
-# Integrate with third-party services
+# Inference integrations
 
-{{es}} provides a machine learning [inference API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-get-1) to create and manage inference endpoints to integrate with machine learning models provide by popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
+{{es}} provides a machine learning [inference API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-get-1) to create and manage inference endpoints that integrate with services such as Elasticsearch (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
-Learn how to integrate with specific services in the subpages of this section.
+You can create a new inference endpoint:
+
+- using the [Create an inference endpoint API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-put-1)
+- through the [Inference endpoints UI](#add-inference-endpoints).
 
 ## Inference endpoints UI [inference-endpoints]
-
-You can also manage inference endpoints using the UI.
 
 The **Inference endpoints** page provides an interface for managing inference endpoints.
 
@@ -33,7 +34,7 @@ Available actions:
 * Copy the inference endpoint ID
 * Delete endpoints
 
-## Add new inference endpoint
+## Add new inference endpoint [add-inference-endpoints]
 
 To add a new interference endpoint using the UI:
 
@@ -42,18 +43,33 @@ To add a new interference endpoint using the UI:
 1. Provide the required configuration details.
 1. Select **Save** to create the endpoint.
 
+If your inference endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
+
 ## Adaptive allocations [adaptive-allocations]
 
 Adaptive allocations allow inference services to dynamically adjust the number of model allocations based on the current load.
+This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for third-party services (for example, Alibaba Cloud, Cohere, or OpenAI), because those models are hosted externally and not deployed within your Elasticsearch cluster.
 
 When adaptive allocations are enabled:
 
 * The number of allocations scales up automatically when the load increases.
 * Allocations scale down to a minimum of 0 when the load decreases, saving resources.
 
-For more information about adaptive allocations and resources, refer to the trained model autoscaling documentation.
+### Allocation scaling behavior
 
-% TO DO: Add a link to trained model autoscaling when the page is available.%
+The behavior of allocations depends on several factors:
+
+- Deployment type (Elastic Cloud Hosted, Elastic Cloud Enterprise, or Serverless)
+- Usage level (low, medium, or high)
+- Optimization type ([ingest](/deploy-manage/autoscaling/trained-model-autoscaling.md#ingest-optimized) or [search](/deploy-manage/autoscaling/trained-model-autoscaling.md#search-optimized))
+
+::::{important}
+If you enable adaptive allocations and set the `min_number_of_allocations` to a value greater than `0`, you will be charged for the machine learning resources, even if no inference requests are sent.
+
+However, setting the `min_number_of_allocations` to a value greater than `0` keeps the model always available without scaling delays. Choose the configuration that best fits your workload and availability needs.
+:::: 
+
+For more information about adaptive allocations and resources, refer to the [trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) documentation.
 
 ## Default {{infer}} endpoints [default-enpoints]
 
