@@ -60,6 +60,7 @@ PUT /my-index-000001/_settings
   }
 }
 ```
+% TEST[setup:my_index]
 
 While refresh is disabled, your newly indexed documents will not be visible to search operations. Only re-enable refreshing after your bulk indexing is complete and you need the data to be searchable.
 
@@ -73,6 +74,8 @@ PUT /my-index-000001/_settings
   }
 }
 ```
+% TEST[continued]
+
 
 1. For {{serverless-full}} deployments, `refresh_interval` must be either `-1`, or equal to or greater than `5s`
 
@@ -81,6 +84,7 @@ When bulk indexing is complete, consider running a [force merge](https://www.ela
 ```console
 POST /my-index-000001/_forcemerge?max_num_segments=5
 ```
+% TEST[continued]
 
 ::::{warning}
 Force merge is an expensive operation.
