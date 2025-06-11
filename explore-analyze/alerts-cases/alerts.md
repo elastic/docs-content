@@ -14,6 +14,7 @@ products:
 
 # Alerts
 
+
 ## {{rules-app}} [rules]
 
 In general, a rule consists of three parts:
