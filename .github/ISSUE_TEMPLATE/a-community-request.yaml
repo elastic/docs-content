@@ -1,14 +1,14 @@
 name: "Community documentation request"
-description: Request a documentation change or enhancement.
-title: "[Request]: "
-labels: ["Request", "community"]
+description: An issue template for non-Elastic employees to request changes to the documentation.
+title: "[Community]: "
+labels: ["community"]
 body:
   - type: markdown
     attributes:
       value: |
-        Hi 👋. Thanks for taking the time to fill out this request!
-        This form will create an issue that Elastic's docs team will triage and prioritize.
-        You can also open a PR instead.
+        This issue template is for non-Elastic employees to request changes to the documentation. **If you are an Elastic employee, please use the internal issue template instead.**
+        
+        This form will create an issue that Elastic's docs team will triage and prioritize. You can also open a PR instead. Thanks for taking the time to fill out this request!
   - type: textarea
     id: link
     attributes:

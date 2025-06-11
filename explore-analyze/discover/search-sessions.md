@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/search-sessions.html
+products:
+  - id: kibana
 ---
 
 # Run a search session in the background [search-sessions]

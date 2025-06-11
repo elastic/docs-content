@@ -1,4 +1,5 @@
 ---
+navigation_title: Delete an orchestrated deployment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-delete-deployment.html
@@ -6,13 +7,15 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-delete-deployment.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-stop.html
-navigation_title: "Delete an orchestrated deployment"
 applies_to:
   deployment:
     ess:
     ece:
     eck:
   serverless:
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Delete an orchestrated deployment
@@ -59,8 +62,8 @@ To delete an {{ece}} deployment:
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-3. Terminate the deployment.
-4. Select **Delete deployment** and follow the steps to delete the deployment permanently.
+3. From the **Actions** menu, [terminate the deployment](#terminate-a-deployment).
+4. From the **Actions** menu, select **Delete deployment** and follow the steps to delete the deployment permanently.
 
 :::{warning}
 Deleting a deployment cannot be undone.
@@ -77,7 +80,7 @@ To terminate an {{ece}} deployment,
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
-3. In the **Deployment Management** section, select **Terminate deployment**.
+3. From the **Actions** menu, select **Terminate deployment**.
 
 
 ### Restore a deployment
@@ -89,7 +92,7 @@ To restore a terminated deployment,
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-3. In the **Deployment Management** section, select **Restore** and then acknowledge the confirmation message.
+3. From the **Actions** menu, select **Restore deployment** and then acknowledge the confirmation message.
 
 ## {{eck}} [elastic-cloud-kubernetes]
 
@@ -117,7 +120,7 @@ To delete an {{es}} cluster created with {{eck}}:
    ```shell
    kubectl delete kibana <kibana-resource-name>
    ```
-   
+
 :::{{tip}}
 To fully uninstall {{eck}} from your cluster including all managed resources and the ECK operator, refer to the [](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md) guide.
 :::

@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html
 applies_to:
   stack:
+products:
+  - id: elasticsearch
 ---
 
 # Quorum-based decision making [modules-discovery-quorums]

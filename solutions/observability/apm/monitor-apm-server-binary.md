@@ -1,9 +1,12 @@
 ---
-navigation_title: "APM Server binary"
+navigation_title: APM Server binary
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Monitor the APM Server binary [apm-monitoring]

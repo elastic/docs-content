@@ -1,14 +1,17 @@
 ---
-navigation_title: "Cross-cluster search"
+navigation_title: Cross-cluster search
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-cross-cluster-search.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Cross-cluster search with application data [apm-cross-cluster-search]
 
-Elastic APM utilizes {{es}}'s cross-cluster search functionality. Cross-cluster search lets you run a single search request against one or more [remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) — making it easy to search APM data across multiple sources. This means you can also have deployments per data type, making sizing and scaling more predictable, and allowing for better performance while managing multiple observability use cases.
+Elastic APM utilizes {{es}}'s cross-cluster search functionality. Cross-cluster search lets you run a single search request against one or more [remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) — making it easy to search APM data across multiple sources. This means you can also have deployments per data type, making sizing and scaling more predictable, and allowing for better performance while managing multiple observability use cases.
 
 ## Set up cross-cluster search [apm-set-up-cross-cluster-search]
 
@@ -30,8 +33,8 @@ You can also specify certain clusters to display data from, for example, `cluste
 
 There are two ways to edit the default {{data-source}}:
 
-* In the Applications UI — Find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
-* In [`kibana.yml`](/deploy-manage/stack-settings.md) — Update the [`xpack.apm.indices.*`](kibana://reference/configuration-reference/apm-settings.md) configuration values to include remote clusters.
+* In the Applications UI — Find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
+* In [`kibana.yml`](/deploy-manage/stack-settings.md) — Update the [`xpack.apm.indices.*`](kibana://reference/configuration-reference/apm-settings.md) configuration values to include remote clusters.
 
 ::::{tip}
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-mixed.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Deploy Fleet Server on-premises and Elasticsearch on Cloud [add-fleet-server-mixed]
@@ -33,7 +36,7 @@ To deploy a self-managed {{fleet-server}} on-premises to work with an {{ech}} de
     * For version compatibility, {{es}} must be at the same or a later version than {{fleet-server}}, and {{fleet-server}} needs to be at the same or a later version than {{agent}} (not including patch releases).
     * {{kib}} should be on the same minor version as {{es}}
 
-* {{ece}} 2.9 or later—​allows you to use a hosted {{fleet-server}} on {{ecloud}}.
+* {{ece}} 2.9 or later—allows you to use a hosted {{fleet-server}} on {{ecloud}}.
 
     * Requires additional wildcard domains and certificates (which normally only cover `*.cname`, not `*.*.cname`). This enables us to provide the URL for {{fleet-server}} of `https://.fleet.`.
     * The deployment template must contain an {{integrations-server}} node.

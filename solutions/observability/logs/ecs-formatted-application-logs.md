@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack: all
   serverless: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # ECS formatted application logs [logs-ecs-application]

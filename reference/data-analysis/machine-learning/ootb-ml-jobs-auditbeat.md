@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-auditbeat.html
+products:
+  - id: machine-learning
 ---
 
 # {{auditbeat}} {{anomaly-detect}} configurations [ootb-ml-jobs-auditbeat]

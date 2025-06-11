@@ -1,4 +1,5 @@
 ---
+navigation_title: ECH and ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-password-reset-elastic.html
   - https://www.elastic.co/guide/en/cloud/current/ec-password-reset.html
@@ -7,7 +8,9 @@ applies_to:
   deployment:
     ece:
     ess:
-navigation_title: ECH and ECE
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Reset the `elastic` user password in {{ech}} and {{ece}} [ec-password-reset]

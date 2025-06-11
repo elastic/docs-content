@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-streams.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Data streams [apm-data-streams]
@@ -21,7 +24,7 @@ See the [{{fleet}} and {{agent}} Guide](/reference/fleet/data-streams.md) to lea
 
 ## Data stream naming scheme [apm-data-streams-naming-scheme]
 
-APM data follows the `<type>-<dataset>-<namespace>` naming scheme. The `type` and `dataset` are predefined by the {{es}} apm-data plugin, but the `namespace` is your opportunity to customize how different types of data are stored in {{es}}. There is no recommendation for what to use as your namespace—​it is intentionally flexible. For example, you might create namespaces for each of your environments, like `dev`, `prod`, `production`, etc. Or, you might create namespaces that correspond to strategic business units within your organization.
+APM data follows the `<type>-<dataset>-<namespace>` naming scheme. The `type` and `dataset` are predefined by the {{es}} apm-data plugin, but the `namespace` is your opportunity to customize how different types of data are stored in {{es}}. There is no recommendation for what to use as your namespace—it is intentionally flexible. For example, you might create namespaces for each of your environments, like `dev`, `prod`, `production`, etc. Or, you might create namespaces that correspond to strategic business units within your organization.
 
 ## APM data streams [apm-data-streams-list]
 
@@ -43,7 +46,7 @@ Metrics
     * APM service summary metrics: `metrics-apm.service_summary.<metricset.interval>-<namespace>`
     * Application metrics: `metrics-apm.app.<service.name>-<namespace>`
 
-      Application metrics include the instrumented service’s name—​defined in each {{apm-agent}}'s configuration—​in the data stream name. Service names therefore must follow certain index naming rules.
+      Application metrics include the instrumented service’s name—defined in each {{apm-agent}}'s configuration—in the data stream name. Service names therefore must follow certain index naming rules.
 
       ::::{dropdown} Service name rules
       * Service names are case-insensitive and must be unique. For example, you cannot have a service named `Foo` and another named `foo`.

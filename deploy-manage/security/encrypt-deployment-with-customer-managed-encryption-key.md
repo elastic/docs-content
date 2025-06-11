@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-encrypt-with-cmek.html
 applies_to:
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-encrypt-with-cmek.html
+products:
+  - id: cloud-hosted
 ---
 
 # Use a customer-managed encryption key [ec-encrypt-with-cmek]

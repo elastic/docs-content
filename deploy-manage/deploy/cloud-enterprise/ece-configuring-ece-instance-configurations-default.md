@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-instance-configurations-default.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-instance-configurations-default.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Default instance configurations [ece-configuring-ece-instance-configurations-default]

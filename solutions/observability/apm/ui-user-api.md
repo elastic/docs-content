@@ -1,9 +1,12 @@
 ---
-navigation_title: "Create an API user"
+navigation_title: Create an API user
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-api-user.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Applications UI API user [apm-app-api-user]

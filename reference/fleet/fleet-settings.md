@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-settings.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet settings [fleet-settings]

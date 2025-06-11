@@ -1,7 +1,10 @@
 ---
-navigation_title: "Feature flags"
+navigation_title: Feature flags
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-standalone-feature-flags.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure feature flags for standalone {{agent}}s [elastic-agent-standalone-feature-flags]

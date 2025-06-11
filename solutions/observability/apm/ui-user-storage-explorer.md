@@ -1,9 +1,12 @@
 ---
-navigation_title: "Create a storage explorer user"
+navigation_title: Create a storage explorer user
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-storage-explorer-user-create.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Applications UI storage explorer user [apm-app-storage-explorer-user-create]

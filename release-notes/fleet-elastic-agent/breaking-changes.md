@@ -1,5 +1,5 @@
 ---
-navigation_title: "Breaking changes"
+navigation_title: Breaking changes
 ---
 
 # {{fleet}} and {{agent}} breaking changes [fleet-elastic-agent-breaking-changes]
@@ -15,6 +15,16 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
+
+## 9.0.1 [fleet-elastic-agent-9.0.1-breaking-changes]
+
+::::{dropdown} Disabled the `process` scraper of the `hostmetrics` receiver in the Elastic Distribution of OTel Collector
+
+**Impact**<br>
+This scraper collects metrics for all available processes of a host without an easy way to limit this to only report top N process for example. This results in quite big amount of timeseries. Since this is not quite critical for any of the available UIs or dashboards we decide to disable it temporarily until we find a better solution. Users that specifically need these metrics can also enable it back manually.
+
+For more information, check [#198434]({{agent-pull}}7894).
+::::
 
 ## 9.0.0 [fleet-elastic-agent-900-breaking-changes]
 
@@ -69,7 +79,9 @@ For more information, check [#6461]({{agent-pull}}6461) and [#2489]({{agent-pull
 ::::
 
 ::::{dropdown} Changed the default {{agent}} installation and upgrade
-The default {{agent}} installation and ugprade have been changed to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components. Additional components can be included using flags.
+The default {{agent}} installation and ugprade have been changed to include only the `agentbeat`, `endpoint-security` and `pf-host-agent` components.
+
+Additional components such as `apm` or `fleet` require passing the `--install-servers` flag or setting the `ELASTIC_AGENT_FLAVOR=servers` environment variable.
 
 For more information, check [#6542]({{agent-pull}}6542).
 ::::

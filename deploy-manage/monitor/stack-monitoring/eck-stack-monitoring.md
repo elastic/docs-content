@@ -1,15 +1,16 @@
 ---
-navigation_title: "Enable on ECK"
+navigation_title: Enable on ECK
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_how_it_works.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_when_to_use_it.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_override_the_beats_pod_template.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.html
-
 applies_to:
   deployment:
     eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Enable stack monitoring on ECK deployments [k8s-stack-monitoring]
@@ -37,7 +38,7 @@ However, for maximum efficiency and minimizing resource consumption, or advanced
 
 To enable stack monitoring, reference the monitoring {{es}} cluster in the `spec.monitoring` section of their specification. 
 
-The monitoring cluster must be managed by ECK in the same Kubernetes cluster as the monitored one. To learn how to connect an external monitoring cluster, refer to [Connect ot an external monitoring {{es}} cluster](#k8s_connect_to_an_external_monitoring_elasticsearch_cluster).
+The monitoring cluster must be managed by ECK in the same Kubernetes cluster as the monitored one. To learn how to connect an external monitoring cluster, refer to [Connect to an external monitoring {{es}} cluster](#k8s_connect_to_an_external_monitoring_elasticsearch_cluster).
 
 The following example shows how {{stack}} components can be configured to send their monitoring data to a separate {{es}} cluster in the same Kubernetes cluster. 
 
@@ -116,7 +117,9 @@ If Logs stack monitoring is configured for a Beat, and custom container argument
 
 ## Connect to an external monitoring {{es}} cluster [k8s_connect_to_an_external_monitoring_elasticsearch_cluster]
 
-If you want to connect to a monitoring {{es}} cluster not managed by ECK, you can reference a Secret instead of an {{es}} cluster in the `monitoring` section through the `secretName` attribute:
+If you want to connect to a monitoring {{es}} cluster not managed by ECK, you can reference a Secret instead of an {{es}} cluster in the `monitoring` section through the `secretName` attribute.
+
+The next example sends cluster metrics to a remote monitoring cluster not managed by ECK, whereas cluster logs are sent to a remote cluster handled by ECK:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -143,7 +146,7 @@ spec:
 ```
 
 1. The `secretName` and `name` attributes are mutually exclusive, you have to choose one or the other.
-2. The `namespace` and `serviceName` attributes can only be used in conjunction with `name`, not with `secretName`.
+2. The `namespace` and `serviceName` attributes can only be used in conjunction with `name`, not with `secretName`, and only to reference clusters managed by the same ECK instance.
 
 The referenced Secret must contain the following connection information:
 

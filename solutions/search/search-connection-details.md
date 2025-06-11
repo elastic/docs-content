@@ -1,10 +1,12 @@
 ---
-navigation_title: "Find connection details"
+navigation_title: Find connection details
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: kibana
 ---
 
 # Find your connection details [search-space-connection-details]

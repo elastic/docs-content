@@ -1,7 +1,10 @@
 ---
-navigation_title: "truncate_fields"
+navigation_title: truncate_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/truncate_fields-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Truncate fields [truncate_fields-processor]

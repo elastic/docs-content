@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-inference.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-inference.html
+products:
+  - id: machine-learning
 ---
 
 # Add NLP inference to ingest pipelines [ml-nlp-inference]

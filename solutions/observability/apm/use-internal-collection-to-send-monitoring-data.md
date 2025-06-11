@@ -1,9 +1,12 @@
 ---
-navigation_title: "Use internal collection"
+navigation_title: Use internal collection
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-internal-collection.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Use internal collection to send monitoring data [apm-monitoring-internal-collection]

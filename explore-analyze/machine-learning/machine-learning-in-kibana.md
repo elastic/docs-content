@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 navigation_title: ML in Kibana
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Machine learning in Kibana [xpack-ml]

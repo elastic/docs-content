@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # kNN search [knn-search]
@@ -44,7 +47,7 @@ Common use cases for kNN include:
 
 {{es}} supports two methods for kNN search:
 
-* [Approximate kNN](#approximate-knn) using the `knn` search option, `knn` query or a `knn` [retriever](../retrievers-overview.md)
+* [Approximate kNN](#approximate-knn) using the `knn` search option, `knn` query or a `knn` [retriever](../retrievers-overview.md)
 * [Exact, brute-force kNN](#exact-knn) using a `script_score` query with a vector function
 
 In most cases, you’ll want to use approximate kNN. Approximate kNN offers lower latency at the cost of slower indexing and imperfect accuracy.

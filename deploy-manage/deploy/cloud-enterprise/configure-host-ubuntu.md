@@ -1,11 +1,13 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: Ubuntu
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-onprem.html
-navigation_title: Ubuntu
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure an Ubuntu host [ece-configure-hosts-ubuntu]

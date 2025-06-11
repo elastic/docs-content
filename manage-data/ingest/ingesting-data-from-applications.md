@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-ingest-guides.html
 applies_to:
   stack: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Ingesting data from applications

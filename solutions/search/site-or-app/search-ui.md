@@ -1,11 +1,13 @@
 ---
-navigation_title: "Search UI"
+navigation_title: Search UI
 mapped_pages:
   - https://www.elastic.co/guide/en/search-ui/current/overview.html
   - https://www.elastic.co/guide/en/search-ui/current/index.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: search-ui
 ---
 
 # What is Search UI? [overview]
@@ -123,7 +125,7 @@ The Enterprise Search team at Elastic maintains this library and are happy to he
 
 ## Contribute 🚀 [overview-contribute]
 
-We welcome contributors to the project. Before you begin, a couple notes…​
+We welcome contributors to the project. Before you begin, a couple notes…
 
 * Read the [Search UI Contributor’s Guide](https://github.com/elastic/search-ui/blob/main/CONTRIBUTING.md).
 * Prior to opening a pull request:
