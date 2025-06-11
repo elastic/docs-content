@@ -16,7 +16,7 @@ products:
 
 $$$general-assign-user-roles$$$
 
-You can invite users to join your organization to allow them to interact with all or specific instances, projects and settings. After they're invited, you can manage the users in your organization.
+You can invite users to join your organization to allow them to interact with all or specific {{ecloud}} resources and settings. After they're invited, you can manage the users in your organization.
 
 Alternatively, [configure {{ecloud}} SAML SSO](../../../deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) to enable your organization members to join the {{ecloud}} organization automatically.
 
