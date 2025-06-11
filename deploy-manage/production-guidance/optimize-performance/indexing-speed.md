@@ -64,7 +64,7 @@ PUT /my-index-000001/_settings
 
 While refresh is disabled, your newly indexed documents will not be visible to search operations. Only re-enable refreshing after your bulk indexing is complete and you need the data to be searchable.
 
-To restore the refresh interval, run the following request with your value:
+To restore the refresh interval, run the following request with your desired value:
 
 ```console
 PUT /my-index-000001/_settings
