@@ -40,7 +40,7 @@ Expand a section below for your endpoint security system:
 
         * To isolate and release hosts: `Read` access for `Alerts`, and `Read` and `Write` access for `Hosts`.
 
-        * To run a script on a host: `Read` and `Write` access for `Real time response`, and `Write` access for `Real time response (admin)`.
+        * To run a script on a host: `Read` and `Write` access for `Real time response`; for elevated access, `Write` access for `Real time response (admin)` is also required.
 
     * Take note of the client ID, client secret, and base URL; you’ll need them in later steps when you configure {{elastic-sec}} components to access CrowdStrike.
     * The base URL varies depending on your CrowdStrike account type:
