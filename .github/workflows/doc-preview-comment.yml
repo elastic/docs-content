@@ -42,7 +42,7 @@ jobs:
                 return `- [\`${f.filename}\`](${base}/${p})`;
               });
 
-            if (!links.length) return;  // nothing to do
+            // if (!links.length) return;  // nothing to do
 
             // 3) Build the comment body
             const body = [
