@@ -95,7 +95,7 @@ Refer to [this video](https://www.youtube.com/watch?v=5z3n2VgusLE) for a walkthr
 The following response contains an allocation explanation for an unassigned
 primary shard that has reached the maximum number of allocation retry attempts.
 
-```console-response
+```console-result
 {
   "index" : "my-index-000001",
   "shard" : 0,
@@ -146,7 +146,7 @@ will allocate the shard if the issue preventing allocation has been resolved.
 The following response contains an allocation explanation for an unassigned
 primary shard that was previously allocated.
 
-```console-response
+```console-result
 {
   "index" : "my-index-000001",
   "shard" : 0,
@@ -176,7 +176,7 @@ Refer to [this video](https://www.youtube.com/watch?v=6OAg9IyXFO4) for a walkthr
 The following response contains an allocation explanation for a replica that's
 unassigned due to <<delayed-allocation,delayed allocation>>.
 
-```console-response
+```console-result
 {
   "index" : "my-index-000001",
   "shard" : 0,
@@ -235,7 +235,7 @@ unassigned due to <<delayed-allocation,delayed allocation>>.
 The following response contains an allocation explanation for a replica that's
 queued to allocate but currently waiting on other queued shards.
 
-```console-response
+```console-result
 {
   "index" : "my-index-000001",
   "shard" : 0,
@@ -280,7 +280,7 @@ The following response contains an allocation explanation for an assigned shard.
 The response indicates the shard is not allowed to remain on its current node
 and must be reallocated.
 
-```console-response
+```console-result
 {
   "index" : "my-index-000001",
   "shard" : 0,
@@ -334,7 +334,7 @@ The following response contains an allocation explanation for a shard that must
 remain on its current node. Moving the shard to another node would not improve
 cluster balance.
 
-```console-response
+```console-result
 {
   "index" : "my-index-000001",
   "shard" : 0,
