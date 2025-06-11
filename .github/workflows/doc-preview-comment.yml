@@ -45,7 +45,7 @@ jobs:
               "",
               ...links,
               "",
-              "🔔 *The preview site may take up to **5 minutes** to finish building. These links will become live once it completes.*"
+              "🔔 *The preview site may take up to **3 minutes** to finish building. These links will become live once it completes.*"
             ].join("\n");
 
             // 4) Post or update a single bot comment
