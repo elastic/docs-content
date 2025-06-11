@@ -30,7 +30,8 @@ There are no new features or enhancements.
 
 ### Fixes [elastic-security-9.0.2-fixes]
 * Fixes a bug that caused an error message to appear when you changed entity asset criticality from the entity flyout [#219858]({{kib-pull}}219858)
-* Fixes a bug in {{elastic-defend}} 8.16.0 where {{elastic-endpoint}} would incorrectly report some files as being `.NET`.
+* Removes the technical preview badge from the alert suppression fields for event correlation rules
+* Fixes a bug in {{elastic-defend}} 8.16.0 where {{elastic-endpoint}} would incorrectly report some files as being `.NET`
 
 ## 9.0.1 [elastic-security-9.0.1-release-notes]
 
