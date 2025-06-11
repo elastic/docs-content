@@ -40,6 +40,11 @@ Launch the response console from any of the following places in {{elastic-sec}}:
 * **Endpoints** page → **Actions** menu (**…**) → **Respond**
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
+
+  ::::{note}
+  In {{serverless-short}}, you can also launch the response console from the event details flyout (event details flyout → **Take action** → **Respond**).
+  ::::
+  
 * Host details page → **Respond**
 
 To perform an action on the endpoint, enter a [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the input area at the bottom of the console, then press **Return**. Output from the action is displayed in the console.

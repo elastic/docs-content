@@ -136,6 +136,9 @@ The Investigation section provides the following information:
 
 * **Highlighted fields**: Shows relevant fields for the alert and any [custom highlighted fields](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) you added to the rule. Custom highlighted fields with values are added to this section. Those without values aren’t added.
 
+    ::::{tip}
+    In {{serverless-short}}, you can quickly add and remove custom highlighted fields from the rule by clicking **Add field** in the Highlighted fields table. 
+    ::::
 
 ## Visualizations [visualizations-section]
 
