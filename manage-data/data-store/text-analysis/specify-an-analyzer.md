@@ -201,7 +201,7 @@ PUT /my-index-000001/_settings
 ```
 % TEST[continued]
 
-```
+```console
 POST /my-index-000001/_open
 ```
 % TEST[continued]
