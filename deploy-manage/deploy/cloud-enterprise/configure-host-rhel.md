@@ -12,13 +12,10 @@ products:
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
-
-
 The following instructions show you how to prepare your hosts on Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9.
 
 * [Prerequisites](#ece-prerequisites-rhel8)
-* [Configure the host](#ece-configure-hosts-rhel8-podman)
-
+* [Install Podman and configure the host](#ece-configure-hosts-rhel8-podman)
 
 ## Prerequisites [ece-prerequisites-rhel8]
 
@@ -29,11 +26,10 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
 ::::{important}
-Make sure to use a combination of Linux distribution and Container Engine version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
+Make sure to use a supported combination of Linux distribution and container engine version as defined in our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Unsupported combinations can lead to various issues in your ECE environment, including failures when creating system deployments, upgrading workload deployments, proxy timeouts, and more.
 ::::
 
-
-## Configure the host [ece-configure-hosts-rhel8-podman]
+## Install Podman and configure the host [ece-configure-hosts-rhel8-podman]
 
 1. Install the OS packages `lvm2`, `iptables`, `sysstat`, and `net-tools` by executing:
 

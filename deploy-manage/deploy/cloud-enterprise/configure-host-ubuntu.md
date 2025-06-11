@@ -20,12 +20,12 @@ The following instructions show you how to prepare your hosts on Ubuntu.
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu)
 
 
-## Install Docker [ece-install-docker-ubuntu]
+## Install Docker on Ubuntu [ece-install-docker-ubuntu]
 
-Install the compatible Docker version on Ubuntu.
+Install a compatible Docker version on Ubuntu.
 
 ::::{important}
-Make sure to use a combination of Linux distribution and Container Engine version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
+Make sure to use a supported combination of Linux distribution and container engine version as defined in our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Unsupported combinations can lead to various issues in your ECE environment, including failures when creating system deployments, upgrading workload deployments, proxy timeouts, and more.
 ::::
 
 
