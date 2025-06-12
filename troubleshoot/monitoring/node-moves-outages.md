@@ -11,9 +11,9 @@ products:
 
 # Understanding node moves and system maintenance [ec-deployment-node-move]
 
-To ensure that your deployment nodes are located on healthy hosts, we vacate nodes to perform essential system maintenance or to remove a host with hardware issues from service. These tasks cannot be skipped or delayed.
+To ensure that your deployment nodes are located on healthy hosts, Elastic vacates nodes to perform essential system maintenance or to remove a host with hardware issues from service. These tasks cannot be skipped or delayed.
 
-All major scheduled maintenance and incidents can be found on the Elastic [status page](https://status.elastic.co/). You can subscribe to that page to be notified about updates.
+All major scheduled maintenance and incidents can be found on the Elastic [status page](https://status.elastic.co/). You can subscribe to that page to be notified about planned maintenance or actions that have been taken to respond to incidents.
 
 If events on your deployment don’t correlate to any items listed on the status page, the events are due to minor essential maintenance performed on only a subset of {{ech}} deployments.
 
@@ -27,7 +27,7 @@ You can [configure email notifications](#email) to be alerted when this situatio
 
 ## Possible causes and impact [ec-node-host-outages]
 
-Potential causes of system maintenance include, but not limited to, situations like:
+Potential causes of system maintenance include, but not limited to, situations like the following:
 
 * A host where the Cloud Service Provider (CSP), like AWS, GCP, or Azure, has reported upcoming hardware deprecation or identified issues requiring remediation.
 * Abrupt host termination by the CSP due to underlying infrastructure problems.
@@ -52,11 +52,11 @@ Overall, having replicas and multiple availability zones helps minimize service 
 
 ### Data loss risk for non-HA deployments
 
-The system maintenance process always attempts to recover the vacated node's data from replicas or snapshots. However, if the deployment is not configured with HA, including replica shards, the maintenance process may not be able to recover the data from the vacated node.
+The system maintenance process always attempts to recover the vacated node's data from replicas or snapshots. However, if the deployment is not configured with high availability, including replica shards, the maintenance process may not be able to recover the data from the vacated node.
 
 To minimize this risk, ensure your deployment follows the [high availability best practices](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha), which recommend:
-- Using at least two availability zones for production systems (three for mission-critical systems).
-- Configuring one or more replicas for each index (except for searchable snapshot indexes).
+- Using at least two availability zones for production systems, and three for mission-critical systems.
+- Configuring one or more replicas for each index, except for searchable snapshot indices.
 
 As long as these recommendations are followed, system maintenance processes should not impact the availability of the data in the deployment.
 
@@ -90,10 +90,10 @@ In the deployment used as the destination of Stack monitoring:
 
 2. Create [Stack monitoring default rules](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md#_create_default_rules).
 
-3. (Optional) Configure an email [connector](/deploy-manage/manage-connectors.md). If you prefer, use the pre-configured `Elastic-CLoud-SMTP`.
+3. (Optional) Configure an email [connector](kibana://connectors-kibana/email-action-type.md). If you prefer, use the preconfigured `Elastic-Cloud-SMTP` email connector.
 
-4. Edit the rule  **Cluster alerting** → **{{es}} nodes changed** and select the email connector.
+4. Edit the rule  **Cluster alerting** > **{{es}} nodes changed** and select the email connector.
 
 ::::{note}
-If you have only one master node in your cluster, during the master node vacate no notification will be sent. Kibana needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster when you enable logging and monitoring.
+If you have only one master node in your cluster, no notification will be sent during the master node vacate. {{kib}} needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster when you enable logging and monitoring.
 ::::
