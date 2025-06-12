@@ -889,6 +889,169 @@ Now the result will contain the nearest found paragraph when searching.
 }
 ```
 
+### Customize nested kNN search
+
+You can combine nested kNN search with top-level dense vector fields, filters, and `inner_hits` to support more advanced use cases. 
+
+This approach is helpful when you:
+
+- Use your own model instead of `semantic_text` and want full control over how vectors are stored and searched.
+- Want to search both document titles and the smaller sections inside, like paragraphs.
+- Need to return not just matching documents, but also the exact passages that matched.
+
+#### Create the index mapping
+This example creates an index that stores a vector at the top level for the document title and multiple vectors inside a nested field for individual paragraphs.
+
+```console
+PUT multi_level_vectors
+{
+  "mappings": {
+    "properties": {
+      "title_vector": {
+        "type": "dense_vector",
+        "dims": 2,
+        "index_options": {
+          "type": "hnsw"
+        }
+      },
+      "paragraphs": {
+        "type": "nested",
+        "properties": {
+          "text": {
+            "type": "text"
+          },
+          "vector": {
+            "type": "dense_vector",
+            "dims": 2,
+            "index_options": {
+              "type": "hnsw"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### Index the documents
+This step adds example documents with title and paragraph vectors.
+
+```console
+POST _bulk
+{ "index": { "_index": "multi_level_vectors", "_id": "1" } }
+{ "title_vector": [0.5, 0.4], "paragraphs": [ { "text": "First paragraph", "vector": [0.5, 0.4] }, { "text": "Second paragraph", "vector": [0.3, 0.8] } ] }
+{ "index": { "_index": "multi_level_vectors", "_id": "2" } }
+{ "title_vector": [0.1, 0.9], "paragraphs": [ { "text": "Another one", "vector": [0.1, 0.9] } ] }
+```
+
+#### Run the search query
+This example searches for documents with relevant paragraph vectors. The `inner_hits` section returns the most relevant paragraphs from each matching document.
+
+```console
+POST multi_level_vectors/_search
+{
+  "_source": false,
+  "fields": ["title_vector"],
+  "knn": {
+    "field": "paragraphs.vector",
+    "query_vector": [0.5, 0.4],
+    "k": 2,
+    "num_candidates": 10,
+    "inner_hits": {
+      "size": 2,
+      "name": "top_passages",
+      "_source": false,
+      "fields": ["paragraphs.text"]
+    }
+  }
+}
+```
+
+The `inner_hits` block returns the most relevant paragraphs within each top-level document. Use the `size` field to control how many matches you retrieve. If your query includes multiple kNN clauses, use the `name` field to avoid naming conflicts in the response.
+
+```json
+{
+  "took": 58,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": { "value": 2, "relation": "eq" }, <1>
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "multi_level_vectors",
+        "_id": "1",
+        "_score": 1, <2>
+        "fields": {
+          "title_vector": [0.5, 0.4]
+        },
+        "inner_hits": {
+          "top_passages": {
+            "hits": {
+              "total": { "value": 2, "relation": "eq" },
+              "max_score": 1,
+              "hits": [
+                {
+                  "_nested": { "field": "paragraphs", "offset": 0 }, <3>
+                  "_score": 1,
+                  "fields": {
+                    "paragraphs": [ { "text": ["First paragraph"] } ] <4>
+                  }
+                },
+                {
+                  "_nested": { "field": "paragraphs", "offset": 1 },
+                  "_score": 0.92955077,
+                  "fields": {
+                    "paragraphs": [ { "text": ["Second paragraph"] } ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "_index": "multi_level_vectors",
+        "_id": "2",
+        "_score": 0.8535534,
+        "fields": {
+          "title_vector": [0.1, 0.9]
+        },
+        "inner_hits": {
+          "top_passages": {
+            "hits": {
+              "total": { "value": 1, "relation": "eq" },
+              "max_score": 0.8535534,
+              "hits": [
+                {
+                  "_nested": { "field": "paragraphs", "offset": 0 },
+                  "_score": 0.8535534,
+                  "fields": {
+                    "paragraphs": [ { "text": ["Another one"] } ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+1. Two top-level documents matched the query.
+2. The score of the document, based on the best matching paragraph.
+3. Inner hits show which nested paragraph matched best.
+4. The actual matching paragraph text.
+
+
 ### Limitations for approximate kNN search [approximate-knn-limitations]
 
 * When using kNN search in [{{ccs}}](../../../solutions/search/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../solutions/search/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
