@@ -75,12 +75,13 @@ Knowledge base setup may take several minutes. It will continue in the backgroun
 
 ## Knowledge base for alerts [rag-for-alerts]
 
-When Knowledge Base is enabled, AI Assistant receives `open` or `acknowledged` alerts from your environment from the last 24 hours. It uses these as context for each of your prompts. This enables it to answer questions about multiple alerts in your environment rather than just about individual alerts you choose to send it. It receives alerts ordered by risk score, then by the most recently generated. Building block alerts are excluded.
+AI Assistant receives `open` or `acknowledged` alerts from your environment from the last 24 hours and uses them as context for your prompts. This enables it to answer questions about multiple alerts in your environment rather than just about individual alerts you choose to send it. It receives alerts ordered by risk score, then by the most recently generated. Building block alerts are excluded.
 
-To enable Knowledge Base for alerts:
+To configure alert access for Knowledge Base:
 
-1. Ensure that knowledge base is [enabled](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
-2. On the **Security AI settings** page, go to the **Knowledge Base** tab and use the slider to select the number of alerts to send to AI Assistant. Click **Save**.
+1. Go the **Security AI settings** page. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security."
+2. On the **Knowledge Base** tab, use the slider to select the number of alerts to send to AI Assistant.
+3. Click **Save**.
 
 ::::{note}
 Including a large number of alerts may cause your request to exceed the maximum token length of your third-party generative AI provider. If this happens, try selecting a lower number of alerts to send.
