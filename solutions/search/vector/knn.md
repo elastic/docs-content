@@ -895,7 +895,7 @@ You can combine nested kNN search with top-level dense vector fields, filters, a
 
 This approach is helpful when you:
 
-- Use your own model instead of `semantic_text` and want full control over how vectors are stored and searched.
+- You use your own model to generate vectors and don’t rely on the `semantic_text` field provided by Elastic’s semantic search capability.
 - Want to search both document titles and the smaller sections inside, like paragraphs.
 - Need to return not just matching documents, but also the exact passages that matched.
 
