@@ -31,7 +31,7 @@ You can run these queries using:
 
 - **Interactive interfaces**:
   - [Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline). Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-  - [Discover](/discover/try-esql.md). Find **Discover** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+  - [Discover](/explore-analyze/discover/try-esql.md). Find **Discover** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 - **REST API** via [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console). This requires additional formatting:
   :::{dropdown} View Console syntax for {{esql}}
