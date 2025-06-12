@@ -27,22 +27,25 @@ FROM windows-security-logs
 | LIMIT 1000
 ```
 
-You can run these queries in [Discover](/explore-analyze/discover.md) or [Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline) using the `ES|QL` query language.
+You can run these queries using:
 
-If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you'll need to use the following syntax:
+- **Interactive interfaces**:
+  - [Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline). Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects).
+  - [Discover](/explore-analyze/discover.md#esql-in-discover). Find **Discover** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects).
 
-```console
-POST /_query?format=txt
-{
-  "query": """
-    FROM windows-security-logs
-    | WHERE event.code == "4624"
-    | LIMIT 1000
-  """
-}
-```
-
-If you'd prefer to use your favorite programming language, refer to [Client libraries](/solutions/search/site-or-app/clients.md) for a list of official and community-supported clients.
+- **REST API** via [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console). This requires additional formatting:
+  :::{dropdown} View Console syntax for {{esql}}
+  ```console
+  POST /_query?format=txt
+  {
+    "query": """
+      FROM windows-security-logs
+      | WHERE event.code == "4624"
+      | LIMIT 1000
+    """
+  }
+  ```
+  :::
 
 ## Step 0: Add sample data
 
@@ -501,8 +504,8 @@ BY user.name, host.name, asset.criticality
 - Explore a curated collection of threat hunting [queries](https://github.com/elastic/detection-rules/tree/main/hunting) in the `elastic/detection-rules` GitHub repo.
   - The corresponding [blog](https://www.elastic.co/security-labs/elevate-your-threat-hunting) provides more information about how to use them in your threat hunting workflows.
 - Explore more threat hunting examples in the following blogs:
-  - https://www.elastic.co/blog/security-exfiltration
-  - https://www.elastic.co/blog/detecting-command-scripting-interpreter
-  - https://www.elastic.co/blog/elastic-security-detecting-credential-dumping
-  - https://www.elastic.co/blog/elastic-security-detecting-covert-data-exfiltration
+  - [Detect and prevent data exfiltration with Elastic Security](https://www.elastic.co/blog/security-exfiltration)
+  - [Detecting command and scripting interpreter techniques](https://www.elastic.co/blog/detecting-command-scripting-interpreter)
+  - [Detecting credential dumping with Elastic Security](https://www.elastic.co/blog/elastic-security-detecting-credential-dumping)
+  - [Detecting covert data exfiltration techniques](https://www.elastic.co/blog/elastic-security-detecting-covert-data-exfiltration)
 - Learn more about the [{{esql}}](elasticsearch://reference/query-languages/esql.md) language in the reference documentation.
