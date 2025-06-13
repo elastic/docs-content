@@ -47,7 +47,7 @@ PUT /publications/_mapping
 
 The update mapping API can be applied to multiple data streams or indices in a single request. For example, you can update mappings for the `my-index-000001` and `my-index-000002` indices at the same time:
 
-```json
+```console
 # Create the two indices
 PUT /my-index-000001
 PUT /my-index-000002
