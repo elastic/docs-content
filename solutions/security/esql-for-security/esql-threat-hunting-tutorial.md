@@ -277,23 +277,8 @@ PUT /threat-intel
   }
 }
 ```
-```console
-PUT /lolbins-lookup
-{
-  "mappings": {
-    "properties": {
-      "indicator.value": {"type": "keyword"},
-      "lolbin": {"type": "boolean"},
-      "description": {"type": "text"}
-    }
-  },
-  "settings": {
-    "index.mode": "lookup"
-  }
-}
-```
 
-Now we'll populate the lookup indices with contextual data. This single bulk operation indexes data into the `user-context`, `threat-intel`, `asset-inventory`, and `lolbins-lookup` indices with one request.
+Now we'll populate the lookup indices with contextual data. This single bulk operation indexes data into the `user-context`, `threat-intel` and `asset-inventory` indices with one request.
 
 ```console
 POST /_bulk?refresh=wait_for
@@ -313,12 +298,6 @@ POST /_bulk?refresh=wait_for
 {"indicator.value":"185.220.101.45","indicator.type":"ip","threat.name":"APT-29","threat.severity":"high"}
 {"index":{"_index":"threat-intel"}}
 {"indicator.value":"powershell.exe","indicator.type":"process","threat.name":"Living off the Land","threat.severity":"medium"}
-{"index":{"_index":"lolbins-lookup"}}
-{"indicator.value":"powershell.exe","lolbin":true,"description":"Windows PowerShell execution engine"}
-{"index":{"_index":"lolbins-lookup"}}
-{"indicator.value":"cmd.exe","lolbin":true,"description":"Windows Command Processor"}
-{"index":{"_index":"lolbins-lookup"}}
-{"indicator.value":"wmic.exe","lolbin":true,"description":"Windows Management Instrumentation"}
 ```
 
 ## Step 1: Hunt for initial compromise indicators
