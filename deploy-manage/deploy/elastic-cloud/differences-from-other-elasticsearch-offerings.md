@@ -224,6 +224,24 @@ Managed settings
     * Shard allocation
     * Resource management
 
+When attempting to use an unavailable index setting, you'll receive this error:
+
+```json
+{
+    "error": {
+        "root_cause": [
+            {
+                "type": "illegal_argument_exception",
+                "reason": "Settings [xyz] are not available when running in serverless mode"
+            }
+        ],
+        "type": "illegal_argument_exception",
+        "reason": "Settings [xyz] are not available when running in serverless mode"
+    },
+    "status": 400
+}
+```
+
 ## Learn more
 
 - [{{serverless-full}} roadmap](https://www.elastic.co/cloud/serverless/roadmap): See upcoming features and development plans for the Serverless platform
