@@ -29,10 +29,11 @@ The update mapping API requires an existing data stream or index. The following 
 ```console
 PUT /publications
 ```
+% TEST
 
 The following update mapping API request adds `title`, a new [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) field, to the `publications` index.
 
-```json
+```console
 PUT /publications/_mapping
 {
   "properties": {
@@ -40,6 +41,7 @@ PUT /publications/_mapping
   }
 }
 ```
+% TEST[continued]
 
 ## Multiple targets
 
@@ -64,6 +66,7 @@ PUT /my-index-000001,my-index-000002/_mapping
   }
 }
 ```
+% TEST[continued]
 
 ## Add new properties to an existing object field
 
@@ -71,7 +74,7 @@ You can use the update mapping API to add new properties to an existing [`object
 
 First, create an index with the `name` object field and an inner `first` text field:
 
-```json
+```console
 PUT /my-index-000001
 {
   "mappings": {
@@ -87,10 +90,11 @@ PUT /my-index-000001
   }
 }
 ```
+% TEST
 
 Then, use the update mapping API to add a new inner `last` text field to the `name` field:
 
-```json
+```console
 PUT /my-index-000001/_mapping
 {
   "properties": {
@@ -104,6 +108,7 @@ PUT /my-index-000001/_mapping
   }
 }
 ```
+% TEST[continued]
 
 ## Add multi-fields to an existing field
 
@@ -117,7 +122,7 @@ To see how this works, try the following example.
 
 Use the [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) to create an index with the `city` [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) field:
 
-```json
+```console
 PUT /my-index-000001
 {
   "mappings": {
@@ -129,10 +134,11 @@ PUT /my-index-000001
   }
 }
 ```
+% TEST
 
 Enable a multi-field for `city`:
 
-```json
+```console
 PUT /my-index-000001/_mapping
 {
   "properties": {
@@ -147,6 +153,7 @@ PUT /my-index-000001/_mapping
   }
 }
 ```
+% TEST[continued]
 
 ## Change supported mapping parameters for an existing field
 
@@ -154,7 +161,7 @@ Not all mapping parameters are updateable, but some like [`ignore_above`](https:
 
 Create an index with `ignore_above: 20`:
 
-```json
+```console
 PUT /my-index-000001
 {
   "mappings": {
@@ -167,10 +174,11 @@ PUT /my-index-000001
   }
 }
 ```
+% TEST
 
 Update `ignore_above` to `100`:
 
-```json
+```console
 PUT /my-index-000001/_mapping
 {
   "properties": {
@@ -181,6 +189,7 @@ PUT /my-index-000001/_mapping
   }
 }
 ```
+% TEST[continued]
 
 ## Change the mapping of an existing field
 
@@ -188,7 +197,7 @@ You **cannot** change the field type of an existing field. Instead, create a new
 
 Create an index with a `user_id` field of type `long`:
 
-```json
+```console
 PUT /my-index-000001
 {
   "mappings": {
@@ -200,6 +209,7 @@ PUT /my-index-000001
   }
 }
 ```
+% TEST
 
 Index some documents:
 
@@ -214,10 +224,11 @@ POST /my-index-000001/_doc?refresh=wait_for
   "user_id": 12346
 }
 ```
+% TEST[continued]
 
 Create a new index with the `user_id` field as `keyword`:
 
-```json
+```console
 PUT /my-new-index-000001
 {
   "mappings": {
@@ -229,10 +240,11 @@ PUT /my-new-index-000001
   }
 }
 ```
+% TEST[continued]
 
 Reindex the data:
 
-```json
+```console
 POST /_reindex
 {
   "source": {
@@ -243,6 +255,7 @@ POST /_reindex
   }
 }
 ```
+% TEST[continued]
 
 ## Rename a field
 
@@ -250,7 +263,7 @@ You **can't** rename a field directly. Instead, use a [`field alias`](https://ww
 
 Create an index with the `user_identifier` field:
 
-```json
+```console
 PUT /my-index-000001
 {
   "mappings": {
@@ -262,10 +275,11 @@ PUT /my-index-000001
   }
 }
 ```
+% TEST[continued]
 
 Add the `user_id` alias:
 
-```json
+```console
 PUT /my-index-000001/_mapping
 {
   "properties": {
@@ -275,3 +289,5 @@ PUT /my-index-000001/_mapping
     }
   }
 }
+```
+% TEST[continued]
