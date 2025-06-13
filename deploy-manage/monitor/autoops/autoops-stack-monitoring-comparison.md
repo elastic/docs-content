@@ -136,19 +136,19 @@ The following features are currently only available in Stack Monitoring. These f
 
 Keep using Stack Monitoring if you:
 
-* are running the Elastic Stack on-premise, air-gapped or otherwise.
-* need to control monitoring data retention. 
-* need monitoring coverage for Elastic Stack components other than {{es}}.
-* have deployments in a region where AutoOps is not available yet.
+* are running the Elastic Stack on-premise, air-gapped or otherwise
+* need to control monitoring data retention
+* need monitoring coverage for Elastic Stack components other than {{es}}
+* have deployments in a region where AutoOps is not available yet
 
 Start using AutoOps if you want:
 
-* easier monitoring of your {{ecloud}} deployments.
-* clear guidance and troubleshooting advice when issues arise.
-* to efficiently monitor a large number of deployments.
-* a comprehensive picture of the historical health of your deployments.
-* your events and alerts to be highly customizable.
-* an advanced notification system tailored for specific clusters and alert conditions.
-* simplified interactions with Elastic Support.
+* easier monitoring of your {{ecloud}} deployments
+* clear guidance and troubleshooting advice when issues arise
+* to efficiently monitor a large number of deployments
+* a comprehensive picture of the historical health of your deployments
+* your events and alerts to be highly customizable
+* an advanced notification system tailored for specific clusters and alert conditions
+* simplified interactions with Elastic Support
 
 
