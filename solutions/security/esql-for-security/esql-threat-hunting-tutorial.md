@@ -399,28 +399,29 @@ FROM windows-security-logs, process-logs, network-logs
 | LOOKUP JOIN user-context ON user.name
 | WHERE user.name == "jsmith" OR user.name == "admin"
 | EVAL event_type = CASE(
-event.code IS NOT NULL, "Authentication",
-process.name IS NOT NULL, "Process Execution",
-destination.ip IS NOT NULL, "Network Activity",
-"Unknown"
+    event.code IS NOT NULL, "Authentication",
+    process.name IS NOT NULL, "Process Execution",
+    destination.ip IS NOT NULL, "Network Activity",
+    "Unknown"
 )
-| EVAL dest_ip = TO_STRING(destination.ip)
 | EVAL attack_stage = CASE(
-process.parent.name LIKE "*word*", "Initial Compromise",
-process.name IN ("net.exe", "nltest.exe"), "Reconnaissance",
-event.code == "4624" AND logon.type == "3", "Lateral Movement",
-process.name IN ("sqlcmd.exe", "ntdsutil.exe"), "Data Access",
-dest_ip NOT LIKE "10.*", "Exfiltration", "Other")
+    process.parent.name LIKE "*word*", "Initial Compromise",
+    process.name IN ("net.exe", "nltest.exe"), "Reconnaissance",
+    event.code == "4624" AND logon.type == "3", "Lateral Movement",
+    process.name IN ("sqlcmd.exe", "ntdsutil.exe"), "Data Access",
+    NOT CIDR_MATCH(destination.ip, "10.0.0.0/8"), "Exfiltration",
+    "Other"
+) 
 | SORT @timestamp ASC
 | KEEP @timestamp, event_type, attack_stage, host.name, asset.criticality, user.name, process.name, destination.ip
 | LIMIT 1000
 ```
 
 1. Querying multiple indices simultaneously provides comprehensive event correlation
-2. Nested [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) with [`IS NOT NULL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#null-predicates) checks categorizes events by their source data structure
-3. Complex conditional logic maps technical events to attack framework stages ([MITRE ATT&CK)](https://attack.mitre.org/)) for better understanding of the attack lifecycle
-4. `SORT ASC` uses the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command to order events by timestamp, which creates chronological ordering essential for timeline analysis
-
+2. Nested [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) statements efficiently categorize events by their data structure
+3. Maps technical events to MITRE ATT&CK framework stages for attack lifecycle analysis
+4. Uses native IP type handling with [`CIDR_MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/ip-functions.md#esql-cidr_match) for efficient network segmentation checks
+5. Creates chronological timeline using [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) on timestamp field
 
 ## Step 5: Hunt for unusual interpreter usage
 
