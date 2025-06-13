@@ -36,6 +36,7 @@ toc:
               - file: data-store/mapping/index-runtime-field.md
               - file: data-store/mapping/explore-data-with-runtime-fields.md
           - file: data-store/mapping/removal-of-mapping-types.md
+          - file: data-store/mapping/update-mappings-examples.md
       - file: data-store/text-analysis.md
         children:
           - file: data-store/text-analysis/concepts.md
