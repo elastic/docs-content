@@ -889,31 +889,24 @@ Now the result will contain the nearest found paragraph when searching.
 }
 ```
 
-### Customize nested kNN search
+### Search with nested vectors for chunked content [nested-knn-search-chunked-content]
 
-You can combine nested kNN search with top-level dense vector fields, filters, and `inner_hits` to support more advanced use cases. 
+Use nested kNN search with dense vector fields and `inner_hits` to search and retrieve relevant content from structured documents. 
 
-This approach is helpful when you:
+This approach is ideal when you:
 
-- You use your own model to generate vectors and don’t rely on the `semantic_text` field provided by Elastic’s semantic search capability.
-- Want to search both document titles and the smaller sections inside, like paragraphs.
-- Need to return not just matching documents, but also the exact passages that matched.
+- Chunk your content into paragraphs, sections, or other nested structures.
+- Want to retrieve only the most relevant nested section of each matching document.
+- You generate your own vectors using a custom model instead of relying on the [`semantic_text`](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text) field provided by Elastic's semantic search capabiliy.
 
 #### Create the index mapping
 This example creates an index that stores a vector at the top level for the document title and multiple vectors inside a nested field for individual paragraphs.
 
 ```console
-PUT multi_level_vectors
+PUT nested_vector_index
 {
   "mappings": {
     "properties": {
-      "title_vector": {
-        "type": "dense_vector",
-        "dims": 2,
-        "index_options": {
-          "type": "hnsw"
-        }
-      },
       "paragraphs": {
         "type": "nested",
         "properties": {
@@ -935,24 +928,23 @@ PUT multi_level_vectors
 ```
 
 #### Index the documents
-This step adds example documents with title and paragraph vectors.
+Add example documents with vectors for each paragraph.
 
 ```console
 POST _bulk
-{ "index": { "_index": "multi_level_vectors", "_id": "1" } }
-{ "title_vector": [0.5, 0.4], "paragraphs": [ { "text": "First paragraph", "vector": [0.5, 0.4] }, { "text": "Second paragraph", "vector": [0.3, 0.8] } ] }
-{ "index": { "_index": "multi_level_vectors", "_id": "2" } }
-{ "title_vector": [0.1, 0.9], "paragraphs": [ { "text": "Another one", "vector": [0.1, 0.9] } ] }
+{ "index": { "_index": "nested_vector_index", "_id": "1" } }
+{ "paragraphs": [ { "text": "First paragraph", "vector": [0.5, 0.4] }, { "text": "Second paragraph", "vector": [0.3, 0.8] } ] }
+{ "index": { "_index": "nested_vector_index", "_id": "2" } }
+{ "paragraphs": [ { "text": "Another one", "vector": [0.1, 0.9] } ] }
 ```
 
 #### Run the search query
-This example searches for documents with relevant paragraph vectors. The `inner_hits` section returns the most relevant paragraphs from each matching document.
+This example searches for documents with relevant paragraph vectors.
 
 ```console
-POST multi_level_vectors/_search
+POST nested_vector_index/_search
 {
   "_source": false,
-  "fields": ["title_vector"],
   "knn": {
     "field": "paragraphs.vector",
     "query_vector": [0.5, 0.4],
@@ -972,7 +964,7 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
 
 ```json
 {
-  "took": 58,
+  "took": 4,
   "timed_out": false,
   "_shards": {
     "total": 1,
@@ -980,35 +972,60 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
     "skipped": 0,
     "failed": 0
   },
-  "hits": {
-    "total": { "value": 2, "relation": "eq" }, <1>
+  "hits": { 
+    "total": { 
+      "value": 2, <1>
+      "relation": "eq"
+    }, 
     "max_score": 1,
-    "hits": [
+    "hits": [ 
       {
-        "_index": "multi_level_vectors",
+        "_index": "nested_vector_index",
         "_id": "1",
         "_score": 1, <2>
-        "fields": {
-          "title_vector": [0.5, 0.4]
-        },
-        "inner_hits": {
+        "inner_hits": { <3>
           "top_passages": {
             "hits": {
-              "total": { "value": 2, "relation": "eq" },
+              "total": {
+                "value": 2,
+                "relation": "eq"
+              },
               "max_score": 1,
               "hits": [
                 {
-                  "_nested": { "field": "paragraphs", "offset": 0 }, <3>
+                  "_index": "nested_vector_index",
+                  "_id": "1",
+                  "_nested": {
+                    "field": "paragraphs",
+                    "offset": 0
+                  },
                   "_score": 1,
                   "fields": {
-                    "paragraphs": [ { "text": ["First paragraph"] } ] <4>
+                    "paragraphs": [
+                      {
+                        "text": [
+                          "First paragraph" <4>
+                        ]
+                      }
+                    ]
                   }
                 },
                 {
-                  "_nested": { "field": "paragraphs", "offset": 1 },
+                  "_index": "nested_vector_index",
+                  "_id": "1",
+                  "_nested": {
+                    "field": "paragraphs",
+                    "offset": 1
+                  },
                   "_score": 0.92955077,
                   "fields": {
-                    "paragraphs": [ { "text": ["Second paragraph"] } ]
+                    "paragraphs": [
+                      {
+                        "text": [
+                          "Second paragraph"
+                        ]
+                      }
+                    ]
                   }
                 }
               ]
@@ -1017,23 +1034,34 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
         }
       },
       {
-        "_index": "multi_level_vectors",
+        "_index": "nested_vector_index",
         "_id": "2",
         "_score": 0.8535534,
-        "fields": {
-          "title_vector": [0.1, 0.9]
-        },
         "inner_hits": {
           "top_passages": {
             "hits": {
-              "total": { "value": 1, "relation": "eq" },
+              "total": {
+                "value": 1,
+                "relation": "eq"
+              },
               "max_score": 0.8535534,
               "hits": [
                 {
-                  "_nested": { "field": "paragraphs", "offset": 0 },
+                  "_index": "nested_vector_index",
+                  "_id": "2",
+                  "_nested": {
+                    "field": "paragraphs",
+                    "offset": 0
+                  },
                   "_score": 0.8535534,
                   "fields": {
-                    "paragraphs": [ { "text": ["Another one"] } ]
+                    "paragraphs": [
+                      {
+                        "text": [
+                          "Another one"
+                        ]
+                      }
+                    ]
                   }
                 }
               ]
@@ -1046,10 +1074,10 @@ The `inner_hits` block returns the most relevant paragraphs within each top-leve
 }
 ```
 
-1. Two top-level documents matched the query.
-2. The score of the document, based on the best matching paragraph.
-3. Inner hits show which nested paragraph matched best.
-4. The actual matching paragraph text.
+1. Two documents matched the query.
+2. Document score, based on its most relevant paragraph.
+3. Matching paragraphs appear in the `inner_hits` section.
+4. Actual paragraph text that matched the query.
 
 
 ### Limitations for approximate kNN search [approximate-knn-limitations]
