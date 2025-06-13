@@ -13,7 +13,7 @@ navigation_title: AutoOps and Stack Monitoring comparison
 This page provides a detailed comparison of AutoOps and Stack Monitoring to help you decide which solution is better suited to your needs.
 
 ## Review the main differences
-Review how both tools differ in their provisioning, setup, access, and investigative abilities.
+Review how these tools differ in their provisioning, set up procedure, method of access, and capabilities.
 
 ### Resource provisioning and billing
 
@@ -21,15 +21,15 @@ Review how both tools differ in their provisioning, setup, access, and investiga
 AutoOps stores and backs up your monitoring data internally on {{ecloud}} infrastructure so you don’t need to think about provisioning, sizing, and availability. The data is retained for four days by default. Using AutoOps is free for {{ecloud}} customers and is offered to [all subscription tiers](https://www.elastic.co/subscriptions/cloud).
 
 #### Stack Monitoring [sm-resource]
-With Stack Monitoring, you are responsible for storing your monitoring data. This means provisioning the necessary resources based on your performance and retention needs as well as paying for the allocated resources. The default retention period is six days.
+With Stack Monitoring, you are responsible for storing your monitoring data. This requires provisioning the necessary resources based on your performance and retention needs as well as paying for the allocated resources. The default retention period is six days.
 
 ### Setup
 
 #### AutoOps [ao-setup]
-On {{ech}} (ECH), AutoOps is set up and enabled automatically in all [supported regions](ec-autoops-regions.md) and there is no action required from you.
+On {{ech}} (ECH), AutoOps is set up and enabled automatically in all [supported regions](ec-autoops-regions.md), with no action required from you.
 
 :::{note}
-AutoOps will be available in self-managed environments in the future.
+AutoOps is planned to be available in self-managed environments in the future.
 :::
 
 :::{image} /deploy-manage/images/cloud-autoops-setup.png
@@ -37,9 +37,9 @@ AutoOps will be available in self-managed environments in the future.
 :::
 
 #### Stack Monitoring [sm-setup]
-Stack Monitoring is a Kibana application that can be enabled on self-managed clusters on your premises, ECH deployments, {{eck}} (ECK), and {{ece}} (ECE). Stack Monitoring is not available on {{serverless-full}} since Elastic takes care of monitoring and managing your Serverless projects.
+Stack Monitoring is a {{kib}} application that can be enabled on self-managed clusters on your premises, ECH deployments, {{eck}} (ECK), and {{ece}} (ECE). Stack Monitoring is not available on {{serverless-full}} since Elastic takes care of monitoring and managing your Serverless projects.
 
-Depending on your deployment model, there is [some setup](/deploy-manage/monitor/stack-monitoring.md#configure-and-use-stack-monitoring) involved to enable Stack Monitoring. You need to configure an agent, specify which logs and metrics you want to collect from all your Elastic Stack components, and where to send them.
+Depending on your deployment model, there is [some setting up](/deploy-manage/monitor/stack-monitoring.md#configure-and-use-stack-monitoring) involved to enable Stack Monitoring. You need to configure an agent, specify which logs and metrics you want to collect from all your {{stack}} components, and where to send them.
 
 You can store your Stack Monitoring logs and metrics in the following ways:
 
@@ -61,17 +61,17 @@ You can store your Stack Monitoring logs and metrics in the following ways:
 AutoOps lives in {{ecloud}}, so you need to have an {{ecloud}} account to access it. Once logged in, you can [access](ec-autoops-how-to-access.md) AutoOps from your hosted deployments.
 
 #### Stack Monitoring [sm-availability]
-Once setup is complete, you can access the Stack Monitoring UI inside {{kib}}, where you can monitor all your Elastic Stack components.
+Once setup is complete, you can access the Stack Monitoring UI inside {{kib}}, where you can monitor all your {{stack}} components.
 
 ### Investigations and root cause analysis
 
 #### AutoOps [ao-investigations]
 The AutoOps agent captures a pre-defined set of {{es}} metrics, but doesn’t fetch any logs. AutoOps then performs multi-metrics analysis and correlations to identify issues and potential root causes. When issues are detected, AutoOps raises [events](ec-autoops-events.md) and [notifies](ec-autoops-notifications-settings.md) you accordingly. When the issue is resolved, AutoOps automatically closes the event.
 
-For each raised event, AutoOps provides insights into the affected resources (cluster, node, index, shard, etc.), background information on the detected problem, and step-by-step guides to help you diagnose and remediate the identified issues. Most detection rules can be [customized](ec-autoops-event-settings.md) by adjusting thresholds, durations, index patterns, data tiers and more.
+For each raised event, AutoOps provides insights into the affected resources (cluster, node, index, shard, etc.), background information on the detected problem, and step-by-step guides to help you diagnose and remediate the identified issues. Most detection rules can be [customized](ec-autoops-event-settings.md) by adjusting thresholds, durations, index patterns, data tiers, and more.
 
 #### Stack Monitoring [sm-investigations]
-The Stack Monitoring UI displays the [metrics](/deploy-manage/monitor/monitoring-data/elasticsearch-metrics.md) of your monitored Elastic Stack components over time. Logs can be viewed, searched, and filtered in Discover. You can enable a pre-defined set of alerts that are triggered when specific thresholds are crossed. You can also configure your own [alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) on any collected metrics or log messages. However, Stack Monitoring does not offer any further investigation, correlations, or root cause analyses.
+The Stack Monitoring UI displays the [metrics](/deploy-manage/monitor/monitoring-data/elasticsearch-metrics.md) of your monitored {{stack}} components over time. Logs can be viewed, searched, and filtered in Discover. You can enable a pre-defined set of alerts that are triggered when specific thresholds are crossed. You can also configure your own [alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) on any collected metrics or log messages. However, Stack Monitoring does not offer any further investigation, correlations, or root cause analyses.
 
 ## Compare capabilities
 The following tables provide a detailed comparison of AutoOps and Stack Monitoring features.
@@ -136,9 +136,9 @@ The following features are currently only available in Stack Monitoring. These f
 
 Keep using Stack Monitoring if you:
 
-* are running the Elastic Stack on-premise, air-gapped or otherwise
+* are running the {{stack}} on-premise, air-gapped or otherwise
 * need to control monitoring data retention
-* need monitoring coverage for Elastic Stack components other than {{es}}
+* need monitoring coverage for {{stack}} components other than {{es}}
 * have deployments in a region where AutoOps is not available yet
 
 Start using AutoOps if you want:
