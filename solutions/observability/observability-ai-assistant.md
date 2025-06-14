@@ -192,6 +192,20 @@ After creating the pipeline, complete the following steps:
 
     Ask something to the AI Assistant related with the indexed data.
 
+### Add user-specific system prompts
+
+User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French," and all subsequent responses will be in French.
+
+A user-specific prompt only applies to the user that sets it.
+
+% Do we have any other suggestions on how this could be useful for users?
+
+To edit the **User-specific System Prompt**:
+
+1. To open AI Assistant settings, find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Under **{{obs-ai-assistant}}**, click **Manage settings**.
+3. Switch to the **Knowledge base** tab.
+4. Select **Edit User-specific Prompt**.
 
 ## Interact with the AI Assistant [obs-ai-interact]
 
