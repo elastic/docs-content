@@ -52,7 +52,7 @@ For details about how these rules and policies interact with your deployment or 
 * [](ece-filter-rules.md)
 
 :::{note}
-For details about how IP filters and Kubernetes network policies impact your network, refer to the guide for the feature: 
+For details about how basic IP filters and Kubernetes network policies impact your cluster, refer to the guide for the feature: 
 
 * [](/deploy-manage/security/ip-filtering-basic.md)
 * [](/deploy-manage/security/k8s-network-policies.md) 

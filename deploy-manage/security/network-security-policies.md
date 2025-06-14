@@ -6,74 +6,84 @@ applies_to:
   serverless: ga
 ---
 
-# Network security policies in {{ecloud}} [traffic-filter-rules]
+# Network security policies in {{ecloud}}
 
-% could be refined further
+By default, in {{ech}} and {{serverless-full}}, all your deployments are accessible over the public internet.
 
-By default, in {{ece}} and {{ech}}, all your deployments are accessible over the public internet. In {{ece}}, this assumes that your orchestrator's proxies are accessible.
+Network security policies are created at the organization level, and then are associated with one or more resources, such as a deployment or project, to take effect. After you associate at least one policy with a resource, traffic that does not match the policy or any other policy associated with the resource is denied.
 
-Filtering *rules* are grouped into *rule sets*, which in turn are *associated* with one or more deployments to take effect. After you associate at least one traffic filter with a deployment, traffic that does not match any filtering rules for the deployment is denied.
+Policies apply to external traffic only. Internal traffic is managed by the deployment or project. For example, in {{ech}}, {{kib}} can connect to {{es}}, as well as internal services which manage the deployment, Other deployments can’t connect to deployments protected by network security policies.
 
-Traffic filters apply to external traffic only. Internal traffic is managed by ECE or ECH. For example, {{kib}} can connect to {{es}}, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
+Policies operate on the proxy. Requests rejected by the policies are not forwarded to the resource. The proxy responds to the client with `403 Forbidden`.
 
-Traffic filters operate on the proxy. Requests rejected by the traffic filters are not forwarded to the deployment. The proxy responds to the client with `403 Forbidden`.
+## Logic
 
-Domain-based filtering rules are not allowed for Cloud traffic filtering, because the original IP is hidden behind the proxy. Only IP-based filtering rules are allowed.
+- You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
-Rule sets work as follows:
+- Policies, when associated with a deployment or project, will apply to all endpoints, such as {{es}}, {{kib}}, APM Server, and others.
 
-- You can assign multiple rule sets to a single deployment. The rule sets can be of different types. In case of multiple rule sets, traffic can match ANY of them. If none of the rule sets match, the request is rejected with `403 Forbidden`.
-- Traffic filter rule sets are bound to a single region. The rule sets can be assigned only to deployments in the same region. If you want to associate a rule set with deployments in multiple regions, then you have to create the same rule set in all the regions you want to apply it to.
-- You can mark a rule set as *default*. It is automatically attached to all new deployments that you create in its region. You can detach default rule sets from deployments after they are created. Note that a *default* rule set is not automatically attached to existing deployments.
-- Traffic filter rule sets, when associated with a deployment, will apply to all deployment endpoints, such as {{es}}, {{kib}}, APM Server, and others.
-- Any traffic filter rule set assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint; deny all access over Private Link*. The implication is that if you make a mistake putting in the traffic source (for example, specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the rule sets.
+- Any policy assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint; deny all access over Private Link*. The implication is that if you make a mistake putting in the traffic source (for example, if you specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the policies.
 
-:::{admonition} Rule limits
-In {{ech}}, you can have a maximum of 1024 rule sets per organization and 128 rules in each rule set.
+- You can [mark a policy as default](#default-network-security-policies). Default policies are automatically attached to all new resources of the matching resource type that you create in its region.
 
-In {{ece}}, you can have a maximum of 512 rule sets per organization and 128 rules in each rule set.
+## Restrictions
+
+- You can have a maximum of 1024 policies per organization and 128 sources in each policy.
+- Policies must be created for a specific resource type. If you want to associate a policy to both hosted deployments and Serverless projects, then you have to create the same policy for each resource types.
+- Policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
+- Domain-based filtering rules are not allowed for network security policies, because the original IP is hidden behind the proxy. Only IP-based filtering rules are allowed.
+
+## Default network security policies
+
+You can mark a policy as default. Default policies are automatically attached to all new resources of the matching resource type that you create in its region.
+
+You can detach default policies from resources after they are created. Default policies are not automatically attached to existing resources.
+
+### Apply policies to new resources by default
+
+To automatically apply a network security policy to new resources by default new deployments or projects in your organization:
+
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From any deployment or project on the home page, select **Manage**.
+3. Under the **Features** tab, open the **Network security** page.
+4. Select **Create** to create a new policy, or select **Edit** to open an existing policy.
+5. Under **Apply to future resources by default**, select **Include by default**.
+
+### Identify default policies
+
+To identify which network security policies are automatically applied to new deployments or projects in your organization:
+
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From any deployment or project on the home page, select **Manage**.
+3. Under the **Features** tab, open the **Network security** page.
+4. Select each of the policies. **Include by default** is checked when a policy is automatically applied to all new deployments or projects in its region.
+  
+## Review the policies associated with a resource
+
+To identify the network security policies that are applied to your deployment or project:
+
+::::{tab-set}
+:::{tab-item} Serverless
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. On the **Serverless projects** page, select your project.
+3. Select the **Network security** tab on the left-hand side menu bar.
+
+Network security policies are listed on the page. From this page, you can view and remove existing policies and attach new policies.
+
 :::
+:::{tab-item} Hosted
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. On the **Hosted deployments** page, select your deployment.
+3. Select the **Network security** tab on the left-hand side menu bar.
+4. Select the **Security** tab on the left-hand side menu bar.
 
-### Tips
+Network security policies are listed under **Network security**. From this section, you can view and remove existing policies and attach new policies.
+:::
+::::
 
-This section offers suggestions on how to manage and analyze the impact of your traffic filters in ECH and ECE.
+## View rejected requests
 
-#### Review the rule sets associated with a deployment
-
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or [Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the **Deployments** page, select your deployment.
-3. Select the **Security** tab on the left-hand side menu bar.
-
-Traffic filter rule sets are listed under **Traffic filters**.
-
-On this page, you can view and remove existing filters and attach new filters.
-
-#### Identify default rule sets
-To identify which rule sets are automatically applied to new deployments in your account:
-
-1. Navigate to the traffic filters list:
-
-    ::::{tab-set}
-    :group: ech-ece
-
-    :::{tab-item} {{ech}}
-    :sync: ech
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
-    :::
-    :::{tab-item} {{ece}}
-    :sync: ece
-    4. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-    5. From the **Platform** menu, select **Security**.
-    :::
-    ::::
-
-2. Select each of the rule sets — **Include by default** is checked when this rule set is automatically applied to all new deployments in its region.
-
-#### View rejected requests
-
-Requests rejected by traffic filter have status code `403 Forbidden` and one of the following in the response body:
+Requests rejected by a network security policy have the status code `403 Forbidden` and one of the following in the response body:
 
 ```json
 {"ok":false,"message":"Forbidden"}
@@ -83,4 +93,4 @@ Requests rejected by traffic filter have status code `403 Forbidden` and one of 
 {"ok":false,"message":"Forbidden due to traffic filtering. Please see the Elastic documentation on Traffic Filtering for more information."}
 ```
 
-Additionally, traffic filter rejections are logged in ECE proxy logs as `status_reason: BLOCKED_BY_IP_FILTER`. Proxy logs also provide client IP in `client_ip` field.
+Additionally, network security policy rejections are logged in ECE proxy logs as `status_reason: BLOCKED_BY_IP_FILTER`. Proxy logs also provide client IP in `client_ip` field.

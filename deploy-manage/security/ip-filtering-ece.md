@@ -17,7 +17,7 @@ You can only configure ingress or inbound IP filters**. These restrict access to
 
 Follow the step described here to set up ingress or inbound IP filters through the Cloud UI.
 
-To learn how traffic filter rules work together, refer to [traffic filter rules](/deploy-manage/security/traffic-filtering.md#traffic-filter-rules).
+To learn how traffic filter rules work together, refer to [](ece-filter-rules.md).
 
 To learn how to manage IP traffic filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
 
@@ -28,14 +28,8 @@ To learn how to create IP filters for self-managed clusters or {{eck}} deploymen
 :::
 
 ## Prerequisites
-```{applies_to}
-deployment:
-  ece:
-```
 
-On {{ece}}, make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) handles the `X-Forwarded-For` header appropriately for HTTP requests to prevent IP address spoofing. Make sure the proxy protocol v2 is enabled for HTTP and transport protocols (9243 and 9343).
-
-This step is not required in {{ech}}.
+Make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) handles the `X-Forwarded-For` header appropriately for HTTP requests to prevent IP address spoofing. Make sure the proxy protocol v2 is enabled for HTTP and transport protocols (9243 and 9343).
 
 ## Apply an IP filter to a deployment
 
@@ -47,35 +41,19 @@ You can combine any rules into a set, so we recommend that you group rules accor
 
 To create a rule set:
 
-1. Navigate to the traffic filters list:
-
-    ::::{tab-set}
-    :group: ech-ece
-
-    :::{tab-item} {{ech}}
-    :sync: ech
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
-    :::
-    :::{tab-item} {{ece}}
-    :sync: ece
-    1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-    2. From the **Platform** menu, select **Security**.
-    :::
-    ::::
-
-2. Select **Create filter**.
-3. Select **IP filtering rule set**.
-4. Create your rule set, providing a meaningful name and description.
-5. Select the region for the rule set.
-6. Select if this rule set should be automatically attached to new deployments.
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+2. From the **Platform** menu, select **Security**.
+3. Select **Create filter**.
+4. Select **IP filtering rule set**.
+5. Create your rule set, providing a meaningful name and description.
+6. Select the region for the rule set.
+7. Select if this rule set should be automatically attached to new deployments.
 
     ::::{note}
     Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
     ::::
 
-7.  Add one or more rules using IPv4, or a range of addresses with CIDR.
+8.  Add one or more rules using IPv4, or a range of addresses with CIDR.
 
     ::::{note}
     DNS names are not supported in rules.
@@ -102,26 +80,10 @@ If you want to remove any traffic restrictions from a deployment or delete a rul
 
 You can edit a rule set name or change the allowed traffic sources using IPv4, or a range of addresses with CIDR.
 
-1. Navigate to the traffic filters list:
-
-    ::::{tab-set}
-    :group: ech-ece
-
-    :::{tab-item} {{ech}}
-    :sync: ech
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
-    :::
-    :::{tab-item} {{ece}}
-    :sync: ece
-    1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-    2. From the **Platform** menu, select **Security**.
-    :::
-    ::::
-
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+2. From the **Platform** menu, select **Security**.
 2. Find the rule set you want to edit.
-5. Select the **Edit** icon.
+3. Select the **Edit** icon.
 
 
 ## Delete an IP filter rule set
@@ -131,23 +93,7 @@ If you need to remove a rule set, you must first remove any associations with de
 To delete a rule set with all its rules:
 
 1. [Remove any deployment associations](#remove-filter-deployment).
-1. Navigate to the traffic filters list:
-
-    ::::{tab-set}
-    :group: ech-ece
-
-    :::{tab-item} {{ech}}
-    :sync: ech
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
-    :::
-    :::{tab-item} {{ece}}
-    :sync: ece
-    1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-    2. From the **Platform** menu, select **Security**.
-    :::
-    ::::
-
-3. Find the rule set you want to edit.
-4. Select the **Delete** icon. The icon is inactive if there are deployments assigned to the rule set.
+2. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+3. From the **Platform** menu, select **Security**.
+4. Find the rule set you want to edit.
+5. Select the **Delete** icon. The icon is inactive if there are deployments assigned to the rule set.
