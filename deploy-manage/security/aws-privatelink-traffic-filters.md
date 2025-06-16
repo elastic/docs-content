@@ -10,6 +10,8 @@ products:
   - id: cloud-hosted
   - id: cloud-serverless
 navigation_title: AWS PrivateLink
+sub:
+  policy-type: "Private connection"
 ---
 
 # AWS PrivateLink private connections
@@ -314,10 +316,20 @@ The next step is to [associate the rule set](#ec-associate-traffic-filter-privat
 
 ### Optional: Associate a policy with a deployment or project [ec-associate-traffic-filter-private-link-rule-set]
 
-To associate a private link rule set with your deployment:
+You can associate a network security policy with your deployment or project from the policy's settings, or from your deployment or project's settings. If the policy contains a VCPE filter, then after you associate the policy with a deployment or project, it starts filtering traffic.
 
-:::{include} _snippets/associate-filter.md
+#### From a deployment or project
+
+:::{include} _snippets/associate-filter-from-resource.md
 :::
+
+#### From the policy settings
+
+:::{include} _snippets/network-security-page.md
+:::
+5. Find the policy you want to edit.
+6. Under **Apply to resources**, associate the policy with one or more deployments or projects.
+7. Click **Update** to save your changes.
 
 ## Access the deployment or project over a PrivateLink [ec-access-the-deployment-over-private-link]
 
