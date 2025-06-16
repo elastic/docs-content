@@ -75,7 +75,7 @@ You can filter on a specific `action`, such as [bulk indexing](https://www.elast
 * Filter on search actions:
 
     ```console
-    GET /_tasks?human&detailed&actions=indices:data/write/search
+    GET /_tasks?human&detailed&actions=indices:*/search
     ```
 
 
