@@ -19,7 +19,7 @@ Elastic’s LLM integrations now support the most widely adopted models, includi
 |--------|------------|------------|
 | [Amazon Bedrock](https://www.elastic.co/guide/en/integrations/current/aws_bedrock.html)| ✅ | ✅ |  
 | [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)| ✅ | ✅ | 
-| [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | ✅ | 🚧 | 
+| [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | ✅ | ✅ | 
 | [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html) | ✅| 🚧 | 
 
 ## APM tracing for LLM models (via instrumentation)

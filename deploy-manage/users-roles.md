@@ -86,7 +86,7 @@ You can't manage users and roles for {{eck}} clusters at the orchestrator level.
 serverless: all
 ```
 
-As an extension of the [predefined instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.
+As an extension of the [predefined cloud resource access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) offered for {{serverless-short}} projects, you can create custom roles at the project level to provide more granular control, and provide users with only the access they need within specific projects.
 
 [Learn more about custom roles for {{serverless-full}} projects](/deploy-manage/users-roles/serverless-custom-roles.md).
 
