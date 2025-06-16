@@ -9,6 +9,7 @@ applies_to:
 products:
   - id: cloud-hosted
   - id: cloud-serverless
+navigation_title: Azure Private Link
 ---
 
 # Azure Private Link traffic filters
