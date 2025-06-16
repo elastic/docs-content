@@ -25,7 +25,7 @@ There are types of filters are available for filtering by IP address or CIDR blo
 
 Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console.
 
-To learn how traffic filter rules work together, refer to [traffic filter rules](/deploy-manage/security/traffic-filtering.md#traffic-filter-rules).
+To learn how IP filter policies work together, and alongside [private connection policies](private-link-traffic-filters.md), refer to [](/deploy-manage/security/network-security-policies.md).
 
 To learn how to manage IP traffic filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
 
