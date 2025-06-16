@@ -99,30 +99,30 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
     * For Podman 5
 
-        * Install version `5.2.2-*` (latest version of Podman 5.2.2) using dnf.
+        * Install version `5.2.2` (latest version of Podman 5.2.2) using dnf.
 
             :::{note}
-            As mentioned in [Migrating to Podman 5](migrate-to-podman-5.md) it is recommended to install Podman `5.2.2-*` since this is the latest supported version.
+            As mentioned in [Migrating to Podman 5](migrate-to-podman-5.md) it is recommended to install Podman `5.2.2` since this is the latest supported version.
 
-            If you decide to install a previous Podman 5 version, make sure to replace `5.2.2-*` with the desired version in the commands below.
+            If you decide to install a previous Podman 5 version, make sure to replace `5.2.2` with the desired version in the commands below.
 
             The version lock is still required for previous versions, to prevent automatic in-place updates that may be affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
             :::
 
             ```sh
-            sudo dnf install podman-5.2.2-* podman-remote-5.2.2-*
+            sudo dnf install podman-5.2.2 podman-remote-5.2.2
             ```
-        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2-*`.
+        * To prevent automatic Podman updates to unsupported versions, configure the Podman version to be locked at version `5.2.2`.
 
             ```sh
             ## Install versionlock
             sudo dnf install 'dnf-command(versionlock)'
 
             ## Lock major version
-            sudo dnf versionlock add --raw 'podman-5.2.2-*'
-            sudo dnf versionlock add --raw 'podman-remote-5.2.2-*'
+            sudo dnf versionlock add --raw 'podman-5.2.2'
+            sudo dnf versionlock add --raw 'podman-remote-5.2.2'
 
-            ## Verify that podman-5.2.2-* and podman-remote-5.2.2-* appear in the output
+            ## Verify that podman-5.2.2 and podman-remote-5.2.2 appear in the output
             sudo dnf versionlock list
             ```
 
