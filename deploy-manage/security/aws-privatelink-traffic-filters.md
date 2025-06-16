@@ -231,37 +231,48 @@ The mapping will be different for your region. Our production VPC Service for `u
        ::::
 
 
-    You can test the AWS console part of the setup with a following curl. Make sure to substitute the region and {{es}} ID with your cluster.
+You can test the AWS console part of the setup using the following cURL command. Make sure to substitute the region and {{es}} ID with your cluster.
 
-    Request:
-    ```sh
-    $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
-    ```
-    Response:
-    ```sh
-    * Server certificate:
-    *  subject: CN=*.us-east-1.aws.elastic-cloud.com
-    *  SSL certificate verify ok.
-    ..
-    {"ok":false,"message":"Forbidden"}
-    * Connection #0 to host my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com left intact
-    ```
+**Request**
+```sh
+$ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
+```
+**Response**
+```sh
+* Server certificate:
+*  subject: CN=*.us-east-1.aws.elastic-cloud.com
+*  SSL certificate verify ok.
+..
+{"ok":false,"message":"Forbidden"}
+* Connection #0 to host my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com left intact
+```
 
-    The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, because you haven’t allowed the traffic over this PrivateLink connection yet.
-    % needs to be edited
+The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, because you haven’t allowed the traffic over this PrivateLink connection yet.
+% needs to be edited
 
 ## Create a private connection policy
 
-### Step 3 (Optional): Add a private connection policy [ec-add-vpc-elastic]
+After you test your PrivateLink connection, you can create a private connection policy in {{ecloud}}. 
+
+Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established.
+
+Creating a private connection policy and associating it with your deployments allows you to do the following: 
+
+* Record that you've established private connectivity between AWS and Elastic in the applicable region.
+* Filter traffic to your deployment or project using VCPE filters.
+
+### Add a private connection policy [ec-add-vpc-elastic]
 
 Follow these high-level steps to add a private connection policy that can be associated with your deployment or project.
 
-1. [Find your VPC endpoint ID](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-find-your-endpoint).
-2. [Create rules using the VPC endpoint](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-create-traffic-filter-private-link-rule-set).
-3. [Associate the VPC endpoint with your deployment](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set).
-4. [Access the deployment over a private link](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-access-the-deployment-over-private-link).
+1. [Find your VPC endpoint ID](#ec-find-your-endpoint).
+2. [Create rules using the VPC endpoint](#ec-create-traffic-filter-private-link-rule-set).
+3. [Associate the VPC endpoint with your deployment](#ec-associate-traffic-filter-private-link-rule-set).
+4. [Access the deployment over a private link](#ec-access-the-deployment-over-private-link).
 
-#### Find your VPC endpoint ID [ec-find-your-endpoint]
+#### Optional: Find your VPC endpoint ID [ec-find-your-endpoint]
+
+The VPC endpoint id is only required if you want to filter traffic to your deployment or project using VCPE filters.
 
 You can find your VPC endpoint ID in the AWS console:
 
@@ -270,10 +281,9 @@ You can find your VPC endpoint ID in the AWS console:
 :screenshot:
 :::
 
-#### Create rules with the VPC endpoint [ec-create-traffic-filter-private-link-rule-set]
+#### Create a new private connection policy [ec-create-traffic-filter-private-link-rule-set]
 
-Once you know your VPC endpoint ID you can create a private link traffic filter rule set.
-
+Create a private link traffic filter rule set.
 
 :::{include} _snippets/create-filter.md
 :::
