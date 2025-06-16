@@ -176,7 +176,7 @@ Follow these high-level steps to add private link rules to your deployments.
 
 When you have your Private Service Connect endpoint connection ID, you can create a traffic filter rule set.
 
-:::{include} _snippets/create-filter.md
+:::{include} _snippets/network-security-page.md
 :::
 1. Select **Private Service Connect endpoint**.
 2. Create your rule set, providing a meaningful name and description.

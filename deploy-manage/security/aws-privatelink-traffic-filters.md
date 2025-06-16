@@ -250,7 +250,7 @@ $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
 The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, because you haven’t allowed the traffic over this PrivateLink connection yet.
 % needs to be edited
 
-## Create a private connection policy
+## Optional: Create a private connection policy
 
 After you test your PrivateLink connection, you can create a private connection policy in {{ecloud}}. 
 
@@ -265,14 +265,14 @@ Creating a private connection policy and associating it with your deployments al
 
 Follow these high-level steps to add a private connection policy that can be associated with your deployment or project.
 
-1. [Find your VPC endpoint ID](#ec-find-your-endpoint).
+1. Optional: [Find your VPC endpoint ID](#ec-find-your-endpoint).
 2. [Create rules using the VPC endpoint](#ec-create-traffic-filter-private-link-rule-set).
 3. [Associate the VPC endpoint with your deployment](#ec-associate-traffic-filter-private-link-rule-set).
 4. [Access the deployment over a private link](#ec-access-the-deployment-over-private-link).
 
 #### Optional: Find your VPC endpoint ID [ec-find-your-endpoint]
 
-The VPC endpoint id is only required if you want to filter traffic to your deployment or project using VCPE filters.
+The VPC endpoint ID is only required if you want to filter traffic to your deployment or project using VCPE filters.
 
 You can find your VPC endpoint ID in the AWS console:
 
@@ -283,33 +283,43 @@ You can find your VPC endpoint ID in the AWS console:
 
 #### Create a new private connection policy [ec-create-traffic-filter-private-link-rule-set]
 
-Create a private link traffic filter rule set.
+Create a new private connection policy.
 
-:::{include} _snippets/create-filter.md
+:::{include} _snippets/network-security-page.md
 :::
-1. Select **Private link endpoint**.
-2. Create your rule set, providing a meaningful name and description.
-3. Select the region for the rule set.
-4. Enter your VPC endpoint ID.
-5. Select if this rule set should be automatically attached to new deployments.
+4. Select **Private connection**.
+3. Select the resource type that the private connection will be applied to: either hosted deployments or serverless projects.
+10. Select the cloud provider and region for the private connection. 
+   
+    :::{tip}
+    Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
+    :::
+11. Under **Connectivity**, select **Privatelink**.
+12. Optional: Under **VPCE filter**, enter your VPC endpoint ID. You should only specify a VPC endpoint ID if you want to filter traffic to your deployment or project. 
+    
+    If you don't specify a VPCE filter, then the private connection policy only acts as a record that you've established private connectivity between AWS and Elastic in the applicable region.
+    
+    :::{tip}
+    You can assign multiple policies to a single deployment or project. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
-    ::::{note}
-    Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
-    ::::
+    [Learn more about how network security policies affect your deployment or project](network-security-policies.md).
+    :::
+13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPCE filter, then after you associate the filter with a deployment or project, it starts filtering traffic.
+14. To automatically attach this private connection policy to new deployments or projects, select **Apply by default**.
+15.  Click **Create**.
 
-6.  (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
+16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
 
-The next step is to [associate the rule set](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployments.
+The next step is to [associate the rule set](#ec-associate-traffic-filter-private-link-rule-set) with your deployment or project.
 
-
-### Step 4 (Optional): Associate a policy with a deployment or project [ec-associate-traffic-filter-private-link-rule-set]
+### Optional: Associate a policy with a deployment or project [ec-associate-traffic-filter-private-link-rule-set]
 
 To associate a private link rule set with your deployment:
 
 :::{include} _snippets/associate-filter.md
 :::
 
-## Step 5: Access the deployment or project over a PrivateLink [ec-access-the-deployment-over-private-link]
+## Access the deployment or project over a PrivateLink [ec-access-the-deployment-over-private-link]
 
 For traffic to connect with the deployment over a PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also setup network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
 
