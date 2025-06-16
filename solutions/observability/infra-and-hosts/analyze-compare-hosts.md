@@ -115,6 +115,13 @@ On the **Logs** tab of the **Hosts** page, view logs for the systems you are mon
 
 To see logs for a specific host, refer to [View host details](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
 
+### View enhanced logs [analyze-hosts-view-enhanced-logs]
+```{applies_to}
+stack: preview 9.0
+```
+
+For an enhanced logs view with additional information including the log pattern, the number of events for each log, change type, and the time the change occurred, turn on the `observability:newLogsOverview` setting in **Management** → **Stack Management** → **Advanced Settings**.
+
 
 ## View alerts [analyze-hosts-view-alerts]
 

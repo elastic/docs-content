@@ -10,24 +10,36 @@ products:
 
 # AutoOps regions [ec-autoops-regions]
 
-A region is the geographic area where the cloud provider’s data center that hosts your deployments is located. Based on a planned release schedule, Elastic is enabling the AutoOps service on the following cloud service providers: AWS, Azure, and GCP.
+A region is where a cloud service provider's data center that hosts your deployments is located. Based on a planned release schedule, Elastic is enabling AutoOps on the following cloud service providers: AWS, Azure, and GCP.
 
-AutoOps is currently available in the following regions:
+AutoOps is currently available in the following regions for AWS:
 
-| Provider | Region | Name |
+| Region | Name |
 | --- | --- | --- | --- |
-| AWS | us-east-1 | US East (N. Virginia) |
-| AWS | us-east-2 | Ohio | 
-| AWS | us-west-2 | Oregon |
-| AWS | eu-west-1 | Ireland |
-| AWS | eu-west-2 | London |
-| AWS | eu-central-1 | Frankfurt |
-| AWS | ap-southeast-1 | Singapore |
-| AWS | ap-northeast-1| Tokyo | 
-| AWS | ap-south-1 | Mumbai | 
+| us-east-1 | N. Virginia |
+| us-east-2 | Ohio |
+| us-west-1 | N. California |
+| us-west-2 | Oregon |
+| ca-central-1 | Canada |
+| eu-west-1 | Ireland |
+| eu-west-2 | London |
+| eu-west-3 | Paris |
+| eu-north-1 | Stockholm |
+| eu-central-1 | Frankfurt |
+| eu-central-2 | Zurich |
+| eu-south-1 | Milan |
+| me-south-1 | Bahrain |
+| ap-east-1 | Hong Kong |
+| ap-northeast-1 | Tokyo |
+| ap-northeast-2 | Seoul |
+| ap-southeast-1 | Singapore |
+| ap-southeast-2 | Sydney |
+| ap-south-1 | Mumbai |
+| sa-east-1 | Sao Paulo |
+| af-south-1 | Cape Town |
+
+Regions for Azure and GCP will be added in the future.
 
 ::::{note} 
-Currently, a limited number of AWS regions are available. More regions for AWS, Azure and GCP will be added in the future. Also, AutoOps is currently not available for GovCloud customers.
+AutoOps is currently not available for GovCloud customers.
 ::::
-
-

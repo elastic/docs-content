@@ -124,7 +124,7 @@ Note that most of the cleanup operations executed by this endpoint are automatic
 
 You may wish to make an independent backup of your repository, for instance so that you have an archive copy of its contents that you can use to recreate the repository in its current state at a later date.
 
-You must ensure that {{es}} does not write to the repository while you are taking the backup of its contents. If {{es}} writes any data to the repository during the backup then the contents of the backup may not be consistent and it may not be possible to recover any data from it in future. Prevent writes to the repository by unregistering the repository from the cluster which has write access to it.
+You must ensure that {{es}} does not write to the repository while you are taking the backup of its contents. If {{es}} writes any data to the repository during the backup then the contents of the backup may not be consistent and it may not be possible to recover any data from it in future. Prevent writes to the repository by unregistering the repository from the cluster which has write access to it, or by registering it with `readonly: true`.
 
 Alternatively, if your repository supports it, you may take an atomic snapshot of the underlying filesystem and then take a backup of this filesystem snapshot. It is very important that the filesystem snapshot is taken atomically.
 
