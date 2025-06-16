@@ -45,27 +45,25 @@ You can combine multiple IP address and CIDR block traffic sources into a single
 
 To create an IP filter policy:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From any deployment or project on the home page, select **Manage**.
-3. Under the **Features** tab, open the **Network security** page.
-   % From the left navigation menu, select **Access and security** > **Network security**. 
+:::{include} _snippets/network-security-page.md
+::: 
 4. Select **Create** > **IP filter**.
-5. Select the resource type that the IP filter will be applied to: either hosted deployments or serverless projects.
-6. Select the cloud provider and region for the filter. 
+3. Select the resource type that the IP filter will be applied to: either hosted deployments or serverless projects.
+4. Select the cloud provider and region for the filter. 
    
     :::{tip}
     Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-7. Add a meaningful name and description for the filter.
-8. Under **Access control**, select whether the filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
-9. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
+5. Add a meaningful name and description for the filter.
+6. Under **Access control**, select whether the filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
+7. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
 
     ::::{note}
     DNS names are not supported in network security policies.
     ::::
-10. Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the filter with a deployment or project, it starts filtering traffic.
-11. To automatically attach this IP filter policy to new deployments or projects, select **Apply by default**.
-12. Click **Create**.
+8.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the filter with a deployment or project, it starts filtering traffic.
+9.  To automatically attach this IP filter policy to new deployments or projects, select **Apply by default**.
+10.  Click **Create**.
 
 ### Step 2: Associate an IP filter policy with your deployment or project
 
@@ -100,10 +98,8 @@ You can associate an IP filter policy with your deployment or project from the p
 
 #### From the IP filter policy settings
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-3. Under the **Features** tab, open the **Network security** page.
-   % From the left navigation menu, select **Access and security** > **Network security**. 
+:::{include} _snippets/network-security-page.md
+:::
 5. Find the filter you want to edit.
 6. Under **Apply to resources**, associate the new filter with one or more deployments or projects.
 7. Click **Update** to save your changes.
@@ -136,10 +132,8 @@ If you want to a specific IP filter policy from a deployment or project, or dele
 
 #### From the IP filter policy settings
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From any deployment or project on the home page, select **Manage**.
-3. Under the **Features** tab, open the **Network security** page.
-   % From the left navigation menu, select **Access and security** > **Network security**. 
+:::{include} _snippets/network-security-page.md
+:::
 5. Find the policy you want to edit, then click the **Edit** icon.
 6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
 7. Click **Update** to save your changes.
@@ -148,10 +142,8 @@ If you want to a specific IP filter policy from a deployment or project, or dele
 
 You can edit an IP filter policy's name or description, change the allowed traffic sources, and change the associated resources, and more.
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From any deployment or project on the home page, select **Manage**.
-3. Under the **Features** tab, open the **Network security** page.
-   % From the left navigation menu, select **Access and security** > **Network security**. 
+:::{include} _snippets/network-security-page.md
+:::
 4. Find the policy you want to edit, then click the **Edit** icon.
 5. Click **Update** to save your changes.
 
@@ -165,8 +157,6 @@ If you need to remove a policy, you must first remove any associations with depl
 
 To delete a policy:
 
-1. [Remove any associations](#remove-filter-deployment).
-2. From any deployment or project on the home page, select **Manage**.
-3. Under the **Features** tab, open the **Network security** page.
-   % From the left navigation menu, select **Access and security** > **Network security**. 
+:::{include} _snippets/network-security-page.md
+:::
 4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments or projects associated with the policy.
