@@ -8,18 +8,24 @@ products:
 
 # Tutorial: Threat hunting with {{esql}}
 
-This is a hands-on introduction to threat hunting using the [Elasticsearch Query language ({{esql}})](/explore-analyze/query-filter/languages/esql.md), following a realistic advanced persistent threat (APT) campaign scenario. We'll investigate a sophisticated attack involving initial compromise via a malicious email attachment.
-The attack escalates through lateral movement, privilege escalation, and data exfiltration.
+This hands-on tutorial demonstrates advanced threat hunting techniques using the [Elasticsearch Query Language ({{esql}})](/explore-analyze/query-filter/languages/esql.md). 
 
-Using ES|QL, you'll enrich raw security events with business context - asset criticality, user privileges, and threat intelligence - to build a complete picture of the attack and assess its impact on your organization.
+Following a simulated Advanced Persistent Threat (APT) campaign, we analyze security events across authentication, process execution, and network telemetry to detect:
+
+- Initial compromise via malicious email attachments
+- Lateral movement through the network 
+- Privilege escalation attempts
+- Data exfiltration activities
+
+{{esql}} enables powerful transformations, filtering, enrichment, and statistical analysis, making it ideal for complex security investigations. This tutorial provides practical examples of how to leverage {{esql}} for threat hunting, from identifying suspicious user behavior to building attack timelines.
 
 ## Requirements
 
-You'll need a running {{es}} cluster, together with {{kib}}. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
+You need a running {{es}} cluster, together with {{kib}}. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
 ## How to run {{esql}} queries
 
-In this tutorial, you'll see {{esql}} examples in the following format:
+In this tutorial, {{esql}} examples are displayed in the following format:
 
 ```esql
 FROM windows-security-logs
@@ -53,8 +59,8 @@ To follow along with this tutorial, you need to add sample data to your cluster,
 
 Broadly there are two types of data:
 
-1. **Core indices**: These are the main security indices that contain the logs and events you want to analyze. In this tutorial, we'll create three core indices: `windows-security-logs`, `process-logs`, and `network-logs`.
-2. **Lookup indices**: These are auxiliary indices that provide additional context to your core data. In this tutorial, we'll create three lookup indices: `asset-inventory`, `user-context`, and `threat-intel`.
+1. **Core indices**: These are the main security indices that contain the logs and events you want to analyze. We need three core indices: `windows-security-logs`, `process-logs`, and `network-logs`.
+2. **Lookup indices**: These are auxiliary indices that provide additional context to your core data. We need three lookup indices: `asset-inventory`, `user-context`, and `threat-intel`.
 
 ### Create core indices
 
@@ -99,7 +105,7 @@ PUT /windows-security-logs
 }
 ```
 
-Now let's add some sample data to the `windows-security-logs` index around authentication events i.e. failed and successful logins.
+Now let's add some sample data to the `windows-security-logs` index around authentication events, namely failed and successful logins.
 
 ```console
 POST /_bulk?refresh=wait_for
@@ -278,7 +284,7 @@ PUT /threat-intel
 }
 ```
 
-Now we'll populate the lookup indices with contextual data. This single bulk operation indexes data into the `user-context`, `threat-intel` and `asset-inventory` indices with one request.
+Now we can populate the lookup indices with contextual data. This single bulk operation indexes data into the `user-context`, `threat-intel` and `asset-inventory` indices with one request.
 
 ```console
 POST /_bulk?refresh=wait_for
@@ -302,7 +308,7 @@ POST /_bulk?refresh=wait_for
 
 ## Step 1: Hunt for initial compromise indicators
 
-The first phase of our hunt focuses on identifying the initial compromise. We'll look for suspicious PowerShell execution from Office applications, which is a common initial attack vector.
+The first phase of our hunt focuses on identifying the initial compromise. We want to search for suspicious PowerShell execution from Office applications, which is a common initial attack vector.
 
 ```esql
 FROM process-logs
@@ -325,7 +331,7 @@ FROM process-logs
 
 **Response**
 
-The response will contain a summary of the suspicious PowerShell executions, including the host name, user name, and asset criticality.
+The response contains a summary of the suspicious PowerShell executions, including the host name, user name, and asset criticality.
 
 
      count     |   host.name   |   user.name   |asset.criticality
@@ -335,7 +341,7 @@ The response will contain a summary of the suspicious PowerShell executions, inc
 
 ## Step 2: Detect lateral movement patterns
 
-In this step, we will track user authentication across multiple systems. This is important for identifying lateral movement and potential privilege escalation.
+In this step, we track user authentication across multiple systems. This is important for identifying lateral movement and potential privilege escalation.
 
 This query demonstrates how [`DATE_TRUNC`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_trunc) creates time windows for velocity analysis, combining 
 [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) aggregations with [`DATE_DIFF`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_diff) calculations to measure both the scope and speed of user movement across network assets.
@@ -367,7 +373,7 @@ BY user.name <3>
 
 **Response**
 
-The response will show users who logged into multiple hosts, their criticality levels, and the velocity of their lateral movement.
+The response shows users who logged into multiple hosts, their criticality levels, and the velocity of their lateral movement.
 
 unique_hosts  |criticality_levels|active_periods |      first_login       |       last_login       |   user.name   |time_span_hours|movement_velocity|lateral_movement_score
 ---------------|------------------|---------------|------------------------|------------------------|---------------|---------------|-----------------|----------------------
@@ -376,7 +382,7 @@ unique_hosts  |criticality_levels|active_periods |      first_login       |     
 
 ## Step 3: Identify data access and potential exfiltration
 
-Advanced attackers often target sensitive data. We'll hunt for database access and large data transfers to external systems.
+Advanced attackers often target sensitive data. We want to hunt for database access and large data transfers to external systems.
 
 ```esql
 FROM network-logs
@@ -409,7 +415,7 @@ BY host.name, destination.ip, threat.name, asset.criticality
 
 **Response**
 
-The response will show external data transfers, their risk scores, and the amount of data transferred.
+The response shows external data transfers, their risk scores, and the amount of data transferred.
 
 | total_bytes | connection_count | time_span | host.name | destination.ip | threat.name | asset.criticality | mb_transferred | risk_score |
 |-------------|------------------|-----------|-----------|----------------|-------------|-------------------|----------------|------------|
@@ -419,7 +425,7 @@ The response will show external data transfers, their risk scores, and the amoun
 
 ## Step 4: Build an attack timeline and assess impact
 
-To understand the attack progression, we need to build a timeline of events across multiple indices. This will help us correlate actions and identify the attacker's dwell time.
+To understand the attack progression, we need to build a timeline of events across multiple indices. This helps us correlate actions and identify the attacker's dwell time.
 
 
 ```esql
@@ -452,7 +458,7 @@ FROM windows-security-logs, process-logs, network-logs
 
 **Response**
 
-The response will provide a chronological timeline of events, showing the attacker's actions and the impact on the organization.
+The response provides a chronological timeline of events, showing the attacker's actions and the impact on the organization.
 
 :::{dropdown} View response
 
@@ -505,7 +511,7 @@ BY user.name, user.department
 
 **Response**
 
-The response will show the number of executions, unique hosts, and usage patterns for each user and department.
+The response shows the number of executions, unique hosts, and usage patterns for each user and department.
 
 | executions | unique_hosts | unique_commands | user.name | user.department | usage_pattern |
 |------------|--------------|-----------------|-----------|-----------------|---------------|
@@ -542,7 +548,7 @@ to find scheduled task creation commands, providing more flexible matching than 
 
 **Response**
 
-The response will show the number of task creations, creation hours, and persistence patterns for each user and host.
+The response shows the number of task creations, creation hours, and persistence patterns for each user and host.
 
 | task_creations | creation_hours | user.name | host.name | asset.criticality | persistence_pattern |
 |----------------|----------------|-----------|-----------|-------------------|---------------------|
