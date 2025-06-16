@@ -323,6 +323,16 @@ FROM process-logs
 5. Filters for only encoded commands using [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) on the computed field - focusing on suspicious PowerShell usage
 6. Aggregates results with [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) and [`COUNT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count) grouped `BY` multiple fields
 
+**Response**
+
+The response will contain a summary of the suspicious PowerShell executions, including the host name, user name, and asset criticality.
+
+
+     count     |   host.name   |   user.name   |asset.criticality
+---------------|---------------|---------------|-----------------
+1              |WS-001         |jsmith         |medium   
+
+
 ## Step 2: Detect lateral movement patterns
 
 In this step, we will track user authentication across multiple systems. This is important for identifying lateral movement and potential privilege escalation.
@@ -354,6 +364,15 @@ BY user.name <3>
 3. Complex aggregation combining host uniqueness, criticality levels, and timing metrics
 4. Calculates attack duration using [`DATE_DIFF`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_diff) to measure campaign timespan
 5. Custom scoring formula weighing both breadth (systems accessed) and depth (criticality) of compromise
+
+**Response**
+
+The response will show users who logged into multiple hosts, their criticality levels, and the velocity of their lateral movement.
+
+unique_hosts  |criticality_levels|active_periods |      first_login       |       last_login       |   user.name   |time_span_hours|movement_velocity|lateral_movement_score
+---------------|------------------|---------------|------------------------|------------------------|---------------|---------------|-----------------|----------------------
+3              |3                 |3              |2025-05-20T08:17:00.000Z|2025-05-20T10:45:00.000Z|jsmith         |2              |1                |9
+
 
 ## Step 3: Identify data access and potential exfiltration
 
@@ -388,6 +407,16 @@ BY host.name, destination.ip, threat.name, asset.criticality
 4. Converts raw bytes to megabytes using division and [`ROUND`](elasticsearch://reference/query-languages/esql/functions-operators/math-functions.md#esql-round) for human-readable values
 5. Assigns risk scores based on asset criticality and data volume using nested [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) conditions
 
+**Response**
+
+The response will show external data transfers, their risk scores, and the amount of data transferred.
+
+| total_bytes | connection_count | time_span | host.name | destination.ip | threat.name | asset.criticality | mb_transferred | risk_score |
+|-------------|------------------|-----------|-----------|----------------|-------------|-------------------|----------------|------------|
+| 500000000   | 1                | 0         | DC-001    | 185.220.101.45 | APT-29      | critical          | 476            | 10         |
+| 50000000    | 1                | 0         | DB-001    | 185.220.101.45 | APT-29      | critical          | 47             | 3          |
+
+
 ## Step 4: Build an attack timeline and assess impact
 
 To understand the attack progression, we need to build a timeline of events across multiple indices. This will help us correlate actions and identify the attacker's dwell time.
@@ -399,17 +428,18 @@ FROM windows-security-logs, process-logs, network-logs
 | LOOKUP JOIN user-context ON user.name
 | WHERE user.name == "jsmith" OR user.name == "admin"
 | EVAL event_type = CASE(
-  event.code IS NOT NULL, "Authentication",
-  process.name IS NOT NULL, "Process Execution",
-  destination.ip IS NOT NULL, "Network Activity",
-  "Unknown")
+    event.code IS NOT NULL, "Authentication",
+    process.name IS NOT NULL, "Process Execution",
+    destination.ip IS NOT NULL, "Network Activity",
+    "Unknown")
 | EVAL dest_ip = TO_STRING(destination.ip)
 | EVAL attack_stage = CASE(
-  process.parent.name LIKE "*word*", "Initial Compromise",
-  process.name IN ("net.exe", "nltest.exe"), "Reconnaissance",
-  event.code == "4624" AND logon.type == "3", "Lateral Movement",
-  process.name IN ("sqlcmd.exe", "ntdsutil.exe"), "Data Access",
-  dest_ip NOT LIKE "10.*", "Exfiltration", "Other")
+    process.parent.name LIKE "*word*", "Initial Compromise",
+    process.name IN ("net.exe", "nltest.exe"), "Reconnaissance", 
+    event.code == "4624" AND logon.type == "3", "Lateral Movement",
+    process.name IN ("sqlcmd.exe", "ntdsutil.exe"), "Data Access",
+    dest_ip NOT LIKE "10.*", "Exfiltration",
+    "Other")
 | SORT @timestamp ASC
 | KEEP @timestamp, event_type, attack_stage, host.name, asset.criticality, user.name, process.name, destination.ip
 | LIMIT 1000
@@ -420,6 +450,29 @@ FROM windows-security-logs, process-logs, network-logs
 3. Complex conditional logic maps technical events to attack framework stages ([MITRE ATT&CK)](https://attack.mitre.org/)) for better understanding of the attack lifecycle
 4. `SORT ASC` uses the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command to order events by timestamp, which creates chronological ordering essential for timeline analysis
 
+**Response**
+
+The response will provide a chronological timeline of events, showing the attacker's actions and the impact on the organization.
+
+:::{dropdown} View response
+
+| @timestamp | event_type | attack_stage | host.name | asset.criticality | user.name | process.name | destination.ip |
+|------------|------------|--------------|-----------|-------------------|-----------|--------------|----------------|
+| 2025-05-20T02:30:00.000Z | Authentication | Lateral Movement | DC-001 | critical | admin | null | null |
+| 2025-05-20T02:35:00.000Z | Process Execution | Data Access | DC-001 | critical | admin | ntdsutil.exe | null |
+| 2025-05-20T08:15:00.000Z | Authentication | Other | WS-001 | medium | jsmith | null | null |
+| 2025-05-20T08:17:00.000Z | Authentication | Lateral Movement | WS-001 | medium | jsmith | null | null |
+| 2025-05-20T08:20:00.000Z | Process Execution | Initial Compromise | WS-001 | medium | jsmith | powershell.exe | null |
+| 2025-05-20T09:30:00.000Z | Authentication | Lateral Movement | SRV-001 | high | jsmith | null | null |
+| 2025-05-20T09:35:00.000Z | Process Execution | Reconnaissance | SRV-001 | high | jsmith | net.exe | null |
+| 2025-05-20T10:45:00.000Z | Authentication | Lateral Movement | DB-001 | critical | jsmith | null | null |
+| 2025-05-20T10:50:00.000Z | Process Execution | Data Access | DB-001 | critical | jsmith | sqlcmd.exe | null |
+| 2025-05-20T12:15:00.000Z | Process Execution | Other | WS-001 | medium | jsmith | schtasks.exe | null |
+| 2025-05-20T12:30:00.000Z | Process Execution | Other | SRV-001 | high | jsmith | schtasks.exe | null |
+| 2025-05-20T13:15:00.000Z | Process Execution | Other | DB-001 | critical | jsmith | sc.exe | null |
+| 2025-05-20T13:20:00.000Z | Process Execution | Other | SRV-001 | high | jsmith | sc.exe | null |
+| 2025-05-20T13:25:00.000Z | Process Execution | Other | DC-001 | critical | admin | sc.exe | null |
+:::
 
 ## Step 5: Hunt for unusual interpreter usage
 
@@ -450,6 +503,14 @@ BY user.name, user.department
 4. [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) statement categorizes usage patterns for easier analysis
 5 Groups by user and department to identify anomalous behavior patterns
 
+**Response**
+
+The response will show the number of executions, unique hosts, and usage patterns for each user and department.
+
+| executions | unique_hosts | unique_commands | user.name | user.department | usage_pattern |
+|------------|--------------|-----------------|-----------|-----------------|---------------|
+| 7          | 3            | 5               | jsmith    | finance         | High Usage    |
+
 ## Step 6: Hunt for persistence mechanisms
 
 This query showcases how [`DATE_TRUNC`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_trunc) enables temporal analysis of persistence mechanisms, using time bucketing and [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) to identify suspicious patterns like rapid-fire task creation or persistence establishment across multiple time windows.
@@ -478,6 +539,15 @@ to find scheduled task creation commands, providing more flexible matching than 
 2. Creates hourly time buckets with [`DATE_TRUNC`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_trunc) to analyze temporal patterns in persistence activity
 3. Measures temporal dispersion using [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) on time buckets to detect scheduled tasks created across multiple time periods
 4. Creates meaningful categorization of persistence patterns using [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) to identify potentially malicious task scheduling sequences (burst creation vs spread across time)
+
+**Response**
+
+The response will show the number of task creations, creation hours, and persistence patterns for each user and host.
+
+| task_creations | creation_hours | user.name | host.name | asset.criticality | persistence_pattern |
+|----------------|----------------|-----------|-----------|-------------------|---------------------|
+| 1              | 1              | jsmith    | WS-001    | medium            | Single Task         |
+| 1              | 1              | jsmith    | SRV-001   | high              | Single Task         |
 
 ## Additional resources
 
