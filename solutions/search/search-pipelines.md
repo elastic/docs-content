@@ -41,7 +41,7 @@ These tools can be particularly helpful by providing a layer of customization an
 
 It can be a lot of work to set up and manage production-ready pipelines from scratch. Considerations such as error handling, conditional execution, sequencing, versioning, and modularization must all be taken into account.
 
-To this end, when you create indices for search use cases, (including web crawler, search connectors and API indices), each index already has a pipeline set up with several processors that optimize your content for search.
+To this end, when you create indices for search use cases, (including web crawler, content connectors and API indices), each index already has a pipeline set up with several processors that optimize your content for search.
 
 This pipeline is called `search-default-ingestion`. While it is a "managed" pipeline (meaning it should not be tampered with), you can view its details via the Kibana UI or the Elasticsearch API. You can also [read more about its contents below](#ingest-pipeline-search-details-generic-reference).
 
