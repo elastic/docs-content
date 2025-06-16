@@ -6,9 +6,7 @@ applies_to:
 # Basics quickstart [getting-started]
 
 
-This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents and field type mappings](../../manage-data/data-store/index-basics.md).
-
-You’ll learn how to create an index, add data as documents, work with dynamic and explicit mappings, and perform your first basic searches.
+This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents, and field type mappings](../../manage-data/data-store/index-basics.md). You’ll learn how to create an index, add data as documents, work with dynamic and explicit mappings, and perform your first basic searches.
 
 ::::{tip}
 The code examples in this tutorial are in [Console](../../explore-analyze/query-filter/tools/console.md) syntax by default. You can [convert into other programming languages](../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
@@ -17,7 +15,9 @@ The code examples in this tutorial are in [Console](../../explore-analyze/query-
 
 ## Requirements [getting-started-requirements]
 
-You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+You can follow this guide using any {{es}} deployment. If you already have a deployment up and running, you can skip ahead to the [first step](#getting-started-index-creation).
+
+If not, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for your options. To get started quickly, you can spin up a cluster [locally in Docker](get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh

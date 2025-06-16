@@ -97,16 +97,6 @@ The AI Assistant connects to one of these supported LLM providers:
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
-:::::{dropdown} Using pre-8.12 knowledge base articles?
-::::{important}
-**If you started using the AI Assistant in technical preview**, any knowledge base articles you created before 8.12 will have to be reindexed or upgraded before they can be used. Knowledge base articles created before 8.12 use ELSER v1. In 8.12, knowledge base articles must use ELSER v2. Options include:
-
-* Clear all old knowledge base articles manually and reindex them.
-* Upgrade all knowledge base articles indexed with ELSER v1 to ELSER v2 using a [Python script](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/model-upgrades/upgrading-index-to-use-elser.ipynb).
-
-::::
-:::::
-
 The AI Assistant uses [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), Elastic’s semantic search engine, to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses. Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
 
 Add data to the knowledge base with one or more of the following methods:
