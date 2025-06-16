@@ -61,6 +61,11 @@ When you create a rule, you must either specify the {{es}} index pattens for whi
 To access data views in {{stack}}, you must have the [required permissions](/explore-analyze/find-and-organize/data-views.md#data-views-read-only-access). To access them in {{serverless-short}}, you must have the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md) with the right privileges.
 ::::
 
+::::{important}
+
+System indices, such as the alerts indices, contain important configuration and internal data; do not change their mappings. Changes can lead to rule execution and alert indexing failures.
+
+::::
 
 
 ## Notifications [about-notifications]
