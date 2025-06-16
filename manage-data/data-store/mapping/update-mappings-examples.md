@@ -259,7 +259,7 @@ POST /_reindex
 
 ## Rename a field
 
-You **can't** rename a field directly. Instead, use a [`field alias`](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html).
+You **cannot** rename a field directly. Instead, use a [`field alias`](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html).
 
 Create an index with the `user_identifier` field:
 
