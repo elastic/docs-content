@@ -21,7 +21,7 @@ products:
 
 ## OpenTelemetry logs [apm-open-telemetry-logs-intake]
 
-* The OpenTelemetry logs intake throgh the [APM Server](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks#apm-open-telemetry-proxy-apm) is in technical preview. Note that logs ingest through the [EDOT Collector](opentelemetry://reference/edot-collector) or the [Managed OTLP endpoint](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint) is fully supported. {applies_to}`product: preview`
+* The OpenTelemetry logs intake through the [APM Server](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-open-telemetry-proxy-apm) is in technical preview. Note that logs ingest through the [EDOT Collector](opentelemetry://reference/edot-collector/index.md) or the [Managed OTLP endpoint](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) is fully supported. {applies_to}`product: preview`
 * The application logs data stream (`app_logs`) has dynamic mapping disabled. This means the automatic detection and mapping of new fields is disabled (see issue [#9093](https://github.com/elastic/apm-server/issues/9093)).
 
 ## OpenTelemetry Line Protocol (OTLP) [apm-open-telemetry-otlp-limitations]
