@@ -9,11 +9,14 @@ applies_to:
 products:
   - id: cloud-hosted
   - id: cloud-serverless
+navigation_title: AWS PrivateLink
 ---
 
 # AWS PrivateLink private connections
 
-You can use AWS PrivateLink to establish a secure connection for your {{ecloud}} deployments and projects to communicate with other AWS services. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet. In these configurations, {{ecloud}} is the third-party service provider and the customers are service consumers.
+You can use AWS PrivateLink to establish a secure connection for your {{ecloud}} deployments and projects to communicate with other AWS services. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet.
+
+AWS PrivateLink connects your Virtual Private Cloud (VPC) to the AWS-hosted services that you use, treating them as if they were in your VPC. You can create and use VPC endpoints to securely access AWS-hosted services.
 
 You can also optionally filter traffic to your deployments and projects by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment or project to the VCPE specified in the policy, as well as any other policies applied to the deployment or project.
 
@@ -52,7 +55,7 @@ Transport client is not supported over PrivateLink connections.
 PrivateLink Service is set up by Elastic in all supported AWS regions under the following service names:
 
 ::::{dropdown} AWS public regions
-| **Region** | **VPC Service Name** | **Private hosted zone domain name** | **AZ Names (AZ IDs)** |
+| Region | VPC service name | Private hosted zone domain name | AZ names (AZ IDs) |
 | --- | --- | --- | --- |
 | af-south-1 | `com.amazonaws.vpce.af-south-1.vpce-svc-0d3d7b74f60a6c32c` | `vpce.af-south-1.aws.elastic-cloud.com` | `af-south-1a` (`afs1-az1`), `af-south-1b` (`afs1-az2`), `af-south-1c` (`afs1-az3`) |
 | ap-east-1 | `com.amazonaws.vpce.ap-east-1.vpce-svc-0f96fbfaf55558d5c` | `vpce.ap-east-1.aws.elastic-cloud.com` | `ap-east-1a` (`ape1-az1`), `ap-east-1b` (`ape1-az2`), `ap-east-1c` (`ape1-az3`) |
@@ -75,35 +78,44 @@ PrivateLink Service is set up by Elastic in all supported AWS regions under the 
 | us-east-2 | `com.amazonaws.vpce.us-east-2.vpce-svc-02d187d2849ffb478` | `vpce.us-east-2.aws.elastic-cloud.com` | `us-east-2a` (`use2-az1`), `us-east-2b` (`use2-az2`), `us-east-2a` (`use2-az3`) |
 | us-west-1 | `com.amazonaws.vpce.us-west-1.vpce-svc-00def4a16a26cb1b4` | `vpce.us-west-1.aws.elastic-cloud.com` | `us-west-1a` (`usw1-az1`), `us-west-1b` (`usw1-az2`), `us-west-1c` (`usw1-az3`) |
 | us-west-2 | `com.amazonaws.vpce.us-west-2.vpce-svc-0e69febae1fb91870` | `vpce.us-west-2.aws.elastic-cloud.com` | `us-west-2a` (`usw2-az2`), `us-west-2b` (`usw2-az1`), `us-west-2c` (`usw2-az3`) |
-
 ::::
 
 
 ::::{dropdown} GovCloud regions
-| **Region** | **VPC Service Name** | **Private hosted zone domain name** |
+| Region | VPC service name | Private hosted zone domain name |
 | --- | --- | --- |
 | us-gov-east-1 (GovCloud) | `com.amazonaws.vpce.us-gov-east-1.vpce-svc-0bba5ffa04f0cb26d` | `vpce.us-gov-east-1.aws.elastic-cloud.com` |
-
 ::::
 
+## Set up a private connection
 
-The process of setting up the PrivateLink connection to your clusters is split between AWS (e.g. by using AWS console) and {{ecloud}} UI. These are the high-level steps:
+The process of setting up a private connection with AWS PrivateLink is split between AWS (e.g. by using AWS console) and the {{ecloud}} console. These are the high-level steps:
 
 | AWS console | {{ecloud}} |
 | --- | --- |
-| 1. Create a VPC endpoint using {{ecloud}} service name. |  |
-| 2. Create a DNS record pointing to the VPC endpoint. |  |
-|  | 3. Create a PrivateLink rule set with your VPC endpoint ID. |
-|  | 4. Associate the PrivateLink rule set with your deployments. |
-|  | 5. Interact with your deployments over PrivateLink. |
+| 1. [Create a VPC endpoint using {{ecloud}} service name.](#ec-aws-vpc-dns) |  |
+| 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
+|  | 3. **Optional**: [Create a private connection policy.](ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VCP endpoint ID. |
+|  | 4. **Optional**: [Associate the private connection policy with deployments or projects](#ec-associate-traffic-filter-private-link-rule-set). |
+|  | 5. [Interact with your deployments over PrivateLink](#ec-access-the-deployment-over-private-link). |
+
+After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-private-link-rule-set), [disconnect](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-private-link-rule-set) it.
+
+:::{admonition} Private connection policies are optional
+Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established.
+
+Creating a private connection policy and associating it with your deployments allows you to do the following: 
+
+* Record that you've established private connectivity between AWS and Elastic in the applicable region.
+* Filter traffic to your deployment or project using VCPE filters.
+:::
 
 
-## Ensure your VPC is in all availability zones [ec-aws-vpc-overlapping-azs]
+### Before you begin [ec-aws-vpc-overlapping-azs]
 
-Ensure your VPC endpoint is in all availability zones supported by {{ecloud}} on the region for the VPC service.
+Before you begin, you should ensure your VPC endpoint is in all availability zones supported by {{ecloud}} on the region for the VPC service.
 
 Ensuring that your VPC is in all supported {{ecloud}} availability zones for a particular region avoids potential for a traffic imbalance. That imbalance may saturate some coordinating nodes and underutilize others in the deployment, eventually impacting performance. Enabling all supported {{ecloud}} zones ensures that traffic is balanced optimally.
-
 
 You can find the zone name to zone ID mapping with AWS CLI:
 
@@ -120,33 +132,37 @@ $ aws ec2 describe-availability-zones --region us-east-1 | jq -c '.AvailabilityZ
 The mapping will be different for your region. Our production VPC Service for `us-east-1` is located in `use1-az2`, `use1-az4`, `use1-az6`. We need to create the VPC Endpoint for the preceding mapping in at least one of `us-east-1e`, `us-east-1a`, `us-east-1b`.
 
 
-## Create your VPC endpoint and DNS entries in AWS [ec-aws-vpc-dns]
+### Create your VPC endpoint and DNS entries in AWS [ec-aws-vpc-dns]
 
 1. Create a VPC endpoint in your VPC using the service name for your region.
 
-    Follow the [AWS instructions](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint) for details on creating a VPC interface endpoint to an endpoint service.
+    Refer to the [AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint) for details on creating a VPC interface endpoint to an endpoint service.
 
-    Use [the service name for your region](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-private-link-service-names-aliases).
+    Use [the service name for your region](#ec-private-link-service-names-aliases).
 
     :::{image} /deploy-manage/images/cloud-ec-private-link-service.png
     :alt: PrivateLink
     :screenshot:
     :::
 
-    The security group for the endpoint should at minimum allow for inbound connectivity from your instances CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243.
+    The security group for the endpoint should, at minimum, allow for inbound connectivity from your instances' CIDR range on ports 443 and 9243. Security groups for the instances should allow for outbound connectivity to the endpoint on ports 443 and 9243.
 
 2. Create a DNS record.
 
-    1. Create a *Private hosted zone*. Consult  *Private hosted zone domain name* in *PrivateLink service names and aliases* for the name of the zone. For example, in *us-east-1* use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. Don’t forget to associate the zone with your VPC.
+    1. Create a Private hosted zone. 
+
+        Refer to the **Private hosted zone domain name** column in the [PrivateLink service names and aliases](#ec-private-link-service-names-aliases) table for the name of the zone. For example, in `us-east-1`, use `vpce.us-east-1.aws.elastic-cloud.com` as the zone domain name. 
+        
+        Don’t forget to associate the zone with your VPC.
 
         :::{image} /deploy-manage/images/cloud-ec-private-link-private-hosted-zone-example.png
         :alt: Private hosted zone example
         :screenshot:
         :::
 
-    2. Then create a DNS CNAME alias pointing to the PrivateLink Endpoint. Add the record to a private DNS zone in your VPC. Use `*` as the record name, and the VPC endpoint DNS name as a value.
+    2. Create a DNS CNAME alias pointing to the PrivateLink endpoint. Add the record to a private DNS zone in your VPC. Use `*` as the record name, and the VPC endpoint DNS name as a value.
 
-        Follow the [AWS instructions](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html) for details on creating a CNAME record which points to your VPC endpoint DNS name.
+        Refer to the [AWS documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html) for details on creating a CNAME record which points to your VPC endpoint DNS name.
 
         :::{image} /deploy-manage/images/cloud-ec-private-link-cname.png
         :alt: PrivateLink CNAME
@@ -154,37 +170,68 @@ The mapping will be different for your region. Our production VPC Service for `u
         :::
 
 3. Test the connection.
+   
+   1. Find the endpoint of your deployment or project:
+   
+        ::::{tab-set}
+        :::{tab-item} Hosted deployment
+        1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
-    Find out the endpoint of your deployment. You can do that by selecting **Copy endpoint** in the Cloud UI. It looks something like:
+        2. Under **Hosted deployments**, find your deployment.
 
-    ```
-    my-deployment-d53192.es.us-east-1.aws.found.io
-    ```
+                :::{tip}
+                If you have many deployments, you can instead go to the **Hosted deployments** ({{ech}}) page. On that page, you can narrow your deployments by name, ID, or choose from several other filters.
+                :::
 
-    where `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
-
-    To access your {{es}} cluster over PrivateLink:
-
-    * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
-    * Alternatively, use the following URL structure:
+        3. Select **Manage**.
+        4. In the deployment overview, under **Applications** find the application that you want to test.
+        5. Click **Copy endpoint**. The value looks something like the following:
 
         ```
-        https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
+        https://my-deployment-d53192.es.us-central1.aws.elastic.cloud
         ```
 
-        For example:
+        In this endpoint, `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
+        :::
+        :::{tab-item} Serverless project
 
-        ```text
-        https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
+        1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+
+        2. On the home page, under **Serverless projects**, find your project. 
+
+        3. Select **Manage**.
+        4. In the project overview, beside **Connection alias**, click **Edit**.
+        5. Copy the URL of the application that you want to test. It looks something like the following: 
+
         ```
+        https://serverless-es-b592e9.es.us-east-1.aws.elastic.cloud/
+        ```
+        :::
+        ::::
+
+    2. Access your {{es}} cluster over PrivateLink:
+
+       * For {{ech}} deployments, if you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
+       * In all other cases, use the following URL structure:
+
+           ```
+           https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
+           ```
+           % need to verify this
+
+           For example:
+
+           ```text
+           https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
+           ```
 
 
-    ::::{tip}
-    You can use either 443, or 9243 as a port.
-    ::::
+       ::::{tip}
+       You can use either 443, or 9243 as a port.
+       ::::
 
 
-    You can test the AWS console part of the setup with a following curl (substitute the region and {{es}} ID with your cluster):
+    You can test the AWS console part of the setup with a following curl. Make sure to substitute the region and {{es}} ID with your cluster.
 
     Request:
     ```sh
@@ -201,20 +248,20 @@ The mapping will be different for your region. Our production VPC Service for `u
     ```
 
     The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, because you haven’t allowed the traffic over this PrivateLink connection yet.
+    % needs to be edited
 
+## Create a private connection policy
 
+### Step 3 (Optional): Add a private connection policy [ec-add-vpc-elastic]
 
-## Add the private link rules to your deployments [ec-add-vpc-elastic]
-
-Follow these high-level steps to add private link rules to your deployments.
+Follow these high-level steps to add a private connection policy that can be associated with your deployment or project.
 
 1. [Find your VPC endpoint ID](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-find-your-endpoint).
 2. [Create rules using the VPC endpoint](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-create-traffic-filter-private-link-rule-set).
 3. [Associate the VPC endpoint with your deployment](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set).
 4. [Access the deployment over a private link](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-access-the-deployment-over-private-link).
 
-
-### Find your VPC endpoint ID [ec-find-your-endpoint]
+#### Find your VPC endpoint ID [ec-find-your-endpoint]
 
 You can find your VPC endpoint ID in the AWS console:
 
@@ -223,8 +270,7 @@ You can find your VPC endpoint ID in the AWS console:
 :screenshot:
 :::
 
-
-### Create rules with the VPC endpoint [ec-create-traffic-filter-private-link-rule-set]
+#### Create rules with the VPC endpoint [ec-create-traffic-filter-private-link-rule-set]
 
 Once you know your VPC endpoint ID you can create a private link traffic filter rule set.
 
@@ -246,14 +292,14 @@ Once you know your VPC endpoint ID you can create a private link traffic filter 
 The next step is to [associate the rule set](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployments.
 
 
-### Associate a PrivateLink rule set with your deployment [ec-associate-traffic-filter-private-link-rule-set]
+### Step 4 (Optional): Associate a policy with a deployment or project [ec-associate-traffic-filter-private-link-rule-set]
 
 To associate a private link rule set with your deployment:
 
 :::{include} _snippets/associate-filter.md
 :::
 
-### Access the deployment over a PrivateLink [ec-access-the-deployment-over-private-link]
+## Step 5: Access the deployment or project over a PrivateLink [ec-access-the-deployment-over-private-link]
 
 For traffic to connect with the deployment over a PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also setup network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
 
@@ -290,19 +336,19 @@ The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` t
 
 
 
-## Edit a PrivateLink connection [ec-edit-traffic-filter-private-link-rule-set]
+## Edit a policy [ec-edit-traffic-filter-private-link-rule-set]
 
 You can edit a rule set name or to change the VPC endpoint ID.
 
 :::{include} _snippets/edit-ruleset.md
 :::
 
-### Delete a PrivateLink rule set [ec-delete-traffic-filter-private-link-rule-set]
+## Delete a policy [ec-delete-traffic-filter-private-link-rule-set]
 
 :::{include} _snippets/delete-ruleset.md
 :::
 
-### Remove a PrivateLink rule set association from your deployment [remove-filter-deployment]
+## Disconnect a policy from your deployment or project [remove-filter-deployment]
 
 :::{include} _snippets/remove-filter.md
 :::
