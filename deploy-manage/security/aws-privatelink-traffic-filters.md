@@ -11,30 +11,29 @@ products:
   - id: cloud-serverless
 ---
 
-# AWS PrivateLink traffic filters
+# AWS PrivateLink private connections
 
-Traffic filtering to only AWS PrivateLink connections is one of the security layers available in {{ech}}. It allows you to limit how your deployments can be accessed.
+You can use AWS PrivateLink to establish a secure connection for your {{ecloud}} deployments and projects to communicate with other AWS services. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet. In these configurations, {{ecloud}} is the third-party service provider and the customers are service consumers.
 
-Refer to [](/deploy-manage/security/traffic-filtering.md) to learn more about traffic filtering in {{ech}}, and how traffic filter rules work.
+You can also optionally filter traffic to your deployments and projects by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment or project to the VCPE specified in the policy, as well as any other policies applied to the deployment or project.
 
-AWS PrivateLink establishes a secure connection between two AWS Virtual Private Clouds (VPCs). The VPCs can belong to separate accounts, i.e. a service provider and its service consumers. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet. In such a configuration, {{ecloud}} is the third-party service provider and the customers are service consumers.
+To learn how private connection policies impact your deployment or project, refer to [](/deploy-manage/security/network-security-policies.md).
 
-PrivateLink is a connection between a VPC Endpoint and a PrivateLink Service.
-
-Read more about [Traffic Filtering](/deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in {{ecloud}}.
-
+:::{tip}
+{{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+:::
 
 ## Considerations
 
 Before you begin, review  the following considerations:
 
-### PrivateLink filtering and regions
+### Private connections and regions
 
-AWS PrivateLink filtering is supported only for AWS regions. Elastic does not yet support cross-region AWS PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations).
+Private connections over AWS PrivateLink are only supported only for AWS regions. Elastic does not yet support cross-region AWS PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments or projects. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations).
 
-AWS interface VPC endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint *service* is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the *names* of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the *ID* (e.g. `use1-az4`) of each available AZ for the service.
+AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the ID (e.g. `use1-az4`) of each available AZ for the service.
 
-Check [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-availability-zones) for more details.
+Refer to [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-availability-zones) for more details.
 
 ### Availability zones
 
@@ -42,7 +41,7 @@ Elastic [charges](/deploy-manage/cloud-organization/billing/cloud-hosted-deploym
 
 On the customer VPC side, the inter-availability zone data transfer, within the same AWS region, towards AWS PrivateLink endpoints, [is free of charge](https://aws.amazon.com/about-aws/whats-new/2022/04/aws-data-transfer-price-reduction-privatelink-transit-gateway-client-vpn-services/). As a result, you do not incur charges for cross-AZ data transfer within your VPC when the target is the AWS Privatelink {{ecloud}} service endpoint. We recommend you set up the VPC endpoints in all supported {{ecloud}} AZs for a particular region for maximum traffic throughput and resiliency.
 
-If Elastic and your VPC overlap in two AZs or less, you can create subnets and VPC PrivateLink endpoints in your VPC within the same availability zones where Elastic PrivateLink service has presence.
+If Elastic and your VPC overlap in two AZs or less, you can create subnets and VPC PrivateLink endpoints in your VPC within the same availability zones where the Elastic PrivateLink service is present.
 
 ### Transport client
 
