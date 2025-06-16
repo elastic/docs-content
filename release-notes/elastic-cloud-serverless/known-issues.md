@@ -16,7 +16,38 @@ Known issues are significant defects or limitations that may impact your impleme
 
 ## Active
 
-There are no active known issues. 
+:::{dropdown} In {{sec-serverless}}, the entity risk score feature may stop persisting risk score documents
+
+On May 30, 2025, it was discovered that the entity risk score feature may stop persisting risk score documents if risk scoring was previously turned on. This is due to a bug that prevents the `entity_analytics_create_eventIngest_from_timestamp-pipeline-<space_name>` ingest pipeline (which is set as a default pipeline for the risk scoring index in an earlier {{serverless-short}} release) from being created when {{kib}} starts up.
+
+While document persistence may initially succeed, it will eventually fail after 0 to 30 days. This is how long it takes for the risk score data stream to roll over and apply its underlying index settings to the new default pipeline.
+
+**Workaround**
+
+To resolve this issue, manually create the ingest pipeline in each space that has entity risk scoring turned on. You can do this using a PUT request, which is described in the example below. When reviewing the example, note that `default` in the example ingest pipeline name below is the {{kib}} space ID.
+
+```
+PUT /_ingest/pipeline/entity_analytics_create_eventIngest_from_timestamp-pipeline-default
+{
+  "_meta": {
+    "managed_by": "entity_analytics",
+    "managed": true
+  },
+  "description": "Pipeline for adding timestamp value to event.ingested",
+  "processors": [
+    {
+      "set": {
+        "field": "event.ingested",
+        "value": "{{_ingest.timestamp}}"
+      }
+    }
+  ]
+}
+```
+
+After you complete this step, risk scores should automatically begin to successfully persist during the entity risk engine's next run. Details for the next run time are described on the **Entity risk score** page, where you can also manually run the risk score by clicking **Run Engine**.
+
+:::
 
 ## Resolved
 

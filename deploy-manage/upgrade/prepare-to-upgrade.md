@@ -19,7 +19,9 @@ Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use
 
 To upgrade from 8.17.0 or earlier to 9.0.0, you must first upgrade to the latest 8.18 patch release. This allows you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and perform a rolling upgrade. Upgrading to the latest 8.18 patch release is required even if you choose a full {{es}} cluster restart. If you're using 7.x and earlier, you may need to complete multiple upgrades or perform a full-cluster restart to reach the latest 8.18 patch release before upgrading to 9.0.0.
 
-Alternatively, you can create a 9.0.0 deployment and reindex from remote. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
+If you are already running an 8.18.x version, it's also recommended to upgrade to the latest 8.18 patch release before upgrading to 9.x. This ensures that the latest version of the upgrade assistant is used, and any bug fixes that could have implications for the upgrade are applied.
+
+As an alternative to upgrading the cluster, you can create a new 9.0.0 deployment and reindex from the original cluster. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
 
 :::{note}
 For flexible upgrade scheduling, 8.18.0 {{beats}} and {{ls}} are compatible with 9.x {{es}}.

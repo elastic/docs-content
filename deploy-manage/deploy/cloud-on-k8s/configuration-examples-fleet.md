@@ -19,7 +19,7 @@ The examples in this section are for illustration purposes only and should not b
 
 ## System and {{k8s}} {{integrations}} [k8s_system_and_k8s_integrations]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/elastic-agent/fleet-kubernetes-integration.yaml
 ```
 
@@ -28,7 +28,7 @@ Deploys {{agent}} as a DaemonSet in {{fleet}} mode with System and {{k8s}} {{int
 
 ## System and {{k8s}} {{integrations}} running as non-root [k8s_system_and_k8s_integrations_running_as_non_root]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/elastic-agent/fleet-kubernetes-integration-nonroot.yaml
 ```
 
@@ -42,7 +42,7 @@ The DaemonSet itself must run as root to set up permissions and ECK >= 2.10.0 is
 
 ## Custom logs integration with autodiscover [k8s_custom_logs_integration_with_autodiscover]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/elastic-agent/fleet-custom-logs-integration.yaml
 ```
 
@@ -51,7 +51,7 @@ Deploys {{agent}} as a DaemonSet in {{fleet}} mode with Custom Logs integration 
 
 ## APM integration [k8s_apm_integration]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/elastic-agent/fleet-apm-integration.yaml
 ```
 
@@ -60,7 +60,7 @@ Deploys single instance {{agent}} Deployment in {{fleet}} mode with APM integrat
 
 ## Synthetic monitoring [k8s_synthetic_monitoring]
 
-```sh
+```sh subs=true
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{eck_release_branch}}/config/recipes/elastic-agent/synthetic-monitoring.yaml
 ```
 
