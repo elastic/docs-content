@@ -12,6 +12,8 @@ applies_to:
 products:
   - id: cloud-hosted
   - id: cloud-serverless
+sub:
+  policy-type: "IP filter"
 ---
 
 # Manage IP traffic filters in ECH or Serverless
@@ -65,43 +67,21 @@ To create an IP filter policy:
 9.  To automatically attach this IP filter policy to new deployments or projects, select **Apply by default**.
 10.  Click **Create**.
 
-### Step 2: Associate an IP filter policy with your deployment or project
+### Step 2: Associate a policy with a deployment or project
 
-You can associate an IP filter policy with your deployment or project from the policy's settings, or from your deployment or project's settings. After you associate the filter with a deployment or project, it starts filtering traffic.
+You can associate a network security policy with your deployment or project from the policy's settings, or from your deployment or project's settings. After you associate the policy with a deployment or project, it starts filtering traffic.
 
-#### From your deployment or project
+#### From a deployment or project
 
-::::{tab-set}
-:group: hosted-serverless
-
-:::{tab-item} Serverless project
-:sync: serverless
-
-1. Find your project on the home page or on the **Serverless projects** page, then select **Manage** to access its settings menus.
-
-    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. On the **Network security** page, select **Apply policies** > **IP filter**.
-3. Choose the filter you want to apply and select **Apply filter**.
+:::{include} _snippets/associate-filter-from-resource.md
 :::
 
-:::{tab-item} Hosted deployment
-:sync: hosted
-
-1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-   
-   On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. On the **Security** page, under **Network security**, select **Apply policies** > **IP filter**.
-3. Choose the filter you want to apply and select **Apply filter**.
-:::
-
-::::
-
-#### From the IP filter policy settings
+#### From the policy settings
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the filter you want to edit.
-6. Under **Apply to resources**, associate the new filter with one or more deployments or projects.
+5. Find the policy you want to edit.
+6. Under **Apply to resources**, associate the policy with one or more deployments or projects.
 7. Click **Update** to save your changes.
 
 ## Remove an IP filter policy from your deployment or project [remove-filter-deployment]
