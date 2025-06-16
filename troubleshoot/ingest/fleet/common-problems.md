@@ -59,7 +59,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 * [Hosted {{agent}} is offline](#hosted-agent-offline)
 * [APM & {{fleet}} fails to upgrade to 8.x on {{ecloud}}](#hosted-agent-8-x-upgrade-fail)
 * [Air-gapped {{agent}} upgrade can fail due to an inaccessible PGP key](#pgp-key-download-fail)
-* [{{agent}} upgrade fails on Windows with exit status `0xc0000142`](agent-upgrade-fail-windows)
+* [{{agent}} upgrade fails on Windows with exit status `0xc0000142`](#agent-upgrade-fail-windows)
 * [{{agents}} are unable to connect after removing the {{fleet-server}} integration](#fleet-server-integration-removed)
 * [{{agent}} Out of Memory errors on Kubernetes](#agent-oom-k8s)
 * [Error when running {{agent}} commands with `sudo`](#agent-sudo-error)
