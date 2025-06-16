@@ -29,7 +29,7 @@ AutoOps significantly simplifies cluster management with performance recommendat
 
 For other deployment types, use [Stack Monitoring](/deploy-manage/monitor/stack-monitoring.md) to monitor logs and metrics across the {{stack}}.
 
-To help you make your decision, refer to [AutoOps vs. Stack Monitoring](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
+To help you make your decision, refer to [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
 ### AutoOps (recommended)
 

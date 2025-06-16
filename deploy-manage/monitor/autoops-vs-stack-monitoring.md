@@ -8,7 +8,7 @@ applies_to:
 navigation_title: AutoOps vs. Stack Monitoring
 ---
 
-# AutoOps vs. Stack Monitoring
+# AutoOps and Stack Monitoring comparison
 
 This page provides a detailed comparison of AutoOps and Stack Monitoring to help you decide which solution is better suited to your needs.
 
