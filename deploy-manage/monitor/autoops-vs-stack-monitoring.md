@@ -5,10 +5,10 @@ applies_to:
     ece: all
     eck: all
     self: all
-navigation_title: AutoOps and Stack Monitoring comparison
+navigation_title: AutoOps vs. Stack Monitoring
 ---
 
-# AutoOps and Stack Monitoring comparison
+# AutoOps vs. Stack Monitoring
 
 This page provides a detailed comparison of AutoOps and Stack Monitoring to help you decide which solution is better suited to your needs.
 
@@ -26,7 +26,7 @@ With Stack Monitoring, you are responsible for storing your monitoring data. Thi
 ### Setup
 
 #### AutoOps [ao-setup]
-On {{ech}} (ECH), AutoOps is set up and enabled automatically in all [supported regions](ec-autoops-regions.md), with no action required from you.
+On {{ech}} (ECH), AutoOps is set up and enabled automatically in all supported [regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md), with no action required from you.
 
 :::{note}
 AutoOps is planned to be available in self-managed environments in the future.
@@ -58,7 +58,7 @@ You can store your Stack Monitoring logs and metrics in the following ways:
 ### Availability
 
 #### AutoOps [ao-availability]
-AutoOps lives in {{ecloud}}, so you need to have an {{ecloud}} account to access it. Once logged in, you can [access](ec-autoops-how-to-access.md) AutoOps from your hosted deployments.
+AutoOps lives in {{ecloud}}, so you need to have an {{ecloud}} account to access it. Once logged in, you can [access](/deploy-manage/monitor/autoops/ec-autoops-how-to-access.md) AutoOps from your hosted deployments.
 
 #### Stack Monitoring [sm-availability]
 Once setup is complete, you can access the Stack Monitoring UI inside {{kib}}, where you can monitor all your {{stack}} components.
@@ -66,9 +66,9 @@ Once setup is complete, you can access the Stack Monitoring UI inside {{kib}}, w
 ### Investigations and root cause analysis
 
 #### AutoOps [ao-investigations]
-The AutoOps agent captures a pre-defined set of {{es}} metrics, but doesn’t fetch any logs. AutoOps then performs multi-metrics analysis and correlations to identify issues and potential root causes. When issues are detected, AutoOps raises [events](ec-autoops-events.md) and [notifies](ec-autoops-notifications-settings.md) you accordingly. When the issue is resolved, AutoOps automatically closes the event.
+The AutoOps agent captures a pre-defined set of {{es}} metrics, but doesn’t fetch any logs. AutoOps then performs multi-metrics analysis and correlations to identify issues and potential root causes. When issues are detected, AutoOps raises [events](/deploy-manage/monitor/autoops/ec-autoops-events.md) and [notifies](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md) you accordingly. When the issue is resolved, AutoOps automatically closes the event.
 
-For each raised event, AutoOps provides insights into the affected resources (cluster, node, index, shard, etc.), background information on the detected problem, and step-by-step guides to help you diagnose and remediate the identified issues. Most detection rules can be [customized](ec-autoops-event-settings.md) by adjusting thresholds, durations, index patterns, data tiers, and more.
+For each raised event, AutoOps provides insights into the affected resources (cluster, node, index, shard, etc.), background information on the detected problem, and step-by-step guides to help you diagnose and remediate the identified issues. Most detection rules can be [customized](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) by adjusting thresholds, durations, index patterns, data tiers, and more.
 
 #### Stack Monitoring [sm-investigations]
 The Stack Monitoring UI displays the [metrics](/deploy-manage/monitor/monitoring-data/elasticsearch-metrics.md) of your monitored {{stack}} components over time. Logs can be viewed, searched, and filtered in Discover. You can enable a pre-defined set of alerts that are triggered when specific thresholds are crossed. You can also configure your own [alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) on any collected metrics or log messages. However, Stack Monitoring does not offer any further investigation, correlations, or root cause analyses.

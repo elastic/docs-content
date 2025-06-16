@@ -40,5 +40,5 @@ $$$faq-autoops-metrics-storage$$$Where are AutoOps metrics stored, and does Auto
 :   AutoOps metrics are stored internally within the Elastic infrastructure, not on customer deployments. So using AutoOps does not consume customer ECU.
 
 $$$faq-autoops-vs-stack-monitoring$$$Has AutoOps replaced Stack Monitoring?
-:   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, but not logs. Read more in [AutoOps and Stack Monitoring comparison](/deploy-manage/monitor/autoops/autoops-stack-monitoring-comparison.md).
+:   Currently, AutoOps has many of the same features as Stack Monitoring as well as several new ones. However, it only provides insights on {{es}} and analyzes metrics, but not logs. Read more in [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
 
