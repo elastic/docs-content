@@ -38,7 +38,9 @@ Expand a section below for your endpoint security system:
 
     * Give the API client the minimum privilege required to read CrowdStrike data and perform actions on enrolled hosts. Consider creating separate API clients for reading data and performing actions, to limit privileges allowed by each API client.
 
-        * To isolate and release hosts, the API client must have `Read` access for Alerts, and `Read` and `Write` access for Hosts.
+        * To isolate and release hosts: `Read` access for `Alerts`, and `Read` and `Write` access for `Hosts`.
+
+        * To run a script on a host: `Read` and `Write` access for `Real time response`; for elevated access, `Write` access for `Real time response (admin)` is also required.
 
     * Take note of the client ID, client secret, and base URL; you’ll need them in later steps when you configure {{elastic-sec}} components to access CrowdStrike.
     * The base URL varies depending on your CrowdStrike account type:
