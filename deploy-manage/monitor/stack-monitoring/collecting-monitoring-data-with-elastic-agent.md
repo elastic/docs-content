@@ -36,8 +36,8 @@ To collect {{es}} monitoring data, add an {{es}} integration to an {{agent}} and
 
 5. Configure the integration name and optionally add a description. Make sure you configure all required settings:
 
-    1. Under **Collect {{es}} logs**, modify the log paths to match your {{es}} environment.
-    2. Under **Collect {{es}} metrics**, make sure the hosts setting points to your {{es}} host URLs. By default, the integration collects {{es}} monitoring metrics from `localhost:9200`. If that host and port number are not correct, update the `hosts` setting. If you configured {{es}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:9200`.
+    1. Under **Logs**, modify the log paths to match your {{es}} environment.
+    2. Under **Metrics (Stack Monitoring)**, make sure the hosts setting points to your {{es}} host URLs. By default, the integration collects {{es}} monitoring metrics from `localhost:9200`. If that host and port number are not correct, update the `hosts` setting. If you configured {{es}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:9200`.
     3. Expand **Advanced options**. If the Elastic {{security-features}} are enabled, enter the username and password of a user that has the `remote_monitoring_collector` role.
     4. Specify the scope:
 

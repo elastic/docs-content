@@ -46,6 +46,49 @@ This is the optimal configuration if you have no or very little search traffic (
 
 On the other hand, if your index experiences regular search requests, this default behavior means that {{es}} will refresh your index every 1 second. If you can afford to increase the amount of time between when a document gets indexed and when it becomes visible, increasing the [`index.refresh_interval`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-refresh-interval-setting) to a larger value, e.g. `30s`, might help improve indexing speed.
 
+### Disable refresh interval
+
+To maximize indexing performance during large bulk operations, you can disable refreshing by setting the refresh interval to `-1`. This prevents {{es}} from performing any refreshes during the bulk indexing process.
+
+To disable the refresh interval, run the following request:
+
+```console
+PUT /my-index-000001/_settings
+{
+  "index" : {
+    "refresh_interval" : "-1"
+  }
+}
+```
+% TEST[setup:my_index]
+
+While refresh is disabled, your newly indexed documents will not be visible to search operations. Only re-enable refreshing after your bulk indexing is complete and you need the data to be searchable.
+
+To restore the refresh interval, run the following request with your desired value:
+
+```console
+PUT /my-index-000001/_settings
+{
+  "index" : {
+    "refresh_interval" : "5s" <1>
+  }
+}
+```
+% TEST[continued]
+
+
+1. For {{serverless-full}} deployments, `refresh_interval` must be either `-1`, or equal to or greater than `5s`
+
+When bulk indexing is complete, consider running a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) {applies_to}`serverless: unavailable` to optimize search performance::
+
+```console
+POST /my-index-000001/_forcemerge?max_num_segments=5
+```
+% TEST[continued]
+
+::::{warning}
+Force merge is an expensive operation.
+::::
 
 ## Disable replicas for initial loads [_disable_replicas_for_initial_loads]
 
