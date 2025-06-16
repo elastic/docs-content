@@ -21,6 +21,7 @@ toc:
           - file: elasticsearch/remote-clusters.md
           - file: elasticsearch/diagnose-unassigned-shards.md
           - file: elasticsearch/troubleshooting-shards-capacity-issues.md
+          - file: elasticsearch/cluster-allocation-api-examples.md
       - file: elasticsearch/data.md
         children:
           - file: elasticsearch/allow-all-cluster-allocation.md
