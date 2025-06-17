@@ -8,7 +8,6 @@ applies_to:
   serverless: ga
 products:
   - id: cloud-hosted
-  - id: cloud-serverless
 navigation_title: GCP Private Service Connect
 sub:
   policy-type: "Private connection"
@@ -113,58 +112,58 @@ Creating a private connection policy and associating it with your deployments al
 
         Follow the [Google Cloud instructions](https://cloud.google.com/dns/docs/records#adding_a_record) for details on creating an A record which points to your Private Service Connect endpoint IP address.
 
-3. Test the connection.
+### Test the connection
 
-   1. Find the ID of your deployment's {{es}} cluster, or the ID of your project:
-   
-        ::::{tab-set}
-        :::{tab-item} Hosted deployment
-        1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Find the ID of your deployment's {{es}} cluster, or the ID of your project:
 
-        2. Under **Hosted deployments**, find your deployment.
+     ::::{tab-set}
+     :::{tab-item} Hosted deployment
+     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
-                :::{tip}
-                If you have many deployments, you can instead go to the **Hosted deployments** ({{ech}}) page. On that page, you can narrow your deployments by name, ID, or choose from several other filters.
-                :::
+     2. Under **Hosted deployments**, find your deployment.
 
-        3. Select **Manage**.
-        4. In the deployment overview, under **Applications**, find the application that you want to test.
-        5. Click **Copy cluster ID**. The value looks something like the following:
+             :::{tip}
+             If you have many deployments, you can instead go to the **Hosted deployments** ({{ech}}) page. On that page, you can narrow your deployments by name, ID, or choose from several other filters.
+             :::
+
+     3. Select **Manage**.
+     4. In the deployment overview, under **Applications**, find the application that you want to test.
+     5. Click **Copy cluster ID**. The value looks something like the following:
+
+     ```
+     be36ce6c84434913a5a40f3f1521b6e5
+     ```
+     :::
+     :::{tab-item} Serverless project
+
+     6. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+
+     7. On the home page, under **Serverless projects**, find your project. 
+
+     8. Select **Manage**.
+     9. In the project overview, beside **Project ID**, click **Copy**. The value looks something like the following: 
+
+     ```
+     fbb9f6535def41119fb00a475d2fb976
+     ```
+     :::
+     ::::
+
+ 2. Access your cluster or project over Private Link:
+
+    * For {{ech}} deployments, if you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
+    * In all other cases, use the following URL structure:
 
         ```
-        be36ce6c84434913a5a40f3f1521b6e5
+        https://{{cluster_or_project_ID}}.{private_hosted_zone_domain_name}:9243
         ```
-        :::
-        :::{tab-item} Serverless project
+        % need to verify this
 
-        6. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+        For example:
 
-        7. On the home page, under **Serverless projects**, find your project. 
-
-        8. Select **Manage**.
-        9. In the project overview, beside **Project ID**, click **Copy**. The value looks something like the following: 
-
+        ```text
+        https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243
         ```
-        fbb9f6535def41119fb00a475d2fb976
-        ```
-        :::
-        ::::
-
-    2. Access your cluster or project over Private Link:
-
-       * For {{ech}} deployments, if you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
-       * In all other cases, use the following URL structure:
-
-           ```
-           https://{{cluster_or_project_ID}}.{private_hosted_zone_domain_name}:9243
-           ```
-           % need to verify this
-
-           For example:
-
-           ```text
-           https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243
-           ```
 
     You can test the Google Cloud console part of the setup with the following command. Make sure to substitute the region and ID with your cluster or project information.
 
@@ -188,7 +187,7 @@ Creating a private connection policy and associating it with your deployments al
     The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, you haven’t associated any deployment with the Private Service Connect endpoint yet.
     % verify
 
-## Optional: Create a private connection policy
+## Optional: Create a private connection policy [ec-private-service-connect-allow-from-psc-connection-id]
 
 After you test your PrivateLink connection, you can create a private connection policy in {{ecloud}}. 
 
@@ -199,13 +198,11 @@ Creating a private connection policy and associating it with your deployments al
 * Record that you've established private connectivity between GCP and Elastic in the applicable region.
 * Filter traffic to your deployment or project using VCPE filters.
 
-### Add a private connection policy [ec-private-service-connect-allow-from-psc-connection-id]
-
-Follow these high-level steps to add private link rules to your deployments.
+Follow these high-level steps to a private connection policy to your deployments or projects.
 
 1. Optional: [Find your Private Service Connect connection ID](#ec-find-your-psc-connection-id).
-2. [Create rules using the Private Service Connect endpoint connection ID](#ec-psc-create-traffic-filter-psc-rule-set).
-3. [Associate the Private Service Connect endpoint with your deployment](#ec-psc-associate-traffic-filter-psc-rule-set).
+2. [Create policies using the Private Service Connect endpoint connection ID](#ec-psc-create-traffic-filter-psc-rule-set).
+3. [Associate the Private Service Connect endpoint with your deployment or project](#ec-psc-associate-traffic-filter-psc-rule-set).
 
 ### Optional: Find your Private Service Connect connection ID [ec-find-your-psc-connection-id]
 
@@ -241,16 +238,11 @@ Create a new private connection policy.
 13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPCE filter, then after you associate the filter with a deployment or project, it starts filtering traffic.
 14. To automatically attach this private connection policy to new deployments or projects, select **Apply by default**.
 15.  Click **Create**.
-16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
+16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
 
 The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment or project.
 
-
-### Optional: Associate a policy with a deployment or project [ec-psc-associate-traffic-filter-psc-rule-set]
-
-To associate a private link rule set with your deployment:
-
-### Optional: Associate a policy with a deployment or project [ec-associate-traffic-filter-private-link-rule-set]
+### Associate a policy with a deployment or project [ec-psc-associate-traffic-filter-psc-rule-set]
 
 You can associate a network security policy with your deployment or project from the policy's settings, or from your deployment or project's settings. 
 
@@ -271,7 +263,7 @@ If the policy doesn't contain a VCPE filter, then the association can serve as a
 6. Under **Apply to resources**, associate the policy with one or more deployments or projects.
 7. Click **Update** to save your changes.
 
-### Access the deployment or project over the Private Service Connect [ec-psc-access-the-deployment-over-psc]
+## Access the deployment or project over the Private Service Connect [ec-psc-access-the-deployment-over-psc]
 
 For traffic to connect with the deployment or project over Private Service Connect, the client making the request needs to be located within the VPC where you’ve created the Private Service Connect endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or a VPN from your corporate network. This assumes that the Private Service Connect endpoint and the DNS record are also available within that context. Check your cloud service provider documentation for setup instructions.
 
@@ -308,7 +300,9 @@ The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` t
 
 ::::
 
-## Edit a policy [ec-edit-traffic-filter-psc-rule-set]
+## Manage policies
+
+### Edit a policy [ec-edit-traffic-filter-psc-rule-set]
 
 You can edit a policy's name, description, VPC endpoint ID, and more.
 
@@ -321,7 +315,7 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
 :::
 
-## Delete a policy [ec-delete-traffic-filter-psc-rule-set]
+### Delete a policy [ec-delete-traffic-filter-psc-rule-set]
 
 If you need to remove a policy, you must first remove any associations with deployments.
 
@@ -331,7 +325,7 @@ To delete a policy:
 :::
 4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments or projects associated with the policy.
 
-## Remove a policy from your deployment or project [remove-filter-deployment]
+### Remove a policy from your deployment or project [remove-filter-deployment]
 
 If you want to a specific policy from a deployment or project, or delete the policy, then you need to disconnect it from any associated deployments or projects first. You can do this from the policy's settings, or from your deployment or project's settings. To remove an association through the UI:
 
