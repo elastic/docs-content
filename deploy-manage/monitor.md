@@ -23,6 +23,14 @@ Depending on your deployment type, you can use a variety of solutions for monito
 
 Depending on your deployment type and context, you have several options for monitoring your cluster or deployment.
 
+If you’re using {{ech}}, you can use [AutoOps](/deploy-manage/monitor/autoops.md) to monitor your cluster. 
+
+AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection, and resolution paths. AutoOps is [rolling out](/deploy-manage/monitor/autoops/ec-autoops-regions.md) in phases across {{ech}} regions and cloud service providers. It will be automatically activated for your deployment with no installation required.
+
+For other deployment types, use [Stack Monitoring](/deploy-manage/monitor/stack-monitoring.md) to monitor logs and metrics across the {{stack}}.
+
+To help you make your decision, refer to [](/deploy-manage/monitor/autoops-vs-stack-monitoring.md).
+
 ### AutoOps (recommended)
 
 ```{applies_to}
@@ -30,8 +38,9 @@ deployment:
   ess:
 ```
 
-:::{include} /deploy-manage/monitor/_snippets/autoops.md
-:::
+AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
+
+AutoOps is currently only available for Elastic Cloud Hosted deployments.
 
 ### Stack monitoring
 

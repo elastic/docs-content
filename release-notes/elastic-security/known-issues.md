@@ -79,7 +79,7 @@ On April 8, 2025, it was discovered that alert suppression for event correlation
 
 **Resolved**<br> 
 
-Resolved in {{stack}} 9.0.1
+Resolved in {{stack}} 9.0.2
 
 :::
 
