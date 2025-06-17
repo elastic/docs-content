@@ -10,6 +10,8 @@ products:
   - id: cloud-hosted
   - id: cloud-serverless
 navigation_title: Azure Private Link
+sub:
+  policy-type: "Private connection"
 ---
 
 # Azure Private Link traffic filters

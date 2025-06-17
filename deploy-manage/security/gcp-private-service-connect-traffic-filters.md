@@ -10,6 +10,8 @@ products:
   - id: cloud-hosted
   - id: cloud-serverless
 navigation_title: GCP Private Service Connect
+sub:
+  policy-type: "Private connection"
 ---
 
 # GCP Private Service Connect traffic filters
