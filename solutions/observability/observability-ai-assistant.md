@@ -139,7 +139,7 @@ To add external data to the knowledge base in {{kib}}:
 By default, the AI Assistant queries all search connector indices. To customize which indices are used in the knowledge base, set the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page.
 
 :::{note}
-You can specify any index in the **Search connector index pattern** setting, not just search connectors.
+You can specify any index in the **Search connector index pattern** setting, not just search connector indices.
 :::
 
 ##### Space awareness
