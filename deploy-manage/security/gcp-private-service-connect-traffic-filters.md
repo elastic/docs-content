@@ -208,7 +208,7 @@ Create a new private connection policy.
 15.  Click **Create**.
 16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
 
-The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
+The next step is to [associate the policy](#ec-psc-associate-traffic-filter-psc-rule-set) with your deployment.
 
 ### Optional: Associate a policy with a deployment [ec-psc-associate-traffic-filter-psc-rule-set]
 

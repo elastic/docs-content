@@ -10,7 +10,7 @@ If you have many deployments, you can instead go to the **Hosted deployments** (
 4. In the deployment overview, under **Applications**, find the application that you want to test.
 5. Click **Copy endpoint**. The value looks something like the following:
 
-```subs=true
+```text subs=true
 https://my-deployment-d53192.es.{{example-default-dn}}
 ```
 

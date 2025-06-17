@@ -24,7 +24,7 @@ If you use {{ech}} or {{eck}}, then other [network security](/deploy-manage/secu
 In {{serverless-full}} and {{ech}}, network security policies are created at the organization level, and then applied at the deployment level. Follow these guides to learn how to create, apply, and manage these policies using your preferred method:
   
   * [In the {{ecloud}} console](/deploy-manage/security/ip-filtering-cloud.md)
-  * [Using the {{ecloud}} API](/deploy-manage/security/ec-traffic-filtering-through-the-api)
+  * [Using the {{ecloud}} API](/deploy-manage/security/ec-traffic-filtering-through-the-api.md)
   
 To learn how multiple IP filter policies are processed, and how IP filters and [private connections](/deploy-manage/security/private-link-traffic-filters.md) work together in ECH, refer to [](/deploy-manage/security/network-security-policies.md).
 
@@ -33,9 +33,9 @@ To learn how multiple IP filter policies are processed, and how IP filters and [
 In {{ece}}, filter rules are created at the platform level, and then applied at the deployment level. Follow these guides to learn how to create, apply, and manage these policies using your preferred method:
   
   * [In the Cloud UI](/deploy-manage/security/ip-filtering-ece.md)
-  * [Using the {{ecloud}} API](/deploy-manage/security/ec-traffic-filtering-through-the-api)
+  * [Using the {{ecloud}} API](/deploy-manage/security/ec-traffic-filtering-through-the-api.md)
   
-To learn how multiple rules are processed, refer to [Traffic filter rules](/deploy-manage/security/traffic-filter-rules.md).
+To learn how multiple rules are processed, refer to [](/deploy-manage/security/ece-filter-rules.md).
 
 ## ECK and self managed
 

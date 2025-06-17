@@ -23,7 +23,7 @@ Rule sets work as follows:
 
 - Traffic filter rule sets, when associated with a deployment, will apply to all deployment endpoints, such as {{es}}, {{kib}}, APM Server, and others.
 
-- Any traffic filter rule set assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint; deny all access over Private Link*. The implication is that if you make a mistake putting in the traffic source (for example, specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the rule sets.
+- Any traffic filter rule set assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint*. The implication is that if you make a mistake putting in the traffic source (for example, specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the rule sets.
 
 - You can mark a rule set as *default*. It is automatically attached to all new deployments that you create in its region. You can detach default rule sets from deployments after they are created. Note that a *default* rule set is not automatically attached to existing deployments.
 
