@@ -11,6 +11,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## June 26, 2025 [serverless-changelog-06262025]
+
+### Features and enhancements [serverless-changelog-06172025-features-enhancements]
+* {{serverless-full}} is now available in the Microsoft Azure `eastus` [region](/deploy-manage/deploy/elastic-cloud/regions.md). 
+
 ## June 17, 2025 [serverless-changelog-06172025]
 
 ### Features and enhancements [serverless-changelog-06172025-features-enhancements]
