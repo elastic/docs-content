@@ -12,7 +12,8 @@ navigation_title: GCP Private Service Connect
 sub:
   policy-type: "Private connection"
   service-name: "Private Service Connect"
-  example-phz-dn: ".psc.asia-southeast1.gcp.elastic-cloud.com"
+  example-phz-dn: "psc.asia-southeast1.gcp.elastic-cloud.com"
+  example-default-dn: "us-central1.gcp.cloud.es.io"
 ---
 
 # GCP Private Service Connect private connections
@@ -131,7 +132,7 @@ To test the connection:
  1. Access your cluster over Private Link:
 
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
-    * Test the setup using the following cURL command. Make sure to replace the URL with your custom endpoint URL, or with your deployment's endpoint information and the private hosted zone domain name that you registered.
+    * Test the setup using the following cURL command. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
 
     **Request**
     ```sh
@@ -165,7 +166,7 @@ Creating a private connection policy and associating it with your deployments al
 * Record that you've established private connectivity between GCP and Elastic in the applicable region.
 * Filter traffic to your deployment using VCPE filters.
 
-Follow these high-level steps to a private connection policy to your deployments.
+Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
 1. Optional: [Find your Private Service Connect connection ID](#ec-find-your-psc-connection-id).
 2. [Create policies using the Private Service Connect endpoint connection ID](#ec-psc-create-traffic-filter-psc-rule-set).

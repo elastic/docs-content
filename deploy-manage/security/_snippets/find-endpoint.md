@@ -10,8 +10,8 @@ If you have many deployments, you can instead go to the **Hosted deployments** (
 4. In the deployment overview, under **Applications**, find the application that you want to test.
 5. Click **Copy endpoint**. The value looks something like the following:
 
-```
-https://my-deployment-d53192.es.us-east-2.aws.elastic-cloud.com
+```subs=true
+https://my-deployment-d53192.es.{{example-default-dn}}
 ```
 
 In this endpoint, `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.

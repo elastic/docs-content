@@ -12,6 +12,7 @@ sub:
   policy-type: "Private connection"
   service-name: "AWS PrivateLink"
   example-phz-dn: "vpce.us-east-1.aws.elastic-cloud.com"
+  example-default-dn: "us-east-1.aws.elastic-cloud.com"
 ---
 
 # AWS PrivateLink private connections
@@ -176,6 +177,7 @@ The mapping will be different for your region. Our production VPC Service for `u
 After you create your VPC endpoint and DNS entries, check that you are able to reach your cluster over PrivateLink.
 
 :::{include} _snippets/private-url-struct.md
+:::
 
 To test the connection:
 
@@ -184,7 +186,7 @@ To test the connection:
     :::{include} _snippets/find-endpoint.md
     :::
 
-2. Test the setup using the following cURL command. Make sure to replace the URL with your custom endpoint URL, or with your deployment's endpoint information and the private hosted zone domain name that you registered.
+2. Test the setup using the following cURL command. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
 
     **Request**
     ```sh
@@ -215,13 +217,13 @@ Creating a private connection policy and associating it with your deployments al
 * Record that you've established private connectivity between AWS and Elastic in the applicable region.
 * Filter traffic to your deployment using VCPE filters.
 
-Follow these high-level steps to add a private connection policy that can be associated with your deployment.
+Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
 1. Optional: [Find your VPC endpoint ID](#ec-find-your-endpoint).
 2. [Create rules using the VPC endpoint](#ec-create-traffic-filter-private-link-rule-set).
 3. [Associate the VPC endpoint with your deployment](#ec-associate-traffic-filter-private-link-rule-set).
 
-#### Optional: Find your VPC endpoint ID [ec-find-your-endpoint]
+### Optional: Find your VPC endpoint ID [ec-find-your-endpoint]
 
 The VPC endpoint ID is only required if you want to filter traffic to your deployment using VCPE filters.
 
@@ -232,7 +234,7 @@ You can find your VPC endpoint ID in the AWS console:
 :screenshot:
 :::
 
-#### Create a new private connection policy [ec-create-traffic-filter-private-link-rule-set]
+### Create a new private connection policy [ec-create-traffic-filter-private-link-rule-set]
 
 Create a new private connection policy.
 
