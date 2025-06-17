@@ -5,27 +5,27 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
-  serverless: ga
 products:
   - id: cloud-hosted
-  - id: cloud-serverless
 navigation_title: AWS PrivateLink
 sub:
   policy-type: "Private connection"
+  service-name: "AWS PrivateLink"
+  example-phz-dn: "vpce.us-east-1.aws.elastic-cloud.com"
 ---
 
 # AWS PrivateLink private connections
 
-You can use AWS PrivateLink to establish a secure connection for your {{ecloud}} deployments and projects to communicate with other AWS services. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet.
+You can use AWS PrivateLink to establish a secure connection for your {{ecloud}} deployments to communicate with other AWS services. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet.
 
 AWS PrivateLink connects your Virtual Private Cloud (VPC) to the AWS-hosted services that you use, treating them as if they were in your VPC. You can create and use VPC endpoints to securely access AWS-hosted services.
 
-You can also optionally filter traffic to your deployments and projects by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment or project to the VCPE specified in the policy, as well as any other policies applied to the deployment or project.
+You can also optionally filter traffic to your deployments by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment to the VCPE specified in the policy, as well as any other policies applied to the deployment.
 
-To learn how private connection policies impact your deployment or project, refer to [](/deploy-manage/security/network-security-policies.md).
+To learn how private connection policies impact your deployment, refer to [](/deploy-manage/security/network-security-policies.md).
 
 :::{tip}
-{{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+{{ech}} also supports [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
 :::
 
 ## Considerations
@@ -34,7 +34,7 @@ Before you begin, review  the following considerations:
 
 ### Private connections and regions
 
-Private connections over AWS PrivateLink are only supported only for AWS regions. Elastic does not yet support cross-region AWS PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments or projects. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations).
+Private connections over AWS PrivateLink are only supported only for AWS regions. Elastic does not yet support cross-region AWS PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations).
 
 AWS interface virtual private connection (VPC) endpoints are configured for one or more availability zones (AZ). In some regions, our VPC endpoint service is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the names of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the ID (e.g. `use1-az4`) of each available AZ for the service.
 
@@ -91,14 +91,14 @@ PrivateLink Service is set up by Elastic in all supported AWS regions under the 
 
 ## Set up a private connection
 
-The process of setting up a private connection with AWS PrivateLink is split between AWS (e.g. by using AWS console) and the {{ecloud}} UI. These are the high-level steps:
+The process of setting up a private connection with AWS PrivateLink is split between the AWS console and the {{ecloud}} UI. These are the high-level steps:
 
 | AWS console | {{ecloud}} |
 | --- | --- |
 | 1. [Create a VPC endpoint using {{ecloud}} service name.](#ec-aws-vpc-dns) |  |
 | 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
 |  | 3. **Optional**: [Create a private connection policy.](ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VCP endpoint ID. |
-|  | 4. **Optional**: [Associate the private connection policy with deployments or projects](#ec-associate-traffic-filter-private-link-rule-set). |
+|  | 4. **Optional**: [Associate the private connection policy with deployments](#ec-associate-traffic-filter-private-link-rule-set). |
 |  | 5. [Interact with your deployments over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-private-link-rule-set), [disconnect](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-private-link-rule-set) it.
@@ -109,7 +109,7 @@ Private connection policies are optional for AWS PrivateLink. After the VPC endp
 Creating a private connection policy and associating it with your deployments allows you to do the following: 
 
 * Record that you've established private connectivity between AWS and Elastic in the applicable region.
-* Filter traffic to your deployment or project using VCPE filters.
+* Filter traffic to your deployment using VCPE filters.
 :::
 
 
@@ -172,87 +172,39 @@ The mapping will be different for your region. Our production VPC Service for `u
         :::
 
 ### Test the connection
+
+After you create your VPC endpoint and DNS entries, check that you are able to reach your cluster over PrivateLink.
+
+:::{include} _snippets/private-url-struct.md
+
+To test the connection:
+
+1. If needed, find the endpoint of an application in your deployment:
    
-1. Find the endpoint of your deployment or project:
+    :::{include} _snippets/find-endpoint.md
+    :::
 
-     ::::{tab-set}
-     :::{tab-item} Hosted deployment
-     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Test the setup using the following cURL command. Make sure to replace the URL with your custom endpoint URL, or with your deployment's endpoint information and the private hosted zone domain name that you registered.
 
-     2. Under **Hosted deployments**, find your deployment.
-
-             :::{tip}
-             If you have many deployments, you can instead go to the **Hosted deployments** ({{ech}}) page. On that page, you can narrow your deployments by name, ID, or choose from several other filters.
-             :::
-
-     3. Select **Manage**.
-     4. In the deployment overview, under **Applications**, find the application that you want to test.
-     5. Click **Copy endpoint**. The value looks something like the following:
-
-     ```
-     https://my-deployment-2f1f1e.es.us-east-2.aws.elastic-cloud.com
-     ```
-
-     In this endpoint, `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
-     :::
-     :::{tab-item} Serverless project
-
-     6. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-
-     7. On the home page, under **Serverless projects**, find your project. 
-
-     8. Select **Manage**.
-     9. In the project overview, beside **Connection alias**, click **Edit**.
-     10. Copy the URL of the application that you want to test. It looks something like the following: 
-
-     ```
-     https://serverless-es-b592e9.es.us-east-1.aws.elastic.cloud/
-     ```
-     :::
-     ::::
-
- 2. Access your {{es}} cluster over PrivateLink:
-
-    * For {{ech}} deployments, if you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
-    * In all other cases, use the following URL structure:
-
-        ```
-        https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
-        ```
-        % need to verify this
-
-        For example:
-
-        ```text
-        https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
-        ```
-
-
-    ::::{tip}
-    You can use either 443, or 9243 as a port.
-    ::::
-
-
-You can test the AWS console part of the setup using the following cURL command. Make sure to substitute the region and {{es}} ID with your cluster.
-
-**Request**
-```sh
-$ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
-```
-**Response**
-```sh
-* Server certificate:
-*  subject: CN=*.us-east-1.aws.elastic-cloud.com
-*  SSL certificate verify ok.
-..
-{"ok":false,"message":"Forbidden"}
-* Connection #0 to host my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com left intact
-```
+    **Request**
+    ```sh
+    $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
+    ```
+    **Response**
+    ```sh
+    * Server certificate:
+    *  subject: CN=*.us-east-1.aws.elastic-cloud.com
+    *  SSL certificate verify ok.
+    ..
+    {"ok":false,"message":"Forbidden"}
+    * Connection #0 to host my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com left intact
+    ```
 
 The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, because you haven’t allowed the traffic over this PrivateLink connection yet.
+
 % needs to be edited
 
-## Optional: Create a private connection policy
+## Optional: Create a private connection policy [ec-add-vpc-elastic]
 
 After you test your PrivateLink connection, you can create a private connection policy in {{ecloud}}. 
 
@@ -261,11 +213,9 @@ Private connection policies are optional for AWS PrivateLink. After the VPC endp
 Creating a private connection policy and associating it with your deployments allows you to do the following: 
 
 * Record that you've established private connectivity between AWS and Elastic in the applicable region.
-* Filter traffic to your deployment or project using VCPE filters.
+* Filter traffic to your deployment using VCPE filters.
 
-### Add a private connection policy [ec-add-vpc-elastic]
-
-Follow these high-level steps to add a private connection policy that can be associated with your deployment or project.
+Follow these high-level steps to add a private connection policy that can be associated with your deployment.
 
 1. Optional: [Find your VPC endpoint ID](#ec-find-your-endpoint).
 2. [Create rules using the VPC endpoint](#ec-create-traffic-filter-private-link-rule-set).
@@ -273,7 +223,7 @@ Follow these high-level steps to add a private connection policy that can be ass
 
 #### Optional: Find your VPC endpoint ID [ec-find-your-endpoint]
 
-The VPC endpoint ID is only required if you want to filter traffic to your deployment or project using VCPE filters.
+The VPC endpoint ID is only required if you want to filter traffic to your deployment using VCPE filters.
 
 You can find your VPC endpoint ID in the AWS console:
 
@@ -289,39 +239,39 @@ Create a new private connection policy.
 :::{include} _snippets/network-security-page.md
 :::
 4. Select **Private connection**.
-3. Select the resource type that the private connection will be applied to: either hosted deployments or serverless projects.
+3. Select the resource type that the private connection will be applied to. Currently, only hosted deployments are supported.
 10. Select the cloud provider and region for the private connection. 
    
     :::{tip}
-    Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
+    Network security policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 11. Under **Connectivity**, select **Privatelink**.
-12. Optional: Under **VPCE filter**, enter your VPC endpoint ID. You should only specify a VPC endpoint ID if you want to filter traffic to your deployment or project. 
+12. Optional: Under **VPCE filter**, enter your VPC endpoint ID. You should only specify a VPC endpoint ID if you want to filter traffic to your deployment. 
     
     If you don't specify a VPCE filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
     
     :::{tip}
-    You can assign multiple policies to a single deployment or project. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+    You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
-    [Learn more about how network security policies affect your deployment or project](network-security-policies.md).
+    [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
 
-13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. If you specified a VPCE filter, then after you associate the filter with a deployment or project, it starts filtering traffic.
-14. To automatically attach this private connection policy to new deployments or projects, select **Apply by default**.
+13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPCE filter, then after you associate the filter with a deployment, it starts filtering traffic.
+14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 15.  Click **Create**.
 16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
 
-The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment or project.
+The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
 
-### Optional: Associate a policy with a deployment or project [ec-associate-traffic-filter-private-link-rule-set]
+### Optional: Associate a policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
 
-You can associate a network security policy with your deployment or project from the policy's settings, or from your deployment or project's settings. 
+You can associate a network security policy with your deployment from the policy's settings, or from your deployment's settings. 
 
-If the policy contains a VCPE filter, then after you associate the policy with a deployment or project, it starts filtering traffic. 
+If the policy contains a VCPE filter, then after you associate the policy with a deployment, it starts filtering traffic. 
 
-If the policy doesn't contain a VCPE filter, then the association can serve as a reminder that a VCP endpoint exists for the deployment or project's region.
+If the policy doesn't contain a VCPE filter, then the association can serve as a reminder that a VCP endpoint exists for the deployment's region.
 
-#### From a deployment or project
+#### From a deployment
 
 :::{include} _snippets/associate-filter-from-resource.md
 :::
@@ -331,59 +281,48 @@ If the policy doesn't contain a VCPE filter, then the association can serve as a
 :::{include} _snippets/network-security-page.md
 :::
 5. Find the policy you want to edit.
-6. Under **Apply to resources**, associate the policy with one or more deployments or projects.
+6. Under **Apply to resources**, associate the policy with one or more deployments.
 7. Click **Update** to save your changes.
 
-## Access the deployment or project over a PrivateLink [ec-access-the-deployment-over-private-link]
+## Access the deployment over a PrivateLink [ec-access-the-deployment-over-private-link]
 
-For traffic to connect with the deployment or project over a PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
+For traffic to connect with the deployment over a PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
 
 ::::{important}
-Use the alias you’ve set up as CNAME DNS record to access your deployment or project.
+Use the alias you’ve set up as CNAME DNS record to access your deployment.
 ::::
 
-    * For {{ech}} deployments, if you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
-    * In all other cases, use the following URL structure:
+:::{include} _snippets/private-url-struct.md
+:::
 
-        ```
-        https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
-        ```
-        % need to verify this
+To access the deployment:
 
-        For example:
+1. If needed, find the endpoint of an application in your deployment:
+   
+    :::{include} _snippets/find-endpoint.md
+    :::
 
-        ```text
-        https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
-        ```
+2. Send a request:
 
+    **Request**
+    ```sh
+    $ curl -u 'username:password' -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
+    ```
 
-    ::::{tip}
-    You can use either 443, or 9243 as a port.
-    ::::
+    **Response**
+    ```
+    < HTTP/1.1 200 OK
+    ..
+    ```
 
+### AWS PrivateLink and Fleet
 
-Request:
-```sh
-$ curl -u 'username:password' -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
-```
-
-Response:
-```
-< HTTP/1.1 200 OK
-..
-```
-
-::::{note}
-If you are using AWS PrivateLink together with Fleet, and enrolling the Elastic Agent with a PrivateLink URL, you need to configure Fleet Server to use and propagate the PrivateLink URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the PrivateLink URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<Private hosted zone domain name>:443`.
-
-Similarly, the {{es}} host needs to be updated to propagate the PrivateLink URL. The {{es}} URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<Private hosted zone domain name>:443`.
-
-The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [{{kib}} settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
-
-% need to verify this
-::::
+:::{include} _snippets/private-connection-fleet.md
+:::
 
 ## Manage policies
+
+After you create your private connection policy, you can edit it, remove it from your deployment, or delete it.
 
 ### Edit a policy [ec-edit-traffic-filter-private-link-rule-set]
 
@@ -398,41 +337,17 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
 :::
 
-### Delete a policy [ec-delete-traffic-filter-private-link-rule-set]
+### Remove a policy from your deployment [remove-filter-deployment]
 
-If you need to remove a policy, you must first remove any associations with deployments or projects.
+If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
-To delete a policy:
+#### From your deployment
 
-:::{include} _snippets/network-security-page.md
-:::
-4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments or projects associated with the policy.
-
-### Remove a policy from your deployment or project [remove-filter-deployment]
-
-If you want to a specific policy from a deployment or project, or delete the policy, then you need to disconnect it from any associated deployments or projects first. You can do this from the policy's settings, or from your deployment or project's settings. To remove an association through the UI:
-
-#### From your deployment or project
-
-::::{tab-set}
-:group: hosted-serverless
-:::{tab-item} Serverless project
-:sync: serverless
-1. Find your project on the home page or on the **Serverless projects** page, then select **Manage** to access its settings menus.
-
-    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. On the **Network security** page, find the IP filter policy that you want to disconnect. 
-3. Under **Actions**, click the **Delete** icon.
-:::
-:::{tab-item} Hosted deployment
-:sync: hosted
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 2. On the **Security** page, under **Network security**, find the IP filter policy that you want to disconnect. 
 3. Under **Actions**, click the **Delete** icon.
-:::
-::::
 
 #### From the IP filter policy settings
 
@@ -442,3 +357,13 @@ If you want to a specific policy from a deployment or project, or delete the pol
 6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
 7. Click **Update** to save your changes.
 
+
+### Delete a policy [ec-delete-traffic-filter-private-link-rule-set]
+
+If you need to remove a policy, you must first remove any associations with deployments.
+
+To delete a policy:
+
+:::{include} _snippets/network-security-page.md
+:::
+4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments associated with the policy.

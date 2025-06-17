@@ -5,7 +5,7 @@ applies_to:
     eck: all
     ece: all
     ess: all
-    serverless: all
+  serverless: all
 ---
 
 # Secure your cluster, deployment, or project
