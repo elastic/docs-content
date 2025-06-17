@@ -60,7 +60,8 @@ To create a new role with access to {{fleet}} and Integrations:
 4. Specify a name for the role.
 5. Leave the {{es}} settings at their defaults, or refer to [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) for descriptions of the available settings.
 6. In the {{kib}} section, select **Assign to space**.
-7. In the **Spaces** menu, select **All Spaces**. Since many Integrations assets are shared across spaces, the users need the {{kib}} privileges in all spaces.
+7. In the **Spaces** menu, select **All Spaces**. 
+  Because many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
 8. Expand the **Management** section.
 9. Set **Fleet** privileges to **All**.
 10. Choose the access level that you'd like the role to have with respect to {{fleet}} and integrations:
@@ -69,13 +70,11 @@ To create a new role with access to {{fleet}} and Integrations:
     :alt: Kibana privileges flyout showing Fleet and Integrations access set to All
     :screenshot:
     :::
-    <br>
     2. To create a read-only user for {{fleet}} and Integrations, set both the **Fleet** and **Integrations** privileges to `Read`.
     :::{image} images/kibana-fleet-privileges-read.png
     :alt: Kibana privileges flyout showing Fleet and Integrations access set to All
     :screenshot:
     :::
-    <br>
     3. If you'd like to define more specialized access to {{fleet}} based on individual components, expand the **Fleet** menu and enable **Customize sub-feature privileges**.
     :::{image} images/kibana-fleet-privileges-enable.png
     :alt: Kibana customize sub-feature privileges UI
