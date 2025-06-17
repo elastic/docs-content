@@ -5,10 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
-  serverless: ga
 products:
   - id: cloud-hosted
-  - id: cloud-serverless
 navigation_title: Azure Private Link
 sub:
   policy-type: "Private connection"
@@ -16,21 +14,23 @@ sub:
 
 # Azure Private Link traffic filters
 
-You can use Azure Private Link to establish a secure connection for your {{ecloud}} deployments and projects to communicate with other Azure services. Azure routes the Private Link traffic within the Azure data center and never exposes it to the public internet.
+You can use Azure Private Link to establish a secure connection for your {{ecloud}} deployments to communicate with other Azure services. Azure routes the Private Link traffic within the Azure data center and never exposes it to the public internet.
 
 Azure Private Link establishes a secure connection between two Azure VNets. The VNets can belong to separate accounts, for example a service provider and their service consumers. Azure routes the Private Link traffic within the Azure data centers and never exposes it to the public internet. In such a configuration, {{ecloud}} is the third-party service provider and the customers are service consumers.
 
 Private Link is a connection between an Azure Private Endpoint and a Azure Private Link Service.
 
-You can also optionally filter traffic to your deployments and projects by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment or project to the VCPE specified in the policy, as well as any other policies applied to the deployment or project.
+You can also optionally filter traffic to your deployments by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment to the VCPE specified in the policy, as well as any other policies applied to the deployment.
 
-To learn how private connection policies impact your deployment or project, refer to [](/deploy-manage/security/network-security-policies.md).
+To learn how private connection policies impact your deployment, refer to [](/deploy-manage/security/network-security-policies.md).
 
 :::{tip}
-Azure Private Link filtering is supported only for Azure regions.
-
-{{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+{{ech}} also supports [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
 :::
+
+## Considerations
+
+Azure Private Link filtering is supported only for Azure regions.
 
 
 ## Azure Private Link Service aliases [ec-private-link-azure-service-aliases]
@@ -109,8 +109,8 @@ Follow these high-level steps to add Private Link rules to your deployments.
 1. [Find your private endpoint resource ID](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-find-your-resource-id).
 2. [Create policies using the Private Link Endpoint resource ID](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-create-traffic-filter-private-link-rule-set).
 3. [Test the connection](#test-the-connection).
-4. [Associate the private endpoint with your deployment or project](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-associate-traffic-filter-private-link-rule-set).
-5. [Access the deployment or project over a Private Link](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-access-the-deployment-over-private-link).
+4. [Associate the private endpoint with your deployment](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-associate-traffic-filter-private-link-rule-set).
+5. [Access the deployment over a Private Link](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-access-the-deployment-over-private-link).
 
 ### Find your private endpoint resource ID [ec-find-your-resource-id]
 
@@ -142,31 +142,31 @@ The Private Link connection will be approved automatically after the private con
 :::{include} _snippets/network-security-page.md
 :::
 4. Select **Private connection**.
-3. Select the resource type that the private connection will be applied to: either hosted deployments or serverless projects.
-10. Select the cloud provider and region for the private connection. 
+5. Select the resource type that the private connection will be applied to. Currently, only hosted deployments are supported.
+6.  Select the cloud provider and region for the private connection. 
    
     :::{tip}
-    Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
+    Network security policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-11. Under **Connectivity**, select **Privatelink**.
-12. Under **VPCE filter**, enter your rivate Endpoint resource ID.
+7.  Under **Connectivity**, select **Privatelink**.
+8.  Under **VPCE filter**, enter your rivate Endpoint resource ID.
     
     If you don't specify a VPCE filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
     
     :::{tip}
-    You can assign multiple policies to a single deployment or project. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+    You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
-    [Learn more about how network security policies affect your deployment or project](network-security-policies.md).
+    [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
 
-13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments or projects. After you associate the filter with a deployment or project, it starts filtering traffic.
-14. To automatically attach this private connection policy to new deployments or projects, select **Apply by default**.
-15.  Click **Create**.
-16. (Optional) You can [claim your Private Endpoint resource ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
+9.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. After you associate the filter with a deployment, it starts filtering traffic.
+10. To automatically attach this private connection policy to new deployments, select **Apply by default**.
+11.  Click **Create**.
+12. (Optional) You can [claim your Private Endpoint resource ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
 
 Creating the filter approves the Private Link connection.
 
-After the private link connection is approved, you can optionally [test the connection](#test-the-connection), and then [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment or project.
+After the private link connection is approved, you can optionally [test the connection](#test-the-connection), and then [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
 
 ### Test the connection
 
@@ -244,7 +244,7 @@ After the private link connection is approved, you can optionally [test the conn
     ```
 
 
-The next step is to [associate the policy](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployment or project.
+The next step is to [associate the policy](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
 
 
 ### Associate a Private Link rule set with your deployment [ec-azure-associate-traffic-filter-private-link-rule-set]
