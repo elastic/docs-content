@@ -28,3 +28,7 @@ To learn how private connection policies work, how they affect your deployment, 
 :::{tip}
 {{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
 :::
+
+:::{note}
+Private connections were formerly referred to as PrivateLink filters.
+:::
