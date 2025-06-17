@@ -73,7 +73,7 @@ You can associate a network security policy with your deployment or project from
 
 #### From a deployment or project
 
-:::{include} _snippets/associate-filter-from-resource.md
+:::{include} _snippets/associate-filter.md
 :::
 
 #### From the policy settings

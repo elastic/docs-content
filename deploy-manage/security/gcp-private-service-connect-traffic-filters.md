@@ -219,7 +219,7 @@ If the policy doesn't contain a VCPE filter, then the association can serve as a
 
 #### From a deployment
 
-:::{include} _snippets/associate-filter-from-resource.md
+:::{include} _snippets/associate-filter.md
 :::
 
 #### From the policy settings
