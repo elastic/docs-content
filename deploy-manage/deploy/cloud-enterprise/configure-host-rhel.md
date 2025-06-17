@@ -100,7 +100,7 @@ Make sure to use a supported combination of Linux distribution and container eng
 
     * For Podman 5
 
-        * Install version `5.2.2` (latest version of Podman 5.2.2) using dnf.
+        * Install the latest version of Podman `5.2.2` using dnf.
 
             :::{note}
             As mentioned in [Migrating to Podman 5](migrate-to-podman-5.md) it is recommended to install Podman `5.2.2` since this is the latest supported version.
