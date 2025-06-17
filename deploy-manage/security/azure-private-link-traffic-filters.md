@@ -16,18 +16,21 @@ sub:
 
 # Azure Private Link traffic filters
 
-Traffic filtering to allow only Azure Private Link connections is one of the security layers available in {{ech}}. It allows you to limit how your deployments can be accessed.
-
-Refer to [](/deploy-manage/security/traffic-filtering.md) to learn more about traffic filtering in {{ech}}, and how traffic filter rules work.
-
-::::{note}
-Azure Private Link filtering is supported only for Azure regions.
-::::
-
+You can use Azure Private Link to establish a secure connection for your {{ecloud}} deployments and projects to communicate with other Azure services. Azure routes the Private Link traffic within the Azure data center and never exposes it to the public internet.
 
 Azure Private Link establishes a secure connection between two Azure VNets. The VNets can belong to separate accounts, for example a service provider and their service consumers. Azure routes the Private Link traffic within the Azure data centers and never exposes it to the public internet. In such a configuration, {{ecloud}} is the third-party service provider and the customers are service consumers.
 
 Private Link is a connection between an Azure Private Endpoint and a Azure Private Link Service.
+
+You can also optionally filter traffic to your deployments and projects by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment or project to the VCPE specified in the policy, as well as any other policies applied to the deployment or project.
+
+To learn how private connection policies impact your deployment or project, refer to [](/deploy-manage/security/network-security-policies.md).
+
+:::{tip}
+Azure Private Link filtering is supported only for Azure regions.
+
+{{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+:::
 
 
 ## Azure Private Link Service aliases [ec-private-link-azure-service-aliases]
@@ -35,7 +38,7 @@ Private Link is a connection between an Azure Private Endpoint and a Azure Priva
 Private Link Services are set up by Elastic in all supported Azure regions under the following aliases:
 
 ::::{dropdown} Azure public regions
-| **Region** | **Azure Private Link Service alias** | **Private hosted zone domain name** |
+| Region | Azure Private Link Service alias | Private hosted zone domain name |
 | --- | --- | --- |
 | australiaeast | australiaeast-prod-012-privatelink-service.a0cf0c1a-33ab-4528-81e7-9cb23608f94e.australiaeast.azure.privatelinkservice | privatelink.australiaeast.azure.elastic-cloud.com |
 | centralus | centralus-prod-009-privatelink-service.49a041f7-2ad1-4bd2-9898-fba7f7a1ff77.centralus.azure.privatelinkservice | privatelink.centralus.azure.elastic-cloud.com |
@@ -56,35 +59,38 @@ Private Link Services are set up by Elastic in all supported Azure regions under
 
 ::::
 
+## Set up a private connection
 
-The process of setting up the Private link connection to your clusters is split between Azure (e.g. by using Azure portal), {{ecloud}} Support, and {{ecloud}} UI. These are the high-level steps:
+The process of setting up the private connection with Azure Private link is split between Azure (e.g. by using Azure portal), and the {{ecloud}} UI. These are the high-level steps:
 
-| Azure portal | {{ecloud}} UI |
+| Azure portal | {{ecloud}} |
 | --- | --- |
-| 1. Create a private endpoint using {{ecloud}} service alias. |  |
-| 2. Create a [DNS record pointing to the private endpoint](https://learn.microsoft.com/en-us/azure/dns/private-dns-privatednszone). |  |
-|  | 3. Create an Azure Private Link rule set with the private endpoint **Name** and **ID**. |
-|  | 4. Associate the Azure Private Link rule set with your deployments. |
-|  | 5. Interact with your deployments over Private Link. |
+| 1. [Create a private endpoint using {{ecloud}} service alias.](#ec-private-link-azure-dns) |  |
+| 2. [Create a DNS record pointing to the private endpoint](#ec-private-link-azure-dns). |  |
+|  | 3. [Create a private connection policy.](#ec-azure-allow-traffic-from-link-id) |
+|  | 4. [Associate the Azure Private Link rule set with your deployments](#ec-azure-associate-traffic-filter-private-link-rule-set). |
+|  | 5. [Interact with your deployments over Private Link.](#ec-azure-access-the-deployment-over-private-link) |
 
 
-## Create your private endpoint and DNS entries in Azure [ec-private-link-azure-dns]
+### Create your private endpoint and DNS entries in Azure [ec-private-link-azure-dns]
 
 1. Create a private endpoint in your VNet using the alias for your region.
 
     Follow the [Azure instructions](https://docs.microsoft.com/en-us/azure/private-link/create-private-endpoint-portal#create-a-private-endpoint) for details on creating a private endpoint to an endpoint service.
 
-    Use [the service aliases for your region](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-private-link-azure-service-aliases). Select the "Connect to an Azure resource by resource ID or alias" option. For example for the region `eastus2` the service alias is `eastus2-prod-002-privatelink-service.64359fdd-7893-4215-9929-ece3287e1371.eastus2.azure.privatelinkservice`
+    Use [the service aliases for your region](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-private-link-azure-service-aliases). Select the **Connect to an Azure resource by resource ID or alias** option. For example for the region `eastus2` the service alias is `eastus2-prod-002-privatelink-service.64359fdd-7893-4215-9929-ece3287e1371.eastus2.azure.privatelinkservice`
 
     ::::{note}
-    You will notice that the Private Link endpoint is in the `Awaiting Approval` state. We validate and approve the endpoints when you create the ruleset using the Private Link `resource name` and `resource ID`, as described in the next section [Add the Private Link rules to your deployments](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-allow-traffic-from-link-id).
+    The Private Link endpoint is created in the `Awaiting Approval` state. We validate and approve the endpoints when you create the private connection policy using the Private Link `resource name` and `resource ID`, as described in the next section [Create a private connection policy](#ec-azure-allow-traffic-from-link-id).
     ::::
 
 2. Create a DNS record.
 
-    1. Create a *Private DNS Zone*. Get the private hosted zone domain name in *Azure Private Link Service Alias* for the name of the zone. For example, in `eastus2`, use `privatelink.eastus2.azure.elastic-cloud.com` as the zone domain name. Using this zone domain name is required to ensure certificate names match.
-    2. After creating the *Private DNS Zone*, associate the zone with your VNet by creating a [virtual network link](https://learn.microsoft.com/en-us/azure/dns/private-dns-getstarted-portal).
-    3. Then create a DNS A record pointing to the private endpoint. Use `*` as the record name, `A` as the type, and put the private endpoint IP address as the record value.
+    1. Create a private DNS zone. 
+        
+       Refer to the **Azure Private Link Service Alias** column in the [Azure Private Link Service aliases](#ec-private-link-azure-service-aliases) table for the name of the zone. For example, in `eastus2`, use `privatelink.eastus2.azure.elastic-cloud.com` as the zone domain name. Using this zone domain name is required to ensure certificate names match.
+    2. After creating the private DNS zone, associate the zone with your VNet by creating a [virtual network link](https://learn.microsoft.com/en-us/azure/dns/private-dns-getstarted-portal).
+    3. Create a DNS A record pointing to the private endpoint. Use `*` as the record name, `A` as the type, and put the private endpoint IP address as the record value.
 
         Follow the [Azure instructions](https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-portal#create-an-additional-dns-record) for details on creating an A record which points to your private endpoint IP address.
 
@@ -93,7 +99,7 @@ The process of setting up the Private link connection to your clusters is split 
         ::::
 
 
-
+% START HERE %
 ## Add the Private Link rules to your deployments [ec-azure-allow-traffic-from-link-id]
 
 Follow these high-level steps to add Private Link rules to your deployments.

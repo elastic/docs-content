@@ -32,12 +32,16 @@ Private Service Connect filtering is supported only for Google Cloud regions.
 Private Service Connect connections are regional, your Private Service Connect endpoint needs to live in the same region as your deployment. The endpoint can be accessed from any region after you enable its [Global Access](https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#global-access) feature.
 ::::
 
+:::{tip}
+{{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+:::s
+
 ## Private Service Connect URIs [ec-private-service-connect-uris]
 
 Service Attachments are set up by Elastic in all supported GCP regions under the following URIs:
 
 ::::{dropdown} GCP public regions
-| **Region** | **Service Attachment URI** | **Private zone DNS name** |
+| Region | Service attachment URI | Private zone DNS name |
 | --- | --- | --- |
 | `asia-east1` | `projects/cloud-production-168820/regions/asia-east1/serviceAttachments/proxy-psc-production-asia-east1-v1-attachment` | `psc.asia-east1.gcp.elastic-cloud.com` |
 | `asia-northeast1` | `projects/cloud-production-168820/regions/asia-northeast1/serviceAttachments/proxy-psc-production-asia-northeast1-v1-attachment` | `psc.asia-northeast1.gcp.cloud.es.io` |
@@ -102,8 +106,10 @@ Creating a private connection policy and associating it with your deployments al
 
 2. Create a DNS record.
 
-    1. Create a DNS Zone of type **Private**. Set the **DNS name** to Private zone DNS name for your region. For example, in `asia-southeast1`, use `psc.asia-southeast1.gcp.elastic-cloud.com` as the zone domain name. Make sure the zone is associated with your VPC.
-    2. Create a DNS record set with an A record pointing to the Private Service Connect endpoint IP. Use `*` as the **DNS name**, `A` as the **Resource Record Type**, and put the Private Service Connect endpoint IP address as the record value.
+    1. Create a DNS Zone of type **Private**. 
+   
+       Refer to the **Private zone DNS name** column in the [Private Service Connect URIs](#ec-private-service-connect-uris) table for the name of the zone. For example, in `asia-southeast1`, use `psc.asia-southeast1.gcp.elastic-cloud.com` as the zone domain name. Make sure the zone is associated with your VPC.
+    2. Create a DNS record set with an A record pointing to the Private Service Connect endpoint IP. Use `*` as the **DNS name**, `A` as the **Resource record type**, and put the Private Service Connect endpoint IP address as the record value.
 
         Follow the [Google Cloud instructions](https://cloud.google.com/dns/docs/records#adding_a_record) for details on creating an A record which points to your Private Service Connect endpoint IP address.
 
