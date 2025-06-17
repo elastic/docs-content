@@ -89,7 +89,7 @@ Creating a private connection policy and associating it with your deployments al
 * Filter traffic to your deployment or project using VCPE filters.
 :::
 
-## Create your Private Service Connect endpoint and DNS entries in Google Cloud [ec-private-service-connect-enpoint-dns]
+### Create your Private Service Connect endpoint and DNS entries in Google Cloud [ec-private-service-connect-enpoint-dns]
 
 1. Create a Private Service Connect endpoint in your VPC using the Service Attachment URI for your region.
 
