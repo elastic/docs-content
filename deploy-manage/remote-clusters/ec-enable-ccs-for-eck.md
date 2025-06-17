@@ -19,11 +19,11 @@ These steps describe how to configure remote clusters between an {{es}} cluster 
 
 The first step is to establish trust between the two clusters, by adding the CA certificate and trust details of each environment into the other.
 
-This guide uses TLS certificates as the security model for remote clusters and follows a similar approach to [Access clusters of a self-managed environment](ec-remote-cluster-self-managed.md).
+This guide uses TLS certificates to secure remote cluster connections and follows a similar approach to [Access clusters of a self-managed environment](ec-remote-cluster-self-managed.md).
 
 ### Establish trust in the ECH cluster [ec_establish_trust_in_the_elasticsearch_service_cluster]
 
-1. Save the {{es}} transport CA certificate of your ECK deployment. For a cluster named `quickstart`, run:
+1. Save the {{es}} transport CA certificate of your ECK deployment. For an {{es}} cluster named `quickstart`, run:
 
     ```sh
     kubectl get secret quickstart-es-transport-certs-public -o go-template='{{index .data "ca.crt" | base64decode}}' > eck-ca.crt
