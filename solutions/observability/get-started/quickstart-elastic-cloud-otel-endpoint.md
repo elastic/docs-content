@@ -20,7 +20,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 ### Limitations
 
-* The Elastic Cloud Managed OTLP Endpoint only supports histograms with delta temporality. Cumulative histograms are dropped.
+* The {{ecloud}} Managed OTLP Endpoint only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 
 ## Get started
