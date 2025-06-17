@@ -171,66 +171,66 @@ The mapping will be different for your region. Our production VPC Service for `u
         :screenshot:
         :::
 
-3. Test the connection.
+### Test the connection
    
-   1. Find the endpoint of your deployment or project:
-   
-        ::::{tab-set}
-        :::{tab-item} Hosted deployment
-        1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Find the endpoint of your deployment or project:
 
-        2. Under **Hosted deployments**, find your deployment.
+     ::::{tab-set}
+     :::{tab-item} Hosted deployment
+     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
-                :::{tip}
-                If you have many deployments, you can instead go to the **Hosted deployments** ({{ech}}) page. On that page, you can narrow your deployments by name, ID, or choose from several other filters.
-                :::
+     2. Under **Hosted deployments**, find your deployment.
 
-        3. Select **Manage**.
-        4. In the deployment overview, under **Applications**, find the application that you want to test.
-        5. Click **Copy endpoint**. The value looks something like the following:
+             :::{tip}
+             If you have many deployments, you can instead go to the **Hosted deployments** ({{ech}}) page. On that page, you can narrow your deployments by name, ID, or choose from several other filters.
+             :::
+
+     3. Select **Manage**.
+     4. In the deployment overview, under **Applications**, find the application that you want to test.
+     5. Click **Copy endpoint**. The value looks something like the following:
+
+     ```
+     https://my-deployment-2f1f1e.es.us-east-2.aws.elastic-cloud.com
+     ```
+
+     In this endpoint, `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
+     :::
+     :::{tab-item} Serverless project
+
+     6. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+
+     7. On the home page, under **Serverless projects**, find your project. 
+
+     8. Select **Manage**.
+     9. In the project overview, beside **Connection alias**, click **Edit**.
+     10. Copy the URL of the application that you want to test. It looks something like the following: 
+
+     ```
+     https://serverless-es-b592e9.es.us-east-1.aws.elastic.cloud/
+     ```
+     :::
+     ::::
+
+ 2. Access your {{es}} cluster over PrivateLink:
+
+    * For {{ech}} deployments, if you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
+    * In all other cases, use the following URL structure:
 
         ```
-        https://my-deployment-2f1f1e.es.us-east-2.aws.elastic-cloud.com
+        https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
+        ```
+        % need to verify this
+
+        For example:
+
+        ```text
+        https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
         ```
 
-        In this endpoint, `my-deployment-d53192` is an alias, and `es` is the product you want to access within your deployment.
-        :::
-        :::{tab-item} Serverless project
 
-        1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-
-        2. On the home page, under **Serverless projects**, find your project. 
-
-        3. Select **Manage**.
-        4. In the project overview, beside **Connection alias**, click **Edit**.
-        5. Copy the URL of the application that you want to test. It looks something like the following: 
-
-        ```
-        https://serverless-es-b592e9.es.us-east-1.aws.elastic.cloud/
-        ```
-        :::
-        ::::
-
-    2. Access your {{es}} cluster over PrivateLink:
-
-       * For {{ech}} deployments, if you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
-       * In all other cases, use the following URL structure:
-
-           ```
-           https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
-           ```
-           % need to verify this
-
-           For example:
-
-           ```text
-           https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
-           ```
-
-
-       ::::{tip}
-       You can use either 443, or 9243 as a port.
-       ::::
+    ::::{tip}
+    You can use either 443, or 9243 as a port.
+    ::::
 
 
 You can test the AWS console part of the setup using the following cURL command. Make sure to substitute the region and {{es}} ID with your cluster.
@@ -383,7 +383,9 @@ The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` t
 % need to verify this
 ::::
 
-## Edit a policy [ec-edit-traffic-filter-private-link-rule-set]
+## Manage policies
+
+### Edit a policy [ec-edit-traffic-filter-private-link-rule-set]
 
 You can edit a policy's name, description, VPC endpoint ID, and more.
 
@@ -396,7 +398,7 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
 :::
 
-## Delete a policy [ec-delete-traffic-filter-private-link-rule-set]
+### Delete a policy [ec-delete-traffic-filter-private-link-rule-set]
 
 If you need to remove a policy, you must first remove any associations with deployments or projects.
 
@@ -406,7 +408,7 @@ To delete a policy:
 :::
 4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments or projects associated with the policy.
 
-## Remove a policy from your deployment or project [remove-filter-deployment]
+### Remove a policy from your deployment or project [remove-filter-deployment]
 
 If you want to a specific policy from a deployment or project, or delete the policy, then you need to disconnect it from any associated deployments or projects first. You can do this from the policy's settings, or from your deployment or project's settings. To remove an association through the UI:
 
