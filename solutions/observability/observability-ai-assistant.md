@@ -130,12 +130,25 @@ To add external data to the knowledge base in {{kib}}:
 
 [Search connectors](elasticsearch://reference/search-connectors/index.md) index content from external sources like GitHub, Confluence, Google Drive, Jira, S3, Teams, and Slack to improve the AI Assistant's responses.
 
-**Requirements and limitations:**
+#### Requirements and limitations
+
 - For stack 9.0.0+ or {{serverless-short}}, connectors must be [self-managed](elasticsearch://reference/search-connectors/self-managed-connectors.md)
 - Manage connectors through the Search Solution in {{kib}} (pre-9.0) or via the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector)
-- By default, the AI Assistant queries all search connector indices. To customize which data sources are included in the knowledge base, adjust the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page.
 
-**Setup process:**
+#### Knowledge base data sources
+By default, the AI Assistant queries all search connector indices. To customize which indices are used in the knowledge base, set the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page.
+
+:::{note}
+You can specify any index in the **Search connector index pattern** setting, not just search connectors.
+:::
+
+##### Space awareness
+The **Search connector index pattern** setting is [space](../../deploy-manage/manage-spaces.md) aware. This means you can assign different values for different spaces. For example, a "Developers" space may include an index pattern like `github-*,jira*`, while an "HR" space may include an index pattern like `employees-*`.
+
+##### Custom index requirements
+Field names in custom indices have no specific requirements. Any `semantic_text` field is automatically queried. Matching documents are sent to the LLM in full, including all fields. Including or excluding specific fields is not possible.
+
+#### Setup process:
 
 1. **Create a connector**
 
