@@ -42,17 +42,15 @@ curl -X PUT \
 ```
 1. For information on how to use API keys for authentication, refer to [Access the API from the command line](cloud://reference/cloud-enterprise/ece-api-command-line.md).
 
+::::{important}
+When running ECE on Podman, CPU quotas for existing instances cannot be disabled or updated. As a result, changing an allocator’s capacity won’t affect the CPU quotas of already running containers.
+::::
+
 After applying the change, log in to the allocator host you updated and restart the allocator service:
 
 ```sh
 docker restart frc-allocators-allocator
 ```
-
-::::{important}
-Prior to ECE 3.5.0, regardless of the use of this API, the [CPU quota](#ece-alloc-cpu) used the memory specified at installation time.
-::::
-
-
 
 ### Examples [ece_examples]
 
@@ -72,6 +70,9 @@ ECE uses CPU quotas to assign shares of the allocator host to the instances that
 
 `CPU quota = DeploymentRAM / HostCapacity`
 
+::::{important}
+In ECE versions prior to 3.5.0, the CPU quota is always calculated using the memory specified at installation time, even if you later update the host capacity using the API.
+::::
 
 ### Examples [ece_examples_2]
 
