@@ -11,6 +11,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## June 17, 2025 [serverless-changelog-06172025]
+
+### Features and enhancements [serverless-changelog-06172025-features-enhancements]
+* {{serverless-full}} is now available in two new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP Belgium (`europe-west1`) and GCP Mumbai (`asia-south1`). 
+
 ## June 16, 2025 [serverless-changelog-06162025]
 
 ### Features and enhancements [serverless-changelog-06162025-features-enhancements]
