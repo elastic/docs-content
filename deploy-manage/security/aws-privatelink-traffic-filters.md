@@ -91,7 +91,7 @@ PrivateLink Service is set up by Elastic in all supported AWS regions under the 
 
 ## Set up a private connection
 
-The process of setting up a private connection with AWS PrivateLink is split between AWS (e.g. by using AWS console) and the {{ecloud}} console. These are the high-level steps:
+The process of setting up a private connection with AWS PrivateLink is split between AWS (e.g. by using AWS console) and the {{ecloud}} UI. These are the high-level steps:
 
 | AWS console | {{ecloud}} |
 | --- | --- |
@@ -186,7 +186,7 @@ The mapping will be different for your region. Our production VPC Service for `u
                 :::
 
         3. Select **Manage**.
-        4. In the deployment overview, under **Applications** find the application that you want to test.
+        4. In the deployment overview, under **Applications**, find the application that you want to test.
         5. Click **Copy endpoint**. The value looks something like the following:
 
         ```
@@ -270,7 +270,6 @@ Follow these high-level steps to add a private connection policy that can be ass
 1. Optional: [Find your VPC endpoint ID](#ec-find-your-endpoint).
 2. [Create rules using the VPC endpoint](#ec-create-traffic-filter-private-link-rule-set).
 3. [Associate the VPC endpoint with your deployment](#ec-associate-traffic-filter-private-link-rule-set).
-4. [Access the deployment over a private link](#ec-access-the-deployment-over-private-link).
 
 #### Optional: Find your VPC endpoint ID [ec-find-your-endpoint]
 
@@ -312,7 +311,7 @@ Create a new private connection policy.
 15.  Click **Create**.
 16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
 
-The next step is to [associate the rule set](#ec-associate-traffic-filter-private-link-rule-set) with your deployment or project.
+The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment or project.
 
 ### Optional: Associate a policy with a deployment or project [ec-associate-traffic-filter-private-link-rule-set]
 
@@ -338,6 +337,10 @@ If the policy doesn't contain a VCPE filter, then the association can serve as a
 ## Access the deployment or project over a PrivateLink [ec-access-the-deployment-over-private-link]
 
 For traffic to connect with the deployment or project over a PrivateLink, the client making the request needs to be located within the VPC where you’ve created the VPC endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or VPN from your corporate network. This assumes that the VPC endpoint and the DNS record are also available within that context. Check your service provider documentation for setup instructions.
+
+::::{important}
+Use the alias you’ve set up as CNAME DNS record to access your deployment or project.
+::::
 
     * For {{ech}} deployments, if you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
     * In all other cases, use the following URL structure:
@@ -395,7 +398,7 @@ You can also edit network security policies from your deployment's **Security** 
 
 ## Delete a policy [ec-delete-traffic-filter-private-link-rule-set]
 
-If you need to remove a policy, you must first remove any associations with deployments.
+If you need to remove a policy, you must first remove any associations with deployments or projects.
 
 To delete a policy:
 
