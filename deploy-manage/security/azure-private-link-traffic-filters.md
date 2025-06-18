@@ -70,7 +70,7 @@ The process of setting up the private connection with Azure Private link is spli
 | 1. [Create a private endpoint using {{ecloud}} service alias.](#ec-private-link-azure-dns) |  |
 | 2. [Create a DNS record pointing to the private endpoint](#ec-private-link-azure-dns). |  |
 |  | 3. [Create a private connection policy.](#ec-azure-allow-traffic-from-link-id) |
-|  | 4. [Associate the Azure Private Link rule set with your deployments](#ec-azure-associate-traffic-filter-private-link-rule-set). |
+|  | 4. [Associate the Azure Private Link rule set with your deployments](#ec-associate-traffic-filter-private-link-rule-set). |
 |  | 5. [Interact with your deployments over Private Link.](#ec-azure-access-the-deployment-over-private-link) |
 
 
@@ -83,7 +83,7 @@ The process of setting up the private connection with Azure Private link is spli
     Use [the service aliases for your region](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-private-link-azure-service-aliases). Select the **Connect to an Azure resource by resource ID or alias** option. For example for the region `eastus2` the service alias is `eastus2-prod-002-privatelink-service.64359fdd-7893-4215-9929-ece3287e1371.eastus2.azure.privatelinkservice`
 
     ::::{note}
-    The Private Link endpoint is created in the `Awaiting Approval` state. We validate and approve the endpoints when you create the private connection policy using the Private Link `resource name` and `resource ID`, as described in the next section [Create a private connection policy](#ec-azure-allow-traffic-from-link-id).
+    The Private Link endpoint is created in the `Awaiting Approval` state. We validate and approve the endpoints when you create the private connection policy using the Private Link `resource ID`, as described in the next section [Create a private connection policy](#ec-azure-allow-traffic-from-link-id).
     ::::
 
 2. Create a DNS record.
@@ -111,7 +111,7 @@ Follow these high-level steps to add a private connection policy that can be ass
 1. [Find your private endpoint resource ID](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-find-your-resource-id).
 2. [Create policies using the Private Link Endpoint resource ID](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-create-traffic-filter-private-link-rule-set).
 3. [Test the connection](#test-the-connection).
-4. [Associate the private endpoint with your deployment](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-associate-traffic-filter-private-link-rule-set).
+4. [Associate the private endpoint with your deployment](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set).
 
 ### Find your private endpoint resource ID [ec-find-your-resource-id]
 

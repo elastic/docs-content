@@ -20,7 +20,7 @@ Policies operate on the proxy. Requests rejected by the policies are not forward
 
 - You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 - Policies, when associated with a deployment or project, will apply to all endpoints, such as {{es}}, {{kib}}, APM Server, and others.
-- Any policy assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint; deny all access over Private Link*. The implication is that if you make a mistake putting in the traffic source (for example, if you specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the policies.
+- Any policy assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint*. The implication is that if you make a mistake putting in the traffic source (for example, if you specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the policies.
 - You can [mark a policy as default](#default-network-security-policies). Default policies are automatically attached to all new resources of the matching resource type that you create in its region.
 
 ## Restrictions
