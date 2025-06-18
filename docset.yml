@@ -70,6 +70,7 @@ toc:
   - toc: reference
   - toc: extend
   - file: archive.md
+  - file: versions.md
   - hidden: 404.md
 
 subs:
