@@ -16,7 +16,7 @@ To perform an offline installation without a private Docker registry, you have t
 1. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md). Note that for ECE version 4.0, if you want to use {{stack}} version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images (the version 8.x images are required for system deployments).
 
     ```sh
-    docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
+    docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.1
     docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
     docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.0
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
@@ -26,15 +26,15 @@ To perform an offline installation without a private Docker registry, you have t
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
-    For example, for {{ece}} 4.0.0 and the {{stack}} versions it shipped with, you need:
+    For example, for {{ece}} 4.0.1 and the {{stack}} versions it shipped with, you need:
 
-    * {{ece}} 4.0.0
+    * {{ece}} 4.0.1
     * {{es}} 9.0.0, {{kib}} 9.0.0, and APM 9.0.0
 
 2. Create .tar files of the images:
 
     ```sh
-    docker save -o ece.4.0.0.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.0
+    docker save -o ece.4.0.1.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.1
     docker save -o es.8.18.0.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
     docker save -o kibana.8.18.0.tar docker.elastic.co/cloud-release/kibana-cloud:8.18.0
     docker save -o apm.8.18.0.tar docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
@@ -48,7 +48,7 @@ To perform an offline installation without a private Docker registry, you have t
 4. On each host, load the images into Docker, replacing `FILE_PATH` with the correct path to the .tar files:
 
     ```sh
-    docker load < FILE_PATH/ece.4.0.0.tar
+    docker load < FILE_PATH/ece.4.0.1.tar
     docker load < FILE_PATH/es.8.18.0.tar
     docker load < FILE_PATH/kibana.8.18.0.tar
     docker load < FILE_PATH/apm.8.18.0.tar

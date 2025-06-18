@@ -18,7 +18,6 @@ This new approach requires minimal configuration and provides you with an easy s
 
 The kubectl command installs the standalone Elastic Agent in your Kubernetes cluster, downloads all the Kubernetes resources needed to collect metrics from the cluster, and sends it to Elastic.
 
-
 ## Prerequisites [_prerequisites_2]
 
 ::::{tab-set}
