@@ -20,8 +20,8 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Private Link and SSO to {{kib}} URLs](#ec-restrictions-traffic-filters-kibana-sso)
 * [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-traffic-filters-watcher)
 * [Kibana](#ec-restrictions-kibana)
-% * [APM Agent central configuration with network security policies](#ec-restrictions-apm-traffic-filters)
-* [Fleet with network security policies](#ec-restrictions-fleet-traffic-filters)
+% * [APM Agent central configuration with Private Link or traffic filters](#ec-restrictions-apm-traffic-filters)
+* [Fleet with Private Link or traffic filters](#ec-restrictions-fleet-traffic-filters)
 * [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
@@ -88,13 +88,13 @@ Alternatively, a custom mail server can be configured as described in [Configuri
 
 ## Private Link and SSO to {{kib}} URLs [ec-restrictions-traffic-filters-kibana-sso]
 
-Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by Private Link network security policies. However, you can still SSO into Private Link protected {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
+Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by Private Link traffic filters. However, you can still SSO into Private Link protected {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
 
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-traffic-filters-watcher]
 
 * PDF report automatic generation via Alerts is not possible on {{ecloud}}.
-* PDF report generation isn’t possible for deployments running on {{stack}} version 8.7.0 or before that are protected by IP filters. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on {{stack}} version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass IP filters.
+* PDF report generation isn’t possible for deployments running on {{stack}} version 8.7.0 or before that are protected by traffic filters. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on {{stack}} version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass traffic filters.
 
 
 ## {{kib}} [ec-restrictions-kibana]
@@ -103,18 +103,18 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 * Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
 
-% ## APM Agent central configuration with network security policies [ec-restrictions-apm-traffic-filters]
+% ## APM Agent central configuration with PrivateLink or traffic filters [ec-restrictions-apm-traffic-filters]
 
 % If you are using APM 7.9.0 or older:
 
-% * You cannot use [APM Agent central configuration](/solutions/observability/apm/apm-agent-central-configuration.md) if your deployment is secured by [network security policies](../../security/traffic-filtering.md).
+% * You cannot use [APM Agent central configuration](/solutions/observability/apm/apm-agent-central-configuration.md) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
 % * If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
 
 
-## Fleet with network security policies [ec-restrictions-fleet-traffic-filters]
+## Fleet with PrivateLink or traffic filters [ec-restrictions-fleet-traffic-filters]
 
-% * You cannot use Fleet 7.13.x if your deployment is secured by [network security policies](../../security/traffic-filtering.md). Fleet 7.14.0 and later works with network security policies (both IP filters and private connection policies).
-* If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has [network security policies](../../security/traffic-filtering.md) applied is not currently supported.
+% * You cannot use Fleet 7.13.x if your deployment is secured by [traffic filters](../../security/traffic-filtering.md). Fleet 7.14.0 and later works with traffic filters (both Private Link and IP filters).
+* If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has [traffic filters](../../security/traffic-filtering.md) enabled is not currently supported.
 
 ## Restoring a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
 
