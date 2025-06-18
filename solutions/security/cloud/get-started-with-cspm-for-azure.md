@@ -45,7 +45,7 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
 ::::{admonition} Important
-Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
+Agentless deployment does not work if you are using [network security policies](/deploy-manage/security/traffic-filtering.md).
 ::::
 
 ## Agent-based deployment [cspm-azure-agent-based]

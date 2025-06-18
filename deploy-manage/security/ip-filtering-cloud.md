@@ -1,5 +1,5 @@
 ---
-navigation_title: In ECH or ECE
+navigation_title: In ECH or Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-traffic-filtering-ip.html
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-ip.html
@@ -8,151 +8,135 @@ applies_to:
   deployment:
     ess: ga
     ece: ga
+    serverless: ga
 products:
-  - id: cloud-enterprise
   - id: cloud-hosted
+  - id: cloud-serverless
+sub:
+  policy-type: "IP filter"
 ---
 
-# Manage IP traffic filters in ECH or ECE
+# Manage IP traffic filters in ECH or Serverless
 
 Traffic filtering, by IP address or CIDR block, is one of the security layers available in {{ece}} and {{ech}}. It allows you to limit how your deployments can be accessed.
 
 There are types of filters are available for filtering by IP address or CIDR block:
 
 * **Ingress or inbound IP filters**: These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the UI.
-* **Egress or outbound IP filters** (ECH only): These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is in beta and is currently only available through the [Traffic Filtering API](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
+* **Egress or outbound IP filters**: These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is in beta and is currently only available through the [Traffic Filtering API](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
 
-Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console or Cloud UI.
+Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console.
 
-To learn how traffic filter rules work together, refer to [traffic filter rules](/deploy-manage/security/traffic-filtering.md#traffic-filter-rules).
+To learn how IP filter policies work together, and alongside [private connection policies](private-link-traffic-filters.md), refer to [](/deploy-manage/security/network-security-policies.md).
 
 To learn how to manage IP traffic filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
 
 :::{note}
-To learn how to create IP traffic filters for self-managed clusters or {{eck}} deployments, refer to [](ip-filtering-basic.md).
+To learn how to create IP filters for {{ece}} deployments, refer to [](ip-filtering-ece.md).
+
+To learn how to create IP filters for self-managed clusters or {{eck}} deployments, refer to [](ip-filtering-basic.md).
 :::
 
-## Prerequisites
-```{applies_to}
-deployment:
-  ece:
-```
+## Apply an IP filter to a deployment or project
 
-On {{ece}}, make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) handles the `X-Forwarded-For` header appropriately for HTTP requests to prevent IP address spoofing. Make sure the proxy protocol v2 is enabled for HTTP and transport protocols (9243 and 9343).
+To apply an IP filter to a deployment or project, you must first create a rule set at the organization or platform level, and then apply the rule set to your deployment.
 
-This step is not required in {{ech}}.
+### Step 1: Create an IP filter policy
 
-## Apply an IP filter to a deployment
+You can combine multiple IP address and CIDR block traffic sources into a single IP filter policy, so we recommend that you group sources according to what they allow, and make sure to label them accordingly. Because multiple sets can be applied to a deployment, you can be as granular in your policies as you feel is necessary.
 
-To apply an IP filter to a deployment, you must first create a rule set at the organization or platform level, and then apply the rule set to your deployment.
+To create an IP filter policy:
 
-### Step 1: Create an IP filter rule set
-
-You can combine any rules into a set, so we recommend that you group rules according to what they allow, and make sure to label them accordingly. Since multiple sets can be applied to a deployment, you can be as granular in your sets as you feel is necessary.
-
-To create a rule set:
-
-1. Navigate to the traffic filters list:
-
-    ::::{tab-set}
-    :group: ech-ece
-
-    :::{tab-item} {{ech}}
-    :sync: ech
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
+:::{include} _snippets/network-security-page.md
+::: 
+4. Select **Create** > **IP filter**.
+3. Select the resource type that the IP filter will be applied to: either hosted deployments or serverless projects.
+4. Select the cloud provider and region for the filter. 
+   
+    :::{tip}
+    Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
-    :::{tab-item} {{ece}}
-    :sync: ece
-    1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-    2. From the **Platform** menu, select **Security**.
-    :::
-    ::::
-
-2. Select **Create filter**.
-3. Select **IP filtering rule set**.
-4. Create your rule set, providing a meaningful name and description.
-5. Select the region for the rule set.
-6. Select if this rule set should be automatically attached to new deployments.
+5. Add a meaningful name and description for the filter.
+6. Under **Access control**, select whether the filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
+7. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
 
     ::::{note}
-    Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
+    DNS names are not supported in network security policies.
     ::::
+8.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the filter with a deployment or project, it starts filtering traffic.
+9.  To automatically attach this IP filter policy to new deployments or projects, select **Apply by default**.
+10.  Click **Create**.
 
-7.  Add one or more rules using IPv4, or a range of addresses with CIDR.
+### Step 2: Associate a policy with a deployment or project
 
-    ::::{note}
-    DNS names are not supported in rules.
-    ::::
+You can associate a network security policy with your deployment or project from the policy's settings, or from your deployment or project's settings. After you associate the policy with a deployment or project, it starts filtering traffic.
 
-### Step 2: Associate an IP filter rule set with your deployment
+#### From a deployment or project
 
-After you’ve created the rule set, you’ll need to associate IP filter rules with your deployment:
+:::{include} _snippets/associate-filter.md
+:::
 
-1. Go to the deployment.
-2. On the **Security** page, under **Traffic filters**, select **Apply filter**.
-3. Choose the filter you want to apply and select **Apply filter**.
+#### From the policy settings
 
-At this point, the traffic filter is active. You can remove or edit it at any time.
+:::{include} _snippets/network-security-page.md
+:::
+5. Find the policy you want to edit.
+6. Under **Apply to resources**, associate the policy with one or more deployments or projects.
+7. Click **Update** to save your changes.
 
-## Remove an IP filter rule set association from your deployment [remove-filter-deployment]
+## Remove an IP filter policy from your deployment or project [remove-filter-deployment]
 
-If you want to remove any traffic restrictions from a deployment or delete a rule set, you’ll need to remove any rule set associations first. To remove an association through the UI:
+If you want to a specific IP filter policy from a deployment or project, or delete the policy, you’ll need to disconnect it from any associated deployments or projects first. You can do this from the policy's settings, or from your deployment or project's settings. To remove an association through the UI:
 
-1. Go to the deployment.
-2. On the **Security** page, under **Traffic filters** select **Remove**.
+#### From your deployment or project
 
-## Edit an IP filter rule set
+::::{tab-set}
+:group: hosted-serverless
+:::{tab-item} Serverless project
+:sync: serverless
+1. Find your project on the home page or on the **Serverless projects** page, then select **Manage** to access its settings menus.
 
-You can edit a rule set name or change the allowed traffic sources using IPv4, or a range of addresses with CIDR.
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. On the **Network security** page, find the IP filter policy that you want to disconnect. 
+3. Under **Actions**, click the **Delete** icon.
+:::
+:::{tab-item} Hosted deployment
+:sync: hosted
+1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
-1. Navigate to the traffic filters list:
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. On the **Security** page, under **Network security**, find the IP filter policy that you want to disconnect. 
+3. Under **Actions**, click the **Delete** icon.
+:::
+::::
 
-    ::::{tab-set}
-    :group: ech-ece
+#### From the IP filter policy settings
 
-    :::{tab-item} {{ech}}
-    :sync: ech
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
-    :::
-    :::{tab-item} {{ece}}
-    :sync: ece
-    1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-    2. From the **Platform** menu, select **Security**.
-    :::
-    ::::
+:::{include} _snippets/network-security-page.md
+:::
+5. Find the policy you want to edit, then click the **Edit** icon.
+6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+7. Click **Update** to save your changes.
 
-2. Find the rule set you want to edit.
-5. Select the **Edit** icon.
+## Edit an IP filter policy
 
+You can edit an IP filter policy's name or description, change the allowed traffic sources, and change the associated resources, and more.
 
-## Delete an IP filter rule set
+:::{include} _snippets/network-security-page.md
+:::
+4. Find the policy you want to edit, then click the **Edit** icon.
+5. Click **Update** to save your changes.
 
-If you need to remove a rule set, you must first remove any associations with deployments.
+:::{tip}
+You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
+:::
 
-To delete a rule set with all its rules:
+## Delete an IP filter policy
 
-1. [Remove any deployment associations](#remove-filter-deployment).
-1. Navigate to the traffic filters list:
+If you need to remove a policy, you must first remove any associations with deployments.
 
-    ::::{tab-set}
-    :group: ech-ece
+To delete a policy:
 
-    :::{tab-item} {{ech}}
-    :sync: ech
-    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
-    :::
-    :::{tab-item} {{ece}}
-    :sync: ece
-    1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-    2. From the **Platform** menu, select **Security**.
-    :::
-    ::::
-
-3. Find the rule set you want to edit.
-4. Select the **Delete** icon. The icon is inactive if there are deployments assigned to the rule set.
+:::{include} _snippets/network-security-page.md
+:::
+4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments or projects associated with the policy.
