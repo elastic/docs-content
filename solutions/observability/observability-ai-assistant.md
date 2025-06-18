@@ -145,8 +145,8 @@ You're not limited to search connector indices in the **Search connector index p
 ##### Space awareness
 The **Search connector index pattern** setting is [space](../../deploy-manage/manage-spaces.md) aware. This means you can assign different values for different spaces. For example, a "Developers" space may include an index pattern like `github-*,jira*`, while an "HR" space may include an index pattern like `employees-*`.
 
-##### Custom index requirements
-Field names in custom indices have no specific requirements. Any `semantic_text` field is automatically queried. Matching documents are sent to the LLM in full, including all fields. Including or excluding specific fields is not possible.
+##### Custom index field name requirements
+Field names in custom indices have no specific requirements. Any `semantic_text` field is automatically queried. Documents matching the index pattern are sent to the LLM in full, including all fields. It's not currently possible to include or exclude specific fields.
 
 #### Setup process:
 
