@@ -23,6 +23,19 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.0.3 [elastic-security-9.0.3-release-notes]
+
+### Features and enhancements [elastic-security-9.0.3-features-enhancements]
+* Adds `dns` event collection for macOS for {{elastic-defend}} [#223566]({{kib-pull}}223566).
+* Adds pricing information about Elastic Managed LLM in AI Assistant and Attack Discovery tours and callouts [#221566]({{kib-pull}}221566).
+* Adds support for DNS events on macOS. Events can be controlled from the policy using the **DNS events** checkbox.
+
+### Fixes [elastic-security-9.0.3-fixes]
+* Fixes a bug where OSS models didn’t work when streaming was ON [#224129]({{kib-pull}}224129).
+* Fixes a bug where cell actions didn’t work when opening a timeline from specific rules [#223306]({{kib-pull}}223306).
+* Fixes an issue where the entity risk score feature stopped persisting risk score documents [#221937]({{kib-pull}}221937).
+
+
 ## 9.0.2 [elastic-security-9.0.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.2-features-enhancements]
