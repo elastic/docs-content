@@ -12,11 +12,6 @@ products:
 
 # Quickstart: Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry (EDOT) [monitor-k8s-otel-edot]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 In this quickstart guide, you’ll learn how to send Kubernetes logs, metrics, and application traces to Elasticsearch, using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md) (EDOT) Collectors and SDK instances.
 
 All the components will be deployed through the [opentelemetry-kube-stack](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) helm chart. They include:
@@ -28,6 +23,9 @@ All the components will be deployed through the [opentelemetry-kube-stack](https
 
 For a more detailed description of the components and advanced configuration, refer to [elastic/opentelemetry](opentelemetry://reference/index.md).
 
+::::{important}
+The [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) functionality for Serverless is in technical preview. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+::::
 
 ## Prerequisites [_prerequisites_2]
 
