@@ -25,7 +25,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Enhancements [elastic-observability-9.0.3-features-enhancements]
 
-* Improve the system prompt and instructions for working with with Claude models [#221965](https://github.com/elastic/kibana/pull/221965).
+* Improve the system prompt and instructions for working with Claude models [#221965](https://github.com/elastic/kibana/pull/221965).
 
 ### Fixes [elastic-observability-9.0.3-fixes]
 
