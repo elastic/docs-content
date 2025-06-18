@@ -16,7 +16,7 @@ sub:
   policy-type: "IP filter"
 ---
 
-# Manage IP traffic filters in ECH or Serverless
+# Manage IP filters in ECH or Serverless
 
 Traffic filtering, by IP address or CIDR block, is one of the security layers available in {{ece}} and {{ech}}. It allows you to limit how your deployments can be accessed.
 
