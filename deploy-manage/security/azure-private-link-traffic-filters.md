@@ -15,7 +15,7 @@ sub:
   example-default-dn: "eastus2.azure.elastic-cloud.com"
 ---
 
-# Azure Private Link traffic filters
+# Azure Private Link private connections
 
 You can use Azure Private Link to establish a secure connection for your {{ecloud}} deployments to communicate with other Azure services. Azure routes the Private Link traffic within the Azure data center and never exposes it to the public internet.
 
