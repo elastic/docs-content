@@ -21,6 +21,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.0.3 [elastic-observability-9.0.3-release-notes]
+
+### Enhancements [elastic-observability-9.0.3-features-enhancements]
+
+* Improve the system prompt and instructions for working with Claude models [#221965](https://github.com/elastic/kibana/pull/221965).
+
+### Fixes [elastic-observability-9.0.3-fixes]
+
+* Tool instructions are no longer shown in the system message when tools are disabled [#223278](https://github.com/elastic/kibana/pull/223278).
+
 ## 9.0.2 [elastic-observability-9.0.2-release-notes]
 
 ### Enhancements [elastic-observability-9.0.2-features-enhancements]
