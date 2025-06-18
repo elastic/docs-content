@@ -667,10 +667,12 @@ To resolve the issue, you can try the following:
 
 - **Update {{agent}} immediately after a system reboot**
 
-    A system reboot will destroy and recreate the desktop heap, resolving any prior exhaustion. Since many memory leaks are gradual, updating {{agent}} immediately after a system reboot may allow {{agent}} to upgrade before the memory leaking application exhausts the desktop heap.
+    A system reboot destroys and recreates the desktop heap, resolving any prior exhaustion. 
+    Because many memory leaks are gradual, updating {{agent}} immediately after a system reboot may allow {{agent}} to upgrade before the memory leaking application exhausts the desktop heap.
 
     :::{tip}
-    A [cold startup](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/distinguishing-fast-startup-from-wake-from-hibernation) will reset kernel memory, but a fast startup or a wake from hibernation will not. A regular reboot (for example, `shutdown /r /t 0`) will result in a cold startup, and will reset the desktop heap.
+    A [cold startup](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/distinguishing-fast-startup-from-wake-from-hibernation) resets kernel memory, but a fast startup or a wake from hibernation does not. 
+    A regular reboot (for example, `shutdown /r /t 0`) results in a cold startup, and resets the desktop heap.
     :::
 
 - **Update third-party service applications**
@@ -685,7 +687,8 @@ To resolve the issue, you can try the following:
 
 - **Terminate or uninstall third-party service applications**
 
-    You can try terminating or uninstalling non-critical third-party service applications before updating {{agent}}. Terminating a process will release its desktop heap resources.
+    You can try terminating or uninstalling non-critical third-party service applications before updating {{agent}}. 
+    Terminating a process releases its desktop heap resources.
 
     Note that the {{agent}} update process does not require a significant amount of desktop heap resources, so a successful {{agent}} update following the termination or uninstallation of a service application does not necessarily mean that the application was exhausting the desktop heap.
 
