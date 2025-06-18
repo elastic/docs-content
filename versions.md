@@ -14,7 +14,7 @@ Review the documentation for all versions of Elastic products.
 - Elasticsearch JavaScript Client — [all versions](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/index.html)
 - Elasticsearch .NET Client — [all versions](https://www.elastic.co/guide/en/elasticsearch/client/net-api/index.html)
 - Elasticsearch PHP Client — [all versions](https://www.elastic.co/guide/en/elasticsearch/client/php-api/index.html)
-- Elasticsearch Python Client — [https://www.elastic.co/guide/en/elasticsearch/client/python-api/index.html]
+- Elasticsearch Python Client — [all versions](https://www.elastic.co/guide/en/elasticsearch/client/python-api/index.html)
 - Elasticsearch Ruby Client — [all versions](https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/index.html)
 - Elasticsearch for Apache Hadoop and Spark — [all versions](https://www.elastic.co/guide/en/elasticsearch/hadoop/index.html)
 - Elasticsearch Relevance Engine (ESRE) — [all versions](https://www.elastic.co/guide/en/esre/index.html)
