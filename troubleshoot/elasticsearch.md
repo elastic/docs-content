@@ -51,7 +51,7 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 ## Other issues [troubleshooting-others]
 
 * [](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md)
-* [](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md)
+* [Troubleshoot using the cluster allocation API](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md)
 * [](/troubleshoot/elasticsearch/discovery-troubleshooting.md)
 * [](/troubleshoot/elasticsearch/monitoring-troubleshooting.md)
 * [](/troubleshoot/elasticsearch/transform-troubleshooting.md)
