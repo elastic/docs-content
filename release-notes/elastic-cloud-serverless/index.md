@@ -14,8 +14,49 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 ## June 17, 2025 [serverless-changelog-06172025]
 
 ### Features and enhancements [serverless-changelog-06172025-features-enhancements]
-
 * {{serverless-full}} is now available in two new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP Belgium (`europe-west1`) and GCP Mumbai (`asia-south1`). 
+
+## June 16, 2025 [serverless-changelog-06162025]
+
+### Features and enhancements [serverless-changelog-06162025-features-enhancements]
+* Adds support for deleting active or inactive alerts after one day without a status update [#216613]({{kib-pull}}216613)
+* Adds AWS SES email configuration options: `xpack.actions.email.services.ses.host` and `ses.port` [#221389]({{kib-pull}}221389)
+* Adds point visibility option for area and line charts in **Lens** [#222187]({{kib-pull}}222187)
+* Enables feature flag for the tabular integrations Fleet UI [#222842]({{kib-pull}}222842)
+* Displays partial results when an ES|QL query times out due to the `search:timeout` setting [#219027]({{kib-pull}}219027)
+* Improves handling of long fields in the **Discover** editor [#223222]({{kib-pull}}223222)
+* Adds a primary **Add to case** button to Elastic Observability Serverless [#223184]({{kib-pull}}223184)
+* Renders suggested dashboards in relevant contexts in Elastic Observability Serverless [#223424]({{kib-pull}}223424)
+* Adds a **History** tab for calendar-based SLOs in the Elastic Observability Serverless SLO details page [#223825]({{kib-pull}}223825)
+* Updates the `spec.max` setting to version 3.4 for Elastic Observability Serverless [#221544]({{kib-pull}}221544)
+* Adds support for anonymizing sensitive data for Elastic Observability Serverless [#223351]({{kib-pull}}223351)
+* Adds `logging_level` configuration in Elastic Observability Serverless for EDOT Node.js agent [#222883]({{kib-pull}}222883)
+* Removes `is_correction` and `confidence` attributes from Elastic Observability Serverless Knowledge Base entries [#222814]({{kib-pull}}222814)
+* Displays linked cases in the Elastic Observability Serverless alert details overview [#222903]({{kib-pull}}222903)
+* Refetches alert rule data when edits are submitted in the Elastic Observability Serverless flyout [#222118]({{kib-pull}}222118)
+* Adds `disable_origin_info_collection` to endpoint policy advanced settings in Elastic Security Serverless [#222030]({{kib-pull}}222030)
+* Improves alert filtering in Elastic Security Serverless by including ECS `data_stream` fields under `kibana.alert.original_data_stream.*` [#220447]({{kib-pull}}220447)
+* Adds a rare scripts job to the preconfigured Security:Windows anomaly detection jobs [#223041]({{kib-pull}}223041)
+* Adds `converse` and `converseStream` subActions to Bedrock connectors for Machine Learning [#223033]({{kib-pull}}223033)
+* Improves error handling in the AI Connector creation UI for Machine Learning [#221859]({{kib-pull}}221859)
+* Disables trace visualizations in **Discover** for Logs Essentials serverless mode in Elastic Observability Serverles [#222991]({{kib-pull}}222991)
+* Adds the **Attributes** tab to the Elastic Observability Serverless document viewer [#222391]({{kib-pull}}222391)
+
+### Fixes [serverless-changelog-06162025-fixes]
+* Reverts instructions for installing the complete Elastic Agent [#223520]({{kib-pull}}223520)
+* Fixes incorrect function signatures in bucket functions for **Discover** [#222553]({{kib-pull}}222553)
+* Reverts CSV export time range fix in **Discover** [#223249]({{kib-pull}}223249)
+* Adds `aria-labelledby` to Elastic Charts SVG for accessibility in Elastic Observability Serverless [#220298]({{kib-pull}}220298)
+* Hides **Data set details** when `dataStream` comes from a remote cluster in Elastic Observability Serverless [#220529]({{kib-pull}}220529)
+* Prevents unnecessary re-render after completing a **Run test** action in Elastic Observability Serverless [#222503]({{kib-pull}}222503)
+* Skips tool instructions in system messages when tools are disabled in Elastic Observability Serverless [#223278]({{kib-pull}}223278)
+* Fixes broken **View in Discover** link in Elastic Security Serverless [#217993]({{kib-pull}}217993)
+* Expands metrics pattern for the Java EDOT dashboard  in Elastic Observability Serverless [#223539]({{kib-pull}}223539)
+* Applies `autoFocus` to the `cc` and `bcc` fields in the Elastic Observability Serverless email connector form [#223828]({{kib-pull}}223828)
+* Fixes rendering issues in the Elastic Security Serverless Threat Enrichment component [#223164]({{kib-pull}}223164)
+* Ensures ingest pipelines are installed in all relevant spaces and assigned to appropriate indices in Elastic Security Serverless [#221937]({{kib-pull}}221937)
+* Fixes card overflow issues on the **Machine Learning Overview** page [#223431]({{kib-pull}}223431)
+* Applies chunking algorithm to `getIndexBasicStats` to improve performance [#221153]({{kib-pull}}221153)
 
 ## June 9, 2025 [serverless-changelog-06092025]
 
