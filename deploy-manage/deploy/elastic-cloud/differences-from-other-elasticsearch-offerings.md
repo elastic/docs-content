@@ -161,10 +161,9 @@ These recommendations do not apply to indices using better binary quantization (
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
-::::{important}
-In {{serverless-full}}, configuration is limited to certain APIs, as Elastic automatically manages the infrastructure. As we are responsible for maintaining cluster stability, we make informed decisions about permissible actions to prevent unintended changes that could compromise service availability, performance, and data integrity, thereby ensuring the reliability of Serverless projects.
-::::
+In {{serverless-full}}, access is limited to a subset of {{es}} APIs, as Elastic manages the underlying infrastructure. These restrictions help maintain cluster stability, availability, and data integrity, ensuring reliable operation of Serverless projects.
 
+The following {{es}} APIs are not available in {{serverless-full}}:
 
 
 Infrastructure operations
