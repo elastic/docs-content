@@ -10,7 +10,7 @@ products:
 
 # Execute a watch [execute-watch]
 
-The _execute endpoint lets you manually trigger the execution of a watch for testing or debugging purposes, without waiting for its scheduled trigger. You can simulate watch execution, override its input and condition, and control how individual actions behave during the run. 
+The [execute endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch) lets you manually trigger the execution of a watch for testing or debugging purposes, without waiting for its scheduled trigger. You can simulate watch execution, override its input and condition, and control how individual actions behave during the run. 
 
 The examples below show how to execute an existing watch, customize its behavior during execution, and run an inline watch definition.
 
