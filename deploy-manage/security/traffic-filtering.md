@@ -24,6 +24,8 @@ products:
 Network security allows you to control how your deployments and clusters can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to only the sources that you trust.
 
 :::{note}
+The network security feature was formerly referred to as traffic filtering.
+
 Network security policies were formerly referred to as traffic filtering rules.
 :::
 
