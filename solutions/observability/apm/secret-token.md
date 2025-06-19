@@ -62,9 +62,9 @@ apm-server.auth.secret_token: <secret-token>
 
 Each Elastic {{apm-agent}} has a configuration option to set the value of the secret token:
 
-* **Android agent**: [`secretToken`](apm-agent-android://reference/configuration.md)
+* **Android agent**: [`secretToken`](opentelemetry://reference/edot-sdks/android/configuration.md)
 * **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](apm-agent-go://reference/configuration.md#config-secret-token)
-* **iOS agent**: [`secretToken`](apm-agent-ios://reference/configuration.md#secrettoken)
+* **iOS agent**: [`secretToken`](opentelemetry://reference/edot-sdks/ios/configuration.md#secrettoken)
 * **Java agent**: [`secret_token`](apm-agent-java://reference/config-reporter.md#config-secret-token)
 * **.NET agent**: [`ELASTIC_APM_SECRET_TOKEN`](apm-agent-dotnet://reference/config-reporter.md#config-secret-token)
 * **Node.js agent**: [`Secret Token`](apm-agent-nodejs://reference/configuration.md#secret-token)
