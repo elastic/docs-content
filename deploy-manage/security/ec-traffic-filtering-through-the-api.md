@@ -236,7 +236,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-To find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, check [Find your private endpoint resource name]() and [Find your private endpoint resource ID](azure-private-link-traffic-filters.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+To find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, check [Find your private endpoint resource name] and [Find your private endpoint resource ID](azure-private-link-traffic-filters.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
 
 
 ### GCP Private Service Connect traffic filters [ec-gcp-private-service-connect-traffic-filters-rule-set]
