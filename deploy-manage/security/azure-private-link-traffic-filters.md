@@ -15,7 +15,7 @@ sub:
   example-default-dn: "eastus2.azure.elastic-cloud.com"
 ---
 
-# Azure Private Link private connections
+# Azure Private Link private connectivity
 
 You can use Azure Private Link to establish a secure connection for your {{ecloud}} deployments to communicate with other Azure services. Azure routes the Private Link traffic within the Azure data center and never exposes it to the public internet.
 
@@ -67,11 +67,11 @@ The process of setting up the private connection with Azure Private link is spli
 
 | Azure portal | {{ecloud}} |
 | --- | --- |
-| 1. [Create a private endpoint using {{ecloud}} service alias.](#ec-private-link-azure-dns) |  |
+| 1. [Create a private endpoint using {{ecloud}} service alias](#ec-private-link-azure-dns). |  |
 | 2. [Create a DNS record pointing to the private endpoint](#ec-private-link-azure-dns). |  |
-|  | 3. [Create a private connection policy.](#ec-azure-allow-traffic-from-link-id) |
-|  | 4. [Associate the Azure Private Link rule set with your deployments](#ec-associate-traffic-filter-private-link-rule-set). |
-|  | 5. [Interact with your deployments over Private Link.](#ec-azure-access-the-deployment-over-private-link) |
+|  | 3. [Create a private connection policy](#ec-azure-allow-traffic-from-link-id). |
+|  | 4. [Associate the Azure private connection policy with your deployments](#ec-associate-traffic-filter-private-link-rule-set). |
+|  | 5. [Interact with your deployments over Private Link](#ec-azure-access-the-deployment-over-private-link). |
 
 
 ### Create your private endpoint and DNS entries in Azure [ec-private-link-azure-dns]

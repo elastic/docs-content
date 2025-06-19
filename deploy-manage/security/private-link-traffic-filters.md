@@ -3,15 +3,14 @@ applies_to:
   deployment:
     ess: ga
   serverless: ga
-navigation_title: "Add private connections"
 products:
   - id: cloud-hosted
   - id: cloud-serverless
 ---
 
-# Private connections
+# Private connectivity
 
-A private connection is a secure way for your {{ecloud}} deployments and projects to communicate with other cloud provider services over your cloud provider's private network. You can create a virtual private connection endpoint (VCPE) using your provider's private link service. You can also optionally filter traffic to your deployments and projects by creating ingress filters for your VCPE in {{ecloud}}.
+Private connectivity is a secure way for your {{ecloud}} deployments and projects to communicate with other cloud provider services over your cloud provider's private network. You can create a virtual private connection endpoint (VCPE) using your provider's private link service. You can also optionally filter traffic to your deployments and projects by creating ingress filters for your VCPE in {{ecloud}}.
 
 Choose the relevant option for your cloud service provider:
 
@@ -30,5 +29,5 @@ To learn how private connection policies work, how they affect your deployment, 
 :::
 
 :::{note}
-Private connections were formerly referred to as PrivateLink filters.
+Private connection policies were formerly referred to as PrivateLink filters.
 :::

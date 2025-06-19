@@ -15,7 +15,7 @@ sub:
   example-default-dn: "us-east-1.aws.elastic-cloud.com"
 ---
 
-# AWS PrivateLink private connections
+# AWS PrivateLink private connectivity
 
 You can use AWS PrivateLink to establish a secure connection for your {{ecloud}} deployments to communicate with other AWS services. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet.
 
@@ -225,7 +225,7 @@ Creating a private connection policy and associating it with your deployments al
 Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
 1. Optional: [Find your VPC endpoint ID](#ec-find-your-endpoint).
-2. [Create rules using the VPC endpoint](#ec-create-traffic-filter-private-link-rule-set).
+2. [Create a private connection policy using the VPC endpoint](#ec-create-traffic-filter-private-link-rule-set).
 3. [Associate the VPC endpoint with your deployment](#ec-associate-traffic-filter-private-link-rule-set).
 
 ### Optional: Find your VPC endpoint ID [ec-find-your-endpoint]
@@ -266,7 +266,7 @@ Create a new private connection policy.
 13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPCE filter, then after you associate the filter with a deployment, it starts filtering traffic.
 14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 15.  Click **Create**.
-16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
+16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
 
 The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
 

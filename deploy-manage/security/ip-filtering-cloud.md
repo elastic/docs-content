@@ -8,7 +8,7 @@ applies_to:
   deployment:
     ess: ga
     ece: ga
-    serverless: ga
+  serverless: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
@@ -39,7 +39,7 @@ To learn how to create IP filters for self-managed clusters or {{eck}} deploymen
 
 ## Apply an IP filter to a deployment or project
 
-To apply an IP filter to a deployment or project, you must first create a rule set at the organization or platform level, and then apply the rule set to your deployment.
+To apply an IP filter to a deployment or project, you must first create a policy at the organization or platform level, and then apply the policy to your deployment.
 
 ### Step 1: Create an IP filter policy
 

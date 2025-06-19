@@ -28,7 +28,7 @@ Policies operate on the proxy. Requests rejected by the policies are not forward
 - You can have a maximum of 1024 policies per organization and 128 sources in each policy.
 - Policies must be created for a specific resource type. If you want to associate a policy to both hosted deployments and Serverless projects, then you have to create the same policy for each resource types.
 - Policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
-- Domain-based filtering rules are not allowed for network security policies, because the original IP is hidden behind the proxy. Only IP-based filtering rules are allowed.
+- Domain-based filtering sources are not allowed for network security policies, because the original IP is hidden behind the proxy. Only IP-based filtering sources are allowed.
 
 ## Default network security policies
 
