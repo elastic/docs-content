@@ -108,10 +108,17 @@ After you create your private endpoint and DNS entries, you can create a private
 
 Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
-1. [Find your private endpoint resource ID](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-find-your-resource-id).
-2. [Create policies using the Private Link Endpoint resource ID](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-create-traffic-filter-private-link-rule-set).
-3. [Test the connection](#test-the-connection).
-4. [Associate the private endpoint with your deployment](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set).
+1. [Find your private endpoint resource name](#ec-find-your-resource-name).
+2. [Find your private endpoint resource ID](#ec-find-your-resource-id).
+3. [Create policies using the Private Link Endpoint resource ID](#ec-azure-create-traffic-filter-private-link-rule-set).
+4. [Test the connection](#test-the-connection).
+5. [Associate the private endpoint with your deployment](#ec-associate-traffic-filter-private-link-rule-set).
+
+### Find your private endpoint resource name [ec-find-your-resource-name]
+
+1. Go to your Private Link Endpoint in the Azure Portal.
+2. Select **JSON View**.
+3. Copy the value of the top level **name** property.
 
 ### Find your private endpoint resource ID [ec-find-your-resource-id]
 
@@ -128,10 +135,9 @@ Follow these high-level steps to add a private connection policy that can be ass
 :alt: Private endpoint properties
 :screenshot:
 :::
-% fix me
 
 
-### Create a policy using the Private Link Endpoint resource ID [ec-azure-create-traffic-filter-private-link-rule-set]
+### Create a policy using the Private Link Endpoint resource [ec-azure-create-traffic-filter-private-link-rule-set]
 
 When you have your private endpoint ID, you can create a private connection policy.
 
@@ -151,8 +157,8 @@ The Private Link connection will be approved automatically after the private con
     :::
 7.  Under **Connectivity**, select **Privatelink**.
 8.  Under **VPCE filter**, enter your Private Endpoint resource ID.
+    % where does name go
 
-    
     :::{tip}
     You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
@@ -182,10 +188,10 @@ To test the connection:
     :::{include} _snippets/find-endpoint.md
     :::
 
-2. Test the setup using the following cURL command. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
+2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
 
     ```sh
-    $ curl -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243
+    $ curl -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243 -u {username}:{password}
     ```
 
     The output should look like this:
@@ -198,19 +204,27 @@ To test the connection:
     * 	 server certificate verification OK
     * 	 common name: *.privatelink.elastic-cloud.com (matched)
     ..
-    < HTTP/1.1 403 Forbidden
-    {"ok":false,"message":"Forbidden"}
+        < HTTP/1.1 200 OK
+    ..
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
     ```
 
     Check the IP address `192.168.46.5` it should be the same as the IP address of your private endpoint.
 
-    The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, you haven’t associate the rule set with any deployment yet.
+    The connection is established, and a valid certificate is presented to the client. Elastic responds, in the case of the {{es}} endpoint, with basic information about the cluster.
 
 In the event that the Private Link connection is not approved by {{ecloud}}, you’ll get an error message like the following. Double check that the filter you’ve created in the previous step uses the right resource ID.
 
+
 **Request**
 ```sh
-$ curl -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243
+$ curl -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243 -u {username}:{password}
 ```
 
 **Response**
@@ -270,13 +284,27 @@ To access the deployment:
 
     **Request**
     ```sh
-    $ curl -u 'username:password'  -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243
+    $ curl -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243 -u {username}:{password}
     ```
 
     **Response**
-    ```
-    < HTTP/1.1 200 OK
+    ```sh
+    * Rebuilt URL to: https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com:9243/
+    *   Trying 192.168.46.5... 
     ..
+    * SSL connection using TLS1.2 / ECDHE_RSA_AES_256_GCM_SHA384
+    * 	 server certificate verification OK
+    * 	 common name: *.privatelink.elastic-cloud.com (matched)
+    ..
+        < HTTP/1.1 200 OK
+    ..
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
     ```
 
 ### Azure Pivate Link and Fleet

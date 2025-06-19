@@ -186,11 +186,11 @@ To test the connection:
     :::{include} _snippets/find-endpoint.md
     :::
 
-2. Test the setup using the following cURL command. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
+2. Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
 
     **Request**
     ```sh
-    $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
+    $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
     **Response**
     ```sh
@@ -198,13 +198,18 @@ To test the connection:
     *  subject: CN=*.us-east-1.aws.elastic-cloud.com
     *  SSL certificate verify ok.
     ..
-    {"ok":false,"message":"Forbidden"}
-    * Connection #0 to host my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com left intact
+        < HTTP/1.1 200 OK
+    ..
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
     ```
 
-The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, because you haven’t allowed the traffic over this PrivateLink connection yet.
-
-% needs to be edited
+The connection is established, and a valid certificate is presented to the client. Elastic responds, in the case of the {{es}} endpoint, with basic information about the cluster.
 
 ## Optional: Create a private connection policy [ec-add-vpc-elastic]
 
@@ -308,13 +313,23 @@ To access the deployment:
 
     **Request**
     ```sh
-    $ curl -u 'username:password' -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com
+    $ curl -v https://my-deployment-d53192.es.vpce.us-east-1.aws.elastic-cloud.com -u {username}:{password}
     ```
-
     **Response**
-    ```
-    < HTTP/1.1 200 OK
+    ```sh
+    * Server certificate:
+    *  subject: CN=*.us-east-1.aws.elastic-cloud.com
+    *  SSL certificate verify ok.
     ..
+        < HTTP/1.1 200 OK
+    ..
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
     ```
 
 ### AWS PrivateLink and Fleet

@@ -132,11 +132,11 @@ To test the connection:
  1. Access your cluster over Private Link:
 
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
-    * Test the setup using the following cURL command. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
+    * Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
 
     **Request**
     ```sh
-    $ curl -v https://my-deployment-d53192.es.psc.asia-southeast1.gcp.elastic-cloud.com:9243
+    $ curl -v https://my-deployment-d53192.es.psc.asia-southeast1.gcp.elastic-cloud.com:9243 -u {username}:{password}
     ```
 
     **Response**
@@ -144,16 +144,20 @@ To test the connection:
     ..
     *   Trying 192.168.100.2...
     ..
-    < HTTP/2 403
+        < HTTP/1.1 200 OK
     ..
-    {"ok":false,"message":"Forbidden"}
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
     ```
 
 Check the IP address. it should be the same as the IP address assigned to your Private Service Connect endpoint.
 
-The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, you haven’t associated any deployment with the Private Service Connect endpoint yet.
-
-% needs to be edited
+The connection is established, and a valid certificate is presented to the client. Elastic responds, in the case of the {{es}} endpoint, with basic information about the cluster.
 
 ## Optional: Create a private connection policy [ec-private-service-connect-allow-from-psc-connection-id]
 
@@ -253,13 +257,20 @@ To access the deployment:
 
     **Request**
     ```sh
-    $ curl -u 'username:password' -v https://my-deployment-d53192.es.psc.asia-southeast1.gcp.elastic-cloud.com:9243
+    $ curl -v https://my-deployment-d53192.es.psc.asia-southeast1.gcp.elastic-cloud.com:9243 -u {username}:{password}
     ```
 
     **Response**
-    ```
+    ```sh
     < HTTP/1.1 200 OK
     ..
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
     ```
 
 ### GCP Private Service Connect and Fleet
