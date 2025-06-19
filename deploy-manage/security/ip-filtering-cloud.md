@@ -73,8 +73,23 @@ You can associate a network security policy with your deployment or project from
 
 #### From a deployment or project
 
-:::{include} _snippets/associate-filter.md
+::::{tab-set}
+:::{tab-item} Serverless
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. On the **Serverless projects** page, select your project.
+3. Select the **Network security** tab on the left-hand side menu bar.
+4. Select **Apply policies** > **IP filter**.
+6. Choose the policy you want to apply and select **Apply**.
 :::
+:::{tab-item} Hosted
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. On the **Hosted deployments** page, select your deployment.
+3. Select the **Network security** tab on the left-hand side menu bar.
+4. Select the **Security** tab on the left-hand side menu bar.
+5. Under **Network security**, select **Apply policies** > **IP filter**.
+6. Choose the policy you want to apply and select **Apply**.
+:::
+::::
 
 #### From the policy settings
 
