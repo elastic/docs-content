@@ -156,8 +156,7 @@ The Private Link connection will be approved automatically after the private con
     Network security policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 7.  Under **Connectivity**, select **Privatelink**.
-8.  Under **VPCE filter**, enter your Private Endpoint resource ID.
-    % where does name go
+8.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment, this information will be used to filter traffic.
 
     :::{tip}
     You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
@@ -168,7 +167,7 @@ The Private Link connection will be approved automatically after the private con
 9.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. After you associate the filter with a deployment, it starts filtering traffic.
 10. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 11.  Click **Create**.
-12. (Optional) You can [claim your Private Endpoint resource ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
+12. (Optional) You can [claim your Private Endpoint resource name and ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
 
 Creating the filter approves the Private Link connection.
 

@@ -8,18 +8,18 @@ products:
   - id: cloud-hosted
 ---
 
-# Claim VCPE ID ownership [ec-claim-traffic-filter-link-id-through-the-api]
+# Claim VCPE ID or Azure resource ownership [ec-claim-traffic-filter-link-id-through-the-api]
 
-This example demonstrates how to use the {{ecloud}} RESTful API to claim different types of private link ID (AWS PrivateLink, Azure Private Link, and GCP Private Service Connect). We cover the following examples:
+This example demonstrates how to use the {{ecloud}} RESTful API to claim different types of ID (AWS PrivateLink, Azure Private Link, and GCP Private Service Connect). We cover the following examples:
 
-* [Claim a VCPE ID](#ec-claim-a-traffic-filter-link-id)
+* [Claim a VCPE ID or Azure resource](#ec-claim-a-traffic-filter-link-id)
 
     * [AWS PrivateLink](#ec-claim-aws-privatelink)
     * [Azure Private Link](#ec-claim-azure-private-link)
     * [GCP Private Service Connect](#ec-claim-gcp-private-service-connect)
 
-* [List claimed VCPE IDs](#ec-list-claimed-traffic-filter-link-id)
-* [Unclaim a VCPE ID](#ec-unclaim-a-traffic-filter-link-id)
+* [List claimed IDs](#ec-list-claimed-traffic-filter-link-id)
+* [Unclaim a VCPE ID or Azure resource](#ec-unclaim-a-traffic-filter-link-id)
 
     * [AWS PrivateLink](#ec-unclaim-aws-privatelink)
     * [Azure Private Link](#ec-unclaim-azure-private-link)
@@ -27,7 +27,7 @@ This example demonstrates how to use the {{ecloud}} RESTful API to claim differe
 
 
 
-## Claim a VCPE ID [ec-claim-a-traffic-filter-link-id] 
+## Claim a VCPE ID or Azure resource [ec-claim-a-traffic-filter-link-id] 
 
 
 ### AWS PrivateLink [ec-claim-aws-privatelink] 
@@ -79,7 +79,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/link-ids/_claim 
 ```
 
 
-## List claimed VCPE IDs [ec-list-claimed-traffic-filter-link-id] 
+## List claimed IDs [ec-list-claimed-traffic-filter-link-id] 
 
 ```sh
 curl \
@@ -89,7 +89,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/link-ids \
 ```
 
 
-## Unclaim a VCPE ID [ec-unclaim-a-traffic-filter-link-id] 
+## Claim a VCPE ID or Azure resource [ec-unclaim-a-traffic-filter-link-id] 
 
 
 ### AWS PrivateLink [ec-unclaim-aws-privatelink] 
