@@ -88,13 +88,13 @@ You can configure email alerts for system maintenance by following the steps out
 
 1. Enable [Stack monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#enable-logging-and-monitoring-steps) (logs and metrics) on your deployment. Only metrics collection is required for these notifications to work.
 
-In the deployment used as the destination of Stack monitoring:
+2. In the deployment used as the destination of Stack monitoring:
 
-2. Create [Stack monitoring default rules](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md#_create_default_rules).
+  * Create [Stack monitoring default rules](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md#_create_default_rules).
 
-3. (Optional) Configure an email [connector](kibana://connectors-kibana/email-action-type.md). If you prefer, use the preconfigured `Elastic-Cloud-SMTP` email connector.
+  * (Optional) Configure an email [connector](kibana://connectors-kibana/email-action-type.md). If you prefer, use the preconfigured `Elastic-Cloud-SMTP` email connector.
 
-4. Edit the rule  **Cluster alerting** > **{{es}} nodes changed** and select the email connector.
+  * Edit the rule  **Cluster alerting** > **{{es}} nodes changed** and select the email connector.
 
 ::::{note}
 If you have only one master node in your cluster, no notification will be sent during the master node vacate. {{kib}} needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster when you enable logging and monitoring.
