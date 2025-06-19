@@ -106,7 +106,7 @@ To get started using the in-product tutorial, navigate to the **Getting Started*
 
 If you’re already familiar with Elasticsearch, you can jump right into setting up a connection and ingesting data as per your needs.
 
-1. Retrieve your [connection details](get-started.md).
+1. Retrieve your [connection details](search-connection-details.md).
 2. Ingest your data. Elasticsearch provides several methods for ingesting data:
 
     * [{{es}} API](ingest-for-search.md)

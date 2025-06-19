@@ -12,13 +12,7 @@ products:
 
 # Quickstart: Monitor hosts with OpenTelemetry [quickstart-monitor-hosts-with-otel]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 In this quickstart guide, you’ll learn how to monitor your hosts using the Elastic Distribution of OpenTelemetry (EDOT) Collector. You’ll also learn how to use {{observability}} features to gain deeper insight into your observability data after collecting it.
-
 
 ## Prerequisites [_prerequisites]
 

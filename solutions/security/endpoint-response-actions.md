@@ -257,6 +257,9 @@ Run a script on a host. You must include one of the following parameters to iden
 
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
+
+   {applies_to}`serverless: ga` When using this parameter, select from a list of saved custom scripts.
+
 * `--HostPath`: The absolute or relative file path of the script located on the host machine.
 
 You can also use these optional parameters:
