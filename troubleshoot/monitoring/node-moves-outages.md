@@ -51,7 +51,7 @@ The following sections describe the expectations and considerations during syste
 
 ### Service availability
 
-The system will automatically try to recover the vacated node’s data from replicas or snapshots. If your cluster has [high availability (HA)](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) configured, all search and indexing requests should continue to work within the reduced capacity as the node is replaced.
+The system will automatically try to recover the vacated node’s data from replicas or snapshots. If your cluster has [high availability (HA)](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) configured, all search and indexing requests should continue to work within the reduced capacity until the node is replaced.
 
 Overall, having replicas and multiple availability zones helps minimize service interruption.
 
