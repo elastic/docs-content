@@ -1,7 +1,3 @@
----
-navigation_title: "All versions"
----
-
 # Elastic documentation versions
 
 Review the Elastic documentation for previous product releases.
