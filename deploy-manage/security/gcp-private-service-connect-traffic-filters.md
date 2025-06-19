@@ -5,7 +5,6 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
-  serverless: ga
 products:
   - id: cloud-hosted
 navigation_title: GCP Private Service Connect

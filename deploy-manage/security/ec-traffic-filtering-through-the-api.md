@@ -6,9 +6,11 @@ applies_to:
   deployment:
     ess:
     ece:
+  serverless:
 products:
   - id: cloud-hosted
   - id: cloud-enterprise
+  - id: cloud-serverless
 navigation_title: Through the API
 ---
 
