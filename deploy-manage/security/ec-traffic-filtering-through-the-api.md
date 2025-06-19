@@ -150,7 +150,7 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets \
   "name": "My IP filtering Ingress Rule Set",
   "region": "ece-region",
   "description": "",
-  "type": "ip", <1>
+  "type": "ip",
   "rules": [
     {
       "description": "Allow inbound traffic from IP address 192.168.131.0",
