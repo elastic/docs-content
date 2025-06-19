@@ -15,7 +15,7 @@ To perform an offline installation without a private Docker registry, you have t
 
 1. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md). Note that for ECE version 4.0, if you want to use {{stack}} version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images (the version 8.x images are required for system deployments).
 
-    ```sh
+    ```sh subs=true
     docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{ece_version}}
     docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
     docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.0
@@ -33,7 +33,7 @@ To perform an offline installation without a private Docker registry, you have t
 
 2. Create .tar files of the images:
 
-    ```sh
+    ```sh subs=true
     docker save -o ece.{{ece_version}}.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{ece_version}}
     docker save -o es.8.18.0.tar docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
     docker save -o kibana.8.18.0.tar docker.elastic.co/cloud-release/kibana-cloud:8.18.0
@@ -47,7 +47,7 @@ To perform an offline installation without a private Docker registry, you have t
 3. Copy the .tar files to a location on your network where they are available to each host where you plan to install {{ece}}. Alternatively, you can copy the .tar files to each host directly.
 4. On each host, load the images into Docker, replacing `FILE_PATH` with the correct path to the .tar files:
 
-    ```sh
+    ```sh subs=true
     docker load < FILE_PATH/ece.{{ece_version}}.tar
     docker load < FILE_PATH/es.8.18.0.tar
     docker load < FILE_PATH/kibana.8.18.0.tar

@@ -141,7 +141,7 @@ You can follow along while each container for {{ece}} is upgraded on the hosts t
 
 By default, ECE updates to the most current available version. If you want to upgrade to a specific ECE version, use the `--cloud-enterprise-version` option:
 
-```sh
+```sh subs=true
 bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --user admin --pass $PASSWORD --cloud-enterprise-version {{ece_version}}
 ```
 
