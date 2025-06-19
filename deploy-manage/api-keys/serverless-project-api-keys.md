@@ -48,7 +48,7 @@ API keys are intended for programmatic access. Don’t use API keys to authentic
 
 ### Control security privileges [api-keys-restrict-privileges]
 
-When you create or update an API key, use **Control security privileges** to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Define the permissions using a JSON `role_descriptors` object, where you specify one or more roles and the associated privileges.
+When you create or update an API key, use **Control security privileges** to configure access to specific {{es}} APIs and resources. Define the permissions using a JSON `role_descriptors` object, where you specify one or more roles and the associated privileges.
 
 For example, the following `role_descriptors` object defines a `books-read-only` role that limits the API key to `read` privileges on the `books` index.
 
