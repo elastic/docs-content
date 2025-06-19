@@ -34,6 +34,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a bug where OSS models didn’t work when streaming was ON [#224129]({{kib-pull}}224129).
 * Fixes a bug where cell actions didn’t work when opening a Timeline from specific rules [#223306]({{kib-pull}}223306).
 * Fixes an issue where the entity risk score feature stopped persisting risk score documents [#221937]({{kib-pull}}221937).
+* Fixes a bug where the **Rules**, **Alerts**, and **Fleet** pages would stall in air-gapped environments by ensuring API requests are sent even when offline [#220510]({{kib-pull}}220510). 
 
 
 ## 9.0.2 [elastic-security-9.0.2-release-notes]
