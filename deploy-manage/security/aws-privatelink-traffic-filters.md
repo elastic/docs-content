@@ -98,7 +98,7 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 | --- | --- |
 | 1. [Create a VPC endpoint using {{ecloud}} service name.](#ec-aws-vpc-dns) |  |
 | 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
-|  | 3. **Optional**: [Create a private connection policy.](ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VCP endpoint ID. |
+|  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VCP endpoint ID. |
 |  | 4. **Optional**: [Associate the private connection policy with deployments](#ec-associate-traffic-filter-private-link-rule-set). |
 |  | 5. [Interact with your deployments over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
