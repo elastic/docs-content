@@ -17,7 +17,9 @@ All major scheduled maintenance and incidents can be found on the Elastic [statu
 
 If events on your deployment don’t correlate to any items listed on the status page, the events are due to minor essential maintenance performed on only a subset of {{ech}} deployments.
 
-This document explains the "`Move nodes off of allocator...`" message that appears on the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) in {{ech}} deployments, helping you understand its meaning, implications, and what to expect.
+During essential maintenance activities, you will observe the message: "Move nodes off of allocator [allocator_id] due to essential system maintenance." This notification will appear on the [activity page](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) within {{ech}} deployments.
+
+This document provides a detailed explanation of the message, assisting you in comprehending its significance, implications, and what you can anticipate as a result.
 
 ![Move nodes off allocator](images/move_nodes_ech_allocator.jpeg)
 
