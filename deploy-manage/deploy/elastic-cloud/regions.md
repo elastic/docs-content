@@ -49,4 +49,6 @@ The following GCP regions are currently available:
 
 | Region | Name |
 | :--- | :--- |
+| asia-south1 | Mumbai |
+| europe-west1 | Belgium |
 | us-central1 | Iowa |
