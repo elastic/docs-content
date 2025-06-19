@@ -14,9 +14,9 @@ Versions of the {{stack}}, containing {{es}}, {{kib}}, and other products, are a
 
 The first table contains the stack versions that shipped with the 4.0 version of {{ece}}. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the 4.0 version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
 
-| Docker images included with {{ece}} 4.0.1 |
+| Docker images included with {{ece}} {{ece_version}} |
 | --- |
-| docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:4.0.1 |
+| docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{ece_version}} |
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0 |
 | docker.elastic.co/cloud-release/kibana-cloud:8.18.0 |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0 |
