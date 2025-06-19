@@ -36,7 +36,7 @@ FROM windows-security-logs
 You can run these queries using:
 
 - **Interactive interfaces**:
-  - [Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline). Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+  - [Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline). Find **Timelines** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
   - [Discover](/explore-analyze/discover/try-esql.md). Find **Discover** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 - **REST API** via [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console). This requires additional formatting:
@@ -57,7 +57,7 @@ You can run these queries using:
 
 To follow along with this tutorial, you need to add sample data to your cluster, using the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console).
 
-Broadly there are two types of data:
+Broadly, there are two types of data:
 
 1. **Core indices**: These are the main security indices that contain the logs and events you want to analyze. We need three core indices: `windows-security-logs`, `process-logs`, and `network-logs`.
 2. **Lookup indices**: These are auxiliary indices that provide additional context to your core data. We need three lookup indices: `asset-inventory`, `user-context`, and `threat-intel`.
@@ -453,7 +453,7 @@ FROM windows-security-logs, process-logs, network-logs
 
 1. Querying multiple indices simultaneously provides comprehensive event correlation
 2. Nested [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) with [`IS NOT NULL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#null-predicates) checks categorizes events by their source data structure
-3. Complex conditional logic maps technical events to attack framework stages ([MITRE ATT&CK)](https://attack.mitre.org/)) for better understanding of the attack lifecycle
+3. Complex conditional logic maps technical events to attack framework stages ([MITRE ATT&CK](https://attack.mitre.org/)) for better understanding of the attack lifecycle
 4. `SORT ASC` uses the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command to order events by timestamp, which creates chronological ordering essential for timeline analysis
 
 **Response**
@@ -482,7 +482,7 @@ The response provides a chronological timeline of events, showing the attacker's
 
 ## Step 5: Hunt for unusual interpreter usage
 
-This query demonstrates how ESQL's [COUNT_DISTINCT](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) function and conditional [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) statements can be used to baseline interpreter usage patterns across users and departments, using aggregation functions to identify anomalous script execution that might indicate compromised accounts or insider threats.
+This query demonstrates how {{esql}}'s [COUNT_DISTINCT](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) function and conditional [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) statements can be used to baseline interpreter usage patterns across users and departments, using aggregation functions to identify anomalous script execution that might indicate compromised accounts or insider threats.
 
 ```esql
 FROM process-logs
@@ -507,7 +507,7 @@ BY user.name, user.department
 2. [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) enriches process data with user and asset context
 3. [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) functions measure the breadth of tool usage across systems
 4. [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) statement categorizes usage patterns for easier analysis
-5 Groups by user and department to identify anomalous behavior patterns
+5. Groups by user and department to identify anomalous behavior patterns
 
 **Response**
 
@@ -560,8 +560,8 @@ The response shows the number of task creations, creation hours, and persistence
 - Explore a curated collection of threat hunting [queries](https://github.com/elastic/detection-rules/tree/main/hunting) in the `elastic/detection-rules` GitHub repo.
   - The corresponding [blog](https://www.elastic.co/security-labs/elevate-your-threat-hunting) provides more information about how to use them in your threat hunting workflows.
 - Explore more threat hunting examples in the following blogs:
-  - [Detect and prevent data exfiltration with Elastic Security](https://www.elastic.co/blog/security-exfiltration)
+  - [Detect and prevent data exfiltration with {{elastic-sec}}](https://www.elastic.co/blog/security-exfiltration)
   - [Detecting command and scripting interpreter techniques](https://www.elastic.co/blog/detecting-command-scripting-interpreter)
-  - [Detecting credential dumping with Elastic Security](https://www.elastic.co/blog/elastic-security-detecting-credential-dumping)
+  - [Detecting credential dumping with {{elastic-sec}}](https://www.elastic.co/blog/elastic-security-detecting-credential-dumping)
   - [Detecting covert data exfiltration techniques](https://www.elastic.co/blog/elastic-security-detecting-covert-data-exfiltration)
 - Learn more about the [{{esql}}](elasticsearch://reference/query-languages/esql.md) language in the reference documentation.
