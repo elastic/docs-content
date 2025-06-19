@@ -19,9 +19,9 @@ Following a simulated Advanced Persistent Threat (APT) campaign, we analyze secu
 
 {{esql}} enables powerful transformations, filtering, enrichment, and statistical analysis, making it ideal for complex security investigations. This tutorial provides practical examples of how to leverage {{esql}} for threat hunting, from identifying suspicious user behavior to building attack timelines.
 
-## Requirements
-
-You need a running {{es}} cluster, together with {{kib}}. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
+::::{admonition} Requirements
+You need a running {{es}} cluster, together with {{kib}} to run this tutorial. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
+::::
 
 ## How to run {{esql}} queries
 
