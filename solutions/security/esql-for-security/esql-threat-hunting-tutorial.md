@@ -321,13 +321,12 @@ FROM process-logs
 | LIMIT 1000
 ```
 
-1. Uses [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) with exact match (using the [equality operator `==`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-equals)
-) and pattern match ([`LIKE`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-like)) operators to detect PowerShell processes spawned by Word
-2. Enriches process data with asset inventory using [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) to understand which business systems are affected
-3. Adds user context to identify the compromised user account and their privileges
-4. Creates a boolean field using [`EVAL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-eval) and [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) to detect base64-encoded PowerShell commands (`-enc` parameter), which attackers use to obfuscate malicious code
-5. Filters for only encoded commands using [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) on the computed field - focusing on suspicious PowerShell usage
-6. Aggregates results with [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) and [`COUNT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count) grouped `BY` multiple fields
+1. Uses [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) with [`==`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-equals) and [`LIKE`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-like) operators to detect PowerShell processes 
+2. Enriches using [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) with asset inventory
+3. Enriches with user context using `LOOKUP JOIN`
+4. Uses [`EVAL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-eval) and [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) to detect encoded commands
+5. Additional filtering with [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) 
+6. Aggregates results with [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) and [`COUNT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count) grouped by multiple fields
 
 **Response**
 
@@ -365,11 +364,11 @@ BY user.name <3>
 | LIMIT 1000
 ```
 
-1. Filters for successful remote logons (type 3) - key indicator for lateral movement detection
-2. Creates 30-minute time buckets to analyze temporal patterns in authentication activity
-3. Complex aggregation combining host uniqueness, criticality levels, and timing metrics
-4. Calculates attack duration using [`DATE_DIFF`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_diff) to measure campaign timespan
-5. Custom scoring formula weighing both breadth (systems accessed) and depth (criticality) of compromise
+1. Uses [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) for basic authentication filtering
+2. Creates time buckets with [`DATE_TRUNC`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_trunc) for temporal analysis
+3. Uses [`STATS`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-stats-by) with [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) for comprehensive access metrics
+4. Uses [`DATE_DIFF`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_diff) for duration calculations
+5. Uses [`EVAL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-eval) with [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case)for risk scoring
 
 **Response**
 
@@ -407,11 +406,11 @@ BY host.name, destination.ip, threat.name, asset.criticality
 | LIMIT 1000
 ```
 
-1. Uses [`CIDR_MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/ip-functions.md#esql-cidr_match) function with multiple CIDR ranges to efficiently filter out internal IP ranges at the IP type level
-2. Standardizes IP format for threat intel lookup join by casting to string type
-3. Uses [`DATE_DIFF`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_diff) to calculate duration of data transfer activities in hours
-4. Converts raw bytes to megabytes using division and [`ROUND`](elasticsearch://reference/query-languages/esql/functions-operators/math-functions.md#esql-round) for human-readable values
-5. Assigns risk scores based on asset criticality and data volume using nested [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) conditions
+1. Uses [`CIDR_MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/ip-functions.md#esql-cidr_match) to filter internal IP ranges for external data transfer detection
+2. Uses [`TO_STRING`](elasticsearch://reference/query-languages/esql/functions-operators/type-conversion-functions.md#esql-to_string) to standardize IP format for threat intel lookups
+3. Uses [`DATE_DIFF`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_diff) with `SUM` and `COUNT` to measure data transfer volume over time
+4. Uses [`ROUND`](elasticsearch://reference/query-languages/esql/functions-operators/math-functions.md#esql-round) for human-readable values
+5. Uses [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) for risk scoring based on asset criticality and size of data transferred
 
 **Response**
 
@@ -429,7 +428,7 @@ To understand the attack progression, we need to build a timeline of events acro
 
 
 ```esql
-FROM windows-security-logs, process-logs, network-logs
+FROM windows-security-logs, process-logs, network-logs <1>
 | LOOKUP JOIN asset-inventory ON host.name
 | LOOKUP JOIN user-context ON user.name
 | WHERE user.name == "jsmith" OR user.name == "admin"
@@ -437,7 +436,7 @@ FROM windows-security-logs, process-logs, network-logs
     event.code IS NOT NULL, "Authentication",
     process.name IS NOT NULL, "Process Execution",
     destination.ip IS NOT NULL, "Network Activity",
-    "Unknown")
+    "Unknown") <2>
 | EVAL dest_ip = TO_STRING(destination.ip)
 | EVAL attack_stage = CASE(
     process.parent.name LIKE "*word*", "Initial Compromise",
@@ -445,17 +444,16 @@ FROM windows-security-logs, process-logs, network-logs
     event.code == "4624" AND logon.type == "3", "Lateral Movement",
     process.name IN ("sqlcmd.exe", "ntdsutil.exe"), "Data Access",
     dest_ip NOT LIKE "10.*", "Exfiltration",
-    "Other")
-| SORT @timestamp ASC
+    "Other") <3>
+| SORT @timestamp ASC <4>
 | KEEP @timestamp, event_type, attack_stage, host.name, asset.criticality, user.name, process.name, destination.ip
 | LIMIT 1000
 ```
 
-1. Querying multiple indices simultaneously provides comprehensive event correlation
-2. Nested [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) with [`IS NOT NULL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#null-predicates) checks categorizes events by their source data structure
-3. Complex conditional logic maps technical events to attack framework stages ([MITRE ATT&CK](https://attack.mitre.org/)) for better understanding of the attack lifecycle
-4. `SORT ASC` uses the [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) command to order events by timestamp, which creates chronological ordering essential for timeline analysis
-
+1. Uses `FROM` with multiple indices for comprehensive correlation
+2. Uses [`IS NOT NULL`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#null-predicates) with [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) to classify event types from different data sources
+3. Uses complex [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) logic  to map events to MITRE ATT&CK stages
+4. Uses [`SORT`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-sort) to build chronological attack timeline
 **Response**
 
 The response provides a chronological timeline of events, showing the attacker's actions and the impact on the organization.
@@ -503,11 +501,10 @@ BY user.name, user.department
 | LIMIT 1000
 ```
 
-1. Filters for common system administration and reconnaissance tools
-2. [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) enriches process data with user and asset context
-3. [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) functions measure the breadth of tool usage across systems
-4. [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) statement categorizes usage patterns for easier analysis
-5. Groups by user and department to identify anomalous behavior patterns
+1. Uses `WHERE...IN` to monitor high-risk system tools
+2. Uses [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) with `asset-inventory` and `user-context` indices to enrich events with context
+3. Uses [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) to measure breadth of suspicious tool usage
+4. Uses [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case)to classify usage patterns for anomaly detection
 
 **Response**
 
@@ -540,11 +537,10 @@ BY user.name, host.name, asset.criticality
 | LIMIT 1000
 ```
 
-1. Uses [match operator (`:`)](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) in the `WHERE` clause with a wildcard search on the `process.command_line` field
-to find scheduled task creation commands, providing more flexible matching than exact string comparison
-2. Creates hourly time buckets with [`DATE_TRUNC`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_trunc) to analyze temporal patterns in persistence activity
-3. Measures temporal dispersion using [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) on time buckets to detect scheduled tasks created across multiple time periods
-4. Creates meaningful categorization of persistence patterns using [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) to identify potentially malicious task scheduling sequences (burst creation vs spread across time)
+1. Uses [`WHERE`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-where) with [`:`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) match operator to detect scheduled task creation (a common persistence mechanism)
+2. Uses [`DATE_TRUNC`](elasticsearch://reference/query-languages/esql/functions-operators/date-time-functions.md#esql-date_trunc) to group events into hourly time buckets for temporal analysis
+3. Uses [`COUNT_DISTINCT`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions.md#esql-count_distinct) with `time_bucket` to measure task creation velocity
+4. Uses [`CASE`](elasticsearch://reference/query-languages/esql/functions-operators/conditional-functions-and-expressions.md#esql-case) to classify suspicious patterns based on timing and frequency
 
 **Response**
 
