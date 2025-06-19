@@ -12,14 +12,14 @@ products:
 
 This example demonstrates how to use the {{ecloud}} RESTful API to claim different types of private link ID (AWS PrivateLink, Azure Private Link, and GCP Private Service Connect). We cover the following examples:
 
-* [Claim a VCP ID](#ec-claim-a-traffic-filter-link-id)
+* [Claim a VCPE ID](#ec-claim-a-traffic-filter-link-id)
 
     * [AWS PrivateLink](#ec-claim-aws-privatelink)
     * [Azure Private Link](#ec-claim-azure-private-link)
     * [GCP Private Service Connect](#ec-claim-gcp-private-service-connect)
 
-* [List claimed VCP IDs](#ec-list-claimed-traffic-filter-link-id)
-* [Unclaim a VCP ID](#ec-unclaim-a-traffic-filter-link-id)
+* [List claimed VCPE IDs](#ec-list-claimed-traffic-filter-link-id)
+* [Unclaim a VCPE ID](#ec-unclaim-a-traffic-filter-link-id)
 
     * [AWS PrivateLink](#ec-unclaim-aws-privatelink)
     * [Azure Private Link](#ec-unclaim-azure-private-link)
@@ -27,7 +27,7 @@ This example demonstrates how to use the {{ecloud}} RESTful API to claim differe
 
 
 
-## Claim a VCP ID [ec-claim-a-traffic-filter-link-id] 
+## Claim a VCPE ID [ec-claim-a-traffic-filter-link-id] 
 
 
 ### AWS PrivateLink [ec-claim-aws-privatelink] 
@@ -79,7 +79,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/link-ids/_claim 
 ```
 
 
-## List claimed VCP IDs [ec-list-claimed-traffic-filter-link-id] 
+## List claimed VCPE IDs [ec-list-claimed-traffic-filter-link-id] 
 
 ```sh
 curl \
@@ -89,7 +89,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/link-ids \
 ```
 
 
-## Unclaim a VCP ID [ec-unclaim-a-traffic-filter-link-id] 
+## Unclaim a VCPE ID [ec-unclaim-a-traffic-filter-link-id] 
 
 
 ### AWS PrivateLink [ec-unclaim-aws-privatelink] 

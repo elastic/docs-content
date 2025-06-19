@@ -13,7 +13,7 @@ products:
 
 Filtering by IP address or CIDR block is one of the security layers available in {{ece}}. It allows you to limit how your deployments can be accessed.
 
-You can only configure ingress or inbound IP filters**. These restrict access to your deployments from a set of IP addresses or CIDR blocks.
+You can only configure ingress or inbound IP filters. These restrict access to your deployments from a set of IP addresses or CIDR blocks.
 
 Follow the step described here to set up ingress or inbound IP filters through the Cloud UI.
 
