@@ -19,7 +19,7 @@ In this scenario, we're implementing search for a cooking blog. The blog contain
 
 ## Requirements
 
-You'll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
+You need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
 Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 
@@ -29,7 +29,7 @@ curl -fsSL https://elastic.co/start-local | sh
 
 ## Running {{esql}} queries
 
-In this tutorial, you'll see {{esql}} examples in the following format:
+In this tutorial, {{esql}} examples are displayed in the following format:
 
 ```esql
 FROM cooking_blog
@@ -37,7 +37,7 @@ FROM cooking_blog
 | LIMIT 1000
 ```
 
-If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you'll need to use the following syntax:
+If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you need to use the following syntax:
 
 ```console
 POST /_query?format=txt
@@ -147,14 +147,14 @@ POST /cooking_blog/_bulk?refresh=wait_for
 
 ## Step 3: Basic search operations
 
-Full-text search involves executing text-based queries across one or more document fields. In this section, we'll start with simple text matching and build up to understanding how search results are ranked.
+Full-text search involves executing text-based queries across one or more document fields. In this section, we start with simple text matching and build up to understanding how search results are ranked.
 
 {{esql}} provides multiple functions for full-text search, including `MATCH`, `MATCH_PHRASE`, and `QSTR`. For basic text matching, you can use either:
 
 1. Full [match function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) syntax: `match(field, "search terms")`
 2. Compact syntax using the [match operator `:`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator): `field:"search terms"`
 
-Both are equivalent for basic matching and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We'll use the compact syntax in most examples for brevity.
+Both are equivalent for basic matching and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We use the compact syntax in most examples for brevity.
 
 Refer to the [`MATCH` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) reference docs for advanced parameters available with the function syntax.
 
@@ -168,7 +168,7 @@ FROM cooking_blog
 | LIMIT 1000
 ```
 
-This query searches the `description` field for documents containing either "fluffy" OR "pancakes" (or both). By default, {{esql}} uses OR logic between search terms, so it will match documents that contain any of the specified words.
+This query searches the `description` field for documents containing either "fluffy" OR "pancakes" (or both). By default, {{esql}} uses OR logic between search terms, so it matches documents that contain any of the specified words.
 
 ### Control which fields appear in results
 
@@ -264,7 +264,7 @@ FROM cooking_blog
 | LIMIT 1000
 ```
 
-This query will only match documents where the words "rich" and "creamy" appear exactly in that order in the description field.
+This query only matches documents where the words "rich" and "creamy" appear exactly in that order in the description field.
 
 ## Step 5: Semantic search and hybrid search
 
