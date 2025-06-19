@@ -73,13 +73,13 @@ The performance impact of system maintenance depends on how well the deployment 
 
 High availability assumes not just redundancy in data and zones, but also the ability to absorb the loss or restart of a node without service disruption. As mentioned in [](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha):
 
+At a minimum, you should size your deployment to tolerate the temporary loss of one node in order to avoid single points of failure and ensure proper HA. For critical systems, ensure that the deployment can continue operating even in the event of losing an entire availability zone.
+
 ::::{admonition} Availability zones and performance
 Increasing the number of zones should not be used to add more resources. The concept of zones is meant for High Availability (2 zones) and Fault Tolerance (3 zones), but neither will work if the cluster relies on the resources from those zones to be operational.
 
 The recommendation is to **scale up the resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests)**, then scale out by adding additional zones depending on your requirements: 2 zones for High Availability, 3 zones for Fault Tolerance.
 ::::
-
-At a minimum, you should size your deployment to tolerate the temporary loss of one node in order to avoid single points of failure and ensure proper HA. For critical systems, ensure that the deployment can continue operating even in the event of losing an entire availability zone.
 
 
 ## Configure email notifications [email]
