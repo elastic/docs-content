@@ -64,7 +64,7 @@ $$$cluster-remote-node-attr$$$
 To use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode) to connect to a remote cluster, set `cluster.remote.<cluster_alias>.mode: proxy` and then configure the following settings.
 
 `cluster.remote.<cluster_alias>.proxy_address`
-:   The address used for all remote connections.
+:   The address used for all remote connections. A single address value, either an IP address or a fully qualified domain name (FQDN).
 
 `cluster.remote.<cluster_alias>.proxy_socket_connections`
 :   The number of socket connections to open per remote cluster. The default is `18`.
