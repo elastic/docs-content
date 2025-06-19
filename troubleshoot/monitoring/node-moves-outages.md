@@ -74,7 +74,7 @@ High availability assumes not just redundancy in data and zones, but also the ab
 
 At a minimum, you should size your deployment to tolerate the temporary loss of one node in order to avoid single points of failure and ensure proper HA. For critical systems, ensure that the deployment can continue operating even in the event of losing an entire availability zone.
 
-::::{admonition} Availability zones and performance
+::::{admonition} Availability zones and sizing recommendations
 Increasing the number of zones should not be used to add more resources. The concept of zones is meant for high availability (2 zones) and fault tolerance (3 zones), but neither will work if the cluster relies on the resources from those zones to be operational.
 
 You should to scale up the resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests), then scale out by adding additional zones depending on your requirements: 2 zones for high availability, 3 zones for fault tolerance.
