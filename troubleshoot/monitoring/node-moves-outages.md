@@ -91,7 +91,7 @@ You can configure email alerts for system maintenance by following the steps out
 
   * Create [Stack monitoring default rules](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md#_create_default_rules).
 
-  * (Optional) Configure an email [connector](kibana://connectors-kibana/email-action-type.md). If you prefer, use the preconfigured `Elastic-Cloud-SMTP` email connector.
+  * (Optional) Configure an email [connector](kibana://reference/connectors-kibana/email-action-type.md). If you prefer, use the preconfigured `Elastic-Cloud-SMTP` email connector.
 
   * Edit the rule  **Cluster alerting** > **{{es}} nodes changed** and select the email connector.
 
