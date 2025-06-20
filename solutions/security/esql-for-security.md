@@ -17,10 +17,9 @@ Use the following resources to get hands-on with the [Elasticsearch Query Langua
 
 ## Documentation
 
-To learn more about where you can use {{esql}} in {{elastic-sec}}, refer to the following pages:
+Learn how to:
 
-- Learn more about the [{{esql}}](elasticsearch://reference/query-languages/esql.md) language in the reference documentation.
-- Learn how to use the AI Assistant to [generate, customize, and understand {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md)
-- Learn how to use {{esql}} to investigate events in [Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline).
-- Learn how to [create detection rules using {{esql}}](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule)
-- Learn how to [convert Splunk SPL rules to {{esql}}](/solutions/security/get-started/automatic-migration.md) with Automatic Migration
+- [Generate and understand {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md) using the AI Assistant
+- [Investigate events in Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline) using {{esql}}
+- [Create detection rules](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule) using {{esql}}
+- [Convert Splunk SPL rules to {{esql}}](/solutions/security/get-started/automatic-migration.md) with Automatic Migration

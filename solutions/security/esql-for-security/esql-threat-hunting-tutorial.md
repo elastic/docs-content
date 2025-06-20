@@ -563,5 +563,5 @@ The response shows the number of task creations, creation hours, and persistence
 
 
 :::{tip}
-To learn how you can use {{esql}} in various {{elastic-sec}} contexts, refer to [the overview](/solutions/security/esql-for-security#documentation).
+To learn where you can use {{esql}} in {{elastic-sec}} contexts, refer to [the overview](/solutions/security/esql-for-security#documentation).
 :::
