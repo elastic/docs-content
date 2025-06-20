@@ -12,6 +12,10 @@ Review the changes, fixes, and more in each version of {{elastic-sec}}.
 
 To check for security updates, go to [Security announcements for the Elastic stack](https://discuss.elastic.co/c/announcements/security-announcements/31).
 
+:::{tip}
+{{elastic-sec}} runs on {{kib}}, so we recommend also reviewing the [{{kib}} release notes](kibana://release-notes/index.md) for relevant updates.
+:::
+
 % Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
 
 % ## version.next [elastic-security-X.X.X-notes]
@@ -20,7 +24,18 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % *
 
 % ### Fixes [elastic-security-X.X.X-fixes]
+
 % *
+
+## 9.0.2 [elastic-security-9.0.2-release-notes]
+
+### Features and enhancements [elastic-security-9.0.2-features-enhancements]
+There are no new features or enhancements.
+
+### Fixes [elastic-security-9.0.2-fixes]
+* Fixes a bug that caused an error message to appear when you changed entity asset criticality from the entity flyout [#219858]({{kib-pull}}219858)
+* Removes the technical preview badge from the alert suppression fields for event correlation rules
+* Fixes a bug in {{elastic-defend}} 8.16.0 where {{elastic-endpoint}} would incorrectly report some files as being `.NET`
 
 ## 9.0.1 [elastic-security-9.0.1-release-notes]
 

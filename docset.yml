@@ -70,6 +70,7 @@ toc:
   - toc: reference
   - toc: extend
   - file: archive.md
+  - file: versions.md
   - hidden: 404.md
 
 subs:
@@ -273,6 +274,7 @@ subs:
   fleet-server-pull:   "https://github.com/elastic/fleet-server/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
   stack-version: "9.0.0"
+  ece_version: "4.0.1"
   eck_version: "3.0.0"
   eck_release_branch: "3.0"
   eck_helm_minimum_version: "3.2.0"

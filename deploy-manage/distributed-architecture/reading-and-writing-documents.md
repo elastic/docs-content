@@ -16,7 +16,7 @@ Each index in {{es}} is [divided into shards](../../deploy-manage/index.md) and 
 
 Elasticsearch’s data replication model is based on the *primary-backup model* and is described very well in the [PacificA paper](https://www.microsoft.com/en-us/research/publication/pacifica-replication-in-log-based-distributed-storage-systems/) of Microsoft Research. That model is based on having a single copy from the replication group that acts as the primary shard. The other copies are called *replica shards*. The primary serves as the main entry point for all indexing operations. It is in charge of validating them and making sure they are correct. Once an index operation has been accepted by the primary, the primary is also responsible for replicating the operation to the other copies.
 
-This purpose of this section is to give a high level overview of the {{es}} replication model and discuss the implications it has for various interactions between write and read operations.
+The purpose of this section is to give a high level overview of the {{es}} replication model and discuss the implications it has for various interactions between write and read operations.
 
 ## Basic write model [basic-write-model]
 

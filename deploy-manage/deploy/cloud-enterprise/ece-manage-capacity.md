@@ -31,23 +31,26 @@ ECE does not support hot-adding of resources to a running node.  When increasing
 ::::
 
 
-To adjust the allocator capacity, prior to ECE 3.5.0; it is necessary to reinstall ECE on the host with a new value assigned to the `--capacity` parameter. From ECE 3.5.0 onwards, just use the ECE API :
+To adjust the allocator capacity prior to ECE 3.5.0, you must reinstall ECE on the host with a new value assigned to the `--capacity` parameter. Starting with ECE 3.5.0, you can update the allocator capacity using the [allocator settings ECE API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-allocator-settings). After making this change, you must restart the allocator service for it to take effect.
 
 ```sh
 curl -X PUT \
   http(s)://<ece_admin_url:port>/api/v1/platform/infrastructure/allocators/<allocator_id>/settings \
-  -H “Authorization: ApiKey $ECE_API_KEY” \
+  -H “Authorization: ApiKey $ECE_API_KEY” \ <1>
   -H 'Content-Type: application/json' \
   -d '{"capacity":<Capacity_Value_in_MB>}'
 ```
-
-For more information on how to use API keys for authentication, check the section [Access the API from the Command Line](cloud://reference/cloud-enterprise/ece-api-command-line.md).
+1. For information on how to use API keys for authentication, refer to [Access the API from the command line](cloud://reference/cloud-enterprise/ece-api-command-line.md).
 
 ::::{important}
-Prior to ECE 3.5.0, regardless of the use of this API, the [CPU quota](#ece-alloc-cpu) used the memory specified at installation time.
+When running ECE on Podman, CPU quotas for existing instances cannot be disabled or updated. As a result, changing an allocator’s capacity won’t affect the CPU quotas of already running containers.
 ::::
 
+After applying the change, log in to the allocator host you updated and restart the allocator service:
 
+```sh
+docker restart frc-allocators-allocator
+```
 
 ### Examples [ece_examples]
 
@@ -67,6 +70,9 @@ ECE uses CPU quotas to assign shares of the allocator host to the instances that
 
 `CPU quota = DeploymentRAM / HostCapacity`
 
+::::{important}
+In ECE versions prior to 3.5.0, the CPU quota is always calculated using the memory specified at installation time, even if you later update the host capacity using the API.
+::::
 
 ### Examples [ece_examples_2]
 
