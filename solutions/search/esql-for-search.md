@@ -25,13 +25,13 @@ The following table summarizes the key search features available in [{{esql}}](/
 
 | Feature | Description | Available since |
 |---------|-------------|----------------|
-| [Match function/operator](#esql-for-search-match-function-operator) | Perform basic text searches with `MATCH` function or match operator (`:`) | 8.17 |
-| [Match phrase function](#esql-for-search-match-phrase) | Perform phrase matching with `MATCH_PHRASE` function | 8.19/9.1 |
-| [Query string function](#esql-for-search-query-string) | Execute complex queries with `QSTR` using Query String syntax | 8.17 |
-| [Relevance scoring](#esql-for-search-scoring) | Calculate and sort by relevance with `METADATA _score` | 8.18/9.0 |
-| [Semantic search](#esql-for-search-semantic) | Perform semantic searches on `semantic_text` field types | 8.18/9.0 |
-| [Hybrid search](#esql-for-search-hybrid) | Combine lexical and semantic search approaches with custom weights | 8.18/9.0 |
-| [Kibana Query Language](#esql-for-search-kql) | Use Kibana Query Language with the `KQL` function | 8.18/9.0 |
+| [Match function/operator](#match-function-and-operator) | Perform basic text searches with `MATCH` function or match operator (`:`) | 8.17 |
+| [Match phrase function](#match_phrase-function) | Perform phrase matching with `MATCH_PHRASE` function | 8.19/9.1 |
+| [Query string function](#query-string-qstr-function) | Execute complex queries with `QSTR` using Query String syntax | 8.17 |
+| [Relevance scoring](#relevance-scoring) | Calculate and sort by relevance with `METADATA _score` | 8.18/9.0 |
+| [Semantic search](#semantic-search) | Perform semantic searches on `semantic_text` field types | 8.18/9.0 |
+| [Hybrid search](#hybrid-search) | Combine lexical and semantic search approaches with custom weights | 8.18/9.0 |
+| [Kibana Query Language](#kql-function) | Use Kibana Query Language with the `KQL` function | 8.18/9.0 |
 
 ## How search works in {{esql}}
 
