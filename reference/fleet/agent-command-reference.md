@@ -39,7 +39,7 @@ Note the following restrictions for running {{agent}} commands:
 * [unprivileged](#elastic-agent-unprivileged-command)
 * [version](#elastic-agent-version-command)
 
-<hr>
+
 
 ## elastic-agent diagnostics [elastic-agent-diagnostics-command]
 
