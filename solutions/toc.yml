@@ -657,5 +657,6 @@ toc:
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
+          - hidden: security/advanced-entity-analytics/privileged-user-monitoring.md
       - file: security/asset-management.md
       - file: security/apis.md
