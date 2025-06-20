@@ -18,3 +18,6 @@ foo=bar elastic-agent run
 
 The environment variable can be referenced as `${env.foo}`.
 
+::::{note}
+If you run the agent as a Linux or Windows service you can also define the env variables in the service manifest as shown in this [example](/reference/fleet/host-proxy-env-vars.md)
+::::
