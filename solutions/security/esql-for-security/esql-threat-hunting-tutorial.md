@@ -560,4 +560,8 @@ The response shows the number of task creations, creation hours, and persistence
   - [Detecting command and scripting interpreter techniques](https://www.elastic.co/blog/detecting-command-scripting-interpreter)
   - [Detecting credential dumping with {{elastic-sec}}](https://www.elastic.co/blog/elastic-security-detecting-credential-dumping)
   - [Detecting covert data exfiltration techniques](https://www.elastic.co/blog/elastic-security-detecting-covert-data-exfiltration)
-- Learn more about the [{{esql}}](elasticsearch://reference/query-languages/esql.md) language in the reference documentation.
+
+
+:::{tip}
+To learn how you can use {{esql}} in various {{elastic-sec}} contexts, refer to [the overview](/solutions/security/esql-for-security#documentation).
+:::
