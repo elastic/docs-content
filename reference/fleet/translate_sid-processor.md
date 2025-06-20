@@ -1,7 +1,10 @@
 ---
-navigation_title: "translate_sid"
+navigation_title: translate_sid
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/translate_sid-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Translate SID [translate_sid-processor]

@@ -1,13 +1,15 @@
 ---
-navigation_title: "Server logs"
+navigation_title: Server logs
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-kibana-server-logs.html
 applies_to:
   deployment:
     ess: all
     ece: all
     self: all
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-kibana-server-logs.html
+products:
+  - id: kibana
 ---
 
 # Using Kibana server logs [kibana-troubleshooting-kibana-server-logs]

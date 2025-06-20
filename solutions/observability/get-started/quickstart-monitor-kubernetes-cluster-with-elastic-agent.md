@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Quickstart: Monitor your Kubernetes cluster with {{agent}} [monitor-k8s-logs-metrics-with-elastic-agent]
@@ -14,7 +17,6 @@ In this quickstart guide, you’ll learn how to create the Kubernetes resources 
 This new approach requires minimal configuration and provides you with an easy setup to monitor your infrastructure. You no longer need to download, install, or configure the Elastic Agent, everything happens automatically when you run the kubectl command.
 
 The kubectl command installs the standalone Elastic Agent in your Kubernetes cluster, downloads all the Kubernetes resources needed to collect metrics from the cluster, and sends it to Elastic.
-
 
 ## Prerequisites [_prerequisites_2]
 

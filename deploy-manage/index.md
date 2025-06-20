@@ -5,6 +5,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack/current/index.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-deployments.html
   - https://www.elastic.co/guide/en/kibana/current/management.html
+products:
+  - id: kibana
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Deploy and manage

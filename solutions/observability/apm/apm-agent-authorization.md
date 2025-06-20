@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-auth.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # APM agent authorization [apm-agent-auth]

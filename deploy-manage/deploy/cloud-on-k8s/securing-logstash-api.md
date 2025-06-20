@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-securing-api.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-securing-api.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Securing Logstash API [k8s-logstash-securing-api]

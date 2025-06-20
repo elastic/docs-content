@@ -1,10 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/tags.html
   - https://www.elastic.co/guide/en/kibana/current/managing-tags.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Tags [managing-tags]

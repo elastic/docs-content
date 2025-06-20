@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/regions.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Regions [regions]
@@ -47,4 +49,6 @@ The following GCP regions are currently available:
 
 | Region | Name |
 | :--- | :--- |
+| asia-south1 | Mumbai |
+| europe-west1 | Belgium |
 | us-central1 | Iowa |

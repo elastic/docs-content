@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # {{es}} log4j configuration [logging]

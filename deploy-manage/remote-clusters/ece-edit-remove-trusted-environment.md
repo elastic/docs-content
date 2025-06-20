@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-edit-remove-trusted-environment.html
 applies_to:
   deployment:
     ece: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-edit-remove-trusted-environment.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Edit or remove a trusted environment [ece-edit-remove-trusted-environment]

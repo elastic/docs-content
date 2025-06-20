@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-settings.html#ece_logging_settings_legacy
+products:
+  - id: cloud-enterprise
 ---
 
 # APM settings for Elastic Cloud Enterprise [ece-manage-apm-settings]

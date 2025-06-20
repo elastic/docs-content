@@ -1,11 +1,13 @@
 ---
-navigation_title: "Deployment health warnings"
-applies_to:
-  deployment:
-    ess: all
+navigation_title: Deployment health warnings
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-deployment-no-op.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-deployment-no-op.html
+applies_to:
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Troubleshoot deployment health warnings [ec-deployment-no-op]

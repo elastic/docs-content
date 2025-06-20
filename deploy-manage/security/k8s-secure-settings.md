@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-secure-settings.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-es-secure-settings.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Secure settings on ECK

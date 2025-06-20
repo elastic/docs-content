@@ -7,6 +7,8 @@ applies_to:
     ece:
     eck:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Token-based authentication services [token-authentication-services]

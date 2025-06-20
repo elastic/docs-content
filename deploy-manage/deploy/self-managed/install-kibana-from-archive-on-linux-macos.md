@@ -1,13 +1,11 @@
 ---
-navigation_title: "Install from archive on Linux or macOS"
+navigation_title: Linux and MacOS
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/targz.html
+products:
+  - id: kibana
 sub:
- ipcommand: "ifconfig"
-navigation_title: "Linux and MacOS"
-applies_to:
-  deployment:
-    self:
+  ipcommand: ifconfig
 ---
 
 # Install {{kib}} from archive on Linux or macOS [targz]
@@ -105,7 +103,7 @@ By default, {{kib}} runs in the foreground, prints its logs to the standard outp
 
 ## Directory layout of `.tar.gz` archives [targz-layout]
 
-The `.tar.gz` packages are entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
+The `.tar.gz` packages are entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
 
 This is very convenient because you don’t have to create any directories to start using {{kib}}, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
 

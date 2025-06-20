@@ -1,7 +1,10 @@
 ---
-navigation_title: "Command reference"
+navigation_title: Command reference
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{agent}} command reference [elastic-agent-cmd-options]
@@ -36,7 +39,7 @@ Note the following restrictions for running {{agent}} commands:
 * [unprivileged](#elastic-agent-unprivileged-command)
 * [version](#elastic-agent-version-command)
 
-<hr>
+
 
 ## elastic-agent diagnostics [elastic-agent-diagnostics-command]
 
@@ -102,7 +105,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent diagnostics
 ```
 
-<hr>
 
 ## elastic-agent enroll [elastic-agent-enroll-command]
 
@@ -378,7 +380,6 @@ elastic-agent enroll --url=https://fleet-server:8220 \
   --certificate-authorities=/path/to/ca.crt
 ```
 
-<hr>
 
 ## elastic-agent help [elastic-agent-help-command]
 
@@ -409,7 +410,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent help enroll
 ```
 
-<hr>
 
 ## elastic-agent inspect [elastic-agent-inspect-command]
 
@@ -455,7 +455,6 @@ elastic-agent inspect components --show-config
 elastic-agent inspect components log-default
 ```
 
-<hr>
 
 ## elastic-agent privileged [elastic-agent-privileged-command]
 
@@ -470,7 +469,6 @@ Refer to [Run {{agent}} without administrative privileges](/reference/fleet/elas
 elastic-agent privileged
 ```
 
-<hr>
 
 ## elastic-agent install [elastic-agent-install-command]
 
@@ -777,17 +775,10 @@ elastic-agent install --url=https://fleet-server:8220 \
   --certificate-authorities=/path/to/ca.crt
 ```
 
-<hr>
 
 ## elastic-agent otel [elastic-agent-otel-command]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
-Run {{agent}} as an [OpenTelemetry Collector](/reference/fleet/otel-agent.md).
-
+Run {{agent}} as an [Elastic Distribution of OpenTelemetry Collector (EDOT Collector)](/reference/fleet/otel-agent.md).
 
 ### Synopsis [_synopsis_6]
 
@@ -799,7 +790,6 @@ elastic-agent otel [command]
 ::::{note}
 You can also run the `./otelcol` command, which calls `./elastic-agent otel` and passes any arguments to it.
 ::::
-
 
 
 ### Available commands [_available_commands]
@@ -825,19 +815,18 @@ You can also run the `./otelcol` command, which calls `./elastic-agent otel` and
 
 ### Examples [_examples_15]
 
-Run {{agent}} as on OTel Collector using the supplied `otel.yml` configuration file.
+Run {{agent}} as an EDOT Collector using the supplied `otel.yml` configuration file.
 
 ```shell
 ./elastic-agent otel --config otel.yml
 ```
 
-Change the default verbosity setting in the {{agent}} OTel configuration from `detailed` to `normal`.
+Change the default verbosity setting in the {{agent}} EDOT Collector configuration from `detailed` to `normal`.
 
 ```shell
 ./elastic-agent otel --config otel.yml --set "exporters::debug::verbosity=normal"
 ```
 
-<hr>
 
 ## elastic-agent restart [elastic-agent-restart-command]
 
@@ -865,7 +854,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent restart
 ```
 
-<hr>
 
 ## elastic-agent run [elastic-agent-run-command]
 
@@ -914,7 +902,6 @@ These flags are valid whenever you run `elastic-agent` on the command line.
 elastic-agent run -c myagentconfig.yml
 ```
 
-<hr>
 
 ## elastic-agent status [elastic-agent-status-command]
 
@@ -962,7 +949,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent status
 ```
 
-<hr>
 
 ## elastic-agent uninstall [elastic-agent-uninstall-command]
 
@@ -1045,7 +1031,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent uninstall
 ```
 
-<hr>
 
 ## elastic-agent unprivileged [elastic-agent-unprivileged-command]
 
@@ -1076,7 +1061,6 @@ elastic-agent unprivileged --user="my.pathl\username" --password="mypassword"
 elastic-agent unprivileged --group="my.pathl\groupname" --password="mypassword"
 ```
 
-<hr>
 
 ## elastic-agent upgrade [elastic-agent-upgrade-command]
 
@@ -1121,7 +1105,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent upgrade 7.10.1
 ```
 
-<hr>
 
 ## elastic-agent logs [elastic-agent-logs-command]
 
@@ -1161,7 +1144,6 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 elastic-agent logs -n 100 -f -C "system/metrics-default"
 ```
 
-<hr>
 
 ## elastic-agent version [elastic-agent-version-command]
 
@@ -1188,5 +1170,3 @@ For more flags, see [Global flags](#elastic-agent-global-flags).
 ```shell
 elastic-agent version
 ```
-
-<hr>

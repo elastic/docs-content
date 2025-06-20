@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-prereqs.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-prereqs.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Prepare your environment [ece-prereqs]

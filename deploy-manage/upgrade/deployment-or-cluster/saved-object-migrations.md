@@ -8,6 +8,8 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: kibana
 ---
 
 # Saved object migrations [saved-object-migrations]

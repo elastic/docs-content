@@ -1,9 +1,12 @@
 ---
-navigation_title: "Real User Monitoring (RUM)"
+navigation_title: Real User Monitoring (RUM)
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-rum.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Configure Real User Monitoring (RUM) [apm-configuration-rum]

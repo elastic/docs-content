@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/near-real-time.html
 applies_to:
   stack:
+products:
+  - id: elasticsearch
 ---
 
 # Near real-time search [near-real-time]
@@ -19,7 +21,7 @@ Sitting between {{es}} and the disk is the filesystem cache. Documents in the in
 :name: img-pre-refresh
 :::
 
-Lucene allows new segments to be written and opened, making the documents they contain visible to search ​without performing a full commit. This is a much lighter process than a commit to disk, and can be done frequently without degrading performance.
+Lucene allows new segments to be written and opened, making the documents they contain visible to search without performing a full commit. This is a much lighter process than a commit to disk, and can be done frequently without degrading performance.
 
 :::{image} /manage-data/images/elasticsearch-reference-lucene-written-not-committed.png
 :alt: The buffer contents are written to a segment, which is searchable, but is not yet committed

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/remote-elasticsearch-output.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Remote Elasticsearch output [remote-elasticsearch-output]
@@ -10,11 +13,15 @@ Remote {{es}} outputs allow you to send {{agent}} data to a remote {{es}} cluste
 A remote {{es}} cluster supports the same [output settings](/reference/fleet/es-output-settings.md) as your main {{es}} cluster.
 
 ::::{note}
-Note the following restrictions with the remote {es} output:
+This feature is part of the Enterprise subscription offering under the name of **Per Integration output assignment**. Refer to [Subscriptions](https://www.elastic.co/subscriptions) for more information.
+::::
+
+## Limitations
+
+These limitations apply to remote {{es}} output:
 
 * Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
 * Using {{elastic-defend}} is currently not supported when a remote {{es}} output is configured for an agent.
-::::
 
 ## Configuration
 

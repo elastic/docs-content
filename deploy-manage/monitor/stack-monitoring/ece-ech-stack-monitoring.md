@@ -1,5 +1,5 @@
 ---
-navigation_title: "Enable on ECH and ECE"
+navigation_title: Enable on ECH and ECE
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-logging-and-monitoring.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restrictions-monitoring.html
@@ -13,6 +13,9 @@ applies_to:
   deployment:
     ece: all
     ess: all
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Enable stack monitoring on ECH and ECE deployments
@@ -26,11 +29,11 @@ Monitoring consists of two components:
 
 * A monitoring and logging agent that is installed on each node in your deployment. The agents collect and index metrics to {{es}}, either on the same deployment or by sending logs and metrics to an external monitoring deployment. Elastic manages the installation and configuration of the monitoring agent for you, and you should not modify any of the settings.
 * The stack monitoring application in {{kib}} that visualizes the monitoring metrics through a dashboard, and the logs application that allows you to search and analyze deployment logs.
-  
+
 With logging and monitoring enabled for a deployment, metrics are collected for {{es}}, {{kib}}, and APM with Fleet Server.
 
 :::{admonition} Simplify monitoring with AutoOps
-If you’re using {{ech}}, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. 
+If you’re using {{ech}}, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths.
 
 For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 :::

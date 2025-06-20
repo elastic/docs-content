@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/project-settings-content.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/project-settings-content.html
+products:
+  - id: cloud-serverless
 ---
 
 # Find and organize content

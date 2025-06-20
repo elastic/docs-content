@@ -7,6 +7,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Deploy an {{es}} cluster

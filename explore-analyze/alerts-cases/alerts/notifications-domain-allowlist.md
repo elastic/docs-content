@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-organizations-notifications-domain-allowlist.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-organizations-notifications-domain-allowlist.html
+products:
+  - id: cloud-hosted
 ---
 
 # Notifications domain allowlist [organizations-notifications-domain-allowlist]

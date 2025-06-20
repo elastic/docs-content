@@ -1,15 +1,18 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Searches
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
   - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Troubleshoot searches [troubleshooting-searches]

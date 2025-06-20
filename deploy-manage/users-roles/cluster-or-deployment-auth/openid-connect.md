@@ -1,17 +1,21 @@
 ---
+navigation_title: OpenID Connect
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-realm.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-secure-clusters-oidc.html
   - https://www.elastic.co/guide/en/cloud/current/ec-secure-clusters-oidc.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-oidc.html
-navigation_title: OpenID Connect
 applies_to:
   deployment:
     self:
     ess:
     ece:
     eck:
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # OpenID Connect authentication [oidc-realm]
@@ -165,7 +169,7 @@ This realm has a few mandatory settings, and a number of optional settings. The 
 1. Set the `Client Secret` that was assigned to the RP during registration in the OP.  To set the client secret, add the `xpack.security.authc.realms.oidc.<oidc1>.rp.client_secret` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md).
 
 :::{warning}
-In {{ech}} and {{ece}}, after you configure Client Secret, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you want to roll back the Active Directory realm configurations, you need to remove the `xpack.security.authc.realms.oidc.oidc1.rp.client_secret` that was just added.
+In {{ech}} and {{ece}}, after you configure Client Secret, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you want to roll back the OpenID Connect realm configurations, you need to remove the `xpack.security.authc.realms.oidc.oidc1.rp.client_secret` that was just added.
 :::
 
 ::::{note}

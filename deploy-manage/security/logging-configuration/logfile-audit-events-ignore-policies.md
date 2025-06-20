@@ -9,6 +9,8 @@ applies_to:
     eck: all
     self: all
   serverless: unavailable
+products:
+  - id: elasticsearch
 ---
 
 # {{es}} audit events ignore policies [audit-log-ignore-policy]

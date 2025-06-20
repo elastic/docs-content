@@ -1,10 +1,12 @@
 ---
-navigation_title: "Node moves and outages"
+navigation_title: Node moves and outages
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-deployment-node-move.html
 applies_to:
   deployment:
     ess: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-deployment-node-move.html
+products:
+  - id: cloud-hosted
 ---
 
 # Troubleshoot node moves and outages [ec-deployment-node-move]

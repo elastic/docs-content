@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/config-file-examples.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Config file examples [config-file-examples]

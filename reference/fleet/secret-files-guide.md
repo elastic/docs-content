@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/secret-files-guide.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Secret files guide [secret-files-guide]

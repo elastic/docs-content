@@ -3,7 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-index-lifecycle-management.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Automate rollover [getting-started-index-lifecycle-management]

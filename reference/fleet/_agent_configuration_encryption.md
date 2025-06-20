@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/_elastic_agent_configuration_encryption.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{agent}} configuration encryption [_agent_configuration_encryption]

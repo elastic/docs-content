@@ -1,10 +1,13 @@
 ---
-navigation_title: "Compare Cloud Hosted and Serverless"
+navigation_title: Compare Cloud Hosted and Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-differences.html
 applies_to:
   serverless:
-  ess:
+  deployment:
+    ess:
+products:
+  - id: cloud-serverless
 ---
 
 # Compare {{ech}} and Serverless [elasticsearch-differences]
@@ -31,6 +34,7 @@ The information below reflects our strategic goals, plans and objectives and inc
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
 | **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
 | **Solutions** | Full {{stack}} per deployment | Single solution per project |
+| **Cross-origin resource sharing (CORS)** | Supported | Not available. Browser-based applications must route requests through a backend proxy server. |
 
 In Serverless, Elastic automatically manages:
 * Cluster scaling and optimization

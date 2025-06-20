@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: cloud-enterprise
 ---
 
 # Air gapped install

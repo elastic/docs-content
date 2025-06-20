@@ -1,4 +1,5 @@
 ---
+navigation_title: Map users and groups to roles
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html
   - https://www.elastic.co/guide/en/kibana/current/role-mappings.html
@@ -8,7 +9,9 @@ applies_to:
     eck:
     ess:
     self:
-navigation_title: Map users and groups to roles
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Map external users and groups to roles [mapping-roles]

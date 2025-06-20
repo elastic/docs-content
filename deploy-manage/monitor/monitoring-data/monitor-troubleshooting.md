@@ -1,10 +1,12 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: Troubleshooting
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitor-troubleshooting.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: kibana
 ---
 
 % this page probably needs to be moved
