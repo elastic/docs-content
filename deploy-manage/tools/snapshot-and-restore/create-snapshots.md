@@ -199,7 +199,7 @@ For example, you can change the schedule, or snapshot retention related configur
 ![change snapshot retention](/manage-data/images/elasticsearch-reference-change-slm-snapshot-retention.png)
 
 
-You can also update {{slm-init}} policy using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm), as described in [Create an {{slm-init}} policy](#create-slm-policy).
+You can also update an {{slm-init}} policy using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm), as described in [Create an {{slm-init}} policy](#create-slm-policy).
 
 
 ## Manually create a snapshot [manually-create-snapshot]
