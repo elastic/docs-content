@@ -9,7 +9,7 @@ products:
 
 # {{esql}} for security use cases
 
-Use the following resources to get hands-on with the [Elasticsearch Query Language ({{esql}})](elasticsearch://reference/query-languages/esql.md) for cybersecurity use cases.
+Use the following resources to learn about using the [Elasticsearch Query Language ({{esql}})](elasticsearch://reference/query-languages/esql.md) for cybersecurity use cases.
 
 ## Tutorials
 
