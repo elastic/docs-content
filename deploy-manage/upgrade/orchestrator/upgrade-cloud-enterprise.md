@@ -27,16 +27,16 @@ During the upgrade window, there might be a short period of time during which yo
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]
 
-The following table shows the recommended upgrade paths from older {{ece}} versions to 4.0.0.
+The following table shows the recommended upgrade paths from older {{ece}} versions to {{ece_version}}.
 
 | Upgrade from | Recommended upgrade path to 4.0 |
 | --- | --- |
-| Any 3.x version | 1. Upgrade to 3.8.0<br>2. Upgrade to 4.0.0<br> |
-| 2.13 | 1. Upgrade to 3.8.0<br>2. Upgrade to 4.0.0<br> |
-| 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to 4.0.0<br> |
-| 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to 4.0.0<br> |
+| Any 3.x version | 1. Upgrade to 3.8.0<br>2. Upgrade to {{ece_version}}<br> |
+| 2.13 | 1. Upgrade to 3.8.0<br>2. Upgrade to {{ece_version}}<br> |
+| 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to {{ece_version}}<br> |
+| 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to {{ece_version}}<br> |
 
-If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to 4.0.0:
+If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to {{ece_version}}:
 - [ECE 2.5 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.5/ece-upgrade.html)
 - [ECE 2.13 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.13/ece-upgrade.html)
   
@@ -141,8 +141,8 @@ You can follow along while each container for {{ece}} is upgraded on the hosts t
 
 By default, ECE updates to the most current available version. If you want to upgrade to a specific ECE version, use the `--cloud-enterprise-version` option:
 
-```sh
-bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --user admin --pass $PASSWORD --cloud-enterprise-version 4.0.0
+```sh subs=true
+bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --user admin --pass $PASSWORD --cloud-enterprise-version {{ece_version}}
 ```
 
 
