@@ -1,5 +1,5 @@
 ---
-navigation_title: Centrally configure APM agents in Kibana
+navigation_title: Centrally configure APM agents and EDOT SDKs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html
 applies_to:
@@ -9,20 +9,22 @@ products:
   - id: apm
 ---
 
-# APM agent central configuration [apm-agent-configuration]
+# APM central configuration [apm-agent-configuration]
 
-APM Agent configuration allows you to fine-tune your APM agent configuration from within the Applications UI. Changes are automatically propagated to your APM agents, so there’s no need to redeploy.
+APM central configuration allows you to fine-tune your APM agents and EDOT SDKs from within the Applications UI. Changes are automatically propagated to your agents and SDKs, so there’s no need to redeploy.
 
-To get started, choose the services and environments you wish to configure. The Applications UI will let you know when your APM agents have applied your configurations.
+To get started, choose the services and environments you wish to configure. The Applications UI will let you know when your APM agents and SDKs have applied your configurations.
+
+Refer to [EDOT SDK central configuration](opentelemetry://reference/central-configuration.md) for more information on EDOT SDKs.
 
 :::{image} /solutions/images/observability-apm-agent-configuration.png
-:alt: APM Agent configuration in Kibana
+:alt: APM central configuration in Kibana
 :screenshot:
 :::
 
 ## Precedence [_precedence]
 
-Configurations set from the Applications UI take precedence over configurations set locally in each APM agent. However, if APM Server is slow to respond, is offline, reports an error, etc., APM agents will use local defaults until they’re able to update the configuration. For this reason, it is still essential to set custom default configurations locally in each of your APM agents.
+Configurations set from the Applications UI take precedence over configurations set locally in each APM agent or EDOT SDK. However, if APM Server is slow to respond, is offline, reports an error, etc., agents and SDKs will use local defaults until they’re able to update the configuration. For this reason, it is still essential to set custom default configurations locally in each of your APM agents and EDOT SDKs.
 
 ## Supported configurations [_supported_configurations]
 
@@ -30,35 +32,22 @@ Each APM agent has a list of supported configurations. After selecting a Service
 
 Supported configurations are also tagged with the ![dynamic config](/solutions/images/observability-dynamic-config.svg "") badge in each APM agent’s configuration reference:
 
-Android agent
-:   [Configuration reference](apm-agent-android://reference/configuration.md)
-
-Go agent
-:   [Configuration reference](apm-agent-go://reference/configuration.md)
-
-iOS agent
-:   [Configuration reference](apm-agent-ios://reference/configuration.md)
-
-Java agent
-:   [Configuration reference](apm-agent-java://reference/configuration.md)
-
-.NET agent
-:   [Configuration reference](apm-agent-dotnet://reference/configuration.md)
-
-Node.js agent
-:   [Configuration reference](apm-agent-nodejs://reference/configuration.md)
-
-PHP agent
-:   [Configuration reference](apm-agent-php://reference/configuration.md)
-
-Python agent
-:   [Configuration reference](apm-agent-python://reference/configuration.md)
-
-Ruby agent
-:   [Configuration reference](apm-agent-ruby://reference/configuration.md)
-
-Real User Monitoring (RUM) agent
-:   [Configuration reference](apm-agent-rum-js://reference/configuration.md)
+| Language/Platform | Agent/SDK | Configuration Reference |
+| --- | --- | --- |
+| Android | EDOT Android SDK | [Configuration reference](opentelemetry://reference/edot-sdks/android/configuration.md) |
+| Go | APM Go Agent | [Configuration reference](apm-agent-go://reference/configuration.md) |
+| iOS | EDOT iOS SDK | [Configuration reference](opentelemetry://reference/edot-sdks/ios/configuration.md) |
+| Java | APM Java Agent | [Configuration reference](apm-agent-java://reference/configuration.md) |
+| Java | EDOT Java SDK | [Configuration reference](opentelemetry://reference/edot-sdks/java/configuration.md) |
+| .NET | APM .NET Agent | [Configuration reference](apm-agent-dotnet://reference/configuration.md) |
+| Node.js | APM Node.js Agent | [Configuration reference](apm-agent-nodejs://reference/configuration.md) |
+| Node.js | EDOT Node.js SDK | [Configuration reference](opentelemetry://reference/edot-sdks/nodejs/configuration.md) |
+| PHP | APM PHP Agent | [Configuration reference](apm-agent-php://reference/configuration.md) |
+| PHP | EDOT PHP SDK | [Configuration reference](opentelemetry://reference/edot-sdks/php/configuration.md) |
+| Python | APM Python Agent | [Configuration reference](apm-agent-python://reference/configuration.md) |
+| Python | EDOT Python SDK | [Configuration reference](opentelemetry://reference/edot-sdks/python/configuration.md) |
+| Ruby | APM Ruby Agent | [Configuration reference](apm-agent-ruby://reference/configuration.md) |
+| Real User Monitoring (RUM) | APM RUM Agent | [Configuration reference](apm-agent-rum-js://reference/configuration.md) |
 
 ## APM Server configuration [_apm_server_configuration]
 
