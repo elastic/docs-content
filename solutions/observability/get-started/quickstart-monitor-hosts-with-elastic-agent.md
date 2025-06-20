@@ -48,7 +48,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 :sync: serverless
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
-* An Elastic deployment. If you don’t have one yet, navigate to [cloud.elastic.co](https://cloud.elastic.co/). Within **Hosted deployments**, click **Create hosted deployment**.
+* An Elastic deployment. If you don’t have one yet, go to [cloud.elastic.co](https://cloud.elastic.co/). Within **Hosted deployments**, select **Create hosted deployment**.
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Root privileges on the host—required to run the auto-detection script used in this quickstart.
 
