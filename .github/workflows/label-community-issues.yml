@@ -1,0 +1,51 @@
+name: Label Community Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  label-community-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    
+    steps:
+      - name: Check if user is organization member and label accordingly
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue;
+            const issueAuthor = issue.user.login;
+            const orgName = 'elastic';
+            
+            try {
+              // Check if the user is a member of the elastic organization
+              await github.rest.orgs.getMembershipForUser({
+                org: orgName,
+                username: issueAuthor
+              });
+              
+              console.log(`${issueAuthor} is a member of ${orgName} organization`);
+              
+            } catch (error) {
+              // If the API call fails, it means the user is not a public member
+              // or not a member at all of the organization
+              if (error.status === 404) {
+                console.log(`${issueAuthor} is not a public member of ${orgName} organization`);
+                
+                // Add the "community" label
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  labels: ['community']
+                });
+                
+                console.log('Added "community" label to the issue');
+              } else {
+                console.log('Error checking organization membership:', error);
+              }
+            }
