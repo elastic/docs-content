@@ -15,7 +15,7 @@ The Elasticsearch Query Language, {{esql}}, makes it easier to explore your data
 The examples on this page use the {{kib}} sample web logs in Discover and Lens to explore the data and create visualizations. You can also install it by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
 ::::{tip}
-For the complete {{esql}} documentation, refer to the [{{esql}} documentation](../query-filter/languages/esql.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
+For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
 
 ::::
 
@@ -133,11 +133,4 @@ FROM kibana_sample_data_ecommerce
 :::{image} /explore-analyze/images/kibana-esql-custom-time-series.png
 :alt: ESQL query with a custom time field enabled
 :::
-
-
-### ES|QL and LOOKUP JOINs
-
-The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
-
-![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 
