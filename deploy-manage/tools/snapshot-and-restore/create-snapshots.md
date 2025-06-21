@@ -189,7 +189,7 @@ A snapshot repository can safely scale to thousands of snapshots. However, to ma
 
 ### Update an existing {{slm-init}} policy [update-slm-policy]
 
-You can update an existing {{slm-init}} policy after it's created. To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**, click the pencil icon, and make the desired change. 
+You can update an existing {{slm-init}} policy after it's created. To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**, click **Edit** `✎`, and make the desired change. 
 
 For example, you can change the schedule, or snapshot retention related configurations.
 
