@@ -83,7 +83,7 @@ You should to scale up the resources within a single zone until the cluster can 
 
 ## Configure email notifications [configure-email-notification]
 
-You can configure email alerts for system maintenance by following the steps outlined below: 
+You can configure email alerts for system maintenance by following these steps: 
 
 1. Enable [Stack monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#enable-logging-and-monitoring-steps) (logs and metrics) on your deployment. Only metrics collection is required for these notifications to work.
 
