@@ -9,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Understanding node moves and system maintenance [maintenance]
+# Understanding node moves and system maintenance [node-moves-system-maintenance]
 
 To ensure that your deployment nodes are located on healthy hosts, Elastic vacates nodes to perform essential system maintenance or to remove a host with hardware issues from service. These tasks cannot be skipped or delayed.
 
