@@ -191,7 +191,7 @@ A snapshot repository can safely scale to thousands of snapshots. However, to ma
 
 You can update an existing {{slm-init}} policy after it's created. To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Policies**, click **Edit** `✎`, and make the desired change. 
 
-For example, you can change the schedule, or snapshot retention related configurations.
+For example, you can change the schedule, or snapshot retention-related configurations.
 
 
 ![change schedule](/manage-data/images/elasticsearch-reference-change-slm-schedule.png)
