@@ -61,7 +61,7 @@ The system maintenance process always attempts to recover the vacated node's dat
 Configuring multiple availability zones helps your deployment remain available for indexing and search requests if one zone becomes unavailable. However, this alone does not guarantee data availability. If an index has no replica shards and its primary shard is located on a node that must be vacated, data loss may occur if the system is unable to move the node gracefully during the maintenance activity. To ensure that your data remains accessible, indices must be configured with [replica shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
 
 Therefore, to minimize this risk, ensure your deployment follows the [high availability best practices](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha):
-- Using at least two availability zones for production systems, and three for mission-critical systems.
+- Use at least two availability zones for production systems, and three for mission-critical systems.
 - Configuring one or more replicas for each index, except for searchable snapshot indices.
 
 As long as these recommendations are followed, system maintenance processes should not impact the availability of the data in the deployment.
