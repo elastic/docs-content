@@ -36,7 +36,7 @@ Potential causes of system maintenance include, but not limited to, situations l
 * Mandatory host operating system (OS) patching or upgrades for security or compliance reasons.
 * Other scheduled maintenance announced on the [Elastic status page](https://status.elastic.co/).
 
-## Behavior difference [difference]
+## Behavior difference [behavior-difference]
 
 Depending on the cause, the maintenance behaviors may differ.
 
