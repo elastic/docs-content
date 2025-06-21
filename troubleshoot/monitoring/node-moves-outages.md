@@ -70,7 +70,7 @@ As long as these recommendations are followed, system maintenance processes shou
 
 The performance impact of system maintenance depends on how well the deployment is sized. Well-provisioned deployments with sufficient buffer capacity typically remain unaffected, while deployments already operating near their limits may experience slowdowns, or even intermittent request failures, during node vacating.
 
-High availability assumes not just redundancy in data and zones, but also the ability to absorb the loss or restart of a node without service disruption. To learn more, review [plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha).
+High availability assumes not just redundancy in data and zones, but also the ability to absorb the loss or restart of a node without service disruption. To learn more, check the [plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha).
 
 At a minimum, you should size your deployment to tolerate the temporary loss of one node in order to avoid single points of failure and ensure proper HA. For critical systems, ensure that the deployment can continue operating even in the event of losing an entire availability zone.
 
