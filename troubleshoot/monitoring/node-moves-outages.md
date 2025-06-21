@@ -96,6 +96,6 @@ You can configure email alerts for system maintenance by following these steps:
   * Edit the rule  **Cluster alerting** > **{{es}} nodes changed** and select the email connector.
 
 ::::{note}
-If you have only one master node in your cluster, no notification will be sent during the master node vacate. {{kib}} needs to communicate with the master node in order to send a notification. One way to avoid this is by shipping your deployment metrics to a dedicated monitoring cluster when you enable logging and monitoring.
+If you have only one master node in your cluster, no notification will be sent during the master node vacate. {{kib}} needs to communicate with the master node in order to send a notification. You can avoid this by shipping your deployment metrics to a dedicated monitoring cluster when you enable logging and monitoring.
 ::::
 
