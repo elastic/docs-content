@@ -62,7 +62,7 @@ Configuring multiple availability zones helps your deployment remain available f
 
 Therefore, to minimize this risk, ensure your deployment follows the [high availability best practices](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha):
 - Use at least two availability zones for production systems, and three for mission-critical systems.
-- Configuring one or more replicas for each index, except for searchable snapshot indices.
+- Configure one or more replicas for each index, except for searchable snapshot indices.
 
 As long as these recommendations are followed, system maintenance processes should not impact the availability of the data in the deployment.
 
