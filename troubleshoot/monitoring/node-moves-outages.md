@@ -27,7 +27,7 @@ Move nodes off of allocator [allocator_id] due to essential system maintenance.
 You can also [configure email notifications](#email) to be alerted when this situation occurs.
 ::::
 
-## Possible causes [cause]
+## Possible causes [possible-cause]
 
 Potential causes of system maintenance include, but not limited to, situations like the following:
 
