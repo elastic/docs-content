@@ -13,7 +13,7 @@ products:
 
 To ensure that your deployment nodes are located on healthy hosts, Elastic vacates nodes to perform essential system maintenance or to remove a host with hardware issues from service. These tasks cannot be skipped or delayed.
 
-All major scheduled maintenance and incidents can be found on the Elastic [status page](https://status.elastic.co/). You can subscribe to that page to be notified about planned maintenance or actions that have been taken to respond to incidents.
+You can subscribe to the [status page](https://status.elastic.co/) to be notified about planned maintenance or actions that have been taken to respond to incidents.
 
 If events on your deployment don’t correlate to any items listed on the status page, the events are due to minor essential maintenance performed on only a subset of {{ech}} deployments.
 
