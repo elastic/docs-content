@@ -81,7 +81,7 @@ You should to scale up the resources within a single zone until the cluster can 
 ::::
 
 
-## Configure email notifications [email]
+## Configure email notifications [configure-email-notification]
 
 You can configure email alerts for system maintenance by following the steps outlined below: 
 
