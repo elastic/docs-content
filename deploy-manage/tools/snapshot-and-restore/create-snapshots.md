@@ -256,7 +256,7 @@ GET _slm/policy/nightly-snapshots
 
 ## Delete or cancel a snapshot [delete-snapshot]
 
-To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the trash icon under the **Actions** column. To delete multiple snapshots at once, select the snapshots first, and then click `Delete snapshots` button. 
+To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the trash icon under the **Actions** column. To delete multiple snapshots at once, select the snapshots from the list and then click **Delete snaphshots**. 
 
 ![delete snapshot](/manage-data/images/elasticsearch-reference-delete-snapshots.png)
 
