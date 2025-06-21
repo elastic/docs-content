@@ -46,7 +46,7 @@ Depending on the cause, the maintenance behaviors may differ.
 
 ## Impact and mitigation [impact-mitigation]
 
-The following sections describe the expectations and considerations during system maintenance, such as how your deployment behaves during maintenance, how to reduce risks such as data loss, and how to stay informed. 
+The following sections describe how your deployment behaves during maintenance, how to reduce risks of data loss, and how to stay informed. 
 
 ### Service availability
 
