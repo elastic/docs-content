@@ -18,7 +18,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *How long to wait for agent connectivity before sending first policy reply, in seconds. Default: `60`.*
 
-    {{elastic-endpoint}} loads a cached configuration from disk immediately on start up. However, before generating a policy response document, {{elastic-endpoint}} waits to first establish a connection to {{elastic-agent}} to see if there are configuration updates. Use this setting to specify how long that delay should be. Regardless of this setting, {{elastic-endpoint}} will periodically attempt to (re)connect to {{elastic-agent}} if it isn't connected.
+    {{elastic-endpoint}} applies a cached configuration from disk immediately on start up. However, before generating a policy response document, {{elastic-endpoint}} waits to first establish a connection to {{elastic-agent}} to see if there are configuration updates. Use this setting to specify how long that delay should be. Regardless of this setting, {{elastic-endpoint}} will periodically attempt to (re)connect to {{elastic-agent}} if it isn't connected.
 
 
 `[mac,windows].advanced.alerts.cloud_lookup`
@@ -37,7 +37,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.alerts.hash.md5`
 :   Added in 8.16.0.
 
-    *Compute and include MD5 hashes in alerts? This will increase CPU usage and alert sizes. If any user exceptionlists, trustlists, or blocklists reference this hash type, Endpoint will ignore this setting and automatically enable this hash type. Default: `false`.*
+    *Controls whether or not to compute and include MD5 hashes in alerts. This will increase CPU usage and alert sizes. If any user exceptionlists, trustlists, or blocklists reference this hash type, Endpoint will ignore this setting and automatically enable this hash type. Default: `false`.*
 
     {{elastic-endpoint}} doesn't generate MD5 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default.
 
@@ -45,7 +45,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.alerts.hash.sha1`
 :   Added in 8.16.0.
 
-    *Compute and include SHA-1 hashes in alerts? This will increase CPU usage and alert sizes. If any user exceptionlists, trustlists, or blocklists reference this hash type, Endpoint will ignore this setting and automatically enable this hash type. Default: `false`.*
+    *Controls whether or not to compute and include SHA-1 hashes in alerts. This will increase CPU usage and alert sizes. If any user exceptionlists, trustlists, or blocklists reference this hash type, Endpoint will ignore this setting and automatically enable this hash type. Default: `false`.*
 
     {{elastic-endpoint}} doesn't generate SHA-1 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default.
 
@@ -431,7 +431,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.event_on_access.file_paths`
 :   Added in 8.15.0.
 
-    *Comma-separated list of additional wildcard patterns that will be monitored for read access. Endpoint will report at most one match per pattern per process. Endpoint will attempt to convert drive letters to NT paths (e.g. `\Device\HarddiskVolume4`), but conversion will fail for per-user drives such as network drives. Put only commas (no spaces) between entries. Wildcard matching is case-insensitive. See Microsoft FsRtlIsNameInExpression documentation for wildcard matching rules.*
+    *Comma-separated list of additional wildcard patterns that will be monitored for read access. Endpoint will report at most one match per pattern per process. Endpoint will attempt to convert drive letters to NT paths (e.g. `\Device\HarddiskVolume4`), but conversion will fail for per-user drives such as network drives. Put only commas (no spaces) between entries. Wildcard matching is case-insensitive. Check Microsoft FsRtlIsNameInExpression documentation for wildcard matching rules.*
 
 
 `windows.advanced.events.event_on_access.registry_paths`
@@ -523,7 +523,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.fanotify.ignored_filesystems`
 :   Added in 8.4.0.
 
-    *Additional filesystems for fanotify to ignore. The format is a comma-separated list of filesystem names as they appear in `/proc/filesystems`, for example `ext4,tmpfs`. When ignore_unknown_filesystems` is `false`, parsed entries of this option supplement internally known bad filesystems to be ignored. When `ignore_unknown_filesystems` is `true`, parsed entries of this option override entries in `monitored_filesystems` and internally CI tested filesystems.*
+    *Additional filesystems for fanotify to ignore. The format is a comma-separated list of filesystem names as they appear in `/proc/filesystems`, for example `ext4,tmpfs`. When `ignore_unknown_filesystems` is `false`, parsed entries of this option supplement internally known bad filesystems to be ignored. When `ignore_unknown_filesystems` is `true`, parsed entries of this option override entries in `monitored_filesystems` and internally CI tested filesystems.*
 
     Use this setting to specify filesystems that fanotify should ignore when monitoring for malware. Filesystems that aren't monitored won't generate malware alerts.
 
@@ -710,7 +710,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
     Use this setting to control whether {{elastic-endpoint}} reports localhost and loopback network events through its kernel component.
 
     :::{warning}
-    Disabling localhost and loopback network events will reduce some system visibility, such as inter-precess communication.
+    Disabling localhost and loopback network events will reduce some system visibility, such as inter-process communication.
     :::
 
 
