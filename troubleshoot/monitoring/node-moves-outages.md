@@ -24,7 +24,7 @@ Move nodes off of allocator [allocator_id] due to essential system maintenance.
 ```
 
 ::::{note}
-You can also [configure email notifications](#email) to be alerted when this situation occurs.
+You can also [configure email notifications](#configure-email-notification) to be alerted when this situation occurs.
 ::::
 
 ## Possible causes [possible-cause]
