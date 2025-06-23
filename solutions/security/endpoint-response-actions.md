@@ -291,10 +291,13 @@ For Microsoft Defender for Endpoint, you must include the following parameter to
 You can also use this optional parameter:
 
 * `--Args`: Additional command-line arguments passed to the script to customize its execution.
+  :::{note}
+  The response console does not support double-dash (`--`) syntax within the `--Args` parameter.
+  :::
 
-Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+Predefined role: **SOC manager** or **Endpoint operations analyst**
 
-Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+Required custom role privilege: **Execute Operations**
 
 Example: `runscript --ScriptName="Script2.sh" --Args="-Verbose true"`
 
