@@ -20,7 +20,7 @@ We have collected the most common known problems and listed them here. If your p
 | [elastic/beats](https://github.com/elastic/beats/issues) | {{beats}} shippers |
 | [elastic/fleet-server](https://github.com/elastic/fleet-server/issues) | {{fleet-server}} |
 | [elastic/package-registry](https://github.com/elastic/package-registry/issues) | {{package-registry}} |
-| [elastic/observability-docs](https://github.com/elastic/observability-docs/issues) | Documentation issues |
+| [elastic/docs-content](https://github.com/elastic/docs-content/issues) | Documentation issues |
 
 Have a question? Read our [FAQ](frequently-asked-questions.md), or contact us in the [discuss forum](https://discuss.elastic.co/). Your feedback is valuable to us.
 
