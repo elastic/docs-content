@@ -437,7 +437,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.event_on_access.registry_paths`
 :   Added in 8.15.0.
 
-    *Comma-separated list of registry paths that will be monitored for read access. These must be NT paths (e.g. `\REGISTRY\MACHINE\SOFTWARE\Microsoft\...`). Endpoint will report at most one match per pattern per process. Only commas (no spaces) should be used between entries. Wildcard matching is case-insensitive. See Microsoft FsRtlIsNameInExpression documentation for wildcard matching rules.*
+    *Comma-separated list of registry paths that will be monitored for read access. These must be NT paths (for example, `\REGISTRY\MACHINE\SOFTWARE\Microsoft\...`). Endpoint will report at most one match per pattern per process. Only commas (no spaces) should be used between entries. Wildcard matching is case-insensitive. See Microsoft FsRtlIsNameInExpression documentation for wildcard matching rules.*
 
 
 `[linux,mac,windows].advanced.events.file.max_hash_size_mb`
@@ -523,7 +523,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.fanotify.ignored_filesystems`
 :   Added in 8.4.0.
 
-    *Additional filesystems for fanotify to ignore. The format is a comma separated list of filesystem names as they appear in `/proc/filesystems`, e.g. `ext4,tmpfs`. When ignore_unknown_filesystems` is `false`, parsed entries of this option supplement internally known bad filesystems to be ignored. When `ignore_unknown_filesystems` is `true`, parsed entries of this option override entries in `monitored_filesystems` and internally CI tested filesystems.*
+    *Additional filesystems for fanotify to ignore. The format is a comma-separated list of filesystem names as they appear in `/proc/filesystems`, for example `ext4,tmpfs`. When ignore_unknown_filesystems` is `false`, parsed entries of this option supplement internally known bad filesystems to be ignored. When `ignore_unknown_filesystems` is `true`, parsed entries of this option override entries in `monitored_filesystems` and internally CI tested filesystems.*
 
     Use this setting to specify filesystems that fanotify should ignore when monitoring for malware. Filesystems that aren't monitored won't generate malware alerts.
 
@@ -531,7 +531,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.fanotify.monitored_filesystems`
 :   Added in 8.4.0.
 
-    *Additional filesystems for fanotify to monitor. The format is a comma separated list of filesystem names as they appear in `/proc/filesystems`, e.g. `jfs,ufs,ramfs`. It is recommended to avoid network-backed filesystems. When `ignore_unknown_filesystems` is `false`, this option is ignored. When `ignore_unknown_filesystems` is `true`, parsed entries of this option are monitored by fanotify unless overridden by entries in `ignored_filesystems` or internally known bad filesystems.*
+    *Additional filesystems for fanotify to monitor. The format is a comma-separated list of filesystem names as they appear in `/proc/filesystems`, for example `jfs,ufs,ramfs`. It is recommended to avoid network-backed filesystems. When `ignore_unknown_filesystems` is `false`, this option is ignored. When `ignore_unknown_filesystems` is `true`, parsed entries of this option are monitored by fanotify unless overridden by entries in `ignored_filesystems` or internally known bad filesystems.*
 
     Use this setting to specify filesystems for fanotify to monitor for malware. Filesystems that aren't monitored won't generate malware alerts.
 
@@ -681,7 +681,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `mac.advanced.kernel.network_extension.enable_content_filtering`
 :   Added in 8.1.0.
 
-    *Enable or disable the network content filter, this will enable/disable network eventing. Host isolation will fail if this option is disabled. Default: `true`.*
+    *Enable or disable the network content filter, this will enable/disable network eventing. Host isolation fails if this option is disabled. Default: `true`.*
 
     Use this setting to enable or disable the macOS network content filter.
     
@@ -693,7 +693,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `mac.advanced.kernel.network_extension.enable_packet_filtering`
 :   Added in 8.1.0.
 
-    *Enable or disable the network packet filter. Host isolation will fail if this option is disabled. Default: `true`.*
+    *Enable or disable the network packet filter. Host isolation fails if this option is disabled. Default: `true`.*
 
     Use this setting to enable or disable the macOS network packet filter.
     
