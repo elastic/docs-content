@@ -569,7 +569,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *A value of `false` disallows host isolation activity on Linux endpoints, regardless of whether host isolation is supported. Note that if a host is currently not isolated, it will refuse to isolate, and likewise, a host will refuse to release if it is currently isolated. A value of `true` will allow Linux endpoints to isolate if supported. Default:`true`.*
 
-    Use this setting to control whether host isolation activity on Linux is allowed. If disabled, the host will remain unisolated even when isolation is requested.
+    Use this setting to control whether host isolation activity on Linux is allowed. If disabled, the host remains unisolated even when isolation is requested.
 
 
 `mac.advanced.image_load.capture`
@@ -869,7 +869,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable shellcode injection detection as a part of memory protection. Default: `true`.*
 
-    Use this setting to disable scanning memory for shellcode, even if Memory Threat protection is enabled. Memory Threat protection will remain effective even without this scan.
+    Use this setting to disable scanning memory for shellcode, even if Memory Threat protection is enabled. Memory Threat protection remains effective even without this scan.
 
 
 `windows.advanced.memory_protection.shellcode_collect_sample`
@@ -891,7 +891,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 
     *Enable trampoline-based shellcode injection detection as a part of memory protection. Default: `true`.*
 
-    Use this setting to disable scanning memory for trampolines, even if Memory Threat protection is enabled.  Memory Threat protection will remain effective even without this scan.
+    Use this setting to disable scanning memory for trampolines, even if Memory Threat protection is enabled. Memory Threat protection will remain effective even without this scan.
 
 
 `[linux,mac,windows].advanced.network_events_exclude_local`
@@ -961,19 +961,19 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.image_load.origin_info_collection`
 :   Added in 8.19.0.
 
-    *If set to true, image load events include dll.origin_url, dll.origin_referrer_url, and dll.Ext.windows.zone_identifier. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: `false`.*
+    *If set to `true`, image load events include dll.origin_url, dll.origin_referrer_url, and dll.Ext.windows.zone_identifier. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: `false`.*
 
 
 `windows.advanced.events.process.origin_info_collection`
 :   Added in 8.19.0.
 
-    *If set to true, process events include process.origin_url, process.origin_referrer_url, and process.Ext.windows.zone_identifier. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: `false`.*
+    *If set to `true`, process events include process.origin_url, process.origin_referrer_url, and process.Ext.windows.zone_identifier. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: `false`.*
 
 
 `windows.advanced.events.file.origin_info_collection`
 :   Added in 8.19.0.
 
-    *If set to true, file events include file origin details: file.origin_url, file.origin_referrer_url, and file.Ext.windows.zone_identifier. These fields show the details of file's Mark of the Web. Default: `true`*
+    *If set to `true`, file events include file origin details: file.origin_url, file.origin_referrer_url, and file.Ext.windows.zone_identifier. These fields show the details of file's Mark of the Web. Default: `true`*
 
 
 `windows.advanced.events.security.provider_etw`
