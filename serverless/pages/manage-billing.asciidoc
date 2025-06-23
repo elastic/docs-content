@@ -11,9 +11,9 @@
 Manage the billing details of your organization directly from the Elastic Cloud console. Bills are invoiced according to the billing contact and details that you set for your organization.
 
 . Navigate to https://cloud.elastic.co/[cloud.elastic.co] and log in to your Elastic Cloud account.
-. Go to the user icon on the header bar and select **Billing**.
+. Select **Billing and Subscription** from the lower navigation menu or go to the user icon on the header bar and select **Billing** from the menu.
 
-From the **Billing pages**, you can perform the following tasks:
+From the Billing pages, you can perform the following tasks:
 
 * <<general-check-subscription,Check your subscription overview>>
 * <<general-monitor-usage,Monitor and analyze your account usage>>

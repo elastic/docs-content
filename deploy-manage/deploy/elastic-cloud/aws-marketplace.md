@@ -27,7 +27,7 @@ Some differences exist when you subscribe to {{ecloud}} through the AWS Marketpl
 * Pricing is based on the AWS region, the size of your deployment, as well as some other parameters such as data transfer out, data transfer internode, snapshot storage, and snapshot APIs. For more details, check [Billing Dimensions](../../cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
 * The consolidated charges for your {{ecloud}} subscription display in the AWS Marketplace billing console. It can take a day or two before new charges show up.
 * Regardless of where your deployment is hosted (visible in the {{ecloud}} console), the AWS Marketplace charges for all AWS regions are metered in US East (Northern Virginia). As a result, US East (Northern Virginia) is listed as the region in the AWS Marketplace console.
-* To get a detailed breakdown of your charges by deployment or by product, open the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and go to **Account & Billing** > **Usage**.
+* To get a detailed breakdown of your charges by deployment or by product, open the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and from the user icon on the header bar, select **Billing** > **Usage**.
 * To end your trial or unsubscribe from the service, delete your deployment(s).
 * Elastic provides different [subscription levels](https://www.elastic.co/subscriptions/cloud). During your 7-day trial you will automatically have an Enterprise level subscription. After the trial you can choose the subscription level.
 
