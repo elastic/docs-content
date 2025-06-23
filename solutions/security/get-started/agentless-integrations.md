@@ -17,6 +17,7 @@ Agentless integrations provide a means to ingest data while avoiding the orchest
 
 ::::{important}
 There are currently no additional costs associated with deploying agentless integrations. 
+There is currently a limit of 5 agentless integrations per project. 
 ::::
 
 ## Generally available (GA) agentless integrations
