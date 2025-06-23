@@ -9,5 +9,5 @@ Information about outstanding payments and billing receipts is available from th
 To check your billing history:
 
 . Log in to the {ess-console}[{ess-console-name}].
-. Select **Billing and Subscription** from the lower navigation menu or go to the user icon on the header bar and select **Billing** from the menu.
+. Select **Billing and Subscription** from the lower navigation menu or click the user icon on the header bar and select **Billing**.
 . Under the **History** tab, select the invoice number for a detailed PDF.

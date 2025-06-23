@@ -24,7 +24,7 @@ To allow other users to interact with your projects, you must invite them to joi
 
 Alternatively, {cloud}/ec-saml-sso.html[configure {ecloud} SAML SSO] to enable your organization members to join the {ecloud} organization automatically.
 
-. Select **Organization** from the lower navigation menu or go to the user icon on the header bar and select **Organization** from the menu.
+. Select **Organization** from the lower navigation menu or click the user icon on the header bar and select **Organization**.
 . On the **Members** page, click **Invite members**.
 . Enter the email addresses of the users you want to invite in the textbox.
 +
@@ -49,7 +49,7 @@ Within an organization, users can have one or more roles and each role grants sp
 You must assign user roles when you <<general-manage-access-to-organization,invite users to join your organization>>.
 To subsequently edit the roles assigned to a user:
 
-. Select **Organization** from the lower navigation menu or go to the user icon on the header bar and select **Organization** from the menu.
+. Select **Organization** from the lower navigation menu or click the user icon on the header bar and select **Organization**.
 . Find the user on the **Members** tab of the **Organization** page. Click the member name to view and edit its roles.
 
 There are two types of roles you can assign to users:
