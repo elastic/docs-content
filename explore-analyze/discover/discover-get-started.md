@@ -255,12 +255,13 @@ For example, exclude results from the ecommerce sample data view where day of we
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
 You can switch to the ES|QL mode of Discover from the application menu bar.
-
-:::{tip}
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-:::
 
 Note that in ES|QL mode, the **Documents** tab is named **Results**.
+
+:::{important}
+{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 mins by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+:::
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 
