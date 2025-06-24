@@ -206,7 +206,7 @@ Dive into an individual document to view its fields and the documents that occur
    * You can pin some fields by clicking the left column to keep them displayed even if you filter the table.
 
    ::::{tip}
-   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values.
+   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
 3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
