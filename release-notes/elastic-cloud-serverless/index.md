@@ -70,7 +70,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 * Passes correct namespace to `migrateInputDocument` logic [#222313]({{kib-pull}}222313)
 * Adjusts app menu header `z-index` to avoid clashing with the portable dev console [#224708]({{kib-pull}}224708)
 * Reverts to using `.watches` system index in Watcher UI [#223898]({{kib-pull}}223898)
-  - Fixes several issues introduced in versions 8.18.0 through 9.1.0, including broken pagination (limited to 10 items), erroneous error banners, and broken search functionality.
+* Fixes several issues introduced in versions 8.18.0 through 9.1.0, including broken pagination (limited to 10 items), erroneous error banners, and broken search functionality.
 * Fixes **Discard** button state change logic for toggles [#223493]({{kib-pull}}223493)
 * Removes `originId` from connectors during rule import [#223454]({{kib-pull}}223454)
 
