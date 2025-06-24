@@ -54,10 +54,10 @@ You can find {{agent}} Docker images [here](https://www.docker.elastic.co/r/elas
 ::::
 
 
-Download the manifest file:
+Download the manifest file, substituting `{agent_version}` with the version number:
 
 ```sh
-curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/master/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
+curl -L -O https://github.com/elastic/elastic-agent/blob/v{agent_version}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
 ```
 
 ::::{note}
