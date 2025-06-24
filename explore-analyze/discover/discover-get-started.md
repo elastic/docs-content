@@ -264,7 +264,7 @@ If you've entered a KQL or Lucene query in the default mode of Discover, it auto
 Note that in ES|QL mode, the **Documents** tab is named **Results**.
 
 :::{important}
-{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 mins by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
 :::
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
