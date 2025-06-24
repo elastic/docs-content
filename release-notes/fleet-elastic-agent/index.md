@@ -26,12 +26,32 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.0.3 [fleet-elastic-agent-9.0.3-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.3-features-enhancements]
+
+**Elastic Agent**
+
+* Add `Cumulativetodeltaprocessor` To EDOT Collector. [#8372]({{agent-pull}}8372)
+
+**Fleet Server**
+
+* Update Go version to v1.24.4. [#5025]({{fleet-server-pull}}5025)
+
+### Fixes [fleet-elastic-agent-9.0.3-fixes]
+
+**Elastic Agent**
+
+* Address a race condition that can occur in agent diagnostics if log rotation runs while logs are being zipped. [#8215]({{agent-pull}}8215)
+* Use `paths.tempdir` for diagnostics actions. [#8472]({{agent-pull}}8472)
+* relax file ownership check to allow admin re-enrollment on Windows. [#8503]({{agent-pull}}8503)
+
 ## 9.0.2 [fleet-elastic-agent-9.0.2-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.0.2-features-enhancements]
 
 * Updates Go version to v1.24.3 in {{fleet}} [#4891]({{fleet-server-pull}}4891)
-	
+
 * Updates Go version to v1.24.3 in {{agent}} [#8109]({{agent-pull}}8109)
 
 ### Fixes [fleet-elastic-agent-9.0.2-fixes]
