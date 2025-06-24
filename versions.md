@@ -1,6 +1,10 @@
 # Elastic documentation versions
 
-Review the Elastic documentation for previous product releases.
+In April 2025, we released our new documentation site. This site includes documentation for our latest product versions, including {{stack}} 9.0+ and {{serverless-full}}.
+
+To review the product versions covered on elastic.co/docs, refer to [Find docs for your product version](/get-started/versioning-availability.md#find-docs-for-your-product-version). 
+
+To access our previous documentation system, which contains the documentation for older releases including {{stack}} 8.x, use the following links. 
 
 ## Elasticsearch
 
