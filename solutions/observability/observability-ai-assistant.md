@@ -133,7 +133,7 @@ To add external data to the knowledge base in {{kib}}:
 #### Requirements and limitations
 
 - For {{stack}} 9.0.0+ or {{serverless-short}}, connectors must be [self-managed](elasticsearch://reference/search-connectors/self-managed-connectors.md).
-- Manage connectors through the Search Solution in {{kib}} (pre-9.0) or via the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector)
+- Manage connectors through the Search Solution in {{kib}} (pre-9.0.0) or with the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector).
 
 #### Knowledge base data sources
 By default, the AI Assistant queries all search connector indices. To customize which indices are used in the knowledge base, set the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page.
