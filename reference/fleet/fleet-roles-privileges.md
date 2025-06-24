@@ -8,7 +8,7 @@ products:
 
 # Roles and privileges [fleet-roles-and-privileges]
 
-Beginning with {{stack}} version 8.17, you have more granular control over user access to features in and managed by {{fleet}}.
+Beginning with {{stack}} version 9.1, you have more granular control over user access to features in and managed by {{fleet}}.
 This granularity is useful when people in your organization access {{fleet}} for different purposes, and you need to fine-tune the components that they can view and the actions that they can perform.
 
 {{fleet}} and integrations privileges can be set to:
