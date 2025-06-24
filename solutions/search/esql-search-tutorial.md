@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: preview 9.0
-  serverless: preview
+  stack: preview 9.0, ga 9.1
+  serverless: ga
 navigation_title: Search and filter with ES|QL
 ---
 
