@@ -32,6 +32,7 @@ toc:
           - file: elasticsearch/increase-shard-limit.md
           - file: elasticsearch/increase-cluster-shard-limit.md
           - file: elasticsearch/corruption-troubleshooting.md
+          - file: elasticsearch/troubleshoot-ingest-pipelines.md
 
       - file: elasticsearch/capacity.md
         children:  
