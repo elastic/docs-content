@@ -12,6 +12,10 @@ Review the changes, fixes, and more in each version of {{elastic-sec}}.
 
 To check for security updates, go to [Security announcements for the Elastic stack](https://discuss.elastic.co/c/announcements/security-announcements/31).
 
+:::{tip}
+{{elastic-sec}} runs on {{kib}}, so we recommend also reviewing the [{{kib}} release notes](kibana://release-notes/index.md) for relevant updates.
+:::
+
 % Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
 
 % ## version.next [elastic-security-X.X.X-notes]

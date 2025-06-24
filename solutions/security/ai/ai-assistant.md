@@ -24,7 +24,6 @@ The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity op
 The Elastic AI Assistant is designed to enhance your analysis with smart dialogues. Its capabilities are still developing. Users should exercise caution as the quality of its responses might vary. Your insights and feedback will help us improve this feature. Always cross-verify AI-generated advice for accuracy.
 ::::
 
-
 ::::{admonition} Requirements
 * {{stack}} users: {{stack}} version 8.8.1 or later. Also note the Generative AI connector was renamed to OpenAI connector in 8.11.0.
 * {{stack}} users: an [Enterprise subscription](https://www.elastic.co/pricing).
@@ -34,8 +33,6 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 * A [generative AI connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
 
 ::::
-
-
 
 ## Your data and AI Assistant [data-information]
 
@@ -47,8 +44,6 @@ Elastic does not control third-party tools, and assumes no responsibility or lia
 Elastic can automatically anonymize event data that you provide to AI Assistant as context. To learn more, refer to [Configure AI Assistant](/solutions/security/ai/ai-assistant.md#configure-ai-assistant).
 ::::
 
-
-
 ## Set up AI Assistant [set-up-ai-assistant]
 
 You must create a generative AI connector before you can use AI Assistant. AI Assistant can connect to multiple large language model (LLM) providers so you can select the best model for your needs. To set up a connector, refer to [LLM connector setup guides](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md).
@@ -58,7 +53,13 @@ While AI Assistant is compatible with many different models, refer to the [Large
 
 ::::
 
+### Elastic Managed LLM [elastic-managed-llm-security-ai-assistant]
 
+[Elastic Managed LLM](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) is the default large language model (LLM) connector available in the AI Assistant for eligible users. It provides immediate access to generative AI features without requiring any setup or external model integration.
+
+The Elastic Managed LLM is available out-of-the box; no manual connector setup or API key management is required for initial use. However, you can configure and use a third-party LLM connector, such as OpenAI, Azure, or Amazon Bedrock if you prefer.
+
+To learn more about security, data privacy, and early access to the Elastic Managed LLM, refer to the [connector documentation](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) and [download the model card](https://raw.githubusercontent.com/elastic/kibana/refs/heads/main/docs/reference/resources/Elastic_Managed_LLM_model_card.pdf).
 
 ## Start chatting [start-chatting]
 
@@ -80,8 +81,6 @@ You can also chat with AI Assistant from several particular pages in {{elastic-s
 ::::{note}
 Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security" or open the menu in the upper-right of the AI Assistant chat window.
 ::::
-
-
 
 ## Interact with AI Assistant [interact-with-assistant]
 
@@ -109,14 +108,11 @@ Use these features to adjust and act on your conversations with AI Assistant:
     * **Copy to clipboard** (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")): Copy the text to clipboard to paste elsewhere. Also helpful for resubmitting a previous prompt.
     * **Add to timeline** (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")): Add a filter or query to Timeline using the text. This button appears for particular queries in AI Assistant’s responses.
 
-
 Be sure to specify which language you’d like AI Assistant to use when writing a query. For example: "Can you generate an Event Query Language query to find four failed logins followed by a successful login?"
 
 ::::{tip}
 AI Assistant can remember particular information you tell it to remember. For example, you could tell it: "When anwering any question about srv-win-s1-rsa or an alert that references it, mention that this host is in the New York data center". This will cause it to remember the detail you highlighted.
 ::::
-
-
 
 ## Configure AI Assistant [configure-ai-assistant]
 
@@ -140,7 +136,6 @@ It has the following tabs:
 * **Anonymization:** Select fields to include as plaintext, to obfuscate, and to not send when you provide events to AI Assistant as context. [Learn more](/solutions/security/ai/ai-assistant.md#ai-assistant-anonymization).
 * **Knowledge base:** Provide additional context to AI Assistant. [Learn more](/solutions/security/ai/ai-assistant-knowledge-base.md).
 
-
 ### Anonymization [ai-assistant-anonymization]
 
 ::::{admonition} Requirements
@@ -148,13 +143,11 @@ To modify Anonymization settings, you need the **Elastic AI Assistant: All** pri
 
 ::::
 
-
 The **Anonymization** tab of the Security AI settings menu allows you to define default data anonymization behavior for events you send to AI Assistant. Fields with **Allowed** toggled on are included in events provided to AI Assistant. **Allowed** fields with **Anonymized** set to **Yes** are included, but with their values obfuscated.
 
 ::::{note}
 You can access anonymization settings directly from the **Attack Discovery** page by clicking the settings (![Settings icon](/solutions/images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu.
 ::::
-
 
 :::{image} /solutions/images/security-assistant-anonymization-menu.png
 :alt: AI Assistant's settings menu
@@ -167,11 +160,9 @@ The **Show anonymized** toggle controls whether you see the obfuscated or plaint
 
 When you include a particular event as context, such as an alert from the Alerts page, you can adjust anonymization behavior for the specific event. Be sure the anonymization behavior meets your specifications before sending a message with the event attached.
 
-
 ### Knowledge base [ai-assistant-page-knowledge-base]
 
 The **Knowledge base** tab of the **Security AI settings** page allows you to enable AI Assistant to remember specified information, and use it as context to improve response quality. To learn more, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md).
-
 
 ### Get the most from your queries [rag-for-esql]
 
