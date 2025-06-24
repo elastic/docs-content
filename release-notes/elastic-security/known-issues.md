@@ -24,10 +24,10 @@ On June 24, 2025, an error was discovered that prevents the AI Assistant Knowled
 
 **Workaround**
 
-While the UI for configuring the Knowledge Base is blocked, you can still set it up and manage entries using the following approach:
-
-* Enable the Knowledge Base 
+While the UI for configuring the Knowledge Base is blocked, you can still enable it
 [from an AI Assistant conversation](/solutions/security/ai/ai-assistant-knowledge-base.md#_option_1_enable_knowledge_base_from_an_ai_assistant_conversation).
+
+After enabling the Knowledge Base, you can manage entries using the AI Assistant API:
 
 * List Knowledge Base entries using the [find knowledge base entry API]({{kib-apis}}/operation/operation-findknowledgebaseentries):
 
