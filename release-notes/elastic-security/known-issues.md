@@ -53,6 +53,10 @@ PUT /_ingest/pipeline/entity_analytics_create_eventIngest_from_timestamp-pipelin
 
 After you complete this step, risk scores should automatically begin to successfully persist during the entity risk engine's next run. Details for the next run time are described on the **Entity risk score** page, where you can also manually run the risk score by clicking **Run Engine**. 
 
+**Resolved**<br> 
+
+Resolved in {{stack}} 9.0.3
+
 :::
 
 :::{dropdown} Installing an {{elastic-defend}} integration or a new agent policy upgrades installed prebuilt rules, reverting user customizations and overwriting user-added actions and exceptions
