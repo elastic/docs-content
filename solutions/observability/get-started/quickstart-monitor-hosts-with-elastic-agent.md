@@ -48,6 +48,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 :sync: serverless
 
 * An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An Elastic deployment. If you don’t have one yet, go to [cloud.elastic.co](https://cloud.elastic.co/). Within **Hosted deployments**, select **Create hosted deployment**.
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Root privileges on the host—required to run the auto-detection script used in this quickstart.
 
@@ -60,7 +61,7 @@ The script also generates an {{agent}} configuration file that you can use with 
 
 * The auto-detection script works on Linux and MacOS only. Support for the `lsof` command is also required if you want to detect custom log files.
 * If you’ve installed Apache or Nginx in a non-standard location, you’ll need to specify log file paths manually when you run the scan.
-* Because Docker Desktop runs in a VM, its logs are not auto-detected.
+* Because Docker Desktop runs in a VM, its host-level logs and metrics are not auto-detected.
 
 
 ## Collect your data [_collect_your_data]
@@ -82,6 +83,14 @@ The script also generates an {{agent}} configuration file that you can use with 
 3. Copy the install command.
 
     You’ll run this command to download the auto-detection script, scan your system for observability data, and install {{agent}}.
+
+    :::{tip}
+    If you've previously installed {{agent}}, you may need to uninstall it first:
+
+    `sudo elastic-agent uninstall`
+
+    If uninstalling fails or the agent is stuck, rerun the install with the `--force` flag.
+    :::
 
 4. Open a terminal on the host you want to scan, and run the command.
 5. Review the list of log files:
@@ -106,6 +115,14 @@ The script also generates an {{agent}} configuration file that you can use with 
 4. Copy the install command.
 
     You’ll run this command to download the auto-detection script, scan your system for observability data, and install {{agent}}.
+
+    :::{tip}
+    If you've previously installed {{agent}}, you may need to uninstall it first:
+
+    `sudo elastic-agent uninstall`
+
+    If uninstalling fails or the agent is stuck, rerun the install with the `--force` flag.
+    :::
 
 5. Open a terminal on the host you want to scan, and run the command.
 6. Review the list of log files:
