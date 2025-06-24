@@ -222,6 +222,10 @@ One of the unique capabilities of **Discover** is the ability to combine free te
 
 ![Search field in Discover](/explore-analyze/images/kibana-discover-search-field.png "")
 
+:::{note}
+Free text searches that don't specify a field may not return expected results depending on how the [`index.query.default_field` index setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-query-default-field) is configured for the indices matching the current data view.
+:::
+
 To search particular fields and build more complex queries, use the [Kibana Query language](../query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query.
 
 For example, search the ecommerce sample data for documents where the country matches US:
