@@ -470,10 +470,27 @@ FROM my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001
 
 
 ## Optional remote clusters [ccq-skip-unavailable-clusters]
+```{applies_to}
+stack: ga 9.1.0+
+```
 
-If a remote cluster disconnects from the querying cluster, {{ccs}} for {{esql}} will set it to `skipped`
-and continue the query with other clusters, unless the remote cluster's `skip_unavailable` setting is set to `false`,
-in which case the query will fail.
+If the remote cluster is configured with `skip_unavailable: true` (the default setting), the cluster would be set
+to `skipped` or `partial` status but the query will not fail, if:
+
+* The remote cluster is disconnected from the querying cluster, either before or during the query.
+* The remote cluster does not have the requested index.
+* An error happened while processing the query on the remote cluster.
+
+The `partial` status will be used if the remote query was partially successful and some data was returned.
+
+This however does not apply to the situation when the remote cluster is missing an index and this is the only index in the query,
+or all the indices in the query are missing. For example, the following queries will fail:
+
+```esql
+FROM cluster_one:missing-index | LIMIT 10
+FROM cluster_one:missing-index* | LIMIT 10
+FROM cluster_one:missing-index*,cluster_two:missing-index | LIMIT 10
+```
 
 ## Query across clusters during an upgrade [ccq-during-upgrade]
 
