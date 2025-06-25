@@ -471,7 +471,7 @@ FROM my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001
 
 ## Optional remote clusters [ccq-skip-unavailable-clusters]
 ```{applies_to}
-stack: ga 9.1.0+
+stack: ga 9.1
 ```
 
 If the remote cluster is configured with `skip_unavailable: true` (the default setting), the cluster would be set
