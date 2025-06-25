@@ -362,7 +362,7 @@ The ZIP archive containing diagnostics information will include the raw events o
 
 **Get the diagnostics bundle using the CLI**
 
-Run the following command to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
+Run the following [Agent command](reference/fleet/agent-command-reference#elastic-agent-diagnostics-command.md) to generate a zip archive containing diagnostics information that the Elastic team can use for debugging cases.
 
 ```shell
 elastic-agent diagnostics
