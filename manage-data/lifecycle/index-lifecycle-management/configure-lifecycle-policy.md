@@ -16,9 +16,9 @@ There a few things to note about how an {{ilm-init}} policy works:
 
 * For {{ilm-init}} to manage an index, you need to specify a valid policy in the `index.lifecycle.name` index setting.
 
-* To configure a lifecycle policy for [rolling indices](rollover.md), you create the policy and add it to the [index template](../../data-store/templates.md).
+* To configure a lifecycle policy for [rolling indices](rollover.md) or data streams, you create the policy and add it to the [index template](../../data-store/templates.md).
 
-* To use a policy to manage an index that doesn’t roll over, you can specify a lifecycle policy when you create the index, or apply a policy directly to an existing index.
+* To use a policy to manage a single index, you can specify a lifecycle policy when you create the index, or apply a policy directly to an existing index.
 
 * {{ilm-init}} policies are stored in the global cluster state and can be included in snapshots by setting `include_global_state` to `true` when you [take the snapshot](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md). When the snapshot is restored, all of the policies in the global state are restored and any local policies with the same names are overwritten.
 
@@ -32,12 +32,6 @@ To set up ILM to manage one or more indices, the general procedure is as follows
 If you're configuring ILM for rolling indices and not using [data streams](../../data-store/data-streams.md), you additionally need to:
 
 3. [Create an initial managed index](#create-initial-index)
-4. [Apply a lifecycle policy manually](#apply-policy-manually)
-
-Once ILM is set up, at any time you can:
-
-* [View the lifecycle status for an index](#view-lifecycle-status)
-* [Switch lifecycle policies](#switch-lifecycle-policies)
 
 You can perform these actions in {{kib}} or using the {{es}} API.
 
@@ -59,12 +53,12 @@ To add an ILM policy to an {{es}} cluster:
 
 1. In the **Hot phase**, by default an ILM-managed index [rolls over](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) when either:
     * It reaches 30 days of age.
-     * The primary shard reaches 50 gigabytes in size.
+    * One or more primary shards reach 50 gigabytes in size.
   
-    Disaable **Use recommended defaults** to adjust these values or to roll over based on the size of the primary shard, the number of documents in the primary shard, or the total number of documents in the index.
+    Disable **Use recommended defaults** to adjust these values or to roll over based on the size of the primary shard, the number of documents in the primary shard, or the total number of documents in the index.
 
     ::::{important}
-    The rollover action implicitly always rolls over a data stream or alias if one or more shards contain 200000000 or more     documents. Normally a shard will reach 25GB long before it reaches 200M documents, but this isn’t the case for space efficient     data sets. Search performance will very likely suffer if a shard contains more than 200M documents. This is the reason for the     built-in limit.
+    The rollover action implicitly always rolls over a data stream or alias if one or more shards contain 200000000 or more documents. Normally a shard will reach 25GB long before it reaches 200M documents, but this isn’t the case for space efficient data sets. Search performance will very likely suffer if a shard contains more than 200M documents. This is the reason for the built-in limit.
     ::::
 
 1. By default, only the "hot" index lifecycle phase is enabled. Enable each additional lifecycle phase that you'd like, and for each choose the [index lifecycle actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) to perform on indices when they enter that phase.
@@ -129,9 +123,10 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
     1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `my-index-*`.
     1. If you're storing continuously generated, append-only data, you can opt to create [data streams](/manage-data/data-store/data-streams.md) instead of indices for more efficient storage. If you enable this option, you can also enable **Data retention** to configure how long your indexed data is kept.
 
-        :::{important}
-        When the **Data retention** option is set, data is guaranteed to be stored for the specified retention duration. Elasticsearch is allowed at a later time to delete data older than this duration. This setting replaces any data retention settings that may be defined in an ILM policy. Refer to the [Data stream retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md) tutorial to learn more.
+        :::{note}
+        Since you're creating an index lifecycle policy to manage indices, the  **Data retention** option should be left disabled. Data retention is applicable only if you're using a data stream lifecycle, which is an alternative to ILM. Refer to the [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) to learn more.
         :::
+
 
     1. Configure any other options you'd like, including:
         * The [index mode](elasticsearch://reference/elasticsearch/index-settings/time-series.md) to use for the created indices.
@@ -222,7 +217,7 @@ To create the initial managed index:
 
 Create an alias for the index:
 
-1. Open **Developer tools**.
+1. Open **Dev tools**.
 2. Send the following request:
 
 ```console
@@ -262,265 +257,3 @@ Now you can start indexing data to the rollover alias specified in the lifecycle
 :::
 ::::
 
-## Apply a lifecycle policy manually [apply-policy-manually]
-
-You can specify a policy when you create an index or apply a lifecycle policy to an existing index.
-
-::::{important}
-Do not manually apply a policy that uses the rollover action. Policies that use rollover must be applied by the [index template](#apply-policy-template). Otherwise, the policy is not carried forward when the rollover action creates a new index.
-::::
-
-::::{tab-set}
-:group: kibana-api
-:::{tab-item} {{kib}}
-:sync: kibana
-
-To apply a lifecycle policy to an existing index:
-
-1. Go to **Stack Management > Index Management**. In the **Indices** tab, search for and select the index that you created, for example `test-00001`. Note that to view system indices you need to enable **Include hidden indices**.
-
-1. From the **Manage index** dropdown menu select **Add lifecycle policy**.
-
-1. Choose a lifecycle policy and confirm your changes.
-
-Once the policy is applied, {{ilm-init}} starts managing the index immediately.
-
-% QUESTION: Is there a way in the Kibana UI to add a policy to multiple indices?
-:::
-
-:::{tab-item} API
-:sync: api
-Use the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to apply a lifecycle policy to an existing index.
-
-### Apply an policy to a single index [apply-policy-single]
-
-In the following request, the `index.lifecycle.name` setting specifies an index’s policy.
-
-```console
-PUT my-index
-{
-  "settings": {
-    "number_of_shards": 1,
-    "number_of_replicas": 1,
-    "index.lifecycle.name": "my_policy" <1>
-  }
-}
-```
-
-1. Sets the lifecycle policy for the index.
-
-Once the policy is applied, {{ilm-init}} starts managing the index immediately.
-
-### Apply a policy to multiple indices [apply-policy-multiple]
-
-You can apply the same policy to multiple indices by using wildcards in the index name when you call the API.
-
-```console
-PUT mylogs-pre-ilm*/_settings <1>
-{
-  "index": {
-    "lifecycle": {
-      "name": "mylogs_policy_existing"
-    }
-  }
-}
-```
-
-1. Updates all indices with names that start with `mylogs-pre-ilm`.
-
-::::::{warning}
-Be careful not to inadvertently match indices that you don’t want to modify.
-::::::
-:::
-::::
-
-## View the lifecycle status for an index [view-lifecycle-status]
-
-For any existing managed index in your cluster, you can access the ILM policy applied to it and details such as its current phase.
-
-::::{tab-set}
-:group: kibana-api
-:::{tab-item} {{kib}}
-:sync: kibana
-To view the current lifecycle status for one or more indices:
-
-1. Go to **Stack Management > Index Management** and open the **Indices** tab.
-1. Enable **Include hidden indices** to view all indices, including those managed by ILM. Note that if you're using data streams, you can find the data stream associated with any index listed in the **Data stream** column.
-1. Use the search tool to find the index you're looking for. You can also filter the results by lifecycle status and lifecycle phase.
-1. Select the index to view details.
-1. Open the **Index lifecycle** tab to view ILM details such as the current lifecycle phase, the ILM policy name, the current [index lifecycle action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md), and other details.
-
-   ![Index lifecycle status page](/manage-data/images/elasticsearch-reference-ilm-status.png "")
-
-To view the current lifecycle status for a datastream:
-
-1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
-1. Use the search tool to find the data stream you're looking for.
-1. Select the data stream to view details. In the flyout that opens, you have direct links to access the ILM policy and the index template.
-
-   ![Data stream status page](/manage-data/images/elasticsearch-reference-datastream-status.png "")
-:::
-
-:::{tab-item} API
-:sync: api
-Use the [Explain the lifecycle state API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to view the current lifecycle status for an index:
-
-```console
-GET my-index/_ilm/explain
-```
-
-The API response shows the current ILM phase and other details:
-
-```json
-{
-  "indices": {
-    ".ds-logs-elastic_agent.filebeat-default-2025.06.04-000001": {
-      "index": ".ds-logs-elastic_agent.filebeat-default-2025.06.04-000001",
-      "managed": true,
-      "policy": "logs",
-      "index_creation_date_millis": 1749060710541,
-      "time_since_index_creation": "19.05d",
-      "lifecycle_date_millis": 1749060710541,
-      "age": "19.05d",
-      "phase": "hot",
-      "phase_time_millis": 1749060711038,
-      "action": "rollover",
-      "action_time_millis": 1749060712038,
-      "step": "check-rollover-ready",
-      "step_time_millis": 1749060712038,
-      "phase_execution": {
-        "policy": "logs",
-        "phase_definition": {
-          "min_age": "0ms",
-          "actions": {
-            "rollover": {
-              "max_age": "30d",
-              "max_primary_shard_docs": 200000000,
-              "min_docs": 1,
-              "max_primary_shard_size": "50gb"
-            }
-          }
-        },
-        "version": 1,
-        "modified_date_in_millis": 1749059754275
-      }
-    }
-  }
-}
-```
-
-You can also call this API for a data stream:
-
-```console
-GET my-datastream/_ilm/explain
-```
-
-When called for a data stream, the API retrieves the current lifecycle status for the stream's backing indices:
-
-```json
-{
-  "indices": {
-    ".ds-logs-elastic_agent.filebeat-default-2025.06.04-000001": {
-      "index": ".ds-logs-elastic_agent.filebeat-default-2025.06.04-000001",
-      "managed": true,
-      "policy": "logs",
-      "index_creation_date_millis": 1749060710541,
-      "time_since_index_creation": "19.06d",
-      "lifecycle_date_millis": 1749060710541,
-      "age": "19.06d",
-      "phase": "hot",
-      "phase_time_millis": 1749060711038,
-      "action": "rollover",
-      "action_time_millis": 1749060712038,
-      "step": "check-rollover-ready",
-      "step_time_millis": 1749060712038,
-      "phase_execution": {
-        "policy": "logs",
-        "phase_definition": {
-          "min_age": "0ms",
-          "actions": {
-            "rollover": {
-              "max_age": "30d",
-              "max_primary_shard_docs": 200000000,
-              "min_docs": 1,
-              "max_primary_shard_size": "50gb"
-            }
-          }
-        },
-        "version": 1,
-        "modified_date_in_millis": 1749059754275
-      }
-    }
-  }
-}
-```
-:::
-::::
-
-## Switch lifecycle policies [switch-lifecycle-policies]
-
-You may want to change the ILM policy applied to an index. For example, if you're ingesting a large set of log data you may want to apply a different policy to a subset of indices containing only the most critical logs.
-
-:::::{warning}
-Be careful when changing either the `logs@lifecycle` or `metrics@lifecycle` policies as these typically manage many indices. In {{kib}}, the **Index Lifecycle Policies** table shows the number of indices currently associated with each policy.
-:::::
-
-::::{tab-set}
-:group: kibana-api
-:::{tab-item} {{kib}}
-:sync: kibana
-To switch an index’s lifecycle policy:
-
-1. Go to **Stack Management > Index Management**. In the **Indices** tab, search for and select the index that you that you want to switch to a new policy. You can use the **Lifecycle status** filter to narrow the list.
-
-1. From the **Manage index** dropdown menu select **Remove lifecycle policy**. Confirm your choice and then the ILM policy is removed.
-
-1. From the **Manage index** dropdown menu select **Add lifecycle policy**, and then select a new policy to apply.
-
-:::
-
-:::{tab-item} API
-:sync: api
-Use the {{es}} [remove policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) and [update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) APIs to switch an index’s lifecycle policy:
-
-1. Remove the existing policy using the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy). Target a data stream or alias to remove the policies of all its indices.
-
-    ```console
-    POST logs-my_app-default/_ilm/remove
-    ```
-
-2. The remove policy API removes all {{ilm-init}} metadata from the index and doesn’t consider the index’s lifecycle status. This can leave indices in an undesired state.
-
-    For example, the [`forcemerge`](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
-
-    After policy removal, use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to check an index’s state. Target a data stream or alias to get the state of all its indices.
-
-    ```console
-    GET logs-my_app-default
-    ```
-
-    You can then change the index as needed. For example, you can re-open any closed indices using the [open index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open).
-
-    ```console
-    POST logs-my_app-default/_open
-    ```
-
-3. Assign a new policy using the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Target a data stream or alias to assign a policy to all its indices.
-
-    ::::::{warning}
-    * Don’t assign a new policy without first removing the existing policy. This can cause [phase execution](index-lifecycle.md#ilm-phase-execution) to silently fail.
-    ::::::
-
-    ```console
-    PUT logs-my_app-default/_settings
-    {
-      "index": {
-        "lifecycle": {
-          "name": "new-lifecycle-policy"
-        }
-      }
-    }
-    ```
-
-:::
-::::
