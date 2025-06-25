@@ -15,7 +15,7 @@ products:
 These steps describe how to configure remote clusters between an {{es}} cluster in {{ech}} (ECH) and an {{es}} cluster running within [{{eck}} (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 
-## Establish trust between two clusters [ec_establish_trust_between_two_clusters]
+## Establish trust between the two clusters [ec_establish_trust_between_two_clusters]
 
 The first step is to establish trust between the two clusters, by adding the CA certificate and trust details of each environment into the other.
 
@@ -35,7 +35,7 @@ This guide uses TLS certificates to secure remote cluster connections and follow
 
     1. From the **Security** menu, select **Remote Connections > Add trusted environment**, choose **Self-managed**, and click **Next**.
 
-    2. Select **Certificates** as authentication mechanism and click **Next**.
+    2. Select **Certificates** as the authentication mechanism and click **Next**.
 
     3. In **Add trusted CA certificate**, upload the `eck-ca.crt` file retrieved in the previous step.
 
@@ -54,23 +54,23 @@ This guide uses TLS certificates to secure remote cluster connections and follow
 
 1. Edit the `trust.yml` file downloaded in the previous step from the Cloud UI to adapt it to your ECK cluster. The file includes a subject name pattern that is not compatible with ECK.
 
-    Replace the line corresponding to the `Scope ID` you entered when configuring trust in the ECH deployment:
+    Replace the line corresponding to the `Scope ID` you entered when configuring trust in the ECH deployment: 
 
     ```sh
     "*.node.*.cluster.<kubernetes-namespace>.es.local.account"
     ```
 
-    with the correct subject name for your ECK cluster, using the following pattern:
+    Replace it with the correct subject name for your ECK cluster. The new subject name should use the following pattern:
 
     ```sh
     "*.node.<cluster-name>.<kubernetes-namespace>.es.local"
     ```
 
     ::::{important}
-    If you don’t update this entry, {{es}} nodes of your ECK deployment may fail to start or join the cluster due to failed trust validation.
+    If you don’t update this entry, {{es}} nodes of your ECK deployment might fail to start or join the cluster due to failed trust validation.
     ::::
 
-    For example, the original downloaded file might contain:
+    For example, the original downloaded file might contain the following:
 
     ```yaml
     trust.subject_name:
@@ -80,7 +80,7 @@ This guide uses TLS certificates to secure remote cluster connections and follow
     1. This entry identifies your ECH deployment. Leave it unchanged.
     2. This entry identifies your ECK deployment incorrectly, and must be updated.
 
-    For an ECK cluster named `quickstart` in the `default` namespace, the updated file should look like:
+    For an ECK cluster named `quickstart` in the `default` namespace, the updated file should look like the following:
 
     ```yaml
     trust.subject_name:
@@ -96,16 +96,16 @@ This guide uses TLS certificates to secure remote cluster connections and follow
     kubectl create secret generic remote-ech-ca --from-file=ca.crt=<path-to-CA-certificate-file> -n <namespace>
     ```
 
-3. In the same namespace as your {{es}} cluster, upload the updated `trust.yml` file as a Kubernetes ConfigMap. For a cluster named `quickstart`, run:
+3. In the same namespace as your {{es}} cluster, upload the updated `trust.yml` file as a Kubernetes ConfigMap. For a cluster named `quickstart`, run the following command:
 
     ```sh
     kubectl create configmap quickstart-trust-ech --from-file=trust.yml=<path-to-trust.yml> -n <namespace>
     ```
 
-4. Edit the {{es}} Kubernetes resource to include the following configuration. This example assumes that the Kubernetes secret and config map created in the previous steps are named `remote-ech-ca` and `quickstart-trust-ech`, respectively:
+4. Edit the {{es}} Kubernetes resource to reference the new certificate and trust.yml file. This example assumes that the Kubernetes secret and ConfigMap created in the previous steps are named `remote-ech-ca` and `quickstart-trust-ech`, respectively:
 
     ::::{note}
-    Apply these changes to all `nodeSets` of your cluster. Updating this configuration will restart all {{es}} pods, which may take some time to complete.
+    Apply these changes to all `nodeSets` of your cluster. Updating this configuration will restart all {{es}} pods, which might take some time to complete.
     ::::
 
     ```yaml
