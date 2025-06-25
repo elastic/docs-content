@@ -1,14 +1,18 @@
 ---
 applies_to:
-  stack: ga 8.19.0
-  serverless: ga 9.1.0
+  stack: ga 8.19.0, ga 9.1.0
+  serverless: ga
 ---
 
 # Failure store [failure-store]
 
 A failure store is a secondary set of indices inside a data stream, dedicated to storing failed documents. A failed document is any document that, without the failure store enabled, would cause an ingest pipeline exception or that has a structure that conflicts with a data stream's mappings. In the absence of the failure store, a failed document would cause the indexing operation to fail, with an error message returned in the operation response.
 
-When a data stream's failure store is enabled, these failures are instead captured in a separate index and persisted to be analysed later. Clients receive a successful response with a flag indicating the failure was redirected. Failure stores do not capture failures caused by backpressure or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
+When a data stream's failure store is enabled, these failures are instead captured in a separate index and persisted to be analysed later. Clients receive a successful response with a flag indicating the failure was redirected. 
+
+:::{important}
+Failure stores do not capture failures caused by backpressure or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
+:::
 
 ## Set up a data stream failure store [set-up-failure-store]
 
@@ -19,7 +23,7 @@ Each data stream has its own failure store that can be enabled to accept failed 
 You can specify in a data stream's [index template](../templates.md) if it should enable the failure store when it is first created.
 
 :::{note}
-Unlike the `settings` and `mappings` fields on an [index template](../templates.md) which are repeatedly applied to new data stream write indices on rollover, the `data_stream_options` section of a template is applied to a data stream only once when the data stream is first created. To configure existing data streams, use the put [data stream options API](indices-put-data-stream-options).
+Unlike the `settings` and `mappings` fields on an [index template](../templates.md) which are repeatedly applied to new data stream write indices on rollover, the `data_stream_options` section of a template is applied to a data stream only once when the data stream is first created. To configure existing data streams, use the put [data stream options API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options).
 :::
 
 To enable the failure store on a new data stream, enable it in the `data_stream_options` of the template:
@@ -99,16 +103,17 @@ PUT _cluster/settings
   }
 }
 ```
+1. Enabling the failure stores for `my-datastream-*` and `logs-*`
+
 ```console
 PUT _data_stream/my-datastream-1/_options
 {
   "failure_store": {
-    "enabled": false <2>
+    "enabled": false <1>
   }
 }
 ```
-1. Enabling the failure stores for `my-datastream-*` and `logs-*`
-2. The failure store for `my-datastream-1` is disabled even though it matches `my-datastream-*`. The data stream options override the cluster setting.
+1. The failure store for `my-datastream-1` is disabled even though it matches `my-datastream-*`. The data stream options override the cluster setting.
 
 ## Using a failure store [use-failure-store]
 

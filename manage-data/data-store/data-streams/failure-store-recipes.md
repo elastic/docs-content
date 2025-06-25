@@ -30,9 +30,10 @@ POST my-datastream-ingest/_doc
   },
   "_seq_no": 2,
   "_primary_term": 1,
-  "failure_store": "used" // The document was sent to the failure store.
+  "failure_store": "used" <1>
 }
 ```
+1. The document was sent to the failure store.
 
 Now we search the failure store to check the failure document to see what went wrong.
 ```console
@@ -64,27 +65,27 @@ GET my-datastream-ingest::failures/_search
           "@timestamp": "2025-05-09T06:24:48.381Z",
           "document": {
             "index": "my-datastream-ingest",
-            "source": { // When an ingest pipeline fails, the document stored is what was originally sent to the cluster.
+            "source": { <1>
               "important": {
-                "info": "The rain in Spain falls mainly on the plain" // The important information that we failed to find was originally present in the document.
+                "info": "The rain in Spain falls mainly on the plain" <2>
               },
               "@timestamp": "2025-04-21T00:00:00Z"
             }
           },
           "error": {
             "type": "illegal_argument_exception",
-            "message": "field [info] not present as part of path [important.info]", // The info field was not present when the failure occurred.
+            "message": "field [info] not present as part of path [important.info]", <3>
             "stack_trace": """j.l.IllegalArgumentException: field [info] not present as part of path [important.info]
 	at o.e.i.IngestDocument.getFieldValue(IngestDocument.java:202)
 	at o.e.i.c.SetProcessor.execute(SetProcessor.java:86)
 	... 19 more
 """,
-            "pipeline_trace": [ // The first pipeline called the second pipeline.
+            "pipeline_trace": [ <4>
               "ingest-step-1",
               "ingest-step-2"
             ],
-            "pipeline": "ingest-step-2", // The document failed in the second pipeline.
-            "processor_type": "set" // It failed in the pipeline's set processor.
+            "pipeline": "ingest-step-2", <5>
+            "processor_type": "set" <6>
           }
         }
       }
@@ -92,6 +93,12 @@ GET my-datastream-ingest::failures/_search
   }
 }
 ```
+1. When an ingest pipeline fails, the document stored is what was originally sent to the cluster.
+2. The important information that we failed to find was originally present in the document.
+3. The info field was not present when the failure occurred.
+4. The first pipeline called the second pipeline.
+5. The document failed in the second pipeline.
+6. It failed in the pipeline's set processor.
 
 Despite not knowing the pipelines beforehand, we have some places to start looking. The `ingest-step-2` pipeline cannot find the `important.info` field despite it being present in the document that was sent to the cluster. If we pull that pipeline definition we find the following:
 
@@ -104,15 +111,17 @@ GET _ingest/pipeline/ingest-step-2
   "ingest-step-2": {
     "processors": [
       {
-        "set": { // There is only one processor here.
+        "set": { <1>
           "field": "copy.info",
-          "copy_from": "important.info" // This field was missing from the document at this point. 
+          "copy_from": "important.info" <2> 
         }
       }
     ]
   }
 }
 ```
+1. There is only one processor here.
+2. This field was missing from the document at this point.
 
 There is only a set processor in the `ingest-step-2` pipeline so this is likely not where the root problem is. Remembering the `pipeline_trace` field on the failure we find that `ingest-step-1` was the original pipeline called for this document. It is likely the data stream's default pipeline. Pulling its definition we find the following:
 
@@ -126,18 +135,20 @@ GET _ingest/pipeline/ingest-step-1
     "processors": [
       {
         "remove": {
-          "field": "important.info" // A remove processor that is incorrectly removing our important field.
+          "field": "important.info" <1>
         }
       },
       {
         "pipeline": {
-          "name": "ingest-step-2" // The call to the second pipeline.
+          "name": "ingest-step-2" <2>
         }
       }
     ]
   }
 }
 ```
+1. A remove processor that is incorrectly removing our important field.
+2. The call to the second pipeline.
 
 We find a remove processor in the first pipeline that is the root cause of the problem! The pipeline should be updated to not remove important data, or the downstream pipeline should be changed to not expect the important data to be always present.
 
@@ -267,8 +278,8 @@ GET my-datastream-ingest::failures/_search
               "complicated-processor"
             ],
             "pipeline": "complicated-processor",
-            "processor_type": "set", // Helpful, but which set processor on the pipeline could it be?
-            "processor_tag": "copy to new counter again" // The tag of the exact processor that the document failed on.
+            "processor_type": "set", <1>
+            "processor_tag": "copy to new counter again" <2>
           }
         }
       }
@@ -276,6 +287,8 @@ GET my-datastream-ingest::failures/_search
   }
 }
 ```
+1. Helpful, but which set processor on the pipeline could it be?
+2. The tag of the exact processor that the document failed on.
 
 Without tags in place it would not be as clear where in the pipeline the indexing problem occurred. Tags provide a unique identifier for a processor that can be quickly referenced in case of an ingest failure.
 
@@ -352,11 +365,11 @@ We recommend a few best practices for remediating failure data.
 
 **Separate your failures beforehand.** As described in the previous [failure document source](./failure-store.md#use-failure-store-document-source) section, failure documents are structured differently depending on when the document failed during ingestion. We recommend to separate documents by ingest pipeline failures and indexing failures at minimum. Ingest pipeline failures often need to have the original pipeline re-run, while index failures should skip any pipelines. Further separating failures by index or specific failure type may also be beneficial.
 
-**Perform a failure store rollover.** Consider rolling over the failure store before attempting to remediate failures. This will create a new failure index that will collect any new failures during the remediation process.
+**Perform a failure store rollover.** Consider [rolling over the failure store](./failure-store.md#failure-store-rollover-manage-failure-store-rollover) before attempting to remediate failures. This will create a new failure index that will collect any new failures during the remediation process.
 
 **Use an ingest pipeline to convert failure documents back into their original document.** Failure documents store failure information along with the document that failed ingestion. The first step for remediating documents should be to use an ingest pipeline to extract the original source from the failure document and then discard any other information about the failure.
 
-**Simulate first to avoid repeat failures.** If you must run a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline is applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure.
+**Simulate first to avoid repeat failures.** If you must run a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline is applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure. The easiest way to simulate these changes is via the [pipeline simulate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) or the [simulate ingest API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-simulate-ingest).
 
 ### Remediating ingest node failures [failure-store-recipes-remediation-ingest]
 
@@ -811,6 +824,7 @@ Since the failure store is enabled on this data stream, it would be wise to chec
 :::
 
 ::::{step} Done
+Once any failures have been remediated, you may wish to purge the failures from the failure store to clear up space and to avoid warnings about failed data that has already been replayed. Otherwise, your failures will stay available until the maximum failure store retention should you need to reference them.
 ::::
 
 :::::
@@ -1147,8 +1161,7 @@ Since the failure store is enabled on this data stream, it would be wise to chec
 :::
 
 ::::{step} Done
+Once any failures have been remediated, you may wish to purge the failures from the failure store to clear up space and to avoid warnings about failed data that has already been replayed. Otherwise, your failures will stay available until the maximum failure store retention should you need to reference them.
 ::::
 
 :::::
-
-Once any failures have been remediated, you may wish to purge the failures from the failure store to clear up space and to avoid warnings about failed data that has already been replayed. Otherwise, your failures will stay available until the maximum failure store retention should you need to reference them.
