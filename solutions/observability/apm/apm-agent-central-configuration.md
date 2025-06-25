@@ -9,18 +9,20 @@ products:
   - id: apm
 ---
 
-# APM central configuration [apm-agent-configuration]
+# APM Agent Central Configuration [apm-agent-configuration]
 
-APM central configuration allows you to fine-tune your APM agents and EDOT SDKs from within the Applications UI. Changes are automatically propagated to your agents and SDKs, so there’s no need to redeploy.
+APM Agent Central Configuration allows you to fine-tune your APM agents and EDOT SDKs from within the Applications UI. Changes are automatically propagated to your agents and SDKs, so there’s no need to redeploy.
 
-To get started, choose the services and environments you wish to configure. The Applications UI will let you know when your APM agents and SDKs have applied your configurations.
-
-Refer to [EDOT SDK central configuration](opentelemetry://reference/central-configuration.md) for more information on EDOT SDKs.
+To get started, select the services and environments you want to configure. The Applications UI lets you know when your APM agents and SDKs have applied your configurations.
 
 :::{image} /solutions/images/observability-apm-agent-configuration.png
 :alt: APM central configuration in Kibana
 :screenshot:
 :::
+
+::::{important}
+To configure EDOT SDKs through APM Agent Central Configuration, refer to [Central configuration for EDOT SDKs](opentelemetry://reference/central-configuration.md).
+::::
 
 ## Precedence [_precedence]
 
@@ -53,5 +55,8 @@ Supported configurations are also tagged with the ![dynamic config](/solutions/i
 
 For most users, APM agent configuration should work out-of-the-box. If you run into trouble, it may be because you’re not using the {{es}} output, or because your {{es}} credentials don’t have sufficient privileges.
 
-See [configure APM agent configuration](/solutions/observability/apm/configure-apm-agent-central-configuration.md) to learn how to configure APM Server to avoid these problems.
+Refer to [configure APM agent configuration](/solutions/observability/apm/configure-apm-agent-central-configuration.md) to learn how to configure APM Server to avoid these problems.
 
+::::{note}
+You can't configure APM agents through the EDOT Collector. Use APM Server for that purpose.
+::::
