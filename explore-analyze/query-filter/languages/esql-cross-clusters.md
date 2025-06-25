@@ -12,7 +12,9 @@ products:
 
 
 # Use ES|QL across clusters [esql-cross-clusters]
-
+```{applies_to}
+stack: preview 9.0, ga 9.1
+```
 
 With {{esql}}, you can execute a single query across multiple clusters.
 
