@@ -258,7 +258,7 @@ If you don’t want to sync antivirus registration, you can set it manually with
 
 ## Advanced policy settings (optional) [adv-policy-settings]
 
-Users with unique configuration and security requirements can select **Show advanced settings** while configuring an {{elastic-defend}} integration policy to support advanced use cases. Hover over each setting to view its description.
+Users with unique configuration and security requirements can select **Show advanced settings** while configuring an {{elastic-defend}} integration policy to support advanced use cases. Hover over each setting to view a short description or refer to [](/reference/security/defend-advanced-settings.md) for more detailed explanations.
 
 ::::{note}
 Advanced settings are not recommended for most users.
