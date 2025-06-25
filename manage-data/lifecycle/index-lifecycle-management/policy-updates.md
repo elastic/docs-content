@@ -34,7 +34,7 @@ When you apply a different policy to a managed index, the index completes the cu
 
 ## Update an existing lifecycle policy [update-lifecycle-policy]
 
-You can update a lifecycle policy that is currently associated with an index.
+You can update a lifecycle policy that is currently associated with one or more indices.
 
 ::::{tab-set}
 :group: kibana-api
