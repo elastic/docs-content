@@ -11,10 +11,74 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## June 23, 2025 [serverless-changelog-06232025]
+
+### Features and enhancements [serverless-changelog-06232025-features-enhancements]
+
+* Adds new setting `xpack.actions.webhook.ssl.pfx.enabled` to disable PFX file support for SSL client authentication in Webhook connectors [#222507]({{kib-pull}}222507)
+* Introduces **Scheduled Reports** feature [#221028]({{kib-pull}}221028)
+* Adds `xpack.actions.email.services.enabled` setting to control availability of email services in connectors [#223363]({{kib-pull}}223363)
+* Enables support for adding observables, procedures, and custom fields to alerts for TheHive [#207255]({{kib-pull}}207255)
+* Improves visual highlight behavior in the add panel UI [#223614]({{kib-pull}}223614)
+* Supports agentless traffic filters for Elastic Agent [#222082]({{kib-pull}}222082)
+* Adds support for suggesting all operators in the query editor [#223503]({{kib-pull}}223503)
+* Introduces accordion sections and attribute tables in UI components [#224185]({{kib-pull}}224185)
+* Adds monitor downtime alert when no data is available [#220127]({{kib-pull}}220127)
+* Introduces **Maintenance Windows** functionality [#222174]({{kib-pull}}222174)
+* Enables editing of labels and tags for private locations in **Synthetics** [#221515]({{kib-pull}}221515)
+* Adds new tail-based sampling settings to integration policies [#224479]({{kib-pull}}224479)
+* Enables model ID retrieval from anonymization rules [#224280]({{kib-pull}}224280)
+* Updates SLO starter prompt text for improved guidance [#224493]({{kib-pull}}224493)
+* Introduces `deactivate_...` agent configuration settings for EDOT Node.js [#224502]({{kib-pull}}224502)
+* Updates system prompt to include information about anonymization [#224211]({{kib-pull}}224211)
+* Adds support for Microsoft Defender's `runscript` command in the **Response Console** [#222377]({{kib-pull}}222377)
+* Moves Automatic Migration from **Tech Preview** to General Availability [#224544]({{kib-pull}}224544)
+* Adds simplified bulk editing for alert suppression rules [#223090]({{kib-pull}}223090)
+* Introduces **XSOAR Connector** [#212049]({{kib-pull}}212049)
+* Adds `name` field to the Rule Migrations UI and data model [#223860]({{kib-pull}}223860)
+* Enables collection of `dns` events for macOS in **Elastic Defend** [#223566]({{kib-pull}}223566)
+* Adds usage callout for **Elastic Indexing Service (EIS)** [#221566]({{kib-pull}}221566)
+* Adds `ecs@mappings` component template to transform destination index templates [#223878]({{kib-pull}}223878)
+* Renames advanced policy setting `disable_origin_info_collection` to `origin_info_collection` and changed its default behavior to Opt-In [#223882]({{kib-pull}}223882)
+* Introduces cleanup task for unused URLs [#220138]({{kib-pull}}220138)
+* Marks the **Session Invalidation API** as Stable [#224076]({{kib-pull}}224076)
+* Hides the Adaptive Allocations toggle for Trained Models in **Serverless** environments [#224097]({{kib-pull}}224097)
+* Adds option to disable **AIOps** features in Kibana [#221286]({{kib-pull}}221286)
+* Enables autocompletion for **ES|QL** queries in the Console UI [#219980]({{kib-pull}}219980)
+* Improves layout and content of rule listing and overview pages [#223603]({{kib-pull}}223603)
+* Adds support for changing settings when re-processing Rule Migrations [#222542]({{kib-pull}}222542)
+* Implements navigation UI for the **Overview Page** in **Entity Analytics** [#221748]({{kib-pull}}221748)
+* Adds support for partial result handling in **ES|QL** [#223198]({{kib-pull}}223198)
+* Adds an **Executable Name** tab to the TopN view [#224291]({{kib-pull}}224291)
+
+
+### Fixes [serverless-changelog-06232025-fixes]
+
+* Fixes pagination not working correctly in certain tables [#223537]({{kib-pull}}223537)
+* Fixes bulk actions selecting incorrect agents when `namespace` filter is used [#224036]({{kib-pull}}224036)
+* Corrects `z-index` issues in the **ESQL Query Editor** [#222841]({{kib-pull}}222841)
+* Updates ARIA tags for improved accessibility in selected fields UI [#224224]({{kib-pull}}224224)
+* Ensures **Last Successful Screenshot** matches the correct step in Synthetics [#224220]({{kib-pull}}224220)
+* Improves network error handling for error details panel [#224296]({{kib-pull}}224296)
+* Fixes broken **EDOT JVM Metrics Dashboard** when classic agent metrics are present [#224052]({{kib-pull}}224052)
+* Fixes **SLO federated view** bug caused by exceeding index name byte limit [#224478]({{kib-pull}}224478)
+* Fixes issue where OSS models failed when streaming was enabled [#224129]({{kib-pull}}224129)
+* Corrects display issues for rule filters in the UI [#222963]({{kib-pull}}222963)
+* Fixes time normalization bug for day units in rule scheduling [#224083]({{kib-pull}}224083)
+* Resolves issue where unknown fields weren't supported in **Data Visualizer** and **Field Statistics** [#223903]({{kib-pull}}223903)
+* Fixes Bedrock connector not using proxy configuration settings [#224130]({{kib-pull}}224130)
+* Passes correct namespace to `migrateInputDocument` logic [#222313]({{kib-pull}}222313)
+* Adjusts app menu header `z-index` to avoid clashing with the portable dev console [#224708]({{kib-pull}}224708)
+* Reverts to using `.watches` system index in Watcher UI [#223898]({{kib-pull}}223898)
+* Fixes several issues introduced in versions 8.18.0 through 9.1.0, including broken pagination (limited to 10 items), erroneous error banners, and broken search functionality.
+* Fixes **Discard** button state change logic for toggles [#223493]({{kib-pull}}223493)
+* Removes `originId` from connectors during rule import [#223454]({{kib-pull}}223454)
+
+
 ## June 17, 2025 [serverless-changelog-06172025]
 
 ### Features and enhancements [serverless-changelog-06172025-features-enhancements]
-* {{serverless-full}} is now available in two new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP Belgium (`europe-west1`) and GCP Mumbai (`asia-south1`). 
+* {{serverless-full}} is now available in two new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP Belgium (`europe-west1`) and GCP Mumbai (`asia-south1`) 
 
 ## June 16, 2025 [serverless-changelog-06162025]
 

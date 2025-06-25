@@ -51,3 +51,8 @@ In addition to practical advice, AI Assistant can offer conceptual advice, tips,
 Elastic does not use customer data for model training. This includes anything you send the model, such as alert or event data, detection rule configurations, queries, and prompts. However, any data you provide to AI Assistant will be processed by the third-party provider you chose when setting up the generative AI connector as part of the assistant setup.
 
 Elastic does not control third-party tools, and assumes no responsibility or liability for their content, operation, or use, nor for any loss or damage that may arise from your using such tools. Exercise caution when using AI tools with personal, sensitive, or confidential information. Any data you submit may be used by the provider for AI training or other purposes. There is no guarantee that the provider will keep any information you provide secure or confidential. You should familiarize yourself with the privacy practices and terms of use of any generative AI tools prior to use.
+
+## Elastic Managed LLM [elastic-managed-llm-ai-assistant]
+
+:::{include} ../solutions/_snippets/elastic-managed-llm.md
+:::
