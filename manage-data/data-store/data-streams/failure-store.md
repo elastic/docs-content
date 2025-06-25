@@ -277,7 +277,7 @@ If the document was redirected to a data stream's failure store but that failed 
 
 ### Searching failures [use-failure-store-searching]
 
-Once you have accumulated some failures, they can be searched much like a regular index.
+Once you have accumulated some failures, the failure store can be searched much like a regular data stream.
 
 :::{warning}
 Documents redirected to the failure store in the event of a failed ingest pipeline will be stored in their original, unprocessed form. If an ingest pipeline normally redacts sensitive information from a document, then failed documents in their original, unprocessed form may contain sensitive information.
