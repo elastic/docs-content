@@ -1,8 +1,22 @@
-# Failure store recipes and use cases [failure-store-recipes]
+---  
+mapped_pages:
+- (8.19 docs)
+
+applies_to:
+  stack: ga 9.1
+  serverless: ga
+
+products:
+- id: elasticsearch
+- id: elastic-stack
+- id: cloud-serverless
+---
+
+# Using failure stores to address ingestion issues [failure-store-examples]
 
 When something goes wrong during ingestion it is often not an isolated event. Included for your convenience are some examples of how you can use the failure store to quickly respond to ingestion failures and get your indexing back on track.
 
-## Troubleshooting nested ingest pipelines [failure-store-recipes-nested-ingest-troubleshoot]
+## Troubleshooting nested ingest pipelines [failure-store-examples-nested-ingest-troubleshoot]
 
 When a document fails in an ingest pipeline it can be difficult to figure out exactly what went wrong and where. When these failures are captured by the failure store during this part of the ingestion process, they will contain additional debugging information. Failed documents will note the type of processor and which pipeline was executing when the failure occurred. Failed documents will also contain a pipeline trace which keeps track of any nested pipeline calls that the document was in at time of failure.
 
@@ -152,7 +166,7 @@ GET _ingest/pipeline/ingest-step-1
 
 We find a remove processor in the first pipeline that is the root cause of the problem! The pipeline should be updated to not remove important data, or the downstream pipeline should be changed to not expect the important data to be always present.
 
-## Troubleshooting complicated ingest pipelines [failure-store-recipes-complicated-ingest-troubleshoot]
+## Troubleshooting complicated ingest pipelines [failure-store-examples-complicated-ingest-troubleshoot]
 
 Ingest processors can be labeled with tags. These tags are user-provided information that names or describes the processor's purpose in the pipeline. When documents are redirected to the failure store due to a processor issue, they capture the tag from the processor in which the failure occurred, if it exists. Because of this behavior, it is a good practice to tag the processors in your pipeline so that the location of a failure can be identified quickly.
 
@@ -292,7 +306,7 @@ GET my-datastream-ingest::failures/_search
 
 Without tags in place it would not be as clear where in the pipeline the indexing problem occurred. Tags provide a unique identifier for a processor that can be quickly referenced in case of an ingest failure.
 
-## Alerting on failed ingestion [failure-store-recipes-alerting]
+## Alerting on failed ingestion [failure-store-examples-alerting]
 
 Since failure stores can be searched just like a normal data stream, we can use them as inputs to [alerting rules](../../../explore-analyze/alerts-cases/alerts.md) in
 {{kib}}. Here is a simple alerting example that is triggered when more than ten indexing failures have occurred in the last five minutes for a data stream:
@@ -353,7 +367,7 @@ Configure schedule, actions, and details of the alert before saving the rule.
 
 :::::
 
-## Data remediation [failure-store-recipes-remediation]
+## Data remediation [failure-store-examples-remediation]
 
 If you've encountered a long span of ingestion failures you may find that a sizeable gap of events has appeared in your data stream. If the failure store is enabled, the documents that should fill those gaps would be tucked away in the data stream's failure store. Because failure stores are made up of regular indices and the failure documents contain the document source that failed, the failure documents can often times be replayed into your production data streams.
 
@@ -371,7 +385,7 @@ We recommend a few best practices for remediating failure data.
 
 **Simulate first to avoid repeat failures.** If you must run a pipeline as part of your remediation process, it is best to simulate the pipeline against the failure first. This will catch any unforeseen issues that may fail the document a second time. Remember, ingest pipeline failures will capture the document before an ingest pipeline is applied to it, which can further complicate remediation when a failure document becomes nested inside a new failure. The easiest way to simulate these changes is via the [pipeline simulate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) or the [simulate ingest API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-simulate-ingest).
 
-### Remediating ingest node failures [failure-store-recipes-remediation-ingest]
+### Remediating ingest node failures [failure-store-examples-remediation-ingest]
 
 Failures that occurred during ingest processing will be stored as they were before any pipelines were run. To replay the document into the data stream we will need to re-run any applicable pipelines for the document.
 
@@ -829,7 +843,7 @@ Once any failures have been remediated, you may wish to purge the failures from 
 
 :::::
 
-### Remediating mapping and shard failures [failure-store-recipes-remediation-mapping]
+### Remediating mapping and shard failures [failure-store-examples-remediation-mapping]
 
 As described in the previous [failure document source](./failure-store.md#use-failure-store-document-source) section, failures that occur due to a mapping or indexing issue will be stored as they were after any pipelines had executed. This means that to replay the document into the data stream we will need to make sure to skip any pipelines that have already run.
 

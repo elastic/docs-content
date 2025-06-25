@@ -1,7 +1,15 @@
----
+---  
+mapped_pages:
+- (8.19 docs)
+
 applies_to:
-  stack: ga 8.19.0, ga 9.1.0
+  stack: ga 9.1
   serverless: ga
+
+products:
+- id: elasticsearch
+- id: elastic-stack
+- id: cloud-serverless
 ---
 
 # Failure store [failure-store]
@@ -13,6 +21,10 @@ When a data stream's failure store is enabled, these failures are instead captur
 :::{important}
 Failure stores do not capture failures caused by backpressure or document version conflicts. These failures are always returned as-is since they warrant specific action by the client.
 :::
+
+On this page, you'll learn how to set up, use, and manage a failure store, as well as the structure of failure store documents.
+
+For examples of how to use failure stores to identify and fix errors in ingest pipelines and your data, refer to [](/manage-data/data-store/data-streams/failure-store-recipes.md).
 
 ## Set up a data stream failure store [set-up-failure-store]
 
@@ -118,6 +130,8 @@ PUT _data_stream/my-datastream-1/_options
 ## Using a failure store [use-failure-store]
 
 The failure store is meant to ease the burden of detecting and handling failures when ingesting data to {{es}}. Clients are less likely to encounter unrecoverable failures when writing documents, and developers are more easily able to troubleshoot faulty pipelines and mappings.
+
+For examples of how to use failure stores to identify and fix errors in ingest pipelines and your data, refer to [](/manage-data/data-store/data-streams/failure-store-recipes.md).
 
 ### Failure redirection [use-failure-store-redirect]
 
