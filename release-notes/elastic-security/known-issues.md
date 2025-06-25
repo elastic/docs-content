@@ -16,6 +16,54 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Security AI Assistant Knowledge Base settings UI not displaying
+
+Applies to: 9.0.3
+
+On June 24, 2025, an error was discovered that prevents the AI Assistant Knowledge Base settings UI from displaying, including the **Setup Knowledge Base** button and alert configuration options. As a result, the Knowledge Base cannot be set up or configured through the Knowledge Base settings UI.
+
+**Workaround**
+
+While the UI for configuring the Knowledge Base is blocked, you can still enable it
+[from an AI Assistant conversation](/solutions/security/ai/ai-assistant-knowledge-base.md#_option_1_enable_knowledge_base_from_an_ai_assistant_conversation).
+
+After enabling the Knowledge Base, you can manage entries using the AI Assistant API:
+
+* List Knowledge Base entries using the [find knowledge base entry API]({{kib-apis}}/operation/operation-findknowledgebaseentries):
+
+  ```console
+  GET /api/security_ai_assistant/knowledge_base/entries/_find?page=1&per_page=100
+  ```
+
+* Create a Knowledge Base index entry using the [create knowledge base entry API]({{kib-apis}}/operation/operation-createknowledgebaseentry):
+
+  ```console
+  POST /api/security_ai_assistant/knowledge_base/entries
+  {
+    "type": "index",
+    "name": "test",
+    "index": "test-index",
+    "field": "mock",
+    "outputFields": ["example"],
+    "description": "test description",
+    "queryDescription": "test query description"
+  }
+  ```
+
+* Create a Knowledge Base document entry using the [create knowledge base entry API]({{kib-apis}}/operation/operation-createknowledgebaseentry):
+
+  ```console
+  POST /api/security_ai_assistant/knowledge_base/entries
+  {
+    "type": "document",
+    "kbResource": "user",
+    "source": "user",
+    "name": "doc"
+  }
+  ```
+
+:::
+
 :::{dropdown} The entity risk score feature may stop persisting risk score documents
 
 Applies to: {{stack}} 9.0.0, 9.0.1, 9.0.2
