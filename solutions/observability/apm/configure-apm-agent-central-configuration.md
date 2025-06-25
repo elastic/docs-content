@@ -17,12 +17,12 @@ products:
 APM agent central configuration is supported by all APM Server deployment methods, but some options are only supported for APM Server binary users.
 ::::
 
-APM Agent Central Configuration allows you to fine-tune your APM agents and EDOT SDKs from within the Applications UI. Changes are automatically propagated to your agents and SDKs, so there’s no need to redeploy your applications.
+APM Agent Central Configuration allows you to fine-tune your APM agents from within the Applications UI. Changes are automatically propagated to your agents, so there’s no need to redeploy your applications.
 
-To learn more about this feature, see [APM Agent Central Configuration](/solutions/observability/apm/apm-agent-central-configuration.md) and [EDOT SDK Central Configuration](opentelemetry://reference/central-configuration.md).
+To learn more about this feature, see [APM Agent Central Configuration](/solutions/observability/apm/apm-agent-central-configuration.md).
 
 ::::{note}
-You can't configure APM agents through the EDOT Collector. Use APM Server for that purpose.
+To configure EDOT SDKs through APM Agent Central Configuration, refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
 ::::
 
 ## APM agent configuration options [_apm_agent_configuration_options]

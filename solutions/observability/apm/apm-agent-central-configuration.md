@@ -1,5 +1,5 @@
 ---
-navigation_title: Centrally configure APM agents and EDOT SDKs
+navigation_title: Centrally configure APM agents
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html
 applies_to:
@@ -11,9 +11,9 @@ products:
 
 # APM Agent Central Configuration [apm-agent-configuration]
 
-APM Agent Central Configuration allows you to fine-tune your APM agents and EDOT SDKs from within the Applications UI. Changes are automatically propagated to your agents and SDKs, so there’s no need to redeploy.
+APM Agent Central Configuration allows you to fine-tune your APM agents from within the Applications UI. Changes are automatically propagated to your agents, so there’s no need to redeploy.
 
-To get started, select the services and environments you want to configure. The Applications UI lets you know when your APM agents and SDKs have applied your configurations.
+To get started, select the services and environments you want to configure. The Applications UI lets you know when your APM agents have applied your configurations.
 
 :::{image} /solutions/images/observability-apm-agent-configuration.png
 :alt: APM central configuration in Kibana
@@ -21,7 +21,7 @@ To get started, select the services and environments you want to configure. The 
 :::
 
 ::::{important}
-To configure EDOT SDKs through APM Agent Central Configuration, refer to [Central configuration for EDOT SDKs](opentelemetry://reference/central-configuration.md).
+To configure EDOT SDKs through APM Agent Central Configuration, refer to [EDOT SDKs Central Configuration](edot-sdks-central-configuration.md).
 ::::
 
 ## Precedence [_precedence]
@@ -36,18 +36,12 @@ Supported configurations are also tagged with the ![dynamic config](/solutions/i
 
 | Language/Platform | Agent/SDK | Configuration Reference |
 | --- | --- | --- |
-| Android | EDOT Android SDK | [Configuration reference](opentelemetry://reference/edot-sdks/android/configuration.md) |
 | Go | APM Go Agent | [Configuration reference](apm-agent-go://reference/configuration.md) |
-| iOS | EDOT iOS SDK | [Configuration reference](opentelemetry://reference/edot-sdks/ios/configuration.md) |
 | Java | APM Java Agent | [Configuration reference](apm-agent-java://reference/configuration.md) |
-| Java | EDOT Java SDK | [Configuration reference](opentelemetry://reference/edot-sdks/java/configuration.md) |
 | .NET | APM .NET Agent | [Configuration reference](apm-agent-dotnet://reference/configuration.md) |
 | Node.js | APM Node.js Agent | [Configuration reference](apm-agent-nodejs://reference/configuration.md) |
-| Node.js | EDOT Node.js SDK | [Configuration reference](opentelemetry://reference/edot-sdks/nodejs/configuration.md) |
 | PHP | APM PHP Agent | [Configuration reference](apm-agent-php://reference/configuration.md) |
-| PHP | EDOT PHP SDK | [Configuration reference](opentelemetry://reference/edot-sdks/php/configuration.md) |
 | Python | APM Python Agent | [Configuration reference](apm-agent-python://reference/configuration.md) |
-| Python | EDOT Python SDK | [Configuration reference](opentelemetry://reference/edot-sdks/python/configuration.md) |
 | Ruby | APM Ruby Agent | [Configuration reference](apm-agent-ruby://reference/configuration.md) |
 | Real User Monitoring (RUM) | APM RUM Agent | [Configuration reference](apm-agent-rum-js://reference/configuration.md) |
 
