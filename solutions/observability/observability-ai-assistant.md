@@ -95,6 +95,11 @@ The AI Assistant connects to one of these supported LLM providers:
     {{obs-ai-assistant}} doesn’t support connecting to a private LLM. Elastic doesn’t recommend using private LLMs with the AI Assistant.
 ::::
 
+### Elastic Managed LLM [elastic-managed-llm-obs-ai-assistant]
+
+:::{include} ../_snippets/elastic-managed-llm.md
+:::
+
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
 The AI Assistant uses [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), Elastic’s semantic search engine, to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses. Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
