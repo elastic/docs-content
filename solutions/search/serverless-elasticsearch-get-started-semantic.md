@@ -1,5 +1,5 @@
 ---
-navigation_title: Get started with semantic search
+navigation_title: Semantic search
 applies_to:
   serverless:
 products:
@@ -8,10 +8,11 @@ products:
 # Build an AI-powered search experience in {{es-serverless}}
 
 <!--
-As you ramp up on Elastic, you’ll use the Elasticsearch Relevance Engine™ (ESRE), designed to power AI search applications. With ESRE, you can take advantage of a suite of developer tools including Elastic’s textual search, vector database, and our proprietary transformer model for semantic search.
+As you ramp up on Elastic, you'll use the Elasticsearch Relevance Engine™ (ESRE), designed to power AI search applications. With ESRE, you can take advantage of a suite of developer tools including Elastic's textual search, vector database, and our proprietary transformer model for semantic search.
 -->
 
-Elastic offers a variety of search techniques, starting with BM25, the industry standard for textual search. It provides precise matching for specific searches, matching exact keywords, and it improves with tuning.
+Elastic offers a variety of search techniques, starting with BM25, the industry standard for textual search.
+It provides precise matching for specific searches, matching exact keywords, and it improves with tuning.
 
 <!--
 As you get started on vector search, keep in mind there are two forms of vector search: “dense” (aka, kNN vector search) and “sparse."
@@ -23,163 +24,121 @@ This model outperforms on a variety of data sets, such as financial data, weathe
 The model is built to provide great relevance across domains, without the need for additional fine tuning.
 
 <!--
-Check out this interactive demo to see how search results are more relevant when you test Elastic's Learned Sparse Encoder model against Elastic’s textual BM25 algorithm.
+Check out this interactive demo to see how search results are more relevant when you test Elastic's Learned Sparse Encoder model against Elastic's textual BM25 algorithm.
 
 In addition, Elastic also supports dense vectors to implement similarity search on unstructured data beyond text, such as videos, images, and audio.
 -->
 
-The advantage of semantic search and vector search is that these technologies allow you to use intuitive language in your search queries.
+The advantage of [AI-powered search](/solutions/search/ai-search/ai-search.md) is that these technologies enable you to use intuitive language in your search queries.
 For example, if you want to search for workplace guidelines on a second income, you could search for "side hustle", which is not a term you're likely to see in a formal HR document.
 
-## Setup
+To try it out, [create an {{es-serverless}} project](/solutions/search/serverless-elasticsearch-get-started.md#elasticsearch-get-started-create-project) that is optimized for vectors.
 
-In this guide, we'll demonstrate how to ingest data with the Elastic web crawler then try out some queries.
-If you want to play along, follow these setup steps. Otherwise, you can jump ahead to the query examples.
+% TBD: It seems like semantic search fields exist in all, so what is the value of this option?
 
-1. Optional: Create an {{ecloud}} project, in particular an {{es-serverless}} project that is optimized for vectors. 
-   If you want to perform the steps in this guide you'll need:
+## Add data
 
-   * The {{es}} URL: the endpoint to which you will send your data
-   * The API Key: the easiest of the authentication methods
-   % TBD: Is this mandatory? Clarify value.
+% TBD: What type of data is ideal for semantic search?
 
-1. Optional: Add data.
-   In this guide, the data is derived from a live website, the [{{es}} Labs](https://www.elastic.co/search-labs).
-
-   1. Let’s create an {{es}} index named `elasticsearch-labs-blog`.
-   1. Create mappings for a text field and a semantic text field.
-      <!--
-      Now before writing data to the index, let’s do a small configuration to ensure you have semantic search right from the start. Click on Mappings and + Add field, create a text field called `body`, this is where the crawler will put the content of the web pages it reads. Next, add a semantic text type field, let’s give it a very creative name: `semantic_text`.
-      
-      By using both a text field and semantic_text field, the process combines the strengths of traditional keyword search and advanced semantic search. This hybrid search provides comprehensive search capabilities, ensuring that users can find relevant information based on both the raw text and its underlying meaning.
-      -->
-   1. Ingest data with the Elastic Open Web Crawler.
-      <!--
-      You will need Docker to use the Open Web Crawler. Here is a simple config file, it tells the crawler to read the https://www.elastic.co/search-labs blog and write it to the `elasticsearch-labs-blog` index at `elasticsearch.host` using the `elasticsearch.api_key`... then create a `docker-compose.yml` file. Start the service with `docker-compose up -d` then start the crawling process with `docker-compose exec -it crawler bin/crawler crawl /app/config/crawler-config-blog.yml`. After a few minutes you should have the whole {{es}} labs blogs indexed.
-      
-      What just happened? The blog content was indexed to the `body` field, then this content was transformed into a sparse vector inside the `semantic_text` field. This transformation involved two main steps. First, the content was divided into smaller, manageable chunks to ensure that the text is broken down into meaningful segments, which can be more effectively processed and searched. Next, each chunk of text was transformed into a sparse vector representation using text expansion techniques. This step leverages ELSER (Elastic Search Engine for Relevance) to convert the text into a format that captures the semantic meaning, enabling more accurate and relevant search results.
-      -->
-
-## Test a keyword query
-
-% TBD Move below the semantic search example? Assumes people are already familiar with old search options?
-
-Now it’s time to search for the information you’re looking for.
-If you’re a developer who’s implementing search for a web application, you can use the Console/Dev Tools to test and refine search results from your indexed data.
-
-Let’s start with a simple `multi_match query`, which will match the text against the “title” and “body” fields.
-Since this is a classic lexical search (not semantic yet) the results of a query like “how to implement multilingual search” will match the words you are providing.
+There are some simple data sets that you can use for learning purposes.
+For example, if you follow the [guided index flow](/solutions/search/serverless-elasticsearch-get-started.md#elasticsearch-follow-guided-index-flow), you can choose the semantic search option.
+Follow the instructions to install an {{es}} client and define field mappings or try out the API requests in the [Console](/explore-analyze/query-filter/tools/console.md):
 
 ```console
-GET elasticsearch-labs-blog/_search
+PUT /my-index/_mapping
 {
-  "_source": ["title"],
-  "query": {
-    "multi_match": {
-      "query": "how to implement multilingual search",
-      "fields": ["title","body"]
+  "properties": {
+    "text": {
+      "type": "semantic_text"
     }
   }
 }
 ```
 
-In this case the top 5 matches are good, but not great.
+By default, thee [semantic_text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type provides vector search capabilities using the ELSER model.
+% TBD: Confirm "Elser model" vs ".elser-2-elasticsearch, a preconfigured endpoint for the elasticsearch service".
 
-```txt
-"Multilingual vector search with the E5 embedding model"
-"Scalar quantization optimized for vector databases"
-"How to migrate your Ruby app from OpenSearch to Elasticsearch"
-"How to search languages with compound words"
-"How To"
+Next, use the Elasticsearch bulk API to ingest an array of documents into the index.
+The initial bulk ingestion request could take longer than the default request timeout.
+If the following request times out, allow time for the machine learning model loading to complete (typically 1-5 minutes) then retry it:
+
+<!--
+TBD: Describe where to look for the downloaded model in Trained Models?
+-->
+
+```console
+POST /_bulk?pretty
+{ "index": { "_index": "my-index" } }
+{"text":"Yellowstone National Park is one of the largest national parks in the United States. It ranges from the Wyoming to Montana and Idaho, and contains an area of 2,219,791 acress across three different states. Its most famous for hosting the geyser Old Faithful and is centered on the Yellowstone Caldera, the largest super volcano on the American continent. Yellowstone is host to hundreds of species of animal, many of which are endangered or threatened. Most notably, it contains free-ranging herds of bison and elk, alongside bears, cougars and wolves. The national park receives over 4.5 million visitors annually and is a UNESCO World Heritage Site."}
+{ "index": { "_index": "my-index" } }
+{"text":"Yosemite National Park is a United States National Park, covering over 750,000 acres of land in California. A UNESCO World Heritage Site, the park is best known for its granite cliffs, waterfalls and giant sequoia trees. Yosemite hosts over four million visitors in most years, with a peak of five million visitors in 2016. The park is home to a diverse range of wildlife, including mule deer, black bears, and the endangered Sierra Nevada bighorn sheep. The park has 1,200 square miles of wilderness, and is a popular destination for rock climbers, with over 3,000 feet of vertical granite to climb. Its most famous and cliff is the El Capitan, a 3,000 feet monolith along its tallest face."}
+{ "index": { "_index": "my-index" } }
+{"text":"Rocky Mountain National Park  is one of the most popular national parks in the United States. It receives over 4.5 million visitors annually, and is known for its mountainous terrain, including Longs Peak, which is the highest peak in the park. The park is home to a variety of wildlife, including elk, mule deer, moose, and bighorn sheep. The park is also home to a variety of ecosystems, including montane, subalpine, and alpine tundra. The park is a popular destination for hiking, camping, and wildlife viewing, and is a UNESCO World Heritage Site."}
 ```
+
+What just happened? The content was transformed into a sparse vector inside the `text` field.
+This transformation involves two main steps.
+First, the content is divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched. Next, each chunk of text is transformed into a sparse vector representation using text expansion techniques.
+This step leverages ELSER (Elastic Search Engine for Relevance) to convert the text into a format that captures the semantic meaning, enabling more accurate and relevant search results.
 
 ## Test a semantic search query
 
-Now try the same but with a semantic query, it will translate the text “how to implement multilingual search?” automatically into a vector representation and perform the query against the `semantic_text` field.
+Now try a semantic query:
 
 ```console
-GET elasticsearch-labs-blog/_search
+GET my-index/_search
 {
- "_source": ["title"],
- "query": {
-   "semantic": {
-     "field": "semantic_text",
-     "query": "how to implement multilingual search?"
-   }
- }
+  "query": {
+    "semantic": {
+      "field": "text",
+      "query": "best parks for rappelling"
+    }
+  }
 }
 ```
 
-The 5 top results you get back from this semantic search look much better.
+The query is translated automatically into a vector representation and runs against the contents of the semantic text field.
+The search results are sorted by relevance score, which measures how well each document matches the query.
+For example:
 
-```txt
-"Multilingual vector search with the E5 embedding model"
-"How to search languages with compound words"
-"Dataset translation with LangChain, Python & Vector Database for multilingual insights"
-"Building multilingual RAG with Elastic and Mistral"
-"Agentic RAG with Elasticsearch & Langchain"
-```
-
-## Test a hybrid search query
-
-A more advanced example using Reciprocal Rank Fusion (RRF) is a technique used in hybrid retrieval systems to improve the relevance of search results.
-It combines different retrieval methods, such as lexical (traditional) search and semantic search, to enhance the overall search performance.
-
-By leveraging RRF, the query ensures that the final list of documents is a balanced mix of the top results from both retrieval methods, thereby improving the overall relevance and diversity of the search results.
-This fusion technique mitigates the limitations of individual retrieval methods, providing a more comprehensive and accurate set of results.
-
-% TBD: Are there reasons for not using hybrid search? e.g. additional storage space, speed
-
-```console
-GET elasticsearch-labs-blog/_search
+```json
 {
- "_source": [
-   "title"
- ],
- "retriever": {
-   "rrf": {
-     "retrievers": [
-       {
-         "standard": {
-           "query": {
-             "multi_match": {
-               "fields": ["title","body"],
-               "query": "how to implement multilingual search"
-             }
-           }
-         }
-       },
-       {
-         "standard": {
-           "query": {
-             "semantic": {
-               "field": "semantic_text",
-               "query": "how to implement multilingual search"
-             }
-           }
-         }
-       }
-     ]
-   }
- }
-}
+  "took": 249,
+  "timed_out": false,
+  "_shards": {
+    "total": 3,
+    "successful": 3,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 6,
+      "relation": "eq"
+    },
+    "max_score": 12.118624,
+    "hits": [
+      {
+        "_index": "search-0lxc",
+        "_id": "0lGtpJcB7hfWuB0FGC06",
+        "_score": 12.118624,
+        "_source": {
+          "text": "Rocky Mountain National Park  is one of the most popular national parks in the United States. It receives over 4.5 million visitors annually, and is known for its mountainous terrain, including Longs Peak, which is the highest peak in the park. The park is home to a variety of wildlife, including elk, mule deer, moose, and bighorn sheep. The park is also home to a variety of ecosystems, including montane, subalpine, and alpine tundra. The park is a popular destination for hiking, camping, and wildlife viewing, and is a UNESCO World Heritage Site."
+        }
+      },
+    ...
 ```
 
-The top 5 hits with hybrid search contain very good results, all highly relevant to how you can implement a multilingual search with Elasticsearch:
-
-```txt
-"Multilingual vector search with the E5 embedding model"
-"How to search languages with compound words"
-"Dataset translation with LangChain, Python & Vector Database for multilingual insights"
-"Building multilingual RAG with Elastic and Mistral"
-"Evaluating scalar quantization in Elasticsearch"
-```
+% TBD: Provide more information about how to interpret and filter the search results.
 
 ## Next steps
 
-Thanks for taking the time to set up semantic search for your data with {{ecloud}}.
+Thanks for taking the time to try out semantic search in {{es-serverless}}.
+For another semantic search example, check out [](/solutions/search/semantic-search/semantic-search-semantic-text.md).
 
-<!--
-Ready to get started? Spin up a free 14-day trial on Elastic Cloud or try out these 15 minute hands-on learning on Search AI 101.
-TBD: Link to other quickstarts or to the deeper semantic search options.
--->
+If you want to extend this example, try an index with more fields.
+For example, if you have both a `text` field and a `semantic_text` field, you can combine the strengths of traditional keyword search and advanced semantic search.
+A [hybrid search](/solutions/search/hybrid-semantic-text.md) provides comprehensive search capabilities to find relevant information based on both the raw text and its underlying meaning.
+
+To learn about more options, such as vector and keyword search, check out [](/solutions/search/search-approaches.md).
+
