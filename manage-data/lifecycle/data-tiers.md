@@ -469,7 +469,7 @@ At the time of index creation, you can override the default setting by explicitl
 
 You can override this setting after index creation by [updating the index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to the preferred value.
 
-This setting also accepts multiple tiers in order of preference. This prevents indices from remaining unallocated if no nodes are available in the preferred tier. For example, when {{ilm}} migrates an index to the cold phase, it sets the index `_tier_preference` to `data_cold,data_warm,data_hot`.
+This setting also accepts multiple tiers in order of preference. This prevents indices from remaining unallocated if there are no nodes in the cluster for the preferred tier. For example, when {{ilm}} migrates an index to the cold phase, it sets the index `_tier_preference` to `data_cold,data_warm,data_hot`.
 
 To remove the data tier preference setting, set the `_tier_preference` value to `null`. This allows the index to allocate to any data node within the cluster. Setting the `_tier_preference` to `null` does not restore the default value. Note that, in the case of managed indices, a [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action might apply a new value in its place.
 
