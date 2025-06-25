@@ -23,6 +23,8 @@ This guide uses TLS certificates to secure remote cluster connections and follow
 
 ### Establish trust in the ECH cluster [ec_establish_trust_in_the_elasticsearch_service_cluster]
 
+To configure trust in the ECH deployment:
+
 1. Save the {{es}} transport CA certificate of your ECK deployment. For an {{es}} cluster named `quickstart`, run:
 
     ```sh
@@ -50,59 +52,64 @@ This guide uses TLS certificates to secure remote cluster connections and follow
 
     7. On the confirmation screen, when prompted **Have you already set up trust from the other environment?**, select **No, I have NOT set up trust from the other environment yet**. Download both the ECH deployment CA certificate and the `trust.yml` file. These files can also be retrieved from the **Security** page of the deployment. You’ll use these files to configure trust in the ECK deployment.
 
+### Update the downloaded `trust.yml` file for ECK compatibility
+
+The `trust.yml` file you downloaded from the Cloud UI includes a subject name pattern that isn't valid for your ECK cluster. Before using it in your ECK cluster, you need to update the file with the pattern that matches your cluster.
+
+Replace the line corresponding to the `Scope ID` you entered when configuring trust in the ECH deployment:
+
+```sh
+"*.node.*.cluster.<kubernetes-namespace>.es.local.account"
+```
+
+Replace it with the correct subject name for your ECK cluster. The new subject name should use the following pattern:
+
+```sh
+"*.node.<cluster-name>.<kubernetes-namespace>.es.local"
+```
+
+::::{important}
+If you don’t update this entry, {{es}} nodes of your ECK deployment might fail to start or join the cluster due to failed trust validation.
+::::
+
+For example, the original downloaded file might contain the following:
+
+```yaml
+trust.subject_name:
+  - "*.node.2dc556bb4bd040e00d0135683b66a2f6.cluster.1075999151.account" <1>
+  - "*.node.*.cluster.<kubernetes-namespace>.es.local.account" <2>
+```
+1. This entry identifies your ECH deployment. Leave it unchanged.
+2. This entry identifies your ECK deployment incorrectly, and must be updated.
+
+For an ECK cluster named `quickstart` in the `default` namespace, the updated file should look like the following:
+
+```yaml
+trust.subject_name:
+  - "*.node.2dc556bb4bd040e89d0135683b66a2f6.cluster.1075708151.account"
+  - "*.node.quickstart.default.es.local"
+```
+
+Apply the changes and save the `trust.yml` file.
+
+
 ### Establish trust in the ECK cluster [ec_establish_trust_in_the_eck_cluster]
 
-1. Edit the `trust.yml` file downloaded in the previous step from the Cloud UI to adapt it to your ECK cluster. The file includes a subject name pattern that is not compatible with ECK.
+To configure trust in the ECK deployment:
 
-    Replace the line corresponding to the `Scope ID` you entered when configuring trust in the ECH deployment: 
-
-    ```sh
-    "*.node.*.cluster.<kubernetes-namespace>.es.local.account"
-    ```
-
-    Replace it with the correct subject name for your ECK cluster. The new subject name should use the following pattern:
-
-    ```sh
-    "*.node.<cluster-name>.<kubernetes-namespace>.es.local"
-    ```
-
-    ::::{important}
-    If you don’t update this entry, {{es}} nodes of your ECK deployment might fail to start or join the cluster due to failed trust validation.
-    ::::
-
-    For example, the original downloaded file might contain the following:
-
-    ```yaml
-    trust.subject_name:
-      - "*.node.2dc556bb4bd040e00d0135683b66a2f6.cluster.1075999151.account" <1>
-      - "*.node.*.cluster.<kubernetes-namespace>.es.local.account" <2>
-    ```
-    1. This entry identifies your ECH deployment. Leave it unchanged.
-    2. This entry identifies your ECK deployment incorrectly, and must be updated.
-
-    For an ECK cluster named `quickstart` in the `default` namespace, the updated file should look like the following:
-
-    ```yaml
-    trust.subject_name:
-      - "*.node.2dc556bb4bd040e89d0135683b66a2f6.cluster.1075708151.account"
-      - "*.node.quickstart.default.es.local"
-    ```
-
-    Apply the changes and save the `trust.yml` file.
-
-2. In the same namespace as your {{es}} cluster, upload the ECH CA certificate that you downloaded from the Cloud UI as a Kubernetes Secret:
+1. In the same namespace as your {{es}} cluster, upload the ECH CA certificate that you downloaded from the Cloud UI as a Kubernetes secret:
 
     ```sh
     kubectl create secret generic remote-ech-ca --from-file=ca.crt=<path-to-CA-certificate-file> -n <namespace>
     ```
 
-3. In the same namespace as your {{es}} cluster, upload the updated `trust.yml` file as a Kubernetes ConfigMap. For a cluster named `quickstart`, run the following command:
+2. In the same namespace as your {{es}} cluster, upload the updated `trust.yml` file as a Kubernetes config map. For a cluster named `quickstart`, run the following command:
 
     ```sh
     kubectl create configmap quickstart-trust-ech --from-file=trust.yml=<path-to-trust.yml> -n <namespace>
     ```
 
-4. Edit the {{es}} Kubernetes resource to reference the new certificate and trust.yml file. This example assumes that the Kubernetes secret and ConfigMap created in the previous steps are named `remote-ech-ca` and `quickstart-trust-ech`, respectively:
+3. Edit the {{es}} Kubernetes resource to reference the ECH CA certificate and trust.yml file. This example assumes that the Kubernetes secret and config map created in the previous steps are named `remote-ech-ca` and `quickstart-trust-ech`, respectively:
 
     ::::{note}
     Apply these changes to all `nodeSets` of your cluster. Updating this configuration will restart all {{es}} pods, which might take some time to complete.
