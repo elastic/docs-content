@@ -81,25 +81,25 @@ You can add one interactive time slider control to a dashboard.
 4. Save the dashboard. The control can now be used.
 
 
-## Add ES|QL controls [add-esql-control]
+## Add {{esql}} controls [add-esql-control]
 ```{applies_to}
 stack: preview
 serverless: preview
 ```
 
-You can bind controls to your ES|QL visualizations in dashboards. When creating an ES|QL visualization, the autocomplete suggestions
-prompt control insertion for field values, field names, function configuration, and function names. This enables controls that only
-apply to a specific panel, and exposes visualization configuration such as date histogram interval controls to dashboard users.
+You can bind controls to your {{esql}} visualizations in dashboards. When creating an {{esql}} visualization, the autocomplete suggestions prompt control insertion for field values, field names, function configuration, and function names. {{esql}} controls act as variables in your {{esql}} visualization queries.
+
+This enables controls that only apply to specific panels in your dashboards, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
 :::{note}
-Only **Options lists** are supported for ES|QL-based controls. Options can be:
+Only **Options lists** are supported for {{esql}}-based controls. Options can be:
 - values or fields that can be static or defined by a query
-- {applies_to}`stack: ga 9.1` functions
+- functions {applies_to}`stack: ga 9.1`
 :::
 
-1. Use one of the following options to start creating an ES|QL control:
-   - {applies_to}`stack: ga 9.1` **From the dashboard Controls menu**: In **Edit** mode, select **Controls** > **Add ES|QL control** in the dashboard toolbar.
-   - **From your ES|QL visualization's query**: While editing your ES|QL visualization's query, the autocomplete menu suggests adding a control when relevant or when typing `?` in the query.
+1. Use one of the following options to start creating an {{esql}} control:
+   - **From the dashboard Controls menu**: In **Edit** mode, select **Controls** > **Add {{esql}} control** in the dashboard toolbar. {applies_to}`stack: ga 9.1`
+   - **From your {{esql}} visualization's query**: While editing your {{esql}} visualization's query, the autocomplete menu suggests adding a control when relevant or when typing `?` in the query.
 
    ![ESQL query prompting to add a control](/explore-analyze/images/esql-visualization-control-suggestion.png)
 
@@ -107,11 +107,11 @@ Only **Options lists** are supported for ES|QL-based controls. Options can be:
 
     * The type of the control. 
       * For controls with **Static values**, you select the options available in the controls by entering them manually or by using a dropdown listing available values. 
-      * For controls with **Values from a query**, you write an ES|QL query to populate the list of options.
-    * The name of the control. This name is used to reference the control in ES|QL queries. 
+      * For controls with **Values from a query**, you write an {{esql}} query to populate the list of options.
+    * The name of the control. This name is used to reference the control in {{esql}} queries. 
       * Start the name with `?` if you want the options to be simple static values.
-      * {applies_to}`stack: ga 9.1` Start the name with `??` if you want the options of the control to be fields or functions.
-    * Values available to select for users with this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an ES|QL query at this step.
+      * Start the name with `??` if you want the options of the control to be fields or functions. {applies_to}`stack: ga 9.1`
+    * Values available to select for users with this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an {{esql}} query at this step.
     * The label of the control. This is the label displayed for users viewing the dashboard for that control.
     * The width of the control.
 
@@ -122,12 +122,12 @@ Only **Options lists** are supported for ES|QL-based controls. Options can be:
 The panel closes and the control is added to the dashboard.
 If you added it by starting from a query, the control is directly inserted in that query and you can continue editing it.
 
-You can then insert it in any other ES|QL visualization queries by typing the control's name.
+You can then insert it in any other {{esql}} visualization queries by typing the control's name.
 
 
 **Examples**
 
-* Integrate filtering into your ES|QL experience
+* Integrate filtering into your {{esql}} experience
 
   ```esql
   | WHERE field == ?value
@@ -151,7 +151,7 @@ You can then insert it in any other ES|QL visualization queries by typing the co
   | STATS metric = ?function
   ```
 
-![Editing ES|QL controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
+![Editing {{esql}} controls from a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte42dfaa404bfc2d6/67d2e31e2e4dc59da190d78f/dashboard-esql-controls.gif)
 
 
 ## Configure the controls settings [configure-controls-settings]
@@ -194,5 +194,5 @@ Delete controls from your dashboard.
 2. In the **Delete control?** window, select **Delete**.
 
 :::{note}
-If you delete an ES|QL control that's used in an ES|QL visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
+If you delete an {{esql}} control that's used in an {{esql}} visualization, the visualization will break. You must edit the visualization query and remove or update the control reference.
 :::
