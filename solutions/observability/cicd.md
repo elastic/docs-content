@@ -1,7 +1,9 @@
 ---
-navigation_title: "CI/CD"
+navigation_title: CI/CD
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/ci-cd-observability.html
+products:
+  - id: observability
 ---
 
 
@@ -283,7 +285,7 @@ To learn more about the integration of Jenkins with Elastic {{observability}}, s
 
 There are out of the box {{kib}} dashboards that help visualize some metrics for the CI/CD platform.
 
-Using the [Import API](https://www.elastic.co/guide/en/kibana/current/dashboard-import-api.html) or the {{kib}} UI, you can [install dashboards](https://github.com/jenkinsci/opentelemetry-plugin/blob/master/docs/DASHBOARDS.md#elastic) that are compatible with version 7.12 or higher.
+Using the [Import API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) or the {{kib}} UI, you can [install dashboards](https://github.com/jenkinsci/opentelemetry-plugin/blob/master/docs/DASHBOARDS.md#elastic) that are compatible with version 7.12 or higher.
 
 For instance, you can follow the below steps:
 
@@ -343,7 +345,7 @@ export OTEL_TRACES_EXPORTER="otlp"
 mvn verify
 ```
 
-You can instrument Maven builds without modifying the pom.xml file using the Maven command line argument “-Dmaven.ext.class.path=…​”
+You can instrument Maven builds without modifying the pom.xml file using the Maven command line argument “-Dmaven.ext.class.path=…”
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://elastic-apm-server.example.com:8200"

@@ -5,6 +5,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/fleet.html
   - https://www.elastic.co/guide/en/fleet/current/fleet-overview.html
   - https://www.elastic.co/guide/en/fleet/current/index.html
+products:
+  - id: cloud-serverless
+  - id: fleet
+  - id: kibana
 ---
 
 # Fleet and Elastic Agent [fleet-and-elastic-agent]
@@ -25,7 +29,7 @@ As the following diagram illustrates, {{agent}} can monitor the host where it's 
 To learn about installation options, refer to [](/reference/fleet/install-elastic-agents.md).
 
 :::{note}
-Using {{fleet}} and {{agent}} {{serverless-full}}? Note these [restrictions](/reference/fleet/fleet-agent-serverless-restrictions.md).
+Using {{fleet}} and {{agent}} with {{serverless-full}}? Note these [restrictions](/reference/fleet/fleet-agent-serverless-restrictions.md).
 :::
 
 :::{tip}

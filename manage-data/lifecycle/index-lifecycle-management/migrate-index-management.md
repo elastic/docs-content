@@ -5,7 +5,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-index-management.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Migrate to index lifecycle management

@@ -1,10 +1,12 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 navigation_title: Save a search for reuse
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/save-open-search.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
 ---
 
 # Discover sessions: Save a search for reuse [save-open-search]

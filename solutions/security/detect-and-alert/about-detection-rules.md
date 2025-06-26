@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # About detection rules [security-about-rules]
@@ -30,7 +33,7 @@ You can create the following types of rules:
     For example, if the threshold `field` is `source.ip` and its `value` is `10`, an alert is generated for every source IP address that appears in at least 10 of the rule’s search results.
 
 * [**Event correlation**](/solutions/security/detect-and-alert/create-detection-rule.md#create-eql-rule): Searches the defined indices and creates an alert when results match an [Event Query Language (EQL)](/explore-analyze/query-filter/languages/eql.md) query.
-* [**Indicator match**](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule): Creates an alert when {{elastic-sec}} index field values match field values defined in the specified indicator index patterns. For example, you can create an indicator index for IP addresses and use this index to create an alert whenever an event’s `destination.ip` equals a value in the index. Indicator index field mappings should be [ECS-compliant](https://www.elastic.co/guide/en/ecs/current). For information on creating {{es}} indices and field types, see [Index some documents](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-general-purpose.html#gp-gs-add-data), [Create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create), and [Field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). If you have indicators in a standard file format, such as CSV or JSON, you can also use the Machine Learning Data Visualizer to import your indicators into an indicator index. See [Explore the data in {{kib}}](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-visualizer) and use the **Import Data** option to import your indicators.
+* [**Indicator match**](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule): Creates an alert when {{elastic-sec}} index field values match field values defined in the specified indicator index patterns. For example, you can create an indicator index for IP addresses and use this index to create an alert whenever an event’s `destination.ip` equals a value in the index. Indicator index field mappings should be [ECS-compliant](ecs://reference/index.md). For information on creating {{es}} indices and field types, see [Index some documents](/manage-data/ingest.md), [Create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create), and [Field data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). If you have indicators in a standard file format, such as CSV or JSON, you can also use the Machine Learning Data Visualizer to import your indicators into an indicator index. See [Explore the data in {{kib}}](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-visualizer) and use the **Import Data** option to import your indicators.
 
     ::::{tip}
     You can also use value lists as the indicator match index. See [Use value lists with indicator match rules](/solutions/security/detect-and-alert/create-detection-rule.md#indicator-value-lists) at the end of this topic for more information.
@@ -58,6 +61,11 @@ When you create a rule, you must either specify the {{es}} index pattens for whi
 To access data views in {{stack}}, you must have the [required permissions](/explore-analyze/find-and-organize/data-views.md#data-views-read-only-access). To access them in {{serverless-short}}, you must have the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md) with the right privileges.
 ::::
 
+::::{important}
+
+System indices, such as the alerts indices, contain important configuration and internal data; do not change their mappings. Changes can lead to rule execution and alert indexing failures.
+
+::::
 
 
 ## Notifications [about-notifications]

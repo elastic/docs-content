@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Tutorial: Create a data stream with a lifecycle [tutorial-manage-new-data-stream]

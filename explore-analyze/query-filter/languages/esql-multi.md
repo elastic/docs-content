@@ -2,7 +2,7 @@
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Query multiple sources"
+navigation_title: Query multiple sources
 ---
 
 # Query multiple indices or clusters with {{esql}}

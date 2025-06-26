@@ -1,10 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maintenance-windows.html
   - https://www.elastic.co/guide/en/serverless/current/maintenance-windows.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Maintenance windows
@@ -22,7 +25,7 @@ By default, a maintenance window affects all rules in all {{kib}} apps within it
 
 Alerts continue to be generated, however notifications are suppressed as follows:
 
-* When an alert occurs during a maintenance window, there are no notifications. When the alert recovers, there are no notifications—​even if the recovery occurs after the maintenance window ends.
+* When an alert occurs during a maintenance window, there are no notifications. When the alert recovers, there are no notifications—even if the recovery occurs after the maintenance window ends.
 * When an alert occurs before a maintenance window and recovers during or after the maintenance window, notifications are sent as usual.
 
 ## Configure access to maintenance windows [setup-maintenance-windows]

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server-scalability.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet Server scalability [fleet-server-scalability]

@@ -1,22 +1,21 @@
 ---
-applies_to:
-  deployment:
-    ece: all
+navigation_title: RHEL
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-onprem.html
-navigation_title: RHEL
+applies_to:
+  deployment:
+    ece: all
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
-
-
 The following instructions show you how to prepare your hosts on Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9.
 
 * [Prerequisites](#ece-prerequisites-rhel8)
-* [Configure the host](#ece-configure-hosts-rhel8-podman)
-
+* [Install Podman and configure the host](#ece-configure-hosts-rhel8-podman)
 
 ## Prerequisites [ece-prerequisites-rhel8]
 
@@ -26,7 +25,11 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
-## Configure the host [ece-configure-hosts-rhel8-podman]
+::::{important}
+Make sure to use a supported combination of Linux distribution and container engine version as defined in our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Unsupported combinations can lead to various issues in your ECE environment, including failures when creating system deployments, upgrading workload deployments, proxy timeouts, and more.
+::::
+
+## Install Podman and configure the host [ece-configure-hosts-rhel8-podman]
 
 1. Install the OS packages `lvm2`, `iptables`, `sysstat`, and `net-tools` by executing:
 
@@ -139,7 +142,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
         [...]
         ```
 
-6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
+6. If podman requires a proxy in your infrastructure setup, modify the `/usr/share/containers/containers.conf` file and add the `HTTP_PROXY` and `HTTPS_PROXY` environment variables in the [engine] section. Note that multiple env variables in that configuration file exists — use the one in the [engine] section.
 
     Example:
 

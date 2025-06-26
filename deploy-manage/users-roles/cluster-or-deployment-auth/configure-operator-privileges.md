@@ -3,9 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configure-operator-privileges.html
 applies_to:
   deployment:
-    ess: 
-    ece: 
-    eck: 
+    ess:
+    ece:
+    eck:
+products:
+  - id: elasticsearch
 ---
 
 # Configure operator privileges [configure-operator-privileges]
@@ -18,7 +20,7 @@ Before you can use operator privileges, you must [enable the feature](#enable-op
 
 ## Enable operator privileges [enable-operator-privileges]
 
-In order to use the operator privileges feature, it must be enabled explicitly on each node in the cluster. Add the following setting in each `elasticsearch.yml` file:
+In order to use the operator privileges feature, it must be enabled explicitly on each node in the cluster. Add the following setting in each [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file:
 
 ```yaml
 xpack.security.operator_privileges.enabled: true

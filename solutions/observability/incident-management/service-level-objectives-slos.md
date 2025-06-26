@@ -2,13 +2,16 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo.html
   - https://www.elastic.co/guide/en/serverless/current/observability-slos.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 # Service-level objectives (SLOs) [observability-slos]
 
 % Stateful only for the following admon.
 
 ::::{important}
-**For Elastic Stack v9,** to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+**For Elastic Stack v9,** to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 

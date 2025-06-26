@@ -1,12 +1,15 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 navigation_title: Machine learning
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/index.html
   - https://www.elastic.co/guide/en/machine-learning/current/machine-learning-intro.html
   - https://www.elastic.co/guide/en/serverless/current/machine-learning.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
+  - id: cloud-serverless
 ---
 
 # What is Elastic Machine Learning? [machine-learning-intro]

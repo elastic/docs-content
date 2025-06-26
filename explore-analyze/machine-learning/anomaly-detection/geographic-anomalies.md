@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/geographic-anomalies.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/geographic-anomalies.html
+products:
+  - id: machine-learning
 ---
 
 # Detecting anomalous locations in geographic data [geographic-anomalies]

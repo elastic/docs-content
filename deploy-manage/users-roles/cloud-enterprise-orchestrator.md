@@ -1,5 +1,5 @@
 ---
-navigation_title: "ECE orchestrator"
+navigation_title: ECE orchestrator
 applies_to:
   deployment:
     ece: all

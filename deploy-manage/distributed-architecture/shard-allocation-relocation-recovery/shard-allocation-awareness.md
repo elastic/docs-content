@@ -3,7 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-awareness.html
 applies_to:
   stack:
-  self:
+  deployment:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Shard allocation awareness [shard-allocation-awareness]
@@ -30,7 +33,7 @@ To enable shard allocation awareness:
 
     You can set custom attributes in two ways:
 
-    * By editing the `elasticsearch.yml` config file:
+    * By editing the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file:
 
         ```yaml
         node.attr.rack_id: rack_one
@@ -42,7 +45,7 @@ To enable shard allocation awareness:
         ./bin/elasticsearch -Enode.attr.rack_id=rack_one
         ```
 
-2. Tell {{es}} to take one or more awareness attributes into account when allocating shards by setting `cluster.routing.allocation.awareness.attributes` in **every** master-eligible node’s `elasticsearch.yml` config file.
+2. Tell {{es}} to take one or more awareness attributes into account when allocating shards by setting `cluster.routing.allocation.awareness.attributes` in **every** master-eligible node’s [`elasticsearch.yml`](/deploy-manage/stack-settings.md) config file.
 
     ```yaml
     cluster.routing.allocation.awareness.attributes: rack_id <1>

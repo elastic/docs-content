@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-traffic-filtering-vnet.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-traffic-filtering-vnet.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Azure Private Link traffic filters
@@ -131,7 +133,7 @@ The Private Link connection will be approved automatically after the traffic fil
 ::::
 
 
-1. From the **Account** menu, select **Traffic filters**.
+1. From the lower navigation menu, select **Traffic filters**.
 2. Select **Create filter**.
 3. Select **Private link endpoint**.
 4. Create your rule set, providing a meaningful name and description.

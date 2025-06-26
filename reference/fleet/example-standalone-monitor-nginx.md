@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-standalone-monitor-nginx.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Example: Use standalone Elastic Agent with {{ech}} to monitor nginx [example-standalone-monitor-nginx]

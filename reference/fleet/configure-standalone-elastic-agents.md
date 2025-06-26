@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-configuration.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure standalone Elastic Agents [elastic-agent-configuration]

@@ -1,10 +1,12 @@
 ---
-navigation_title: "Collecting monitoring data with {{metricbeat}}"
+navigation_title: Collecting monitoring data with {{metricbeat}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-metricbeat.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 

@@ -4,6 +4,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-glossary.html
   - https://www.elastic.co/guide/en/ecs/current/ecs-glossary.html
+products:
+  - id: elastic-stack
+  - id: cloud-kubernetes
+  - id: ecs
 ---
 
 # Glossary [terms]
@@ -446,7 +450,7 @@ $$$glossary-integration-policy$$$ integration policy
 :   An instance of an [integration](/reference/glossary/index.md#glossary-integration) that is configured for a specific use case, such as collecting logs from a specific file.
 
 $$$glossary-integration$$$ integration
-:   An easy way for external systems to connect to the {{stack}}. Whether it's collecting data or protecting systems from security threats, integrations provide out-of-the-box assets to make setup easy—​many with just a single click.
+:   An easy way for external systems to connect to the {{stack}}. Whether it's collecting data or protecting systems from security threats, integrations provide out-of-the-box assets to make setup easy—many with just a single click.
 
 
 ## J [j-glos]
@@ -537,7 +541,7 @@ $$$glossary-no-op$$$ no-op
 
 $$$glossary-node$$$ node
 :   1. A single {{es}} server. One or more nodes can form a [cluster](/reference/glossary/index.md#glossary-cluster). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
-2. In {{eck}}, it can refer to either an [Elasticsearch Node](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html) or a [Kubernetes Node](https://kubernetes.io/docs/concepts/architecture/nodes/) depending on the context. ECK maps an Elasticsearch node to a Kubernetes Pod which can get scheduled onto any available Kubernetes node that can satisfy the [resource requirements](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md) and [node constraints](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) defined in the [pod template](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md).
+2. In {{eck}}, it can refer to either an [Elasticsearch Node](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) or a [Kubernetes Node](https://kubernetes.io/docs/concepts/architecture/nodes/) depending on the context. ECK maps an Elasticsearch node to a Kubernetes Pod which can get scheduled onto any available Kubernetes node that can satisfy the [resource requirements](/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources.md) and [node constraints](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) defined in the [pod template](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md).
 
 $$$NodeSet$$$NodeSet
 :   A set of Elasticsearch nodes that share the same Elasticsearch configuration and a Kubernetes Pod template. Multiple NodeSets can be defined in the Elasticsearch CRD to achieve a cluster topology consisting of groups of Elasticsearch nodes with different node roles, resource requirements and hardware configurations (Kubernetes node constraints).

@@ -20,6 +20,9 @@ toc:
               - file: data-store/data-streams/run-downsampling-using-data-stream-lifecycle.md
               - file: data-store/data-streams/reindex-tsds.md
           - file: data-store/data-streams/logs-data-stream.md
+          - file: data-store/data-streams/failure-store.md
+            children:
+              - file: data-store/data-streams/failure-store-recipes.md
       - file: data-store/mapping.md
         children:
           - file: data-store/mapping/dynamic-mapping.md
@@ -36,6 +39,7 @@ toc:
               - file: data-store/mapping/index-runtime-field.md
               - file: data-store/mapping/explore-data-with-runtime-fields.md
           - file: data-store/mapping/removal-of-mapping-types.md
+          - file: data-store/mapping/update-mappings-examples.md
       - file: data-store/text-analysis.md
         children:
           - file: data-store/text-analysis/concepts.md
@@ -95,7 +99,6 @@ toc:
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
         children:
-          - file: ingest/transform-enrich/ingest-pipelines-serverless.md
           - file: ingest/transform-enrich/ingest-pipelines.md
             children:
               - file: ingest/transform-enrich/example-parse-logs.md

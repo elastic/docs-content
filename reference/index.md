@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/api-reference.html
+products:
+  - id: elastic-stack
 ---
 
 # Reference [api-reference]
@@ -36,6 +38,12 @@ Customize your Elastic Stack setup with our configuration reference guides. Expl
 
 **Learn more in [Elasticsearch and index management](elasticsearch://reference/elasticsearch/index.md)**
 
+## Elastic Distributions of OpenTelemetry (EDOT)
+
+Elastic Distributions of OpenTelemetry (EDOT) is an open-source ecosystem of OpenTelemetry distributions tailored to Elastic. They include a customized OpenTelemetry Collector and several OpenTelemetry Language SDKs.
+
+**Learn more in [Elastic Distributions of OpenTelemetry](opentelemetry://reference/index.md)**
+
 ## Ingestion tools
 
 Streamline data ingestion with tools like Fleet and Elastic Agent, APM, and Beats. Explore processor references and Logstash plugins to efficiently manage your data flow.
@@ -56,7 +64,7 @@ Extend the functionality of your Elastic Stack with a variety of plugins. From a
 
 ## Query languages
 
-Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL, and Kibana Query Language. 
+Master data querying with our comprehensive guides on QueryDSL, ES|QL, SQL, EQL, and Kibana Query Language.
 
 **Learn more in [Query languages](elasticsearch://reference/query-languages/index.md)**
 

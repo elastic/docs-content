@@ -1,9 +1,11 @@
 ---
-navigation_title: "APM iOS Agent"
+navigation_title: APM iOS Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/troubleshooting.html
 applies_to:
   stack: all
+products:
+  - id: apm-agent
 ---
 
 # Troubleshoot APM iOS Agent [troubleshooting]

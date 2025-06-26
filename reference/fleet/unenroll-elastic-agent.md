@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/unenroll-elastic-agent.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Unenroll Elastic Agents [unenroll-elastic-agent]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-http-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-http-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Elastic Maps HTTP configuration [k8s-maps-http-configuration]

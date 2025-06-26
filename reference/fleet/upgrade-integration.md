@@ -1,7 +1,10 @@
 ---
-navigation_title: "Upgrade an integration"
+navigation_title: Upgrade an integration
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Upgrade an {{agent}} integration [upgrade-integration]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/graph-configuration.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/graph-configuration.html
+products:
+  - id: kibana
 ---
 
 # Configure Graph [graph-configuration]
@@ -16,11 +18,11 @@ When a user saves a graph workspace in Kibana, it is stored in the `.kibana` ind
 **data**
 :   The visualized content (the vertices and connections displayed in the workspace).
 
-The data in a saved workspace is like a report—​it is a saved snapshot that potentially summarizes millions of raw documents. Once saved, these summaries are no longer controlled by security policies. Because the original documents might be deleted after a workspace is saved, there’s no practical basis for checking permissions for the data in a saved workspace.
+The data in a saved workspace is like a report—it is a saved snapshot that potentially summarizes millions of raw documents. Once saved, these summaries are no longer controlled by security policies. Because the original documents might be deleted after a workspace is saved, there’s no practical basis for checking permissions for the data in a saved workspace.
 
 For this reason, you can configure the save policy for graph workspaces to ensure appropriate handling of your data. You can allow all users to save only the configuration information for a graph, require all users to explicitly include the workspace data, or completely disable the ability to save a workspace.
 
-For example, to disable the save option entirely, set `xpack.graph.savePolicy` to `none` in `kibana.yml`:
+For example, to disable the save option entirely, set `xpack.graph.savePolicy` to `none` in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.graph.savePolicy: none
@@ -56,7 +58,7 @@ You can also use security to grant read only or all access to different roles. W
 
 By default, users can configure *drilldown* URLs to display additional information about a selected vertex in a new browser window. For example, you could configure a drilldown URL to perform a web search for the selected vertex term.
 
-To prevent users from adding drilldown URLs,  set `xpack.graph.canEditDrillDownUrls` to `false` in `kibana.yml`:
+To prevent users from adding drilldown URLs,  set `xpack.graph.canEditDrillDownUrls` to `false` in [`kibana.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.graph.canEditDrillDownUrls: false

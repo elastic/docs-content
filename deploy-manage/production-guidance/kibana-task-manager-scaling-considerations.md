@@ -8,6 +8,8 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: kibana
 ---
 
 # {{kib}} task manager: performance and scaling guide [task-manager-production-considerations]

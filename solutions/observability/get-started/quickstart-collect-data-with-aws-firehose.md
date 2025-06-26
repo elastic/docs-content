@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Quickstart: Collect data with AWS Firehose [collect-data-with-aws-firehose]
@@ -58,7 +61,7 @@ This approach requires minimal configuration as the CloudFormation template crea
 
 
 ::::{important}
-Some AWS services need additional manual configuration to properly ingest logs and metrics. For more information, check the [AWS integration](https://www.elastic.co/docs/current/integrations/aws) documentation.
+Some AWS services need additional manual configuration to properly ingest logs and metrics. For more information, check the [AWS integration](integration-docs://reference/aws/index.md) documentation.
 ::::
 
 
