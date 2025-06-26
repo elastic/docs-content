@@ -27,7 +27,7 @@ For deployments with **{{stack}} version 7.17 and earlier**, you’ll need to en
 2. Upload the plugin to your deployment:
 
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Go to your deployment.
+    2. From your deployment, select **Manage**.
     3. From the lower navigation menu, select **Extensions** and then select **Upload extension**.
     4. Specify the plugin name (`repository-azure`) and version.
     5. Select **An installable plugin (compiled, no source code)**.
