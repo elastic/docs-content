@@ -131,4 +131,4 @@ If your indices are of type `bbq_hnsw` and your nodes don't have enough off-heap
 
 In these scenarios, direct IO can significantly reduce query latency. Enable it by setting the JVM option `vector.rescoring.directio=true` on all vector search nodes in your cluster.
 
-Only use this option if you're experiencing very high query latencies. Otherwise, enabling direct IO may increase your query latencies.
+Only use this option if you're experiencing very high query latencies on indices of type `bbq_hnsw`. Otherwise, enabling direct IO may increase your query latencies.
