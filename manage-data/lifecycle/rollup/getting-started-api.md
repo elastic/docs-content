@@ -310,9 +310,8 @@ PUT _rollup/job/sensor
 % TEST[setup:sensor_index]
 
 This rolls up the `sensor-*` pattern and stores the results in `sensor_rollup`.
-To search this rolled up data, we need to use the `_rollup_search` endpoint.
-However, you'll notice that we can use regular Query DSL to search the rolled-up
-data:
+To search this rolled up data, use the `_rollup_search` endpoint.
+You can use regular Query DSL to search the rolled-up data:
 
 ```console
 GET /sensor_rollup/_rollup_search
