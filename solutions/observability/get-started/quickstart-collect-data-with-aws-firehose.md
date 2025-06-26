@@ -1,4 +1,5 @@
 ---
+description: Learn how to use AWS Firehose to send logs and metrics to Elastic Observability for monitoring and analysis.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/collect-data-with-aws-firehose.html
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-aws-firehose.html

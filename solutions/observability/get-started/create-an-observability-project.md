@@ -1,5 +1,6 @@
 ---
 navigation_title: Create an Observability project
+description: Learn how to create an Observability project in Elastic Serverless to monitor your applications and infrastructure.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-create-an-observability-project.html
 applies_to:

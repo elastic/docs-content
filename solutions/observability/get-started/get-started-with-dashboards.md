@@ -1,4 +1,5 @@
 ---
+description: Learn how to use pre-built dashboards and create custom visualizations to analyze your observability data in Elastic.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-dashboards.html
 applies_to:

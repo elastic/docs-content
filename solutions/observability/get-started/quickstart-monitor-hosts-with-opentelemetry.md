@@ -1,4 +1,5 @@
 ---
+description: Learn how to monitor hosts using the Elastic Distribution of OpenTelemetry (EDOT) Collector and gain deeper insights into your observability data.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-otel.html
   - https://www.elastic.co/guide/en/serverless/current/quickstart-monitor-hosts-with-otel.html

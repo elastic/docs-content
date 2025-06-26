@@ -1,4 +1,5 @@
 ---
+description: Learn how to create a Synthetic Monitor to proactively test and monitor your applications by simulating user interactions.
 applies_to:
   serverless:
 products:

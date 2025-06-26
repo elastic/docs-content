@@ -1,4 +1,5 @@
 ---
+description: Learn how to send Kubernetes logs, metrics, and application traces to Elasticsearch using the OpenTelemetry Operator and Elastic Distributions of OpenTelemetry (EDOT).
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-k8s-otel-edot.html
   - https://www.elastic.co/guide/en/serverless/current/monitor-k8s-otel-edot.html

@@ -1,4 +1,5 @@
 ---
+description: An introduction to Elastic Observability, a unified solution that provides insights into application behavior through logs, metrics, traces, and more.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/observability-introduction.html
   - https://www.elastic.co/guide/en/serverless/current/observability-serverless-observability-overview.html

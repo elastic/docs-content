@@ -1,4 +1,5 @@
 ---
+description: Learn how to scan your host to detect and collect logs and metrics using Elastic Agent, and analyze your observability data with dashboards.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/quickstart-monitor-hosts-with-elastic-agent.html
   - https://www.elastic.co/guide/en/serverless/current/observability-quickstarts-monitor-hosts-with-elastic-agent.html
