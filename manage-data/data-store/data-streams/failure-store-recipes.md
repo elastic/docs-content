@@ -379,7 +379,7 @@ We recommend a few best practices for remediating failure data.
 
 **Separate your failures beforehand.** As described in the previous [failure document source](./failure-store.md#use-failure-store-document-source) section, failure documents are structured differently depending on when the document failed during ingestion. We recommend to separate documents by ingest pipeline failures and indexing failures at minimum. Ingest pipeline failures often need to have the original pipeline re-run, while index failures should skip any pipelines. Further separating failures by index or specific failure type may also be beneficial.
 
-**Perform a failure store rollover.** Consider [rolling over the failure store](./failure-store.md#failure-store-rollover-manage-failure-store-rollover) before attempting to remediate failures. This will create a new failure index that will collect any new failures during the remediation process.
+**Perform a failure store rollover.** Consider [rolling over the failure store](./failure-store.md#manage-failure-store-rollover) before attempting to remediate failures. This will create a new failure index that will collect any new failures during the remediation process.
 
 **Use an ingest pipeline to convert failure documents back into their original document.** Failure documents store failure information along with the document that failed ingestion. The first step for remediating documents should be to use an ingest pipeline to extract the original source from the failure document and then discard any other information about the failure.
 
