@@ -111,7 +111,7 @@ apply to a specific panel, and exposes visualization configuration such as date 
     * The name of the control. This name is used to reference the control in ES|QL queries. 
       * Start the name with `?` if you want the options to be simple static values.
       * {applies_to}`stack: ga 9.1` Start the name with `??` if you want the options of the control to be fields or functions.
-    * Values available to select for users with this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write and ES|QL query at this step.
+    * Values available to select for users with this control. You can add multiple values from suggested fields, or type in custom values. If you selected **Values from a query**, you must instead write an ES|QL query at this step.
     * The label of the control. This is the label displayed for users viewing the dashboard for that control.
     * The width of the control.
 
