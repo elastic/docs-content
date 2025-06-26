@@ -13,7 +13,11 @@ products:
 
 # Spaces and {{elastic-sec}} [security-spaces]
 
-{{elastic-sec}} supports the organization of your security operations into logical instances with the [spaces](../../../deploy-manage/manage-spaces.md) feature. Each space in {{kib}} represents a separate logical instance of {{elastic-sec}} in which detection rules, rule exceptions, value lists, alerts, Timelines, cases, and {{kib}} advanced settings are private to the space and accessible only by users that have role privileges to access the space. For details about privileges for {{elastic-sec}} and specific features, refer to [{{elastic-sec}} requirements](elastic-security-requirements.md).
+{{elastic-sec}} supports the organization of your security operations into logical instances with the [spaces](../../../deploy-manage/manage-spaces.md) feature. Each space in {{kib}} represents a separate logical instance of {{elastic-sec}} in which detection rules, rule exceptions, value lists, alerts, Timelines, cases, and {{kib}} advanced settings are private to the space and accessible only by users that have role privileges to access the space. 
+
+::::{note}
+Beginning with {{stack}} version 9.1, you can control user access to features in and managed by {{fleet}} (including {{elastic-defend}}) on a per-space basis. This granularity helps you fine-tune which components each user can access and which actions they can perform. To learn more, refer to [Fleet roles and privileges](reference/fleet/fleet-roles-privileges.md), and [{{elastic-sec}} requirements](elastic-security-requirements.md).
+::::
 
 For example, if you create a `SOC_prod` space in which you load and activate all the {{elastic-sec}} prebuilt detection rules, these rules and any detection alerts they generate will be accessible only when visiting the {{security-app}} in the `SOC_prod` space. If you then create a new `SOC_dev` space, you’ll notice that no detection rules or alerts are present. Any rules subsequently loaded or created here will be private to the `SOC_dev` space, and they will run independently of those in the `SOC_prod` space.
 
