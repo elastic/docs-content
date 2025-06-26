@@ -33,7 +33,7 @@ If, at any time during your monthly subscription with {{ecloud}}, you decide you
 To change your subscription level:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Select the user icon on the header bar and select **Billing** from the menu.
+2. Select **Billing and Subscription** from the lower navigation menu or click the user icon on the header bar and select **Billing**.
 3. On the **Overview** page, select **Update subscription**.
 4. Choose a new subscription level.
 5. Save your changes.
