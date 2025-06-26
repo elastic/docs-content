@@ -390,7 +390,7 @@ GET sensor_rollup/_rollup_search
 
 ## Searching both historical rollup and non-rollup data
 
-The rollup search API has the capability to search across both "live"
+The rollup search API has the capability to search across both live
 non-rollup data and the aggregated rollup data. This is done by adding
 the live indices to the URI:
 
