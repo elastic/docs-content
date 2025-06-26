@@ -81,7 +81,7 @@ This section offers suggestions on how to manage and analyze the impact of your 
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or [Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
-3. Select the **Security** tab on the left-hand side menu bar.
+3. Select **Security** from the navigation menu.
 
 Traffic filter rule sets are listed under **Traffic filters**.
 
@@ -98,12 +98,12 @@ To identify which rule sets are automatically applied to new deployments in your
     :::{tab-item} {{ech}}
     :sync: ech
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
+    2. Find your deployment on the home page and select **Manage**, or select your deployment from the **Hosted deployments** page.
+    3. From the lower navigation menu, select **Traffic filters**.
     :::
     :::{tab-item} {{ece}}
     :sync: ece
-    4. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+    4. [Log in to the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
     5. From the **Platform** menu, select **Security**.
     :::
     ::::

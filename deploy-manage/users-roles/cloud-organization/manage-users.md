@@ -32,7 +32,7 @@ If you're using {{ech}}, then you can also manage users and control access [at t
 
 To invite users to your organization:
 
-1. Go to the user icon on the header bar and select **Organization**.
+1. Select **Organization** from the lower navigation menu or click the user icon on the header bar and select **Organization**.
 2. On the **Members** page, click **Invite members**.
 3. Enter the email addresses of the users you want to invite in the textbox.
 

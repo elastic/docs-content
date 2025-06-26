@@ -99,7 +99,7 @@ PUT _ingest/pipeline/my-pipeline
 ```
 
 
-### Metrics [troubleshooting-pipelines-metrics]
+## Metrics [troubleshooting-pipelines-metrics]
 
 When Ingest Pipelines run, they log their cumulative statistics to [List Node Statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats). 
 

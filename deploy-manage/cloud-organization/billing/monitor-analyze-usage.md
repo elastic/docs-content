@@ -26,8 +26,7 @@ You can check the detailed usage for a selected time range grouped either by pro
 To access your account usage:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Open the user menu in the header bar.
-3. Select **Billing** under the user menu.
+2. Select **Billing and Subscription** from the lower navigation menu or click the user icon on the header bar and select **Billing**.
 4. Go to the **Usage** page.
 
 ::::{important}

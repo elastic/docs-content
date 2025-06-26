@@ -24,7 +24,7 @@ Trials get converted to paid subscriptions and billing starts when you add a cre
 To add your billing details:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Select the user icon on the header bar and select **Billing** from the menu.
+2. Select **Billing and Subscription** from the lower navigation menu or click the user icon on the header bar and select **Billing**.
 3. On the **Overview** page, select **Add billing information**.
 4. If prompted, complete the multifactor authentication (MFA) required by your bank.
 
