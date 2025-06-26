@@ -16,7 +16,7 @@ products:
 A *data tier* is a collection of [nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) within a cluster that share the same [data node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles), and a hardware profile that’s appropriately sized for the role. Elastic recommends that nodes in the same tier share the same hardware profile to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
 
 :::{admonition} Serverless manages data storage for you
-By abstracting cluster management tasks, {{serverless-full}} adjusts data storage and scaling based on your workload. Certain [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md) allow you to customize your data storage layers.
+By abstracting cluster management tasks, {{serverless-full}} adjusts data storage and scaling based on your workload. Certain [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md) allow you to customize how your data is stored and calibrate the performance of your data.
 :::
 
 ## Available data tiers [available-tier]
