@@ -34,7 +34,7 @@ Refer to our [customer success stories](https://www.elastic.co/customers/success
 Elasticsearch supports diverse use cases. Select a solution and follow its dedicated getting-started guide:
 
 |     |     |
-| --- | --- |
+| :---: | --- |
 | ![elasticsearch](images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =50%") | **Elasticsearch**<br> Create seamless search experiences for apps, websites, or workplaces.<br><br>[**Get started →**](../solutions/search/get-started.md)<br> |
 | ![observability](images/64x64_Color_observability-logo-color-64px.png "observability =50%") | **Observability**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/observability/get-started.md)<br> |
 | ![security](images/64x64_Color_security-logo-color-64px.png "security =50%") | **Security**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/security/get-started.md)<br> |
