@@ -100,14 +100,10 @@ Make sure to use a supported combination of Linux distribution and container eng
 
     * For Podman 5
 
-        * Install the latest version of Podman `5.2.2` using dnf.
+        * Install the latest available version of Podman `5.2.2` using dnf.
 
             :::{note}
-            As mentioned in [Migrating to Podman 5](migrate-to-podman-5.md) it is recommended to install Podman `5.2.2` since this is the latest supported version.
-
-            If you decide to install a previous Podman 5 version, make sure to replace `5.2.2` with the desired version in the commands below.
-
-            The version lock is still required for previous versions, to prevent automatic in-place updates that may be affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473).
+            Podman versions `5.2.2-11` and `5.2.2-13` are affected by a known [memory leak issue](https://github.com/containers/podman/issues/25473). To avoid this bug, use a later build of `5.2.2`, such as `5.2.2-16` or newer. Refer to the official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information.
             :::
 
             ```sh
