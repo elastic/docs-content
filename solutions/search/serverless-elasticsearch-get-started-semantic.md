@@ -1,14 +1,15 @@
 ---
 navigation_title: Semantic search
+description: An introduction to semantic search in Elasticsearch.
 applies_to:
   serverless:
 products:
   - id: cloud-serverless
 ---
-# Build an AI-powered search experience in {{es-serverless}}
+# Get started with semantic search in {{es-serverless}}
 
 <!--
-As you ramp up on Elastic, you'll use the Elasticsearch Relevance Engine™ (ESRE), designed to power AI search applications. With ESRE, you can take advantage of a suite of developer tools including Elastic's textual search, vector database, and our proprietary transformer model for semantic search.
+As you ramp up on Elastic, you'll use the Elasticsearch Relevance Engine (ESRE), designed to power AI search applications. With ESRE, you can take advantage of a suite of developer tools including Elastic's textual search, vector database, and our proprietary transformer model for semantic search.
 -->
 
 Elastic offers a variety of search techniques, starting with BM25, the industry standard for textual search.
@@ -42,7 +43,8 @@ To try it out, [create an {{es-serverless}} project](/solutions/search/serverles
 
 There are some simple data sets that you can use for learning purposes.
 For example, if you follow the [guided index flow](/solutions/search/serverless-elasticsearch-get-started.md#elasticsearch-follow-guided-index-flow), you can choose the semantic search option.
-Follow the instructions to install an {{es}} client and define field mappings or try out the API requests in the [Console](/explore-analyze/query-filter/tools/console.md):
+Follow the instructions to install an {{es}} client and define field mappings.
+Alternatively, try out the API requests in the [Console](/explore-analyze/query-filter/tools/console.md):
 
 ```console
 PUT /my-index/_mapping
@@ -55,7 +57,7 @@ PUT /my-index/_mapping
 }
 ```
 
-By default, thee [semantic_text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type provides vector search capabilities using the ELSER model.
+By default, the [semantic_text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type provides vector search capabilities using the ELSER model.
 % TBD: Confirm "Elser model" vs ".elser-2-elasticsearch, a preconfigured endpoint for the elasticsearch service".
 
 Next, use the Elasticsearch bulk API to ingest an array of documents into the index.
