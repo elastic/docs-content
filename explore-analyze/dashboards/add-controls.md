@@ -107,7 +107,7 @@ apply to a specific panel, and exposes visualization configuration such as date 
 
     * The type of the control. 
       * For controls with **Static values**, you select the options available in the controls by entering them manually or by using a dropdown listing available values. 
-      * {applies_to}`stack: ga 9.1` For controls with **Values from a query**, you write an ES|QL query to populate the list of options.
+      * For controls with **Values from a query**, you write an ES|QL query to populate the list of options.
     * The name of the control. This name is used to reference the control in ES|QL queries. 
       * Start the name with `?` if you want the options to be simple static values.
       * {applies_to}`stack: ga 9.1` Start the name with `??` if you want the options of the control to be fields or functions.
