@@ -122,3 +122,10 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 ::::
 
 
+## Use Direct IO when the vector data does not fit in RAM [_use_direct_io_when_the_vector_data_does_not_fit_in_RAM]
+
+Indices using the `bbq_hnsw` type can encounter significantly increased latency during searches if all the vector data does not fit in RAM. In these scenarios, using direct IO can improve query latency significantly. This can be done by setting the `vector.rescoring.directio=true` JVM option on all vector search nodes in the cluster. Note that this option should only be used if significant query latencies are seen, and the machines running Elasticsearch have relatively low RAM compared to the size of the vector data.
+
+::::{note}
+This option is introduced in 9.1 as a technical preview, and is likely to change in later versions.
+::::
