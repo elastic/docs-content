@@ -472,6 +472,7 @@ FROM my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001
 ## Optional remote clusters [ccq-skip-unavailable-clusters]
 
 ::::{tab-set}
+
 :::{tab-item} 9.1
 Remote clusters are configured with `skip_unavailable: true` setting by default. With this setting, the cluster would be
 set
@@ -491,8 +492,8 @@ FROM cluster_one:missing-index | LIMIT 10
 FROM cluster_one:missing-index* | LIMIT 10
 FROM cluster_one:missing-index*,cluster_two:missing-index | LIMIT 10
 ```
-
 :::
+
 :::{tab-item} 9.0
 :::
 If a remote cluster disconnects from the querying cluster, {{ccs}} for {{esql}} will set it to `skipped`
