@@ -39,11 +39,6 @@ Learn how to spin up a deployment on {{ech}} or create an Observability Serverle
 ::::{step}
 ::::
 
-*Choose your source.** Elastic integrates with hundreds of data sources for unified visibility across all your applications and systems.
-2. **Ingest your data.** Turn-key integrations provide a repeatable workflow to ingest data from all your sources: you install an integration, configure it, and deploy an agent to collect your data.
-3. **View your data.** Navigate seamlessly between Observabilty UIs and dashboards to identify and resolve problems quickly.
-4. **Customize.** Expand your deployment and add features like alerting and anomaly detection.
-
 ## Quickstarts [quickstarts-overview]
 
 Our quickstarts dramatically reduce your time-to-value by offering a fast path to ingest and visualize your Observability data. Each quickstart provides:
@@ -61,7 +56,7 @@ Follow the steps in these guides to get started quickly:
 * [**Quickstart: Create a Synthetic monitor**](/solutions/observability/get-started/quickstart-create-synthetic-monitor.md).
 * [**Quickstart: Collect data from AWS Firehose**](/solutions/observability/get-started/quickstart-collect-data-with-aws-firehose.md).
 
-### Get started with other features [_get_started_with_other_features]
+## Get started with other features [_get_started_with_other_features]
 
 Want to use {{fleet}} or some other feature not covered in the quickstarts? Follow the steps in these guides to get started:
 
