@@ -1,11 +1,14 @@
 ---
-navigation_title: "Use the CLI"
+navigation_title: Use the CLI
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-command-reference.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-command-reference.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Use the Synthetics CLI [synthetics-command-reference]
@@ -288,3 +291,7 @@ npx @elastic/synthetics totp <secret> --issuer <issuer> --label <label>
 
 `--label <string>`
 :   Identifier for the account. Defaults to `SyntheticsTOTP`
+
+## Air-gapped environments
+
+When working in air-gapped environments, setup can become complex and require workarounds. One common issue is Node.js installations or containers not trusting custom certificates. To bypass certificate errors, prefix `npx` related commands with `NODE_TLS_REJECT_UNAUTHORIZED=0`. For example, `NODE_TLS_REJECT_UNAUTHORIZED=0 npx @elastic/synthetics init project-name`. This allows the command to bypass the certificate validations for all TLS connections. 

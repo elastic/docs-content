@@ -1,7 +1,10 @@
 ---
-navigation_title: "Fleet and Elastic Agent"
+navigation_title: Fleet and Elastic Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/release-notes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{fleet}} and {{agent}} release notes [fleet-elastic-agent-release-notes]
@@ -23,6 +26,49 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.0.3 [fleet-elastic-agent-9.0.3-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.3-features-enhancements]
+
+**Elastic Agent**
+
+* Add `Cumulativetodeltaprocessor` To EDOT Collector. [#8372]({{agent-pull}}8372)
+
+**Fleet Server**
+
+* Update Go version to v1.24.4. [#5025]({{fleet-server-pull}}5025)
+
+### Fixes [fleet-elastic-agent-9.0.3-fixes]
+
+**Elastic Agent**
+
+* Address a race condition that can occur in agent diagnostics if log rotation runs while logs are being zipped. [#8215]({{agent-pull}}8215)
+* Use `paths.tempdir` for diagnostics actions. [#8472]({{agent-pull}}8472)
+* relax file ownership check to allow admin re-enrollment on Windows. [#8503]({{agent-pull}}8503)
+
+## 9.0.2 [fleet-elastic-agent-9.0.2-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.2-features-enhancements]
+
+* Updates Go version to v1.24.3 in {{fleet}} [#4891]({{fleet-server-pull}}4891)
+
+* Updates Go version to v1.24.3 in {{agent}} [#8109]({{agent-pull}}8109)
+
+### Fixes [fleet-elastic-agent-9.0.2-fixes]
+
+* Improves the upgrade process for {{agent}} installed using DEB or RPM packages by copying the run directory from the previous installation into the new version's folder [#7999]({{agent-pull}}7999) [#3832]({{agent-issue}}3832)
+
+## 9.0.1 [fleet-elastic-agent-9.0.1-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.1-features-enhancements]
+
+* Reuse shared integration policies when duplicating {{agent}} policies in {{fleet}} [#217872](https://github.com/elastic/kibana/pull/217872)
+* Update OTel components to v0.121.0 [#7686]({{agent-pull}}7686)
+* Add nopexporter to Elastic Distribution of OTel Collector (EDOT) Collector [#7788]({{agent-pull}}7788)
+* In {{agent}}, use `fullnameOverride` to set the fully qualified application names in the EDOT Kube-Stack Helm chart. [#7754]({{agent-pull}}7754) [#7381]({{agent-issue}}7381)
+
+### Fixes [fleet-elastic-agent-9.0.1-fixes]
+* In the EDOT Collector, fix Managed OTLP Helm config to use the current image repository [#7882]({{agent-pull}}7882)
 
 ## 9.0.0 [fleet-elastic-agent-900-release-notes]
 

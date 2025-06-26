@@ -1,7 +1,10 @@
 ---
-navigation_title: "Providers"
+navigation_title: Providers
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/providers.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Configure providers for standalone {{agent}}s [providers]

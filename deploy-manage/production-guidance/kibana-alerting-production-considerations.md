@@ -1,5 +1,5 @@
 ---
-navigation_title: "Optimize alerting performance"
+navigation_title: Optimize alerting performance
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-production-considerations.html
 applies_to:
@@ -8,6 +8,8 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: kibana
 ---
 
 

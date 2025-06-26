@@ -7,6 +7,9 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Troubleshoot logs [logs-troubleshooting]
@@ -157,9 +160,9 @@ Uninstalling the current {{agent}} removes the entire current setup, including t
 
 
 
-### Waiting for Logs to be shipped…​ step never completes [logs-troubleshooting-wait-for-logs]
+### Waiting for Logs to be shipped… step never completes [logs-troubleshooting-wait-for-logs]
 
-If the **Waiting for Logs to be shipped…​** step never completes, logs are not being shipped to {{es}} or your Observability project, and there is most likely an issue with your {{agent}} configuration.
+If the **Waiting for Logs to be shipped…** step never completes, logs are not being shipped to {{es}} or your Observability project, and there is most likely an issue with your {{agent}} configuration.
 
 
 #### Solution [logs-troubleshooting-wait-for-logs-solution]

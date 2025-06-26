@@ -1,13 +1,16 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
-  serverless: ga
 navigation_title: Sign up
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-trial.html
   - https://www.elastic.co/guide/en/serverless/current/general-sign-up-trial.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-existing-email.html
+applies_to:
+  deployment:
+    ess: ga
+  serverless: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Sign up and create an organization
@@ -34,7 +37,8 @@ To sign up:
 2. Choose one of the available sign up methods. You can register with your email address and a password, use a Google or Microsoft account, or [subscribe from a Marketplace](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 :::{note}
-You can only belong to one {{ecloud}} organization at a time. If you want to create or join another organization, you must leave the previous one or use a different email address.
+* You can only belong to one {{ecloud}} organization at a time. If you want to create or join another organization, you must [leave the previous one](/cloud-account/join-or-leave-an-organization.md#ec-leave-organization) or use a different email address.
+* An email address can’t be used for more than one {{ecloud}} account. To make the email address available for a new account, you can [remove it from your existing account](/cloud-account/update-your-email-address.md#sign-up-existing).
 :::
 
 When your first sign up, you create an organization and start with a trial license.
@@ -73,7 +77,7 @@ During the free 14 day trial, Elastic provides access to one hosted deployment a
 
 * You can have one active deployment at a time
 * The deployment size is limited to 8GB RAM and approximately 360GB of storage, depending on the specified hardware profile
-* Machine learning nodes are available up to 4GB RAM
+* Machine learning nodes are available up to 4GB RAM, or up to 8GB when using Reranker
 * Custom {{es}} plugins are not enabled
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
@@ -99,7 +103,7 @@ You can subscribe to {{ecloud}} at any time during your trial. [Billing](../../.
 
 ### Get started with your trial [general-sign-up-trial-how-do-i-get-started-with-my-trial]
 
-Start by checking out some common approaches for [moving data into {{ecloud}}](https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html).
+Start by checking out some common approaches for [moving data into {{ecloud}}](/manage-data/ingest.md).
 
 
 ### Maintain access to your trial projects and data [general-sign-up-trial-what-happens-at-the-end-of-the-trial]

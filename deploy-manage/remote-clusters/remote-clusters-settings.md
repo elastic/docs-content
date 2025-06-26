@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-settings.html
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-settings.html
+products:
+  - id: elasticsearch
 ---
 
 # Remote cluster settings [remote-clusters-settings]
@@ -17,7 +19,7 @@ The following settings apply to both [sniff mode](/deploy-manage/remote-clusters
 :   The time to wait for remote connections to be established when the node starts. The default is `30s`.
 
 `remote_cluster_client` [role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles)
-:   By default, any node in the cluster can act as a cross-cluster client and connect to remote clusters. To prevent a node from connecting to remote clusters, specify the [node.roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) setting in `elasticsearch.yml` and exclude `remote_cluster_client` from the listed roles. Search requests targeting remote clusters must be sent to a node that is allowed to act as a cross-cluster client. Other features such as {{ml}} [data feeds](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md#general-ml-settings), [transforms](elasticsearch://reference/elasticsearch/configuration-reference/transforms-settings.md#general-transform-settings), and [{{ccr}}](../tools/cross-cluster-replication/set-up-cross-cluster-replication.md) require the `remote_cluster_client` role.
+:   By default, any node in the cluster can act as a cross-cluster client and connect to remote clusters. To prevent a node from connecting to remote clusters, specify the [node.roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) setting in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) and exclude `remote_cluster_client` from the listed roles. Search requests targeting remote clusters must be sent to a node that is allowed to act as a cross-cluster client. Other features such as {{ml}} [data feeds](elasticsearch://reference/elasticsearch/configuration-reference/machine-learning-settings.md#general-ml-settings), [transforms](elasticsearch://reference/elasticsearch/configuration-reference/transforms-settings.md#general-transform-settings), and [{{ccr}}](../tools/cross-cluster-replication/set-up-cross-cluster-replication.md) require the `remote_cluster_client` role.
 
 `cluster.remote.<cluster_alias>.skip_unavailable`
 :   Per cluster boolean setting that allows to skip specific clusters when no nodes belonging to them are available and they are the target of a remote cluster request.
@@ -62,7 +64,7 @@ $$$cluster-remote-node-attr$$$
 To use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode) to connect to a remote cluster, set `cluster.remote.<cluster_alias>.mode: proxy` and then configure the following settings.
 
 `cluster.remote.<cluster_alias>.proxy_address`
-:   The address used for all remote connections.
+:   The address used for all remote connections. A single address value, either an IP address or a fully qualified domain name (FQDN).
 
 `cluster.remote.<cluster_alias>.proxy_socket_connections`
 :   The number of socket connections to open per remote cluster. The default is `18`.

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configuration [k8s-beat-configuration]
@@ -103,7 +105,7 @@ ECK supports the deployment of any Community Beat.
 2. Set the `image` element to point to the image to be deployed.
 3. Make sure the following roles exist in {{es}}:
 
-    * If `elasticsearchRef` is provided, create the role `eck_beat_es_$type_role`, where `$type` is the Beat type. For example, when deploying `kafkabeat`, the role name is `eck_beat_es_kafkabeat_role`. This role must have the permissions required by the Beat. Check the [{{es}} documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html) for more details.
+    * If `elasticsearchRef` is provided, create the role `eck_beat_es_$type_role`, where `$type` is the Beat type. For example, when deploying `kafkabeat`, the role name is `eck_beat_es_kafkabeat_role`. This role must have the permissions required by the Beat. Check the [{{es}} documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for more details.
     * If `kibanaRef` is provided, create the role `eck_beat_kibana_$type_role` with the permissions required to setup {{kib}} dashboards.
 
 

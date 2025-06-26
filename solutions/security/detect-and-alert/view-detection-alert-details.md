@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # View detection alert details [security-view-alert-details]
@@ -43,7 +46,7 @@ From the right panel, you can also:
 
     ::::{note}
     For {{stack}} users only:
-    If you’ve configured the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting in the `kibana.yml` file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
+    If you’ve configured the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) setting in the [`kibana.yml`](/deploy-manage/stack-settings.md) file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
     ::::
 
 
@@ -133,6 +136,9 @@ The Investigation section provides the following information:
 
 * **Highlighted fields**: Shows relevant fields for the alert and any [custom highlighted fields](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) you added to the rule. Custom highlighted fields with values are added to this section. Those without values aren’t added.
 
+    ::::{tip}
+    In {{serverless-short}}, you can quickly add and remove custom highlighted fields from the rule by clicking **Add field** in the Highlighted fields table. 
+    ::::
 
 ## Visualizations [visualizations-section]
 

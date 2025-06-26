@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Add and manage exceptions [add-exceptions]
@@ -13,7 +16,7 @@ applies_to:
 You can add exceptions to a rule from the rule details page, the Alerts table, the alert details flyout, or the Shared Exception Lists page. When you add an exception, you can also close all alerts that meet the exception’s criteria.
 
 ::::{important}
-* To ensure an exception is successfully applied, ensure that the fields you’ve defined for its query are correctly and consistently mapped in their respective indices. Refer to [ECS](https://www.elastic.co/guide/en/ecs/current) to learn more about supported mappings.
+* To ensure an exception is successfully applied, ensure that the fields you’ve defined for its query are correctly and consistently mapped in their respective indices. Refer to [ECS](ecs://reference/index.md) to learn more about supported mappings.
 * Be careful when adding exceptions to [event correlation](create-detection-rule.md#create-eql-rule) rules. Exceptions are evaluated against every event in the sequence, and if an exception matches any events that are necessary to complete the sequence, alerts are not created.
 
     To exclude values from a specific event in the sequence, update the rule’s EQL statement. For example:
@@ -50,7 +53,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
     * To add an exception from the Alerts table:
 
         1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-        2. Scroll down to the Alerts table, go to the alert you want to create an exception for, click the **More Actions** menu (**…​**), then select **Add rule exception**.
+        2. Scroll down to the Alerts table, go to the alert you want to create an exception for, click the **More Actions** menu (**…**), then select **Add rule exception**.
 
     * To add an exception from the alert details flyout:
 
@@ -176,7 +179,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
     * To add an Endpoint exception from the Alerts table:
 
         1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-        2. Scroll down to the Alerts table, and from an {{elastic-endpoint}} alert, click the **More actions** menu (**…​**), then select **Add Endpoint exception**.
+        2. Scroll down to the Alerts table, and from an {{elastic-endpoint}} alert, click the **More actions** menu (**…**), then select **Add Endpoint exception**.
 
     * To add an Endpoint exception from Shared Exception Lists page:
 

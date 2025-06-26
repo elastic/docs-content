@@ -1,4 +1,7 @@
 ---
+navigation_title: Diagnostics
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnostic.html
 applies_to:
   stack:
   deployment:
@@ -6,9 +9,8 @@ applies_to:
     ess:
     ece:
     self:
-navigation_title: Diagnostics
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnostic.html
+products:
+  - id: elasticsearch
 ---
 
 # Capture diagnostics [diagnostic]
@@ -72,7 +74,7 @@ To capture an {{es}} diagnostic:
     **Windows**
 
     ```sh
-    sudo .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
+    .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
     ```
 
     ::::{tip}

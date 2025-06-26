@@ -1,10 +1,12 @@
 ---
-navigation_title: "Removing containers"
+navigation_title: Removing containers
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-uninstall.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-uninstall.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Remove Elastic Cloud Enterprise containers  [ece-uninstall]

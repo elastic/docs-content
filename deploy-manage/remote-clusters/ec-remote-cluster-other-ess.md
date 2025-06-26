@@ -1,15 +1,21 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 navigation_title: With a different {{ecloud}} organization
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-other-ess.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Access deployments of another {{ecloud}} organization [ec-remote-cluster-other-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ecloud}} organization.
+
+::::{note}
+If traffic filtering is enabled on the remote cluster, the remote cluster administrator must configure a traffic filter of type remote cluster, using either the organization ID or the Elasticsearch cluster ID as the filtering criteria. For detailed instructions, refer to [Remote clusters and traffic filtering](/deploy-manage/remote-clusters/ec-enable-ccs.md#ec-ccs-ccr-traffic-filtering).
+::::
 
 ## Allow the remote connection [ec_allow_the_remote_connection_2]
 
@@ -55,8 +61,8 @@ The API key created previously will be used by the local deployment to authentic
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+3. From the navigation menu, select **Security**.
+4. Locate **Remote connections** and select **Add API key**.
 
     1. Fill both fields.
 
@@ -233,7 +239,6 @@ curl -X GET -H "Authorization: ApiKey $EC_API_KEY" https://api.elastic-cloud.com
 ::::{note}
 The response will include just the remote clusters from the same {{ecloud}} organization. In order to obtain the whole list of remote clusters, use {{kib}} or the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
 ::::
-
 
 ## Configure roles and users [ec_configure_roles_and_users_2]
 

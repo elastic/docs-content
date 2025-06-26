@@ -1,4 +1,5 @@
 ---
+navigation_title: Active Directory
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/active-directory-realm.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-ad.html
@@ -7,10 +8,17 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: "Active Directory"
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
 ---
 
 # Active Directory user authentication [active-directory-realm]
+
+:::{{warning}}
+This type of user authentication cannot be configured on {{ech}} deployments.
+:::
+
 
 You can configure {{stack}} {{security-features}} to communicate with Active Directory to authenticate users.
 
@@ -42,9 +50,9 @@ If your Active Directory domain supports authentication with user-provided crede
 
 ## Step 1: Add a new realm configuration [ad-realm-configuration]
 
-1. Add a realm configuration of type `active_directory` to `elasticsearch.yml` under the `xpack.security.authc.realms.active_directory` namespace. At a minimum, you must specify the Active Directory `domain_name` and `order`.
+1. Add a realm configuration of type `active_directory` to [`elasticsearch.yml`](/deploy-manage/stack-settings.md) under the `xpack.security.authc.realms.active_directory` namespace. At a minimum, you must specify the Active Directory `domain_name` and `order`.
 
-    See [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings) for all of the options you can set for an `active_directory` realm.
+    See [Active Directory realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings) for all of the options you can set for an `active_directory` realm.
 
     :::{note}
     Binding to Active Directory fails if the domain name is not mapped in DNS.
@@ -114,17 +122,17 @@ If your Active Directory domain supports authentication with user-provided crede
   When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
   ::::
 
-2. (Optional) Configure how {{es}} should interact with multiple Active Directory servers.
+1. (Optional) Configure how {{es}} should interact with multiple Active Directory servers.
 
-    The `load_balance.type` setting can be used at the realm level. Two modes of operation are supported: failover and load balancing. See [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings).
+    The `load_balance.type` setting can be used at the realm level. Two modes of operation are supported: failover and load balancing. See [Active Directory realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings).
 
-3. (Optional) To protect passwords, [encrypt communications](/deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#tls-active-directory) between {{es}} and the Active Directory server.
+2. (Optional) To protect passwords, [encrypt communications](/deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#tls-active-directory) between {{es}} and the Active Directory server.
 
     * **For self-managed clusters and {{eck}} deployments**, clients and nodes that connect using SSL/TLS to the Active Directory server need to have the Active Directory server’s certificate or the server’s root CA certificate installed in their keystore or trust store.
 
     * **For {{ece}} and {{ech}} deployments**, if your Domain Controller is configured to use LDAP over TLS and it uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate.
 
-4. Restart {{es}}.
+3. Restart {{es}}.
 
 ## Step 2: Configure a bind user (Optional) [ece-ad-configuration-with-bind-user]
 
@@ -226,7 +234,7 @@ superuser:
 - cn=Senior Admin, cn=management, dc=example, dc=com
 ```
 
-Referencing the file in `elasticsearch.yml`:
+Referencing the file in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack:
@@ -264,7 +272,7 @@ Additional metadata can be extracted from the Active Directory server by configu
 
 The `load_balance.type` setting can be used at the realm level to configure how the {{security-features}} should interact with multiple Active Directory servers. Two modes of operation are supported: failover and load balancing.
 
-See [Load balancing and failover](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#load-balancing).
+See [Load balancing and failover](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#load-balancing).
 
 
 ## Encrypting communications between {{es}} and Active Directory [tls-active-directory]
@@ -312,7 +320,7 @@ xpack:
               certificate_authorities: [ "ES_PATH_CONF/cacert.pem" ]
 ```
 
-For more information about these settings, see [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings).
+For more information about these settings, see [Active Directory realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings).
 
 ::::{note}
 By default, when you configure {{es}} to connect to Active Directory using SSL/TLS, it attempts to verify the hostname or IP address specified with the `url` attribute in the realm configuration with the values in the certificate. If the values in the certificate and realm configuration do not match, {{es}} does not allow a connection to the Active Directory server. This is done to protect against man-in-the-middle attacks. If necessary, you can disable this behavior by setting the `ssl.verification_mode` property to `certificate`.

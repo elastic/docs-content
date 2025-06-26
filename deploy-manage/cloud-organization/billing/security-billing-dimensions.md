@@ -1,9 +1,11 @@
 ---
-navigation_title: "Elastic for Security"
+navigation_title: Elastic for Security
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-billing.html
 applies_to:
   serverless: all
+products:
+  - id: cloud-serverless
 ---
 
 # Elastic for Security billing dimensions [security-billing]

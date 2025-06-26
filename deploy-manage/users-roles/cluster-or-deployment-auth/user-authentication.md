@@ -8,6 +8,9 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # User authentication

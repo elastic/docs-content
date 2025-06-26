@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Configure endpoint protection with {{elastic-defend}} [endpoint-protection-intro]

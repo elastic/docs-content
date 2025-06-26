@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/manage-cases-settings.html
   - https://www.elastic.co/guide/en/serverless/current/observability-case-settings.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Configure case settings [manage-cases-settings]
@@ -62,13 +65,13 @@ After creating a connector, you can set your cases to [automatically close](/sol
 
 3. Enter your required settings. For connector configuration details, refer to:
 
-    * [{{ibm-r}} connector](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html)
-    * [{{jira}} connector](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html)
-    * [{{sn-itsm}} connector](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html)
-    * [{{sn-sir}} connector](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html)
-    * [{{swimlane}} connector](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html)
-    * [TheHive connector](https://www.elastic.co/guide/en/kibana/current/thehive-action-type.html)
-    * [{{webhook-cm}} connector](https://www.elastic.co/guide/en/kibana/current/cases-webhook-action-type.html)
+    * [{{ibm-r}} connector](kibana://reference/connectors-kibana/resilient-action-type.md)
+    * [{{jira}} connector](kibana://reference/connectors-kibana/jira-action-type.md)
+    * [{{sn-itsm}} connector](kibana://reference/connectors-kibana/servicenow-action-type.md)
+    * [{{sn-sir}} connector](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+    * [{{swimlane}} connector](kibana://reference/connectors-kibana/swimlane-action-type.md)
+    * [TheHive connector](kibana://reference/connectors-kibana/thehive-action-type.md)
+    * [{{webhook-cm}} connector](kibana://reference/connectors-kibana/cases-webhook-action-type.md)
 
 4. Click **Save**.
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/create-standalone-agent-policy.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Create a standalone Elastic Agent policy

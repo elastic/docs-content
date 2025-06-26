@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Install the add-on [ech-getting-started-installing]
@@ -12,14 +14,14 @@ applies_to:
 These steps walk you through installing the {{heroku}} from the Heroku CLI. You can either install the latest default version of the add-on or you can install a specific version and include plugins at the same time.
 
 
-## Before you begin [echbefore_you_begin] 
+## Before you begin [echbefore_you_begin]
 
 The installation steps in this section assume that you have a basic working knowledge of the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) and are familiar with using the command line. To work with the {{heroku}} from the command line, you need to have the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) already installed.
 
 If you prefer to install the add-on through your web browser, go to the [{{es}} add-on](https://elements.heroku.com/addons/foundelasticsearch) page in the Elements Marketplace, select **Install Elasticsearch**, pick the add-on plan you want, and select **Provision add-on**.
 
 
-## Steps [echsteps] 
+## Steps [echsteps]
 
 To install the latest add-on for `MY_APP` using the Heroku CLI:
 

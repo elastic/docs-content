@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-server.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # What is Fleet Server? [fleet-server]
@@ -27,7 +30,7 @@ The following diagram shows how {{agent}}s communicate with {{fleet-server}} to 
 ::::{admonition}
 **Does {{fleet-server}} run inside of {{agent}}?**
 
-{{fleet-server}} is a subprocess that runs inside a deployed {{agent}}. This means the deployment steps are similar to any {{agent}}, except that you enroll the agent in a special {{fleet-Server}} policy. Typically—​especially in large-scale deployments—​this agent is dedicated to running {{fleet-server}} as an {{agent}} communication host and is not configured for data collection.
+{{fleet-server}} is a subprocess that runs inside a deployed {{agent}}. This means the deployment steps are similar to any {{agent}}, except that you enroll the agent in a special {{fleet-Server}} policy. Typically—especially in large-scale deployments—this agent is dedicated to running {{fleet-server}} as an {{agent}} communication host and is not configured for data collection.
 
 ::::
 

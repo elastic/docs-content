@@ -1,11 +1,13 @@
 ---
+navigation_title: With {{eck}}
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs-for-eck.html
 applies_to:
   deployment:
     ece: ga
     eck: ga
-navigation_title: With {{eck}}
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs-for-eck.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Remote clusters between {{ece}} and ECK [ece-enable-ccs-for-eck]

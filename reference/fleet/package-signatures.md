@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/package-signatures.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Package signatures [package-signatures]
@@ -43,4 +46,4 @@ Here are some reasons why an integration might be flagged as unverified after in
 
 ## What if the Elastic key changes in the future? [what-if-key-changes]
 
-In the unlikely event that the Elastic signing key changes in the future, any verified integration packages will continue to show as verified until new packages are installed or existing ones are upgraded. If this happens, you can set the `xpack.fleet.packageVerification.gpgKeyPath` setting in the `kibana.yml` configuration file to use the new key.
+In the unlikely event that the Elastic signing key changes in the future, any verified integration packages will continue to show as verified until new packages are installed or existing ones are upgraded. If this happens, you can set the `xpack.fleet.packageVerification.gpgKeyPath` setting in the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file to use the new key.

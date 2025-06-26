@@ -5,6 +5,10 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # Transactions [apm-transactions]
@@ -60,7 +64,7 @@ By default, transaction groups are sorted by *Impact*. Impact helps show the mos
 ::::{important}
 If you only see one route in the Transactions table, or if you have transactions named "unknown route", it could be a symptom that the APM agent either wasn’t installed correctly or doesn’t support your framework.
 
-For further details, including troubleshooting and custom implementation instructions, refer to the documentation for each [APM Agent](https://www.elastic.co/guide/en/apm/agent) you’ve implemented.
+For further details, including troubleshooting and custom implementation instructions, refer to the documentation for each [APM Agent](/reference/apm-agents/index.md) you’ve implemented.
 
 ::::
 
@@ -88,7 +92,7 @@ Selecting a transaction group will bring you to the **transaction** details. Thi
 
 ### Latency distribution [transaction-duration-distribution]
 
-The latency distribution shows a plot of all transaction durations for the given time period. The following screenshot shows a typical distribution and indicates most of our requests were served quickly — awesome! The requests on the right are taking longer than average; we probably need to focus on them.
+The latency distribution shows a plot of all transaction durations for the given time period. The following screenshot shows a typical distribution and indicates most of our requests were served quickly — awesome! The requests on the right are taking longer than average; we probably need to focus on them.
 
 :::{image} /solutions/images/observability-apm-transaction-duration-dist.png
 :alt: Example view of latency distribution graph

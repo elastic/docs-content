@@ -5,9 +5,16 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-using.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-examples.html
   - https://www.elastic.co/guide/en/kibana/current/esql.html
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # {{esql}} [esql]
+
+:::{tip}
+Looking for the {{esql}} syntax reference? Refer to the [reference documentation](elasticsearch://reference/query-languages/esql.md).
+:::
 
 **Elasticsearch Query Language ({{esql}})** is a piped query language for filtering, transforming, and analyzing data.
 
@@ -60,10 +67,6 @@ You can interact with {{esql}} in two ways:
   - [Query across clusters](/explore-analyze/query-filter/languages/esql-cross-clusters.md)
 
 ### Reference documentation
-
-:::{note}
-The {{esql}} reference documentation lives in the {{es}} reference section of the Elastic docs.
-:::
 
 #### Core references
 * [{{esql}} reference](elasticsearch://reference/query-languages/esql.md)

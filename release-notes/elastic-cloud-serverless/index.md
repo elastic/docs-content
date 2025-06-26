@@ -1,7 +1,9 @@
 ---
-navigation_title: "Elastic Cloud Serverless"
+navigation_title: Elastic Cloud Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/serverless-changelog.html
+products:
+  - id: cloud-serverless
 ---
 
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
@@ -9,13 +11,350 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
-% Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
+## June 26, 2025 [serverless-changelog-06262025]
 
-% ## version.next [elastic-cloud-serverless-changelog-releasedate]
+### Features and enhancements [serverless-changelog-06262025-features-enhancements]
+* {{serverless-full}} is now available in the Microsoft Azure `eastus` [region](/deploy-manage/deploy/elastic-cloud/regions.md). 
 
-% ### Features and enhancements [elastic-cloud-serverless-releasedate-features-enhancements]
+## June 23, 2025 [serverless-changelog-06232025]
 
-% ### Fixes [elastic-cloud-serverless-releasedate-fixes]
+### Features and enhancements [serverless-changelog-06232025-features-enhancements]
+
+* Adds new setting `xpack.actions.webhook.ssl.pfx.enabled` to disable PFX file support for SSL client authentication in Webhook connectors [#222507]({{kib-pull}}222507)
+* Introduces **Scheduled Reports** feature [#221028]({{kib-pull}}221028)
+* Adds `xpack.actions.email.services.enabled` setting to control availability of email services in connectors [#223363]({{kib-pull}}223363)
+* Enables support for adding observables, procedures, and custom fields to alerts for TheHive [#207255]({{kib-pull}}207255)
+* Improves visual highlight behavior in the add panel UI [#223614]({{kib-pull}}223614)
+* Supports agentless traffic filters for Elastic Agent [#222082]({{kib-pull}}222082)
+* Adds support for suggesting all operators in the query editor [#223503]({{kib-pull}}223503)
+* Introduces accordion sections and attribute tables in UI components [#224185]({{kib-pull}}224185)
+* Adds monitor downtime alert when no data is available [#220127]({{kib-pull}}220127)
+* Introduces **Maintenance Windows** functionality [#222174]({{kib-pull}}222174)
+* Enables editing of labels and tags for private locations in **Synthetics** [#221515]({{kib-pull}}221515)
+* Adds new tail-based sampling settings to integration policies [#224479]({{kib-pull}}224479)
+* Enables model ID retrieval from anonymization rules [#224280]({{kib-pull}}224280)
+* Updates SLO starter prompt text for improved guidance [#224493]({{kib-pull}}224493)
+* Introduces `deactivate_...` agent configuration settings for EDOT Node.js [#224502]({{kib-pull}}224502)
+* Updates system prompt to include information about anonymization [#224211]({{kib-pull}}224211)
+* Adds support for Microsoft Defender's `runscript` command in the **Response Console** [#222377]({{kib-pull}}222377)
+* Moves Automatic Migration from **Tech Preview** to General Availability [#224544]({{kib-pull}}224544)
+* Adds simplified bulk editing for alert suppression rules [#223090]({{kib-pull}}223090)
+* Introduces **XSOAR Connector** [#212049]({{kib-pull}}212049)
+* Adds `name` field to the Rule Migrations UI and data model [#223860]({{kib-pull}}223860)
+* Enables collection of `dns` events for macOS in **Elastic Defend** [#223566]({{kib-pull}}223566)
+* Adds usage callout for **Elastic Indexing Service (EIS)** [#221566]({{kib-pull}}221566)
+* Adds `ecs@mappings` component template to transform destination index templates [#223878]({{kib-pull}}223878)
+* Renames advanced policy setting `disable_origin_info_collection` to `origin_info_collection` and changed its default behavior to Opt-In [#223882]({{kib-pull}}223882)
+* Introduces cleanup task for unused URLs [#220138]({{kib-pull}}220138)
+* Marks the **Session Invalidation API** as Stable [#224076]({{kib-pull}}224076)
+* Hides the Adaptive Allocations toggle for Trained Models in **Serverless** environments [#224097]({{kib-pull}}224097)
+* Adds option to disable **AIOps** features in Kibana [#221286]({{kib-pull}}221286)
+* Enables autocompletion for **ES|QL** queries in the Console UI [#219980]({{kib-pull}}219980)
+* Improves layout and content of rule listing and overview pages [#223603]({{kib-pull}}223603)
+* Adds support for changing settings when re-processing Rule Migrations [#222542]({{kib-pull}}222542)
+* Implements navigation UI for the **Overview Page** in **Entity Analytics** [#221748]({{kib-pull}}221748)
+* Adds support for partial result handling in **ES|QL** [#223198]({{kib-pull}}223198)
+* Adds an **Executable Name** tab to the TopN view [#224291]({{kib-pull}}224291)
+
+
+### Fixes [serverless-changelog-06232025-fixes]
+
+* Fixes pagination not working correctly in certain tables [#223537]({{kib-pull}}223537)
+* Fixes bulk actions selecting incorrect agents when `namespace` filter is used [#224036]({{kib-pull}}224036)
+* Corrects `z-index` issues in the **ESQL Query Editor** [#222841]({{kib-pull}}222841)
+* Updates ARIA tags for improved accessibility in selected fields UI [#224224]({{kib-pull}}224224)
+* Ensures **Last Successful Screenshot** matches the correct step in Synthetics [#224220]({{kib-pull}}224220)
+* Improves network error handling for error details panel [#224296]({{kib-pull}}224296)
+* Fixes broken **EDOT JVM Metrics Dashboard** when classic agent metrics are present [#224052]({{kib-pull}}224052)
+* Fixes **SLO federated view** bug caused by exceeding index name byte limit [#224478]({{kib-pull}}224478)
+* Fixes issue where OSS models failed when streaming was enabled [#224129]({{kib-pull}}224129)
+* Corrects display issues for rule filters in the UI [#222963]({{kib-pull}}222963)
+* Fixes time normalization bug for day units in rule scheduling [#224083]({{kib-pull}}224083)
+* Resolves issue where unknown fields weren't supported in **Data Visualizer** and **Field Statistics** [#223903]({{kib-pull}}223903)
+* Fixes Bedrock connector not using proxy configuration settings [#224130]({{kib-pull}}224130)
+* Passes correct namespace to `migrateInputDocument` logic [#222313]({{kib-pull}}222313)
+* Adjusts app menu header `z-index` to avoid clashing with the portable dev console [#224708]({{kib-pull}}224708)
+* Reverts to using `.watches` system index in Watcher UI [#223898]({{kib-pull}}223898)
+* Fixes several issues introduced in versions 8.18.0 through 9.1.0, including broken pagination (limited to 10 items), erroneous error banners, and broken search functionality.
+* Fixes **Discard** button state change logic for toggles [#223493]({{kib-pull}}223493)
+* Removes `originId` from connectors during rule import [#223454]({{kib-pull}}223454)
+
+## June 17, 2025 [serverless-changelog-06172025]
+
+### Features and enhancements [serverless-changelog-06172025-features-enhancements]
+* {{serverless-full}} is now available in two new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP Belgium (`europe-west1`) and GCP Mumbai (`asia-south1`) 
+
+## June 16, 2025 [serverless-changelog-06162025]
+
+### Features and enhancements [serverless-changelog-06162025-features-enhancements]
+* Adds support for deleting active or inactive alerts after one day without a status update [#216613]({{kib-pull}}216613)
+* Adds AWS SES email configuration options: `xpack.actions.email.services.ses.host` and `ses.port` [#221389]({{kib-pull}}221389)
+* Adds point visibility option for area and line charts in **Lens** [#222187]({{kib-pull}}222187)
+* Enables feature flag for the tabular integrations Fleet UI [#222842]({{kib-pull}}222842)
+* Displays partial results when an ES|QL query times out due to the `search:timeout` setting [#219027]({{kib-pull}}219027)
+* Improves handling of long fields in the **Discover** editor [#223222]({{kib-pull}}223222)
+* Adds a primary **Add to case** button to Elastic Observability Serverless [#223184]({{kib-pull}}223184)
+* Renders suggested dashboards in relevant contexts in Elastic Observability Serverless [#223424]({{kib-pull}}223424)
+* Adds a **History** tab for calendar-based SLOs in the Elastic Observability Serverless SLO details page [#223825]({{kib-pull}}223825)
+* Updates the `spec.max` setting to version 3.4 for Elastic Observability Serverless [#221544]({{kib-pull}}221544)
+* Adds support for anonymizing sensitive data for Elastic Observability Serverless [#223351]({{kib-pull}}223351)
+* Adds `logging_level` configuration in Elastic Observability Serverless for EDOT Node.js agent [#222883]({{kib-pull}}222883)
+* Removes `is_correction` and `confidence` attributes from Elastic Observability Serverless Knowledge Base entries [#222814]({{kib-pull}}222814)
+* Displays linked cases in the Elastic Observability Serverless alert details overview [#222903]({{kib-pull}}222903)
+* Refetches alert rule data when edits are submitted in the Elastic Observability Serverless flyout [#222118]({{kib-pull}}222118)
+* Adds `disable_origin_info_collection` to endpoint policy advanced settings in Elastic Security Serverless [#222030]({{kib-pull}}222030)
+* Improves alert filtering in Elastic Security Serverless by including ECS `data_stream` fields under `kibana.alert.original_data_stream.*` [#220447]({{kib-pull}}220447)
+* Adds a rare scripts job to the preconfigured Security:Windows anomaly detection jobs [#223041]({{kib-pull}}223041)
+* Adds `converse` and `converseStream` subActions to Bedrock connectors for Machine Learning [#223033]({{kib-pull}}223033)
+* Improves error handling in the AI Connector creation UI for Machine Learning [#221859]({{kib-pull}}221859)
+* Disables trace visualizations in **Discover** for Logs Essentials serverless mode in Elastic Observability Serverles [#222991]({{kib-pull}}222991)
+* Adds the **Attributes** tab to the Elastic Observability Serverless document viewer [#222391]({{kib-pull}}222391)
+
+### Fixes [serverless-changelog-06162025-fixes]
+* Reverts instructions for installing the complete Elastic Agent [#223520]({{kib-pull}}223520)
+* Fixes incorrect function signatures in bucket functions for **Discover** [#222553]({{kib-pull}}222553)
+* Reverts CSV export time range fix in **Discover** [#223249]({{kib-pull}}223249)
+* Adds `aria-labelledby` to Elastic Charts SVG for accessibility in Elastic Observability Serverless [#220298]({{kib-pull}}220298)
+* Hides **Data set details** when `dataStream` comes from a remote cluster in Elastic Observability Serverless [#220529]({{kib-pull}}220529)
+* Prevents unnecessary re-render after completing a **Run test** action in Elastic Observability Serverless [#222503]({{kib-pull}}222503)
+* Skips tool instructions in system messages when tools are disabled in Elastic Observability Serverless [#223278]({{kib-pull}}223278)
+* Fixes broken **View in Discover** link in Elastic Security Serverless [#217993]({{kib-pull}}217993)
+* Expands metrics pattern for the Java EDOT dashboard  in Elastic Observability Serverless [#223539]({{kib-pull}}223539)
+* Applies `autoFocus` to the `cc` and `bcc` fields in the Elastic Observability Serverless email connector form [#223828]({{kib-pull}}223828)
+* Fixes rendering issues in the Elastic Security Serverless Threat Enrichment component [#223164]({{kib-pull}}223164)
+* Ensures ingest pipelines are installed in all relevant spaces and assigned to appropriate indices in Elastic Security Serverless [#221937]({{kib-pull}}221937)
+* Fixes card overflow issues on the **Machine Learning Overview** page [#223431]({{kib-pull}}223431)
+* Applies chunking algorithm to `getIndexBasicStats` to improve performance [#221153]({{kib-pull}}221153)
+
+## June 9, 2025 [serverless-changelog-06092025]
+
+### Features and enhancements [serverless-changelog-06092025-features-enhancements]
+
+* Ensures the Report UI only displays reports generated in the current space [#221375]({{kib-pull}}221375).
+* Color mapping is now GA. `palette` definitions are deprecated and turning off Legacy mode will replace the palette with an equivalent color mapping configuration in* **Lens**. [#220296]({{kib-pull}}220296).
+* Updates time based charts to use the multi-layer time axis by default, providing a better time window context and improved label positioning. [#210579]({{kib-pull}}210579).
+* Adds an integration flyout to Agent policy details in {{fleet}} [#220229]({{kib-pull}}220229).
+* Enables the `enableSyncIntegrationsOnRemote` feature flag in {{fleet}} [#220215]({{kib-pull}}220215).
+* Enables migration of a single agent to another cluster via the actions menu in {{fleet}}. [#222111]({{kib-pull}}222111).
+* Adds a button allowing users to skip to the next section in the fields list in **Discover** [#221792]({{kib-pull}}221792).
+* Adds the **SLO Management** page to {{obs-serverless}}, allowing users to view definitions, delete SLOs, and purge SLI data without having to consider instances [#222238]({{kib-pull}}222238).
+* Adds a new APM dashboard for the Golang OpenTelemetry runtime metrics in {{obs-serverless}} [#220242]({{kib-pull}}220242).
+* Uses the bulk API to import knowledge base entries in {{obs-serverless}} [#222084]({{kib-pull}}222084).
+* Improves system prompt and instructions for the `context` function in the Elastic Observability AI Assistant to work better with Claude models [#221965]({{kib-pull}}221965).
+* Sets `observabilityAIAssistantAPIClient` as the preferred test for type-safe endpoint calls with scoped users in the Elastic Observability AI Assistant [#222753]({{kib-pull}}222753).
+* Adds a custom script selector component to the **Response console** in {{sec-serverless}} [#204965]({{kib-pull}}204965).
+* Updates the `AssetCriticalityBadge` colors to the Borealis theme in {{sec-serverless}} [#222024]({{kib-pull}}222024).
+* Updates the risk severity colors to the Borealis theme in {{sec-serverless}} [#222061]({{kib-pull}}222061).
+* Enables **Content Connectors** in the **Stack Management** menu in {{sec-serverless}} [#221856]({{kib-pull}}221856).
+* Implements PKI authentication support for the `.gen-ai` connector’s `OpenAI Other` provider [#219984]({{kib-pull}}219984).
+
+### Fixes [serverless-changelog-06092025-fixes]
+
+* Fixes {{kib}} being stuck in a reboot loop when `cancelAlertsOnRuleTimeout` is set to `false` [#222263]({{kib-pull}}222263).
+* Adds saved object version for collapsible sections [#222450]({{kib-pull}}222450).
+* Fixes the `UnenrollInactiveAgentsTask` query in {{fleet}} to un-enroll only those agents that are inactive for longer than `unenroll_timeout` [#222592]({{kib-pull}}222592).
+* Adds **Actions** header to the unified data table in **Discover** [#220824]({{kib-pull}}220824).
+* Fixes `COALESCE` validation in **ES|QL** [#222425]({{kib-pull}}222425).
+* Fixes incorrect suggestions after a named variable such as `?value` is entered in a `WHERE` query in **ES|QL** [#222312]({{kib-pull}}222312).
+* Replaces `onChangedItemIndices` with `onChangeRenderedItems` when determining which service details to fetch in {{obs-serverless}} [#222439]({{kib-pull}}222439).
+* Fixes pagination on the Services **Inventory** page when progressive loading is enabled in {{obs-serverless}} [#220514]({{kib-pull}}220514).
+* Refactors styling for the timeline in {{sec-serverless}} from `styled-components` to `emotion` [#222438]({{kib-pull}}222438).
+* Fixes wrong content appearing when switching tabs in the **Ingest your data** section on the **Get started** page in {{sec-serverless}} [#222271]({{kib-pull}}222271).
+* Fixes incorrect header text in the **Rule exception** flyout in {{sec-serverless}} [#222248]({{kib-pull}}222248).
+* Fixes an issue with adding a field when no pipeline has been generated during import in Machine Learning [#222775]({{kib-pull}}222775).
+* Fixes an issue with the OpenAI connector not using the action proxy configuration for all subactions in Machine Learning [#219617]({{kib-pull}}219617).
+* Fixes an issue with **Anomaly Explorer** where the selected Overall swimlane bucket is not respected for `viewBy jobId` in Machine Learning [#222845]({{kib-pull}}222845).
+* Fixes error handling when one or more connectors is deleted [#221958]({{kib-pull}}221958).
+
+## June 2, 2025 [serverless-changelog-06022025]
+
+### Features and enhancements [serverless-changelog-06022025-features-enhancements]
+
+* Adds collapsible sections to Dashboards [#220877]({{kib-pull}}220877)
+* Introduces a new `Density` setting for the Lens Data Table[#220252]({{kib-pull}}220252)
+* Allows the "Open in lens" button to open in the same tab [#217528]({{kib-pull}}217528)
+* Allows you to select the data stream type when creating policies for input packages in {{fleet}} [#214216]({{kib-pull}}214216)
+* Adds a single agent migration endpoint in {{fleet}}, allowing a user to migrate an individual agent to another cluster [#220601]({{kib-pull}}220601)
+* Adds shortcuts to the editor in Discover [#221331]({{kib-pull}}221331)
+* Allows you to change the Knowledge Base model after installation in {{obs-serverless}} [#221319]({{kib-pull}}221319)
+* Adds investigation guide configuration to all Observability rules in {{obs-serverless}} [#217106]({{kib-pull}}217106)
+* Remove semantic_text migration from {{obs-serverless}} [#220886]({{kib-pull}}220886)
+* Searches for the CVE ID in all search parameters instead of only the name in {{sec-serverless}} [#221099]({{kib-pull}}221099)
+* Updates the "Highlighted fields" button in the details flyout and enables the feature flag in {{sec-serverless}} [#221862]({{kib-pull}}221862)
+* Introduces new `empty` states for the Change Point Detection page in {{ml-cap}} [#219072]({{kib-pull}}219072)
+
+
+### Fixes [serverless-changelog-06022025-fixes]
+
+* Uses msearch to fetch the alerts for maintenance windows with a scoped query [#221702]({{kib-pull}}221702)
+* Fixes querying installed packages in {{fleet}} [#221624]({{kib-pull}}221624)
+* Fixes an issue that prevented the style components from receiving the correct `colorMode` in {{fleet}} [#221979]({{kib-pull}}221979)
+* Makes the **Pin** button more accessible in Discover [#219230]({{kib-pull}}219230)
+* Fixes an issue where the `Filter by field type` menu screen reader announcements were using duplicated in Discover [#221090]({{kib-pull}}221090)
+* Removes an unneeded tabindex from Discover [#221265]({{kib-pull}}221265)
+* Changes the field list icon when mapping changes from unmapped to mapped in Discover [#221308]({{kib-pull}}221308)
+* Updates the doc viewer table's `aria-label` in Discover [#221736]({{kib-pull}}221736)
+* Shows the ES|QL request URL in the Inspector flyout in Discover [#221816]({{kib-pull}}221816)
+* Fixes index pattern parsing in Discover, which previously led to incomplete index pattern values being displayed [#221084]({{kib-pull}}221084)
+* Ensures a non-aggregatable message is not shown if no data matches on the Dataset quality page in {{obs-serverless}} [#221599]({{kib-pull}}221599)
+* Deletes user instruction if the text is empty in {{obs-serverless}} [#221560]({{kib-pull}}221560)
+* Adjusts the bulk import knowledge base example to ndjson format in {{obs-serverless}} [#221617]({{kib-pull}}221617)
+* Modifies `RuleTypeModalComponent` to filter rule types that have `requiresAppContext` in {{obs-serverless}} [#220005]({{kib-pull}}220005)
+* Correctly nests APM > Synthetics Serverless navigation in {{obs-serverless}} [#222115]({{kib-pull}}222115)
+* Removes the "run soon for sync private location" task in {{obs-serverless}} [#222062]({{kib-pull}}222062)
+* Fixes the error count waterfall navigation reload issue in {{obs-serverless}} [#221664]({{kib-pull}}221664)
+* Fixes the Bedrock model on preconfigured connectors in {{sec-serverless}} [#221411]({{kib-pull}}221411)
+* Removes the hard-coded width settings for the Threat Match mapping components in {{sec-serverless}} [#218628]({{kib-pull}}218628)
+* Fixes the banner title in event preview in {{sec-serverless}}  [#222266]({{kib-pull}}222266)
+* Ensures to only auto deploy Elastic models during file upload in {{ml-cap}} [#221357]({{kib-pull}}221357)
+* Fixes the inference endpoint assignment to the trained model object in {{ml-cap}}  [#222076]({{kib-pull}}222076)
+* Fixes an issue where `/etc/default/kibana` on deb packages and `/etc/sysconfig/kibana` on rpm packages would be overwritten during upgrading [#221276]({{kib-pull}}221276)
+
+## May 26, 2025 [serverless-changelog-05262025]
+
+### Features and enhancements [serverless-changelog-05262025-features-enhancements]
+
+* Suggests full text search in our recommendations [#221239]({{kib-pull}}221239)
+* Flattens grid layout [#218900]({{kib-pull}}218900)
+* Enables ELSER and E5 on EIS [#220993]({{kib-pull}}220993)
+* Links dashboards on the Rule and Alert pages [#219019]({{kib-pull}}219019)
+* Saves `group by` information with dynamic mapping [#219826]({{kib-pull}}219826)
+* Introduces a new endpoint scheme for SIEM migration [#219597]({{kib-pull}}219597)
+* Extends default log pattern on server side to include error information [#219940]({{kib-pull}}219940)
+
+
+### Fixes [serverless-changelog-05262025-fixes]
+
+* Fixes `getTimezone` default value [#220658]({{kib-pull}}220658)
+* Loads correct system color mode at bootstrap [#218417]({{kib-pull}}218417)
+* Fixes embeddables not refreshing on manual refresh or auto-refresh [#221326]({{kib-pull}}221326)
+* Improves Discover session input focus behavior [#220876]({{kib-pull}}220876)
+* Fixes suggestions after triple quote pair [#221200]({{kib-pull}}221200)
+* Passes app state and global state to locator when redirecting from `/stream` path [#215867]({{kib-pull}}215867)
+* Considers status rule locations only if not an empty array [#220983]({{kib-pull}}220983)
+* Fixes a bug where update of an SLO created in a version older than 8.18 failed due to an invalid ingest pipeline [#221158]({{kib-pull}}221158)
+* Checks for documents before starting semantic text migration [#221152]({{kib-pull}}221152)
+* Improves error telemetry [#220938]({{kib-pull}}220938)
+* Retrieves active integrations from installed integrations API [#218988]({{kib-pull}}218988)
+* Fixes spaces search functionality for spaces created with avatar type as image [#220398]({{kib-pull}}220398)
+* Fixes inability to clear Document ID in data view field editor preview [#220891]({{kib-pull}}220891)
+* Reworks cookie and session storage to prevent unexpected logouts for certain users with certain use cases [#220430]({{kib-pull}}220430)
+* Changes the AI Connector description [#221154]({{kib-pull}}221154)
+
+## May 19, 2025 [serverless-changelog-05192025]
+
+### Features and enhancements [serverless-changelog-05192025-features-enhancements]
+* Supports recurring task scheduling with `rrule` in Alerting [#217728]({{kib-pull}}217728)
+* Adds an embeddable panel to display alerts in **Dashboards** [#216076]({{kib-pull}}216076)
+* Adds **Compare to** badge for **Metric chart** visualizations [#214811]({{kib-pull}}214811)
+* Allows specifying an embedding model during onboarding for the Elastic Observability Serverless Knowledge Base [#218448]({{kib-pull}}218448)
+* Enables click actions for **Stacktrace** and **Degraded Fields** in **Discover** for Elastic Observability Serverless [#214413]({{kib-pull}}214413)
+* Shows **ELSER** in **EIS** only when available in Elastic Observability Serverless [#220096]({{kib-pull}}220096)
+* Adds the ability to create alert rules from **ES|QL** dashboard visualizations via context menu or right-clicking a data point [#217719]({{kib-pull}}217719)
+* Enables the `enableAutomaticAgentUpgrades` feature flag for Fleet [#219932]({{kib-pull}}219932)
+* Adds Cloud Connectors support to Fleet for **CSPM** [#212200]({{kib-pull}}212200)
+* Ensures alerts created within **Maintenance Windows** trigger actions after the window expires [#219797]({{kib-pull}}219797)
+* Adds **Copy value** button to field value cells in **Discover** [#218817]({{kib-pull}}218817)
+* Hides the **Selected only** toggle in pages that don't support value-based filtering in **Discover** [#220624]({{kib-pull}}220624)
+* Updates default model IDs for **Bedrock** and **OpenAI** connectors in Elastic Security Serverless [#220146]({{kib-pull}}220146)
+* Integrates AI prompts in Elastic Security Serverless [#216106]({{kib-pull}}216106)
+* Adds an **ES|QL** control option to the dashboard controls dropdown [#219495]({{kib-pull}}219495)
+* Enables full-text search in `STATS ... WHERE` **ES|QL** queries [#220691]({{kib-pull}}220691)
+* Prevents downloading trained models that are already present in other spaces and displays a warning in Machine Learning [#220238]({{kib-pull}}220238)
+
+### Fixes [serverless-changelog-05192025-fixes]
+* Removes extra icon from map visualization tooltips [#220134]({{kib-pull}}220134)
+* Fixes color mapping issues for custom ranges and multi-field values in visualizations [#207957]({{kib-pull}}207957)
+* Fixes layout issues in embeddable dashboard panel headings with descriptions [#219428]({{kib-pull}}219428)
+* Fixes invalid dashboards incorrectly showing 404 errors instead of validation messages [#211661]({{kib-pull}}211661)
+* Fixes success message and auto-scroll behavior after adding a panel to a dashboard from the library [#220122]({{kib-pull}}220122)
+* Fixes drill-down state not saving in by-value **Discover** sessions [#219857]({{kib-pull}}219857)
+* Marks icons as presentational for accessibility in **Discover** [#219696]({{kib-pull}}219696)
+* Fixes broken **Span Links** flyout in **Trace Explorer** in Elastic Observability Serverless [#219763]({{kib-pull}}219763)
+* Prevents undefined errors in **Transaction flyout** in Elastic Observability Serverless [#220224]({{kib-pull}}220224)
+* Fixes issues with **Processes** query in Elastic Observability Serverless [#220381]({{kib-pull}}220381)
+* Removes unnecessary index write blocks in Elastic Observability Serverless [#220362]({{kib-pull}}220362)
+* Improves resilience of API tests in Elastic Observability Serverless [#220503]({{kib-pull}}220503)
+* Uses update-by-query for `semantic_text` migration in Elastic Observability Serverless [#220255]({{kib-pull}}220255)
+* Fixes errors in `error_marker.tsx` to support **Mobile Services** in Elastic Observability Serverless [#220424]({{kib-pull}}220424)
+* Moves from visualization responses to visualization tables in Elastic Security Serverless [#214888]({{kib-pull}}214888)
+* Prevents risk score search requests from being aborted in Elastic Security Serverless [#219858]({{kib-pull}}219858)
+* Fixes issue where exceptions list and actions were overwritten during legacy prebuilt rule upgrades in Elastic Security Serverless [#218519]({{kib-pull}}218519)
+* Fixes incorrect validation for names containing asterisks in **ES|QL** [#219832]({{kib-pull}}219832)
+* Fixes overridden SSL config in full agent policy advanced YAML for Fleet [#219902]({{kib-pull}}219902)
+
+## May 5, 2025 [serverless-changelog-050525]
+
+### Features and enhancements [serverless-changelog-050525-features-enhancements]
+
+* Adds grouping per row to the {{esql}} rule type [#212135](https://github.com/elastic/kibana/pull/212135)
+* Adds a compact view on the Monitors overview page in {{obs-serverless}} [#219060](https://github.com/elastic/kibana/pull/219060)
+* Adds backend schema changes for investigation guides in {{obs-serverless}} [#216377](https://github.com/elastic/kibana/pull/216377)
+* Adds the `context.grouping` action variable for the SLO Burn rate and {{esql}} rules in {{obs-serverless}} [#213550](https://github.com/elastic/kibana/pull/213550)
+* Updates the styles for the color formatter to appear like a badge in Discover [#189391](https://github.com/elastic/kibana/pull/189391)
+* Enhances the handling of missing `service.environment` attributes in {{obs-serverless}} [#217899](https://github.com/elastic/kibana/pull/217899)
+* Adds `logging_level` to the agent central configuration for the EDOT Java agent in {{obs-serverless}} [#219722](https://github.com/elastic/kibana/pull/219722)
+* Updates {{kib}} MITRE data to `v16.1` [#215026](https://github.com/elastic/kibana/pull/215026)
+* Makes the {{fleet}} agents tag filter searchable and sortable [#219639](https://github.com/elastic/kibana/pull/219639)
+* Adds logic to exclude the `temperature` parameter from the body request of some OpenAI models [#218887](https://github.com/elastic/kibana/pull/218887)
+* Adds the ability to switch between relative and absolute time range in Discover [#218056](https://github.com/elastic/kibana/pull/218056)
+
+### Fixes [serverless-changelog-050525-fixes]
+
+* Fixes ignored dynamic templates [#219875](https://github.com/elastic/kibana/pull/219875)
+% Dashboards and visualizations
+* Syncs the Dashboard {{esql}} query and filters with the corresponding one in Visualizations [#218997](https://github.com/elastic/kibana/pull/218997)
+* Fixes the option list control, making two requests upon refreshing [#219625](https://github.com/elastic/kibana/pull/219625)
+* Ensures that an individual alert is sent per monitor configuration when the "Receive distinct alerts per location" toggle is unchecked in {{obs-serverless}} [#219291](https://github.com/elastic/kibana/pull/219291)
+* Fixes an error that occurred when you interacted with the monitor status rule flyout's numeric controls in {{obs-serverless}} [#218994](https://github.com/elastic/kibana/pull/218994)
+* Fixes an issue where the Observability AI Assistant flyout reopened after navigating to another page URL [#219420](https://github.com/elastic/kibana/pull/219420)
+* Fixes an issue with alerts filtering when the service environment was not defined in {{obs-serverless}} [#219228](https://github.com/elastic/kibana/pull/219228)
+* Handles missing `trace` in API response [#219512](https://github.com/elastic/kibana/pull/219512)
+* Correctly displays an error message if there are failures when creating anomaly detection jobs [#219364](https://github.com/elastic/kibana/pull/219364)
+* Adds optional chaining to prevent undefined error in `custom_link_flyout.tsx` in {{obs-serverless}} [#219668](https://github.com/elastic/kibana/pull/219668)
+* Corrects quotes in {{esql}} queries for function arguments in {{obs-serverless}} [#217680](https://github.com/elastic/kibana/pull/217680)
+* Queries alerts using the `alert.start` field in {{obs-serverless}} [#219651](https://github.com/elastic/kibana/pull/219651)
+* Fixes a scroll error for the Rules flyout in {{sec-serverless}} [#218697](https://github.com/elastic/kibana/pull/218697)
+* Adds a privilege check for enabling the **Run Engine** button in {{sec-serverless}}  [#213054](https://github.com/elastic/kibana/pull/213054)
+* Removes checks for an unused connector role in {{sec-serverless}} [#219358](https://github.com/elastic/kibana/pull/219358)
+* Fixes the rule import error message display [#218701](https://github.com/elastic/kibana/pull/218701)
+* Fixes the capability required for the SIEM Migrations Topic in {{fleet}} [#219427](https://github.com/elastic/kibana/pull/219427)
+* Ensures the ability to change providers without error in {{ml-cap}} [#219020](https://github.com/elastic/kibana/pull/219020)
+* Fixes broken icons in integrations from the Home plugin [#219206](https://github.com/elastic/kibana/pull/219206)
+
+
+
+
+
+## April 28, 2025 [serverless-changelog-04282025]
+
+### Features and enhancements [serverless-changelog-04282025-features-enhancements]
+
+* Adds the option to use the logical `AND` when filtering Monitors by multiple tags or locations [#217985](https://github.com/elastic/kibana/pull/217985)
+* Makes Attack Discovery alerts persistent and searchable [#218906](https://github.com/elastic/kibana/pull/218906)
+* Improves edit ReadMe functionality for custom integrations [#215259](https://github.com/elastic/kibana/pull/215259)
+* Removes metrics and logs from the `get_service_stats` API [#218346](https://github.com/elastic/kibana/pull/218346)
+* Allows you to customize the table tab [#218686](https://github.com/elastic/kibana/pull/218686)
+* Enables keyboard navigation for the create annotations form [#217918](https://github.com/elastic/kibana/pull/217918)
+
+
+### Fixes [serverless-changelog-04282025-fixes]
+
+* Fixes keyword format in metric visualizations [#218233](https://github.com/elastic/kibana/pull/218233)
+* Fixes monitor history histogram and group by location issue [#218550](https://github.com/elastic/kibana/pull/218550)
+* Prevents other conditions from changing when you change the condition type of a monitor status rule [#216426](https://github.com/elastic/kibana/pull/216426)
+* Filters out null values from `sourceDataStreams` [#218772](https://github.com/elastic/kibana/pull/218772)
+* Fixes span url link when `transactionId` is missing in span links [#218232](https://github.com/elastic/kibana/pull/218232)
+* Fixes logical `AND` behavior when a filter is removed [#218910](https://github.com/elastic/kibana/pull/218910)
+* Fixes a bug that prevented index template creation [#218901](https://github.com/elastic/kibana/pull/218901)
+* Prevents unnecessary suggestion requests [#218927](https://github.com/elastic/kibana/pull/218927)
+* Uses fields instead of `_source` in the metadata endpoint [#218869](https://github.com/elastic/kibana/pull/218869)
+* Fills gaps in table tooltips [#218926](https://github.com/elastic/kibana/pull/218926)
+* Makes output and fleet server non-editable for agentless integration policies [#218905](https://github.com/elastic/kibana/pull/218905)
+* Improves anomaly charts object safety [#217552](https://github.com/elastic/kibana/pull/217552)
+* Fixes title announcements in the details step of the anomaly detection job wizard [#218570](https://github.com/elastic/kibana/pull/218570)
+* Fixes incorrect optimization for endpoint artifacts [#216437](https://github.com/elastic/kibana/pull/216437)
+
 
 ## April 21, 2025 [serverless-changelog-04212025]
 
@@ -188,7 +527,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 
 ## March 24, 2025 [serverless-changelog-03242025]
 
-### Features and enhancements [elastic-cloud-serverless-0324025-features-enhancements] 
+### Features and enhancements [elastic-cloud-serverless-0324025-features-enhancements]
 * Enables smoother scrolling in Kibana [#214512]({{kib-pull}}214512)
 * Adds `context.grouping` action variable in Custom threshold and APM rules [#212895]({{kib-pull}}212895)
 * Adds the ability to create an APM availability or latency SLO for all services [#214653]({{kib-pull}}214653)
@@ -232,7 +571,7 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 
 ## March 17, 2025 [serverless-changelog-03172025]
 
-### Features and enhancements [elastic-cloud-serverless-0317025-features-enhancements] 
+### Features and enhancements [elastic-cloud-serverless-0317025-features-enhancements]
 
 * Enables read-only editor mode in Lens to explore panel configuration [#208554]({{kib-pull}}208554)
 * Allows you to share Observability AI Assistant conversations [#211854]({{kib-pull}}211854)

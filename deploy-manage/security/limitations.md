@@ -1,13 +1,15 @@
 ---
-mapped_pages:
-- https://www.elastic.co/guide/en/elasticsearch/reference/current/security-limitations.html
 navigation_title: Limitations
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-limitations.html
 applies_to:
   deployment:
     self: all
     eck: all
     ess: all
     ece: all
+products:
+  - id: elasticsearch
 ---
 
 # Security limitations [security-limitations]

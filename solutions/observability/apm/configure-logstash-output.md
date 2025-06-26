@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-logstash-output.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Configure the Logstash output [apm-logstash-output]

@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Configure a snapshot repository using Azure Blob storage [ec-azure-snapshotting]
@@ -25,13 +27,14 @@ For deployments with **{{stack}} version 7.17 and earlier**, you’ll need to en
 2. Upload the plugin to your deployment:
 
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Open the **Features > Extensions** page and select **Upload extension**.
-    3. Specify the plugin name (`repository-azure`) and the version.
-    4. Select **An installable plugin (Compiled, no source code)**.
-    5. Select **Create extension**.
-    6. Navigate back to the **Features > Extensions** page.
-    7. Select the extension name.
-    8. Drag and drop to upload the `repository-azure` plugin zip file.
+    2. From your deployment, select **Manage**.
+    3. From the lower navigation menu, select **Extensions** and then select **Upload extension**.
+    4. Specify the plugin name (`repository-azure`) and version.
+    5. Select **An installable plugin (compiled, no source code)**.
+    6. Select **Create extension**.
+    7. Navigate back to the **Extensions** page.
+    8. Select the extension name.
+    9. Drag and drop to upload the `repository-azure` plugin zip file.
 
 
 

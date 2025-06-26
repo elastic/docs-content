@@ -1,11 +1,15 @@
 ---
-navigation_title: "Overviews"
+navigation_title: Overviews
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-ui.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-ui-overview.html
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
+  - id: cloud-serverless
 ---
 
 # High-level overviews of application data [apm-ui]

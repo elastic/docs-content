@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-elastic-stack.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-elastic-stack.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage {{stack}} versions [ece-manage-elastic-stack]
@@ -29,15 +31,15 @@ New or updated versions of the {{stack}} must be prepared to work with {{ece}} a
 Enterprise Search is not available in versions 9.0+.
 :::
 
-The following are the most recently released {{stack}} packs for version 8.x, 7.x, and 6.x, respectively:
+The following are the most recently released {{stack}} packs for version 9.x, 8.x, 7.x, and 6.x, respectively:
 
 $$$ece-elastic-stack-stackpacks-recent$$$
 
-| Required downloads | Minimum required ECE version |
+| Stack pack download link | Minimum required ECE version |
 | --- | --- |
-| [{{es}}, {{kib}}, and APM stack pack: 9.0.0](https://download.elastic.co/cloud-enterprise/versions/9.0.0.zip) | ECE 4.0.0 |
-| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.0](https://download.elastic.co/cloud-enterprise/versions/8.18.0.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
-| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.27](https://download.elastic.co/cloud-enterprise/versions/7.17.27.zip) | ECE 2.2.2 |
+| [{{es}}, {{kib}}, and APM stack pack: 9.0.3](https://download.elastic.co/cloud-enterprise/versions/9.0.3.zip) | ECE 4.0.0 |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.3](https://download.elastic.co/cloud-enterprise/versions/8.18.3.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.29](https://download.elastic.co/cloud-enterprise/versions/7.17.29.zip) | ECE 2.2.2 |
 | [{{es}}, {{kib}}, and APM stack pack: 6.8.23](https://download.elastic.co/cloud-enterprise/versions/6.8.23.zip) | ECE 1.1.4 |
 
 
@@ -46,10 +48,19 @@ $$$ece-elastic-stack-stackpacks-recent$$$
 Following is the full list of available packs containing {{stack}} versions. Note that Enterprise Search was introduced with ECE 2.6.0 and requires that version or higher.
 
 ::::{dropdown} Expand to view the full list
-| Required downloads | Minimum required ECE version |
+| Stack pack download link | Minimum required ECE version |
 | --- | --- |
+| [{{es}}, {{kib}}, and APM stack pack: 9.0.3](https://download.elastic.co/cloud-enterprise/versions/9.0.3.zip) | ECE 4.0.0 |
+| [{{es}}, {{kib}}, and APM stack pack: 9.0.2](https://download.elastic.co/cloud-enterprise/versions/9.0.2.zip) | ECE 4.0.0 |
+| [{{es}}, {{kib}}, and APM stack pack: 9.0.1](https://download.elastic.co/cloud-enterprise/versions/9.0.1.zip) | ECE 4.0.0 |
 | [{{es}}, {{kib}}, and APM stack pack: 9.0.0](https://download.elastic.co/cloud-enterprise/versions/9.0.0.zip) | ECE 4.0.0 |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.3](https://download.elastic.co/cloud-enterprise/versions/8.18.3.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.2](https://download.elastic.co/cloud-enterprise/versions/8.18.2.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.1](https://download.elastic.co/cloud-enterprise/versions/8.18.1.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.0](https://download.elastic.co/cloud-enterprise/versions/8.18.0.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.8](https://download.elastic.co/cloud-enterprise/versions/8.17.8.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.7](https://download.elastic.co/cloud-enterprise/versions/8.17.7.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.6](https://download.elastic.co/cloud-enterprise/versions/8.17.6.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.5](https://download.elastic.co/cloud-enterprise/versions/8.17.5.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.4](https://download.elastic.co/cloud-enterprise/versions/8.17.4.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.3](https://download.elastic.co/cloud-enterprise/versions/8.17.3.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
@@ -121,6 +132,8 @@ Following is the full list of available packs containing {{stack}} versions. Not
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.1.0](https://download.elastic.co/cloud-enterprise/versions/8.1.0.zip) | ECE 3.0.0 |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.0.1](https://download.elastic.co/cloud-enterprise/versions/8.0.1.zip) | ECE 3.0.0 |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.0.0](https://download.elastic.co/cloud-enterprise/versions/8.0.0.zip) | ECE 3.0.0 |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.29](https://download.elastic.co/cloud-enterprise/versions/7.17.29.zip) | ECE 2.2.2 |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.28](https://download.elastic.co/cloud-enterprise/versions/7.17.28.zip) | ECE 2.2.2 |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.27](https://download.elastic.co/cloud-enterprise/versions/7.17.27.zip) | ECE 2.2.2 |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.26](https://download.elastic.co/cloud-enterprise/versions/7.17.26.zip) | ECE 2.2.2 |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.25](https://download.elastic.co/cloud-enterprise/versions/7.17.25.zip) | ECE 2.2.2 |

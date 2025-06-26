@@ -3,7 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-with-existing-indices.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Manage existing indices [ilm-with-existing-indices]

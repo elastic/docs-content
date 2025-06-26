@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-bundles.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Upload custom plugins and bundles
@@ -85,7 +87,7 @@ Bundles
 
     The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the `synonym-filter`.
 
-    To learn more about analyzing with synonyms, check [Synonym token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
+    To learn more about analyzing with synonyms, check [Synonym token filter](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
 
     **GeoIP database bundle**
 
@@ -105,8 +107,8 @@ Bundles
 You must upload your files before you can apply them to your cluster configuration:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-3. Under **Features**, select **Extensions**.
+2. Find your deployment on the home page and select **Manage**, or select your deployment from the **Hosted deployments** page.
+3. From the lower navigation menu, select **Extensions**.
 4. Select **Upload extension**.
 5. Complete the extension fields, including the {{es}} version.
 

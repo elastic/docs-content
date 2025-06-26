@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: SSL/TLS exceptions
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-ssl.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Common SSL/TLS exceptions [trb-security-ssl]
@@ -36,7 +38,7 @@ For more information about this setting, see [Security settings](elasticsearch:/
 
 
 `java.lang.IllegalArgumentException: empty text`
-:   This exception is typically seen when a `https` request is made to a node that is not using `https`. If `https` is desired, ensure the following setting is in `elasticsearch.yml`:
+:   This exception is typically seen when a `https` request is made to a node that is not using `https`. If `https` is desired, ensure the following setting is in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
 ```yaml
 xpack.security.http.ssl.enabled: true
