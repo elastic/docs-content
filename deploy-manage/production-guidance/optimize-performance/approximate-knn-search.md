@@ -127,8 +127,8 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 stack: preview 9.1
 serverless: unavailable
 ```
-If your indices are of type `bbq_hnsw` and your nodes don't have enough off-heap RAM to store all vector data in memory, you may see very high search latencies. Vector data includes the HNSW graph, quantized vectors, and raw float32 vectors.
+If your indices are of type `bbq_hnsw` and your nodes don't have enough off-heap RAM to store all vector data in memory, you may see very high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float32 vectors.
 
-In these scenarios, direct IO can significantly improve query latency. Enable it by setting `vector.rescoring.directio=true` JVM option on all vector search nodes in your cluster.
+In these scenarios, direct IO can significantly reduce query latency. Enable it by setting the JVM option `vector.rescoring.directio=true` on all vector search nodes in your cluster.
 
-Only use this option if you're experiencing significant query latencies. Otherwise, enabling direct IO may increase your query latencies.
+Only use this option if you're experiencing very high query latencies. Otherwise, enabling direct IO may increase your query latencies.
