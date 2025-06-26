@@ -276,8 +276,7 @@ This quickstart should have provided a concise overview of the core functionalit
 
 ## Historical-only search example
 
-Imagine we have an index named `sensor-1` full of raw data, and we have created
-a {{rollup-job}} with the following configuration:
+Suppose you have an index named `sensor-1` that contains raw data, and you've created a {{rollup-job}} with the following configuration:
 
 ```console
 PUT _rollup/job/sensor
