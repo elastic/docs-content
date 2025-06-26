@@ -13,7 +13,7 @@ There are two types of representation (_dense_ and _sparse_), which are suited t
 In this introduction to vector search, you'll store and search for [dense vectors](/solutions/search/vector/dense-vector.md).
 The primary use case for dense vectors is to find pieces of content with similar meanings by using mathematical functions, in this case an [approximate k-nearest neighbour](/solutions/search/vector/knn.md)(kNN) search.
 
-To learn more about which type of vector is appropriate for your use case, check out [](/docs/solutions/search/vector.md).
+To learn more about which type of vector is appropriate for your use case, check out [](/solutions/search/vector.md).
 For an overview of the differences between semantic search and vector search, go to [](/solutions/search/ai-search/ai-search.md).
 
 % TBD: Is "text embedding" interchangeable with "vector embedding"?
