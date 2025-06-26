@@ -29,7 +29,7 @@ The information below reflects our strategic goals, plans and objectives and inc
 | **Scaling** | Manual or automated with configuration | Fully automated |
 | **Infrastructure decisions** | User manages capacity | Automatically managed by Elastic |
 | **Pricing model** | Based on provisioned resources | Based on usage |
-| **Cloud providers** | AWS, Azure, GCP  | AWS, Azure (in preview), GCP (in preview) |
+| **Cloud providers** | AWS, Azure, GCP  | AWS, Azure, GCP |
 | **Upgrades** | User-controlled timing | Automatically performed by Elastic |
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
 | **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
