@@ -349,14 +349,9 @@ GET /sensor_rollup/_rollup_search
 % TESTRESPONSE[s/"took" : 102/"took" : $body.$_path/]
 % TESTRESPONSE[s/"_shards" : \.\.\. /"_shards" : $body.$_path/]
 
-The response is exactly as you'd expect from a regular query + aggregation; it
-provides some metadata about the request (`took`, `_shards`, etc), the search
-hits (which is always empty for rollup searches), and the aggregation response.
+The response follows the same structure as a standard query with aggregations: it includes metadata about the request (`took`, `_shards`, etc.), an empty hits section (as rollup searches do not return individual documents), and the aggregation results.
 
-Rollup searches are limited to functionality that was configured in the
-{{rollup-job}}. For example, we are not able to calculate the average temperature
-because `avg` was not one of the configured metrics for the `temperature` field.
-If we try to execute that search:
+Rollup searches are limited to the functionality defined in the {{rollup-job}} configuration. For example, if the `avg` metric was not configured for the `temperature` field, calculating the average temperature is not possible. Running such a query results in an error:
 
 ```console
 GET sensor_rollup/_rollup_search
