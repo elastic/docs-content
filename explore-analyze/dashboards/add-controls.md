@@ -92,9 +92,9 @@ prompt control insertion for field values, field names, function configuration, 
 apply to a specific panel, and exposes visualization configuration such as date histogram interval controls to dashboard users.
 
 :::{note}
-{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` Only **Options lists** are supported for ES|QL-based controls. Options can be static values, fields, functions, or values defined by a query.
-
-{applies_to}`stack: ga 9.0` Only **Options lists** with static values are supported for ES|QL-based controls.
+Only **Options lists** are supported for ES|QL-based controls. Options can be:
+- values or fields that can be static or defined by a query
+- {applies_to}`stack: ga 9.1` functions
 :::
 
 1. Use one of the following options to start creating an ES|QL control:
