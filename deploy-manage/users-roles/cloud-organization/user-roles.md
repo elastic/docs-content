@@ -28,7 +28,7 @@ On this page, you'll learn the following:
 
 To edit the roles assigned to a user:
 
-1. Go to the user icon on the header bar and select **Organization**.
+1. Select **Organization** from the lower navigation menu or click the user icon on the header bar and select **Organization**.
 2. Find the user on the **Members** tab of the **Organization** page. Click the member name to view their roles.
 3. Click **Edit roles** to change the user's roles.
 
