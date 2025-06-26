@@ -495,10 +495,11 @@ FROM cluster_one:missing-index*,cluster_two:missing-index | LIMIT 10
 :::
 
 :::{tab-item} 9.0
-:::
 If a remote cluster disconnects from the querying cluster, {{ccs}} for {{esql}} will set it to `skipped`
 and continue the query with other clusters, unless the remote cluster's `skip_unavailable` setting is set to `false`,
 in which case the query will fail.
+:::
+
 ::::
 
 ## Query across clusters during an upgrade [ccq-during-upgrade]
