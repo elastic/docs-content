@@ -7,24 +7,11 @@ applies_to:
 
 # Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint
 
-In this quickstart guide, you'll learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic.
+In this quickstart guide, you'll learn how to use the [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to send logs, metrics, and traces to Elastic.
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
-
-## What is the Elastic Cloud Managed OTLP endpoint?
-
-The Managed OTLP Endpoint is a fully managed offering exclusively for Elastic Cloud users (initially available in Elastic Cloud Serverless only) that simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage.
-
-This endpoint is designed for the following use cases:
-
-* Logs & Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
-* APM: Application telemetry in OTLP format.
-
-:::{dropdown} Differences from the existing Elastic APM Endpoint
-The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/use-opentelemetry-with-apm.md), which primarily focuses on traces and the APM use case.
-:::
 
 ## Prerequisites
 
@@ -33,7 +20,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ### Limitations
 
-* The OTLP endpoint only supports histograms with delta temporality. Cumulative histograms are dropped.
+* The {{ecloud}} Managed OTLP Endpoint only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 
 ## Get started

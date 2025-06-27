@@ -135,7 +135,7 @@ Noting in example that the bundle’s expiration `X-Amz-Date=20241016T133214Z` i
 
 To view any added plugins or bundles:
 
-1. Go to the **Features** page and open the **Extensions** tab.
+1. From your deployment's lower navigation menu, select **Extensions**.
 2. Select any extension and then choose **Update extension** to renew it. No other changes are needed, and any associated configuration change failures should now be able to succeed.
 
 
