@@ -10,7 +10,7 @@ products:
 
 When you create new {{es}} index you can use an index template to apply the lifecycle policy by which the index will be managed. This process is described in [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md).
 
-You can also manually apply a lifecycle policy to an existing index, as described here. If an index is currently managed by an ILM policy you must first remove that policy before applying a new one. Refer to [Switch to a different lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies) for details.
+You can also manually apply a lifecycle policy to an existing index, as described on this page. If an index is currently managed by an ILM policy you must first remove that policy before applying a new one. Refer to [Switch to a different lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies) for details.
 
 You can do this procedure in {{kib}} or using the {{es}} API.
 
@@ -25,7 +25,7 @@ Do not manually apply a policy that uses the rollover action to an index which h
 
 To apply a lifecycle policy to an existing index:
 
-1. Go to **Stack Management > Index Management**. In the **Indices** tab, search for and select the index that you created, for example `test-00001`. Enable **Include hidden indices** to see the full list of indices.
+1. Go to **Stack Management > Index Management**. In the **Indices** tab, search for and select an index. Enable **Include hidden indices** to see the full list of indices.
 
 1. From the **Manage index** dropdown menu select **Add lifecycle policy**.
 
