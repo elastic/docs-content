@@ -17,7 +17,7 @@ products:
 
 ::::{important}
 
-* System indices, such as the alerts indices, contain important configuration and internal data; do not change their mappings. Changes can lead to rule execution and alert indexing failures.
+* System indices, such as the alert indices, contain important configuration and internal data; do not change their mappings. Changes can lead to rule execution and alert indexing failures. Use runtime fields instead, which allow you to add fields to existing alert and event documents. Refer to [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) to learn more.
 * Users are advised NOT to use the `_source` field in alert documents, but rather to use the `fields` option in the search API to programmatically obtain the list of fields used in these documents. Learn more about [retrieving selected fields from a search](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
 ::::
 
