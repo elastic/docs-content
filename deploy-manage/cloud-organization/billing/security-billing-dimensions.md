@@ -70,8 +70,7 @@ Logs, events, alerts, and configuration data ingested into your security project
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
 
-% Note: Commenting out this section until this is ready to be published. 
 
-% ## Elastic-managed LLM
+## Elastic Managed LLM
 
-% The default LLM enables you to leverage AI-powered search as a service without deploying a model in your serverless project. It's configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of your "Complete" tier subscription. Using the default LLM will use tokens and incur related token-based add-on billing for your serverless project.
+The default [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. It's configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of your "Complete" tier subscription. Using the default LLM will use tokens and incur related token-based add-on billing for your serverless project.
