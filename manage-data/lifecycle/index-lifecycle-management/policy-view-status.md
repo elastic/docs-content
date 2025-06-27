@@ -40,22 +40,22 @@ To view the current lifecycle status for a datastream:
 Use the [Explain the lifecycle state API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to view the current lifecycle status for an index:
 
 ```console
-GET my-index/_ilm/explain
+GET .ds-metrics-system.process-default-2025.06.04-000001/_ilm/explain
 ```
 
-The API response shows the current ILM phase and other details:
+Tthe API response shows the current ILM phase and other details:
 
 ```json
 {
   "indices": {
-    ".ds-logs-elastic_agent.filebeat-default-2025.06.04-000001": {
-      "index": ".ds-logs-elastic_agent.filebeat-default-2025.06.04-000001",
+    ".ds-metrics-system.process-default-2025.06.04-000001": {
+      "index": ".ds-metrics-system.process-default-2025.06.04-000001",
       "managed": true,
-      "policy": "logs",
-      "index_creation_date_millis": 1749060710541,
-      "time_since_index_creation": "19.05d",
-      "lifecycle_date_millis": 1749060710541,
-      "age": "19.05d",
+      "policy": "metrics",
+      "index_creation_date_millis": 1749060710358,
+      "time_since_index_creation": "22.91d",
+      "lifecycle_date_millis": 1749060710358,
+      "age": "22.91d",
       "phase": "hot",
       "phase_time_millis": 1749060711038,
       "action": "rollover",
@@ -63,7 +63,7 @@ The API response shows the current ILM phase and other details:
       "step": "check-rollover-ready",
       "step_time_millis": 1749060712038,
       "phase_execution": {
-        "policy": "logs",
+        "policy": "metrics",
         "phase_definition": {
           "min_age": "0ms",
           "actions": {
@@ -76,7 +76,7 @@ The API response shows the current ILM phase and other details:
           }
         },
         "version": 1,
-        "modified_date_in_millis": 1749059754275
+        "modified_date_in_millis": 1749059754363
       }
     }
   }
@@ -86,7 +86,7 @@ The API response shows the current ILM phase and other details:
 You can also call this API for a data stream:
 
 ```console
-GET my-datastream/_ilm/explain
+GET metrics-system.process-default/_ilm/explain
 ```
 
 When called for a data stream, the API retrieves the current lifecycle status for the stream's backing indices:
@@ -94,14 +94,14 @@ When called for a data stream, the API retrieves the current lifecycle status fo
 ```json
 {
   "indices": {
-    ".ds-logs-elastic_agent.filebeat-default-2025.06.04-000001": {
-      "index": ".ds-logs-elastic_agent.filebeat-default-2025.06.04-000001",
+    ".ds-metrics-system.process-default-2025.06.04-000001": {
+      "index": ".ds-metrics-system.process-default-2025.06.04-000001",
       "managed": true,
-      "policy": "logs",
-      "index_creation_date_millis": 1749060710541,
-      "time_since_index_creation": "19.06d",
-      "lifecycle_date_millis": 1749060710541,
-      "age": "19.06d",
+      "policy": "metrics",
+      "index_creation_date_millis": 1749060710358,
+      "time_since_index_creation": "22.91d",
+      "lifecycle_date_millis": 1749060710358,
+      "age": "22.91d",
       "phase": "hot",
       "phase_time_millis": 1749060711038,
       "action": "rollover",
@@ -109,7 +109,7 @@ When called for a data stream, the API retrieves the current lifecycle status fo
       "step": "check-rollover-ready",
       "step_time_millis": 1749060712038,
       "phase_execution": {
-        "policy": "logs",
+        "policy": "metrics",
         "phase_definition": {
           "min_age": "0ms",
           "actions": {
@@ -122,7 +122,7 @@ When called for a data stream, the API retrieves the current lifecycle status fo
           }
         },
         "version": 1,
-        "modified_date_in_millis": 1749059754275
+        "modified_date_in_millis": 1749059754363
       }
     }
   }
