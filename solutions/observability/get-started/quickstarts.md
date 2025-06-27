@@ -20,6 +20,7 @@ Our quickstarts dramatically reduce your time-to-value by offering a fast path t
 Follow the steps in these guides to get started quickly:
 
 * [**Quickstart: Monitor hosts with OpenTelemetry**](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md).
+* [**Quickstart: Monitor your application performance**](/solutions/observability/get-started/quickstart-monitor-your-application-performance.md).
 * [**Quickstart: Monitor Kubernetes with OpenTelemetry**](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md).
 * [**Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint**](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md).
 * [**Quickstart: Create a Synthetic monitor**](/solutions/observability/get-started/quickstart-create-synthetic-monitor.md).

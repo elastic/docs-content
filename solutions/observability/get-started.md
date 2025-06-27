@@ -40,3 +40,8 @@ Learn how to spin up a deployment on {{ech}} or create an Observability Serverle
 ::::
 
 
+### **Prefer to use a custom data integration?**
+
+Automatic Import applies generative AI to automate the creation of custom data integrations, allowing SREs to get fully structured logs in seconds for advanced analytics use cases. While Elastic provides over 400+ prebuilt data integrations, Automatic Import allows SREs to extend integrations to fit their workflows and expand visibility into production environments.
+
+Check out this blog now on how to [get started](https://www.elastic.co/observability-labs/blog/elastic-automatic-import-logs-genai#automatic-import-workflow).

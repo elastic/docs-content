@@ -96,6 +96,7 @@ toc:
           - file: observability/get-started/quickstarts.md
             children:
               - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
+              - file: observability/get-started/quickstart-monitor-your-application-performance.md
               - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
               - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
               - file: observability/get-started/quickstart-create-synthetic-monitor.md

@@ -115,13 +115,9 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 
 :::::
 
-
-Under **Visualize your data**, you’ll see links to **Discover** to view your logs and **Hosts** to view your host metrics.
-
-
 ## Gain deeper insight into your host data  [_get_value_out_of_your_data]
 
-After using the Hosts page and Discover to confirm you’ve ingested all the host logs and metrics you want to monitor, use Elastic {{observability}} to gain deeper insight into your host data with the following capabilities and features:
+After using the **Hosts** page and **Discover** to confirm you’ve ingested all the host logs and metrics you want to monitor, use Elastic {{observability}} to gain deeper insight into your host data with the following capabilities and features:
 
 * In the [Infrastructure UI](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md), analyze and compare data collected from your hosts. You can also:
 
@@ -142,3 +138,4 @@ After using the Hosts page and Discover to confirm you’ve ingested all the hos
 
 
 Refer to the [Elastic Observability](/solutions/observability.md) for a description of other useful features.
+
