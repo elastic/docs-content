@@ -474,9 +474,7 @@ FROM my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001
 ::::{tab-set}
 
 :::{tab-item} 9.1
-Remote clusters are configured with `skip_unavailable: true` setting by default. With this setting, the cluster would be
-set
-to `skipped` or `partial` status but the query will not fail, if:
+Remote clusters are configured with the `skip_unavailable: true` setting by default. With this setting, clusters are marked as `skipped` or `partial` rather than causing queries to fail in the following scenarios:
 
 * The remote cluster is disconnected from the querying cluster, either before or during the query execution.
 * The remote cluster does not have the requested index, or it is not accessible due to security settings.
