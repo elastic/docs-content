@@ -47,7 +47,7 @@ The [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) funct
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A running Kubernetes cluster (v1.23 or newer).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).
@@ -94,7 +94,7 @@ The [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) funct
 :::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
 

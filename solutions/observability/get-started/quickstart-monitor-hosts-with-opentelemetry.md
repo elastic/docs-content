@@ -36,7 +36,7 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * This quickstart is only available for Linux and MacOS systems.
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Root privileges on the host—required to run the OpenTelemetry collector because of these components:
@@ -92,7 +92,7 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 ::::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. To open the quickstart, go to **Add Data**.
 3. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
 4. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.

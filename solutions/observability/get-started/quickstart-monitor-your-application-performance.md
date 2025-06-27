@@ -29,7 +29,7 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{observability}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * An Elastic Distribution of OpenTelemetry (EDOT) Collector or the upstream OpenTelemetry Collector running on the host.
 
@@ -72,7 +72,7 @@ If your application runs on Kubernetes, the OpenTelemetry operator automatically
 ::::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. Under **What do you want to monitor?** select **Application**, and then select **OpenTelemetry**.
 3. Follow the instructions to install the EDOT SDK for your application:
 
