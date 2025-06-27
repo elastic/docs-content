@@ -52,7 +52,7 @@ Create a single page browser monitor. Make sure to select a URL and the location
 
 Synthetics will be executing the test across all of those locations, automatically refreshing the screen.
 
-:::{image} /solutions/images/Synthetic-Monitors.png
+:::{image} /solutions/images/synth-monitors.png
 :alt: Browser monitor
 :::
 
