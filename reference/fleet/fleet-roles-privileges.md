@@ -86,7 +86,7 @@ To create a new role with access to {{fleet}} and Integrations:
     Based on your selections, access to features in the {{fleet}} UI are enabled or disabled for the role. 
     Those details are covered in the next section: [Customize access to {{fleet}} features](#fleet-roles-and-privileges-sub-features).
 
-After you've created a new role you can assign it to any {{es}} user.
+After you've created a new role, you can assign it to any {{es}} user.
 You can edit the role at any time by returning to the **Roles** page in {{kib}}.
 
 ## Customize sub-feature privileges for {{fleet}}[fleet-roles-and-privileges-sub-features]
@@ -102,7 +102,7 @@ Set `Read` access for {{agents}} only:
 * Agent policies: `None`
 * Settings: `None`
 
-With these privileges the {{fleet}} UI shows only the **Agents** and **Data streams** tabs. 
+With these privileges, the {{fleet}} UI shows only the **Agents** and **Data streams** tabs. 
 The **Agent policies**, **Enrollment tokens**, **Uninstall tokens**, and **Settings** tabs are unavailable. 
 
 The set of actions available for an agent are limited to viewing the agent and requesting a diagnostics bundle.
@@ -112,7 +112,7 @@ The set of actions available for an agent are limited to viewing the agent and r
 :screenshot:
 :::
 
-Change the agents access to `All` to enable the role to perform the [full set of available actions](/reference/fleet/manage-agents.md) on {{agents}}.
+Change the **Agents** privilege to `All` to enable the role to perform the [full set of available actions](/reference/fleet/manage-agents.md) on {{agents}}.
 
 ### Example 2: Read access for all {{fleet}} features[fleet-roles-and-privileges-sub-features-example2]
 
@@ -122,7 +122,7 @@ Set `Read` access for {{agents}}, agent policies, and {{fleet}} settings:
 * Agent policies: `Read`
 * Settings: `Read`
 
-With these privileges the {{fleet}} UI shows the **Agents**, **Agent policies**, **Data streams**, and **Settings** tabs. 
+With these privileges, the {{fleet}} UI shows the **Agents**, **Agent policies**, **Data streams**, and **Settings** tabs. 
 The **Enrollment tokens** and **Uninstall tokens** tabs are unavailable.
 
 The set of actions available for an agent are limited to viewing the agent and requesting a diagnostics bundle.
@@ -149,7 +149,7 @@ Set `All` access for {{agents}} only:
 * Agent policies: `Read`
 * Settings: `Read`
 
-With these privileges the {{fleet}} UI shows all tabs.
+With these privileges, the {{fleet}} UI shows all tabs.
 
 All {{agent}} actions can be performed and new agents can be created. Enrollment tokens and uninstall tokens are both available.
 
