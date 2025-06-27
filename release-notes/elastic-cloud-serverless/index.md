@@ -11,6 +11,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## June 26, 2025 [serverless-changelog-06262025]
+
+### Features and enhancements [serverless-changelog-06262025-features-enhancements]
+* {{serverless-full}} is now available in the Microsoft Azure `eastus` [region](/deploy-manage/deploy/elastic-cloud/regions.md). 
+
 ## June 23, 2025 [serverless-changelog-06232025]
 
 ### Features and enhancements [serverless-changelog-06232025-features-enhancements]
@@ -73,7 +78,6 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 * Fixes several issues introduced in versions 8.18.0 through 9.1.0, including broken pagination (limited to 10 items), erroneous error banners, and broken search functionality.
 * Fixes **Discard** button state change logic for toggles [#223493]({{kib-pull}}223493)
 * Removes `originId` from connectors during rule import [#223454]({{kib-pull}}223454)
-
 
 ## June 17, 2025 [serverless-changelog-06172025]
 
