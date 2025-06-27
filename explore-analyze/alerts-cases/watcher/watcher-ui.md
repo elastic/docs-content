@@ -1,7 +1,6 @@
 ---
 applies_to:
   stack: ga
-  serverless: ga
 ---
 
 # Watcher UI [watcher-ui]
