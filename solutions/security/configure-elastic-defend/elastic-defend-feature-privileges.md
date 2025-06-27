@@ -19,7 +19,7 @@ You can create user roles and define privileges to manage feature access in {{el
 To configure roles and privileges, find **Roles** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). For more details on using this UI, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for {{stack}}, or to [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) for {{serverless-short}}.
 
 ::::{note}
-Starting with version 9.1, {{elastic-defend}}'s feature privileges can be assigned on a per-space basis. For information about how to apply permissions to particular spaces, refer to [Fleet roles and privileges](/reference/fleet/fleet-roles-privileges.md).
+{applies_to}`stack: ga 9.1` {{elastic-defend}}'s feature privileges can be assigned on a per-space basis. For information about how to apply permissions to particular spaces, refer to [Fleet roles and privileges](/reference/fleet/fleet-roles-privileges.md).
 ::::
 
 To grant access, select **All** for the **Security** feature in the **Assign role to space** configuration UI, then turn on the **Customize sub-feature privileges** switch.
