@@ -49,7 +49,6 @@ The **Service** inventory provides a quick, high-level overview of the health an
 
 [Learn more about Application performance monitoring (APM) →](/solutions/observability/apm/index.md)
 
-
 ## Infrastructure monitoring [metrics-overview]
 
 Monitor system and service metrics from your servers, Docker, Kubernetes, Prometheus, and other services and applications.
@@ -64,7 +63,6 @@ On the {{observability}} **Overview** page, the **Hosts** table shows your top h
 You can then drill down into the {{infrastructure-app}} by clicking **Show inventory**. Here you can monitor and filter your data by hosts, pods, containers,or EC2 instances and create custom groupings such as availability zones or namespaces.
 
 [Learn more about infrastructure monitoring → ](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md)
-
 
 % Stateful only for RUM.
 
@@ -96,7 +94,6 @@ Simulate actions and requests that an end user would perform on your site at pre
 Build stack traces to get visibility into your system without application source code changes or instrumentation. Use flamegraphs to explore system performance and identify the most expensive lines of code, increase CPU resource efficiency, debug performance regressions, and reduce cloud spend.
 
 [Learn more about Universal Profiling →](/solutions/observability/infra-and-hosts/universal-profiling.md)
-
 
 ## Alerting [observability-serverless-observability-overview-alerting]
 

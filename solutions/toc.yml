@@ -91,20 +91,23 @@ toc:
         children:
           - file: observability/get-started/what-is-elastic-observability.md
           - file: observability/get-started/create-an-observability-project.md
-          - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
-          - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
-          - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
-          - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
-          - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
-          - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
+
           - file: observability/get-started/get-started-with-dashboards.md
+          - file: observability/get-started/quickstarts.md
+            children:
+              - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
+              - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
+              - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
+              - file: observability/get-started/quickstart-create-synthetic-monitor.md
+              - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
+              - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
+              - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/other-tutorials/index.md
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
               - file: observability/get-started/other-tutorials/add-data-from-splunk.md
       - file: observability/applications/index.md
         children:
-          - file: observability/applications/llm-observability.md
           - file: observability/apm/index.md
             children:
               - file: observability/apm/get-started.md
@@ -308,6 +311,7 @@ toc:
               - file: observability/synthetics/support-matrix.md
               - file: observability/synthetics/encryption-security.md
           - file: observability/applications/user-experience.md
+          - file: observability/applications/llm-observability.md
           - file: observability/uptime/index.md
             children:
               - file: observability/uptime/get-started.md

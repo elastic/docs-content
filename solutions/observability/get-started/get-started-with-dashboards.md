@@ -37,6 +37,5 @@ You can also add other types of panels — such as filters, links, and text — 
 For more information about creating dashboards, refer to [Create your first dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md).
 
 ::::{note}
-The tutorial about creating your first dashboard is written for {{kib}} users, but the steps for serverless are very similar. To load the sample data in serverless, go to **Project Settings** → **Integrations** in the navigation pane, then search for "sample data".
-
+The tutorial about creating your first dashboard is written for {{kib}} users, but the steps for {{serverless-full}} are very similar. To load the sample data in {{serverless-short}}, go to **Project Settings** → **Integrations** in the navigation pane, then search for "sample data".
 ::::
