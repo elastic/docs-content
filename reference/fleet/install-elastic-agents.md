@@ -85,6 +85,8 @@ The basic {{agent}} flavor is installed by default using the `elastic-agent inst
 * `endpoint-security` - used to implement [{{elastic-defend}}](../../solutions/security/configure-elastic-defend.md).
 * `pf-host-agent` - used to collect profiling data from hosts as part of Elastic [Universal Profiling](../../solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md).
 
+This basic package is suitable for most use cases and it offers a reduced size on disk.
+
 #### Servers flavor [elastic-agent-servers-flavor-regular]
 
 The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELASTIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
@@ -106,7 +108,6 @@ For containerized environments, the basic {{agent}} flavor is installed using th
 #### Servers flavor [elastic-agent-servers-flavor-container]
 
 For containerized environments, the servers {{agent}} flavor is installed using the default `elastic-agent` command with an agent container package. This flavor contains the same set of components described in [Servers flavor](#elastic-agent-servers-flavor-regular) above.
-
 
 #### Complete flavor [elastic-agent-complete-flavor]
 
