@@ -18,6 +18,10 @@ products:
 :alt: Elastic {{observability}} overview diagram
 :::
 
+:::{{tip}}
+To get started with Elastic {{observability}}, refer to [Get started with {{observability}}](/solutions/observability/get-started.md).
+:::
+
 ## Log monitoring [apm-overview]
 
 Analyze log data from your hosts, services, Kubernetes, Apache, and many more.

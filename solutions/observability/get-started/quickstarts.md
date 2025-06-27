@@ -10,7 +10,7 @@ products:
 
 # Elastic {{observability}} quickstarts
 
-Our quickstarts dramatically reduce your time-to-value by offering a fast path to ingest and visualize your Observability data. Each quickstart provides:
+Our quickstarts reduce your time-to-value by offering a fast path to ingest and visualize your Observability data. Each quickstart provides:
 
 * A highly opinionated, fast path to data ingestion
 * Sensible configuration defaults with minimal configuration required
