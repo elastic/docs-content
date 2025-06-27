@@ -23,7 +23,7 @@ Go to [cloud.elastic.co](https://cloud.elastic.co/) and access your account or c
 
 ::::{step} Create a new project
 
-Create a new {{observability}} project. Make sure to select your preferred cloud region when you create your first project. Refer to [Create an Observability project](./create-observability-project.md) for more details. 
+Create a new {{observability}} project. Make sure to select your preferred cloud region when you create your first project. Refer to [Create an Observability project](/solutions/observability/get-started.md) for more details. 
 
 ::::
 
