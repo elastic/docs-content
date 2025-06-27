@@ -50,28 +50,26 @@ To capture a {{ls}} diagnostic:
 
     The following command options are recommended:
 
-::::{tab-set}
-:::{tab-item} Unix-based systems
+    * Unix-based systems
 
-```sh
-sudo ./diagnostics.sh --type logstash-local --host 127.0.0.1 --port 9600 --bypassDiagVerify
-```
-:::
- 
-:::{tab-item} Windows
+        ```sh
+        sudo ./diagnostics.sh --type logstash-local --host 127.0.0.1 --port 9600 --bypassDiagVerify
+        ```
+        
+    *  Windows
 
-```sh
-.\diagnostics.bat --type logstash-local --host 127.0.0.1 --port 9600 --bypassDiagVerify
-```
+        ```sh
+        .\diagnostics.bat --type logstash-local --host 127.0.0.1 --port 9600 --bypassDiagVerify
+        ```
 
     ::::{tip}
-
+  
     You can run the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
-
+  
     * `local` (default, recommended): Polls the [{{ls}} API](https://www.elastic.co/docs/api/doc/logstash/), gathers operating system info, and captures node logs.
     * `remote`: Establishes an ssh session to the applicable target server to pull the same information as `local`.
     * `api`: Polls the [{{ls}} API](https://www.elastic.co/docs/api/doc/logstash/). All other data must be collected manually.
-
+  
     ::::
 
 3. When the script has completed, verify that no errors were logged to `diagnostic.log`. If the log file contains errors, refer to [Diagnose errors in `diagnostic.log`](#diagnostic-log-errors).

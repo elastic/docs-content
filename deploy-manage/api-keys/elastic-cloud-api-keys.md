@@ -27,8 +27,8 @@ These keys provides access to the API that enables you to manage your deployment
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Go to your avatar in the upper right corner and choose **Organization**.
-3. On the API keys tab of the **Organization** page, click **Create API Key**.
-4. From the **Create API Key** page, you can configure your new key by adding a name, set expiration, or assign [roles](../users-roles/cloud-organization/user-roles.md).
+3. On the **API keys** tab of the **Organization** page, click **Create API key**.
+4. On the **Create API key** flyout, you can configure your new key by adding a name, set expiration, or assign [roles](../users-roles/cloud-organization/user-roles.md).
 
     By default, API keys expire after three months. You can set the expiration to a different preset value or to a specific date, up to one year. If you need the key to work indefinitely, you can also set its expiration to Never. In this case, the key won’t expire.
 
