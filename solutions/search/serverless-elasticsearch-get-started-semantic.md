@@ -176,7 +176,7 @@ In this example, the document related to Rocky Mountain National park has the hi
 ::::
 ::::{step} Run a match query in ES|QL
 
-Another way to try out semantic search is by using the [match](elasticsearch://query-languages/esql/functions-operators/search-functions.md#esql-match) search function in the [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL).
+Another way to try out semantic search is by using the [match](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) search function in the [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL).
 
 Go to **Discover** and select **Try ES|QL** from the application menu bar.
 
