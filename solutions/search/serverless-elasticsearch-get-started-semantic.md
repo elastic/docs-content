@@ -12,7 +12,7 @@ _Semantic search_ is a type of AI-powered search that enables you to use intuiti
 It returns results that match the meaning of a query, as opposed to literal keyword matches.
 For example, if you want to search for workplace guidelines on a second income, you could search for "side hustle", which is not a term you're likely to see in a formal HR document.
 
-Elastic offers an out-of-the-box Learned Sparse Encoder model ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser)) that outperforms on a variety of data sets, such as financial data, weather records, and question-answer pairs.
+Elastic offers an out-of-the-box Learned Sparse Encoder model ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) that outperforms on a variety of data sets, such as financial data, weather records, and question-answer pairs.
 The model is built to provide great relevance across domains, without the need for additional fine tuning.
 If you want to check out all the use cases and implementation paths, go to [](/solutions/search/ai-search/ai-search.md).
 
@@ -142,7 +142,7 @@ POST /semantic-index/_search
 }
 ```
 
-This is a [semantic](/reference/query-languages/query-dsl/query-dsl-semantic-query.md) query that is expressed in [Query Domain Specific Language](/explore-analyze/query-filter/languages/querydsl.md) (DSL), which is the primary query language for {{es}}.
+This is a [semantic](elasticsearch://reference/query-languages/query-dsl/query-dsl-semantic-query.md) query that is expressed in [Query Domain Specific Language](/explore-analyze/query-filter/languages/querydsl.md) (DSL), which is the primary query language for {{es}}.
 
 The query is translated automatically into a vector representation and runs against the contents of the semantic text field.
 The search results are sorted by a relevance score, which measures how well each document matches the query.
@@ -176,7 +176,7 @@ In this example, the document related to Rocky Mountain National park has the hi
 ::::
 ::::{step} Run a match query in ES|QL
 
-Another way to try out semantic search is by using the [match](/query-languages/esql/functions-operators/search-functions.md#esql-match) search function in the [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL).
+Another way to try out semantic search is by using the [match](elasticsearch://query-languages/esql/functions-operators/search-functions.md#esql-match) search function in the [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL).
 
 Go to **Discover** and select **Try ES|QL** from the application menu bar.
 
@@ -195,7 +195,7 @@ FROM semantic-index METADATA _score <1>
   | LIMIT 1000 <5>
 ```
 
-1. The FROM source command returns a table of data. Each row in the table represents a document. The `METADATA` clause provides access to the query relevance score, which is a [metadata field](/reference/query-languages/esql/esql-metadata-fields.md).
+1. The FROM source command returns a table of data. Each row in the table represents a document. The `METADATA` clause provides access to the query relevance score, which is a [metadata field](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md).
 2. A simplified syntax for the `MATCH` search function, this command performs a semantic query on the specified field.
 3. The KEEP processing command affects the columns and their order in the results table.
 4. The results are sorted in descending order based on the `_score`.
