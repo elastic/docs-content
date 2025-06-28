@@ -14,7 +14,7 @@ For example, if you want to search for workplace guidelines on a second income, 
 
 Elastic offers an out-of-the-box Learned Sparse Encoder model ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) that outperforms on a variety of data sets, such as financial data, weather records, and question-answer pairs.
 The model is built to provide great relevance across domains, without the need for additional fine tuning.
-If you want to check out all the use cases and implementation paths, go to [](/solutions/search/ai-search/ai-search.md).
+For a summary of the use cases and implementation paths, go to [](/solutions/search/ai-search/ai-search.md).
 
 ## Prerequisites
 
@@ -70,15 +70,15 @@ POST /_bulk?pretty
 ```
 
 The bulk ingestion request might take longer than the default request timeout.
-If it times out, allow time for the machine learning model loading to complete (typically 1-5 minutes) then retry it.
+If it times out, wait for the machine learning model loading to complete (typically 1-5 minutes) then retry it.
 
 <!--
 TBD: Describe where to look for the downloaded model in Trained Models?
 -->
 
 What just happened? The content was transformed into a sparse vector, which involves two main steps.
-First, the content is divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched. Next, each chunk of text is transformed into a sparse vector representation using text expansion techniques.
-By default, `semantic_text` fields leverage ELSER to convert the text into a format that captures the semantic meaning.
+First, the content is divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched. Then each chunk of text is transformed into a sparse vector representation using text expansion techniques.
+By default, `semantic_text` fields leverage ELSER to transform the content.
 
 % TBD: Confirm "Elser model" vs ".elser-2-elasticsearch" terminology.
 
@@ -103,20 +103,20 @@ TBD: When you view these documents in Discover they're shown as having "text" fi
 TBD: Should we call out that the KQL filters in Discover don't seem to work against semantic_text fields yet?
 -->
 
-## Test semantic search queries
+## Test semantic search
 
 Elasticsearch provides a variety of query languages for interacting with your data.
 For an overview of their features and use cases, check out [](/explore-analyze/query-filter/languages.md).
 
-You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including  `knn`, `match`, `semantic`, `sparse_vector`. Refer to [](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) for the complete list.
+You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including  `knn`, `match`, `semantic`, and `sparse_vector`. Refer to [Semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) for the complete list.
 
 Let's try out two types of queries in two different languages.
 
 :::::{stepper}
 
-::::{step} Run a semantic query in Query DSL
+::::{step} Run a semantic query with Query DSL
 
-Open the **{{index-manage-app}}** from the navigation menu or return to the [guided index flow](/solutions/search/serverless-elasticsearch-get-started.md#elasticsearch-follow-guided-index-flow) to find code examples for searching the sample data.
+Open the **{{index-manage-app}}** page from the navigation menu or return to the [guided index flow](/solutions/search/serverless-elasticsearch-get-started.md#elasticsearch-follow-guided-index-flow) to find code examples for searching the sample data.
 
 :::{image} /solutions/images/serverless-index-management-semantic.png
 :screenshot:
@@ -214,7 +214,7 @@ TBD: Include the Elastic Open Web Crawler variation too or point to it in anothe
 ## Next steps
 
 Thanks for taking the time to try out semantic search in {{es-serverless}}.
-For a deeper dive, check out [](/solutions/search/semantic-search.md).
+For a deeper dive, go to [](/solutions/search/semantic-search.md).
 
 If you want to extend this example, try an index with more fields.
 For example, if you have both a `text` field and a `semantic_text` field, you can combine the strengths of traditional keyword search and advanced semantic search.
