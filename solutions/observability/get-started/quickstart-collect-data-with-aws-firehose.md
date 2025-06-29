@@ -1,4 +1,5 @@
 ---
+description: Learn how to use AWS Firehose to send logs and metrics to Elastic Observability for monitoring and analysis.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/collect-data-with-aws-firehose.html
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-aws-firehose.html
@@ -97,7 +98,7 @@ The default CloudFormation stack is created in the AWS region selected for the u
 ::::{tab-item} Serverless
 :sync: serverless
 
-* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * An active AWS account and the necessary permissions to create delivery streams.
 
@@ -170,7 +171,7 @@ The following table shows the type of data ingested by the supported AWS service
 :::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 

@@ -28,7 +28,7 @@ There are differences between {{es-serverless}} and {{ech}}, for a list of diffe
 Elastic provides three serverless solutions available on {{ecloud}}. Follow these guides to get started with your serverless project:
 
 * **[{{es-serverless}}](../../../solutions/search/serverless-elasticsearch-get-started.md)**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
-* **[{{obs-serverless}}](../../../solutions/observability/get-started/create-an-observability-project.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
+* **[{{obs-serverless}}](../../../solutions/observability/get-started.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
 * **[{{sec-serverless}}](../../../solutions/security/get-started/create-security-project.md)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 Afterwards, you can:

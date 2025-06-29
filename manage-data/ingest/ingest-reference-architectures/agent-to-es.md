@@ -35,7 +35,7 @@ Info on {{es}}:
 
 This basic architecture is a common approach for ingesting data for the [Elastic Observability](https://www.elastic.co/observability) and [Elastic Security](https://www.elastic.co/security) solutions:
 
-* [Elastic Observability tutorials](/solutions/observability/get-started.md#_get_started_with_other_features)
+* [Elastic Observability tutorials](/solutions/observability/get-started.md)
 * [Ingest data to Elastic Security](../../../solutions/security/get-started/ingest-data-to-elastic-security.md)
 
 
