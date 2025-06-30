@@ -48,17 +48,17 @@ For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elast
 * Fixes the panel title sync with saved object when using `defaultTitle` in Dashboards and Visualizations [#225237]({{kib-pull}}225237)
 * Fixes a performance issue in the Lens {{esql}} charts in Dashboards and Visualizations [#225067]({{kib-pull}}225067)
 * Fixes visual issues with truncated long labels and hover styles in Dashboards and Visualizations [#225430]({{kib-pull}}225430)
-* Fixes controls selections causing multiple fetches [#224761]({{kib-pull}}224761) in Dashboards and Visualizations
-* Ensures package policy names are unique when moving across spaces in Data ingestion and Fleet [#224804]({{kib-pull}}224804) 
-* Fixes export CSV in the Agent list in Data ingestion and Fleet [#225050]({{kib-pull}}225050)
-* Replaces call to registry when deleting {{kib}} assets for custom packages in Data ingestion and Fleet [#224886]({{kib-pull}}224886)
-* Fixes UI error when no tags filter is selected in Data ingestion and Fleet [#225413]({{kib-pull}}225413)
+* Fixes controls selections that caused multiple fetches in Dashboards and Visualizations [#224761]({{kib-pull}}224761)
+* Ensures package policy names are unique when moving across spaces in Data ingestion and {{fleet}} [#224804]({{kib-pull}}224804) 
+* Fixes export CSV in the Agent list in Data ingestion and {{fleet}} [#225050]({{kib-pull}}225050)
+* Replaces call to registry when deleting {{kib}} assets for custom packages in Data ingestion and {{fleet}} [#224886]({{kib-pull}}224886)
+* Fixes UI error when no tags filter is selected in Data ingestion and {{fleet}} [#225413]({{kib-pull}}225413)
 * Uses bulk helper for bulk importing knowledge base entries in {{obs-serverless}} [#223526]({{kib-pull}}223526)
 * Improves the knowledge base retrieval by rewriting the user prompt before querying {{es}} in {{obs-serverless}} [#224498]({{kib-pull}}224498)
 * Fixes the Agent Explorer page in {{obs-serverless}} [#225071]({{kib-pull}}225071)
 * Hides Settings from serverless navigation in {{obs-serverless}} [#225436]({{kib-pull}}225436)
 * Replaces hard-coded CSS values to us the `euiTheme` instead in {{sec-serverless}} [#225307]({{kib-pull}}225307)
-* Fixes URL query handling for asset inventory flyout in in {{sec-serverless}} [#225199]({{kib-pull}}225199)
+* Fixes URL query handling for asset inventory flyout in {{sec-serverless}} [#225199]({{kib-pull}}225199)
 * Adds missing model Claude 3.7 to accepted models in {{es-serverless}} [#224943]({{kib-pull}}224943)
 
 
