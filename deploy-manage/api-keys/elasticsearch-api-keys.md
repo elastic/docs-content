@@ -50,8 +50,8 @@ Two methods are available to create an API key:
   1. Choose to create either a user or a cross-cluster API key.
   2. Optionally, set an expiry date. By default the API key will not expire, but it's a good security practice to give the key a limited lifespan.
   3. Configure access:
-    * For a user API key, you can opt to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API documentation to learn more.
-    * For a cross-cluster API key, you can control the indices that other clusters have access to. Refer to the [Create cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API documentation to learn more.
+      * For a user API key, you can opt to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API documentation to learn more.
+      * For a cross-cluster API key, you can control the indices that other clusters have access to. Refer to the [Create cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API documentation to learn more.
   4. Add any additional metadata about the API as one or more key-value pairs. Refer to the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API documentation for examples.
 
 ## Update an API key [update-api-key]
