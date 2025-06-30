@@ -11,7 +11,7 @@ products:
 
 # Ingest logs from a Python application using Filebeat
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file with fields formatted according to the Elastic Common Schema (ECS). You’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md).
+This guide shows how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file with fields formatted according to the Elastic Common Schema (ECS). You’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md).
 
 In this guide, you will:
 
@@ -264,7 +264,7 @@ You can use a wildcard (`*`) character to indicate that all log files in the spe
 
 ### Add the JSON input options
 
-Filebeat’s `filestream` input configuration includes several options for decoding logs structured as JSON messages. These options can be set in `parsers.ndjson`. Filebeat processes the logs line by line, so it’s important that they contain one JSON object per line.
+Filebeat’s `filestream` input configuration includes several options for decoding logs structured as JSON messages. You can set these options in `parsers.ndjson`. Filebeat processes the logs line by line, so it’s important that they contain one JSON object per line.
 
 For this example, set Filebeat to use the `ndjson` parser with the following decoding options:
 
@@ -346,7 +346,7 @@ Filebeat is now set to collect log messages and stream them to your deployment.
 
 ## Send Python logs to {{es}} [ec-python-logs-send-ess]
 
-It’s time to send some log data into {{es}}!
+It’s time to send some log data into {{es}}.
 
 ### Launch Filebeat and `elvis.py`
 
@@ -394,7 +394,7 @@ Now you can create visualizations based off of the Python application log data:
 1. In the main menu, select **Dashboards** → **Create dashboard**.
 2. Select **Create visualization**. The [Lens](../../../explore-analyze/visualize/lens.md) visualization editor opens.
 3. In the **Data view** dropdown box, select _filebeat-*_, if it isn’t already selected.
-4. In the dropdown that set the visualization type, select **Bar** and **Stacked**, if they aren’t already selected.
+4. In the menu for setting the visualization type, select **Bar** and **Stacked**, if they aren’t already selected.
 5. Check that the [time filter](../../../explore-analyze/query-filter/filtering.md) is set to **Last 15 minutes**.
 6. From the **Available fields** list, drag and drop the `@timestamp` field onto the visualization builder.
 7. Drag and drop the `log.level` field onto the visualization builder.
@@ -409,7 +409,7 @@ Now you can create visualizations based off of the Python application log data:
 Let’s create a second visualization:
 
 1. Select **Create visualization**.
-2. In the dropdown that set the visualization type, select **Bar** and **Stacked**, if they aren’t already selected.
+2. In the menu for setting the visualization type, select **Bar** and **Stacked**, if they aren’t already selected.
 3. From the **Available fields** list, drag and drop the `@timestamp` field onto the visualization builder.
 4. Drag and drop the `http.request.body.content` field onto the visualization builder.
 5. In the chart settings area under **Breakdown**, select **Top values of http.request.body.content**.
@@ -423,7 +423,7 @@ Let’s create a second visualization:
 Now, create one final visualization:
 
 1. Select **Create visualization**.
-2. In the dropdown that set the visualization type, select **Pie**.
+2. In the menu for setting the visualization type, select **Pie**.
 3. From the **Available fields** list, drag and drop the `log.level` field onto the visualization builder. A pie chart appears.
 
     ![A screen capture of a pie chart divided into four sections](/manage-data/images/cloud-ec-python-logs-donut.png "")
