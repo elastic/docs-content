@@ -83,7 +83,7 @@ By default, `semantic_text` fields leverage ELSER to transform the content.
 
 % TBD: Confirm "Elser model" vs ".elser-2-elasticsearch" terminology.
 
-![Semantic search chunking](/solutions/images/animated-gif-semantic-search-chunking.gif)
+![Semantic search chunking](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt9bbe5e260012b15d/67ffffc8165067d96124b586/animated-gif-semantic-search-chunking.gif)
 
 ::::
 ::::{step} Explore the data
@@ -170,7 +170,9 @@ The search results are sorted by a relevance score, which measures how well each
         "_id": "Pp0MtJcBZjjo1YKoXkWH",
         "_score": 11.389743,
         "_source": {
-          "text": "Rocky Mountain National Park ...
+          "text": "Rocky Mountain National Park ..."
+  ...
+}
 ```
 
 In this example, the document related to Rocky Mountain National park has the highest score.
