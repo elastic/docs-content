@@ -11,13 +11,14 @@ products:
 
 # Ingest logs from a Python application using Filebeat
 
-This guide shows how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file with fields formatted according to the Elastic Common Schema (ECS). You’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md).
+In this guide, we show you how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file with fields formatted according to the Elastic Common Schema (ECS). You’ll then view real-time visualizations of the log events in {{kib}} as they occur.
+
+While we use Python for this example, you can apply the same approach to monitoring log output across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md). We also use {{ech}} as the target {{stack}} destination for our logs, but with small modifications, you can adapt the steps in this guide to other deployments such as self-managed {{stack}} and {{ece}}.
 
 In this guide, you will:
 
 - [Create a Python script with logging](#ec-python-logs-create-script)
-- [Create an {{ech}} deployment](#ec_get_elasticsearch_service_3)
-- [Connect securely to {{ech}}](#ec_connect_securely_2)
+- [Prepare your connection and authentication details](#ec-authentication-details)
 - [Set up Filebeat](#ec-python-logs-filebeat)
 - [Send Python logs to {{es}}](#ec-python-logs-send-ess)
 - [Create log visualizations in {{kib}}](#ec-python-logs-view-kibana)
@@ -26,10 +27,11 @@ _Time required: 1 hour_
 
 ## Prerequisites [ec_prerequisites_2]
 
-To complete the steps in this guide, you need to have installed:
+To complete the steps in this guide, you need to have:
 
-- A [Python](https://www.python.org/) version compatible with the ECS logging library for Python. For a list of compatible Python versions, check the library's [README](https://github.com/elastic/ecs-logging-python/blob/main/README.md).
-- The [ECS logging library for Python](ecs-logging-python://reference/index.md).
+- An {{ech}} deployment with the _Elastic for Observability_ solution view and the superuser credentials provided at deployment creation. For more details, see [Create an {{ech}} deployment](../../../deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md).
+- A [Python](https://www.python.org/) version installed which is compatible with the ECS logging library for Python. For a list of compatible Python versions, check the library's [README](https://github.com/elastic/ecs-logging-python/blob/main/README.md).
+- The [ECS logging library for Python](ecs-logging-python://reference/index.md) installed.
 
 To install the ECS logging library for Python, run:
 
@@ -102,7 +104,7 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsable format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 
-    Together with the standard fields included for each log entry is an extra _http.request.body.content_ field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS field reference](ecs://reference/ecs-field-reference.md) for the full list of available fields.
+    Together with the standard fields included for each log entry is an extra `http.request.body.content` field. This extra field is there to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS field reference](ecs://reference/ecs-field-reference.md) for the full list of available fields.
 
 2. Let’s give the Python script a test run. Open a terminal instance in the location where you saved `elvis.py`, and run the following:
 
@@ -119,18 +121,7 @@ In this step, you’ll create a Python script that generates logs in JSON format
 3. After confirming that `elvis.py` runs as expected, you can delete `elvis.json`.
 
 
-## Create an {{ech}} deployment [ec_get_elasticsearch_service_3]
-
-1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body). If you don't have an account yet, you can sign up for a [free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-2. Select **Create hosted deployment**, then choose the **Elastic for Observability** solution.
-3. Give your deployment a name. You can leave all other settings at their default values.
-4. Select **Create hosted deployment**, then save your Elastic deployment credentials. You need these credentials later on.
-5. When the deployment is ready, click **Continue**. You can now start ingesting Observability data into Elastic.
-
-Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
-
-
-## Connect securely to {{ech}} [ec_connect_securely_2]
+## Prepare your connection and authentication details [ec-authentication-details]
 
 To connect to your {{ech}} deployment, stream data, and issue queries, you have to specify the connection details using your deployment's [Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md), and you have to authenticate using either _basic authentication_ or an _API key_.
 
@@ -323,7 +314,7 @@ Filebeat comes with predefined assets for parsing, indexing, and visualizing you
 ```
 
 ::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of `filebeat.yml`. You can also try running the command as _root_: `sudo ./filebeat setup -e*`, or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](beats://reference/libbeat/config-file-permissions.md) of `filebeat.yml`. You can also try running the command as `root`: `sudo ./filebeat setup -e*`, or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
 ::::
 
 The setup process takes a couple of minutes. If the setup is successful, you should get a confirmation message:
