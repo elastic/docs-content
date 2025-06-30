@@ -43,7 +43,7 @@ Two methods are available to create an API key:
   
   Your personal API key is created with a default expiration of 90 days from the time of creation. You can manage the key from the **API Keys** page.
 
-* To create a personal or cross-cluster API key with configurable options, go to the **API Keys** page using the navigation menu (**Management > Stack Management > API Keys**) or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Create API key**.
+* To create a personal or cross-cluster API key with configurable options, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Create API key**.
 
   ![Create API Key UI](/deploy-manage/images/kibana-create-user-api-key.png "")
 
