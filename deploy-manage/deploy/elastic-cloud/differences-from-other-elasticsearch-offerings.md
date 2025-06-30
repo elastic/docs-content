@@ -204,7 +204,7 @@ Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/d
 
 ## Available {{es}} settings [elasticsearch-differences-serverless-settings-availability]
 
-In {{serverless-full}} {{es}} projects, configuration available to users is limited to certain [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md), while Elastic manages cluster-level and node-level settings to maintain stability, availability, performance, and data integrity. These restrictions help ensure the reliability of Serverless projects.
+In {{serverless-full}} projects, configuration available to users is limited to certain [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md), while Elastic manages cluster-level and node-level settings to maintain stability, availability, performance, and data integrity. These restrictions help ensure the reliability of Serverless projects.
 
 Available settings
 :   **Index-level settings**: Settings that control how documents are processed, stored, and searched are available to end users. These include:
