@@ -12,9 +12,9 @@ jobs:
       contents: read
     
     steps:
-      # Adding this step for debug purposes
-      # If this works as expected, we can simplify this workflow
-      # and replace it with the `check-membership` step
+        # Adding this step for debug purposes
+        # If this works as expected, we can simplify this workflow
+        # and replace it with the `check-membership` step
       - name: Check organization membership (test)
         run: echo "${{ github.event.issue.author_association == 'MEMBER' }}"
       - name: Check organization membership
