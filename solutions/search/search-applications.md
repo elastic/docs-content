@@ -31,9 +31,8 @@ Documentation for the Search Applications feature lives in two places:
 The Search Applications feature was introduced in Elastic version **8.8.0**.
 
 ::::{note} 
-Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features. Elastic plans to promote this feature to GA in a future release.
+Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features.
 ::::
-
 
 This feature is available to all **{{ech}}** deployments.
 
