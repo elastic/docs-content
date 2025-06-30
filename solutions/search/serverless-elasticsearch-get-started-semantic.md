@@ -105,7 +105,7 @@ TBD: Should we call out that the KQL filters in Discover don't seem to work agai
 
 ## Test semantic search
 
-Elasticsearch provides a variety of query languages for interacting with your data.
+{{es}} provides a variety of query languages for interacting with your data.
 For an overview of their features and use cases, check out [](/explore-analyze/query-filter/languages.md).
 
 You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including  `knn`, `match`, `semantic`, and `sparse_vector`. Refer to [Semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) for the complete list.
