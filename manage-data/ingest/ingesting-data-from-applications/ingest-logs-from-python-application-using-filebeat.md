@@ -127,7 +127,7 @@ To connect to your {{ech}} deployment, stream data, and issue queries, you have 
 
 ### Cloud ID
 
-To find the [Cloud ID]([Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md)) of your deployment, go to the {{kib}} main menu, then select **Management** → **Integrations** → **Connection details**. Note that the Cloud ID value is in the format `deployment-name:hash`. Save this value to use it later.
+To find the [Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md) of your deployment, go to the {{kib}} main menu, then select **Management** → **Integrations** → **Connection details**. Note that the Cloud ID value is in the format `deployment-name:hash`. Save this value to use it later.
 
 ### Basic authentication
 
@@ -207,7 +207,7 @@ cloud.auth: username:password <2>
 2. Uncomment the `cloud.auth` line, and add the username and password for your deployment in the format `username:password`. For example, `cloud.auth: elastic:57ugj782kvkwmSKg8uVe`.
 
 ::::{note}
-As an alternative to configuring the connection using [cloud.id and cloud.auth](beats://reference/beats/filebeat/configure-cloud-id.md), you can specify the {{es}} URL and authentication details directly in the [{{es}} output](beats://reference/beats/filebeat/elasticsearch-output.md). This is useful when connecting to a different deployment type, such as a self-managed cluster.
+As an alternative to configuring the connection using [`cloud.id` and `cloud.auth`](beats://reference/filebeat/configure-cloud-id.md), you can specify the {{es}} URL and authentication details directly in the [{{es}} output](beats://reference/filebeat/elasticsearch-output.md). This is useful when connecting to a different deployment type, such as a self-managed cluster.
 ::::
 
 #### Configure an API key [ec-configure-api-key]
