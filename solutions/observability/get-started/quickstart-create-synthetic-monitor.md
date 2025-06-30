@@ -17,22 +17,19 @@ In this quickstart guide, you'll get more familiar with Elastic Observability as
 
 :::::{stepper}
 
-::::{step}
-### Access your Elastic Cloud account
+::::{step} Access your Elastic Cloud account
 
 Go to [cloud.elastic.co](https://cloud.elastic.co/) and access your account or create a new one.
 
 ::::
 
-::::{step}
-### Create a new project
+::::{step} Create a new project
 
 Create a new {{observability}} project. Make sure to select your preferred cloud region when you create your first project. Refer to [Create an Observability project](/solutions/observability/get-started.md) for more details. 
 
 ::::
 
-::::{step}
-### Go to Synthetics
+::::{step} Go to Synthetics
 
 Once your deployment is complete click **Applications** and select **Monitors** under **Synthetics**.
 
@@ -47,8 +44,7 @@ This guide shows how to leverage Elastic's global managed testing infrastructure
 Projects let you define your infrastructure as code. With project monitors you organize your YAML configuration and JavaScript- or TypeScript-defined monitors on the filesystem, use Git for version control, and deploy via a CLI tool, usually executed on a CI/CD platform. Refer to [Create monitors with project monitors](https://www.elastic.co/guide/en/observability/current/synthetics-get-started-project.html) for more details.
 :::
 
-::::{step}
-### Create a browser monitor
+::::{step} Create a browser monitor
 
 Create a single page browser monitor. Make sure to select a URL and the locations where monitors will be executed, then select **Create monitor**.
 
@@ -64,8 +60,7 @@ Synthetics will be executing the test across all of those locations, automatical
 
 ::::
 
-::::{step}
-### Turn on alerts
+::::{step} Turn on alerts
 
 If there are any issues, you might want to turn on alerts. Select **Configure now** from the Alerts warning, or go to **Settings** and then **Alerting**. Select the default connector, which is already prepopulated when you deploy Elastic. After you select your default connector you can add your default email address to receive the alerts.
 
@@ -84,8 +79,7 @@ Go back to **Monitors** and select **Alerts and rules** then **Monitor status ru
 
 ::::
 
-::::{step}
-### Analyze your monitor data
+::::{step} Analyze your monitor data
 
 Go to **Monitors** and select one of the monitors, you’ll see a dialog with a quick summary of the monitor. Select **Go to monitor** to see high level insights. Charts will start to render as more tests come through but you can quickly see the availability, the duration to execute tests, the timeline, and you can also drill into the waterfall chart. 
 
