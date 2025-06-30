@@ -22,6 +22,10 @@ There a few things to note about how an {{ilm-init}} policy works:
 
 * {{ilm-init}} policies are stored in the global cluster state and can be included in snapshots by setting `include_global_state` to `true` when you [take the snapshot](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md). When the snapshot is restored, all of the policies in the global state are restored and any local policies with the same names are overwritten.
 
+:::{note}
+This page is specifically about {{ilm-init}}. If you're looking for a simpler lifecycle management option for data streams, refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md). Check [Index lifecycle management](/manage-data/lifecycle.md) to compare these lifecycle management options.
+:::
+
 ## Overview [ilm-configure-overview]
 
 To set up ILM to manage one or more indices, the general procedure is as follows:
