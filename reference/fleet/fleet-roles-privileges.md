@@ -8,7 +8,7 @@ products:
 
 # Roles and privileges [fleet-roles-and-privileges]
 
-Assigning the {{kib}} feature privileges `Fleet` and `Integrations` grants access to use {{fleet}} and Integrations.
+Use {{kib}} roles and privileges to grant users access to {{fleet}} and Integrations..
 {{fleet}} and integrations privileges can be set to:
 
 `all`
