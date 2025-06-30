@@ -2,11 +2,12 @@
 navigation_title: Semantic search
 description: An introduction to semantic search in Elasticsearch.
 applies_to:
-  serverless:
+  serverless: all
 products:
-  - id: cloud-serverless
+  - id: cloud-serverless 
+  - id: elasticsearch
 ---
-# Get started with semantic search in {{es-serverless}}
+# Get started with semantic search
 
 _Semantic search_ is a type of AI-powered search that enables you to use intuitive language in your queries.
 It returns results that match the meaning of a query, as opposed to literal keyword matches.
