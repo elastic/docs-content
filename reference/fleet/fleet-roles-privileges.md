@@ -8,9 +8,7 @@ products:
 
 # Roles and privileges [fleet-roles-and-privileges]
 
-Beginning with {{stack}} version 9.1, you have more granular control over user access to features in and managed by {{fleet}}.
-This granularity is useful when people in your organization access {{fleet}} for different purposes, and you need to fine-tune the components that they can view and the actions that they can perform.
-
+Assigning the {{kib}} feature privileges `Fleet` and `Integrations` grants access to use {{fleet}} and Integrations.
 {{fleet}} and integrations privileges can be set to:
 
 `all`
@@ -29,7 +27,7 @@ You can take advantage of these privilege settings by:
 
 To configure access at a more granular level, select a custom set of privileges for individual {{fleet}} features:
 
-* [Customize sub-feature privileges for {{fleet}}](#fleet-roles-and-privileges-sub-features)
+* [Customize sub-feature privileges for {{fleet}}](#fleet-roles-and-privileges-sub-features) {applies_to}`stack: ga 9.1`
 
 
 ## Built-in roles [fleet-roles-and-privileges-built-in]
@@ -91,7 +89,12 @@ You can edit the role at any time by returning to the **Roles** page in {{kib}}.
 
 ## Customize sub-feature privileges for {{fleet}}[fleet-roles-and-privileges-sub-features]
 
-When you [create a new role](#fleet-roles-and-privileges-create) or edit it, you can fine-tune the access level for features in {{fleet}}.
+```{applies_to}
+stack: ga 9.1
+```
+
+Beginning with {{stack}} version 9.1, you have more granular control when [creating a new role](#fleet-roles-and-privileges-create) or editing it. This is useful when people in your organization access {{fleet}} for different purposes, and you need to fine-tune the components that they can view and the actions that they can perform.
+
 The {{fleet}} UI varies depending on the privileges granted to the role.
 
 ### Example 1: Read access for {{agents}}[fleet-roles-and-privileges-sub-features-example1]
