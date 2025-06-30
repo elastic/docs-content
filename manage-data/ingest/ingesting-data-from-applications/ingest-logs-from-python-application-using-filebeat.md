@@ -123,11 +123,11 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
 ## Prepare your connection and authentication details [ec-authentication-details]
 
-To connect to your {{ech}} deployment, stream data, and issue queries, you have to specify the connection details using your deployment's [Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md), and you have to authenticate using either _basic authentication_ or an _API key_.
+To connect to your {{ech}} deployment, stream data, and issue queries, you have to specify the connection details using your deployment's Cloud ID, and you have to authenticate using either _basic authentication_ or an _API key_.
 
 ### Cloud ID
 
-To find the Cloud ID of your deployment, go to the {{kib}} main menu, then select **Management** → **Integrations** → **Connection details**. Note that the Cloud ID value is in the format `deployment-name:hash`. Save this value to use it later.
+To find the [Cloud ID]([Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md)) of your deployment, go to the {{kib}} main menu, then select **Management** → **Integrations** → **Connection details**. Note that the Cloud ID value is in the format `deployment-name:hash`. Save this value to use it later.
 
 ### Basic authentication
 
@@ -135,7 +135,7 @@ To authenticate and send data to {{ech}}, you can use the username and password 
 
 ### API key
 
-You can also generate an _API key_ through the {{ech}} console, and configure Filebeat to use the new key to connect securely to your deployment. API keys are the preferred method for connecting to production environments.
+You can also generate an [API key](/deploy-manage/api-keys.md) through the {{ech}} console, and configure Filebeat to use the new key to connect securely to your deployment. API keys are the preferred method for connecting to production environments.
 
 To create an API key for Filebeat:
 
@@ -205,6 +205,10 @@ cloud.auth: username:password <2>
 
 1. Uncomment the `cloud.id` line, and add the deployment’s Cloud ID as the key's value. Note that the `cloud.id` value is in the format `deployment-name:hash`. Find your Cloud ID by going to the {{kib}} main menu, and selecting **Management** → **Integrations** → **Connection details**.
 2. Uncomment the `cloud.auth` line, and add the username and password for your deployment in the format `username:password`. For example, `cloud.auth: elastic:57ugj782kvkwmSKg8uVe`.
+
+::::{note}
+As an alternative to configuring the connection using [cloud.id and cloud.auth](beats://reference/beats/filebeat/configure-cloud-id.md), you can specify the {{es}} URL and authentication details directly in the [{{es}} output](beats://reference/beats/filebeat/elasticsearch-output.md). This is useful when connecting to a different deployment type, such as a self-managed cluster.
+::::
 
 #### Configure an API key [ec-configure-api-key]
 
