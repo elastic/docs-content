@@ -36,7 +36,7 @@ To manage roles, go to the **Roles** management page using the navigation menu o
 Two methods are available to create an API key:
 
 * As a quick option to create a personal API key from anywhere in {{kib}}:
-  1. Select the **Help menu (![help icon](/deploy-manage/images/help-icon.svg
+  1. From the **Help menu** (![help icon](/deploy-manage/images/help-icon.svg"")), select **Connection details > API key**.
  "")) → Connection details → API key**.
   1. Give the key a name.
   1. Select **Create API key**.
