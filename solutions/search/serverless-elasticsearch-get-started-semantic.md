@@ -38,7 +38,7 @@ Alternatively, try out the API requests in the [Console](/explore-analyze/query-
 ::::{step} Define a semantic text field
 
 You can implement semantic search with varying levels of complexity and customization.
-To get started, the recommended method is to use [semantic_text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields.
+The recommended method is to use [semantic_text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields in most cases.
 
 The following example creates a mapping for a single field:
 
