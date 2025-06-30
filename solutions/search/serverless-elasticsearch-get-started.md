@@ -85,7 +85,7 @@ The UI provides ready-to-use code examples for ingesting data via the REST API. 
 - JavaScript
 - cURL
 
-If you create an index that's optimized for semantic search, learn more in [](/solutions/search/serverless-elasticsearch-get-started-semantic.md).
+If you create an index that's optimized for semantic search, learn more in [](/solutions/search/get-started/semantic-search.md).
 
 ## Option 2: Follow the Getting Started guide [elasticsearch-follow-in-product-getting-started]
 
