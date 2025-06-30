@@ -9,7 +9,7 @@ products:
 
 # Migrate index allocation filters to node roles [migrate-index-allocation-filters]
 
-If you currently use [custom node attributes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes) and [attribute-based allocation filters](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to move indices through [data tiers](../data-tiers.md) in a [hot-warm-cold architecture](https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management), we recommend that you switch to using the built-in node roles and automatic [data tier allocation](../data-tiers.md#data-tier-allocation). Using node roles enables {{ilm-init}} to automatically move indices between data tiers.
+If you currently use [custom node attributes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes) and [attribute-based allocation filters](../../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to move indices through [data tiers](../../data-tiers.md) in a [hot-warm-cold architecture](https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management), we recommend that you switch to using the built-in node roles and automatic [data tier allocation](../../data-tiers.md#data-tier-allocation). Using node roles enables {{ilm-init}} to automatically move indices between data tiers.
 
 ::::{note}
 While we recommend relying on automatic data tier allocation to manage your data in a hot-warm-cold architecture, you can still use attribute-based allocation filters to control shard allocation for other purposes.
@@ -25,11 +25,11 @@ If you are using node attributes from the default deployment template in {{ech}}
 
 * Upgrade to {{es}} 7.10 or higher
 * Deploy a warm, cold, or frozen data tier
-* [Enable autoscaling](../../../deploy-manage/autoscaling.md)
+* [Enable autoscaling](../../../../deploy-manage/autoscaling.md)
 
 These actions automatically update your cluster configuration and {{ilm-init}} policies to use node roles. Additionally, upgrading to version 7.14 or higher automatically update {{ilm-init}} policies whenever any configuration change is applied to your deployment.
 
-If you use custom index templates, check them after the automatic migration completes and remove any [attribute-based allocation filters](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md).
+If you use custom index templates, check them after the automatic migration completes and remove any [attribute-based allocation filters](../../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md).
 
 ::::{note}
 You do not need to take any further action after the automatic migration. The following manual steps are only necessary if you do not allow the automatic migration or have a self-managed deployment.
@@ -51,7 +51,7 @@ To switch to using node roles:
 
 Configure the appropriate roles for each data node to assign it to one or more data tiers: `data_hot`, `data_content`, `data_warm`, `data_cold`, or `data_frozen`. A node can also have other [roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md). By default, new nodes are configured with all roles.
 
-When you add a data tier to an {{ech}} deployment, one or more nodes are automatically configured with the corresponding role. To explicitly change the role of a node in an {{ech}} deployment, use the [Update deployment API](../../../deploy-manage/deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md#ec_update_a_deployment). Replace the node’s `node_type` configuration with the appropriate `node_roles`. For example, the following configuration adds the node to the hot and content tiers, and enables it to act as an ingest node, remote, and transform node.
+When you add a data tier to an {{ech}} deployment, one or more nodes are automatically configured with the corresponding role. To explicitly change the role of a node in an {{ech}} deployment, use the [Update deployment API](../../../../deploy-manage/deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md#ec_update_a_deployment). Replace the node’s `node_type` configuration with the appropriate `node_roles`. For example, the following configuration adds the node to the hot and content tiers, and enables it to act as an ingest node, remote, and transform node.
 
 ```yaml
 "node_roles": [
@@ -92,9 +92,9 @@ On {{ech}} deployments, remove the `cloud-hot-warm-allocation-0` index template 
 DELETE _template/.cloud-hot-warm-allocation-0
 ```
 
-If you’re using a custom index template, update it to remove the [attribute-based allocation filters](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) you used to assign new indices to the hot tier.
+If you’re using a custom index template, update it to remove the [attribute-based allocation filters](../../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) you used to assign new indices to the hot tier.
 
-To completely avoid the issues that raise when mixing the tier preference and custom attribute routing setting we also recommend updating all the legacy, composable, and component templates to remove the [attribute-based allocation filters](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) from the settings they configure.
+To completely avoid the issues that raise when mixing the tier preference and custom attribute routing setting we also recommend updating all the legacy, composable, and component templates to remove the [attribute-based allocation filters](../../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) from the settings they configure.
 
 
 ### Set a tier preference for existing indices [set-tier-preference]

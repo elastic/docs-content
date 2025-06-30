@@ -1775,7 +1775,7 @@ Once a deployment is migrated to node roles, it is not possible to roll back.
 ::::
 
 
-After the migration plan has finished, we recommend following the [Migrate index allocation filters to node roles](../../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md) guide. Step 1 of this guide was already accomplished by adding support for `node_roles`. However, performing steps 2, 3, and 4, which involves updating index settings, index templates, and ILM policies, can prevent shard allocation issues caused by conflicting ILM policies.
+After the migration plan has finished, we recommend following the [Migrate index allocation filters to node roles](../../../manage-data/lifecycle/index-lifecycle-management/migrate-index-management/migrate-index-allocation-filters-to-node-roles.md) guide. Step 1 of this guide was already accomplished by adding support for `node_roles`. However, performing steps 2, 3, and 4, which involves updating index settings, index templates, and ILM policies, can prevent shard allocation issues caused by conflicting ILM policies.
 
 
 ### Example [ece_example_2]

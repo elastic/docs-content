@@ -83,6 +83,6 @@ To automatically back up your indices and manage snapshots, use [snapshot lifecy
 
 For existing hot-warm deployments that are currently using index curation, migrating to ILM gives you more fine-grained control over the lifecycle of each index. Read more in:
 
-* [Manage existing indices](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)
+* [Manage existing indices](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management/manage-existing-indices.md)
 * [Migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md)
-* [Migrate index allocation filters to node roles](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md)
+* [Migrate index allocation filters to node roles](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management/migrate-index-allocation-filters-to-node-roles.md)

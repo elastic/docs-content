@@ -79,7 +79,7 @@ In order to get the shards assigned we’ll need to increase the number of shard
 ::::::
 
 ::::::{tab-item} Self-managed
-In order to get the shards assigned you can add more nodes to your {{es}} cluster and assing the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
+In order to get the shards assigned you can add more nodes to your {{es}} cluster and assing the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
 
 To inspect which tier is an index targeting for assignment, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
 
