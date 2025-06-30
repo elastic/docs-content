@@ -12,11 +12,17 @@ jobs:
       contents: read
     
     steps:
+      # Adding this step for debug purposes
+      # If this works as expected, we can simplify this workflow
+      # and replace it with the `check-membership` step
+      - name: Check organization membership (test)
+        run: echo "${{ github.event.issue.author_association == 'MEMBER' }}"
       - name: Check organization membership
         id: check-membership
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.ORG_MEMBER_READ_TOKEN }}
+          result-encoding: string
           script: |
             const issueAuthor = '${{ github.event.issue.user.login }}';
             const orgName = 'elastic';
