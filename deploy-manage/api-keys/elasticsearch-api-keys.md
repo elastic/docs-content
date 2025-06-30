@@ -15,7 +15,7 @@ Several types of {{es}} API keys exist:
 * **Cross-cluster** API key: allows other clusters to connect to this cluster.
 * **Managed** API key: created and managed by {{kib}} to run background tasks.
 
-To manage API keys in {{kib}}, go to the **API Keys** management page using the navigation menu (**Management > Stack Management > API Keys**) or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+To manage API keys in {{kib}}, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ![API Keys UI](/deploy-manage/images/kibana-api-keys.png "")
 
