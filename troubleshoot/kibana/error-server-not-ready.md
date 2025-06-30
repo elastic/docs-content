@@ -25,7 +25,7 @@ To troubleshoot the `Kibana server is not ready yet` error, try these steps:
 2. Guarantee the health of the three {{kib}}-backing indices.  All indices must appear and display `status:green` and `status:open`:
 
     ```sh
-    curl -XGET elasticsearch_ip_or_hostname:9200/_cat/indices/.kibana,.kibana_task_manager,.kibana_security_session?v=true
+    curl -XGET elasticsearch_ip_or_hostname:9200/_cat/indices/.kibana,.kibana_task_manager,.kibana_security_session,.security*?v=true
     ```
 
     These {{kib}}-backing indices must also not have [index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) flagging `read_only_allow_delete` or `write` [index blocks](elasticsearch://reference/elasticsearch/index-settings/index-block.md).

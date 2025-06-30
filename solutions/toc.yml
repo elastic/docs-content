@@ -472,6 +472,9 @@ toc:
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
           - file: security/get-started/configure-advanced-settings.md
+      - file: security/esql-for-security.md
+        children:
+          - file: security/esql-for-security/esql-threat-hunting-tutorial.md
       - file: security/ai.md
         children:
           - file: security/ai/ai-assistant.md
@@ -654,5 +657,6 @@ toc:
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
+          - hidden: security/advanced-entity-analytics/privileged-user-monitoring.md
       - file: security/asset-management.md
       - file: security/apis.md

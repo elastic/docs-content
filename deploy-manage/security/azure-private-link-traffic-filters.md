@@ -133,7 +133,7 @@ The Private Link connection will be approved automatically after the traffic fil
 ::::
 
 
-1. From the **Account** menu, select **Traffic filters**.
+1. From the lower navigation menu, select **Traffic filters**.
 2. Select **Create filter**.
 3. Select **Private link endpoint**.
 4. Create your rule set, providing a meaningful name and description.
