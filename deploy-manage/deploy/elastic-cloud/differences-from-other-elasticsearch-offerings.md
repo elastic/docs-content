@@ -162,7 +162,10 @@ These recommendations do not apply to indices using better binary quantization (
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
-Because {{serverless-full}} manages infrastructure automatically, certain Elasticsearch APIs are not available:
+In {{serverless-full}}, access is limited to a subset of {{es}} APIs, as Elastic manages the underlying infrastructure. These restrictions help maintain cluster stability, availability, and data integrity, ensuring reliable operation of Serverless projects.
+
+The following {{es}} APIs are not available in {{serverless-full}}:
+
 
 Infrastructure operations
 :   * All `_nodes/*` operations
@@ -201,7 +204,7 @@ Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/d
 
 ## Available {{es}} settings [elasticsearch-differences-serverless-settings-availability]
 
-In {{serverless-full}} Elasticsearch projects, you can only configure [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md). Cluster-level settings and node-level settings are fully managed by Elastic.
+In {{serverless-full}} projects, configuration available to users is limited to certain [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md), while Elastic manages cluster-level and node-level settings to maintain stability, availability, performance, and data integrity. These restrictions help ensure the reliability of Serverless projects.
 
 Available settings
 :   **Index-level settings**: Settings that control how documents are processed, stored, and searched are available to end users. These include:
@@ -218,6 +221,24 @@ Managed settings
     * Cluster topology
     * Shard allocation
     * Resource management
+
+When attempting to use an unavailable index setting, you'll receive this error:
+
+```json
+{
+    "error": {
+        "root_cause": [
+            {
+                "type": "illegal_argument_exception",
+                "reason": "Settings [xyz] are not available when running in serverless mode"
+            }
+        ],
+        "type": "illegal_argument_exception",
+        "reason": "Settings [xyz] are not available when running in serverless mode"
+    },
+    "status": 400
+}
+```
 
 ## Learn more
 
