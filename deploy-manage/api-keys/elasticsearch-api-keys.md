@@ -55,7 +55,7 @@ Two methods are available to create an API key:
 
 ## Update an API key [update-api-key]
 
-To update an API key, go to the **API Keys** management page using the navigation menu (**Management > Stack Management > API Keys**) or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and then click on the name of the key. You cannot update the name or the type of an API key.
+To update an API key, go to **Management > Stack Management > API Keys** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and then click on the name of the key. You cannot update the name or the type of an API key.
 
 * For a user API key, you can update:
   * The API key's access to {{es}} APIs and resources.
