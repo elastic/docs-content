@@ -404,6 +404,7 @@ toc:
           - file: alerts-cases/watcher/example-watches.md
             children:
               - file: alerts-cases/watcher/watch-cluster-status.md
+              - file: alerts-cases/watcher/execute-watch.md
           - file: alerts-cases/watcher/watcher-limitations.md
       - file: alerts-cases/cases.md
         children:
