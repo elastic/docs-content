@@ -41,7 +41,7 @@ There are two ways to run synthetic monitors which will depend on if the website
 This guide shows how to leverage Elastic's global managed testing infrastructure.
 
 :::{note}  
-Projects let you define your infrastructure as code. With project monitors you organize your YAML configuration and JavaScript- or TypeScript-defined monitors on the filesystem, use Git for version control, and deploy via a CLI tool, usually executed on a CI/CD platform. Refer to [Create monitors with project monitors](https://www.elastic.co/guide/en/observability/current/synthetics-get-started-project.html) for more details.
+Projects let you define your infrastructure as code. With project monitors you organize your YAML configuration and JavaScript- or TypeScript-defined monitors on the filesystem, use Git for version control, and deploy via a CLI tool, usually executed on a CI/CD platform. Refer to [Create monitors with project monitors](/solutions/observability/synthetics/create-monitors-with-projects.md).
 :::
 
 ::::{step} Create a browser monitor
@@ -102,6 +102,6 @@ To drill down, select the icon under **View test run**. From here you can see th
 
 ## More resources
  
-* [Create monitors for project monitors](/solutions/observability/synthetics-get-started-project.md).
+* [Create monitors for project monitors](/solutions/observability/synthetics/create-monitors-with-projects.md).
 * [Use the Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md).
 * [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md).
