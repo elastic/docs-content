@@ -47,6 +47,8 @@ For other types of deployments, refer to [Deploy](/deploy-manage/deploy.md). For
 
 ::::{step} Collect observability data
 
+Use the **Add data** feature to collect observability data from your hosts and services, using the Elastic Distributions of OpenTelemetry (EDOT) or the Elastic Agents.
+
 #### Infrastructure logs and metrics
 
 Bring logs and metrics from your hosts and services into Elastic {{observability}} to monitor the health and performance of your infrastructure. You can collect this data from hosts, containers, Kubernetes, and Cloud services.
