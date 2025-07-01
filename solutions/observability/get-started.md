@@ -59,7 +59,9 @@ Bring logs and metrics from your hosts and services into Elastic {{observability
 Elastic {{observability}} can collect telemetry data from hosts, containers, and Kubernetes through the EDOT Collector or the Elastic Agent.
 
 1. Select **Add data** from the main menu and then select **Host**.
-2. Select **OpenTelemetry: Logs & Metrics** or **Elastic Agent: Logs & Metrics**.
+2. Select one of these options:
+    * **OpenTelemetry: Full Observability**: Collect native OpenTelemetry metrics and logs.
+    * **Elastic Agent: Logs & Metrics**: Bring data from Elastic integrations.
 3. Follow the instructions for your platform.
 
 For an overview of the Elastic Distribution of OpenTelemetry Collector, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
@@ -71,19 +73,21 @@ For an overview of the Elastic Distribution of OpenTelemetry Collector, refer to
 Elastic {{observability}} can collect telemetry data from Kubernetes through the Elastic Distribution of OpenTelemetry Collector or the Elastic Agent.
 
 1. Select **Add data** from the main menu and then select **Kubernetes**.
-2. Select **OpenTelemetry: Full Observability** or **Elastic Agent: Logs & Metrics**.
+2. Select one of these options:
+    * **OpenTelemetry: Full Observability**: Collect native OpenTelemetry metrics and logs.
+    * **Elastic Agent: Logs & Metrics**: Bring data from Elastic integrations.
 3. Follow the instructions for your platform.
 
 For an overview of EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
 
 :::
 
-:::{tab-item} Services
+:::{tab-item} Integrations
 
 Elastic {{observability}} can collect telemetry data from services through Elastic integrations.
 
-1. Select **Add data** from the main menu and then select **Service**.
-2. In **Search through other ways of ingesting data**, type the name of the service (for example, NGINX).
+1. Select **Add data** from the main menu.
+2. In **Search through other ways of ingesting data**, type the name of an integration (for example, NGINX).
 3. Select the integration you want to add.
 4. Select **Add**.
 :::
