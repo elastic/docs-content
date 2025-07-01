@@ -47,14 +47,14 @@ For other types of deployments, refer to [Deploy](/deploy-manage/deploy.md). For
 
 ::::{step} Collect infrastructure logs and metrics
 
-Logs and metrics from your hosts and services help you monitor the health and performance of your infrastructure. Elastic {{observability}} can collect this data from hosts, containers, Kubernetes, and Cloud services.
+Bring logs and metrics from your hosts and services into Elastic {{observability}} to monitor the health and performance of your infrastructure. You can collect this data from hosts, containers, Kubernetes, and Cloud services.
 
 ::::{tab-set}
 :::{tab-item} Hosts
 
 Elastic {{observability}} can collect telemetry data from hosts, containers, and Kubernetes through the EDOT Collector or the Elastic Agent.
 
-1. In **Observability**, go to **Add data** and select **Host**.
+1. Select **Add data** from the main menu and then select **Host**.
 2. Select **OpenTelemetry: Logs & Metrics** or **Elastic Agent: Logs & Metrics**.
 3. Follow the instructions for your platform.
 
@@ -66,7 +66,7 @@ For an overview of the Elastic Distribution of OpenTelemetry Collector, refer to
 
 Elastic {{observability}} can collect telemetry data from Kubernetes through the Elastic Distribution of OpenTelemetry Collector or the Elastic Agent.
 
-1. In **Observability**, go to **Add data** and select **Kubernetes**.
+1. Select **Add data** from the main menu and then select **Kubernetes**.
 2. Select **OpenTelemetry: Full Observability** or **Elastic Agent: Logs & Metrics**.
 3. Follow the instructions for your platform.
 
@@ -78,7 +78,7 @@ For an overview of EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)]
 
 Elastic {{observability}} can collect telemetry data from services through Elastic integrations.
 
-1. In **Observability**, go to **Add data**.
+1. Select **Add data** from the main menu and then select **Service**.
 2. In **Search through other ways of ingesting data**, type the name of the service (for example, NGINX).
 3. Select the integration you want to add.
 4. Select **Add**.
@@ -88,10 +88,10 @@ Elastic {{observability}} can collect telemetry data from services through Elast
 
 Elastic {{observability}} can collect telemetry data from cloud services through Elastic integrations.
 
-1. In **Observability**, go to **Add data** and select **Cloud**.
+1. Select **Add data** from the main menu and then select **Cloud**.
 2. Select your Cloud provider to view the collection of integrations available for that provider.
 3. Select the integration you want to add.
-4. Select **add**
+4. Select **Add**.
 :::
 
 :::{tab-item} CI/CD
@@ -112,12 +112,12 @@ Refer to [LLM observability](/solutions/observability/applications/llm-observabi
 
 ::::{step} Collect application traces, metrics, and logs
 
-Traces, logs, and metrics brought into Elastic {{observability}} help you troubleshoot and optimize your applications. Elastic {{observability}} can collect this data using OpenTelemetry or APM Server.
+Bring traces, logs, and metrics into [Elastic APM](/solutions/observability/apm/index.md) to help you troubleshoot and optimize your applications. You can collect this data using OpenTelemetry or APM Server.
 
 ::::{tab-set}
 :::{tab-item} OpenTelemetry
 
-The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) facilitate the collection of traces, metrics, and logs in OpenTelemetry format into Elastic {{observability}}.
+The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) facilitate the collection of traces, metrics, and logs in OpenTelemetry format into [Elastic APM](/solutions/observability/apm/index.md).
 
 1. In **Observability**, go to **Add data** and select **Application**.
 2. Select **OpenTelemetry**.
@@ -128,21 +128,22 @@ The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://referenc
 
 Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to collect traces, metrics, and logs through [APM Server](/solutions/observability/apm/configure-apm-server.md).
 
-1. In **Observability**, go to **Add data** and select **Application**.
+1. Select **Elastic APM**.
 2. Select the tab for your language or framework.
 3. Follow the instructions in the tab.
+4. Follow the instructions in the tab.
 :::
 ::::
 
-::::{step} Add Synthetic monitoring
+[Synthetics monitoring](/solutions/observability/synthetics/index.md) lets you simulate, track, and visualize user journeys to catch performance, availability, and functionality issues in your services and applications.
 
 [Synthetics monitoring](/solutions/observability/synthetics/index.md) periodically checks the status of your services and applications.
 
 1. In **Observability**, go to **Add data** and select **Application**.
 2. Select **Synthetic monitor**. 
-3. Select a monitor type.
+3. Select a [monitor type](/solutions/observability/synthetics/index.md).
 4. Fill out the details.
-5. Add a [Playwright](https://playwright.dev/) script.
+5. (Optional) Add a [Playwright](https://playwright.dev/) script.
 6. Test and create your monitor.
 
 ::::
@@ -151,7 +152,7 @@ Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to coll
 
 After you've onboarded your data, you can explore it in the following Elastic {{observability}} UIs, or query it using [query languages](elasticsearch://reference/query-languages/index.md).
 
-- [Explore your logs](/solutions/observability/logs.md) in the Logs UI.
+- [Explore your logs](/solutions/observability/logs/explore-logs.md) in the Logs UI.
 - [Analyze infrastructure and host metrics](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) in the Infrastructure UI.
 - [View and analyze APM data](/solutions/observability/apm/view-analyze-data.md) in the Applications UI.
 - Use the [Elastic Query Language ({{esql}})](/explore-analyze/discover/try-esql.md) to search and filter your data.
@@ -195,7 +196,7 @@ Quickstarts are compact hands-on guides that help you experiment with {{observab
 
 ### Observability integrations
 
-Tens of [{{observability}} integrations](https://www.elastic.co/integrations/data-integrations?solution=observability) are available to collect and process your data. Refer to [Elastic integrations](https://www.elastic.co/docs/reference/integrations) for more information.
+Many [{{observability}} integrations](https://www.elastic.co/integrations/data-integrations?solution=observability) are available to collect and process your data. Refer to [Elastic integrations](https://www.elastic.co/docs/reference/integrations) for more information.
 
 ### Other resources
 
