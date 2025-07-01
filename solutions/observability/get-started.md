@@ -45,11 +45,7 @@ The **Admin** role or higher is required to create projects. Refer to [Assign us
 For other types of deployments, refer to [Deploy](/deploy-manage/deploy.md). For a breakdown of the differences between deployment types and what they support, refer to [Detailed deployment comparison](/deploy-manage/deploy/deployment-comparison.md).
 ::::
 
-::::{step} Collect observability data
-
-Use the **Add data** feature to collect observability data from your hosts and services, using the Elastic Distributions of OpenTelemetry (EDOT) or the Elastic Agents.
-
-#### Infrastructure logs and metrics
+::::{step} Collect infrastructure logs and metrics
 
 Bring logs and metrics from your hosts and services into Elastic {{observability}} to monitor the health and performance of your infrastructure. You can collect this data from hosts, containers, Kubernetes, and Cloud services.
 
@@ -111,8 +107,9 @@ Elastic provides a powerful LLM observability framework including key metrics, l
 
 Refer to [LLM observability](/solutions/observability/applications/llm-observability.md) for more information.
 :::
+::::
 
-#### Application traces, metrics, and logs
+::::{step} Collect application traces, metrics, and logs
 
 Bring traces, logs, and metrics into [Elastic APM](/solutions/observability/apm/index.md) to help you troubleshoot and optimize your applications. You can collect this data using OpenTelemetry or APM Server.
 
@@ -121,7 +118,7 @@ Bring traces, logs, and metrics into [Elastic APM](/solutions/observability/apm/
 
 The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) facilitate the collection of traces, metrics, and logs in OpenTelemetry format into [Elastic APM](/solutions/observability/apm/index.md).
 
-1. In **Observability**, go to **Add data** and select **Application**.
+1. Select **Add data** from the main menu and then select **Application**.
 2. Select **OpenTelemetry**.
 3. Follow the instructions for your platform.
 :::
@@ -130,20 +127,18 @@ The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://referenc
 
 Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to collect traces, metrics, and logs through [APM Server](/solutions/observability/apm/configure-apm-server.md).
 
-1. Select **Elastic APM**.
-2. Select the tab for your language or framework.
-3. Follow the instructions in the tab.
+1. Select **Add data** from the main menu and then select **Application**.
+2. Select **Elastic APM**.
+3. Select the tab for your language or framework.
 4. Follow the instructions in the tab.
 :::
 ::::
 
 ::::{step} Add Synthetics monitoring
 
-[Synthetics monitoring](/solutions/observability/synthetics/index.md) lets you simulate, track, and visualize user journeys to catch performance, availability, and functionality issues in your services and applications.
+[Synthetics monitoring](/solutions/observability/synthetics/index.md) lets you simulate, track, and visualize user journeys to catch performance, availability, and functionality issues in your services and applications. It periodically checks the status of your services and applications.
 
-[Synthetics monitoring](/solutions/observability/synthetics/index.md) periodically checks the status of your services and applications.
-
-1. In **Observability**, go to **Add data** and select **Application**.
+1. Select **Add data** from the main menu and then select **Application**.
 2. Select **Synthetic monitor**. 
 3. Select a [monitor type](/solutions/observability/synthetics/index.md).
 4. Fill out the details.
