@@ -76,11 +76,6 @@ The script also generates an {{agent}} configuration file that you can use with 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
 2. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
 
-    :::{image} /solutions/images/observability-quickstart-monitor-hosts-entry-point.png
-    :alt: Host monitoring entry point
-    :screenshot:
-    :::
-
 3. Copy the install command.
 
     You’ll run this command to download the auto-detection script, scan your system for observability data, and install {{agent}}.
@@ -107,12 +102,6 @@ The script also generates an {{agent}} configuration file that you can use with 
 1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Host**, and then select **Elastic Agent: Logs & Metrics**.
-
-    :::{image} /solutions/images/serverless-quickstart-monitor-hosts-entry-point.png
-    :alt: Host monitoring entry point
-    :screenshot:
-    :::
-
 4. Copy the install command.
 
     You’ll run this command to download the auto-detection script, scan your system for observability data, and install {{agent}}.
@@ -164,12 +153,6 @@ After installation is complete and all relevant data is flowing into Elastic, th
 | **Other prebuilt dashboards** | Prebuilt dashboards are also available for systems and services not described here,including PostgreSQL, Redis, HAProxy, Kafka, RabbitMQ, Prometheus, Apache Tomcat, and MongoDB. |
 
 For example, you can navigate the **Host overview** dashboard to explore detailed metrics about system usage and throughput. Metrics that indicate a possible problem are highlighted in red.
-
-:::{image} /solutions/images/observability-quickstart-host-overview.png
-:alt: Host overview dashboard
-:screenshot:
-:::
-
 
 ## Get value out of your data [_get_value_out_of_your_data]
 
