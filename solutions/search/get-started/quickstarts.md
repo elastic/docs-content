@@ -2,11 +2,10 @@
 applies_to:
   serverless: ga
 products:
-  - id: cloud-serverless
   - id: elasticsearch
 ---
 
-# {{es-serverless}} quickstarts
+# {{es}} quickstarts
 
 Our quickstarts reduce your time-to-value by offering a fast path to learn about search strategies.
 Each quickstart provides:

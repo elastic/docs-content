@@ -3,8 +3,8 @@ navigation_title: Semantic search
 description: An introduction to semantic search in Elasticsearch.
 applies_to:
   serverless: all
+  stack: all
 products:
-  - id: cloud-serverless 
   - id: elasticsearch
 ---
 # Get started with semantic search
@@ -19,9 +19,23 @@ For a summary of the use cases and implementation paths, go to [](/solutions/sea
 
 ## Prerequisites
 
-To try out semantic search, log into an [{{es-serverless}} project](/solutions/search/serverless-elasticsearch-get-started.md) that is optimized for vectors.
-If you want to add sample data, you must have a `developer` or `admin` [predefined role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or an equivalent custom role.
+::::{tab-set}
+:group: stack-serverless
 
+:::{tab-item} {{serverless-short}}
+:sync: serverless
+
+- An {{es-serverless}} project that is optimized for vectors. To learn more, refer to [](/solutions/search/serverless-elasticsearch-get-started.md).
+- If you want to add sample data, you must have a `developer` or `admin` [predefined role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or an equivalent custom role.
+
+:::
+:::{tab-item} {{stack}}
+:sync: stack
+
+- An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all [Elastic deployment models](/deploy-manage/deploy.md). The quickest way to get started is by using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md).
+- If you want to add sample data, you must have authority to create an index, create documents, and view them. To use {{kib}}, you'll also need read authority for the **Discover**, **Dev Tools**, and **{{es}}** features at a minimum. For example, create a custom role that has `all` index privileges for the sample index ("semantic-index") and `read` authority for the specific {{kib}} features. To learn more, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+:::
+::::
 <!--
 TBD: It seems like semantic search fields exist in all, so what is the value of this "optimized for vectors" option?
 -->
@@ -30,9 +44,25 @@ TBD: It seems like semantic search fields exist in all, so what is the value of 
 
 % TBD: What type of data is ideal for semantic search?
 
-There are some small data sets available for learning purposes when you select the semantic search workflow in the [guided index flow](/solutions/search/serverless-elasticsearch-get-started.md#elasticsearch-follow-guided-index-flow).
+::::{tab-set}
+:::{tab-item} {{serverless-short}}
+:sync: serverless
+There are some small data sets available for learning purposes.
+Go to **{{es}} > Home**, select the semantic search workflow, and click **Create a semantic optimized index**.
+
 Follow the instructions to install an {{es}} client and copy the code examples.
-Alternatively, try out the API requests in the [Console](/explore-analyze/query-filter/tools/console.md):
+Alternatively, try out the API requests in the [Console](/explore-analyze/query-filter/tools/console.md).
+:::
+:::{tab-item} {{stack}}
+:sync: stack
+There are some small data sets available for learning purposes.
+Go to **{{es}} > Home** and click **Create API index**.
+Select the semantic search workflow in the guided index flow.
+
+Follow the instructions to install an {{es}} client and copy the code examples.
+Alternatively, try out the API requests in the [Console](/explore-analyze/query-filter/tools/console.md).
+:::
+::::
 
 :::::{stepper}
 
