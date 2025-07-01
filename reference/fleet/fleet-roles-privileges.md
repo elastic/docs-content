@@ -167,6 +167,11 @@ To enable actions such as creating a new {{fleet-server}}, set the **Fleet Setti
 
 ## {{fleet}} privileges and available actions [fleet-roles-and-privileges-sub-features-table]
 
+```{applies_to}
+stack: ga 9.1
+```
+
+
 This table shows the set of available actions for the `read` or `all` privilege for each {{fleet}} feature.
 
 |Component |`read` privilege |`all` privilege |
