@@ -469,7 +469,9 @@ FROM my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001
 ```
 
 
-## Optional remote clusters [ccq-skip-unavailable-clusters]
+## Skipping problematic remote clusters [ccq-skip-unavailable-clusters]
+
+{{ccs-cap}} for {{esql}} behavior when there are problems connecting to or running query on remote clusters differs between versions.
 
 ::::{tab-set}
 
