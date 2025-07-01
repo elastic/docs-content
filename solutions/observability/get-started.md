@@ -14,7 +14,7 @@ products:
 
 # Get started with Elastic {{observability}} [observability-get-started]
 
-New to Elastic {{observability}}? Discover more about our observability features and how to get started. The following instructions will guide you through the process of setting up your first Elastic {{observability}} deployment, collect data from infrastructure and applications, and get started with exploring your data.
+New to Elastic {{observability}}? Discover more about our observability features and how to get started. The following instructions will guide you through setting up your first Elastic {{observability}} deployment, collecting data from infrastructure and applications, and exploring your data.
 
 ## Get started with your use case [get-started-with-use-case]
 
