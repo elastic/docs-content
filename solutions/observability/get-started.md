@@ -158,7 +158,7 @@ Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to coll
 4. Fill out the details.
 5. (Optional) Add a [Playwright](https://playwright.dev/) script.
 6. Test and create your monitor.
-::::
+:::::
 ::::::
 
 ::::::{step} Explore your logs, metrics, and traces
