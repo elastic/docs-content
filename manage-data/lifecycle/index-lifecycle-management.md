@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/overview-index-lifecycle-management.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-concepts.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-configure-index-management.html
 applies_to:
   stack: ga
 products:
