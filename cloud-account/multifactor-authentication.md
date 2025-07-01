@@ -106,4 +106,12 @@ The only secure and recommended approach is to use one Elastic account for each 
 
 For now, you will need to answer an MFA challenge on every login, but we are working on adding a **Trust this device** option, which will "silence" the MFA challenge for one month per user session.
 
+**Can I use multiple email addresses for MFA?**
+
+No, we support only single email address for MFA verification. To ensure clarity and maintain security best practices, Elastic Cloud is designed to use only one designated email address for MFA purposes. This email is used to send your one-time verification codes during login. If you need to update your MFA email address, review [Update your email address](update-your-email-address.md) page for more information.
+
+
+
+
+
 
