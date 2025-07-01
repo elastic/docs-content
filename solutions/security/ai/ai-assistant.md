@@ -17,6 +17,7 @@ The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity op
 
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
+:width: 75%
 :screenshot:
 :::
 
