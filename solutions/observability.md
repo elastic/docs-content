@@ -34,7 +34,7 @@ Read the documentation for each of the {{observability}} features to learn more 
 
 ## Reference documentation [_reference_documentation]
 
-The {{observability}} reference documentation is available in [the Elastic reference documentation](/reference/observability/). 
+The {{observability}} reference documentation is available in the [Elastic reference documentation](/reference/observability/index.md). 
 
 You can also browse reference documentation for the following components:
 
