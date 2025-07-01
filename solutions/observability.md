@@ -17,6 +17,8 @@ products:
 
 Elastic {{observability}} accelerates problem resolution with open, flexible, and unified observability powered by advanced machine learning and analytics. Elastic ingests all operational and business telemetry and correlates for faster root cause detection.
 
+For a complete overview, refer to [**What is Elastic {{observability}}**](/solutions/observability/get-started/what-is-elastic-observability.md).
+
 ## Get started [_get_started]
 
 To start your {{observability}} journey, read the [**Get started**](/solutions/observability/get-started.md) guide, which presents all the essential steps, with links to valuable resources. You can also browse the {{observability}} [**Quickstart guides**](/solutions/observability/get-started/quickstarts.md).
