@@ -44,7 +44,7 @@ Agentless deployment for the following integrations is in beta and is subject to
 8. Microsoft Sentinel
 9. Okta
 10. Qualys VMDR
-11. SentinelOne Zscaler
+11. SentinelOne
 12. Tenable IO
 13. Wiz
 14. Zscaler ZIA
