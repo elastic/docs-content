@@ -21,6 +21,6 @@ Adding indices to the `observability:logSources` setting that don't contain log 
 
 To configure log data sources using an API, use the `saved_objects` API. To do this,
 
-1. From **Stack Management** → **Saved Objects**, [export](/explore-analyze/find-and-organize/saved-objects.md#export-saved-objects-export) the log data views, which are stored as an `infrastructure-monitoring-log-view` saved object type, to use as a template.
+1. From **Stack Management** → **Saved Objects**, [export](/explore-analyze/find-and-organize/saved-objects.md) the log data views, which are stored as an `infrastructure-monitoring-log-view` saved object type, to use as a template.
 1. Modify the relevant data view fields in the exported JSON.
-1. Import the saved object using the [import saved objects API](https://www.elastic.co/docs/api/doc/kibana/v8/operation/operation-importsavedobjectsdefault).
+1. Import the saved object using the [import saved objects API]({{kib-apis}}/operation/operation-importsavedobjectsdefault).
