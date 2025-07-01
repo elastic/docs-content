@@ -54,7 +54,7 @@ Logs and metrics from your hosts and services help you monitor the health and pe
 
 Elastic {{observability}} can collect telemetry data from hosts, containers, and Kubernetes through the EDOT Collector or the Elastic Agent.
 
-1. In **Observability**, go to **Add data** and select **Host**.
+1. Select **Add data** from the main menu and then select **Host**.
 2. Select **OpenTelemetry** or **Elastic Agent**.
 3. Follow the instructions for your platform.
 
