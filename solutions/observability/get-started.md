@@ -31,8 +31,8 @@ The **Admin** role or higher is required to create projects. Refer to [Assign us
 :::
 
 1. Navigate to [cloud.elastic.co](https://cloud.elastic.co/) and log in to your account, or create one.
-2. Within **Serverless projects**, select **Create project**.
-3. Under **Observability**, select **Next**.
+2. Select **Create serverless project**.
+3. Under **Elastic for Observability**, select **Next**.
 4. Enter a name for your project.
 5. (Optional) Select **Edit settings** to change your project settings:
 
@@ -55,7 +55,7 @@ Logs and metrics from your hosts and services help you monitor the health and pe
 Elastic {{observability}} can collect telemetry data from hosts, containers, and Kubernetes through the EDOT Collector or the Elastic Agent.
 
 1. In **Observability**, go to **Add data** and select **Host**.
-2. Select **OpenTelemetry** or **Elastic Agent**.
+2. Select **OpenTelemetry: Logs & Metrics** or **Elastic Agent: Logs & Metrics**.
 3. Follow the instructions for your platform.
 
 For an overview of the Elastic Distribution of OpenTelemetry Collector, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
@@ -64,13 +64,13 @@ For an overview of the Elastic Distribution of OpenTelemetry Collector, refer to
 
 :::{tab-item} Kubernetes
 
-Elastic {{observability}} can collect telemetry data from Kubernetes through the EDOT Collector or the Elastic Agent.
+Elastic {{observability}} can collect telemetry data from Kubernetes through the Elastic Distribution of OpenTelemetry Collector or the Elastic Agent.
 
 1. In **Observability**, go to **Add data** and select **Kubernetes**.
-2. Select **OpenTelemetry** or **Elastic Agent**.
+2. Select **OpenTelemetry: Full Observability** or **Elastic Agent: Logs & Metrics**.
 3. Follow the instructions for your platform.
 
-For an overview of the Elastic Distribution of OpenTelemetry Collector, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
+For an overview of EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
 
 :::
 
@@ -89,8 +89,9 @@ Elastic {{observability}} can collect telemetry data from services through Elast
 Elastic {{observability}} can collect telemetry data from cloud services through Elastic integrations.
 
 1. In **Observability**, go to **Add data** and select **Cloud**.
-2. Select the Cloud integration you want to add.
-3. Select **Add**.
+2. Select your Cloud provider to view the collection of integrations available for that provider.
+3. Select the integration you want to add.
+4. Select **add**
 :::
 
 :::{tab-item} CI/CD
