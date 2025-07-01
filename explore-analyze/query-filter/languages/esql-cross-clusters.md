@@ -480,7 +480,7 @@ Remote clusters are configured with the `skip_unavailable: true` setting by defa
 * The remote cluster does not have the requested index, or it is not accessible due to security settings.
 * An error happened while processing the query on the remote cluster.
 
-The `partial` status will be used if the remote query was partially successful and some data may have been returned.
+The `partial` status means the remote query either has errors or was interrupted by an explicit user action, but some data may be returned.
 
 Queries will still fail when `skip_unavailable` is set `true`, if none of the specified indices exist. For example, the
 following queries will fail:
