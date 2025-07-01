@@ -84,6 +84,13 @@ Each user’s chat history (up to the 99 most recent conversations) and custom Q
 Use these features to adjust and act on your conversations with AI Assistant:
 
 * (Optional) Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…**.
+* (Optional) Select a *prompt tile* to start your conversation with a predefined goal or topic. Prompt tiles help you begin structured tasks or investigations into common {{elastic-sec}} workflows. The available prompt tiles include:
+
+   * **Alerts**: Quickly identify and prioritize the most important alerts from the last 24 hours.
+   * **Research**: Get a summary of the latest {{elastic-sec}} Labs research articles.
+   * **Query**: Generate ES|QL queries based on a specific goal or requirement.
+   * **Suggest**: Explore the types of questions you can ask the AI Assistant about {{elastic-sec}}.
+
 * (Optional) Select a *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}.
 
    :::{image} /solutions/images/security-quick-prompts.png
