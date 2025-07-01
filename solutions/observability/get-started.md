@@ -45,7 +45,9 @@ The **Admin** role or higher is required to create projects. Refer to [Assign us
 For other types of deployments, refer to [Deploy](/deploy-manage/deploy.md). For a breakdown of the differences between deployment types and what they support, refer to [Detailed deployment comparison](/deploy-manage/deploy/deployment-comparison.md).
 ::::
 
-::::{step} Collect infrastructure logs and metrics
+::::{step} Collect observability data
+
+#### Infrastructure logs and metrics
 
 Bring logs and metrics from your hosts and services into Elastic {{observability}} to monitor the health and performance of your infrastructure. You can collect this data from hosts, containers, Kubernetes, and Cloud services.
 
@@ -108,9 +110,7 @@ Elastic provides a powerful LLM observability framework including key metrics, l
 Refer to [LLM observability](/solutions/observability/applications/llm-observability.md) for more information.
 :::
 
-::::
-
-::::{step} Collect application traces, metrics, and logs
+#### Application traces, metrics, and logs
 
 Bring traces, logs, and metrics into [Elastic APM](/solutions/observability/apm/index.md) to help you troubleshoot and optimize your applications. You can collect this data using OpenTelemetry or APM Server.
 
@@ -134,6 +134,8 @@ Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to coll
 4. Follow the instructions in the tab.
 :::
 ::::
+
+::::{step} Add Synthetics monitoring
 
 [Synthetics monitoring](/solutions/observability/synthetics/index.md) lets you simulate, track, and visualize user journeys to catch performance, availability, and functionality issues in your services and applications.
 
