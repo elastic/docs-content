@@ -135,7 +135,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 ### Work with Kubernetes logs
 
-You can search and analyze Kubernetes logs using Elastic’s Discover capability. To use **Discover**, select **Discover** under **Analytics**.
+You can search and analyze Kubernetes logs using Elastic’s Discover capability. Find **Discover** in the main menu or use the global search field.
 
 :::{image} /solutions/images/screenshot-observability-monitoring-k8s-kubernetes-logs-can-be-searched.png
 :alt: Kubernetes logs in Discover
@@ -159,7 +159,7 @@ Select **Alerts** and then **Create rules**. This allows you to get notification
 
 ### Use machine learning to uncover insights
 
-Go to **Analytics** → **Machine Learning**, then select **Anomaly Detection** → **Jobs** to create a machine learning job. By setting up machine learning jobs, for example, rather than having an alert when a specific percentage of memory usage has occurred, you can know when the usage is unusual.
+Find **Machine Learning** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select **Anomaly Detection** → **Jobs** to create a machine learning job. By setting up machine learning jobs, for example, rather than having an alert when a specific percentage of memory usage has occurred, you can know when the usage is unusual.
 
 :::{image} /solutions/images/screenshot-observability-monitoring-k8s-leverage-machine-learning-to-uncover-insights.png
 :alt: Machine learning job

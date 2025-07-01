@@ -36,7 +36,7 @@ Once your deployment is complete click **Applications** and select **Monitors** 
 There are two ways to run synthetic monitors which will depend on if the website or app being tested are accessible from:
 
 * Elastic's global managed testing infrastructure: With Elastic's global managed testing infrastructure, you can create and run monitors in multiple locations without having to manage your own infrastructure. Elastic takes care of software updates and capacity planning for you. This is perfect for testing websites or applications that are accessible from the public internet.  
-* Private Locations: Private Locations allow you to run monitors from your own premises. To use Private Locations you must create a Private Location before continuing. For step-by-step instructions, refer to Monitor resources on private networks.
+* Private networks support allows you to run monitors from your own premises. To run monitors from your own private network you must create a **Private Location** before continuing. For step-by-step instructions, refer to [Monitor resources on private networks](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
 
 This guide shows how to leverage Elastic's global managed testing infrastructure.
 
@@ -50,57 +50,58 @@ Create a single page browser monitor. Make sure to select a URL and the location
 
 :::{image} /solutions/images/synthetics-create-browser-monitor.png
 :alt: Create browser monitor
+:screenshot:
 :::
 
 Synthetics will be executing the test across all of those locations, automatically refreshing the screen.
 
 :::{image} /solutions/images/synth-monitors.png
 :alt: Browser monitor
+:screenshot:
 :::
 
 ::::
 
 ::::{step} Turn on alerts
 
-If there are any issues, you might want to turn on alerts. Select **Configure now** from the Alerts warning, or go to **Settings** and then **Alerting**. Select the default connector, which is already prepopulated when you deploy Elastic. After you select your default connector you can add your default email address to receive the alerts.
+If there are any issues, you might want to turn on alerts:
 
-Go back to **Monitors** and select **Alerts and rules** then **Monitor status rule**. A dialog will appear where you can edit your alerts. You can also select alternate connector types, such as Slack, Microsoft Teams, and more. When you set up alerts and receive notifications, you’ll also receive a deep link directly into the Error details page. From here you can see:
+1. Select **Configure now** from the Alerts warning, or go to **Settings** and then **Alerting**. 
+2. Select the default connector, which is already prepopulated when you deploy Elastic. After you select your default connector you can add your default email address to receive the alerts.
+3. Go back to **Monitors**, select **Alerts and rules** then **Monitor status rule**. A dialog will appear where you can edit your alerts. You can also select alternate connector types, such as Slack, Microsoft Teams, and more. 
+
+When you set up alerts and receive notifications, you’ll also receive a deep link directly into the Error details page. From here you can see:
 
 * What step failed  
 * Screenshot of the failed step  
 * Screenshot of the last time that step was successful  
 * The times of the failed step and last time step was successful to compare  
-* Select Code executed, to see the code that was executed  
-* Select Console to see what the browser is showing
-
-:::{image} /solutions/images/Synthetic-Error_details.png
-:alt: Error details
-:::
+* What code was executed  
+* What the browser is showing
 
 ::::
 
 ::::{step} Analyze your monitor data
 
-Go to **Monitors** and select one of the monitors, you’ll see a dialog with a quick summary of the monitor. Select **Go to monitor** to see high level insights. Charts will start to render as more tests come through but you can quickly see the availability, the duration to execute tests, the timeline, and you can also drill into the waterfall chart. 
+Go to **Monitors** and select one of the monitors, you’ll see a dialog with a quick summary of the monitor. Select **Go to monitor** to see high level insights. Charts will start to render as more tests come through but you can quickly see the availability, the duration to execute tests, the timeline, and you can also drill down into the waterfall chart. 
 
 :::{image} /solutions/images/Monitor_drill_down_1.png
 :alt: Monitor drill down
+:screenshot:
 :::
 
-To drill in, select the icon under **View test run**. From here you can see the waterfall chart, object weight, object count, and more.
+To drill down, select the icon under **View test run**. From here you can see the waterfall chart, object weight, object count, and more.
 
 :::{image} /solutions/images/Monitor_drill_down_2.png
 :alt: Monitor drill down
+:screenshot:
 :::
 
 ::::
 :::::
 
 ## More resources
-
-* [Explore observability demo gallery](http://docs.google.com/demo-gallery/?solutions=observability&features=null)  
-* [Get started with monitoring your application performance (APM/tracking)](http://docs.google.com/getting-started/observability/monitor-your-application-performance)  
-* [Get started with monitoring your hosts](http://docs.google.com/getting-started/observability/monitor-your-hosts)  
-* [Get started with monitoring Kubernetes clusters](http://docs.google.com/getting-started/observability/monitor-kubernetes-clusters)  
-* [Get started with optimizing workloads with universal profiling](http://docs.google.com/observability/universal-profiling)  
-* [Create monitors for project monitors](https://www.elastic.co/guide/en/observability/current/synthetics-get-started-project.html)
+ 
+* [Create monitors for project monitors](/solutions/observability/synthetics-get-started-project.md).
+* [Use the Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md).
+* [Configure lightweight monitors](/solutions/observability/synthetics/configure-lightweight-monitors.md).
