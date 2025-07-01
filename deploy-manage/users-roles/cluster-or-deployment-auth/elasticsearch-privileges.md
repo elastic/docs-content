@@ -354,6 +354,9 @@ To learn how to assign privileges to a role, refer to [](/deploy-manage/users-ro
 `manage_data_stream_lifecycle`
 :   All [Data stream lifecycle](../../../manage-data/lifecycle/data-stream.md) operations relating to reading and managing the built-in lifecycle of a data stream. This includes operations such as adding and removing a lifecycle from a data stream.
 
+`manage_failure_store`
+:   All `monitor` privileges plus index and data stream administration limited to failure stores only. Only applies to data streams when accessing them via the [index component selector syntax](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-component-selectors).
+
 `manage_follow_index`
 :   All actions that are required to manage the lifecycle of a follower index, which includes creating a follower index, closing it, and converting it to a regular index. This privilege is necessary only on clusters that contain follower indices.
 
@@ -383,6 +386,8 @@ To learn how to assign privileges to a role, refer to [](/deploy-manage/users-ro
 
     This privilege is not available in {{serverless-full}}.
 
+`read_failure_store`
+:   Read-only access to actions performed on a data stream's failure store. Required for access to failure store data (count, explain, get, mget, get indexed scripts, more like this, multi percolate/search/termvector, percolate, scroll, clear_scroll, search, suggest, tv). Only applies to data streams when accessing them via the [index component selector syntax](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-component-selectors).
 
 `view_index_metadata`
 :   Read-only access to index and data stream metadata (aliases, exists, field capabilities, field mappings, get index, get data stream, ilm explain, mappings, search shards, settings, validate query). This privilege is available for use primarily by {{kib}} users.
