@@ -18,3 +18,4 @@ Extend the capabilities of Elastic by creating integrations that connect Elastic
 
 Develop custom plugins to add new functionalities to Elasticsearch. Check out our [Elasticsearch Plugins Development Guide](elasticsearch://extend/index.md) for detailed instructions and best practices.
 
+test
