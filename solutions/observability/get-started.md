@@ -20,12 +20,13 @@ New to Elastic {{observability}}? Discover more about our observability features
 
 Learn how to spin up a deployment on {{ech}} or create an {{obs-serverless}} project and use Elastic {{observability}} to gain deeper insight into the behavior of your applications and systems.
 
-:::::{stepper}
+:::::::{stepper}
 
-::::{step} Create an Observability project
+::::::{step} Create an Observability project
 
 An {{obs-serverless}} project allows you to run {{obs-serverless}} in an autoscaled and fully-managed environment, where you don’t have to manage the underlying {{es}} cluster or {{kib}} instances.
 
+::::{dropdown} Steps for creating a project
 :::{note}
 The **Admin** role or higher is required to create projects. Refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 :::
@@ -44,10 +45,13 @@ The **Admin** role or higher is required to create projects. Refer to [Assign us
 
 For other types of deployments, refer to [Deploy](/deploy-manage/deploy.md). For a breakdown of the differences between deployment types and what they support, refer to [Detailed deployment comparison](/deploy-manage/deploy/deployment-comparison.md).
 ::::
+::::::
 
-::::{step} Collect infrastructure logs and metrics
+::::::{step} Collect infrastructure logs and metrics
 
 Bring logs and metrics from your hosts and services into Elastic {{observability}} to monitor the health and performance of your infrastructure. You can collect this data from hosts, containers, Kubernetes, and Cloud services.
+
+:::::{dropdown} Steps for collecting infrastructure logs and metrics
 
 ::::{tab-set}
 :::{tab-item} Hosts
@@ -107,11 +111,15 @@ Elastic provides a powerful LLM observability framework including key metrics, l
 
 Refer to [LLM observability](/solutions/observability/applications/llm-observability.md) for more information.
 :::
-::::
 
-::::{step} Collect application traces, metrics, and logs
+:::::
+::::::
+
+::::::{step} Collect application traces, metrics, and logs
 
 Bring traces, logs, and metrics into [Elastic APM](/solutions/observability/apm/index.md) to help you troubleshoot and optimize your applications. You can collect this data using OpenTelemetry or APM Server.
+
+:::::{dropdown} Steps for collecting application traces, metrics, and logs
 
 ::::{tab-set}
 :::{tab-item} OpenTelemetry
@@ -132,22 +140,24 @@ Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to coll
 3. Select the tab for your language or framework.
 4. Follow the instructions in the tab.
 :::
-::::
+:::::
+::::::
 
-::::{step} Add Synthetics monitoring
+::::::{step} Add Synthetics monitoring
 
 [Synthetics monitoring](/solutions/observability/synthetics/index.md) lets you simulate, track, and visualize user journeys to catch performance, availability, and functionality issues in your services and applications. It periodically checks the status of your services and applications.
 
+:::::{dropdown} Steps for adding Synthetics monitoring
 1. Select **Add data** from the main menu and then select **Application**.
 2. Select **Synthetic monitor**. 
 3. Select a [monitor type](/solutions/observability/synthetics/index.md).
 4. Fill out the details.
 5. (Optional) Add a [Playwright](https://playwright.dev/) script.
 6. Test and create your monitor.
-
 ::::
+::::::
 
-::::{step} Explore your logs, metrics, and traces
+::::::{step} Explore your logs, metrics, and traces
 
 After you've onboarded your data, you can explore it in the following Elastic {{observability}} UIs, or query it using [query languages](elasticsearch://reference/query-languages/index.md).
 
@@ -156,9 +166,9 @@ After you've onboarded your data, you can explore it in the following Elastic {{
 - [View and analyze APM data](/solutions/observability/apm/view-analyze-data.md) in the Applications UI.
 - Use the [Elastic Query Language ({{esql}})](/explore-analyze/discover/try-esql.md) to search and filter your data.
 
-::::
+::::::
 
-::::{step} Create your first dashboards
+::::::{step} Create your first dashboards
 
 Elastic provides a wide range of prebuilt dashboards for visualizing observability data from a variety of sources. These dashboards are loaded automatically when you install [Elastic integrations](https://docs.elastic.co/integrations). You can also create new dashboards and visualizations based on your data views.
 
@@ -166,17 +176,17 @@ To create a new dashboard, select **Create Dashboard** and begin adding visualiz
 
 For more information about creating dashboards, refer to [Create your first dashboard](/explore-analyze/dashboards/create-dashboard-of-panels-with-web-server-data.md).
 
-::::
+::::::
 
-::::{step} Set up alerts and SLOs
+::::::{step} Set up alerts and SLOs
 
 Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md) to get started.
 
 {{observability}} also lets you define Service Level Objectives (SLOs) to set clear, measurable targets for your service performance, based on factors like availability, response times, error rates, and other key metrics. Refer to [Create and manage SLOs](/solutions/observability/incident-management/service-level-objectives-slos.md) to get started.
 
-::::
+::::::
 
-:::::
+:::::::
 
 ## Related resources
 
@@ -184,12 +194,7 @@ Use these resources to learn more about {{observability}} or get started in a di
 
 ### Quickstarts
 
-Quickstarts are compact hands-on guides that help you experiment with {{observability}} features. Each quickstart provides:
-
-* A highly opinionated, fast path to data ingestion
-* Sensible configuration defaults with minimal configuration required
-* Auto-detection of logs and metrics for monitoring hosts
-* Quick access to related dashboards and visualizations
+Quickstarts are compact hands-on guides that help you experiment with {{observability}} features. Each quickstart provides a highly opinionated, fast path to data ingestion, with minimal configuration required.
 
 [Browse the Elastic {{observability}} quickstarts](/solutions/observability/get-started/quickstarts.md) to get started with specific use cases.
 
