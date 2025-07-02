@@ -23,7 +23,7 @@ To add a collapsible section:
 1. Open the dashboard and make sure that you are in **Edit** mode.
 2. Select **Add panel** and select **Collapsible section**. The collapsible section is added at the end of the dashboard.
 3. Optionally, edit the label of the section.
-4. Move any panels you want into the section by dragging and dropping them.
+4. Drag and drop any panels you want into the section.
    :::{tip}
    The section must be expanded in order to place panels into it.
    :::
