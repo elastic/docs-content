@@ -50,7 +50,7 @@ You also can set up [{{beats}}](beats://reference/index.md), such as a [{{filebe
 
 ## Create an enrich policy [create-enrich-policy]
 
-After adding enrich data to your source indices, use the [create enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an enrich policy.
+After adding enrich data to your source indices, use the [create enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy) or [Index Management in {{kib}}](/manage-data/data-store/index-basics.md#manage-enrich-policies) to create an enrich policy.
 
 ::::{warning}
 Once created, you can’t update or change an enrich policy. See [Update an enrich policy](#update-enrich-policies).
@@ -61,7 +61,7 @@ Once created, you can’t update or change an enrich policy. See [Update an enri
 
 ## Execute the enrich policy [execute-enrich-policy]
 
-Once the enrich policy is created, you need to execute it using the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an [enrich index](data-enrichment.md#enrich-index).
+Once the enrich policy is created, you need to execute it using the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) or [Index Management in {{kib}}](/manage-data/data-store/index-basics.md#manage-enrich-policies) to create an [enrich index](data-enrichment.md#enrich-index).
 
 :::{image} /manage-data/images/elasticsearch-reference-enrich-policy-index.svg
 :alt: enrich policy index
