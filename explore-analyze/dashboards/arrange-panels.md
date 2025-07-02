@@ -16,7 +16,7 @@ stack: ga 9.1
 serverless: ga
 ```
 
-Organize your dashboard panels into sections that users can collapse or expand when viewing them. Collapsible sections also help dashboards load faster by only loading the content from expanded sections.
+Organize your dashboard panels into collapsible sections to improve readability and navigation, especially for dashboards with many panels. Collapsible sections also help dashboards load faster by only loading the content from expanded sections.
 
 To add a collapsible section:
 
