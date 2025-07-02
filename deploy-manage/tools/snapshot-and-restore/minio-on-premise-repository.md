@@ -72,9 +72,11 @@ Don’t forget to make the bucket name DNS-friendly, for example no underscores 
 
 ## {{ece}} configuration [ece-install-with-minio]
 
-This section describes the configuration changes required to use MinIO storage within ECE and for your {{es}} deployments.
+This section describes the configuration changes required to use MinIO storage within ECE to make periodic snapshots of your {{es}} deployments. The required steps include:
 
-In summary, you must configure the repository at ECE platform level and associate it with your deployments. You must also apply certain settings to the deployments.
+* Configuring the repository at ECE level
+* Associating it with your deployments
+* Applying specific YAML settings to the deployments
 
 ### Add the repository to {{ece}} [ece-add-repository]
 
@@ -102,9 +104,7 @@ You must add the new repository at ECE platform level before it can be used by y
 
 6. Select **Save** to submit your configuration.
 
-### Deployments configuration
-
-#### Associate repository with deployments
+### Associate repository with deployments
 
 Once the MinIO repository is created at the ECE platform level, you can associate it with your {{es}} deployments in two ways:
 
@@ -112,9 +112,9 @@ Once the MinIO repository is created at the ECE platform level, you can associat
 
 * For existing deployments, associate the repository by following the instructions in [Manage {{es}} clusters repositories](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md#ece-manage-repositories-clusters).
 
-#### Additional settings for {{es}} [ece-6.x-settings]
+### Additional settings for {{es}} [ece-6.x-settings]
 
-For {{es}} versions 6.0 and later, after selecting the repository, you also need to configure your [{{es}} user settings YAML](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings-elasticsearch.md) to specify the endpoint and protocol. For example:
+After selecting the repository, you also need to configure your [{{es}} user settings YAML](/deploy-manage/deploy/cloud-enterprise/edit-stack-settings-elasticsearch.md) to specify the endpoint and protocol. For example:
 
 ```
 s3.client.default.endpoint: "<your MinIO endpoint>:9000"
@@ -122,10 +122,6 @@ s3.client.default.protocol: http
 ```
 
 Refer to the [{{es}} S3 plugin details](/deploy-manage/tools/snapshot-and-restore/s3-repository.md) for more information.
-
-##### Upgrade from 5.x to 6.x deployments [ece-upgrade-minio]
-
-The configuration options for the {{es}} S3 repository plugin have changed from 5.x to 6.x versions and you must copy the endpoint and protocol values from your repository configuration to your **User Settings** YAML before you upgrade.
 
 #### Add S3 repository plugin (only for {{es}} 7.x)
 
