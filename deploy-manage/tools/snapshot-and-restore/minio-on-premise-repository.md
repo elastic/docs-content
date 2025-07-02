@@ -10,17 +10,21 @@ products:
 
 # MinIO self-managed repository [ece-configuring-minio]
 
-[MinIO](https://min.io/docs/minio/linux/index.html) is a popular, open-source object storage server compatible with the Amazon AWS S3 API. As an [S3 compatible service](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-compatible-services), MinIO is supported for use as a snapshot repository in {{ece}} (ECE).
+[MinIO](https://min.io/docs/minio/container/index.html) is a popular, open-source object storage server compatible with the Amazon AWS S3 API. As an [S3 compatible service](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-compatible-services), MinIO is supported for use as a snapshot repository in {{ece}} (ECE).
 
 This guide walks you through integrating MinIO with ECE to store your {{es}} snapshots.
 
-## Create a test environment [ece-minio-test]
+## Deploy MinIO
+
+This section provides guidance and recommendations for deploying MinIO. It does not include detailed installation steps, as MinIO is a third-party product. For full installation instructions, refer to the official [MinIO documentation](https://min.io/docs/).
+
+### Create a test environment [ece-minio-test]
 
 We recommend following either the [MinIO Quickstart Guide](https://charts.min.io/) or the [MinIO for containers guide](https://min.io/docs/minio/container/index.html) to create a simple MinIO standalone installation for your initial evaluation and development.
 
 Be sure to use the `docker` or `podman` `-v` option to map persistent storage to the container.
 
-## Production environment prerequisites [ece-minio-requirements]
+### Production environment prerequisites [ece-minio-requirements]
 
 Installing MinIO for production requires a high-availability configuration where MinIO is running in [Distributed mode](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#minio-mnmd).
 
@@ -44,7 +48,7 @@ We recommend:
 * Using a single MinIO endpoint with the {{ece}} installation, to simplify repository management.
 * Securing access to the MinIO endpoint with TLS.
 
-## Air-gapped installations [ece-minio-offline-installation]
+### Air-gapped installations [ece-minio-offline-installation]
 
 If you are installing MinIO offline, the process is very similar to the [offline installation of {{ece}}](../../deploy/cloud-enterprise/air-gapped-install.md). There are two options:
 
@@ -60,7 +64,6 @@ Gather the following after your installation:
 ::::{tip}
 MinIO might report various Endpoint URLs, be sure to choose the one that will be routable from your {{es}} Docker containers.
 ::::
-
 
 ## Create the S3 bucket [ece-minio-create-s3-bucket]
 
