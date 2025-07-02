@@ -68,7 +68,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
 3. If you use {{esql}}, specify a time field and how to group alerts. 
 
     Time field
-    :   Specify the time field to use when filtering query results by the time window that you specify. You can choose `@timestamp`, `timestamp`, or `utc_time`.
+    :   Specify the time field to use when filtering query results by the time window that you specify. You can choose any time field that's availble on the index you're querying, for example, the `@timestamp` field.
 
     Alert group
     :   Select **Create an alert if matches are found** to create a single alert when the query matches multiple events. Select **Create an alert for each row** to create an alert for each query match. Whenever possible, each alert will have a unique ID. 
