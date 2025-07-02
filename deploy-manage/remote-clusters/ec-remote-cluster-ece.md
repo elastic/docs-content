@@ -144,7 +144,7 @@ A deployment can be configured to trust all or specific deployments in a remote 
 
 7. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
 8. Select **Create trust** to complete the configuration.
-9. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md). You will only be able to connect 2 deployments successfully when both of them trust each other.
+9. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md). You will only be able to connect two deployments successfully when both of them trust each other.
 
 ::::{note}
 The environment ID and cluster IDs must be entered fully and correctly. For security reasons, verification of the IDs is not possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
