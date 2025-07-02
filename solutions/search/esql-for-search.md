@@ -55,7 +55,7 @@ The following table summarizes the key search features available in [{{esql}}](/
 
 {{esql}}'s search functions address several key limitations that existed for text filtering: they work directly on multivalued fields, leverage analyzers for proper text analysis, and use optimized Lucene index structures for better performance.
 
-### Relevance scoring
+### Relevance scoring [esql-for-search-scoring]
 
 To get relevance-ranked results, you must explicitly request scoring with `METADATA _score` and sort by the score. Without this, even search functions like `MATCH` will only filter documents without ranking them.
 
