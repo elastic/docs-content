@@ -27,7 +27,7 @@ The following table summarizes the key search features available in [{{esql}}](/
 |---------|-------------|----------------|
 | [Match function/operator](#match-function-and-operator) | Perform basic text searches with `MATCH` function or match operator (`:`) | 8.17 |
 | [Query string function](#query-string-qstr-function) | Execute complex queries with `QSTR` using Query String syntax | 8.17 |
-| [Relevance scoring](#relevance-scoring) | Calculate and sort by relevance with `METADATA _score` | 8.18/9.0 |
+| [Relevance scoring](#esql-for-search-scoring) | Calculate and sort by relevance with `METADATA _score` | 8.18/9.0 |
 | [Semantic search](#semantic-search) | Perform semantic searches on `semantic_text` field types | 8.18/9.0 |
 | [Hybrid search](#hybrid-search) | Combine lexical and semantic search approaches with custom weights | 8.18/9.0 |
 | [Kibana Query Language](#kql-function) | Use Kibana Query Language with the `KQL` function | 8.18/9.0 |
