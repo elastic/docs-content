@@ -33,8 +33,8 @@ toc:
             children:
               - file: search/vector/dense-vector.md
                 children:
-                 - file: search/vector/knn.md
-                 - file: search/vector/bring-own-vectors.md
+                  - file: search/vector/knn.md
+                  - file: search/vector/bring-own-vectors.md
               - file: search/vector/sparse-vector.md
               - file: search/vector/dense-versus-sparse-ingest-pipelines.md
           - file: search/semantic-search.md
@@ -90,18 +90,22 @@ toc:
       - file: observability/get-started.md
         children:
           - file: observability/get-started/what-is-elastic-observability.md
-          - file: observability/get-started/create-an-observability-project.md
-          - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
-          - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
-          - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
-          - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
-          - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
-          - file: observability/get-started/add-data-from-splunk.md
-          - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
-          - file: observability/get-started/get-started-with-dashboards.md
+          - file: observability/get-started/quickstarts.md
+            children:
+              - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
+              - file: observability/get-started/quickstart-monitor-your-application-performance.md
+              - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
+              - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
+              - file: observability/get-started/quickstart-create-synthetic-monitor.md
+              - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
+              - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
+              - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
+          - file: observability/get-started/other-tutorials/index.md
+            children:
+              - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
+              - file: observability/get-started/other-tutorials/add-data-from-splunk.md
       - file: observability/applications/index.md
         children:
-          - file: observability/applications/llm-observability.md
           - file: observability/apm/index.md
             children:
               - file: observability/apm/get-started.md
@@ -305,6 +309,7 @@ toc:
               - file: observability/synthetics/support-matrix.md
               - file: observability/synthetics/encryption-security.md
           - file: observability/applications/user-experience.md
+          - file: observability/applications/llm-observability.md
           - file: observability/uptime/index.md
             children:
               - file: observability/uptime/get-started.md
@@ -315,7 +320,6 @@ toc:
                   - file: observability/uptime/inspect-duration-anomalies.md
               - file: observability/uptime/configure-settings.md
           - file: observability/otlp-visualize.md
-          - file: observability/applications/tutorial-monitor-java-application.md
       - file: observability/cicd.md
       - file: observability/cloud.md
         children:

@@ -28,7 +28,7 @@ Note the following restrictions for running {{agent}} commands:
 * [help](#elastic-agent-help-command)
 * [inspect](#elastic-agent-inspect-command)
 * [install](#elastic-agent-install-command)
-* [otel](#elastic-agent-otel-command) [preview]
+* [otel](#elastic-agent-otel-command)
 * [privileged](#elastic-agent-privileged-command)
 * [restart](#elastic-agent-restart-command)
 * [run](#elastic-agent-run-command)
