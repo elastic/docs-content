@@ -28,7 +28,7 @@ Be sure to use the `docker` or `podman` `-v` option to map persistent storage to
 
 Installing MinIO for production requires a high-availability configuration where MinIO is running in [Distributed mode](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#minio-mnmd).
 
-As mentioned in the MinIO documentation, you will need to have 4-16 MinIO drive mounts. There is no hard limit on the number of MinIO nodes. It might be convenient to place the MinIO node containers on your ECE hosts to ensure you have a suitable level of availability, but those can not be located on the same hosts as ECE proxies since they both listen on the same port.
+As mentioned in the MinIO documentation, you will need to have 4-16 MinIO drive mounts. There is no hard limit on the number of MinIO nodes. It might be convenient to place the MinIO node containers on your ECE hosts to ensure you have a suitable level of availability, but those cannot be located on the same hosts as ECE proxies since they both listen on the same port.
 
 ::::{note}
 Although you can run MinIO containers in your ECE allocator hosts, we recommend deploying MinIO in separate hosts.
