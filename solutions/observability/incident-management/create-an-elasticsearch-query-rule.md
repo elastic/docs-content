@@ -71,10 +71,18 @@ When you create an {{es}} query rule, your choice of query type affects the info
     Threshold
     :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
 
-3. Set the time window, which defines how far back to search for documents.
-4. If you use query DSL, KQL, or Lucene, set the number of documents to send to the configured actions when the threshold condition is met.
-5. If you use query DSL, KQL, or Lucene, choose whether to avoid alert duplication by excluding matches from the previous run. This option is not available when you use a grouping field.
-6. Set the check interval, which defines how often to evaluate the rule conditions. Generally this value should be set to a value that is smaller than the time window, to avoid gaps in detection.
+3. If you use {{esql}}, specify a time field and how to group alerts. 
+
+    Time field
+    :   Specify the time field to use when filtering query results by the time window that you specify. You can choose `@timestamp`, `timestamp`, or `utc_time`.
+
+    Alert group
+    :   Select **Create an alert if matches are found** to create a single alert when the query matches multiple events. Select **Create an alert for each row** to create an alert for each query match. Whenever possible, each alert will have a unique ID. 
+
+4. Set the time window, which defines how far back to search for documents.
+5. If you use query DSL, KQL, or Lucene, set the number of documents to send to the configured actions when the threshold condition is met.
+6. If you use query DSL, KQL, or Lucene, choose whether to avoid alert duplication by excluding matches from the previous run. This option is not available when you use a grouping field.
+7. Set the check interval, which defines how often to evaluate the rule conditions. Generally this value should be set to a value that is smaller than the time window, to avoid gaps in detection.
 
 
 ## Test your query [observability-create-elasticsearch-query-rule-test-your-query]
