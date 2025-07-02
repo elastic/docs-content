@@ -264,7 +264,7 @@ FROM cooking_blog
 | LIMIT 1000
 ```
 
-This query only matches documents where the words "rich" and "creamy" appear exactly in that order in the description field.
+This query only matches documents where the words "rich and creamy" appear exactly in that order in the description field.
 
 ## Step 5: Semantic search and hybrid search
 

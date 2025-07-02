@@ -21,17 +21,17 @@ For a hands-on tutorial check out [Search and filter with {{esql}}](esql-search-
 
 ## {{esql}} search quick reference
 
-The following table summarizes the key search features available in [{{esql}}](/explore-analyze/query-filter/languages/esql.md) and when they were introduced.
+The following table summarizes the key search features available in [{{esql}}](/explore-analyze/query-filter/languages/esql.md) and when they were introduced, organized chronologically by release.
 
 | Feature | Description | Available since |
 |---------|-------------|----------------|
 | [Match function/operator](#match-function-and-operator) | Perform basic text searches with `MATCH` function or match operator (`:`) | 8.17 |
-| [Match phrase function](#match_phrase-function) | Perform phrase matching with `MATCH_PHRASE` function | 8.19/9.1 |
 | [Query string function](#query-string-qstr-function) | Execute complex queries with `QSTR` using Query String syntax | 8.17 |
 | [Relevance scoring](#relevance-scoring) | Calculate and sort by relevance with `METADATA _score` | 8.18/9.0 |
 | [Semantic search](#semantic-search) | Perform semantic searches on `semantic_text` field types | 8.18/9.0 |
 | [Hybrid search](#hybrid-search) | Combine lexical and semantic search approaches with custom weights | 8.18/9.0 |
 | [Kibana Query Language](#kql-function) | Use Kibana Query Language with the `KQL` function | 8.18/9.0 |
+| [Match phrase function](#match_phrase-function) | Perform phrase matching with `MATCH_PHRASE` function | 8.19/9.1 |
 
 ## How search works in {{esql}}
 
@@ -51,6 +51,7 @@ The following table summarizes the key search features available in [{{esql}}](/
 - Text queries where some results are more relevant than others
 - Finding documents similar to a search phrase
 - Any scenario where you want the "best" matches first
+- You want to use [analyzers](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) or [synonyms](/solutions/search/full-text/search-with-synonyms.md) 
 
 {{esql}}'s search functions address several key limitations that existed for text filtering: they work directly on multivalued fields, leverage analyzers for proper text analysis, and use optimized Lucene index structures for better performance.
 
@@ -60,7 +61,7 @@ To get relevance-ranked results, you must explicitly request scoring with `METAD
 
 **Without `METADATA _score`**: All operations are filtering-only, even `MATCH`, `QSTR`, and `KQL` functions. Documents either match or don't match - no ranking occurs.
 
-**With `METADATA _score`**: Search functions contribute to relevance scores, while filtering operations (range conditions, exact matches) don't affect scoring. You must explicitly use `SORT _score DESC` to see the most relevant results first.
+**With `METADATA _score`**: [Search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md) contribute to relevance scores, while filtering operations (range conditions, exact matches) don't affect scoring. You must explicitly use `SORT _score DESC` to see the most relevant results first.
 
 This gives you full control over when to use fast filtering versus slower but more powerful relevance-based searching.
 
@@ -94,7 +95,7 @@ For complete details, refer to the [Query DSL `query_string` docs](elasticsearch
 
 Use the [KQL function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-kql) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your ES|QL queries.
 
-For migrating queries from other Kibana interfaces, the `KQL` function preserves existing query syntax and allows gradual migration to ES|QL without rewriting queries.
+For migrating queries from other Kibana interfaces, the `KQL` function preserves existing query syntax and allows gradual migration to ES|QL without rewriting existing Kibana queries.
 
 ## Advanced search capabilities
 
