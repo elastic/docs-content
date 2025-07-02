@@ -535,6 +535,71 @@ This returns the following response based on the final rrf score for each result
 ::::
 
 
+## Example: Linear retriever with the multi-field query format [retrievers-examples-linear-multi-field-query-format]
+
+We can also use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-query-format) with the `linear` retriever.
+It works much the same way as [on the `rrf` retriever](#retrievers-examples-rrf-multi-field-query-format), with a couple key differences:
+
+- We can use `^` notation to specify a [per-field boost](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-field-boosting)
+- We must set the `normalizer` parameter to specify the normalization method used to combine [field group scores](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-field-grouping)
+
+The following example uses the `linear` retriever to query the `text`, `text_semantic`, and `topic` fields, with a boost of 2 on the `topic` field:
+
+```console
+GET /retrievers_example/_search
+{
+    "retriever": {
+        "linear": {
+            "query": "artificial intelligence",
+            "fields": ["text", "text_semantic", "topic^2"],
+            "normalizer": "minmax"
+        }
+    }
+}     
+```
+
+This returns the following response based on the normalized score for each result:
+
+::::{dropdown} Example response
+```console-result
+{
+    "took": 42,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 3,
+            "relation": "eq"
+        },
+        "max_score": 2.0,
+        "hits": [
+            {
+                "_index": "retrievers_example",
+                "_id": "2",
+                "_score": 2.0
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "1",
+                "_score": 1.2
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "3",
+                "_score": 0.1
+            }
+        ]
+    }
+}
+```
+
+::::
+
 ## Example: Grouping results by year with `collapse` [retrievers-examples-collapsing-retriever-results]
 
 In our result set, we have many documents with the same `year` value. We can clean this up using the `collapse` parameter with our retriever. This, as with the standard [collapse](elasticsearch://reference/elasticsearch/rest-apis/collapse-search-results.md) feature,
