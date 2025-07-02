@@ -90,10 +90,16 @@ Expand a section below for your endpoint security system:
 
 
 ::::{dropdown} Set up Microsoft Defender for Endpoint response actions
-1. **Create API access information in Microsoft Azure.** Create two new applications in your Azure domain and grant them the following minimum API permissions:
+1. **Create API access information in Microsoft Azure.** Create new applications in your Azure domain and grant them the following minimum API permissions:
 
-    * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
-    * Microsoft Defender for Endpoint connector: Permission to read machine information as well as isolate and release a machine (`Windows Defender ATP: Machine.Isolate and Machine.Read.All`).
+    * To isolate and release hosts:
+
+        * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
+        * Microsoft Defender for Endpoint connector: Permission to read machine information as well as isolate and release a machine (`Windows Defender ATP: Machine.Read.All` and `Machine.Isolate`).
+
+    * To run a script on a host:
+    
+        * Microsoft Defender for Endpoint connector: Permission to  manage live response library files as well as run live response on a specific machine (`Windows Defender ATP: Library.Manage` and `Machine.LiveResponse`)
 
     Refer to the [Microsoft Defender for Endpoint integration documentation](https://docs.elastic.co/en/integrations/microsoft_defender_endpoint) or [Microsoft’s documentation](https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp) for details on creating a new Azure application.
 
