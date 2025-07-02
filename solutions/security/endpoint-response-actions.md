@@ -248,12 +248,11 @@ Scanning can take longer for directories containing a lot of files.
 
 ### `runscript` [runscript]
 
-::::{note}
-This response action is supported only for [CrowdStrike-enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#crowdstrike-response-actions).
-::::
+Run a script on a host. 
 
+#### CrowdStrike
 
-Run a script on a host. You must include one of the following parameters to identify the script you want to run:
+For CrowdStrike, you must include one of the following parameters to identify the script you want to run:
 
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
@@ -278,6 +277,29 @@ Examples:
 ` runscript --Raw=```Get-ChildItem.``` `
 
 `runscript --HostPath="C:\temp\LocalScript.ps1" --CommandLine="-Verbose true"`
+
+
+#### Microsoft Defender for Endpoint
+```yaml {applies_to}
+serverless:
+```
+
+For Microsoft Defender for Endpoint, you must include the following parameter to identify the script you want to run:
+
+* `--ScriptName`: The name of the script stored in a cloud storage location. Select from a list of saved custom scripts.
+
+You can also use this optional parameter:
+
+* `--Args`: Additional command-line arguments passed to the script to customize its execution.
+  :::{note}
+  The response console does not support double-dash (`--`) syntax within the `--Args` parameter.
+  :::
+
+Predefined role: **SOC manager** or **Endpoint operations analyst**
+
+Required custom role privilege: **Execute Operations**
+
+Example: `runscript --ScriptName="Script2.sh" --Args="-Verbose true"`
 
 
 ## Supporting commands and parameters [supporting-commands-parameters]
