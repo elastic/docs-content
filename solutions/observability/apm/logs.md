@@ -30,6 +30,13 @@ To learn how to correlate your logs with your instrumented services, refer to [S
 Logs displayed on this page are filtered on `service.name`
 ::::
 
+### View enhanced logs [apm-enhanced-logs]
+```{applies_to}
+stack: preview 9.0
+```
+
+For an enhanced logs view with additional information including the log pattern, the number of events for each log, change type, and the time the change occurred, turn on the `observability:newLogsOverview` setting in **Management** → **Stack Management** → **Advanced Settings**.
+
 ## Integrate with logging frameworks [apm-logs-correlation]
 ```{applies_to}
 stack: all

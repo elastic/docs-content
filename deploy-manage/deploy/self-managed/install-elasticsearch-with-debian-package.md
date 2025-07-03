@@ -13,6 +13,7 @@ sub:
   distro: Debian
   export: "export "
   escape: \
+  pkg-conf: /etc/default/elasticsearch
 ---
 
 # Install {{es}} with a Debian package [deb]

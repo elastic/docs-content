@@ -29,11 +29,12 @@ The information below reflects our strategic goals, plans and objectives and inc
 | **Scaling** | Manual or automated with configuration | Fully automated |
 | **Infrastructure decisions** | User manages capacity | Automatically managed by Elastic |
 | **Pricing model** | Based on provisioned resources | Based on usage |
-| **Cloud providers** | AWS, Azure, GCP  | AWS, Azure (in preview), GCP (in preview) |
+| **Cloud providers** | AWS, Azure, GCP  | AWS, Azure, GCP |
 | **Upgrades** | User-controlled timing | Automatically performed by Elastic |
 | **User management** | Elastic Cloud-managed and deployment-local users | Elastic Cloud-managed users only. Serverless users are managed at the organization level with SAML authentication support. |
 | **Backups** | User-managed with Snapshot & Restore | Automatically backed up by Elastic |
 | **Solutions** | Full {{stack}} per deployment | Single solution per project |
+| **Cross-origin resource sharing (CORS)** | Supported | Not available. Browser-based applications must route requests through a backend proxy server. |
 
 In Serverless, Elastic automatically manages:
 * Cluster scaling and optimization
@@ -57,7 +58,7 @@ This table compares the core platform capabilities between {{ech}} deployments a
 | **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
 | **Authentication realms** | ✅ | ✅ | Managed at organization level in Serverless; deployment level in Hosted |
 | **BYO-Key for Encryption at Rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
-| **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure (in preview) <br>- GCP (in preview) | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
+| **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
 | **Custom roles** | ✅ | ✅ | Not available in Serverless Observability projects. |
@@ -161,7 +162,10 @@ These recommendations do not apply to indices using better binary quantization (
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
-Because {{serverless-full}} manages infrastructure automatically, certain Elasticsearch APIs are not available:
+In {{serverless-full}}, access is limited to a subset of {{es}} APIs, as Elastic manages the underlying infrastructure. These restrictions help maintain cluster stability, availability, and data integrity, ensuring reliable operation of Serverless projects.
+
+The following {{es}} APIs are not available in {{serverless-full}}:
+
 
 Infrastructure operations
 :   * All `_nodes/*` operations
@@ -200,7 +204,7 @@ Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/d
 
 ## Available {{es}} settings [elasticsearch-differences-serverless-settings-availability]
 
-In {{serverless-full}} Elasticsearch projects, you can only configure [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md). Cluster-level settings and node-level settings are fully managed by Elastic.
+In {{serverless-full}} projects, configuration available to users is limited to certain [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md), while Elastic manages cluster-level and node-level settings to maintain stability, availability, performance, and data integrity. These restrictions help ensure the reliability of Serverless projects.
 
 Available settings
 :   **Index-level settings**: Settings that control how documents are processed, stored, and searched are available to end users. These include:
@@ -217,6 +221,24 @@ Managed settings
     * Cluster topology
     * Shard allocation
     * Resource management
+
+When attempting to use an unavailable index setting, you'll receive this error:
+
+```json
+{
+    "error": {
+        "root_cause": [
+            {
+                "type": "illegal_argument_exception",
+                "reason": "Settings [xyz] are not available when running in serverless mode"
+            }
+        ],
+        "type": "illegal_argument_exception",
+        "reason": "Settings [xyz] are not available when running in serverless mode"
+    },
+    "status": 400
+}
+```
 
 ## Learn more
 
