@@ -1,4 +1,5 @@
 ---
+description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic Observability.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
@@ -15,7 +16,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 ## Prerequisites
 
-* An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started.md).
 * A system forwarding logs, metrics, or traces in OTLP (any EDOT Collector or SDK—EDOT or community).
 
 ### Limitations
@@ -27,7 +28,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 ### Get your native OTLP endpoint credentials
 
-1. [Create a new Observability project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new Observability project](/solutions/observability/get-started.md), or open an existing one.
 
 1. In your {{obs-serverless}} project, go to **Add Data**.
 
