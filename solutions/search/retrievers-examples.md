@@ -478,10 +478,11 @@ This returns the following response based on the final rrf score for each result
 ::::
 
 We don't even need to specify the `fields` parameter when using the multi-field query format.
-If we omit it, the retriever will automatically query every field that either:
+If we omit it, the retriever will automatically query fields specified in the `index.query.default_field` index setting, which is set to `*` by default.
+This default value will cause the retriever to query every field that either:
 
-- Support term queries, such as `keyword` and `text` fields
-- Are `semantic_text` fields
+- Supports term queries, such as `keyword` and `text` fields
+- Is a `semantic_text` field
 
 In this example, that would translate to the `text`, `text_semantic`, `year`, `topic`, and `timestamp` fields.
 
@@ -537,6 +538,8 @@ This returns the following response based on the final rrf score for each result
 ```
 
 ::::
+
+See [wildcard field patterns](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-wildcard-field-patterns) for more information about wildcard resolution.
 
 
 ## Example: Linear retriever with the multi-field query format [retrievers-examples-linear-multi-field-query-format]
