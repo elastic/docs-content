@@ -212,18 +212,3 @@ redirects:
   'solutions/observability/get-started/get-started-with-dashboards.md': 'solutions/observability/get-started.md'
 # Related to https://github.com/elastic/docs-content/pull/1329
   'manage-data/ingest/transform-enrich/ingest-pipelines-serverless.md': 'manage-data/ingest/transform-enrich/ingest-pipelines.md'
-
-# Related to https://github.com/elastic/opentelemetry/issues/228
-  'apm-agent-android://reference/apm/agents/android/index.md': 'opentelemetry://reference/opentelemetry/edot-sdks/android/index.md'
-  'apm-agent-android://reference/apm/agents/android/getting-started.md': 'opentelemetry://reference/opentelemetry/edot-sdks/android/getting-started.md'
-  'apm-agent-android://reference/apm/agents/android/configuration.md': 'opentelemetry://reference/opentelemetry/edot-sdks/android/configuration.md'
-  'apm-agent-android://reference/apm/agents/android/manual-instrumentation.md': 'opentelemetry://reference/opentelemetry/edot-sdks/android/manual-instrumentation.md'
-  'apm-agent-android://reference/apm/agents/android/automatic-instrumentation.md': 'opentelemetry://reference/opentelemetry/edot-sdks/android/automatic-instrumentation.md'
-  'apm-agent-android://reference/apm/agents/android/faq.md': 'opentelemetry://reference/opentelemetry/edot-sdks/android'
-  'apm-agent-android://reference/apm/agents/android/how-tos.md': 'opentelemetry://reference/opentelemetry/edot-sdks/android/getting-started'
-  'apm-agent-android://reference/apm/agents/android/troubleshooting': 'opentelemetry://reference/opentelemetry/edot-sdks/android/troubleshooting'
-  'apm-agent-ios://reference/apm/agents/ios/index.md': 'opentelemetry://reference/opentelemetry/edot-sdks/ios/index.md'
-  'apm-agent-ios://reference/apm/agents/ios/supported-technologies.md': 'opentelemetry://reference/opentelemetry/edot-sdks/ios/supported-technologies.md'
-  'apm-agent-ios://reference/apm/agents/ios/set-up-apm-ios-agent.md': 'opentelemetry://reference/opentelemetry/edot-sdks/ios/set-up-apm-ios-agent.md'
-  'apm-agent-ios://reference/apm/agents/ios/configuration.md': 'opentelemetry://reference/opentelemetry/edot-sdks/ios/configuration.md'
-  'apm-agent-ios://reference/apm/agents/ios/instrumentation.md': 'opentelemetry://reference/opentelemetry/edot-sdks/ios/instrumentation.md'
