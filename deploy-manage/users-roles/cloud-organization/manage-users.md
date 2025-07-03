@@ -16,7 +16,7 @@ products:
 
 $$$general-assign-user-roles$$$
 
-You can invite users to join your organization to allow them to interact with all or specific instances, projects and settings. After they're invited, you can manage the users in your organization.
+You can invite users to join your organization to allow them to interact with all or specific {{ecloud}} resources and settings. After they're invited, you can manage the users in your organization.
 
 Alternatively, [configure {{ecloud}} SAML SSO](../../../deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) to enable your organization members to join the {{ecloud}} organization automatically.
 
@@ -32,17 +32,19 @@ If you're using {{ech}}, then you can also manage users and control access [at t
 
 To invite users to your organization:
 
-1. Go to the user icon on the header bar and select **Organization**.
-2. On the **Members** page, click **Invite members**.
-3. Enter the email addresses of the users you want to invite in the textbox.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. From a deployment or project on the home page, select **Manage**.
+3. From the lower navigation menu, select **Organization**.
+4. On the **Members** page, click **Invite members**.
+5. Enter the email addresses of the users you want to invite in the textbox.
 
     To add multiple members, enter the member email addresses, separated by a space.
 
-4. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to {{ecloud}}.
+5. If desired, assign roles to the users so that they automatically get the appropriate permissions when they accept the invitation and sign in to {{ecloud}}.
 
    If you're assigning roles for {{serverless-full}} projects, then you can grant access to all projects of the same type with a unique role, or select individual roles for specific projects. For more details about roles, refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
-5. Click **Send invites**.
+6. Click **Send invites**.
 
     Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation before it expires. If the invite has expired, an admin can resend the invitation.
 

@@ -4,7 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions.html
 applies_to:
   stack: ga
-  serverless: ga
 products:
   - id: elasticsearch
 ---
@@ -163,6 +162,241 @@ The following diagram illustrates the throttling decisions made for each action 
 :::{image} /explore-analyze/images/elasticsearch-reference-action-throttling.jpg
 :alt: action throttling
 :::
+
+### Example
+
+To demonstrate how throttling works in practice and how it can be configured for individual actions within a watch, let’s walk through the full process step by step.
+
+First, let's create a new watch:
+
+```console
+PUT _watcher/watch/my_watch
+{
+  "trigger" : {
+    "schedule" : {
+      "yearly" : { "in" : "february", "on" : 29, "at" : "noon" }
+    }
+  },
+  "input": {
+    "simple": {
+      "payload": {
+        "send": "yes"
+      }
+    }
+  },
+  "condition": {
+    "always": {}
+  },
+  "actions": {
+    "test_index": {
+      "throttle_period": "15m",
+      "index": {
+        "index": "test"
+      }
+    }
+  }
+}
+```
+% TESTSETUP
+
+The current status of a watch and the state of its actions is returned with the watch definition when you call the [Get Watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-get-watch):
+
+```console
+GET _watcher/watch/my_watch
+```
+% TEST[continued]
+
+The action state of a newly-created watch is `awaits_successful_execution`:
+
+```console
+
+{
+  "found": true,
+  "_seq_no": 0,
+  "_primary_term": 1,
+  "_version": 1,
+  "_id": "my_watch",
+  "status": {
+    "version": 1,
+    "actions": {
+      "test_index": {
+        "ack": {
+          "timestamp": "2015-05-26T18:04:27.723Z",
+          "state": "awaits_successful_execution"
+        }
+      }
+    },
+    "state": ...
+  },
+  "watch": ...
+}
+```
+% TESTRESPONSE[s/"state": \.\.\./"state": "$body.status.state"/]
+% TESTRESPONSE[s/"watch": \.\.\./"watch": "$body.watch"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-26T18:04:27.723Z"/"timestamp": "$body.status.actions.test_index.ack.timestamp"/]
+
+When the watch executes and the condition matches, the value of the `ack.state` changes to `ackable`. Let’s force execution of the watch and fetch it again to check the status:
+
+```console
+
+POST _watcher/watch/my_watch/_execute
+{
+  "record_execution" : true
+}
+
+GET _watcher/watch/my_watch
+```
+% TEST[continued]
+
+and the action is now in `ackable` state:
+
+```console
+
+{
+  "found": true,
+  "_id": "my_watch",
+  "_seq_no": 1,
+  "_primary_term": 1,
+  "_version": 2,
+  "status": {
+    "version": 2,
+    "actions": {
+      "test_index": {
+        "ack": {
+          "timestamp": "2015-05-26T18:04:27.723Z",
+          "state": "ackable"
+        },
+        "last_execution" : {
+          "timestamp": "2015-05-25T18:04:27.723Z",
+          "successful": true
+        },
+        "last_successful_execution" : {
+          "timestamp": "2015-05-25T18:04:27.723Z",
+          "successful": true
+        }
+      }
+    },
+    "state": ...,
+    "execution_state": "executed",
+    "last_checked": ...,
+    "last_met_condition": ...
+  },
+  "watch": ...
+}
+```
+% TESTRESPONSE[s/"state": \.\.\./"state": "$body.status.state"/]
+% TESTRESPONSE[s/"watch": \.\.\./"watch": "$body.watch"/]
+% TESTRESPONSE[s/"last_checked": \.\.\./"last_checked": "$body.status.last_checked"/]
+% TESTRESPONSE[s/"last_met_condition": \.\.\./"last_met_condition": "$body.status.last_met_condition"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-26T18:04:27.723Z"/"timestamp": "$body.status.actions.test_index.ack.timestamp"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-25T18:04:27.723Z"/"timestamp": "$body.status.actions.test_index.last_execution.timestamp"/]
+
+Now we can acknowledge it:
+
+```console
+
+PUT _watcher/watch/my_watch/_ack/test_index
+GET _watcher/watch/my_watch
+```
+% TEST[continued]
+
+
+```console
+
+{
+  "found": true,
+  "_id": "my_watch",
+  "_seq_no": 2,
+  "_primary_term": 1,
+  "_version": 3,
+  "status": {
+    "version": 3,
+    "actions": {
+      "test_index": {
+        "ack": {
+          "timestamp": "2015-05-26T18:04:27.723Z",
+          "state": "acked"
+        },
+        "last_execution" : {
+          "timestamp": "2015-05-25T18:04:27.723Z",
+          "successful": true
+        },
+        "last_successful_execution" : {
+          "timestamp": "2015-05-25T18:04:27.723Z",
+          "successful": true
+        }
+      }
+    },
+    "state": ...,
+    "execution_state": "executed",
+    "last_checked": ...,
+    "last_met_condition": ...
+  },
+  "watch": ...
+}
+```
+% TESTRESPONSE[s/"state": \.\.\./"state": "$body.status.state"/]
+% TESTRESPONSE[s/"watch": \.\.\./"watch": "$body.watch"/]
+% TESTRESPONSE[s/"last_checked": \.\.\./"last_checked": "$body.status.last_checked"/]
+% TESTRESPONSE[s/"last_met_condition": \.\.\./"last_met_condition": "$body.status.last_met_condition"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-26T18:04:27.723Z"/"timestamp": "$body.status.actions.test_index.ack.timestamp"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-25T18:04:27.723Z"/"timestamp": "$body.status.actions.test_index.last_execution.timestamp"/]
+
+Acknowledging an action throttles further executions of that action until its `ack.state` is reset to `awaits_successful_execution`. This happens when the condition of the watch is not met (the condition evaluates to `false`).
+
+You can acknowledge multiple actions by assigning the `actions` parameter a comma-separated list of action ids:
+
+```console
+POST _watcher/watch/my_watch/_ack/action1,action2
+```
+
+To acknowledge all of the actions of a watch, simply omit the `actions` parameter:
+
+```console
+POST _watcher/watch/my_watch/_ack
+```
+% TEST[s/^/POST _watcher\/watch\/my_watch\/_execute\n{ "record_execution" : true }\n/]
+
+The response looks like a get watch response, but only contains the status:
+
+```console
+
+{
+  "status": {
+    "state": {
+      "active": true,
+      "timestamp": "2015-05-26T18:04:27.723Z"
+    },
+    "last_checked": "2015-05-26T18:04:27.753Z",
+    "last_met_condition": "2015-05-26T18:04:27.763Z",
+    "actions": {
+      "test_index": {
+        "ack" : {
+          "timestamp": "2015-05-26T18:04:27.713Z",
+          "state": "acked"
+        },
+        "last_execution" : {
+          "timestamp": "2015-05-25T18:04:27.733Z",
+          "successful": true
+        },
+        "last_successful_execution" : {
+          "timestamp": "2015-05-25T18:04:27.773Z",
+          "successful": true
+        }
+      }
+    },
+    "execution_state": "executed",
+    "version": 2
+  }
+}
+```
+% TESTRESPONSE[s/"last_checked": "2015-05-26T18:04:27.753Z"/"last_checked": "$body.status.last_checked"/]
+% TESTRESPONSE[s/"last_met_condition": "2015-05-26T18:04:27.763Z"/"last_met_condition": "$body.status.last_met_condition"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-26T18:04:27.723Z"/"timestamp": "$body.status.state.timestamp"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-26T18:04:27.713Z"/"timestamp": "$body.status.actions.test_index.ack.timestamp"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-25T18:04:27.733Z"/"timestamp": "$body.status.actions.test_index.last_execution.timestamp"/]
+% TESTRESPONSE[s/"timestamp": "2015-05-25T18:04:27.773Z"/"timestamp": "$body.status.actions.test_index.last_successful_execution.timestamp"/]
+
 
 ## Using SSL/TLS with OpenJDK [actions-ssl-openjdk]
 

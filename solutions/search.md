@@ -22,6 +22,7 @@ Here are a few common real-world applications:
 
 | Use case                             | Business goals                                                     | Technical requirements                                        |
 | ------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------- |
+| **Vector search/hybrid search** | Run nearest neighbour search, combine with text for hybrid results | Dense embeddings, sparse embeddings, combined with text/BM25       |
 | **Ecommerce/product catalog search** | Provide fast, relevant, and up-to-date results, faceted navigation | Inventory sync, user behavior tracking, results caching       |
 | **Workplace/knowledge base search**  | Search across range of data sources, enforcing permissions         | Third-party connectors, document-level security, role mapping |
 | **Website search**                   | Deliver relevant, up-to-date results                               | Web crawling, incremental indexing, query caching             |

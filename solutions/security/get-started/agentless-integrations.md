@@ -17,6 +17,7 @@ Agentless integrations provide a means to ingest data while avoiding the orchest
 
 ::::{important}
 There are currently no additional costs associated with deploying agentless integrations. 
+There is currently a limit of 5 agentless integrations per project. 
 ::::
 
 ## Generally available (GA) agentless integrations
@@ -43,7 +44,7 @@ Agentless deployment for the following integrations is in beta and is subject to
 8. Microsoft Sentinel
 9. Okta
 10. Qualys VMDR
-11. SentinelOne Zscaler
+11. SentinelOne
 12. Tenable IO
 13. Wiz
 14. Zscaler ZIA

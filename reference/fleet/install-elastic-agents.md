@@ -89,7 +89,7 @@ This basic package is suitable for most use cases and it offers a reduced size o
 
 #### Servers flavor [elastic-agent-servers-flavor-regular]
 
-The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELATIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
+The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELASTIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
 
 * `apm-server` - implements the Elastic [APM Server](/solutions/observability/apm/get-started.md).
 * `cloudbeat` - implements [Cloud Security Posture Management (CSPM)](../../solutions/security/cloud/cloud-security-posture-management.md) integrations.
@@ -142,7 +142,7 @@ The disk requirements for {{agent}} vary by operating system and {{stack}} versi
 | Operating system | 8.13 | 8.14 | 8.15 | 8.18 | 9.0 |
 | --- | --- | --- | --- |
 | **Linux** | 1800 MB | 1018 MB | 1060 MB | 1.5 GB | 1.5 GB |
-| **macOS** | 1100 MB | 619 MB | 680 MB | 775 MB | 7755 MB |
+| **macOS** | 1100 MB | 619 MB | 680 MB | 775 MB | 775 MB |
 | **Windows** | 891 MB | 504 MB | 500 MB | 678 MB | 705 MB |
 
 During upgrades, double the disk space is required to store the new {{agent}} binary. After the upgrade completes, the original {{agent}} is removed from disk to free up the space.

@@ -68,6 +68,14 @@ body:
       default: 0
     validations:
       required: true
+  - type: input
+    id: release-serverless
+    attributes:
+      label: Serverless release
+      description: When do you expect the feature to be promoted and available in the _**serverless production environment**_?
+      placeholder: The week of April 1, 2024
+    validations:
+      required: true    
   - type: dropdown
     id: collaboration
     attributes:

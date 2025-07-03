@@ -146,7 +146,7 @@ Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/
 
 Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
 
-In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](#sampling-tail-storage_limit) is insufficient, sampling will be bypassed.
+In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, sampling will be bypassed.
 
 It is recommended to use fast disks, ideally Solid State Drives (SSD) with high I/O per second (IOPS), when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
@@ -340,74 +340,4 @@ Policies are evaluated **in order** and the first one that meets all match condi
 
 ### Configuration reference [_configuration_reference]
 
-#### Top-level tail-based sampling settings [_top_level_tail_based_sampling_settings]
-
-##### Enable tail-based sampling [sampling-tail-enabled]
-
-Set to `true` to enable tail based sampling. Disabled by default. (bool)
-
-|     |     |
-| --- | --- |
-| APM Server binary | `sampling.tail.enabled` |
-| Fleet-managed | `Enable tail-based sampling` |
-
-##### Interval [sampling-tail-interval]
-
-Synchronization interval for multiple APM Servers. Should be in the order of tens of seconds or low minutes. Default: `1m` (1 minute). (duration)
-
-|     |     |
-| --- | --- |
-| APM Server binary | `sampling.tail.interval` |
-| Fleet-managed | `Interval` |
-
-##### Policies [sampling-tail-policies]
-
-Criteria used to match a root transaction to a sample rate.
-
-Policies map trace events to a sample rate. Each policy must specify a sample rate. Trace events are matched to policies in the order specified. All policy conditions must be true for a trace event to match. Each policy list should conclude with a policy that only specifies a sample rate. This final policy is used to catch remaining trace events that don’t match a stricter policy. (`[]policy`)
-
-|     |     |
-| --- | --- |
-| APM Server binary | `sampling.tail.policies` |
-| Fleet-managed | `Policies` |
-
-##### Storage limit [sampling-tail-storage_limit]
-
-The amount of storage space allocated for trace events matching tail sampling policies. Caution: Setting this limit higher than the allowed space may cause APM Server to become unhealthy.
-
-A value of `0GB` (or equivalent) does not set a concrete limit, but rather allows the APM Server to align its disk usage with the disk size. APM server uses up to 80% of the disk size limit on the disk where the local tail-based sampling database is located. The last 20% of disk will not be used by APM Server. It is the recommended value as it automatically scales with the disk size.
-
-If this is not desired, a concrete `GB` value can be set for the maximum amount of disk used for tail-based sampling.
-
-If the configured storage limit is insufficient, it logs "configured limit reached". The event will bypass sampling and will always be indexed when storage limit is reached.
-
-Default: `0GB`. (text)
-
-|     |     |
-| --- | --- |
-| APM Server binary | `sampling.tail.storage_limit` |
-| Fleet-managed | `Storage limit` |
-
-#### Policy settings [_policy_settings]
-
-##### **`sample_rate`** [sampling-tail-sample-rate]
-
-The sample rate to apply to trace events matching this policy. Required in each policy.
-
-The sample rate must be greater than or equal to `0` and less than or equal to `1`. For example, a `sample_rate` of `0.01` means that 1% of trace events matching the policy will be sampled. A `sample_rate` of `1` means that 100% of trace events matching the policy will be sampled. (int)
-
-##### **`trace.name`** [sampling-tail-trace-name]
-
-The trace name for events to match a policy. A match occurs when the configured `trace.name` matches the `transaction.name` of the root transaction of a trace. A root transaction is any transaction without a `parent.id`. (string)
-
-##### **`trace.outcome`** [sampling-tail-trace-outcome]
-
-The trace outcome for events to match a policy. A match occurs when the configured `trace.outcome` matches a trace’s `event.outcome` field. Trace outcome can be `success`, `failure`, or `unknown`. (string)
-
-##### **`service.name`** [sampling-tail-service-name]
-
-The service name for events to match a policy. (string)
-
-##### **`service.environment`** [sampling-tail-service-environment]
-
-The service environment for events to match a policy. (string)
+For a complete reference of tail-based sampling configuration options, refer to [](/solutions/observability/apm/tail-based-sampling.md).
