@@ -68,7 +68,7 @@ Each index has a [mapping](/manage-data/data-store/mapping.md) or schema for how
 
 ## Index management
 
-Elastic's **Index Management** features are an easy, convenient way to manage your cluster’s [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/lifecycle/data-stream.md), [index templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md). Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
+Elastic's **Index Management** features are an easy, convenient way to manage your cluster’s indices, [data streams](/manage-data/lifecycle/data-stream.md), [index templates](/manage-data/data-store/templates.md), and [enrich policies](/manage-data/ingest/transform-enrich/data-enrichment.md). Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
 
 To use these features:
  * On {{serverless-full}}, go to **Project settings** > **Management** > **Index Management**.
