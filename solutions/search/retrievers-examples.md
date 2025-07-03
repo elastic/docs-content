@@ -416,11 +416,11 @@ Which would return the following results:
 stack: ga 9.1
 ```
 
-There's an even simpler way to execute a hybrid search though: We can use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-query-format), which allows us to query multiple fields without explicitly specifying inner retrievers.
+There's an even simpler way to execute a hybrid search though: We can use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-query-format), which allows us to query multiple fields without explicitly specifying inner retrievers.
 
 The following example uses the multi-field query format to query the `text` and `text_semantic` fields.
 Scores from [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields don't always fall in the same range, so we need to normalize the ranks across matches on these fields to generate a result set.
-The multi-field query format [does this for us automatically](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-field-grouping).
+The multi-field query format [does this for us automatically](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-grouping).
 
 ```console
 GET /retrievers_example/_search
@@ -543,11 +543,11 @@ This returns the following response based on the final rrf score for each result
 stack: ga 9.1
 ```
 
-We can also use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-query-format) with the `linear` retriever.
+We can also use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-query-format) with the `linear` retriever.
 It works much the same way as [on the `rrf` retriever](#retrievers-examples-rrf-multi-field-query-format), with a couple key differences:
 
-- We can use `^` notation to specify a [per-field boost](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-field-boosting)
-- We must set the `normalizer` parameter to specify the normalization method used to combine [field group scores](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-field-grouping)
+- We can use `^` notation to specify a [per-field boost](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-boosting)
+- We must set the `normalizer` parameter to specify the normalization method used to combine [field group scores](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-grouping)
 
 The following example uses the `linear` retriever to query the `text`, `text_semantic`, and `topic` fields, with a boost of 2 on the `topic` field:
 
