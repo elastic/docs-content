@@ -420,7 +420,8 @@ There's an even simpler way to execute a hybrid search though: We can use the [m
 
 The following example uses the multi-field query format to query the `text` and `text_semantic` fields.
 Scores from [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields don't always fall in the same range, so we need to normalize the ranks across matches on these fields to generate a result set.
-The multi-field query format [does this for us automatically](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-grouping).
+For example, BM25 scores from `text` fields are unbounded, while vector similarity scores from `text_embedding` models are bounded between [0, 1].
+The multi-field query format [handles this normalization for us automatically](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-grouping).
 
 ```console
 GET /retrievers_example/_search
