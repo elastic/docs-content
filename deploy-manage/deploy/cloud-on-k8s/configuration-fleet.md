@@ -146,8 +146,23 @@ By default, every reference targets all instances in your {{es}}, {{kib}} and {{
 
 ## Customize {{agent}} configuration [k8s-elastic-agent-fleet-configuration-custom-configuration]
 
-In contrast to {{agents}} in standalone mode, the configuration is managed through {{fleet}}, and it cannot be defined through `config` or `configRef` elements.
+In contrast to {{agents}} in standalone mode, the configuration is managed through {{fleet}}, and it cannot be defined through `config` or `configRef` elements with a few exceptions.
 
+One of those exceptions is the configuration of providers as described in [advanced Agent configuration managed by Fleet](/reference/fleet/advanced-kubernetes-managed-by-fleet.md). When {{agent}} is managed by {{fleet}} and is orchestrated by ECK, the configuration of providers can simply be done through the `.spec.config` element in the Agent resource as of {applies_to}`stack: ga 8.13`:
+
+```yaml
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: elastic-agent
+spec:
+  config:
+    fleet:
+      enabled: true
+    providers.kubernetes:
+      add_resource_metadata:
+        deployment: true
+```
 
 ## Upgrade the {{agent}} specification [k8s-elastic-agent-fleet-configuration-upgrade-specification]
 
