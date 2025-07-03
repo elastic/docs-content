@@ -51,10 +51,10 @@ Your synonyms sets need to be stored in {{es}} so your analyzers can refer to th
 
 ### Synonyms API [synonyms-store-synonyms-api]
 
-You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets.
+You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets. For examples of how to 
+create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/search-with-synonyms.md) page.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
-
 
 ### Synonyms File [synonyms-store-synonyms-file]
 
