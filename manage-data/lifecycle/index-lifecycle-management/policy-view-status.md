@@ -12,11 +12,11 @@ products:
 
 For any existing managed index in your cluster, you can access the ILM policy applied to it and details such as its current phase.
 
-::::{tab-set}
+:::::{tab-set}
 :group: kibana-api
-:::{tab-item} {{kib}}
+::::{tab-item} {{kib}}
 :sync: kibana
-To view the current lifecycle status for one or more indices:
+**To view the current lifecycle status for one or more indices:**
 
 1. Go to **Stack Management > Index Management** and open the **Indices** tab.
 1. Enable **Include hidden indices** to view all indices, including those managed by ILM. Note that if you're using data streams, you can find the data stream associated with any index listed in the **Data stream** column.
@@ -26,14 +26,18 @@ To view the current lifecycle status for one or more indices:
 
    ![Index lifecycle status page](/manage-data/images/elasticsearch-reference-ilm-status.png "")
 
-To view the current lifecycle status for a datastream:
+:::{tip}
+{{es}} comes with many built-in ILM policies. For standard Observability or Security use cases, you will have two {{ilm-init}} policies configured automatically: `logs@lifecycle` for logs and `metrics@lifecycle` for metrics. To learn about how you can set up a custom lifecycle for your data that's configured to use these polices, see [Tutorial: Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
+:::
+
+**To view the current lifecycle status for a datastream:**
 
 1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view details. In the flyout that opens, you have direct links to access the ILM policy and the index template.
 
    ![Data stream status page](/manage-data/images/elasticsearch-reference-datastream-status.png "")
-:::
+::::
 
 :::{tab-item} API
 :sync: api
@@ -128,5 +132,5 @@ When called for a data stream, the API retrieves the current lifecycle status fo
   }
 }
 ```
-:::
 ::::
+:::::
