@@ -412,6 +412,9 @@ Which would return the following results:
 
 
 ## Example: RRF with the multi-field query format [retrievers-examples-rrf-multi-field-query-format]
+```yaml {applies_to}
+stack: ga 9.1
+```
 
 There's an even simpler way to execute a hybrid search though: We can use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-query-format), which allows us to query multiple fields without explicitly specifying inner retrievers.
 
@@ -536,6 +539,9 @@ This returns the following response based on the final rrf score for each result
 
 
 ## Example: Linear retriever with the multi-field query format [retrievers-examples-linear-multi-field-query-format]
+```yaml {applies_to}
+stack: ga 9.1
+```
 
 We can also use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retreivers.md#multi-field-query-format) with the `linear` retriever.
 It works much the same way as [on the `rrf` retriever](#retrievers-examples-rrf-multi-field-query-format), with a couple key differences:
