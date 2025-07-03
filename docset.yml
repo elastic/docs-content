@@ -9,10 +9,8 @@ exclude:
   - 'raw-migrated-files/**'
 
 cross_links:
-  - apm-agent-android
   - apm-agent-dotnet
   - apm-agent-go
-  - apm-agent-ios
   - apm-agent-java
   - apm-agent-nodejs
   - apm-agent-php
