@@ -9,7 +9,7 @@ products:
 
 # Manage existing indices [ilm-with-existing-indices]
 
-If you’ve been using Curator or some other mechanism to manage periodic indices, you have a couple options when migrating to {{ilm-init}}:
+If you’ve been using Curator or some other mechanism to manage periodic indices, you have a couple options when [migrating to {{ilm-init}}](./migrate-index-management.md):
 
 * Set up your index templates to use an {{ilm-init}} policy to manage your new indices. Once {{ilm-init}} is managing your current write index, you can apply an appropriate policy to your old indices.
 * Reindex into an {{ilm-init}}-managed index.
