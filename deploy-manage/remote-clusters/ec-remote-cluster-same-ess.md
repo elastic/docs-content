@@ -61,8 +61,8 @@ The API key created previously will be used by the local deployment to authentic
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+3. From the navigation menu, select **Security**.
+4. Locate **Remote connections** and select **Add API key**.
 
     1. Fill both fields.
 
@@ -84,15 +84,10 @@ If you later need to update the remote connection with different permissions, yo
 ::::::{tab-item} TLS certificate (deprecated)
 ### Set the default trust with other clusters in the same {{ecloud}} organization [ec_set_the_default_trust_with_other_clusters_in_the_same_elasticsearch_service_organization]
 
-By default, any deployment that you create trusts all other deployments in the same organization. You can change this behavior in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) under **Features** > **Trust**, so that when a new deployment is created it does not automatically trust any other deployment. You can choose one of the following options:
+By default, any deployment that you create trusts all other deployments in the same organization. To manage this behavior in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Trust management** from the lower navigation menu. You can choose one of the following options:
 
 * Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ec-remote-cluster-same-ess.md#ec_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * Trust no deployment - New deployments won’t trust any other deployment when they are created. You can instead configure trust individually for each of them in their security settings, as described in the next section.
-
-:::{image} /deploy-manage/images/cloud-ec-account-trust-management.png
-:alt: Trust management at the account Level
-:screenshot:
-:::
 
 ::::{note}
 * The level of trust of existing deployments is not modified when you change this setting. You must instead update the trust settings individually for each deployment you wish to change.

@@ -24,7 +24,7 @@ You’ll use APM agents to send APM data from your application to Elastic. Elast
 
 To send APM data to Elastic, you must install an APM agent and configure it to send data to your project:
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. To install and configure one or more APM agents, do one of following:
 
     * In your Observability project, go to **Add data** → **Application** → **Elastic APM** and follow the prompts.
