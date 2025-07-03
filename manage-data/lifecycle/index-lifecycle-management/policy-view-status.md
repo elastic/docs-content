@@ -27,7 +27,9 @@ For any existing managed index in your cluster, you can access the ILM policy ap
    ![Index lifecycle status page](/manage-data/images/elasticsearch-reference-ilm-status.png "")
 
 :::{tip}
-{{es}} comes with many built-in ILM policies. For standard Observability or Security use cases, you will have two {{ilm-init}} policies configured automatically: `logs@lifecycle` for logs and `metrics@lifecycle` for metrics. To learn about how you can set up a custom lifecycle for your data that's configured to use these polices, see [Tutorial: Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
+{{es}} comes with many built-in ILM policies. For standard Observability or Security use cases, you will have two {{ilm-init}} policies configured automatically: `logs@lifecycle` for logs and `metrics@lifecycle` for metrics.
+
+To learn how to create a specialized ILM policy for any data stream, such as those created when you install an Elastic Integration, refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md).
 :::
 
 **To view the current lifecycle status for a datastream:**

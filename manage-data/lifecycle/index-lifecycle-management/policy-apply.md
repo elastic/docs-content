@@ -1,12 +1,12 @@
 ---
-navigation_title: Apply a policy to an index
+navigation_title: Manually apply a policy to an index
 applies_to:
   stack: ga
 products:
   - id: elasticsearch
 ---
 
-# Apply a lifecycle policy to an index [apply-policy-manually]
+# Manually apply a lifecycle policy to an index [apply-policy-manually]
 
 When you create new {{es}} index you can use an index template to apply the lifecycle policy by which the index will be managed. This process is described in [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md).
 
