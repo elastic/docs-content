@@ -13,9 +13,9 @@ _Semantic search_ is a type of AI-powered search that enables you to use natural
 It returns results that match the meaning of a query, as opposed to literal keyword matches.
 For example, if you want to search for workplace guidelines on a second income, you could search for "side hustle", which is not a term you're likely to see in a formal HR document.
 
-Elastic offers an out-of-the-box Learned Sparse Encoder model ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) that outperforms on a variety of data sets, such as financial data, weather records, and question-answer pairs.
-The model is built to provide great relevance across domains, without the need for additional fine tuning.
-For a summary of the use cases and implementation paths, go to [](/solutions/search/ai-search/ai-search.md).
+In this guide, you'll learn how to perform semantic search on a small set of sample data.
+You'll use the default Learned Sparse Encoder model ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)), which automatically creates vector embeddings (numeric representations that capture the text meaning) when storing and searching the data.
+This model is built to provide great relevance across domains, without the need for additional fine tuning.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ For a summary of the use cases and implementation paths, go to [](/solutions/sea
 :sync: stack
 
 - An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all [Elastic deployment models](/deploy-manage/deploy.md). The quickest way to get started is by using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md).
-- If you want to add sample data, you must have authority to create an index, create documents, and view them. To use {{kib}}, you'll also need read authority for the **Discover**, **Dev Tools**, and **{{es}}** features at a minimum. For example, create a custom role that has `all` index privileges for the sample index ("semantic-index") and `read` authority for the specific {{kib}} features. To learn more, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+- If you want to add sample data, you must have authority to create an index, add documents, and view them. To use {{kib}}, you'll also need read authority for the **Discover**, **Dev Tools**, and **{{es}}** features. The `superuser` built-in role meets all of these requirements. To learn more, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 :::
 ::::
 <!--
@@ -69,7 +69,8 @@ Alternatively, try out the API requests in the [Console](/explore-analyze/query-
 ::::{step} Create a `semantic_text` field mapping
 
 You can implement semantic search with varying levels of complexity and customization.
-The recommended method is to use [semantic_text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields in most cases.
+The recommended method is to use `semantic_text` fields, which provide sensible defaults and automation.
+For example, it uses [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) (and therefore sparse vectors) by default.
 
 The following example creates a mapping for a single field:
 
@@ -84,6 +85,8 @@ PUT /semantic-index/_mapping
 }
 ```
 
+Refer to [](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) for details about this field type.
+For a broader overview, check out [Mapping embeddings to Elasticsearch field types: semantic_text, dense_vector, sparse_vector](https://www.elastic.co/search-labs/blog/mapping-embeddings-to-elasticsearch-field-types).
 ::::
 
 ::::{step} Add documents
@@ -254,3 +257,4 @@ For example, if you have both a `text` field and a `semantic_text` field, you ca
 A [hybrid search](/solutions/search/hybrid-semantic-text.md) provides comprehensive search capabilities to find relevant information based on both the raw text and its underlying meaning.
 
 To learn about more options, such as vector and keyword search, go to [](/solutions/search/search-approaches.md).
+For a summary of the AI-powered search use cases, go to [](/solutions/search/ai-search/ai-search.md).
