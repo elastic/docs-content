@@ -18,7 +18,7 @@ Choose the relevant option for your cloud service provider:
 | Azure | [Azure Private Link](/deploy-manage/security/azure-private-link-traffic-filters.md) |
 | GCP | [GCP Private Service Connect](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md) |
 
-After you set up your private connection, you can [claim ownership of your VPC ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md) to prevent other organizations from using it.
+After you set up your private connection, you can [claim ownership of your private connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md) to prevent other organizations from using it.
 
 To learn how private connection policies work, how they affect your deployment, and how they interact with [IP filter policies](ip-filtering-cloud.md), refer to [](/deploy-manage/security/network-security-policies.md).
 

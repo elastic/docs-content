@@ -60,7 +60,7 @@ The steps, information, and authentication method required to configure CCS and 
 
 API key authentication for remote clusters cannot be used in combination with network security.
 
-For remote clusters configured using TLS certificate authentication, [network security policies](../security/traffic-filtering.md) can be applies to restrict access to deployments that are used as a local or remote cluster without any impact to cross-cluster search or cross-cluster replication.
+For remote clusters configured using TLS certificate authentication, [network security policies](../security/traffic-filtering.md) can be applied to restrict access to deployments that are used as a local or remote cluster without any impact on cross-cluster search or cross-cluster replication.
 
 Network security for remote clusters supports 2 methods:
 
