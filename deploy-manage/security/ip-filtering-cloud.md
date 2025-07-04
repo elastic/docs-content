@@ -42,7 +42,7 @@ To apply an IP filter to a deployment or project, you must first create an IP fi
 
 ### Step 1: Create an IP filter
 
-You can combine multiple IP address and CIDR block traffic sources into a single IP filter, so we recommend that you group sources according to what they allow, and make sure to label them accordingly. Because multiple filters can be applied to a deployment, you can be as granular in your filters as you require.
+You can combine multiple IP address and CIDR block traffic sources into a single IP filter, so we recommend that you group sources according to what they allow, and make sure to label them accordingly. Because multiple IP filters can be applied to a deployment, you can be as granular in your IP filter policies as you require.
 
 To create an IP filter:
 
