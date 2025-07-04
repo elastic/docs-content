@@ -38,6 +38,12 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
 
     ![Previewing an ESQL visualization](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt69dcceb4f1e12bc1/66c752d6aff77d384dc44209/edit-esql-visualization.gif "")
 
+    :::{tip}
+    {applies_to}`stack: ga 9.1` `{applies_to}`serverless: ga`
+    
+    When you edit the query and run it again, the visualization configuration persists as long as it is compatible with the query changes. 
+    :::
+
 4. You can bind controls to your ES|QL visualizations in dashboards by creating [ES|QL controls](../dashboards/add-controls.md#add-esql-control).
 5. Select **Apply and close** to save the visualization to the dashboard.
 
