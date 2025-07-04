@@ -28,7 +28,7 @@ Follow the step described here to set up ingress or inbound IP filters through t
 
 To learn how IP filters work together, and alongside [private connection policies](private-link-traffic-filters.md), refer to [](/deploy-manage/security/network-security-policies.md).
 
-To learn how to manage IP traffic filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
+To learn how to manage IP filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
 
 :::{note}
 To learn how to create IP filters for {{ece}} deployments, refer to [](ip-filtering-ece.md).

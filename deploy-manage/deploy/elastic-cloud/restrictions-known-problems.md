@@ -20,12 +20,10 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Private Link and SSO to {{kib}} URLs](#ec-restrictions-traffic-filters-kibana-sso)
 * [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-traffic-filters-watcher)
 * [Kibana](#ec-restrictions-kibana)
-% * [APM Agent central configuration with Private Link or traffic filters](#ec-restrictions-apm-traffic-filters)
-* [Fleet with Private Link or traffic filters](#ec-restrictions-fleet-traffic-filters)
+* [Fleet with network security](#ec-restrictions-fleet-traffic-filters)
 * [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
-% * [Known problems](#ec-known-problems)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md#restrictions-monitoring) section of the logging and monitoring page.
 
@@ -71,8 +69,6 @@ $$$ec-restrictions-apis-kibana$$$
 * {{kib}} plugins are not supported.
 * {{es}} plugins, are not enabled by default for security purposes. Reach out to support if you would like to enable {{es}} plugins support on your account.
 * Some {{es}} plugins do not apply to {{ecloud}}. For example, you won’t ever need to change discovery, as {{ecloud}} handles how nodes discover one another.
-% * In {{es}} 5.0 and later, site plugins are no longer supported. This change does not affect the site plugins {{ecloud}} might provide out of the box, such as Kopf or Head, since these site plugins are serviced by our proxies and not {{es}} itself.
-% * In {{es}} 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](/manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) if you want more detailed information or perform index management actions.
 
 
 ## Watcher [ec-restrictions-watcher]
@@ -86,15 +82,15 @@ Watcher comes preconfigured with a directly usable email account provided by Ela
 Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
-## Private Link and SSO to {{kib}} URLs [ec-restrictions-traffic-filters-kibana-sso]
+## Private connectivity and SSO to {{kib}} URLs [ec-restrictions-traffic-filters-kibana-sso]
 
-Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by Private Link traffic filters. However, you can still SSO into Private Link protected {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
+Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by private connectivity. However, you can still SSO into Private connectivity-protected {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
 
 
 ## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-traffic-filters-watcher]
 
 * PDF report automatic generation via Alerts is not possible on {{ecloud}}.
-* PDF report generation isn’t possible for deployments running on {{stack}} version 8.7.0 or before that are protected by traffic filters. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on {{stack}} version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass traffic filters.
+* PDF report generation isn’t possible for deployments running on {{stack}} version 8.7.0 or before that are protected by network security. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on {{stack}} version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass network security.
 
 
 ## {{kib}} [ec-restrictions-kibana]
@@ -102,19 +98,9 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
 * Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
+## Fleet with PrivateLink or network security [ec-restrictions-fleet-traffic-filters]
 
-% ## APM Agent central configuration with PrivateLink or traffic filters [ec-restrictions-apm-traffic-filters]
-
-% If you are using APM 7.9.0 or older:
-
-% * You cannot use [APM Agent central configuration](/solutions/observability/apm/apm-agent-central-configuration.md) if your deployment is secured by traffic filters.
-% * If you access your APM deployment over PrivateLink, to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
-
-
-## Fleet with PrivateLink or traffic filters [ec-restrictions-fleet-traffic-filters]
-
-% * You cannot use Fleet 7.13.x if your deployment is secured by traffic filters. Fleet 7.14.0 and later works with traffic filters (both Private Link and IP filters).
-* If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has traffic filters enabled is not currently supported.
+* If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has network security enabled is not currently supported.
 
 ## Restoring a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
 
@@ -142,13 +128,6 @@ To make a seamless migration, after restoring from a snapshot there are some add
 
 * The AWS `us-west-1` region is limited to two availability zones for ES data nodes and one (tiebreaker only) virtual zone (as depicted by the `-z` in the AZ (`us-west-1z`). Deployment creation with three availability zones for {{es}} data nodes for hot, warm, and cold tiers is not possible. This includes scaling an existing deployment with one or two AZs to three availability zones. The virtual zone `us-west-1z` can only hold an {{es}} tiebreaker node (no data nodes). The workaround is to use a different AWS US region that allows three availability zones, or to scale existing nodes up within the two availability zones.
 * The AWS `eu-central-2` region is limited to two availability zones for CPU Optimized (ARM) Hardware profile ES data node and warm/cold tier. Deployment creation with three availability zones for {{es}} data nodes for hot (for CPU Optimized (ARM) profile), warm and cold tiers is not possible. This includes scaling an existing deployment with one or two AZs to three availability zones. The workaround is to use a different AWS region that allows three availability zones, or to scale existing nodes up within the two availability zones.
-
-
-% ## Known problems [ec-known-problems]
-
-% * There is a known problem affecting clusters with versions 7.7.0 and 7.7.1 due to [a bug in Elasticsearch](https://github.com/elastic/elasticsearch/issues/56739). Although rare, this bug can prevent you from running plans. If this occurs we recommend that you retry the plan, and if that fails contact support to get your plan through. Because of this bug we recommend you to upgrade to version 7.8 and higher, where the problem has already been addressed.
-% * A known issue can prevent direct rolling upgrades from {{es}} version 5.6.10 to version 6.3.0. As a workaround, we have removed version 6.3.0 from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) for new cluster deployments and for upgrading existing ones. If you are affected by this issue, check [Rolling upgrades from 5.6.x to 6.3.0 fails with "java.lang.IllegalStateException: commit doesn’t contain history uuid"](https://elastic.my.salesforce.com/articles/Support_Article/Rolling-upgrades-to-6-3-0-from-5-x-fails-with-java-lang-IllegalStateException-commit-doesn-t-contain-history-uuid?popup=false&id=kA0610000005JFG) in our Elastic Support Portal. If these steps do not work or you do not have access to the Support Portal, you can contact `support@elastic.co`.
-
 
 ## Repository Analysis API is unavailable in {{ecloud}} [ec-repository-analyis-unavailable]
 

@@ -39,4 +39,4 @@ To learn how multiple rules are processed, refer to [](/deploy-manage/security/e
 
 ## ECK and self managed
 
-In {{eck}} and self-managed clusters, traffic filters are applied at the cluster level using `elasticsearch.yml`. [Learn how to configure traffic filtering at the cluster level](/deploy-manage/security/ip-filtering-basic.md).
+In {{eck}} and self-managed clusters, IP filters are applied at the cluster level using `elasticsearch.yml`. [Learn how to configure IP filters at the cluster level](/deploy-manage/security/ip-filtering-basic.md).

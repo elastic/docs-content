@@ -17,9 +17,9 @@ You can only configure ingress or inbound IP filters. These restrict access to y
 
 Follow the step described here to set up ingress or inbound IP filters through the Cloud UI.
 
-To learn how traffic filter rules work together, refer to [](ece-filter-rules.md).
+To learn how IP filter rules work together, refer to [](ece-filter-rules.md).
 
-To learn how to manage IP traffic filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
+To learn how to manage IP filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
 
 :::{note}
 To learn how to create IP filters for {{ech}} deployments or {{serverless-full}} projects, refer to [](ip-filtering-cloud.md).

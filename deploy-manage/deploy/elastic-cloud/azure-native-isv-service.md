@@ -466,20 +466,15 @@ $$$azure-integration-deployment-failed-traffic-filter$$$My {{ecloud}} deployment
       ]
     ```
 
-    One possible cause of a deployment creation failure is the default traffic filtering rules. Deployments fail to create if a previously created traffic filter has enabled the **Include by default** option. When this option is enabled, traffic to the deployment is blocked, including traffic that is part of the {{ecloud}} Azure Native ISV Service. As a result, some of the integration components are not successfully provisioned and the deployment creation fails.
+    One possible cause of a deployment creation failure is the default network security policies. Deployments fail to create if a previously created network security policy has enabled the **Include by default** option. When this option is enabled, traffic to the deployment is blocked, including traffic that is part of the {{ecloud}} Azure Native ISV Service. As a result, some of the integration components are not successfully provisioned and the deployment creation fails.
 
     Follow these steps to resolve the problem:
 
     1. Login to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Go to the [Traffic filters page](https://cloud.elastic.co/deployment-features/traffic-filters).
+    2. Go to the [Network security page](https://cloud.elastic.co/deployment-features/traffic-filters).
     3. Edit the traffic filter and disable the **Include by default** option.
-
-        :::{image} /deploy-manage/images/cloud-ec-marketplace-azure-traffic-filter-option.png
-        :alt: The Include by default option under Add to Deployments on the Traffic Filter page
-        :::
-
     4. In Azure, create a new {{ecloud}} deployment.
-    5. After the deployment has been created successfully, go back to the [Traffic filters page](https://cloud.elastic.co/deployment-features/traffic-filters) in {{ecloud}} and re-enable the **Include by default** option.
+    5. After the deployment has been created successfully, go back to the [Network security page](https://cloud.elastic.co/deployment-features/traffic-filters) in {{ecloud}} and re-enable the **Include by default** option.
 
 
 If your deployment still does not create successfully, [contact the Elastic Support Team](#azure-integration-support) for assistance.
