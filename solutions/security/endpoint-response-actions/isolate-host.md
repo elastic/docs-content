@@ -49,9 +49,9 @@ All actions executed on a host are tracked in the host’s response actions hist
 
 ## Isolate a host [isolate-a-host]
 
-::::{dropdown} Isolate a host from an event (Serverless only) or a detection alert
-1. Open an event ({{serverless-short}} only) or a detection alert:
-    * From the event analyzer view: Click an event. ({{serverless-short}} only)
+::::{dropdown} Isolate a host from an event or a detection alert
+1. Do one of the following:
+    * {applies_to}`stack: ga 9.1` From the event analyzer view: Click an event. 
     * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
@@ -120,9 +120,9 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 
 ## Release a host [release-a-host]
 
-::::{dropdown} Release a host from an event (Serverless only) or detection alert
-1. Open an event ({{serverless-short}} only) or a detection alert:
-    * From the event analyzer view: Click an event. ({{serverless-short}} only)
+::::{dropdown} Release a host from an event or detection alert
+1. Do one of the following:
+    * {applies_to}`stack: ga 9.1` From the event analyzer view: Click an event.
     * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
