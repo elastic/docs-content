@@ -12,7 +12,7 @@ By default, in {{ech}} and {{serverless-full}}, all your deployments are accessi
 
 Network security policies are created at the organization level, and then are associated with one or more resources, such as a deployment or project, to take effect. After you associate at least one policy with a resource, traffic that does not match the policy or any other policy associated with the resource is denied.
 
-Policies apply to external traffic only. Internal traffic is managed by the deployment or project. For example, in {{ech}}, {{kib}} can connect to {{es}}, as well as internal services which manage the deployment, Other deployments can’t connect to deployments protected by network security policies.
+Policies apply to external traffic only. Internal traffic is managed by the deployment or project. For example, in {{ech}}, {{kib}} can connect to {{es}}, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by network security policies.
 
 Policies operate on the proxy. Requests rejected by the policies are not forwarded to the resource. The proxy responds to the client with `403 Forbidden`.
 

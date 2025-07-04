@@ -27,5 +27,5 @@ To learn how private connection policies work, how they affect your deployment, 
 :::
 
 :::{note}
-Private connection policies were formerly referred to as PrivateLink filters.
+Private connection policies were formerly referred to as PrivateLink traffic filters.
 :::
