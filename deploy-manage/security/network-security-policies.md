@@ -78,6 +78,8 @@ Network security policies are listed under **Network security**. From this secti
 :::
 ::::
 
+## Review protected resources [protected-resources-overview]
+
 ## View rejected requests
 
 Requests rejected by a network security policy have the status code `403 Forbidden` and one of the following in the response body:

@@ -8,18 +8,18 @@ products:
   - id: cloud-hosted
 ---
 
-# Claim VCPE ID or Azure resource ownership [ec-claim-traffic-filter-link-id-through-the-api]
+# Claim VPC ownership [ec-claim-traffic-filter-link-id-through-the-api]
 
-This example demonstrates how to use the {{ecloud}} RESTful API to claim different types of ID (AWS PrivateLink, Azure Private Link, and GCP Private Service Connect). We cover the following examples:
+This example demonstrates how to use the {{ecloud}} RESTful API to claim different types of VPC ID (AWS PrivateLink, Azure Private Link, and GCP Private Service Connect). We cover the following examples:
 
-* [Claim a VCPE ID or Azure resource](#ec-claim-a-traffic-filter-link-id)
+* [Claim a VPC ID](#ec-claim-a-traffic-filter-link-id)
 
     * [AWS PrivateLink](#ec-claim-aws-privatelink)
     * [Azure Private Link](#ec-claim-azure-private-link)
     * [GCP Private Service Connect](#ec-claim-gcp-private-service-connect)
 
 * [List claimed IDs](#ec-list-claimed-traffic-filter-link-id)
-* [Unclaim a VCPE ID or Azure resource](#ec-unclaim-a-traffic-filter-link-id)
+* [Unclaim a VPC ID](#ec-unclaim-a-traffic-filter-link-id)
 
     * [AWS PrivateLink](#ec-unclaim-aws-privatelink)
     * [Azure Private Link](#ec-unclaim-azure-private-link)
@@ -27,7 +27,7 @@ This example demonstrates how to use the {{ecloud}} RESTful API to claim differe
 
 
 
-## Claim a VCPE ID or Azure resource [ec-claim-a-traffic-filter-link-id] 
+## Claim a VPC ID [ec-claim-a-traffic-filter-link-id] 
 
 
 ### AWS PrivateLink [ec-claim-aws-privatelink] 
@@ -64,6 +64,8 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/link-ids/_claim 
 
 ### Azure Private Link [ec-claim-azure-private-link] 
 
+In the case of Azure Private Link, two pieces of information are needed.
+
 ```sh
 curl \
 -H "Authorization: ApiKey $API_KEY" \
@@ -89,7 +91,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/link-ids \
 ```
 
 
-## Claim a VCPE ID or Azure resource [ec-unclaim-a-traffic-filter-link-id] 
+## Unclaim a VPC ID [ec-unclaim-a-traffic-filter-link-id] 
 
 
 ### AWS PrivateLink [ec-unclaim-aws-privatelink] 
@@ -124,7 +126,9 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/link-ids/_unclai
 ```
 
 
-### Azure Private Link [ec-unclaim-azure-private-link] 
+### Azure Private Link [ec-unclaim-azure-private-link]
+
+In the case of Azure Private Link, two pieces of information are needed.
 
 ```sh
 curl \

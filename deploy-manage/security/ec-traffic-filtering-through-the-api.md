@@ -60,7 +60,7 @@ In {{ecloud}}, terminology related to network security has changed to more accur
 | Network security policy | Traffic filter rule set | 
 | IP filter source | IP filter rule | 
 | Private connection | Private link traffic filter |
-| VCPE filter | Private link filter source |
+| VPC filter | Private link filter source |
 
 
 ## Create an IP filter policy or rule set [ec-create-a-traffic-filter-rule-set]
@@ -234,7 +234,7 @@ Private connection policies are optional for AWS PrivateLink and GCP Private Ser
 Creating a private connection policy and associating it with your deployments allows you to do the following:
 
 * Record that you've established private connectivity between the cloud service provider and Elastic in the applicable region.
-* Filter traffic to your deployment using VCPE filters.
+* Filter traffic to your deployment using VPC filters.
 
 A private connection policy is required to establish a private connection with Azure Private Link.
 :::

@@ -23,7 +23,7 @@ Azure Private Link establishes a secure connection between two Azure VNets. The 
 
 Private Link is a connection between an Azure Private Endpoint and a Azure Private Link Service.
 
-Azure Private Link requires that you also filter traffic to your deployments by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment to the VCPE specified in the policy, as well as any other filters defined in policies applied to the deployment.
+Azure Private Link requires that you also filter traffic to your deployments by creating virtual private connection (VPC) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment to the VPC specified in the policy, as well as any other filters defined in policies applied to the deployment.
 
 To learn how private connection policies impact your deployment, refer to [](/deploy-manage/security/network-security-policies.md).
 
@@ -165,11 +165,21 @@ The Private Link connection will be approved automatically after the private con
     :::
 
 9.  Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. After you associate the filter with a deployment, it starts filtering traffic.
+    
+    :::{tip}
+    Associating the private connection policy with deployments is optional. After the private connection policy is created, private connectivity is established.
+    
+    Associating the policy with your deployments allows you to do the following: 
+
+    * [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
+    * Filter traffic to your deployment.
+    :::
+
 10. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 11.  Click **Create**.
-12. (Optional) You can [claim your Private Endpoint resource name and ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
+12. Optional: You can [claim your Private Endpoint resource name and ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
 
-Creating the filter approves the Private Link connection.
+Creating the policy approves the Private Link connection.
 
 After the private link connection is approved, you can optionally [test the connection](#test-the-connection), and then [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
 
@@ -242,11 +252,18 @@ The next step is to [associate the policy](/deploy-manage/security/aws-privateli
 
 ### Associate a policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
 
-% is this optional?
-
 You can associate a network security policy with your deployment from the policy's settings, or from your deployment's settings. 
 
 After you associate the policy with a deployment, it starts filtering traffic. 
+
+:::{tip}
+Associating the private connection policy with deployments is optional. After the private connection policy is created, private connectivity is established.
+
+Associating the policy with your deployments allows you to do the following: 
+
+* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
+* Filter traffic to your deployment.
+:::
 
 #### From a deployment
 
@@ -327,9 +344,8 @@ This means your deployment on {{ecloud}} can be in a different region than the P
     1. Create your Private Link Endpoint using the service alias for region 2 in the region 1 VNET (let’s call this VNET1).
     2. Create a Private Hosted Zone for region 2, and associate it with VNET1 similar to the step [Create a Private Link endpoint and DNS](#ec-private-link-azure-dns). Note that you are creating these resources in region 1, VNET1.
 
-2. [Create a private connection policy](#ec-azure-create-traffic-filter-private-link-rule-set) and [associate it](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
+2. [Create a private connection policy](#ec-azure-create-traffic-filter-private-link-rule-set) in the region where your deployment is hosted, and [associate it](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
    
-   % what region should the policy be in?  
 3. [Test the connection](#ec-azure-access-the-deployment-over-private-link) from a VM or client in region 1 to your Private Link endpoint, and it should be able to connect to your {{es}} cluster hosted in region 2.
 
 ## Manage policies

@@ -21,7 +21,7 @@ You can use GCP Private Service Connect to establish a secure connection for you
 
 GCP Private Service Connect connects your Virtual Private Cloud (VPC) to the GCP-hosted services that you use, treating them as if they were in your VPC. You can create and use VPC endpoints to securely access GCP-hosted services.
 
-You can also optionally filter traffic to your deployments by creating virtual private connection endpoint (VCPE) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment to the VCPE specified in the policy, as well as any other policies applied to the deployment.
+You can also optionally filter traffic to your deployments by creating virtual private connection (VPC) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment to the VPC specified in the policy, as well as any other policies applied to the deployment.
 
 Private Link is a connection between a Private Service Connect Endpoint and a Service Attachment. [Learn more about using Private Service Connect on Google Cloud](https://cloud.google.com/vpc/docs/private-service-connect#benefits-services).
 
@@ -87,7 +87,8 @@ Private connection policies are optional for GCP Private Service Connect. After 
 Creating a private connection policy and associating it with your deployments allows you to do the following: 
 
 * Record that you've established private connectivity between GCP and Elastic in the applicable region.
-* Filter traffic to your deployment using VCPE filters.
+* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
+* Optionally filter traffic to your deployment using VPC filters.
 :::
 
 ### Create your Private Service Connect endpoint and DNS entries in Google Cloud [ec-private-service-connect-enpoint-dns]
@@ -167,7 +168,7 @@ Private connection policies are optional for GCP Private Service Connect. After 
 Creating a private connection policy and associating it with your deployments allows you to do the following: 
 
 * Record that you've established private connectivity between GCP and Elastic in the applicable region.
-* Filter traffic to your deployment using VCPE filters.
+* Filter traffic to your deployment using VPC filters.
 
 Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
@@ -177,7 +178,7 @@ Follow these high-level steps to add a private connection policy that can be ass
 
 ### Optional: Find your Private Service Connect connection ID [ec-find-your-psc-connection-id]
 
-The PSC connection ID is only required if you want to filter traffic to your deployment using VCPE filters.
+The PSC connection ID is only required if you want to filter traffic to your deployment using VPC filters.
 
 1. Go to your Private Service Connect endpoint in the Google Cloud console.
 2. Copy the value of **PSC Connection ID**.
@@ -196,9 +197,9 @@ Create a new private connection policy.
     Network security policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 11. Under **Connectivity**, select **Privatelink**.
-12. Optional: Under **VPCE filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
+12. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
     
-    If you don't specify a VPCE filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
+    If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
     
     :::{tip}
     You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
@@ -206,7 +207,7 @@ Create a new private connection policy.
     [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
 
-13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPCE filter, then after you associate the filter with a deployment, it starts filtering traffic.
+13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPC filter, then after you associate the filter with a deployment, it starts filtering traffic.
 14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 15.  Click **Create**.
 16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
@@ -217,9 +218,9 @@ The next step is to [associate the policy](#ec-psc-associate-traffic-filter-psc-
 
 You can associate a network security policy with your deployment from the policy's settings, or from your deployment's settings. 
 
-If the policy contains a VCPE filter, then after you associate the policy with a deployment, it starts filtering traffic. 
+If the policy contains a VPC filter, then after you associate the policy with a deployment, it starts filtering traffic. 
 
-If the policy doesn't contain a VCPE filter, then the association can serve as a reminder that a Private Service Connect endpoint exists for the deployment's region.
+If the policy doesn't contain a VPC filter, then the association can serve as a reminder that a Private Service Connect endpoint exists for the deployment's region.
 
 #### From a deployment
 
