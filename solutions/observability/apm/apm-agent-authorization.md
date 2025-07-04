@@ -129,7 +129,7 @@ Configure SSL verification mode. If `none` is configured, all server hosts and c
 
 ### `elasticsearch.ssl.supported_protocols` [_elasticsearch_ssl_supported_protocols]
 
-List of supported/valid TLS versions. By default, all TLS versions from 1.0 to 1.2 are enabled.
+List of supported/valid TLS versions. The default value is `[TLSv1.1, TLSv1.2, TLSv1.3]`.
 
 ### `elasticsearch.ssl.certificate_authorities` [_elasticsearch_ssl_certificate_authorities]
 
