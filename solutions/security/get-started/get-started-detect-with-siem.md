@@ -25,12 +25,16 @@ Before you can start using {{elastic-sec}}, you need to choose an integration to
 
 1. On the Get started home page, in the **Ingest your data** section, select **Elastic Defend**, then click **Add Elastic Defend**. 
 2. On the next page that says, "Ready to add your first integration?", click **Install {{agent}}** in the lower-right corner. Although you *can* skip agent installation, for optimal event collection and threat detection, we recommend that you do not skip it. 
+
 3. Select the appropriate operating system tab, then copy the commands. 
 4. On the host, open a command-line interface and navigate to the directory where you want to install {{agent}}. Paste and run the commands to download, extract, enroll, and start {{agent}}. Once the agent is installed successfully, you'll see an "Agent enrollment confirmed" message. 
 5. Click **Add the integration**, then Confirm incoming data on the next page.  
     After a few minutes, you should see the agent receiving data.
 
-% add image
+    :::{image} /solutions/images/security-gs-siem-install-agent.png
+    :alt: Alerts page with visualizations section collapsed
+    :screenshot:
+    :::
 
 :::{important}
 If you’re using macOS, some versions may require you to grant {{elastic-endpoint}} Full Disk Access to different kernels, system extensions, or files. Refer to [Elastic Defend requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) for more information.
@@ -50,7 +54,10 @@ To install and enable Elastic's prebuilt detection rules:
 4. Select the check box next to rules you want to install. To select all rules on the page, select the check box to the left of the **Rule** column heading. 
 5. Click ![Vertical boxes button](/solutions/images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules. Once you enable a rule, it starts running on its configured schedule.
 
-% add image here 
+:::{image} /solutions/images/security-gs-siem-install-rules.png 
+:alt: Alerts page with visualizations section collapsed
+:screenshot:
+:::
     
     To learn how to view and manage all detection rules, refer to [Manage detection rules](/solutions/security/detect-and-alert/manage-detection-rules.md). 
 ::::
