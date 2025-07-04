@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/attack-discovery.html
   - https://www.elastic.co/guide/en/serverless/current/attack-discovery.html
 applies_to:
-  stack: preview
+  stack: ga
   serverless:
-    security: preview
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
@@ -18,13 +18,6 @@ Attack Discovery leverages large language models (LLMs) to analyze alerts in you
 For a demo, refer to the following video (click to view).
 
 [![Attack Discovery video](https://play.vidyard.com/eT92arEbpRddmSM4JeyzdX.jpg)](https://videos.elastic.co/watch/eT92arEbpRddmSM4JeyzdX?)
-
-
-This page describes:
-
-* [How to generate discoveries](/solutions/security/ai/attack-discovery.md#attack-discovery-generate-discoveries)
-* [What information each discovery includes](/solutions/security/ai/attack-discovery.md#attack-discovery-what-info)
-* [How you can interact with discoveries to enhance {{elastic-sec}} workflows](/solutions/security/ai/attack-discovery.md#attack-discovery-workflows)
 
 
 ## Role-based access control (RBAC) for Attack Discovery [attack-discovery-rbac]
@@ -54,7 +47,7 @@ Attack Discovery is designed for use with alerts based on data that complies wit
 The selected fields can now be analyzed the next time you run Attack Discovery.
 :::
 
-## Generate discoveries [attack-discovery-generate-discoveries]
+## Generate discoveries manually[attack-discovery-generate-discoveries]
 
 You’ll need to select an LLM connector before you can analyze alerts. Attack Discovery uses the same LLM connectors as [AI Assistant](/solutions/security/ai/ai-assistant.md). To get started:
 
@@ -106,3 +99,67 @@ There are several ways you can incorporate discoveries into your {{elastic-sec}}
 :::{image} /solutions/images/security-add-discovery-to-assistant.gif
 :alt: Attack Discovery view in AI Assistant
 :::
+
+## Schedule discoveries
+
+```yaml {applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.
+
+Scheduled discoveries are shared by default with all users in a {{kib}} space. 
+
+:::{note}
+You can still generate discoveries manually at any time, regardless of an active schedule.
+:::
+
+To create a new schedule:
+
+1. Click the gear icon to open the settings menu, then select **Schedule**.
+2. Select **Create new schedule**.
+3. Enter a name for the new schedule.
+4. Select the LLM connector to use for generating discoveries, or add a new one.
+5. Use the KQL query bar, time filter, and alerts slider to customize the set of alerts that will be analyzed.
+6. Define the schedule's frequency (for example, every 24 hours).
+7. Optionally, select the [connectors](/deploy-manage/manage-connectors.md) to use for receiving notifications, and define their actions.
+8. Click **Create & enable schedule**.
+
+After creating new schedules, you can view their status, modify them or delete them from the **Schedule** tab in the settings menu.
+
+:::{tip}
+Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({icon}`calendar`). Click the icon to view the schedule that created it.
+:::
+
+## View saved discoveries
+
+```yaml {applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+Attack discoveries are automatically saved each time you generate them. Once saved, discoveries remain available for later review, reporting, and tracking over time. This allows you to revisit discoveries to monitor trends, maintain audit trails, and support investigations as your environment evolves.
+
+### Change a discovery's status
+
+You can set a discovery's status to indicate that it's under active investigation or that it's been resolved. To do this, click **Take action**, then select **Mark as acknowledged** or **Mark as closed**.
+
+### Take bulk actions
+
+You can take bulk actions on multiple discoveries, such as bulk-changing their status or adding them to a case. To do this, select the checkboxes next to each discovery, then click **Selected *x* Attack discoveries** and choose the action you want to take.
+
+### Search and filter saved discoveries
+
+You can search and filter saved discoveries to help locate relevant findings.
+
+* Use the search box to perform full-text searches across your generated discoveries.
+
+* **Visibility**: Use this filter to, for example, show only shared discoveries.
+
+* **Status**: Filter discoveries by their current status.
+
+* **Connector**: Filter discoveries by connector name. Connectors that are deleted after discoveries have been generated are shown with a **Deleted** tag.
+
+* Time filter: Adjust the time filter to view discoveries generated within a specific timeframe.
+
