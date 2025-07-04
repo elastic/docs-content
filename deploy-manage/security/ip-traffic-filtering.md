@@ -21,12 +21,12 @@ If you use {{ech}} or {{eck}}, then other [network security](/deploy-manage/secu
 
 ## Serverless and ECH
 
-In {{serverless-full}} and {{ech}}, network security policies are created at the organization level, and then applied at the deployment level. Follow these guides to learn how to create, apply, and manage these policies using your preferred method:
+In {{serverless-full}} and {{ech}}, IP filters are a type of [network security policy](/deploy-manage/security/network-security-policies.md). They are created at the organization level, and then applied at the deployment level. Follow these guides to learn how to create, apply, and manage these filters using your preferred method:
   
   * [In the {{ecloud}} console](/deploy-manage/security/ip-filtering-cloud.md)
   * [Using the {{ecloud}} API](/deploy-manage/security/ec-traffic-filtering-through-the-api.md)
   
-To learn how multiple IP filter policies are processed, and how IP filters and [private connections](/deploy-manage/security/private-link-traffic-filters.md) work together in ECH, refer to [](/deploy-manage/security/network-security-policies.md).
+To learn how multiple IP filters are processed, and how IP filters and [private connections](/deploy-manage/security/private-link-traffic-filters.md) work together in ECH, refer to [](/deploy-manage/security/network-security-policies.md).
 
 ## ECE
 

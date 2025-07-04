@@ -251,7 +251,7 @@ Create a new private connection policy.
 10. Select the cloud provider and region for the private connection. 
    
     :::{tip}
-    Network security policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
+    private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 11. Under **Connectivity**, select **Privatelink**.
 12. Optional: Under **VPC filter**, enter your VPCendpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment. 
@@ -259,7 +259,7 @@ Create a new private connection policy.
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
     
     :::{tip}
-    You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+    You can apply multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
     [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
@@ -271,9 +271,9 @@ Create a new private connection policy.
 
 The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
 
-### Optional: Associate a policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
+### Optional: Associate a private connection policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
 
-You can associate a network security policy with your deployment from the policy's settings, or from your deployment's settings. 
+You can associate a private connection policy with your deployment from the policy's settings, or from your deployment's settings. 
 
 If the policy contains a VPC filter, then after you associate the policy with a deployment, it starts filtering traffic. 
 
@@ -338,11 +338,11 @@ To access the deployment:
 :::{include} _snippets/private-connection-fleet.md
 :::
 
-## Manage policies
+## Manage private connection policies
 
 After you create your private connection policy, you can edit it, remove it from your deployment, or delete it.
 
-### Edit a policy [ec-edit-traffic-filter-private-link-rule-set]
+### Edit a private connection policy [ec-edit-traffic-filter-private-link-rule-set]
 
 You can edit a policy's name, description, VPC endpoint ID, and more.
 
@@ -352,10 +352,10 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 2. Click **Update** to save your changes.
 
 :::{tip}
-You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
+You can also edit private connection policies from your deployment's **Security** page or your project's **Network security** page.
 :::
 
-### Remove a policy from your deployment [remove-filter-deployment]
+### Remove a private connection policy from your deployment [remove-filter-deployment]
 
 If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
@@ -376,7 +376,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 7. Click **Update** to save your changes.
 
 
-### Delete a policy [ec-delete-traffic-filter-private-link-rule-set]
+### Delete a private connection policy [ec-delete-traffic-filter-private-link-rule-set]
 
 If you need to remove a policy, you must first remove any associations with deployments.
 

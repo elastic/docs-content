@@ -234,6 +234,7 @@ Private connection policies are optional for AWS PrivateLink and GCP Private Ser
 Creating a private connection policy and associating it with your deployments allows you to do the following:
 
 * Record that you've established private connectivity between the cloud service provider and Elastic in the applicable region.
+* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
 * Filter traffic to your deployment using VPC filters.
 
 A private connection policy is required to establish a private connection with Azure Private Link.

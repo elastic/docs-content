@@ -153,13 +153,13 @@ The Private Link connection will be approved automatically after the private con
 6.  Select the cloud provider and region for the private connection. 
    
     :::{tip}
-    Network security policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
+    Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 7.  Under **Connectivity**, select **Privatelink**.
 8.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment, this information will be used to filter traffic.
 
     :::{tip}
-    You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+    You can apply multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
     [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
@@ -250,9 +250,9 @@ curl: (7) Failed to connect to my-deployment-d53192.es.privatelink.eastus2.azure
 The next step is to [associate the policy](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
 
 
-### Associate a policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
+### Associate a private connection policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
 
-You can associate a network security policy with your deployment from the policy's settings, or from your deployment's settings. 
+You can associate a private connection policy with your deployment from the policy's settings, or from your deployment's settings. 
 
 After you associate the policy with a deployment, it starts filtering traffic. 
 
@@ -348,11 +348,11 @@ This means your deployment on {{ecloud}} can be in a different region than the P
    
 3. [Test the connection](#ec-azure-access-the-deployment-over-private-link) from a VM or client in region 1 to your Private Link endpoint, and it should be able to connect to your {{es}} cluster hosted in region 2.
 
-## Manage policies
+## Manage private connection policies
 
 After you create your private connection policy, you can edit it, remove it from your deployment, or delete it.
 
-### Edit a policy [ec-azure-edit-traffic-filter-private-link-rule-set]
+### Edit a private connection policy [ec-azure-edit-traffic-filter-private-link-rule-set]
 
 You can edit a policy's name, description, VPC endpoint ID, and more.
 
@@ -365,7 +365,7 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
 :::
 
-### Remove a policy from your deployment [remove-filter-deployment]
+### Remove a private connection policy from your deployment [remove-filter-deployment]
 
 If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
@@ -377,7 +377,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 2. On the **Security** page, under **Network security**, find the IP filter policy that you want to disconnect. 
 3. Under **Actions**, click the **Delete** icon.
 
-#### From the IP filter policy settings
+#### From the private connection policy settings
 
 :::{include} _snippets/network-security-page.md
 :::
@@ -385,7 +385,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
 7. Click **Update** to save your changes.
 
-### Delete a policy [ec-azure-delete-traffic-filter-private-link-rule-set]
+### Delete a private connection policy [ec-azure-delete-traffic-filter-private-link-rule-set]
 
 If you need to remove a policy, you must first remove any associations with deployments.
 

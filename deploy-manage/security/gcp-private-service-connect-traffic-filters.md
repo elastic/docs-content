@@ -194,7 +194,7 @@ Create a new private connection policy.
 10. Select the cloud provider and region for the private connection. 
    
     :::{tip}
-    Network security policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
+    Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 11. Under **Connectivity**, select **Privatelink**.
 12. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
@@ -202,7 +202,7 @@ Create a new private connection policy.
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
     
     :::{tip}
-    You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+    You can apply multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
     [Learn more about how network security policies affect your deployment](network-security-policies.md).
     :::
@@ -216,7 +216,7 @@ The next step is to [associate the policy](#ec-psc-associate-traffic-filter-psc-
 
 ### Optional: Associate a policy with a deployment [ec-psc-associate-traffic-filter-psc-rule-set]
 
-You can associate a network security policy with your deployment from the policy's settings, or from your deployment's settings. 
+You can associate a private connection policy with your deployment from the policy's settings, or from your deployment's settings. 
 
 If the policy contains a VPC filter, then after you associate the policy with a deployment, it starts filtering traffic. 
 
@@ -278,11 +278,11 @@ To access the deployment:
 :::{include} _snippets/private-connection-fleet.md
 :::
 
-## Manage policies
+## Manage private connection policies
 
 After you create your private connection policy, you can edit it, remove it from your deployment, or delete it.
 
-### Edit a policy [ec-edit-traffic-filter-psc-rule-set]
+### Edit a private connection policy [ec-edit-traffic-filter-psc-rule-set]
 
 You can edit a policy's name, description, VPC endpoint ID, and more.
 
@@ -296,7 +296,7 @@ You can also edit network security policies from your deployment's **Security** 
 :::
 
 
-### Remove a policy from your deployment [remove-filter-deployment]
+### Remove a private connection policy from your deployment [remove-filter-deployment]
 
 If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
@@ -309,7 +309,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 1. Find your project on the home page or on the **Serverless projects** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. On the **Network security** page, find the IP filter policy that you want to disconnect. 
+2. On the **Network security** page, find the policy that you want to disconnect. 
 3. Under **Actions**, click the **Delete** icon.
 :::
 :::{tab-item} Hosted deployment
@@ -317,12 +317,12 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. On the **Security** page, under **Network security**, find the IP filter policy that you want to disconnect. 
+2. On the **Security** page, under **Network security**, find the policy that you want to disconnect. 
 3. Under **Actions**, click the **Delete** icon.
 :::
 ::::
 
-#### From the IP filter policy settings
+#### From the policy settings
 
 :::{include} _snippets/network-security-page.md
 :::
@@ -330,7 +330,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
 7. Click **Update** to save your changes.
 
-### Delete a policy [ec-delete-traffic-filter-psc-rule-set]
+### Delete a private connection policy [ec-delete-traffic-filter-psc-rule-set]
 
 If you need to remove a policy, you must first remove any associations with deployments.
 
