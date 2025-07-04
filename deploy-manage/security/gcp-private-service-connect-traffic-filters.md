@@ -33,7 +33,7 @@ To learn how private connection policies impact your deployment, refer to [](/de
 
 ## Considerations
 
-* Private Service Connect filtering is supported only for Google Cloud regions.
+* Private connectivity with Private Service Connect is supported only in Google Cloud regions.
 
 * Private Service Connect connections are regional. As a result, your Private Service Connect endpoint needs to be created in the same region as your deployment. The endpoint can be accessed from any region after you enable its [Global Access](https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#global-access) feature.
 
