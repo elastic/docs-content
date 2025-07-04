@@ -25,10 +25,10 @@ The following APIs support {{ccs}}:
 * [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
 * [Painless execute API](elasticsearch://reference/scripting-languages/painless/painless-api-examples.md)
 * [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
+* [Vector tile search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt)
+* {applies_to}`stack: preview 9.0, ga 9.1` [ES|QL](../../explore-analyze/query-filter/languages/esql-cross-clusters.md)
 * [preview] [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
 * [preview] [SQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)
-* [preview] [Vector tile search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt)
-* [preview] [ES|QL](../../explore-analyze/query-filter/languages/esql-cross-clusters.md)
 
 
 ## Prerequisites [_prerequisites]
