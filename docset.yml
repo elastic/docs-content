@@ -37,6 +37,11 @@ cross_links:
   - ecs-logging-ruby
   - eland
   - elastic-serverless-forwarder
+  - elastic-otel-dotnet
+  - elastic-otel-java
+  - elastic-otel-node
+  - elastic-otel-php
+  - elastic-otel-python
   - elasticsearch
   - elasticsearch-hadoop
   - elasticsearch-java
@@ -78,6 +83,8 @@ subs:
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
   edot:  "Elastic Distribution of OpenTelemetry"
+  motlp: "Elastic Cloud Managed OTLP Endpoint"
+  edot-cf:   "EDOT Cloud Forwarder"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
   es-serverless:   "Elasticsearch Serverless"
