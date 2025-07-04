@@ -9,7 +9,7 @@ products:
 ---
 # Get started with semantic search
 
-_Semantic search_ is a type of AI-powered search that enables you to use intuitive language in your queries.
+_Semantic search_ is a type of AI-powered search that enables you to use natural language in your queries.
 It returns results that match the meaning of a query, as opposed to literal keyword matches.
 For example, if you want to search for workplace guidelines on a second income, you could search for "side hustle", which is not a term you're likely to see in a formal HR document.
 
