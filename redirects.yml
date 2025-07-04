@@ -212,3 +212,13 @@ redirects:
   'solutions/observability/get-started/get-started-with-dashboards.md': 'solutions/observability/get-started.md'
 # Related to https://github.com/elastic/docs-content/pull/1329
   'manage-data/ingest/transform-enrich/ingest-pipelines-serverless.md': 'manage-data/ingest/transform-enrich/ingest-pipelines.md'
+
+# Rebranded traffic filters to network security, privatelink to private connectivity
+  'deploy-manage/security/traffic-filtering.md': 'deploy-manage/security/network-security.md'
+  'deploy-manage/security/private-link-traffic-filters.md': 'deploy-manage/security/private-connectivity.md'
+  'deploy-manage/security/ip-traffic-filtering.md': 'deploy-manage/security/ip-filtering.md'
+  'deploy-manage/security/gcp-private-service-connect-traffic-filters.md': 'deploy-manage/security/private-connectivity-gcp.md'
+  'deploy-manage/security/aws-privatelink-traffic-filters.md': 'deploy-manage/security/private-connectivity-aws.md'
+  'deploy-manage/security/azure-private-link-traffic-filters.md': 'deploy-manage/security/private-connectivity-azure.md'
+  'deploy-manage/security/ec-traffic-filtering-through-the-api.md': 'deploy-manage/security/network-security-api.md'
+  'deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md': 'deploy-manage/security/claim-private-connection-api.md'
