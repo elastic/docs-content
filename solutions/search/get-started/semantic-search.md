@@ -66,7 +66,7 @@ Alternatively, try out the API requests in the [Console](/explore-analyze/query-
 
 :::::{stepper}
 
-::::{step} Define a semantic text field
+::::{step} Create a `semantic_text` field mapping
 
 You can implement semantic search with varying levels of complexity and customization.
 The recommended method is to use [semantic_text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields in most cases.
