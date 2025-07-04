@@ -47,30 +47,12 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 
 ## Supported standalone APM settings (legacy) [ec-apm-settings]
 
-{{ech}} supports the settings listed in [APM documentation](/solutions/observability/apm/configure-apm-server.md) under "APM Server binary" when running APM in standalone mode (legacy), except for those in the following blocklist:
+{{ech}} supports the settings listed in [APM documentation](/solutions/observability/apm/configure-apm-server.md) under "APM Server binary" when running APM in standalone mode (legacy). For versions before 9, refer to [older documentation](https://www.elastic.co/guide/en/observability/8.x/apm-configuring-howto-apm-server.html).
 
 ::::{note}
-Some of the following settings may not be valid configurations, depending on the version.
+Some settings may be intentionally restricted to maintain system stability.
 ::::
-
-* `apm-server.host`
-* `apm-server.ssl.enabled`
-* `apm-server.ssl.certificate`
-* `apm-server.ssl.key`
-* `apm-server.ssl.key_passphrase`
-* `apm-server.rum.source_mapping.index_pattern`
-* `apm-server.frontend.source_mapping.index_pattern`
-* `apm-server.rum.source_mapping.*`
-* `apm-server.expvar.url`
-* `apm-server.instrumentation.*`
-* `apm-server.api_key.elasticsearch.*`
-* `apm-server.jaeger.*`
-* `apm-server.kibana.*`
 
 ::::{note}
 To change logging settings you must first [enable deployment logging](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
 ::::
-
-
-
-
