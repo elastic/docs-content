@@ -1,6 +1,6 @@
 {{ecloud}} has built-in security. For example, HTTPS communications between {{ecloud}} and the internet, as well as inter-node communications, are secured automatically, and cluster data is encrypted at rest.
 
-In both {{ech}} and {{serverless-full}}, you can also configure [IP filtering network security policies](/deploy-manage/security/ip-filtering-cloud.md) to prevent unauthorized access to your deployments and projects.
+In both {{ech}} and {{serverless-full}}, you can also configure [IP filters](/deploy-manage/security/ip-filtering-cloud.md) to prevent unauthorized access to your deployments and projects.
 
 In {{ech}}, you can augment these security features in the following ways:
 * [Configure private connectivity and apply VPC filtering](/deploy-manage/security/traffic-filtering.md) to establish a secure connection for your {{ecloud}} deployments to communicate with other cloud services, and restrict traffic to deployments based on those private connections.

@@ -10,7 +10,7 @@ applies_to:
 
 By default, in {{ech}} and {{serverless-full}}, all your deployments are accessible over the public internet.
 
-Network security policies are created at the organization level, and then are associated with one or more resources, such as a deployment or project, to take effect. After you associate at least one policy with a resource, traffic that does not match the policy or any other policy associated with the resource is denied.
+Network security policies include [IP filters](/deploy-manage/security/ip-filtering-cloud.md) and [private connections](/deploy-manage/security/private-link-traffic-filters.md). They are created at the organization level, and need to be associated with one or more resources, such as a deployment or project, to take effect. After you associate at least one policy with a resource, traffic that does not match the policy or any other policy associated with the resource is denied.
 
 Policies apply to external traffic only. Internal traffic is managed by the deployment or project. For example, in {{ech}}, {{kib}} can connect to {{es}}, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by network security policies.
 
@@ -40,19 +40,17 @@ You can detach default policies from resources after they are created. Default p
 
 To automatically apply a network security policy to new resources by default new deployments or projects in your organization:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From any deployment or project on the home page, select **Manage**.
-3. Under the **Features** tab, open the **Network security** page.
-4. Select **Create** to create a new policy, or select **Edit** to open an existing policy.
+:::{include} _snippets/network-security-page.md
+:::
+4. Select **Create** to create a new policy, or select **Edit** {icon}`pencil` to open an existing policy.
 5. Under **Apply to future resources by default**, select **Include by default**.
 
 ### Identify default policies
 
 To identify which network security policies are automatically applied to new deployments or projects in your organization:
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From any deployment or project on the home page, select **Manage**.
-3. Under the **Features** tab, open the **Network security** page.
+:::{include} _snippets/network-security-page.md
+:::
 4. Select each of the policies. **Include by default** is checked when a policy is automatically applied to all new deployments or projects in its region.
   
 ## Review the policies associated with a resource
@@ -79,6 +77,26 @@ Network security policies are listed under **Network security**. From this secti
 ::::
 
 ## Review protected resources [protected-resources-overview]
+
+You can review the resources that are currently protected by an IP filter or private connection from the **Network security** page.
+
+:::{include} _snippets/network-security-page.md
+:::
+4. Review the usage summary cards at the top of the page.
+
+These cards include the following information: 
+
+* How many of the configured IP filters and private connections are currently in use.
+  
+  You can click on the **[X] of [Y] in use** links to view any unused IP filters or private connections.
+* Which resources are protected by IP filters or private connections.
+
+  You can click on the **[X] deployments** or **[X] projects** links to view a list of the protected resources.
+
+  Only resources that you have permission to view are counted and shown. IP filter or private connection policies might also be applied to resources that you don't have permission to view.
+
+You can also view the resources associated with a specific policy by clicking on the links in the **Protected resources** column of the policy list.
+
 
 ## View rejected requests
 

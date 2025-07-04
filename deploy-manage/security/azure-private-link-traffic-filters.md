@@ -358,7 +358,7 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 
 :::{include} _snippets/network-security-page.md
 :::
-1. Find the policy you want to edit, then click the **Edit** icon.
+1. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
 2. Click **Update** to save your changes.
 
 :::{tip}
@@ -381,7 +381,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit, then click the **Edit** icon.
+5. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
 6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
 7. Click **Update** to save your changes.
 
@@ -393,4 +393,4 @@ To delete a policy:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments associated with the policy.
+4. Find the policy you want to edit, then click the **Delete** button. The icon is inactive if there are deployments associated with the policy.

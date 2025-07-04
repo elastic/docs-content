@@ -128,7 +128,7 @@ If you want to a specific IP filter policy from a deployment or project, or dele
 
 :::{include} _snippets/network-security-page.md
 :::
-5. Find the policy you want to edit, then click the **Edit** icon.
+5. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
 6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
 7. Click **Update** to save your changes.
 
@@ -138,7 +138,7 @@ You can edit an IP filter policy's name or description, change the allowed traff
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the policy you want to edit, then click the **Edit** icon.
+4. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
 5. Click **Update** to save your changes.
 
 :::{tip}
@@ -153,4 +153,4 @@ To delete a policy:
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments or projects associated with the policy.
+4. Find the policy you want to edit, then click the **Delete** {icon}`trash` button. The icon is inactive if there are deployments or projects associated with the policy.

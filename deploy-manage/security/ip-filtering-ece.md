@@ -83,7 +83,7 @@ You can edit a rule set name or change the allowed traffic sources using IPv4, o
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Security**.
 2. Find the rule set you want to edit.
-3. Select the **Edit** icon.
+3. Select the **Edit** {icon}`pencil` button.
 
 
 ## Delete an IP filter rule set
@@ -96,4 +96,4 @@ To delete a rule set with all its rules:
 2. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 3. From the **Platform** menu, select **Security**.
 4. Find the rule set you want to edit.
-5. Select the **Delete** icon. The icon is inactive if there are deployments assigned to the rule set.
+5. Select the **Delete** {icon}`trash` button. The button is inactive if there are deployments assigned to the rule set.
