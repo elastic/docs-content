@@ -75,7 +75,7 @@ POST /.ds-*-apm*/_delete_by_query
 
 ### Delete data with {{kib}} Index Management [apm-delete-data-in-kibana]
 
-{{kib}}'s [Index Management](/manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) allows you to manage your cluster’s indices, data streams, index templates, and much more.
+{{kib}}'s [Index management](/manage-data/data-store/index-basics.md#index-management) UI allows you to manage your cluster’s indices, data streams, index templates, and much more.
 
 To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Data Streams**. Select the data streams you want to delete, and click **Delete data streams**.
 
