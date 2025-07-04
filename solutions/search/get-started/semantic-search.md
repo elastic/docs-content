@@ -19,23 +19,11 @@ This model is built to provide great relevance across domains, without the need 
 
 ## Prerequisites
 
-::::{tab-set}
-:group: stack-serverless
+- If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a project that is optimized for vectors. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+- If you're [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. To add the sample data, log in with the `elastic` user that has the `superuser` built-in role.
+  
+To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
-:::{tab-item} {{serverless-short}}
-:sync: serverless
-
-- An {{es-serverless}} project that is optimized for vectors. To learn more, refer to [](/solutions/search/serverless-elasticsearch-get-started.md).
-- If you want to add sample data, you must have a `developer` or `admin` [predefined role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or an equivalent custom role.
-
-:::
-:::{tab-item} {{stack}}
-:sync: stack
-
-- An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all [Elastic deployment models](/deploy-manage/deploy.md). The quickest way to get started is by using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md).
-- If you want to add sample data, you must have authority to create an index, add documents, and view them. To use {{kib}}, you'll also need read authority for the **Discover**, **Dev Tools**, and **{{es}}** features. The `superuser` built-in role meets all of these requirements. To learn more, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
-:::
-::::
 <!--
 TBD: It seems like semantic search fields exist in all, so what is the value of this "optimized for vectors" option?
 -->
