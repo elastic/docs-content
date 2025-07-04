@@ -23,6 +23,7 @@ Deployment hardware profiles deploy the {{stack}} on virtual hardware. Each hard
 The {{ecloud}} console indicates when a new version of a hardware profile is available in the overview page for your deployment, under the Hardware profile section.
 ::::
 
+
 ## Change the hardware profile using the {{ecloud}} console [ec_change_the_hardware_profile_using_the_elastic_cloud_console]
 
 ::::{note}
