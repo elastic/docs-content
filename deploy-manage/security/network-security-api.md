@@ -35,7 +35,7 @@ We cover the following examples:
 * [Remove a policy or rule set from a project or deployment](#ec-delete-rule-set-association-with-a-deployment)
 * [Delete a policy or rule set](#ec-delete-a-rule-set)
 
-Refer to [](traffic-filtering.md) to learn more about network security across all deployment types.
+Refer to [](network-security.md) to learn more about network security across all deployment types.
 
 ## API reference
 

@@ -319,7 +319,7 @@ $$$azure-integration-how-to-access$$$How can I access my {{ecloud}} deployment?
 
 
 $$$azure-integration-modify-deployment$$$How can I modify my {{ecloud}} deployment?
-:   Modify your {{ecloud}} deployment in the {{ecloud}} console, which is accessed from the Azure UI through the **Advanced Settings** link on the deployment overview page. In the {{ecloud}} console you can perform [a number of actions against your deployment](/deploy-manage/deploy/elastic-cloud/cloud-hosted#ec_how_to_operate_elasticsearch_service).
+:   Modify your {{ecloud}} deployment in the {{ecloud}} console, which is accessed from the Azure UI through the **Advanced Settings** link on the deployment overview page. In the {{ecloud}} console you can perform [a number of actions against your deployment](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md#ec_how_to_operate_elasticsearch_service).
 
 $$$azure-integration-delete-deployment$$$How can I delete my {{ecloud}} deployment?
 :   Delete the deployment directly from the Azure console. The delete operation performs clean-up activities in the Elastic console to ensure any running components are removed, so that no additional charges occur.
