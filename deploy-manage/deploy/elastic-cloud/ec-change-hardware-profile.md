@@ -8,7 +8,9 @@ products:
   - id: cloud-hosted
 ---
 
-# Change hardware profiles [ec-change-hardware-profile]
+# Manage hardware profiles [ec-change-hardware-profile]
+
+## Hardware profile [ec-hardware-profile]
 
 Deployment hardware profiles deploy the {{stack}} on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU.
 
@@ -23,6 +25,11 @@ The {{ecloud}} console indicates when a new version of a hardware profile is ava
 
 
 ## Change the hardware profile using the {{ecloud}} console [ec_change_the_hardware_profile_using_the_elastic_cloud_console]
+
+::::{note}
+Deployment with Elastic stack version prior to 7.10 does not support hardware profile change {{ecloud}} console and API. If you want to make change on hardware profile, upgrading to version 7.10 and onwards is required.
+::::
+
 
 ### Upgrade to the newest version of your current hardware profile [ec_upgrade_to_the_newest_version_of_your_current_hardware_profile]
 
@@ -71,6 +78,11 @@ If your deployment is configured for high availability, the hardware profile cha
 
 
 ## Change the hardware profile using the API [ec_change_the_hardware_profile_using_the_api]
+
+::::{note}
+Deployment with Elastic stack version prior to 7.10 does not support hardware profile change {{ecloud}} console and API. If you want to make change on hardware profile, upgrading to version 7.10 and onwards is required.
+::::
+
 
 Prerequisites:
 
