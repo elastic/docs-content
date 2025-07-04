@@ -122,3 +122,13 @@ You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE
 ::::
 
 
+## Use Direct IO when the vector data does not fit in RAM
+```{applies_to}
+stack: preview 9.1
+serverless: unavailable
+```
+If your indices are of type `bbq_hnsw` and your nodes don't have enough off-heap RAM to store all vector data in memory, you may see very high query latencies. Vector data includes the HNSW graph, quantized vectors, and raw float32 vectors.
+
+In these scenarios, direct IO can significantly reduce query latency. Enable it by setting the JVM option `vector.rescoring.directio=true` on all vector search nodes in your cluster.
+
+Only use this option if you're experiencing very high query latencies on indices of type `bbq_hnsw`. Otherwise, enabling direct IO may increase your query latencies.

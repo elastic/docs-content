@@ -230,17 +230,17 @@ Once you know your VPC endpoint ID you can create a private link traffic filter 
 
 :::{include} _snippets/create-filter.md
 :::
-1. Select **Private link endpoint**.
-2. Create your rule set, providing a meaningful name and description.
-3. Select the region for the rule set.
-4. Enter your VPC endpoint ID.
-5. Select if this rule set should be automatically attached to new deployments.
+5. Under **Filter type**, select **Private link endpoint**.
+6. Create your rule set, providing a meaningful name and description.
+7. Select the region for the rule set.
+8. Enter your VPC endpoint ID.
+9. Select if this rule set should be automatically attached to new deployments.
 
     ::::{note}
     Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
     ::::
 
-6.  (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
+10.  (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
 
 The next step is to [associate the rule set](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployments.
 
@@ -291,7 +291,7 @@ The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` t
 
 ## Edit a PrivateLink connection [ec-edit-traffic-filter-private-link-rule-set]
 
-You can edit a rule set name or to change the VPC endpoint ID.
+You can edit a rule set name or change the VPC endpoint ID.
 
 :::{include} _snippets/edit-ruleset.md
 :::

@@ -60,8 +60,8 @@ To create a rule set:
     :::{tab-item} {{ech}}
     :sync: ech
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
+    2. Find your deployment on the home page and select **Manage**, or select your deployment from the **Hosted deployments** page.
+    3. From the lower navigation menu, select **Traffic filters**.
     :::
     :::{tab-item} {{ece}}
     :sync: ece
@@ -115,8 +115,8 @@ You can edit a rule set name or change the allowed traffic sources using IPv4, o
     :::{tab-item} {{ech}}
     :sync: ech
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
+    2. Find your deployment on the home page and select **Manage**, or select your deployment from the **Hosted deployments** page.
+    3. From the lower navigation menu, select **Traffic filters**.
     :::
     :::{tab-item} {{ece}}
     :sync: ece
@@ -144,8 +144,8 @@ To delete a rule set with all its rules:
     :::{tab-item} {{ech}}
     :sync: ech
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-    3. Under the **Features** tab, open the **Traffic filters** page.
+    2. Find your deployment on the home page and select **Manage**, or select your deployment from the **Hosted deployments** page.
+    3. From the lower navigation menu, select **Traffic filters**.
     :::
     :::{tab-item} {{ece}}
     :sync: ece
@@ -154,5 +154,5 @@ To delete a rule set with all its rules:
     :::
     ::::
 
-3. Find the rule set you want to edit.
+3. Find the rule set you want to delete.
 4. Select the **Delete** icon. The icon is inactive if there are deployments assigned to the rule set.

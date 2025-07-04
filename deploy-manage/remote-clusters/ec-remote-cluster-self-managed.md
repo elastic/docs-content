@@ -61,8 +61,8 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+3. From the navigation menu, select **Security**.
+4. Locate **Remote connections** and select **Add API key**.
 
     1. Add a setting:
 
