@@ -146,7 +146,7 @@ Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/
 
 Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
 
-In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, sampling will be bypassed.
+In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, trace events are indexed or discarded based on the [discard on write failure](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-discard-on-write-failure-ref) configuration.
 
 It is recommended to use fast disks, ideally Solid State Drives (SSD) with high I/O per second (IOPS), when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
