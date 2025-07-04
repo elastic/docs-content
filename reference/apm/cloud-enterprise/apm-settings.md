@@ -64,19 +64,15 @@ If a setting is not supported by Elastic Cloud Enterprise, you get an error mess
 
 ## Example: Enable RUM and increase the rate limit (legacy) [ece_example_enable_rum_and_increase_the_rate_limit_legacy]
 
-When capturing the user interaction with clients with real user monitoring (RUM), particularly for situations with concurrent clients, you can increase the number of times each IP address can send a request to the RUM endpoint. Version 6.5 includes an additional settings for the LRU cache.
-
-For APM Server with RUM agent version 2.x or 3.x:
-
-FIXME: this is not valid config
+When capturing the user interaction with clients with real user monitoring (RUM), particularly for situations with concurrent clients, you can increase the number of times each IP address can send a request to the RUM endpoint.
 
 ```sh
 apm-server:
+  auth:
+    anonymous:
+      event_limit: 3000
   rum:
     enabled: true
-    event rate:
-      limit: 3000
-      lru_size: 5000
 ```
 
 
