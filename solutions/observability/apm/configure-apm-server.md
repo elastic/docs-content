@@ -77,11 +77,6 @@ If a setting is not supported on {{ecloud}}, you will get an error message when 
 Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apm/configure-apm-server.md).
 ::::
 
-### Version 8.19+ and 9.1+ [ec_version_8_19_and_9_1]
-
-`apm-server.sampling.tail.ttl`
-:   Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases storage space requirements. Should be at least 2 * Interval.
-
 ### Version 8.0+ [ec_version_8_0_3]
 
 This stack version removes support for some previously supported settings. These are all of the supported settings for this version:
