@@ -55,16 +55,16 @@ The steps, information, and authentication method required to configure CCS and 
 ## Remote clusters and network security [ec-ccs-ccr-traffic-filtering]
 
 ::::{note}
-[Network security](../security/traffic-filtering.md) isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
+[Network security](../security/network-security.md) isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
 ::::
 
 API key authentication for remote clusters cannot be used in combination with network security policies.
 
-For remote clusters configured using TLS certificate authentication, [network security policies](../security/traffic-filtering.md) can be applied to restrict access to deployments that are used as a local or remote cluster without any impact on cross-cluster search or cross-cluster replication.
+For remote clusters configured using TLS certificate authentication, [network security policies](../security/network-security.md) can be applied to restrict access to deployments that are used as a local or remote cluster without any impact on cross-cluster search or cross-cluster replication.
 
 Network security for remote clusters supports 2 methods:
 
-* [Filtering by IP addresses and Classless Inter-Domain Routing (CIDR) masks](../security/ip-traffic-filtering.md)
+* [Filtering by IP addresses and Classless Inter-Domain Routing (CIDR) masks](../security/ip-filtering.md)
 * Filtering by Organization or {{es}} cluster ID with a **Remote cluster** private connection policy. You can configure this type of policy from the **Access and security** > **Network security** page of your organization or using the [{{ecloud}} RESTful API](https://www.elastic.co/docs/api/doc/cloud) and apply it from each deployment’s **Security** page.
 
 ::::{note}

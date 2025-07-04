@@ -267,7 +267,7 @@ Create a new private connection policy.
 13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPC filter, then after you associate the filter with a deployment, it starts filtering traffic.
 14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 15.  Click **Create**.
-16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
+16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
 The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
 
