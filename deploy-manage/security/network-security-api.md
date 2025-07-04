@@ -266,7 +266,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To learn how to find the value for `source` for type `vpce`, refer to [Find your VPC endpoint ID](aws-privatelink-traffic-filters.md#ec-find-your-endpoint). This setting is supported only in AWS regions.
+1. To learn how to find the value for `source` for type `vpce`, refer to [Find your VPC endpoint ID](private-connectivity-aws.md#ec-find-your-endpoint). This setting is supported only in AWS regions.
 
 
 ### Azure Private Link [ec-azure-privatelink-traffic-filters-rule-set]
@@ -295,7 +295,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To learn how to find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](azure-private-link-traffic-filters.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](azure-private-link-traffic-filters.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
+1. To learn how to find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
 
 
 ### GCP Private Service Connect [ec-gcp-private-service-connect-traffic-filters-rule-set]
@@ -323,7 +323,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 '
 ```
 
-1. To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](gcp-private-service-connect-traffic-filters.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
+1. To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
 
 
 ## Update a policy or rule set [ec-update-a-traffic-filter-rule-set]

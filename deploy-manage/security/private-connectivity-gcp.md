@@ -97,7 +97,7 @@ Creating a private connection policy and associating it with your deployments al
 
     Follow the [Google Cloud instructions](https://cloud.google.com/vpc/docs/configure-private-service-connect-services#create-endpoint) for details on creating a Private Service Connect endpoint to access Private Service Connect services.
 
-    Use [the Service Attachment URI for your region](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-private-service-connect-uris). Select the **Published service** option and enter the selected Service Attachment URI as the **Target service**. For example, for the region `asia-southeast1` the Service Attachment URI is `projects/cloud-production-168820/regions/asia-southeast1/serviceAttachments/proxy-psc-production-asia-southeast1-v1-attachment`
+    Use [the Service Attachment URI for your region](#ec-private-service-connect-uris). Select the **Published service** option and enter the selected Service Attachment URI as the **Target service**. For example, for the region `asia-southeast1` the Service Attachment URI is `projects/cloud-production-168820/regions/asia-southeast1/serviceAttachments/proxy-psc-production-asia-southeast1-v1-attachment`
 
     ::::{note}
     you need to [reserve a static internal IP address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) in your VPC. The address is used by Private Service Connect endpoint.
@@ -210,7 +210,7 @@ Create a new private connection policy.
 13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPC filter, then after you associate the filter with a deployment, it starts filtering traffic.
 14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 15.  Click **Create**.
-16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
+16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
 The next step is to [associate the policy](#ec-psc-associate-traffic-filter-psc-rule-set) with your deployment.
 

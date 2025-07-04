@@ -64,7 +64,7 @@ For remote clusters configured using TLS certificate authentication, [network se
 
 Network security for remote clusters supports 2 methods:
 
-* [Filtering by IP addresses and Classless Inter-Domain Routing (CIDR) masks](../security/ip-traffic-filtering.md)
+* [Filtering by IP addresses and Classless Inter-Domain Routing (CIDR) masks](../security/ip-filtering.md)
 * Filtering by Organization or {{es}} cluster ID with a **Remote cluster** private connection policy. You can configure this type of policy from the **Access and security** > **Network security** page of your organization or using the [{{ecloud}} RESTful API](https://www.elastic.co/docs/api/doc/cloud) and apply it from each deployment’s **Security** page.
 
 ::::{note}

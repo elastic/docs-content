@@ -80,7 +80,7 @@ The process of setting up the private connection with Azure Private link is spli
 
     Follow the [Azure instructions](https://docs.microsoft.com/en-us/azure/private-link/create-private-endpoint-portal#create-a-private-endpoint) for details on creating a private endpoint to an endpoint service.
 
-    Use [the service aliases for your region](/deploy-manage/security/azure-private-link-traffic-filters.md#ec-private-link-azure-service-aliases). Select the **Connect to an Azure resource by resource ID or alias** option. For example for the region `eastus2` the service alias is `eastus2-prod-002-privatelink-service.64359fdd-7893-4215-9929-ece3287e1371.eastus2.azure.privatelinkservice`
+    Use [the service aliases for your region](#ec-private-link-azure-service-aliases). Select the **Connect to an Azure resource by resource ID or alias** option. For example for the region `eastus2` the service alias is `eastus2-prod-002-privatelink-service.64359fdd-7893-4215-9929-ece3287e1371.eastus2.azure.privatelinkservice`
 
     ::::{note}
     The Private Link endpoint is created in the `Awaiting Approval` state. We validate and approve the endpoints when you create the private connection policy using the Private Link `resource ID`, as described in the next section [Create a private connection policy](#ec-azure-allow-traffic-from-link-id).
@@ -177,7 +177,7 @@ The Private Link connection will be approved automatically after the private con
 
 10. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 11.  Click **Create**.
-12. Optional: You can [claim your Private Endpoint resource name and ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
+12. Optional: You can [claim your Private Endpoint resource name and ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
 Creating the policy approves the Private Link connection.
 
@@ -245,10 +245,6 @@ $ curl -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-clou
 * Closing connection 0
 curl: (7) Failed to connect to my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com port 9243: No route to host
 ```
-
-
-The next step is to [associate the policy](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
-
 
 ### Associate a private connection policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
 
