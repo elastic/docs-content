@@ -11,7 +11,8 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting Elastic Distributions of OpenTelemetry (EDOT)
+# Troubleshoot Elastic Distributions of OpenTelemetry (EDOT)
+
 Find solutions to common issues in EDOT components and SDKs.
 
 - [EDOT Collector troubleshooting](/troubleshoot/ingest/opentelemetry/edot-collector/index.md)
