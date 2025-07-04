@@ -374,7 +374,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. On the **Security** page, under **Network security**, find the IP filter policy that you want to disconnect. 
+2. On the **Security** page, under **Network security**, find the policy that you want to disconnect. 
 3. Under **Actions**, click the **Delete** icon.
 
 #### From the private connection policy settings
