@@ -49,6 +49,10 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 
 {{ech}} supports the settings listed in [APM documentation](/solutions/observability/apm/configure-apm-server.md) under "APM Server binary" when running APM in standalone mode (legacy), except for those in the following blocklist:
 
+::::{note}
+Some of the following settings may not be valid configurations, depending on the version.
+::::
+
 * `apm-server.host`
 * `apm-server.ssl.enabled`
 * `apm-server.ssl.certificate`
