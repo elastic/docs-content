@@ -68,6 +68,8 @@ When capturing the user interaction with clients with real user monitoring (RUM)
 
 For APM Server with RUM agent version 2.x or 3.x:
 
+FIXME: this is not valid config
+
 ```sh
 apm-server:
   rum:
