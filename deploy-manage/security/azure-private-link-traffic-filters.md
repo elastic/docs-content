@@ -33,7 +33,7 @@ To learn how private connection policies impact your deployment, refer to [](/de
 
 ## Considerations
 
-Azure Private Link filtering is supported only for Azure regions.
+Private connectivity with Azure Private Link is supported only in Azure regions.
 
 ## Azure Private Link Service aliases [ec-private-link-azure-service-aliases]
 
@@ -139,7 +139,7 @@ Follow these high-level steps to add a private connection policy that can be ass
 
 ### Create a policy using the Private Link Endpoint resource [ec-azure-create-traffic-filter-private-link-rule-set]
 
-When you have your private endpoint ID, you can create a private connection policy.
+When you have your private endpoint name and ID, you can create a private connection policy.
 
 ::::{note}
 The Private Link connection will be approved automatically after the private connection policy is created.
