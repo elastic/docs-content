@@ -15,7 +15,7 @@ The Elasticsearch Query Language, {{esql}}, makes it easier to explore your data
 The examples on this page use the {{kib}} sample web logs in Discover and Lens to explore the data and create visualizations. You can also install it by following [Add sample data](../index.md#gs-get-data-into-kibana).
 
 ::::{tip}
-For the complete {{esql}} documentation, refer to the [{{esql}} documentation](../query-filter/languages/esql.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
+For the complete {{esql}} documentation, including all supported commands, functions, and operators, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
 
 ::::
 
@@ -40,7 +40,7 @@ To load the sample data:
    Let’s say we want to find out what operating system users have and how much RAM is on their machine.
 
 3. Set the time range to **Last 7 days**.
-4. Copy the query below:
+4. Copy the following query. To make queries more readable, you can put each processing command on a new line.
 
     ```esql
     FROM kibana_sample_data_logs <1>
@@ -49,17 +49,13 @@ To load the sample data:
 
     1. We’re specifically looking for data from the sample web logs we just installed.
     2. We’re only keeping the `machine.os` and `machine.ram` fields in the results table.
-
-   ::::{tip}
-   Put each processing command on a new line for better readability.
-   ::::
-
-5. Click **▶Run**.
-   ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
+   
    ::::{note}
    {{esql}} keywords are not case sensitive.
    ::::
 
+5. Click **▶Run**.
+   ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
 
 Let’s add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
 
@@ -108,7 +104,7 @@ If you’d like to keep the visualization and add it to a dashboard, you can sav
 
 By default, ES|QL identifies time series data when an index contains a `@timestamp` field. This enables the time range selector and visualization options for your query.
 
-If your index doesn’t have an explicit `@timestamp` field, but has a different time field, you can still enable the time range selector and visualization options by calling the `?_start` and `?_tend` parameters in your query.
+If your index doesn’t have an explicit `@timestamp` field, but has a different time field, you can still enable the time range selector and visualization options by calling the `?_tstart` and `?_tend` parameters in your query.
 
 For example, the eCommerce sample data set doesn’t have a `@timestamp` field, but has an `order_date` field.
 
@@ -123,7 +119,7 @@ FROM kibana_sample_data_ecommerce
 :alt: ESQL query without time series capabilities enabled
 :::
 
-While still querying the same data set, by adding the `?_start` and `?_tend` parameters based on the `order_date` field, **Discover** enables times series capabilities.
+While still querying the same data set, by adding the `?_tstart` and `?_tend` parameters based on the `order_date` field, **Discover** enables times series capabilities.
 
 ```esql
 FROM kibana_sample_data_ecommerce
@@ -133,11 +129,4 @@ FROM kibana_sample_data_ecommerce
 :::{image} /explore-analyze/images/kibana-esql-custom-time-series.png
 :alt: ESQL query with a custom time field enabled
 :::
-
-
-### ES|QL and LOOKUP JOINs
-
-The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
-
-![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
 

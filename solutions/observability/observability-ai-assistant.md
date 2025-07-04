@@ -51,7 +51,7 @@ The AI assistant requires the following:
 * The knowledge base requires a 4 GB {{ml}} node.
   - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
 
-* A self-deployed connector service if [search connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
+* A self-deployed connector service if [content connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
 
 ## Your data and the AI Assistant [data-information]
 
@@ -95,24 +95,19 @@ The AI Assistant connects to one of these supported LLM providers:
     {{obs-ai-assistant}} doesn’t support connecting to a private LLM. Elastic doesn’t recommend using private LLMs with the AI Assistant.
 ::::
 
+### Elastic Managed LLM [elastic-managed-llm-obs-ai-assistant]
+
+:::{include} ../_snippets/elastic-managed-llm.md
+:::
+
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
-
-:::::{dropdown} Using pre-8.12 knowledge base articles?
-::::{important}
-**If you started using the AI Assistant in technical preview**, any knowledge base articles you created before 8.12 will have to be reindexed or upgraded before they can be used. Knowledge base articles created before 8.12 use ELSER v1. In 8.12, knowledge base articles must use ELSER v2. Options include:
-
-* Clear all old knowledge base articles manually and reindex them.
-* Upgrade all knowledge base articles indexed with ELSER v1 to ELSER v2 using a [Python script](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/model-upgrades/upgrading-index-to-use-elser.ipynb).
-
-::::
-:::::
 
 The AI Assistant uses [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), Elastic’s semantic search engine, to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses. Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
 
 Add data to the knowledge base with one or more of the following methods:
 
 * [Use the knowledge base UI](#obs-ai-kb-ui) available at [AI Assistant Settings](#obs-ai-settings) page.
-* [Use search connectors](#obs-ai-search-connectors)
+* [Use content connectors](#obs-ai-search-connectors)
 
 You can also add information to the knowledge base by asking the AI Assistant to remember something while chatting (for example, "remember this for next time"). The assistant will create a summary of the information and add it to the knowledge base.
 
@@ -136,16 +131,29 @@ To add external data to the knowledge base in {{kib}}:
         }
         ```
 
-### Use search connectors [obs-ai-search-connectors]
+### Use content connectors [obs-ai-search-connectors]
 
-[Search connectors](elasticsearch://reference/search-connectors/index.md) index content from external sources like GitHub, Confluence, Google Drive, Jira, S3, Teams, and Slack to improve the AI Assistant's responses.
+[Content connectors](elasticsearch://reference/search-connectors/index.md) index content from external sources like GitHub, Confluence, Google Drive, Jira, S3, Teams, and Slack to improve the AI Assistant's responses.
 
-**Requirements and limitations:**
-- For stack 9.0.0+ or {{serverless-short}}, connectors must be [self-managed](elasticsearch://reference/search-connectors/self-managed-connectors.md)
-- Manage connectors through the Search Solution in {{kib}} (pre-9.0) or via the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector)
-- By default, the AI Assistant queries all search connector indices. To customize which data sources are included in the knowledge base, adjust the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page.
+#### Requirements and limitations
 
-**Setup process:**
+- For {{stack}} 9.0.0+ or {{serverless-short}}, connectors must be [self-managed](elasticsearch://reference/search-connectors/self-managed-connectors.md).
+- Manage connectors through the Search Solution in {{kib}} (pre-9.0.0) or with the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector).
+
+#### Knowledge base data sources
+By default, the AI Assistant queries all search connector indices. To customize which indices are used in the knowledge base, set the **Search connector index pattern** setting on the [AI Assistant Settings](#obs-ai-settings) page.
+
+:::{note}
+You're not limited to search connector indices in the **Search connector index pattern setting**. You can specify any index pattern.
+:::
+
+##### Space awareness
+The **Search connector index pattern** setting is [space](../../deploy-manage/manage-spaces.md) aware. This means you can assign different values for different spaces. For example, a "Developers" space may include an index pattern like `github-*,jira*`, while an "HR" space may include an index pattern like `employees-*`.
+
+##### Custom index field name requirements
+Field names in custom indices have no specific requirements. Any `semantic_text` field is automatically queried. Documents matching the index pattern are sent to the LLM in full, including all fields. It's not currently possible to include or exclude specific fields.
+
+#### Setup process:
 
 1. **Create a connector**
 
@@ -182,7 +190,7 @@ This is a more complex method that requires you to set up the ELSER model and in
 
 To create the embeddings needed by the AI Assistant (weights and tokens into a sparse vector field) using an **ML Inference Pipeline**:
 
-1. Open the previously created search connector in **Content / Connectors**, and select the **Pipelines** tab.
+1. Open the previously created content connector in **Content / Connectors**, and select the **Pipelines** tab.
 2. Select **Copy and customize** under `Unlock your custom pipelines`.
 3. Select **Add Inference Pipeline** under `Machine Learning Inference Pipelines`.
 4. Select the **ELSER (Elastic Learned Sparse EncodeR)** ML model to add the necessary embeddings to the data.
@@ -202,6 +210,30 @@ After creating the pipeline, complete the following steps:
 
     Ask something to the AI Assistant related with the indexed data.
 
+### Add user-specific system prompts
+
+User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French," and all subsequent responses will be in French.
+
+A user-specific prompt only applies to the user that sets it.
+
+To edit the **User-specific System Prompt**:
+
+1. Go to the **{{obs-ai-assistant}}** management page. You can find it in the **Management** menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. Switch to the **Knowledge base** tab.
+4. Select **Edit User-specific Prompt**.
+
+#### User-specific prompt example
+User-specific prompts are useful when configuring specific workflows. For example, if you want the assistant to respond in a consistent, readable format when asked about Kubernetes metadata, you might add the following **user-specific system prompt**:
+
+```
+<kubernetes_info>
+If asked about a Kubernetes pod, namespace, cluster, location, or owner, return the info in this format.  Use the field names to find the relevant information requested.  Don't mention the field names, just the results.
+- Pod: agent.name
+- Namespace: data_stream.namespace
+- Cluster Name: orchestrator.cluster.name
+- Owner: cloud.account.id
+</kubernetes_info>
+```
 
 ## Interact with the AI Assistant [obs-ai-interact]
 
@@ -365,7 +397,7 @@ The AI Assistant Settings page contains the following tabs:
 
 * **Settings**: Configures the main AI Assistant settings, which are explained directly within the interface.
 * **Knowledge base**: Manages [knowledge base entries](#obs-ai-kb-ui).
-* **Search Connectors**: Provides a link to {{kib}} **Search** → **Content** → **Connectors** UI for connectors configuration.
+* **Content connectors**: Provides a link to {{kib}} **Search** → **Content** → **Connectors** UI for connectors configuration.
 
 ### Add Elastic documentation [obs-ai-product-documentation]
 

@@ -33,10 +33,6 @@ The following AWS regions are currently available:
 
 ## Microsoft Azure regions [regions-azure-regions]
 
-```yaml {applies_to}
-serverless: preview
-```
-
 The following Azure regions are currently available:
 
 | Region | Name |
@@ -49,4 +45,6 @@ The following GCP regions are currently available:
 
 | Region | Name |
 | :--- | :--- |
+| asia-south1 | Mumbai |
+| europe-west1 | Belgium |
 | us-central1 | Iowa |
