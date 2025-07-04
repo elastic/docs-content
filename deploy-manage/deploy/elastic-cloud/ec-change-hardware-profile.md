@@ -12,7 +12,7 @@ products:
 
 ## Hardware profile [ec-hardware-profile]
 
-Deployment hardware profiles deploy the {{stack}} on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU, defined via instance configurations. Review [Hardware](cloud://reference/cloud-hosted/hardware.md) for more information about instance configuration.  
+Deployment hardware profiles deploy the {{stack}} on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU.
 
 {{ecloud}} regularly introduces new hardware profiles to provide:
 
