@@ -191,9 +191,11 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
 ##### Step 2. Add settings, mappings, and aliases
 
-1. Add [component templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) to your index template.
+When creating an index template, you can define settings, mappings, and aliases directly in the template or include them through one or more component templates.
 
-    Component templates are pre-configured sets of mappings, index settings, and aliases you can reuse across multiple index templates. Badges indicate whether a component template contains mappings (**M**), index settings (**S**), aliases (**A**), or a combination of the three.
+A [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) is a type of [template](/manage-data/data-store/templates.md) used as a building block for constructing index templates. {{kib}} displays badges indicating whether a component template contains mappings (**M**), index settings (**S**), aliases (**A**), or a combination of the three.
+
+1. Add component templates to your index template.
 
     Component templates are optional. For this tutorial, do not add any component templates.
 
