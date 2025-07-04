@@ -107,14 +107,14 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 
 % If you are using APM 7.9.0 or older:
 
-% * You cannot use [APM Agent central configuration](/solutions/observability/apm/apm-agent-central-configuration.md) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
-% * If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
+% * You cannot use [APM Agent central configuration](/solutions/observability/apm/apm-agent-central-configuration.md) if your deployment is secured by traffic filters.
+% * If you access your APM deployment over PrivateLink, to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
 
 
 ## Fleet with PrivateLink or traffic filters [ec-restrictions-fleet-traffic-filters]
 
-% * You cannot use Fleet 7.13.x if your deployment is secured by [traffic filters](../../security/traffic-filtering.md). Fleet 7.14.0 and later works with traffic filters (both Private Link and IP filters).
-* If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has [traffic filters](../../security/traffic-filtering.md) enabled is not currently supported.
+% * You cannot use Fleet 7.13.x if your deployment is secured by traffic filters. Fleet 7.14.0 and later works with traffic filters (both Private Link and IP filters).
+* If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has traffic filters enabled is not currently supported.
 
 ## Restoring a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
 

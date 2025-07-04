@@ -16,7 +16,7 @@ This section covers traffic filtering by IP address or CIDR block.
 The way that you configure IP filters depends on your deployment type.
 
 :::{tip}
-If you use {{ech}} or {{eck}}, then other [network security](/deploy-manage/security/traffic-filtering.md) methods are also available.
+If you use {{ech}} or {{eck}}, then other [network security](/deploy-manage/security/network-security.md) methods are also available.
 :::
 
 ## Serverless and ECH

@@ -222,3 +222,4 @@ redirects:
   'deploy-manage/security/azure-private-link-traffic-filters.md': 'deploy-manage/security/private-connectivity-azure.md'
   'deploy-manage/security/ec-traffic-filtering-through-the-api.md': 'deploy-manage/security/network-security-api.md'
   'deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md': 'deploy-manage/security/claim-private-connection-api.md'
+  'solutions/observability/synthetics/traffic-filters.md': 'solutions/observability/synthetics/network-security.md'
