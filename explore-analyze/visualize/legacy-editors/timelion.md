@@ -84,11 +84,11 @@ Set up Metricbeat, then create the dashboard.
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, click **Create dashboard**.
 
+You can only add Timelion visualizations to a dashboard if they're already saved in the **Visualize Library**, using the **Add from library** option.
+
 ## Create a Timelion visualization [_open_and_set_up_timelion]
 
 $$$timelion-tutorial-create-time-series-visualizations$$$
-
-You can only add Timelion visualizations to a dashboard if they're already saved in the **Visualize Library**, using the **Add from library** option.
 
 1. Go to the **Visualize Library** and select **Create visualization**.
 2. In the **Legacy** tab, select **Aggregation-based**, then **Timelion**.
