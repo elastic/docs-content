@@ -69,13 +69,13 @@ You can filter on a specific `action`, such as [bulk indexing](https://www.elast
 * Filter on [bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) actions:
 
     ```console
-    GET /_tasks?human&detailed&actions=indices:data/write/bulk
+    GET /_tasks?human&detailed&actions=indices:*write*
     ```
 
 * Filter on search actions:
 
     ```console
-    GET /_tasks?human&detailed&actions=indices:*/search
+    GET /_tasks?human&detailed&actions=indices:*search*
     ```
 
 

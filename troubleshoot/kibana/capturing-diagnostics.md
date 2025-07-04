@@ -68,7 +68,7 @@ To run a {{kib}} diagnostic:
     **Windows**
 
     ```sh
-    sudo .\diagnostics.bat --type kibana-local --host localhost --port 5601 -u elastic -p --bypassDiagVerify --ssl --noVerify
+    .\diagnostics.bat --type kibana-local --host localhost --port 5601 -u elastic -p --bypassDiagVerify --ssl --noVerify
     ```
 
     ::::{tip}
