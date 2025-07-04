@@ -207,7 +207,9 @@ A [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operati
 2. Define index settings directly in the index template. When used in conjunction with component templates, settings defined directly in the index template override any conflicting settings from the associated component templates.
 
     This step is optional. For this tutorial, leave this section blank.
-3. Define a mapping that contains an [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md) field named `geo` with a child [`geo_point`](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field named `coordinates`:
+3. Define mappings directly in the index template. When used in conjunction with component templates, these mappings override any conflicting definitions from the associated component templates.
+
+    Define a mapping that contains an [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md) field named `geo` with a child [`geo_point`](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field named `coordinates`:
 
     :::{image} /manage-data/images/elasticsearch-reference-management-index-templates-mappings.png
     :alt: Mapped fields page
