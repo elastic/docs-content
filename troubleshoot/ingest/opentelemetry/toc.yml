@@ -1,0 +1,14 @@
+project: 'Elastic Distributions of OpenTelemetry (EDOT)'
+
+toc: 
+  - file: index.md
+  - file: edot-collector/index.md
+    children:
+      - file: edot-collector/collector-oomkilled.md
+  - file: edot-sdks/index.md
+    children:
+      - file: edot-sdks/dotnet/index.md
+      - file: edot-sdks/java/index.md
+      - file: edot-sdks/nodejs/index.md
+      - file: edot-sdks/php/index.md
+      - file: edot-sdks/python/index.md
