@@ -26,15 +26,11 @@ Agent authorization APM Server configuration options.
 
 ```yaml
 apm-server:
-  host: "localhost:8200"
-  rum:
-    enabled: true
-
-output:
-  elasticsearch:
-    hosts: ElasticsearchAddress:9200
-
-max_procs: 4
+  auth:
+    api_key:
+      enabled: true
+      limit: 100
+      token: "your_secret_token"
 ```
 ::::::
 
