@@ -20,7 +20,7 @@ products:
 New or updated versions of the {{stack}} must be prepared to work with {{ece}} and are provided as packs that you can download.
 
 ::::{important}
-{{es}} 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on {{ece}} with ILM rather than index curation. Check [migrate to index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md) for existing clusters, and [configure index management](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html) for new clusters.
+{{es}} 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on {{ece}} with ILM rather than index curation. Check [migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md) for existing clusters, and [configure index management](/manage-data/lifecycle/index-lifecycle-management.md) for new clusters.
 ::::
 
 
