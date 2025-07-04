@@ -107,13 +107,13 @@ serverless: unavailable
 
 ## Elastic Cloud email service
 
-{{ecloud}} provides a built-in email service used by the preconfigured [email connector](kibana://reference/kibana/connectors-kibana/email-action-type.md), available in both {{ech}} deployments and {{serverless-full}} projects. This service can be used to send [alert](/explore-analyze/alerts-cases/alerts) notifications and is also supported in {{ech}} by [watcher](/explore-analyze/alerts-cases/watcher/enable-watcher.md).
+{{ecloud}} provides a built-in email service used by the preconfigured [email connector](kibana://reference/connectors-kibana/email-action-type.md), available in both {{ech}} deployments and {{serverless-full}} projects. This service can be used to send [alert](/explore-analyze/alerts-cases/alerts.md) notifications and is also supported in {{ech}} by [Watcher](/explore-analyze/alerts-cases/watcher/enable-watcher.md).
 
 ### Email service limits
 
 The following quotas apply to both {{ech}} deployments and {{serverless-full}} projects when using the Elastic email service:
 
-* Email sending quota: 500 emails per 15min period.
+* Email sending quota: 500 emails per 15 minute period.
 * Maximum number of recipients per message: 30 recipients per email (To, CC, and BCC all count as recipients).
-* Maximum message size (including attachments): 10 MB per message (after base64 encoding).
+* Maximum message size (including attachments): 10 MB per message (after Base64 encoding).
 * The email-sender can't be customized (Any custom `From:` header will be removed).
