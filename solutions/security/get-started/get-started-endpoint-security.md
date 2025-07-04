@@ -36,7 +36,7 @@ If you're installing {{elastic-defend}} on macOS, the following instructions app
 7. Click **Save and continue**. Next, click **Add {{agent}} to your hosts**. 
 ::::
 
-::::{step} Add the {{agent}}
+::::{step} Add the Elastic Agent
 
 {{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. 
 
@@ -57,7 +57,7 @@ After you install the {{agent}} with {{elastic-defend}}, several endpoint protec
 
 To configure an integration policy:
 
-1. From the left navigation menu, go to Assets → Endpoints → Policies. 
+1. From the left navigation menu, go to **Assets** → **Endpoints** → **Policies**. 
 2. From the list, select the policy you want to configure. The integration policy configuration page appears.
 3. On the **Policy settings** tab, review and configure the protection, event collection, and antivirus settings as appropriate. 
 4. Once you're finished making changes, click **Save** in the lower-right corner to update the policy.  
@@ -65,6 +65,6 @@ To configure an integration policy:
 
     For a comprehensive explanation of all endpoint protections and policy settings, refer to [Configure an integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md). 
 
-%insert image
+% insert image
 ::::
 :::::
