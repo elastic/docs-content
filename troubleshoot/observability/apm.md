@@ -32,10 +32,8 @@ For additional help with other APM components, see the links below.
 {{agent}}, the Applications UI, and each {{apm-agent}} has its own troubleshooting guide:
 
 * [**{{fleet}} and {{agent}}** troubleshooting](../ingest/fleet/fleet-elastic-agent.md)
-* [**Android agent** FAQ](apm-agent-android://reference/faq.md)
 * [**.NET agent** troubleshooting](/troubleshoot/observability/apm-agent-dotnet/apm-net-agent.md)
 * [**Go agent** troubleshooting](/troubleshoot/observability/apm-agent-go/apm-go-agent.md)
-* [**iOS agent** troubleshooting](/troubleshoot/observability/apm-agent-swift/apm-ios-agent.md)
 * [**Java agent** troubleshooting](/troubleshoot/observability/apm-agent-java/apm-java-agent.md)
 * [**Node.js agent** troubleshooting](/troubleshoot/observability/apm-agent-nodejs/apm-nodejs-agent.md)
 * [**PHP agent** troubleshooting](/troubleshoot/observability/apm-agent-php/apm-php-agent.md)
