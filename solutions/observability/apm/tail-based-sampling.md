@@ -62,7 +62,7 @@ Set to `true` to enable tail based sampling. Disabled by default. (bool)
 
 |     |     |
 | --- | --- |
-| APM Server binary | `sampling.tail.enabled` |
+| APM Server binary | `apm-server.sampling.tail.enabled` |
 | Fleet-managed | `Enable tail-based sampling` |
 
 ### Interval [sampling-tail-interval-ref]
@@ -71,7 +71,7 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 
 |     |     |
 | --- | --- |
-| APM Server binary | `sampling.tail.interval` |
+| APM Server binary | `apm-server.sampling.tail.interval` |
 | Fleet-managed | `Interval` |
 
 ### Policies [sampling-tail-policies-ref]
@@ -82,7 +82,7 @@ Policies map trace events to a sample rate. Each policy must specify a sample ra
 
 |     |     |
 | --- | --- |
-| APM Server binary | `sampling.tail.policies` |
+| APM Server binary | `apm-server.sampling.tail.policies` |
 | Fleet-managed | `Policies` |
 
 ### Storage limit [sampling-tail-storage_limit-ref]
@@ -99,7 +99,7 @@ Default: `0GB`. (text)
 
 |     |     |
 | --- | --- |
-| APM Server binary | `sampling.tail.storage_limit` |
+| APM Server binary | `apm-server.sampling.tail.storage_limit` |
 | Fleet-managed | `Storage limit` |
 
 ## Policy-level tail-based sampling settings [apm-configuration-tbs-policy]
