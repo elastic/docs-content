@@ -2,11 +2,17 @@
 applies_to:
   deployment:
     ess: ga
+products:
+  - id: cloud-hosted
 ---
 
-# Private link traffic filters
+# Private connectivity
 
-In {{ech}}, you can allow traffic between {{es}} and other resources hosted by the same cloud provider using private link services. 
+Private connectivity is a secure way for your {{ecloud}} deployments and projects to communicate with other cloud provider services over your cloud provider's private network. You can create a virtual private connection (VPC) using your provider's private link service, and then manage it in {{ecloud}} using a private connection policy. You can also optionally filter traffic to your deployments by creating ingress filters for your VPC in {{ecloud}}.
+
+:::{tip}
+Private connection policies are a type of [network security policy](/deploy-manage/security/network-security-policies.md).
+:::
 
 Choose the relevant option for your cloud service provider:
 
@@ -16,8 +22,14 @@ Choose the relevant option for your cloud service provider:
 | Azure | [Azure Private Link](/deploy-manage/security/azure-private-link-traffic-filters.md) |
 | GCP | [GCP Private Service Connect](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md) |
 
-After you set up your private link, you can [claim ownership of your filter link ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md) to prevent other organizations from using it in a traffic filter ruleset.
+After you set up your private connection, you can [claim ownership of your private connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md) to prevent other organizations from using it.
+
+To learn how private connection policies work, how they affect your deployment, and how they interact with [IP filter policies](ip-filtering-cloud.md), refer to [](/deploy-manage/security/network-security-policies.md).
 
 :::{tip}
-{{ech}} also supports [IP traffic filters](/deploy-manage/security/ip-filtering-cloud.md).
+{{ech}} and {{serverless-full}} also support [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+:::
+
+:::{note}
+Private connection policies were formerly referred to as PrivateLink traffic filters.
 :::

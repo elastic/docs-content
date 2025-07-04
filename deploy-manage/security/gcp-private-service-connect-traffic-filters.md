@@ -7,35 +7,42 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
+navigation_title: GCP Private Service Connect
+sub:
+  policy-type: "Private connection"
+  service-name: "Private Service Connect"
+  example-phz-dn: "psc.asia-southeast1.gcp.elastic-cloud.com"
+  example-default-dn: "us-central1.gcp.cloud.es.io"
 ---
 
-# GCP Private Service Connect traffic filters
+# GCP Private Service Connect private connectivity
 
-Traffic filtering to allow only Private Service Connect connections is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed.
+You can use GCP Private Service Connect to establish a secure connection for your {{ecloud}} deployments to communicate with other GCP services. GCP routes the Private Link traffic within the GCP data center and never exposes it to the public internet.
 
-Refer to [](/deploy-manage/security/traffic-filtering.md) to learn more about traffic filtering in {{ech}}, and how traffic filter rules work.
+GCP Private Service Connect connects your Virtual Private Cloud (VPC) to the GCP-hosted services that you use, treating them as if they were in your VPC. You can create and use VPC endpoints to securely access GCP-hosted services.
 
-::::{note}
-Private Service Connect filtering is supported only for Google Cloud regions.
-::::
-
-
-Private Service Connect establishes a secure connection between two Google Cloud VPCs. The VPCs can belong to separate accounts, for example a service provider and their service consumers. Google Cloud routes the Private Service Connect traffic within the Google Cloud data centers and never exposes it to the public internet. In such a configuration, {{ecloud}} is the third-party service provider and the customers are service consumers.
+You can also optionally filter traffic to your deployments by creating virtual private connection (VPC) filters as part of your private connection policy in {{ecloud}}. This limits traffic to your deployment to the VPC specified in the policy, as well as any other policies applied to the deployment.
 
 Private Link is a connection between a Private Service Connect Endpoint and a Service Attachment. [Learn more about using Private Service Connect on Google Cloud](https://cloud.google.com/vpc/docs/private-service-connect#benefits-services).
 
-::::{tip}
-Private Service Connect connections are regional, your Private Service Connect Endpoint needs to live in the same region as your deployment. The Endpoint can be accessed from any region once you enable its [*Global Access*](https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#global-access) feature.
-::::
+To learn how private connection policies impact your deployment, refer to [](/deploy-manage/security/network-security-policies.md).
 
+:::{tip}
+{{ech}} also supports [IP filters](/deploy-manage/security/ip-filtering-cloud.md). You can apply both IP filters and private connections to a single {{ecloud}} resource.
+:::
 
+## Considerations
+
+* Private connectivity with Private Service Connect is supported only in Google Cloud regions.
+
+* Private Service Connect connections are regional. As a result, your Private Service Connect endpoint needs to be created in the same region as your deployment. The endpoint can be accessed from any region after you enable its [Global Access](https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#global-access) feature.
 
 ## Private Service Connect URIs [ec-private-service-connect-uris]
 
 Service Attachments are set up by Elastic in all supported GCP regions under the following URIs:
 
 ::::{dropdown} GCP public regions
-| **Region** | **Service Attachment URI** | **Private zone DNS name** |
+| Region | Service attachment URI | Private zone DNS name |
 | --- | --- | --- |
 | `asia-east1` | `projects/cloud-production-168820/regions/asia-east1/serviceAttachments/proxy-psc-production-asia-east1-v1-attachment` | `psc.asia-east1.gcp.elastic-cloud.com` |
 | `asia-northeast1` | `projects/cloud-production-168820/regions/asia-northeast1/serviceAttachments/proxy-psc-production-asia-northeast1-v1-attachment` | `psc.asia-northeast1.gcp.cloud.es.io` |
@@ -60,25 +67,37 @@ Service Attachments are set up by Elastic in all supported GCP regions under the
 
 ::::
 
+## Set up a private connection 
 
-The process of setting up the Private link connection to your clusters is split between Google Cloud (e.g. by using Google Cloud console), and {{ecloud}} UI. These are the high-level steps:
+The process of setting up the Private link connection to your deployments is split between Google Cloud and the {{ecloud}} UI. These are the high-level steps:
 
-| Google Cloud console | {{ecloud}} UI |
+| Google Cloud console | {{ecloud}} |
 | --- | --- |
-| 1. Create a Private Service Connect endpoint using {{ecloud}} Service Attachment URI. |  |
-| 2. Create a DNS record pointing to the Private Service Connect endpoint. |  |
-|  | 3. Create a Private Service Connect rule set with the **PSC Connection ID**. |
-|  | 4. Associate the Private Service Connect rule set with your deployments. |
-|  | 5. Interact with your deployments over Private Service Connect. |
+| [1. Create a Private Service Connect endpoint using {{ecloud}} Service Attachment URI.](#ec-private-service-connect-enpoint-dns) |  |
+| [2. Create a DNS record pointing to the Private Service Connect endpoint.](#ec-private-service-connect-enpoint-dns) |  |
+|  | [3. Optional: Create a private connection policy with the PSC Connection ID.](#ec-psc-create-traffic-filter-psc-rule-set) |
+|  | [4. Optional: Associate the private connection policy with your deployments.](#ec-psc-associate-traffic-filter-psc-rule-set) |
+|  | [5. Interact with your deployments over Private Service Connect.](#ec-psc-access-the-deployment-over-psc) |
 
+After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-psc-rule-set), [disconnect](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-psc-rule-set) it.
 
-## Create your Private Service Connect endpoint and DNS entries in Google Cloud [ec-private-service-connect-enpoint-dns]
+:::{admonition} Private connection policies are optional
+Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established.
+
+Creating a private connection policy and associating it with your deployments allows you to do the following: 
+
+* Record that you've established private connectivity between GCP and Elastic in the applicable region.
+* [View a list of the resources](network-security-policies.md#protected-resources-overview) that have private connections applied.
+* Optionally filter traffic to your deployment using VPC filters.
+:::
+
+### Create your Private Service Connect endpoint and DNS entries in Google Cloud [ec-private-service-connect-enpoint-dns]
 
 1. Create a Private Service Connect endpoint in your VPC using the Service Attachment URI for your region.
 
     Follow the [Google Cloud instructions](https://cloud.google.com/vpc/docs/configure-private-service-connect-services#create-endpoint) for details on creating a Private Service Connect endpoint to access Private Service Connect services.
 
-    Use [the Service Attachment URI for your region](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-private-service-connect-uris). Select the **Published service** option and enter the selected *Service Attachment URI* as the **Target service**. For example for the region `asia-southeast1` the Service Attachment URI is `projects/cloud-production-168820/regions/asia-southeast1/serviceAttachments/proxy-psc-production-asia-southeast1-v1-attachment`
+    Use [the Service Attachment URI for your region](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-private-service-connect-uris). Select the **Published service** option and enter the selected Service Attachment URI as the **Target service**. For example, for the region `asia-southeast1` the Service Attachment URI is `projects/cloud-production-168820/regions/asia-southeast1/serviceAttachments/proxy-psc-production-asia-southeast1-v1-attachment`
 
     ::::{note}
     you need to [reserve a static internal IP address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) in your VPC. The address is used by Private Service Connect endpoint.
@@ -89,166 +108,234 @@ The process of setting up the Private link connection to your clusters is split 
 
 2. Create a DNS record.
 
-    1. Create a *DNS Zone* of type **Private**. Set the **DNS name** to *Private zone DNS name* for your region. For example, in *asia-southeast1* use `psc.asia-southeast1.gcp.elastic-cloud.com` as the zone domain name. Make sure the zone is associated with your VPC.
-    2. Then create a DNS record set with an A record pointing to the Private Service Connect endpoint IP. Use `*` as the **DNS name**, `A` as the **Resource Record Type**, and put the Private Service Connect endpoint IP address as the record value.
+    1. Create a DNS Zone of type **Private**. 
+   
+       Refer to the **Private zone DNS name** column in the [Private Service Connect URIs](#ec-private-service-connect-uris) table for the name of the zone. For example, in `asia-southeast1`, use `psc.asia-southeast1.gcp.elastic-cloud.com` as the zone domain name. Make sure the zone is associated with your VPC.
+    2. Create a DNS record set with an A record pointing to the Private Service Connect endpoint IP. Use `*` as the **DNS name**, `A` as the **Resource record type**, and put the Private Service Connect endpoint IP address as the record value.
 
         Follow the [Google Cloud instructions](https://cloud.google.com/dns/docs/records#adding_a_record) for details on creating an A record which points to your Private Service Connect endpoint IP address.
 
-3. Test the connection.
+### Test the connection
 
-    Find out the {{es}} cluster ID of your deployment. You can do that by selecting **Copy cluster id** in the Cloud UI. It looks something like `9c794b7c08fa494b9990fa3f6f74c2f8`.
+After you create your Private Service Connect endpoint and DNS entries, verify that you are able to reach your cluster over Private Link.
 
-    ::::{tip}
-    The {{es}} cluster ID is **different** from the deployment ID, custom alias endpoint, and Cloud ID values that feature prominently in the user console.
-    ::::
+    :::{include} _snippets/find-endpoint.md
+    :::
 
+To test the connection:
 
-    To access your {{es}} cluster over Private Link:
+1. If needed, find the endpoint of an application in your deployment:
+    
+    :::{include} _snippets/find-endpoint.md
+    :::
+
+ 1. Access your cluster over Private Link:
 
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
+    * Test the setup using the following cURL command. Pass the username and password for a user that has access to the cluster. Make sure to replace the URL with your deployment's endpoint information and the private hosted zone domain name that you registered.
 
-        ```
-        https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
-        ```
-
-        For example:
-
-        ```text
-        https://my-deployment-d53192.es.psc.asia-southeast1.gcp.elastic-cloud.com
-        ```
-
-    * Alternatively, use the following URL structure:
-
-        ```
-        https://{{elasticsearch_cluster_ID}}.{private_hosted_zone_domain_name}:9243
-        ```
-
-        For example:
-
-        ```text
-        https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243
-        ```
-
-
-    You can test the Google Cloud console part of the setup with the following command (substitute the region and {{es}} ID with your cluster):
-
-    Request:
+    **Request**
     ```sh
-    $ curl -v https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243
+    $ curl -v https://my-deployment-d53192.es.psc.asia-southeast1.gcp.elastic-cloud.com:9243 -u {username}:{password}
     ```
 
-    Response:
+    **Response**
     ```sh
     ..
     *   Trying 192.168.100.2...
     ..
-    < HTTP/2 403
+        < HTTP/1.1 200 OK
     ..
-    {"ok":false,"message":"Forbidden"}
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
     ```
 
-    Check the IP address `192.168.100.2`. it should be the same as the IP address assigned to your Private Service Connect endpoint.
+Check the IP address. it should be the same as the IP address assigned to your Private Service Connect endpoint.
 
-    The connection is established, and a valid certificate is presented to the client. The `403 Forbidden` is expected, you haven’t associated any deployment with the Private Service Connect endpoint yet.
+The connection is established, and a valid certificate is presented to the client. Elastic responds, in the case of the {{es}} endpoint, with basic information about the cluster.
 
+## Optional: Create a private connection policy [ec-private-service-connect-allow-from-psc-connection-id]
 
+After you test your Private Link connection, you can create a private connection policy in {{ecloud}}. 
 
-## Add the Private Service Connect rules to your deployments [ec-private-service-connect-allow-from-psc-connection-id]
+Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established.
 
-Follow these high-level steps to add private link rules to your deployments.
+Creating a private connection policy and associating it with your deployments allows you to do the following: 
 
-1. [Find your Private Service Connect connection ID](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-find-your-psc-connection-id).
-2. [Create rules using the Private Service Connect endpoint connection ID](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-psc-create-traffic-filter-psc-rule-set).
-3. [Associate the Private Service Connect endpoint with your deployment](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-psc-associate-traffic-filter-psc-rule-set).
-4. [Access the deployment over the Private Service Connect](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-psc-access-the-deployment-over-psc).
+* Record that you've established private connectivity between GCP and Elastic in the applicable region.
+* Filter traffic to your deployment using VPC filters.
 
+Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
-### Find your Private Service Connect connection ID [ec-find-your-psc-connection-id]
+1. Optional: [Find your Private Service Connect connection ID](#ec-find-your-psc-connection-id).
+2. [Create policies using the Private Service Connect endpoint connection ID](#ec-psc-create-traffic-filter-psc-rule-set).
+3. [Associate the Private Service Connect endpoint with your deployment](#ec-psc-associate-traffic-filter-psc-rule-set).
+
+### Optional: Find your Private Service Connect connection ID [ec-find-your-psc-connection-id]
+
+The PSC connection ID is only required if you want to filter traffic to your deployment using VPC filters.
 
 1. Go to your Private Service Connect endpoint in the Google Cloud console.
 2. Copy the value of **PSC Connection ID**.
 
+### Create a new private connection policy [ec-psc-create-traffic-filter-psc-rule-set]
 
-### Create rules using the Private Service Connect endpoint connection ID [ec-psc-create-traffic-filter-psc-rule-set]
+Create a new private connection policy.
 
-When you have your Private Service Connect endpoint connection ID, you can create a traffic filter rule set.
-
-:::{include} _snippets/create-filter.md
+:::{include} _snippets/network-security-page.md
 :::
-5. Select **Private Service Connect endpoint**.
-6. Create your rule set, providing a meaningful name and description.
-7. Select the region for the rule set.
-8. Enter your **PSC Connection ID**.
-9. Select if this rule set should be automatically attached to new deployments.
+4. Select **Private connection**.
+3. Select the resource type that the private connection will be applied to. Currently, only hosted deployments are supported.
+10. Select the cloud provider and region for the private connection. 
+   
+    :::{tip}
+    Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
+    :::
+11. Under **Connectivity**, select **Privatelink**.
+12. Optional: Under **VPC filter**, enter your Private Service Connect endpoint connection ID. You should only specify a Private Service Connect endpoint connection ID if you want to filter traffic to your deployment. 
+    
+    If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
+    
+    :::{tip}
+    You can apply multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 
-    ::::{note}
-    Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
-    ::::
+    [Learn more about how network security policies affect your deployment](network-security-policies.md).
+    :::
 
-10. (Optional) You can [claim your PSC Connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
+13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPC filter, then after you associate the filter with a deployment, it starts filtering traffic.
+14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
+15.  Click **Create**.
+16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
 
-The next step is to [associate the rule set](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployments.
+The next step is to [associate the policy](#ec-psc-associate-traffic-filter-psc-rule-set) with your deployment.
 
+### Optional: Associate a policy with a deployment [ec-psc-associate-traffic-filter-psc-rule-set]
 
-### Associate the Private Service Connect endpoint with your deployment [ec-psc-associate-traffic-filter-psc-rule-set]
+You can associate a private connection policy with your deployment from the policy's settings, or from your deployment's settings. 
 
-To associate a private link rule set with your deployment:
+If the policy contains a VPC filter, then after you associate the policy with a deployment, it starts filtering traffic. 
+
+If the policy doesn't contain a VPC filter, then the association can serve as a reminder that a Private Service Connect endpoint exists for the deployment's region.
+
+#### From a deployment
 
 :::{include} _snippets/associate-filter.md
 :::
 
-### Access the deployment over the Private Service Connect [ec-psc-access-the-deployment-over-psc]
+#### From the policy settings
 
-For traffic to connect with the deployment over Private Service Connect, the client making the request needs to be located within the VPC where you’ve created the Private Service Connect endpoint. You can also setup network traffic to flow through the originating VPC from somewhere else, such as another VPC or a VPN from your corporate network. This assumes that the Private Service Connect endpoint and the DNS record are also available within that context. Check your cloud service provider documentation for setup instructions.
+:::{include} _snippets/network-security-page.md
+:::
+5. Find the policy you want to edit.
+6. Under **Apply to resources**, associate the policy with one or more deployments.
+7. Click **Update** to save your changes.
+
+## Access the deployment over the Private Service Connect [ec-psc-access-the-deployment-over-psc]
+
+For traffic to connect with the deployment over Private Service Connect, the client making the request needs to be located within the VPC where you’ve created the Private Service Connect endpoint. You can also set up network traffic to flow through the originating VPC from somewhere else, such as another VPC or a VPN from your corporate network. This assumes that the Private Service Connect endpoint and the DNS record are also available within that context. Check your cloud service provider documentation for setup instructions.
 
 ::::{important}
 Use the alias you’ve set up as CNAME A record to access your deployment.
 ::::
 
+:::{include} _snippets/private-url-struct.md
+:::
 
-For example, if your {{es}} ID is `6b111580caaa4a9e84b18ec7c600155e` and it is located in `asia-southeast1` region you can access it at the following URL:
+To access the deployment:
 
-```
-https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243
-```
+1. If needed, find the endpoint of an application in your deployment:
+   
+    :::{include} _snippets/find-endpoint.md
+    :::
 
-Request:
-```sh
-$ curl -u 'username:password' -v https://6b111580caaa4a9e84b18ec7c600155e.psc.asia-southeast1.gcp.elastic-cloud.com:9243
-```
+2. Send a request:
 
-Response:
-```
-< HTTP/1.1 200 OK
-..
-```
+    **Request**
+    ```sh
+    $ curl -v https://my-deployment-d53192.es.psc.asia-southeast1.gcp.elastic-cloud.com:9243 -u {username}:{password}
+    ```
 
-::::{note}
-If you are using Private Service Connect together with Fleet, and enrolling the Elastic Agent with a Private Service Connect URL, you need to configure Fleet Server to use and propagate the Private Service Connect URL by updating the **Fleet Server hosts** field in the **Fleet settings** section of {{kib}}. Otherwise, Elastic Agent will reset to use a default address instead of the Private Service Connect URL. The URL needs to follow this pattern: `https://<Fleet component ID/deployment alias>.fleet.<private zone DNS name>:443`.
+    **Response**
+    ```sh
+    < HTTP/1.1 200 OK
+    ..
+    {
+        "name" : "instance-0000000009",
+        "cluster_name" : "fb7e805e5cfb4931bdccc4f3cb591f5f",
+        "cluster_uuid" : "2cTHeCQYS2a0iH7YnQHrIQ",
+        "version" : { ... },
+        "tagline" : "You Know, for Search"
+    }
+    ```
 
-Similarly, the {{es}} host needs to be updated to propagate the Private Service Connect URL. The {{es}} URL needs to follow this pattern: `https://<Elasticsearch cluster ID/deployment alias>.es.<private zone DNS name>:443`.
+### GCP Private Service Connect and Fleet
 
-The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are currently available on-prem only, and not in the [{{kib}} settings in {{ecloud}}](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
+:::{include} _snippets/private-connection-fleet.md
+:::
 
+## Manage private connection policies
+
+After you create your private connection policy, you can edit it, remove it from your deployment, or delete it.
+
+### Edit a private connection policy [ec-edit-traffic-filter-psc-rule-set]
+
+You can edit a policy's name, description, VPC endpoint ID, and more.
+
+:::{include} _snippets/network-security-page.md
+:::
+1. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+2. Click **Update** to save your changes.
+
+:::{tip}
+You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
+:::
+
+
+### Remove a private connection policy from your deployment [remove-filter-deployment]
+
+If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
+
+#### From your deployment
+
+::::{tab-set}
+:group: hosted-serverless
+:::{tab-item} Serverless project
+:sync: serverless
+1. Find your project on the home page or on the **Serverless projects** page, then select **Manage** to access its settings menus.
+
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. On the **Network security** page, find the policy that you want to disconnect. 
+3. Under **Actions**, click the **Delete** icon.
+:::
+:::{tab-item} Hosted deployment
+:sync: hosted
+1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
+
+    On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+2. On the **Security** page, under **Network security**, find the policy that you want to disconnect. 
+3. Under **Actions**, click the **Delete** icon.
+:::
 ::::
 
+#### From the policy settings
 
-
-## Edit a Private Service Connect rule set [ec-psc-edit-traffic-filter-psc-rule-set]
-
-You can edit a rule set name or to change the PSC connection ID.
-
-:::{include} _snippets/edit-ruleset.md
+:::{include} _snippets/network-security-page.md
 :::
+5. Find the policy you want to edit, then click the **Edit** {icon}`pencil` button.
+6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
+7. Click **Update** to save your changes.
 
+### Delete a private connection policy [ec-delete-traffic-filter-psc-rule-set]
 
-### Delete a Private Service Connect rule set [ec-psc-delete-psc-rule-set]
+If you need to remove a policy, you must first remove any associations with deployments.
 
-:::{include} _snippets/delete-ruleset.md
+To delete a policy:
+
+:::{include} _snippets/network-security-page.md
 :::
-
-
-### Remove a Private Service Connect rule set association from your deployment [remove-filter-deployment]
-
-:::{include} _snippets/remove-filter.md
-:::
+4. Find the policy you want to edit, then click the **Delete** icon. The icon is inactive if there are deployments associated with the policy.
