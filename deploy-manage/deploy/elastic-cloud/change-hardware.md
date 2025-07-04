@@ -8,9 +8,11 @@ products:
   - id: cloud-hosted
 ---
 
-# Change hardware [ec-change-hardware-for-a-specific-resource]
+# Customize instance configuration [ec-change-instance-configuration]
 
-The virtual hardware on which {{stack}} deployments run is defined by instance configurations. To learn more about what an instance configuration is, refer to [Instance configurations](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations).
+## Consideration [ec-consideration-on-changing-ic]
+
+The virtual hardware on which {{stack}} deployments run is defined by instance configurations. Review [Hardware profile](./ec-change-hardware-profile.md#ec-hardware-profile) and [Instance configurations](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for more information about hardware profile and instance configuration respectively.
 
 When a deployment is created, each {{es}} tier and stateless resource (e.g., Kibana) gets an instance configuration assigned to it, based on the hardware profile used. The combination of instance configurations defined within each hardware profile is designed to provide the best possible outcome for each use case. Therefore, it is not advisable to use instance configurations that are not specified on the hardware profile, except in specific situations in which we may need to migrate an {{es}} tier or stateless resource to a different hardware type. An example of such a scenario is when a cloud provider stops supporting a hardware type in a specific region.
 
@@ -89,6 +91,17 @@ Having an instance configuration mismatch between the deployment and the hardwar
 
 ## Deprecated instance configurations (ICs) and deployment templates (DTs) [ec-deprecated-icdt]
 
-A list of deprecated and valid ICs/DTs can be found on the [Available regions, deployment templates and instance configurations](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) page, as well as through the API, using `hide_deprecated` to return valid ICs/DTs. For example, to return valid ICs/DTs the following request can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&hide_deprecated=true`. To list only the deprecated ones, this can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&metadata=legacy:true`.
+Hardware profile is also referenced as deployment templates (DTs) in {{ecloud}}. 
+
+A list of deprecated and valid ICs/DTs can be found on the [Available regions, deployment templates and instance configurations](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) page, as well as through the API, using `hide_deprecated` to return valid ICs/DTs. 
+
+For example, to return valid ICs/DTs the following request can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&hide_deprecated=true`. To list only the deprecated ones, this can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&metadata=legacy:true`.
 
 If a deprecated IC/DT is already in use, it can continue to be used. However, creating or migrating to a deprecated IC/DT is no longer possible and will result in a plan failing. In order to migrate to a valid IC/DT, navigate to the **Edit hardware profile** option in the Cloud UI or use the [Deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-migrate-deployment-template).
+
+In addtion, you can refer to below information about how these terminologies are referenced. 
+* _Deprecated_ is also referenced as _legacy_. 
+* When using APIs, `hide_deprecated=true` is equivalent as `metadata=legacy:true`.
+* Using `metadata=legacy:false` is not available. Therefore, to verify an IC being deprecated or not, check the presence of `legacy` field in the above API response. 
+* Field `hidden` from API response is not used to present whether an IC being deprecated / legacy or not. 
+
