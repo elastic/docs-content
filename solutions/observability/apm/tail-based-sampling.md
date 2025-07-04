@@ -29,15 +29,15 @@ Tail-based sampling configuration options.
 
 ```yaml
 apm-server:
-  host: "localhost:8200"
-  rum:
-    enabled: true
-
-output:
-  elasticsearch:
-    hosts: ElasticsearchAddress:9200
-
-max_procs: 4
+  sampling:
+    tail:
+      enabled: true
+      interval: 1m
+      storage_limit: 0GB
+      policies:
+        - sample_rate: 1.0
+          trace.outcome: failure
+        - sample_rate: 0.1
 ```
 ::::::
 
