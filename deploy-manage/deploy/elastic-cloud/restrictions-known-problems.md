@@ -60,7 +60,7 @@ $$$ec-restrictions-apis-kibana$$$
 ## Transport client [ec-restrictions-transport-client]
 
 * The transport client is not considered thread safe in a cloud environment. We recommend that you use the Java REST client instead. This restriction relates to the fact that your deployments hosted on {{ecloud}} are behind proxies, which prevent the transport client from communicating directly with {{es}} clusters.
-* The transport client is not supported over [private link connections](../../security/aws-privatelink-traffic-filters.md). Use the Java REST client instead, or connect over the public internet.
+* The transport client is not supported over [private connections](../../security/private-connectivity.md). Use the Java REST client instead, or connect over the public internet.
 % * The transport client does not work with {{es}} clusters at version 7.6 and later that are hosted on Cloud. Transport client continues to work with {{es}} clusters at version 7.5 and earlier. Note that the transport client was deprecated with version 7.0 and will be removed with 8.0.
 
 
@@ -98,7 +98,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
 * Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
-## Fleet with PrivateLink or network security [ec-restrictions-fleet-traffic-filters]
+## Fleet with network security [ec-restrictions-fleet-traffic-filters]
 
 * If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has network security enabled is not currently supported.
 
