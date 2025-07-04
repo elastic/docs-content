@@ -63,7 +63,7 @@ Enable API key authorization by setting `enabled` to `true`. By default, `enable
 
 |     |     |
 | --- | --- |
-| APM Server binary | `auth.api_key.enabled` |
+| APM Server binary | `apm-server.auth.api_key.enabled` |
 | Fleet-managed | `API key for agent authentication` |
 
 ::::{tip}
@@ -76,7 +76,7 @@ Each unique API key triggers one request to {{es}}. This setting restricts the n
 
 |     |     |
 | --- | --- |
-| APM Server binary | `auth.api_key.limit` |
+| APM Server binary | `apm-server.auth.api_key.limit` |
 | Fleet-managed | `Number of keys` |
 
 ### Secret token [_secret_token]
@@ -85,17 +85,17 @@ Authorization token for sending APM data. The same token must also be set in eac
 
 |     |     |
 | --- | --- |
-| APM Server binary | `auth.api_key.token` |
+| APM Server binary | `apm-server.auth.api_key.token` |
 | Fleet-managed | `Secret token` |
 
-## `auth.api_key.elasticsearch.*` configuration options [_auth_api_key_elasticsearch_configuration_options]
+## `apm-server.auth.api_key.elasticsearch.*` configuration options [_auth_api_key_elasticsearch_configuration_options]
 
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 The below options are only supported by the APM Server binary.
 
-All of the `auth.api_key.elasticsearch.*` configurations are optional. If none are set, configuration settings from the `apm-server.output` section will be reused.
+All of the `apm-server.auth.api_key.elasticsearch.*` configurations are optional. If none are set, configuration settings from the `apm-server.output` section will be reused.
 
 ::::
 
@@ -119,7 +119,7 @@ The URL of the proxy to use when connecting to the {{es}} servers. The value may
 
 The HTTP request timeout in seconds for the {{es}} request. If nothing is configured, configuration settings from the `output` section will be reused.
 
-## `auth.api_key.elasticsearch.ssl.*` configuration options [_auth_api_key_elasticsearch_ssl_configuration_options]
+## `apm-server.auth.api_key.elasticsearch.ssl.*` configuration options [_auth_api_key_elasticsearch_ssl_configuration_options]
 
 SSL is off by default. Set `elasticsearch.protocol` to `https` if you want to enable `https`.
 
