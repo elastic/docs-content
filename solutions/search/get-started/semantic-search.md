@@ -13,14 +13,12 @@ _Semantic search_ is a type of AI-powered search that enables you to use natural
 It returns results that match the meaning of a query, as opposed to literal keyword matches.
 For example, if you want to search for workplace guidelines on a second income, you could search for "side hustle", which is not a term you're likely to see in a formal HR document.
 
-Semantic search uses {{es}} vector database and vector search technology.
-Each _vector_ (or _vector embedding_) is an array of numbers that each represent a different characteristic of the text, such as sentiment, context, and syntactics.
-These numeric representations make comparison with other vectors very efficient.
+Semantic search uses {{es}} [vector database](https://www.elastic.co/what-is/vector-database) and [vector search](https://www.elastic.co/what-is/vector-search) technology.
+Each _vector_ (or _vector embedding_) is an array of numbers that represent different characteristics of the text, such as sentiment, context, and syntactics.
+These numeric representations make vector comparisons very efficient.
 
-In this guide, you'll learn how to perform semantic search on a small set of sample data.
-You'll create vectors and store them in {{es}}.
-Then you'll run a query, which will be transformed into vectors and compared to the stored data.
-By playing with a simple use case, you'll take the first steps toward understanding whether this type of search is relevant to your own data.
+In this quickstart guide, you'll create vectors for a small set of sample data, store them in {{es}}, then run a semantic query.
+By playing with a simple use case, you'll take the first steps toward understanding whether it's applicable to your own data.
 
 ## Prerequisites
 
@@ -36,12 +34,12 @@ TBD: What is the impact of this "optimized for vectors" option?
 ## Create a vector database
 
 When you create vectors (or _vectorize_ your data), you convert complex and nuanced documents into multidimensional numerical representations.
-You can choose from many different vector embedding models. Some are extremely hardware efficient and can be run with less computational power. Others have a greater “understanding” of the context and can answer questions and lead a threaded conversation.
-These examples use the default Learned Sparse Encoder ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) model, which provides great relevance across domains without the need for additional fine tuning.
+You can choose from many different vector embedding models. Some are extremely hardware efficient and can be run with less computational power. Others have a greater understanding of the context, can answer questions, and lead a threaded conversation.
+The examples in this guide use the default Learned Sparse Encoder ([ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) model, which provides great relevance across domains without the need for additional fine tuning.
 
-The way that you store and index vectors has a significant impact on the performance and accuracy of search results.
+The way that you store vectors has a significant impact on the performance and accuracy of search results.
 They must be stored in specialized data structures designed to ensure efficient similarity search and speedy vector distance calculations.
-These examples store the vectors in `semantic_text` fields, which provide sensible defaults and automation.
+This guide uses the [semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md), which provide sensible defaults and automation.
 
 Try vectorizing a small set of documents.
 You can follow the guided index workflow:
@@ -70,7 +68,6 @@ PUT /semantic-index/_mapping
 When you use `semantic_text` fields, the type of vector is determined by the vector embedding model.
 In this case, the default ELSER model will be used to create sparse vectors.
 
-For more details about `semantic_text` fields, refer to [](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
 For a deeper dive, check out [Mapping embeddings to Elasticsearch field types: semantic_text, dense_vector, sparse_vector](https://www.elastic.co/search-labs/blog/mapping-embeddings-to-elasticsearch-field-types).
 ::::
 
@@ -88,22 +85,24 @@ POST /_bulk?pretty
 {"content":"Rocky Mountain National Park  is one of the most popular national parks in the United States. It receives over 4.5 million visitors annually, and is known for its mountainous terrain, including Longs Peak, which is the highest peak in the park. The park is home to a variety of wildlife, including elk, mule deer, moose, and bighorn sheep. The park is also home to a variety of ecosystems, including montane, subalpine, and alpine tundra. The park is a popular destination for hiking, camping, and wildlife viewing, and is a UNESCO World Heritage Site."}
 ```
 
-The bulk ingestion request might take longer than the default request timeout.
-If it times out, wait for the machine learning model loading to complete (typically 1-5 minutes) then retry it.
+The bulk ingestion might take longer than the default request timeout.
+If it times out, wait for the ELSER model to load (typically 1-5 minutes) then retry it.
 ::::
 :::::
 
-What just happened? The content was transformed into a sparse vector, which involves two main steps.
-First, the content is divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched. Then each chunk of text is transformed into a sparse vector representation using text expansion techniques.
+What just happened? The content was transformed into sparse vectors, which involves two main steps.
+First, the content was divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched.
+Then each chunk of text was transformed into a sparse vector representation using text expansion techniques.
 
 ![Semantic search chunking](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt9bbe5e260012b15d/67ffffc8165067d96124b586/animated-gif-semantic-search-chunking.gif)
 
+With a few vectors stored in {{es}}, semantic search can now occur.
 
 ## Explore the data
 
 To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-In **Discover**, you can click the expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") to show details about any documents in the table.
+In **Discover**, you can click the expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") to show details about documents in the table.
 
 :::{image} /solutions/images/serverless-discover-semantic.png
 :screenshot:
@@ -112,101 +111,19 @@ In **Discover**, you can click the expand icon ![double arrow icon to open a fly
 
 For more tips, check out [](/explore-analyze/discover/discover-get-started.md).
 
-<!--
-TBD: When you view these documents in Discover they're shown as having "text" field type instead of "semantic_text" is this right?
--->
-
 ## Test semantic search
-
-<!--
-TO-DO: Talk about the pipeline where vectors are required for both the data and search query
-% encodes details of searchable information into vectors and then compares vectors to determine which are most similar.
-When you run a query, the search engine transforms the query into embeddings, which are numerical representations of data and related contexts. They are stored in vectors. The kNN algorithm, or k-nearest neighbor algorithm, then matches vectors of existing documents (a semantic search concerns text) to the query vectors. The semantic search then generates results and ranks them based on conceptual relevance.
--->
 
 {{es}} provides a variety of query languages for interacting with your data.
 For an overview of their features and use cases, check out [](/explore-analyze/query-filter/languages.md).
 
-You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including  `knn`, `match`, `semantic`, and `sparse_vector`. Refer to [Semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) for the complete list.
+You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including  `knn`, `match`, `semantic`, and `sparse_vector`.
+The query is translated automatically into the appropriate vector representation to run against the contents of the semantic text field.
+The search results include a relevance score, which measures how well each document matches the query.
 
-Let's try out two types of queries in two different languages.
-
-:::::{stepper}
-
-::::{step} Run a semantic query with Query DSL
-
-Open the **{{index-manage-app}}** page from the navigation menu or return to the [guided index flow](/solutions/search/serverless-elasticsearch-get-started.md#elasticsearch-follow-guided-index-flow) to find code examples for searching the sample data.
-
-:::{image} /solutions/images/serverless-index-management-semantic.png
-:screenshot:
-:alt: Index management semantic search workflow
-:::
-
-Try running some queries to check the accuracy and relevance of the search results.
-For example, click **Run in Console** and use some seach terms that you did not see when you explored the documents:
-
-```console
-POST /semantic-index/_search
-{
-  "retriever": {
-    "standard": {
-      "query": {
-        "semantic": {
-          "field": "content",
-          "query": "best park for rappelling"
-        }
-      }
-    }
-  }
-}
-```
-
-This is a [semantic](elasticsearch://reference/query-languages/query-dsl/query-dsl-semantic-query.md) query that is expressed in [Query Domain Specific Language](/explore-analyze/query-filter/languages/querydsl.md) (DSL), which is the primary query language for {{es}}.
-
-The query is translated automatically into a vector representation and runs against the contents of the semantic text field.
-The search results are sorted by a relevance score, which measures how well each document matches the query.
-
-```json
-{
-  "took": 22,
-  "timed_out": false,
-  "_shards": {
-    "total": 3,
-    "successful": 3,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": {
-    "total": {
-      "value": 3,
-      "relation": "eq"
-    },
-    "max_score": 11.389743,
-    "hits": [
-      {
-        "_index": "semantic-index",
-        "_id": "Pp0MtJcBZjjo1YKoXkWH",
-        "_score": 11.389743,
-        "_source": {
-          "content": "Rocky Mountain National Park ..."
-  ...
-}
-```
-
-In this example, the document related to Rocky Mountain National park has the highest score.
-::::
-::::{step} Run a match query in ES|QL
-
-Another way to try out semantic search is by using the [match](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) search function in the [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL).
-
+Let's test a semantic search query in [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL).
 Go to **Discover** and select **Try ES|QL** from the application menu bar.
-
-:::{image} /solutions/images/serverless-discover-esql.png
-:screenshot:
-:alt: Run an ES|QL semantic query in Discover
-:::
-
-Copy the following query:
+Think of some queries that are relevant to the documents you explored, such as finding the biggest park or the best for rappelling.
+For example, copy the following query:
 
 ```esql
 FROM semantic-index METADATA _score <1>
@@ -217,20 +134,24 @@ FROM semantic-index METADATA _score <1>
 ```
 
 1. The FROM source command returns a table of data. Each row in the table represents a document. The `METADATA` clause provides access to the query relevance score, which is a [metadata field](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md).
-2. A simplified syntax for the `MATCH` search function, this command performs a semantic query on the specified field.
+2. A simplified syntax for the [match](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) search function, this command performs a semantic query on the specified field.
 3. The KEEP processing command affects the columns and their order in the results table.
 4. The results are sorted in descending order based on the `_score`.
-5. The maximum number of rows to return.
+5. This optional command defines the maximum number of rows to return.
 
-In this example, the first row in the table is the document that had the highest relevance score for the query.
+After you click **▶Run**, the results appear in a table.
+In this example, the first row in the table is the document related to Yellowstone National Park, which had the highest relevance score for the query.
+
+:::{image} /solutions/images/serverless-discover-esql.png
+:screenshot:
+:alt: Run an ES|QL semantic query in Discover
+:::
+
+<!--
+TBD: Run the same query in Console
+-->
 
 To learn more, check out [](/explore-analyze/discover/try-esql.md) and [](/solutions/search/esql-for-search.md).
-::::
-:::::
-<!--
-TBD: Provide more information about how to interpret and filter the search results.
-TBD: Include the Elastic Open Web Crawler variation too or point to it in another guide?
--->
 
 ## Next steps
 
