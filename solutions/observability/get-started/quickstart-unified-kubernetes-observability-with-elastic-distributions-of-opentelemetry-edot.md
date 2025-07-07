@@ -1,4 +1,5 @@
 ---
+description: Learn how to send Kubernetes logs, metrics, and application traces to Elasticsearch using the OpenTelemetry Operator and Elastic Distributions of OpenTelemetry (EDOT).
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-k8s-otel-edot.html
   - https://www.elastic.co/guide/en/serverless/current/monitor-k8s-otel-edot.html
@@ -46,7 +47,7 @@ The [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) funct
 :::{tab-item} Serverless
 :sync: serverless
 
-* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{obs-serverless}} project. To learn more, refer to [Create an Observability project](/solutions/observability/get-started.md).
 * A running Kubernetes cluster (v1.23 or newer).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).
@@ -93,7 +94,7 @@ The [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) funct
 :::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
 3. Under **What do you want to monitor?** select **Kubernetes**, and then select **OpenTelemetry: Full Observability**.
 
@@ -123,8 +124,6 @@ The [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) funct
 
 ::::
 
-
-
 ## Visualize your data [_visualize_your_data]
 
 After installation is complete and all relevant data is flowing into Elastic, the **Visualize your data** section provides a link to the **[OTEL][Metrics Kubernetes]Cluster Overview** dashboard used to monitor the health of the cluster.
@@ -134,6 +133,38 @@ After installation is complete and all relevant data is flowing into Elastic, th
 :screenshot:
 :::
 
+### Work with Kubernetes logs
+
+You can search and analyze Kubernetes logs using Elastic’s Discover capability. Find **Discover** in the main menu or use the global search field.
+
+:::{image} /solutions/images/screenshot-observability-monitoring-k8s-kubernetes-logs-can-be-searched.png
+:alt: Kubernetes logs in Discover
+:screenshot:
+:::
+
+### Visualize Kubernetes metrics
+
+Kubernetes out-of-the-box dashboards allow you to analyze Kubernetes metrics within Kibana. Go to **Dashboards** → **Analytics** and search for **Kubernetes**. The **Kubernetes Overview** dashboard shows metrics for the entire Kubernetes Cluster. All the nodes, pods, and CPU and memory usage.
+
+:::{image} /solutions/images/screenshot-observability-monitoring-k8s-kubernetes-overview-cluster.png
+:alt: Kubernetes overview dashboard
+:screenshot:
+:::
+
+Kibana allows you to analyze logs with interactive dashboards to derive insights, automate workflows, find anomalies and trends, and more. When you select **Dashboards** → **Analytics**, you can select **Create dashboard** and customize your new dashboard to your needs.
+
+### Set up alerts
+
+Select **Alerts** and then **Create rules**. This allows you to get notifications when various events happen, for example when latency is anomalous, metric aggregation exceeds threshold, and so on. Notifications are sent through email, Jira, Slack, and more.
+
+### Use machine learning to uncover insights
+
+Find **Machine Learning** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select **Anomaly Detection** → **Jobs** to create a machine learning job. By setting up machine learning jobs, for example, rather than having an alert when a specific percentage of memory usage has occurred, you can know when the usage is unusual.
+
+:::{image} /solutions/images/screenshot-observability-monitoring-k8s-leverage-machine-learning-to-uncover-insights.png
+:alt: Machine learning job
+:screenshot:
+:::
 
 ## Troubleshooting and more [_troubleshooting_and_more]
 
