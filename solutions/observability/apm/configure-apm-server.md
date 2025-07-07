@@ -77,12 +77,6 @@ If a setting is not supported on {{ecloud}}, you will get an error message when 
 Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apm/configure-apm-server.md).
 ::::
 
-### Version 9.1+ [ec_version_9_1]
-This {{stack}} version adds support for the following settings:
-
-`apm-server.sampling.tail.discard_on_write_failure`
-:   Defines the indexing behavior when trace events fail to be written to storage (for example, when the storage limit is reached). When set to `false`, traces bypass sampling and are always indexed, which significantly increases the indexing load. When set to `true`, traces are discarded, causing data loss which can result in broken traces. The default is `false`.
-
 ### Version 8.0+ [ec_version_8_0_3]
 
 This stack version removes support for some previously supported settings. These are all of the supported settings for this version:

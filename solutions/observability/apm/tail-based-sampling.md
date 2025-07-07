@@ -93,8 +93,8 @@ Default: `false`. (bool)
 
 |                              |                                          |
 |------------------------------|------------------------------------------|
-| APM Server binary            | `sampling.tail.discard_on_write_failure` |
-| Fleet-managed (version 9.1+) | `Discard On Write Failure`               |
+| APM Server binary            | `apm-server.sampling.tail.discard_on_write_failure` |
+| Fleet-managed {applies_to}`stack: ga 9.1` | `Discard On Write Failure`               |
 
 
 ### Storage limit [sampling-tail-storage_limit-ref]
