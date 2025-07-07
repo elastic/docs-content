@@ -21,6 +21,8 @@ toc:
         children:
           - file: search/full-text/how-full-text-works.md
           - file: search/full-text/search-with-synonyms.md
+            children:
+              - file: search/full-text/create-update-synonyms-api-example.md
           - file: search/full-text/text-analysis-during-search.md
           - file: search/full-text/search-relevance.md
             children:
