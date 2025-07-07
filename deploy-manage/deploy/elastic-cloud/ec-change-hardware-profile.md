@@ -188,16 +188,23 @@ Consider this configuration for ingestion use cases with 1-4 days of data availa
 
 ### CPU optimized (ARM) [ec-profiles-compute-optimized-arm]
 
-This profile is similar to CPU optimized profile but is powered by AWS Graviton2 instances. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+This profile is similar to CPU optimized profile but powered by ARM instances. Currently, we offer ARM instances on AWS. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
 Consider this configuration for ingestion use cases with 1-4 days of data available for fast access and for search use cases with indexing and querying workloads. Provides the most CPU resources per unit of RAM.
 
-
-### Vector search optimized (ARM) [ec-profiles-vector-search]
+### Vector search optimized [ec-profiles-vector-search]
 
 This profile is suited for Vector search, Generative AI and Semantic search optimized workloads. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+
+**Ideal use case**
+
+Optimized for applications that leverage Vector Search and/or Generative AI. Also the optimal choice for utilizing ELSER for semantic search applications. Broadly suitable for all semantic search, text embedding, image search, and other Vector Search use cases.
+
+### Vector search optimized (ARM) [ec-profiles-vector-search-arm]
+
+This profile is suited for Vector search, Generative AI and Semantic search optimized workloads powered by ARM instances. Currently, we offer ARM instances on AWS. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -215,7 +222,7 @@ Suitable for ingestion use cases with 5-7 days of data available for fast access
 
 ### General purpose (ARM) [ec-profiles-general-purpose-arm]
 
-This profile is similar to the General purpose profile but is powered by AWS Graviton2 instances. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+This profile is similar to General purpose profile but powered by ARM instances. Currently, we offer ARM instances on AWS. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
