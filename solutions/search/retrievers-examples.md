@@ -418,67 +418,12 @@ stack: ga 9.1
 
 There's an even simpler way to execute a hybrid search though: We can use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-query-format), which allows us to query multiple fields without explicitly specifying inner retrievers.
 
-The following example uses the multi-field query format to query the `text` and `text_semantic` fields.
+One of the major challenges with hybrid search is normalizing the scores across matches on all field types.
 Scores from [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields don't always fall in the same range, so we need to normalize the ranks across matches on these fields to generate a result set.
 For example, BM25 scores from `text` fields are unbounded, while vector similarity scores from `text_embedding` models are bounded between [0, 1].
 The multi-field query format [handles this normalization for us automatically](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-grouping).
 
-```console
-GET /retrievers_example/_search
-{
-    "retriever": {
-        "rrf": {
-            "query": "artificial intelligence",
-            "fields": ["text", "text_semantic"]
-        }
-    }
-}     
-```
-
-This returns the following response based on the final rrf score for each result.
-
-::::{dropdown} Example response
-```console-result
-{
-    "took": 42,
-    "timed_out": false,
-    "_shards": {
-        "total": 1,
-        "successful": 1,
-        "skipped": 0,
-        "failed": 0
-    },
-    "hits": {
-        "total": {
-            "value": 3,
-            "relation": "eq"
-        },
-        "max_score": 0.8333334,
-        "hits": [
-            {
-                "_index": "retrievers_example",
-                "_id": "1",
-                "_score": 0.8333334
-            },
-            {
-                "_index": "retrievers_example",
-                "_id": "2",
-                "_score": 0.8333334
-            },
-            {
-                "_index": "retrievers_example",
-                "_id": "3",
-                "_score": 0.25
-            }
-        ]
-    }
-}
-```
-
-::::
-
-We don't even need to specify the `fields` parameter when using the multi-field query format.
-If we omit it, the retriever will automatically query fields specified in the `index.query.default_field` index setting, which is set to `*` by default.
+The following example uses the multi-field query format to query every field specified in the `index.query.default_field` index setting, which is set to `*` by default.
 This default value will cause the retriever to query every field that either:
 
 - Supports term queries, such as `keyword` and `text` fields
@@ -539,7 +484,66 @@ This returns the following response based on the final rrf score for each result
 
 ::::
 
-See [wildcard field patterns](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-wildcard-field-patterns) for more information about wildcard resolution.
+We can also use the `fields` parameter to explicitly specify the fields to query.
+The following example uses the multi-field query format to query the `text` and `text_semantic` fields.
+
+```console
+GET /retrievers_example/_search
+{
+    "retriever": {
+        "rrf": {
+            "query": "artificial intelligence",
+            "fields": ["text", "text_semantic"]
+        }
+    }
+}     
+```
+
+::::{note}
+The `fields` parameter also accepts [wildcard field patterns](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-wildcard-field-patterns).
+::::
+
+This returns the following response based on the final rrf score for each result.
+
+::::{dropdown} Example response
+```console-result
+{
+    "took": 42,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 3,
+            "relation": "eq"
+        },
+        "max_score": 0.8333334,
+        "hits": [
+            {
+                "_index": "retrievers_example",
+                "_id": "1",
+                "_score": 0.8333334
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "2",
+                "_score": 0.8333334
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "3",
+                "_score": 0.25
+            }
+        ]
+    }
+}
+```
+
+::::
 
 
 ## Example: Linear retriever with the multi-field query format [retrievers-examples-linear-multi-field-query-format]
