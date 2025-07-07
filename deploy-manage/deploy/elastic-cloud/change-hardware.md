@@ -101,7 +101,7 @@ If a deprecated IC/DT is already in use, it can continue to be used. However, cr
 
 In addtion, you can refer to below information about how these terminologies are referenced. 
 * _Deprecated_ is also referenced as _legacy_. 
-* When using APIs, `hide_deprecated=true` is equivalent as `metadata=legacy:true`.
+* When using APIs, `hide_deprecated=true` is equivalent as `metadata=legacy:false`. Or in contrast, using `hide_deprecated=false` is equivalent as `metadata=legacy:true`.
 * Using `metadata=legacy:false` is not available. Therefore, to verify an IC being deprecated or not, check the presence of `legacy` field in the above API response. 
 * Field `hidden` from API response is not used to present whether an IC being deprecated / legacy or not. 
 
