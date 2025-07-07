@@ -10,6 +10,30 @@ products:
 
 # Organize dashboard panels [arrange-panels]
 
+## Arrange panels in collapsible sections [collapsible-sections]
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+Organize your dashboard panels into collapsible sections to improve readability and navigation, especially for dashboards with many panels. Collapsible sections also help dashboards load faster by only loading the content from expanded sections.
+
+To add a collapsible section:
+
+1. Open the dashboard and make sure that you are in **Edit** mode.
+2. Select **Add panel** and select **Collapsible section**. The collapsible section is added at the end of the dashboard.
+3. Optionally, edit the label of the section.
+4. Drag and drop any panels you want into the section.
+   :::{tip}
+   The section must be expanded in order to place panels into it.
+   :::
+5. Just like any other panel, you can drag and drop the collapsible section to a different position in the dashboard.
+6. Save the dashboard. 
+
+Users viewing the dashboard will find the section in the same state as when you saved the dashboard. If you saved it with the section collapsed, then it will also be collapsed by default for users.
+
+![Collapsible sections](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8c368aecdd095010/685e8fcb9c34ed3c353812a5/collapsible_panels.gif)
+
 ## Move and resize panels [resizing-containers]
 
 Compare the data in your panels side-by-side, organize panels by priority, resize the panels so they all appear immediately on the dashboard, and more.
@@ -28,10 +52,10 @@ In the toolbar, click **Edit**, then use the following options:
 
 ## Copy and duplicate panels [duplicate-panels]
 
-To duplicate a panel and the configured functionality, use the clone and copy panel options. Cloned and copied panels replicate all of the functionality from the original panel, including renaming, editing, and cloning.
+To duplicate a panel and its configured functionality, use the clone and copy panel options. Cloned and copied panels replicate all of the functionality from the original panel, including renaming, editing, and cloning.
 
 
-#### Duplicate panels [clone-panels]
+### Duplicate panels [clone-panels]
 
 Duplicated panels appear next to the original panel, and move the other panels to provide a space on the dashboard.
 
@@ -39,7 +63,7 @@ Duplicated panels appear next to the original panel, and move the other panels t
 2. Open the panel menu and select **Duplicate**.
 
 
-#### Copy panels [copy-to-dashboard]
+### Copy panels [copy-to-dashboard]
 
 Copy panels from one dashboard to another dashboard.
 
