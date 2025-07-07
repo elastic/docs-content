@@ -11,7 +11,7 @@ navigation_title: "Add IP filters"
 
 # IP filtering
 
-This section covers traffic filtering by IP address or CIDR block.
+This section covers filtering network traffic by IP address or CIDR block.
 
 The way that you configure IP filters depends on your deployment type.
 
