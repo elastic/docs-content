@@ -15,7 +15,7 @@ You can also manually apply a lifecycle policy to an existing index, as describe
 You can do this procedure in {{kib}} or using the {{es}} API.
 
 ::::{warning}
-Do not manually apply a policy that uses the rollover action. Policies that use rollover must be applied by the [index template](#apply-policy-template). Otherwise, the policy is not carried forward when the rollover action creates a new index.
+Do not manually apply a policy that uses the rollover action. Policies that use rollover must be applied by the [index template](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template). Otherwise, the policy is not carried forward when the rollover action creates a new index.
 ::::
 
 ::::{tab-set}
