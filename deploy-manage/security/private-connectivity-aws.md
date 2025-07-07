@@ -102,7 +102,7 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 |  | 4. **Optional**: [Associate the private connection policy with deployments](#ec-associate-traffic-filter-private-link-rule-set). |
 |  | 5. [Interact with your deployments over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
-After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-private-link-rule-set), [disconnect](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-private-link-rule-set) it.
+After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-private-link-rule-set), [disassociate](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-private-link-rule-set) it.
 
 :::{admonition} Private connection policies are optional
 Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established.

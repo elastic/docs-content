@@ -79,7 +79,7 @@ The process of setting up the Private link connection to your deployments is spl
 |  | [4. Optional: Associate the private connection policy with your deployments.](#ec-psc-associate-traffic-filter-psc-rule-set) |
 |  | [5. Interact with your deployments over Private Service Connect.](#ec-psc-access-the-deployment-over-psc) |
 
-After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-psc-rule-set), [disconnect](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-psc-rule-set) it.
+After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-psc-rule-set), [disassociate](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-psc-rule-set) it.
 
 :::{admonition} Private connection policies are optional
 Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established.

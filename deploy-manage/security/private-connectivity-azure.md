@@ -73,6 +73,7 @@ The process of setting up the private connection with Azure Private link is spli
 |  | 4. [Associate the Azure private connection policy with your deployments](#ec-associate-traffic-filter-private-link-rule-set). |
 |  | 5. [Interact with your deployments over Private Link](#ec-azure-access-the-deployment-over-private-link). |
 
+After you create your private connection policy, you can [edit](#ec-azure-edit-traffic-filter-private-link-rule-set), [disassociate](#remove-filter-deployment), or [delete](#ec-azure-delete-traffic-filter-private-link-rule-set) it.
 
 ### Create your private endpoint and DNS entries in Azure [ec-private-link-azure-dns]
 
