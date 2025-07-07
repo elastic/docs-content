@@ -83,7 +83,7 @@ Default: `30m` (30 minutes). (duration)
 |     |     |
 | --- | --- |
 | APM Server binary | `apm-server.sampling.tail.ttl` |
-| Fleet-managed (version 9.1+) | `TTL` |
+| Fleet-managed {applies_to}`stack: ga 9.1` | `TTL` |
 
 
 ### Policies [sampling-tail-policies-ref]
