@@ -67,15 +67,14 @@ This gives you full control over when to use fast filtering versus slower but mo
 
 ## Search functions
 
-The following functions provide text-based search capabilities in ES|QL with different levels of precision and control.
+The following functions provide text-based search capabilities in {esql} with different levels of precision and control.
 
 ### `MATCH` function and operator
 
-ES|QL offers two syntax options for `match`, which replicate the functionality of [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) queries in Query DSL.
+{esql} offers two syntax options for match, which replicate the functionality of [match](https://docs-v3-preview.elastic.dev/elastic/elasticsearch/tree/main/reference/query-languages/query-dsl/query-dsl-match-query) queries in Query DSL.
 
-Use the compact [operator syntax (`:`)](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) for simple text matching with default parameters.
-
-Use the [`MATCH` function syntax](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
+- Use the compact [operator syntax (:)](https://docs-v3-preview.elastic.dev/elastic/elasticsearch/tree/main/reference/query-languages/esql/functions-operators/operators#esql-match-operator) for simple text matching with default parameters.
+- Use the [MATCH function syntax](https://docs-v3-preview.elastic.dev/elastic/elasticsearch/tree/main/reference/query-languages/esql/functions-operators/search-functions#esql-match) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
 
 Refer to the [tutorial](esql-search-tutorial.md#step-3-basic-search-operations) for examples of both syntaxes.
 
@@ -93,9 +92,9 @@ For complete details, refer to the [Query DSL `query_string` docs](elasticsearch
 
 ### `KQL` function
 
-Use the [KQL function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-kql) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your ES|QL queries.
+Use the [KQL function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-kql) to use the [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md) in your {esql} queries.
 
-For migrating queries from other Kibana interfaces, the `KQL` function preserves existing query syntax and allows gradual migration to ES|QL without rewriting existing Kibana queries.
+For migrating queries from other Kibana interfaces, the `KQL` function preserves existing query syntax and allows gradual migration to {esql} without rewriting existing Kibana queries.
 
 ## Advanced search capabilities
 
@@ -103,7 +102,7 @@ For migrating queries from other Kibana interfaces, the `KQL` function preserves
 
 [Semantic search](/solutions/search/semantic-search.md) leverages machine learning models to understand the meaning of text, enabling more accurate and context-aware search results.
 
-In ES|QL, you can perform semantic searches on [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field types using the same match syntax as full-text search.
+In {esql}, you can perform semantic searches on [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field types using the same match syntax as full-text search.
 
 Refer to [semantic search with semantic_text](/solutions/search/semantic-search/semantic-search-semantic-text.md) for an example or follow the [tutorial](esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
 
