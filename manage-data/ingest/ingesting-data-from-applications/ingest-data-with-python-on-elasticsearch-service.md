@@ -152,7 +152,7 @@ After connecting to your deployment, you are ready to index and search data. Let
 es.index(
  index='lord-of-the-rings',
  document={
-  'character': 'Aragon',
+  'character': 'Aragorn',
   'quote': 'It is not this day.'
  })
 ```
