@@ -46,7 +46,6 @@ redirects:
   'solutions/observability/apps/service-map.md': 'solutions/observability/apm/service-map.md'
   'solutions/observability/apps/service-overview.md': 'solutions/observability/apm/service-overview.md'
   'solutions/observability/apps/mobile-service-overview.md': 'solutions/observability/apm/mobile-service-overview.md'
-  'solutions/observability/apps/inventory.md': 'solutions/observability/apm/inventory.md'
   'solutions/observability/apps/drill-down-into-data.md': 'solutions/observability/apm/drill-down-into-data.md'
   'solutions/observability/apps/transactions-2.md': 'solutions/observability/apm/transactions-ui.md'
   'solutions/observability/apps/trace-sample-timeline.md': 'solutions/observability/apm/trace-sample-timeline.md'
