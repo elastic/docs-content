@@ -54,7 +54,9 @@ When you create an {{es}} query rule, your choice of query type affects the info
     | LIMIT 10
     ```
 
-2. If you use query DSL, KQL, or Lucene, set the group and theshold.
+2. Specify details for grouping alerts.
+
+    If you use query DSL, KQL, or Lucene, set the group and theshold.
 
     When
     :   Specify how to calculate the value that is compared to the threshold. The value is calculated by aggregating a numeric field within the time window. The aggregation options are: `count`, `average`, `sum`, `min`, and `max`. When using `count` the document count is used and an aggregation field is not necessary.
@@ -65,21 +67,21 @@ When you create an {{es}} query rule, your choice of query type affects the info
     Threshold
     :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
 
-3. If you use {{esql}}, specify a time field and how to group alerts. 
+    {applies_to}`stack: ga 9.2` If you use {{esql}}, specify a time field and how to group alerts. 
 
     Time field
-    :   Specify the time field to use when filtering query results by the time window that you specify. You can choose any time field that's availble on the index you're querying, for example, the `@timestamp` field.
+    :   Specify the time field to use when query results are filtered by the time window that you specify for the rule. You can choose any time field that's availble on the index you're querying, for example, the `@timestamp` field.
 
     Alert group
     :   Select **Create an alert if matches are found** to create a single alert for multiple events matching the {{esql}} query. Select **Create an alert for each row** to create a separate alert for each event that matches the {{esql}} query. Whenever possible, each alert will have a unique ID. 
  
 
-4. Set the time window, which defines how far back to search for documents.
-5. If you use query DSL, KQL, or Lucene, set the number of documents to send to the configured actions when the threshold condition is met.
-6. If you use query DSL, KQL, or Lucene, choose whether to avoid alert duplication by excluding matches from the previous run. This option is not available when you use a grouping field.
-7. Set the check interval, which defines how often to evaluate the rule conditions. Generally this value should be set to a value that is smaller than the time window, to avoid gaps in detection.
-8. In the advanced options, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
-9. Select a scope value, which affects the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that are required to access the rule. For example when it’s set to `Stack Rules`, you must have the appropriate **Management > {{stack-rules-feature}}** feature privileges to view or edit the rule.
+3. Set the time window, which defines how far back to search for documents.
+4. If you use query DSL, KQL, or Lucene, set the number of documents to send to the configured actions when the threshold condition is met.
+5. If you use query DSL, KQL, or Lucene, choose whether to avoid alert duplication by excluding matches from the previous run. This option is not available when you use a grouping field.
+6. Set the check interval, which defines how often to evaluate the rule conditions. Generally this value should be set to a value that is smaller than the time window, to avoid gaps in detection.
+7. In the advanced options, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
+8. Select a scope value, which affects the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that are required to access the rule. For example when it’s set to `Stack Rules`, you must have the appropriate **Management > {{stack-rules-feature}}** feature privileges to view or edit the rule.
 
 ## Test your query [_test_your_query]
 
