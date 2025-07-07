@@ -71,10 +71,10 @@ The following functions provide text-based search capabilities in {esql} with di
 
 ### `MATCH` function and operator
 
-{esql} offers two syntax options for match, which replicate the functionality of [match](https://docs-v3-preview.elastic.dev/elastic/elasticsearch/tree/main/reference/query-languages/query-dsl/query-dsl-match-query) queries in Query DSL.
+{esql} offers two syntax options for match, which replicate the functionality of [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) queries in Query DSL.
 
-- Use the compact [operator syntax (:)](https://docs-v3-preview.elastic.dev/elastic/elasticsearch/tree/main/reference/query-languages/esql/functions-operators/operators#esql-match-operator) for simple text matching with default parameters.
-- Use the [MATCH function syntax](https://docs-v3-preview.elastic.dev/elastic/elasticsearch/tree/main/reference/query-languages/esql/functions-operators/search-functions#esql-match) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
+- Use the compact [operator syntax (:)](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) for simple text matching with default parameters.
+- Use the [MATCH function syntax](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
 
 Refer to the [tutorial](esql-search-tutorial.md#step-3-basic-search-operations) for examples of both syntaxes.
 
