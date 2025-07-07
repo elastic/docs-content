@@ -11,17 +11,17 @@ products:
 % ℹ️ 8.x version of this doc lives in elasticsearch repo
 % https://github.com/elastic/elasticsearch/blob/8.x/docs/reference/esql/esql-for-search.asciidoc
 
-# {{{esql}}} for search [esql-for-search]
+# {{esql}} for search [esql-for-search]
 
-This page provides an overview of how to use {{{esql}}} for search use cases.
+This page provides an overview of how to use {{esql}} for search use cases.
 
 ::::{tip}
-For a hands-on tutorial check out [Search and filter with {{{esql}}}](esql-search-tutorial.md).
+For a hands-on tutorial check out [Search and filter with {{esql}}](esql-search-tutorial.md).
 ::::
 
-## {{{esql}}} search quick reference
+## {{esql}} search quick reference
 
-The following table summarizes the key search features available in [{{{esql}}}](/explore-analyze/query-filter/languages/esql.md) and when they were introduced, organized chronologically by release.
+The following table summarizes the key search features available in [{{esql}}](/explore-analyze/query-filter/languages/esql.md) and when they were introduced, organized chronologically by release.
 
 | Feature | Description | Available since |
 |---------|-------------|----------------|
@@ -33,9 +33,9 @@ The following table summarizes the key search features available in [{{{esql}}}]
 | [Kibana Query Language](#kql-function) | Use Kibana Query Language with the `KQL` function | 8.18/9.0 |
 | [Match phrase function](#match_phrase-function) | Perform phrase matching with `MATCH_PHRASE` function | 8.19/9.1 |
 
-## How search works in {{{esql}}}
+## How search works in {{esql}}
 
-{{{esql}}} provides two distinct approaches for finding documents: filtering and searching. Understanding the difference is crucial for building effective queries and choosing the right approach for your use case.
+{{esql}} provides two distinct approaches for finding documents: filtering and searching. Understanding the difference is crucial for building effective queries and choosing the right approach for your use case.
 
 **Filtering** removes documents that don't meet your criteria. It's a binary yes/no decision - documents either match your conditions or they don't. Filtering is faster because it doesn't calculate relevance scores and leverages efficient index structures for exact matches, ranges, and boolean logic.
 
@@ -53,7 +53,7 @@ The following table summarizes the key search features available in [{{{esql}}}]
 - Any scenario where you want the "best" matches first
 - You want to use [analyzers](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) or [synonyms](/solutions/search/full-text/search-with-synonyms.md) 
 
-{{{esql}}}'s search functions address several key limitations that existed for text filtering: they work directly on multivalued fields, leverage analyzers for proper text analysis, and use optimized Lucene index structures for better performance.
+{{esql}}'s search functions address several key limitations that existed for text filtering: they work directly on multivalued fields, leverage analyzers for proper text analysis, and use optimized Lucene index structures for better performance.
 
 ### Relevance scoring [esql-for-search-scoring]
 
@@ -116,14 +116,14 @@ Refer to [hybrid search with semantic_text](hybrid-semantic-text.md) for an exam
 
 ### Tutorials and how-to guides [esql-for-search-tutorials]
 
-- [Search and filter with {{{esql}}}](esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {{{esql}}}, with concrete examples of the functionalities described in this page
+- [Search and filter with {{esql}}](esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {{esql}}, with concrete examples of the functionalities described in this page
 
 ### Technical reference [esql-for-search-reference]
 
 - [Search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md): Complete reference for all search functions
-- [Limitations](elasticsearch://reference/query-languages/esql/limitations.md#esql-limitations-full-text-search): Current limitations for search functions in {{{esql}}}
+- [Limitations](elasticsearch://reference/query-languages/esql/limitations.md#esql-limitations-full-text-search): Current limitations for search functions in {{esql}}
 
 ### Related blog posts [esql-for-search-blogs]
 
-- [{{{esql}}}, you know for Search](https://www.elastic.co/search-labs/blog/esql-introducing-scoring-semantic-search): Introducing scoring and semantic search
-- [Introducing full text filtering in {{{esql}}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr): Overview of {{{esql}}}'s text filtering capabilities
+- [{{esql}}, you know for Search](https://www.elastic.co/search-labs/blog/esql-introducing-scoring-semantic-search): Introducing scoring and semantic search
+- [Introducing full text filtering in {{esql}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr): Overview of {{esql}}'s text filtering capabilities
