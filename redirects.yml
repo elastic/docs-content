@@ -212,3 +212,6 @@ redirects:
   'solutions/observability/get-started/get-started-with-dashboards.md': 'solutions/observability/get-started.md'
 # Related to https://github.com/elastic/docs-content/pull/1329
   'manage-data/ingest/transform-enrich/ingest-pipelines-serverless.md': 'manage-data/ingest/transform-enrich/ingest-pipelines.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2010
+  'manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md': 'manage-data/data-store/index-basics.md'

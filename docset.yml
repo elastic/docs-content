@@ -278,7 +278,7 @@ subs:
   fleet-server-issue:   "https://github.com/elastic/fleet-server/issues/"
   fleet-server-pull:   "https://github.com/elastic/fleet-server/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
-  stack-version: "9.0.0"
+  stack-version: "9.0.3"
   ece_version: "4.0.1"
   eck_version: "3.0.0"
   eck_release_branch: "3.0"
