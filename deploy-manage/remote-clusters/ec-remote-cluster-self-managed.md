@@ -39,7 +39,6 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 ### Prerequisites and limitations [ec_prerequisites_and_limitations_4]
 
 * The local and remote deployments must be on {{stack}} 8.14 or later.
-* API key authentication can’t be used in combination with traffic filters.
 * Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
 
 
