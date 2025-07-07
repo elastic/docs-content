@@ -37,7 +37,7 @@ Because this feature is designed with {{kib}} in mind, most sections of this gui
 
 The SAML support in {{kib}} is designed with the expectation that it will be the primary (or sole) authentication method for users of that {{kib}} instance. After you enable SAML authentication in {{kib}}, it will affect all users who try to login. The [Configuring {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana) section provides more detail about how this works.
 
-For a detailed walk-through of how to implement SAML authentication for {{kib}} with Microsoft Entra ID as an identity provider, refer to our guide [Set up SAML with Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+For a detailed walk-through of how to implement SAML authentication for {{kib}} with Microsoft Entra ID as an identity provider, refer to our guide [Set up SAML with Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml-entra.md).
 
 To configure SAML, you need to perform the following steps:
 
