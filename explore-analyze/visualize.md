@@ -24,7 +24,8 @@ $$$panels-editors$$$
 |  | [Field statistics](visualize/field-statistics.md) | Add a field statistics view of your data to your dashboards |
 |  | [Custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
 |  | | |
-| Annotations and navigation | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |
+| Annotations and navigation | [Collapsible sections](dashboards/arrange-panels.md#collapsible-sections) | Organize your dashboard into sections that can be collapsed and save loading time |
+|  | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |
 |  | [Image](visualize/image-panels.md) | Personalize your dashboard with custom images |
 |  | [Links](visualize/link-panels.md) | Add links to other dashboards or to external websites |
 |  | | |

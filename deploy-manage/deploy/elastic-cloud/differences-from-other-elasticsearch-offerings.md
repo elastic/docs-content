@@ -109,7 +109,7 @@ This table compares Observability capabilities between {{ech}} deployments and S
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
-| [**Android agent/SDK instrumentation**](apm-agent-android://reference/index.md) | ✅ | ❌ | Not available in Serverless |
+| [**Android agent/SDK instrumentation**](opentelemetry://reference/edot-sdks/android/index.md) | ✅ | ❌ | Not available in Serverless |
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
 | **Custom roles for Kibana Spaces** | ✅ | **Planned** | Anticipated in a future release |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
@@ -118,7 +118,7 @@ This table compares Observability capabilities between {{ech}} deployments and S
 | **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |
 | **[Fleet server](/reference/fleet/fleet-server.md)** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
 | [**Index lifecycle management**](/manage-data/lifecycle/index-lifecycle-management.md) | ✅ | ❌ | Use [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) instead |
-| **[iOS agent/SDK instrumentation](apm-agent-ios://reference/index.md)** | ✅ | ❌ | Not available in Serverless |
+| **[iOS agent/SDK instrumentation](opentelemetry://reference/edot-sdks/ios/index.md)** | ✅ | ❌ | Not available in Serverless |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
