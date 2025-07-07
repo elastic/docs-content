@@ -14,7 +14,7 @@ products:
 # Elastic Entity Model [elastic-entity-model]
 
 ::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+This functionality was removed in {{serverless}} and {{stack}} version 9.0.
 ::::
 
 The Elastic Entity Model consists of:
