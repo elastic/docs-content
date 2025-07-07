@@ -54,7 +54,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
     | LIMIT 10
     ```
 
-2. Specify details for grouping alerts.
+2. Specify details for grouping alerts based on your query language.
 
     If you use query DSL, KQL, or Lucene, set the group and theshold.
 
