@@ -39,7 +39,7 @@ The examples in this guide use the default Learned Sparse Encoder ([ELSER](/expl
 
 The way that you store vectors has a significant impact on the performance and accuracy of search results.
 They must be stored in specialized data structures designed to ensure efficient similarity search and speedy vector distance calculations.
-This guide uses the [semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md), which provide sensible defaults and automation.
+This guide uses the [semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md), which provides sensible defaults and automation.
 
 Try vectorizing a small set of documents.
 You can follow the guided index workflow:
@@ -87,18 +87,16 @@ POST /_bulk?pretty
 
 The bulk ingestion might take longer than the default request timeout.
 If it times out, wait for the ELSER model to load (typically 1-5 minutes) then retry it.
-::::
-:::::
 
-What just happened? The content was transformed into sparse vectors, which involves two main steps.
+What just happened?
 First, the content was divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched.
-Then each chunk of text was transformed into a sparse vector representation using text expansion techniques.
+Then each chunk of text was transformed into a sparse vector by using the ELSER model's text expansion techniques.
 
 ![Semantic search chunking](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt9bbe5e260012b15d/67ffffc8165067d96124b586/animated-gif-semantic-search-chunking.gif)
 
-With a few vectors stored in {{es}}, semantic search can now occur.
-
-## Explore the data
+The vectors are stored in {{es}} and semantic search can now occur.
+::::
+::::{step} Explore the data
 
 To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -110,6 +108,8 @@ In **Discover**, you can click the expand icon ![double arrow icon to open a fly
 :::
 
 For more tips, check out [](/explore-analyze/discover/discover-get-started.md).
+::::
+:::::
 
 ## Test semantic search
 
