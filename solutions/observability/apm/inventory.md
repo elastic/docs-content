@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inventory.html
   - https://www.elastic.co/guide/en/serverless/current/observability-inventory.html
 applies_to:
-  stack:
-  serverless:
+  stack: removed 9.0
+  serverless: removed
 products:
   - id: observability
   - id: apm
