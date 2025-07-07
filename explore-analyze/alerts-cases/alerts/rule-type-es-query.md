@@ -73,7 +73,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
     :   Choose the time field to use when filtering query results by the time window that you later specify for the rule. You can choose any time field that's availble on the index you're querying, for example, the `@timestamp` field.
 
     Alert group
-    :   Select **Create an alert if matches are found** to create a single alert for multiple events matching the {{esql}} query. Select **Create an alert for each row** to create a separate alert for each event that matches the {{esql}} query. Whenever possible, each alert will have a unique ID. 
+    :   Select **Create an alert if matches are found** to create a single alert for multiple events matching the {{esql}} query. Select **Create an alert for each row** to create a separate alert for each event that matches the {{esql}} query. Whenever possible, each alert is given a unique ID. 
  
 
 3. Set the time window, which defines how far back to search for documents.
