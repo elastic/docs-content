@@ -11,7 +11,7 @@ navigation_title: "Add IP filters"
 
 # IP filtering
 
-This section covers traffic filtering by IP address or CIDR block.
+This section covers filtering network traffic by IP address or CIDR block.
 
 The way that you configure IP filters depends on your deployment type.
 
@@ -39,4 +39,4 @@ To learn how multiple rules are processed, refer to [](/deploy-manage/security/e
 
 ## ECK and self managed
 
-In {{eck}} and self-managed clusters, traffic filters are applied at the cluster level using `elasticsearch.yml`. [Learn how to configure traffic filtering at the cluster level](/deploy-manage/security/ip-filtering-basic.md).
+In {{eck}} and self-managed clusters, IP filters are applied at the cluster level using `elasticsearch.yml`. [Learn how to configure IP filtering at the cluster level](/deploy-manage/security/ip-filtering-basic.md).

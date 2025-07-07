@@ -67,7 +67,7 @@ This table compares the core platform capabilities between {{ech}} deployments a
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | Public IP filtering, private connectivity (VPCs, PrivateLink) | Public IP filtering | Private connectivity options anticipated in a future release |
+| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering | Private connectivity options anticipated in a future release |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
