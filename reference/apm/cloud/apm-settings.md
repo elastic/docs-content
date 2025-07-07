@@ -47,7 +47,7 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 
 ## Supported standalone APM settings (legacy) [ec-apm-settings]
 
-{{ech}} supports the settings listed in [APM documentation](/solutions/observability/apm/configure-apm-server.md) under "APM Server binary" when running APM in standalone mode (legacy). For versions before 9, refer to [older documentation](https://www.elastic.co/guide/en/observability/8.18/apm-configuring-howto-apm-server.html).
+{{ech}} generally supports the settings listed in [APM documentation](/solutions/observability/apm/configure-apm-server.md) under "APM Server binary" when running APM in standalone mode (legacy). For versions before 9, refer to [older documentation](https://www.elastic.co/guide/en/observability/8.18/apm-configuring-howto-apm-server.html).
 
 ::::{note}
 Some settings are intentionally restricted to maintain system stability.
