@@ -158,7 +158,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 
 ### Manage index templates [index-management-manage-index-templates]
 
-An [index template](/manage-data/data-store/templates.md) is a way to tell {{es}} how to configure an index when it is created.
+An index template is a type of [template](/manage-data/data-store/templates.md) that tells {{es}} how to configure an index when it is created.
 
 Create, edit, clone, and delete your index templates in the **Index Templates** view. Changes made to an index template do not affect existing indices.
 
@@ -291,7 +291,7 @@ You’re now ready to create new indices using your index template.
 
 ### Manage component templates
 
-[Component templates](/manage-data/data-store/templates.md) are reusable building blocks that configure mappings, settings, and aliases.
+Component templates are a type of [template](/manage-data/data-store/templates.md) used as reusable building blocks within index templates to configure index settings, mappings, and aliases.
 
 Create, edit, clone, and delete your component templates in the **Component Templates** view.
 
