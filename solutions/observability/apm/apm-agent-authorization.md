@@ -26,15 +26,11 @@ Agent authorization APM Server configuration options.
 
 ```yaml
 apm-server:
-  host: "localhost:8200"
-  rum:
-    enabled: true
-
-output:
-  elasticsearch:
-    hosts: ElasticsearchAddress:9200
-
-max_procs: 4
+  auth:
+    api_key:
+      enabled: true
+      limit: 100
+      token: "your_secret_token"
 ```
 ::::::
 
@@ -63,7 +59,7 @@ Enable API key authorization by setting `enabled` to `true`. By default, `enable
 
 |     |     |
 | --- | --- |
-| APM Server binary | `auth.api_key.enabled` |
+| APM Server binary | `apm-server.auth.api_key.enabled` |
 | Fleet-managed | `API key for agent authentication` |
 
 ::::{tip}
@@ -76,7 +72,7 @@ Each unique API key triggers one request to {{es}}. This setting restricts the n
 
 |     |     |
 | --- | --- |
-| APM Server binary | `auth.api_key.limit` |
+| APM Server binary | `apm-server.auth.api_key.limit` |
 | Fleet-managed | `Number of keys` |
 
 ### Secret token [_secret_token]
@@ -85,17 +81,17 @@ Authorization token for sending APM data. The same token must also be set in eac
 
 |     |     |
 | --- | --- |
-| APM Server binary | `auth.api_key.token` |
+| APM Server binary | `apm-server.auth.api_key.token` |
 | Fleet-managed | `Secret token` |
 
-## `auth.api_key.elasticsearch.*` configuration options [_auth_api_key_elasticsearch_configuration_options]
+## `apm-server.auth.api_key.elasticsearch.*` configuration options [_auth_api_key_elasticsearch_configuration_options]
 
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
 
 The below options are only supported by the APM Server binary.
 
-All of the `auth.api_key.elasticsearch.*` configurations are optional. If none are set, configuration settings from the `apm-server.output` section will be reused.
+All of the `apm-server.auth.api_key.elasticsearch.*` configurations are optional. If none are set, configuration settings from the `apm-server.output` section will be reused.
 
 ::::
 
@@ -119,7 +115,7 @@ The URL of the proxy to use when connecting to the {{es}} servers. The value may
 
 The HTTP request timeout in seconds for the {{es}} request. If nothing is configured, configuration settings from the `output` section will be reused.
 
-## `auth.api_key.elasticsearch.ssl.*` configuration options [_auth_api_key_elasticsearch_ssl_configuration_options]
+## `apm-server.auth.api_key.elasticsearch.ssl.*` configuration options [_auth_api_key_elasticsearch_ssl_configuration_options]
 
 SSL is off by default. Set `elasticsearch.protocol` to `https` if you want to enable `https`.
 
@@ -133,7 +129,7 @@ Configure SSL verification mode. If `none` is configured, all server hosts and c
 
 ### `elasticsearch.ssl.supported_protocols` [_elasticsearch_ssl_supported_protocols]
 
-List of supported/valid TLS versions. By default, all TLS versions from 1.0 to 1.2 are enabled.
+List of supported/valid TLS versions. The default value is `[TLSv1.1, TLSv1.2, TLSv1.3]`.
 
 ### `elasticsearch.ssl.certificate_authorities` [_elasticsearch_ssl_certificate_authorities]
 
