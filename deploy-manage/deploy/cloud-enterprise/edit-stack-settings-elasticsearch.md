@@ -2,6 +2,7 @@
 navigation_title: Elasticsearch user settings
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-user-settings.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-change-user-settings-examples.html
 applies_to:
   deployment:
     ece: all
@@ -17,9 +18,11 @@ Change how {{es}} runs by providing your own user settings. User settings are ap
 If a feature requires both standard `elasticsearch.yml` settings and [secure settings](/deploy-manage/security/secure-settings.md), configure the secure settings first. Updating standard user settings can trigger a cluster rolling restart, and if the required secure settings are not yet in place, the nodes might fail to start. Adding secure settings does not trigger a restart.
 :::
 
-{{ece}} automatically rejects `elasticsearch.yml` settings that could break your cluster, including some zen discovery and security settings.
+{{ece}} automatically rejects `elasticsearch.yml` settings that could break your cluster, including some zen discovery and security settings. For a detailed list of settings, refer to the [{{es}} configuration reference](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
 
-For a list of supported settings, check [Supported {{es}} settings](elasticsearch://reference/elasticsearch/configuration-reference/index.md).
+::::{note}
+Most of the user settings that are available for the {{es}} version that your cluster is running are also available on {{ece}}, regardless of being marked as "supported on {{ech}}".
+::::
 
 To add or edit {{es}} user settings:
 
@@ -37,6 +40,7 @@ To add or edit {{es}} user settings:
     If you encounter the **Edit elasticsearch.yml** carets, be sure to make your changes on all {{es}} node types.
     ::::
 
+$$$ece-change-user-settings-examples$$$
 ## Example: enable email notifications [ece_enable_email_notifications_from_gmail]
 
 To enable email notifications in your {{es}} cluster, you need to configure an email account and related settings. For complete instructions, refer to [Configuring email accounts](/explore-analyze/alerts-cases/watcher/actions-email.md#configuring-email).
