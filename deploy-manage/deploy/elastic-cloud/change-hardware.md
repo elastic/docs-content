@@ -115,6 +115,6 @@ Deployment with Elastic stack version prior to 7.10 does not support hardware pr
 
 In addtion, you can refer to below information about how these terminologies are referenced. 
 * _Deprecated_ is also referenced as _legacy_. 
-* Using `metadata=legacy:true` to get legacy/deprecated DTs.
-* Using `hide_deprecated=true` to get active/valid DTs.
-* Not using any of the query parameters above to get all DTs. In this case, check the presence of `legacy: true` in the metadata entries within the API response, to verify if an IC/DT is deprecated or not.
+* Using the `metadata=legacy:true` query parameter will return only legacy/deprecated DTs.
+* Using the `hide_deprecated=true` query parameter will return only valid DTs.
+* Not using any of the query parameters above will return all DTs. In this case, check the presence of `legacy: true` in the `metadata` entries within the API response, to verify if an IC/DT is deprecated or not.
