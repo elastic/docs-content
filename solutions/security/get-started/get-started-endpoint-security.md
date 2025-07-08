@@ -61,10 +61,10 @@ If you’re using macOS, some versions may require you to grant {{elastic-endpoi
 
 ::::{step} Modify policy configuration settings
 
-After you install the {{agent}} with {{elastic-defend}}, several endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—are automatically enabled on protected hosts. If any such behavior is detected, {{elastic-defend}} generates an alert, and by default, prevents the malicious activity from completing. However, you can tailor the policy configuration to meet your organization’s security needs.
+After you install the {{agent}} with {{elastic-defend}}, several endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—are automatically enabled on protected hosts. If any of these behaviors are detected, {{elastic-defend}} generates an alert, and by default, prevents the malicious activity from completing. However, you can tailor the policy configuration to meet your organization’s security needs.
 
 :::{tip}
-You may want to consider analyzing which and how many alerts are generated over a specific time period to identify common patterns or anomalies before you make any policy changes. Check out the [SIEM quick start guide](solutions/security/get-started/get-started-detect-with-siem.md) to learn more about how to monitor alerts. 
+You may want to consider analyzing which and how many alerts are generated over a specific time period to identify common patterns or anomalies before you make any policy changes. Check out the [SIEM quick start guide](/solutions/security/get-started/get-started-detect-with-siem.md) to learn more about how to monitor alerts. 
 :::
 
 :::{dropdown} Steps to modify an integration policy
@@ -72,9 +72,11 @@ You may want to consider analyzing which and how many alerts are generated over 
 2. From the list, select the policy you want to configure. The integration policy configuration page appears.
 3. On the **Policy settings** tab, review and configure the protection, event collection, and antivirus settings as appropriate. 
 4. Once you're finished making changes, click **Save** in the lower-right corner to update the policy.  
-5. Next, click the **Trusted applications**, **Event filters**, **Host isolation exceptions**, and **Blocklist** tabs to review and manage the endpoint policy artifacts assigned to the policy.   
+5. (Optional) You can click the **Trusted applications**, **Event filters**, **Host isolation exceptions**, and **Blocklist** tabs to review and manage those artifacts assigned to the policy, but we'll cover how to manage these in the next section.    
 
-    For a comprehensive explanation of all endpoint protections and policy settings, refer to [Configure an integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md). 
+:::{note}
+For a comprehensive explanation of all endpoint protections and policy settings, refer to [Configure an integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md).
+::: 
 
 % insert image
 :::
@@ -107,6 +109,14 @@ You can also automate some responses when an event meets the rule's criteria. Re
 * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): Prevent specified applications from running on hosts to extend the list of processes that {{elastic-defend}} considers malicious. This adds an extra layer of protection by ensuring that known malicious processes aren’t accidentally executed by end users. 
 * [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): Add specific IP addresses that isolated hosts are still allowed to communicate with, even when blocked from the rest of your network.
 
+:::{tip}
+You can apply trusted applications, blocklist entries, and host isolation exceptions to a single policy, or to all policies. 
+::: 
+
 ## Next steps 
 
-% will complete this later but will add in info about adding endpoint protection rules and custom rules, viewing dashboards, looking at the hosts page. 
+After your hosts are secure and your environment has all the appropriate security configuration enabled, we recommend taking these next steps: 
+
+* Check out the [Hosts page](/solutions/security/explore/hosts-page.md) for a comprehensive overview of all hosts and host-related security events. This page is also useful to identify uncommon processes and anomalies discovered by {{ml}} jobs. 
+*  Enable prebuilt detection rules. You're already set to receive endpoint threat alerts from {{elastic-defend}}, but did you know {{elastic-sec}} ships with several out-of-the-box rules that you can enable? Check out our [SIEM quick start guide](/solutions/security/get-started/get-started-detect-with-siem.md#add-elastic-prebuilt-detection-rules) or our [documentation](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules).  
+* Discover all the other tools available to [manage {{elastic-defend}}](/solutions/security/manage-elastic-defend.md). 
