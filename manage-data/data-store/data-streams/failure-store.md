@@ -308,7 +308,7 @@ To limit visibility on potentially sensitive data, users require the [`read_fail
 
 Searching a data stream's failure store can be done by making use of the existing search APIs available in {{es}}. 
 
-To indicate that the search should be performed on failure store data, use the [index component selector syntax](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md) to indicate which part of the data stream to target in the search operation. Appending the `::failures` suffix to the name of the data stream indicates that the operation should be performed against that data stream's failure store instead of its regular backing indices.
+To indicate that the search should be performed on failure store data, use the [index component selector syntax](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-component-selectors) to indicate which part of the data stream to target in the search operation. Appending the `::failures` suffix to the name of the data stream indicates that the operation should be performed against that data stream's failure store instead of its regular backing indices.
 
 :::::{tab-set}
 
