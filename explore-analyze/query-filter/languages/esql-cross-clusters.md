@@ -3,7 +3,7 @@ navigation_title: Query across clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-cross-clusters.html
 applies_to:
-  stack: ga
+  stack: preview 9.0, ga 9.1
   serverless: unavailable
 products:
   - id: elasticsearch
@@ -12,12 +12,6 @@ products:
 
 
 # Use ES|QL across clusters [esql-cross-clusters]
-
-
-::::{warning}
-{{ccs-cap}} for {{esql}} is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
 
 With {{esql}}, you can execute a single query across multiple clusters.
 
