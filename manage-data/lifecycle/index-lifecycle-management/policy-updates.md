@@ -36,6 +36,10 @@ When you apply a different policy to a managed index, the index completes the cu
 
 You can update a lifecycle policy that is currently associated with one or more indices.
 
+:::{warning}
+Avoid changing any managed policies that are shipped with {{es}}, such as `logs@lifecycle` or `metrics@lifecycle`. Instead, create a new, [custom ILM policy](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) and associate it with the intended index template or indices.
+:::
+
 ::::{tab-set}
 :group: kibana-api
 :::{tab-item} {{kib}}
@@ -94,13 +98,9 @@ The specified policy will be replaced and the policy version is incremented.
 You can change an index to be managed by a different {{ilm-init}} policy.
 
 :::::{warning}
-Note the following restrictions when switching the policy for an index:
+\When you remove an ILM policy, all {{ilm-init}} metadata is removed from the managed index without consideration of the index’s lifecycle status. This can leave indices in an undesired state.
 
-* Avoid changing any managed policies that are shipped with {{es}}, such as `logs@lifecycle` or `metrics@lifecycle`. Instead, create a new ILM policy and associate it with the intended index template or indices.
-
-* When you remove an ILM policy, all {{ilm-init}} metadata is removed from the managed index without consideration of the index’s lifecycle status. This can leave indices in an undesired state.
-
-  For example, in certain cases the [`forcemerge`](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
+For example, in certain cases the [`forcemerge`](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
 :::::
 
 ::::{tab-set}
