@@ -143,7 +143,18 @@ toc:
   - file: ingest.md
     children:
       # - file: ingest/enterprise-search/crawls.md
-      - toc: ingest/opentelemetry
+      - file: ingest/opentelemetry/index.md
+        children:
+          - file: ingest/opentelemetry/edot-collector/index.md
+            children:
+              - file: ingest/opentelemetry/edot-collector/collector-oomkilled.md
+          - file: ingest/opentelemetry/edot-sdks/index.md
+            children:
+              - file: ingest/opentelemetry/edot-sdks/dotnet/index.md
+              - file: ingest/opentelemetry/edot-sdks/java/index.md
+              - file: ingest/opentelemetry/edot-sdks/nodejs/index.md
+              - file: ingest/opentelemetry/edot-sdks/php/index.md
+              - file: ingest/opentelemetry/edot-sdks/python/index.md
       - file: ingest/logstash.md
         children:
           - file: ingest/logstash/plugins.md
