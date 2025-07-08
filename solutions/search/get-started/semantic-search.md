@@ -50,7 +50,7 @@ You can follow the guided index workflow:
 - If you're running {{es}} locally, go to **{{es}} > Home** and click **Create API index**. Select the semantic search workflow.
 
 When you complete the workflow, you will have sample data and can skip to the steps related to exploring and searching it.
-Alternatively, run the following API request in the [Console](/explore-analyze/query-filter/tools/console.md):
+Alternatively, run the following API request in [Console](/explore-analyze/query-filter/tools/console.md):
 
 ```console
 PUT /semantic-index
