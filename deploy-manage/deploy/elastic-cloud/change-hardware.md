@@ -100,8 +100,8 @@ For example, to return valid ICs/DTs the following request can be used: `https:/
 If a deprecated IC/DT is already in use, it can continue to be used. However, creating or migrating to a deprecated IC/DT is no longer possible and will result in a plan failing. In order to migrate to a valid IC/DT, navigate to the **Edit hardware profile** option in the Cloud UI or use the [Deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-migrate-deployment-template).
 
 In addtion, you can refer to below information about how these terminologies are referenced. 
+* The above API requests `https://api.elastic-cloud.com/api/v1/deployments/templates` return a list of DTs and the respective ICs referenced within each DT.
 * _Deprecated_ is also referenced as _legacy_. 
-* When using APIs, `hide_deprecated=true` is equivalent as `metadata=legacy:false`. Or in contrast, using `hide_deprecated=false` is equivalent as `metadata=legacy:true`.
-* Using `metadata=legacy:false` is not available. Therefore, to verify an IC being deprecated or not, check the presence of `legacy` field in the above API response. 
-* Field `hidden` from API response is completely unrelated to whether an IC is deprecated / legacy or not.
-
+* Using `metadata=legacy:true` to get legacy/deprecated DTs.
+* Using `hide_deprecated=true` to get active/valid DTs.
+* Not using any of the query parameters above to get all DTs. In this case, check the presence of `legacy: true` in the metadata entries within the API response, to verify if an IC/DT is deprecated or not.
