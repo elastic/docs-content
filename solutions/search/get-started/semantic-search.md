@@ -41,17 +41,25 @@ The way that you store vectors has a significant impact on the performance and a
 They must be stored in specialized data structures designed to ensure efficient similarity search and speedy vector distance calculations.
 This guide uses the [semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md), which provides sensible defaults and automation.
 
-Try vectorizing a small set of documents.
+:::::{stepper}
+::::{step} Create an index
+An index is a collection of documents uniquely identified by a name or an alias.
 You can follow the guided index workflow:
 
 - If you're using {{es-serverless}}, go to **{{es}} > Home**, select the semantic search workflow, and click **Create a semantic optimized index**.
 - If you're running {{es}} locally, go to **{{es}} > Home** and click **Create API index**. Select the semantic search workflow.
 
-Alternatively, run the following API requests in the [Console](/explore-analyze/query-filter/tools/console.md):
+When you complete the workflow, you will have sample data and can skip to the steps related to exploring and searching it.
+Alternatively, run the following API request in the [Console](/explore-analyze/query-filter/tools/console.md):
 
-:::::{stepper}
+```console
+PUT /semantic-index
+```
+
+For an introduction to the concept of indices, check out [](/manage-data/data-store/index-basics.md).
+::::
 ::::{step} Create a semantic_text field mapping
-
+Each index has mappings that define how data is stored and indexed, like a schema in a relational database.
 The following example creates a mapping for a single field ("content"):
 
 ```console
@@ -87,20 +95,23 @@ POST /_bulk?pretty
 
 The bulk ingestion might take longer than the default request timeout.
 If it times out, wait for the ELSER model to load (typically 1-5 minutes) then retry it.
+If you're using {{es-serverless}}, you can check the model state in  **{{project-settings}} > {{models-app}}**.
+<!--
+TBD: Stack app location
+-->
 
-What just happened?
-First, the content was divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched.
-Then each chunk of text was transformed into a sparse vector by using the ELSER model's text expansion techniques.
+First, the content is divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched.
+Each chunk of text is then transformed into a sparse vector by using the ELSER model's text expansion techniques.
 
 ![Semantic search chunking](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt9bbe5e260012b15d/67ffffc8165067d96124b586/animated-gif-semantic-search-chunking.gif)
 
-The vectors are stored in {{es}} and semantic search can now occur.
+The vectors are stored in {{es}} and are ready to be used for semantic search.
 ::::
 ::::{step} Explore the data
 
 To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-In **Discover**, you can click the expand icon ![double arrow icon to open a flyout with the document details](/explore-analyze/images/kibana-expand-icon-2.png "") to show details about documents in the table.
+In **Discover**, you can click the expand icon ![double arrow icon to open a flyout with the document details](/solutions/images/kibana-expand-icon.png "") to show details about documents in the table.
 
 :::{image} /solutions/images/serverless-discover-semantic.png
 :screenshot:
@@ -113,45 +124,79 @@ For more tips, check out [](/explore-analyze/discover/discover-get-started.md).
 
 ## Test semantic search
 
+When you run a semantic search, the text in your query must be turned into vectors that use the same embedding model as your vector database.
+This step is performed automatically when you use `semantic_text` fields.
+You therefore only need to pick a query language and a method for comparing the vectors.
+
+:::::{stepper}
+::::{step} Choose a query language
+
 {{es}} provides a variety of query languages for interacting with your data.
 For an overview of their features and use cases, check out [](/explore-analyze/query-filter/languages.md).
+The [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL) is designed to be easy to read and write.
+It enables you to query your data directly in **Discover**, so it's a good one to start with.
 
-You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including  `knn`, `match`, `semantic`, and `sparse_vector`.
-The query is translated automatically into the appropriate vector representation to run against the contents of the semantic text field.
-The search results include a relevance score, which measures how well each document matches the query.
-
-Let's test a semantic search query in [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL).
 Go to **Discover** and select **Try ES|QL** from the application menu bar.
-Think of some queries that are relevant to the documents you explored, such as finding the biggest park or the best for rappelling.
-For example, copy the following query:
+::::
+::::{step} Choose a vector comparison method
+You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including `knn`, `match`, `semantic`, and `sparse_vector`.
+For the definitive list of supported queries, refer to [](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
+
+In ES|QL, you can perform semantic searches on `semantic_text` field types using the same match syntax as full-text search.
+For example:
+
+```esql
+FROM semantic-index <1>
+| WHERE content: "what's the biggest park?" <2>
+| LIMIT 10 <3>
+```
+
+1. The FROM source command returns a table of data from the specified index.
+2. A simplified syntax for the MATCH search function, this command performs a semantic query on the specified field. Think of some queries that are relevant to the documents you explored, such as finding the biggest park or the best for rappelling.
+3. The LIMIT processing command defines the maximum number of rows to return.
+
+When you click **▶Run**, the results appear in a table.
+Each row in the table represents a document.
+<!--
+TBD: Run the same query in Console
+-->
+To learn more about these commands, refer to [](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) and [](/solutions/search/esql-for-search.md).
+::::
+::::{step} Analyze the results
+
+To have a better understanding of how well each document matches your query, add commands to include the relevance score and sort the results based on that value.
+For example:
 
 ```esql
 FROM semantic-index METADATA _score <1>
-  | WHERE content: "what's the biggest park?" <2>
-  | KEEP content, _score <3>
-  | SORT _score DESC <4>
-  | LIMIT 1000 <5>
+  | WHERE content: "best spot for rappelling"
+  | KEEP content, _score <2>
+  | SORT _score DESC <3>
+  | LIMIT 10
 ```
 
-1. The FROM source command returns a table of data. Each row in the table represents a document. The `METADATA` clause provides access to the query relevance score, which is a [metadata field](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md).
-2. A simplified syntax for the [match](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) search function, this command performs a semantic query on the specified field.
-3. The KEEP processing command affects the columns and their order in the results table.
-4. The results are sorted in descending order based on the `_score`.
-5. This optional command defines the maximum number of rows to return.
+1. The `METADATA` clause provides access to the query relevance score, which is a [metadata field](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md).
+2. The KEEP processing command affects the columns and their order in the results table.
+3. The results are sorted in descending order based on the `_score`.
 
-After you click **▶Run**, the results appear in a table.
-In this example, the first row in the table is the document related to Yellowstone National Park, which had the highest relevance score for the query.
+:::{tip}
+Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries that will help you get started.
+:::
 
-:::{image} /solutions/images/serverless-discover-esql.png
+:::{image} /solutions/images/serverless-discover-semantic-esql.png
 :screenshot:
 :alt: Run an ES|QL semantic query in Discover
 :::
 
-<!--
-TBD: Run the same query in Console
--->
+In this example, the first row in the table is the document related to Rocky Mountain National Park, which had the highest relevance score for the query.
 
-To learn more, check out [](/explore-analyze/discover/try-esql.md) and [](/solutions/search/esql-for-search.md).
+For more tips, check out [Using ES|QL in Discover](/explore-analyze/discover/try-esql.md).
+::::
+:::::
+
+<!--
+TBD: Delete index and stop model?
+-->
 
 ## Next steps
 
