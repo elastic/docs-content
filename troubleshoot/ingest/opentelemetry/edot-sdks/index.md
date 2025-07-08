@@ -22,5 +22,5 @@ Find solutions to common issues with EDOT SDKs.
 - [Python](/troubleshoot/ingest/opentelemetry/edot-sdks/python/index.md)
 
 :::{warning}
-Avoid using EDOT SDKs together with other APM agents, including agents from Elastic such as Elastic APM. Running multiple agents in the same application process may lead to unexpected behavior, conflicting instrumentation, or duplicated telemetry.
+Avoid using EDOT SDKs alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to unexpected behavior, conflicting instrumentation, or duplicated telemetry.
 :::
