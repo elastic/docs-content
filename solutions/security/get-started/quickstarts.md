@@ -7,7 +7,7 @@ products:
 
 # {{elastic-sec}} quickstarts
 
-Our quickstarts reduce your time-to-value by offering a fast path to learn about search strategies.
+Our quickstarts reduce your time-to-value by offering a fast path to learn about security strategies, tailored to your use case.
 Each quickstart provides:
 
 - A highly opinionated, fast path to a specific use case
