@@ -91,16 +91,29 @@ Having an instance configuration mismatch between the deployment and the hardwar
 
 ## Deprecated instance configurations (ICs) and deployment templates (DTs) [ec-deprecated-icdt]
 
-Hardware profile is also referenced as deployment templates (DTs) in {{ecloud}}. 
+Hardware profile is also referenced as deployment templates in {{ecloud}}. 
 
-A list of deprecated and valid ICs/DTs can be found on the [Available regions, deployment templates and instance configurations](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) page, as well as through the API, using `hide_deprecated` to return valid ICs/DTs. 
+You can find a list of deprecated and valid instance configurations (ICs) and deployment templates (DTs) in two ways:
 
-For example, to return valid ICs/DTs the following request can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&hide_deprecated=true`. To list only the deprecated ones, this can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&metadata=legacy:true`.
+### Public documentation page
+
+Visit the [Available regions, deployment templates and instance configurations](cloud://reference/cloud-hosted/ec-regions-templates-instances.md) page for detailed information.
+
+### API access
+
+Use the [Get deployment templates API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-get-deployment-templates-v2) with query parameters like `hide_deprecated` to retrieve valid ICs and DTs. This API request returns a list of DTs along with the respective ICs referenced within each DT.
+
+For example, 
+* To return valid ICs/DTs the following request can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&hide_deprecated=true`. 
+* To list only the deprecated ones, this can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&metadata=legacy:true`.
 
 If a deprecated IC/DT is already in use, it can continue to be used. However, creating or migrating to a deprecated IC/DT is no longer possible and will result in a plan failing. In order to migrate to a valid IC/DT, navigate to the **Edit hardware profile** option in the Cloud UI or use the [Deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-migrate-deployment-template).
 
+::::{note}
+Deployment with Elastic stack version prior to 7.10 does not support hardware profile change {{ecloud}} console and API. If you want to make change on hardware profile, upgrading to version 7.10 and onwards is required.
+::::
+
 In addtion, you can refer to below information about how these terminologies are referenced. 
-* The above API requests `https://api.elastic-cloud.com/api/v1/deployments/templates` return a list of DTs and the respective ICs referenced within each DT.
 * _Deprecated_ is also referenced as _legacy_. 
 * Using `metadata=legacy:true` to get legacy/deprecated DTs.
 * Using `hide_deprecated=true` to get active/valid DTs.
