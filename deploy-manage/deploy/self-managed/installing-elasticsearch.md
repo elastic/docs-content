@@ -108,7 +108,7 @@ If you decide to run {{es}} using a version of Java that is different from the b
 To use your own version of Java, set the `ES_JAVA_HOME` environment variable to the path to your own JVM installation. The bundled JVM is located within the `jdk` subdirectory of the {{es}} home directory. You may remove this directory if using your own JVM.
 
 :::{warning}
-Don’t use third-party Java agents that attach to the JVM. These agents can reduce {{es}} performance, including freezing or crashing nodes.
+Don’t use third-party Java agents that attach to the JVM. Such agents can be harmful to {{es}} stability and performance. In some cases they may cause nodes to freeze, crash, or fail to start up, or to lose or corrupt your data.
 :::
 
 ## Third-party dependencies [dependencies-versions]
