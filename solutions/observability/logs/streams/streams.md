@@ -37,4 +37,4 @@ Interact with and configure your stream in the following ways:
 
 - [Data retention](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size under the **Data retention** tab.
 - [Processing](./management/extract.md): Parse and extract information from log messages into dedicated fields under the **Processing** tab.
-- [Advanced](./management/advanced.md): Review and manually modify the inner workings of your stream under the advanced tab.
+- [Advanced](./management/advanced.md): Review and manually modify the inner workings of your stream under the **Advanced** tab.
