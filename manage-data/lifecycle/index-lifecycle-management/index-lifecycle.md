@@ -14,8 +14,8 @@ products:
 [{{ilm-cap}}](../index-lifecycle-management.md) ({{ilm-init}}) defines five index lifecycle *phases*:
 
 * **Hot**: The index is actively being updated and queried.
-* **Warm**: The index is no longer being updated but is still being queried.
-* **Cold**: The index is no longer being updated and is queried infrequently. The information still needs to be searchable, but it’s okay if those queries are slower.
+* **Warm**: The index is updated infrequently or not at all, but is still being queried.
+* **Cold**: The index is updated infrequently or not at all, and is also queried infrequently. The information still needs to be searchable, but it’s okay if those queries are slower.
 * **Frozen**: The index is no longer being updated and is queried rarely. The information still needs to be searchable, but it’s okay if those queries are extremely slow.
 * **Delete**: The index is no longer needed and can safely be removed.
 
