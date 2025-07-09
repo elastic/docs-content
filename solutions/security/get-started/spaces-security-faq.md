@@ -25,7 +25,7 @@ This page introduces {{elastic-sec}} Space awareness and answers frequently aske
 ## General FAQ [spaces-security-faq-general]
 **What are Spaces in {{kib}}, and how do they affect what I see?**
 
-Spaces allow your organization to segment data and configurations within {{kib}}. If you're working in a specific space, you’ll only see the policies, {{elastic-agent}}s, {{elastic-endpoint}}s, and data that belong to that space. 
+Spaces allow your organization to segment data and configurations within {{kib}}. If you're working in a specific space, you’ll only see the policies, {{agents}}, {{elastic-endpoint}}s, and data that belong to that space. 
 
 **Does this matter to me if my organization doesn't use spaces?**
 If your organization doesn't use Spaces, the only thing you need to know is that to manage Global Artifacts you need the Global Artifact management privilege.
@@ -36,7 +36,7 @@ When you upgrade your {{stack}} deployment to 9.1.0, the Global Artifact Managem
 
 Spaces are defined at the {{kib}} level. Once a space is created, {{elastic-agent}} policies can be assigned to it. To do this, go to your list of agent policies in {{fleet}} and select the policy you want to assign. Navigate to the **Settings** tab, find the **Spaces** section, and select the space(s) where you want the policy to appear.
 
-Once assigned, the {{elastic-agents}} — and {{elastic-defend}} endpoints, if applicable - associated with this policy are visible and manageable only within the designated Space(s). 
+Once assigned, the {{agents}}—and {{elastic-defend}} endpoints, if applicable—associated with this policy are visible and manageable only within the designated Space(s). 
 
 
 **Can artifacts be assigned to multiple Spaces?**
@@ -132,7 +132,7 @@ When an {{agent}} moves to a new integration policy, its response actions histor
 
 If the new integration policy is not shared with the same spaces as the prior integration policy, then some history may be hidden; you can only view response action history for integration policies you have access to in the current space.
 
-**What are orphan response actions and how can I access them?** [spaces-security-faq-orphan-response-actions]
+## What are orphan response actions and how can I access them? [spaces-security-faq-orphan-response-actions]
 “Orphan” response actions are those associated only with deleted integration policies. These response actions are not visible in the response action history log because it can't be determined whether your current space has visibility of the policy associated with the response actions.
 
 To make orphan response actions visible in a given space, you can make an API call with the space ID where you want them to appear. Below are several examples:
@@ -175,4 +175,20 @@ Response:
 ```
 :::
 
-To remove the space ID used to display the orphan response actions, this update API can be called with an empty string for spaceId.
+To remove the space ID where orphan response actions appear, call the API with an empty string for `spaceId`.
+
+**How are automated response actions impacted by Spaces?**
+Automated response actions (currently supported only for {{elastic-defend}}) work similarly to regular response actions, with a few caveats:
+
+* If you unenroll a host before the detection engine processes an event from that host, a failed response action will still be created. However, it will not appear in the UI (either as part of the alert details, or in the response actions history log) because we will be unable to determine what Policy was associated with the agent that was running on the host. These actions will become “orphan” and (as detailed above) can only be seen in the space configured to show orphaned actions
+
+* If a policy, that had automated response actions triggered for it, moves to a new space or is shared with a new space, the links displayed in the UI to the Detection engine Rule that triggered the automated response actions will display a “rule not found” page. This occurs because the Rule is space specific and not accessible in the user’s current space.
+
+How are 3rd party EDR response actions impacted by Spaces?
+Response actions for 3rd party EDR systems follow the same behaviour changes as described above. With spaces, however, each space must be configured to support the given 3rd party EDR system - example: each space must have its own connector setup.
+
+
+Will 3rd party EDR response action continue to work if I move (or shared) a policy to a new space?
+No, response actions will not work until a connector for the given 3rd party EDR is created in the space to where the policy was moved. Connectors are space specific and can not be shared or moved to a new space, thus a new instance of the connector must be created in the new space in order to support that space in sending response actions to the 3rd party system.
+
+
