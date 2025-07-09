@@ -62,7 +62,7 @@ The **Policies** list displays only the policies associated with your current sp
 
 **What are Endpoint artifacts?**
 
-Endpoint artifacts are the various configurations that can be associated with {{elastic-endpoint}}s and {{elastic-defend}} policies. These include Trusted Applications, Event Filters, Host Isolation Exceptions, and Blocklist items. Artifacts can be global (shared across all policies) or per-policy (specific to individual policies). Per-policy configuration of artifacts is available only with an Enterprise license.
+Endpoint artifacts are the various objects that can be associated with {{elastic-endpoint}}s and {{elastic-defend}} policies. These include Trusted Applications, Event Filters, Host Isolation Exceptions, and Blocklist items. Artifacts can be global (shared across all policies) or per-policy (specific to individual policies). Per-policy configuration of artifacts is available only with an Enterprise license.
 
 
 **How do global artifacts work across spaces?**
@@ -98,7 +98,7 @@ In these situations, editing may be disabled, and tooltips will provide addition
 Each artifact has a `tag` field, whose value corresponds to the owner space's ID. The format of this tag is `ownerspaceId:<space_id_here>`, for example: `ownerspaceId:default`.
 
 
-## RBAC  [spaces-security-faq-rbac]
+## RBAC [spaces-security-faq-rbac]
 
 **How does RBAC work for artifacts assigned to a particular space?**
 

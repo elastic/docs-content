@@ -17,6 +17,8 @@ products:
 
 ::::{note}
 {applies_to}`stack: ga 9.1` You can control user access to features in and managed by {{fleet}} (including {{elastic-defend}}) on a per-space basis. This granularity helps you fine-tune which components each user can access and which actions they can perform. To learn more, refer to [Fleet roles and privileges](/reference/fleet/fleet-roles-privileges.md), and [{{elastic-sec}} requirements](elastic-security-requirements.md).
+
+To learn more, refer to [Spaces and {{elastic-sec}}](spaces-security-faq.md).
 ::::
 
 For example, if you create a `SOC_prod` space in which you load and activate all the {{elastic-sec}} prebuilt detection rules, these rules and any detection alerts they generate will be accessible only when visiting the {{security-app}} in the `SOC_prod` space. If you then create a new `SOC_dev` space, you’ll notice that no detection rules or alerts are present. Any rules subsequently loaded or created here will be private to the `SOC_dev` space, and they will run independently of those in the `SOC_prod` space.
