@@ -27,7 +27,7 @@ It is necessary to stop all {{heartbeat}}/{{elastic-agent}} instances that are t
 
 To ensure the mapping is applied to all {{heartbeat}} data going forward, delete all the {{heartbeat}} indices that match the pattern the {{uptime-app}} will use.
 
-There are multiple ways to achieve this. You can read about performing this using the [Index Management UI](../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) or with the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+There are multiple ways to achieve this. You can read about performing this using the [Index Management UI](/manage-data/data-store/index-basics.md#index-management) or with the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 
 If using {{elastic-agent}} you will want to fix any issues with custom data stream mappings. We encourage the use of {{fleet}} to eliminate this issue.
 

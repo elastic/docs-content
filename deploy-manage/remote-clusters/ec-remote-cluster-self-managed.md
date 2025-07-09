@@ -122,7 +122,7 @@ If you later need to update the remote connection with different permissions, yo
 
 A deployment can be configured to trust all or specific deployments in any environment:
 
-1. From the **Security** menu, select **Remote Connections > Add trusted environment** and choose **Self-managed**, then click **Next**.
+1. From the **Security** page, select **Remote Connections > Add trusted environment** and choose **Self-managed**. Then click **Next**.
 2. Select **Certificates** as authentication mechanism and click **Next**.
 3. Upload the public certificate for the Certificate Authority of the self-managed environment (the one used to sign all the cluster certificates). The certificate needs to be in PEM format and should not contain the private key. If you only have the key in p12 format, then you can create the necessary file like this: `openssl pkcs12 -in elastic-stack-ca.p12 -out newfile.crt.pem -clcerts -nokeys`
 4. Select the clusters to trust. There are two options here depending on the subject name of the certificates presented by the nodes in your self managed cluster:
@@ -234,11 +234,6 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       ::::
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      :::{image} /deploy-manage/images/cloud-ce-copy-remote-cluster-parameters.png
-      :alt: Remote Cluster Parameters in Deployment
-      :screenshot:
-      :::
 
       ::::{note}
       If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
