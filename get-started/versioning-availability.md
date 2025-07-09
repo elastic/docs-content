@@ -39,8 +39,6 @@ Features may have different availability states between:
 | **Generally Available (GA)** | Production-ready feature (default if not specified) |
 | **Beta** | Feature is nearing general availability but not yet production-ready |
 | **Technical preview** | Feature is in early development stage |
-| **Coming** | Feature announced for a future release |
-| **Discontinued** | Feature is being phased out |
 | **Unavailable** | Feature is not supported in this deployment type or version |
 
 ### Where feature availability may differ
