@@ -1,4 +1,6 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-podman-5-migration.html
 applies_to:
   deployment:
     ece: all
