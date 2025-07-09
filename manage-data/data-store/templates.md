@@ -55,7 +55,7 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 
 ## Create index template [create-index-templates]
 
-Use the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) and [put component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) APIs to create and update index templates. You can also [manage index templates](../lifecycle/index-lifecycle-management/index-management-in-kibana.md) from Stack Management in {{kib}}.
+Use the [put index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) and [put component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) APIs to create and update index templates. You can also [manage index templates](/manage-data/data-store/index-basics.md#index-management) from Stack Management in {{kib}}.
 
 The following requests create two component templates.
 

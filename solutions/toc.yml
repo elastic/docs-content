@@ -152,7 +152,6 @@ toc:
                       - file: observability/apm/service-map.md
                       - file: observability/apm/service-overview.md
                       - file: observability/apm/mobile-service-overview.md
-                  - hidden: observability/apm/inventory.md
                   - file: observability/apm/drill-down-into-data.md
                     children:
                       - file: observability/apm/transactions-ui.md
