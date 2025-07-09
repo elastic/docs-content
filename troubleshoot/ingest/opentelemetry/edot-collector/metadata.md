@@ -15,7 +15,7 @@ products:
 
 # EDOT Collector doesn’t propagate client metadata
 
-If your EDOT Collector doesn’t propagate metadata like `project_id`, `tenant`, or `environment`, you may be misunderstanding what “client metadata” means in Elastic Distributions of OpenTelemetry (EDOT). 
+By default, the Collector only propagates transport-level metadata. If you want the EDOT Collector to propagate metadata like `project_id`, `tenant`, or `environment`, you need a specific SDK instrumentation.
 
 ### What is client metadata
 
