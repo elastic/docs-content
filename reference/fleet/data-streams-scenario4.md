@@ -39,10 +39,7 @@ PUT _component_template/docker@custom
       }
     },
     "mappings": {
-      "properties": {
-        "@timestamp": {
-          "type": "date"
-        }
+      "properties":
       }
     }
   }
