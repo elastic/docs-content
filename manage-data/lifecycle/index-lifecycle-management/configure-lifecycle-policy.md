@@ -243,7 +243,7 @@ POST /_aliases
 
 1. Replace `my-index` with the name of the initial managed index that you created previously and set `my-alias` to the rollover alias specified by `index.lifecycle.rollover_alias` in the index template.
 
-Now you can start indexing data to the rollover alias specified in the lifecycle policy. With the sample `my_policy` policy, the rollover action is triggered once the initial index exceeds 25GB. {{ilm-init}} then creates a new index that becomes the write index for the `test-alias`.
+Now you can start indexing data to the rollover alias specified in the lifecycle policy. With the sample `my_policy` policy, the rollover action is triggered once the initial index exceeds 50GB. {{ilm-init}} then creates a new index that becomes the write index for the `test-alias`.
 :::
 
 :::{tab-item} API
