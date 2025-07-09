@@ -23,7 +23,7 @@ By playing with a simple use case, you'll take the first steps toward understand
 ## Prerequisites
 
 - If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a project that is optimized for vectors. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
-- If you're [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role, such as `elastic`.
+- If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role.
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
@@ -47,7 +47,7 @@ An index is a collection of documents uniquely identified by a name or an alias.
 You can follow the guided index workflow:
 
 - If you're using {{es-serverless}}, go to **{{es}} > Home**, select the semantic search workflow, and click **Create a semantic optimized index**.
-- If you're running {{es}} locally, go to **{{es}} > Home** and click **Create API index**. Select the semantic search workflow.
+- If you're using {{ech}} or running {{es}} locally, go to **{{es}} > Home** and click **Create API index**. Select the semantic search workflow.
 
 When you complete the workflow, you will have sample data and can skip to the steps related to exploring and searching it.
 Alternatively, run the following API request in [Console](/explore-analyze/query-filter/tools/console.md):
@@ -56,7 +56,9 @@ Alternatively, run the following API request in [Console](/explore-analyze/query
 PUT /semantic-index
 ```
 
+:::{tip}
 For an introduction to the concept of indices, check out [](/manage-data/data-store/index-basics.md).
+:::
 ::::
 ::::{step} Create a semantic_text field mapping
 Each index has mappings that define how data is stored and indexed, like a schema in a relational database.
@@ -95,10 +97,7 @@ POST /_bulk?pretty
 
 The bulk ingestion might take longer than the default request timeout.
 If it times out, wait for the ELSER model to load (typically 1-5 minutes) then retry it.
-If you're using {{es-serverless}}, you can check the model state in  **{{project-settings}} > {{models-app}}**.
-<!--
-TBD: Stack app location
--->
+You can check the model state by going to the **{{models-app}}** page from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 First, the content is divided into smaller, manageable chunks to ensure that meaningful segments can be more effectively processed and searched.
 Each chunk of text is then transformed into a sparse vector by using the ELSER model's text expansion techniques.
@@ -109,7 +108,7 @@ The vectors are stored in {{es}} and are ready to be used for semantic search.
 ::::
 ::::{step} Explore the data
 
-To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or the global search field.
 
 In **Discover**, you can click the expand icon ![double arrow icon to open a flyout with the document details](/solutions/images/kibana-expand-icon.png "") to show details about documents in the table.
 
@@ -157,9 +156,7 @@ FROM semantic-index <1>
 
 When you click **▶Run**, the results appear in a table.
 Each row in the table represents a document.
-<!--
-TBD: Run the same query in Console
--->
+
 To learn more about these commands, refer to [](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) and [](/solutions/search/esql-for-search.md).
 ::::
 ::::{step} Analyze the results
@@ -180,27 +177,43 @@ FROM semantic-index METADATA _score <1>
 3. The results are sorted in descending order based on the `_score`.
 
 :::{tip}
-Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries that will help you get started.
+Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries. For more tips, check out [Using ES|QL in Discover](/explore-analyze/discover/try-esql.md).
 :::
+
+In this example, the first row in the table is the document related to Rocky Mountain National Park, which had the highest relevance score for the query:
 
 :::{image} /solutions/images/serverless-discover-semantic-esql.png
 :screenshot:
 :alt: Run an ES|QL semantic query in Discover
 :::
 
-In this example, the first row in the table is the document related to Rocky Mountain National Park, which had the highest relevance score for the query.
+Optionally, try out the same search as an API request in **Console**:
 
-For more tips, check out [Using ES|QL in Discover](/explore-analyze/discover/try-esql.md).
+```console
+POST /_query?format=txt
+{
+  "query": """
+    FROM semantic-index METADATA _score
+    | WHERE content: "best spot for rappelling"
+    | KEEP content, _score
+    | SORT _score DESC
+    | LIMIT 10
+  """
+}
+```
+
+When you finish your tests and no longer need the sample data set, delete the index:
+
+```console
+DELETE /semantic-index
+```
+
 ::::
 :::::
 
-<!--
-TBD: Delete index and stop model?
--->
-
 ## Next steps
 
-Thanks for taking the time to try out semantic search in {{es-serverless}}.
+Thanks for taking the time to try out semantic search.
 For a deeper dive, go to [](/solutions/search/semantic-search.md).
 
 If you want to extend this example, try an index with more fields.
