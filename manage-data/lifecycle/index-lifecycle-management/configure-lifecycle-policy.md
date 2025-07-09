@@ -214,7 +214,7 @@ When you set up policies for your own rolling indices, if you are not using the 
 The name of the index must match the pattern defined in the index template and end with a number. This number is incremented to generate the name of indices created by the rollover action.
 
 ::::{important}
-When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}} {{es}} output plugins, the necessary policies and configuration changes are applied automatically. If you'd like to create a specialized ILM policy for any data stream, refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md). refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
+When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}} {{es}} output plugins, the necessary policies and configuration changes are applied automatically. If you'd like to create a specialized ILM policy for any data stream, refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
 ::::
 
 ::::{tab-set}
