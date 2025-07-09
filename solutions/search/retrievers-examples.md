@@ -15,7 +15,8 @@ Learn how to combine different retrievers in these hands-on examples.
 
 ## Add example data [retrievers-examples-setup]
 
-To begin with, let's create the `retrievers_example` index, and add some documents to it. We will set `number_of_shards=1` for our examples to ensure consistent and reproducible ordering.
+To begin with, let's create the `retrievers_example` index, and add some documents to it.
+We will set `number_of_shards=1` for our examples to ensure consistent and reproducible ordering.
 
 ```console
 PUT retrievers_example
@@ -35,7 +36,11 @@ PUT retrievers_example
                }
            },
            "text": {
-               "type": "text"
+               "type": "text",
+               "copy_to": "text_semantic"
+           },
+           "text_semantic": {
+               "type": "semantic_text"
            },
            "year": {
                "type": "integer"
@@ -103,9 +108,11 @@ Now that we have our documents in place, let’s try to run some queries using r
 
 ## Example: Combining query and kNN with RRF [retrievers-examples-combining-standard-knn-retrievers-with-rrf]
 
-First, let’s examine how to combine two different types of queries: a `kNN` query and a `query_string` query. While these queries may produce scores in different ranges, we can use Reciprocal Rank Fusion (`rrf`) to combine the results and generate a merged final result list.
+First, let’s examine how to combine two different types of queries: a `kNN` query and a `query_string` query.
+While these queries may produce scores in different ranges, we can use Reciprocal Rank Fusion (`rrf`) to combine the results and generate a merged final result list.
 
-To implement this in the retriever framework, we start with the top-level element: our `rrf` retriever. This retriever operates on top of two other retrievers: a `knn` retriever and a `standard` retriever. Our query structure would look like this:
+To implement this in the retriever framework, we start with the top-level element: our `rrf` retriever.
+This retriever operates on top of two other retrievers: a `knn` retriever and a `standard` retriever. Our query structure would look like this:
 
 ```console
 GET /retrievers_example/_search
@@ -190,9 +197,13 @@ This returns the following response based on the final rrf score for each result
 
 ## Example: Hybrid search with linear retriever [retrievers-examples-linear-retriever]
 
-A different, and more intuitive, way to provide hybrid search, is to linearly combine the top documents of different retrievers using a weighted sum of the original scores. Since, as above, the scores could lie in different ranges, we can also specify a `normalizer` that would ensure that all scores for the top ranked documents of a retriever lie in a specific range.
+A different, and more intuitive, way to provide hybrid search, is to linearly combine the top documents of different retrievers using a weighted sum of the original scores.
+Since, as above, the scores could lie in different ranges, we can also specify a `normalizer` that would ensure that all scores for the top ranked documents of a retriever lie in a specific range.
 
-To implement this, we define a `linear` retriever, and along with a set of retrievers that will generate the heterogeneous results sets that we will combine. We will solve a problem similar to the above, by merging the results of a `standard` and a `knn` retriever. As the `standard` retriever’s scores are based on BM25 and are not strictly bounded, we will also define a `minmax` normalizer to ensure that the scores lie in the [0, 1] range. We will apply the same normalizer to `knn` as well to ensure that we capture the importance of each document within the result set.
+To implement this, we define a `linear` retriever, and along with a set of retrievers that will generate the heterogeneous results sets that we will combine.
+We will solve a problem similar to the above, by merging the results of a `standard` and a `knn` retriever.
+As the `standard` retriever’s scores are based on BM25 and are not strictly bounded, we will also define a `minmax` normalizer to ensure that the scores lie in the [0, 1] range.
+We will apply the same normalizer to `knn` as well to ensure that we capture the importance of each document within the result set.
 
 So, let’s now specify the `linear` retriever whose final score is computed as follows:
 
@@ -263,22 +274,22 @@ This returns the following response based on the normalized weighted score for e
             "value": 3,
             "relation": "eq"
         },
-        "max_score": -1,
+        "max_score": 3.5,
         "hits": [
             {
                 "_index": "retrievers_example",
                 "_id": "2",
-                "_score": -1
+                "_score": 3.5
             },
             {
                 "_index": "retrievers_example",
                 "_id": "1",
-                "_score": -2
+                "_score": 2.3
             },
             {
                 "_index": "retrievers_example",
                 "_id": "3",
-                "_score": -3
+                "_score": 0.1
             }
         ]
     }
@@ -288,7 +299,8 @@ This returns the following response based on the normalized weighted score for e
 ::::
 
 
-By normalizing scores and leveraging `function_score` queries, we can also implement more complex ranking strategies, such as sorting results based on their timestamps, assign the timestamp as a score, and then normalizing this score to [0, 1]. Then, we can easily combine the above with a `knn` retriever as follows:
+By normalizing scores and leveraging `function_score` queries, we can also implement more complex ranking strategies, such as sorting results based on their timestamps, assign the timestamp as a score, and then normalizing this score to [0, 1].
+Then, we can easily combine the above with a `knn` retriever as follows:
 
 ```console
 GET /retrievers_example/_search
@@ -369,27 +381,27 @@ Which would return the following results:
             "value": 4,
             "relation": "eq"
         },
-        "max_score": -1,
+        "max_score": 3.5,
         "hits": [
             {
                 "_index": "retrievers_example",
                 "_id": "3",
-                "_score": -1
+                "_score": 3.5
             },
             {
                 "_index": "retrievers_example",
                 "_id": "2",
-                "_score": -2
+                "_score": 2.0
             },
             {
                 "_index": "retrievers_example",
                 "_id": "4",
-                "_score": -3
+                "_score": 1.1
             },
             {
                 "_index": "retrievers_example",
                 "_id": "1",
-                "_score": -4
+                "_score": 0.1
             }
         ]
     }
@@ -399,6 +411,208 @@ Which would return the following results:
 ::::
 
 
+## Example: RRF with the multi-field query format [retrievers-examples-rrf-multi-field-query-format]
+```yaml {applies_to}
+stack: ga 9.1
+```
+
+There's an even simpler way to execute a hybrid search though: We can use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-query-format), which allows us to query multiple fields without explicitly specifying inner retrievers.
+
+One of the major challenges with hybrid search is normalizing the scores across matches on all field types.
+Scores from [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) and [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) fields don't always fall in the same range, so we need to normalize the ranks across matches on these fields to generate a result set.
+For example, BM25 scores from `text` fields are unbounded, while vector similarity scores from `text_embedding` models are bounded between [0, 1].
+The multi-field query format [handles this normalization for us automatically](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-grouping).
+
+The following example uses the multi-field query format to query every field specified in the `index.query.default_field` index setting, which is set to `*` by default.
+This default value will cause the retriever to query every field that either:
+
+- Supports term queries, such as `keyword` and `text` fields
+- Is a `semantic_text` field
+
+In this example, that would translate to the `text`, `text_semantic`, `year`, `topic`, and `timestamp` fields.
+
+```console
+GET /retrievers_example/_search
+{
+    "retriever": {
+        "rrf": {
+            "query": "artificial intelligence"
+        }
+    }
+}     
+```
+
+This returns the following response based on the final rrf score for each result.
+
+::::{dropdown} Example response
+```console-result
+{
+    "took": 42,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 3,
+            "relation": "eq"
+        },
+        "max_score": 0.8333334,
+        "hits": [
+            {
+                "_index": "retrievers_example",
+                "_id": "1",
+                "_score": 0.8333334
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "2",
+                "_score": 0.8333334
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "3",
+                "_score": 0.25
+            }
+        ]
+    }
+}
+```
+
+::::
+
+We can also use the `fields` parameter to explicitly specify the fields to query.
+The following example uses the multi-field query format to query the `text` and `text_semantic` fields.
+
+```console
+GET /retrievers_example/_search
+{
+    "retriever": {
+        "rrf": {
+            "query": "artificial intelligence",
+            "fields": ["text", "text_semantic"]
+        }
+    }
+}     
+```
+
+::::{note}
+The `fields` parameter also accepts [wildcard field patterns](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-wildcard-field-patterns).
+::::
+
+This returns the following response based on the final rrf score for each result.
+
+::::{dropdown} Example response
+```console-result
+{
+    "took": 42,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 3,
+            "relation": "eq"
+        },
+        "max_score": 0.8333334,
+        "hits": [
+            {
+                "_index": "retrievers_example",
+                "_id": "1",
+                "_score": 0.8333334
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "2",
+                "_score": 0.8333334
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "3",
+                "_score": 0.25
+            }
+        ]
+    }
+}
+```
+
+::::
+
+
+## Example: Linear retriever with the multi-field query format [retrievers-examples-linear-multi-field-query-format]
+```yaml {applies_to}
+stack: ga 9.1
+```
+
+We can also use the [multi-field query format](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-query-format) with the `linear` retriever.
+It works much the same way as [on the `rrf` retriever](#retrievers-examples-rrf-multi-field-query-format), with a couple key differences:
+
+- We can use `^` notation to specify a [per-field boost](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-boosting)
+- We must set the `normalizer` parameter to specify the normalization method used to combine [field group scores](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#multi-field-field-grouping)
+
+The following example uses the `linear` retriever to query the `text`, `text_semantic`, and `topic` fields, with a boost of 2 on the `topic` field:
+
+```console
+GET /retrievers_example/_search
+{
+    "retriever": {
+        "linear": {
+            "query": "artificial intelligence",
+            "fields": ["text", "text_semantic", "topic^2"],
+            "normalizer": "minmax"
+        }
+    }
+}     
+```
+
+This returns the following response based on the normalized score for each result:
+
+::::{dropdown} Example response
+```console-result
+{
+    "took": 42,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 3,
+            "relation": "eq"
+        },
+        "max_score": 2.0,
+        "hits": [
+            {
+                "_index": "retrievers_example",
+                "_id": "2",
+                "_score": 2.0
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "1",
+                "_score": 1.2
+            },
+            {
+                "_index": "retrievers_example",
+                "_id": "3",
+                "_score": 0.1
+            }
+        ]
+    }
+}
+```
+
+::::
 
 ## Example: Grouping results by year with `collapse` [retrievers-examples-collapsing-retriever-results]
 
