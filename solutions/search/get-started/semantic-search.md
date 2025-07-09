@@ -110,7 +110,7 @@ The vectors are stored in {{es}} and are ready to be used for semantic search.
 
 To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or the global search field.
 
-In **Discover**, you can click the expand icon ![double arrow icon to open a flyout with the document details](/solutions/images/kibana-expand-icon.png "") to show details about documents in the table.
+In **Discover**, you can click the expand icon {icon}`expand` to show details about documents in the table:
 
 :::{image} /solutions/images/serverless-discover-semantic.png
 :screenshot:
