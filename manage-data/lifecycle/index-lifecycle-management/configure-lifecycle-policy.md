@@ -133,10 +133,10 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
 1. On the **Logistics** page: 
     1. Specify a name for the template.
     1. Specify a pattern to match the indices you want to manage with the lifecycle policy. For example, `my-index-*`.
-    1. If you're storing continuously generated, append-only data, you can opt to create [data streams](/manage-data/data-store/data-streams.md) instead of indices for more efficient storage. If you enable this option, you can also enable **Data retention** to configure how long your indexed data is kept.
+    1. If you're storing continuously generated, append-only data, you can opt to create [data streams](/manage-data/data-store/data-streams.md) instead of indices for more efficient storage.
 
         :::{note}
-        Since you're creating an index lifecycle policy to manage indices, the  **Data retention** option should be left disabled. Data retention is applicable only if you're using a data stream lifecycle, which is an alternative to ILM. Refer to the [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) to learn more.
+        When you enable the data stream option, an option to set **Data retention** also becomes available. Since you're creating an index lifecycle policy to manage indices, the  **Data retention** option should be left disabled. Data retention is applicable only if you're using a data stream lifecycle, which is an alternative to ILM. Refer to the [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) to learn more.
         :::
 
 
