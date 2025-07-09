@@ -84,13 +84,13 @@ If you later need to update the remote connection with different permissions, yo
 ::::::{tab-item} TLS certificate (deprecated)
 ### Set the default trust with other clusters in the same {{ecloud}} organization [ec_set_the_default_trust_with_other_clusters_in_the_same_elasticsearch_service_organization]
 
-By default, any deployment that you create trusts all other deployments in the same organization. To manage this behavior in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Trust management** from the lower navigation menu. You can choose one of the following options:
+To configure this behavior in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), go to **Trust management** from the lower navigation menu. The **Trust all deployments** option is switched on by default. You can keep it switched on or switch it off.
 
-* Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ec-remote-cluster-same-ess.md#ec_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
-* Trust no deployment - New deployments won’t trust any other deployment when they are created. You can instead configure trust individually for each of them in their security settings, as described in the next section.
+* When **Trust all deployments** is switched on - All deployments trust all other deployments in the same organization, including new deployments when they are created. If you keep this setting switched on, you can jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ec-remote-cluster-same-ess.md#ec_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
+* When **Trust all deployments** is switched off - New deployments won’t trust any other deployments. Instead, you can configure trust for each of them in their security settings, as described in the next section.
 
 ::::{note}
-* The level of trust of existing deployments is not modified when you change this setting. You must instead update the trust settings individually for each deployment you wish to change.
+* The level of trust of existing deployments is not modified when you change this setting. Instead, you must update the individual trust settings for each deployment you wish to change.
 * Deployments created before the {{ecloud}} February 2021 release trust only themselves. You have to update the trust setting for each deployment that you want to either use as a remote cluster or configure to work with a remote cluster.
 
 ::::
@@ -99,22 +99,22 @@ By default, any deployment that you create trusts all other deployments in the s
 
 ### Specify the deployments trusted to be used as remote clusters [ec_specify_the_deployments_trusted_to_be_used_as_remote_clusters]
 
-If your organization’s deployments already trust each other by default, you can skip this section. If that’s not the case, follow these steps to configure which are the specific deployments that should be trusted.
+If your organization’s deployments already trust each other by default, you can skip this section. If that’s not the case, follow these steps to configure which specific deployments should be trusted.
 
 1. Go to the **Security** page of your deployment.
 2. From the list of existing trust configurations, edit the one labeled as your organization.
 3. Choose one of following options to configure the level of trust on each of your deployments:
 
-    * Trust all deployments - This deployment trusts all other deployments in this environment, including new deployments when they are created.
-    * Trust specific deployments - Choose which of the existing deployments from your environment you want to trust.
-    * Trust no deployment - No deployment in this {{ech}} environment is trusted.
+    * **All deployments** - This deployment trusts all other deployments in this environment, including new deployments when they are created.
+    * **Specific deployments** - Choose which of the existing deployments from your environment you want to trust.
+    * **None** - No deployment in this environment is trusted.
 
     ::::{note}
     When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described below.
     ::::
 
 
-1. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect 2 deployments successfully when both of them trust each other.
+1. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect two deployments successfully when both of them trust each other.
 
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
@@ -181,11 +181,6 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       ::::
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      :::{image} /deploy-manage/images/cloud-ce-copy-remote-cluster-parameters.png
-      :alt: Remote Cluster Parameters in Deployment
-      :screenshot:
-      :::
 
       ::::{note}
       If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
