@@ -37,6 +37,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Excludes {{ml}} rules from installation and upgrade checks for users with Basic or Essentials licenses [#224676]({{kib-pull}}224676).
 * Allows using days as a time unit in rule schedules, fixing an issue where durations normalized to days were incorrectly displayed as 0 seconds [#224083]({{kib-pull}}224083).
 * Strips `originId` from connectors before rule import to ensure correct ID regeneration and prevent errors when migrating connector references on rules [#223454]({{kib-pull}}223454).
+* Fixes an issue that prevented the AI Assistant Knowledge Base settings UI from displaying [#225033]({{kib-pull}}225033).
 
 ## 9.0.3 [elastic-security-9.0.3-release-notes]
 
