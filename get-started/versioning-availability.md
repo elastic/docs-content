@@ -100,14 +100,14 @@ serverless:
   - Beta for Security projects
   - Generally Available for Elasticsearch projects
 
-#### Example #3: Discontinued feature on one deployment type
+#### Example #3: Deprecated feature on one deployment type
 
 ```yaml {applies_to}
 deployment:
-  ece: discontinued 4.1.0
+  ece: deprecated 4.1.0
 ```
 - **Deployment type**: Elastic Cloud Enterprise
-- **Lifecycle**: Discontinued
+- **Lifecycle**: Deprecated
 - **Version**: 4.1.0
 
 :::{tip}
