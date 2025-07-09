@@ -102,7 +102,7 @@ The specified policy will be replaced and the policy version is incremented.
 You can change an index to be managed by a different {{ilm-init}} policy.
 
 :::::{warning}
-\When you remove an ILM policy, all {{ilm-init}} metadata is removed from the managed index without consideration of the index’s lifecycle status. This can leave indices in an undesired state.
+When you remove an ILM policy, all {{ilm-init}} metadata is removed from the managed index without consideration of the index’s lifecycle status. This can leave indices in an undesired state.
 
 For example, in certain cases the [`forcemerge`](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
 :::::
