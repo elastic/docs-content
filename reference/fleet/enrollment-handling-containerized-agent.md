@@ -1,4 +1,4 @@
-# Enrollment handing for containerized agents
+# Enrollment handling for containerized agents
 
 For {{fleet}}-managed {{agents}} that run in a containerized environment (including Docker, Kubernetes, and others), enrollment handling is managed as follows:
 
