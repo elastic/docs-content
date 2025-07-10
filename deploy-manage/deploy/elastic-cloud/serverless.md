@@ -65,21 +65,21 @@ To learn more about serverless status, see [Service status](../../cloud-organiza
 
 The following FAQ addresses common questions about using Elastic serverless projects.
 
-### Pricing and Availability
+### Pricing and availability
 **Q: Where can I learn about pricing for serverless?**  
 A: See {{serverless}} pricing information for [Search](https://www.elastic.co/pricing/serverless-search), [Observability](https://www.elastic.co/pricing/serverless-observability), and [Security](https://www.elastic.co/pricing/serverless-security).
 
 **Q: In which cloud regions is Elastic’s serverless offering available?**  
 A: Elastic serverless projects are available in select AWS regions, with plans to expand to more regions and cloud providers. For the latest list, refer to the [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md).
 
-### Data Management
+### Data management
 **Q: How can I move data to or from serverless projects?**  
 A: We are working on data migration tools! In the interim, [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from serverless projects.
 
 **Q: Can I request backups or restores for my projects?**  
 A: It is not currently possible to request backups or restores for projects, but we are working on data migration tools to better support this.
 
-### Security, Compliance, and Access
+### Security, compliance, and access
 **Q: How can I create serverless service accounts?**  
 A: Create API keys for service accounts in your serverless projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
 
