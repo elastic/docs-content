@@ -10,6 +10,7 @@ toc:
           - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
             children:
+              - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
       - file: search/api-quickstarts.md
         children:
