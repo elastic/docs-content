@@ -302,3 +302,4 @@ subs:
   cloud-serverless-apis: https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/
   ece-apis: https://www.elastic.co/docs/api/doc/cloud-enterprise/
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
+  models-app: "Trained Models"
