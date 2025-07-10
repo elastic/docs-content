@@ -61,7 +61,7 @@ stack: ga 9.1
 serverless: ga
 ```
 
-LTR models can also be used as a [retriever](../retrievers-overview.md) in the search pipeline by utilizing a [rescorer retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rescorer-retriever) as shown in the following example:
+LTR models can also be used as a [retriever](../retrievers-overview.md) in the search pipeline. You can implement this with a [rescorer retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rescorer-retriever) as shown in the following example:
 
 ```console
 GET my-index/_search
