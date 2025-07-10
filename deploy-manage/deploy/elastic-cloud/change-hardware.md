@@ -12,7 +12,7 @@ products:
 
 ## Consideration [ec-consideration-on-changing-ic]
 
-The virtual hardware on which {{stack}} deployments run is defined by instance configurations. Review [Hardware profile](./ec-change-hardware-profile.md#ec-hardware-profile) and [Instance configurations](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for more information about hardware profile and instance configuration respectively.
+{{stack}} deployments run on virtual hardware defined by instance configurations. For more details, refer to [Hardware profiles](./ec-change-hardware-profile.md#ec-hardware-profile) and [Instance configurations](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) documents.
 
 When a deployment is created, each {{es}} tier and stateless resource (e.g., Kibana) gets an instance configuration assigned to it, based on the hardware profile used. The combination of instance configurations defined within each hardware profile is designed to provide the best possible outcome for each use case. Therefore, it is not advisable to use instance configurations that are not specified on the hardware profile, except in specific situations in which we may need to migrate an {{es}} tier or stateless resource to a different hardware type. An example of such a scenario is when a cloud provider stops supporting a hardware type in a specific region.
 
