@@ -31,7 +31,7 @@ If you're installing {{elastic-defend}} on macOS, the following instructions app
 :::{dropdown} Steps to install {{elastic-defend}}
 1. On the **Get started** home page, in the **Ingest your data** section, select **{{elastic-defend}}**, then click **Add {{elastic-defend}}**.  
 2. On the next page that says, "Ready to add your first integration?", click **Add integration only (skip agent installation)**. The integration configuration page appears.
-3. Give the {{elastic-defend}} integration a name and optional description.
+3. Give the {{elastic-defend}} integration a name and enter an optional description.
 4. Select the type of environment you want to protect — **Traditional Endpoints** or **Cloud Workloads**. For this guide , we'll select **Traditional Endpoints**. 
 5. Select a configuration preset, which will differ based on your prior selection. Each preset comes with different default settings for {{agent}}, which you can further customize later by [configuring the {{elastic-defend}} integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md). For optimal endpoint protection, we recommend selecting **Complete EDR (Endpoint, Detection & Response)**. 
 6. Enter a name for the agent policy in the **New agent policy name** field.
