@@ -33,6 +33,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves logging of fatal exceptions in {{elastic-endpoint}}.
 
 ### Fixes [elastic-security-9.0.4-fixes]
+* Fixes differences between risk scoring preview and persisted risk scores [#226456]({{kib-pull}}226456).
 * Updates a placeholder and validation message in the **Related Integrations** section of the rule upgrade flyout [#225775]({{kib-pull}}225775).
 * Excludes {{ml}} rules from installation and upgrade checks for users with Basic or Essentials licenses [#224676]({{kib-pull}}224676).
 * Allows using days as a time unit in rule schedules, fixing an issue where durations normalized to days were incorrectly displayed as 0 seconds [#224083]({{kib-pull}}224083).
