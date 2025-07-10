@@ -7,12 +7,11 @@ toc:
         children:
           - file: search/run-elasticsearch-locally.md
           - file: search/serverless-elasticsearch-get-started.md
-            children:
-              - file: search/serverless-elasticsearch-get-started-vector.md
           - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
             children:
               - file: search/get-started/semantic-search.md
+              - file: search/get-started/vector-search.md
       - file: search/api-quickstarts.md
         children:
           - file: search/elasticsearch-basics-quickstart.md
