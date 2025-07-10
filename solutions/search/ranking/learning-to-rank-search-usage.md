@@ -56,6 +56,11 @@ GET my-index/_search
 
 ## Learning To Rank as a retriever [learning-to-rank-retriever]
 
+```{applies_to}
+stack: ga 9.1
+serverless ga
+```
+
 LTR models can also be used as a [retriever](../retrievers-overview.md) in the search pipeline by utilizing a [rescorer retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#rescorer-retriever) as shown in the following example:
 
 ```console
