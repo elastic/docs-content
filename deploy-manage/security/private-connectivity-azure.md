@@ -70,10 +70,10 @@ The process of setting up the private connection with Azure Private link is spli
 | 1. [Create a private endpoint using {{ecloud}} service alias](#ec-private-link-azure-dns). |  |
 | 2. [Create a DNS record pointing to the private endpoint](#ec-private-link-azure-dns). |  |
 |  | 3. [Create a private connection policy](#ec-azure-allow-traffic-from-link-id). |
-|  | 4. [Associate the Azure private connection policy with your deployments](#ec-associate-traffic-filter-private-link-rule-set). |
+|  | 4. [Associate the Azure private connection policy with your deployments](#associate-private-connection-policy). |
 |  | 5. [Interact with your deployments over Private Link](#ec-azure-access-the-deployment-over-private-link). |
 
-After you create your private connection policy, you can [edit](#ec-azure-edit-traffic-filter-private-link-rule-set), [disassociate](#remove-filter-deployment), or [delete](#ec-azure-delete-traffic-filter-private-link-rule-set) it.
+After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 ### Create your private endpoint and DNS entries in Azure [ec-private-link-azure-dns]
 
@@ -111,9 +111,9 @@ Follow these high-level steps to add a private connection policy that can be ass
 
 1. [Find your private endpoint resource name](#ec-find-your-resource-name).
 2. [Find your private endpoint resource ID](#ec-find-your-resource-id).
-3. [Create policies using the Private Link Endpoint resource ID](#ec-azure-create-traffic-filter-private-link-rule-set).
+3. [Create policies using the Private Link Endpoint resource ID](#create-private-connection-policy).
 4. [Test the connection](#test-the-connection).
-5. [Associate the private endpoint with your deployment](#ec-associate-traffic-filter-private-link-rule-set).
+5. [Associate the private endpoint with your deployment](#associate-private-connection-policy).
 
 ### Find your private endpoint resource name [ec-find-your-resource-name]
 
@@ -138,7 +138,7 @@ Follow these high-level steps to add a private connection policy that can be ass
 :::
 
 
-### Create a policy using the Private Link Endpoint resource [ec-azure-create-traffic-filter-private-link-rule-set]
+### Create a policy using the Private Link Endpoint resource [create-private-connection-policy]
 
 When you have your private endpoint name and ID, you can create a private connection policy.
 
@@ -182,7 +182,7 @@ The Private Link connection will be approved automatically after the private con
 
 Creating the policy approves the Private Link connection.
 
-After the private link connection is approved, you can optionally [test the connection](#test-the-connection), and then [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
+After the private link connection is approved, you can optionally [test the connection](#test-the-connection), and then [associate the policy](#associate-private-connection-policy) with your deployment.
 
 ### Test the connection
 
@@ -247,7 +247,7 @@ $ curl -v https://my-deployment-d53192.es.privatelink.eastus2.azure.elastic-clou
 curl: (7) Failed to connect to my-deployment-d53192.es.privatelink.eastus2.azure.elastic-cloud.com port 9243: No route to host
 ```
 
-### Associate a private connection policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
+### Associate a private connection policy with a deployment [associate-private-connection-policy]
 
 You can associate a private connection policy with your deployment from the policy's settings, or from your deployment's settings. 
 
@@ -341,7 +341,7 @@ This means your deployment on {{ecloud}} can be in a different region than the P
     1. Create your Private Link Endpoint using the service alias for region 2 in the region 1 VNET (let’s call this VNET1).
     2. Create a Private Hosted Zone for region 2, and associate it with VNET1 similar to the step [Create a Private Link endpoint and DNS](#ec-private-link-azure-dns). Note that you are creating these resources in region 1, VNET1.
 
-2. [Create a private connection policy](#ec-azure-create-traffic-filter-private-link-rule-set) in the region where your deployment is hosted, and [associate it](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
+2. [Create a private connection policy](#create-private-connection-policy) in the region where your deployment is hosted, and [associate it](#associate-private-connection-policy) with your deployment.
    
 3. [Test the connection](#ec-azure-access-the-deployment-over-private-link) from a VM or client in region 1 to your Private Link endpoint, and it should be able to connect to your {{es}} cluster hosted in region 2.
 
@@ -349,7 +349,7 @@ This means your deployment on {{ecloud}} can be in a different region than the P
 
 After you create your private connection policy, you can edit it, remove it from your deployment, or delete it.
 
-### Edit a private connection policy [ec-azure-edit-traffic-filter-private-link-rule-set]
+### Edit a private connection policy [edit-private-connection-policy]
 
 You can edit a policy's name, description, VPC endpoint ID, and more.
 
@@ -362,7 +362,7 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 You can also edit network security policies from your deployment's **Security** page or your project's **Network security** page.
 :::
 
-### Remove a private connection policy from your deployment [remove-filter-deployment]
+### Remove a private connection policy from your deployment [remove-private-connection-policy]
 
 If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
@@ -382,7 +382,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
 7. Click **Update** to save your changes.
 
-### Delete a private connection policy [ec-azure-delete-traffic-filter-private-link-rule-set]
+### Delete a private connection policy [delete-private-connection-policy]
 
 If you need to remove a policy, you must first remove any associations with deployments.
 

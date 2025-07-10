@@ -58,7 +58,7 @@ The steps, information, and authentication method required to configure CCS and 
     * [From an ECK environment](ece-enable-ccs-for-eck.md)
 
 
-## Remote clusters and network security [ece-ccs-ccr-traffic-filtering]
+## Remote clusters and network security [ece-ccs-ccr-network-security]
 
 ::::{note}
 Network security isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.

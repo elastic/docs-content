@@ -17,10 +17,10 @@ When using {{ecloud}}, there are some limitations you should be aware of:
 * [Transport client](#ec-restrictions-transport-client)
 * [{{es}} and {{kib}} plugins](#ec-restrictions-plugins)
 * [Watcher](#ec-restrictions-watcher)
-* [Private Link and SSO to {{kib}} URLs](#ec-restrictions-traffic-filters-kibana-sso)
-* [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-traffic-filters-watcher)
+* [Private connectivity and SSO to {{kib}} URLs](#ec-restrictions-network-security-kibana-sso)
+* [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-network-security-watcher)
 * [Kibana](#ec-restrictions-kibana)
-* [Fleet with network security](#ec-restrictions-fleet-traffic-filters)
+* [Fleet with network security](#ec-restrictions-fleet-network-security)
 * [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
@@ -84,12 +84,12 @@ Watcher comes preconfigured with a directly usable email account provided by Ela
 Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
-## Private connectivity and SSO to {{kib}} URLs [ec-restrictions-traffic-filters-kibana-sso]
+## Private connectivity and SSO to {{kib}} URLs [ec-restrictions-network-security-kibana-sso]
 
-Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by private connectivity. However, you can still SSO into Private connectivity-protected {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
+Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} endpoints that are protected by private connections. However, you can still SSO into private {{kib}} endpoints individually using the [SAML](../../users-roles/cluster-or-deployment-auth/saml.md) or [OIDC](../../users-roles/cluster-or-deployment-auth/openid-connect.md) protocol from your own identity provider, just not through the {{ecloud}} console. Stack level authentication using the {{es}} username and password should also work with `{{kibana-id}}.{vpce|privatelink|psc}.domain` URLs.
 
 
-## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-traffic-filters-watcher]
+## PDF report generation using Alerts or Watcher webhooks [ec-restrictions-network-security-watcher]
 
 * PDF report automatic generation via Alerts is not possible on {{ecloud}}.
 * PDF report generation isn’t possible for deployments running on {{stack}} version 8.7.0 or before that are protected by network security. This limitation doesn’t apply to public webhooks such as Slack, PagerDuty, and email. For deployments running on {{stack}} version 8.7.1 and beyond, [PDF report automatic generation via Watcher webhook](../../../explore-analyze/report-and-share/automating-report-generation.md#use-watcher) is possible using the `xpack.notification.webhook.additional_token_enabled` configuration setting to bypass network security.
@@ -100,7 +100,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into {{kib}} end
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
 * Running an external {{kib}} in parallel to {{ecloud}}’s {{kib}} instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
-## Fleet with network security [ec-restrictions-fleet-traffic-filters]
+## Fleet with network security [ec-restrictions-fleet-network-security]
 
 * If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has network security enabled is not currently supported.
 

@@ -14,26 +14,26 @@ products:
 navigation_title: Through the API
 ---
 
-# Manage network security through the API [ec-traffic-filtering-through-the-api]
+# Manage network security through the API
 
 This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful API, or {{serverless-full}} RESTful API or to manage different types of network security policies and rules. 
 
 We cover the following examples:
 
-* [Create an IP filter policy or rule set](#ec-create-a-traffic-filter-rule-set)
+* [Create an IP filter policy or rule set](#create-ip-filter-policy)
 
-  * [Ingress](#ec-ip-traffic-filters-ingress-rule-set)
-  * [Egress](#ec-ip-traffic-filters-egress-rule-set) {applies_to}`ess: beta`
+  * [Ingress](#ip-filter-policy-ingress)
+  * [Egress](#ip-filter-policy-egress) {applies_to}`ess: beta`
   
 * [Create a private connection policy](#private-connection) {applies_to}`ess:`
-  * [AWS Privatelink](#ec-aws-privatelink-traffic-filters-rule-set)
-  * [Azure Private Link](#ec-azure-privatelink-traffic-filters-rule-set)
-  * [GCP Private Service Connect](#ec-gcp-private-service-connect-traffic-filters-rule-set)
+  * [AWS Privatelink](#private-connection-policy-aws)
+  * [Azure Private Link](#private-connection-policy-azure)
+  * [GCP Private Service Connect](#private-connection-policy-gcp)
 
-* [Update a policy or rule set](#ec-update-a-traffic-filter-rule-set)
-* [Associate a policy or rule set with a project or deployment](#ec-associate-rule-set-with-a-deployment)
-* [Remove a policy or rule set from a project or deployment](#ec-delete-rule-set-association-with-a-deployment)
-* [Delete a policy or rule set](#ec-delete-a-rule-set)
+* [Update a policy or rule set](#update-policy-rs)
+* [Associate a policy or rule set with a project or deployment](#associate-policy-rs-with-deployment)
+* [Remove a policy or rule set from a project or deployment](#delete-policy-rs-association-with-deployment)
+* [Delete a policy or rule set](#delete-policy-rs)
 
 Refer to [](network-security.md) to learn more about network security across all deployment types.
 
@@ -63,10 +63,10 @@ In {{ecloud}}, terminology related to network security has changed to more accur
 | VPC filter | Private link filter source |
 
 
-## Create an IP filter policy or rule set [ec-create-a-traffic-filter-rule-set]
+## Create an IP filter policy or rule set [create-ip-filter-policy]
 
 
-### Ingress [ec-ip-traffic-filters-ingress-rule-set]
+### Ingress [ip-filter-policy-ingress]
 
 Send a request like the following to create an IP filter ingress policy or rule set:
 
@@ -177,7 +177,7 @@ If the request is successful, a response containing an ID for the policy or rule
 ```
 
 
-### Egress [ec-ip-traffic-filters-egress-rule-set]
+### Egress [ip-filter-policy-egress]
 ```{applies_to}
 deployment:
   ess: beta
@@ -241,7 +241,7 @@ A private connection policy is required to establish a private connection with A
 :::
 
 
-### AWS Privatelink [ec-aws-privatelink-traffic-filters-rule-set]
+### AWS Privatelink [private-connection-policy-aws]
 
 Send a request like the following to create an AWS PrivateLink private connection policy:
 
@@ -269,7 +269,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 1. To learn how to find the value for `source` for type `vpce`, refer to [Find your VPC endpoint ID](private-connectivity-aws.md#ec-find-your-endpoint). This setting is supported only in AWS regions.
 
 
-### Azure Private Link [ec-azure-privatelink-traffic-filters-rule-set]
+### Azure Private Link [private-connection-policy-azure]
 
 Send a request like the following to create an Azure Private Link private connection policy:
 
@@ -298,7 +298,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 1. To learn how to find the value for `azure_endpoint_name` and `azure_endpoint_guid` for type `azure_private_endpoint`, refer to [Find your private endpoint resource name](private-connectivity-azure.md#ec-find-your-resource-name) and [Find your private endpoint resource ID](private-connectivity-azure.md#ec-find-your-resource-id). This setting is supported only in Azure regions.
 
 
-### GCP Private Service Connect [ec-gcp-private-service-connect-traffic-filters-rule-set]
+### GCP Private Service Connect [private-connection-policy-gcp]
 
 Send a request like the following to create a GCP Private Service Connect private connection policy:
 
@@ -326,7 +326,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 1. To find the value for `source` for type `gcp_private_service_connect_endpoint`, check [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
 
 
-## Update a policy or rule set [ec-update-a-traffic-filter-rule-set]
+## Update a policy or rule set [update-policy-rs]
 
 Send a request like the following to update an IP filter ingress policy or rule set:
 
@@ -414,7 +414,7 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 ::::
 
 
-## Associate a policy or rule set with a project or deployment [ec-associate-rule-set-with-a-deployment]
+## Associate a policy or rule set with a project or deployment [associate-policy-rs-with-deployment]
 
 Send a request like the following to associate a policy or rule set with a project or deployment:
 
@@ -485,7 +485,7 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 :::::
 
 
-## Remove a policy or rule set from a project or deployment [ec-delete-rule-set-association-with-a-deployment]
+## Remove a policy or rule set from a project or deployment [delete-policy-rs-association-with-deployment]
 
 Send a request like the following to remove a policy or rule set from a project or deployment:
 
@@ -541,7 +541,7 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 ::::
 
 
-## Delete a policy or rule set [ec-delete-a-rule-set]
+## Delete a policy or rule set [delete-policy-rs]
 
 Send a request like the following to delete a policy or rule set:
 

@@ -103,7 +103,7 @@ Check the following sections to learn more about the Azure Native ISV Service:
 * **Troubleshooting**
 
     * [I receive an error message about not having required authorization.](#azure-integration-authorization-access)
-    * [My {{ecloud}} deployment creation failed.](#azure-integration-deployment-failed-traffic-filter)
+    * [My {{ecloud}} deployment creation failed.](#azure-integration-deployment-failed-network-security)
     * [I can’t SSO into my {{ecloud}} deployment.](#azure-integration-failed-sso)
     * [I see some deployments in the {{ecloud}} console but not in the Azure Portal.](#azure-integration-cant-see-deployment)
     * [My {{ecloud}} Azure Native ISV Service logs are not being ingested.](#azure-integration-logs-not-ingested)
@@ -451,7 +451,7 @@ $$$azure-integration-authorization-access$$$I receive an error message about not
     Elastic is not currently integrated with Azure user management, so sharing deployment resources through the Cloud console with other Azure users is not possible. However, sharing direct access to these resources is possible. For details, check [Is the {{ecloud}} Azure Native ISV Service connected with Azure user management?](#azure-integration-azure-user-management).
 
 
-$$$azure-integration-deployment-failed-traffic-filter$$$My {{ecloud}} deployment creation failed.
+$$$azure-integration-deployment-failed-network-security$$$My {{ecloud}} deployment creation failed.
 :   When creating a new {{ecloud}} deployment, the deployment creation may fail with a `Your deployment failed` error. The process results with a status message such as:
 
     ```txt

@@ -8,7 +8,7 @@ products:
   - id: observability
 ---
 
-# Use Synthetics with network-security [synthetics-traffic-filters]
+# Use Synthetics with network security
 
 If you are setting up Synthetics for a deployment configured with [network security](/deploy-manage/security/network-security.md), specifically IP filters or VCP filters, none of your results will be visible in the {{synthetics-app}} until permission to write the results to {{es}} is explicitly granted.
 
@@ -44,7 +44,7 @@ Note that as regions are added, this list will change. Similarly existing region
 
 If you’re running tests from [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), you will have the {{agent}} installed on host machines that run the tests. You need to obtain the address ranges for these machines. This needs to be the IP address that the host is making the connection from into the {{es}} cluster. This *might not* be the IP address bound to the network interface of the host machine, but the proxy or other address based on your network configuration.
 
-## Add the IP filter [_add_the_traffic_filter]
+## Add the IP filter [_add_the_ip_filter]
 
 Once you know the CIDR blocks for your testing sources, add them to your {{es}} deployment. Find detailed instructions in the [](/deploy-manage/security/ip-filtering.md) docs.
 
