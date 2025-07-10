@@ -61,7 +61,7 @@ Serverless projects run on cloud platforms, which may undergo changes in availab
 
 To learn more about serverless status, see [Service status](../../cloud-organization/service-status.md).
 
-## Frequently Asked Questions (FAQ) about Elastic Serverless Projects {#serverless-faq}
+## Frequently Asked Questions (FAQ) about Elastic Serverless Projects [general-what-is-serverless-elastic-answers-to-common-serverless-questions]
 
 The following FAQ addresses common questions about using Elastic serverless projects.
 
