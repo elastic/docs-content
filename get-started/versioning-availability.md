@@ -39,8 +39,6 @@ Features may have different availability states between:
 | **Generally Available (GA)** | Production-ready feature (default if not specified) |
 | **Beta** | Feature is nearing general availability but not yet production-ready |
 | **Technical preview** | Feature is in early development stage |
-| **Coming** | Feature announced for a future release |
-| **Discontinued** | Feature is being phased out |
 | **Unavailable** | Feature is not supported in this deployment type or version |
 
 ### Where feature availability may differ
@@ -100,14 +98,14 @@ serverless:
   - Beta for Security projects
   - Generally Available for Elasticsearch projects
 
-#### Example #3: Discontinued feature on one deployment type
+#### Example #3: Deprecated feature on one deployment type
 
 ```yaml {applies_to}
 deployment:
-  ece: discontinued 4.1.0
+  ece: deprecated 4.1.0
 ```
 - **Deployment type**: Elastic Cloud Enterprise
-- **Lifecycle**: Discontinued
+- **Lifecycle**: Deprecated
 - **Version**: 4.1.0
 
 :::{tip}
