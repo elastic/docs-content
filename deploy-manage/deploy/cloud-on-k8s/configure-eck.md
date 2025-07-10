@@ -29,7 +29,13 @@ To configure ECK settings, follow the instructions in the next sections dependin
 
 If you installed ECK through the Helm chart commands listed in [](./install-using-helm-chart.md), add your configuration parameters under the `config` key in your values file, or set them inline using the equivalent `--set config.<setting-name>=<value>` flags when updating or installing the release.
 
-For example, to add the `caValidity` setting with a value of `43800h`, you can use any of the following methods:
+Note that the Helm chart uses its own configuration parameters rather than the actual ECK parameters that are described in [{{eck}} configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md). To view all configurable values in the Helm chart for the ECK operator, run the following command:
+
+```sh
+helm show values elastic/eck-operator
+```
+
+For example, the parameter `caValidity` in the Helm chart corresponds to the `ca-cert-validity` ECK parameter. To add the `caValidity` setting with a value of `43800h`, you can use either of the following methods:
 
 ### Option 1: Use a values file and reference it in the helm upgrade command:
 
@@ -40,14 +46,6 @@ config:
   caValidity: 43800h
 ```
 
-:::{tip}
-To view all configurable values for the ECK operator, run the following:
-
-```sh
-helm show values elastic/eck-operator
-```
-:::
-
 Then, update the installed release pointing to the values file:
 
 ```sh
@@ -57,7 +55,7 @@ helm upgrade elastic-operator elastic/eck-operator -f my-values-file.yaml -n ela
 ### Option 2: Use `--set` in the helm upgrade command
 
 ```sh
-helm upgrade elastic-operator elastic/eck-operator --set config.ca-cert-validity=43800h -n elastic-system
+helm upgrade elastic-operator elastic/eck-operator --set config.caValidity=43800h -n elastic-system
 ```
 
 ## Using the operator YAML manifests
