@@ -216,7 +216,14 @@ redirects:
   'deploy-manage/security/traffic-filtering.md': 'deploy-manage/security/network-security.md'
   'deploy-manage/security/private-link-traffic-filters.md': 'deploy-manage/security/private-connectivity.md'
   'deploy-manage/security/ip-traffic-filtering.md': 'deploy-manage/security/ip-filtering.md'
-  'deploy-manage/security/gcp-private-service-connect-traffic-filters.md': 'deploy-manage/security/private-connectivity-gcp.md'
+  'deploy-manage/security/gcp-private-service-connect-traffic-filters.md': 
+    to: 'deploy-manage/security/private-connectivity-gcp.md'
+    anchors:
+      'ec-psc-create-traffic-filter-psc-rule-set': 'create-private-connection-policy'
+      'ec-psc-associate-traffic-filter-psc-rule-set': 'associate-private-connection-policy'
+      'ec-edit-traffic-filter-psc-rule-set': 'edit-private-connection-policy'
+      'remove-filter-deployment': 'remove-private-connection-policy'
+      'ec-delete-traffic-filter-psc-rule-set': 'delete-private-connection-policy'
   'deploy-manage/security/aws-privatelink-traffic-filters.md': 
     to: 'deploy-manage/security/private-connectivity-aws.md'
     anchors:
@@ -232,6 +239,7 @@ redirects:
       'ec-azure-edit-traffic-filter-private-link-rule-set': 'edit-private-connection-policy'
       'remove-filter-deployment': 'remove-private-connection-policy'
       'ec-azure-delete-traffic-filter-private-link-rule-set': 'delete-private-connection-policy'
+      ec-azure-create-traffic-filter-private-link-rule-set': 'create-private-connection-policy'
   'deploy-manage/security/ec-traffic-filtering-through-the-api.md': 
     to: 'deploy-manage/security/network-security-api.md'
     anchors:
