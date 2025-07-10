@@ -106,4 +106,5 @@ volumes:
 
 1. By default the manifests for {{agent}} managed by {{fleet}} have `hostNetwork:true`. In order to support multiple installations of {{agent}}s in the same node you should set `hostNetwork:false`. See this relevant [example](https://github.com/elastic/elastic-agent/tree/main/docs/manifests/hostnetwork) as described in [{{agent}} Manifests in order to support Kube-State-Metrics Sharding](https://github.com/elastic/elastic-agent/blob/main/docs/elastic-agent-ksm-sharding.md).
 2. The volume `/usr/share/elastic-agent/state` must remain mounted in [elastic-agent-managed-kubernetes.yaml](https://github.com/elastic/elastic-agent/blob/main/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml), otherwise custom config map provided above will be overwritten.
+3. If {{agent}} is deployed through ECK, you can define the provider configuration in the `spec.config` field of the Kubernetes custom resource. Refer to [{{fleet}}-managed {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/configuration-fleet.md) for details.
 
