@@ -62,7 +62,7 @@ For most cases, the preferred version is the **Intel and Linux optimized** model
 
 #### Using the Trained Models page [trained-model-e5]
 
-1. In {{kib}}, navigate to the **Trained Models** page from the main menu (**{{stack-manage-app}} > {{ml-app}} > Trained models**), from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). E5 can be found in the list of trained models. There are two versions available: one portable version which runs on any hardware and one version which is optimized for Intel® silicon. You can see which model is recommended to use based on your hardware configuration.
+1. In {{kib}}, navigate to the **Trained Models** page from the main menu (**{{stack-manage-app}} > {{ml-app}} > Trained models**), or use the [global search field](../../find-and-organize/find-apps-and-objects.md). E5 can be found in the list of trained models. There are two versions available: one portable version which runs on any hardware and one version which is optimized for Intel® silicon. You can see which model is recommended to use based on your hardware configuration.
 2. Click the **Add trained model** button. Select the E5 model version you want to use in the opening modal window. The model that is recommended for you based on your hardware configuration is highlighted. Click **Download**. You can check the download status on the **Notifications** page.
 
     :::{image} /explore-analyze/images/machine-learning-ml-nlp-e5-download.png
