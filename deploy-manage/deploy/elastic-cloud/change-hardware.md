@@ -12,7 +12,7 @@ products:
 
 This document explains how to modify the instance configurations used by specific components of your deployment without changing the overall hardware profile assigned to the deployment. This advanced configuration scenario is useful when specific situations in which we may need to migrate an Elasticsearch tier or stateless resource to a different hardware type.
 
-## Consideration
+## Consideration [ec-considerations-on-changing-ic]
 
 {{stack}} deployments run on virtual hardware defined by instance configurations. For more details, refer to [Hardware profiles](./ec-change-hardware-profile.md#ec-hardware-profile) and [Instance configurations](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) documents.
 
