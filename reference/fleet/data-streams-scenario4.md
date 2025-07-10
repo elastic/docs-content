@@ -53,6 +53,6 @@ To apply the ILM policy:
 
 - Bump the version of your custom package.
 
-- Reinstall or upgrade the package using the Fleet UI or Developer Console.
+- Reinstall or upgrade the package using the {{fleet}} UI or Developer Console.
 
 After the ILM policy from `docker` has been deployed, it applies to all data streams in the package.
