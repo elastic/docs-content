@@ -83,7 +83,7 @@ A: It is not currently possible to request backups or restores for projects, but
 **Q: How can I create serverless service accounts?**  
 A: Create API keys for service accounts in your serverless projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
 
-### Project Lifecycle and Support
+### Project lifecycle and support
 **Q: How does serverless ensure compatibility between software versions?**  
 A: Connections and configurations are unaffected by upgrades. To ensure compatibility between software versions, quality testing and API versioning are used.
 
