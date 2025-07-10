@@ -27,7 +27,7 @@ The {{ecloud}} console indicates when a new version of a hardware profile is ava
 ## Change the hardware profile using the {{ecloud}} console [ec_change_the_hardware_profile_using_the_elastic_cloud_console]
 
 ::::{note}
-Deployment with Elastic stack version prior to 7.10 does not support hardware profile change {{ecloud}} console and API. If you want to make change on hardware profile, upgrading to version 7.10 and onwards is required.
+Deployments using {{stack}} versions prior to 7.10 do not support changing the hardware profile through the {{ecloud}} console or API. To change the hardware profile, first upgrade to version 7.10 or later.
 ::::
 
 
