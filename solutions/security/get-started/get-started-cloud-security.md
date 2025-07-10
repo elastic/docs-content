@@ -9,9 +9,12 @@ products:
 
 # Quickstart: Secure your cloud assets with cloud security posture management
 
+In this quickstart guide, you'll learn how to get started with Elastic Security for Cloud Security so you can monitor, detect, and investigate anomalous activity within cloud environments.
+
+
 ## Prerequisites 
 
-* An admin account for the cloud service provider (CSP) you want to use 
+* An admin account for the cloud service provider (CSP) you want to use.  
 
 
 ## Add the Cloud Security Posture Management integration 
@@ -29,44 +32,53 @@ To add the CSPM integration:
 7. Expand the Steps to Generate AWS Account Credentials, and follow the instructions. 
 8. Once you've generated an Access Key ID and Secret Access Key and pasted the credentials, click **Save and continue** to complete deployment. Your data should start to appear within a few minutes.
 
+:::{image} /solutions/images/security-gs-cloudsec-cspm.png
+:alt: Cloud Security Posture management integration
+:screenshot:
+:::
+
 % insert image 
 
-Keep in mind that you'll need to do additional configurations if you'd like to enable Cloud Native Vulnerability Management. This isn't needed to get started, but for more information, check out our documentation.
+:::{{{note}}}
+Consider also adding the Cloud Native Vulnerability Management (CNVM) integration, which identifies vulnerabilities in your cloud workloads.
+:::
 
-Security cspm - integration installed.png
-Cloud Posture Dashboard
-The Cloud Posture dashboard summarizes the overall security posture of your cloud environments.
+## View the Cloud Security Posture dashboard
 
-Number of accounts you've enrolled
-Number of resources evaluated
-Failed findings
-Your posture score tells you how securely configured your overall cloud environment is.
+The Cloud Posture dashboard summarizes your cloud infrastructure's overall performance against security guidelines defined by the Center for Internet Security (CIS). It shows configuration risk metrics for all of your monitored cloud accounts and Kubernetes clusters and groups them by specific parameters. All configuration risks the integration identifies are listed on the **Findings** page. 
 
-Security cspm - dashboard.png
+The dashboard also shows your overall compliance score, and your compliance score for each CIS section. Use these scores to determine how securely configured your overall cloud environment is. To learn more, refer to our [documentation](/solutions/security/cloud/cspm-dashboard.md).
 
-Findings and alerts
-The Findings page displays each individual resource evaluated by the CSPM integration and whether the resource passed or failed the secure configuration checks against it, for more information on Findings, such as how to group and filter them, check out our documentation.
+:::{image} /solutions/images/security-gs-cspm-dashboard.png
+:alt: Cloud Security Posture dashboard
+:screenshot:
+:::
 
-Security cspm - findings.png
+To access the Cloud Security Posture dashboard, go to **Dashboards** → **Cloud Security Posture**. 
 
-Some rules, more than others, you may want to monitor closely. You can select a finding for that particular rule and click Take action in the lower right. Then click Create a detection rule.
 
-Security cspm - create rule.png
-Next click View rule.
+## Analyze Findings 
 
-Security cspm - view rules .png
-Now, you'll see the detection rule, along with its definition. Now, whenever there is a failed finding for this rule, you'll get an alert. To set up other actions, click Edit rule settings on the upper right of the rule page.
+After you install the CSPM integration, it evaluates the configuration of resources in your environment every 24 hours. It lists the results and whether a given resource passed or failed evaluation against a specific security guideline on the **Findings** page, which you can access from the left navigation menu. By default, the Findings page lists all findings without any grouping or filtering. However, we recommend [filtering the data](/solutions/security/cloud/findings-page.md#cspm-findings-page-filter-findings) for failed findings. 
 
-Security cspm - rule details.png
-Next you'll select, Actions.
+To remediate a failed finding, Click the arrow to the left of a failed finding to open the findings flyout, then follow the steps under **Remediation**. 
 
-Security cspm - edit rule settings.png
+:::{image} /solutions/images/security-gs-cloudsec-findings-flyout.gif
+:alt: Findings flyout
+:screenshot:
+:::
 
-From here, you can set up actions. For example, if a rule fails, you set up a Slack message, Jira ticket, etc., so you get a proactive notification to review the failed finding and remediate the misconfiguration. To learn more about detection rules, check out our documentation.
+:::{{tip}}
+On the Cloud Security Posture dashboard, click one of the "View all failed findings" links to display a filtered view. 
+:::
 
-Security cspm - edit rules.png
+### Set up alerts 
 
-Next steps
-Congrats on beginning your Elastic Security journey with Elastic Security for Cloud (CSPM). For more information on CSPM, please review the product documentation. As you begin your journey with Elastic, be sure to understand some operational, security, and data components you should manage as a user when you deploy across your environment.
+To monitor your configuration more closely, we recommend creating detection rules to detect specific failed findings, which if found, generates an alert. 
 
-Ready to get started? Spin up a free 14-day trial on Elastic Cloud or try out these 15-minute hands-on learnings on Security 101.
+You can create detection rule directly from the Findings page: 
+
+1. Click the arrow to the left of a Finding to open the findings flyout.
+2. Click Take action, then Create a detection rule. This automatically creates a detection rule that creates alerts when the associated benchmark rule generates a failed finding.
+3. To review or customize the new rule, click View rule. For example, you may want to set up a rule action—like an email or Slack notification—when alerts are generated. To learn more about rule actions, refer to [this topic](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications).   
+
