@@ -28,7 +28,7 @@ There are differences between {{es-serverless}} and {{ech}}, for a list of diffe
 Elastic provides three serverless solutions available on {{ecloud}}. Follow these guides to get started with your serverless project:
 
 * **[{{es-serverless}}](../../../solutions/search/serverless-elasticsearch-get-started.md)**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
-* **[{{obs-serverless}}](../../../solutions/observability/get-started.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
+* **[{{obs-serverless}}](../../../solutions/observability/get-started/create-an-observability-project.md)**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
 * **[{{sec-serverless}}](../../../solutions/security/get-started/create-security-project.md)**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 Afterwards, you can:
@@ -61,38 +61,37 @@ Serverless projects run on cloud platforms, which may undergo changes in availab
 
 To learn more about serverless status, see [Service status](../../cloud-organization/service-status.md).
 
-## Answers to common serverless questions [general-what-is-serverless-elastic-answers-to-common-serverless-questions]
+## Frequently Asked Questions (FAQ) about Elastic Serverless Projects {#serverless-faq}
 
-**Is there migration support between hosted deployments and serverless projects?**
+The following FAQ addresses common questions about using Elastic serverless projects.
 
-Migration paths between hosted deployments and serverless projects are currently unsupported.
+### Pricing and Availability
+**Q: Where can I learn about pricing for serverless?**  
+A: See {{serverless}} pricing information for [Search](https://www.elastic.co/pricing/serverless-search), [Observability](https://www.elastic.co/pricing/serverless-observability), and [Security](https://www.elastic.co/pricing/serverless-security).
 
-**How can I move data to or from serverless projects?**
+**Q: In which cloud regions is Elastic’s serverless offering available?**  
+A: Elastic serverless projects are available in select AWS regions, with plans to expand to more regions and cloud providers. For the latest list, refer to the [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md).
 
-We are working on data migration tools! In the interim, [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from serverless projects.
+### Data Management
+**Q: How can I move data to or from serverless projects?**  
+A: We are working on data migration tools! In the interim, [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from serverless projects.
 
-**How does serverless ensure compatibility between software versions?**
+**Q: Can I request backups or restores for my projects?**  
+A: It is not currently possible to request backups or restores for projects, but we are working on data migration tools to better support this.
 
-Connections and configurations are unaffected by upgrades. To ensure compatibility between software versions, quality testing and API versioning are used.
+### Security, Compliance, and Access
+**Q: How can I create serverless service accounts?**  
+A: Create API keys for service accounts in your serverless projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
 
-**Can I convert a serverless project into a hosted deployment, or a hosted deployment into a serverless project?**
+### Project Lifecycle and Support
+**Q: How does serverless ensure compatibility between software versions?**  
+A: Connections and configurations are unaffected by upgrades. To ensure compatibility between software versions, quality testing and API versioning are used.
 
-Projects and deployments are based on different architectures, and you are unable to convert.
+**Q: Can I convert a serverless project into a hosted deployment, or a hosted deployment into a serverless project?**  
+A: Projects and deployments are based on different architectures, and you are unable to convert.
 
-**Can I convert a serverless project into a project of a different type?**
+**Q: Can I convert a serverless project into a project of a different type?**  
+A: You are unable to convert projects into different project types, but you can create as many projects as you’d like. You will be charged only for your usage.
 
-You are unable to convert projects into different project types, but you can create as many projects as you’d like. You will be charged only for your usage.
-
-**How can I create serverless service accounts?**
-
-Create API keys for service accounts in your serverless projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
-
-To raise a Support case with Elastic, raise a case for your subscription the same way you do today. In the body of the case, make sure to mention you are working in serverless to ensure we can provide the appropriate support.
-
-**Where can I learn about pricing for serverless?**
-
-See serverless pricing information for [Search](https://www.elastic.co/pricing/serverless-search), [Observability](https://www.elastic.co/pricing/serverless-observability), and [Security](https://www.elastic.co/pricing/serverless-security).
-
-**Can I request backups or restores for my projects?**
-
-It is not currently possible to request backups or restores for projects, but we are working on data migration tools to better support this.
+**Q: How do I raise a support case for serverless?**  
+A: Raise a case for your subscription as you do today. In the body of the case, mention you are working in serverless to ensure appropriate support.
