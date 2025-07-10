@@ -67,7 +67,7 @@ The following FAQ addresses common questions about using Elastic serverless proj
 
 ### Pricing and availability
 **Q: Where can I learn about pricing for serverless?**  
-A: See {{serverless}} pricing information for [Search](https://www.elastic.co/pricing/serverless-search), [Observability](https://www.elastic.co/pricing/serverless-observability), and [Security](https://www.elastic.co/pricing/serverless-security).
+A: See serverless pricing information for [Search](https://www.elastic.co/pricing/serverless-search), [Observability](https://www.elastic.co/pricing/serverless-observability), and [Security](https://www.elastic.co/pricing/serverless-security).
 
 **Q: In which cloud regions is Elastic’s serverless offering available?**  
 A: Elastic serverless projects are available in select AWS regions, with plans to expand to more regions and cloud providers. For the latest list, refer to the [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md).
