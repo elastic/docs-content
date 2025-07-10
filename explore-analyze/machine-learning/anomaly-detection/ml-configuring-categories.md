@@ -25,7 +25,7 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 
 ## Creating categorization jobs [creating-categorization-jobs]
 
-1. In {{kib}}, navigate to **Anomaly Detection Jobs**. Find **{{stack-manage-app}} > {{ml-app}} > Anomaly Detection Jobs** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+1. To create an {{anomaly-job}}, navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). 
 2. Click **Create anomaly detection job**, select the data view you want to analyze.
 3. Select the **Categorization** wizard from the list.
 4. Choose a categorization detector - it’s the `count` function in this example - and the field you want to categorize - the `message` field in this example.
