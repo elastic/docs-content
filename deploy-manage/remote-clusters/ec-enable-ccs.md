@@ -58,15 +58,13 @@ The steps, information, and authentication method required to configure CCS and 
 [Network security](../security/network-security.md) isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
 ::::
 
-API key authentication for remote clusters cannot be used in combination with network security policies.
+You can use [network security policies](../security/network-security.md) to restrict access to deployments used as a local or remote cluster, without impacting cross-cluster search or cross-cluster replication.
 
-For remote clusters configured using TLS certificate authentication, [network security policies](../security/network-security.md) can be applied to restrict access to deployments that are used as a local or remote cluster without any impact on cross-cluster search or cross-cluster replication.
-
-Network security for remote clusters supports 2 methods:
+Network security for remote clusters supports the following methods:
 
 * [Filtering by IP addresses and Classless Inter-Domain Routing (CIDR) masks](../security/ip-filtering.md)
 * Filtering by Organization or {{es}} cluster ID with a **Remote cluster** private connection policy. You can configure this type of policy from the **Access and security** > **Network security** page of your organization or using the [{{ecloud}} RESTful API](https://www.elastic.co/docs/api/doc/cloud) and apply it from each deployment’s **Security** page.
 
 ::::{note}
-When setting up network security for a remote connection to an {{ece}} environment, you also need to upload the region’s TLS certificate of the local cluster to the {{ece}} environment’s proxy. You can find that region’s TLS certificate in the **Security** page of any deployment of the environment initiating the remote connection.
+When setting up network security policies for a remote connection to an {{ece}} environment, you also need to upload the region’s TLS certificate of the local cluster to the {{ece}} environment’s proxy. You can find that region’s TLS certificate in the **Security** page of any deployment of the environment initiating the remote connection. This is regardless of whether you are using API key or TLS Certificates (deprecated) to authenticate remote connections.
 ::::

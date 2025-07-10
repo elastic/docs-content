@@ -15,7 +15,7 @@ sub:
   example-default-dn: "us-east-1.aws.elastic-cloud.com"
 ---
 
-# AWS PrivateLink private connectivity
+# Private connectivity with AWS PrivateLink
 
 You can use AWS PrivateLink to establish a secure connection for your {{ecloud}} deployments to communicate with other AWS services. AWS routes the PrivateLink traffic within the AWS data center and never exposes it to the public internet.
 
@@ -98,7 +98,7 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 | --- | --- |
 | 1. [Create a VPC endpoint using {{ecloud}} service name.](#ec-aws-vpc-dns) |  |
 | 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
-|  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VPCendpoint ID. |
+|  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VPC endpoint ID. |
 |  | 4. **Optional**: [Associate the private connection policy with deployments](#ec-associate-traffic-filter-private-link-rule-set). |
 |  | 5. [Interact with your deployments over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
@@ -254,7 +254,7 @@ Create a new private connection policy.
     Private connection policies are bound to a single region, and can be assigned only to deployments in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 11. Under **Connectivity**, select **Privatelink**.
-12. Optional: Under **VPC filter**, enter your VPCendpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment. 
+12. Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment. 
     
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
     
@@ -277,7 +277,7 @@ You can associate a private connection policy with your deployment from the poli
 
 If the policy contains a VPC filter, then after you associate the policy with a deployment, it starts filtering traffic. 
 
-If the policy doesn't contain a VPC filter, then the association can serve as a reminder that a VPCendpoint exists for the deployment's region.
+If the policy doesn't contain a VPC filter, then the association can serve as a reminder that a VPC endpoint exists for the deployment's region.
 
 #### From a deployment
 

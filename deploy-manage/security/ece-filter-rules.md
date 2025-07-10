@@ -7,7 +7,7 @@ applies_to:
 
 # Traffic filter rules in {{ece}}
 
-By default, in {{ece}}, all your deployments are accessible over the public internet. This assumes that your orchestrator's proxies are accessible.
+By default, in {{ece}}, all your deployments are accessible over the public internet.
 
 Filtering rules are created at the orchestrator level. Rules are grouped into rule sets, and then are associated with one or more deployments to take effect. After you associate at least one traffic filter with a deployment, traffic that does not match any filtering rules for the deployment is denied.
 

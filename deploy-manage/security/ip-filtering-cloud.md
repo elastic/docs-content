@@ -96,10 +96,9 @@ You can apply multiple policies to a single deployment. For {{ech}} deployments,
 :::{tab-item} Hosted
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** page, select your deployment.
-3. Select the **Network security** tab on the left-hand side menu bar.
-4. Select the **Security** tab on the left-hand side menu bar.
-5. Under **Network security**, select **Apply policies** > **IP filter**.
-6. Choose the IP filter you want to apply and select **Apply**.
+3. Select the **Security** tab on the left-hand side menu bar.
+4. Under **Network security**, select **Apply policies** > **IP filter**.
+5. Choose the IP filter you want to apply and select **Apply**.
 :::
 ::::
 

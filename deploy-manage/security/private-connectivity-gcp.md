@@ -15,7 +15,7 @@ sub:
   example-default-dn: "us-central1.gcp.cloud.es.io"
 ---
 
-# GCP Private Service Connect private connectivity
+# Private connectivity with GCP Private Service Connect
 
 You can use GCP Private Service Connect to establish a secure connection for your {{ecloud}} deployments to communicate with other GCP services. GCP routes the Private Link traffic within the GCP data center and never exposes it to the public internet.
 
