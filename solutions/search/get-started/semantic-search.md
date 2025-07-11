@@ -139,7 +139,7 @@ Go to **Discover** and select **Try ES|QL** from the application menu bar.
 ::::
 ::::{step} Choose a vector comparison method
 You can search data that is stored in `semantic_text` fields by using a specific subset of queries, including `knn`, `match`, `semantic`, and `sparse_vector`.
-For the definitive list of supported queries, refer to [](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
+For the definitive list of supported queries, refer to [Semantic text field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
 
 In ES|QL, you can perform semantic searches on `semantic_text` field types using the same match syntax as full-text search.
 For example:
@@ -157,7 +157,7 @@ FROM semantic-index <1>
 When you click **▶Run**, the results appear in a table.
 Each row in the table represents a document.
 
-To learn more about these commands, refer to [](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) and [](/solutions/search/esql-for-search.md).
+To learn more about these commands, refer to [ES|QL syntax reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) and [](/solutions/search/esql-for-search.md).
 ::::
 ::::{step} Analyze the results
 
