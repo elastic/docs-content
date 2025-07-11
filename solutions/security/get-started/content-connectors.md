@@ -9,7 +9,7 @@ applies_to:
 Elastic's content connectors allow you to extract, transform, index, and sync data from third-party applications including Github, PagerDuty, Jira, OpsGenie, Teams, Google Drive, Slack, email, and more. To see a complete list of the available connectors, follow the setup instructions below. 
 
 ## Setup 
-{{stack}} supports two deployment methods: Elastic managed, and self-managed. {{serverless}} only supports Elastic managed deployments. Self-managed deployments require you to manage the {{elastic-agent}} that forwards data to Elastic and allow you to customize the connector's code, whereas Elastic managed deployments use agentless technology and do not allow customization.
+{{stack}} supports two deployment methods: Elastic managed, and self-managed. {{sec-serverless}} only supports Elastic managed deployments. Self-managed deployments require you to manage the {{elastic-agent}} that forwards data to Elastic and allow you to customize the connector's code, whereas Elastic managed deployments use agentless technology and do not allow customization.
 
 To learn about set up for self-managed connectors, refer to [Self managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md). To set up an Elastic managed connector:
 
