@@ -16,6 +16,23 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+
+
+:::{dropdown} The {{elastic-agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
+
+Applies to: 9.0.x
+
+**Impact**
+
+Attempts to get the {{elastic-agent}} image from `docker.elastic.co/beats/elastic-agent:9.0.0` will fail. 
+
+**Workaround**
+
+Instead of trying to get the image from `docker.elastic.co/beats/elastic-agent:9.0.0`, get it from `docker.elastic.co/elastic-agent/elastic-agent:9.0.0`
+:::
+
+
+
 :::{dropdown} Security AI Assistant Knowledge Base settings UI not displaying
 
 Applies to: 9.0.3
