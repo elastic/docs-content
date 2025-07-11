@@ -29,7 +29,7 @@ This can occur if you had not previously specified a connector for any of the fo
 
 *And:*
 
-* All of your existing connector names come after “Elastic Managed LLM connector" when sorted alphabetically.
+* All of your existing connector names come after the “Elastic Managed LLM connector" when sorted alphabetically.
 
 For more information, check [#2088](https://github.com/elastic/docs-content/issues/2088)
 
