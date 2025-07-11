@@ -48,11 +48,11 @@ You can also allow traffic to or from a [remote cluster](/deploy-manage/remote-c
 :::{include} _snippets/eck-traffic-filtering.md
 :::
 
-## How security rules and policies work
+## How network security policies and rules work
 
-By default, in {{serverless-full}}, {{ech}}, and {{ece}}, all your deployments are accessible over the public internet. After you associate at least one IP filtering rule with an {{ece}} deployment, or one network security policy with an {{ecloud}} deployment or project, traffic that does not match any rules or policies for the deployment or project is denied.
+By default, in {{serverless-full}}, {{ech}}, and {{ece}}, all your deployments are accessible over the public internet. After you associate at least one IP filtering rule with an {{ece}} deployment, or one network security policy with an {{ecloud}} deployment or project, traffic that does not match any policies or rules for the deployment or project is denied.
 
-For details about how these rules and policies interact with your deployment or project, other rules or policies, and the internet, refer to the topic for your deployment type:
+For details about how these policies and rules interact with your deployment or project, other policies or rules, and the internet, refer to the topic for your deployment type:
 
 * [](network-security-policies.md)
 * [](ece-filter-rules.md)
