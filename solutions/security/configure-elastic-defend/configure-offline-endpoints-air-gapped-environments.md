@@ -213,3 +213,35 @@ After updating the {{elastic-endpoint}} configuration to read from the mirror se
 :screenshot:
 :::
 
+:::::{dropdown} Alternative: Use a community tool to automate artifact downloads
+
+A community-contributed tool simplifies this process:
+
+[`artifacts-bundler`](https://github.com/pkward/artifacts-bundler) is a Bash-based CLI script that automates downloading and bundling Elastic Stack components for air-gapped environments.
+
+It supports:
+
+- Downloading Elastic Stack binaries (Elastic Agent, Beats, APM Server, etc.)
+- Fetching endpoint artifacts from `artifacts.security.elastic.co`
+- Creating a single `.tar.gz` archive for offline transfer
+- Optionally building a self-contained NGINX Docker image to serve artifacts
+- Generating a manifest (`manifest.json`) for validation and auditing
+- Compatibility with `docker`, `podman`, or `nerdctl`
+
+==== Example usage:
+
+```bash
+git clone https://github.com/pkward/artifacts-bundler.git
+cd artifacts-bundler
+
+# Bundle artifacts for Elastic versions 8.x.x and 9.x.x
+./download-artifacts.sh \
+  --versions 8.x.x 9.x.x \
+  --bundle \
+  --build-nginx-image \
+  --bundle-name elastic-artifacts-bundle.tar.gz
+
+::::{note}
+This is a community-contributed tool and is not officially maintained by Elastic.
+::::  
+
