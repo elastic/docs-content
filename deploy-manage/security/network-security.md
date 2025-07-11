@@ -26,7 +26,7 @@ Network security allows you to control how your deployments and clusters can be 
 :::{note}
 The network security feature was formerly referred to as traffic filtering.
 
-Network security policies, IN were formerly referred to as traffic filtering rules.
+Network security policies were formerly referred to as traffic filter rules.
 :::
 
 ## Network security methods
@@ -48,11 +48,17 @@ You can also allow traffic to or from a [remote cluster](/deploy-manage/remote-c
 :::{include} _snippets/eck-traffic-filtering.md
 :::
 
-## How security rules and policies work
+## How network security works
+```{applies_to}
+deployment:
+  ece: all
+  ess: all
+serverless: all
+```
 
-By default, in {{serverless-full}}, {{ech}}, and {{ece}}, all your deployments are accessible over the public internet. After you associate at least one IP filtering rule with an {{ece}} deployment, or one network security policy with an {{ecloud}} deployment or project, traffic that does not match any rules or policies for the deployment or project is denied.
+By default, in {{serverless-full}}, {{ech}}, and {{ece}}, all external traffic is allowed. After you apply a network security mechanism, such as an IP filtering rule in an {{ece}} deployment or a network security policy in an {{ecloud}} deployment or project, only traffic that matches the configured rules or policies is allowed; all other traffic is denied.
 
-For details about how these rules and policies interact with your deployment or project, other rules or policies, and the internet, refer to the topic for your deployment type:
+For details about how these policies and rules interact with your deployment or project, other policies or rules, and the internet, refer to the topic for your deployment type:
 
 * [](network-security-policies.md)
 * [](ece-filter-rules.md)

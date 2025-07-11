@@ -13,7 +13,7 @@ navigation_title: "Add IP filters"
 
 This section covers filtering network traffic by IP address or CIDR block.
 
-The way that you configure IP filters depends on your deployment type.
+The way you configure IP filters, and how filtering is enforced, depends on your deployment type.
 
 :::{tip}
 If you use {{ech}} or {{eck}}, then other [network security](/deploy-manage/security/network-security.md) methods are also available.
