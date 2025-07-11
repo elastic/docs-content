@@ -8,13 +8,13 @@ applies_to:
 
 # Network security policies in {{ecloud}}
 
-By default, in {{ech}} and {{serverless-full}}, all your deployments are accessible over the public internet.
+By default, in {{ech}} and {{serverless-full}}, all your deployments are accessible over the public internet without restrictions.
 
 Network security policies include [IP filters](/deploy-manage/security/ip-filtering-cloud.md) and [private connections](/deploy-manage/security/private-link-traffic-filters.md). They are created at the organization level, and need to be associated with one or more resources, such as a deployment or project, to take effect. After you associate at least one policy with a resource, traffic that does not match the policy or any other policy associated with the resource is denied.
 
 Policies apply to external traffic only. Internal traffic is managed by the deployment or project. For example, in {{ech}}, {{kib}} can connect to {{es}}, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by network security policies.
 
-Policies operate on the proxy. Requests rejected by the policies are not forwarded to the resource. The proxy responds to the client with `403 Forbidden`.
+Policies operate on the platform proxies. Requests rejected by the policies are not forwarded to the resource. The proxy responds to the client with `403 Forbidden`.
 
 ## Logic
 

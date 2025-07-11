@@ -15,7 +15,7 @@ Filtering by IP address or CIDR block is one of the security layers available in
 
 You can only configure ingress or inbound IP filters. These restrict access to your deployments from a set of IP addresses or CIDR blocks.
 
-Follow the step described here to set up ingress or inbound IP filters through the Cloud UI.
+Follow the steps described here to set up ingress or inbound IP filters through the Cloud UI.
 
 To learn how traffic filter rules work together, refer to [](ece-filter-rules.md).
 
@@ -29,7 +29,7 @@ To learn how to create IP filters for self-managed clusters or {{eck}} deploymen
 
 ## Prerequisites
 
-Make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) handles the `X-Forwarded-For` header appropriately for HTTP requests to prevent IP address spoofing. Make sure the proxy protocol v2 is enabled for HTTP and transport protocols (9243 and 9343).
+Make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-balancers.md) handles the `X-Forwarded-For` header appropriately for HTTP requests to prevent IP address spoofing. Make sure the proxy protocol v2 is enabled for HTTP and transport protocols (ports 9243 and 9343).
 
 ## Apply an IP filter to a deployment
 
