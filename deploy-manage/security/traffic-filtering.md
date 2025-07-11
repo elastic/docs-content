@@ -26,7 +26,7 @@ Network security allows you to control how your deployments and clusters can be 
 :::{note}
 The network security feature was formerly referred to as traffic filtering.
 
-Network security policies were formerly referred to as traffic filtering rules.
+Network security policies were formerly referred to as traffic filter rules.
 :::
 
 ## Network security methods

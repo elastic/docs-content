@@ -20,7 +20,7 @@ This example demonstrates how to use the {{ecloud}} RESTful API, {{ece}} RESTful
 
 We cover the following examples:
 
-* [Create an IP filter policy or rule set](#ec-create-a-traffic-filter-rule-set)
+* [Create an IP filter policy or IP filtering rule set](#ec-create-a-traffic-filter-rule-set)
 
   * [Ingress](#ec-ip-traffic-filters-ingress-rule-set)
   * [Egress](#ec-ip-traffic-filters-egress-rule-set) {applies_to}`ess: beta`
@@ -57,13 +57,13 @@ In {{ecloud}}, terminology related to network security has changed to more accur
 | {{ecloud}} concept | API terminology | 
 | --- | --- | 
 | Network security | Traffic filters |
-| Network security policy | Traffic filter rule set | 
+| Network security policy | Traffic filter or IP filtering rule set | 
 | IP filter source | IP filter rule | 
 | Private connection | Private link traffic filter |
 | VPC filter | Private link filter source |
 
 
-## Create an IP filter policy or rule set [ec-create-a-traffic-filter-rule-set]
+## Create an IP filter policy or IP filtering rule set [ec-create-a-traffic-filter-rule-set]
 
 
 ### Ingress [ec-ip-traffic-filters-ingress-rule-set]
