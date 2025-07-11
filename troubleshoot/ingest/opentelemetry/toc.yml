@@ -5,6 +5,7 @@ toc:
   - file: edot-collector/index.md
     children:
       - file: edot-collector/collector-oomkilled.md
+      - file: edot-collector/metadata.md
   - file: edot-sdks/index.md
     children:
       - file: edot-sdks/dotnet/index.md
