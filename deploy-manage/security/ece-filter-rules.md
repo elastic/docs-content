@@ -7,7 +7,7 @@ applies_to:
 
 # IP filtering rules in {{ece}}
 
-By default, in {{ece}}, all your deployments are accessible over the public internet.
+By default, in {{ece}}, all your deployments are accessible to external networks through the orchestrator’s proxies without any traffic restrictions. In some cases, these proxies may also be accessible over the public internet.
 
 IP filtering rules are created at the orchestrator level. Rules are grouped into rule sets, and then are associated with one or more deployments to take effect. After you associate at least one IP filtering rule set with a deployment, traffic that does not match any rules for the deployment is denied.
 
