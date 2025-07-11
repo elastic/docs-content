@@ -1,5 +1,5 @@
 ---
-navigation_title: How rules work in ECE
+navigation_title: How traffic filter rules work in ECE
 applies_to:
   deployment:
     ece: ga

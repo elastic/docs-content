@@ -1,5 +1,5 @@
 ---
-navigation_title: How policies work in Cloud
+navigation_title: How network security policies work in Cloud
 applies_to:
   deployment:
     ess: ga
