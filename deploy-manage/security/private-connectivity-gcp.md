@@ -75,11 +75,11 @@ The process of setting up the Private link connection to your deployments is spl
 | --- | --- |
 | [1. Create a Private Service Connect endpoint using {{ecloud}} Service Attachment URI.](#ec-private-service-connect-enpoint-dns) |  |
 | [2. Create a DNS record pointing to the Private Service Connect endpoint.](#ec-private-service-connect-enpoint-dns) |  |
-|  | [3. Optional: Create a private connection policy with the PSC Connection ID.](#ec-psc-create-traffic-filter-psc-rule-set) |
-|  | [4. Optional: Associate the private connection policy with your deployments.](#ec-psc-associate-traffic-filter-psc-rule-set) |
+|  | [3. Optional: Create a private connection policy with the PSC Connection ID.](#create-private-connection-policy) |
+|  | [4. Optional: Associate the private connection policy with your deployments.](#associate-private-connection-policy) |
 |  | [5. Interact with your deployments over Private Service Connect.](#ec-psc-access-the-deployment-over-psc) |
 
-After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-psc-rule-set), [disconnect](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-psc-rule-set) it.
+After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 :::{admonition} Private connection policies are optional
 Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established.
@@ -97,7 +97,7 @@ Creating a private connection policy and associating it with your deployments al
 
     Follow the [Google Cloud instructions](https://cloud.google.com/vpc/docs/configure-private-service-connect-services#create-endpoint) for details on creating a Private Service Connect endpoint to access Private Service Connect services.
 
-    Use [the Service Attachment URI for your region](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md#ec-private-service-connect-uris). Select the **Published service** option and enter the selected Service Attachment URI as the **Target service**. For example, for the region `asia-southeast1` the Service Attachment URI is `projects/cloud-production-168820/regions/asia-southeast1/serviceAttachments/proxy-psc-production-asia-southeast1-v1-attachment`
+    Use [the Service Attachment URI for your region](#ec-private-service-connect-uris). Select the **Published service** option and enter the selected Service Attachment URI as the **Target service**. For example, for the region `asia-southeast1` the Service Attachment URI is `projects/cloud-production-168820/regions/asia-southeast1/serviceAttachments/proxy-psc-production-asia-southeast1-v1-attachment`
 
     ::::{note}
     you need to [reserve a static internal IP address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) in your VPC. The address is used by Private Service Connect endpoint.
@@ -173,8 +173,8 @@ Creating a private connection policy and associating it with your deployments al
 Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
 1. Optional: [Find your Private Service Connect connection ID](#ec-find-your-psc-connection-id).
-2. [Create policies using the Private Service Connect endpoint connection ID](#ec-psc-create-traffic-filter-psc-rule-set).
-3. [Associate the Private Service Connect endpoint with your deployment](#ec-psc-associate-traffic-filter-psc-rule-set).
+2. [Create policies using the Private Service Connect endpoint connection ID](#create-private-connection-policy).
+3. [Associate the Private Service Connect endpoint with your deployment](#associate-private-connection-policy).
 
 ### Optional: Find your Private Service Connect connection ID [ec-find-your-psc-connection-id]
 
@@ -183,7 +183,7 @@ The PSC connection ID is only required if you want to filter traffic to your dep
 1. Go to your Private Service Connect endpoint in the Google Cloud console.
 2. Copy the value of **PSC Connection ID**.
 
-### Create a new private connection policy [ec-psc-create-traffic-filter-psc-rule-set]
+### Create a new private connection policy [create-private-connection-policy]
 
 Create a new private connection policy.
 
@@ -210,11 +210,11 @@ Create a new private connection policy.
 13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPC filter, then after you associate the filter with a deployment, it starts filtering traffic.
 14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 15.  Click **Create**.
-16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
+16. (Optional) You can [claim your Private Service Connect endpoint connection ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
-The next step is to [associate the policy](#ec-psc-associate-traffic-filter-psc-rule-set) with your deployment.
+The next step is to [associate the policy](#associate-private-connection-policy) with your deployment.
 
-### Optional: Associate a policy with a deployment [ec-psc-associate-traffic-filter-psc-rule-set]
+### Optional: Associate a policy with a deployment [associate-private-connection-policy]
 
 You can associate a private connection policy with your deployment from the policy's settings, or from your deployment's settings. 
 
@@ -282,7 +282,7 @@ To access the deployment:
 
 After you create your private connection policy, you can edit it, remove it from your deployment, or delete it.
 
-### Edit a private connection policy [ec-edit-traffic-filter-psc-rule-set]
+### Edit a private connection policy [edit-private-connection-policy]
 
 You can edit a policy's name, description, VPC endpoint ID, and more.
 
@@ -296,7 +296,7 @@ You can also edit network security policies from your deployment's **Security** 
 :::
 
 
-### Remove a private connection policy from your deployment [remove-filter-deployment]
+### Remove a private connection policy from your deployment [remove-private-connection-policy]
 
 If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
@@ -330,7 +330,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 6. Under **Apply to resources**, click the `x` beside the resource that you want to disconnect.
 7. Click **Update** to save your changes.
 
-### Delete a private connection policy [ec-delete-traffic-filter-psc-rule-set]
+### Delete a private connection policy [delete-private-connection-policy]
 
 If you need to remove a policy, you must first remove any associations with deployments.
 

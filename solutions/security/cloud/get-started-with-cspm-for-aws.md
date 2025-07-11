@@ -52,10 +52,6 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 
 8. Once you’ve selected an authentication method and provided all necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
-::::{admonition} Important
-Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
-::::
-
 ## Agent-based deployment [cspm-aws-agent-based]
 
 

@@ -18,11 +18,11 @@ Choose the relevant option for your cloud service provider:
 
 | Cloud service provider | Service |
 | --- | --- |
-| AWS | [AWS PrivateLink](/deploy-manage/security/aws-privatelink-traffic-filters.md) |
-| Azure | [Azure Private Link](/deploy-manage/security/azure-private-link-traffic-filters.md) |
-| GCP | [GCP Private Service Connect](/deploy-manage/security/gcp-private-service-connect-traffic-filters.md) |
+| AWS | [AWS PrivateLink](/deploy-manage/security/private-connectivity-aws.md) |
+| Azure | [Azure Private Link](/deploy-manage/security/private-connectivity-azure.md) |
+| GCP | [GCP Private Service Connect](/deploy-manage/security/private-connectivity-gcp.md) |
 
-After you set up your private connection, you can [claim ownership of your private connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md) to prevent other organizations from using it.
+After you set up your private connection, you can [claim ownership of your private connection ID](/deploy-manage/security/claim-private-connection-api.md) to prevent other organizations from using it.
 
 To learn how private connection policies work, how they affect your deployment, and how they interact with [IP filter policies](ip-filtering-cloud.md), refer to [](/deploy-manage/security/network-security-policies.md).
 
