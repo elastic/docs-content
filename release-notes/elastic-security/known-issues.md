@@ -62,6 +62,9 @@ After enabling the Knowledge Base, you can manage entries using the AI Assistant
   }
   ```
 
+**Resolved**<br> 
+
+Resolved in {{stack}} 9.0.4
 :::
 
 :::{dropdown} The entity risk score feature may stop persisting risk score documents
