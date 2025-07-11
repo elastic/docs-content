@@ -10,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Manage IP traffic filters in ECK and self-managed clusters
+# Manage IP filtering in ECK and self-managed clusters
 
 You can apply IP filtering to application clients, node clients, or transport clients, remote cluster clients, in addition to other nodes that are attempting to join the cluster.
 
