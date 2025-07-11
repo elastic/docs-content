@@ -281,17 +281,11 @@ Main functions:
 `changes`
 :   Get change points like spikes and dips for logs and metrics data.
 
-`context`
-:   Get context for what you're looking at on your screen and for recalled documents from the knowledge base that matches your query.
-
 `elasticsearch`
 :   Call {{es}} APIs on your behalf.
 
 `execute_connector`
 :   Call a {{kib}} connector on your behalf.
-
-`execute_query`
-:   Run an ES|QL query.
 
 `get_alerts_dataset_info`
 :   Get information about alerts data within a specified time range.
@@ -309,13 +303,10 @@ Main functions:
 :   Generate, execute, and visualize queries based on your request.
 
 `retrieve_elastic_doc`
-:   Get relevant Elastic documentation.
+:   Get relevant Elastic documentation. This function is only available if the product documentation is installed.
 
 `summarize`
 :   Summarize parts of the conversation.
-
-`visualize_query`
-:   Visualize charts for ES|QL queries.
 
 Additional functions are available when your cluster has APM data:
 
