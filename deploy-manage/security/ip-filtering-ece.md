@@ -33,7 +33,7 @@ Make sure your [load balancer](/deploy-manage/deploy/cloud-enterprise/ece-load-b
 
 ## Apply an IP filter to a deployment
 
-To apply an IP filter to a deployment, you must first create a rule set at the organization or platform level, and then apply the rule set to your deployment.
+To apply an IP filter to a deployment, you must first create a rule set at the platform level, and then apply the rule set to your deployment.
 
 ### Step 1: Create an IP filtering rule set
 
@@ -46,14 +46,8 @@ To create a rule set:
 3. Select **Create filter**.
 4. Select **IP filtering rule set**.
 5. Create your rule set, providing a meaningful name and description.
-6. Select the region for the rule set.
-7. Select if this rule set should be automatically attached to new deployments.
-
-    ::::{note}
-    Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
-    ::::
-
-8.  Add one or more rules using IPv4, or a range of addresses with CIDR.
+6. Select if this rule set should be automatically attached to new deployments.
+7.  Add one or more rules using IPv4, or a range of addresses with CIDR.
 
     ::::{note}
     DNS names are not supported in rules.

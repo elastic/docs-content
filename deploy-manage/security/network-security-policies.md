@@ -108,5 +108,3 @@ Requests rejected by a network security policy have the status code `403 Forbidd
 ```json
 {"ok":false,"message":"Forbidden due to traffic filtering. Please see the Elastic documentation on Traffic Filtering for more information."}
 ```
-
-Additionally, network security policy rejections are logged in ECE proxy logs as `status_reason: BLOCKED_BY_IP_FILTER`. Proxy logs also provide client IP in `client_ip` field.
