@@ -11,6 +11,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## July 15, 2025 [serverless-changelog-07152025]
+* {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `eu-central-1` (Frankfurt) and `us-east-2` (Ohio).
+
 ## July 7, 2025 [serverless-changelog-07072025]
 
 ### Features and enhancements [serverless-changelog-07072025-features-enhancements]

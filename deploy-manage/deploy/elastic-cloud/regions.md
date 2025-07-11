@@ -27,9 +27,12 @@ The following AWS regions are currently available:
 | Region | Name |
 | :--- | :--- |
 | ap-southeast-1 | Asia Pacific (Singapore) |
+| eu-central-1 | Europe (Frankfurt) |
 | eu-west-1 | Europe (Ireland) |
 | us-east-1 | US East (N. Virginia) |
+| us-east-2 | US East (Ohio) |
 | us-west-2 | US West (Oregon) |
+
 
 ## Microsoft Azure regions [regions-azure-regions]
 
