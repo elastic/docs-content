@@ -67,7 +67,7 @@ The following FAQ addresses common questions about using {{serverless-full}} pro
 
 ### Pricing and availability
 **Q: Where can I learn about pricing for {{serverless-short}}?**  
-A: See pricing information for [{{es-serverless}}(https://www.elastic.co/pricing/serverless-search), [{{observability}}](https://www.elastic.co/pricing/serverless-observability), and [{{sec-serverless}}](https://www.elastic.co/pricing/serverless-security).
+A: See pricing information for [{{es-serverless}}](https://www.elastic.co/pricing/serverless-search), [{{observability}}](https://www.elastic.co/pricing/serverless-observability), and [{{sec-serverless}}](https://www.elastic.co/pricing/serverless-security).
 
 **Q: What Cloud regions does {{serverless-full}} support?**  
 A: {{serverless-full}} is available in select AWS, GCP, and Azure regions, with plans to expand to more regions. For more information, refer to [](/deploy-manage/deploy/elastic-cloud/regions.md).
