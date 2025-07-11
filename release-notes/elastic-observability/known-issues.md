@@ -18,7 +18,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 :::{dropdown} Observability AI Assistant - Elastic Managed LLM may be automatically selected as default connector
 
-Applies to: {{stack}} 9.0.0, 9.0.1, 9.0.2
+Applies to: {{stack}} 9.x
 
 The Elastic Managed LLM may be automatically selected as your default connector because of existing connector selection logic.
 This can occur if you had not previously specified a connector for any of the following reasons:
