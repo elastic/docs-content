@@ -83,7 +83,7 @@ You can add one interactive time slider control to a dashboard.
 
 ## Add {{esql}} controls [add-esql-control]
 ```{applies_to}
-stack: preview
+stack: preview 9.0
 serverless: preview
 ```
 
