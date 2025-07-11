@@ -264,11 +264,13 @@ redirects:
     anchors:
       '_add_the_traffic_filter': '_add_the_ip_filter'
   'deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md':
-    to: 'deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md'
-    anchors:
-      'ec-restrictions-fleet-traffic-filters': 'ec-restrictions-fleet-network-security'
-      'ec-restrictions-traffic-filters-kibana-sso': 'ec-restrictions-network-security-kibana-sso'
-      'ec-restrictions-traffic-filters-watcher': 'ec-restrictions-network-security-watcher'
+    anchors: {}
+    many:
+    - to: 'deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md'
+      anchors:
+        'ec-restrictions-fleet-traffic-filters': 'ec-restrictions-fleet-network-security'
+        'ec-restrictions-traffic-filters-kibana-sso': 'ec-restrictions-network-security-kibana-sso'
+        'ec-restrictions-traffic-filters-watcher': 'ec-restrictions-network-security-watcher'
   'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md':
     to: 'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md'
     anchors:
