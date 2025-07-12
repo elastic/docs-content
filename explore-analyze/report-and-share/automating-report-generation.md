@@ -10,27 +10,34 @@ products:
 
 # Automatically generate reports [automating-report-generation]
 
-To automatically generate PDF and CSV reports, generate a POST URL, then submit the HTTP `POST` request using {{watcher}} or a script.
+To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In {{stack}} 9.1, you schedule a recurring task in {{kib}} that generates PDF and PNG reports on a repeating basis. With email notifications configured, you can also automatically share your reports outside of {{kib}}. 
 
 
 ## Create a POST URL [create-a-post-url]
 
 Create the POST URL that triggers a report to generate PDF and CSV reports.
 
+### PDF reports
+
 To create the POST URL for PDF reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
-2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report.
+2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report. From the toolbar, do one of the following:
 
-    * If you are using **Dashboard** or **Visualize Library**, from the toolbar, click **Share > Export**, select the PDF option then click **Copy POST URL**.
-    * If you are using **Canvas**, from the toolbar, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
+    * {applies_to}`stack: ga 9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF option then click **Copy POST URL**.
+    * {applies_to}`stack: ga 9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
+    * {applies_to}`stack: ga 9.0` Click the **Export** icon, then **PDF**. In the export flyout, copy the POST URL.
 
+### CSV reports
 
 To create the POST URL for CSV reports:
 
 1. Go to **Discover**.
 2. Open the saved Discover session you want to share.
-3. In the toolbar, click **Share > Export > Copy POST URL**.
+3. In the toolbar, do one of the following:
+  
+   * {applies_to}`stack: ga 9.0` Click **Share > Export > Copy POST URL**.
+   * {applies_to}`stack: ga 9.1` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.
 
 
 ## Use Watcher [use-watcher]
@@ -159,3 +166,35 @@ If you experience issues with the deprecated report URLs after you upgrade {{kib
 :::{important}
 In earlier {{kib}} versions, you could use the `&sync` parameter to append to report URLs that held the request open until the document was fully generated. The `&sync` parameter is now unsupported. If you use the `&sync` parameter in Watcher, you must update the parameter.
 :::
+
+## Schedule reports in {{kib}} [schedule-report-generation]
+
+```{applies_to}
+stack: preview 9.1
+```
+
+% In the tip, need to add info for configuring email notifications in Serverless, Cloud, and self-hosted. Also following up on the sub-steps under step 4.
+
+Save time by creating a recurring {{kib}} task that takes a snapshot of your Discover session, dashboard, or visualization and generates a PDF or PNG report on your chosen schedule. With email notifications configured, you can also automatically share reports outside of {{kib}}.
+
+::::{tip} 
+To configure email notifications...
+::::
+
+1. Open the saved Discover session, dashboard, or visualization you want to share. 
+2. Click the **Export** icon, then **Schedule export**.
+3. Enter the requested details, and (optional) enable **Print format** to generate the report in a printer-friendly format.
+4. Set a schedule for generating the report. 
+
+    * **Date**: Choose when you want {{kib}} to start generating the report.
+    * **Timezone**: Choose the timezone of your data.
+    * **Repeat**: Specify when and how often you want to {{kib}} to generate the report.  
+
+5. (Optional) Enable **Send by email** to specify a list of email addresses to share the report with. When {{kib}} generates the report, it will attach it to an email and send it on the schedule that you specified. The email will also include a link to download the report.
+6. Click **Schedule exports** to save the schedule. 
+
+A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule, find other existing schedules, and more.
+
+::::{important} 
+If you disable a schedule, _you cannot re-enable it_. If you want to continue generating reports, you must create a new schedule.
+::::
