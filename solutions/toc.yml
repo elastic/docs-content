@@ -466,6 +466,11 @@ toc:
       - file: security/elastic-security-serverless.md
       - file: security/get-started.md
         children:
+          - file: security/get-started/quickstarts.md
+            children:
+              - file: security/get-started/get-started-detect-with-siem.md
+              - file: security/get-started/get-started-endpoint-security.md
+              - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
           - file: security/get-started/create-security-project.md
           - file: security/get-started/elastic-security-ui.md
