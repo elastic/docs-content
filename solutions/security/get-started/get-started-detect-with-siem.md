@@ -9,18 +9,17 @@ products:
 
 # Quickstart: Detect and respond to threats with SIEM
 
-{{elastic-sec}} is a unified security solution that brings together SIEM, endpoint security, and cloud security into a single platform. This makes it easier to protect, investigate, and respond to security events from all areas within your environment.
-
-In this guide, we'll learn how to use some of {{elastic-sec}}'s SIEM features to detect, investigate, and respond to threats. 
+In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM features to detect, investigate, and respond to threats. 
 
 ## Prerequisites 
 
-To get started exploring {{elastic-sec}}, log in to your {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md). 
+* Access to a  {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md). 
+* Ensure you have the appropriate [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
 
 
 ## Add data using {{elastic-defend}}
 
-Before you can start using {{elastic-sec}}, you need to choose an integration to start collecting and analyzing your data. For this guide, we're going to use the {{elastic-defend}} integration. {{elastic-defend}} detects and protects endpoints from malicious activity and provides automated response options before damage and loss occur. 
+Before you can start using {{elastic-sec}}, you need to choose an integration to start collecting and analyzing your data. For this guide, we're going to use the {{elastic-defend}} integration. {{elastic-defend}} detects and protects endpoints from malicious activity, and provides automated response options before damage and loss occur. You have full control over which protections are enabled 
 
 :::::{stepper} 
 ::::{step} Install the Elastic Defend integration
@@ -45,7 +44,7 @@ Before you can start using {{elastic-sec}}, you need to choose an integration to
 
 ::::{step} Add the Elastic Agent
 
-{{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. 
+[{{agent}}](/reference/fleet/index.md#elastic-agent) is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. You'll need to install this component so it can monitor any malicious activity on your hosts. 
 
 :::{dropdown} Steps to add {{agent}}
 1. In the **Add agent** flyout that appears after you install the {{elastic-defend}} integration, you'll see the policy selected that you previously added. Leave the default enrollment token selected. 
@@ -67,7 +66,7 @@ If you’re using macOS, some versions may require you to grant {{elastic-endpoi
 
 After you install the {{agent}} with {{elastic-defend}}, several endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—are automatically enabled on protected hosts. This means that not only does {{elastic-defend}} detect the behavior and generate an alert, but it also blocks it. Due to this maximum level of protection, we recommend modifying the configuration policy to _detect_ instead of _prevent_. This will allow you to track which alerts are generating over a specific time period before enabling higher protection, if desired. 
 
-:::{dropdown} Steps to modify an integration policy
+:::{dropdown} Steps to modify an endpoint policy
 1. From the left navigation menu, go to **Assets** → **Endpoints** → **Policies**. 
 2. From the list, select the policy you want to configure. The integration policy configuration page appears.
 3. On the **Policy settings** tab, for each protection, switch the protection level from `Prevent` to `Detect`. 

@@ -1,5 +1,5 @@
 ---
-navigation_title: Secure my hosts with endpoint security
+navigation_title: Protect my hosts with endpoint security
 description: A quick start guide to securing your hosts with endpoint security.
 applies_to:
   serverless:
@@ -7,13 +7,13 @@ products:
   - id: security
 ---
 
-# Quickstart: Secure my hosts with endpoint security
+# Quickstart: Protect my hosts with endpoint security
 
 In this guide, you’ll learn how to use {{elastic-sec}} to protect your hosts from malware, ransomware, and other threats.
 
 ## Prerequisites 
 
-* Log in to your {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md) to learn how to create one. 
+* Access to a {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md) to learn how to create one. 
 * Ensure you have the appropriate [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
 * Ensure you have the appropriate user role to configure an integration policy and access the **Endpoints** page.
 

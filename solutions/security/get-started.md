@@ -11,6 +11,18 @@ products:
 
 # Get started [getting-started]
 
+New to {{elastic-sec}}? Discover more about our security features and how to get started. This section describes how to set up {{elastic-sec}}, install {{agent}} and the {{elastic-defend}} integration on your hosts, and use the {{elastic-sec}} UI in {{kib}}.
+
+:::::{{stepper}}
+::::{{step}} Choose your deployment type 
+
+Elastic provides several self-managed or Elastic-managed options for you to install {{elastic-sec}}. For simplicity and speed, we recommend one of our {{ecloud}} options. Review 
+::::
+
+
+
+:::::
+
 This section describes how to set up {{elastic-sec}}, install {{agent}} and the {{elastic-defend}} integration on your hosts, and use the {{elastic-sec}} UI in {{kib}}. To get started, click on one of the following tutorials, depending on your use case:
 
 * [Detect threats in my data with SIEM](https://www.elastic.co/getting-started/security/detect-threats-in-my-data-with-siem)

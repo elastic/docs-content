@@ -11,9 +11,9 @@ products:
 
 In this quickstart guide, you'll learn how to get started with Elastic Security for Cloud Security so you can monitor, detect, and investigate anomalous activity within cloud environments.
 
-
 ## Prerequisites 
 
+* Access to a {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md) to learn how to create one. 
 * An admin account for the cloud service provider (CSP) you want to use.  
 
 
@@ -45,7 +45,7 @@ Consider also adding the Cloud Native Vulnerability Management (CNVM) integratio
 
 ## View the Cloud Security Posture dashboard
 
-The Cloud Posture dashboard summarizes your cloud infrastructure's overall performance against security guidelines defined by the Center for Internet Security (CIS). It shows configuration risk metrics for all of your monitored cloud accounts and Kubernetes clusters and groups them by specific parameters. All configuration risks the integration identifies are listed on the **Findings** page. 
+The Cloud Posture dashboard summarizes your cloud infrastructure's overall performance against security guidelines defined by the Center for Internet Security (CIS). It shows configuration risk metrics for all of your monitored cloud accounts and Kubernetes clusters and groups them by specific parameters. All configuration risks the integration identifies are called benchmark rules, and are listed on the **Findings** page. 
 
 The dashboard also shows your overall compliance score, and your compliance score for each CIS section. Use these scores to determine how securely configured your overall cloud environment is. To learn more, refer to our [documentation](/solutions/security/cloud/cspm-dashboard.md).
 
@@ -59,9 +59,9 @@ To access the Cloud Security Posture dashboard, go to **Dashboards** → **Cloud
 
 ## Analyze Findings 
 
-After you install the CSPM integration, it evaluates the configuration of resources in your environment every 24 hours. It lists the results and whether a given resource passed or failed evaluation against a specific security guideline on the **Findings** page, which you can access from the left navigation menu. By default, the Findings page lists all findings without any grouping or filtering. However, we recommend [filtering the data](/solutions/security/cloud/findings-page.md#cspm-findings-page-filter-findings) for failed findings. 
+After you install the CSPM integration, it evaluates the configuration of resources in your environment every 24 hours. It lists the results and whether a given resource passed or failed evaluation against a specific security guideline on the **Findings** page, which you can access from the left navigation menu. By default, the Findings page lists all findings without any grouping or filtering. However, we recommend [filtering the data](/solutions/security/cloud/findings-page.md#cspm-findings-page-filter-findings) for failed findings. You can also [customize](/solutions/security/cloud/findings-page.md#cspm-customize-the-findings-table) the table to control which columns appear.  
 
-To remediate a failed finding, Click the arrow to the left of a failed finding to open the findings flyout, then follow the steps under **Remediation**. 
+To remediate a failed finding, click the arrow to the left of a failed finding to open the findings flyout, then follow the steps under **Remediation**. 
 
 :::{image} /solutions/images/security-gs-cloudsec-findings-flyout.gif
 :alt: Findings flyout
@@ -82,3 +82,11 @@ You can create detection rule directly from the Findings page:
 2. Click Take action, then Create a detection rule. This automatically creates a detection rule that creates alerts when the associated benchmark rule generates a failed finding.
 3. To review or customize the new rule, click View rule. For example, you may want to set up a rule action—like an email or Slack notification—when alerts are generated. To learn more about rule actions, refer to [this topic](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications).   
 
+## More resources 
+
+Now that you've configured CSPM, check out these other Cloud Security resources: 
+
+* [CSPM for Google Cloud Posture (GCP)](/solutions/security/cloud/get-started-with-cspm-for-gcp.md) and [Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md) 
+* [Kubernetes security posture management](/solutions/security/cloud/kubernetes-security-posture-management.md)
+* [Cloud native vulnerability management](/solutions/security/cloud/cloud-native-vulnerability-management.md)
+* [Cloud workload protection for VMs](/solutions/security/cloud/cloud-workload-protection-for-vms.md)
