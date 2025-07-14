@@ -8,14 +8,14 @@ products:
   - id: cloud-serverless
 ---
 
-# Spaces and {{elastic-sec}} FAQ [security-spaces-faq]
+# Spaces and {{elastic-defend}} FAQ [security-spaces-faq]
 
 This page introduces {{elastic-sec}} space awareness and answers frequently asked questions about how {{elastic-defend}} integration policies, endpoint artifacts, and endpoint response actions function when using {{kib}} spaces.
 
 ::::{admonition} Key points
 * Artifacts such as trusted applications, event filters, and response action history are scoped by space to provide granular control over access.
 * Role-based access control (RBAC) defines who can manage global and space-specific resources. Users can view, edit, or manage artifacts based on their role privileges and the space context. 
-* You need the global management privilege to manage global artifacts (those not associated with specific policies).
+* You need the **Global artifact management** privilege to manage global artifacts (those not associated with specific policies).
 :::: 
 
 ::::{note}
@@ -74,7 +74,7 @@ Global artifacts are space agnostic and thus eppear in all spaces.
 
 Users can assign artifacts to any policies they have access to within their assigned space.
 
-When an artifact entry is created within a space, it is owned by that space. To edit or delete the artifact, you must either be in the owning space or have global management privileges. 
+When an artifact entry is created within a space, it is owned by that space. To edit or delete the artifact, you must either be in the owning space or have **Global artifact management** privileges. 
 
 
 **What happens if my policy uses an artifact owned by a space I don't have access to?**
@@ -87,7 +87,7 @@ If an artifact is associated with a policy that isn't visible in the current spa
 **Why is an endpoint artifact marked as “read-only”?**
 
 An artifact may appear as read-only if:
-- It is a global artifact, and you do not have global management privileges.
+- It is a global artifact, and you do not have **Global artifact management** privileges.
 - The artifact was created in a different space.
 
 In these situations, editing may be disabled, and tooltips will provide additional context.
