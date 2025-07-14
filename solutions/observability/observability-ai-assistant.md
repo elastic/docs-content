@@ -306,7 +306,7 @@ Main functions:
 :   Get relevant Elastic documentation. This function is only available if the product documentation is installed.
 
 `summarize`
-:   Stores facts in the knowledge database users request it. Creates an embedding that you can recall with a semantic search. When creating summarizations, make sure to craft them in a way that can be recalled with semantic search, and that it answers the user's original request. Summarize is only available if the knowledge base is installed.
+:   Store information and facts in the knowledge base for future use. This tool is only available if the knowledge base has already been installed.
 
 Additional functions are available when your cluster has APM data:
 
