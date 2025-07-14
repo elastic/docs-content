@@ -22,13 +22,13 @@ Filtering network traffic, by IP address or CIDR block, is one of the security l
 There are types of filters are available for filtering by IP address or CIDR block:
 
 * **Ingress or inbound IP filters**: These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the UI.
-* **Egress or outbound IP filters**: These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is currently only available through the [Traffic Filtering API](/deploy-manage/security/ec-traffic-filtering-through-the-api.md). {applies_to}`ess: beta` {applies_to}`serverless: unavailable` 
+* **Egress or outbound IP filters**: These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is currently only available through the [Traffic Filtering API](/deploy-manage/security/network-security-api.md). {applies_to}`ess: beta` {applies_to}`serverless: unavailable` 
 
 Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console.
 
-To learn how IP filters work together, and alongside [private connection policies](private-link-traffic-filters.md), refer to [](/deploy-manage/security/network-security-policies.md).
+To learn how IP filters work together, and alongside [private connection policies](private-connectivity.md), refer to [](/deploy-manage/security/network-security-policies.md).
 
-To learn how to manage IP filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
+To learn how to manage IP filters using the Traffic Filtering API, refer to [](/deploy-manage/security/network-security-api.md).
 
 :::{note}
 To learn how to create IP filters for {{ece}} deployments, refer to [](ip-filtering-ece.md).

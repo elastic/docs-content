@@ -43,10 +43,6 @@ You can set up CSPM for GCP either by enrolling a single project, or by enrollin
 7. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
-::::{admonition} Important
-Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
-::::
-
 ## Agent-based deployment [cspm-gcp-agent-based]
 
 
