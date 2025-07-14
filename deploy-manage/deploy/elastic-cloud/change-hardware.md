@@ -10,7 +10,7 @@ products:
 
 # Customize instance configuration [ec-change-instance-configuration]
 
-This document explains how to modify the instance configurations used by specific components of your deployment without changing the overall hardware profile assigned to the deployment. This advanced configuration scenario is useful when specific situations in which we may need to migrate an Elasticsearch tier or stateless resource to a different hardware type.
+This document explains how to modify the instance configurations used by specific components of your deployment without changing the overall hardware profile assigned to the deployment. This advanced configuration scenario is useful in situations where you need to migrate an Elasticsearch tier or stateless resource to a different hardware type.
 
 ## Consideration [ec-considerations-on-changing-ic]
 
