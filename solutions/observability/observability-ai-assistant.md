@@ -278,37 +278,46 @@ Main functions:
 `alerts`
 :   Get alerts for {{observability}}.
 
+`changes`
+:   Get change points like spikes and dips for logs and metrics data.
+
 `elasticsearch`
 :   Call {{es}} APIs on your behalf.
+
+`execute_connector`
+:   Call a {{kib}} connector on your behalf.
+
+`get_alerts_dataset_info`
+:   Get information about alerts data within a specified time range.
+
+`get_data_on_screen`
+:   Get the structured data of content currently visible on the user's screen. Use this function to provide more accurate and context-aware responses to your questions.
+
+`get_dataset_info`
+:    Get information about available indices and datasets and their fields.
 
 `kibana`
 :   Call {{kib}} APIs on your behalf.
 
-`summarize`
-:   Summarize parts of the conversation.
+`query`
+:   Generate, execute, and visualize queries based on your request.
 
-`visualize_query`
-:   Visualize charts for ES|QL queries.
+`retrieve_elastic_doc`
+:   Get relevant Elastic documentation. This function is only available if the product documentation is installed.
+
+`summarize`
+:   Store information and facts in the knowledge base for future use. This function is only available if the [knowledge base](#obs-ai-add-data) has already been installed.
 
 Additional functions are available when your cluster has APM data:
 
-`get_apm_correlations`
-:   Get field values that are more prominent in the foreground set than the background set. This can be useful in determining which attributes (such as `error.message`, `service.node.name`, or `transaction.name`) are contributing to, for instance, a higher latency. Another option is a time-based comparison, where you compare before and after a change point.
+`get_apm_dataset_info`
+:   Get information about APM data.
 
 `get_apm_downstream_dependencies`
 :   Get the downstream dependencies (services or uninstrumented backends) for a service. Map the downstream dependency name to a service by returning both `span.destination.service.resource` and `service.name`. Use this to drill down further if needed.
 
-`get_apm_error_document`
-:   Get a sample error document based on the grouping name. This also includes the stacktrace of the error, which might hint to the cause.
-
-`get_apm_service_summary`
-:   Get a summary of a single service, including the language, service version, deployments, the environments, and the infrastructure that it is running in. For example, the number of pods and a list of their downstream dependencies. It also returns active alerts and anomalies.
-
 `get_apm_services_list`
 :   Get the list of monitored services, their health statuses, and alerts.
-
-`get_apm_timeseries`
-:   Display different APM metrics (such as throughput, failure rate, or latency) for any service or all services and any or all of their dependencies. Displayed both as a time series and as a single statistic. Additionally, the function  returns any changes, such as spikes, step and trend changes, or dips. You can also use it to compare data by requesting two different time ranges, or, for example, two different service versions.
 
 ### Use contextual prompts [obs-ai-prompts]
 

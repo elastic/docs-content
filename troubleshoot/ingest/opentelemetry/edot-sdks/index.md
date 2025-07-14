@@ -20,3 +20,7 @@ Find solutions to common issues with EDOT SDKs.
 - [Node.js](/troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md)
 - [PHP](/troubleshoot/ingest/opentelemetry/edot-sdks/php/index.md)
 - [Python](/troubleshoot/ingest/opentelemetry/edot-sdks/python/index.md)
+
+:::{warning}
+Avoid using EDOT SDKs alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to unexpected behavior, conflicting instrumentation, or duplicated telemetry.
+:::
