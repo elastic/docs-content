@@ -27,10 +27,9 @@ Models from third-party LLM providers.
 
 | **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Model** | **Claude 4: Opus**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Claude 3.7: Sonnet**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Claude 3.5: Sonnet v4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **GPT-4o-mini**             | Excellent | Great     | Great     | Great     | Poor      | Good
+| **Model** | **Claude Opus 4**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
+|           | **Claude Sonnet 3.7**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
+|           | **Claude Sonnet 4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **GPT-4.1**                 | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **Gemini 2.0 Flash 001**    | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **Gemini 2.5 Pro**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
@@ -42,8 +41,8 @@ Models you can [deploy yourself](/solutions/security/ai/connect-to-own-local-llm
 
 | **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration**
 | --- | --- | --- | --- | --- | --- | --- |
-| **Model** | **Mistral‑Small‑3.2‑24B‑Instruct‑2506** | Excellent | Poor | Excellent | Excellent | Good | N/A
-|           | **Mistral-Small-3.1-24B-Instruct-2503** | Excellent | Poor | Excellent | Excellent | Good | N/A
+| **Model** | **Mistral‑Small‑3.2‑24B‑Instruct‑2506** | Excellent | Good | Excellent | Excellent | Good | N/A
+|           | **Mistral-Small-3.1-24B-Instruct-2503** | Excellent | Good | Excellent | Excellent | Good | N/A
 |           | **Mistral Nemo**   | Good | Good  | Great | Good | Poor | Poor |
 |           | **LLama 3.2**      | Good | Poor  | Good  | Poor | Poor | Good |
 |           | **LLama 3.1 405b** | Good | Great | Good  | Good | Poor | Poor |
