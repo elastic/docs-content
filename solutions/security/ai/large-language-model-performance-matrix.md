@@ -28,8 +28,8 @@ Models from third-party LLM providers.
 | **Feature** | - | **Assistant - General** | **Assistant - {{esql}} generation** | **Assistant - Alert questions** | **Assistant - Knowledge retrieval** | **Attack Discovery** | **Automatic Migration** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **Model** | **Claude Opus 4**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
+|           | **Claude Sonnet 4**        | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **Claude Sonnet 3.7**      | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
-|           | **Claude Sonnet 4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **GPT-4.1**                 | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **Gemini 2.0 Flash 001**    | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
 |           | **Gemini 2.5 Pro**          | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent
