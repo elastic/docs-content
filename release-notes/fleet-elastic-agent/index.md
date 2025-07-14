@@ -26,6 +26,27 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.0.4 [fleet-elastic-agent-9.0.4-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.4-features-enhancements]
+
+**Elastic Agent**
+
+* Add File Logs Only Motel Kube-Stack Configuration. [#8785]({{agent-pull}}8785)
+
+### Fixes [fleet-elastic-agent-9.0.4-fixes]
+
+**Elastic Agent**
+
+* Remove Incorrect Logging That Unprivileged Installations Are In Beta. [#8715]({{agent-pull}}8715) [#8689]({{agent-issue}}8689)
+* Ensure Standalone Elastic Agent Uses Log Level From Configuration Instead Of Persisted State. [#8784]({{agent-pull}}8784) [#8137]({{agent-issue}}8137)
+* Resolve Deadlocks In Runtime Checkin Communication. [#8881]({{agent-pull}}8881) [#7944]({{agent-issue}}7944)
+* Removed Init.d Support From Rpm Packages. [#8896]({{agent-pull}}8896) [#8840]({{agent-issue}}8840)
+
+**Fleet Server**
+
+* Include The Base Error For Json Decode Error Responses. [#5069]({{fleet-server-pull}}5069)
+
 ## 9.0.3 [fleet-elastic-agent-9.0.3-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.0.3-features-enhancements]
