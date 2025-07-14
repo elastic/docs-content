@@ -306,7 +306,7 @@ Main functions:
 :   Get relevant Elastic documentation. This function is only available if the product documentation is installed.
 
 `summarize`
-:   Store information and facts in the knowledge base for future use. This function is only available if the knowledge base has already been installed.
+:   Store information and facts in the knowledge base for future use. This function is only available if the [knowledge base](#obs-ai-add-data) has already been installed.
 
 Additional functions are available when your cluster has APM data:
 
