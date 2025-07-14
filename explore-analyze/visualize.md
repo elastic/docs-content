@@ -24,13 +24,14 @@ $$$panels-editors$$$
 |  | [Field statistics](visualize/field-statistics.md) | Add a field statistics view of your data to your dashboards |
 |  | [Custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
 |  | | |
-| Annotations and navigation | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |
+| Annotations and navigation | [Collapsible sections](dashboards/arrange-panels.md#collapsible-sections) | Organize your dashboard into sections that can be collapsed and save loading time |
+|  | [Markdown text](visualize/text-panels.md) | Add context to your dashboard with markdown-based **text** |
 |  | [Image](visualize/image-panels.md) | Personalize your dashboard with custom images |
 |  | [Links](visualize/link-panels.md) | Add links to other dashboards or to external websites |
 |  | | |
-| Machine Learning and Analytics | [Anomaly swim lane](machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md) | Display the results from machine learning anomaly detection jobs |
-|  | [Anomaly chart](machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md) | Display an anomaly chart from the **Anomaly Explorer** |
-|  | [Single metric viewer](machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md) | Display an anomaly chart from the **Single Metric Viewer** |
+| Machine Learning and Analytics | [Anomaly swim lane](machine-learning/anomaly-detection/ml-ad-view-results.md) | Display the results from machine learning anomaly detection jobs |
+|  | [Anomaly chart](machine-learning/anomaly-detection/ml-ad-view-results.md) | Display an anomaly chart from the **Anomaly Explorer** |
+|  | [Single metric viewer](machine-learning/anomaly-detection/ml-ad-view-results.md) | Display an anomaly chart from the **Single Metric Viewer** |
 |  | [Change point detection](machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) | Display a chart to visualize change points in your data |
 |  | | |
 | Observability | [SLO overview](/solutions/observability/incident-management/service-level-objectives-slos.md) | Visualize a selected SLO’s health, including name, current SLI value, target, and status |

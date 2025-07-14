@@ -48,7 +48,7 @@ PUT _index_template/my-index-template
 
 After the index template is created, new indices that use the template will be configured as a logs data stream. You can start indexing data and [using the data stream](use-data-stream.md).
 
-You can also set the index mode and adjust other template settings in [the Elastic UI](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md).
+You can also set the index mode and adjust other template settings in [the Elastic UI](/manage-data/data-store/index-basics.md#index-management-manage-index-templates).
 
 
 ## Synthetic source [logsdb-synthetic-source]
