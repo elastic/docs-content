@@ -10,34 +10,34 @@ products:
 
 # Spaces and {{elastic-sec}} FAQ [security-spaces-faq]
 
-This page introduces {{elastic-sec}} space awareness and answers frequently asked questions about how {{elastic-defend}} integration policies, {{elastic-endpoint}} artifacts, and {{elastic-endpoint}} response actions function when utilizing {{kib}} spaces.
+This page introduces {{elastic-sec}} space awareness and answers frequently asked questions about how {{elastic-defend}} integration policies, endpoint artifacts, and endpoint response actions function when using {{kib}} spaces.
 
 ::::{admonition} Key points
 * Artifacts such as trusted applications, event filters, and response action history are scoped by space to provide granular control over access.
-* Role-Based Access Control (RBAC) defines who can manage global and space-specific resources. Users can view, edit, or manage artifacts based on their role privileges and the space context. 
+* Role-based access control (RBAC) defines who can manage global and space-specific resources. Users can view, edit, or manage artifacts based on their role privileges and the space context. 
 * You need the global management privilege to manage global artifacts (those not associated with specific policies).
 :::: 
 
 ::::{note}
-{{elastic-sec}}'s space awareness works in conjunction with {{fleet}}'s space awareness. space awareness is enabled by default in both applications, but for {{stack}} deployments that existed prior to version 9.1, {{fleet}} requires you to manually “opt-in” so that existing data can become space aware. To learn more, refer to [Fleet roles and privileges](/reference/fleet/fleet-roles-privileges.md).
+{{elastic-sec}}'s space awareness works in conjunction with {{fleet}}'s space awareness. Space awareness is enabled by default in both applications, but for {{stack}} deployments that existed prior to version 9.1, {{fleet}} requires you to manually “opt-in” so that existing data can become space aware. To learn more, refer to [](/reference/fleet/fleet-roles-privileges.md).
 ::::
 
 ## General FAQ [spaces-security-faq-general]
 **What are spaces in {{kib}}, and how do they affect what I see?**
 
-spaces allow your organization to segment data and configurations within {{kib}}. If you're working in a specific space, you’ll only see the policies, {{agents}}, {{elastic-endpoint}}s, and data that belong to that space. 
+Spaces allow your organization to segment data and configurations within {{kib}}. If you're working in a specific space, you’ll only see the policies, {{agents}}, endpoints, and data that belong to that space. 
 
 
 **Does this matter to me if my organization doesn't use spaces?**
 
-If your organization doesn't use spaces, the only thing you need to know is that to manage Global Artifacts you need the Global Artifact management privilege.
+If your organization doesn't use spaces, the only thing you need to know is that to manage global artifacts, you need the **Global Artifact Management** privilege.
 
-When you upgrade your {{stack}} deployment to 9.1.0, the Global Artifact Management privilege will be automatically granted to any role that grants the “All” privilege to at least one artifact type.
+When you upgrade your {{stack}} deployment to 9.1.0, the **Global Artifact Management** privilege is automatically granted to any role that grants the **All** privilege to at least one artifact type.
 
 
 **How do I use spaces with {{elastic-agent}} and {{elastic-defend}}?**
 
-spaces are defined at the {{kib}} level. Once a space is created, {{elastic-agent}} policies can be assigned to it. To do this, go to your list of agent policies in {{fleet}} and select the policy you want to assign. Navigate to the **Settings** tab, find the **spaces** section, and select the space(s) where you want the policy to appear.
+Spaces are defined at the {{kib}} level. Once a space is created, {{elastic-agent}} policies can be assigned to it. To do this, go to your list of agent policies in {{fleet}}, and select the policy you want to assign. Navigate to the **Settings** tab, find the **Spaces** section, and select the space(s) where you want the policy to appear.
 
 Once assigned, the {{agents}}—and {{elastic-defend}} endpoints, if applicable—associated with this policy are visible and manageable only within the designated space(s). 
 
@@ -48,21 +48,21 @@ Yes, {{elastic-agent}} policies and all associated artifacts can be assigned to 
 
 
 ## {{elastic-defend}} policies [spaces-security-faq-defend-policies]
-**How do spaces impact the visibility of Endpoints in the security app?**
+**How do spaces impact the visibility of endpoints in the {{security-app}}?**
 
-The list of {{elastic-endpoint}}s that you see depends on your current space. Only {{elastic-endpoint}}s associated with policies in the space you're working in will appear.
+The list of endpoints that you see depends on your current space. Only endpoints associated with policies in the space you're working in will appear.
 
 
 **How do spaces impact the visibility of {{elastic-defend}} integration policies in {{elastic-sec}}?**
 
-The **Policies** list displays only the policies associated with your current space. The {{elastic-endpoint}} count for each policy includes only the endpoints within that space. 
+The **Policies** list displays only the policies associated with your current space. The endpoint count for each policy includes only the endpoints within that space. 
 
 
-## {{elastic-endpoint}} artifacts [spaces-security-faq-endpoint-artifacts]
+## Endpoint artifacts [spaces-security-faq-endpoint-artifacts]
 
-**What are Endpoint artifacts?**
+**What are endpoint artifacts?**
 
-Endpoint artifacts are the various objects that can be associated with {{elastic-endpoint}}s and {{elastic-defend}} policies. These include Trusted Applications, Event Filters, Host Isolation Exceptions, and Blocklist items. Artifacts can be global (shared across all policies) or per-policy (specific to individual policies). Per-policy configuration of artifacts is available only with an Enterprise license.
+Endpoint artifacts are the various objects that can be associated with endpoints and {{elastic-defend}} policies. These include trusted applications, event filters, host isolation exceptions, and blocklist items. Artifacts can be global (shared across all policies) or per-policy (specific to individual policies). Per-policy configuration of artifacts is available only with an Enterprise license.
 
 
 **How do global artifacts work across spaces?**
@@ -74,7 +74,7 @@ Global artifacts are space agnostic and thus eppear in all spaces.
 
 Users can assign artifacts to any policies they have access to within their assigned space.
 
-When an artifact entry is created within a space, it is owned by that space. To edit or delete the artifact, you must either be in the owning space or have Global management privileges. 
+When an artifact entry is created within a space, it is owned by that space. To edit or delete the artifact, you must either be in the owning space or have global management privileges. 
 
 
 **What happens if my policy uses an artifact owned by a space I don't have access to?**
@@ -87,7 +87,7 @@ If an artifact is associated with a policy that isn't visible in the current spa
 **Why is an endpoint artifact marked as “read-only”?**
 
 An artifact may appear as read-only if:
-- It is a global artifact, and you do not have Global management privileges.
+- It is a global artifact, and you do not have global management privileges.
 - The artifact was created in a different space.
 
 In these situations, editing may be disabled, and tooltips will provide additional context.
@@ -102,50 +102,50 @@ Each artifact has a `tag` field, whose value corresponds to the owner space's ID
 
 **How does RBAC work for artifacts assigned to a particular space?**
 
-Specific {{kib}} privileges for each artifact type (such as Event Filters or Trusted Applications) allow you to manage (create, edit, delete, and assign) those artifacts types globally or per policy, but only for policies within the spaces you have access to. These artifact types include 
+Specific {{kib}} privileges for each artifact type—such as event filters or trusted applications—allow you to manage (create, edit, delete, and assign) those artifact types globally or per policy, but only for policies within the spaces you have access to. These artifact types include: 
 
 * Trusted applications
 * Host isolation exceptions
 * Blocklist items
 * Event filters
 
-The `Global Artifact Management` privilege grants full control over artifacts in any space. This privilege by itself does not enable you to manage the different artifact types, but rather grants additional privileged actions to those users that have the “All” privilege to a given artifact type. This includes the ability to:
+The **Global Artifact Management** privilege grants full control over artifacts in any space. This privilege by itself does not enable you to manage the different artifact types, but rather grants additional privileged actions to those users that have the **All** privilege to a given artifact type. This includes the ability to:
 
 * Create, edit, and delete global artifacts of any type
 * Manage per-policy artifacts, even if they were created in a different space
 * Convert an artifact between global and per-policy scope
 
-Endpoint Exceptions are global only, so you need the `Global Artifact Management` privilege to create, edit, or delete them.
+Endpoint exceptions are global-only, so you need the **Global Artifact Management** privilege to create, edit, or delete them.
 
 
 **How do I change which space owns a per-policy artifact?**
 
 Artifact tags enable you to change the owning space of per-policy artifacts (those not assigned globally). When an artifact is created, a tag for the space it was created in is automatically added. The format of this tag is `ownerspaceId:<space_id_here>`, for example: `ownerspaceId:default`. Artifacts can have multiple owner space tags, which enables you to have multiple spaces where you can manage per-policy artifacts.
 
-Updates to owner space tags are supported via API. This type of update requires that you have the `Global Artifact Management` privilege. Refer to the [Security API docs](/solutions/security/apis.md) to learn how to use each artifact type's corresponding API.
+Updates to owner space tags are supported via API. This type of update requires that you have the **Global Artifact Management** privilege. Refer to the [Security endpoint management APIs]({{kib-apis}}/group/endpoint-security-endpoint-management-api) to learn how to use each artifact type's corresponding API.
 
 
 **What happens if I delete a space that “owns” certain per-policy artifacts?**
 
-When a space is deleted, artifacts that were previously created from the deleted space will continue to be manageable by  users who have the `Global Artifact Management` privilege. Alternatively, you can update their owner space via API, as detailed above.
+When a space is deleted, artifacts that were previously created from the deleted space will continue to be manageable by users who have the **Global Artifact Management** privilege. Alternatively, you can update their owner space via API, as detailed above.
 
 
 
 ## Endpoint response actions [spaces-security-faq-endpoint-response-actions]
 
-**How do spaces impact Response Actions**
+**How do spaces impact response actions?**
 
-Response actions for both {{elastic-defend}} and third-party EDR solutions are associated with the {{fleet}} integration policy that's connected to the {{elastic-agent}} that executed the response action. A user authorized to view the response actions history Log can only view items associated with integration policies that are accessible in the active space. If you share an integration policy with a new space, the associated response actions will automatically become visible in that space. There are some conditions that can result in response action history not being accessible by default-we call these “ophan” response actions (refer to [What are orphan response actions and how can I access them?](#spaces-security-faq-orphan-response-actions)).
+Response actions for both {{elastic-defend}} and third-party EDR solutions are associated with the {{fleet}} integration policy that's connected to the {{elastic-agent}} that executed the response action. A user authorized to view the response actions history log can only view items associated with integration policies that are accessible in the active space. If you share an integration policy with a new space, the associated response actions will automatically become visible in that space. There are some conditions that can result in response action history not being accessible by default—we call these ["orphan” response actions](#spaces-security-faq-orphan-response-actions)).
 
 
 **How are response actions visible across spaces?**
 
-You can see the response action history for hosts whose Fleet integration policies are visible in the the current space. This includes actions initiated in other spaces; you can see all historical response actions associated with integration policies that are accessible in your current space.
+You can see the response action history for hosts whose {{fleet}} integration policies are visible in the the current space. This includes actions initiated in other spaces; you can see all historical response actions associated with integration policies that are accessible in your current space.
 
 
 **If a policy is deleted, how does that impact my response history?**
 
-When an integration policy is deleted in {{fleet}}, response actions associated with that integration policy will become orphans and will no longer be accessible via the response action history log. You can force these actions to appear in the action history log (refer to [What are orphan response actions and how can I access them?](#spaces-security-faq-orphan-response-actions)).
+When an integration policy is deleted in {{fleet}}, response actions associated with that integration policy will become orphans and will no longer be accessible via the response action history log. You can force these actions to appear in the action history log (refer to [](#spaces-security-faq-orphan-response-actions)).
 
 
 **What happens if my {{agent}} moves to a new integration policy?**
@@ -155,26 +155,26 @@ When an {{agent}} moves to a new integration policy, its response actions histor
 If the new integration policy is not shared with the same spaces as the prior integration policy, then some history may be hidden; you can only view response action history for integration policies you have access to in the current space.
 
 
-**How are automated response actions impacted by spaces?**
+**How do spaces impact automated response actions?**
 
 Automated response actions (currently supported only for {{elastic-defend}}) work similarly to regular response actions, with a few caveats:
 
-* If you unenroll a host before the detection engine processes an event from that host, the response action will fail. The failed response action will not appear in the UI (either as part of the alert details, or in the response actions history log) because it won't be associated with the agent policy that was running on the host. These actions will become orphans (refer to [What are orphan response actions and how can I access them?](#spaces-security-faq-orphan-response-actions)).
+* If you unenroll a host before the detection engine processes an event from that host, the response action will fail. The failed response action will not appear in the UI (either as part of the alert details, or in the response actions history log) because it won't be associated with the agent policy that was running on the host. These actions will become [orphans](#spaces-security-faq-orphan-response-actions).
 
 * If a policy that triggered automated response actions moves to a new space or is shared with a new space, links to the detection engine rule that triggered the automated response actions will go to a “rule not found” page. This occurs because the rule is space-specific and not accessible in your current space.
 
 
-**How are third party EDR response actions impacted by spaces?**
+**How do spaces impact third-party response actions?**
 
-Response actions for third party EDR systems behave the same as response actions for {{elastic-defend}}. However, each space must be configured to support the given 3rd party EDR system. For example, each space must have its own connector to the third-party system.
-
-
-**Will third party EDR response actions continue to work if I move (or share) the associated policy to a new space?**
-
-No, response actions will not work unless a connector for the given third party EDR exists in the space where the policy was moved. Connectors are space specific and can not be shared or moved to a new space, thus a new instance of the connector must be created in the new space so that the policy in that space can send response actions to the third party system.
+Response actions for third-party EDR systems behave the same as response actions for {{elastic-defend}}. However, each space must be configured to support the given third-party system. For example, each space must have its own connector to the third-party system.
 
 
-## What are orphan response actions? [spaces-security-faq-orphan-response-actions]
+**Will third-party response actions continue to work if I move (or share) the associated policy to a new space?**
+
+Response actions will not work unless a connector for the given third-party EDR exists in the space where the policy was moved. Connectors are space-specific and cannot be shared or moved to a new space; a new instance of the connector must be created in the new space so that the policy in that space can send response actions to the third-party system.
+
+
+### What are orphan response actions? [spaces-security-faq-orphan-response-actions]
 “Orphan” response actions are those associated only with deleted integration policies. These response actions are not visible in the response action history log because it can't be determined whether your current space has visibility of the policy associated with the response actions.
 
 
@@ -183,10 +183,10 @@ No, response actions will not work unless a connector for the given third party 
 To make orphan response actions visible in a given space, you can make an API call with the space ID where you want them to appear. Below are several examples:
 
 ::::{important}
-in order to use this API, you need {{kib}}'s built-in `superuser` role.
+To use this API, you need {{kib}}'s built-in `superuser` role.
 ::::
 
-:::{dropdown} View current orphan response actions space id:
+:::{dropdown} View current orphan response action's space ID:
 
 API call:
 `GET /internal/api/endpoint/action/_orphan_actions_space`
@@ -223,10 +223,10 @@ Response:
 To remove the space ID where orphan response actions appear, call the API with an empty string for `spaceId`.
 
 
-## Endpoint Detection Rules [spaces-security-faq-endpoint-detection-rules]
+## Endpoint protection rules [spaces-security-faq-endpoint-protection-rules]
 
-By default, prebuilt detection rules use an index pattern that may be too broad for use in a particular space. In order to ensure that the space only shows the desired data in that space, you may need to customize the rule.
-For example, the {{elastic-defend}} rule has an index pattern that picks up all data sent to `logs-endpoint.alerts-*`. This index pattern would pick up all events sent by Elastic Defend which may not be desirable. 
+By default, [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) use an index pattern that may be too broad for use in a particular space. In order to ensure that the space only shows the desired data in that space, you may need to customize the rule.
+For example, the Endpoint Security ({{elastic-defend}}) rule has an index pattern that picks up all data sent to `logs-endpoint.alerts-*`. This index pattern would pick up all events sent by {{elastic-defend}}, which may not be desirable. 
 
 
 ## Osquery [spaces-security-faq-osquery]
