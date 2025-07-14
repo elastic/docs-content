@@ -200,7 +200,7 @@ This returns the following response based on the final rrf score for each result
 A different, and more intuitive, way to provide hybrid search, is to linearly combine the top documents of different retrievers using a weighted sum of the original scores.
 Since, as above, the scores could lie in different ranges, we can also specify a `normalizer` that would ensure that all scores for the top ranked documents of a retriever lie in a specific range.
 
-To implement this, we define a `linear` retriever, and along with a set of retrievers that will generate the heterogeneous results sets that we will combine.
+To implement this, we define a `linear` retriever, along with a set of retrievers that will generate the heterogeneous results sets that we will combine.
 We will solve a problem similar to the above, by merging the results of a `standard` and a `knn` retriever.
 As the `standard` retriever’s scores are based on BM25 and are not strictly bounded, we will also define a `minmax` normalizer to ensure that the scores lie in the [0, 1] range.
 We will apply the same normalizer to `knn` as well to ensure that we capture the importance of each document within the result set.
