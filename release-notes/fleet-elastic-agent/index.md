@@ -41,7 +41,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Remove Incorrect Logging That Unprivileged Installations Are In Beta. [#8715]({{agent-pull}}8715) [#8689]({{agent-issue}}8689)
 * Ensure Standalone Elastic Agent Uses Log Level From Configuration Instead Of Persisted State. [#8784]({{agent-pull}}8784) [#8137]({{agent-issue}}8137)
 * Resolve Deadlocks In Runtime Checkin Communication. [#8881]({{agent-pull}}8881) [#7944]({{agent-issue}}7944)
-* Removed Init.d Support From Rpm Packages. [#8896]({{agent-pull}}8896) [#8840]({{agent-issue}}8840)
+* Remove Init.d Support From Rpm Packages. [#8896]({{agent-pull}}8896) [#8840]({{agent-issue}}8840)
 
 **Fleet Server**
 
