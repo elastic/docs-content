@@ -37,6 +37,10 @@ We cover the following examples:
 
 Refer to [](traffic-filtering.md) to learn more about network security across all deployment types.
 
+:::{tip}
+Policies in {{ecloud}} are the equivalent of rule sets in {{ece}} and the {{ecloud}} API.
+:::
+
 ## API reference
 
 To learn more about these endpoints, refer to the reference for your deployment type:
@@ -56,15 +60,18 @@ In {{ecloud}}, terminology related to network security has changed to more accur
 
 | {{ecloud}} concept | API terminology | 
 | --- | --- | 
-| Network security | Traffic filters |
-| Network security policy | Traffic filter or IP filtering rule set | 
+| Network security | Traffic filters | 
+| Network security policy | Traffic filter |
+| IP filter policy | IP filtering rule set | 
 | IP filter source | IP filter rule | 
-| Private connection | Private link traffic filter |
-| VPC filter | Private link filter source |
-
+| Private connection policy | Private link traffic filter |
+| VPC filter | Private link filter rule |
 
 ## Create an IP filter policy or IP filtering rule set [ec-create-a-traffic-filter-rule-set]
 
+IP filter policies in {{ecloud}} are the equivalent of IP filtering rule sets in {{ece}}.
+
+Both policies and rule sets consist of multiple unique entries, each representing a source IP address or CIDR range. In {{ecloud}}, these entries are referred to as sources. In {{ece}} and the {{ecloud}} API, these entries are referred to as rules.
 
 ### Ingress [ec-ip-traffic-filters-ingress-rule-set]
 
@@ -228,6 +235,8 @@ deployment:
   ess:
 ```
 
+Learn how to create a private connection policy using the {{ecloud}} API. In the API, a VPC filter in a private connection policy is referred to as a rule.
+
 :::{tip}
 Private connection policies are optional for AWS PrivateLink and GCP Private Service Connect. After the VPC endpoint and DNS record are created, private connectivity is established.
 
@@ -328,7 +337,9 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 
 ## Update a policy or rule set [ec-update-a-traffic-filter-rule-set]
 
-Send a request like the following to update an IP filter ingress policy or rule set:
+Send a request like the following to update an IP filter ingress policy or rule set.
+
+Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
 ::::{tab-set}
 :group: ech-ece
@@ -416,7 +427,9 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 
 ## Associate a policy or rule set with a project or deployment [ec-associate-rule-set-with-a-deployment]
 
-Send a request like the following to associate a policy or rule set with a project or deployment:
+Send a request like the following to associate a policy or rule set with a project or deployment.
+
+Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
 :::::{tab-set}
 :group: ech-serverless-ece
@@ -487,7 +500,9 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 
 ## Remove a policy or rule set from a project or deployment [ec-delete-rule-set-association-with-a-deployment]
 
-Send a request like the following to remove a policy or rule set from a project or deployment:
+Send a request like the following to remove a policy or rule set from a project or deployment.
+
+Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
 ::::{tab-set}
 :group: ech-serverless-ece
@@ -543,7 +558,9 @@ https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULE
 
 ## Delete a policy or rule set [ec-delete-a-rule-set]
 
-Send a request like the following to delete a policy or rule set:
+Send a request like the following to delete a policy or rule set.
+
+Policies in {{ecloud}} are the equivalent of rule sets in {{ece}}.
 
 ::::{tab-set}
 :group: ech-serverless-ece
