@@ -64,11 +64,11 @@ If you’re using macOS, some versions may require you to grant {{elastic-endpoi
 
 ::::{step} Modify policy configuration settings
 
-After you install the {{agent}} with {{elastic-defend}}, several endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—are automatically enabled on protected hosts. This means that not only does {{elastic-defend}} detect the behavior and generate an alert, but it also blocks it. Due to this maximum level of protection, we recommend modifying the configuration policy to _detect_ instead of _prevent_. This will allow you to track which alerts are generating over a specific time period before enabling higher protection, if desired. 
+After you install the {{agent}} with {{elastic-defend}}, the Endpoint Security ({{elastic-defend}}) detection rule is automatically enabled, which also enables several endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—on protected hosts. This means that not only does {{elastic-defend}} monitor for these behaviors and generates an alert if any are detected, but it also blocks it. Due to this maximum level of protection, we recommend modifying the policy to _detect_ instead of _prevent_ so that only an alert will be generated, and you can decide how to respond to the threat. Then, closely monitor which alerts and how many are generating over a specific time period before enabling higher protection, if needed. 
 
 :::{dropdown} Steps to modify an endpoint policy
 1. From the left navigation menu, go to **Assets** → **Endpoints** → **Policies**. 
-2. From the list, select the policy you want to configure. The integration policy configuration page appears.
+2. From the list, select the policy you want to configure. The policy configuration page appears.
 3. On the **Policy settings** tab, for each protection, switch the protection level from `Prevent` to `Detect`. 
 4. Review and configure the event collection and antivirus settings as appropriate. 
 5. Once you're finished making changes, click **Save** in the lower-right corner to update the policy.  
@@ -81,7 +81,7 @@ For a comprehensive explanation of all endpoint protections and policy settings,
 
 ## Add Elastic prebuilt detection rules
 
-Detection rules allow you to monitor your environment by searching for source events, matches, sequences, or {{ml}} job anomaly results that meet their criteria. When a rule’s criteria are met, {{elastic-sec}} generates an alert. While you can create your own rules tailored for your environment, Elastic ships out-of-the-box prebuilt rules that you can install. 
+Detection rules allow you to monitor your environment by searching for source events, matches, sequences, or {{ml}} job anomaly results that meet their criteria. When a rule’s criteria are met, {{elastic-sec}} generates an alert. While you can create your own rules tailored for your environment, Elastic ships out-of-the-box prebuilt rules that you can install. Remember that if you installed {{elastic-defend}}, the Endpoint Security rule is already enabled. 
 
 :::{dropdown} Steps to install and enable prebuilt rules
 1. On the **Get Started** page, scroll down to the **Configure rules and alerts** section. 
@@ -159,7 +159,7 @@ At the bottom of the **Alerts** page is the alerts table, which includes a compr
 Consider [grouping alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#group-alerts) by other parameters such as rule name, user name, host name, source IP address, or any other field. You can select up to three fields. 
 :::
 
-To view specific details about an alert, in the alerts table, click the **View details** button, which opens the alert details flyout. Here, you can view a quick description of the alert, or conduct a deep dive to investigate. Each section of the alert details flyout provides a different insight, and the **Take Action** menu at the bottom provides several options for interacting with the alert. 
+To view specific details about an alert, in the alerts table, click the **View details** button, which opens the alert details flyout. Here, you can view a quick description of the alert, or conduct a deep dive to investigate. Each section of the alert details flyout provides a different insight, and the **Take Action** menu at the bottom provides several options to respond to or interact with the alert. 
 
 :::{image} /solutions/images/security-gs-siem-alert-flyout.png
 :alt: Alert details flyout
