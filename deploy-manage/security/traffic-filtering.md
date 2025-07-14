@@ -21,7 +21,9 @@ products:
 
 # Network security
 
-Network security allows you to control how your deployments and clusters can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to only the sources that you trust.
+Network security allows you to control how your deployments and clusters can be accessed. Add another layer of security to your installation and deployments by restricting traffic to only the sources that you trust.
+
+Elastic also offers other network security features, such as TLS encryption. For an overview of the available security features, refer to [](/docs/deploy-manage/security.md).
 
 :::{note}
 The network security feature was formerly referred to as traffic filtering.
