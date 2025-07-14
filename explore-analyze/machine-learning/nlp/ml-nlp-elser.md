@@ -265,7 +265,7 @@ For a file-based access, follow these steps:
 
 ## Testing ELSER [_testing_elser]
 
-You can test the deployed model in {{kib}}. Navigate to **Model Management** > **Trained Models** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. Locate the deployed ELSER model in the list of trained models, then select **Test model** from the Actions menu.
+You can test the deployed model in {{kib}}. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. Locate the deployed ELSER model in the list of trained models, then select **Test model** from the Actions menu.
 
 You can use data from an existing index to test the model. Select the index, then a field of the index you want to test ELSER on. Provide a search query and click **Test**. Evaluating model recall is simpler when using a query related to the documents.
 
