@@ -19,7 +19,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 :::{dropdown} Elastic Defend's Network driver may lead to bug checks
 
-**Applies to: {{agent}} 9.0.3**
+**Applies to: {{agent}} 8.17.8, 8.18.3, and 9.0.3**
 
 On July 8, 2025, a known issue was discovered in Elastic Defend's network driver that may lead to kernel pool corruption, resulting in bug checks (BSODs) on Windows systems with a large number of long-lived network connections that remain inactive for 30+ minutes. This issue has only been observed on Windows Server.
 
@@ -30,6 +30,10 @@ For more information, check [Issue elastic/endpoint#90](https://github.com/elast
 **Workaround**
 
 If you're on 9.0.3, upgrade to the fixed version: [9.0.3+build202507110136](https://www.elastic.co/downloads/past-releases/elastic-agent-9-0-3+build202507110136).
+
+If you're on 8.18.3, upgrade to the fixed version: [8.18.3+build202507101319](https://www.elastic.co/downloads/past-releases/elastic-agent-8-18-3+build202507101319).
+
+If you're on 8.17.8, downgrade to 8.17.7 or install 8.17.9 once it becomes available.
 
 If you're unable to upgrade or downgrade, set `advanced.kernel.network: false` in your Defend advanced policy.
 :::
