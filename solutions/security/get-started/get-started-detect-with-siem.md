@@ -13,7 +13,7 @@ In this quickstart guide, we'll learn how to use some of {{elastic-sec}}'s SIEM 
 
 ## Prerequisites 
 
-* Access to a  {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md). 
+* Access to an {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md). 
 * Ensure you have the appropriate [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
 
 
