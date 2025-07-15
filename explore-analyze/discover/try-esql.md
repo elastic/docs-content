@@ -40,7 +40,7 @@ To load the sample data:
    Let’s say we want to find out what operating system users have and how much RAM is on their machine.
 
 3. Set the time range to **Last 7 days**.
-4. Copy the query below:
+4. Copy the following query. To make queries more readable, you can put each processing command on a new line.
 
     ```esql
     FROM kibana_sample_data_logs <1>
@@ -49,17 +49,13 @@ To load the sample data:
 
     1. We’re specifically looking for data from the sample web logs we just installed.
     2. We’re only keeping the `machine.os` and `machine.ram` fields in the results table.
-
-   ::::{tip}
-   Put each processing command on a new line for better readability.
-   ::::
-
-5. Click **▶Run**.
-   ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
+   
    ::::{note}
    {{esql}} keywords are not case sensitive.
    ::::
 
+5. Click **▶Run**.
+   ![An image of the query result](/explore-analyze/images/kibana-esql-machine-os-ram.png "")
 
 Let’s add `geo.dest` to our query to find out the geographical destination of the visits and limit the results.
 

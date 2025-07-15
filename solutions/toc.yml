@@ -8,6 +8,9 @@ toc:
           - file: search/run-elasticsearch-locally.md
           - file: search/serverless-elasticsearch-get-started.md
           - file: search/search-connection-details.md
+          - file: search/get-started/quickstarts.md
+            children:
+              - file: search/get-started/semantic-search.md
       - file: search/api-quickstarts.md
         children:
           - file: search/elasticsearch-basics-quickstart.md
@@ -21,6 +24,8 @@ toc:
         children:
           - file: search/full-text/how-full-text-works.md
           - file: search/full-text/search-with-synonyms.md
+            children:
+              - file: search/full-text/create-update-synonyms-api-example.md
           - file: search/full-text/text-analysis-during-search.md
           - file: search/full-text/search-relevance.md
             children:
@@ -150,7 +155,6 @@ toc:
                       - file: observability/apm/service-map.md
                       - file: observability/apm/service-overview.md
                       - file: observability/apm/mobile-service-overview.md
-                  - hidden: observability/apm/inventory.md
                   - file: observability/apm/drill-down-into-data.md
                     children:
                       - file: observability/apm/transactions-ui.md
