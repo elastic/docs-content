@@ -306,7 +306,7 @@ Main functions:
 :   Get relevant Elastic documentation. This function is only available if the product documentation is installed.
 
 `summarize`
-:   Summarize parts of the conversation.
+:   Store information and facts in the knowledge base for future use. This function is only available if the [knowledge base](#obs-ai-add-data) has already been installed.
 
 Additional functions are available when your cluster has APM data:
 
@@ -318,9 +318,6 @@ Additional functions are available when your cluster has APM data:
 
 `get_apm_services_list`
 :   Get the list of monitored services, their health statuses, and alerts.
-
-`get_apm_timeseries`
-:   Display different APM metrics (such as throughput, failure rate, or latency) for any service or all services and any or all of their dependencies. Displayed both as a time series and as a single statistic. Additionally, the function  returns any changes, such as spikes, step and trend changes, or dips. You can also use it to compare data by requesting two different time ranges, or, for example, two different service versions.
 
 ### Use contextual prompts [obs-ai-prompts]
 
