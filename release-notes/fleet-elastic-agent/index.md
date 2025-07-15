@@ -32,7 +32,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 **Elastic Agent**
 
-* Add file logs only motel kube-stack configuration. [#8785]({{agent-pull}}8785)
+* Add file logs only managed OTLP input kube-stack configuration. [#8785]({{agent-pull}}8785)
 
 ### Fixes [fleet-elastic-agent-9.0.4-fixes]
 
