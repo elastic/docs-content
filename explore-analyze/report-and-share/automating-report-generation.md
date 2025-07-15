@@ -170,6 +170,7 @@ In earlier {{kib}} versions, you could use the `&sync` parameter to append to re
 
 ```{applies_to}
 stack: preview 9.1
+serverless: preview
 ```
 
 Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. 
