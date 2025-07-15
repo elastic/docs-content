@@ -174,7 +174,7 @@ Using Docker or Podman as container runtime is a configuration local to the host
 
     ```text
     [engine]
-    env = ["HTTP_PROXY=http://{proxy-ip}:{proxy-port}", "HTTPS_PROXY=http://{proxy-ip}:{proxy-port}"]
+    env = ["HTTP_PROXY=http://<MY_PROXY_IP>:<MY_PROXY_PORT>", "HTTPS_PROXY=http://<MY_PROXY_IP>:<MY_PROXY_PORT>"]
     ```
 
 7. Reload systemd configuration

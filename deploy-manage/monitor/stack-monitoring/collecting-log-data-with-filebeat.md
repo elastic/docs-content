@@ -45,7 +45,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon-2:9200"] <1>
+      hosts: ["<es-monitoring-host1>:9200", "<es-monitoring-host2>:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"

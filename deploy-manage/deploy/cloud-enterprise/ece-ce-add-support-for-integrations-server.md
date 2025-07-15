@@ -57,7 +57,7 @@ Refer to [set deployment template API](https://www.elastic.co/docs/api/doc/cloud
 
 ::::{dropdown} Update template API request example
 ```sh
-curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
+curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" <COORDINATOR_HOST_URL>:12443/api/v1/deployments/templates/{template_id}?region=ece-region -H 'content-type: application/json' -d '
 {
   "name": "ECE Custom Template",
   "description": "ECE custom template with added Integrations Server",
