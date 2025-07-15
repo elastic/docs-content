@@ -79,7 +79,7 @@ To monitor your configuration more closely, we recommend creating detection rule
 You can create detection rule directly from the **Findings** page: 
 
 1. Click the arrow to the left of a finding to open the findings flyout.
-2. Click Take action, then Create a detection rule. This automatically creates a detection rule that creates alerts when the associated benchmark rule generates a failed finding.
+2. Click **Take action**, then **Create a detection rule**. This creates a detection rule that creates alerts when the associated benchmark rule generates a failed finding.
 3. To review or customize the new rule, click View rule. For example, you may want to set up a rule action—like an email or Slack notification—when alerts are generated. To learn more about rule actions, refer to [this topic](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications).   
 
 ## More resources 
