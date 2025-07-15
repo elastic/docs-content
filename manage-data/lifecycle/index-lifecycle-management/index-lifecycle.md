@@ -84,7 +84,7 @@ The following actions are available in the `warm` lifecycle phase. Actions are p
 | [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) | Updates the index settings to change which nodes are allowed to host the index shards and change the number of replicas. |
 | [Migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) | Moves the index to the [data tier](/manage-data/lifecycle/data-tiers.md) that corresponds to the current phase by updating the `index.routing.allocation.include._tier_preference` index setting. |
 | [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) | Blocks writes on a source index and shrinks it into a new index with fewer primary shards. |
-| [Force Merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | Reduce the number of segments in each shard by merging some of them together. |
+| [Force Merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | Reduces the number of segments in each shard by merging some of them together. |
 
 ### Cold phase
 
