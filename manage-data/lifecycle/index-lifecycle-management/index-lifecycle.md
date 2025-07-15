@@ -62,14 +62,14 @@ The following actions are available in the `hot` lifecycle phase. Actions are pe
 
 | Action | Description |
 | --- | --- |
-| [Set Priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
+| [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
 | [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
 | [Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) | Rolls over a target to a new index when the existing index satisfies the specified rollover conditions. |
-| [Read-Only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
+| [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
 | [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | Aggregates a time series (TSDS) index and stores pre-computed statistical summaries (min, max, sum, value_count and avg) for each metric field grouped by a configured time interval. |
 | [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) | Blocks write operations on a source index and shrinks it into a new index with fewer primary shards. |
-| [Force Merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | Reduces the number of segments in each shard by merging some of them together. |
-| [Searchable Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
+| [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | Reduces the number of segments in each shard by merging some of them together. |
+| [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
 
 ### Warm phase
 
@@ -77,14 +77,14 @@ The following actions are available in the `warm` lifecycle phase. Actions are p
 
 | Action | Description |
 | --- | --- |
-| [Set Priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
+| [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
 | [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
-| [Read-Only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
+| [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
 | [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | Aggregates a time series (TSDS) index and stores pre-computed statistical summaries (`min`, `max`, `sum`, `value_count`, and `avg`) for each metric field grouped by a configured time interval. |
 | [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) | Updates the index settings to change which nodes are allowed to host the index shards and change the number of replicas. |
 | [Migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) | Moves the index to the [data tier](/manage-data/lifecycle/data-tiers.md) that corresponds to the current phase by updating the `index.routing.allocation.include._tier_preference` index setting. |
 | [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) | Blocks writes on a source index and shrinks it into a new index with fewer primary shards. |
-| [Force Merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | Reduces the number of segments in each shard by merging some of them together. |
+| [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | Reduces the number of segments in each shard by merging some of them together. |
 
 ### Cold phase
 
@@ -92,11 +92,11 @@ The following actions are available in the `cold` lifecycle phase. Actions are p
 
 | Action | Description |
 | --- | --- |
-| [Set Priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
+| [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | Sets the priority level of the index, which determines the order in which indices are recovered following a node restart. |
 | [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
-| [Read-Only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
+| [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
 | [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | Aggregates a time series (TSDS) index and stores pre-computed statistical summaries (min, max, sum, value_count and avg) for each metric field grouped by a configured time interval. |
-| [Searchable Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
+| [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
 | [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) | Updates the index settings to change which nodes are allowed to host the index shards and change the number of replicas. |
 | [Migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) | Moves the index to the [data tier](/manage-data/lifecycle/data-tiers.md) that corresponds to the current phase by updating the `index.routing.allocation.include._tier_preference` index setting. |
 
@@ -107,7 +107,7 @@ The following actions are available in the `frozen` lifecycle phase. Actions are
 | Action | Description |
 | --- | --- |
 | [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | Converts a [{{ccr-init}}](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ccr) follower index into a regular index, enabling the shrink, rollover, and searchable snapshot actions to be performed safely on follower indices. |
-| [Searchable Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
+| [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
 
 ### Delete phase
 
@@ -115,7 +115,7 @@ The following actions are available in the `delete` lifecycle phase. Actions are
 
 | Action | Description |
 | --- | --- |
-| [Wait For Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md) | Waits for the specified snapshot lifecycle management (SLM) policy to be executed before removing the index, ensuring that a snapshot of the deleted index is available. |
+| [Wait for snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md) | Waits for the specified snapshot lifecycle management (SLM) policy to be executed before removing the index, ensuring that a snapshot of the deleted index is available. |
 | [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) | Permanently removes the index. |
 
 ### Phases and available actions [phases-availability]
@@ -127,14 +127,14 @@ The following table summarizes the actions available in each phase.
 | [Allocate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) | ✕ | ✓ | ✓ | ✕ | ✕ |
 | [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) | ✕ | ✕ | ✕ | ✕ | ✓ |
 | [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | ✓ | ✓ | ✓ | ✕ | ✕ |
-| [Force Merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | ✓ | ✓ | ✕ | ✕ | ✕ |
+| [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | ✓ | ✓ | ✕ | ✕ | ✕ |
 | [Migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) | ✕ | ✓ | ✓ | ✕ | ✕ |
-| [Read-Only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | ✓ | ✓ | ✓ | ✕ | ✕ |
+| [Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | ✓ | ✓ | ✓ | ✕ | ✕ |
 | [Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) | ✓ | ✕ | ✕ | ✕ | ✕ |
-| [Searchable Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | ✓ | ✕ | ✓ | ✓ | ✕ |
-| [Set Priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | ✓ | ✓ | ✓ | ✕ | ✕ |
+| [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | ✓ | ✕ | ✓ | ✓ | ✕ |
+| [Set priority](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-set-priority.md) | ✓ | ✓ | ✓ | ✕ | ✕ |
 | [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) | ✓ | ✓ | ✕ | ✕ | ✕ |
 | [Unfollow](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-unfollow.md) | ✓ | ✓ | ✓ | ✓ | ✕ |
-| [Wait For Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md) | ✕ | ✕ | ✕ | ✕ | ✓ |
+| [Wait for snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md) | ✕ | ✕ | ✕ | ✕ | ✓ |
 
 
