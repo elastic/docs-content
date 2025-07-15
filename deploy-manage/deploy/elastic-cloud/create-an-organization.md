@@ -15,7 +15,6 @@ products:
 
 # Sign up and create an organization
 
-$$$general-sign-up-trial-what-is-included-in-my-trial$$$
 
 To sign up:
 
