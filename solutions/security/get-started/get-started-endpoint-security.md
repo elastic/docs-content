@@ -1,5 +1,5 @@
 ---
-navigation_title: Protect my hosts with endpoint security
+navigation_title: Protect your hosts with endpoint security
 description: A quick start guide to securing your hosts with endpoint security.
 applies_to:
   serverless:
