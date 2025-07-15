@@ -78,7 +78,7 @@ stack: preview 9.1
 serverless: preview
 ```
 
-Manage the size of your alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by running an alert cleanup task, which deletes alerts according to the criteria that you define.
+Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by running an alert cleanup task, which deletes alerts according to the criteria that you define.
 
 :::{note}
 The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Make sure to take regular snapshots of your cluster to backup your alert data in case you ever need to restore it.
@@ -91,7 +91,7 @@ The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Ma
 
 ### Run the alert cleanup task [run-alert-clean-up-task]
 
-Manage the size of your alert indices in your space by running an alert cleanup task, which deletes alerts according to the criteria that you define. Alerts that are attached to cases are not deleted. 
+Remove old or unused alerts your space by running an alert cleanup task, which deletes alerts according to the criteria that you define. Alerts that are attached to cases are not deleted. 
 
 1. Open the Rules page by going to **Stack Management > Alerts and Insights > Rules** in the main menu or using the global search field.
 2. Click **Settings** to open the settings for all rules in the space.
