@@ -25,7 +25,7 @@ Before you can start using {{elastic-sec}}, you need to choose an integration to
 ::::{step} Install the Elastic Defend integration
 
 :::{dropdown} Steps to install {{elastic-defend}}
-1. On the **Get started** page, in the **Ingest your data** section, select **{{elastic-defend}}**, then click **Add {{elastic-defend}}**. Elastic has several integrations for you to choose from — so you can select one of our recommended integrations or another of your choice. 
+1. On the **Get started** page, in the **Ingest your data** section, select **{{elastic-defend}}**, then click **Add {{elastic-defend}}**. Elastic has several integrations for you to choose from—so you can select one of our recommended integrations or another of your choice. 
 
     :::{note} 
     If you've added data through another integration besides {{elastic-defend}}, you can skip to [Add Elastic prebuilt detection rules](#add-elastic-prebuilt-detection-rules). 
