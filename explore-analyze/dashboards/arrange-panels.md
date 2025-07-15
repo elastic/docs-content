@@ -61,10 +61,6 @@ To move a panel:
 3. Press `Enter` or `Space` again to release the panel.
 4. Save the dashboard.
 
-:::{note}
-You can't move panels from one collapsible section into another using this method.
-:::
-
 To resize a panel:
 
 1. Using `Tab`, browse to the {icon}`scale` panel action and press `Enter` or `Space` to lock the action.
