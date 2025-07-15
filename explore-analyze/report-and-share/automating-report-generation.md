@@ -10,8 +10,7 @@ products:
 
 # Automatically generate reports [automating-report-generation]
 
-To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In {{stack}} 9.1, you schedule a recurring task in {{kib}} that generates PDF and PNG reports on a repeating basis. With email notifications configured, you can also automatically share your reports outside of {{kib}}. 
-
+To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In 9.1.0 and Serverless, you can use {{kiba}} to generate reports on a recurring schedule and share them outside of {{kib}} with a list of emails that you specify.
 
 ## Create a POST URL [create-a-post-url]
 
@@ -167,34 +166,59 @@ If you experience issues with the deprecated report URLs after you upgrade {{kib
 In earlier {{kib}} versions, you could use the `&sync` parameter to append to report URLs that held the request open until the document was fully generated. The `&sync` parameter is now unsupported. If you use the `&sync` parameter in Watcher, you must update the parameter.
 :::
 
-## Schedule reports in {{kib}} [schedule-report-generation]
+## Schedule and share reports [schedule-report-generation]
 
 ```{applies_to}
 stack: preview 9.1
 ```
 
-% In the tip, need to add info for configuring email notifications in Serverless, Cloud, and self-hosted. Also following up on the sub-steps under step 4.
+Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. 
 
-Save time by creating a recurring {{kib}} task that takes a snapshot of your Discover session, dashboard, or visualization and generates a PDF or PNG report on your chosen schedule. With email notifications configured, you can also automatically share reports outside of {{kib}}.
+### Requirements [scheduled-reports-reqs]
 
-::::{tip} 
-To configure email notifications...
-::::
+* To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access)
+* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges.
+* Sharing reports outside of {{kib}} requires a default preconfigured email connector.
+
+   * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a preconfigured email connector that uses the SMTP protocol to send mail messages. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
+   * **Self-managed users**: You must set up a default preconfigured email connector by defining it in your `kibana.yml` file. To do this:
+     
+     1. Open your `kibana.yml` file. and add a new section for the [`xpack.actions.preconfigured`](kibana://reference/connectors-kibana/pre-configured-connectors.md) setting. 
+     2. Under the `xpack.actions.preconfigured setting`, define the email connector for example: 
+
+        ````
+        xpack.actions.preconfigured:
+          my-email:
+          name: preconfigured-email-connector-type
+          actionTypeId: .email
+          config:
+            service: other
+            from: testsender@test.com
+            host: validhostname
+            port: 8080
+            secure: false
+            hasAuth: true
+          secrets:
+            user: testuser
+            password: passwordkeystorevalue
+         `````
+
+### Create a schedule [create-scheduled-report]
 
 1. Open the saved Discover session, dashboard, or visualization you want to share. 
 2. Click the **Export** icon, then **Schedule export**.
 3. Enter the requested details, and (optional) enable **Print format** to generate the report in a printer-friendly format.
-4. Set a schedule for generating the report. 
+4. Set up a schedule for generating the report.
 
-    * **Date**: Choose when you want {{kib}} to start generating the report.
-    * **Timezone**: Choose the timezone of your data.
-    * **Repeat**: Specify when and how often you want to {{kib}} to generate the report.  
+    * **Date**: Choose when to start generating reports.
+    * **Timezone**: Specify a timezone for the schedule.
+    * **Repeat**: Choose how often you want to generate reports.  
 
-5. (Optional) Enable **Send by email** to specify a list of email addresses to share the report with. When {{kib}} generates the report, it will attach it to an email and send it on the schedule that you specified. The email will also include a link to download the report.
+5. (Optional) To share generated reports outside of Kibana, enable **Send by email** and enter a list of email addresses. Recipients will receive emails with the generated reports attached and on the schedule that you specified.
 6. Click **Schedule exports** to save the schedule. 
 
-A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule, find other existing schedules, and more.
+A message appears, indicating that the schedule is available on the Reporting page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
 ::::{important} 
-If you disable a schedule, _you cannot re-enable it_. If you want to continue generating reports, you must create a new schedule.
+Note that you cannot edit or delete a schedule after you create it. To stop the schedule from running, you must disable it. Disabling a schedule permanently stops it from running. To restart it, you must create a new schedule. 
 ::::
