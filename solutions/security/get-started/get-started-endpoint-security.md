@@ -13,7 +13,7 @@ In this guide, you’ll learn how to use {{elastic-sec}} to protect your hosts f
 
 ## Prerequisites 
 
-* Access to a {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md) to learn how to create one. 
+* Access to an {{sec-serverless}} project. If you don't have one yet, refer to [Create a Security project](/solutions/security/get-started/create-security-project.md) to learn how to create one. 
 * Ensure you have the appropriate [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 
 * Ensure you have the appropriate user role to configure an integration policy and access the **Endpoints** page.
 
