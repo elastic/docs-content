@@ -145,7 +145,7 @@ You can see the response action history for hosts whose {{fleet}} integration po
 
 **If a policy is deleted, how does that impact my response history?**
 
-When an integration policy is deleted in {{fleet}}, response actions associated with that integration policy will become orphans and will no longer be accessible via the response action history log. You can force these actions to appear in the action history log (refer to [](#spaces-security-faq-orphan-response-actions)).
+When an integration policy is deleted in {{fleet}}, response actions associated with that integration policy will become orphans and will no longer be accessible via the response action history log. You can force these actions to appear in the action history log (refer to [Orphan response actions](#spaces-security-faq-orphan-response-actions)).
 
 
 **What happens if my {{agent}} moves to a new integration policy?**
