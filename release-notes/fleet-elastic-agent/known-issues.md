@@ -17,6 +17,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+
 :::{dropdown} [Windows] {{agent}} is unable to re-enroll into {{fleet}}
 
 **Applies to: {{agent}} 9.0.0, 9.0.1, 9.0.2 (Windows only)**
