@@ -10,7 +10,7 @@ products:
 
 # Automatically generate reports [automating-report-generation]
 
-To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In 9.1.0 and Serverless, you can use {{kiba}} to generate reports on a recurring schedule and share them outside of {{kib}} with a list of emails that you specify.
+To automatically generate PDF and CSV reports, generate a POST URL, then submit an HTTP `POST` request using {{watcher}} or a script. In 9.1.0 and Serverless, you can use {{kib}} to generate reports on a recurring schedule and share them with a list of emails that you specify.
 
 ## Create a POST URL [create-a-post-url]
 
