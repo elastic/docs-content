@@ -11,6 +11,103 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
+## July 15, 2025 [serverless-changelog-07152025]
+* {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `eu-central-1` (Frankfurt) and `us-east-2` (Ohio).
+
+## July 7, 2025 [serverless-changelog-07072025]
+
+### Features and enhancements [serverless-changelog-07072025-features-enhancements]
+
+* Adds action to add or remove tags on the **Agent details** page in {{fleet}} [#225433]({{kib-pull}}225433)
+* Adds a new **Profiles** tab to the Inspector flyout in Discover [#222999]({{kib-pull}}222999)
+* Adds new rules callout to Metric, Logs, and Inventory rules in {{obs-serverless}} [#224387]({{kib-pull}}224387)
+* Adds manual test for bulk import functionality in {{obs-serverless}} [#225497]({{kib-pull}}225497)
+* Uses `id` instead of `name` to group vulnerabilities by resource and cloud account in {{sec-serverless}} [#225492]({{kib-pull}}225492)
+* Updates Gemini model in {{sec-serverless}} [#225917]({{kib-pull}}225917)
+* Updates the navigation menu in {{es-serverless}} [#225709]({{kib-pull}}225709)
+
+
+### Fixes [serverless-changelog-07072025-fixes]
+
+* Fixes an issue causing reports to fail with an invalid header error [#225919]({{kib-pull}}225919)
+* Refreshes `Values from a query` options upon dashboard reload [#225101]({{kib-pull}}225101)
+* Removes kebab-case warnings in Console [#226114]({{kib-pull}}226114)
+* Fixes the default title being overwritten by a custom title upon reload in Lens [#225664]({{kib-pull}}225664)
+* Fixes an issue with dashboards where adhoc dataviews were recommended as most relevant when creating a control [#225705]({{kib-pull}}225705)
+* Hides the **Select all** checkbox from single select controls in dashboards [#226311]({{kib-pull}}226311)
+* Fixes edited query being overwritten by the original query when it is resolved in Discover [#224671]({{kib-pull}}224671)
+* Prevents selected document from changing when resizing the **Document** flyout with a keyboard in Discover [#225594]({{kib-pull}}225594)
+* Only returns suggested dashboards for custom threshold alerts in {{obs-serverless}} [#224458]({{kib-pull}}224458)
+* Fixes `Unable to load page` error on the **Schema** page in {{obs-serverless}} [#225481]({{kib-pull}}225481)
+* Limits environment name length when creating an ML job in {{obs-serverless}} [#225973]({{kib-pull}}225973)
+* Fixes `Unable to load page` error on the **Operations** page in {{obs-serverless}} [#226036]({{kib-pull}}226036)
+* Fixes an issue with the AI assistant chat display in {{obs-serverless}} when a device has `Reduce motion` turned on [#226552]({{kib-pull}}226552)
+* Collapses *query tool calls in {{obs-serverless}} [#226078]({{kib-pull}}226078)
+* Adds a title to the rule gap histogram in the **Rules** dashboard in {{sec-serverless}} [#225274]({{kib-pull}}225274)
+* Moves the alerts redirect higher in the components tree in {{sec-serverless}} [#225650]({{kib-pull}}225650)
+* Updates entity links across {{sec-serverless}} to open flyouts instead of redirecting to other pages [#225381]({{kib-pull}}225381)
+* Stops ML rule installation and upgrade errors from showing up for users with Basic licenses [#224676]({{kib-pull}}224676)
+* Updates placeholder text and validation message for **Related integrations** in {{sec-serverless}}  [#225775]({{kib-pull}}225775)
+* Resets to the default value when the `lookbackInterval` field is empty in Machine Learning [#225249]({{kib-pull}}225249)
+* Fixes the handling of time range in embedded anomaly swim lane in Machine Learning [#225803]({{kib-pull}}225803)
+* Adds discernible text to the refresh button on the **Streams** > **Processing** page [#225816]({{kib-pull}}225816)
+* Fixes handling of context limit errors in Playground when using the Elastic Managed LLM [#225360]({{kib-pull}}225360)
+
+## June 30, 2025 [serverless-changelog-06302025]
+
+### Features and enhancements[serverless-changelog-06302025-features-enhancements]
+
+* Adds the ability to schedule reports with a recurring schedule and view previously scheduled reports [#224849]({{kib-pull}}224849)
+* Adds internal CRUD API routes in *Lens* [#223296]({{kib-pull}}223296)
+* Adds `Select all` and `Deselect all` buttons to the options list popover to allow you to make bulk selections in Dashboards and Visualizations [#221010]({{kib-pull}}221010)
+* Adds the flip LOOKUP JOIN parameter in {{esql}} to GA in docs [#225117]({{kib-pull}}225117)
+* Passes the `TimeRange` into the `getESQLResults` in order for queries with `_tstart` and `_tend` to work properly in Discover [#225054]({{kib-pull}}225054)
+* Enables the "expand to fit" query function on mount in Discover [#225509]({{kib-pull}}225509)
+* Adds Logs Essentials for APM/Infra in {{obs-serverless}} [#223030]({{kib-pull}}223030)
+* Allows users to choose which space monitors will be available in {{obs-serverless}} [#221568]({{kib-pull}}221568)
+* Remaps `iInCircle` and `questionInCircle`, and deprecates the `help` icon in the global header [#223142]({{kib-pull}}223142)
+* Adds docs for the chat completion public API in {{obs-serverless}} [#224235]({{kib-pull}}224235) 
+* Enables the Security Entity Analytics Privileged user monitoring feature in {{sec-serverless}} [#224638]({{kib-pull}}224638)
+* Displays visualizations in the key insights panel of the Privileged User Monitoring dashboard in {{sec-serverless}} [#223092]({{kib-pull}}223092)
+* Introduces a new UI to optionally update the `kibana.alert.workflow_status` field for alerts associated with Attack discoveries in {{sec-serverless}} [#225029]({{kib-pull}}225029) 
+* Enables the runscript feature flag in {{sec-serverless}} [#224819]({{kib-pull}}224819)
+* Adds the incremental ID service; exposes the ID in the UI in {{sec-serverless}} [#222874]({{kib-pull}}222874)
+* Adds the `windows.advanced.events.security.provider_etw` field as an advanced policy option in Elastic Defend in {{sec-serverless}} [#222197]({{kib-pull}}222197) 
+* Adds new starter prompts to the AI Assistant in {{sec-serverless}} [#224981]({{kib-pull}}224981)
+* Adds the ability to revert prebuilt rules to their base version in {{sec-serverless}} [#223301]({{kib-pull}}223301)
+* Adds support for a collapsible section in the integration readme in {{kib}} Security [#223916]({{kib-pull}}223916)
+* Adds new severity colors, alignment, and UX for filtering anomalies in {{ml-cap}} [#221081]({{kib-pull}}221081)
+* Updates NL-2-ESQL docs [#224868]({{kib-pull}}224868)
+* Adds keyword highlighting for {{esql}} patterns, and the ability to open a new Discover tab to filter for docs that match the selected pattern [#222871]({{kib-pull}}222871)
+* Enables adaptive allocations and allows you to set max allocations in {{ml-cap}} [#222726]({{kib-pull}}222726)
+* Adds a loading indicator while data sources are being fetched [#225005]({{kib-pull}}225005)
+* Introduces a new home page in {{es-serverless}} [#223172]({{kib-pull}}223172)
+* Adds a Search Home page in {{stack}} classic and the solution navigation in {{es-serverless}} [#225162]({{kib-pull}}225162)
+* Adds updates to streamline the solution navigation in {{es-serverless}} [#224755]({{kib-pull}}224755)
+
+### Fixes [serverless-changelog-06302025-fixes]
+
+* Fixes the panel title sync with saved object when using `defaultTitle` in Dashboards and Visualizations [#225237]({{kib-pull}}225237)
+* Fixes a performance issue in the Lens {{esql}} charts in Dashboards and Visualizations [#225067]({{kib-pull}}225067)
+* Fixes visual issues with truncated long labels and hover styles in Dashboards and Visualizations [#225430]({{kib-pull}}225430)
+* Fixes controls selections that caused multiple fetches in Dashboards and Visualizations [#224761]({{kib-pull}}224761)
+* Ensures package policy names are unique when moving across spaces in Data ingestion and {{fleet}} [#224804]({{kib-pull}}224804) 
+* Fixes export CSV in the Agent list in Data ingestion and {{fleet}} [#225050]({{kib-pull}}225050)
+* Replaces call to registry when deleting {{kib}} assets for custom packages in Data ingestion and {{fleet}} [#224886]({{kib-pull}}224886)
+* Fixes UI error when no tags filter is selected in Data ingestion and {{fleet}} [#225413]({{kib-pull}}225413)
+* Uses bulk helper for bulk importing knowledge base entries in {{obs-serverless}} [#223526]({{kib-pull}}223526)
+* Improves the knowledge base retrieval by rewriting the user prompt before querying {{es}} in {{obs-serverless}} [#224498]({{kib-pull}}224498)
+* Fixes the Agent Explorer page in {{obs-serverless}} [#225071]({{kib-pull}}225071)
+* Hides Settings from serverless navigation in {{obs-serverless}} [#225436]({{kib-pull}}225436)
+* Replaces hard-coded CSS values to us the `euiTheme` instead in {{sec-serverless}} [#225307]({{kib-pull}}225307)
+* Fixes URL query handling for asset inventory flyout in {{sec-serverless}} [#225199]({{kib-pull}}225199)
+* Adds missing model Claude 3.7 to accepted models in {{es-serverless}} [#224943]({{kib-pull}}224943)
+
+
+
+
+
+
 ## June 26, 2025 [serverless-changelog-06262025]
 
 ### Features and enhancements [serverless-changelog-06262025-features-enhancements]
