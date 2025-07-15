@@ -59,7 +59,7 @@ To access the Cloud Security Posture dashboard, go to **Dashboards** → **Cloud
 
 ## Analyze Findings 
 
-After you install the CSPM integration, it evaluates the configuration of resources in your environment every 24 hours. It lists the results and whether a given resource passed or failed evaluation against a specific security guideline on the **Findings** page, which you can access from the left navigation menu. By default, the Findings page lists all findings without any grouping or filtering. However, we recommend [filtering the data](/solutions/security/cloud/findings-page.md#cspm-findings-page-filter-findings) for failed findings. You can also [customize](/solutions/security/cloud/findings-page.md#cspm-customize-the-findings-table) the table to control which columns appear.  
+After you install the CSPM integration, it evaluates the configuration of resources in your environment every 24 hours. It lists the results and whether a given resource passed or failed evaluation against a specific security guideline on the **Findings** page, which you can access from the navigation menu. By default, the Findings page lists all findings without any grouping or filtering. However, we recommend [filtering the data](/solutions/security/cloud/findings-page.md#cspm-findings-page-filter-findings) for failed findings. You can also [customize](/solutions/security/cloud/findings-page.md#cspm-customize-the-findings-table) the table to control which columns appear.  
 
 To remediate a failed finding, click the arrow to the left of a failed finding to open the findings flyout, then follow the steps under **Remediation**. 
 
