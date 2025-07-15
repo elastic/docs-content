@@ -30,7 +30,7 @@ To add the CSPM integration:
 5. Next, choose your deployment option. An agent-based deployment requires you to deploy and manage {{agent}} in the cloud account you want to monitor, whereas an agentless deployment allows you to collect cloud posture data without having to manage the {{agent}} deployment in your cloud. For simplicity, select **Agentless**.
 6. Next, in the **Setup Access** section, choose your preferred authentication method—direct access keys (recommended) or temporary keys. For this guide, we'll use direct access keys. 
 7. Expand the Steps to Generate AWS Account Credentials, and follow the instructions. 
-8. Once you've generated an Access Key ID and Secret Access Key and pasted the credentials, click **Save and continue** to complete deployment. Your data should start to appear within a few minutes.
+8. Once you've generated an access key ID and secret access key and pasted the credentials, click **Save and continue** to complete deployment. Your data should start to appear within a few minutes.
 
 :::{image} /solutions/images/security-gs-cloudsec-cspm.png
 :alt: Cloud Security Posture management integration
