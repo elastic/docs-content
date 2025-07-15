@@ -22,14 +22,14 @@ If you're evaluating MinIO in a test system, do not place MinIO containers on th
 
 ## Deploy MinIO
 
-This section provides guidance and recommendations for deploying MinIO. It does not include installation steps, as MinIO is a third-party product, and its deployment, configuration, and maintenance are outside the scope of Elastic support.
+This section provides guidance and recommendations for deploying MinIO. It does not include installation steps. As MinIO is a third-party product, its deployment, configuration, and maintenance are outside the scope of Elastic support.
 
 For installation instructions, refer to the official [MinIO documentation](https://min.io/docs/).
 
 The performance and reliability of MinIO depend on its configuration and the underlying infrastructure. Consider the following best practices:
 
 * For production use, deploy MinIO in [distributed mode](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#minio-mnmd).
-* Use a single MinIO endpoint with the {{ece}} installation, to simplify repository configuration.
+* Use a single MinIO endpoint with the ECE installation, to simplify repository configuration.
 * Secure access to the MinIO endpoint with TLS.
 
 After deployment, make sure you collect the following values:
@@ -44,7 +44,7 @@ MinIO may report multiple endpoint URLs. Be sure to select the one reachable fro
 
 ### Testing and evaluation
 
-Use the [MinIO Quickstart Guide](https://charts.min.io/) or the [container deployment guide](https://min.io/docs/minio/container/index.html) to spin up a simple standalone MinIO container. Use `-v` to map persistent storage when using `docker` or `podman`.
+Use the [MinIO Quickstart Guide](https://charts.min.io/) or the [container deployment guide](https://min.io/docs/minio/container/index.html) to spin up a simple standalone MinIO container. Use `-v` to map persistent storage when using the `docker` or `podman` options.
 
 ### Production environments
 
