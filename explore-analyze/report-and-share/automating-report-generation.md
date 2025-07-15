@@ -180,10 +180,10 @@ Save time by setting up a recurring task that automatically generates reports an
 * (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges.
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
-   * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a preconfigured email connector that uses the SMTP protocol to send mail messages. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
-   * **Self-managed users**: You must set up a default preconfigured email connector by defining it in your `kibana.yml` file. To do this:
+   * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a built-in preconfigured email connector that uses the SMTP protocol to send emails. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
+   * **Self-managed users**: You must set up a default preconfigured email connector to send notifications outside of {{kib}}. To do this:
      
-     1. Open your `kibana.yml` file. and add a new section for the [`xpack.actions.preconfigured`](kibana://reference/connectors-kibana/pre-configured-connectors.md) setting. 
+     1. Open your `kibana.yml` file. and add a new section for the `xpack.actions.preconfigured` setting. This setting specifies configuration details that are specific to the type of preconfigured connector you're defining. 
      2. Under the `xpack.actions.preconfigured setting`, define the email connector for example: 
 
         ````
@@ -203,6 +203,10 @@ Save time by setting up a recurring task that automatically generates reports an
             password: passwordkeystorevalue
          `````
 
+         :::{tip} 
+         Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirmements for different email services and providers.
+         :::
+
 ### Create a schedule [create-scheduled-report]
 
 1. Open the saved Discover session, dashboard, or visualization you want to share. 
@@ -217,7 +221,7 @@ Save time by setting up a recurring task that automatically generates reports an
 5. (Optional) To share generated reports outside of Kibana, enable **Send by email** and enter a list of email addresses. Recipients will receive emails with the generated reports attached and on the schedule that you specified.
 6. Click **Schedule exports** to save the schedule. 
 
-A message appears, indicating that the schedule is available on the Reporting page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
+A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
 
 ::::{important} 
 Note that you cannot edit or delete a schedule after you create it. To stop the schedule from running, you must disable it. Disabling a schedule permanently stops it from running. To restart it, you must create a new schedule. 
