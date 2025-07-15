@@ -144,7 +144,7 @@ In the visualization section, you can group alerts by a specific view type:
 * **Summary:** Shows how alerts are distributed across specific indicators.
 * **Trend:** Shows the occurrence of alerts over time. 
 * **Counts:** Shows the count of alerts in each group. Although there are default values, you can change the `Group by` parameters. 
-* **Treemap:** Shows the distribution of alerts as nested, proportionally-sized and color-coded tiles based on the number of alerts, and the alert's risk score. This view is useful to quickly pinpoint the most critical alerts.
+* **Treemap:** Shows the distribution of alerts as nested, proportionally sized and color-coded tiles based on the number of alerts, and the alert's risk score. This view is useful to quickly pinpoint the most critical alerts.
 
 :::{image} /solutions/images/security-gs-siem-view-type.png
 :alt: Alerts page, view by type 
