@@ -214,8 +214,6 @@ toc:
           - file: machine-learning/nlp/ml-nlp-limitations.md
       - file: machine-learning/machine-learning-in-kibana.md
         children:
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
           - file: machine-learning/machine-learning-in-kibana/inference-processing.md
   - file: scripting.md
