@@ -24,7 +24,7 @@ Applies to: 9.0.0
 
 **Impact**
 
-The {{elastic-agent}} image is not available from `docker.elastic.co/beats/elastic-agent:9.0.0`. The default manifests for deploying CSPM and CNVM use this image location, resulting in an error.
+The {{elastic-agent}} image is not available from `docker.elastic.co/beats/elastic-agent:9.0.0`. The default manifests for integrations that run {{elastic-agent}} on Kubernetes—such as CSPM or CNVM—use this image location, resulting in an error.
 
 **Workaround**
 
