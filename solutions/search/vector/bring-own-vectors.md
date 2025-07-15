@@ -15,17 +15,13 @@ description: An introduction to vectors and knn search in Elasticsearch.
 {{es}} enables you store and search mathematical representations of your content called _embeddings_ or _vectors_, which help machines understand and process your data more effectively.
 There are two types of representation (_dense_ and _sparse_), which are suited to different types of queries and use cases (for example, finding similar images and content or storing expanded terms and weights).
 
-In this introduction to vector search, you'll store and search for dense vectors.
-In particular, you'll index documents that already have dense vector embeddings into {{es}}.
+In this introduction to [vector search](/solutions/search/vector.md), you'll store and search for dense vectors.
 You'll also learn the syntax for searching these documents using a [k-nearest neighbour](/solutions/search/vector/knn.md) (kNN) query.
-
-To learn more about which type of vector is appropriate for your use case, check out [](/solutions/search/vector.md).
-For an overview of the differences between semantic search and vector search, go to [](/solutions/search/ai-search/ai-search.md).
 
 ## Prerequisites
 
-- If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a project that is optimized for vectors. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
-- If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. The simplest method to complete the steps in this guide is to log in with a user that has the `superuser` built-in role.
+- If you're using {{es-serverless}}, create a project that is optimized for vectors. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+- If you're using {{ech}} or a self-managed cluster, start {{es}} and {{kib}}. The simplest method to complete the steps in this guide is to log in with a user that has the `superuser` built-in role.
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
@@ -39,6 +35,7 @@ To deploy a vector embedding model in {{es}} and generate vectors while ingestin
 
 ::::{tip}
 This is an advanced use case that uses the `dense_vector` field type. Refer to [](/solutions/search/semantic-search.md) for an overview of your options for semantic search with {{es}}.
+To learn about the differences between semantic search and vector search, go to [](/solutions/search/ai-search/ai-search.md).
 ::::
 
 :::::{stepper}
@@ -79,8 +76,8 @@ PUT /amazon-reviews
 3. The `similarity` parameter defines the similarity function used to compare the query vector to the document vectors. `cosine` is the default similarity function for `dense_vector` fields in {{es}}.
 
 Here we're using an 8-dimensional embedding for readability.
-The vectors that neural network models work with can have several hundreds or even thousands of dimensions and simply represent a point in a multi-dimensional space.
-Each vector dimension represents a feature, or a characteristic, of the unstructured data.
+The vectors that neural network models work with can have several hundreds or even thousands of dimensions that represent a point in a multi-dimensional space.
+Each vector dimension represents a _feature_ or a characteristic of the unstructured data.
 ::::
 ::::{step} Add documents with embeddings
 
@@ -97,7 +94,6 @@ PUT /amazon-reviews/_doc/1
 1. The size of the `review_vector` array is 8, matching the `dims` count specified in the mapping.
 
 In a production scenario, you'll want to index many documents at once using the [`_bulk` endpoint]({{es-apis}}operation/operation-bulk).
-
 Here's an example of indexing multiple documents in a single `_bulk` request:
 
 ```console
@@ -119,7 +115,7 @@ POST /_bulk
 
 Now you can query these document vectors using a [`knn` retriever]({{es-apis}}operation/operation-search#operation-search-body-application-json-retriever).
 `knn` is a type of vector search, which finds the `k` most similar documents to a query vector.
-Here we're simply using a raw vector for the query text, for demonstration purposes:
+Here we're using a raw vector for the query text for demonstration purposes:
 
 ```console
 POST /amazon-reviews/_search
@@ -135,7 +131,7 @@ POST /amazon-reviews/_search
 }
 ```
 
-1. In this simple example, we're sending a raw vector as the query text. In a real-world scenario, you'll need to generate vectors for queries using an embedding model.
+1. A raw vector serves as the query text in this example. In a real-world scenario, you'll need to generate vectors for queries using an embedding model.
 2. The `k` parameter specifies the number of results to return.
 3. The `num_candidates` parameter is optional. It limits the number of candidates returned by the search node. This can improve performance and reduce costs.
 
