@@ -101,9 +101,9 @@ Here are some other features {{elastic-sec}} provides to help manage host config
 
 * [Endpoint response actions](/solutions/security/endpoint-response-actions.md): Perform response actions on an endpoint using a terminal-like interface. For example, isolating or releasing a host, getting a list of processes, or suspending a running process. 
 
-:::{tip}
-You can also automate some responses when an event meets the rule's criteria. Refer to [Automated response actions](/solutions/security/endpoint-response-actions/automated-response-actions.md) for more information. 
-:::
+   :::{tip}
+   You can also automate some responses when an event meets the rule's criteria. Refer to [Automated response actions](/solutions/security/endpoint-response-actions/automated-response-actions.md) for more information. 
+   :::
 
 * [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md): Add Windows, macOS, and Linux applications that should be trusted so that {{elastic-defend}} doesn't monitor them.
 * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): Prevent specified applications from running on hosts to extend the list of processes that {{elastic-defend}} considers malicious. This adds an extra layer of protection by ensuring that known malicious processes aren’t accidentally executed by end users. 
