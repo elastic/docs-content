@@ -204,7 +204,7 @@ Save time by setting up a recurring task that automatically generates reports an
          `````
 
          :::{tip} 
-         Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirmements for different email services and providers.
+         Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirements for different email services and providers.
          :::
 
 ### Create a schedule [create-scheduled-report]
