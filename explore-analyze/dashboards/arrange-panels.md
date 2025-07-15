@@ -68,7 +68,9 @@ To resize a panel:
 3. Press `Enter` or `Space` again to release the panel.
 4. Save the dashboard.
 
-When moving or resizing a panel, you can cancel the action at any time by pressing `Escape`.
+:::{tip}
+While moving or resizing a panel, you can cancel the action at any time by pressing `Escape`.
+:::
 
 ## Copy and duplicate panels [duplicate-panels]
 
