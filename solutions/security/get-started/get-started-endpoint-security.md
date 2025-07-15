@@ -7,7 +7,7 @@ products:
   - id: security
 ---
 
-# Quickstart: Protect my hosts with endpoint security
+# Quickstart: Protect your hosts with endpoint security
 
 In this guide, you’ll learn how to use {{elastic-sec}} to protect your hosts from malware, ransomware, and other threats.
 
