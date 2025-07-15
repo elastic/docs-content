@@ -11,7 +11,6 @@ toc:
           - file: search/get-started/quickstarts.md
             children:
               - file: search/get-started/semantic-search.md
-              - file: search/get-started/vector-search.md
       - file: search/api-quickstarts.md
         children:
           - file: search/elasticsearch-basics-quickstart.md

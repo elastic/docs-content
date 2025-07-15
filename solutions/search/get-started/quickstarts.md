@@ -16,7 +16,7 @@ Each quickstart provides:
 Follow the steps in these guides to get started quickly:
 
 - [](/solutions/search/get-started/semantic-search.md)
-- [](/solutions/search/get-started/vector-search.md)
+- [](/solutions/search/vector/bring-your-own-vectors.md)
 
 For more advanced API examples, check out [](/solutions/search/api-quickstarts.md).
 
