@@ -175,17 +175,17 @@ When you have your Private Service Connect endpoint connection ID, you can creat
 
 :::{include} _snippets/create-filter.md
 :::
-1. Select **Private Service Connect endpoint**.
-2. Create your rule set, providing a meaningful name and description.
-3. Select the region for the rule set.
-4. Enter your **PSC Connection ID**.
-5. Select if this rule set should be automatically attached to new deployments.
+5. Select **Private Service Connect endpoint**.
+6. Create your rule set, providing a meaningful name and description.
+7. Select the region for the rule set.
+8. Enter your **PSC Connection ID**.
+9. Select if this rule set should be automatically attached to new deployments.
 
     ::::{note}
     Each rule set is bound to a particular region and can be only assigned to deployments in the same region.
     ::::
 
-6. (Optional) You can [claim your PSC Connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
+10. (Optional) You can [claim your PSC Connection ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a traffic filter ruleset.
 
 The next step is to [associate the rule set](/deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) with your deployments.
 

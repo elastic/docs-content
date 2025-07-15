@@ -45,6 +45,8 @@ toc:
                   - file: deploy/elastic-cloud/configure.md
                     children:
                       - file: deploy/elastic-cloud/ec-change-hardware-profile.md
+                        children:
+                          - file: deploy/elastic-cloud/change-hardware.md 
                       - file: deploy/elastic-cloud/ec-customize-deployment-components.md
                       - file: deploy/elastic-cloud/edit-stack-settings.md
                       - file: deploy/elastic-cloud/add-plugins-extensions.md
@@ -57,7 +59,6 @@ toc:
                       - file: deploy/elastic-cloud/switch-from-apm-to-integrations-server-payload.md
                   - file: deploy/elastic-cloud/find-cloud-id.md
               - file: deploy/elastic-cloud/ec-vcpu-boost-instance.md
-              - file: deploy/elastic-cloud/change-hardware.md
               - file: deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md
               - file: deploy/elastic-cloud/keep-track-of-deployment-activity.md
               - file: deploy/elastic-cloud/restrictions-known-problems.md
@@ -79,7 +80,6 @@ toc:
                   - file: deploy/cloud-enterprise/ece-load-balancers.md
                   - file: deploy/cloud-enterprise/ece-jvm.md
                   - file: deploy/cloud-enterprise/ece-wildcard-dns.md
-                  - file: deploy/cloud-enterprise/ece-manage-capacity.md
               - file: deploy/cloud-enterprise/install.md
                 children:
                   - file: deploy/cloud-enterprise/identify-deployment-scenario.md
@@ -128,6 +128,7 @@ toc:
                   - file: deploy/cloud-enterprise/change-ece-api-url.md
                   - file: deploy/cloud-enterprise/change-endpoint-urls.md
                   - file: deploy/cloud-enterprise/enable-custom-endpoint-aliases.md
+                  - file: deploy/cloud-enterprise/ece-manage-capacity.md
                   - file: deploy/cloud-enterprise/configure-allocator-affinity.md
                   - file: deploy/cloud-enterprise/change-allocator-disconnect-timeout.md
                   - file: deploy/cloud-enterprise/manage-elastic-stack-versions.md
@@ -698,6 +699,7 @@ toc:
               - file: monitor/monitoring-data/config-monitoring-data-streams-elastic-agent.md
               - file: monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md
               - file: monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md
+      - file: monitor/autoops-vs-stack-monitoring.md
       - file: monitor/cloud-health-perf.md
         children:
           - file: monitor/access-performance-metrics-on-elastic-cloud.md

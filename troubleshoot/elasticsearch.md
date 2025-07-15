@@ -19,7 +19,6 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/fix-common-cluster-issues.md)
 * [Cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-health_report)
 
-
 ## Data [troubleshooting-data]
 
 * [](/troubleshoot/elasticsearch/fix-watermark-errors.md)
@@ -32,12 +31,10 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
 
-
 ## Management [troubleshooting-management]
 
 * [](/troubleshoot/elasticsearch/start-ilm.md)
 * [](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md)
-
 
 ## Capacity [troubleshooting-capacity]
 
@@ -45,17 +42,16 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/fix-master-node-out-of-disk.md)
 * [](/troubleshoot/elasticsearch/fix-other-node-out-of-disk.md)
 
-
 ## Snapshot and restore [troubleshooting-snapshot]
 
 * [](/troubleshoot/elasticsearch/restore-from-snapshot.md)
 * [](/troubleshoot/elasticsearch/add-repository.md)
 * [](/troubleshoot/elasticsearch/repeated-snapshot-failures.md)
 
-
 ## Other issues [troubleshooting-others]
 
 * [](/troubleshoot/elasticsearch/troubleshooting-unstable-cluster.md)
+* [Troubleshoot using the cluster allocation API](/troubleshoot/elasticsearch/cluster-allocation-api-examples.md)
 * [](/troubleshoot/elasticsearch/discovery-troubleshooting.md)
 * [](/troubleshoot/elasticsearch/monitoring-troubleshooting.md)
 * [](/troubleshoot/elasticsearch/transform-troubleshooting.md)
@@ -66,4 +62,5 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/remote-clusters.md)
 
 ## Additional resources
+
 If you can't find your issue here, check the [troubleshooting overview](/troubleshoot/index.md) or [contact us](/troubleshoot/index.md#contact-us).

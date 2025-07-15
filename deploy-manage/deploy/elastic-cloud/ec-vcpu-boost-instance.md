@@ -13,6 +13,9 @@ products:
 
 {{ecloud}} allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. vCPU boosting is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
 
+::::{important}
+vCPU credits temporarily assigns extra CPU resources beyond the default. These credits are not always guaranteed, and might be reset during essential maintenance.
+::::
 
 ## How does vCPU boosting work? [ec_how_does_vcpu_boosting_work]
 
@@ -24,7 +27,7 @@ Based on the instance size, the vCPU resources assigned to your instance can be 
 
 ## What are vCPU credits? [ec_what_are_vcpu_credits]
 
-[vCPU](/reference/glossary/index.md#glossary-vcpu) credits enable a smaller instance to perform as if it were assigned the vCPU resources of a larger instance, but only for a limited time. vCPU credits are available only on smaller instances up to and including 8 GB of RAM.
+[vCPU](/reference/glossary/index.md#glossary-vcpu) credits enable a smaller instance to perform as if it were assigned the vCPU resources of a larger instance, but only for a limited time. vCPU credits are available only on smaller instances up to and including 12 GB of RAM.
 
 vCPU credits persist through cluster restarts, but they are tied to your existing instance nodes. Operations that create new instance nodes will lose existing vCPU credits. This happens when you resize your instance, or if Elastic performs system maintenance on your nodes.
 
