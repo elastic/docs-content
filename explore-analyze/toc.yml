@@ -20,6 +20,7 @@ toc:
                   - file: query-filter/languages/esql-cross-clusters.md
               - file: query-filter/languages/esql-examples.md
               - file: query-filter/languages/esql-task-management.md
+              - file: query-filter/languages/esql-query-log.md
           - file: query-filter/languages/sql.md
             children:
               - file: query-filter/languages/sql-overview.md
