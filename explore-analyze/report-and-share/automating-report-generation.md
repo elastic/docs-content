@@ -184,7 +184,7 @@ Save time by setting up a recurring task that automatically generates reports an
    * **Self-managed users**: You must set up a default preconfigured email connector to send notifications outside of {{kib}}. To do this:
      
      1. Open your `kibana.yml` file. and add a new section for the `xpack.actions.preconfigured` setting. This setting specifies configuration details that are specific to the type of preconfigured connector you're defining. 
-     2. Under the `xpack.actions.preconfigured setting`, define the email connector for example: 
+     2. Under the `xpack.actions.preconfigured setting`, define the email connector. For example: 
 
         ````
         xpack.actions.preconfigured:
