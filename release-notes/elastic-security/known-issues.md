@@ -16,6 +16,22 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+
+
+:::{dropdown} The {{elastic-agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
+
+Applies to: 9.0.0
+
+**Impact**
+
+The {{elastic-agent}} image is not available from `docker.elastic.co/beats/elastic-agent:9.0.0`. The default manifests for integrations that run {{elastic-agent}} on Kubernetes—such as CSPM or CNVM—use this image location, resulting in an error.
+
+**Workaround**
+
+Instead of trying to pull the image from `docker.elastic.co/beats/elastic-agent:9.0.0`, edit the manifests to pull it from `docker.elastic.co/elastic-agent/elastic-agent:9.0.0`.
+:::
+
+
 :::{dropdown} Elastic Defend's Network driver may lead to bug checks
 
 **Applies to: {{agent}} 8.17.8, 8.18.3, and 9.0.3**
