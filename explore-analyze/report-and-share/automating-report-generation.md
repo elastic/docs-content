@@ -213,7 +213,7 @@ Save time by setting up a recurring task that automatically generates reports an
               password: passwordkeystorevalue
 
         notifications.connectors.default.email: my-email
-        ```
+     ```
 
 ### Create a schedule [create-scheduled-report]
 
