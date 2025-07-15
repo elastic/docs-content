@@ -54,7 +54,7 @@ When an index enters a phase, {{ilm-init}} caches the phase definition in the in
 
 ## Phase actions [ilm-phase-actions]
 
-{{ilm-init}} supports the following actions in each phase. The order that actions are performed varies for different lifecycle phase. Refer to the [Phases and available actions](#phases-availability) table for a summary of the phases for which each action is available.
+{{ilm-init}} supports the following actions in each phase. The order in which actions are performed varies for different lifecycle phase. Refer to the [Phases and available actions](#phases-availability) table for a summary of the phases for which each action is available.
 
 ### Hot phase
 
