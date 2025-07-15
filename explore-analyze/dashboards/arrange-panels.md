@@ -68,6 +68,8 @@ To resize a panel:
 3. Press `Enter` or `Space` again to release the panel.
 4. Save the dashboard.
 
+When moving or resizing a panel, you can cancel the action at any time by pressing `Escape`.
+
 ## Copy and duplicate panels [duplicate-panels]
 
 To duplicate a panel and its configured functionality, use the clone and copy panel options. Cloned and copied panels replicate all of the functionality from the original panel, including renaming, editing, and cloning.
