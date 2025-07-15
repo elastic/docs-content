@@ -82,7 +82,7 @@ In the following dashboard, the shareable container is highlighted:
 :screenshot:
 :::
 
-1. Open the saved Discover session, dashboard, visualization, or workpad you want to share.
+1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Choose a file type for the report.
 
     * {applies_to}`stack: ga 9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
