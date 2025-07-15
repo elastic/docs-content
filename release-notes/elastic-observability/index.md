@@ -21,21 +21,32 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.0.4 [elastic-observability-9.0.4-release-notes]
+
+### Fixes [elastic-observability-9.0.4-fixes]
+
+* Fixes missing sparklines in the Dependencies table in the APM UI [#227211]({{kib-pull}}227211).
+* Fixes legacy Uptime monitoring UI not showing when turned on [#226999]({{kib-pull}}226999).
+* Fixes response handling of `get_apm_dependencies` tool call [#226601]({{kib-pull}}226601).
+* Fixes query function calls when using Claude LLM [#226078]({{kib-pull}}226078).
+* Fixes Agent Explorer boundary errors  [#225071]({{kib-pull}}225071).
+* Fixes broken EDOT JVM metrics dashboard when classic APM agent metrics are present [#224052]({{kib-pull}}224052).
+
 ## 9.0.3 [elastic-observability-9.0.3-release-notes]
 
 ### Enhancements [elastic-observability-9.0.3-features-enhancements]
 
-* Improve the system prompt and instructions for working with Claude models [#221965](https://github.com/elastic/kibana/pull/221965).
+* Improve the system prompt and instructions for working with Claude models [#221965]({{kib-pull}}221965).
 
 ### Fixes [elastic-observability-9.0.3-fixes]
 
-* Tool instructions are no longer shown in the system message when tools are disabled [#223278](https://github.com/elastic/kibana/pull/223278).
+* Tool instructions are no longer shown in the system message when tools are disabled [#223278]({{kib-pull}}223278).
 
 ## 9.0.2 [elastic-observability-9.0.2-release-notes]
 
 ### Enhancements [elastic-observability-9.0.2-features-enhancements]
 
-* Enhanced the handling of missing `service.environment` attributes [#217899](https://github.com/elastic/kibana/pull/217899).
+* Enhanced the handling of missing `service.environment` attributes [#217899]({{kib-pull}}217899).
 
 ### Fixes [elastic-observability-9.0.2-fixes]
 
