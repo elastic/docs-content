@@ -67,7 +67,7 @@ The following actions are available in the `hot` lifecycle phase. Actions are pe
 | [Rollover](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) | Rolls over a target to a new index when the existing index satisfies the specified rollover conditions. |
 | [Read-Only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) | Makes the index data read-only, disabling data write operations against it. |
 | [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) | Aggregates a time series (TSDS) index and stores pre-computed statistical summaries (min, max, sum, value_count and avg) for each metric field grouped by a configured time interval. |
-| [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) | Blocks writes on a source index and shrinks it into a new index with fewer primary shards. |
+| [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) | Blocks write operations on a source index and shrinks it into a new index with fewer primary shards. |
 | [Force Merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) | Reduce the number of segments in each shard by merging some of them together. |
 | [Searchable Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) | Takes a snapshot of the managed index in the configured repository and mounts it as a [searchable snapshot](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md). |
 
