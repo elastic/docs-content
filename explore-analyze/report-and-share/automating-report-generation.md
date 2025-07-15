@@ -178,35 +178,42 @@ Save time by setting up a recurring task that automatically generates reports an
 ### Requirements [scheduled-reports-reqs]
 
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
-* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges.
+* (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
    * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a built-in preconfigured email connector that uses the SMTP protocol to send emails. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
    * **Self-managed users**: You must set up a default preconfigured email connector to send notifications outside of {{kib}}. To do this:
      
-     1. Open your `kibana.yml` file and add a new section for the `xpack.actions.preconfigured` setting. This setting specifies configuration details that are specific to the type of preconfigured connector you're defining. 
-     2. Under the `xpack.actions.preconfigured setting`, define the email connector. For example: 
-
-        ````
-        xpack.actions.preconfigured:
-          my-email:
-          name: preconfigured-email-connector-type
-          actionTypeId: .email
-          config:
-            service: other
-            from: testsender@test.com
-            host: validhostname
-            port: 8080
-            secure: false
-            hasAuth: true
-          secrets:
-            user: testuser
-            password: passwordkeystorevalue
-         `````
+     1. Open your `kibana.yml` file.
+     2. Add the `xpack.actions.preconfigured` {{kib}} setting. This setting specifies configuration details for the preconfigured connector that you're defining. 
+     2. Under the `xpack.actions.preconfigured setting`, define the email connector. You must define these details in the `kibana.yml` file. You cannot create a preconfigured email connector from the {{kib}} UI. 
 
          :::{tip} 
          Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirements for different email services and providers.
          :::
+
+     3. Add the `notifications.connectors.default.email` {{kib}} setting, and provide the name of your email connector. This setting specifies the default email connector to use when sending notifications. This is especially useful if you have multiple email connectos and want to specify a default one. 
+     
+     The following example shows a `kibana.yml` file with a preconfigured email connector set as the default connector for email notifications:
+
+      ```
+        xpack.actions.preconfigured:
+          my-email:
+            name: preconfigured-email-connector-type
+            actionTypeId: .email
+            config:
+              service: other
+              from: testsender@test.com
+              host: validhostname
+              port: 8080
+              secure: false
+              hasAuth: true
+            secrets:
+              user: testuser
+              password: passwordkeystorevalue
+
+        notifications.connectors.default.email: my-email
+        ```
 
 ### Create a schedule [create-scheduled-report]
 
@@ -220,6 +227,11 @@ Save time by setting up a recurring task that automatically generates reports an
     * **Repeat**: Choose how often you want to generate reports.  
 
 5. (Optional) To share generated reports outside of Kibana, enable **Send by email** and enter a list of email addresses. Recipients will receive emails with the generated reports attached and on the schedule that you specified.
+
+   ::::{note} 
+   If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only send reports to yourself. 
+   ::::
+
 6. Click **Schedule exports** to save the schedule. 
 
 A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
