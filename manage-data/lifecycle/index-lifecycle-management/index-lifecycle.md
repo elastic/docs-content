@@ -115,7 +115,7 @@ The following actions are available in the `delete` lifecycle phase. Actions are
 
 | Action | Description |
 | --- | --- |
-| [Wait For Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md) | Waits for the specified SLM policy to be executed before removing the index, ensuring that a snapshot of the deleted index is available. |
+| [Wait For Snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-wait-for-snapshot.md) | Waits for the specified snapshot lifecycle management (SLM) policy to be executed before removing the index, ensuring that a snapshot of the deleted index is available. |
 | [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) | Permanently removes the index. |
 
 ### Phases and available actions [phases-availability]
