@@ -176,7 +176,7 @@ Save time by setting up a recurring task that automatically generates reports an
 
 ### Requirements [scheduled-reports-reqs]
 
-* To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access)
+* To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
 * (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges.
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
