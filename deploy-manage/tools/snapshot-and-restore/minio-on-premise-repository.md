@@ -60,7 +60,7 @@ Don’t forget to make the bucket name DNS-friendly, for example no underscores 
 
 ## {{ece}} configuration [ece-install-with-minio]
 
-This section describes the configuration changes required to use MinIO storage within ECE to make periodic snapshots of your {{es}} deployments. The required steps include:
+This section describes the configuration changes required to use MinIO storage within ECE to make periodic snapshots of your deployments. The required steps include:
 
 * Configuring the repository at ECE level
 * Associating it with your deployments
