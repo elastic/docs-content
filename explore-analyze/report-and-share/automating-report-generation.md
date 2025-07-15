@@ -240,3 +240,12 @@ A message appears, indicating that the schedule is available on the **Reporting*
 ::::{important} 
 Note that you cannot edit or delete a schedule after you create it. To stop the schedule from running, you must disable it. Disabling a schedule permanently stops it from running. To restart it, you must create a new schedule. 
 ::::
+
+### Scheduled reports limitations [scheduled-reports-limitations]
+
+The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Issues with report generation and sharing are likely to happen in the following scenarios:
+
+* {{kib}} might fail to attach reports that exceed the size limit for email attachments, which is...
+* Scheduling too many reports at the same time might cause reports to be shared late or at an inconsistent schedule. {{kib}} Task Manager runs reporting tasks one at a time.
+* If your cluster is running many tasks in general, reports may be delayed.
+* Scheduling reports of Canvas workpads is not supported since Canvas workpads are in maintenance mode.
