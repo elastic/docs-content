@@ -300,7 +300,7 @@ This Timeline template uses the `host.name: "{host.name}"` dropzone filter in th
 Refer to [Timeline](/solutions/security/investigate/timeline.md) for information on creating Timelines and Timeline templates. For information on how to add Timeline templates to rules, refer to [Create a detection rule](/solutions/security/detect-and-alert/create-detection-rule.md).
 ::::
 
-## Clean up alerts [clean-up-alerts-obs]
+## Clean up alerts [clean-up-alerts-sec]
 
 ```{applies_to}
 stack: preview 9.1 
