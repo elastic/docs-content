@@ -187,15 +187,15 @@ Save time by setting up a recurring task that automatically generates reports an
      
      1. Open your `kibana.yml` file.
      2. Add the `xpack.actions.preconfigured` {{kib}} setting. This setting specifies configuration details for the preconfigured connector that you're defining. 
-     2. Under the `xpack.actions.preconfigured setting`, define the email connector. You must define these details in the `kibana.yml` file. You cannot create a preconfigured email connector from the {{kib}} UI. 
+     2. Under the `xpack.actions.preconfigured` setting, define the email connector. Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirements for different email services and providers.
 
-         :::{tip} 
-         Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirements for different email services and providers.
+         :::{note} 
+         You must define preconfigured email connector details in the `kibana.yml` file. You cannot create a preconfigured email connector from the {{kib}} UI. 
          :::
 
-     3. Add the `notifications.connectors.default.email` {{kib}} setting, and provide the name of your email connector. This setting specifies the default email connector to use when sending notifications. This is especially useful if you have multiple email connectors and want to specify a default one. 
-     
-     The following example shows a `kibana.yml` file with a preconfigured email connector set as the default connector for email notifications:
+     3. Add the `notifications.connectors.default.email` {{kib}} setting, and provide the name of your email connector. The `notifications.connectors.default.email` setting specifies the default email connector to use when sending notifications. This is especially useful if you have multiple email connectors and want to set a default one. 
+
+     The following example shows a modified `kibana.yml` file with a preconfigured email connector that's set as the default connector for email notifications:
 
       ```
         xpack.actions.preconfigured:
