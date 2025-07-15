@@ -14,56 +14,41 @@ products:
 
 This guide walks you through integrating MinIO with ECE to store your {{es}} snapshots.
 
+::::{important}
+Avoid running MinIO directly on ECE hosts. Sharing infrastructure can lead to resource contention, especially disk I/O, and may affect the performance and stability of your Elastic workloads. It also complicates upgrades, troubleshooting, and supportability.
+
+If you're evaluating MinIO in a test system, do not place MinIO containers on the same hosts as ECE proxies, as both services use the same port.
+::::
+
 ## Deploy MinIO
 
-This section provides guidance and recommendations for deploying MinIO. It does not include detailed installation steps, as MinIO is a third-party product. For full installation instructions, refer to the official [MinIO documentation](https://min.io/docs/).
+This section provides guidance and recommendations for deploying MinIO. It does not include installation steps, as MinIO is a third-party product, and its deployment, configuration, and maintenance are outside the scope of Elastic support.
 
-### Create a test environment [ece-minio-test]
+For installation instructions, refer to the official [MinIO documentation](https://min.io/docs/).
 
-We recommend following either the [MinIO Quickstart Guide](https://charts.min.io/) or the [MinIO for containers guide](https://min.io/docs/minio/container/index.html) to create a simple MinIO standalone installation for your initial evaluation and development.
+The performance and reliability of MinIO depend on its configuration and the underlying infrastructure. Consider the following best practices:
 
-Be sure to use the `docker` or `podman` `-v` option to map persistent storage to the container.
+* For production use, deploy MinIO in [distributed mode](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#minio-mnmd).
+* Use a single MinIO endpoint with the {{ece}} installation, to simplify repository configuration.
+* Secure access to the MinIO endpoint with TLS.
 
-### Production environment prerequisites [ece-minio-requirements]
+After deployment, make sure you collect the following values:
 
-Installing MinIO for production requires a high-availability configuration where MinIO is running in [Distributed mode](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#minio-mnmd).
-
-As mentioned in the MinIO documentation, you will need to have 4-16 MinIO drive mounts. There is no hard limit on the number of MinIO nodes. It might be convenient to place the MinIO node containers on your ECE hosts to ensure you have a suitable level of availability, but those cannot be located on the same hosts as ECE proxies since they both listen on the same port.
-
-::::{note}
-Although you can run MinIO containers in your ECE allocator hosts, we recommend deploying MinIO in separate hosts.
-::::
-
-The following illustration is a sample architecture for a [large ECE installation](../../deploy/cloud-enterprise/deploy-large-installation.md). Note that there is at least one MinIO container in *each* availability zone.
-
-:::{image} /deploy-manage/images/cloud-enterprise-ece-minio-large-arch.png
-:alt: Architecture diagram
-:name: img-ece-minio-large-arch
-:::
-
-There are a number of different ways of orchestrating the MinIO deployment (Docker Compose, Kubernetes, and so on). We suggest you use the method most familiar to you.
-
-We recommend:
-
-* Using a single MinIO endpoint with the {{ece}} installation, to simplify repository management.
-* Securing access to the MinIO endpoint with TLS.
-
-### Air-gapped installations [ece-minio-offline-installation]
-
-If you are installing MinIO offline, the process is very similar to the [offline installation of {{ece}}](../../deploy/cloud-enterprise/air-gapped-install.md). There are two options:
-
-* Use a private Docker repository and [install the MinIO images in the private repository](https://docs.docker.com/registry/deploying/).
-* Download the MinIO images from an internet-connected machine, then use docker save to bundle the images into tar files. Copy the TAR files to the target hosts and use `docker load` to install.
-
-Gather the following after your installation:
-
-* MinIO AccessKey
-* MinIO SecretKey
-* Endpoint URL
+* MinIO Access Key
+* MinIO Secret Key
+* MinIO endpoint URL
 
 ::::{tip}
-MinIO might report various Endpoint URLs, be sure to choose the one that will be routable from your {{es}} Docker containers.
+MinIO may report multiple endpoint URLs. Be sure to select the one reachable from your {{es}} containers running on ECE allocator hosts.
 ::::
+
+### Testing and evaluation
+
+Use the [MinIO Quickstart Guide](https://charts.min.io/) or the [container deployment guide](https://min.io/docs/minio/container/index.html) to spin up a simple standalone MinIO container. Use `-v` to map persistent storage when using `docker` or `podman`.
+
+### Production environments
+
+Set up MinIO in distributed mode across multiple nodes and drives. You can use Docker Compose, Kubernetes, or another orchestration tool of your choice.
 
 ## Create the S3 bucket [ece-minio-create-s3-bucket]
 
@@ -80,6 +65,15 @@ This section describes the configuration changes required to use MinIO storage w
 * Configuring the repository at ECE level
 * Associating it with your deployments
 * Applying specific YAML settings to the deployments
+
+### Prerequisites
+
+Before integrating ECE with MinIO, ensure you have the following details from your MinIO deployment:
+
+* MinIO Access Key
+* MinIO Secret Key
+* MinIO endpoint URL
+* S3 bucket name
 
 ### Add the repository to {{ece}} [ece-add-repository]
 
