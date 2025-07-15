@@ -26,6 +26,27 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.0.4 [fleet-elastic-agent-9.0.4-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.4-features-enhancements]
+
+**Elastic Agent**
+
+* Add file logs only managed OTLP input kube-stack configuration. [#8785]({{agent-pull}}8785)
+
+### Fixes [fleet-elastic-agent-9.0.4-fixes]
+
+**Elastic Agent**
+
+* Remove incorrect logging that unprivileged installations are in beta. [#8715]({{agent-pull}}8715) [#8689]({{agent-issue}}8689)
+* Ensure standalone Elastic Agent uses log level from configuration instead of persisted state. [#8784]({{agent-pull}}8784) [#8137]({{agent-issue}}8137)
+* Resolve deadlocks in runtime checkin communication. [#8881]({{agent-pull}}8881) [#7944]({{agent-issue}}7944)
+* Remove init.d support from RPM packages. [#8896]({{agent-pull}}8896) [#8840]({{agent-issue}}8840)
+
+**Fleet Server**
+
+* Include the base error for JSON decode error responses. [#5069]({{fleet-server-pull}}5069)
+
 ## 9.0.3 [fleet-elastic-agent-9.0.3-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.0.3-features-enhancements]
