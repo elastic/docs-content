@@ -38,5 +38,5 @@ There are several actions you can take on alerts in the alerts panel. Under **Ac
 To edit an existing alerts panel, hover over the panel. Three buttons appear:
 
 - **Edit** (![pencil button](/explore-analyze/images/kibana-esql-icon-edit-visualization.svg "")): Update which alerts appear in the panel.
-- **Settings** (![gear icon](/explore-analyze/images/kibana-gear_icon.png"")): Update the panel's title or description, or add a custom time range.
+- **Settings** (![gear icon](/explore-analyze/images/kibana-gear_icon.png "")): Update the panel's title or description, or add a custom time range.
 - **More actions** (three dots): Duplicate, maximize, copy to another dashboard, or remove the panel.
