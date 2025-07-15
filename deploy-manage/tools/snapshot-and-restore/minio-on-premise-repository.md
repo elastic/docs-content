@@ -135,3 +135,5 @@ The cluster should make periodic snapshots when the repository is set up and ass
 As an extra verification step, you can [restore snapshots across clusters](/deploy-manage/tools/snapshot-and-restore/ece-restore-across-clusters.md).
 
 Refer to [work with snapshots](../snapshot-and-restore.md) for more information around {{es}} snapshot and restore.
+
+For additional considerations on performance, reliability, and troubleshooting when using MinIO as a snapshot repository, refer to [Using MinIO with {{es}}](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#using-minio-with-elasticsearch).
