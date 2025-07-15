@@ -76,7 +76,7 @@ On the Cloud Security Posture dashboard, click one of the "View all failed findi
 
 To monitor your configuration more closely, we recommend creating detection rules to detect specific failed findings, which if found, generates an alert. 
 
-You can create detection rule directly from the Findings page: 
+You can create detection rule directly from the **Findings** page: 
 
 1. Click the arrow to the left of a Finding to open the findings flyout.
 2. Click Take action, then Create a detection rule. This automatically creates a detection rule that creates alerts when the associated benchmark rule generates a failed finding.
