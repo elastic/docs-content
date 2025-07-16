@@ -48,9 +48,9 @@ Use the [MinIO Quickstart Guide](https://charts.min.io/) or the [container deplo
 
 ### Production environments
 
-Set up MinIO across multiple nodes and drives to ensure high availability, performance, and scalability. You can use Docker Compose, Kubernetes, or another orchestration tool of your choice.
+Set up MinIO across multiple nodes and drives to ensure high availability, performance, and scalability, following the recommendations in the [MinIO documentation](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html).
 
-For detailed instructions, refer to[MinIO documentation](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html).
+You can use Docker Compose, Kubernetes, or another orchestration tool of your choice.
 
 ## Create the S3 bucket [ece-minio-create-s3-bucket]
 
