@@ -126,7 +126,7 @@ toc:
           - file: lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md
           - file: lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md
           - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
-          - file: lifecycle/index-lifecycle-management/index-management-in-kibana.md
+          - hidden: lifecycle/index-lifecycle-management/index-management-in-kibana.md
           - file: lifecycle/index-lifecycle-management/migrate-index-management.md
             children:
               - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
