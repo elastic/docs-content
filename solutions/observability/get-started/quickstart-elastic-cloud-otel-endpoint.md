@@ -10,10 +10,6 @@ applies_to:
 
 In this quickstart guide, you'll learn how to use the [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to send logs, metrics, and traces to Elastic.
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
 ## Prerequisites
 
 * An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started.md).
