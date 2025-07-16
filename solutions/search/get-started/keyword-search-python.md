@@ -12,7 +12,7 @@ It provides official clients for multiple programming languages, including Pytho
 These clients offer full API support for indexing, searching, and cluster management.
 They are optimized for performance and kept up to date with {{es}} releases, ensuring compatibility and security.
 
-In this quickstart guide, you will index a couple documents and query them using Python.
+In this quickstart, you'll index a couple of documents and query them using Python.
 By the end of this guide, you’ll have learned how to connect a backend application to {{es}} to answer your queries.
 
 ## Prerequisites
