@@ -8,9 +8,9 @@ products:
 
 # Propagate Labels and Annotations [k8s-propagate-labels-annotations]
 
-Starting with version `3.1.0`, Elastic Cloud on Kubernetes (ECK) supports propagating labels and annotations from the parent resource to the child resources it creates. This can be used on all custom resources managed by ECK, such as {{eck_resources_list}}.
+Starting with version `3.1.0`,{{eck}} supports propagating labels and annotations from the parent resource to the child resources it creates. This can be used on all custom resources managed by ECK, such as {{eck_resources_list}}.
 
-The example below demonstrates how to use this feature on a {{es}} cluster, however, as mentioned above, this can be also applied to any custom resource managed by ECK.
+The example below demonstrates how to use this feature on a {{es}} cluster, however, as mentioned above, this can be also applied to any custom resource managed by {{eck}}.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -38,7 +38,7 @@ spec:
       count: 1
 ```
 
-The custom labels and annotations specified in the `metadata` section of the parent resource will be propagated to all child resources created by ECK, such as StatefulSets, Pods, Services, and Secrets. This ensures that all resources have consistent metadata, which can be useful for filtering, monitoring, and managing resources in Kubernetes:
+The custom labels and annotations specified in the `metadata` section of the parent resource will be propagated to all child resources created by {{eck}}, such as StatefulSets, Pods, Services, and Secrets. This ensures that all resources have consistent metadata, which can be useful for filtering, monitoring, and managing resources in Kubernetes:
 
 ```sh
 kubectl get sts,pods,svc -l my-label1=my-label1-value,my-label2=my-label2-value
