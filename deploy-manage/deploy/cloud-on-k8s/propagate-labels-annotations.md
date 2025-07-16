@@ -59,7 +59,30 @@ service/elasticsearch-sample-es-internal-http   ClusterIP   XX.XX.XX.XX      <no
 service/elasticsearch-sample-es-transport       ClusterIP   None             <none>        9300/TCP   4m14s
 ```
 
-::::{note}
-Propagated labels and annotations are not automatically removed when the parent resource is deleted. If you want to remove them, you need to do so manually or use a cleanup script.
-::::
+It is possible to use `*` as a wildcard to propagate all labels and annotations from the parent resource to the child resources. For example:
 
+```yaml subs=true
+# This sample sets up an Elasticsearch cluster with 3 nodes.
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  annotations:
+    # Instructions for the operator to propagate all the annotations and labels to resources it creates.
+    eck.k8s.alpha.elastic.co/propagate-annotations: "*"
+    eck.k8s.alpha.elastic.co/propagate-labels: "*"
+  name: elasticsearch-sample
+spec:
+  version: {version}
+  nodeSets:
+    - name: default
+      config:
+        # this allows ES to run on nodes even if their vm.max_map_count has not been increased, at a performance cost
+        node.store.allow_mmap: false
+      count: 1
+```
+
+::::{note}
+Please be aware of the following considerations when using this feature:
+* Propagated labels and annotations are not automatically removed when the parent resource is deleted. If you want to remove them, you need to do so manually or use a cleanup script.
+* To prevent conflicts, some labels and annotations reserved for internal use by ECK or Kubernetes, are not propagated. This is the case for labels and annotations that start with `eck.k8s.alpha.elastic.co/`, `k8s.elastic.co/` and also `kubectl.kubernetes.io/last-applied-configuration`.
+::::
