@@ -80,7 +80,7 @@ spec:
 ```
 
 ::::{note}
-Please be aware of the following considerations when using this feature:
+Note the following considerations when using this feature:
 * Propagated labels and annotations are not automatically deleted. If you want to remove them from the child resources, you need to do so manually or use a cleanup script.
 * To prevent conflicts, some labels and annotations reserved for internal use by ECK or Kubernetes are not propagated. This is the case for labels and annotations that match `*.k8s.*.elastic.co/` and also `kubectl.kubernetes.io/last-applied-configuration`.
 ::::
