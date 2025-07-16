@@ -12,8 +12,7 @@ Starting with version `3.1.0`, Elastic Cloud on Kubernetes (ECK) supports propag
 
 The example below demonstrates how to use this feature on a {{es}} cluster, however, as mentioned above, this can be also applied to any custom resource managed by ECK.
 
-```yaml subs=true
-# This sample sets up an Elasticsearch cluster with 3 nodes.
+```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
@@ -62,7 +61,6 @@ service/elasticsearch-sample-es-transport       ClusterIP   None             <no
 It is possible to use `*` as a wildcard to propagate all labels and annotations from the parent resource to the child resources. For example:
 
 ```yaml
-# This sample sets up an Elasticsearch cluster with 3 nodes.
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
