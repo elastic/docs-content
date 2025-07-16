@@ -18,7 +18,7 @@ If you are looking for a hosted solution of {{es}} on AWS, visit [https://www.el
 
 See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough of connecting an AWS S3 repository.
 
-{{es}} communicates with S3 through a dedicated *S3 client* module. Each client is configured using a mix of [secure settings](../../security/secure-settings.md) and [standard `elasticsearch.yml` settings](/deploy-manage/stack-settings.md). If you don't provide explicit S3 client configuration, {{es}} will try to obtain credentials from the environment it's running in.
+{{es}} communicates with S3 through a dedicated *S3 client* module. Clients are configured through a combination of [secure settings](../../security/secure-settings.md) defined in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) defined in `elasticsearch.yml`. If you don't provide explicit S3 client configuration, {{es}} will try to obtain credentials from the environment it's running in.
 
 ## Getting started [repository-s3-usage]
 
