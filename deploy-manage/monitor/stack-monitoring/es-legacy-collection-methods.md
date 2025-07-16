@@ -94,7 +94,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         xpack.monitoring.exporters:
           id1:
             type: http
-            host: ["<es-monitoring-host1>:9200", "<es-monitoring-host2>:9200"]
+            host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
         ```
 
     2. If the Elastic {{security-features}} are enabled on the monitoring cluster, you must provide appropriate credentials when data is shipped to the monitoring cluster:
@@ -108,7 +108,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["<es-monitoring-host1>:9200", "<es-monitoring-host2>:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth.username: remote_monitoring_user
                 # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore
             ```
@@ -121,7 +121,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["<es-monitoring-host1>:9200", "<es-monitoring-host2>:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth:
                   username: remote_monitoring_user
                   # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore
@@ -135,7 +135,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["<es-monitoring-host1>:9200", "<es-monitoring-host2>:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth:
                   username: remote_monitoring_user
                   # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore

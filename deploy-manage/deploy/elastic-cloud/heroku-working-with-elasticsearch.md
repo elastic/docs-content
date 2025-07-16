@@ -32,7 +32,7 @@ When you know your {{es}} URL, you can interact with the {{es}} endpoint using t
 To index a document into {{es}}, `POST` your document:
 
 ```bash
-curl -u USER:PASSWORD https://https//<ELASTICSEARCH_URL>/my_index/_doc -XPOST -H 'Content-Type: application/json' -d '{
+curl -u USER:PASSWORD https//<ELASTICSEARCH_URL>/my_index/_doc -XPOST -H 'Content-Type: application/json' -d '{
     "title": "One", "tags": ["ruby"]
 }'
 ```
