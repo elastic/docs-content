@@ -12,7 +12,7 @@ products:
 
 You can use [Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) as a repository for [Snapshot and restore](../snapshot-and-restore.md).
 
-To communicate with Azure Blob storage, {{es}} internally uses a client module, referred to as the *Azure client* or *Azure repository client* in this document. Each client is configured through a combination of [secure settings](../../security/secure-settings.md) and [stack settings](/deploy-manage/stack-settings.md) defined in `elasticsearch.yml`.
+{{es}} uses an internal *Azure repository client* to connect to Azure Blob storage. Each client is configured using both [secure settings](../../security/secure-settings.md) (set in the keystore) and [stack settings](/deploy-manage/stack-settings.md) (set in `elasticsearch.yml`).
 
 ## Setup [repository-azure-usage]
 
