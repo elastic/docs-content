@@ -99,9 +99,9 @@ Four strategies are available for chunking: `sentence`, `word`, `recursive` and 
 
 - The `word` strategy splits the input text on individual words up to the `max_chunk_size` limit. The `overlap` option is the number of words from the previous chunk to include in the current chunk.
 
-- The `recursive` strategy splits the input text based on a configurable list of separator patterns (for example, newlines or Markdown headers). The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to sentence-level splitting.
+- {applies_to}`stack: ga 9.1` The `recursive` strategy splits the input text based on a configurable list of separator patterns (for example, newlines or Markdown headers). The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to sentence-level splitting.
 
-- The `none` strategy disables chunking and processes the entire input text as a single block, without any splitting or overlap. When using this strategy, you can instead [pre-chunk](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking) the input by providing an array of strings, where each element acts as a separate chunk to be sent directly to the inference service without further chunking.
+- {applies_to}`stack: ga 9.1` The `none` strategy disables chunking and processes the entire input text as a single block, without any splitting or overlap. When using this strategy, you can instead [pre-chunk](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking) the input by providing an array of strings, where each element acts as a separate chunk to be sent directly to the inference service without further chunking.
 
 The default chunking strategy is `sentence`.
 
