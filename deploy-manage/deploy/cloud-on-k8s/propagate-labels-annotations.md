@@ -30,7 +30,7 @@ metadata:
     my-label2: "my-label2-value"
   name: elasticsearch-sample
 spec:
-  version: {version}
+  version: 9.1.0
   nodeSets:
     - name: default
       config:
@@ -61,7 +61,7 @@ service/elasticsearch-sample-es-transport       ClusterIP   None             <no
 
 It is possible to use `*` as a wildcard to propagate all labels and annotations from the parent resource to the child resources. For example:
 
-```yaml subs=true
+```yaml
 # This sample sets up an Elasticsearch cluster with 3 nodes.
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
@@ -72,7 +72,7 @@ metadata:
     eck.k8s.alpha.elastic.co/propagate-labels: "*"
   name: elasticsearch-sample
 spec:
-  version: {version}
+  version: 9.1.0
   nodeSets:
     - name: default
       config:
@@ -83,6 +83,6 @@ spec:
 
 ::::{note}
 Please be aware of the following considerations when using this feature:
-* Propagated labels and annotations are not automatically removed when the parent resource is deleted. If you want to remove them, you need to do so manually or use a cleanup script.
-* To prevent conflicts, some labels and annotations reserved for internal use by ECK or Kubernetes, are not propagated. This is the case for labels and annotations that start with `eck.k8s.alpha.elastic.co/`, `k8s.elastic.co/` and also `kubectl.kubernetes.io/last-applied-configuration`.
+* Propagated labels and annotations are not automatically deleted. If you want to remove them from the child resources, you need to do so manually or use a cleanup script.
+* To prevent conflicts, some labels and annotations reserved for internal use by ECK or Kubernetes, are not propagated. This is the case for labels and annotations that match `*.k8s.*.elastic.co/` and also `kubectl.kubernetes.io/last-applied-configuration`.
 ::::
