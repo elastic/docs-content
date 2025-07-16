@@ -169,7 +169,7 @@ DELETE /semantic-index
 
 ## Next steps
 
-Thanks for taking the time to learn how to build an application on top of {{es}}.
+This quickstart covered the basics of working with {{es}}.
 
 For a deeper dive, check out the following resources:
 
