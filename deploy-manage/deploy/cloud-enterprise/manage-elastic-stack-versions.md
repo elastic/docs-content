@@ -300,7 +300,7 @@ curl -X GET -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/stack/versio
 For example (output abridged for brevity):
 
 ```
-curl -X GET -u admin:4Z52y8Gq7PrxMDy47ipJPSh4ozBMynOGa9HWxcy2D3j https://<host-ip>:12443/api/v1/stack/versions
+curl -X GET -u admin:<cluster-id> https://<host-ip>:12443/api/v1/stack/versions
 {
   "stacks": [
     {
@@ -420,7 +420,7 @@ To add a new {{stack}} pack through the RESTful API from the command line:
     For example:
 
     ```sh
-    curl -X POST -u admin:pGX5DwKzVAAIeCIpTwwAkCuJDu0ASdFP33UmYpfogfF https://$COORDINATOR_HOST:12443/api/v1/stack/versions \
+    curl -X POST -u admin:pGX5DwKzVAAIeCIpTwwAkCuJDu0ASdFP33UmYpfogfF <host-url>:12443/api/v1/stack/versions \
         -H 'content-type: application/zip' \
         --data-binary "@/Users/iuriitceretian/Documents/stacks/5.4.0.zip"
     ```
