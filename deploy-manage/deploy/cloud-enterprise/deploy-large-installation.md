@@ -27,6 +27,10 @@ This type of installation is recommended for deployments with significant overal
 :alt: A large installation with nine to twelve hosts across three availability zones
 :::
 
+::::{note}
+The host with the allocator role greyed out represents the first host to be installed. This host temporarily holds all roles until the other nodes are added and configured. Eventually, the allocator role will be removed from this host.
+::::
+
 ## Important considerations  [ece_before_you_start_3]
 
 Note that the large-sized {{ece}} installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
@@ -100,8 +104,14 @@ Make sure you have completed all prerequisites and environment preparations desc
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "proxy" --availability-zone MY_ZONE-3 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"}}'
     ```
 
-6. [Change the deployment configuration](working-with-deployments.md) for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` clusters to use three availability zones and resize the nodes to use at least 4 GB of RAM. This change makes sure that the clusters used by the administration console are highly available and provisioned sufficiently.
+6. [Log into the Cloud UI](log-into-cloud-ui.md).
 
-7. [Log into the Cloud UI](log-into-cloud-ui.md) to provision your deployment.
+7. [Change the deployment configuration](/deploy-manage/deploy/cloud-enterprise/customize-deployment.md) for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` [system deployments](/deploy-manage/deploy/cloud-enterprise/system-deployments-configuration.md) to use three availability zones and resize the nodes to use at least 4 GB of RAM. This ensures the system clusters are both highly available and sufficiently provisioned.
+
+8. [Vacate all instances from the initial host](/deploy-manage/maintenance/ece/move-nodes-instances-from-allocators.md#move-nodes-from-allocators). This host runs some {{es}} and {{kib}} instances from system deployments, which must be moved to other allocators before proceeding.
+
+    Wait until all instances have been moved off the initial host before continuing.
+
+9. [Remove the `allocator` role](/deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md) from the initial host. You cannot remove the role until all instances have been vacated.
 
 Once the installation is complete, you can continue with [](./post-installation-steps.md).
