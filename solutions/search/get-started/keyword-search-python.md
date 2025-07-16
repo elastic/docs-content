@@ -119,7 +119,7 @@ To familiarize yourself with this data set, open [Discover](/explore-analyze/dis
 
 ## Test keyword search
 
-Create a new script (for instance `search.py`), which defines a query and runs the following search request:
+Create a new script (for instance, `search.py`) that defines a query and runs the following search request:
 
 ```esql
 FROM my-index
