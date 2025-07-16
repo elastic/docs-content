@@ -51,3 +51,10 @@ The following GCP regions are currently available:
 | asia-south1 | Mumbai |
 | europe-west1 | Belgium |
 | us-central1 | Iowa |
+
+
+# Marketplaces
+
+When procuring Elastic Cloud through [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=overview), or [GCP Marketplace](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud), only the regions corresponding to the same hyperscaler can be used. This ensures that you can enjoy the benefits of the Marketplace, such as Elastic Cloud contributing towards your spend commitment with cloud providers.
+
+You can support a multi-cloud strategy by subscribing to a separate Elastic Cloud organization, either from another Marketplace, or directly at cloud.elastic.co
