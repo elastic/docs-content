@@ -96,11 +96,7 @@ Detection rules allow you to monitor your environment by searching for source ev
     :::
 
 6. Select the check box next to the rules you want to install. To select all rules on the page, select the check box to the left of the **Rule** column heading. We recommend installing all the rules for your operating system, but you can install whichever rules you're comfortable with to start. You can always install more later.  
-7. Click ![Vertical boxes button](/solutions/images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules. Once you enable a rule, it starts running on its configured schedule.
-
-    :::{note}
-    You must install _and_ enable the rule for it to start running; therefore, do not select the **Install _x_ rules** option.  
-    :::
+7. Click ![Vertical boxes button](/solutions/images/serverless-boxesVertical.svg "") → **Install and enable** to install and start running the rules. Alternatively, after a rule is installed, you can enable it from the installed rules table. Once you enable a rule, it starts running on its configured schedule.
 
 :::{image} /solutions/images/security-gs-siem-install-rules.png 
 :alt: Alerts page with visualizations section collapsed
