@@ -8,11 +8,11 @@ products:
 
 # Propagate Labels and Annotations [k8s-propagate-labels-annotations]
 
-Starting with version `3.1.0`, Elastic Cloud on Kubernetes (ECK) supports propagating labels and annotations from the parent resource to the child resources it creates. This feature allows you to apply metadata consistently across all resources managed by ECK, such as {{eck_resources_list}}.
+Starting with version `3.1.0`, Elastic Cloud on Kubernetes (ECK) supports propagating labels and annotations from the parent resource to the child resources it creates. This can be used on all custom resources managed by ECK, such as {{eck_resources_list}}.
 
 The example below demonstrates how to set up an {{es}} cluster with custom labels and annotations that will be propagated to all child resources created by ECK. As mentioned above, this can be also applied to other resources managed by ECK.
 
-```yaml
+```yaml subs=true
 # This sample sets up an Elasticsearch cluster with 3 nodes.
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
