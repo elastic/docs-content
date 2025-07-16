@@ -1,4 +1,5 @@
 ---
+navigation_title: "Keyword search with Python"
 description: An introduction to building an Elasticsearch query in Python. 
 applies_to:
   serverless: all
