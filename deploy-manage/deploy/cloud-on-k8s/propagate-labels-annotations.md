@@ -8,7 +8,7 @@ products:
 
 # Propagate Labels and Annotations [k8s-propagate-labels-annotations]
 
-Starting with version `3.1.0`,{{eck}} supports propagating labels and annotations from the parent resource to the child resources it creates. This can be used on all custom resources managed by ECK, such as {{eck_resources_list}}.
+Starting with version `3.1.0`, {{eck}} supports propagating labels and annotations from the parent resource to the child resources it creates. This can be used on all custom resources managed by ECK, such as {{eck_resources_list}}.
 
 The example below demonstrates how to use this feature on a {{es}} cluster, however, as mentioned above, this can be also applied to any custom resource managed by {{eck}}.
 
