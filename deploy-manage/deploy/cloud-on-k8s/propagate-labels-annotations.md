@@ -1,0 +1,67 @@
+---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-customize-pods.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
+---
+
+# Propagate Labels and Annotations [k8s-propagate-labels-annotations]
+
+Starting with version `3.1.0`, Elastic Cloud on Kubernetes (ECK) supports propagating labels and annotations from the parent resource to the child resources it creates. This feature allows you to apply metadata consistently across all resources managed by ECK, such as Elasticsearch, Kibana, APM Server, Agent, and Beats.
+
+The example below demonstrates how to set up an Elasticsearch cluster with custom labels and annotations that will be propagated to all child resources created by ECK. This can also be applied to Kibana, APM Server, Agent, and Beats resources.
+
+```yaml
+# This sample sets up an Elasticsearch cluster with 3 nodes.
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  annotations:
+    # Some custom annotations to be propagated to resources created by the operator.
+    my-annotation1: "my-annotation1-value"
+    my-annotation2: "my-annotation2-value"
+    # Instructions for the operator to propagate these annotations and labels to resources it creates.
+    eck.k8s.alpha.elastic.co/propagate-annotations: "my-annotation1, my-annotation2"
+    eck.k8s.alpha.elastic.co/propagate-labels: "my-label1, my-label2"
+  labels:
+    # Some custom labels to be propagated to resources created by the operator.
+    my-label1: "my-label1-value"
+    my-label2: "my-label2-value"
+  name: elasticsearch-sample
+spec:
+  version: 9.0.0
+  nodeSets:
+    - name: default
+      config:
+        # this allows ES to run on nodes even if their vm.max_map_count has not been increased, at a performance cost
+        node.store.allow_mmap: false
+      count: 1
+```
+
+The custom labels and annotations specified in the `metadata` section of the parent resource will be propagated to all child resources created by ECK, such as StatefulSets, Pods, Services, and Secrets. This ensures that all resources have consistent metadata, which can be useful for filtering, monitoring, and managing resources in Kubernetes:
+
+```sh
+kubectl get sts,pods,svc -l my-label1=my-label1-value,my-label2=my-label2-value
+```
+
+```sh
+NAME                                               READY   AGE
+statefulset.apps/elasticsearch-sample-es-default   1/1     4m10s
+
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/elasticsearch-sample-es-default-0   1/1     Running   0          4m9s
+
+NAME                                            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/elasticsearch-sample-es-default         ClusterIP   None             <none>        9200/TCP   4m12s
+service/elasticsearch-sample-es-http            ClusterIP   XX.XX.XX.XX      <none>        9200/TCP   4m14s
+service/elasticsearch-sample-es-internal-http   ClusterIP   XX.XX.XX.XX      <none>        9200/TCP   4m14s
+service/elasticsearch-sample-es-transport       ClusterIP   None             <none>        9300/TCP   4m14s
+```
+
+::::{note}
+Propagated labels and annotations are not automatically removed when the parent resource is deleted. If you want to remove them, you need to do so manually or use a cleanup script.
+::::
+
