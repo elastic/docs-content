@@ -71,7 +71,7 @@ index_name = "my-index"
 
 ## Create field mappings
 
-At this stage, you can define the mappings for your index, including a single text field — named "text".
+At this stage, you can define the mappings for your index, including a single text field named `text`.
 
 ```py
 mappings = {
