@@ -40,7 +40,7 @@ In {{serverless-short}} or after enabling Streams in {{stack}}, access the UI in
 
 ## Manage individual streams [streams-management-tab]
 
-Interact with and configure your streas in the following ways:
+Interact with and configure your streams in the following ways:
 
 - [Data retention](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size under the **Data retention** tab.
 - [Processing](./management/extract.md): Parse and extract information from log messages into dedicated fields under the **Processing** tab.
