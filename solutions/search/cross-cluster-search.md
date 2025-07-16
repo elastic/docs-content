@@ -1159,7 +1159,7 @@ A {{ccs}} using an unsupported configuration may still work. However, such searc
 
 The simplest way to ensure your clusters support {{ccs}} is to keep each cluster on the same version of {{es}}. If you need to maintain clusters with different versions, you can:
 
-* Maintain a dedicated cluster for {{ccs}}. Keep this cluster on the earliest version needed to search the other clusters. For example, if you have 8.18 and 9.x clusters, you can maintain a dedicated 8.18 cluster to use as the local cluster for {{ccs}}.
+* Maintain a dedicated cluster for {{ccs}}. Keep this cluster on the earliest version needed to search the other clusters. For example, if you have 8.18 and 9.x clusters, you can maintain a dedicated 8.19 cluster to use as the local cluster for {{ccs}}.
 * Keep each cluster no more than one minor version apart. This lets you use any cluster as the local cluster when running a {{ccs}}.
 
 
