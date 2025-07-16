@@ -29,7 +29,7 @@ If you have fields that contain valid vector layers, you can use the **{{data-vi
 
 ## Create an {{anomaly-job}} [mapping-anomalies-jobs]
 
-To create an {{anomaly-job}} in {{kib}}, click **Create job** on the **{{ml-cap}} > {{anomaly-detect-cap}}** page and select an appropriate job wizard. Alternatively, use the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
+To create an {{anomaly-job}}, navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). Then click **Create job** and select the appropriate job wizard. Alternatively, use the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
 
 For example, use the multi-metric job wizard to create a job that analyzes the sample web logs data set to detect anomalous behavior in the sum of the data transferred (`bytes` values) for each destination country (`geo.dest` values):
 

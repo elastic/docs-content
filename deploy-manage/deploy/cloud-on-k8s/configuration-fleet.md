@@ -253,7 +253,7 @@ In order to run {{agent}} as a non-root user you must choose how you want to per
 1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
 2. Run {{agent}} with a `hostPath` volume in addition to a `DaemonSet` running as `root` that sets up permissions for the `agent` user.
 
-In addition to these decisions, if you are running {{agent}} in {{fleet}} mode as a non-root user, you must configure `certificate_authorities.ssl` in each `xpack.fleet.outputs` to trust the CA of the {{es}} Cluster.
+In addition to these decisions, if you are running {{agent}} in {{fleet}} mode as a non-root user, you must configure `ssl.certificate_authorities` in each `xpack.fleet.outputs` to trust the CA of the {{es}} Cluster.
 
 To run {{agent}} with an `emptyDir` volume.
 

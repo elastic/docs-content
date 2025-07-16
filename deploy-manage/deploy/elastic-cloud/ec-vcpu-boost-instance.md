@@ -13,6 +13,9 @@ products:
 
 {{ecloud}} allows smaller instance sizes to get temporarily boosted vCPU when under heavy load. vCPU boosting is governed by vCPU credits that instances can earn over time when vCPU usage is less than the assigned amount.
 
+::::{important}
+vCPU credits temporarily assigns extra CPU resources beyond the default. These credits are not always guaranteed, and might be reset during essential maintenance.
+::::
 
 ## How does vCPU boosting work? [ec_how_does_vcpu_boosting_work]
 
