@@ -22,7 +22,7 @@ To find out what the ELASTICSEARCH_URL is for your {{es}} cluster, grep on the o
 
 ```bash
 heroku config --app MY_APP | grep ELASTICSEARCH_URL
-ELASTICSEARCH_URL: https:example.us-east-1.aws.found.io
+ELASTICSEARCH_URL: https:<example-url>.us-east-1.aws.found.io
 ```
 
 When you know your {{es}} URL, you can interact with the {{es}} endpoint using tools like curl.
@@ -32,7 +32,7 @@ When you know your {{es}} URL, you can interact with the {{es}} endpoint using t
 To index a document into {{es}}, `POST` your document:
 
 ```bash
-curl -u USER:PASSWORD <ELASTICSEARCH_URL>/my_index/_doc -XPOST -H 'Content-Type: application/json' -d '{
+curl -u USER:PASSWORD https://https//<ELASTICSEARCH_URL>/my_index/_doc -XPOST -H 'Content-Type: application/json' -d '{
     "title": "One", "tags": ["ruby"]
 }'
 ```

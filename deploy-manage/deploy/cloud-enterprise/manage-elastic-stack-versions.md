@@ -300,7 +300,7 @@ curl -X GET -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/stack/versio
 For example (output abridged for brevity):
 
 ```
-curl -X GET -u admin:4Z52y8Gq7PrxMDy47ipJPSh4ozBMynOGa9HWxcy2D3j https://$COORDINATOR_HOST:12443/api/v1/stack/versions
+curl -X GET -u admin:4Z52y8Gq7PrxMDy47ipJPSh4ozBMynOGa9HWxcy2D3j https://<host-ip>:12443/api/v1/stack/versions
 {
   "stacks": [
     {

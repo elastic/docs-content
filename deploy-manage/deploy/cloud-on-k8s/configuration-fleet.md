@@ -53,8 +53,8 @@ metadata:
   name: kibana-sample
 spec:
   config:
-    xpack.fleet.agents.elasticsearch.hosts: ["<ELASTICSEARCH_HOST>-es-http.default.svc:9200"]
-    xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST>-sample-agent-http.default.svc:8220"]
+    xpack.fleet.agents.elasticsearch.hosts: ["<ELASTICSEARCH_HOST_URL>-es-http.default.svc:9200"]
+    xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>-sample-agent-http.default.svc:8220"]
     xpack.fleet.packages:
       - name: system
         version: latest
@@ -380,20 +380,20 @@ metadata:
 spec:
   config:
     # xpack.fleet.agents.elasticsearch.hosts: <1>
-    xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST>-agent-http.default.svc:8220"]
+    xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>-agent-http.default.svc:8220"]
     xpack.fleet.outputs:
     - id: eck-fleet-agent-output-elasticsearch
       is_default: true
       name: eck-elasticsearch
       type: elasticsearch
       hosts:
-      - "<ELASTICSEARCH-HOST>-es-http.default.svc:9200" <2>
+      - "<ELASTICSEARCH-HOST_URL>-es-http.default.svc:9200" <2>
       ssl:
         certificate_authorities: ["/mnt/elastic-internal/elasticsearch-association/default/elasticsearch-sample/certs/ca.crt"] <3>
 ```
 
 1. This entry must not exist when running agent in fleet mode as a non-root user.
-2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_NAME>-es-http.YOUR-NAMESPACE.svc:9200`
+2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_HOST_URL>-es-http.YOUR-NAMESPACE.svc:9200`
 3. Note that the correct path for {{es}} `certificate_authorities` is `/mnt/elastic-internal/elasticsearch-association/YOUR-NAMESPACE/ELASTICSEARCH-NAME/certs/ca.crt`
 
 

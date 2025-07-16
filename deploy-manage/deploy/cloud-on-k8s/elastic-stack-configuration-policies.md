@@ -225,7 +225,7 @@ spec:
          order: -98
          token_type: id_token
          client_authentication.type: shared_secret
-         allowed_issuer: "https://<ES_CREDENTIALS>.controller.k8s.elastic.co"
+         allowed_issuer: "https://es.credentials.controller.k8s.elastic.co"
          allowed_audiences: [ "elasticsearch" ]
          allowed_subjects: ["elastic-agent"]
          allowed_signature_algorithms: [RS512]
