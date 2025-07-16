@@ -14,6 +14,8 @@ You can use [Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/
 
 {{es}} uses an internal *Azure repository client* module to connect to Azure Blob storage. Clients are configured through a combination of [secure settings](../../security/secure-settings.md) defined in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) defined in `elasticsearch.yml`.
 
+{{es}} uses an internal client module to connect to Azure Blob storage, referred to in this document as the *Azure repository client* or the *Azure client*. Clients are configured through a combination of [secure settings](../../security/secure-settings.md) defined in the {{es}} keystore and [standard settings](/deploy-manage/stack-settings.md) defined in `elasticsearch.yml`.
+
 ## Setup [repository-azure-usage]
 
 To enable Azure repositories, first configure an Azure repository client by specifying one or more settings of the form `azure.client.CLIENT_NAME.SETTING_NAME`. By default, `azure` repositories use a client named `default`, but you may specify a different client name when registering each repository.
