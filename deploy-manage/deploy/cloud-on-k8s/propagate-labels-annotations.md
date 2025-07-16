@@ -30,7 +30,7 @@ metadata:
     my-label2: "my-label2-value"
   name: elasticsearch-sample
 spec:
-  version: 9.0.0
+  version: {version}
   nodeSets:
     - name: default
       config:
