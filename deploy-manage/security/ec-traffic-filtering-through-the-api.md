@@ -94,7 +94,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 curl \
 -H "Authorization: ApiKey $API_KEY" \
 -H 'content-type: application/json' \
-<COORDINATOR_HOST_URL>:12443/api/v1/deployments/traffic-filter/rulesets \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets \
 -d '
 {
   "name": "My IP filtering Ingress Rule Set",
@@ -317,7 +317,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$RULESE
 curl -XPUT \
 -H "Authorization: ApiKey $API_KEY" \
 -H 'content-type: application/json' \
-<COORDINATOR_HOST_URL>:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID \
 -d '
 {
   "name": "My IP filtering Ingress Rule Set",
@@ -376,7 +376,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$RULESE
 curl -XPOST \
 -H "Authorization: ApiKey $API_KEY" \
 -H 'content-type: application/json' \
-<COORDINATOR_HOST_URL>:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID/associations \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID/associations \
 -d '
 {
    "entity_type" : "deployment",
@@ -418,7 +418,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$RULESE
 curl -XDELETE \
 -H "Authorization: ApiKey $API_KEY" \
 -H 'content-type: application/json' \
-<COORDINATOR_HOST_URL>:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID/associations/deployment/$DEPLOYMENT_ID \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID/associations/deployment/$DEPLOYMENT_ID \
 ```
 :::
 ::::
@@ -450,7 +450,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets/$RULESE
 ```sh
 curl -XDELETE \
 -H "Authorization: ApiKey $API_KEY" \
-<COORDINATOR_HOST_URL>:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID \
+https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets/$RULESET_ID \
 ```
 :::
 ::::

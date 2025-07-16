@@ -35,7 +35,7 @@ When creating a deployment with version 8.0 using an APM payload, the APM integr
 The following creates a deployment that uses the `default` deployment template in the `ece-region`
 
 ```sh
-curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" <COORDINATOR_HOST_URL>:12443/api/v1/deployments -H 'content-type: application/json' -d '
+curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments -H 'content-type: application/json' -d '
 {
   "resources": {
     "elasticsearch": [
@@ -260,7 +260,7 @@ To find the `instance_configuration_id`, fetch the deployment template using the
 curl -XGET \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
-"<COORDINATOR_HOST_URL>:12443/api/v1/deployments/templates/default?region=ece-region&show_instance_configurations=false&stack_version=8.0.0"
+"https://$COORDINATOR_HOST:12443/api/v1/deployments/templates/default?region=ece-region&show_instance_configurations=false&stack_version=8.0.0"
 ```
 
 This return a template like
@@ -330,7 +330,7 @@ Finally, to switch to Integrations Server, update the deployment using the Integ
 curl -XPUT \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
-"<COORDINATOR_HOST_URL>:12443/api/v1/deployments/<deployment-id>" \
+"https://$COORDINATOR_HOST:12443/api/v1/deployments/<deployment-id>" \
 -d '
 {
   "prune_orphans": false, <2>

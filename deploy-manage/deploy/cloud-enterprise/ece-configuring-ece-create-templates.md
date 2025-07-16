@@ -89,7 +89,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 1. Obtain the existing deployment templates to get some examples of what the required JSON looks like. You can take the JSON for one of the existing templates and modify it to create a new template, similar to what gets shown in the next step.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" <COORDINATOR_HOST_URL>:12443/api/v1/deployments/templates?region=ece-region
+    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Post the JSON for your new deployment template.
@@ -97,7 +97,7 @@ Before you start creating your own deployment templates, you should have: [tagge
     The following example creates a deployment template that defaults to a highly available {{es}} cluster with 4 GB per hot node, a 16 GB machine learning node, 3 dedicated master nodes of 1 GB each, a 1 GB {{kib}} instance, and a 1 GB dedicated coordinating node that is tasked with handling and coordinating all incoming requests for the cluster. {{es}} and {{kib}} use the default instance configurations, but the machine learning node is based on the custom instance configuration in our previous example.
 
     ```sh
-    curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" <COORDINATOR_HOST_URL>:12443/api/v1/deployments/templates?region=ece-region -H 'content-type: application/json' -d '{
+    curl -k -X POST -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region -H 'content-type: application/json' -d '{
         "name" : "Default",
         "description" : "Default deployment template for clusters",
         "deployment_template": {

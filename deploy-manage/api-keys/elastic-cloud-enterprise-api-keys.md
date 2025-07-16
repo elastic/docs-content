@@ -59,7 +59,7 @@ To create a bearer token:
 1. Open a terminal and send your credentials to the login endpoint:
 
     ```sh
-    curl -k -X POST -H 'Content-Type: application/json' <COORDINATOR_HOST_URL>:12443/api/v1/users/auth/_login --data-binary '
+    curl -k -X POST -H 'Content-Type: application/json' https://$COORDINATOR_HOST:12443/api/v1/users/auth/_login --data-binary '
     {
       "username": "USER",
       "password": "PASSWORD"
