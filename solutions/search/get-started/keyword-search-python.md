@@ -171,7 +171,7 @@ DELETE /semantic-index
 
 This quickstart covered the basics of working with {{es}}.
 
-For a deeper dive, check out the following resources:
+For a deeper dive, refer to the following resources:
 
 - [Getting started with the Python client](elasticsearch-py://reference/getting-started.md)
 - [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks/README.md)
