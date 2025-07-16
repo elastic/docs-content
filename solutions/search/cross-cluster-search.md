@@ -1101,7 +1101,7 @@ Here’s how {{ccs}} works when you don’t minimize network roundtrips.
 
 
 ## Supported {{ccs}} configurations [ccs-supported-configurations]
-In 8.0+, Elastic supports searches from a local cluster to a remote cluster running:
+Elastic supports searches from a local cluster to a remote cluster running:
 
 * The previous minor version.
 * The same version.
