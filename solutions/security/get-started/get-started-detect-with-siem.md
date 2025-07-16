@@ -81,7 +81,7 @@ For a comprehensive explanation of all endpoint protections and policy settings,
 
 ## Add Elastic prebuilt detection rules
 
-Detection rules allow you to monitor your environment by searching for source events, matches, sequences, or {{ml}} job anomaly results that meet their criteria. When a rule’s criteria are met, {{elastic-sec}} generates an alert. While you can create your own rules tailored for your environment, Elastic ships out-of-the-box prebuilt rules that you can install. If you installed {{elastic-defend}}, the Endpoint Security ({{elastic-defend}}) rule is automatically enabled after you install it. 
+Detection rules allow you to monitor your environment by searching for source events, matches, sequences, or {{ml}} job anomaly results that meet their criteria. When a rule’s criteria are met, {{elastic-sec}} generates an alert. While you can create your own rules tailored for your environment, Elastic ships out-of-the-box prebuilt rules that you can install. Remember that if you installed {{elastic-defend}}, the Endpoint Security rule is already enabled.
 
 :::{dropdown} Steps to install and enable prebuilt rules
 1. On the **Get Started** page, scroll down to the **Configure rules and alerts** section. 
