@@ -486,11 +486,12 @@ toc:
                   - file: security/k8s-transport-settings.md
           - file: security/traffic-filtering.md
             children:
+              - file: security/network-security-policies.md
+              - file: security/ece-filter-rules.md
               - file: security/ip-traffic-filtering.md
                 children:
                   - file: security/ip-filtering-cloud.md
-                    children:
-                      - file: security/ec-traffic-filtering-through-the-api.md
+                  - file: security/ip-filtering-ece.md
                   - file: security/ip-filtering-basic.md
               - file: security/private-link-traffic-filters.md
                 children:
@@ -498,6 +499,7 @@ toc:
                   - file: security/azure-private-link-traffic-filters.md
                   - file: security/gcp-private-service-connect-traffic-filters.md
                   - file: security/claim-traffic-filter-link-id-ownership-through-api.md
+              - file: security/ec-traffic-filtering-through-the-api.md
               - file: security/k8s-network-policies.md
           - file: security/elastic-cloud-static-ips.md
           - file: security/kibana-session-management.md
