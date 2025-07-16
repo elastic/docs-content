@@ -184,7 +184,7 @@ In this example, we assume the Identity Provider does not publish its SAML metad
 
 ## Example: Custom JVM trust store bundle [ece-add-custom-bundle-example-cacerts]
 
-If you are using SSL certificates signed by non-public certificate authorities, {{es}} is not able to communicate with the services using those certificates unless you import a custom JVM trust store containing the certificates of your signing authority into your {{ece}} installation. You’ll need the trust store to access snapshot repositories like Minio, for your {{ece}} proxy, or to reindex from remote.
+If you are using SSL certificates signed by non-public certificate authorities, {{es}} is not able to communicate with the services using those certificates unless you import a custom JVM trust store containing the certificates of your signing authority into your {{ece}} installation. You’ll need the trust store to access snapshot repositories like MinIO, for your {{ece}} proxy, or to reindex from remote.
 
 To import a JVM trust store:
 
