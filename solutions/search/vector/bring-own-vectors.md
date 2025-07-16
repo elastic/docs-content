@@ -135,6 +135,13 @@ POST /amazon-reviews/_search
 2. The `k` parameter specifies the number of results to return.
 3. The `num_candidates` parameter is optional. It limits the number of candidates returned by the search node. This can improve performance and reduce costs.
 
+## Next steps
+
+If you want to try a similar set of steps from an {{es}} client, check out the guided index workflow:
+
+- If you're using Elasticsearch Serverless, go to **{{es}} > Home**, select the vector search workflow, and **Create a vector optimized index**.
+- If you're using {{ech}} or a self-managed cluster, go to **Elasticsearch > Home** and click **Create API index**. Select the vector search workflow.
+
 When you finish your tests and no longer need the sample data set, delete the index:
 
 ```console
@@ -142,11 +149,6 @@ DELETE /amazon-reviews
 ```
 
 ## Learn more [bring-your-own-vectors-learn-more]
-
-If you want to try a similar set of steps from an {{es}} client, check out the guided index workflow:
-
-- If you're using Elasticsearch Serverless, go to **{{es}} > Home**, select the vector search workflow, and **Create a vector optimized index**.
-- If you're using {{ech}} or a self-managed cluster, go to **Elasticsearch > Home** and click **Create API index**. Select the vector search workflow.
 
 In these simple examples, we're sending a raw vector for the query text.
 In a real-world scenario you won't know the query text ahead of time.
