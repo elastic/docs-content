@@ -113,7 +113,7 @@ POST /_bulk
 
 ## Test vector search [bring-your-own-vectors-search-documents]
 
-Now you can query these document vectors using a [`knn` retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers#knn-retriever).
+Now you can query these document vectors using a [`knn` retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md#knn-retriever).
 `knn` is a type of vector search, which finds the `k` most similar documents to a query vector.
 Here we're using a raw vector for the query text for demonstration purposes:
 
