@@ -10,7 +10,7 @@ products:
 
 Learn about the latest changes, issues, fixes, and deprecations for Elastic releases, including {{stack}} 9.0 and {{serverless-full}}, by reviewing the release notes.
 
-To view the changes in previous versions, go to [Release docs](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/8.x/new.html).
+To view the changes in previous versions, go to [Release docs](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/8.18/new.html).
 
 For information about the latest changes to Elastic APIs, check [APIs changelog](https://www.elastic.co/docs/api/changes).
 
