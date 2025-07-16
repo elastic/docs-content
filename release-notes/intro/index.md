@@ -17,3 +17,4 @@ We recommend you upgrade to the latest Elastic version. To learn how to upgrade,
 To learn more about Elastic releases, use the following resources:
 * Join the [Elastic community forums](https://discuss.elastic.co/)
 * Check out the release announcements on the [Elastic Blog](https://www.elastic.co/blog/category/releases)
+* Reach out to [Elastic Support](https://www.elastic.co/support)
