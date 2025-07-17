@@ -112,4 +112,4 @@ Remove old or rarely-accessed alerts in your space by running an alert cleanup t
 
 5. Enter **Delete** to verify that you want to run the alert cleanup task, then click **Run cleanup task**.  
 
-A message confirming that the alert cleanup task has started running appears. This information is also provided at the top of the alert cleanup modal in the **Last cleanup task: details** field. Note the field doesn't display in the modal until an alert cleanup task is ran.
+A message confirming that the alert cleanup task has started running appears. This information is also provided at the top of the alert cleanup modal in the **Last cleanup task: details** field. Note the field doesn't display in the modal until an alert cleanup task is run.
