@@ -2,23 +2,24 @@
 navigation_title: "Keyword search with Python"
 description: An introduction to building an Elasticsearch query in Python. 
 applies_to:
-  serverless: all
+  serverless:
+    elasticsearch: ga
 products:
   - id: elasticsearch
+  - id: elasticsearch-client
 ---
 # Build your first search query with Python
 
-{{es}} provides a range of search techniques, starting with BM25, the industry standard for textual search.
-It provides official clients for multiple programming languages, including Python, Rust, Java, JavaScript, and others. 
+In this quickstart, you'll index a couple of documents and query them using Python.
+These concepts and techniques will help you connect a backend application to {{es}} to answer your queries.
+
+This quickstart also introduces you to the [official {{es}} clients](/reference/elasticsearch-clients/index.md), which are available for multiple programming languages.
 These clients offer full API support for indexing, searching, and cluster management.
 They are optimized for performance and kept up to date with {{es}} releases, ensuring compatibility and security.
 
-In this quickstart, you'll index a couple of documents and query them using Python.
-By the end of this guide, you’ll have learned how to connect a backend application to {{es}} to answer your queries.
-
 ## Prerequisites
 
-- If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a general purpose project. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+In [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a general purpose project. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
 <!--
 If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role.
 -->
@@ -44,7 +45,7 @@ TBD: Describe how to create the key
 For an introduction to the concept of indices, check out [](/manage-data/data-store/index-basics.md).
 :::
 
-## Install an {{es}} client
+## Install the Python client
 
 Select your preferred language in the keyword search workflow. For this example, leverage Python.
 
