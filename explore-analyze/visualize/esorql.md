@@ -68,12 +68,13 @@ stack: ga 9.1
 serverless: 
    elasticsearch: ga
    observability: ga
+   security: unavailable
 ```
 
 Once you've created an {{esql}} panel, you can create an {{es}} threshold rule directly from the visualization panel, based on the data it displays. When you do this, the rule query is automatically generated and either describes the data and sets a specific threshold, or describes the data without setting a specific threshold.
 
 ::::{note}
-This capability is not available for {{elastic-sec}}, which has its own rule types. It works only in {{observability}} and {{es}}.
+{{elastic-sec}} rule types are not supported.
 ::::
 To create a rule with the threshold pre-specified:
 
