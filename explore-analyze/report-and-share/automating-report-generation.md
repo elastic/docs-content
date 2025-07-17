@@ -216,7 +216,7 @@ Save time by setting up a recurring task that automatically generates reports an
         notifications.connectors.default.email: my-email
      ```
 
-* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://settings/alert-action-settings.asciidoc) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerts-cases/alerts/notifications-domain-allowlist.md).
+* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerts-cases/alerts/notifications-domain-allowlist.md).
 
 ### Create a schedule [create-scheduled-report]
 
