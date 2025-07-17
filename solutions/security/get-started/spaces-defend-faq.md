@@ -55,7 +55,7 @@ The list of endpoints that you see depends on your current space. Only endpoints
 
 **How do spaces impact the visibility of {{elastic-defend}} integration policies in {{elastic-sec}}?**
 
-The **Policies** list displays only the policies associated with your current space. The endpoint count for each policy includes only the endpoints within that space. 
+The **Policies** list displays only the policies associated with your current space. The endpoint agent count for each policy includes only the endpoints within that space.
 
 
 ## Endpoint artifacts [spaces-security-faq-endpoint-artifacts]
@@ -95,7 +95,7 @@ In these situations, editing may be disabled, and tooltips will provide addition
 
 **How can I tell which space “owns” a per-policy artifact?**
 
-Each artifact has a `tag` field, whose value corresponds to the owner space's ID. The format of this tag is `ownerspaceId:<space_id_here>`, for example: `ownerspaceId:default`.
+This information is not currently visible in the Kibana UI. It is, however, available on each artifact record returned by the API under the `tag` field. It will includes a value that corresponds to the owner space's ID in the format of `ownerSpaceId:<space_id_here>`, for example: `ownerSpaceId:default`. By default, each artifact will have at least one such tag, but multiple tags are also supported and cause a per-policy artifact to be managed by multiple spaces.
 
 
 ## RBAC [spaces-security-faq-rbac]
@@ -120,9 +120,9 @@ Endpoint exceptions are global-only, so you need the **Global Artifact Managemen
 
 **How do I change which space owns a per-policy artifact?**
 
-Artifact tags enable you to change the owning space of per-policy artifacts (those not assigned globally). When an artifact is created, a tag for the space it was created in is automatically added. The format of this tag is `ownerspaceId:<space_id_here>`, for example: `ownerspaceId:default`. Artifacts can have multiple owner space tags, which enables you to have multiple spaces where you can manage per-policy artifacts.
+Artifact `tags` enable you to change the owning space of per-policy artifacts (those not assigned globally). When an artifact is created, a tag for the space it was created in is automatically added. The format of this tag is `ownerSpaceId:<space_id_here>`, for example: `ownerSpaceId:default`. Artifacts can have multiple owner space tags, which enables the management of per-policy artifacts from multiple spaces.
 
-Updates to owner space tags are supported via API. This type of update requires that you have the **Global Artifact Management** privilege. Refer to the [Security endpoint management APIs]({{kib-apis}}/group/endpoint-security-endpoint-management-api) to learn how to use each artifact type's corresponding API.
+Updates to owner space `tags` are supported via API. This type of update requires that you have the **Global Artifact Management** privilege. Refer to the [Security endpoint management APIs]({{kib-apis}}/group/endpoint-security-endpoint-management-api) to learn how to use each artifact type's corresponding API.
 
 
 **What happens if I delete a space that “owns” certain per-policy artifacts?**
@@ -135,7 +135,7 @@ When a space is deleted, artifacts that were previously created from the deleted
 
 **How do spaces impact response actions?**
 
-Response actions for both {{elastic-defend}} and third-party EDR solutions are associated with the {{fleet}} integration policy that's connected to the {{elastic-agent}} that executed the response action. A user authorized to view the response actions history log can only view items associated with integration policies that are accessible in the active space. If you share an integration policy with a new space, the associated response actions will automatically become visible in that space. There are some conditions that can result in response action history not being accessible by default—we call these ["orphan” response actions](#spaces-security-faq-orphan-response-actions)).
+Response actions for both {{elastic-defend}} and third-party EDR solutions are associated with the {{fleet}} integration policy that's connected to the {{elastic-agent}} that executed the response action. A user authorized to view the response actions history log can only view items associated with integration policies that are accessible in the active space. If you share an integration policy with a new space, the associated response actions will automatically become visible in that space. There are some conditions that can result in response action history not being accessible by default—we call these ["orphan” response actions](#spaces-security-faq-orphan-response-actions).
 
 
 **How are response actions visible across spaces?**
@@ -150,7 +150,7 @@ When an integration policy is deleted in {{fleet}}, response actions associated 
 
 **What happens if my {{agent}} moves to a new integration policy?**
 
-When an {{agent}} moves to a new integration policy, its response actions history will continue to be visible as long as the prior integration policy is not deleted and continues remains accessible from the same spaces that the new integration policy is shared with.
+When an {{agent}} moves to a new integration policy, its response actions history will continue to be visible as long as the prior integration policy is not deleted and remains accessible from the same spaces that the new integration policy is shared with.
 
 If the new integration policy is not shared with the same spaces as the prior integration policy, then some history may be hidden; you can only view response action history for integration policies you have access to in the current space.
 
@@ -159,7 +159,7 @@ If the new integration policy is not shared with the same spaces as the prior in
 
 Automated response actions (currently supported only for {{elastic-defend}}) work similarly to regular response actions, with a few caveats:
 
-* If you unenroll a host before the detection engine processes an event from that host, the response action will fail. The failed response action will not appear in the UI (either as part of the alert details, or in the response actions history log) because it won't be associated with the agent policy that was running on the host. These actions will become [orphans](#spaces-security-faq-orphan-response-actions).
+* If you unenroll a host before the detection engine processes an event from that host, the response action will fail. The failed response action will not appear in the UI (either as part of the alert details, or in the response actions history log) because it won't be associated with the integration policy that was running on the host. These actions will become [orphans](#spaces-security-faq-orphan-response-actions).
 
 * If a policy that triggered automated response actions moves to a new space or is shared with a new space, links to the detection engine rule that triggered the automated response actions will go to a “rule not found” page. This occurs because the rule is space-specific and not accessible in your current space.
 
@@ -220,7 +220,7 @@ Response:
 ```
 :::
 
-To remove the space ID where orphan response actions appear, call the API with an empty string for `spaceId`.
+To remove the space ID where orphan response actions appear, call the API with an empty string for `spaceId`. Orphan response actions can only appear in a single space.
 
 
 ## Endpoint protection rules [spaces-security-faq-endpoint-protection-rules]
@@ -228,6 +228,9 @@ To remove the space ID where orphan response actions appear, call the API with a
 By default, [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) use an index pattern that may be too broad for use in a particular space. In order to ensure that the space only shows the desired data in that space, you may need to customize the rule.
 For example, the Endpoint Security ({{elastic-defend}}) rule has an index pattern that picks up all data sent to `logs-endpoint.alerts-*`. This index pattern would pick up all events sent by {{elastic-defend}}, which may not be desirable. 
 
+**What happens to protection rules when a policy is shared with or moved to a new space?**
+
+Sharing or moving a {{fleet}} agent policy or associating an {{elastic-defend}} integration policy with additional {{fleet}} agent policies may require you to configure the associated protection rules in the new space. Rules are space specific and will not be automatically created in the additional spaces that the policies were shared with.
 
 ## Osquery [spaces-security-faq-osquery]
 
