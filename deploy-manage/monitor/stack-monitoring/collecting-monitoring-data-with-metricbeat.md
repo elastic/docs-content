@@ -93,7 +93,7 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon-2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"
