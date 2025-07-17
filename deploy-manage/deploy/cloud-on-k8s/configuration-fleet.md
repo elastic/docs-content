@@ -393,7 +393,7 @@ spec:
 ```
 
 1. This entry must not exist when running agent in fleet mode as a non-root user.
-2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_HOST_URL>-es-http.YOUR-NAMESPACE.svc:9200`
+2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_HOST_URL>-es-http.<YOUR-NAMESPACE>.svc:9200`
 3. Note that the correct path for {{es}} `certificate_authorities` is `/mnt/elastic-internal/elasticsearch-association/YOUR-NAMESPACE/ELASTICSEARCH-NAME/certs/ca.crt`
 
 
