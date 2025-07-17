@@ -104,7 +104,7 @@ Remove old or rarely-accessed alerts in your space by running an alert cleanup t
 
    * **Active alerts**: Choose to delete alerts that haven't had their status changed since they were initially generated and are older than the threshold that you specify. 
    
-      For example, if you specify 2 years as the threshold, the cleanup task will delete alerts that were generated more than two years ago and have never had their status changed.  
+      For example, if you specify two years as the threshold, the cleanup task will delete alerts that were generated more than two years ago and have never had their status changed.  
 
    * **Inactive alerts**: Choose to delete alerts that have had their statuses changed since they were initially created and are older than the threshold that you specify. Inactive alerts have had their status changed to recovered, closed, acknowledged, or untracked. 
 
