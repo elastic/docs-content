@@ -175,9 +175,9 @@ serverless: preview
 
 Save time by setting up a recurring task that automatically generates reports and shares them on a schedule that you choose. 
 
-### Requirements [scheduled-reports-reqs]
+### Prerequisites [scheduled-reports-reqs]
 
-* To use reporting, your {{kib}} instance must have a minimum of 2GB of RAM.
+* To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
 * (Optional) To view and manage other users’ reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. If your role doesn't have the **Manage Scheduled Reporting** feature privilege, you can only share reports with yourself. 
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
@@ -245,7 +245,7 @@ Note that you cannot edit or delete a schedule after you create it. To stop the 
 
 The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. Issues with report generation and sharing are likely to happen in the following scenarios:
 
-* {{kib}} might fail to attach reports that exceed the size limit for email attachments, which is...
+* The limit for email attachments is 10 MB. {{kib}} might fail to attach reports that are larger than this size.
 * Scheduling too many reports at the same time might cause reports to be shared late or at an inconsistent schedule. {{kib}} Task Manager runs reporting tasks one at a time.
 * If your cluster is running many tasks in general, reports may be delayed.
 * Scheduling reports of Canvas workpads is not supported since Canvas workpads are in maintenance mode.
