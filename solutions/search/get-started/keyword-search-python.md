@@ -148,7 +148,7 @@ print(response)
 
 :::{tip}
 Instead of using the `*` wildcard, you can narrow the query by using your index name.
-For more details, go to the [ES|QL reference](elasticsearch://reference/query-languages/esql.md)
+For more details, refer the [ES|QL reference](elasticsearch://reference/query-languages/esql.md)
 :::
 
 The results in this case contain the document that matches the query:
