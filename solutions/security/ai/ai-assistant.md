@@ -169,7 +169,7 @@ Elastic AI Assistant allows you to take full advantage of the {{elastic-sec}} pl
 serverless: ga
 stack: ga 9.1
 ```
-The agent has access to index names and field metadata from your cluster. This contextual information is used to improve ES|QL generation, which may result in slightly longer response times.
+The agent has access to index names and field metadata from your cluster. This contextual information is used to improve ES|QL generation. This change may result in slightly longer response times.
 
 To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an {{esql}} query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Provide comments explaining the query you just gave."
 
