@@ -216,6 +216,8 @@ Save time by setting up a recurring task that automatically generates reports an
         notifications.connectors.default.email: my-email
      ```
 
+* (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference.alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerts-cases/alerts/notifications-domain-allowlist.md).
+
 ### Create a schedule [create-scheduled-report]
 
 1. Open the saved Discover session, dashboard, or visualization you want to share. 
@@ -248,4 +250,5 @@ The feature enables analysis of data in external tools, but it is not intended f
 * The limit for email attachments is 10 MB. {{kib}} might fail to attach reports that are larger than this size.
 * Scheduling too many reports at the same time might cause reports to be shared late or at an inconsistent schedule. {{kib}} Task Manager runs reporting tasks one at a time.
 * If your cluster is running many tasks in general, reports may be delayed.
-* Scheduling reports of Canvas workpads is not supported since Canvas workpads are in maintenance mode.
+* Scheduling reports of Canvas workpads is not supported since Canvas workpads are in maintenance mode. 
+* Scheduling CSV reports of Lens visualizations is not supported. 
