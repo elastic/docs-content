@@ -64,7 +64,7 @@ If you’re using macOS, some versions may require you to grant {{elastic-endpoi
 
 ::::{step} Modify policy configuration settings
 
-After you install the {{agent}} with {{elastic-defend}}, the Endpoint Security ({{elastic-defend}}) detection rule is automatically enabled and can generate either detection or protection alerts
+After you install the {{agent}} with {{elastic-defend}}, the Endpoint Security ({{elastic-defend}}) detection rule is automatically enabled and can generate either detection or protection alerts.
 You can can also set up endpoint protections—such as preventions against malware, ransomware, memory threats, and other malicious behavior—on protected hosts.
 This means that {{elastic-defend}} not only monitors for these behaviors and generates an alert when they are detected but also blocks them. Due to this maximum level of protection, we recommend modifying the policy to _detect_ instead of _prevent_ so that only an alert will be generated, and you can decide how to respond to the threat. Then, closely monitor which alerts and how many are generating over a specific time period before enabling higher protection, if needed. 
 
