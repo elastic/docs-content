@@ -10,7 +10,7 @@ products:
 ---
 # Build your first search query with Python
 
-In this quickstart, you'll index a couple of documents and query them using Python.
+In this quickstart, you'll index a couple of documents and query them using [Python](https://www.python.org/).
 These concepts and techniques will help you connect a backend application to {{es}} to answer your queries.
 
 This quickstart also introduces you to the [official {{es}} clients](/reference/elasticsearch-clients/index.md), which are available for multiple programming languages.
@@ -19,30 +19,25 @@ They are optimized for performance and kept up to date with {{es}} releases, ens
 
 ## Prerequisites
 
-In [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a general purpose project. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
-<!--
-If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role.
--->
-  
-To learn about role-based access control, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+This quickstart assumes you have no previous knowledge of {{es}} but expects you'll have a basic familiarity with Python development.
+To follow the steps, you must have a recent version of a Python interpreter.
 
-## Create an index
+## Create an {{es-serverless}} project
+
+In [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a general purpose project.
+To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.  
+To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+
+## Create an index and API key
 
 An index is a collection of documents uniquely identified by a name or an alias.
 To create an index, go to **{{es}} > Home**, select keyword search, and follow the guided workflow.
-<!--
-Click **Create a TBD index**.
-- If you're using {{es-serverless}}...
-- If you're using {{ech}} or running {{es}} locally, go to **{{es}} > Home** and click **Create API index**. Select the semantic search workflow.
--->
 
-You've created your first index!
-Next, create an API key so your application can talk to {{es}}.
-<!--
-TBD: Describe how to create the key
--->
+To enable the client to talk to {{es}} you must also create an API key.
+Click **Create API Key** and use the default values, which are sufficient for this quickstart.
+
 :::{tip}
-For an introduction to the concept of indices, refer to [](/manage-data/data-store/index-basics.md).
+For more information about indices and API keys, go to [](/manage-data/data-store/index-basics.md) and [](/deploy-manage/api-keys/serverless-project-api-keys.md).
 :::
 
 ## Install the Python client
@@ -51,24 +46,32 @@ Select your preferred language in the keyword search workflow. For this quicksta
 
 ![Client installation step in the index management workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltbf810f73fd4082fb/67c21c06304ea9790b82ee4d/screenshot-my-index.png)
 
-In your terminal, install the {{es}} client using `pip`:
+The {{es}} client library is a Python package that is installed with `pip`:
 
 ```py
 pip install elasticsearch
 ```
 
-Copy your API key from the top right corner and add it to the client’s configuration alongside the project URL.
+## Connect your client to your project
+
+Copy the code example from the guided index workflow, which follows this pattern:
 
 ```py
 from elasticsearch import Elasticsearch
 
 client = Elasticsearch(
-    "https://my-project-bff300.es.us-east-1.aws.elastic.cloud:443",
+    "YOUR-PROJECT-URL",
     api_key="YOUR-API-KEY"
 )
 
-index_name = "my-index"
+index_name = "YOUR-INDEX"
 ```
+
+:::{tip}
+The code examples can be copied into your Python interpreter in interactive mode.
+:::
+
+You must provide your API key, index name, and project URL.
 
 ## Create field mappings
 
