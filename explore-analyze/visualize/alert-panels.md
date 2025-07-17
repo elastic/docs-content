@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: ga
+  stack: ga 9.1
   serverless: ga
 products:
   - id: kibana
@@ -14,7 +14,7 @@ To view alerts in a dashboard, add **Alerts** panels that show selected alerts. 
 
 1. From your dashboard, select **Add panel**.
 2. In the **Add panel** flyout, select **Alerts**. The configuration flyout appears.
-3. Under **Solution**, select either **Observability** or **Security** to specify the type of alerts you want to display.
+3. ({{stack}} deployments only) Under **Solution**, select either **Observability** or **Security** to specify the type of alerts you want to display. 
 4. Under **Filter by** select either **Rule tags** or **Rule types**. 
 5. (Optional) To use both types of filters, first define one filter, then use the boolean **+ OR** or **+ AND** options that appear to define the second filter.
 5. Click **Save**. Your panel appears on the dashboard.
@@ -37,6 +37,6 @@ There are several actions you can take on alerts in the alerts panel. Under **Ac
 
 To edit an existing alerts panel, hover over the panel. Three buttons appear:
 
-- **Edit** (![pencil button](/explore-analyze/images/kibana-esql-icon-edit-visualization.svg "")): Update which alerts appear in the panel.
-- **Settings** (![gear icon](/explore-analyze/images/kibana-gear_icon.png "")): Update the panel's title or description, or add a custom time range.
-- **More actions** (three dots): Duplicate, maximize, copy to another dashboard, or remove the panel.
+- **Edit** {icon}`pencil`: Update which alerts appear in the panel.
+- **Settings** {icon}`gear`: Update the panel's title or description, or add a custom time range.
+- **More actions** {icon}`boxes_vertical`: Duplicate, maximize, copy to another dashboard, or remove the panel.
