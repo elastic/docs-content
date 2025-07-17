@@ -29,7 +29,7 @@ To learn about role-based access control, refer to [](/deploy-manage/users-roles
 ## Create an index
 
 An index is a collection of documents uniquely identified by a name or an alias.
-Go to **{{es}} > Home**, select keyword search, and follow the guided index workflow.
+To create an index, go to **{{es}} > Home**, select keyword search, and follow the guided workflow.
 <!--
 Click **Create a TBD index**.
 - If you're using {{es-serverless}}...
