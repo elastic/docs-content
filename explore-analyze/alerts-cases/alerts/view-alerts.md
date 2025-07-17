@@ -81,7 +81,7 @@ serverless: preview
 Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by running an alert cleanup task, which deletes alerts according to the criteria that you define.
 
 :::{note}
-The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Make sure to take regular snapshots of your cluster to backup your alert data in case you ever need to restore it.
+The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Make sure to take regular snapshots of your cluster to back up your alert data in case you ever need to restore it.
 :::
 
 ### Prerequisites [clean-up-alerts-reqs]
