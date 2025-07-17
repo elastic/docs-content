@@ -27,7 +27,7 @@ This page introduces {{elastic-sec}} space awareness and answers frequently aske
 4. Under **Migrate to space-aware agent policies**, click **Start migration**.
 5. Confirm the migration.
 
-This is a one-time migration that copies your existing Fleet data into a new, space-aware model. Previous data will be preserved in snapshots in case rollback is needed.
+This is a one-time migration that copies your existing {{fleet}} data into a new, space-aware model. Previous data will be preserved in snapshots in case rollback is needed.
 ::::
 
 ## General FAQ [spaces-security-faq-general]
@@ -75,7 +75,7 @@ Endpoint artifacts are the various objects that can be associated with endpoints
 
 **How do global artifacts work across spaces?**
 
-Global artifacts are space agnostic and thus eppear in all spaces.
+Global artifacts are space agnostic and appear in all spaces.
 
 
 **How do policy-specific artifacts work across spaces?**
@@ -117,9 +117,9 @@ Specific {{kib}} privileges for each artifact type—such as event filters or tr
 * Blocklist items
 * Event filters
 
-The **Global Artifact Management** privilege grants full control over artifacts in any space. This privilege by itself does not enable you to manage the different artifact types, but rather grants additional privileged actions to those users that have the **All** privilege to a given artifact type. This includes the ability to:
+The **Global Artifact Management** privilege grants full control over artifacts in any space. This privilege by itself does not enable you to manage the different artifact types, but rather grants additional privileged actions to users who also have the **All** privilege for a given artifact type. This includes the ability to:
 
-* Create, edit, and delete global artifacts of any type
+* Create, edit, and delete global artifacts
 * Manage per-policy artifacts, even if they were created in a different space
 * Convert an artifact between global and per-policy scope
 
@@ -130,7 +130,7 @@ Endpoint exceptions are global-only, so you need the **Global Artifact Managemen
 
 Artifact `tags` enable you to change the owning space of per-policy artifacts (those not assigned globally). When an artifact is created, a tag for the space it was created in is automatically added. The format of this tag is `ownerSpaceId:<space_id_here>`, for example: `ownerSpaceId:default`. Artifacts can have multiple owner space tags, which enables the management of per-policy artifacts from multiple spaces.
 
-Updates to owner space `tags` are supported via API. This type of update requires that you have the **Global Artifact Management** privilege. Refer to the [Security endpoint management APIs]({{kib-apis}}/group/endpoint-security-endpoint-management-api) to learn how to use each artifact type's corresponding API.
+Updates to owner space `tags` are supported via API. This type of update requires that you have the **Global Artifact Management** privilege. Refer to [Security endpoint management APIs]({{kib-apis}}/group/endpoint-security-endpoint-management-api) to learn how to use each artifact type's corresponding API.
 
 
 **What happens if I delete a space that “owns” certain per-policy artifacts?**
@@ -148,7 +148,7 @@ Response actions for both {{elastic-defend}} and third-party EDR solutions are a
 
 **How are response actions visible across spaces?**
 
-You can see the response action history for hosts whose {{fleet}} integration policies are visible in the the current space. This includes actions initiated in other spaces; you can see all historical response actions associated with integration policies that are accessible in your current space.
+You can see the response action history for hosts whose {{fleet}} integration policies are visible in the current space. This includes actions initiated in other spaces; you can see all historical response actions associated with integration policies that are accessible in your current space.
 
 
 **If a policy is deleted, how does that impact my response history?**
@@ -160,7 +160,7 @@ When an integration policy is deleted in {{fleet}}, response actions associated 
 
 When an {{agent}} moves to a new integration policy, its response actions history will continue to be visible as long as the prior integration policy is not deleted and remains accessible from the same spaces that the new integration policy is shared with.
 
-If the new integration policy is not shared with the same spaces as the prior integration policy, then some history may be hidden; you can only view response action history for integration policies you have access to in the current space.
+If the new integration policy is not shared with the same spaces as the previous integration policy, then some history may be hidden; you can only view response action history for integration policies you have access to in the current space.
 
 
 **How do spaces impact automated response actions?**
