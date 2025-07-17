@@ -200,7 +200,7 @@ NODE_EXTRA_CA_CERTS="/etc/kibana/certs/ca-cert.pem"
 
 ## Host your own artifact registry for binary downloads [host-artifact-registry]
 
-{{agent}}s must be able to access the {{artifact-registry}} to download binaries during upgrades. By default {{agent}}s download artifacts from `https://artifacts.elastic.co/downloads/`.
+{{agent}}s must be able to access the {{artifact-registry}} to download binaries during upgrades. By default {{agent}}s download artifacts from `https://artifacts.elastic.co/downloads/`. Refer to the available [script and Nginx config](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry).
 
 To make binaries available in an air-gapped environment, you can host your own custom artifact registry, and then configure {{agent}}s to download binaries from it.
 

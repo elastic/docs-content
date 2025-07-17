@@ -66,7 +66,7 @@ If your searches are I/O-bound, consider increasing the size of the filesystem c
 If your searches are CPU-bound, consider using a larger number of faster CPUs.
 
 ::::{note}
-In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH > Change hardware](/deploy-manage/deploy/elastic-cloud/change-hardware.md) and [ECE deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
+In {{ech}} and {{ece}}, you can choose the underlying hardware by selecting different hardware profiles or deployment templates. Refer to [ECH > Manage hardware profiles](/deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md) and [ECE > Manage deployment templates](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md) for more details.
 ::::
 
 ### Local vs. remote storage [_local_vs_remote_storage_2]
