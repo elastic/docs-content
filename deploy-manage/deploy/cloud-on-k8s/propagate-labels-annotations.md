@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    eck: all
+    eck: 3.1.0
 products:
   - id: cloud-kubernetes
 ---
