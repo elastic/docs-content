@@ -8,15 +8,14 @@ products:
   - id: elastic-agent
   - id: fleet
 applies_to:
-  stack: ga 9.1
+  stack: preview 9.1
 
 ---
 
 # FIPS mode for Ingest tools [fips-ingest]
 
-FIPS mode binaries are available for {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}}.
-
-Compliance with FIPS 140-2 requires using only FIPS approved/NIST recommended cryptographic algorithms. For {{agent}}, Fleet Server, the listed {{Beats}}, and APM Server, this can be summarized as:
+{{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and can be configured to use FIPS 140-2 compliant cryptography.
+Generally speaking FIPS 140-2 requirements can be summarized as:
 - linking against a FIPS certified cryptographic library
 - using only FIPS approved cryptographic functions
 - ensuring that the configuration of the component is FIPS 140-2 compliant.
@@ -37,7 +36,7 @@ Ensure to enforce security in your FIPS environments through other means, such a
 
 These TLS related restrictions apply to all components listed. 
 
-### General output & input limitations
+### General output and input limitations
 The Kerberos protocol is not supported for any output or input, which also impacts the available `sasl.mechanism` for the Kafka output where only `PLAIN` is supported. 
 
 This impacts [Filebeat](https://www.elastic.co/docs/reference/beats/filebeat/configuration-kerberos), [Metricbeat](https://www.elastic.co/docs/reference/beats/metricbeat/configuration-kerberos) and APM server, as well as output configurations for Elastic Agent with Fleet Server. 
@@ -65,7 +64,7 @@ This impacts [Filebeat](https://www.elastic.co/docs/reference/beats/filebeat/con
 * The [MySQL](https://www.elastic.co/docs/reference/beats/metricbeat/metricbeat-module-mysql), [PostgreSQL](https://www.elastic.co/docs/reference/beats/metricbeat/metricbeat-module-postgresql), [MSSQL](https://www.elastic.co/docs/reference/beats/metricbeat/metricbeat-module-mssql) and [SQL](https://www.elastic.co/docs/reference/beats/metricbeat/metricbeat-module-sql) Modules are not supported. 
 * The [Oracle Module](https://www.elastic.co/docs/reference/beats/metricbeat/metricbeat-module-oracle) is not supported. 
 
-### Elastic Agent & Fleet Server
+### Elastic Agent and Fleet Server
 When using Elastic Agent and Fleet Server, the same restrictions as listed above for metricbeat and filebeat modules, inputs and processors apply to the respective Integrations. 
 Additionally, following limitations apply:
 * The [Prometheus Receiver](https://www.elastic.co/docs/reference/integrations/prometheus) is not supported. 
