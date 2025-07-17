@@ -8,6 +8,10 @@ toc:
           - file: search/run-elasticsearch-locally.md
           - file: search/serverless-elasticsearch-get-started.md
           - file: search/search-connection-details.md
+          - file: search/get-started/quickstarts.md
+            children:
+              - file: search/get-started/keyword-search-python.md
+              - file: search/get-started/semantic-search.md
       - file: search/api-quickstarts.md
         children:
           - file: search/elasticsearch-basics-quickstart.md
@@ -152,7 +156,6 @@ toc:
                       - file: observability/apm/service-map.md
                       - file: observability/apm/service-overview.md
                       - file: observability/apm/mobile-service-overview.md
-                  - hidden: observability/apm/inventory.md
                   - file: observability/apm/drill-down-into-data.md
                     children:
                       - file: observability/apm/transactions-ui.md
@@ -464,6 +467,11 @@ toc:
       - file: security/elastic-security-serverless.md
       - file: security/get-started.md
         children:
+          - file: security/get-started/quickstarts.md
+            children:
+              - file: security/get-started/get-started-detect-with-siem.md
+              - file: security/get-started/get-started-endpoint-security.md
+              - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
           - file: security/get-started/create-security-project.md
           - file: security/get-started/elastic-security-ui.md
