@@ -44,20 +44,21 @@ For more information about indices and API keys, go to [](/manage-data/data-stor
 
 Select your preferred language in the keyword search workflow. For this quickstart, use Python.
 
-![Client installation step in the index management workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltbf810f73fd4082fb/67c21c06304ea9790b82ee4d/screenshot-my-index.png)
+![Client installation step in the keyword search workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltbf810f73fd4082fb/67c21c06304ea9790b82ee4d/screenshot-my-index.png)
 
 The {{es}} client library is a Python package that is installed with `pip`:
 
 ```py
-pip install elasticsearch
+python -m pip install elasticsearch
 ```
 
 ## Connect your client to your project
 
-Copy the code example from the guided index workflow, which follows this pattern:
+Copy the code example from the guided workflow to connect to the project:
+For example:
 
 ```py
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, helpers
 
 client = Elasticsearch(
     "YOUR-PROJECT-URL",
@@ -73,9 +74,9 @@ The code examples can be copied into your Python interpreter in interactive mode
 
 You must provide your API key, index name, and project URL.
 
-## Create field mappings
+## Define field mappings
 
-At this stage, you can define the mappings for your index, including a single text field named `text`.
+At this stage, you can create the mappings for your index, including a single text field named `text`.
 
 ```py
 mappings = {
@@ -90,9 +91,15 @@ mapping_response = client.indices.put_mapping(index=index_name, body=mappings)
 print(mapping_response)
 ```
 
-## Add documents
+A successful response will acknowledge the creation of the mappings:
 
-Next, use a bulk request to index three documents in {{es}}.
+```py
+{'acknowledged': True}
+```
+
+## Ingest documents
+
+Next, use a bulk helper function to add three documents to your index.
 Bulk requests are the preferred method for indexing large volumes of data, from hundreds to billions of documents.
 
 ```py
@@ -112,18 +119,21 @@ bulk_response = helpers.bulk(client, docs, index=index_name)
 print(bulk_response)
 ```
 
+For more details about bulker helpers, refer to [Client helpers](elasticsearch-py://reference/client-helpers.md).
+
 ## Explore the data
 
-You should be able to see the documents in {{es}}!
+You should now be able to see the documents in the guided workflow:
 
-![Viewing data in the index management workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt0ac36402cde2a645/67d0a443b8764e72b9e8e1f3/view_docs_in_elasticsearch.png)
-<!--
-To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or the global search field.
--->
+![Viewing data in the guided workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt0ac36402cde2a645/67d0a443b8764e72b9e8e1f3/view_docs_in_elasticsearch.png)
+
+Optionally open [Discover](/explore-analyze/discover.md) from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to familiarize yourself with this data set.
 
 ## Test keyword search
 
-Create a new script (for instance, `search.py`) that defines a query and runs the following search request:
+A keyword search query finds relevant documents in your indices using exact matches, patterns, or similarity scoring.
+The guided workflow provides an example that uses [Query DSL](/explore-analyze/query-filter/languages/querydsl.md).
+If you prefer to try out [{{es}} Query Language](/explore-analyze/query-filter/languages/esql.md) ({{esql}}), create a new script (for instance, `search.py`) that defines a query and runs the following search request:
 
 ```esql
 FROM my-index
