@@ -27,7 +27,7 @@ Streams requires the following Elastic Cloud Serverless roles:
 
 In {{obs-serverless}}, Streams is automatically available.
 
-In {{stack}} starting in 9.1, Streams you need to enable Streams in {{observability}} Advanced Settings. To do this:
+In {{stack}} version 9.1 and later, you can enable Streams in the {{observability}} Advanced Settings. To do this:
 
 1. Go to **Management** > **Stack Management** > **Advanced Settings**, or search for "Advanced Settings" in the [global search field](../../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Enable **Streams UI** under **Observability**.

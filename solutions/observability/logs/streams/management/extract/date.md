@@ -8,7 +8,7 @@ applies_to:
 
 The date processor parses date strings and uses them as the timestamp of the document.
 
-This functionality uses the {{es}} date pipeline processor. Refer to [date processor](elasticsearch://reference/enrich-processor/date-processor.md) in the {{es}} docs for more information.
+This functionality uses the {{es}} date pipeline processor. Refer to the [date processor](elasticsearch://reference/enrich-processor/date-processor.md) {{es}} documentation for more information.
 
 ## Examples
 
@@ -35,7 +35,7 @@ Sunday, October 15, 2023 => EEEE, MMMM dd, yyyy
 ```
 
 
-## Optional Fields [streams-date-optional-fields]
+## Optional fields [streams-date-optional-fields]
 The following fields are optional for the date processor:
 
 | Field | Description|

@@ -5,7 +5,7 @@ applies_to:
 ---
 # Extract fields [streams-extract-fields]
 
-Unstructured log messages need to be parsed into meaningful fields so you can filter and analyze them quickly. Commonly extracted fields include `timestamp` and the `log.level`, but you can also extract information like IP addresses, usernames, and ports.
+Unstructured log messages must be parsed into meaningful fields before you can filter and analyze them effectively. Commonly extracted fields include `timestamp` and the `log.level`, but you can also extract information like IP addresses, usernames, and ports.
 
 Use the **Processing** tab on the **Manage stream** page to process your data. The UI simulates your changes and provides an immediate preview that's tested end-to-end.
 
@@ -60,12 +60,12 @@ Under **Processors for field extraction**, when you set pipeline processors to m
 When you add or edit processors, the **Data preview** updates automatically.
 
 :::{note}
-To avoid unexpected results, focus on adding processors rather than removing or reordering existing processors.
+To avoid unexpected results, we recommend adding processors rather than removing or reordering existing processors.
 :::
 
 **Data preview** loads 100 documents from your existing data and runs your changes using them.
 For any newly added processors, this simulation is reliable. You can save individual processors during the preview, and even reorder them.
-Selecting 'Save changes' applies your changes to the data stream.
+Selecting **Save changes** applies your changes to the data stream.
 
 If you edit the stream again, note the following:
 - Adding more processors to the end of the list will work as expected.
@@ -98,9 +98,9 @@ Failures are displayed at the bottom of the process editor:
 
 ![Screenshot showing failure notifications](<../../../../images/logs-streams-processor-failures.png>)
 
-These failures may be something you should address, but in some cases they also act as more of a warning.
+These failures may require action, but in some cases, they serve more as warnings.
 
-### Mapping Conflicts
+### Mapping conflicts
 
 As part of processing, Streams also checks for mapping conflicts by simulating the change end to end. If a mapping conflict is detected, Streams marks the processor as failed and displays a failure message like the following:
 
@@ -110,7 +110,7 @@ You can then use the information in the failure message to find and troubleshoot
 
 ## Processor statistics and detected fields [streams-stats-and-detected-fields]
 
-Once saved, the processor provides a quick look the processors success rate and the fields that it added.
+Once saved, the processor provides a quick look at the processor's success rate and the fields that it added.
 
 ![Screenshot showing field stats](<../../../../images/logs-streams-field-stats.png>)
 
