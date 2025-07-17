@@ -28,7 +28,11 @@ You need the `Attack Discovery: All` privilege to use Attack Discovery.
 
 ## Set up Attack Discovery
 
-By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the gear icon next to the **Generate** button.
+By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the settings icon next to the **Run** button.
+
+:::{note}
+In {{stack}} 9.0.0 and earlier, the **Run** button is called **Generate**.
+:::
 
 ::::{image} /solutions/images/security-attack-discovery-settings.png
 :alt: Attack Discovery's settings menu
@@ -52,7 +56,9 @@ The selected fields can now be analyzed the next time you run Attack Discovery.
 You’ll need to select an LLM connector before you can analyze alerts. Attack Discovery uses the same LLM connectors as [AI Assistant](/solutions/security/ai/ai-assistant.md). To get started:
 
 1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
-2. Select an existing connector from the dropdown menu, or add a new one.
+2. Do one of the following:
+   - {applies_to}`stack: ga 9.1` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
+   - {applies_to}`stack: removed 9.1` Select an existing connector from the dropdown menu, or add a new one.
 
    :::{admonition} Recommended models
    While Attack Discovery is compatible with many different models, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) to see which models perform best.
@@ -64,9 +70,11 @@ You’ll need to select an LLM connector before you can analyze alerts. Attack D
     :alt: attck disc select model empty
     :::
 
-3. Once you’ve selected a connector, click **Generate** to start the analysis.
-
-It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected. Once the analysis is complete, any threats it identifies will appear as discoveries. Click each one’s title to expand or collapse it. Click **Generate** at any time to start the Attack Discovery process again with the selected alerts.
+3. Once you’ve selected a connector, do one of the following to start the analysis:
+   - {applies_to}`stack: ga 9.1` Click **Save and run**.
+   - {applies_to}`stack: removed 9.1` Click **Generate**.
+   
+It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected. Once the analysis is complete, any threats it identifies will appear as discoveries. Click each one’s title to expand or collapse it. Click **Run** at any time to start the Attack Discovery process again with the selected alerts.
 
 ::::{important}
 Attack Discovery uses the same data anonymization settings as [Elastic AI Assistant](/solutions/security/ai/ai-assistant.md). To configure which alert fields are sent to the LLM and which of those fields are obfuscated, use the Elastic AI Assistant settings. Consider the privacy policies of third-party LLMs before sending them sensitive data.
@@ -104,21 +112,19 @@ There are several ways you can incorporate discoveries into your {{elastic-sec}}
 
 ```yaml {applies_to}
 stack: ga 9.1
-serverless: ga
 ```
 
 You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.
 
-Scheduled discoveries are shared by default with all users in a {{kib}} space. 
-
 :::{note}
-You can still generate discoveries manually at any time, regardless of an active schedule.
+* Scheduled discoveries are shared by default with all users in a {{kib}} space. Once shared, the visibility of shared discoveries cannot be changed.
+* You can still generate discoveries manually at any time, regardless of an active schedule.
 :::
 
 To create a new schedule:
 
-1. Click the gear icon to open the settings menu, then select **Schedule**.
-2. Select **Create new schedule**.
+1. In the top-right corner, select **Schedule**.
+2. In the **Attack discovery schedule** flyout, select **Create new schedule**.
 3. Enter a name for the new schedule.
 4. Select the LLM connector to use for generating discoveries, or add a new one.
 5. Use the KQL query bar, time filter, and alerts slider to customize the set of alerts that will be analyzed.
@@ -126,7 +132,7 @@ To create a new schedule:
 7. Optionally, select the [connectors](/deploy-manage/manage-connectors.md) to use for receiving notifications, and define their actions.
 8. Click **Create & enable schedule**.
 
-After creating new schedules, you can view their status, modify them or delete them from the **Schedule** tab in the settings menu.
+After creating new schedules, you can view their status, modify them or delete them from the **Attack discovery schedule** flyout.
 
 :::{tip}
 Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({icon}`calendar`). Click the icon to view the schedule that created it.
@@ -136,14 +142,15 @@ Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({ico
 
 ```yaml {applies_to}
 stack: ga 9.1
-serverless: ga
 ```
 
-Attack discoveries are automatically saved each time you generate them. Once saved, discoveries remain available for later review, reporting, and tracking over time. This allows you to revisit discoveries to monitor trends, maintain audit trails, and support investigations as your environment evolves.
+Attack discoveries are automatically saved on the **Attack Discovery** page each time you generate them. Once saved, discoveries remain available for later review, reporting, and tracking over time. This allows you to revisit discoveries to monitor trends, maintain audit trails, and support investigations as your environment evolves.
 
 ### Change a discovery's status
 
 You can set a discovery's status to indicate that it's under active investigation or that it's been resolved. To do this, click **Take action**, then select **Mark as acknowledged** or **Mark as closed**.
+
+You can choose to change the status of only the discovery, or of both the discovery and the alerts associated with it.
 
 ### Take bulk actions
 
