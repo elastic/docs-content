@@ -24,7 +24,7 @@ In [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md
 If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role.
 -->
   
-To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+To learn about role-based access control, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
 ## Create an index
 
