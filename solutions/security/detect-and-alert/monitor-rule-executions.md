@@ -97,9 +97,12 @@ Gaps in rule executions are periods of time where a rule didn’t run. They can 
 Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
 ::::
 
-Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. Click **Fill all gaps** to start manual runs that fill the rule's existing gaps.
+Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. 
 
 ::::{note}
+
+In {{stack}} 9.1 and Serverless, click **Fill all gaps** in the Gaps table to start manual runs that fill the rule's existing gaps.
+
 To fill gaps for multiple rules, go to the Rules page, filter the table to only show rules with gaps, select the appropriate rules, then click **Bulk actions > Fill gaps**.
 ::::
 
