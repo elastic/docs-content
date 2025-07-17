@@ -81,18 +81,15 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds `unassigned` as an asset criticality level for bulk uploads [#208884]({{kib-pull}}208884).
 * Enables `isolate` and `release` response actions from the event details flyout [#206857]({{kib-pull}}206857).
 * Standardizes action triggers in alerts KPI visualizations [#206340]({{kib-pull}}206340).
-* Adds process event monitoring for `ptrace` and `memfd` activity on Linux (kernel 5.10+) using eBPF.
-* Upgrades the Linux Endpoint to use Quark as an eBPF event source.
+* Adds {{elastic-defend}} process event monitoring for `ptrace` and `memfd` activity on Linux (kernel 5.10+) using eBPF.
 * Adds support for DNS events on macOS. Events can be controlled from the {{elastic-defend}} policy using the **DNS events** checkbox.
-* Adds TCC (Transparency Consent and Control) events on macOS. Events are generated every time the TCC database is altered.
-* Adds `parent.command_line` to process events on macOS to keep in line with Linux and Windows.
+* Adds TCC (Transparency Consent and Control) events to {{elastic-defend}} on macOS. Events are generated every time the TCC database is altered.
+* Adds `parent.command_line` to {{elastic-defend}} process events on macOS to keep in line with Linux and Windows.
 * Adds ETW visibility for WinHTTP and WinINet libraries.
 * Adds telemetry to assist detection of processes created in non-standard desktops.
-* Adds FirewallAntiTamper plug-in to protect processes against network tampering via Windows Firewall.
 * Reduces {{elastic-defend}} CPU usage for ETW events, API events, and behavioral protections. In some cases, this may be a significant reduction.
 * {{elastic-defend}}: Changes the security events source from the Event Log provider to Event Tracing for Windows (Microsoft-Windows-Security Auditing) provider and enriches the events with additional data.
-* Adds support for Elliptic Curve certificates and TLS output settings, including `supported_protocols`, `cipher_suites`, and `curve_types`.
-* Updates GRPC library to v1.70.1.
+* Adds {{elastic-defend}} support for Elliptic Curve certificates and TLS output settings, including `supported_protocols`, `cipher_suites`, and `curve_types`.
 * Reduces {{elastic-defend}} CPU and memory usage for behavioral protections.
 
 ### Fixes [elastic-security-9.1.0-fixes]
@@ -118,10 +115,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an alert grouping re-render issue that caused infinite rendering loops when selecting a group [#215086]({{kib-pull}}215086).
 * Fixes a bug in the alert details flyout's **Table** tab where fields displayed duplicate hover actions [#212316]({{kib-pull}}212316).
 * Refactors conversation pagination for the Security AI Assistant [#211831]({{kib-pull}}211831).
-* Fixes an issue where log level changes were not always handled correctly.
 * Fixes the artifact `channel` field and adds `manifest_type` in {{elastic-defend}} policy responses.
-* Fixes a bug where the `fqdn` feature flag wasn't being persisted across system or endpoint restarts.
-* Fixes a crash in the scan response action and suppresses the end-user popup when running background malware scans.
+* Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag wasn't being persisted across system or endpoint restarts.
+* Fixes a crash in the {{elastic-defend}} scan response action and suppresses the end-user popup when running background malware scans.
 
 ## 9.0.3 [elastic-security-9.0.3-release-notes]
 
