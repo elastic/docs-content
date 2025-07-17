@@ -31,6 +31,6 @@ To manage an existing connector:
   - **Overview**: View general information such as the connector's name, ID, status, pipeline, and content sync history. Manage the connector's pipeline and attached index.
   - **Documents**: View data from the connector.
   - **Mappings**: Update index mappings for the connector's data.
-  - **Sync rules**: Manage basic and advanced [sync rules](elasticsearch://reference/elasticsearch/search-connectors/es-sync-rule.md) to control which documents are synced from your third-party data source.
+  - **Sync rules**: Manage basic and advanced [sync rules](elasticsearch://reference/search-connectors/es-sync-rules.md) to control which documents are synced from your third-party data source.
   - **Scheduling**: Define when data from this connector gets synced, and set up document level security. A `Full content sync` deletes existing data in your index before fetching from your data source again. An `Incremental content sync` fetches updated data only, without deleting existing data. 
   - **Configuration**: Edit the connector's data source-specific configuration.
