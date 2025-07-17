@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    eck: 3.1.0
+    eck: preview 3.1
 products:
   - id: cloud-kubernetes
 ---
