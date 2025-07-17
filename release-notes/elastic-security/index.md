@@ -81,6 +81,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds `unassigned` as an asset criticality level for bulk uploads [#208884]({{kib-pull}}208884).
 * Enables `isolate` and `release` response actions from the event details flyout [#206857]({{kib-pull}}206857).
 * Standardizes action triggers in alerts KPI visualizations [#206340]({{kib-pull}}206340).
+* Introduces space-awareness capabilities for {{elastic-defend}} and other {{elastic-sec}}-specific {{fleet}} features.
 * Adds {{elastic-defend}} process event monitoring for `ptrace` and `memfd` activity on Linux (kernel 5.10+) using eBPF.
 * Adds support for DNS events on macOS. Events can be controlled from the {{elastic-defend}} policy using the **DNS events** checkbox.
 * Adds TCC (Transparency Consent and Control) events to {{elastic-defend}} on macOS. Events are generated every time the TCC database is altered.
@@ -115,6 +116,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an alert grouping re-render issue that caused infinite rendering loops when selecting a group [#215086]({{kib-pull}}215086).
 * Fixes a bug in the alert details flyout's **Table** tab where fields displayed duplicate hover actions [#212316]({{kib-pull}}212316).
 * Refactors conversation pagination for the Security AI Assistant [#211831]({{kib-pull}}211831).
+* Fixes a bug where unmodified prebuilt rules installed before v8.18 didn't appear in the **Upgrade** table when the **Unmodified** filter was selected [#227859]({{kib-pull}}227859).
+* Improves UI copy for the "bulk update with conflicts" modal [#227803]({{kib-pull}}227803).
 * Fixes the artifact `channel` field and adds `manifest_type` in {{elastic-defend}} policy responses.
 * Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag wasn't being persisted across system or endpoint restarts.
 * Fixes a crash in the {{elastic-defend}} scan response action and suppresses the end-user popup when running background malware scans.
