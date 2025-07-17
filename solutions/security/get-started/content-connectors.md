@@ -6,10 +6,10 @@ applies_to:
 
 # Content connectors
 
-Elastic's content connectors allow you to extract, transform, index, and sync data from third-party applications including Github, PagerDuty, Jira, OpsGenie, Teams, Google Drive, Slack, email, and more. To see a complete list of the available connectors, follow the setup instructions below. 
+Elastic's content connectors allow you to extract, transform, index, and sync data from third-party applications including Github, PagerDuty, Jira, Teams, Google Drive, Slack, email, and more. [View all available connectors](elasticsearch://reference/search-connectors/index.md)
 
 ## Setup 
-{{stack}} supports two deployment methods: Elastic managed, and self-managed. {{sec-serverless}} only supports Elastic managed deployments. Self-managed deployments require you to manage the {{elastic-agent}} that forwards data to Elastic and allow you to customize the connector's code, whereas Elastic managed deployments use agentless technology and do not allow customization.
+{{stack}} supports two deployment methods for your connectors: Elastic managed, and self-managed. {{sec-serverless}} only supports Elastic managed connectors. Self-managed connectors require you to manage the {{elastic-agent}} that forwards data to Elastic and allow you to customize the connector's code, whereas Elastic managed connectors use agentless technology and do not allow customization.
 
 To learn about set up for self-managed connectors, refer to [Self managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md). To set up an Elastic managed connector:
 
@@ -31,6 +31,6 @@ To manage an existing connector:
   - **Overview**: View general information such as the connector's name, ID, status, pipeline, and content sync history. Manage the connector's pipeline and attached index.
   - **Documents**: View data from the connector.
   - **Mappings**: Update index mappings for the connector's data.
-  - **Sync rules**: Use EQL to select which documents from the connector you wish to save. By default, all documents are saved.
+  - **Sync rules**: Manage basic and advanced [sync rules](elasticsearch://reference/elasticsearch/search-connectors/es-sync-rule.md) to control which documents are synced from your third-party data source.
   - **Scheduling**: Define when data from this connector gets synced, and set up document level security. A `Full content sync` deletes existing data in your index before fetching from your data source again. An `Incremental content sync` fetches updated data only, without deleting existing data. 
   - **Configuration**: Edit the connector's data source-specific configuration.
