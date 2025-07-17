@@ -1,6 +1,7 @@
 ---
 applies_to:
   serverless: preview
+  stack: preview 9.1
 ---
 # Grok processor [streams-grok-processor]
 

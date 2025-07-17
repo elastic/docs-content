@@ -2,6 +2,7 @@
 navigation_title: KV processor
 applies_to:
   serverless: preview
+  stack: preview 9.1
 ---
 # Key value processor [streams-kv-processor]
 

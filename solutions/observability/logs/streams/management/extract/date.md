@@ -1,6 +1,7 @@
 ---
 applies_to:
   serverless: preview
+  stack: preview 9.1
 ---
 
 # Date processor [streams-date-processor]

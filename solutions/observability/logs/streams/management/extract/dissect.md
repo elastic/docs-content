@@ -1,6 +1,7 @@
 ---
 applies_to:
   serverless: preview
+  stack: preview 9.1
 ---
 # Dissect processor [streams-dissect-processor]
 
