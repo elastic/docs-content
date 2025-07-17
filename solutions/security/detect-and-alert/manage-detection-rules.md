@@ -113,6 +113,10 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 
 ::::{note}
 
+```{applies_to}
+   stack: ga 9.1 
+```
+
 Modified fields on prebuilt rules are marked with the **Modified** badge. From the rule's details page, click the badge to view the changed fields. Changes are displayed in a side-by-side comparison of the original Elastic version and the modified version. Deleted characters are highlighted in red; added characters are highlighted in green. You can also view this comparison by clicking the **Modified Elastic rule** badge under the rule's name on the rule's details page.
 
 ::::
