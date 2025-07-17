@@ -154,4 +154,4 @@ Some rule types have a maximum number of alerts that can be suppressed (custom q
    stack: ga 9.1 
 ```
 
-From the Rules table, use the **Bulk actions** menu to apply or remove alert suppression to multiple rules. The *Apply alert suppression** option can be used for all rules types except for the threshold rule type. To bulk-apply alert suppression to threshold rules, use the bulk menu option that's labeled for threshold rules only.
+From the Rules table, use the **Bulk actions** menu to apply or remove alert suppression to multiple rules. The **Apply alert suppression** option can be used for all rules types except for the threshold rule type. To bulk-apply alert suppression to threshold rules, use the bulk menu option that's labeled for threshold rules only.
