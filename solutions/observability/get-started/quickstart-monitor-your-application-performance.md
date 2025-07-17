@@ -63,7 +63,7 @@ Follow these steps to collect application telemetry data using the EDOT SDKs:
    - [Node.js](opentelemetry://reference/edot-sdks/nodejs/setup/index.md)
    - [PHP](opentelemetry://reference/edot-sdks/php/setup/index.md)
    - [Python](opentelemetry://reference/edot-sdks/python/setup/index.md)
-5. Configure your EDOT SDK to send data to the APM endpoint. The **OpenTelemetry** tab provides the required configuration values.
+4. Configure your EDOT SDK to send data to the APM endpoint. The **OpenTelemetry** tab provides the required configuration values.
 
 :::{note}
 If your application runs on Kubernetes, the OpenTelemetry operator automatically instruments your application, provided you've added language-specific annotations. Refer to [Auto-instrument applications](opentelemetry://reference/quickstart/self-managed/k8s.md).
