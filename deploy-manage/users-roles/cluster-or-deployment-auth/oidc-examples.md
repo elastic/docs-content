@@ -304,12 +304,12 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
       rp.response_type: "code"
       rp.requested_scopes: ["openid", "email"]
       rp.redirect_uri: "KIBANA_ENDPOINT_URL/api/security/oidc/callback"
-      op.issuer: "https://YOUR_OKTA_DOMAIN"
-      op.authorization_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/authorize"
-      op.token_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/token"
-      op.userinfo_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/userinfo"
-      op.endsession_endpoint: "https://YOUR_OKTA_DOMAIN/oauth2/v1/logout"
-      op.jwkset_path: "https://YOUR_OKTA_DOMAIN/oauth2/v1/keys"
+      op.issuer: "https://<YOUR_OKTA_DOMAIN>"
+      op.authorization_endpoint: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/authorize"
+      op.token_endpoint: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/token"
+      op.userinfo_endpoint: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/userinfo"
+      op.endsession_endpoint: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/logout"
+      op.jwkset_path: "https://<YOUR_OKTA_DOMAIN>/oauth2/v1/keys"
       claims.principal: email
       claim_patterns.principal: "^([^@]+)@YOUR_DOMAIN\\.TLD$"
     ```
@@ -318,7 +318,7 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
 
     * `YOUR_CLIENT_ID` is the Client ID that you set up in the previous steps.
     * `KIBANA_ENDPOINT_URL` is your {{kib}} endpoint, available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    * `YOUR_OKTA_DOMAIN` is the URL of your Okta domain shown on your Okta dashboard.
+    * `<YOUR_OKTA_DOMAIN>` is the URL of your Okta domain shown on your Okta dashboard.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
 
