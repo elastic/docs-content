@@ -19,21 +19,21 @@ They are optimized for performance and kept up to date with {{es}} releases, ens
 
 ## Prerequisites
 
-This quickstart assumes you have no previous knowledge of {{es}} but expects you'll have a basic familiarity with Python development.
+This quickstart does not require previous knowledge of {{es}} but assumes a basic familiarity with Python development.
 To follow the steps, you must have a recent version of a Python interpreter.
 
 ## Create an {{es-serverless}} project
 
-In [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a general purpose project.
-To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.  
-To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+Create an [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md) general purpose project.
+To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
-## Create an index and API key
+## Create an index
 
 An index is a collection of documents uniquely identified by a name or an alias.
 To create an index, go to **{{es}} > Home**, select keyword search, and follow the guided workflow.
 
-To enable the client to talk to {{es}} you must also create an API key.
+To enable your client to talk to your project, you must also create an API key.
 Click **Create API Key** and use the default values, which are sufficient for this quickstart.
 
 :::{tip}
@@ -42,7 +42,8 @@ For more information about indices and API keys, go to [](/manage-data/data-stor
 
 ## Install the Python client
 
-Select your preferred language in the keyword search workflow. For this quickstart, use Python.
+Select your preferred language in the keyword search workflow.
+For this quickstart, use Python.
 
 ![Client installation step in the keyword search workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltbf810f73fd4082fb/67c21c06304ea9790b82ee4d/screenshot-my-index.png)
 
@@ -52,10 +53,10 @@ The {{es}} client library is a Python package that is installed with `pip`:
 python -m pip install elasticsearch
 ```
 
-## Connect your client to your project
+## Connect to your project
 
-Copy the code example from the guided workflow to connect to the project:
-For example:
+Copy the code example from the guided workflow into your Python interpreter in interactive mode.
+For example, connect from your client to your {{es-serverless}} project:
 
 ```py
 from elasticsearch import Elasticsearch, helpers
@@ -68,15 +69,12 @@ client = Elasticsearch(
 index_name = "YOUR-INDEX"
 ```
 
-:::{tip}
-The code examples can be copied into your Python interpreter in interactive mode.
-:::
-
-You must provide your API key, index name, and project URL.
+You must replace the project URL, API key, and index name with the appropriate values.
 
 ## Define field mappings
 
-At this stage, you can create the mappings for your index, including a single text field named `text`.
+An index has mappings that define how data is stored and indexed.
+Create mappings for your index, including a single text field named `text`:
 
 ```py
 mappings = {
@@ -131,30 +129,14 @@ Optionally open [Discover](/explore-analyze/discover.md) from the navigation men
 
 ## Test keyword search
 
-A keyword search query finds relevant documents in your indices using exact matches, patterns, or similarity scoring.
+A keyword search, also known as lexical search or [full-text search](/solutions/search/full-text.md) finds relevant documents in your indices using exact matches, patterns, or similarity scoring.
 The guided workflow provides an example that uses [Query DSL](/explore-analyze/query-filter/languages/querydsl.md).
-If you prefer to try out [{{es}} Query Language](/explore-analyze/query-filter/languages/esql.md) ({{esql}}), create a new script (for instance, `search.py`) that defines a query and runs the following search request:
-
-```esql
-FROM my-index
-| WHERE MATCH(text, "yosemite")
-| LIMIT 5
-```
-
-Add this query inside `client.esql.query`:
+Alternatively, try out [{{es}} Query Language](/explore-analyze/query-filter/languages/esql.md) ({{esql}}) to find documents that match a specific keyword:
 
 ```py
-from elasticsearch import Elasticsearch
-
-client = Elasticsearch(
-	"https://my-project-bff307.es.us-east-1.aws.elastic.cloud:443",
-	api_key="YOUR-API-KEY"
-)
-
-# Run the search query
 response = client.esql.query(
 	query="""
-    	FROM my-index
+    	FROM *
         	| WHERE MATCH(text, "yosemite")
         	| LIMIT 5
     	""",
@@ -164,29 +146,31 @@ response = client.esql.query(
 print(response)
 ```
 
-## Analyze the results
+:::{tip}
+Instead of using the `*` wildcard, you can narrow the query by using your index name.
+For more details, go to the [ES|QL reference](elasticsearch://reference/query-languages/esql.md)
+:::
 
-Check your result:
+The results in this case contain the document that matches the query:
 
 ```txt
 "Yosemite National Park is a United States National Park, covering over 750,000 acres of land in California. A UNESCO World Heritage Site, the park is best known for its granite cliffs, waterfalls and giant sequoia trees. Yosemite hosts over four million visitors in most years, with a peak of five million visitors in 2016. The park is home to a diverse range of wildlife, including mule deer, black bears, and the endangered Sierra Nevada bighorn sheep. The park has 1,200 square miles of wilderness, and is a popular destination for rock climbers, with over 3,000 feet of vertical granite to climb. Its most famous and cliff is the El Capitan, a 3,000 feet monolith along its tallest face."
 Now you are ready to use the client to query Elasticsearch from any Python backend like Flask, Django, etc. Check out the Elasticsearch Python Client documentation to explore further
 ```
 
-<!--
-When you finish your tests and no longer need the sample data set, delete the index:
-
-```console
-DELETE /semantic-index
-```
--->
-
 ## Next steps
 
-This quickstart covered the basics of working with {{es}}.
+Test some more keyword search queries or go to the **{{index-manage-app}}** page and follow the workflows for vector search or semantic search queries.
 
+When you finish your tests and no longer need the sample data set, delete your index:
+
+```py
+client.indices.delete(index=index_name)
+```
+
+This quickstart covered the basics of working with {{es}}.
 For a deeper dive, refer to the following resources:
 
 - [Getting started with the Python client](elasticsearch-py://reference/getting-started.md)
-- [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks/README.md)
 - [](/manage-data/ingest/ingesting-data-from-applications/ingest-data-with-python-on-elasticsearch-service.md)
+- [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks/README.md)
