@@ -22,7 +22,7 @@ To find out what the ELASTICSEARCH_URL is for your {{es}} cluster, grep on the o
 
 ```bash
 heroku config --app MY_APP | grep ELASTICSEARCH_URL
-ELASTICSEARCH_URL: https:<example-url>.us-east-1.aws.found.io
+ELASTICSEARCH_URL: <example-es-url>.aws.found.io
 ```
 
 When you know your {{es}} URL, you can interact with the {{es}} endpoint using tools like curl.
