@@ -128,7 +128,6 @@ To add an alert to an existing case:
 
 ```{applies_to}
 stack: preview 9.1 
-serverless: preview
 ```
 
 Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerts-cases/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.

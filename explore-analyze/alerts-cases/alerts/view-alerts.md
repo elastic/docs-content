@@ -84,7 +84,7 @@ Manage the size of alert indices in your space by clearing out alerts that are o
 The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Make sure to take regular snapshots of your cluster to backup your alert data in case you ever need to restore it.
 :::
 
-### Requirements [clean-up-alerts-reqs]
+### Prerequisites [clean-up-alerts-reqs]
 
 * To run the alert cleanup task, your role must have `All` privileges for the **Alert deletion feature**. When setting your role’s Kibana privileges, go to **Management > Rule Settings**, enable **Customize sub-feature privileges**, then select `All` for the **Alert deletion** feature.
 * Alerts in your space must be older than a day. The minimum threshold for the alert cleanup task is one day.  
@@ -93,14 +93,23 @@ The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Ma
 
 Remove old or rarely-accessed alerts in your space by running an alert cleanup task, which deletes alerts according to the criteria that you define. Alerts that are attached to cases are not deleted. 
 
-1. Open the Rules page by going to **Stack Management > Alerts and Insights > Rules** in the main menu or using the global search field.
+1. Open the **Rules** page by going to **Stack Management > Alerts and Insights > Rules** in the main menu or using the global search field.
 2. Click **Settings** to open the settings for all rules in the space.
 3. In the **Clean up alert history** section, click **Clean up**.
-4. Define criteria for the alert cleanup task. You can choose to delete alerts based on whether they are active or inactive, and meet a certain age. For example, if you select active alerts and specify 2 years, the cleanup task will delete alerts that are active and more than 2 years old
+4. Define criteria for the alert cleanup task. You can choose to delete alerts that are active or inactive and meet a certain age.
 
-   * **Active alerts**: Active alerts haven’t had their statuses changed since they were initially generated. 
-   * **Inactive alerts**: Inactive alerts have had their statuses changed to recovered, closed, acknowledged, or untracked. 
+   :::{tip}
+   At the bottom of the modal, you can find a preview of the number of alerts that will be deleted according to the criteria that you define.
+   :::
+
+   * **Active alerts**: Choose to delete alerts that haven't had their status changed since they were initially generated and are older than the threshold that you specify. 
+   
+      For example, if you specify 2 years as the threshold, the cleanup task will delete alerts that were generated more than two years ago and have never had their status changed.  
+
+   * **Inactive alerts**: Choose to delete alerts that have had their statuses changed since they were initially created and are older than the threshold that you specify. Inactive alerts have had their status changed to recovered, closed, acknowledged, or untracked. 
+
+      For example, if you specify two years, the cleanup task will delete alerts that have had their status changed to recovered, closed, acknowledged, or untracked more than two years ago.
 
 5. Enter **Delete** to verify that you want to run the alert cleanup task, then click **Run cleanup task**.  
 
-A message confirming that the alert cleanup task has started appears. Refer to the `Last cleanup task: details` field in the alert cleanup modal to see when the task last ran.
+A message confirming that the alert cleanup task has started running appears. This information is also provided at the top of the alert cleanup modal in the **Last cleanup task: details** field. Note the field doesn't display in the modal until an alert cleanup task is ran.
