@@ -47,7 +47,7 @@ For an introduction to the concept of indices, refer to [](/manage-data/data-sto
 
 ## Install the Python client
 
-Select your preferred language in the keyword search workflow. For this example, leverage Python.
+Select your preferred language in the keyword search workflow. For this quickstart, use Python.
 
 ![Client installation step in the index management workflow](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltbf810f73fd4082fb/67c21c06304ea9790b82ee4d/screenshot-my-index.png)
 
