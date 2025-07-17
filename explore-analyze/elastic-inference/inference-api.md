@@ -93,7 +93,7 @@ By default, documents are split into sentences and grouped in sections up to 250
 
 ### Chunking strategies
 
-Four strategies are available for chunking: `sentence`, `word`, `recursive` and `none`.
+Several strategies are available for chunking: 
 
 - The `sentence` strategy splits the input text at sentence boundaries. Each chunk contains one or more complete sentences ensuring that the integrity of sentence-level context is preserved, except when a sentence causes a chunk to exceed a word count of `max_chunk_size`, in which case it will be split across chunks. The `sentence_overlap` option defines the number of sentences from the previous chunk to include in the current chunk which is either `0` or `1`.
 
