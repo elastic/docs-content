@@ -28,7 +28,7 @@ This type of installation is recommended for deployments with significant overal
 :::
 
 ::::{note}
-The host with the allocator role greyed out represents the first host to be installed. This host temporarily holds all roles until the other nodes are added and configured. Eventually, the allocator role will be removed from this host.
+In the diagram, the Director Coordinator host in Availability zone 1 has the allocator role greyed out. This host temporarily holds all roles until the other nodes are added and configured. Eventually, the allocator role will be removed from this host.
 ::::
 
 ## Important considerations  [ece_before_you_start_3]
