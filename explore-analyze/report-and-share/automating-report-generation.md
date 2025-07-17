@@ -25,7 +25,7 @@ To create the POST URL for PDF reports:
 
     * {applies_to}`stack: ga 9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF option then click **Copy POST URL**.
     * {applies_to}`stack: ga 9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
-    * {applies_to}`stack: ga 9.0` Click the **Export** icon, then **PDF**. In the export flyout, copy the POST URL.
+    * {applies_to}`stack: ga 9.1` Click the **Export** icon, then **PDF**. In the export flyout, copy the POST URL.
 
 ### CSV reports
 
