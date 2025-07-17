@@ -15,6 +15,7 @@ products:
 * [Offerings](#offerings)
 * [Add-ons](#add-ons)
 
+Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
 
 ## Offerings [offerings] 
 
