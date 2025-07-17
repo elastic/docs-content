@@ -1,7 +1,7 @@
 ---
 applies_to:
   serverless: preview
-    stack: preview 9.1
+  stack: preview 9.1
 ---
 # Extract fields [streams-extract-fields]
 
