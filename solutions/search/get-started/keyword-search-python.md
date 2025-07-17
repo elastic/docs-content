@@ -42,7 +42,7 @@ Next, create an API key so your application can talk to {{es}}.
 TBD: Describe how to create the key
 -->
 :::{tip}
-For an introduction to the concept of indices, check out [](/manage-data/data-store/index-basics.md).
+For an introduction to the concept of indices, refer to [](/manage-data/data-store/index-basics.md).
 :::
 
 ## Install the Python client
