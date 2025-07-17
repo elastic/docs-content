@@ -55,7 +55,7 @@ python -m pip install elasticsearch
 
 ## Connect to your project
 
-Copy the code example from the guided workflow into your Python interpreter in interactive mode.
+To connect from your client to your {{es-serverless}} project, copy the following code example from the guided workflow into your Python interpreter in interactive mode:
 For example, connect from your client to your {{es-serverless}} project:
 
 ```py
