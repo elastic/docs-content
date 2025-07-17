@@ -9,10 +9,42 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
-For {{serverless-full}} API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
-
 ## July 15, 2025 [serverless-changelog-07152025]
+
+### Features and enhancements [serverless-changelog-07152025-features-enhancements]
 * {{serverless-full}} is now available in two new Amazon Web Services [regions](/deploy-manage/deploy/elastic-cloud/regions.md): `eu-central-1` (Frankfurt) and `us-east-2` (Ohio).
+* Adds the ability to add tags from the **Agent details** page [#225433]({{kib-pull}}225433)
+* Adds a **Profiles inspector** to Discover [#222999]({{kib-pull}}222999)
+* Displays a callout about new rules in Elastic Observability Serverless **Metrics**, **Logs**, and **Inventory** rule types [#224387]({{kib-pull}}224387)
+* Adds a manual test for bulk import functionality in Elastic Observability Serverless [#225497]({{kib-pull}}225497)
+* Groups vulnerabilities by resource and cloud account using IDs instead of names in Elastic Security Serverless [#225492]({{kib-pull}}225492)
+* Updates the default Gemini model in Elastic Security Serverless [#225917]({{kib-pull}}225917)
+* Streamlines the side navigation in Elasticsearch Serverless [#225709]({{kib-pull}}225709)
+
+### Fixes [serverless-changelog-07152025-fixes]
+* Fixes an issue where reports timed out and failed with an invalid header error [#225919]({{kib-pull}}225919)
+* Ensures "Values from a query" options refresh when reloading dashboards [#225101]({{kib-pull}}225101)
+* Removes warnings related to kebab-case naming [#226114]({{kib-pull}}226114)
+* Prevents custom titles from being overwritten in Lens embeddables after reload [#225664]({{kib-pull}}225664)
+* Prevents adhoc data views from being recommended in **Controls** [#225705]({{kib-pull}}225705)
+* Hides the **Select all** checkbox in single-select controls [#226311]({{kib-pull}}226311)
+* Fixes a bug where edited queries were overwritten when a request completed [#224671]({{kib-pull}}224671)
+* Keeps the selected document stable when resizing the flyout with keyboard controls [#225594]({{kib-pull}}225594)
+* Ensures suggested dashboards only appear for custom threshold alerts in Elastic Observability Serverless [#224458]({{kib-pull}}224458)
+* Fixes schema page rendering issues in Elastic Observability Serverless [#225481]({{kib-pull}}225481)
+* Limits environment name length when creating a Machine Learning job in Elastic Observability Serverless [#225973]({{kib-pull}}225973)
+* Fixes broken **Operation** page in Elastic Observability Serverless [#226036]({{kib-pull}}226036)
+* Fixes visual issues in Elastic Observability Serverless chat when `prefers-reduce-motion` is enabled [#226552]({{kib-pull}}226552)
+* Prevents collapse of *query tool* calls in Elastic Observability Serverless [#226078]({{kib-pull}}226078)
+* Adds a title to the rule gap histogram on the **Rules** dashboard in Elastic Security Serverless [#225274]({{kib-pull}}225274)
+* Moves alerts redirect higher in the Elastic Security Serverless component tree to improve routing [#225650]({{kib-pull}}225650)
+* Opens entity links in a flyout instead of navigating away in Elastic Security Serverless [#225381]({{kib-pull}}225381)
+* Stops showing ML rule installation and upgrade errors on Basic license for Elastic Security Serverless [#224676]({{kib-pull}}224676)
+* Updates the **Related Interactions** input placeholder and validation message in Elastic Security Serverless [#225775]({{kib-pull}}225775)
+* Falls back to default value when `lookbackInterval` is empty in Anomaly Detection rules [#225249]({{kib-pull}}225249)
+* Fixes time range handling in embedded anomaly swim lanes [#225803]({{kib-pull}}225803)
+* Adds discernible text to the **Refresh data preview** button [#225816]({{kib-pull}}225816)
+* Improves error handling in **Search Playground** when context limit is exceeded using Elastic Managed LLM [#225360]({{kib-pull}}225360)
 
 ## July 7, 2025 [serverless-changelog-07072025]
 
