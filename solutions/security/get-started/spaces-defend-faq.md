@@ -103,7 +103,7 @@ In these situations, editing may be disabled, and tooltips will provide addition
 
 **How can I tell which space “owns” a per-policy artifact?**
 
-This information is not currently visible in the Kibana UI. It is, however, available on each artifact record returned by the API under the `tag` field. It will includes a value that corresponds to the owner space's ID in the format of `ownerSpaceId:<space_id_here>`, for example: `ownerSpaceId:default`. By default, each artifact will have at least one such tag, but multiple tags are also supported and cause a per-policy artifact to be managed by multiple spaces.
+This information is not currently visible in the Kibana UI. It is, however, available on each artifact record returned by the API under the `tag` field. It will include a value that corresponds to the owner space's ID in the format of `ownerSpaceId:<space_id_here>`, for example: `ownerSpaceId:default`. By default, each artifact will have at least one such tag, but multiple tags are also supported and cause a per-policy artifact to be managed by multiple spaces.
 
 
 ## RBAC [spaces-security-faq-rbac]
