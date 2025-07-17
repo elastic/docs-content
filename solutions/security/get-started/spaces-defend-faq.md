@@ -233,8 +233,9 @@ To remove the space ID where orphan response actions appear, call the API with a
 
 ## Endpoint protection rules [spaces-security-faq-endpoint-protection-rules]
 
-By default, [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) use an index pattern that may be too broad for use in a particular space. In order to ensure that the space only shows the desired data in that space, you may need to customize the rule.
-For example, the Endpoint Security ({{elastic-defend}}) rule has an index pattern that picks up all data sent to `logs-endpoint.alerts-*`. This index pattern would pick up all events sent by {{elastic-defend}}, which may not be desirable. 
+By default, [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) use an index pattern that may be too broad for use in a particular space. In order to ensure that the space only shows the desired data in that space, you may need to customize the rule. For example, the Endpoint Security ({{elastic-defend}}) rule has an index pattern that picks up all data sent to `logs-endpoint.alerts-*`. This index pattern would pick up all events sent by {{elastic-defend}}, which may not be desirable. 
+
+One option in this situation is to add a rule exception that ensures that only data with a `data_stream.namespace` that matches the namespace defined in the {{fleet}} policy that contains the applicable {{elastic-defend}} integration policies. {{fleet}} allows you to configure a space to restrict which namespace values can apply to policies, which can help you manage rules when new {{fleet}} policies are created, or existing policies are updated. Existing rules would not have to be adjusted to keep the namespace values in sync. 
 
 **What happens to protection rules when a policy is shared with or moved to a new space?**
 
