@@ -70,7 +70,7 @@ serverless:
    observability: ga
 ```
 
-Once you've created an {{esql}} visualization, you can create an {{es}} threshold rule directly from the visualization panel, based on the data it displays. When you do this, the rule query is automatically generated and either describes the data and sets a specific threshold, or describes the data without setting a specific threshold.
+Once you've created an {{esql}} panel, you can create an {{es}} threshold rule directly from the visualization panel, based on the data it displays. When you do this, the rule query is automatically generated and either describes the data and sets a specific threshold, or describes the data without setting a specific threshold.
 
 ::::{note}
 This capability is not available for {{elastic-sec}}, which has its own rule types. It works only in {{observability}} and {{es}}.
@@ -86,7 +86,3 @@ To create a rule without the threshold pre-specified:
 - [Configure](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) your {{es}} rule. 
 
 
-:::{image} /explore-analyze/images/esql-panel-create-rule.png
-:alt: Create rule
-:screenshot:
-:::
