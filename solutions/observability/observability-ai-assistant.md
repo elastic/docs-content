@@ -421,7 +421,7 @@ For air-gapped environments, installing product documentation requires special c
 ## Anonymization (technical preview) [obs-ai-anonymization]
 
 Anonymization masks personally identifiable or otherwise sensitive information before chat messages leave Kibana for a third-party LLM.
-Enabled rules substitute deterministic tokens (for example EMAIL_ee4587…) so the model can keep context without ever seeing the real value.
+Enabled rules substitute deterministic tokens (for example `EMAIL_ee4587…`) so the model can keep context without ever seeing the real value.
 When all rules are disabled (the default), data is forwarded unchanged.
 
 ### How it works [obs-ai-anonymization-how]
