@@ -218,3 +218,6 @@ redirects:
   # Related to https://github.com/elastic/docs-content/pull/2097
   'explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md': 'explore-analyze/machine-learning/anomaly-detection.md'
   'explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-dfa-analytics.md': 'explore-analyze/machine-learning/data-frame-analytics.md'
+
+  # Related to https://github.com/elastic/docs-content/pull/2010
+  'manage-data/data-store/templates/index-template-management.md': 'manage-data/data-store/index-basics.md'
