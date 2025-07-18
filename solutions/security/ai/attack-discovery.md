@@ -160,7 +160,9 @@ You can choose to change the status of only the discovery, or of both the discov
 
 ### Share attack discoveries
 
-By default, scheduled discoveries are shared with all users in a {{kib}} space. Manually generated discoveries are private by default. To share them, change **Not shared** to **Shared** next to the discovery's name.
+By default, scheduled discoveries are shared with all users in a {{kib}} space.
+
+Manually generated discoveries are private by default. To share them, change **Not shared** to **Shared** next to the discovery's name.
 
 :::{note}
 Once a discovery is shared, its visibility cannot be changed.
