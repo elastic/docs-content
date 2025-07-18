@@ -123,13 +123,15 @@ The following table shows the available UI fields and their CLI equivalents:
 | **UI Field**                                      | **CLI Flag**                          | **Purpose** |
 |--------------------------------------------------|---------------------------------------|-------------|
 | Client SSL Certificate                           | `--elastic-agent-cert`               | {{agent}} client certificate to use with {{fleet-server}} during mTLS authentication. |
-| Client SSL Certificate key                       | `--elastic-agent-cert-key`           | {{agent}} client private key to use with {{fleet-server}} during mTLS authentication. |
+| Client SSL Certificate key                       | `--elastic-agent-cert-key`           | {{agent}} client private key to use with {{fleet-server}} during mTLS authentication. This field uses secret storage and requires {{fleet-server}} v8.12.0 or later. You can optionally choose to store the value as plain text instead. |
 | Server SSL certificate authorities (optional)    | `--certificate-authorities`          | Comma-separated list of root certificates for server verification used by {{agent}} and {{fleet-server}}. |
 | SSL certificate for {{es}}                | `--fleet-server-es-cert`             | Client certificate for {{fleet-server}} to use when connecting to {{es}}. |
 | SSL certificate key for {{es}}            | `--fleet-server-es-cert-key`         | Client private key for {{fleet-server}} to use when connecting to {{es}}. |
 | {{es}} Certificate Authorities (optional) | `--fleet-server-es-ca`               | Path to certificate authority for {{fleet-server}} to use to communicate with {{es}}. |
 | Enable client authentication                     | `--fleet-server-client-auth=required`| Requires {{agent}} to present a valid client certificate when connecting to {{fleet-server}}. |
 
-:::{note}
+The Fleet UI does not currently allow editing the {{fleet-server}}’s own exposed TLS certificate (`--fleet-server-cert`, `--fleet-server-cert-key`). These are only configurable at the time of {{fleet-server}}'s installation, using the CLI.
+
+:::{warning}
 Editing SSL or proxy settings for an existing {{fleet-server}} may cause agents to lose connectivity. After changing client certificate settings, you need to re-enroll the affected agents.
 :::

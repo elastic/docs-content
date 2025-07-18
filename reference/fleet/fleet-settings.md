@@ -115,6 +115,36 @@ To add or edit the source of binary downloads:
 4. For **Host**, specify the address where you are hosting the artifacts repository.
 5. (Optional) To make this location the default, select **Make this host the default for all agent policies**. {{agent}}s use the default location if you don’t select a different agent binary source in the agent policy.
 
+## Agent binary download settings [fleet-agent-binary-download-settings]
+
+{{agent}}s must be able to access the {{artifact-registry}} to download binaries during upgrades. By default {{agent}}s download artifacts from the artifact registry at `https://artifacts.elastic.co/downloads/`.
+
+For {{agent}}s that cannot access the internet, you can specify agent binary download settings, and then configure agents to download their artifacts from the alternate location. For more information about running {{agent}}s in a restricted environment, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
+
+To add or edit the source of binary downloads:
+
+1. Go to **{{fleet}} → Settings**.
+2. Under **Agent Binary Download**, click **Add agent binary source** or **Edit**.
+3. Set the agent binary source name.
+4. For **Host**, specify the address where you are hosting the artifacts repository.
+5. (Optional) To make this location the default, select **Make this host the default for all agent policies**. {{agent}}s use the default location if you don’t select a different agent binary source in the agent policy.
+
+
+### Configure SSL for binary downloads [agent-binary-ssl]
+```{applies_to}
+  stack: ga 9.1
+```
+
+You can optionally secure connections to your binary download source using TLS. These settings correspond to the certificates the agent uses when connecting to the download host.
+
+The following SSL options are available when adding or editing an agent binary source:
+
+| **UI Field**           | **Purpose**                                                                  |
+|------------------------|------------------------------------------------------------------------------|
+| Certificate authorities | Trusted CAs for verifying the server certificate.                           |
+| Certificate             | Client certificate to use for mTLS authentication with the download host.  |
+| Certificate key         | Private key associated with the client certificate.                         |
+
 
 ## Proxies [proxy-settings]
 
