@@ -432,7 +432,7 @@ When anonymization is enabled, every message in the request (system prompt, chat
    `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.  
    The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a SHA-1 hash of the original value.
 2. The fully masked conversation is sent to the LLM.
-3. After the model replies, Kibana restores the original values so the UI (and any downstream connectors) receive de-anonymised text.
+3. After the LLM responds, the original values are restored so the user sees de-anonymised text and any persisted conversation history stores the original content. 
 
 Because the masking is deterministic, the model can still maintain logical consistency (“`EMAIL_x`” always refers to the same address) without ever seeing the real value.
 
