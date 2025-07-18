@@ -1,6 +1,7 @@
 ---
 applies_to:
   serverless: preview
+  stack: preview 9.1
 ---
 
 :::{warning}
@@ -15,7 +16,6 @@ Streams provides a single, centralized UI within {{kib}} that streamlines common
 
 A Stream directly corresponds to an {{es}} data stream (for example, `logs-myapp-default`). Operations performed in the Streams UI configure that specific data stream.
 
-
 ## Required permissions
 
 Streams requires the following Elastic Cloud Serverless roles:
@@ -23,17 +23,24 @@ Streams requires the following Elastic Cloud Serverless roles:
 - Admin: ability to manage all Streams.
 - Editor/Viewer: limited access, unable to perform all actions.
 
-## Access Streams
+## Access the Streams UI
 
-Access streams in one of the following ways:
+In {{obs-serverless}}, Streams is automatically available.
 
-- From the navigation menu, select **Streams**.
+In {{stack}} version 9.1 and later, you can enable Streams in the {{observability}} Advanced Settings. To do this:
+
+1. Go to **Management** > **Stack Management** > **Advanced Settings**, or search for "Advanced Settings" in the [global search field](../../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Enable **Streams UI** under **Observability**.
+
+In {{serverless-short}} or after enabling Streams in {{stack}}, access the UI in one of the following ways:
+
+- Select **Streams** from the navigation menu or use the [global search field](../../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 - From **Discover**, expand a document's details flyout and select **Stream** or an action associated with the document's data stream. Streams will open filtered to only the selected stream. This only works for documents stored in a data stream.
 
-## Manage stream [streams-management-tab]
+## Manage individual streams [streams-management-tab]
 
-Interact with and configure your stream in the following ways:
+Interact with and configure your streams in the following ways:
 
 - [Data retention](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size under the **Data retention** tab.
 - [Processing](./management/extract.md): Parse and extract information from log messages into dedicated fields under the **Processing** tab.
