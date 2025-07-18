@@ -61,7 +61,7 @@ It's important to understand how your data is handled when using the AI Assistan
 :   Elastic does not use customer data for model training, but all data is processed by third-party AI providers.
 
 **Anonymization**
-:   Data sent to the AI Assistant is *not* anonymized, including alert data, configurations, queries, logs, and chat interactions.
+:   Data sent to the AI Assistant is *not* anonymized, including alert data, configurations, queries, logs, and chat interactions. If you need to anonymize data, use the [anonymization pipeline](#obs-ai-anonymization).
 
 **Permission context**
 :   When the AI Assistant performs searches, it uses the same permissions as the current user.
@@ -417,6 +417,50 @@ Enable this feature from the **Settings** tab in AI Assistant Settings by using 
 ::::{important}
 For air-gapped environments, installing product documentation requires special configuration. See the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
 ::::
+
+## Anonymization (technical preview) [obs-ai-anonymization]
+
+Anonymization masks personally identifiable or otherwise sensitive information before chat messages leave Kibana for a third-party LLM.
+Enabled rules substitute deterministic tokens (for example EMAIL_ee4587…) so the model can keep context without ever seeing the real value.
+When all rules are disabled (the default), data is forwarded unchanged.
+
+### How it works [obs-ai-anonymization-how]
+
+When anonymization is enabled, every message in the request (system prompt, chat history, tool-call arguments, etc.) is run through an *anonymization pipeline* before it leaves Kibana:
+
+1. Each enabled **rule** scans its target text and replaces any match with a deterministic token such as  
+   `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.  
+   The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a SHA-1 hash of the original value.
+2. The fully masked conversation is sent to the LLM.
+3. After the model replies, Kibana restores the original values so the UI (and any downstream connectors) receive de-anonymised text.
+
+Because the masking is deterministic, the model can still maintain logical consistency (“`EMAIL_x`” always refers to the same address) without ever seeing the real value.
+
+### Rule types [obs-ai-anonymization-rules]
+
+| Rule type | Description | Example |
+|-----------|-------------|---------|
+| **RegExp** | Runs a JavaScript regular expression. Use for fixed patterns such as e-mail addresses. | ```jsonc { "type": "RegExp", "enabled": true, "pattern": "([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})", "entityClass": "EMAIL" } ``` |
+| **NER** | Runs a named-entity-recognition model on free text. | ```jsonc { "type": "NER", "enabled": true, "modelId": "elastic__distilbert-base-uncased-finetuned-conll03-english", "allowedEntityClasses": ["PER","ORG","LOC"] } ``` |
+
+Rules are evaluated **top-to-bottom**; the first rule that captures a given span wins.
+
+### Requirements [obs-ai-anonymization-requirements]
+
+* **Advanced Settings privilege** to edit the configuration and enable rules.  
+  Once saved, *all* users in the same **Space** benefit from the anonymization (the setting is [space-aware](../../deploy-manage/manage-spaces.md)).
+* **ML privilege and resources** if you enable a rule of type NER, you must first [import and start a named-entity-recognition model](/explore-analyze/machine-learning/nlp/ml-nlp-ner-example.md) and have sufficient ML capacity.
+
+::::{important}
+The anonymization pipeline has only been validated with Elastic’s English model  
+`elastic/distilbert-base-uncased-finetuned-conll03-english`.  
+Results for other languages or models may vary.
+::::
+
+### Limitations [obs-ai-anonymization-limitations]
+* **Performance (NER)** – Running a named entity recognition model can add latency depending on the request.  
+* **Structured JSON** – The NER model tested is trained on natural English; it often misses entities inside JSON. Prefer regex rules if masking must be thorough Regex rules should be crafted to handle JSON syntax. 
+* **False negatives / positives** – No model or pattern is perfect. Model accuracy may vary depending on model and input.
 
 ## Known issues [obs-ai-known-issues]
 
