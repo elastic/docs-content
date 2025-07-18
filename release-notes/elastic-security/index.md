@@ -37,7 +37,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds the ability to bulk fill gaps [#224585]({{kib-pull}}224585).
 * Automatic migration is now generally available [#224544]({{kib-pull}}224544).
 * Adds a name field to the automatic migration UI [#223860]({{kib-pull}}223860).
-* Adds simplified bulk editing for alert suppression [#223090]({{kib-pull}}223090).
+* Adds the ability to bulk set up and delete alert suppression [#223090]({{kib-pull}}223090).
 * Adds a human-readable incremental ID to cases, making referencing cases easier [#222874]({{kib-pull}}222874).
 * Adds the ability to change rule migration execution settings when re-processing a migration [#222542]({{kib-pull}}222542).
 * Adds `runscript` response action support for Microsoft Defender for Endpoint–enrolled hosts [#222377]({{kib-pull}}222377).
@@ -86,12 +86,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds support for DNS events on macOS. Events can be controlled from the {{elastic-defend}} policy using the **DNS events** checkbox.
 * Adds TCC (Transparency Consent and Control) events to {{elastic-defend}} on macOS. Events are generated every time the TCC database is altered.
 * Adds `parent.command_line` to {{elastic-defend}} process events on macOS to keep in line with Linux and Windows.
-* Adds ETW visibility for WinHTTP and WinINet libraries.
-* Adds telemetry to assist detection of processes created in non-standard desktops.
 * Reduces {{elastic-defend}} CPU usage for ETW events, API events, and behavioral protections. In some cases, this may be a significant reduction.
 * {{elastic-defend}}: Changes the security events source from the Event Log provider to Event Tracing for Windows (Microsoft-Windows-Security Auditing) provider and enriches the events with additional data.
 * Adds {{elastic-defend}} support for Elliptic Curve certificates and TLS output settings, including `supported_protocols`, `cipher_suites`, and `curve_types`.
 * Reduces {{elastic-defend}} CPU and memory usage for behavioral protections.
+* Reduces {{elastic-defend}} CPU when processing events from the System process, such as IIS network events.
+* Improves {{elastic-defend}} logging of fatal exceptions.
+* Improves {{elastic-defend}} call site analysis logic.
 
 ### Fixes [elastic-security-9.1.0-fixes]
 
@@ -118,9 +119,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Refactors conversation pagination for the Security AI Assistant [#211831]({{kib-pull}}211831).
 * Fixes a bug where unmodified prebuilt rules installed before v8.18 didn't appear in the **Upgrade** table when the **Unmodified** filter was selected [#227859]({{kib-pull}}227859).
 * Improves UI copy for the "bulk update with conflicts" modal [#227803]({{kib-pull}}227803).
-* Fixes the artifact `channel` field and adds `manifest_type` in {{elastic-defend}} policy responses.
 * Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag wasn't being persisted across system or endpoint restarts.
 * Fixes a crash in the {{elastic-defend}} scan response action and suppresses the end-user popup when running background malware scans.
+* Fixes an unbounded kernel non-paged memory growth issue in the {{elastic-defend}} kernel driver during extremely high event load situations on Windows. Systems affected by this issue would slow down or become unresponsive until the triggering event load (such as network activity) subsided [#88](https://github.com/elastic/endpoint/issues/88).
+* Fixes a memory growth bug in {{elastic-defend}} on Linux when both **Collect session data** and **Capture terminal output** are enabled.
+* Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
+* Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
 
 ## 9.0.3 [elastic-security-9.0.3-release-notes]
 
