@@ -12,7 +12,7 @@ applies_to:
 
 ::::{note}
 
-The **Editor** role or higher is required to create a degraded docs rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+The **Editor** role or higher is required to create degraded docs rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
@@ -25,7 +25,7 @@ To access this rule from the **Alerts** page:
 1. Click **Manage Rules** → **Create rule**.
 1. Under **Select rule type**, select **Degraded docs**.
 
-You can also access this rule from the the **Data Set Quality** page:
+You can also access this rule from the **Data Set Quality** page:
 
 1. Go to **Stack Management** → **Data Set Quality** or search for "Data Set Quality" using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select a data set name from the data set table.
@@ -38,7 +38,7 @@ Define the following conditions for your rule:
 
 1. Set the data view you want to create the rule for. If you access the rule from the **Data Set Quality** page, the data view is automatically populated.
 1. Set the threshold percentage that, when exceeded for a period of time, the rule sends an alert.
-1. Specify how long the threshold must be exceeded before and alert is sent.
+1. Specify how long the threshold must be exceeded before an alert is sent.
 1. (Optional) Set one or more **Group alerts by** fields. Every unique value will create an alert.
 1. Set how often to check the rule conditions by selecting a time value and unit under **Rule schedule**.
 1. (Optional) Configure **Advanced options**:
