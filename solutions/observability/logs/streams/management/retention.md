@@ -18,7 +18,7 @@ The **Data retention** page is made up of the following components that can help
 - **Ingestion**: Estimated ingestion per day and month, calculated based on the total size of all data in the stream  divided by the stream's age. This is an estimate, and the actual ingestion may vary.
 - **Total doc count**: The total number of documents in the stream.
 - **Ingestion Rate**: Estimated ingestion rate per time bucket. The bucket interval is dynamic and adjusts based on the selected time range. The ingestion rate is calculated using the average document size in the stream multiplied by the number of documents in each bucket. This is an estimate, and the actual ingestion rate may vary.
-- **Policy summary**: The amount of data ingested per phase (hot, warm, cold).
+- {applies_to}`stack: 9.1`**Policy summary**: The amount of data ingested per phase (hot, warm, cold).
 
 ## Edit the data retention [streams-update-data-retention]
 From any stream page, select **Edit data retention** to change how long your data stream retains data.
