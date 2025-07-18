@@ -303,7 +303,7 @@ Create, edit, clone, and delete your component templates in the **Component Temp
 * To show details and perform operations, click the template name.
 * To create new component templates, use the **Create component template** wizard.
 
-### Manage enrich policies [index-management-manage-enrich-policies]
+### Manage enrich policies [manage-enrich-policies]
 
 An [enrich policy](/manage-data/ingest/transform-enrich/data-enrichment.md#enrich-policy) is a set of configuration options used to add data from your existing indices to incoming documents during ingest. An enrich policy contains:
 
