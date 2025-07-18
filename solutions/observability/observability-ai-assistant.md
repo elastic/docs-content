@@ -438,18 +438,36 @@ Because the masking is deterministic, the model can still maintain logical consi
 
 ### Rule types [obs-ai-anonymization-rules]
 
-| Rule type | Description | Example |
-|-----------|-------------|---------|
-| **RegExp** | Runs a JavaScript regular expression. Use for fixed patterns such as e-mail addresses. | ```jsonc { "type": "RegExp", "enabled": true, "pattern": "([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})", "entityClass": "EMAIL" } ``` |
-| **NER** | Runs a named-entity-recognition model on free text. | ```jsonc { "type": "NER", "enabled": true, "modelId": "elastic__distilbert-base-uncased-finetuned-conll03-english", "allowedEntityClasses": ["PER","ORG","LOC"] } ``` |
 
-Rules are evaluated **top-to-bottom**; the first rule that captures a given span wins.
+**RegExp** — Runs a JavaScript‑style regular expression. Use for fixed patterns such as e‑mail addresses, host names, etc.
+
+```jsonc
+{
+  "type": "RegExp",
+  "pattern": "([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})",
+  "entityClass": "EMAIL",
+  "enabled": true
+}
+```
+
+**NER** — Runs a named‑entity‑recognition model on free text.
+
+```jsonc
+{
+  "type": "NER",
+  "modelId": "elastic__distilbert-base-uncased-finetuned-conll03-english",
+  "allowedEntityClasses": ["PER", "ORG", "LOC"],
+  "enabled": true
+}
+```
+
+Rules are evaluated **top-to-bottom**; the first rule that captures a given entity wins. Rules can be configured in the [AI Assistant Settings](#obs-ai-settings) page.
 
 ### Requirements [obs-ai-anonymization-requirements]
 
 * **Advanced Settings privilege** to edit the configuration and enable rules.  
   Once saved, *all* users in the same **Space** benefit from the anonymization (the setting is [space-aware](../../deploy-manage/manage-spaces.md)).
-* **ML privilege and resources** if you enable a rule of type NER, you must first [import and start a named-entity-recognition model](/explore-analyze/machine-learning/nlp/ml-nlp-ner-example.md) and have sufficient ML capacity.
+* **ML privilege and resources** if you enable a rule of type NER, you must first [deploy and start a named-entity-recognition model](/explore-analyze/machine-learning/nlp/ml-nlp-ner-example.md#ex-ner-deploy) and have sufficient ML capacity.
 
 ::::{important}
 The anonymization pipeline has only been validated with Elastic’s English model  
