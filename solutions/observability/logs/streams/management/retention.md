@@ -24,7 +24,7 @@ The **Data retention** page is made up of the following components that can help
 From any stream page, select **Edit data retention** to change how long your data stream retains data.
 
 ### Set a specific retention period
-The **Retention period** is the minimum number of days after which the data is deleted. To set the retention period to a specific time period:
+The **Retention period** is the minimum number of days after which the data is deleted. To set data retention to a specific time period:
 
 1. Select **Edit data retention** → **Set specific retention days**.
 1. From here, set the period of time you want to retain data for this stream.
@@ -35,7 +35,7 @@ To define a global default retention policy, refer to [project settings](../../.
 ```{applies_to}
 stack: ga 9.1
 ```
-To have your stream follow an [ILM policy](../../../../../manage-data/lifecycle/index-lifecycle-management.md):
+[ILM policies](../../../../../manage-data/lifecycle/index-lifecycle-management.md) let you automate and standardize data retention across streams and other data streams. To have your streams follow an existing policy:
 
 1. Select **Edit data retention** → **Use a lifecycle policy**.
 1. Select a pre-defined ILM policy from the list.
