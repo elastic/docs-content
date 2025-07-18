@@ -162,7 +162,7 @@ Let’s test the connection:
     * If you have a [custom endpoint alias](/deploy-manage/deploy/elastic-cloud/custom-endpoint-aliases.md) configured, you can use the custom endpoint URL to connect.
 
         ```
-        https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
+        https://<alias>.<product>.<private_hosted_zone_domain_name>
         ```
 
         For example:
@@ -174,7 +174,7 @@ Let’s test the connection:
     * Alternatively, use the following URL structure:
 
         ```
-        https://{{elasticsearch_cluster_ID}}.{private_hosted_zone_domain_name}:9243
+        https://<elasticsearch_cluster_ID>.<private_hosted_zone_domain_name>:9243
         ```
 
         For example:
