@@ -426,7 +426,7 @@ When all rules are disabled (the default), data is forwarded unchanged.
 
 ### How it works [obs-ai-anonymization-how]
 
-When anonymization is enabled, every message in the request (system prompt, message content, tool call arguments/response, and tool-call response fields) is run through an *anonymization pipeline* before it leaves Kibana:
+When anonymization is enabled, every message in the request (system prompt, message content, function call arguments/responses) is run through an *anonymization pipeline* before it leaves Kibana:
 
 1. Each enabled **rule** scans its target text and replaces any match with a deterministic token such as  
    `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.  
