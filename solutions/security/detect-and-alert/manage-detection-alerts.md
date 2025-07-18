@@ -299,3 +299,12 @@ This Timeline template uses the `host.name: "{host.name}"` dropzone filter in th
 ::::{note}
 Refer to [Timeline](/solutions/security/investigate/timeline.md) for information on creating Timelines and Timeline templates. For information on how to add Timeline templates to rules, refer to [Create a detection rule](/solutions/security/detect-and-alert/create-detection-rule.md).
 ::::
+
+## Clean up alerts [clean-up-alerts-sec]
+
+```{applies_to}
+stack: preview 9.1 
+serverless: preview
+```
+
+Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerts-cases/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.

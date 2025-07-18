@@ -168,7 +168,7 @@ The mapping will be different for your region. Our production VPC Service for `u
     * Alternatively, use the following URL structure:
 
         ```
-        https://{{alias}}.{product}.{{private_hosted_zone_domain_name}}
+        https://<alias>.<product>.<private_hosted_zone_domain_name>
         ```
 
         For example:
