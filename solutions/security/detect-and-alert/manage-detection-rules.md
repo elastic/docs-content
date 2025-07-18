@@ -111,6 +111,32 @@ For {{ml}} rules, an indicator icon (![Error icon from rules table](/solutions/i
 4. If available, select **Overwrite all selected _x_** to overwrite the settings on the rules. For example, if you’re adding tags to multiple rules, selecting **Overwrite all selected rules tags** removes all the rules' original tags and replaces them with the tags you specify.
 5. Click **Save**.
 
+::::{note}
+
+```{applies_to}
+   stack: ga 9.1 
+```
+
+Modified fields on prebuilt rules are marked with the **Modified** badge. From the rule's details page, click the badge to view the changed fields. Changes are displayed in a side-by-side comparison of the original Elastic version and the modified version. Deleted characters are highlighted in red; added characters are highlighted in green. You can also view this comparison by clicking the **Modified Elastic rule** badge under the rule's name on the rule's details page.
+
+::::
+
+## Revert modifications to prebuilt rules [revert-rule-changes]
+
+```{applies_to}
+   stack: ga 9.1 
+```
+
+After modifying a prebuilt rule, you can restore it's original version. To do this:
+
+1. Open the rule's details page, click the **All actions** menu, then **Revert to Elastic version**.
+2. In the flyout, review the modified fields. Deleted characters are highlighted in red; added characters are highlighted in green.
+3. Click **Revert** to restore the modified fields to their original versions. 
+
+::::{note}
+If you haven’t updated the rule in a while, its original version might be unavailable for comparison. You can avoid this by regularly updating prebuilt rules.
+::::
+
 
 ## Manage rules [manage-rules-ui]
 
