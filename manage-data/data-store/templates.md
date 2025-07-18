@@ -26,7 +26,7 @@ The following conditions apply to using templates:
 * If an index is created with explicit settings and also matches an index template, the settings from the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request take precedence over settings specified in the index template and its component templates.
 * Settings specified in the index template itself take precedence over the settings in its component templates.
 * If a new data stream or index matches more than one index template, the index template with the highest priority is used.
-* When you create an index template, be careful to avoid [naming pattern collisions](#naming-collision-warning) with built-in {{es}} index templates.
+* When you create an index template, be careful to avoid [naming pattern collisions](#avoid-index-pattern-collisions) with built-in {{es}} index templates.
 
 
 ## Index templates [index-templates]
@@ -81,7 +81,7 @@ The following features can be useful when you're setting up index templates:
 * You can create an index template for a component template that does not yet exist. When doing so, you can use the `ignore_missing_component_templates` configuration option in an index template so that the missing component template is ignored. Refer to [Ignore missing component templates](/manage-data/data-store/templates/ignore-missing-component-templates.md) to learn more.
 :::
 
-### Avoid index pattern collisions [naming-collision-warning]
+### Avoid index pattern collisions [avoid-index-pattern-collisions]
 
 {{es}} has built-in index templates, each with a priority of `100`, for the following index patterns:
 
