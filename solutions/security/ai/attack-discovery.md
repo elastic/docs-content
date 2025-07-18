@@ -26,6 +26,13 @@ You need the `Attack Discovery: All` privilege to use Attack Discovery.
 
 ![attack-discovery-rbac](/solutions/images/security-attck-disc-rbac.png)
 
+{applies_to}`stack: ga 9.1` Your role must also have the following privileges:
+
+| Action | Indices | {{es}} privileges |
+|---------|---------|--------------------------|
+| Read Attack Discovery alerts | - `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br> - `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `read` and `view_index_metadata` |
+| Read and modify Attack Discovery alerts. This includes:<br>- Generating discovery alerts manually<br>- Generating discovery alerts using schedules<br>- Sharing manually created alerts with other users<br>- Updating a discovery's status |- `.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.adhoc.alerts-security.attack.discovery.alerts-<space-id>`<br>- `.internal.adhoc.alerts-security.attack.discovery.alerts-<space-id>`| `all` |
+
 ## Set up Attack Discovery
 
 By default, Attack Discovery analyzes up to 100 alerts from the last 24 hours, but you can customize how many and which alerts it analyzes using the settings menu. To open it, click the settings icon next to the **Run** button.
@@ -117,8 +124,7 @@ stack: ga 9.1
 You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.
 
 :::{note}
-* Scheduled discoveries are shared by default with all users in a {{kib}} space. Once shared, the visibility of shared discoveries cannot be changed.
-* You can still generate discoveries manually at any time, regardless of an active schedule.
+You can still generate discoveries manually at any time, regardless of an active schedule.
 :::
 
 To create a new schedule:
@@ -151,6 +157,14 @@ Attack discoveries are automatically saved on the **Attack Discovery** page each
 You can set a discovery's status to indicate that it's under active investigation or that it's been resolved. To do this, click **Take action**, then select **Mark as acknowledged** or **Mark as closed**.
 
 You can choose to change the status of only the discovery, or of both the discovery and the alerts associated with it.
+
+### Share attack discoveries
+
+By default, scheduled discoveries are shared with all users in a {{kib}} space. Manually generated discoveries are private by default. To share them, change **Not shared** to **Shared** next to the discovery's name.
+
+:::{note}
+Once a discovery is shared, its visibility cannot be changed.
+:::
 
 ### Take bulk actions
 
