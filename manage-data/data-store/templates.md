@@ -74,6 +74,13 @@ PUT _index_template/template_1
 }
 ```
 
+:::{tip}
+The following features can be useful when you're setting up index templates:
+
+* You can test the effect of an index template before putting it into use. Refer to [Simulate multi-component templates](/manage-data/data-store/templates/simulate-multi-component-templates.md) to learn more.
+* You can create an index template for a component template that does not yet exist. When doing so, you can use the `ignore_missing_component_templates` configuration option in an index template so that the missing component template is ignored. Refer to [Ignore missing component templates](/manage-data/data-store/templates/ignore-missing-component-templates.md) to learn more.
+:::
+
 ### Avoid index pattern collisions [naming-collision-warning]
 
 {{es}} has built-in index templates, each with a priority of `100`, for the following index patterns:
@@ -94,7 +101,6 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 * Assign templates with an overlapping pattern a `priority` higher than `500`. For example, if you don’t use {{fleet}} or {{agent}} and want to create a template for the `logs-*` index pattern, assign your template a priority of `501`. This ensures your template is applied instead of the built-in template for `logs-*-*`.
 * To avoid naming collisions with built-in and Fleet-managed index templates, avoid using `@` as part of the name of your own index templates.
 * Beginning in {{stack}} version 9.1, {{fleet}} uses indices named `fleet-synced-integrations*` for a feature. Avoid using this name to avoid collisions with built-in indices.
-
 
 ## Component templates [component-templates]
 
