@@ -133,6 +133,10 @@ After modifying a prebuilt rule, you can restore it's original version. To do th
 2. In the flyout, review the modified fields. Deleted characters are highlighted in red; added characters are highlighted in green.
 3. Click **Revert** to restore the modified fields to their original versions. 
 
+::::{note}
+If you haven’t updated the rule in a while, its original version might be unavailable for comparison. You can avoid this by regularly updating prebuilt rules.
+::::
+
 
 ## Manage rules [manage-rules-ui]
 
