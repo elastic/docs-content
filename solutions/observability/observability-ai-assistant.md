@@ -477,7 +477,7 @@ Results for other languages or models may vary.
 
 ### Limitations [obs-ai-anonymization-limitations]
 * **Performance (NER)** – Running a named entity recognition model can add latency depending on the request.  
-* **Structured JSON** – The NER model tested is trained on natural English; it often misses entities inside JSON. Prefer regex rules if masking must be thorough Regex rules should be crafted to handle JSON syntax. 
+* **Structured JSON** – The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax. 
 * **False negatives / positives** – No model or pattern is perfect. Model accuracy may vary depending on model and input.
 
 ## Known issues [obs-ai-known-issues]
