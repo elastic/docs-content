@@ -202,7 +202,7 @@ services:
     image: docker.elastic.co/kibana/kibana:{{stack-version}}
     environment:
       SERVER_NAME: kibana.example.org
-      ELASTICSEARCH_HOSTS: '["http://es01:9200","http://es02:9200","http://es03:9200"]'
+      ELASTICSEARCH_HOSTS: '["<ELASTICSEARCH_HOST_URL_01>:9200","<ELASTICSEARCH_HOST_URL_02>:9200","<ELASTICSEARCH_HOST_URL_03>:9200"]'
 ```
 
 Since environment variables are translated to CLI arguments, they take precedence over settings configured in `kibana.yml`.
