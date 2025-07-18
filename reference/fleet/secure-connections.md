@@ -42,7 +42,6 @@ When you run {{agent}} with the {{elastic-defend}} integration, the [TLS certifi
 ::::
 
 
-
 ## Generate a custom certificate and private key for {{fleet-server}} [generate-fleet-server-certs]
 
 This section describes how to use the `certutil` tool provided by {{es}}, but you can use whatever process you typically use to generate PEM-formatted certificates.
@@ -84,8 +83,11 @@ This section describes how to use the `certutil` tool provided by {{es}}, but yo
     Store the files in a secure location. You’ll need these files later to encrypt traffic between {{agent}}s and {{fleet-server}}.
 
 
+## Configure SSL/TLS using CLI  [fleet-server-ssl-cli-settings]
 
-## Encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}} [_encrypt_traffic_between_agents_fleet_server_and_es]
+Use the CLI to configure SSL or TLS when installing or enrolling {{fleet-server}}. This method gives you granular control over certificate paths, verification modes, and authentication behavior.
+
+### Encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}} [_encrypt_traffic_between_agents_fleet_server_and_es]
 
 {{fleet-server}} needs a CA certificate or the CA fingerprint to connect securely to {{es}}. It also needs to expose a {{fleet-server}} certificate so other {{agent}}s can connect to it securely.
 
@@ -271,3 +273,33 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
         Don’t have an enrollment token? On the **Agents** tab in {{fleet}}, click **Add agent**. Under **Enroll and start the Elastic Agent**, follow the in-product installation steps, making sure that you add the `--certificate-authorities` option before you run the command.
 
 
+## Configure SSL/TLS using {{kib}} [fleet-server-ssl-ui-settings]
+```{applies_to}
+  stack: ga 9.1
+```
+
+You can configure SSL/TLS settings for {{fleet-server}} hosts directly in the Fleet UI, without relying on CLI flags or policy overrides.
+
+To access these settings:
+
+1. In **Kibana**, go to **Management** > **Fleet** > **Settings**.
+2. Under **{{fleet-server}} hosts**, click **Add host** or edit an existing host.
+3. Expand the **SSL options** section.
+
+### SSL options
+
+The following table shows the available UI fields and their CLI equivalents:
+
+| **UI Field**                                      | **CLI Flag**                          | **Purpose** |
+|--------------------------------------------------|---------------------------------------|-------------|
+| Client SSL Certificate                           | `--elastic-agent-cert`               | {{agent}} client certificate to use with {{fleet-server}} during mTLS authentication. |
+| Client SSL Certificate key                       | `--elastic-agent-cert-key`           | {{agent}} client private key to use with {{fleet-server}} during mTLS authentication. |
+| Server SSL certificate authorities (optional)    | `--certificate-authorities`          | Comma-separated list of root certificates for server verification used by {{agent}} and {{fleet-server}}. |
+| SSL certificate for {{es}}                | `--fleet-server-es-cert`             | Client certificate for {{fleet-server}} to use when connecting to {{es}}. |
+| SSL certificate key for {{es}}            | `--fleet-server-es-cert-key`         | Client private key for {{fleet-server}} to use when connecting to {{es}}. |
+| {{es}} Certificate Authorities (optional) | `--fleet-server-es-ca`               | Path to certificate authority for {{fleet-server}} to use to communicate with {{es}}. |
+| Enable client authentication                     | `--fleet-server-client-auth=required`| Requires {{agent}} to present a valid client certificate when connecting to {{fleet-server}}. |
+
+:::{warning}
+Editing SSL or proxy settings for an existing {{fleet-server}} may cause agents to lose connectivity. After changing client certificate settings, you need to re-enroll the affected agents.
+:::
