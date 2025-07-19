@@ -5,10 +5,10 @@ applies_to:
 navigation_title: Search and filter with ES|QL
 ---
 
-# Tutorial: Search and filter with {{esql}}
+# Search and filter with {{esql}}
 
 :::{tip}
-This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](querydsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
+This quickstart guide presents examples in {{esql}} syntax. Refer to [the Query DSL version](/solutions/search/get-started/querydsl-filter.md) for the equivalent examples in Query DSL syntax.
 :::
 
 This is a hands-on introduction to the basics of full-text search and semantic search, using [{{esql}}](/explore-analyze/query-filter/languages/esql.md).
@@ -21,7 +21,7 @@ In this scenario, we're implementing search for a cooking blog. The blog contain
 
 You need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
-Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](/solutions/search/get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
@@ -29,7 +29,7 @@ curl -fsSL https://elastic.co/start-local | sh
 
 ## Running {{esql}} queries
 
-In this tutorial, {{esql}} examples are displayed in the following format:
+In this quickstart guide, {{esql}} examples are displayed in the following format:
 
 ```esql
 FROM cooking_blog
@@ -120,16 +120,16 @@ PUT /cooking_blog/_mapping
 ```
 
 1. The `standard` analyzer is used by default for `text` fields if an `analyzer` isn't specified. It's included here for demonstration purposes.
-2. [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) are used here to index `text` fields as both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
+2. [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) are used here to index `text` fields as both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](/manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
 3. The [`ignore_above` parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it's included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene's term byte-length limit.
 
 ::::{tip}
-Full-text search is powered by [text analysis](full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](../../manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won't cover analysis in detail, but it's important to understand how text is processed to create effective search queries.
+Full-text search is powered by [text analysis](/solutions/search/full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](/manage-data/data-store/text-analysis/index-search-analysis.md). This quickstart guide won't cover analysis in detail, but it's important to understand how text is processed to create effective search queries.
 ::::
 
-## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data]
+## Step 2: Add sample blog posts to your index
 
-Now you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
+Now you’ll need to index some example blog posts using the [bulk API]({{es-apis}}operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
 
 ```console
 POST /cooking_blog/_bulk?refresh=wait_for
@@ -311,7 +311,7 @@ FROM cooking_blog
 ```
 
 :::{tip}
-Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large dataset.
+Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large data set.
 :::
 
 ### Perform hybrid search
@@ -470,7 +470,7 @@ FROM cooking_blog METADATA _score
 
 This tutorial introduced the basics of search and filtering in {{esql}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
 
-- [Search with {{esql}}](esql-for-search.md): Learn about all your options for search use cases with {{esql}}.
+- [Search with {{esql}}](/solutions/search/esql-for-search.md): Learn about all your options for search use cases with {{esql}}.
 - [{{esql}} search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md): Explore the full list of search functions available in {{esql}}.
 - [Semantic search](/solutions/search/semantic-search.md): Understand your various options for semantic search in Elasticsearch.
   - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for most users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.

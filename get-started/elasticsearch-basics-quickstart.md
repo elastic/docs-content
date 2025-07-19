@@ -3,28 +3,36 @@ applies_to:
   stack:
   serverless:
 ---
-# Basics quickstart [getting-started]
+# Index and search data
 
-
-This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents, and field type mappings](../../manage-data/data-store/index-basics.md). You’ll learn how to create an index, add data as documents, work with dynamic and explicit mappings, and perform your first basic searches.
+This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents, and field type mappings](/manage-data/data-store/index-basics.md).
+You'll learn how to create an index, add data as documents, work with dynamic and explicit mappings, and perform your first basic searches.
 
 ::::{tip}
-The code examples in this tutorial are in [Console](../../explore-analyze/query-filter/tools/console.md) syntax by default. You can [convert into other programming languages](../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
+The code examples in this tutorial are in [Console](/explore-analyze/query-filter/tools/console.md) syntax by default.
+You can [convert into other programming languages](/explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
 
 ::::
 
 ## Requirements [getting-started-requirements]
 
-You can follow this guide using any {{es}} deployment. If you already have a deployment up and running, you can skip ahead to the [first step](#getting-started-index-creation).
+You can follow this guide using any {{es}} deployment.
+If you do not already have a deployment up and running, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for your options.
+To get started quickly, you can spin up a cluster [locally in Docker](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
-If not, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for your options. To get started quickly, you can spin up a cluster [locally in Docker](get-started.md):
+% TBD: List privileges required to perform these steps
 
-```sh
-curl -fsSL https://elastic.co/start-local | sh
-```
+## Add data to {{es}}
 
+:::{tip}
+This tutorial uses {{es}} APIs, but there are many other ways to [add data to {{es}}](/solutions/search/ingest-for-search.md).
+:::
 
-## Step 1: Create an index [getting-started-index-creation]
+You add data to {{es}} as JSON objects called documents.
+{{es}} stores these documents in searchable indices.
+
+:::::{stepper}
+::::{step} Create an index
 
 Create a new index named `books`:
 
@@ -34,7 +42,8 @@ PUT /books
 
 The following response indicates the index was created successfully.
 
-::::{dropdown} Example response
+:::{dropdown} Example response
+
 ```console-result
 {
   "acknowledged": true,
@@ -43,30 +52,11 @@ The following response indicates the index was created successfully.
 }
 ```
 
+:::
 ::::
+::::{step} Add a single document
 
-
-
-## Step 2: Add data to your index [getting-started-add-documents]
-
-::::{tip}
-This tutorial uses {{es}} APIs, but there are many other ways to [add data to {{es}}](ingest-for-search.md).
-
-::::
-
-
-You add data to {{es}} as JSON objects called documents. {{es}} stores these documents in searchable indices.
-
-
-### Add a single document [getting-started-add-single-document]
-
-Submit the following indexing request to add a single document to the `books` index.
-
-::::{tip}
-If the index didn’t already exist, this request would automatically create it.
-
-::::
-
+Submit the following indexing request to add a single document to the `books` index:
 
 ```console
 POST books/_doc
@@ -78,9 +68,14 @@ POST books/_doc
 }
 ```
 
+:::{tip}
+If the index didn't already exist, this request would automatically create it.
+:::
+
 The response includes metadata that {{es}} generates for the document, including a unique `_id` for the document within the index.
 
-::::{dropdown} Example response
+:::{dropdown} Example response
+
 ```console-result
 {
   "_index": "books", <1>
@@ -101,21 +96,19 @@ The response includes metadata that {{es}} generates for the document, including
 2. The `_id` field is the unique identifier for the document.
 3. The `_version` field indicates the version of the document.
 4. The `result` field indicates the result of the indexing operation.
-5. The `_shards` field contains information about the number of [shards](../../deploy-manage/index.md) that the indexing operation was executed on and the number that succeeded.
+5. The `_shards` field contains information about the number of [shards](/deploy-manage/index.md) that the indexing operation was executed on and the number that succeeded.
 6. The `total` field indicates the total number of shards for the index.
 7. The `successful` field indicates the number of shards that the indexing operation was executed on.
 8. The `failed` field indicates the number of shards that failed during the indexing operation. *0* indicates no failures.
 9. The `_seq_no` field holds a monotonically increasing number incremented for each indexing operation on a shard.
 10. The `_primary_term` field is a monotonically increasing number incremented each time a primary shard is assigned to a different node.
 
-
+:::
 ::::
+::::{step} Add multiple documents
 
-
-
-### Add multiple documents [getting-started-add-multiple-documents]
-
-Use the [`_bulk` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to add multiple documents in one request. Bulk data must be formatted as newline-delimited JSON (NDJSON).
+Use the [`_bulk` endpoint]({{es-apis}}operation/operation-bulk) to add multiple documents in one request.
+Bulk data must be formatted as newline-delimited JSON (NDJSON).
 
 ```console
 POST /_bulk
@@ -133,7 +126,8 @@ POST /_bulk
 
 You should receive a response indicating there were no errors.
 
-::::{dropdown} Example response
+:::{dropdown} Example response
+
 ```console-result
 {
   "errors": false,
@@ -223,20 +217,16 @@ You should receive a response indicating there were no errors.
 }
 ```
 
+:::
 ::::
+::::{step} Use dynamic mappings
 
+[Mappings](/manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings) define how data is stored and indexed in {{es}}, like a schema in a relational database.
 
+If you use dynamic mapping, {{es}} automatically creates mappings for new fields.
+The documents we've added so far have used dynamic mapping, because we didn't specify a mapping when creating the index.
 
-## Step 3: Define mappings and data types [getting-started-mappings-and-data-types]
-
-[Mappings](../../manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings) define how data is stored and indexed in {{es}}, like a schema in a relational database.
-
-
-### Use dynamic mapping [getting-started-dynamic-mapping]
-
-When using dynamic mapping, {{es}} automatically creates mappings for new fields by default. The documents we’ve added so far have used dynamic mapping, because we didn’t specify a mapping when creating the index.
-
-To see how dynamic mapping works, add a new document to the `books` index with a field that doesn’t appear in the existing documents.
+To see how dynamic mapping works, add a new document to the `books` index with a field that doesn't appear in the existing documents.
 
 ```console
 POST /books/_doc
@@ -251,14 +241,15 @@ POST /books/_doc
 
 1. The new field.
 
-
-View the mapping for the `books` index with the [Get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping). The new field `language` has been added to the mapping with a `text` data type.
+View the mapping for the `books` index with the [get mapping API]({{es-apis}}operation/operation-indices-get-mapping).
+The new field `language` has been added to the mapping with a `text` data type.
 
 ```console
 GET /books/_mapping
 ```
 
-::::{dropdown} Example response
+:::{dropdown} Example response
+
 ```console-result
 {
   "books": {
@@ -302,14 +293,11 @@ GET /books/_mapping
   }
 }
 ```
-
+:::
 ::::
+::::{step} Add explicit mappings
 
-
-
-### Define explicit mapping [getting-started-explicit-mapping]
-
-Create an index named `my-explicit-mappings-books` with explicit mappings. Pass each field’s properties as a JSON object. This object should contain the [field data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) and any additional [mapping parameters](elasticsearch://reference/elasticsearch/mapping-reference/mapping-parameters.md).
+Create an index named `my-explicit-mappings-books` with explicit mappings. Pass each field's properties as a JSON object. This object should contain the [field data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) and any additional [mapping parameters](elasticsearch://reference/elasticsearch/mapping-reference/mapping-parameters.md).
 
 ```console
 PUT /my-explicit-mappings-books
@@ -326,11 +314,10 @@ PUT /my-explicit-mappings-books
 }
 ```
 
-1. Disables dynamic mapping for the index. Fields not defined in the mapping will still be stored in the document's `_source` field, but they won’t be indexed or searchable.
+1. Disables dynamic mapping for the index. Fields not defined in the mapping will still be stored in the document's `_source` field, but they won't be indexed or searchable.
 2. The `properties` object defines the fields and their data types for documents in this index.
 
-
-::::{dropdown} Example response
+:::{dropdown} Example response
 ```console-result
 {
   "acknowledged": true,
@@ -339,23 +326,23 @@ PUT /my-explicit-mappings-books
 }
 ```
 
+:::
 ::::
+::::{step} Combine dynamic and explicit mappings
 
+Explicit mappings are defined at index creation, and documents must conform to these mappings. You can also use the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping.
 
+This allows you to combine explicit and dynamic mappings. Learn more about [managing and updating mappings](/manage-data/data-store/mapping.md#mapping-manage-update).
 
-### Combine dynamic and explicit mappings [getting-started-combined-mapping]
+::::
+:::::
 
-Explicit mappings are defined at index creation, and documents must conform to these mappings. You can also use the [Update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping.
+## Search your data
 
-This allows you to combine explicit and dynamic mappings. Learn more about [managing and updating mappings](../../manage-data/data-store/mapping.md#mapping-manage-update).
+Indexed documents are available for search in near real-time, using the [`_search` API](/solutions/search/querying-for-search.md).
 
-
-## Step 4: Search your index [getting-started-search-data]
-
-Indexed documents are available for search in near real-time, using the [`_search` API](querying-for-search.md).
-
-
-### Search all documents [getting-started-search-all-documents]
+:::::{stepper}
+::::{step} Search all documents
 
 Run the following command to search the `books` index for all documents:
 
@@ -363,7 +350,8 @@ Run the following command to search the `books` index for all documents:
 GET books/_search
 ```
 
-::::{dropdown} Example response
+:::{dropdown} Example response
+
 ```console-result
 {
   "took": 2, <1>
@@ -405,18 +393,18 @@ GET books/_search
 5. The `total` object provides information about the total number of matching documents
 6. The `max_score` field indicates the highest relevance score among all matching documents
 7. The `_index` field indicates the index the document belongs to
-8. The `_id` field is the document’s unique identifier
+8. The `_id` field is the document's unique identifier
 9. The `_score` field indicates the relevance score of the document
 10. The `_source` field contains the original JSON object submitted during indexing
 
-
+:::
 ::::
+::::{step} Try a match query
 
+% Introduce different query languages, in this case Query DSL
 
-
-### `match` query [getting-started-match-query]
-
-You can use the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
+You can use the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field.
+This is the standard query for full-text searches.
 
 Run the following command to search the `books` index for documents containing `brave` in the `name` field:
 
@@ -431,7 +419,8 @@ GET books/_search
 }
 ```
 
-::::{dropdown} Example response
+:::{dropdown} Example response
+
 ```console-result
 {
   "took": 9,
@@ -466,15 +455,14 @@ GET books/_search
 ```
 
 1. The `max_score` is the score of the highest-scoring document in the results. In this case, there is only one matching document, so the `max_score` is the score of that document.
-
-
+:::
 ::::
+:::::
 
+## Delete your indices (optional)
 
-
-## Step 5: Delete your indices (optional) [getting-started-delete-indices]
-
-When following along with examples, you might want to delete an index to start from scratch. You can delete indices using the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+When following along with examples, you might want to delete an index to start from scratch.
+You can delete indices using the [delete index API]({{es-apis}}operation/operation-indices-delete).
 
 For example, run the following command to delete the indices created in this tutorial:
 
@@ -485,5 +473,6 @@ DELETE /my-explicit-mappings-books
 
 ::::{warning}
 Deleting an index permanently deletes its documents, shards, and metadata.
-
 ::::
+
+% TBD: What are the recommended next steps?
