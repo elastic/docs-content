@@ -424,5 +424,5 @@ To learn more about {{esql}}, refer to [{{esql}} reference](elasticsearch://refe
 
 Learn more about using {{esql}} for Search use cases:
 
-- [Search and filter with {{esql}}](/solutions/search/esql-search-tutorial.md): A hands-on tutorial that shows you how to use {{esql}} to search and filter data.
+- [Search and filter with {{esql}}](/solutions/search/get-started/esql-search.md): A hands-on tutorial that shows you how to use {{esql}} to search and filter data.
 - [Using {{esql}} for search](/solutions/search/esql-for-search.md): An overview of your options for using {{esql}} for search use cases.

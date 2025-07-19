@@ -24,11 +24,11 @@ Follow the steps in these guides to get started quickly:
 
 For more advanced examples, check out:
 
-- [](/solutions/search/querydsl-full-text-filter-tutorial.md)
+- [](/solutions/search/full-text/querydsl-filter-tutorial.md)
 % Learn about different options for querying data, including full-text search and filtering, using the Query DSL.
 - [](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md)
 % Learn how to analyze data using different types of aggregations, including metrics, buckets, and pipelines.
-- [](/solutions/search/esql-search-tutorial.md)
+- [](/solutions/search/esql-search.md)
 % Learn how to perform full-text and semantic search in {{esql}}, combined with filtering.
 - [](/solutions/search/hybrid-semantic-text.md)
 % Learn how to combine semantic search using`semantic_text` with full-text search.

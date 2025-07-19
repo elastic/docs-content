@@ -9,6 +9,8 @@ redirects:
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
   'solutions/search/api-quickstarts': 'solutions/search/get-started/quickstarts.md'
   'solutions/search/elasticsearch-basics-quickstart.md': 'get-started/elasticsearch-basics-quickstart.md'
+  'solutions/search/querydsl-full-text-filter-tutorial.md': 'solutions/search/full-text/querydsl-filter-tutorial.md'
+  '/solutions/search/esql-search-tutorial.md': '/solutions/search/get-started/esql-search.md'
   # Related to https://github.com/elastic/docs-content/pull/1069
   'solutions/observability/apps/llm-observability.md': 'solutions/observability/applications/llm-observability.md'
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'

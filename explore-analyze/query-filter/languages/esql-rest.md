@@ -12,7 +12,7 @@ products:
 # Use the {{esql}} `_query` API [esql-rest]
 
 ::::{tip}
-The [Search and filter with {{esql}}](/solutions/search/esql-search-tutorial.md) tutorial provides a hands-on introduction to the {{esql}} query API.
+The [Search and filter with {{esql}}](/solutions/search/get-started/esql-search.md) tutorial provides a hands-on introduction to the {{esql}} query API.
 ::::
 
 ## Overview [esql-rest-overview]

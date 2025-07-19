@@ -61,7 +61,7 @@ You can interact with {{esql}} in two ways:
   - [Use {{esql}} in Elastic Security](/explore-analyze/query-filter/languages/esql-elastic-security.md)
 - **{{esql}} for search use cases**
   - [{{esql}} for search landing page](/solutions/search/esql-for-search.md)
-  - [{{esql}} for search tutorial](/solutions/search/esql-search-tutorial.md)
+  - [{{esql}} for search tutorial](/solutions/search/get-started/esql-search.md)
 - **Query multiple sources**
   - [Query multiple indices](/explore-analyze/query-filter/languages/esql-multi-index.md)
   - [Query across clusters](/explore-analyze/query-filter/languages/esql-cross-clusters.md)
