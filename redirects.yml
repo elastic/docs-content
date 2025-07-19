@@ -8,6 +8,7 @@ redirects:
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
   'solutions/search/api-quickstarts': 'solutions/search/get-started/quickstarts.md'
+  'solutions/search/elasticsearch-basics-quickstart.md': 'get-started/elasticsearch-basics-quickstart.md'
   # Related to https://github.com/elastic/docs-content/pull/1069
   'solutions/observability/apps/llm-observability.md': 'solutions/observability/applications/llm-observability.md'
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'

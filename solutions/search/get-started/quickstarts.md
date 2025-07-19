@@ -24,8 +24,6 @@ Follow the steps in these guides to get started quickly:
 
 For more advanced examples, check out:
 
-- [](/solutions/search/elasticsearch-basics-quickstart.md)
-% Learn about indices, documents, and mappings, and perform a basic search using the Query DSL.
 - [](/solutions/search/querydsl-full-text-filter-tutorial.md)
 % Learn about different options for querying data, including full-text search and filtering, using the Query DSL.
 - [](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md)
@@ -41,5 +39,9 @@ Prefer working in Python? Check out our executable [Python notebooks](https://gi
 
 ## Related resources
 
-- [](/get-started/index.md): an introduction to Elastic
-- [](/manage-data/ingest.md): an overview of data ingestion methods
+- [](/get-started/index.md)
+% An introduction to Elastic
+- [](/get-started/elasticsearch-basics-quickstart.md)
+% Learn about indices, documents, and mappings, and perform a basic search using the Query DSL.
+- [](/manage-data/ingest.md)
+% An overview of data ingestion methods
