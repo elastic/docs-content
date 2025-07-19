@@ -13,6 +13,7 @@ toc:
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
               - file: search/get-started/esql-search.md
+              - file: search/get-started/querydsl-filter.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -20,7 +21,6 @@ toc:
       - file: search/full-text.md
         children:
           - file: search/full-text/how-full-text-works.md
-          - file: search/full-text/querydsl-filter-tutorial.md
           - file: search/full-text/search-with-synonyms.md
             children:
               - file: search/full-text/create-update-synonyms-api-example.md

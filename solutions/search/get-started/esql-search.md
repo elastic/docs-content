@@ -8,7 +8,7 @@ navigation_title: Search and filter with ES|QL
 # Search and filter with {{esql}}
 
 :::{tip}
-This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](/solutions/search/full-text/querydsl-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
+This quickstart guide presents examples in {{esql}} syntax. Refer to [the Query DSL version](/solutions/search/get-started/querydsl-filter.md) for the equivalent examples in Query DSL syntax.
 :::
 
 This is a hands-on introduction to the basics of full-text search and semantic search, using [{{esql}}](/explore-analyze/query-filter/languages/esql.md).
@@ -29,7 +29,7 @@ curl -fsSL https://elastic.co/start-local | sh
 
 ## Running {{esql}} queries
 
-In this tutorial, {{esql}} examples are displayed in the following format:
+In this quickstart guide, {{esql}} examples are displayed in the following format:
 
 ```esql
 FROM cooking_blog
@@ -124,10 +124,10 @@ PUT /cooking_blog/_mapping
 3. The [`ignore_above` parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it's included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene's term byte-length limit.
 
 ::::{tip}
-Full-text search is powered by [text analysis](/solutions/search/full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](/manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won't cover analysis in detail, but it's important to understand how text is processed to create effective search queries.
+Full-text search is powered by [text analysis](/solutions/search/full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](/manage-data/data-store/text-analysis/index-search-analysis.md). This quickstart guide won't cover analysis in detail, but it's important to understand how text is processed to create effective search queries.
 ::::
 
-## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data]
+## Step 2: Add sample blog posts to your index
 
 Now you’ll need to index some example blog posts using the [bulk API]({{es-apis}}operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
 
@@ -311,7 +311,7 @@ FROM cooking_blog
 ```
 
 :::{tip}
-Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large dataset.
+Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large data set.
 :::
 
 ### Perform hybrid search

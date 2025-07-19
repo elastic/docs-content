@@ -9,10 +9,10 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Full-text search and filtering with Query DSL [full-text-filter-tutorial]
+# Full-text search and filtering with Query DSL [full-text-filter-tutorial]
 
 :::{tip}
-This tutorial presents examples in Query DSL syntax. Refer to [the {{esql}} version](/solutions/search/get-started/esql-search.md) for the equivalent examples in {{esql}} syntax.
+This quickstart guide presents examples in Query DSL syntax. Refer to [the {{esql}} version](/solutions/search/get-started/esql-search.md) for the equivalent examples in {{esql}} syntax.
 :::
 
 This is a hands-on introduction to the basics of [full-text search](/solutions/search/full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API]({{es-apis}}operation/operation-search) and [Query DSL](/explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
@@ -29,7 +29,7 @@ The goal is to create search queries that enable users to:
 To achieve these goals we’ll use different Elasticsearch queries to perform full-text search, apply filters, and combine multiple search criteria.
 
 
-## Requirements [full-text-filter-tutorial-requirements]
+## Requirements
 
 You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
@@ -40,7 +40,7 @@ curl -fsSL https://elastic.co/start-local | sh
 ```
 
 
-## Step 1: Create an index [full-text-filter-tutorial-create-index]
+## Step 1: Create an index
 
 Create the `cooking_blog` index to get started:
 
@@ -113,13 +113,13 @@ PUT /cooking_blog/_mapping
 
 
 ::::{tip}
-Full-text search is powered by [text analysis](/solutions/search/full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](/manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won’t cover analysis in detail, but it’s important to understand how text is processed to create effective search queries.
+Full-text search is powered by [text analysis](/solutions/search/full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](/manage-data/data-store/text-analysis/index-search-analysis.md). This quickstart guide won’t cover analysis in detail, but it’s important to understand how text is processed to create effective search queries.
 
 ::::
 
 
 
-## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data]
+## Step 2: Add sample blog posts to your index
 
 Now you’ll need to index some example blog posts using the [Bulk API]({{es-apis}}operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
 
@@ -138,7 +138,7 @@ POST /cooking_blog/_bulk?refresh=wait_for
 ```
 
 
-## Step 3: Perform basic full-text searches [full-text-filter-tutorial-match-query]
+## Step 3: Perform basic full-text searches
 
 Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document’s content aligns with the search terms. {{es}} offers various query types, each with its own method for matching text and [relevance scoring](/explore-analyze/query-filter/languages/querydsl.md#relevance-scores).
 
@@ -284,7 +284,7 @@ GET /cooking_blog/_search
 ```
 
 
-## Step 4: Search across multiple fields at once [full-text-filter-tutorial-multi-match]
+## Step 4: Search across multiple fields at once
 
 When users enter a search query, they often don’t know (or care) whether their search terms appear in a specific field. A [`multi_match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-multi-match-query.md) query allows searching across multiple fields simultaneously.
 
