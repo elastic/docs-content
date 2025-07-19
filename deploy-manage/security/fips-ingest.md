@@ -24,6 +24,7 @@ Generally speaking FIPS 140-2 requirements can be summarized as:
 ## Limitations [ingest-limitations-all]
 
 ### TLS [ingest-limitations-tls]
+
 Only FIPS 140-2 compliant TLS protocols, ciphers, and curve types can be used. 
 * The supported TLS versions are `TLS v1.2` and `TLS v1.3`. 
 * The supported cipher suites are:
@@ -37,15 +38,18 @@ Be sure to enforce security in your FIPS environments through other means, such 
 These TLS related restrictions apply to all components listed--{{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}}. 
 
 ### General output and input limitations (Kerberos protocol) [ingest-inputoutput-limitations]
+
 The Kerberos protocol is not supported for any output or input, which also impacts the available `sasl.mechanism` for the Kafka output where only `PLAIN` is supported. 
 
 This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [Metricbeat](beats://reference/metricbeat/configuration-kerberos.md) and {{apm-server}}, as well as output configurations for {{agent}} with {{fleet-server}}. 
 
 
 ### APM Server [ingest-apm-limitations]
+
 * The [Secrets Keystore](/solutions/observability/apm/secrets-keystore-for-secure-settings.md) is not supported. 
 
 ### Filebeat [ingest-filebeat-limitations]
+
 * The [Secrets Keystore](beats://reference/filebeat/keystore.md) is not supported. 
 * The [Translate GUID processor](beats://reference/filebeat/processor-translate-guid.md) is not supported.
 * The [Fingerprint processor](beats://reference/filebeat/fingerprint.md) does not support the md5 and sha1 method. 
@@ -54,6 +58,7 @@ This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [
 * The [GCP Pub/Sub input](beats://reference/filebeat/filebeat-input-gcp-pubsub.md) is not supported for now. 
 
 ### Metricbeat [ingest-metricbeat-limitations]
+
 * The [Secrets Keystore](beats://reference/metricbeat/keystore.md) is not supported. 
 * The [Translate GUID processor](beats://reference/metricbeat/processor-translate-guid.md) is not supported.
 * The [Fingerprint processor](beats://reference/metricbeat/fingerprint.md) does not support the md5 and sha1 method. 
@@ -65,7 +70,23 @@ This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [
 * The [Oracle module](beats://reference/metricbeat/metricbeat-module-oracle.md) is not supported. 
 
 ### Elastic Agent and Fleet Server [ingest-limitations-agent]
+
 When using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs and processors apply to the respective Integrations. 
 Additionally, these limitations apply:
 * The [Prometheus Receiver](https://www.elastic.co/docs/reference/integrations/prometheus) is not supported. 
 * Running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/README.md) is not yet supported. 
+
+<br>
+::::{admonition} Some Elastic Integrations are not FIPS compatible 
+These Elastic Integrations have components that are **not** FIPS compatible, and **cannot** be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
+
+- [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
+- [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
+- [PostgreSQL Integration](integration-docs://reference/postgresql.md)
+- [MongoDB Integration](integration-docs://reference/mongodb.md)
+- [MySQL Integration](integration-docs://reference/mysql.md)
+- [Microsoft SQL Server Integration](integration-docs://reference/microsoft_sqlserver.md)
+- [Oracle Integration](integration-docs://reference/oracle.md)
+
+Omission from this list does not indicate that integrations are FIPS compliant. 
+::::
