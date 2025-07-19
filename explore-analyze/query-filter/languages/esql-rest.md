@@ -310,7 +310,7 @@ The query will be stopped and the response will contain the results computed so 
 {
   "is_running": false,
   "took": 48,
-  is_partial: true,
+  "is_partial": true,
   "columns": ...
 }
 ```
