@@ -16,7 +16,7 @@ You configure templates prior to creating indices or data streams. When an index
 
 There are two types of template:
 
-* An [**index template**](#index-templates) is used to configure indices when they are created, by specifying the mappings, settings, and aliases that each index inherits.
+* An [**index template**](#index-templates) is the main configuration object applied when creating an index or data stream. It matches index names using `index_patterns` and resolves conflicts using a `priority` value. An index template can optionally define settings, mappings, and aliases directly, and refer to a list of component templates that provide reusable configuration blocks. It can also indicate whether it should create a data stream or a regular index.
 
 * A [**component template**](#component-templates) is a reusable building block used to construct index templates.
 
