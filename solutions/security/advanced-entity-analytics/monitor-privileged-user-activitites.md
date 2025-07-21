@@ -8,6 +8,6 @@ products:
   - id: cloud-serverless
 ---
 
-# Privileged user monitoring
+# Monitor privileged user activities
 
 This page is a placeholder for future documentation.
