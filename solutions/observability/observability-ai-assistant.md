@@ -51,7 +51,7 @@ The AI assistant requires the following:
 * The knowledge base requires a 4 GB {{ml}} node.
   - In {{ecloud}} or {{ece}}, if you have Machine Learning autoscaling enabled, Machine Learning nodes will be started when using the knowledge base and AI Assistant. Therefore using these features will incur additional costs.
 
-* A self-deployed connector service if [search connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
+* A self-deployed connector service if [content connectors](elasticsearch://reference/search-connectors/index.md) are used to populate external data into the knowledge base.
 
 ## Your data and the AI Assistant [data-information]
 
@@ -107,7 +107,7 @@ The AI Assistant uses [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser
 Add data to the knowledge base with one or more of the following methods:
 
 * [Use the knowledge base UI](#obs-ai-kb-ui) available at [AI Assistant Settings](#obs-ai-settings) page.
-* [Use search connectors](#obs-ai-search-connectors)
+* [Use content connectors](#obs-ai-search-connectors)
 
 You can also add information to the knowledge base by asking the AI Assistant to remember something while chatting (for example, "remember this for next time"). The assistant will create a summary of the information and add it to the knowledge base.
 
@@ -131,9 +131,9 @@ To add external data to the knowledge base in {{kib}}:
         }
         ```
 
-### Use search connectors [obs-ai-search-connectors]
+### Use content connectors [obs-ai-search-connectors]
 
-[Search connectors](elasticsearch://reference/search-connectors/index.md) index content from external sources like GitHub, Confluence, Google Drive, Jira, S3, Teams, and Slack to improve the AI Assistant's responses.
+[Content connectors](elasticsearch://reference/search-connectors/index.md) index content from external sources like GitHub, Confluence, Google Drive, Jira, S3, Teams, and Slack to improve the AI Assistant's responses.
 
 #### Requirements and limitations
 
@@ -190,7 +190,7 @@ This is a more complex method that requires you to set up the ELSER model and in
 
 To create the embeddings needed by the AI Assistant (weights and tokens into a sparse vector field) using an **ML Inference Pipeline**:
 
-1. Open the previously created search connector in **Content / Connectors**, and select the **Pipelines** tab.
+1. Open the previously created content connector in **Content / Connectors**, and select the **Pipelines** tab.
 2. Select **Copy and customize** under `Unlock your custom pipelines`.
 3. Select **Add Inference Pipeline** under `Machine Learning Inference Pipelines`.
 4. Select the **ELSER (Elastic Learned Sparse EncodeR)** ML model to add the necessary embeddings to the data.
@@ -278,37 +278,46 @@ Main functions:
 `alerts`
 :   Get alerts for {{observability}}.
 
+`changes`
+:   Get change points like spikes and dips for logs and metrics data.
+
 `elasticsearch`
 :   Call {{es}} APIs on your behalf.
+
+`execute_connector`
+:   Call a {{kib}} connector on your behalf.
+
+`get_alerts_dataset_info`
+:   Get information about alerts data within a specified time range.
+
+`get_data_on_screen`
+:   Get the structured data of content currently visible on the user's screen. Use this function to provide more accurate and context-aware responses to your questions.
+
+`get_dataset_info`
+:    Get information about available indices and datasets and their fields.
 
 `kibana`
 :   Call {{kib}} APIs on your behalf.
 
-`summarize`
-:   Summarize parts of the conversation.
+`query`
+:   Generate, execute, and visualize queries based on your request.
 
-`visualize_query`
-:   Visualize charts for ES|QL queries.
+`retrieve_elastic_doc`
+:   Get relevant Elastic documentation. This function is only available if the product documentation is installed.
+
+`summarize`
+:   Store information and facts in the knowledge base for future use. This function is only available if the [knowledge base](#obs-ai-add-data) has already been installed.
 
 Additional functions are available when your cluster has APM data:
 
-`get_apm_correlations`
-:   Get field values that are more prominent in the foreground set than the background set. This can be useful in determining which attributes (such as `error.message`, `service.node.name`, or `transaction.name`) are contributing to, for instance, a higher latency. Another option is a time-based comparison, where you compare before and after a change point.
+`get_apm_dataset_info`
+:   Get information about APM data.
 
 `get_apm_downstream_dependencies`
 :   Get the downstream dependencies (services or uninstrumented backends) for a service. Map the downstream dependency name to a service by returning both `span.destination.service.resource` and `service.name`. Use this to drill down further if needed.
 
-`get_apm_error_document`
-:   Get a sample error document based on the grouping name. This also includes the stacktrace of the error, which might hint to the cause.
-
-`get_apm_service_summary`
-:   Get a summary of a single service, including the language, service version, deployments, the environments, and the infrastructure that it is running in. For example, the number of pods and a list of their downstream dependencies. It also returns active alerts and anomalies.
-
 `get_apm_services_list`
 :   Get the list of monitored services, their health statuses, and alerts.
-
-`get_apm_timeseries`
-:   Display different APM metrics (such as throughput, failure rate, or latency) for any service or all services and any or all of their dependencies. Displayed both as a time series and as a single statistic. Additionally, the function  returns any changes, such as spikes, step and trend changes, or dips. You can also use it to compare data by requesting two different time ranges, or, for example, two different service versions.
 
 ### Use contextual prompts [obs-ai-prompts]
 
@@ -397,7 +406,7 @@ The AI Assistant Settings page contains the following tabs:
 
 * **Settings**: Configures the main AI Assistant settings, which are explained directly within the interface.
 * **Knowledge base**: Manages [knowledge base entries](#obs-ai-kb-ui).
-* **Search Connectors**: Provides a link to {{kib}} **Search** → **Content** → **Connectors** UI for connectors configuration.
+* **Content connectors**: Provides a link to {{kib}} **Search** → **Content** → **Connectors** UI for connectors configuration.
 
 ### Add Elastic documentation [obs-ai-product-documentation]
 

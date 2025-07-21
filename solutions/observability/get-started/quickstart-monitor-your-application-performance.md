@@ -20,7 +20,7 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 :::{tab-item} Elastic Stack
 :sync: stack
 
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](https://docs.elastic.co/serverless/quickstart-monitor-hosts-with-otel.html).
+* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](/solutions/observability/get-started.md).
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 * An Elastic Distribution of OpenTelemetry (EDOT) Collector or the upstream OpenTelemetry Collector running on the host.
 
@@ -56,7 +56,9 @@ Follow these steps to collect application telemetry data using the EDOT SDKs:
 2. Under **What do you want to monitor?** select **Application**, and then select **OpenTelemetry**.
 3. Follow the instructions to install the EDOT SDK for your application:
 
+   - [Android](opentelemetry://reference/edot-sdks/android/index.md)
    - [.NET](opentelemetry://reference/edot-sdks/dotnet/setup/index.md)
+   - [iOS](opentelemetry://reference/edot-sdks/ios/index.md)
    - [Java](opentelemetry://reference/edot-sdks/java/setup/index.md)
    - [Node.js](opentelemetry://reference/edot-sdks/nodejs/setup/index.md)
    - [PHP](opentelemetry://reference/edot-sdks/php/setup/index.md)
@@ -76,7 +78,9 @@ If your application runs on Kubernetes, the OpenTelemetry operator automatically
 2. Under **What do you want to monitor?** select **Application**, and then select **OpenTelemetry**.
 3. Follow the instructions to install the EDOT SDK for your application:
 
+   - [Android](opentelemetry://reference/edot-sdks/android/index.md)
    - [.NET](opentelemetry://reference/edot-sdks/dotnet/setup/index.md)
+   - [iOS](opentelemetry://reference/edot-sdks/ios/index.md)
    - [Java](opentelemetry://reference/edot-sdks/java/setup/index.md)
    - [Node.js](opentelemetry://reference/edot-sdks/nodejs/setup/index.md)
    - [PHP](opentelemetry://reference/edot-sdks/php/setup/index.md)
