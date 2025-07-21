@@ -102,9 +102,9 @@ The AI Assistant connects to one of these supported LLM providers:
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
-The AI Assistant uses one of the following language models to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses:
+The AI Assistant uses one of the following language models to recall data from its internal knowledge base index to generate retrieval augmented generation (RAG) responses:
 
-* [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): Elastic’s semantic search engine. ELSER is recommended for English-only use cases.
+* [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): Elastic’s semantic search engine, recommended for English-only use cases.
 * [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): {applies_to}`stack: ga 9.1` A natural language processing model that enables you to perform multilingual semantic search by using dense vector representations.
 
 Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
@@ -251,7 +251,7 @@ Choose the default language model for the AI Assistant in the AI Assistant setti
 
 Select the language model and click **Update**.
 
-When switching models, every existing Knowledge Base entry must be reindexed. Entries will be unavailable until they are reindexed.
+When switching models, all existing Knowledge Base entries must be reindexed. Entries will be unavailable until reindexing is complete.
 
 To have the AI Assistant respond in a language other than English, set a [user specific prompt](#obs-ai-assistant-user-prompt).
 
