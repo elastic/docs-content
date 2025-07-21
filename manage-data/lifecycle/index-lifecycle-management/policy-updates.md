@@ -115,7 +115,7 @@ To switch an index’s lifecycle policy:
 
 1. Go to **Stack Management > Index Management**. In the **Indices** tab, search for and select the index that you that you want to switch to a new policy. You can use the **Lifecycle status** filter to narrow the list.
     
-1. From the **Manage index** dropdown menu select **Remove lifecycle policy**. Confirm your choice and then the ILM policy is removed.
+1. From the **Manage index** dropdown menu, select **Remove lifecycle policy**. Confirm your choice before the ILM policy is removed.
 
 1. From the **Manage index** dropdown menu, select **Add lifecycle policy**, and then select a new policy to apply.
 :::
