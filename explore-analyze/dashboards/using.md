@@ -183,6 +183,10 @@ When a custom time range is active for a single panel, it is indicated in the pa
 You can view it in more details and edit it by clicking the filter.
 
 ### View and edit the visualization configuration
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
 
 When viewing a dashboard with read-only permissions, certain visualization panels allow you to view how the visualization itself is configured, and to temporarily edit that configuration.
 
