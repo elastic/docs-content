@@ -117,7 +117,7 @@ The rollover action implicitly rolls over a data stream or alias if one or more 
 To use a lifecycle policy that triggers a rollover action, you need to configure the policy in the index template used to create each new index. You specify the name of the policy and the alias used to reference the rolling indices.
 
 :::{tip}
-If you already have an index template to which you'd like to add an {{ilm-init}} policy, you can do this from **Stack Management > Index Lifecycle Policies**. Search for and select the policy you want, and from the **Actions** menu select **Add to index template**.
+If you already have an index template to which you'd like to add an {{ilm-init}} policy, you can do this from **Stack Management > Index Lifecycle Policies**. Search for and select the policy you want, and from the **Actions** menu, select **Add to index template**.
 :::
 
 ::::{tab-set}
