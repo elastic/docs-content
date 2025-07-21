@@ -169,7 +169,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
         }
         ```
 
-1. On the **Mappings** page, you can customize the fields and data types used when documents are indexed into {{es}}. Refer to [Mapping](/manage-data/data-store/mapping.md) for details.
+1. Optional: On the **Mappings** page, customize the fields and data types used when documents are indexed into {{es}}. Refer to [Mapping](/manage-data/data-store/mapping.md) for details.
 
 1. On the **Aliases** page, you can specify an [alias](/manage-data/data-store/aliases.md) for each created index. This isn't required when configuring ILM, which instead uses the `index.lifecycle.rollover_alias` setting to acceess rolling indices.
 
