@@ -102,7 +102,12 @@ The AI Assistant connects to one of these supported LLM providers:
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
-The AI Assistant uses [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), Elastic’s semantic search engine, to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses. Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
+The AI Assistant uses one of the following language models to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses:
+
+* [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): Elastic’s semantic search engine. ELSER is recommended for English-only use cases.
+* [E5](/explore-analyze/machine-learning/nlp/): {applies_to}`stack: ga 9.1` A natural language processing model that enables you to perform multilingual semantic search by using dense vector representations.
+
+Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
 
 Add data to the knowledge base with one or more of the following methods:
 
@@ -167,7 +172,7 @@ Field names in custom indices have no specific requirements. Any `semantic_text`
     - Create a connector using the [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector)
 
 2. **Create embeddings** (choose one method):
-   - [`semantic_text` field](#obs-ai-search-connectors-semantic-text): Recommended workflow which handles model setup automatically
+   - [`semantic_text` field](#obs-ai-search-connectors-semantic-text): Recommended workflow which handles model setup automatically. Allows the use of any available ML model (Elser, e5, or custom models).
    - [ML pipeline](#obs-ai-search-connectors-ml-embeddings): Requires manual setup of the ELSER model and inference pipeline
 
 #### Option 1: Use a `semantic_text` field type to create embeddings (recommended) [obs-ai-search-connectors-semantic-text]
@@ -234,6 +239,17 @@ If asked about a Kubernetes pod, namespace, cluster, location, or owner, return 
 - Owner: cloud.account.id
 </kubernetes_info>
 ```
+
+### Choose the Knowledge Base language model
+```{applies_to}
+stack: ga 9.1
+```
+Choose the default language model for the AI Assistant in the AI Assistant settings under **Set text embeddings model**.
+
+* [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): recommended for English-only use cases.
+* [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): supports multilingual use cases.
+
+Select the language model and click **Update**. If you're switching models, every existing Knowledge Base entry must be reindexed. Entries will be unavailable until they are reindexed.
 
 ## Interact with the AI Assistant [obs-ai-interact]
 
