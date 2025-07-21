@@ -306,13 +306,15 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
     DELETE _data_stream/*?expand_wildcards=all
     ```
 
-6. Delete all existing indices on the cluster.
+6. Shutdown All Kibana (important, especially if you plan to restore .kibana* system indices).  
+
+7. Delete all existing indices on the cluster.
 
     ```console
     DELETE *?expand_wildcards=all
     ```
 
-7. Restore the entire snapshot, including the cluster state. By default, restoring the cluster state also restores any feature states in the snapshot.
+8. Restore the entire snapshot, including the cluster state. By default, restoring the cluster state also restores any feature states in the snapshot.
 
     ```console
     POST _snapshot/my_repository/my_snapshot_2099.05.06/_restore
@@ -322,7 +324,9 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
     }
     ```
 
-8. When the restore operation is complete, resume indexing and restart any features you stopped:
+9. Restart All Kibana
+
+10. When the restore operation is complete, resume indexing and restart any features you stopped:
 
     ::::{note}
     When the snapshot is restored, the license that was in use at the time the snapshot was taken will be restored as well. If your license has expired since the snapshot was taken, you will need to use the [Update License API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post) to install a current license.
@@ -384,7 +388,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
         }
         ```
 
-9. If wanted, reset the `action.destructive_requires_name` cluster setting.
+10. If wanted, reset the `action.destructive_requires_name` cluster setting.
 
     ```console
     PUT _cluster/settings
