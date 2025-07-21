@@ -199,7 +199,7 @@ PUT _index_template/my_template
 
 1. Use this template for all new indices with names that begin with `test-`.
 2. Apply `my_policy` to new indices created with this template
-3. Define an index alias for referencing indices managed by `my_policy`
+3. Define an index alias for referencing indices managed by `my_policy`.
 
     :::{tip}
     The `index.lifecycle.rollover_alias` setting is required only if you're using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/data-streams.md).
