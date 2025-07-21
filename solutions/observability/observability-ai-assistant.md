@@ -105,7 +105,7 @@ The AI Assistant connects to one of these supported LLM providers:
 The AI Assistant uses one of the following language models to recall data from its internal knowledge base index to create retrieval augmented generation (RAG) responses:
 
 * [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): Elastic’s semantic search engine. ELSER is recommended for English-only use cases.
-* [E5](/explore-analyze/machine-learning/nlp/): {applies_to}`stack: ga 9.1` A natural language processing model that enables you to perform multilingual semantic search by using dense vector representations.
+* [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): {applies_to}`stack: ga 9.1` A natural language processing model that enables you to perform multilingual semantic search by using dense vector representations.
 
 Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
 
@@ -215,7 +215,7 @@ After creating the pipeline, complete the following steps:
 
     Ask something to the AI Assistant related with the indexed data.
 
-### Add user-specific system prompts
+### Add user-specific system prompts [obs-ai-assistant-user-prompt]
 
 User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French," and all subsequent responses will be in French.
 
@@ -249,7 +249,11 @@ Choose the default language model for the AI Assistant in the AI Assistant setti
 * [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): recommended for English-only use cases.
 * [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): supports multilingual use cases.
 
-Select the language model and click **Update**. If you're switching models, every existing Knowledge Base entry must be reindexed. Entries will be unavailable until they are reindexed.
+Select the language model and click **Update**.
+
+When switching models, every existing Knowledge Base entry must be reindexed. Entries will be unavailable until they are reindexed.
+
+To have the AI Assistant respond in a language other than English, set a [user specific prompt](#obs-ai-assistant-user-prompt).
 
 ## Interact with the AI Assistant [obs-ai-interact]
 
