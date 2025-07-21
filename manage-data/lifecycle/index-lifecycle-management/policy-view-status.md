@@ -36,7 +36,7 @@ To learn how to create a specialized ILM policy for any data stream, such as tho
 
 1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
-1. Select the data stream to view details. In the flyout that opens, you have direct links to access the ILM policy and the index template.
+1. Select the data stream to view details. The flyout that opens includes direct links to the ILM policy and the index template.
 
    ![Data stream status page](/manage-data/images/elasticsearch-reference-datastream-status.png "")
 ::::
