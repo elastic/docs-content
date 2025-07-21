@@ -57,7 +57,7 @@ To add an ILM policy to an {{es}} cluster:
 
 1. In the **Hot phase**, by default an ILM-managed index [rolls over](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) when either:
     * It reaches 30 days of age.
-    * One or more primary shards reach 50 gigabytes in size.
+    * One or more primary shards reach 50 GB in size.
   
     Disable **Use recommended defaults** to adjust these values or to roll over based on the size of the primary shard, the number of documents in the primary shard, or the total number of documents in the index.
 
