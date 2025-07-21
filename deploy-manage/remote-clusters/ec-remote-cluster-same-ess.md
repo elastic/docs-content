@@ -42,7 +42,6 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 ### Prerequisites and limitations [ec_prerequisites_and_limitations]
 
 * The local and remote deployments must be on {{stack}} 8.14 or later.
-* API key authentication can’t be used in combination with traffic filters.
 * Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
 
 
@@ -122,7 +121,7 @@ You can update a deployment using the appropriate trust settings for the {{es}} 
 The current trust settings can be found in the path `.resources.elasticsearch[0].info.settings.trust` when calling:
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID?show_settings=true
+curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID?show_settings=true
 ```
 
 For example:

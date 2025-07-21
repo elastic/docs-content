@@ -106,7 +106,7 @@ If your ECE installation is still using the default, auto-generated certificates
 - Apply a valid license. It is required to have an `Enterprise resource unit`-compatible license applied before upgrading to ECE 2.7 or later. The most reliable way to check if your license is compatible is to use the {{ece}} API and check the value of the license version field:
 
     ```sh
-    curl -X GET -u admin:PASSWORD -k https://COORDINATOR_HOST:12443/api/v1/platform/license
+    curl -X GET -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/license
     {
       "license": {
         "version": 4,

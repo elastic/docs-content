@@ -108,7 +108,7 @@ You’re now ready to create new indices using your index template.
           "lon": -121.7864906
         }
       },
-      "url": "https://media-for-the-masses.theacademyofperformingartsandscience.org/uploads/charles-fullerton.jpg"
+      "url": "<example-url-01>"
     }
 
     POST /my-index-000002/_doc
@@ -124,7 +124,7 @@ You’re now ready to create new indices using your index template.
         }
       },
       "memory": 241720,
-      "url": "https://theacademyofperformingartsandscience.org/people/type:astronauts/name:laurel-b-clark/profile"
+      "url": "<example-url-02>"
     }
     ```
 

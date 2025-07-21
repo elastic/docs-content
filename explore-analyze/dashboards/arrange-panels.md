@@ -48,7 +48,29 @@ In the toolbar, click **Edit**, then use the following options:
   If you [share](sharing.md) a dashboard while viewing a full screen panel, the generated link will directly open the same panel in full screen mode.
   ::::
 
+### Move and resize panels using a keyboard
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
 
+To move a panel:
+
+1. Using `Tab`, browse to the {icon}`move` panel action and press `Enter` or `Space` to lock the action.
+2. Use `Arrow` keys to move the panel to the new location.
+3. Press `Enter` or `Space` again to release the panel.
+4. Save the dashboard.
+
+To resize a panel:
+
+1. Using `Tab`, browse to the {icon}`scale` panel action and press `Enter` or `Space` to lock the action.
+2. Use `Arrow` keys to resize the panel to the new dimensions.
+3. Press `Enter` or `Space` again to release the panel.
+4. Save the dashboard.
+
+:::{tip}
+While moving or resizing a panel, you can cancel the action at any time by pressing `Escape`.
+:::
 
 ## Copy and duplicate panels [duplicate-panels]
 
