@@ -175,7 +175,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
 
 1. On the **Review** page, confirm your selections. You can check your selected options, as well as both the format of the index template that will be created and the associated API request.
 
-The newly created index template will be used for all new indices whose name matches the specified pattern, and for each of these the specified ILM policy will be applied.
+The newly created index template will be used for all new indices with names that match the specified pattern, and for each of these, the specified ILM policy will be applied.
 :::
 
 :::{tab-item} API
