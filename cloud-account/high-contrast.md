@@ -1,8 +1,8 @@
 ---
 description: Use high-contrast mode in Kibana.
 applies_to:
-  stack: beta 9.1
-  serverless: beta
+  stack: ga 9.1
+  serverless: ga
 products:
   - id: kibana
 ---
