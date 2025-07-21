@@ -10,7 +10,7 @@ products:
 
 # Templates [elasticsearch-templates]
 
-Templates are tools used to construct indices in {{es}}. They specify the properties that each created index will have.
+Templates are the mechanism by which {{es}} applies settings, mappings, and other configurations when creating indices or data streams.
 
 You configure templates prior to creating indices. This way, when each index is created, either manually or through the indexing of a document, the template settings are used as a basis for creating the index. When used with a [data stream](/manage-data/data-store/data-streams.md), a template configures the stream's backing indices as they are created.
 
