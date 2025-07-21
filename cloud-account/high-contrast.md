@@ -12,7 +12,7 @@ products:
 You can change the interface contrast mode of Kibana to improve visibility and readability in low-light conditions.
 
 1. Open the user menu from the header.
-2. Select **Appearance**
+2. Select **Appearance**.
    
    :::{note}
    On self-managed deployments of {{kib}}, this option is located on your profile page. To access it, select **Edit profile**.
