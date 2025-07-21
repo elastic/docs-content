@@ -8,7 +8,7 @@ applies_to:
   serverless: ga
 ---
 
-# Create a degrade docs rule [degraded-docs-alert]
+# Create a degraded docs rule [degraded-docs-alert]
 
 ::::{note}
 
