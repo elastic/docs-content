@@ -117,7 +117,7 @@ To switch an index’s lifecycle policy:
     
 1. From the **Manage index** dropdown menu select **Remove lifecycle policy**. Confirm your choice and then the ILM policy is removed.
 
-1. From the **Manage index** dropdown menu select **Add lifecycle policy**, and then select a new policy to apply.
+1. From the **Manage index** dropdown menu, select **Add lifecycle policy**, and then select a new policy to apply.
 :::
 
 :::{tab-item} API
