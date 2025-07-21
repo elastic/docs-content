@@ -198,7 +198,7 @@ PUT _index_template/my_template
 ```
 
 1. Use this template for all new indices with names that begin with `test-`.
-2. Apply `my_policy` to new indices created with this template
+2. Apply `my_policy` to new indices created with this template.
 3. Define an index alias for referencing indices managed by `my_policy`.
 
     :::{tip}
