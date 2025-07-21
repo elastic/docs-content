@@ -71,22 +71,17 @@ This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [
 
 ### Elastic Agent and Fleet Server [ingest-limitations-agent]
 
-When using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs and processors apply to the respective Integrations. 
-Additionally, these limitations apply:
+When you use {{agent}} and {{fleet-server}}, these limitations apply:
 * The [Prometheus Receiver](https://www.elastic.co/docs/reference/integrations/prometheus) is not supported. 
 * Running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/README.md) is not yet supported. 
+* Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not yet supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
 
-<br>
-::::{admonition} Some Elastic Integrations are not FIPS compatible 
-These Elastic Integrations have components that are **not** FIPS compatible, and **cannot** be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
+  These Elastic Integrations have components that are **not** FIPS compatible, and **cannot** be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
 
-- [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
-- [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
-- [PostgreSQL Integration](integration-docs://reference/postgresql.md)
-- [MongoDB Integration](integration-docs://reference/mongodb.md)
-- [MySQL Integration](integration-docs://reference/mysql.md)
-- [Microsoft SQL Server Integration](integration-docs://reference/microsoft_sqlserver.md)
-- [Oracle Integration](integration-docs://reference/oracle.md)
-
-Omission from this list does not indicate that integrations are FIPS compliant. 
-::::
+  - [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
+  - [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
+  - [PostgreSQL Integration](integration-docs://reference/postgresql.md)
+  - [MongoDB Integration](integration-docs://reference/mongodb.md)
+  - [MySQL Integration](integration-docs://reference/mysql.md)
+  - [Microsoft SQL Server Integration](integration-docs://reference/microsoft_sqlserver.md)
+  - [Oracle Integration](integration-docs://reference/oracle.md)
