@@ -114,9 +114,6 @@ When a role is assigned to *All Spaces*, you can’t remove its access from the 
 
 
 
-## Delete a space [_delete_a_space]
-
-Deleting a space permanently removes the space and all of its contents. Find the space on the **Spaces** overview page and click the trash icon in the Actions column. You can’t delete the default space, but you can customize it to your liking.
 
 
 ## Move saved objects between spaces [spaces-moving-objects]
@@ -138,3 +135,8 @@ To configure the landing page, use the default route setting in [Stack Managemen
 :alt: Configure space-level landing page
 :screenshot:
 :::
+
+
+## Delete a space [_delete_a_space]
+
+Deleting a space permanently removes the space and all of its contents. Find the space on the **Spaces** overview page and click the trash icon in the Actions column. You can’t delete the default space, but you can customize it to your liking.
