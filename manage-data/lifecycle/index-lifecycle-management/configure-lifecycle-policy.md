@@ -71,7 +71,7 @@ The rollover action implicitly rolls over a data stream or alias if one or more 
 
     ![Create policy page](/manage-data/images/elasticsearch-reference-create-policy-downsample.png "")
 
-    Note that for each phase after the "hot" phase you have the option to move the data into the phase after a certain duration of time. This duration is calculated from the time of the index rollover and not from the time the index is created.
+    Note that for each phase after the hot phase, you have the option to move the data into the next phase after a certain duration of time. This duration is calculated from the time of the index rollover and not from the time the index is created.
 
 
 1. For the final phase that's enabled, choose to either keep the data in the phase forever or delete the data after a specified period of time.
