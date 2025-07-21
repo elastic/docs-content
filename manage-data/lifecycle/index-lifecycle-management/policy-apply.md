@@ -31,7 +31,6 @@ To apply a lifecycle policy to an existing index:
 
 1. Choose a lifecycle policy and confirm your changes.
 
-Once the policy is applied, {{ilm-init}} starts managing the index immediately.
 :::
 
 :::{tab-item} API
