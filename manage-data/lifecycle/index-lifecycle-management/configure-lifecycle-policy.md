@@ -158,7 +158,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
             The `index.lifecycle.rollover_alias` setting is required only if you're using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/data-streams.md).
             :::
 
-    1. Add any additional [index settings](elasticsearch://reference/elasticsearch/index-settings/index.md), that should be applied to the indices as they're created. For example, you can set the number of shards and replicas for each index:
+    1. Optional: Add any additional [index settings](elasticsearch://reference/elasticsearch/index-settings/index.md), that should be applied to the indices as they're created. For example, you can set the number of shards and replicas for each index:
 
         ```json
         {
