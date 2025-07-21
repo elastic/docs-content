@@ -108,7 +108,7 @@ PUT _ilm/policy/my_policy
 2. Delete the index 30 days after rollover
 
 ::::{important}
-The rollover action implicitly always rolls over a data stream or alias if one or more shards contain 200000000 or more documents. Normally a shard will reach 25GB long before it reaches 200M documents, but this isn’t the case for space efficient data sets. Search performance will very likely suffer if a shard contains more than 200M documents. This is the reason for the built-in limit.
+The rollover action implicitly rolls over a data stream or alias if one or more shards contain 200,000,000 or more documents. Typically, a shard will reach 50GB before it reaches 200M documents, however, this isn’t the case for space efficient data sets. This built-in limit exists to avoid Search performance loss if a shard contains more than 200M documents.
 :::
 ::::
 
