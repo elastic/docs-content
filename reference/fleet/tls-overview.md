@@ -103,7 +103,7 @@ Note that you can also configure mutual TLS for {{fleet-server}} and {{agent}} [
 :alt: Diagram of mutual TLS connection between components
 :::
 
-## Configure TLS settings in the Fleet UI [tls-ui-settings]
+## Configure TLS/mTLS settings in the Fleet UI [tls-ui-settings]
 ```{applies_to}
   stack: ga 9.1
 ```
