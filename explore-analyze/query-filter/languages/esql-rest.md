@@ -304,7 +304,7 @@ You can interrupt a running async query and collect the results that have been c
 ```console
 POST /_query/async/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=/stop
 ```
-The query will be stopped and the response will contain the results computed so far, in the same format as the `get` API.
+The query will be stopped and the response will contain the results computed so far. The response format is the same as the `get` API.
 
 ```console-result
 {
