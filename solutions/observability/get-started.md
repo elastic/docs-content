@@ -121,14 +121,14 @@ Refer to [LLM observability](/solutions/observability/applications/llm-observabi
 
 ::::::{step} Collect application traces, metrics, and logs
 
-Bring traces, logs, and metrics into [Elastic APM](/solutions/observability/apm/index.md) to help you troubleshoot and optimize your applications. You can collect this data using OpenTelemetry or APM Server.
+Bring traces, logs, and metrics into Elastic APM to help you troubleshoot and optimize your applications. You can collect this data using OpenTelemetry or APM Server.
 
 :::::{dropdown} Steps for collecting application traces, metrics, and logs
 
 ::::{tab-set}
 :::{tab-item} OpenTelemetry
 
-The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) facilitate the collection of traces, metrics, and logs in OpenTelemetry format into [Elastic APM](/solutions/observability/apm/index.md).
+The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) facilitate the collection of traces, metrics, and logs in OpenTelemetry format into Elastic APM.
 
 1. Select **Add data** from the main menu and then select **Application**.
 2. Select **OpenTelemetry**.
@@ -158,7 +158,7 @@ Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to coll
 4. Fill out the details.
 5. (Optional) Add a [Playwright](https://playwright.dev/) script.
 6. Test and create your monitor.
-::::
+:::::
 ::::::
 
 ::::::{step} Explore your logs, metrics, and traces

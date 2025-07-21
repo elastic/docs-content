@@ -20,7 +20,7 @@ products:
 New or updated versions of the {{stack}} must be prepared to work with {{ece}} and are provided as packs that you can download.
 
 ::::{important}
-{{es}} 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on {{ece}} with ILM rather than index curation. Check [migrate to index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md) for existing clusters, and [configure index management](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html) for new clusters.
+{{es}} 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on {{ece}} with ILM rather than index curation. Check [migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md) for existing clusters, and [configure index management](/manage-data/lifecycle/index-lifecycle-management.md) for new clusters.
 ::::
 
 
@@ -294,13 +294,13 @@ To obtain information about available {{stack}} versions through the Cloud UI:
 To obtain information about available {{stack}} versions through the command line:
 
 ```sh
-curl -X GET -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/stack/versions
+curl -X GET -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/stack/versions
 ```
 
 For example (output abridged for brevity):
 
 ```
-curl -X GET -u admin:4Z52y8Gq7PrxMDy47ipJPSh4ozBMynOGa9HWxcy2D3j https://10.56.12.153:12443/api/v1/stack/versions
+curl -X GET -u admin:<cluster-id> https://<host-ip>:12443/api/v1/stack/versions
 {
   "stacks": [
     {
@@ -362,7 +362,7 @@ curl -X GET -u admin:4Z52y8Gq7PrxMDy47ipJPSh4ozBMynOGa9HWxcy2D3j https://10.56.1
   ]
 }
 ```
-You can also query for a specific version with a URI such as `https://COORDINATOR_HOST:12443/api/v1/stack/versions/5.3.2`, for example.
+You can also query for a specific version with a URI such as `https://$COORDINATOR_HOST:12443/api/v1/stack/versions/5.3.2`, for example.
 
 
 ## Add {{stack}} packs [ece-manage-elastic-stack-add]
@@ -409,7 +409,7 @@ To add a new {{stack}} pack through the RESTful API from the command line:
 2. Add the {{stack}} pack with the following API call:
 
     ```sh
-    curl -X POST -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/stack/versions \
+    curl -X POST -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/stack/versions \
         -H 'content-type: application/zip' \
         --data-binary "@PATH/STACK_PACK_FILE" <1>
     ```
@@ -420,7 +420,7 @@ To add a new {{stack}} pack through the RESTful API from the command line:
     For example:
 
     ```sh
-    curl -X POST -u admin:pGX5DwKzVAAIeCIpTwwAkCuJDu0ASdFP33UmYpfogfF https://10.56.12.153:12443/api/v1/stack/versions \
+    curl -X POST -u admin:pGX5DwKzVAAIeCIpTwwAkCuJDu0ASdFP33UmYpfogfF <host-url>:12443/api/v1/stack/versions \
         -H 'content-type: application/zip' \
         --data-binary "@/Users/iuriitceretian/Documents/stacks/5.4.0.zip"
     ```
@@ -451,7 +451,7 @@ To update {{stack}} packs through the RESTful API from the command line:
 2. Update the {{stack}} pack with the following API call:
 
     ```sh
-    curl -X PUT -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/stack/versions/VERSION \ <1>
+    curl -X PUT -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/stack/versions/VERSION \ <1>
         -H 'content-type: application/zip' \
         --data-binary "@PATH/STACK_PACK_FILE" <2>
     ```
@@ -463,7 +463,7 @@ To update {{stack}} packs through the RESTful API from the command line:
     For example:
 
     ```sh
-    curl -X PUT -u admin:pGX5DwKzVAAIeCIpTwAAkCuJDu0ASdFP33UmYpfogfF https://10.58.12.153:12443/api/v1/stack/versions/6.4.0 \
+    curl -X PUT -u admin:pGX5DwKzVAAIeCIpTwAAkCuJDu0ASdFP33UmYpfogfF https://$COORDINATOR_HOST:12443/api/v1/stack/versions/6.4.0 \
         -H 'content-type: application/zip' \
         --data-binary "@/Users/johnsmith/Documents/stacks/6.4.0.zip"
     ```
