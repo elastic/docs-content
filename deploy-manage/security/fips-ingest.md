@@ -4,8 +4,8 @@ applies_to:
 navigation_title: 
 products:
   - id: apm
-  - id: beats
   - id: elastic-agent
+  - id: beats
   - id: fleet
 applies_to:
   stack: preview 9.1

@@ -33,15 +33,15 @@ Here is a high-level overview of the required configuration:
 
 * Use an externally installed Java installation. The JVM bundled with {{es}} is not configured for FIPS 140-2.
 * Install a FIPS certified security provider .jar file(s) in {{es}}'s `lib` directory.
-* Configure Java to use a FIPS certified security provider ([see below](/deploy-manage/security/fips-140-2.md#java-security-provider)).
-* Configure {{es}}'s security manager to allow use of the FIPS certified provider ([see below](/deploy-manage/security/fips-140-2.md#java-security-manager)).
-* Ensure the keystore and truststore are configured correctly ([see below](/deploy-manage/security/fips-140-2.md#keystore-fips-password)).
-* Ensure the TLS settings are configured correctly ([see below](/deploy-manage/security/fips-140-2.md#fips-tls)).
-* Ensure the password hashing settings are configured correctly ([see below](/deploy-manage/security/fips-140-2.md#fips-stored-password-hashing)).
-* Ensure the cached password hashing settings are configured correctly ([see below](/deploy-manage/security/fips-140-2.md#fips-cached-password-hashing)).
-* Configure `elasticsearch.yml` to use FIPS 140-2 mode, see ([below](/deploy-manage/security/fips-140-2.md#configuring-es-yml)).
-* Verify the security provider is installed and configured correctly ([see below](/deploy-manage/security/fips-140-2.md#verify-security-provider)).
-* Review the upgrade considerations ([see below](/deploy-manage/security/fips-140-2.md#fips-upgrade-considerations)) and limitations ([see below](/deploy-manage/security/fips-140-2.md#fips-limitations)).
+* Configure Java to use a FIPS certified security provider ([see below](#java-security-provider)).
+* Configure {{es}}'s security manager to allow use of the FIPS certified provider ([see below](#java-security-manager)).
+* Ensure the keystore and truststore are configured correctly ([see below](#keystore-fips-password)).
+* Ensure the TLS settings are configured correctly ([see below](#fips-tls)).
+* Ensure the password hashing settings are configured correctly ([see below](#fips-stored-password-hashing)).
+* Ensure the cached password hashing settings are configured correctly ([see below](#fips-cached-password-hashing)).
+* Configure `elasticsearch.yml` to use FIPS 140-2 mode, see ([below](#configuring-es-yml)).
+* Verify the security provider is installed and configured correctly ([see below](#verify-security-provider)).
+* Review the upgrade considerations ([see below](#fips-upgrade-considerations)) and limitations ([see below](#fips-limitations)).
 
 
 ### Java security provider [java-security-provider]
@@ -81,7 +81,7 @@ Keystores can be used in a number of [General TLS settings](elasticsearch://refe
 
 FIPS 140-2 compliance dictates that the length of the public keys used for TLS must correspond to the strength of the symmetric key algorithm in use in TLS. Depending on the value of `ssl.cipher_suites` that you select to use, the TLS keys must have corresponding length according to the following table:
 
-$$$comparable-key-strength$$$
+#### Comparable key strength [comparable-key-strength]
 
 | Symmetric Key Algorithm | RSA key Length | ECC key length |
 | --- | --- | --- |
@@ -90,10 +90,9 @@ $$$comparable-key-strength$$$
 | `AES-256` | 15630 | 512+ |
 
 
-### Stored password hashing [_stored_password_hashing]
+### Stored password hashing [fips-stored-password-hashing]
 
-$$$fips-stored-password-hashing$$$
-While {{es}} offers a number of algorithms for securely hashing credentials on disk, only the `PBKDF2` based family of algorithms is compliant with FIPS 140-2 for stored password hashing. However, since `PBKDF2` is essentially a key derivation function, your JVM security provider may enforce a [112-bit key strength requirement](/deploy-manage/security/fips-140-2.md#keystore-fips-password). Although FIPS 140-2 does not mandate user password standards, this requirement may affect password hashing in {{es}}. To comply with this requirement, while allowing you to use passwords that satisfy your security policy, {{es}} offers [pbkdf2_stretch](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings) which is the suggested hashing algorithm when running {{es}} in FIPS 140-2 environments. `pbkdf2_stretch` performs a single round of SHA-512 on the user password before passing it to the `PBKDF2` implementation.
+While {{es}} offers a number of algorithms for securely hashing credentials on disk, only the `PBKDF2` based family of algorithms is compliant with FIPS 140-2 for stored password hashing. However, since `PBKDF2` is essentially a key derivation function, your JVM security provider may enforce a [112-bit key strength requirement](#keystore-fips-password). Although FIPS 140-2 does not mandate user password standards, this requirement may affect password hashing in {{es}}. To comply with this requirement, while allowing you to use passwords that satisfy your security policy, {{es}} offers [pbkdf2_stretch](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings) which is the suggested hashing algorithm when running {{es}} in FIPS 140-2 environments. `pbkdf2_stretch` performs a single round of SHA-512 on the user password before passing it to the `PBKDF2` implementation.
 
 ::::{note}
 You can still use one of the plain `pbkdf2` options instead of `pbkdf2_stretch` if you have external policies and tools that can ensure all user passwords for the reserved, native, and file realms are longer than 14 bytes.
@@ -105,9 +104,8 @@ You must set the `xpack.security.authc.password_hashing.algorithm` setting to on
 Password hashing configuration changes are not retroactive so the stored hashed credentials of existing users of the reserved, native, and file realms are not updated on disk. To ensure FIPS 140-2 compliance, recreate users or change their password using the [elasticsearch-user](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) CLI tool for the file realm and the [create users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) and [change password](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) APIs for the native and reserved realms. Other types of realms are not affected and do not require any changes.
 
 
-### Cached password hashing [_cached_password_hashing]
+### Cached password hashing [fips-cached-password-hashing]
 
-$$$fips-cached-password-hashing$$$
 `ssha256` (salted `sha256`) is recommended for cache hashing. Though `PBKDF2` is compliant with FIPS-140-2, it is — by design — slow, and thus not generally suitable as a cache hashing algorithm. Cached credentials are never stored on disk, and salted `sha256` provides an adequate level of security for in-memory credential hashing, without imposing prohibitive performance overhead. You *may* use `PBKDF2`, however you should carefully assess performance impact first. Depending on your deployment, the overhead of `PBKDF2` could undo most of the performance gain of using a cache.
 
 Either set all `cache.hash_algo` settings to `ssha256` or leave them undefined, since `ssha256` is the default value for all `cache.hash_algo` settings. See [User cache and password hash algorithms](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
@@ -119,9 +117,9 @@ The user cache will be emptied upon node restart, so any existing hashes using n
 
 * Set `xpack.security.fips_mode.enabled` to `true` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). This setting is used to ensure to configure some internal configuration to be FIPS 140-2 compliant and provides some additional verification.
 * Set `xpack.security.autoconfiguration.enabled` to `false`. This will disable the automatic configuration of the security settings. Users must ensure that the security settings are configured correctly for FIPS-140-2 compliance. This is only applicable for new installations.
-* Set `xpack.security.authc.password_hashing.algorithm` appropriately see [above](/deploy-manage/security/fips-140-2.md#fips-stored-password-hashing).
+* Set `xpack.security.authc.password_hashing.algorithm` appropriately see [above](#fips-stored-password-hashing).
 * Other relevant security settings. For example, TLS for the transport and HTTP interfaces. (not explicitly covered here or in the example below)
-* Optional: Set `xpack.security.fips_mode.required_providers` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) to ensure the required security providers (8.13+). see [below](/deploy-manage/security/fips-140-2.md#verify-security-provider).
+* Optional: Set `xpack.security.fips_mode.required_providers` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) to ensure the required security providers (8.13+). see [below](#verify-security-provider).
 
 ```yaml
 xpack.security.fips_mode.enabled: true
@@ -153,7 +151,7 @@ Some encryption algorithms may no longer be available by default in updated FIPS
 
 If you plan to upgrade your existing cluster to a version that can be run in a FIPS 140-2 configured JVM, we recommend to first perform a rolling upgrade to the new version in your existing JVM and perform all necessary configuration changes in preparation for running in FIPS 140-2 mode. You can then perform a rolling restart of the nodes, starting each node in a FIPS 140-2 JVM. During the restart, {{es}}:
 
-* Upgrades [secure settings](/deploy-manage/security/secure-settings.md) to the latest, compliant format. A FIPS 140-2 JVM cannot load previous format versions. If your keystore is not password-protected, you must manually set a password. See [{{es}} Keystore](/deploy-manage/security/fips-140-2.md#keystore-fips-password).
+* Upgrades [secure settings](/deploy-manage/security/secure-settings.md) to the latest, compliant format. A FIPS 140-2 JVM cannot load previous format versions. If your keystore is not password-protected, you must manually set a password. See [{{es}} Keystore](#keystore-fips-password).
 * Upgrades self-generated trial licenses to the latest FIPS 140-2 compliant format.
 
 If your [subscription](https://www.elastic.co/subscriptions) already supports FIPS 140-2 mode, you can elect to perform a rolling upgrade while at the same time running each upgraded node in a FIPS 140-2 JVM. In this case, you would need to also manually regenerate your `elasticsearch.keystore` and migrate all secure settings to it, in addition to the necessary configuration changes outlined below, before starting each node.
