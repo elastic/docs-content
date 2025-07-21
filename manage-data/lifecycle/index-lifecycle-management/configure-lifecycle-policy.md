@@ -173,7 +173,7 @@ To add an index template to a cluster and apply the lifecycle policy to indices 
 
 1. Optional: On the **Aliases** page, specify an [alias](/manage-data/data-store/aliases.md) for each created index. This isn't required when configuring ILM, which instead uses the `index.lifecycle.rollover_alias` setting to acceess rolling indices.
 
-1. On the **Review** page, confirm your selections. You can check your selected options as well as both the format of the index template that will be created and the associated API request.
+1. On the **Review** page, confirm your selections. You can check your selected options, as well as both the format of the index template that will be created and the associated API request.
 
 The newly created index template will be used for all new indices whose name matches the specified pattern, and for each of these the specified ILM policy will be applied.
 :::
