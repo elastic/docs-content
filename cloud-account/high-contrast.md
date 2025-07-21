@@ -3,7 +3,6 @@ description: Use high-contrast mode in Kibana.
 applies_to:
   stack: beta 9.1
   serverless: beta
-  deployment:
 products:
   - id: kibana
 ---
