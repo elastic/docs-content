@@ -10,7 +10,7 @@ products:
 
 # ES|QL [esql-visualizations]
 
-You can add ES|QL visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
+You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard. 
 
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
@@ -60,3 +60,30 @@ When editing an {{esql}} visualization, you can customize the appearance of the 
    ![Appearance customization options for ESQL charts](/explore-analyze/images/esql-visualization-customization-options.png)
 
 3. Return to the previous menu, then **Apply and close** the configuration to save your changes.
+
+## Create an alert from your {{esql}} visualization
+
+```{applies_to}
+stack: ga 9.1
+serverless: 
+   elasticsearch: ga
+   observability: ga
+   security: unavailable
+```
+
+Once you've created an {{esql}} panel, you can create an {{es}} threshold rule directly from the visualization panel, based on the data it displays. When you do this, the rule query is automatically generated and either describes the data and sets a specific threshold, or describes the data without setting a specific threshold.
+
+::::{note}
+{{elastic-sec}} rule types are not supported.
+::::
+To create a rule with the threshold pre-specified:
+
+- Right-click a data point in the visualization and click **Add alert rule**. This opens the **Create rule** flyout. The generated query will define a threshold that corresponds to the data point you selected.
+- [Configure](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) your {{es}} rule. 
+
+To create a rule without the threshold pre-specified: 
+
+- Open the **More actions** (three dots) menu in the upper right of the panel and select **Add alert rule**. This opens the **Create rule** flyout. The generated query will define a threshold that corresponds to the data point you selected. 
+- [Configure](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) your {{es}} rule. 
+
+
