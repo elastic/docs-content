@@ -20,6 +20,8 @@ There are two types of template:
 
 * A [**component template**](#component-templates) is a reusable building block used to construct index templates.
 
+Together, index templates and their referenced component templates form what is known as *composable templates*.
+
 The following conditions apply to using templates:
 
 * Composable index templates take precedence over legacy templates. If no composable template matches a given index, a legacy template may still match and be applied.
