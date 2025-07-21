@@ -89,7 +89,7 @@ PUT _ilm/policy/my_policy
 ```
 
 1. Roll over the index when one or more of its shards reach 25GB in size
-2. Delete the index 30 days after rollover
+2. Delete the index 30 days after rollover.
 
 
 The specified policy will be replaced and the policy version is incremented.
