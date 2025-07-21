@@ -224,7 +224,7 @@ When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}}
 To create the initial managed index:
 
 1. Go to **Stack Management > Index Management**. In the **Indices** tab, select **Create index**.
-1. Specify a name for the index that matches the index template pattern and that ends with a number. For example, `test-00001`.
+1. Specify a name for the index that matches the index template pattern and that ends with a number. For example, `test-000001`.
 1. Leave the **Index mode** set to the default **Standard**.
 
 Create an alias for the index:
