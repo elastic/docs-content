@@ -108,7 +108,7 @@ Note that you can also configure mutual TLS for {{fleet-server}} and {{agent}} [
   stack: ga 9.1
 ```
 
-You can configure TLS and mutual TLS (mTLS) settings for {{fleet-server}} hosts using the Fleet UI instead of CLI flags. This approach simplifies certificate configuration.
+You can configure TLS and mutual TLS (mTLS) settings for {{fleet-server}} hosts using the {{fleet}} UI instead of CLI flags. This approach simplifies certificate configuration.
 
 To access these settings:
 
@@ -130,7 +130,7 @@ The following table shows the available UI fields and their CLI equivalents:
 | {{es}} Certificate Authorities (optional) | `--fleet-server-es-ca`               | Path to certificate authority for {{fleet-server}} to use to communicate with {{es}}. |
 | Enable client authentication                     | `--fleet-server-client-auth=required`| Requires {{agent}} to present a valid client certificate when connecting to {{fleet-server}}. |
 
-The Fleet UI does not currently allow editing the {{fleet-server}}’s own exposed TLS certificate (`--fleet-server-cert`, `--fleet-server-cert-key`). These are only configurable at the time of {{fleet-server}}'s installation, using the CLI.
+The {{fleet}} UI does not currently allow editing the {{fleet-server}}’s own exposed TLS certificate (`--fleet-server-cert`, `--fleet-server-cert-key`). These are only configurable at the time of {{fleet-server}}'s installation, using the CLI.
 
 :::{warning}
 Editing SSL or proxy settings for an existing {{fleet-server}} may cause agents to lose connectivity. After changing client certificate settings, you need to re-enroll the affected agents.
