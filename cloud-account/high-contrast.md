@@ -19,9 +19,9 @@ You can change the interface contrast mode of Kibana to improve visibility and r
 
 3. Choose an interface contrast mode:
 
-    - **System**: Synchronizes Kibana's color mode with your system settings.
+    - **System**: Synchronizes Kibana's contrast mode with your system settings.
     - **Normal**: Normal contrast mode.
     - **High**: The high-contrast color mode of Kibana.
 
 4. Select **Save changes**.
-5. Refresh the page to apply the selected color mode.
+5. Refresh the page to apply the selected contrast mode.
