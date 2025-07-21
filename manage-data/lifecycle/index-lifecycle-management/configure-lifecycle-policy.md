@@ -209,7 +209,7 @@ PUT _index_template/my_template
 
 ## Create an initial managed index [create-initial-index]
 
-When you set up policies for your own rolling indices, if you are not using the recommended [data streams](../../data-store/data-streams.md), you need to manually create the first index managed by a policy and designate it as the write index.
+When you set up policies for your own rolling indices and are not using the recommended [data streams](../../data-store/data-streams.md), you must manually create the first index managed by a policy and designate it as the write index.
 
 The name of the index must match the pattern defined in the index template and end with a number. This number is incremented to generate the name of indices created by the rollover action.
 
