@@ -390,7 +390,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 5. Restore indices from the searchable snapshots.
 
     1. Follow the steps to [specify the data tier based allocation inclusion rules](/manage-data/lifecycle/data-tiers.md#update-data-tier-allocation-rules).
-    2. Remove the associated ILM policy (set it to `null`). If you want to apply a different ILM policy, follow the steps to [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#switch-lifecycle-policies).
+    2. Remove the associated ILM policy (set it to `null`). If you want to apply a different ILM policy, follow the steps to [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
     3. If needed, specify the alias for rollover, otherwise set it to `null`.
     4. Optionally, specify the desired number of replica shards.
 
