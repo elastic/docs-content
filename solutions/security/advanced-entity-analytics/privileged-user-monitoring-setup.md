@@ -54,7 +54,7 @@ All user names, specified in the `user.name` field in your selected indices, wil
 * You can only import one file as a data source. Any users previously imported through a text file are overwritten.
 :::
 
-After setting up your privileged users, you can start [monitoring their activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md) and related insights on the **Privileged user monitoring** page.
+After setting up your privileged users, you can start [monitoring their activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md) and related insights on the **Privileged user monitoring** dashboard.
 
 You can update the selected data sources at any time by selecting **Manage data sources**.
 
