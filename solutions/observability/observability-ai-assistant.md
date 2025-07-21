@@ -102,10 +102,10 @@ The AI Assistant connects to one of these supported LLM providers:
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
-The AI Assistant uses one of the following language models to recall data from its internal knowledge base index to generate retrieval augmented generation (RAG) responses:
+The AI Assistant uses one of the following text embedding models to run  semantic search against the internal knowledge base index. The top results are passed to the LLM as context (retrieval‑augmented generation), producing more accurate and grounded responses:
 
-* [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): Elastic’s semantic search engine, recommended for English-only use cases.
-* [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): {applies_to}`stack: ga 9.1` A natural language processing model that enables you to perform multilingual semantic search by using dense vector representations.
+* [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md): Recommended for English-only use cases.
+* [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md): {applies_to}`stack: ga 9.1` Recommended for non-English use cases.
 
 Adding data such as Runbooks, GitHub issues, internal documentation, and Slack messages to the knowledge base gives the AI Assistant context to provide more specific assistance.
 
