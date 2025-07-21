@@ -24,7 +24,7 @@ Together, index templates and their referenced component templates form what is 
 
 The following conditions apply to using templates:
 
-* Composable index templates take precedence over legacy templates. If no composable template matches a given index, a legacy template may still match and be applied.
+* Composable index templates take precedence over any [legacy templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-templates-v1.html), which were deprecated in {{es}} 7.8. If no composable template matches a given index, a legacy template may still match and be applied.
 * If an index is created with explicit settings and also matches an index template, the settings from the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request take precedence over settings specified in the index template and its component templates.
 * Settings specified in the index template itself take precedence over the settings in its component templates.
 * If a new data stream or index matches more than one index template, the index template with the highest priority is used.
