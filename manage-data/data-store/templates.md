@@ -12,7 +12,7 @@ products:
 
 Templates are the mechanism by which {{es}} applies settings, mappings, and other configurations when creating indices or data streams.
 
-You configure templates prior to creating indices. This way, when each index is created, either manually or through the indexing of a document, the template settings are used as a basis for creating the index. When used with a [data stream](/manage-data/data-store/data-streams.md), a template configures the stream's backing indices as they are created.
+You configure templates prior to creating indices or data streams. When an index is created, either manually or by indexing a document, the matching template determines the settings, mappings, and other configurations to apply. When used with a [data stream](/manage-data/data-store/data-streams.md), a template also defines how each backing index is configured as it is created.
 
 There are two types of template:
 
