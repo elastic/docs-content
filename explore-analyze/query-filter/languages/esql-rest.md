@@ -315,7 +315,7 @@ The query will be stopped and the response will contain the results computed so 
 }
 ```
 This API will also return the result of the query if it has finished before the stop request was made, within the `keep_alive` period.
-You can use the `is_partial` field to determine if the results are complete or not. If `is_partial` is `true`, the results may be incomplete.
+The `is_partial` field indicates result completeness. A value of `true` means the results are potentially incomplete.
 
 Use the [{{esql}} async query delete API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-delete) to delete an async query before the `keep_alive` period ends. If the query is still running, {{es}} cancels it.
 
