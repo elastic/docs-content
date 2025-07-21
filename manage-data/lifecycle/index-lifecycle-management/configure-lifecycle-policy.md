@@ -250,7 +250,7 @@ Now you can start indexing data to the rollover alias specified in the lifecycle
 :sync: api
 Use the [Create an index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) to create the initial managed index.
 
-The following request creates the `test-00001` index. Because it matches the index pattern specified in `my_template`, {{es}} automatically applies the settings from that template.
+The following request creates the `test-000001` index. Because it matches the index pattern specified in `my_template`, {{es}} automatically applies the settings from that template.
 
 ```console
 PUT test-000001
