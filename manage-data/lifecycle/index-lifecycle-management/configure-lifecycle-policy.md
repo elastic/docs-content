@@ -12,7 +12,7 @@ products:
 
 An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy defines how your indices are managed over time, automating when and how they transition as they age.
 
-There a few things to note about how an {{ilm-init}} policy works:
+**Consider these aspects when configuring an {{ilm-init}} policy:**
 
 * For {{ilm-init}} to manage an index, you need to specify a valid policy in the `index.lifecycle.name` index setting.
 
