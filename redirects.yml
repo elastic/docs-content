@@ -220,5 +220,5 @@ redirects:
   'explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-dfa-analytics.md': 'explore-analyze/machine-learning/data-frame-analytics.md'
 
   # Related to https://github.com/elastic/docs-content/pull/2136
-  TBD 
-
+  'deploy-manage/security/fips-140-2.md#fips-elasticsearch': 'deploy-manage/security/fips-es.md'
+  'deploy-manage/security/fips-140-2.md#fips-kibana': 'deploy-manage/security/fips-es.md'
