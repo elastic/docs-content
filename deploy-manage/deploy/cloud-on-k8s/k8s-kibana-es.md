@@ -65,7 +65,7 @@ spec:
   count: 1
   config:
     elasticsearch.hosts:
-      - https://elasticsearch.example.com:9200
+      - <ELASTICSEARCH_HOST_URL>:9200
     elasticsearch.username: elastic
   secureSettings:
     - secretName: kibana-elasticsearch-credentials
@@ -83,7 +83,7 @@ spec:
   count: 1
   config:
     elasticsearch.hosts:
-      - https://elasticsearch-sample-es-http:9200
+      - <ELASTICSEARCH_HOST_URL>-es-http:9200
     elasticsearch.username: elastic
     elasticsearch.ssl.certificateAuthorities: /etc/certs/ca.crt
   secureSettings:
