@@ -30,6 +30,9 @@ The following conditions apply to using templates:
 * If a new data stream or index matches more than one index template, the index template with the highest priority is used.
 * When you create an index template, be careful to avoid [naming pattern collisions](#avoid-index-pattern-collisions) with built-in {{es}} index templates.
 
+:::{tip}
+For a detailed exploration and examples of setting up composable templates, refer to the Elastic blog [Index templating in Elasticsearch: How to use composable templates](https://www.elastic.co/search-labs/blog/index-composable-templates).
+:::
 
 ## Index templates [index-templates]
 
