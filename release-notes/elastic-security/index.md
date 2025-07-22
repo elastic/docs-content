@@ -40,7 +40,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Strips `originId` from connectors before rule import to ensure correct ID regeneration and prevent errors when migrating connector references on rules [#223454]({{kib-pull}}223454).
 * Fixes an issue that prevented the AI Assistant Knowledge Base settings UI from displaying [#225033]({{kib-pull}}225033).
 * Fixes a bug in {{elastic-defend}} where Linux network events would fail to load if IPv6 is not supported by the system.
-* Fixes an issue in {{elastic-defend}} that may result in bugchecks (BSODs) on Windows systems with a very high volume of network connections. This issue has only been observed on Windows Server.
+* Fixes an issue in {{elastic-defend}} that may result in bugchecks (BSODs) on Windows systems with a very high volume of network connections.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
 
 ## 9.0.3 [elastic-security-9.0.3-release-notes]
