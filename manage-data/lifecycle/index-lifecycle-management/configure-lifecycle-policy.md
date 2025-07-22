@@ -62,7 +62,7 @@ To add an ILM policy to an {{es}} cluster:
     Disable **Use recommended defaults** to adjust these values or to roll over based on the size of the primary shard, the number of documents in the primary shard, or the total number of documents in the index.
 
     ::::{important}
-The rollover action implicitly rolls over a data stream or alias if one or more shards contain 200,000,000 or more documents. Typically, a shard will reach 50GB before it reaches 200M documents, however, this isn’t the case for space efficient data sets. This built-in limit exists to avoid Search performance loss if a shard contains more than 200M documents.
+    The rollover action implicitly rolls over a data stream or alias if one or more shards contain 200,000,000 or more documents. Typically, a shard will reach 50GB before it reaches 200M documents, however, this isn’t the case for space efficient data sets. This built-in limit exists to avoid Search performance loss if a shard contains more than 200M documents.
     ::::
 
 1. By default, only the hot index lifecycle phase is enabled. Enable each additional lifecycle phase that you'd like, and for each choose any [index lifecycle actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) to perform on indices when they enter that phase.
