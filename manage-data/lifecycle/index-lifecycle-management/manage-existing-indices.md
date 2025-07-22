@@ -110,7 +110,7 @@ To reindex into the managed index:
 
 Although data streams are specifically designed for time series data, you can modify your static data (such as user queries or indexed logs of queries), and then transition from periodic indices to a data stream to get the benefits of time-based data management.
 
-1. Create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://docs/reference/processors/set-processor.md) to add a `@timestamp` field:
+1. Create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://reference/enrich-processor/set-processor.md) to add a `@timestamp` field:
 
     ```console
     PUT _ingest/pipeline/ingest_time_1
