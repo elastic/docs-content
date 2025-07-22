@@ -99,10 +99,10 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 | 1. [Create a VPC endpoint using {{ecloud}} service name.](#ec-aws-vpc-dns) |  |
 | 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
 |  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VPC endpoint ID. |
-|  | 4. **Optional**: [Associate the private connection policy with deployments](#ec-associate-traffic-filter-private-link-rule-set). |
+|  | 4. **Optional**: [Associate the private connection policy with deployments](#associate-private-connection-policy). |
 |  | 5. [Interact with your deployments over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
-After you create your private connection policy, you can [edit](#ec-edit-traffic-filter-private-link-rule-set), [disconnect](#remove-filter-deployment), or [delete](#ec-delete-traffic-filter-private-link-rule-set) it.
+After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 :::{admonition} Private connection policies are optional
 Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established.
@@ -226,8 +226,8 @@ Creating a private connection policy and associating it with your deployments al
 Follow these high-level steps to add a private connection policy that can be associated with your deployments.
 
 1. Optional: [Find your VPC endpoint ID](#ec-find-your-endpoint).
-2. [Create a private connection policy using the VPC endpoint](#ec-create-traffic-filter-private-link-rule-set).
-3. [Associate the VPC endpoint with your deployment](#ec-associate-traffic-filter-private-link-rule-set).
+2. [Create a private connection policy using the VPC endpoint](#create-private-connection-policy).
+3. [Associate the VPC endpoint with your deployment](#associate-private-connection-policy).
 
 ### Optional: Find your VPC endpoint ID [ec-find-your-endpoint]
 
@@ -240,7 +240,7 @@ You can find your VPC endpoint ID in the AWS console:
 :screenshot:
 :::
 
-### Create a new private connection policy [ec-create-traffic-filter-private-link-rule-set]
+### Create a new private connection policy [create-private-connection-policy]
 
 Create a new private connection policy.
 
@@ -267,11 +267,11 @@ Create a new private connection policy.
 13. Optional: Under **Apply to resources**, associate the new private connection policy with one or more deployments. If you specified a VPC filter, then after you associate the filter with a deployment, it starts filtering traffic.
 14. To automatically attach this private connection policy to new deployments, select **Apply by default**.
 15.  Click **Create**.
-16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md), so that no other organization is able to use it in a private connection policy.
+16. (Optional) You can [claim your VPC endpoint ID](/deploy-manage/security/claim-private-connection-api.md), so that no other organization is able to use it in a private connection policy.
 
-The next step is to [associate the policy](#ec-associate-traffic-filter-private-link-rule-set) with your deployment.
+The next step is to [associate the policy](#associate-private-connection-policy) with your deployment.
 
-### Optional: Associate a private connection policy with a deployment [ec-associate-traffic-filter-private-link-rule-set]
+### Optional: Associate a private connection policy with a deployment [associate-private-connection-policy]
 
 You can associate a private connection policy with your deployment from the policy's settings, or from your deployment's settings. 
 
@@ -342,7 +342,7 @@ To access the deployment:
 
 After you create your private connection policy, you can edit it, remove it from your deployment, or delete it.
 
-### Edit a private connection policy [ec-edit-traffic-filter-private-link-rule-set]
+### Edit a private connection policy [edit-private-connection-policy]
 
 You can edit a policy's name, description, VPC endpoint ID, and more.
 
@@ -355,7 +355,7 @@ You can edit a policy's name, description, VPC endpoint ID, and more.
 You can also edit private connection policies from your deployment's **Security** page or your project's **Network security** page.
 :::
 
-### Remove a private connection policy from your deployment [remove-filter-deployment]
+### Remove a private connection policy from your deployment [remove-private-connection-policy]
 
 If you want to a specific policy from a deployment, or delete the policy, then you need to disconnect it from any associated deployments first. You can do this from the policy's settings, or from your deployment's settings. To remove an association through the UI:
 
@@ -376,7 +376,7 @@ If you want to a specific policy from a deployment, or delete the policy, then y
 7. Click **Update** to save your changes.
 
 
-### Delete a private connection policy [ec-delete-traffic-filter-private-link-rule-set]
+### Delete a private connection policy [delete-private-connection-policy]
 
 If you need to remove a policy, you must first remove any associations with deployments.
 

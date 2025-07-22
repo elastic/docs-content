@@ -19,7 +19,7 @@ Follow the steps described here to set up ingress or inbound IP filters through 
 
 To learn how IP filtering rules work together, refer to [](ece-filter-rules.md).
 
-To learn how to manage IP filters using the Traffic Filtering API, refer to [](/deploy-manage/security/ec-traffic-filtering-through-the-api.md).
+To learn how to manage IP filters using the Traffic Filtering API, refer to [](/deploy-manage/security/network-security-api.md).
 
 :::{note}
 To learn how to create IP filters for {{ech}} deployments or {{serverless-full}} projects, refer to [](ip-filtering-cloud.md).
