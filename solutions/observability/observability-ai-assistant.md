@@ -426,7 +426,7 @@ When all rules are disabled (the default), data is forwarded unchanged.
 
 ### How it works [obs-ai-anonymization-how]
 
-When anonymization is enabled, every message in the request (system prompt, message content, function call arguments/responses) is run through an *anonymization pipeline* before it leaves Kibana:
+When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-settings), every message in the request (system prompt, message content, function call arguments/responses) is run through an *anonymization pipeline* before it leaves Kibana:
 
 1. Each enabled **rule** scans its target text and replaces any match with a deterministic token such as  
    `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.  
@@ -476,9 +476,11 @@ Results for other languages or models may vary.
 ::::
 
 ### Limitations [obs-ai-anonymization-limitations]
-* **Performance (NER)** – Running a named entity recognition model can add latency depending on the request.  
+* **Performance (NER)** – Running a named entity recognition model can add latency depending on the request. To improve performance of the model, consider scaling up your ML nodes by adjusting deployment parameters: increase `number_of_allocations` for better throughput and `threads_per_allocation` for faster individual requests. For details, refer to the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment).
 * **Structured JSON** – The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax. 
 * **False negatives / positives** – No model or pattern is perfect. Model accuracy may vary depending on model and input.
+* **JSON malformation risk** – Both NER inference and regex rules can potentially create malformed JSON when anonymizing JSON data such as function responses. This can occur by replacing text across character boundaries, which may break JSON structure causing the whole request to fail. If this occurs, you may need to disable the problematic anonymization rule.
+
 
 ## Known issues [obs-ai-known-issues]
 
