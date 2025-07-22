@@ -461,7 +461,7 @@ Because the masking is deterministic, the model can still maintain logical consi
 }
 ```
 
-Rules are evaluated **top-to-bottom**; the first rule that captures a given entity wins. Rules can be configured in the [AI Assistant Settings](#obs-ai-settings) page.
+Rules are evaluated top-to-bottom with regex rules processed first, then NER rules; the first rule that captures a given entity wins. Rules can be configured in the [AI Assistant Settings](#obs-ai-settings) page.
 
 ### Requirements [obs-ai-anonymization-requirements]
 
