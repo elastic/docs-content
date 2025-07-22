@@ -27,6 +27,22 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.0.4 [elastic-security-9.0.4-release-notes]
+
+### Features and enhancements [elastic-security-9.0.4-features-enhancements]
+* Improves logging of fatal exceptions in {{elastic-defend}}.
+
+### Fixes [elastic-security-9.0.4-fixes]
+* Fixes differences between risk scoring preview and persisted risk scores [#226456]({{kib-pull}}226456).
+* Updates a placeholder and validation message in the **Related Integrations** section of the rule upgrade flyout [#225775]({{kib-pull}}225775).
+* Excludes {{ml}} rules from installation and upgrade checks for users with Basic or Essentials licenses [#224676]({{kib-pull}}224676).
+* Allows using days as a time unit in rule schedules, fixing an issue where durations normalized to days were incorrectly displayed as 0 seconds [#224083]({{kib-pull}}224083).
+* Strips `originId` from connectors before rule import to ensure correct ID regeneration and prevent errors when migrating connector references on rules [#223454]({{kib-pull}}223454).
+* Fixes an issue that prevented the AI Assistant Knowledge Base settings UI from displaying [#225033]({{kib-pull}}225033).
+* Fixes a bug in {{elastic-defend}} where Linux network events would fail to load if IPv6 is not supported by the system.
+* Fixes an issue in {{elastic-defend}} that may result in bugchecks (BSODs) on Windows systems with a very high volume of network connections.
+* Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
+
 ## 9.0.3 [elastic-security-9.0.3-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.3-features-enhancements]
