@@ -28,7 +28,7 @@ field('my_field').get(<default_value>)
 Alternatively use the shortcut of `$` to get a field.
 
 ```painless
-$('my_field', <default_value)
+$('my_field', <default_value>)
 ```
 
 This API fundamentally changes how you access documents in Painless. Previously, you had to access the `doc` map with the field name that you wanted to access:
