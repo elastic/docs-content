@@ -157,7 +157,7 @@ If you plan to upgrade your existing cluster to a version that can be run in a F
 If your [subscription](https://www.elastic.co/subscriptions) already supports FIPS 140-2 mode, you can elect to perform a rolling upgrade while at the same time running each upgraded node in a FIPS 140-2 JVM. In this case, you would need to also manually regenerate your `elasticsearch.keystore` and migrate all secure settings to it, in addition to the necessary configuration changes outlined below, before starting each node.
 
 
-# Limitations [fips-limitations]
+## Limitations [fips-limitations]
 
 Due to the limitations that FIPS 140-2 compliance enforces, a small number of features are not available while running in FIPS 140-2 mode. The list is as follows:
 
