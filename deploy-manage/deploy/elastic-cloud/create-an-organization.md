@@ -15,21 +15,6 @@ products:
 
 # Sign up and create an organization
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/336
-
-% Scope notes: merge
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-trial.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/general-sign-up-trial.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-existing-email.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$general-sign-up-trial-what-is-included-in-my-trial$$$
 
 To sign up:
 
@@ -41,7 +26,7 @@ To sign up:
 * An email address can’t be used for more than one {{ecloud}} account. To make the email address available for a new account, you can [remove it from your existing account](/cloud-account/update-your-email-address.md#sign-up-existing).
 :::
 
-When your first sign up, you create an organization and start with a trial license.
+When you first sign up, you create an organization and start with a trial license.
 
 This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization. For more details on how to manage your organization, refer to [](/deploy-manage/cloud-organization.md).
 
