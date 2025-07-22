@@ -274,6 +274,7 @@ toc:
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
+      - file: visualize/alert-panels.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
