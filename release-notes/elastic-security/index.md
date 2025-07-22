@@ -66,7 +66,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Expands CVE ID search to all search parameters, not just names [#221099]({{kib-pull}}221099).
 * Improves alert searching and filtering by including additional ECS data stream fields [#220447]({{kib-pull}}220447).
 * Updates default model IDs for Amazon Bedrock and OpenAI connectors [#220146]({{kib-pull}}220146).
-* Adds support for PKI (certificate-based) authentication for the OpenAI **Other** connector providers[#219984]({{kib-pull}}219984).
+* Adds support for PKI (certificate-based) authentication for the OpenAI **Other** connector providers [#219984]({{kib-pull}}219984).
 * Adds pinning and settings to the **Table** tab in the alert and event details flyouts [#218686]({{kib-pull}}218686).
 * Updates the data view selector in the event analyzer [#218183]({{kib-pull}}218183).
 * Updates the data view selector in the global header [#216685]({{kib-pull}}216685).
