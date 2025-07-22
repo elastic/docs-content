@@ -30,7 +30,8 @@ You can also send cases to these external systems by [configuring external conne
 :::
 
 ::::{note}
-From {{elastic-sec}} in the {{stack}}, you cannot access cases created in {{observability}} or Stack Management.
+* From {{elastic-sec}} in the {{stack}}, you cannot access cases created in {{observability}} or Stack Management.  
+* With the appropriate index access, you can [build visualizations](../../../explore-analyze/alerts-cases/cases/visualize-case-data.md) of {{observability}}, Stack Management, and {{elastic-sec}} case data to improve your visibility into case patterns and trends within your space.
 ::::
 
 

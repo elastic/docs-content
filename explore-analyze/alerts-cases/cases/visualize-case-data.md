@@ -10,7 +10,7 @@ products:
 
 Case data is stored in case analytics indices, which include data from case comments, attachments, and activity. You can query this information to build dashboards and metrics that improve your visibility into case patterns and trends.
 
-## About case analytics indices
+## About case analytics indices [about-case-analytics-indices]
 
 Case analytics indices and their aliases are automatically generated when Kibana starts up. Every five minutes, the indices are updated with new data from cases in your space. Historical data about cases is not stored; it gets overwritten whenever new case data is written to the indices. 
 
@@ -29,7 +29,7 @@ You can begin querying case analytics indices as soon as you have cases in your 
 To query the case analytics indices, your role must have at least `Read` and `view_index_metadata` access to the indices.
 ::::
 
-Search and filter case data in [Discover](../../discover.md) and [Lens](../../visualize/lens.md), then build visualizations for [dashboards](../../dashboards.md). To help you start visualizing your case data, here are some sample {{esql}} queries that you can run from the [{{esql}} editor](../../../explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-get-started) in Discover.
+Search and filter case data in [Discover](../../discover.md) and [Lens](../../visualize/lens.md), and build visualizations for [dashboards](../../dashboards.md). To help you start visualizing your case data, here are some sample {{esql}} queries that you can run from the [{{esql}} editor](../../../explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-get-started) in Discover.
 
 * Find the total number of cases that are currently open:
   ```console
