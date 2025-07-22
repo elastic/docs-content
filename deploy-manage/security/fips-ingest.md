@@ -85,3 +85,10 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
   - [MySQL Integration](integration-docs://reference/mysql.md)
   - [Microsoft SQL Server Integration](integration-docs://reference/microsoft_sqlserver.md)
   - [Oracle Integration](integration-docs://reference/oracle.md)
+
+
+## FIPS-compatible binaries [fips-binaries]
+
+- Where to get them
+- Use binaries or build your own
+
