@@ -15,8 +15,8 @@ products:
 By default, the deployments `CNAME` is set to `LOCAL_HOST_IP.ip.es.io`, where `LOCAL_HOST_IP` is the IP address of the first installed ECE host. This results in the following default endpoint URLs:
 
 ```sh
-http://CLUSTER_ID.LOCAL_HOST_IP.ip.es.io:9200
-https://CLUSTER_ID.LOCAL_HOST_IP.ip.es.io:9243
+http://<CLUSTER_ID.LOCAL_HOST_IP>.ip.es.io:9200
+https://<CLUSTER_ID.LOCAL_HOST_IP>.ip.es.io:9243
 ```
 
 ::::{important}

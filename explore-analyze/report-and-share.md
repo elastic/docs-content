@@ -82,32 +82,32 @@ In the following dashboard, the shareable container is highlighted:
 :screenshot:
 :::
 
-1. Open the saved Discover session, dashboard, visualization, or workpad you want to share.
-2. From the toolbar, click **Share**, then select the report option.
+1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
+2. Choose a file type for the report.
+
+    * {applies_to}`stack: ga 9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
+    * {applies_to}`stack: ga 9.1` From the toolbar, click the **Export** icon, then choose a file type. 
+
+    ::::{tip}
+
+    Tips for generating PDF reports:
 
     * If you are creating dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * {applies_to}`stack: ga 9.0` If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
+    
+    ::::
 
-      ::::{note}
-      When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-      ::::
+3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
-    * If you are creating workpad PDFs, select **Full page layout** to create PDFs without margins that surround the workpad.
+    ::::{note}
+    To generate the report from outside of {{kib}} or from {{watcher}}, use the POST URL, then submit an HTTP `POST` request using a script or {{watcher}}. In {{stack}} 9.1, you can schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more. 
+    ::::
 
-3. Generate the report by clicking **Export file**, **Generate CSV**, or **Generate PDF**, depending on the object you want to export.
-
-   ::::{note}
-   You can use the **Copy POST URL** option instead to generate the report from outside Kibana or from Watcher.
-   ::::
-
-4. A message appears, indicating that the report is in the export queue.
-
-You can then download it from that message, or go to the **Stack Management > Reporting** page to view and access all of your reports.
+Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management > Alerts and Insights > Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
 
 ::::{note}
 In self-managed and Cloud hosted deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 ::::
-
-
 
 ### CSV report limitations [csv-limitations]
 
