@@ -81,7 +81,7 @@ Refer to the tables in the [Model deployment resource matrix](#model-deployment-
 
 In {{serverless-full}}, Search projects are given access to more processing resources, while Security and Observability projects have lower limits. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
 
-On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in {{kib}} for Observability and Security projects.
+On {{serverless-short}}, adaptive allocations are automatically enabled for all project types.
 
 ## Model deployment resource matrix [model-deployment-resource-matrix]
 
@@ -152,16 +152,6 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 :::
 
-:::{tab-item} {{serverless-short}}
-
-| Level | Allocations | Threads | VCUs |
-| --- | --- | --- | --- |
-| Low | Exactly 2 | 1 | 16 |
-| Medium | Exactly 32 | 1 | 256 |
-| High | 512 for Search<br> No static allocations for Security and Observability<br> | 1 | 4096 for Search<br> No static allocations for Security and Observability<br> |
-
-:::
-
 ::::
 
 ### Search optimized
@@ -188,9 +178,9 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
-| Low | 0 to 1 dynamically | Always 2 | 0 to 16 dynamically |
-| Medium | 1 to 2 (if threads=16), dynamically | Maximum (for example, 16) | 8 to 256 dynamically |
-| High | 1 to 32 (if threads=16), dynamically<br> 1 to 128 for Security and Observability<br> | Maximum (for example, 16) | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
+| Low | 0 to 1 dynamically | 2 | 0 to 16 dynamically |
+| Medium | 0 to 2 dynamically for Search and Observatibility<br> 1 to 2 dynamically for Security | 4 | 0 to 256 dynamically for Search and Observatibility<br> 8 to 256 dynamically for Security |
+| High | 0 to 32 dynamically for Search and Observatibility<br> 1 to 128 dynamically for Security<br> | 8 | 0 to 4096 dynamically for Search<br> 0 to 1024 dynamically for Observability<br>8 to 1014 dynamically for Security |
 
 :::
 
@@ -209,16 +199,6 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 | High | Maximum available set in the Cloud console *, statically | maximum that the hardware allows (for example, 16) | Maximum available set in the Cloud console, statically |
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
-
-:::
-
-:::{tab-item} {{serverless-short}}
-
-| Level | Allocations | Threads | VCUs |
-| --- | --- | --- | --- |
-| Low | 1 statically | Always 2 | 16 |
-| Medium | 2 statically (if threads=16) | Maximum (for example, 16) | 256 |
-| High | 32 statically (if threads=16) for Search<br> No static allocations for Security and Observability<br> | Maximum (for example, 16) | 4096 for Search<br> No static allocations for Security and Observability<br> |
 
 :::
 
