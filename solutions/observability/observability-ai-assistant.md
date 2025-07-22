@@ -428,7 +428,7 @@ When all rules are disabled (the default), data is forwarded unchanged.
 
 When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-settings), every message in the request (system prompt, message content, function call arguments/responses) is run through an *anonymization pipeline* before it leaves Kibana:
 
-1. Each enabled **rule** scans its target text and replaces any match with a deterministic token such as  
+1. Each enabled **rule** scans the text and replaces any match with a deterministic token such as  
    `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.  
    The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a deterministic hash of the original value.
 2. The fully masked conversation is sent to the LLM.
