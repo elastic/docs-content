@@ -15,7 +15,7 @@ If you’ve been using Curator or some other mechanism to manage periodic indice
 * Reindex into an {{ilm-init}}-managed index.
 
 ::::{note}
-Starting in Curator version 5.7, Curator ignores {{ilm-init}} managed indices.
+Starting in Curator version 5.7, Curator ignores {{ilm-init}}-managed indices.
 ::::
 
 
@@ -105,3 +105,119 @@ To reindex into the managed index:
 
 6. Once you have verified that all of the reindexed data is available in the new managed indices, you can safely remove the old indices.
 
+
+## Manage indices for static data [ilm-existing-indices-static-data]
+
+Although data streams are specifically designed for time series data, you can modify your static data (such as user queries or indexed logs of queries), and then transition from periodic indices to a data stream to get the benefits of time-based data management.
+
+1. Create an ingest pipeline that uses the [`set` enrich processor](elasticsearch://docs/reference/processors/set-processor.md) to add a `@timestamp` field:
+
+    ```console
+    PUT _ingest/pipeline/ingest_time_1
+    {
+      "description": "Add an ingest timestamp",
+      "processors": [
+        {
+          "set": {
+            "field": "@timestamp",
+            "value": "{{_ingest.timestamp}}"
+          }
+        }]
+    }
+    ```
+
+1. [Create a lifecycle policy](configure-lifecycle-policy.md#ilm-create-policy) that meets your requirements. In this example, the policy is configured to roll over when the shard size reaches 10 GB:
+
+    ```console
+    PUT _ilm/policy/indextods
+    {
+      "policy": {
+        "phases": {
+          "hot": {
+           "min_age": "0ms",
+            "actions": {
+              "set_priority": {
+                "priority": 100
+              },
+              "rollover": {
+               "max_primary_shard_size": "10gb"
+              }
+            }
+          }
+        }
+      }
+    }
+    ```
+
+1. Create an index template that uses the created Ingest pipeline and lifecycle policy:
+
+    ```console
+    PUT _index_template/index_to_dot
+    {
+      "template": {
+        "settings": {
+          "index": {
+            "lifecycle": {
+              "name": "indextods"
+            },
+            "default_pipeline": "ingest_time_1"
+          }
+        },
+        "mappings": {
+          "_source": {
+            "excludes": [],
+            "includes": [],
+            "enabled": true
+          },
+          "_routing": {
+            "required": false
+          },
+          "dynamic": true,
+          "numeric_detection": false,
+          "date_detection": true,
+          "dynamic_date_formats": [
+            "strict_date_optional_time",
+            "yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"
+          ]
+        }
+      },
+      "index_patterns": [
+        "movetods"
+      ],
+      "data_stream": {
+        "hidden": false,
+        "allow_custom_routing": false
+      }
+    }
+    ```
+
+1. Create a data stream:
+
+    ```console
+    PUT /_data_stream/movetods
+    ```    
+
+1. [Reindex with a data stream](../../data-store/data-streams/use-data-stream.md#reindex-with-a-data-stream) to copy your documents from an existing index to the data stream you created:
+
+    ```console
+    POST /_reindex
+    {
+      "source": {
+        "index": "indextods"
+      },
+      "dest": {
+        "index": "movetods",
+        "op_type": "create"
+        
+      }
+    }
+    ```
+
+1. Roll over the reindexed data stream so that the lifecycle policy and Ingest pipeline are applied for new data streams:
+
+    ```console
+    POST movetods/_rollover
+    ```
+
+1. Update your ingest endpoint to target the created data stream.
+If you use Elastic clients, scripts, or any other 3rd party tool to ingest data to Elasticsearch, make sure you update these to use the created data stream.
