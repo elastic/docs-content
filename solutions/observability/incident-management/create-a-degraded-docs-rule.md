@@ -19,6 +19,11 @@ Users need the **Data Set Quality** role with the **Manage rules** privilege or 
 
 Based on the data found on the [**Data Set Quality**](../data-set-quality-monitoring.md) page, you can create a rule to notify you when the percentage of degraded documents for a specific data view has exceeded a value over a specific time period.
 
+:::{image} /solutions/images/observability-degraded-docs-rule.png
+:alt: Create rule for degraded docs
+:screenshot:
+:::
+
 To access this rule from the **Alerts** page:
 
 1. Go to **Alerts**.
