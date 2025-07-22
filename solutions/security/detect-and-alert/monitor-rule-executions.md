@@ -42,9 +42,9 @@ For detailed information on a rule, the alerts it generated, and associated erro
 
 For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The time filter on the left allows you to select a time range for viewing gap data. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps within the selected time range. The **Only rules with gaps** filter on the right lets you only display rules with unfilled or partially filled gaps.
 
-In {{stack}} 9.1 and Serverless, the **Total rules with gaps:** field provides two metrics. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are having their gaps resolved.
+In {{stack}} 9.1 and Serverless, the **Total rules with gaps:** field displays two metrics separated by a forward slash. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are currently having their gaps filled. On the far right of the panel, the **Only rules with gaps** filter lets you only display rules with unfilled gaps.
 
-Within the table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select in the panel above the table. If a rule has no gaps, the columns display a dash (`––`). 
+Within the Rules table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select in the panel above the table. If a rule has no gaps, the columns display a dash (`––`). 
 
 ::::{tip}
 For a detailed view of a rule's gaps, go to the **Execution results** tab and check the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
@@ -87,8 +87,7 @@ Use these controls to filter what’s included in the logs table:
 ### Gaps table [gaps-table]
 
 ```{applies_to}
-   stack: ga 9.0
-   serverless: ga
+   stack: preview 9.0, ga 9.1
 ```
 
 Gaps in rule executions are periods of time where a rule didn’t run. They can be caused by various disruptions, including system updates, rule failures, or simply turning off a rule. Addressing gaps is essential for maintaining consistent coverage and avoiding missed alerts.
@@ -97,13 +96,10 @@ Gaps in rule executions are periods of time where a rule didn’t run. They can 
 Refer to the [Troubleshoot gaps](../../../troubleshoot/security/detection-rules.md#troubleshoot-gaps) section for strategies for avoiding gaps.
 ::::
 
-Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. 
+Use the information in the Gaps table to assess the scope and severity of rule execution gaps. To control what's shown in the table, you can filter the table by gap status, select a time range for viewing gap data, and sort multiple columns. In {{stack}} 9.1 and Serverless, fill all gaps for the current rule by clicking **Fill all gaps** in the Gaps table. 
 
 ::::{note}
-
-In {{stack}} 9.1 and Serverless, click **Fill all gaps** in the Gaps table to start manual runs that fill the rule's existing gaps.
-
-To fill gaps for multiple rules, go to the Rules page, filter the table to only show rules with gaps, select the appropriate rules, then click **Bulk actions > Fill gaps**.
+{applies_to}`stack: ga 9.1` From the Rules table, fill gaps for multiple rules with the [**Fill gaps** bulk action](/solutions/security/detect-and-alert/manage-detection-rules.md#bulk-fill-gaps-multiple-rules).
 ::::
 
 :::{image} /solutions/images/security-gaps-table.png

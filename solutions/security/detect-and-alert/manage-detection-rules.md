@@ -188,7 +188,28 @@ Be mindful of the following:
 
 ::::
 
+## Fill gaps for multiple rules [bulk-fill-gaps-multiple-rules]
 
+```{applies_to}
+   stack: ga 9.1
+```
+
+From the Rules table, fill gaps for multiple rules by using the **Fill gaps** bulk action.
+
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Rules table, click the **Rule Monitoring** tab, then do one of the following:
+
+   * In the panel above the table, click the **Only rules with unfilled gaps** filter to only display rules with unfilled gaps.
+   * Select the rules with gaps that you want to fill. 
+
+3. Click **Bulk actions > Fill gaps**.
+4. Specify when to start and end the manual run that will fill the gaps. 
+5. Click **Schedule gap fills**. The rule will manually run during the selected time range. 
+
+After scheduling the manual run, you can track gap fill progress by checking the the **Total rules with gaps:** field in the panel above the Rules table. The field displays two metrics separated by a forward slash. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are currently having their gaps filled. 
+
+Alternatively, you can check gap fill progress for individual rules by going to their details page, clicking the **Execution results** tab, and going to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
+ 
 
 ## Snooze rule actions [snooze-rule-actions]
 
