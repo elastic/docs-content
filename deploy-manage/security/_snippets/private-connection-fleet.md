@@ -9,7 +9,7 @@ https://{{fleet_component_ID_or_deployment_alias}}.fleet.{{private_hosted_zone_d
 Similarly, the {{es}} host needs to be updated to propagate the private connection URL. The {{es}} URL needs to follow this pattern: 
 
 ```text
-https://elasticsearch_cluster_ID_or_deployment_alias}}.es.{{private_hosted_zone_domain_name}}:443
+https://{{elasticsearch_cluster_ID_or_deployment_alias}}.es.{{private_hosted_zone_domain_name}}:443
 ```
 
 The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` that are needed to enable this configuration in {{kib}} are not available in the {{kib}} settings in {{ecloud}}.

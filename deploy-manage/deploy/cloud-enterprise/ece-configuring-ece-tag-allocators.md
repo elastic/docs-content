@@ -77,7 +77,7 @@ If you have an allocator that meets several criteria, such as an allocator with 
 1. Get a list of the allocators in your ECE installation:
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators
+    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators
     ```
 
     ::::{note}
@@ -87,7 +87,7 @@ If you have an allocator that meets several criteria, such as an allocator with 
 2. $$$check-allocator-tags$$$Check what tags have already been assigned to your allocators. In a new or newly upgraded ECE installation, this command returns `[]`, which means that you have not assigned any tags, yet.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata
+    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata
     ```
 
     `ALLOCATOR_ID`
@@ -102,7 +102,7 @@ If you have an allocator that meets several criteria, such as an allocator with 
     * Example: To assign a single `highCPU: true` tag to an allocator:
 
         ```sh
-        curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata/highCPU  -H 'content-type: application/json' -d '{ "value": "true" }'
+        curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata/highCPU  -H 'content-type: application/json' -d '{ "value": "true" }'
         [{
           "key": "highCPU",
           "value": "true"
@@ -114,7 +114,7 @@ If you have an allocator that meets several criteria, such as an allocator with 
     * Example: To assign multiple tags to an allocator with a single command:
 
         ```sh
-        curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata -H 'content-type: application/json' -d '
+        curl -k -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/platform/infrastructure/allocators/ALLOCATOR_ID/metadata -H 'content-type: application/json' -d '
         {
           "items": [
             {
