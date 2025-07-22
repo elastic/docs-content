@@ -10,7 +10,9 @@ products:
 
 # Monitor privileged user activities
 
-After you [set up privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring-setup.md), you can start monitoring your privileged users' activity using the different panels on the **Privileged user monitoring** dashboard.
+After you [set up privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring-setup.md), you can start monitoring your privileged users' activity using the different panels on the Privileged user monitoring dashboard.
+
+To get started, find **Privileged user monitoring** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ## Risk levels of privileged users
 
@@ -22,7 +24,7 @@ This panel represents an inventory of privileged users, sourced from your provid
 
 ## Top privileged access anomalies
 
-The [Privileged Access Detection](integration-docs://reference/pad.md) package contains multiple {{ml}} jobs that can detect anomalous privileged user activity across various systems, such as Windows, Linux, and Okta system logs. You can install this package directly from the **Privileged user monitoring** dashboard and access the related {{ml}} jobs for any additional configuration.
+The [Privileged Access Detection](integration-docs://reference/pad.md) package contains multiple {{ml}} jobs that can detect anomalous privileged user activity across various systems, such as Windows, Linux, and Okta system logs. You can install this package directly from the Privileged user monitoring dashboard and access the related {{ml}} jobs for any additional configuration.
 
 Once you install the package, this panel displays a heatmap of the top privileged access anomalies performed by your defined privileged users. You can investigate these anomalies further by reviewing details for individual users or by navigating to the Anomaly Explorer.
 

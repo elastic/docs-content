@@ -14,4 +14,4 @@ Privileged user monitoring allows you to track the activity of users with elevat
 
 Use privileged user monitoring to proactively identify suspicious activities, such as over-provisioning of rights or malicious insider threats, before they cause damage.
 
-The Privileged user monitoring page gives you a centralized, high-level view of privileged users’ activity. It helps you identify suspicious behavior, prioritize investigations, and quickly access the data you need to respond.
+The [Privileged user monitoring dashboard](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md) gives you a centralized, high-level view of privileged users’ activity. It helps you identify suspicious behavior, prioritize investigations, and quickly access the data you need to respond.

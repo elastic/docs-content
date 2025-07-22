@@ -48,15 +48,39 @@ All user names, specified in the `user.name` field in your selected indices, wil
 2. Select or drag and drop the file you want to import. The maximum file size is 1 MB.
 3. Select **Add privileged user**.
 
-:::{note}
-* Any lines that don’t follow the required file structure will be highlighted, and those users won't be added. We recommend that you fix any invalid lines and re-upload the file.
+The file must contain at least one column, with each user record listed on a separate row:
 
-* You can only import one file as a data source. Any users previously imported through a text file are overwritten.
+1. The first column specifies the privileged user's user name.
+2. An optional second column may specify a label, representing the user’s role, group, team, or similar.
+
+File structure example:
+
+```txt
+superadmin
+admin01,Domain Admin
+sec_ops
+jdoe,IT Support
+```
+
+:::{note}
+Any lines that don’t follow the required file structure will be highlighted, and those users won't be added. We recommend that you fix any invalid lines and re-upload the file.
 :::
 
-After setting up your privileged users, you can start [monitoring their activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md) and related insights on the **Privileged user monitoring** dashboard.
+After setting up your privileged users, you can start [monitoring their activity](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md) and related insights on the Privileged user monitoring dashboard.
 
 You can update the selected data sources at any time by selecting **Manage data sources**.
 
 ## Manage data sources
 
+Use the **Manage data sources** page to update your selected data sources.
+
+You can use multiple data source types, such as an index and a CSV file, at the same time to define privileged users. Users defined through different data source types are monitored together.
+
+On this page, you can:
+
+* View, remove, and change indices after initially defining them
+* Import a new supported file with a list of privileged users
+
+   :::{note}
+   Importing a new file will overwrite any users added from a previous file. This doesn't affect users defined through other data source types.
+   :::
