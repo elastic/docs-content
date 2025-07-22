@@ -12,7 +12,7 @@ applies_to:
 
 ::::{note}
 
-The **Editor** role or higher is required to create degraded docs rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+Users need the **Data Set Quality** role with the **Manage rules** privilege or the **Editor** role or higher to create degraded docs rules. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
