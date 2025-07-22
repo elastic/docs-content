@@ -26,3 +26,12 @@ If you create cases in the {{observability}} or {{security-app}}, they are not v
 * [Configure access to cases](cases/setup-cases.md)
 * [Open and manage cases](cases/manage-cases.md)
 * [Configure case settings](cases/manage-cases-settings.md)
+
+
+::::{note} 
+{applies_to}`stack: ga 9.1` With the appropriate index access, you can [build visualizations and metrics](../../../explore-analyze/alerts-cases/cases/visualize-case-data.md) of data in {{observability}}, {{stack-manage-app}}, and {{elastic-sec}} cases. This can provide improved visibility into patterns and trends of cases within your space.
+::::
+
+## Limitations 
+* If you create cases in {{stack-manage-app}}, they are not visible in the {{observability}} or the {{security-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}. 
+* You cannot attach alerts from {{elastic-sec}} or {{stack-manage-app}} to cases in {{observability}}.

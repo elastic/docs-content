@@ -29,10 +29,14 @@ You can also send cases to these external systems by [configuring external conne
 :screenshot:
 :::
 
-::::{note}
-* From {{elastic-sec}} in the {{stack}}, you cannot access cases created in {{observability}} or Stack Management.  
-* {applies_to}`stack: ga 9.1` With the appropriate index access, you can [build visualizations](../../../explore-analyze/alerts-cases/cases/visualize-case-data.md) of {{observability}}, Stack Management, and {{elastic-sec}} case data to improve your visibility into case patterns and trends within your space.
+::::{note} 
+{applies_to}`stack: ga 9.1` With the appropriate index access, you can [build visualizations and metrics](../../../explore-analyze/alerts-cases/cases/visualize-case-data.md) of data in {{observability}}, {{stack-manage-app}}, and {{elastic-sec}} cases. This can provide improved visibility into patterns and trends of cases within your space.
 ::::
+
+## Limitations 
+* If you create cases in the {{observability}} or {{stack-manage-app}}, they are not visible in the {{security-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}.
+* You cannot attach alerts from the {{observability}} or {{stack-manage-app}} to cases in {{elastic-sec}}.
+
 
 
 
