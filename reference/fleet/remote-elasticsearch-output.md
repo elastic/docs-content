@@ -31,53 +31,99 @@ These limitations apply to remote {{es}} output:
 
 To configure a remote {{es}} cluster for your {{agent}} data:
 
-1. In your main {{es}} cluster (Cluster A), open {{kib}}, and search for **Fleet settings** in the search bar. Select **Fleet/Settings** in the results.
-2. In the **Outputs** section, select **Add output**.
-3. In the **Add new output** flyout, provide a name for the output, and select **Remote Elasticsearch** as the output type.
-4. In the **Hosts** field, add the URL that {{agent}}s should use to access the remote {{es}} cluster (Cluster B). 
+:::::{stepper}
 
-    ::::{dropdown} Find the remote host address of the remote cluster
-    :open:
-    1. In the remote cluster (Cluster B), open {{kib}}, and search for **Fleet settings** in the search bar. Select **Fleet/Settings** in the results.
-    2. In the **Outputs** section, copy the `Hosts` value of the default {{es}} output. If the value is not visible in full, edit the default {{es}} output to display the full value.
-    3. In your main cluster (Cluster A), paste the value you copied into the **Hosts** field of the remote output configuration.
-    ::::
+::::{step}
+In your main {{es}} cluster (Cluster A), open {{kib}}, and search for **Fleet settings** in the search bar. Select **Fleet/Settings** in the results.
+::::
 
-5. In the **Service Token** field, add a service token to access the remote cluster (Cluster B). 
+::::{step}
+In the **Outputs** section, select **Add output**.
+::::
 
-    ::::{dropdown} Create a service token to access the remote cluster
-    :open:
-    1. Copy the API request located below the **Service Token** field.
-    2. In the remote cluster (Cluster B), open the {{kib}} menu, then go to **Management** → **Dev Tools** in self-managed deployments, or to **Developer tools** in {{ecloud}} deployments.
-    3. Paste the API request in the console, then run it.
-    4. Copy the value for the generated service token.
-    5. In the main cluster (Cluster A), paste the value you copied into the **Service Token** field of the remote output configuration.
-    ::::
+::::{step}
+In the **Add new output** flyout, provide a name for the output, and select **Remote Elasticsearch** as the output type.
+::::
 
-    ::::{note}
-    To prevent unauthorized access, the {{es}} Service Token is stored as a secret value. While secret storage is recommended, you can choose to override this setting, and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or higher. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
-    ::::
+::::{step}
+In the **Hosts** field, add the URL that {{agent}}s should use to access the remote {{es}} cluster (Cluster B).
 
-6. Choose whether integrations should be automatically synchronized on the remote {{es}} cluster (Cluster B). To configure this feature, refer to the [Automatic integrations synchronization](#automatic-integrations-synchronization) section.
+:::{dropdown} Find the remote host address of the remote cluster
+:open:
+1. In the remote cluster (Cluster B), open {{kib}}, and search for **Fleet settings** in the search bar. Select **Fleet/Settings** in the results.
+2. In the **Outputs** section, copy the `Hosts` value of the default {{es}} output. If the value is not visible in full, edit the default  {{es}} output to display the full value.
+3. In your main cluster (Cluster A), paste the value you copied into the **Hosts** field of the remote output configuration.
+:::
+::::
 
-    ::::{note}
-    This feature is only available with certain subscriptions. For more information, check [Subscriptions](https://www.elastic.co/subscriptions).
-    ::::
+::::{step}
+In the **Service Token** field, add a service token to access the remote cluster (Cluster B).
 
-7. Choose whether the remote output should be the default for agent integrations or for agent monitoring data. When set as the default, {{agents}} use this output to send data if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).
-8. Select the [performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) to optimize {{agent}}s for throughput, scale, or latency, or leave the default `balanced` setting.
-9. Add any [advanced YAML configuration settings](/reference/fleet/es-output-settings.md#es-output-settings-yaml-config) that you’d like for the remote output.
-10. Click **Save and apply settings**.
+:::{dropdown} Create a service token to access the remote cluster
+:open:
+1. Copy the API request located below the **Service Token** field.
+2. In the remote cluster (Cluster B), open the {{kib}} menu, then go to **Management** → **Dev Tools** in self-managed deployments, or to **Developer tools** in {{ecloud}} deployments.
+3. Paste the API request in the console, then run it.
+4. Copy the value for the generated service token.
+5. In the main cluster (Cluster A), paste the value you copied into the **Service Token** field of the remote output configuration.
+:::
+
+:::{note}
+To prevent unauthorized access, the {{es}} Service Token is stored as a secret value. While secret storage is recommended, you can choose to override this setting, and store the password as plain text in the agent policy definition. Secret storage requires {{fleet-server}} version 8.12 or higher. This setting can also be stored as a secret value or as plain text for preconfigured outputs. To learn more about this option, check [Preconfiguration settings](kibana://reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases).
+:::
+::::
+
+::::{step}
+Choose whether integrations should be automatically synchronized on the remote {{es}} cluster (Cluster B). To configure this feature, refer to the [Automatic integrations synchronization](#automatic-integrations-synchronization) section.
+
+:::{note}
+This feature is only available with certain subscriptions. For more information, refer to [Subscriptions](https://www.elastic.co/subscriptions).
+:::
+::::
+
+::::{step}
+Choose whether the remote output should be the default for agent integrations or for agent monitoring data. When set as the default, {{agents}} use this output to send data if no other output is set in the [agent policy](/reference/fleet/agent-policy.md).
+::::
+
+::::{step}
+Select the [performance tuning settings](/reference/fleet/es-output-settings.md#es-output-settings-performance-tuning-settings) to optimize {{agent}}s for throughput, scale, or latency, or leave the default `balanced` setting.
+::::
+
+::::{step}
+Add any [advanced YAML configuration settings](/reference/fleet/es-output-settings.md#es-output-settings-yaml-config) that you’d like for the remote output.
+::::
+
+::::{step}
+Click **Save and apply settings**.
+::::
+
+:::::
 
 After the output is created, you can update an {{agent}} policy to use the new output, and send data to the remote {{es}} cluster:
 
-1. In the main cluster (Cluster A), go to **{{fleet}}**, then open the **Agent policies** tab.
-2. Click the agent policy you want to update, then click **Settings**.
-3. To send integrations data, set the **Output for integrations** option to use the output that you configured in the previous steps.
-4. To send {{agent}} monitoring data, set the **Output for agent monitoring** option to use the output that you configured in the previous steps.
-5. Click **Save changes**.
+:::::{stepper}
 
-The remote {{es}} output is now configured for the remote cluster (Cluster B).
+::::{step}
+In the main cluster (Cluster A), go to **{{fleet}}**, then open the **Agent policies** tab.
+::::
+
+::::{step}
+Click the agent policy you want to update, then click **Settings**.
+::::
+
+::::{step}
+To send integrations data, set the **Output for integrations** option to use the output that you configured in the previous steps.
+::::
+
+::::{step}
+To send {{agent}} monitoring data, set the **Output for agent monitoring** option to use the output that you configured in the previous steps.
+::::
+
+::::{step}
+Click **Save changes**. The remote {{es}} output is now configured for the remote cluster (Cluster B).
+::::
+
+:::::
 
 If you choose not to synchronize integrations automatically, you need to make sure that for any integrations that are [added to your {{agent}} policy](/reference/fleet/add-integration-to-policy.md), the integration assets are also installed on the remote {{es}} cluster. For detailed steps on this process, refer to [Install and uninstall {{agent}} integration assets](/reference/fleet/install-uninstall-integration-assets.md).
 
