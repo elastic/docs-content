@@ -430,7 +430,7 @@ When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-set
 
 1. Each enabled **rule** scans its target text and replaces any match with a deterministic token such as  
    `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.  
-   The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a SHA-1 hash of the original value.
+   The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a deterministic hash of the original value.
 2. The fully masked conversation is sent to the LLM.
 3. After the LLM responds, the original values are restored so the user sees de-anonymised text and any persisted conversation history stores the original content. 
 
