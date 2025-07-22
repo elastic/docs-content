@@ -35,7 +35,7 @@ You can also send cases to these external systems by [configuring external conne
 
 ## Limitations [security-case-limitations]
 
-* If you create cases in the {{observability}} or {{stack-manage-app}}, they are not visible in the {{security-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}.
+* If you create cases in the {{security-app}}, they are not visible from {{observability}} or {{stack-manage-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in {{elastic-sec}} or {{observability}}.
 * You cannot attach alerts from the {{observability}} or {{stack-manage-app}} to cases in {{elastic-sec}}.
 
 

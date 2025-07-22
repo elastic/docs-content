@@ -34,5 +34,5 @@ If you create cases in the {{observability}} or {{security-app}}, they are not v
 
 ## Limitations [kibana-case-limitations]
 
-* If you create cases in {{stack-manage-app}}, they are not visible in the {{observability}} or the {{security-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}. 
-* You cannot attach alerts from {{elastic-sec}} or {{stack-manage-app}} to cases in {{observability}}.
+* If you create cases in {{stack-manage-app}}, they are not visible in the {{observability}} or the {{security-app}}. Likewise, the cases you create in {{observability}}, they are not visible in {{stack-manage-app}} or {{elastic-sec}}. 
+* You cannot attach alerts from {{observability}} or {{elastic-sec}} to cases in {{stack-manage-app}}.

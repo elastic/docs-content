@@ -22,5 +22,5 @@ Collect and share information about observability issues by creating a case. Cas
 
 ## Limitations [observability-case-limitations]
 
-* If you create cases in {{observability}} or {{stack-manage-app}}, they are not visible in the {{security-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}. 
+* If you create cases in {{observability}}, they are not visible in the {{security-app}} or {{stack-manage-app}}. Likewise, the cases you create in {{stack-manage-app}} are not visible in the {{observability}} or {{elastic-sec}}. 
 * You cannot attach alerts from {{elastic-sec}} or {{stack-manage-app}} to cases in {{observability}}.
