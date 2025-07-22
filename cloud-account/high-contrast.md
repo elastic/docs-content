@@ -16,6 +16,7 @@ You can change the interface contrast mode of Kibana to improve visibility and r
    
    :::{note}
    On self-managed deployments of {{kib}}, this option is located on your profile page. To access it, select **Edit profile** from the header's user menu.
+   :::
 
 3. Choose an interface contrast mode:
 
