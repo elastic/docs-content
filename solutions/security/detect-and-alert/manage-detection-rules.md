@@ -206,7 +206,7 @@ From the Rules table, fill gaps for multiple rules by using the **Fill gaps** bu
 4. Specify when to start and end the manual run that will fill the gaps. 
 5. Click **Schedule gap fills**. The rule will manually run during the selected time range. 
 
-After scheduling the manual run, you can track gap fill progress by checking the the **Total rules with gaps:** field in the panel above the Rules table. The field displays two metrics separated by a forward slash. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are currently having their gaps filled. 
+After scheduling the manual run, you can track gap fill progress by checking the **Total rules with gaps:** field in the panel above the Rules table. The field displays two metrics separated by a forward slash. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are currently having their gaps filled. 
 
 Alternatively, you can check gap fill progress for individual rules by going to their details page, clicking the **Execution results** tab, and going to the [Gaps table](/solutions/security/detect-and-alert/monitor-rule-executions.md#gaps-table).
  
