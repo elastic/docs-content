@@ -112,8 +112,8 @@ You can configure TLS and mutual TLS (mTLS) settings for {{fleet-server}} hosts 
 
 To access these settings:
 
-1. In **Kibana**, go to **Management** > **Fleet** > **Settings**.
-2. Under **Fleet Server hosts**, click **Add host** or edit an existing host.
+1. In **Kibana**, go to **Management > {{fleet}} > Settings**.
+2. Under **Fleet Server hosts**, select **Add host** or edit an existing host.
 3. Expand the **SSL options** section.
 
 ### SSL options
@@ -133,5 +133,5 @@ The following table shows the available UI fields and their CLI equivalents:
 The {{fleet}} UI doesn't currently allow editing the {{fleet-server}}’s own exposed TLS certificate (`--fleet-server-cert`, `--fleet-server-cert-key`). These are only configurable using the CLI either during the initial installation or later.
 
 :::{warning}
-Editing SSL or proxy settings for an existing {{fleet-server}} may cause agents to lose connectivity. After changing client certificate settings, you need to re-enroll the affected agents.
+Editing SSL or proxy settings for an existing {{fleet-server}} might cause agents to lose connectivity. After changing client certificate settings, you need to re-enroll the affected agents.
 :::

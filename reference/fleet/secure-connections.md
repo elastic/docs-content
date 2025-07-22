@@ -103,7 +103,7 @@ For the steps in this section, imagine you have the following files:
 To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
 1. Configure {{fleet}} settings. These settings are applied to all {{fleet}}-managed {{agent}}s.
-2. In {{kib}}, open the main menu, then click **Management > {{fleet}} > Settings**.
+2. In {{kib}}, open the main menu, then select **Management > {{fleet}} > Settings**.
 
     1. Under **{{fleet-server}} hosts**, specify the URLs {{agent}}s will use to connect to {{fleet-server}}. For example, [https://192.0.2.1:8220](https://192.0.2.1:8220), where 192.0.2.1 is the host IP where you will install {{fleet-server}}.
 
@@ -111,7 +111,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
         For host settings, use the `https` protocol. DNS-based names are also allowed.
         ::::
 
-    2. Under **Outputs**, search for the default output, then click the **Edit** icon in the **Action** column.
+    2. Under **Outputs**, search for the default output, then select the **Edit** icon in the **Action** column.
     3. In the **Hosts** field, specify the {{es}} URLs where {{agent}}s will send data. For example, [https://192.0.2.0:9200](https://192.0.2.0:9200).
     4. Specify either a CA certificate or CA fingerprint to connect securely {{es}}:
 
@@ -158,7 +158,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
     1. Install an {{agent}} as a {{fleet-server}} on the host and configure it to use TLS:
 
-        1. If you don’t already have a {{fleet-server}} service token, click the **Agents** tab in {{fleet}} and follow the instructions to generate the service token now.
+        1. If you don’t already have a {{fleet-server}} service token, select the **Agents** tab in {{fleet}} and follow the instructions to generate the service token now.
 
             ::::{tip}
             The in-product installation steps are incomplete. Before running the `install` command, add the settings shown in the next step.
@@ -270,7 +270,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
         `certificate-authorities`
         :   CA certificate to use to connect to {{fleet-server}}. This is the CA used to [generate a certificate and key](#generate-fleet-server-certs) for {{fleet-server}}.
 
-        Don’t have an enrollment token? On the **Agents** tab in {{fleet}}, click **Add agent**. Under **Enroll and start the Elastic Agent**, follow the in-product installation steps, making sure that you add the `--certificate-authorities` option before you run the command.
+        Don’t have an enrollment token? On the **Agents** tab in {{fleet}}, select **Add agent**. Under **Enroll and start the Elastic Agent**, follow the in-product installation steps, making sure that you add the `--certificate-authorities` option before you run the command.
 
 
 ## Configure SSL/TLS using {{kib}} [fleet-server-ssl-ui-settings]
@@ -282,13 +282,13 @@ You can configure SSL/TLS settings for {{fleet-server}} hosts directly in the {{
 
 To access these settings:
 
-1. In **Kibana**, go to **Management** > **Fleet** > **Settings**.
-2. Under **{{fleet-server}} hosts**, click **Add host** or edit an existing host.
+1. In **Kibana**, go to **Management > {{fleet}} > Settings**.
+2. Under **{{fleet-server}} hosts**, select **Add host** or edit an existing host.
 3. Expand the **SSL options** section.
 
 ### SSL options
 
-The following table shows the available UI fields and their CLI equivalents:
+These are the available UI fields and their CLI equivalents:
 
 | **UI Field**                                      | **CLI Flag**                          | **Purpose** |
 |--------------------------------------------------|---------------------------------------|-------------|
@@ -303,5 +303,5 @@ The following table shows the available UI fields and their CLI equivalents:
 The {{fleet}} UI doesn't currently allow editing the {{fleet-server}}’s own exposed TLS certificate (`--fleet-server-cert`, `--fleet-server-cert-key`). These are only configurable using the CLI either during the initial installation or later.
 
 :::{warning}
-Editing SSL or proxy settings for an existing {{fleet-server}} may cause agents to lose connectivity. After changing client certificate settings, you need to re-enroll the affected agents.
+Editing SSL or proxy settings for an existing {{fleet-server}} might cause agents to lose connectivity. After changing client certificate settings, you need to re-enroll the affected agents.
 :::

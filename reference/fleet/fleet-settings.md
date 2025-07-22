@@ -18,7 +18,7 @@ On the **Settings** tab in **Fleet**, you can configure global settings availabl
 
 ## {{fleet-server}} host settings [fleet-server-hosts-setting]
 
-Click **Edit hosts** and specify the host URLs your {{agent}}s will use to connect to a {{fleet-server}}.
+Select **Edit hosts** and specify the host URLs your {{agent}}s will use to connect to a {{fleet-server}}.
 
 ::::{tip}
 If the **Edit hosts** option is grayed out, {{fleet-server}} hosts are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
@@ -49,7 +49,7 @@ The exposed ports must be open for ingress and egress in the firewall and networ
 ::::
 
 
-Specify multiple URLs (click **Add row**) to scale out your deployment and provide automatic failover. If multiple URLs exist, {{fleet}} shows the first provided URL for enrollment purposes. Enrolled {{agent}}s will connect to the URLs in round robin order until they connect successfully.
+Specify multiple URLs (select **Add row**) to scale out your deployment and provide automatic failover. If multiple URLs exist, {{fleet}} shows the first provided URL for enrollment purposes. Enrolled {{agent}}s will connect to the URLs in round robin order until they connect successfully.
 
 When a {{fleet-server}} is added or removed from the list, all agent policies are updated automatically.
 
@@ -76,8 +76,8 @@ The {{ecloud}} internal output is locked and cannot be edited. This output is us
 
 To add or edit an output:
 
-1. Go to **{{fleet}} → Settings**.
-2. Under **Outputs**, click **Add output** or **Edit**.
+1. Go to **{{fleet}} > Settings**.
+2. Under **Outputs**, select **Add output** or **Edit**.
 
     :::{image} images/fleet-add-output-button.png
     :alt: {{fleet}} Add output button
@@ -93,7 +93,7 @@ To add or edit an output:
     * [Kafka output settings](/reference/fleet/kafka-output-settings.md)
     * [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md)
 
-5. Click **Save and apply settings**.
+5. Select **Save and apply settings**.
 
 ::::{tip}
 If the options for editing an output are grayed out, outputs are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
@@ -109,8 +109,8 @@ For {{agent}}s that cannot access the internet, you can specify agent binary dow
 
 To add or edit the source of binary downloads:
 
-1. Go to **{{fleet}} → Settings**.
-2. Under **Agent Binary Download**, click **Add agent binary source** or **Edit**.
+1. Go to **{{fleet}} > Settings**.
+2. Under **Agent Binary Download**, select **Add agent binary source** or **Edit**.
 3. Set the agent binary source name.
 4. For **Host**, specify the address where you are hosting the artifacts repository.
 5. (Optional) To make this location the default, select **Make this host the default for all agent policies**. {{agent}}s use the default location if you don’t select a different agent binary source in the agent policy.
@@ -123,8 +123,8 @@ For {{agent}}s that cannot access the internet, you can specify agent binary dow
 
 To add or edit the source of binary downloads:
 
-1. Go to **{{fleet}} → Settings**.
-2. Under **Agent Binary Download**, click **Add agent binary source** or **Edit**.
+1. Go to **{{fleet}} > Settings**.
+2. Under **Agent Binary Download**, select **Add agent binary source** or **Edit**.
 3. Set the agent binary source name.
 4. For **Host**, specify the address where you are hosting the artifacts repository.
 5. (Optional) To make this location the default, select **Make this host the default for all agent policies**. {{agent}}s use the default location if you don’t select a different agent binary source in the agent policy.
@@ -159,5 +159,5 @@ Note that this option can also be enabled by adding the `xpack.fleet.enableDelet
 
 To enable automatic deletion of unenrolled agents:
 
-1. Go to **{{fleet}} → Settings**.
+1. Go to **{{fleet}} > Settings**.
 2. Under **Advanced Settings**, enable the **Delete unenrolled agents** option.
