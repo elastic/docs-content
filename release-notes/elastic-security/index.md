@@ -117,8 +117,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an alert grouping re-render issue that caused infinite rendering loops when selecting a group [#215086]({{kib-pull}}215086).
 * Fixes a bug in the alert details flyout's **Table** tab where fields displayed duplicate hover actions [#212316]({{kib-pull}}212316).
 * Refactors conversation pagination for the Security AI Assistant [#211831]({{kib-pull}}211831).
-* Fixes a bug where unmodified prebuilt rules installed before v8.18 didn't appear in the **Upgrade** table when the **Unmodified** filter was selected [#227859]({{kib-pull}}227859).
-* Improves UI copy for the "bulk update with conflicts" modal [#227803]({{kib-pull}}227803).
 * Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag wasn't being persisted across system or endpoint restarts.
 * Fixes a crash in the {{elastic-defend}} scan response action and suppresses the end-user popup when running background malware scans.
 * Fixes an unbounded kernel non-paged memory growth issue in the {{elastic-defend}} kernel driver during extremely high event load situations on Windows. Systems affected by this issue would slow down or become unresponsive until the triggering event load (such as network activity) subsided [#88](https://github.com/elastic/endpoint/issues/88).
