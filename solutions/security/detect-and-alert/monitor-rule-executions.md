@@ -40,9 +40,16 @@ To sort the rules list, click any column header. To sort in descending order, cl
 
 For detailed information on a rule, the alerts it generated, and associated errors, click on its name in the table. This also allows you to perform the same actions that are available on the [**Installed Rules** tab](manage-detection-rules.md), such as modifying or deleting rules, activating or deactivating rules, exporting or importing rules, and duplicating prebuilt rules.
 
-For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The time filter on the left allows you to select a time range for viewing gap data. The **Total rules with gaps:** field tells you how many rules have unfilled or partially filled gaps within the selected time range. The **Only rules with gaps** filter on the right lets you only display rules with unfilled or partially filled gaps.
+For information about rule execution gaps (which are periods of time when a rule didn't run), use the panel above the table. The panel contains the following:
 
-In {{stack}} 9.1 and Serverless, the **Total rules with gaps:** field displays two metrics separated by a forward slash. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are currently having their gaps filled. On the far right of the panel, the **Only rules with gaps** filter lets you only display rules with unfilled gaps.
+* **Time filter**: Allows you to select a time range for viewing gap data. 
+* **Total rules with gaps:** Provides metrics for rules with gaps:
+  
+  * {applies_to}`stack: ga 9.0` Tells you how many rules have unfilled or partially filled gaps within the selected time range. 
+  * {applies_to}`stack: ga 9.1` Tells you the number of rules with unfilled gaps (left metric) and the number of rules with gaps being filled (right metric). 
+  
+* {applies_to}`stack: ga 9.0` **Only rules with gaps**: Filters the Rules table to only display rules with unfilled or partially filled gaps.
+* {applies_to}`stack: ga 9.1` **Only rules with unfilled gaps**: Filters the Rules table to only display rules with unfilled gaps. Note that the filter excludes rules with partial gaps or gaps that are being filled. 
 
 Within the Rules table, the **Last Gap (if any)** column conveys how long the most recent gap for a rule lasted. The **Unfilled gaps duration** column shows whether a rule still has gaps and provides a total sum of the remaining unfilled or partially filled gaps. The total sum can change based on the time range that you select in the panel above the table. If a rule has no gaps, the columns display a dash (`––`). 
 
