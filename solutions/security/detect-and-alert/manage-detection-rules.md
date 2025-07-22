@@ -206,7 +206,7 @@ From the Rules table, fill gaps for multiple rules by using the **Fill gaps** bu
 3. Select the rules with gaps that you want to fill.
 4. Click **Bulk actions → Fill gaps**.
 5. Specify when to start and end the manual run that will fill the gaps. 
-6. Click **Schedule gap fills**. The rule will manually run during the selected time range. 
+6. Click **Schedule gap fills**. The rule will manually run over unfilled gaps in the selected time range. 
 
 After scheduling the manual run, you can track gap fill progress by checking the **Total rules with gaps:** field in the panel above the Rules table. The field displays two metrics separated by a forward slash. The metric on the left tells you the remaining number of rules with unfilled gaps. The metric on the right tells you the number of rules that are currently having their gaps filled. 
 
