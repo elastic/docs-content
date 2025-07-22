@@ -56,7 +56,9 @@ Follow these steps to collect application telemetry data using the EDOT SDKs:
 2. Under **What do you want to monitor?** select **Application**, and then select **OpenTelemetry**.
 3. Follow the instructions to install the EDOT SDK for your application:
 
+   - [Android](opentelemetry://reference/edot-sdks/android/index.md)
    - [.NET](opentelemetry://reference/edot-sdks/dotnet/setup/index.md)
+   - [iOS](opentelemetry://reference/edot-sdks/ios/index.md)
    - [Java](opentelemetry://reference/edot-sdks/java/setup/index.md)
    - [Node.js](opentelemetry://reference/edot-sdks/nodejs/setup/index.md)
    - [PHP](opentelemetry://reference/edot-sdks/php/setup/index.md)
@@ -76,7 +78,9 @@ If your application runs on Kubernetes, the OpenTelemetry operator automatically
 2. Under **What do you want to monitor?** select **Application**, and then select **OpenTelemetry**.
 3. Follow the instructions to install the EDOT SDK for your application:
 
+   - [Android](opentelemetry://reference/edot-sdks/android/index.md)
    - [.NET](opentelemetry://reference/edot-sdks/dotnet/setup/index.md)
+   - [iOS](opentelemetry://reference/edot-sdks/ios/index.md)
    - [Java](opentelemetry://reference/edot-sdks/java/setup/index.md)
    - [Node.js](opentelemetry://reference/edot-sdks/nodejs/setup/index.md)
    - [PHP](opentelemetry://reference/edot-sdks/php/setup/index.md)

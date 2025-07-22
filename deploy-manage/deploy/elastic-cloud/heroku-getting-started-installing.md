@@ -33,7 +33,7 @@ After the {{heroku}} gets added, you can find the canonical URL you use to acces
 
 ```bash
 heroku config --app MY_APP | grep FOUNDELASTICSEARCH_URL
-FOUNDELASTICSEARCH_URL: https://74f176887fdef36bb51e6e37nnnnnnnn.us-east-1.aws.found.io
+FOUNDELASTICSEARCH_URL: <example-url>.aws.found.io
 ```
 
 ## Install a specific version and plugins [ech-getting-started-installing-version]

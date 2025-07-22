@@ -147,3 +147,11 @@ Some rule types have a maximum number of alerts that can be suppressed (custom q
 
 * **Threshold, event correlation, {{esql}}, and {{ml}}:** The maximum number of alerts is the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params), which is `100` by default.
 * **Indicator match and new terms:** The maximum number is five times the value you choose for the rule’s **Max alerts per run** [advanced setting](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params). The default value is `100`, which means the default maximum limit for indicator match rules and new terms rules is `500`.
+
+## Bulk apply and remove alert suppression [security-alert-suppression-bulk-apply]
+
+```{applies_to}
+   stack: ga 9.1 
+```
+
+From the Rules table, use the **Bulk actions** menu to apply or remove alert suppression to multiple rules. The **Apply alert suppression** option can be used for all rules types except for the threshold rule type. To bulk-apply alert suppression to threshold rules, use the bulk menu option that's labeled for threshold rules only.
