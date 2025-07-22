@@ -99,6 +99,8 @@ Click **Save and apply settings**.
 
 :::::
 
+## Using the remote {{es}} output
+
 After the output is created, you can update an {{agent}} policy to use the new output, and send data to the remote {{es}} cluster:
 
 :::::{stepper}
