@@ -6,7 +6,6 @@ description: Remote ES output allows you to send agent data to a remote cluster,
 applies_to:
   stack: ga
   deployment:
-    eck: ga
     ess: ga
     ece: ga
     self: ga
@@ -138,7 +137,7 @@ In your remote cluster (Cluster B):
 5. In the remote output configuration on the main cluster (Cluster A), add the {{kib}} URL of the remote cluster (Cluster B) in the **Remote Kibana URL** field.
 6. In the **Remote Kibana API Key** field, add an API key to access Kibana on the remote cluster (Cluster B).
 
-    ::::{dropdown} Create an API Key to access Kibana on the remote cluster
+    ::::{dropdown} Create an API key to access Kibana on the remote cluster
     :open:
     1. Copy the API request located below the **Remote Kibana API Key** field.
     2. In the remote cluster (Cluster B), open the {{kib}} menu, then go to **Management** → **Dev Tools** in self-managed deployments, or to **Developer tools** in {{ecloud}} deployments.
@@ -179,7 +178,7 @@ After the integrations synchronization feature is set up, the following {{ccs}} 
 - `<remote_cluster>:logs-*`
 - `<remote_cluster>:metrics-*`
 
-To display these data views, open {{kib}} in your main {{es}} cluster, then go to **Management** -> **Stack management** → **Data Views**.
+To display these data views, open {{kib}} in your main {{es}} cluster, then go to **Management** → **Stack management** → **Data Views**.
 
 ### Troubleshooting
 
@@ -247,7 +246,7 @@ If the integration syncing reports connection errors or fails to report the sync
         GET fleet-synced-integrations-ccr-<output_name>/_search
         ```
 
-        The response should match the the contents of the leader index on the main cluster.
+        The response should match the contents of the leader index on the main cluster.
 
 4. If there is a mismatch between the leader and follower index, wait up to five minutes for the next sync to be completed in each cluster. To check if the sync is completed, inspect the {{kib}} logs and look for the line `[SyncIntegrationsTask] runTask ended: success`.
 
