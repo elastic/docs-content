@@ -50,14 +50,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds the XSOAR connector [#212049]({{kib-pull}}212049).
 * Adds a custom script selector for choosing scripts to execute when using the `runscript` response action [#204965]({{kib-pull}}204965).
 * Updates {{elastic-sec}} Labs Knowledge Base content [#227125]({{kib-pull}}227125).
-* Displays which fields are customized for prebuilt rules [#225939]({{kib-pull}}225939).
 * Bumps default Gemini model [#225917]({{kib-pull}}225917).
 * Groups vulnerabilities by resource and cloud account using IDs instead of names [#225492]({{kib-pull}}225492).
 * Adds prompt tiles to the Security AI Assistant [#224981]({{kib-pull}}224981).
 * Adds support for collapsible sections in integrations READMEs [#223916]({{kib-pull}}223916).
 * Adds advanced policy settings in {{elastic-defend}} to enable collection of file origin information for File, Process, and DLL (ImageLoad) events [#223882]({{kib-pull}}223882), [#222030]({{kib-pull}}222030).
 * Adds the `ecs@mappings` component to the transform destination index template [#223878]({{kib-pull}}223878).
-* Adds the ability to revert prebuilt rules to their base version [#223301]({{kib-pull}}223301).
+* Adds the ability to revert a customized prebuilt rule to its original version [#223301]({{kib-pull}}223301).
+* Displays which fields are customized for prebuilt rules [#225939]({{kib-pull}}225939).
 * Adds an {{elastic-defend}} advanced policy setting that allows you to enable or disable the Microsoft-Windows-Security-Auditing ETW provider for security events collection [#222197]({{kib-pull}}222197).
 * Updates the risk severity color map to match the new design [#222061]({{kib-pull}}222061).
 * Updates the asset criticality status color map to match the new design [#222024]({{kib-pull}}222024).
