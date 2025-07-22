@@ -98,7 +98,7 @@ EPR_BIND_ADDRESS="0.0.0.0"
 EPR_BIND_PORT="8443"
 EPR_TLS_CERT="/etc/elastic/epr/epr.pem"
 EPR_TLS_KEY="/etc/elastic/epr/epr-key.pem"
-EPR_IMAGE="docker.elastic.co/package-registry/distribution:{{stack-version}}"
+EPR_IMAGE="docker.elastic.co/package-registry/distribution:{{version.stack}}"
 
 podman create \
   --name "elastic-epr" \
@@ -149,7 +149,7 @@ ExecStart=/usr/bin/podman run \
   -v /etc/elastic/epr/epr-key.pem:/etc/ssl/epr.key:ro \
   -e EPR_ADDRESS=0.0.0.0:8443 \
   -e EPR_TLS_CERT=/etc/ssl/epr.crt \
-  -e EPR_TLS_KEY=/etc/ssl/epr.key docker.elastic.co/package-registry/distribution:{{stack-version}}
+  -e EPR_TLS_KEY=/etc/ssl/epr.key docker.elastic.co/package-registry/distribution:{{version.stack}}
 ExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id
 ExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id
 Type=notify
@@ -178,7 +178,7 @@ The following example script downloads artifacts from the internet to be later s
 #!/usr/bin/env bash
 set -o nounset -o errexit -o pipefail
 
-STACK_VERSION={{stack-version}}
+STACK_VERSION={{version.stack}}
 ARTIFACT_DOWNLOADS_BASE_URL=https://artifacts.elastic.co/downloads
 
 DOWNLOAD_BASE_DIR=${DOWNLOAD_BASE_DIR:?"Make sure to set DOWNLOAD_BASE_DIR when running this script"}
