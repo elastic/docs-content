@@ -432,9 +432,23 @@ When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-set
    `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.  
    The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a deterministic hash of the original value.
 2. The fully masked conversation is sent to the LLM.
-3. After the LLM responds, the original values are restored so the user sees de-anonymised text and any persisted conversation history stores the original content. 
+3. After the LLM responds, the original values are restored so the user sees deanonymized text and any persisted conversation history stores the original content. Deanonymization information is stored with the conversation messages to enable the UI to highlight anonymized content.
 
-Because the masking is deterministic, the model can still maintain logical consistency (“`EMAIL_x`” always refers to the same address) without ever seeing the real value.
+The following example shows the anonymized content highlighted in the chat window using a regex rule to mask GKE hostnames:
+
+```jsonc
+{
+  "entityClass": "GKE_HOST",
+  "type": "RegExp",
+  "pattern": "(gke-[a-zA-Z0-9-]+-[a-f0-9]{8}-[a-zA-Z0-9]+)",
+  "enabled": true
+}
+```
+
+:::{image} /solutions/images/observability-obs-ai-assistant-anonymization.png
+:alt: AI Assistant chat showing hostname anonymization in action
+:screenshot:
+:::
 
 ### Rule types [obs-ai-anonymization-rules]
 
