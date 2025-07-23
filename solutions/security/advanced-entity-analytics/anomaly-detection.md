@@ -22,7 +22,7 @@ Anomaly detection jobs allow you to to identify anomalous events or patterns in 
 
 
 ::::{tip}
-More details on the creation of anomaly detection jobs can be found in [{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) and background on detection rules in [About detection rules](solutions/security/detect-and-alert/about-detection-rules))
+See [anomaly detection](/explore-analyze/machine-learning/anomaly-detection.md) and [About detection rules](solutions/security/detect-and-alert/about-detection-rules) for more background.
 ::::
 
 
