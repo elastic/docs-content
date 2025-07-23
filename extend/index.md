@@ -2,6 +2,12 @@
 
 This section contains information on how to extend or contribute to our various products.
 
+## Contributing to Elastic documentation
+
+You can contribute to the Elastic documentation in several ways.
+
+Refer to [Contribute to Elastic docs](./contribute/index.md) page for an overview.
+
 ## Contributing to Elastic Projects
 
 You can contribute to various projects, including:
