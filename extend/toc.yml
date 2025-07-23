@@ -1,2 +1,14 @@
 toc:
   - file: index.md
+    children:
+      - file: contribute/index.md
+        children:
+          - file: contribute/api-docs-contribution/index.md
+            children:
+              - file: contribute/api-docs-contribution/overview.md
+              - file: contribute/api-docs-contribution/checklist.md
+              - file: contribute/api-docs-contribution/guidelines.md
+              - file: contribute/api-docs-contribution/organize-annotate.md
+              - file: contribute/api-docs-contribution/quickstart.md
+              - file: contribute/api-docs-contribution/workflows.md
+              - file: contribute/api-docs-contribution/help.md
