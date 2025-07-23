@@ -125,7 +125,7 @@ In order to make requests to the [{{es}} API](elasticsearch://reference/elastics
     * From inside the Kubernetes cluster:
 
         ```sh
-        curl -u "elastic:$PASSWORD" -k "https://quickstart-es-http:9200"
+        curl -u "elastic:$PASSWORD" -k "<ELASTICSEARCH_HOST_URL>:9200"
         ```
 
     * From your local workstation:
