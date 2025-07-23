@@ -8,7 +8,7 @@ products:
 
 # Visualize case data [visualize-case-data]
 
-Case data is stored in case analytics indices, which include data from case comments, attachments, and activity. You can query this information to build dashboards and metrics that improve your visibility into case patterns and trends.
+Case data is stored in case analytics indices, which include data from case comments, attachments, and activity. You can query this information to build dashboards and metrics that improve your visibility into case, usage, patterns, and trends.
 
 ## About case analytics indices [about-case-analytics-indices]
 
