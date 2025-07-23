@@ -52,7 +52,7 @@ You can also check the status of {{ml}} detection rules, and start or stop their
     :::
 
 ::::{tip}
-For an overview of creating machine learning rules, see [Create a detection rule](/solutions/security/detect-and-alert/create-detection-rule#create-ml-rule).
+For an overview of creating machine learning rules, see [Create a detection rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule).
 ::::
 
 
