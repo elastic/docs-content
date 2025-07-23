@@ -12,7 +12,7 @@ Learn how to contribute to Elastic's Open API docs across our various product re
 
 3. [**Core guidelines**](./guidelines.md) - Learn universal principles for writing clear, informative, and valid API docs, including how to write summaries and descriptions, and how to add links and examples.
 
-4. [**Organize and annotate**](./organize-annotate.md) - Learn how to document API lifecycle status, deployment availability, and required permissions.
+4. [**Organize and annotate**](./organize-annotate.md) - Learn how to group your APIs using tags and how to signal lifecycle status, deployment-type availability, and required permissions.
 
 5. [**Contribute locally: Elasticsearch**](./quickstart.md) - Follow a step-by-step guide to contribute to Elasticsearch API docs, including environment setup, local development workflow, and preview generation.
 
