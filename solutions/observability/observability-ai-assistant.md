@@ -437,7 +437,7 @@ When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-set
 2. The fully masked conversation is sent to the LLM.
 3. After the LLM responds, the original values are restored so the user sees deanonymized text and any persisted conversation history stores the original content. Deanonymization information is stored with the conversation messages to enable the UI to highlight anonymized content.
 
-The following example shows the anonymized content highlighted in the chat window using a regex rule to mask GKE hostnames:
+The following example shows the anonymized content highlighted in the chat window using a `RegExp` rule to mask GKE hostnames:
 
 ```jsonc
 {
