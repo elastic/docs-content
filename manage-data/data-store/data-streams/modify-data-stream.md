@@ -214,9 +214,8 @@ To change a [dynamic index setting](elasticsearch://reference/elasticsearch/inde
 
 
 ::::{important}
-To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](../../lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#switch-lifecycle-policies).
+To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
 ::::
-
 
 
 ### Change a static index setting for a data stream [change-static-index-setting-for-a-data-stream]
