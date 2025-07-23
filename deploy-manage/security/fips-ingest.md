@@ -20,6 +20,13 @@ Generally speaking FIPS 140-2 requirements can be summarized as:
 - using only FIPS approved cryptographic functions
 - ensuring that the configuration of the component is FIPS 140-2 compliant.
 
+## FIPS-compatible binaries and configuration [fips-binaries]
+
+FIPS compatible binaries for {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are available for [download](https://www.elastic.co/downloads). Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download page.  
+
+:::{important}
+The default configurations provided in the binaries are FIPS compatible. Be sure to check and understand the implications of changing default configurations. 
+:::
 
 ## Limitations [ingest-limitations-all]
 
@@ -86,11 +93,3 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
   - [Microsoft SQL Server Integration](integration-docs://reference/microsoft_sqlserver.md)
   - [Oracle Integration](integration-docs://reference/oracle.md)
 
-
-## FIPS-compatible binaries and configuration [fips-binaries]
-
-FIPS compatible binaries for {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are available for [download](https://www.elastic.co/downloads). Look for `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download page.  
-
-:::{important}
-The default configurations provided in the binaries are FIPS compatible. Be sure to check and understand the implications of changing default configurations. 
-:::
