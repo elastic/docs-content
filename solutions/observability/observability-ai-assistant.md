@@ -418,7 +418,10 @@ Enable this feature from the **Settings** tab in AI Assistant Settings by using 
 For air-gapped environments, installing product documentation requires special configuration. See the [{{kib}} AI Assistants settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions.
 ::::
 
-## Anonymization (technical preview) [obs-ai-anonymization]
+## Anonymization [obs-ai-anonymization]
+```{applies_to}
+serverless: preview
+stack: preview 9.1
 
 Anonymization masks personally identifiable or otherwise sensitive information before chat messages leave Kibana for a third-party LLM.
 Enabled rules substitute deterministic tokens (for example `EMAIL_ee4587…`) so the model can keep context without ever seeing the real value.
