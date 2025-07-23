@@ -20,7 +20,7 @@ This evolution seeks to elevate documentation to being a first-class citizen in 
 
 | Era | Developer tasks | Approach | Publication |
 | --- | --- | --- | --- |
-| **Yesterday (8.x and earlier)** | Code + spec + manual API docs | Manual maintenance | - Hand-written in Asciidoc <br> - Published at [elastic.co/guide](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/rest-apis.html)) |
+| **Yesterday (8.x and earlier)** | Code + spec + manual API docs | Manual maintenance | - Hand-written in Asciidoc <br> - Published at [elastic.co/guide](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/rest-apis.html) |
 | **Today (9.0+)** | Code + spec | Docs generated from spec |- Hosted by [Bump.sh](https://www.elastic.co/docs/api/)<br> - Different UX to other [elastic.co/docs](https://www.elastic.co/docs) pages
 
 ## High-level process
