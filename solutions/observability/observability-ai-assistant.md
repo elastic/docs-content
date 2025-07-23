@@ -456,7 +456,7 @@ The following example shows the anonymized content highlighted in the chat windo
 ### Rule types [obs-ai-anonymization-rules]
 
 
-**RegExp**: Runs a JavaScript‑style regular expression. Use for fixed patterns such as e‑mail addresses, host names, etc.
+**RegExp**: Runs a JavaScript‑style regular expression. Use for fixed patterns such as email addresses, host names, etc.
 
 ```jsonc
 {
