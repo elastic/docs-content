@@ -14,14 +14,17 @@ products:
 # Anomaly detection
 
 
-::::{note} [{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) functionality is available when you have the appropriate role, subscription, are using a [cloud deployment](https://cloud.elastic.co/registration?page=docs&placement=docs-body), or are testing out a **Free Trial**. Refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for more information.
+::::{note}
+[{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) functionality is available when you have the appropriate role, subscription, are using a [cloud deployment](https://cloud.elastic.co/registration?page=docs&placement=docs-body), or are testing out a **Free Trial**. Refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for more information.
 ::::
 
 Anomaly detection jobs allow you to to identify anomalous events or patterns in your data. In a security context, they are typically used with detection rules to create alerts when there is divergence from baseline data.
 
+
 ::::{tip}
-More details on the creation of anomaly detection jobs can be found in [{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) and background on detection rules in [solutions/security/detect-and-alert/about-detection-rules](About detection rules)
+More details on the creation of anomaly detection jobs can be found in [{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) and background on detection rules in [About detection rules](solutions/security/detect-and-alert/about-detection-rules))
 ::::
+
 
 ## Manage {{ml}} jobs [manage-jobs]
 
@@ -52,7 +55,7 @@ You can also check the status of {{ml}} detection rules, and start or stop their
     :::
 
 ::::{tip}
-For an overview of creating machine learning rules, see [Create a detection rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule).
+For an overview of creating machine learning rules, see [Create a machine learning rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule).
 ::::
 
 
