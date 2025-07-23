@@ -13,7 +13,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-07222025-features-enhancements]
 
-* Improves perceived performance for dashboard flyouts [#226052]({{kib-pull}}226052).
+* Improves perceived performance for dashboard flyouts [#226052]({{kib-pull}}226052)
 * Renders {{esql}} controls using **OptionsList** UI components [#227334]({{kib-pull}}227334).
 * Adds `MIGRATE` to signed actions [#228566]({{kib-pull}}228566).
 * Excludes metrics data streams [#227842]({{kib-pull}}227842).
@@ -25,11 +25,11 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Introduces a public "test now" endpoint [#227760]({{kib-pull}}227760).
 * Enables custom roles by default [#227878]({{kib-pull}}227878).
 * Allows submitting case comments by pressing **⌘+Enter** (or **Ctrl+Enter**) [#228473]({{kib-pull}}228473).
-* Increases the number of supported group-by fields in threshold rules from 3 to 5 [#227465]({{kib-pull}}227465).
+* Increases the number of supported **Group by** fields in threshold rules from 3 to 5 [#227465]({{kib-pull}}227465).
 
 ### Fixes [serverless-changelog-07222025-fixes]
 
-* Fixes an issue in **Lens** where **Partition** charts (e.g., Pie) blocked selection of legacy palettes [#228051]({{kib-pull}}228051).
+* Fixes an issue in **Lens** where **Partition** charts (for example, Pie) blocked selection of legacy palettes [#228051]({{kib-pull}}228051).
 * Correctly forwards the secondary prefix when the state value is an empty string (`None` option) in **Lens** [#228183]({{kib-pull}}228183).
 * Fixes loading state and improves error handling in the dashboard save modal [#227861]({{kib-pull}}227861).
 * Hides hidden indices from autocomplete when using a lookup index [#227819]({{kib-pull}}227819).
@@ -43,7 +43,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables soft-deleting of rule gaps on rule deletion [#227231]({{kib-pull}}227231).
 * Migrates the anonymization in-memory table to `EuiBasicTable` for improved selection control [#222825]({{kib-pull}}222825).
 * Fixes styling issues in flyouts [#228078]({{kib-pull}}228078).
-* Fixes submenu behavior in the solution nav when collapsed [#227705]({{kib-pull}}227705).
+* Fixes sub-menu behavior in the solution nav when collapsed [#227705]({{kib-pull}}227705).
 
 
 ## July 15, 2025 [serverless-changelog-07152025]
