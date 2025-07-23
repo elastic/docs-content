@@ -1,8 +1,10 @@
 ---
-navigation_title: Contribute
+navigation_title: Contribute to docs
 ---
 
-# Contribute to Elastic docs
+# Contribute to Elastic documentation
+
+Find the relevant pages for contributing to the official Elastic documentation.
 
 ## Contribute to current docs
 
