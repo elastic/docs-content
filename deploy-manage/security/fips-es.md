@@ -9,10 +9,9 @@ products:
 # FIPS compliance for {{es}} [fips-elasticsearch]
 
 
-::::{important}
+:::{important}
 The JVM bundled with {{es}} is not configured for FIPS 140-2. You must configure an external JDK with a FIPS 140-2 certified Java Security Provider. Refer to the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for supported JVM configurations. See [subscriptions](https://www.elastic.co/subscriptions) for required licensing.
-::::
-
+:::
 
 Compliance with FIPS 140-2 requires using only FIPS approved / NIST recommended cryptographic algorithms. Generally this can be done by the following:
 
@@ -143,10 +142,9 @@ To verify that the security provider is installed and in use, you can use any of
 
 Alternatively, consider using {{ech}} in the [FedRAMP-certified GovCloud region](https://www.elastic.co/industries/public-sector/fedramp).
 
-::::{important}
+:::{important}
 Some encryption algorithms may no longer be available by default in updated FIPS 140-2 security providers. Notably, Triple DES and PKCS1.5 RSA are now discouraged and [Bouncy Castle](https://www.bouncycastle.org/fips-java) now requires explicit configuration to continue using these algorithms.
-
-::::
+:::
 
 
 If you plan to upgrade your existing cluster to a version that can be run in a FIPS 140-2 configured JVM, we recommend to first perform a rolling upgrade to the new version in your existing JVM and perform all necessary configuration changes in preparation for running in FIPS 140-2 mode. You can then perform a rolling restart of the nodes, starting each node in a FIPS 140-2 JVM. During the restart, {{es}}:

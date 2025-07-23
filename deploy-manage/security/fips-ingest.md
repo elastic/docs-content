@@ -87,8 +87,10 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
   - [Oracle Integration](integration-docs://reference/oracle.md)
 
 
-## FIPS-compatible binaries [fips-binaries]
+## FIPS-compatible binaries and configuration [fips-binaries]
 
-- Where to get them
-- Use binaries or build your own
+FIPS compatible binaries for {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are available for [download](https://www.elastic.co/downloads). Look for `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download page.  
 
+:::{important}
+The default configurations provided in the binaries are FIPS compatible. Be sure to check and understand the implications of changing default configurations. 
+:::
