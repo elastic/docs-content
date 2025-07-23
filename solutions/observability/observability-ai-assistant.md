@@ -422,6 +422,7 @@ For air-gapped environments, installing product documentation requires special c
 ```{applies_to}
 serverless: preview
 stack: preview 9.1
+```
 
 Anonymization masks personally identifiable or otherwise sensitive information before chat messages leave Kibana for a third-party LLM.
 Enabled rules substitute deterministic tokens (for example `EMAIL_ee4587…`) so the model can keep context without ever seeing the real value.
@@ -436,22 +437,6 @@ When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-set
    The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a deterministic hash of the original value.
 2. The fully masked conversation is sent to the LLM.
 3. After the LLM responds, the original values are restored so the user sees deanonymized text and any persisted conversation history stores the original content. Deanonymization information is stored with the conversation messages to enable the UI to highlight anonymized content.
-
-The following example shows the anonymized content highlighted in the chat window using a `RegExp` rule to mask GKE hostnames:
-
-```jsonc
-{
-  "entityClass": "GKE_HOST",
-  "type": "RegExp",
-  "pattern": "(gke-[a-zA-Z0-9-]+-[a-f0-9]{8}-[a-zA-Z0-9]+)",
-  "enabled": true
-}
-```
-
-:::{image} /solutions/images/observability-obs-ai-assistant-anonymization.png
-:alt: AI Assistant chat showing hostname anonymization in action
-:screenshot:
-:::
 
 ### Rule types [obs-ai-anonymization-rules]
 
@@ -479,6 +464,24 @@ The following example shows the anonymized content highlighted in the chat windo
 ```
 
 Rules are evaluated top-to-bottom with `RegExp` rules processed first, then `NER` rules; the first rule that captures a given entity wins. Rules can be configured in the [AI Assistant Settings](#obs-ai-settings) page.
+
+### Example
+
+The following example shows the anonymized content highlighted in the chat window using a `RegExp` rule to mask GKE hostnames:
+
+```jsonc
+{
+  "entityClass": "GKE_HOST",
+  "type": "RegExp",
+  "pattern": "(gke-[a-zA-Z0-9-]+-[a-f0-9]{8}-[a-zA-Z0-9]+)",
+  "enabled": true
+}
+```
+
+:::{image} /solutions/images/observability-obs-ai-assistant-anonymization.png
+:alt: AI Assistant chat showing hostname anonymization in action
+:screenshot:
+:::
 
 ### Requirements [obs-ai-anonymization-requirements]
 Anonymization requires the following:
