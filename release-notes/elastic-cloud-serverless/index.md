@@ -19,12 +19,12 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Excludes metrics data streams [#227842]({{kib-pull}}227842).
 * Adds a package rollback API [#226754]({{kib-pull}}226754).
 * Displays related error count and adds a failure badge [#227413]({{kib-pull}}227413).
-* Adds form row labels to the ESQL Editor [#228103]({{kib-pull}}228103).
+* Adds form row labels to the {{esql}} Editor [#228103]({{kib-pull}}228103).
 * Registers a UI setting for anonymization [#224607]({{kib-pull}}224607).
 * Adds support for span types [#227208]({{kib-pull}}227208).
 * Introduces a public "test now" endpoint [#227760]({{kib-pull}}227760).
 * Enables custom roles by default [#227878]({{kib-pull}}227878).
-* Allows submitting case comments by pressing ⌘+Enter (or Ctrl+Enter) [#228473]({{kib-pull}}228473).
+* Allows submitting case comments by pressing **⌘+Enter** (or **Ctrl+Enter**) [#228473]({{kib-pull}}228473).
 * Increases the number of supported group-by fields in threshold rules from 3 to 5 [#227465]({{kib-pull}}227465).
 
 ### Fixes [serverless-changelog-07222025-fixes]
