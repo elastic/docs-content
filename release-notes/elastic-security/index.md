@@ -77,6 +77,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates the Detection rule monitoring dashboard to include rule gaps histogram [#214694]({{kib-pull}}214694).
 * Adds support for multiple CVEs and improves vulnerability data grid, flyout, and contextual flyout UI [#213039]({{kib-pull}}213039).
 * Adds support for the `MV_EXPAND` command for the {{esql}} rule type [#212675]({{kib-pull}}212675).
+* Adds support for partial results for the {{esql}} rule type [#223198]({{kib-pull}}223198).
 * Updates the data view selector in Timelines [#210585]({{kib-pull}}210585).
 * Adds `unassigned` as an asset criticality level for bulk uploads [#208884]({{kib-pull}}208884).
 * Enables `isolate` and `release` response actions from the event details flyout [#206857]({{kib-pull}}206857).
