@@ -22,7 +22,7 @@ Instead, you can use {{ml}} models for ingest, search and chat independently of 
 {applies_to}`stack: preview 9.1`
 {applies_to}`serverless: preview`
 
-ELSER on EIS enables you to use the ELSER model without using ML nodes in your infrastructure.
+ELSER on EIS enables you to use the ELSER model without using ML nodes in your infrastructure and with that, it simplifies the semantic search and hybrid search experience.
 
 ### Limitations
 
