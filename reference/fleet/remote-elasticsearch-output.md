@@ -103,29 +103,13 @@ Click **Save and apply settings**.
 
 After the output is created, you can update an {{agent}} policy to use the new output, and send data to the remote {{es}} cluster:
 
-:::::{stepper}
+1. In the main cluster (Cluster A), go to **{{fleet}}**, then open the **Agent policies** tab.
+2. Click the agent policy you want to update, then click **Settings**.
+3. To send integrations data, set the **Output for integrations** option to use the output that you configured in the previous steps.
+4. To send {{agent}} monitoring data, set the **Output for agent monitoring** option to use the output that you configured in the previous steps.
+5. Click **Save changes**.
 
-::::{step}
-In the main cluster (Cluster A), go to **{{fleet}}**, then open the **Agent policies** tab.
-::::
-
-::::{step}
-Click the agent policy you want to update, then click **Settings**.
-::::
-
-::::{step}
-To send integrations data, set the **Output for integrations** option to use the output that you configured in the previous steps.
-::::
-
-::::{step}
-To send {{agent}} monitoring data, set the **Output for agent monitoring** option to use the output that you configured in the previous steps.
-::::
-
-::::{step}
-Click **Save changes**. The remote {{es}} output is now configured for the remote cluster (Cluster B).
-::::
-
-:::::
+The remote {{es}} output is now configured for the remote cluster.
 
 If you choose not to synchronize integrations automatically, you need to make sure that for any integrations that are [added to your {{agent}} policy](/reference/fleet/add-integration-to-policy.md), the integration assets are also installed on the remote {{es}} cluster. For detailed steps on this process, refer to [Install and uninstall {{agent}} integration assets](/reference/fleet/install-uninstall-integration-assets.md).
 
