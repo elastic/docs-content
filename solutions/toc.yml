@@ -77,8 +77,6 @@ toc:
           - file: search/async-search-api.md
           - file: search/esql-for-search.md
           - file: search/retrievers-overview.md
-            children:
-              - file: search/retrievers-examples.md
           - file: search/search-templates.md
       - file: search/site-or-app.md
         children:

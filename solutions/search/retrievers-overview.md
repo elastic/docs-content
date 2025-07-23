@@ -18,10 +18,6 @@ This syntax enables the configuration of multi-stage retrieval pipelines within 
 This document provides a general overview of the retriever abstraction. For a full syntax reference and implementation overview, check out the [reference documentation](elasticsearch://reference/elasticsearch/rest-apis/retrievers.md) in the `_search` API docs.
 ::::
 
-::::{tip}
-Prefer to start with some sample code? Check out [](retrievers-examples.md) for a collection of retriever examples.
-::::
-
 ## Retriever types [retrievers-overview-types]
 
 Retrievers come in various types, each tailored for different search operations. The following retrievers are currently available:
@@ -120,8 +116,7 @@ GET example-index/_search
 ```
 ::::
 
-For more examples, refer to [retriever examples](retrievers-examples.md).
-
+For more examples, refer to [retriever examples](elasticsearch://reference/elasticsearch/rest-apis/retrievers/retrievers-examples.md).
 
 ## Glossary [retrievers-overview-glossary]
 
