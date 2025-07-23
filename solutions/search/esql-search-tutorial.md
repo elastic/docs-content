@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: preview 9.0
-  serverless: preview
+  stack: preview 9.0, ga 9.1
+  serverless: ga
 navigation_title: Search and filter with ES|QL
 ---
 
@@ -19,7 +19,7 @@ In this scenario, we're implementing search for a cooking blog. The blog contain
 
 ## Requirements
 
-You'll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
+You need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
 Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 
@@ -29,7 +29,7 @@ curl -fsSL https://elastic.co/start-local | sh
 
 ## Running {{esql}} queries
 
-In this tutorial, you'll see {{esql}} examples in the following format:
+In this tutorial, {{esql}} examples are displayed in the following format:
 
 ```esql
 FROM cooking_blog
@@ -37,7 +37,7 @@ FROM cooking_blog
 | LIMIT 1000
 ```
 
-If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you'll need to use the following syntax:
+If you want to run these queries in the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console), you need to use the following syntax:
 
 ```console
 POST /_query?format=txt
@@ -145,61 +145,103 @@ POST /cooking_blog/_bulk?refresh=wait_for
 {"title":"Crispy Oven-Fried Chicken","description":"Get that perfect crunch without the deep fryer! This oven-fried chicken recipe delivers crispy, juicy results every time. A healthier take on the classic comfort food.","author":"Maria Rodriguez","date":"2023-05-20","category":"Main Course","tags":["chicken","oven-fried","healthy"],"rating":4.9}
 ```
 
-## Step 3: Perform basic full-text searches
+## Step 3: Basic search operations
 
-Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document's content aligns with the search terms. Elasticsearch offers various query types, each with its own method for matching text and relevance scoring.
+Full-text search involves executing text-based queries across one or more document fields. In this section, we start with simple text matching and build up to understanding how search results are ranked.
 
-:::{tip}
-{{esql}} provides two ways to perform full-text searches:
+{{esql}} provides multiple functions for full-text search, including `MATCH`, `MATCH_PHRASE`, and `QSTR`. For basic text matching, you can use either:
 
 1. Full [match function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) syntax: `match(field, "search terms")`
-1. Compact syntax using the [match operator `:`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator): `field:"search terms"`
+2. Compact syntax using the [match operator `:`](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator): `field:"search terms"`
 
-Both are equivalent and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We'll use the compact syntax in most examples for brevity.
+Both are equivalent for basic matching and can be used interchangeably. The compact syntax is more concise, while the function syntax allows for more configuration options. We use the compact syntax in most examples for brevity.
 
-Refer to the [match function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) reference docs for advanced parameters available with the function syntax.
-:::
+Refer to the [`MATCH` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) reference docs for advanced parameters available with the function syntax.
 
-### Basic full-text query
+### Make your first search query
 
-Here's how to search the `description` field for "fluffy pancakes":
-
-```esql
-FROM cooking_blog  # Specify the index to search
-| WHERE description:"fluffy pancakes"  # Full-text search with OR logic by default
-| LIMIT 1000  # Return up to 1000 results
-```
-
-:::{note}
-The results ordering isn't by relevance, as we haven't requested the `_score` metadata field. We'll cover relevance scoring in the next section.
-:::
-
-By default, like the Query DSL `match` query, {{esql}} uses `OR` logic between terms. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
-
-:::{tip}
-You can control which fields to include in the response using the `KEEP` command:
+Let's start with the simplest possible search - looking for documents that contain specific words:
 
 ```esql
 FROM cooking_blog
 | WHERE description:"fluffy pancakes"
-| KEEP title, description, rating  # Select only specific fields to include in response
 | LIMIT 1000
 ```
-:::
 
-### Require all terms in a match query
+This query searches the `description` field for documents containing either "fluffy" OR "pancakes" (or both). By default, {{esql}} uses OR logic between search terms, so it matches documents that contain any of the specified words.
 
-Sometimes you need to require that all search terms appear in the matching documents. Here's how to do that using the function syntax with the `operator` parameter:
+### Control which fields appear in results
+
+You can specify exactly which fields to include in your results using the `KEEP` command:
 
 ```esql
 FROM cooking_blog
-| WHERE match(description, "fluffy pancakes", {"operator": "AND"})  # Require ALL terms to match
+| WHERE description:"fluffy pancakes"
+| KEEP title, description, rating
+| LIMIT 1000
+```
+
+This helps reduce the amount of data returned and focuses on the information you need.
+
+### Understand relevance scoring
+
+Search results can be ranked by how well they match your query. To calaculate and use relevance scores, you need to explicitly request the `_score` metadata:
+
+```esql
+FROM cooking_blog METADATA _score
+| WHERE description:"fluffy pancakes"
+| KEEP title, description, _score
+| SORT _score DESC
+| LIMIT 1000
+```
+
+Notice two important things:
+1. `METADATA _score` tells {{esql}} to include relevance scores in the results
+2. `SORT _score DESC` orders results by relevance (highest scores first)
+
+If you don't include `METADATA _score` in your query, you won't see relevance scores in your results. This means you won't be able to sort by relevance or filter based on relevance scores.
+
+Without explicit sorting, results aren't ordered by relevance even when scores are calculated. If you want the most relevant results first, you must sort by `_score`, by explicitly using `SORT _score DESC` or `SORT _score ASC`.
+
+:::{tip}
+When you include `METADATA _score`, search functions included in `WHERE` conditions contribute to the relevance score. Filtering operations (like range conditions and exact matches) don't affect the score.
+:::
+
+### Find exact matches
+
+Sometimes you need exact matches rather than full-text search. Use the `.keyword` field for case-sensitive exact matching:
+
+```esql
+FROM cooking_blog
+| WHERE category.keyword == "Breakfast"  # Exact match (case-sensitive)
+| KEEP title, category, rating
+| SORT rating DESC
+| LIMIT 1000
+```
+
+This is fundamentally different from full-text search - it's a binary yes/no filter that doesn't affect relevance scoring.
+
+## Step 4: Search precision control
+
+Now that you understand basic searching, let's explore how to control the precision of your text matches.
+
+### Require all search terms (AND logic)
+
+By default, searches with match use OR logic between terms. To require ALL terms to match, use the function syntax with the `operator` parameter to specify AND logic:
+
+```esql
+FROM cooking_blog
+| WHERE match(description, "fluffy pancakes", {"operator": "AND"})
 | LIMIT 1000
 ```
 
 This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
 
-### Specify a minimum number of terms to match
+:::{note}
+The `MATCH` function with AND logic doesn't require terms to be adjacent or in order. It only requires that all terms appear somewhere in the field. Use `MATCH_PHRASE` to [search for exact phrases](#search-for-exact-phrases).
+:::
+
+### Set a minimum number of terms to match
 
 Sometimes requiring all terms is too strict, but the default OR behavior is too lenient. You can specify a minimum number of terms that must match:
 
@@ -211,7 +253,20 @@ FROM cooking_blog
 
 This query searches the title field to match at least 2 of the 3 terms: "fluffy", "pancakes", or "breakfast".
 
-## Step 4: Semantic search and hybrid search
+### Search for exact phrases
+
+When you need to find documents containing an exact sequence of words, use the `MATCH_PHRASE` function:
+
+```esql
+FROM cooking_blog
+| WHERE MATCH_PHRASE(description, "rich and creamy")
+| KEEP title, description
+| LIMIT 1000
+```
+
+This query only matches documents where the words "rich and creamy" appear exactly in that order in the description field.
+
+## Step 5: Semantic search and hybrid search
 
 ### Index semantic content
 
@@ -271,9 +326,36 @@ FROM cooking_blog METADATA _score
 | LIMIT 5
 ```
 
-## Step 5: Search across multiple fields at once
+This query searches the `semantic_description` field for documents that are semantically similar to "easy to prepare vegetarian meals" with a higher weight, while also matching the `tags` field for "vegetarian" with a lower weight. The results are sorted by relevance score.
 
-When users enter a search query, they often don't know (or care) whether their search terms appear in a specific field. {{esql}} provides ways to search across multiple fields simultaneously:
+Learn how to combine these with complex criteria in [Step 8](#step-8-complex-search-solutions).
+
+## Step 6: Advanced search features
+
+Once you're comfortable with basic search precision, these advanced features give you powerful search capabilities.
+
+### Use query string for complex patterns
+
+The `QSTR` function enables powerful search patterns using a compact query language. It's ideal for when you need wildcards, fuzzy matching, and boolean logic in a single expression:
+
+```esql
+FROM cooking_blog
+| WHERE QSTR(description, "fluffy AND pancak* OR (creamy -vegan)")
+| KEEP title, description
+| LIMIT 1000
+```
+
+Query string syntax lets you:
+- Use boolean operators: `AND`, `OR`, `-` (NOT)
+- Apply wildcards: `pancak*` matches "pancake" and "pancakes"
+- Enable fuzzy matching: `pancake~1` for typo tolerance
+- Group terms: `(thai AND curry) OR pasta`
+- Search exact phrases: `"fluffy pancakes"`
+- Search across fields: `QSTR("title,description", "pancake OR (creamy AND rich)")`
+
+### Search across multiple fields
+
+When users enter a search query, they often don't know (or care) whether their search terms appear in a specific field. You can search across multiple fields simultaneously:
 
 ```esql
 FROM cooking_blog
@@ -283,41 +365,35 @@ FROM cooking_blog
 
 This query searches for "vegetarian curry" across the title, description, and tags fields. Each field is treated with equal importance.
 
-However, in many cases, matches in certain fields (like the title) might be more relevant than others. We can adjust the importance of each field using scoring:
+### Weight different fields
+
+In many cases, matches in certain fields (like the title) might be more relevant than others. You can adjust the importance of each field using boost scoring:
 
 ```esql
-FROM cooking_blog METADATA _score  # Request _score metadata for relevance-based results
+FROM cooking_blog METADATA _score
 | WHERE match(title, "vegetarian curry", {"boost": 2.0})  # Title matches are twice as important
     OR match(description, "vegetarian curry")
     OR match(tags, "vegetarian curry")
-| KEEP title, description, tags, _score  # Include relevance score in results
-| SORT _score DESC  # You must explicitly sort by `_score` to see relevance-based results
+| KEEP title, description, tags, _score
+| SORT _score DESC
 | LIMIT 1000
 ```
 
-:::{tip}
-When working with relevance scoring in ES|QL, it's important to understand `_score`. If you don't include `METADATA _score` in your query, you won't see relevance scores in your results. This means you won't be able to sort by relevance or filter based on relevance scores.
-
-When you include `METADATA _score`, search functions included in WHERE conditions contribute to the relevance score. Filtering operations (like range conditions and exact matches) don't affect the score.
-
-If you want the most relevant results first, you must sort by `_score`, by explicitly using `SORT _score DESC` or `SORT _score ASC`.
-:::
-
-## Step 6: Filter and find exact matches
+## Step 7: Filtering and exact matching
 
 Filtering allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don't need to be scored.
 
+### Basic filtering by category
+
 ```esql
 FROM cooking_blog
-| WHERE category.keyword == "Breakfast"  # Exact match using keyword field(case-sensitive)
+| WHERE category.keyword == "Breakfast"  # Exact match using keyword field
 | KEEP title, author, rating, tags
 | SORT rating DESC
 | LIMIT 1000
 ```
 
-Note the use of `category.keyword` here. This refers to the [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) multi-field of the `category` field, ensuring an exact, case-sensitive match.
-
-### Search for posts within a date range
+### Date range filtering
 
 Often users want to find content published within a specific time frame:
 
@@ -328,9 +404,21 @@ FROM cooking_blog
 | LIMIT 1000
 ```
 
-### Find exact matches
+### Numerical range filtering
 
-Sometimes users want to search for exact terms to eliminate ambiguity in their search results:
+Filter by ratings or other numerical values:
+
+```esql
+FROM cooking_blog
+| WHERE rating >= 4.5  # Only highly-rated recipes
+| KEEP title, author, rating, tags
+| SORT rating DESC
+| LIMIT 1000
+```
+
+### Exact author matching
+
+Find recipes by a specific author:
 
 ```esql
 FROM cooking_blog
@@ -340,11 +428,13 @@ FROM cooking_blog
 | LIMIT 1000
 ```
 
-Like the `term` query in Query DSL, this has zero flexibility and is case-sensitive.
+## Step 8: Complex search solutions
 
-## Step 7: Combine multiple search criteria
+Real-world search often requires combining multiple types of criteria. This section shows how to build sophisticated search experiences.
 
-Complex searches often require combining multiple search criteria:
+### Combine filters with full-text search
+
+Mix filters, full-text search, and custom scoring in a single query:
 
 ```esql
 FROM cooking_blog METADATA _score
@@ -356,23 +446,22 @@ FROM cooking_blog METADATA _score
 | LIMIT 1000
 ```
 
-### Combine relevance scoring with custom criteria
+### Advanced relevance scoring
 
-For more complex relevance scoring with combined criteria, you can use the `EVAL` command to calculate custom scores:
+For complex relevance scoring with combined criteria, you can use the `EVAL` command to calculate custom scores:
 
 ```esql
 FROM cooking_blog METADATA _score
 | WHERE NOT category.keyword == "Dessert"
 | EVAL tags_concat = MV_CONCAT(tags.keyword, ",")  # Convert multi-value field to string
 | WHERE tags_concat LIKE "*vegetarian*" AND rating >= 4.5  # Wildcard pattern matching
-| WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy") # Uses full text functions, will update _score metadata field
+| WHERE match(title, "curry spicy", {"boost": 2.0}) OR match(description, "curry spicy")
 | EVAL category_boost = CASE(category.keyword == "Main Course", 1.0, 0.0)  # Conditional boost
 | EVAL date_boost = CASE(DATE_DIFF("month", date, NOW()) <= 1, 0.5, 0.0)  # Boost recent content
 | EVAL custom_score = _score + category_boost + date_boost  # Combine scores
 | WHERE custom_score > 0  # Filter based on custom score
 | SORT custom_score DESC
 | LIMIT 1000
-  
 ```
 
 ## Learn more

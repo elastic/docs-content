@@ -79,7 +79,7 @@ At a minimum, you should size your deployment to tolerate the temporary loss of 
 ::::{admonition} Availability zones and sizing recommendations
 Increasing the number of zones should not be used to add more resources. The concept of zones is meant for high availability (two zones) and fault tolerance (three zones), but neither will work if the cluster relies on the resources from those zones to be operational.
 
-You should to scale up the resources within a single zone until the cluster can take the full load, adding some buffer to be prepared for a peak of requests. You should then scale out by adding additional zones depending on your requirements: two zones for high availability, three zones for fault tolerance.
+You should scale up the resources within a single zone until the cluster can take the full load, adding some buffer to be prepared for a peak of requests. You should then scale out by adding additional zones depending on your requirements: two zones for high availability, three zones for fault tolerance.
 ::::
 
 

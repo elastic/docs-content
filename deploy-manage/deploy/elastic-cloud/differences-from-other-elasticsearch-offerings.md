@@ -65,9 +65,10 @@ This table compares the core platform capabilities between {{ech}} deployments a
 | **Deployment health monitoring** | AutoOps or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
+| **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | Public IP traffic filtering, private connectivity (VPCs, PrivateLink) | **Planned** | - Traffic filtering anticipated in a future release <br>- Private connectivity options anticipated in a future release |
+| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering | Private connectivity options anticipated in a future release |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
@@ -109,7 +110,7 @@ This table compares Observability capabilities between {{ech}} deployments and S
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
-| [**Android agent/SDK instrumentation**](apm-agent-android://reference/index.md) | ✅ | ❌ | Not available in Serverless |
+| [**Android agent/SDK instrumentation**](opentelemetry://reference/edot-sdks/android/index.md) | ✅ | ❌ | Not available in Serverless |
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
 | **Custom roles for Kibana Spaces** | ✅ | **Planned** | Anticipated in a future release |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
@@ -118,7 +119,7 @@ This table compares Observability capabilities between {{ech}} deployments and S
 | **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |
 | **[Fleet server](/reference/fleet/fleet-server.md)** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
 | [**Index lifecycle management**](/manage-data/lifecycle/index-lifecycle-management.md) | ✅ | ❌ | Use [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) instead |
-| **[iOS agent/SDK instrumentation](apm-agent-ios://reference/index.md)** | ✅ | ❌ | Not available in Serverless |
+| **[iOS agent/SDK instrumentation](opentelemetry://reference/edot-sdks/ios/index.md)** | ✅ | ❌ | Not available in Serverless |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
@@ -162,7 +163,10 @@ These recommendations do not apply to indices using better binary quantization (
 
 ## Available {{es}} APIs [elasticsearch-differences-serverless-apis-availability]
 
-Because {{serverless-full}} manages infrastructure automatically, certain Elasticsearch APIs are not available:
+In {{serverless-full}}, access is limited to a subset of {{es}} APIs, as Elastic manages the underlying infrastructure. These restrictions help maintain cluster stability, availability, and data integrity, ensuring reliable operation of Serverless projects.
+
+The following {{es}} APIs are not available in {{serverless-full}}:
+
 
 Infrastructure operations
 :   * All `_nodes/*` operations
@@ -201,7 +205,7 @@ Refer to the [{{es-serverless}} API reference](https://www.elastic.co/docs/api/d
 
 ## Available {{es}} settings [elasticsearch-differences-serverless-settings-availability]
 
-In {{serverless-full}} Elasticsearch projects, you can only configure [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md). Cluster-level settings and node-level settings are fully managed by Elastic.
+In {{serverless-full}} projects, configuration available to users is limited to certain [index-level settings](elasticsearch://reference/elasticsearch/index-settings/index.md), while Elastic manages cluster-level and node-level settings to maintain stability, availability, performance, and data integrity. These restrictions help ensure the reliability of Serverless projects.
 
 Available settings
 :   **Index-level settings**: Settings that control how documents are processed, stored, and searched are available to end users. These include:
@@ -218,6 +222,24 @@ Managed settings
     * Cluster topology
     * Shard allocation
     * Resource management
+
+When attempting to use an unavailable index setting, you'll receive this error:
+
+```json
+{
+    "error": {
+        "root_cause": [
+            {
+                "type": "illegal_argument_exception",
+                "reason": "Settings [xyz] are not available when running in serverless mode"
+            }
+        ],
+        "type": "illegal_argument_exception",
+        "reason": "Settings [xyz] are not available when running in serverless mode"
+    },
+    "status": 400
+}
+```
 
 ## Learn more
 

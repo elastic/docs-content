@@ -143,6 +143,7 @@ toc:
   - file: ingest.md
     children:
       # - file: ingest/enterprise-search/crawls.md
+      - toc: ingest/opentelemetry
       - file: ingest/logstash.md
         children:
           - file: ingest/logstash/plugins.md

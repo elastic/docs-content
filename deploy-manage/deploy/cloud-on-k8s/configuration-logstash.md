@@ -487,7 +487,7 @@ kind: Secret
 metadata:
   name: external-es-ref
 stringData:
-  url: https://abcd-42.xyz.elastic-cloud.com:443 <1>
+  url: https://<example-url>.elastic-cloud.com:443 <1>
   username: logstash_user <2>
   password: REDACTED <3>
   ca.crt: REDACTED <4>
