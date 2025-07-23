@@ -122,6 +122,12 @@ For term-based metrics, assign a color to each term with color mapping.
 7. Click **Add assignment** to assign a color to a specific term, or click **Add all unassigned terms** to assign colors to all terms. Assigning colors to dates is unsupported.
 8. Configure color assignments. You can also select whether unassigned terms should be mapped to the selected color palette or a single color.
 
+#### Show trends in Metric charts [metric-trends]
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
 
 ### Create visualizations with keyboard navigation [drag-and-drop-keyboard-navigation]
 
