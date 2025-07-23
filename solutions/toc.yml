@@ -308,7 +308,7 @@ toc:
                   - file: observability/synthetics/writer-role.md
                   - file: observability/synthetics/reader-role.md
               - file: observability/synthetics/manage-data-retention.md
-              - file: observability/synthetics/traffic-filters.md
+              - file: observability/synthetics/network-security.md
               - file: observability/synthetics/migrate-from-elastic-synthetics-integration.md
               - file: observability/synthetics/scale-architect-synthetics-deployment.md
               - file: observability/synthetics/support-matrix.md
