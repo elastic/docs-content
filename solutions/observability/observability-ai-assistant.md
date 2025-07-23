@@ -481,6 +481,7 @@ The following example shows the anonymized content highlighted in the chat windo
 Rules are evaluated top-to-bottom with regex rules processed first, then NER rules; the first rule that captures a given entity wins. Rules can be configured in the [AI Assistant Settings](#obs-ai-settings) page.
 
 ### Requirements [obs-ai-anonymization-requirements]
+Anonymization requires the following:
 
 * **Advanced Settings privilege** to edit the configuration and enable rules.  
   Once saved, *all* users in the same **Space** benefit from the anonymization (the setting is [space-aware](../../deploy-manage/manage-spaces.md)).
