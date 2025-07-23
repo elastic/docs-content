@@ -66,7 +66,7 @@ For example:
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
-docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}} \
+docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}} \
 bin/elasticsearch-keystore create -p
 ```
 
@@ -75,7 +75,7 @@ You can also use a `docker run` command to add or update secure settings in the 
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
-docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}} \
+docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}} \
 bin/elasticsearch-keystore \
 add my.secure.setting \
 my.other.secure.setting
@@ -94,7 +94,7 @@ If you’ve already created the keystore and don’t need to update it, you can 
 In some environments, it might make more sense to prepare a custom image that contains your configuration. A `Dockerfile` to achieve this might be as simple as:
 
 ```sh subs=true
-FROM docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
+FROM docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
 COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
 ```
 
