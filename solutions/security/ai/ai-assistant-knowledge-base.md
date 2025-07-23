@@ -19,7 +19,6 @@ AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific 
 {{stack}} users: when you upgrade from {{elastic-sec}} version 8.15 to a newer version, information previously stored by AI Assistant will be lost.
 ::::
 
-
 ::::{admonition} Requirements
 * To use Knowledge Base, the `Elastic AI Assistant: All` privilege.
 * To edit global Knowledge Base entries (information that will affect the AI Assistant experience for other users in the {{kib}} space), the `Allow Changes to Global Entries` privilege.
@@ -27,7 +26,9 @@ AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific 
 
 ::::
 
-
+::::{note}
+It is highly recommended to [enable autoscaling](/deploy-manage/autoscaling.md#cluster-autoscaling) to use the AI Assistant Knowledge Base.
+::::
 
 ## Role-based access control (RBAC) for Knowledge Base [knowledge-base-rbac]
 
