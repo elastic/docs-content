@@ -467,7 +467,7 @@ The following example shows the anonymized content highlighted in the chat windo
 }
 ```
 
-**NER** — Runs a named‑entity‑recognition model on free text.
+**NER**: Runs a named entity recognition (NER) model on free text.
 
 ```jsonc
 {
