@@ -10,10 +10,10 @@ Use this checklist to verify the quality, completeness, and consistency of your 
 
 
 - ☑️ Write clear [summaries](./guidelines.md#write-summaries) (30 characters max, start with a verb)
-- ☑️ write detailed [descriptions](./guidelines.md#write-descriptions) for operations, parameters, properties, tags etc.
+- ☑️ Write detailed [descriptions](./guidelines.md#write-descriptions) for operations, parameters, properties, tags etc.
 - ☑️ Document all [path parameters](./guidelines.md#document-path-parameters) with constraints and formats
 - ☑️ Provide descriptions for non-obvious [enum values](./guidelines.md#document-enum-values)
-- ☑️ Specify [default values](./organize-annotate.md#set-default-values) for optional parameters
+- ☑️ Specify [default values](./guidelines.md#set-default-values) for optional parameters
 - ☑️ Include realistic [examples](./guidelines.md#add-examples) with helpful descriptions
 - ☑️ Add [links](./guidelines.md#add-links) to related operations and documentation
 

@@ -29,7 +29,7 @@ The published OpenAPI documents must have the following metadata in the [`info` 
 
 ## Add OpenAPI specification version
 
-You must specify the version number of the OpenAPI specification that the OpenAPI document uses. This value is not related to the API `version` string in the [document info](#add-required-open-api-document-info).
+You must specify the version number of the OpenAPI specification that the OpenAPI document uses. This value is not related to the API `version` string in the [document info](#add-open-api-document-info).
 
 [Bump.sh](https://bump.sh/openapi "https://bump.sh/openapi") supports all versions from Swagger 2.0 to OpenAPI 3.1.
 
