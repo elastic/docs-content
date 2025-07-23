@@ -124,7 +124,7 @@ For an overview of using machine learning with security, see [Anomaly detection]
 5. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
 ::::{tip}
-Machine learning rules may contain noise and need exceptions, see [Rule exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) for more information.
+To filter noisy machine learning rules, use [Rule exceptions](/solutions/security/detect-and-alert/rule-exceptions.md).
 ::::
 
 ## Create a threshold rule [create-threshold-rule]
