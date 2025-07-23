@@ -3,7 +3,7 @@
 This page explains at a high-level how API docs work at Elastic today, with context on how this differs from our previous approaches and where we're heading. Use this page to understand the core primitives and workflows that apply across all Elastic teams, so you can contribute effectively.
 
 :::{tip}
-The API docs use a different system to the main Elastic docs. Refer to [Contribute to Elastic docs](../index.md#contribute-to-elastic-docs) for an overview of the two systems.
+The API docs use a different system to the main Elastic docs. Refer to [Contribute to Elastic docs](../../contribute/index.md) for an overview of the two systems.
 :::
 
 While the implementation details [vary significantly across teams](workflows.md), at a high level:
