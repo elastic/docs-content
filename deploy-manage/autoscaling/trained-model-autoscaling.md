@@ -71,7 +71,7 @@ You can choose from three levels of resource usage for your trained model deploy
 
 Refer to the tables in the [Model deployment resource matrix](#model-deployment-resource-matrix) section to find out the settings for the level you selected.
 
-The image below shows the process of starting a trained model on an {{ech}} deployment. In {{serverless-short}} projects, the **Adaptive resources** toggle is not available when starting trained model deployments, as adaptive allocations are always enabled.
+The image below shows the process of starting a trained model on an {{ech}} deployment. In {{serverless-short}} projects, the **Adaptive resources** toggle is not available when starting trained model deployments, as adaptive allocations are always enabled and cannot be disabled.
 
 :::{image} /deploy-manage/images/ml-nlp-deployment-id-elser.png
 :alt: ELSER deployment with adaptive resources enabled.
