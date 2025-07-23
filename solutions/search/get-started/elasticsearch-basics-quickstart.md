@@ -6,10 +6,10 @@ applies_to:
 # Basics quickstart [getting-started]
 
 
-This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents, and field type mappings](../../manage-data/data-store/index-basics.md). You’ll learn how to create an index, add data as documents, work with dynamic and explicit mappings, and perform your first basic searches.
+This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents, and field type mappings](../../../manage-data/data-store/index-basics.md). You’ll learn how to create an index, add data as documents, work with dynamic and explicit mappings, and perform your first basic searches.
 
 ::::{tip}
-The code examples in this tutorial are in [Console](../../explore-analyze/query-filter/tools/console.md) syntax by default. You can [convert into other programming languages](../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
+The code examples in this tutorial are in [Console](../../../explore-analyze/query-filter/tools/console.md) syntax by default. You can [convert into other programming languages](../../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
 
 ::::
 
@@ -17,7 +17,7 @@ The code examples in this tutorial are in [Console](../../explore-analyze/query-
 
 You can follow this guide using any {{es}} deployment. If you already have a deployment up and running, you can skip ahead to the [first step](#getting-started-index-creation).
 
-If not, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for your options. To get started quickly, you can spin up a cluster [locally in Docker](get-started.md):
+If not, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for your options. To get started quickly, you can spin up a cluster [locally in Docker](../get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
@@ -50,7 +50,7 @@ The following response indicates the index was created successfully.
 ## Step 2: Add data to your index [getting-started-add-documents]
 
 ::::{tip}
-This tutorial uses {{es}} APIs, but there are many other ways to [add data to {{es}}](ingest-for-search.md).
+This tutorial uses {{es}} APIs, but there are many other ways to [add data to {{es}}](../ingest-for-search.md).
 
 ::::
 
@@ -101,7 +101,7 @@ The response includes metadata that {{es}} generates for the document, including
 2. The `_id` field is the unique identifier for the document.
 3. The `_version` field indicates the version of the document.
 4. The `result` field indicates the result of the indexing operation.
-5. The `_shards` field contains information about the number of [shards](../../deploy-manage/index.md) that the indexing operation was executed on and the number that succeeded.
+5. The `_shards` field contains information about the number of [shards](../../../deploy-manage/index.md) that the indexing operation was executed on and the number that succeeded.
 6. The `total` field indicates the total number of shards for the index.
 7. The `successful` field indicates the number of shards that the indexing operation was executed on.
 8. The `failed` field indicates the number of shards that failed during the indexing operation. *0* indicates no failures.
@@ -229,7 +229,7 @@ You should receive a response indicating there were no errors.
 
 ## Step 3: Define mappings and data types [getting-started-mappings-and-data-types]
 
-[Mappings](../../manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings) define how data is stored and indexed in {{es}}, like a schema in a relational database.
+[Mappings](../../../manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings) define how data is stored and indexed in {{es}}, like a schema in a relational database.
 
 
 ### Use dynamic mapping [getting-started-dynamic-mapping]
@@ -347,12 +347,12 @@ PUT /my-explicit-mappings-books
 
 Explicit mappings are defined at index creation, and documents must conform to these mappings. You can also use the [Update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping.
 
-This allows you to combine explicit and dynamic mappings. Learn more about [managing and updating mappings](../../manage-data/data-store/mapping.md#mapping-manage-update).
+This allows you to combine explicit and dynamic mappings. Learn more about [managing and updating mappings](../../../manage-data/data-store/mapping.md#mapping-manage-update).
 
 
 ## Step 4: Search your index [getting-started-search-data]
 
-Indexed documents are available for search in near real-time, using the [`_search` API](querying-for-search.md).
+Indexed documents are available for search in near real-time, using the [`_search` API](../querying-for-search.md).
 
 
 ### Search all documents [getting-started-search-all-documents]
