@@ -47,7 +47,7 @@ Search and filter case data in [Discover](../../discover.md) and [Lens](../../vi
   FROM .internal.cases | STATS count = COUNT(*) BY status | WHERE status  == "closed"
   ```
 
-* Find cases that are open and sort them by time, with the most recent is at the top:
+* Find cases that are open and sort them by time, with the most recent at the top:
   ```console
   FROM .internal.cases | WHERE status  == "open" | SORT created_at DESC
   ```
