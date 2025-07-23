@@ -483,9 +483,9 @@ Rules are evaluated top-to-bottom with `RegExp` rules processed first, then `NER
 ### Requirements [obs-ai-anonymization-requirements]
 Anonymization requires the following:
 
-* **Advanced Settings privilege** to edit the configuration and enable rules.  
+* **Advanced Settings privilege**: Necessary to edit the configuration and enable rules.  
   Once saved, *all* users in the same **Space** benefit from the anonymization (the setting is [space-aware](../../deploy-manage/manage-spaces.md)).
-* **ML privilege and resources** if you enable a rule of type NER, you must first [deploy and start a named-entity-recognition model](/explore-analyze/machine-learning/nlp/ml-nlp-ner-example.md#ex-ner-deploy) and have sufficient ML capacity.
+* **ML privilege and resources**: If you enable a rule of type NER, you must first [deploy and start a named-entity-recognition model](/explore-analyze/machine-learning/nlp/ml-nlp-ner-example.md#ex-ner-deploy) and have sufficient ML capacity.
 
 ::::{important}
 The anonymization pipeline has only been validated with Elastic’s English model  
