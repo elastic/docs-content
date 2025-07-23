@@ -13,7 +13,7 @@ products:
   - id: kibana
 ---
 
-# Explore and analyze with Kibana
+# Explore and analyze data with Kibana
 
 $$$elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library$$$
 
