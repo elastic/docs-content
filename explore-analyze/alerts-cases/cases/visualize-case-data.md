@@ -12,7 +12,7 @@ Case data is stored in case analytics indices, which include data from case comm
 
 ## About case analytics indices [about-case-analytics-indices]
 
-Case analytics indices and their aliases are automatically generated when Kibana starts up. Every five minutes, the indices are updated with new data from cases in your space. Historical data about cases is not stored; it gets overwritten whenever new case data is written to the indices. 
+Case analytics indices and their aliases are automatically generated when{{kib}} starts up. Every five minutes, the indices are updated with a snapshot of most current cases data in your space. Historical cases data is not stored; it gets overwritten whenever the indices are refreshed.
 
 You can begin querying case analytics indices as soon as you have cases in your space. To learn more about fields in the indices, refer to 
 % [Case analytics indices schema](kibana://reference/case-analytics-indices-schema.md) 
