@@ -21,6 +21,7 @@ Elastic’s LLM integrations now support the most widely adopted models, includi
 | [Azure OpenAI](https://www.elastic.co/guide/en/integrations/current/azure_openai.html)| ✅ | ✅ | 
 | [GCP Vertex AI](https://www.elastic.co/guide/en/integrations/current/gcp_vertexai.html) | ✅ | ✅ | 
 | [OpenAI](https://www.elastic.co/guide/en/integrations/current/openai.html) | ✅| 🚧 | 
+| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ | 
 
 ## APM tracing for LLM models (via instrumentation)
 
