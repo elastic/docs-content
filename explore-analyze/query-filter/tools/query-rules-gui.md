@@ -38,6 +38,109 @@ Go to your hosted deployment and select **Query Rules** from the left navigation
 
 :::{image} /explore-analyze/images/query-rules-gui-home.png
 
+### Create a query ruleset
+
+To create a new query ruleset and the first query rule:
+
+1. Click **Query Rules** in the navigation menu under **Relevance**
+2. Click **Create ruleset**:
+	- Enter a name for the ruleset
+	- Click **Create ruleset** to confirm
+
+The rule creation section opens:
+
+3. Select rule type:
+	- **Pin**: Pin selected documents to the top of the search results.
+	- **Exclude**: Exclude selected documents from the results.
+4. Select one or more documents for the rule to apply to.
+5. Select rule type:
+    - **Always**: Apply the rule to all queries
+    - **Custom**: Define conditions when the rule is applied.
+	
+	For a full list of options see [Searching with query rules](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rule-criteria)
+6. Click **Create rule**
+7. Click **Save** in the top right corner of the ruleset section
+
+:::{note}
+Each ruleset must contain at least one rule.
+:::
+
+:::{image} /explore-analyze/images/elasticsearch-query-rules-create-rule.png
+:alt: Creating a new query rule.
+:screenshot:
+:::
+
+### Delete a ruleset
+1. Click **Query Rules** in the navigation menu under **Relevance**
+2. Click **Delete** or select it from the action menu (**...**)
+3. Select if the ruleset is safe to delete.
+4. Click **Delete ruleset**
+
+### Modify rules
+
+:::{important}
+After modifying any rules, make sure to save the changes in the ruleset section. 
+Unsaved rules will not be applied even if they appear in the UI.
+:::
+
+#### Edit a rule
+1. Click **Query Rules** in the navigation menu under **Relevance**
+2. Select a ruleset
+3. Select **Edit** from the action menu (**...**)
+4. Apply changes to the rule
+5. Confirm you modification by selectin **Update rule**
+6. Click **Save** in the top right corner of the ruleset section
+
+#### Delete a rule
+1. Click **Query Rules** in the navigation menu under **Relevance**
+2. Select a ruleset
+3. Select **Delete rule** from the action menu (**...**)
+4. Click **Delete rule**
+6. Click **Save** in the top right corner of the ruleset section
+
+### Re-order rules
+
+1. Click **Query Rules** in the navigation menu under **Relevance**
+2. Select a ruleset
+3. Drag a rule using the handle icon (≡) on the left.
+4. Drop it in the new position.
+5. Click **Save** in the top right corner of the ruleset section
+
+### Test and validate a ruleset
+
+1. Click **Query Rules** in the navigation menu under **Relevance**
+2. Select a ruleset
+3. Click **Test in Console**.
+
+	A console window opens containing a sample query using the [rule retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rule-retriever.md).
+
+	```console
+	GET books/_search
+	{
+	  "retriever": {
+	    "rule": {
+	      // Update your criteria to test different results
+	      "match_criteria": {
+	       "query_string": "Stephenson"
+	     },
+	      "ruleset_ids": [
+	        "first-ruleset"
+	      ],
+	      "retriever": {
+	        "standard": {
+	          "query": {
+	            "match_all": {} <1>
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
+	```
+	1. Modify the search query if needed.
+
+6. Run the query.
+7. Review results and confirm whether the rule actions were applied as expected.
 
 
 
