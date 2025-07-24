@@ -83,7 +83,7 @@ Machine learning jobs look back and analyze two weeks of historical data prior t
 
 ## View detected anomalies [view-anomalies]
 
-View details of detected anomalies in the **Anomalies** data tables, available on the **Hosts**, **Network**, or **Users** pages. You can access these pages from the navigation menu or with the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+View details of detected anomalies in the **Anomalies** data tables, available on the **Hosts**, **Network**, or **Users** pages. You can access these pages from the navigation menu or with the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 You can narrow the time range to a specific anomaly using the `Max anomaly score by job` field in the overview section of the host or IP details. You can also drag and drop anomaly details, like the `Entity` or any associated `Influencers`, into **Timeline**.
 
