@@ -17,12 +17,6 @@ When you first installed Elastic Cloud Enterprise and [logged into the Cloud UI]
 
 The **Deployments** page in the Cloud UI provides several ways to find deployments that might need your attention, whether you’re troubleshooting, planning upgrades, or performing routine maintenance. You can:
 
-* Review visual health indicators of deployments at a glance
-* Search by full or partial deployment names or IDs
-* Use the **More filters** menu to apply filters and find deployments based on specific criteria, such as version, status, or configuration changes:
-
-    :::{image} /troubleshoot/images/cloud-enterprise-deployment-filter.png
-    :alt: Add a filter
-    :::
-
-    For example, you can add filters to narrow down deployments by version, configuration status, or other attributes, making it easier to identify deployments that require upgrades, are undergoing changes, or match specific operational criteria.
+* Review visual health indicators of deployments at a glance.
+* Search by full or partial deployment names or IDs.
+* Use the **Health** and **Version** filter dropdowns to narrow the list of deployments shown. These filters help you find deployments by version, configuration status, or other attributes, making it easier to identify those that require upgrades, are undergoing changes, or match specific operational criteria.
