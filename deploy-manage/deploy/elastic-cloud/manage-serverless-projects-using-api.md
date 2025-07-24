@@ -125,7 +125,7 @@ curl -XDELETE -H "Authorization: ApiKey $API_KEY" \
     "https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch/${PROJECT_ID}"
 ```
 
-### Update Project [general-manage-project-with-api-update-project]
+### Update a project [general-manage-project-with-api-update-project]
 
 You can update your project using a PATCH request. Only the fields included in the body of the request will be updated.
 
