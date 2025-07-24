@@ -67,6 +67,9 @@ Fields in the target downsampled index are created based on fields in the origin
 
 % TODO ^^ make this more concise
 
+% first pass edits up to here
+% TODO resume editing from this line down
+
 ## Querying downsampled indices [querying-downsampled-indices]
 
 You can use the [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [`_async_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoints to query a downsampled index. Multiple raw data and downsampled indices can be queried in a single request, and a single request can include downsampled indices at different granularities (different bucket timespan). That is, you can query data streams that contain downsampled indices with multiple downsampling intervals (for example, `15m`, `1h`, `1d`).
