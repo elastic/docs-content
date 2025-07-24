@@ -24,7 +24,7 @@ If you want to get full access to the Query Rules GUI, you must have the followi
 
 * Appropriate roles to access Kibana. For more information, refer to [Built-in roles](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles) or  [Kibana privileges](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges)
 * A custom role with `manage_search_query_rules` cluster privilege
-* `ALL` option for `Query Rules` role privileges in the respective Kibana space
+* `ALL` option for `Query Rules` role privilege in the respective Kibana space
 
 ## GUI vs. API: What's the difference?
 
