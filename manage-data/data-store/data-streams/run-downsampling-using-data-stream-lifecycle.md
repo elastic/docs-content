@@ -9,10 +9,11 @@ products:
   - id: elasticsearch
 ---
 
-
-
 # Run downsampling using data stream lifecycle [downsampling-dsl]
 
+:::{warning}
+🚧 Work in progress 🚧
+:::
 
 This is a simplified example that allows you to see quickly how [downsampling](./downsampling-time-series-data-stream.md) works as part of a datastream lifecycle to reduce the storage size of a sampled set of metrics. The example uses typical Kubernetes cluster monitoring data. To test out downsampling with data stream lifecycle, follow these steps:
 

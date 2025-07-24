@@ -9,10 +9,11 @@ products:
   - id: elasticsearch
 ---
 
-
-
 # Run downsampling with ILM [downsampling-ilm]
 
+:::{warning}
+🚧 Work in progress 🚧
+:::
 
 This is a simplified example that allows you to see quickly how [downsampling](./downsampling-time-series-data-stream.md) works as part of an ILM policy to reduce the storage size of a sampled set of metrics. The example uses typical Kubernetes cluster monitoring data. To test out downsampling with ILM, follow these steps:
 

@@ -8,7 +8,11 @@ products:
   - id: elasticsearch
 ---
 
-# Time series data stream (TSDS) [tsds]
+# Time series data streams (TSDS) [tsds]
+
+:::{warning}
+🚧 Work in progress 🚧
+:::
 
 A time series data stream (TSDS) models timestamped metrics data as one or more time series.
 

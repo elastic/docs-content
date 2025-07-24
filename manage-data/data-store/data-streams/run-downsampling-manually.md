@@ -9,10 +9,11 @@ products:
   - id: elasticsearch
 ---
 
-
-
 # Run downsampling manually [downsampling-manual]
 
+:::{warning}
+🚧 Work in progress 🚧
+:::
 
 The recommended way to [downsample](./downsampling-time-series-data-stream.md) a [time-series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md) is [through index lifecycle management (ILM)](run-downsampling-with-ilm.md). However, if you’re not using ILM, you can downsample a TSDS manually. This guide shows you how, using typical Kubernetes cluster monitoring data.
 
