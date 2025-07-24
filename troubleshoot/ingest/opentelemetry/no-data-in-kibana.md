@@ -72,7 +72,7 @@ Also look for:
 * TLS handshake failures
 * Invalid character errors, which may indicate proxy or HTML redirect instead of JSON
 
-Increase verbosity using `--log-level=debug` for deeper insights. <!--Refer to [Enable debug logging]() for more information.-->
+Increase verbosity using `--log-level=debug` for deeper insights. <!--Refer to [Enable debug logging] for more information.-->
 
 ### Test network connectivity
 
@@ -86,7 +86,7 @@ Or use `telnet` or `nc` to verify port 443 is reachable.
 
 <!--### Check proxy environment variables
 
-Ensure environment variables are correctly set in your deployment. Refer to [EDOT proxy settings]() for more information relevant to your configuration.
+Ensure environment variables are correctly set in your deployment. Refer to [EDOT proxy settings] for more information relevant to your configuration.
 
 In Kubernetes or container environments, pass these as `env:` entries.
 -->
