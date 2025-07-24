@@ -110,7 +110,7 @@ stack: preview 9.0, ga 9.1
 serverless: ga
 ```
 
-Color mapping allows you to assign specific colors to categorical terms and dimensions in your visualizations. It can be useful in several situations:
+You can assign specific colors to terms in your visualizations. This color mapping can be useful in several situations:
 
 * **Visual recognition and recall**: Keep colors consistent for each term regardless of filters or sorting
 * **Semantic meaning**: Use colors to convey meaning or categorization.
