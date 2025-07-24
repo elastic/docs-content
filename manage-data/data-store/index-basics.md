@@ -289,7 +289,7 @@ You’re now ready to create new indices using your index template.
     GET /my-index-000001,my-index-000002
     ```
 
-### Manage component templates
+### Manage component templates [index-management-manage-component-templates]
 
 Component templates are a type of [template](/manage-data/data-store/templates.md) used as reusable building blocks within index templates to configure index settings, mappings, and aliases.
 
@@ -303,7 +303,7 @@ Create, edit, clone, and delete your component templates in the **Component Temp
 * To show details and perform operations, click the template name.
 * To create new component templates, use the **Create component template** wizard.
 
-### Manage enrich policies
+### Manage enrich policies [manage-enrich-policies]
 
 An [enrich policy](/manage-data/ingest/transform-enrich/data-enrichment.md#enrich-policy) is a set of configuration options used to add data from your existing indices to incoming documents during ingest. An enrich policy contains:
 
