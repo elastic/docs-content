@@ -352,7 +352,7 @@ After the ILM policy has taken effect, the original `.ds-datastream-2022.08.26-0
 ...
 ```
 
-Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)).
+Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-concepts.md#querying-downsampled-indices-notes)).
 
 ```console
 GET datastream/_search
