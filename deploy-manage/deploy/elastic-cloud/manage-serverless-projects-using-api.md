@@ -106,7 +106,7 @@ Example response:
 }
 ```
 
-### Reset Credentials [general-manage-project-with-api-reset-credentials]
+### Reset credentials [general-manage-project-with-api-reset-credentials]
 
 If you lose the credentials provided at the time of the project creation, you can reset the credentials by using the following endpoint:
 
