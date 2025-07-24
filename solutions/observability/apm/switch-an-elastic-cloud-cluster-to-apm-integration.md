@@ -18,7 +18,7 @@ products:
 
 ## Upgrade the {{stack}} [apm-integration-upgrade-ess-1]
 
-Use the {{ecloud}} Console to upgrade the {{stack}} to version {{version}}. See the [Upgrade guide](/deploy-manage/upgrade/deployment-or-cluster.md) for details.
+Use the {{ecloud}} Console to upgrade the {{stack}} to version {{version.stack}}. See the [Upgrade guide](/deploy-manage/upgrade/deployment-or-cluster.md) for details.
 
 ## Switch to {{agent}} [apm-integration-upgrade-ess-2]
 
