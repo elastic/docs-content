@@ -5,7 +5,7 @@ applies_to:
 ---
 # Extract fields [streams-extract-fields]
 
-Unstructured log messages must be parsed into meaningful fields before you can filter and analyze them effectively. Commonly extracted fields include `timestamp` and the `log.level`, but you can also extract information like IP addresses, usernames, and ports.
+Unstructured log messages must be parsed into meaningful fields before you can filter and analyze them effectively. Commonly extracted fields include `@timestamp` and the `log.level`, but you can also extract information like IP addresses, usernames, and ports.
 
 Use the **Processing** tab on the **Manage stream** page to process your data. The UI simulates your changes and provides an immediate preview that's tested end-to-end.
 
