@@ -290,18 +290,20 @@ To access these settings:
 
 These are the available UI fields and their CLI equivalents:
 
-| **UI Field**                                      | **CLI Flag**                          | **Purpose** |
-|--------------------------------------------------|---------------------------------------|-------------|
-| Client SSL Certificate                           | `--elastic-agent-cert`               | {{agent}} client certificate to use with {{fleet-server}} during mTLS authentication. |
-| Client SSL Certificate key                       | `--elastic-agent-cert-key`           | {{agent}} client private key to use with {{fleet-server}} during mTLS authentication. This field uses secret storage and requires {{fleet-server}} v8.12.0 or later. You can optionally choose to store the value as plain text instead. |
-| Server SSL certificate authorities (optional)    | `--certificate-authorities`          | Comma-separated list of root certificates for server verification used by {{agent}} and {{fleet-server}}. |
-| SSL certificate for {{es}}                | `--fleet-server-es-cert`             | Client certificate for {{fleet-server}} to use when connecting to {{es}}. |
-| SSL certificate key for {{es}}            | `--fleet-server-es-cert-key`         | Client private key for {{fleet-server}} to use when connecting to {{es}}. |
-| {{es}} Certificate Authorities (optional) | `--fleet-server-es-ca`               | Path to certificate authority for {{fleet-server}} to use to communicate with {{es}}. |
-| Enable client authentication                     | `--fleet-server-client-auth=required`| Requires {{agent}} to present a valid client certificate when connecting to {{fleet-server}}. |
+The following table shows the available UI fields and their CLI equivalents:
 
-The {{fleet}} UI doesn't currently allow editing the {{fleet-server}}’s own exposed TLS certificate (`--fleet-server-cert`, `--fleet-server-cert-key`). These are only configurable using the CLI either during the initial installation or later.
+| **UI Field**                          | **CLI Flag**                 | **Purpose**                                                          |
+| ------------------------------------- | ---------------------------- | -------------------------------------------------------------------- |
+| Server SSL certificate authorities    | `--certificate-authorities`  | CA to validate agent certificates (Fleet Server authenticates agent) |
+| Client SSL certificate                | `--fleet-server-cert`        | TLS certificate Fleet Server presents to agent (agent validates it)  |
+| Client SSL certificate key            | `--fleet-server-cert-key`    | Key paired with the Fleet Server client certificate                  |
+| Elasticsearch certificate authorities | `--fleet-server-es-ca`       | CA Fleet Server uses to validate Elasticsearch cert                  |
+| SSL certificate for Elasticsearch     | `--fleet-server-es-cert`     | Fleet Server’s mTLS certificate for Elasticsearch                    |
+| SSL certificate key for Elasticsearch | `--fleet-server-es-cert-key` | Key paired with the Fleet Server’s Elasticsearch certificate         |
+| Enable client authentication          | `--fleet-server-client-auth` | Require agents to present client certificates (mTLS only)                 |
 
 :::{warning}
-Editing SSL or proxy settings for an existing {{fleet-server}} might cause agents to lose connectivity. After changing client certificate settings, you need to re-enroll the affected agents.
+Editing SSL or proxy settings for an existing {{fleet-server}} might cause agents to lose connectivity. After changing client certificate settings, you might need to re-enroll the affected agents.
 :::
+
+To configure a mutual TLS connection from {{fleet-server}} to {{es}}, use the {{es}} output settings. For more information, refer to [Output SSL options](tls-overview#output-ssl-options).
