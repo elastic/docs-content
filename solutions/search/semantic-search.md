@@ -38,7 +38,11 @@ This diagram summarizes the relative complexity of each workflow:
 
 ### Option 1: `semantic_text` [_semantic_text_workflow]
 
-The simplest way to use NLP models in the {{stack}} is through the [`semantic_text` workflow](semantic-search/semantic-search-semantic-text.md). We recommend using this approach because it abstracts away a lot of manual work. All you need to do is create an index mapping to start ingesting, embedding, and querying data. There is no need to define model-related settings and parameters, or to create {{infer}} ingest pipelines. For more information about the supported services, refer to [](/explore-analyze/elastic-inference/inference-api.md) and the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) documentation.
+The simplest way to use NLP models in the {{stack}} is through the [`semantic_text` workflow](semantic-search/semantic-search-semantic-text.md). We recommend using this approach because it abstracts away a lot of manual work. All you need to do is create an index mapping to start ingesting, embedding, and querying data. There is no need to define model-related settings and parameters, or to create {{infer}} ingest pipelines. 
+
+{applies_to}`stack: ga 9.1` We recommend using the ELSER model hosted on Elastic Inference Service (EIS) by setting the `inference_id` to `.elser-2-elastic` in your index mapping. For more details, see the ELSER on EIS guide. 
+
+To learn more about supported services, refer to [](/explore-analyze/elastic-inference/inference-api.md) and the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) documentation.
 
 For an end-to-end tutorial, refer to [Semantic search with `semantic_text`](semantic-search/semantic-search-semantic-text.md).
 
