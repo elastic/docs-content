@@ -201,7 +201,7 @@ From the Rules table, fill gaps for multiple rules by using the **Fill gaps** bu
 
    * Fill rules with unfilled or partially filled gaps: Select the appropriate rules or all rules on the page, then click **Bulk actions → Fill gaps**.
    
-   * Only fill rules with unfilled gaps: In the panel above the table, click the **Only rules with unfilled gaps** filter to only show rules with unfilled gaps (rules with partially filled gaps are excluded). Select the appropriate rules or all of them, then click **Bulk actions → Fill gaps**. 
+   * Only fill rules with unfilled gaps: In the panel above the table, click the **Only rules with unfilled gaps** filter to only show rules with unfilled gaps (rules with gaps that are being filled are excluded). Select the appropriate rules or all of them, then click **Bulk actions → Fill gaps**. 
 
 3. Specify when to start and end the manual run that will fill the gaps. 
 4. Click **Schedule gap fills**. The rule will manually run over unfilled gaps in the selected time range. 
