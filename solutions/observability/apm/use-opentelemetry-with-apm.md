@@ -15,7 +15,7 @@ products:
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
 
-Elastic offers several distributions of OpenTelemetry language SDKs. A distribution is a customized version of an upstream OpenTelemetry repository. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/), ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), Elastic APM server, or directly to {{es}}.
+Elastic offers several distributions of OpenTelemetry language SDKs. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/), ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), Elastic APM server, or directly to {{es}}.
 
 :::{image} /solutions/images/observability-apm-otel-distro2.png
 :alt: APM data ingest path
