@@ -81,7 +81,7 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    
    * **For managed OTLP endpoint**: use relevant receivers and export using the `otlp` exporter
    
-   Refer to [Default configuration of the EDOT Collector (Standalone)](opentelemetry://docs/reference/edot-collector/config/default-config-standalone.md) for full examples for each use case.
+   Refer to [Default configuration of the EDOT Collector (Standalone)](opentelemetry://reference/edot-collector/config/default-config-standalone.md) for full examples for each use case.
 
 
 * Check for port conflicts
@@ -90,8 +90,6 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    
    * 4317 for OTLP/gRPC
    * 4318 for OTLP/HTTP
-   
-   These are not customized by EDOT.
    
    Run this to check if a port is in use:
 
