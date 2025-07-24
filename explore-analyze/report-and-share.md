@@ -42,7 +42,7 @@ To be able to share objects or generate reports, you must have a role that allow
 You can share direct links to saved Discover sessions, dashboards, and visualizations. To do that, look for the {icon}`share` **Share** icon.
 
 {applies_to}`stack: ga 9.1` When applicable, you can choose to share the object using a relative or an absolute time range:
-* **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users will see the most recent 7 days when they open the link
+* **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users will see the most recent 7 days when they open the link.
 * **Absolute time range** (default): The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link will always show that exact week of January 1-7, 2025, regardless of when users open the link.
 
 ::::{tip}
