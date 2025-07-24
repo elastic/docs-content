@@ -143,8 +143,8 @@ To assign colors to terms in your visualization:
    * **Kibana 4.0**: A palette that matches the Kibana 4.0 color theme for visualizations
    * **Elastic classic**: A palette made of classic Elastic brand colors
 6. Select the color mode you'd like to use with this palette:
-   * **Categorical**: Assigns a distinct color to each term
-   * **Gradient**: Assigns gradients of the same color to each term
+   * **Categorical**: Assign a distinct color to each term
+   * **Gradient**: Assign gradients of the same color to each term
 7. Choose which terms to color. You can assign colors manually or select **Add all unassigned terms** for automatic assignment.
    :::{tip}
    You can assign several terms to the same color.
