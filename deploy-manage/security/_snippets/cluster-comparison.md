@@ -19,8 +19,8 @@ Select your deployment type below to see what's available and how implementation
 |------------------|------------|--------------|-------------|
 | **Communication** | TLS (HTTP layer) | Fully managed | Automatically configured by Elastic |
 | | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
-| **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
-| | Private link | Configurable | [Establish a secure VPC connection](/deploy-manage/security/private-link-traffic-filters.md) |
+| **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
+| | Private connectivity and VPC filtering | Configurable | [Establish a secure VPC connection](/deploy-manage/security/private-connectivity.md) |
 | | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | Managed | You can [bring your own encryption key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md) |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
@@ -36,8 +36,8 @@ Select your deployment type below to see what's available and how implementation
 |------------------|------------|--------------|-------------|
 | **Communication** | TLS (HTTP layer) | Fully managed | Automatically configured by Elastic |
 | | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
-| **Network** | IP traffic filtering | N/A | |
-| | Private link | N/A |  |
+| **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
+| | Private connectivity and VPC filtering | N/A |  |
 | | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | Fully managed | Automatically encrypted by Elastic |
 | | Secure settings | N/A |  |
@@ -53,8 +53,8 @@ Select your deployment type below to see what's available and how implementation
 |------------------|------------|--------------|-------------|
 | **Communication** | TLS (HTTP layer) | Managed | You can [configure custom certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) |
 | | TLS (Transport layer) | Fully managed | Automatically configured by Elastic |
-| **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
-| | Private link | N/A |  |
+| **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-cloud.md) |
+| | Private connectivity and VPC filtering | N/A |  |
 | | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | N/A |  |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
@@ -70,8 +70,8 @@ Select your deployment type below to see what's available and how implementation
 |------------------|------------|--------------|-------------|
 | **Communication** | TLS (HTTP layer) | Managed | [Multiple options](/deploy-manage/security/k8s-https-settings.md) for customization |
 | | TLS (Transport layer) | Managed | [Multiple options](/deploy-manage/security/k8s-transport-settings.md) for customization |
-| **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
-| | Private link | N/A |  |
+| **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
+| | Private connectivity and VPC filtering | N/A |  |
 | | Kubernetes network policies | Configurable | [Apply network policies to your Pods](/deploy-manage/security/k8s-network-policies.md) |
 | **Data** | Encryption at rest | N/A |  |
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/k8s-secure-settings.md) |
@@ -88,8 +88,8 @@ Select your deployment type below to see what's available and how implementation
 |------------------|------------|--------------|-------------|
 | **Communication** | TLS (HTTP layer) | Configurable | Can be automatically or manually configured. See [Initial security setup](/deploy-manage/security/self-setup.md) |
 | | TLS (Transport layer) | Configurable | Can be automatically or manually configured. See [Initial security setup](/deploy-manage/security/self-setup.md) |
-| **Network** | IP traffic filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
-| | Private link | N/A |  |
+| **Network** | IP filtering | Configurable | [Configure IP-based access restrictions](/deploy-manage/security/ip-filtering-basic.md) |
+| | Private connectivity and VPC filtering | N/A |  |
 | | Kubernetes network policies | N/A |  |
 | **Data** | Encryption at rest | N/A |  |
 | | Keystore security | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
