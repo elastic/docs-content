@@ -306,4 +306,4 @@ The following table shows the available UI fields and their CLI equivalents:
 Editing SSL or proxy settings for an existing {{fleet-server}} might cause agents to lose connectivity. After changing client certificate settings, you might need to re-enroll the affected agents.
 :::
 
-To configure a mutual TLS connection from {{fleet-server}} to {{es}}, use the {{es}} output settings. For more information, refer to [Output SSL options](tls-overview#output-ssl-options).
+To configure a mutual TLS connection from {{fleet-server}} to {{es}}, use the {{es}} output settings. For more information, refer to [Output SSL options](/reference/fleet/tls-overview.md#output-ssl-options).
