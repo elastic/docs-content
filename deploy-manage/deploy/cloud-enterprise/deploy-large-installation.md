@@ -115,7 +115,7 @@ Make sure you have completed all prerequisites and environment preparations desc
 9. [Remove the `allocator` and `proxy` roles](/deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md) from the initial host. You cannot remove the `allocator` role until all instances have been vacated.
 
     ::::{note}
-    After removing the proxy role from the first host, the {{es}} and {{kib}} URLs shown in the Cloud UI will stop working. This happens because the **Deployment domain name** in **Platform** > **Settings** is set to the IP address of the first host, in a format like `FIRST_HOST_IP.ip.es.io`. For more details, refer to [Change endpoint URLs](./change-endpoint-urls.md).
+    After removing the proxy role from the first host, the {{es}} and {{kib}} URLs shown in the Cloud UI will stop working. This happens because the **Deployment domain name** in **Platform** > **Settings** is set to the IP address of the first host, in the format `FIRST_HOST_IP.ip.es.io`. For more details, refer to [Change endpoint URLs](./change-endpoint-urls.md).
 
     To resolve this, follow the steps in [Post-installation steps](./post-installation-steps.md) to complete the integration between your load balancer, ECE proxies, TLS certificates, and wildcard DNS record.
     ::::
