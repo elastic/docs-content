@@ -93,7 +93,7 @@ View details of detected anomalies in the **Anomalies** data tables, available o
 You can narrow the time range to a specific anomaly using the `Max anomaly score by job` field when you click into a specific host, IP, or user name (depending on the page).
 
     :::{image} /solutions/images/security-host-max-anomaly-score-by-job.png
-    :alt: Host anomalies
+    :alt: Filter by Max anomaly score by job
     :screenshot:
     :::
 
