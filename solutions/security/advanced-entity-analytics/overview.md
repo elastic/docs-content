@@ -43,7 +43,7 @@ To display user risk scores, you must [turn on the risk scoring engine](/solutio
 :::
 
 
-This section displays user risk score data for your environment, including the total number of users, and the five most recently recorded user risk scores, with their associated user names, risk data, and number of detection alerts. User risk scores are [calculated](solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
+This section displays user risk score data for your environment, including the total number of users, and the five most recently recorded user risk scores, with their associated user names, risk data, and number of detection alerts. User risk scores are [calculated](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
 
 :::{image} /solutions/images/security-user-score-data.png
 :alt: User risk table
@@ -68,7 +68,7 @@ To display host risk scores, you must [turn on the risk scoring engine](/solutio
 :::
 
 
-This section displays host risk score data for your environment, including the total number of hosts, and the five most recently recorded host risk scores, with their associated host names, risk data, and number of detection alerts. Host risk scores are [calculated](solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
+This section displays host risk score data for your environment, including the total number of hosts, and the five most recently recorded host risk scores, with their associated host names, risk data, and number of detection alerts. Host risk scores are [calculated]/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
 
 :::{image} /solutions/images/security-host-score-data.png
 :alt: Host risk scores table
@@ -92,7 +92,7 @@ For more information about host risk scores, refer to [](/solutions/security/adv
 To display service risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
 :::
 
-This section displays service risk score data for your environment, including the total number of services, and the five most recently recorded service risk scores, with their associated service names, risk data, and number of detection alerts. Service risk scores are [calculated](solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
+This section displays service risk score data for your environment, including the total number of services, and the five most recently recorded service risk scores, with their associated service names, risk data, and number of detection alerts. Service risk scores are [calculated](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated) using a weighted sum on a scale of 0 (lowest) to 100 (highest).
 
 :::{image} /solutions/images/security-service-risk-scores.png
 :alt: Service risk scores table
