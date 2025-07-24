@@ -85,6 +85,10 @@ Machine learning jobs look back and analyze two weeks of historical data prior t
 
 View details of detected anomalies in the **Anomalies** data tables, available on the **Hosts**, **Network**, or **Users** pages. You can access these pages from the navigation menu or with the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+::::{note}
+To view the `Anomalies` table widget and `Max Anomaly Score By Job` details, the user must have the `machine_learning_admin` or `machine_learning_user` role.
+::::
+
 :::{image} /solutions/images/security-host-anomalies.png
 :alt: Host anomalies
 :screenshot:
@@ -92,16 +96,12 @@ View details of detected anomalies in the **Anomalies** data tables, available o
 
 You can select to add entity details, like the `Entity` or any associated `Influencers`, into **Timeline**.
 
-:::{image} /solutions/images/security-host-add-to-timeline.png
+:::{image} /solutions/images/security-host-anomaly-add-to-timeline.png
 :alt: Host anomalies
 :screenshot:
 :::
 
 When you click into a specific host, IP, or user name (depending on the page), you can narrow the time range to a specific anomaly using the `Max anomaly score by job` field.
-
-::::{note}
-To view the `Anomalies` table widget and `Max Anomaly Score By Job` details, the user must have the `machine_learning_admin` or `machine_learning_user` role.
-::::
 
 :::{image} /solutions/images/security-host-max-anomaly-score-by-job.png
 :alt: Filter by Max anomaly score by job
