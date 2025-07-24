@@ -54,9 +54,7 @@ To access the object shared with the link, users need to authenticate.
 
 Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif
-:alt: getting a shareable link for a dashboard
-:::
+![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
 
 
 ## Export as a file [manually-generate-reports]
