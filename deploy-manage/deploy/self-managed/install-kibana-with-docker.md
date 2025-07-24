@@ -49,20 +49,20 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 3. Pull the {{es}} Docker image.
 
     ```sh subs=true
-    docker pull docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
 
 4. Optional: Install [Cosign](https://docs.sigstore.dev/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
 
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
+    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
     ```sh subs=true
-    Verification for docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}} --
+    Verification for docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}} --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -72,7 +72,7 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 5. Start an {{es}} container.
 
     ```sh subs=true
-    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{stack-version}}
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
 
     ::::{tip}
@@ -92,20 +92,20 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 7. Pull the {{kib}} Docker image.
 
     ```sh subs=true
-    docker pull docker.elastic.co/kibana/kibana:{{stack-version}}
+    docker pull docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
 
 8. Optional: Verify the {{kib}} image’s signature.
 
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:{{stack-version}}
+    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
 
 9. Start a {{kib}} container.
 
     ```sh subs=true
-    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:{{stack-version}}
+    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
 
 10. When {{kib}} starts, it outputs a unique generated link to the terminal. To access {{kib}}, open this link in a web browser.
@@ -154,7 +154,7 @@ One way to configure {{kib}} on Docker is to provide `kibana.yml` via bind-mount
 version: '2'
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:{{stack-version}}
+    image: docker.elastic.co/kibana/kibana:{{version.stack}}
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
 ```
@@ -165,8 +165,8 @@ services:
 By default, {{kib}} auto-generates a keystore file for secure settings at startup. To persist your [secure settings](/deploy-manage/security/secure-settings.md), use the `kibana-keystore` utility to bind-mount the parent directory of the keystore to the container. For example:
 
 ```sh subs=true
-docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{stack-version}} bin/kibana-keystore create
-docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{stack-version}} bin/kibana-keystore add test_keystore_setting
+docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{version.stack}} bin/kibana-keystore create
+docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:{{version.stack}} bin/kibana-keystore add test_keystore_setting
 ```
 
 
@@ -199,7 +199,7 @@ These variables can be set with `docker-compose` like this:
 version: '2'
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:{{stack-version}}
+    image: docker.elastic.co/kibana/kibana:{{version.stack}}
     environment:
       SERVER_NAME: kibana.example.org
       ELASTICSEARCH_HOSTS: '["<ELASTICSEARCH_HOST_URL_01>:9200","<ELASTICSEARCH_HOST_URL_02>:9200","<ELASTICSEARCH_HOST_URL_03>:9200"]'

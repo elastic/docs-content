@@ -21,6 +21,7 @@ $$$panels-editors$$$
 | Visualizations | [Lens](visualize/lens.md) | Create powerful [charts](visualize/supported-chart-types.md) in {{kib}}. This is the default editor. |
 |  | [ES&#124;QL](/explore-analyze/query-filter/languages/esql-kibana.md) | Create visualizations from ES&#124;QL queries |
 |  | [Maps](visualize/maps.md) | Create beautiful displays of your geographical data |
+|  | [Alerts](visualize/alert-panels.md) | View Observability or Security alerts in your dashboard |
 |  | [Field statistics](visualize/field-statistics.md) | Add a field statistics view of your data to your dashboards |
 |  | [Custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
 |  | | |
