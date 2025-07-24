@@ -147,12 +147,3 @@ You can obtain the list of regions where projects can be created using the API:
 curl -H "Authorization: ApiKey $API_KEY" \
     "https://api.elastic-cloud.com/api/v1/serverless/regions"
 ```
-
-
-
-
-
-
-
-
-
