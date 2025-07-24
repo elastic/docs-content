@@ -375,7 +375,7 @@ These options can vary depending on the type of chart.
 :   For **Line** charts. Choose how to interpolate the line between data points from the available options: **Straight** (default), **Smooth**, and **Step**.
 
 **Missing values**
-:   For **Area** and **Line** charts. Choose between **Hide**, **Zero**, **Linear**, **Last** and **Next**. This option controls how gaps in data appear on the chart. By default, gaps are hidden.
+:   For **Area** and **Line** charts. Choose between **Hide**, **Zero**, **Linear**, **Last**, and **Next**. This option controls how gaps in data appear on the chart. By default, gaps are hidden.
 
     * **Hide**: Don't show gaps in data.
       
