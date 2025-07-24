@@ -99,7 +99,7 @@ After the integrations synchronization feature is set up, the following {{ccs}} 
 - `<remote_cluster>:logs-*`
 - `<remote_cluster>:metrics-*`
 
-To display these data views, open {{kib}} in your main {{es}} cluster, then go to **Management** → **Stack management** → **Data Views**.
+To display these data views, open {{kib}} in your management {{es}} cluster, then go to **Management** → **Stack management** → **Data Views**.
 
 ## Troubleshooting
 
@@ -177,7 +177,7 @@ This can happen if the integration cannot be uninstalled on the remote cluster, 
 
 ### Integration syncing fails with a retention leases error
 
-The integrations synchronization feature uses {{ccr}} to sync integration states between the main and the remote clusters. If a remote cluster is unreachable for a long time, the replication stops with a retention leases error. This results in the integration syncing failing with an "Operations are no longer available for replicating. Existing retention leases..." error.
+The integrations synchronization feature uses {{ccr}} to sync integration states between the management and the remote clusters. If a remote cluster is unreachable for a long time, the replication stops with a retention leases error. This results in the integration syncing failing with an "Operations are no longer available for replicating. Existing retention leases..." error.
 
 To resolve this issue, remove the follower index on the remote cluster, then re-add it manually to restart replication:
 
