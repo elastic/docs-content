@@ -34,7 +34,7 @@ Possible causes include:
 The solution depends on your EDOT Collector's setup:
 
 * [Standalone](#standalone-edot-collector)
-* [Kubernetes](#kubernetes)
+* [Kubernetes](#kubernetes-edot-collector)
 
 ### Standalone EDOT Collector
 
@@ -81,7 +81,7 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    
    * **For managed OTLP endpoint**: use relevant receivers and export using the `otlp` exporter
    
-   Refer to [Default configuration of the EDOT Collector (Standalone)](opentelemetry://edot-collector/config/default-config-standalone.md) for full examples for each use case.
+   Refer to [Default configuration of the EDOT Collector (Standalone)](opentelemetry://docs/reference/edot-collector/config/default-config-standalone.md) for full examples for each use case.
 
 
 * Check for port conflicts
