@@ -91,7 +91,7 @@ flowchart TD
 :::
 
 :::{important}
-The Dev Tools and Elasticsearch teams are working together to merge the two specifications into the `elasticsearch` repo in 2025.
+The Dev Tools and Elasticsearch teams are working together to eventually merge the two specifications into the `elasticsearch` repo.
 :::
 
 ### Input sources
