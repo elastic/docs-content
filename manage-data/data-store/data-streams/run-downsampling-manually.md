@@ -405,7 +405,7 @@ You can now delete the old backing index. But be aware this will delete the orig
 
 ## View the results [downsampling-manual-view-results]
 
-Re-run the earlier search query (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)):
+Re-run the earlier search query (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-concepts.md#querying-downsampled-indices-notes)):
 
 ```console
 GET /my-data-stream/_search
