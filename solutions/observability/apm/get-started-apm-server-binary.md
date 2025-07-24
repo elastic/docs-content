@@ -39,32 +39,32 @@ $$$apm-deb$$$
 **deb:**
 
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-amd64.deb
-sudo dpkg -i apm-server-{{apm_server_version}}-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-amd64.deb
+sudo dpkg -i apm-server-{{version.stack}}-amd64.deb
 ```
 
 $$$apm-rpm$$$
 **RPM:**
 
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-x86_64.rpm
-sudo rpm -vi apm-server-{{apm_server_version}}-x86_64.rpm
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-x86_64.rpm
+sudo rpm -vi apm-server-{{version.stack}}-x86_64.rpm
 ```
 
 $$$apm-linux$$$
 **Other Linux:**
 
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
-tar xzvf apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf apm-server-{{version.stack}}-linux-x86_64.tar.gz
 ```
 
 $$$apm-mac$$$
 **Mac:**
 
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
-tar xzvf apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf apm-server-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 
 $$$apm-installing-on-windows$$$

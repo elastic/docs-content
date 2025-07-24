@@ -2,7 +2,7 @@ redirects:
   'deploy-manage/security/secure-http-communications.md': '!deploy-manage/security/secure-cluster-communications.md'
   'deploy-manage/security/manually-configure-security-in-self-managed-cluster.md': '!deploy-manage/security/self-setup.md'
   'deploy-manage/security/security-certificates-keys.md': '!deploy-manage/security/self-auto-setup.md'
-  'deploy-manage/security/ece-traffic-filtering-through-the-api.md': 'deploy-manage/security/ec-traffic-filtering-through-the-api.md'
+  'deploy-manage/security/ece-traffic-filtering-through-the-api.md': 'deploy-manage/security/network-security-api.md'
   'deploy-manage/security/install-stack-demo-secure.md': '!deploy-manage/security/self-setup.md'
   'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
@@ -173,7 +173,7 @@ redirects:
   'solutions/observability/apps/writer-role.md': 'solutions/observability/synthetics/writer-role.md'
   'solutions/observability/apps/reader-role.md': 'solutions/observability/synthetics/reader-role.md'
   'solutions/observability/apps/manage-data-retention.md': 'solutions/observability/synthetics/manage-data-retention.md'
-  'solutions/observability/apps/use-synthetics-with-traffic-filters.md': 'solutions/observability/synthetics/traffic-filters.md'
+  'solutions/observability/apps/use-synthetics-with-traffic-filters.md': 'solutions/observability/synthetics/network-security.md'
   'solutions/observability/apps/migrate-from-elastic-synthetics-integration.md': 'solutions/observability/synthetics/migrate-from-elastic-synthetics-integration.md'
   'solutions/observability/apps/scale-architect-synthetics-deployment.md': 'solutions/observability/synthetics/scale-architect-synthetics-deployment.md'
   'solutions/observability/apps/synthetics-support-matrix.md': 'solutions/observability/synthetics/support-matrix.md'
@@ -212,6 +212,78 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/1329
   'manage-data/ingest/transform-enrich/ingest-pipelines-serverless.md': 'manage-data/ingest/transform-enrich/ingest-pipelines.md'
 
+# Rebranded traffic filters to network security, privatelink to private connectivity
+  'deploy-manage/security/traffic-filtering.md': 'deploy-manage/security/network-security.md'
+  'deploy-manage/security/private-link-traffic-filters.md': 'deploy-manage/security/private-connectivity.md'
+  'deploy-manage/security/ip-traffic-filtering.md': 'deploy-manage/security/ip-filtering.md'
+  'deploy-manage/security/gcp-private-service-connect-traffic-filters.md': 
+    to: 'deploy-manage/security/private-connectivity-gcp.md'
+    anchors:
+      'ec-psc-create-traffic-filter-psc-rule-set': 'create-private-connection-policy'
+      'ec-psc-associate-traffic-filter-psc-rule-set': 'associate-private-connection-policy'
+      'ec-edit-traffic-filter-psc-rule-set': 'edit-private-connection-policy'
+      'remove-filter-deployment': 'remove-private-connection-policy'
+      'ec-delete-traffic-filter-psc-rule-set': 'delete-private-connection-policy'
+  'deploy-manage/security/aws-privatelink-traffic-filters.md': 
+    to: 'deploy-manage/security/private-connectivity-aws.md'
+    anchors:
+      'ec-associate-traffic-filter-private-link-rule-set': 'associate-private-connection-policy'
+      'ec-edit-traffic-filter-private-link-rule-set': 'edit-private-connection-policy'
+      'ec-delete-traffic-filter-private-link-rule-set': 'delete-private-connection-policy'
+      'remove-filter-deployment': 'remove-private-connection-policy'
+      'ec-create-traffic-filter-private-link-rule-set': 'create-private-connection-policy'
+  'deploy-manage/security/azure-private-link-traffic-filters.md': 
+    to: 'deploy-manage/security/private-connectivity-azure.md'
+    anchors:
+      'ec-associate-traffic-filter-private-link-rule-set': 'associate-private-connection-policy'
+      'ec-azure-edit-traffic-filter-private-link-rule-set': 'edit-private-connection-policy'
+      'remove-filter-deployment': 'remove-private-connection-policy'
+      'ec-azure-delete-traffic-filter-private-link-rule-set': 'delete-private-connection-policy'
+      ec-azure-create-traffic-filter-private-link-rule-set': 'create-private-connection-policy'
+  'deploy-manage/security/ec-traffic-filtering-through-the-api.md': 
+    to: 'deploy-manage/security/network-security-api.md'
+    anchors:
+      'ec-create-a-traffic-filter-rule-set': 'create-ip-filter-policy'
+      'ec-ip-traffic-filters-ingress-rule-set': 'ip-filter-policy-ingress'
+      'ec-ip-traffic-filters-egress-rule-set': 'ip-filter-policy-egress'
+      'ec-aws-privatelink-traffic-filters-rule-set': 'private-connection-policy-aws'
+      'ec-azure-privatelink-traffic-filters-rule-set': 'private-connection-policy-azure'
+      'ec-gcp-private-service-connect-traffic-filters-rule-set': 'private-connection-policy-gcp'
+      'ec-update-a-traffic-filter-rule-set': 'update-policy-rs'
+      'ec-associate-rule-set-with-a-deployment': 'associate-policy-rs-with-deployment'
+      'ec-delete-rule-set-association-with-a-deployment': 'delete-policy-rs-association-with-deployment'
+      'ec-delete-a-rule-set': 'delete-policy-rs'
+  'deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md': 
+    to: 'deploy-manage/security/claim-private-connection-api.md'
+    anchors:
+      'ec-claim-a-traffic-filter-link-id': 'claim-private-connection-id'
+      'ec-list-claimed-traffic-filter-link-id': 'list-claimed-private-connection-ids'
+      'ec-unclaim-a-traffic-filter-link-id': 'unclaim-private-connection-id'
+  'solutions/observability/synthetics/traffic-filters.md': 
+    to: 'solutions/observability/synthetics/network-security.md'
+    anchors:
+      '_add_the_traffic_filter': '_add_the_ip_filter'
+  'deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md':
+    anchors: {}
+    many:
+    - to: 'deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md'
+      anchors:
+        'ec-restrictions-fleet-traffic-filters': 'ec-restrictions-fleet-network-security'
+        'ec-restrictions-traffic-filters-kibana-sso': 'ec-restrictions-network-security-kibana-sso'
+        'ec-restrictions-traffic-filters-watcher': 'ec-restrictions-network-security-watcher'
+  'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md':
+    to: 'deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md'
+    anchors:
+      'azure-integration-deployment-failed-traffic-filter': 'azure-integration-deployment-failed-network-security'
+  'deploy-manage/remote-clusters/ec-enable-ccs.md':
+    to: 'deploy-manage/remote-clusters/ec-enable-ccs.md'
+    anchors:
+      'ec-ccs-ccr-traffic-filtering': 'ec-ccs-ccr-network-security'
+  'deploy-manage/remote-clusters/ece-enable-ccs.md':
+    to: 'deploy-manage/remote-clusters/ece-enable-ccs.md'
+    anchors:
+      'ece-ccs-ccr-traffic-filtering': 'ece-ccs-ccr-network-security'
+  
 # Related to https://github.com/elastic/docs-content/pull/2010
   'manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md': 'manage-data/data-store/index-basics.md'
 
