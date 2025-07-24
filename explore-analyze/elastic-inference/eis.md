@@ -22,8 +22,6 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 The EIS requests are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
-For more details on AWS regions, refer to the [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/).
-
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS)
 
 {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`
