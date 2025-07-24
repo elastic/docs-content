@@ -1110,8 +1110,7 @@ Elastic supports searches from a local cluster to a remote cluster running:
 Elastic also supports searches from a local cluster running the last minor version of a major version to a remote cluster running any minor version in the following major version. For example, a local 8.19 cluster can search any remote 9.x cluster.
 
 ::::{note}
-[Elastic Search versions](https://www.elastic.co/downloads/past-releases#elasticsearch) were not released in a sequential order. Hence, additional compatibility conditions may apply.
-As shown in the following table, cross-cluster searches are supported between a local 8.18 cluster and a remote 9.0 cluster, in both directions. This is same as version 8.19 and is possible because version 9.0 was released before 8.19.
+Version 8.19 is the final minor release in the 8.x series. Unlike past releases, 8.18 was launched simultaneously with 9.0, allowing cross-version compatibility between them. Hence, as shown in the compatibility table, 8.18 can search 9.0 clusters, but only 8.19 supports searching 9.1 and later.
 ::::
 
 $$$ccs-version-compatibility$$$
@@ -1160,7 +1159,7 @@ A {{ccs}} using an unsupported configuration may still work. However, such searc
 
 The simplest way to ensure your clusters support {{ccs}} is to keep each cluster on the same version of {{es}}. If you need to maintain clusters with different versions, you can:
 
-* Maintain a dedicated cluster for {{ccs}}. Keep this cluster on the earliest version needed to search the other clusters. For example, if you have 8.18 and 9.x clusters, you can maintain a dedicated 8.19 cluster to use as the local cluster for {{ccs}}.
+* Maintain a dedicated cluster for {{ccs}}. Keep this cluster on the earliest version needed to search the other clusters. For example, if you have 8.19 and 9.x clusters, you can maintain a dedicated 8.19 cluster to use as the local cluster for {{ccs}}.
 * Keep each cluster no more than one minor version apart. This lets you use any cluster as the local cluster when running a {{ccs}}.
 
 
