@@ -10,7 +10,7 @@ products:
 
 # Limitations [ml-nlp-limitations]
 
-The following limitations and known problems apply to the {{version}} release of the Elastic {{nlp}} trained models feature.
+The following limitations and known problems apply to the {{version.stack}} release of the Elastic {{nlp}} trained models feature.
 
 ## Document size limitations when using `semantic_text` fields [ml-nlp-large-documents-limit-10k-10mb]
 

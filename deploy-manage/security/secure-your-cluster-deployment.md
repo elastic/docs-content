@@ -5,9 +5,10 @@ applies_to:
     eck: all
     ece: all
     ess: all
+  serverless: all
 ---
 
-# Secure your cluster or deployment
+# Secure your cluster, deployment, or project
 
 It's important to protect your {{es}} cluster and the data it contains. Implementing an in-depth defense strategy provides multiple layers of security to help safeguard your system.
 
@@ -23,7 +24,7 @@ It's important to protect your {{es}} cluster and the data it contains. Implemen
 You must secure [other {{stack}} components](/deploy-manage/security/secure-clients-integrations.md), as well as [client and integration communications](/deploy-manage/security/httprest-clients-security.md), separately.
 :::
 
-You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
+You can configure the following aspects of your Elastic cluster, deployment, or project to maintain and enhance security:
 
 ## Initial security setup [manually-configure-security]
 
