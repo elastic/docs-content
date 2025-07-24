@@ -57,7 +57,7 @@ From the deployment main page, you can quickly access the following configuratio
 From the **Deployment > Security** view, you can manage security settings, authentication, and access controls. Refer to [Secure your clusters](../../../deploy-manage/users-roles/cluster-or-deployment-auth.md) for more details on security options for your deployments.
 
 * [Reset the `elastic` user password](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md)
-* [Set up traffic filters](../../security/traffic-filtering.md) to restrict traffic to your deployment
+* [Set up IP filters](../../security/ip-filtering-ece.md) to restrict traffic to your deployment
 * Configure {{es}} keystore settings, also known as [secure settings](../../security/secure-settings.md)
 * Configure trust relationships for [remote clusters](../../remote-clusters/ece-enable-ccs.md)
 
