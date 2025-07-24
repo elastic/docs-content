@@ -124,7 +124,7 @@ Color mapping is available for the following **Lens** visualization types:
 
 * **Data tables**: Assign colors to terms in **Rows** or **Metrics** fields. You can apply colors to cell backgrounds or text
 * **XY charts (Area, Bar, Line)**: Assign colors to breakdown dimensions that split your data into multiple series
-* **Partition charts (Pie, Donut, Treemap)**: Assign colors to the main slice or group-by dimension that defines the chart segments
+* **Partition charts (Donut, Pie, Treemap, Waffle)**: Assign colors to the main slice or group-by dimension that defines the chart segments
 * **Tag clouds**: Assign colors to the tags dimension that determines the terms displayed in the cloud
 
 #### Configure color mapping
