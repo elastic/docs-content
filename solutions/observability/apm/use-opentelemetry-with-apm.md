@@ -11,22 +11,9 @@ products:
   - id: observability
 ---
 
-# Use OpenTelemetry with APM [apm-open-telemetry]
+# Use OpenTelemetry with APM [apm-otel-elastic-distros]
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
-
-Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}. There are several ways to integrate OpenTelemetry with the {{stack}}:
-
-* [Elastic Distributions of OpenTelemetry language SDKs](/solutions/observability/apm/use-opentelemetry-with-apm.md#apm-otel-elastic-distros)
-* [Upstream OpenTelemetry Collector and language SDKs](/solutions/observability/apm/use-opentelemetry-with-apm.md#apm-otel-upstream)
-* [Upstream OpenTelemetry API/SDK + Elastic APM agent](/solutions/observability/apm/use-opentelemetry-with-apm.md#apm-otel-api-sdk-elastic-agent)
-* [AWS Lambda Collector Exporter](/solutions/observability/apm/use-opentelemetry-with-apm.md#apm-otel-lambda)
-
-::::{important}
-For a complete overview of OpenTelemetry and Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).
-::::
-
-## Elastic Distributions of OpenTelemetry SDKs [apm-otel-elastic-distros]
 
 Elastic offers several distributions of OpenTelemetry language SDKs. A distribution is a customized version of an upstream OpenTelemetry repository. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/), ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), Elastic APM server, or directly to {{es}}.
 
@@ -48,6 +35,10 @@ Get started with an Elastic Distribution of OpenTelemetry language SDK:
 * [**Elastic Distribution of OpenTelemetry Node.js**](opentelemetry://reference/edot-sdks/nodejs/index.md)
 * [**Elastic Distribution of OpenTelemetry Python**](opentelemetry://reference/edot-sdks/python/index.md)
 * [**Elastic Distribution of OpenTelemetry PHP**](opentelemetry://reference/edot-sdks/php/index.md)
+
+::::{important}
+For a complete overview of OpenTelemetry and Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).
+::::
 
 ## Upstream OpenTelemetry Collector and SDKs [apm-otel-upstream]
 
