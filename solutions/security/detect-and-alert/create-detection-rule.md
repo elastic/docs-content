@@ -95,7 +95,7 @@ To create or edit {{ml}} rules, you need:
 ::::
 
 ::::{tip}
-For an overview of using machine learning with security, see [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
+For an overview of using {{ml}} with {{elastic-sec}}, refer to [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 ::::
 
 
