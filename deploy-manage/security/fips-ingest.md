@@ -63,7 +63,7 @@ This impacts [Filebeat](beats://reference/filebeat/configuration-kerberos.md), [
 * The [Community ID Network Flowhash processor](beats://reference/filebeat/community-id.md) is not supported. 
 * The [Azure module](beats://reference/filebeat/filebeat-module-azure.md) including the [Azure eventhub input](beats://reference/filebeat/filebeat-input-azure-eventhub.md) and the [Azure Blob Storage Input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-azure-blob-storage) are not currently supported. The [Add Cloud Metadata processor](beats://reference/filebeat/add-cloud-metadata.md) does not support the Azure Virtual Machine provider currently. 
 * The [Office 365 module (Beta)](beats://reference/filebeat/filebeat-module-o365.md) and the [Office 365 input (Deprecated)](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-o365audit) are not supported. 
-* The [GCP Pub/Sub input](beats://reference/filebeat/filebeat-input-gcp-pubsub.md) is not supported for now. 
+* The [GCP Pub/Sub input](beats://reference/filebeat/filebeat-input-gcp-pubsub.md) and the [Google Cloud Storage input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-gcs) are not supported for now. 
 * The [Entity Analytics input](https://www.elastic.co/docs/reference/beats/filebeat/filebeat-input-entity-analytics) is not supported. 
 
 ### Metricbeat [ingest-metricbeat-limitations]

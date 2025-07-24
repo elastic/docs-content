@@ -523,7 +523,7 @@ toc:
       - file: security/secure-clients-integrations.md
       - file: security/httprest-clients-security.md
       - file: security/limitations.md
-      - file: security/fips-140-2.md
+      - file: security/fips.md
         children:
           - file: security/fips-es.md
           - file: security/fips-kib.md
