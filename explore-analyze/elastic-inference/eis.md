@@ -17,6 +17,15 @@ Instead, you can use {{ml}} models for ingest, search and chat independently of 
 
 * {applies_to}`stack: preview 9.1` You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS).
 
+## Region and hosting [eis-regions]
+
+The EIS requests are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
+The request routing does not restrict the location of your deployments.
+
+For more details on AWS regions, refer to the [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/).
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfp2rLsayhw6pLVQYYp4KM6BFtaaljplWdYowJfflpOICgViA/viewform?embedded=true" width="640" height="936" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS)
 
 {applies_to}`stack: preview 9.1`
