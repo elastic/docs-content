@@ -55,7 +55,7 @@ You can also check the status of {{ml}} detection rules, and start or stop their
     :::
 
 ::::{tip}
-For an overview of creating machine learning rules, see [Create a machine learning rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule).
+For instructions on creating {{ml}} rules, refer to [Create a machine learning rule](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule).
 ::::
 
 
