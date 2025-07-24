@@ -16,7 +16,7 @@ You can deploy a model multiple times by assigning a unique deployment ID when s
 
 You can optimize your deplyoment for typical use cases, such as search and ingest. When you optimize for ingest, the throughput will be higher, which increases the number of {{infer}} requests that can be performed in parallel. When you optimize for search, the latency will be lower during search processes. When you have dedicated deployments for different purposes, you ensure that the search speed remains unaffected by ingest workloads, and vice versa. Having separate deployments for search and ingest mitigates performance issues resulting from interactions between the two, which can be hard to diagnose.
 
-:::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+:::{image} /explore-analyze/images/ml-nlp-deployment-id-elser.png
 :alt: Model deployment on the Trained Models UI.
 :screenshot:
 :::
