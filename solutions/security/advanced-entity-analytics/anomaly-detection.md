@@ -90,21 +90,30 @@ View details of detected anomalies in the **Anomalies** data tables, available o
 :screenshot:
 :::
 
-You can narrow the time range to a specific anomaly using the `Max anomaly score by job` field when you click into a specific host, IP, or user name (depending on the page).
+You can select to add entity details, like the `Entity` or any associated `Influencers`, into **Timeline**.
+
+:::{image} /solutions/images/security-host-add-to-timeline.png
+:alt: Host anomalies
+:screenshot:
+:::
+
+When you click into a specific host, IP, or user name (depending on the page), you can narrow the time range to a specific anomaly using the `Max anomaly score by job` field.
+
+::::{note}
+To view the `Anomalies` table widget and `Max Anomaly Score By Job` details, the user must have the `machine_learning_admin` or `machine_learning_user` role.
+::::
 
 :::{image} /solutions/images/security-host-max-anomaly-score-by-job.png
 :alt: Filter by Max anomaly score by job
 :screenshot:
 :::
 
-You can select to add entity details, like the `Entity` or any associated `Influencers`, into **Timeline**.
+You can also add to timeline here.
 
 :::{image} /solutions/images/security-host-add-to-timeline.png
 :alt: Filter by Max anomaly score by job
 :screenshot:
 :::
-
-To view the `Anomalies` table widget and `Max Anomaly Score By Job` details, the user must have the `machine_learning_admin` or `machine_learning_user` role.
 
 ::::{note}
 To adjust the `score` threshold that determines which anomalies are shown, you can modify the `securitySolution:defaultAnomalyScore` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md).
