@@ -28,7 +28,7 @@ If you want to get full access to the Query Rules GUI, you must have the followi
 
 ## GUI vs. API: What's the difference?
 
-All the functionality in the GUI works the same as in API calls. The only difference is that the Query Rules GUI will create the pinning action by `docs` instead of the `ids` for the new rulesets. However, you'll be able to edit or delete existing rulesets which use pinning by `ids`. For more information on Rule actions, refer [Rule actions](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-actions).
+All the functionality in the GUI works the same as in API calls. The only difference is that the Query Rules GUI will create pinning by `docs` over `ids`. It'll still allow edits in a simple form for `id` pinning. For more information on Rule actions, refer [Rule actions](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-actions).
 
 ## Using the GUI
 
