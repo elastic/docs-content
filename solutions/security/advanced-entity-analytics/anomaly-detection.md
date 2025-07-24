@@ -18,7 +18,7 @@ products:
 [{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) functionality is available when you have the appropriate role, subscription, are using a [cloud deployment](https://cloud.elastic.co/registration?page=docs&placement=docs-body), or are testing out a **Free Trial**. Refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for more information.
 ::::
 
-Anomaly detection jobs allow you to to identify anomalous events or patterns in your data. In a security context, they are typically used with detection rules to create alerts when there is divergence from baseline data.
+Anomaly detection jobs identify anomalous events or patterns in your data. In a security context, they’re typically used with detection rules to trigger alerts when behavior deviates from baseline activity.
 
 
 ::::{tip}
