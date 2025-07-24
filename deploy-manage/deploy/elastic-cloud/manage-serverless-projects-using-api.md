@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-project-settings.html
 applies_to:
   serverless: ga
-navigation_title: Manage serverless projects using the API
+navigation_title: Manage projects with API
 ---
 
 # Manage serverless projects using the API [serverless-api]
