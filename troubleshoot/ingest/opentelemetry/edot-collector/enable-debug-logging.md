@@ -48,7 +48,7 @@ This adds `--log-level=debug` to the Collector container’s command line.
 
 ## Other environments
 
-Standalone and Kubernetes are the currently the only officially supported deployment environments for the EDOT Collector.
+Standalone and Kubernetes are currently the only officially supported deployment environments for the EDOT Collector.
 
 However, if you're running the Collector in a different context, such as a manually containerized setup, you can still enable debug logging by passing the `--log-level=debug` flag as a runtime argument:
 
