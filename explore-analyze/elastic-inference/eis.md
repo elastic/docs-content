@@ -24,14 +24,16 @@ The request routing does not restrict the location of your deployments.
 
 For more details on AWS regions, refer to the [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/).
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfp2rLsayhw6pLVQYYp4KM6BFtaaljplWdYowJfflpOICgViA/viewform?embedded=true" width="640" height="936" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS)
 
-{applies_to}`stack: preview 9.1`
+{applies_to}`stack: preview 9.1, serverless: preview`
 {applies_to}`serverless: preview`
 
 ELSER on EIS enables you to use the ELSER model without using ML nodes in your infrastructure and with that, it simplifies the semantic search and hybrid search experience.
+
+### Private preview access
+
+Private preview access is available by submitting the form provided [here](https://docs.google.com/forms/d/e/1FAIpQLSfp2rLsayhw6pLVQYYp4KM6BFtaaljplWdYowJfflpOICgViA/viewform).
 
 ### Limitations
 
