@@ -13,10 +13,6 @@ products:
 
 # Use OpenTelemetry with APM [apm-open-telemetry]
 
-::::{note}
-For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).
-::::
-
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
 
 Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the {{stack}}. There are several ways to integrate OpenTelemetry with the {{stack}}:
@@ -26,12 +22,16 @@ Elastic integrates with OpenTelemetry, allowing you to reuse your existing instr
 * [Upstream OpenTelemetry API/SDK + Elastic APM agent](/solutions/observability/apm/use-opentelemetry-with-apm.md#apm-otel-api-sdk-elastic-agent)
 * [AWS Lambda Collector exporter](/solutions/observability/apm/use-opentelemetry-with-apm.md#apm-otel-lambda)
 
+::::{important}
+For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).
+::::
+
 ## Elastic Distributions of OpenTelemetry language SDKs [apm-otel-elastic-distros]
 
 Elastic offers several distributions of OpenTelemetry language SDKs. A distribution is a customized version of an upstream OpenTelemetry repository. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/), ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), Elastic APM server, or directly to {{es}}.
 
 :::{image} /solutions/images/observability-apm-otel-distro2.png
-:alt: apm otel distro
+:alt: APM data ingest path
 :screenshot:
 :::
 
