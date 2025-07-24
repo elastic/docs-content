@@ -97,7 +97,12 @@ You can narrow the time range to a specific anomaly using the `Max anomaly score
 :screenshot:
 :::
 
-You can also drag and drop anomaly details, like the `Entity` or any associated `Influencers`, into **Timeline**.
+You can select to add entity details, like the `Entity` or any associated `Influencers`, into **Timeline**.
+
+:::{image} /solutions/images/security-host-add-to-timeline.png
+:alt: Filter by Max anomaly score by job
+:screenshot:
+:::
 
 To view the `Anomalies` table widget and `Max Anomaly Score By Job` details, the user must have the `machine_learning_admin` or `machine_learning_user` role.
 
