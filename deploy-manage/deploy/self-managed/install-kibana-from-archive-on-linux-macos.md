@@ -27,13 +27,13 @@ macOS is supported for development purposes only and is not covered under the su
 
 ### Linux [install-linux64]
 
-The Linux archive for {{kib}} {{stack-version}} can be downloaded and installed as follows:
+The Linux archive for {{kib}} {{version.stack}} can be downloaded and installed as follows:
 
 ```sh subs=true
-curl -O https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-linux-x86_64.tar.gz
-curl https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-linux-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
-tar -xzf kibana-{{stack-version}}-linux-x86_64.tar.gz
-cd kibana-{{stack-version}}/ <2>
+curl -O https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-linux-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-linux-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf kibana-{{version.stack}}-linux-x86_64.tar.gz
+cd kibana-{{version.stack}}/ <2>
 ```
 
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<version>-linux-x86_64.tar.gz: OK`.
@@ -41,13 +41,13 @@ cd kibana-{{stack-version}}/ <2>
 
 ### MacOS [install-darwin64]
 
-The Darwin archive for {{kib}} {{stack-version}} can be downloaded and installed as follows:
+The Darwin archive for {{kib}} {{version.stack}} can be downloaded and installed as follows:
 
 ```sh subs=true
-curl -O https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-darwin-x86_64.tar.gz
-curl https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
-tar -xzf kibana-{{stack-version}}-darwin-x86_64.tar.gz
-cd kibana-{{stack-version}}/ <2>
+curl -O https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf kibana-{{version.stack}}-darwin-x86_64.tar.gz
+cd kibana-{{version.stack}}/ <2>
 ```
 
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<version>-darwin-x86_64.tar.gz: OK`.
@@ -57,7 +57,7 @@ cd kibana-{{stack-version}}/ <2>
 ::::{admonition} macOS Gatekeeper warnings
 :class: important
 
-Apple’s rollout of stricter notarization requirements affected the notarization of the {{stack-version}} {{kib}} artifacts. If macOS displays a dialog when you first run {{kib}} that interrupts it, you will need to take an action to allow it to run.
+Apple’s rollout of stricter notarization requirements affected the notarization of the {{version.stack}} {{kib}} artifacts. If macOS displays a dialog when you first run {{kib}} that interrupts it, you will need to take an action to allow it to run.
 
 To prevent Gatekeeper checks on the {{kib}} files, run the following command on the downloaded `.tar.gz` archive or the directory to which was extracted:
 

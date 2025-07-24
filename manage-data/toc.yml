@@ -122,6 +122,8 @@ toc:
               - file: lifecycle/index-lifecycle-management/skip-rollover.md
               - file: lifecycle/index-lifecycle-management/tutorial-automate-rollover.md
           - file: lifecycle/index-lifecycle-management/configure-lifecycle-policy.md
+          - file: lifecycle/index-lifecycle-management/policy-apply.md
+          - file: lifecycle/index-lifecycle-management/policy-view-status.md
           - file: lifecycle/index-lifecycle-management/policy-updates.md
           - file: lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md
           - file: lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md
