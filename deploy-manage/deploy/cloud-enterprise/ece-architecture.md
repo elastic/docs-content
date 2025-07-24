@@ -90,20 +90,18 @@ Each Elastic Cloud Enterprise service runs as a dedicated Docker container. Thes
 
 | Container                                          | Roles         | Description |
 |---|---|---|
-| `frc-admin-consoles-admin-console`                  | Controller    | Backend service for the ECE UI; handles API requests and coordinates with ZooKeeper, Elasticsearch, logging, and security services. |
-| `frc-allocator-metricbeats-allocator-metricbeat`    | Allocator     | Collects allocator metrics via Beats. |
-| `frc-allocators-allocator`                          | Allocator     | Manages container lifecycle for Elasticsearch and Kibana; reports host capacity to ZooKeeper. |
-| `frc-beats-runners-beats-runner`                    | All roles     | Collects metrics from local containers for monitoring and health checks. |
-| `frc-blueprints-blueprint`                          | Director      | Coordinates container startup by providing configuration data to runners based on their role and token. |
-| `frc-client-forwarders-client-forwarder`            | All roles     | Manages communication between hosts and ZooKeeper. |
-| `frc-cloud-uis-cloud-ui`                            | Controller    | Web frontend for the ECE UI, served to users in the browser. |
-| `frc-constructors-constructor`                      | Controller    | Schedules and coordinates deployment changes through ZooKeeper; assigns instances to allocators and balances zones. |
-| `frc-container-task-services-container-task-service`| Allocator     | Supports autoscaling and tracks feature usage. |
-| `frc-directors-director`                            | Director      | Manages ZooKeeper and internal certificates; maintains Stunnel and quorum. |
-| `frc-proxies-proxyv2`                               | Proxy         | Routes user traffic; uses ZooKeeper to map deployment IDs to cluster nodes. |
-| `frc-proxies-route-server`                          | Proxy         | Manages internal routing and port mapping for cluster access. |
-| `frc-runners-runner`                                | All roles     | Runs on every ECE host and provides a supervisor service to deploy and manage containers according to their defined roles, ensuring they are online and healthy. |
-| `frc-services-forwarders-services-forwarder`        | All roles     | Routes internal service data across the ECE platform. |
-| `frc-zookeeper-servers-zookeeper`                   | Director      | Consistent distributed store used to track ECE state and coordinate communication between services. |
-
-
+| `frc-beats-runners-beats-runner`                  | All roles     | Collects metrics from local containers for monitoring and health checks. |
+| `frc-client-forwarders-client-forwarder`          | All roles     | Manages communication between hosts and ZooKeeper. |
+| `frc-runners-runner`                              | All roles     | Runs on every ECE host and provides a supervisor service to deploy and manage containers according to their defined roles, ensuring they are online and healthy. |
+| `frc-services-forwarders-services-forwarder`      | All roles     | Routes internal service data across the ECE platform. |
+| `frc-allocator-metricbeats-allocator-metricbeat`  | Allocator     | Collects allocator metrics via Beats. |
+| `frc-allocators-allocator`                        | Allocator     | Manages container lifecycle for Elasticsearch and Kibana; reports host capacity to ZooKeeper. |
+| `frc-container-task-services-container-task-service` | Allocator  | Supports autoscaling and tracks feature usage. |
+| `frc-admin-consoles-admin-console`                | Controller    | Backend service for the ECE UI; handles API requests and coordinates with ZooKeeper, Elasticsearch, logging, and security services. |
+| `frc-cloud-uis-cloud-ui`                          | Controller    | Web frontend for the ECE UI, served to users in the browser. |
+| `frc-constructors-constructor`                    | Controller    | Schedules and coordinates deployment changes through ZooKeeper; assigns instances to allocators and balances zones. |
+| `frc-blueprints-blueprint`                        | Director      | Coordinates container startup by providing configuration data to runners based on their role and token. |
+| `frc-directors-director`                          | Director      | Manages ZooKeeper and internal certificates; maintains Stunnel and quorum. |
+| `frc-zookeeper-servers-zookeeper`                 | Director      | Consistent distributed store used to track ECE state and coordinate communication between services. |
+| `frc-proxies-proxyv2`                             | Proxy         | Routes user traffic; uses ZooKeeper to map deployment IDs to cluster nodes. |
+| `frc-proxies-route-server`                        | Proxy         | Manages internal routing and port mapping for cluster access. |
