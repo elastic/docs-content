@@ -89,7 +89,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
     "https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch/${PROJECT_ID}"
 ```
 
-### Get project status [general-manage-project-with-api-get-project-status]
+### Get the project status [general-manage-project-with-api-get-project-status]
 
 The 'status' endpoint indicates whether the project is initialized and ready to be used. In the response, the project's `phase` will change from "initializing" to "initialized" when it is ready:
 
