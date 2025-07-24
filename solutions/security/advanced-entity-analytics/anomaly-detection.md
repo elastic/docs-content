@@ -94,6 +94,10 @@ To view the `Anomalies` table widget and `Max Anomaly Score By Job` details, the
 :screenshot:
 :::
 
+::::{note}
+To adjust the `score` threshold that determines which anomalies are shown, you can modify the `securitySolution:defaultAnomalyScore` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md).
+::::
+
 You can select to add entity details, like the `Entity` or any associated `Influencers`, into **Timeline**.
 
 :::{image} /solutions/images/security-host-anomaly-add-to-timeline.png
@@ -115,6 +119,3 @@ You can also add to timeline here.
 :screenshot:
 :::
 
-::::{note}
-To adjust the `score` threshold that determines which anomalies are shown, you can modify the `securitySolution:defaultAnomalyScore` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md).
-::::
