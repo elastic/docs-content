@@ -19,9 +19,8 @@ You can create user roles and define privileges to manage feature access in {{el
 To configure roles and privileges, find **Roles** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). For more details on using this UI, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for {{stack}}, or to [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) for {{serverless-short}}.
 
 ::::{note}
-{{elastic-defend}}'s feature privileges must be assigned to **All Spaces**. You can’t assign them to an individual space.
+{applies_to}`stack: ga 9.1` {{elastic-defend}}'s feature privileges can be assigned on a per-space basis. For more information, refer to [Spaces and Elastic Defend FAQ](/solutions/security/get-started/spaces-defend-faq.md).
 ::::
-
 
 To grant access, select **All** for the **Security** feature in the **Assign role to space** configuration UI, then turn on the **Customize sub-feature privileges** switch.
 
@@ -41,6 +40,7 @@ For each of the following sub-feature privileges, select the type of access you 
 | **Endpoint List** | Access the [Endpoints](/solutions/security/manage-elastic-defend/endpoints.md) page, which lists all hosts running {{elastic-defend}}, and associated integration details. |
 | **Automatic Troubleshooting** |Access [Automatic Troubleshooting](/solutions/security/manage-elastic-defend/identify-antivirus-software-on-hosts.md) to check if your hosts have third-party AV software installed.<br><br>**Note:** In {{stack}} 9.0.0, this privilege is called **Endpoint Insights**. |
 | **Endpoint Exceptions** | Add and use [endpoint exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions).<br><br>**Note:** This privilege is only available in {{serverless-short}}. In {{stack}}, it's included within the **Security** privilege. |
+| **Global Artifact Management** | {applies_to}`stack: ga 9.1` Manage global assignment of endpoint artifacts (e.g., trusted applications, event filters) across all spaces and policies. This privilege controls global assignment rights only; privileges for each artifact type are required for full artifact management. |
 | **Trusted Applications** | Access the [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) page to remediate conflicts with other software, such as antivirus or endpoint security applications. |
 | **Host Isolation Exceptions** | Access the [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md) page to add specific IP addresses that isolated hosts can still communicate with. |
 | **Blocklist** | Access the [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) page to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious. |
