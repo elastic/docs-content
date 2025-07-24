@@ -112,18 +112,20 @@ serverless: ga
 
 Color mapping allows you to assign specific colors to categorical terms and dimensions in your visualizations. It can be useful in several situations:
 
-* **Visual recognition and recall**: Maintain a static link between colors and terms, independent of filters, queries, and sorting
-* **Semantic meaning**: Provide semantic hints through color coding. For example by using specific colors for info, error, warning, and success states
+* **Visual recognition and recall**: Keep colors consistent for each term regardless of filters or sorting
+* **Semantic meaning**: Use colors to convey meaning or categorization.
 * **Consistency**: Align with brand colors and improve overall aesthetic consistency
+
+![A bar chart with terms mapped to specific colors](../images/color_mapping.png)
 
 #### Supported visualization types
 
 Color mapping is available for the following **Lens** visualization types:
 
-* **Data tables**: Assign colors to terms in **Rows** or **Metrics** fields. You can apply colors to cell backgrounds or text.
-* **XY charts (Area, Bar, Line)**: Assign colors to breakdown dimensions that split your data into multiple series.
-* **Partition charts (Pie, Donut, Treemap)**: Assign colors to the main slice or group-by dimension that defines the chart segments.
-* **Tag clouds**: Assign colors to the tags dimension that determines the terms displayed in the cloud.
+* **Data tables**: Assign colors to terms in **Rows** or **Metrics** fields. You can apply colors to cell backgrounds or text
+* **XY charts (Area, Bar, Line)**: Assign colors to breakdown dimensions that split your data into multiple series
+* **Partition charts (Pie, Donut, Treemap)**: Assign colors to the main slice or group-by dimension that defines the chart segments
+* **Tag clouds**: Assign colors to the tags dimension that determines the terms displayed in the cloud
 
 #### Configure color mapping
 
@@ -134,20 +136,20 @@ To assign colors to terms in your visualization:
 3. In the field configuration, look for the **Color by value** option:
    * For data tables: Select **Cell** or **Text**
    * For other chart types: This option appears when you have a categorical breakdown
-4. Click the **Edit colors** icon. The **Assign colors to terms** menu opens. Leave the **Use legacy palettes** toggle off to be able to assign colors to specific terms.
-6. Select a color palette from the available options:
-   * **Elastic**: The default and recommended palette.
-   * **Kibana 7.0**: A palette that matches the Kibana 7.0 color theme for visualizations.
-   * **Kibana 4.0**: A palette that matches the Kibana 4.0 color theme for visualizations.
-   * **Elastic classic**: A palette made of classic Elastic brand colors.
-7. Select the color mode you'd like to use with this palette:
-   * **Categorical**: Assigns a distinct color to each term.
-   * **Gradient**: Assigns gradients of the same color to each term.
-8. Assign the terms you want to color. You can manually assign terms to colors or select **Add all unassigned terms** to assign colors to all terms automatically.
+4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
+5. Select a color palette from the available options:
+   * **Elastic**: The default and recommended palette
+   * **Kibana 7.0**: A palette that matches the Kibana 7.0 color theme for visualizations
+   * **Kibana 4.0**: A palette that matches the Kibana 4.0 color theme for visualizations
+   * **Elastic classic**: A palette made of classic Elastic brand colors
+6. Select the color mode you'd like to use with this palette:
+   * **Categorical**: Assigns a distinct color to each term
+   * **Gradient**: Assigns gradients of the same color to each term
+7. Choose which terms to color. You can assign colors manually or select **Add all unassigned terms** for automatic assignment.
    :::{tip}
    You can assign several terms to the same color.
    :::
-9. Configure how unassigned terms should be handled by selecting whether they should be mapped to the selected color palette or to a single color.
+8. Choose how to handle unassigned terms: Use the selected color palette or assign a single color.
 
 
 #### Color options and accessibility
@@ -158,11 +160,11 @@ Choose from discrete color sets or generate sequential or divergent gradients. G
 
 **Theme-aware neutral colors**
 
-Use neutral gray colors that automatically adapt to light and dark themes while preserving contrast ratios. These colors are ideal for de-emphasizing or hiding elements.
+Use neutral gray colors that adjust automatically between light and dark themes. These help de-emphasize less important data.
 
 **Accessibility warnings**
 
-The system automatically checks color contrast against both light and dark theme backgrounds and displays warnings for low-contrast combinations to ensure accessibility compliance.
+The system warns you when colors don't have enough contrast for accessibility.
 
 #### Best practices
 
