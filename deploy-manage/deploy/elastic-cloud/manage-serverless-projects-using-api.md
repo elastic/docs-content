@@ -116,7 +116,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
     "https://api.elastic-cloud.com/api/v1/serverless/projects/elasticsearch/${PROJECT_ID}/_reset-credentials"
 ```
 
-### Delete Project [general-manage-project-with-api-delete-project]
+### Delete a project [general-manage-project-with-api-delete-project]
 
 You can delete your project via the API:
 
