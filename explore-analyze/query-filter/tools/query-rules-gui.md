@@ -89,7 +89,6 @@ After modifying any rules, make sure to save the changes in the ruleset section 
 Unsaved rules will not be applied even if they're displayed in the UI.
 :::
 
-
 #### Delete a rule
 1. Select **Query Rules** in the navigation menu under **Relevance**.
 2. Select a ruleset.
