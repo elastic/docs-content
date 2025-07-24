@@ -18,6 +18,8 @@ If you are looking for a hosted solution of {{es}} on AWS, visit [https://www.el
 
 See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough of connecting an AWS S3 repository.
 
+{{es}} communicates with S3 through a dedicated S3 client module. Clients are configured through a combination of [secure settings](../../security/secure-settings.md) defined in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) defined in `elasticsearch.yml`. If you don't provide explicit S3 client configuration, {{es}} will try to obtain credentials from the environment it's running in.
+
 ## Getting started [repository-s3-usage]
 
 To register an S3 repository, specify the type as `s3` when creating the repository. The repository defaults to using [ECS IAM Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) credentials for authentication. You can also use [Kubernetes service accounts](#iam-kubernetes-service-accounts) for authentication.
@@ -37,7 +39,7 @@ PUT _snapshot/my_s3_repository
 
 ## Client settings [repository-s3-client]
 
-The client that you use to connect to S3 has a number of settings available. The settings have the form `s3.client.CLIENT_NAME.SETTING_NAME`. By default, `s3` repositories use a client named `default`, but this can be modified using the [repository setting](#repository-s3-repository) `client`. For example, to use a client named `my-alternate-client`, register the repository as follows:
+The S3 client that you use to connect to S3 has a number of settings available. The settings have the form `s3.client.CLIENT_NAME.SETTING_NAME`. By default, `s3` repositories use a client named `default`, but this can be modified using the [repository setting](#repository-s3-repository) `client`. For example, to use an S3 client named `my-alternate-client`, register the repository as follows:
 
 ```console
 PUT _snapshot/my_s3_repository
@@ -50,7 +52,7 @@ PUT _snapshot/my_s3_repository
 }
 ```
 
-Most client settings can be added to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file with the exception of the secure settings, which you add to the {{es}} keystore. For more information about creating and updating the {{es}} keystore, see [Secure settings](../../security/secure-settings.md).
+Most S3 client settings can be added to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file with the exception of the secure settings, which you add to the {{es}} keystore. For more information about creating and updating the {{es}} keystore, see [Secure settings](../../security/secure-settings.md).
 
 For example, if you want to use specific credentials to access S3 then run the following commands to add these credentials to the keystore.
 
@@ -77,7 +79,7 @@ bin/elasticsearch-keystore remove s3.client.default.session_token
 
 Define the relevant secure settings in each node’s keystore before starting the node. The secure settings described here are all [reloadable](../../security/secure-settings.md#reloadable-secure-settings) so you may update the keystore contents on each node while the node is running and then call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to apply the updated settings to the nodes in the cluster. After this API completes, {{es}} will use the updated setting values for all future snapshot operations, but ongoing operations may continue to use older setting values.
 
-The following list contains the available client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
+The following list contains the available S3 client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
 `region`
 :   Specifies the region to use. When set, determines the signing region and regional endpoint to use, unless the endpoint is overridden via the `endpoint` setting. If not set, {{es}} will attempt to determine the region automatically using the AWS SDK.

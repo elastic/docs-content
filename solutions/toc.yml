@@ -10,6 +10,7 @@ toc:
           - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
             children:
+              - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
       - file: search/api-quickstarts.md
         children:
@@ -76,8 +77,6 @@ toc:
           - file: search/async-search-api.md
           - file: search/esql-for-search.md
           - file: search/retrievers-overview.md
-            children:
-              - file: search/retrievers-examples.md
           - file: search/search-templates.md
       - file: search/site-or-app.md
         children:
@@ -307,7 +306,7 @@ toc:
                   - file: observability/synthetics/writer-role.md
                   - file: observability/synthetics/reader-role.md
               - file: observability/synthetics/manage-data-retention.md
-              - file: observability/synthetics/traffic-filters.md
+              - file: observability/synthetics/network-security.md
               - file: observability/synthetics/migrate-from-elastic-synthetics-integration.md
               - file: observability/synthetics/scale-architect-synthetics-deployment.md
               - file: observability/synthetics/support-matrix.md
@@ -431,11 +430,11 @@ toc:
                   - file: observability/incident-management/create-an-anomaly-detection-rule.md
                   - file: observability/incident-management/create-an-apm-anomaly-rule.md
                   - file: observability/incident-management/create-custom-threshold-rule.md
+                  - file: observability/incident-management/create-a-degraded-docs-rule.md
                   - file: observability/incident-management/create-an-elasticsearch-query-rule.md
                   - file: observability/incident-management/create-an-error-count-threshold-rule.md
                   - file: observability/incident-management/create-failed-transaction-rate-threshold-rule.md
-              - file: observability/incident-management/create-an-inventory-rule.md
-                children:
+                  - file: observability/incident-management/create-an-inventory-rule.md
                   - file: observability/incident-management/create-latency-threshold-rule.md
                   - file: observability/incident-management/create-log-threshold-rule.md
                   - file: observability/incident-management/create-metric-threshold-rule.md
@@ -466,6 +465,11 @@ toc:
       - file: security/elastic-security-serverless.md
       - file: security/get-started.md
         children:
+          - file: security/get-started/quickstarts.md
+            children:
+              - file: security/get-started/get-started-detect-with-siem.md
+              - file: security/get-started/get-started-endpoint-security.md
+              - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
           - file: security/get-started/create-security-project.md
           - file: security/get-started/elastic-security-ui.md
@@ -477,6 +481,8 @@ toc:
               - file: security/get-started/agentless-integrations.md
               - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
+            children:
+              - file: security/get-started/spaces-defend-faq.md
           - file: security/get-started/data-views-elastic-security.md
           - file: security/get-started/create-runtime-fields-in-elastic-security.md
           - file: security/get-started/configure-advanced-settings.md
