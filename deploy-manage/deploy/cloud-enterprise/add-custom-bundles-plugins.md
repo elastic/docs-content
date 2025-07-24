@@ -71,7 +71,7 @@ Custom plugins can include the official {{es}} plugins not provided with {{ece}}
                     "elasticsearch_version" : "<es_version>" <2>
                   },
                   {
-                    "url": "http://www.MYURL.com/my-custom-plugin.zip",
+                    "url": "<MY_HOST_URL>/my-custom-plugin.zip",
                     "name": "my-custom-plugin",
                     "elasticsearch_version": "7.17.1"
                   }
@@ -105,7 +105,7 @@ This example adds a custom LDAP bundle for deployment level role-based access co
                 "user_bundles": [
                 {
                   "name": "ldap-cert",
-                  "url": "http://www.MYURL.com/ldapcert.zip", <1>
+                  "url": "<MY_HOST_URL>/ldapcert.zip", <1>
                   "elasticsearch_version": "*"
                 }
               ]
@@ -151,7 +151,7 @@ In this example, we assume the Identity Provider does not publish its SAML metad
                 "user_bundles": [
                 {
                   "name": "saml-metadata",
-                  "url": "http://www.MYURL.com/saml-metadata.zip", <1>
+                  "url": "<MY_HOST_URL>/saml-metadata.zip", <1>
                   "elasticsearch_version": "*"
                 }
               ]
@@ -184,7 +184,7 @@ In this example, we assume the Identity Provider does not publish its SAML metad
 
 ## Example: Custom JVM trust store bundle [ece-add-custom-bundle-example-cacerts]
 
-If you are using SSL certificates signed by non-public certificate authorities, {{es}} is not able to communicate with the services using those certificates unless you import a custom JVM trust store containing the certificates of your signing authority into your {{ece}} installation. You’ll need the trust store to access snapshot repositories like Minio, for your {{ece}} proxy, or to reindex from remote.
+If you are using SSL certificates signed by non-public certificate authorities, {{es}} is not able to communicate with the services using those certificates unless you import a custom JVM trust store containing the certificates of your signing authority into your {{ece}} installation. You’ll need the trust store to access snapshot repositories like MinIO, for your {{ece}} proxy, or to reindex from remote.
 
 To import a JVM trust store:
 
@@ -254,7 +254,7 @@ To import a JVM trust store:
                 "user_bundles": [
                 {
                   "name": "custom-ca-certs",
-                  "url": "http://www.MYURL.com/cacerts.zip", <1>
+                  "url": "<MY_HOST_URL>/cacerts.zip", <1>
                   "elasticsearch_version": "*" <2>
                 }
               ]
@@ -309,7 +309,7 @@ To import a JVM trust store:
                 "user_bundles": [
                 {
                   "name": "custom-geoip-db",
-                  "url": "http://www.MYURL.com/my-geoip-file.zip",
+                  "url": "<MY_HOST_URL>/my-geoip-file.zip",
                   "elasticsearch_version": "*"
                 }
               ]
@@ -359,7 +359,7 @@ To import a JVM trust store:
                 "user_bundles": [
                 {
                   "name": "custom-synonyms",
-                  "url": "http://www.MYURL.com/synonyms.zip",
+                  "url": "<MY_HOST_URL>/synonyms.zip",
                   "elasticsearch_version": "*"
                 }
               ]

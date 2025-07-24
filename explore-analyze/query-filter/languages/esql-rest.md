@@ -299,6 +299,24 @@ If the response’s `is_running` value is `false`, the query has finished and th
 }
 ```
 
+To stop a running async query and return the results computed so far, use the [async stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-stop) with the query ID.
+
+```console
+POST /_query/async/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=/stop
+```
+The query will be stopped and the response will contain the results computed so far. The response format is the same as the `get` API.
+
+```console-result
+{
+  "is_running": false,
+  "took": 48,
+  "is_partial": true,
+  "columns": ...
+}
+```
+This API can be used to retrieve results even if the query has already completed, as long as it's within the `keep_alive` window.
+The `is_partial` field indicates result completeness. A value of `true` means the results are potentially incomplete.
+
 Use the [{{esql}} async query delete API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-delete) to delete an async query before the `keep_alive` period ends. If the query is still running, {{es}} cancels it.
 
 ```console

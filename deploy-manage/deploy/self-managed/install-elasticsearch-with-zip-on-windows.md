@@ -42,12 +42,12 @@ On Windows, the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime
 ## Step 1: Download and install the `.zip` package [install-windows]
 
 % link url manually set
-Download the `.zip` archive for {{es}} {{stack-version}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-windows-x86_64.zip)
+Download the `.zip` archive for {{es}} {{version.stack}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip)
 
 Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<version>`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
 
 ```sh subs=true
-cd C:\Program Files\elasticsearch-{{stack-version}}
+cd C:\Program Files\elasticsearch-{{version.stack}}
 ```
 
 ## Step 2: Enable automatic creation of system indices [windows-enable-indices]
