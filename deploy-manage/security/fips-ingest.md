@@ -22,7 +22,7 @@ Generally speaking FIPS 140-2 requirements can be summarized as:
 
 ## FIPS-compatible binaries and configuration [fips-binaries]
 
-FIPS compatible binaries for {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are available for [download](https://www.elastic.co/downloads). Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download page.  
+FIPS compatible binaries for {{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} are available for [download](https://www.elastic.co/downloads). Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product download pages for {{agent}} and {{fleet}}, {{filebeat}}, and {{metricbeat}}. Look for the `Linux x86_64 (FIPS)` or `Linux aarch64 (FIPS)` platform option on the {{apm-server}} download page.
 
 :::{important}
 The default configurations provided in the binaries are FIPS compatible. Be sure to check and understand the implications of changing default configurations. 
