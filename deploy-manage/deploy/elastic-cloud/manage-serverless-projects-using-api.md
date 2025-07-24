@@ -80,7 +80,7 @@ The following examples show how to interact with the APIs, covering common opera
 - [Updating a project](#general-manage-project-with-api-update-project)
 - [Listing regions where projects can be created](#general-manage-project-with-api-list-available-regions)
 
-### Get project [general-manage-project-with-api-get-project]
+### Get project details [general-manage-project-with-api-get-project]
 
 You can retrieve your project details through an API call:
 
