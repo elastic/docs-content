@@ -99,6 +99,7 @@ toc:
         children:
           - file: query-filter/tools/saved-queries.md
           - file: query-filter/tools/console.md
+          - file: query-filter/tools/query-rules-gui.md
           - file: query-filter/tools/search-profiler.md
           - file: query-filter/tools/grok-debugger.md
           - file: query-filter/tools/playground.md
