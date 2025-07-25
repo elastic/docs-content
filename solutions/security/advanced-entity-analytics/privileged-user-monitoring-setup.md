@@ -78,8 +78,8 @@ You can use multiple data source types, such as an index and a CSV file, at the 
 
 On this page, you can:
 
-* View, remove, and change indices after initially defining them
-* Import a new supported file with a list of privileged users
+* View, remove, and change indices after initially defining them.
+* Import a new supported file with a list of privileged users.
 
    :::{note}
    Importing a new file will overwrite any users added from a previous file. This doesn't affect users defined through other data source types.

@@ -22,7 +22,7 @@ This page covers the requirements for using the privileged user monitoring featu
 
 | Action | Index Privileges | Kibana Privileges |
 | ------ | ---------------- | ----------------- |
-| View the Privileged user monitoring dashboard | `Read` for the following indices:<br> - `.entity_analytics.monitoring.users-<space-id>`<br> - `risk-score.risk-score-*`<br> - `.alerts-security.alerts-<space-id>`<br> -  `.ml-anomalies-shared`<br> - security data view indices | **Read** for the **Security** feature |
+| View the Privileged user monitoring dashboard | `Read` for the following indices:<br> - `.entity_analytics.monitoring.users-<space-id>`<br> - `risk-score.risk-score-*`<br> - `.alerts-security.alerts-<space-id>`<br> -  `.ml-anomalies-shared`<br> - Security data view indices | **Read** for the **Security** feature |
 | Enable the privileged user monitoring feature | TBD | **Read** for the **Security** feature |
 
 
