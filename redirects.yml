@@ -292,3 +292,6 @@ redirects:
   'explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-dfa-analytics.md': 'explore-analyze/machine-learning/data-frame-analytics.md'
 
   'solutions/search/retrievers-examples.md': 'elasticsearch://reference/elasticsearch/rest-apis/retrievers/retrievers-examples.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2136
+  'deploy-manage/security/fips-140-2.md': 'deploy-manage/security/fips.md'
