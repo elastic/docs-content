@@ -16,7 +16,7 @@ For **upgraded deployments** from earlier versions, you must explicitly [enable 
 
 To use space awareness with {{fleet}}:
 
-- [Enable the space awareness feature](#spaces-fleet-enable)
+- [Enable the space awareness feature](#spaces-fleet-enable) (for upgraded deployments)
 - [Assign and manage Agent policies across spaces](#spaces-manage-policies)
 - [Make integration assets available across spaces](#spaces-manage-assets)
 

@@ -15,7 +15,7 @@ products:
 **Spaces** let you organize your content and users according to your needs.
 
 - Each space has its own saved objects.
-- Users can only access the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
+- Users can access only the spaces that they have been granted access to. This access is based on user roles, and a given role can have different permissions per space.
 - In {{stack}} deployments on version 8.16 and later, each space has its own navigation, called solution view.
 
 {{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the top menu.
@@ -27,6 +27,14 @@ products:
 
 To go to **Spaces**, find **Stack Management** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+For more info on working with spaces, check out: 
+- [Create a space](#spaces-managing)
+- [Define access to a space](#spaces-control-user-access)
+- [Move saved objects between spaces](#spaces-moving-objects)
+- [Configure a space-level landing page](#spaces-default-route)
+- [Delete a space](#_delete_a_space)
+
+Check out [Using Spaces with Fleet](/deploy-manage/manage-spaces-fleet.md) for info on using spaces with {{fleet}} in a space-aware data model.
 
 ## Required permissions [_required_privileges_3]
 
@@ -111,9 +119,6 @@ Users can access spaces based on the roles that they have.
 If you're managing an {{stack}} deployment, then you can also assign roles and define permissions for a space from the **Permissions** tab of the space settings.
 
 When a role is assigned to *All Spaces*, you can’t remove its access from the space settings. You must instead edit the role to give it more granular access to individual spaces.
-
-
-
 
 
 ## Move saved objects between spaces [spaces-moving-objects]
