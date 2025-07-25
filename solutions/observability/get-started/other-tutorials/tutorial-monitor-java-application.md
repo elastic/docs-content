@@ -368,34 +368,34 @@ To read the log file and send it to {{es}}, {{filebeat}} is required. To downloa
 
 ::::::{tab-item} DEB
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-amd64.deb
-sudo dpkg -i filebeat-{{stack-version}}-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-amd64.deb
+sudo dpkg -i filebeat-{{version.stack}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-x86_64.rpm
-sudo rpm -vi filebeat-{{stack-version}}-x86_64.rpm
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-x86_64.rpm
+sudo rpm -vi filebeat-{{version.stack}}-x86_64.rpm
 ```
 ::::::
 
 ::::::{tab-item} MacOS
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-darwin-x86_64.tar.gz
-tar xzvf filebeat-{{stack-version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf filebeat-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Linux
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-linux-x86_64.tar.gz
-tar xzvf filebeat-{{stack-version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf filebeat-{{version.stack}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Windows
-1. Download the [Filebeat Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{stack-version}}-windows-x86_64.zip).
+1. Download the [Filebeat Windows zip file](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-windows-x86_64.zip).
 
 2. Extract the contents of the zip file into `C:\Program Files`.
 
@@ -1096,34 +1096,34 @@ To send metrics to {{es}}, {{metricbeat}} is required. To download and install {
 
 ::::::{tab-item} DEB
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-amd64.deb
-sudo dpkg -i metricbeat-{{stack-version}}-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-amd64.deb
+sudo dpkg -i metricbeat-{{version.stack}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-x86_64.rpm
-sudo rpm -vi metricbeat-{{stack-version}}-x86_64.rpm
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-x86_64.rpm
+sudo rpm -vi metricbeat-{{version.stack}}-x86_64.rpm
 ```
 ::::::
 
 ::::::{tab-item} MacOS
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
-tar xzvf metricbeat-{{stack-version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf metricbeat-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Linux
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-linux-x86_64.tar.gz
-tar xzvf metricbeat-{{stack-version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf metricbeat-{{version.stack}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Windows
-1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{stack-version}}-windows-x86_64.zip).
+1. Download the [Metricbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-windows-x86_64.zip).
 
 2. Extract the contents of the zip file into `C:\Program Files`.
 
@@ -1724,34 +1724,34 @@ To send uptime data to {{es}}, {{heartbeat}} (the polling component) is required
 
 ::::::{tab-item} DEB
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-amd64.deb
-sudo dpkg -i heartbeat-{{stack-version}}-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-amd64.deb
+sudo dpkg -i heartbeat-{{version.stack}}-amd64.deb
 ```
 ::::::
 
 ::::::{tab-item} RPM
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-x86_64.rpm
-sudo rpm -vi heartbeat-{{stack-version}}-x86_64.rpm
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-x86_64.rpm
+sudo rpm -vi heartbeat-{{version.stack}}-x86_64.rpm
 ```
 ::::::
 
 ::::::{tab-item} MacOS
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-darwin-x86_64.tar.gz
-tar xzvf heartbeat-{{stack-version}}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-darwin-x86_64.tar.gz
+tar xzvf heartbeat-{{version.stack}}-darwin-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Linux
 ```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-linux-x86_64.tar.gz
-tar xzvf heartbeat-{{stack-version}}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-linux-x86_64.tar.gz
+tar xzvf heartbeat-{{version.stack}}-linux-x86_64.tar.gz
 ```
 ::::::
 
 ::::::{tab-item} Windows
-1. Download the [Heartbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{stack-version}}-windows-x86_64.zip).
+1. Download the [Heartbeat Windows zip file](https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-windows-x86_64.zip).
 
 2. Extract the contents of the zip file into `C:\Program Files`.
 

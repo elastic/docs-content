@@ -282,7 +282,7 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 
 ### Share your Discover session [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Generate alerts [alert-from-Discover]

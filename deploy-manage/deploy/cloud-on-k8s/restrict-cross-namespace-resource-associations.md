@@ -81,7 +81,7 @@ To enable the restriction of cross-namespace associations, start the operator wi
     ```
 
 
-In this example, `associated-resource` can be of any `Kind` that requires an association to be created, for example `Kibana` or `ApmServer`. You can find [a complete example in the ECK GitHub repository](https://github.com/elastic/cloud-on-k8s/blob/{{eck_release_branch}}/config/recipes/associations-rbac/apm_es_kibana_rbac.yaml).
+In this example, `associated-resource` can be of any `Kind` that requires an association to be created, for example `Kibana` or `ApmServer`. You can find [a complete example in the ECK GitHub repository](https://github.com/elastic/cloud-on-k8s/blob/{{version.eck | M.M}}/config/recipes/associations-rbac/apm_es_kibana_rbac.yaml).
 
 ::::{note}
 If the `serviceAccountName` is not set, ECK uses the default service account assigned to the pod by the [Service Account Admission Controller](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#service-account-admission-controller).

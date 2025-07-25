@@ -5,9 +5,10 @@ applies_to:
     eck: all
     ece: all
     ess: all
+  serverless: all
 ---
 
-# Secure your cluster or deployment
+# Secure your cluster, deployment, or project
 
 It's important to protect your {{es}} cluster and the data it contains. Implementing an in-depth defense strategy provides multiple layers of security to help safeguard your system.
 
@@ -23,7 +24,7 @@ It's important to protect your {{es}} cluster and the data it contains. Implemen
 You must secure [other {{stack}} components](/deploy-manage/security/secure-clients-integrations.md), as well as [client and integration communications](/deploy-manage/security/httprest-clients-security.md), separately.
 :::
 
-You can configure the following aspects of your Elastic cluster or deployment to maintain and enhance security:
+You can configure the following aspects of your Elastic cluster, deployment, or project to maintain and enhance security:
 
 ## Initial security setup [manually-configure-security]
 
@@ -59,7 +60,7 @@ deployment:
 
 The Federal Information Processing Standard (FIPS) Publication 140-2, (FIPS PUB 140-2), titled "Security Requirements for Cryptographic Modules" is a U.S. government computer security standard used to approve cryptographic modules. You can run a self-managed cluster or {{eck}} cluster in FIPS-compliant mode:
 
-* [Self-managed](/deploy-manage/security/fips-140-2.md)
+* [Self-managed](/deploy-manage/security/fips.md)
 * [ECK](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md)
 
 % we need to refine this table, but the idea is awesome IMO
