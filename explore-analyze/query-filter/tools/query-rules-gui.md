@@ -31,7 +31,7 @@ All the functionality in the GUI works the same as in API calls. The only differ
 
 ## Using the GUI
 
-Go to your hosted deployment and select **Query Rules** from the left navigation menu. If you're not able to see the option, contact the administrator to review the role assigned to you. The following screenshot shows the GUI for a new cloud hosted setup.
+Go to your deployment and select **Query Rules** from the left navigation menu. If you're not able to see the option, contact the administrator to review the role assigned to you. The following screenshot shows the GUI for a new deployment setup.
 
 :::{image} /explore-analyze/images/query-rules-gui-home.png
 :alt: Landing page for Query Rules GUI.
