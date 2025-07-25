@@ -189,6 +189,7 @@ The Assets section allows you to manage the following features:
 ### Entity analytics
 ```yaml {applies_to}
 stack: preview 9.1
+serverless: unavailable
 ```
 
 :::{admonition} Requirements
