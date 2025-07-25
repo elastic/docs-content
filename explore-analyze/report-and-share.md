@@ -88,6 +88,10 @@ In the following dashboard, the shareable container is highlighted:
     * {applies_to}`stack: ga 9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
     * {applies_to}`stack: ga 9.1` From the toolbar, click the **Export** icon, then choose a file type. 
 
+    ::::{note}
+    When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
+    ::::
+
     ::::{tip}
 
     Tips for generating PDF reports:
