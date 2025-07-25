@@ -70,6 +70,8 @@ toc:
           - file: ls-output-settings.md
           - file: kafka-output-settings.md
           - file: remote-elasticsearch-output.md
+            children:
+              - file: automatic-integrations-synchronization.md
           - file: fleet-settings-changing-outputs.md
       - file: manage-agents.md
         children:
