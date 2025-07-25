@@ -140,7 +140,7 @@ To assign colors to terms in your visualization:
 5. Select a color palette from the available options:
    * **Elastic**: The default and most recent palette. It is intentionally built from a color spectrum designed for flexibility and consistency, while being suited for future accessibility improvements.
    * **{{kib}} 7.0**: A palette that matches the {{kib}} 7.0 color theme for visualizations
-   * **Kibana 4.0**: A palette that matches the Kibana 4.0 color theme for visualizations
+   * **{{kib}} 4.0**: A palette that matches the {{kib}} 4.0 color theme for visualizations
    * **Elastic classic**: A palette made of classic Elastic brand colors
 6. Select the color mode you'd like to use with this palette:
    * **Categorical**: Assign a distinct color to each term
