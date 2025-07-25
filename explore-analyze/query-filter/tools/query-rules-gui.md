@@ -9,7 +9,7 @@ Query rules GUI is a user interface that helps you create, edit, and delete quer
 
 Query rules help customize search results, giving you more control over how results are returned based on the contextual information in the query.
 
-You can do the following using the GUI without the need of any API calls:
+The Query rules UI enables you to:
 
 * Create, edit and delete rules for a new or an existing deployment setup
 * Reorder rules in a query ruleset for a new or an existing deployment setup
