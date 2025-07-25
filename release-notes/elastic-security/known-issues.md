@@ -51,6 +51,10 @@ If you're on 8.18.3, upgrade to the fixed version: [8.18.3+build202507101319](ht
 If you're on 8.17.8, downgrade to 8.17.7 or install 8.17.9 once it becomes available.
 
 If you're unable to upgrade or downgrade, set `advanced.kernel.network: false` in your Defend advanced policy.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.0.4
 :::
 
 :::{dropdown} Security AI Assistant Knowledge Base settings UI not displaying
