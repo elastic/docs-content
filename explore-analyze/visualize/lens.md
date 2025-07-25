@@ -112,7 +112,7 @@ serverless: ga
 
 You can assign specific colors to terms in your visualizations. This color mapping can be useful in several situations:
 
-* **Visual recognition and recall**: Keep colors consistent for each term regardless of filters or sorting
+* **Visual recognition and recall**: Keep colors consistent for each term regardless of filters or sorting.
 * **Semantic meaning**: Use colors to convey meaning or categorization.
 * **Consistency**: Align with brand colors and improve overall aesthetic consistency
 
