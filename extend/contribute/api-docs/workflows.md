@@ -1,9 +1,9 @@
 ---
-navigation_title: Find your team's workflow
+navigation_title: API docs by product
 ---
-# Find the workflow for your API docs
+# How each Elastic product manages API docs
 
-Each team has its own process for producing their OpenAPI files in their respective repositories. This page provides a quick reference to help you navigate to the right resources.
+Each product has a specific process for producing OpenAPI files in the respective repositories. This page provides a quick reference to help you navigate to the right resources.
 
 :::{important}
 Some of the content on this page is relevant to Elastic employees only and therefore some links are to private repos.
