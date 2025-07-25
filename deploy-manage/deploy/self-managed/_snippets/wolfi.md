@@ -5,5 +5,5 @@ To use the Wolfi image, append `-wolfi` to the image tag in the Docker command.
 For example:
 
 ```sh subs=true
-docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{stack-version}}
+docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{version.stack}}
 ```

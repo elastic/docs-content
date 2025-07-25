@@ -107,7 +107,7 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 3. After the download is finished, start the deployment by clicking the **Start deployment** button.
 4. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.
 
-    :::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+    :::{image} /explore-analyze/images/ml-nlp-deployment-id-elser.png
     :alt: Deploying ELSER
     :screenshot:
     :::
