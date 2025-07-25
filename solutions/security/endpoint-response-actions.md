@@ -253,7 +253,7 @@ For CrowdStrike, you must include one of the following parameters to identify th
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
 
-   {applies_to}`serverless: ga` When using this parameter, select from a list of saved custom scripts.
+   {applies_to}`stack: ga 9.1` When using this parameter, select from a list of saved custom scripts.
 
 * `--HostPath`: The absolute or relative file path of the script located on the host machine.
 
@@ -277,7 +277,7 @@ Examples:
 
 #### Microsoft Defender for Endpoint
 ```yaml {applies_to}
-serverless:
+stack: ga 9.1
 ```
 
 For Microsoft Defender for Endpoint, you must include the following parameter to identify the script you want to run:
