@@ -127,7 +127,7 @@ Color mapping is available for the following **Lens** visualization types:
 * **Partition charts (Donut, Pie, Treemap, Waffle)**: Assign colors to the main slice or group-by dimension that defines the chart segments
 * **Tag clouds**: Assign colors to the tags dimension that determines the terms displayed in the cloud
 
-#### Configure color mapping
+#### Configure color mapping in a chart
 
 To assign colors to terms in your visualization:
 
