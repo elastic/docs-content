@@ -78,12 +78,12 @@ Examine `/etc/apt/sources.list.d/kibana-9.x.list` for the duplicate entry or loc
 
 ### Download and install the Debian package manually [install-deb]
 
-The Debian package for {{kib}} {{stack-version}} can be downloaded from the website and installed as follows:
+The Debian package for {{kib}} {{version.stack}} can be downloaded from the website and installed as follows:
 
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-amd64.deb
-shasum -a 512 kibana-{{stack-version}}-amd64.deb <1>
-sudo dpkg -i kibana-{{stack-version}}-amd64.deb
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-amd64.deb
+shasum -a 512 kibana-{{version.stack}}-amd64.deb <1>
+sudo dpkg -i kibana-{{version.stack}}-amd64.deb
 ```
 
 1. 	Compare the SHA produced by shasum with the [published SHA](https://artifacts.elastic.co/downloads/kibana/kibana-9.0.0-amd64.deb.sha512).
