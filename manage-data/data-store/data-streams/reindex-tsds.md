@@ -9,11 +9,11 @@ products:
   - id: elasticsearch
 ---
 
-
-
 # Reindex a TSDS [tsds-reindex]
 
-
+:::{warning}
+🚧 Work in progress 🚧
+:::
 
 ## Introduction [tsds-reindex-intro]
 
