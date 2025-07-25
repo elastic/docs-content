@@ -10,8 +10,11 @@ products:
 
 This page provides an overview of the relationship between the various certificates and certificate authorities (CAs) that you configure for {{fleet-server}} and {{agent}}, using the `elastic-agent install` TLS command options.
 
+You can also configure one-way and mutual TLS connections using {{kib}}. {applies_to}`stack: ga 9.1`
+
 * [Simple one-way TLS connection](#one-way-tls-connection)
 * [Mutual TLS connection](#mutual-tls-connection)
+* [Configure TLS/mTLS settings in {{kib}}](#tls-ui-settings) {applies_to}`stack: ga 9.1`
 
 
 ## Simple one-way TLS connection [one-way-tls-connection]
@@ -97,3 +100,49 @@ Note that you can also configure mutual TLS for {{fleet-server}} and {{agent}} [
 :alt: Diagram of mutual TLS connection between components
 :::
 
+## Configure TLS/mTLS settings in the Fleet UI [tls-ui-settings]
+```{applies_to}
+  stack: ga 9.1
+```
+
+You can configure TLS and mutual TLS (mTLS) settings for {{fleet-server}} and outputs using the {{fleet}} UI.
+
+### Fleet Server SSL options
+
+To access these settings:
+
+1. In **Kibana**, go to **Management > {{fleet}} > Settings**.
+2. Under **Fleet Server hosts**, select **Add host** or edit an existing host.
+3. Expand the **SSL options** or **Authentication** section.
+
+The following table shows the available UI fields and their CLI equivalents:
+
+| **UI Field**                          | **CLI Flag**                 | **Purpose**                                                          |
+| ------------------------------------- | ---------------------------- | -------------------------------------------------------------------- |
+| Server SSL certificate authorities    | `--certificate-authorities`  | CA to validate agent certificates (Fleet Server authenticates agent) |
+| Client SSL certificate                | `--fleet-server-cert`        | TLS certificate Fleet Server presents to agent (agent validates it)  |
+| Client SSL certificate key            | `--fleet-server-cert-key`    | Key paired with the Fleet Server client certificate                  |
+| Elasticsearch certificate authorities | `--fleet-server-es-ca`       | CA Fleet Server uses to validate Elasticsearch cert                  |
+| SSL certificate for Elasticsearch     | `--fleet-server-es-cert`     | Fleet Server’s mTLS certificate for Elasticsearch                    |
+| SSL certificate key for Elasticsearch | `--fleet-server-es-cert-key` | Key paired with the Fleet Server’s Elasticsearch certificate         |
+| Enable client authentication          | `--fleet-server-client-auth` | Require agents to present client certificates (mTLS only)                 |
+
+### Output SSL options
+
+To access these settings:
+
+1. In **Kibana**, go to **Management > {{fleet}} > Settings**.
+2. Under **Outputs**, select **Add output** or edit an existing output.
+3. Expand the **SSL options** or **Authentication** section.
+
+These apply to {{es}} and Remote {{es}} only, and are only necessary when setting up an mTLS connection:
+
+| **UI Field**                       | **CLI Flag**                | **Purpose**                                                      |
+| ---------------------------------- | --------------------------- | ---------------------------------------------------------------- |
+| Server SSL certificate authorities | `--certificate-authorities` | CA the agent uses to verify the output’s TLS certificate         |
+| Client SSL certificate             | `--elastic-agent-cert`      | Certificate used by agent to authenticate with output (for mTLS) |
+| Client SSL certificate key         | `--elastic-agent-cert-key`  | Key paired with agent mTLS certificate                           |
+
+:::{warning}
+Editing SSL or proxy settings for an existing {{fleet-server}} might cause agents to lose connectivity. After changing client certificate settings, you might need to re-enroll the affected agents.
+:::
