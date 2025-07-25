@@ -138,7 +138,7 @@ To assign colors to terms in your visualization:
    * For other chart types: This option appears when you have a categorical breakdown
 4. Click the **Edit colors** icon. In the menu that opens, keep **Use legacy palettes** turned off to be able to assign colors to specific terms
 5. Select a color palette from the available options:
-   * **Elastic**: The default palette. Recommended for accessibility
+   * **Elastic**: The default and most recent palette. It is intentionally built from a color spectrum designed for flexibility and consistency, while being suited for future accessibility improvements.
    * **Kibana 7.0**: A palette that matches the Kibana 7.0 color theme for visualizations
    * **Kibana 4.0**: A palette that matches the Kibana 4.0 color theme for visualizations
    * **Elastic classic**: A palette made of classic Elastic brand colors
