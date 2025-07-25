@@ -7,18 +7,18 @@ applies_to:
   serverless: ga
 ---
 
-# Using Spaces with {{fleet}}[spaces-fleet]
+# Using Spaces with {{fleet}} [spaces-fleet]
 
-Fleet supports a **space-aware** data model. You can use [Kibana spaces](/deploy-manage/manage-spaces) to manage Agent policies and integrations per space. Combined with granular user roles, this feature enables true role-based access control for {{agent}} management.
+Fleet supports a **space-aware** data model. You can use [Kibana spaces](/deploy-manage/manage-spaces.md) to manage Agent policies and integrations per space. Combined with granular user roles, this feature enables true role-based access control for {{agent}} management.
 
 For **new deployments** on 9.1.0 or later, space awareness is enabled by default.
-For **upgraded deployments** from earlier versions, you must explicitly [enable space awareness](#enable-space-awareness-in-fleetspaces-fleet-enable).
+For **upgraded deployments** from earlier versions, you must explicitly [enable space awareness](#spaces-fleet-enable).
 
 To use space awareness with {{fleet}}:
 
-- [Enable the space awareness feature](#enabling-space-awareness-in-fleet)
-- [Assign and manage Agent policies across spaces](#managing-agent-policies-across-spaces)
-- [Make integration assets available across spaces](#managing-integration-assets-across-spaces)
+- [Enable the space awareness feature](#spaces-fleet-enable)
+- [Assign and manage Agent policies across spaces](#spaces-manage-policies)
+- [Make integration assets available across spaces](#spaces-manage-assets)
 
 ## Enable space awareness in Fleet [spaces-fleet-enable]
 
@@ -33,7 +33,7 @@ To enable space awareness in upgraded deployments:
 5. Confirm the migration.
 
 
-## Manage Agent policies across spaces[spaces-manage-policies]
+## Manage Agent policies across spaces [spaces-manage-policies]
 
 To control where an Agent Policy is available:
 
@@ -61,7 +61,7 @@ Agent policies can be assigned to multiple spaces. In this example, the policy i
 
 Access to a policy is still governed by each user's {{fleet}} permissions within selected spaces.
 
-## Manage integration assets across spaces[spaces-manage-assets]
+## Manage integration assets across spaces [spaces-manage-assets]
 
 When you add an integration to an Agent policy, assets such as dashboards and visualizations are installed **only in the current space** by default.
 
