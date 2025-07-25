@@ -97,7 +97,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Changes embeddable view when only one monitor if one location is selected [#218402]({{kib-pull}}218402).
 * Improves how related alerts are suggested [#215673]({{kib-pull}}215673).
 * Updates handling of duplicate conversations in hte AI Assistant[#208044]({{kib-pull}}208044).
-* Indicates when failure store is not enabled for a data stream [#221644]({{kibana-pull}}221644).
+* Indicates when failure store is not enabled for a data stream [#221644]({{kib-pull}}221644).
 
 ### Fixes [elastic-observability-9.1.0-fixes]
 
@@ -163,16 +163,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes conversation tests [#213338]({{kib-pull}}213338).
 * Fixes sorting in profiler storage explorer [#212583]({{kib-pull}}212583).
 * Adds system message in copy conversation JSON payload [#212009]({{kib-pull}}212009).
-* Removed unnecessary breadcrumbs in Universal Profiling [#211081]({{kibana-pull}}211081).
-* Added minHeight to profiler flamegraphs [#210443]({{kibana-pull}}210443).
-* Adds system message [#209773]({{kibana-pull}}209773).
-* Ensures that when an SLO is created, the ID is verified across all spaces [#214496]({{kibana-pull}}214496).
-* Fixes the **Outcome Preview** table so columns always fill the page width after a resize in **Streams** [#226000]({{kibana-pull}}226000).
-* Adds discernible text for the **Refresh data preview** button in **Streams** [#225816]({{kibana-pull}}225816).
-* Ensures the members array is unique for `GroupStreamDefinitions` in **Streams** [#210089]({{kibana-pull}}210089).
-* Applies chunking algorithm for `getIndexBasicStats` in Dataset Health [#221153]({{kibana-pull}}221153).
-* Improves finding functions in Universal Profiling [#210437]({{kibana-pull}}210437).
-* Adds logical `AND` to monitor tags and locations filter [#217985]({{kibana-pull}}217985).
+* Removed unnecessary breadcrumbs in Universal Profiling [#211081]({{kib-pull}}211081).
+* Added minHeight to profiler flamegraphs [#210443]({{kib-pull}}210443).
+* Adds system message [#209773]({{kib-pull}}209773).
+* Ensures that when an SLO is created, the ID is verified across all spaces [#214496]({{kib-pull}}214496).
+* Fixes the **Outcome Preview** table so columns always fill the page width after a resize in **Streams** [#226000]({{kib-pull}}226000).
+* Adds discernible text for the **Refresh data preview** button in **Streams** [#225816]({{kib-pull}}225816).
+* Ensures the members array is unique for `GroupStreamDefinitions` in **Streams** [#210089]({{kib-pull}}210089).
+* Applies chunking algorithm for `getIndexBasicStats` in Dataset Health [#221153]({{kib-pull}}221153).
+* Improves finding functions in Universal Profiling [#210437]({{kib-pull}}210437).
+* Adds logical `AND` to monitor tags and locations filter [#217985]({{kib-pull}}217985).
 
 ## 9.0.4 [elastic-observability-9.0.4-release-notes]
 
