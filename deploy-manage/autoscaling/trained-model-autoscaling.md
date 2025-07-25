@@ -22,11 +22,13 @@ There are two ways to enable autoscaling:
 * through APIs by enabling adaptive allocations
 * in {{kib}} by enabling adaptive resources
 
+For {{serverless-short}} projects, trained model autoscaling is automatically enabled and cannot be disabled.
+
 ::::{important}
 To fully leverage model autoscaling in {{ech}}, {{ece}}, and {{eck}}, it is highly recommended to enable [{{es}} deployment autoscaling](../../deploy-manage/autoscaling.md).
 ::::
 
-Trained model autoscaling is available for {{serverless-short}}, {{ech}}, {{ece}}, and {{eck}} deployments. In serverless deployments, processing power is managed differently across Search, Observability, and Security projects, which impacts their costs and resource limits.
+Trained model autoscaling is available for {{serverless-short}}, {{ech}}, {{ece}}, and {{eck}} deployments. In {{serverless-short}} projects, processing power is managed differently across Search, Observability, and Security projects, which impacts their costs and resource limits.
 
 :::{admonition} Trained model auto-scaling for self-managed deployments
 The available resources of self-managed deployments are static, so trained model autoscaling is not applicable. However, available resources are still segmented based on the settings described in this section.
@@ -54,10 +56,6 @@ You can enable adaptive allocations by using:
 
 If the new allocations fit on the current {{ml}} nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your {{ml}} node will be scaled up if {{ml}} autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
-:::{note}
-When you create inference endpoints on {{serverless-short}} using {{kib}}, adaptive allocations are automatically turned on, and there is no option to disable them.
-:::
-
 ### Optimizing for typical use cases [optimizing-for-typical-use-cases]
 
 You can optimize your model deployment for typical use cases, such as search and ingest. When you optimize for ingest, the throughput will be higher, which increases the number of {{infer}} requests that can be performed in parallel. When you optimize for search, the latency will be lower during search processes.
@@ -73,15 +71,15 @@ You can choose from three levels of resource usage for your trained model deploy
 
 Refer to the tables in the [Model deployment resource matrix](#model-deployment-resource-matrix) section to find out the settings for the level you selected.
 
-:::{image} /deploy-manage/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+The image below shows the process of starting a trained model on an {{ech}} deployment. In {{serverless-short}} projects, the **Adaptive resources** toggle is not available when starting trained model deployments, as adaptive allocations are always enabled and cannot be disabled.
+
+:::{image} /deploy-manage/images/ml-nlp-deployment-id-elser.png
 :alt: ELSER deployment with adaptive resources enabled.
 :screenshot:
 :width: 500px
 :::
 
 In {{serverless-full}}, Search projects are given access to more processing resources, while Security and Observability projects have lower limits. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
-
-On {{serverless-short}}, adaptive allocations are automatically enabled for all project types.
 
 ## Model deployment resource matrix [model-deployment-resource-matrix]
 
@@ -99,10 +97,6 @@ As a math formula, `VCUs = 8 * allocations * threads`, or `1` VCU for every `1GB
 If you use a self-managed cluster or ECK, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values.
 
 The following tables show you the number of allocations, threads, and vCPUs available in ECE and ECH when adaptive resources are enabled or disabled.
-
-::::{note}
-On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in {{kib}} for Observability and Security projects.
-::::
 
 ### Ingest optimized
 
