@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-reranking.html
 applies_to:
-  stack:
+  stack: ga 9.0
   serverless:
 products:
   - id: elasticsearch
