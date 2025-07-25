@@ -39,7 +39,7 @@ When an index is rolled over, the previous index’s age is updated to reflect t
 
 ## Automatic rollover [ilm-automatic-rollover]
 
-{{ilm-init}} and the data stream lifecycle (in [preview]]) enable you to automatically roll over to a new index based on conditions like the index size, document count, or age. When a rollover is triggered, a new index is created, the write alias is updated to point to the new index, and all subsequent updates are written to the new index.
+{{ilm-init}} and the data stream lifecycle enable you to automatically roll over to a new index based on conditions like the index size, document count, or age. When a rollover is triggered, a new index is created, the write alias is updated to point to the new index, and all subsequent updates are written to the new index.
 
 ::::{tip}
 Rolling over to a new index based on size, document count, or age is preferable to time-based rollovers. Rolling over at an arbitrary time often results in many small indices, which can have a negative impact on performance and resource usage.
