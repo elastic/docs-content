@@ -11,8 +11,7 @@ Query rules help customize search results, giving you more control over how resu
 
 You can do the following using the GUI without the need of any API calls:
 
-* For a new deployment setup, create new rules
-* For an existing deployment setup, edit and delete rules
+* Create, edit and delete rules for a new or an existing deployment setup
 * Reorder rules in a query ruleset
 
 If you'd still prefer to use the Query Rules API, refer to [Query Rules API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-query_rules).
