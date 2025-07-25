@@ -114,7 +114,7 @@ You can assign specific colors to terms in your visualizations. This color mappi
 
 * **Visual recognition and recall**: Keep colors consistent for each term regardless of filters or sorting.
 * **Semantic meaning**: Use colors to convey meaning or categorization.
-* **Consistency**: Align with brand colors and improve overall aesthetic consistency
+* **Consistency**: Align with brand colors and improve overall aesthetic consistency.
 
 ![A bar chart with terms mapped to specific colors](../images/color_mapping.png)
 
