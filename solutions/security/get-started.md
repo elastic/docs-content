@@ -31,7 +31,7 @@ If you have data from a source that doesn't yet have an integration, you can use
 
 ::::{{step}} Get started with your use case 
 Not sure where to start exploring {{elastic-sec}} 
-or which features may be relevant to you? Continue to the next topic to view our quickstart guides, each which is tailored to specific use case and helps you complete a core task so you can get up and running. 
+or which features may be relevant to you? Continue to the next topic to view our quickstart guides, each of which is tailored to a specific use case and helps you complete a core task so you can get up and running. 
 ::::
 
 :::::
