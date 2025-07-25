@@ -7,7 +7,7 @@ applies_to:
 
 Query rules GUI is a user interface that helps you create, edit, and delete query rules. The interface is implemented on top of the existing Query Rules API and provides non-technical users with an intuitive, streamlined interface to manage query rules.
 
-Query rules help customize search results, giving you more control over how results are returned based on the contextual information in the query. For more information on query rules, refer to our [Query Rules blog](https://www.elastic.co/search-labs/blog/elasticsearch-query-rules-generally-available).
+Query rules help customize search results, giving you more control over how results are returned based on the contextual information in the query.
 
 You can do the following using the GUI without the need of any API calls:
 
