@@ -117,7 +117,7 @@ After the {{dfeeds}} are started and the {{anomaly-jobs}} have processed some da
 Depending on the capacity of your machine, you might need to wait a few seconds for the {{ml}} analysis to generate initial results.
 ::::
 
-:::{image} /explore-analyze/images/machine-learning-ml-gs-web-results.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-web-results.png
 :alt: Create jobs for the sample web logs
 :screenshot:
 :::
@@ -132,7 +132,7 @@ One of the sample jobs (`low_request_rate`), is a *single metric {{anomaly-job}}
 
 Let’s start by looking at this simple job in the **Single Metric Viewer**:
 
-1. Select the **Jobs** tab in **{{ml-app}}** to see the list of your {{anomaly-jobs}}.
+1. Select the **Anomaly Detection Jobs** tab in **{{ml-app}}** to see the list of your {{anomaly-jobs}}.
 2. Click the chart icon in the **Actions** column for your `low_request_rate` job to view its results in the **Single Metric Viewer**.
 3. Use the relative mode of the date picker to select a start date one week in the past and an end date one month in the future to cover the majority of the analyzed data points.
 
