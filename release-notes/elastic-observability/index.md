@@ -97,7 +97,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Changes embeddable view when only one monitor if one location is selected [#218402]({{kib-pull}}218402).
 * Improves how related alerts are suggested [#215673]({{kib-pull}}215673).
 * Updates handling of duplicate conversations in hte AI Assistant[#208044]({{kib-pull}}208044).
-* Indicates when failure store is not enabled for a data stream [#221644]({kibana-pull}221644).
+* Indicates when failure store is not enabled for a data stream [#221644]({{kibana-pull}}221644).
 
 ### Fixes [elastic-observability-9.1.0-fixes]
 
