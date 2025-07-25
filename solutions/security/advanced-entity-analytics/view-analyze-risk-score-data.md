@@ -15,7 +15,7 @@ products:
 
 The {{security-app}} provides several options to monitor the change in the risk posture of hosts and users from your environment. Use the following places in the {{security-app}} to view and analyze risk score data:
 
-* [Entity Analytics dashboard](#entity-analytics-dashboard)
+* [Entity Analytics overview](#entity-analytics-overview)
 * [Alerts page](#alerts-page)
 * [Alert details flyout](#alert-details-flyout)
 * [Hosts and Users pages](#hosts-users-pages)
@@ -28,11 +28,15 @@ We recommend that you prioritize [alert triaging](#alert-triaging) to identify a
 
 
 
-## Entity Analytics dashboard [entity-analytics-dashboard]
+## Entity Analytics overview [entity-analytics-overview]
 
-From the Entity Analytics dashboard, you can access entity key performance indicators (KPIs), risk scores, and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
+In the Entity Analytics overview, you can view entity key performance indicators (KPIs), risk scores, and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
 
-If you have enabled the [entity store](entity-store.md), the dashboard also displays the [**Entities** section](../dashboards/entity-analytics-dashboard.md#entity-entities), where you can view all hosts, users, and services along with their risk and asset criticality data.
+If you have enabled the [entity store](entity-store.md), you'll also get access to the **Entities** section, where you can view all hosts, users, and services along with their risk and asset criticality data.
+
+Access the Entity Analytics overview from the following pages:
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: unavailable` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md) 
+* [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 
 ## Alert triaging [alert-triaging]

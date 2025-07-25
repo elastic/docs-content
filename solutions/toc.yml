@@ -657,6 +657,7 @@ toc:
           - file: security/explore/users-page.md
       - file: security/advanced-entity-analytics.md
         children:
+          - file: security/advanced-entity-analytics/overview.md 
           - file: security/advanced-entity-analytics/entity-risk-scoring.md
             children:
               - file: security/advanced-entity-analytics/entity-risk-scoring-requirements.md
@@ -671,6 +672,10 @@ toc:
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
-          - hidden: security/advanced-entity-analytics/privileged-user-monitoring.md
+          - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+            children:
+              - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
+              - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
+              - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
       - file: security/asset-management.md
       - file: security/apis.md
