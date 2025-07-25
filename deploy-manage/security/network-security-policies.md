@@ -18,7 +18,7 @@ Policies operate on the platform proxies. Requests rejected by the policies are 
 
 ## Logic
 
-- You can assign multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
+- You can apply multiple policies to a single deployment. The policies can be of different types. In case of multiple policies, traffic can match any associated policy to be forwarded to the resource. If none of the policies match, the request is rejected with `403 Forbidden`.
 - Policies, when associated with a deployment or project, will apply to all endpoints, such as {{es}}, {{kib}}, APM Server, and others.
 - Any policy assigned to a deployment overrides the default behavior of *allow all access over the public internet endpoint*. The implication is that if you make a mistake putting in the traffic source (for example, if you specified the wrong IP address) the deployment will be effectively locked down to any of your traffic. You can use the UI to adjust or remove the policies.
 - You can [mark a policy as default](#default-network-security-policies). Default policies are automatically attached to all new resources of the matching resource type that you create in its region.
@@ -32,18 +32,18 @@ Policies operate on the platform proxies. Requests rejected by the policies are 
 
 ## Default network security policies
 
-You can mark a policy as default. Default policies are automatically attached to all new resources of the matching resource type that you create in its region.
+You can apply a policy by default. Default policies are automatically attached to all new resources of the matching resource type that you create in its region.
 
-You can detach default policies from resources after they are created. Default policies are not automatically attached to existing resources.
+You can remove default policies from resources after they are created. Default policies are not automatically associated with existing resources.
 
 ### Apply policies to new resources by default
 
-To automatically apply a network security policy to new resources by default new deployments or projects in your organization:
+To automatically apply a network security policy to new resources in your organization by default:
 
 :::{include} _snippets/network-security-page.md
 :::
 4. Select **Create** to create a new policy, or select **Edit** {icon}`pencil` to open an existing policy.
-5. Under **Apply to future resources by default**, select **Include by default**.
+5. Under **Apply to resources (optional)**, check the **Apply to future resources by default** box.
 
 ### Identify default policies
 
@@ -51,7 +51,7 @@ To identify which network security policies are automatically applied to new dep
 
 :::{include} _snippets/network-security-page.md
 :::
-4. Select each of the policies. **Include by default** is checked when a policy is automatically applied to all new deployments or projects in its region.
+4. In the **Network security** page, the **Default** value is "Yes" when a policy is automatically applied to all new deployments or projects in its region.
   
 ## Review the policies associated with a resource
 
@@ -63,7 +63,7 @@ To identify the network security policies that are applied to your deployment or
 2. On the **Serverless projects** page, select your project.
 3. Select the **Network security** tab on the left-hand side menu bar.
 
-Network security policies are listed on the page. From this page, you can view and remove existing policies and attach new policies.
+Network security policies are listed on the page. From this page, you can view and remove existing policies and apply new policies.
 
 :::
 :::{tab-item} Hosted
@@ -71,7 +71,7 @@ Network security policies are listed on the page. From this page, you can view a
 2. On the **Hosted deployments** page, select your deployment.
 3. Select the **Security** tab on the left-hand side menu bar.
 
-Network security policies are listed under **Network security**. From this section, you can view and remove existing policies and attach new policies.
+Network security policies are listed under **Network security**. From this section, you can view and remove existing policies and apply new policies.
 :::
 ::::
 
