@@ -29,7 +29,7 @@ To add multiple users, enter their email addresses separated by a space.
 8. Click **Send invites**. \
 Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation before it expires. If the invite has expired, an admin can resend the invitation.
 
-You can also [manage existing users](/deploy-manage/users-roles/cloud-organization/manage-users#manage-existing-users) and [manage users through the {{ecloud}} API](/deploy-manage/users-roles/cloud-organization/manage-users#ec-api-organizations).
+You can also [manage existing users](/deploy-manage/users-roles/cloud-organization/manage-users.md#manage-existing-users) and [manage users through the {{ecloud}} API](/deploy-manage/users-roles/cloud-organization/manage-users.md#ec-api-organizations).
 
 ## Assign roles
 

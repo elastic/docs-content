@@ -35,7 +35,7 @@ Ensure you meet the following requirements before proceeding:
 
 1. Go to your {{ecloud}} home page.
     * If you already have an {{ecloud}} account, log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body). 
-    * If you don’t have an {{ecloud}} account, [sign up](/deploy-manage/deploy/elastic-cloud/create-an-organization) and create an organization.
+    * If you don’t have an {{ecloud}} account, [sign up](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) and create an organization.
 2. In the **Connected clusters** section, select **Connect self-managed cluster**. 
 3. On the **Cloud Connected Services** page, under **AutoOps**, select **Connect**.
 
@@ -60,7 +60,7 @@ Depending on your selected installation method, you may have to provide the foll
 
 * **{{es}} endpoint URL**: The agent will use this URL to identify which cluster you want to connect to AutoOps.
 * **Preferred authentication method**: Choose from the following:
-    * **API key**: [Create an API key](/solutions/observability/apm/grant-access-using-api-keys) to grant access to the cluster.
+    * **API key**: [Create an API key](/solutions/observability/apm/grant-access-using-api-keys.md) to grant access to the cluster.
     * **Basic**: Assign a username and password to a user with the required [permissions](#prerequisites).
 * **System architecture**: Select the system architecture of the machine running the agent.
 * **Metrics storage location**: Select where to store your metrics data from the list of available cloud service providers and regions.
@@ -112,7 +112,7 @@ If the connection is successful, AutoOps will start analyzing your metrics and r
 
 Once the account is ready, the **Open AutoOps** button will appear. Select it to launch AutoOps. 
 
-Learn more about [AutoOps](/deploy-manage/monitor/autoops).
+Learn more about [AutoOps](/deploy-manage/monitor/autoops.md).
 
 ## Access AutoOps
 

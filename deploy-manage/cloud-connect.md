@@ -18,7 +18,7 @@ The following service is currently available for use with Cloud Connect. More se
 
 ### AutoOps
 
-[AutoOps](/deploy-manage/monitor/autoops) is a monitoring tool that helps you manage your cluster with real-time issue detection, performance recommendations, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps recommends operational and monitoring insights that deliver real savings in administration time and hardware cost. 
+[AutoOps](/deploy-manage/monitor/autoops.md) is a monitoring tool that helps you manage your cluster with real-time issue detection, performance recommendations, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps recommends operational and monitoring insights that deliver real savings in administration time and hardware cost. 
 
 Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md). 
 
