@@ -362,6 +362,7 @@ toc:
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
+  - file: cloud-connect.md
   - file: stack-settings.md
   - file: tools.md
     children:
@@ -676,6 +677,8 @@ toc:
             - file: monitor/autoops/cc-manage-connected-clusters.md
             - file: monitor/autoops/cc-manage-users.md
             - file: monitor/autoops/cc-collected-metrics.md
+            - file: monitor/autoops/cc-cloud-connect-autoops-faq.md
+            - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
       - file: monitor/stack-monitoring.md
         children:
           - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md

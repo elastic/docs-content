@@ -7,7 +7,7 @@ navigation_title: Collected metrics
 
 # Collected metrics
 
-When you connect your self-managed cluster to AutoOps on Elastic Cloud, the following metrics are collected:
+When you connect your self-managed cluster to AutoOps on {{ecloud}}, the following metrics are collected:
 
 | API | Description | Collected data |
 | --- | --- | --- |

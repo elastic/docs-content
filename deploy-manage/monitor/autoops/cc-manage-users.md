@@ -11,7 +11,9 @@ Learn how to invite users to your connected clusters and assign roles to new and
 
 ## Invite users
 
+:::{note}
 :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
+:::
 :::
 
 To invite users to your organization and give them access to your self-managed cluster:
@@ -31,7 +33,7 @@ You can also [manage existing users](/deploy-manage/users-roles/cloud-organizati
 
 ## Assign roles
 
-Assign roles to new or existing users based on levels of access to AutoOps: 
+Assign the following roles to new or existing users based on levels of access to AutoOps: 
 
 | Role | Allowed actions in AutoOps |
 | --- | --- |
