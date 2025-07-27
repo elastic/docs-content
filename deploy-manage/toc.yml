@@ -362,7 +362,7 @@ toc:
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
-  - file: cloud-connect.md
+  - hidden: cloud-connect.md
   - file: stack-settings.md
   - file: tools.md
     children:
@@ -671,14 +671,13 @@ toc:
           - file: monitor/autoops/ec-autoops-dismiss-event.md
           - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/ec-autoops-faq.md
-          - file: monitor/autoops/cc-autoops-as-cloud-connected.md
-            children:
-            - file: monitor/autoops/cc-connect-self-managed-to-autoops.md
-            - file: monitor/autoops/cc-manage-connected-clusters.md
-            - file: monitor/autoops/cc-manage-users.md
-            - file: monitor/autoops/cc-collected-metrics.md
-            - file: monitor/autoops/cc-cloud-connect-autoops-faq.md
-            - file: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
+          - hidden: monitor/autoops/cc-autoops-as-cloud-connected.md
+          - hidden: monitor/autoops/cc-connect-self-managed-to-autoops.md
+          - hidden: monitor/autoops/cc-manage-connected-clusters.md
+          - hidden: monitor/autoops/cc-manage-users.md
+          - hidden: monitor/autoops/cc-collected-metrics.md
+          - hidden: monitor/autoops/cc-cloud-connect-autoops-faq.md
+          - hidden: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
       - file: monitor/stack-monitoring.md
         children:
           - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
