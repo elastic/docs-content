@@ -1,17 +1,18 @@
 ---
 applies_to:
   serverless: preview
+  stack: preview 9.1
 ---
 # Extract fields [streams-extract-fields]
 
-Unstructured log messages need to be parsed into meaningful fields so you can filter and analyze them quickly. Common fields to extract include timestamp and the log level, but you can also extract information like IP addresses, usernames, or ports.
+Unstructured log messages must be parsed into meaningful fields before you can filter and analyze them effectively. Commonly extracted fields include `@timestamp` and the `log.level`, but you can also extract information like IP addresses, usernames, and ports.
 
-Use the **Extract field** tab on the **Manage stream** page to process your data. The UI simulates your changes and provides an immediate preview that's tested end-to-end.
+Use the **Processing** tab on the **Manage stream** page to process your data. The UI simulates your changes and provides an immediate preview that's tested end-to-end.
 
 The UI also shows indexing problems, such as mapping conflicts, so you can address them before applying changes.
 
 :::{note}
-Applied changes aren't retroactive and only affect *future data ingested*.
+Applied changes aren't retroactive and only affect *future ingested data*.
 :::
 
 ## Add a processor [streams-add-processors]
@@ -33,7 +34,7 @@ To add a processor:
 1. Select **Add Processor** to save the processor.
 
 :::{note}
-Editing processors with JSON is planned for a future release. More processors may be added over time.
+Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
 :::
 
 ### Add conditions to processors [streams-add-processor-conditions]
@@ -59,12 +60,12 @@ Under **Processors for field extraction**, when you set pipeline processors to m
 When you add or edit processors, the **Data preview** updates automatically.
 
 :::{note}
-To avoid unexpected results, focus on adding processors rather than removing or reordering existing processors.
+To avoid unexpected results, we recommend adding processors rather than removing or reordering existing processors.
 :::
 
 **Data preview** loads 100 documents from your existing data and runs your changes using them.
 For any newly added processors, this simulation is reliable. You can save individual processors during the preview, and even reorder them.
-Selecting 'Save changes' applies your changes to the data stream.
+Selecting **Save changes** applies your changes to the data stream.
 
 If you edit the stream again, note the following:
 - Adding more processors to the end of the list will work as expected.
@@ -85,11 +86,11 @@ Turn on **Ignore missing fields** to ignore the processor if the field is not pr
 
 Documents fail processing for different reasons. Streams helps you to easily find and handle failures before deploying changes.
 
-The following example shows not all messages matched the provided Grok pattern:
+In the following screenshot, the **Failed** percentage shows that not all messages matched the provided Grok pattern:
 
 ![Screenshot showing some failed documents](<../../../../images/logs-streams-parsed.png>)
 
-You can filter your documents by selecting **Parsed** or **Failed** at the top of the table. Select **Failed** to see the documents that failed:
+You can filter your documents by selecting **Parsed** or **Failed** at the top of the table. Select **Failed** to see the documents that weren't parsed correctly:
 
 ![Screenshot showing the documents UI with Failed selected](<../../../../images/logs-streams-failures.png>)
 
@@ -97,17 +98,19 @@ Failures are displayed at the bottom of the process editor:
 
 ![Screenshot showing failure notifications](<../../../../images/logs-streams-processor-failures.png>)
 
-These failures may be something you should address, but in some cases they also act as more of a warning.
+These failures may require action, but in some cases, they serve more as warnings.
 
-### Mapping Conflicts
+### Mapping conflicts
 
-As part of processing, Streams also checks for mapping conflicts by simulating the change end to end. If a mapping conflict is detected, Streams marks the processor as failed and displays a failure message:
+As part of processing, Streams also checks for mapping conflicts by simulating the change end to end. If a mapping conflict is detected, Streams marks the processor as failed and displays a failure message like the following:
 
 ![Screenshot showing mapping conflict notifications](<../../../../images/logs-streams-mapping-conflicts.png>)
 
+You can then use the information in the failure message to find and troubleshoot mapping issues going forward.
+
 ## Processor statistics and detected fields [streams-stats-and-detected-fields]
 
-Once saved, the processor also gives you a quick look at how successful the processing was for this step and which fields were added.
+Once saved, the processor provides a quick look at the processor's success rate and the fields that it added.
 
 ![Screenshot showing field stats](<../../../../images/logs-streams-field-stats.png>)
 
@@ -143,12 +146,12 @@ Streams then creates and manages the `<data_stream_name>@stream.processing` pipe
 ### User interaction with pipelines
 
 Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by Streams.
-You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor crated by Streams may cause unexpected behavior.
+You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor created by Streams may cause unexpected behavior.
 
 ## Known limitations [streams-known-limitations]
 
 - Streams does not support all processors. We are working on adding more processors in the future.
 - Streams does not support all processor options. We are working on adding more options in the future.
 - The data preview simulation may not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
-- Dots in field names are not supported. You can use the dot expand processor in the `@custom` pipeline as a workaround. You need to manually add the dot processor.
+- Dots in field names are not supported. You can use the dot expand processor in the `@custom` pipeline as a workaround. You need to manually add the dot expand processor.
 - Providing any arbitrary JSON in the Streams UI is not supported. We are working on adding this in the future.
