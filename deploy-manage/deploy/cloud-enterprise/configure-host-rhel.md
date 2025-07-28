@@ -144,7 +144,7 @@ Make sure to use a supported combination of Linux distribution and container eng
 
     ```text
     [engine]
-    env = ["HTTP_PROXY=http://{proxy-ip}:{proxy-port}", "HTTPS_PROXY=http://{proxy-ip}:{proxy-port}"]
+    env = ["HTTP_PROXY=http://<PROXY_IP>:<PROXY_PORT>", "HTTPS_PROXY=http://<PROXY_IP>:<PROXY_PORT>"]
     ```
 
 7. Reload systemd configuration

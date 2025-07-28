@@ -229,13 +229,13 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
 1. Download the {{agent}} Debian install package for the release that you want to upgrade to:
 
     ```bash subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-amd64.deb
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-amd64.deb
     ```
 
 2. Upgrade {{agent}} to the target release:
 
     ```bash subs=true
-    sudo dpkg -i elastic-agent-{{stack-version}}-amd64.deb
+    sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
     ```
 
 3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since [fleet]-managed upgrades are not supported for this package type.
@@ -246,13 +246,13 @@ For installation steps refer to [Install {{fleet}}-managed {{agent}}s](/referenc
 1. Download the {{agent}} RPM install package for the release that you want to upgrade to:
 
     ```bash subs=true
-    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{stack-version}}-x86_64.rpm
+    curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
 2. Upgrade {{agent}} to the target release:
 
     ```bash subs=true
-    sudo rpm -U elastic-agent-{{stack-version}}-x86_64.rpm
+    sudo rpm -U elastic-agent-{{version.stack}}-x86_64.rpm
     ```
 
 3. Confirm in {{fleet}} that the agent has been upgraded to the target version. Note that the **Upgrade agent** option in the **Actions** menu next to the agent will be disabled since {{fleet}}-managed upgrades are not supported for this package type.
