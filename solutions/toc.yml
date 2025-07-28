@@ -91,7 +91,6 @@ toc:
       - file: search/ai-assistant.md
   - file: observability.md
     children:
-      - file: observability/observability-serverless-subscription-tiers.md
       - file: observability/get-started.md
         children:
           - file: observability/get-started/what-is-elastic-observability.md
@@ -459,6 +458,7 @@ toc:
             children:
               - file: observability/incident-management/configure-service-level-objective-slo-access.md
               - file: observability/incident-management/create-an-slo.md
+      - file: observability/observability-serverless-subscription-tiers.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
   - file: security.md

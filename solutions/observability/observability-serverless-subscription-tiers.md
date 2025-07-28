@@ -13,6 +13,8 @@ products:
 * **Observability Logs Essentials**: everything you need to store and analyze logs at scale.
 * **Observability Complete**: full-stack observability capabilities to monitor cloud-native and hybrid environments.
 
+% todo why choose one over the other? Is there some standard language we want to use?
+
 For pricing information, refer to [Elastic Observability Serverless pricing](https://www.elastic.co/pricing/serverless-observability).
 
 ## Feature comparison
@@ -49,4 +51,4 @@ To access the additional features available in Observability Complete, upgrade y
 
 ## Ingest data into a Logs Essentials project
 
-Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to ingest data into your Logs Essentials project. For more information, refer to the [Elastic Cloud Serverless quickstart](opentelemetry://quickstart/serverless).
+Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to ingest data into your Logs Essentials project. For more information on getting started, refer to the [Elastic Cloud Serverless quickstart](opentelemetry://reference/quickstart/serverless/index.md).
