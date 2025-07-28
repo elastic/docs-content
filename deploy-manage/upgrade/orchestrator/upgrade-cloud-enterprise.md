@@ -27,19 +27,19 @@ During the upgrade window, there might be a short period of time during which yo
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]
 
-The following table shows the recommended upgrade paths from older {{ece}} versions to {{ece_version}}.
+The following table shows the recommended upgrade paths from older {{ece}} versions to {{version.ece}}.
 
 | Upgrade from | Recommended upgrade path to 4.0 |
 | --- | --- |
-| Any 3.x version | 1. Upgrade to 3.8.0<br>2. Upgrade to {{ece_version}}<br> |
-| 2.13 | 1. Upgrade to 3.8.0<br>2. Upgrade to {{ece_version}}<br> |
-| 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to {{ece_version}}<br> |
-| 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to {{ece_version}}<br> |
+| Any 3.x version | 1. Upgrade to 3.8.0<br>2. Upgrade to {{version.ece}}<br> |
+| 2.13 | 1. Upgrade to 3.8.0<br>2. Upgrade to {{version.ece}}<br> |
+| 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to {{version.ece}}<br> |
+| 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to {{version.ece}}<br> |
 
-If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to {{ece_version}}:
+If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to {{version.ece}}:
 - [ECE 2.5 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.5/ece-upgrade.html)
 - [ECE 2.13 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.13/ece-upgrade.html)
-  
+
   :::{note}
   We don't recommend upgrading to 2.13.0, as it can cause issues and you may lose access to the admin console. We strongly recommend upgrading to 2.13.4.
   :::
@@ -86,7 +86,7 @@ Before starting the upgrade process, verify that your setup meets the following 
 - **Proxies and load balancing**. To avoid any downtime for {{ece}}, the installation must include more than one proxy and must use a load balancer as recommended. If only a single proxy is configured or if the installation is not using a load balancer, some downtime is expected when the containers on the proxies are upgraded. Each container upgrade typically takes five to ten seconds, times the number of containers on a typical host.
 - **For *offline* or *air-gapped* installations**. Additional steps are required to upgrade {{ece}}. After downloading the installation script for the new version, pull and load the required container images and push them to a private Docker registry. To learn more about pulling and loading Docker images, check Install [ECE offline](../../../deploy-manage/deploy/cloud-enterprise/air-gapped-install.md).
 - Check the security cluster’s zone count. Due to internal limitations in ECE, the built-in security cluster cannot be scaled to two zones during the ECE upgrade procedure. If the zone count is set to 2 zones, scale the cluster to 3 or 1 zone(s) before upgrading ECE.
-- **[Verify if you can upgrade directly](#ece-upgrade-version-matrix)**. When upgrading to ECE 4.0 or a higher version: 
+- **[Verify if you can upgrade directly](#ece-upgrade-version-matrix)**. When upgrading to ECE 4.0 or a higher version:
   - You need to first upgrade to ECE 3.8.0 or later. Refer to the [ECE version 3.8.0 upgrade instructions](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html) for details.
 
   :::{warning}
@@ -142,7 +142,7 @@ You can follow along while each container for {{ece}} is upgraded on the hosts t
 By default, ECE updates to the most current available version. If you want to upgrade to a specific ECE version, use the `--cloud-enterprise-version` option:
 
 ```sh subs=true
-bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --user admin --pass $PASSWORD --cloud-enterprise-version {{ece_version}}
+bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --user admin --pass $PASSWORD --cloud-enterprise-version {{version.ece}}
 ```
 
 
