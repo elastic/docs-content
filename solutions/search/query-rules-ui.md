@@ -93,8 +93,7 @@ Use the following steps to edit a query rule:
 6. Select **Save** in the top right corner of the ruleset section.
 
 :::{important}
-After modifying any rules, make sure to save the changes in the ruleset section as well.
-Unsaved rules will not be applied even if they're displayed in the UI.
+Don't forget to save your changes, because unsaved rules are not applied.
 :::
 
 #### Delete a rule
