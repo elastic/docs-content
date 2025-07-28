@@ -263,8 +263,8 @@ On self-managed and cloud deployments of {{stack}}, you can configure the defaul
 xpack.fleet.autoUpgrades.taskInterval: 15m <1>
 xpack.fleet.autoUpgrades.retryDelays: ['5m', '10m', '20m'] <2>
 ```
-1. The time interval between which the auto-upgrade task should run. Defaults to `30m`.
-2. Array indicating how much time should pass before a failed auto-upgrade is retried. The array's length indicates the maximum number of retries. Defaults to `['30m', '1h', '2h', '4h', '8h', '16h', '24h']`
+1. The time interval at which the auto-upgrade task should run. Defaults to `30m`.
+2. Array indicating how much time should pass before a failed auto-upgrade is retried. The array's length indicates the maximum number of retries. Defaults to `['30m', '1h', '2h', '4h', '8h', '16h', '24h']`.
 
 For more information, refer to the [Kibana configuration reference](kibana://reference/configuration-reference.md).
 
