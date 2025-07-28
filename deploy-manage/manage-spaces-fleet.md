@@ -11,7 +11,7 @@ applies_to:
 
 Fleet supports a **space-aware** data model. You can use [Kibana spaces](/deploy-manage/manage-spaces.md) to manage Agent policies and integrations per space. Combined with granular [user roles](/reference/fleet/fleet-roles-privileges.md), this feature enables true role-based access control for {{agent}} management.
 
-For **new deployments** on 9.1.0 or later, space awareness is enabled by default.
+For **new deployments** on {{stack}} 9.1.0 or later, space awareness is enabled by default.
 For **upgraded deployments** from earlier versions, you must explicitly [enable space awareness](#spaces-fleet-enable).
 
 To use space awareness with {{fleet}}:
