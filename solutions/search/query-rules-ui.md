@@ -148,4 +148,15 @@ To test a query ruleset, do the following:
 5. Review results to confirm if the rule actions were applied as expected.
 
 
+## Learn more
+
+Following resources can help you understand query rules better:
+
+* [Query rules blog](elasticsearch://reference/elasticsearch/mapping-reference/text.md)
+* [Search using query rules](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules)
+* [Rule types](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-type)
+* [Rule criteria](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-criteria)
+* [Rule actions](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-actions)
+
+	
 
