@@ -1,8 +1,9 @@
 ---
 applies_to:
-  stack:
   deployment:
     self: all
+products:
+  - id: kibana
 ---
 
 # Upgrade {{kib}} [upgrade-kibana]
@@ -53,21 +54,20 @@ To upgrade {{kib}}:
 
 1. Shut down all {{kib}} instances. {{kib}} does not support rolling upgrades. **Upgrading while older {{kib}} instances are running can cause data loss or upgrade failures.**
 2. To install the `deb` or `rpm` package:
-
-    a. Use `rpm` or `dpkg`. This installs all files in their proper locations and will not overwrite the config files.
-    b. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
+    1. Use `rpm` or `dpkg`. This installs all files in their proper locations and will not overwrite the config files.
+    2. Upgrade any plugins by removing the existing plugin and reinstalling the appropriate version using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 3. To install from a `zip` or `tar.gz` archive:
 
-    a. **Extract the archive to a new directory** to be sure that you don’t overwrite the `config` or `data` directories.
-    b. Copy the files from the `config` directory from your old installation to your new installation.
-    c. Copy the files from the `data` directory from your old installation to your new installation.
+    1. **Extract the archive to a new directory** to be sure that you don’t overwrite the `config` or `data` directories.
+    2. Copy the files from the `config` directory from your old installation to your new installation.
+    3. Copy the files from the `data` directory from your old installation to your new installation.
 
     ::::{important}
     If you use {{monitor-features}}, you must re-use the data directory when you upgrade {{kib}}. Otherwise, the {{kib}} instance is assigned a new persistent UUID and becomes a new instance in the monitoring data.
     ::::
 
-    d. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
+    4. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, refer to [{{kib}} plugins](kibana://reference/kibana-plugins.md).
 
 4. Start {{kib}}.
 

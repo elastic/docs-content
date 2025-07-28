@@ -28,17 +28,35 @@ products:
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]
 
-When upgrading an existing cluster, you perform a minor or major upgrade. For example, a minor upgrade takes you from version 9.0.0 to 9.1.0, while a major upgrade takes you from version 8.0.0 to 9.0.0.
+This section contains the actual upgrade instructions for {{es}} clusters and {{kib}} instances. Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
 
-Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
+## Prerequisites
+
+Before proceeding with the upgrade, review the [Plan your upgrade](/deploy-manage/upgrade/plan-upgrade.md) guidance to understand compatibility and timing considerations, and follow the steps in [Prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) to get your environment ready for the upgrade.
+
+## Out-of-order releases [out-of-order-releases]
+
+Elastic maintains several minor versions of Elasticsearch at once. This means releases do not always happen in order of their version numbers. You can only upgrade to {{stack-version}} if the version you are currently running meets both of these conditions:
+
+* Has an older version number than {{stack-version}}
+* Has an earlier release date than {{stack-version}}
+
+If you are currently running a version with an older version number but a later release date than {{stack-version}}, wait for a newer release before upgrading.
+
+Additionally, upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
+
+## Upgrade methods
 
 If you’re using Elastic-managed infrastructure, use the following options:
 
 * [Upgrade on {{ech}}](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ech.md)
-* Upgrade on [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), which is automatically performed by Elastic and requires no user management
 
 If you’re using self-managed infrastructure - either on-prem or public cloud - use the following options:
 
 * [Upgrade the {{stack}} on a self-managed cluster](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md)
-* [Upgrade on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
-* [Upgrade on {{eck}} (ECK)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)
+* [Upgrade your deployment on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
+* [Upgrade your deployment on {{eck}} (ECK)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)
+
+::::{note}
+With [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), upgrades are fully managed by Elastic. Users automatically receive the latest features and improvements, with no need to plan or perform upgrade steps.
+::::
