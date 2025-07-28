@@ -23,7 +23,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ## 9.1.0 [elastic-observability-9.1.0-release-notes]
 
-### Features [elastic-observability-9.1.0-features]
+### Features and enhancements[elastic-observability-9.1.0-features]
 
 * Adds the anonymization advanced setting for Observability AI Assistant [#224607]({{kib-pull}}224607).
 * Allows users to change the Knowledge Base model post-installation in AI Assistant Settings. [#221319]({{kib-pull}}221319).
@@ -56,9 +56,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds failure store metrics to the **Data Set Quality** page [#220874]({{kib-pull}}220874).
 * Adds support for span links in the service map [#215645]({{kib-pull}}215645).
 * Adds support for `GroupStreamDefinition` to `/api/streams` endpoints [#208126]({{kib-pull}}208126).
-
-### Enhancements [elastic-observability-9.1.0-enhancements]
-
 * Submits a comment in cases by pressing **+ Enter** [#228473]({{kib-pull}}228473).
 * Updates SLO starter prompt [#224493]({{kib-pull}}224493).
 * Integrates new tail sampling settings [#224479]({{kib-pull}}224479).
