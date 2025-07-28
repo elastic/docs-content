@@ -15,7 +15,7 @@ products:
 
 # No logs, metrics, or traces visible in Kibana
 
-If the EDOT Collector or SDKs appear to be running, but you see no logs, metrics, or traces in the {{kib}} UI, try to use the solutions below to identify and resolve the issue. 
+If the EDOT Collector or SDKs appear to be running, but you see no logs, metrics, or traces in the {{kib}} UI, try to use these solutions to identify and resolve the issue.
 
 ## Symptoms
 
@@ -33,6 +33,7 @@ This issue is typically caused by one or more of the following:
 * Network issues, such as proxy misconfigurations
 * TLS verification failures
 * Misconfigured pipelines or disabled signals
+* Incomplete setup — to capture all telemetry data, you must use the EDOT Collector together with an appropriate EDOT SDKs
 
 ## Resolution
 
