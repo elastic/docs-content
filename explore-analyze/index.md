@@ -1,4 +1,5 @@
 ---
+navigation_title: Explore and analyze
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-explore-your-data.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html#visualize-and-analyze
@@ -12,7 +13,7 @@ products:
   - id: kibana
 ---
 
-# Explore and analyze
+# Explore and analyze data with Kibana
 
 $$$elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library$$$
 

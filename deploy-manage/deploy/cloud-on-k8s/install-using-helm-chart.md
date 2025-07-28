@@ -69,7 +69,7 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
   --set=managedNamespaces='{namespace-a, namespace-b}'
 ```
 
-You can find the profile files in the Helm cache directory or in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/deploy/eck-operator).
+You can find the profile files in the Helm cache directory or in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-operator).
 ::::
 
 The previous example disabled the validation webhook along with all other cluster-wide resources. If you need to enable the validation webhook in a restricted environment, see [](./webhook-namespace-selectors.md). To understand what the validation webhook does, refer to [](./configure-validating-webhook.md).
@@ -91,7 +91,7 @@ Migrating an existing installation to Helm is essentially an upgrade operation a
 You can migrate an existing operator installation to Helm by adding the `meta.helm.sh/release-name`, `meta.helm.sh/release-namespace` annotations and the `app.kubernetes.io/managed-by` label to all the resources you want to be adopted by Helm. You *must* do this for the Elastic Custom Resource Definitions (CRD) because deleting them would trigger the deletion of all deployed Elastic applications as well. All other resources are optional and can be deleted.
 
 ::::{note}
-A shell script is available in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/blob/{{eck_release_branch}}/deploy/helm-migrate.sh) to demonstrate how to migrate from version 1.7.1 to Helm. You can modify it to suit your own environment.
+A shell script is available in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/blob/{{version.eck | M.M}}/deploy/helm-migrate.sh) to demonstrate how to migrate from version 1.7.1 to Helm. You can modify it to suit your own environment.
 ::::
 
 For example, an ECK 1.2.1 installation deployed using [YAML manifests](/deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md) can be migrated to Helm as follows:
