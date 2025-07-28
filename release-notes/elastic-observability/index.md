@@ -43,9 +43,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Allows users to link dashboards in **Rules** and **Alerts** pages [#219019]({{kib-pull}}219019).
 * Allows users to add an investigation guide to alert **Details** pages [#217106]({{kib-pull}}217106).
 * Adds KQL filter to TLS alerting rule [#215110]({{kib-pull}}215110).
-* Adds the `context.grouping` action variable in SLO burn rate and ES query rules [#213550]({{kib-pull}}213550).
+* Adds the `context.grouping` action variable in SLO burn rate and {{es}} query rules [#213550]({{kib-pull}}213550).
 * Adds the `context.grouping` action variable in custom threshold and APM rules [#212895]({{kib-pull}}212895).
-* Allows users to generate an alert for each row in query results in the ES query ES|QL rule [#212135]({{kib-pull}}212135).
+* Allows users to generate an alert for each row in query results in the {{es}} query {{esql}} rule [#212135]({{kib-pull}}212135).
 * Adds filter controls on Observability **Alerts** pages [#198495]({{kib-pull}}198495).
 * Adds support for maintenance windows in Synthetics [#222174]({{kib-pull}}222174).
 * Allows users to choose the spaces where Synthetics monitors are available [#221568]({{kib-pull}}221568).
@@ -63,7 +63,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates SLO starter prompt [#224493]({{kib-pull}}224493).
 * Integrates new tail sampling settings [#224479]({{kib-pull}}224479).
 * Gets model ID from anonymization rules [#224280]({{kib-pull}}224280).
-* Prefer `observabilityAIAssistantAPIClient` over supertest [#222753]({{kib-pull}}222753)
+* Prefer `observabilityAIAssistantAPIClient` over supertest [#222753]({{kib-pull}}222753).
 * Updates system prompt to inform about anonymization [#224211]({{kib-pull}}224211).
 * Adds investigation guide empty state [#223974]({{kib-pull}}223974).
 * Adds anonymization support [#223351]({{kib-pull}}223351).
@@ -87,7 +87,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Handle `ELASTIC_PROFILER_STACK_TRACE_IDS` for `apm-profiler` integration [#217020]({{kib-pull}}217020)
 * Includes `spaceID` in SLI documents [#214278]({{kib-pull}}214278).
 * Updates delete confirmation modal [#212695]({{kib-pull}}212695).
-* Enables syntax highlighting for ES|QL [#212669]({{kib-pull}}212669).
+* Enables syntax highlighting for {{esql}} [#212669]({{kib-pull}}212669).
 * Shows dashboards with different ingest path on runtime metrics [#211822]({{kib-pull}}211822).
 * Adds the ability for a user to create an API Key in Synthetics settings that applies only to specified spaces [#211816]({{kib-pull}}211816).
 * Enables editing central config for EDOT Agents and SDKs [#211468]({{kib-pull}}211468).
@@ -96,7 +96,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Uses bulk endpoint to import knowledge base entries [#222084]({{kib-pull}}222084).
 * Changes embeddable view when only one monitor if one location is selected [#218402]({{kib-pull}}218402).
 * Improves how related alerts are suggested [#215673]({{kib-pull}}215673).
-* Updates handling of duplicate conversations in hte AI Assistant[#208044]({{kib-pull}}208044).
+* Updates handling of duplicate conversations in the AI Assistant[#208044]({{kib-pull}}208044).
 * Indicates when failure store is not enabled for a data stream [#221644]({{kib-pull}}221644).
 
 ### Fixes [elastic-observability-9.1.0-fixes]
