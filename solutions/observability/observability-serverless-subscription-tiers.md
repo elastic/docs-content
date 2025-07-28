@@ -6,7 +6,7 @@ products:
   - id: observability
 ---
 
-# {obs-serverless} subscription tiers
+# {{obs-serverless}} subscription tiers
 
 {{obs-serverless}} projects are available in the following tiers of carefully selected features to enable common observability operations:
 
@@ -17,7 +17,7 @@ For pricing information, refer to [Elastic Observability Serverless pricing](htt
 
 ## Feature comparison
 
-The following table provides an in-depth feature comparison between Observability Complete and Observability Logs Essentials.
+The following table provides an in-depth feature comparison between Observability Complete and Observability Logs Essentials:
 
 | **Feature** | Observability Complete | Observability Logs Essentials |
 |---------|----------------------|-----------------------------------|
@@ -41,8 +41,12 @@ The following table provides an in-depth feature comparison between Observabilit
 Upgrading from Observability Logs Essentials to Observability Complete is permanent and cannot be reversed.
 :::
 
+To access the additional features available in Observability Complete, upgrade your Observability Logs Essentials subscription by completing the following steps:
+
 1. From the [{{ecloud}} Console](https://cloud.elastic.co), select **Manage** next to the Observability Logs Essentials serverless project you want to upgrade.
 1. Next to **Project features**, select **Edit**.
 1. Select **Observability Complete**.
 
-## Ingest data to a Logs Essentials project
+## Ingest data into a Logs Essentials project
+
+Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to ingest data into your Logs Essentials project. For more information, refer to the [Elastic Cloud Serverless quickstart](opentelemetry://quickstart/serverless).
