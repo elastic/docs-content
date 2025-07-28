@@ -10,14 +10,16 @@ products:
 
 {{obs-serverless}} projects are available in the following tiers of carefully selected features to enable common observability operations:
 
-* **Observability Logs Essentials**: everything you need to store and analyze logs at scale.
-* **Observability Complete**: full-stack observability capabilities to monitor cloud-native and hybrid environments.
+* **Observability Logs Essentials**: Provides everything you need to ingest and analyze your logs. This includes **[Discover](/solutions/observability/logs/discover-logs.md)** to explore your logs, pre-configured and custom dashboards to visualize and gain insight into your logs, and alerting to notify you of potential issues.
+* **Observability Complete**: Provides full-stack observability capabilities to monitor cloud-native and hybrid environments. This includes everything in the Logs Essentials tier, as well as machine learning and AI capabilities, APM, and more.
 
-% todo why choose one over the other? Is there some standard language we want to use?
+Refer to [feature comparison table](#obs-subscription-features) for a more detailed comparison between the tiers.
+
+## Subscription tier pricing [obs-subscription-pricing]
 
 For pricing information, refer to [Elastic Observability Serverless pricing](https://www.elastic.co/pricing/serverless-observability).
 
-## Feature comparison
+## Feature comparison [obs-subscription-features]
 
 The following table provides an in-depth feature comparison between Observability Complete and Observability Logs Essentials:
 
@@ -37,7 +39,7 @@ The following table provides an in-depth feature comparison between Observabilit
 | **[Custom knowledge bases](/solutions/observability/observability-ai-assistant.md#obs-ai-kb-ui)** | ✅ | ❌ |
 | **[Synthetics testing and browser experience monitoring](/solutions/observability/synthetics/index.md)** | ✅ | ❌ |
 
-## Upgrade from Observability Logs Essentials to Observability Complete
+## Upgrade from Observability Logs Essentials to Observability Complete [obs-subscription-upgrade]
 
 :::{warning}
 Upgrading from Observability Logs Essentials to Observability Complete is permanent and cannot be reversed.
@@ -51,6 +53,6 @@ To access the additional features available in Observability Complete, upgrade y
 
 % not sure if there is a last step here (like users needing to save) because i'm not able to see a project starting in logs essentials.
 
-## Ingest data into a Logs Essentials project
+## Ingest data into a Logs Essentials project [obs-subscription-ingest]
 
 Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to ingest data into your Logs Essentials project. For more information on getting started, refer to the [Elastic Cloud Serverless quickstart](opentelemetry://reference/quickstart/serverless/index.md).
