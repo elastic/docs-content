@@ -38,7 +38,7 @@ Before upgrading, verify that your current environment supports the version you 
     `REST API compatibility` is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
     ::::
 
-* **Index compatibility**: {{es}} provides full query and write support for indices created in the previous major version. If you have indices created in 7.x or earlier, you must reindex, delete, or [mark them as read-only](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) before upgrading to 9.x. This topic is covered during the [upgrade preparations](prepare-to-upgrade.md#prepare-to-upgrade-from-8.x), with help from the Upgrade Assistant.
+* **Index compatibility**: {{es}} provides full query and write support for indices created in the previous major version. If you have indices created in 7.x or earlier, you must reindex, delete, or [mark them as read-only](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) before upgrading to 9.x. This topic is covered during the [upgrade preparations](prepare-to-upgrade.md#prepare-upgrade-from-8.x), with help from the Upgrade Assistant.
 
 * **{{es}} upgrade path**: Check the [upgrade paths](../upgrade.md#upgrade-paths) to determine whether you must upgrade through an intermediate version (such as 8.19.x before moving to 9.x), or if you can upgrade directly to the target version.
 

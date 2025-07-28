@@ -7,6 +7,8 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: elasticsearch
 ---
 # Prepare to upgrade
 
@@ -129,7 +131,7 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
         In Elasticsearch 9.x, you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to access snapshots of 7.x or earlier indices, without needing to reindex or run an older cluster. This provides a convenient option to retain historical data in case you choose to delete those indices and keep them only in existing snapshots.
         ::::
 
-    3. Review the deprecation logs from the Upgrade Assistant to determine if your applications are using features that are not supported or behave differently in 9.x. See the [breaking changes](/release-notes/breaking-changes.md) for more information about changes in 9.x that could affect your application.
+    3. Review the deprecation logs from the Upgrade Assistant to determine if your applications are using features that are not supported or behave differently in 9.x. See the [breaking changes](elasticsearch://release-notes/breaking-changes.md) for more information about changes in 9.x that could affect your application.
 
         ::::{note}
         Make sure you check the breaking changes for each 9.x release up to your target release.
