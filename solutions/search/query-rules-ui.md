@@ -6,7 +6,7 @@ applies_to:
 ---
 
 # Query rules UI
-Query rules help customize search results, giving you more control over how results are returned based on the contextual information in the query.
+Use query rules to boost, pin, or exclude specific documents when queries contain certain keywords, phrases, or match defined search patterns.
 Query rules UI is a user interface that helps you create, edit, and delete query rules. The interface is implemented on top of the existing Query Rules API.
 
 The UI enables you to:
@@ -18,7 +18,9 @@ The UI enables you to:
 
 ## UI vs. API: What's the difference?
 
-All the functionality in the UI works the same as in API calls. The only difference is that the Query Rules UI will create pinning by `docs` over `ids`. It'll still allow edits in a simple form for `id` pinning. For more information on Rule actions, refer [Rule actions](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-actions).
+The Query Rules UI provides the same functionality as the API with one key difference in how documents are pinned:
+
+* The UI defaults to `docs` for maximum flexibility, but still allows `id`-based pinning for single-index searches through a simplified form.
 
 To see examples of how to search using query rules, refer [Search using Query Rules API](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules).
 
