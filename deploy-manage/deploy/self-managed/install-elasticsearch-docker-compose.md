@@ -44,7 +44,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
     ```txt subs=true
     ...
     # Version of Elastic products
-    STACK_VERSION={{stack-version}}
+    STACK_VERSION={{version.stack}}
     ...
     ```
 

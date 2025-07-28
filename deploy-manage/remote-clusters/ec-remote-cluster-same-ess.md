@@ -14,7 +14,7 @@ products:
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ecloud}} organization.
 
 ::::{note}
-If traffic filtering is enabled on the remote cluster, the remote cluster administrator must configure a traffic filter of type remote cluster, using either the organization ID or the Elasticsearch cluster ID as the filtering criteria. For detailed instructions, refer to [Remote clusters and traffic filtering](/deploy-manage/remote-clusters/ec-enable-ccs.md#ec-ccs-ccr-traffic-filtering).
+If network security is enabled on the remote cluster, the remote cluster administrator must configure a private connection policy of type **Remote cluster**, specifying either the organization ID or the Elasticsearch cluster ID. For detailed instructions, refer to [Remote clusters and network security](/deploy-manage/remote-clusters/ec-enable-ccs.md#ec-ccs-ccr-network-security).
 ::::
 
 ## Allow the remote connection [ec_allow_the_remote_connection]
@@ -121,7 +121,7 @@ You can update a deployment using the appropriate trust settings for the {{es}} 
 The current trust settings can be found in the path `.resources.elasticsearch[0].info.settings.trust` when calling:
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID?show_settings=true
+curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID?show_settings=true
 ```
 
 For example:

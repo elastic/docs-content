@@ -89,7 +89,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 1. Obtain the existing deployment templates to get some examples of what the required JSON looks like. You can take the JSON for one of the existing templates and modify it to create a new template, similar to what gets shown in the next step.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
+    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Post the JSON for your new deployment template.
