@@ -1,12 +1,12 @@
 ---
-navigation_title: Serverless subscription tiers
+navigation_title: Serverless feature tiers
 applies_to:
   serverless: ga
 products:
   - id: observability
 ---
 
-# {{obs-serverless}} subscription tiers
+# {{obs-serverless}} feature tiers
 
 {{obs-serverless}} projects are available in the following tiers of carefully selected features to enable common observability operations:
 
