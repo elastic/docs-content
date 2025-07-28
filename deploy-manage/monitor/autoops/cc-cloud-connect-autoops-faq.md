@@ -5,11 +5,11 @@ applies_to:
 navigation_title: FAQ
 ---
 
-# Cloud connected AutoOps FAQ
+# AutoOps for self-managed clusters FAQ
 
-Find answers to your questions about AutoOps as a cloud connected service.
+Find answers to your questions about AutoOps for self-managed clusters.
 
-:::{dropdown} Why should I use AutoOps with Cloud Connect?
+:::{dropdown} Why should I use AutoOps for my self-managed cluster?
 
 $$$cc-autoops-why$$$
 
@@ -17,7 +17,7 @@ AutoOps simplifies the operation of your {{es}} clusters by providing real-time 
 
 When you need support, AutoOps gives the Elastic team real-time visibility into your cluster, leading to faster resolutions. 
 
-Using AutoOps with Cloud Connect lets you access all these features in your self-managed cluster without the operational overhead of managing their infrastructure.
+Using AutoOps for your self-managed cluster lets you access all these features without the operational overhead of managing their infrastructure.
 :::
 
 :::{dropdown} Which versions of {{es}} does AutoOps support?
@@ -34,7 +34,7 @@ $$$cc-autoops-deployment-types$$$
 You can connect to AutoOps on a standalone Elastic Stack, ECE (Elastic Cloud Enterprise), or ECK (Elastic Cloud on Kubernetes) deployment.
 :::
 
-:::{dropdown} Can I use AutoOps with Cloud Connect if my environment is air-gapped?
+:::{dropdown} Can I use AutoOps for self-managed clusters if my environment is air-gapped?
 
 $$$cc-autoops-air-gapped$$$
 

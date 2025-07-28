@@ -7,7 +7,7 @@ navigation_title: Connect your self-managed cluster
 
 # Connect your self-managed cluster to AutoOps
 
-To use AutoOps with Cloud Connect, you first need to create an {{ecloud}} account or log in to your existing account. Once you choose to connect AutoOps to your self-managed cluster, an installation wizard will guide you through the steps of installing Elastic Agent to send metrics from your self-managed cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. Once you choose to connect AutoOps to your self-managed cluster, an installation wizard will guide you through the steps of installing Elastic Agent to send metrics from your self-managed cluster to AutoOps in {{ecloud}}.  
 
 Complete the steps in the following subsections to connect your cluster to AutoOps. The setup only takes about 10 minutes.
 

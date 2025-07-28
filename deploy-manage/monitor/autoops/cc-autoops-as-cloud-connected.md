@@ -2,10 +2,10 @@
 applies_to:
   deployment:
     self:
-navigation_title: AutoOps as a cloud connected service
+navigation_title: AutoOps for self-managed clusters
 ---
 
-# AutoOps as a cloud connected service
+# AutoOps for self-managed clusters
 
 Use [AutoOps](/deploy-manage/monitor/autoops.md) with your self-managed cluster through [Cloud Connect](/deploy-manage/cloud-connect.md). 
 
@@ -19,5 +19,5 @@ In this section, you'll find the following information:
 * How to [manage your connected clusters](/deploy-manage/monitor/autoops/cc-manage-connected-clusters.md).
 * How to [manage users of your connected clusters](/deploy-manage/monitor/autoops/cc-manage-users.md).
 * The [metrics](/deploy-manage/monitor/autoops/cc-collected-metrics.md) that are collected when you connect your self-managed cluster to AutoOps.
-* [FAQs](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md) about AutoOps as a cloud connected service.
+* [FAQs](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md) about AutoOps for self-managed clusters.
 * A [troubleshooting guide](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md) to help you with any issues you may encounter.

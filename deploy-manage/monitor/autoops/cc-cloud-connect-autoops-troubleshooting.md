@@ -5,11 +5,11 @@ applies_to:
 navigation_title: Troubleshooting guide
 ---
 
-# Cloud connected AutoOps troubleshooting guide
+# AutoOps for self-managed clusters troubleshooting guide
 
 ## Troubleshoot issues
 
-Use this guide to troubleshoot any issues you may encounter when using AutoOps as a cloud connected service.
+Use this guide to troubleshoot any issues you may encounter when using AutoOps for self-managed clusters.
 
 :::{dropdown} I’m trying to create a Cloud organization, but I’m already part of a different one.
 
@@ -47,7 +47,7 @@ If an error appears on the screen, follow the suggestion in the error message an
 
 ## Potential errors
 
-The following table shows the errors you might encounter if something goes wrong while you set up and use AutoOps as a cloud connected service.
+The following table shows the errors you might encounter if something goes wrong while you set up and use AutoOps for self-managed clusters.
 
 | Error code | Error message | Description |
 | :--- | :--- | :--- |
