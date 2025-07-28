@@ -11,8 +11,10 @@ Query rules UI is a user interface that helps you create, edit, and delete query
 
 The UI enables you to:
 
-* Create, edit and delete query rules
-* Reorder rules in a query ruleset
+- Set keyword triggers and conditions for when rules apply
+- Pin, boost, or exclude specific documents in results
+- Organize rules into rulesets and set execution priority
+- Test rules against sample queries before publishing
 
 ## UI vs. API: What's the difference?
 
