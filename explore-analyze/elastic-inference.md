@@ -9,7 +9,7 @@ navigation_title: Elastic Inference
 
 ## Overview
 
-{{infer-cap}} is a process of using an LLM or a {{ml}} trained model to make predictions or operations - such as text embedding, completion, or reranking - on your data.
+{{infer-cap}} is a process of using a {{ml}} trained model to make predictions or operations - such as text embedding, or reranking - on your data.
 You can use {{infer}} during ingest time (for example, to create embeddings from textual data you ingest) or search time (to perform [semantic search](/solutions/search/semantic-search.md)).
 There are several ways to perform {{infer}} in the {{stack}}:
 

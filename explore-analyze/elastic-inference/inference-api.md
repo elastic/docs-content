@@ -20,9 +20,20 @@ You can use the default {{infer}} endpoints your deployment contains or create a
 
 ## Default {{infer}} endpoints [default-enpoints]
 
-Your {{es}} deployment contains preconfigured {{infer}} endpoints which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. The following list contains the default {{infer}} endpoints listed by `inference_id`:
+Your {{es}} deployment contains preconfigured {{infer}} endpoints, which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. These endpoints come in two forms:
+
+- **Elastic Inference Service (EIS) endpoints**, which provide {{infer}} as a managed service and do not consume resources from your own nodes.
+
+- **ML node-based endpoints**, which run on your dedicated {{ml}} nodes.
+
+The following section lists the default {{infer}} endpoints, identified by their `inference_id`, grouped by whether they are EIS- or ML node–based.
+
+### Default endpoints for Elastic {{infer-cap}} Service (EIS)
 
 - {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview` `.elser-2-elastic`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) trained model as an Elastic {{infer-cap}} Service for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2`.
+
+### Default endpoints used on ML-nodes
+
 - `.elser-2-elasticsearch`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) built-in trained model for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2_linux-x86_64`.
 - `.multilingual-e5-small-elasticsearch`: uses the [E5](../../explore-analyze/machine-learning/nlp/ml-nlp-e5.md) built-in trained model for `text_embedding` tasks (recommended for non-English language texts). The `model_id` is `.e5_model_2_linux-x86_64`.
 
