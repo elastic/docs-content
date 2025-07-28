@@ -11,8 +11,6 @@ Find answers to your questions about AutoOps for self-managed clusters.
 
 :::{dropdown} Why should I use AutoOps for my self-managed cluster?
 
-$$$cc-autoops-why$$$
-
 AutoOps simplifies the operation of your {{es}} clusters by providing real-time monitoring, performance insights, and issue detection. It helps you identify and resolve problems like ingestion bottlenecks and unbalanced shards, reducing manual effort and preventing performance issues. 
 
 When you need support, AutoOps gives the Elastic team real-time visibility into your cluster, leading to faster resolutions. 
@@ -22,28 +20,20 @@ Using AutoOps for your self-managed cluster lets you access all these features w
 
 :::{dropdown} Which versions of {{es}} does AutoOps support?
 
-$$$cc-autoops-es-version$$$
-
 AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.co/support/eol).
 :::
 
 :::{dropdown} Which deployment types can be connected to AutoOps?
-
-$$$cc-autoops-deployment-types$$$
 
 You can connect to AutoOps on a standalone Elastic Stack, ECE (Elastic Cloud Enterprise), or ECK (Elastic Cloud on Kubernetes) deployment.
 :::
 
 :::{dropdown} Can I use AutoOps for self-managed clusters if my environment is air-gapped?
 
-$$$cc-autoops-air-gapped$$$
-
 Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to the {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
 :::
 
 :::{dropdown} Do I have to define an Elastic IP address to enable the agent to send data to the {{ecloud}}?
-
-$$$cc-autoops-elastic-ip$$$
 
 You may need to define an IP address if your organization’s settings will block the agent from sending out data. 
 
@@ -54,8 +44,6 @@ For more information, refer to [](/deploy-manage/security/elastic-cloud-static-i
 
 :::{dropdown} Where are AutoOps metrics stored, and does it cost extra to ship metrics to the {{ecloud}}?
 
-$$$cc-autoops-collected-metrics$$$
-
 You can choose the CSP and region in which your cluster metrics will be stored from a list of [available regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md). 
 
 Shipping metrics to the {{ecloud}} may come at an additional cost. For example, when sending metrics data from your cluster in a CSP region to the {{ecloud}}, shipping costs will be determined by your agreement with that CSP.
@@ -63,9 +51,20 @@ Shipping metrics to the {{ecloud}} may come at an additional cost. For example, 
 
 :::{dropdown} What information does the Elastic Agent extract from my cluster?
 
-$$$cc-autoops-collected-metrics$$$
+The Elastic Agent only extracts and sends cluster metrics to the {{ecloud}}, not the underlying data within your cluster. The following metrics are collected:
 
-The Elastic Agent only extracts cluster metrics and sends them to the {{ecloud}}. For a list of these metrics, refer to [](/deploy-manage/monitor/autoops/cc-collected-metrics.md).
+| API | Description | Collected data |
+| --- | --- | --- |
+| [_cat/shards](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) | Returns detailed information about the shards within the cluster | Shard states, node allocation, index names, sizes, and replica information |
+| [_nodes/stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) | Retrieves statistics from cluster nodes including JVM, OS, process, and transport metrics | CPU usage, memory utilization, thread pools, file system stats |
+| [_cluster/settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) | Returns the settings configured for the cluster | Persistent and transient settings such as cluster-wide configurations |
+| [_cluster/health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) | Provides information about the overall health of the cluster | Status (green/yellow/red), number of nodes, number of shards |
+| [_cat/template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-templates) | Lists all index templates in the cluster | Template names, patterns, and basic settings |
+| [_index_template](/manage-data/data-store/templates.md) | Retrieves composable index templates | Index settings, mappings, and aliases |
+| [_component_template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-component-template) | Fetches component templates used for building index templates | Metadata for re-usable mappings and settings |
+| [_tasks](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) | Displays information about currently running tasks on the cluster | Task descriptions, start times, running nodes, and execution details |
+| [_template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-template) | Retrieves legacy index templates | Similar to composable index templates but in older format |
+| [_resolve/index/*](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index) | Resolves index, data stream, and alias names to their current definitions | Mappings between names and underlying data objects |
 :::
 
 

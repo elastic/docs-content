@@ -18,6 +18,5 @@ In this section, you'll find the following information:
 * How to [connect your self-managed cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md).
 * How to [manage your connected clusters](/deploy-manage/monitor/autoops/cc-manage-connected-clusters.md).
 * How to [manage users of your connected clusters](/deploy-manage/monitor/autoops/cc-manage-users.md).
-* The [metrics](/deploy-manage/monitor/autoops/cc-collected-metrics.md) that are collected when you connect your self-managed cluster to AutoOps.
 * [FAQs](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md) about AutoOps for self-managed clusters.
 * A [troubleshooting guide](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md) to help you with any issues you may encounter.

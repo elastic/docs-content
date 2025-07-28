@@ -46,7 +46,7 @@ No. The currently available functionality does not consume ECU, but this may cha
 
 $$$cc-data$$$
 
-Yes. For AutoOps, the Elastic Agent only sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. Learn more about the [collected metrics](/deploy-manage/monitor/autoops/cc-collected-metrics.md).
+Yes. For AutoOps, the Elastic Agent only sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. Learn more in [](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md). 
 :::
 
 :::{dropdown} Are more services going to be available with Cloud Connect?

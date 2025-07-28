@@ -675,7 +675,6 @@ toc:
           - hidden: monitor/autoops/cc-connect-self-managed-to-autoops.md
           - hidden: monitor/autoops/cc-manage-connected-clusters.md
           - hidden: monitor/autoops/cc-manage-users.md
-          - hidden: monitor/autoops/cc-collected-metrics.md
           - hidden: monitor/autoops/cc-cloud-connect-autoops-faq.md
           - hidden: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
       - file: monitor/stack-monitoring.md

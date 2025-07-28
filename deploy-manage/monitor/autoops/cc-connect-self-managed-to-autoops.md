@@ -20,11 +20,10 @@ Ensure you meet the following requirements before proceeding:
 * The agent you install for the connection is allowed to send metrics outside your organization to {{ecloud}}.
 * You have a dedicated user with following permissions to set up the Elastic Agent:
 
-    | Type | Privilege |
+    | Setting | Privileges |
     | --- | --- |
-    | Cluster | `monitor`, `read_ilm`, and `read_slm` |
-    | Index | `monitor`, `view_index_metadata`, and `*` indices <br> `allow_restricted_indices`: `true` |
-    | Index | `read` and `.kibana*` indices <br> `allow_restricted_indices`: `true` |
+    | Cluster privileges | `monitor`, `read_ilm`, and `read_slm` |
+    | Index privileges | `*` indices: `monitor`, `view_index_metadata` <br><br> `.kibana*` indices: `read`  |
 
 ## Connect to AutoOps
 
@@ -102,9 +101,11 @@ Complete the following steps to run the command:
 
 5. Return to the wizard and select **I have run the command**.
 
-It may take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps. For details on which metrics are collected by the agent, refer to [](/deploy-manage/monitor/autoops/cc-collected-metrics.md).
+It may take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps.
 
 If the connection is unsuccessful, an error message will appear with a possible reason for the failure and recommended next steps. For a list of these errors, refer to [Potential errors](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md#potential-errors).
+
+Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
 ### Launch AutoOps
 
