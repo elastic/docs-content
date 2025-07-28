@@ -8,16 +8,16 @@ products:
 
 # {obs-serverless} subscription tiers
 
-{obs-serverless} projects are available in the following tiers:
+{{obs-serverless}} projects are available in the following tiers of carefully selected features to enable common observability operations:
 
-* **Observability Complete**: full-stack observability capabilities to monitor cloud-native and hybrid environments.
 * **Observability Logs Essentials**: everything you need to store and analyze logs at scale.
+* **Observability Complete**: full-stack observability capabilities to monitor cloud-native and hybrid environments.
 
 For pricing information, refer to [Elastic Observability Serverless pricing](https://www.elastic.co/pricing/serverless-observability).
 
-Refer to the following table for an in-depth feature comparison.
-
 ## Feature comparison
+
+The following table provides an in-depth feature comparison between Observability Complete and Observability Logs Essentials.
 
 | **Feature** | Observability Complete | Observability Logs Essentials |
 |---------|----------------------|-----------------------------------|
@@ -44,3 +44,5 @@ Upgrading from Observability Logs Essentials to Observability Complete is perman
 1. From the [{{ecloud}} Console](https://cloud.elastic.co), select **Manage** next to the Observability Logs Essentials serverless project you want to upgrade.
 1. Next to **Project features**, select **Edit**.
 1. Select **Observability Complete**.
+
+## Ingest data to a Logs Essentials project
