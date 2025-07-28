@@ -10,7 +10,10 @@ products:
 
 # Elastic for Observability billing dimensions [observability-billing]
 
-{{obs-serverless}} projects provide you with all the capabilities of Elastic Observability to monitor critical applications. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption-based.
+{{obs-serverless}} projects provide you with all the capabilities of Elastic Observability to monitor critical applications. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption-based. {{obs-serverless}} is available in the following tiers of carefully selected features to enable common observability operations:
+
+* **Observability Logs Essentials**: everything you need to store and analyze logs at scale.
+* **Observability Complete**: full-stack observability capabilities to monitor cloud-native and hybrid environments.
 
 Your monthly bill is based on the capabilities you use. When you use {{obs-serverless}}, your bill is calculated based on data volume, which has these components:
 
