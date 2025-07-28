@@ -71,7 +71,7 @@ See also the [recommended scaling options](#agent-policy-scale) for an {{agent}}
 
 
 ## Create a policy [create-a-policy]
-fau
+
 To manage your {{agent}}s and the data they collect, create a new policy:
 
 In {{fleet}}, open the **Agent policies** tab and click **Create agent policy**.
