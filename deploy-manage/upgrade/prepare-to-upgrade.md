@@ -81,10 +81,7 @@ The following steps are common to all types of upgrades, regardless if you are u
 
 ## Additional preparation steps to upgrade from 8.x [prepare-upgrade-from-8.x]
 
-Major upgrades require additional planning and preparation, as they often introduce a significant number of breaking changes and require additional steps to ensure a smooth transition. The main challenges when preparing for a major version upgrade include:
-
-* Reindexing any indices created before 8.0.0, including those used by {{ml}} and transform jobs.
-* Identifying and applying changes needed to accommodate breaking changes.
+Major upgrades require additional planning and preparation, as they often introduce a significant number of breaking changes and require additional steps to ensure a smooth transition.
 
 To assist with this process, use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md), which helps detect deprecated settings, highlights upgrade blockers, and guides you through the required actions.
 
@@ -108,6 +105,7 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
 
     :::{note}
     For flexible upgrade scheduling, 8.19.x {{beats}} and {{ls}} are compatible with 9.x {{es}}.
+
     By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} server.
     :::
 
@@ -121,20 +119,26 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
 
     Considerations when using the upgrade assistant:
 
-    1. Before you change configurations or reindex, ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md).
+    1. For a successful upgrade, **resolve all critical issues reported by the assistant**.
 
-        :::{tip}
-        In 8.3.0 and later, snapshots are generally available as simple archives. You can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to search snapshots from 5.0.0 and later without needing an old {{es}} cluster. This ensures that your {{es}} data remains accessible after upgrading, without requiring a reindex process.
-        :::
+    2. Before you apply configuration changes or reindex, ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md).
 
-    2. For a successful upgrade, resolve all critical issues reported by the assistant. If you make additional changes, create a snapshot to back up your data.
+    3. Indices created in 7.x or earlier must be reindexed or deleted before upgrading to 9.x. Alternatively, you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to enable read-only access to them in 9.x. Keep in mind that {{es}} nodes will fail to start if incompatible indices are present.
 
-    3. To identify if your applications use unsupported features or behave differently in 9.x, review the deprecation logs in the Upgrade Assistant.
+        ::::{tip}
+        In Elasticsearch 9.x, you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to access snapshots of 7.x or earlier indices, without needing to reindex or run an older cluster. This provides a convenient option to retain historical data in case you choose to delete those indices and keep them only in existing snapshots.
+        ::::
+
+    3. Review the deprecation logs from the Upgrade Assistant to determine if your applications are using features that are not supported or behave differently in 9.x. See the [breaking changes](/release-notes/breaking-changes.md) for more information about changes in 9.x that could affect your application.
+
+        ::::{note}
+        Make sure you check the breaking changes for each 9.x release up to your target release.
+        ::::
 
     4. Make the recommended changes to ensure your clients continue operating as expected after the upgrade.
 
         :::{note}
-          As a temporary solution, use the 8.x syntax to submit requests to 9.x with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
+        As a temporary solution, use the 8.x syntax to submit requests to 9.x with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
         :::
 
 3. **{{ccr-cap}} (CCR)**
