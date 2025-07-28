@@ -26,8 +26,8 @@ To uninstall the operator:
 2. Uninstall the operator:
 
     ```shell subs=true
-    kubectl delete -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
-    kubectl delete -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
+    kubectl delete -f https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml
+    kubectl delete -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.yaml
     ```
 
 ::::{warning}
