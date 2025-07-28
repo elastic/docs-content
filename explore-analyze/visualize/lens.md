@@ -470,7 +470,7 @@ These options can vary depending on the type of chart.
     :   If you've chosen to show missing values, you can turn on this option to show gaps as a dotted line.
 
 **Point visibility** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
-:   For **Area** and **Line** charts. Use this option to show or hide data points. They're hidden by default.
+:   For **Area** and **Line** charts. Use this option to show or hide data points. Set to `Auto` by default: Points are visible unless the distance between them is too short.
 
 #### Tables
 
