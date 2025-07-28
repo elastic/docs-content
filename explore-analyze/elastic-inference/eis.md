@@ -24,7 +24,7 @@ The request routing does not restrict the location of your deployments.
 
 ELSER requests are managed by Elastic's own EIS infrastructure.
 
-## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS)
+## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
 {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`
 
