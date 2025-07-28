@@ -118,34 +118,6 @@ To test a query ruleset, do the following:
 1. Select **Query Rules** in the navigation menu under **Relevance**.
 2. Select a ruleset.
 3. Select **Test in Console**.
-
-	A console window opens containing a sample query using the [rule retriever](elasticsearch://reference/elasticsearch/rest-apis/retrievers/rule-retriever.md).
-
-	```console
-	GET books/_search
-	{
-	  "retriever": {
-	    "rule": {
-	      // Update your criteria to test different results
-	      "match_criteria": {
-	       "query_string": "Stephenson"
-	     },
-	      "ruleset_ids": [
-	        "first-ruleset"
-	      ],
-	      "retriever": {
-	        "standard": {
-	          "query": {
-	            "match_all": {} <1>
-	          }
-	        }
-	      }
-	    }
-	  }
-	}
-	```
-	1. Modify the search query if needed.
-
 4. Run the query.
 5. Review results to confirm if the rule actions were applied as expected.
 
