@@ -6,12 +6,10 @@ applies_to:
 ---
 
 # Query rules UI
-
-Query rules UI is a user interface that helps you create, edit, and delete query rules. The interface is implemented on top of the existing Query Rules API and provides non-technical users with an intuitive, streamlined interface to manage query rules.
-
 Query rules help customize search results, giving you more control over how results are returned based on the contextual information in the query.
+Query rules UI is a user interface that helps you create, edit, and delete query rules. The interface is implemented on top of the existing Query Rules API.
 
-The Query rules UI enables you to:
+The UI enables you to:
 
 * Create, edit and delete query rules
 * Reorder rules in a query ruleset
@@ -24,7 +22,7 @@ To see examples of how to search using query rules, refer [Search using Query Ru
 
 If you prefer to use the Query Rules API, refer to [Query Rules API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-query_rules).
 
-## Security privileges
+## Requirements
 
 If you want to get full access to the Query Rules UI, you must have the following privileges:
 
@@ -34,7 +32,7 @@ If you want to get full access to the Query Rules UI, you must have the followin
 
 ## Using the UI
 
-Go to your deployment and select **Query Rules** from the left navigation menu. If you're not able to see the option, contact the administrator to review the role assigned to you. The following screenshot shows the UI for a new deployment setup.
+Go to your deployment and select **Query Rules** from the left navigation menu under **Relevance**. If you're not able to see the option, contact the administrator to review the role assigned to you.
 
 :::{image} /solutions/images/elasticsearch-query-rules-ui-home.png
 :alt: Landing page for Query Rules UI.
@@ -152,11 +150,12 @@ To test a query ruleset, do the following:
 
 Following resources can help you understand query rules better:
 
-* [Query rules blog](elasticsearch://reference/elasticsearch/mapping-reference/text.md)
+* [Query rules blog](https://www.elastic.co/search-labs/blog/elasticsearch-query-rules-generally-available)
+* [Query Rules API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-query_rules)
 * [Search using query rules](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules)
 * [Rule types](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-type)
 * [Rule criteria](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-criteria)
 * [Rule actions](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-actions)
-
+* [Semantic search for query rules](https://www.elastic.co/search-labs/blog/semantic-search-query-rules)
 	
 
