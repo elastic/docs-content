@@ -71,7 +71,7 @@ To delete a snapshot repository configuration from your {{ece}} installation:
 4. Run the following command against the repository name:
 
     ```sh
-    curl -s -XDELETE -u USER:PASSWORD https://COORDINATOR_HOST:12443/api/v1/platform/configuration/snapshots/repositories/REPOSITORY_NAME
+    curl -s -XDELETE -u USER:PASSWORD https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/snapshots/repositories/REPOSITORY_NAME
     ```
 
     ::::{note}

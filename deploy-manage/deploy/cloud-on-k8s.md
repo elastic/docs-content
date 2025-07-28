@@ -59,7 +59,7 @@ Afterwards, you can:
 
 * Learn how to [update your deployment](./cloud-on-k8s/update-deployments.md)
 * Check out [our recipes](./cloud-on-k8s/recipes.md) for multiple use cases
-* Find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/samples)
+* Find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/samples)
 
 ## Supported versions [k8s-supported]
 

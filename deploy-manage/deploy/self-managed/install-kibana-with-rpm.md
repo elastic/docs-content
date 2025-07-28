@@ -67,13 +67,13 @@ sudo zypper install kibana <3>
 
 ### Download and install the RPM manually [install-rpm]
 
-The RPM for {{kib}} {{stack-version}} can be downloaded from the website and installed as follows:
+The RPM for {{kib}} {{version.stack}} can be downloaded from the website and installed as follows:
 
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-x86_64.rpm
-wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-x86_64.rpm.sha512
-shasum -a 512 -c kibana-{{stack-version}}-x86_64.rpm.sha512 <1>
-sudo rpm --install kibana-{{stack-version}}-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm.sha512
+shasum -a 512 -c kibana-{{version.stack}}-x86_64.rpm.sha512 <1>
+sudo rpm --install kibana-{{version.stack}}-x86_64.rpm
 ```
 
 1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-<version>-x86_64.rpm: OK`.

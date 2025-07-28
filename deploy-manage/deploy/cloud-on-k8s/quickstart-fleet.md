@@ -72,8 +72,8 @@ products:
       elasticsearchRef:
         name: elasticsearch-quickstart
       config:
-        xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-quickstart-es-http.default.svc:9200"]
-        xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-quickstart-agent-http.default.svc:8220"]
+        xpack.fleet.agents.elasticsearch.hosts: ["<ELASTICSEARCH_HOST_URL>.default.svc:9200"]
+        xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>.default.svc:8220"]
         xpack.fleet.packages:
           - name: system
             version: latest

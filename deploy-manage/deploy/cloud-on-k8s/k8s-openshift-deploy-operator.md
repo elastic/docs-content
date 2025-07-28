@@ -15,8 +15,8 @@ This page shows the installation steps to deploy ECK in Openshift:
 1. Apply the manifests the same way as described in [](./install-using-yaml-manifest-quickstart.md) document:
 
    ```shell subs=true
-   oc create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
-   oc apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
+   oc create -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.yaml
+   oc apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml
    ```
 
 2. [Optional] If the Software Defined Network is configured with the `ovs-multitenant` plug-in, you must allow the `elastic-system` namespace to access other Pods and Services in the cluster:
