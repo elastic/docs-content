@@ -34,7 +34,7 @@ If you want to get full access to the Query Rules UI, you must have the followin
 * A custom role with `manage_search_query_rules` cluster privilege
 * `ALL` option for `Query Rules` role privilege in the respective Kibana space
 
-## Using the Query Rules UI
+## Accessing the Query Rules UI
 
 Go to your deployment and select **Query Rules** from the left navigation menu under **Relevance**. If you're not able to see the option, contact the administrator to review the role assigned to you.
 
