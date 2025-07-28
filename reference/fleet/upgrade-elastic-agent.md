@@ -257,16 +257,16 @@ If new agents are assigned to the policy, the number of {{agents}} to be upgrade
 
 ### Configure the auto-upgrade settings [auto-upgrade-settings]
 
-On self-managed and cloud deployments of {{stack}}, you can configure the default task interval and the retry delays of the automatic upgrade in the {{kib}} user settings. For example:
+On self-managed and cloud deployments of {{stack}}, you can configure the default task interval and the retry delays of the automatic upgrade in the [{{kib}} {{fleet}} settings](kibana://reference/configuration-reference/fleet-settings.md). For example:
 
 ```yml
 xpack.fleet.autoUpgrades.taskInterval: 15m <1>
 xpack.fleet.autoUpgrades.retryDelays: ['5m', '10m', '20m'] <2>
 ```
-1. Defaults to `30m`
-2. Defaults to `['30m', '1h', '2h', '4h', '8h', '16h', '24h']`
+1. The time interval between which the auto-upgrade task should run. Defaults to `30m`.
+2. Array indicating how much time should pass before a failed auto-upgrade is retried. The array's length indicates the maximum number of retries. Defaults to `['30m', '1h', '2h', '4h', '8h', '16h', '24h']`
 
-For more information, refer to [Fleet settings in Kibana](kibana://reference/configuration-reference/fleet-settings.md).
+For more information, refer to the [Kibana configuration reference](kibana://reference/configuration-reference.md).
 
 ### View the status of the automatic upgrade [auto-upgrade-view-status]
 
