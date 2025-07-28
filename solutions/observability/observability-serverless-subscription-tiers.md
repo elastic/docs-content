@@ -49,6 +49,8 @@ To access the additional features available in Observability Complete, upgrade y
 1. Next to **Project features**, select **Edit**.
 1. Select **Observability Complete**.
 
+% not sure if there is a last step here (like users needing to save) because i'm not able to see a project starting in logs essentials.
+
 ## Ingest data into a Logs Essentials project
 
 Use the [Elastic Cloud Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to ingest data into your Logs Essentials project. For more information on getting started, refer to the [Elastic Cloud Serverless quickstart](opentelemetry://reference/quickstart/serverless/index.md).
