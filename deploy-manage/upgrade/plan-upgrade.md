@@ -101,12 +101,14 @@ We highly recommend testing the upgrade process in a non-production environment 
 
 When upgrading the {{stack}}, the process begins with {{es}}, followed by {{kib}}, which must always be aligned in terms of versioning. Other components can remain on earlier versions as long as they are compatible with the target {{es}} version, though we recommend upgrading them as well to benefit from the latest features and fixes.
 
-If all components are compatible with the target version of {{es}}, we recommend upgrading them in the following order:
+In general, you should upgrade the components of your {{stack}} in the following order:
 
 1. {{es}}
 2. {{kib}} (must be kept aligned with the {{es}} version)
 3. Fleet Server and APM Server (if used)
 4. Ingest tools (Beats, Elastic Agent, Logstash, etc.) and {{es}} client libraries
+
+If your deployment runs on {{ech}} or {{ece}}, the platform handles the upgrade and component order automatically in a single plan execution. You only need to upgrade any external ingest tools afterward.
 
 ::::{note}
 If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster.
