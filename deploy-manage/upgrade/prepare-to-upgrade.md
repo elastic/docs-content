@@ -63,7 +63,9 @@ The following steps are common to all types of upgrades, regardless if you are u
 
 5. **Upgrade your monitoring cluster first**
 
-    If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters cannot monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
+    If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster.
+
+    The monitoring cluster should be running the same version, or a newer one, than the clusters being monitored. It cannot monitor clusters running a newer version of the {{stack}}. If necessary, the monitoring cluster can monitor clusters running the latest release of the previous major version.
 
 6. **Remote clusters**
 

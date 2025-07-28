@@ -20,36 +20,29 @@ The objective of this section is to facilitate the creation of an upgrade plan t
 
 ## Compatibility checks
 
-Check if you can upgrade directly to the version you are aiming to upgrade to. If not, you need to find a valid upgrade path, and plan accordingly.
+Before upgrading, verify that your current environment supports the version you plan to upgrade to. If not, identify any required intermediate upgrades or component changes and include them in your upgrade plan.
 
-* System requirements: Ensure the version you’re upgrading to for {{es}}, {{kib}}, and any ingest components supports your current operating system. Refer to the [Product and Operating System support matrix](https://www.elastic.co/support/matrix#matrix_os).
+* **System requirements**: Ensure your current operating system is supported by the target versions of {{es}}, {{kib}}, and any ingest components. Refer to the [Product and Operating System support matrix](https://www.elastic.co/support/matrix#matrix_os).
 
-* Compatibility with ingest components: Ensure your ingest components are compatible with the version you’re upgrading to for {{es}}. Refer to [conduct a component inventory](#conduct-a-component-inventory) for more details.
+* **Ingest component compatibility**: Confirm that your ingest components, such as {{beats}}, {{ls}}, or {{agent}}, are compatible with the target {{es}} version. If they’re not, upgrade them first. Refer to [conduct a component inventory](#conduct-a-component-inventory) for guidance.
 
-* Orchestrator compatibility: If your orchestrator is not compatible with the {{stack}} version you’re upgrading to, you need to [upgrade the orchestrator](/deploy-manage/upgrade/orchestrator.md) before upgrading your cluster. Compatibility details are available in:
-    * [ECE - stack packs](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece_most_recent_elastic_stack_packs)
-    * [ECK - {{stack}} compatibility](/deploy-manage/deploy/cloud-on-k8s.md#stack-compatibility)
+* **Orchestrator compatibility**: If you’re using an orchestrator like {{ece}} or {{eck}}, verify that it supports the target {{stack}} version. If not, [upgrade the orchestrator](/deploy-manage/upgrade/orchestrator.md) before upgrading your cluster. Refer to:
+  * [ECE – Stack packs](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece_most_recent_elastic_stack_packs)
+  * [ECK – {{stack}} compatibility](/deploy-manage/deploy/cloud-on-k8s.md#stack-compatibility)
 
-* Developed clients compatibility: Check any client library you are using and ensure it is compatible with the version you’re upgrading to for {{es}}. Refer to [{{es}} clients](/reference/elasticsearch-clients/index.md) and [upgrade paths](../upgrade.md#upgrade-paths) for more information.
+* **Rest API compatibility**: If you use custom-developed applications or clients, ensure the [{{es}} client libraries](/reference/elasticsearch-clients/index.md) are compatible with the target version. If your applications use deprecated or removed APIs, you may need to update the client code first.
 
-* {{es}} version compatibility: Check [upgrade paths](../upgrade.md#upgrade-paths) description to ensure you can upgrade directly to the version you are aiming to upgrade to.
+    ::::{note}
+    By default, 8.x {{es}} clients are compatible with 9.x and use [`REST API compatibility`](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} cluster.
 
-Examples of situations where you need to adapt your upgrade path:
+    `REST API compatibility` is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
+    ::::
 
-* Some of your ingest components are not compatible with the version you are aiming to upgrade to, and they need to be upgraded first to a compatible version.
-* Your orchestrator (ECE or ECK) or operating system is not compatible with the version you are aiming to upgrade to, and it needs to be upgraded first to a compatible version.
-* Your running {{es}} version cannot be upgraded directly to the version you are aiming to upgrade to, and it needs to be upgraded first to an intermediate version.
-* Due to some breaking changes, your developed clients are using {{es}} APIs that are not compatible with the version you are aiming to upgrade to, and they need to be adapted first.
+* **{{es}} upgrade path**: Check the [upgrade paths](../upgrade.md#upgrade-paths) to determine whether you must upgrade through an intermediate version (such as 8.19.x before moving to 9.x), or if you can upgrade directly to the target version.
 
-### OpenJDK compatibility and FIPS compliance
+* **OpenJDK compatibility and FIPS compliance**: By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) within each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). 
 
-By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) within each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). 
-
-If you’re running {{es}} in FIPS 140-2 mode, we recommend using  [Bouncy Castle](https://www.bouncycastle.org/java.html) as a Java security provider when running {{es}}.
-
-### Rest API compatibility
-
-[REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
+  If you’re running {{es}} in FIPS 140-2 mode, we recommend using  [Bouncy Castle](https://www.bouncycastle.org/java.html) as a Java security provider when running {{es}}.
 
 ## Conduct a component inventory
 
@@ -114,12 +107,14 @@ If all components are compatible with the target version of {{es}}, we recommend
 4. Ingest tools (Beats, Elastic Agent, Logstash, etc.) and {{es}} client libraries
 
 ::::{note}
-If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster. The monitoring cluster and the clusters being monitored should be running the same version of the {{stack}}. Monitoring clusters cannot monitor production clusters running newer versions of the {{stack}}. If necessary, the monitoring cluster can monitor production clusters running the latest release of the previous major version.
+If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster.
+
+The monitoring cluster should be running the same version, or a newer one, than the clusters being monitored. It cannot monitor clusters running a newer version of the {{stack}}. If necessary, the monitoring cluster can monitor clusters running the latest release of the previous major version.
 ::::
 
 ## Example of an upgrade plan
 
-Let's assume you are running all {{stack}} components in version 8.14 and your main goal is to upgrade {{es}} and {{kib}} to the latest {{stack-version}}, without requiring to upgrade the ingest components (Beats, Elastic Agent, and Logstash) except when required by the upgrade path.
+Let's assume you are running all {{stack}} components in version 8.14 and your main goal is to upgrade {{es}} and {{kib}} to the latest {{stack-version}}, without requiring to upgrade the ingest components (Beats, Elastic Agent, and Logstash) except when required by the [upgrade paths](../upgrade.md#upgrade-paths).
 
 The minimum steps your plan should include are:
 
