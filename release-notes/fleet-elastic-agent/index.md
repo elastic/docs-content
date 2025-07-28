@@ -26,12 +26,53 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.0.4 [fleet-elastic-agent-9.0.4-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.4-features-enhancements]
+
+**Elastic Agent**
+
+* Add file logs only managed OTLP input kube-stack configuration. [#8785]({{agent-pull}}8785)
+
+### Fixes [fleet-elastic-agent-9.0.4-fixes]
+
+**Elastic Agent**
+
+* Remove incorrect logging that unprivileged installations are in beta. [#8715]({{agent-pull}}8715) [#8689]({{agent-issue}}8689)
+* Ensure standalone Elastic Agent uses log level from configuration instead of persisted state. [#8784]({{agent-pull}}8784) [#8137]({{agent-issue}}8137)
+* Resolve deadlocks in runtime checkin communication. [#8881]({{agent-pull}}8881) [#7944]({{agent-issue}}7944)
+* Remove init.d support from RPM packages. [#8896]({{agent-pull}}8896) [#8840]({{agent-issue}}8840)
+
+**Fleet Server**
+
+* Include the base error for JSON decode error responses. [#5069]({{fleet-server-pull}}5069)
+
+## 9.0.3 [fleet-elastic-agent-9.0.3-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.3-features-enhancements]
+
+**Elastic Agent**
+
+* Add `Cumulativetodeltaprocessor` To EDOT Collector. [#8372]({{agent-pull}}8372)
+
+**Fleet Server**
+
+* Update Go version to v1.24.4. [#5025]({{fleet-server-pull}}5025)
+
+### Fixes [fleet-elastic-agent-9.0.3-fixes]
+
+**Elastic Agent**
+
+* Address a race condition that can occur in agent diagnostics if log rotation runs while logs are being zipped. [#8215]({{agent-pull}}8215)
+* Use `paths.tempdir` for diagnostics actions. [#8472]({{agent-pull}}8472)
+* relax file ownership check to allow admin re-enrollment on Windows. [#8503]({{agent-pull}}8503)
+
 ## 9.0.2 [fleet-elastic-agent-9.0.2-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.0.2-features-enhancements]
 
 * Updates Go version to v1.24.3 in {{fleet}} [#4891]({{fleet-server-pull}}4891)
-	
+
 * Updates Go version to v1.24.3 in {{agent}} [#8109]({{agent-pull}}8109)
 
 ### Fixes [fleet-elastic-agent-9.0.2-fixes]

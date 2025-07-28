@@ -74,7 +74,7 @@ To capture an {{es}} diagnostic:
     **Windows**
 
     ```sh
-    sudo .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
+    .\diagnostics.bat --type local --host localhost --port 9200 -u elastic -p --bypassDiagVerify --ssl --noVerify
     ```
 
     ::::{tip}

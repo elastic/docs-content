@@ -107,7 +107,7 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 3. After the download is finished, start the deployment by clicking the **Start deployment** button.
 4. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.
 
-    :::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+    :::{image} /explore-analyze/images/ml-nlp-deployment-id-elser.png
     :alt: Deploying ELSER
     :screenshot:
     :::
@@ -265,7 +265,7 @@ For a file-based access, follow these steps:
 
 ## Testing ELSER [_testing_elser]
 
-You can test the deployed model in {{kib}}. Navigate to **Model Management** > **Trained Models** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. Locate the deployed ELSER model in the list of trained models, then select **Test model** from the Actions menu.
+You can test the deployed model in {{kib}}. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. Locate the deployed ELSER model in the list of trained models, then select **Test model** from the Actions menu.
 
 You can use data from an existing index to test the model. Select the index, then a field of the index you want to test ELSER on. Provide a search query and click **Test**. Evaluating model recall is simpler when using a query related to the documents.
 

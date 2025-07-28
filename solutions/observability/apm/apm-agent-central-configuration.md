@@ -34,16 +34,35 @@ Each APM agent has a list of supported configurations. After selecting a Service
 
 Supported configurations are also tagged with the ![dynamic config](/solutions/images/observability-dynamic-config.svg "") badge in each APM agent’s configuration reference:
 
-| Language/Platform | Agent/SDK | Configuration Reference |
-| --- | --- | --- |
-| Go | APM Go Agent | [Configuration reference](apm-agent-go://reference/configuration.md) |
-| Java | APM Java Agent | [Configuration reference](apm-agent-java://reference/configuration.md) |
-| .NET | APM .NET Agent | [Configuration reference](apm-agent-dotnet://reference/configuration.md) |
-| Node.js | APM Node.js Agent | [Configuration reference](apm-agent-nodejs://reference/configuration.md) |
-| PHP | APM PHP Agent | [Configuration reference](apm-agent-php://reference/configuration.md) |
-| Python | APM Python Agent | [Configuration reference](apm-agent-python://reference/configuration.md) |
-| Ruby | APM Ruby Agent | [Configuration reference](apm-agent-ruby://reference/configuration.md) |
-| Real User Monitoring (RUM) | APM RUM Agent | [Configuration reference](apm-agent-rum-js://reference/configuration.md) |
+Android agent
+:   [Configuration reference](opentelemetry://reference/edot-sdks/android/configuration.md)
+
+Go agent
+:   [Configuration reference](apm-agent-go://reference/configuration.md)
+
+iOS agent
+:   [Configuration reference](opentelemetry://reference/edot-sdks/ios/configuration.md)
+
+Java agent
+:   [Configuration reference](apm-agent-java://reference/configuration.md)
+
+.NET agent
+:   [Configuration reference](apm-agent-dotnet://reference/configuration.md)
+
+Node.js agent
+:   [Configuration reference](apm-agent-nodejs://reference/configuration.md)
+
+PHP agent
+:   [Configuration reference](apm-agent-php://reference/configuration.md)
+
+Python agent
+:   [Configuration reference](apm-agent-python://reference/configuration.md)
+
+Ruby agent
+:   [Configuration reference](apm-agent-ruby://reference/configuration.md)
+
+Real User Monitoring (RUM) agent
+:   [Configuration reference](apm-agent-rum-js://reference/configuration.md)
 
 ## APM Server configuration [_apm_server_configuration]
 

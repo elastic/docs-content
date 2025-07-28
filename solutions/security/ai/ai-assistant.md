@@ -17,6 +17,7 @@ The Elastic AI Assistant utilizes generative AI to bolster your cybersecurity op
 
 :::{image} /solutions/images/security-assistant-basic-view.png
 :alt: Image of AI Assistant chat window
+:width: 75%
 :screenshot:
 :::
 
@@ -55,11 +56,8 @@ While AI Assistant is compatible with many different models, refer to the [Large
 
 ### Elastic Managed LLM [elastic-managed-llm-security-ai-assistant]
 
-[Elastic Managed LLM](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) is the default large language model (LLM) connector available in the AI Assistant for eligible users. It provides immediate access to generative AI features without requiring any setup or external model integration.
-
-The Elastic Managed LLM is available out-of-the box; no manual connector setup or API key management is required for initial use. However, you can configure and use a third-party LLM connector, such as OpenAI, Azure, or Amazon Bedrock if you prefer.
-
-To learn more about security, data privacy, and early access to the Elastic Managed LLM, refer to the [connector documentation](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm) and [download the model card](https://raw.githubusercontent.com/elastic/kibana/refs/heads/main/docs/reference/resources/Elastic_Managed_LLM_model_card.pdf).
+:::{include} ../../_snippets/elastic-managed-llm.md
+:::
 
 ## Start chatting [start-chatting]
 
@@ -84,23 +82,24 @@ Each user’s chat history (up to the 99 most recent conversations) and custom Q
 
 ## Interact with AI Assistant [interact-with-assistant]
 
-Use these features to adjust and act on your conversations with AI Assistant:
+Use these optional features to adjust and act on your conversations with AI Assistant:
 
-* (Optional) Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…**.
-* (Optional) Select a *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}.
+* Select a *System Prompt* at the beginning of a conversation by using the **Select Prompt** menu. System Prompts provide context to the model, informing its response. To create a System Prompt, open the System Prompts dropdown menu and click **+ Add new System Prompt…**.
+* {applies_to}`stack: ga 9.1` Select a *prompt tile* to start your conversation with a predefined goal or topic. Prompt tiles help you begin structured tasks or investigations into common {{elastic-sec}} workflows. The available prompt tiles include:
 
-   :::{image} /solutions/images/security-quick-prompts.png
-   :alt: Quick Prompts highlighted below a conversation
-   :screenshot:
-   :::
+   * **Alerts**: Quickly identify and prioritize the most important alerts from the last 24 hours.
+   * **Research**: Get a summary of the latest {{elastic-sec}} Labs research articles.
+   * **Query**: Generate {{esql}} queries based on a specific goal or requirement.
+   * **Suggest**: Explore the types of questions you can ask AI Assistant about {{elastic-sec}}.
 
-* System Prompts and Quick Prompts can also be configured from the corresponding tabs on the **Security AI settings** page.
+* {applies_to}`stack: removed 9.1` Select a default *Quick Prompt* at the bottom of the chat window to get help writing a prompt for a specific purpose, such as summarizing an alert or converting a query from a legacy SIEM to {{elastic-sec}}. The default Quick Prompts' availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert.
 
-   :::{image} /solutions/images/security-assistant-settings-system-prompts.png
-   :alt: The Security AI settings menu's System Prompts tab
-   :::
+* Create new custom Quick Prompts by clicking **Add quick prompt**.
 
-* Quick Prompt availability varies based on context—for example, the **Alert summarization** Quick Prompt appears when you open AI Assistant while viewing an alert. To customize existing Quick Prompts and create new ones, click **Add Quick Prompt**.
+:::{tip}
+System Prompts and Quick Prompts can also be [configured](#configure-ai-assistant) from the corresponding tabs on the **Security AI settings** page. 
+:::
+
 * In an active conversation, you can use the inline actions that appear on messages to incorporate AI Assistant’s responses into your workflows:
 
     * **Add note to timeline** (![Add note icon](/solutions/images/security-icon-add-note.png "title =20x20")): Add the selected text to your currently active Timeline as a note.
@@ -167,6 +166,10 @@ The **Knowledge base** tab of the **Security AI settings** page allows you to en
 ### Get the most from your queries [rag-for-esql]
 
 Elastic AI Assistant allows you to take full advantage of the {{elastic-sec}} platform to improve your security operations. It can help you write an {{esql}} query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
+
+:::{note}
+{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` The agent has access to index names and field metadata from your cluster. This contextual information helps improve ES|QL generation, though it may slightly increase response times.
+:::
 
 To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an {{esql}} query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Provide comments explaining the query you just gave."
 
