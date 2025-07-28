@@ -58,4 +58,8 @@ Refer to the [download past releases](https://www.elastic.co/downloads/past-rele
 
 ::::{note}
 Major upgrades must be performed from the latest minor version of the previous major. For example, to upgrade to {{stack-version}}, you need to be on 8.19 first.
+
+For flexible upgrade scheduling, 8.19 {{agent}}, {{beats}}, and {{ls}} are compatible with 9.x {{es}}.
+
+By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} cluster.
 ::::
