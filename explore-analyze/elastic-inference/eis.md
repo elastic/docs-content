@@ -36,6 +36,8 @@ Private preview access is available by submitting the form provided [here](https
 
 ### Limitations
 
+While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
+
 #### Access
 
 This feature is being gradually rolled out to Serverless and Cloud Hosted customers.
