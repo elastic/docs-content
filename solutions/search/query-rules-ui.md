@@ -7,7 +7,7 @@ applies_to:
 
 # Query rules UI
 Use query rules to boost, pin, or exclude specific documents when queries contain certain keywords, phrases, or match defined search patterns.
-Query rules UI is a user interface that helps you create, edit, and delete query rules.
+The Query rules UI provides search managers and content teams with a graphical interface to manage these rules without writing API calls or JSON configuration.
 
 The UI enables you to:
 
