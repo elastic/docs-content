@@ -149,7 +149,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.global.proxy_disable`
 :   Added in 8.8.0.
 
-    *Control if a proxy must not be used when downloading protection artifact updates. Default: false.*
+    *Disable the use of a proxy when downloading protection artifact updates. Default: `false`*
 
     This allows you to disable the use of a proxy even if one is provided by other configuration.
 
@@ -181,7 +181,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.user.proxy_disable`
 :   Added in 8.8.0.
 
-    *Control if a proxy must not be used when downloading user artifact updates. Default: `false`.*
+    *Disable the use of a proxy when downloading user artifact updates. Default: `false`*
 
     This allows you to disable the use of a proxy for reaching {{fleet}} Server even if one is provided by other configuration.
 
@@ -213,7 +213,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.diagnostic.enabled`
 :   Added in 7.11.0 (Windows), 7.12.0 (macOS and Linux).
 
-    *Disable running diagnostic features. Default: `true`.*
+    *Enable diagnostic features. Default: `true`.*
 
     Use this setting to disable diagnostic mode, which tests new protections and rules to ensure low false positive rates upon production release. The results of this testing are only collected if telemetry is enabled. 
     
@@ -225,7 +225,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.diagnostic.rollback_telemetry_enabled`
 :   Added in 8.1.0.
 
-    *Disable diagnostic self-healing features without affecting other diagnostic features. Default: `true`.*
+    *Enable diagnostic self-healing features without affecting other diagnostic features. Default: `true`.*
 
     Use this setting to disable the diagnostic (testing) self-healing features without affecting other diagnostic functionalities.
 
