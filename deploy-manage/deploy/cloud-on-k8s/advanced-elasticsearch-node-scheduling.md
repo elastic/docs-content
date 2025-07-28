@@ -208,7 +208,7 @@ Starting with ECK 2.0 the operator can make Kubernetes Node labels available as 
 2. On the {{es}} resources set the `eck.k8s.elastic.co/downward-node-labels` annotations with the list of the Kubernetes node labels that should be copied as Pod annotations.
 3. Use the [Kubernetes downward API](https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/) in the `podTemplate` to make those annotations available as environment variables in {{es}} Pods.
 
-Refer to the next section or to the [{{es}} sample resource in the ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/samples/elasticsearch/elasticsearch.yaml) for a complete example.
+Refer to the next section or to the [{{es}} sample resource in the ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/samples/elasticsearch/elasticsearch.yaml) for a complete example.
 
 
 ### Using node topology labels, Kubernetes topology spread constraints, and {{es}} shard allocation awareness [k8s-availability-zone-awareness-example]
