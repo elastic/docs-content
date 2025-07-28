@@ -3,7 +3,7 @@ products:
   - id: kibana
   - id: elastic-agent
 applies_to:
-  stack: preview 9.1
+  stack: ga 9.1
   serverless: ga
 ---
 
