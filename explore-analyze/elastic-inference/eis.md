@@ -19,10 +19,10 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 ## Region and hosting [eis-regions]
 
-Requests through the Elastic Managed LLM are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
+Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
-ELSER requests are managed by Elastic own EIS infrastructure.
+ELSER requests are managed by Elastic's own EIS infrastructure.
 
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS)
 
