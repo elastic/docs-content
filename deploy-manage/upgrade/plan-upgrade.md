@@ -105,7 +105,7 @@ In general, you should upgrade the components of your {{stack}} in the following
 
 1. {{es}}
 2. {{kib}} (must be kept aligned with the {{es}} version)
-3. Fleet Server and APM Server (if used)
+3. Fleet Server and Elastic APM (if used)
 4. Ingest tools (Beats, Elastic Agent, Logstash, etc.) and {{es}} client libraries
 
 If your deployment runs on {{ech}} or {{ece}}, the platform handles the upgrade and component order automatically in a single plan execution. You only need to upgrade any external ingest tools afterward.
