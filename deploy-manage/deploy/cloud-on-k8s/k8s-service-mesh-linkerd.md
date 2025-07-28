@@ -12,7 +12,7 @@ products:
 
 The following sections describe how to connect the operator and managed resources to the Linkerd service mesh. It is assumed that Linkerd is already installed and configured on your Kubernetes cluster. If you are new to Linkerd, refer to the [product documentation](https://linkerd.io) for more information and installation instructions.
 
-::::{note} 
+::::{note}
 These instructions have been tested with Linkerd 2.7.0.
 ::::
 
@@ -22,8 +22,8 @@ These instructions have been tested with Linkerd 2.7.0.
 In order to connect the operator to the service mesh, Linkerd sidecar must be injected into the ECK deployment. This can be done during installation as follows:
 
 ```sh subs=true
-kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
-linkerd inject https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml | kubectl apply -f -
+kubectl create -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.yaml
+linkerd inject https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml | kubectl apply -f -
 ```
 
 Confirm that the operator is now meshed:
