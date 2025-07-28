@@ -33,7 +33,7 @@ This issue is typically caused by one or more of the following:
 * Network issues, such as proxy misconfigurations
 * TLS verification failures
 * Misconfigured pipelines or disabled signals
-* Incomplete setup — to capture all telemetry data, you must use the EDOT Collector together with an appropriate EDOT SDKs
+* Incomplete setup — to capture all telemetry data, you must use the EDOT Collector together with an appropriate EDOT SDK
 
 ## Resolution
 
