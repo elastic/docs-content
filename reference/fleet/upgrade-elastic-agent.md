@@ -236,18 +236,37 @@ To configure an automatic rollout of a new minor or patch version to a percentag
 3. On the agent policy's details page, find **Auto-upgrade agents**, and select **Manage** next to it.
 4. In the **Manage auto-upgrade agents** window, click **Add target version**.
 5. From the **Target agent version** dropdown, select the minor or patch version to which you want to upgrade a percentage of your agents.
-6. In the **% of agents to upgrade** field, enter the percentage of agents you want to upgrade to this target version. 
-
-   Note that rounding is applied, and the actual percentage of the upgraded agents may vary slightly. For example, if you want to upgrade 30% of the agents in a policy with 25 agents, this may result in the upgrade of 8 agents (32%).
+6. In the **% of agents to upgrade** field, enter the percentage of active agents you want to upgrade to this target version.
+   
+   Note that:
+   - Unenrolling, unenrolled, inactive, and uninstalled agents are not included in the count. For example, if you set the target upgrade percentage to 50% for a policy with 10 active agents and 10 inactive agents, the target is met when 5 active agents are upgraded.
+   - Rounding is applied, and the actual percentage of the upgraded agents may vary slightly. For example, if you set the target upgrade percentage to 30% for a policy with 25 active agents, the target is met when 8 active agents are upgraded (32%).
 
 7. You can then add a different target version, and specify the percentage of agents you want to be upgraded to that version. The total percentage of agents to be upgraded cannot exceed 100%.
 8. Click **Save**.
 
-Once the configuration is saved, an asynchronous task runs every 30 minutes, gradually upgrading the agents in the policy to the specified target version. In case of any failed upgrades, the upgrades are retried with exponential backoff mechanism until the upgrade is successful.
+Once the configuration is saved, an asynchronous task runs every 30 minutes, gradually upgrading the agents in the policy to the specified target version.
+
+In case of any failed upgrades, the upgrades are retried with exponential backoff mechanism until the upgrade is successful, or the maximum number of retries is reached. Note that the maximum number of retries is the number of [configured retry delays](#auto-upgrade-settings).
 
 ::::{note}
-Only agents enrolled in the policy are considered for the automatic upgrade. If new agents are assigned to the policy, the number of {{agents}} to be upgraded is adjusted according to the set percentages.
+Only active agents enrolled in the policy are considered for the automatic upgrade.
+
+If new agents are assigned to the policy, the number of {{agents}} to be upgraded is adjusted according to the set percentages.
 ::::
+
+### Configure the auto-upgrade settings [auto-upgrade-settings]
+
+On self-managed and cloud deployments of {{stack}}, you can configure the default task interval and the retry delays of the automatic upgrade in the {{kib}} user settings. For example:
+
+```yml
+xpack.fleet.autoUpgrades.taskInterval: 15m <1>
+xpack.fleet.autoUpgrades.retryDelays: ['5m', '10m', '20m'] <2>
+```
+1. Defaults to `30m`
+2. Defaults to `['30m', '1h', '2h', '4h', '8h', '16h', '24h']`
+
+For more information, refer to [Fleet settings in Kibana](kibana://reference/configuration-reference/fleet-settings.md).
 
 ### View the status of the automatic upgrade [auto-upgrade-view-status]
 
