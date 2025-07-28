@@ -89,6 +89,7 @@ toc:
               - file: search/search-applications/search-application-client.md
       - file: search/apis-and-tools.md
       - file: search/ai-assistant.md
+      - file: search/query-rules-ui.md
   - file: observability.md
     children:
       - file: observability/get-started.md
