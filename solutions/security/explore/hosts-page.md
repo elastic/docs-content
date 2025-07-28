@@ -40,7 +40,7 @@ Beneath the KPI charts are data tables, categorized by individual tabs, which ar
 * **Events**: All host events. To display alerts received from external monitoring tools, scroll down to the Events table and select **Show only external alerts** on the right.
 * **All hosts**: High-level host details.
 * **Uncommon processes**: Uncommon processes running on hosts.
-* **Anomalies**: Anomalies discovered by machine learning jobs.
+* **Anomalies**: Anomalies discovered by [{{ml}} jobs](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 * **Host risk**: The latest recorded host risk score for each host, and its host risk classification. In {{stack}}, this feature requires a [Platinum subscription](https://www.elastic.co/pricing) or higher. In serverless, this feature requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md). Click **Enable** on the **Host risk** tab to get started. To learn more, refer to our [entity risk scoring documentation](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 * **Sessions**: Linux process events that you can open in [Session View](/solutions/security/investigate/session-view.md), an investigation tool that allows you to examine Linux process data at a hierarchal level.
 
