@@ -30,7 +30,7 @@ The following steps are common to all types of upgrades, regardless if you are u
 
 2. **Verify plugin compatibility**
 
-    If you use [{{es}} plugins](elasticsearch://reference/elasticsearch/plugins.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
+    If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
 
 3. **Test in a non-production environment**
 

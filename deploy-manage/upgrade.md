@@ -46,15 +46,16 @@ Upgrading your Elastic cluster or deployment involves several stages, including 
 Additionally, if you're using a self-managed orchestration platform such as {{ece}} or {{eck}}, refer to [Upgrade your ECE or ECK orchestrator](/deploy-manage/upgrade/orchestrator.md) to keep the orchestrator up to date.
 
 ## Upgrade paths [upgrade-paths]
-% alternative title : Upgrade paths / Can I upgrade to any version?
 
 You can upgrade to a higher version if the target version was released *after* your current version. Upgrades to versions released *before* your current version are not supported, even if the version number is higher. Refer to [out-of-order releases](/deploy-manage/upgrade/deployment-or-cluster.md#out-of-order-releases) for more information.
 
+% Uncomment these examples when 9.1.1 and 9.0.5 are released. We currently don't have enough 9.x versions for meaningful examples.
+<!--
 For example:  
-- ✅ Upgrade allowed: From 9.0.2 to 9.1.0 (9.1.0 released *after* 9.0.2)
-- ❌ Not allowed: From 9.0.4 to 9.1.0 (9.1.0 released *before* 9.0.4)
-
-Refer to the [download past releases](https://www.elastic.co/downloads/past-releases#elasticsearch) page to check the release dates of different versions.
+- ✅ Upgrade allowed: From 9.0.4 to 9.1.0 (9.1.0 released *after* 9.0.4)
+- ❌ Not allowed: From 9.0.5 to 9.1.0 (9.1.0 released *before* 9.0.5)
+- ✅ Upgrade allowed: From 9.0.5 to 9.1.1 (9.1.1 released *after* 9.0.5)
+-->
 
 ::::{note}
 Major upgrades must be performed from the latest minor version of the previous major. For example, to upgrade to {{stack-version}}, you need to be on 8.19 first.
