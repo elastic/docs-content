@@ -76,7 +76,7 @@ docker run \
   --env FLEET_URL=<Fleet Server host URL> \
   --env FLEET_ENROLLMENT_TOKEN=<enrollment token> \
   --env ELASTIC_AGENT_TAGS=docker,dev
-  --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
 ```
 
 For more information about running on containers, refer to the guides under [Install {{agent}}s in a containerized environment](/reference/fleet/install-elastic-agents-in-containers.md).

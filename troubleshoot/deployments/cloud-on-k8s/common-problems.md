@@ -25,7 +25,7 @@ kubectl -n elastic-system \
 [
   {
     "containerID": "containerd://...",
-    "image": "docker.elastic.co/eck/eck-operator:{{eck_version}}",
+    "image": "docker.elastic.co/eck/eck-operator:{{version.eck}}",
     "imageID": "docker.elastic.co/eck/eck-operator@sha256:...",
     "lastState": {
       "terminated": {

@@ -65,9 +65,10 @@ This table compares the core platform capabilities between {{ech}} deployments a
 | **Deployment health monitoring** | AutoOps or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
+| **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
 | **High availability** | ✅ | ✅ | Automatic resilience |
-| **Network security** | Public IP traffic filtering, private connectivity (VPCs, PrivateLink) | **Planned** | - Traffic filtering anticipated in a future release <br>- Private connectivity options anticipated in a future release |
+| **Network security** | IP filtering, private connectivity (VPCs, PrivateLink) | IP filtering | Private connectivity options anticipated in a future release |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
 | **Snapshot/restore** | ✅ | **Planned** | User-initiated snapshots are anticipated in a future release |
 
@@ -136,13 +137,14 @@ This table compares Security capabilities between {{ech}} deployments and Server
 |---------|---------------------|------------------------------|------------------|
 | **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
-| **API keys** | ✅ | ✅ | |
+| **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
 | [**Defend for Containers integration**](https://www.elastic.co/guide/en/security/8.18/d4c-overview.html) | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **[Endpoint security](/solutions/security/configure-elastic-defend.md)** | ✅ | ✅ | |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
+| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | Only API key-based authentication is supported at the project level. User authentication, including SAML SSO, is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
 | **Role-based access control** | ✅ | Limited | Core RBAC functionality supported |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 

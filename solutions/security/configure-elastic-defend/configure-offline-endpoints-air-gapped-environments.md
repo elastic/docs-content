@@ -186,7 +186,7 @@ Download the most recent artifact files from the Elastic global artifact server,
 Below is an example script that downloads all the global artifact updates. There are different artifact files for each version of {{elastic-endpoint}}. Change the value of the `ENDPOINT_VERSION` variable in the example script to match the deployed version of {{elastic-endpoint}}.
 
 ```sh subs=true
-export ENDPOINT_VERSION={{version}} && wget -P downloads/endpoint/manifest https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip && zcat -q downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip | jq -r '.artifacts | to_entries[] | .value.relative_url' | xargs -I@ curl "https://artifacts.security.elastic.co@" --create-dirs -o ".@"
+export ENDPOINT_VERSION={{version.stack}} && wget -P downloads/endpoint/manifest https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip && zcat -q downloads/endpoint/manifest/artifacts-$ENDPOINT_VERSION.zip | jq -r '.artifacts | to_entries[] | .value.relative_url' | xargs -I@ curl "https://artifacts.security.elastic.co@" --create-dirs -o ".@"
 ```
 
 This command will download files and directory structure that should be directly copied to the file server.
@@ -201,7 +201,7 @@ Each new global artifact update release increments a version identifier that you
 To confirm the latest version of the artifacts for a given {{elastic-endpoint}} version, check the published version. This example script checks the version:
 
 ```sh subs=true
-curl -s https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-{{version}}.zip | zcat -q | jq -r .manifest_version
+curl -s https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifacts-{{version.stack}}.zip | zcat -q | jq -r .manifest_version
 ```
 
 Replace `https://artifacts.security.elastic.co` in the command above with your local mirror server to validate that the artifacts are served correctly.
