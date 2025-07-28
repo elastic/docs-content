@@ -60,3 +60,7 @@ If you’re using self-managed infrastructure - either on-prem or public cloud -
 ::::{note}
 With [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), upgrades are fully managed by Elastic. Users automatically receive the latest features and improvements, with no need to plan or perform upgrade steps.
 ::::
+
+## Next steps
+
+Once you've successfully upgraded your deployment, you can [upgrade your ingest components](./ingest-components.md), such as {{ls}}, {{agent}}, or {{beats}}.
