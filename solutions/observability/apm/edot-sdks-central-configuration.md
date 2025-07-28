@@ -4,9 +4,12 @@ applies_to:
   deployment:
       ess: preview 9.1
   stack: preview 9.1
+  serverless: unavailable
+    
 products:
   - id: observability
   - id: kibana
+  - id: edot-collector
 ---
 
 # Central Configuration for EDOT SDKs [edot-sdks-central-configuration]
