@@ -10,11 +10,9 @@ products:
 
 # Sharing dashboards [share-the-dashboard]
 
-To share a dashboard with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting and sharing](../report-and-share.md).
+To share a dashboard with a larger audience, click {icon}`share` **Share** in the toolbar. For detailed information about the sharing options and time ranges, refer to [Reporting and sharing](../report-and-share.md).
 
-:::{image} /explore-analyze/images/share-dashboard-copy-link.gif
-:alt: getting a shareable link for a dashboard
-:::
+![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
 
 ::::{tip}
 When sharing a dashboard with a link while a panel is in maximized view, the generated link will also open the dashboard on the same maximized panel view.
