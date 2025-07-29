@@ -60,6 +60,12 @@ POST /_query?format=txt
 
 {{esql}} can return the data in the following human readable and binary formats. You can set the format by specifying the `format` parameter in the URL or by setting the `Accept` or `Content-Type` HTTP header.
 
+For example:
+
+```console
+POST /_query?format=yaml
+```
+
 ::::{note}
 The URL parameter takes precedence over the HTTP headers. If neither is specified then the response is returned in the same format as the request.
 ::::
