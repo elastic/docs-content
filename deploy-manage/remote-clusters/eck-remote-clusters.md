@@ -78,14 +78,14 @@ spec:
     elasticsearchRef:
       name: cluster-two
       namespace: ns-two
-      apiKey:
-        access:
-          search:
-            names:
-              - kibana_sample_data_ecommerce  <1>
-          replication:
-            names:
-              - kibana_sample_data_ecommerce  <1>
+    apiKey:
+      access:
+        search:
+          names:
+            - kibana_sample_data_ecommerce  <1>
+        replication:
+          names:
+            - kibana_sample_data_ecommerce  <1>
   version: 8.16.1
 ```
 
