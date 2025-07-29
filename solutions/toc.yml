@@ -618,6 +618,7 @@ toc:
               - file: security/cloud/ingest-cncf-falco-data.md
               - file: security/cloud/ingest-aws-security-hub-data.md
               - file: security/cloud/ingest-wiz-data.md
+              - file: security/cloud/integration-qualys.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
