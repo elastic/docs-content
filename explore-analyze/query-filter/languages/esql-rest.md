@@ -70,7 +70,6 @@ Complete responses with metadata. Useful for automatic parsing.
 
 | `format` | HTTP header | Description |
 | --- | --- | --- |
-| Structured | | _Complete response with metadata_ |
 | `json` | `application/json` | [JSON](https://www.json.org/) (JavaScript Object Notation) human-readable format |
 | `yaml` | `application/yaml` | [YAML](https://en.wikipedia.org/wiki/YAML) (YAML Ain’t Markup Language) human-readable format |
 
@@ -80,7 +79,6 @@ Query results only, without metadata. Useful for quick and manual data previews.
 
 | `format` | HTTP header | Description |
 | --- | --- | --- |
-| Tabular | | _Query results only, no metadata_ |
 | `csv` | `text/csv` | [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) |
 | `tsv` | `text/tab-separated-values` | [Tab-separated values](https://en.wikipedia.org/wiki/Tab-separated_values) |
 | `txt` | `text/plain` | CLI-like representation |
@@ -341,3 +339,8 @@ Use the [{{esql}} async query delete API](https://www.elastic.co/docs/api/doc/el
 ```console
 DELETE /_query/async/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=
 ```
+
+::::{note}
+You will also receive the async ID and running status in the `X-Elasticsearch-Async-Id` and `X-Elasticsearch-Async-Is-Running` HTTP headers of the response, respectively.
+Useful if you use a tabular text format like `txt`, `csv` or `tsv`, as you won't receive those fields in the body there.
+::::
