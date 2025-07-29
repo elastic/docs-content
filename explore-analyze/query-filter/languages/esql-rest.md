@@ -64,22 +64,40 @@ POST /_query?format=txt
 The URL parameter takes precedence over the HTTP headers. If neither is specified then the response is returned in the same format as the request.
 ::::
 
+#### Structured formats
+
+Complete responses with metadata. Useful for automatic parsing.
 
 | `format` | HTTP header | Description |
 | --- | --- | --- |
 | Structured | | _Complete response with metadata_ |
 | `json` | `application/json` | [JSON](https://www.json.org/) (JavaScript Object Notation) human-readable format |
 | `yaml` | `application/yaml` | [YAML](https://en.wikipedia.org/wiki/YAML) (YAML Ain’t Markup Language) human-readable format |
+
+#### Tabular formats
+
+Query results only, without metadata. Useful for quick and manual data previews.
+
+| `format` | HTTP header | Description |
+| --- | --- | --- |
 | Tabular | | _Query results only, no metadata_ |
 | `csv` | `text/csv` | [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) |
 | `tsv` | `text/tab-separated-values` | [Tab-separated values](https://en.wikipedia.org/wiki/Tab-separated_values) |
 | `txt` | `text/plain` | CLI-like representation |
-| Binary | | _Compact binary encoding_ |
+
+::::{tip}
+The `csv` format accepts a formatting URL query attribute, `delimiter`, which indicates which character should be used to separate the CSV values. It defaults to comma (`,`) and cannot take any of the following values: double quote (`"`), carriage-return (`\r`) and new-line (`\n`). The tab (`\t`) can also not be used. Use the `tsv` format instead.
+::::
+
+#### Binary formats
+
+Compact binary encoding. To be used by applications.
+
+| `format` | HTTP header | Description |
+| --- | --- | --- |
 | `cbor` | `application/cbor` | [Concise Binary Object Representation](https://cbor.io/) |
 | `smile` | `application/smile` | [Smile](https://en.wikipedia.org/wiki/Smile_(data_interchange_format)) binary data format similarto CBOR |
 | `arrow` | `application/vnd.apache.arrow.stream` | **Experimental.** [Apache Arrow](https://arrow.apache.org/) dataframes, [IPC streaming format](https://arrow.apache.org/docs/format/Columnar.html#ipc-streaming-format) |
-
-The `csv` format accepts a formatting URL query attribute, `delimiter`, which indicates which character should be used to separate the CSV values. It defaults to comma (`,`) and cannot take any of the following values: double quote (`"`), carriage-return (`\r`) and new-line (`\n`). The tab (`\t`) can also not be used. Use the `tsv` format instead.
 
 
 ### Filtering using {{es}} Query DSL [esql-rest-filtering]
