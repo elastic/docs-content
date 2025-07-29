@@ -2,6 +2,8 @@
 navigation_title: Upgrade {{agent}}s
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -44,7 +46,7 @@ These restrictions apply whether you are upgrading {{agents}} individually or in
 
 ## Upgrading {{agent}} [upgrade-agent]
 
-To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}. You can perform the following upgrade-related actions:
+To upgrade your {{agents}}, go to **Management** → **{{fleet}}** → **Agents** in {{kib}}. You can perform the following upgrade-related actions:
 
 | User action | Result |
 | --- | --- |
@@ -54,6 +56,8 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
 | [View upgrade status](#view-upgrade-status) | View the detailed status of an agent upgrade, including upgrade metrics and agent logs. |
 | [Restart an upgrade for a single agent](#restart-upgrade-single) | Restart an upgrade process that has stalled for a single agent. |
 | [Restart an upgrade for multiple agents](#restart-upgrade-multiple) | Do a bulk restart of the upgrade process for a set of agents. |
+
+With the right [subscription level](https://www.elastic.co/subscriptions), you can also configure an automatic, gradual upgrade of a percentage of the {{agents}} enrolled in an {{agent}} policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](#auto-upgrade-agents). {applies_to}`stack: ga 9.1.0`
 
 
 ## Upgrade a single {{agent}} [upgrade-an-agent]
@@ -82,7 +86,6 @@ To upgrade your {{agent}}s, go to **Management > {{fleet}} > Agents** in {{kib}}
     :alt: Menu for upgrading a single {{agent}}
     :screenshot:
     :::
-
 
 
 ## Do a rolling upgrade of multiple {{agent}}s [rolling-agent-upgrade]
@@ -182,7 +185,6 @@ If an upgrade fails, you can view the agent logs to find the reason:
     :::
 
 
-
 ## Restart an upgrade for a single agent [restart-upgrade-single]
 
 An {{agent}} upgrade process may sometimes stall. This can happen for various reasons, including, for example, network connectivity issues or a delayed shutdown.
@@ -215,6 +217,68 @@ When the upgrade process for multiple agents has been detected to have stalled, 
     To force selected agents to upgrade immediately when the upgrade is triggered, select **Immediately**. Avoid using this setting for batches of more than 10 agents.
 
 5. Restart the upgrades.
+
+
+## Auto-upgrade agents enrolled in a policy [auto-upgrade-agents]
+
+```{applies_to}
+stack: ga 9.1.0
+```
+
+::::{note}
+This feature is only available for certain subscription levels. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
+::::
+
+To configure an automatic rollout of a new minor or patch version to a percentage of the agents enrolled in your {{agent}} policy. follow these steps:
+
+1. In {{kib}}, go to **Management** → **{{fleet}}** → **Agent policies**.
+2. Select the agent policy for which you want to configure an automatic agent upgrade.
+3. On the agent policy's details page, find **Auto-upgrade agents**, and select **Manage** next to it.
+4. In the **Manage auto-upgrade agents** window, click **Add target version**.
+5. From the **Target agent version** dropdown, select the minor or patch version to which you want to upgrade a percentage of your agents.
+6. In the **% of agents to upgrade** field, enter the percentage of active agents you want to upgrade to this target version.
+   
+   Note that:
+   - Unenrolling, unenrolled, inactive, and uninstalled agents are not included in the count. For example, if you set the target upgrade percentage to 50% for a policy with 10 active agents and 10 inactive agents, the target is met when 5 active agents are upgraded.
+   - Rounding is applied, and the actual percentage of the upgraded agents may vary slightly. For example, if you set the target upgrade percentage to 30% for a policy with 25 active agents, the target is met when 8 active agents are upgraded (32%).
+
+7. You can then add a different target version, and specify the percentage of agents you want to be upgraded to that version. The total percentage of agents to be upgraded cannot exceed 100%.
+8. Click **Save**.
+
+Once the configuration is saved, an asynchronous task runs every 30 minutes, gradually upgrading the agents in the policy to the specified target version.
+
+In case of any failed upgrades, the upgrades are retried with exponential backoff mechanism until the upgrade is successful, or the maximum number of retries is reached. Note that the maximum number of retries is the number of [configured retry delays](#auto-upgrade-settings).
+
+::::{note}
+Only active agents enrolled in the policy are considered for the automatic upgrade.
+
+If new agents are assigned to the policy, the number of {{agents}} to be upgraded is adjusted according to the set percentages.
+::::
+
+### Configure the auto-upgrade settings [auto-upgrade-settings]
+
+On self-managed and cloud deployments of {{stack}}, you can configure the default task interval and the retry delays of the automatic upgrade in the [{{kib}} {{fleet}} settings](kibana://reference/configuration-reference/fleet-settings.md). For example:
+
+```yml
+xpack.fleet.autoUpgrades.taskInterval: 15m <1>
+xpack.fleet.autoUpgrades.retryDelays: ['5m', '10m', '20m'] <2>
+```
+1. The time interval at which the auto-upgrade task should run. Defaults to `30m`.
+2. Array indicating how much time should pass before a failed auto-upgrade is retried. The array's length indicates the maximum number of retries. Defaults to `['30m', '1h', '2h', '4h', '8h', '16h', '24h']`.
+
+For more information, refer to the [Kibana configuration reference](kibana://reference/configuration-reference.md).
+
+### View the status of the automatic upgrade [auto-upgrade-view-status]
+
+You can view the status of the automatic upgrade in the following ways:
+
+- On the agent policy's details page, find **Auto-upgrade agents**, and select **Manage** to open the **Manage auto-upgrade agents** window.
+  
+  The status of the upgrade is displayed next to the specified target version and percentage, and includes the percentage of agents that have already been upgraded.
+
+  To view any failed upgrades, hover over the **Upgrade failed** status, then click **Go to upgrade**.
+
+- On the **{{fleet}}** → **Agents** page, click **Agent activity** to open a flyout showing logs of the {{agent}} activity and the progress of the automatic agent upgrade.
 
 
 ## Upgrade RPM and DEB system packages [upgrade-system-packages]
