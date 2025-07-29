@@ -1,4 +1,5 @@
 ---
+description: Learn how Elastic handles versioning and feature availability in the docs. Find the product versions that are supported, how to read availability badges, and...
 navigation_title: Versioning and availability
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/introducing-elastic-documentation.html
@@ -6,33 +7,112 @@ products:
   - id: elastic-stack
 ---
 
-# Understanding versioning and availability
+# Versioning and availability in Elastic Docs
 
-On this page, you'll learn about our versioning systems, how to understand how we talk about versions and feature availability in our documentation, and where to find docs for your product version.
+Learn how Elastic Docs handles versioning, feature availability, and how to find the right documentation for your deployment type and product version. Find answers to common questions about the Elastic Stack versioning and to help you confidently navigate our continuously updated documentation.
 
-## Elastic Stack versioning
+## Frequently asked questions
 
-{{es}} and the core components of the Elastic Stack use a semantic versioning scheme. This scheme consists of three numbers separated by periods in the form `X.Y.Z`, for example: `9.0.0`.
+### Where can I find documentation for the latest version of the {{stack}}?
 
-Each number represents a specific level of change:
+You’re in the right place! All documentation for Elastic Stack 9.0.0 and later is available at [elastic.co/docs](https://www.elastic.co/docs), including the latest 9.1.0 version and any future versions in the 9.x series.
 
-- **Major (X)**: Indicates significant changes, such as new features, breaking changes, and major enhancements. Upgrading to a new major version may require changes to your existing setup and configurations.
-- **Minor (Y)**: Introduces new features and improvements, while maintaining backward compatibility with the previous minor versions within the same major version. Upgrading to a new minor version should not require any changes to your existing setup.
-- **Patch (Z)**: Contains bug fixes and security updates, without introducing new features or breaking changes. Upgrading to a new patch version should be seamless and not require any changes to your existing setup.
+Need docs for an earlier version? Go to [elastic.co/guide](https://www.elastic.co/guide).
 
-It's important to understand this versioning system, for compatibility and [upgrade](/deploy-manage/upgrade.md) planning.
+### Why doesn't Elastic have separate documentation for each version?
 
-## Availability of features
+Starting with {{stack}} 9.0.0, Elastic no longer publishes separate documentation sets for each minor release. Instead, all changes in the 9.x series are included in a single, continuously updated documentation set.
 
-Elastic products and features have different availability states across deployment types and lifecycle stages.
+This approach helps:
+* Reduce duplicate pages
+* Show the full history and context of a feature
+* Simplify search and navigation
+
+### How do I know content was added in a specific version?
+
+We clearly mark content added or changed in a specific version using availability badges.
+
+For example:
+
+```yaml {applies_to}
+stack: ga 9.1
+```
+
+This means the feature is:
+* Available on Elastic Stack
+* Generally Available (GA)
+* Introduced in version 9.1.0
+
+Other examples:
+
+```yaml {applies_to}
+serverless:
+  security: beta
+  elasticsearch: ga
+```
+* Applies to {{serverless-full}}
+* Beta for {{elastic-sec}} projects
+* Generally Available for {{es}} projects
+
+```yaml {applies_to}
+deployment:
+  ece: deprecated 4.1.0
+```
+* Applies to {{ece}}
+* Deprecated starting in {{ece}} version 4.1.0
+
+Look for the availability badges in page and section headers. 
+
+:::{tip}
+Want to learn more about how availability badges are used? Check the [Elastic docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/).
+:::
+
+### What if I'm using a version earlier than {{stack}} 9.0.0?
+
+Documentation for {{stack}} 8.19.0 and earlier is available at [elastic.co/guide](https://www.elastic.co/guide).
+
+If a previous version for a specific page exists, you can select the version from the dropdown in the page sidebar. 
+
+### How often is the documentation updated?
+
+We frequently update Elastic Docs to reflect the following:
+* Minor versions, such as {{stack}} 9.1.0 
+* Patch-level updates, such as {{stack}} 9.1.1
+* Ongoing improvements to clarify and expand guidance
+
+To learn what's changed, check the [release notes](/release-notes/index.md) for each Elastic product.
+
+### How do I know what the current {{stack}} version is?
+
+To make sure you're always viewing the most up-to-date and relevant documentation, the version dropdown at the top of each page shows the most recent 9.x release. For example, Elastic Stack 9.0+ (latest: 9.1.0).
+
+## Understanding {{stack}} versioning
+
+{{stack}} uses semantic versioning in the `X.Y.Z` format, such as `9.0.0`.
+
+| Version | Description |
+|-------|-------------|
+| **Major (X)** | Indicates significant changes, such as new features, breaking changes, and major enhancements. Upgrading to a new major version may require changes to your existing setup and configurations. |
+| **Minor (Y)** | Introduces new features and improvements, while maintaining backward compatibility with the previous minor versions within the same major version. Upgrading to a new minor version should not require any changes to your existing setup. |
+| **Patch (Z)** | Contains bug fixes and security updates, without introducing new features or breaking changes. Upgrading to a new patch version should be seamless and not require any changes to your existing setup. |
+
+Understanding {{stack}} versioning is essential for [upgrade planning](/deploy-manage/upgrade.md) and ensuring compatibility.
+
+## Understanding feature availability
+
+Features can differ based on deployment type, product lifecycle stage, and specific version.
+
+### Feature availability factors
+
+| Factor | Description |
+|-------|-------------|
+| **Deployment type** | The environment where the feature is available (Stack, Serverless, ECE, ECK, etc.) |
+| **Lifecycle state** | The development or support status of the feature (GA, Beta, etc.) |
+| **Version** | The specific version the lifecycle state applies to |
 
 Features may have different availability states between:
 
-- **Deployment type**: The environment where the feature is available (Stack, Serverless, ECE, ECK, etc.)
-- **Lifecycle state**: The development or support status of the feature (GA, Beta, etc.)
-- **Version**: The specific version the lifecycle state applies to
-
-#### Lifecycle states
+### Lifecrycle state definitions
 
 | State | Description |
 |-------|-------------|
@@ -41,9 +121,7 @@ Features may have different availability states between:
 | **Technical preview** | Feature is in early development stage |
 | **Unavailable** | Feature is not supported in this deployment type or version |
 
-### Where feature availability may differ
-
-Features may have different states between:
+### Examples of where availability can vary
 
 - **[Elastic Stack](the-stack.md)** versions (e.g., 9.0, 9.1)
 - **Deployment types** (and deployment versions)
@@ -59,70 +137,11 @@ Features may have different states between:
   - Elasticsearch
   - Observability
 
-### Important tips when reading the docs
+## Product version coverage
 
-- Always check feature lifecycle state for your specific deployment type and version
-- Pay attention to Elastic Stack version requirements
-- Note that Serverless features may vary by project type
+Elastic Docs contains documentation for the following product versions.
 
-### Availability badges in the docs
-
-Our documentation uses badges to help you quickly identify where and when features are available for your specific environment.
-
-Badges can appear in two places:
-1. **Page headers**: Shows the overall availability across all deployment types
-2. **Section headers**: Indicates specific availability for content in that section
-
-### How to read the badges
-
-Here are some examples to help you understand how to read the availability badges.
-
-#### Example #1: Stack-only feature
-
-```yaml {applies_to}
-stack: ga 9.1
-```
-- **Deployment type**: Elastic Stack
-- **Version**: 9.1.0+
-- **Lifecycle**: Generally Available (GA) — default state
-
-#### Example #2: Serverless-only feature with project differences
-
-```yaml {applies_to}
-serverless:
-  security: beta
-  elasticsearch: ga
-```
-- **Deployment type**: Serverless
-- **Lifecycle**:
-  - Beta for Security projects
-  - Generally Available for Elasticsearch projects
-
-#### Example #3: Deprecated feature on one deployment type
-
-```yaml {applies_to}
-deployment:
-  ece: deprecated 4.1.0
-```
-- **Deployment type**: Elastic Cloud Enterprise
-- **Lifecycle**: Deprecated
-- **Version**: 4.1.0
-
-:::{tip}
-For contributors and those interested in the technical details, see the [Elastic docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/) for more information on how these badges are implemented.
-:::
-
-## Find docs for your product version
-
-In April 2025, we released our new documentation site. This site includes documentation for our latest product versions.
-
-To access our previous documentation system, which contains the documentation for releases prior to those listed below, go to [elastic.co/guide](https://elastic.co/guide).
-
-You can access the previous version of a specific page, where available, by clicking the **View previous version** link in the sidebar.
-
-The following product versions are documented on this site:
-
-#### Core products and deployment methods
+#### Core products and deployments
 
 | Product | Version |
 | --- | --- |
