@@ -118,13 +118,13 @@ The monitoring cluster should be running the same version, or a newer one, than 
 
 ## Example of an upgrade plan
 
-Let's assume you are running all {{stack}} components in version 8.14 and your main goal is to upgrade {{es}} and {{kib}} to the latest {{stack-version}}, without requiring to upgrade the ingest components (Beats, Elastic Agent, and Logstash) except when required by the [upgrade paths](../upgrade.md#upgrade-paths).
+Let's assume you are running all {{stack}} components in version 8.14 and your main goal is to upgrade {{es}} and {{kib}} to the latest {{version.stack}}, without requiring to upgrade the ingest components (Beats, Elastic Agent, and Logstash) except when required by the [upgrade paths](../upgrade.md#upgrade-paths).
 
 The minimum steps your plan should include are:
 
-1. Upgrade {{es}} and {{kib}} to the latest 8.19 version, as a requirement for the major upgrade to {{stack-version}}.
-2. Upgrade all ingest components to the latest 8.19 version, as otherwise they won't be compatible with {{es}} running {{stack-version}}.
-3. Upgrade {{es}} and {{kib}} to {{stack-version}}.
+1. Upgrade {{es}} and {{kib}} to the latest 8.19 version, as a requirement for the major upgrade to {{version.stack}}.
+2. Upgrade all ingest components to the latest 8.19 version, as otherwise they won't be compatible with {{es}} running {{version.stack}}.
+3. Upgrade {{es}} and {{kib}} to {{version.stack}}.
 
 ## Next steps
 

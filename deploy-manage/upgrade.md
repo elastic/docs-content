@@ -68,10 +68,10 @@ To perform a major upgrade from 8.x, the required starting version depends on th
 While 8.19 is the final minor release in the 8.x series, 8.18 was released at the same time as 9.0, enabling a supported upgrade path between the 8.18.x and 9.0.x series. This compatibility also applies to other features and clients.
 ::::
 
-The following upgrade paths from 8.x are valid for reaching the latest {{stack-version}} release:
+The following upgrade paths from 8.x are valid for reaching the latest {{version.stack}} release:
 
-* Versions prior to 8.18 → 8.19.x → {{stack-version}} *(recommended)*
-* Versions prior to 8.18 → 8.18.x → 9.0.x → {{stack-version}}
+* Versions prior to 8.18 → 8.19.x → {{version.stack}} *(recommended)*
+* Versions prior to 8.18 → 8.18.x → 9.0.x → {{version.stack}}
 
 #### Ingest tools and clients considerations
 

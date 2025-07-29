@@ -96,9 +96,9 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
     ::::{note}
     Because 8.18.0 and 9.0.0 were released simultaneously, upgrading from 8.18.x to 9.0.x is supported, as long as the versions comply with the supported [upgrade paths](../upgrade.md#upgrade-paths). However, upgrading to 9.1.0 or later requires starting from 8.19.x.
 
-    As an example, these are valid upgrade paths to {{stack-version}}:
-    * Versions prior to 8.18 → 8.19.x → {{stack-version}} *(recommended)*
-    * Versions prior to 8.18 → 8.18.x → 9.0.x → {{stack-version}}
+    As an example, these are valid upgrade paths to {{version.stack}}:
+    * Versions prior to 8.18 → 8.19.x → {{version.stack}} *(recommended)*
+    * Versions prior to 8.18 → 8.18.x → 9.0.x → {{version.stack}}
     ::::
 
     If you are already running an 8.19.x version, it's also recommended to upgrade to the latest 8.19 patch release before upgrading to 9.x. This ensures that the latest version of the upgrade assistant is used, and any bug fixes that could have implications for the upgrade are applied.
@@ -157,9 +157,9 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
 
 ## Reindex to upgrade [reindex-to-upgrade]
 
-If you are running a pre-8.x version, you might need to perform multiple upgrades before being able to upgrade to 9.x. As an alternative method to upgrading the cluster, you can create a new {{stack-version}} deployment and reindex from remote:
+If you are running a pre-8.x version, you might need to perform multiple upgrades before being able to upgrade to 9.x. As an alternative method to upgrading the cluster, you can create a new {{version.stack}} deployment and reindex from remote:
 
-1. Provision an additional deployment running the desired version, such as {{stack-version}}.
+1. Provision an additional deployment running the desired version, such as {{version.stack}}.
 2. To reindex your data into the new {{es}} cluster, use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new indexing requests to both clusters.
 3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
 4. Delete the old deployment. On {{ecloud}}, you are billed for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.

@@ -36,12 +36,12 @@ Before proceeding with the upgrade, review the [Plan your upgrade](/deploy-manag
 
 ## Out-of-order releases [out-of-order-releases]
 
-Elastic maintains several minor versions of Elasticsearch at once. This means releases do not always happen in order of their version numbers. You can only upgrade to {{stack-version}} if the version you are currently running meets both of these conditions:
+Elastic maintains several minor versions of Elasticsearch at once. This means releases do not always happen in order of their version numbers. You can only upgrade to {{version.stack}} if the version you are currently running meets both of these conditions:
 
-* Has an older version number than {{stack-version}}
-* Has an earlier release date than {{stack-version}}
+* Has an older version number than {{version.stack}}
+* Has an earlier release date than {{version.stack}}
 
-If you are currently running a version with an older version number but a later release date than {{stack-version}}, wait for a newer release before upgrading.
+If you are currently running a version with an older version number but a later release date than {{version.stack}}, wait for a newer release before upgrading.
 
 Additionally, upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
 

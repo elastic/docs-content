@@ -10,14 +10,14 @@ applies_to:
 
 The ECK orchestrator can safely perform upgrades to newer versions of the {{stack}}.
 
-Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), ensure the ECK version is [compatible](/deploy-manage/deploy/cloud-on-k8s.md#stack-compatibility) with the {{stack}} version you’re upgrading to. For example, if you're upgrading to {{stack-version}}, the minimum required ECK version is 3.0.0. If it's incompatible, [upgrade your orchestrator](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md).
+Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md), ensure the ECK version is [compatible](/deploy-manage/deploy/cloud-on-k8s.md#stack-compatibility) with the {{stack}} version you’re upgrading to. For example, if you're upgrading to {{version.stack}}, the minimum required ECK version is 3.0.0. If it's incompatible, [upgrade your orchestrator](/deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md).
 
 ## Perform the upgrade
 
 1. In the resource spec file, modify the `version` field for the desired {{stack}} version.
 2. Save your changes. The orchestrator will start the upgrade process automatically.
 
-In this example, we’re modifying the version to `{{stack-version}}`.
+In this example, we’re modifying the version to `{{version.stack}}`.
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -26,7 +26,7 @@ metadata:
   name: elasticsearch-sample
   namespace: production
 spec:
-  version: {{stack-version}}
+  version: {{version.stack}}
   monitoring:
     metrics:
       elasticsearchRefs:
@@ -117,7 +117,7 @@ metadata:
   name: kibana-sample
   namespace: production
 spec:
-  version: {{stack-version}}
+  version: {{version.stack}}
   monitoring:
     metrics:
       elasticsearchRefs:
