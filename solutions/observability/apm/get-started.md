@@ -1,7 +1,8 @@
 ---
-navigation_title: Get started
+navigation_title: Get started with traces and APM
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-getting-started-apm-server.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
 applies_to:
   stack:
@@ -12,52 +13,60 @@ products:
   - id: cloud-serverless
 ---
 
-# Get started with APM [apm-getting-started-apm-server]
+# Get started with traces and APM [apm-getting-started-apm-server]
 
 Elastic APM receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents. 
 
-To get started, select the deployment model that best suits your needs:
+In this guide you’ll learn how to collect and send Application Performance Monitoring (APM) data to Elastic, then explore and visualize the data in real time.
 
-* **[Elastic Cloud Serverless](/solutions/observability/apm/get-started.md#get-started-apm-serverless)**
-* **[Fleet-managed APM Server](/solutions/observability/apm/get-started.md#apm-setup-fleet-managed-apm)**
-* **[APM Server binary](/solutions/observability/apm/get-started.md#apm-setup-apm-server-binary)**
-
-## Elastic Cloud Serverless [get-started-apm-serverless]
-
-```{applies_to}
-serverless:
-```
-
-Elastic Cloud Serverless is a fully managed solution that allows you to deploy and use Elastic for your use cases without managing the underlying infrastructure. Refer to [**Get started with traces and APM**](/solutions/observability/apm/get-started-serverless.md) for more information.
-
-:::{image} /solutions/images/observability-apm-otel-distro-serverless.png
-:alt: APM data ingest path (Serverless)
-:::
-
-::::{important}
-To learn more about using OpenTelemetry with Elastic APM, including ECH and self-managed options, refer to [**Use OpenTelemetry with APM**](/solutions/observability/apm/use-opentelemetry-with-apm.md).
+::::{note}
+For a general Elastic {{observability}} overview, refer to [Get started with observability](/solutions/observability/get-started.md).
 ::::
 
-## Fleet-managed APM Server [apm-setup-fleet-managed-apm]
+## Send data to Elastic APM
 
-```{applies_to}
-stack:
-```
+Follow these steps to send APM data to Elastic.
 
-Fleet is a web-based UI in {{kib}} that is used to centrally manage {{agent}}s. In this deployment model, use {{agent}} to spin up APM Server instances that can be centrally-managed in a custom-curated user interface. Refer to [**Fleet-managed APM Server**](/solutions/observability/apm/get-started-fleet-managed-apm-server.md) for more information.
+::::{admonition} Required role
+:class: note
 
-:::{image} /solutions/images/observability-fm-ov.png
-:alt: APM Server fleet overview
+**For Observability Serverless projects**, the **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+::::
+
+::::::{stepper}
+
+:::::{step} Create an Observability project
+
+:::{include} /solutions/_snippets/obs-serverless-project.md
 :::
 
-## APM Server binary [apm-setup-apm-server-binary]
+:::::{step} Add data using EDOT or APM Agents
 
-```{applies_to}
-stack:
-```
+To send APM data to Elastic, you must install an Elastic Distribution of OpenTelemetry or an APM agent and configure it to send data to your project:
 
-In self-managed environments, you can also install, configure, and run the APM Server binary wherever you need it. Refer to [**APM Server binary**](/solutions/observability/apm/get-started-apm-server-binary.md) for more information.
+1.  ::::{include} /solutions/_snippets/obs-apm-project.md
+    ::::
 
-:::{image} /solutions/images/observability-bin-ov.png
-:alt: APM Server binary overview
-:::
+2. If you’re using the step-by-step instructions in the UI, after you’ve installed and configured an agent, you can click **Check Agent Status** to verify that the agent is sending data.
+
+To learn more about APM agents, including how to fine-tune how agents send traces to Elastic, refer to [Collect application data](/solutions/observability/apm/collect-application-data.md).
+
+:::::
+:::::{step} View your data
+
+After one or more APM agents are installed and successfully sending data, you can view application performance monitoring data in the UI.
+
+In the **Applications** section of the main menu, select **Service Inventory**. This will show a high-level overview of the health and general performance of all your services.
+
+Learn more about visualizing APM data in [View and analyze data](/solutions/observability/apm/view-analyze-data.md).
+
+::::{tip}
+Not seeing any data? Find helpful tips in [Troubleshooting](/troubleshoot/observability/apm.md).
+::::
+:::::
+::::::
+
+## Next steps [observability-apm-get-started-next-steps]
+
+Now that data is streaming into your project, take your investigation to a deeper level. Learn how to use [Elastic’s built-in visualizations for APM data](/solutions/observability/apm/view-analyze-data.md), [alert on APM data](/solutions/observability/incident-management/alerting.md), or [fine-tune how agents send traces to Elastic](/solutions/observability/apm/collect-application-data.md).
+
