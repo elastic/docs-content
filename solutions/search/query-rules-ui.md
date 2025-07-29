@@ -68,11 +68,6 @@ Use the following steps to first create a query ruleset, and then a query rule:
 Each ruleset must contain at least one rule.
 :::
 
-:::{image} /solutions/images/elasticsearch-query-rules-create-rule.png
-:alt: Creating a query rule.
-:screenshot:
-:::
-
 ### Delete a ruleset
 Use the following steps to delete a query ruleset:
 1. Select **Query Rules** in the navigation menu under **Relevance**.
