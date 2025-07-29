@@ -153,7 +153,7 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
 
 4. **Old {{ml}} indices**
 
-    If you have `.ml-anomalies-*`anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.x. For more information, refer to [Migrate anomaly detection results](#anomaly-migration).
+    If you have `.ml-anomalies-*` anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.x. For more information, refer to [Migrate anomaly detection results](#anomaly-migration).
 
 5. **Old transform indices**
 
