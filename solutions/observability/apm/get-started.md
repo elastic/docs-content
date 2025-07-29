@@ -14,11 +14,9 @@ products:
 
 # Get started with APM [apm-getting-started-apm-server]
 
-::::{note}
-Starting in version 8.15.0, the {{es}} apm-data plugin manages APM index templates, lifecycle policies, and ingest pipelines.
-::::
+Elastic APM receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents. 
 
-The APM Server receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents. If you’re on this page, then you’ve chosen to self-manage the Elastic Stack, and you now must decide how to run and configure the APM Server. There are two options, and the components required are different for each:
+To get started, select the deployment model that best suits your needs:
 
 * **[Elastic Cloud Serverless](/solutions/observability/apm/get-started.md#get-started-apm-serverless)**
 * **[Fleet-managed APM Server](/solutions/observability/apm/get-started.md#apm-setup-fleet-managed-apm)**
@@ -30,7 +28,15 @@ The APM Server receives performance data from your APM agents, validates and pro
 serverless:
 ```
 
-Elastic Cloud Serverless is a fully managed solution that allows you to deploy and use Elastic for your use cases without managing the underlying infrastructure.
+Elastic Cloud Serverless is a fully managed solution that allows you to deploy and use Elastic for your use cases without managing the underlying infrastructure. Refer to [**Get started with traces and APM**](/solutions/observability/apm/get-started-serverless) for more information.
+
+:::{image} /solutions/images/observability-apm-otel-distro-serverless.png
+:alt: APM data ingest path (Serverless)
+:::
+
+::::{important}
+To learn more about using OpenTelemetry with Elastic APM, including ECH and self-managed options, refer to [**Use OpenTelemetry with APM**](/solutions/observability/apm/use-opentelemetry-with-apm.md).
+::::
 
 ## Fleet-managed APM Server [apm-setup-fleet-managed-apm]
 
@@ -38,32 +44,11 @@ Elastic Cloud Serverless is a fully managed solution that allows you to deploy a
 stack:
 ```
 
-Fleet is a web-based UI in {{kib}} that is used to centrally manage {{agent}}s. In this deployment model, use {{agent}} to spin up APM Server instances that can be centrally-managed in a custom-curated user interface.
+Fleet is a web-based UI in {{kib}} that is used to centrally manage {{agent}}s. In this deployment model, use {{agent}} to spin up APM Server instances that can be centrally-managed in a custom-curated user interface. Refer to [**Fleet-managed APM Server**](/solutions/observability/apm/get-started-fleet-managed-apm-server.md) for more information.
 
 :::{image} /solutions/images/observability-fm-ov.png
 :alt: APM Server fleet overview
 :::
-
-**Pros**:
-
-* Conveniently manage one, some, or many different integrations from one central {{fleet}} UI.
-* Centrally manage multiple APM Servers running on edge machines.
-
-**Supported outputs**:
-
-* {{es}}
-* {{ech}}
-
-::::{note}
-Fleet-managed APM Server does *not* support all the outputs that are supported by the APM Server binary method of running Elastic APM.
-::::
-
-**Required components**:
-
-* APM agents
-* {{agent}} (which runs multiple subprocesses including APM Server, Fleet Server, and {{stack}})
-
-**Configuration method**: {{kib}} UI
 
 ## APM Server binary [apm-setup-apm-server-binary]
 
@@ -71,45 +56,8 @@ Fleet-managed APM Server does *not* support all the outputs that are supported b
 stack:
 ```
 
-Install, configure, and run the APM Server binary wherever you need it.
+In self-managed environments, you can also install, configure, and run the APM Server binary wherever you need it. Refer to [**APM Server binary**](/solutions/observability/apm/get-started-apm-server-binary.md) for more information.
 
 :::{image} /solutions/images/observability-bin-ov.png
 :alt: APM Server binary overview
-:::
-
-**Pros**:
-
-* Simplest self-managed option
-* No addition component knowledge required
-* YAML configuration simplifies automation
-
-**Supported outputs**:
-
-* {{es}}
-* {{ech}}
-* {{ls}}
-* Kafka
-* Redis
-* File
-* Console
-
-**Required components**:
-
-* APM agents
-* APM Server
-* {{stack}}
-
-**Configuration method**: YAML
-
-## Help me decide [_help_me_decide]
-
-```{applies_to}
-stack:
-```
-
-This decision tree highlights key factors to help you make an informed decision about implementing Elastic APM. It provides practical guidance and is not intended to serve as a comprehensive reference of all possible implementations and capabilities.
-
-:::{image} /solutions/images/observability-apm-help-me-decide.svg
-:alt: APM decision tree
-:screenshot:
 :::

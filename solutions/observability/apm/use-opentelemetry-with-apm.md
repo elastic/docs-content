@@ -15,17 +15,15 @@ products:
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) is a set of APIs, SDKs, tooling, and integrations that enable the capture and management of telemetry data from your services and applications.
 
-Elastic offers several distributions of OpenTelemetry language SDKs. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/), ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), Elastic APM server, or directly to {{es}}.
+Elastic offers several distributions of OpenTelemetry. Each Elastic Distribution of OpenTelemetry is a customized version of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/languages/) and the OpenTelemetry Collector, ready to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md), APM Server, or directly to {{es}}.
 
-:::{image} /solutions/images/observability-apm-otel-distro2.png
-:alt: APM data ingest path
-:screenshot:
+:::{include} /solutions/_snippets/edot-reference-arch.md
 :::
 
 With an Elastic Distribution of OpenTelemetry language SDK you have access to all the features of the OpenTelemetry SDK that it customizes, plus:
 
 * You can get access to SDK improvements and bug fixes contributed by the Elastic team before the changes are available upstream in the OpenTelemetry repositories.
-* The distribution preconfigures the collection of tracing and metrics signals, applying opinionated defaults, such as which sources are collected by default.
+* The distribution configures the collection of tracing and metrics signals, applying opinionated defaults, such as which sources are collected by default.
 * By sending data through the [EDOT Collector](opentelemetry://reference/edot-collector/index.md), you make sure to onboard infrastructure logs and metrics.
 
 Get started with an Elastic Distribution of OpenTelemetry language SDK:
@@ -77,6 +75,6 @@ Find more details about how to use an OpenTelemetry API or SDK with an Elastic A
 
 AWS Lambda functions can be instrumented with OpenTelemetry and monitored with Elastic {{observability}} or {{obs-serverless}}.
 
-To get started, follow the official AWS Distro for OpenTelemetry Lambda documentation, and configure the OpenTelemetry Collector to output traces and metrics to your Elastic cluster:
+To get started, follow the official AWS Distribution for OpenTelemetry Lambda documentation, and configure the OpenTelemetry Collector to output traces and metrics to your Elastic cluster:
 
 [**Get started with the AWS Distro for OpenTelemetry Lambda**](https://aws-otel.github.io/docs/getting-started/lambda)
