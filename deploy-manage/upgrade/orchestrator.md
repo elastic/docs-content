@@ -4,6 +4,9 @@ applies_to:
   deployment:
     ece:
     eck:
+products:
+  - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Upgrade your orchestrator

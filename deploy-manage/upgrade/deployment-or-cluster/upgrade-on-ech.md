@@ -10,6 +10,8 @@ applies_to:
     ess:
 products:
   - id: cloud-hosted
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Upgrade on {{ech}} (ECH)

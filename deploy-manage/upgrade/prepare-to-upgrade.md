@@ -8,6 +8,10 @@ applies_to:
     ece:
     self:
 products:
+  - id: kibana
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: cloud-kubernetes
   - id: elasticsearch
 ---
 # Prepare to upgrade

@@ -6,6 +6,12 @@ applies_to:
     ess:
     ece:
     self:
+products:
+  - id: kibana
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: cloud-kubernetes
+  - id: elasticsearch
 ---
 # Plan your upgrade
 

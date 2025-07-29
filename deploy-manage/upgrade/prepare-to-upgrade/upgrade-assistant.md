@@ -10,6 +10,9 @@ applies_to:
     self:
 products:
   - id: kibana
+  - id: cloud-enterprise
+  - id: cloud-hosted
+  - id: cloud-kubernetes
   - id: elasticsearch
 ---
 

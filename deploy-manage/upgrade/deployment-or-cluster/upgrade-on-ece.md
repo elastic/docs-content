@@ -4,6 +4,10 @@ applies_to:
   stack:
   deployment:
     ece:
+products:
+  - id: kibana
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # Upgrade your deployment on {{ece}} (ECE)

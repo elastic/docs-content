@@ -3,6 +3,8 @@ applies_to:
   stack:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # Upgrade {{es}} [upgrading-elasticsearch]

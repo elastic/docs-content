@@ -4,6 +4,10 @@ applies_to:
   stack:
   deployment:
     eck:
+products:
+  - id: kibana
+  - id: cloud-kubernetes
+  - id: elasticsearch
 ---
 
 # Upgrade your deployment on {{eck}} (ECK)
