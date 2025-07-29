@@ -88,7 +88,7 @@ The file must contain three columns, with each entity record listed on a separat
     * `high_impact`
     * `medium_impact`
     * `low_impact`
-    * `unassigned` (available in {{serverless-short}} only)
+    * {applies_to}`stack: ga 9.1` `unassigned`
 
 
 The maximum file size is 1 MB.
