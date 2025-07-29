@@ -19,7 +19,7 @@ Review the deprecated functionality for {{fleet}} and {{agent}}. While deprecati
 ## 9.1.0 [fleet-elastic-agent-9.1.0-deprecations]
 
 ::::{dropdown} Deprecate the elasticinframetrics processor.
-The elasticinframetrics processor is no longer necessary, is deprecated in 9.1.0, and is scheduled for removal in 9.2.0.
+The elasticinframetrics processor is no longer necessary and is deprecated in EDOT Collector 9.1.0. It is scheduled for removal in 9.2.0.
 
 For more information, check [#8659]({{agent-pull}}8659).
 ::::
