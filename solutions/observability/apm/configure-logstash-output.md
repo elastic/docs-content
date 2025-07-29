@@ -98,7 +98,7 @@ Every event sent to {{ls}} contains a special field called [`@metadata`](logstas
     ...
     "@metadata": {
       "beat": "apm-server", <1>
-      "version": "{{version}}" <2>
+      "version": "{{version.stack}}" <2>
     }
 }
 ```
@@ -221,7 +221,7 @@ The `proxy_use_local_resolver` option determines if {{ls}} hostnames are resolve
 
 #### `index` [apm-logstash-index]
 
-The index root name to write events to. The default is `apm-server`. For example `"apm"` generates `"[apm-]VERSION-YYYY.MM.DD"` indices (for example, _"apm-{{version}}-2017.04.26"_).
+The index root name to write events to. The default is `apm-server`. For example `"apm"` generates `"[apm-]VERSION-YYYY.MM.DD"` indices (for example, _"apm-{{version.stack}}-2017.04.26"_).
 
 ::::{note}
 This parameter’s value will be assigned to the `metadata.beat` field. It can then be accessed in {{ls}}'s output section as `%{[@metadata][beat]}`.
