@@ -120,8 +120,8 @@ The table's fields are as follows:
   * To reprocess a rule using the same or a different LLM connector, select one or more rules that weren't successfully translated then click **Reprocess**. A menu appears where you can select which AI connector to use. 
 
 ::::{image} /solutions/images/security-siem-migration-reprocess-modal.png
-:alt: The translated rules page
-:width: 850px
+:alt: The reprocess rule modal
+:width: 450px
 :screenshot:
 ::::
 
