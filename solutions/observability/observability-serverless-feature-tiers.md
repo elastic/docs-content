@@ -8,12 +8,12 @@ products:
 
 # {{obs-serverless}} feature tiers
 
-{{obs-serverless}} projects are available in the following tiers of carefully selected features to enable common observability operations:
+{{obs-serverless}} projects are available in the following tiers, each with a carefully selected set of features to enable common observability operations:
 
-* **Observability Logs Essentials**: Provides everything you need to ingest and analyze your logs. This includes **[Discover](/solutions/observability/logs/discover-logs.md)** to explore your logs, pre-configured and custom dashboards to visualize and gain insight into your logs, and alerting to notify you of potential issues.
+* **Observability Logs Essentials**: Provides everything you need to ingest and analyze your logs. This includes **[Discover](/solutions/observability/logs/discover-logs.md)** to explore your logs, pre-configured and custom dashboards to visualize and gain insight from your logs, and alerting to notify you of potential issues.
 * **Observability Complete**: Provides full-stack observability capabilities to monitor cloud-native and hybrid environments. This includes everything in the Logs Essentials tier, as well as machine learning and AI capabilities, APM, and more.
 
-Refer to [feature comparison table](#obs-subscription-features) for a more detailed comparison between the tiers.
+Refer to the [feature comparison table](#obs-subscription-features) for a more detailed comparison between the tiers.
 
 ## Subscription tier pricing [obs-subscription-pricing]
 
@@ -21,7 +21,7 @@ For pricing information, refer to [Elastic Observability Serverless pricing](htt
 
 ## Feature comparison [obs-subscription-features]
 
-The following table provides an in-depth feature comparison between Observability Complete and Observability Logs Essentials:
+The following table compares features available in Observability Complete and Observability Logs Essentials:
 
 | **Feature** | Observability Complete | Observability Logs Essentials |
 |---------|----------------------|-----------------------------------|
@@ -35,14 +35,14 @@ The following table provides an in-depth feature comparison between Observabilit
 | **[Service level objectives (SLO)](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ❌ |
 | **Multi-signal investigations** | ✅ | ❌ |
 | **[APM](/solutions/observability/apm/index.md)** | ✅ | ❌ |
-| **[AI Assistant](/solutions/observability/observability-ai-assistant.md)** and Elastic Managed LLM | ✅ | ❌ |
+| **[AI Assistant](/solutions/observability/observability-ai-assistant.md)** including Elastic Managed LLM | ✅ | ❌ |
 | **[Custom knowledge bases](/solutions/observability/observability-ai-assistant.md#obs-ai-kb-ui)** | ✅ | ❌ |
 | **[Synthetics testing and browser experience monitoring](/solutions/observability/synthetics/index.md)** | ✅ | ❌ |
 
 ## Upgrade from Observability Logs Essentials to Observability Complete [obs-subscription-upgrade]
 
 :::{warning}
-Upgrading from Observability Logs Essentials to Observability Complete is permanent and cannot be reversed.
+Upgrading from Observability Logs Essentials to Observability Complete is permanent and is not reversible.
 :::
 
 To access the additional features available in Observability Complete, upgrade your Observability Logs Essentials subscription by completing the following steps:
