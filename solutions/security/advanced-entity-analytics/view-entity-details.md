@@ -10,7 +10,7 @@ applies_to:
 You can lean more about an entity (host, user, or service) from the entity details flyout, which is available throughout the {{elastic-sec}} app. To access this flyout, click on an entity name in places such as:
 
 * The Alerts table
-* The Entity Analytics dashboard
+* The Entity Analytics overview
 * The **Users** and user details pages
 * The **Hosts** and host details pages
 
