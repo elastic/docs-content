@@ -98,7 +98,7 @@ For {{obs-serverless}} projects, edit the **Project features** to select a featu
 
 | Feature tier | Description|
 | :--- | :--- |
-| **Observability Logs Essentials** | Provides everything you need to ingest and analyze your logs. This includes **[Discover](../../../solutions/observability/logs/discover-logs.md)** to explore your logs, pre-configured and custom dashboards to visualize and gain insight into your logs, and alerting to notify you of potential issues.<br> |
-| **Observability Complete** | Provides full-stack observability capabilities to monitor cloud-native and hybrid environments. This includes everything in the Logs Essentials tier, as well as machine learning and AI capabilities, APM, and more.<br> |
+| **Observability Logs Essentials** | Includes everything you need to store and analyze logs at scale.<br> |
+| **Observability Complete** | Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.<br> |
 
 For a full feature comparison, upgrading instructions, and more, refer to [{{obs-serverless}} feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
