@@ -2,6 +2,8 @@
 applies_to:
   deployment:
     self:
+    ece:
+    eck:
 navigation_title: FAQ
 ---
 
@@ -25,15 +27,15 @@ AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.c
 
 :::{dropdown} Which deployment types can be connected to AutoOps?
 
-You can connect to AutoOps on a standalone Elastic Stack, ECE (Elastic Cloud Enterprise), or ECK (Elastic Cloud on Kubernetes) deployment.
+You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment.
 :::
 
 :::{dropdown} Can I use AutoOps for self-managed clusters if my environment is air-gapped?
 
-Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to the {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
+Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
 :::
 
-:::{dropdown} Do I have to define an Elastic IP address to enable the agent to send data to the {{ecloud}}?
+:::{dropdown} Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?
 
 You may need to define an IP address if your organization’s settings will block the agent from sending out data. 
 
@@ -42,16 +44,16 @@ To enable IP ranges, {{ecloud}} offers a selection of static IP addresses. All t
 For more information, refer to [](/deploy-manage/security/elastic-cloud-static-ips.md).
 :::
 
-:::{dropdown} Where are AutoOps metrics stored, and does it cost extra to ship metrics to the {{ecloud}}?
+:::{dropdown} Where are AutoOps metrics stored, and does it cost extra to ship metrics to {{ecloud}}?
 
 You can choose the CSP and region in which your cluster metrics will be stored from a list of [available regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md). 
 
-Shipping metrics to the {{ecloud}} may come at an additional cost. For example, when sending metrics data from your cluster in a CSP region to the {{ecloud}}, shipping costs will be determined by your agreement with that CSP.
+Shipping metrics to {{ecloud}} may come at an additional cost. For example, when sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs will be determined by your agreement with that CSP.
 :::
 
-:::{dropdown} What information does the Elastic Agent extract from my cluster?
+:::{dropdown} What information does {{agent}} extract from my cluster?
 
-The Elastic Agent only extracts and sends cluster metrics to the {{ecloud}}, not the underlying data within your cluster. The following metrics are collected:
+{{agent}} only extracts and sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. The following metrics are collected:
 
 | API | Description | Collected data |
 | --- | --- | --- |

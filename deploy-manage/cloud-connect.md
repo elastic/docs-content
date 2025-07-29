@@ -2,6 +2,8 @@
 applies_to:
   deployment:
     self:
+    ece:
+    eck:
 navigation_title: Cloud Connect
 ---
 
@@ -11,10 +13,7 @@ Cloud Connect enables you to use {{ecloud}} services in your self-managed cluste
 
 Cloud Connect is included with your [self-managed Enterprise license](https://www.elastic.co/subscriptions) and works with self-managed free trials for the duration of the trial period.
 
-## Available cloud connected services 
-
-The following service is currently available for use with Cloud Connect. More services are coming soon.
-
+AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
 
 ### AutoOps
 
@@ -46,7 +45,7 @@ No. The currently available functionality does not consume ECU, but this may cha
 
 $$$cc-data$$$
 
-Yes. For AutoOps, the Elastic Agent only sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. Learn more in [](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md). 
+Yes. For AutoOps, {{agent}} only sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. Learn more in [](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md). 
 :::
 
 :::{dropdown} Are more services going to be available with Cloud Connect?
