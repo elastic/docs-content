@@ -362,7 +362,6 @@ toc:
   - file: reference-architectures.md
     children:
       - file: reference-architectures/hotfrozen-high-availability.md
-  - hidden: cloud-connect.md
   - file: stack-settings.md
   - file: tools.md
     children:
@@ -652,6 +651,7 @@ toc:
           - file: remote-clusters/remote-clusters-migrate.md
           - file: remote-clusters/remote-clusters-settings.md
       - file: remote-clusters/eck-remote-clusters.md
+  - hidden: cloud-connect.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md

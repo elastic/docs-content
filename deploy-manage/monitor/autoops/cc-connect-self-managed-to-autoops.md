@@ -27,6 +27,42 @@ Ensure your system meets the following requirements before proceeding:
     | Cluster privileges | `monitor`, `read_ilm`, and `read_slm` |
     | Index privileges | `*` indices: `monitor`, `view_index_metadata`  |
 
+<!-- Commenting out because I'm waiting for PM clarification
+## Create a role for AutoOps
+
+On your self-managed cluster, go to **Developer tools** from the navigation menu. In **Console**, run the following command:
+
+```js
+POST /_security/role/autoops
+{
+  "cluster": [
+    "monitor",
+    "read_ilm",
+    "read_slm"
+  ],
+  "indices": [
+    {
+      "names": [
+        "*"
+      ],
+      "privileges": [
+        "monitor",
+        "view_index_metadata"
+      ],
+      "allow_restricted_indices": true
+    }
+  ],
+  "applications": [],
+  "run_as": [],
+  "metadata": {
+    "description": "Allows Elastic agent to pull cluster metrics for AutoOps."
+  },
+  "transient_metadata": {
+    "enabled": true
+  }
+}
+```
+-->
 ## Connect to AutoOps
 
 :::{note}
@@ -38,7 +74,8 @@ Ensure your system meets the following requirements before proceeding:
     * If you already have an {{ecloud}} account, log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body). 
     * If you don’t have an {{ecloud}} account, [sign up](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) and create an organization.
 2. In the **Connected clusters** section, select **Connect self-managed cluster**. 
-3. On the **Cloud Connected Services** page, in the **AutoOps** section, select **Connect**.
+3. On the **Connected clusters** page, select **Accept and Continue**. This button only appears the first time you connect a cluster.
+3. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
 
 ### Select installation method
 
@@ -80,7 +117,7 @@ The wizard will generate an installation command based on your configuration. De
 * Windows
 
 :::{tip}
-We recommend installing the agent on a machine different from the one on which your self-managed cluster is running.
+If the machine where your self-managed cluster is running experiences technical issues, shipping metrics to AutoOps will be interrupted. We recommend installing the agent on a separate machine.
 :::
 
 Complete the following steps to run the command:
@@ -125,7 +162,7 @@ After you've completed the setup, you can access AutoOps for your self-managed c
 
 ## Connect additional clusters
 
-To connect more self-managed clusters, we recommend repeating the steps to [connect your self-managed cluster to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md).
+To connect more self-managed clusters, we recommend repeating the steps to [connect your self-managed cluster to AutoOps](#connect-your-self-managed-cluster-to-autoops).
 
 You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}.
 
