@@ -2,6 +2,8 @@
 navigation_title: Policies
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-policy.html
+applies_to:
+  stack: ga
 products:
   - id: fleet
   - id: elastic-agent
@@ -55,6 +57,7 @@ Hosted policies display a lock icon in the {{fleet}} UI, and actions are restric
 | [Edit or delete a policy](#policy-main-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add custom fields](#add-custom-fields) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure agent monitoring](#change-policy-enable-agent-monitoring) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Configure an automatic {{agent}} upgrade](#agent-policy-automatic-agent-upgrade) {applies_to}`stack: ga 9.1.0` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Change the output of a policy](#change-policy-output) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add a {{fleet-server}} to a policy](#add-fleet-server-to-policy) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure secret values in a policy](#agent-policy-secret-values) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
@@ -258,6 +261,19 @@ You can set a rate limit for the action handler for diagnostics requests coming 
 **Diagnostics file upload**
 
 This setting configures retries for the file upload client handling diagnostics requests coming from {{fleet}}. The setting affects only {{fleet}}-managed {{agents}}. By default, a maximum of `10` retries are allowed with an initial duration of `1s` and a backoff duration of `1m`. The client may retry failed requests with exponential backoff.
+
+
+## Configure an automatic {{agent}} upgrade [#agent-policy-automatic-agent-upgrade]
+
+```{applies_to}
+stack: ga 9.1.0
+```
+
+For a high-scale deployment of {{fleet}}, you can configure an automatic, gradual rollout of a new minor or patch version to a percentage of the {{agents}} in your policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](/reference/fleet/upgrade-elastic-agent.md#auto-upgrade-agents).
+
+::::{note}
+This feature is only available for certain subscription levels. For more information, refer to [{{stack}} subscriptions](https://www.elastic.co/subscriptions).
+::::
 
 
 ## Change the output of a policy [change-policy-output]
