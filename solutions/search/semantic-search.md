@@ -18,7 +18,7 @@ This page focuses on the semantic search workflows available in {{es}}. For deta
 
 {{es}} provides various semantic search capabilities using [natural language processing (NLP)](/explore-analyze/machine-learning/nlp.md) and [vector search](vector.md).
 
-To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and inference endpoints, see the [Elastic Inference overview](explore-analyze/elastic-inference.md) page.
+To understand the infrastructure that powers semantic search and other NLP tasks, including managed services and inference endpoints, see the [Elastic Inference overview](../../explore-analyze/elastic-inference.md) page.
 
 Learn more about use cases for AI-powered search in the [overview](ai-search/ai-search.md) page.
 
