@@ -162,7 +162,7 @@ After you've completed the setup, you can access AutoOps for your self-managed c
 
 ## Connect additional clusters
 
-To connect more self-managed clusters, we recommend repeating the steps to [connect your self-managed cluster to AutoOps](#connect-your-self-managed-cluster-to-autoops).
+To connect more self-managed clusters, we recommend repeating the steps to [connect to AutoOps](#connect-to-autoops).
 
 You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}.
 
