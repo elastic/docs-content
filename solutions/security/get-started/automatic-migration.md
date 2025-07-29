@@ -60,7 +60,8 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 6. After you upload your Splunk rules, Automatic Migration will detect whether they use any Splunk macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated rules will have a `partially translated` status. If you upload them now, you don't have to wait on the page for them to be processed — a notification will appear when processing is complete.
 
 7. Click **Translate** to start the rule translation process. You don't need to stay on this page. A notification will appear when the process is complete. A name for this migration is automatically created. If necessary, use the **More actions** ({icon}`boxes_vertical`) button to rename or pause the migration. 
-   ::::{image} /solutions/images/security-siem-migration-processed-rules.png
+
+   ::::{image} /solutions/images/security-siem-migration-rule-status-more-actions.png
    :alt: The rule migration status view
    :width: 850px
    :screenshot:
