@@ -91,7 +91,7 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
 
 1. **Upgrade to the latest 8.19 patch release**
 
-    To perform a major upgrade from 8.x to 9.x of {{es}}, you must first upgrade to 8.19.x. This allows you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and prepare the cluster for the actual upgrade. Upgrading to 8.19 is required even if you choose a full {{es}} cluster restart to upgrade.
+    To perform a major upgrade from 8.x to 9.x of {{es}}, you must first upgrade to 8.19.x. This allows you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and prepare the cluster for the actual upgrade. Upgrading to 8.19 is required regardless of whether you perform a rolling upgrade or a full cluster restart to upgrade.
 
     ::::{note}
     Because 8.18.0 and 9.0.0 were released simultaneously, upgrading from 8.18.x to 9.0.x is supported, as long as the versions comply with the supported [upgrade paths](../upgrade.md#upgrade-paths). However, upgrading to 9.1.0 or later requires starting from 8.19.x.
@@ -103,7 +103,7 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
 
     If you are already running an 8.19.x version, it's also recommended to upgrade to the latest 8.19 patch release before upgrading to 9.x. This ensures that the latest version of the upgrade assistant is used, and any bug fixes that could have implications for the upgrade are applied.
 
-    If you're using 7.x and earlier, you may need to complete multiple upgrades or perform a full-cluster restart to reach the latest 8.19 patch release before upgrading to 9.x. As an alternative method to upgrading the cluster, you can create a new 9.x deployment and reindex from the original cluster. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
+    If you're using 7.x and earlier, you may need to complete multiple upgrades to reach the latest 8.19 patch release before upgrading to 9.x. As an alternative method to upgrading the cluster, you can create a new 9.x deployment and reindex from the original cluster. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
 
     :::{note}
     For flexible upgrade scheduling, 8.19.x {{beats}} and {{ls}} are compatible with 9.x {{es}}.
