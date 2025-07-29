@@ -24,7 +24,7 @@ The Query Rules UI provides the same functionality as the API with one key diffe
 
 To see examples of how to search using query rules, refer [Search using Query Rules API](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules).
 
-If you prefer to use the Query Rules API, refer to [Query Rules API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-query_rules).
+If you prefer to use the Query Rules API, refer to [Query Rules API]({{es-apis}}group/endpoint-query_rules).
 
 ## Requirements
 
@@ -125,12 +125,17 @@ To test a query ruleset, do the following:
 
 Following resources can help you understand query rules better:
 
+Blogs:
+
 - [Query rules blog](https://www.elastic.co/search-labs/blog/elasticsearch-query-rules-generally-available)
-- [Query Rules API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-query_rules)
-- [Search using query rules](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules)
-   - [Rule types](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-type)
-   - [Rule criteria](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-criteria)
-   - [Rule actions](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-actions)
 - [Semantic search for query rules](https://www.elastic.co/search-labs/blog/semantic-search-query-rules)
+
+Other documentation links:
+- [Query Rules API]({{es-apis}}group/endpoint-query_rules)
+- [Search using query rules](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules)
+   - [Rule types](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-type)
+   - [Rule criteria](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-criteria)
+   - [Rule actions](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-actions)
+
 	
 
