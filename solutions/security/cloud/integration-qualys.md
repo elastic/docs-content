@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: all 9.1
+  stack: all 
   serverless:
     security: all
 products:
