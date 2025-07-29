@@ -59,7 +59,7 @@ For example:
 - ✅ Upgrade allowed: From 9.0.4 to 9.1.0 (9.1.0 released *after* 9.0.4)
 - ❌ Not allowed: From 9.0.5 to 9.1.0 (9.1.0 released *before* 9.0.5) → wait for 9.1.1 to be released
 <!--
-Uncomment this examples when 9.1.1 is released.
+Uncomment this example when 9.1.1 is released.
 - ✅ Upgrade allowed: From 9.0.5 to 9.1.1 (9.1.1 released *after* 9.0.5)
 -->
 
@@ -74,10 +74,7 @@ To perform a major upgrade from 8.x, the required starting version depends on th
 While 8.19 is the final minor release in the 8.x series, 8.18 was released at the same time as 9.0, enabling a supported upgrade path between the 8.18.x and 9.0.x series. This compatibility also applies to other features and clients.
 ::::
 
-The following upgrade paths from 8.x are valid for reaching the latest {{version.stack}} release:
-
-* Versions prior to 8.18 → 8.19.x → {{version.stack}} *(recommended)*
-* Versions prior to 8.18 → 8.18.x → 9.0.x → {{version.stack}}
+If you're upgrading to the current {{version.stack}} release from an earlier 8.x version, first upgrade to the latest available 8.19 release.
 
 #### Ingest tools and clients considerations
 
