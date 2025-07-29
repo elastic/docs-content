@@ -41,7 +41,7 @@ Providing this secret is sufficient to use your own certificate if it is from a 
 
     * Set `serviceMonitor.insecureSkipVerify` to `false` to enable TLS validation.
     * Set `serviceMonitor.caSecret` to the name of an existing Kubernetes secret within the Prometheus namespace that contains the CA in PEM format in a file called `ca.crt`.
-    * Set the `spec.secrets` field of the `Prometheus` custom resource, or `prometheus.prometheusSpec.secrets` when using the Helm chart such that the CA secret is mounted into the Prometheus pod at `serviceMonitor.caMountDirectory` (assuming you are using the Prometheus operator). See the [ECK Helm chart values file](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/deploy/eck-operator/values.yaml) for more information.
+    * Set the `spec.secrets` field of the `Prometheus` custom resource, or `prometheus.prometheusSpec.secrets` when using the Helm chart such that the CA secret is mounted into the Prometheus pod at `serviceMonitor.caMountDirectory` (assuming you are using the Prometheus operator). See the [ECK Helm chart values file](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/deploy/eck-operator/values.yaml) for more information.
 
 
 Refer to [](k8s-prometheus-requirements.md) for more information on creating the CA secret.
@@ -184,7 +184,7 @@ EOF
 By default a self-signed certificate will be generated for use by the metrics endpoint. If you want to use your own TLS certificate for the metrics endpoint you will need to follow the previous instructions to enable secure metrics as well as the following steps:
 
 1. Create a `Secret` containing the TLS certificate and TLS private key. The following keys are supported within the secret:
-   
+
    * `tls.crt` - The PEM-encoded TLS certificate
    * `tls.key` - The PEM-encoded TLS private key
 
