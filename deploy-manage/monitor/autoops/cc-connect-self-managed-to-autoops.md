@@ -9,9 +9,9 @@ navigation_title: Connect your self-managed cluster
 
 # Connect your self-managed cluster to AutoOps
 
-To use AutoOps with your self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. After you choose to connect AutoOps to your self-managed cluster, an installation wizard will guide you through the steps of installing {{agent}} to send metrics from your self-managed cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your self-managed cluster to AutoOps in {{ecloud}}.  
 
-Complete the steps in the following subsections to connect your cluster to AutoOps. The setup takes about 10 minutes.
+Complete the steps in the following subsections to connect your cluster to AutoOps. The connection process takes about 10 minutes.
 
 ## Prerequisites
 
@@ -20,18 +20,83 @@ Ensure your system meets the following requirements before proceeding:
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol).
 * You have an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [free trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics outside your organization to {{ecloud}}.
-* You have a dedicated user with the following permissions to set up {{agent}}:
 
-    | Setting | Privileges |
+## Connect to AutoOps
+
+:::{note}
+:::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
+:::
+:::
+
+:::::{tab-set}
+:group: existing-or-new-cloud-account
+
+::::{tab-item} Existing account
+:sync: existing
+
+If you already have an {{ecloud}} account:
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. On your home page, in the **Connected clusters** section, select **Connect self-managed cluster**. 
+3. On the **Connected clusters** page, select **Accept and continue**. This button only appears the first time you connect a cluster.
+4. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
+::::
+
+::::{tab-item} New account
+:sync: new
+
+If you don’t have an existing {{ecloud}} account: 
+1. Sign up for an account. 
+<!-- 
+Add cloud-connected marketing link to sign up when available
+ -->
+2. Follow the prompts on your screen to create an organization.
+3. Go through the installation wizard as detailed in the following sections.
+::::
+
+:::::
+
+### Select installation method
+
+This is the first step of the installation wizard. Your cluster ships metrics to AutoOps with the help of {{agent}}. 
+
+Select one of the following methods to install {{agent}}:
+
+* Kubernetes
+* Docker
+* Linux
+* Windows
+
+:::{important} 
+Using AutoOps for your self-managed cluster requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
+:::
+
+### Configure agent
+
+Depending on your selected installation method, you may have to provide the following information to create the installation command:
+
+* **{{es}} endpoint URL**: The agent will use this URL to identify which cluster you want to connect to AutoOps.
+* **Preferred authentication method**: Choose one of the following:
+:::::{tab-set}
+:group: api-key-or-basic
+
+::::{tab-item} API key
+:sync: api-key
+
+With this authentication method, you need to [create an API key](/solutions/observability/apm/grant-access-using-api-keys.md) with the following privileges to grant access to your cluster:
+
+| Setting | Privileges |
     | --- | --- |
     | Cluster privileges | `monitor`, `read_ilm`, and `read_slm` |
-    | Index privileges | `*` indices: `monitor`, `view_index_metadata`  |
+    | Index privileges | Indices: `*` <br> `monitor`, `view_index_metadata`, `allow_restricted_indices: true`  |
 
-<!-- Commenting out because I'm waiting for PM clarification
-## Create a role for AutoOps
+::::
 
-On your self-managed cluster, go to **Developer tools** from the navigation menu. In **Console**, run the following command:
+::::{tab-item} Basic
+:sync: basic
 
+With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with the these privileges:
+
+* (Recommended) On your self-managed cluster, go to **Developer tools** from the navigation menu. In **Console**, run the following command:
 ```js
 POST /_security/role/autoops
 {
@@ -62,44 +127,18 @@ POST /_security/role/autoops
   }
 }
 ```
--->
-## Connect to AutoOps
+* Alternatively, manually assign the following privileges in your account:
 
-:::{note}
-:::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
+    | Setting | Privileges |
+    | --- | --- |
+    | Cluster privileges | `monitor`, `read_ilm`, and `read_slm` |
+    | Index privileges | Indices: `*` <br> `monitor`, `view_index_metadata`  |
+:::{{note}}
+If you manually assign privileges, you won't be able to allow {{agent}} to access restricted indices.
 :::
-:::
+::::
 
-1. Go to your {{ecloud}} home page.
-    * If you already have an {{ecloud}} account, log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body). 
-    * If you don’t have an {{ecloud}} account, [sign up](/deploy-manage/deploy/elastic-cloud/create-an-organization.md) and create an organization.
-2. In the **Connected clusters** section, select **Connect self-managed cluster**. 
-3. On the **Connected clusters** page, select **Accept and Continue**. This button only appears the first time you connect a cluster.
-3. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
-
-### Select installation method
-
-Your cluster ships metrics to AutoOps with the help of {{agent}}. 
-
-:::{important} 
-Using AutoOps for your self-managed cluster requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
-:::
-
-Select one of the following methods to install {{agent}}:
-
-* Kubernetes
-* Docker
-* Linux
-* Windows
-
-### Configure agent
-
-Depending on your selected installation method, you may have to provide the following information to create the installation command:
-
-* **{{es}} endpoint URL**: The agent will use this URL to identify which cluster you want to connect to AutoOps.
-* **Preferred authentication method**: Choose from the following:
-    * **API key**: [Create an API key](/solutions/observability/apm/grant-access-using-api-keys.md) to grant access to the cluster.
-    * **Basic**: Assign a username and password to a user with the required [permissions](#prerequisites).
+:::::
 * **System architecture**: Select the system architecture of the machine running the agent.
 * **Metrics storage location**: Select where to store your metrics data from the list of available cloud service providers and regions.
 
@@ -117,7 +156,7 @@ The wizard will generate an installation command based on your configuration. De
 * Windows
 
 :::{tip}
-If the machine where your self-managed cluster is running experiences technical issues, shipping metrics to AutoOps will be interrupted. We recommend installing the agent on a separate machine.
+We recommend installing the agent on a separate machine from the one where your self-managed cluster is running.
 :::
 
 Complete the following steps to run the command:
