@@ -49,18 +49,32 @@ Additionally, if you're using a self-managed orchestration platform such as {{ec
 
 You can upgrade to a higher version if the target version was released *after* your current version. Upgrades to versions released *before* your current version are not supported, even if the version number is higher. Refer to [out-of-order releases](/deploy-manage/upgrade/deployment-or-cluster.md#out-of-order-releases) for more information.
 
-% Uncomment these examples when 9.1.1 and 9.0.5 are released. We currently don't have enough 9.x versions for meaningful examples.
-<!--
 For example:  
 - ✅ Upgrade allowed: From 9.0.4 to 9.1.0 (9.1.0 released *after* 9.0.4)
-- ❌ Not allowed: From 9.0.5 to 9.1.0 (9.1.0 released *before* 9.0.5)
+- ❌ Not allowed: From 9.0.5 to 9.1.0 (9.1.0 released *before* 9.0.5) → wait for 9.1.1 to be released
+<!--
+Uncomment this examples when 9.1.1 is released.
 - ✅ Upgrade allowed: From 9.0.5 to 9.1.1 (9.1.1 released *after* 9.0.5)
 -->
 
+### Upgrade paths from 8.x [upgrade-paths-8.x]
+
+To perform a major upgrade from 8.x, the required starting version depends on the target release:
+
+- To upgrade to the **9.0.x series**, you must be on **8.18.x**.
+- To upgrade to **9.1.0 or later**, you must be on **8.19.x**, which is the latest minor release of the 8.x series.
+
 ::::{note}
-Major upgrades must be performed from the latest minor version of the previous major. For example, to upgrade to {{stack-version}}, you need to be on 8.19 first.
+While 8.19 is the final minor release in the 8.x series, 8.18 was released at the same time as 9.0, enabling a supported upgrade path between the 8.18.x and 9.0.x series. This compatibility also applies to other features and clients.
+::::
+
+The following upgrade paths from 8.x are valid for reaching the latest {{stack-version}} release:
+
+* Versions prior to 8.18 → 8.19.x → {{stack-version}} *(recommended)*
+* Versions prior to 8.18 → 8.18.x → 9.0.x → {{stack-version}}
+
+#### Ingest tools and clients considerations
 
 For flexible upgrade scheduling, 8.19 {{agent}}, {{beats}}, and {{ls}} are compatible with 9.x {{es}}.
 
-By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} cluster.
-::::
+By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x cluster.
