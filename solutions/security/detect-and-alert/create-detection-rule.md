@@ -92,7 +92,10 @@ To create or edit {{ml}} rules, you need:
 * The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * The [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 * The selected {{ml}} job to be running for the rule to function correctly.
+::::
 
+::::{tip}
+For an overview of using {{ml}} with {{elastic-sec}}, refer to [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 ::::
 
 
@@ -120,6 +123,9 @@ To create or edit {{ml}} rules, you need:
 
 5. Click **Continue** to [configure basic rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-basic-params).
 
+::::{tip}
+To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-and-alert/rule-exceptions.md).
+::::
 
 ## Create a threshold rule [create-threshold-rule]
 
