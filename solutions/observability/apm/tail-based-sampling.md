@@ -74,6 +74,18 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 | APM Server binary | `apm-server.sampling.tail.interval` |
 | Fleet-managed | `Interval` |
 
+### TTL [sampling-tail-ttl-ref]
+
+Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases storage space requirements. Should be at least 2 * Interval (`apm-server.sampling.tail.interval`).
+
+Default: `30m` (30 minutes). (duration)
+
+|     |     |
+| --- | --- |
+| APM Server binary | `apm-server.sampling.tail.ttl` |
+| Fleet-managed {applies_to}`stack: ga 9.1` | `TTL` |
+
+
 ### Policies [sampling-tail-policies-ref]
 
 Criteria used to match a root transaction to a sample rate.
