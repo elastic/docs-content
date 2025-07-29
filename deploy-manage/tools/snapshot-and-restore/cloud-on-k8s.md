@@ -484,7 +484,7 @@ spec:
       "settings": {
         "bucket": "es-repo",
         "path_style_access": true,	<1>
-        "endpoint": "https://mys3service.default.svc.cluster.local/" <2>
+        "endpoint": "<my-s3service-url>.default.svc.cluster.local/" <2>
       }
     }
     ```

@@ -122,6 +122,7 @@ toc:
       - file: transforms/transform-limitations.md
   - file: elastic-inference.md
     children:
+      - file: elastic-inference/eis.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
@@ -274,6 +275,7 @@ toc:
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
+      - file: visualize/alert-panels.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md

@@ -36,7 +36,7 @@ Instead of trying to pull the image from `docker.elastic.co/beats/elastic-agent:
 
 **Applies to: {{agent}} 8.17.8, 8.18.3, and 9.0.3**
 
-On July 8, 2025, a known issue was discovered in Elastic Defend's network driver that may lead to kernel pool corruption, resulting in bug checks (BSODs) on Windows systems with a large number of long-lived network connections that remain inactive for 30+ minutes. This issue has only been observed on Windows Server.
+On July 8, 2025, a known issue was discovered in Elastic Defend's network driver that may lead to kernel pool corruption, resulting in bug checks (BSODs) on Windows systems with a large number of long-lived network connections that remain inactive for 30+ minutes.
 
 The system may bug check with any of a variety of codes such as `SYSTEM_SERVICE_EXCEPTION` or `PAGE_FAULT_IN_NONPAGED_AREA`.
 
@@ -51,6 +51,10 @@ If you're on 8.18.3, upgrade to the fixed version: [8.18.3+build202507101319](ht
 If you're on 8.17.8, downgrade to 8.17.7 or install 8.17.9 once it becomes available.
 
 If you're unable to upgrade or downgrade, set `advanced.kernel.network: false` in your Defend advanced policy.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.0.4
 :::
 
 :::{dropdown} Security AI Assistant Knowledge Base settings UI not displaying

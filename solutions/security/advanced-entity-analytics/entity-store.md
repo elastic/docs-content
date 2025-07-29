@@ -42,8 +42,10 @@ To enable the entity store:
 1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Entity Store** page, turn the toggle on.
 
-Once you enable the entity store, the Entity Analytics dashboard displays the [**Entities**](../dashboards/entity-analytics-dashboard.md#entity-entities) section.
+Once you enable the entity store, the **Entities** section appears on the following pages:
 
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: unavailable` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
+* [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 ## Clear entity store data [clear-entity-store]
 
