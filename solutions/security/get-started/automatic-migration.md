@@ -67,10 +67,10 @@ You can ingest your data before migrating your rules, or migrate your rules firs
    :screenshot:
    ::::
 
-8. Use the **Add SIEM data with Integrations** section to set up data ingest from third-party sources. If at least one rule migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom creations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
+8. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rule migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom creations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
 
    ::::{image} /solutions/images/security-siem-migration-integrations-panel.png
-   :alt: The add integations panel.
+   :alt: The add integrations panel.
    :width: 850px
    :screenshot:
    ::::
