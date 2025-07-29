@@ -13,12 +13,12 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-07282025-features-enhancements]
 * Enhances the integrations overview by rendering an accordion for sample events in Data ingestion and Fleet [#228799]({{kib-pull}}228799)
-* Displays related dashboard tags directly in the UI [#228902]({{kib-pull}}228902)
-* Adds the `kibana.alert.grouping` field to ES Query rule definitions [#228580]({{kib-pull}}228580)
+* Displays related dashboard tags directly in the {{obs-serverless}} UI [#228902]({{kib-pull}}228902)
+* Adds the `kibana.alert.grouping` field to {{esql}} rule definitions [#228580]({{kib-pull}}228580)
 
 ### Fixes [serverless-changelog-07282025-fixes]
 * Fixes incorrect handling of the `pollEnabled` configuration in reporting [#228707]({{kib-pull}}228707)
-* Fixes an issue in Firefox where scrolling was disabled in the *Lens* editor flyout [#228625]({{kib-pull}}228625)
+* Fixes an issue in Firefox where scrolling was disabled in the **Lens** editor flyout [#228625]({{kib-pull}}228625)
 * Fixes an issue in Firefox that prevented scrolling in the **ES|QL** inline editor in Discover [#228849]({{kib-pull}}228849)
 * Fixes an issue in *Lens* reports where PNG and PDF exports were clipped or misaligned [#228603]({{kib-pull}}228603)
 * Corrects how the **Body cell lines** display option is handled when the default value is `-1` [#228697]({{kib-pull}}228697)
@@ -30,7 +30,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes the incorrect background color in **Build Block Alerts** rows [#228226]({{kib-pull}}228226)
 * Simplifies the **Misconfigurations** index pattern logic [#227995]({{kib-pull}}227995)
 * Fixes an issue where **Security Assistant** settings landed on the wrong page when using a basic license [#229163]({{kib-pull}}229163)
-* Removes use of `removeIfExists` in the sync task scheduler [#228783]({{kib-pull}}228783)
+* Removes the use of `removeIfExists` in the sync task scheduler [#228783]({{kib-pull}}228783)
 * Fixes the width of the patterns field selector menu [#228791]({{kib-pull}}228791)
 * Ensures the Gemini Vertex AI documentation link is available in the AI Connector [#228348]({{kib-pull}}228348)
 * Fixes a skipped autocomplete test in the console [#229274]({{kib-pull}}229274)
