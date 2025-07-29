@@ -64,15 +64,21 @@ POST /_query?format=txt
 The URL parameter takes precedence over the HTTP headers. If neither is specified then the response is returned in the same format as the request.
 ::::
 
+::::{tip}
+In the "Tabular" formats, only the resulting data will be returned. Other response fields will be missing.
+Use them when you want a quick view of the results.
+::::
+
 
 | `format` | HTTP header | Description |
 | --- | --- | --- |
-| Human readable |
-| `csv` | `text/csv` | [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) |
+| Structured |
 | `json` | `application/json` | [JSON](https://www.json.org/) (JavaScript Object Notation) human-readable format |
+| `yaml` | `application/yaml` | [YAML](https://en.wikipedia.org/wiki/YAML) (YAML Ain’t Markup Language) human-readable format |
+| Tabular |
+| `csv` | `text/csv` | [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) |
 | `tsv` | `text/tab-separated-values` | [Tab-separated values](https://en.wikipedia.org/wiki/Tab-separated_values) |
 | `txt` | `text/plain` | CLI-like representation |
-| `yaml` | `application/yaml` | [YAML](https://en.wikipedia.org/wiki/YAML) (YAML Ain’t Markup Language) human-readable format |
 | Binary |
 | `cbor` | `application/cbor` | [Concise Binary Object Representation](https://cbor.io/) |
 | `smile` | `application/smile` | [Smile](https://en.wikipedia.org/wiki/Smile_(data_interchange_format)) binary data format similarto CBOR |
