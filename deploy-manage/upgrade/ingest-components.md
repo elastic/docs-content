@@ -14,7 +14,7 @@ Once you've successfully [upgraded your deployment or cluster](/deploy-manage/up
 1. {{agent}}: [Upgrade instructions](../../reference/fleet/upgrade-elastic-agent.md)
 
     ::::{note}
-    If you plan to upgrade Fleet-managed {{agent}}s, start by upgrading the agent running as the {{fleet-server}}.
+    If you plan to upgrade {{fleet}}-managed {{agent}}s, start by upgrading the agent running as the {{fleet-server}}.
     ::::
 
 2. {{beats}}: [Upgrade instructions](beats://reference/libbeat/upgrading.md)

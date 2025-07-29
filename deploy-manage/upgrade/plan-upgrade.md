@@ -48,13 +48,13 @@ Before upgrading, verify that your current environment supports the version you 
 
 * **{{es}} upgrade path**: Check the [upgrade paths](../upgrade.md#upgrade-paths) to determine whether you must upgrade through an intermediate version (such as 8.19.x before moving to 9.x), or if you can upgrade directly to the target version.
 
-* **OpenJDK compatibility and FIPS compliance**: By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) within each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). 
+* **OpenJDK compatibility and FIPS compliance**: By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) in each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). 
 
-  If you’re running {{es}} in FIPS 140-2 mode, we recommend using  [Bouncy Castle](https://www.bouncycastle.org/java.html) as a Java security provider when running {{es}}.
+  If you’re running {{es}} in FIPS 140-2 mode, we recommend using [Bouncy Castle](https://www.bouncycastle.org/java.html) as a Java security provider when running {{es}}.
 
 ## Conduct a component inventory
 
-When you plan to upgrade your deployment, it is very important to map all the components that are being used on the {{stack}}, and check if they are compatible with the {{es}} version you plan to upgrade to by reviewing the [Product compatibility support matrix](https://www.elastic.co/support/matrix#matrix_compatibility).
+When you plan to upgrade your deployment, it is very important to map all the components that are being used in the {{stack}}, and check if they are compatible with the {{es}} version you plan to upgrade to by reviewing the [Product compatibility support matrix](https://www.elastic.co/support/matrix#matrix_compatibility).
 
 ::::{note}
 If any of your ingest components does not support the {{es}} version you plan to upgrade to, you need to upgrade that component to a version that supports the desired {{es}} version before upgrading {{es}}.
@@ -62,7 +62,7 @@ If any of your ingest components does not support the {{es}} version you plan to
 
 As part of the upgrade plan, you will also have to determine if you want to upgrade the ingest components to the same version as {{es}}, after the upgrade of {{es}} and {{kib}}.
 
-While not comprehensive, here’s a list of components you should check:
+While not comprehensive, here’s a list of the components you should check:
 
 * {{es}}
 * {{es}} Hadoop
@@ -111,8 +111,8 @@ In general, you should upgrade the components of your {{stack}} in the following
 
 1. {{es}}
 2. {{kib}} (must be kept aligned with the {{es}} version)
-3. Fleet Server and Elastic APM (if used)
-4. Ingest tools (Beats, Elastic Agent, Logstash, etc.) and {{es}} client libraries
+3. {{fleet-server}} and Elastic APM (if used)
+4. Ingest tools ({{beats}}, {{agent}}, {{ls}}, etc.) and {{es}} client libraries
 
 If your deployment runs on {{ech}} or {{ece}}, the platform handles the upgrade and component order automatically in a single plan execution. You only need to upgrade any external ingest tools afterward.
 
@@ -124,7 +124,7 @@ The monitoring cluster should be running the same version, or a newer one, than 
 
 ## Example of an upgrade plan
 
-Let's assume you are running all {{stack}} components in version 8.14 and your main goal is to upgrade {{es}} and {{kib}} to the latest {{version.stack}}, without requiring to upgrade the ingest components (Beats, Elastic Agent, and Logstash) except when required by the [upgrade paths](../upgrade.md#upgrade-paths).
+Let's assume you are running all {{stack}} components in version 8.14 and your main goal is to upgrade {{es}} and {{kib}} to the latest {{version.stack}}, without requiring to upgrade the ingest components ({{beats}}, {{agent}}, and {{ls}}) except when required by the [upgrade paths](../upgrade.md#upgrade-paths).
 
 The minimum steps your plan should include are:
 

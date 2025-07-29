@@ -18,7 +18,7 @@ products:
 
 Upgrading to the latest version provides access to the newest Elastic features, security patches, performance improvements, and bug fixes. These updates reduce costs, speed up threat response, and improve investigative and analytical data tools.
 
-When Elastic releases new versions, older versions reach their end of life on a set schedule. To keep your deployment supported, stay up to date. For more information, refer to [Product End of Life Dates](https://www.elastic.co/support/eol).
+As Elastic releases new versions, older versions of Elastic products reach their end of life on a set schedule. To keep your deployment supported, stay up to date. For more information, refer to [Product End of Life Dates](https://www.elastic.co/support/eol).
 
 ::::{note}
 With [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), upgrades are fully managed by Elastic. Users automatically receive the latest features and improvements, with no need to plan or perform upgrade steps.
@@ -26,7 +26,7 @@ With [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), u
 
 The upgrade procedure depends on how your deployment is managed. If you're using {{ech}} or {{ece}}, upgrades can often be performed with a single click in the {{ecloud}} UI. For self-managed deployments, upgrades must be carried out manually using a rolling upgrade process, upgrading the nodes one by one to minimize downtime and ensure cluster stability.
 
-This section provides guidance to help you plan and safely perform upgrades of your Elastic Stack components, with a primary focus on {{es}} and {{kib}} as the core of the stack. It also covers upgrades for orchestration platforms like {{ece}} and {{eck}}, as well as related components such as APM, Beats, Elastic Agent, and Logstash.
+This section provides guidance to help you plan and safely perform upgrades of your {{stack}} components, with a primary focus on {{es}} and {{kib}} as the core of the stack. It also covers upgrades for orchestration platforms like {{ece}} and {{eck}}, as well as related components such as APM, {{beats}}, {{agent}}, and {{ls}}.
 
 :::{important}
 In {{stack}} 9.0.0 and beyond, Enterprise Search is unavailable. For more information, refer to [Migrating to 9.x from Enterprise Search 8.x versions](https://www.elastic.co/guide/en/enterprise-search/8.18/upgrading-to-9-x.html).
@@ -47,7 +47,7 @@ Upgrading your Elastic cluster or deployment involves several stages, including 
     - [Upgrade deployments on {{eck}}](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)
     - [Upgrade self-managed clusters](/deploy-manage/upgrade/deployment-or-cluster/self-managed.md)
 
-- [Upgrade ingest components](./upgrade/ingest-components.md): Covers supporting components such as Beats, Elastic Agent, Logstash, and APM Server.
+- [Upgrade ingest components](./upgrade/ingest-components.md): Covers supporting components such as {{beats}}, {{agent}}, {{ls}}, and APM Server.
 
 Additionally, if you're using a self-managed orchestration platform such as {{ece}} or {{eck}}, refer to [Upgrade your ECE or ECK orchestrator](/deploy-manage/upgrade/orchestrator.md) to keep the orchestrator up to date.
 
