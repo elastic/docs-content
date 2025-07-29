@@ -71,7 +71,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 4. Save and apply the settings.
 5. Click the **Agents** tab and follow the in-product instructions to add a {{fleet}} server:
 
-    :::{image} /solutions/images/observability-add-fleet-server.png
+    :::{image} /reference/fleet/images/observability-add-fleet-server.png
     :alt: In-product instructions for adding a {{fleet-server}}
     :screenshot:
     :::
@@ -110,14 +110,14 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Elastic APM**.
 
-    :::{image} /solutions/images/observability-kibana-fleet-integrations-apm.png
+    :::{image} /reference/fleet/images/observability-kibana-fleet-integrations-apm.png
     :alt: {{fleet}} showing APM integration
     :screenshot:
     :::
 
 3. Click **Add Elastic APM**.
 
-    :::{image} /solutions/images/observability-kibana-fleet-integrations-apm-overview.png
+    :::{image} /reference/fleet/images/observability-kibana-fleet-integrations-apm-overview.png
     :alt: {{fleet}} showing APM integration overview
     :screenshot:
     :::
@@ -132,7 +132,7 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 6. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an APM integration policy for the configuration you just specified.
 7. To view the new policy, click **Agent policy 1**.
 
-    :::{image} /solutions/images/observability-apm-agent-policy-1.png
+    :::{image} /reference/fleet/images/observability-apm-agent-policy-1.png
     :alt: {{fleet}} showing apm policy
     :screenshot:
     :::
@@ -787,7 +787,7 @@ For more information on how to combine Elastic and OpenTelemetry, see [OpenTelem
 
 Back in {{kib}}, under {{observability}}, select APM. You should see application performance monitoring data flowing into the {{stack}}!
 
-:::{image} /solutions/images/observability-kibana-apm-sample-data.png
+:::{image} /reference/fleet/images/observability-kibana-apm-sample-data.png
 :alt: Applications UI with data
 :screenshot:
 :::
