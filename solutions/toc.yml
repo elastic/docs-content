@@ -89,6 +89,7 @@ toc:
               - file: search/search-applications/search-application-client.md
       - file: search/apis-and-tools.md
       - file: search/ai-assistant.md
+      - file: search/query-rules-ui.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -133,6 +134,7 @@ toc:
                     children:
                       - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
                       - file: observability/apm/collect-metrics.md
+                      - file: observability/apm/edot-sdks-central-configuration.md
                       - file: observability/apm/limitations.md
                       - file: observability/apm/attributes.md
                       - file: observability/apm/data-stream-routing.md
