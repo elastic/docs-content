@@ -6,7 +6,7 @@ applies_to:
   serverless:
 products:
   - id: cloud-serverless
-  - id: edot-sdks
+  - id: edot-sdk
   - id: edot-collector
 ---
 

@@ -28,7 +28,7 @@ To get started, select the deployment model that best suits your needs:
 serverless:
 ```
 
-Elastic Cloud Serverless is a fully managed solution that allows you to deploy and use Elastic for your use cases without managing the underlying infrastructure. Refer to [**Get started with traces and APM**](/solutions/observability/apm/get-started-serverless) for more information.
+Elastic Cloud Serverless is a fully managed solution that allows you to deploy and use Elastic for your use cases without managing the underlying infrastructure. Refer to [**Get started with traces and APM**](/solutions/observability/apm/get-started-serverless.md) for more information.
 
 :::{image} /solutions/images/observability-apm-otel-distro-serverless.png
 :alt: APM data ingest path (Serverless)
