@@ -456,19 +456,113 @@ In the legend, click the field, then choose one of the following options:
 * **Filter out value** — Applies a filter that removes the field data from the visualization.
 
 
-### Configure the visualization components [configure-the-visualization-components]
+## Customize the visualization display [configure-the-visualization-components]
 
 Each visualization type comes with a set of components that you access from the editor toolbar.
 
 The following component menus are available:
 
-* **Visual options** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
+* **Appearance** — Specifies how to display area, line, and bar chart options. For example, you can specify how to display the labels in bar charts.
 * **Labels** — Specifies how to display the labels for donut charts, pie charts, and treemaps.
 * **Legend** — Specifies how to display the legend. You can choose to display the legend inside or outside the visualization, truncate the legend values when they’re too long, and [select additional statistics to show](#customize-visualization-legend).
 * **Left axis**, **Bottom axis**, and **Right axis** — Specify how you want to display the chart axes. For example, add axis labels and change the orientation and bounds.
 
+### Visualization appearance options [customize-visualization-appearance]
 
-#### Customize a visualization legend [customize-visualization-legend]
+When creating or editing a visualization, you can customize several appearance options. To do that, look for the {icon}`brush` icon.
+
+These options can vary depending on the type of chart.
+
+#### Area, Bar, and Line charts
+
+**Area fill opacity**
+:   For **Area** charts. Opacity of the area fill. Defaults to `0.3`.
+
+**Bar orientation**
+:   For **Bar** charts. Choose between **Horizontal** and **Vertical**.
+
+**Line interpolation**
+:   For **Line** charts. Choose how to interpolate the line between data points from the available options: **Straight** (default), **Smooth**, and **Step**.
+
+**Missing values**
+:   For **Area** and **Line** charts. Choose between **Hide**, **Zero**, **Linear**, **Last**, and **Next**. This option controls how gaps in data appear on the chart. By default, gaps are hidden.
+
+    _Missing values_ include empty buckets and metrics: Buckets without documents or metrics that returned `null` due to their operation and data content.
+    
+    ```{note}
+    You can only use this option when the **Include empty rows** option of the chart is enabled or when a metric produces a null bucket. For example, if a moving average finds empty buckets.
+    ```
+
+    * **Hide**: Don't show gaps in data.
+      
+      ![Hide missing values](../images/charts-gaps-fill-hide.png "Hide missing values =50%")
+
+    * **Zero**: Fill gaps by connecting starting and ending data points to zero.
+      
+      ![Fill gaps to zero](../images/charts-gaps-fill-zero.png "Fill gaps to zero =50%")
+
+    * **Linear**: Fill gaps by connecting related starting and ending data points together with a direct line.
+      
+      ![Fill gaps with a direct line](../images/charts-gaps-fill-linear.png "Fill gaps with a direct line =50%")
+    
+    * **Last**: Fill gaps between data points with a horizontal or vertical line that uses the last ending point value, when available, to determine its position.
+      
+      ![Fill gaps with a straight line from last known data point](../images/charts-gaps-fill-last.png "Fill gaps with a straight line from last known data point =50%")
+
+    * **Next**: Fill gaps between data points with a horizontal or vertical line that uses the next starting point value, when available, to determine its position.
+      
+      ![Fill gaps with a straight line from next known data point](../images/charts-gaps-fill-next.png "Fill gaps with a straight line from next known data point =50%")
+
+    **End values**
+    :   If you've chosen to show missing values, you can also decide to extend data series to the edge of the chart. By default, end values are hidden.
+        
+        * **Hide**: Don't extend series to the edge of the chart.
+        * **Zero**: Extend series as zero to the edge of the chart.
+        * **Nearest**: Extend series with their first or last value to the edge of the chart.
+
+    **Show as dotted line**
+    :   If you've chosen to show missing values, you can turn on this option to show gaps as a dotted line.
+
+**Point visibility** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
+:   For **Area** and **Line** charts. Use this option to show or hide data points. Set to `Auto` by default: Points are visible unless the distance between them is too short.
+
+#### Tables
+
+**Density** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
+:   Make the table more or less compact. Choose between **Compact**, **Normal** (default), and **Expanded**.
+
+**Max header cell lines**
+:   The maximum number of lines that header cells can span over. If the content exceeds this limit and is truncated, an ellipsis indicates it.
+
+**Body cell lines**
+:   The fixed number of lines that body cells span over. If the content exceeds this limit and is truncated, an ellipsis indicates it.
+
+**Paginate table**
+:   Turn on this option to paginate the table. Pagination shows when the table contains at least 10 items, and lets you define how many items to display per page. When turned off, you can scroll through all items.
+
+#### Pie charts
+
+**Donut hole**
+:   Display a **Small**, **Medium**, or **Large** hole at the center of the pie chart. Defaults to **None**.
+
+#### Gauge charts
+
+**Gauge shape**
+:   Define the shape of the gauge. Choose between **Linear**, **Minor arc**, **Major arc**, and **Circle**. When set to **Linear**, you can choose to display the chart horizontally or vertically.
+
+#### Tag clouds
+
+**Font size**
+:   Define the range of font sizes used in the tag cloud. The font size is based on the number of times a tag appears in the data.
+
+**Orientation**
+:   Define the orientation of the tags. Choose **Single**, **Right angled**, and **Multiple**.
+
+**Show label**
+:   Turn on this option to show a label for the tag cloud. You can define this label when defining the tags to show for the visualization, by customizing the **Name** field.
+
+
+### Customize the visualization legend [customize-visualization-legend]
 
 When creating or editing a visualization, you can customize the way the legend gets displayed, and the data it displays. To do that, look for the ![Legend icon](/explore-analyze/images/kibana-legend-icon.svg "") icon.
 
@@ -522,7 +616,7 @@ For example, if the metric plotted in the chart is `Median(system.memory)` and t
 :::
 
 
-### Explore the data in Discover [explore-lens-data-in-discover]
+## Explore the data in Discover [explore-lens-data-in-discover]
 
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
 
@@ -531,7 +625,7 @@ To get started, click **Explore data in Discover** in the toolbar.
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 
 
-### View the visualization data and requests [view-data-and-requests]
+## View the visualization data and requests [view-data-and-requests]
 
 To view the data included in the visualization and the requests that collected the data, use the **Inspector**.
 
@@ -548,7 +642,7 @@ To view the data included in the visualization and the requests that collected t
 
 
 
-### Save and add the panel [save-the-lens-panel]
+## Save and add the panel [save-the-lens-panel]
 
 Save the panel to the **Visualize Library** and add it to the dashboard, or add it to the dashboard without saving.
 
