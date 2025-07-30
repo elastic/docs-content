@@ -21,7 +21,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 **Applies to: {{agent}} 9.0.0, 9.0.1, 9.0.2, 9.0.3, 9.1.0**
 
-On July 2, 2025, a known issue was discovered where after a scheduled {{agent}} upgrade is cancelled, {{agent}} remains in an `Upgrade scheduled` state, and attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+On July 2, 2025, a known issue was discovered where an {{agent}} remains in an `Upgrade scheduled` state when a scheduled {{agent}} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
 
 For more information, check [Issue #8778](https://github.com/elastic/elastic-agent/issues/8778).
 
