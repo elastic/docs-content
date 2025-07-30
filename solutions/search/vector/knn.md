@@ -777,10 +777,10 @@ POST passage_vectors/_search
 }
 ```
 
-Below we have two filters: one over nested metadata
-and another over the top level metadata. For scoring parents' documents,
-this query only considers vectors that have "paragraph.language" set to "EN" 
-and whose parents have creation time within the request range.
+The following query has two filters: one over nested metadata and
+another over the top-level metadata. When scoring parent documents, this
+query only considers vectors that have "paragraph.language" set to "EN"
+and whose parent documents were created within the specified range.
 
 ```console
 POST passage_vectors/_search
