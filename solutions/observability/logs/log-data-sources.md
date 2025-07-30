@@ -22,8 +22,8 @@ Adding indices to the `observability:logSources` setting that don't contain log 
 ::::{important}
 Using the `saved_objects` API to import log data sources has the following limitations:
 
-* To import the log data source, you need to import the entire **Advanced Settings** saved object, meaning you will be importing all advanced settings, not just the `logSources` setting.
-* This approach is backward compatible, but not forward compatible. You can't import the settings from an older version to a newer version.
+* To import the log data source, you need to import the entire **Advanced Settings** saved object, meaning you'll be importing all advanced settings, not just the `logSources` setting.
+* This approach is backward compatible, but not forward compatible. You cannot import the settings from an older version to a newer version.
 ::::
 
 To configure log data sources using the `saved_objects` API and the **Advanced Settings** saved object:
