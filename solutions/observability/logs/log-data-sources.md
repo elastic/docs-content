@@ -19,8 +19,16 @@ Adding indices to the `observability:logSources` setting that don't contain log 
 
 ## Configure log data sources using the `saved_objects` API
 
-To configure log data sources using an API, use the `saved_objects` API. To do this,
+::::{important}
+Using the `saved_objects` API to import log data sources has the following limitations:
 
-1. From **Stack Management** → **Saved Objects**, [export](/explore-analyze/find-and-organize/saved-objects.md) the log data views, which are stored as an `infrastructure-monitoring-log-view` saved object type, to use as a template.
-1. Modify the relevant data view fields in the exported JSON.
+* To import the log data source, you need to import the entire **Advanced Settings** saved object, meaning you will be importing all advanced settings not just the `logSources` setting.
+* This approach is backwards compatible, but not forwards compatible. You can't import the settings from an older version to a newer version.
+::::
+
+To configure log data sources using the `saved_objects` API and the **Advanced Settings** saved object:
+
+1. Go to **Saved Objects** from the navigation menu under **Management** or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. [Export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) the **Advanced Settings** saved object, to use as a template.
+1. Modify the `observability:logSources` setting and any other settings you want to update in the exported JSON.
 1. Import the saved object using the [import saved objects API]({{kib-apis}}/operation/operation-importsavedobjectsdefault).
