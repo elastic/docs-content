@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: all
-  serverless: all
+  stack: ga
+  serverless: ga
 products:
   - id: observability
 ---
