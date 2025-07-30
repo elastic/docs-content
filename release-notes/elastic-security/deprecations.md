@@ -16,6 +16,13 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.1.0 [elastic-security-9.1.0-deprecations]
+
+::::{dropdown} Removes default quick prompts
+Removes default quick prompts from the Security AI Assistant.
+For more information, refer to [#225536]({{kib-pull}}225536).
+::::
+
 ## 9.0.0 [elastic-security-900-deprecations]
 
 ::::{dropdown} Removes Defend for Containers (D4C)
