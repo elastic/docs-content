@@ -28,6 +28,6 @@ In order for AWS Security Hub data to appear in these workflows:
 :alt: AWS Security Hub integration settings showing the findings toggle
 :::
 
-::::{NOTE}
+::::{note}
 You can ingest data from the AWS Security Hub integration for other purposes without following these steps.
 ::::

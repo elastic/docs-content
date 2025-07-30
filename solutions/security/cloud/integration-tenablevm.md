@@ -15,16 +15,17 @@ This page explains how to make data from the Tenable Vulnerability Management in
 - **Findings page**: Data appears on the [Vulnerabilities](/solutions/security/cloud/findings-page-3.md) tab.
 - **Alert and Entity details flyouts** Applicable data appears in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section).
 
-::::{NOTE}
+::::{note}
 Data from this integration does not appear on the [CNVM dashboard](/solutions/security/cloud/cnvm-dashboard.md).
 ::::
 
 In order for Tenable VM data to appear in these workflows:
 
+- Ensure you have read privileges for the following index: `security_solution-*.vulnerability_latest`.
 - Follow the steps to [set up the Tenable VM integration](https://www.elastic.co/docs/reference/integrations/tenable_io).
 - ({{stack}} users) Ensure you're on at least v9.1.
-- Make sure the Tenable VM version is at least 6.5.0.
+- Make sure the Tenable VM version is at least 4.0.0.
 
-::::{NOTE}
+::::{note}
 You can ingest data from the Tenable VM integration for other purposes without following these steps.
 ::::
