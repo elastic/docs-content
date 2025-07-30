@@ -441,23 +441,23 @@ These options can vary depending on the type of chart.
 
     * **Hide**: Don't show gaps in data.
       
-      ![Hide missing values](../images/charts-gaps-fill-hide.png "title =50%")
+      ![Hide missing values](../images/charts-gaps-fill-hide.png "Hide missing values =50%")
 
     * **Zero**: Fill gaps by connecting starting and ending data points to zero.
       
-      ![Fill gaps to zero](../images/charts-gaps-fill-zero.png "title =50%")
+      ![Fill gaps to zero](../images/charts-gaps-fill-zero.png "Fill gaps to zero =50%")
 
     * **Linear**: Fill gaps by connecting related starting and ending data points together with a direct line.
       
-      ![Fill gaps with a direct line](../images/charts-gaps-fill-linear.png "title =50%")
+      ![Fill gaps with a direct line](../images/charts-gaps-fill-linear.png "Fill gaps with a direct line =50%")
     
     * **Last**: Fill gaps between data points with a horizontal or vertical line that uses the last ending point value, when available, to determine its position.
       
-      ![Fill gaps with a straight line from last known data point](../images/charts-gaps-fill-last.png "title =50%")
+      ![Fill gaps with a straight line from last known data point](../images/charts-gaps-fill-last.png "Fill gaps with a straight line from last known data point =50%")
 
     * **Next**: Fill gaps between data points with a horizontal or vertical line that uses the next starting point value, when available, to determine its position.
       
-      ![Fill gaps with a straight line from next known data point](../images/charts-gaps-fill-next.png "title =50%")
+      ![Fill gaps with a straight line from next known data point](../images/charts-gaps-fill-next.png "Fill gaps with a straight line from next known data point =50%")
 
     **End values**
     :   If you've chosen to show missing values, you can also decide to extend data series to the edge of the chart. By default, end values are hidden.
