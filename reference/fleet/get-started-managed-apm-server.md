@@ -10,6 +10,11 @@ products:
 
 # Fleet-managed APM Server [get-started-with-fleet-apm-server]
 
+Fleet is a web-based UI in {{kib}} that is used to centrally manage {{agent}}s. In this deployment model, use {{agent}} to spin up APM Server instances that can be centrally-managed in a custom-curated user interface.
+
+:::{image} /reference/fleet/images/observability-fm-ov.png
+:alt: APM Server fleet overview
+
 This guide will explain how to set up and configure a Fleet-managed APM Server.
 
 ## Prerequisites [_prerequisites_6]
