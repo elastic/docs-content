@@ -13,7 +13,7 @@ products:
 This page explains how to make data from the Rapid7 InsightVM integration (Rapid7) appear in the following places within {{elastic-sec}}:
 
 - **Findings page**: Data appears on the [Vulnerabilities](/solutions/security/cloud/findings-page-3.md) tab.
-- **Alert and Entity details flyouts** Applicable data appears in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section).
+- **Alert and Entity details flyouts**: Applicable data appears in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section).
 
 :::{note}
 Data from this integration does not appear on the [CNVM dashboard](/solutions/security/cloud/cnvm-dashboard.md).
@@ -22,7 +22,7 @@ Data from this integration does not appear on the [CNVM dashboard](/solutions/se
 In order for Rapid7 data to appear in these workflows:
 
 - Ensure you have read privileges for the following index: `security_solution-*.vulnerability_latest`.
-- Follow the steps to [set up the Rapid7 integration](https://www.elastic.co/docs/reference/integrations/tenable_io).
+- Follow the steps to [set up the Rapid7 integration](https://www.elastic.co/docs/reference/integrations/rapid7_insightvm).
 - ({{stack}} users) Ensure you're on at least v9.1.
 - Make sure the Rapid7 version is at least 2.0.0.
 
