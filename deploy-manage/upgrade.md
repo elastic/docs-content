@@ -77,6 +77,6 @@ If you're upgrading to the current {{version.stack}} release from an earlier 8.x
 
 #### Ingest tools and clients considerations
 
-For flexible upgrade scheduling, 8.19 {{agent}}, {{beats}}, and {{ls}} are compatible with 9.x {{es}}.
+For flexible upgrade scheduling, 8.19 {{agent}}, {{beats}}, and {{ls}} are compatible with all 9.x versions of {{es}}.
 
 By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x cluster.

@@ -108,7 +108,7 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
     If you're using 7.x and earlier, you may need to complete multiple upgrades to reach the latest 8.19 patch release before upgrading to 9.x. As an alternative method to upgrading the cluster, you can create a new 9.x deployment and reindex from the original cluster. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
 
     :::{note}
-    For flexible upgrade scheduling, 8.19.x {{beats}} and {{ls}} are compatible with 9.x {{es}}.
+    For flexible upgrade scheduling, 8.19.x {{agent}}, {{beats}} and {{ls}} are compatible with all 9.x versions of {{es}}.
 
     By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} server.
     :::
