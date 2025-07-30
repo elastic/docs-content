@@ -39,6 +39,10 @@ The following table compares features available in Observability Complete and Ob
 | **[Custom knowledge bases](/solutions/observability/observability-ai-assistant.md#obs-ai-kb-ui)** | ✅ | ❌ |
 | **[Synthetics testing and browser experience monitoring](/solutions/observability/synthetics/index.md)** | ✅ | ❌ |
 
+## Ingest data into a Logs Essentials project [obs-subscription-ingest]
+
+From the main navigation menu, select **Add data**. Select which logs you want to monitor and how you want to monitor them, then follow the instructions for your system.
+
 ## Upgrade from Observability Logs Essentials to Observability Complete [obs-subscription-upgrade]
 
 :::{warning}
@@ -51,7 +55,3 @@ To access the additional features available in Observability Complete, upgrade y
 1. Next to **Project features**, select **Edit**.
 1. Select **Observability Complete**.
 1. Select **Save** to complete the upgrade.
-
-## Ingest data into a Logs Essentials project [obs-subscription-ingest]
-
-From the main navigation menu, select **Add data**. Select which logs you want to monitor and how you want to monitor them, then follow the instructions for your system.
