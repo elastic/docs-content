@@ -16,13 +16,13 @@ products:
 ---
 # Prepare to upgrade
 
-When upgrading an existing cluster, you perform a major, minor, or patch upgrade. A minor upgrade, for example, takes you from version 9.0.0 to 9.1.0; a major upgrade from 8.19.0 to 9.1.0; and a patch upgrade from 9.0.0 to 9.0.4.
+This document describes the preparation steps for upgrading {{es}}, which vary depending on the type of upgrade. These steps follow the [upgrade planning](./plan-upgrade.md) phase, and should be completed before proceeding to [upgrade your deployment or cluster](./deployment-or-cluster.md).
+
+When upgrading an existing cluster, you perform a major, minor, or patch upgrade. A minor upgrade, for example, can take you from version 9.0.2 to 9.1.x; a major upgrade from 8.19.x to {{version.stack}}; and a patch upgrade from 9.0.1 to 9.0.4.
 
 :::{important}
 Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
 :::
-
-This document describes the preparation steps for upgrading {{es}}, which vary depending on the type of upgrade. These steps follow the [upgrade planning](./plan-upgrade.md) phase, and should be completed before proceeding to [upgrade your deployment or cluster](./deployment-or-cluster.md).
 
 ## Common preparation steps for all upgrades
 
