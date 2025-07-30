@@ -26,64 +26,69 @@ Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use
 
 ## Common preparation steps for all upgrades
 
-The following steps are common to all types of upgrades, regardless if you are upgrading from 8.x (major upgrade), or if you are already running a 9.x version.
+The following steps and recommendations are common to all types of upgrades, regardless if you are upgrading from 8.x (major upgrade), or if you are already running a 9.x version.
 
-1. **Review breaking changes**
+:::::{stepper}
 
-    Although breaking changes typically affect [major upgrades](#prepare-upgrade-from-8.x), they can also occur in minor or patch releases. Review the [breaking changes](../../release-notes/index.md) for each product you use to learn more about potential impacts on your applications. Ensure you test with the new version before upgrading production deployments.
+::::{step} Review breaking changes
+Although breaking changes typically affect [major upgrades](#prepare-upgrade-from-8.x), they can also occur in minor or patch releases. Review the [breaking changes](../../release-notes/index.md) for each product you use to learn more about potential impacts on your applications. Ensure you test with the new version before upgrading production deployments.
 
-    If you are affected by a breaking change, you have to take action before upgrading. This can include updating your code, change configuration settings, or other steps.
+If you are affected by a breaking change, you have to take action before upgrading. This can include updating your code, change configuration settings, or other steps.
+::::
 
-2. **Verify plugin compatibility**
+::::{step} Verify plugin compatibility
+If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
+::::
 
-    If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
+::::{step} Create a snapshot for backup
+Take a [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of your cluster before starting the upgrade. This provides a recovery point in case the upgrade needs to be rolled back.
 
-3. **Test in a non-production environment**
+:::{important}
+After you start to upgrade your {{es}} cluster, you cannot downgrade any of its nodes. If you can't complete the upgrade process, you must [restore from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) which was taken before starting the upgrade.
+:::
+::::
 
-    Before upgrading your production deployment, test the upgrade using a non-production environment. Make sure the test environment mirrors production as closely as possible, including configuration and client interactions.
+::::{step} Test in a non-production environment
+Before upgrading your production deployment, test the upgrade using a non-production environment. Make sure the test environment mirrors production as closely as possible, including configuration and client interactions.
 
-    :::{note}
-    The upgraded version of {{es}} may interact with its environment in different ways from the version you are currently running. It is possible that your environment behaves incorrectly in a way that does not matter to the version of {{es}} that you are currently running, but which does matter to the upgraded version. In this case, the upgraded version will not work correctly until you address the incorrect behavior in your environment.
-    :::
+:::{note}
+The upgraded version of {{es}} may interact with its environment in different ways from the version you are currently running. It is possible that your environment behaves incorrectly in a way that does not matter to the version of {{es}} that you are currently running, but which does matter to the upgraded version. In this case, the upgraded version will not work correctly until you address the incorrect behavior in your environment.
+:::
 
-    :::{tip}
-    During your upgrade tests, pay particular attention to the following aspects:
+:::{tip}
+During your upgrade tests, pay particular attention to the following aspects:
 
-    **Cluster stability**
-    :    Does the new version of {{es}} form a stable healthy cluster?
+**Cluster stability**
+:    Does the new version of {{es}} form a stable healthy cluster?
 
-    **Indexing and search performance**
-    :    Does the new version of {{es}} perform the same (or better) than the current one on your specific workload and data?
+**Indexing and search performance**
+:    Does the new version of {{es}} perform the same (or better) than the current one on your specific workload and data?
 
-    **Snapshots**
-    :    Do all of your snapshot repositories work correctly and pass [repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze)?
-    :::
+**Snapshots**
+:    Do all of your snapshot repositories work correctly and pass [repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze)?
+:::
 
-4. **Create a snapshot for backup**
+::::
 
-    Take a [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of your cluster before starting the upgrade. This provides a recovery point in case the upgrade needs to be rolled back.
+::::{step} Upgrade your monitoring cluster first
+If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster.
 
-    :::{important}
-    After you start to upgrade your {{es}} cluster, you cannot downgrade any of its nodes. If you can't complete the upgrade process, you must [restore from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) which was taken before starting the upgrade.
-    :::
+The monitoring cluster should be running the same version, or a newer one, than the clusters being monitored. It cannot monitor clusters running a newer version of the {{stack}}. If necessary, the monitoring cluster can monitor clusters running the latest release of the previous major version.
+::::
 
-5. **Upgrade your monitoring cluster first**
+::::{step} Upgrade remote clusters first
+If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
 
-    If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster.
+If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
 
-    The monitoring cluster should be running the same version, or a newer one, than the clusters being monitored. It cannot monitor clusters running a newer version of the {{stack}}. If necessary, the monitoring cluster can monitor clusters running the latest release of the previous major version.
+To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**.
+::::
 
-6. **Remote clusters**
+::::{step} (Optional) Close machine learning jobs
+To reduce overhead on the cluster during the upgrade, close {{ml}} jobs before starting the upgrade, and open them after the upgrade is complete. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
+::::
 
-    If you use {{ccs}}, versions 9.0.0 and later can search only remote clusters running the previous minor version, the same version, or a newer minor version in the same major version. For more information, refer to [{{ccs-cap}}](../../solutions/search/cross-cluster-search.md).
-
-    If you use {{ccr}}, a cluster that contains follower indices must run the same or newer (compatible) version as the remote cluster. For more information and to view the version compatibility matrix, refer to [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
-
-    To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clusters**.
-
-7. (Optional) **Close {{ml}} jobs**
-
-    To reduce overhead on the cluster during the upgrade, close {{ml}} jobs before starting the upgrade, and open them after the upgrade is complete. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
+:::::
 
 ## Additional preparation steps to upgrade from 8.x [prepare-upgrade-from-8.x]
 
@@ -93,69 +98,79 @@ To assist with this process, use the [Upgrade Assistant](prepare-to-upgrade/upgr
 
 Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
 
-1. **Upgrade to the latest 8.19 patch release**
+:::::{stepper}
 
-    To perform a major upgrade from 8.x to 9.x of {{es}}, you must first upgrade to 8.19.x. This allows you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and prepare the cluster for the actual upgrade. Upgrading to 8.19 is required regardless of whether you perform a rolling upgrade or a full cluster restart to upgrade.
+::::{step} Upgrade to the latest 8.19 patch release
 
-    ::::{note}
-    Because 8.18.0 and 9.0.0 were released simultaneously, upgrading from 8.18.x to 9.0.x is supported, as long as the versions comply with the supported [upgrade paths](../upgrade.md#upgrade-paths). However, upgrading to 9.1.0 or later requires starting from 8.19.x.
+To perform a major upgrade from 8.x to 9.x of {{es}}, you must first upgrade to 8.19.x. This allows you to use the [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) to identify and resolve issues, reindex indices created before 8.0.0, and prepare the cluster for the actual upgrade. Upgrading to 8.19 is required regardless of whether you perform a rolling upgrade or a full cluster restart to upgrade.
 
-    If you're upgrading to the current {{version.stack}} release from an earlier 8.x version, first upgrade to the latest available 8.19 release.
-    ::::
+:::{note}
+Because 8.18.0 and 9.0.0 were released simultaneously, upgrading from 8.18.x to 9.0.x is supported, as long as the versions comply with the supported [upgrade paths](../upgrade.md#upgrade-paths). However, upgrading to 9.1.0 or later requires starting from 8.19.x.
 
-    If you are already running an 8.19.x version, it's also recommended to upgrade to the latest 8.19 patch release before upgrading to 9.x. This ensures that the latest version of the upgrade assistant is used, and any bug fixes that could have implications for the upgrade are applied.
+If you're upgrading to the current {{version.stack}} release from an earlier 8.x version, first upgrade to the latest available 8.19 release.
+:::
 
-    If you're using 7.x and earlier, you may need to complete multiple upgrades to reach the latest 8.19 patch release before upgrading to 9.x. As an alternative method to upgrading the cluster, you can create a new 9.x deployment and reindex from the original cluster. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
+If you are already running an 8.19.x version, it's also recommended to upgrade to the latest 8.19 patch release before upgrading to 9.x. This ensures that the latest version of the upgrade assistant is used, and any bug fixes that could have implications for the upgrade are applied.
 
-    :::{note}
-    For flexible upgrade scheduling, 8.19.x {{agent}}, {{beats}} and {{ls}} are compatible with all 9.x versions of {{es}}.
+If you're using 7.x and earlier, you may need to complete multiple upgrades to reach the latest 8.19 patch release before upgrading to 9.x. As an alternative method to upgrading the cluster, you can create a new 9.x deployment and reindex from the original cluster. For more information, refer to [Reindex to upgrade](#reindex-to-upgrade).
 
-    By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} server.
-    :::
+:::{note}
+For flexible upgrade scheduling, 8.19.x {{agent}}, {{beats}} and {{ls}} are compatible with all 9.x versions of {{es}}.
 
-2. **Run the Upgrade Assistant**
+By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} server.
+:::
+::::
 
-    The [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) identifies deprecated settings in your configuration and guides you through resolving issues that could prevent a successful upgrade. The Upgrade Assistant also helps resolve issues with older indices created before version 8.0.0, providing the option to reindex older indices or mark them as read-only. To prevent upgrade failures, we strongly recommend you **do not** skip this step.
+::::{step} Run the Upgrade Assistant
 
-    :::{note}
-     Depending on your setup, reindexing can change your indices, and you may need to update alerts, transforms, or other code targeting the old index.
-    :::
+The [Upgrade Assistant](prepare-to-upgrade/upgrade-assistant.md) identifies deprecated settings in your configuration and guides you through resolving issues that could prevent a successful upgrade. The Upgrade Assistant also helps resolve issues with older indices created before version 8.0.0, providing the option to reindex older indices or mark them as read-only. To prevent upgrade failures, we strongly recommend you **do not** skip this step.
 
-    Considerations when using the upgrade assistant:
+:::{note}
+  Depending on your setup, reindexing can change your indices, and you may need to update alerts, transforms, or other code targeting the old index.
+:::
 
-    1. For a successful upgrade, **resolve all critical issues reported by the assistant**.
+Considerations when using the upgrade assistant:
 
-    2. Before you apply configuration changes or reindex, ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md).
+* For a successful upgrade, **resolve all critical issues reported by the assistant**. {{es}} nodes will fail to start if incompatible indices are present.
 
-    3. Indices created in 7.x or earlier must be reindexed or deleted before upgrading to 9.x. Alternatively, you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to enable read-only access to them in 9.x. Keep in mind that {{es}} nodes will fail to start if incompatible indices are present.
+* Before you apply configuration changes or reindex, ensure you have a current [snapshot](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md).
 
-        ::::{tip}
-        In Elasticsearch 9.x, you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to access snapshots of 7.x or earlier indices, without needing to reindex or run an older cluster. This provides a convenient option to retain historical data in case you choose to delete those indices and keep them only in existing snapshots.
-        ::::
+* Indices created in 7.x or earlier must be reindexed, deleted, or [archived](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) (marked as read-only) before upgrading to 9.x.
 
-    3. Review the deprecation logs from the Upgrade Assistant to determine if your applications are using features that are not supported or behave differently in 9.x. See the [breaking changes](elasticsearch://release-notes/breaking-changes.md) for more information about changes in 9.x that could affect your application.
+  :::{tip}
+  In Elasticsearch 9.x, you can also use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to access snapshots of 7.x or earlier indices, without needing to reindex or run an older cluster. This provides a convenient option to retain historical data in case you choose to delete those indices and keep them only in existing snapshots.
+  :::
 
-        ::::{note}
-        Make sure you check the breaking changes for each 9.x release up to your target release.
-        ::::
+* Review the deprecation logs from the Upgrade Assistant to determine if your applications are using features that are not supported or behave differently in 9.x. See the [breaking changes](elasticsearch://release-notes/breaking-changes.md) for more information about changes in 9.x that could affect your application.
 
-    4. Make the recommended changes to ensure your clients continue operating as expected after the upgrade.
+  :::{note}
+  Make sure you check the breaking changes for each 9.x release up to your target release.
+  :::
 
-        :::{note}
-        As a temporary solution, use the 8.x syntax to submit requests to 9.x with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
-        :::
+* Make the recommended changes to ensure your clients continue operating as expected after the upgrade.
 
-3. **Manage {{ccr-cap}} (CCR) follower data streams**
+  :::{note}
+  As a temporary solution, use the 8.x syntax to submit requests to 9.x with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
+  :::
+::::
 
-    If you have {{ccr-init}} data streams, and your indices require reindexing, refer to [Upgrade uni-directional {{ccr}} clusters with followed data streams](#upgrade-ccr-data-streams) for specific instructions.
+::::{step} Manage CCR follower data streams
+If you have {{ccr-cap}} (CCR) data streams, and your indices require reindexing, refer to [Upgrade uni-directional {{ccr}} clusters with followed data streams](#upgrade-ccr-data-streams) for specific instructions.
+::::
 
-4. **Manage old {{ml}} indices**
+::::{step} Manage old machine learning indices
+If you have `.ml-anomalies-*` anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.x. For more information, refer to [Migrate anomaly detection results](#anomaly-migration).
+::::
 
-    If you have `.ml-anomalies-*` anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.x. For more information, refer to [Migrate anomaly detection results](#anomaly-migration).
+::::{step} Manage old transform indices
+If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.x. For more information, refer to [Migrate transform destination indices](#transform-migration).
+::::
 
-5. **Manage old transform indices**
+:::::
 
-    If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.x. For more information, refer to [Migrate transform destination indices](#transform-migration).
+
+
+
 
 ## Upgrade uni-directional {{ccr}} clusters with followed data streams [upgrade-ccr-data-streams]
 
