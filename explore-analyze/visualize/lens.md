@@ -474,7 +474,7 @@ These options can vary depending on the type of chart.
 
 #### Tables
 
-**Density**
+**Density** {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga`
 :   Make the table more or less compact. Choose between **Compact**, **Normal** (default), and **Expanded**.
 
 **Max header cell lines**
