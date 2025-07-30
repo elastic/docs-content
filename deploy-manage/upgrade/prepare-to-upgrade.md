@@ -40,7 +40,7 @@ The following steps are common to all types of upgrades, regardless if you are u
 
 3. **Test in a non-production environment**
 
-    Before upgrading your production deployment, test the upgrade using a non-production environment. Ensure the test and production environments use the same settings.
+    Before upgrading your production deployment, test the upgrade using a non-production environment. Make sure the test environment mirrors production as closely as possible, including configuration and client interactions.
 
     :::{note}
     The upgraded version of {{es}} may interact with its environment in different ways from the version you are currently running. It is possible that your environment behaves incorrectly in a way that does not matter to the version of {{es}} that you are currently running, but which does matter to the upgraded version. In this case, the upgraded version will not work correctly until you address the incorrect behavior in your environment.
@@ -145,26 +145,17 @@ Follow these steps to prepare for a successful major upgrade from 8.x to 9.x:
         As a temporary solution, use the 8.x syntax to submit requests to 9.x with REST API compatibility mode. While this allows you to submit requests using the old syntax, it doesn’t guarantee the same behavior. REST API compatibility should serve as a bridge during the upgrade, not a long-term solution. For more details on how to effectively use REST API compatibility during an upgrade, refer to [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md).
         :::
 
-3. **{{ccr-cap}} (CCR)**
+3. **Manage {{ccr-cap}} (CCR) follower data streams**
 
     If you have {{ccr-init}} data streams, and your indices require reindexing, refer to [Upgrade uni-directional {{ccr}} clusters with followed data streams](#upgrade-ccr-data-streams) for specific instructions.
 
-4. **Old {{ml}} indices**
+4. **Manage old {{ml}} indices**
 
     If you have `.ml-anomalies-*` anomaly detection result indices created in {{es}} 7.x, reindex them, mark them as read-only, or delete them before you upgrade to 9.x. For more information, refer to [Migrate anomaly detection results](#anomaly-migration).
 
-5. **Old transform indices**
+5. **Manage old transform indices**
 
     If you have transform destination indices created in {{es}} 7.x, reset, reindex, or delete them before you upgrade to 9.x. For more information, refer to [Migrate transform destination indices](#transform-migration).
-
-## Reindex to upgrade [reindex-to-upgrade]
-
-If you are running a pre-8.x version, you might need to perform multiple upgrades before being able to upgrade to 9.x. As an alternative method to upgrading the cluster, you can create a new deployment in the target version and reindex from remote:
-
-1. Provision an additional deployment running the desired version, such as {{version.stack}}.
-2. To reindex your data into the new {{es}} cluster, use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new indexing requests to both clusters.
-3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
-4. Delete the old deployment. On {{ecloud}}, you are billed for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
 
 ## Upgrade uni-directional {{ccr}} clusters with followed data streams [upgrade-ccr-data-streams]
 
@@ -815,6 +806,15 @@ If the destination index is no longer needed, it can be deleted with the transfo
 DELETE _transform/my-transform?delete_dest_index
 ```
 :::
+
+## Reindex to upgrade [reindex-to-upgrade]
+
+If you are running a pre-8.x version, you might need to perform multiple upgrades before being able to upgrade to 9.x. As an alternative method to upgrading the cluster, you can create a new deployment in the target version and reindex from remote:
+
+1. Provision an additional deployment running the desired version, such as {{version.stack}}.
+2. To reindex your data into the new {{es}} cluster, use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new indexing requests to both clusters.
+3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
+4. Delete the old deployment. On {{ecloud}}, you are billed for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
 
 ## Next steps
 
