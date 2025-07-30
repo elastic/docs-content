@@ -837,7 +837,9 @@ POST passage_vectors/_search
 }
 ```
 
-Retrieving "inner_hits" when filtering on sibling nested fiels is not supported.
+:::{note}
+Retrieving "inner_hits" when filtering on sibling nested fields is not supported.
+:::
 
 ### Nested kNN Search with Inner hits [nested-knn-search-inner-hits]
 
