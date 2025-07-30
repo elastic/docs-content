@@ -204,6 +204,12 @@ See [Kibana issue](https://github.com/elastic/kibana/issues/226600).
 
 ::::{dropdown} Q: Why does a transaction disappear after enabling tail-based sampling?
 
-WIP
+If you have configured a non-zero sampling rate for a transaction, but it is always not sampled after enabling tail-based sampling, please double check your instrumentation setup for missing root transactions, i.e. the transaction without a parent.
+
+APM Server makes a sampling decision based on the configured policies when a distributed trace ends, which is when the root transaction ends. If the root transaction of a trace is not received by APM Server, APM Server will not be able to make a sampling decision, and will silently drop all the trace events associated with this trace.
+
+TODO: describe common causes
+
+TODO: add ESQL to find traces with missing parent
 
 ::::
