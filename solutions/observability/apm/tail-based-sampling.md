@@ -29,15 +29,15 @@ Tail-based sampling configuration options.
 
 ```yaml
 apm-server:
-  host: "localhost:8200"
-  rum:
-    enabled: true
-
-output:
-  elasticsearch:
-    hosts: ElasticsearchAddress:9200
-
-max_procs: 4
+  sampling:
+    tail:
+      enabled: true
+      interval: 1m
+      storage_limit: 0GB
+      policies:
+        - sample_rate: 1.0
+          trace.outcome: failure
+        - sample_rate: 0.1
 ```
 ::::::
 
@@ -62,7 +62,7 @@ Set to `true` to enable tail based sampling. Disabled by default. (bool)
 
 |     |     |
 | --- | --- |
-| APM Server binary | `sampling.tail.enabled` |
+| APM Server binary | `apm-server.sampling.tail.enabled` |
 | Fleet-managed | `Enable tail-based sampling` |
 
 ### Interval [sampling-tail-interval-ref]
@@ -71,8 +71,20 @@ Synchronization interval for multiple APM Servers. Should be in the order of ten
 
 |     |     |
 | --- | --- |
-| APM Server binary | `sampling.tail.interval` |
+| APM Server binary | `apm-server.sampling.tail.interval` |
 | Fleet-managed | `Interval` |
+
+### TTL [sampling-tail-ttl-ref]
+
+Time-to-live (TTL) for trace events stored in the local storage of the APM Server during tail-based sampling. This TTL determines how long trace events are retained in the local storage while waiting for a sampling decision to be made. A greater TTL value increases storage space requirements. Should be at least 2 * Interval (`apm-server.sampling.tail.interval`).
+
+Default: `30m` (30 minutes). (duration)
+
+|     |     |
+| --- | --- |
+| APM Server binary | `apm-server.sampling.tail.ttl` |
+| Fleet-managed {applies_to}`stack: ga 9.1` | `TTL` |
+
 
 ### Policies [sampling-tail-policies-ref]
 
@@ -82,8 +94,20 @@ Policies map trace events to a sample rate. Each policy must specify a sample ra
 
 |     |     |
 | --- | --- |
-| APM Server binary | `sampling.tail.policies` |
+| APM Server binary | `apm-server.sampling.tail.policies` |
 | Fleet-managed | `Policies` |
+
+### Discard On Write Failure [sampling-tail-discard-on-write-failure-ref]
+
+Defines the indexing behavior when trace events fail to be written to storage (for example, when the storage limit is reached). When set to `false`, traces bypass sampling and are always indexed, which significantly increases the indexing load. When set to `true`, traces are discarded, causing data loss which can result in broken traces. The default is `false`.
+
+Default: `false`. (bool)
+
+|                              |                                          |
+|------------------------------|------------------------------------------|
+| APM Server binary            | `apm-server.sampling.tail.discard_on_write_failure` |
+| Fleet-managed {applies_to}`stack: ga 9.1` | `Discard On Write Failure`               |
+
 
 ### Storage limit [sampling-tail-storage_limit-ref]
 
@@ -93,13 +117,13 @@ A value of `0GB` (or equivalent) does not set a concrete limit, but rather allow
 
 If this is not desired, a concrete `GB` value can be set for the maximum amount of disk used for tail-based sampling.
 
-If the configured storage limit is insufficient, it logs "configured limit reached". The event will bypass sampling and will always be indexed when storage limit is reached.
+If the configured storage limit is insufficient, it logs "configured limit reached". When the storage limit is reached, the event will be indexed or discarded based on the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) configuration.
 
 Default: `0GB`. (text)
 
 |     |     |
 | --- | --- |
-| APM Server binary | `sampling.tail.storage_limit` |
+| APM Server binary | `apm-server.sampling.tail.storage_limit` |
 | Fleet-managed | `Storage limit` |
 
 ## Policy-level tail-based sampling settings [apm-configuration-tbs-policy]

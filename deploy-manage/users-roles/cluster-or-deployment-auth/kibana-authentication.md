@@ -56,7 +56,7 @@ xpack.security.authc.providers:
     order: 1
     realm: saml1
     description: "Log in with SSO"
-    icon: "https://my-company.xyz/saml-logo.svg"
+    icon: "<my-company-url>/saml-logo.svg"
   saml.saml2:
     order: 2
     realm: saml2

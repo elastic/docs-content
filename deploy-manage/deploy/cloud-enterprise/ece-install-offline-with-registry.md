@@ -22,7 +22,7 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 2. On an internet-connected host that has Docker installed, download the [Available Docker Images](ece-install-offline-images.md) and push them to your private Docker registry. Note that for ECE version 4.0, if you want to use {{stack}} version 9.0 in your deployments, you need to download and make available both the version 8.x and version 9.x Docker images.
 
     ```sh subs=true
-    docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{ece_version}}
+    docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
     docker pull docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0
     docker pull docker.elastic.co/cloud-release/kibana-cloud:8.18.0
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0
@@ -32,9 +32,9 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
     docker pull docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0
     ```
 
-    For example, for {{ece}} {{ece_version}} and the {{stack}} versions it shipped with, you need:
+    For example, for {{ece}} {{version.ece}} and the {{stack}} versions it shipped with, you need:
 
-    * {{ece}} {{ece_version}}
+    * {{ece}} {{version.ece}}
     * {{es}} 9.0.0, {{kib}} 9.0.0, APM 9.0.0
 
     :::{important}
@@ -44,7 +44,7 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 3. Tag the Docker images with your private registry URL by replacing `REGISTRY` with your actual registry address, for example `my.private.repo:5000`:
 
     ```sh subs=true
-    docker tag docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{ece_version}} REGISTRY/cloud-enterprise/elastic-cloud-enterprise:{{ece_version}}
+    docker tag docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}} REGISTRY/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
     docker tag docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0 REGISTRY/cloud-release/elasticsearch-cloud-ess:8.18.0
     docker tag docker.elastic.co/cloud-release/kibana-cloud:8.18.0 REGISTRY/cloud-release/kibana-cloud:8.18.0
     docker tag docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0 REGISTRY/cloud-release/elastic-agent-cloud:8.18.0
@@ -57,7 +57,7 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 4. Push the Docker images to your private Docker registry, using the same tags from the previous step. Replace `REGISTRY` with your actual registry URL, for example `my.private.repo:5000`:
 
     ```sh subs=true
-    docker push REGISTRY/cloud-enterprise/elastic-cloud-enterprise:{{ece_version}}
+    docker push REGISTRY/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}}
     docker push REGISTRY/cloud-release/elasticsearch-cloud-ess:8.18.0
     docker push REGISTRY/cloud-release/kibana-cloud:8.18.0
     docker push REGISTRY/cloud-release/elastic-agent-cloud:8.18.0

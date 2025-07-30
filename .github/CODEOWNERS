@@ -47,8 +47,6 @@
 /solutions/observability/get-started/       @elastic/ski-docs
 /solutions/search/                          @elastic/developer-docs
 /solutions/security/                        @elastic/experience-docs
-/solutions/security/get-started/            @elastic/ingest-docs @elastic/experience-docs
-/solutions/security/cloud/                  @elastic/ingest-docs
 
 /troubleshoot/                              @elastic/docs
 /troubleshoot/deployments/                  @elastic/admin-docs

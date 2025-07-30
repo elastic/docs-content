@@ -95,16 +95,16 @@ This realm has a few mandatory settings, and a number of optional settings. The 
       order: 2
       rp.client_id: "the_client_id"
       rp.response_type: code
-      rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
-      op.issuer: "https://op.example.org"
-      op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
-      op.token_endpoint: "https://op.example.org/oauth2/v1/token"
+      rp.redirect_uri: "<kibana-example-url>:5601/api/security/oidc/callback"
+      op.issuer: "<op-example-url>"
+      op.authorization_endpoint: "<op-example-url>/oauth2/v1/authorize"
+      op.token_endpoint: "<op-example-url>/oauth2/v1/token"
       op.jwkset_path: oidc/jwkset.json
-      op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
-      op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
-      rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out"
+      op.userinfo_endpoint: "<op-example-url>/oauth2/v1/userinfo"
+      op.endsession_endpoint: "<op-example-url>/oauth2/v1/logout"
+      rp.post_logout_redirect_uri: "<kibana-example-url>:5601/security/logged_out"
       claims.principal: sub
-      claims.groups: "http://example.info/claims/groups"
+      claims.groups: "<example-url>/claims/groups"
     ```
 
     ::::{dropdown} Common settings
@@ -173,7 +173,7 @@ In {{ech}} and {{ece}}, after you configure Client Secret, any attempt to restar
 :::
 
 ::::{note}
-According to the OpenID Connect specification, the OP should also make their configuration available at a well known URL, which is the concatenation of their `Issuer` value with the `.well-known/openid-configuration` string. For example: `https://op.org.com/.well-known/openid-configuration`.
+According to the OpenID Connect specification, the OP should also make their configuration available at a well known URL, which is the concatenation of their `Issuer` value with the `.well-known/openid-configuration` string. For example: `<example-op-url>/.well-known/openid-configuration`.
 
 That document should contain all the necessary information to configure the OpenID Connect realm in {{es}}.
 ::::
@@ -228,7 +228,7 @@ To configure claims mapping:
    * `claims.principal: sub`: Instructs {{es}} to look for the OpenID Connect claim named `sub` in the ID Token that the OP issued for the user (or in the UserInfo response) and assign the value of this claim to the `principal` user property.
 
       `sub` is a commonly used claim for the principal property as it is an identifier of the user in the OP and it is also a required claim of the ID Token. This means that `sub` is available in most OPs. However, the OP may provide another claim that is a better fit for your needs.
-   * `claims.groups: "http://example.info/claims/groups"`: Instructs {{es}} to look for the claim with the name `http://example.info/claims/groups`, either in the ID Token or in the UserInfo response, and map the value(s) of it to the user property `groups` in {{es}}.
+   * `claims.groups: "<example-url>/claims/groups"`: Instructs {{es}} to look for the claim with the name `<example-url>/claims/groups`, either in the ID Token or in the UserInfo response, and map the value(s) of it to the user property `groups` in {{es}}.
 
       There is no standard claim in the specification that is used for expressing roles or group memberships of the authenticated user in the OP, so the name of the claim that should be mapped here will vary between providers. Consult your OP documentation for more details.
 
@@ -274,12 +274,12 @@ xpack.security.authc.realms.oidc.oidc1:
   order: 2
   rp.client_id: "the_client_id"
   rp.response_type: code
-  rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
-  op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
-  op.token_endpoint: "https://op.example.org/oauth2/v1/token"
-  op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
-  op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
-  op.issuer: "https://op.example.org"
+  rp.redirect_uri: "<kibana-example-url>:5601/api/security/oidc/callback"
+  op.authorization_endpoint: "<op-example-url>/oauth2/v1/authorize"
+  op.token_endpoint: "<op-example-url>/oauth2/v1/token"
+  op.userinfo_endpoint: "<op-example-url>/oauth2/v1/userinfo"
+  op.endsession_endpoint: "<op-example-url>/oauth2/v1/logout"
+  op.issuer: "<op-example-url>"
   op.jwkset_path: oidc/jwkset.json
   claims.principal: email_verified
   claim_patterns.principal: "^([^@]+)@staff\\.example\\.com$"

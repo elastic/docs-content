@@ -13,7 +13,7 @@ products:
 
 # Configure advanced settings [security-advanced-settings]
 
-The advanced settings determine:
+The advanced settings control the behavior of the {{security-app}}, such as:
 
 * Which indices {{elastic-sec}} uses to retrieve data
 * {{ml-cap}} anomaly score display threshold
@@ -132,9 +132,10 @@ Including data from cold and frozen [data tiers](/manage-data/lifecycle/data-tie
 
 ## Access the event analyzer and Session View from the event or alert details flyout [visualizations-in-flyout]
 
-::::{note}
-Available in {{stack}} 9.0.0 only.
-::::
+```{applies_to}
+stack: removed 9.1
+serverless: removed
+```
 
 The `securitySolution:enableVisualizationsInFlyout` setting allows you to access the event analyzer and Session View in the **Visualize** [tab](/solutions/security/detect-and-alert/view-detection-alert-details.md#expanded-visualizations-view) on the alert or event details flyout.
 
@@ -211,3 +212,13 @@ To only exclude cold and frozen data from specific rules, add a [Query DSL filte
 ::::{important}
 Even when the `excludedDataTiersForRuleExecution` advanced setting is enabled, indicator match, event correlation, and {{esql}} rules may still fail if a frozen or cold shard that matches the rule’s specified index pattern is unavailable during rule executions. If failures occur, we recommend modifying the rule’s index patterns to only match indices containing hot tier data.
 ::::
+
+
+## Access privileged user monitoring
+```yaml {applies_to}
+stack: preview 9.1
+serverless: unavailable
+```
+
+The `securitySolution:enablePrivilegedUserMonitoring` setting allows you to access the [Entity analytics overview page](/solutions/security/advanced-entity-analytics/overview.md) and the [privileged user monitoring](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) feature. This setting is turned off by default.
+

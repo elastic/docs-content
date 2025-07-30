@@ -1,3 +1,3 @@
-When installing the {{stack}}, you must use the same version across the entire stack. For example, if you are using {{es}} {{stack-version}}, you install Beats {{stack-version}}, APM Server {{stack-version}}, {{es}} Hadoop {{stack-version}}, {{kib}} {{stack-version}}, and Logstash {{stack-version}}.
+When installing the {{stack}}, you must use the same version across the entire stack. For example, if you are using {{es}} {{version.stack}}, you install Beats {{version.stack}}, APM Server {{version.stack}}, {{es}} Hadoop {{version.stack}}, {{kib}} {{version.stack}}, and Logstash {{version.stack}}.
 
-If you’re upgrading an existing installation, see [](/deploy-manage/upgrade.md) for information about how to ensure compatibility with {{stack-version}}.
+If you’re upgrading an existing installation, see [](/deploy-manage/upgrade.md) for information about how to ensure compatibility with {{version.stack}}.
