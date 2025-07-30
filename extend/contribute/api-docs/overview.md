@@ -63,13 +63,13 @@ The generated Schema JSON and OpenAPI documents feed into client libraries (and 
 flowchart TD
     A[TypeScript API definitions] -->|compiled| B[Schema JSON]
     F[JSON spec files] -->|merged| B
-    G[Examples YAML files] -->|processed| B
-    B -->|converted| C1[OpenAPI for Documentation]
-    B -->|converted| C2[OpenAPI for Clients, Dev Tools Console, etc.]
+    G[YAML example files] --> B
+    G -->|auto-translated| P[Programming language examples] --> B
+    B -->|converted| C1[OpenAPI for docs]
+    B -->|converted| C2[OpenAPI for Dev Tools Console]
     H[Overlays] -->|applied| C1
     C1 -->|published| E["HTML published by Bump.sh"]
-    C2 -->|used by| I[Clients & Dev Tools Console]
-    B -->|generated| D[Client Libraries]
+    B -->|generated| D[Client libraries]
     
     style A fill:#fff2cc
     style F fill:#fff2cc
@@ -80,7 +80,7 @@ flowchart TD
     style H fill:#fff2cc
     style D fill:#dae8fc
     style E fill:#dae8fc
-    style I fill:#dae8fc
+    style P fill:
 -->
 
 

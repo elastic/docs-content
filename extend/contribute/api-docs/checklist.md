@@ -17,9 +17,9 @@ Use this checklist to verify the quality, completeness, and consistency of your 
 
 ## Content quality and completeness
 
-- Write clear [summaries](./guidelines.md#write-summaries) (30 characters max, start with a verb)
+- Write clear [summaries](./guidelines.md#write-summaries) (between 5-45 characters)
 - Write detailed [descriptions](./guidelines.md#write-descriptions) for operations, parameters, properties, tags etc.
-- Document all [path parameters](./guidelines.md#document-path-parameters) with constraints and formats
+- Document all [path parameters](./guidelines.md#document-path-parameters) and explain how changing defaults affects behavior
 - Provide descriptions for non-obvious [enum values](./guidelines.md#document-enum-values)
 - Specify [default values](./guidelines.md#set-default-values) for optional parameters
 - Include realistic [examples](./guidelines.md#add-examples) with helpful descriptions

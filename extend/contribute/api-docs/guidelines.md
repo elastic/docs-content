@@ -187,19 +187,19 @@ class AlertRule {
 
 ::::
 
-## Document path parameters
+## Document parameters
 
-Path parameters are variables in URL paths that users must provide to access specific resources. Proper documentation helps users understand what values are expected and how to construct valid requests.
+Proper documentation helps users understand what values are expected, how to construct valid requests, and explains the effects of changing defaults.
 
-Here are some principles for documenting path parameters:
+Here are some principles for documenting parameters:
 
 - **Write clear descriptions:** Follow the general guidance for [writing descriptions](#write-descriptions)
-- **All path parameters are required:** the `required` field must be present and it must be `true` in the OpenAPI doc
-- **Provide alternative paths for optional variations:** If you need optional parameters, create separate endpoint definitions or list the variations in the description
+- **Indicate requirement status appropriately:** 
+  - Path parameters are always required (`required: true` must be present)
 - **Document parameter constraints:** Specify valid formats, patterns, or value ranges
-- **Explain parameter relationships:** Clarify how multiple path parameters work together and any dependencies between them
+- **Explain parameter relationships:** Clarify how multiple parameters work together and any dependencies between them
 
-### Examples
+### Examples: Path parameters
 
 ::::{tab-set}
 :group: implementations
@@ -354,9 +354,9 @@ Examples help users understand how to use your API with realistic request and re
 Here are some principles for effective examples:
 
 - **Use realistic data:** Provide examples that reflect actual use cases rather than placeholder values
-- **Write clear summaries:** Introduce the example with a very brief summary that explains its purpose (reused as dropdown label in the docs)
+- **Write clear summaries:** Introduce the example with a very brief summary (<45 characters) that explains its purpose (reused as dropdown label in the docs)
 - **Write clear descriptions:** Explain what the example accomplishes in more detail and why it's useful
-- **Include edge cases:** Show how to handle optional parameters, error conditions, and different response types
+- **Include edge cases:** Show how to handle optional parameters, the error conditions, and the effects of changing defaults
 - **Point out key details:** Highlight important aspects users might miss
 - **Show variations:** Demonstrate alternative approaches or related concepts
 - **Provide realistic response bodies:** Each response body should have a realistic example. It must not contain any sensitive or confidential data
@@ -546,7 +546,7 @@ Each endpoint can only have one `@ext_doc_id`. For multiple links, use inline ma
 
 ## Set default values
 
-Default values can only be applied to optional parameters or properties in OpenAPI specifications using the `default` field.
+Default values can only be applied to optional parameters or properties in OpenAPI specifications using the `default` field. It's important to explain how changing these defaults affects the behavior of the API in the parameter description.
 
 ### Examples
 

@@ -112,6 +112,7 @@ This creates a temporary URL to preview your changes and share with others.
 Once you're satisfied with your docs changes:
 1. Create a pull request from a branch on your local clone
 2. The CI will validate your OpenAPI specs
+3. Once approved, merge your changes and ensure they are backported to the appropriate branches
 ::::
 
 :::::
