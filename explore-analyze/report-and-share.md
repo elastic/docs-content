@@ -31,7 +31,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, dashboards, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the **Share** menu in the toolbar.
+{{kib}} provides you with several options to share **Discover** sessions, dashboards, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the {icon}`share` **Share** and {icon}`download` **Export** menus in the toolbar.
 
 ## Permissions
 
@@ -39,7 +39,11 @@ To be able to share objects or generate reports, you must have a role that allow
 
 ## Share with a direct link [share-a-direct-link]
 
-You can share direct links to saved Discover sessions, dashboards, and visualizations. When clicking **Share**, look for the **Links** tab to get the shareable link and copy it.
+You can share direct links to saved Discover sessions, dashboards, and visualizations. To do that, look for the {icon}`share` **Share** icon.
+
+{applies_to}`stack: ga 9.1` When applicable, you can choose to share the object using a relative or an absolute time range:
+* **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users will see the most recent 7 days when they open the link.
+* **Absolute time range** (default): The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link will always show that exact week of January 1-7, 2025, regardless of when users open the link.
 
 ::::{tip}
 When sharing an object with unsaved changes, you get a temporary link that might break in the future, for example in case of upgrade. Save the object to get a permanent link instead.
@@ -50,9 +54,7 @@ To access the object shared with the link, users need to authenticate.
 
 Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
 
-:::{image} /explore-analyze/images/share-dashboard.gif
-:alt: getting a shareable link for a dashboard
-:::
+![getting a shareable link for a dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltc45bb05c1fab3e60/68826ffb4f04ad6e224c2248/share-dashboard.gif)
 
 
 ## Export as a file [manually-generate-reports]
@@ -86,7 +88,7 @@ In the following dashboard, the shareable container is highlighted:
 2. Choose a file type for the report.
 
     * {applies_to}`stack: ga 9.0` From the toolbar, click **Share** > **Export** tab, then choose a file type. Note that when you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
-    * {applies_to}`stack: ga 9.1` From the toolbar, click the **Export** icon, then choose a file type. 
+    * {applies_to}`stack: ga 9.1` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type. 
 
     ::::{note}
     When you create a dashboard report that includes a data table or Discover session, the PDF includes only the visible data.
@@ -144,7 +146,7 @@ Create and share JSON files for workpads.
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.
-3. From the toolbar, click **Share**, then select **Download as JSON**.
+3. From the toolbar, click {icon}`download` **Export**, then select **JSON**.
 
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]
