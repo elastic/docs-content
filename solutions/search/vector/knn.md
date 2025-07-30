@@ -753,8 +753,8 @@ Now we have filtered based on the top level `"creation_time"` and only one docum
 stack: ga 9.2
 ```
 
-Below we filter on nested metadata.
-When scoring parents' documents this query only considers vectors that
+The following query filters on nested metadata.
+When scoring parent documents, this query only considers vectors that
 have "paragraph.language" set to "EN".
 
 ```console
