@@ -208,7 +208,7 @@ If you have configured a non-zero sampling rate for a transaction, but it is alw
 
 APM Server makes a sampling decision based on the configured policies when a distributed trace ends, which is when the root transaction ends. If the root transaction of a trace is not received by APM Server, APM Server will not be able to make a sampling decision, and will silently drop all the trace events associated with this trace.
 
-TODO: describe common causes
+A common cause for this issue is, for example, assuming that service A always produces the root transaction while in reality there can be a service B before service A. However, service B is not instrumented or it is instrumented to send to a separate APM Server cluster. To resolve this issue, either fix service B's instrumentation to send to the same APM Server cluster as service A, or adjust service A's trace continuation strategy.
 
 TODO: add ESQL to find traces with missing parent
 
