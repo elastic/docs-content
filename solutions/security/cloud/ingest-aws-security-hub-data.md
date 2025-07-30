@@ -15,7 +15,7 @@ products:
 This page explains how to make data from the AWS Security Hub integration appear in the following places within {{elastic-sec}}:
 
 - **Findings page**: Data appears on the [Misconfigurations](/solutions/security/cloud/findings-page.md) tab.
-- **Alert and Entity details flyouts** Applicable data appears in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section).
+- **Alert and Entity details flyouts**: Applicable data appears in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section).
 
 In order for AWS Security Hub data to appear in these workflows:
 
