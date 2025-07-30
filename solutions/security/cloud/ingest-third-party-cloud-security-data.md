@@ -34,5 +34,5 @@ Data from each of the following integrations can feed into at least some of thes
 * [AWS Security Hub](/solutions/security/cloud/ingest-aws-security-hub-data.md).
 * [Wiz](/solutions/security/cloud/ingest-wiz-data.md).
 * [Rapid7 InsightVM](/solutions/security/cloud/integration-rapid7.md).
-* [Tenable VM](/solutions/security/cloud/integration-tenable.md).
+* [Tenable VM](/solutions/security/cloud/integration-tenablevm.md).
 * [Qualys VMDR](/solutions/security/cloud/integration-qualys.md).
