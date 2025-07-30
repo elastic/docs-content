@@ -189,3 +189,17 @@ This metric can also be used to get an estimate of the storage requirements for 
 ### `apm-server.sampling.tail.storage.value_log_size` [sampling-tail-monitoring-storage-value-log-size-ref]
 
 This metric tracks the storage size for value log files used by the previous implementation of a tail-based sampler. This metric was deprecated in 9.0.0 and should always report `0`.
+
+## Frequently Asked Questions (FAQ) [sampling-tail-faq-ref]
+
+:::{dropdown} Q: Why does the sampling rate shown in storage explorer not match the configured tail sampling rate?
+
+WIP
+
+::::
+
+::::{dropdown} Q: Why does a transaction disappear after enabling tail-based sampling?
+
+WIP
+
+::::
