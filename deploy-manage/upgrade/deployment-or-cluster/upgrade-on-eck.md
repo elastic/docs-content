@@ -21,7 +21,7 @@ Once you're [prepared to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md),
 1. In the resource spec file, modify the `version` field for the desired {{stack}} version.
 2. Save your changes. The orchestrator will start the upgrade process automatically.
 
-In this example, we’re modifying the version to `{{version.stack}}`.
+In this example, we’re modifying the version to {{version.stack}}.
 
 ```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1

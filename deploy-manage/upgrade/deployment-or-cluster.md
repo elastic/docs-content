@@ -28,7 +28,7 @@ products:
 
 # Upgrade your deployment or cluster [upgrade-deployment-cluster]
 
-This section contains the actual upgrade instructions for {{es}} clusters and {{kib}} instances. Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
+This section contains the upgrade instructions for {{es}} clusters and {{kib}} instances. Upgrade procedures depend on whether you installed Elastic components using Elastic-managed or self-managed infrastructure.
 
 ## Prerequisites
 

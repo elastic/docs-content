@@ -21,7 +21,14 @@ Before you start, [take the upgrade preparation steps](/deploy-manage/upgrade/pr
 
 When performing a [rolling upgrade](#rolling-upgrades):
 
-1. Upgrade the data nodes first, tier-by-tier, starting with the frozen tier, then the cold tier, then the warm tier, then the hot tier, and finally any other data nodes which are not in a tier. Complete the upgrade for all nodes in each data tier before moving to the next. This ensures {{ilm-init}} can continue to move data through the tiers during the upgrade. You can get the list of nodes in a specific tier with a `GET /_nodes` request, for example: `GET /_nodes/data_frozen:true/_none`.
+1. Upgrade the data nodes first, tier-by-tier, in the following order: 
+    1. The frozen tier
+    2. The cold tier
+    3. The warm tier
+    4. The hot tier
+    5. Any other data nodes which are not in a tier.
+    
+    Complete the upgrade for all nodes in each data tier before moving to the next. This ensures {{ilm-init}} can continue to move data through the tiers during the upgrade. You can get the list of nodes in a specific tier with a `GET /_nodes` request, for example: `GET /_nodes/data_frozen:true/_none`.
 2. Upgrade all remaining nodes that are neither master-eligible nor data nodes. This includes dedicated ML nodes, dedicated ingest nodes, and dedicated coordinating nodes.
 3. Upgrade the master-eligible nodes last. You can retrieve a list of these nodes with `GET /_nodes/master:true/_none`.
 

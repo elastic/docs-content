@@ -22,7 +22,7 @@ The Upgrade Assistant helps you [prepare to upgrade](/deploy-manage/upgrade/prep
 
 ::::{tip}
 Upgrade assistant should be run from the latest minor release before a major upgrade. When upgrading to 9.x, ensure you run 8.19.latest, and run the assistant there.
-Running the latest patched version of 8.19 will allow running the latest version of the upgrade assistant logic.
+Running the latest patched version of 8.19 will apply latest version of the upgrade assistant logic.
 ::::
 
 The assistant identifies deprecated settings in your configuration, and if any of those settings are enabled, it guides you through resolving issues that could prevent a successful upgrade. The Upgrade Assistant also helps resolve issues with older indices created before version 8.0.0, providing options to reindex older indices or mark them as read-only. 

@@ -29,7 +29,7 @@ The upgrade procedure depends on how your deployment is managed. If you're using
 This section provides guidance to help you plan and safely perform upgrades of your {{stack}} components, with a primary focus on {{es}} and {{kib}} as the core of the stack. It also covers upgrades for orchestration platforms like {{ece}} and {{eck}}, as well as related components such as APM, {{beats}}, {{agent}}, and {{ls}}.
 
 :::{important}
-In {{stack}} 9.0.0 and beyond, Enterprise Search is unavailable. For more information, refer to [Migrating to 9.x from Enterprise Search 8.x versions](https://www.elastic.co/guide/en/enterprise-search/8.18/upgrading-to-9-x.html).
+In {{stack}} 9.0.0 and beyond, Enterprise Search is unavailable. For more information, refer to [Migrating to 9.x from Enterprise Search 8.x versions](https://www.elastic.co/guide/en/enterprise-search/8.19/upgrading-to-9-x.html).
 :::
 
 ## Upgrade overview

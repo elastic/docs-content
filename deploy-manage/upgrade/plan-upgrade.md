@@ -15,9 +15,9 @@ products:
 ---
 # Plan your upgrade
 
-There are several important factors to consider before starting the upgrade process. Use the following recommendations to build a solid upgrade plan:
+There are several important factors to consider before starting the upgrade process. Use the following recommendations to build your upgrade plan:
 
-* Plan for an appropriate amount of time to complete the upgrade. Depending on your configuration and the size of your cluster, the process may take just a few minutes or several hours. In more complex environments, it could extend to a few weeks or more.
+* Plan for an appropriate amount of time to complete the upgrade. Depending on your configuration and the size of your cluster, the process might take just a few minutes or several hours. In more complex environments, the process can take up to a few weeks or more to complete.
 * Consider opening a [support case](https://support.elastic.co/) with Elastic to alert our Elastic Support team of your system change. If you need additional assistance, [Elastic Consulting Services](https://www.elastic.co/consulting) provides the technical expertise and step-by-step approach for upgrading your environment.
 * Schedule a system maintenance window within your organization.
 * When possible, perform testing of the upgrade process in a non-production environment.
@@ -36,12 +36,12 @@ Before upgrading, verify that your current environment supports the version you 
   * [ECE – Stack packs](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece_most_recent_elastic_stack_packs)
   * [ECK – {{stack}} compatibility](/deploy-manage/deploy/cloud-on-k8s.md#stack-compatibility)
 
-* **Rest API compatibility**: If you use custom-developed applications or clients, ensure the [{{es}} client libraries](/reference/elasticsearch-clients/index.md) are compatible with the target version. If your applications use deprecated or removed APIs, you may need to update the client code first.
+* **Rest API compatibility**: If you use custom-developed applications or clients, ensure the [{{es}} client libraries](/reference/elasticsearch-clients/index.md) are compatible with the target version. If your applications use deprecated or removed APIs, then you might need to update the client code first.
 
     ::::{note}
-    By default, 8.x {{es}} clients are compatible with 9.x and use [`REST API compatibility`](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} cluster.
+    By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} cluster.
 
-    `REST API compatibility` is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
+    REST API compatibility is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
     ::::
 
 * **Index compatibility**: {{es}} provides full query and write support for indices created in the previous major version. If you have indices created in 7.x or earlier, you must reindex, delete, or [archive](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) them before upgrading to 9.x. This topic is covered during the [upgrade preparations](prepare-to-upgrade.md#prepare-upgrade-from-8.x), with help from the Upgrade Assistant.
@@ -134,4 +134,4 @@ The minimum steps your plan should include are:
 
 ## Next steps
 
-Once you’ve planned your upgrade and defined a clear upgrade path for all the components, you can proceed to the [upgrade preparations](/deploy-manage/upgrade/prepare-to-upgrade.md).
+After you’ve planned your upgrade and defined a clear upgrade path for all the components, you can proceed to the [upgrade preparations](/deploy-manage/upgrade/prepare-to-upgrade.md).
