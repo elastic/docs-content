@@ -114,10 +114,6 @@ toc:
           - file: observability/apm/index.md
             children:
               - file: observability/apm/get-started.md
-                children:
-                  - file: observability/apm/get-started-serverless.md
-                  - file: observability/apm/get-started-fleet-managed-apm-server.md
-                  - file: observability/apm/get-started-apm-server-binary.md
               - file: observability/apm/data-types.md
                 children:
                   - file: observability/apm/spans.md
