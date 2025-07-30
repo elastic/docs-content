@@ -18,12 +18,6 @@ The chart below outlines the compatibility between different versions of Elastic
 | --- | --- |
 | `1.x` | ≥ `8.2` |
 
-## Android agent [_android_agent]
-
-| {{apm-agent}} version | APM integration version |
-| --- | --- |
-| `0.x` | ≥ `8.12` |
-
 ## Go agent [_go_agent]
 
 | {{apm-agent}} version | APM integration version |
