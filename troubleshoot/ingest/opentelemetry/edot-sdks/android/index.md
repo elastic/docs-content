@@ -159,7 +159,7 @@ API keys are the recommended way of authenticating the agent with your {{stack}}
 
 ### Use {{kib}}'s Applications UI
 
-Follow [this quick guide](../../../../../solutions/observability/apm/api-keys.md#create-an-api-key) and leave all the settings with their default values.
+Follow [this quick guide](../../../../../solutions/observability/apm/api-keys.md#apm-create-an-api-key) and leave all the settings with their default values.
 
 ### Use REST APIs
 
