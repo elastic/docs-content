@@ -806,7 +806,7 @@ POST passage_vectors/_search
 stack: ga 9.2
 ```
 
-Nested knn search also allows to do pre-filtering on sibling nested fields.
+Nested knn search also allows pre-filtering on sibling nested fields.
 For example, given "paragraphs" and "metadata" as nested fields, we can search "paragraphs.vector" and filter by "metadata.key" and "metadata.value".
 
 ```console
