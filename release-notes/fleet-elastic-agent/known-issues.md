@@ -34,7 +34,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true}'
 ```
 
@@ -45,7 +45,7 @@ curl --request POST \
   --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
   --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
   --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: as' \
+  --header 'kbn-xsrf: true' \
   --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
 ```
 :::
