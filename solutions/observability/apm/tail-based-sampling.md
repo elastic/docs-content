@@ -210,6 +210,12 @@ APM Server makes a sampling decision based on the configured policies when a dis
 
 A common cause for this issue is, for example, assuming that service A always produces the root transaction while in reality there can be a service B before service A. However, service B is not instrumented or it is instrumented to send to a separate APM Server cluster. To resolve this issue, either fix service B's instrumentation to send to the same APM Server cluster as service A, or adjust service A's trace continuation strategy.
 
-TODO: add ESQL to find traces with missing parent
+To identify traces missing a root transaction, use the following ESQL in a time range when tail-based sampling is disabled. Query with a short time range to avoid too many results in response.
+```
+FROM "traces-apm-*"
+| STATS total_docs = COUNT(*), total_child_docs = COUNT(parent.id)  BY trace.id, transaction.id
+| WHERE total_docs == total_child_docs
+| KEEP trace.id, transaction.id
+```
 
 ::::
