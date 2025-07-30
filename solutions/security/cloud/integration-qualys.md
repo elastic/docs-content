@@ -15,7 +15,7 @@ This page explains how to make data from the Qualys Vulnerability Management, De
 - **Findings page**: Data appears on the [Vulnerabilities](/solutions/security/cloud/findings-page-3.md) tab.
 - **Alert and Entity details flyouts** Applicable data appears in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section).
 
-:::{NOTE}
+:::{note}
 Data from this integration does not appear on the [CNVM dashboard](/solutions/security/cloud/cnvm-dashboard.md).
 :::
 
@@ -27,6 +27,6 @@ In order for Qualys VMDR data to appear in these workflows:
 - ({{stack}} users) Ensure you're on at least v8.16.
 - Make sure the integration version is at least 6.0.0
 
-:::{NOTE}
+:::{note}
 You can ingest data from the Qualys VMDR integration for other purposes without following these steps.
 :::
