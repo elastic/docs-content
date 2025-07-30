@@ -1,10 +1,10 @@
 ---
-description: Learn how Elastic handles versioning and feature availability in the docs. Find the product versions that are supported, how to read availability badges, and...
 navigation_title: Versioning and availability
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/introducing-elastic-documentation.html
 products:
   - id: elastic-stack
+description: Learn how Elastic handles versioning and feature availability in the docs. Find the product versions that are supported, how to read availability badges, and...
 ---
 
 # Versioning and availability in Elastic Docs
@@ -98,9 +98,9 @@ To make sure you're always viewing the most up-to-date and relevant documentatio
 
 Understanding {{stack}} versioning is essential for [upgrade planning](/deploy-manage/upgrade.md) and ensuring compatibility.
 
-## Understanding feature availability
+## Availability of features
 
-Features can differ based on deployment type, product lifecycle stage, and specific version.
+The features available to you can differ based on deployment type, product lifecycle stage, and specific version.
 
 ### Feature availability factors
 
@@ -110,11 +110,9 @@ Features can differ based on deployment type, product lifecycle stage, and speci
 | **Lifecycle state** | The development or support status of the feature (GA, Beta, etc.) |
 | **Version** | The specific version the lifecycle state applies to |
 
-Features may have different availability states between:
+### Lifecycle states
 
-### Lifecrycle state definitions
-
-| State | Description |
+| Lifecycle state | Description |
 |-------|-------------|
 | **Generally Available (GA)** | Production-ready feature (default if not specified) |
 | **Beta** | Feature is nearing general availability but not yet production-ready |
@@ -123,8 +121,8 @@ Features may have different availability states between:
 
 ### Examples of where availability can vary
 
-- **[Elastic Stack](the-stack.md)** versions (e.g., 9.0, 9.1)
-- **Deployment types** (and deployment versions)
+- **[Elastic Stack](the-stack.md)** versions (for example, 9.0, 9.1)
+- **Deployment types and versions** 
   - [Elastic Cloud Hosted](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
   - [Elastic Cloud Serverless](/deploy-manage/deploy/elastic-cloud/serverless.md)
   - [Self-managed deployments](/deploy-manage/deploy/self-managed.md)
@@ -133,21 +131,21 @@ Features may have different availability states between:
   - [Elastic Cloud on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md)
     - ECK deployment versions (for example, 3.0.0)
 - **Serverless project types**
-  - Security
-  - Elasticsearch
-  - Observability
+  - {{es}}
+  - {{observability}}
+  - {{elastic-sec}}
 
-## Product version coverage
+## Find docs for your product version
 
-Elastic Docs contains documentation for the following product versions.
+Find the documentation for your Elastic product versions.
 
-#### Core products and deployments
+### Core products and deployments
 
 | Product | Version |
 | --- | --- |
 | {{stack}}<br><br>Includes {{es}}, {{kib}}, {{ls}}, {{fleet}}, <br>{{agent}}, Beats, APM, and query languages | 9.0.0+ |
-| Security solution | 9.0.0+ |
-| Observability solution | 9.0.0+ |
+| {{observability}} | 9.0.0+ |
+| {{elastic-sec}} | 9.0.0+ |
 | {{serverless-full}} (all project types) | All |
 | {{ech}} | All*  |
 | {{ece}} | 4.0.0+ |
@@ -155,7 +153,7 @@ Elastic Docs contains documentation for the following product versions.
 
 \* Excludes release notes before January 2025
 
-#### Schemas, libraries, and tools
+### Schemas, libraries, and tools
 
 | Product | Version |
 | --- | --- |
@@ -170,7 +168,7 @@ Elastic Docs contains documentation for the following product versions.
 | Elastic integrations | All |
 | Elastic Search UI library | All |
 
-#### APM agents and tools
+### APM agents and tools
 
 | Product | Version |
 | --- | --- |

@@ -1,10 +1,10 @@
 ---
-description: Explore the new features, enhancements, fixes, and deprecations for Elastic Stack 9.0+ (latest: 9.1.0), Elastic Cloud Serverless, and...
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/new.html
   - https://www.elastic.co/guide/en/elastic-stack/current/elastic-stack-breaking-changes.html
 products:
   - id: elastic-stack
+description: Explore the new features, enhancements, fixes, and deprecations for Elastic Stack 9.0+ (latest: 9.1.0), Elastic Cloud Serverless, and...
 ---
 
 # Elastic release notes [elastic-release-notes]
