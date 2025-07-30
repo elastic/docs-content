@@ -439,6 +439,12 @@ These options can vary depending on the type of chart.
 **Missing values**
 :   For **Area** and **Line** charts. Choose between **Hide**, **Zero**, **Linear**, **Last**, and **Next**. This option controls how gaps in data appear on the chart. By default, gaps are hidden.
 
+    _Missing values_ include empty buckets and metrics: Buckets without documents or metrics that returned `null` due to their operation and data content.
+    
+    ```{note}
+    You can only use this option when the **Include empty rows** option of the chart is enabled or when a metric produces a null bucket. For example, if a moving average finds empty buckets.
+    ```
+
     * **Hide**: Don't show gaps in data.
       
       ![Hide missing values](../images/charts-gaps-fill-hide.png "Hide missing values =50%")
