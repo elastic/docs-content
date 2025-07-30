@@ -1,5 +1,6 @@
 ---
 applies_to:
+  stack:
   deployment:
     self: all
 products:

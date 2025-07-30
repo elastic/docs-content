@@ -15,7 +15,7 @@ An {{es}} cluster can be upgraded one node at a time so upgrading does not inter
 Upgrading from a release candidate build, such as 9.0.0-rc1, is unsupported. Use pre-releases only for testing in a temporary environment.
 :::
 
-Before you start, [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md).
+Before you start the rolling upgrade procedure, [plan your upgrade](/deploy-manage/upgrade/plan-upgrade.md) and [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md).
 
 ## {{es}} nodes upgrade order
 

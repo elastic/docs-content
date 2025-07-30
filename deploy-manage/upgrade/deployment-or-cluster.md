@@ -57,9 +57,8 @@ If you’re using self-managed infrastructure - either on-prem or public cloud -
 * [Upgrade your deployment on {{ece}} (ECE)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md)
 * [Upgrade your deployment on {{eck}} (ECK)](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-eck.md)
 
-::::{note}
-With [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), upgrades are fully managed by Elastic. Users automatically receive the latest features and improvements, with no need to plan or perform upgrade steps.
-::::
+:::{include} /deploy-manage/_snippets/serverless-upgrade.md
+:::
 
 ## Next steps
 

@@ -20,9 +20,8 @@ Upgrading to the latest version provides access to the newest Elastic features, 
 
 As Elastic releases new versions, older versions of Elastic products reach their end of life on a set schedule. To keep your deployment supported, stay up to date. For more information, refer to [Product End of Life Dates](https://www.elastic.co/support/eol).
 
-::::{note}
-With [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), upgrades are fully managed by Elastic. Users automatically receive the latest features and improvements, with no need to plan or perform upgrade steps.
-::::
+:::{include} /deploy-manage/_snippets/serverless-upgrade.md
+:::
 
 The upgrade procedure depends on how your deployment is managed. If you're using {{ech}} or {{ece}}, upgrades can often be performed with a single click in the {{ecloud}} UI. For self-managed deployments, upgrades must be carried out manually using a rolling upgrade process, upgrading the nodes one by one to minimize downtime and ensure cluster stability.
 
