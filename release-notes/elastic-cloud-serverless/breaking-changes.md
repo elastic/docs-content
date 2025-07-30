@@ -1,7 +1,5 @@
 ---
 navigation_title: Breaking changes
-mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/serverless-changelog.html
 products:
   - id: cloud-serverless
 ---
