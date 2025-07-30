@@ -225,6 +225,7 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
+                  - file: deploy/cloud-on-k8s/propagate-labels-annotations.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
                   - file: deploy/cloud-on-k8s/recipes.md
                   - file: deploy/cloud-on-k8s/connect-to-external-elastic-resources.md
