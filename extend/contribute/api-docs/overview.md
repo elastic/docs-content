@@ -62,7 +62,7 @@ The generated Schema JSON and OpenAPI documents feed into client libraries (and 
 <!-- 
 flowchart TD
     A[TypeScript API definitions] -->|compiled| B[Schema JSON]
-    F[JSON spec files] -->|merged| B
+    F[REST API spec] -->|merged| B
     G[YAML example files] --> B
     G -->|auto-translated| P[Programming language examples] --> B
     B -->|converted| C1[OpenAPI for docs]
