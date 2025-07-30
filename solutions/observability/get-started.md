@@ -18,30 +18,14 @@ New to Elastic {{observability}}? Discover more about our observability features
 
 ## Get started with your use case [get-started-with-use-case]
 
-Learn how to spin up a deployment on {{ech}} or create an {{obs-serverless}} project and use Elastic {{observability}} to gain deeper insight into the behavior of your applications and systems.
+Learn how to create an {{obs-serverless}} project and use Elastic {{observability}} to gain deeper insight into the behavior of your applications and systems.
 
 :::::::{stepper}
 
 ::::::{step} Create an Observability project
 
-An {{obs-serverless}} project allows you to run {{obs-serverless}} in an autoscaled and fully-managed environment, where you don’t have to manage the underlying {{es}} cluster or {{kib}} instances.
-
-::::{dropdown} Steps for creating a project
-:::{note}
-The **Admin** role or higher is required to create projects. Refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
+:::{include} /solutions/_snippets/obs-serverless-project.md
 :::
-
-1. Navigate to [cloud.elastic.co](https://cloud.elastic.co/) and log in to your account, or create one.
-2. Select **Create serverless project**.
-3. Under **Elastic for Observability**, select **Next**.
-4. Enter a name for your project.
-5. (Optional) Select **Edit settings** to change your project settings:
-
-    * **Cloud provider**: The cloud platform where you’ll deploy your project. We currently support Amazon Web Services (AWS).
-    * **Region**: The [region](/deploy-manage/deploy/elastic-cloud/regions.md) where your project will live.
-
-6. Select **Create project**. It takes a few minutes to create your project.
-7. When the project is ready, click **Continue**.
 
 For other types of deployments, refer to [Deploy](/deploy-manage/deploy.md). For a breakdown of the differences between deployment types and what they support, refer to [Detailed deployment comparison](/deploy-manage/deploy/deployment-comparison.md).
 ::::
@@ -121,30 +105,9 @@ Refer to [LLM observability](/solutions/observability/applications/llm-observabi
 
 ::::::{step} Collect application traces, metrics, and logs
 
-Bring traces, logs, and metrics into Elastic APM to help you troubleshoot and optimize your applications. You can collect this data using OpenTelemetry or APM Server.
+::::{include} /solutions/_snippets/obs-apm-project.md
+::::
 
-:::::{dropdown} Steps for collecting application traces, metrics, and logs
-
-::::{tab-set}
-:::{tab-item} OpenTelemetry
-
-The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) facilitate the collection of traces, metrics, and logs in OpenTelemetry format into Elastic APM.
-
-1. Select **Add data** from the main menu and then select **Application**.
-2. Select **OpenTelemetry**.
-3. Follow the instructions for your platform.
-:::
-
-:::{tab-item} APM agents
-
-Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to collect traces, metrics, and logs through [APM Server](/solutions/observability/apm/configure-apm-server.md).
-
-1. Select **Add data** from the main menu and then select **Application**.
-2. Select **Elastic APM**.
-3. Select the tab for your language or framework.
-4. Follow the instructions in the tab.
-:::
-:::::
 ::::::
 
 ::::::{step} Add Synthetics monitoring
