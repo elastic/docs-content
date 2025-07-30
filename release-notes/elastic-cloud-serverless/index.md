@@ -212,9 +212,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## June 23, 2025 [serverless-changelog-06232025]
 
-### Breaking changes [serverless-changelog-06232025-breaking-changes]
-* {{esql}}: Disallows mixed quoted/unquoted patterns in `FROM` commands [#127636]({{es-pull}}127636)
-
 ### Features and enhancements [serverless-changelog-06232025-features-enhancements]
 
 * Adds new setting `xpack.actions.webhook.ssl.pfx.enabled` to disable PFX file support for SSL client authentication in Webhook connectors [#222507]({{kib-pull}}222507)
