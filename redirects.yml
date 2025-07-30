@@ -13,9 +13,9 @@ redirects:
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'
   'solutions/observability/apps/application-performance-monitoring-apm.md': 'solutions/observability/apm/index.md'
   'solutions/observability/apps/get-started-with-apm.md': 'solutions/observability/apm/get-started.md'
-  'solutions/observability/apps/get-started-apm-serverless.md': 'solutions/observability/apm/get-started-serverless.md'
-  'solutions/observability/apps/fleet-managed-apm-server.md': 'solutions/observability/apm/get-started-fleet-managed-apm-server.md'
-  'solutions/observability/apps/apm-server-binary.md': 'solutions/observability/apm/get-started-apm-server-binary.md'
+  'solutions/observability/apps/get-started-apm-serverless.md': 'solutions/observability/apm/get-started.md'
+  'solutions/observability/apps/fleet-managed-apm-server.md': 'reference/fleet/get-started-managed-apm-server.md'
+  'solutions/observability/apps/apm-server-binary.md': 'reference/fleet/get-started-apm-server-binary.md'
   'solutions/observability/apps/learn-about-application-data-types.md': 'solutions/observability/apm/data-types.md'
   'solutions/observability/apps/spans.md': 'solutions/observability/apm/spans.md'
   'solutions/observability/apps/transactions.md': 'solutions/observability/apm/transactions.md'
@@ -295,3 +295,8 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2136
   'deploy-manage/security/fips-140-2.md': 'deploy-manage/security/fips.md'
+
+# Related to
+  'solutions/observability/apm/get-started-serverless.md': 'solutions/observability/apm/get-started.md'
+  'solutions/observability/apm/get-started-fleet-managed-apm-server.md': 'reference/fleet/get-started-managed-apm-server.md'
+  'solutions/observability/apm/get-started-apm-server-binary.md': 'reference/fleet/get-started-apm-server-binary.md'
