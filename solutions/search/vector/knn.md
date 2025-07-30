@@ -676,14 +676,15 @@ Note below that even though we have 4 total vectors, we still return two documen
 ```
 
 #### Filtering in nested KNN search [nested-knn-search-filtering]
-What if you wanted to filter by some top-level or nested metadata? You can do this by adding `filter` to your `knn` clause.
+Want to filter by metadata? You can do this by adding `filter` to your `knn` clause.
 
-::::{note}
-To ensure correct results: each individual filter must be either over
-the top-level metadata or `nested` metadata. However, a single knn search
-supports multiple filters, where some filters can be over the top-level
-metadata and some over nested.
-::::
+To ensure correct results, each individual filter must be either over:
+
+-  Top-level metadata 
+- `nested` metadata {applies_to}`stack: ga 9.2`
+  :::{note}
+  A single `knn` search supports multiple filters, where some filters can be over the top-level metadata and some over nested.
+  :::
 
 
 ```console
@@ -699,12 +700,12 @@ POST passage_vectors/_search
         "field": "paragraph.vector",
         "k": 2,
         "filter": {
-          "range": {
-              "creation_time": {
-                  "gte": "2019-05-01",
-                  "lte": "2019-05-05"
-              }
-          }
+            "range": {
+                "creation_time": {
+                    "gte": "2019-05-01",
+                    "lte": "2019-05-05"
+                }
+            }
         }
     }
 }
@@ -747,6 +748,11 @@ Now we have filtered based on the top level `"creation_time"` and only one docum
 }
 ```
 
+##### Filtering on nested metadata [nested-knn-search-filtering-nested-metatadata]
+```{applies_to}
+stack: ga 9.2
+```
+
 Below we filter on nested metadata.
 When scoring parents' documents this query only considers vectors that
 have "paragraph.language" set to "EN".
@@ -763,9 +769,9 @@ POST passage_vectors/_search
         "field": "paragraph.vector",
         "k": 2,
         "filter": {
-          "match": {
-            "paragraph.language": "EN"
-          }
+            "match": {
+                "paragraph.language": "EN"
+            }
         }
     }
 }
@@ -774,7 +780,7 @@ POST passage_vectors/_search
 Below we have two filters: one over nested metadata
 and another over the top level metadata. For scoring parents' documents,
 this query only considers vectors that have "paragraph.language" set to "EN" 
-and  whose parent's have creation time within the request range.
+and whose parents have creation time within the request range.
 
 ```console
 POST passage_vectors/_search
@@ -796,6 +802,10 @@ POST passage_vectors/_search
 ```
 
 #### Filtering by sibling nested fields in nested KNN search [nested-knn-search-filtering-sibling]
+```{applies_to}
+stack: ga 9.2
+```
+
 Nested knn search also allows to do pre-filtering on sibling nested fields.
 For example, given "paragraphs" and "metadata" as nested fields, we can search "paragraphs.vector" and filter by "metadata.key" and "metadata.value".
 
