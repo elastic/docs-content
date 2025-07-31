@@ -27,7 +27,7 @@ You can visualize events from the following sources:
 
 * {{elastic-defend}} integration
 * Sysmon data collected through {{winlogbeat}}
-* [CrowdStrike integration](integration-docs://reference/crowdstrike.md) ([Falcon](integration-docs://reference/crowdstrike.md#falcon) or [FDR](integration-docs://reference/crowdstrike.md#fdr) logs)
+* [CrowdStrike integration](integration-docs://reference/crowdstrike.md) (Falcon logs collected through Event Stream or FDR)
 * [SentinelOne Cloud Funnel integration](integration-docs://reference/sentinel_one_cloud_funnel.md)
 
 In KQL, this translates to any event with the `agent.type` set to:
