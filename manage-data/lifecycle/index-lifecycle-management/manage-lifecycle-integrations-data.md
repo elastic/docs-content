@@ -1,0 +1,62 @@
+---
+navigation_title: Manage the lifecycle for integrations data
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
+---
+
+# Manage the lifecycle for integrations data [ilm-manage-data-from-integrations]
+
+An Elastic integration is a pre-packaged collection of assets that provides an effective, simplified way to monitor a product, system, or service, with minimal required setup. Most integrations rely on {{agent}} as an ingest mechanism, and the policies used to govern installed integrations are managed in {{fleet}}.
+
+You can find setup and configuration details for all integrations in the [Elastic integrations](https://docs.elastic.co/en/integrations) reference documentation. To learn about managing your installed integrations, refer to [Manage Elastic Agent integrations](/reference/fleet/manage-integrations.md).
+
+When you install an integration, an ILM policy is configured automatically to manage the integration's component [data streams](/manage-data/data-store/data-streams.md) and their backing indices. To view or adjust how your integration data is managed, a first step is to find the data streams that you're interested in. There are a few ways to do this:
+
+::::{dropdown} Find the data stream for a {{kib}} visualation
+To find the data stream associated with a visualization in {{kib}}:
+
+1. Open **Dashboards** in {{kib}} and select a dashboard. For example, with the [System integration](integration-docs://reference/system.md) installed, you can open the `[Metrics System] Host overview` dashboard to find visualizations about the system being monitored.
+
+1. On the dashboard, hover over a visualization and click the **Explore in Discover** icon.
+
+    ![Explore in discover](/manage-data/images/ilm-explore-in-discover.png "")
+
+1. In **Discover**, select a document and click the **Toggle dialog with details** icon.
+
+    ![Toggle dialog with details](/manage-data/images/ilm-toggle-document-details.png "")
+
+1. Note that there are three `data_stream` fields: `data_stream.dataset`, `data_stream.namespace`, and `data_stream.type`.
+
+    ![Toggle dialog with details](/manage-data/images/ilm-document-data-stream.png "")
+
+    The [data stream name](/reference/fleet/data-streams.md#data-streams-naming-scheme) is a composite of the `data_stream` fields: `data_stream.type`, `data_stream.dataset` and `data_stream.namespace`, separated by a hyphen. 
+
+    For example, in the System integration, the **CPU usage over time** visualization is associated with the `metrics-system.cpu-default` data stream.
+::::
+
+::::{dropdown} Find the data streams for an integration
+To find the data streams associated with an installed integration:
+
+1. Go to **Integrations > Installed integrations** and select an integration.
+
+1. Open the **Assets** tab and expand **Index templates**
+
+   In the list of [index templates](/manage-data/data-store/templates.md), each template name matches the type and dataset of an associated data stream. For example, the `metrics-system.cpu` template matches the `metrics-system.cpu-default` data stream that is set up when the System integration is installed.
+::::
+
+::::{dropdown} Find the data streams managed in {{fleet}}
+To find the all of data streams that are managed in {{fleet}}:
+
+1. In {{fleet}}, select the **Data streams** tab.
+
+1. Use the search field and dropdown menus to filter the list. You can filter by the data stream type, dataset, namespace, or by the integration that the data stream belongs to.
+::::
+
+For any data stream that you're interested in, you can [view its current lifecycle status](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy. 
+
+Then, when you've identified one or more data streams for which you'd like to customize how the data is managed over time, refer to our tutorials:
+
+* For a general guide about configuring a custom ILM policy for any managed data stream, try out our [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
+* For the steps to customize an ILM policy for a set of data streams, such as all logs or metrics data streams across all namespaces, across only a selected namespace, and others, check the set of tutorials in [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
