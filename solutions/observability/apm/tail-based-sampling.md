@@ -219,3 +219,13 @@ FROM "traces-apm-*"
 ```
 
 ::::
+
+:::{dropdown} Q: What happens if the storage limit is reached?
+
+When the storage limit for tail-based sampling is reached, APM Server can no longer store new trace events for sampling. By default, when this occurs, traces bypass sampling and are always indexed (sampling rate becomes 100%). This sudden increase in indexing can overload Elasticsearch, as it must now handle all incoming traces instead of just the sampled subset.
+
+To prevent Elasticsearch from being overloaded in this scenario, you can enable the [`discard_on_write_failure`](#sampling-tail-discard-on-write-failure-ref) setting. When set to `true`, APM Server will discard traces that cannot be written due to storage or indexing failures, rather than indexing them all. This helps protect Elasticsearch from excessive load, but enabling this option can result in data loss and broken traces, so it should be used with caution and only when system stability is a priority.
+
+For more details, see the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) section above.
+
+:::
