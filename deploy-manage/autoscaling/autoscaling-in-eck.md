@@ -177,7 +177,7 @@ spec:
           max: 512Gi
 ```
 
-You can find [a complete example in the ECK GitHub repository](https://github.com/elastic/cloud-on-k8s/blob/{{eck_release_branch}}/config/recipes/autoscaling/elasticsearch.yaml) which will also show you how to fine-tune the [autoscaling deciders](/deploy-manage/autoscaling/autoscaling-deciders.md).
+You can find [a complete example in the ECK GitHub repository](https://github.com/elastic/cloud-on-k8s/blob/{{version.eck | M.M}}/config/recipes/autoscaling/elasticsearch.yaml) which will also show you how to fine-tune the [autoscaling deciders](/deploy-manage/autoscaling/autoscaling-deciders.md).
 
 
 #### Change the polling interval [k8s-autoscaling-polling-interval]
