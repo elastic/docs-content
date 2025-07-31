@@ -56,9 +56,23 @@ You can ingest your data before migrating your rules, or migrate your rules firs
 
 6. After you upload your Splunk rules, Automatic Migration will detect whether they use any Splunk macros or lookups. If so, follow the instructions which appear to export and upload them. Alternatively, you can complete this step later — however, until you upload them, some of your migrated rules will have a `partially translated` status. If you upload them now, you don't have to wait on the page for them to be processed — a notification will appear when processing is complete.
 
-7. Click **Translate** to start the rule translation process. You don't need to stay on this page. A notification will appear when the process is complete.
+7. Click **Translate** to start the rule translation process. You don't need to stay on this page. A notification will appear when the process is complete. A name for this migration is automatically created. If necessary, use the **More actions** ({icon}`boxes_vertical`) button to rename or pause the migration. 
 
-8. When migration is complete, click the notification or return to the **Get started** page then click **View translated rules** to open the **Translated rules** page.
+   ::::{image} /solutions/images/security-siem-migration-rule-status-more-actions.png
+   :alt: The rule migration status view
+   :width: 850px
+   :screenshot:
+   ::::
+
+8. Use the **Add SIEM data with Integrations** section to set up data ingestion from third-party sources. If at least one rule migration has completed, the **Recommended** tab shows integrations that provide the data needed by your translated rules. These include both Elastic-managed integrations and any applicable custom creations you made using [automatic import](/solutions/security/get-started/automatic-import.md).
+
+   ::::{image} /solutions/images/security-siem-migration-integrations-panel.png
+   :alt: The add integrations panel.
+   :width: 850px
+   :screenshot:
+   ::::
+
+9. When migration is complete, click the notification or return to the **Get started** page then click **View translated rules** to open the **Translated rules** page.
 
 
 ## The Translated rules page
@@ -98,7 +112,15 @@ The table's fields are as follows:
 
 * **Author:** Shows one of two possible values: `Elastic`, or `Custom`. Elastic-authored rules are created by Elastic and update automatically. Custom rules are translated by the Automatic Migration tool or your team, and do not update automatically.
 * **Integrations:** Shows the number of Elastic integrations that must be installed to provide data for the rule to run successfully.
-* **Actions:** Allows you to click **Install** to add a rule to Elastic. Installed rules must also be enabled before they will run. To install rules in bulk, select the check box at the top of the table before clicking **Install**.
+* **Actions:** 
+  * To add a rule to Elastic, select one or more `translated` rules then click **Install**. Then select them again and click **Enable**.
+  * To reprocess a rule using the same or a different LLM connector, select one or more rules that weren't successfully translated then click **Reprocess**. A menu appears where you can select which AI connector to use. 
+
+::::{image} /solutions/images/security-siem-migration-reprocess-modal.png
+:alt: The reprocess rule modal
+:width: 450px
+:screenshot:
+::::
 
 ## Finalize translated rules
 
