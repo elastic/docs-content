@@ -407,6 +407,7 @@ toc:
               - file: observability/logs/categorize-log-entries.md
               - file: observability/logs/inspect-log-anomalies.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
+          - file: observability/logs/log-data-sources.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
           - file: observability/logs/streams/streams.md
@@ -476,6 +477,7 @@ toc:
               - file: security/get-started/enable-threat-intelligence-integrations.md
               - file: security/get-started/automatic-migration.md
               - file: security/get-started/automatic-import.md
+              - file: security/get-started/content-connectors.md
               - file: security/get-started/agentless-integrations.md
               - file: security/get-started/agentless-integrations-faq.md
           - file: security/get-started/spaces-elastic-security.md
