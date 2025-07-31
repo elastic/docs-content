@@ -22,13 +22,14 @@ Adding indices to the `observability:logSources` setting that don't contain log 
 ::::{important}
 Using the `saved_objects` API to import log data sources has the following limitations:
 
-* To import the log data source, you need to import the entire **Advanced Settings** saved object, meaning you'll be importing all advanced settings, not just the `logSources` setting.
+* To import the log data source, you need to import the entire **Advanced Settings** saved object.This overwrites any other changes that you've made to your Advanced Settings in the target cluster, not just `observability:logSources`.
 * This approach is backward compatible, but not forward compatible. You cannot import the settings from an older version to a newer version.
 ::::
 
 To configure log data sources using the `saved_objects` API and the **Advanced Settings** saved object:
 
-1. Go to **Saved Objects** from the navigation menu under **Management** or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. [Export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) the **Advanced Settings** saved object to use as a template.
-1. Add or modify the `observability:logSources` setting in the exported JSON.
-1. Import the saved object using the [import saved objects API]({{kib-apis}}/operation/operation-importsavedobjectsdefault).
+1. Go to **Stack Management** → **Advanced Settings** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Configure your custom log sources in `observability:logSources`.
+1. Go to **Stack Management** → **Saved Objects** from the navigation or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. [Export](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) the **Advanced Settings** saved object.
+1. Import the saved object to your target cluster using the [import saved objects API]({{kib-apis}}/operation/operation-importsavedobjectsdefault).
