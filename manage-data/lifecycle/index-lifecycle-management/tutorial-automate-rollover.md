@@ -11,11 +11,11 @@ products:
 
 When you continuously index timestamped documents into {{es}}, you typically use a [data stream](../../data-store/data-streams.md) so you can periodically [roll over](rollover.md) to a new index. This enables you to implement a [hot-warm-cold architecture](../data-tiers.md) to meet your performance requirements for your newest data, control costs over time, enforce retention policies, and still get the most out of your data.
 
-To simplify index management and [automate rollover](/manage-data/lifecycle/index-lifecycle-management/rollover.md#ilm-automatic-rollover), select one of the scenarios that best applies to your situation:
+To simplify index management and automate rollover, select one of the scenarios that best applies to your situation:
 
-* When ingesting write-once, timestamped data that doesn't change, follow the steps in [Manage time series data with data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-with-data-streams) for simple, automated data stream rollover. ILM-managed backing indices are automatically created under a single data stream alias. ILM also tracks and transitions the backing indices through the lifecycle automatically. 
-* [Data streams](../../data-store/data-streams.md) are best suited for [append-only](../../data-store/data-streams.md#data-streams-append-only) use cases. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. You can still use [ILM](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) to manage and [roll over](rollover.md) the alias’s indices. Skip to [Manage time series data without data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams).
-* If some of your indices store data that isn't timestamped, but you would like to get the benefits of automatic rotation when the index reaches a certain size or age, or delete already rotated indices after a certain amount of time, follow the steps in [Manage general content with data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams). These steps include injecting a timestamp field during indexing time to mimic time series data.
+* **Roll over data streams with ILM.** When ingesting write-once, timestamped data that doesn't change, follow the steps in [Manage time series data with data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-with-data-streams) for simple, automated data stream rollover. ILM-managed backing indices are automatically created under a single data stream alias. ILM also tracks and transitions the backing indices through the lifecycle automatically. 
+* **Roll over time series indices with ILM.** Data streams are best suited for [append-only](../../data-store/data-streams.md#data-streams-append-only) use cases. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. You can still use [ILM](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) to manage and roll over the alias’s indices. Follow the steps in [Manage time series data without data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams) for more information.
+* **Roll over general content as data streams with ILM.** If some of your indices store data that isn't timestamped, but you would like to get the benefits of automatic rotation when the index reaches a certain size or age, or delete already rotated indices after a certain amount of time, follow the steps in [Manage general content with data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams). These steps include injecting a timestamp field during indexing time to mimic time series data.
 
 
 ## Manage time series data with data streams [manage-time-series-data-with-data-streams]
@@ -300,10 +300,12 @@ GET timeseries-*/_ilm/explain
 
 ## Manage general content with data streams [manage-general-content-with-data-streams]
 
-[Data streams](/manage-data/data-store/data-streams.md) are specifically designed for time series data.
-If you want to manage general content (data without timestamps) with data streams, you can set up [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to transform and enrich your general content at [ingest](/manage-data/ingest.md) time, so that you can transition from periodic indices to a data stream and get the benefits of time-based data management.
+Data streams are specifically designed for time series data.
+If you want to manage general content (data without timestamps) with data streams, you can set up [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to transform and enrich your general content by adding a timestamp field at [ingest](/manage-data/ingest.md) time and get the benefits of time-based data management.
 
-To migrate your general content from indices to a data stream, you:
+For example, search use cases such as knowledge base, website content, e-commerce, or product catalog search, might require you to frequently index general content (data without timestamps). As a result, your index can grow significantly over time, which might impact storage requirements, query performance, and cluster health. Following the steps in this procedure (including a timestamp field and moving to ILM-managed data streams) can help you rotate your indices in a simpler way, based on their size or lifecycle phase.
+
+To roll over your general content from indices to a data stream, you:
 
 1. [Create an ingest pipeline](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-ingest) to process your general content and add a `@timestamp` field.
 
@@ -313,13 +315,13 @@ To migrate your general content from indices to a data stream, you:
 
 1. [Create a data stream](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-create-stream).
 
-1. [Reindex with a data stream](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-reindex) to copy your documents from an existing index to the data stream you created.
+1. *Optional:* If you have an existing, non-managed index and want to migrate your data to the data stream you created, [reindex with a data stream](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-reindex).
 
-1. [Roll over](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-roll-over) the reindexed data stream so that the lifecycle policy and ingest pipeline you created will be applied to new data.
+1. *Optional:* To check if your index gets rotated, you can [roll over](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-roll-over).
 
 1. [Update your ingest endpoint](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-endpoint) to target the created data stream.
 
-1. Optional: You can use the [ILM explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to get status information for your managed indices.
+1. *Optional:* You can use the [ILM explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to get status information for your managed indices.
 For more information, refer to [Check lifecycle progress](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-check-progress).
 
 
@@ -421,9 +423,9 @@ Create a data stream using the [_data_stream API](https://www.elastic.co/docs/ap
 PUT /_data_stream/movetods
 ```
 
-### Reindex your data with a data stream [manage-general-content-with-data-streams-reindex]
+### Optional: Reindex your data with a data stream [manage-general-content-with-data-streams-reindex]
 
-To copy your documents from an existing index to the data stream you created, reindex with a data stream using the [_reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex):
+If you want to copy your documents from an existing index to the data stream you created, reindex with a data stream using the [_reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex):
 
 ```console
 POST /_reindex
@@ -442,7 +444,7 @@ POST /_reindex
 For more information, check [Reindex with a data stream](../../data-store/data-streams/use-data-stream.md#reindex-with-a-data-stream).
 
 
-### Roll over the reindexed data stream [manage-general-content-with-data-streams-roll-over]
+### Optional: Roll over the reindexed data stream [manage-general-content-with-data-streams-roll-over]
 
 Use the [_rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to create a new write index for the stream. This ensures that the lifecycle policy and ingest pipeline you've created will apply to any new documents that you index.
 
