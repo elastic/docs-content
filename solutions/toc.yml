@@ -89,6 +89,7 @@ toc:
               - file: search/search-applications/search-application-client.md
       - file: search/apis-and-tools.md
       - file: search/ai-assistant.md
+      - file: search/query-rules-ui.md
   - file: observability.md
     children:
       - file: observability/get-started.md
@@ -113,10 +114,6 @@ toc:
           - file: observability/apm/index.md
             children:
               - file: observability/apm/get-started.md
-                children:
-                  - file: observability/apm/get-started-serverless.md
-                  - file: observability/apm/get-started-fleet-managed-apm-server.md
-                  - file: observability/apm/get-started-apm-server-binary.md
               - file: observability/apm/data-types.md
                 children:
                   - file: observability/apm/spans.md
@@ -133,6 +130,7 @@ toc:
                     children:
                       - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
                       - file: observability/apm/collect-metrics.md
+                      - file: observability/apm/edot-sdks-central-configuration.md
                       - file: observability/apm/limitations.md
                       - file: observability/apm/attributes.md
                       - file: observability/apm/data-stream-routing.md
@@ -616,6 +614,9 @@ toc:
               - file: security/cloud/ingest-cncf-falco-data.md
               - file: security/cloud/ingest-aws-security-hub-data.md
               - file: security/cloud/ingest-wiz-data.md
+              - file: security/cloud/integration-qualys.md
+              - file: security/cloud/integration-tenablevm.md
+              - file: security/cloud/integration-rapid7.md
       - file: security/investigate.md
         children:
           - file: security/investigate/timeline.md
@@ -657,6 +658,7 @@ toc:
           - file: security/explore/users-page.md
       - file: security/advanced-entity-analytics.md
         children:
+          - file: security/advanced-entity-analytics/overview.md 
           - file: security/advanced-entity-analytics/entity-risk-scoring.md
             children:
               - file: security/advanced-entity-analytics/entity-risk-scoring-requirements.md
@@ -671,6 +673,10 @@ toc:
               - file: security/advanced-entity-analytics/anomaly-detection.md
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
-          - hidden: security/advanced-entity-analytics/privileged-user-monitoring.md
+          - file: security/advanced-entity-analytics/privileged-user-monitoring.md
+            children:
+              - file: security/advanced-entity-analytics/privileged-user-monitoring-requirements.md
+              - file: security/advanced-entity-analytics/privileged-user-monitoring-setup.md
+              - file: security/advanced-entity-analytics/monitor-privileged-user-activitites.md
       - file: security/asset-management.md
       - file: security/apis.md

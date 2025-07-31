@@ -69,10 +69,23 @@ This section outlines the supported Kubernetes and {{stack}} versions for ECK. C
 
 ECK is compatible with the following Kubernetes distributions and related technologies:
 
+::::{tab-set}
+
+:::{tab-item} ECK 3.1
+* Kubernetes 1.29-1.33
+* OpenShift 4.15-4.19
+* Google Kubernetes Engine (GKE), Azure Kubernetes Service (AKS), and Amazon Elastic Kubernetes Service (EKS)
+* Helm: {{eck_helm_minimum_version}}+
+:::
+
+:::{tab-item} ECK 3.0
 * Kubernetes 1.28-1.32
 * OpenShift 4.14-4.18
 * Google Kubernetes Engine (GKE), Azure Kubernetes Service (AKS), and Amazon Elastic Kubernetes Service (EKS)
 * Helm: {{eck_helm_minimum_version}}+
+:::
+
+::::
 
 ECK should work with all conformant **installers** listed in these [FAQs](https://github.com/cncf/k8s-conformance/blob/master/faq.md#what-is-a-distribution-hosted-platform-and-an-installer). Distributions include source patches and so may not work as-is with ECK.
 

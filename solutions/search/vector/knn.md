@@ -575,6 +575,20 @@ PUT passage_vectors
                     "text": {
                         "type": "text",
                         "index": false
+                    },
+                    "language": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "metadata": {
+                "type": "nested",
+                "properties": {
+                    "key": {
+                        "type": "keyword"
+                    },
+                    "value": {
+                        "type": "text"
                     }
                 }
             }
@@ -588,9 +602,9 @@ With the above mapping, we can index multiple passage vectors along with storing
 ```console
 POST passage_vectors/_bulk?refresh=true
 { "index": { "_id": "1" } }
-{ "full_text": "first paragraph another paragraph", "creation_time": "2019-05-04", "paragraph": [ { "vector": [ 0.45, 45 ], "text": "first paragraph", "paragraph_id": "1" }, { "vector": [ 0.8, 0.6 ], "text": "another paragraph", "paragraph_id": "2" } ] }
+{ "full_text": "first paragraph another paragraph", "creation_time": "2019-05-04", "paragraph": [ { "vector": [ 0.45, 45 ], "text": "first paragraph", "paragraph_id": "1", "language": "EN" }, { "vector": [ 0.8, 0.6 ], "text": "another paragraph", "paragraph_id": "2", "language": "FR" } ], "metadata": [ { "key": "author", "value": "Jane Doe" }, { "key": "source", "value": "Internal Memo" } ] }
 { "index": { "_id": "2" } }
-{ "full_text": "number one paragraph number two paragraph", "creation_time": "2020-05-04", "paragraph": [ { "vector": [ 1.2, 4.5 ], "text": "number one paragraph", "paragraph_id": "1" }, { "vector": [ -1, 42 ], "text": "number two paragraph", "paragraph_id": "2" } ] }
+{ "full_text": "number one paragraph number two paragraph", "creation_time": "2020-05-04", "paragraph": [ { "vector": [ 1.2, 4.5 ], "text": "number one paragraph", "paragraph_id": "1", "language": "EN" }, { "vector": [ -1, 42 ], "text": "number two paragraph", "paragraph_id": "2", "language": "EN" }] , "metadata": [ { "key": "author", "value": "Jane Austen" }, { "key": "source", "value": "Financial" } ] }
 ```
 
 The query will seem very similar to a typical kNN search:
@@ -606,8 +620,7 @@ POST passage_vectors/_search
             45
         ],
         "field": "paragraph.vector",
-        "k": 2,
-        "num_candidates": 2
+        "k": 2
     }
 }
 ```
@@ -662,11 +675,16 @@ Note below that even though we have 4 total vectors, we still return two documen
 }
 ```
 
-What if you wanted to filter by some top-level document metadata? You can do this by adding `filter` to your `knn` clause.
+#### Filtering in nested KNN search [nested-knn-search-filtering]
+Want to filter by metadata? You can do this by adding `filter` to your `knn` clause.
 
-::::{note}
-`filter` will always be over the top-level document metadata. This means you cannot filter based on `nested` field metadata.
-::::
+To ensure correct results, each individual filter must be either over:
+
+-  Top-level metadata 
+- `nested` metadata {applies_to}`stack: ga 9.2`
+  :::{note}
+  A single `knn` search supports multiple filters, where some filters can be over the top-level metadata and some over nested.
+  :::
 
 
 ```console
@@ -678,25 +696,15 @@ POST passage_vectors/_search
     ],
     "_source": false,
     "knn": {
-        "query_vector": [
-            0.45,
-            45
-        ],
+        "query_vector": [0.45, 45],
         "field": "paragraph.vector",
         "k": 2,
-        "num_candidates": 2,
         "filter": {
-            "bool": {
-                "filter": [
-                    {
-                        "range": {
-                            "creation_time": {
-                                "gte": "2019-05-01",
-                                "lte": "2019-05-05"
-                            }
-                        }
-                    }
-                ]
+            "range": {
+                "creation_time": {
+                    "gte": "2019-05-01",
+                    "lte": "2019-05-05"
+                }
             }
         }
     }
@@ -740,6 +748,98 @@ Now we have filtered based on the top level `"creation_time"` and only one docum
 }
 ```
 
+##### Filtering on nested metadata [nested-knn-search-filtering-nested-metatadata]
+```{applies_to}
+stack: ga 9.2
+```
+
+The following query filters on nested metadata.
+When scoring parent documents, this query only considers vectors that
+have "paragraph.language" set to "EN".
+
+```console
+POST passage_vectors/_search
+{
+    "fields": [
+        "full_text"
+    ],
+    "_source": false,
+    "knn": {
+        "query_vector": [0.45, 45],
+        "field": "paragraph.vector",
+        "k": 2,
+        "filter": {
+            "match": {
+                "paragraph.language": "EN"
+            }
+        }
+    }
+}
+```
+
+The following query has two filters: one over nested metadata and
+another over the top-level metadata. When scoring parent documents, this
+query only considers vectors that have "paragraph.language" set to "EN"
+and whose parent documents were created within the specified range.
+
+```console
+POST passage_vectors/_search
+{
+    "fields": [
+        "full_text"
+    ],
+    "_source": false,
+    "knn": {
+        "query_vector": [0.45,45],
+        "field": "paragraph.vector",
+        "k": 2,
+        "filter": [
+            {"match": {"paragraph.language": "EN"}},
+            {"range": { "creation_time": { "gte": "2019-05-01", "lte": "2019-05-05"}}}
+        ]
+    }
+}
+```
+
+#### Filtering by sibling nested fields in nested KNN search [nested-knn-search-filtering-sibling]
+```{applies_to}
+stack: ga 9.2
+```
+
+Nested knn search also allows pre-filtering on sibling nested fields.
+For example, given "paragraphs" and "metadata" as nested fields, we can search "paragraphs.vector" and filter by "metadata.key" and "metadata.value".
+
+```console
+POST passage_vectors/_search
+{
+    "fields": [
+        "full_text"
+    ],
+    "_source": false,
+    "knn": {
+        "query_vector": [0.45, 45],
+        "field": "paragraph.vector",
+        "k": 2,
+        "filter": {
+            "nested": {
+                "path": "metadata",
+                "query": {
+                    "bool": {
+                        "must": [
+                            { "match": { "metadata.key": "author" } },
+                            { "match": { "metadata.value": "Doe" } }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+:::{note}
+Retrieving "inner_hits" when filtering on sibling nested fields is not supported.
+:::
 
 ### Nested kNN Search with Inner hits [nested-knn-search-inner-hits]
 
