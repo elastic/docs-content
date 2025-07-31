@@ -11,7 +11,7 @@ products:
 
 # APM Server advanced setup [apm-setting-up-and-running]
 
-Before reading this section, see the [getting started documentation](/solutions/observability/apm/get-started-fleet-managed-apm-server.md) for basic installation and running instructions.
+Before reading this section, see the [getting started documentation](/reference/fleet/get-started-managed-apm-server.md) for basic installation and running instructions.
 
 This section includes additional information on how to set up and run APM Server, including:
 
@@ -20,5 +20,5 @@ This section includes additional information on how to set up and run APM Server
 * [Command reference](/solutions/observability/apm/apm-server-command-reference.md)
 * [Tune data ingestion](/solutions/observability/apm/tune-data-ingestion.md)
 * [High Availability](/solutions/observability/apm/high-availability.md)
-* [Run APM Server on Docker](/solutions/observability/apm/get-started-apm-server-binary.md#apm-running-on-docker)
+* [Run APM Server on Docker](/reference/fleet/get-started-apm-server-binary.md#apm-running-on-docker)
 

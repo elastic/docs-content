@@ -33,7 +33,7 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 | --- | --- | --- |
 | **Support level** | Fully supported for available languages | Fully supported |
 | **Data protocol** | [OpenTelemetry protocol (OTLP)](https://opentelemetry.io/docs/specs/otel/protocol/) | Elastic protocol |
-| **Central configuration** | Currently not supported | Supported<br>*Refer to* [*APM agent central configuration*](/solutions/observability/apm/apm-agent-central-configuration.md) |
+| **Central configuration** | {applies_to}`product: preview` Supported<br>*Refer to* [*Central configuration*](opentelemetry://reference/central-configuration.md) | Supported<br>*Refer to* [*APM agent central configuration*](/solutions/observability/apm/apm-agent-central-configuration.md) |
 
 ### Availability [apm-collect-data-availability]
 
