@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-clean-your-data.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-clean-your-data.html
+products:
+  - id: kibana
 ---
 
 # Clean your data [maps-clean-your-data]

@@ -8,6 +8,8 @@ applies_to:
     ece: all
     eck: all
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # {{es}} performance optimizations [how-to]

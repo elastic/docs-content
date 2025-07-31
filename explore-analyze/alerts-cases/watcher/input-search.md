@@ -1,10 +1,11 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "Search input"
+navigation_title: Search input
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-search.html
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
 ---
 
 # Search input [input-search]
@@ -17,7 +18,7 @@ In the search input’s `request` object, you specify:
 * The [search type](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
 * The search request body
 
-The search request body supports the full Elasticsearch Query DSL—​it’s the same as the body of an Elasticsearch `_search` request.
+The search request body supports the full Elasticsearch Query DSL—it’s the same as the body of an Elasticsearch `_search` request.
 
 For example, the following input retrieves all `event` documents from the `logs` index:
 

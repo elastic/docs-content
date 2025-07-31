@@ -1,14 +1,16 @@
 ---
-applies_to:
-  stack: 
-  deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
 navigation_title: Password setup failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-setup.html
+applies_to:
+  stack:
+  deployment:
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 # Diagnose password setup connection failures [trb-security-setup]
@@ -56,7 +58,7 @@ The [elasticsearch-setup-passwords command](elasticsearch://reference/elasticsea
     xpack.security.http.ssl.
     ...
     ERROR: Failed to establish SSL connection to elasticsearch at
-    https://elasticsearch.example.com:9200/_security/_authenticate?pretty.
+    <ELASTICSEARCH_HOST_URL>:9200/_security/_authenticate?pretty.
     ```
 
 

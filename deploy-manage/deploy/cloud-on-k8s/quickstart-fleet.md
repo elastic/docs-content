@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-quickstart.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-quickstart.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Quickstart [k8s-elastic-agent-fleet-quickstart]
@@ -70,8 +72,8 @@ mapped_pages:
       elasticsearchRef:
         name: elasticsearch-quickstart
       config:
-        xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-quickstart-es-http.default.svc:9200"]
-        xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-quickstart-agent-http.default.svc:8220"]
+        xpack.fleet.agents.elasticsearch.hosts: ["<ELASTICSEARCH_HOST_URL>.default.svc:9200"]
+        xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>.default.svc:8220"]
         xpack.fleet.packages:
           - name: system
             version: latest

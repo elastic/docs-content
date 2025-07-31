@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo.html
   - https://www.elastic.co/guide/en/serverless/current/observability-slos.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 # Service-level objectives (SLOs) [observability-slos]
 
@@ -91,10 +94,6 @@ Available SLO panels include:
 :alt: Detailed view of an SLO dashboard panel
 :screenshot:
 :::
-
-To learn more about Dashboards, see [Dashboards](/solutions/observability/get-started/get-started-with-dashboards.md).
-
-% Stateful only for upgrade.
 
 ## Upgrade from beta to GA [slo-upgrade-to-ga]
 

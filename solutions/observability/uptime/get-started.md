@@ -1,10 +1,12 @@
 ---
-navigation_title: "Get started"
+navigation_title: Get started
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/uptime-get-started.html
 applies_to:
   stack: deprecated 8.15.0
   serverless: unavailable
+products:
+  - id: observability
 ---
 
 # Get started with Uptime [uptime-get-started]
@@ -39,7 +41,7 @@ If you’ve used the Elastic Synthetics integration to create monitors in the pa
 Elastic provides Docker images that you can use to run monitors. Start by pulling the {{heartbeat}} Docker image.
 
 ```sh subs=true
-docker pull docker.elastic.co/beats/heartbeat:{{version}}
+docker pull docker.elastic.co/beats/heartbeat:{{version.stack}}
 ```
 
 ## Configure [uptime-set-up-config]
@@ -89,7 +91,7 @@ docker run \
   --user=heartbeat \
   --volume="$PWD/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml:ro" \
   --cap-add=NET_RAW \
-  docker.elastic.co/beats/heartbeat:{{version}} heartbeat -e \
+  docker.elastic.co/beats/heartbeat:{{version.stack}} heartbeat -e \
   -E cloud.id={cloud-id} \
   -E cloud.auth=elastic:{cloud-pass}
 ```
@@ -104,7 +106,7 @@ docker run \
   --user=heartbeat \
   --volume="$PWD/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml:ro" \
   --cap-add=NET_RAW \
-  docker.elastic.co/beats/heartbeat:{{version}} heartbeat -e \
+  docker.elastic.co/beats/heartbeat:{{version.stack}} heartbeat -e \
   -E output.elasticsearch.hosts=["localhost:9200"] \
   -E output.elasticsearch.username=elastic \
   -E output.elasticsearch.password=changeme

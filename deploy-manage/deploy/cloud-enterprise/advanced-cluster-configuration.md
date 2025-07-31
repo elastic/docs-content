@@ -1,9 +1,8 @@
 ---
-applies_to:
-  deployment:
-    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-advanced-configuration.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Advanced cluster configuration [ece-advanced-configuration]

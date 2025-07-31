@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html
+products:
+  - id: elasticsearch
 ---
 
 # Add remote clusters using API key authentication [remote-clusters-api-key]

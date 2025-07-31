@@ -1,15 +1,17 @@
 ---
+navigation_title: Limitations
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-limitations.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Limitations"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-limitations.html
+products:
+  - id: elasticsearch
 ---
 
 # Limitations [transform-limitations]
 
-The following limitations and known problems apply to the {{version}} release of the Elastic {{transform}} feature. The limitations are grouped into the following categories:
+The following limitations and known problems apply to the {{version.stack}} release of the Elastic {{transform}} feature. The limitations are grouped into the following categories:
 
 * [Configuration limitations](#transform-config-limitations) apply to the configuration process of the {{transforms}}.
 * [Operational limitations](#transform-operational-limitations) affect the behavior of the {{transforms}} that are running.

@@ -21,6 +21,7 @@ toc:
           - file: elasticsearch/remote-clusters.md
           - file: elasticsearch/diagnose-unassigned-shards.md
           - file: elasticsearch/troubleshooting-shards-capacity-issues.md
+          - file: elasticsearch/cluster-allocation-api-examples.md
       - file: elasticsearch/data.md
         children:
           - file: elasticsearch/allow-all-cluster-allocation.md
@@ -31,6 +32,7 @@ toc:
           - file: elasticsearch/increase-shard-limit.md
           - file: elasticsearch/increase-cluster-shard-limit.md
           - file: elasticsearch/corruption-troubleshooting.md
+          - file: elasticsearch/troubleshoot-ingest-pipelines.md
 
       - file: elasticsearch/capacity.md
         children:  
@@ -137,9 +139,11 @@ toc:
       - file: security/detection-rules.md
       - file: security/elastic-defend.md
       - file: security/indicators-of-compromise.md
+      - file: security/agentless-integrations.md
   - file: ingest.md
     children:
       # - file: ingest/enterprise-search/crawls.md
+      - toc: ingest/opentelemetry
       - file: ingest/logstash.md
         children:
           - file: ingest/logstash/plugins.md
@@ -148,6 +152,7 @@ toc:
               - file: ingest/logstash/azure-event-hub.md
           - file: ingest/logstash/health-report-pipelines.md
           - file: ingest/logstash/contribute.md
+          - file: ingest/logstash/diagnostic.md
       - file: ingest/fleet/fleet-elastic-agent.md
         children:
           - file: ingest/fleet/common-problems.md

@@ -1,0 +1,100 @@
+name: "Internal documentation request (Elastic employees)"
+description: An issue template for Elastic employees to request improvements, additions, or changes to the documentation.
+title: "[Internal]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this request! This form will create an issue that the Documentation team will triage and prioritize. This form does not guarantee that your issue will be prioritized for the selected iteration. _But_, completing this issue as early and as comprehensively as possible will help us understand and plan the work better!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe what needs to be documented. What details do users need to know about?
+      placeholder: |
+        What: We're introducing new feature A.
+        When: This feature will launch at the completion of project B.
+        Why: This feature will make X, Y, and Z easier for the user.
+    validations:
+      required: true
+  - type: textarea
+    id: related
+    attributes:
+      label: Resources
+      description: Where can the documentation team learn more about this feature?
+      placeholder: |
+        This feature was implemented in {link_to_PR}.
+
+        This feature was scoped and researched in {link_to_issue}.
+
+        Context for the feature is described in {link_to_internal_doc}.
+    validations:
+      required: true
+  - type: dropdown
+    id: doc-set
+    attributes:
+      label: Which documentation set does this change impact?
+      description: Stateful, Serverless, or both?
+      options:
+        - Elastic On-Prem and Cloud (all)
+        - Elastic On-Prem only
+        - Elastic Cloud (Hosted and Serverless) only
+        - Elastic Cloud Hosted only
+        - Elastic Cloud Serverless only
+        - Unknown
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: doc-set-differences
+    attributes:
+      label: Feature differences
+      description: If you selected multiple deployment methods above, please describe how, if at all, the feature differs in each deployment method.
+      placeholder: The feature is identical in all deployment methods.
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: What release is this request related to?
+      description: Some requests may be tied to the Elastic Stack release schedule. Some, like Serverless requests, may not. Please select an option.
+      options:
+        - 'N/A'
+        - '8.17'
+        - '8.18'
+        - '8.19'
+        - '9.0'
+        - '9.1'
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: release-serverless
+    attributes:
+      label: Serverless release
+      description: When do you expect the feature to be promoted and available in the _**serverless production environment**_?
+      placeholder: The week of April 1, 2024
+    validations:
+      required: true    
+  - type: dropdown
+    id: collaboration
+    attributes:
+      label: Collaboration model
+      description: Which team do you expect to create the initial content?
+      options:
+        - "The documentation team"
+        - "The product team"
+        - "The engineering team"
+        - "Unknown"
+        - "Other (please describe below)"
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: contact
+    attributes:
+      label: Point of contact.
+      description: Please assign at least one point of contact using the GitHub `@` mention. Add as many stakeholders as you'd like.
+      value: "**Main contact:** @\n\n**Stakeholders:**\n"
+    validations:
+      required: true

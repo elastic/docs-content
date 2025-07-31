@@ -1,10 +1,11 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "Never condition"
+navigation_title: Never condition
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-never.html
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
 ---
 
 # Never condition [condition-never]

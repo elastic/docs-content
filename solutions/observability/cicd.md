@@ -1,7 +1,9 @@
 ---
-navigation_title: "CI/CD"
+navigation_title: CI/CD
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/ci-cd-observability.html
+products:
+  - id: observability
 ---
 
 
@@ -343,7 +345,7 @@ export OTEL_TRACES_EXPORTER="otlp"
 mvn verify
 ```
 
-You can instrument Maven builds without modifying the pom.xml file using the Maven command line argument “-Dmaven.ext.class.path=…​”
+You can instrument Maven builds without modifying the pom.xml file using the Maven command line argument “-Dmaven.ext.class.path=…”
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://elastic-apm-server.example.com:8200"

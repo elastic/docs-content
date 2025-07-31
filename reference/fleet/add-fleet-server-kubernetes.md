@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/add-fleet-server-kubernetes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Deploy Fleet Server on Kubernetes [add-fleet-server-kubernetes]
@@ -333,7 +336,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
           automountServiceAccountToken: false
           containers:
           - name: elastic-agent
-            image: docker.elastic.co/beats/elastic-agent:{{stack-version}}
+            image: docker.elastic.co/beats/elastic-agent:{{version.stack}}
             env:
               - name: FLEET_SERVER_ENABLE
                 value: "true"
@@ -419,7 +422,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
           automountServiceAccountToken: false
           containers:
           - name: elastic-agent
-            image: docker.elastic.co/beats/elastic-agent:{{stack-version}}
+            image: docker.elastic.co/beats/elastic-agent:{{version.stack}}
             env:
               - name: FLEET_SERVER_ENABLE
                 value: "true"

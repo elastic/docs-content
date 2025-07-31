@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck:
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage authentication for multiple clusters [k8s-auth-config-using-stack-config-policy]

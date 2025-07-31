@@ -4,6 +4,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-glossary.html
   - https://www.elastic.co/guide/en/ecs/current/ecs-glossary.html
+products:
+  - id: elastic-stack
+  - id: cloud-kubernetes
+  - id: ecs
 ---
 
 # Glossary [terms]
@@ -446,7 +450,7 @@ $$$glossary-integration-policy$$$ integration policy
 :   An instance of an [integration](/reference/glossary/index.md#glossary-integration) that is configured for a specific use case, such as collecting logs from a specific file.
 
 $$$glossary-integration$$$ integration
-:   An easy way for external systems to connect to the {{stack}}. Whether it's collecting data or protecting systems from security threats, integrations provide out-of-the-box assets to make setup easy—​many with just a single click.
+:   An easy way for external systems to connect to the {{stack}}. Whether it's collecting data or protecting systems from security threats, integrations provide out-of-the-box assets to make setup easy—many with just a single click.
 
 
 ## J [j-glos]

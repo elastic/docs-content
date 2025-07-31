@@ -31,31 +31,7 @@ ECH and ECE orchestators automatically handle several aspects of cluster resilie
 * Creating [automatic snapshots](/deploy-manage/tools/snapshot-and-restore.md) at regular configurable intervals, to provide an extra level of redundancy.
 ::::
 
-## Recommendations [ec-ha]
+## Recommendations [cloud-ha]
 
-We recommend that you use at least two availability zones for production and three for mission-critical systems. Just one zone might be sufficient, if your {{es}} cluster is mainly used for testing or development and downtime is acceptable, but should never be used for production.
-
-Additionally, using a single availability zone leaves your cluster vulnerable to data loss if backups are unavailable, whether due to failed or incomplete snapshots, missing indices, or expired retention policies that remove the data before it’s needed.
-
-With multiple {{es}} nodes in multiple availability zones you have the recommended hardware, the next thing to consider is the number of replicas for each index. Each index, with the exception of searchable snapshot indexes, should have one or more replicas. Use the [index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-get-settings-1) to find any indices with no replica:
-
-```sh
-GET _all/_settings/index.number_of_replicas
-```
-
-A high availability (HA) cluster requires at least three master-eligible nodes. For clusters that have fewer than six {{es}} nodes, any data node in the hot tier will also be a master-eligible node. You can achieve this by having hot nodes (serving as both data and master-eligible nodes) in three availability zones, or by having data nodes in two zones and a tiebreaker.
-
-For clusters that have six {{es}} nodes and beyond, dedicated master-eligible nodes are introduced. When your cluster grows, consider separating dedicated master-eligible nodes from dedicated data nodes. We recommend using at least 4GB of RAM for dedicated master nodes.
-
-::::{note}
-In {{ece}}, you can customize the threshold at which dedicated master-eligible nodes are introduced by modifying the [deployment templates](/deploy-manage/deploy/cloud-enterprise/deployment-templates.md).
-::::
-
-## Summary
-
-* Clusters that use only one availability zone are not highly available and are at risk of data loss. To safeguard against data loss, you must use at least two availability zones.
-* Indices with no replica, except for searchable snapshot indices, are not highly available. You should use replicas to mitigate against possible data loss.
-* Clusters that only have one master node are not highly available and are at risk of data loss. You must have three master-eligible nodes.
-
-
-
+* For ECH, review [plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md) page for how to plan your deployment for production.
+* For ECE, review [high availability in ECE](/deploy-manage/deploy/cloud-enterprise/ece-ha.md) page for how to configure your ECE installation to be highly available. 

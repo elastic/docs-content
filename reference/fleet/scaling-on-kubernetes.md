@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/scaling-on-kubernetes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Scaling Elastic Agent on Kubernetes [scaling-on-kubernetes]

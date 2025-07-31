@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-qlik.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-qlik.html
+products:
+  - id: elasticsearch
 ---
 
 # Qlik Sense Desktop [sql-client-apps-qlik]
@@ -35,14 +37,14 @@ To use the Elasticsearch SQL ODBC Driver to load data into Qlik Sense Desktop pe
 
 2. Name app
 
-    …​then give it a name,
+    …then give it a name,
 
     $$$apps_qlik_create$$$
     ![apps qlik create](/explore-analyze/images/elasticsearch-reference-apps_qlik_create.png "")
 
 3. Open app
 
-    …​and then open it:
+    …and then open it:
 
     $$$apps_qlik_open$$$
     ![apps qlik open](/explore-analyze/images/elasticsearch-reference-apps_qlik_open.png "")

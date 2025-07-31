@@ -1,10 +1,12 @@
 ---
-navigation_title: "Alerts"
+navigation_title: Alerts
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 applies_to:
   stack: all
   serverless: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
+products:
+  - id: kibana
 ---
 
 # Troubleshoot {{kib}} alerts [alerting-troubleshooting]
@@ -203,7 +205,7 @@ This approach should be used only temporarily as a last resort to restore functi
 
 ## Limitations [alerting-limitations]
 
-The following limitations and known problems apply to the {{version}} release of the {{kib}} {{alert-features}}:
+The following limitations and known problems apply to the {{version.stack}} release of the {{kib}} {{alert-features}}:
 
 
 ### Alert visibility [_alert_visibility]

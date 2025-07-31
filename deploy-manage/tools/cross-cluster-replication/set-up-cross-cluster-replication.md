@@ -1,14 +1,15 @@
 ---
-navigation_title: "Set up cross-cluster replication"
+navigation_title: Set up cross-cluster replication
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html
-
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
+products:
+  - id: elasticsearch
 ---
 
 

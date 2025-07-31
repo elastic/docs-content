@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-explain.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-explain.html
+products:
+  - id: machine-learning
 ---
 
 # Anomaly score explanation [ml-ad-explain]
@@ -53,7 +55,7 @@ Two more factors may lead to a reduction of the initial score: a high variance i
 
 Real-world anomalies often show the impacts of several factors. The **Anomaly explanation** section in the Single Metric Viewer can help you interpret an anomaly in its context.
 
-:::{image} /explore-analyze/images/machine-learning-detailed-single-metric.jpg
+:::{image} /explore-analyze/images/machine-learning-detailed-single-metric.png
 :alt: Detailed view of the Single Metric Viewer in {{kib}}
 :screenshot:
 :::

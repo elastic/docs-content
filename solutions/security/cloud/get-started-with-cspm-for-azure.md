@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Get started with CSPM for Azure
@@ -17,7 +20,6 @@ This page explains how to get started monitoring the security posture of your cl
 ::::{admonition} Requirements
 * Minimum privileges vary depending on whether you need to read, write, or manage CSPM data and integrations. Refer to [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md).
 * The CSPM integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* CSPM only works in the `Default` {{kib}} space. Installing the CSPM integration on a different {{kib}} space will not work.
 * CSPM is supported only on AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. Other government cloud platforms are not supported. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
 * The user who gives the CSPM integration permissions in Azure must be an Azure subscription `admin`.
 
@@ -40,10 +42,6 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 6. Click **Advanced options**, then select **Agentless (BETA)**.
 7. Next, you’ll need to authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
-
-::::{admonition} Important
-Agentless deployment does not work if you are using [Traffic filtering](/deploy-manage/security/traffic-filtering.md).
-::::
 
 ## Agent-based deployment [cspm-azure-agent-based]
 

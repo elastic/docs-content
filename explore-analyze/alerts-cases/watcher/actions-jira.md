@@ -1,10 +1,11 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "Jira action"
+navigation_title: Jira action
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-jira.html
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
 ---
 
 # Jira action [actions-jira]

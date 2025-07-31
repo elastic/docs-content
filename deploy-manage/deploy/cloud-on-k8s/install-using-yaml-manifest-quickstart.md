@@ -6,6 +6,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Install ECK using the YAML manifests [k8s-install-yaml-manifests]
@@ -40,7 +42,7 @@ To deploy the ECK operator:
 1. Install Elastic's [custom resource definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) with [`create`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/):
 
     ```sh subs=true
-    kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
+    kubectl create -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.yaml
     ```
 
     You'll see output similar to the following as resources are created:
@@ -59,7 +61,7 @@ To deploy the ECK operator:
 2. Using [`kubectl apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/), install the operator with its RBAC rules:
 
     ```sh subs=true
-    kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
+    kubectl apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml
     ```
 
     ::::{note}
