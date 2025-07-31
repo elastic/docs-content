@@ -49,23 +49,10 @@ After you start to upgrade your {{es}} cluster, you cannot downgrade any of its 
 ::::
 
 ::::{step} Test in a non-production environment
-Before upgrading your production deployment, test the upgrade using a non-production environment. Make sure the test environment mirrors production as closely as possible, including configuration and client interactions.
+Before upgrading your production deployment, test the upgrade using a non-production environment. Make sure the test environment mirrors production as closely as possible, including configuration and client interactions. Refer to [](./plan-upgrade.md#test-in-a-non-production-environment) for more details and recommendations.
 
 :::{note}
 The upgraded version of {{es}} may interact with its environment in different ways from the version you are currently running. It is possible that your environment behaves incorrectly in a way that does not matter to the version of {{es}} that you are currently running, but which does matter to the upgraded version. In this case, the upgraded version will not work correctly until you address the incorrect behavior in your environment.
-:::
-
-:::{tip}
-During your upgrade tests, pay particular attention to the following aspects:
-
-**Cluster stability**
-:    Does the new version of {{es}} form a stable healthy cluster?
-
-**Indexing and search performance**
-:    Does the new version of {{es}} perform the same (or better) than the current one on your specific workload and data?
-
-**Snapshots**
-:    Do all of your snapshot repositories work correctly and pass [repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze)?
 :::
 
 ::::
@@ -85,10 +72,12 @@ To view your remote clusters in {{kib}}, go to **Stack Management > Remote Clust
 ::::
 
 ::::{step} (Optional) Close machine learning jobs
-To reduce overhead on the cluster during the upgrade, close {{ml}} jobs before starting the upgrade, and open them after the upgrade is complete. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
+To reduce overhead on the cluster during the upgrade, close [{{ml}} jobs](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) before starting the upgrade, and open them after the upgrade is complete. Although {{ml}} jobs can run during a rolling upgrade, doing so increases the cluster workload.
 ::::
 
 :::::
+
+If you are preparing a minor or patch upgrade, you're ready to [upgrade your deployment or cluster](./deployment-or-cluster.md). If you are preparing a major upgrade, continue with the [preparations to upgrade from 8.x](#prepare-upgrade-from-8.x).
 
 ## Additional preparation steps to upgrade from 8.x [prepare-upgrade-from-8.x]
 
@@ -168,9 +157,7 @@ If you have transform destination indices created in {{es}} 7.x, reset, reindex,
 
 :::::
 
-
-
-
+After completing all the preparation steps, you're ready to [upgrade your deployment or cluster](./deployment-or-cluster.md).
 
 ## Upgrade uni-directional {{ccr}} clusters with followed data streams [upgrade-ccr-data-streams]
 
@@ -830,7 +817,3 @@ If you are running a pre-8.x version, you might need to perform multiple upgrade
 2. To reindex your data into the new {{es}} cluster, use the [reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-reindex) and temporarily send new indexing requests to both clusters.
 3. Verify the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
 4. Delete the old deployment. On {{ecloud}}, you are billed for the time the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
-
-## Next steps
-
-After completing all the preparation steps, you're ready to [upgrade your deployment or cluster](./deployment-or-cluster.md).

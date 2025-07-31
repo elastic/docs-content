@@ -28,29 +28,38 @@ The objective of this section is to facilitate the creation of an upgrade plan t
 
 Before upgrading, verify that your current environment supports the version you plan to upgrade to. If not, identify any required intermediate upgrades or component changes and include them in your upgrade plan.
 
-* **System requirements**: Ensure your current operating system is supported by the target versions of {{es}}, {{kib}}, and any ingest components. Refer to the [Product and Operating System support matrix](https://www.elastic.co/support/matrix#matrix_os).
+**{{es}} upgrade path**
+:   Check the [upgrade paths](../upgrade.md#upgrade-paths) to determine whether you must upgrade through an intermediate version (such as 8.19.x before moving 9.1+), or if you can upgrade directly to the target version.
 
-* **Ingest component compatibility**: Confirm that your ingest components, such as {{beats}}, {{ls}}, or {{agent}}, are compatible with the target {{es}} version. If they’re not, upgrade them first. Refer to [conduct a component inventory](#conduct-a-component-inventory) for guidance.
+**System requirements**
+:   Ensure your current operating system is supported by the target versions of {{es}}, {{kib}}, and any ingest components. Refer to the [Product and Operating System support matrix](https://www.elastic.co/support/matrix#matrix_os).
 
-* **Orchestrator compatibility**: If you’re using an orchestrator like {{ece}} or {{eck}}, verify that it supports the target {{stack}} version. If not, [upgrade the orchestrator](/deploy-manage/upgrade/orchestrator.md) before upgrading your cluster. Refer to:
-  * [ECE – Stack packs](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece_most_recent_elastic_stack_packs)
-  * [ECK – {{stack}} compatibility](/deploy-manage/deploy/cloud-on-k8s.md#stack-compatibility)
+**OpenJDK compatibility and FIPS compliance**
+:   By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) in each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm).
 
-* **Rest API compatibility**: If you use custom-developed applications or clients, ensure the [{{es}} client libraries](/reference/elasticsearch-clients/index.md) are compatible with the target version. If your applications use deprecated or removed APIs, then you might need to update the client code first.
+    If you’re running {{es}} in FIPS 140-2 mode, we recommend using [Bouncy Castle](https://www.bouncycastle.org/java.html) as a Java security provider when running {{es}}.
 
-    ::::{note}
+**Ingest component compatibility**
+:   Confirm that your ingest components, such as {{beats}}, {{ls}}, or {{agent}}, are compatible with the target {{es}} version. If they’re not, upgrade them first. Refer to [conduct a component inventory](#conduct-a-component-inventory) for guidance.
+
+**Rest API compatibility**
+:   If you use custom-developed applications or clients, ensure the [{{es}} client libraries](/reference/elasticsearch-clients/index.md) are compatible with the target version. If your applications use deprecated or removed APIs, then you might need to update the client code first.
+
+    :::{note}
     By default, 8.x {{es}} clients are compatible with 9.x and use [REST API compatibility](elasticsearch://reference/elasticsearch/rest-apis/compatibility.md) to maintain compatibility with the 9.x {{es}} cluster.
-
     REST API compatibility is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
-    ::::
+    :::
 
-* **Index compatibility**: {{es}} provides full query and write support for indices created in the previous major version. If you have indices created in 7.x or earlier, you must reindex, delete, or [archive](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) them before upgrading to 9.x. This topic is covered during the [upgrade preparations](prepare-to-upgrade.md#prepare-upgrade-from-8.x), with help from the Upgrade Assistant.
+**Index compatibility**
+:   {{es}} provides full query and write support for indices created in the previous major version. If you have indices created in 7.x or earlier, you must reindex, delete, or [archive](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) them before upgrading to 9.x.
 
-* **{{es}} upgrade path**: Check the [upgrade paths](../upgrade.md#upgrade-paths) to determine whether you must upgrade through an intermediate version (such as 8.19.x before moving to 9.1+), or if you can upgrade directly to the target version.
+    This topic is covered during the [upgrade preparations](prepare-to-upgrade.md#prepare-upgrade-from-8.x), with help from the Upgrade Assistant.
 
-* **OpenJDK compatibility and FIPS compliance**: By default, {{es}} is built using Java and includes a bundled version of [OpenJDK](https://openjdk.java.net/) in each distribution. While we strongly recommend using the bundled Java Virtual Machine (JVM) in all installations of {{es}}, if you choose to use your own JVM, ensure it’s compatible by reviewing the [Product and JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm). 
+**Orchestrator compatibility**
+:   If you’re using an orchestrator like {{ece}} or {{eck}}, verify that it supports the target {{stack}} version. If not, [upgrade the orchestrator](/deploy-manage/upgrade/orchestrator.md) before upgrading your cluster. Refer to:
+    * [ECE – Stack packs compatibility](/deploy-manage/deploy/cloud-enterprise/manage-elastic-stack-versions.md#ece_most_recent_elastic_stack_packs)
+    * [ECK – {{stack}} compatibility](/deploy-manage/deploy/cloud-on-k8s.md#stack-compatibility)
 
-  If you’re running {{es}} in FIPS 140-2 mode, we recommend using [Bouncy Castle](https://www.bouncycastle.org/java.html) as a Java security provider when running {{es}}.
 
 ## Conduct a component inventory
 
@@ -102,6 +111,17 @@ We highly recommend testing the upgrade process in a non-production environment 
 * Dashboards
 * Alerts
 * Authentication
+
+During your upgrade tests, pay particular attention to the following aspects:
+
+**Cluster stability**
+:    Does the new version of {{es}} form a stable healthy cluster?
+
+**Indexing and search performance**
+:    Does the new version of {{es}} perform the same (or better) than the current one on your specific workload and data?
+
+**Snapshots**
+:    Do all of your snapshot repositories work correctly and pass [repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze)?
 
 ## Upgrade order
 

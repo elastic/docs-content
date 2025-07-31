@@ -11,13 +11,13 @@ products:
 
 When you upgrade {{kib}}, you also upgrade the {{observability}} and {{elastic-sec}} solutions, which use {{kib}} as their main interface.
 
+{{kib}} must always be upgraded after {{es}}, and to the same version. Version mismatches or upgrading in the wrong order can result in failures or unexpected behavior.
+
 ::::{warning}
 {{kib}} automatically runs saved object migrations when required. To roll back to an earlier version in case of an upgrade failure, you **must** have a [backup snapshot](../../tools/snapshot-and-restore.md) that includes the `kibana` feature state. Snapshots include this feature state by default.
 
 For more information, refer to [Migrate saved objects](saved-object-migrations.md).
-
 ::::
-
 
 ## Upgrading multiple {{kib}} instances [_upgrading_multiple_kib_instances]
 
@@ -29,8 +29,7 @@ For large deployments with more than 10 {{kib}} instances, and more than 10,000 
 
 ## Preparing for upgrading [preventing-migration-failures]
 
-Before you start, ensure you [take the upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md). Then, take these extra steps to ensure you are ready to upgrade.
-
+Before you start, ensure that you’ve followed the [Plan your upgrade](/deploy-manage/upgrade/plan-upgrade.md) guidelines, completed the [upgrade preparation steps](/deploy-manage/upgrade/prepare-to-upgrade.md), and [upgraded the {{es}} cluster](./elasticsearch.md).
 
 ### Ensure your {{es}} cluster is healthy [_ensure_your_es_cluster_is_healthy]
 

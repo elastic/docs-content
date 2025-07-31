@@ -50,6 +50,23 @@ Upgrading your Elastic cluster or deployment involves several stages, including 
 
 Additionally, if you're using a self-managed orchestration platform such as {{ece}} or {{eck}}, refer to [Upgrade your ECE or ECK orchestrator](/deploy-manage/upgrade/orchestrator.md) to keep the orchestrator up to date.
 
+## Availability during upgrades
+
+{{es}} supports rolling upgrades, where nodes are upgraded one at a time to minimize downtime and ensure cluster stability. If your deployment or cluster follows high availability best practices, such as using replicated indices and distributing nodes across multiple availability zones, it should remain available throughout the entire upgrade process.
+
+{{kib}} upgrades, however, require downtime. All running instances must be shut down before starting the upgrade.
+
+::::{important}
+Ensure your deployment is properly sized and configured for high availability to reduce the risk of service interruption during upgrades.
+
+If you want to learn more about scaling, high availability, and performance, refer to:
+* [Run {{es}} in production](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md)
+* [Run {{kib}} in production](/deploy-manage/production-guidance/kibana-in-production-environments.md)
+* [{{ech}} > Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md)
+::::
+
+You’ll find more information about availability considerations for specific deployment types in the related upgrade guides within this section.
+
 ## Upgrade paths [upgrade-paths]
 
 You can upgrade to a higher version if the target version was released *after* your current version. Upgrades to versions released *before* your current version are not supported, even if the version number is higher. Refer to [out-of-order releases](/deploy-manage/upgrade/deployment-or-cluster.md#out-of-order-releases) for more information.
