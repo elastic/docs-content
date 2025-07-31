@@ -14,7 +14,7 @@ products:
 
 # Get started with Elastic {{observability}} [observability-get-started]
 
-New to Elastic {{observability}}? Discover more about our observability features and how to get started. The following instructions will guide you through setting up your first Elastic {{observability}} deployment, collecting data from infrastructure and applications, and exploring your data.
+New to Elastic {{observability}}? Discover more about our observability features and how to get started. The following instructions guides you through setting up your first Elastic {{observability}} deployment, collecting data from infrastructure and applications, and exploring your data.
 
 ## Get started with your use case [get-started-with-use-case]
 
@@ -27,8 +27,10 @@ Learn how to create an {{obs-serverless}} project and use Elastic {{observabilit
 :::{include} /solutions/_snippets/obs-serverless-project.md
 :::
 
+::::{note}
 For other types of deployments, refer to [Deploy](/deploy-manage/deploy.md). For a breakdown of the differences between deployment types and what they support, refer to [Detailed deployment comparison](/deploy-manage/deploy/deployment-comparison.md).
 ::::
+
 ::::::
 
 ::::::{step} Collect infrastructure logs and metrics
