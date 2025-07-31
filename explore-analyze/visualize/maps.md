@@ -1,11 +1,14 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps.html
   - https://www.elastic.co/guide/en/serverless/current/maps.html
   - https://www.elastic.co/guide/en/kibana/current/maps-visualizations.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: kibana
+  - id: cloud-serverless
 ---
 
 # Maps [maps]
@@ -18,9 +21,6 @@ Create beautiful maps from your geographical data. With **Maps**, you can:
 * Embed your map in dashboards.
 * Symbolize features using data values.
 * Focus on only the data that’s important to you.
-
-On Elastic Cloud Serverless, Maps is only available for Security projects [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../solutions/security/elastic-security-serverless.md).
-
 
 ## Build maps with multiple layers and indices [_build_maps_with_multiple_layers_and_indices]
 

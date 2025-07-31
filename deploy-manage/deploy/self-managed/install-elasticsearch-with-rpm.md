@@ -1,16 +1,18 @@
 ---
+navigation_title: Install with RPM package
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
-sub:
-  es-conf: "/etc/elasticsearch"
-  slash: "/"
-  distro: "RPM"
-  export: "export"
-escape: "\\"
-navigation_title: "Install with RPM package"
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: /etc/elasticsearch
+  slash: /
+  distro: RPM
+  export: export
+  pkg-conf: /etc/sysconfig/elasticsearch
 ---
 
 # Install {{es}} with RPM [rpm]
@@ -81,13 +83,13 @@ sudo zypper modifyrepo --enable elasticsearch && \
 
 ### Download and install the RPM manually [install-rpm]
 
-1. Download and install the RPM for {{es}} {{stack-version}} with the following commands:
+1. Download and install the RPM for {{es}} {{version.stack}} with the following commands:
 
     ```sh subs=true
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-x86_64.rpm.sha512
-    shasum -a 512 -c elasticsearch-{{stack-version}}-x86_64.rpm.sha512 <1>
-    sudo rpm --install elasticsearch-{{stack-version}}-x86_64.rpm
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm.sha512
+    shasum -a 512 -c elasticsearch-{{version.stack}}-x86_64.rpm.sha512 <1>
+    sudo rpm --install elasticsearch-{{version.stack}}-x86_64.rpm
     ```
 
     1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<version>-x86_64.rpm: OK`.

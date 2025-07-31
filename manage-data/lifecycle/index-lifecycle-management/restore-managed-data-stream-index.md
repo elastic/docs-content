@@ -3,7 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-and-snapshots.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Restore a managed data stream or index [index-lifecycle-and-snapshots]

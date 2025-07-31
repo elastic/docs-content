@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/canvas.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/canvas.html
+products:
+  - id: kibana
 ---
 
 # Canvas [canvas]
@@ -140,7 +142,7 @@ Organize and separate your ideas by adding more pages.
 
 ## Share your workpad [workpad-share-options]
 
-To share workpads with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share workpads with a larger audience, click {icon}`share` **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Export workpads [export-single-workpad]

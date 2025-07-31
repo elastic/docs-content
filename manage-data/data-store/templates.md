@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Templates [index-templates]
@@ -43,7 +45,7 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 
 * To disable all built-in index and component templates, set [`stack.templates.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) to `false` using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Note, however, that this is not recommended, see the [setting documentation](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) for more information.
 * Use a non-overlapping index pattern.
-* Assign templates with an overlapping pattern a `priority` higher than `500`. For example, if you don’t use {{fleet}} or {{agent}} and want to create a template for the `logs-*` index pattern, assign your template a priority of `500`. This ensures your template is applied instead of the built-in template for `logs-*-*`.
+* Assign templates with an overlapping pattern a `priority` higher than `500`. For example, if you don’t use {{fleet}} or {{agent}} and want to create a template for the `logs-*` index pattern, assign your template a priority of `501`. This ensures your template is applied instead of the built-in template for `logs-*-*`.
 * To avoid naming collisions with built-in and Fleet-managed index templates, avoid using `@` as part of the name of your own index templates.
 * Beginning in {{stack}} version 9.1, {{fleet}} uses indices named `fleet-synced-integrations*` for a feature. Avoid using this name to avoid collisions with built-in indices.
 
@@ -53,7 +55,7 @@ If you use {{fleet}} or {{agent}}, assign your index templates a priority lower 
 
 ## Create index template [create-index-templates]
 
-Use the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) and [put component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) APIs to create and update index templates. You can also [manage index templates](../lifecycle/index-lifecycle-management/index-management-in-kibana.md) from Stack Management in {{kib}}.
+Use the [put index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) and [put component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) APIs to create and update index templates. You can also [manage index templates](/manage-data/data-store/index-basics.md#index-management) from Stack Management in {{kib}}.
 
 The following requests create two component templates.
 
@@ -119,7 +121,7 @@ PUT _index_template/template_1
       "mydata": { }
     }
   },
-  "priority": 500,
+  "priority": 501,
   "composed_of": ["component_template1", "runtime_component_template"],
   "version": 3,
   "_meta": {

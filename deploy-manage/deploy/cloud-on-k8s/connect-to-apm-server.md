@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-connecting.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-connecting.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Connect to the APM Server [k8s-apm-connecting]

@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Explore logs in Discover [explore-logs]

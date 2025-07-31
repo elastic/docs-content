@@ -1,10 +1,12 @@
 ---
-navigation_title: "Elastic Cloud on Kubernetes"
-applies_to:
-  deployment:
-    eck: all 
+navigation_title: Elastic Cloud on Kubernetes
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-troubleshooting.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Troubleshoot Elastic Cloud on Kubernetes [k8s-troubleshooting]

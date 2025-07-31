@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
+products:
+  - id: cloud-serverless
 ---
 
 # Playground [elasticsearch-playground]

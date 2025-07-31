@@ -1,10 +1,11 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "Inputs"
+navigation_title: Inputs
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/input.html
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
 ---
 
 # Inputs [input]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configuration [k8s-logstash-configuration]
@@ -339,7 +341,7 @@ If the volume driver supports `ExpandInUsePersistentVolumes`, the filesystem is 
 
 If the volume driver does not support `ExpandInUsePersistentVolumes`, you must manually delete Pods after the resize so that they can be recreated automatically with the expanded filesystem.
 
-Any other changes in the volumeClaimTemplates—​such as changing the storage class or decreasing the volume size—​are not allowed. To make changes such as these, you must fully delete the {{ls}} resource, delete and recreate or resize the volume, and create a new {{ls}} resource.
+Any other changes in the volumeClaimTemplates—such as changing the storage class or decreasing the volume size—are not allowed. To make changes such as these, you must fully delete the {{ls}} resource, delete and recreate or resize the volume, and create a new {{ls}} resource.
 
 Before you delete a persistent queue (PQ) volume, ensure that the queue is empty. We recommend setting `queue.drain: true` on the {{ls}} Pods to ensure that the queue is drained when Pods are shutdown. Note that you should also increase the `terminationGracePeriodSeconds` to a large enough value to allow the queue to drain.
 
@@ -485,7 +487,7 @@ kind: Secret
 metadata:
   name: external-es-ref
 stringData:
-  url: https://abcd-42.xyz.elastic-cloud.com:443 <1>
+  url: https://<example-url>.elastic-cloud.com:443 <1>
   username: logstash_user <2>
   password: REDACTED <3>
   ca.crt: REDACTED <4>

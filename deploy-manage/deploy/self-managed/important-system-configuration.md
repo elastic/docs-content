@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Important system configuration [system-config]

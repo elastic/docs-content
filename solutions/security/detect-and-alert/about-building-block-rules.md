@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # About building block rules [security-building-block-rules]

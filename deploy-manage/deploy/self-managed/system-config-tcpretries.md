@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Decrease the TCP retransmission timeout [system-config-tcpretries]

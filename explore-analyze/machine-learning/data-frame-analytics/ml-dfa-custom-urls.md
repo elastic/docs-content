@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-custom-urls.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-custom-urls.html
+products:
+  - id: machine-learning
 ---
 
 # Adding custom URLs to data frame analytics jobs [ml-dfa-custom-urls]

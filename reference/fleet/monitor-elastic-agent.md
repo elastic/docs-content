@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Monitor Elastic Agents [monitor-elastic-agent]

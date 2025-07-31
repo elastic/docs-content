@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/epr-proxy-setting.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Set the proxy URL of the Elastic Package Registry [epr-proxy-setting]

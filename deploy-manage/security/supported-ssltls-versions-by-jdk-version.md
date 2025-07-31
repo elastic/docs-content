@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 # Supported SSL/TLS versions by JDK version [jdk-tls-versions]
@@ -13,7 +15,7 @@ applies_to:
 Different JDK versions support different versions of SSL, and this may affect how {{es}} operates.
 
 ::::{note}
-This support applies when running on the default JSSE provider in the JDK. JVMs that are configured to use a [FIPS 140-2](fips-140-2.md) security provider might have a custom TLS implementation, which might support TLS protocol versions that differ from this list.
+This support applies when running on the default JSSE provider in the JDK. JVMs that are configured to use a [FIPS 140-2](fips.md) security provider might have a custom TLS implementation, which might support TLS protocol versions that differ from this list.
 
 Check your security provider’s release notes for information on TLS support.
 
@@ -104,6 +106,6 @@ To enable your custom security policy, create a file named `java.security.option
 
 SSL/TLS versions can be enabled and disabled within {{es}} via the [`ssl.supported_protocols` settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 
-{{es}} will only support the TLS versions that are enabled by the underlying JDK. If you configure `ssl.supported_procotols` to include a TLS version that is not enabled in your JDK, then it will be silently ignored.
+{{es}} will only support the TLS versions that are enabled by the underlying JDK. If you configure `ssl.supported_protocols` to include a TLS version that is not enabled in your JDK, then it will be silently ignored.
 
 Similarly, a TLS version that is enabled in your JDK, will not be used unless it is configured as one of the `ssl.supported_protocols` in {{es}}.

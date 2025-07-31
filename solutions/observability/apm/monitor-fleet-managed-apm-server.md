@@ -1,9 +1,12 @@
 ---
-navigation_title: "Fleet-managed"
+navigation_title: Fleet-managed
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitor-apm-self-install.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Monitor a Fleet-managed APM Server [apm-monitor-apm-self-install]
@@ -131,7 +134,7 @@ See the [{{agent}} command reference](/reference/fleet/agent-command-reference.m
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "http://es-mon2:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"

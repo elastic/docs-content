@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/explore-metrics.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 # Explore infrastructure metrics over time [explore-metrics]

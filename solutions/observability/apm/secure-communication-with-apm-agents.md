@@ -4,6 +4,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Secure communication with APM agents [apm-secure-agent-communication]

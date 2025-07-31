@@ -12,6 +12,10 @@ jobs:
   route:
     runs-on: ubuntu-latest
     if: |
+      github.event.label.name == 'team:Ingest' ||
+      github.event.label.name == 'team:Experience' ||
+      github.event.label.name == 'team:Admin' ||
+      github.event.label.name == 'team:Developer' ||
       github.event.label.name == 'team:DocsEng' ||
       github.event.label.name == 'team:Obs' ||
       github.event.label.name == 'team:Platform' ||
@@ -21,12 +25,16 @@ jobs:
     env:
       PROJECT_ID_MAP: |
         {
-          "team:DocsEng":   "1625",
-          "team:Obs":       "649",
-          "team:Platform":  "1232",
-          "team:Projects":  "1415",
-          "team:Search":    "726",
-          "team:Security":  "1034"
+          "team:Ingest":      "649",
+          "team:Experience":  "1034",
+          "team:Admin":       "1927",
+          "team:Developer":   "726",
+          "team:DocsEng":     "1625",
+          "team:Obs":         "649",
+          "team:Platform":    "1232",
+          "team:Projects":    "1415",
+          "team:Search":      "726",
+          "team:Security":    "1034"
         }
     steps:
       - name: Remove needs-team label

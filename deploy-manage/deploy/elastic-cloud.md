@@ -1,10 +1,12 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/serverless/current/intro.html
 applies_to:
   serverless: ga
   deployment:
     ess: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/serverless/current/intro.html
+products:
+  - id: cloud-serverless
 ---
 
 # {{ecloud}} [intro]

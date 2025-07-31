@@ -1,10 +1,12 @@
 ---
 navigation_title: Data tiers and autoscaling support
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ce-add-support-for-node-roles-and-autoscaling.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ce-add-support-for-node-roles-and-autoscaling.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Updating custom templates to support node_roles and autoscaling [ce-add-support-for-node-roles-and-autoscaling]
@@ -1416,7 +1418,7 @@ Having added support for `node_roles` and autoscaling to your custom template, i
 1. Obtain the existing deployment templates by sending the following `GET` request, and take note of the `id` of the template you wish to update.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
+    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Send a `PUT` request with the updated template on the payload, in order to effectively replace the outdated template with the new one. Note that the following request is just an example, you have to replace `{{template_id}}` with the `id` you collected on step 1. and set the payload to the updated template JSON. Check [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more details.

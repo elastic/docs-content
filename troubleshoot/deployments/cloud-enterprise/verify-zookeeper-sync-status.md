@@ -1,19 +1,19 @@
 ---
-navigation_title: "ZooKeeper sync status"
+navigation_title: ZooKeeper sync status
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-zookeeper-sync.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-zookeeper-sync.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Verify ZooKeeper sync status [ece-zookeeper-sync]
 
-It is recommended to check the ZooKeeper sync status before starting any maintenance on your Director nodes. This helps you prevent the following scenarios:
+Before performing any maintenance on the platform, verify the ZooKeeper sync status to ensure the system is healthy and consistent. Confirm that each ECE host with the `director` role is running a ZooKeeper instance, that all instances are fully in sync, and that no unexpected instances are participating in the quorum.
 
-* The ECE UI **Settings** page displays all ZooKeeper nodes as connected, but not all the nodes have completed the syncing with the latest ZooKeeper state.
-* Connected ZooKeeper nodes participate in the quorum, but they don’t appear in the ECE UI **Settings** page. For example, if the host is removed, ECE no longer cares about it and keeps the ZooKeeper container part of the quorum.
-
+Proceeding with maintenance or ECE upgrades while ZooKeeper is not fully healthy can lead to unexpected behavior, including data loss or quorum-related failures.
 
 ### Check at container level
 

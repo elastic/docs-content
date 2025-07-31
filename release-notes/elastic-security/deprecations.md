@@ -1,5 +1,5 @@
 ---
-navigation_title: "Deprecations"
+navigation_title: Deprecations
 ---
 
 # {{elastic-sec}} deprecations [elastic-security-deprecations]
@@ -15,6 +15,13 @@ Review the deprecated functionality for {{elastic-sec}}. While deprecations have
 % **Impact**<br> Impact of deprecation.
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
+
+## 9.1.0 [elastic-security-9.1.0-deprecations]
+
+::::{dropdown} Removes default quick prompts
+Removes default quick prompts from the Security AI Assistant.
+For more information, refer to [#225536]({{kib-pull}}225536).
+::::
 
 ## 9.0.0 [elastic-security-900-deprecations]
 

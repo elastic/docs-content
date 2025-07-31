@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-manage-storage.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Manage storage [apm-manage-storage]
@@ -11,5 +14,5 @@ applies_to:
 
 The [storage and sizing guide](/solutions/observability/apm/storage-sizing-guide.md) attempts to define a "typical" storage reference for Elastic APM, and there are additional settings you can tweak to [reduce storage](/solutions/observability/apm/reduce-storage.md), or to [tune data ingestion in {{es}}](/solutions/observability/apm/tune-data-ingestion.md#apm-tune-elasticsearch).
 
-In addition, the Applications UI makes it easy to visualize your APM data usage with [storage explorer](/solutions/observability/apm/storage-explorer.md). Storage explorer allows you to analyze the storage footprint of each of your services to see which are producing large amounts of data—​so you can better reduce the data you’re collecting or forecast and prepare for future storage needs.
+In addition, the Applications UI makes it easy to visualize your APM data usage with [storage explorer](/solutions/observability/apm/storage-explorer.md). Storage explorer allows you to analyze the storage footprint of each of your services to see which are producing large amounts of data—so you can better reduce the data you’re collecting or forecast and prepare for future storage needs.
 

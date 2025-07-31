@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-network-policies.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_prerequisites.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Kubernetes network policies [k8s-network-policies]
@@ -16,7 +18,7 @@ This section describes how to use network policies to isolate the ECK operator a
 Note that network policies alone are not sufficient for security. You should complement them with strict RBAC policies, resource quotas, node taints, and other available security mechanisms to ensure that tenants cannot access, modify, or disrupt resources belonging to each other.
 
 :::{tip}
-{{eck}} also supports [IP traffic filtering](/deploy-manage/security/ip-filtering-basic.md).
+{{eck}} also supports [IP filtering](/deploy-manage/security/ip-filtering-basic.md).
 :::
 
 ::::{note}

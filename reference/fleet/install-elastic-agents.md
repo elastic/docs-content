@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Install Elastic Agents [elastic-agent-installation]
@@ -36,7 +39,7 @@ You have a few options for installing and managing an {{agent}}:
 
 * **Install {{agent}} in a containerized environment**
 
-    You can run {{agent}} inside of a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the Elastic Docker registry, and we provide deployment manifests for running on Kubernetes.
+    You can run {{agent}} inside of a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the Elastic Docker registry, and we provide deployment manifests for running on Kubernetes.
 
     Refer to:
 
@@ -51,7 +54,7 @@ You have a few options for installing and managing an {{agent}}:
 
     * [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md)
     * [Scaling {{agent}} on {{k8s}}](/reference/fleet/scaling-on-kubernetes.md)
-    * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
+    * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 
 
 ::::{admonition} Restrictions in {{serverless-short}}
@@ -86,7 +89,7 @@ This basic package is suitable for most use cases and it offers a reduced size o
 
 #### Servers flavor [elastic-agent-servers-flavor-regular]
 
-The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELATIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
+The servers {{agent}} flavor is installed using the `elastic-agent install --install-servers` command, or for RPM and DEB packages the `ELASTIC_AGENT_FLAVOR=servers` environment variable. In addition to components included in the basic flavor, this flavor also includes:
 
 * `apm-server` - implements the Elastic [APM Server](/solutions/observability/apm/get-started.md).
 * `cloudbeat` - implements [Cloud Security Posture Management (CSPM)](../../solutions/security/cloud/cloud-security-posture-management.md) integrations.
@@ -106,9 +109,13 @@ For containerized environments, the basic {{agent}} flavor is installed using th
 
 For containerized environments, the servers {{agent}} flavor is installed using the default `elastic-agent` command with an agent container package. This flavor contains the same set of components described in [Servers flavor](#elastic-agent-servers-flavor-regular) above.
 
+{applies_to}`stack: ga 9.1` The servers {{agent}} flavor also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependencies necessary to use the [journald input](beats://reference/filebeat/filebeat-input-journald.md).
+
 #### Complete flavor [elastic-agent-complete-flavor]
 
-For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. It also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependences necessary to use the [journald input](beats://reference/filebeat/filebeat-input-journald.md). Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
+For containerized environments, the complete {{agent}} flavor is installed using the `elastic-agent-complete` command with an agent container package. This flavor includes all of the components in the servers flavor, and also includes additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/synthetics/get-started.md) for more information.
+
+The complete {{agent}} flavor also includes the [journald](https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html) dependencies necessary to use the [journald input](beats://reference/filebeat/filebeat-input-journald.md).
 
 ## Resource requirements [elastic-agent-installation-resource-requirements]
 
@@ -139,7 +146,7 @@ The disk requirements for {{agent}} vary by operating system and {{stack}} versi
 | Operating system | 8.13 | 8.14 | 8.15 | 8.18 | 9.0 |
 | --- | --- | --- | --- |
 | **Linux** | 1800 MB | 1018 MB | 1060 MB | 1.5 GB | 1.5 GB |
-| **macOS** | 1100 MB | 619 MB | 680 MB | 775 MB | 7755 MB |
+| **macOS** | 1100 MB | 619 MB | 680 MB | 775 MB | 775 MB |
 | **Windows** | 891 MB | 504 MB | 500 MB | 678 MB | 705 MB |
 
 During upgrades, double the disk space is required to store the new {{agent}} binary. After the upgrade completes, the original {{agent}} is removed from disk to free up the space.

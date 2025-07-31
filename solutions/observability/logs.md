@@ -1,9 +1,11 @@
 ---
+navigation_title: Logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-checklist.html
   - https://www.elastic.co/guide/en/serverless/current/observability-log-monitoring.html
-
-navigation_title: "Logs"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Log monitoring [logs-checklist]

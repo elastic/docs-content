@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # kNN search [knn-search]
@@ -44,7 +47,7 @@ Common use cases for kNN include:
 
 {{es}} supports two methods for kNN search:
 
-* [Approximate kNN](#approximate-knn) using the `knn` search option, `knn` query or a `knn` [retriever](../retrievers-overview.md)
+* [Approximate kNN](#approximate-knn) using the `knn` search option, `knn` query or a `knn` [retriever](../retrievers-overview.md)
 * [Exact, brute-force kNN](#exact-knn) using a `script_score` query with a vector function
 
 In most cases, you’ll want to use approximate kNN. Approximate kNN offers lower latency at the cost of slower indexing and imperfect accuracy.
@@ -572,6 +575,20 @@ PUT passage_vectors
                     "text": {
                         "type": "text",
                         "index": false
+                    },
+                    "language": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "metadata": {
+                "type": "nested",
+                "properties": {
+                    "key": {
+                        "type": "keyword"
+                    },
+                    "value": {
+                        "type": "text"
                     }
                 }
             }
@@ -585,9 +602,9 @@ With the above mapping, we can index multiple passage vectors along with storing
 ```console
 POST passage_vectors/_bulk?refresh=true
 { "index": { "_id": "1" } }
-{ "full_text": "first paragraph another paragraph", "creation_time": "2019-05-04", "paragraph": [ { "vector": [ 0.45, 45 ], "text": "first paragraph", "paragraph_id": "1" }, { "vector": [ 0.8, 0.6 ], "text": "another paragraph", "paragraph_id": "2" } ] }
+{ "full_text": "first paragraph another paragraph", "creation_time": "2019-05-04", "paragraph": [ { "vector": [ 0.45, 45 ], "text": "first paragraph", "paragraph_id": "1", "language": "EN" }, { "vector": [ 0.8, 0.6 ], "text": "another paragraph", "paragraph_id": "2", "language": "FR" } ], "metadata": [ { "key": "author", "value": "Jane Doe" }, { "key": "source", "value": "Internal Memo" } ] }
 { "index": { "_id": "2" } }
-{ "full_text": "number one paragraph number two paragraph", "creation_time": "2020-05-04", "paragraph": [ { "vector": [ 1.2, 4.5 ], "text": "number one paragraph", "paragraph_id": "1" }, { "vector": [ -1, 42 ], "text": "number two paragraph", "paragraph_id": "2" } ] }
+{ "full_text": "number one paragraph number two paragraph", "creation_time": "2020-05-04", "paragraph": [ { "vector": [ 1.2, 4.5 ], "text": "number one paragraph", "paragraph_id": "1", "language": "EN" }, { "vector": [ -1, 42 ], "text": "number two paragraph", "paragraph_id": "2", "language": "EN" }] , "metadata": [ { "key": "author", "value": "Jane Austen" }, { "key": "source", "value": "Financial" } ] }
 ```
 
 The query will seem very similar to a typical kNN search:
@@ -603,8 +620,7 @@ POST passage_vectors/_search
             45
         ],
         "field": "paragraph.vector",
-        "k": 2,
-        "num_candidates": 2
+        "k": 2
     }
 }
 ```
@@ -659,11 +675,16 @@ Note below that even though we have 4 total vectors, we still return two documen
 }
 ```
 
-What if you wanted to filter by some top-level document metadata? You can do this by adding `filter` to your `knn` clause.
+#### Filtering in nested KNN search [nested-knn-search-filtering]
+Want to filter by metadata? You can do this by adding `filter` to your `knn` clause.
 
-::::{note}
-`filter` will always be over the top-level document metadata. This means you cannot filter based on `nested` field metadata.
-::::
+To ensure correct results, each individual filter must be either over:
+
+-  Top-level metadata 
+- `nested` metadata {applies_to}`stack: ga 9.2`
+  :::{note}
+  A single `knn` search supports multiple filters, where some filters can be over the top-level metadata and some over nested.
+  :::
 
 
 ```console
@@ -675,25 +696,15 @@ POST passage_vectors/_search
     ],
     "_source": false,
     "knn": {
-        "query_vector": [
-            0.45,
-            45
-        ],
+        "query_vector": [0.45, 45],
         "field": "paragraph.vector",
         "k": 2,
-        "num_candidates": 2,
         "filter": {
-            "bool": {
-                "filter": [
-                    {
-                        "range": {
-                            "creation_time": {
-                                "gte": "2019-05-01",
-                                "lte": "2019-05-05"
-                            }
-                        }
-                    }
-                ]
+            "range": {
+                "creation_time": {
+                    "gte": "2019-05-01",
+                    "lte": "2019-05-05"
+                }
             }
         }
     }
@@ -737,6 +748,98 @@ Now we have filtered based on the top level `"creation_time"` and only one docum
 }
 ```
 
+##### Filtering on nested metadata [nested-knn-search-filtering-nested-metatadata]
+```{applies_to}
+stack: ga 9.2
+```
+
+The following query filters on nested metadata.
+When scoring parent documents, this query only considers vectors that
+have "paragraph.language" set to "EN".
+
+```console
+POST passage_vectors/_search
+{
+    "fields": [
+        "full_text"
+    ],
+    "_source": false,
+    "knn": {
+        "query_vector": [0.45, 45],
+        "field": "paragraph.vector",
+        "k": 2,
+        "filter": {
+            "match": {
+                "paragraph.language": "EN"
+            }
+        }
+    }
+}
+```
+
+The following query has two filters: one over nested metadata and
+another over the top-level metadata. When scoring parent documents, this
+query only considers vectors that have "paragraph.language" set to "EN"
+and whose parent documents were created within the specified range.
+
+```console
+POST passage_vectors/_search
+{
+    "fields": [
+        "full_text"
+    ],
+    "_source": false,
+    "knn": {
+        "query_vector": [0.45,45],
+        "field": "paragraph.vector",
+        "k": 2,
+        "filter": [
+            {"match": {"paragraph.language": "EN"}},
+            {"range": { "creation_time": { "gte": "2019-05-01", "lte": "2019-05-05"}}}
+        ]
+    }
+}
+```
+
+#### Filtering by sibling nested fields in nested KNN search [nested-knn-search-filtering-sibling]
+```{applies_to}
+stack: ga 9.2
+```
+
+Nested knn search also allows pre-filtering on sibling nested fields.
+For example, given "paragraphs" and "metadata" as nested fields, we can search "paragraphs.vector" and filter by "metadata.key" and "metadata.value".
+
+```console
+POST passage_vectors/_search
+{
+    "fields": [
+        "full_text"
+    ],
+    "_source": false,
+    "knn": {
+        "query_vector": [0.45, 45],
+        "field": "paragraph.vector",
+        "k": 2,
+        "filter": {
+            "nested": {
+                "path": "metadata",
+                "query": {
+                    "bool": {
+                        "must": [
+                            { "match": { "metadata.key": "author" } },
+                            { "match": { "metadata.value": "Doe" } }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+:::{note}
+Retrieving "inner_hits" when filtering on sibling nested fields is not supported.
+:::
 
 ### Nested kNN Search with Inner hits [nested-knn-search-inner-hits]
 
@@ -886,6 +989,197 @@ Now the result will contain the nearest found paragraph when searching.
 }
 ```
 
+### Search with nested vectors for chunked content [nested-knn-search-chunked-content]
+
+Use nested kNN search with dense vector fields and `inner_hits` to search and retrieve relevant content from structured documents. 
+
+This approach is ideal when you:
+
+- Chunk your content into paragraphs, sections, or other nested structures.
+- Want to retrieve only the most relevant nested section of each matching document.
+- You generate your own vectors using a custom model instead of relying on the [`semantic_text`](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text) field provided by Elastic's semantic search capabiliy.
+
+#### Create the index mapping
+This example creates an index that stores a vector at the top level for the document title and multiple vectors inside a nested field for individual paragraphs.
+
+```console
+PUT nested_vector_index
+{
+  "mappings": {
+    "properties": {
+      "paragraphs": {
+        "type": "nested",
+        "properties": {
+          "text": {
+            "type": "text"
+          },
+          "vector": {
+            "type": "dense_vector",
+            "dims": 2,
+            "index_options": {
+              "type": "hnsw"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### Index the documents
+Add example documents with vectors for each paragraph.
+
+```console
+POST _bulk
+{ "index": { "_index": "nested_vector_index", "_id": "1" } }
+{ "paragraphs": [ { "text": "First paragraph", "vector": [0.5, 0.4] }, { "text": "Second paragraph", "vector": [0.3, 0.8] } ] }
+{ "index": { "_index": "nested_vector_index", "_id": "2" } }
+{ "paragraphs": [ { "text": "Another one", "vector": [0.1, 0.9] } ] }
+```
+
+#### Run the search query
+This example searches for documents with relevant paragraph vectors.
+
+```console
+POST nested_vector_index/_search
+{
+  "_source": false,
+  "knn": {
+    "field": "paragraphs.vector",
+    "query_vector": [0.5, 0.4],
+    "k": 2,
+    "num_candidates": 10,
+    "inner_hits": {
+      "size": 2,
+      "name": "top_passages",
+      "_source": false,
+      "fields": ["paragraphs.text"]
+    }
+  }
+}
+```
+
+The `inner_hits` block returns the most relevant paragraphs within each top-level document. Use the `size` field to control how many matches you retrieve. If your query includes multiple kNN clauses, use the `name` field to avoid naming conflicts in the response.
+
+```json
+{
+  "took": 4,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": { 
+    "total": { 
+      "value": 2, <1>
+      "relation": "eq"
+    }, 
+    "max_score": 1,
+    "hits": [ 
+      {
+        "_index": "nested_vector_index",
+        "_id": "1",
+        "_score": 1, <2>
+        "inner_hits": { <3>
+          "top_passages": {
+            "hits": {
+              "total": {
+                "value": 2,
+                "relation": "eq"
+              },
+              "max_score": 1,
+              "hits": [
+                {
+                  "_index": "nested_vector_index",
+                  "_id": "1",
+                  "_nested": {
+                    "field": "paragraphs",
+                    "offset": 0
+                  },
+                  "_score": 1,
+                  "fields": {
+                    "paragraphs": [
+                      {
+                        "text": [
+                          "First paragraph" <4>
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "_index": "nested_vector_index",
+                  "_id": "1",
+                  "_nested": {
+                    "field": "paragraphs",
+                    "offset": 1
+                  },
+                  "_score": 0.92955077,
+                  "fields": {
+                    "paragraphs": [
+                      {
+                        "text": [
+                          "Second paragraph"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "_index": "nested_vector_index",
+        "_id": "2",
+        "_score": 0.8535534,
+        "inner_hits": {
+          "top_passages": {
+            "hits": {
+              "total": {
+                "value": 1,
+                "relation": "eq"
+              },
+              "max_score": 0.8535534,
+              "hits": [
+                {
+                  "_index": "nested_vector_index",
+                  "_id": "2",
+                  "_nested": {
+                    "field": "paragraphs",
+                    "offset": 0
+                  },
+                  "_score": 0.8535534,
+                  "fields": {
+                    "paragraphs": [
+                      {
+                        "text": [
+                          "Another one"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+1. Two documents matched the query.
+2. Document score, based on its most relevant paragraph.
+3. Matching paragraphs appear in the `inner_hits` section.
+4. Actual paragraph text that matched the query.
+
+
 ### Limitations for approximate kNN search [approximate-knn-limitations]
 
 * When using kNN search in [{{ccs}}](../../../solutions/search/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../solutions/search/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
@@ -915,7 +1209,11 @@ All forms of quantization will result in some accuracy loss and as the quantizat
 * `int4` requires some rescoring for higher accuracy and larger recall scenarios. Generally, oversampling by 1.5x-2x recovers most of the accuracy loss.
 * `bbq` requires rescoring except on exceptionally large indices or models specifically designed for quantization. We have found that between 3x-5x oversampling is generally sufficient. But for fewer dimensions or vectors that do not quantize well, higher oversampling may be required.
 
-You can use the `rescore_vector` [preview] option to automatically perform reranking. When a rescore `oversample` parameter is specified, the approximate kNN search will:
+#### The `rescore_vector` option
+```{applies_to}
+stack: preview 9.0, ga 9.1
+```
+You can use the `rescore_vector` option to automatically perform reranking. When a rescore `oversample` parameter is specified, the approximate kNN search will:
 
 * Retrieve `num_candidates` candidates per shard.
 * From these candidates, the top `k * oversample` candidates per shard will be rescored using the original vectors.

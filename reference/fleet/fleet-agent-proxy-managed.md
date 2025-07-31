@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-managed.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet managed Elastic Agent connectivity using a proxy server [fleet-agent-proxy-managed]
@@ -191,11 +194,6 @@ Equally important is the Certificate Authority that the agents need to use to va
 :::{image} images/elastic-agent-edit-proxy-secure-settings.png
 :alt: Screen capture of the Edit Proxy UI
 :::
-
-::::{note}
-Currently {{agents}} will not present a certificate for Control Plane traffic to the {{fleet-server}}. Some proxy servers are setup to mandate that the client setting up a connection presents a certificate to them before allowing that client to connect. This issue will be resolved by [issue #2248](https://github.com/elastic/elastic-agent/issues/2248). Our recommendation is to avoid adding a secure proxy as such in a {{fleet-server}} configuration flyout.
-::::
-
 
 ::::{note}
 In case {{kib}} is behind a proxy server or is otherwise unable to access the {{package-registry}} to download package metadata and content, refer to [Set the proxy URL of the {{package-registry}}](/reference/fleet/epr-proxy-setting.md).

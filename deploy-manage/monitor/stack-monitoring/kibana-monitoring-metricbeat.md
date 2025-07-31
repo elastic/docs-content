@@ -1,10 +1,12 @@
 ---
-navigation_title: "Collect monitoring data with {{metricbeat}}"
+navigation_title: Collect monitoring data with {{metricbeat}}
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitoring-metricbeat.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: kibana
 ---
 
 
@@ -125,7 +127,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "http://es-mon2:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"

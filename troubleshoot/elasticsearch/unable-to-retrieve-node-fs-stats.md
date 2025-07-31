@@ -1,11 +1,11 @@
 ---
 applies_to:
-  stack: 
+  stack:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 navigation_title: "Error: Unable to retrieve node fs stats"
 ---
 
@@ -62,7 +62,7 @@ elasticsearch.ssl.certificateAuthorities: ["path/to/ca.crt"]
 Use `curl` to test the connection to each host in `elasticsearch.hosts`:
 
 ```bash
-curl http://es01:9200/
+curl <ELASTICSEARCH_HOST_URL>:9200/
 ```
 
 If you're using TLS, try one of the following:

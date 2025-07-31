@@ -1,9 +1,12 @@
 ---
-navigation_title: "Use {{metricbeat}} collection"
+navigation_title: Use {{metricbeat}} collection
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-metricbeat-collection.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Use Metricbeat to send monitoring data [apm-monitoring-metricbeat-collection]
@@ -124,7 +127,7 @@ To collect and ship monitoring data:
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "http://es-mon2:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"

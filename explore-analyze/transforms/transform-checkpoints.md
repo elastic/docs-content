@@ -1,10 +1,12 @@
 ---
+navigation_title: How checkpoints work
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-checkpoints.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "How checkpoints work"
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-checkpoints.html
+products:
+  - id: elasticsearch
 ---
 
 # How checkpoints work [transform-checkpoints]

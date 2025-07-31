@@ -2,9 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-observability-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-alerts.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
-# View alerts [observability-view-alerts]
+# View and manage alerts [observability-view-alerts]
 
 ::::{note}
 
@@ -47,7 +50,7 @@ From the **Alerts** table, you can click on a specific alert to open the alert d
 :screenshot:
 :::
 
-There are three common alert statuses:
+There are four common alert statuses:
 
 `active`
 :   The conditions for the rule are met and actions should be generated according to the notification settings.
@@ -120,3 +123,11 @@ To add an alert to an existing case:
 
 1. Select **Add to existing case**.
 2. Select the case where you will attach the alert. A confirmation message displays.
+
+## Clean up alerts [clean-up-alerts-obs]
+
+```{applies_to}
+stack: preview 9.1 
+```
+
+Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerts-cases/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.

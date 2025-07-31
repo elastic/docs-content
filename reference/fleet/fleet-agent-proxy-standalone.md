@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-standalone.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Standalone Elastic Agent connectivity using a proxy server [fleet-agent-proxy-standalone]

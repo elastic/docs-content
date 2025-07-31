@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    eck: ga
 navigation_title: Elastic Cloud on Kubernetes
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html
+applies_to:
+  deployment:
+    eck: ga
+products:
+  - id: cloud-kubernetes
 ---
 
 # Remote clusters with {{eck}} [k8s-remote-clusters]
@@ -76,21 +78,21 @@ spec:
     elasticsearchRef:
       name: cluster-two
       namespace: ns-two
-      apiKey:
-        access:
-          search:
-            names:
-              - kibana_sample_data_ecommerce  <1>
-          replication:
-            names:
-              - kibana_sample_data_ecommerce  <1>
+    apiKey:
+      access:
+        search:
+          names:
+            - kibana_sample_data_ecommerce  <1>
+        replication:
+          names:
+            - kibana_sample_data_ecommerce  <1>
   version: 8.16.1
 ```
 
 1. This requires the sample data: [/explore-analyze/index.md#gs-get-data-into-kibana](/explore-analyze/index.md#gs-get-data-into-kibana)
 
 
-You can find a complete example in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{eck_release_branch}}/config/recipes/remoteclusters).
+You can find a complete example in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/remoteclusters).
 
 
 ### Using the certificate security model [k8s_using_the_certificate_security_model]

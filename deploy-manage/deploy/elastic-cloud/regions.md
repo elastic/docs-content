@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/regions.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Regions [regions]
@@ -25,15 +27,14 @@ The following AWS regions are currently available:
 | Region | Name |
 | :--- | :--- |
 | ap-southeast-1 | Asia Pacific (Singapore) |
+| eu-central-1 | Europe (Frankfurt) |
 | eu-west-1 | Europe (Ireland) |
 | us-east-1 | US East (N. Virginia) |
+| us-east-2 | US East (Ohio) |
 | us-west-2 | US West (Oregon) |
 
-## Microsoft Azure regions [regions-azure-regions]
 
-```yaml {applies_to}
-serverless: preview
-```
+## Microsoft Azure regions [regions-azure-regions]
 
 The following Azure regions are currently available:
 
@@ -47,4 +48,6 @@ The following GCP regions are currently available:
 
 | Region | Name |
 | :--- | :--- |
+| asia-south1 | Mumbai |
+| europe-west1 | Belgium |
 | us-central1 | Iowa |

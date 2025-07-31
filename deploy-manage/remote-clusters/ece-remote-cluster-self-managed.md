@@ -1,11 +1,13 @@
 ---
+navigation_title: With a self-managed cluster
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-self-managed.html
 applies_to:
   deployment:
     ece: ga
     self: ga
-navigation_title: With a self-managed cluster
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-self-managed.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Access clusters of a self-managed environment [ece-remote-cluster-self-managed]
@@ -291,7 +293,7 @@ This section only applies if you’re using TLS certificates as cross-cluster se
 
 
 ```sh
-curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters -d '
+curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters -d '
 {
   "resources" : [
     {
@@ -319,7 +321,7 @@ Note the following when using the {{ece}} RESTful API:
 The following API request retrieves the remote clusters configuration:
 
 ```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters
+curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/$DEPLOYMENT_ID/elasticsearch/$REF_ID/remote-clusters
 ```
 
 ::::{note}

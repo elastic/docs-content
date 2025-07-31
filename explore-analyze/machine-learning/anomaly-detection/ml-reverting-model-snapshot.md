@@ -1,16 +1,18 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-reverting-model-snapshot.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-reverting-model-snapshot.html
+products:
+  - id: machine-learning
 ---
 
 # Reverting to a model snapshot [ml-reverting-model-snapshot]
 
 [Snapshots of the {{ml}} model](ml-ad-run-jobs.md#ml-ad-model-snapshots) for each {{anomaly-job}} are saved frequently to an internal {{es}} index to ensure resilience. It makes it possible to reset the model to a previous state in case of a system failure or if the model changed significantly due to a one-off event.
 
-1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+1. Navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). 
 2. Locate the {{anomaly-job}} whose model you want to revert in the job table.
 3. Open the job details and navigate to the **Model Snapshots** tab.
    :::{image} /explore-analyze/images/machine-learning-anomaly-job-model-snapshots.jpg

@@ -1,9 +1,9 @@
 ---
-navigation_title: "Upgrade on {{eck}}"
+navigation_title: Upgrade on {{eck}}
 applies_to:
   stack:
   deployment:
-   eck:
+    eck:
 ---
 
 # Upgrade your deployment on {{eck}} (ECK)

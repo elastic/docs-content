@@ -2,6 +2,8 @@
 navigation_title: Versioning and availability
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/introducing-elastic-documentation.html
+products:
+  - id: elastic-stack
 ---
 
 # Understanding versioning and availability
@@ -37,8 +39,6 @@ Features may have different availability states between:
 | **Generally Available (GA)** | Production-ready feature (default if not specified) |
 | **Beta** | Feature is nearing general availability but not yet production-ready |
 | **Technical preview** | Feature is in early development stage |
-| **Coming** | Feature announced for a future release |
-| **Discontinued** | Feature is being phased out |
 | **Unavailable** | Feature is not supported in this deployment type or version |
 
 ### Where feature availability may differ
@@ -77,13 +77,13 @@ Badges can appear in two places:
 
 Here are some examples to help you understand how to read the availability badges.
 
-#### Example #1: Stack only feature
+#### Example #1: Stack-only feature
 
 ```yaml {applies_to}
 stack: ga 9.1
 ```
 - **Deployment type**: Elastic Stack
-- **Version**: 9.1
+- **Version**: 9.1.0+
 - **Lifecycle**: Generally Available (GA) — default state
 
 #### Example #2: Serverless-only feature with project differences
@@ -98,14 +98,14 @@ serverless:
   - Beta for Security projects
   - Generally Available for Elasticsearch projects
 
-#### Example #3: Discontinued feature on one deployment type
+#### Example #3: Deprecated feature on one deployment type
 
 ```yaml {applies_to}
 deployment:
-  ece: discontinued 4.1.0
+  ece: deprecated 4.1.0
 ```
 - **Deployment type**: Elastic Cloud Enterprise
-- **Lifecycle**: Discontinued
+- **Lifecycle**: Deprecated
 - **Version**: 4.1.0
 
 :::{tip}
@@ -118,7 +118,7 @@ In April 2025, we released our new documentation site. This site includes docume
 
 To access our previous documentation system, which contains the documentation for releases prior to those listed below, go to [elastic.co/guide](https://elastic.co/guide).
 
-You can access the previous version of a specific page, where available, by clicking the **View previous version** link in the sidebar. 
+You can access the previous version of a specific page, where available, by clicking the **View previous version** link in the sidebar.
 
 The following product versions are documented on this site:
 
@@ -145,9 +145,9 @@ The following product versions are documented on this site:
 | Other ECS logging libraries | All |
 | {{es}} API clients | 9.0.0+ |
 | {{es}} for Apache Hadoop | 9.0.0+ |
-| Curator | 8.0+ | 
+| Curator | 8.0+ |
 | Elastic Cloud Control (ECCTL) | 1.14+ |
-| Elastic Serverless Forwarder | All | 
+| Elastic Serverless Forwarder | All |
 | Elastic integrations | All |
 | Elastic Search UI library | All |
 
@@ -158,12 +158,12 @@ The following product versions are documented on this site:
 | APM Android agent | 1.x+ |
 | APM .NET agent | 1.x+ |
 | APM Go agent | 2.x+ |
-| APM iOS agent | 1.x+ | 
-| APM Java agent | 1.x+ | 
+| APM iOS agent | 1.x+ |
+| APM Java agent | 1.x+ |
 | APM Node.js agent | 4.x+ |
 | APM PHP agent | All |
 | APM Python agent | 6.x+ |
-| APM Ruby agent | 4.x+ | 
+| APM Ruby agent | 4.x+ |
 | APM Real User Monitoring JavaScript agent | 5.x+ |
 | APM attacher for Kubernetes | All |
 

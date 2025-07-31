@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-nginx.html
+products:
+  - id: machine-learning
 ---
 
 # Nginx {{anomaly-detect}} configurations [ootb-ml-jobs-nginx]

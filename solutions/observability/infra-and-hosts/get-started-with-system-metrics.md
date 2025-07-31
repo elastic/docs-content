@@ -5,6 +5,9 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 % Stateful get started is much more detailed, but I'm not sure it needs to be. I've considerably pared it down here, but we should go through the actual steps in here.
@@ -86,7 +89,7 @@ In this step, add the System integration to monitor host logs and metrics.
 :::{tab-item} Serverless
 :sync: serverless
 
-1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new {{obs-serverless}} project](/solutions/observability/get-started.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Project Settings** → **Integrations**.
 3. Type **System** in the search bar, then select the integration to see more details about it.
 4. Click **Add System**.

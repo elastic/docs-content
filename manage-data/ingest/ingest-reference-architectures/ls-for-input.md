@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-for-input.html
+products:
+  - id: logstash
 ---
 
 # Logstash to Elasticsearch [ls-for-input]

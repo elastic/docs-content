@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-trained-models.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-trained-models.html
+products:
+  - id: machine-learning
 ---
 
 # Trained models [ml-trained-models]
@@ -18,7 +20,7 @@ Alternatively, you can use APIs like [get trained models](https://www.elastic.co
 
 ### Models trained by {{dfanalytics}} [_models_trained_by_dfanalytics]
 
-1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
+1. To deploy {{dfanalytics}} model in a pipeline, navigate to the **Trained models** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
 

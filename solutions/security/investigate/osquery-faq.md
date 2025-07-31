@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: kibana
 ---
 
 # Osquery FAQ [osquery-faq]

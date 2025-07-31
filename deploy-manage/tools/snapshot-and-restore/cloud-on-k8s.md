@@ -1,10 +1,12 @@
 ---
+navigation_title: "{{eck}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-snapshots.html
-navigation_title: "{{eck}}"
 applies_to:
   deployment:
     eck:
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage snapshot repositories in {{eck}} [k8s-snapshots]
@@ -482,7 +484,7 @@ spec:
       "settings": {
         "bucket": "es-repo",
         "path_style_access": true,	<1>
-        "endpoint": "https://mys3service.default.svc.cluster.local/" <2>
+        "endpoint": "<my-s3service-url>.default.svc.cluster.local/" <2>
       }
     }
     ```

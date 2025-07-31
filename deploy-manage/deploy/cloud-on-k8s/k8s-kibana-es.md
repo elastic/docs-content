@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-es.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-es.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Connect to an {{es}} cluster [k8s-kibana-es]
@@ -63,7 +65,7 @@ spec:
   count: 1
   config:
     elasticsearch.hosts:
-      - https://elasticsearch.example.com:9200
+      - <ELASTICSEARCH_HOST_URL>:9200
     elasticsearch.username: elastic
   secureSettings:
     - secretName: kibana-elasticsearch-credentials
@@ -81,7 +83,7 @@ spec:
   count: 1
   config:
     elasticsearch.hosts:
-      - https://elasticsearch-sample-es-http:9200
+      - <ELASTICSEARCH_HOST_URL>-es-http:9200
     elasticsearch.username: elastic
     elasticsearch.ssl.certificateAuthorities: /etc/certs/ca.crt
   secureSettings:

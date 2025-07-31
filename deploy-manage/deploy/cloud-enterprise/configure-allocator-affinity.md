@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-allocator-affinity.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-allocator-affinity.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure allocator affinity [ece-configuring-allocator-affinity]
@@ -40,7 +42,7 @@ $$$fill-anti-affinity$$$`fill-anti-affinity` (default)
 To check how allocator affinity is currently configured:
 
 ```sh
-curl -X GET -u admin:PASSWORD -k https://COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
+curl -X GET -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
 {
   "errors": [{
     "code": "platform.config.store.not_found",
@@ -54,7 +56,7 @@ If a configuration option cannot be found, the default `fill-anti-affinity` stra
 To set allocator affinity to the `distribute-anti-affinity` strategy:
 
 ```sh
-curl -X POST -u admin:PASSWORD -k https://COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute-anti-affinity\" }" }'
+curl -X POST -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute-anti-affinity\" }" }'
 {
   "changed": false,
   "name": "constructor",
@@ -65,7 +67,7 @@ curl -X POST -u admin:PASSWORD -k https://COORDINATOR_HOST:12443/api/v1/platform
 To update allocator affinity to the `distribute` strategy:
 
 ```sh
-curl -X PUT -u admin:PASSWORD -k https://COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute\" }" }'
+curl -X PUT -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor -H 'Content-Type: application/json' -d '{ "value": "{ \"allocator_prioritization\": \"distribute\" }" }'
 {
   "changed": true,
   "name": "constructor",
@@ -76,7 +78,7 @@ curl -X PUT -u admin:PASSWORD -k https://COORDINATOR_HOST:12443/api/v1/platform/
 To change allocator affinity back to the default behavior:
 
 ```sh
-curl -X DELETE -u admin:PASSWORD -k https://COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
+curl -X DELETE -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/configuration/store/constructor
 {
 
 }

@@ -3,7 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-capacity.html
 applies_to:
   deployment:
-     ece:
+    ece:
+products:
+  - id: cloud-enterprise
 ---
 
 # Scale out your installation [ece-add-capacity]

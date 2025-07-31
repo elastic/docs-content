@@ -1,4 +1,3 @@
 toc:
   - file: index.md
   - file: fields-and-object-schemas.md
-  - hidden: elastic-entity-model.md

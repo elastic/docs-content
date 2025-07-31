@@ -1,10 +1,13 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-forecast.html
   - https://www.elastic.co/guide/en/serverless/current/observability-aiops-forecast-anomalies.html
+applies_to:
+  stack: ga
+  serverless: ga
+products:
+  - id: machine-learning
+  - id: cloud-serverless
 ---
 
 # Forecast future behavior [ml-ad-forecast]
@@ -17,7 +20,7 @@ You can also use it to estimate the probability of a time series value occurring
 
 Each forecast has a unique ID, which you can use to distinguish between forecasts that you created at different times. You can create a forecast by using the [forecast {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-forecast) or by using {{kib}}. For example:
 
-:::{image} /explore-analyze/images/machine-learning-overview-forecast.jpg
+:::{image} /explore-analyze/images/machine-learning-overview-forecast.png
 :alt: Example screenshot from the Machine Learning Single Metric Viewer in Kibana
 :screenshot:
 :::

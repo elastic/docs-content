@@ -1,9 +1,12 @@
 ---
-navigation_title: "Switch a self-installation"
+navigation_title: Switch a self-installation
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Switch a self-installation to the APM integration [apm-integration-upgrade-steps]
@@ -44,7 +47,7 @@ The {{fleet}}-managed {{agent}} will run the Elastic APM integration on your edg
 
 The APM integration receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents.
 
-To add the APM integration, see [Step 2: Add and configure the APM integration](/solutions/observability/apm/get-started-fleet-managed-apm-server.md#add-apm-integration). Only complete the linked step (not the entire quick start guide). If you’re adding the APM integration to a {{fleet}}-managed {{agent}}, you can use the default policy. If you’re adding the APM integration to the {{fleet-server}}, use the policy that the {{fleet-server}} is running on.
+To add the APM integration, see [Step 2: Add and configure the APM integration](/reference/fleet/get-started-managed-apm-server.md#add-apm-integration). Only complete the linked step (not the entire quick start guide). If you’re adding the APM integration to a {{fleet}}-managed {{agent}}, you can use the default policy. If you’re adding the APM integration to the {{fleet-server}}, use the policy that the {{fleet-server}} is running on.
 
 ::::{tip}
 You’ll configure the APM integration in this step. See [Configure APM Server](/solutions/observability/apm/configure-apm-server.md) for a reference of all available settings. As long as the APM integration is configured with the same secret token or you have API keys enabled on the same host, no reconfiguration is required in your APM agents.
@@ -54,4 +57,4 @@ You’ll configure the APM integration in this step. See [Configure APM Server](
 
 Once data from upgraded APM agents is visible in the Applications UI, it’s safe to stop the APM Server process.
 
-Congratulations — you now have the latest and greatest in Elastic APM!
+Congratulations — you now have the latest and greatest in Elastic APM!
