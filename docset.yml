@@ -278,6 +278,7 @@ subs:
   agent-pull:   "https://github.com/elastic/elastic-agent/pull/"
   fleet-server-issue:   "https://github.com/elastic/fleet-server/issues/"
   fleet-server-pull:   "https://github.com/elastic/fleet-server/pull/"
+  es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
   eck_helm_minimum_version: "3.2.0"
   eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
