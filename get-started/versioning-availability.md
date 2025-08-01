@@ -9,13 +9,13 @@ description: Learn how Elastic handles versioning and feature availability in th
 
 # Versioning and availability in Elastic Docs
 
-Learn how Elastic Docs handles versioning, feature availability, and how to find the right documentation for your deployment type and product version. Find answers to common questions about the Elastic Stack versioning and to help you confidently navigate our continuously updated documentation.
+Learn how Elastic Docs handles versioning, feature availability, and how to find the right documentation for your deployment type and product version. Find answers to common questions about the Elastic Stack versioning and confidently navigate our continuously updated documentation.
 
 ## Frequently asked questions
 
 ### Where can I find documentation for the latest version of the {{stack}}?
 
-You’re in the right place! All documentation for Elastic Stack 9.0.0 and later is available at [elastic.co/docs](https://www.elastic.co/docs), including the latest 9.1.0 version and any future versions in the 9.x series.
+You’re in the right place! All documentation for Elastic Stack 9.0.0 and later is available at [elastic.co/docs](https://www.elastic.co/docs), including the latest {{version.stack| M.M}} version and any future versions in the 9.x series.
 
 Need docs for an earlier version? Go to [elastic.co/guide](https://www.elastic.co/guide).
 
@@ -30,11 +30,11 @@ This approach helps:
 
 ### How do I know content was added in a specific version?
 
-We clearly mark content added or changed in a specific version using availability badges. The availability badges appear in page and section headers. 
+We clearly mark content added or changed in a specific version using availability badges. The availability badges appear in page headers, section headers, and inline.
 
 #### Elastic Stack example
 
-```yaml {applies_to}
+```{applies_to}
 stack: ga 9.1
 ```
 
@@ -45,18 +45,17 @@ This means the feature is:
 
 #### Serverless example
 
-```yaml {applies_to}
+```{applies_to}
 serverless:
   security: beta
   elasticsearch: ga
-```
 * Applies to {{serverless-full}} 
 * Generally Available for {{es}} projects
 * Beta for {{elastic-sec}} projects
 
 #### Elastic Cloud Enterprise example
 
-```yaml {applies_to}
+```{applies_to}
 deployment:
   ece: deprecated 4.1.0
 ```
@@ -82,9 +81,9 @@ We frequently update Elastic Docs to reflect the following:
 
 To learn what's changed, check the [release notes](/release-notes/index.md) for each Elastic product.
 
-% ### How do I know what the current {{stack}} version is?
+### How do I know what the current {{stack}} version is?
 
-% To make sure you're always viewing the most up-to-date and relevant documentation, the version dropdown at the % top of each page shows the most recent 9.x release. For example, Elastic Stack 9.0+ (latest: 9.1.0).
+To make sure you're always viewing the most up-to-date and relevant documentation, the version dropdown at the top of each page shows the most recent 9.x release. For example, 9.0+.
 
 ## Understanding {{stack}} versioning
 
