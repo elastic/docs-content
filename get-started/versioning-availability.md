@@ -30,7 +30,7 @@ This approach helps:
 
 ### How do I know content was added in a specific version?
 
-We clearly mark content added or changed in a specific version using availability badges. The availability badges appear in page and section headers. 
+We clearly mark content added or changed in a specific version using availability badges. The availability badges appear in page headers, section headers, and inline.
 
 #### Elastic Stack example
 
