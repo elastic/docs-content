@@ -15,7 +15,7 @@ Learn how Elastic Docs handles versioning, feature availability, and how to find
 
 ### Where can I find documentation for the latest version of the {{stack}}?
 
-You’re in the right place! All documentation for Elastic Stack 9.0.0 and later is available at [elastic.co/docs](https://www.elastic.co/docs), including the latest 9.1.0 version and any future versions in the 9.x series.
+You’re in the right place! All documentation for Elastic Stack 9.0.0 and later is available at [elastic.co/docs](https://www.elastic.co/docs), including the latest {{version.stack| M.M}} version and any future versions in the 9.x series.
 
 Need docs for an earlier version? Go to [elastic.co/guide](https://www.elastic.co/guide).
 
