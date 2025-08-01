@@ -142,7 +142,7 @@ Find the documentation for your Elastic product versions or releases.
 | [Logstash](logstash://release-notes/index.md) | 9.0.0 and later |
 | [Beats](beats://release-notes/index.md) | 9.0.0 and later |
 | [Elastic Observability](/release-notes/elastic-observability/index.md) | 9.0.0 and later |
-| [Elastic APM](apm-server://release-notes/apm.md) | 9.0.0 and later |
+| [Elastic APM](apm-server://release-notes/index.md) | 9.0.0 and later |
 | [Elastic Security](/release-notes/elastic-security/index.md) | 9.0.0 and later |
 
 ### Deployment type versions or releases
