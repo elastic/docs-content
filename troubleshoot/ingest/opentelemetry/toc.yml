@@ -16,4 +16,5 @@ toc:
       - file: edot-sdks/nodejs/index.md
       - file: edot-sdks/php/index.md
       - file: edot-sdks/python/index.md
+  - file: no-data-in-kibana.md
   - file: contact-support.md
