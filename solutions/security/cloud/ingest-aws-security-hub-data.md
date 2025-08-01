@@ -11,9 +11,13 @@ products:
   - id: cloud-serverless
 ---
 
-# Ingest AWS Security Hub data
+# AWS Security Hub
+This page explains how to make data from the AWS Security Hub integration appear in the following places within {{elastic-sec}}:
 
-In order to enrich your {{elastic-sec}} workflows with third-party cloud security posture data collected by AWS Security Hub:
+- **Findings page**: Data appears on the [Misconfigurations](/solutions/security/cloud/findings-page.md) tab.
+- **Alert and Entity details flyouts**: Applicable data appears in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section).
+
+In order for AWS Security Hub data to appear in these workflows:
 
 * Follow the steps to [set up the AWS Security Hub integration](https://docs.elastic.co/en/integrations/aws/securityhub).
 * Make sure the integration version is at least 2.31.1.
@@ -24,7 +28,6 @@ In order to enrich your {{elastic-sec}} workflows with third-party cloud securit
 :alt: AWS Security Hub integration settings showing the findings toggle
 :::
 
-After you’ve completed these steps, AWS Security Hub data will appear on the Misconfigurations tab of the [Findings](/solutions/security/cloud/findings-page.md) page.
-
-Any available findings data will also appear in the [Insights section](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) for related alerts. If alerts are present for a user or host that has findings data from AWS Security Hub, the findings will appear on the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout).
-
+::::{note}
+You can ingest data from the AWS Security Hub integration for other purposes without following these steps.
+::::
