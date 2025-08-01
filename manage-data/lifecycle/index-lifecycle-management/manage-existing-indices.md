@@ -15,7 +15,7 @@ If you’ve been using Curator or some other mechanism to manage periodic indice
 * Reindex into an {{ilm-init}}-managed index.
 
 ::::{note}
-Starting in Curator version 5.7, Curator ignores {{ilm-init}} managed indices.
+Starting in Curator version 5.7, Curator ignores {{ilm-init}}-managed indices.
 ::::
 
 
@@ -104,4 +104,3 @@ To reindex into the managed index:
     Querying using this alias will now search your new data and all of the reindexed data.
 
 6. Once you have verified that all of the reindexed data is available in the new managed indices, you can safely remove the old indices.
-
