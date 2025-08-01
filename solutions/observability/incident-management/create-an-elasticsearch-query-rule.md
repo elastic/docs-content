@@ -195,6 +195,9 @@ The following variables are specific to this rule type. You can also specify [va
 `context.date`
 :   The date, in ISO format, that the rule met the condition. Example: `2022-02-03T20:29:27.732Z`.
 
+`context.grouping` {applies_to}`stack: ga 9.1`
+:   The object containing groups that are reporting data.
+
 `context.hits`
 :   The most recent documents that matched the query. Using the [Mustache](https://mustache.github.io/) template array syntax, you can iterate over these hits to get values from the {{es}} documents into your actions.
 
