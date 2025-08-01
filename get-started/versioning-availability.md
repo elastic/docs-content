@@ -148,7 +148,7 @@ Find the documentation for your Elastic product versions or releases.
 ### Deployment type versions or releases
 
 | Product | Version or release |
-
+| --- | --- |
 | All [Elastic Cloud Serverless](/release-notes/elastic-cloud-serverless/index.md) project types | All releases |
 | [Elastic Cloud Hosted](cloud://release-notes/cloud-hosted/index.md) | All releases for January 2025 and later  |
 | [Elastic Cloud Enterprise](cloud://release-notes/cloud-enterprise/index.md) | 4.0.0 and later |
