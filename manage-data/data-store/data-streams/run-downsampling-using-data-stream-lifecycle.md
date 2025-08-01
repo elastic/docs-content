@@ -9,10 +9,11 @@ products:
   - id: elasticsearch
 ---
 
-
-
 # Run downsampling using data stream lifecycle [downsampling-dsl]
 
+:::{warning}
+🚧 Work in progress 🚧
+:::
 
 This is a simplified example that allows you to see quickly how [downsampling](./downsampling-time-series-data-stream.md) works as part of a datastream lifecycle to reduce the storage size of a sampled set of metrics. The example uses typical Kubernetes cluster monitoring data. To test out downsampling with data stream lifecycle, follow these steps:
 
@@ -350,7 +351,7 @@ After the data stream lifecycle action was executed, original `.ds-datastream-20
 ...
 ```
 
-Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)).
+Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-concepts.md#querying-downsampled-indices-notes)).
 
 ```console
 GET datastream/_search
