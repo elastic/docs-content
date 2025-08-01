@@ -192,11 +192,11 @@ This metric tracks the storage size for value log files used by the previous imp
 
 ## Frequently Asked Questions (FAQ) [sampling-tail-faq-ref]
 
-:::{dropdown} Why does the sampling rate shown in Storage Explorer not match the configured tail sampling rate?
+:::{dropdown} Why doesn't the sampling rate shown in Storage Explorer match the configured tail sampling rate?
 
 In APM Server, the tail sampling policy applied to a distributed trace is determined by evaluating the configured policies in order against the root transaction (the transaction without a parent) and using the first policy that matches. In contrast, the APM UI Storage Explorer calculates the effective average sampling rate for each service using a different method. It considers both head-based and tail-based sampling, but does not account for root transactions. As a result, the sampling rate displayed in Storage Explorer may differ from the configured tail sampling rate, which can give the false impression that tail-based sampling is not functioning correctly.
 
-For more information, see the related [Kibana issue](https://github.com/elastic/kibana/issues/226600).
+For more information, check the related [Kibana issue](https://github.com/elastic/kibana/issues/226600).
 :::
 
 :::{dropdown} Why do transactions disappear after enabling tail-based sampling?
@@ -205,7 +205,7 @@ If a transaction is consistently not sampled after enabling tail-based sampling,
 
 This issue often arises when it is assumed that a particular service (e.g., service A) always produces the root transaction, but in reality, another service (e.g., service B) may precede it. If service B is not instrumented or sends data to a different APM Server cluster, the root transaction will be missing. To resolve this, ensure that all relevant services are instrumented and send data to the same APM Server cluster, or adjust the trace continuation strategy accordingly.
 
-To identify traces missing a root transaction, run the following ESQL query during a period when tail-based sampling is disabled. Use a short time range to limit the number of results:
+To identify traces missing a root transaction, run the following {{esql}} query during a period when tail-based sampling is disabled. Use a short time range to limit the number of results:
 
 ```
 FROM "traces-apm-*"
@@ -215,11 +215,11 @@ FROM "traces-apm-*"
 ```
 :::
 
-:::{dropdown} Why is configured tail sampling rate ignored and trace always sampled, causing unexpected load to Elasticsearch?
+:::{dropdown} Why is the configured tail sampling rate ignored and why are traces always sampled, causing unexpected load to Elasticsearch?
 
 When the storage limit for tail-based sampling is reached, APM Server will log "configured limit reached" (or "configured storage limit reached" in version 8) as it cannot store new trace events for sampling. By default, traces bypass sampling and are always indexed (sampling rate becomes 100%). This can cause a sudden increase in indexing load, potentially overloading Elasticsearch, as it must process all incoming traces instead of only the sampled subset.
 
 To mitigate this risk, enable the [`discard_on_write_failure`](#sampling-tail-discard-on-write-failure-ref) setting. When set to `true`, APM Server discards traces that cannot be written due to storage or indexing failures, rather than indexing them all. This helps protect Elasticsearch from excessive load. Note that enabling this option can result in data loss and broken traces, so it should be used with caution and only when system stability is a priority.
 
-For more information, see the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) section.
+For more information, refer to the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) section.
 :::
