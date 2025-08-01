@@ -11,6 +11,10 @@ products:
 
 # Full-text search and filtering with Query DSL [full-text-filter-tutorial]
 
+:::{tip}
+This tutorial presents examples in Query DSL syntax. Refer to [the {{esql}} version](esql-search-tutorial.md) for the equivalent examples in {{esql}} syntax.
+:::
+
 This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data to narrow down search results based on exact criteria.
 
 In this quickstart, you’ll implement a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
@@ -590,3 +594,4 @@ This tutorial introduced the basics of full-text search and filtering in {{es}}.
 * [Elasticsearch basics — Search and analyze data](../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}}.
 * [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
 * [Search your data](../search.md): Learn about more advanced search techniques using the `_search` API, including semantic search.
+* [Sear]

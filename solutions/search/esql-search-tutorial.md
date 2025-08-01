@@ -7,6 +7,10 @@ navigation_title: Search and filter with ES|QL
 
 # Search and filter with {{esql}}
 
+:::{tip}
+This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](querydsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
+:::
+
 This is a hands-on introduction to the basics of full-text search and semantic search, using [{{esql}}](/explore-analyze/query-filter/languages/esql.md).
 
 In this scenario, we're implementing search for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
