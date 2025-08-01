@@ -5,17 +5,16 @@ applies_to:
     security: preview
 ---
 
-# Get started with CAD for AWS
+# Set up Cloud Asset Discovery for AWS
 
 ## Overview [cad-aws-overview]
 
-This page explains how to set up the Cloud Asset Discovery (CAD) to inventory assets in AWS.
+This page explains how to set up the Cloud Asset Discovery integration (CAD) to inventory assets in AWS.
 
 ::::{admonition} Requirements
-* The CAD integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* CAD supports only the AWS, GCP, and Azure commercial cloud platforms. Other government cloud platforms are not supported. To request support for other platforms, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 * The user who gives the CAD integration AWS permissions must be an AWS account `admin`.
-
+* CAD is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
+* CAD supports only the AWS commercial cloud platform. AWS GovCloud is not supported. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 ::::
 
 
