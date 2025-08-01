@@ -23,12 +23,19 @@ If you’re experiencing performance degradation, you can [exclude cold and froz
 
 ## Find events to analyze [find-events-analyze]
 
-You can only visualize events triggered by hosts configured with the {{elastic-defend}} integration or any `sysmon` data from `winlogbeat`.
+You can visualize events from the following sources:
 
-In KQL, this translates to any event with the `agent.type` set to either:
+* {{elastic-defend}} integration
+* Sysmon data collected through {{winlogbeat}}
+* [CrowdStrike integration](integration-docs://reference/crowdstrike.md) (Falcon logs collected through Event Stream or FDR)
+* [SentinelOne Cloud Funnel integration](integration-docs://reference/sentinel_one_cloud_funnel.md)
+
+In KQL, this translates to any event with the `agent.type` set to:
 
 * `endpoint`
 * `winlogbeat` with `event.module` set to `sysmon`
+* `filebeat` with `event.module` set to `crowdstrike`
+* `filebeat` with `event.module` set to `sentinel_one_cloud_funnel`
 
 To find events that can be visually analyzed:
 
@@ -37,13 +44,12 @@ To find events that can be visually analyzed:
     * Find **Hosts** in the main menu, or search for `Security/Explore/Hosts` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Events** tab. A list of all your hosts' events appears at the bottom of the page.
     * Find **Alerts** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then scroll down to the Alerts table.
 
-2. Filter events that can be visually analyzed by entering either of the following queries in the KQL search bar, then selecting **Enter**:
+2. Filter events that can be visually analyzed by entering one of the following queries in the KQL search bar, then selecting **Enter**:
 
     * `agent.type:"endpoint" and process.entity_id :*`
-
-        Or
-
     * `agent.type:"winlogbeat" and event.module: "sysmon" and process.entity_id : *`
+    * `agent.type:"filebeat" and event.module: "crowdstrike" and process.entity_id : *`
+    * `agent.type:"filebeat" and event.module: "sentinel_one_cloud_funnel" and process.entity_id : *`
 
 3. Events that can be visually analyzed are denoted by a cubical **Analyze event** icon. Select this option to open the event in the visual analyzer. The event analyzer is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout.
 
@@ -75,7 +81,7 @@ Within the visual analyzer, each cube represents a process, such as an executabl
 
 To understand what fields were used to create the process, select the **Process Tree** to show the schema that created the graphical view. The fields included are:
 
-* `SOURCE`: Can be either `endpoint` or `winlogbeat`
+* `SOURCE`: Indicates the data source—for example, `endpoint` or `winlogbeat`
 * `ID`: Event field that uniquely identifies a node
 * `EDGE`: Event field which indicates the relationship between two nodes
 
