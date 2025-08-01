@@ -136,72 +136,72 @@ Find the documentation for your Elastic product versions or releases.
 
 | Product | Version |
 | --- | --- |
-| [Elasticsearch](/release-notes/elasticsearch.md) | 9.0.0 and later |
-| [Kibana](/release-notes/kibana.md) | 9.0.0 and later |
-| [Fleet and Elastic Agent](/release-notes/fleet.md) | 9.0.0 and later |
-| [Logstash](/release-notes/logstash.md) | 9.0.0 and later |
-| [Beats](/release-notes/beats.md) | 9.0.0 and later |
-| [Elastic Observability](/release-notes/observability.md) | 9.0.0 and later |
-| [Elastic APM](/release-notes/apm.md) | 9.0.0 and later |
-| [Elastic Security](/release-notes/security.md) | 9.0.0 and later |
+| [Elasticsearch](elasticsearch://release-notes/index.md) | 9.0.0 and later |
+| [Kibana](kibana://release-notes/index.md) | 9.0.0 and later |
+| [Fleet and Elastic Agent](/release-notes/fleet-elastic-agent/index.md) | 9.0.0 and later |
+| [Logstash](logstash://release-notes/index.md) | 9.0.0 and later |
+| [Beats](beats://release-notes/index.md) | 9.0.0 and later |
+| [Elastic Observability](/release-notes/elastic-observability/index.md) | 9.0.0 and later |
+| [Elastic APM](apm-server://release-notes/apm.md) | 9.0.0 and later |
+| [Elastic Security](/release-notes/elastic-security/index.md) | 9.0.0 and later |
 
 ### Deployment type versions or releases
 
 | Product | Version or release |
 
-| All [Elastic Cloud Serverless](/release-notes/cloud-serverless.md) project types | All releases |
-| [Elastic Cloud Hosted](/release-notes/cloud-hosted.md) | All releases for January 2025 and later  |
-| [Elastic Cloud Enterprise](/release-notes/cloud-enterprise.md) | 4.0.0 and later |
-| [Elastic Cloud on Kubernetes](/release-notes/cloud-on-k8s.md) | 3.0.0 and later |
+| All [Elastic Cloud Serverless](/release-notes/elastic-cloud-serverless/index.md) project types | All releases |
+| [Elastic Cloud Hosted](cloud://release-notes/cloud-hosted/index.md) | All releases for January 2025 and later  |
+| [Elastic Cloud Enterprise](cloud://release-notes/cloud-enterprise/index.md) | 4.0.0 and later |
+| [Elastic Cloud on Kubernetes](cloud-on-k8s://release-notes/index.md) | 3.0.0 and later |
 
 ### Schema, library, and tool versions
 
 | Product | Version or release
 | --- | --- |
-| [Elasticsearch Java Client](/release-notes/elasticsearch/clients/java.md) | 9.0.0 and later |
-| [Elasticsearch JavaScript Client](/release-notes/elasticsearch/clients/javascript.md) | 9.0.0 and later |
-| [Elasticsearch .NET Client](/release-notes/elasticsearch/clients/dotnet.md) | 9.0.0 and later |
-| [Elasticsearch PHP Client](/release-notes/elasticsearch/clients/php.md) | 9.0.0 and later |
-| [Elasticsearch Python Client](/release-notes/elasticsearch/clients/python.md) | 9.0.0 and later |
-| [Elasticsearch Ruby Client](/release-notes/elasticsearch/clients/ruby.md) | 9.0.0 and later |
-| [Elastic Common Schema (ECS)](/release-notes/ecs.md) | 9.0.0 and later |
-| [ECS Logging .NET library](/reference/ecs/logging/dotnet.md) | 8.18.1 and later |
-| [ECS Logging Go (Logrus) library](/reference/ecs/logging/go-logrus.md) | 1.0.0 and later |
-| [ECS Logging Go (Zap) library](/reference/ecs/logging/go-zap.md) | 1.0.3 and later |
-| [ECS Logging Go (Zerolog) library](/reference/ecs/logging/go-zerolog.md) | 0.2.0 and later |
-| [ECS Logging Java library](/reference/ecs/logging/java.md) | 1.x and later |
-| [ECS Logging Node.js library](/reference/ecs/logging/nodejs.md) | 1.5.3 and later |
-| [ECS Logging PHP library](/reference/ecs/logging/php.md) | 2.0.0 and later |
-| [ECS Logging Python library](/reference/ecs/logging/python.md) | 2.2.0 and later |
-| [ECS Logging Ruby library](/reference/ecs/logging/ruby.md) | 1.0.0 and later |
-| [Elasticsearch for Apache Hadoop]((/release-notes/elasticsearch-hadoop.md)) | 9.0.0 and later |
-| [Elasticsearch Curator](/reference/elasticsearch/curator.md) | 8.0.0 and later |
-| [Elastic Cloud Control (ECCTL)](/release-notes/ecctl.md) | 1.14.0 and later |
-| [Elastic Serverless Forwarder for AWS](/reference/aws-forwarder.md) | 1.20.1 and later |
-| [Elastic integrations](/reference/integrations/all_integrations.md) | All versions |
-| [Search UI JavaScript library](/reference/search-ui.md) | 1.24.0 and later |
+| [Elasticsearch Java Client](elasticsearch-java://release-notes/index.md) | 9.0.0 and later |
+| [Elasticsearch JavaScript Client](elasticsearch-js://release-notes/index.md) | 9.0.0 and later |
+| [Elasticsearch .NET Client](elasticsearch-net://release-notes/index.md) | 9.0.0 and later |
+| [Elasticsearch PHP Client](elasticsearch-php://release-notes/index.md) | 9.0.0 and later |
+| [Elasticsearch Python Client](elasticsearch-py://release-notes/index.md)  | 9.0.0 and later |
+| [Elasticsearch Ruby Client](elasticsearch-ruby://release-notes/index.md)  | 9.0.0 and later |
+| [Elastic Common Schema (ECS)](ecs://release-notes/index.md)  | 9.0.0 and later |
+| [ECS Logging .NET library](ecs-dotnet://reference/index.md) | 8.18.1 and later |
+| [ECS Logging Go (Logrus) library](ecs-logging-go-logrus://reference/index.md) | 1.0.0 and later |
+| [ECS Logging Go (Zap) library](ecs-logging-go-zap://reference/index.md) | 1.0.3 and later |
+| [ECS Logging Go (Zerolog) library](ecs-logging-go-zerolog://reference/index.md) | 0.2.0 and later |
+| [ECS Logging Java library](ecs-logging-java://reference/index.md) | 1.x and later |
+| [ECS Logging Node.js library](ecs-logging-nodejs://reference/index.md) | 1.5.3 and later |
+| [ECS Logging PHP library](ecs-logging-php://reference/index.md) | 2.0.0 and later |
+| [ECS Logging Python library](ecs-logging-python://reference/index.md) | 2.2.0 and later |
+| [ECS Logging Ruby library](ecs-logging-ruby://reference/index.md) | 1.0.0 and later |
+| [Elasticsearch for Apache Hadoop](elasticsearch-hadoop://release-notes/index.md) | 9.0.0 and later |
+| [Elasticsearch Curator](curator://reference/index.md) | 8.0.0 and later |
+| [Elastic Cloud Control (ECCTL)](ecctl://release-notes/index.md) | 1.14.0 and later |
+| [Elastic Serverless Forwarder for AWS](elastic-serverless-forwarder://reference/index.md) | 1.20.1 and later |
+| [Elastic integrations](https://www.elastic.co/docs/reference/integrations/all_integrations) | All versions |
+| [Search UI JavaScript library](search-ui://reference/index.md) | 1.24.0 and later |
 
 ### APM agent and tool versions
 
 | Product | Version |
 | --- | --- |
-| [Elastic Distribution of OpenTelemetry Android](/release-notes/edot/sdks/android.md) | 0.1.0 and later |
-| [Elastic Distribution of OpenTelemetry iOS](/release-notes/edot/sdks/ios.md) | 1.0.0 and later |
-| [Elastic Distribution of OpenTelemetry Java](/release-notes/edot/sdks/java.md) | 1.0.0 and later |
-| [Elastic Distribution of OpenTelemetry .NET](/release-notes/edot/sdks/dotnet.md) | 1.0.0 and later |
-| [Elastic Distribution of OpenTelemetry Node.js](/release-notes/edot/sdks/node.md) | 0.1.0 and later |
-| [Elastic Distribution of OpenTelemetry Python](/release-notes/edot/sdks/python.md) | 0.1.0 and later |
-| [Elastic Distribution of OpenTelemetry PHP](/release-notes/edot/sdks/php.md) | 0.1.0 and later |
-| [Elastic APM .NET Agent](/release-notes/apm/agents/dotnet.md) | 1.0.0 and later |
-| [Elastic APM Go Agent](/release-notes/apm/agents/go.md) | 2.0.0 and later |
-| [Elastic APM Java Agent](/release-notes/apm/agents/java.md) | 1.0.0 and later |
-| [Elastic APM Node.js Agent](/release-notes/apm/agents/nodejs.md) | 4.0.0 and later |
-| [Elastic APM PHP Agent](/release-notes/apm/agents/php.md) | 1.0.0 and later |
-| [Elastic APM Python Agent](/release-notes/apm/agents/python.md) | 6.0.0 and later |
-| [Elastic APM Ruby Agent](/release-notes/apm/agents/ruby.md) | 4.0.0 and later |
-| [Elastic APM Real User Monitoring JavaScript Agent](/release-notes/apm/agents/rum-js.md) | 5.0.0 and later |
-| [Elastic APM AWS Lambda extension](/release-notes/release-notes/apm/aws-lambda/release-notes.md) | 1.0.0 and later |
-| [Elastic APM Attacher for Kubernetes](/reference/apm/k8s-attacher.md) | 1.1.3 |
+| [Elastic Distribution of OpenTelemetry Android](apm-agent-android://release-notes/index.md) | 0.1.0 and later |
+| [Elastic Distribution of OpenTelemetry iOS](apm-agent-ios://release-notes/index.md) | 1.0.0 and later |
+| [Elastic Distribution of OpenTelemetry Java](elastic-otel-java://release-notes/index.md) | 1.0.0 and later |
+| [Elastic Distribution of OpenTelemetry .NET](elastic-otel-dotnet://release-notes/index.md) | 1.0.0 and later |
+| [Elastic Distribution of OpenTelemetry Node.js](elastic-otel-node://release-notes/index.md) | 0.1.0 and later |
+| [Elastic Distribution of OpenTelemetry Python](elastic-otel-python://release-notes/index.md) | 0.1.0 and later |
+| [Elastic Distribution of OpenTelemetry PHP](elastic-otel-php://release-notes/index.md) | 0.1.0 and later |
+| [Elastic APM .NET Agent](apm-agent-dotnet://release-notes/index.md) | 1.0.0 and later |
+| [Elastic APM Go Agent](apm-agent-go://release-notes/index.md) | 2.0.0 and later |
+| [Elastic APM Java Agent](apm-agent-java://release-notes/index.md) | 1.0.0 and later |
+| [Elastic APM Node.js Agent](apm-agent-nodejs://release-notes/index.md) | 4.0.0 and later |
+| [Elastic APM PHP Agent](apm-agent-php://release-notes/index.md) | 1.0.0 and later |
+| [Elastic APM Python Agent](apm-agent-python://release-notes/index.md) | 6.0.0 and later |
+| [Elastic APM Ruby Agent](apm-agent-ruby://release-notes/index.md) | 4.0.0 and later |
+| [Elastic APM Real User Monitoring JavaScript Agent](apm-agent-rum-js://release-notes/index.md) | 5.0.0 and later |
+| [Elastic APM AWS Lambda extension](apm-aws-lambda://release-notes/release-notes.md) | 1.0.0 and later |
+| [Elastic APM Attacher for Kubernetes](apm-k8s-attacher://reference/index.md) | 1.1.3 |
 
 
 
