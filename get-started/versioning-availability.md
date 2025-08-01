@@ -45,11 +45,10 @@ This means the feature is:
 
 #### Serverless example
 
-```yaml {applies_to}
+```{applies_to}
 serverless:
   security: beta
   elasticsearch: ga
-```
 * Applies to {{serverless-full}} 
 * Generally Available for {{es}} projects
 * Beta for {{elastic-sec}} projects
