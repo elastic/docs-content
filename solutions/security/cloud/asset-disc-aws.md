@@ -196,7 +196,7 @@ When deploying to an organization using any of the authentication methods below,
 
 * [Default instance role (recommended)](/solutions/security/cloud/asset-disc-aws.md#cad-aws-use-instance-role)
 * [Direct access keys](/solutions/security/cloud/asset-disc-aws.md#cad-aws-use-keys-directly)
-* [Temporary security credentials](/solutions/security/cloud/asset-disc-aws.md#cad-aws-use-temp-credentials)
+* [Temporary security credentials](/solutions/security/cloud/asset-disc-aws.md#cad-aws-temp-credentials)
 * [Shared credentials file](/solutions/security/cloud/asset-disc-aws.md#cad-aws-use-a-shared-credentials-file)
 * [IAM role Amazon Resource Name (ARN)](/solutions/security/cloud/asset-disc-aws.md#cad-aws-use-iam-arn)
 
