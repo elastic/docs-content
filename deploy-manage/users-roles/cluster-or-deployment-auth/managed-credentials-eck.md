@@ -72,3 +72,23 @@ kubectl delete secret -l eck.k8s.elastic.co/credentials=true
 ::::{warning}
 This command regenerates auto-generated credentials of **all** {{stack}} applications in the namespace.
 ::::
+
+## Creating custom users
+
+### Native realm
+
+You can create custom users in the {{es}} native realm using {{es}} user management APIs or {{kib}}.
+
+Refer to [Native user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) for more details.
+
+### File realm
+
+Custom users can also be created by providing the desired file realm content or a username and password in Kubernetes secrets, referenced in the {{es}} resource.
+
+Refer to [File-based user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md) for extra details and examples.
+
+## Creating custom roles
+
+Roles can be specified using the Role management API, or the Role management UI in {{kib}}. Additionally, file-based role management can be achieved by referencing Kubernetes secrets containing the roles specification.
+
+Refer to [Managing custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles) for details and examples.
