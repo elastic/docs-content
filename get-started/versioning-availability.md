@@ -81,7 +81,7 @@ We frequently update Elastic Docs to reflect the following:
 
 To learn what's changed, check the [release notes](/release-notes/index.md) for each Elastic product.
 
-% ### How do I know what the current {{stack}} version is?
+### How do I know what the current {{stack}} version is?
 
 % To make sure you're always viewing the most up-to-date and relevant documentation, the version dropdown at the % top of each page shows the most recent 9.x release. For example, Elastic Stack 9.0+ (latest: 9.1.0).
 
