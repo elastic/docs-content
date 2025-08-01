@@ -55,7 +55,7 @@ serverless:
 
 #### Elastic Cloud Enterprise example
 
-```yaml {applies_to}
+```{applies_to}
 deployment:
   ece: deprecated 4.1.0
 ```
