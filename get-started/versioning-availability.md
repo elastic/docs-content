@@ -83,7 +83,7 @@ To learn what's changed, check the [release notes](/release-notes/index.md) for 
 
 ### How do I know what the current {{stack}} version is?
 
-% To make sure you're always viewing the most up-to-date and relevant documentation, the version dropdown at the % top of each page shows the most recent 9.x release. For example, Elastic Stack 9.0+ (latest: 9.1.0).
+To make sure you're always viewing the most up-to-date and relevant documentation, the version dropdown at the top of each page shows the most recent 9.x release. For example, 9.0+.
 
 ## Understanding {{stack}} versioning
 
