@@ -200,7 +200,7 @@ Find the documentation for your Elastic product versions or releases.
 | [Elastic APM Python Agent](/release-notes/apm/agents/python.md) | 6.0.0 and later |
 | [Elastic APM Ruby Agent](/release-notes/apm/agents/ruby.md) | 4.0.0 and later |
 | [Elastic APM Real User Monitoring JavaScript Agent](/release-notes/apm/agents/rum-js.md) | 5.0.0 and later |
-| [Elastic APM AWS Lambda extension](/release-notes/release-notes/apm/aws-lambda/release-notes.md) | 1.0.0 and later |
+| [Elastic APM AWS Lambda extension](/release-notes/apm/aws-lambda/release-notes.md) | 1.0.0 and later |
 | [Elastic APM Attacher for Kubernetes](reference/apm/k8s-attacher.md) | 1.1.3 |
 
 
