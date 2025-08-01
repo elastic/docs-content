@@ -250,7 +250,7 @@ You must select **Programmatic access** when creating the IAM user.
 
 
 
-#### Option 3 - Temporary security credentials [cad-aws-use-temp-credentials]
+#### Option 3 - Temporary security credentials [cad-aws-temp-credentials]
 
 You can configure temporary security credentials in AWS to last for a specified duration. They consist of an access key ID, a secret access key, and a session token, which is typically found using `GetSessionToken`.
 
