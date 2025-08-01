@@ -74,7 +74,7 @@ For more information, check the [{{ech}} documentation](cloud-hosted.md).
 * Search Power is limited to 100. This setting only exists in {{es-serverless}} projects
 * Search Boost Window is limited to 7 days. This setting only exists in {{es-serverless}} projects
 * Scaling is limited for serverless projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
-* We monitor token usage per account for the Elastic Managed LLM. If an account is using over 1mn tokens in 24 hours for the managed LLM, we will impose a fair use policy and let you know before disabling access to the LLM. This is in accordance with our fair use policy so we can service all trials reasonably. 
+* We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
 
 **Remove limitations**
 
