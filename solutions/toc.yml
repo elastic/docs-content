@@ -601,6 +601,11 @@ toc:
               - file: security/cloud/kspm-benchmarks.md
               - file: security/cloud/kspm-dashboard.md
               - file: security/cloud/kspm-frequently-asked-questions.md
+          - file: security/cloud/asset-disc.md
+            children:
+              - file: asset-disc-aws.md
+              - file: asset-disc-gcp.md
+              - file: asset-disc-azure.md
           - file: security/cloud/cloud-native-vulnerability-management.md
             children:
               - file: security/cloud/get-started-with-cnvm.md
