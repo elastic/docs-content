@@ -454,4 +454,4 @@ POST movetods/_rollover
 
 ### Update your ingest endpoint to target the created data stream [manage-general-content-with-data-streams-endpoint]
 
-If you use Elastic clients, scripts, or any other 3rd party tool to ingest data to Elasticsearch, make sure you update these to use the created data stream.
+If you use Elastic clients, scripts, or any other third party tool to ingest data to {{es}}, make sure you update these to use the created data stream.
