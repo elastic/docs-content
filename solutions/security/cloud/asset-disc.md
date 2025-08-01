@@ -9,7 +9,7 @@ applies_to:
 
 The Cloud Asset Discovery integration (CAD) creates an up-to-date, unified inventory of your cloud resources from AWS, GCP, and Azure.
 
-This feature currently supports agentless and agent-based deployments on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. For step-by-step getting started guides, refer to [Get started with CAD for AWS](/solutions/security/cloud/get-started-with-cad-for-aws.md), [Get started with CAD for GCP](/solutions/security/cloud/get-started-with-cad-for-gcp.md), or [Get started with CAD for Azure](/solutions/security/cloud/get-started-with-cad-for-azure.md).
+This feature currently supports agentless and agent-based deployments on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. For step-by-step getting started guides, refer to [Get started with CAD for AWS](/solutions/security/cloud/asset-disc-aws.md), [Get started with CAD for GCP](/solutions/security/cloud/asset-disc-gcp.md), or [Get started with CAD for Azure](/solutions/security/cloud/asset-disc-azure.md).
 
 ::::{admonition} Requirements
 * The CSPM integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
