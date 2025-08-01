@@ -64,7 +64,7 @@ During the free 14 day trial, Elastic provides access to one hosted deployment a
 * The deployment size is limited to 8GB RAM and approximately 360GB of storage, depending on the specified hardware profile
 * Machine learning nodes are available up to 4GB RAM, or up to 8GB when using Reranker
 * Custom {{es}} plugins are not enabled
-* We monitor token usage per account for the Elastic Managed LLM. If an account is using over 1mn tokens in 24 hours for the managed LLM, we will impose a fair use policy and let you know before disabling access to the LLM. This is in accordance with our fair use policy so we can service all trials reasonably. 
+* We monitor token usage per account for the Elastic Managed LLM. If an account uses over one million tokens in 24 hours, we will inform you and then disable access to the LLM. This is in accordance with our fair use policy for trials. 
 
 For more information, check the [{{ech}} documentation](cloud-hosted.md).
 
