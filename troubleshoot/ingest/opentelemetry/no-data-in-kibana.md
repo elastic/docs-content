@@ -41,11 +41,15 @@ Use the following checks to identify and fix common configuration or connectivit
 
 ### Check export endpoint
 
-Make sure the Collector is configured to send data to the correct Elastic endpoint. For example, if using AWS, the endpoint should match this structure:
+Make sure the Collector is configured to send data to the correct Elastic endpoint. 
 
-```yaml
-endpoint: https://<your-cluster-id>.apm.<region>.aws.elastic-cloud.com:443
-```
+To confirm:
+
+1. Open {{kib}} for your deployment.
+2. In the top right, select **Add data**.
+3. Select **Application** > **OpenTelemetry**.
+4. In the **APM Agents** panel, locate **OpenTelemetry**.
+5. Ensure the `endpoint` in your Collector configuration matches exactly.
 
 If you’re using the managed OTLP endpoint, confirm the region and cluster ID are correct.
 
