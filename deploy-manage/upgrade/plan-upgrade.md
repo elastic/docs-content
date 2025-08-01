@@ -134,7 +134,7 @@ In general, you should upgrade the components of your {{stack}} in the following
 3. {{fleet-server}} and Elastic APM (if used)
 4. Ingest tools ({{beats}}, {{agent}}, {{ls}}, etc.) and {{es}} client libraries
 
-If your deployment runs on {{ech}} or {{ece}}, the platform handles the upgrade and component order automatically in a single plan execution. You only need to upgrade any external ingest tools afterward.
+If your deployment runs on {{ech}} or {{ece}}, the platform handles the upgrade and component order automatically in a single plan execution, including the {{fleet-server}} and APM as part of the Integrations Server. You only need to upgrade any external ingest tools afterward.
 
 ::::{note}
 If you use a separate [monitoring cluster](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md), upgrade the monitoring cluster before the production cluster.
