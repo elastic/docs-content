@@ -192,40 +192,34 @@ This metric tracks the storage size for value log files used by the previous imp
 
 ## Frequently Asked Questions (FAQ) [sampling-tail-faq-ref]
 
-:::{dropdown} Q: Why does the sampling rate shown in storage explorer not match the configured tail sampling rate?
+:::{dropdown} Why does the sampling rate shown in Storage Explorer not match the configured tail sampling rate?
 
-In APM Server, the configured tail sampling policy applied to a distributed trace is determined by the root transaction, i.e. the transaction without a parent.
+In APM Server, the tail sampling policy applied to a distributed trace is determined by evaluating the configured policies in order against the root transaction (the transaction without a parent) and using the first policy that matches. In contrast, the APM UI Storage Explorer calculates the effective average sampling rate for each service using a different method. It considers both head-based and tail-based sampling, but does not account for root transactions. As a result, the sampling rate displayed in Storage Explorer may differ from the configured tail sampling rate, which can give the false impression that tail-based sampling is not functioning correctly.
 
-However, the APM UI storage explorer calculates the effective average sampling rate for every service in a completely different way, which has to consider head-based sampling and has no concept of root transactions. Therefore, the sampling rate shown in storage explorer can be different from the configured tail sampling rate, and create a false impression that tail-based sampling is not functioning properly.
+For more information, see the related [Kibana issue](https://github.com/elastic/kibana/issues/226600).
+:::
 
-See [Kibana issue](https://github.com/elastic/kibana/issues/226600).
+:::{dropdown} Why do transactions disappear after enabling tail-based sampling?
 
-::::
+If a transaction is consistently not sampled after enabling tail-based sampling, verify that your instrumentation is not missing root transactions (transactions without a parent). APM Server makes sampling decisions when a distributed trace ends, which occurs when the root transaction ends. If the root transaction is not received by APM Server, it cannot make a sampling decision and will silently drop all associated trace events.
 
-::::{dropdown} Q: Why does a transaction disappear after enabling tail-based sampling?
+This issue often arises when it is assumed that a particular service (e.g., service A) always produces the root transaction, but in reality, another service (e.g., service B) may precede it. If service B is not instrumented or sends data to a different APM Server cluster, the root transaction will be missing. To resolve this, ensure that all relevant services are instrumented and send data to the same APM Server cluster, or adjust the trace continuation strategy accordingly.
 
-If you have configured a non-zero sampling rate for a transaction, but it is always not sampled after enabling tail-based sampling, please double check your instrumentation setup for missing root transactions, i.e. the transaction without a parent.
+To identify traces missing a root transaction, run the following ESQL query during a period when tail-based sampling is disabled. Use a short time range to limit the number of results:
 
-APM Server makes a sampling decision based on the configured policies when a distributed trace ends, which is when the root transaction ends. If the root transaction of a trace is not received by APM Server, APM Server will not be able to make a sampling decision, and will silently drop all the trace events associated with this trace.
-
-A common cause for this issue is, for example, assuming that service A always produces the root transaction while in reality there can be a service B before service A. However, service B is not instrumented or it is instrumented to send to a separate APM Server cluster. To resolve this issue, either fix service B's instrumentation to send to the same APM Server cluster as service A, or adjust service A's trace continuation strategy.
-
-To identify traces missing a root transaction, use the following ESQL in a time range when tail-based sampling is disabled. Query with a short time range to avoid too many results in response.
 ```
 FROM "traces-apm-*"
-| STATS total_docs = COUNT(*), total_child_docs = COUNT(parent.id)  BY trace.id, transaction.id
+| STATS total_docs = COUNT(*), total_child_docs = COUNT(parent.id) BY trace.id, transaction.id
 | WHERE total_docs == total_child_docs
 | KEEP trace.id, transaction.id
 ```
+:::
 
-::::
+:::{dropdown} What happens if the storage limit is reached?
 
-:::{dropdown} Q: What happens if the storage limit is reached?
+When the storage limit for tail-based sampling is reached, APM Server cannot store new trace events for sampling. By default, traces bypass sampling and are always indexed (sampling rate becomes 100%). This can cause a sudden increase in indexing load, potentially overloading Elasticsearch, as it must process all incoming traces instead of only the sampled subset.
 
-When the storage limit for tail-based sampling is reached, APM Server can no longer store new trace events for sampling. By default, when this occurs, traces bypass sampling and are always indexed (sampling rate becomes 100%). This sudden increase in indexing can overload Elasticsearch, as it must now handle all incoming traces instead of just the sampled subset.
+To mitigate this risk, enable the [`discard_on_write_failure`](#sampling-tail-discard-on-write-failure-ref) setting. When set to `true`, APM Server discards traces that cannot be written due to storage or indexing failures, rather than indexing them all. This helps protect Elasticsearch from excessive load. Note that enabling this option can result in data loss and broken traces, so it should be used with caution and only when system stability is a priority.
 
-To prevent Elasticsearch from being overloaded in this scenario, you can enable the [`discard_on_write_failure`](#sampling-tail-discard-on-write-failure-ref) setting. When set to `true`, APM Server will discard traces that cannot be written due to storage or indexing failures, rather than indexing them all. This helps protect Elasticsearch from excessive load, but enabling this option can result in data loss and broken traces, so it should be used with caution and only when system stability is a priority.
-
-For more details, see the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) section above.
-
+For more information, see the [Discard On Write Failure](#sampling-tail-discard-on-write-failure-ref) section.
 :::
