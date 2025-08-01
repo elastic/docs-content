@@ -459,6 +459,7 @@ toc:
               - file: observability/incident-management/create-an-slo.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
+      - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
       - file: security/elastic-security-serverless.md

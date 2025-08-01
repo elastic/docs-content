@@ -102,9 +102,9 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 
 ### Observability
 
-This table compares Observability capabilities between {{ech}} deployments and Serverless projects:
+This table compares Observability capabilities between {{ech}} deployments and Observability Complete Serverless projects. For more information on Observability Logs Essentials Serverless projects, refer to [Observability subscription tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
 
-| **Feature** | {{ech}} | Serverless Observability projects | Serverless notes |
+| **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
 | [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
