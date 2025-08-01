@@ -39,7 +39,7 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 3. Click **Add Cloud Security Posture Management (CSPM)**.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
-6. Click **Advanced options**, then select **Agentless (BETA)**.
+6. Under **Deployment options**, select **Agentless**.
 7. Next, you’ll need to authenticate to AWS. Two methods are available:
 
     1. Option 1: Direct access keys/CloudFormation (Recommended). Under **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
