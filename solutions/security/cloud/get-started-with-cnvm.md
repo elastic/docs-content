@@ -26,7 +26,7 @@ This page explains how to set up Cloud Native Vulnerability Management (CNVM).
 
 
 ::::{note}
-CNVM currently only supports AWS EC2 Linux workloads.
+CNVM currently only supports AWS EC2 Linux workloads (not supported on AWS GovCloud).
 ::::
 
 
