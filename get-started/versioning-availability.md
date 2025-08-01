@@ -34,7 +34,7 @@ We clearly mark content added or changed in a specific version using availabilit
 
 #### Elastic Stack example
 
-```yaml {applies_to}
+```{applies_to}
 stack: ga 9.1
 ```
 
