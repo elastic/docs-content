@@ -50,9 +50,10 @@ serverless:
   security: beta
   elasticsearch: ga
 ```
-* Applies to {{serverless-full}} 
-* Generally Available for {{es}} projects
-* Beta for {{elastic-sec}} projects
+
+This means the feature is:
+* Generally Available for {{es}} Serverless projects
+* Beta for {{elastic-sec}} Serverless projects
 
 #### Elastic Cloud Enterprise example
 
@@ -60,8 +61,10 @@ serverless:
 deployment:
   ece: deprecated 4.1.0
 ```
-* Applies to {{ece}}
-* Deprecated starting in {{ece}} version 4.1.0
+
+This means the feature is:
+* Available on {{ece}}
+* Deprecated starting in version 4.1.0
 
 :::{tip}
 Want to learn more about how availability badges are used? Check the [Elastic Docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/).
