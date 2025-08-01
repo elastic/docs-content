@@ -134,7 +134,7 @@ See [Tail-based sampling](/solutions/observability/apm/transaction-sampling.md#a
 
 The sample rate to apply to trace events matching this policy. Required in each policy.
 
-The sample rate must be greater than or equal to `0` and less than or equal to `1`. For example, a `sample_rate` of `0.01` means that 1% of trace events matching the policy will be sampled. A `sample_rate` of `1` means that 100% of trace events matching the policy will be sampled. (int)
+The sample rate must be greater than or equal to `0` and less than or equal to `1`. For example, a `sample_rate` of `0.01` means that 1% of trace events matching the policy will be sampled. A `sample_rate` of `1` means that 100% of trace events matching the policy will be sampled. (float)
 
 ### **`trace.name`** [sampling-tail-trace-name-ref]
 
