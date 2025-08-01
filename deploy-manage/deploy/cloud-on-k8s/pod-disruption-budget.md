@@ -16,7 +16,7 @@ ECK manages either a single default PDB, or multiple PDBs per {{es}} resource ac
 
 ## Enterprise licensed customers
 
-A separate PDB is created for each type of nodeSet defined in the manifest allowing upgrade or maintenance operations to be more quickly executed. The PDB allows one {{es}} Pod to be taken down as long as the cluster has the health defined in the following table:
+A separate PDB is created for each type of nodeSet defined in the manifest allowing upgrade or maintenance operations to be more quickly executed. The PDBs allow one {{es}} Pod per nodeSet to simultaneously be taken down as long as the cluster has the health defined in the following table:
 
 | Role | Cluster Health Required | Notes |
 |------|------------------------|--------|
