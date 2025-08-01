@@ -120,7 +120,7 @@ Full-text search is powered by [text analysis](full-text/text-analysis-during-se
 
 ## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data]
 
-Next, you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
+Next, you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Note that `text` fields are analyzed and multi-fields are generated at index time.
 
 ```console
 POST /cooking_blog/_bulk?refresh=wait_for
@@ -529,7 +529,7 @@ GET /cooking_blog/_search
 }
 ```
 
-1. The `must_not` clause excludes documents that match the specified criteria. This is a powerful tool for filtering out unwanted results.
+1. `must_not`: Excludes documents that match the specified criteria. This is a powerful tool for filtering out unwanted results.
 
 
 ::::{dropdown} Example response
