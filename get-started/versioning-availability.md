@@ -9,7 +9,7 @@ description: Learn how Elastic handles versioning and feature availability in th
 
 # Versioning and availability in Elastic Docs
 
-Learn how Elastic Docs handles versioning, feature availability, and how to find the right documentation for your deployment type and product version. Find answers to common questions about the Elastic Stack versioning and to help you confidently navigate our continuously updated documentation.
+Learn how Elastic Docs handles versioning, feature availability, and how to find the right documentation for your deployment type and product version. Find answers to common questions about the Elastic Stack versioning and confidently navigate our continuously updated documentation.
 
 ## Frequently asked questions
 
