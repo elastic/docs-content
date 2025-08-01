@@ -8,7 +8,6 @@ After you create a new agentless integration, the new integration policy may sho
 ## Why isn't my agentless agent appearing in Fleet?
 
 ```{applies_to}
-applies_to:
   stack: ga 9.1
   serverless: ga
 ```
