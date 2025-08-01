@@ -49,6 +49,7 @@ This means the feature is:
 serverless:
   security: beta
   elasticsearch: ga
+```
 * Applies to {{serverless-full}} 
 * Generally Available for {{es}} projects
 * Beta for {{elastic-sec}} projects
