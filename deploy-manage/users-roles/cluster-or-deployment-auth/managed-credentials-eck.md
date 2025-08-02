@@ -85,7 +85,7 @@ Refer to [Native user authentication](/deploy-manage/users-roles/cluster-or-depl
 
 Custom users can also be created by providing the desired file realm content or a username and password in Kubernetes secrets, referenced in the {{es}} resource.
 
-Refer to [File-based user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md) for extra details and examples.
+For more information, refer to [File-based user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).
 
 ## Creating custom roles
 
