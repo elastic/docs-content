@@ -15,46 +15,72 @@ products:
 
 # Enable debug logging
 
-You can enable debug logging in the Elastic Distributions of OpenTelemetry (EDOT) Collector by setting the `--log-level=debug` flag. This is useful when troubleshooting startup issues or configuration problems.
+You can enable debug-level logging in the Elastic Distributions of OpenTelemetry (EDOT) Collector by either modifying the configuration file or passing a runtime override. This is useful when troubleshooting startup issues or configuration problems.
 
 This guide shows how to enable debug logging in different environments.
 
 ## Standalone EDOT Collector
 
-If you're running the EDOT Collector directly, add the flag to your command:
+If you're running the EDOT Collector directly, you can choose between two approaches:
 
-```bash
-edot-collector --config=/path/to/otel-collector-config.yaml --log-level=debug
+* [Configuration file](#configuration-file) - to persist debug logging across restarts
+* [Temporary override: runtime flag](#temporary-override-runtime-flag) - for temporary debugging or quick tests
+
+Both approaches increase log verbosity and help surface misconfigurations.
+
+### Configuration file
+
+Add the following section to your EDOT Collector configuration file (typically `otel-collector-config.yaml`):
+
+```yaml
+service:
+  telemetry:
+    logs:
+      level: debug
 ```
 
-This increases log verbosity and helps surface misconfigurations.
+This method works across all deployment environments.
+
+### Temporary override: runtime flag
+
+Pass the log level as a runtime argument using the `--set` flag:
+
+```bash
+otelcol --set=service.telemetry.logs.level=debug
+```
+
+This applies debug-level logging without modifying your configuration file.
 
 ## Kubernetes (Helm deployment)
 
-If you're deploying the EDOT Collector using the Elastic Helm charts, set the `logLevel` in your values file or CLI override:
+If you're deploying the EDOT Collector using the Elastic Helm charts, enable debug logging by adding the configuration directly in your values.yaml file:
 
 ```yaml
-logLevel: debug
+config:
+  service:
+    telemetry:
+      logs:
+        level: debug
 ```
 
-Example usage with `helm install`:
+Alternatively, use a CLI override when installing or upgrading the Helm release:
 
 ```bash
-helm upgrade --install my-collector elastic/otel-collector \
---set logLevel=debug
+helm upgrade --install my-collector/otel-collector \
+  --set config.service.telemetry.logs.level=debug
 ```
 
-This adds `--log-level=debug` to the Collector container’s command line.
+This ensures the Collector logs at debug level when deployed into your cluster.
 
 ## Other environments
 
 Standalone and Kubernetes are currently the only officially supported deployment environments for the EDOT Collector.
 
-However, if you're running the Collector in a different context, such as a manually containerized setup, you can still enable debug logging by passing the `--log-level=debug` flag as a runtime argument:
+However, if you're running the Collector in a different context, such as a manually containerized setup, you can still enable debug logging using the same methods:
 
-```bash
-otel-collector --config=/path/to/config.yaml --log-level=debug
-```
+* Add it to your configuration file using the `service.telemetry.logs.level` setting
+
+* Pass it at runtime with `--set=service.telemetry.logs.level=debug`
 
 :::{{note}}
 Debug logging for the Collector is not currently configurable through {{fleet}}.
