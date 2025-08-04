@@ -194,7 +194,9 @@ This metric tracks the storage size for value log files used by the previous imp
 
 :::{dropdown} Why doesn't the sampling rate shown in Storage Explorer match the configured tail sampling rate?
 
-In APM Server, the tail sampling policy applied to a distributed trace is determined by evaluating the configured policies in order against the root transaction (the transaction without a parent) and using the first policy that matches. In contrast, the APM UI Storage Explorer calculates the effective average sampling rate for each service using a different method. It considers both head-based and tail-based sampling, but does not account for root transactions. As a result, the sampling rate displayed in Storage Explorer may differ from the configured tail sampling rate, which can give the false impression that tail-based sampling is not functioning correctly.
+In APM Server, the tail sampling policy applied to a distributed trace is determined by evaluating the configured policies in order against the root transaction (the transaction without a parent). To learn more about how tail sampling policies are applied, see the examples in [Configure Tail-based sampling](/solutions/observability/apm/transaction-sampling#apm-configure-tail-based-sampling).
+
+In contrast, the APM UI Storage Explorer calculates the effective average sampling rate for each service using a different method. It considers both head-based and tail-based sampling, but does not account for root transactions. As a result, the sampling rate displayed in Storage Explorer may differ from the configured tail sampling rate, which can give the false impression that tail-based sampling is not functioning correctly.
 
 For more information, check the related [Kibana issue](https://github.com/elastic/kibana/issues/226600).
 :::
