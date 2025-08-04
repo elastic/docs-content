@@ -10,7 +10,7 @@ products:
 # Get started with {{obs-serverless}} Logs Essentials [logs-essentials-get-started]
 
 ```{note}
-Use this guide to get started with the Logs Essentials feature tier of {{obs-serverless}}. Refer to the main [{{observability}} getting started](/get-started/index.md) docs to get started with {{obs-serverless}} Complete.
+Use this guide to get started with the Logs Essentials feature tier of {{obs-serverless}}. Refer to the main [{{observability}} get started](/get-started/index.md) docs to get started with {{obs-serverless}} Complete.
 ```
 % Note should link to the feature tier comparison docs once published.
 
