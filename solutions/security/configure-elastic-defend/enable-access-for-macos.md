@@ -1,14 +1,9 @@
 ---
 navigation_title: Enable access on macOS
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/current/deploy-elastic-endpoint-ven.html
-  - https://www.elastic.co/guide/en/serverless/current/security-deploy-elastic-endpoint-ven.html
-  - https://www.elastic.co/guide/en/security/current/deploy-elastic-endpoint.html
-  - https://www.elastic.co/guide/en/serverless/current/security-install-endpoint-manually.html
 applies_to:
-  stack: all
+  stack: ga
   serverless:
-    security: all
+    security: ga
 products:
   - id: security
   - id: cloud-serverless
