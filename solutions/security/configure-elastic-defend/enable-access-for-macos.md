@@ -73,7 +73,7 @@ To see Full Disk Access requirements for the Endgame sensor, refer to Endgame’
 Select your macOS version to view specific steps for your system.
 
 ::::{tab-set}
-:::{tab-item} Ventura (13.0) and later
+:::{tab-item} Ventura (13.x) and later
 If you have not granted Full Disk Access, a notification prompt will appear.
 
 ### {{elastic-endpoint}} v.8.0.0 and later
