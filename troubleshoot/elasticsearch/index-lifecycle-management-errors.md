@@ -227,5 +227,5 @@ This indicates that the cluster is running out of disk space. This can happen wh
 
 ### security_exception: action [<action-name>] is unauthorized for user [<user-name>] with roles [<role-name>], this action is granted by the index privileges [manage_follow_index,manage,all] [_security_exception_action_action_name_is_unauthorized_for_user_user_name_with_roles_role_name_this_action_is_granted_by_the_index_privileges_manage_follow_indexmanageall]
 
-This indicates the ILM action cannot be executed because the user used by ILM to perform the action doesn’t have the proper privileges. This can happen when user’s privileges has been dropped after updating the ILM policy. ILM actions are run as though they were performed by the last user who modify the policy. The account used to create or modify the policy from should have permissions to perform all operations that are part of that policy.
+This indicates the ILM action cannot be executed because the user that ILM uses to perform the action doesn’t have the correct privileges. ILM actions are run as though they are performed by the last user who modified the policy with the privileges that user had at that time. The account used to create or modify the policy must have permissions to perform all operations that are part of that policy.
 

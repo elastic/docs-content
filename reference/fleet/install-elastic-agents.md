@@ -21,6 +21,16 @@ Note the following restrictions when installing {{agent}} on your system:
 ::::
 
 
+
+
+::::{admonition} New FIPS compatible install packages
+:class: note
+
+{applies_to}`stack: preview 9.1` FIPS compatible binaries for {{agent}}, {{fleet}}, and other ingest tools are available for download. Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product [download page](https://www.elastic.co/downloads). Get more details about FIPS compatibility for {{agent}}, {{fleet}} and other ingest tools in [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
+
+::::
+
+
 You have a few options for installing and managing an {{agent}}:
 
 * **Install a {{fleet}}-managed {{agent}} (recommended)**

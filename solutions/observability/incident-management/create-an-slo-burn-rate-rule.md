@@ -132,6 +132,9 @@ The following variables are specific to this rule type. You can also specify [va
 `context.burnRateThreshold`
 :   The burn rate threshold value.
 
+`context.grouping` {applies_to}`stack: ga 9.1`
+:   The object containing groups that are reporting data.
+
 `context.longWindow`
 :   The window duration with the associated burn rate value.
 
