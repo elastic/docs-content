@@ -138,6 +138,9 @@ The following variables are specific to this rule type. You can also specify [va
 `context.group`
 :   Name of the group reporting data.
 
+`context.grouping` {applies_to}`stack: ga 9.2`
+:   The object containing groups that are reporting data.
+
 `context.host`
 :   The host object defined by ECS if available in the source.
 

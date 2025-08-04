@@ -6,6 +6,7 @@ toc:
     children:
       - file: edot-collector/collector-oomkilled.md
       - file: edot-collector/metadata.md
+      - file: edot-collector/collector-not-starting.md
   - file: edot-sdks/index.md
     children:
       - file: edot-sdks/android/index.md
@@ -16,3 +17,5 @@ toc:
       - file: edot-sdks/nodejs/index.md
       - file: edot-sdks/php/index.md
       - file: edot-sdks/python/index.md
+  - file: no-data-in-kibana.md
+  - file: contact-support.md

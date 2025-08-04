@@ -100,13 +100,6 @@ Elastic also allows you to manage spaces using APIs:
 
 
 ## Define access to a space [spaces-control-user-access]
-```{applies_to}
-stack: ga
-serverless:
-  elasticsearch: ga
-  security: ga
-  observability: unavailable
-```
 
 Users can access spaces based on the roles that they have.
 
