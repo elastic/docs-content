@@ -13,7 +13,7 @@ products:
 
 # {{elastic-defend}} requirements [elastic-endpoint-deploy-reqs]
 
-To properly deploy {{elastic-defend}} without a Mobile Device Management (MDM) profile, you must manually enable additional permissions on the host before {{elastic-endpoint}}—the installed component that performs {{elastic-defend}}'s threat monitoring and prevention—is fully functional. For more information, refer to [](enable-access-for-macos.md)
+To properly deploy {{elastic-defend}} without a Mobile Device Management (MDM) profile, you must manually enable additional permissions on the host before {{elastic-endpoint}}—the installed component that performs {{elastic-defend}}'s threat monitoring and prevention—is fully functional. For more information, refer to [](enable-access-for-macos.md).
 
 
 ## Minimum system requirements [_minimum_system_requirements]
