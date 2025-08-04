@@ -29,8 +29,9 @@ The following permissions that need to be enabled are required after you [config
 Select your macOS version to view specific steps for your system.
 
 ::::{tab-set}
-
+:group: os
 :::{tab-item} Sequoia (15.x) and later
+:sync: sequoia
 1. Click **Open System Settings**.
 2. In the **General** pane, click **Login Items & Extensions**.
 3. In the **Login Items & Extensions** pane, scroll down to the **Extensions** section. Click the info icon next to **Endpoint Security Extensions** and toggle `ElasticEndpoint`.
@@ -38,6 +39,7 @@ Select your macOS version to view specific steps for your system.
 :::
 
 :::{tab-item} Ventura (13.x) and Sonoma (14.x)
+:sync: ventura
 1. Click **Open System Settings**.
 2. In the left pane, click **Privacy & Security**.
 3. In the right pane, scroll down to the **Security** section. Click **Allow** to allow the `ElasticEndpoint` system extension to load.
@@ -45,6 +47,7 @@ Select your macOS version to view specific steps for your system.
 :::
 
 :::{tab-item} Monterey (12.x)
+:sync: monterey
 1. Click **Open Security Preferences**.
 2. In the lower-left corner of the **Security & Privacy** pane, click the lock icon, then enter your credentials to authenticate.
 3. Click **Allow** to allow the `ElasticEndpoint` system extension to load.
@@ -73,7 +76,9 @@ To see Full Disk Access requirements for the Endgame sensor, refer to Endgame’
 Select your macOS version to view specific steps for your system.
 
 ::::{tab-set}
+:group: os
 :::{tab-item} Ventura (13.x) and later
+:sync: ventura
 If you have not granted Full Disk Access, a notification prompt will appear.
 
 ### {{elastic-endpoint}} v.8.0.0 and later
@@ -100,6 +105,7 @@ In {{stack}}, if the host is running {{elastic-endpoint}} version 7.17.0 or earl
 :::
 
 :::{tab-item} Monterey (12.x)
+:sync: monterey
 ### {{elastic-endpoint}} v.8.0.0 and later
 The following instructions apply to {{elastic-endpoint}} version 8.0.0 and later.
 
