@@ -9,18 +9,39 @@ products:
   - id: kibana
 ---
 
-# Inference integrations
+# {{infer-cap}} integrations
 
-{{es}} provides a machine learning [inference API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-get-1) to create and manage inference endpoints that integrate with services such as Elasticsearch (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
+{{es}} provides a machine learning [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/group/endpoint-inference) to create and manage {{infer}} endpoints that integrate with services such as {{es}} (for built-in NLP models like [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [E5](/explore-analyze/machine-learning/nlp/ml-nlp-e5.md)), as well as  popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
-You can create a new inference endpoint:
+You can use the default {{infer}} endpoints your deployment contains or create a new {{infer}} endpoint:
 
-- using the [Create an inference endpoint API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-put-1)
+- using the [Create an inference endpoint API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-inference-put)
 - through the [Inference endpoints UI](#add-inference-endpoints).
 
-## Inference endpoints UI [inference-endpoints]
+## Default {{infer}} endpoints [default-enpoints]
 
-The **Inference endpoints** page provides an interface for managing inference endpoints.
+Your {{es}} deployment contains preconfigured {{infer}} endpoints, which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. These endpoints come in two forms:
+
+- **Elastic Inference Service (EIS) endpoints**, which provide {{infer}} as a managed service and do not consume resources from your own nodes.
+
+- **ML node-based endpoints**, which run on your dedicated {{ml}} nodes.
+
+The following section lists the default {{infer}} endpoints, identified by their `inference_id`, grouped by whether they are EIS- or ML node–based.
+
+### Default endpoints for Elastic {{infer-cap}} Service (EIS)
+
+- `.elser-2-elastic`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) trained model as an Elastic {{infer-cap}} Service for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2`. {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`
+
+### Default endpoints used on ML-nodes
+
+- `.elser-2-elasticsearch`: uses the [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) built-in trained model for `sparse_embedding` tasks (recommended for English language text). The `model_id` is `.elser_model_2_linux-x86_64`.
+- `.multilingual-e5-small-elasticsearch`: uses the [E5](../../explore-analyze/machine-learning/nlp/ml-nlp-e5.md) built-in trained model for `text_embedding` tasks (recommended for non-English language texts). The `model_id` is `.e5_model_2_linux-x86_64`.
+
+Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} enpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
+
+## {{infer-cap}} endpoints UI [inference-endpoints]
+
+The **{{infer-cap}} endpoints** page provides an interface for managing {{infer}} endpoints.
 
 :::{image} /explore-analyze/images/kibana-inference-endpoints-ui.png
 :alt: Inference endpoints UI
@@ -29,31 +50,31 @@ The **Inference endpoints** page provides an interface for managing inference en
 
 Available actions:
 
-* Add new endpoint
-* View endpoint details
-* Copy the inference endpoint ID
-* Delete endpoints
+- Add new endpoint
+- View endpoint details
+- Copy the inference endpoint ID
+- Delete endpoints
 
-## Add new inference endpoint [add-inference-endpoints]
+## Add new {{infer}} endpoint [add-inference-endpoints]
 
-To add a new interference endpoint using the UI:
+To add a new {{infer}} endpoint using the UI:
 
 1. Select the **Add endpoint** button.
 1. Select a service from the drop down menu.
 1. Provide the required configuration details.
 1. Select **Save** to create the endpoint.
 
-If your inference endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
+If your {{infer}} endpoint uses a model deployed in Elastic’s infrastructure, such as ELSER, E5, or a model uploaded through Eland, you can configure [adaptive allocations](#adaptive-allocations) to dynamically adjust resource usage based on the current demand.
 
 ## Adaptive allocations [adaptive-allocations]
 
-Adaptive allocations allow inference services to dynamically adjust the number of model allocations based on the current load.
-This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for third-party services (for example, Alibaba Cloud, Cohere, or OpenAI), because those models are hosted externally and not deployed within your Elasticsearch cluster.
+Adaptive allocations allow {{infer}} services to dynamically adjust the number of model allocations based on the current load.
+This feature is only supported for models deployed in Elastic’s infrastructure, such as ELSER, E5, or models uploaded through Eland. It is not available for models used through the Elastic {{infer-cap}} Service (EIS) and third-party services (for example, Alibaba Cloud, Cohere, or OpenAI), because those models are not deployed within your Elasticsearch cluster.
 
 When adaptive allocations are enabled:
 
-* The number of allocations scales up automatically when the load increases.
-* Allocations scale down to a minimum of 0 when the load decreases, saving resources.
+- The number of allocations scales up automatically when the load increases.
+- Allocations scale down to a minimum of 0 when the load decreases, saving resources.
 
 ### Allocation scaling behavior
 
@@ -70,15 +91,6 @@ However, setting the `min_number_of_allocations` to a value greater than `0` kee
 :::: 
 
 For more information about adaptive allocations and resources, refer to the [trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) documentation.
-
-## Default {{infer}} endpoints [default-enpoints]
-
-Your {{es}} deployment contains preconfigured {{infer}} endpoints which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. The following list contains the default {{infer}} endpoints listed by `inference_id`:
-
-* `.elser-2-elasticsearch`: uses the [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) built-in trained model for `sparse_embedding` tasks (recommended for English language tex). The `model_id` is `.elser_model_2_linux-x86_64`.
-* `.multilingual-e5-small-elasticsearch`: uses the [E5](../../explore-analyze/machine-learning/nlp/ml-nlp-e5.md) built-in trained model for `text_embedding` tasks (recommended for non-English language texts). The `model_id` is `.e5_model_2_linux-x86_64`.
-
-Use the `inference_id` of the endpoint in a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field definition or when creating an [{{infer}} processor](elasticsearch://reference/enrich-processor/inference-processor.md). The API call will automatically download and deploy the model which might take a couple of minutes. Default {{infer}} enpoints have adaptive allocations enabled. For these models, the minimum number of allocations is `0`. If there is no {{infer}} activity that uses the endpoint, the number of allocations will scale down to `0` automatically after 15 minutes.
 
 ## Configuring chunking [infer-chunking-config]
 
