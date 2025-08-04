@@ -152,7 +152,7 @@ After uploading your files, you can select to enable them when creating a new {{
 While you can update the ZIP file for any plugin or bundle, these are downloaded and made available only when a node is started.
 
 :::{important}
-You should be careful when updating an extension. If you update an existing extension with a new file, and if the file is broken for some reason, all the nodes could be in trouble, as a restart or move node could make even HA clusters non-available. Also, shards of your indices may become unassigned there's anything wrong with the bundle, for example, file being referenced by index is missing due to the update. 
+Be careful when updating an extension. If you update an existing extension with a new file, and if the file is broken for any reason, all the nodes could be impacted, as either a restart or a move node could make even HA clusters non-available. Also, shards of your indices may become unassigned if there's anything wrong with the bundle, for example if a file referenced by an index is missing due to the update.
 :::
 
 :::{tip}
