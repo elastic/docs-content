@@ -156,7 +156,7 @@ Be careful when updating an extension. If you update an existing extension with 
 :::
 
 :::{tip}
-If you need to make update to your extension, instead of updating an existing extension with a new file directly, we recommend you to create a new extension to test the behavior first, verify it's validty, and then reflect it to your deployment. 
+If you need to update your extension, instead of updating an existing extension with a new file directly, we recommend that you create a new extension to test the behavior first, verify it's validity, and then reflect it to your deployment.
 :::
 
 If the extension is not in use by any deployments, then you are free to update the files or extension details as much as you like. However, if the extension is in use, and if you need to update it with a new file, it is recommended to [create a new extension](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin) rather than updating the existing one that is in use.
