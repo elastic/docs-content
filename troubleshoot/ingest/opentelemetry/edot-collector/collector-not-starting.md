@@ -45,12 +45,10 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    Run the following to validate your configuration without starting the Collector:
 
    ```bash
-   edot-collector --config=/path/to/otel-collector-config.yaml --dry-run
+   otelcol validate --config=/path/to/otel-collector-config.yaml
    ```
    
    This checks for syntax errors and missing components. 
-
-   EDOT fully supports `--dry-run`, just like the upstream Collector.
 
 * Check logs for stack traces or component errors
    
@@ -62,10 +60,10 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    
    Most critical issues, such as missing or invalid exporters or receivers, will be logged.
    
-   To increase verbosity, run the Collector with:
+   To increase verbosity, run:
    
    ```bash
-   --log-level=debug
+   ./otelcol --set=service.telemetry.logs.level=debug
    ```
 
    This is especially helpful for diagnosing configuration parsing issues or startup errors.
@@ -117,7 +115,7 @@ If you're deploying the EDOT Collector using the Elastic Helm charts, try to:
     kubectl describe pod <collector-pod>
     ```
 
-    Common issues include volume mount errors, image pull failures, or misconfigured environment variables.
+  Common issues include volume mount errors, image pull failures, or misconfigured environment variables.
 
 ## Resources
 
