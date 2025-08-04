@@ -1,5 +1,5 @@
 ---
-navigation_title: Collector won't start
+navigation_title: Collector doesn't start
 description: Learn what to do when the EDOT Collector doesn’t start.
 applies_to:
   stack:
