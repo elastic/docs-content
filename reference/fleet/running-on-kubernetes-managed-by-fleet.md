@@ -60,6 +60,12 @@ Download the manifest file, substituting `{agent_version}` with the version numb
 curl -L -O https://github.com/elastic/elastic-agent/blob/v{agent_version}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
 ```
 
+For example, to download the manifest of the latest {{version.stack}} release:
+
+```sh subs=true
+curl -L -O https://github.com/elastic/elastic-agent/blob/v{{version.stack}}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
+```
+
 ::::{note}
 You might need to adjust [resource limits](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) of the {{agent}} container in the manifest. Container resource usage depends on the number of data streams and the environment size.
 ::::
