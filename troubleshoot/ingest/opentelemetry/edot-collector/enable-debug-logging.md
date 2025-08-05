@@ -30,7 +30,7 @@ Both approaches increase log verbosity and help surface misconfigurations.
 
 ### Configuration file
 
-Add the following section to your EDOT Collector configuration file (typically `otel-collector-config.yaml`):
+Add the following section to your EDOT Collector configuration file (typically `otel.yml`):
 
 ```yaml
 service:
@@ -53,7 +53,7 @@ This applies debug-level logging without modifying your configuration file.
 
 ## Kubernetes (Helm deployment)
 
-If you're deploying the EDOT Collector using the Elastic Helm charts, enable debug logging by adding the configuration directly in your values.yaml file:
+If you're deploying the EDOT Collector using the OpenTelemetry Helm charts, enable debug logging by adding the configuration directly in your values.yaml file:
 
 ```yaml
 config:
@@ -63,11 +63,10 @@ config:
         level: debug
 ```
 
-Alternatively, use a CLI override when installing or upgrading the Helm release:
+Alternatively, use a CLI override when installing or upgrading the [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector) release:
 
 ```bash
-helm upgrade --install my-collector/otel-collector \
-  --set config.service.telemetry.logs.level=debug
+helm upgrade my-opentelemetry-collector open-telemetry/opentelemetry-collector --set mode=daemonset --set image.repository="docker.elastic.co/elastic-agent/elastic-otel-collector" --set image.tag="9.1.0" --set config.service.telemetry.logs.level=debug
 ```
 
 This ensures the Collector logs at debug level when deployed into your cluster.
