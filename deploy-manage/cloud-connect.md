@@ -29,9 +29,7 @@ Find answers to your questions about Cloud Connect.
 
 $$$cc-payment$$$
 
-No. Cloud Connect is included with your [self-managed Enterprise license](https://www.elastic.co/subscriptions) and works with self-managed free trials for the duration of the trial period.
-
-However, you may incur additional costs for specific functions within a cloud connected service. For example, when sending metrics data from your cluster in a CSP region to AutoOps in {{ecloud}}, shipping costs will be determined by your agreement with that CSP. 
+No. Cloud Connect itself doesn’t require any additional payment. Each Cloud Connected Service has its own terms. For example, using AutoOps for self-managed clusters does not incur additional charges - it’s available to clusters with an [Enterprise license](https://www.elastic.co/subscriptions) or an active Self-Managed trial, and it does not consume any ECUs.
 :::
 
 :::{dropdown} Does using Cloud Connect consume ECU?
