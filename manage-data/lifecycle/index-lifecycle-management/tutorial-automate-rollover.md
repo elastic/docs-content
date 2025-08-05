@@ -317,8 +317,6 @@ To roll over your general content from indices to a data stream, you:
 
 1. *Optional:* If you have an existing, non-managed index and want to migrate your data to the data stream you created, [reindex with a data stream](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-reindex).
 
-1. *Optional:* To check if your index gets rotated, you can [roll over](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-roll-over).
-
 1. [Update your ingest endpoint](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-general-content-with-data-streams-endpoint) to target the created data stream.
 
 1. *Optional:* You can use the [ILM explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle) to get status information for your managed indices.
@@ -442,15 +440,6 @@ POST /_reindex
 ```
 
 For more information, check [Reindex with a data stream](../../data-store/data-streams/use-data-stream.md#reindex-with-a-data-stream).
-
-
-### Optional: Roll over the reindexed data stream [manage-general-content-with-data-streams-roll-over]
-
-Use the [_rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to create a new write index for the stream. This ensures that the lifecycle policy and ingest pipeline you've created will apply to any new documents that you index.
-
-```console
-POST movetods/_rollover
-```
 
 ### Update your ingest endpoint to target the created data stream [manage-general-content-with-data-streams-endpoint]
 
