@@ -26,5 +26,6 @@ To open the alert details flyout, select the **Expand** button ({icon}`expand`) 
 You can take several actions from the alert details flyout:
 
 - **Generate insights**: To generate an AI description of the alert with recommended actions, click **Generate insights**. (The connector used here is the default LLM for your project. To update it, navigate to the **Advanced settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and update the **Default AI Connector**.)
+- **Ask AI Assistant**: To start a conversation with AI Assistant, select one of the suggested prompts or click **Ask AI Assistant**. To learn more, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md)
 - **Add to case**: To add an alert to a new or existing case, scroll to the bottom and click **Take action**, then **Add to existing case** or **Add to new case**. 
 - **Apply alert tags**: To add tags to an alert, scroll to the bottom of its flyout and click **Take action**, then **Apply alert tags**. (To create new tags, navigate to the **Advanced settings** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and update the **Alert tagging options**.)
