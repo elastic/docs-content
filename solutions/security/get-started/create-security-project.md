@@ -10,7 +10,7 @@ products:
 
 # Create a {{sec-serverless}} project [security-create-project]
 
-A {{sec-serverless}} project allows you to run {{elastic-sec}} in an autoscaled and fully managed environment, where you don’t have to manage the underlying {{es}} cluster and {{kib}} instances.
+An {{sec-serverless}} project allows you to run {{elastic-sec}} in an autoscaled and fully managed environment, where you don’t have to manage the underlying {{es}} cluster and {{kib}} instances.
 
 ## Create project [security-create-project-create-project]
 
@@ -19,7 +19,7 @@ Use your {{ecloud}} account to create a fully managed {{sec-serverless}} project
 1. Navigate to [cloud.elastic.co](https://cloud.elastic.co/).
 2. Log in to your {{ecloud}} account and select **Create project** from the **Serverless projects** panel.
 3. Select **Next** from the **Security** panel.
-4. Name your project and select your project type.
+4. Name your project and select your project type. 
 5. Select a cloud provider and region.
 6. Select **Create project**. It takes a few minutes to create your project.
 7. Once the project is ready, select **Continue** to open the **Get started** page (you might need to log in to {{ecloud}} again).
