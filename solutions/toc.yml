@@ -544,8 +544,9 @@ toc:
           - file: security/configure-elastic-defend/elastic-defend-requirements.md
           - file: security/configure-elastic-defend/install-elastic-defend.md
             children:
-              - file: security/configure-elastic-defend/enable-access-for-macos-monterey.md
-              - file: security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md
+              - hidden: security/configure-elastic-defend/enable-access-for-macos-monterey.md
+              - hidden: security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md
+              - file: security/configure-elastic-defend/enable-access-for-macos.md
               - file: security/configure-elastic-defend/deploy-on-macos-with-mdm.md
               - file: security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md
           - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
