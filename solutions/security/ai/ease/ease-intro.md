@@ -7,7 +7,7 @@ applies_to:
 
 # Elastic AI SOC Engine
 
-This page provides an overview of Elastic AI SOC Engine (EASE) and its key features. EASE is a {{serverless-sec}} project type specialized to provide AI-powered tools and case management to augment third-party SIEM and EDR/XDR platforms. 
+This page provides an overview of Elastic AI SOC Engine (EASE) and its key features. EASE is a {{sec-serverless}} project type specialized to provide AI-powered tools and case management to augment third-party SIEM and EDR/XDR platforms. 
 
 ## Create an EASE project
 
