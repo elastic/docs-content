@@ -63,7 +63,7 @@ curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{a
 For example, to download the manifest of the latest {{version.stack}} release:
 
 ```sh subs=true
-curl -L -O https://github.com/elastic/elastic-agent/blob/v{{version.stack}}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
+curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.stack}}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
 ```
 
 ::::{note}
