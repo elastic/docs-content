@@ -48,7 +48,7 @@ You can control costs using the following strategies:
     * When starting or updating a trained model deployment, [Enable adaptive resources](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources) and set the VCU usage level to **Low**.
     * When using the inference API for {{es}} or ELSER, [enable `adaptive_allocations`](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations).
  
-* **Indexing Stratergies** Consider your indexing stratergies and how it might impact overall VCU usage and costs
+* **Indexing Strategies:** Consider your indexing strategies and how they might impact overall VCU usage and costs:
   
     * To ensure optimal performance and cost-effectiveness for your project, it’s important to consider how you structure your data.
         * Consolidate small indices for better efficiency. We recommend avoiding a design where your project contains hundreds of very small indices, specifically those under 1GB each.
