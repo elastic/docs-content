@@ -56,7 +56,9 @@ cd elasticsearch-{{version.stack}}/ <2>
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
 
-
+:::{tip}
+You can install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
+:::
 
 ### MacOS [install-macos]
 
@@ -77,7 +79,7 @@ cd elasticsearch-{{version.stack}}/ <2>
 
 Apple’s rollout of stricter notarization requirements affected the notarization of the {{version.stack}} {{es}} artifacts. If macOS displays a dialog when you first run {{es}} that interrupts it, then you need to take an action to allow it to run.
 
-To prevent Gatekeeper checks on the {{es}} files, run the following command on the downloaded .tar.gz archive or the directory to which was extracted:
+To prevent Gatekeeper checks on the {{es}} files, run the following command on the downloaded `.tar.gz` archive or the directory to which it was extracted:
 
 ```sh
 xattr -d -r com.apple.quarantine <archive-or-directory>
@@ -85,6 +87,10 @@ xattr -d -r com.apple.quarantine <archive-or-directory>
 
 Alternatively, you can add a security override by following the instructions in the *If you want to open an app that hasn’t been notarized or is from an unidentified developer* section of [Safely open apps on your Mac](https://support.apple.com/en-us/HT202491).
 ::::
+
+:::{tip}
+You can install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
+:::
 
 ## Step 2: Enable automatic creation of system indices [targz-enable-indices]
 
