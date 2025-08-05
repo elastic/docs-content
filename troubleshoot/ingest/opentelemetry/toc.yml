@@ -6,6 +6,7 @@ toc:
     children:
       - file: edot-collector/collector-oomkilled.md
       - file: edot-collector/metadata.md
+      - file: edot-collector/enable-debug-logging.md
       - file: edot-collector/collector-not-starting.md
   - file: edot-sdks/index.md
     children:
