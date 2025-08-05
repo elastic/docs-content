@@ -11,7 +11,7 @@ products:
 
 # APM Server advanced setup [apm-setting-up-and-running]
 
-Before reading this section, see the [getting started documentation](/solutions/observability/apm/apm-server-fleet-managed.md) for basic installation and running instructions.
+Before reading this section, refer to [](/solutions/observability/apm/apm-server-setup.md) for basic installation and running instructions.
 
 This section includes additional information on how to set up and run APM Server, including:
 
