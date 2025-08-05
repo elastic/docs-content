@@ -33,6 +33,7 @@ toc:
               - file: deploy/elastic-cloud/create-serverless-project.md
               - file: deploy/elastic-cloud/regions.md
               - file: deploy/elastic-cloud/project-settings.md
+              - file: deploy/elastic-cloud/manage-serverless-projects-using-api.md
           - file: deploy/elastic-cloud/cloud-hosted.md
             children:
               - file: deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md
@@ -224,6 +225,7 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-kibana-advanced-configuration.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
+                  - file: deploy/cloud-on-k8s/propagate-labels-annotations.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
                   - file: deploy/cloud-on-k8s/recipes.md
                   - file: deploy/cloud-on-k8s/connect-to-external-elastic-resources.md
@@ -484,20 +486,22 @@ toc:
                 children:
                   - file: security/k8s-https-settings.md
                   - file: security/k8s-transport-settings.md
-          - file: security/traffic-filtering.md
+          - file: security/network-security.md
             children:
-              - file: security/ip-traffic-filtering.md
+              - file: security/network-security-policies.md
+              - file: security/ece-filter-rules.md
+              - file: security/ip-filtering.md
                 children:
                   - file: security/ip-filtering-cloud.md
-                    children:
-                      - file: security/ec-traffic-filtering-through-the-api.md
+                  - file: security/ip-filtering-ece.md
                   - file: security/ip-filtering-basic.md
-              - file: security/private-link-traffic-filters.md
+              - file: security/private-connectivity.md
                 children:
-                  - file: security/aws-privatelink-traffic-filters.md
-                  - file: security/azure-private-link-traffic-filters.md
-                  - file: security/gcp-private-service-connect-traffic-filters.md
-                  - file: security/claim-traffic-filter-link-id-ownership-through-api.md
+                  - file: security/private-connectivity-aws.md
+                  - file: security/private-connectivity-azure.md
+                  - file: security/private-connectivity-gcp.md
+                  - file: security/claim-private-connection-api.md
+              - file: security/network-security-api.md
               - file: security/k8s-network-policies.md
           - file: security/elastic-cloud-static-ips.md
           - file: security/kibana-session-management.md
@@ -517,10 +521,14 @@ toc:
                   - file: security/logging-configuration/logfile-audit-output.md
               - file: security/logging-configuration/auditing-search-queries.md
               - file: security/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
-          - file: security/fips-140-2.md
       - file: security/secure-clients-integrations.md
       - file: security/httprest-clients-security.md
       - file: security/limitations.md
+      - file: security/fips.md
+        children:
+          - file: security/fips-es.md
+          - file: security/fips-kib.md
+          - file: security/fips-ingest.md
   - file: users-roles.md
     children:
       - file: users-roles/cloud-organization.md
@@ -610,6 +618,8 @@ toc:
               - file: users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
               - file: users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md
   - file: manage-spaces.md
+    children:
+      - file: manage-spaces-fleet.md
   - file: api-keys.md
     children:
       - file: api-keys/elasticsearch-api-keys.md
@@ -644,6 +654,7 @@ toc:
           - file: remote-clusters/remote-clusters-migrate.md
           - file: remote-clusters/remote-clusters-settings.md
       - file: remote-clusters/eck-remote-clusters.md
+  - hidden: cloud-connect.md
   - file: monitor.md
     children:
       - file: monitor/autoops.md
@@ -663,6 +674,11 @@ toc:
           - file: monitor/autoops/ec-autoops-dismiss-event.md
           - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/ec-autoops-faq.md
+          - hidden: monitor/autoops/cc-autoops-as-cloud-connected.md
+          - hidden: monitor/autoops/cc-connect-self-managed-to-autoops.md
+          - hidden: monitor/autoops/cc-manage-users.md
+          - hidden: monitor/autoops/cc-cloud-connect-autoops-faq.md
+          - hidden: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
       - file: monitor/stack-monitoring.md
         children:
           - file: monitor/stack-monitoring/ece-ech-stack-monitoring.md
@@ -781,12 +797,6 @@ toc:
   - file: upgrade.md
     children:
       - file: upgrade/plan-upgrade.md
-      - file: upgrade/orchestrator.md
-        children:
-          - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
-            children:
-              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
-          - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
       - file: upgrade/prepare-to-upgrade.md
         children:
           - file: upgrade/prepare-to-upgrade/upgrade-assistant.md      
@@ -807,6 +817,12 @@ toc:
                   - file: upgrade/deployment-or-cluster/kibana-roll-back.md
           - file: upgrade/deployment-or-cluster/enterprise-search.md   
       - file: upgrade/ingest-components.md        
+      - file: upgrade/orchestrator.md
+        children:
+          - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
+            children:
+              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
+          - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
   - file: uninstall.md
     children:
       - file: uninstall/uninstall-elastic-cloud-enterprise.md
