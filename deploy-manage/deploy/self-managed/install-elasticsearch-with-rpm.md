@@ -97,6 +97,10 @@ sudo zypper modifyrepo --enable elasticsearch && \
     :::{include} _snippets/skip-set-kernel-params.md
     :::
 
+    :::{tip}
+    You can download and install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
+    :::
+
 2. Copy the terminal output from the install command to a local file. In particular, you’ll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to [run as a service](#running-systemd).
 
 ## Step 3: Set up the node for connectivity

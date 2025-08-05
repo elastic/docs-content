@@ -57,7 +57,7 @@ cd elasticsearch-{{version.stack}}/ <2>
 2. This directory is known as `$ES_HOME`.
 
 :::{tip}
-You can install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
+You can download and install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
 :::
 
 ### MacOS [install-macos]
@@ -89,7 +89,7 @@ Alternatively, you can add a security override by following the instructions in 
 ::::
 
 :::{tip}
-You can install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
+You can download and install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
 :::
 
 ## Step 2: Enable automatic creation of system indices [targz-enable-indices]

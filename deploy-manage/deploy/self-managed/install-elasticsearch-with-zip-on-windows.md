@@ -50,6 +50,10 @@ Unzip it with your favorite unzip tool. This will create a folder called `elasti
 cd C:\Program Files\elasticsearch-{{version.stack}}
 ```
 
+:::{tip}
+You can download and install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
+:::
+
 ## Step 2: Enable automatic creation of system indices [windows-enable-indices]
 
 :::{include} _snippets/enable-auto-indices.md
