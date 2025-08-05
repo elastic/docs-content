@@ -61,7 +61,7 @@ This table compares the core platform capabilities between {{ech}} deployments a
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
-| **Custom roles** | ✅ | ✅ | Not available in Serverless Observability projects. |
+| **Custom roles** | ✅ | ✅ |  |
 | **Deployment health monitoring** | AutoOps or monitoring cluster | Managed by Elastic | - No monitoring cluster required <br>- Automatically handled by Elastic |
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | AutoOps or monitoring cluster | Managed | Monitoring is handled by Elastic |
@@ -110,16 +110,16 @@ This table compares Observability capabilities between {{ech}} deployments and S
 | **APM integration** | ✅ | ✅ | Use **Managed Intake Service** (supports Elastic APM and OTLP protocols) |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
-| [**Android agent/SDK instrumentation**](opentelemetry://reference/edot-sdks/android/index.md) | ✅ | ❌ | Not available in Serverless |
+| [**Android agent/SDK instrumentation**](opentelemetry://reference/edot-sdks/android/index.md) | ✅ | ✅ | |
 | [**AWS Firehose integration**](/solutions/observability/cloud/monitor-amazon-web-services-aws-with-amazon-data-firehose.md) | ✅ | ✅ | |
-| **Custom roles for Kibana Spaces** | ✅ | **Planned** | Anticipated in a future release |
+| [**Custom roles for Kibana Spaces**](/deploy-manage/manage-spaces.md#spaces-control-user-access) | ✅ | ✅ | |
 | [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) | ✅ | ✅ | Primary lifecycle management method in Serverless |
 | **[Elastic Serverless Forwarder](elastic-serverless-forwarder://reference/index.md)** | ✅ | ❌ | |
 | **[Elastic Synthetics Private Locations](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add)** | ✅ | ✅ | |
 | **[Fleet Agent policies](/reference/fleet/agent-policy.md)** | ✅ | ✅ | |
 | **[Fleet server](/reference/fleet/fleet-server.md)** | - Self-hosted <br>- Hosted | ✅ | Fully managed by Elastic |
 | [**Index lifecycle management**](/manage-data/lifecycle/index-lifecycle-management.md) | ✅ | ❌ | Use [**Data stream lifecycle**](/manage-data/lifecycle/data-stream.md) instead |
-| **[iOS agent/SDK instrumentation](opentelemetry://reference/edot-sdks/ios/index.md)** | ✅ | ❌ | Not available in Serverless |
+| **[iOS agent/SDK instrumentation](opentelemetry://reference/edot-sdks/ios/index.md)** | ✅ | ✅ | |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
@@ -137,13 +137,14 @@ This table compares Security capabilities between {{ech}} deployments and Server
 |---------|---------------------|------------------------------|------------------|
 | **[Advanced Entity Analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
 | **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
-| **API keys** | ✅ | ✅ | |
+| **[API keys](/deploy-manage/api-keys.md)** | ✅ | ✅ | |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
 | [**Defend for Containers integration**](https://www.elastic.co/guide/en/security/8.18/d4c-overview.html) | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **[Endpoint security](/solutions/security/configure-elastic-defend.md)** | ✅ | ✅ | |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
+| **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | Only API key-based authentication is supported at the project level. User authentication, including SAML SSO, is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
 | **Role-based access control** | ✅ | Limited | Core RBAC functionality supported |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
