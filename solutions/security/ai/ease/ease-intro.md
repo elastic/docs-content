@@ -31,7 +31,7 @@ To ingest your SOC data:
     :alt: The integrations page of an EASE project
     :::
 
-2. From the **Integrations** tab, select any [{{integration}}](integration-docs://reference/index.md) you want to ingest data from to view deployment instructions and more information.
+2. From the **Integrations** tab, select any [integration](integration-docs://reference/index.md) you want to ingest data from to view deployment instructions and more information.
 
 ## Select a model
 
