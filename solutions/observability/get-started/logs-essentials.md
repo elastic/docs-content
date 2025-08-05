@@ -10,7 +10,7 @@ products:
 # Get started with {{obs-serverless}} Logs Essentials [logs-essentials-get-started]
 
 ```{note}
-Use this guide to get started with the Logs Essentials feature tier of {{obs-serverless}}. Refer to the main [{{observability}} get started](/get-started/index.md) docs to get started with {{obs-serverless}} Complete.
+Use this guide to get started with the Logs Essentials feature tier of {{obs-serverless}}. Refer to the main [{{observability}} getting started](/solutions/observability/get-started/index.md) docs to get started with {{obs-serverless}} Complete, which includes APM and Infrastructure metrics.
 ```
 % Note should link to the feature tier comparison docs once published.
 
@@ -93,6 +93,15 @@ Elastic {{observability}} can collect logs from cloud services through Elastic i
 
 :::::
 
+::::::
+
+::::::{step} Explore logs in Discover
+
+**Discover** lets you quickly search and filter your log data, get information about the structure of your log fields, and display findings in a visualization. Instead of having to log into different servers, change directories, and view individual files, all your logs are available in a single view.
+
+For more information on exploring your logs in **Discover**, refer to [Explore logs in Discover](/solutions/observability/logs/discover-logs.md)
+::::::
+
 ::::::{step} Create your first dashboards
 
 Elastic provides a wide range of prebuilt dashboards for visualizing observability data from a variety of sources. These dashboards are loaded automatically when you install [Elastic integrations](https://docs.elastic.co/integrations). You can also create new dashboards and visualizations based on your data views.
@@ -130,3 +139,4 @@ Many [{{observability}} integrations](https://www.elastic.co/integrations/data-i
 * [What's Elastic {{observability}}](/solutions/observability/get-started/what-is-elastic-observability.md)
 * [What’s new in Elastic Stack](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
+* [Log monitoring](/solutions/observability/logs.md)
