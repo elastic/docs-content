@@ -56,8 +56,7 @@ cd elasticsearch-{{version.stack}}/ <2>
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
 
-:::{tip}
-You can download and install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
+:::{include} _snippets/tip-install-other-9-versions.md
 :::
 
 ### MacOS [install-macos]
@@ -88,8 +87,7 @@ xattr -d -r com.apple.quarantine <archive-or-directory>
 Alternatively, you can add a security override by following the instructions in the *If you want to open an app that hasn’t been notarized or is from an unidentified developer* section of [Safely open apps on your Mac](https://support.apple.com/en-us/HT202491).
 ::::
 
-:::{tip}
-You can download and install another version of {{es}} {{version.stack.base | M }} by replacing {{version.stack}} with the version number you want. For example, you can replace {{version.stack}} with {{version.stack.base}}.
+:::{include} _snippets/tip-install-other-9-versions.md
 :::
 
 ## Step 2: Enable automatic creation of system indices [targz-enable-indices]

@@ -34,12 +34,26 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 3. Pull the {{es}} Docker image.
 
+    ::::{tab-set}
+
+    :::{tab-item} Latest
     ```sh subs=true
     docker pull docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
+    :::
+
+    :::{tab-item} Specific version
+    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    ```sh subs=true
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    ```
+    :::
 
 4. Optional: Install [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
 
+    ::::{tab-set}
+
+    :::{tab-item} Latest
     $$$docker-verify-signature$$$
 
     ```sh subs=true
@@ -56,9 +70,35 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
       - Existence of the claims in the transparency log was verified offline
       - The signatures were verified against the specified public key
     ```
+    :::
+    
+    :::{tab-item} Specific version
+    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    $$$docker-verify-signature$$$
+
+    ```sh subs=true
+    wget https://artifacts.elastic.co/cosign.pub
+    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    ```
+
+    The `cosign` command prints the check results and the signature payload in JSON format:
+
+    ```sh subs=true
+    Verification for docker.elastic.co/elasticsearch/elasticsearch:<specific.version> --
+    The following checks were performed on each of these signatures:
+      - The cosign claims were validated
+      - Existence of the claims in the transparency log was verified offline
+      - The signatures were verified against the specified public key
+    ```
+    :::
+    ::::
+
 
 5. Start an {{es}} container.
 
+    ::::::{tab-set}
+
+    :::::{tab-item} Latest
     ```sh subs=true
     docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
@@ -67,7 +107,6 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     Use the `-m` flag to set a memory limit for the container. This removes the need to [manually set the JVM size](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md#docker-set-heap-size).
     ::::
 
-
     {{ml-cap}} features such as [semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) require a larger container with more than 1GB of memory. If you intend to use the {{ml}} capabilities, then start the container with this command:
 
     ```sh subs=true
@@ -75,6 +114,27 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     ```
 
     The command prints the `elastic` user password and an enrollment token for {{kib}}.
+    :::::
+
+    :::::{tab-item} Specific version
+    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    ```sh subs=true
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    ```
+
+    ::::{tip}
+    Use the `-m` flag to set a memory limit for the container. This removes the need to [manually set the JVM size](/deploy-manage/deploy/self-managed/install-elasticsearch-docker-prod.md#docker-set-heap-size).
+    ::::
+
+    {{ml-cap}} features such as [semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) require a larger container with more than 1GB of memory. If you intend to use the {{ml}} capabilities, then start the container with this command:
+
+    ```sh subs=true
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 6GB -e "xpack.ml.use_auto_machine_memory_percent=true" docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    ```
+
+    The command prints the `elastic` user password and an enrollment token for {{kib}}.
+    :::::
+    ::::::
 
 6. Copy the generated `elastic` password and enrollment token. These credentials are only shown when you start {{es}} for the first time. You can regenerate the credentials using the following commands.
 
@@ -113,9 +173,20 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 2. Start a new {{es}} container. Include the enrollment token as an environment variable.
 
+    ::::{tab-set}
+
+    :::{tab-item} Latest
     ```sh subs=true
     docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
+    :::
+    :::{tab-item} Specific version
+    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    ```sh subs=true
+    docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    ```
+    :::
+    ::::
 
 3. Call the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to verify the node was added to the cluster.
 
