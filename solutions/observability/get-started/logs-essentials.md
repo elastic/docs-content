@@ -14,7 +14,7 @@ Use this guide to get started with the Logs Essentials feature tier of {{obs-ser
 ```
 % Note should link to the feature tier comparison docs once published.
 
-New to Elastic {{obs-serverless}} Logs Essentials? Discover more about its features and how to get started. The following instructions guide you through setting up your first Elastic {{observability}} Logs Essentials deployment, collecting log data, and exploring your data.
+New to {{obs-serverless}} Logs Essentials? Discover more about its features and how to get started. The following instructions guide you through setting up your first Elastic {{observability}} Logs Essentials deployment, collecting log data, and exploring your data.
 
 ## Get started with your use case [get-started-with-use-case]
 
@@ -97,7 +97,7 @@ Elastic {{observability}} can collect logs from cloud services through Elastic i
 
 ::::::{step} Explore logs in Discover
 
-**Discover** lets you quickly search and filter your log data, get information about the structure of your log fields, and display findings in a visualization. Instead of having to log into different servers, change directories, and view individual files, all your logs are available in a single view.
+**Discover** lets you quickly search and filter your log data, get information about the structure of your log fields, and display findings in a visualization. Instead of having to log into different servers, change directories, and view individual files. All your logs are available in a single view.
 
 For more information on exploring your logs in **Discover**, refer to [Explore logs in Discover](/solutions/observability/logs/discover-logs.md)
 ::::::
@@ -114,7 +114,7 @@ For more information about creating dashboards, refer to [Create your first dash
 
 ::::::{step} Set up alerts
 
-Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md) to get started.
+Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. Elastic {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md) to get started.
 
 ::::::
 
@@ -126,13 +126,13 @@ Use these resources to learn more about {{observability}} or get started in a di
 
 ### Quickstarts
 
-Quickstarts are compact hands-on guides that help you experiment with {{observability}} features. Each quickstart provides a highly opinionated, fast path to data ingestion, with minimal configuration required.
+Quickstarts are compact hands-on guides that help you experiment with Elastic {{observability}} features. Each quickstart provides a highly opinionated, fast path to data ingestion, with minimal configuration required.
 
 [Browse the Elastic {{observability}} quickstarts](/solutions/observability/get-started/quickstarts.md) to get started with specific use cases.
 
 ### Observability integrations
 
-Many [{{observability}} integrations](https://www.elastic.co/integrations/data-integrations?solution=observability) are available to collect and process your data. Refer to [Elastic integrations](https://www.elastic.co/docs/reference/integrations) for more information.
+Many [Elastic {{observability}} integrations](https://www.elastic.co/integrations/data-integrations?solution=observability) are available to collect and process your data. Refer to [Elastic integrations](https://www.elastic.co/docs/reference/integrations) for more information.
 
 ### Other resources
 
