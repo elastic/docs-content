@@ -6,7 +6,7 @@ applies_to:
 ---
 # Elastic AI SOC Engine with {{sec-serverless}}
 
-Elastic AI SOC Engine (EASE) is a specialization of the {{sec-serverless}} project type. It provides AI-powered tools and case management to augment third-party SIEM and EDR/XDR platforms. This page describes how to create an {{sec-serverless}} EASE project, how to ingest your data, and how to use its key features.
+Elastic AI Security Operations Center (SOC) Engine (EASE) is a specialization of the {{sec-serverless}} project type. It provides AI-powered tools and case management to augment third-party SIEM and EDR/XDR platforms. This page describes how to create an {{sec-serverless}} EASE project, how to ingest your data, and how to use its key features.
 
 ## Create an EASE project
 
@@ -31,7 +31,7 @@ To ingest your SOC data:
     :alt: The integrations page of an EASE project
     :::
 
-2. From the **Integrations** tab, select any integration you want to ingest data from to view more information about it. Learn more about [{{integrations}}](integration-docs://reference/index.md).
+2. From the **Integrations** tab, select any [{{integration}}](integration-docs://reference/index.md) you want to ingest data from to view deployment instructions and more information.
 
 ## Select a model
 
