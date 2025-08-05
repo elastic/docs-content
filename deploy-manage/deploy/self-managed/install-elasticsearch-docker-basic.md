@@ -198,22 +198,57 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 1. Pull the {{kib}} Docker image.
 
+    ::::{tab-set}
+
+    :::{tab-item} Latest
     ```sh subs=true
     docker pull docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
+    :::
+    :::{tab-item} Specific version
+    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    ```sh subs=true
+    docker pull docker.elastic.co/kibana/kibana:<specific.version>
+    ```
+    :::
+    ::::
 
 2. Optional: Verify the {{kib}} image’s signature.
 
+    ::::{tab-set}
+
+    :::{tab-item} Latest
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
     cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
+    :::
+    :::{tab-item} Specific version
+    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    ```sh subs=true
+    wget https://artifacts.elastic.co/cosign.pub
+    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:<specific.version>
+    ```
+    :::
+    ::::
+
 
 3. Start a {{kib}} container.
 
+    ::::{tab-set}
+
+    :::{tab-item} Latest
     ```sh subs=true
     docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
+    :::
+    :::{tab-item} Specific version
+    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+     ```sh subs=true
+    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:<specific.version>
+    ```
+    :::
+    ::::
 
 4. When {{kib}} starts, it outputs a unique generated link to the terminal. To access {{kib}}, open this link in a web browser.
 5. In your browser, enter the enrollment token that was generated when you started {{es}}.
