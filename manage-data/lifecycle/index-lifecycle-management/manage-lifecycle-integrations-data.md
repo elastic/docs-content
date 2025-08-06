@@ -1,5 +1,5 @@
 ---
-navigation_title: Manage the lifecycle for integrations data
+navigation_title: Manage the lifecycle policy for integrations data
 applies_to:
   stack: ga
 products:
