@@ -132,7 +132,7 @@ Quickstarts are compact hands-on guides that help you experiment with Elastic {{
 
 ### Observability integrations
 
-Many [Elastic {{observability}} integrations](https://www.elastic.co/integrations/data-integrations?solution=observability) are available to collect and process your data. Refer to [Elastic integrations](https://www.elastic.co/docs/reference/integrations) for more information.
+Many {{observability}} integrations are available to collect and process your data. Refer to [Elastic integrations](https://www.elastic.co/docs/reference/integrations) for more information.
 
 ### Other resources
 
