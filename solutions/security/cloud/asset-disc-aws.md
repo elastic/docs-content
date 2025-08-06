@@ -12,9 +12,9 @@ applies_to:
 This page explains how to set up the Cloud Asset Discovery integration to inventory assets in AWS.
 
 ::::{admonition} Requirements
-* The user who gives the CAD integration AWS permissions must be an AWS account `admin`.
-* CAD is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* CAD supports only the AWS commercial cloud platform. AWS GovCloud is not supported. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
+* The user who gives the Cloud Asset Discovery integration AWS permissions must be an AWS account `admin`.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
+* The Cloud Asset Discovery integration supports only the AWS commercial cloud platform. AWS GovCloud is not supported. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 ::::
 
 
@@ -58,7 +58,7 @@ You can set up Cloud Asset Discovery for AWS either by enrolling a single cloud 
 
 ### Set up cloud account access [cad-aws-set-up-cloud-access-section]
 
-CAD requires access to AWS’s built-in [`SecurityAudit` IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_security-auditor) in order to discover resources in your cloud account. There are several ways to provide access.
+Cloud Asset Discovery requires access to AWS’s built-in [`SecurityAudit` IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_security-auditor) in order to discover resources in your cloud account. There are several ways to provide access.
 
 For most use cases, the simplest option is to use AWS CloudFormation to automatically provision the necessary resources and permissions in your AWS account. This method, as well as several manual options, are described below.
 
@@ -154,7 +154,7 @@ You must replace `<Management account ID>` in the trust policy with your AWS acc
 ::::
 
 
-* Next, for each account you want to scan in the organization, create an IAM role named `cloudbeat-securityaudit` with the following policies:
+* Next, for each account you want to scan in the organization, create an IAM role named `cloudbeat-asset-inventory-securityaudit` with the following policies:
 
     * The AWS-managed `SecurityAudit` policy.
     * The following trust policy:
@@ -168,7 +168,7 @@ You must replace `<Management account ID>` in the trust policy with your AWS acc
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::<Management Account ID>:role/cloudbeat-root"
+                "AWS": "arn:aws:iam::<Management Account ID>:role/cloudbeat-asset-inventory-root"
             },
             "Action": "sts:AssumeRole"
         }
@@ -187,7 +187,7 @@ You must replace `<Management account ID>` in the trust policy with your AWS acc
 After creating the necessary roles, authenticate using one of the manual authentication methods.
 
 ::::{important}
-When deploying to an organization using any of the authentication methods below, you need to make sure that the credentials you provide grant permission to assume `cloudbeat-root` privileges.
+When deploying to an organization using any of the authentication methods below, you need to make sure that the credentials you provide grant permission to assume `cloudbeat-asset-inventory-root` privileges.
 ::::
 
 
@@ -209,7 +209,7 @@ Whichever method you use to authenticate, make sure AWS’s built-in [`SecurityA
 #### Option 1 - Default instance role [cad-aws-use-instance-role]
 
 ::::{note}
-If you are deploying to an AWS organization instead of an AWS account, you should already have [created a new role](/solutions/security/cloud/asset-disc-aws.md#cad-aws-setup-organization-manual), `cloudbeat-root`. Skip to step 2 "Attach your new IAM role to an EC2 instance", and attach this role. You can use either an existing or new EC2 instance.
+If you are deploying to an AWS organization instead of an AWS account, you should already have [created a new role](/solutions/security/cloud/asset-disc-aws.md#cad-aws-setup-organization-manual), `cloudbeat-asset-inventory-root`. Skip to step 2 "Attach your new IAM role to an EC2 instance", and attach this role. You can use either an existing or new EC2 instance.
 ::::
 
 
@@ -233,7 +233,7 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
 
 
 ::::{important}
-Make sure to deploy CAD to this EC2 instance. When completing setup in {{kib}}, in the **Setup Access** section, select **Assume role**. Leave **Role ARN** empty for agentless deployments. For agent-based deployments, leave it empty unless you want to specify a role the {{agent}} should assume instead of the default role for your EC2 instance. Click **Save and continue**.
+Make sure to deploy Cloud Asset Discovery to this EC2 instance. When completing setup in {{kib}}, in the **Setup Access** section, select **Assume role**. Leave **Role ARN** empty for agentless deployments. For agent-based deployments, leave it empty unless you want to specify a role the {{agent}} should assume instead of the default role for your EC2 instance. Click **Save and continue**.
 ::::
 
 

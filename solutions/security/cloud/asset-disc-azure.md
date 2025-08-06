@@ -9,19 +9,19 @@ applies_to:
 
 ## Overview [cad-overview-azure]
 
-This page explains how to set up the Cloud Asset Discovery integration (CAD) to inventory assets in AWS.
+This page explains how to set up the Cloud Asset Discovery integration to inventory assets in Azure.
 
 ::::{admonition} Requirements
-* The user who gives the CAD integration permissions in Azure must be an Azure subscription `admin`.
-* The CAD integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* CAD is supported only on AWS, not on Azure Government. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
+* The user who gives the Cloud Asset Discovery integration permissions in Azure must be an Azure subscription `admin`.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
+* The Cloud Asset Discovery integration is supported only on Azure, not on Azure Government. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
 ::::
 
 
 
-## Set up CAD for Azure [cad-setup-azure]
+## Set up Cloud Asset Discovery for Azure [cad-setup-azure]
 
-You can set up CAD for Azure by by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, you will first add the CAD integration, then enable cloud account access. Two deployment technologies are available: agentless, and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+You can set up Cloud Asset Discovery for Azure by by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, you will first add the Cloud Asset Discovery integration, then enable cloud account access. Two deployment technologies are available: agentless and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 
 ## Agentless deployment [cad-azure-agentless]
@@ -38,7 +38,7 @@ You can set up CAD for Azure by by enrolling an Azure organization (management g
 ## Agent-based deployment [cad-azure-agent-based]
 
 
-### Add your CAD integration [cad-add-and-name-integration-azure]
+### Add your Cloud Asset Discovery integration [cad-add-and-name-integration-azure]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `Cloud asset discovery`, then click on the result.
@@ -50,7 +50,7 @@ You can set up CAD for Azure by by enrolling an Azure organization (management g
 ### Set up cloud account access [cad-set-up-cloud-access-section-azure]
 
 ::::{note}
-To set up CAD for an Azure organization or subscription, you will need admin privileges for that organization or subscription.
+To set up Cloud Asset Discovery for an Azure organization or subscription, you will need admin privileges for that organization or subscription.
 ::::
 
 For most users, the simplest option is to use an Azure Resource Manager (ARM) template to automatically provision the necessary resources and permissions in Azure. If you prefer a more hands-on approach or require a specific configuration not supported by the ARM template, you can use one of the manual setup options described below.
@@ -87,7 +87,7 @@ For manual setup, multiple authentication methods are available:
 
 ### Option 1: Managed identity (recommended) [cad-azure-managed-identity-setup]
 
-This method involves creating an Azure VM (or using an existing one), giving it read access to the resources you want to monitor with CAD, and installing {{agent}} on it.
+This method involves creating an Azure VM (or using an existing one), giving it read access to the resources you want to monitor with Cloud Asset Discovery, and installing {{agent}} on it.
 
 1. Go to the Azure portal to [create a new Azure VM](https://portal.azure.com/#create/Microsoft.VirtualMachine-ARM).
 2. Follow the setup process, and make sure you enable **System assigned managed identity** under the **Management** tab.
@@ -116,7 +116,7 @@ Before using this method, you must have set up a [Microsoft Entra application an
 5. Copy your new app’s `Directory (tenant) ID` and `Application (client) ID`. Paste them into the corresponding fields in {{kib}}.
 6. Return to the Azure portal. Select **Certificates & secrets**, then go to the **Client secrets** tab. Click **New client secret**.
 7. Copy the new secret. Paste it into the corresponding field in {{kib}}.
-8. Return to Azure. Go to your Azure subscription list and select the subscription or management group you want to monitor with CAD.
+8. Return to Azure. Go to your Azure subscription list and select the subscription or management group you want to monitor with Cloud Asset Discovery.
 9. Go to **Access control (IAM)** and select **Add Role Assignment**.
 10. Select the `Reader` function role, assign access to **User, group, or service principal**, and select your new app.
 11. Return to the **Add Cloud Asset Discovery integration** page in {{kib}}.
@@ -135,7 +135,7 @@ Before using this method, you must have set up a [Microsoft Entra application an
 3. Go to the **Registered apps** section of [Microsoft Entra ID](https://ms.portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps).
 4. Click on **New Registration**, name your app and click **Register**.
 5. Copy your new app’s `Directory (tenant) ID` and `Application (client) ID`. Paste them into the corresponding fields in {{kib}}.
-6. Return to Azure. Go to your Azure subscription list and select the subscription or management group you want to monitor with CAD.
+6. Return to Azure. Go to your Azure subscription list and select the subscription or management group you want to monitor with Cloud Asset Discovery.
 7. Go to **Access control (IAM)** and select **Add Role Assignment**.
 8. Select the `Reader` function role, assign access to **User, group, or service principal**, and select your new app.
 

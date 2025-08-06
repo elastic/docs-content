@@ -9,19 +9,19 @@ applies_to:
 
 ## Overview [cad-overview-gcp]
 
-This page explains how to set up the Cloud Asset Discovery integration (CAD) to inventory assets in GCP.
+This page explains how to set up the Cloud Asset Discovery integration to inventory assets in GCP.
 
 ::::{admonition} Requirements
 * The user who gives the integration GCP permissions must be a GCP project `admin`.
-* CAD is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* CAD is supported only on GCP, not Google Public Sector. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
+* The Cloud Asset Discovery integration is supported only on GCP, not Google Public Sector. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
 ::::
 
 
 
-## Set up CAD for GCP [cad-setup-gcp]
+## Set up Cloud Asset Discovery for GCP [cad-setup-gcp]
 
-You can set up CAD for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the integration, then enable cloud account access. Two deployment technologies are available: agentless, and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
+You can set up Cloud Asset Discovery for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the integration, then enable cloud account access. Two deployment technologies are available: agentless and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 
 ## Agentless deployment [cad-gcp-agentless]
@@ -50,7 +50,7 @@ You can set up CAD for GCP either by enrolling a single project, or by enrolling
 ### Set up cloud account access [cad-set-up-cloud-access-section-gcp]
 
 ::::{note}
-To set up CAD for a GCP project, you need admin privileges for the project.
+To set up Cloud Asset Discovery for a GCP project, you need admin privileges for the project.
 ::::
 
 
@@ -77,7 +77,7 @@ If you encounter any issues running the command, return to {{kib}} and navigate 
 
 
 ::::{note}
-During Cloud Shell setup, CAD adds roles to Google’s default service account, which enables custom role creation and attachment of the service account to a compute instance. After setup, these roles are removed from the service account. If you attempt to delete the deployment but find the deployment manager lacks necessary permissions, consider adding the missing roles to the service account: [Project IAM Admin](https://cloud.google.com/iam/docs/understanding-roles#resourcemanager.projectIamAdmin), [Role Administrator](https://cloud.google.com/iam/docs/understanding-roles#iam.roleAdmin).
+During Cloud Shell setup, Cloud Asset Discovery adds roles to Google’s default service account, which enables custom role creation and attachment of the service account to a compute instance. After setup, these roles are removed from the service account. If you attempt to delete the deployment but find the deployment manager lacks necessary permissions, consider adding the missing roles to the service account: [Project IAM Admin](https://cloud.google.com/iam/docs/understanding-roles#resourcemanager.projectIamAdmin), [Role Administrator](https://cloud.google.com/iam/docs/understanding-roles#iam.roleAdmin).
 ::::
 
 
@@ -86,14 +86,14 @@ During Cloud Shell setup, CAD adds roles to Google’s default service account, 
 
 To authenticate manually to monitor a GCP organization, you’ll need to create a new GCP service account, assign it the necessary roles, generate credentials, then provide those credentials to your integration.
 
-Use the following commands, after replacing `<SA_NAME>` with the name of your new service account, `<ORG_ID>` with your GCP organization’s ID, and `<PROJECT_ID>` with the GCP project ID of the project where you want to provision the compute instance that will run CAD.
+Use the following commands, after replacing `<SA_NAME>` with the name of your new service account, `<ORG_ID>` with your GCP organization’s ID, and `<PROJECT_ID>` with the GCP project ID of the project where you want to provision the compute instance that will run Cloud Asset Discovery.
 
 Create a new service account:
 
 ```
 gcloud iam service-accounts create <SA_NAME> \
-    --description="Elastic agent service account for CAD" \
-    --display-name="Elastic agent service account for CAD" \
+    --description="Elastic agent service account for Cloud Asset Discovery" \
+    --display-name="Elastic agent service account for Cloud Asset Discovery" \
     --project=<PROJECT_ID>
 ```
 
@@ -127,10 +127,10 @@ gcloud iam service-accounts keys create <KEY_FILE> \
 
 Keep the credentials JSON in a secure location; you will need it later.
 
-Provide credentials to the CAD integration:
+Provide credentials to the Cloud Asset Discovery integration:
 
-1. On the CAD setup screen under **Setup Access**, select **Manual**.
-2. Enter your GCP **Organization ID**. Enter the GCP **Project ID** of the project where you want to provision the compute instance that will run CAD.
+1. On the Cloud Asset Discovery integration setup screen under **Setup Access**, select **Manual**.
+2. Enter your GCP **Organization ID**. Enter the GCP **Project ID** of the project where you want to provision the compute instance that will run Cloud Asset Discovery.
 3. Under **Credential**, select **Credentials JSON** and enter the value you generated earlier.
 4. Under **Where to add this integration**, select **New Hosts**.
 5. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud account or accounts you want to monitor. For example, `dev-gcp-account`.
@@ -141,7 +141,7 @@ Wait for the confirmation that {{kib}} received data from your new integration. 
 
 ## Manual authentication (GCP project) [cad-set-up-manual-gcp-project]
 
-To authenticate manually to monitor an individual GCP project, you’ll need to create a new GCP service account, assign it the necessary roles, generate credentials, then provide those credentials to the CAD integration.
+To authenticate manually to monitor an individual GCP project, you’ll need to create a new GCP service account, assign it the necessary roles, generate credentials, then provide those credentials to the Cloud Asset Discovery integration.
 
 Use the following commands, after replacing `<SA_NAME>` with the name of your new service account, and `<PROJECT_ID>` with your GCP project ID.
 
@@ -149,8 +149,8 @@ Create a new service account:
 
 ```
 gcloud iam service-accounts create <SA_NAME> \
-    --description="Elastic agent service account for CAD" \
-    --display-name="Elastic agent service account for CAD" \
+    --description="Elastic agent service account for Cloud Asset Discovery" \
+    --display-name="Elastic agent service account for Cloud Asset Discovery" \
     --project=<PROJECT_ID>
 ```
 
@@ -184,9 +184,9 @@ gcloud iam service-accounts keys create <KEY_FILE> \
 
 Keep the credentials JSON in a secure location; you will need it later.
 
-Provide credentials to the CAD integration:
+Provide credentials to the Cloud Asset Discovery integration:
 
-1. On the CAD setup screen under **Setup Access**, select **Manual**.
+1. On the Cloud Asset Discovery setup screen under **Setup Access**, select **Manual**.
 2. Enter your GCP **Project ID**.
 3. Under **Credential**, select **Credentials JSON**, and enter the value you generated earlier.
 4. Under **Where to add this integration**, select **New Hosts**.
