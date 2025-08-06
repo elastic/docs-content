@@ -58,7 +58,7 @@ To find all of the data streams that are managed in {{fleet}}:
 
 For any data stream that you're interested in, you can [view its current lifecycle status](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy. 
 
-Then, when you've identified one or more data streams for which you'd like to customize how the data is managed over time, refer to our tutorials:
+After you've identified one or more data streams for which you'd like to customize how the data is managed over time, refer to our tutorials:
 
 * For a general guide about configuring a custom ILM policy for any managed data stream, try out our [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md) tutorial in the data lifecycle documentation.
 * For the steps to customize an ILM policy for a set of data streams, such as all logs or metrics data streams across all namespaces, across only a selected namespace, and others, check the set of tutorials in [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
