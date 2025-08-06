@@ -491,6 +491,10 @@ toc:
           - file: security/esql-for-security/esql-threat-hunting-tutorial.md
       - file: security/ai.md
         children:
+          - file: security/ai/ease/ease-intro.md
+            children: 
+              - file: security/ai/ease/ease-alerts.md
+              - file: security/ai/ease/ease-value-report.md
           - file: security/ai/ai-assistant.md
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
