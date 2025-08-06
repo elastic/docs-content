@@ -36,7 +36,7 @@ Allows you to identify configuration risks in the various components that make u
 ```{applies_to}
 stack: beta 9.1
 serverless:
-  security: all
+  security: beta
 ```
 
 Creates an up-to-date, unified inventory of your cloud resources from AWS, GCP, and Azure. Once you connect your cloud accounts, this integration automatically finds and lists your cloud services and assets, such as:
