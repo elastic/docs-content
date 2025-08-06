@@ -31,7 +31,7 @@ Allows you to identify configuration risks in the various components that make u
 
 [Read the KSPM docs](/solutions/security/cloud/kubernetes-security-posture-management.md).
 
-## Cloud Asset Discovery (CAD) [_asset_discovery_cad]
+## Cloud Asset Discovery [_asset_discovery_cad]
 
 ```{applies_to}
 stack: beta 9.1

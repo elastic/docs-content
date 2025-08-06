@@ -9,7 +9,7 @@ applies_to:
 
 ## Overview [cad-aws-overview]
 
-This page explains how to set up the Cloud Asset Discovery integration (CAD) to inventory assets in AWS.
+This page explains how to set up the Cloud Asset Discovery integration to inventory assets in AWS.
 
 ::::{admonition} Requirements
 * The user who gives the CAD integration AWS permissions must be an AWS account `admin`.
@@ -19,9 +19,9 @@ This page explains how to set up the Cloud Asset Discovery integration (CAD) to 
 
 
 
-## Set up CAD for AWS [cad-aws-setup]
+## Set up Cloud Asset Discovery for AWS [cad-aws-setup]
 
-You can set up CAD for AWS either by enrolling a single cloud account, or by enrolling an organization containing multiple accounts. Either way, first you will add the integration, then enable cloud account access. Two deployment technologies are available: agentless, and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
+You can set up Cloud Asset Discovery for AWS either by enrolling a single cloud account, or by enrolling an organization containing multiple accounts. Either way, first you will add the integration, then enable cloud account access. Two deployment technologies are available: agentless and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-aws.md#cad-aws-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
 
 
 ## Agentless deployment [cad-aws-agentless]
@@ -87,7 +87,7 @@ If you’re onboarding a single account instead of an organization, skip this se
 
 When using manual authentication to onboard at the organization level, you need to configure the necessary permissions using the AWS console for the organization where you want to deploy:
 
-* In the organization’s management account (root account), create an IAM role called `cloudbeat-root` (the name is important). The role needs several policies:
+* In the organization’s management account (root account), create an IAM role called `cloudbeat-asset-inventory-root` (the name is important). The role needs several policies:
 
     * The following inline policy:
 
@@ -119,7 +119,7 @@ When using manual authentication to onboard at the organization level, you need 
 ::::
 
 
-* The following trust policy:
+   * The following trust policy:
 
 ::::{dropdown} Click to expand policy
 ```
@@ -147,7 +147,7 @@ When using manual authentication to onboard at the organization level, you need 
 ::::
 
 
-* The AWS-managed `SecurityAudit` policy.
+   * The AWS-managed `SecurityAudit` policy.
 
 ::::{important}
 You must replace `<Management account ID>` in the trust policy with your AWS account ID.
