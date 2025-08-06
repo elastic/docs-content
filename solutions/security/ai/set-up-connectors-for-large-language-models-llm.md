@@ -38,7 +38,7 @@ You can [connect to LM Studio](/solutions/security/ai/connect-to-own-local-llm.m
 stack: ga 9.0
 ```
 
-If you're using {{stack}}, you can also use [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md) to set up an LLM connector. 
+If you're using {{stack}}, you can also use [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md) to set up a third-party LLM connector. 
 
 If you use a preconfigured connector for your LLM connector we recommend you add the `exposeConfig: true` parameter within the `xpack.actions.preconfigured` section of the `kibana.yml` config file. This parameter makes debugging easier by adding configuration information to the debug logs, including which large language model the connector uses.
 
