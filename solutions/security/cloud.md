@@ -45,7 +45,7 @@ Creates an up-to-date, unified inventory of your cloud resources from AWS, GCP, 
 * **GCP:** Cloud Storage buckets, Compute Engine instances, Kubernetes clusters, and more.
 * **Azure:** Virtual Machines, Blob Storage, Azure Kubernetes Service (AKS), and more.
 
-[Read the CAD docs](/solutions/security/cloud/asset-disc.md).
+[Read the Cloud Asset Discovery docs](/solutions/security/cloud/asset-disc.md).
 
 
 ## Cloud Native Vulnerability Management (CNVM) [_cloud_native_vulnerability_management_cnvm]
