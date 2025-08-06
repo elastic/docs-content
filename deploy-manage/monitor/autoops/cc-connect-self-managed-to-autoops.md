@@ -156,7 +156,7 @@ The wizard will generate an installation command based on your configuration. De
 * Windows
 
 :::{tip}
-We recommend installing the agent on a separate machine from the one where your self-managed cluster is running.
+To ensure optimum resource usage, we recommend installing the agent on a different machine from the one where your self-managed cluster is running.
 :::
 
 Complete the following steps to run the command:
