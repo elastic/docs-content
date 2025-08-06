@@ -14,6 +14,7 @@ Fleet is a web-based UI in {{kib}} that is used to centrally manage {{agent}}s. 
 
 :::{image} /solutions/images/observability-fm-ov.png
 :alt: APM Server fleet overview
+:::
 
 This guide will explain how to set up and configure a Fleet-managed APM Server.
 

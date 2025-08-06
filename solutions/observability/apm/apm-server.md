@@ -6,8 +6,8 @@ applies_to:
 
 # Work with APM Server
 
-When self-managing the Elastic Stack, APM Server is used to receive performance data from APM agents,
-validates and processes it, and then transforms the data into Elasticsearch documents.
+When self-managing the Elastic Stack, APM Server receives performance data from APM agents,
+validates and processes it, and transforms the data into {{es}} documents.
 
 This section contains information on working with APM Server including:
 

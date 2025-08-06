@@ -13,7 +13,7 @@ The fastest way to get started with Elastic APM is with Elastic Cloud Serverless
 Read more in [](/solutions/observability/apm/get-started.md).
 :::
 
-APM Server receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents. If you’re on this page, then you’ve chosen to self-manage the Elastic Stack, and you now must decide how to run and configure the APM Server. There are two options, and the components required are different for each:
+APM Server receives performance data from your APM agents and Elastic Distribution of OpenTelemetry (EDOT) SDKs, validates and processes it, and then transforms the data into {{es}} documents. If you’re on this page, then you’ve chosen to self-manage the Elastic Stack, and you now must decide how to run and configure the APM Server. There are two options, and the components required are different for each:
 
 * [Fleet-managed APM Server](#apm-setup-fleet-managed-apm)
 * [APM Server binary](#apm-setup-apm-server-binary)
@@ -42,7 +42,7 @@ Fleet-managed APM Server does *not* support all the outputs that are supported b
 
 **Required components**:
 
-* APM agents
+* EDOT SDKs or APM agents
 * {{agent}} (which runs multiple subprocesses including APM Server, Fleet Server, and {{stack}})
 
 **Configuration method**: {{kib}} UI
@@ -73,7 +73,7 @@ Install, configure, and run the APM Server binary wherever you need it.
 
 **Required components**:
 
-* APM agents
+* EDOT SDKs or APM agents
 * APM Server
 * {{stack}}
 
