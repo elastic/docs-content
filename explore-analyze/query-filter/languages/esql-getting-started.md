@@ -91,6 +91,9 @@ FROM sample_data
   """
 }
 ```
+:::{include} /explore-analyze/query-filter/_snippets/console-esql-autocomplete.md
+:::
+
 ::::::
 
 ::::::{tab-item} Discover
