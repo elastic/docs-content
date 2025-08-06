@@ -14,7 +14,7 @@ applies_to:
 
 # FIPS mode for Ingest tools [fips-ingest]
 
-{{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and can be configured to use FIPS 140-2 compliant cryptography.
+{{agent}}, {{fleet}}, {{filebeat}}, {{metricbeat}}, and {{apm-server}} binaries are built and configured to use FIPS 140-2 compliant cryptography.
 Generally speaking FIPS 140-2 requirements can be summarized as:
 - linking against a FIPS certified cryptographic library
 - using only FIPS approved cryptographic functions
@@ -89,6 +89,7 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
 
   - [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
   - [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
+  - [SQL Input](integration-docs://reference/sql.md) 
   - [PostgreSQL Integration](integration-docs://reference/postgresql.md)
   - [MongoDB Integration](integration-docs://reference/mongodb.md)
   - [MySQL Integration](integration-docs://reference/mysql.md)
