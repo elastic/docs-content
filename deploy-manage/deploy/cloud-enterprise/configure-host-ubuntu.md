@@ -53,7 +53,7 @@ Make sure to use a supported combination of Linux distribution and container eng
 4. Install the correct version of the `docker-ce` package. The following is an example of installing Docker 27.0. If you decide to install a different Docker version, make sure to replace with the desired version in the commands below.
 
     ```sh
-    sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
+    sudo apt update && sudo apt install -y docker-ce=5:27.0.* docker-ce-cli=5:27.0.* containerd.io
     ```
 
 
