@@ -48,6 +48,14 @@ In this quickstart guide, you’ll learn how to quickly create the Kubernetes re
 
 :::::
 
+## Limitations [monitor-k8s-with-agent-limitations]
+
+The installation command provided by the UI during the quickstart cannot be used as-is to install {{agent}} in an air-gapped environment. For an air-gapped environment with a self-managed {{stack}} deployment or orchestrator such as [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), refer to the following resources:
+
+- [Air-gapped installation of Elastic Agent](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-agent)
+- [Install Elastic Agent on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md)
+- [Deploy Elastic Agent in standalone mode with ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md)
+- [Running Elastic Agents in an air-gapped environment](/reference/fleet/air-gapped.md)
 
 ## Collect your data [_collect_your_data_2]
 
@@ -113,7 +121,6 @@ In this quickstart guide, you’ll learn how to quickly create the Kubernetes re
 
 ::::
 
-
 ## Visualize your data [_visualize_your_data_2]
 
 After installation is complete and all relevant data is flowing into Elastic, the **Visualize your data** section allows you to access the Kubernetes Cluster Overview dashboard that can be used to monitor the health of the cluster.
@@ -172,12 +179,3 @@ If you're using `helm` to install {{agent}} in your Kubernetes cluster, you may 
 ### The `elastic` repo already exists
 
 If you're using `helm` to install {{agent}} in your Kubernetes cluster and the `elastic` repository is already configured on your host, replace the `helm repo add elastic https://helm.elastic.co/ ` part of the command provided by the UI with `helm repo update elastic` to ensure the repository is updated with the latest package information.
-
-## Limitation [monitor-k8s-with-agent-limitation]
-
-The quickstart installation command provided by the UI cannot be used as-is to install {{agent}} in an air-gapped environment. For an air-gapped environment with a self-managed {{stack}} deployment or orchestrator such as [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), refer to the following resources:
-
-- [Air-gapped installation of Elastic Agent](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-agent)
-- [Install Elastic Agent on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md)
-- [Deploy Elastic Agent in standalone mode with ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md)
-- [Running Elastic Agents in an air-gapped environment](/reference/fleet/air-gapped.md)
