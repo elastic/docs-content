@@ -287,11 +287,14 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/2010
   'manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md': 'manage-data/data-store/index-basics.md'
 
-  # Related to https://github.com/elastic/docs-content/pull/2097
+# Related to https://github.com/elastic/docs-content/pull/2097
   'explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md': 'explore-analyze/machine-learning/anomaly-detection.md'
   'explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-dfa-analytics.md': 'explore-analyze/machine-learning/data-frame-analytics.md'
 
   'solutions/search/retrievers-examples.md': 'elasticsearch://reference/elasticsearch/rest-apis/retrievers/retrievers-examples.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2010
+  'manage-data/data-store/templates/index-template-management.md': 'manage-data/data-store/index-basics.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2136
   'deploy-manage/security/fips-140-2.md': 'deploy-manage/security/fips.md'
@@ -304,3 +307,4 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/2396
   'solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
   'solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
+
