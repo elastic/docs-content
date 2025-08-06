@@ -41,17 +41,31 @@ On Windows, the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime
 
 ## Step 1: Download and install the `.zip` package [install-windows]
 
+::::{tab-set}
+
+:::{tab-item} Latest
 % link url manually set
 Download the `.zip` archive for {{es}} {{version.stack}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip)
 
-Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<version>`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
+Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-{{version.stack}}`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
 
 ```sh subs=true
 cd C:\Program Files\elasticsearch-{{version.stack}}
 ```
-
-:::{include} _snippets/tip-install-other-9-versions.md
 :::
+
+:::{tab-item} Specific version
+Download the `.zip` archive for the {{es}} version that you want from the [Past Releases](https://www.elastic.co/downloads/past-releases) page.
+
+Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<specific-version>`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
+
+```sh subs=true
+cd C:\Program Files\elasticsearch-<specific.version>
+```
+Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+:::
+::::
+
 
 ## Step 2: Enable automatic creation of system indices [windows-enable-indices]
 

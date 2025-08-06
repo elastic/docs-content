@@ -99,19 +99,32 @@ Examine `/etc/apt/sources.list.d/elasticsearch-9.x.list` for the duplicate entry
 
 ### Download and install the Debian package manually [install-deb]
 
-The Debian package for {{es}} {{version.stack}} can be downloaded from the website and installed as follows:
+The Debian package for {{es}} can be downloaded from the website and installed as follows:
 
+::::{tab-set}
+
+:::{tab-item} Latest
+To download and install the {{es}} {{version.stack}} package, enter:
 ```sh subs=true
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-amd64.deb
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-amd64.deb.sha512
 shasum -a 512 -c elasticsearch-{{version.stack}}-amd64.deb.sha512 <1>
 sudo dpkg -i elasticsearch-{{version.stack}}-amd64.deb
 ```
-
 1. Compares the SHA of the downloaded Debian package and the published checksum, which should output `elasticsearch-<version>-amd64.deb: OK`.
-
-:::{include} _snippets/tip-install-other-9-versions.md
 :::
+
+:::{tab-item} Specific version
+Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+```sh subs=true
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-amd64.deb
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-amd64.deb.sha512
+shasum -a 512 -c elasticsearch-<specific.version>-amd64.deb.sha512 <1>
+sudo dpkg -i elasticsearch-<specific.version>-amd64.deb
+```
+1. Compares the SHA of the downloaded Debian package and the published checksum, which should output `elasticsearch-<specific-version>-amd64.deb: OK`.
+:::
+::::
 
 ## Step 3: Set up the node for connectivity
 

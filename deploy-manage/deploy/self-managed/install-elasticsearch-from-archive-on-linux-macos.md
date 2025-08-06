@@ -43,8 +43,12 @@ Download and install the archive for Linux or MacOS.
 
 ### Linux [install-linux]
 
-The Linux archive for {{es}} {{version.stack}} can be downloaded and installed as follows:
+The Linux archive for {{es}} can be downloaded and installed as follows:
 
+::::{tab-set}
+
+:::{tab-item} Latest
+To download and install the {{es}} {{version.stack}} archive, enter:
 ```sh subs=true
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-linux-x86_64.tar.gz
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-linux-x86_64.tar.gz.sha512
@@ -52,26 +56,56 @@ shasum -a 512 -c elasticsearch-{{version.stack}}-linux-x86_64.tar.gz.sha512 <1>
 tar -xzf elasticsearch-{{version.stack}}-linux-x86_64.tar.gz
 cd elasticsearch-{{version.stack}}/ <2>
 ```
-
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
-
-:::{include} _snippets/tip-install-other-9-versions.md
 :::
+
+:::{tab-item} Specific version
+Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+```sh subs=true
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-linux-x86_64.tar.gz
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-linux-x86_64.tar.gz.sha512
+shasum -a 512 -c elasticsearch-<specific.version>-linux-x86_64.tar.gz.sha512 <1>
+tar -xzf elasticsearch-<specific.version>-linux-x86_64.tar.gz
+cd elasticsearch-<specific.version>/ <2>
+```
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-linux-x86_64.tar.gz: OK`.
+2. This directory is known as `$ES_HOME`.
+:::
+::::
+
 
 ### MacOS [install-macos]
 
-The MacOS archive for {{es}} {{version.stack}} can be downloaded and installed as follows:
+The MacOS archive for {{es}} can be downloaded and installed as follows:
 
+::::{tab-set}
+
+:::{tab-item} Latest
+To download and install the {{es}} {{version.stack}} archive, enter:
 ```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz
 curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
 tar -xzf elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz
 cd elasticsearch-{{version.stack}}/ <2>
 ```
-
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-darwin-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
+:::
+
+:::{tab-item} Specific version
+Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+```sh subs=true
+curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf elasticsearch-<specific.version>-darwin-x86_64.tar.gz
+cd elasticsearch-<specific.version>/ <2>
+```
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<specific-version>-darwin-x86_64.tar.gz: OK`.
+2. This directory is known as `$ES_HOME`.
+:::
+:::
+::::
 
 ::::{admonition} macOS Gatekeeper warnings
 :class: important
@@ -86,9 +120,6 @@ xattr -d -r com.apple.quarantine <archive-or-directory>
 
 Alternatively, you can add a security override by following the instructions in the *If you want to open an app that hasn’t been notarized or is from an unidentified developer* section of [Safely open apps on your Mac](https://support.apple.com/en-us/HT202491).
 ::::
-
-:::{include} _snippets/tip-install-other-9-versions.md
-:::
 
 ## Step 2: Enable automatic creation of system indices [targz-enable-indices]
 
