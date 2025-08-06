@@ -97,7 +97,7 @@ Elastic {{observability}} can collect logs from cloud services through Elastic i
 
 ::::::{step} Explore logs in Discover
 
-**Discover** lets you quickly search and filter your log data, get information about the structure of your log fields, and display findings in a visualization. Instead of having to log into different servers, change directories, and view individual files. All your logs are available in a single view.
+**Discover** lets you quickly search and filter your log data, get information about the structure of your log fields, and display findings in a visualization. Instead of having to log into different servers, change directories, and view individual files, all your logs are available in a single view.
 
 For more information on exploring your logs in **Discover**, refer to [Explore logs in Discover](/solutions/observability/logs/discover-logs.md)
 ::::::
