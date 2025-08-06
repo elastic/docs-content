@@ -49,7 +49,7 @@ These response actions are supported for Microsoft Defender for Endpoint–enrol
 
     Refer to the instructions on [isolating](/solutions/security/endpoint-response-actions/isolate-host.md#isolate-a-host) and [releasing](/solutions/security/endpoint-response-actions/isolate-host.md#release-a-host) hosts for more details.
 
-* **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#microsoft-defender-for-endpoint).
+* {applies_to}`stack: ga 9.1` **Run a script on a host** with the [`runscript` response action](/solutions/security/endpoint-response-actions.md#microsoft-defender-for-endpoint).
 
 ## SentinelOne response actions [sentinelone-response-actions]
 

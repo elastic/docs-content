@@ -182,6 +182,24 @@ When a custom time range is active for a single panel, it is indicated in the pa
 
 You can view it in more details and edit it by clicking the filter.
 
+### View and edit the visualization configuration
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+When viewing a dashboard with read-only permissions, certain visualization panels allow you to view how the visualization itself is configured, and to temporarily edit that configuration.
+
+1. Hover over a visualization panel and select **Show visualization configuration**. The **Configuration** flyout appears.
+
+   If this option isn't available, it means one of two things:
+   * The visualization panel type doesn't support this option.
+   * You have **Edit** permissions for this dashboard. In this case, switch the dashboard to **Edit** mode. You will then be able to edit the configuration of the visualization for all viewers of the dashboard.
+
+2. View the configuration of the visualization. You can make edits, but these will be lost as soon as you exit the flyout.
+3. Select **Cancel** to exit the **Configuration** flyout.
+
+
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
 

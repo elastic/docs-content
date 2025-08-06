@@ -185,6 +185,23 @@ The Assets section allows you to manage the following features:
 
 * [Cloud security](/solutions/security/cloud.md)
 
+
+### Entity analytics
+```yaml {applies_to}
+stack: preview 9.1
+serverless: unavailable
+```
+
+:::{admonition} Requirements
+To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+:::
+
+Expand this section to access the following pages:
+
+- [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior. 
+
+
 ### {{ml-cap}} [security-ui-ml-cap]
 
 Manage {{ml}} jobs and settings. Refer to [{{ml-cap}} docs](/explore-analyze/machine-learning/anomaly-detection.md) for more information.
