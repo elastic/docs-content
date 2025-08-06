@@ -12,7 +12,7 @@ products:
 
 Versions of the {{stack}}, containing {{es}}, {{kib}}, and other products, are available as downloadable Docker images.
 
-The first table contains the stack versions that shipped with the current {{version.ece}} version of {{ece}}. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the current version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
+The first table contains the stack versions shipped with the current {{version.ece}} version of {{ece}}. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the current version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
 
 | Docker images included with {{ece}} {{version.ece}} |
 | --- |
