@@ -300,3 +300,7 @@ redirects:
   'solutions/observability/apm/get-started-serverless.md': 'solutions/observability/apm/get-started.md'
   'solutions/observability/apm/get-started-fleet-managed-apm-server.md': 'reference/fleet/get-started-managed-apm-server.md'
   'solutions/observability/apm/get-started-apm-server-binary.md': 'reference/fleet/get-started-apm-server-binary.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2396
+  'solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
+  'solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
