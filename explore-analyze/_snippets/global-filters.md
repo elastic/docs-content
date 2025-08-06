@@ -1,7 +1,7 @@
 You can interact with filter pills to edit them, temporarily alter their behavior without having to delete them, or make them available in other contexts. The following options are available when selecting a filter pill:
 
 **Pin across all apps** and **Unpin**
-:    Adds this filter to other dashboards available to you and to Discover. The filter is removed if you:
+:    Adds this filter to available dashboards and to apps such as **Discover**, **Lens**, **Maps**, and **Visualize**. The filter is removed if you:
      * Unpin it. In this case, the filter only remains on the currently open app, unpinned.
      * Remove it from any place while it's still pinned.
 
