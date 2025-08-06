@@ -47,3 +47,13 @@ You can control costs using the following strategies:
 
     * When starting or updating a trained model deployment, [Enable adaptive resources](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources) and set the VCU usage level to **Low**.
     * When using the inference API for {{es}} or ELSER, [enable `adaptive_allocations`](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations).
+ 
+* **Indexing Strategies:** Consider your indexing strategies and how they might impact overall VCU usage and costs:
+  
+    * To ensure optimal performance and cost-effectiveness for your project, it’s important to consider how you structure your data.
+        * Consolidate small indices for better efficiency. We recommend avoiding a design where your project contains hundreds of very small indices, specifically those under 1GB each.
+    * Why is this important?
+         * Every index in Elasticsearch has a certain amount of resource overhead. This is because Elasticsearch needs to maintain metadata for each index to keep it running smoothly. When you have a very large number of small indices, the combined               overhead from all of them can consume more CPU resources than if the same data were stored in fewer, larger indices. This can lead to higher resource consumption and hence higher costs and potentially impact the overall performance of your project.
+
+    * Recommended Approach
+        * If your use case naturally generates many small, separate streams of data, we advise implementing a process to consolidate them into fewer, larger indices. This practice leads to more efficient resource utilization. By grouping your data               into larger indices, you can ensure a more performant and cost-efficient experience with Elasticsearch Serverless.

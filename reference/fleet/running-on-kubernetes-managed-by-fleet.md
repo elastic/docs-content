@@ -57,7 +57,13 @@ You can find {{agent}} Docker images [here](https://www.docker.elastic.co/r/elas
 Download the manifest file, substituting `{agent_version}` with the version number:
 
 ```sh
-curl -L -O https://github.com/elastic/elastic-agent/blob/v{agent_version}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
+curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{agent_version}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
+```
+
+For example, to download the manifest of the latest {{version.stack}} release:
+
+```sh subs=true
+curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.stack}}/deploy/kubernetes/elastic-agent-managed-kubernetes.yaml
 ```
 
 ::::{note}
