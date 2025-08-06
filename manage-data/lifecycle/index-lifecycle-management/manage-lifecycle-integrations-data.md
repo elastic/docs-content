@@ -10,7 +10,7 @@ products:
 
 An Elastic integration is a pre-packaged collection of assets that provides an effective, simplified way to monitor a product, system, or service, with minimal required setup. Most integrations rely on {{agent}} as an ingest mechanism, and the policies used to govern installed integrations are managed in {{fleet}}.
 
-You can find installation and configuration details for all integrations in the [Elastic integrations](https://docs.elastic.co/en/integrations) reference documentation. To learn about managing your installed integrations, refer to [Manage Elastic Agent integrations](/reference/fleet/manage-integrations.md) in the {{fleet}} and {{agent}} documentation.
+You can find installation and configuration details for all integrations in the [Elastic integrations](https://docs.elastic.co/en/integrations) chapter of the **Reference** section. To learn about managing your installed integrations, refer to [Manage Elastic Agent integrations](/reference/fleet/manage-integrations.md) in the {{fleet}} and {{agent}} chapter of the **Reference** section.
 
 When you install an integration, an [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy is configured automatically to manage the integration's component [data streams](/manage-data/data-store/data-streams.md) and their backing indices. To view or adjust how your integration data is managed, a first step is to find the data streams that you're interested in. There are a few ways to do this:
 
