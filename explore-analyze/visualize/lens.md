@@ -455,6 +455,11 @@ In the legend, click the field, then choose one of the following options:
 * **Filter for value** — Applies a filter that displays only the field data in the visualization.
 * **Filter out value** — Applies a filter that removes the field data from the visualization.
 
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
+:::
+
 
 ## Customize the visualization display [configure-the-visualization-components]
 

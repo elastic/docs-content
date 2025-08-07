@@ -15,7 +15,7 @@ There are several ways to perform {{infer}} in the {{stack}}, depending on the u
 
 - **{{infer-cap}} infrastructure:**
 
-  - [Elastic {{infer-cap}} Service](elastic-inference/eis.md): a managed service that runs {infer} outside your cluster resources.
+  - [Elastic {{infer-cap}} Service](elastic-inference/eis.md): a managed service that runs {{infer}} outside your cluster resources.
   - [Trained models deployed in your cluster](machine-learning/nlp/ml-nlp-overview.md): models run on your own {{ml}} nodes
 
 - **Access methods:**
