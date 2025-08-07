@@ -165,8 +165,8 @@ Agent.Setup(new AgentComponents(logger: new ApmLoggerAdapter()));
 
 ## Missing transactions
 
-If you receive trace data for some, but not all transactions, two main variables control
-sampling of transactions which should be checked.
+If you receive trace data for some but not all transactions, you should check the two main variables which control
+sampling of transactions.
 
 By default, the agent samples every transaction (e.g. a request to your service). To reduce volume,
 the [transaction sample rate](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate) configuration
