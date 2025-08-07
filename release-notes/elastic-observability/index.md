@@ -21,12 +21,18 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.1.1 [elastic-observability-9.1.1-release-notes]
+
+### Fixes [elastic-observability-9.1.0-fixes]
+
+* Fixes global parameters sync for non-default private locations [#230157]({{kib-pull}}230157).
+
 ## 9.1.0 [elastic-observability-9.1.0-release-notes]
 
 ### Features and enhancements[elastic-observability-9.1.0-features]
 
 * Adds the anonymization advanced setting for Observability AI Assistant [#224607]({{kib-pull}}224607).
-* Allows users to change the Knowledge Base model post-installation in AI Assistant Settings. [#221319]({{kib-pull}}221319).
+* Allows users to change the Knowledge Base model post-installation in AI Assistant Settings [#221319]({{kib-pull}}221319).
 * Adds ELSER and e5 on EIS [#220993]({{kib-pull}}220993).
 * Only shows ELSER in EIS if the pre-configured endpoint is available [#220096]({{kib-pull}}220096).
 * Allows users to specify a Knowledge Base model to support non-English languages [#218448]({{kib-pull}}218448).

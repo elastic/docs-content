@@ -20,6 +20,13 @@ When you need support, AutoOps gives the Elastic team real-time visibility into 
 Using AutoOps for your self-managed cluster lets you access all these features without the operational overhead of managing their infrastructure.
 :::
 
+:::{dropdown} Does AutoOps for self-managed clusters require additional payment?
+
+:::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
+:::
+
+:::
+
 :::{dropdown} Which versions of {{es}} does AutoOps support?
 
 AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.co/support/eol).

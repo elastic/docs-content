@@ -11,8 +11,6 @@ navigation_title: Cloud Connect
 
 Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself. In this way, you can get faster access to new features while significantly reducing your operational overhead.
 
-Cloud Connect is included with your [self-managed Enterprise license](https://www.elastic.co/subscriptions) and works with self-managed free trials for the duration of the trial period.
-
 AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
 
 ### AutoOps
@@ -21,7 +19,7 @@ AutoOps is the first service available for use with Cloud Connect. More services
 
 Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md). 
 
-## FAQs
+## FAQ
 
 Find answers to your questions about Cloud Connect.
 
@@ -29,16 +27,11 @@ Find answers to your questions about Cloud Connect.
 
 $$$cc-payment$$$
 
-No. Cloud Connect is included with your [self-managed Enterprise license](https://www.elastic.co/subscriptions) and works with self-managed free trials for the duration of the trial period.
+Each cloud connected service has its own licensing and payment requirements. 
 
-However, you may incur additional costs for specific functions within a cloud connected service. For example, when sending metrics data from your cluster in a CSP region to AutoOps in {{ecloud}}, shipping costs will be determined by your agreement with that CSP. 
+:::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 :::
 
-:::{dropdown} Does using Cloud Connect consume ECU?
-
-$$$cc-ecu$$$
-
-No. The currently available functionality does not consume ECU, but this may change when more features are introduced.
 :::
 
 :::{dropdown} Will my data be safe when using Cloud Connect?
