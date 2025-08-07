@@ -1,5 +1,5 @@
 ---
-navigation_title: APM agent central configuration
+navigation_title: Configure APM Agent Central Configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configure-agent-config.html
 applies_to:
@@ -9,18 +9,21 @@ products:
   - id: apm
 ---
 
-# Configure APM agent central configuration [apm-configure-agent-config]
+# Configure APM Agent Central Configuration [apm-configure-agent-config]
 
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-yes.svg "")
 
 APM agent central configuration is supported by all APM Server deployment methods, but some options are only supported for APM Server binary users.
-
 ::::
 
-APM agent central configuration allows you to fine-tune your APM agents from within the Applications UI. Changes are automatically propagated to your APM agents, so there’s no need to redeploy your applications.
+APM Agent Central Configuration allows you to fine-tune your APM agents from within the Applications UI. Changes are automatically propagated to your agents, so there’s no need to redeploy your applications.
 
-To learn more about this feature, see [APM agent central configuration](/solutions/observability/apm/apm-agent-central-configuration.md).
+To learn more about this feature, see [APM Agent Central Configuration](/solutions/observability/apm/apm-agent-central-configuration.md).
+
+::::{note}
+To configure EDOT SDKs through APM Agent Central Configuration, refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
+::::
 
 ## APM agent configuration options [_apm_agent_configuration_options]
 

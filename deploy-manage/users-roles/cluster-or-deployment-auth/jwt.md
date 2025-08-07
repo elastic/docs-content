@@ -178,7 +178,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
 
    * The `shared_secret` value for `client_authentication.type`
 
-      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret1`)
+      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret`)
    * The HMAC keys for `allowed_signature_algorithms`
 
       (`xpack.security.authc.realms.jwt.jwt1.hmac_jwkset`)

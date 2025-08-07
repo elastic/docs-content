@@ -17,6 +17,51 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} [Windows] {{agent}} does not process Windows security events
+
+**Applies to: {{agent}} 8.19.0, 9.1.0 (Windows only)**
+
+On August 1, 2025, a known issue was discovered where {{agent}} does not process Windows security events on hosts running Windows 10, Windows 11, and Windows Server 2022.
+
+For more information, check [Issue #45693](https://github.com/elastic/beats/issues/45693).
+
+**Workaround**
+
+No workaround is available at the moment, but a fix is expected to be available in {{agent}} 8.19.1 and 9.1.1.
+:::
+
+:::{dropdown} {{agents}} remain in an "Upgrade scheduled" state
+
+**Applies to: {{agent}} 8.18.0, 8.18.1, 8.18.2, 8.18.3, 8.18.4, 8.19.0, 9.0.0, 9.0.1, 9.0.2, 9.0.3, 9.1.0**
+
+On July 2, 2025, a known issue was discovered where {{agent}} remains in an `Upgrade scheduled` state when a scheduled {{agent}} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
+
+For more information, check [Issue #8778](https://github.com/elastic/elastic-agent/issues/8778).
+
+**Workaround**
+
+Call the [Upgrade an agent](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-agentid-upgrade) endpoint of the Kibana Fleet API with the `force` parameter set to `true` to force-upgrade the {{agent}}:
+
+```powershell
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/<AGENT_ID>/upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true}'
+```
+
+To force-upgrade multiple {{agents}}, call the [Bulk upgrade agents](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-fleet-agents-bulk-upgrade) endpoint of the Kibana Fleet API with the `force` parameter set to `true`:
+
+```powershell
+curl --request POST \
+  --url https://<KIBANA_HOST>/api/fleet/agents/bulk_upgrade \
+  --user "<SUPERUSER_NAME>:<SUPERUSER_PASSWORD>" \
+  --header 'Content-Type: application/json' \
+  --header 'kbn-xsrf: true' \
+  --data '{"version": "<VERSION>","force": true,"agents":["<AGENT_IDS>"]}'
+```
+:::
 
 :::{dropdown} [Windows] {{agent}} is unable to re-enroll into {{fleet}}
 

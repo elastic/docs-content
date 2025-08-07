@@ -11,7 +11,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Ingest CNCF Falco data
+# CNCF Falco
 
 CNCF Falco is an open-source runtime security tool that detects anomalous activity in Linux hosts, containers, Kubernetes, and cloud environments. You can ingest Falco alerts into {{es}} to view them on {{elastic-sec}}'s Alerts page and incorporate them into your security workflows by using Falcosidekick, a proxy forwarder which can send alerts from your Falco deployments to {{es}}.
 

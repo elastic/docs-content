@@ -8,92 +8,41 @@ products:
   - id: elasticsearch
 ---
 
-# Templates [index-templates]
+# Templates [elasticsearch-templates]
 
-::::{note}
-This topic describes the composable index templates introduced in {{es}} 7.8. For information about how index templates worked previously, see the [legacy template documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-template).
-::::
+Templates are the mechanism by which {{es}} applies settings, mappings, and other configurations when creating indices or data streams.
 
+You configure templates prior to creating indices or data streams. When an index is created, either manually or by indexing a document, the matching template determines the settings, mappings, and other configurations to apply. When used with a [data stream](/manage-data/data-store/data-streams.md), a template also defines how each backing index is configured as it is created.
 
-$$$getting$$$
-An index template is a way to tell {{es}} how to configure an index when it is created. For data streams, the index template configures the stream’s backing indices as they are created. Templates are configured **prior to index creation**. When an index is created - either manually or through indexing a document - the template settings are used as a basis for creating the index.
+There are two types of template:
 
-There are two types of templates: index templates and [component templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template). Component templates are reusable building blocks that configure mappings, settings, and aliases. While you can use component templates to construct index templates, they aren’t directly applied to a set of indices. Index templates can contain a collection of component templates, as well as directly specify settings, mappings, and aliases.
+* An [**index template**](#index-templates) is the main configuration object applied when creating an index or data stream. It matches index names using `index_patterns` and resolves conflicts using a `priority` value. An index template can optionally define settings, mappings, and aliases directly, and refer to a list of component templates that provide reusable configuration blocks. It can also indicate whether it should create a data stream or a regular index.
 
-The following conditions apply to index templates:
+* A [**component template**](#component-templates) is a reusable building block that defines settings, mappings, and aliases. Component templates are not applied directly; they must be referenced by index templates.
 
-* Composable templates take precedence over legacy templates. If no composable template matches a given index, a legacy template may still match and be applied.
+Together, index templates and their referenced component templates form what is known as *composable templates*.
+
+The following conditions apply to using templates:
+
+* Composable index templates take precedence over any [legacy templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.18/indices-templates-v1.html), which were deprecated in {{es}} 7.8. If no composable template matches a given index, a legacy template may still match and be applied.
 * If an index is created with explicit settings and also matches an index template, the settings from the [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request take precedence over settings specified in the index template and its component templates.
 * Settings specified in the index template itself take precedence over the settings in its component templates.
 * If a new data stream or index matches more than one index template, the index template with the highest priority is used.
+* When you create an index template, be careful to avoid [naming pattern collisions](#avoid-index-pattern-collisions) with built-in {{es}} index templates.
 
-::::{admonition} Avoid index pattern collisions
-:name: avoid-index-pattern-collisions
+:::{tip}
+For a detailed exploration and examples of setting up composable templates, refer to the Elastic blog [Index templating in Elasticsearch: How to use composable templates](https://www.elastic.co/search-labs/blog/index-composable-templates).
+:::
 
-{{es}} has built-in index templates, each with a priority of `100`, for the following index patterns:
+## Index templates [index-templates]
 
-* `.kibana-reporting*`
-* `logs-*-*`
-* `metrics-*-*`
-* `synthetics-*-*`
-* `profiling-*`
-* `security_solution-*-*`
+An **index template** is used to configure an index when it is created. [Mappings](/manage-data/data-store/mapping.md), [settings](elasticsearch://reference/elasticsearch/index-settings/index.md), and [aliases](/manage-data/data-store/aliases.md) specified in the index template are inherited by each created index. These can also be specified in the component templates that the index template is composed of.
 
-[{{agent}}](/reference/fleet/index.md) uses these templates to create data streams. Index templates created by {{fleet}} integrations use similar overlapping index patterns and have a priority up to `200`.
+You can create and manage index templates on the **Index management** page in {{kib}} or by using the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API. 
 
-If you use {{fleet}} or {{agent}}, assign your index templates a priority lower than `100` to avoid overriding these templates. Otherwise, to avoid accidentally applying the templates, do one or more of the following:
+For the {{kib}} steps and a walk-through example, refer to [Manage index templates](/manage-data/data-store/index-basics.md#index-management-manage-index-templates).
 
-* To disable all built-in index and component templates, set [`stack.templates.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) to `false` using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Note, however, that this is not recommended, see the [setting documentation](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) for more information.
-* Use a non-overlapping index pattern.
-* Assign templates with an overlapping pattern a `priority` higher than `500`. For example, if you don’t use {{fleet}} or {{agent}} and want to create a template for the `logs-*` index pattern, assign your template a priority of `501`. This ensures your template is applied instead of the built-in template for `logs-*-*`.
-* To avoid naming collisions with built-in and Fleet-managed index templates, avoid using `@` as part of the name of your own index templates.
-* Beginning in {{stack}} version 9.1, {{fleet}} uses indices named `fleet-synced-integrations*` for a feature. Avoid using this name to avoid collisions with built-in indices.
-
-::::
-
-
-
-## Create index template [create-index-templates]
-
-Use the [put index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) and [put component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) APIs to create and update index templates. You can also [manage index templates](/manage-data/data-store/index-basics.md#index-management) from Stack Management in {{kib}}.
-
-The following requests create two component templates.
-
-```console
-PUT _component_template/component_template1
-{
-  "template": {
-    "mappings": {
-      "properties": {
-        "@timestamp": {
-          "type": "date"
-        }
-      }
-    }
-  }
-}
-
-PUT _component_template/runtime_component_template
-{
-  "template": {
-    "mappings": {
-      "runtime": { <1>
-        "day_of_week": {
-          "type": "keyword",
-          "script": {
-            "source": "emit(doc['@timestamp'].value.dayOfWeekEnum.getDisplayName(TextStyle.FULL, Locale.ENGLISH))"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-1. This component template adds a [runtime field](mapping/map-runtime-field.md) named `day_of_week` to the mappings when a new index matches the template.
-
-
-The following request creates an index template that is *composed of* these component templates.
+Using the API, the following request creates an index template that is *composed of* the two component templates shown in the [component templates](#component-templates) example.
 
 ```console
 PUT _index_template/template_1
@@ -129,3 +78,72 @@ PUT _index_template/template_1
   }
 }
 ```
+
+:::{tip}
+The following features can be useful when you're setting up index templates:
+
+* You can test the effect of an index template before putting it into use. Refer to [Simulate multi-component templates](/manage-data/data-store/templates/simulate-multi-component-templates.md) to learn more.
+* You can create an index template for a component template that does not yet exist. When doing so, you can use the `ignore_missing_component_templates` configuration option in an index template so that the missing component template is ignored. Refer to [Ignore missing component templates](/manage-data/data-store/templates/ignore-missing-component-templates.md) to learn more.
+:::
+
+### Avoid index pattern collisions [avoid-index-pattern-collisions]
+
+{{es}} has built-in index templates, each with a priority of `100`, for the following index patterns:
+
+* `.kibana-reporting*`
+* `logs-*-*`
+* `metrics-*-*`
+* `synthetics-*-*`
+* `profiling-*`
+* `security_solution-*-*`
+
+[{{agent}}](/reference/fleet/index.md) uses these templates to create data streams. Index templates created by {{fleet}} integrations use similar overlapping index patterns and have a priority up to `200`.
+
+If you use {{fleet}} or {{agent}}, assign your index templates a priority lower than `100` to avoid overriding these templates. Otherwise, to avoid accidentally applying the templates, do one or more of the following:
+
+* To disable all built-in index and component templates, set [`stack.templates.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) to `false` using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Note, however, that this is not recommended, see the [setting documentation](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled) for more information.
+* Use a non-overlapping index pattern.
+* Assign templates with an overlapping pattern a `priority` higher than `500`. For example, if you don’t use {{fleet}} or {{agent}} and want to create a template for the `logs-*` index pattern, assign your template a priority of `501`. This ensures your template is applied instead of the built-in template for `logs-*-*`.
+* To avoid naming collisions with built-in and Fleet-managed index templates, avoid using `@` as part of the name of your own index templates.
+* Beginning in {{stack}} version 9.1, {{fleet}} uses indices named `fleet-synced-integrations*` for a feature. Avoid using this name to avoid collisions with built-in indices.
+
+## Component templates [component-templates]
+
+A **component template** is a reusable building block that defines mappings, settings, and aliases. Component templates are not applied directly to indices, but referenced by index templates and used when determining the final configuration of an index.
+
+You can create and manage component templates on the **Index management** page in {{kib}} or by using the [component template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) API. For the {{kib}} steps, refer to [Manage component templates](/manage-data/data-store/index-basics.md#index-management-manage-component-templates).
+
+Using the API, the following request creates the two component templates used in the previous index template example:
+
+```console
+PUT _component_template/component_template1
+{
+  "template": {
+    "mappings": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        }
+      }
+    }
+  }
+}
+
+PUT _component_template/runtime_component_template
+{
+  "template": {
+    "mappings": {
+      "runtime": { <1>
+        "day_of_week": {
+          "type": "keyword",
+          "script": {
+            "source": "emit(doc['@timestamp'].value.dayOfWeekEnum.getDisplayName(TextStyle.FULL, Locale.ENGLISH))"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+1. This component template adds a [runtime field](mapping/map-runtime-field.md) named `day_of_week` to the mappings when a new index matches the template.

@@ -55,7 +55,9 @@ $$$elasticsearch-manage-project-search-power-settings$$$
 ```yaml {applies_to}
 serverless:
   security:
+  observability:
 ```
+### {{elastic-sec}} project features
 
 For {{elastic-sec}} projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
 
@@ -64,7 +66,7 @@ For {{elastic-sec}} projects, edit the **Project features** to select a feature 
 | **Security Analytics Essentials** | Standard security analytics, detections, investigations, and collaborations. Allows these add-ons:<br><br>* **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>* **Cloud Protection Essentials**: Cloud native security features.<br> |
 | **Security Analytics Complete** | Everything in **Security Analytics Essentials** plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>* **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>* **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.<br> |
 
-### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
+#### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
 
 When you downgrade your Security project features selection from **Security Analytics Complete** to **Security Analytics Essentials**, the following features become unavailable:
 
@@ -89,3 +91,14 @@ And, the following data may be permanently deleted:
 * Entity Analytics asset criticality information
 * Detection rule external connector settings
 * Detection rule response action settings
+
+### {{obs-serverless}} project features
+
+For {{obs-serverless}} projects, edit the **Project features** to select a feature tier.
+
+| Feature tier | Description|
+| :--- | :--- |
+| **Observability Logs Essentials** | Includes everything you need to store and analyze logs at scale.<br> |
+| **Observability Complete** | Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.<br> |
+
+For a full feature comparison, upgrading instructions, and more, refer to [{{obs-serverless}} feature tiers](../../../solutions/observability/observability-serverless-feature-tiers.md).
