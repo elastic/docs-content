@@ -27,6 +27,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.1.1 [elastic-security-9.1.1-release-notes]
+
+### Features and enhancements [elastic-security-9.1.1-features-enhancements]
+
+* Improves the reliability of {{elastic-defend}} Kafka connections.
+
+### Fixes [elastic-security-9.1.1-fixes]
+* Fixes a bug by moving the `scheduleNow` call to the privileged monitoring engine initialization step, ensuring the task is only scheduled after the engine is fully created and ready [#230263]({{kib-pull}}230263).
+* Fixes a bug where the base version API route cache was not properly invalidated after rule import [#228475]({{kib-pull}}228475).
+* Fixes an issue in {{elastic-defend}} performance metrics that resulted in `endpoint_uptime_percent` always being 0 for behavioral rules.
+
 ## 9.1.0 [elastic-security-9.1.0-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.0-features-enhancements]
