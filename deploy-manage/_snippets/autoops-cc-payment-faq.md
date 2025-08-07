@@ -1,0 +1,1 @@
+Using [AutoOps for self-managed clusters](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md) through Cloud Connect is included with your [self-managed Enterprise license](https://www.elastic.co/subscriptions) and works with active ECE, ECK, and self-managed free trials.
