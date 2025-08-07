@@ -63,4 +63,5 @@ Batches are limited to a maximum of 16 documents.
 This is particularly relevant when using the [_bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-bulk) for data ingestion.
 
 #### Rate Limits 
-Rate limit for search and ingest is currently at 2000 tokens per minute
+
+Rate limit for search and ingest is currently at 2000 tokens per minute.
