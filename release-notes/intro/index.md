@@ -12,7 +12,7 @@ description: Explore the new features, enhancements, fixes, and deprecations for
 Stay up to date with the latest changes, fixes, known issues, and deprecations in Elastic products. 
 
 Release notes cover the all the latest Elastic product changes, including the following:
-* {{stack}} 9.0.0 and later, including the most recent {{version.stack}} release
+* {{stack}} {{version.stack.base}} and later, including the most recent {{version.stack}} release
 * {{serverless-full}}, including updates to {{es}}, and {{observability}} and {{elastic-sec}} solutions
 
 ## What's new in the latest Elastic release?
