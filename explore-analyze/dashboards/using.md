@@ -52,6 +52,11 @@ As an alternative to the main query bar, you can filter dashboard data by defini
 :alt: Filter editor with 2 conditions
 :::
 
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
+:::
+
 
 ### Filter dashboards using the KQL query bar [_filter_dashboards_using_the_kql_query_bar]
 
