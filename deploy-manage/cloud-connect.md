@@ -19,7 +19,7 @@ AutoOps is the first service available for use with Cloud Connect. More services
 
 Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md). 
 
-## FAQs
+## FAQ
 
 Find answers to your questions about Cloud Connect.
 

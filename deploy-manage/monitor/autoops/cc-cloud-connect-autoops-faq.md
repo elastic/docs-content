@@ -20,7 +20,7 @@ When you need support, AutoOps gives the Elastic team real-time visibility into 
 Using AutoOps for your self-managed cluster lets you access all these features without the operational overhead of managing their infrastructure.
 :::
 
-:::{dropdown} Does using AutoOps for self-managed clusters require additional payment?
+:::{dropdown} Does AutoOps for self-managed clusters require additional payment?
 
 :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 :::
