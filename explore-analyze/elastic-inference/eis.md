@@ -40,6 +40,10 @@ Private preview access is available by submitting the form provided [here](https
 ### Limitations
 
 While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
+The known limitations include 
+- Maximum batch size is 16 for ingest requests
+- Rate limit for search and ingest at 2000 tokens per minute
+- We do not support autoscaling at this point, so many parallel requests will result in performance degradations. Autoscaling coming soon. 
 
 #### Access
 
