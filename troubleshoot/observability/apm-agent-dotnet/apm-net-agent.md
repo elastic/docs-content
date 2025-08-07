@@ -178,7 +178,7 @@ a flag defined on that context, the [sampled flag](https://www.w3.org/TR/trace-c
 This flag allows a sampling decision made earlier in a distributed trace to continue onto downstream services,
 and the .NET APM agent honours this automatically. When a request comes in with the sampling flag
 unset (not sampled), the agent will not record a trace in the instrumented service either. This is
-by design as incomplete distributed traces are normally not desired.
+by design to avoid collecting incomplete traces.
 
 When all services within a distributed system are managed and instrumented using Elastic APM agents and communication
 is internal, the default behaviour is usually correct. If some requests to instrumented applications may come from
