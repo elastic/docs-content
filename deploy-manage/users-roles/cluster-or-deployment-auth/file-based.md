@@ -20,7 +20,7 @@ The `file` realm is useful as a fallback or recovery realm. For example in cases
 
 You can configure only one file realm on {{es}} nodes.
 
-See [this video](https://www.youtube.com/watch?v=sueO7sz1buw) for a walkthrough on enabling a file realm user for recovery. 
+Refer to [enabling a file realm user for recovery](https://www.youtube.com/watch?v=sueO7sz1buw) for a video walkthrough. 
 
 ::::{important}
 * In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this.
