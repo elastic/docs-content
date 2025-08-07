@@ -29,6 +29,11 @@ macOS is supported for development purposes only and is not covered under the su
 
 The Linux archive for {{kib}} {{version.stack}} can be downloaded and installed as follows:
 
+::::{tab-set}
+:group: docker-kib
+:::{tab-item} Latest
+:sync: latest
+To download and install the {{kib}} {{version.stack}} archive, enter:
 ```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-linux-x86_64.tar.gz
 curl https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-linux-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
@@ -38,11 +43,32 @@ cd kibana-{{version.stack}}/ <2>
 
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$KIBANA_HOME`.
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+```sh subs=true
+curl -O https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-linux-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-linux-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf kibana-<specific.version>-linux-x86_64.tar.gz
+cd kibana-<specific.version>/ <2>
+```
+
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<specific.version>-linux-x86_64.tar.gz: OK`.
+2. This directory is known as `$KIBANA_HOME`.
+:::
+::::
 
 ### MacOS [install-darwin64]
 
 The Darwin archive for {{kib}} {{version.stack}} can be downloaded and installed as follows:
 
+::::{tab-set}
+:group: docker-kib
+:::{tab-item} Latest
+:sync: latest
+To download and install the {{kib}} {{version.stack}} archive, enter:
 ```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-darwin-x86_64.tar.gz
 curl https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
@@ -52,7 +78,22 @@ cd kibana-{{version.stack}}/ <2>
 
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<version>-darwin-x86_64.tar.gz: OK`.
 2. This directory is known as `$KIBANA_HOME`.
+:::
 
+:::{tab-item} Specific version
+:sync: specific
+Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+```sh subs=true
+curl -O https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf kibana-<specific.version>-darwin-x86_64.tar.gz
+cd kibana-<specific.version>/ <2>
+```
+
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<specific.version>-darwin-x86_64.tar.gz: OK`.
+2. This directory is known as `$KIBANA_HOME`.
+:::
+::::
 
 ::::{admonition} macOS Gatekeeper warnings
 :class: important

@@ -18,6 +18,9 @@ products:
 
 ## Step 1: Download and install the `.zip` package [install-windows]
 
+::::{tab-set}
+
+:::{tab-item} Latest
 Download the .zip windows archive for {{kib}} {{version.stack}} from [https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-windows-x86_64.zip)
 
 Unzip it with your favorite unzip tool. This will create a folder called kibana-{{version.stack}}-windows-x86_64, which we will refer to as `$KIBANA_HOME`. In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
@@ -25,6 +28,19 @@ Unzip it with your favorite unzip tool. This will create a folder called kibana-
 ```sh subs=true
 CD c:\kibana-{{version.stack}}-windows-x86_64
 ```
+:::
+
+:::{tab-item} Specific version
+Download the `.zip` archive for the {{kib}} version that you want from the [Past Releases](https://www.elastic.co/downloads/past-releases) page.
+
+Unzip it with your favorite unzip tool. This will create a folder called kibana-<specific.version>-windows-x86_64, which we will refer to as `$KIBANA_HOME`. In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
+
+```sh subs=true
+CD c:\kibana-<specific.version>}-windows-x86_64
+```
+Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+:::
+::::
 
 ## Step 2: Start {{es}} and generate an enrollment token for {{kib}} [windows-enroll]
 

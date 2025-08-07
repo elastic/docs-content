@@ -42,8 +42,9 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 5. Edit the `.env` file to set the `STACK_VERSION`:
 
     ::::{tab-set}
-
+    :group: docker
     :::{tab-item} Latest
+    :sync: latest
     Set the stack version to the current {{es}} {{version.stack}} version. 
     ```txt subs=true
     ...
@@ -54,6 +55,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
     :::
 
     :::{tab-item} Specific version
+    :sync: specific
     Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
     ```txt subs=true
     ...

@@ -64,8 +64,9 @@ To encrypt your secure settings with a password and have them persist outside th
 For example:
 
 ::::{tab-set}
-
+:group: docker
 :::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
@@ -75,6 +76,7 @@ bin/elasticsearch-keystore create -p
 :::
 
 :::{tab-item} Specific version
+:sync: specific
 Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
 ```sh subs=true
 docker run -it --rm \
@@ -88,8 +90,9 @@ bin/elasticsearch-keystore create -p
 You can also use a `docker run` command to add or update secure settings in the keystore. You’ll be prompted to enter the setting values. If the keystore is encrypted, you’ll also be prompted to enter the keystore password.
 
 ::::{tab-set}
-
+:group: docker
 :::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
@@ -101,6 +104,7 @@ my.other.secure.setting
 :::
 
 :::{tab-item} Specific version
+:sync: specific
 Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
 ```sh subs=true
 docker run -it --rm \
@@ -126,8 +130,9 @@ If you’ve already created the keystore and don’t need to update it, you can 
 In some environments, it might make more sense to prepare a custom image that contains your configuration. A `Dockerfile` to achieve this might be as simple as:
 
 ::::{tab-set}
-
+:group: docker
 :::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 FROM docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
 COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
@@ -135,6 +140,7 @@ COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsea
 :::
 
 :::{tab-item} Specific version
+:sync: specific
 Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
 ```sh subs=true
 FROM docker.elastic.co/elasticsearch/elasticsearch:<specific.version>

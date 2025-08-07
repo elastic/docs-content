@@ -46,8 +46,9 @@ Download and install the archive for Linux or MacOS.
 The Linux archive for {{es}} can be downloaded and installed as follows:
 
 ::::{tab-set}
-
+:group: docker
 :::{tab-item} Latest
+:sync: latest
 To download and install the {{es}} {{version.stack}} archive, enter:
 ```sh subs=true
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-linux-x86_64.tar.gz
@@ -61,6 +62,7 @@ cd elasticsearch-{{version.stack}}/ <2>
 :::
 
 :::{tab-item} Specific version
+:sync: specific
 Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
 ```sh subs=true
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-linux-x86_64.tar.gz
@@ -80,8 +82,9 @@ cd elasticsearch-<specific.version>/ <2>
 The MacOS archive for {{es}} can be downloaded and installed as follows:
 
 ::::{tab-set}
-
+:group: docker
 :::{tab-item} Latest
+:sync: latest
 To download and install the {{es}} {{version.stack}} archive, enter:
 ```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz
@@ -94,6 +97,7 @@ cd elasticsearch-{{version.stack}}/ <2>
 :::
 
 :::{tab-item} Specific version
+:sync: specific
 Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
 ```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-darwin-x86_64.tar.gz

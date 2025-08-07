@@ -35,14 +35,16 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 3. Pull the {{es}} Docker image.
 
     ::::{tab-set}
-
+    :group: docker
     :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker pull docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
     :::
 
     :::{tab-item} Specific version
+    :sync: specific
     Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
     ```sh subs=true
     docker pull docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
@@ -52,8 +54,9 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 4. Optional: Install [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/) for your environment. Then use Cosign to verify the {{es}} image’s signature.
 
     ::::{tab-set}
-
+    :group: docker
     :::{tab-item} Latest
+    :sync: latest
     $$$docker-verify-signature$$$
 
     ```sh subs=true
@@ -73,6 +76,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     :::
     
     :::{tab-item} Specific version
+    :sync: specific
     Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
     $$$docker-verify-signature$$$
 
@@ -97,8 +101,9 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 5. Start an {{es}} container.
 
     ::::::{tab-set}
-
+    :group: docker
     :::::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
@@ -117,6 +122,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     :::::
 
     :::::{tab-item} Specific version
+    :sync: specific
     Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
     ```sh subs=true
     docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
@@ -174,13 +180,15 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 2. Start a new {{es}} container. Include the enrollment token as an environment variable.
 
     ::::{tab-set}
-
+    :group: docker
     :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
     ```
     :::
     :::{tab-item} Specific version
+    :sync: specific
     Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
     ```sh subs=true
     docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
@@ -199,13 +207,15 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 1. Pull the {{kib}} Docker image.
 
     ::::{tab-set}
-
+    :group: docker
     :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker pull docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
     :::
     :::{tab-item} Specific version
+    :sync: specific
     Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
     ```sh subs=true
     docker pull docker.elastic.co/kibana/kibana:<specific.version>
@@ -216,14 +226,16 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 2. Optional: Verify the {{kib}} image’s signature.
 
     ::::{tab-set}
-
+    :group: docker
     :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
     cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
     :::
     :::{tab-item} Specific version
+    :sync: specific
     Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
@@ -236,13 +248,15 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 3. Start a {{kib}} container.
 
     ::::{tab-set}
-
+    :group: docker
     :::{tab-item} Latest
+    :sync: latest
     ```sh subs=true
     docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:{{version.stack}}
     ```
     :::
     :::{tab-item} Specific version
+    :sync: specific
     Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
      ```sh subs=true
     docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:<specific.version>
