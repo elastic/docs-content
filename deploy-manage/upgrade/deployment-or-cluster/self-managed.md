@@ -4,6 +4,9 @@ applies_to:
   stack:
   deployment:
     self:
+products:
+  - id: elasticsearch
+  - id: kibana
 ---
 
 # Upgrade the {{stack}} on a self-managed cluster

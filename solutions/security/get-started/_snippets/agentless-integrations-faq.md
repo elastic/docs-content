@@ -5,6 +5,14 @@ Frequently asked questions and troubleshooting steps for {{elastic-sec}}'s agent
 
 After you create a new agentless integration, the new integration policy may show a button that says **Add agent** instead of the associated agent for several minutes during agent enrollment. No action is needed other than refreshing the page once enrollment is complete.
 
+## Why isn't my agentless agent appearing in Fleet?
+
+```{applies_to}
+  stack: ga 9.1
+  serverless: ga
+```
+
+Agentless agents (which run on Elastic's infrastructure to enable agentless integrations) do not appear on the **Fleet** page by default. To view them on this page, add the following query to the end of its URL: `?showAgentless=true`. 
 
 ## How do I troubleshoot an `Offline` agent? [_how_do_i_troubleshoot_an_offline_agent]
 
