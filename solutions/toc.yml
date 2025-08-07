@@ -459,6 +459,7 @@ toc:
               - file: observability/incident-management/create-an-slo.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
+      - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
       - file: security/elastic-security-serverless.md
@@ -491,6 +492,10 @@ toc:
           - file: security/esql-for-security/esql-threat-hunting-tutorial.md
       - file: security/ai.md
         children:
+          - file: security/ai/ease/ease-intro.md
+            children: 
+              - file: security/ai/ease/ease-alerts.md
+              - file: security/ai/ease/ease-value-report.md
           - file: security/ai/ai-assistant.md
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
@@ -544,8 +549,9 @@ toc:
           - file: security/configure-elastic-defend/elastic-defend-requirements.md
           - file: security/configure-elastic-defend/install-elastic-defend.md
             children:
-              - file: security/configure-elastic-defend/enable-access-for-macos-monterey.md
-              - file: security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md
+              - hidden: security/configure-elastic-defend/enable-access-for-macos-monterey.md
+              - hidden: security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md
+              - file: security/configure-elastic-defend/enable-access-for-macos.md
               - file: security/configure-elastic-defend/deploy-on-macos-with-mdm.md
               - file: security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md
           - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
