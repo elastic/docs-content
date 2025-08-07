@@ -44,7 +44,19 @@ ECK will automatically set the correct container image for each application. Whe
 
 To deploy the ECK operator in an air-gapped environment, you first have to mirror the operator image itself from `docker.elastic.co` to a private container registry, for example `my.registry`.
 
-Once the ECK operator image is copied internally, replace the original image name `docker.elastic.co/eck/eck-operator:{{version.eck}}` with the private name of the image, for example `my.registry/eck/eck-operator:{{version.eck}}`, in the [operator manifests](../../../deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md). When using [Helm charts](../../../deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md), replace the `image.repository` Helm value with, for example, `my.registry/eck/eck-operator`.
+Once the ECK operator image is copied internally, replace the original image name  with the private name of the image, in the [operator manifests](../../../deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md). For example:
+
+Before:
+```text subs=true
+docker.elastic.co/eck/eck-operator:{{version.eck}}
+```
+
+After:
+```text subs=true
+my.registry/eck/eck-operator:{{version.eck}}
+```
+
+When using [Helm charts](../../../deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md), replace the `image.repository` Helm value with, for example, `my.registry/eck/eck-operator`.
 
 
 ## Override the default container registry [k8s-container-registry-override]
