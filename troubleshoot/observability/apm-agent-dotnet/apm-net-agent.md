@@ -168,10 +168,7 @@ Agent.Setup(new AgentComponents(logger: new ApmLoggerAdapter()));
 If you receive trace data for some but not all transactions, you should check the two main variables which control
 sampling of transactions.
 
-By default, the agent samples every transaction (e.g. a request to your service). To reduce volume,
-the [transaction sample rate](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate) configuration
-option may have been configured with a reduced sampling rate. Check that this is set to either 1, or
-not set at all if you plan to sample all transactions.
+The first variable is the [transaction sample rate](apm-agent-dotnet://reference/config-core.md#config-transaction-sample-rate). To reduce volume, this configuration option may specify a reduced sampling rate. To sample all transactions, ensure that this is either set to `1`, or not set at all. By default, the agent samples every transaction (every request to your service). ```
 
 The second variable is context propagation. To facilitate distributed tracing, the W3C specification
 defines a [trace context](https://www.w3.org/TR/trace-context/), used to transfer a trace across service boundaries.
