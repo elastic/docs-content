@@ -136,6 +136,15 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
 
+## 9.0.5 [elastic-security-9.0.5-release-notes]
+
+### Features and enhancements [elastic-security-9.0.5-features-enhancements]
+* Adds the `detection_rule_upgrade_status` object to snapshot telemetry schema [#223086]({{kib-pull}}223086).
+* To help identify which parts of `elastic-endpoint.exe` are using a significant amount of CPU, {{elastic-defend}} on Windows can now include CPU profiling data in diagnostics. To request CPU profiling data using the command line, refer to [{{agent}} command reference](/reference/fleet/agent-command-reference.md#_options). To request CPU profiling data using {{kib}}, check the **Collect additional CPU metrics** box when requesting {{agent}} diagnostics.
+
+### Fixes [elastic-security-9.0.5-fixes]
+* Fixes a bug where Security AI Assistant settings landed on the wrong page for users on the Basic license  [#229163]({{kib-pull}}229163).
+
 ## 9.0.4 [elastic-security-9.0.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.4-features-enhancements]
