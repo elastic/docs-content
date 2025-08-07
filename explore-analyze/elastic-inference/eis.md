@@ -64,4 +64,4 @@ This is particularly relevant when using the [_bulk API](https://www.elastic.co/
 
 #### Rate Limits 
 
-Rate limit for search and ingest is currently at 2000 tokens per minute.
+Rate limit for search and ingest is currently at 2000 requests per minute.
