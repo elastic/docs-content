@@ -107,8 +107,8 @@ Bundles
 You must upload your files before you can apply them to your cluster configuration:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
-3. Under **Features**, select **Extensions**.
+2. Find your deployment on the home page and select **Manage**, or select your deployment from the **Hosted deployments** page.
+3. From the lower navigation menu, select **Extensions**.
 4. Select **Upload extension**.
 5. Complete the extension fields, including the {{es}} version.
 
@@ -151,7 +151,13 @@ After uploading your files, you can select to enable them when creating a new {{
 
 While you can update the ZIP file for any plugin or bundle, these are downloaded and made available only when a node is started.
 
-You should be careful when updating an extension. If you update an existing extension with a new file, and if the file is broken for some reason, all the nodes could be in trouble, as a restart or move node could make even HA clusters non-available.
+:::{important}
+Be careful when updating an extension. If you update an existing extension with a new file, and if the file is broken for any reason, all the nodes could be impacted, as either a restart or a move node could make even HA clusters non-available. Also, shards of your indices may become unassigned if there's anything wrong with the bundle, for example if a file referenced by an index is missing due to the update.
+:::
+
+:::{tip}
+If you need to update your extension, instead of updating an existing extension with a new file directly, we recommend that you create a new extension to test the behavior first, verify it's validity, and then reflect it to your deployment.
+:::
 
 If the extension is not in use by any deployments, then you are free to update the files or extension details as much as you like. However, if the extension is in use, and if you need to update it with a new file, it is recommended to [create a new extension](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin) rather than updating the existing one that is in use.
 

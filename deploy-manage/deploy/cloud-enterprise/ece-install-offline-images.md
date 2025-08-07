@@ -12,18 +12,18 @@ products:
 
 Versions of the {{stack}}, containing {{es}}, {{kib}}, and other products, are available as downloadable Docker images.
 
-The first table contains the stack versions that shipped with the 4.0 version of {{ece}}. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the 4.0 version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
+The first table contains the stack versions shipped with the current {{version.ece}} version of {{ece}}. You can also check the [most recent stack packs and Docker images](#ece-recent-download-list), which might have released after the current version of ECE, as well as the [full list of available stack packs and Docker images](#ece-full-download-list).
 
-| Docker images included with {{ece}} {{ece_version}} |
+| Docker images included with {{ece}} {{version.ece}} |
 | --- |
-| docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{ece_version}} |
-| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.0 |
-| docker.elastic.co/cloud-release/kibana-cloud:8.18.0 |
-| docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0 |
-| docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0 |
-| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.0 |
-| docker.elastic.co/cloud-release/kibana-cloud:9.0.0 |
-| docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.0 |
+| docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:{{version.ece}} |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.2 |
+| docker.elastic.co/cloud-release/kibana-cloud:8.18.2 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.2 |
+| docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.2 |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.1 |
+| docker.elastic.co/cloud-release/kibana-cloud:9.0.1 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.1 |
 
 $$$ece-all-stacks$$$Additional {{stack}} versions are available as Docker images that you can use with ECE. For offline installations, you need to download both the {{stack}} pack and the Docker images for the same version.
 
@@ -49,11 +49,11 @@ Enterprise Search is not available in versions 9.0+.
 | docker.elastic.co/cloud-release/elastic-agent-cloud:8.19.1 | ECE 3.0.0 |
 | docker.elastic.co/cloud-release/enterprise-search-cloud:8.19.1 | ECE 3.0.0 |
 |  |  |
-| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.27](https://download.elastic.co/cloud-enterprise/versions/7.17.27.zip) | ECE 2.2.2 |
-| docker.elastic.co/cloud-assets/elasticsearch:7.17.27-0 | ECE 2.2.2 |
-| docker.elastic.co/cloud-assets/kibana:7.17.27-0 | ECE 2.2.2 |
-| docker.elastic.co/cloud-assets/apm:7.17.27-0 | ECE 2.2.2 |
-| docker.elastic.co/cloud-assets/enterprise-search:7.17.27-0 | ECE 2.6.0 |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.29](https://download.elastic.co/cloud-enterprise/versions/7.17.29.zip) | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/elasticsearch:7.17.29-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/kibana:7.17.29-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/apm:7.17.29-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/enterprise-search:7.17.29-0 | ECE 2.6.0 |
 |  |  |
 | [{{es}}, {{kib}}, and APM stack pack: 6.8.23](https://download.elastic.co/cloud-enterprise/versions/6.8.23.zip) | ECE 1.1.4 |
 | docker.elastic.co/cloud-assets/elasticsearch:6.8.23-0 | ECE 1.1.4 |
@@ -71,6 +71,16 @@ Enterprise Search is not available in versions 9.0+.
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.1.1 | ECE 4.0.0 |
 | docker.elastic.co/cloud-release/kibana-cloud:9.1.1 | ECE 4.0.0 |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:9.1.1 | ECE 4.0.0 |
+|  |  |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 9.0.4](https://download.elastic.co/cloud-enterprise/versions/9.0.4.zip) | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.4 | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/kibana-cloud:9.0.4 | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.4 | ECE 4.0.0 |
+|  |  |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 9.0.3](https://download.elastic.co/cloud-enterprise/versions/9.0.3.zip) | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.3 | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/kibana-cloud:9.0.3 | ECE 4.0.0 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.3 | ECE 4.0.0 |
 |  |  |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 9.0.2](https://download.elastic.co/cloud-enterprise/versions/9.0.2.zip) | ECE 4.0.0 |
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.2 | ECE 4.0.0 |
@@ -93,6 +103,18 @@ Enterprise Search is not available in versions 9.0+.
 | docker.elastic.co/cloud-release/elastic-agent-cloud:8.19.1 | ECE 3.0.0 |
 | docker.elastic.co/cloud-release/enterprise-search-cloud:8.19.1 | ECE 3.0.0 |
 |  |  |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.4](https://download.elastic.co/cloud-enterprise/versions/8.18.4.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.4 | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
+| docker.elastic.co/cloud-release/kibana-cloud:8.18.4 | ECE 3.0.0 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.4 | ECE 3.0.0 |
+| docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.4 | ECE 3.0.0 |
+|  |  |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.3](https://download.elastic.co/cloud-enterprise/versions/8.18.3.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.3 | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
+| docker.elastic.co/cloud-release/kibana-cloud:8.18.3 | ECE 3.0.0 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.3 | ECE 3.0.0 |
+| docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.3 | ECE 3.0.0 |
+|  |  |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.18.2](https://download.elastic.co/cloud-enterprise/versions/8.18.2.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.18.2 | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
 | docker.elastic.co/cloud-release/kibana-cloud:8.18.2 | ECE 3.0.0 |
@@ -110,6 +132,18 @@ Enterprise Search is not available in versions 9.0+.
 | docker.elastic.co/cloud-release/kibana-cloud:8.18.0 | ECE 3.0.0 |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:8.18.0 | ECE 3.0.0 |
 | docker.elastic.co/cloud-release/enterprise-search-cloud:8.18.0 | ECE 3.0.0 |
+|  |  |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.9](https://download.elastic.co/cloud-enterprise/versions/8.17.9.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.9 | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
+| docker.elastic.co/cloud-release/kibana-cloud:8.17.9 | ECE 3.0.0 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.9 | ECE 3.0.0 |
+| docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.9 | ECE 3.0.0 |
+|  |  |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.8](https://download.elastic.co/cloud-enterprise/versions/8.17.8.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
+| docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.8 | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
+| docker.elastic.co/cloud-release/kibana-cloud:8.17.8 | ECE 3.0.0 |
+| docker.elastic.co/cloud-release/elastic-agent-cloud:8.17.8 | ECE 3.0.0 |
+| docker.elastic.co/cloud-release/enterprise-search-cloud:8.17.8 | ECE 3.0.0 |
 |  |  |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 8.17.7](https://download.elastic.co/cloud-enterprise/versions/8.17.7.zip) | ECE 3.0.0<br>(+ docker 20.10.10+ required for 8.16+) |
 | docker.elastic.co/cloud-release/elasticsearch-cloud-ess:8.17.7 | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |
@@ -548,6 +582,18 @@ Enterprise Search is not available in versions 9.0+.
 | docker.elastic.co/cloud-release/kibana-cloud:8.0.0 | ECE 3.0.0 |
 | docker.elastic.co/cloud-release/elastic-agent-cloud:8.0.0 | ECE 3.0.0 |
 | docker.elastic.co/cloud-release/enterprise-search-cloud:8.0.0 | ECE 3.0.0 |
+|  |  |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.29](https://download.elastic.co/cloud-enterprise/versions/7.17.29.zip) | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/elasticsearch:7.17.29-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/kibana:7.17.29-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/apm:7.17.29-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/enterprise-search:7.17.29-0 | ECE 2.6.0 |
+|  |  |
+| [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.28](https://download.elastic.co/cloud-enterprise/versions/7.17.28.zip) | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/elasticsearch:7.17.28-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/kibana:7.17.28-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/apm:7.17.28-0 | ECE 2.2.2 |
+| docker.elastic.co/cloud-assets/enterprise-search:7.17.28-0 | ECE 2.6.0 |
 |  |  |
 | [{{es}}, {{kib}}, APM, and Enterprise Search stack pack: 7.17.27](https://download.elastic.co/cloud-enterprise/versions/7.17.27.zip) | ECE 2.2.2 |
 | docker.elastic.co/cloud-assets/elasticsearch:7.17.27-0 | ECE 2.2.2 |
