@@ -253,6 +253,11 @@ For example, exclude results from the ecommerce sample data view where day of we
 4. Continue your exploration by adding more filters.
 5. To remove a filter, click the close icon (x) next to its name in the filter bar.
 
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
+:::
+
 
 ### Search and filter using ES|QL [_search_and_filter_using_esql]
 
