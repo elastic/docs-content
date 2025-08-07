@@ -44,7 +44,7 @@ ECK will automatically set the correct container image for each application. Whe
 
 To deploy the ECK operator in an air-gapped environment, you first have to mirror the operator image itself from `docker.elastic.co` to a private container registry, for example `my.registry`.
 
-Once the ECK operator image is copied internally, replace the original image name  with the private name of the image, in the [operator manifests](../../../deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md). For example:
+Once the ECK operator image is copied internally, replace the original image name with the private name of the image in the [operator manifests](../../../deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md). For example:
 
 Before:
 ```text subs=true
