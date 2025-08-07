@@ -172,7 +172,7 @@ The first variable is the [transaction sample rate](apm-agent-dotnet://reference
 
 The second variable is context propagation. To facilitate distributed tracing, the W3C specification
 defines a [trace context](https://www.w3.org/TR/trace-context/), used to transfer a trace across service boundaries.
-For web applications, this occurs through the traceparent header. Of specific importance for this issue is
+For web applications, this occurs through the `traceparent` header. Of specific importance for this issue is
 a flag defined on that context, the [sampled flag](https://www.w3.org/TR/trace-context/#sampled-flag).
 
 This flag allows a sampling decision made earlier in a distributed trace to continue onto downstream services,
