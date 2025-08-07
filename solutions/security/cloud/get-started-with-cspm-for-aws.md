@@ -42,7 +42,7 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
    ```{Namespaces}
-   Using a namespace can help you organize your data, for example you query data from a particular namespace, or filter the Cloud Security dashboard based on namespace. Do not try to use data stream namespaces to manage data access within your organization — this is ineffective because the default findings index includes data from all namespaces (`logs-findings*`). Use [document-level security](/reference/search-connectors/document-level-security.md) instead.
+   Using a namespace can help you organize your data, for example you query data from a particular namespace, or filter the Cloud Security dashboard based on namespace. Do not try to use data stream namespaces to manage data access within your organization — this is ineffective because the default findings index includes data from all namespaces (`logs-findings*`). Use [document-level security](elasticsearch://reference/search-connectors/document-level-security.md) instead.
    ```
 7. Under **Deployment options** select **Agentless**.
 8. Next, you’ll need to authenticate to AWS. Two methods are available:
@@ -70,7 +70,7 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
    ```{Namespaces}
-   Using a namespace can help you organize your data, for example you query data from a particular namespace, or filter the Cloud Security dashboard based on namespace. Do not try to use data stream namespaces to manage data access within your organization — this is ineffective because the default findings index includes data from all namespaces (`logs-findings*`). Use [document-level security](/reference/search-connectors/document-level-security.md) instead.
+   Using a namespace can help you organize your data, for example you query data from a particular namespace, or filter the Cloud Security dashboard based on namespace. Do not try to use data stream namespaces to manage data access within your organization — this is ineffective because the default findings index includes data from all namespaces (`logs-findings*`). Use [document-level security](elasticsearch://reference/search-connectors/document-level-security.md) instead.
    ```
 7. Under **Deployment options** select **Agent-based**. 
 
