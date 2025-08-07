@@ -109,6 +109,7 @@ toc:
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
               - file: observability/get-started/other-tutorials/add-data-from-splunk.md
+          - file: observability/get-started/logs-essentials.md
       - file: observability/applications/index.md
         children:
           - file: observability/apm/index.md
@@ -666,7 +667,7 @@ toc:
           - file: security/explore/users-page.md
       - file: security/advanced-entity-analytics.md
         children:
-          - file: security/advanced-entity-analytics/overview.md 
+          - file: security/advanced-entity-analytics/overview.md
           - file: security/advanced-entity-analytics/entity-risk-scoring.md
             children:
               - file: security/advanced-entity-analytics/entity-risk-scoring-requirements.md
