@@ -187,7 +187,7 @@ an outside party to control what transactions are recorded through the sampled f
 
 To control the context propagation behaviour, we have a [trace continuation strategy](apm-agent-dotnet://reference/config-http.md#config-trace-continuation-strategy) option. Choose either `restart` or `restart_external`. `restart` will ignore
 the sampling flag on all requests and always include a transaction for the trace. `restart_external` is similar,
-however, we use an extra header to detect if the calling service was instrumented by an Elastic APM agent. If so,
+however it uses an extra header to detect if the calling service was instrumented by an Elastic APM agent. If so,
 we honour the sampling flag; if not (i.e. an external request), we force the trace to be sampled.
 
 
