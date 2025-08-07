@@ -13,9 +13,9 @@ Cloud Connect enables you to use {{ecloud}} services in your self-managed cluste
 
 AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
 
-### AutoOps
+### AutoOps for self-managed clusters
 
-[AutoOps](/deploy-manage/monitor/autoops.md) is a monitoring tool that helps you manage your cluster with real-time issue detection, performance recommendations, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and usage patterns, AutoOps recommends operational and monitoring insights that deliver real savings in administration time and hardware cost. 
+[AutoOps](/deploy-manage/monitor/autoops.md) is a monitoring tool that helps you manage your cluster with real-time issue detection, performance recommendations, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and your usage patterns, AutoOps recommends operational and monitoring insights that deliver real savings in administration time and hardware cost. 
 
 Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-cloud-connected.md). 
 
@@ -32,13 +32,9 @@ Each cloud connected service has its own licensing and payment requirements.
 :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 :::
 
+:::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
-:::{dropdown} Will my data be safe when using Cloud Connect?
-
-$$$cc-data$$$
-
-Yes. For AutoOps, {{agent}} only sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. Learn more in [](/deploy-manage/monitor/autoops/cc-cloud-connect-autoops-faq.md). 
 :::
 
 :::{dropdown} Are more services going to be available with Cloud Connect?
