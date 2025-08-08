@@ -24,7 +24,7 @@ In this quickstart guide, you’ll learn how to quickly create the Kubernetes re
 :sync: stack
 
 
-* An {{stack}} deployment or orchestrator such as [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+* A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A user with the `superuser` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
 
 :::{dropdown} Expand to view required privileges
@@ -96,19 +96,19 @@ The installation command provided by the UI during the quickstart cannot be used
     :::{dropdown} Details about the install command
     The install command provided by the UI may be similar to:
 
-    ```sh
-    helm repo add elastic https://helm.elastic.co/ && helm install elastic-agent elastic/elastic-agent --version 9.1.0 -n kube-system
+    ```sh subs=true
+    helm repo add elastic https://helm.elastic.co/ && helm install elastic-agent elastic/elastic-agent --version {{version.stack}} -n kube-system --set outputs.default.url=https:<elasticsearch-url>:443 --set kubernetes.onboardingID=<internal-id> --set kubernetes.enabled=true --set outputs.default.type=ESPlainAuthAPI --set outputs.default.api_key=$(echo "<api-key>" | base64 -d)
     ```
 
     Where:
     
-    - `elastic` is the name of the local Helm configuration of the Elastic Helm repository (`https://helm.elastic.co/`).
     - `elastic-agent` is the name of the specific installation of the Helm chart, known as **release name**.
-    - `elastic/elastic-agent` is the Helm chart to be installed.
-    - `9.1.0` is the version of the {{agent}} Helm chart to be installed.
-    - `kube-system` is the namespace where {{agent}} is installed.
-
-    The command will also include `--set` configurations specific to your deployment and user. Refer to [Install standalone Elastic Agent on Kubernetes using Helm](/reference/fleet/example-kubernetes-standalone-agent-helm.md#agent-standalone-helm-example-install) for a more detailed explanation of the configuration options used.
+    - `elastic/elastic-agent` defines the name of the Helm repository, where `elastic` corresponds to `https://helm.elastic.co/` and `elastic-agent` is the name of the Helm chart
+    - {{version.stack}} is the version of the {{agent}} Helm chart to be installed.
+    - `kube-system` is the namespace where {{agent}} is to be installed.
+    - `--set` adds configuration options with parameters specific to the serverless project, the acting user, and the installation method of the Helm chart.
+    
+       Refer to [Install standalone Elastic Agent on Kubernetes using Helm](/reference/fleet/example-kubernetes-standalone-agent-helm.md#agent-standalone-helm-example-install) for a more detailed explanation of the configuration options used.
     :::
 
 4. Go back to the **Kubernetes: Logs & Metrics** page in {{kib}}.
@@ -136,19 +136,19 @@ Refer to [Observability overview](/solutions/observability/get-started/what-is-e
 
 ## Uninstall {{agent}} from the Kubernetes cluster [monitor-k8s-with-agent-delete-agent]
 
-:::::{tab-set}
+::::{tab-set}
 :group: stack-serverless
 
-::::{tab-item} Elastic Stack
+:::{tab-item} Elastic Stack
 :sync: stack
 
 To uninstall {{agent}} and the Kubernetes resources installed with `kubectl`:
 
 1. Copy the `kubectl` quickstart command for installing {{agent}} described in the [Collect your data](#_collect_your_data_2) section.
 2. Replace `| kubectl apply -f-` with `| kubectl delete -f-`, then run the command.
-::::
+:::
 
-::::{tab-item} Serverless
+:::{tab-item} Serverless
 :sync: serverless
 
 To uninstall {{agent}} and the Kubernetes resources installed with Helm, run: 
@@ -158,17 +158,14 @@ To uninstall {{agent}} and the Kubernetes resources installed with Helm, run:
   ```
   1. Substitute `<release-name>` with the release name and `<namespace>` with the namespace used in the quickstart command described in the [Collect your data](#_collect_your_data_2) section.
 
-:::{dropdown} Expand to view an example
-If the {{agent}} Helm chart is installed with the `elastic-agent` release name in the `kube-system` namespace, use the following command to uninstall it:
+  If you used the default values from the quickstart, the command would be:
 
-```
-helm uninstall elastic-agent -n kube-system
-```
+  ```sh
+  helm uninstall elastic-agent -n kube-system
+  ```
 :::
 
 ::::
-
-:::::
 
 ## Troubleshooting [monitor-k8s-with-agent-troubleshooting]
 
@@ -176,6 +173,6 @@ helm uninstall elastic-agent -n kube-system
 
 If you're using `helm` to install {{agent}} in your Kubernetes cluster, you may encounter an error if `kube-state-metrics` is already installed in the same namespace where {{agent}} is to be installed. In this case, add the option `--set kube-state-metrics.enabled=false` to the install command provided by the UI to skip the installation of `kube-state-metrics`.
 
-### The `elastic` repo already exists
+### The `elastic` repository already exists
 
 If you're using `helm` to install {{agent}} in your Kubernetes cluster and the `elastic` repository is already configured on your host, replace the `helm repo add elastic https://helm.elastic.co/ ` part of the command provided by the UI with `helm repo update elastic` to ensure the repository is updated with the latest package information.
