@@ -9,10 +9,11 @@ products:
   - id: elasticsearch
 ---
 
-
-
 # Run downsampling manually [downsampling-manual]
 
+:::{warning}
+🚧 Work in progress 🚧
+:::
 
 The recommended way to [downsample](./downsampling-time-series-data-stream.md) a [time-series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md) is [through index lifecycle management (ILM)](run-downsampling-with-ilm.md). However, if you’re not using ILM, you can downsample a TSDS manually. This guide shows you how, using typical Kubernetes cluster monitoring data.
 
@@ -404,7 +405,7 @@ You can now delete the old backing index. But be aware this will delete the orig
 
 ## View the results [downsampling-manual-view-results]
 
-Re-run the earlier search query (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)):
+Re-run the earlier search query (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-concepts.md#querying-downsampled-indices-notes)):
 
 ```console
 GET /my-data-stream/_search
