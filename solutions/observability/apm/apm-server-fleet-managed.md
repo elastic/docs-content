@@ -1,6 +1,6 @@
 ---
 mapped_pages:
-  - https://www.elastic.co/guide/en/observability/current/get-started-with-apm-server-binary.html
+  - https://www.elastic.co/guide/en/observability/current/get-started-with-fleet-apm-server.html
 applies_to:
   stack:
 products:
@@ -8,138 +8,185 @@ products:
   - id: apm
 ---
 
-# APM Server binary [get-started-with-apm-server-binary]
+# Fleet-managed APM Server [get-started-with-fleet-apm-server]
 
-This guide will explain how to set up and configure the APM Server binary.
+Fleet is a web-based UI in {{kib}} that is used to centrally manage {{agent}}s. In this deployment model, use {{agent}} to spin up APM Server instances that can be centrally-managed in a custom-curated user interface.
 
-## Prerequisites [_prerequisites_7]
-
-First, see the [Elastic Support Matrix](https://www.elastic.co/support/matrix) for information about supported operating systems and product compatibility.
-
-You’ll need:
-
-* **{{es}}** for storing and indexing data.
-* **{{kib}}** for visualizing with the Applications UI.
-
-We recommend you use the same version of {{es}}, {{kib}}, and APM Server. See [Installing the {{stack}}](/get-started/the-stack.md) for more information about installing these products.
-
-:::{image} /reference/fleet/images/observability-apm-architecture-diy.png
-:alt: Install Elastic APM yourself
+:::{image} /solutions/images/observability-fm-ov.png
+:alt: APM Server fleet overview
 :::
 
-## Step 1: Install [apm-installing]
+This guide will explain how to set up and configure a Fleet-managed APM Server.
 
-::::{note}
-**Before you begin**: If you haven’t installed the {{stack}}, do that now. See [Learn how to install the {{stack}} on your own hardware](/get-started/the-stack.md).
-::::
+## Prerequisites [_prerequisites_6]
 
-To download and install APM Server, use the commands below that work with your system. If you use `apt` or `yum`, you can [install APM Server from our repositories](#apm-setup-repositories) to update to the newest version more easily.
+You need {{es}} for storing and searching your data, and {{kib}} for visualizing and managing it. When setting these components up, you need:
 
-$$$apm-deb$$$
-**deb:**
+* {{es}} cluster and {{kib}} (version 9.0) with a basic license or higher. [Learn how to install the {{stack}} on your own hardware](/get-started/the-stack.md).
+* Secure, encrypted connection between {{kib}} and {{es}}. For more information, refer to [](/deploy-manage/security/self-setup.md).
+* Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
+* {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
+* In the {{es}} configuration, the [built-in API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
+* In the {{kib}} configuration, the saved objects encryption key must be set. {{fleet}} requires this setting in order to save API keys and encrypt them in {{kib}}. You can either set `xpack.encryptedSavedObjects.encryptionKey` to an alphanumeric value of at least 32 characters, or run the [`kibana-encryption-keys` command](kibana://reference/commands/kibana-encryption-keys.md) to generate the key.
 
-```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-amd64.deb
-sudo dpkg -i apm-server-{{version.stack}}-amd64.deb
-```
+**Example security settings**
 
-$$$apm-rpm$$$
-**RPM:**
+For testing purposes, you can use the following settings to get started quickly, but make sure you properly secure the {{stack}} before sending real data.
 
-```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-x86_64.rpm
-sudo rpm -vi apm-server-{{version.stack}}-x86_64.rpm
-```
-
-$$$apm-linux$$$
-**Other Linux:**
-
-```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-linux-x86_64.tar.gz
-tar xzvf apm-server-{{version.stack}}-linux-x86_64.tar.gz
-```
-
-$$$apm-mac$$$
-**Mac:**
-
-```shell subs=true
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-darwin-x86_64.tar.gz
-tar xzvf apm-server-{{version.stack}}-darwin-x86_64.tar.gz
-```
-
-$$$apm-installing-on-windows$$$
-**Windows:**
-
-1. Download the APM Server Windows zip file from the [downloads page](https://www.elastic.co/downloads/apm/apm-server).
-
-1. Extract the contents of the zip file into `C:\Program Files`.
-
-1. Rename the `apm-server-<version>-windows` directory to `APM-Server`.
-
-1. Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select *Run As Administrator*).
-If you are running Windows XP, you may need to download and install PowerShell.
-
-1. From the PowerShell prompt, run the following commands to install APM Server as a Windows service:
-
-$$$apm-docker$$$
-**Docker:**
-
-See [Running on Docker](#apm-running-on-docker) for deploying Docker containers.
-
-## Step 2: Set up and configure [apm-server-configuration]
-
-Configure APM by editing the `apm-server.yml` configuration file. The location of this file varies by platform—see the [Installation layout](/solutions/observability/apm/installation-layout.md) for help locating it.
-
-A minimal configuration file might look like this:
+[`elasticsearch.yml`](/deploy-manage/stack-settings.md) example:
 
 ```yaml
-apm-server:
-  host: "localhost:8200" <1>
-output.elasticsearch:
-  hosts: ["localhost:9200"] <2>
-  username: "elastic" <3>
-  password: "changeme"
+xpack.security.enabled: true
+xpack.security.authc.api_key.enabled: true
 ```
 
-1. The `host:port` APM Server listens on.
-2. The {{es}} `host:port` to connect to.
-3. This example uses basic authentication. The user provided here needs the privileges required to publish events to {{es}}. To create a dedicated user for this role, see [Create a *writer* role](/solutions/observability/apm/create-assign-feature-roles-to-apm-server-users.md#apm-privileges-to-publish-events).
+[`kibana.yml`](/deploy-manage/stack-settings.md) example:
 
-All available configuration options are outlined in [configuring APM Server](/solutions/observability/apm/configure-apm-server.md).
-
-## Step 3: Start [apm-server-starting]
-
-In a production environment, you would put APM Server on its own machines, similar to how you run {{es}}. You *can* run it on the same machines as {{es}}, but this is not recommended, as the processes will be competing for resources.
-
-To start APM Server, run:
-
-```bash
-./apm-server -e
+```yaml
+elasticsearch.username: "kibana_system" <1>
+xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
 ```
+
+1. The password should be stored in the {{kib}} keystore as described in the [{{es}} security documentation](/deploy-manage/security/secure-settings.md).
+
+## Step 1: Set up Fleet [_step_1_set_up_fleet]
+
+Use {{fleet}} in {{kib}} to get APM data into the {{stack}}.
 
 ::::{note}
-The `-e` [global flag](/solutions/observability/apm/apm-server-command-reference.md#apm-global-flags) enables logging to stderr and disables syslog/file output. Remove this flag if you’ve enabled logging in the configuration file. For Linux systems, see [APM Server status and logs](/solutions/observability/apm/apm-server-systemd.md).
+If you already have a {{fleet-server}} set up, you can choose to skip this step.
+
 ::::
 
-You should see APM Server start up. It will try to connect to {{es}} on localhost port `9200` and expose an API to agents on port `8200`. You can change the defaults in `apm-server.yml` or by supplying a different address on the command line:
+The first time you use {{fleet}}, you’ll need to set it up and add a {{fleet-server}} using the steps outlined below.
 
-```bash
-./apm-server -e -E output.elasticsearch.hosts=ElasticsearchAddress:9200 -E apm-server.host=localhost:8200
+To deploy a self-managed {{fleet-server}}, you install an {{agent}} and enroll it in an agent policy containing the {{fleet-server}} integration.
+
+::::{note}
+You can install only a single {{agent}} per host, which means you cannot run {{fleet-server}} and another {{agent}} on the same host unless you deploy a containerized {{fleet-server}}.
+::::
+
+1. In {{fleet}}, open the **Settings** tab. For more information about these settings, see [{{fleet}} settings](/reference/fleet/fleet-settings.md).
+2. Under **Fleet Server hosts**, click **Edit hosts** and specify one or more host URLs your {{agent}}s will use to connect to {{fleet-server}}. For example, `https://192.0.2.1:8220`, where `192.0.2.1` is the host IP where you will install {{fleet-server}}. Save and apply your settings.
+
+    ::::{tip}
+    If the **Edit hosts** option is grayed out, {{fleet-server}} hosts are configured outside of {{fleet}}. For more information, refer to [{{fleet}} settings in {{kib}}](kibana://reference/configuration-reference/fleet-settings.md).
+    ::::
+
+3. In the **{{es}} hosts** field, specify the {{es}} URLs where {{agent}}s will send data. For example, `https://192.0.2.0:9200`. Skip this step if you’ve started the {{stack}} with security enabled (you cannot change this setting because it’s managed outside of {{fleet}}).
+4. Save and apply the settings.
+5. Click the **Agents** tab and follow the in-product instructions to add a {{fleet}} server:
+
+    :::{image} /solutions/images/observability-add-fleet-server.png
+    :alt: In-product instructions for adding a {{fleet-server}}
+    :screenshot:
+    :::
+
+**Notes:**
+
+* Choose **Quick Start** if you want {{fleet}} to generate a {{fleet-server}} policy and enrollment token for you. The {{fleet-server}} policy will include a {{fleet-server}} integration plus a system integration for monitoring {{agent}}. This option generates self-signed certificates and is not recommended for production use cases.
+* Choose **Advanced** if you want to either:
+
+    * Use your own {{fleet-server}} policy. You can create a new {{fleet-server}} policy or select an existing one. Alternatively you can [create a {{fleet-server}} policy without using the UI](/reference/fleet/create-policy-no-ui.md), and select the policy here.
+    * Use your own TLS certificates to encrypt traffic between {{agent}}s and {{fleet-server}}. To learn how to generate certs, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](/reference/fleet/secure-connections.md).
+
+* It’s recommended you generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, see [`elasticsearch-service-tokens`](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md).
+* If you are providing your own certificates:
+
+    * Before running the `install` command, make sure you replace the values in angle brackets.
+    * Note that the URL specified by `--url` must match the DNS name used to generate the certificate specified by `--fleet-server-cert`.
+
+* The `install` command installs the {{agent}} as a managed service and enrolls it in a {{fleet-server}} policy. For more {{fleet-server}} commands, see [{{agent}} command reference](/reference/fleet/agent-command-reference.md).
+
+If installation is successful, you’ll see confirmation that {{fleet-server}} connected. Click **Continue enrolling Elastic Agent** to begin enrolling your agents in {{fleet-server}}.
+
+::::{note}
+If you’re unable to add a {{fleet}}-managed agent, click the **Agents** tab and confirm that the agent running {{fleet-server}} is healthy.
+::::
+
+For more information, refer to [{{fleet-server}}](/reference/fleet/fleet-server.md).
+
+## Step 2: Add and configure the APM integration [add-apm-integration]
+
+::::{note}
+If you don’t have a {{fleet}} setup already in place, the easiest way to get started is to run the APM integration in the same {{agent}} that acts as the {{fleet-server}}. However, it is *not mandatory* for the APM integration to run in the same {{agent}} that acts as the {{fleet-server}}.
+
+::::
+
+1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Select **Elastic APM**.
+
+    :::{image} /solutions/images/observability-kibana-fleet-integrations-apm.png
+    :alt: {{fleet}} showing APM integration
+    :screenshot:
+    :::
+
+3. Click **Add Elastic APM**.
+
+    :::{image} /solutions/images/observability-kibana-fleet-integrations-apm-overview.png
+    :alt: {{fleet}} showing APM integration overview
+    :screenshot:
+    :::
+
+4. On the **Add Elastic APM integration** page, define the host and port where APM Server will listen. Make a note of this value—you’ll need it later.
+
+    ::::{tip}
+    Using Docker or Kubernetes? Set the host to `0.0.0.0` to bind to all interfaces.
+    ::::
+
+5. Under **Agent authorization**, set a Secret token. This will be used to authorize requests from APM agents to the APM Server. Make a note of this value—you’ll need it later.
+6. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an APM integration policy for the configuration you just specified.
+7. To view the new policy, click **Agent policy 1**.
+
+    :::{image} /solutions/images/observability-apm-agent-policy-1.png
+    :alt: {{fleet}} showing apm policy
+    :screenshot:
+    :::
+
+    Any {{agent}}s assigned to this policy will collect APM data from your instrumented services.
+
+::::{tip}
+An internet connection is required to install the APM integration via the Fleet UI in Kibana.
+
+::::{dropdown} If you don’t have an internet connection
+If your environment has network traffic restrictions, there are other ways to install the APM integration. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
+
+Option 1: Update [`kibana.yml`](/deploy-manage/stack-settings.md)
+:   Update [`kibana.yml`](/deploy-manage/stack-settings.md) to include the following, then restart {{kib}}.
+
+```yaml
+xpack.fleet.packages:
+- name: apm
+  version: latest
 ```
 
-### Debian Package / RPM [apm-running-deb-rpm]
+See [Configure Kibana](kibana://reference/configuration-reference/general-settings.md) to learn more about how to edit the Kibana configuration file.
 
-For Debian package and RPM installations, we recommend the `apm-server` process runs as a non-root user. Therefore, these installation methods create an `apm-server` user which you can use to start the process. In addition, APM Server will only start if the configuration file is [owned by the user running the process](/solutions/observability/apm/apm-server-systemd.md#apm-config-file-ownership).
+Option 2: Use the {{fleet}} API
+:   Use the {{fleet}} API to install the APM integration. To be successful, this needs to be run against the {{kib}} API, not the {{es}} API.
 
-To start the APM Server in this case, run:
-
-```bash
-sudo -u apm-server apm-server [<argument...>]
+```yaml
+POST kbn:/api/fleet/epm/packages/apm/9.0.0
+{ "force": true }
 ```
 
-By default, APM Server loads its configuration file from `/etc/apm-server/apm-server.yml`. See the [deb & rpm default paths](/solutions/observability/apm/installation-layout.md) for a full directory layout.
+See [Kibana API](https://www.elastic.co/docs/api/doc/kibana/) to learn more about how to use the Kibana APIs.
 
-## Step 4: Install APM agents [apm-next-steps]
+::::
+
+::::
+
+## Step 3: Install APM agents [_step_3_install_apm_agents]
+
+APM agents are written in the same language as your service. To monitor a new service, you must install the agent and configure it with a service name, APM Server host, and Secret token.
+
+* **Service name**: The APM integration maps an instrumented service’s name–defined in each {{apm-agent}}'s configuration– to the index that its data is stored in {{es}}. Service names are case-insensitive and must be unique. For example, you cannot have a service named `Foo` and another named `foo`. Special characters will be removed from service names and replaced with underscores (`_`).
+* **APM Server URL**: The host and port that APM Server listens for events on. This should match the host and port defined when setting up the APM integration.
+* **Secret token**: Authentication method for {{apm-agent}} and APM Server communication. This should match the secret token defined when setting up the APM integration.
+
+::::{tip}
+You can edit your APM integration settings if you need to change the APM Server URL or secret token to match your APM agents.
+::::
 
 :::::::{tab-set}
 
@@ -742,186 +789,11 @@ For more information on how to combine Elastic and OpenTelemetry, see [OpenTelem
 
 :::::::
 
-## Step 5: View your data [_step_5_view_your_data]
+## Step 4: View your data [_step_4_view_your_data]
 
-Once you have at least one {{apm-agent}} sending data to APM Server, you can start visualizing your data in the [{{kib}} Applications UI](/solutions/observability/apm/overviews.md).
+Back in {{kib}}, under {{observability}}, select APM. You should see application performance monitoring data flowing into the {{stack}}!
 
-:::{image} /reference/fleet/images/observability-kibana-apm-sample-data.png
+:::{image} /solutions/images/observability-kibana-apm-sample-data.png
 :alt: Applications UI with data
 :screenshot:
 :::
-
-## Repositories for APT and YUM [apm-setup-repositories]
-
-We have repositories available for APT and YUM-based distributions. Note that we provide binary packages, but no source packages.
-
-We use the PGP key [D88E42B4](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xD27D666CD88E42B4), {{es}} Signing Key, with fingerprint
-
-```
-4609 5ACC 8548 582C 1A26 99A9 D27D 666C D88E 42B4
-```
-to sign all our packages. It is available from [https://pgp.mit.edu](https://pgp.mit.edu).
-
-### APT [_apt]
-
-To add the apm-server repository for APT:
-
-1. Download and install the Public Signing Key:
-
-    ```shell
-    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-    ```
-
-1. You may need to install the `apt-transport-https` package on Debian before proceeding:
-
-    ```shell
-    sudo apt-get install apt-transport-https
-    ```
-
-1. Save the repository definition to `/etc/apt/sources.list.d/elastic-9.0.0.list`:
-
-    ```shell
-    echo "deb https://artifacts.elastic.co/packages/9.0.0-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-9.0.0-prerelease.list
-    ```
-
-    :::{warning}
-    To add the Elastic repository, make sure that you use the `echo` method shown in the example. Do not use `add-apt-repository` because it will add a `deb-src` entry, but we do not provide a source package.
-
-    If you have added the `deb-src` entry by mistake, you will see an error like the following:
-
-    ```text
-    Unable to find expected entry 'main/source/Sources' in Release file (Wrong sources.list entry or malformed file)
-    ```
-    :::
-
-1. Run `apt-get update`, and the repository is ready for use. For example, you can install APM Server by running:
-
-    ```shell
-    sudo apt-get update && sudo apt-get install apm-server
-    ```
-
-1. To configure APM Server to start automatically during boot, run:
-
-    ```shell
-    sudo systemctl enable apm-server
-    ```
-
-### YUM [_yum]
-
-To add the apm-server repository for YUM:
-
-1. Download and install the public signing key:
-
-    ```shell
-    sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
-    ```
-
-1. Create a file with a .repo extension (for example, elastic.repo) in your /etc/yum.repos.d/ directory and add the following lines:
-
-    ```shell
-    [elastic-9.0.0]
-    name=Elastic repository for 9.0.0 packages
-    baseurl=https://artifacts.elastic.co/packages/9.0.0/yum
-    gpgcheck=1
-    gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-    enabled=1
-    autorefresh=1
-    type=rpm-md
-    ```
-
-    Your repository is ready to use. For example, you can install APM Server by running:
-
-    ```shell
-    sudo yum install apm-server
-    ```
-
-1. To configure APM Server to start automatically during boot, run:
-
-    ```shell
-    sudo systemctl enable apm-server
-    ```
-
-
-## Run APM Server on Docker [apm-running-on-docker]
-
-Docker images for APM Server are available from the Elastic Docker registry. The base image is [ubuntu:22.04](https://hub.docker.com/_/ubuntu).
-
-A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co).
-
-These images are free to use under the Elastic license. They contain open source and free commercial features and access to paid commercial features. [Start a 30-day trial](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md) to try out all of the paid commercial features. See the [Subscriptions](https://www.elastic.co/subscriptions) page for information about Elastic license levels.
-
-### Pull the image [_pull_the_image]
-
-Obtaining APM Server for Docker is as simple as issuing a `docker pull` command against the Elastic Docker registry and then, optionally, verifying the image.
-
-1. Pull the Docker image:
-
-    ```shell
-    docker pull docker.elastic.co/apm/apm-server:9.0.0
-    ```
-
-    Alternately, you can use the hardened [Wolfi](https://wolfi.dev/) image:
-
-    ```shell
-    docker pull docker.elastic.co/apm/apm-server-wolfi:9.0.0
-    ```
-
-1. Verify the Docker image:
-
-    ```shell
-    wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/apm/apm-server:9.0.0
-    ```
-
-    The `cosign` command prints the check results and the signature payload in JSON format:
-
-    ```shell
-    Verification for docker.elastic.co/apm/apm-server:9.0.0 --
-    The following checks were performed on each of these signatures:
-      - The cosign claims were validated
-      - Existence of the claims in the transparency log was verified offline
-      - The signatures were verified against the specified public key
-    ```
-
-### Configure APM Server on Docker [_configure_apm_server_on_docker]
-
-The Docker image provides several methods for configuring APM Server. The conventional approach is to provide a configuration file via a volume mount, but it’s also possible to create a custom image with your configuration included.
-
-#### Example configuration file [_example_configuration_file]
-
-Download this example configuration file as a starting point:
-
-```sh
-curl -L -O https://raw.githubusercontent.com/elastic/apm-server/master/apm-server.docker.yml
-```
-
-#### Volume-mounted configuration [_volume_mounted_configuration]
-
-One way to configure APM Server on Docker is to provide `apm-server.docker.yml` via a volume mount. With `docker run`, the volume mount can be specified like this.
-
-```sh
-docker run -d \
-  -p 8200:8200 \
-  --name=apm-server \
-  --user=apm-server \
-  --volume="$(pwd)/apm-server.docker.yml:/usr/share/apm-server/apm-server.yml:ro" \
-  docker.elastic.co/apm/apm-server:9.0.0 \
-  --strict.perms=false -e \
-  -E output.elasticsearch.hosts=["elasticsearch:9200"] <1> <2>
-```
-
-1. Substitute your {{es}} hosts and ports.
-2. If you are using {{ech}}, replace the `-E output.elasticsearch.hosts` line with the Cloud ID and elastic password using the syntax shown earlier.
-
-#### Customize your configuration [_customize_your_configuration]
-
-The `apm-server.docker.yml` downloaded earlier should be customized for your environment. See [Configure APM Server](/solutions/observability/apm/configure-apm-server.md) for more details. Edit the configuration file and customize it to match your environment then re-deploy your APM Server container.
-
-#### Custom image configuration [_custom_image_configuration]
-
-It’s possible to embed your APM Server configuration in a custom image. Here is an example Dockerfile to achieve this:
-
-```dockerfile
-FROM docker.elastic.co/apm/apm-server:9.0.0
-COPY --chmod=0644 --chown=1000:1000 apm-server.yml /usr/share/apm-server/apm-server.yml
-```

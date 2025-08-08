@@ -15,8 +15,6 @@ products:
 
 # Run API requests with Console [console-kibana]
 
-$$$configuring-console$$$
-
 $$$import-export-console-requests$$$
 
 
@@ -72,7 +70,7 @@ GET kbn:/api/index_management/indices
 
 When you’re typing a command, **Console** makes context-sensitive suggestions. These suggestions show you the parameters for each API and speed up your typing.
 
-You can configure your preferences for autocomplete in the [Console settings](../../../explore-analyze/query-filter/tools/console.md#configuring-console).
+You can configure your preferences for autocomplete in the [Console settings](#configuring-console).
 
 
 ### Comments [console-comments]
