@@ -2,6 +2,8 @@
 applies_to:
   deployment:
     ece:
+products:
+  - id: cloud-enterprise
 ---
     
 # Re-running the ECE upgrade [re-running-ece-upgrade]
