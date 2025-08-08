@@ -47,7 +47,7 @@ Not at this time. AutoOps is currently only available as a cloud service and you
 
 :::{dropdown} Can I use macOS to install {{agent}}?
 
-macOS is not a supported platform for installing the agent and connecting your self-managed cluster to AutoOps.
+macOS is not a supported platform for installing {{agent}} and connecting your self-managed cluster to AutoOps.
 :::
 
 :::{dropdown} Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?

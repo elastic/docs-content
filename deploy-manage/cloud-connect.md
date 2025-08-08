@@ -32,9 +32,9 @@ Each cloud connected service has its own licensing and payment requirements.
 :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 :::
 
-:::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
+:::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
 :::{dropdown} Are more services going to be available with Cloud Connect?
