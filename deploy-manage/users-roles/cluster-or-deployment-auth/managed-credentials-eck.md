@@ -99,4 +99,4 @@ For more information, refer to [External authentication](/deploy-manage/users-ro
 
 ECK facilitates file-based role management through Kubernetes secrets containing the roles specification. Alternatively, you can use the Role management API or the Role management UI in {{kib}}.
 
-Refer to [Managing custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles) for details and [ECK based examples](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file).
+Refer to [Managing custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles) for details and ECK based examples.
