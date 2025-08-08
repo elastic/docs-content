@@ -39,8 +39,13 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 3. Click **Add Cloud Security Posture Management (CSPM)**.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
-6. Click **Advanced options**, then select **Agentless (BETA)**.
-7. Next, you’ll need to authenticate to AWS. Two methods are available:
+6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
+
+:::{include} _snippets/cspm-namespace.md
+:::
+
+7. Under **Deployment options** select **Agentless**.
+8. Next, you’ll need to authenticate to AWS. Two methods are available:
 
     1. Option 1: Direct access keys/CloudFormation (Recommended). Under **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
@@ -50,7 +55,7 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 
     2. Option 2: Temporary keys. To authenticate using temporary keys, refer to the instructions for [temporary keys](/solutions/security/cloud/get-started-with-cspm-for-aws.md#cspm-use-temp-credentials).
 
-8. Once you’ve selected an authentication method and provided all necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
+9. Once you’ve selected an authentication method and provided all necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
 ## Agent-based deployment [cspm-aws-agent-based]
 
@@ -62,6 +67,11 @@ You can set up CSPM for AWS either by enrolling a single cloud account, or by en
 3. Click **Add Cloud Security Posture Management (CSPM)**.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
+6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
+
+:::{include} _snippets/cspm-namespace.md
+:::
+7. Under **Deployment options** select **Agent-based**. 
 
 
 ### Set up cloud account access [cspm-set-up-cloud-access-section]

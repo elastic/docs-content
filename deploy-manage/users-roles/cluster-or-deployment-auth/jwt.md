@@ -284,7 +284,7 @@ You can relax validation of any of the time-based claims by setting `allowed_clo
 
 ## Role mapping [jwt-authorization]
 
-You can map LDAP groups to roles in the following ways:
+You can map JWT groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
 * Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).

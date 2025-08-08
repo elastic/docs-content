@@ -58,13 +58,13 @@ If automatic sidecar injection is enabled and [auto mounting of service account 
 
 ### {{es}} [k8s-service-mesh-linkerd-elasticsearch]
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elastic-linkerd
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   http:
     tls: <1>
       selfSignedCertificate:
@@ -92,13 +92,13 @@ spec:
 
 The configuration is almost identical for {{kib}} and APM Server resources.
 
-```yaml
+```yaml subs=true
 apiVersion: ...
 kind: ...
 metadata:
   name: elastic-linkerd
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: elastic-linkerd

@@ -37,14 +37,14 @@ Refer to [*Install ECK*](install.md) for more information on installation option
 
 Create an {{es}} cluster. If you are using the `Daemonset` described in the [Virtual memory](virtual-memory.md) section to set `max_map_count` you can add the `initContainer` below is also used to ensure the setting is set prior to starting {{es}}.
 
-```shell
+```shell subs=true
 cat <<EOF | kubectl apply -f -
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elasticsearch-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1
