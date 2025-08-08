@@ -38,7 +38,7 @@ Two deployment technologies are available: agentless and agent-based.
 6. In **Deployment options**, select **Agentless**.
 7. Next, you’ll need to authenticate to AWS. Two methods are available:
 
-    * Option 1: Direct access keys/CloudFormation (Recommended). In **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
+    * Option 1: Direct access keys/CloudFormation (Recommended). For **Preferred method**, select **Direct access keys**. Expand the **Steps to Generate AWS Account Credentials** section, then follow the displayed instructions to automatically create the necessary credentials using CloudFormation.
 
        ::::{note}
        If you don’t want to monitor every account in your organization, specify which to monitor using the `OrganizationalUnitIDs` field that appears after you click **Launch CloudFormation**.
