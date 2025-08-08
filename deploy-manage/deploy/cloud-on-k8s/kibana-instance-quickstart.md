@@ -15,14 +15,14 @@ To deploy a simple [{{kib}}](/get-started/the-stack.md#stack-components-kibana) 
 
 1. Specify a {{kib}} instance and associate it with your {{es}} `quickstart` cluster created previously under [Deploying an {{es}} cluster](elasticsearch-deployment-quickstart.md):
 
-    ```yaml
+    ```yaml subs=true
     cat <<EOF | kubectl apply -f -
     apiVersion: kibana.k8s.elastic.co/v1
     kind: Kibana
     metadata:
       name: quickstart
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       count: 1
       elasticsearchRef:
         name: quickstart
