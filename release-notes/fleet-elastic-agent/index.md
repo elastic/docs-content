@@ -26,6 +26,24 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.1.1 [fleet-elastic-agent-9.1.1-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.1.1-features-enhancements]
+
+**Elastic Agent**
+
+* Add k8s leader elector OTel extension. [#9065]({{agent-pull}}9065)
+
+### Fixes [fleet-elastic-agent-9.1.1-fixes]
+
+**Elastic Agent**
+
+* Do not overwrite Elasticsearch output headers from enrollment `--headers` flag. [#9199]({{agent-pull}}9199) [#9197]({{agent-issue}}9197)
+
+**Fleet Server**
+
+* Fix upgrade details `download_rate` as string handling. [#5198]({{fleet-server-pull}}5198) [#5214]({{fleet-server-pull}}5214) [#5183]({{fleet-server-pull}}5183) [#5176]({{fleet-server-pull}}5176) [#5164]({{fleet-server-issue}}5164)
+
 ## 9.1.0 [fleet-elastic-agent-9.1.0-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.1.0-features-enhancements]

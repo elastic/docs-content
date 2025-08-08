@@ -5,6 +5,7 @@ mapped_pages:
 products:
   - id: elastic-stack
 description: Explore the new features, enhancements, fixes, and deprecations for Elastic Stack 9.0+ (latest 9.1.1), Elastic Cloud Serverless, and...
+navigation_title: Release notes
 ---
 
 # Elastic release notes [elastic-release-notes]
