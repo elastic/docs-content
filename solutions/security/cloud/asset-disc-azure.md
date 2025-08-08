@@ -97,7 +97,7 @@ This method involves creating an Azure VM (or using an existing one), giving it 
 
 1. Go to the Azure portal to [create a new Azure VM](https://portal.azure.com/#create/Microsoft.VirtualMachine-ARM).
 2. Follow the setup process, and make sure you enable **System assigned managed identity** in the **Management** tab.
-3. Go to your Azure subscription list and select the subscription or management group you want to monitor with CAD.
+3. Go to your Azure subscription list and select the subscription or management group you want to monitor with Cloud Asset Discovery.
 4. Go to **Access control (IAM)**, and select **Add Role Assignment**.
 5. Select the `Reader` function role, assign access to **Managed Identity**, then select your VM.
 
