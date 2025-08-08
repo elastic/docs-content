@@ -17,7 +17,7 @@ products:
 This page explains how to set up Cloud Native Vulnerability Management (CNVM).
 
 ::::{admonition} Requirements
-* {{stack}} users: {{stack}} version 8.8 or higher and an [Enterprise subscription](https://www.elastic.co/pricing).
+* {{stack}} users: {{stack}} version 8.8 or higher and an [appropriate subscription](https://www.elastic.co/pricing) level.
 * CNVM only works in the `Default` {{kib}} space. Installing the CNVM integration on a different {{kib}} space will not work.
 * CNVM can only be deployed on ARM-based VMs.
 * You need an AWS user account with permissions to perform the following actions: run CloudFormation templates, create IAM Roles and InstanceProfiles, and create EC2 SecurityGroups and Instances.

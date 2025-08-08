@@ -19,7 +19,7 @@ For step-by-step getting started guides, refer to the following getting started 
 
 ## Requirements
 
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing) level.
 * Cloud Asset Discovery supports only the AWS, GCP, and Azure commercial cloud platforms. Government cloud platforms are not supported. To request support for other platforms, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 

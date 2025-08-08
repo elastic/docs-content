@@ -133,7 +133,7 @@ When using manual authentication to onboard at the organization level, you need 
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::<Management Account ID>:root"
+                "AWS": "arn:aws:iam::<Management Account ID>:root" <1>
             },
             "Action": "sts:AssumeRole"
         },
@@ -148,15 +148,11 @@ When using manual authentication to onboard at the organization level, you need 
 }
 ```
 
+1. Replace `<Management account ID>` in the trust policy with your AWS account ID.
+
 ::::
 
-
-   * The AWS-managed `SecurityAudit` policy.
-
-::::{important}
-You must replace `<Management account ID>` in the trust policy with your AWS account ID.
-::::
-
+* The AWS-managed `SecurityAudit` policy.
 
 * Next, for each account you want to scan in the organization, create an IAM role named `cloudbeat-asset-inventory-securityaudit` with the following policies:
 

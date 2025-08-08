@@ -19,7 +19,7 @@ This page explains how to start monitoring the security posture of your cloud as
 
 ## Requirements
 * Minimum privileges vary depending on whether you need to read, write, or manage CSPM data and integrations. Refer to [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md).
-* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
+* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require an [appropriate subscription](https://www.elastic.co/pricing) level.
 * CSPM supports only the AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. AWS GovCloud is only supported for agent-based deployments — agentless deployments do not work on this platform. Other government cloud platforms are not supported. To request support for other platforms, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 * The user who gives the CSPM integration AWS permissions must be an AWS account `admin`.
 
@@ -144,7 +144,7 @@ When using manual authentication to onboard at the organization level, you need 
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::<Management Account ID>:root"
+                "AWS": "arn:aws:iam::<Management Account ID>:root" <1>
             },
             "Action": "sts:AssumeRole"
         },
@@ -159,15 +159,10 @@ When using manual authentication to onboard at the organization level, you need 
 }
 ```
 
+1. Replace `<Management account ID>` in the trust policy with your AWS account ID.
 ::::
-
 
 * The AWS-managed `SecurityAudit` policy.
-
-::::{important}
-You must replace `<Management account ID>` in the trust policy with your AWS account ID.
-::::
-
 
 * Next, for each account you want to scan in the organization, create an IAM role named `cloudbeat-securityaudit` with the following policies:
 
@@ -183,7 +178,7 @@ You must replace `<Management account ID>` in the trust policy with your AWS acc
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::<Management Account ID>:role/cloudbeat-root"
+                "AWS": "arn:aws:iam::<Management Account ID>:role/cloudbeat-root" <1>
             },
             "Action": "sts:AssumeRole"
         }
@@ -191,11 +186,7 @@ You must replace `<Management account ID>` in the trust policy with your AWS acc
 }
 ```
 
-::::
-
-
-::::{important}
-You must replace `<Management account ID>` in the trust policy with your AWS account ID.
+1. Replace `<Management account ID>` in the trust policy with your AWS account ID.
 ::::
 
 
