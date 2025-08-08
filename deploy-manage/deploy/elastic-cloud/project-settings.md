@@ -69,6 +69,10 @@ For {{elastic-sec}} projects, edit the **Project features** to select a feature 
 
 #### Downgrading the feature tier [elasticsearch-manage-project-downgrading-the-feature-tier]
 
+:::{note}
+You cannot downgrade to EASE from any other feature tier. You can upgrade from EASE to other tiers.
+:::
+
 When you downgrade your Security project features selection from **Security Analytics Complete** to **Security Analytics Essentials**, the following features become unavailable:
 
 * All Entity Analytics features
