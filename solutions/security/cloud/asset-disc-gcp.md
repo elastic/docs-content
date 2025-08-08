@@ -22,17 +22,21 @@ This page explains how to set up the Cloud Asset Discovery integration to invent
 
 ## Set up Cloud Asset Discovery for GCP [cad-setup-gcp]
 
-You can set up Cloud Asset Discovery for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the integration, then enable cloud account access. Two deployment technologies are available: agentless and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of {{agent}} in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-gcp.md#cad-gcp-agent-based) requires you to deploy and manage {{agent}} in the cloud account you want to monitor.
+You can set up Cloud Asset Discovery for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the integration, then enable cloud account access. 
 
+Two deployment technologies are available: agentless and agent-based. 
+
+* [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
+* [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 ## Agentless deployment [cad-gcp-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `Cloud asset discovery`, then click on the result.
+2. Search for and select `Cloud asset discovery`.
 3. Click **Add Cloud Asset Discovery**.
 4. Select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-account`.
-6. Under **Deployment Options**, select **Agentless**.
+6. In **Deployment Options**, select **Agentless**.
 7. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
@@ -42,9 +46,9 @@ You can set up Cloud Asset Discovery for GCP either by enrolling a single projec
 ### Add the Cloud Asset Discovery integration [cad-add-and-name-integration-gcp]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `Cloud asset discovery`, then click on the result.
+2. Search for and select `Cloud asset discovery`.
 3. Click **Add Cloud Asset Discovery**.
-4. Under **Configure integration**, select **GCP**, then either **GCP Organization** (recommended) or **Single Project**.
+4. In **Configure integration**, select **GCP**, then either **GCP Organization** (recommended) or **Single Project**.
 5. Give your integration a name that matches the purpose or team of the GCP account you want to monitor, for example, `dev-gcp-project`.
 
 
@@ -55,13 +59,13 @@ To set up Cloud Asset Discovery for a GCP project, you need admin privileges for
 ::::
 
 
-For most users, the simplest option is to use a Google Cloud Shell script to automatically provision the necessary resources and permissions in your GCP account. This method, as well as two manual options, are described below.
+For most users, the simplest option is to use a Google Cloud Shell script to automatically provision the necessary resources and permissions in your GCP account. This method, as well as two manual options, are described next on this page.
 
 
 ## Cloud Shell script setup (recommended) [cad-set-up-cloudshell]
 
-1. Under **Setup Access**, select **Google Cloud Shell**. Enter your GCP Project ID, and for GCP Organization deployments, your GCP Organization ID.
-2. Under **Where to add this integration**:
+1. In **Setup Access**, select **Google Cloud Shell**. Enter your GCP Project ID, and for GCP Organization deployments, your GCP Organization ID.
+2. In **Where to add this integration**:
 
     1. Select **New Hosts**.
     2. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud account or accounts you want to monitor. For example, `dev-gcp-account`.
@@ -130,10 +134,10 @@ Keep the credentials JSON in a secure location; you will need it later.
 
 Provide credentials to the Cloud Asset Discovery integration:
 
-1. On the Cloud Asset Discovery integration setup screen under **Setup Access**, select **Manual**.
+1. On the Cloud Asset Discovery integration setup screen in **Setup Access**, select **Manual**.
 2. Enter your GCP **Organization ID**. Enter the GCP **Project ID** of the project where you want to provision the compute instance that will run Cloud Asset Discovery.
-3. Under **Credential**, select **Credentials JSON** and enter the value you generated earlier.
-4. Under **Where to add this integration**, select **New Hosts**.
+3. In **Credential**, select **Credentials JSON** and enter the value you generated earlier.
+4. In **Where to add this integration**, select **New Hosts**.
 5. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud account or accounts you want to monitor. For example, `dev-gcp-account`.
 6. Click **Save and continue**, then follow the instructions to install {{agent}} in your chosen GCP project.
 
@@ -187,10 +191,10 @@ Keep the credentials JSON in a secure location; you will need it later.
 
 Provide credentials to the Cloud Asset Discovery integration:
 
-1. On the Cloud Asset Discovery setup screen under **Setup Access**, select **Manual**.
+1. On the Cloud Asset Discovery setup screen in **Setup Access**, select **Manual**.
 2. Enter your GCP **Project ID**.
-3. Under **Credential**, select **Credentials JSON**, and enter the value you generated earlier.
-4. Under **Where to add this integration**, select **New Hosts**.
+3. For **Credential**, select **Credentials JSON**, and enter the value you generated earlier.
+4. For **Where to add this integration**, select **New Hosts**.
 5. Name the {{agent}} policy. Use a name that matches the purpose or team of the cloud account or accounts you want to monitor. For example, `dev-gcp-account`.
 6. Click **Save and continue**, then follow the instructions to install {{agent}} in your chosen GCP project.
 
