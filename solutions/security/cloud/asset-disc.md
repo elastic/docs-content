@@ -1,6 +1,6 @@
 ---
 applies_to:
-  stack: preview
+  stack: preview 9.1
   serverless:
     security: preview
 ---
