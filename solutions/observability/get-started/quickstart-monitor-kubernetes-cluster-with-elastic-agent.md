@@ -23,7 +23,6 @@ In this quickstart guide, you’ll learn how to quickly create the Kubernetes re
 ::::{tab-item} {{stack}}
 :sync: stack
 
-
 * A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A user with the `superuser` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
 
@@ -59,10 +58,10 @@ The installation command provided by the UI during the quickstart cannot be used
 
 ## Collect your data [_collect_your_data_2]
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack
+::::{tab-item} Elastic Stack
 :sync: stack
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
@@ -78,7 +77,7 @@ The installation command provided by the UI during the quickstart cannot be used
 
 5. Click **Explore Kubernetes cluster** to navigate to dashboards and explore your data.
 
-:::
+::::
 
 ::::{tab-item} Serverless
 :sync: serverless
@@ -117,9 +116,9 @@ The installation command provided by the UI during the quickstart cannot be used
 
 5. Click **Explore Kubernetes cluster** to navigate to dashboards and explore your data.
 
-:::
-
 ::::
+
+:::::
 
 ## Visualize your data [_visualize_your_data_2]
 
