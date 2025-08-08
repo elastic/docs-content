@@ -103,10 +103,10 @@ The installation command provided by the UI during the quickstart cannot be used
     Where:
     
     - `elastic-agent` is the name of the specific installation of the Helm chart, known as **release name**.
-    - `elastic/elastic-agent` defines the name of the Helm repository, where `elastic` corresponds to `https://helm.elastic.co/` and `elastic-agent` is the name of the Helm chart
+    - `elastic/elastic-agent` defines the name of the chart to install, using the format `<repository>/<chart-name>`.
     - {{version.stack}} is the version of the {{agent}} Helm chart to be installed.
     - `kube-system` is the namespace where {{agent}} is to be installed.
-    - `--set` adds configuration options with parameters specific to the serverless project, the acting user, and the installation method of the Helm chart.
+    - `--set` parameters add configuration values specific to the serverless project, the acting user, and the deployment method of the Helm chart.
     
        Refer to [Install standalone Elastic Agent on Kubernetes using Helm](/reference/fleet/example-kubernetes-standalone-agent-helm.md#agent-standalone-helm-example-install) for a more detailed explanation of the configuration options used.
     :::
