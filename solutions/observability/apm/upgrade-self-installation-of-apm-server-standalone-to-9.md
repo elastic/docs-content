@@ -34,7 +34,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 2. **Install the 9.0 APM Server release**
 
-    Refer to [install](/reference/fleet/get-started-apm-server-binary.md#apm-installing) to find the command that works with your system.
+    Refer to [install](/solutions/observability/apm/apm-server-binary.md#apm-installing) to find the command that works with your system.
 
 3. **Review your configuration file**
 
@@ -48,7 +48,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
     ./apm-server -e
     ```
 
-    Additional details are available in [start the APM Server](/reference/fleet/get-started-apm-server-binary.md#apm-server-starting).
+    Additional details are available in [start the APM Server](/solutions/observability/apm/apm-server-binary.md#apm-server-starting).
 
 5. When upgrading from 8.18 to 9.0, if you have 7.x indices, you need to either set the indices to `readonly`, or if reindexing, add [ILM privileges](https://www.elastic.co/guide/en/apm/guide/7.17/privileges-to-setup-beats.html#_set_up_ilm) for `reindexed-v*-apm*` indices.
 

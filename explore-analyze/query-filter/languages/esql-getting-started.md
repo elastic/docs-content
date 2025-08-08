@@ -87,10 +87,13 @@ Enter the actual {{esql}} query between the two sets of triple quotes. For examp
 POST /_query?format=txt
 {
   "query": """
-FROM sample_data
+FROM kibana_sample_data_logs
   """
 }
 ```
+:::{include} /explore-analyze/query-filter/_snippets/console-esql-autocomplete.md
+:::
+
 ::::::
 
 ::::::{tab-item} Discover
@@ -100,10 +103,7 @@ Adjust the time filter so it includes the timestamps in the sample data (October
 
 After switching to {{esql}} mode, the query bar shows a sample query. You can replace this query with the queries in this getting started guide.
 
-To make it easier to write queries, auto-complete offers suggestions with possible commands and functions:
-
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-auto-complete.png
-:alt: esql kibana auto complete
+:::{include} /explore-analyze/query-filter/_snippets/discover-esql-autocomplete.md
 :::
 
 You can adjust the editor’s height by dragging its bottom border to your liking.
