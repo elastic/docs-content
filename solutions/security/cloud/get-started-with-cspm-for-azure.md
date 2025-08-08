@@ -20,7 +20,7 @@ This page explains how to get started monitoring the security posture of your cl
 ## Requirements
 
 * Minimum privileges vary depending on whether you need to read, write, or manage CSPM data and integrations. Refer to [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md).
-* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level
+* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
 * CSPM is supported only on AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. Other government cloud platforms are not supported. To request support, [open a GitHub ticket](https://github.com/elastic/kibana/issues/new/choose).
 * The user who gives the CSPM integration permissions in Azure must be an Azure subscription `admin`.
 
