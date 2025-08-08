@@ -31,7 +31,7 @@ stack: preview 9.1
 serverless: preview
 ```
 
-ELSER on EIS enables you to use the ELSER model without using ML nodes in your infrastructure and with that, it simplifies the semantic search and hybrid search experience.
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability. 
 
 ### Private preview access
 
@@ -61,3 +61,7 @@ Performance may vary during the Technical Preview.
 
 Batches are limited to a maximum of 16 documents.
 This is particularly relevant when using the [_bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/v9/operation/operation-bulk) for data ingestion.
+
+#### Rate Limits 
+
+Rate limit for search and ingest is currently at 2000 requests per minute.

@@ -12,14 +12,14 @@ products:
 
 1. Apply the following specification to deploy Elastic Agent with the System metrics integration to harvest CPU metrics from the Agent Pods. ECK automatically configures the secured connection to an {{es}} cluster named `quickstart`, created in the [{{es}} quickstart](deploy-an-orchestrator.md).
 
-    ```yaml
+    ```yaml subs=true
     cat <<EOF | kubectl apply -f -
     apiVersion: agent.k8s.elastic.co/v1alpha1
     kind: Agent
     metadata:
       name: quickstart
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       elasticsearchRefs:
       - name: quickstart
       daemonSet:
@@ -64,9 +64,9 @@ products:
     kubectl get agent
     ```
 
-    ```sh
+    ```sh subs=true
     NAME            HEALTH   AVAILABLE   EXPECTED   VERSION   AGE
-    quickstart      green    3           3          8.16.1    15s
+    quickstart      green    3           3          {{version.stack}}    15s
     ```
 
 3. List all the Pods that belong to a given Elastic Agent specification.

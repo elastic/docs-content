@@ -50,12 +50,14 @@ The instructions differ depending on whether you’re installing on EKS or on un
 
 ### Name your integration and select a Kubernetes Deployment type [_name_your_integration_and_select_a_kubernetes_deployment_type]
 
-1. Find **Cloud Security Posture** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Add a KSPM integration**.
-3. Read the integration’s description to understand how it works. Then, click [**Add Kubernetes Security Posture Management**](https://docs.elastic.co/en/integrations/cloud_security_posture).
-4. Name your integration. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
-5. Select **EKS** from the **Kubernetes Deployment** menu. A new section for AWS credentials will appear.
+1. Navigate to the **Integrations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for `kspm`, and select the integration. Click **Add Kubernetes Security Posture Management (KSPM)**.
+3. Under **Configure integration**, select **EKS**. A new section called **Setup Access** appears.
+4. Name your integration and add a description. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
+5. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
+:::{include} _snippets/cspm-namespace.md
+:::
 
 ### Authenticate to AWS [kspm-setup-eks-auth]
 
@@ -248,14 +250,18 @@ Follow these steps to deploy the KSPM integration to unmanaged clusters. Keep in
 
 To install the integration on unmanaged clusters:
 
-1. Find **Cloud Security Posture** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Add a KSPM integration**.
-3. Read the integration’s description to understand how it works. Then, click [**Add Kubernetes Security Posture Management**](https://docs.elastic.co/en/integrations/cloud_security_posture).
-4. Name your integration. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
-5. Select **Unmanaged Kubernetes** from the **Kubernetes Deployment** menu.
-6. If you want to monitor Kubernetes clusters that aren’t yet enrolled in {{fleet}}, select **New Hosts** when choosing the {{agent}} policy.
-7. Select the {{agent}} policy where you want to add the integration.
-8. Click **Save and continue**, then **Add agent to your hosts**. The **Add agent** wizard appears and provides a DaemonSet manifest `.yaml` file with pre-populated configuration information, such as the `Fleet ID` and `Fleet URL`.
+1. Navigate to the **Integrations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for `kspm`, and select the integration. Click **Add Kubernetes Security Posture Management (KSPM)**.
+3. Under **Configure integration**, select **Self-Managed**.
+4. Name your integration and add a description. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
+5. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
+
+:::{include} _snippets/cspm-namespace.md
+:::
+
+6. Select the {{agent}} policy where you want to add the integration.
+7. Click **Save and continue**, then **Add agent to your hosts**. The **Add agent** wizard appears and provides a DaemonSet manifest `.yaml` file with pre-populated configuration information, such as the `Fleet ID` and `Fleet URL`.
+
 
 :::{image} /solutions/images/security-kspm-add-agent-wizard.png
 :alt: The KSPM integration's Add agent wizard
