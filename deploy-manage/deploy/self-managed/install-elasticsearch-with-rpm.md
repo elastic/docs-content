@@ -103,14 +103,14 @@ To download and install the {{es}} {{version.stack}} RPM, enter:
 :::
 
 :::{tab-item} Specific version
-Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
   ```sh subs=true
-  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-x86_64.rpm
-  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-x86_64.rpm.sha512
-  shasum -a 512 -c elasticsearch-<specific.version>-x86_64.rpm.sha512 <1>
-  sudo rpm --install elasticsearch-<specific.version>-x86_64.rpm
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512
+  shasum -a 512 -c elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512 <1>
+  sudo rpm --install elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
   ```
-  1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<specific.version>-x86_64.rpm: OK`.
+  1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm: OK`.
   
   :::{include} _snippets/skip-set-kernel-params.md
   :::

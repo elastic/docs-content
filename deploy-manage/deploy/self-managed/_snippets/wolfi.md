@@ -16,9 +16,9 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:{{version.stack}
 :::{tab-item} Specific version
 :sync: specific
 ```sh subs=true
-docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:<specific.version>
+docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:<SPECIFIC.VERSION.NUMBER>
 ```
-You can download and install a specific version of the {{version.stack.base | M }} stack by replacing `<specific.version>` with the version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+You can download and install a specific version of the {{stack}} by replacing `<SPECIFIC.VERSION.NUMBER>` with the version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 :::
 
 ::::

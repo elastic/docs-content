@@ -47,15 +47,16 @@ cd kibana-{{version.stack}}/ <2>
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Because {{kib}} is an {{stack}} product, you must install the same version number that's used across the stack. Replace `<SPECIFIC.VERSION.NUMBER>` with the {{stack}} version.
+For more information, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version).
 ```sh subs=true
-curl -O https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-linux-x86_64.tar.gz
-curl https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-linux-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
-tar -xzf kibana-<specific.version>-linux-x86_64.tar.gz
-cd kibana-<specific.version>/ <2>
+curl -O https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf kibana-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
+cd kibana-<SPECIFIC.VERSION.NUMBER>/ <2>
 ```
 
-1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<specific.version>-linux-x86_64.tar.gz: OK`.
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$KIBANA_HOME`.
 :::
 ::::
@@ -82,15 +83,16 @@ cd kibana-{{version.stack}}/ <2>
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Because {{kib}} is an {{stack}} product, you must install the same version number that's used across the stack. Replace `<SPECIFIC.VERSION.NUMBER>` with the {{stack}} version.
+For more information, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version).
 ```sh subs=true
-curl -O https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-darwin-x86_64.tar.gz
-curl https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
-tar -xzf kibana-<specific.version>-darwin-x86_64.tar.gz
-cd kibana-<specific.version>/ <2>
+curl -O https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf kibana-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz
+cd kibana-<SPECIFIC.VERSION.NUMBER>/ <2>
 ```
 
-1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<specific.version>-darwin-x86_64.tar.gz: OK`.
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `kibana-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz: OK`.
 2. This directory is known as `$KIBANA_HOME`.
 :::
 ::::

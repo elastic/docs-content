@@ -63,15 +63,15 @@ cd elasticsearch-{{version.stack}}/ <2>
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-linux-x86_64.tar.gz
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-linux-x86_64.tar.gz.sha512
-shasum -a 512 -c elasticsearch-<specific.version>-linux-x86_64.tar.gz.sha512 <1>
-tar -xzf elasticsearch-<specific.version>-linux-x86_64.tar.gz
-cd elasticsearch-<specific.version>/ <2>
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz.sha512
+shasum -a 512 -c elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz.sha512 <1>
+tar -xzf elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
+cd elasticsearch-<SPECIFIC.VERSION.NUMBER>/ <2>
 ```
-1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-linux-x86_64.tar.gz: OK`.
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
 :::
 ::::
@@ -98,14 +98,14 @@ cd elasticsearch-{{version.stack}}/ <2>
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 ```sh subs=true
-curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-darwin-x86_64.tar.gz
-curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
-tar -xzf elasticsearch-<specific.version>-darwin-x86_64.tar.gz
-cd elasticsearch-<specific.version>/ <2>
+curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz
+cd elasticsearch-<SPECIFIC.VERSION.NUMBER>/ <2>
 ```
-1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<specific-version>-darwin-x86_64.tar.gz: OK`.
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
 :::
 :::

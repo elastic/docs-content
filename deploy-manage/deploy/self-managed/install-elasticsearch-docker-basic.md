@@ -45,9 +45,9 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the {{stack}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
     ```sh subs=true
-    docker pull docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
 
@@ -77,18 +77,18 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace `<SPECIFIC.VERSION.NUMBER>` with it.
     $$$docker-verify-signature$$$
 
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
     ```sh subs=true
-    Verification for docker.elastic.co/elasticsearch/elasticsearch:<specific.version> --
+    Verification for docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -123,9 +123,9 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
     :::::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace `<SPECIFIC.VERSION.NUMBER>` with it.
     ```sh subs=true
-    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
 
     ::::{tip}
@@ -135,7 +135,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     {{ml-cap}} features such as [semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) require a larger container with more than 1GB of memory. If you intend to use the {{ml}} capabilities, then start the container with this command:
 
     ```sh subs=true
-    docker run --name es01 --net elastic -p 9200:9200 -it -m 6GB -e "xpack.ml.use_auto_machine_memory_percent=true" docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 6GB -e "xpack.ml.use_auto_machine_memory_percent=true" docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
 
     The command prints the `elastic` user password and an enrollment token for {{kib}}.
@@ -189,9 +189,9 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     :::
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace `<SPECIFIC.VERSION.NUMBER>` with it.
     ```sh subs=true
-    docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::
@@ -216,9 +216,9 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     :::
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace `<SPECIFIC.VERSION.NUMBER>` with it.
     ```sh subs=true
-    docker pull docker.elastic.co/kibana/kibana:<specific.version>
+    docker pull docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::
@@ -236,10 +236,10 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     :::
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace `<SPECIFIC.VERSION.NUMBER>` with it.
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:<specific.version>
+    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::
@@ -257,9 +257,9 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     :::
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace `<SPECIFIC.VERSION.NUMBER>` with it.
      ```sh subs=true
-    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:<specific.version>
+    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::

@@ -47,7 +47,15 @@ On Windows, the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime
 % link url manually set
 Download the `.zip` archive for {{es}} {{version.stack}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip)
 
-Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-{{version.stack}}`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
+Unzip it with your favorite unzip tool. This will create a folder with the following name:
+
+```text subs=true
+elasticsearch-{{version.stack}}
+```
+
+We will refer to this folder as `%ES_HOME%`. 
+
+In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
 
 ```sh subs=true
 cd C:\Program Files\elasticsearch-{{version.stack}}
@@ -57,12 +65,14 @@ cd C:\Program Files\elasticsearch-{{version.stack}}
 :::{tab-item} Specific version
 Download the `.zip` archive for the {{es}} version that you want from the [Past Releases](https://www.elastic.co/downloads/past-releases) page.
 
-Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<specific-version>`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
+Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<SPECIFIC.VERSION.NUMBER>`, where `<SPECIFIC.VERSION.NUMBER>` is the version you downloaded. We will refer to this folder as `%ES_HOME%`. 
+
+In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
 
 ```sh subs=true
-cd C:\Program Files\elasticsearch-<specific.version>
+cd C:\Program Files\elasticsearch-<SPECIFIC.VERSION.NUMBER>
 ```
-Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version you installed.
 :::
 ::::
 

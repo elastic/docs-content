@@ -59,9 +59,9 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the stack version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the {{stack}} version number you want to install. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
     ```sh subs=true
-    docker pull docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::
@@ -90,16 +90,16 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the stack version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
     ```sh subs=true
-    Verification for docker.elastic.co/elasticsearch/elasticsearch:<specific.version> --
+    Verification for docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -121,9 +121,9 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the stack version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
     ```sh subs=true
-    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::
@@ -155,9 +155,9 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled for {{es}} and replace <SPECIFIC.VERSION.NUMBER> with it.
     ```sh subs=true
-    docker pull docker.elastic.co/kibana/kibana:<specific.version>
+    docker pull docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::
@@ -176,10 +176,10 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:<specific.version>
+    cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::
@@ -197,9 +197,9 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
     ```sh subs=true
-    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:<specific.version>
+    docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     ```
     :::
     ::::
@@ -262,12 +262,12 @@ services:
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{kib}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 ```yaml subs=true
 version: '2'
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:<specific.version>
+    image: docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
 ```
@@ -291,10 +291,10 @@ docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
 ```sh subs=true
-docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:<specific.version> bin/kibana-keystore create
-docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:<specific.version> bin/kibana-keystore add test_keystore_setting
+docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER> bin/kibana-keystore create
+docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER> bin/kibana-keystore add test_keystore_setting
 ```
 :::
 ::::
@@ -342,12 +342,12 @@ services:
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
 ```yaml subs=true
 version: '2'
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:<specific.version>
+    image: docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     environment:
       SERVER_NAME: kibana.example.org
       ELASTICSEARCH_HOSTS: '["<ELASTICSEARCH_HOST_URL_01>:9200","<ELASTICSEARCH_HOST_URL_02>:9200","<ELASTICSEARCH_HOST_URL_03>:9200"]'

@@ -45,7 +45,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
     :group: docker
     :::{tab-item} Latest
     :sync: latest
-    Set the stack version to the current {{es}} {{version.stack}} version. 
+    Set the stack version to the current {{stack}} version. 
     ```txt subs=true
     ...
     # Version of Elastic products
@@ -56,11 +56,11 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
     ```txt subs=true
     ...
     # Version of Elastic products
-    STACK_VERSION=<specific.version>
+    STACK_VERSION=<SPECIFIC.VERSION.NUMBER>
     ...
     :::
     ::::

@@ -95,11 +95,12 @@ sudo dpkg -i kibana-{{version.stack}}-amd64.deb
 :::
 
 :::{tab-item} Specific version
-Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{kib}} version number you want to install. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+If you're unsure about which version to install, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version) for more information about version compatibility.
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-amd64.deb
-shasum -a 512 kibana-<specific.version>-amd64.deb <1>
-sudo dpkg -i kibana-<specific.version>-amd64.deb
+wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-amd64.deb
+shasum -a 512 kibana-<SPECIFIC.VERSION.NUMBER>-amd64.deb <1>
+sudo dpkg -i kibana-<SPECIFIC.VERSION.NUMBER>-amd64.deb
 ```
 
 1. 	Compare the SHA produced by shasum with the [published SHA](https://artifacts.elastic.co/downloads/kibana/kibana-9.0.0-amd64.deb.sha512).

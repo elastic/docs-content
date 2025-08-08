@@ -77,11 +77,11 @@ bin/elasticsearch-keystore create -p
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
-docker.elastic.co/elasticsearch/elasticsearch:<specific.version> \
+docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> \
 bin/elasticsearch-keystore create -p
 ```
 :::
@@ -105,11 +105,11 @@ my.other.secure.setting
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
-docker.elastic.co/elasticsearch/elasticsearch:<specific.version> \
+docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> \
 bin/elasticsearch-keystore \
 add my.secure.setting \
 my.other.secure.setting
@@ -141,9 +141,9 @@ COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsea
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 ```sh subs=true
-FROM docker.elastic.co/elasticsearch/elasticsearch:<specific.version>
+FROM docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
 COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
 ```
 :::

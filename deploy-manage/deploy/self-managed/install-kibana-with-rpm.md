@@ -84,15 +84,16 @@ sudo rpm --install kibana-{{version.stack}}-x86_64.rpm
 :::
 
 :::{tab-item} Specific version
-Replace `<specific.version>` with the {{kib}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{kib}} version number you want to install. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+If you're unsure about which version to install, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version) for more information about version compatibility.
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-x86_64.rpm
-wget https://artifacts.elastic.co/downloads/kibana/kibana-<specific.version>-x86_64.rpm.sha512
-shasum -a 512 -c kibana-<specific.version>-x86_64.rpm.sha512 <1>
-sudo rpm --install kibana-<specific.version>-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512
+shasum -a 512 -c kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512 <1>
+sudo rpm --install kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
 ```
 
-1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-<specific.version>-x86_64.rpm: OK`.
+1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm: OK`.
 :::
 ::::
 

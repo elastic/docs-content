@@ -115,14 +115,14 @@ sudo dpkg -i elasticsearch-{{version.stack}}-amd64.deb
 :::
 
 :::{tab-item} Specific version
-Replace `<specific.version>` with the {{es}} version number you want. For example, you can replace `<specific.version>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-amd64.deb
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<specific.version>-amd64.deb.sha512
-shasum -a 512 -c elasticsearch-<specific.version>-amd64.deb.sha512 <1>
-sudo dpkg -i elasticsearch-<specific.version>-amd64.deb
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-amd64.deb
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-amd64.deb.sha512
+shasum -a 512 -c elasticsearch-<SPECIFIC.VERSION.NUMBER>-amd64.deb.sha512 <1>
+sudo dpkg -i elasticsearch-<SPECIFIC.VERSION.NUMBER>-amd64.deb
 ```
-1. Compares the SHA of the downloaded Debian package and the published checksum, which should output `elasticsearch-<specific-version>-amd64.deb: OK`.
+1. Compares the SHA of the downloaded Debian package and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-amd64.deb: OK`.
 :::
 ::::
 
