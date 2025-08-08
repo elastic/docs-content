@@ -36,13 +36,13 @@ kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | 
 
 If your prefer to manage all users via SSO, for example using [SAML Authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) or OpenID Connect, you can disable the default `elastic` superuser by setting the `auth.disableElasticUser` field in the {{es}} resource to `true`:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elasticsearch-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   auth:
     disableElasticUser: true
   nodeSets:
@@ -77,17 +77,17 @@ This command regenerates auto-generated credentials of **all** {{stack}} applica
 
 {{eck}} provides functionality to facilitate custom user creation through various authentication realms. You can create users using the native realm, file realm, or external authentication methods.
 
+### File realm
+
+ECK supports creating users through Kubernetes secrets referenced in the {{es}} resource. These secrets can contain either file realm content or standard authentication credentials with a username and password.
+
+For more information, refer to [File-based user authentication > Add users](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#add-users), and check the ECK examples.
+
 ### Native realm
 
 You can create custom users in the {{es}} native realm using {{es}} user management APIs or {{kib}}.
 
 Refer to [Native user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) for more details.
-
-### File realm
-
-Custom users can also be created by providing the desired file realm content or a username and password in Kubernetes secrets, referenced in the {{es}} resource.
-
-For more information, refer to [File-based user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).
 
 ### External authentication realms
 
@@ -97,6 +97,6 @@ For more information, refer to [External authentication](/deploy-manage/users-ro
 
 ## Creating custom roles
 
-Roles can be specified using the Role management API, or the Role management UI in {{kib}}. Additionally, file-based role management can be achieved by referencing Kubernetes secrets containing the roles specification.
+ECK facilitates file-based role management through Kubernetes secrets containing the roles specification. Alternatively, you can use the Role management API or the Role management UI in {{kib}}.
 
-Refer to [Managing custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles) for details and examples.
+Refer to [Managing custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles) for details and [ECK based examples](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file).
