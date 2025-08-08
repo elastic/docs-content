@@ -80,3 +80,6 @@ $$$delete-desired-balance-request-example$$$
 DELETE /_internal/desired_balance
 ```
 
+::::{note}
+If your deployment runs on an orchestrating platform such as {{ech}}, {{ece}}, or {{eck}}, the desired balance can only be reset by a user with operator privileges. Refer to [operator privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) for more information.
+::::

@@ -7,8 +7,6 @@ toc:
   - file: deployment-models.md
     children:
       - file: fleet-server.md
-      - file: get-started-managed-apm-server.md
-      - file: get-started-apm-server-binary.md
       - file: add-fleet-server-cloud.md
       - file: add-fleet-server-on-prem.md
       - file: add-fleet-server-mixed.md
