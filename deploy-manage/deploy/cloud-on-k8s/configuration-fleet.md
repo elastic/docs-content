@@ -175,13 +175,13 @@ Depending on the use case, {{agent}} may need to be deployed as a [Deployment](h
 
 Similarly, you can set the [update strategy](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/) when deploying as a DaemonSet. This allows you to control the rollout speed for new configuration by modifying the `maxUnavailable` setting:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     strategy:
       type: RollingUpdate
@@ -197,13 +197,13 @@ Refer to [Set compute resources for Beats and Elastic Agent](manage-compute-reso
 
 Some {{agent}} features, such as the [{{k8s}} integration](https://epr.elastic.co/package/kubernetes/0.2.8/), require that Agent Pods interact with {{k8s}} APIs. This functionality requires specific permissions. Standard {{k8s}} [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow API interactions:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: elasticsearch-sample
   daemonSet:
