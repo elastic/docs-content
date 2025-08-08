@@ -43,8 +43,13 @@ Download and install the archive for Linux or MacOS.
 
 ### Linux [install-linux]
 
-The Linux archive for {{es}} {{version.stack}} can be downloaded and installed as follows:
+The Linux archive for {{es}} can be downloaded and installed as follows:
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
+To download and install the {{es}} {{version.stack}} archive, enter:
 ```sh subs=true
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-linux-x86_64.tar.gz
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-linux-x86_64.tar.gz.sha512
@@ -52,32 +57,66 @@ shasum -a 512 -c elasticsearch-{{version.stack}}-linux-x86_64.tar.gz.sha512 <1>
 tar -xzf elasticsearch-{{version.stack}}-linux-x86_64.tar.gz
 cd elasticsearch-{{version.stack}}/ <2>
 ```
-
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
+:::
 
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+```sh subs=true
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz.sha512
+shasum -a 512 -c elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz.sha512 <1>
+tar -xzf elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
+cd elasticsearch-<SPECIFIC.VERSION.NUMBER>/ <2>
+```
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz: OK`.
+2. This directory is known as `$ES_HOME`.
+:::
+::::
 
 
 ### MacOS [install-macos]
 
-The MacOS archive for {{es}} {{version.stack}} can be downloaded and installed as follows:
+The MacOS archive for {{es}} can be downloaded and installed as follows:
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
+To download and install the {{es}} {{version.stack}} archive, enter:
 ```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz
 curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
 tar -xzf elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz
 cd elasticsearch-{{version.stack}}/ <2>
 ```
-
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-darwin-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+```sh subs=true
+curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz
+cd elasticsearch-<SPECIFIC.VERSION.NUMBER>/ <2>
+```
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz: OK`.
+2. This directory is known as `$ES_HOME`.
+:::
+:::
+::::
 
 ::::{admonition} macOS Gatekeeper warnings
 :class: important
 
 Apple’s rollout of stricter notarization requirements affected the notarization of the {{version.stack}} {{es}} artifacts. If macOS displays a dialog when you first run {{es}} that interrupts it, then you need to take an action to allow it to run.
 
-To prevent Gatekeeper checks on the {{es}} files, run the following command on the downloaded .tar.gz archive or the directory to which was extracted:
+To prevent Gatekeeper checks on the {{es}} files, run the following command on the downloaded `.tar.gz` archive or the directory to which it was extracted:
 
 ```sh
 xattr -d -r com.apple.quarantine <archive-or-directory>
