@@ -20,6 +20,8 @@ The `file` realm is useful as a fallback or recovery realm. For example in cases
 
 You can configure only one file realm on {{es}} nodes.
 
+Refer to [enabling a file realm user for recovery](https://www.youtube.com/watch?v=sueO7sz1buw) for a video walkthrough. 
+
 ::::{important}
 * In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this.
 * You can't add or manage users in the `file` realm using the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security), or using the {{kib}} **Management > Security > Users** page.
