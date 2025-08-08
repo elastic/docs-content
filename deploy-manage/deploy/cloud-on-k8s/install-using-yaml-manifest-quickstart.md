@@ -53,7 +53,6 @@ To deploy the ECK operator:
     customresourcedefinition.apiextensions.k8s.io/beats.beat.k8s.elastic.co created
     customresourcedefinition.apiextensions.k8s.io/elasticmapsservers.maps.k8s.elastic.co created
     customresourcedefinition.apiextensions.k8s.io/elasticsearches.elasticsearch.k8s.elastic.co created
-    customresourcedefinition.apiextensions.k8s.io/enterprisesearches.enterprisesearch.k8s.elastic.co created
     customresourcedefinition.apiextensions.k8s.io/kibanas.kibana.k8s.elastic.co created
     customresourcedefinition.apiextensions.k8s.io/logstashes.logstash.k8s.elastic.co created
     ```
