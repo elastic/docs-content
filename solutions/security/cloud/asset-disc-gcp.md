@@ -11,11 +11,12 @@ applies_to:
 
 This page explains how to set up the Cloud Asset Discovery integration to inventory assets in GCP.
 
-::::{admonition} Requirements
+## Requirements 
+
 * The user who gives the integration GCP permissions must be a GCP project `admin`.
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* The Cloud Asset Discovery integration is supported only on GCP, not Google Public Sector. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
-::::
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is supported only on GCP, not Google Public Sector. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
+
 
 
 

@@ -11,17 +11,18 @@ applies_to:
 
 This page explains how to set up the Cloud Asset Discovery integration to inventory assets in Azure.
 
-::::{admonition} Requirements
+
+## Requirements
+
 * The user who gives the Cloud Asset Discovery integration permissions in Azure must be an Azure subscription `admin`.
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
-* The Cloud Asset Discovery integration is supported only on Azure, not on Azure Government. [Click here to request support](https://github.com/elastic/kibana/issues/new/choose).
-::::
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require the [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is supported only on Azure, not on Azure Government. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 
 
 ## Set up Cloud Asset Discovery for Azure [cad-setup-azure]
 
-You can set up Cloud Asset Discovery for Azure by by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, you will first add the Cloud Asset Discovery integration, then enable cloud account access. Two deployment technologies are available: agentless and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+You can set up Cloud Asset Discovery for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, you will first add the Cloud Asset Discovery integration, then enable cloud account access. Two deployment technologies are available: agentless and agent-based. [Agentless deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 
 ## Agentless deployment [cad-azure-agentless]
@@ -97,7 +98,7 @@ This method involves creating an Azure VM (or using an existing one), giving it 
 
 After assigning the role:
 
-1. Return to the **Add Cloud Asset Management** page in {{kib}}.
+1. Return to the **Add Cloud Asset Discovery** page in {{kib}}.
 2. Under **Configure integration**, select **Azure**. Under **Setup access**, select **Manual**.
 3. Under **Where to add this integration**, select **New hosts**.
 4. Click **Save and continue**, then follow the instructions to install {{agent}} on your Azure VM.

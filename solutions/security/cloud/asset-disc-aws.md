@@ -11,11 +11,11 @@ applies_to:
 
 This page explains how to set up the Cloud Asset Discovery integration to inventory assets in AWS.
 
-::::{admonition} Requirements
+## Requirements
 * The user who gives the Cloud Asset Discovery integration AWS permissions must be an AWS account `admin`.
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
 * The Cloud Asset Discovery integration supports only the AWS commercial cloud platform. AWS GovCloud is not supported. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
-::::
+
 
 
 

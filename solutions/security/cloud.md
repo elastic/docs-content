@@ -34,9 +34,9 @@ Allows you to identify configuration risks in the various components that make u
 ## Cloud Asset Discovery [_asset_discovery_cad]
 
 ```{applies_to}
-stack: beta 9.1
+stack: preview 9.1
 serverless:
-  security: beta
+  security: preview
 ```
 
 Creates an up-to-date, unified inventory of your cloud resources from AWS, GCP, and Azure. Once you connect your cloud accounts, this integration automatically finds and lists your cloud services and assets, such as:

@@ -5,17 +5,23 @@ applies_to:
     security: preview
 ---
 
-# Cloud asset discovery
+# Cloud Asset Discovery
 
 The Cloud Asset Discovery integration creates an up-to-date, unified inventory of your cloud resources from AWS, GCP, and Azure.
 
-This feature currently supports agentless and agent-based deployments on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. For step-by-step getting started guides, refer to [Get started with Cloud Asset Discovery for AWS](/solutions/security/cloud/asset-disc-aws.md), [Get started with Cloud Asset Discovery for GCP](/solutions/security/cloud/asset-disc-gcp.md), or [Get started with Cloud Asset Discovery for Azure](/solutions/security/cloud/asset-disc-azure.md).
+This feature currently supports agentless and agent-based deployments on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. 
 
-::::{admonition} Requirements
-* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require an [Enterprise subscription](https://www.elastic.co/pricing).
+For step-by-step getting started guides, refer to the following getting started guides:
+
+* [Cloud Asset Discovery for AWS](/solutions/security/cloud/asset-disc-aws.md)
+* [Cloud Asset Discovery for GCP](/solutions/security/cloud/asset-disc-gcp.md)
+* [Cloud Asset Discovery for Azure](/solutions/security/cloud/asset-disc-azure.md).
+
+## Requirements
+
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
 * Cloud Asset Discovery supports only the AWS, GCP, and Azure commercial cloud platforms. Government cloud platforms are not supported. To request support for other platforms, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
-::::
 
 ## How Cloud Asset Discovery works [cad-how-it-works]
 
