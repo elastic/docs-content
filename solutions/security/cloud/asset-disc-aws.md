@@ -69,7 +69,7 @@ For most use cases, the simplest option is to use AWS CloudFormation to automati
 
 ### CloudFormation (recommended) [cad-aws-set-up-cloudformation]
 
-1. In the **Add Cloud Asset Discovery integration** menu, in **Setup Access**, select **CloudFormation**.
+1. From the **Add Cloud Asset Discovery integration** menu, in **Setup Access**, select **CloudFormation**.
 2. In a new browser tab or window, log in as an admin to the AWS account or organization you want to onboard.
 3. Return to your {{kib}} tab. Click **Save and continue** at the bottom of the page.
 4. Review the information, then click **Launch CloudFormation**.
@@ -172,7 +172,7 @@ You must replace `<Management account ID>` in the trust policy with your AWS acc
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::<Management Account ID>:role/cloudbeat-asset-inventory-root"
+                "AWS": "arn:aws:iam::<Management Account ID>:role/cloudbeat-asset-inventory-root" <1>
             },
             "Action": "sts:AssumeRole"
         }
@@ -180,13 +180,9 @@ You must replace `<Management account ID>` in the trust policy with your AWS acc
 }
 ```
 
+
+1. Replace `<Management account ID>` in this trust policy with your AWS account ID.
 ::::
-
-
-::::{important}
-You must replace `<Management account ID>` in the trust policy with your AWS account ID.
-::::
-
 
 After creating the necessary roles, authenticate using one of the manual authentication methods.
 

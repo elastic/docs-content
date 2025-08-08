@@ -136,7 +136,7 @@ Wait for the confirmation that {{kib}} received data from your new integration. 
 
 Before using this method, you must have set up a [Microsoft Entra application and service principal that can access resources](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in).
 
-1. On the **Add Cloud Asset Discovery integration** page, in **Setup access**, select **Manual**.
+1. From the **Add Cloud Asset Discovery integration** page, in **Setup access**, select **Manual**.
 2. For **Preferred manual method**, select **Service principal with client certificate**.
 3. Go to the **Registered apps** section of [Microsoft Entra ID](https://ms.portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps).
 4. Click on **New Registration**, name your app and click **Register**.
