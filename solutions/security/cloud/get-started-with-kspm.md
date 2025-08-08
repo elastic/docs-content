@@ -56,9 +56,8 @@ The instructions differ depending on whether you’re installing on EKS or on un
 4. Name your integration and add a description. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
 5. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
-   ```{Namespaces}
-   Using a namespace can help you organize your data, for example you query data from a particular namespace, or filter the Cloud Security dashboard based on namespace. Do not try to use data stream namespaces to manage data access within your organization — this is ineffective because the default findings index includes data from all namespaces (`logs-findings*`). Use [document-level security](elasticsearch://reference/search-connectors/document-level-security.md) instead.
-   ```
+:::{include} _snippets/reusable-snippet.md
+:::
 
 ### Authenticate to AWS [kspm-setup-eks-auth]
 
@@ -257,9 +256,8 @@ To install the integration on unmanaged clusters:
 4. Name your integration and add a description. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
 5. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
-   ```{Namespaces}
-   Using a namespace can help you organize your data, for example you query data from a particular namespace, or filter the Cloud Security dashboard based on namespace. Do not try to use data stream namespaces to manage data access within your organization — this is ineffective because the default findings index includes data from all namespaces (`logs-findings*`). Use [document-level security](elasticsearch://reference/search-connectors/document-level-security.md) instead.
-   ```
+:::{include} _snippets/reusable-snippet.md
+:::
 
 6. Select the {{agent}} policy where you want to add the integration.
 7. Click **Save and continue**, then **Add agent to your hosts**. The **Add agent** wizard appears and provides a DaemonSet manifest `.yaml` file with pre-populated configuration information, such as the `Fleet ID` and `Fleet URL`.
