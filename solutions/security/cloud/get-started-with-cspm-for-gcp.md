@@ -41,7 +41,7 @@ You can set up CSPM for GCP either by enrolling a single project, or by enrollin
 5. Give your integration a name and description that match the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-account`.
 6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
-:::{include} _snippets/reusable-snippet.md
+:::{include} _snippets/cspm-namespace.md
 :::
 7. Under **Deployment Options**, select **Agentless**.
 8. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
@@ -59,7 +59,7 @@ You can set up CSPM for GCP either by enrolling a single project, or by enrollin
 5. Give your integration a name and description that match the purpose or team of the GCP account you want to monitor, for example, `dev-gcp-project`.
 6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
-:::{include} _snippets/reusable-snippet.md
+:::{include} _snippets/cspm-namespace.md
 :::
 7. Under **Deployment options** select **Agent-based**.
 

@@ -56,7 +56,7 @@ The instructions differ depending on whether you’re installing on EKS or on un
 4. Name your integration and add a description. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
 5. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
-:::{include} _snippets/reusable-snippet.md
+:::{include} _snippets/cspm-namespace.md
 :::
 
 ### Authenticate to AWS [kspm-setup-eks-auth]
@@ -256,7 +256,7 @@ To install the integration on unmanaged clusters:
 4. Name your integration and add a description. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
 5. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
-:::{include} _snippets/reusable-snippet.md
+:::{include} _snippets/cspm-namespace.md
 :::
 
 6. Select the {{agent}} policy where you want to add the integration.

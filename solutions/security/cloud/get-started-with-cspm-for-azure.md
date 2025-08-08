@@ -41,7 +41,7 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 5. Give your integration a name and description that match the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
 6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
-:::{include} _snippets/reusable-snippet.md
+:::{include} _snippets/cspm-namespace.md
 :::
 
 7. Under **Deployment options**, select **Agentless**.
@@ -60,7 +60,7 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CSPM-dev-1`.
 6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
 
-:::{include} _snippets/reusable-snippet.md
+:::{include} _snippets/cspm-namespace.md
 :::
 7. Under **Deployment options** select **Agent-based**.
 
