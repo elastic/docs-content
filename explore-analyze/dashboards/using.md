@@ -167,16 +167,16 @@ The available actions can vary depending on the panel you're inspecting.
 
 #### View and download the data in visualizations
 
-This action is possible for all charts created using **Lens** or {{esql}}. It is not available on other types of panels, such as **Maps** or **Vega** visualizations.
+This action is possible for all charts created using **Lens** or {{esql}}. It is not available for other types of panels, such as **Maps** or **Vega** visualizations.
 
 1. Open the panel menu and select **Inspect**.
 1. Open the **View** dropdown, then select **Data**.
 1. If you'd like to download the data, select **Download CSV**, then select the format type from the dropdown:
 
     * **Formatted CSV**: Contains human-readable dates and numbers.
-    * **Raw CSV**: Best used for computer use.
+    * **Raw CSV**: Formatted for computer use.
 
-        When you download visualization panels with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
+        When you download a visualization panel with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
 
 #### View the requests that collect the data
 
