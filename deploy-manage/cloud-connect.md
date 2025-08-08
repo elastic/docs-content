@@ -9,7 +9,7 @@ navigation_title: Cloud Connect
 
 # Cloud Connect
 
-Cloud Connect enables you to use {{ecloud}} services in your self-managed cluster without having to install and maintain their infrastructure yourself. In this way, you can get faster access to new features while significantly reducing your operational overhead.
+Cloud Connect enables you to use {{ecloud}} services in your ECE, ECK, or self-managed cluster without having to install and maintain their infrastructure yourself. In this way, you can get faster access to new features while significantly reducing your operational overhead.
 
 AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
 
@@ -25,8 +25,6 @@ Find answers to your questions about Cloud Connect.
 
 :::{dropdown} Does using Cloud Connect require additional payment?
 
-$$$cc-payment$$$
-
 Each cloud connected service has its own licensing and payment requirements. 
 
 :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
@@ -38,8 +36,6 @@ Each cloud connected service has its own licensing and payment requirements.
 :::
 
 :::{dropdown} Are more services going to be available with Cloud Connect?
-
-$$$cc-more-services$$$
 
 Yes. AutoOps is the first of many cloud connected services to come. The next planned service is the Elastic Inference Service (EIS), which will provide GPU-powered inference for use cases like semantic search and text embeddings.
 :::

@@ -9,7 +9,7 @@ navigation_title: Troubleshooting
 
 # AutoOps for self-managed clusters troubleshooting
 
-Learn about issues that might come up when using AutoOps with your self-managed cluster.
+Learn about issues that might come up when connecting your clusters and using AutoOps.
 
 ## Troubleshoot issues
 
@@ -27,7 +27,7 @@ Use this guide to troubleshoot any issues you may encounter.
 Refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md) for instructions.
 :::
 
-:::{dropdown} My self-managed cluster was disconnected from {{ecloud}} and I want to reconnect it.
+:::{dropdown} My cluster was disconnected from {{ecloud}} and I want to reconnect it.
 
 If the cluster was disconnected by one of the users in your Cloud organization, you can repeat the [installation process](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) to reconnect. If not, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
@@ -43,7 +43,7 @@ If an error appears on the screen, follow the suggestion in the error message an
 
 ## Potential errors
 
-The following table shows the errors you might encounter if something goes wrong while you set up and use AutoOps for self-managed clusters.
+The following table shows the errors you might encounter if something goes wrong while you set up and use AutoOps on your clusters.
 
 | Error code | Error message | Description |
 | :--- | :--- | :--- |

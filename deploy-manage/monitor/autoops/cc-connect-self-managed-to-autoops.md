@@ -4,10 +4,10 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: Connect your self-managed cluster
+navigation_title: Connect your cluster
 ---
 
-# Connect your self-managed cluster to AutoOps
+# Connect your cluster to AutoOps
 
 To use AutoOps with your ECE, ECK, or self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
 
@@ -94,7 +94,7 @@ Select one of the following methods to install {{agent}}:
 -->
 
 :::{important} 
-Using AutoOps for your self-managed cluster requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
+Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
 :::
 
 ### Configure agent
@@ -156,7 +156,7 @@ With this authentication method, you need to create an API key to grant access t
 
 With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with the these privileges:
 
-* (Recommended) On your self-managed cluster, go to **Developer tools** from the navigation menu. In **Console**, run the following command:
+* (Recommended) From your {{ecloud}} home page, select a deployment and go to **Developer tools**. In **Console**, run the following command:
 ```js
 POST /_security/role/autoops
 {
@@ -218,7 +218,7 @@ The wizard will generate an installation command based on your configuration. De
 -->
 
 :::{tip}
-To ensure optimum resource usage, we recommend installing the agent on a different machine from the one where your self-managed cluster is running.
+To ensure optimum resource usage, we recommend installing the agent on a different machine from the one where your cluster is running.
 :::
 
 Complete the following steps to run the command:
@@ -257,7 +257,7 @@ Learn more about [AutoOps](/deploy-manage/monitor/autoops.md).
 
 ## Access AutoOps
 
-After you've completed the setup, you can access AutoOps for your self-managed cluster at any time.
+After you've completed the setup, you can access AutoOps for your cluster at any time.
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. In the **Connected clusters** section, locate the cluster you want to work on.
@@ -265,13 +265,13 @@ After you've completed the setup, you can access AutoOps for your self-managed c
 
 ## Connect additional clusters
 
-To connect more self-managed clusters, we recommend repeating the steps to [connect to AutoOps](#connect-to-autoops).
+To connect more clusters, we recommend repeating the steps to [connect to AutoOps](#connect-to-autoops).
 
 You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}.
 
 ## Disconnect a cluster
 
-Complete the following steps to disconnect your self-managed cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
+Complete the following steps to disconnect your cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. In the **Connected clusters** section, locate the cluster you want to disconnect.
