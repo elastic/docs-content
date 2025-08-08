@@ -9,18 +9,18 @@ navigation_title: FAQ
 
 # AutoOps for self-managed clusters FAQ
 
-Find answers to your questions about AutoOps for self-managed clusters.
+Find answers to your questions about AutoOps for ECE, ECK, and self-managed clusters.
 
-:::{dropdown} Why should I use AutoOps for my self-managed cluster?
+:::{dropdown} Why should I use AutoOps for my clusters?
 
 AutoOps simplifies the operation of your {{es}} clusters by providing real-time monitoring, performance insights, and issue detection. It helps you identify and resolve problems like ingestion bottlenecks and unbalanced shards, reducing manual effort and preventing performance issues. 
 
 When you need support, AutoOps gives the Elastic team real-time visibility into your cluster, leading to faster resolutions. 
 
-Using AutoOps for your self-managed cluster lets you access all these features without the operational overhead of managing their infrastructure.
+Using AutoOps for your ECE, ECK, and self-managed clusters lets you access all these capabilities without the operational overhead of managing their infrastructure.
 :::
 
-:::{dropdown} Does AutoOps for self-managed clusters require additional payment?
+:::{dropdown} Does this feature require additional payment?
 
 :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 :::
@@ -37,9 +37,17 @@ AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.c
 You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment.
 :::
 
-:::{dropdown} Can I use AutoOps for self-managed clusters if my environment is air-gapped?
+:::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
+:::
+
+:::{dropdown} Can I use AutoOps for my clusters if my environment is air-gapped?
 
 Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
+:::
+
+:::{dropdown} Can I use macOS to install {{agent}} for this feature?
+
+macOS is not a supported platform for installing {{agent}} and connecting your clusters to AutoOps.
 :::
 
 :::{dropdown} Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?

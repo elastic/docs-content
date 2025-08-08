@@ -38,9 +38,14 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
-5. Give your integration a name that matches the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
-6. Click **Advanced options**, then select **Agentless (BETA)**.
-7. Next, you’ll need to authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
+5. Give your integration a name and description that match the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
+6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
+
+:::{include} _snippets/cspm-namespace.md
+:::
+
+7. Under **Deployment options**, select **Agentless**.
+7. Under **Setup Access**, authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
 8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
 ## Agent-based deployment [cspm-azure-agent-based]
@@ -53,6 +58,11 @@ You can set up CSPM for Azure by by enrolling an Azure organization (management 
 3. Click **Add Cloud Security Posture Management (CSPM)**.
 4. Under **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
 5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CSPM-dev-1`.
+6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
+
+:::{include} _snippets/cspm-namespace.md
+:::
+7. Under **Deployment options** select **Agent-based**.
 
 
 ### Set up cloud account access [cspm-set-up-cloud-access-section-azure]
