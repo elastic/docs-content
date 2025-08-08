@@ -153,16 +153,16 @@ To uninstall {{agent}} and the Kubernetes resources installed with `kubectl`:
 
 To uninstall {{agent}} and the Kubernetes resources installed with Helm, run: 
 
-  ```sh
-  helm uninstall <release-name> -n <namespace> <1>
-  ```
-  1. Substitute `<release-name>` with the release name and `<namespace>` with the namespace used in the quickstart command described in the [Collect your data](#_collect_your_data_2) section.
+```sh
+helm uninstall <release-name> -n <namespace> <1>
+```
+1. Substitute `<release-name>` with the release name and `<namespace>` with the namespace used in the quickstart command described in the [Collect your data](#_collect_your_data_2) section.
 
-  If you used the default values from the quickstart, the command would be:
+If you used the default values from the quickstart, the command would be:
 
-  ```sh
-  helm uninstall elastic-agent -n kube-system
-  ```
+```sh
+helm uninstall elastic-agent -n kube-system
+```
 :::
 
 ::::
