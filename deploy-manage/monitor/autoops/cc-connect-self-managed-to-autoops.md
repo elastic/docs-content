@@ -9,7 +9,7 @@ navigation_title: Connect your self-managed cluster
 
 # Connect your self-managed cluster to AutoOps
 
-To use AutoOps with your self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your self-managed cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your ECE, ECK, or self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
 
 Complete the steps in the following subsections to connect your cluster to AutoOps. The connection process takes about 10 minutes.
 
@@ -18,8 +18,8 @@ Complete the steps in the following subsections to connect your cluster to AutoO
 Ensure your system meets the following requirements before proceeding:
 
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol).
-* You have an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active ECE, ECK, or self-managed [trial](https://cloud.elastic.co/registration).
-* The agent you install for the connection is allowed to send metrics outside your organization to {{ecloud}}.
+* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
+* The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
 ## Connect to AutoOps
 
