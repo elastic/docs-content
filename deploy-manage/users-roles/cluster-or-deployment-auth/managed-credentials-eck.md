@@ -75,6 +75,8 @@ This command regenerates auto-generated credentials of **all** {{stack}} applica
 
 ## Creating custom users
 
+{{eck}} provides functionality to facilitate custom user creation through various authentication realms. You can create users using the native realm, file realm, or external authentication methods.
+
 ### Native realm
 
 You can create custom users in the {{es}} native realm using {{es}} user management APIs or {{kib}}.
@@ -86,6 +88,12 @@ Refer to [Native user authentication](/deploy-manage/users-roles/cluster-or-depl
 Custom users can also be created by providing the desired file realm content or a username and password in Kubernetes secrets, referenced in the {{es}} resource.
 
 For more information, refer to [File-based user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).
+
+### External authentication realms
+
+You can also configure external authentication realms such as LDAP, OpenID Connect, or SAML in your ECK deployments by providing the appropriate {{es}} or {{kib}} configuration settings and any required [certificates or configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
+
+For more information, refer to [External authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md).
 
 ## Creating custom roles
 
