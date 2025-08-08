@@ -184,8 +184,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.0.5-fixes]
 * Instructs AI Assistant not to perform destructive actions [#229497]({{kib-pull}}229497).
-* Fixes service error for table column sorting [229199]({kib-pull}229199).
-* Fixes Dependencies inventory page issue where loading spinner spins indefinitely when no data exists [228094]({{kib-pull}}228094).
+* Fixes service error for table column sorting [#229199]({{kib-pull}}229199).
+* Fixes Dependencies inventory page issue where loading spinner spins indefinitely when no data exists [#228094]({{kib-pull}}228094).
 
 ## 9.0.4 [elastic-observability-9.0.4-release-notes]
 
