@@ -13,7 +13,7 @@ Cloud Connect enables you to use {{ecloud}} services in your ECE, ECK, or self-m
 
 AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
 
-### AutoOps for self-managed clusters
+### AutoOps
 
 [AutoOps](/deploy-manage/monitor/autoops.md) is a monitoring tool that helps you manage your cluster with real-time issue detection, performance recommendations, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and your usage patterns, AutoOps recommends operational and monitoring insights that deliver real savings in administration time and hardware cost. 
 
