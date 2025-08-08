@@ -14,7 +14,7 @@ The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://referenc
 
 :::{tab-item} APM agents
 
-Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to collect traces, metrics, and logs through [APM Server](/solutions/observability/apm/configure-apm-server.md).
+Use the [APM agents](/solutions/observability/apm/elastic-apm-agents.md) to collect traces, metrics, and logs through {{apm-server-or-mis}}.
 
 1. Select **Add data** from the main menu and then select **Application**.
 2. Select **Elastic APM**.

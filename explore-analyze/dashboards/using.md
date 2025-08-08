@@ -161,31 +161,46 @@ Filter the data within a specified range of time.
 
 ### View the panel data and requests [download-csv]
 
-**View the data in visualizations and the requests that collect the data:**
+Viewing the details of all requests used to build a visualization and the resulting data helps you confirm that the visualization is showing the right data and that the requests are performing as expected.
+
+The available actions can vary depending on the panel you're inspecting. 
+
+#### View and download the data in visualizations
+
+This action is possible for all charts created using **Lens** or {{esql}}. It is not available for other types of panels, such as **Maps** or **Vega** visualizations.
 
 1. Open the panel menu and select **Inspect**.
-2. View and download the panel data.
+1. Open the **View** dropdown, then select **Data**.
+1. If you'd like to download the data, select **Download CSV**, then select the format type from the dropdown:
 
-    1. Open the **View** dropdown, then click **Data**.
-    2. Click **Download CSV**, then select the format type from the dropdown:
+    * **Formatted CSV**: Contains human-readable dates and numbers.
+    * **Raw CSV**: Formatted for computer use.
 
-        * **Formatted CSV** — Contains human-readable dates and numbers.
-        * **Unformatted** — Best used for computer use.
+        When you download a visualization panel with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
 
-            When you download visualization panels with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
+#### View the requests that collect the data
 
-3. View the requests that collect the data.
+This action is possible for all visualization panels that are built based on a query, but the available information can differ based on the panel type.
 
-    1. Open the **View** dropdown, then click **Requests**.
-    2. From the dropdown, select the requests you want to view.
-    3. To view the requests in **Console**, click **Request**, then click **Open in Console**.
+1. Open the panel menu and select **Inspect**.
+1. Open the **View** dropdown, then select **Requests**.
+1. Some visualizations rely on several requests. From the dropdown, select the request you want to inspect. Several tabs with different information can appear, depending on the panel type:
+    * **Statistics**: Provides general information and statistics about the request. For example, you can check if the number of hits and query time match your expectations. If not, this may indicate an issue with the request used to build the visualization.
+    * **Clusters and shards**: Lists the {{es}} clusters and shards per cluster queried to fetch the data and shows the status of the request on each of them. With the information in this tab, you can check if the request is properly executed, especially in case of cross-cluster search.
+
+      :::{note}
+      This tab is not available for {{esql}} and Vega visualizations.
+      :::
+      
+    * **Request**: Provides a full view of the visualization's request, which you can copy or **Open in Console** to refine, if needed.
+    * **Response**: Provides a full view of the response returned by the request.
 
 
-**View the time range on specific panels:**
+#### View the time range on specific panels
 
 When a custom time range is active for a single panel, it is indicated in the panel’s header.
 
-You can view it in more details and edit it by clicking the filter.
+You can view it in more detail and edit it by clicking the filter.
 
 ### View and edit the visualization configuration
 ```{applies_to}
