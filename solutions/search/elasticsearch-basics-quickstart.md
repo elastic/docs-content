@@ -480,7 +480,7 @@ Deleting an index permanently deletes its documents, shards, and metadata.
 
 ## Learn more [full-text-filter-tutorial-learn-more]
 
-This tutorial introduced the basics of creating indices, adding data and performing basic searches with {{es}}. Following resources will help you understand {{es}} concepts better and dive into the basics of query languages for searching data:
+This tutorial introduced the basics of creating indices, adding data and performing basic searches with {{es}}. The following resources will help you understand {{es}} concepts better and dive into the basics of query languages for searching data:
 
 * [Fundamentals of Elasticsearch](../../manage-data/data-store.md)
 * [Search and filter with Query DSL](querydsl-full-text-filter-tutorial.md)
