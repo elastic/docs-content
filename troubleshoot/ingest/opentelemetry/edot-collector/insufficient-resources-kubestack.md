@@ -68,7 +68,7 @@ kubectl describe pod -n opentelemetry-operator-system opentelemetry-kube-stack-g
 
 ::::{step} Increase resource limits
 
-Edit the values.yaml file used to deploy the corresponding Helm release. For the Gateway collector, ensure horitzontal Pod autoscaling is turned on. The Gateway collector configuration should be similar to this:
+Edit the `values.yaml` file used to deploy the corresponding Helm release. For the Gateway collector, ensure horitzontal Pod autoscaling is turned on. The Gateway collector configuration should be similar to this:
 
 ```yaml
   gateway:
