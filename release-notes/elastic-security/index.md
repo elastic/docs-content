@@ -38,7 +38,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-security-9.1.2-fixes]
 * Fixes index syncing in non-default spaces [#230420]({{kib-pull}}230420).
 * Only creates a default index source if one doesn't currently exist [#229693]({{kib-pull}}229693).
-* Fixes a bug where Linux endpoint network events would fail to load if IPV6 is not supported by the system.
+* Fixes a race condition in {elastic-defend} that may occasionally result in corrupted process command lines on Windows. When this occurs, `process.command_line`, `process.args_count` and `process.args` may be incorrect, leading to false positives.
+* Due to an issue in macOS, {elastic-defend} would sometimes send network events without `user.name` populated. {elastic-defend} will now identify these events and populate `user.name` if necessary.
 
 ## 9.1.1 [elastic-security-9.1.1-release-notes]
 
