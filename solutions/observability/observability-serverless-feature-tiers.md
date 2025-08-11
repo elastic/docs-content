@@ -43,6 +43,8 @@ The following table compares features available in Observability Complete and Ob
 
 From the main navigation menu, select **Add data**. Select which logs you want to monitor and how you want to monitor them, then follow the instructions for your system.
 
+For more information, refer to [Get started with Logs Essentials](../observability/get-started/logs-essentials.md).
+
 ## Upgrade from Observability Logs Essentials to Observability Complete [obs-subscription-upgrade]
 
 :::{warning}
