@@ -223,7 +223,7 @@ This is fundamentally different from full-text search - it's a binary yes/no fil
 
 Now that you understand basic searching, explore how to control the precision of your text matches.
 
-### Include all search terms (AND logic)
+### Require all search terms (AND logic)
 
 By default, searches with match use OR logic between terms. To require ALL terms to match, use the function syntax with the `operator` parameter to specify AND logic:
 
