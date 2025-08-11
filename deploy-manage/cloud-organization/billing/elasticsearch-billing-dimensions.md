@@ -47,6 +47,10 @@ You can control costs using the following strategies:
 
     * When starting or updating a trained model deployment, [Enable adaptive resources](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources) and set the VCU usage level to **Low**.
     * When using the inference API for {{es}} or ELSER, [enable `adaptive_allocations`](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations).
+
+    ::::{note}
+    {applies_to}`serverless: ga` In {{serverless-short}}, trained model deployments scale down to zero only after 24 hours without any inference requests. After scaling up, they remain active for 5 minutes before they can scale down again. During these cooldown periods, you will continue to be billed for the active resources.
+    ::::
  
 * **Indexing Strategies:** Consider your indexing strategies and how they might impact overall VCU usage and costs:
   
