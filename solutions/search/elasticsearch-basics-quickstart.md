@@ -124,6 +124,7 @@ POST /_bulk
 { "index" : { "_index" : "books" } }
 {"name": "The Handmaids Tale", "author": "Margaret Atwood", "release_date": "1985-06-01", "page_count": 311}
 ```
+You should receive a response indicating there were no errors.
 
 ::::{dropdown} Example response
 ```console-result
@@ -248,9 +249,9 @@ View the mapping for the `books` index with the [Get mapping API](https://www.el
 ```console
 GET /books/_mapping
 ```
-
 The following response displays the mappings that were created by {{es}}.
 ::::{dropdown} Example response
+
 ```console-result
 {
   "books": {
