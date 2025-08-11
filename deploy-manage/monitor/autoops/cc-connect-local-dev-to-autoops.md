@@ -41,7 +41,7 @@ Complete the following steps to connect your local development cluster to AutoOp
     ```
 5. Follow the instructions to [Connect to AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#connect-to-autoops) with the following differences:
     * In the [Select installation method](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#select-installation-method) step, select **Docker**.
-    * In the [Configure agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#configure-agent) step, when prompted to enter your **{{es}} endpoint URL**, enter the name of your local development cluster or enter the folllowing:
+    * In the [Configure agent](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#configure-agent) step, when prompted to enter your **{{es}} endpoint URL**, enter the name of your local development cluster or enter the following:
         ```sh
         http://localhost:9200
         ```
