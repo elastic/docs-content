@@ -155,6 +155,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.0.4 [elastic-security-9.0.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.4-features-enhancements]
+* Adds the `elastic_customized_total`, `elastic_noncustomized_total`, and `is_customized` fields to snapshot telemetry schema [#222370]({{kib-pull}}222370).
 * Improves logging of fatal exceptions in {{elastic-defend}}.
 
 ### Fixes [elastic-security-9.0.4-fixes]
