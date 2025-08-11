@@ -201,7 +201,7 @@ eck: all
 ```
 You can also add file-based authentication users using [Kubernetes basic authentication secrets](https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret).
 
-A basic authentication secret can optionally contain a [`roles`](#users_roles) entry. It must contain a comma separated list of roles to be associated with the user. To create custom roles that can be referenced in this list refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file). The following example illustrates this combination:
+A basic authentication secret can optionally contain a [`roles`](#users_roles) entry. It must contain a comma separated list of roles to be associated with the user. The following example illustrates this combination:
 
 ```yaml
 apiVersion: v1
@@ -214,6 +214,10 @@ stringData:
   password: mypassword # required field for kubernetes.io/basic-auth
   roles: kibana_admin,ingest_admin  # optional, not part of kubernetes.io/basic-auth
 ```
+
+::::{tip}
+To create custom roles that can be referenced in this list refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file).
+::::
 
 You can make this file available to {{eck}} by adding it as a file realm secret:
 
