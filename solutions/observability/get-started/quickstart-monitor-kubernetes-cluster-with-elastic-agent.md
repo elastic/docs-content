@@ -13,7 +13,7 @@ products:
 
 # Quickstart: Monitor your Kubernetes cluster with {{agent}} [monitor-k8s-logs-metrics-with-elastic-agent]
 
-In this quickstart guide, you’ll learn how to quickly create the Kubernetes resources required to monitor your cluster infrastructure by using a single command to download, install, and configure {{agent}} in your Kubernetes cluster.
+In this quickstart guide, you’ll learn how to create the Kubernetes resources required to monitor your cluster infrastructure by using a single command to download, install, and configure {{agent}} in your Kubernetes cluster.
 
 ## Prerequisites [_prerequisites_2]
 
