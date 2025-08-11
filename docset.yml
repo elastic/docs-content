@@ -9,6 +9,8 @@ exclude:
   - 'raw-migrated-files/**'
 
 cross_links:
+  - apm-agent-android
+  - apm-agent-ios
   - apm-agent-dotnet
   - apm-agent-go
   - apm-agent-java
@@ -30,6 +32,8 @@ cross_links:
   - ecs-dotnet
   - ecs-logging
   - ecs-logging-go-zap
+  - ecs-logging-go-zerolog
+  - ecs-logging-go-logrus
   - ecs-logging-java
   - ecs-logging-nodejs
   - ecs-logging-php

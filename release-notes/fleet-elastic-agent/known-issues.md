@@ -17,6 +17,19 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} [Windows] {{agent}} does not process Windows security events
+
+**Applies to: {{agent}} 8.19.0, 9.1.0 (Windows only)**
+
+On August 1, 2025, a known issue was discovered where {{agent}} does not process Windows security events on hosts running Windows 10, Windows 11, and Windows Server 2022.
+
+For more information, check [Issue #45693](https://github.com/elastic/beats/issues/45693).
+
+**Workaround**
+
+No workaround is available at the moment, but a fix is expected to be available in {{agent}} 8.19.1 and 9.1.1.
+:::
+
 :::{dropdown} {{agents}} remain in an "Upgrade scheduled" state
 
 **Applies to: {{agent}} 8.18.0, 8.18.1, 8.18.2, 8.18.3, 8.18.4, 8.19.0, 9.0.0, 9.0.1, 9.0.2, 9.0.3, 9.1.0**

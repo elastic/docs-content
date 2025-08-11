@@ -797,12 +797,6 @@ toc:
   - file: upgrade.md
     children:
       - file: upgrade/plan-upgrade.md
-      - file: upgrade/orchestrator.md
-        children:
-          - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
-            children:
-              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
-          - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
       - file: upgrade/prepare-to-upgrade.md
         children:
           - file: upgrade/prepare-to-upgrade/upgrade-assistant.md      
@@ -823,6 +817,12 @@ toc:
                   - file: upgrade/deployment-or-cluster/kibana-roll-back.md
           - file: upgrade/deployment-or-cluster/enterprise-search.md   
       - file: upgrade/ingest-components.md        
+      - file: upgrade/orchestrator.md
+        children:
+          - file: upgrade/orchestrator/upgrade-cloud-enterprise.md
+            children:
+              - file: upgrade/orchestrator/re-running-the-ece-upgrade.md
+          - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
   - file: uninstall.md
     children:
       - file: uninstall/uninstall-elastic-cloud-enterprise.md
