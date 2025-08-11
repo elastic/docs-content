@@ -27,6 +27,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.1.2 [elastic-security-9.1.2-release-notes]
+
+### Features and enhancements [elastic-security-9.1.2-features-enhancements]
+* Adds Automatic Import documentation links for users in log description and the error message so that users have better access to the data types that are valid [#229375]({{kib-pull}}229375).
+
+### Fixes [elastic-security-9.1.2-fixes]
+* Fixes index syncing in non-default spaces [#230420]({{kib-pull}}230420).
+* Only creates a default index source if one doesn't currently exist [#229693]({{kib-pull}}229693).
+* Fixes a bug where Linux endpoint network events would fail to load if IPV6 is not supported by the system.
+
 ## 9.1.1 [elastic-security-9.1.1-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.1-features-enhancements]
