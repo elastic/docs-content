@@ -249,7 +249,7 @@ View the mapping for the `books` index with the [Get mapping API](https://www.el
 GET /books/_mapping
 ```
 
-The following response displays the mappings that were created by Elasticsearch.
+The following response displays the mappings that were created by {{es}}.
 ::::{dropdown} Example response
 ```console-result
 {
