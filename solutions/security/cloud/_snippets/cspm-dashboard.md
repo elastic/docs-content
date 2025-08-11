@@ -13,7 +13,7 @@ The Cloud Security Posture dashboard shows:
 * Configuration risks grouped by CIS section (security guideline category)
 
 ::::{admonition} Requirements
-* The Cloud Security Posture dashboard is available to all Elastic Cloud users. For on-prem deployments, it requires an [Enterprise subscription](https://www.elastic.co/pricing).
+* The Cloud Security Posture dashboard is available to all Elastic Cloud users. For on-prem deployments, it requires an [appropriate subscription](https://www.elastic.co/pricing) level.
 
 ::::
 
