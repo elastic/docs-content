@@ -21,8 +21,8 @@ The OpenTelemetry Kube-Stack Helm Chart deploys multiple EDOT collectors with va
 
 These symptoms are common when the Kube-Stack chart is deployed with insufficient resources:
 
-- Collector Pods in a CrashLoopBackOff/OOMKilled state.
-- Cluster or Daemon pods are unable to export data to the Gateway collector due being OOMKilled (high memory usage). 
+- Collector Pods in a `CrashLoopBackOff`/`OOMKilled` state.
+- Cluster or Daemon pods are unable to export data to the Gateway collector due being `OOMKilled` (high memory usage). 
 - Pods have logs similar to: `error	internal/queue_sender.go:128	Exporting failed. Dropping data.`
 
 ## Resolution
