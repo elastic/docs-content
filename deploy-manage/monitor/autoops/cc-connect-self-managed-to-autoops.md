@@ -212,7 +212,8 @@ The wizard will generate an installation command based on your configuration. De
 
 * Kubernetes
     * YAML
-    * Helm Chart
+    <!-- Not applicable for private preview 
+    * Helm Chart -->
 * Docker
     * Docker
     * Docker compose
