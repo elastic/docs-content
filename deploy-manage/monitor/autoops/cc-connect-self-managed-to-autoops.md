@@ -25,7 +25,7 @@ Ensure your system meets the following requirements before proceeding:
 * Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
-## Connect to AutoOps
+## Connect to AutoOps (private preview)
 
 :::{note}
 :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
