@@ -392,7 +392,7 @@ GET books/_search
 
 1. `took`: The time in milliseconds for {{es}} to execute the search
 2. `timed_out`: Indicates if the search timed out
-3. `_shards`: Information about the number of [shards](/reference/glossary/index.md) that the search was executed on and the number that succeeded
+3. `_shards`: Information about the number of [shards](/reference/glossary/index.md) that the search was performed on and the number that succeeded
 4. `hits`: Has the search results
 5. `total`: Information about the total number of matching documents
 6. `max_score`: The highest relevance score among all matching documents
