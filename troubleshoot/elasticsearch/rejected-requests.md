@@ -80,11 +80,7 @@ See [this video](https://www.youtube.com/watch?v=QuV8QqSfc0c) for a walkthrough 
 
 If {{es}} regularly rejects requests and other tasks, your cluster likely has high CPU usage or high JVM memory pressure. For tips, see [High CPU usage](high-cpu-usage.md) and [High JVM memory pressure](high-jvm-memory-pressure.md).
 
-**Workaround for semantic_text field indexing issues:** 
-
-For semantic_text field indexing issues (versions 8.19+ and 9.1+), try reducing the batch size of documents being indexed.
-
-**Resolution for semantic_text field issues:**
+**Fix for semantic_text field issues:**
 
 When working with semantic_text fields in versions 8.19+ and 9.1+:
 
