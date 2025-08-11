@@ -84,6 +84,6 @@ If {{es}} regularly rejects requests and other tasks, your cluster likely has hi
 
 When working with semantic_text fields in versions 8.19+ and 9.1+:
 
-1. First, try reducing the batch size of documents in your indexing requests.
+1. Reduce the batch size of documents in your indexing requests.
 2. If reducing batch size doesn't resolve the issue, then consider scaling up your machine resources.
 3. A last resort option is to adjust the `indexing_pressure.memory.coordinating.limit` cluster setting. The default value is 10% of the heap. Increasing this limit allows more memory to be used for coordinating operations before rejections occur. This adjustment should only be considered after exhausting other options, as setting this value too high may risk Out of Memory (OOM) errors in your cluster. A cluster restart is required for this change to take effect.
