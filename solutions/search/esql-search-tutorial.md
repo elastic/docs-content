@@ -475,5 +475,5 @@ This tutorial introduced the basics of search and filtering in {{esql}}. Buildin
 
 ### Related blog posts
 
-% TODO [[uncomment once blog is live]] - https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[ES|QL, you know for Search]: Introducing scoring and semantic search
-- [Introducing full text filtering in ES|QL](https://www.elastic.co/blog/introducing-full-text-filtering-with-esql): Overview of text filtering capabilities
+- [{{esql}}, you know for Search](https://www.elastic.co/search-labs/blog/esql-introducing-scoring-semantic-search): Introducing scoring and semantic search
+- [Introducing full text filtering in {{esql}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr): Overview of {{esql}}'s text filtering capabilities
