@@ -117,7 +117,7 @@ PUT /cooking_blog/_mapping
 }
 ```
 
-1. `analyzer`: Used for text analysis. If you don't specify it, the `standard` analyzer is used by default for `text` fields. It’s included here for demonstration purposes. To know more about analyzers, refer [Anatomy of an analyzer](https://docs-v3-preview.elastic.dev/elastic/docs-content/tree/main/manage-data/data-store/text-analysis/anatomy-of-an-analyzer).
+1. `analyzer`: Used for text analysis. If you don't specify it, the `standard` analyzer is used by default for `text` fields. It’s included here for demonstration purposes. To know more about analyzers, refer to [Anatomy of an analyzer](https://docs-v3-preview.elastic.dev/elastic/docs-content/tree/main/manage-data/data-store/text-analysis/anatomy-of-an-analyzer).
 2. `ignore_above`: Prevents indexing values longer than 256 characters in the `keyword` field. This is the default value and it’s included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene’s term byte-length limit. For more information, refer [ignore_above parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md).
 3. `description`: A field declared with both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). Such fields are called  [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md). This enables both full-text search and exact matching/filtering on the same field. If you use [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields will be created automatically. Other fields in the mapping like `author`, `category`, `tags` are also declared as multi-fields.
 
