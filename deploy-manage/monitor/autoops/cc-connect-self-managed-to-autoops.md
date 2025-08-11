@@ -4,14 +4,18 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: Connect your cluster
+navigation_title: Connect your self-managed cluster
 ---
 
-# Connect your cluster to AutoOps
+# Connect your self-managed cluster to AutoOps
 
 To use AutoOps with your ECE, ECK, or self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
 
 Complete the steps in the following subsections to connect your cluster to AutoOps. The connection process takes about 10 minutes.
+
+:::{note}
+If you have an {{es}} cluster set up for local development or testing, you can connect it to AutoOps using Docker. Refer to [](/deploy-manage/monitor/autoops/cc-connect-local-dev-to-autoops.md).
+:::
 
 ## Prerequisites
 
@@ -21,7 +25,7 @@ Ensure your system meets the following requirements before proceeding:
 * Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
-## Connect to AutoOps
+## Connect to AutoOps (private preview) [connect-to-autoops]
 
 :::{note}
 :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
@@ -86,8 +90,8 @@ This is the first step of the installation wizard. Your cluster ships metrics to
 
 Select one of the following methods to install {{agent}}:
 
-* Kubernetes
-* Docker
+* **Kubernetes**
+* **Docker**
 <!-- Not applicable for private preview
 * Linux
 * Windows
@@ -226,18 +230,18 @@ Complete the following steps to run the command:
 1. Copy the command. 
 2. Paste it into a text editor and update the placeholder values in the following environment variables:
 
-| Environment variable | Description |
-| --- | --- |
-| `AUTOOPS_OTEL_URL` | The {{ecloud}} URL to which {{agent}} ships data. The URL is generated based on the CSP and region you pick. <br> This URL shouldn't be edited. |
-| `AUTOOPS_ES_URL` | The URL {{agent}} uses to communicate with {{es}}. |
-| `ELASTICSEARCH_READ_API_KEY` | The API key for API key authentication to access the cluster. It combines the `${id}:${api_key}` values. <br> This variable shouldn't be used with `ELASTICSEARCH_READ_USERNAME` and `ELASTICSEARCH_READ_PASSWORD`. |
-| `ELASTICSEARCH_READ_USERNAME` | The username for basic authentication to access the cluster. <br> This variable should be used with `ELASTICSEARCH_READ_PASSWORD`. |
-| `ELASTICSEARCH_READ_PASSWORD` | The password for basic authentication to access the cluster. <br> This variable should be used with `ELASTICSEARCH_READ_USERNAME`. |
-| `ELASTIC_CLOUD_CONNECTED_MODE_API_KEY` | The {{ecloud}} API Key used to register the cluster. <br> This key shouldn't be edited. |
-| `AUTOOPS_TEMP_RESOURCE_ID` | The temporary ID for the current installation wizard. |
+    | Environment variable | Description |
+    | --- | --- |
+    | `AUTOOPS_OTEL_URL` | The {{ecloud}} URL to which {{agent}} ships data. The URL is generated based on the CSP and region you pick. <br> This URL shouldn't be edited. |
+    | `AUTOOPS_ES_URL` | The URL {{agent}} uses to communicate with {{es}}. |
+    | `ELASTICSEARCH_READ_API_KEY` | The API key for API key authentication to access the cluster. It combines the `${id}:${api_key}` values. <br> This variable shouldn't be used with `ELASTICSEARCH_READ_USERNAME` and `ELASTICSEARCH_READ_PASSWORD`. |
+    | `ELASTICSEARCH_READ_USERNAME` | The username for basic authentication to access the cluster. <br> This variable should be used with `ELASTICSEARCH_READ_PASSWORD`. |
+    | `ELASTICSEARCH_READ_PASSWORD` | The password for basic authentication to access the cluster. <br> This variable should be used with `ELASTICSEARCH_READ_USERNAME`. |
+    | `ELASTIC_CLOUD_CONNECTED_MODE_API_KEY` | The {{ecloud}} API Key used to register the cluster. <br> This key shouldn't be edited. |
+    | `AUTOOPS_TEMP_RESOURCE_ID` | The temporary ID for the current installation wizard. |
 
-4. Run the command from the machine where you want to install the agent. 
-5. Return to the wizard and select **I have run the command**.
+3. Run the command from the machine where you want to install the agent. 
+4. Return to the wizard and select **I have run the command**.
 
 It might take a few minutes for your cluster details to be validated and the first metrics to be shipped to AutoOps.
 

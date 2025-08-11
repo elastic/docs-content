@@ -30,6 +30,7 @@ For detailed {{es-serverless}} project rates, see the [{{es-serverless}} pricing
 * **Indexing:** The VCUs used to index incoming documents.
 * **Search:** The VCUs used to return search results, with the latency and queries per second (QPS) you require.
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities.
+* **Tokens:** The Elastic Managed LLM is charged per 1Mn Input and Output tokens. The LLM powers all AI Search features such as Playground and AI Assistant for Search, and is enabled by default.
 
 
 ## Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
@@ -43,10 +44,6 @@ You can control costs using the following strategies:
 
 * **Search Power setting:** [Search Power](../../deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying, or you can reduce provisioned resources to cut costs.
 * **Search boost window**: By limiting the number of days of [time series data](../../../solutions/search/ingest-for-search.md#elasticsearch-ingest-time-series-data) that are available for caching, you can reduce the number of search VCUs required.
-* **Machine learning trained model autoscaling:** Configure your trained model deployment to allow it to scale down to zero allocations when there are no active inference requests:
-
-    * When starting or updating a trained model deployment, [Enable adaptive resources](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-in-kibana-adaptive-resources) and set the VCU usage level to **Low**.
-    * When using the inference API for {{es}} or ELSER, [enable `adaptive_allocations`](../../autoscaling/trained-model-autoscaling.md#enabling-autoscaling-through-apis-adaptive-allocations).
  
 * **Indexing Strategies:** Consider your indexing strategies and how they might impact overall VCU usage and costs:
   
