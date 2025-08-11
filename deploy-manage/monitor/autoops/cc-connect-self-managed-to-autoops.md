@@ -4,12 +4,12 @@ applies_to:
     self:
     ece:
     eck:
-navigation_title: Connect your self-managed cluster
+navigation_title: Connect your cluster
 ---
 
-# Connect your self-managed cluster to AutoOps
+# Connect your cluster to AutoOps
 
-To use AutoOps with your self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your self-managed cluster to AutoOps in {{ecloud}}.  
+To use AutoOps with your ECE, ECK, or self-managed cluster, you first need to create an {{ecloud}} account or log in to your existing account. An installation wizard will then guide you through the steps of installing {{agent}} to send metrics from your cluster to AutoOps in {{ecloud}}.  
 
 Complete the steps in the following subsections to connect your cluster to AutoOps. The connection process takes about 10 minutes.
 
@@ -18,8 +18,8 @@ Complete the steps in the following subsections to connect your cluster to AutoO
 Ensure your system meets the following requirements before proceeding:
 
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol).
-* You have an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [free trial](https://cloud.elastic.co/registration).
-* The agent you install for the connection is allowed to send metrics outside your organization to {{ecloud}}.
+* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
+* The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
 ## Connect to AutoOps
 
@@ -27,6 +27,34 @@ Ensure your system meets the following requirements before proceeding:
 :::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
 :::
 :::
+
+The following steps describe how to connect to AutoOps during the private preview of AutoOps for self-managed clusters. 
+
+:::::{tab-set}
+:group: existing-or-new-cloud-account
+
+::::{tab-item} Existing account
+:sync: existing
+
+If you already have an {{ecloud}} account:
+1. Go to the [Cloud Connected Services](https://cloud.elastic.co/connect-cluster-services) page for private preview.
+2. Log in to your account.
+3. On the **Cloud Connected Services** page, in the **AutoOps** section, select **Connect**.
+4. Go through the installation wizard as detailed in the following sections.
+::::
+
+::::{tab-item} New account
+:sync: new
+
+If you don’t have an existing {{ecloud}} account: 
+1. Go to the [Cloud Connected Services sign up](https://cloud.elastic.co/registration?onboarding_service_type=ccm) page for private preview. 
+2. Follow the prompts on your screen to sign up for an account and create an organization.
+3. Go through the installation wizard as detailed in the following sections.
+::::
+
+:::::
+
+<!-- Not applicable for private preview. Unhide for GA.
 
 :::::{tab-set}
 :group: existing-or-new-cloud-account
@@ -37,8 +65,7 @@ Ensure your system meets the following requirements before proceeding:
 If you already have an {{ecloud}} account:
 1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On your home page, in the **Connected clusters** section, select **Connect self-managed cluster**. 
-3. On the **Connected clusters** page, select **Accept and continue**. This button only appears the first time you connect a cluster.
-4. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
+3. On the **Connect your self-managed cluster** page, in the **AutoOps** section, select **Connect**.
 ::::
 
 ::::{tab-item} New account
@@ -46,14 +73,12 @@ If you already have an {{ecloud}} account:
 
 If you don’t have an existing {{ecloud}} account: 
 1. Sign up for an account. 
-<!-- 
-Add cloud-connected marketing link to sign up when available
- -->
 2. Follow the prompts on your screen to create an organization.
 3. Go through the installation wizard as detailed in the following sections.
 ::::
 
 :::::
+-->
 
 ### Select installation method
 
@@ -63,11 +88,13 @@ Select one of the following methods to install {{agent}}:
 
 * Kubernetes
 * Docker
+<!-- Not applicable for private preview
 * Linux
 * Windows
+-->
 
 :::{important} 
-Using AutoOps for your self-managed cluster requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
+Using AutoOps for your ECE, ECK, and self-managed clusters requires a new, dedicated {{agent}}. You must install an agent even if you already have an existing one for other purposes.
 :::
 
 ### Configure agent
@@ -82,12 +109,45 @@ Depending on your selected installation method, you may have to provide the foll
 ::::{tab-item} API key
 :sync: api-key
 
-With this authentication method, you need to [create an API key](/solutions/observability/apm/grant-access-using-api-keys.md) with the following privileges to grant access to your cluster:
+With this authentication method, you need to create an API key to grant access to your cluster. Complete the following steps:
 
-| Setting | Privileges |
-    | --- | --- |
-    | Cluster privileges | `monitor`, `read_ilm`, and `read_slm` |
-    | Index privileges | Indices: `*` <br> `monitor`, `view_index_metadata`, `allow_restricted_indices: true`  |
+1. From your {{ecloud}} home page, select a deployment.
+2. Go to **Stack management** > **API keys** and select **Create API key**.
+4. In the flyout, enter a name for your key and select **User API key**.
+5. Enable **Control security privileges** and enter the following script:
+```json
+{
+ "autoops": {
+   "cluster": [
+     "monitor",
+     "read_ilm",
+     "read_slm"
+   ],
+   "indices": [
+     {
+       "names": [
+         "*"
+       ],
+       "privileges": [
+         "monitor",
+         "view_index_metadata"
+       ],
+       "allow_restricted_indices": true
+     }
+   ],
+   "applications": [],
+   "run_as": [],
+   "metadata": {},
+   "transient_metadata": {
+     "enabled": true
+   }
+ }
+}
+
+```
+5. Select **Create API key**.
+6. When prompted to copy the key, select **Beats** from the dropdown.
+7. Copy the key and save it for later. You will need it when you [install the agent](#install-agent). 
 
 ::::
 
@@ -96,7 +156,7 @@ With this authentication method, you need to [create an API key](/solutions/obse
 
 With this authentication method, you need the username and password of a user with the necessary privileges to grant access to your cluster. There are two ways to set up a user with the these privileges:
 
-* (Recommended) On your self-managed cluster, go to **Developer tools** from the navigation menu. In **Console**, run the following command:
+* (Recommended) From your {{ecloud}} home page, select a deployment and go to **Developer tools**. In **Console**, run the following command:
 ```js
 POST /_security/role/autoops
 {
@@ -152,11 +212,13 @@ The wizard will generate an installation command based on your configuration. De
 * Docker
     * Docker
     * Docker compose
+<!-- Not applicable for private preview
 * Linux
 * Windows
+-->
 
 :::{tip}
-We recommend installing the agent on a separate machine from the one where your self-managed cluster is running.
+To ensure optimum resource usage, we recommend installing the agent on a different machine from the one where your cluster is running.
 :::
 
 Complete the following steps to run the command:
@@ -183,6 +245,8 @@ If the connection is unsuccessful, an error message will appear with a possible 
 
 Sometimes, an exact reason for the failure cannot be determined. In this case, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
+To uninstall the agent, refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md).
+
 ### Launch AutoOps
 
 If the connection is successful, AutoOps will start analyzing your metrics and reporting on any issues found. Depending on the size of your cluster, this process can take up to 30 minutes. 
@@ -193,7 +257,7 @@ Learn more about [AutoOps](/deploy-manage/monitor/autoops.md).
 
 ## Access AutoOps
 
-After you've completed the setup, you can access AutoOps for your self-managed cluster at any time.
+After you've completed the setup, you can access AutoOps for your cluster at any time.
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. In the **Connected clusters** section, locate the cluster you want to work on.
@@ -201,13 +265,13 @@ After you've completed the setup, you can access AutoOps for your self-managed c
 
 ## Connect additional clusters
 
-To connect more self-managed clusters, we recommend repeating the steps to [connect to AutoOps](#connect-to-autoops).
+To connect more clusters, we recommend repeating the steps to [connect to AutoOps](#connect-to-autoops).
 
 You can use the same installation command to connect multiple clusters, but each cluster needs a separate, dedicated {{agent}}.
 
 ## Disconnect a cluster
 
-Complete the following steps to disconnect your self-managed cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
+Complete the following steps to disconnect your cluster from your Cloud organization. You need the **Organization owner** [role](/deploy-manage/monitor/autoops/cc-manage-users.md#assign-roles) to perform this action.
 
 1. Log in to [{{ecloud}}](https://cloud.elastic.co/home).
 2. In the **Connected clusters** section, locate the cluster you want to disconnect.
