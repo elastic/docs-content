@@ -9,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Full-text search and filtering with Query DSL [full-text-filter-tutorial]
+# Search and filter with Query DSL [full-text-filter-tutorial]
 
 :::{tip}
 This tutorial presents examples in Query DSL syntax. Refer to [the {{esql}} version](esql-search-tutorial.md) for the equivalent examples in {{esql}} syntax.
