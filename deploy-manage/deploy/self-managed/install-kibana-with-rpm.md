@@ -84,8 +84,7 @@ sudo rpm --install kibana-{{version.stack}}-x86_64.rpm
 :::
 
 :::{tab-item} Specific version
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{kib}} version number you want to install. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
-If you're unsure about which version to install, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version) for more information about version compatibility.
+Because {{kib}} is an {{stack}} product, you must install the same version number as the rest of your {{stack}} components. Replace `<SPECIFIC.VERSION.NUMBER>` with the version that's used across your entire stack. For example, you can use {{version.stack.base}}.
 ```sh subs=true
 wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
 wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512

@@ -59,7 +59,7 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<SPECIFIC.VERSION.NUMBER>` with the {{stack}} version number you want to install. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+    Because {{kib}} is an {{stack}} product, you must install the same version number as the rest of your {{stack}} components. Replace `<SPECIFIC.VERSION.NUMBER>` with the version that's used across your entire stack. For example, you can use {{version.stack.base}}. You'll use this same version number throughout this tutorial.
     ```sh subs=true
     docker pull docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
@@ -90,7 +90,7 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
     cosign verify --key cosign.pub docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
@@ -121,7 +121,7 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
     ```sh subs=true
     docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
@@ -155,7 +155,7 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Use the same {{stack}} version number as the Docker image you pulled for {{es}} and replace <SPECIFIC.VERSION.NUMBER> with it.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
     ```sh subs=true
     docker pull docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     ```
@@ -176,7 +176,7 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
     ```sh subs=true
     wget https://artifacts.elastic.co/cosign.pub
     cosign verify --key cosign.pub docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
@@ -197,7 +197,7 @@ This setup doesn’t run multiple {{es}} nodes by default. To create a multi-nod
 
     :::{tab-item} Specific version
     :sync: specific
-    Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
     ```sh subs=true
     docker run --name kib01 --net elastic -p 5601:5601 docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER>
     ```
@@ -262,7 +262,7 @@ services:
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{kib}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
 ```yaml subs=true
 version: '2'
 services:
@@ -291,7 +291,7 @@ docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path
 
 :::{tab-item} Specific version
 :sync: specific
-Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
 ```sh subs=true
 docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER> bin/kibana-keystore create
 docker run -it --rm -v full_path_to/config:/usr/share/kibana/config -v full_path_to/data:/usr/share/kibana/data docker.elastic.co/kibana/kibana:<SPECIFIC.VERSION.NUMBER> bin/kibana-keystore add test_keystore_setting
@@ -342,7 +342,7 @@ services:
 
 :::{tab-item} Specific version
 :sync: specific
-Use the same {{stack}} version number as the Docker image you pulled earlier and replace <SPECIFIC.VERSION.NUMBER> with it.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
 ```yaml subs=true
 version: '2'
 services:

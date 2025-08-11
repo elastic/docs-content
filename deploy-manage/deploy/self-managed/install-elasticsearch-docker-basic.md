@@ -45,7 +45,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
     :::{tab-item} Specific version
     :sync: specific
-    Replace `<SPECIFIC.VERSION.NUMBER>` with the {{stack}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the {{stack}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}. You'll use this same version number throughout this tutorial.
     ```sh subs=true
     docker pull docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
     ```
@@ -77,7 +77,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
     
     :::{tab-item} Specific version
     :sync: specific
-    Use the same {{stack}} version number as the Docker image you pulled earlier and replace `<SPECIFIC.VERSION.NUMBER>` with it.
+    Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
     $$$docker-verify-signature$$$
 
     ```sh subs=true

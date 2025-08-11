@@ -77,7 +77,7 @@ bin/elasticsearch-keystore create -p
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
@@ -105,7 +105,7 @@ my.other.secure.setting
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
 ```sh subs=true
 docker run -it --rm \
 -v full_path_to/config:/usr/share/elasticsearch/config \
@@ -141,7 +141,7 @@ COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsea
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
 ```sh subs=true
 FROM docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
 COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/

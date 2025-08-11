@@ -95,8 +95,7 @@ sudo dpkg -i kibana-{{version.stack}}-amd64.deb
 :::
 
 :::{tab-item} Specific version
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{kib}} version number you want to install. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
-If you're unsure about which version to install, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version) for more information about version compatibility.
+Because {{kib}} is an {{stack}} product, you must install the same version number as the rest of your {{stack}} components. Replace `<SPECIFIC.VERSION.NUMBER>` with the version that's used across your entire stack. For example, you can use {{version.stack.base}}.
 ```sh subs=true
 wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-amd64.deb
 shasum -a 512 kibana-<SPECIFIC.VERSION.NUMBER>-amd64.deb <1>

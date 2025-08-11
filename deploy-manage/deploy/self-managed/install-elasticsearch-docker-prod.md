@@ -142,7 +142,7 @@ docker run --rm docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}} 
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
 ```sh subs=true
 docker run --rm docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> /bin/bash -c 'ulimit -Hn && ulimit -Sn && ulimit -Hu && ulimit -Su'
 ```
@@ -191,7 +191,7 @@ docker run -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -e ENROLLMENT_TOKEN="<token>" --name 
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
 ```sh subs=true
 docker run -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -e ENROLLMENT_TOKEN="<token>" --name es01 -p 9200:9200 --net elastic -it docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
 ```
@@ -216,7 +216,7 @@ docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
 
 :::{tab-item} Specific version
 :sync: specific
-Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+Replace `<SPECIFIC.VERSION.NUMBER>`  with the version of the Docker image you downloaded.
 ```sh subs=true
 docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
 ```

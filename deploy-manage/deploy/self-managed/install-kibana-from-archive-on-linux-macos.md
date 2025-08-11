@@ -47,7 +47,7 @@ cd kibana-{{version.stack}}/ <2>
 
 :::{tab-item} Specific version
 :sync: specific
-Because {{kib}} is an {{stack}} product, you must install the same version number that's used across the stack. Replace `<SPECIFIC.VERSION.NUMBER>` with the {{stack}} version.
+Because {{kib}} is an {{stack}} product, you must install the same version number as the rest of your {{stack}} components. Replace `<SPECIFIC.VERSION.NUMBER>` with the version that's used across your entire stack. For example, you can use {{version.stack.base}}.
 For more information, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version).
 ```sh subs=true
 curl -O https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
