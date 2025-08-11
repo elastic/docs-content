@@ -49,7 +49,9 @@ Complete the following steps to connect your local development cluster to AutoOp
         ```sh
         docker run -d --network host \
         ```
-
+        
+        This replacement is also required if your cluster is running on macOS.
+      
 After completing all the steps, you can [Access AutoOps](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md#access-autoops).
 
 
