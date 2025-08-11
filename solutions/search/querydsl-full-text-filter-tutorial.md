@@ -594,4 +594,3 @@ This tutorial introduced the basics of full-text search and filtering in {{es}}.
 * [Elasticsearch basics — Search and analyze data](../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}}.
 * [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
 * [Search your data](../search.md): Learn about more advanced search techniques using the `_search` API, including semantic search.
-* [Sear]
