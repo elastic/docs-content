@@ -588,7 +588,7 @@ GET /cooking_blog/_search
 
 ## Learn more [full-text-filter-tutorial-learn-more]
 
-This tutorial introduced the basics of full-text search and filtering in {{es}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Following resources will help you dive deeper:
+This tutorial introduced the basics of full-text search and filtering in {{es}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. The following resources will help you dive deeper:
 
 * [Full-text search](full-text.md): Learn about the core components of full-text search in {{es}}.
 * [Elasticsearch basics — Search and analyze data](../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}}.
