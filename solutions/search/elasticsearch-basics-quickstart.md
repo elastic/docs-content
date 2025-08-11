@@ -99,7 +99,7 @@ The response includes metadata that {{es}} generates for the document, including
 4. `result`: The result of the indexing operation.
 5. `_shards`: Information about the number of [shards](../../deploy-manage/distributed-architecture/clusters-nodes-shards.md) that the indexing operation was executed on and the number that succeeded.
 6. `total`: The total number of shards for the index.
-7. `successful`: The number of shards that the indexing operation was executed on.
+7. `successful`: The number of shards that the indexing operation was performed on.
 8. `failed`: The number of shards that failed during the indexing operation. *0* indicates no failures.
 9. `_seq_no`: A monotonically increasing number incremented for each indexing operation on a shard.
 10. `_primary_term`: A monotonically increasing number incremented each time a primary shard is assigned to a different node.
