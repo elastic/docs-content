@@ -201,7 +201,7 @@ eck: all
 ```
 You can also add file-based authentication users using [Kubernetes basic authentication secrets](https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret).
 
-A basic authentication secret can optionally contain a [`roles`](#users_roles) entry. It must contain a comma separated list of roles to be associated with the user. The following example illustrates this combination:
+A basic authentication secret can optionally contain a [`roles`](#users_roles) entry. It must contain a comma separated list of roles to be associated with the user. To create custom roles that can be referenced in this list refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles#roles-management-file). The following example illustrates this combination:
 
 ```yaml
 apiVersion: v1
