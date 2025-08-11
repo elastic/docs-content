@@ -15,7 +15,7 @@ The code examples in this tutorial are in [Console](../../explore-analyze/query-
 
 ## Requirements [getting-started-requirements]
 
-You can follow this guide using any {{es}} deployment. If you have a deployment setup ready, skip ahead to the [first step](#getting-started-index-creation). If not, refer [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) to see all deployment options. To get started quickly, spin up a cluster [locally in Docker](run-elasticsearch-locally.md):
+You can follow this guide using any {{es}} deployment. If you have a deployment ready, skip ahead to the [first step](#getting-started-index-creation). If not, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) to see all deployment options. To get started quickly, spin up a cluster [locally in Docker](run-elasticsearch-locally.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
