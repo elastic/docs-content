@@ -215,6 +215,10 @@ stringData:
   roles: kibana_admin,ingest_admin  # optional, not part of kubernetes.io/basic-auth
 ```
 
+::::{tip}
+To create custom roles that can be referenced in this list refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file).
+::::
+
 You can make this file available to {{eck}} by adding it as a file realm secret:
 
 ```yaml
