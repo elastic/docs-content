@@ -31,6 +31,10 @@ Below are some general guidelines for choosing the right option in a situation.
 
 ### Field API
 
+```{applies_to}
+stack: ga 9.2.0
+```
+
 Starting with version [9.2](https://github.com/elastic/elasticsearch/pull/131581) we have access to the field API that enables the usage of this API in conditionals (the `if` statement of your processor). Otherwise you can always use the field API in the script processor itself.
 
 :::{note}
