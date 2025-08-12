@@ -7,12 +7,12 @@ applies_to:
 
 # Upgrade from Elastic AI SOC Engine to {{elastic-sec}} to access additional features
 
-This page describes how to upgrade a {{sec-serverless}} project from the Elastic AI SOC Engine (EASE) feature tier to the Security Analytics Essentials or Security Analytics Complete feature tiers.
+This page describes how to upgrade an {{sec-serverless}} project from the Elastic AI SOC Engine (EASE) feature tier to the Security Analytics Essentials or Security Analytics Complete feature tiers.
 
-## Why should I upgrade?
+## Why upgrade?
 EASE provides a small subset of the features available on other {{sec-serverless}} feature tiers. It's designed to add a layer of AI features onto your existing SOC software stack. In contrast, {{elastic-sec}} provides a full set of SOC capabilities including many additional ways to ingest data, prebuilt and customizable detection rules, response actions, integrated threat intelligence, runtime protection, data visualization, and more. 
 
-For a full comparison of the Security Analytics Essentials and Security Analytics Complete feature tiers, refer to [Elastic Security Serverless pricing](https://www.elastic.co/pricing/serverless-security).
+For a full breakdown of the features available in the Security Analytics Essentials and Security Analytics Complete feature tiers, refer to [Elastic Security Serverless pricing](https://www.elastic.co/pricing/serverless-security).
 
 
 ## How to upgrade from EASE to other feature tiers
@@ -22,20 +22,20 @@ For a full comparison of the Security Analytics Essentials and Security Analytic
 
    :::{image} /solutions/images/security-ease-cloud-console-manage-project.png
    :alt: The cloud console showing an EASE project with the MANAGE button highlighted
+   :width: 550px
    :::
 
 3. On the project management page, next to **Project features**, click **Edit**.
 
    :::{image} /solutions/images/security-ease-cloud-console-edit-project-features.png
    :alt: The manage project page for an EASE project with the EDIT button highlighted
+   :width: 550px
    :::
 
 4. Select either the Security Analytics Essentials or Security Analytics Complete options, and select any desired add-on options. Click **Save**. 
 
-   :::{note}
-   You can return to this page at any point to switch between Essentials and Complete and change your add-on selections.
-   However, once you upgrade from EASE to another product tier, you cannot revert or "downgrade" the project back to EASE. 
-   :::
+You can return to this page at any point to switch between Essentials and Complete and change your add-on selections.
+However, once you upgrade from EASE to another product tier, you cannot revert or "downgrade" the project back to EASE. 
 
 ## What to do after upgrading an EASE project
 
