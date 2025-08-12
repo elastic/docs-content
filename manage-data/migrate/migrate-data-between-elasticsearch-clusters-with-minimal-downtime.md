@@ -12,7 +12,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Migrate {{es}} data with minimal downtime using incremental snapshots [migrate-elasticsearch-data-with-minimal-downtime]
+# Migrate {{es}} data with minimal downtime [migrate-elasticsearch-data-with-minimal-downtime]
 When moving your data and services from one {{es}} cluster to another, such as to {{ech}}, {{ece}}, new on-premises hardware, or any other {{es}} environment, you can use incremental snapshots to minimize downtime. 
 
 Migrating with incremental snapshots is useful when you want to:
@@ -48,7 +48,7 @@ Limitations include the following:
 * **Storage requirements** – Sufficient repository storage is required, and usage can grow based on snapshot frequency and data volume.
 * **Network overhead** – Transferring snapshots across networks, regions, or providers can be time consuming and incur costs.
 * **Version compatibility** – Old and new clusters must use compatible {{es}} versions. To check if your cluster versions are compatible, check [Snapshot compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility).
-* **Custom integrations** – Some custom integrations that directly uses the {{es}} API may require additional handling during the cutover from the old cluster to the new cluster.
+* **Custom integrations** – Some custom integrations that directly use the {{es}} API can require additional handling during the cutover from the old cluster to the new cluster.
 * **Resource usage** – Initial and incremental snapshot and restore operations can be resource-intensive, potentially affecting cluster performance.
 
 ## Additional topics [additional-incremental-snapshot-topics]
@@ -56,15 +56,15 @@ For more information on migrating {{es}} data with minimal downtime using increm
 
 ### Snapshot and restore
 * For more information about snapshot and restore concepts, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md).
-* To learn how to configure snapshot repositories before taking or restoring snapshots, check [Set up snapshot repositories](/deploy-manage/tools/snapshot-and-restore/self-managed.md).
-* To learn how to restore snapshots to clusters other than the source, check [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
+* To learn how to configure snapshot repositories before taking or restoring snapshots, check [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md).
+* To learn how to restore snapshots to clusters other than the source, check [Restore to a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
 
 ### Cluster and index management
-* For details on setting indices to read-only to safely pause indexing during migration, check [Pausing indexing and read-only indices](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md).
+* For details on setting indices to read-only to safely pause indexing during migration, check [Index lifecycle actions: Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md).
 
 ### Data ingestion
-* For information about using {{ls}} for data ingestion, check the [Logstash documentation](logstash://reference/index.md).
-* For information about using Beats for data ingestion, check [Beats documentation][Beats](beats://reference/index.md).
+* For information about using {{ls}} for data ingestion, check the [{{ls}} documentation](logstash://reference/index.md).
+* For information about using Beats for data ingestion, check the [{{beats}} documentation](beats://reference/index.md).
 
 ### Alternative migration methods
 * To learn about reindexing from remote clusters as an alternative migration method, check [Reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
