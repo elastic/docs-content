@@ -676,6 +676,7 @@ toc:
           - file: monitor/autoops/ec-autoops-faq.md
           - hidden: monitor/autoops/cc-autoops-as-cloud-connected.md
           - hidden: monitor/autoops/cc-connect-self-managed-to-autoops.md
+          - hidden: monitor/autoops/cc-connect-local-dev-to-autoops.md
           - hidden: monitor/autoops/cc-manage-users.md
           - hidden: monitor/autoops/cc-cloud-connect-autoops-faq.md
           - hidden: monitor/autoops/cc-cloud-connect-autoops-troubleshooting.md
