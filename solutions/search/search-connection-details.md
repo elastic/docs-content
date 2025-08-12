@@ -21,7 +21,7 @@ The following sections describe how to find your Cloud ID and create API keys in
 
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
-1. Go to the Elastic Cloud home page.
+1. Go to the {{ecloud}} home page.
 2. In the main menu, select **Manage this deployment**.
 
     :::{image} /solutions/images/kibana-manage-deployment.png
