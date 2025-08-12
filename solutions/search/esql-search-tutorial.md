@@ -5,7 +5,7 @@ applies_to:
 navigation_title: Search and filter with ES|QL
 ---
 
-# Tutorial: Search and filter with {{esql}}
+# Search and filter with {{esql}}
 
 :::{tip}
 This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL version](querydsl-full-text-filter-tutorial.md) for the equivalent examples in Query DSL syntax.
@@ -13,15 +13,13 @@ This tutorial presents examples in {{esql}} syntax. Refer to [the Query DSL vers
 
 This is a hands-on introduction to the basics of full-text search and semantic search, using [{{esql}}](/explore-analyze/query-filter/languages/esql.md).
 
-For an overview of all the search capabilities in {{esql}}, refer to [Using {{esql}} for search](/solutions/search/esql-for-search.md).
-
 In this scenario, we're implementing search for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
 ## Requirements
 
 You need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
-Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](run-elasticsearch-locally.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
@@ -119,9 +117,9 @@ PUT /cooking_blog/_mapping
 }
 ```
 
-1. The `standard` analyzer is used by default for `text` fields if an `analyzer` isn't specified. It's included here for demonstration purposes.
-2. [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) are used here to index `text` fields as both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
-3. The [`ignore_above` parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it's included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene's term byte-length limit.
+1. `analyzer`: Used for text analysis. If you don't specify it, the `standard` analyzer is used by default for `text` fields. It’s included here for demonstration purposes. To know more about analyzers, refer to [Anatomy of an analyzer](https://docs-v3-preview.elastic.dev/elastic/docs-content/tree/main/manage-data/data-store/text-analysis/anatomy-of-an-analyzer).
+2. `ignore_above`: Prevents indexing values longer than 256 characters in the `keyword` field. This is the default value and it’s included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene’s term byte-length limit. For more information, refer [ignore_above parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md).
+3. `description`: A field declared with both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). Such fields are called  [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md). This enables both full-text search and exact matching/filtering on the same field. If you use [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields will be created automatically. Other fields in the mapping like `author`, `category`, `tags` are also declared as multi-fields.
 
 ::::{tip}
 Full-text search is powered by [text analysis](full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](../../manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won't cover analysis in detail, but it's important to understand how text is processed to create effective search queries.
@@ -129,7 +127,7 @@ Full-text search is powered by [text analysis](full-text/text-analysis-during-se
 
 ## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data]
 
-Now you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
+Next, you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
 
 ```console
 POST /cooking_blog/_bulk?refresh=wait_for
@@ -147,7 +145,7 @@ POST /cooking_blog/_bulk?refresh=wait_for
 
 ## Step 3: Basic search operations
 
-Full-text search involves executing text-based queries across one or more document fields. In this section, we start with simple text matching and build up to understanding how search results are ranked.
+Full-text search involves executing text-based queries across one or more document fields. In this section, you'll start with simple text matching and build up to understanding how search results are ranked.
 
 {{esql}} provides multiple functions for full-text search, including `MATCH`, `MATCH_PHRASE`, and `QSTR`. For basic text matching, you can use either:
 
@@ -158,7 +156,7 @@ Both are equivalent for basic matching and can be used interchangeably. The comp
 
 Refer to the [`MATCH` function](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) reference docs for advanced parameters available with the function syntax.
 
-### Make your first search query
+### Perform your first search query
 
 Let's start with the simplest possible search - looking for documents that contain specific words:
 
@@ -172,7 +170,7 @@ This query searches the `description` field for documents containing either "flu
 
 ### Control which fields appear in results
 
-You can specify exactly which fields to include in your results using the `KEEP` command:
+You can specify the exact fields to include in your results using the `KEEP` command:
 
 ```esql
 FROM cooking_blog
@@ -185,7 +183,7 @@ This helps reduce the amount of data returned and focuses on the information you
 
 ### Understand relevance scoring
 
-Search results can be ranked by how well they match your query. To calaculate and use relevance scores, you need to explicitly request the `_score` metadata:
+Search results can be ranked based on how well they match your query. To calculate and use relevance scores, you need to explicitly request the `_score` metadata:
 
 ```esql
 FROM cooking_blog METADATA _score
@@ -223,7 +221,7 @@ This is fundamentally different from full-text search - it's a binary yes/no fil
 
 ## Step 4: Search precision control
 
-Now that you understand basic searching, let's explore how to control the precision of your text matches.
+Now that you understand basic searching, explore how to control the precision of your text matches.
 
 ### Require all search terms (AND logic)
 
@@ -311,7 +309,7 @@ FROM cooking_blog
 ```
 
 :::{tip}
-Follow this [tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md) if you'd like to test out the semantic search workflow against a large dataset.
+If you'd like to test out the semantic search workflow against a large dataset, follow the [semantic-search-tutorial](/solutions/search/semantic-search/semantic-search-semantic-text.md).
 :::
 
 ### Perform hybrid search
@@ -332,7 +330,7 @@ Learn how to combine these with complex criteria in [Step 8](#step-8-complex-sea
 
 ## Step 6: Advanced search features
 
-Once you're comfortable with basic search precision, these advanced features give you powerful search capabilities.
+Once you're comfortable with basic search precision, use the following advanced features for powerful search capabilities.
 
 ### Use query string for complex patterns
 
@@ -470,12 +468,12 @@ FROM cooking_blog METADATA _score
 
 This tutorial introduced the basics of search and filtering in {{esql}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you're ready to dive deeper:
 
-- [Search with {{esql}}](esql-for-search.md): Learn about all your options for search use cases with {{esql}}.
+- [Search with {{esql}}](esql-for-search.md): Learn about all the search capabilities in ES|QL, refer to Using ES|QL for search. {{esql}}.
 - [{{esql}} search functions](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md): Explore the full list of search functions available in {{esql}}.
 - [Semantic search](/solutions/search/semantic-search.md): Understand your various options for semantic search in Elasticsearch.
   - [The `semantic_text` workflow](/solutions/search/semantic-search.md#_semantic_text_workflow): Learn how to use the `semantic_text` field type for semantic search. This is the recommended approach for most users looking to perform semantic search in {{es}}, because it abstracts away the complexity of setting up inference endpoints and models.
 
 ### Related blog posts
 
-% TODO [[uncomment once blog is live]] - https://www.elastic.co/blog/esql-you-know-for-search-scoring-semantic-search[ES|QL, you know for Search]: Introducing scoring and semantic search
-- [Introducing full text filtering in ES|QL](https://www.elastic.co/blog/introducing-full-text-filtering-with-esql): Overview of text filtering capabilities
+- [{{esql}}, you know for Search](https://www.elastic.co/search-labs/blog/esql-introducing-scoring-semantic-search): Introducing scoring and semantic search
+- [Introducing full text filtering in {{esql}}](https://www.elastic.co/search-labs/blog/filtering-in-esql-full-text-search-match-qstr): Overview of {{esql}}'s text filtering capabilities

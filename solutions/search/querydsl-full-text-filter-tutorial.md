@@ -9,31 +9,31 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Full-text search and filtering with Query DSL [full-text-filter-tutorial]
+# Search and filter with Query DSL [full-text-filter-tutorial]
 
 :::{tip}
 This tutorial presents examples in Query DSL syntax. Refer to [the {{esql}} version](esql-search-tutorial.md) for the equivalent examples in {{esql}} syntax.
 :::
 
-This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
+This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data to narrow down search results based on exact criteria.
 
-In this scenario, we’re implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
+In this quickstart, you’ll implement a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
 The goal is to create search queries that enable users to:
 
-* Find recipes based on ingredients they want to use or avoid
-* Discover dishes suitable for their dietary needs
-* Find highly-rated recipes in specific categories
-* Find recent recipes from their favorite authors
+* Find recipes based on preferred or avoided ingredients
+* Explore dishes that meet specific dietary needs
+* Find top-rated recipes in specific categories
+* Find the latest recipes from favorite authors
 
-To achieve these goals we’ll use different Elasticsearch queries to perform full-text search, apply filters, and combine multiple search criteria.
+To achieve these goals, you’ll use different Elasticsearch queries to perform full-text search, apply filters, and combine multiple search criteria.
 
 
 ## Requirements [full-text-filter-tutorial-requirements]
 
 You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for deployment options.
 
-Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
+Want to get started quickly? Run the following command in your terminal to set up a [single-node local cluster in Docker](run-elasticsearch-locally.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
@@ -48,7 +48,7 @@ Create the `cooking_blog` index to get started:
 PUT /cooking_blog
 ```
 
-Now define the mappings for the index:
+Next, define the mappings for the index:
 
 ```console
 PUT /cooking_blog/_mapping
@@ -57,14 +57,14 @@ PUT /cooking_blog/_mapping
     "title": {
       "type": "text",
       "analyzer": "standard", <1>
-      "fields": { <2>
+      "fields": { 
         "keyword": {
           "type": "keyword",
-          "ignore_above": 256 <3>
+          "ignore_above": 256 <2>
         }
       }
     },
-    "description": {
+    "description": { <3>
       "type": "text",
       "fields": {
         "keyword": {
@@ -107,9 +107,10 @@ PUT /cooking_blog/_mapping
 }
 ```
 
-1. The `standard` analyzer is used by default for `text` fields if an `analyzer` isn’t specified. It’s included here for demonstration purposes.
-2. [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) are used here to index `text` fields as both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
-3. The [`ignore_above` parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it’s included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene’s term byte-length limit.
+1. `analyzer`: Used for text analysis. If you don't specify it, the `standard` analyzer is used by default for `text` fields. It’s included here for demonstration purposes. To know more about analyzers, refer [Anatomy of an analyzer](https://docs-v3-preview.elastic.dev/elastic/docs-content/tree/main/manage-data/data-store/text-analysis/anatomy-of-an-analyzer).
+2. `ignore_above`: Prevents indexing values longer than 256 characters in the `keyword` field. This is the default value and it’s included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene’s term byte-length limit. For more information, refer [ignore_above parameter](elasticsearch://reference/elasticsearch/mapping-reference/ignore-above.md).
+3. `description`: A field declared with both `text` and `keyword` [data types](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). Such fields are called  [Multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md). This enables both full-text search and exact matching/filtering on the same field. If you use [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields will be created automatically. A few other fields in the mapping like `author`, `category`, `tags` are also declared as multi-fields.
+
 
 
 ::::{tip}
@@ -117,11 +118,9 @@ Full-text search is powered by [text analysis](full-text/text-analysis-during-se
 
 ::::
 
-
-
 ## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data]
 
-Now you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
+Next, you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Note that `text` fields are analyzed and multi-fields are generated at index time.
 
 ```console
 POST /cooking_blog/_bulk?refresh=wait_for
@@ -143,7 +142,7 @@ POST /cooking_blog/_bulk?refresh=wait_for
 Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document’s content aligns with the search terms. {{es}} offers various query types, each with its own method for matching text and [relevance scoring](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores).
 
 
-### `match` query [_match_query]
+### Use `match` query [_match_query]
 
 The [`match`](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) query is the standard query for full-text, or "lexical", search. The query text will be analyzed according to the analyzer configuration specified on each field (or at query time).
 
@@ -208,9 +207,9 @@ At search time, {{es}} defaults to the analyzer defined in the field mapping. In
 }
 ```
 
-1. The `hits` object contains the total number of matching documents and their relation to the total.
-2. `max_score` is the highest relevance score among all matching documents. In this example, we only have one matching document.
-3. `_score` is the relevance score for a specific document, indicating how well it matches the query. Higher scores indicate better matches. In this example the `max_score` is the same as the `_score`, as there is only one matching document.
+1. `hits`: Contains the total number of matching documents and their relation to the total.
+2. `max_score`: The highest relevance score among all matching documents. In this example, we only have one matching document.
+3. `_score`: The relevance score for a specific document, indicating how well it matches the query. Higher scores indicate better matches. In this example the `max_score` is the same as the `_score`, as there is only one matching document.
 4. The title contains both "Fluffy" and "Pancakes", matching our search terms exactly.
 5. The description includes "fluffiest" and "pancakes", further contributing to the document’s relevance due to the analysis process.
 
@@ -219,9 +218,9 @@ At search time, {{es}} defaults to the analyzer defined in the field mapping. In
 
 
 
-### Require all terms in a match query [_require_all_terms_in_a_match_query]
+### Include all terms match in a query [_require_all_terms_in_a_match_query]
 
-Specify the `and` operator to require both terms in the `description` field. This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
+Specify the `and` operator to include both terms in the `description` field. This stricter search returns *zero hits* on our sample data, as no document contains both "fluffy" and "pancakes" in the description.
 
 ```console
 GET /cooking_blog/_search
@@ -322,10 +321,7 @@ GET /cooking_blog/_search
 * `description^2`: The description is 2 times more important
 * `tags`: No boost applied (equivalent to `^1`)
 
-    These boosts help tune relevance, prioritizing matches in the title over the description, and matches in the description over tags.
-
-
-
+  These boosts help tune relevance, prioritizing matches in the title over the description, and matches in the description over tags.
 
 Learn more about fields and per-field boosting in the [`multi_match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-multi-match-query.md) reference.
 
@@ -392,7 +388,7 @@ The `multi_match` query is often recommended over a single `match` query for mos
 
 [Filtering](../../explore-analyze/query-filter/languages/querydsl.md#filter-context) allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don’t need to be scored.
 
-This [`bool`](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) query will return only blog posts in the "Breakfast" category.
+The following [`bool`](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) query will return blog posts only in the "Breakfast" category.
 
 ```console
 GET /cooking_blog/_search
@@ -422,7 +418,7 @@ The `.keyword` suffix accesses the unanalyzed version of a field, enabling exact
 
 ### Search for posts within a date range [full-text-filter-tutorial-range-query]
 
-Often users want to find content published within a specific time frame. A [`range`](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) query finds documents that fall within numeric or date ranges.
+Users often want to find content published within a specific time frame. A [`range`](elasticsearch://reference/query-languages/query-dsl/query-dsl-range-query.md) query finds documents that fall within numeric or date ranges.
 
 ```console
 GET /cooking_blog/_search
@@ -438,8 +434,8 @@ GET /cooking_blog/_search
 }
 ```
 
-1. Greater than or equal to May 1, 2023.
-2. Less than or equal to May 31, 2023.
+1. `gte`: Greater than or equal to May 1, 2023.
+2. `lte`: Less than or equal to May 31, 2023.
 
 
 
@@ -447,7 +443,7 @@ GET /cooking_blog/_search
 
 Sometimes users want to search for exact terms to eliminate ambiguity in their search results. A [`term`](elasticsearch://reference/query-languages/query-dsl/query-dsl-term-query.md) query searches for an exact term in a field without analyzing it. Exact, case-sensitive matches on specific terms are often referred to as "keyword" searches.
 
-Here you’ll search for the author "Maria Rodriguez" in the `author.keyword` field.
+In the following example, you’ll search for the author "Maria Rodriguez" in the `author.keyword` field.
 
 ```console
 GET /cooking_blog/_search
@@ -460,7 +456,7 @@ GET /cooking_blog/_search
 }
 ```
 
-1. The `term` query has zero flexibility. For example, here the queries `maria` or `maria rodriguez` would have zero hits, due to case sensitivity.
+1. The `term` query has zero flexibility. For example, if the `author.keyword` contains words `maria` or `maria rodriguez`, the query will have zero hits, due to case sensitivity.
 
 
 ::::{tip}
@@ -472,7 +468,7 @@ Avoid using the `term` query for [`text` fields](elasticsearch://reference/elast
 
 ## Step 6: Combine multiple search criteria [full-text-filter-tutorial-complex-bool]
 
-A [`bool`](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) query allows you to combine multiple query clauses to create sophisticated searches. In this tutorial scenario it’s useful for when users have complex requirements for finding recipes.
+A [`bool`](elasticsearch://reference/query-languages/query-dsl/query-dsl-bool-query.md) query allows you to combine multiple query clauses to create sophisticated searches. In this tutorial, it’s useful when users have complex requirements for finding recipes.
 
 Let’s create a query that addresses the following user needs:
 
@@ -533,7 +529,7 @@ GET /cooking_blog/_search
 }
 ```
 
-1. The `must_not` clause excludes documents that match the specified criteria. This is a powerful tool for filtering out unwanted results.
+1. `must_not`: Excludes documents that match the specified criteria. This is a powerful tool for filtering out unwanted results.
 
 
 ::::{dropdown} Example response
@@ -592,7 +588,7 @@ GET /cooking_blog/_search
 
 ## Learn more [full-text-filter-tutorial-learn-more]
 
-This tutorial introduced the basics of full-text search and filtering in {{es}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you’re ready to dive deeper:
+This tutorial introduced the basics of full-text search and filtering in {{es}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. The following resources will help you dive deeper:
 
 * [Full-text search](full-text.md): Learn about the core components of full-text search in {{es}}.
 * [Elasticsearch basics — Search and analyze data](../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}}.

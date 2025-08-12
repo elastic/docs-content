@@ -1,8 +1,8 @@
 ---
 applies_to:
-  stack: all
+  stack: preview 9.1
   serverless:
-    security: all
+    security: preview
 ---
 
 # Set up Cloud Asset Discovery for Azure
