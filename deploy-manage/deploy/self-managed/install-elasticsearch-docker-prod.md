@@ -131,9 +131,23 @@ Increased ulimits for [nofile](setting-system-settings.md) and [nproc](/deploy-m
 
 To check the Docker daemon defaults for ulimits, run:
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 docker run --rm docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}} /bin/bash -c 'ulimit -Hn && ulimit -Sn && ulimit -Hu && ulimit -Su'
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```sh subs=true
+docker run --rm docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER> /bin/bash -c 'ulimit -Hn && ulimit -Sn && ulimit -Hu && ulimit -Su'
+```
+:::
+::::
 
 If needed, adjust them in the Daemon or override them per container. For example, when using `docker run`, set:
 
@@ -166,9 +180,23 @@ To manually set the heap size in production, bind mount a [JVM options](elastics
 
 For testing, you can also manually set the heap size using the `ES_JAVA_OPTS` environment variable. For example, to use 1GB, use the following command.
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 docker run -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -e ENROLLMENT_TOKEN="<token>" --name es01 -p 9200:9200 --net elastic -it docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the version of the Docker image you downloaded.
+```sh subs=true
+docker run -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -e ENROLLMENT_TOKEN="<token>" --name es01 -p 9200:9200 --net elastic -it docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
+```
+:::
+::::
 
 The `ES_JAVA_OPTS` variable overrides all other JVM options. We do not recommend using `ES_JAVA_OPTS` in production.
 
@@ -177,9 +205,23 @@ The `ES_JAVA_OPTS` variable overrides all other JVM options. We do not recommend
 
 Pin your deployments to a specific version of the {{es}} Docker image. For example:
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
 ```sh subs=true
 docker.elastic.co/elasticsearch/elasticsearch:{{version.stack}}
 ```
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>`  with the version of the Docker image you downloaded.
+```sh subs=true
+docker.elastic.co/elasticsearch/elasticsearch:<SPECIFIC.VERSION.NUMBER>
+```
+:::
+::::
 
 
 ## Always bind data volumes [_always_bind_data_volumes]

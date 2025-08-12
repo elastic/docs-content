@@ -83,19 +83,44 @@ sudo zypper modifyrepo --enable elasticsearch && \
 
 ### Download and install the RPM manually [install-rpm]
 
-1. Download and install the RPM for {{es}} {{version.stack}} with the following commands:
+1. Download and install the RPM for {{es}} with the following commands:
 
-    ```sh subs=true
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm.sha512
-    shasum -a 512 -c elasticsearch-{{version.stack}}-x86_64.rpm.sha512 <1>
-    sudo rpm --install elasticsearch-{{version.stack}}-x86_64.rpm
-    ```
+::::{tab-set}
 
-    1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<version>-x86_64.rpm: OK`.
+:::{tab-item} Latest
+To download and install the {{es}} {{version.stack}} RPM, enter:
+  ```sh subs=true
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-x86_64.rpm.sha512
+  shasum -a 512 -c elasticsearch-{{version.stack}}-x86_64.rpm.sha512 <1>
+  sudo rpm --install elasticsearch-{{version.stack}}-x86_64.rpm
+  ```
+  1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<version>-x86_64.rpm: OK`.
+  
+  :::{include} _snippets/skip-set-kernel-params.md
+  :::
 
-    :::{include} _snippets/skip-set-kernel-params.md
-    :::
+:::
+
+:::{tab-item} Specific version
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+  ```sh subs=true
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512
+  shasum -a 512 -c elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512 <1>
+  sudo rpm --install elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+  ```
+  1. Compares the SHA of the downloaded RPM and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm: OK`.
+  
+  :::{include} _snippets/skip-set-kernel-params.md
+  :::
+
+:::
+::::
+ 
+
+  
+
 
 2. Copy the terminal output from the install command to a local file. In particular, you’ll need the password for the built-in `elastic` superuser account. The output also contains the commands to enable {{es}} to [run as a service](#running-systemd).
 

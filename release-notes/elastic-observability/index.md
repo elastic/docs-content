@@ -177,6 +177,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves finding functions in Universal Profiling [#210437]({{kib-pull}}210437).
 * Adds logical `AND` to monitor tags and locations filter [#217985]({{kib-pull}}217985).
 
+## 9.0.5 [elastic-observability-9.0.5-release-notes]
+
+### Features and enhancements[elastic-observability-9.0.5-features]
+* Submit a comment in a case by pressing `ctrl/cmd` + `enter` [#228473]({{kib-pull}}228473).
+
+### Fixes [elastic-observability-9.0.5-fixes]
+* Instructs AI Assistant not to perform destructive actions [#229497]({{kib-pull}}229497).
+* Fixes service error for table column sorting [#229199]({{kib-pull}}229199).
+* Fixes Dependencies inventory page issue where loading spinner spins indefinitely when no data exists [#228094]({{kib-pull}}228094).
+
 ## 9.0.4 [elastic-observability-9.0.4-release-notes]
 
 ### Fixes [elastic-observability-9.0.4-fixes]
