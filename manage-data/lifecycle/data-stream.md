@@ -10,7 +10,7 @@ products:
 
 # Data stream lifecycle [data-stream-lifecycle]
 
-A data stream lifecycle is the built-in mechanism data streams use to manage their lifecycle. It enables you to easily automate the management of your data streams according to your retention requirements. For example, you could configure the lifecycle to:
+A data stream lifecycle is the built-in mechanism [data streams](/manage-data/data-store/data-streams.md) use to manage their lifecycle. It enables you to easily automate the management of your data streams according to your retention requirements. For example, you could configure the lifecycle to:
 
 * Ensure that data indexed in the data stream will be kept at least for the retention time you defined.
 * Ensure that data older than the retention period will be deleted automatically by {{es}} at a later time.
@@ -22,6 +22,13 @@ To achieve that, it supports:
 
 A data stream lifecycle also supports downsampling the data stream backing indices. See [the downsampling example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) for more details.
 
+## Availability
+
+* Data stream lifecycle is supported only for data streams and cannot be used with standalone indices.
+
+* Like {{ilm-cap}} ({{ilm-init}}), data stream lifecycle is supported in both {{ecloud}} and self-managed environments. Data stream lifecycle is less feature rich than {{ilm-init}} and is focused on simplicity. For a detailed comparison refer to [Data lifecycle](/manage-data/lifecycle.md).
+
+* Owing to its simplicity compared with {{ilm-cap}} ({{ilm-init}}), data stream lifecycle is the data lifecycle tool used with {{es-serverless}}. For an {{ecloud}} or self-managed environment, {{ilm-init}} helps you to balance hardware costs with performance for your data, but this complexity isn't required in a {{serverless-short}} environment in which your cluster performance is managed automatically.
 
 ## How does it work? [data-streams-lifecycle-how-it-works]
 

@@ -13,23 +13,25 @@ products:
 
 # Index lifecycle management
 
-{{ilm-cap}} ({{ilm-init}}) provides an integrated and streamlined way to manage time-based data such as logs and metrics, making it easier to follow best practices for managing your indices.
+% {{ilm-cap}} ({{ilm-init}}) provides an integrated and streamlined way to manage time-based data such as logs and metrics, making it easier to follow best practices for managing your indices.
 
-You can configure {{ilm-init}} policies to automatically manage indices according to your performance, resiliency, and retention requirements. For example, you could use {{ilm-init}} to:
+{{ilm-cap}} ({{ilm-init}}) provides an integrated and streamlined way to manage your time series data. You can configure {{ilm-init}} policies to automatically manage indices according to your performance, resiliency, and retention requirements. For example, you could use {{ilm-init}} to:
 
 * Spin up a new index when an index reaches a certain size or number of documents
 * Create a new index each day, week, or month and archive previous ones
 * Delete stale indices to enforce data retention standards
 
-::::{tip}
-{{ilm-init}} is not available on {{es-serverless}}.
+## Availability
 
-:::{dropdown} Why?
-In an {{ecloud}} or self-managed environment, ILM lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{es-serverless}} eliminates this complexity by optimizing your cluster performance for you.
+* {{ilm-init}} is supported for both data streams and standalone indices:
 
-Data stream lifecycle is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary hardware-centric concepts like data tiers.
-:::
-::::
+    * **Data stream:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
+
+    * **Standalone index:** When you use {{ilm-init}} with standalone indices, you need to manage the lifecycle of each individual index directly, typically by configuring an index alias. This allows for more granular control over each index but requires considerably more effort compared to using a data stream, which is our recommended option.
+
+* {{ilm-init}} is available for {{ecloud}} or self-managed environments only, as a tool to help you balance hardware costs with performance for your data. {{es-serverless}} removes the need for this complexity by optimizing your cluster performance automatically. In a {{serverless-short}} environment, data stream lifecycle (see the following bullet) is available as a data lifecycle option.
+
+* If you're looking for a simpler option than using {{ilm-init}}, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a less feature rich lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers.
 
 ::::{important}
 To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
