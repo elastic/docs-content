@@ -31,15 +31,15 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.1.2-features-enhancements]
 * Adds Automatic Import documentation links for users in log description and the error message so that users have better access to the data types that are valid [#229375]({{kib-pull}}229375).
-* To help identify which parts of `elastic-endpoint.exe` are using a significant amount of CPU, {elastic-defend} on Windows can now include CPU profiling data in diagnostics. To request CPU profiling data using the command line, refer to {fleet-guide}/elastic-agent-cmd-options.html#_options[{agent} command reference]. To request CPU profiling data using {kib}, check the **Collect additional CPU metrics** box when requesting {agent} diagnostics.
-* Improves {elastic-defend} malware scan queue efficiency on Windows by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
-* Allows {elastic-defend} to automatically recover in some situations when it loses connectivity with {agent}.
+* To help identify which parts of `elastic-endpoint.exe` are using a significant amount of CPU, {{elastic-defend}} on Windows can now include CPU profiling data in diagnostics. To request CPU profiling data using the command line, refer to [{{agent}} command reference](/reference/fleet/agent-command-reference.md#_options). To request CPU profiling data using {{kib}}, check the **Collect additional CPU metrics** box when requesting {{agent}} diagnostics.
+* Improves {{elastic-defend}} malware scan queue efficiency on Windows by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* Allows {{elastic-defend}} to automatically recover in some situations when it loses connectivity with {{agent}}.
 
 ### Fixes [elastic-security-9.1.2-fixes]
-* Fixes privileged user monitoring index sync in non-default {kib} spaces [#230420]({{kib-pull}}230420).
+* Fixes privileged user monitoring index sync in non-default {{kib}} spaces [#230420]({{kib-pull}}230420).
 * Only creates a privileged user monitoring default index source if one doesn't currently exist [#229693]({{kib-pull}}229693).
-* Fixes a race condition in {elastic-defend} that may occasionally result in corrupted process command lines on Windows. When this occurs, `process.command_line`, `process.args_count` and `process.args` may be incorrect, leading to false positives.
-* Due to an issue in macOS, {elastic-defend} would sometimes send network events without `user.name` populated. {elastic-defend} will now identify these events and populate `user.name` if necessary.
+* Fixes a race condition in {{elastic-defend}} that may occasionally result in corrupted process command lines on Windows. When this occurs, `process.command_line`, `process.args_count` and `process.args` may be incorrect, leading to false positives.
+* Due to an issue in macOS, {{elastic-defend}} would sometimes send network events without `user.name` populated. {{elastic-defend}} will now identify these events and populate `user.name` if necessary.
 
 ## 9.1.1 [elastic-security-9.1.1-release-notes]
 
