@@ -12,7 +12,7 @@ products:
 # Find connection details [search-space-connection-details]
 
 
-To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on your deployment type. For secure connections, we recommend to use an API key for authentication.
+To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on your deployment type. For secure connections, we recommend you use an API key for authentication.
 
 The following sections describe how to find your Cloud ID and create API keys in both Elastic Cloud/self-hosted and Serverless deployments.
 
