@@ -35,7 +35,7 @@ Below are some general guidelines for choosing the right option in a situation.
 stack: ga 9.2.0
 ```
 
-Starting with version [9.2](https://github.com/elastic/elasticsearch/pull/131581) we have access to the field API that enables the usage of this API in conditionals (the `if` statement of your processor). Otherwise you can always use the field API in the script processor itself.
+The field API can be used in conditionals (the `if` statement of your processor) in addition to being used in the script processor itself.
 
 :::{note}
 This is the preferred way to access fields.
@@ -43,23 +43,23 @@ This is the preferred way to access fields.
 
 **Benefits**
 
-- Clean and easy to read
-- Handles null values automatically
-- Adds support for additional functions like `isEmpty()` to ease comparisions.
-- Handles dots as part of field name
-- Handles dots as dot walking for object notation
+- Clean and easy to read.
+- Handles null values automatically.
+- Adds support for additional functions like `isEmpty()` to ease comparisons.
+- Handles dots as part of field name.
+- Handles dots as dot walking for object notation.
 - Handles special characters.
 
 **Limitations**
 
-- Only available starting in 9.2 for conditionals.
+- Not available in all versions for conditionals.
 
 ### Dot notation [dot-notation]
 
 **Benefits**
 
 - Clean and easy to read.
-- Supports null safety operations `?`. Read more in [Use null safe operators (`?.`)](#null-safe-operators).
+- Supports null safe operations `?`. Read more in [Use null safe operators (`?.`)](#null-safe-operators).
 
 **Limitations**
 
@@ -78,7 +78,7 @@ This is the preferred way to access fields.
 **Limitations**
 
 - Slightly more verbose than dot notation.
-- No support for null safety operations `?`.
+- No support for null safe operations `?`.
   Use [Dot notation](#dot-notation) instead.
 
 ### Mixed dot and bracket notation
@@ -391,8 +391,10 @@ All of the above discussed ways to [access fields](#access-fields) and retrieve 
 The fields API is the recommended way to add new fields.
 :::
 
-**Fields API**
-We get the following field `cpu.usage` and we want to rename it to `system.cpu.total.norm.pct` which represents a scale from 0-1.0, where 1 is the equivalent of 100%.
+For example, add a new `system.cpu.total.norm.pct` field based on the value of the `cpu.usage` field. The value of the existing `cpu.usage` field is a number on a scale of 0-100. The value of the new `system.cpu.total.norm.pct` field will be on a scale from 0-1.0 where 1 is the equivalent of 100 in the `cpu.usage` field.
+
+**Option 1: Fields API (preferred)**
+Create a new `system.cpu.total.norm.pct` field and set the value to the value of the `cpu.usage` field divided by `100.0`.
 
 ```json
 POST _ingest/pipeline/_simulate
@@ -419,11 +421,11 @@ POST _ingest/pipeline/_simulate
   }
 }
 ```
-1. Our field expects 0-1 and not 0-100, we will have to divide by 100 to get the right representation.
+1. This field expects 0-1 and not 0-100. When renaming the field, divide this value by 100 to get the correct value.
 2. The `field` API is exposed as `field(<field name>)`. The `set(<value>)` is responsible for setting the value. Inside we use the `$(<field name>, fallback)` to read the value out of the existing field. Lastly we divide by `100.0`. The `.0` is important, otherwise it will perform an integer only division and return just 0 instead of 0.9.
 
-**No fields API**
-Without the field API this can also be achieved. However there is much more code involved, as we have to ensure that we can walk the full path of `system.cpu.total.norm.pct`.
+**Option 2: Without the fields API**
+Without the field API, there is much more code involved to ensure that you can walk the full path of `system.cpu.total.norm.pct`.
 
 ```json
 {
@@ -446,10 +448,10 @@ Without the field API this can also be achieved. However there is much more code
   }
 }
 ```
-1. We need to check whether the objects are null or not and then create them.
-2. We create a new HashMap to store all the objects in it.
-3. Instead of writing `new HashMap()` we can use the shortcut `[:]`.
-4. We perform the same calculation as above and set the value.
+1. Check whether the objects are null or not and then create them.
+2. Create a new `HashMap` to store all the objects in it.
+3. Instead of writing `new HashMap()`, use the shortcut `[:]`.
+4. Perform the same calculation as above and set the value.
 
 ### Calculate `event.duration` in a complex manner
 
@@ -654,7 +656,7 @@ In this example, `{{tags.0}}` retrieves the first element of the `tags` array (`
 
 ### Transform into a JSON string
 
-Whenever you need to store the original `_source` within a field `event.original`, we can use mustache function `{{#toJson}}<field>{{/toJson}}`.
+Whenever you need to store the original `_source` within a field `event.original`, use mustache function `{{#toJson}}<field>{{/toJson}}`.
 
 ```json
 POST _ingest/pipeline/_simulate
