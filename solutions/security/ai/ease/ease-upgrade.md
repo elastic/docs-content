@@ -32,7 +32,7 @@ For a full breakdown of the features available in the Security Analytics Essenti
    :width: 550px
    :::
 
-4. Select either the Security Analytics Essentials or Security Analytics Complete options, and select any desired add-on options. Click **Save**. 
+4. Select either the **Security Analytics Essentials** or **Security Analytics Complete** options, and select any desired add-on options. Click **Save**. 
 
 You can return to this page at any point to switch between Essentials and Complete and change your add-on selections.
 However, once you upgrade from EASE to another product tier, you cannot revert or "downgrade" the project back to EASE. 
