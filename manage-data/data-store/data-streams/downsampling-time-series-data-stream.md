@@ -11,8 +11,8 @@ products:
 
 # Downsample a time series data stream [downsampling]
 
-:::{warning}
-🚧 Work in progress 🚧
+:::{admonition} Page status
+🟢 Ready for review
 :::
 
 Downsampling reduces the footprint of your [time series data](time-series-data-stream-tsds.md) by storing it at reduced granularity.
@@ -32,6 +32,5 @@ This section explains the available downsampling options and helps you understan
 ## Next steps
 % TODO confirm patterns
 
-* Run downsampling
-* Downsampling concepts
-* Time series data streams overview
+* [](run-downsampling.md)
+* [](downsampling-concepts.md)

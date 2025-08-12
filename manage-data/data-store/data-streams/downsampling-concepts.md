@@ -98,7 +98,9 @@ The following restrictions and limitations apply for downsampling:
 * Only indices in a [time series data stream](time-series-data-stream-tsds.md) are supported.
 * Data is downsampled based on the time dimension only. All other dimensions are copied to the new index without any modification.
 * Within a data stream, a downsampled index replaces the original index and the original index is deleted. Only one index can exist for a given time period.
-* A source index must be in read-only mode for the downsampling process to succeed. Check the [Run downsampling manually](./run-downsampling-manually.md) example for details.
+* A source index must be in read-only mode for the downsampling process to succeed. Check the Run downsampling manually example for details.
+* Downsampling data for the same period many times (downsampling of a downsampled index) is supported. The downsampling interval must be a multiple of the interval of the downsampled index.
+* A source index must be in read-only mode for the downsampling process to succeed. Check the Run downsampling manually example for details.
 * Downsampling data for the same period many times (downsampling of a downsampled index) is supported. The downsampling interval must be a multiple of the interval of the downsampled index.
 * Downsampling is provided as an ILM action. See [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md).
 * The new, downsampled index is created on the data tier of the original index and it inherits its settings (for example, the number of shards and replicas).
