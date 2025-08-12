@@ -68,7 +68,7 @@ These stats are cumulative from node startup.
 Indexing pressure rejections appear as an `EsRejectedExecutionException`, and indicate that they were rejected due to `combined_coordinating_and_primary`, `coordinating`, `primary`, or `replica`.
 
 These errors are often related to [backlogged tasks](task-queue-backlog.md), [bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) sizing, or the ingest target's [`refresh_interval` setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md).  
-{applies_to}`stack: ga 9.1`{applies_to}`serverless: ga`Another cause of indexing pressure rejections might be the use of the [`semantic_text`](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text) field type, which can cause rejections when indexing large batches of documents if the batch may otherwise incur an Out Of Memory (OOM) error.
+{applies_to}`stack: ga 9.1`{applies_to}`serverless: ga`Another cause of indexing pressure rejections might be the use of the [`semantic_text`](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text) field type, which can cause rejections when indexing large batches of documents if the batch may otherwise incur an Out of Memory (OOM) error.
 
 See [this video](https://www.youtube.com/watch?v=QuV8QqSfc0c) for a walkthrough of diagnosing indexing pressure rejections.
 
