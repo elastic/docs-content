@@ -1,35 +1,28 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/current/cspm-get-started-azure.html
-  - https://www.elastic.co/guide/en/serverless/current/security-cspm-get-started-azure.html
 applies_to:
-  stack: all
+  stack: preview 9.1
   serverless:
-    security: all
-products:
-  - id: security
-  - id: cloud-serverless
+    security: preview
 ---
 
-# Get started with CSPM for Azure
+# Set up Cloud Asset Discovery for Azure
 
-## Overview [cspm-overview-azure]
+## Overview [cad-overview-azure]
 
-This page explains how to get started monitoring the security posture of your cloud assets using the Cloud Security Posture Management (CSPM) feature.
+This page explains how to set up the Cloud Asset Discovery integration to inventory assets in Azure.
+
 
 ## Requirements
 
-* Minimum privileges vary depending on whether you need to read, write, or manage CSPM data and integrations. Refer to [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md).
-* The CSPM integration is available to all {{ecloud}} users. On-premise deployments require [appropriate subscription](https://www.elastic.co/pricing) level.
-* CSPM is supported only on AWS, GCP, and Azure commercial cloud platforms, and AWS GovCloud. Other government cloud platforms are not supported. To request support, [open a GitHub ticket](https://github.com/elastic/kibana/issues/new/choose).
-* The user who gives the CSPM integration permissions in Azure must be an Azure subscription `admin`.
+* The user who gives the Cloud Asset Discovery integration permissions in Azure must be an Azure subscription `admin`.
+* The Cloud Asset Discovery integration is available to all {{ecloud}} users. On-premise deployments require the [appropriate subscription](https://www.elastic.co/pricing) level.
+* The Cloud Asset Discovery integration is supported only on Azure, not on Azure Government. To request support, [open a GitHub issue](https://github.com/elastic/kibana/issues/new/choose).
 
 
 
+## Set up Cloud Asset Discovery for Azure [cad-setup-azure]
 
-## Set up CSPM for Azure [cspm-setup-azure]
-
-You can set up CSPM for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, first add the CSPM integration, then enable cloud account access. 
+You can set up Cloud Asset Discovery for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, you will first add the Cloud Asset Discovery integration, then enable cloud account access. 
 
 Two deployment technologies are available: agentless and agent-based. 
 
@@ -37,57 +30,46 @@ Two deployment technologies are available: agentless and agent-based.
 * [Agent-based deployment](/solutions/security/cloud/asset-disc-azure.md#cad-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 
-## Agentless deployment [cspm-azure-agentless]
+## Agentless deployment [cad-azure-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+2. Search for and select `Cloud asset discovery`.
+3. Click **Add Cloud Asset Discovery**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
-5. Give your integration a name and description that match the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
-6. (Optional) Expand the **Advanced options** menu and add a `Namespace` to the integration's data stream.
+5. Give your integration a name that matches the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
+6. In **Deployment options**, select **Agentless**.
+7. Next, you’ll need to authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/asset-disc-azure.md#cad-azure-client-secret).
+8. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
-:::{include} _snippets/cspm-namespace.md
-:::
-
-7. For **Deployment options**, select **Agentless**.
-8. For **Setup Access**, authenticate to Azure by providing a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
-9. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
-
-## Agent-based deployment [cspm-azure-agent-based]
+## Agent-based deployment [cad-azure-agent-based]
 
 
-### Add your CSPM integration [cspm-add-and-name-integration-azure]
+### Add your Cloud Asset Discovery integration [cad-add-and-name-integration-azure]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+2. Search for and select `Cloud asset discovery`.
+3. Click **Add Cloud Asset Discovery**.
 4. In **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
-5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CSPM-dev-1`.
-6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.
-
-:::{include} _snippets/cspm-namespace.md
-:::
-7. Under **Deployment options** select **Agent-based**.
+5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CAD-dev-1`.
 
 
-### Set up cloud account access [cspm-set-up-cloud-access-section-azure]
+### Set up cloud account access [cad-set-up-cloud-access-section-azure]
 
 ::::{note}
-To set up CSPM for an Azure organization or subscription, you will need admin privileges for that organization or subscription.
+To set up Cloud Asset Discovery for an Azure organization or subscription, you will need admin privileges for that organization or subscription.
 ::::
 
+For most users, the simplest option is to use an Azure Resource Manager (ARM) template to automatically provision the necessary resources and permissions in Azure. If you prefer a more hands-on approach or require a specific configuration not supported by the ARM template, you can use one of the manual setup options described next on this page.
 
-For most users, the simplest option is to use an Azure Resource Manager (ARM) template to automatically provision the necessary resources and permissions in Azure. If you prefer a more hands-on approach or require a specific configuration not supported by the ARM template, you can use one of the manual setup options described on this page.
 
-
-## ARM template setup (recommended) [cspm-set-up-ARM]
+## ARM template setup (recommended) [cad-set-up-ARM]
 
 ::::{note}
 If you are deploying to an Azure organization, you need the following permissions: `Microsoft.Resources/deployments/*`, `Microsoft.Authorization/roleAssignments/write`. You also need to [elevate access to manage all Azure subscriptions and management groups](https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin).
 ::::
 
 
-1. For **Setup Access**, select **ARM Template**.
+1. In **Setup Access**, select **ARM Template**.
 2. In **Where to add this integration**:
 
     1. Select **New Hosts**.
@@ -100,7 +82,7 @@ If you are deploying to an Azure organization, you need the following permission
 3. Return to {{kib}} and wait for the confirmation of data received from your new integration. Then you can click **View Assets** to see your data.
 
 
-## Manual setup [cspm-set-up-manual-azure]
+## Manual setup [cad-set-up-manual-azure]
 
 For manual setup, multiple authentication methods are available:
 
@@ -109,57 +91,57 @@ For manual setup, multiple authentication methods are available:
 * Service principal with client certificate
 
 
-### Option 1: Managed identity (recommended) [cspm-azure-managed-identity-setup]
+### Option 1: Managed identity (recommended) [cad-azure-managed-identity-setup]
 
-This method involves creating an Azure VM (or using an existing one), giving it read access to the resources you want to monitor with CSPM, and installing {{agent}} on it.
+This method involves creating an Azure VM (or using an existing one), giving it read access to the resources you want to monitor with Cloud Asset Discovery, and installing {{agent}} on it.
 
 1. Go to the Azure portal to [create a new Azure VM](https://portal.azure.com/#create/Microsoft.VirtualMachine-ARM).
 2. Follow the setup process, and make sure you enable **System assigned managed identity** in the **Management** tab.
-3. Go to your Azure subscription list and select the subscription or management group you want to monitor with CSPM.
+3. Go to your Azure subscription list and select the subscription or management group you want to monitor with Cloud Asset Discovery.
 4. Go to **Access control (IAM)**, and select **Add Role Assignment**.
 5. Select the `Reader` function role, assign access to **Managed Identity**, then select your VM.
 
 After assigning the role:
 
-1. Return to the **Add CSPM** page in {{kib}}.
-2. For **Configure integration**, select **Azure**. For **Setup access**, select **Manual**.
-3. For **Where to add this integration**, select **New hosts**.
+1. Return to the **Add Cloud Asset Discovery** page in {{kib}}.
+2. In **Configure integration**, select **Azure**. In **Setup access**, select **Manual**.
+3. In **Where to add this integration**, select **New hosts**.
 4. Click **Save and continue**, then follow the instructions to install {{agent}} on your Azure VM.
 
 Wait for the confirmation that {{kib}} received data from your new integration. Then you can click **View Assets** to see your data.
 
 
-### Option 2: Service principal with client secret [cspm-azure-client-secret]
+### Option 2: Service principal with client secret [cad-azure-client-secret]
 
 Before using this method, you must have set up a [Microsoft Entra application and service principal that can access resources](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in).
 
-1. On the **Add Cloud Security Posture Management (CSPM) integration** page, scroll to the **Setup access** section, then select **Manual**.
+1. On the **Add Cloud Asset Discovery integration** page, scroll to the **Setup access** section, then select **Manual**.
 2. For **Preferred manual method**, select **Service principal with Client Secret**.
 3. Go to the **Registered apps** section of [Microsoft Entra ID](https://ms.portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps).
 4. Click on **New Registration**, name your app and click **Register**.
 5. Copy your new app’s `Directory (tenant) ID` and `Application (client) ID`. Paste them into the corresponding fields in {{kib}}.
 6. Return to the Azure portal. Select **Certificates & secrets**, then go to the **Client secrets** tab. Click **New client secret**.
 7. Copy the new secret. Paste it into the corresponding field in {{kib}}.
-8. Return to Azure. Go to your Azure subscription list and select the subscription or management group you want to monitor with CSPM.
+8. Return to Azure. Go to your Azure subscription list and select the subscription or management group you want to monitor with Cloud Asset Discovery.
 9. Go to **Access control (IAM)** and select **Add Role Assignment**.
 10. Select the `Reader` function role, assign access to **User, group, or service principal**, and select your new app.
-11. Return to the **Add CSPM** page in {{kib}}.
-12. For **Where to add this integration**, select **New hosts**.
+11. Return to the **Add Cloud Asset Discovery integration** page in {{kib}}.
+12. In **Where to add this integration**, select **New hosts**.
 13. Click **Save and continue**, then follow the instructions to install {{agent}} on your selected host.
 
 Wait for the confirmation that {{kib}} received data from your new integration. Then you can click **View Assets** to see your data.
 
 
-### Option 3: Service principal with client certificate [cspm-azure-client-certificate]
+### Option 3: Service principal with client certificate [cad-azure-client-certificate]
 
 Before using this method, you must have set up a [Microsoft Entra application and service principal that can access resources](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in).
 
-1. On the **Add Cloud Security Posture Management (CSPM) integration** page, for **Setup access**, select **Manual**.
+1. From the **Add Cloud Asset Discovery integration** page, in **Setup access**, select **Manual**.
 2. For **Preferred manual method**, select **Service principal with client certificate**.
 3. Go to the **Registered apps** section of [Microsoft Entra ID](https://ms.portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps).
 4. Click on **New Registration**, name your app and click **Register**.
 5. Copy your new app’s `Directory (tenant) ID` and `Application (client) ID`. Paste them into the corresponding fields in {{kib}}.
-6. Return to Azure. Go to your Azure subscription list and select the subscription or management group you want to monitor with CSPM.
+6. Return to Azure. Go to your Azure subscription list and select the subscription or management group you want to monitor with Cloud Asset Discovery.
 7. Go to **Access control (IAM)** and select **Add Role Assignment**.
 8. Select the `Reader` function role, assign access to **User, group, or service principal**, and select your new app.
 
@@ -203,9 +185,9 @@ After creating your certificate:
     1. If you’re using a PEM certificate that was created using the example commands above, upload `bundle.pem`.
     2. If you’re using a pkcs12 certificate that was created using the example commands above, upload `bundle.p12`.
 
-5. Return to the **Add CSPM** page in {{kib}}.
+5. Return to the **Add Cloud Asset Discovery** page in {{kib}}.
 6. For **Client Certificate Path**, enter the full path to the certificate that you uploaded to the host where you will install {{agent}}.
-7. If you used a pkcs12 certificate, enter its password in **Client Certificate Password**.
+7. If you used a pkcs12 certificate, enter its password for **Client Certificate Password**.
 8. For **Where to add this integration**, select **New hosts**.
 9. Click **Save and continue**, then follow the instructions to install {{agent}} on your selected host.
 

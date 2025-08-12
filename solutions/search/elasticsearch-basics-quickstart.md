@@ -6,7 +6,7 @@ applies_to:
 # Basics quickstart [getting-started]
 
 
-This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents, and field type mappings](../../manage-data/data-store/index-basics.md). You’ll learn how to create an index, add data as documents, work with dynamic and explicit mappings, and perform your first basic searches.
+This quickstart provides a hands-on introduction to the fundamental concepts of {{es}}: [indices, documents, and field type mappings](../../manage-data/data-store/index-basics.md). You'll learn how to create an index, add documents, work with dynamic and explicit mappings, and perform your first basic searches.
 
 ::::{tip}
 The code examples in this tutorial are in [Console](../../explore-analyze/query-filter/tools/console.md) syntax by default. You can [convert into other programming languages](../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
@@ -15,9 +15,7 @@ The code examples in this tutorial are in [Console](../../explore-analyze/query-
 
 ## Requirements [getting-started-requirements]
 
-You can follow this guide using any {{es}} deployment. If you already have a deployment up and running, you can skip ahead to the [first step](#getting-started-index-creation).
-
-If not, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) for your options. To get started quickly, you can spin up a cluster [locally in Docker](get-started.md):
+You can follow this guide using any {{es}} deployment. If you have a deployment ready, skip ahead to the [first step](#getting-started-index-creation). If not, refer to [choose your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) to see all deployment options. To get started quickly, spin up a cluster [locally in Docker](run-elasticsearch-locally.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
@@ -45,8 +43,6 @@ The following response indicates the index was created successfully.
 
 ::::
 
-
-
 ## Step 2: Add data to your index [getting-started-add-documents]
 
 ::::{tip}
@@ -60,10 +56,10 @@ You add data to {{es}} as JSON objects called documents. {{es}} stores these doc
 
 ### Add a single document [getting-started-add-single-document]
 
-Submit the following indexing request to add a single document to the `books` index.
+Use the following request to add a single document to the `books` index.
 
-::::{tip}
-If the index didn’t already exist, this request would automatically create it.
+::::{note}
+If the index doesn't already exist, this request will automatically create it.
 
 ::::
 
@@ -97,25 +93,23 @@ The response includes metadata that {{es}} generates for the document, including
 }
 ```
 
-1. The `_index` field indicates the index the document was added to.
-2. The `_id` field is the unique identifier for the document.
-3. The `_version` field indicates the version of the document.
-4. The `result` field indicates the result of the indexing operation.
-5. The `_shards` field contains information about the number of [shards](../../deploy-manage/index.md) that the indexing operation was executed on and the number that succeeded.
-6. The `total` field indicates the total number of shards for the index.
-7. The `successful` field indicates the number of shards that the indexing operation was executed on.
-8. The `failed` field indicates the number of shards that failed during the indexing operation. *0* indicates no failures.
-9. The `_seq_no` field holds a monotonically increasing number incremented for each indexing operation on a shard.
-10. The `_primary_term` field is a monotonically increasing number incremented each time a primary shard is assigned to a different node.
+1. `_index`: The index the document was added to.
+2. `_id`: The unique identifier for the document.
+3. `_version`: The version of the document.
+4. `result`: The result of the indexing operation.
+5. `_shards`: Information about the number of [shards](../../deploy-manage/distributed-architecture/clusters-nodes-shards.md) that the indexing operation was executed on and the number that succeeded.
+6. `total`: The total number of shards for the index.
+7. `successful`: The number of shards that the indexing operation was performed on.
+8. `failed`: The number of shards that failed during the indexing operation. *0* indicates no failures.
+9. `_seq_no`: A monotonically increasing number incremented for each indexing operation on a shard.
+10. `_primary_term`: A monotonically increasing number incremented each time a primary shard is assigned to a different node.
 
 
 ::::
 
-
-
 ### Add multiple documents [getting-started-add-multiple-documents]
 
-Use the [`_bulk` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to add multiple documents in one request. Bulk data must be formatted as newline-delimited JSON (NDJSON).
+Use the [`_bulk` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to add multiple documents in a single request. Bulk data must be formatted as newline-delimited JSON (NDJSON).
 
 ```console
 POST /_bulk
@@ -130,7 +124,6 @@ POST /_bulk
 { "index" : { "_index" : "books" } }
 {"name": "The Handmaids Tale", "author": "Margaret Atwood", "release_date": "1985-06-01", "page_count": 311}
 ```
-
 You should receive a response indicating there were no errors.
 
 ::::{dropdown} Example response
@@ -227,16 +220,16 @@ You should receive a response indicating there were no errors.
 
 
 
-## Step 3: Define mappings and data types [getting-started-mappings-and-data-types]
+## Step 3: Define mappings [getting-started-mappings-and-data-types]
 
 [Mappings](../../manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings) define how data is stored and indexed in {{es}}, like a schema in a relational database.
 
 
 ### Use dynamic mapping [getting-started-dynamic-mapping]
 
-When using dynamic mapping, {{es}} automatically creates mappings for new fields by default. The documents we’ve added so far have used dynamic mapping, because we didn’t specify a mapping when creating the index.
+When you use dynamic mapping, {{es}} automatically creates mappings for new fields by default. The documents you’ve added so far have used dynamic mapping, because you didn’t specify a mapping while creating the index.
 
-To see how dynamic mapping works, add a new document to the `books` index with a field that doesn’t appear in the existing documents.
+To see how dynamic mapping works, add a new document to the `books` index with a field that isn't available in the existing documents.
 
 ```console
 POST /books/_doc
@@ -251,14 +244,14 @@ POST /books/_doc
 
 1. The new field.
 
-
 View the mapping for the `books` index with the [Get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping). The new field `language` has been added to the mapping with a `text` data type.
 
 ```console
 GET /books/_mapping
 ```
-
+The following response displays the mappings that were created by {{es}}.
 ::::{dropdown} Example response
+
 ```console-result
 {
   "books": {
@@ -309,7 +302,7 @@ GET /books/_mapping
 
 ### Define explicit mapping [getting-started-explicit-mapping]
 
-Create an index named `my-explicit-mappings-books` with explicit mappings. Pass each field’s properties as a JSON object. This object should contain the [field data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) and any additional [mapping parameters](elasticsearch://reference/elasticsearch/mapping-reference/mapping-parameters.md).
+Create an index named `my-explicit-mappings-books` and specify the mappings yourself. Pass each field’s properties as a JSON object. This object should contain the [field data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) and any additional [mapping parameters](elasticsearch://reference/elasticsearch/mapping-reference/mapping-parameters.md).
 
 ```console
 PUT /my-explicit-mappings-books
@@ -326,10 +319,10 @@ PUT /my-explicit-mappings-books
 }
 ```
 
-1. Disables dynamic mapping for the index. Fields not defined in the mapping will still be stored in the document's `_source` field, but they won’t be indexed or searchable.
-2. The `properties` object defines the fields and their data types for documents in this index.
+1. `dynamic`: Disables dynamic mapping for the index. If you don't define fields in the mapping, they'll still be stored in the document's `_source` field, but you can't index or search them.
+2. `properties`: Defines the fields and their corresponding data types.
 
-
+The following response indicates a successful operation.
 ::::{dropdown} Example response
 ```console-result
 {
@@ -350,14 +343,14 @@ Explicit mappings are defined at index creation, and documents must conform to t
 This allows you to combine explicit and dynamic mappings. Learn more about [managing and updating mappings](../../manage-data/data-store/mapping.md#mapping-manage-update).
 
 
-## Step 4: Search your index [getting-started-search-data]
+## Step 4: Search your data [getting-started-search-data]
 
 Indexed documents are available for search in near real-time, using the [`_search` API](querying-for-search.md).
 
 
 ### Search all documents [getting-started-search-all-documents]
 
-Run the following command to search the `books` index for all documents:
+Use the following request to search all documents in the `books` index:
 
 ```console
 GET books/_search
@@ -398,27 +391,25 @@ GET books/_search
 }
 ```
 
-1. The `took` field indicates the time in milliseconds for {{es}} to execute the search
-2. The `timed_out` field indicates whether the search timed out
-3. The `_shards` field contains information about the number of [shards](/reference/glossary/index.md) that the search was executed on and the number that succeeded
-4. The `hits` object contains the search results
-5. The `total` object provides information about the total number of matching documents
-6. The `max_score` field indicates the highest relevance score among all matching documents
-7. The `_index` field indicates the index the document belongs to
-8. The `_id` field is the document’s unique identifier
-9. The `_score` field indicates the relevance score of the document
-10. The `_source` field contains the original JSON object submitted during indexing
+1. `took`: The time in milliseconds for {{es}} to execute the search
+2. `timed_out`: Indicates if the search timed out
+3. `_shards`: Information about the number of [shards](/reference/glossary/index.md) that the search was performed on and the number that succeeded
+4. `hits`: Has the search results
+5. `total`: Information about the total number of matching documents
+6. `max_score`: The highest relevance score among all matching documents
+7. `_index`: The index the document belongs to
+8. `_id`: The document’s unique identifier
+9. `_score`: The relevance score of the document
+10. `_source`: The original JSON object submitted during indexing
 
 
 ::::
 
+### Search using `match` query [getting-started-match-query]
 
+Use the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
 
-### `match` query [getting-started-match-query]
-
-You can use the [`match` query](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
-
-Run the following command to search the `books` index for documents containing `brave` in the `name` field:
+Use the following request to search the `books` index for documents containing `brave` in the `name` field:
 
 ```console
 GET books/_search
@@ -465,18 +456,18 @@ GET books/_search
 }
 ```
 
-1. The `max_score` is the score of the highest-scoring document in the results. In this case, there is only one matching document, so the `max_score` is the score of that document.
+1. `max_score`: Score of the highest-scoring document in the results. In this case, there is only one matching document, so the `max_score` is the score of that document.
 
 
 ::::
 
 
 
-## Step 5: Delete your indices (optional) [getting-started-delete-indices]
+## Step 5: Delete your indices [getting-started-delete-indices]
 
-When following along with examples, you might want to delete an index to start from scratch. You can delete indices using the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
+If you want to delete an index to start from scratch at any point, use the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 
-For example, run the following command to delete the indices created in this tutorial:
+For example, use the following request to delete the indices created in this tutorial:
 
 ```console
 DELETE /books
@@ -487,3 +478,12 @@ DELETE /my-explicit-mappings-books
 Deleting an index permanently deletes its documents, shards, and metadata.
 
 ::::
+
+## Learn more [full-text-filter-tutorial-learn-more]
+
+This tutorial introduced the basics of creating indices, adding data and performing basic searches with {{es}}. The following resources will help you understand {{es}} concepts better and dive into the basics of query languages for searching data:
+
+* [Fundamentals of Elasticsearch](../../manage-data/data-store.md)
+* [Search and filter with Query DSL](querydsl-full-text-filter-tutorial.md)
+* [Search using ES|QL](esql-search-tutorial.md)
+
