@@ -55,7 +55,7 @@ The following sections describe how to find your Cloud ID and create API keys in
     :::
 
 3. Enter the API key details, and select **Create API key**.
-4. Copy and securely store the API key, as it'll not be displayed again.
+4. Copy and securely store the API key, since it won't appear again.
 
 
 ## Serverless deployments [_serverless_deployments]
