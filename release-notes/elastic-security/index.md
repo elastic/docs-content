@@ -136,9 +136,26 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
 
+## 9.0.5 [elastic-security-9.0.5-release-notes]
+
+### Features and enhancements [elastic-security-9.0.5-features-enhancements]
+* Adds the `detection_rule_upgrade_status` object to snapshot telemetry schema [#223086]({{kib-pull}}223086).
+* Reduces {{elastic-defend}} CPU when processing events from the System process on Windows.
+* Allows {{elastic-defend}} to automatically recover in some situations when it loses connectivity with {{agent}}.
+* Shortens the time it takes {{elastic-defend}} to recover from a `DEGRADED` status caused by communication issues with {{agent}}.
+* Due to an issue in macOS, {{elastic-defend}} would sometimes send network events without `user.name` populated. {{elastic-defend}} will now identify these events and populate `user.name` if necessary.
+* Reduces {{elastic-defend}} CPU usage for ETW events, API events, and Behavioral Protections. In some cases, this may be a significant reduction.
+
+
+### Fixes [elastic-security-9.0.5-fixes]
+* Fixes a bug where Security AI Assistant settings landed on the wrong page for users on the Basic license  [#229163]({{kib-pull}}229163).
+* Fixes an issue in {{elastic-defend}} performance metrics that resulted in `endpoint_uptime_percent` always being 0 for behavioral rules.
+* Fixes an issue in {{elastic-defend}} that could result in a crash if a {{ls}} output configuration is specified containing a certificate that cannot not be parsed.
+
 ## 9.0.4 [elastic-security-9.0.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.4-features-enhancements]
+* Adds the `elastic_customized_total`, `elastic_noncustomized_total`, and `is_customized` fields to snapshot telemetry schema [#222370]({{kib-pull}}222370).
 * Improves logging of fatal exceptions in {{elastic-defend}}.
 
 ### Fixes [elastic-security-9.0.4-fixes]
