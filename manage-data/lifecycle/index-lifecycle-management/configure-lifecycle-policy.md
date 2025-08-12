@@ -16,7 +16,6 @@ An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}
 This page is specifically about using {{ilm-init}} with indices or data streams. If you're looking for a simpler, less feature-rich lifecycle management option for data streams only, refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md). Check [Data lifecycle](/manage-data/lifecycle.md) to compare these lifecycle management options.
 :::
 
-
 **Consider these aspects when configuring an {{ilm-init}} policy:**
 
 * For {{ilm-init}} to manage an index or data stream, you need to specify a valid policy in the `index.lifecycle.name` index setting.
@@ -213,6 +212,8 @@ PUT _index_template/my_template
 When you set up policies for your own rolling indices and are not using the recommended [data streams](../../data-store/data-streams.md), you must manually create the first index managed by a policy and designate it as the write index.
 
 The name of the index must match the pattern defined in the index template and end with a number. This number is incremented to generate the name of indices created by the rollover action.
+
+This step is not required when you're using data streams.
 
 ::::{important}
 When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}} {{es}} output plugins, the necessary policies and configuration changes are applied automatically. If you'd like to create a specialized ILM policy for any data stream, refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
