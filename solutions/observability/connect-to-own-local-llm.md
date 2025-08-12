@@ -41,7 +41,6 @@ Once you’ve launched LM Studio:
 For security reasons, before downloading a model, verify that it is from a trusted source or by a verified author. It can be helpful to review community feedback on the model (for example using a site like Hugging Face).
 ::::
 
-
 :::{image} /solutions/images/observability-ai-assistant-lms-model-selection.png
 :alt: The LM Studio model selection interface with download options
 :::
@@ -54,11 +53,7 @@ This [`mistralai/mistral-nemo-instruct-2407`](https://lmstudio.ai/models/mistral
 | Examples: Llama, Mistral. | The number of parameters is a measure of the size and the complexity of the model. The more parameters a model has, the more data it can process, learn from, generate, and predict. | The context window defines how much information the model can process at once. If the number of input tokens exceeds this limit, input gets truncated. | Specific formats for quantization vary, most models now support GPU rather than CPU offloading. |
 
 ::::{important}
-For security reasons, before downloading a model, verify that it is from a trusted source or by a verified author. It can be helpful to review community feedback on the model (for example using a site like Hugging Face).
-::::
-
-::::{important}
-The {{obs-ai-assistant}} requires a model with a minimum 64K token context window.
+The {{obs-ai-assistant}} requires a model with at least 64,000 token context window.
 ::::
 
 ## Load a model in LM Studio [_load_a_model_in_lm_studio]
