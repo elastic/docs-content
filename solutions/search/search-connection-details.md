@@ -87,7 +87,7 @@ The **Cloud ID** is also available in the **Connection Details** section. Toggle
     :::
 
 3. Enter the API key details, and select **Create API key**.
-4. Copy and securely store the API key, as it'll not be displayed again.
+4. Copy and securely store the API key, since it won't appear again.
 
 ### Test connection [elasticsearch-get-started-test-connection]
 
