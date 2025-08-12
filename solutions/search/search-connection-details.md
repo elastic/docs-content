@@ -93,7 +93,7 @@ The **Cloud ID** is also available in the **Connection Details** section. Toggle
 
 Use [`curl`](https://curl.se) to verify your connection to {{es}}.
 
-In a terminal, assign the Elasticsearch endpoint and `encoded` API key to the `ES_URL` and `API_KEY` environment variables respectively. `curl` needs access to these values.
+In a terminal, assign the {{es}} endpoint and `encoded` API key to the `ES_URL` and `API_KEY` environment variables respectively. `curl` needs access to these values.
 
 For example:
 
