@@ -51,7 +51,7 @@ Limitations include the following:
 * **Custom integrations** – Some custom integrations that directly uses the {{es}} API may require additional handling during the cutover from the old cluster to the new cluster.
 * **Resource usage** – Initial and incremental snapshot and restore operations can be resource-intensive, potentially affecting cluster performance.
 
-## Related resources for incremental snapshots [related-incremental-snapshot-resources]
+## Additional topics [additional-incremental-snapshot-topics]
 For more information on migrating {{es}} data with minimal downtime using incremental snapshots, review the related resources. 
 
 ### Snapshot and restore
@@ -60,19 +60,18 @@ For more information on migrating {{es}} data with minimal downtime using increm
 * To learn how to restore snapshots to clusters other than the source, check [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
 
 ### Cluster and index management
-* For details on setting indices to read-only to safely pause indexing during migration, check [Pausing indexing and read-only indices](/manage-data/index-management/index-modules.md#readonly-index).
-* For guidance on managing cluster-wide settings during migration, [Managing Elasticsearch cluster settings](/manage-data/cluster/index.html).
+* For details on setting indices to read-only to safely pause indexing during migration, check [Pausing indexing and read-only indices](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md).
 
 ### Data ingestion
-* For information about using {{ls}} for data ingestion, check the [Logstash documentation](/logs/logstash/index.html).
-* For information about using Beats for data ingestion, check [Beats documentation](/beats/index.html).
+* For information about using {{ls}} for data ingestion, check the [Logstash documentation](logstash://reference/index.md).
+* For information about using Beats for data ingestion, check [Beats documentation][Beats](beats://reference/index.md).
 
 ### Alternative migration methods
-* To learn about reindexing from remote clusters as an alternative migration method, check [Reindex API](/api-docs/elasticsearch/reference/current/docs-reindex.html).
+* To learn about reindexing from remote clusters as an alternative migration method, check [Reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
 
 ### Elastic Cloud environments
-* To explore {{ech}} environments for migration targets, check the [Elastic Cloud (ECH) documentation](/cloud/index.html).
-* To explore {{ece}} environments for migration targets, check the [Elastic Cloud Enterprise (ECE) documentation](/deploy-manage/cloud-enterprise/index.html).
+* To explore {{ech}} environments for migration targets, check the [{{ech}} documentation](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
+* To explore {{ece}} environments for migration targets, check the [{{ece}} documentation](/deploy-manage/deploy/cloud-enterprise.md).
 
 ### Additional support
 * To get expert assistance for your {{es}} migrations, go to [Elastic Professional Services](https://www.elastic.co/consulting).
