@@ -24,7 +24,7 @@ When creating ingest pipelines, there are are few options for accessing fields i
 | Dot notation                   | `ctx.event.action`                                    | Supported in conditionals and painless scripts.                                 |
 | Square bracket notation        | `ctx['event']['action']`                              | Supported in conditionals and painless scripts.                                 |
 | Mixed dot and bracket notation | `ctx.event['action']`                                 | Supported in conditionals and painless scripts.                                 |
-| Field API                      | `field('event.action', '')` or `$('event.action','')` | Supported in conditionals and painless scripts. Only available in versions 9.2+ |
+| Field API  {applies_to}`stack: ga 9.2.0`                    | `field('event.action', '')` or `$('event.action','')` | Supported in conditionals and painless scripts. |
 | Field API                      | `field('event.action', '')` or `$('event.action','')` | Supported only in painless scripts.                                             |
 
 Below are some general guidelines for choosing the right option in a situation.
