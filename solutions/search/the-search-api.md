@@ -374,3 +374,38 @@ The response will not contain any hits as the `size` was set to `0`. The `hits.t
 ```
 
 The `took` time in the response contains the milliseconds that this request took for processing, beginning quickly after the node received the query, up until all search related work is done and before the above JSON is returned to the client. This means it includes the time spent waiting in thread pools, executing a distributed search across the whole cluster and gathering all the results.
+
+`_shards.failed` indicates how many shards did not successfully return results for the search request. `_shards.failures` is returned only when shard failures occur and contains an array of objects with details such as the index name, shard number, node ID, and the reason for the failure.
+
+```console-result
+"_shards": {
+  "total": 5,
+  "successful": 1,
+  "skipped": 0,
+  "failed": 4,
+  "failures": [
+    {
+      "shard": 0,
+      "index": "<index_name>",
+      "node": "<node_id>",
+      "reason": {
+        "type": "node_not_connected_exception",
+        "reason": "[<node_name>][<ip>:<port>] Node not connected"
+      }
+    },
+    {
+      "shard": 1,
+      "index": "<index_name>",
+      "node": null,
+      "reason": {
+        "type": "no_shard_available_action_exception",
+        "index_uuid": "<index_uuid>",
+        "shard": "1",
+        "index": "<index_name>"
+      }
+    }
+  ]
+}
+```
+
+Shard failures are deduplicated by `index` and `exception`. If the same exception occurs multiple times on the same index, it is reported only once in `_shards.failures`, even if multiple shards failed. As a result, the number of entries in `_shards.failures` can be lower than the value in `_shards.failed`.
