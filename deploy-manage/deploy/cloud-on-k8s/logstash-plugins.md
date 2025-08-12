@@ -206,8 +206,8 @@ This example downloads the same `postgres` JDBC driver, and adds it to the {{ls}
 
 First, create a Dockerfile based on the {{ls}} Docker image. Download the JDBC driver, and save it alongside the other JAR files in the {{ls}} classpath:
 
-```shell
-FROM docker.elastic.co/logstash/logstash:8.16.1
+```shell subs=true
+FROM docker.elastic.co/logstash/logstash:{{version.stack}}
 RUN curl -o /usr/share/logstash/logstash-core/lib/jars/postgresql.jar -L https://jdbc.postgresql.org/download/postgresql-42.6.0.jar <1>
 ```
 
@@ -323,13 +323,13 @@ Plugin categories that require special considerations are:
 
 If the pipeline *does not* contain any plugins from these categories, you can increase the number of {{ls}} instances by setting the `count` property in the {{ls}} resource:
 
-```yaml
+```yaml subs=true
 apiVersion: logstash.k8s.elastic.co/v1alpha1
 kind: Logstash
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 3
 ```
 
@@ -460,17 +460,17 @@ If you need plugins in addition to those included in the standard {{ls}} distrib
 
 This sample Dockerfile installs the [`logstash-filter-tld`](logstash-docs-md://lsr/plugins-filters-tld.md) plugin to the official {{ls}} Docker image:
 
-```shell
-FROM docker.elastic.co/logstash/logstash:8.16.1
+```shell subs=true
+FROM docker.elastic.co/logstash/logstash:{{version.stack}}
 RUN bin/logstash-plugin install logstash-filter-tld
 ```
 
 Then after building and deploying the custom image (refer to [*Create custom images*](create-custom-images.md) for more details), include it in the {{ls}} manifest:
 
-```shell
+```shell subs=true
 spec:
   count: 1
-  version: 8.16.1 <1>
+  version: {{version.stack}} <1>
   image: <CUSTOM_IMAGE>
 ```
 
