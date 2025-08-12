@@ -31,7 +31,7 @@ products:
 
 * {{ilm-init}} is available for {{ecloud}} or self-managed environments only, as a tool to help you balance hardware costs with performance for your data. {{es-serverless}} removes the need for this complexity by optimizing your cluster performance automatically. In a {{serverless-short}} environment, data stream lifecycle (see the following bullet) is available as a data lifecycle option.
 
-* If you're looking for a simpler option than using {{ilm-init}}, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a less feature rich lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers.
+* If you're looking for a simpler option than using {{ilm-init}}, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a less feature rich lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers. For a comparison of {{ilm-init}} and data stream lifecycle refer to [Data lifecycle](/manage-data/lifecycle.md).
 
 ::::{important}
 To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
