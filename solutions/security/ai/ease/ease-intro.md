@@ -6,7 +6,9 @@ applies_to:
 ---
 # Elastic AI SOC Engine with {{sec-serverless}}
 
-Elastic AI Security Operations Center (SOC) Engine (EASE) is an {{sec-serverless}} project type that provides AI-powered tools and case management to augment third-party SIEM and EDR/XDR platforms. This page describes how to create an {{sec-serverless}} EASE project, how to ingest your data, and how to use its key features.
+Elastic AI SOC Engine (EASE) is an {{sec-serverless}} project type that provides cutting-edge AI-powered tools to augment your existing SIEM and EDR/XDR platforms. Because serverless deployments are quick to deploy and easy to configure, and because all the integrations that you can use to ingest data to EASE support fast and easy [agentless](/solutions/security/get-started/agentless-integrations.md) deployment, you can start getting value from EASE in minutes.
+
+This page describes how to create an EASE project, how to ingest your data, and how to use its key features.
 
 ## Create an EASE project
 
@@ -21,9 +23,9 @@ To create an EASE project:
 2. Click **Create serverless project**, and wait for your project to be provisioned. When it's ready, open it.
 
 
-## Ingest your SOC data
+## Ingest your SIEM and EDR/XDR data
 
-To ingest your SOC data: 
+To ingest third-party security data: 
 
 1. Go to the **Configurations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -47,6 +49,8 @@ EASE provides a set of capabilities designed to help make the most of each secur
      :::{image} /solutions/images/security-attck-disc-example-disc.png
      :alt: Attack Discovery detail view
      :::
+
+     You can [schedule](/solutions/security/ai/attack-discovery.md#schedule-discoveries) Attack Discovery to run automatically, and notify you of any discoveries via a range of connectors such as Slack, Teams, PagerDuty, or email.
 
 - **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: An LLM-powered virtual assistant specialized for digital security; it helps with data analysis, alert investigation, incident response, and {{esql}} query generation. You can add custom background knowledge and data to its [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md) and use natural language to ask for its assistance with your SOC operations.
 
