@@ -70,7 +70,6 @@ You can create and manage index lifecycle policies through {{kib}}'s [Index Mana
 * [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
 * [View the lifecycle status of an index or datastream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md)
 * [Update or switch a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
-* [Start and stop index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md)
 * [Restore a managed data stream or index](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
 * [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
 
@@ -81,6 +80,10 @@ Default {{ilm}} policies are created automatically when you install an [Elastic 
 ::::{tip}
 To automatically back up your indices and manage snapshots, use [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
 ::::
+
+## Troubleshooting {{ilm-init}}
+
+In the event of any issues running {{ilm-init}}, refer to [Troubleshoot index lifecycle management](/troubleshoot/elasticsearch/start-ilm.md) for the steps to start and stop {{ilm-init}}, and to check the lifecycle status. For detailed troubleshooting steps, refer to [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md).
 
 ## Migrate to {{ilm-init}}
 

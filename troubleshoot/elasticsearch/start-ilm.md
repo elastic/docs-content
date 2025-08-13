@@ -14,30 +14,11 @@ products:
   - id: elasticsearch
 ---
 
-% TODO reframe how-to stuff as troubleshooting content
-% TODO link to proper how-to content
-% TODO dropdowns?
-% TODO where does this belong? section w/ 1 page...?
+# Troubleshoot index lifecycle management
 
+If the automatic [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) or [{{slm}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) ({{slm-init}}) service is not working, you might need to check the lifecycle status, stop, or restart the service. You may also want to halt services during routine maintenance.
 
-# Troubleshoot index and snapshot lifecycle management
-
-If the automatic {{ilm}} or {{slm}} service is not working, you might need to start the service.
-
-% see also fix-watermark-errors.md
-
-## Start index lifecycle management [start-ilm]
-
-Automatic index lifecycle and data retention management is currently disabled.
-
-In order to start the automatic {{ilm}} service, follow these steps:
-
-:::::::{tab-set}
-
-::::::{tab-item} {{ech}}
-In order to start {{ilm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start).
-
-**Use {{kib}}**
+All of the procedures on this page use the {{es}} APIs. To run these steps using {{kib}}:
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** panel, click the name of your deployment.
@@ -53,37 +34,79 @@ In order to start {{ilm}} we need to go to Kibana and execute the [start command
     :screenshot:
     :::
 
-4. [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}:
+4. Use the Dev Tools Console to run the API requests as described.
 
-    ```console
-    POST _ilm/start
-    ```
+## Check status, stop, and restart {{ilm-init}}  [check-stop-start-ilm]
 
-    The response will look like this:
+Follow these steps to check the current {{ilm-init}} status, and to start or restop the lifecycle management as needed.
 
-    ```console-result
-    {
-      "acknowledged": true
-    }
-    ```
+### Get {{ilm-init}} status 
 
-5. Verify {{ilm}} is now running:
+To see the current status of the {{ilm-init}} service, use the [Get Status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-get-status):
 
-    ```console
-    GET _ilm/status
-    ```
+```console
+GET _ilm/status
+```
 
-    The response will look like this:
+Under normal operation, the response shows {{ilm-init}} is `RUNNING`:
 
-    ```console-result
-    {
-      "operation_mode": "RUNNING"
-    }
-    ```
-::::::
+```console-result
+{
+  "operation_mode": "RUNNING"
+}
+```
 
-::::::{tab-item} Self-managed
-[Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}:
+### Stop {{ilm-init}} 
+
+You can stop {{ilm}} to suspend management operations for all indices. For example, you might stop {{ilm}} when performing scheduled maintenance or making changes to the cluster that could impact the execution of {{ilm-init}} actions.
+
+To stop the {{ilm-init}} service and pause execution of all lifecycle policies, use the [Stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop):
+
+```console
+POST _ilm/stop
+```
+
+The response will look like this:
+
+```console-result
+{
+  "acknowledged": true
+}
+```
+
+The {{ilm-init}} service runs all policies to a point where it is safe to stop. 
+
+While the {{ilm-init}} service is shutting down, run the status API to verify that {{ilm-init}} is stopping:
+
+```console
+GET _ilm/status
+```
+
+The response will look like this:
+
+```console-result
+{
+  "operation_mode": "STOPPING"
+}
+```
+
+Once all policies are at a safe stopping point, {{ilm-init}} moves into the `STOPPED` mode:
+
+```console-result
+{
+  "operation_mode": "STOPPED"
+}
+```
+
+::::{important}
+When you stop {{ilm-init}}, [{{slm-init}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) operations are also suspended. No snapshots will be taken as scheduled until you restart {{ilm-init}}. In-progress snapshots are not affected.
+::::
+
+### Start {{ilm-init}} [start-ilm]
+
+If the automatic {{ilm}} or {{slm}} service is not working, you might need to start the service.
+
+To restart {{ilm-init}} and resume executing policies, use the [Start API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start). This puts the  {{ilm-init}} service in the `RUNNING` state and {{ilm-init}} begins executing policies from where it left off.
 
 ```console
 POST _ilm/start
@@ -97,7 +120,7 @@ The response will look like this:
 }
 ```
 
-Verify {{ilm}} is now running:
+Verify that {{ilm}} is now running:
 
 ```console
 GET _ilm/status
@@ -110,67 +133,68 @@ The response will look like this:
   "operation_mode": "RUNNING"
 }
 ```
-::::::
 
-:::::::
+## Check status, stop, and restart {{slm-init}} [check-stop-start-slm]
 
-## Start snapshot lifecycle management [start-slm]
+Follow these steps to check the current {{slm-init}} status, and to start or restop the lifecycle management as needed.
 
-Automatic snapshot lifecycle management is currently disabled. New backup snapshots will not be created automatically.
+### Get {{slm-init}} status 
 
-In order to start the snapshot lifecycle management service, follow these steps:
+To see the current status of the {{slm-init}} service, use the [Get Status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-status):
 
-:::::::{tab-set}
+```console
+GET _slm/status
+```
 
-::::::{tab-item} {{ech}}
-In order to start {{slm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start).
+Under normal operation, the response shows {{slm-init}} is `RUNNING`:
 
-**Use {{kib}}**
+```console-result
+{
+  "operation_mode": "RUNNING"
+}
+```
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** panel, click the name of your deployment.
+### Stop {{slm-init}} 
 
-    ::::{note}
-    If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-    ::::
+You can stop {{slm}} to suspend management operations for all snapshot. For example, you might stop {{slm}} o prevent it from taking scheduled snapshots during maintenance or when making cluster changes that could be impacted by snapshot operations.
 
-3. Open your deployment’s side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Dev Tools > Console**.
 
-    :::{image} /troubleshoot/images/elasticsearch-reference-kibana-console.png
-    :alt: {{kib}} Console
-    :screenshot:
-    :::
+To stop the {{slm-init}} service and pause execution of all lifecycle policies, use the [Stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-stop):
 
-4. [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start) {{slm}}:
+```console
+POST _slm/stop
+```
 
-    ```console
-    POST _slm/start
-    ```
+Stopping {{slm-init}} does not stop any snapshots that are in progress. You can manually trigger snapshots with the run snapshot lifecycle policy API even if {{slm-init}} is stopped.
 
-    The response will look like this:
+The response will look like this:
 
-    ```console-result
-    {
-      "acknowledged": true
-    }
-    ```
+```console-result
+{
+  "acknowledged": true
+}
+```
 
-5. Verify {{slm}} is now running:
+Verify that {{slm}} has stopped:
 
-    ```console
-    GET _slm/status
-    ```
+```console
+GET _slm/status
+```
 
-    The response will look like this:
+The response will look like this:
 
-    ```console-result
-    {
-      "operation_mode": "RUNNING"
-    }
-    ```
-::::::
+```console-result
+{
+  "operation_mode": "STOPPED"
+}
+```
 
-::::::{tab-item} Self-managed
+### Start {{slm}} [start-slm]
+
+In the event that automatic snapshot lifecycle management is disabled, new backup snapshots will not be created automatically.
+
+Follow these steps to start the snapshot lifecycle management service:
+
 [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start) {{slm}}:
 
 ```console
@@ -198,6 +222,3 @@ The response will look like this:
   "operation_mode": "RUNNING"
 }
 ```
-::::::
-
-:::::::
