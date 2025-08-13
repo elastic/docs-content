@@ -359,8 +359,13 @@ You can set the minimum log level that {{agents}} using the selected policy will
 
 You can also set the log level for an individual agent:
 
-1. In {{fleet}}, click **Agents**. Under the **Host** header, select the {{agent}} you want to edit.
-2. On the **Logs** tab, set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
+1. In {{fleet}}, click **Agents**. In the **Host** column, select the agent you want to edit. 
+2. Find the **Agent logging level** setting:
+   
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1.0` On the agent's **Settings** tab.
+   - {applies_to}`stack: ga 9.0.0` On the agent's **Logs** tab.
+
+3. Set the **Agent logging level** and apply your changes. Or, you can choose to reset the agent to use the logging level specified in the agent policy.
 
 
 ## Change the {{agent}} binary download location [agent-binary-download-settings]
