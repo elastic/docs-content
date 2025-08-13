@@ -47,7 +47,7 @@ While incremental snapshots allow efficient migration with minimal downtime, con
 Limitations include the following:
 * **Storage requirements** – Sufficient repository storage is required, and usage can grow based on snapshot frequency and data volume.
 * **Network overhead** – Transferring snapshots across networks, regions, or providers can be time-consuming and incur costs.
-* **Version compatibility** – Old and new clusters must use compatible {{es}} versions. To check if your cluster versions are compatible, check [Snapshot compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility).
+* **Version compatibility** – Old and new clusters must use compatible {{es}} versions. To check if your cluster versions are compatible, check [Snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility).
 * **Custom integrations** – Some custom integrations that directly use the {{es}} API can require additional handling during the cutover from the old cluster to the new cluster.
 * **Resource usage** – Initial and incremental snapshot and restore operations can be resource-intensive, potentially affecting cluster performance.
 
