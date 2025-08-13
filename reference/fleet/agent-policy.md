@@ -359,7 +359,7 @@ You can set the minimum log level that {{agents}} using the selected policy will
 
 You can also set the log level for an individual agent:
 
-1. In {{fleet}}, click **Agents**. In the **Host** column, select the {{agent}} you want to edit. 
+1. In {{fleet}}, click **Agents**. In the **Host** column, select the agent you want to edit. 
 2. Find the **Agent logging level** setting:
    
    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1.0` On the agent's **Settings** tab.
