@@ -59,7 +59,7 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 
 ## Export as a file [manually-generate-reports]
 
-:::
+:::{note}
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md.md)
 :::
 
