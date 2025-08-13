@@ -21,11 +21,11 @@ If your Elastic deployment is not on the same network, you would need to configu
 
 This example uses a server hosted in GCP to configure LM Studio with the [Mistral-Nemo-Instruct-2407](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407) model.
 
-### Already running LM Studio? [_skip_if_already_running]
+### Already running LM Studio? [skip-if-already-running]
 
-If LM Studio is already installed, the server is running, and you have a model loaded (with a context window of at least 64K tokens), you can skip directly to [Configure the connector in your Elastic deployment](#configure-the-connector-in-your-elastic-deployment-_configure_the_connector_in_your_elastic_deployment).
+If LM Studio is already installed, the server is running, and you have a model loaded (with a context window of at least 64K tokens), you can skip directly to [Configure the connector in your Elastic deployment](#configure-the-connector-in-your-elastic-deployment).
 
-## Configure LM Studio and download a model [_configure_lm_studio_and_download_a_model]
+## Configure LM Studio and download a model [configure-lm-studio-and-download-a-model]
 
 LM Studio supports the OpenAI SDK, which makes it compatible with Elastic’s OpenAI connector, allowing you to connect to any model available in the LM Studio marketplace.
 
@@ -68,11 +68,11 @@ This [`mistralai/mistral-nemo-instruct-2407`](https://lmstudio.ai/models/mistral
 The {{obs-ai-assistant}} requires a model with at least 64,000 token context window.
 ::::
 
-## Load a model in LM Studio [_load_a_model_in_lm_studio]
+## Load a model in LM Studio [load-a-model-in-lm-studio]
 
 After downloading a model, load it in LM Studio using the GUI or LM Studio’s [CLI tool](https://lmstudio.ai/docs/cli/load).
 
-### Option 1: Load a model using the CLI (Recommended) [_option_1_load_a_model_using_the_cli_recommended]
+### Option 1: Load a model using the CLI (Recommended) [option-1-load-a-model-using-the-cli-recommended]
 
 Once you’ve downloaded a model, use the following commands in your CLI:
 
@@ -104,7 +104,7 @@ To verify which model is loaded, use the `lms ps` command.
 
 If your model uses NVIDIA drivers, you can check the GPU performance with the `sudo nvidia-smi` command.
 
-### Option 2: Load a model using the GUI [_option_2_load_a_model_using_the_gui]
+### Option 2: Load a model using the GUI [option-2-load-a-model-using-the-gui]
 
 Once the model is downloaded, it will appear in the "My Models" window in LM Studio.
 
@@ -121,7 +121,7 @@ Once the model is downloaded, it will appear in the "My Models" window in LM Stu
 :alt: Loading a model in LM studio developer tab
 :::
 
-## Configure the connector in your Elastic deployment [_configure_the_connector_in_your_elastic_deployment]
+## Configure the connector in your Elastic deployment [configure-the-connector-in-your-elastic-deployment]
 
 Finally, configure the connector:
 
