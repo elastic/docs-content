@@ -31,7 +31,15 @@ LM Studio supports the OpenAI SDK, which makes it compatible with Elastic’s Op
 
 As the first step, install [LM Studio](https://lmstudio.ai/).
 
-You must launch the application using its GUI before being able to use the CLI. For example, Chrome RDP with an [X Window System](https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine) can be used for this purpose. After you’ve opened the application for the first time using the GUI, you can start the server by using `sudo lms server start` in the [CLI](https://lmstudio.ai/docs/cli/server-start).
+You must launch the application using its GUI before being able to use the CLI.
+
+::::{note}
+For local/on‑prem desktop: Launch LM studio directly.
+For GCP, Chrome RDP with an [X Window System](https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine) can be used for this purpose.
+For other cloud platforms: Any secure remote desktop (RDP, VNC over SSH tunnel, or X11 forwarding) works as long as you can open the LM Studio GUI once.
+::::
+
+After you’ve opened the application for the first time using the GUI, you can start the server by using `sudo lms server start` in the [CLI](https://lmstudio.ai/docs/cli/server-start).
 
 Once you’ve launched LM Studio:
 
