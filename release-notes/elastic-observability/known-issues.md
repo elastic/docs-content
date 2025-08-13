@@ -110,17 +110,17 @@ Applies to: {{stack}} 9.x, 8.x
 
 **Details**
 
-After upgrading a cluster, it may happen that Collector and Symbolizer endpoints are not configured, even though Universal Profiling has been set up in Kibana and the "Add data" instructions are shown on the Universal Profiling landing page.
+After upgrading a cluster, Collector and Symbolizer endpoints may not be configured even when Universal Profiling is enabled in Kibana and the "Add data" instructions appear on the Universal Profiling landing page.
 
 **Workaround**
 
-1. Run the following query and retrieve the `id` of the `elastic-universal-profiling-collector` and `elastic-universal-profiling-symbolizer` package policy
+1. Run the following query to retrieve the `id`s of the `elastic-universal-profiling-collector` and `elastic-universal-profiling-symbolizer` package policies:
 
     ```sh
     GET kbn:/api/fleet/package_policies
     ```
 
-2. Execute the deletion.
+2. Delete the package policies:
 
     ```sh
     DELETE kbn:/api/fleet/package_policies/<elastic-universal-profiling-collector-id>?force=true
