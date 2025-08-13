@@ -59,6 +59,10 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 
 ## Export as a file [manually-generate-reports]
 
+:::
+For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md.md)
+:::
+
 Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads.
 
 * **PDF** — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
