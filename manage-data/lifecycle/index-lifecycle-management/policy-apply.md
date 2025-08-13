@@ -8,9 +8,14 @@ products:
 
 # Manually apply a lifecycle policy to an index [apply-policy-manually]
 
-When you create new {{es}} index you can use an index template to apply the lifecycle policy by which the index will be managed. This process is described in [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md).
+When you create a new {{es}} index, if the index name matches an index pattern configured in an [index template](/manage-data/data-store/templates.md#index-templates), the new index automatically inherits any settings, mappings, and aliases that are defined in the index template or in any component templates that the index template references. If the template specifies a lifecycle policy, that policy is applied automatically to the newly created index. This process is described in detail in [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md).
 
-You can also manually apply a lifecycle policy to an existing index, as described on this page. If an index is currently managed by an ILM policy you must first remove that policy before applying a new one. Refer to [Switch to a different lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies) for details.
+You can also apply a lifecycle policy manually to existing indices, as described on this page. This is useful if you want to:
+ * Configure the indices to move through different [data tiers](/manage-data/lifecycle/data-tiers.md) as they age.
+ * Perform [lifecycle actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) such as downsampling or shrinking.
+ * Delete the indices when they reach a certain age.
+
+If an index is currently managed by an ILM policy you must first remove that policy before applying a new one. Refer to [Switch to a different lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies) for details.
 
 You can do this procedure in {{kib}} or using the {{es}} API.
 
