@@ -14,6 +14,10 @@ EASE provides a small subset of the features available on other {{sec-serverless
 
 For a full breakdown of the features available in the Security Analytics Essentials and Security Analytics Complete feature tiers, refer to [Elastic Security Serverless pricing](https://www.elastic.co/pricing/serverless-security).
 
+:::{important}
+The AI features present in EASE are not available on the Essentials tier. 
+:::
+
 
 ## How to upgrade from EASE to other feature tiers
 
@@ -35,7 +39,7 @@ For a full breakdown of the features available in the Security Analytics Essenti
 4. Select either the **Security Analytics Essentials** or **Security Analytics Complete** options, and select any desired add-on options. Click **Save**. 
 
 You can return to this page at any point to switch between Essentials and Complete and change your add-on selections.
-However, once you upgrade from EASE to another product tier, you cannot revert or downgrade the project back to EASE. 
+However, once you upgrade from EASE to another product tier, you cannot revert or downgrade the project back to EASE. You can always create another new project of any tier.
 
 ## What to do after upgrading an EASE project
 
