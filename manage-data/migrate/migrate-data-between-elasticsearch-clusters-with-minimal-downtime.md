@@ -10,6 +10,7 @@ products:
   - id: elasticsearch
   - id: cloud-hosted
   - id: cloud-enterprise
+  - id: cloud-kubernetes
 ---
 
 # Migrate {{es}} data with minimal downtime [migrate-elasticsearch-data-with-minimal-downtime]
