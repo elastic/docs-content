@@ -11,7 +11,7 @@ products:
 # Install {{kib}} with Docker [docker]
 
 
-Docker images for {{kib}} are available from the Elastic Docker registry. The base image is [ubuntu:20.04](https://hub.docker.com/_/ubuntu).
+Docker [images for {{kib}}](https://hub.docker.com/_/kibana) are available from the Elastic Docker registry. The base image is Red Hat Universal Base Images (UBI) or Wolfi.
 
 A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co). The source code is in [GitHub](https://github.com/elastic/dockerfiles/tree/master/kibana).
 
