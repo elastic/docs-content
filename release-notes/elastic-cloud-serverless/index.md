@@ -27,7 +27,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 ### Fixes [serverless-changelog-08112025-fixes]
 * Removes unnecessary promises in dashboards [#230313]({{kib-pull}}230313)
 * Fixes date math plus sign encoding in dashboards [#230469]({{kib-pull}}230469)
-* Logs a warning if filter and query state are malformed in dasbhoards [#230088]({{kib-pull}}230088)
+* Logs a warning if filter and query state are malformed in dashboards [#230088]({{kib-pull}}230088)
 * Fixes duplicate panel action hangs when a dashboard has collapsed sections closed on page load [#230842]({{kib-pull}}230842)
 * Fixes a screen reader–only header for accessibility in dashboards [#230470]({{kib-pull}}230470)
 * Fixes missing validation errors in the package policy editor in Fleet [#229932]({{kib-pull}}229932)
