@@ -14,7 +14,7 @@ products:
   - id: elasticsearch
 ---
 
-# Troubleshoot index lifecycle management
+# Troubleshoot index and snapshot lifecycle management
 
 If the automatic [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) or [{{slm}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) ({{slm-init}}) service is not working, you might need to check the lifecycle status, stop, or restart the service. You may also want to halt services during routine maintenance.
 
