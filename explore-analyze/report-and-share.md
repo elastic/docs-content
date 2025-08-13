@@ -59,10 +59,9 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 
 ## Export as a file [manually-generate-reports]
 
-::::{note}
-For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/explore-analyze/report-and-share.md)
-::::
-
+:::{note}
+For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
+:::
 
 Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads.
 
@@ -106,13 +105,15 @@ In the following dashboard, the shareable container is highlighted:
 3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
     ::::{note}
-    To generate the report from outside of {{kib}} or from {{watcher}}, use the POST URL, then submit an HTTP `POST` request using a script or {{watcher}}. In {{stack}} 9.1, you can schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more. 
+    To generate the report from outside of {{kib}} or from {{watcher}}, use the POST URL, then submit an HTTP `POST` request using a script or {{watcher}}.
+
+    {applies_to}`stack: ga 9.1` You can schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more. 
     ::::
 
 Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management > Alerts and Insights > Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
 
 ::::{note}
-In self-managed and Cloud hosted deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
+In self-managed installations and {{ech}} deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 ::::
 
 ### CSV report limitations [csv-limitations]
@@ -157,7 +158,7 @@ Create and share JSON files for workpads.
 ::::{note}
 :name: reporting-on-cloud-resource-requirements
 
-For Elastic Cloud hosted deployments, {{kib}} instances require a minimum of 2GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
+For {{ech}} deployments, {{kib}} instances require a minimum of 2GB RAM to generate PDF or PNG reports. To change {{kib}} sizing, [edit the deployment](https://cloud.elastic.co?page=docs&placement=docs-body).
 ::::
 
 
