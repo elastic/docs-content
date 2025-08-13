@@ -21,7 +21,7 @@ Migrating with incremental snapshots is useful when you want to:
 * Ensure data ingestion, such as {{ls}} or {{beats}}, and data consumption, such as applications using {{es}} as a backend, seamlessly migrate to the new cluster.
 * Maintain data consistency and minimize disruption.  
 
-## How incremental snapshots works [how-incremental-snapshots-work]
+## How incremental snapshots work [how-incremental-snapshots-work]
 Incremental snapshots capture only the data that has changed since the previous snapshot. 
 
 After the initial full snapshot, each subsequent snapshot contains only the differences, which makes the snapshot process faster over time. When you restore snapshots, only the missing data segments are copied from the snapshot repository to the cluster local storage, speeding up restores when the changes between snapshots are small.
