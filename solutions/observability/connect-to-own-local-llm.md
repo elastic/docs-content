@@ -19,11 +19,11 @@ You do not have to set up a proxy if LM studio is configured on the same network
 If your Elastic deployment is not on the same network, you would need to configure a reverse proxy using Nginx to authenticate with Elastic. Refer [Configure your reverse proxy](https://www.elastic.co/docs/solutions/security/ai/connect-to-own-local-llm#_configure_your_reverse_proxy) for more detailed instructions.
 ::::
 
+This example uses a server hosted in GCP to configure LM Studio with the [Mistral-Nemo-Instruct-2407](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407) model.
+
 ### Already running LM Studio? [_skip_if_already_running]
 
-If LM Studio is already installed, the server is running, and you have a model loaded (with a context window of at least 64K tokens), you can skip directly to [Configure the connector in your Elastic deployment](#_configure_the_connector_in_your_elastic_deployment).
-
-This example uses a server hosted in GCP to configure LM Studio with the [Mistral-Nemo-Instruct-2407](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407) model.
+If LM Studio is already installed, the server is running, and you have a model loaded (with a context window of at least 64K tokens), you can skip directly to [Configure the connector in your Elastic deployment](#configure-the-connector-in-your-elastic-deployment-_configure_the_connector_in_your_elastic_deployment).
 
 ## Configure LM Studio and download a model [_configure_lm_studio_and_download_a_model]
 
