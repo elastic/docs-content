@@ -117,6 +117,10 @@ Once the model is downloaded, it will appear in the "My Models" window in LM Stu
 3. Click on "Select a model to load" and pick the model `Mistral Nemo Instruct 2407` from the dropdown menu.
 4. Navigate to the "Load" on the right side of the LM Studio window, to adjust the context window to 64,000. Reload the model to apply the changes.
 
+::::{note}
+To enable other devices in the same network access the server, turn on "Serve on Local Network" via Settings.
+::::
+
 :::{image} /solutions/images/obs-ai-assistant-lm-studio-load-model-gui.png
 :alt: Loading a model in LM studio developer tab
 :::
