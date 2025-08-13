@@ -39,9 +39,9 @@ James S.A. Corey |Leviathan Wakes     |561            |2011-06-02T00:00:00.000Z
 ```
 
 
-### Kibana Console [esql-kibana-console]
+### Run the {{esql}} query API in Console [esql-kibana-console]
 
-If you are using [Kibana Console](/explore-analyze/query-filter/tools/console.md) (which is highly recommended), take advantage of the triple quotes `"""` when creating the query. This not only automatically escapes double quotes (`"`) inside the query string but also supports multi-line requests:
+We recommend using [Console](/explore-analyze/query-filter/tools/console.md) to run the {{esql}} query API. When creating the query, using triple quotes (`"""`) allows you to use special characters like quotes (`"`) without having to escape them. They also make it easier to write multi-line requests:
 
 ```console
 POST /_query?format=txt
@@ -54,31 +54,55 @@ POST /_query?format=txt
   """
 }
 ```
-
+:::{include} /explore-analyze/query-filter/_snippets/console-esql-autocomplete.md
+:::
 
 ### Response formats [esql-rest-format]
 
 {{esql}} can return the data in the following human readable and binary formats. You can set the format by specifying the `format` parameter in the URL or by setting the `Accept` or `Content-Type` HTTP header.
 
+For example:
+
+```console
+POST /_query?format=yaml
+```
+
 ::::{note}
 The URL parameter takes precedence over the HTTP headers. If neither is specified then the response is returned in the same format as the request.
 ::::
 
+#### Structured formats
+
+Complete responses with metadata. Useful for automatic parsing.
 
 | `format` | HTTP header | Description |
 | --- | --- | --- |
-| Human readable |
-| `csv` | `text/csv` | [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) |
 | `json` | `application/json` | [JSON](https://www.json.org/) (JavaScript Object Notation) human-readable format |
+| `yaml` | `application/yaml` | [YAML](https://en.wikipedia.org/wiki/YAML) (YAML Ain’t Markup Language) human-readable format |
+
+#### Tabular formats
+
+Query results only, without metadata. Useful for quick and manual data previews.
+
+| `format` | HTTP header | Description |
+| --- | --- | --- |
+| `csv` | `text/csv` | [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) |
 | `tsv` | `text/tab-separated-values` | [Tab-separated values](https://en.wikipedia.org/wiki/Tab-separated_values) |
 | `txt` | `text/plain` | CLI-like representation |
-| `yaml` | `application/yaml` | [YAML](https://en.wikipedia.org/wiki/YAML) (YAML Ain’t Markup Language) human-readable format |
-| Binary |
+
+::::{tip}
+The `csv` format accepts a formatting URL query attribute, `delimiter`, which indicates which character should be used to separate the CSV values. It defaults to comma (`,`) and cannot take any of the following values: double quote (`"`), carriage-return (`\r`) and new-line (`\n`). The tab (`\t`) can also not be used. Use the `tsv` format instead.
+::::
+
+#### Binary formats
+
+Compact binary encoding. To be used by applications.
+
+| `format` | HTTP header | Description |
+| --- | --- | --- |
 | `cbor` | `application/cbor` | [Concise Binary Object Representation](https://cbor.io/) |
 | `smile` | `application/smile` | [Smile](https://en.wikipedia.org/wiki/Smile_(data_interchange_format)) binary data format similarto CBOR |
 | `arrow` | `application/vnd.apache.arrow.stream` | **Experimental.** [Apache Arrow](https://arrow.apache.org/) dataframes, [IPC streaming format](https://arrow.apache.org/docs/format/Columnar.html#ipc-streaming-format) |
-
-The `csv` format accepts a formatting URL query attribute, `delimiter`, which indicates which character should be used to separate the CSV values. It defaults to comma (`,`) and cannot take any of the following values: double quote (`"`), carriage-return (`\r`) and new-line (`\n`). The tab (`\t`) can also not be used. Use the `tsv` format instead.
 
 
 ### Filtering using {{es}} Query DSL [esql-rest-filtering]
@@ -299,8 +323,31 @@ If the response’s `is_running` value is `false`, the query has finished and th
 }
 ```
 
+To stop a running async query and return the results computed so far, use the [async stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-stop) with the query ID.
+
+```console
+POST /_query/async/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=/stop
+```
+The query will be stopped and the response will contain the results computed so far. The response format is the same as the `get` API.
+
+```console-result
+{
+  "is_running": false,
+  "took": 48,
+  "is_partial": true,
+  "columns": ...
+}
+```
+This API can be used to retrieve results even if the query has already completed, as long as it's within the `keep_alive` window.
+The `is_partial` field indicates result completeness. A value of `true` means the results are potentially incomplete.
+
 Use the [{{esql}} async query delete API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-delete) to delete an async query before the `keep_alive` period ends. If the query is still running, {{es}} cancels it.
 
 ```console
 DELETE /_query/async/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=
 ```
+
+::::{note}
+You will also receive the async ID and running status in the `X-Elasticsearch-Async-Id` and `X-Elasticsearch-Async-Is-Running` HTTP headers of the response, respectively.
+Useful if you use a tabular text format like `txt`, `csv` or `tsv`, as you won't receive those fields in the body there.
+::::
