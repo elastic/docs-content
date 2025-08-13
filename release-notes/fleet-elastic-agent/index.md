@@ -124,7 +124,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 **Fleet Server**
 
-* Fix Upgrade Details Download_rate As String Handling. [#5217]({{fleet-server-pull}}5217) [#5227]({{fleet-server-pull}}5227) [#5176]({{fleet-server-pull}}5176) [#5164]({{fleet-server-issue}}5164)
+* Fix upgrade details `download_rate` as string handling. [#5217]({{fleet-server-pull}}5217) [#5227]({{fleet-server-pull}}5227) [#5176]({{fleet-server-pull}}5176) [#5164]({{fleet-server-issue}}5164)
 
 ## 9.0.4 [fleet-elastic-agent-9.0.4-release-notes]
 
