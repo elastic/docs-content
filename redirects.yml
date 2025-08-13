@@ -308,5 +308,5 @@ redirects:
   'solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
   'solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
 
-# Related to 
+# Related to https://github.com/elastic/docs-content/pull/2569
   'manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md': 'troubleshoot/elasticsearch/start-ilm.md'
