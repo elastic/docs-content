@@ -15,7 +15,7 @@ products:
 
 Visualize and group detection alerts by specific parameters in the visualization section of the Alerts page.
 
-:::{image} /solutions/images/security-alert-page-visualizations.png
+:::{image} /solutions/images/security-alert-page.png
 :alt: Alerts page with visualizations section highlighted
 :screenshot:
 :::
