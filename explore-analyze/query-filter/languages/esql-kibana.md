@@ -52,11 +52,7 @@ A source command can be followed by one or more [processing commands](elasticsea
 Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries that will help you get started.
 ::::
 
-
-To make it easier to write queries, auto-complete offers suggestions with possible commands and functions:
-
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-auto-complete.png
-:alt: esql kibana auto complete
+:::{include} /explore-analyze/query-filter/_snippets/discover-esql-autocomplete.md
 :::
 
 ::::{note}
@@ -279,7 +275,7 @@ You can also [Add dashboard controls from your ES|QL visualization's query](/exp
 
 ## Create an enrich policy [esql-kibana-enrich]
 
-The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
+The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by autocomplete. If not, click **Click to create** to create one.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete

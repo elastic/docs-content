@@ -253,6 +253,11 @@ For example, exclude results from the ecommerce sample data view where day of we
 4. Continue your exploration by adding more filters.
 5. To remove a filter, click the close icon (x) next to its name in the filter bar.
 
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
+:::
+
 
 ### Search and filter using ES|QL [_search_and_filter_using_esql]
 
@@ -282,7 +287,7 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 
 ### Share your Discover session [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Generate alerts [alert-from-Discover]
