@@ -1,3 +1,10 @@
+<!--
+This snippet is in use in the following locations:
+- /deploy-manage/remote-clusters/remote-clusters-cert.md
+- /deploy-manage/remote-clusters/ece-enable-ccs.md
+- /deploy-manage/remote-clusters/ec-enable-ccs.md
+-->
+
 :::::{dropdown} Version compatibility table
 
 * Any node can communicate with another node on the same major version. For example, 9.0 can talk to any 9.x node.
