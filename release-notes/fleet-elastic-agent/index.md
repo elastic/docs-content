@@ -26,6 +26,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.1.2 [fleet-elastic-agent-9.1.2-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.1.2-features-enhancements]
+
+There are no new features or enhancements in this release.
+
+### Fixes [fleet-elastic-agent-9.1.2-fixes]
+
+There are no fixes in this release.
+
 ## 9.1.1 [fleet-elastic-agent-9.1.1-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.1.1-features-enhancements]
