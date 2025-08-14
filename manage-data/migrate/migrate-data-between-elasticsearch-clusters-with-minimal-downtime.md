@@ -79,11 +79,6 @@ For more information on migrating {{es}} data with minimal downtime using increm
 
 * To learn about reindexing from remote clusters as an alternative migration method, check [Reindex from a remote cluster](/manage-data/migrate.md#ech-reindex-remote).
 
-### Elastic Cloud environments
-
-* To explore {{ech}} environments for migration targets, check the [{{ech}} documentation](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
-* To explore {{ece}} environments for migration targets, check the [{{ece}} documentation](/deploy-manage/deploy/cloud-enterprise.md).
-
 ### Additional support
 
 * To get expert assistance for your {{es}} migrations, go to [Elastic Professional Services](https://www.elastic.co/consulting).
