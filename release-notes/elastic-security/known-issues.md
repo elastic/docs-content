@@ -29,6 +29,10 @@ The {{elastic-agent}} image is not available from `docker.elastic.co/beats/elast
 **Workaround**
 
 Instead of trying to pull the image from `docker.elastic.co/beats/elastic-agent:9.0.0`, edit the manifests to pull it from `docker.elastic.co/elastic-agent/elastic-agent:9.0.0`.
+
+**Resolved**<br>
+
+Resolved in {{stack}} 9.0.1
 :::
 
 

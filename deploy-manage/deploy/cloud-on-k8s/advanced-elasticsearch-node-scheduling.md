@@ -30,13 +30,13 @@ You can use [YAML anchors](https://yaml.org/spec/1.2/spec.html#id2765878) to dec
 
 This allows you to describe an {{es}} cluster with 3 dedicated master nodes, for example:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   # 3 dedicated master nodes
   - name: master
@@ -59,13 +59,13 @@ You can set up various [affinity and anti-affinity options](https://kubernetes.i
 
 To avoid scheduling several {{es}} nodes from the same cluster on the same host, use a `podAntiAffinity` rule based on the hostname and the cluster name label:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -84,13 +84,13 @@ spec:
 
 This is ECK default behavior if you don’t specify any `affinity` option. To explicitly disable the default behavior, set an empty affinity object:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -101,13 +101,13 @@ spec:
 
 The default affinity is using `preferredDuringSchedulingIgnoredDuringExecution`, which acts as best effort and won’t prevent an {{es}} node from being scheduled on a host if there are no other hosts available. Scheduling a 4-nodes {{es}} cluster on a 3-host Kubernetes cluster would then successfully schedule 2 {{es}} nodes on the same host. To enforce a strict single node per host, specify `requiredDuringSchedulingIgnoredDuringExecution` instead:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -143,13 +143,13 @@ volumeBindingMode: WaitForFirstConsumer
 
 To restrict the scheduling to a particular set of Kubernetes nodes based on labels, use a [NodeSelector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector). The following example schedules {{es}} Pods on Kubernetes nodes tagged with both labels `diskType: ssd` and `environment: production`.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -162,13 +162,13 @@ spec:
 
 You can achieve the same (and more) with [node affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature):
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -217,7 +217,7 @@ The following example demonstrates how to use the `topology.kubernetes.io/zone` 
 
 Note that by default ECK creates a `k8s_node_name` attribute with the name of the Kubernetes node running the Pod, and configures {{es}} to use this attribute. This ensures that {{es}} allocates primary and replica shards to Pods running on different Kubernetes nodes and never to Pods that are scheduled onto the same Kubernetes node. To preserve this behavior while making {{es}} aware of the availability zone, include the `k8s_node_name` attribute in the comma-separated `cluster.routing.allocation.awareness.attributes` list.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
@@ -225,7 +225,7 @@ metadata:
     eck.k8s.elastic.co/downward-node-labels: "topology.kubernetes.io/zone"
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -263,13 +263,13 @@ This example relies on:
 
 By combining [{{es}} shard allocation awareness](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) with [Kubernetes node affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature), you can set up an {{es}} cluster with hot-warm topology:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   # hot nodes, with high CPU and fast IO
   - name: hot

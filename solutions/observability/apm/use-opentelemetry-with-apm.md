@@ -60,7 +60,7 @@ To understand the differences between Elastic Distributions of OpenTelemetry and
 
 ## Upstream OpenTelemetry with Elastic APM agent [apm-otel-api-sdk-elastic-agent]
 
-You can use the OpenTelemetry API/SDKs with [Elastic APM agents](/reference/fleet/get-started-managed-apm-server.md#_step_3_install_apm_agents) to translate OpenTelemetry API calls to Elastic APM API calls. This allows you to reuse your existing OpenTelemetry instrumentation to create Elastic APM transactions and spans, avoiding vendor lock-in and having to redo manual instrumentation.
+You can use the OpenTelemetry API/SDKs with [Elastic APM agents](/solutions/observability/apm/apm-server-fleet-managed.md#_step_3_install_apm_agents) to translate OpenTelemetry API calls to Elastic APM API calls. This allows you to reuse your existing OpenTelemetry instrumentation to create Elastic APM transactions and spans, avoiding vendor lock-in and having to redo manual instrumentation.
 
 However, not all features of the OpenTelemetry API are supported when using this approach, and not all Elastic APM agents support this approach.
 
