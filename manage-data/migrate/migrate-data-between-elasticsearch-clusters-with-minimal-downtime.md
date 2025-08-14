@@ -1,11 +1,11 @@
 ---
 navigation_title: Migrate Elasticsearch data with minimal downtime
 applies_to:
-  stack: 
+  stack: ga
   deployment:
-    ess: 
-    ece: 
-    eck: 
+    ess: ga
+    ece: ga
+    eck: ga
 products:
   - id: elasticsearch
   - id: cloud-hosted
