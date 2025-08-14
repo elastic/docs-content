@@ -213,7 +213,7 @@ When you set up policies for your own rolling indices and are not using the reco
 
 The name of the index must match the pattern defined in the index template and end with a number. This number is incremented to generate the name of indices created by the rollover action.
 
-This step is not required when you're using data streams.
+This step is required only when you're planning to use {{ilm-init}} with rolling indices. It is not required when you're using data streams, where the initial managed index is created automatically.
 
 ::::{important}
 When you enable {{ilm}} for {{beats}}, {{agent}}, or for the {{agent}} or {{ls}} {{es}} output plugins, the necessary policies and configuration changes are applied automatically. If you'd like to create a specialized ILM policy for any data stream, refer to our tutorial [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
