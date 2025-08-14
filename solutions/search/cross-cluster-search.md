@@ -37,7 +37,7 @@ The following APIs support {{ccs}}:
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](#ccs-supported-configurations).
 
-* For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
+* To use cross-cluster search with ES|QL, both the local and remote clusters must have the appropriate [subscription level](https://www.elastic.co/subscriptions).
 * The local coordinating node must have the [`remote_cluster_client`](../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#remote-node) node role.
 
 * If you use [sniff mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode), the local coordinating node must be able to connect to seed and gateway nodes on the remote cluster.
