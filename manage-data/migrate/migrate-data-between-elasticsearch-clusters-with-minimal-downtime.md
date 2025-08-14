@@ -77,7 +77,7 @@ For more information on migrating {{es}} data with minimal downtime using increm
 
 ### Alternative migration methods
 
-* To learn about reindexing from remote clusters as an alternative migration method, check [Reindex documents API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
+* To learn about reindexing from remote clusters as an alternative migration method, check [Reindex from a remote cluster](/manage-data/migrate.md#ech-reindex-remote).
 
 ### Elastic Cloud environments
 
