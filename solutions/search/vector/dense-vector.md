@@ -45,7 +45,7 @@ BBQ currently supports two vector search algorithms, each suited to different sc
 
 #### `bbq_hnsw` [bbq-hnsw]
 
-When you set a dense vector field’s `index_type` to `bbq_hnsw`, Elasticsearch uses the HNSW algorithm for fast [kNN search](/solutions/search/vector/knn) on compressed vectors. With the default [oversampling](#bbq-oversampling) applied, it delivers better cost efficiency, lower latency, and improved relevance ranking, making it the best choice for large-scale similarity search.
+When you set a dense vector field’s `index_type` to `bbq_hnsw`, Elasticsearch uses the HNSW algorithm for fast [kNN search](https://www.elastic.co/docs//solutions/search/vector/knn) on compressed vectors. With the default [oversampling](#bbq-oversampling) applied, it delivers better cost efficiency, lower latency, and improved relevance ranking, making it the best choice for large-scale similarity search.
 
 :::{note}
 Starting in version 9.1, `bbq_hnsw` is the default indexing method for new `dense_vector` fields, so you don’t need to specify it explicitly when creating an index. 
@@ -172,14 +172,14 @@ GET bbq-index/_search
 By default, oversampling is set to 3×, meaning if you request k:10, Elasticsearch retrieves 30 candidates for re-ranking. You don’t need to configure this behavior; it’s applied automatically for BBQ searches.
 
 :::{note}
-You can change oversampling from the default 3× to another value. Refer to [Oversampling and rescoring for quantized vectors](/solutions/search/vector/knn#dense-vector-knn-search-rescoring) for details.
+You can change oversampling from the default 3× to another value. Refer to [Oversampling and rescoring for quantized vectors](https://www.elastic.co/docs/solutions/search/vector/knn#dense-vector-knn-search-rescoring) for details.
 :::
 
 ### Learn more [bbq-learn-more]
 
 - [Better Binary Quantization (BBQ) in Lucene and Elasticsearch](https://www.elastic.co/search-labs/blog/better-binary-quantization-lucene-elasticsearch) - Learn how BBQ works, its benefits, and how it reduces memory usage while preserving search accuracy.
 - [Dense vector field type](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/dense-vector) - Find code examples for using `bbq_hnsw` `index_type`.
-- [kNN search](/solutions/search/vector/knn) - Learn about the search algorithm that BBQ works with.
+- [kNN search](https://www.elastic.co/docs/solutions/search/vector/knn) - Learn about the search algorithm that BBQ works with.
 
 
 
