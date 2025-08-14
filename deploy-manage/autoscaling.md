@@ -42,7 +42,7 @@ The available resources of self-managed deployments are static, so trained model
 Trained model autoscaling automatically adjusts the resources allocated to trained model deployments based on demand. This feature is available on all cloud deployments (ECE, ECK, ECH) and {{serverless-short}}. See [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) for details.
 
 ::::{note}
-{applies_to}`serverless: ga` In {{serverless-short}}, trained model deployments remain active for 24 hours after the last inference request. After that, they scale down to zero. When scaled up again, they stay active for 5 minutes before they can scale down. These cooldown periods prevent unnecessary scaling and ensure models are available when needed.
+In {{serverless-short}}, trained model deployments remain active for 24 hours after the last inference request. After that, they scale down to zero. When scaled up again, they stay active for 5 minutes before they can scale down. These cooldown periods prevent unnecessary scaling and ensure models are available when needed.
 ::::
 
 Trained model autoscaling supports:

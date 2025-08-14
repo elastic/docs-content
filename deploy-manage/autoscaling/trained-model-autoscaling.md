@@ -22,7 +22,7 @@ There are two ways to enable autoscaling:
 * through APIs by enabling adaptive allocations
 * in {{kib}} by enabling adaptive resources
 
-{applies_to}`serverless: ga` For {{serverless-short}} projects, trained model autoscaling is always enabled and cannot be turned off. Trained model deployments remain active for 24 hours after the last inference request before scaling down to zero. When scaled up again, they stay active for 5 minutes before they can scale down. These cooldown periods prevent unnecessary scaling and ensure models are available when needed.
+For {{serverless-short}} projects, trained model autoscaling is always enabled and cannot be turned off. Trained model deployments remain active for 24 hours after the last inference request before scaling down to zero. When scaled up again, they stay active for 5 minutes before they can scale down. These cooldown periods prevent unnecessary scaling and ensure models are available when needed.
 
 ::::{important}
 To fully leverage model autoscaling in {{ech}}, {{ece}}, and {{eck}}, it is highly recommended to enable [{{es}} deployment autoscaling](../../deploy-manage/autoscaling.md).
