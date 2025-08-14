@@ -56,7 +56,7 @@ Limitations include the following:
 For more information on migrating {{es}} data with minimal downtime using incremental snapshots, review the related resources. 
 
 ### Snapshot and restore
-* For more information about snapshot and restore concepts, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md).
+* For more information about snapshot and restore concepts, check [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md).
 * To learn how to configure snapshot repositories before taking or restoring snapshots, check [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md).
 * To learn how to restore snapshots to clusters other than the source, check [Restore to a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
 
