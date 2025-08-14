@@ -38,7 +38,7 @@ Complete the minimal-downtime migration using incremental snapshots. While the e
 1. **09:00**: Take the initial full snapshot of the old cluster. You can also take the initial full snapshot the day before.
 2. **09:30**: Restore the snapshot to the new cluster.
 3. **09:55**: Take another snapshot of the old cluster and restore it to the new cluster. Repeat this process until the snapshot and restore operations take only a few seconds or minutes.
-4. **10:15**: Perform the final cutover.
+4. **10:15**: Perform the final cutover:
     1. In the old cluster, pause indexing or set indices to read-only.
     2. Take a final snapshot. 
     3. Restore the snapshot to the new cluster. 
