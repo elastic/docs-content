@@ -30,6 +30,7 @@ For detailed {{es-serverless}} project rates, see the [{{es-serverless}} pricing
 * **Indexing:** The VCUs used to index incoming documents.
 * **Search:** The VCUs used to return search results, with the latency and queries per second (QPS) you require.
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities.
+* **Tokens:** The Elastic Managed LLM is charged per 1Mn Input and Output tokens. The LLM powers all AI Search features such as Playground and AI Assistant for Search, and is enabled by default.
 
 
 ## Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
