@@ -33,11 +33,18 @@ To ingest third-party security data:
     :alt: The integrations page of an EASE project
     :::
 
-2. From the **Integrations** tab, select any [integration](integration-docs://reference/index.md) you want to ingest data from to view deployment instructions and more information.
+2. From the **Integrations** tab, select a SIEM and EDR/XDR platform from which you want to ingest data to view setup instructions and more information. You can ingest data from:
+
+    * CrowdStrike
+    * Elastic Security
+    * Google SecOps
+    * Microsoft Sentinel
+    * SentinelOne
+    * Splunk
 
 ## Select a model
 
-EASE uses LLM connectors to enable its AI features such as Attack Discovery and AI Assistant. The Elastic Managed LLM is enabled by default. You can also [create custom connectors](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Keep in mind that different models [perform differently](/solutions/security/ai/large-language-model-performance-matrix.md) on different tasks. 
+EASE uses LLM connectors to enable its AI features such as Attack Discovery and AI Assistant. The Elastic Managed LLM is enabled by default. You can also [configure your own third-party LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md). Keep in mind that different models [perform differently](/solutions/security/ai/large-language-model-performance-matrix.md) on different tasks. 
 
 
 ## Features
@@ -52,7 +59,13 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
      You can [schedule](/solutions/security/ai/attack-discovery.md#schedule-discoveries) Attack Discovery to run automatically, and notify you of any discoveries via a range of connectors such as Slack, Teams, PagerDuty, or email.
 
-- **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: An LLM-powered virtual assistant specialized for digital security; it helps with data analysis, alert investigation, incident response, and {{esql}} query generation. You can add custom background knowledge and data to its [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md) and use natural language to ask for its assistance with your SOC operations.
+- **[AI Assistant](/solutions/security/ai/ai-assistant.md)**: An LLM-powered virtual assistant specialized for digital security; it helps with data analysis, alert investigation, incident response, and {{esql}} query generation. You can add custom background knowledge and data to its [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md) and use natural language to ask for its assistance with your SOC operations. 
+
+    :::{image} /solutions/images/security-ease-ai-assistant.png
+    :alt: A new conversation with AI Assistant
+    :::
+
+    You can add custom information to AI Assistant's [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md), either in the form of individual documents or entire indices containing numerous documents. This information informs the AI Assistant's responses and can include everything from threat intelligence, to information about your team's on-call rotation, to information about your infrastructure, and more. 
 
 - **[Cases](/solutions/security/investigate/cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
 
