@@ -1110,7 +1110,7 @@ Elastic supports searches from a local cluster to a remote cluster running:
 Elastic also supports searches from a local cluster running the last minor version of a major version to a remote cluster running any minor version in the following major version. For example, a local 8.19 cluster can search any remote 9.x cluster. However, a search from a local 9.0 cluster to a remote 8.17 or 7.17 cluster is not supported.
 
 ::::{note}
-Version 8.19 is the final minor release in the 8.x series. Unlike past releases, 8.18 was launched simultaneously with 9.0, allowing cross-version compatibility between them. Hence, as shown in the compatibility table, 8.18 can search 9.0 clusters, but only 8.19 supports searching 9.1 and later.
+Version 8.19 is the final minor release in the 8.x series. Unlike past releases, 8.18 was launched simultaneously with 9.0, allowing cross-version compatibility between them. Hence, as shown in the compatibility table, 8.18 can only search 9.0 clusters in the 9.x series, while 8.19 supports searching 9.0 clusters and later.
 ::::
 
 $$$ccs-version-compatibility$$$
