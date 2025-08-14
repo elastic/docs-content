@@ -844,7 +844,7 @@ To add the apm-server repository for YUM:
 
 ## Run APM Server on Docker [apm-running-on-docker]
 
-Docker images for APM Server are available from the Elastic Docker registry. The base image is [ubuntu:22.04](https://hub.docker.com/_/ubuntu).
+Docker images for APM Server are available from the Elastic Docker registry. The base image is Red Hat Universal Base Images (UBI) or [Wolfi](https://github.com/wolfi-dev/) if you use hardened Docker images.
 
 A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co).
 

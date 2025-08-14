@@ -118,6 +118,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Enable dead code elimination. [#4784]({{fleet-server-pull}}4784)
 * Include the base error for JSON decode error responses. [#5069]({{fleet-server-pull}}5069)
 
+## 9.0.5 [fleet-elastic-agent-9.0.5-release-notes]
+
+### Fixes [fleet-elastic-agent-9.0.5-fixes]
+
+**Fleet Server**
+
+* Fix upgrade details `download_rate` as string handling. [#5217]({{fleet-server-pull}}5217) [#5227]({{fleet-server-pull}}5227) [#5176]({{fleet-server-pull}}5176) [#5164]({{fleet-server-issue}}5164)
+
 ## 9.0.4 [fleet-elastic-agent-9.0.4-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.0.4-features-enhancements]
