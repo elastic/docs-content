@@ -24,6 +24,8 @@ A data stream lifecycle also supports downsampling the data stream backing indic
 
 ## Availability
 
+Note the availability of data stream lifecycle to ensure that it's applicable for your use case:
+
 * Data stream lifecycle is supported only for data streams and cannot be used with standalone indices.
 
 * Like {{ilm-cap}} ({{ilm-init}}), data stream lifecycle is supported in both {{ecloud}} and self-managed environments. Data stream lifecycle is less feature rich than {{ilm-init}} and is focused on simplicity. For a detailed comparison refer to [Data lifecycle](/manage-data/lifecycle.md).

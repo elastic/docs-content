@@ -23,6 +23,8 @@ products:
 
 ## Availability
 
+Note the availability of {{ilm-init}} to ensure that it's applicable for your use case:
+
 * {{ilm-init}} is supported for both data streams and standalone indices:
 
     * **Data stream:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
