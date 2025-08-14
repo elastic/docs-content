@@ -29,7 +29,7 @@ Incremental snapshots capture only the data that has changed since the previous 
 
 After the initial full snapshot, each subsequent snapshot contains only the differences, which makes the snapshot process faster over time. When you restore snapshots, only the missing data segments are copied from the snapshot repository to the cluster local storage, speeding up restores when the changes between snapshots are small.
 
-When you incrementally create and restore snapshots, you can repeatedly synchronize the new cluster with the old cluster by taking and restoring multiple snapshots before performing the final cutover.
+When you incrementally create and restore snapshots, you can repeatedly synchronize the new cluster with the old cluster by taking and restoring multiple snapshots before performing the final cutover. This mechanism enables you to copy the vast majority of your data into the new cluster ahead of time, making the future transition from the old cluster to your new one as quick as possible, since only few segments will need to go through the snapshot-and-restore procedure upon cutover.
 
 ## Recommended migration timeline [recommended-migration-timeline]
 
