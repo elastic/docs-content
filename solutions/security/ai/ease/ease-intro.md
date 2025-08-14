@@ -31,6 +31,7 @@ To ingest third-party security data:
 
     :::{image} /solutions/images/security-ease-integrations.png
     :alt: The integrations page of an EASE project
+    :width: 600px
     :::
 
 2. From the **Integrations** tab, select a SIEM and EDR/XDR platform from which you want to ingest data to view setup instructions and more information. You can ingest data from:
@@ -55,6 +56,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
      :::{image} /solutions/images/security-attck-disc-example-disc.png
      :alt: Attack Discovery detail view
+     :width: 600px
      :::
 
      You can [schedule](/solutions/security/ai/attack-discovery.md#schedule-discoveries) Attack Discovery to run automatically, and notify you of any discoveries via a range of connectors such as Slack, Teams, PagerDuty, or email.
@@ -63,6 +65,7 @@ EASE provides a set of capabilities designed to help make the most of each secur
 
     :::{image} /solutions/images/security-ease-ai-assistant.png
     :alt: A new conversation with AI Assistant
+    :width: 450px
     :::
 
     You can add custom information to AI Assistant's [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md), either in the form of individual documents or entire indices containing numerous documents. This information informs the AI Assistant's responses and can include everything from threat intelligence, to information about your team's on-call rotation, to information about your infrastructure, and more. 
