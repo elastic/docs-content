@@ -3,8 +3,8 @@ navigation_title: Cloud
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/cloud-monitoring.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
 ---
