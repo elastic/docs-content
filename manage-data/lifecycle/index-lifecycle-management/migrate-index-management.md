@@ -9,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Migrate to index lifecycle management
+# Migrate to {{ilm-init}} ({{ecloud}})
 
 ::::{important}
 Index curation is deprecated. Any deployments using index curation are prompted to migrate to ILM.
