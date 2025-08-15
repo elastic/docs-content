@@ -54,12 +54,8 @@ There are no new features, enhancements, or fixes in this release.
 
 **Elastic Agent**
 
-* Adds a new configuration setting, `agent.upgrade.rollback.window`. [#8065]({{agent-pull}}8065) [#6881]({{agent-issue}}6881)
+* Adds a new configuration setting, `agent.upgrade.rollback.window` in preparation for enabling upgrade rollbacks in a future release. [#8065]({{agent-pull}}8065) [#6881]({{agent-issue}}6881)
 
-  The value of the `agent.upgrade.rollback.window` setting determines the period after upgrading
-  Elastic Agent when a rollback to the previous version can be triggered. This is an optional
-  setting, with a default value of `168h` (7 days). The value can be any string that is parseable
-  by <https://pkg.go.dev/time#ParseDuration>.
 * Removes resource/k8s processor and uses k8sattributes processor for service attributes. [#8599]({{agent-pull}}8599)
 
   This PR removes the `resource/k8s` processor in honour of the k8sattributes processor that
@@ -93,7 +89,7 @@ There are no new features, enhancements, or fixes in this release.
 * Makes pbkdf2 settings validation FIPS compliant. [#4542]({{fleet-server-pull}}4542)
 * Updates to Go v1.24.0. [#4543]({{fleet-server-pull}}4543)
 * Adds version metadata to version command output. [#4820]({{fleet-server-pull}}4820)
-* Adds rollback attribute to upgrade actions. [#4838]({{fleet-server-issue}}4838)
+* Adds rollback attribute to upgrade actions in preparation for enabling upgrade rollbacks in a future release. [#4838]({{fleet-server-issue}}4838)
 
 ### Fixes [fleet-elastic-agent-9.1.0-fixes]
 
