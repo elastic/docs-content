@@ -26,6 +26,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.1.2 [fleet-elastic-agent-9.1.2-release-notes]
+
+There are no new features, enhancements, or fixes in this release.
+
 ## 9.1.1 [fleet-elastic-agent-9.1.1-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.1.1-features-enhancements]
@@ -117,6 +121,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Mutex protection for remote bulker config. [#4776]({{fleet-server-pull}}4776)
 * Enable dead code elimination. [#4784]({{fleet-server-pull}}4784)
 * Include the base error for JSON decode error responses. [#5069]({{fleet-server-pull}}5069)
+
+## 9.0.5 [fleet-elastic-agent-9.0.5-release-notes]
+
+### Fixes [fleet-elastic-agent-9.0.5-fixes]
+
+**Fleet Server**
+
+* Fix upgrade details `download_rate` as string handling. [#5217]({{fleet-server-pull}}5217) [#5227]({{fleet-server-pull}}5227) [#5176]({{fleet-server-pull}}5176) [#5164]({{fleet-server-issue}}5164)
 
 ## 9.0.4 [fleet-elastic-agent-9.0.4-release-notes]
 
