@@ -27,9 +27,9 @@ For detailed {{es-serverless}} project rates, see the [{{es-serverless}} pricing
 
 {{es}} uses three VCU types:
 
-* **Indexing:** The VCUs used to index incoming documents.
-* **Search:** The VCUs used to return search results, with the latency and queries per second (QPS) you require.
-* **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities.
+* **Indexing:** The VCUs used to index incoming documents. Indexing compute resources scale up and down based on ingestion rate, and amount of data ingested at any given time. 
+* **Search:** The VCUs used to return search results, with the latency and queries per second (QPS) you require. Search VCUs are calculated as a factor of the compute resources needed to run search queries on your data, search throughput and latency. Search VCUs are not charged per search request, but instead are a factor of the compute resources that scale up and down based on search load and performance. 
+* **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities. ML VCUs are a factor of the models deployed, and number of ML operations running at any point in time for search and ingest. 
 * **Tokens:** The Elastic Managed LLM is charged per 1Mn Input and Output tokens. The LLM powers all AI Search features such as Playground and AI Assistant for Search, and is enabled by default.
 
 
