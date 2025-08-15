@@ -19,7 +19,7 @@ If your Elastic deployment is not on the same network, you must configure an Ngi
 You do not have to set up a proxy if LM studio is running locally, or on the same network as your Elastic deployment. 
 ::::
 
-This example uses a server hosted in GCP to configure LM Studio with the [Mistral-Nemo-Instruct-2407](https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407) model.
+This example uses a server hosted in GCP to configure LM Studio with the [Llama-3.3-70B-Instruct](https://huggingface.co/lmstudio-community/Llama-3.3-70B-Instruct-GGUF) model.
 
 ### Already running LM Studio? [skip-if-already-running]
 
