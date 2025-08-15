@@ -12,8 +12,6 @@ products:
 
 AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
-AutoOps is currently only available for [{{ech}} deployments](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
-
 :::{image} /deploy-manage/images/cloud-autoops-overview-page.png
 :alt: The Overview page
 :::
