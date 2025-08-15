@@ -119,7 +119,7 @@ Once the model is downloaded, it will appear in the **My Models** window in LM S
 To enable other devices on the same network to access the server, go to **Settings** and turn on **Serve on Local Network**.
 ::::
 
-:::{image} /solutions/images/observability-ai-assistant-lm-studio-load-model-gui.png.png
+:::{image} /solutions/images/observability-ai-assistant-lm-studio-load-model-gui.png
 :alt: Loading a model in LM studio developer tab
 :::
 
