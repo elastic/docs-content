@@ -73,6 +73,6 @@ EASE provides a set of capabilities designed to help make the most of each secur
 - **[Cases](/solutions/security/investigate/cases.md)**: Helps you track and share related information about security issues. Track key investigation details and collect alerts in a central location.
 
     :::{image} /solutions/images/security-ease-cases.png
-    :alt: The Cases page in an EASE project
+    :alt: The Cases page in an EASE project showing the default state
     :::
 
