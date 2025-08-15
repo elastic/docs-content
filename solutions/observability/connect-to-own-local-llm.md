@@ -143,5 +143,5 @@ Finally, configure the connector:
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features.
 
 ::::{note}
-While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [here](/solutions/observability/observability-ai-assistant.md#obs-ai-set-up)
+While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [here](/solutions/observability/observability-ai-assistant.md#obs-ai-set-up).
 ::::
