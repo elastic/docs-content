@@ -51,7 +51,7 @@ For deployments with **{{stack}} version 7.17 and earlier**, you’ll need to en
 
 
 
-### Configure the keystore [ec-configure-gcs-keystore]
+## Configure the keystore [ec-configure-gcs-keystore]
 
 Create an entry for the GCS client in the {{es}} keystore:
 
@@ -63,7 +63,7 @@ Create an entry for the GCS client in the {{es}} keystore:
 6. Select **Save**.
 
 
-### Create the repository [ec-create-gcs-repository]
+## Create the repository [ec-create-gcs-repository]
 
 1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.
