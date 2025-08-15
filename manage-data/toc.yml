@@ -126,7 +126,6 @@ toc:
           - file: lifecycle/index-lifecycle-management/policy-view-status.md
           - file: lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md
           - file: lifecycle/index-lifecycle-management/policy-updates.md
-          - file: lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md
           - file: lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md
           - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
           - hidden: lifecycle/index-lifecycle-management/index-management-in-kibana.md
