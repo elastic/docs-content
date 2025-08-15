@@ -503,6 +503,7 @@ toc:
             children: 
               - file: security/ai/ease/ease-alerts.md
               - file: security/ai/ease/ease-value-report.md
+              - file: security/ai/ease/ease-upgrade.md
           - file: security/ai/ai-assistant.md
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
