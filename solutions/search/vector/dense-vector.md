@@ -153,7 +153,7 @@ PUT bbq_flat-index
 
 ### Oversampling [bbq-oversampling]
 
-Oversampling is a technique used with BBQ searches to reduce the accuracy loss from compression. Compression lowers the memory footprint by over 95% and improves query latency, but this comes at the cost of some result accuracy. The accuracy loss can be mitigated by oversampling during query time and reranking the top results using the full vector. 
+Oversampling is a technique used with BBQ searches to reduce the accuracy loss from compression. Compression lowers the memory footprint by over 95% and improves query latency, at the cost of decreased result accuracy. This decrease can be mitigated by oversampling during query time and reranking the top results using the full vector. 
 
 When you run a kNN search on a BBQ-indexed field, Elasticsearch automatically retrieves more candidate vectors than the number of results you request. This oversampling improves accuracy by giving the system more vectors to re-rank using their full-precision values before returning the top results.
 
