@@ -11,8 +11,8 @@ products:
 
 The {{fleet}} app in {{kib}} supports both {{agent}} infrastructure management and agent policy management. You can use {{fleet}} to:
 
-- Manage {{agent}} binaries and specify settings installed on the host that determine whether the {{agent}} is enrolled in {{fleet}}, what version of the agent is running, and which agent policy is used.
-- Manage agent policies that specify agent configuration settings, which integrations are running, whether agent monitoring is turned on, input settings, and so on.
+- Manage {{agent}} binaries and specify settings installed on the host that determine whether the agent is enrolled in {{fleet}}, what version of the agent is running, and which agent policy is used.
+- Manage agent policies that specify agent configuration settings, which integrations are running, whether agent monitoring is turned on, input settings, and more.
 
 Advanced users who don’t want to use {{fleet}} for central management can use an external infrastructure management solution and [install {{agent}} in standalone mode](/reference/fleet/install-standalone-elastic-agent.md) instead.
 
@@ -22,7 +22,7 @@ Advanced users who don’t want to use {{fleet}} for central management can use 
 
 To learn how to add {{agents}} to {{fleet}}, refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md).
 
-To use {{fleet}} go to **Management** → **{{fleet}}** in {{kib}}. The following table describes the main management actions you can perform in {{fleet}}:
+Find **{{fleet}}** in the {{kib}} navigation menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). The following table describes the main management actions you can perform in {{fleet}}:
 
 | Component | Management actions |
 | --- | --- |
@@ -37,8 +37,8 @@ To use {{fleet}} go to **Management** → **{{fleet}}** in {{kib}}. The followin
 
 In {{fleet}} deployments where {{agents}} are installed in diverse locations and where data must be stored in local clusters, operators need a unified view of all agents and a central management interface for tasks like upgrades, policy organization, and metrics collection. {{fleet}} offers features to facilitate this deployment model:
 
-- [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md): {{agents}} can be configured to send data to a remote {{es}} cluster while their check-in payloads are sent to the management cluster. This allows {{fleet}} in the management cluster to maintain a global view of all agents while the ingested data is routed to the agents' respective local clusters.
-- [Automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md) {applies_to}`stack: ga 9.1.0`: This feature allows users to install an integration once in the management cluster and to use {{fleet}} to reliably synchronize and update the integration across all remote clusters. With synchronized integrations, services like [OSquery](integration-docs://reference/osquery-intro.md) can be initiated from the management cluster, and responses from dispersed agents can be collected and displayed globally within {{fleet}}'s central management cluster.
+- [Remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md): Configure {{agents}} to send data to remote {{es}} clusters while still sending their check-in payloads to the management cluster. This allows {{fleet}} on the management cluster to maintain a global view of all agents while the ingested data is routed to the agents' respective local clusters.
+- [Automatic integrations synchronization](/reference/fleet/automatic-integrations-synchronization.md) {applies_to}`stack: ga 9.1.0`: Install an integration once in the management cluster and use {{fleet}} to synchronize and update the integration across all remote clusters. This enables you to initiate services like [OSquery](integration-docs://reference/osquery-intro.md) from the management cluster, and to collect and display responses from dispersed agents in {{fleet}} on the central management cluster.
 
 :::{image} images/manage-agents-global-fleet.png
 :alt: A diagram showing Elastic Agents connected to remote data clusters and to a Fleet management cluster
