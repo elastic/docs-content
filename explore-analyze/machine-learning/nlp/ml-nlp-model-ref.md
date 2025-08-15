@@ -17,8 +17,6 @@ The minimum dedicated ML node size for deploying and using the {{nlp}} models is
 
 The {{stack-ml-features}} support transformer models with the following architectures:
 
-The current list of supported architectures is:
-
 * BERT
 * BART
 * DPR bi-encoders
