@@ -41,7 +41,7 @@ Measuring vector similarity with BBQ vectors requires much less computing effort
 
 ### Vector search algorithms for BBQ [bbq-vector-search-algorithms]
 
-BBQ currently supports two vector search algorithms, each suited to different scenarios. You can can configure them by setting the dense vector field’s `index_type`.
+BBQ currently supports two vector search algorithms, each suited to different scenarios. You can configure them by setting the dense vector field’s `index_type`.
 
 #### `bbq_hnsw` [bbq-hnsw]
 
