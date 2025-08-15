@@ -44,6 +44,9 @@ You can control costs using the following strategies:
 
 * **Search Power setting:** [Search Power](../../deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying, or you can reduce provisioned resources to cut costs.
 * **Search boost window**: By limiting the number of days of [time series data](../../../solutions/search/ingest-for-search.md#elasticsearch-ingest-time-series-data) that are available for caching, you can reduce the number of search VCUs required.
+* **Machine learning trained model autoscaling:** [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) is always enabled and cannot be disabled, ensuring efficient resource usage, reduced costs, and optimal performance without manual configuration.
+
+  Trained model deployments automatically scale down to zero allocations after 24 hours without any inference requests. When they scale up again, they remain active for 5 minutes before they can scale down. During these cooldown periods, you will continue to be billed for the active resources.
  
 * **Indexing Strategies:** Consider your indexing strategies and how they might impact overall VCU usage and costs:
   
