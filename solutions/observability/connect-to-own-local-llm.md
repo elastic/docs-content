@@ -44,7 +44,7 @@ After you’ve opened the application for the first time using the GUI, you can 
 Once you’ve launched LM Studio:
 
 1. Go to LM Studio’s Discover window.
-2. Search for an LLM (for example, `Mistral-Nemo-Instruct-2407`). Your chosen model must include `instruct` in its name in order to work with Elastic.
+2. Search for an LLM (for example, `Llama 3.3`). Your chosen model must include `instruct` in its name (specified in download options) in order to work with Elastic.
 3. When selecting a model, models published by verified authors are recommended (indicated by the purple verification badge next to the model name).
 4. After you find a model, view download options and select a recommended option (green). For best performance, select one with the thumbs-up icon that indicates good performance on your hardware.
 5. Download one or more models.
@@ -57,7 +57,7 @@ For security reasons, before downloading a model, verify that it is from a trust
 :alt: The LM Studio model selection interface with download options
 :::
 
-This [`mistralai/mistral-nemo-instruct-2407`](https://lmstudio.ai/models/mistralai/mistral-nemo-instruct-2407) model used in this example has 12B total parameters, a 128,000 token context window, and uses GGUF [quanitization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
+This [`llama-3.3-70b-instruct`](https://lmstudio.ai/models/meta/llama-3.3-70b) model used in this example has 70B total parameters, a 128,000 token context window, and uses GGUF [quanitization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
 
 | Model Name | Parameter Size | Tokens/Context Window | Quantization Format |
 | --- | --- | --- | --- |
@@ -79,7 +79,7 @@ Once you’ve downloaded a model, use the following commands in your CLI:
 1. Verify LM Studio is installed: `lms`
 2. Check LM Studio’s status: `lms status`
 3. List all downloaded models: `lms ls`
-4. Load a model: `lms load mistralai/mistral-nemo-instruct-2407 --context-length 64000`.
+4. Load a model: `lms load llama-3.3-70b-instruct --context-length 64000 --gpu max`.
 
 ::::{important}
 When loading a model, use the `--context-length` flag with a context window of 64,000 or higher. 
@@ -114,14 +114,14 @@ Once the model is downloaded, it will appear in the "My Models" window in LM Stu
 
 1. Navigate to the Developer window.
 2. Click on the "Start server" toggle on the top left. Once the server is started, you'll see the address and port of the server. The port will be defaulted to 1234.
-3. Click on "Select a model to load" and pick the model `Mistral Nemo Instruct 2407` from the dropdown menu.
+3. Click on "Select a model to load" and pick the model `Llama 3.3 70B Instruct` from the dropdown menu.
 4. Navigate to the "Load" on the right side of the LM Studio window, to adjust the context window to 64,000. Reload the model to apply the changes.
 
 ::::{note}
 To enable other devices in the same network access the server, turn on "Serve on Local Network" via Settings.
 ::::
 
-:::{image} /solutions/images/obs-ai-assistant-lm-studio-load-model-gui.png
+:::{image} /solutions/images/observability-ai-assistant-lm-studio-load-model-gui.png.png
 :alt: Loading a model in LM studio developer tab
 :::
 
@@ -134,16 +134,16 @@ Finally, configure the connector:
 3. Name your connector to help keep track of the model version you are using.
 4. Under **Select an OpenAI provider**, select **Other (OpenAI Compatible Service)**.
 5. Under **URL**, enter the host's IP address and port, followed by `/v1/chat/completions`. (If you have a reverse proxy set up, enter the domain name specified in your Nginx configuration file followed by `/v1/chat/completions`.)
-6. Under **Default model**, enter `mistralai/mistral-nemo-instruct-2407`.
+6. Under **Default model**, enter `llama-3.3-70b-instruct`.
 7. Under **API key**, fill in anything. (If you have a reverse proxy set up, enter the secret token specified in your Nginx configuration file.)
 8. Click **Save**.
 
-:::{image} /solutions/images/obs-ai-assistant-local-llm-connector-setup.png
+:::{image} /solutions/images/observability-ai-assistant-local-llm-connector-setup.png
 :alt: The OpenAI create connector flyout
 :::
 
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features.
 
 ::::{note}
-While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [here](/solutions/observability/observability-ai-assistant.md)
+While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [here](/solutions/observability/observability-ai-assistant.md#obs-ai-set-up)
 ::::
