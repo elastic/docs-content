@@ -1,4 +1,5 @@
 ---
+description: Learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic Observability.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
@@ -7,7 +8,7 @@ applies_to:
 
 # Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint
 
-In this quickstart guide, you'll learn how to use the Elastic Cloud Managed OTLP Endpoint to send logs, metrics, and traces to Elastic.
+In this quickstart guide, you'll learn how to use the [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to send logs, metrics, and traces to Elastic.
 
 ## What is the Elastic Cloud Managed OTLP endpoint?
 
@@ -24,19 +25,19 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Prerequisites
 
-* An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started.md).
 * A system forwarding logs, metrics, or traces in OTLP (any EDOT Collector or SDK—EDOT or community).
 
 ### Limitations
 
-* The OTLP endpoint only supports histograms with delta temporality. Cumulative histograms are dropped.
+* The {{ecloud}} Managed OTLP Endpoint only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 
 ## Get started
 
 ### Get your native OTLP endpoint credentials
 
-1. [Create a new Observability project](/solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
+1. [Create a new Observability project](/solutions/observability/get-started.md), or open an existing one.
 
 1. In your {{obs-serverless}} project, go to **Add Data**.
 

@@ -187,7 +187,10 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
        :screenshot:
        :::
 
+### Filter pill actions
 
+:::{include} ../../_snippets/global-filters.md
+:::
 
 ## What’s next? [_whats_next_6]
 

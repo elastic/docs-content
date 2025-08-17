@@ -20,6 +20,9 @@ More specifically, {{esql}} is a powerful tool in Kibana that can help you with 
 
 This guide shows you how to use {{esql}} in Kibana. To follow along with the queries, load the "Sample web logs" sample data set by selecting **Sample Data** from the **Integrations** page in {{kib}}, selecting **Other sample data sets**, and clicking **Add data** on the **Sample web logs** card.
 
+:::{tip}
+Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+:::
 
 ## Enable or disable {{esql}} [esql-kibana-enable]
 
@@ -38,7 +41,7 @@ To get started with {{esql}}, go to **Discover**. Next, select **Try ES|QL** fro
 After switching to {{esql}} mode, the query bar shows your previous KQL or Lucene query converted into {{esql}}. If the query was empty, it shows a sample query. For example:
 
 ```esql
-from kibana_sample_data_logs | limit 10
+FROM kibana_sample_data_logs | LIMIT 10
 ```
 
 Every query starts with a [source command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-source-commands). In this query, the source command is [`FROM`](elasticsearch://reference/query-languages/esql/commands/source-commands.md#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
@@ -49,11 +52,7 @@ A source command can be followed by one or more [processing commands](elasticsea
 Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries that will help you get started.
 ::::
 
-
-To make it easier to write queries, auto-complete offers suggestions with possible commands and functions:
-
-:::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-auto-complete.png
-:alt: esql kibana auto complete
+:::{include} /explore-analyze/query-filter/_snippets/discover-esql-autocomplete.md
 :::
 
 ::::{note}
@@ -123,7 +122,7 @@ In the **Starred** tab, find all the queries you have previously starred.
 :::
 
 
-### Organizing the query results [esql-kibana-results-table]
+### Organize the query results [esql-kibana-results-table]
 
 For the example query, the results table shows 10 rows. Omitting the `LIMIT` command, the results table defaults to up to 1000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
@@ -201,6 +200,25 @@ FROM kibana_sample_data_logs
 | WHERE timestamp > NOW() - 15minutes
 ```
 
+### LOOKUP JOINs
+
+The ES|QL editor supports [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) commands and suggests lookup mode indices and join condition fields.
+
+![Using the LOOKUP JOIN command to autocomplete an ES|QL query](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte43a30a93241d650/67c23670045f5839e5bfd1e4/lookup-join-demo.gif)
+
+
+### Keyboard shortcuts
+
+The ES|QL editor supports several shortcuts to help you write and run your queries faster:
+
+| Mac           | Windows/Linux  | Description                 |
+|---------------|----------------|-----------------------------|
+| `Cmd + Enter` | `Ctrl + Enter` | Run a query                 |
+| `Cmd + /`     | `Ctrl + /`     | Comment or uncomment a line |
+
+:::{tip}
+You can find the list of shortcuts directly from the editor. Look for the ![keyboard](../../images/keyboard.svg "keyboard =2%") icon.
+:::
 
 ## Analyze and visualize data [esql-kibana-visualizations]
 
@@ -257,7 +275,7 @@ You can also [Add dashboard controls from your ES|QL visualization's query](/exp
 
 ## Create an enrich policy [esql-kibana-enrich]
 
-The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
+The {{esql}} [`ENRICH`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich) command enables you to [enrich](elasticsearch://reference/query-languages/esql/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](elasticsearch://reference/query-languages/esql/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by autocomplete. If not, click **Click to create** to create one.
 
 :::{image} /explore-analyze/images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete

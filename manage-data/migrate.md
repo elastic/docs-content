@@ -95,7 +95,7 @@ Follow these steps to reindex data remotely:
     {
       "source": {
         "remote": {
-          "host": "https://REMOTE_ELASTICSEARCH_ENDPOINT:PORT",
+          "host": "https://<REMOTE_ELASTICSEARCH_ENDPOINT>:<PORT>",
           "username": "USER",
           "password": "PASSWORD"
         },

@@ -99,7 +99,7 @@ $$$faq-included$$$What is included in my paid {{ech}} deployment?
 
     * Free 1GB RAM {{kib}} instance
     * Free 1GB RAM Machine Learning node
-    * Free 1GB RAM APM server
+    * Free 1GB RAM APM / Integrations Server instance
     * A free allowance for [data transfer and snapshot storage costs](#faq-dts)
 
     Note that if you go above the free tier of Kibana/ML/APM (for example, a 2GB {{kib}} instance), you will be charged in full for the size of that instance.
