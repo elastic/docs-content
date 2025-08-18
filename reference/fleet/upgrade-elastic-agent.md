@@ -248,7 +248,7 @@ To configure an automatic rollout of a new minor or patch version to a percentag
 
 Once the configuration is saved, an asynchronous task runs every 30 minutes, upgrading the agents in the policy to the specified target version.
 
-If the number of agents to be upgraded is greater or equal to 10, a rollout period based on this number is automatically applied.
+If the number of agents to be upgraded is greater than or equal to 10, a rollout period is automatically applied. The rollout duration is either 10 minutes or `nAgents * 0.03` seconds, whichever is greater.
 
 In case of any failed upgrades, the upgrades are retried with exponential backoff mechanism until the upgrade is successful, or the maximum number of retries is reached. Note that the maximum number of retries is the number of [configured retry delays](#auto-upgrade-settings).
 
