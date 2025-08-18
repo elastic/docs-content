@@ -82,7 +82,7 @@ Use the following icons to perform more actions:
 
    * `SOURCE`: Indicates the data source—for example, `endpoint` or `winlogbeat`
    * `ID`: Event field that uniquely identifies a node
-   * `EDGE`: Event field which indicates the relationship between two nodes
+   * `EDGE`: Event field that indicates the relationship between two nodes
 
 * Click the **Legend** icon ({icon}`node`) to show the state of each process node.
 
@@ -91,7 +91,7 @@ Use the following icons to perform more actions:
 * Use the date and time filter ({icon}`calendar`) to analyze the event within a specific time range. By default, the selected time range matches that of the table from which you opened the alert.
 
 
-* Click the list icon ({icon}`editor_unordered_list`) to open the preview analyzer panel. This displays a list of all processes related to the event, starting with the event chain’s first process. **Analyzed Event**—the event you selected to analyze from the events list or Timeline—is highlighted with a light blue outline around the cube.
+* Click the list icon ({icon}`editor_unordered_list`) to open the preview analyzer panel. This displays a list of all processes related to the event, starting with the event chain’s first process. The **Analyzed Event**—the event you selected to analyze from the events list or Timeline—is highlighted with a light blue outline around the cube.
 
 :::{image} /solutions/images/security-visual-event-analyzer.png
 :alt: visual event analyzer
@@ -128,7 +128,7 @@ When you select an `event.category` pill (for example, **_x_ file** or **_x_ reg
 - There is no limit to the number of events that can be associated with a process.
 ::::
 
-To examine alerts associated with the event, select the alert pill (**_x_ alert**). The preview analyzer panel lists the total number of associated alerts, and alerts are ordered from oldest to newest. Each alert shows the type of event that produced it (`event.category`), the event timestamp (`@timestamp`), and rule that generated the alert (`kibana.alert.rule.name`). Click on the rule name to open the alert’s details.
+To examine alerts associated with the event, select the alert pill (**_x_ alert**). The preview analyzer panel lists the total number of associated alerts, ordered from oldest to newest. Each alert shows the type of event that produced it (`event.category`), the event timestamp (`@timestamp`), and rule that generated the alert (`kibana.alert.rule.name`). Click on the rule name to open the alert’s details.
 
 In the example screenshot, the analyzed event (`sdclt.exe`) generated three alerts. The preview analyzer panel displays basic information about each one.
 
