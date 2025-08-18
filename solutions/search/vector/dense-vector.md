@@ -124,7 +124,7 @@ POST _reindex
   "dest":   { "index": "my-index-bbq" }
 }
 ```
-1. The existing index that you want to reindex into the newly created index with the `bbq_hnsw` algorithm.
+1. The existing index to be reindexed into the newly created index with the `bbq_hnsw` algorithm.
 ::::
 
 :::::
