@@ -48,7 +48,9 @@ BBQ currently supports two vector search algorithms, each suited to different sc
 When you set a dense vector field’s `index_options` parameter to `type: bbq_hnsw`, {{es}} uses the HNSW algorithm for fast [kNN search](https://www.elastic.co/docs//solutions/search/vector/knn) on compressed vectors. With the default [oversampling](#bbq-oversampling) applied, it delivers better cost efficiency, lower latency, and improved relevance ranking, making it the best choice for large-scale similarity search.
 
 :::{note}
-Starting in version 9.1, `bbq_hnsw` is the default indexing method for new `dense_vector` fields, so you don’t need to specify it explicitly when creating an index. 
+Starting in version 9.1, `bbq_hnsw` is the default indexing method for new `dense_vector` fields with greater than 384 dimensions, so you typically don’t need to specify it explicitly when creating an index.  
+
+Datasets with less than 384 dimensions may see less accuracy and incur a higher overhead cost related to the corrective factors, but we have observed some production datasets perform well even at fairly low dimensions including [tests on e5-small](https://www.elastic.co/search-labs/blog/better-binary-quantization-lucene-elasticsearch).
 :::
 
 The following example creates an index with a `dense_vector` field configured to use the `bbq_hnsw` algorithm.
