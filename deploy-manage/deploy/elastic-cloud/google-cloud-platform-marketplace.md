@@ -4,9 +4,10 @@ mapped_pages:
 applies_to:
   deployment:
     ess: ga
-  serverless: unavailable
+  serverless: ga
 products:
   - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Google Cloud Platform Marketplace [ec-billing-gcp]
