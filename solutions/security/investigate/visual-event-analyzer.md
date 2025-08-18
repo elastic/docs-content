@@ -88,7 +88,7 @@ Use the following icons to perform more actions:
 
 * Select a different data view ({icon}`index_settings`) to further filter the alert’s related events.
 
-* Use the date and time filter ({icon}`calendar`) to analyze the event within a specific time range. By default, the selected time range matches that of the table from which you opened the alert.
+* Use the time filter ({icon}`calendar`) to analyze the event within a specific time range. By default, the selected time range matches that of the table from which you opened the alert.
 
 
 * Click the list icon ({icon}`editor_unordered_list`) to open the preview analyzer panel. This displays a list of all processes related to the event, starting with the event chain’s first process. The **Analyzed Event**—the event you selected to analyze from the events list or Timeline—is highlighted with a light blue outline around the cube.
