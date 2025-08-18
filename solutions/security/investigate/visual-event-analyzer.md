@@ -70,15 +70,15 @@ To find events that can be visually analyzed:
 
 Within the visual analyzer, each cube represents a process, such as an executable file or network event. In the analyzer, you can:
 
-* Zoom in and out of the graphical view using the slider
-* Click and drag around the graphical view to explore the hierarchy of all process relationships
+* Zoom in and out of the Analyzer Graph view using the slider
+* Click and drag around the Analyzer Graph view to explore the hierarchy of all process relationships
 * Observe child process events that spawned from the parent process
 * Determine how much time passed between each process
 * Identify all events related to each process
 
 Use the following icons to perform more actions:
 
-* To understand what fields were used to create the process, select the **Process Tree** icon ({icon}`info`) to show the schema that created the graphical view. The fields included are:
+* To understand what fields were used to create the process, select the **Process Tree** icon ({icon}`info`) to show the schema that created the Analyzer Graph view. The fields included are:
 
    * `SOURCE`: Indicates the data source—for example, `endpoint` or `winlogbeat`
    * `ID`: Event field that uniquely identifies a node
@@ -101,7 +101,7 @@ Use the following icons to perform more actions:
 
 ## Process and event details [process-and-event-details]
 
-To learn more about each related process, select the process in the preview analyzer panel or the graphical view. The preview analyzer panel then displays process details such as:
+To learn more about each related process, select the process in the preview analyzer panel or the Analyzer Graph view. The preview analyzer panel then displays process details such as:
 
 * The number of events associated with the process
 * The timestamp of when the process was executed
@@ -119,7 +119,7 @@ To learn more about each related process, select the process in the preview anal
 When you first select a process, it appears in a loading state. If loading data for a given process fails, click **Reload `{{process-name}}`** beneath the process to reload the data.
 % Is this still valid? 
 
-Access event details by selecting that event’s URL at the top of the process details view or choosing one of the event pills in the graphical view. Events are categorized based on the `event.category` value.
+Access event details by selecting that event’s URL at the top of the process details view or choosing one of the event pills in the Analyzer Graph view. Events are categorized based on the `event.category` value.
 
 When you select an `event.category` pill (for example, **_x_ file** or **_x_ registry**), all the events within that category are listed in the preview analyzer panel. To display more details about a specific event, select it from the list.
 
