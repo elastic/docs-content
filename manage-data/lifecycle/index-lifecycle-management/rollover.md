@@ -48,11 +48,11 @@ Decide your approach to index rotation based on your use case and requirements.
 
 | Use case               | Recommended approach                                      | Benefits and limitations                                                                      |
 | ---------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Logs, metrics          | [Data streams](rollover.md#rollover-data-stream)          | Automatic rollover with lifecycle management, minimal setup, control over rollover timing <1> |
+| Logs, metrics          | [Data streams](rollover.md#rollover-data-stream)          | Automatic rollover with lifecycle management, minimal setup, control over rollover timing ^1^ |
 | Legacy indexing setup  | [Alias-based rollover](rollover.md#rollover-with-aliases) | Granular control over rollover timing.<br> Note that this option requires advanced configuration steps. |
 | Small, static datasets | No rollover                                               | Simpler management                                                                            |
 
-1. Rollover is handled automatically in Serverless projects, therefore configuring rollover timing is abstracted from the user. {applies_to}`serverless: ga`
+^1^ Rollover is handled automatically in Serverless projects, therefore configuring rollover timing is abstracted from the user. {applies_to}`serverless: ga`
 
 :::{tip}
 For new projects, use data streams. They're simple to manage with lifecycle policies where you define phases and actions that handle rollover automatically.
