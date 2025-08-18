@@ -46,11 +46,11 @@ After rollover, indices move to other index lifecycle phases like warm, cold, fr
 
 Decide your approach to index rotation based on your use case and requirements.
 
-| Use case               | Recommended approach                                      | Benefits and limitations                                                                      |
-| ---------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Logs, metrics          | [Data streams](rollover.md#rollover-data-stream)          | Automatic rollover with lifecycle management, minimal setup, control over rollover timing ^1^ |
-| Legacy indexing setup  | [Alias-based rollover](rollover.md#rollover-with-aliases) | Granular control over rollover timing.<br> Note that this option requires advanced configuration steps. |
-| Small, static datasets | No rollover                                               | Simpler management                                                                            |
+| Use case               | Recommended approach                                      | Setup benefits and limitations                                                                  |
+| ---------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Logs, metrics          | [Data streams](rollover.md#rollover-data-stream)          | Automatic rollover with lifecycle management, *minimal setup*, control over rollover timing ^1^ |
+| Legacy indexing setup  | [Alias-based rollover](rollover.md#rollover-with-aliases) | Automatic rollover with lifecycle management, *advanced setup*, control over rollover timing    |
+| Small, static datasets | No rollover                                               | Simpler management                                                                              |
 
 ^1^ Rollover is handled automatically in Serverless projects, therefore configuring rollover timing is abstracted from the user. {applies_to}`serverless: ga`
 
