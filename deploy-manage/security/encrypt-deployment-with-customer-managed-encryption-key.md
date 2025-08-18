@@ -313,9 +313,19 @@ The deployment is now created and encrypted using the specified key. Future snap
         * `cloudkms.cryptoKeyVersions.useToEncrypt`
 
 
-::::{tip}
-The user performing this action needs to belong to the **Owner** or **Cloud KMS Admin** role.
-::::
+    The user performing this action needs to belong to the **Owner** or **Cloud KMS Admin** role.
+
+
+    ::::{note}
+    If [domain restricted sharing](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains) is enabled, then you might not be able to grant the service principals access to the key resource directly. Alternatively, you can grant access to a Google group that contains the relevant service accounts.
+
+    1. Create a new Google group within the allowed domain.
+    2. In the Google Workspace administrator panel, [turn off domain restriction for your newly created Google group](https://support.google.com/a/answer/167097).
+    3. Add the service principals to the Google group.
+    4. Grant the Google group the roles as listed.
+    
+    If you can't use Google Groups for your org, then [contact Elastic Support](https://www.elastic.co/support) for alternatives. 
+    ::::
 
 
 **Step 2: Create your deployment**
