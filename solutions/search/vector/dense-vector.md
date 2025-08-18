@@ -35,7 +35,7 @@ BBQ offers significant improvements over scalar quantization by relying on optim
 
 ### How BBQ works [bbq-how-it-works]
 
-BBQ retains the original vector’s dimensionality but transforms the datatype of the dimensions from the original `float32` to `bit`. BBQ also keeps some additional information for each vector that improves the ability to predict the vector similarity of the original vector using the quantized vector. 
+BBQ retains the original vector’s dimensionality but transforms the datatype of the dimensions from the original `float32` to `bit` effectively compressing each vector by 32x plus an additional 14 bytes of corrective data per vector. BBQ uses these pre-computed corrective factors as partial distance calculations to help realize impressively robust approximations of the original vector. 
 
 Measuring vector similarity with BBQ vectors requires much less computing effort, allowing more candidates to be considered when using the HNSW algorithm. This often results in better ranking quality and improved relevance compared to the original `float32` vectors.
 
