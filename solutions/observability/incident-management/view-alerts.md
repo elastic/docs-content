@@ -65,7 +65,7 @@ To view the alert in the app that triggered it:
 There are four common alert statuses:
 
 `active`
-:   The conditions for the rule are met. Actions for the rule are run according to the notification settings.
+:   The conditions for the rule are met. Rule actions are run according to the notification settings.
 
 `flapping`
 :   The alert is switching repeatedly between active and recovered states.
@@ -76,13 +76,11 @@ The flapping state is possible only if you have enabled alert flapping detection
 ::::
 
 `recovered`
-:   The conditions for the rule are no longer met. Recovery actions for the rule will run if the rule's conditions _are not_ met during the current rule execution, but were met in the previous one. 
+:   The conditions for the rule are no longer met. Rule recovery actions run if the rule's conditions _were not_ met during the current rule execution, but were in the previous one. 
 
 ::::{note}
 
-Note the following about alerts that change from the flapping state to recovered:
-- Alerts in the flapping state will only change to recovered if the rule's conditions are not met for the number of consecutive runs that are defined by the **Alert status change threshold** for flapping alerts.
-- After an alert is recovered, the flapping state criteria is only applied to newly generated alerts. 
+Alerts in the flapping state will only change to recovered if the rule's conditions are not met for the number of consecutive runs that are defined by the **Alert status change threshold** for flapping alerts. After an alert is recovered, the flapping state criteria is only applied to newly generated alerts. 
 ::::
 
 
