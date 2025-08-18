@@ -16,28 +16,27 @@ This page provides instructions for setting up a connector to a large language m
 ::::{note}
 If your Elastic deployment is not on the same network, you must configure an Nginx reverse proxy to authenticate with Elastic. Refer to [Configure your reverse proxy](https://www.elastic.co/docs/solutions/security/ai/connect-to-own-local-llm#_configure_your_reverse_proxy) for more detailed instructions.
 
-You do not have to set up a proxy if LM studio is running locally, or on the same network as your Elastic deployment. 
+You do not have to set up a proxy if LM Studio is running locally, or on the same network as your Elastic deployment. 
 ::::
 
 This example uses a server hosted in GCP to configure LM Studio with the [Llama-3.3-70B-Instruct](https://huggingface.co/lmstudio-community/Llama-3.3-70B-Instruct-GGUF) model.
 
 ### Already running LM Studio? [skip-if-already-running]
 
-If LM Studio is already installed, the server is running, and you have a model loaded (with a context window of at least 64K tokens), you can skip directly to [Configure the connector in your Elastic deployment](#configure-the-connector-in-your-elastic-deployment).
+If you've already installed LM Studio, the server is running, and you have a model loaded (with a context window of at least 64K tokens), skip directly to [Configure the connector in your Elastic deployment](#configure-the-connector-in-your-elastic-deployment).
 
 ## Configure LM Studio and download a model [configure-lm-studio-and-download-a-model]
 
 LM Studio supports the OpenAI SDK, which makes it compatible with Elastic’s OpenAI connector, allowing you to connect to any model available in the LM Studio marketplace.
 
-First, install [LM Studio](https://lmstudio.ai/).
+To get started with LM Studio:
 
-You must launch the application using its GUI before being able to use the CLI. Depending on where you're deploying, use one of the following methods:
-
-* Local deployments: Launch LM studio using the GUI.
-* GCP deployments: Launch using Chrome RDP with an [X Window System](https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine).
-* Other cloud platform deployments: Launch using any secure remote desktop (RDP, VNC over SSH tunnel, or X11 forwarding) as long as you can open the LM Studio GUI once.
-
-After you’ve opened the application for the first time using the GUI, you can start the server by using `sudo lms server start` in the [CLI](https://lmstudio.ai/docs/cli/server-start).
+1. Install [LM Studio](https://lmstudio.ai/).
+2. You must launch the application using its GUI before being able to use the CLI. Depending on where you're deploying, use one of the following methods:
+    * **Local deployments**: Launch LM Studio using the GUI.
+    * **GCP deployments**: Launch using Chrome RDP with an [X Window System](https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine).
+    * **Other cloud platform deployments**: Launch using any secure remote desktop (RDP, VNC over SSH tunnel, or X11 forwarding) as long as you can open the LM Studio GUI once.
+3. After you’ve opened the application for the first time using the GUI, start the server using `sudo lms server start` in the [CLI](https://lmstudio.ai/docs/cli/server-start).
 
 Once you’ve launched LM Studio:
 
@@ -55,7 +54,7 @@ For security reasons, before downloading a model, verify that it is from a trust
 :alt: The LM Studio model selection interface with download options
 :::
 
-In this example we used [`llama-3.3-70b-instruct`](https://lmstudio.ai/models/meta/llama-3.3-70b). It has 70B total parameters, a 128,000 token context window, and uses GGUF [quanitization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
+In this example we used [`llama-3.3-70b-instruct`](https://lmstudio.ai/models/meta/llama-3.3-70b). It has 70B total parameters, a 128,000 token context window, and uses GGUF [quantization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
 
 | Model Name | Parameter Size | Tokens/Context Window | Quantization Format |
 | --- | --- | --- | --- |
@@ -106,14 +105,10 @@ If your model uses NVIDIA drivers, you can check the GPU performance with the `s
 
 Once the model is downloaded, it will appear in the **My Models** window in LM Studio.
 
-:::{image} /solutions/images/observability-ai-assistant-lm-studio-my-models.png
-:alt: My Models window in LM Studio with downloaded models
-:::
-
 1. Navigate to the **Developer** window.
-2. Click on the **Start server** toggle on the top left. Once the server is started, you'll see the address and port of the server. The default port is `1234`.
-4. Click on **Select a model to load** and pick the model `Llama 3.3 70B Instruct` from the dropdown menu.
-5. Navigate to the **Load** on the right side of the LM Studio window, to adjust the context window to 64,000. Reload the model to apply the changes.
+2. Turn on the **Start server** toggle on the top left. Once the server is started, you'll see the address and port of the server. The default port is `1234`.
+3. Click on **Select a model to load** and pick your model from the model dropdown.
+4. Select the **Load** tab on the right side of the LM Studio GUI, and adjust the **Context Length** to 64,000. Reload the model to apply the changes.
 
 ::::{note}
 To enable other devices on the same network to access the server, go to **Settings** and turn on **Serve on Local Network**.
@@ -143,5 +138,5 @@ Finally, configure the connector:
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features.
 
 ::::{note}
-While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [here](/solutions/observability/observability-ai-assistant.md#obs-ai-set-up).
+While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [Set up the AI Assistant](/solutions/observability/observability-ai-assistant.md#obs-ai-set-up).
 ::::

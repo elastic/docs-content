@@ -98,7 +98,7 @@ The AI Assistant connects to one of these supported LLM providers:
 
 ### Connect to a custom local LLM
 
-You can [connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
+[Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
