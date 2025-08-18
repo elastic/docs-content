@@ -3,7 +3,7 @@ navigation_title: Connect to a local LLM
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/connect-to-local-llm.html
 applies_to:
-  stack: ga
+  stack: ga 9.2
   serverless: ga
 products:
   - id: observability
