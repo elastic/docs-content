@@ -101,6 +101,7 @@ You can do rolling upgrades to avoid exhausting network resources when updating 
 
 5. Upgrade the agents.
 
+Note that agents in a rollout period have the status `Updating` until the upgrade is complete, even if the upgrade has not started yet.
 
 ## Schedule an upgrade [schedule-agent-upgrade]
 
@@ -245,7 +246,9 @@ To configure an automatic rollout of a new minor or patch version to a percentag
 7. You can then add a different target version, and specify the percentage of agents you want to be upgraded to that version. The total percentage of agents to be upgraded cannot exceed 100%.
 8. Click **Save**.
 
-Once the configuration is saved, an asynchronous task runs every 30 minutes, gradually upgrading the agents in the policy to the specified target version.
+Once the configuration is saved, an asynchronous task runs every 30 minutes, upgrading the agents in the policy to the specified target version.
+
+If the number of agents to be upgraded is greater than or equal to 10, a rollout period is automatically applied. The rollout duration is either 10 minutes or `nAgents * 0.03` seconds, whichever is greater.
 
 In case of any failed upgrades, the upgrades are retried with exponential backoff mechanism until the upgrade is successful, or the maximum number of retries is reached. Note that the maximum number of retries is the number of [configured retry delays](#auto-upgrade-settings).
 
