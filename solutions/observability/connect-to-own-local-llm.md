@@ -54,7 +54,7 @@ For security reasons, before downloading a model, verify that it is from a trust
 :alt: The LM Studio model selection interface with download options
 :::
 
-In this example we used [`llama-3.3-70b-instruct`](https://lmstudio.ai/models/meta/llama-3.3-70b). It has 70B total parameters, a 128,000 token context window, and uses GGUF [quantization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
+Throughout this documentation, we used [`llama-3.3-70b-instruct`](https://lmstudio.ai/models/meta/llama-3.3-70b). It has 70B total parameters, a 128,000 token context window, and uses GGUF [quantization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
 
 | Attribute | Description |
 | --- | --- |
@@ -84,10 +84,6 @@ Once you’ve downloaded a model, use the following commands in your CLI:
 When loading a model, use the `--context-length` flag with a context window of 64,000 or higher. 
 Optionally, you can set how much to offload to the GPU by using the `--gpu` flag. `--gpu max` will offload all layers to GPU.
 ::::
-
-:::{image} /solutions/images/observability-ai-assistant-lms-commands.png
-:alt: The CLI interface during execution of initial LM Studio commands
-:::
 
 After the model loads, you should see the message `Model loaded successfully` in the CLI.
 
