@@ -39,7 +39,7 @@ BBQ retains the original vector’s dimensionality but transforms the datatype o
 
 Measuring vector similarity with BBQ vectors requires much less computing effort, allowing more candidates to be considered when using the HNSW algorithm. This often results in better ranking quality and improved relevance compared to the original `float32` vectors.
 
-### Vector search algorithms for BBQ [bbq-vector-search-algorithms]
+### Supported vector search algorithms [bbq-vector-search-algorithms]
 
 BBQ currently supports two vector search algorithms, each suited to different scenarios. You can configure them by setting the dense vector field’s `index_type`.
 
