@@ -56,10 +56,12 @@ For security reasons, before downloading a model, verify that it is from a trust
 
 In this example we used [`llama-3.3-70b-instruct`](https://lmstudio.ai/models/meta/llama-3.3-70b). It has 70B total parameters, a 128,000 token context window, and uses GGUF [quantization](https://huggingface.co/docs/transformers/main/en/quantization/overview). For more information about model names and format information, refer to the following table.
 
-| Model Name | Parameter Size | Tokens/Context Window | Quantization Format |
-| --- | --- | --- | --- |
-| Name of model, sometimes with a version number. | LLMs are often compared by their number of parameters — higher numbers mean more powerful models. | Tokens are small chunks of input information. Tokens do not necessarily correspond to characters. You can use [Tokenizer](https://platform.openai.com/tokenizer) to see how many tokens a given prompt might contain. | Quantization reduces overall parameters and helps the model to run faster, but reduces accuracy. |
-| Examples: Llama, Mistral. | The number of parameters is a measure of the size and the complexity of the model. The more parameters a model has, the more data it can process, learn from, generate, and predict. | The context window defines how much information the model can process at once. If the number of input tokens exceeds this limit, input gets truncated. | Specific formats for quantization vary, most models now support GPU rather than CPU offloading. |
+| Attribute | Description |
+| --- | --- |
+| **Model Name** | LLM model name, sometimes with a version number (e.g., Llama, Mistral). |
+| **Parameter Size** | Number of parameters, which measures the size and complexity of a model (more parameters = more data it can process, learn from, generate, and predict). |
+| **Tokens / Context Window** | Tokens are small chunks of input information that don't necessarily correspond to characters. Use the [Tokenizer](https://platform.openai.com/tokenizer) to estimate how many tokens a prompt contains. The context window defines how much information the model can process at once. If the number of input tokens exceeds this limit, the input is truncated. |
+| **Quantization Format** | Type of quantization applied. Quantization reduces overall parameters and increases model speed, but reduces accuracy. Most models now support GPU offloading rather than CPU offloading. |
 
 ::::{important}
 The {{obs-ai-assistant}} requires a model with at least a 64,000 token context window.
@@ -67,7 +69,7 @@ The {{obs-ai-assistant}} requires a model with at least a 64,000 token context w
 
 ## Load a model in LM Studio [load-a-model-in-lm-studio]
 
-After downloading a model, load it in LM Studio using the GUI or LM Studio’s [CLI tool](https://lmstudio.ai/docs/cli/load).
+After downloading a model, load it in LM Studio using LM Studio’s [CLI tool](https://lmstudio.ai/docs/cli/load) or the GUI.
 
 ### Option 1: Load a model using the CLI (Recommended) [option-1-load-a-model-using-the-cli-recommended]
 
@@ -103,7 +105,7 @@ If your model uses NVIDIA drivers, you can check the GPU performance with the `s
 
 ### Option 2: Load a model using the GUI [option-2-load-a-model-using-the-gui]
 
-Once the model is downloaded, it will appear in the **My Models** window in LM Studio.
+Once the model is downloaded, you'll find it in the **My Models** window in LM Studio.
 
 1. Navigate to the **Developer** window.
 2. Turn on the **Start server** toggle on the top left. Once the server is started, you'll see the address and port of the server. The default port is `1234`.
