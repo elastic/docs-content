@@ -17,10 +17,6 @@ This endpoint is designed for the following use cases:
 * Logs & Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
 
-:::{dropdown} Differences from the existing Elastic APM Endpoint
-The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/use-opentelemetry-with-apm.md), which primarily focuses on traces and the APM use case.
-:::
-
 ## Prerequisites
 
 * An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started.md).
@@ -43,7 +39,7 @@ To use the {{motlp}} you need the following:
 
 :::::
 
-:::::{step} Locate Your {{motlp}} Endpoint
+:::::{step} Locate your {{motlp}}
 
 To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
@@ -171,6 +167,10 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 :::::
 
 ::::::
+
+## Differences from the Elastic APM Endpoint
+
+The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/use-opentelemetry-with-apm.md), which primarily focuses on traces and the APM use case.
 
 ## Troubleshoot
 
