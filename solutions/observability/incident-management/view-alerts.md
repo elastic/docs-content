@@ -65,28 +65,29 @@ To view the alert in the app that triggered it:
 There are four common alert statuses:
 
 `active`
-:   The conditions for the rule are met and actions should be generated according to the notification settings.
+:   The conditions for the rule are met. Actions for the rule are run according to the notification settings.
 
 `flapping`
 :   The alert is switching repeatedly between active and recovered states.
 
-::::{note}
-**Flapping alerts**
-
+::::{important}
 The flapping state is possible only if you have enabled alert flapping detection. Go to the **Alerts** page and click **Manage Rules** to navigate to the **{{rules-app}}** page. Click **Settings** then set the look back window and threshold that are used to determine whether alerts are flapping. For example, you can specify that the alert must change status at least 6 times in the last 10 runs. If the rule has actions that run when the alert status changes, those actions are suppressed while the alert is flapping.
 
 ::::
 
 `recovered`
-:   The conditions for the rule are no longer met and recovery actions should be generated. Alerts will change to the recovered state if the rule's conditions are not met for the number of consecutive runs defined in its look back window. 
+:   The conditions for the rule are no longer met. Recovery actions for the rule will run if the rule's conditions _are not_ met during the current rule execution, but were met in the previous one. 
 
 ::::{note}
- Once an alert is recovered, the flapping state criteria is only applied to newly generated alerts. 
+
+Note the following about alerts that change from the flapping state to recovered:
+- Alerts in the flapping state will only change to recovered if the rule's conditions are not met for the number of consecutive runs that are defined by the **Alert status change threshold** for flapping alerts.
+- After an alert is recovered, the flapping state criteria is only applied to newly generated alerts. 
 ::::
 
 
 `untracked`
-:   The corresponding rule is disabled or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to expand the *More actions* menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
+:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to expand the *More actions* menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
 
 
 ## Customize the alerts table [observability-view-alerts-customize-the-alerts-table]
