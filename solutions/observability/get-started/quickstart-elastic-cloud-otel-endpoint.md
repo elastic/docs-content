@@ -6,16 +6,16 @@ applies_to:
   serverless:
 ---
 
-# Quickstart: Send data to the Elastic Cloud Managed OTLP Endpoint
+# Quickstart: Send data to the {{motlp}}
 
-In this quickstart guide, you'll learn how to use the [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) to send logs, metrics, and traces to Elastic.
-
-The Managed OTLP Endpoint is a fully managed offering exclusively for Elastic Cloud users that simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage.
+The {{motlp}} is a fully managed offering exclusively for Elastic Cloud users that simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. Refer to [{{motlp}}](opentelemetry://reference/motlp.md) for more information.
 
 This endpoint is designed for the following use cases:
 
 * Logs & Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
+
+In this quickstart guide, you'll learn how to use the {{motlp}} to send logs, metrics, and traces to Elastic.
 
 ## Prerequisites
 
@@ -173,6 +173,8 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/use-opentelemetry-with-apm.md), which primarily focuses on traces and the APM use case.
 
 ## Troubleshoot
+
+The following sections provide troubleshooting information for the {{motlp}}.
 
 ### I don't have a Collector or SDK running
 
