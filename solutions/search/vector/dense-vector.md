@@ -31,7 +31,7 @@ Dense vector search requires both index configuration and a strategy for generat
 
 Better Binary Quantization (BBQ) is an advanced vector quantization method, designed for large-scale similarity search. BBQ is a form of lossy compression for [`dense_vector` fields](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/dense-vector) that enables efficient storage and retrieval of large numbers of vectors, while keeping results close to those from the original uncompressed vectors.
 
-BBQ offers significant improvements over scalar quantization by using more sophisticated algorithms to reduce memory usage and computational costs while maintaining high search relevance. BBQ is designed to work in combination with [oversampling](#bbq-oversampling) and reranking, and is compatible with various [vector search algorithms](#bbq-vector-search-algorithms), such as [HNSW](#bbq-hnsw) and [brute force (flat)](#bbq-flat).
+BBQ offers significant improvements over scalar quantization by relying on optimized `bit` level computations to reduce memory usage and computational costs while maintaining high search relevance using pre-computed corrective factors. BBQ is designed to work in combination with [oversampling](#bbq-oversampling) and reranking, and is compatible with various [vector search algorithms](#bbq-vector-search-algorithms), such as [HNSW](#bbq-hnsw) and [brute force (flat)](#bbq-flat).
 
 ### How BBQ works [bbq-how-it-works]
 
