@@ -1,10 +1,10 @@
 [[general-billing-history]]
 = Check your billing history
 
-// :description: Monitor payments and billing receipts.
+// :description: Monitor payments and billing invoices.
 // :keywords: serverless, general, billing, history
 
-Information about outstanding payments and billing receipts is available from the {ess-console}[{ess-console-name}].
+Information about outstanding payments and billing invoices is available from the {ess-console}[{ess-console-name}].
 
 To check your billing history:
 
