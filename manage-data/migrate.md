@@ -136,7 +136,7 @@ For more information, refer to [Restore into a different cluster](/deploy-manage
 For {{ece}} users, while it is most common to have Amazon S3 buckets, you should be able to restore from any addressable external storage that has your {{es}} snapshots.
 ::::
 
-The following steps assume you already have a snapshot repository configured in the old cluster, with at least one valid snapshot containing the data you want to migrate.
+The following steps assume you already have a snapshot repository configured in the old cluster, with at least one valid snapshot containing the data you want to migrate. While these steps are valid in general, they assume that the migration is from a cluster containing mostly "static" data. In other words, they assume that it is possible to take a snapshot of the source (old) cluster, restore it in the target (new) cluster, and move on with operations. In use-cases in which the source cluster is consistently being used for data ingestion -for instance, to ingest time-series data such as logs, metrics, and traces- and the migration needs to be as transparent as possible, a minimal downtime approach can be of great help. More information is available in a [dedicated section](migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md).
 
 ### Step 1: Set up the repository in the new cluster [migrate-repo-setup]
 
