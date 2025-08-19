@@ -69,7 +69,7 @@ To view the alert in the app that triggered it:
 There are four common alert statuses:
 
 `active`
-:   The conditions for the rule are met. If the rule has [actions](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the action's notification settings. 
+:   The conditions for the rule are met. If the rule has [actions](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. 
 
 `flapping`
 
@@ -77,21 +77,19 @@ There are four common alert statuses:
 
 ::::{note}  
 
-Alert flapping is turned on by default. To modify the conditions for changing an alert's status to the flapping state, configure the alert flapping settings. 
-
-First, navigate to the **Alerts** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Next, click **Manage Rules**, then **Settings** to open the global rule settings for the space. In the **Alert flapping detection** section, modify the rules' look back window and threshold for alert status changes. For example, you can specify that the alert must change its status at least 6 times in the last 10 runs for it to become a flapping alert. 
+Alert flapping is turned on by default. You can modify the criteria for changing an alert's status to the flapping state by configuring the **Alert flapping detection** settings. To do this, navigate to the **Alerts** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Next, click **Manage Rules**, then **Settings** to open the global rule settings for the space. In the **Alert flapping detection** section, modify the rules' look back window and threshold for alert status changes. For example, you can specify that the alert must change its status at least 6 times in the last 10 runs for it to become a flapping alert. 
 
 ::::
 
 `recovered`
-:   The conditions for the rule are no longer met. If the rule has [recovery actions](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the action's notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
+:   The conditions for the rule are no longer met. If the rule has [recovery actions](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#defining-rules-actions-details), {{kib}} generates notifications based on the actions' notification settings. Recovery actions only run if the rule's conditions aren't met during the current rule execution, but were in the previous one. 
 
 
     An active alert changes to recovered if the conditions for the rule that generated it are no longer met. 
 
-    A flapping alert changes to recovered if the conditions for the rule that generated it are no longer met, and the alert's status stabilizes before refufilling the criteria for the flapping state. For instance, say you specify that an alert must change its status at least 6 times in the last 10 runs for it to become a flapping alert. If a flapping alert only changes its status 5 times in the last 10 runs, and rule's conditions are not met during the fifth rule run, the alert's status changes to recovered.  
-
-    After a flapping alert is recovered, the criteria for the flapping status is restarted when new alerts are generated. 
+    A flapping alert changes to recovered if the conditions for the rule that generated it are no longer met, and the alert's status stabilizes before refufilling the criteria for the flapping state. For instance, say that you specify an alert must change its status at least 6 times in the last 10 runs for it to become a flapping alert. If a flapping alert only changes its status 5 times in the last 10 runs, and rule's conditions are not met during the fifth rule run, the alert's status changes from flapping to recovered. 
+    
+    Once a flapping alert is recovered, it cannot be changed to flapping again. Only new alerts with repeated status changes are candidates for the flapping status. 
 
 `untracked`
 :   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
