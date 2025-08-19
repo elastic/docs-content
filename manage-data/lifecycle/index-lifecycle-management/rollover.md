@@ -48,8 +48,8 @@ Decide your approach to index rotation based on your use case and requirements.
 
 | Use case               | Recommended approach                                      | Setup benefits and limitations                                                                  |
 | ---------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Logs, metrics          | [Data streams](rollover.md#rollover-data-stream)          | Automatic rollover with lifecycle management, *minimal setup*, control over rollover timing ^1^ |
-| Legacy indexing setup  | [Alias-based rollover](rollover.md#rollover-with-aliases) | Automatic rollover with lifecycle management, *advanced setup*, control over rollover timing    |
+| Logs, metrics          | [Data streams](rollover.md#rollover-data-stream)          | Configure rollover with lifecycle management, *minimal setup*, control over rollover timing ^1^ |
+| Legacy indexing setup  | [Alias-based rollover](rollover.md#rollover-with-aliases) | Configure rollover with lifecycle management, *advanced setup*, control over rollover timing    |
 | Small, static datasets | No rollover                                               | Simpler management                                                                              |
 
 ^1^ Rollover is handled automatically in Serverless projects, therefore configuring rollover timing is abstracted from the user. {applies_to}`serverless: ga`
@@ -61,7 +61,7 @@ For new projects, use data streams. They're simple to manage with lifecycle poli
 
 ### Rotating your indices with data streams [rollover-data-stream]
 
-We recommend using [data streams](../../data-store/data-streams.md) to manage time series data. Data streams set up with lifecycle policies automatically track the write index while keeping configuration to a minimum.
+We recommend using [data streams](../../data-store/data-streams.md) to manage time series data. When set up to use ILM policies that include rollover, data streams automatically manage the rotation of your indices. This ensures you can write to the data stream without additional configuration.
 When targeting a data stream, the new backing index becomes the data stream's writing index. The generation of new backing indices is incremented automatically when it reaches a specified age or size.
 
 Each data stream requires an [index template](../../data-store/templates.md) that contains the following:
