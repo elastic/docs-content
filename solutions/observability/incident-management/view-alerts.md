@@ -88,7 +88,9 @@ First, navigate to the **Alerts** page in the main menu, or use the [global sear
 
 ::::{note}  
 
-For flapping alerts, the recovered state will only be applied if the rule's conditions are not met for the number of consecutive runs that are defined by the flapping alerts' **Alert status change threshold**. After a flapping alert is recovered, the flapping state criteria is reinstated, but only for newly generated alerts. 
+For flapping alerts, the recovered state will only be applied if the rule's conditions are not met for the number of consecutive runs that are defined by the flapping alerts' **Alert status change threshold**. For example, say you specify the status change threshold as 6 and the rules' lookback window is set to 10. If an alert repeatedly has switched between the active and recovered states at least 6 times in the last 10 runs, but then the rule's criteria is _not met_ on the eleventh run, the alert status will automatically change from flapping to recovered. 
+
+After a flapping alert is recovered, the flapping state criteria is reinstated for newly generated alerts. 
 
 ::::
 
