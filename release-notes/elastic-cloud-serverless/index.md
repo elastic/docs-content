@@ -22,7 +22,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables the `trustedAppsAdvancedMode` feature flag by default [#230111]({{kib-pull}}230111)
 * Updates the PrivMon UX [#231921]({{kib-pull}}231921)
 * Improves error messages when your {{kib}} session fails to refresh a token [#231118]({{kib-pull}}231118)
-* Adds inline markdown Visualization [#229191]({{kib-pull}}229191)
+* Adds inline markdown visualization [#229191]({{kib-pull}}229191)
 * Adds an `AI` section to the `Stack Management` menu [#227289]({{kib-pull}}227289)
 * Sets the default retention period for Logs anomaly detection to 120 days [#231080]({{kib-pull}}231080)
 
