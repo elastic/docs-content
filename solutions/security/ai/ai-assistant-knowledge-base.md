@@ -27,7 +27,7 @@ AI Assistant’s Knowledge Base feature enables AI Assistant to recall specific 
 ::::
 
 ::::{note}
-It is highly recommended to [enable autoscaling](/deploy-manage/autoscaling.md#cluster-autoscaling) to use the AI Assistant Knowledge Base.
+We strongly recommend you [enable autoscaling](/deploy-manage/autoscaling.md#cluster-autoscaling) before using Knowledge Base.
 ::::
 
 ## Role-based access control (RBAC) for Knowledge Base [knowledge-base-rbac]
@@ -51,7 +51,6 @@ There are two ways to enable Knowledge Base.
 ::::{note}
 You must individually enable Knowledge Base for each {{kib}} space where you want to use it.
 ::::
-
 
 
 ### Option 1: Enable Knowledge Base from an AI Assistant conversation [_option_1_enable_knowledge_base_from_an_ai_assistant_conversation]

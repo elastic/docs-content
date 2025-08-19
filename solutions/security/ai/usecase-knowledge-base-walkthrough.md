@@ -8,45 +8,13 @@ products:
 ---
 
 
-# Use the AI Assistant's Knowledge Base to Supercharge Security Operations
+# Use AI Assistant's Knowledge Base to Supercharge Security Operations
 
-AI Assistant Knowledge Base feature lets you provide custom, organization-specific context to the AI Assistant, making its responses more accurate, relevant, and actionable. By adding documents, indices, and external data sources, you can tailor the assistant to your environment, SOC strategy, threat intelligence, and operational workflows.
-
-## Overview
-
-- **What is the Knowledge Base?**
-  - A feature that allows the AI Assistant to recall and use custom documents and indices as context for its responses.
-  - Supports everything from infrastructure details, on-call rotations, SOC playbooks, threat intelligence, and more.
-  - Entries can be private (user-specific) or global (shared across the space).
-
-- **Why use it?**
-  - Increases the utility of the Security AI Assistant by grounding answers in your organization’s real data and processes.
-  - Enables richer, more actionable responses for incident response, alert investigation, and SOC operations.
+This guide walks you through an example of how you can give custom information to the AI Assistant to customize it for your needs and improve the quality of its responses. It can remember everything from threat hunting playbooks, to on-call rotations, security research, infrastructure information, your team's internal communications from platforms like Slack or Teams, and more — constrained only by your creativity.
 
 ## Prerequisites
 
-- Required privileges: `Elastic AI Assistant: All` (with sub-privileges for Knowledge Base and Field Selection/Anonymization).
-- Machine Learning enabled (minimum 4 GB ML node).
-- [Enable autoscaling](https://www.elastic.co/guide/en/cloud/current/autoscaling.html) is recommended.
-- Knowledge Base must be enabled for each Kibana space individually.
-
-## Step 1: Enable the Knowledge Base
-
-- **From an AI Assistant conversation:**
-  - Open a chat, select a model, and click **Setup Knowledge Base** (button only appears if not already enabled).
-- **From Security AI settings:**
-  - Use the global search field to find "AI Assistant for Security".
-  - On the **Knowledge Base** tab, click **Setup Knowledge Base**.
-
-> _Comment: Confirm if enabling from the conversation is available in all environments or only certain versions._
-
-## Step 2: Configure Alert Context
-
-- AI Assistant can use up to N (configurable, up to 500) open or acknowledged alerts from the last 24 hours as context.
-- Use the slider in the Knowledge Base tab to select how many alerts to include.
-- Alerts are ordered by risk score and recency; building block alerts are excluded.
-
-> _Comment: Confirm maximum number of alerts supported for context (docs mention up to 500, but token limits may apply)._
+Before following this guide, review the [Knowlege Base](/solutions/security/ai/ai-assistant-knowledge-base.md) topic for general information and prerequisites, and [enable knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
 
 ## Step 3: Add Knowledge Sources
 
@@ -96,6 +64,6 @@ AI Assistant Knowledge Base feature lets you provide custom, organization-specif
 
 ## Additional Resources
 
-- [AI Assistant Knowledge Base documentation](https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html)
-- [Elastic Security Labs](https://www.elastic.co/security-labs)
+- [Knowledge Base](https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html)
+- []
 - [Ingest data with Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-connectors.html)
