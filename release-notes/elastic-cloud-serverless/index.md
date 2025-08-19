@@ -15,7 +15,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-08182025-features-enhancements]
 
-* Removes category selection step when adding filters to maintenance windows so you can add filters to maintenance windows based on alert fields from all solutions [#227888]({{kib-pull}}227888)
+* Removes the category selection step when adding filters to maintenance windows so you can add filters to maintenance windows based on alert fields from all solutions [#227888]({{kib-pull}}227888)
 * Adds the ability to see all available log events in the shared logs overview even when ML features are not available [#225785]({{kib-pull}}225785)
 * Improves Gemini prompts [#223476]({{kib-pull}}223476)
 * Improves the AI Assistant Settings page by adding solution-specific logos [#224906]({{kib-pull}}224906)
