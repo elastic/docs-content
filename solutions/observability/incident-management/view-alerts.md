@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-observability-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-alerts.html
+applies_to:
+  stack: all
+  serverless:
+    observability: all
 products:
   - id: observability
   - id: cloud-serverless
@@ -65,22 +69,27 @@ To view the alert in the app that triggered it:
 There are four common alert statuses:
 
 `active`
-:   The conditions for the rule are met. Rule actions are run according to the notification settings.
+:   The conditions for the rule are met. Rule actions will run according to the notification settings.
 
 `flapping`
-:   The alert is switching repeatedly between active and recovered states.
 
-::::{important}
-The flapping state is possible only if you have enabled alert flapping detection. Go to the **Alerts** page and click **Manage Rules** to navigate to the **{{rules-app}}** page. Click **Settings** then set the look back window and threshold that are used to determine whether alerts are flapping. For example, you can specify that the alert must change status at least 6 times in the last 10 runs. If the rule has actions that run when the alert status changes, those actions are suppressed while the alert is flapping.
+:   The alert is switching repeatedly between active and recovered states. If the rule has actions that run when the alert status changes states, those actions are suppressed while the alert is flapping.
+
+::::{note}  
+
+Alert flapping is turned on by default. To modify the conditions for changing an alert's status to the flapping state, configure the alert flapping settings. 
+
+First, navigate to the **Alerts** page in the main menu, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Next, click **Manage Rules**, then **Settings** to open the global rule settings for the space. In the **Alert flapping detection** section, modify the rules' look back window and threshold for alert status changes. For example, you can specify that the alert must change status at least 6 times in the last 10 runs before it's status changes to flapping. 
 
 ::::
 
 `recovered`
-:   The conditions for the rule are no longer met. Rule recovery actions run if the rule's conditions _were not_ met during the current rule execution, but were in the previous one. 
+:   The conditions for the rule are no longer met. Rule recovery actions will run if the rule's conditions _were not_ met during the current rule execution, but were in the previous one. 
 
-::::{note}
+::::{note}  
 
-Alerts in the flapping state will only change to recovered if the rule's conditions are not met for the number of consecutive runs that are defined by the **Alert status change threshold** for flapping alerts. After an alert is recovered, the flapping state criteria is only applied to newly generated alerts. 
+For flapping alerts, the recovered state will only be applied if the rule's conditions are not met for the number of consecutive runs that are defined by the flapping alerts' **Alert status change threshold**. After a flapping alert is recovered, the flapping state criteria is reinstated, but only for newly generated alerts. 
+
 ::::
 
 
@@ -109,7 +118,6 @@ From the **Alerts** table, you can add one or more alerts to a case. Click the !
 Each case can have a maximum of 1,000 alerts.
 
 ::::
-
 
 
 ### Add an alert to a new case [observability-view-alerts-add-an-alert-to-a-new-case]
