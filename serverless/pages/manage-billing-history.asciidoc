@@ -4,7 +4,7 @@
 // :description: Monitor payments and billing receipts.
 // :keywords: serverless, general, billing, history
 
-Information about outstanding payments, statements, and billing receipts is available from the {ess-console}[{ess-console-name}].
+Information about outstanding payments and billing receipts is available from the {ess-console}[{ess-console-name}].
 
 To check your billing history:
 
