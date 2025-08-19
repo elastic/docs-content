@@ -131,12 +131,12 @@ To add an individual file to knowledge base, you first need to ingest it into an
   - For **Field** select the field you want to use as a semantic text field. It should contain information that AI Assistant can use to determine whether a document is relevant to a given query. Do not select a metadata field. Click **Add**.
   - For **Copy to field**, enter a name for your new semantic text field.
   - For **Inference service**, use the default or select another model that's enabled in your environment. 
-  - Click **Add**.
+  - Click **Add**. The new field appears in the **Mappings** section.
   :::{note}
-  For more information about semantic search and inference models, refer to [Elasticsearch semantic_text mapping](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text).
+  To learn more about semantic search and inference models, refer to [Elasticsearch semantic_text mapping](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text).
   :::
 6. Click **Import**. File ingest begins and should complete within a few seconds.
-7. Once your file has been ingested to an index, add it to Knowledge Base by following the steps to [add an index](#add-an-index-knowledge-base-add-knowledge-index). 
+7. Once your file has been ingested to an index, add it to Knowledge Base by following the steps to [add an index](#knowledge-base-add-knowledge-index). 
 
 Refer to the following video for an example of this process (click to play video):
 
