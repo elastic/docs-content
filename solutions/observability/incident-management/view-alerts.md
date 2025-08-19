@@ -57,14 +57,14 @@ From the **Alerts** table, you can click on a specific alert to open the alert d
 To further inspect the rule:
 
 * From the alert detail flyout, click **View rule details**.
-* From the **Alerts** table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon and select **View rule details**.
+* From the **Alerts** table, click the {icon}`boxes_horizontal` icon and select **View rule details**.
 
 To view the alert in the app that triggered it:
 
 * From the alert detail flyout, click **View in app**.
-* From the **Alerts** table, click the ![View in app](/solutions/images/serverless-eye.svg "") icon.
+* From the **Alerts** table, click the {icon}`eye` icon.
 
-### Understand alert statuses [observability-view-alerts-understand-statuses]
+## Understand alert statuses [observability-view-alerts-understand-statuses]
 
 There are four common alert statuses:
 
@@ -94,7 +94,7 @@ For flapping alerts, the recovered state will only be applied if the rule's cond
 
 
 `untracked`
-:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to expand the *More actions* menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
+:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
 
 
 ## Customize the alerts table [observability-view-alerts-customize-the-alerts-table]
@@ -112,7 +112,7 @@ You can also use the toolbar buttons in the upper-right to customize the display
 
 ## Add alerts to cases [observability-view-alerts-add-alerts-to-cases]
 
-From the **Alerts** table, you can add one or more alerts to a case. Click the ![More actions](/solutions/images/serverless-boxesHorizontal.svg "") icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
+From the **Alerts** table, you can add one or more alerts to a case. Click the {icon}`boxes_horizontal` icon to add the alert to a new or existing case. You can add an unlimited amount of alerts from any rule type.
 
 ::::{note}
 Each case can have a maximum of 1,000 alerts.
