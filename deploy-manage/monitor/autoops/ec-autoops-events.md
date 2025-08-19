@@ -6,41 +6,61 @@ applies_to:
     ess: all
 products:
   - id: cloud-hosted
+navigation_title: Events
 ---
 
 # AutoOps events [ec-autoops-events]
 
-An AutoOps event provides a detailed analysis of a specific issue, including why it was triggered and the steps needed to resolve it. 
+AutoOps continuously monitors your {{es}} deployments by sampling performance and health metrics at a 10-second interval. This high-frequency data collection allows for rapid detection and diagnosis of potential issues so you can get timely notifications and resolve issues faster. 
+
+When AutoOps detects an issue, it creates an event. Events provide detailed analyses of detected issues, including why they were triggered and the steps needed to resolve them. 
+
+## Event insights
+
+You can view events on the **Deployment** page in the **Open Events** and **Events History** sections.
+
+When you select an event, a flyout appears with insights and context around the detected issue.
 
 :::{image} /deploy-manage/images/cloud-autoops-events.png
 :alt: AutoOps events
 :::
 
-The following sections provide you with comprehensive insights and context around issues, the reasons why the event was created, as well as the affected nodes and indices with high indexing activity.
+The following table describes the different sections in this flyout:
 
 | Section | Description |
 | --- | --- |
-| What was detected | This section describes the reasons for which the event was created, as well as links to drill down into the issue. |
-| Recommendations | AutoOps provides a set of recommendations. The sequence of their appearance indicates the suggested order of steps to address the issue. |
-| Event duration | The time the event was detected (opened at) and the time AutoOps identified that the issue no longer exists (closed at). The closing of an event does not necessarily indicate that the customer resolved the issue, but rather that AutoOps no longer detects it. |
-| Background and impact | Provides background and context as to why an event is important, and the impact it can have on performance and stability. |
-| Event timeline chart | This chart visually represents metrics related to an issue. It appears only for events with dynamic metrics. For example, load issues will have this section, while settings-related issues will not. The event timeline chart displays just the last 15 minutes. |
-| Event severity | Events are categorized into three levels of severity - high, medium, and low - based on their potential impact on cluster performance and stability: <br><br>- **High**: Events can immediately cause significant usability, performance and stability problems.<br>- **Medium**: Events may lead to severe problems if not addressed.<br>- **Low**: Events have minimal/not urgent impact. |
+| What was detected | Describes why the event was created and provides links to drill down into the detected issue. |
+| Recommendations | Lists recommendations to address the issue and improve your cluster's overall performance. The recommendations are organized according to the suggested order of execution. |
+| Event duration | Shows the time the event was created when AutoOps detected the issue, and if applicable, the time the event was closed when AutoOps identified that the issue no longer exists. The closing of an event doesn't necessarily mean that the issue is resolved, just that AutoOps no longer detects it. |
+| Background and impact | Provides background and context about why the event is important and the impact it can have on cluster performance and stability. |
+| Event timeline chart | Visually presents metrics related to the issue in the last 15 minutes. This chart appears only for events with dynamic metrics. For example, load issues will have this section, but settings-related issues will not. |
+| Event severity | Categorizes the event into one of three severity levels based on its potential impact on the cluster: <br><br> **High**: Event can immediately cause significant usability, performance, and stability problems.<br> **Medium**: Event may lead to significant problems if not addressed.<br> **Low**: Event has minimal impact and is not urgent. |
 
+## Event actions
 
-## Event settings [ec-autoops-event-customize]
+In the event flyout, select the actions menu to perform the following actions. 
 
-AutoOps events are set to `open` and `close` based on triggering mechanisms that have default settings for each event type. You can modify the default settings through the Customize option in the event settings. Be cautious while changing these settings, to avoid situations where alerts fail to trigger.
+### Change event settings [ec-autoops-event-customize]
 
+AutoOps events are opened and closed based on triggering mechanisms that have default settings for each event type. To change these settings, select **Customize** from the actions menu.
 
-## Notifications [ec-autoops-notifications]
+When changing these settings, avoid making changes that will cause alert triggers to fail.
 
-AutoOps can send notifications to a variety of operation management tools like PagerDuty, Opsgenie, Slack, Teams and custom webhooks. Refer to [Notifications settings](ec-autoops-notifications-settings.md) for more details.
+### Configure notifications [ec-autoops-notifications]
 
+AutoOps can send event notifications to many operation management tools like PagerDuty, Opsgenie, Slack, Teams, custom webhooks, and more. To configure notifications, select **Notifications** from the actions menu. 
 
-## Sharing events with others [ec-autoops-event-sharing]
+Refer to [Notifications settings](ec-autoops-notifications-settings.md) for more details.
 
-You can easily share event information with other users by sending them a direct link to the AutoOps event using the share event link located at the top right of the event window.
+### Dismiss event
 
-Only users with access to the AutoOps deployment from which the link was copied can view the event details.
+Some events may not require your attention immediately, or at all. If you have the appropriate permissions, you can dismiss an event to remove all events of its kind from your dashboard and prevent AutoOps from opening other similar events. This action can be reversed using the **Dismiss events** report. To dismiss an event, select **Dismiss** from the actions menu.
+
+### Share event [ec-autoops-event-sharing]
+
+You can share event information with other users by sending them a link to the event in AutoOps. To share the event, select **Share event link** from the actions menu.
+
+:::{note}
+Users can only view the event from the shared link if they have access to the AutoOps deployment from which the link was copied.
+:::
 
