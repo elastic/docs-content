@@ -17,8 +17,8 @@ This frequently-asked-questions list answers some of your more common questions 
 
 * [Is there a way for me to estimate how much {{ecloud}} will cost?](#faq-cost)
 * [Where can I find a detailed view of my consumption?](#faq-consumption)
-* [How do I view previous invoices and billing history?](#faq-history)
-* [How can I change who receives invoices and billing notifications?](#faq-notify)
+* [How do I view previous invoices, statements, and billing history?](#faq-history)
+* [How can I change who receives invoices, statements, and billing notifications?](#faq-notify)
 * [What are the available payment methods on {{ecloud}}?](#faq-payment)
 * [Who can I contact for more information?](#faq-contact)
 * [Why is my credit card charged?](#faq-charge)
@@ -61,10 +61,10 @@ $$$faq-consumption$$$Where can I find a detailed view of my consumption?
     Additionally, on the {{ecloud}} [Usage](https://cloud.elastic.co/billing/usage?page=docs&placement=docs-body) page, the **Month-to-date usage** tile shows accrued costs and can help you to better estimate the next charge amount.
 
 
-$$$faq-history$$$How do I view previous invoices and billing history?
+$$$faq-history$$$How do I view previous invoices, statements, and billing history?
 :   Check the [billing history](https://cloud.elastic.co/billing/history?page=docs&placement=docs-body), where you can view and download invoices for all previous charges.
 
-$$$faq-notify$$$How can I change who receives invoices and billing notifications?
+$$$faq-notify$$$How can I change who receives invoices, statements, and billing notifications?
 :   The account owner can change who receives invoices and billing notifications by changing the [email details](https://cloud.elastic.co/account/contacts?page=docs&placement=docs-body).
 
 $$$faq-payment$$$What are the available payment methods on {{ecloud}}?
