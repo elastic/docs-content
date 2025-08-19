@@ -11,7 +11,7 @@ navigation_title: Events
 
 # AutoOps events [ec-autoops-events]
 
-AutoOps continuously monitors your {{es}} deployments by sampling performance and health metrics at a 10-second interval. This high-frequency data collection allows for rapid detection and diagnosis of potential issues so you can get timely notifications and resolve issues faster. 
+AutoOps continuously monitors your {{es}} deployments by sampling performance and health metrics at 10-second intervals. This high-frequency data collection allows for rapid detection and diagnosis of potential issues so you can get timely notifications and resolve issues faster. 
 
 When AutoOps detects an issue, it creates an event. Events provide detailed analyses of detected issues, including why they were triggered and the steps needed to resolve them. 
 
