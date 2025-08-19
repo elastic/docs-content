@@ -104,9 +104,9 @@ When you enable Knowledge Base, it comes pre-populated with articles from [Elast
 
 
 
-### Add an individual document [knowledge-base-add-knowledge-document]
+### Add a markdown document [knowledge-base-add-knowledge-document]
 
-Add an individual document to Knowledge Base when you want AI Assistant to remember a specific piece of information.
+Add a markdown document to Knowledge Base when you want AI Assistant to remember a specific piece of information. 
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
 2. Click **New → Document** and give it a name.
@@ -119,16 +119,38 @@ Refer to the following video for an example of adding a document to Knowledge Ba
 
 [![Add knowledge document video](https://play.vidyard.com/rQsTujEfikpx3vv1vrbfde.jpg)](https://videos.elastic.co/watch/rQsTujEfikpx3vv1vrbfde?)
 
+### Add a text, PDF, ODF, Word, Excel, PowerPoint, NDJSON, CSV, TSV, or log file [add-specific-file]
+
+To add an individual file to knowledge base, you first need to ingest it into an index and ensure that it includes a semantic text field.
+
+1. Access the **Upload file** interface by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "File upload". 
+2. Review the list of currently supported file formats and sizes, then select the file you want to upload. Click **Import**.
+3. In the **Index name** section, name the index that will contain the data in the uploaded file. Go to the **Advanced** tab. 
+4. (Optional) Review and update the mappings and ingest pipeline for your new index. 
+5. Click **Add additional field -> Add semantic text field**. 
+  - For **Field** select the field you want to use as a semantic text field. It should contain information that AI Assistant can use to determine whether a document is relevant to a given query. Do not select a metadata field. Click **Add**.
+  - For **Copy to field**, enter a name for your new semantic text field.
+  - For **Inference service**, use the default or select another model that's enabled in your environment. 
+  - Click **Add**.
+  :::{note}
+  For more information about semantic search and inference models, refer to [Elasticsearch semantic_text mapping](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text).
+  :::
+6. Click **Import**. File ingest begins and should complete within a few seconds.
+7. Once your file has been ingested to an index, add it to Knowledge Base by following the steps to [add an index](#add-an-index-knowledge-base-add-knowledge-index). 
+
+Refer to the following video for an example of this process (click to play video):
+
+[![Add knowledge index video](https://play.vidyard.com/Q5CjXMN4R2GYLGLUy5P177.jpg)](https://videos.elastic.co/watch/Q5CjXMN4R2GYLGLUy5P177?)
+
 
 
 ### Add an index [knowledge-base-add-knowledge-index]
 
-Add an index as a knowledge source when you want new information added to that index to automatically inform AI Assistant’s responses. Common security examples include asset inventories, network configuration information, on-call matrices, threat intelligence reports, and vulnerability scans.
+Add an index as a knowledge source when you want information in that index to inform AI Assistant’s responses. Common security examples include asset inventories, network configuration information, on-call matrices, threat intelligence reports, and vulnerability scans. When you update the index with new information, AI Assistant will gain access to the new information.
 
 ::::{important}
 Indices added to Knowledge Base must have at least one field mapped as [semantic text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
 ::::
-
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
 2. Click **New → Index**.
@@ -137,21 +159,15 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 5. Under **Index**, enter the name of the index you want to use as a knowledge source.
 6. Under **Field**, enter the names of one or more semantic text fields within the index.
 7. Under **Data Description**, describe when this information should be used by AI Assistant.
-8. Under **Query Instruction**, describe how AI Assistant should query this index to retrieve relevant information.
-9. Under **Output Fields**, list the fields which should be sent to AI Assistant. If none are listed, all fields will be sent.
+8. Under **Query Instruction**, describe how AI Assistant should query this index to retrieve relevant documents.
+9. Under **Output Fields**, list the fields which AI Assistant should look at when reviewing documents in this index. If none are listed, all fields are sent.
 
 :::{image} /solutions/images/security-knowledge-base-add-index-config.png
 :alt: Knowledge base's Edit index entry menu
 :::
 
-Refer to the following video for an example of adding an index to Knowledge Base (click to play video).
 
-
-[![Add knowledge index video](https://play.vidyard.com/Q5CjXMN4R2GYLGLUy5P177.jpg)](https://videos.elastic.co/watch/Q5CjXMN4R2GYLGLUy5P177?)
-
-
-
-### Add knowledge with a connector or web crawler [knowledge-base-crawler-or-connector]
+### Add knowledge to an index using a connector or web crawler [knowledge-base-crawler-or-connector]
 
 You can use an {{es}} connector or web crawler to create an index that contains data you want to add to Knowledge Base.
 
