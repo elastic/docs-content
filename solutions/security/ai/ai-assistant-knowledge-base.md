@@ -119,9 +119,9 @@ Refer to the following video for an example of adding a document to Knowledge Ba
 
 [![Add knowledge document video](https://play.vidyard.com/rQsTujEfikpx3vv1vrbfde.jpg)](https://videos.elastic.co/watch/rQsTujEfikpx3vv1vrbfde?)
 
-### Add a text, PDF, ODF, Word, Excel, PowerPoint, NDJSON, CSV, TSV, or log file [add-specific-file]
+### Add an individual file [add-specific-file]
 
-To add an individual file to knowledge base, you first need to ingest it into an index and ensure that it includes a semantic text field.
+To add an individual file to knowledge base, you first need to ingest it into an index and ensure that it includes a semantic text or text field. Supported file types include text, PDF, ODF, Word, Excel, PowerPoint, NDJSON, CSV, and TSV.
 
 1. Access the **Upload file** interface by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "File upload". 
 2. Review the list of currently supported file formats and sizes, then select the file you want to upload. Click **Import**.
@@ -132,9 +132,6 @@ To add an individual file to knowledge base, you first need to ingest it into an
   - For **Copy to field**, enter a name for your new semantic text field.
   - For **Inference service**, use the default or select another model that's enabled in your environment. 
   - Click **Add**. The new field appears in the **Mappings** section.
-  :::{note}
-  To learn more about semantic search and inference models, refer to [Elasticsearch semantic_text mapping](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text).
-  :::
 6. Click **Import**. File ingest begins and should complete within a few seconds.
 7. Once your file has been ingested to an index, add it to Knowledge Base by following the steps to [add an index](#knowledge-base-add-knowledge-index). 
 
@@ -158,6 +155,11 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 4. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
 5. Under **Index**, enter the name of the index you want to use as a knowledge source.
 6. Under **Field**, enter the names of one or more semantic text fields within the index.
+
+  :::{note}
+  {applies_to}`stack: ga 9.1` {applies_to}`serverless: security` You can use a text field instead of a semantic text field, though semantic text fields still offer better performance.
+  :::
+
 7. Under **Data Description**, describe when this information should be used by AI Assistant.
 8. Under **Query Instruction**, describe how AI Assistant should query this index to retrieve relevant documents.
 9. Under **Output Fields**, list the fields which AI Assistant should look at when reviewing documents in this index. If none are listed, all fields are sent.
@@ -167,16 +169,20 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 :::
 
 
-### Add knowledge to an index using a connector or web crawler [knowledge-base-crawler-or-connector]
+### Add knowledge to an index using a content connector or web crawler [knowledge-base-crawler-or-connector]
 
 You can use an {{es}} connector or web crawler to create an index that contains data you want to add to Knowledge Base.
 
-This section provides an example of adding a threat intelligence feed to Knowledge Base using a web crawler. For more information on adding data to {{es}} using a connector, refer to [Ingest data with Elastic connectors](elasticsearch://reference/search-connectors/index.md). For more information on web crawlers, refer to [Elastic web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
+#### Use a content connector to ingest data from third-party applications to Knowledge Base
+
+You can ingest data from third-party platforms such as Github, Jira, Teams, Google Drive, Slack, email, and [more](elasticsearch://reference/search-connectors/index.md) using [content connectors](/solutions/security/get-started/content-connectors.md). 
+
+Once you've set up a content connector, data from the selected source is ingested to an {{es}} index. To add it knowledge base, follow the steps to [add an index](#knowledge-base-add-knowledge-index). 
 
 
 #### Use a web crawler to add threat intelligence to Knowledge Base [_use_a_web_crawler_to_add_threat_intelligence_to_knowledge_base]
 
-First, you’ll need to set up a web crawler to add the desired data to an index, then you’ll need to add that index to Knowledge Base.
+First, you’ll need to set up a web crawler to add the desired data to an index, then you’ll need to add that index to Knowledge Base. For more information on web crawlers, refer to [Elastic web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
 
 1. From the **Search** section of {{kib}}, find **Web crawlers** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **New web crawler**.
@@ -206,3 +212,9 @@ Your new threat intelligence data is now included in Knowledge Base and can info
 Refer to the following video for an example of creating a web crawler to ingest threat intelligence data and adding it to Knowledge Base.
 
 [![Add knowledge via web crawler video](https://play.vidyard.com/eYo1e1ZRwT2mjfM7Yr9MuZ.jpg)](https://videos.elastic.co/watch/eYo1e1ZRwT2mjfM7Yr9MuZ?)
+
+
+## Additional resources
+
+- To learn more about semantic search and inference models, refer to [Elasticsearch semantic_text mapping](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text).
+- For a walkthrough of how Knowledge Base can improve the quality of AI Assistant's responses, refer to [Use AI Assistant's Knowledge Base to improve response quality](/solutions/security/ai/usecase-knowledge-base-walkthrough.md).
