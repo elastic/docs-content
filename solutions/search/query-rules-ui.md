@@ -3,24 +3,26 @@ applies_to:
   stack: ga 9.1
   serverless: ga
   elasticsearch:
+products:
+ - id: elasticsearch
 ---
 
 # Query rules UI
-Use query rules to boost, pin, or exclude specific documents when queries contain certain keywords, phrases, or match defined search patterns.
+Use query rules to pin or exclude specific documents when queries contain certain keywords, phrases, or match defined search patterns.
 The Query rules UI provides a graphical interface to manage these rules without writing API calls or JSON configuration.
 
 The UI enables you to:
 
-- Set keyword triggers and conditions for when rules apply
-- Pin, boost, or exclude specific documents in results
+- Set keyword or numerical conditions such as less than or greater than when rules apply
+- Pin or exclude specific documents in results
 - Organize rules into rulesets and set execution priority
 - Test rules against sample queries before publishing
 
 ## UI vs. API: What's the difference?
 
-The Query Rules UI provides the same functionality as the API with one key difference in how documents are pinned:
+The Query Rules UI provides the same functionality as the API with one key difference:
 
-* The UI defaults to `docs` for maximum flexibility, but still allows `id`-based pinning for single-index searches through a simplified form.
+* The UI defaults to `docs` for creating and editing rules. You cannot edit an `id` based rule that was created through the API.
 
 To see examples of how to search using query rules, refer [Search using Query Rules API](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules).
 
@@ -31,12 +33,12 @@ If you prefer to use the Query Rules API, refer to [Query Rules API]({{es-apis}}
 If you want to get full access to the Query Rules UI, you must have the following privileges:
 
 * Appropriate roles to access Kibana. For more information, refer to [Built-in roles](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles) or  [Kibana privileges](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges)
-* A custom role with `manage_search_query_rules` cluster privilege
+* A role with `manage_search_query_rules` cluster privilege
 * `ALL` option for `Query Rules` role privilege in the respective Kibana space
 
 ## Accessing the Query Rules UI
 
-Go to your deployment and select **Query Rules** from the left navigation menu under **Relevance**. If you're not able to see the option, contact the administrator to review the role assigned to you.
+Go to your deployment and select **Query Rules** from the left navigation menu under **Relevance**. If you're not able to see the option, contact your administrator to review the role assigned to you.
 
 :::{image} /solutions/images/elasticsearch-query-rules-ui-home.png
 :alt: Landing page for Query Rules UI.
