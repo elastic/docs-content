@@ -13,7 +13,7 @@ The Query rules UI provides a graphical interface to manage these rules without 
 
 The UI enables you to:
 
-- Set keyword or numerical conditions such as less than or greater than when rules apply
+- Set keyword or numerical conditions. For a full list of options, refer to [Rule criteria](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rule-criteria).
 - Pin or exclude specific documents in results
 - Organize rules into rulesets and set execution priority
 - Test rules against sample queries before publishing
@@ -56,13 +56,13 @@ Use the following steps to first create a query ruleset, and then a query rule:
 	- **Pin**: Pin selected documents to the top of the search results.
 	- **Exclude**: Exclude selected documents from the results.
    
-   For more information on rule types, refer [Rule types](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-type).
+   For more information on rule types, refer to [Rule types](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules#query-rule-type).
 4. Select one or more documents for the rule to apply to.
 5. Select one of the following rule criteria:
     - **Always**: Apply the rule to all queries
     - **Custom**: Define conditions when the rule is applied.
 
-   For a full list of options, refer [Rule criteria](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rule-criteria).
+   For a full list of options, refer to [Rule criteria](elasticsearch://reference/elasticsearch/rest-apis/searching-with-query-rules.md#query-rule-criteria).
 6. Select **Create rule**.
 7. Select **Save** in the top right corner of the ruleset section.
 
@@ -120,7 +120,7 @@ To test a query ruleset, do the following:
 
 ## Learn more
 
-Following resources can help you understand query rules better:
+The following resources can help you understand query rules better:
 
 Blogs:
 
