@@ -18,7 +18,7 @@ Before attempting to follow this guide, review the [Knowlege Base](/solutions/se
 
 ## Add relevant data from various sources to Knowledge Base
 
-AI Assistant is more useful for incident response when it can access information about your organization's specific infrastructure, threat hunting playbooks, personnel, and processes. How you can add this data to Knowledge Base depends on its format and structure. This section provides several examples of useful data and how to add it.
+AI Assistant is more useful for incident response when it can access information about your organization's specific infrastructure, threat hunting playbooks, personnel, and processes. How you can add this data to Knowledge Base depends on its format and structure. This section provides several examples of useful data and how to add it. 
 
 ### Add your Slack messages to Knowledge Base
 
@@ -36,6 +36,12 @@ If information about your on-call rotation is contained in a file, you can follo
 
 However, you can also copy and paste the information to directly [add it as a markdown document](/solutions/security/ai/ai-assistant-knowledge-base.md#knowledge-base-add-knowledge-document). Adding it as a markdown document is fast, and easy to update when the on-call rotation changes. 
 
+:::{image} /solutions/images/security-knowledge-base-add-on-call-rotation.png
+:alt: Knowledge base's Edit document entry menu showing a snippet of an on call rotation document
+:::
+
+Whichever method you use to add the information to Knowledge Base, consier making it **Required knowledge**. This will ensure that all of AI Assistant's responses are informed by the on-call rotation, even if your prompt doesn't specify that the information is relevant. This makes it more likely that AI Assistant will suggest appropriate escalation steps when you ask it about a threat.
+
 ### Add your threat hunting playbooks to Knowledge Base
  
 If you have threat hunting playbooks stored in a GitHub repository, you can add them to Knowledge Base using the GitHub content connector. This enables AI Assistant to tell your team about your organization's standard practices for responding to a wide range of potential threats. 
@@ -44,28 +50,23 @@ If you have threat hunting playbooks stored in a GitHub repository, you can add 
 2. Follow the steps to [create a content connector](/solutions/security/get-started/content-connectors.md). This ingests your selected data into {{es}}. During setup, select `GitHub`, and configure the connector to ingest your desired data.
 3. Follow the instructions to [add an index to Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#). Select the index you created while setting up your new connector.
 
-
-:::{image} /solutions/images/security-knowledge-base-add-on-call-rotation.png
-:alt: Knowledge base's Edit document entry menu showing a snippet of an on call rotation document
-:::
-
-Whichever method you use to add the information to Knowledge Base, consier making it **Required knowledge**. This will ensure that all of AI Assistant's responses are informed by the on-call rotation, even if your prompt doesn't specify that the information is relevant. This makes it more likely that AI Assistant will suggest appropriate escalation steps when you ask it about a threat.
-
-
 ## Use Knowledge Base in conversations
 
-AI Assistant will automatically use information you've added to Knowledge Base to inform its responses to your questions. With the information we've added in this example
-- You can instruct the assistant to "remember" information during chat (creates a private document).
-- Required knowledge entries are always included as context.
+AI Assistant will use the information you've added to Knowledge Base to inform its responses to your prompts. With the information we've added in this example, you can ask questions like:
 
-## Step 5: Manage and Share Knowledge
+- Is this alert related to any ongoing incidents?
+- Who should I contact to escalate this potential threat?
+- What should I do to respond to this threat?
 
-- Entries can be edited, deleted, or marked as required.
-- Global entries affect all users in the space; private entries are user-specific.
-- Elastic Security Labs research is pre-populated as global knowledge.
+Be creative, and experiment with adding different types of information to optimize AI Assistant for your team's purposes.
+
+## Video demo: investigate an Attack Discovery using AI Assistant's Knowledge Base
+
+The following video demo starts with a potential threat identified using Attack Discovery, and shows how the information you've added to Knowledge Base greatly increases AI Assistant's ability to help guide your team's incident response (click to play):
+
+[![Add knowledge index video](https://play.vidyard.com/SGrcygEFBCEJRURGjR8sMh.jpg)](https://videos.elastic.co/watch/SGrcygEFBCEJRURGjR8sMh?)
 
 ## Additional Resources
 
-- [Knowledge Base](https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html)
-- []
-- [Ingest data with Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-connectors.html)
+- Learn more about [Knowledge Base](https://www.elastic.co/guide/en/security/current/ai-assistant-knowledge-base.html)
+- Learn to [Ingest data with Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-connectors.html)
