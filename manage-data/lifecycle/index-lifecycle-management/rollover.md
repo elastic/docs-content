@@ -9,7 +9,7 @@ products:
 
 # Rollover [index-rollover]
 
-In {{es}}, the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) replaces your active write index with a new one whenever your index grows too large, too old, or stores too many documents.
+In {{es}}, the [rollover action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md) replaces your active write index with a new one whenever your index grows beyond a specified size, age, or number of documents.
 This is particularly useful for time-series data, such as logs or metrics where index growth is continuous, in order to meet performance and retention requirements.
 
 Without rollover, a single index would continue to grow, causing search performance to drop and having a higher administrative burden on the cluster.
@@ -28,18 +28,18 @@ You define a rollover action in the hot phase of an index lifecycle policy. It w
 You can configure the following rollover conditions:
 
 * **Size** - an index will rollover when its shards reach a set size, for example 50 GB.
-* **Age** - an index will rollover when an index reaches a certain age, for example 7 days.
+* **Age** - an index will rollover when it reaches a certain age, for example 7 days.
 * **Document count** - an index will rollover when a shard contains a certain number of documents, for example 2 million.
 
 ::::{tip}
 Rolling over to a new index based on size, document count, or age is preferable to time-based rollovers. Rolling over at an arbitrary time often results in many small indices, which can have a negative impact on performance and resource usage.
 ::::
 
-After rollover, indices move to other index lifecycle phases like warm, cold, frozen, and delete. Rollover creates a new write index while the old one continues through the lifecycle phases.
+After rollover, indices move through other configured index lifecycle phases: warm, cold, frozen, and/or delete. Rollover creates a new write index while the old one continues through the lifecycle phases.
 
 **Special rules:**
 
-* Rollover for an empty write index is skipped even if they have an associated `max_age` that would otherwise result in a roll over occurring. A policy can override this behavior if you set `min_docs: 0` in the rollover conditions. This can also be disabled on a cluster-wide basis if you set `indices.lifecycle.rollover.only_if_has_documents` to `false`.
+* Rollover for an empty write index is skipped even if it has an associated `max_age` that would otherwise result in a rollover occurring. A policy can override this behavior if you set `min_docs: 0` in the rollover conditions. This can also be disabled on a cluster-wide basis if you set `indices.lifecycle.rollover.only_if_has_documents` to `false`.
 * Forced rollover occurs if any shard reaches 200 million documents. Usually, a shard will reach 50 GB long before it reaches 200 million documents, but this isn’t the case for space efficient data sets.
 
 ## Recommended approaches
@@ -52,7 +52,7 @@ Decide your approach to index rotation based on your use case and requirements.
 | Legacy indexing setup  | [Alias-based rollover](rollover.md#rollover-with-aliases) | Configure rollover with lifecycle management, *advanced setup*, control over rollover timing    |
 | Small, static datasets | No rollover                                               | Simpler management                                                                              |
 
-^1^ Rollover is handled automatically in Serverless projects, therefore configuring rollover timing is abstracted from the user. {applies_to}`serverless: ga`
+^1^ Rollover is handled automatically in {{es-serverless}} projects. {applies_to}`serverless: ga`
 
 :::{tip}
 For new projects, use data streams. They're simple to manage with lifecycle policies where you define phases and actions that handle rollover automatically.
@@ -61,8 +61,8 @@ For new projects, use data streams. They're simple to manage with lifecycle poli
 
 ### Rotating your indices with data streams [rollover-data-stream]
 
-We recommend using [data streams](../../data-store/data-streams.md) to manage time series data. When set up to use ILM policies that include rollover, data streams automatically manage the rotation of your indices. This ensures you can write to the data stream without additional configuration.
-When targeting a data stream, the new backing index becomes the data stream's writing index. The generation of new backing indices is incremented automatically when it reaches a specified age or size.
+We recommend using [data streams](../../data-store/data-streams.md) to manage time series data. When set up to use an ILM policy that includes rollover, a data stream automatically manages the rotation of your indices. This ensures you can write to the data stream without additional configuration.
+When targeting a data stream, each time the current write index reaches a specified age or size, a new backing index is generated (with an incremented number and timestamp), and it becomes the data stream's writing index.
 
 Each data stream requires an [index template](../../data-store/templates.md) that contains the following:
 
@@ -81,7 +81,7 @@ Data streams are designed for append-only data, where the data stream name can b
 ```console
 .ds-<DATA-STREAM-NAME>-<yyyy.MM.dd>-<GENERATION>
 ```
-For more information about data stream naming patterns, refer to the [Generation](../../data-store/data-streams.md#data-streams-generation) section of the Data streams page.
+For more information about the data stream naming pattern, refer to the [Generation](../../data-store/data-streams.md#data-streams-generation) section of the Data streams page.
 
 ### Rotating your indices with aliases [rollover-with-aliases]
 
@@ -90,7 +90,7 @@ For more information about data stream naming patterns, refer to the [Generation
 :::{important}
 The use of aliases for rollover requires meeting certain conditions. Review these considerations before applying this approach:
 
-* The index name must match the pattern `^.-\d+$*`, for example `my-index-000001`.
+* The index name must match the pattern `<INDEX_NAME>-<INDEX_NUMBER>`, for example `my-index-000001`.
 * The `index.lifecycle.rollover_alias` must be configured as the alias to roll over.
 * The index must be the [write index](../../data-store/aliases.md#write-index) for the alias.
 :::
