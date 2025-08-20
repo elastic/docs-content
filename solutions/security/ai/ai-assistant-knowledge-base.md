@@ -179,7 +179,7 @@ Once you've set up a content connector, data from the selected source is ingeste
 
 #### Use a web crawler to add threat intelligence to Knowledge Base [_use_a_web_crawler_to_add_threat_intelligence_to_knowledge_base]
 
-First, you’ll need to set up a web crawler to add the desired data to an index, then you’ll need to add that index to Knowledge Base. For more information on web crawlers, refer to [Elastic web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
+First, you’ll need to set up a web crawler to add the desired data to an index, then you’ll need to add that index to Knowledge Base. For more information on web crawlers, refer to [web crawlers](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
 
 1. From the **Search** section of {{kib}}, find **Web crawlers** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **New web crawler**.
@@ -213,5 +213,6 @@ Refer to the following video for an example of creating a web crawler to ingest 
 
 ## Additional resources
 
-- To learn more about semantic search and inference models, refer to [Elasticsearch semantic_text mapping](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text).
 - For a walkthrough of how Knowledge Base can improve the quality of AI Assistant's responses, refer to [Use AI Assistant's Knowledge Base to improve response quality](/solutions/security/ai/usecase-knowledge-base-walkthrough.md).
+- To learn more about semantic search and inference models, refer to [Elasticsearch semantic_text mapping](https://www.elastic.co/search-labs/blog/semantic-search-simplified-semantic-text).
+- For more information about how the data in Knowledge Base gets chunked, refer to [Intelligent RAG data chunking](https://www.elastic.co/search-labs/blog/advanced-chunking-fetch-surrounding-chunks).
