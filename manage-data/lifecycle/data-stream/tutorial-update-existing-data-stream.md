@@ -10,7 +10,7 @@ products:
 
 # Tutorial: Update existing data stream [tutorial-manage-existing-data-stream]
 
-To update the lifecycle of an existing data stream you do the following actions:
+To update the lifecycle of an existing data stream you need to perform the following actions:
 
 1. [Set a data stream’s lifecycle](#set-lifecycle)
 2. [Remove lifecycle for a data stream](#delete-lifecycle)
@@ -18,7 +18,29 @@ To update the lifecycle of an existing data stream you do the following actions:
 
 ## Set a data stream’s lifecycle [set-lifecycle] 
 
-To add or to change the retention period of your data stream you can use the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
+To add or to change the retention period of your data stream you can use **Index Management** in {{kib}} or the {{es}} [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
+
+
+:::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+
+To change the data retention settings for a data stream:
+
+1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
+1. Use the search tool to find the data stream you're looking for.
+1. Select the data stream to view details.
+1. In the data stream details pane, select **Manage > Edit data retention** to adjust the settings. You can do any of the following:
+    . Select the duration that your data should be retained, in days, hours, minutes, or seconds.
+    . Choose to **Keep data indefinitely**, so that your data will not be deleted.
+    . Disable **Enable data retention** to turn off data stream lifecycle management for your data stream.
+:::
+
+:::{tab-item} API
+:sync: api
+
+To change the data retention settings for a data stream:
 
 * You can set infinite retention period, meaning that your data should never be deleted. For example:
 
@@ -39,9 +61,31 @@ To add or to change the retention period of your data stream you can use the [PU
     ```
 
     1. The retention period of this data stream is set to 30 days. This means that {{es}} is allowed to delete data that is older than 30 days at its own discretion.
+:::
+:::::
 
+The changes in the lifecycle are applied on all backing indices of the data stream. 
 
-The changes in the lifecycle are applied on all backing indices of the data stream. You can see the effect of the change via the [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
+You can see the effect of the change in {{kib}} or using the {{es}} [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
+
+:::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To check the data retention settings for a data stream:
+
+1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
+1. Use the search tool to find the data stream you're looking for.
+1. Select the data stream to view details. The flyout shows the data retention settings for the data stream. Note that if the data stream is currently managed by an [{{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management.md), the **Effective data retention** may differ from the retention value that you've set in the data stream, as indicated by the **Data retention**.
+
+   ![Index lifecycle status page](/manage-data/images/elasticsearch-reference-lifecycle-status.png "")
+
+:::
+
+:::{tab-item} API
+:sync: api
+
+To check the data retention settings for a data stream:
 
 ```console
 GET .ds-my-data-stream-*/_lifecycle/explain
@@ -90,15 +134,36 @@ The response will look like:
 9. The time that will be used to determine when it’s safe to delete this index and all its data.
 10. The data retention for this index as well is at least 30 days, as it was recently updated.
 
-
+:::
+:::::
 
 ## Remove lifecycle for a data stream [delete-lifecycle] 
 
-To remove the lifecycle of a data stream you can use the [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle). As consequence, the maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all its backing indices. For example:
+To remove the lifecycle of a data stream you can use in {{kib}} or the {{es}} [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle). 
 
+
+:::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
+1. Use the search tool to find the data stream you're looking for.
+1. Select the data stream to view details.
+1. In the data stream details pane, select **Manage > Edit data retention**.
+1. Turn off the **Enable data retention** option and save your changes. The maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all of its backing indices.
+You can confirm your changes by reopening the data stream pane. The **Effective data retention** will show a **Disabled** status.
+
+   ![Index lifecycle status is disabled](/manage-data/images/elasticsearch-reference-lifecycle-disabled.png "")
+
+:::
+
+:::{tab-item} API
+:sync: api
 ```console
 DELETE _data_stream/my-data-stream/_lifecycle
 ```
+
+After running the API request, the maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all of its backing indices.
 
 You can then use the [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle) again to see that the indices are no longer managed.
 
@@ -125,5 +190,5 @@ GET .ds-my-data-stream-*/_lifecycle/explain
 2. Indication that the index is not managed by the data stream lifecycle.
 3. The name of another backing index.
 4. Indication that the index is not managed by the data stream lifecycle.
-
-
+:::
+:::::
