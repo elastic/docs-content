@@ -13,7 +13,7 @@ products:
 
 # View your billing history [ec-billing-history]
 
-Information about outstanding payments and billing receipts is available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+Information about outstanding payments, statements, and billing invoices is available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 To check your billing history:
 
