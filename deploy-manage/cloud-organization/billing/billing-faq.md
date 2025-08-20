@@ -17,8 +17,8 @@ This frequently-asked-questions list answers some of your more common questions 
 
 * [Is there a way for me to estimate how much {{ecloud}} will cost?](#faq-cost)
 * [Where can I find a detailed view of my consumption?](#faq-consumption)
-* [How do I view previous receipts and billing history?](#faq-history)
-* [How can I change who receives receipts and billing notifications?](#faq-notify)
+* [How do I view previous invoices, statements, and billing history?](#faq-history)
+* [How can I change who receives invoices, statements, and billing notifications?](#faq-notify)
 * [What are the available payment methods on {{ecloud}}?](#faq-payment)
 * [Who can I contact for more information?](#faq-contact)
 * [Why is my credit card charged?](#faq-charge)
@@ -61,17 +61,17 @@ $$$faq-consumption$$$Where can I find a detailed view of my consumption?
     Additionally, on the {{ecloud}} [Usage](https://cloud.elastic.co/billing/usage?page=docs&placement=docs-body) page, the **Month-to-date usage** tile shows accrued costs and can help you to better estimate the next charge amount.
 
 
-$$$faq-history$$$How do I view previous receipts and billing history?
-:   Check the [billing history](https://cloud.elastic.co/billing/history?page=docs&placement=docs-body), where you can view and download receipts for all previous charges.
+$$$faq-history$$$How do I view previous invoices, statements, and billing history?
+:   Check the [billing history](https://cloud.elastic.co/billing/history?page=docs&placement=docs-body), where you can view and download invoices for all previous charges.
 
-$$$faq-notify$$$How can I change who receives receipts and billing notifications?
-:   The account owner can change who receives receipts and billing notifications by changing the [email details](https://cloud.elastic.co/account/contacts?page=docs&placement=docs-body).
+$$$faq-notify$$$How can I change who receives invoices, statements, and billing notifications?
+:   The account owner can change who receives invoices and billing notifications by changing the [email details](https://cloud.elastic.co/account/contacts?page=docs&placement=docs-body).
 
 $$$faq-payment$$$What are the available payment methods on {{ecloud}}?
 :   For month-to-month payments only credit cards are accepted. We also allow payments by bank transfer for annual subscriptions.
 
 $$$faq-contact$$$Who can I contact for more information?
-:   If you have any further questions about your credit card statement, billing, or receipts, send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/index.md) using the *Billing issue* category.
+:   If you have any further questions about your credit card statement, billing, or invoices, send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/index.md) using the *Billing issue* category.
 
 $$$faq-charge$$$Why is my credit card charged?
 :   If you are on a monthly plan, the charge is a recurring fee for using {{ecloud}}. The fee is normally charged at the start of each month, but it can also be charged at other times during the month. If a charge is unsuccessful, we will try to charge your card again at a later date.
