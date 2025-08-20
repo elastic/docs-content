@@ -1,16 +1,18 @@
 ---
+navigation_title: Install on Linux or MacOS
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
-sub:
-  es-conf: "$ES_HOME/config"
-  slash: "/"
-  export: "export "
-  escape: "\\"
-  auto: " -d"
-navigation_title: "Install on Linux or MacOS"
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: $ES_HOME/config
+  slash: /
+  export: "export "
+  escape: \
+  auto: " -d"
 ---
 
 # Install {{es}} from archive on Linux or MacOS [targz]
@@ -41,41 +43,80 @@ Download and install the archive for Linux or MacOS.
 
 ### Linux [install-linux]
 
-The Linux archive for {{es}} {{stack-version}} can be downloaded and installed as follows:
+The Linux archive for {{es}} can be downloaded and installed as follows:
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
+To download and install the {{es}} {{version.stack}} archive, enter:
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-linux-x86_64.tar.gz
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-linux-x86_64.tar.gz.sha512
-shasum -a 512 -c elasticsearch-{{stack-version}}-linux-x86_64.tar.gz.sha512 <1>
-tar -xzf elasticsearch-{{stack-version}}-linux-x86_64.tar.gz
-cd elasticsearch-{{stack-version}}/ <2>
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-linux-x86_64.tar.gz
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-linux-x86_64.tar.gz.sha512
+shasum -a 512 -c elasticsearch-{{version.stack}}-linux-x86_64.tar.gz.sha512 <1>
+tar -xzf elasticsearch-{{version.stack}}-linux-x86_64.tar.gz
+cd elasticsearch-{{version.stack}}/ <2>
 ```
-
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-linux-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
+:::
 
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+```sh subs=true
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz.sha512
+shasum -a 512 -c elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz.sha512 <1>
+tar -xzf elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz
+cd elasticsearch-<SPECIFIC.VERSION.NUMBER>/ <2>
+```
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-linux-x86_64.tar.gz: OK`.
+2. This directory is known as `$ES_HOME`.
+:::
+::::
 
 
 ### MacOS [install-macos]
 
-The MacOS archive for {{es}} {{stack-version}} can be downloaded and installed as follows:
+The MacOS archive for {{es}} can be downloaded and installed as follows:
 
+::::{tab-set}
+:group: docker
+:::{tab-item} Latest
+:sync: latest
+To download and install the {{es}} {{version.stack}} archive, enter:
 ```sh subs=true
-curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz
-curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
-tar -xzf elasticsearch-{{stack-version}}-darwin-x86_64.tar.gz
-cd elasticsearch-{{stack-version}}/ <2>
+curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf elasticsearch-{{version.stack}}-darwin-x86_64.tar.gz
+cd elasticsearch-{{version.stack}}/ <2>
 ```
-
 1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<version>-darwin-x86_64.tar.gz: OK`.
 2. This directory is known as `$ES_HOME`.
+:::
+
+:::{tab-item} Specific version
+:sync: specific
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
+```sh subs=true
+curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz
+curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz.sha512 | shasum -a 512 -c - <1>
+tar -xzf elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz
+cd elasticsearch-<SPECIFIC.VERSION.NUMBER>/ <2>
+```
+1. Compares the SHA of the downloaded `.tar.gz` archive and the published checksum, which should output `elasticsearch-<SPECIFIC.VERSION.NUMBER>-darwin-x86_64.tar.gz: OK`.
+2. This directory is known as `$ES_HOME`.
+:::
+:::
+::::
 
 ::::{admonition} macOS Gatekeeper warnings
 :class: important
 
-Apple’s rollout of stricter notarization requirements affected the notarization of the {{stack-version}} {{es}} artifacts. If macOS displays a dialog when you first run {{es}} that interrupts it, then you need to take an action to allow it to run.
+Apple’s rollout of stricter notarization requirements affected the notarization of the {{version.stack}} {{es}} artifacts. If macOS displays a dialog when you first run {{es}} that interrupts it, then you need to take an action to allow it to run.
 
-To prevent Gatekeeper checks on the {{es}} files, run the following command on the downloaded .tar.gz archive or the directory to which was extracted:
+To prevent Gatekeeper checks on the {{es}} files, run the following command on the downloaded `.tar.gz` archive or the directory to which it was extracted:
 
 ```sh
 xattr -d -r com.apple.quarantine <archive-or-directory>
@@ -176,7 +217,7 @@ Because the initial node in the cluster is bootstrapped as a single-node cluster
 
 ## Directory layout of archives [targz-layout]
 
-The archive distributions are entirely self-contained. All files and directories are, by default, contained within `$ES_HOME` — the directory created when unpacking the archive.
+The archive distributions are entirely self-contained. All files and directories are, by default, contained within `$ES_HOME` — the directory created when unpacking the archive.
 
 This is convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} is as easy as removing the `$ES_HOME` directory. However, you should change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
 

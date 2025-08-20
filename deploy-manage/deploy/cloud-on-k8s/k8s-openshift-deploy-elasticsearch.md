@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift-deploy-elasticsearch.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift-deploy-elasticsearch.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy an {{es}} instance with a route [k8s-openshift-deploy-elasticsearch]
@@ -15,7 +17,7 @@ A namespace other than the default namespaces (default, kube-system, kube-**, op
 ::::
 
 
-```shell
+```shell subs=true
 cat <<EOF | oc apply -n elastic -f -
 # This sample sets up an Elasticsearch cluster with an OpenShift route
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -23,7 +25,7 @@ kind: Elasticsearch
 metadata:
   name: elasticsearch-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1

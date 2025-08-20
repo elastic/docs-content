@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configuration [k8s-elastic-agent-configuration]
@@ -17,13 +19,13 @@ You can upgrade the Elastic Agent version or change settings by editing the YAML
 
 The Elastic Agent configuration is defined in the `config` element:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: quickstart
   daemonSet:
@@ -61,13 +63,13 @@ spec:
 
 Alternatively, it can be provided through a Secret specified in the `configRef` element. The Secret must have an `agent.yml` entry with this configuration:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: quickstart
   daemonSet:
@@ -117,13 +119,13 @@ Elastic Agent supports the use of multiple outputs. Therefore, the `elasticsearc
 
 To send Elastic Agent’s internal monitoring and log data to a different {{es}} cluster called `agent-monitoring` in the `elastic-monitoring` namespace, and the harvested metrics to our `quickstart` cluster, you have to define two `elasticsearchRefs` as shown in the following example:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     podTemplate:
       spec:
@@ -162,13 +164,13 @@ If the `elasticsearchRefs` element is specified, ECK populates the outputs secti
 
 The outputs can also be set manually. To do that, remove the `elasticsearchRefs` element from the specification and include an appropriate output configuration in the `config`, or indirectly through the `configRef` mechanism.
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     podTemplate:
       spec:
@@ -192,13 +194,13 @@ Depending on the use case, Elastic Agent may need to be deployed as a [Deploymen
 
 Similarly, you can set the [update strategy](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/) when deploying as a DaemonSet. This allows you to control the rollout speed for new configuration by modifying the `maxUnavailable` setting:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   daemonSet:
     podTemplate:
       spec:
@@ -218,13 +220,13 @@ Check [Set compute resources for Beats and Elastic Agent](manage-compute-resourc
 
 Some Elastic Agent features, such as the [Kubernetes integration](https://epr.elastic.co/package/kubernetes/0.2.8/), require that Agent Pods interact with Kubernetes APIs. This functionality requires specific permissions. The standard Kubernetes [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow API interactions:
 
-```yaml
+```yaml subs=true
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRefs:
   - name: elasticsearch
   daemonSet:
@@ -396,20 +398,20 @@ metadata:
 spec:
   config:
     # xpack.fleet.agents.elasticsearch.hosts: <1>
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-sample-agent-http.default.svc:8220"]
+    xpack.fleet.agents.fleet_server.hosts: ["<FLEET_SERVER_HOST_URL>-sample-agent-http.default.svc:8220"]
     xpack.fleet.outputs:
     - id: eck-fleet-agent-output-elasticsearch
       is_default: true
       name: eck-elasticsearch
       type: elasticsearch
       hosts:
-      - "https://elasticsearch-sample-es-http.default.svc:9200" <2>
+      - "<ELASTICSEARCH_HOST>-es-http.default.svc:9200" <2>
       ssl:
         certificate_authorities: ["/mnt/elastic-internal/elasticsearch-association/default/elasticsearch-sample/certs/ca.crt"] <3>
 ```
 
 1. This entry must not exist when running agent in fleet mode as a non-root user.
-2. Note that the correct URL for {{es}} is `https://ELASTICSEARCH_NAME-es-http.YOUR-NAMESPACE.svc:9200`
+2. Note that the correct URL for {{es}} is `<ELASTICSEARCH_HOST_URL>-es-http.<YOUR-NAMESPACE>.svc:9200`
 3. Note that the correct path for {{es}} `certificate_authorities` is `/mnt/elastic-internal/elasticsearch-association/YOUR-NAMESPACE/ELASTICSEARCH-NAME/certs/ca.crt`
 
 

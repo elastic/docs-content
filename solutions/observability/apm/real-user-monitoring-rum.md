@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-rum.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Real User Monitoring (RUM) [apm-rum]

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/heatmap-layer.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/heatmap-layer.html
+products:
+  - id: kibana
 ---
 
 # Heat map layer [heatmap-layer]

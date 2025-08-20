@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-integrations-server-api-example.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-integrations-server-api-example.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Enable Integrations Server through the API [ece-integrations-server-api-example]
@@ -17,7 +19,7 @@ For more information on how to manage Integrations Server from the UI, check [Ma
 
 Integrations Server can be enabled only on new deployments, starting with {{stack}} version 8.0.
 
-It’s possible to enable Integrations Server on an existing deployment with version 8.0 only if [APM & Fleet Server](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-apm-and-fleet.html) hasn’t been previously enabled on the deployment.
+It’s possible to enable Integrations Server on an existing deployment with version 8.0 only if the legacy [APM & Fleet Server](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-manage-apm-and-fleet.html) hasn’t been previously enabled on the deployment.
 
 
 ## API request example [ece_api_request_example_2]

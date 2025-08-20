@@ -1,10 +1,12 @@
 ---
-navigation_title: "Collecting log data with {{filebeat}}"
+navigation_title: Collecting log data with {{filebeat}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-filebeat.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: elasticsearch
 ---
 
 
@@ -43,7 +45,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon-2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"

@@ -1,9 +1,12 @@
 ---
-navigation_title: "Instrumentation"
+navigation_title: Instrumentation
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-instrumentation.html
 applies_to:
   stack: all
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Configure APM instrumentation [apm-configuration-instrumentation]

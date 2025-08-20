@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-pod-disruption-budget.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-pod-disruption-budget.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Pod disruption budget [k8s-pod-disruption-budget]
@@ -20,7 +22,7 @@ kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -41,14 +43,14 @@ spec:
 
 You can specify a PDB per nodeset or node role.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
   podDisruptionBudget: {} <1>
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
     - name: master
       count: 3

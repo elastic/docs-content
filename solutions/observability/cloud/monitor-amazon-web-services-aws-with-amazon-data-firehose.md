@@ -1,9 +1,12 @@
 ---
-navigation_title: "Monitor {{aws}} with Amazon Data Firehose"
+navigation_title: Monitor {{aws}} with Amazon Data Firehose
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/ingest-aws-firehose.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 

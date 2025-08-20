@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Users page
@@ -25,7 +28,7 @@ The Users page has the following sections:
 KPI charts show the total number of users and successful and failed user authentications within the time range specified in the date picker. Data in the KPI charts is visualized through linear and bar graphs.
 
 ::::{tip}
-Hover inside a KPI chart to display the actions menu (**…​**), where you can perform these actions: inspect, open in Lens, and add to a new or existing case.
+Hover inside a KPI chart to display the actions menu (**…**), where you can perform these actions: inspect, open in Lens, and add to a new or existing case.
 ::::
 
 
@@ -37,7 +40,7 @@ Beneath the KPI charts are data tables, which are useful for viewing and investi
 * **Events**: Ingested events that contain the `user.name` field. You can stack by the `event.action`, `event.dataset`, or `event.module` field. To display alerts received from external monitoring tools, scroll down to the Events table and select **Show only external alerts** on the right.
 * **All users**: A chronological list of unique user names, when they were last active, and the associated domains.
 * **Authentications**: A chronological list of user authentication events and associated details, such as the number of successes and failures, and the host name of the last successful destination.
-* **Anomalies**: Unusual activity discovered by machine learning jobs that contain user data.
+* **Anomalies**: Unusual activity discovered by [{{ml}} jobs](/solutions/security/advanced-entity-analytics/anomaly-detection.md) that contain user data.
 * **User risk**: The latest recorded user risk score for each user, and its user risk classification. In {{stack}}, this feature requires a [Platinum subscription](https://www.elastic.co/pricing) or higher. In serverless, this feature requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md). Click **Enable** on the **User risk** tab to get started. To learn more, refer to our [entity risk scoring documentation](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
 The Events table includes inline actions and several customization options. To learn more about what you can do with the data in these tables, refer to [*Manage detection alerts*](/solutions/security/detect-and-alert/manage-detection-alerts.md).

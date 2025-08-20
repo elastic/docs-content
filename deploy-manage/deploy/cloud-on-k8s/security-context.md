@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-security-context.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-security-context.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Security context [k8s-security-context]
@@ -43,13 +45,13 @@ Kubernetes recursively changes ownership and permissions for the contents of eac
 
 For example, if you force the Pod to run as user `1234`, you need to set `fsGroup` accordingly to `1234`:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
 spec:
   nodeSets:
   - name: default

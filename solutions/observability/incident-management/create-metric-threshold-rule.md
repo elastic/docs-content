@@ -1,7 +1,9 @@
 ---
-navigation_title: "Metric threshold"
+navigation_title: Metric threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/metrics-threshold-alert.html
+products:
+  - id: observability
 ---
 
 
@@ -139,6 +141,9 @@ The following variables are specific to this rule type. You an also specify [var
 :   Name of the group(s) reporting data. For accessing each group key, use `context.groupByKeys`.
 
 `context.groupByKeys`
+:   The object containing groups that are reporting data.
+
+`context.grouping` {applies_to}`stack: ga 9.2`
 :   The object containing groups that are reporting data.
 
 `context.host`

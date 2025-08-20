@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: all
   serverless: all
+products:
+  - id: cloud-serverless
 ---
 
 # Get started with system logs [observability-get-started-with-logs]
@@ -19,7 +21,7 @@ In this guide you’ll learn how to onboard system log data from a machine or se
 
 To onboard system log data:
 
-1. Open an [{{obs-serverless}} project](../get-started/create-an-observability-project.md) or Elastic Stack deployment.
+1. Open an [{{obs-serverless}} project](/solutions/observability/get-started.md) or Elastic Stack deployment.
 2. From the Observability UI, go to **Add data**.
 3. Under **What do you want to monitor?**, select **Host** → **Elastic Agent: Logs & Metrics**.
 4. Follow the in-product steps to auto-detect your logs and install and configure the {{agent}}.

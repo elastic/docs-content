@@ -1,7 +1,10 @@
 ---
-navigation_title: "Fleet and Elastic Agent"
+navigation_title: Fleet and Elastic Agent
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/release-notes.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # {{fleet}} and {{agent}} release notes [fleet-elastic-agent-release-notes]
@@ -22,6 +25,159 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
+
+## 9.1.2 [fleet-elastic-agent-9.1.2-release-notes]
+
+There are no new features, enhancements, or fixes in this release.
+
+## 9.1.1 [fleet-elastic-agent-9.1.1-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.1.1-features-enhancements]
+
+**Elastic Agent**
+
+* Add k8s leader elector OTel extension. [#9065]({{agent-pull}}9065)
+
+### Fixes [fleet-elastic-agent-9.1.1-fixes]
+
+**Elastic Agent**
+
+* Do not overwrite Elasticsearch output headers from enrollment `--headers` flag. [#9199]({{agent-pull}}9199) [#9197]({{agent-issue}}9197)
+
+**Fleet Server**
+
+* Fix upgrade details `download_rate` as string handling. [#5198]({{fleet-server-pull}}5198) [#5214]({{fleet-server-pull}}5214) [#5183]({{fleet-server-pull}}5183) [#5176]({{fleet-server-pull}}5176) [#5164]({{fleet-server-issue}}5164)
+
+## 9.1.0 [fleet-elastic-agent-9.1.0-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.1.0-features-enhancements]
+
+**Elastic Agent**
+
+* Adds a new configuration setting, `agent.upgrade.rollback.window` in preparation for enabling upgrade rollbacks in a future release. [#8065]({{agent-pull}}8065) [#6881]({{agent-issue}}6881)
+
+* Removes resource/k8s processor and uses k8sattributes processor for service attributes. [#8599]({{agent-pull}}8599)
+
+  This PR removes the `resource/k8s` processor in honour of the k8sattributes processor that
+  provides native support for the service attributes:
+  <https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.127.0/processor/k8sattributesprocessor#configuring-recommended-resource-attributes>
+  This change is aligned with the respective semantic conventions' guidance:
+  <https://opentelemetry.io/docs/specs/semconv/non-normative/k8s-attributes/#service-attributes>
+* Adds elastic.agent.fips to local_metadata. [#7112]({{agent-pull}}7112)
+* Validates pbkdf2 settings when in FIPS mode. [#7187]({{agent-pull}}7187)
+* Adds FIPS-capable agent file vault. [#7360]({{agent-pull}}7360)
+* With this change FIPS-capable agents will only be able to upgrade to other FIPS-capable agents. This change also restricts non-FIPS to FIPS upgrades as well. [#7312]({{agent-pull}}7312)
+* Updates the error messages returned for FIPS upgrades. [#7453]({{agent-pull}}7453)
+* Retries enrollment requests on any error. [#8056]({{agent-pull}}8056)
+* Removes deprecated otel Elasticsearch exporter config `*_dynamic_index` from code and samples. [#8592]({{agent-pull}}8592)
+* Includes the forwardconnector as an EDOT collector component. [#8753]({{agent-pull}}8753)
+* Updates otel components to v0.129.0. [#8819]({{agent-pull}}8819)
+* Updates apm config extension to v0.4.0. [#8819]({{agent-pull}}8819)
+* Updates elastic trace processor to v0.7.0. [#8819]({{agent-pull}}8819)
+* Updates elastic apm connector to v0.4.0. [#8819]({{agent-pull}}8819)
+* Updates api key auth extension to v0.2.0. [#8819]({{agent-pull}}8819)
+* Updates elastic infra metrics processor to v0.16.0. [#8819]({{agent-pull}}8819)
+* Bumps apmconfig extension to v0.3.0. [#8819]({{agent-pull}}8819)
+
+**Fleet Server**
+
+* Adds ability for enrollment to take an agent id. [#4290]({{fleet-server-pull}}4290) [#4226]({{fleet-server-issue}}4226)
+* Adds migrate-action. [#4786]({{fleet-server-pull}}4786)
+
+  Added new MIGRATE action type for moving agent to different cluster.
+* Clears agent.upgrade_attempts when upgrade is complete. [#4528]({{fleet-server-pull}}4528)
+* Makes pbkdf2 settings validation FIPS compliant. [#4542]({{fleet-server-pull}}4542)
+* Updates to Go v1.24.0. [#4543]({{fleet-server-pull}}4543)
+* Adds version metadata to version command output. [#4820]({{fleet-server-pull}}4820)
+* Adds rollback attribute to upgrade actions in preparation for enabling upgrade rollbacks in a future release. [#4838]({{fleet-server-issue}}4838)
+
+### Fixes [fleet-elastic-agent-9.1.0-fixes]
+
+**Elastic Agent**
+
+* Upgrade to Go 1.24.3. [#8109]({{agent-pull}}8109)
+* Correctly handle sending signal to child process. [#7738]({{agent-pull}}7738) [#6875]({{agent-issue}}6875)
+* Preserve agent run state on deb and rpm upgrades. [#7999]({{agent-pull}}7999)
+* Use --header from enrollment when communicating with Fleet Server. [#8071]({{agent-pull}}8071) [#6823]({{agent-issue}}6823)
+* Address a race condition that can occur in agent diagnostics if log rotation runs while logs are being zipped.
+* Use paths.tempdir for diagnostics actions. [#8472]({{agent-pull}}8472)
+* Use debian 11 to build linux/arm to match linux/amd64. Upgrades linux/arm64's statically linked glibc from 2.28 to 2.31. [#8497]({{agent-pull}}8497)
+* Relax file ownership check to allow admin re-enrollment on Windows. [#8503]({{agent-pull}}8503) [#7794]({{agent-issue}}7794)
+* Remove incorrect logging that unprivileged installations are in beta. [#8715]({{agent-pull}}8715) [#8689]({{agent-issue}}8689)
+* Ensure standalone Elastic Agent uses log level from configuration instead of persisted state. [#8784]({{agent-pull}}8784) [#8137]({{agent-issue}}8137)
+* Resolve deadlocks in runtime checkin communication. [#8881]({{agent-pull}}8881) [#7944]({{agent-issue}}7944)
+* Remove init.d support from rpm packages. [#8896]({{agent-pull}}8896) [#8840]({{agent-issue}}8840)
+
+**Fleet Server**
+
+* Upgrade golang.org/x/net to v0.34.0 and golang.org/x/crypto to v0.32.0. [#4405]({{fleet-server-pull}}4405)
+* Update Go to v1.24.3. [#4891]({{fleet-server-pull}}4891)
+* Fix host parsing in Elasticsearch output diagnostics. [#4765]({{fleet-server-pull}}4765)
+* Redact output in bootstrap config logs. [#4775]({{fleet-server-pull}}4775)
+* Mutex protection for remote bulker config. [#4776]({{fleet-server-pull}}4776)
+* Enable dead code elimination. [#4784]({{fleet-server-pull}}4784)
+* Include the base error for JSON decode error responses. [#5069]({{fleet-server-pull}}5069)
+
+## 9.0.5 [fleet-elastic-agent-9.0.5-release-notes]
+
+### Fixes [fleet-elastic-agent-9.0.5-fixes]
+
+**Fleet Server**
+
+* Fix upgrade details `download_rate` as string handling. [#5217]({{fleet-server-pull}}5217) [#5227]({{fleet-server-pull}}5227) [#5176]({{fleet-server-pull}}5176) [#5164]({{fleet-server-issue}}5164)
+
+## 9.0.4 [fleet-elastic-agent-9.0.4-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.4-features-enhancements]
+
+**Elastic Agent**
+
+* Add file logs only managed OTLP input kube-stack configuration. [#8785]({{agent-pull}}8785)
+
+### Fixes [fleet-elastic-agent-9.0.4-fixes]
+
+**Elastic Agent**
+
+* Remove incorrect logging that unprivileged installations are in beta. [#8715]({{agent-pull}}8715) [#8689]({{agent-issue}}8689)
+* Ensure standalone Elastic Agent uses log level from configuration instead of persisted state. [#8784]({{agent-pull}}8784) [#8137]({{agent-issue}}8137)
+* Resolve deadlocks in runtime checkin communication. [#8881]({{agent-pull}}8881) [#7944]({{agent-issue}}7944)
+* Remove init.d support from RPM packages. [#8896]({{agent-pull}}8896) [#8840]({{agent-issue}}8840)
+
+**Fleet Server**
+
+* Include the base error for JSON decode error responses. [#5069]({{fleet-server-pull}}5069)
+
+## 9.0.3 [fleet-elastic-agent-9.0.3-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.3-features-enhancements]
+
+**Elastic Agent**
+
+* Add `Cumulativetodeltaprocessor` To EDOT Collector. [#8372]({{agent-pull}}8372)
+
+**Fleet Server**
+
+* Update Go version to v1.24.4. [#5025]({{fleet-server-pull}}5025)
+
+### Fixes [fleet-elastic-agent-9.0.3-fixes]
+
+**Elastic Agent**
+
+* Address a race condition that can occur in agent diagnostics if log rotation runs while logs are being zipped. [#8215]({{agent-pull}}8215)
+* Use `paths.tempdir` for diagnostics actions. [#8472]({{agent-pull}}8472)
+* relax file ownership check to allow admin re-enrollment on Windows. [#8503]({{agent-pull}}8503)
+
+## 9.0.2 [fleet-elastic-agent-9.0.2-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.2-features-enhancements]
+
+* Updates Go version to v1.24.3 in {{fleet}} [#4891]({{fleet-server-pull}}4891)
+
+* Updates Go version to v1.24.3 in {{agent}} [#8109]({{agent-pull}}8109)
+
+### Fixes [fleet-elastic-agent-9.0.2-fixes]
+
+* Improves the upgrade process for {{agent}} installed using DEB or RPM packages by copying the run directory from the previous installation into the new version's folder [#7999]({{agent-pull}}7999) [#3832]({{agent-issue}}3832)
 
 ## 9.0.1 [fleet-elastic-agent-9.0.1-release-notes]
 

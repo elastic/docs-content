@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configuration [k8s-beat-configuration]
@@ -17,14 +19,14 @@ You can upgrade the Beat version or change settings by editing the YAML specific
 
 The Beat configuration is defined in the `config` element:
 
-```yaml
+```yaml subs=true
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
 metadata:
   name: quickstart
 spec:
   type: heartbeat
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRef:
     name: quickstart
   config:
@@ -42,14 +44,14 @@ spec:
 
 Alternatively, it can be provided through a Secret specified in the `configRef` element:
 
-```yaml
+```yaml subs=true
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
 metadata:
   name: heartbeat-quickstart
 spec:
   type: heartbeat
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRef:
     name: quickstart
   configRef:

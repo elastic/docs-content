@@ -1,7 +1,10 @@
 ---
-navigation_title: "Kafka"
+navigation_title: Kafka
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/kafka-output.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Kafka output [kafka-output]

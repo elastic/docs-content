@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/rule-action-variables.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/rule-action-variables.html
+products:
+  - id: kibana
 ---
 
 # Rule action variables [rule-action-variables]
@@ -185,7 +187,7 @@ If the rule’s action frequency is not a summary of alerts, it passes the follo
 :   The ID of the alert that scheduled the action.
 
 `alert.uuid`
-:   A universally unique identifier for the alert. While the alert is active, the UUID value remains unchanged each time the rule runs. [preview]
+:   A universally unique identifier for the alert. While the alert is active, the UUID value remains unchanged each time the rule runs.
 
 #### Context [defining-rules-actions-variable-context]
 

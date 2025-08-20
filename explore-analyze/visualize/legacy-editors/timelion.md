@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: deprecated 7.10
+  serverless: unavailable
 ---
   
 # Timelion [timelion]
@@ -84,19 +84,15 @@ Set up Metricbeat, then create the dashboard.
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, click **Create dashboard**.
 
+You can only add Timelion visualizations to a dashboard if they're already saved in the **Visualize Library**, using the **Add from library** option.
 
-## Open and set up Timelion [_open_and_set_up_timelion]
+## Create a Timelion visualization [_open_and_set_up_timelion]
 
-Open **Timelion** and change the time range.
+$$$timelion-tutorial-create-time-series-visualizations$$$
 
-1. On the dashboard, click **All types > Aggregation based**, then select **Timelion**.
-2. Make sure the [time filter](../../query-filter/filtering.md) is **Last 7 days**.
-
-
-## Create a time series visualization [timelion-tutorial-create-time-series-visualizations]
-
-To compare the real-time percentage of CPU time spent in user space to the results offset by one hour, create a time series visualization.
-
+1. Go to the **Visualize Library** and select **Create visualization**.
+2. In the **Legacy** tab, select **Aggregation-based**, then **Timelion**.
+3. Make sure the [time filter](../../query-filter/filtering.md) is **Last 7 days**.
 
 ### Define the functions [define-the-functions]
 
@@ -224,7 +220,7 @@ Move the legend to the north west position  with two columns, then click **Updat
 :screenshot:
 :::
 
- 
+ 
 
 
 ### Save and add the panel [save-the-timelion-panel]
@@ -347,7 +343,7 @@ Customize and format the visualization using the following functions, then click
 :screenshot:
 :::
 
- 
+ 
 
 
 ### Save and add the panel [save-the-network-timelion-panel]
@@ -532,7 +528,7 @@ Customize and format the visualization using the following functions, then click
 :screenshot:
 :::
 
- 
+ 
 
 
 ### Save and add the panel [save-the-outlier-timelion-panel]

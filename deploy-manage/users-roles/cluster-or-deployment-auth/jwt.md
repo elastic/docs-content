@@ -1,4 +1,5 @@
 ---
+navigation_title: JWT
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-JWT.html
@@ -10,7 +11,10 @@ applies_to:
     ess:
     ece:
     eck:
-navigation_title: "JWT"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # JWT authentication [jwt-auth-realm]
@@ -91,7 +95,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
     order: 3
     token_type: id_token
     client_authentication.type: shared_secret
-    allowed_issuer: "https://issuer.example.com/jwt/"
+    allowed_issuer: "<example-issuer-url>/jwt/"
     allowed_audiences: [ "8fb85eba-979c-496c-8ae2-a57fde3f12d0" ]
     allowed_signature_algorithms: [RS256,HS256]
     pkc_jwkset_path: jwt/jwkset.json
@@ -132,7 +136,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
     order: 4
     token_type: access_token
     client_authentication.type: shared_secret
-    allowed_issuer: "https://issuer.example.com/jwt/"
+    allowed_issuer: "<example-issuer-url>/jwt/"
     allowed_subjects: [ "123456-compute@admin.example.com" ]
     allowed_subject_patterns: [ "wild*@developer?.example.com", "/[a-z]+<1-10>\\@dev\\.example\\.com/"]
     allowed_audiences: [ "elasticsearch" ]
@@ -140,7 +144,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
       token_use: access
       version: ["1.0", "2.0"]
     allowed_signature_algorithms: [RS256,HS256]
-    pkc_jwkset_path: "https://idp-42.example.com/.well-known/configuration"
+    pkc_jwkset_path: "<example-idp-url>/.well-known/configuration"
     fallback_claims.sub: client_id
     fallback_claims.aud: scope
     claims.principal: sub
@@ -174,7 +178,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
 
    * The `shared_secret` value for `client_authentication.type`
 
-      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret1`)
+      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret`)
    * The HMAC keys for `allowed_signature_algorithms`
 
       (`xpack.security.authc.realms.jwt.jwt1.hmac_jwkset`)
@@ -280,7 +284,7 @@ You can relax validation of any of the time-based claims by setting `allowed_clo
 
 ## Role mapping [jwt-authorization]
 
-You can map LDAP groups to roles in the following ways:
+You can map JWT groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
 * Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).

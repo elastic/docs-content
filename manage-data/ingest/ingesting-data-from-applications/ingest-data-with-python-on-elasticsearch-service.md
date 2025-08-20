@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-python.html
 applies_to:
   stack: ga
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Ingest data with Python
@@ -149,7 +152,7 @@ After connecting to your deployment, you are ready to index and search data. Let
 es.index(
  index='lord-of-the-rings',
  document={
-  'character': 'Aragon',
+  'character': 'Aragorn',
   'quote': 'It is not this day.'
  })
 ```

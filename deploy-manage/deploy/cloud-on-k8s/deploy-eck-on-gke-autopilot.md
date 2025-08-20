@@ -1,13 +1,15 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot-setting-virtual-memory.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot-deploy-the-operator.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot-deploy-elasticsearch.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-autopilot-deploy-agent-beats.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy ECK on GKE Autopilot [k8s-autopilot]
@@ -35,14 +37,14 @@ Refer to [*Install ECK*](install.md) for more information on installation option
 
 Create an {{es}} cluster. If you are using the `Daemonset` described in the [Virtual memory](virtual-memory.md) section to set `max_map_count` you can add the `initContainer` below is also used to ensure the setting is set prior to starting {{es}}.
 
-```shell
+```shell subs=true
 cat <<EOF | kubectl apply -f -
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elasticsearch-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1

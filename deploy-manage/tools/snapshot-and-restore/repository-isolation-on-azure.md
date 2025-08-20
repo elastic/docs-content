@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Repository isolation on Azure [ec-snapshot-repository-azure-migration]

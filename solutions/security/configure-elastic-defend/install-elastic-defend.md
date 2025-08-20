@@ -1,5 +1,5 @@
 ---
-navigation_title: "Install {{elastic-defend}}"
+navigation_title: Install {{elastic-defend}}
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/install-endpoint.html
   - https://www.elastic.co/guide/en/serverless/current/security-install-edr.html
@@ -7,6 +7,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Install the {{elastic-defend}} integration
@@ -121,4 +124,4 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
 
     The host will now appear on the **Endpoints** page in the {{security-app}}. It may take another minute or two for endpoint data to appear in {{elastic-sec}}.
 
-8. For macOS, continue with [these instructions](/solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md) to grant {{elastic-endpoint}} the required permissions.
+8. For macOS, continue with [these instructions](/solutions/security/configure-elastic-defend/enable-access-for-macos.md) to grant {{elastic-endpoint}} the required permissions.

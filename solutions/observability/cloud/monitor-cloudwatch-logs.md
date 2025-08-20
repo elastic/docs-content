@@ -1,9 +1,12 @@
 ---
-navigation_title: "CloudWatch logs"
+navigation_title: CloudWatch logs
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-cloudwatch-firehose.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 

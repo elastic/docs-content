@@ -1,23 +1,25 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift-deploy-kibana.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift-deploy-kibana.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy a {{kib}} instance with a route [k8s-openshift-deploy-kibana]
 
 Use the following code to create a {{kib}} instance and a "passthrough" route to access it:
 
-```shell
+```shell subs=true
 cat <<EOF | oc apply -n elastic -f -
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: kibana-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: "elasticsearch-sample"

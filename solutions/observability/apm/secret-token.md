@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-secret-token.html
 applies_to:
   stack:
+products:
+  - id: observability
+  - id: apm
 ---
 
 # Secret token [apm-secret-token]
@@ -28,7 +31,7 @@ Secret tokens are not applicable for the RUM Agent, as there is no way to preven
 % This should be checked and updated, it doesn't looks like it's there by default vv
 
 ::::{note}
-{{ech}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} Console under the deployment's **APM & Fleet** page.
+{{ech}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} Console under the deployment's **APM & Fleet** page.
 ::::
 
 :::::::{tab-set}
@@ -59,9 +62,9 @@ apm-server.auth.secret_token: <secret-token>
 
 Each Elastic {{apm-agent}} has a configuration option to set the value of the secret token:
 
-* **Android agent**: [`secretToken`](apm-agent-android://reference/configuration.md)
+* **Android agent**: [`secretToken`](opentelemetry://reference/edot-sdks/android/configuration.md)
 * **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](apm-agent-go://reference/configuration.md#config-secret-token)
-* **iOS agent**: [`secretToken`](apm-agent-ios://reference/configuration.md#secrettoken)
+* **iOS agent**: [`secretToken`](opentelemetry://reference/edot-sdks/ios/configuration.md#secrettoken)
 * **Java agent**: [`secret_token`](apm-agent-java://reference/config-reporter.md#config-secret-token)
 * **.NET agent**: [`ELASTIC_APM_SECRET_TOKEN`](apm-agent-dotnet://reference/config-reporter.md#config-secret-token)
 * **Node.js agent**: [`Secret Token`](apm-agent-nodejs://reference/configuration.md#secret-token)

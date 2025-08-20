@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html
+products:
+  - id: elasticsearch
 ---
 
 # Accessing document fields and special variables [modules-scripting-fields]
@@ -239,7 +241,7 @@ GET my-index-000001/_search
 
 ### Stored fields [modules-scripting-stored]
 
-*Stored fields* — fields explicitly marked as [`"store": true`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-store.md) in the mapping — can be accessed using the `_fields['field_name'].value` or `_fields['field_name']` syntax:
+*Stored fields* — fields explicitly marked as [`"store": true`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-store.md) in the mapping — can be accessed using the `_fields['field_name'].value` or `_fields['field_name']` syntax:
 
 ```console
 PUT my-index-000001

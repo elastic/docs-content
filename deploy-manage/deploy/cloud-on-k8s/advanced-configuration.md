@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-advanced-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-advanced-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Advanced configuration [k8s-apm-advanced-configuration]
@@ -23,7 +25,7 @@ APM Agent central configuration was added in 7.5.1.
 
 [APM Agent configuration management](/solutions/observability/apm/apm-agent-central-configuration.md) allows you to configure your APM Agents centrally from the {{kib}} APM app. To use this feature, the APM Server needs to be configured with connection details of the {{kib}} instance. If {{kib}} is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
 
-```yaml
+```yaml subs=true
 cat <<EOF | kubectl apply -f -
 apiVersion: apm.k8s.elastic.co/v1
 kind: ApmServer
@@ -31,7 +33,7 @@ metadata:
   name: apm-server-quickstart
   namespace: default
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: quickstart
@@ -56,14 +58,14 @@ config:
 
 To customize the configuration of the APM Server, use the `config` element in the specification:
 
-```yaml
+```yaml subs=true
 apiVersion: apm.k8s.elastic.co/v1
 kind: ApmServer
 metadata:
   name: apm-server-quickstart
   namespace: default
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   config:
     output:
@@ -92,14 +94,14 @@ The APM Server keystore can be used to store sensitive settings in the APM Serve
 
 2. In the `spec.secureSettings` section, add a reference to the secret you previously created.
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: apm.k8s.elastic.co/v1
     kind: ApmServer
     metadata:
       name: apm-server-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       count: 1
       secureSettings:
       - secretName: apm-secret-settings
@@ -132,14 +134,14 @@ Now that you know how to use the APM keystore and customize the server configura
 
     Here is a complete example with a password stored in the Keystore, as described in the previous section:
 
-    ```yaml
+    ```yaml subs=true
     apiVersion: apm.k8s.elastic.co/v1
     kind: ApmServer
     metadata:
       name: apm-server-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       count: 1
       secureSettings:
       - secretName: apm-secret-settings

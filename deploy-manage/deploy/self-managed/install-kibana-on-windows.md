@@ -1,11 +1,9 @@
 ---
-navigation_title: "Install on Windows"
+navigation_title: Windows
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/windows.html
-navigation_title: "Windows"
-applies_to:
-  deployment:
-    self:
+products:
+  - id: kibana
 ---
 
 # Install {{kib}} on Windows [windows]
@@ -20,13 +18,39 @@ applies_to:
 
 ## Step 1: Download and install the `.zip` package [install-windows]
 
-Download the .zip windows archive for {{kib}} {{stack-version}} from [https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/kibana/kibana-9.0.0-windows-x86_64.zip)
+::::{tab-set}
 
-Unzip it with your favorite unzip tool. This will create a folder called kibana-{{stack-version}}-windows-x86_64, which we will refer to as `$KIBANA_HOME`. In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
+:::{tab-item} Latest
+Download the .zip windows archive for {{kib}} {{version.stack}} from [https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-windows-x86_64.zip)
+
+Unzip it with your favorite unzip tool. This will create a folder with the following name:
+
+```text subs=true
+kibana-{{version.stack}}-windows-x86_64
+```
+We will refer to this folder as `$KIBANA_HOME`.
+
+In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
 
 ```sh subs=true
-CD c:\kibana-{{stack-version}}-windows-x86_64
+CD c:\kibana-{{version.stack}}-windows-x86_64
 ```
+:::
+
+:::{tab-item} Specific version
+Download the `.zip` archive for the {{kib}} version that you want from the [Past Releases](https://www.elastic.co/downloads/past-releases) page. 
+If you're unsure about which version to install, refer to [{{es}} version](/deploy-manage/deploy/self-managed/install-kibana.md#elasticsearch-version) for more information about version compatibility.
+
+Unzip it with your favorite unzip tool. This will create a folder called `kibana-<SPECIFIC.VERSION.NUMBER>-windows-x86_64`, where `<SPECIFIC.VERSION.NUMBER>` is the version you downloaded. We will refer to this folder as `$KIBANA_HOME`. 
+
+In a terminal window, CD to the `$KIBANA_HOME` directory, for instance:
+
+```sh subs=true
+CD c:\kibana-<SPECIFIC.VERSION.NUMBER>}-windows-x86_64
+```
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{kib}} version number you installed. 
+:::
+::::
 
 ## Step 2: Start {{es}} and generate an enrollment token for {{kib}} [windows-enroll]
 
@@ -62,7 +86,7 @@ By default, {{kib}} runs in the foreground, prints its logs to `STDOUT`, and can
 
 ## Directory layout of `.zip` archive [windows-layout]
 
-The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
+The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `$KIBANA_HOME` — the directory created when unpacking the archive.
 
 This is very convenient because you don’t have to create any directories to start using {{kib}}, and uninstalling {{kib}} is as easy as removing the `$KIBANA_HOME` directory.  However, it is advisable to change the default locations of the config and data directories so that you do not delete important data later on.
 

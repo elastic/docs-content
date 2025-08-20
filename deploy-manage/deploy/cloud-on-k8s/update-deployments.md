@@ -1,10 +1,12 @@
 ---
 navigation_title: Applying updates
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Update your deployments [k8s-update-deployment]
@@ -13,14 +15,14 @@ You can add and modify most elements of the original Kubernetes cluster specific
 
 For example, you can grow the cluster to three {{es}} nodes from the [deployed {{es}} cluster](elasticsearch-deployment-quickstart.md) example by updating the `count` with [`apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/):
 
-```yaml
+```yaml subs=true
 cat <<EOF | kubectl apply -f -
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3

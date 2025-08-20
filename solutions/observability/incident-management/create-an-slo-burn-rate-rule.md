@@ -1,9 +1,11 @@
 ---
+navigation_title: SLO burn rate
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-burn-rate-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-slo-burn-rate-alert-rule.html
-
-navigation_title: "SLO burn rate"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create an SLO burn rate rule [observability-create-slo-burn-rate-alert-rule]
@@ -129,6 +131,9 @@ The following variables are specific to this rule type. You can also specify [va
 
 `context.burnRateThreshold`
 :   The burn rate threshold value.
+
+`context.grouping` {applies_to}`stack: ga 9.1`
+:   The object containing groups that are reporting data.
 
 `context.longWindow`
 :   The window duration with the associated burn rate value.

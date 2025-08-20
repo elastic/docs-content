@@ -1,18 +1,20 @@
 ---
+navigation_title: Install on Windows
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
-sub:
-  es-conf: "%ES_HOME%\\config"
-  slash: "\\"
-  export: "$"
-  escape: "^"
-  auto: ".bat"
-  ipcommand: "ipconfig /all"
-  ipvalue: "inet"
-navigation_title: Install on Windows
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: "%ES_HOME%\\config"
+  slash: \
+  export: $
+  escape: ^
+  auto: .bat
+  ipcommand: ipconfig /all
+  ipvalue: inet
 ---
 
 # Install {{es}} with .zip on Windows [zip-windows]
@@ -39,14 +41,41 @@ On Windows, the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime
 
 ## Step 1: Download and install the `.zip` package [install-windows]
 
-% link url manually set
-Download the `.zip` archive for {{es}} {{stack-version}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-windows-x86_64.zip)
+::::{tab-set}
 
-Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<version>`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
+:::{tab-item} Latest
+% link url manually set
+Download the `.zip` archive for {{es}} {{version.stack}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip)
+
+Unzip it with your favorite unzip tool. This will create a folder with the following name:
+
+```text subs=true
+elasticsearch-{{version.stack}}
+```
+
+We will refer to this folder as `%ES_HOME%`. 
+
+In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
 
 ```sh subs=true
-cd C:\Program Files\elasticsearch-{{stack-version}}
+cd C:\Program Files\elasticsearch-{{version.stack}}
 ```
+:::
+
+:::{tab-item} Specific version
+Download the `.zip` archive for the {{es}} version that you want from the [Past Releases](https://www.elastic.co/downloads/past-releases) page.
+
+Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<SPECIFIC.VERSION.NUMBER>`, where `<SPECIFIC.VERSION.NUMBER>` is the version you downloaded. We will refer to this folder as `%ES_HOME%`. 
+
+In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
+
+```sh subs=true
+cd C:\Program Files\elasticsearch-<SPECIFIC.VERSION.NUMBER>
+```
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version you installed.
+:::
+::::
+
 
 ## Step 2: Enable automatic creation of system indices [windows-enable-indices]
 
@@ -244,7 +273,7 @@ Because the initial node in the cluster is bootstrapped as a single-node cluster
 
 ## Directory layout of `.zip` archive [windows-layout]
 
-The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `%ES_HOME%` — the directory created when unpacking the archive.
+The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `%ES_HOME%` — the directory created when unpacking the archive.
 
 This is very convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} is as easy as removing the `%ES_HOME%` directory. However, it is advisable to change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
 

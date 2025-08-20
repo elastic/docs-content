@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Endpoint response actions
@@ -34,10 +37,11 @@ Response actions are supported on all endpoint platforms (Linux, macOS, and Wind
 
 Launch the response console from any of the following places in {{elastic-sec}}:
 
-* **Endpoints** page → **Actions** menu (**…​**) → **Respond**
+* **Endpoints** page → **Actions** menu (**…**) → **Respond**
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
 * Host details page → **Respond**
+* {applies_to}`stack: ga 9.1` Event details flyout → **Take action** → **Respond** 
 
 To perform an action on the endpoint, enter a [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the input area at the bottom of the console, then press **Return**. Output from the action is displayed in the console.
 
@@ -240,15 +244,17 @@ Scanning can take longer for directories containing a lot of files.
 
 ### `runscript` [runscript]
 
-::::{note}
-This response action is supported only for [CrowdStrike-enrolled hosts](/solutions/security/endpoint-response-actions/third-party-response-actions.md#crowdstrike-response-actions).
-::::
+Run a script on a host. 
 
+#### CrowdStrike
 
-Run a script on a host. You must include one of the following parameters to identify the script you want to run:
+For CrowdStrike, you must include one of the following parameters to identify the script you want to run:
 
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
+
+   {applies_to}`stack: ga 9.1` When using this parameter, select from a list of saved custom scripts.
+
 * `--HostPath`: The absolute or relative file path of the script located on the host machine.
 
 You can also use these optional parameters:
@@ -267,6 +273,29 @@ Examples:
 ` runscript --Raw=```Get-ChildItem.``` `
 
 `runscript --HostPath="C:\temp\LocalScript.ps1" --CommandLine="-Verbose true"`
+
+
+#### Microsoft Defender for Endpoint
+```yaml {applies_to}
+stack: ga 9.1
+```
+
+For Microsoft Defender for Endpoint, you must include the following parameter to identify the script you want to run:
+
+* `--ScriptName`: The name of the script stored in a cloud storage location. Select from a list of saved custom scripts.
+
+You can also use this optional parameter:
+
+* `--Args`: Additional command-line arguments passed to the script to customize its execution.
+  :::{note}
+  The response console does not support double-dash (`--`) syntax within the `--Args` parameter.
+  :::
+
+Predefined role: **SOC manager** or **Endpoint operations analyst**
+
+Required custom role privilege: **Execute Operations**
+
+Example: `runscript --ScriptName="Script2.sh" --Args="-Verbose true"`
 
 
 ## Supporting commands and parameters [supporting-commands-parameters]

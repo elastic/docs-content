@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/mutual-tls.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Elastic Agent deployment models with mutual TLS [mutual-tls]

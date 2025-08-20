@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/create-alerts-rules.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-manage-rules.html
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create and manage rules [observability-create-manage-rules]
@@ -22,11 +25,12 @@ Learn more about Observability rules and how to create them:
 
 % Serverless rules below, need to make sure we aren't missing some from stateful. Stateful page seems out of date.
 
-| Rule type | Name | Detects when…​ |
+| Rule type | Name | Detects when… |
 | --- | --- | --- |
 | AIOps | [Anomaly detection](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | Anomalies match specific conditions. |
 | APM | [APM anomaly](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | The latency, throughput, or failed transaction rate of a service is abnormal. |
 | Observability | [Custom threshold](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md) | An Observability data type reaches or exceeds a given value. |
+| Data set quality | [Degraded docs](/solutions/observability/incident-management/create-a-degraded-docs-rule.md) | The percentage of degraded documents for a data view exceeds a threshold |
 | Stack | [{{es}} query](/solutions/observability/incident-management/create-an-elasticsearch-query-rule.md) | Matches are found during the latest query run. |
 | APM | [Error count threshold](/solutions/observability/incident-management/create-an-error-count-threshold-rule.md) | The number of errors in a service exceeds a defined threshold. |
 | APM | [Failed transaction rate threshold](/solutions/observability/incident-management/create-failed-transaction-rate-threshold-rule.md) | The rate of transaction errors in a service exceeds a defined threshold. |

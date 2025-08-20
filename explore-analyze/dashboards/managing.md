@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/_manage_dashboards.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/_manage_dashboards.html
+products:
+  - id: kibana
 ---
 
 # Managing dashboards [_manage_dashboards]
@@ -45,7 +47,7 @@ By default, your most recently viewed dashboards are displayed first. You can in
 
 ## Keep track of your favorite dashboards [_keep_track_of_your_favorite_dashboards]
 
-You can mark any dashboards as favorite, using the ✩ **star icon**.
+You can mark any dashboards as favorite, using the ✩ **star icon** from the **Dashboards** page or from the dashboard itself.
 
 All dashboards marked as favorite are gathered in the **Starred** tab so you can find them quickly.
 

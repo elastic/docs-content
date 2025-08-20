@@ -1,5 +1,5 @@
 ---
-navigation_title: "Deprecations"
+navigation_title: Deprecations
 ---
 
 # {{serverless-full}} deprecations [elastic-cloud-serverless-deprecations]
@@ -8,6 +8,12 @@ Review the deprecated functionality for {{serverless-full}}. While deprecations 
 % ## Next release date Month Day, Year [elastic-cloud-serverless-releasedate-deprecations]
 % Description of the deprecation and steps to update implementation.
 % For more information, check [PR #](PR link).
+
+## June 30, 2025 [elastic-cloud-serverless-06302025-deprecations]
+* Removes Default Quick Prompts from the Security AI Assistant. For more information, check [#225536]({{kib-pull}}225536).
+
+## June 2, 2025 [elastic-cloud-serverless-06022025-deprecations]
+* Removes the `allowByValueEmbeddables` setting from the Dashboard plugin. For more information, check [#221165]({{kib-pull}}221165). 
 
 ## February 3, 2025 [elastic-cloud-serverless-02032025-deprecations]
 * Renames the `integration-assistant` plugin to `automatic-import`. For more information, check [#207325]({{kib-pull}}207325).

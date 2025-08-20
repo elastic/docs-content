@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-virtual-memory.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-virtual-memory.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Virtual memory [k8s-virtual-memory]
@@ -29,14 +31,14 @@ spec:
 
 To add an init container that changes the host kernel setting before your {{es}} container starts, you can use the following example {{es}} spec:
 
-```yaml
+```yaml subs=true
 cat <<EOF | kubectl apply -f -
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 3
@@ -95,14 +97,14 @@ EOF
 
 To run an {{es}} instance that waits for the kernel setting to be in place:
 
-```yaml
+```yaml subs=true
 cat <<'EOF' | kubectl apply -f -
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elasticsearch-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
   - name: default
     count: 1

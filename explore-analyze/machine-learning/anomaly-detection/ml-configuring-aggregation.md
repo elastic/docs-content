@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-aggregation.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-aggregation.html
+products:
+  - id: machine-learning
 ---
 
 # Aggregating data for faster performance [ml-configuring-aggregation]

@@ -1,10 +1,12 @@
 ---
 navigation_title: Configure default templates
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-configure-system-templates.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece-configure-system-templates.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Configure default system deployment templates [ece-configuring-ece-configure-system-templates]
@@ -26,7 +28,7 @@ The API user must have the `Platform admin` role in order to configure system te
 1. Obtain the existing system deployment template you wish to modify. Note the `id` of the system deployment template as you will include this value in the API call to edit the template.
 
     ```sh
-    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
+    curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://$COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
 2. Edit the JSON of the system deployment template you wish to modify.

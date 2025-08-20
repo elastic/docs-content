@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Disable swapping [setup-configuration-memory]

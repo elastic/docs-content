@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-simplified-input-configuration.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Simplified log ingestion [elastic-agent-simplified-input-configuration]

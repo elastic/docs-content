@@ -1,4 +1,5 @@
 ---
+navigation_title: File-based
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
@@ -6,7 +7,9 @@ applies_to:
   deployment:
     self: all
     eck: all
-navigation_title: "File-based"
+products:
+  - id: elasticsearch
+  - id: cloud-kubernetes
 ---
 
 # File-based user authentication [file-realm]
@@ -16,6 +19,8 @@ You can manage and authenticate users with the built-in `file` realm. With the `
 The `file` realm is useful as a fallback or recovery realm. For example in cases where the cluster is unresponsive or the security index is unavailable, or when you forget the password for your administrative users. In this type of scenario, the `file` realm is a convenient workaround: you can define a new `admin` user in the `file` realm and use it to log in and reset the credentials of all other users.
 
 You can configure only one file realm on {{es}} nodes.
+
+Refer to [enabling a file realm user for recovery](https://www.youtube.com/watch?v=sueO7sz1buw) for a video walkthrough. 
 
 ::::{important}
 * In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this.
@@ -209,6 +214,10 @@ stringData:
   password: mypassword # required field for kubernetes.io/basic-auth
   roles: kibana_admin,ingest_admin  # optional, not part of kubernetes.io/basic-auth
 ```
+
+::::{tip}
+To create custom roles that can be referenced in this list refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file).
+::::
 
 You can make this file available to {{eck}} by adding it as a file realm secret:
 

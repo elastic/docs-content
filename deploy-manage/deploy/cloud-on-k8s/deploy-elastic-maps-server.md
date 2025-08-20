@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-es.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-es.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Deploy Elastic Maps Server [k8s-maps-es]
@@ -15,17 +17,17 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Deploying Elastic Maps Server can be done with a simple manifest:
 
-```yaml
+```yaml subs=true
 apiVersion: maps.k8s.elastic.co/v1alpha1
 kind: ElasticMapsServer
 metadata:
   name: quickstart
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
 ```
 
-Versions of Elastic Maps Server prior to 7.14 need a connection to Elasticseach to verify the installed license. You define the connection with the `elasticsearchRef` attribute:
+Versions of Elastic Maps Server prior to 7.14 need a connection to {{es}} to verify the installed license. You define the connection with the `elasticsearchRef` attribute:
 
 ```yaml
 apiVersion: maps.k8s.elastic.co/v1alpha1

@@ -4,25 +4,29 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Azure repository [repository-azure]
 
 You can use [Azure Blob storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) as a repository for [Snapshot and restore](../snapshot-and-restore.md).
 
+{{es}} uses an internal client module to connect to Azure Blob storage, referred to in this document as the *Azure client* or the *Azure repository client*. Clients are configured through a combination of [secure settings](../../security/secure-settings.md) defined in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) defined in the `elasticsearch.yml` configuration file.
+
 ## Setup [repository-azure-usage]
 
 To enable Azure repositories, first configure an Azure repository client by specifying one or more settings of the form `azure.client.CLIENT_NAME.SETTING_NAME`. By default, `azure` repositories use a client named `default`, but you may specify a different client name when registering each repository.
 
-The only mandatory Azure repository client setting is `account`, which is a [secure setting](../../security/secure-settings.md) defined in the [{{es}} keystore](../../security/secure-settings.md). To provide this setting, use the `elasticsearch-keystore` tool on each node:
+The only mandatory setting for an Azure repository client is `account`, which is a [secure setting](../../security/secure-settings.md) defined in the {{es}} keystore. To provide this setting, use the `elasticsearch-keystore` tool on each node:
 
 ```sh
 bin/elasticsearch-keystore add azure.client.default.account
 ```
 
-If you adjust this setting after a node has started, call the [Nodes reload secure settings API](../../security/secure-settings.md) to reload the new value.
+If you adjust this setting after a node has started, call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to reload the new value.
 
-You may define more than one client by setting their `account` values. For instance, to set the `default` client and another client called `secondary`, run the following commands on each node:
+You may define more than one client by setting their `account` values. For example, to set the `default` client and another client called `secondary`, run the following commands on each node:
 
 ```sh
 bin/elasticsearch-keystore add azure.client.default.account
@@ -195,7 +199,7 @@ PUT _snapshot/my_backup
 
 ## Repository validation rules [repository-azure-validation]
 
-According to the [containers naming guide](https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers—​Blobs—​and-Metadata), a container name must be a valid DNS name, conforming to the following naming rules:
+According to the [containers naming guide](https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers—Blobs—and-Metadata), a container name must be a valid DNS name, conforming to the following naming rules:
 
 * Container names must start with a letter or number, and can contain only letters, numbers, and the dash (-) character.
 * Every dash (-) character must be immediately preceded and followed by a letter or number; consecutive dashes are not permitted in container names.

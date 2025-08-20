@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-eck-managed-es.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-eck-managed-es.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Use an {{es}} cluster managed by ECK [k8s-apm-eck-managed-es]
@@ -12,7 +14,7 @@ Managing APM Server, {{kib}} and {{es}} with ECK allows a smooth and secured int
 
 1. To deploy an APM Server and connect it to the {{es}} cluster and {{kib}} instance you created in the [quickstart](deploy-an-orchestrator.md), apply the following specification:
 
-    ```yaml
+    ```yaml subs=true
     cat <<EOF | kubectl apply -f -
     apiVersion: apm.k8s.elastic.co/v1
     kind: ApmServer
@@ -20,7 +22,7 @@ Managing APM Server, {{kib}} and {{es}} with ECK allows a smooth and secured int
       name: apm-server-quickstart
       namespace: default
     spec:
-      version: 8.16.1
+      version: {{version.stack}}
       count: 1
       elasticsearchRef:
         name: quickstart
@@ -56,9 +58,9 @@ By default `elasticsearchRef` targets all nodes in your {{es}} cluster. If you w
     kubectl get apmservers
     ```
 
-    ```sh
+    ```sh subs=true
     NAME                     HEALTH    NODES    VERSION   AGE
-    apm-server-quickstart    green     1        8.16.1      8m
+    apm-server-quickstart    green     1        {{version.stack}}      8m
     ```
 
     And you can list all the Pods belonging to a given deployment:

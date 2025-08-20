@@ -1,10 +1,12 @@
 ---
+navigation_title: Plot big data
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-aggregations.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Plot big data"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-aggregations.html
+products:
+  - id: kibana
 ---
 
 

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-advanced-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-advanced-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Advanced configuration [k8s-kibana-advanced-configuration]
@@ -22,13 +24,13 @@ You can [customize the {{kib}} Pod](customize-pods.md) using a [Pod Template](ht
 
 The following example demonstrates how to create a {{kib}} deployment with custom node affinity, increased heap size, and resource limits.
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: kibana-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: "elasticsearch-sample"

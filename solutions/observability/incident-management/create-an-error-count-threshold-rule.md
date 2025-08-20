@@ -1,9 +1,11 @@
 ---
+navigation_title: Error count threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-error-count-threshold-rule.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-error-count-threshold-alert-rule.html
-
-navigation_title: "Error count threshold"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create an error count threshold rule [observability-create-error-count-threshold-alert-rule]
@@ -125,6 +127,9 @@ The following variables are specific to this rule type. You can also specify [va
 
 `context.errorGroupingName`
 :   The error grouping name the alert is created for.
+
+`context.grouping` {applies_to}`stack: ga 9.1`
+:   The object containing groups that are reporting data.
 
 `context.interval`
 :   The length and unit of time period where the alert conditions were met.

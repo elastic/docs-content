@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-prestop.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-prestop.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Pod PreStop hook [k8s-prestop]
@@ -22,7 +24,7 @@ The exact behavior is configurable using an environment variable, for example:
 
 ```yaml
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
     - name: default
       count: 1

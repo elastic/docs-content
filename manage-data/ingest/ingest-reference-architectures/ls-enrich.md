@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/ls-enrich.html
+products:
+  - id: elastic-agent
 ---
 
 # Elastic Agent to Logstash (for enrichment) to Elasticsearch [ls-enrich]

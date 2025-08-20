@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/show-field-statistics.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/show-field-statistics.html
+products:
+  - id: kibana
 ---
 
 # View field statistics [show-field-statistics]

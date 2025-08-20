@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-mesh-istio.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-mesh-istio.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Istio [k8s-service-mesh-istio]
@@ -36,8 +38,8 @@ The operator itself must be connected to the service mesh to deploy and manage {
 2. Install ECK:
 
     ```sh subs=true
-    kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
-    kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
+    kubectl create -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.yaml
+    kubectl apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml
     ```
 
 3. Check the configuration and make sure the installation has been successful:
@@ -75,13 +77,13 @@ If you have configured Istio in [permissive mode](https://istio.io/docs/concepts
 
 ### {{es}} [k8s-service-mesh-istio-elasticsearch]
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elastic-istio
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   http:
     tls: <1>
       selfSignedCertificate:
@@ -132,13 +134,13 @@ There are [known issues with init containers](https://istio.io/docs/setup/additi
 
 To install plugins using an init container, use a manifest similar to the following:
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: elastic-istio
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   http:
     tls:
       selfSignedCertificate:
@@ -171,13 +173,13 @@ spec:
 
 ### {{kib}} [k8s-service-mesh-istio-kibana]
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: elastic-istio
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: elastic-istio
@@ -197,13 +199,13 @@ spec:
 
 ### APM Server [k8s-service-mesh-istio-apm]
 
-```yaml
+```yaml subs=true
 apiVersion: apm.k8s.elastic.co/v1
 kind: ApmServer
 metadata:
   name: elastic-istio
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: elastic-istio

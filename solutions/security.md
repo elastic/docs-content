@@ -1,5 +1,5 @@
 ---
-navigation_title: "Security"
+navigation_title: Security
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/index.html
   - https://www.elastic.co/guide/en/security/current/es-overview.html
@@ -9,6 +9,10 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # {{elastic-sec}} overview [es-overview]

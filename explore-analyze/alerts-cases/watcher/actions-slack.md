@@ -1,10 +1,11 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "Slack action"
+navigation_title: Slack action
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-slack.html
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
 ---
 
 # Slack action [actions-slack]

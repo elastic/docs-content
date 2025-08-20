@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest/current/agent-proxy.html
+products:
+  - id: elastic-agent
 ---
 
 # Elastic Agent to proxy to Elasticsearch [agent-proxy]
@@ -27,7 +29,7 @@ Use when
 * Using [{{ls}} as proxy](ls-networkbridge.md) is not feasible.
 
 
-Currently {{agent}} is not able to present a certificate for connectivity to {{fleet-server}}. Therefore if a proxy placed between the {{agent}} and {{fleet-server}} is configured for mutual TLS, {{agents}} won’t be able to establish connectivity to {{fleet server}}.
+Currently {{agent}} is not able to present a certificate for connectivity to {{fleet-server}}. Therefore if a proxy placed between the {{agent}} and {{fleet-server}} is configured for mutual TLS, {{agents}} won’t be able to establish connectivity to {{fleet-server}}.
 
 
 ## Resources [agent-proxy-resources]

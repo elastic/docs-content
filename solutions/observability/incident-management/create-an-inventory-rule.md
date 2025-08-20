@@ -1,9 +1,11 @@
 ---
+navigation_title: Inventory
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/infrastructure-threshold-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-inventory-threshold-alert-rule.html
-
-navigation_title: "Inventory"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create an inventory rule [observability-create-inventory-threshold-alert-rule]
@@ -135,6 +137,9 @@ The following variables are specific to this rule type. You can also specify [va
 
 `context.group`
 :   Name of the group reporting data.
+
+`context.grouping` {applies_to}`stack: ga 9.2`
+:   The object containing groups that are reporting data.
 
 `context.host`
 :   The host object defined by ECS if available in the source.
