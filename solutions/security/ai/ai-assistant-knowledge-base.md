@@ -157,7 +157,7 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 6. Under **Field**, enter the names of one or more semantic text fields within the index.
 
   :::{note}
-  {applies_to}`stack: ga 9.1` {applies_to}`serverless: security` You can use a text field instead of a semantic text field, though semantic text fields still offer better performance.
+  {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` You can use a text field instead of a semantic text field, though semantic text fields still offer better performance.
   :::
 
 7. Under **Data Description**, describe when this information should be used by AI Assistant.
