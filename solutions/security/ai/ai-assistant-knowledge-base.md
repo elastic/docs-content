@@ -146,7 +146,9 @@ Refer to the following video for an example of this process (click to play video
 Add an index as a knowledge source when you want information in that index to inform AI Assistant’s responses. Common security examples include asset inventories, network configuration information, on-call matrices, threat intelligence reports, and vulnerability scans. When you update the index with new information, AI Assistant will gain access to the new information.
 
 ::::{important}
-Indices added to Knowledge Base must have at least one field mapped as [semantic text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md).
+Indices added to Knowledge Base must have at least one field mapped as [semantic text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). 
+
+{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` You can use a text field instead of a semantic text field, though semantic text fields still offer better performance.
 ::::
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
@@ -154,12 +156,7 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 3. Name the knowledge source.
 4. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
 5. Under **Index**, enter the name of the index you want to use as a knowledge source.
-6. Under **Field**, enter the names of one or more semantic text fields within the index.
-
-  :::{note}
-  {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` You can use a text field instead of a semantic text field, though semantic text fields still offer better performance.
-  :::
-
+6. Under **Field**, enter the names of one or more semantic text ({applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` or text) fields within the index.
 7. Under **Data Description**, describe when this information should be used by AI Assistant.
 8. Under **Query Instruction**, describe how AI Assistant should query this index to retrieve relevant documents.
 9. Under **Output Fields**, list the fields which AI Assistant should look at when reviewing documents in this index. If none are listed, all fields are sent.

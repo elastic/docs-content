@@ -40,7 +40,7 @@ However, you can also copy and paste the information to directly [add it as a ma
 :alt: Knowledge base's Edit document entry menu showing a snippet of an on call rotation document
 :::
 
-Whichever method you use to add the information to Knowledge Base, consier making it **Required knowledge**. This will ensure that all of AI Assistant's responses are informed by the on-call rotation, even if your prompt doesn't specify that the information is relevant. This makes it more likely that AI Assistant will suggest appropriate escalation steps when you ask it about a threat.
+Whichever method you use to add the information to Knowledge Base, consider making it **Required knowledge**. This will ensure that all of AI Assistant's responses are informed by the on-call rotation, even if your prompt doesn't specify that the information is relevant. This makes it more likely that AI Assistant will suggest appropriate escalation steps when you ask it about a threat.
 
 ### Add your threat hunting playbooks to Knowledge Base
  
@@ -62,7 +62,7 @@ Be creative, and experiment with adding different types of information to optimi
 
 ## Video demo: investigate an Attack Discovery using AI Assistant's Knowledge Base
 
-The following video demo starts with a potential threat identified using Attack Discovery, and shows how the information you've added to Knowledge Base greatly increases AI Assistant's ability to help guide your team's incident response (click to play):
+The following video demo starts with a potential threat identified using Attack Discovery, and shows how the information you've added to Knowledge Base greatly increases AI Assistant's ability to help guide your team's incident response (click to play video):
 
 [![Add knowledge index video](https://play.vidyard.com/SGrcygEFBCEJRURGjR8sMh.jpg)](https://videos.elastic.co/watch/SGrcygEFBCEJRURGjR8sMh?)
 
