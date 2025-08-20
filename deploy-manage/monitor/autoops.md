@@ -10,27 +10,25 @@ products:
 
 # AutoOps [ec-autoops]
 
-AutoOps diagnoses issues in {{es}} by analyzing hundreds of metrics, providing root-cause analysis and accurate resolution paths. With AutoOps, customers can prevent and resolve issues, cut down administration time, and optimize resource utilization.
+AutoOps analyzes a comprehensive set of metrics to diagnose issues in {{es}} and provide you with root-cause analyses and accurate resolution paths. With AutoOps, you can prevent and resolve issues, cut down administration time, and optimize resource utilization.
 
 :::{image} /deploy-manage/images/cloud-autoops-overview-page.png
 :alt: The Overview page
 :::
 
-
 ## AutoOps key features [ec_autoops_key_features]
 
-* Real-time root-cause analysis for hundreds of issues.
-* Accurate resolution paths and customized recommendations.
-* Insight into what occurred and detailed views into nodes, index, shards, and templates.
+* Real-time root-cause analysis for hundreds of issues
+* Accurate resolution paths and customized recommendations
+* Insight into what occurred and detailed views into nodes, indices, shards, and templates
 * Wide range of insights, including:
-
-    * Cluster status, node failures, and shard sizes.
-    * High CPU, memory, disk usage, and other resource-related metrics.
-    * Misconfigurations and possible optimizations.
-    * Insights on data structure, shards, templates, and mapping optimizations.
-    * Unbalanced loads between nodes.
-    * Indexing latency, rejections, search latency, high index/search queues, and slow queries.
-    * Resource utilization.
+    * Cluster status, node failures, and shard sizes
+    * High CPU, memory, disk usage, and other resource-related metrics
+    * Misconfigurations and possible optimizations
+    * Data structure, templates, and mapping optimizations
+    * Unbalanced loads between nodes
+    * Indexing latency, rejections, search latency, high index/search queues, and slow queries
+    * Resource utilization
 
 
 
