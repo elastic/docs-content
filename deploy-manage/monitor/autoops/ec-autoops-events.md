@@ -38,27 +38,29 @@ The following table describes the different sections in this flyout:
 
 ## Event actions
 
-In the event flyout, select the actions menu to perform the following actions. 
+In the event flyout, go to the actions menu and select from the following options:
 
-### Change event settings [ec-autoops-event-customize]
+### Customize [ec-autoops-event-customize]
 
-AutoOps events are opened and closed based on triggering mechanisms that have default settings for each event type. To change these settings, select **Customize** from the actions menu.
+AutoOps events are opened and closed based on triggering mechanisms that have default settings for each event type. Select **Customize** to change these settings. Avoid making changes that will cause alert triggers to fail.
 
-When changing these settings, avoid making changes that will cause alert triggers to fail.
+Refer to [](ec-autoops-event-settings.md) for more details.
 
-### Configure notifications [ec-autoops-notifications]
+### Notifications [ec-autoops-notifications]
 
-AutoOps can send event notifications to many operation management tools like PagerDuty, Opsgenie, Slack, Teams, custom webhooks, and more. To configure notifications, select **Notifications** from the actions menu. 
+AutoOps can send event notifications to many operation management tools like PagerDuty, Opsgenie, Slack, Teams, custom webhooks, and more. Select **Notifications** to configure these settings. 
 
-Refer to [Notifications settings](ec-autoops-notifications-settings.md) for more details.
+Refer to [](ec-autoops-notifications-settings.md) for more details.
 
-### Dismiss event
+### Dismiss [ec-autoops-dismiss]
 
-Some events may not require your attention immediately, or at all. If you have the appropriate permissions, you can dismiss an event to remove all events of its kind from your dashboard and prevent AutoOps from opening other similar events. This action can be reversed using the **Dismiss events** report. To dismiss an event, select **Dismiss** from the actions menu.
+Some events may not require your attention immediately, or at all. If you are an Organization owner, you can dismiss an event to remove all events of its kind from your dashboard and prevent AutoOps from opening other similar events. Select **Dismiss** to dismiss an event.
 
-### Share event [ec-autoops-event-sharing]
+This action can be reversed using the **Dismiss events** report. 
 
-You can share event information with other users by sending them a link to the event in AutoOps. To share the event, select **Share event link** from the actions menu.
+### Share event link [ec-autoops-event-sharing]
+
+You can share event information with other users by sending them a link to the event in AutoOps. Select **Share event link** to share the event.
 
 :::{note}
 Users can only view the event from the shared link if they have access to the AutoOps deployment from which the link was copied.
