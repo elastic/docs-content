@@ -49,7 +49,7 @@ To create the visualizations in this tutorial, you’ll use the following fields
 * **timestamp**
 * **bytes**
 * **clientip**
-* **referer.keyword**
+* **referer**
 
 Click a field name to view more details, such as its top values and distribution.
 
@@ -99,7 +99,7 @@ To visualize the **bytes** field over time:
 1. On the dashboard, click **Create visualization**.
 2. From the **Available fields** list, drag **bytes** to the workspace.
 
-    The visualization editor creates a bar chart with the **timestamp** and **Median of bytes** fields.
+    The visualization editor creates a bar chart with the **timestamp per day** and **Median of bytes** fields.
 
 3. To zoom in on the data, click and drag your cursor across the bars.
 
