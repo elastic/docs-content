@@ -24,7 +24,7 @@ The Query Rules UI provides the same functionality as the API with one key diffe
 
 * The UI defaults to `docs` for creating and editing rules. You cannot edit an `id` based rule that was created through the API.
 
-To see examples of how to search using query rules, refer [Search using Query Rules API](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules).
+For examples of how to search using query rules, refer to [Search using Query Rules API](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules).
 
 If you prefer to use the Query Rules API, refer to [Query Rules API]({{es-apis}}group/endpoint-query_rules).
 
