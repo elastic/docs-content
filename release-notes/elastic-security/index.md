@@ -27,6 +27,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.1.3 [elastic-security-9.1.3-release-notes]
+
+### Fixes [elastic-security-9.1.3-fixes]
+* Fixes vulnerability findings contextual flyout not showing details [#231778]({{kib-pull}}231778).
+* Fixes an issue preventing the creation of Knowledge Base Index Entries in deployments with a large number of indices/mappings [#231376]({{kib-pull}}231376).
+* Fixes a bug where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
+
 ## 9.1.2 [elastic-security-9.1.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.2-features-enhancements]
