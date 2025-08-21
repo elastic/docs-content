@@ -8,7 +8,7 @@ products:
 ---
 
 # Query rules UI
-Use query rules to pin or exclude specific documents when queries contain certain keywords, phrases, or match defined search patterns.
+Use query rules to pin or exclude specific documents when queries contain specific keywords or phrases, or match specific search patterns.
 The Query rules UI provides a graphical interface to manage these rules without writing API calls or JSON configuration.
 
 The UI enables you to:
