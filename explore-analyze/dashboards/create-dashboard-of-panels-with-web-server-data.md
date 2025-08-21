@@ -49,7 +49,7 @@ To create the visualizations in this tutorial, you’ll use the following fields
 * **timestamp**
 * **bytes**
 * **clientip**
-* **referer.keyword**
+* **referer**
 
 Click a field name to view more details, such as its top values and distribution.
 
