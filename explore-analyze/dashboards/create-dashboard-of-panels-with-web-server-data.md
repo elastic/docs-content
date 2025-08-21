@@ -99,7 +99,7 @@ To visualize the **bytes** field over time:
 1. On the dashboard, click **Create visualization**.
 2. From the **Available fields** list, drag **bytes** to the workspace.
 
-    The visualization editor creates a bar chart with the **timestamp per day** and **Median of bytes** fields.
+    The visualization editor creates a bar chart with the **timestamp** and **Median of bytes** fields.
 
 3. To zoom in on the data, click and drag your cursor across the bars.
 
