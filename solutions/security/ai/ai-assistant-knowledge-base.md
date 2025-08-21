@@ -38,6 +38,11 @@ The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant an
 :alt: Knowledge base's RBAC settings
 :::
 
+## Give AI Assistant access to Elastic's product documentation [elastic-docs]
+
+When you enable Knowledge Base, AI Assistant automatically gains access to Elastic's product documentation. This improves its answers to questions related to Elastic products and features.
+
+In air-gapped environments, this requires additional configuration. Refer to the [{{kib}} AI Assistant settings documentation](kibana://reference/configuration-reference/ai-assistant-settings.md) for detailed instructions. Once you complete the instructions on that page, AI Assistant will automatically gain access to Elastic's documentation as soon as you start a new conversation.
 
 ## Enable Knowledge Base [enable-knowledge-base]
 
