@@ -87,6 +87,8 @@ ECK is compatible with the following Kubernetes distributions and related techno
 
 ::::
 
+While ECK itself has no direct dependency on the operating system of the Kubernetes nodes, some Elastic Stack components, such as Elastic Agent, may have specific OS requirements. ECK is only tested with Amazon Linux on EKS. Be aware that not all stack features may work as expected on other operating systems like Bottlerocket OS.
+
 ECK should work with all conformant **installers** listed in these [FAQs](https://github.com/cncf/k8s-conformance/blob/master/faq.md#what-is-a-distribution-hosted-platform-and-an-installer). Distributions include source patches and so may not work as-is with ECK.
 
 Alpha, beta, and stable API versions follow the same [conventions used by Kubernetes](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-versioning).
