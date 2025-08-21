@@ -507,6 +507,7 @@ toc:
           - file: security/ai/ai-assistant.md
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
+              - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/attack-discovery.md
           - file: security/ai/set-up-connectors-for-large-language-models-llm.md
             children:
