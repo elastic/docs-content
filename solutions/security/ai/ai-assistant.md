@@ -182,3 +182,5 @@ In addition to practical advice, AI Assistant can offer conceptual advice, tips,
 ## Learn more 
 
 - For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
+
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).

@@ -532,6 +532,6 @@ Anonymization has the following limitations:
 Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](kibana://reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).
 
 
-## Learn more 
+## AI Assistant for Security
 
-- For more information about how AI Assistant works in {{elastic-sec}}, refer to [AI Assistant for Security](/solutions/security/ai/ai-assistant.md).
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in {{elastic-sec}}, refer to [AI Assistant for Security](/solutions/security/ai/ai-assistant.md).
