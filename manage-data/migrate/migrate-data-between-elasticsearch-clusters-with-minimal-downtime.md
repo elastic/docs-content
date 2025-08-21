@@ -52,7 +52,7 @@ Tp complete the migration with minimal downtime, use incremental snapshots. Whil
 4. **10:15**: Perform the final cutover.
     1. In the old cluster, pause indexing or set indices to read-only. For details on setting indices to read-only to safely pause indexing during migration, check [Index lifecycle actions: Read-only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md).
     2. Take a final snapshot. 
-    3. Restore the snapshot to the new cluster. Again, remember that, to restore indices that already exist, they need to be closed.
+    3. Restore the snapshot to the new cluster. Again, remember that to restore indices that already exist, they first need to be closed.
     4. Change ingestion and querying to the new cluster. 
     5. Open the indices in the new cluster. 
 
