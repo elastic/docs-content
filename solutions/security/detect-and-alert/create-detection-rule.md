@@ -240,28 +240,26 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. To create a rule that searches for events whose specified field value matches the specified indicator field value in the indicator index patterns, select **Indicator Match**, then fill in the following fields:
+2. To create a rule that generates alerts whenever events match or do not match threat intelligence indicators, select **Indicator Match**, then configure the following:
 
-    1. **Source**: The individual index patterns or data view that specifies what data to search.
-    2. **Custom query**: The query and filters used to retrieve the required results from the {{elastic-sec}} event indices. For example, if you want to match documents that only contain a `destination.ip` address field, add `destination.ip : *`.
+    1. **Source**: Specifies event data for the rule to query. In the **Index patterns** field, the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) are provided. You can add more indices or remove existing ones. 
+    
+    If you choose to use a data view, click **Data View**, then choose one from the drop-down.   
+
+    2. **Custom query**: By default, a KQL query that searches every field in the specified event data sources is provided (`*:*`). You can modify the query as needed. For example, if you want to match documents that only contain a `destination.ip` address field, add `destination.ip : *`.
 
         ::::{tip}
-        If you want the rule to check every field in the indices, use this wildcard expression: `*:*`.
-        ::::
-
-
-        ::::{note}
         You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
-    3. **Indicator index patterns**: The indicator index patterns containing field values for which you want to generate alerts. This field is automatically populated with indices specified in the `securitySolution:defaultThreatIndex` advanced setting. For more information, see [Update default Elastic Security threat intelligence indices](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices).
+    3. **Indicator index patterns**: Specifies threat intelligence indicator data for the rule to query. By default, the indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting are entered. 
 
         ::::{important}
-        Data in indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and so it must contain a `@timestamp` field.
+        Data in threat intelligence indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
         ::::
 
     4. **Indicator index query**: The query and filters used to filter the fields from the indicator index patterns. The default query `@timestamp > "now-30d/d"` searches specified indicator indices for indicators ingested during the past 30 days and rounds the start time down to the nearest day (resolves to UTC `00:00:00`).
-    5. **Indicator mapping**: Compares the values of the specified event and indicator fields, and generates an alert if the values are identical.
+    5. **Indicator mapping**: Compares the values of the event and indicator fields, and generates an alert if the values match or do not match.
 
         ::::{note}
         Only single-value fields are supported.
