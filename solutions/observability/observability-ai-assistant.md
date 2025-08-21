@@ -534,4 +534,4 @@ Most LLMs have a set number of tokens they can manage in single a conversation. 
 
 ## Learn more 
 
-- For more information about how AI Assistant works in {{elastic-sec}}, refer to [AI Assistant for Security](../solutions/security/ai/ai-assistant.md).
+- For more information about how AI Assistant works in {{elastic-sec}}, refer to [AI Assistant for Security](/solutions/security/ai/ai-assistant.md).
