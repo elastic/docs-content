@@ -1,4 +1,3 @@
-
 ---
 mapped_pages:
   - https://www.elastic.co/docs/manage-data/ingest/transform-enrich/common-mistakes.html
