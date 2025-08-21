@@ -156,7 +156,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves the reliability of {{elastic-defend}}'s connection to its kernel driver. This should reduce the instances of temporary `DEGRADED` policy statuses at boot due to `connect_kernel` failures.
 
 ### Fixes [elastic-security-9.0.6-fixes]
-* Fixes {{esql}} form locking to read-only mode in the rule upgrade flyout [#231699]({{kib-pull}}231699).
+* Prevents the {{esql}} form from locking in read-only mode in the rule upgrade flyout [#231699]({{kib-pull}}231699).
 
 ## 9.0.5 [elastic-security-9.0.5-release-notes]
 
