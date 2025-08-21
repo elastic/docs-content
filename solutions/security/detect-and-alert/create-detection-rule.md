@@ -246,7 +246,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
     
     If you choose to use a data view, click **Data View**, then choose one from the drop-down.   
 
-    2. **Custom query**: By default, a KQL query that searches every field in the specified event data sources is provided (`*:*`). You can modify the query as needed. For example, if you want to match documents that only contain a `destination.ip` address field, add `destination.ip : *`.
+    2. **Custom query**: The query that searches event data. The default KQL query `*:*` searches every field in the specified event data sources is provided. You can modify the query as needed. For example, if you want to match documents that only contain a `destination.ip` address field, add `destination.ip : *`.
 
         ::::{tip}
         You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
@@ -258,7 +258,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         Data in threat intelligence indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
         ::::
 
-    4. **Indicator index query**: The query and filters used to filter the fields from the indicator index patterns. The default query `@timestamp > "now-30d/d"` searches specified indicator indices for indicators ingested during the past 30 days and rounds the start time down to the nearest day (resolves to UTC `00:00:00`).
+    4. **Indicator index query**: The query that searches threat intelligence indicator data. The default KQL query `@timestamp > "now-30d/d"` searches the the specified threat intelligence indicator indices for indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
     5. **Indicator mapping**: Compares the values of the event and indicator fields, and generates an alert if the values match or do not match.
 
         ::::{note}
