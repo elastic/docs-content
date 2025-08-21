@@ -117,7 +117,6 @@ To learn more about each related process, select the process in the preview anal
 :::
 
 When you first select a process, it appears in a loading state. If loading data for a given process fails, click **Reload `{{process-name}}`** beneath the process to reload the data.
-% Is this still valid? 
 
 Access event details by selecting that event’s URL at the top of the process details view or choosing one of the event pills in the Analyzer Graph view. Events are categorized based on the `event.category` value.
 
