@@ -1,4 +1,5 @@
 project: 'Extend'
 toc:
   - file: index.md
+  - toc: intro
   - toc: contribute

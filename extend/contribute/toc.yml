@@ -1,11 +1,13 @@
 project: 'Contribute'
 toc:
-  - file: api-docs/index.md
+  - file: index.md
     children:
-      - file: api-docs/overview.md
-      - file: api-docs/checklist.md
-      - file: api-docs/guidelines.md
-      - file: api-docs/organize-annotate.md
-      - file: api-docs/quickstart.md
-      - file: api-docs/workflows.md
-      - file: api-docs/help.md
+      - file: api-docs/index.md
+        children:
+          - file: api-docs/overview.md
+          - file: api-docs/checklist.md
+          - file: api-docs/guidelines.md
+          - file: api-docs/organize-annotate.md
+          - file: api-docs/quickstart.md
+          - file: api-docs/workflows.md
+          - file: api-docs/help.md
