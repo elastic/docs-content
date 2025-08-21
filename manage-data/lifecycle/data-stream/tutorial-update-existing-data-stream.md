@@ -18,7 +18,7 @@ To update the lifecycle of an existing data stream you need to perform the follo
 
 ## Set a data stream’s lifecycle [set-lifecycle] 
 
-To add or to change the retention period of your data stream you can use **Index Management** in {{kib}} or the {{es}} [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
+To add or to change the retention period of your data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
 
 :::::{tab-set}
@@ -32,9 +32,14 @@ To change the data retention settings for a data stream:
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view details.
 1. In the data stream details pane, select **Manage > Edit data retention** to adjust the settings. You can do any of the following:
-    . Select the duration that your data should be retained, in days, hours, minutes, or seconds.
-    . Choose to **Keep data indefinitely**, so that your data will not be deleted.
-    . Disable **Enable data retention** to turn off data stream lifecycle management for your data stream.
+
+    - Select the duration that your data should be retained, in days, hours, minutes, or seconds.
+    - Choose to **Keep data indefinitely**, so that your data will not be deleted. Your data stream is still managed but the data will never be deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
+    - Disable **Enable data retention** to turn off data stream lifecycle management for your data stream.
+
+    Note that if the data stream is already managed by [{{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management.md), to edit the data retention settings you must edit the associated {{ilm-init}} policy.
+
+
 :::
 
 :::{tab-item} API
@@ -49,7 +54,7 @@ To change the data retention settings for a data stream:
     { } <1>
     ```
 
-    1. An empty payload means that your data stream is still managed but the data will never be deleted. Managing a time series data stream such as logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
+    1. An empty payload means that your data stream is still managed but the data will never be deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
 
 * Or you can set the retention period of your choice. For example:
 
@@ -139,19 +144,23 @@ The response will look like:
 
 ## Remove lifecycle for a data stream [delete-lifecycle] 
 
-To remove the lifecycle of a data stream you can use in {{kib}} or the {{es}} [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle). 
+To remove the lifecycle of a data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle). 
 
 
 :::::{tab-set}
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
+
+To remove a data stream's lifecycle:
+
 1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view details.
 1. In the data stream details pane, select **Manage > Edit data retention**.
 1. Turn off the **Enable data retention** option and save your changes. The maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all of its backing indices.
-You can confirm your changes by reopening the data stream pane. The **Effective data retention** will show a **Disabled** status.
+
+    You can confirm your changes by reopening the data stream pane. The **Effective data retention** will show a **Disabled** status.
 
    ![Index lifecycle status is disabled](/manage-data/images/elasticsearch-reference-lifecycle-disabled.png "")
 
@@ -159,6 +168,9 @@ You can confirm your changes by reopening the data stream pane. The **Effective 
 
 :::{tab-item} API
 :sync: api
+
+To remove a data stream's lifecycle:
+
 ```console
 DELETE _data_stream/my-data-stream/_lifecycle
 ```
