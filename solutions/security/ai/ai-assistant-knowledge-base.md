@@ -124,7 +124,7 @@ Refer to the following video for an example of adding a document to Knowledge Ba
 To add an individual file to Knowledge Base, you first need to ingest it into an index and ensure that it includes a semantic text or text field. Supported file types include text, PDF, ODF, Word, Excel, PowerPoint, NDJSON, CSV, and TSV.
 
 1. Access the **Data Visualizer** interface to upload a file using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "File upload". 
-2. Review the list of currently supported file formats and sizes, then select the file you want to upload. Click **Import**.
+2. Review the list of currently supported file formats and sizes, then select the file you want to upload. A preview of your data appears. In the **Summary** section, click **Import**.
 3. Go to the **Advanced** tab.  In the **Index name** field , enter a name for the index that will contain the data in the uploaded file.
 4. (Optional) Review and update the mappings and ingest pipeline for your new index. 
 5. Click **Add additional field -> Add semantic text field**. 
@@ -148,7 +148,7 @@ Add an index as a knowledge source when you want information in that index to in
 ::::{important}
 Indices added to Knowledge Base must have at least one field mapped as [semantic text](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). 
 
-{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` You can use a text field instead of a semantic text field, though semantic text fields still offer better performance.
+{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` You can use a text field instead of a semantic text field. Semantic text fields offer better performance for large blobs of text and matching on semantic relevancy, while text fields perform better for retrieval based on specific document values or attributes, such as email or username. 
 ::::
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.

@@ -25,7 +25,7 @@ AI Assistant is more useful for incident response when it can access information
 You can add messages from Slack channels to Knowledge Base using the Slack content connector. For instance, if you have a Slack channel that contains information about ongoing incidents, you could include that information in Knowledge Base to give AI Assistant more context about what your security team is dealing with. 
 
 1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content connectors". Click **+ New Connector** to open the **Create a connector** interface.
-2. Follow the steps to [create a content connector](/solutions/security/get-started/content-connectors.md). This ingests your selected data into {{es}}. During setup, select `Slack`, and configure the connector to ingest your desired data.
+2. Follow the steps to [create a content connector](/solutions/security/get-started/content-connectors.md). During setup, select `Slack`, then follow the steps to [configure a Slack connector](elasticsearch://reference/search-connectors/es-connectors-slack.md). This ingests your selected data into {{es}}.
 3. Follow the instructions to [add an index to Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#). Select the index you created while setting up your new connector.
 
 ### Add your on-call rotation to Knowledge Base
@@ -47,8 +47,12 @@ Whichever method you use to add the information to Knowledge Base, consider maki
 If you have threat hunting playbooks stored in a GitHub repository, you can add them to Knowledge Base using the GitHub content connector. This enables AI Assistant to tell your team about your organization's standard practices for responding to a wide range of potential threats. 
 
 1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content connectors". Click **+ New Connector** to open the **Create a connector** interface.
-2. Follow the steps to [create a content connector](/solutions/security/get-started/content-connectors.md). This ingests your selected data into {{es}}. During setup, select `GitHub`, and configure the connector to ingest your desired data.
+2. Follow the steps to [create a content connector](/solutions/security/get-started/content-connectors.md). During setup, select `GitHub`, then follow the steps to [configure a GitHub connector](elasticsearch://reference/search-connectors/es-connectors-github.md). This ingests your selected data into {{es}}.
 3. Follow the instructions to [add an index to Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#). Select the index you created while setting up your new connector.
+
+::::{note}
+The GitHub connector can only ingest issues, PRs and the following file types: `.markdown`, `.md`, `.rst`.
+::::
 
 ## Use Knowledge Base in conversations
 
