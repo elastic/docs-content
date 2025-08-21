@@ -259,14 +259,14 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         ::::
 
     4. **Indicator index query**: The query that searches threat intelligence indicator data. The default KQL query `@timestamp > "now-30d/d"` searches the the specified threat intelligence indicator indices for indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
-    5. **Indicator mapping**: Compares the values of the event and indicator fields, and generates an alert if the values match or do not match.
+    5. **Indicator mapping**: Lets you compare fields from the event and threat intelligence indicator indices to find values that match or do not match.  
 
         ::::{note}
         Only single-value fields are supported.
         ::::
 
 
-        To define which field values are compared from the indices, add the following:
+        To define which fields are compared from the indices, add the following:
 
         * **Field**: The field used for comparing values in the {{elastic-sec}} event indices.
         * **Indicator index field**: The field used for comparing values in the indicator indices.
