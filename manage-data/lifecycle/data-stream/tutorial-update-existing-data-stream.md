@@ -83,9 +83,10 @@ To check the data retention settings for a data stream:
 1. Use the search tool to find the data stream you're looking for.
 1. Select the data stream to view details. The flyout shows the data retention settings for the data stream. Note that if the data stream is currently managed by an [{{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management.md), the **Effective data retention** may differ from the retention value that you've set in the data stream, as indicated by the **Data retention**.
 
-   ![Index lifecycle status page](/manage-data/images/elasticsearch-reference-lifecycle-status.png "")
-
-:::
+  :::{image} /manage-data/images/elasticsearch-reference-lifecycle-status.png
+  :alt: Index lifecycle status page
+  :width: 500px
+  :::
 
 :::{tab-item} API
 :sync: api
@@ -162,7 +163,11 @@ To remove a data stream's lifecycle:
 
     You can confirm your changes by reopening the data stream pane. The **Effective data retention** will show a **Disabled** status.
 
-   ![Index lifecycle status is disabled](/manage-data/images/elasticsearch-reference-lifecycle-disabled.png "")
+  ::::{image} /manage-data/images/elasticsearch-reference-lifecycle-disabled.png
+  :alt: Index lifecycle status is disabled
+  :width: 500px
+  ::::
+
 
 :::
 
