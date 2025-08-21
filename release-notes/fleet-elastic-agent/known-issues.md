@@ -18,17 +18,17 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} Manual DEB/RPM upgrades fail when Agent tamper protection is enabled
+:::{dropdown} Manual DEB/RPM upgrades fail when "Agent tamper protection" is enabled
 
 **Applies to**: {{agent}} 8.19.2, 9.1.2
 
-On August 19, 2025, a known issue was discovered where manual DEB/RPM upgrades of {{agent}} fail if the Elastic Defend integration is installed and **Agent tamper protection** is enabled in the agent policy. When this occurs, the log contains an output similar to the following:
+On August 19, 2025, a known issue was discovered where manual DEB/RPM upgrades of {{agent}} fail if the {{elastic-defend}} integration is installed and **Agent tamper protection** is enabled in the agent policy. When this occurs, the log contains an output similar to the following:
 
 ```
 Invalid uninstall token: exit status 28
 ```
 
-This issue only impacts manual DEB/RPM upgrades to {{agent}} 8.19.2 or 9.1.2. Managed upgrades performed through {{fleet}} are not affected.
+This issue only impacts manual DEB/RPM upgrades from {{agent}} 8.19.2 or 9.1.2. Managed upgrades performed through {{fleet}} are not affected.
 
 For more information, refer to [PR #9462](https://github.com/elastic/elastic-agent/pull/9462).
 
@@ -36,17 +36,17 @@ For more information, refer to [PR #9462](https://github.com/elastic/elastic-age
 
 You can use one of the following workarounds to resolve the issue:
 
-- Stop the `elastic-agent` service before the upgrade.
+- Stop the `elastic-agent` service:
 
-   Before installing the {{agent}} DEB/RPM package, run `systemctl stop elastic-agent`, then proceed with the installation. This solution can be used even when reinstalling the same version of {{agent}}.
+   Before installing the {{agent}} DEB/RPM package, run `systemctl stop elastic-agent`, then proceed with the installation. This solution works even when reinstalling the same version of {{agent}}.
 
-- Temporarily remove the Elastic Defend integration.
+- Temporarily remove the {{elastic-defend}} integration:
 
-   Before performing the upgrade, move the agent to an agent policy without the Elastic Defend integration. Wait for the change to take effect, proceed with the upgrade, then move the agent to its previous policy.
+   Before upgrading, move the agent to an agent policy without the {{elastic-defend}} integration. Wait for the change to take effect, proceed with the upgrade, then move the agent to its previous policy.
 
-- Disable **Agent tamper protection**.
+- Disable **Agent tamper protection**:
 
-   Before performing the upgrade, disable **Agent tamper protection** in the agent policy. Wait for the change to take effect, proceed with the upgrade, then move the agent back to its previous policy.
+   Before upgrading, disable **Agent tamper protection** in the agent policy. Wait for the change to take effect, proceed with the upgrade, then move the agent back to its previous policy.
 
 **Fixed in**: {{agent}} 8.19.3, 9.1.3
 :::
