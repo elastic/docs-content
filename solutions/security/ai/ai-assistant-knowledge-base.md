@@ -121,16 +121,16 @@ Refer to the following video for an example of adding a document to Knowledge Ba
 
 ### Add an individual file [add-specific-file]
 
-To add an individual file to knowledge base, you first need to ingest it into an index and ensure that it includes a semantic text or text field. Supported file types include text, PDF, ODF, Word, Excel, PowerPoint, NDJSON, CSV, and TSV.
+To add an individual file to Knowledge Base, you first need to ingest it into an index and ensure that it includes a semantic text or text field. Supported file types include text, PDF, ODF, Word, Excel, PowerPoint, NDJSON, CSV, and TSV.
 
-1. Access the **Upload file** interface by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "File upload". 
+1. Access the **Data Visualizer** interface to upload a file using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "File upload". 
 2. Review the list of currently supported file formats and sizes, then select the file you want to upload. Click **Import**.
-3. In the **Index name** section, name the index that will contain the data in the uploaded file. Go to the **Advanced** tab. 
+3. Go to the **Advanced** tab.  In the **Index name** field , enter a name for the index that will contain the data in the uploaded file.
 4. (Optional) Review and update the mappings and ingest pipeline for your new index. 
 5. Click **Add additional field -> Add semantic text field**. 
-  - For **Field** select the field you want to use as a semantic text field. It should contain information that AI Assistant can use to determine whether a document is relevant to a given query. Do not select a metadata field. Click **Add**.
+  - For **Field**, select the field you want to use as a semantic text field. It should contain information that AI Assistant can use to determine whether a document is relevant to a given query. Do not select a metadata field.
   - For **Copy to field**, enter a name for your new semantic text field.
-  - For **Inference service**, use the default or select another model that's enabled in your environment. 
+  - For **Inference endpoint**, use the default or select another model that's enabled in your environment. 
   - Click **Add**. The new field appears in the **Mappings** section.
 6. Click **Import**. File ingest begins and should complete within a few seconds.
 7. Once your file has been ingested to an index, add it to Knowledge Base by following the steps to [add an index](#knowledge-base-add-knowledge-index). 
@@ -174,7 +174,7 @@ You can use an {{es}} connector or web crawler to create an index that contains 
 
 You can ingest data from third-party platforms such as Github, Jira, Teams, Google Drive, Slack, email, and [more](elasticsearch://reference/search-connectors/index.md) using [content connectors](/solutions/security/get-started/content-connectors.md). 
 
-Once you've set up a content connector, data from the selected source is ingested to an {{es}} index. To add it knowledge base, follow the steps to [add an index](#knowledge-base-add-knowledge-index). 
+Once you've set up a content connector, data from the selected source is ingested to an {{es}} index. To add it to Knowledge Base, follow the steps to [add an index](#knowledge-base-add-knowledge-index). 
 
 
 #### Use a web crawler to add threat intelligence to Knowledge Base [_use_a_web_crawler_to_add_threat_intelligence_to_knowledge_base]

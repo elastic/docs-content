@@ -10,11 +10,11 @@ products:
 
 # Use AI Assistant's Knowledge Base to improve response quality
 
-You can use AI Assistant's Knowledge Base to give it information on anything from threat hunting playbooks, to on-call rotations, security research, infrastructure information, your team's internal communications from platforms like Slack or Teams, and more — constrained only by your creativity. This page guides you through an example of how to ingest data from various sources into AI Assistant's Knowledge Base, and shows how this can improve the quality of its responses in a threat response scenario. 
+You can use AI Assistant's Knowledge Base to give it information on anything from threat hunting playbooks, to on-call rotations, security research, infrastructure information, your team's internal communications from platforms like Slack or Teams, and more — constrained only by your creativity. This page guides you through ingesting data from various sources into AI Assistant's Knowledge Base, and shows how this can improve the quality of its responses in a threat response scenario. 
 
 ## Prerequisites
 
-Before attempting to follow this guide, review the [Knowlege Base](/solutions/security/ai/ai-assistant-knowledge-base.md) topic for general information and prerequisites, and [enable Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
+Before following this guide, review the [Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md) topic for general information and prerequisites, and [enable Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
 
 ## Add relevant data from various sources to Knowledge Base
 
@@ -34,7 +34,7 @@ If you add information about who is responsible for security incidents at differ
 
 If information about your on-call rotation is contained in a file, you can follow the steps to [add an individual file](/solutions/security/ai/ai-assistant-knowledge-base.md#add-specific-file) to Knowledge Base. 
 
-However, you can also copy and paste the information to directly [add it as a markdown document](/solutions/security/ai/ai-assistant-knowledge-base.md#knowledge-base-add-knowledge-document). Adding it as a markdown document is fast, and easy to update when the on-call rotation changes. 
+However, you can also copy and paste the information to directly [add it as a markdown document](/solutions/security/ai/ai-assistant-knowledge-base.md#knowledge-base-add-knowledge-document). Adding it as a markdown document is fast and easy to update when the on-call rotation changes. 
 
 :::{image} /solutions/images/security-knowledge-base-add-on-call-rotation.png
 :alt: Knowledge base's Edit document entry menu showing a snippet of an on call rotation document
@@ -52,7 +52,7 @@ If you have threat hunting playbooks stored in a GitHub repository, you can add 
 
 ## Use Knowledge Base in conversations
 
-AI Assistant will use the information you've added to Knowledge Base to inform its responses to your prompts. With the information we've added in this example, you can ask questions like:
+AI Assistant will use the information you've added to Knowledge Base to inform its responses to your prompts. With the information we've added in this guide, you can ask questions like:
 
 - Is this alert related to any ongoing incidents?
 - Who should I contact to escalate this potential threat?
