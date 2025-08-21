@@ -150,6 +150,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
 
+## 9.0.6 [elastic-security-9.0.6-release-notes]
+
+### Features and enhancements [elastic-security-9.0.6-features-enhancements]
+* Improves the reliability of {{elastic-defend}}'s connection to its kernel driver. This should reduce the instances of temporary `DEGRADED` policy statuses at boot due to `connect_kernel` failures.
+
+### Fixes [elastic-security-9.0.6-fixes]
+* Fixes {{esql}} form locking to read-only mode in the rule upgrade flyout [#231699]({{kib-pull}}231699).
+
 ## 9.0.5 [elastic-security-9.0.5-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.5-features-enhancements]
