@@ -1,5 +1,5 @@
 ---
-navigation_title: Configure a policy
+navigation_title: Configure a lifecycle policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
 applies_to:
@@ -20,7 +20,7 @@ This page is specifically about using {{ilm-init}} with indices or data streams.
 
 * For {{ilm-init}} to manage an index or data stream, you need to specify a valid policy in the `index.lifecycle.name` index setting.
 
-* To configure a lifecycle policy for [rolling indices](rollover.md) or data streams, you create the policy and add it to the [index template](../../data-store/templates.md). Data streams are generally recommended in favor of rolling indices due to the lesser amount of manual configuration required. When you use {{ilm-init}} with rolling indices, you need to perform the additional steps of creating an initial managed index (ensuring that it is named appropriately) and assigning an alias to it, as described in [Step 3](#create-initial-index) on this page.
+* To configure a lifecycle policy for [rolling indices](rollover.md) or data streams, you create the policy and add it to the [index template](../../data-store/templates.md). Data streams are generally recommended in favor of rolling indices due to the lesser amount of manual configuration required. When you use {{ilm-init}} with rolling indices, you must, additionally, create an initial managed index (ensuring that it is named appropriately) and assign an alias to it. This additional process is described in [Step 3](#create-initial-index) on this page.
 
 * To use a policy to manage a single index, you can specify a lifecycle policy when you create the index, or apply a policy directly to an existing index.
 
