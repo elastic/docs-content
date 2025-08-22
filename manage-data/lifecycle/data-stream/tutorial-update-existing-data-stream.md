@@ -30,7 +30,7 @@ To change the data retention settings for a data stream:
 
 1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
-1. Select the data stream to view details.
+1. Select the data stream to view its details.
 1. In the data stream details pane, select **Manage > Edit data retention** to adjust the settings. You can do any of the following:
 
     - Select how long to retain your data, in days, hours, minutes, or seconds.
