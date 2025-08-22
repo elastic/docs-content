@@ -86,8 +86,8 @@ To create a synonym set using the UI:
 2. Click **Get started**
 3. Enter a name for your synonym set
 4. Add your synonym rules in the editor by adding terms to match against:
-   - Add **Equivalent rules** by addings multiple equivalent terms. For example: `ipod, i-pod, i pod`
-   - Add **Explicit rules** by addings multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
+   - Add **Equivalent rules** by adding multiple equivalent terms. For example: `ipod, i-pod, i pod`
+   - Add **Explicit rules** by adding multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
 5. Click **Save** to save your rules.
 
 The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI will automatically reload the associated analyzers.
