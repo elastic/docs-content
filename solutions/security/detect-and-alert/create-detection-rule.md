@@ -253,15 +253,15 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
-    3. **Indicator index patterns**: The index pattern that stores your threat indicator documents. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
+    3. **Indicator index patterns**: The index patterns that stores your threat indicator documents. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
 
         ::::{important}
         Data in threat intelligence indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
         ::::
 
-    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indices. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set. 
+    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indicies. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set. 
     
-        The default KQL query `@timestamp > "now-30d/d"` searches the the threat indicator indices for threat intelligence indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
+        The default KQL query `@timestamp > "now-30d/d"` searches the threat indicator indicies for threat intelligence indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
 
     5. **Indicator mapping**: Set threat mapping conditions that compare values in source event fields with values in threat indicator fields. Alerts are generated if the conditions are met.   
 
@@ -278,11 +278,11 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
             When creating a threat mapping, start with the `MATCHES` condition and then add `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Also note that single `DOES NOT MATCH` entries are not supproted. 
             ::::
 
-        * **Indicator index field**: Select a field from your threat indicator indices for comparison. 
+        * **Indicator index field**: Select a field from your threat indicator index for comparison. 
 
     6. (Optional) Add more threat mapping entries and combine them with `AND` and `OR` clauses.
 
-        For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding field values in the `mock-threat-list` indicator index, enter the rule parameters seen in the following image:
+        For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding mapped field values in the `logs-ti_*` indicator index, enter the rule parameters seen in the following image:
 
         :::{image} /solutions/images/security-indicator-rule-example.png
         :alt: Indicator match rule settings
