@@ -252,7 +252,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
-    3. **Indicator index patterns**: The index patterns that store your threat indicator documents. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
+    3. **Indicator index patterns**: The index patterns that store your threat indicator documents. This field is prepopulated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
 
         ::::{important}
         Data in threat indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
@@ -274,7 +274,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         * {applies_to}`stack: ga 9.2` **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
 
             ::::{note}
-            Define matching (`MATCHES`) conditions first, narrow down your results even more by adding `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Mapping entries that _only_ use the `DOES NOT MATCH` condition are not supported. When configuring your threat mappings, at least one entry must have a `MATCHES` condition. 
+            Define matching (`MATCHES`) conditions first, then narrow down your results even more by adding `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Mapping entries that _only_ use the `DOES NOT MATCH` condition are not supported. When configuring your threat mappings, at least one entry must have a `MATCHES` condition. 
             ::::
 
         * **Indicator index field**: Select a field from your threat indicator index for comparison. 
