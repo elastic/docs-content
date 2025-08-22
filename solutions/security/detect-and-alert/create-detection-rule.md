@@ -243,7 +243,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 
 2. To create a rule that continually compares your security source events with threat indicators and generates alerts when they meet the rule criteria that you specify, select **Indicator Match**, then configure the following:
 
-    1. **Source**: The index patterns or data view that stores your source event documents. The **Index patterns** field is prepopulated with indices that are set in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices). If you choose to use a **Data View**, you must specify one from the drop-down.  
+    1. **Source**: The index patterns or data view that store your source event documents. The **Index patterns** field is prepopulated with indices that are set in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices). If you choose to use a **Data View**, you must specify one from the drop-down.  
     
     2. **Custom query**: The query and filters used to retrieve documents from your source event indices. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set.
     
@@ -253,7 +253,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
-    3. **Indicator index patterns**: The index patterns that stores your threat indicator documents. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
+    3. **Indicator index patterns**: The index patterns that store your threat indicator documents. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
 
         ::::{important}
         Data in threat indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
