@@ -25,15 +25,11 @@ $$$ece-add-custom-bundle-example-cacerts$$$
 
 $$$ece-add-custom-bundle-example-LDAP$$$
 
-Synonyms are words or phrases that have the same or similar meaning. They are an important aspect of search, as they can improve the search experience and increase the scope of search results.
+Synonyms are words or phrases that share the same or similar meaning. Synonyms allow you to:
 
-Synonyms allow you to:
-
-* **Improve search relevance** by finding relevant documents that use different terms to express the same concept.
-* Make **domain-specific vocabulary** more user-friendly, allowing users to use search terms they are more familiar with.
-* **Define common misspellings and typos** to transparently handle common mistakes.
-
-Synonyms are grouped together using **synonyms sets**. You can have as many synonyms sets as you need.
+* Improve search relevance by finding relevant documents that use different terms to express the same concept.
+* Make domain-specific vocabulary more user-friendly, allowing users to use search terms they are more familiar with.
+* Define common misspellings and typos to transparently handle common mistakes.
 
 ## How synonyms work in Elasticsearch
 
