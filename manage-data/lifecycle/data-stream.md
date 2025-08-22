@@ -28,9 +28,9 @@ Note the availability of data stream lifecycle to ensure that it's applicable fo
 
 * Data stream lifecycle is supported only for data streams and cannot be used with standalone indices.
 
-* Like {{ilm-cap}} ({{ilm-init}}), data stream lifecycle is supported in both {{ecloud}} and self-managed environments. Data stream lifecycle is less feature rich than {{ilm-init}} and is focused on simplicity. For a detailed comparison refer to [Data lifecycle](/manage-data/lifecycle.md).
+* Like [{{ilm-cap}} ({{ilm-init}})](/manage-data/lifecycle/index-lifecycle-management.md), data stream lifecycle is supported in both {{ecloud}} and self-managed environments. Data stream lifecycle is less feature rich than {{ilm-init}} and is focused on simplicity. For a detailed comparison refer to [Data lifecycle](/manage-data/lifecycle.md).
 
-* Owing to its simplicity compared with {{ilm-cap}} ({{ilm-init}}), data stream lifecycle is the data lifecycle tool used with {{es-serverless}}. For an {{ecloud}} or self-managed environment, {{ilm-init}} helps you to balance hardware costs with performance for your data, but this complexity isn't required in a {{serverless-short}} environment in which your cluster performance is managed automatically.
+* Owing to its simplicity compared with {{ilm-init}}, data stream lifecycle is the data lifecycle tool used with {{es-serverless}}. For an {{ecloud}} or self-managed environment, {{ilm-init}} helps you to balance hardware costs with performance for your data, but this complexity isn't required in a {{serverless-short}} environment in which your cluster performance is managed automatically.
 
 ## How does it work? [data-streams-lifecycle-how-it-works]
 
