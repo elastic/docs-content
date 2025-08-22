@@ -321,3 +321,6 @@ redirects:
   'explore-analyze/query-filter/languages/esql-task-management.md': 'elasticsearch://reference/query-languages/esql/esql-task-management.md'
   'explore-analyze/query-filter/languages/esql-troubleshooting.md': 'elasticsearch://reference/query-languages/esql/esql-troubleshooting.md'
   'solutions/search/esql-search-tutorial.md': 'elasticsearch://reference/query-languages/esql/esql-search-tutorial.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2245/
+  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
