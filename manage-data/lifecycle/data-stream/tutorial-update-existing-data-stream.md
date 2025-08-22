@@ -18,7 +18,7 @@ To update the lifecycle of an existing data stream you need to perform the follo
 
 ## Set a data stream’s lifecycle [set-lifecycle] 
 
-To add or to change the retention period of your data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
+To add or to change the retention period of your data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
 
 :::::{tab-set}
