@@ -235,43 +235,47 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 ## Create an indicator match rule [create-indicator-rule]
 
 ::::{note}
-{{elastic-sec}} provides limited support for indicator match rules. See [Limited support for indicator match rules](/solutions/security/detect-and-alert.md#support-indicator-rules) for more information.
+{{elastic-sec}} provides [limited support](/solutions/security/detect-and-alert.md#support-indicator-rules) for indicator match rules
 ::::
 
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
-2. To create a rule that generates alerts whenever events match or do not match threat intelligence indicators, select **Indicator Match**, then configure the following:
 
-    1. **Source**: Specifies event data for the rule to query. In the **Index patterns** field, the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) are provided. You can add more indices or remove existing ones. 
+2. To create a rule that continually compares your security source events with threat indicators and generates alerts when they match or don't match, select **Indicator Match**, then configure the following:
+
+    1. **Source**: The index patterns or data view that stores your data for source events. The **Index patterns** field is prepopulated with indices that are set in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices). If you choose to use a **Data View**, you must specify one from the drop-down.  
     
-    If you choose to use a data view, click **Data View**, then choose one from the drop-down.   
-
-    2. **Custom query**: The query that searches event data. The default KQL query `*:*` searches every field in the specified event data sources is provided. You can modify the query as needed. For example, if you want to match documents that only contain a `destination.ip` address field, add `destination.ip : *`.
+    2. **Custom query**: The query and filters used to retrieve documents from your source event indices. Field values in these documents are compared against indicator values, depending on the threat mapping conditions that you set.
+    
+        The default KQL query `*:*` retrieves every document in the specified event indices. YOu can modify the query as needed. For example, if you only want to retrieve documents that contain a `destination.ip` address field, enter `destination.ip : *`.
 
         ::::{tip}
         You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
-    3. **Indicator index patterns**: Specifies threat intelligence indicator data for the rule to query. By default, the indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting are entered. 
+    3. **Indicator index patterns**: The index pattern that stores your threat indicators. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
 
         ::::{important}
         Data in threat intelligence indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
         ::::
 
-    4. **Indicator index query**: The query that searches threat intelligence indicator data. The default KQL query `@timestamp > "now-30d/d"` searches the the specified threat intelligence indicator indices for indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
-    5. **Indicator mapping**: Lets you compare fields from the event and threat intelligence indicator indices to find values that match or do not match.  
+    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indices. Field values in these documents are compared against indicator values, depending on the threat mapping conditions that you set. 
+    
+        The default KQL query `@timestamp > "now-30d/d"` searches the the threat indicator indices for threat intelligence indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
+
+    5. **Indicator mapping**: Set threat mapping conditions that compare values in source event fields with values in threat indicator fields. Alerts are generated if the conditions are met.   
 
         ::::{note}
         Only single-value fields are supported.
         ::::
 
+        To define which fields are compared from the indices and how, add a threat mapping entry:
 
-        To define which fields are compared from the indices, add the following:
+        * **Field**: Select a field from your source event indices for comparison. 
+        * **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
+        * **Indicator index field**: Select a field from your threat indicator indices for comparison. 
 
-        * **Field**: The field used for comparing values in the {{elastic-sec}} event indices.
-        * **Indicator index field**: The field used for comparing values in the indicator indices.
-
-    6. You can add `AND` and `OR` clauses to define when alerts are generated.
+    6. (Optional) Add more threat mapping entries and combine them with `AND` and `OR` clauses.
 
         For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding field values in the `mock-threat-list` indicator index, enter the rule parameters seen in the following image:
 
