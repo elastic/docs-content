@@ -10,7 +10,7 @@ products:
 
 # Tutorial: Update existing data stream [tutorial-manage-existing-data-stream]
 
-To update the lifecycle of an existing data stream you need to perform the following actions:
+To update the lifecycle of an existing data stream, perform the following actions:
 
 1. [Set a data stream’s lifecycle](#set-lifecycle)
 2. [Remove lifecycle for a data stream](#delete-lifecycle)
