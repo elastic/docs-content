@@ -122,7 +122,7 @@ To adjust AI Assistant's settings from the chat window, click the **More** (thre
 :screenshot:
 ::::
 
-The first three options (**AI Assistant settings**, **Knowledge Base**, and **Anonymization**) open the corresponding tabs of the **Security AI settings** page. The **Chat options** affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the knowledge base, and content from Elastic's Security Labs and product documentation.
+The first three options (**AI Assistant settings**, **Knowledge Base**, and **Anonymization**) open the corresponding tabs of the **Security AI settings** page. The **Chat options** affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md), and content from Elastic's Security Labs and [product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
 
 The **Security AI settings** page provides a range of configuration options for AI Assistant. To access it directly, use the global search field to search for "AI Assistant for Security".
 
@@ -177,3 +177,10 @@ In addition to practical advice, AI Assistant can offer conceptual advice, tips,
 
 * “How do I set up a {{ml}} job in {{elastic-sec}} to detect anomalies in network traffic volume over time?”
 * “I need to monitor for unusual file creation patterns that could indicate ransomware activity. How would I construct this query using EQL?”
+
+
+## Learn more 
+
+- For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
+
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
