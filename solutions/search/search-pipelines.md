@@ -11,25 +11,15 @@ products:
 
 You can manage ingest pipelines through Elasticsearch APIs or Kibana UIs.
 
-The **Content** UI under **Search** has a set of tools for creating and managing indices optimized for search use cases (non-time series data). You can also manage your ingest pipelines in this UI.
+The **Ingest Pipelines** under **Management** has a set of tools for creating and managing indices optimized for search use cases (non-time series data). You can also manage your ingest pipelines in this UI.
 
-## Find pipelines in Content UI [ingest-pipeline-search-where]
+## Find pipelines [ingest-pipeline-search-where]
 
-To work with ingest pipelines using these UI tools, you’ll be using the **Pipelines** tab on your search-optimized Elasticsearch index.
+To find this in {{kib}} UI:
 
-To find this tab in the Kibana UI:
+{applies_to}`stack: ga 9.0` Go to **Management > Stack Management > Ingest > Ingest pipelines**.
 
-1. Go to **Search > Content > Elasticsearch indices**.
-2. Select the index you want to work with. For example, `search-my-index`.
-3. On the index’s overview page, open the **Pipelines** tab.
-4. From here, you can follow the instructions to create custom pipelines, and set up ML inference pipelines.
-
-The tab is highlighted in this screenshot:
-
-:::{image} /solutions/images/elasticsearch-reference-ingest-pipeline-ent-search-ui.png
-:alt: ingest pipeline ent search ui
-:screenshot:
-:::
+{applies_to}`serverless: ga` Go to **Project settings > Management > Data > Ingest pipelines**.
 
 ## Overview [ingest-pipeline-search-in-enterprise-search]
 
