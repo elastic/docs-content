@@ -256,14 +256,14 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
     3. **Indicator index patterns**: The index patterns that stores your threat indicator documents. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
 
         ::::{important}
-        Data in threat intelligence indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
+        Data in threat indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
         ::::
 
     4. **Indicator index query**: The query used to retrieve documents from your threat indicator indicies. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set. 
     
         The default KQL query `@timestamp > "now-30d/d"` searches the threat indicator indicies for threat intelligence indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
 
-    5. **Indicator mapping**: Set threat mapping conditions that compare values in source event fields with values in threat indicator fields. Alerts are generated if the conditions are met.   
+    5. **Indicator mapping**: Set threat mapping conditions that compare values in source event fields with values in threat indicator fields. Alerts are generated if the conditions are met.
 
         ::::{note}
         Only single-value fields are supported.
@@ -272,7 +272,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         To specify fields to compare from your specified source event and threat indicator indices, create a threat mapping entry and configure the following:
 
         * **Field**: Select a field from your source event indices for comparison. 
-        * **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
+        * {applies_to}`stack: ga 9.2` **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
 
             ::::{note}
             Define matching (MATCHES) conditions first, narrow down your results even more by adding `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Mapping entries that _only_ use the `DOES NOT MATCH` condition are not supported. When configuring your threat mappings, at least one entry must have a `MATCHES` condition. 
