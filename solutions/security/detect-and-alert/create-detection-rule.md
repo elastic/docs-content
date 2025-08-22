@@ -235,31 +235,31 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 ## Create an indicator match rule [create-indicator-rule]
 
 ::::{note}
-{{elastic-sec}} provides [limited support](/solutions/security/detect-and-alert.md#support-indicator-rules) for indicator match rules
+{{elastic-sec}} provides [limited support](/solutions/security/detect-and-alert.md#support-indicator-rules) for indicator match rules.
 ::::
 
 
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
 
-2. To create a rule that continually compares your security source events with threat indicators and generates alerts when they match or don't match, select **Indicator Match**, then configure the following:
+2. To create a rule that continually compares your security source events with threat indicators and generates alerts when they meet the rule criteria that you specify, select **Indicator Match**, then configure the following:
 
-    1. **Source**: The index patterns or data view that stores your data for source events. The **Index patterns** field is prepopulated with indices that are set in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices). If you choose to use a **Data View**, you must specify one from the drop-down.  
+    1. **Source**: The index patterns or data view that stores your source event documents. The **Index patterns** field is prepopulated with indices that are set in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices). If you choose to use a **Data View**, you must specify one from the drop-down.  
     
-    2. **Custom query**: The query and filters used to retrieve documents from your source event indices. Field values in these documents are compared against indicator values, depending on the threat mapping conditions that you set.
+    2. **Custom query**: The query and filters used to retrieve documents from your source event indices. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set.
     
-        The default KQL query `*:*` retrieves every document in the specified event indices. YOu can modify the query as needed. For example, if you only want to retrieve documents that contain a `destination.ip` address field, enter `destination.ip : *`.
+        The default KQL query `*:*` retrieves every document in the specified event indices. You can modify the query as needed. For example, if you only want to retrieve documents that contain a `destination.ip` address field, enter `destination.ip : *`.
 
         ::::{tip}
         You can use saved queries and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
-    3. **Indicator index patterns**: The index pattern that stores your threat indicators. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
+    3. **Indicator index patterns**: The index pattern that stores your threat indicator documents. This field is automatically populated with indices specified in the [`securitySolution:defaultThreatIndex`](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) advanced setting.
 
         ::::{important}
         Data in threat intelligence indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
         ::::
 
-    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indices. Field values in these documents are compared against indicator values, depending on the threat mapping conditions that you set. 
+    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indices. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set. 
     
         The default KQL query `@timestamp > "now-30d/d"` searches the the threat indicator indices for threat intelligence indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
 
@@ -273,6 +273,11 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 
         * **Field**: Select a field from your source event indices for comparison. 
         * **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
+
+            ::::{note}
+            When creating a threat mapping, start with the `MATCHES` condition and then add `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Also note that single `DOES NOT MATCH` entries are not supproted. 
+            ::::
+
         * **Indicator index field**: Select a field from your threat indicator indices for comparison. 
 
     6. (Optional) Add more threat mapping entries and combine them with `AND` and `OR` clauses.
