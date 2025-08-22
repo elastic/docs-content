@@ -36,13 +36,13 @@ All of the procedures on this page use the {{es}} APIs. To run these steps using
 
 4. Use the Dev Tools Console to run the API requests as described.
 
-## Check status, stop, and restart {{ilm-init}}  [check-stop-start-ilm]
+## Check status, stop, and restart {{ilm-init}} [check-stop-start-ilm]
 
-Follow these steps to check the current {{ilm-init}} status, and to start or restop the lifecycle management as needed.
+Follow these steps to check the current {{ilm-init}} status, and to stop or restart it as needed.
 
 ### Get {{ilm-init}} status 
 
-To see the current status of the {{ilm-init}} service, use the [Get Status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-get-status):
+To see the current status of the {{ilm-init}} service, use the [{{ilm-init}} status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-get-status):
 
 ```console
 GET _ilm/status
@@ -60,7 +60,7 @@ Under normal operation, the response shows {{ilm-init}} is `RUNNING`:
 
 You can stop {{ilm}} to suspend management operations for all indices. For example, you might stop {{ilm}} when performing scheduled maintenance or making changes to the cluster that could impact the execution of {{ilm-init}} actions.
 
-To stop the {{ilm-init}} service and pause execution of all lifecycle policies, use the [Stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop):
+To stop the {{ilm-init}} service and pause execution of all lifecycle policies, use the [{{ilm-init}} stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop):
 
 ```console
 POST _ilm/stop
@@ -104,9 +104,9 @@ When you stop {{ilm-init}}, [{{slm-init}}](/deploy-manage/tools/snapshot-and-res
 
 ### Start {{ilm-init}} [start-ilm]
 
-If the automatic {{ilm}} or {{slm}} service is not working, you might need to start the service.
+If the automatic {{ilm}} or {{slm}} service is not working, you might need to restart the service.
 
-To restart {{ilm-init}} and resume executing policies, use the [Start API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start). This puts the  {{ilm-init}} service in the `RUNNING` state and {{ilm-init}} begins executing policies from where it left off.
+To restart {{ilm-init}} and resume executing policies, use the [{{ilm-init}} start API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start). This puts the  {{ilm-init}} service in the `RUNNING` state and {{ilm-init}} begins executing policies from where it left off.
 
 ```console
 POST _ilm/start
@@ -136,11 +136,11 @@ The response will look like this:
 
 ## Check status, stop, and restart {{slm-init}} [check-stop-start-slm]
 
-Follow these steps to check the current {{slm-init}} status, and to start or restop the lifecycle management as needed.
+Follow these steps to check the current {{slm-init}} status, and to stop or restart it as needed.
 
 ### Get {{slm-init}} status 
 
-To see the current status of the {{slm-init}} service, use the [Get Status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-status):
+To see the current status of the {{slm-init}} service, use the [{{slm-init}} status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-status):
 
 ```console
 GET _slm/status
@@ -156,10 +156,10 @@ Under normal operation, the response shows {{slm-init}} is `RUNNING`:
 
 ### Stop {{slm-init}} 
 
-You can stop {{slm}} to suspend management operations for all snapshot. For example, you might stop {{slm}} o prevent it from taking scheduled snapshots during maintenance or when making cluster changes that could be impacted by snapshot operations.
+You can stop {{slm}} to suspend management operations for all snapshots. For example, you might stop {{slm-init}} to prevent it from taking scheduled snapshots during maintenance or when making cluster changes that could be impacted by snapshot operations.
 
 
-To stop the {{slm-init}} service and pause execution of all lifecycle policies, use the [Stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-stop):
+To stop the {{slm-init}} service and pause execution of all lifecycle policies, use the [{{slm-init}} stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-stop):
 
 ```console
 POST _slm/stop
@@ -191,11 +191,9 @@ The response will look like this:
 
 ### Start {{slm}} [start-slm]
 
-In the event that automatic snapshot lifecycle management is disabled, new backup snapshots will not be created automatically.
+In the event that automatic {{slm}} is disabled, new backup snapshots will not be created automatically.
 
-Follow these steps to start the snapshot lifecycle management service:
-
-[Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start) {{slm}}:
+To restart the {{slm-init}} service, use the [{{slm-init}} start API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start).
 
 ```console
 POST _slm/start
