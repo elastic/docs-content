@@ -9,7 +9,7 @@ products:
 
 # Tutorial: Automate rollover [getting-started-index-lifecycle-management]
 
-When you continuously index timestamped documents into {{es}}, you typically use a [data stream](../../data-store/data-streams.md) so you can periodically [roll over](rollover.md) to a new index. This enables you to implement a [hot-warm-cold architecture](../data-tiers.md) to meet your performance requirements for your newest data, control costs over time, enforce retention policies, and still get the most out of your data.
+When you continuously index timestamped documents into {{es}}, you typically use a [data stream](../../data-store/data-streams.md) so you can periodically [roll over](rollover.md) to a new index. This enables you to implement a [hot-warm-cold architecture](../data-tiers.md) to meet the performance requirements for your newest data, control costs over time, enforce retention policies, and still get the most out of your data.
 
 To simplify index management and automate rollover, select one of the scenarios that best applies to your situation:
 
@@ -36,7 +36,7 @@ When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, lifecy
 
 A lifecycle policy specifies the phases in the index lifecycle and the actions to perform in each phase. A lifecycle can have up to five phases: `hot`, `warm`, `cold`, `frozen`, and `delete`.
 
-For example, you might define a `timeseries_policy` that has two phases:
+For example, you might define a policy named `timeseries_policy` that has the following two phases:
 
 * A `hot` phase that defines a rollover action to specify that an index rolls over when it reaches either a `max_primary_shard_size` of 50 gigabytes or a `max_age` of 30 days.
 * A `delete` phase that sets `min_age` to remove the index 90 days after rollover.
@@ -87,25 +87,32 @@ PUT _ilm/policy/timeseries_policy
 
 ::::
 
+:::{tip}
+For more details about default {{ilm-init}} policy settings, refer to [Create a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#ilm-create-policy).
+:::
 
 
 ### Create an index template to create the data stream and apply the lifecycle policy [ilm-gs-apply-policy]
 
 To set up a data stream, first create an index template to specify the lifecycle policy. Because the template is for a data stream, it must also include a `data_stream` definition.
 
-For example, you might create a `timeseries_template` to use for a future data stream named `timeseries`.
+For example, you might create a template named `timeseries_template` and use for a future data stream named `timeseries`.
 
-To enable the {{ilm-init}} to manage the data stream, the template configures one {{ilm-init}} setting:
+To enable {{ilm-init}} to manage the data stream, the template configures one {{ilm-init}} setting:
 
-* `index.lifecycle.name` specifies the name of the lifecycle policy to apply to the data stream.
+* `index.lifecycle.name` specifies the name of the lifecycle policy that you want to apply to the data stream.
 
-You can use the {{kib}} Create template wizard to add the template. From Kibana, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
+You can use the {{kib}} **Create template** wizard to add the template. From {{kib}}, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
 :::{image} /manage-data/images/elasticsearch-reference-create-index-template.png
 :alt: Create template page
 :::
 
 This wizard invokes the [create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create the index template with the options you specify.
+
+:::{tip}
+For more information about the available index template options that you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
+:::
 
 ::::{dropdown} API example
 ```console
@@ -155,7 +162,7 @@ This process repeats each time a rollover condition is met. You can search acros
 
 ### Check lifecycle progress [ilm-gs-check-progress]
 
-To get status information for managed indices, you use the {{ilm-init}} explain API. This lets you find out things like:
+To get status information for managed indices, you can use {{kib}} to [view their current status, including details about the ILM policy](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md) or the {{ilm-init}} explain API. This lets you find out things like:
 
 * What phase an index is in and when it entered that phase.
 * The current action and what step is being performed.
@@ -420,6 +427,8 @@ Create a data stream using the [_data_stream API](https://www.elastic.co/docs/ap
 ```console
 PUT /_data_stream/movetods
 ```
+
+You can [view the lifecycle status of your data stream](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md), including details about its associated ILM policy.
 
 ### Optional: Reindex your data with a data stream [manage-general-content-with-data-streams-reindex]
 
