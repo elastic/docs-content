@@ -282,7 +282,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 
     6. (Optional) Add more threat mapping entries and combine them with `AND` and `OR` clauses.
 
-        For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding mapped field values in the `logs-ti_*` indicator index, enter the rule parameters seen in the following image:
+        For example, to create a rule that generates alerts when `host.name` **and** `destination.ip` field values in the `logs-*` or `packetbeat-*` {{elastic-sec}} indices are identical to the corresponding field values in the `logs-ti_*` indicator index, enter the rule parameters seen in the following image:
 
         :::{image} /solutions/images/security-indicator-rule-example.png
         :alt: Indicator match rule settings
