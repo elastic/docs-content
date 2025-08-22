@@ -43,7 +43,7 @@ To use synonyms in {{es}}, you need to follow this workflow:
 2. **Configure analyzers** - Apply synonyms during text analysis
 3. **Test and apply** - Verify your configuration works correctly
 
-## Step 1: Create synonym sets and rules
+## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
 
 You can create synonym sets and rules using several methods:
 
@@ -92,14 +92,14 @@ To create a synonym set using the UI:
 
 The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI will automatically reload the associated analyzers.
 
-### Method 2: REST API
+### Method 2: REST API [synonyms-store-synonyms-api]
 
 You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets. For examples of how to 
 create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/search-with-synonyms.md) page.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
 
-### Method 3: File-based
+### Method 3: File-based [synonyms-store-synonyms-file]
 
 You can store your synonyms set in a file.
 
@@ -147,7 +147,7 @@ When a synonyms set is updated, search analyzers that use it need to be refreshe
 
 This manual syncing and reloading makes this approach less flexible than using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api).
 
-### Method 4: Inline
+### Method 4: Inline [synonyms-store-synonyms-inline]
 
 You can test your synonyms by adding them directly inline in your token filter definition.
 
