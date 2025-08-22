@@ -11,7 +11,7 @@ navigation_title: Events
 
 # AutoOps events [ec-autoops-events]
 
-AutoOps continuously monitors your {{es}} deployments by sampling performance and health metrics at 10-second intervals. This high-frequency data collection allows for rapid detection and diagnosis of potential issues so you can get timely notifications and resolve issues faster. 
+AutoOps continuously monitors your {{es}} deployments by sampling performance and health metrics at 10-second intervals. This high-frequency data collection allows AutoOps to rapidly detect and diagnose issues so you can get timely notifications and resolve issues faster. 
 
 When AutoOps detects an issue, it creates an event. Events provide detailed analyses of detected issues, including why they were triggered and the steps needed to resolve them. 
 
@@ -19,20 +19,20 @@ When AutoOps detects an issue, it creates an event. Events provide detailed anal
 
 You can view events on the **Deployment** page in the **Open Events** and **Events History** sections.
 
-When you select an event, a flyout appears with insights and context around the detected issue.
+When you select an event, a flyout appears with insights and context for the detected issue.
 
 :::{image} /deploy-manage/images/cloud-autoops-events.png
 :alt: AutoOps events
 :::
 
-The following table describes the different sections in this flyout:
+The following table describes the sections in this flyout:
 
 | Section | Description |
 | --- | --- |
 | What was detected | Describes why the event was created and provides links to drill down into the detected issue. |
 | Recommendations | Lists recommendations to address the issue and improve your cluster's overall performance. The recommendations are organized according to the suggested order of execution. |
-| Event duration | Shows the time the event was created when AutoOps detected the issue, and if applicable, the time the event was closed when AutoOps identified that the issue no longer exists. The closing of an event doesn't necessarily mean that the issue is resolved, just that AutoOps no longer detects it. |
-| Background and impact | Provides background and context about why the event is important and the impact it can have on cluster performance and stability. |
+| Event duration | Shows when the event was opened (when AutoOps detected the issue), and if applicable, when the event was closed (when AutoOps identified that the issue no longer exists). A closed event doesn't necessarily mean that the issue is resolved, just that AutoOps no longer detects it. |
+| Background and impact | Provides background and context about why the event is important and its potential impact on cluster performance and stability. |
 | Event timeline chart | Visually presents metrics related to the issue in the last 15 minutes. This chart appears only for events with dynamic metrics. For example, load issues will have this section, but settings-related issues will not. |
 | Event severity | Categorizes the event into one of three severity levels based on its potential impact on the cluster: <br><br> **High**: Event can immediately cause significant usability, performance, and stability problems.<br> **Medium**: Event may lead to significant problems if not addressed.<br> **Low**: Event has minimal impact and is not urgent. |
 

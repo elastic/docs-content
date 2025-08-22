@@ -672,6 +672,7 @@ toc:
               - file: monitor/autoops/ec-autoops-index-view.md
               - file: monitor/autoops/ec-autoops-shards-view.md
               - file: monitor/autoops/ec-autoops-template-optimizer.md
+          - hidden: monitor/autoops/ec-autoops-dismiss-event.md
           - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/ec-autoops-faq.md
           - hidden: monitor/autoops/cc-autoops-as-cloud-connected.md
