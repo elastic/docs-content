@@ -310,3 +310,7 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2569
   'manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md': 'troubleshoot/elasticsearch/start-ilm.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2245/
+  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
+
