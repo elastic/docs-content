@@ -238,7 +238,6 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
 {{elastic-sec}} provides [limited support](/solutions/security/detect-and-alert.md#support-indicator-rules) for indicator match rules.
 ::::
 
-
 1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new rule**.
 
 2. To create a rule that continually compares your security source events with threat indicators and generates alerts when they meet the rule criteria that you specify, select **Indicator Match**, then configure the following:
@@ -275,7 +274,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         * {applies_to}`stack: ga 9.2` **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
 
             ::::{note}
-            Define matching (MATCHES) conditions first, narrow down your results even more by adding `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Mapping entries that _only_ use the `DOES NOT MATCH` condition are not supported. When configuring your threat mappings, at least one entry must have a `MATCHES` condition. 
+            Define matching (`MATCHES`) conditions first, narrow down your results even more by adding `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Mapping entries that _only_ use the `DOES NOT MATCH` condition are not supported. When configuring your threat mappings, at least one entry must have a `MATCHES` condition. 
             ::::
 
         * **Indicator index field**: Select a field from your threat indicator index for comparison. 
