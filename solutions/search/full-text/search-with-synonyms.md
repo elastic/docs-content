@@ -71,24 +71,24 @@ The behavior of equivalent synonyms depends on the `expand` parameter in your to
 - If `expand=true`: `ipod, i-pod, i pod` expands to `ipod, i-pod, i pod`
 - If `expand=false`: `ipod, i-pod, i pod` maps to just `ipod`
 
-### Method 1: Kibana UI
+### Method 1: {{kib}} UI
 
 ```yaml {applies_to}
 serverless: 
   elasticsearch:
 ```
 
-You can create and manage synonym sets and synonym rules using the Kibana user interface. This provides a user-friendly way to manage synonyms without using APIs or file uploads.
+You can create and manage synonym sets and synonym rules using the {{kib}} user interface. This provides a user-friendly way to manage synonyms without using APIs or file uploads.
 
 To create a synonym set using the UI:
 
 1. Navigate to **Elasticsearch** > **Synonyms** or use the [global search field](docs-content://explore-analyze/query-filter/filtering.md#_finding_your_apps_and_objects)
 2. Click **Get started**
 3. Enter a name for your synonym set
-4. Add your synonym rules in the editor using the formats above:
-   - Explicit mappings: `i-pod, i pod => ipod`
-   - Equivalent synonyms: `ipod, i-pod, i pod`
-5. Click **Create** to save your synonym set
+4. Add your synonym rules in the editor by adding terms to match against:
+   - Add **Equivalent rules** by addings multiple equivalent terms. For example: `ipod, i-pod, i pod`
+   - Add **Explicit rules** by addings multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
+5. Click **Save** to save your rules.
 
 The UI supports the same synonym rule formats as the file-based approach. Changes made through the UI will automatically reload the associated analyzers.
 
