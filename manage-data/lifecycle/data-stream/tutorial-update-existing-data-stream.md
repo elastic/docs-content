@@ -157,7 +157,7 @@ To remove a data stream's lifecycle:
 
 1. Go to **Stack Management > Index Management** and open the **Data Streams** tab.
 1. Use the search tool to find the data stream you're looking for.
-1. Select the data stream to view details.
+1. Select the data stream to view its details.
 1. In the data stream details pane, select **Manage > Edit data retention**.
 1. Turn off the **Enable data retention** option and save your changes. The maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all of its backing indices.
 
