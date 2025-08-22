@@ -10,11 +10,13 @@ products:
 
 # View the lifecycle status of an index or data stream [view-lifecycle-status]
 
-For any existing managed index or data stream in your cluster, you can access the ILM policy applied to it and its current status.
-
-In the event that you need to investigate any issues, refer to [Troubleshoot index and snapshot lifecycle management](/troubleshoot/elasticsearch/start-ilm.md) and [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md) in the {{es}} chapter of the **Troubleshoot** section.
+For any existing managed index or data stream in your cluster, you can access the {{ilm-init}} policy applied to it and its current status.
 
 You can do this procedure in {{kib}} or using the {{es}} API.
+
+:::{tip}
+If you're investigating an {{ilm-init}}-related problem, you can also refer to [Troubleshoot index and snapshot lifecycle management](/troubleshoot/elasticsearch/start-ilm.md) and [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md) in the {{es}} chapter of the **Troubleshoot** section.
+:::
 
 :::::{tab-set}
 :group: kibana-api
