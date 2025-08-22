@@ -33,7 +33,7 @@ To change the data retention settings for a data stream:
 1. Select the data stream to view details.
 1. In the data stream details pane, select **Manage > Edit data retention** to adjust the settings. You can do any of the following:
 
-    - Select the duration that your data should be retained, in days, hours, minutes, or seconds.
+    - Select how long to retain your data, in days, hours, minutes, or seconds.
     - Choose to **Keep data indefinitely**, so that your data will not be deleted. Your data stream is still managed but the data will never be deleted. Managing a time series data stream such as for logs or metrics enables {{es}} to better store your data even if you do not use a retention period.
     - Disable **Enable data retention** to turn off data stream lifecycle management for your data stream.
 
