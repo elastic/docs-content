@@ -269,13 +269,13 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         Only single-value fields are supported.
         ::::
 
-        To define which fields are compared from the indices and how, add a threat mapping entry:
+        To specify fields to compare from your specified source event and threat indicator indices, create a threat mapping entry and configure the following:
 
         * **Field**: Select a field from your source event indices for comparison. 
         * **MATCHES/DOES NOT MATCH**: Choose whether the source event field value should match or not match the threat indicator field value that it's being compared to.
 
             ::::{note}
-            When creating a threat mapping, start with the `MATCHES` condition and then add `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Also note that single `DOES NOT MATCH` entries are not supproted. 
+            Define matching (MATCHES) conditions first, narrow down your results even more by adding `DOES NOT MATCH` conditions to exclude field values that you want to ignore. Mapping entries that _only_ use the `DOES NOT MATCH` condition are not supported. When configuring your threat mappings, at least one entry must have a `MATCHES` condition. 
             ::::
 
         * **Indicator index field**: Select a field from your threat indicator index for comparison. 
