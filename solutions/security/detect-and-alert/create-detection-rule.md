@@ -258,7 +258,7 @@ To filter noisy {{ml}} rules, use [rule exceptions](/solutions/security/detect-a
         Data in threat indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and must contain a `@timestamp` field.
         ::::
 
-    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indices. Field values in these documents are compared against indicator values, according to the threat mapping conditions that you set. 
+    4. **Indicator index query**: The query used to retrieve documents from your threat indicator indices. Field values in these documents are compared against source event values, according to the threat mapping conditions that you set. 
     
         The default KQL query `@timestamp > "now-30d/d"` searches the threat indicator indices for threat intelligence indicators that were ingested during the past 30 days. The start time is rounded down to the nearest day (resolves to UTC `00:00:00`).
 
