@@ -308,5 +308,8 @@ redirects:
   'solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
   'solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
 
+# Related to https://github.com/elastic/docs-content/pull/2639
+  'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
+  
 # Related to https://github.com/elastic/docs-content/pull/2245/
   'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
