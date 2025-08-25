@@ -47,14 +47,24 @@ The `min_age` value is relative to the rollover time, not the index creation tim
 ::::
 
 
-You can create the policy through {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API. To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+You can create the policy in {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API. 
+
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
 :::{image} /manage-data/images/elasticsearch-reference-create-policy.png
 :alt: Create policy page
 :screenshot:
 :::
+:::
 
-::::{dropdown} API example
+:::{tab-item} API
+:sync: api
+Use the [Create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API to add an ILM policy to the {{es}} cluster:
+
 ```console
 PUT _ilm/policy/timeseries_policy
 {
@@ -84,7 +94,7 @@ PUT _ilm/policy/timeseries_policy
 3. Move the index into the `delete` phase 90 days after rollover.
 4. Trigger the `delete` action when the index enters the delete phase.
 
-
+:::
 ::::
 
 :::{tip}
@@ -102,19 +112,27 @@ To enable {{ilm-init}} to manage the data stream, the template configures one {{
 
 * `index.lifecycle.name` specifies the name of the lifecycle policy that you want to apply to the data stream.
 
-You can use the {{kib}} **Create template** wizard to add the template. From {{kib}}, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
+You can use the {{kib}} **Create template** wizard to add the template or the [Create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to add an index template to a cluster and apply the lifecycle policy to indices matching the template.
 
-:::{image} /manage-data/images/elasticsearch-reference-create-index-template.png
-:alt: Create template page
-:::
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To add an index template to a cluster, go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
-This wizard invokes the [create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create the index template with the options you specify.
+![Create template page](/manage-data/images/elasticsearch-reference-create-index-template.png "")
 
-:::{tip}
+This wizard invokes the create or update index template API to create the index template with the options you specify.
+
+:::{tip} 
 For more information about the available index template options that you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
 :::
+:::
 
-::::{dropdown} API example
+:::{tab-item} API
+:sync: api
+Use the API to add an index template to your cluster:
+
 ```console
 PUT _index_template/timeseries_template
 {
@@ -133,7 +151,7 @@ PUT _index_template/timeseries_template
 1. Apply the template when a document is indexed into the `timeseries` target.
 2. The name of the {{ilm-init}} policy used to manage the data stream.
 
-
+:::
 ::::
 
 
@@ -245,10 +263,21 @@ To enable automatic rollover, the template configures two {{ilm-init}} settings:
 * `index.lifecycle.name` specifies the name of the lifecycle policy to apply to new indices that match the index pattern.
 * `index.lifecycle.rollover_alias` specifies the index alias to be rolled over when the rollover action is triggered for an index.
 
-You can use the {{kib}} Create template wizard to add the template. To access the wizard, open the menu and go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
+::::{tab-set}
+:group: kibana-api
+:::{tab-item} {{kib}}
+:sync: kibana
+To use the {{kib}} **Create template** wizard to add the template, go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
 ![Create template page](/manage-data/images/elasticsearch-reference-create-template-wizard.png "")
 
+:::{tip} 
+For more information about the available index template options that you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
+:::
+:::
+
+:::{tab-item} API
+:sync: api
 The create template request for the example template looks like this:
 
 ```console
@@ -270,7 +299,8 @@ PUT _index_template/timeseries_template
 2. The name of the lifecycle policy to apply to each new index.
 3. The name of the alias used to reference these indices. Required for policies that use the rollover action.
 
-
+:::
+::::
 
 ### Bootstrap the initial time series index with a write index alias [ilm-gs-alias-bootstrap]
 
