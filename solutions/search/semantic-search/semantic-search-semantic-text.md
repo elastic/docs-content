@@ -100,7 +100,7 @@ POST _tasks/<task_id>/_cancel
 
 ## Semantic search [semantic-text-semantic-search]
 
-After the data has been indexed with the embeddings, you can query the data using semantic search. Choose between [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](/explore-analyze/query-filter/languages/esql.md) syntax to execute the query.
+After the data has been indexed with the embeddings, you can query the data using semantic search. Choose between [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax to execute the query.
 
 ::::{tab-set}
 :group: query-type

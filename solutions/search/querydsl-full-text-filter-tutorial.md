@@ -12,7 +12,7 @@ products:
 # Search and filter with Query DSL [full-text-filter-tutorial]
 
 :::{tip}
-This tutorial presents examples in Query DSL syntax. Refer to [the {{esql}} version](esql-search-tutorial.md) for the equivalent examples in {{esql}} syntax.
+This tutorial presents examples in Query DSL syntax. Refer to [the {{esql}} version](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md) for the equivalent examples in {{esql}} syntax.
 :::
 
 This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data to narrow down search results based on exact criteria.
