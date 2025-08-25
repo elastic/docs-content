@@ -307,6 +307,20 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/2396
   'solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
   'solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
+  
+  # https://github.com/elastic/docs-content/pull/2658
+  'explore-analyze/query-filter/languages/esql.md': 'elasticsearch://reference/query-languages/esql.md'
+  'explore-analyze/query-filter/languages/esql-examples.md': 'elasticsearch://reference/query-languages/esql/esql-examples.md'
+  'explore-analyze/query-filter/languages/esql-elastic-security.md': 'solutions/security/esql-for-security.md'
+  'explore-analyze/query-filter/languages/esql-where.md': 'explore-analyze/query-filter/languages/esql-kibana.md'
+  'explore-analyze/query-filter/languages/esql-cross-clusters.md': 'elasticsearch://reference/query-languages/esql/esql-cross-clusters.md'
+  'explore-analyze/query-filter/languages/esql-getting-started.md': 'elasticsearch://reference/query-languages/esql/esql-getting-started.md'
+  'explore-analyze/query-filter/languages/esql-multi-index.md': 'elasticsearch://reference/query-languages/esql/esql-multi-index.md'
+  'explore-analyze/query-filter/languages/esql-multi.md': 'elasticsearch://reference/query-languages/esql/esql-multi.md'
+  'explore-analyze/query-filter/languages/esql-rest.md': 'elasticsearch://reference/query-languages/esql/esql-rest.md'
+  'explore-analyze/query-filter/languages/esql-task-management.md': 'elasticsearch://reference/query-languages/esql/esql-task-management.md'
+  'explore-analyze/query-filter/languages/esql-troubleshooting.md': 'elasticsearch://reference/query-languages/esql/esql-troubleshooting.md'
+  'solutions/search/esql-search-tutorial.md': 'elasticsearch://reference/query-languages/esql/esql-search-tutorial.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2639
   'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'

@@ -19,7 +19,7 @@ Use the following quickstarts to get hands-on experience with Elasticsearch APIs
 - [Basic full-text search and filtering in Elasticsearch](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md): Learn about different options for querying data, including full-text search and filtering, using the Query DSL.
 - [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md): Learn how to analyze data using different types of aggregations, including metrics, buckets, and pipelines.
 % - [Getting started with {{esql}}](esql-getting-started.md): Learn how to query and aggregate your data using {{esql}}.
-- [Search and filter with {{esql}}](esql-search-tutorial.md): Learn how to perform full-text and semantic search in {{esql}}, combined with filtering.
+- [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md): Learn how to perform full-text and semantic search in {{esql}}, combined with filtering.
 - [Semantic search](semantic-search/semantic-search-semantic-text.md): Learn how to create embeddings for your data with `semantic_text` and query using the `semantic` query.
  - [Hybrid search](hybrid-semantic-text.md): Learn how to combine semantic search using`semantic_text` with full-text search.
 - [Bring your own dense vector embeddings](vector/bring-own-vectors.md): Learn how to ingest dense vector embeddings into Elasticsearch.

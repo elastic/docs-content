@@ -14,8 +14,6 @@ toc:
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
       - file: search/api-quickstarts.md
-        children:
-          - file: search/esql-search-tutorial.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -465,6 +463,8 @@ toc:
               - file: observability/incident-management/create-an-slo.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
+        children:
+          - file: observability/connect-to-own-local-llm.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:

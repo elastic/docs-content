@@ -475,5 +475,6 @@ The following resources will help you understand {{es}} concepts better and dive
 
 * [Fundamentals of Elasticsearch](/manage-data/data-store.md)
 * [Search and filter with Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
-* [Search using ES|QL](/solutions/search/esql-search-tutorial.md)
+* [Search using ES|QL](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md)
+
 
