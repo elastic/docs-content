@@ -14,14 +14,14 @@ Review the changes, fixes, and more to {{serverless-full}}.
 ### Features and enhancements [serverless-changelog-08252025-features-enhancements]
 * Adds support for a new `url` variable type in {{fleet}} packages, enabling improved input validation of URL values [#231062]({{kib-pull}}231062)
 * Adds the `kibana.alert.grouping` field to the **Synthetics monitor status** rule in {{obs-serverless}}  [#230513]({{kib-pull}}230513)
-* Enables polling and sampling for EDOT central configuration [#231835]({{kib-pull}}231835) in {{obs-serverless}}
+* Enables polling and sampling for EDOT central configuration in {{obs-serverless}} [#231835]({{kib-pull}}231835)
 * Adds a check to confirm that uploaded files are indexed and searchable in {{ml-cap}} [#231614]({{kib-pull}}231614)
 * Updates sections and improves field handling in {{ml-cap}} [#231037]({{kib-pull}}231037)
 * Improves the layout of the custom URLs list in {{ml-cap}} [#231751]({{kib-pull}}231751)
 
 ### Fixes [serverless-changelog-08252025-fixes]
 * Fixes a rendering issue that affected progress elements in Canvas [#232432]({{kib-pull}}232432)
-* Fixes enforcement of deployment mode restrictions when creating package policies in {{fleet}} [#231679]({{kib-pull}}231679)
+* Fixes the enforcement of deployment mode restrictions when creating package policies in {{fleet}} [#231679]({{kib-pull}}231679)
 * Ensures transform index templates include `index.mapping.ignore_malformed: true` to prevent failures due to invalid values in source indices in {{fleet}} [#232439]({{kib-pull}}232439)
 * Fixes visibility issues with the DocViewer flyout in **Saved Search** embeddables in Discover [#229108]({{kib-pull}}229108)
 * Restores legacy monitor filters in {{obs-serverless}} [#231562]({{kib-pull}}231562)
