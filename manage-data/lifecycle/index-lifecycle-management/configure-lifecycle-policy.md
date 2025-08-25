@@ -1,5 +1,5 @@
 ---
-navigation_title: Configure a policy
+navigation_title: Configure a lifecycle policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
 applies_to:
