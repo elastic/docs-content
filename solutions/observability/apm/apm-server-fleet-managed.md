@@ -723,7 +723,7 @@ Set up the agent with `<script>` tags or by using a bundler.
 Add a <script> tag to load the bundle and use the `elasticApm` global object to initialize the agent:
 
 ```html
-<script src="https://<your-cdn-host>.com/path/to/elastic-apm-rum.umd.min-<version>.js" crossorigin></script>
+<script src="https://example.com/path/to/elastic-apm-rum.umd.min-<version>.js" crossorigin></script>
 <script>
   elasticApm.init({
     serviceName: '<instrumented-app>',
@@ -742,7 +742,7 @@ Loading the script asynchronously ensures the agent script will not block other 
     var j = d.createElement(s),
       t = d.getElementsByTagName(s)[0]
 
-    j.src = 'https://<your-cdn-host>.com/path/to/elastic-apm-rum.umd.min-<version>.js'
+    j.src = 'https://example.com/path/to/elastic-apm-rum.umd.min-<version>.js'
     j.onload = function() {elasticApm.init(c)}
     t.parentNode.insertBefore(j, t)
   })(document, 'script', {serviceName: '<instrumented-app>', serverUrl: '<apm-server-url>'})
