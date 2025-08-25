@@ -17,5 +17,7 @@ applies_to:
 | [Elasticsearch SQL](languages/sql.md) | Allows native, real-time SQL-like querying against {{es}} data. JDBC and ODBC drivers are available for integration with business intelligence (BI) tools. | Enables users familiar with SQL to query {{es}} data using familiar syntax for BI and reporting. | [`_sql`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-sql) |
 | [Kibana Query Language (KQL)](languages/kql.md) | {{kib}} Query Language (KQL) is a text-based query language for filtering data when you access it through the {{kib}} UI. | Use KQL to filter documents where a value for a field exists, matches a given value, or is within a given range. | N/A |
 
-> {{esql}} does not yet support all the features of Query DSL. Look forward to new {{esql}} features and functionalities in each release.
+:::{tip}
+> {{esql}} does not yet support all the features of Query DSL. Look forward to new {{esql}} features and functionalities in each release. [Learn more about {{esql}}](elasticsearch://reference/query-languages/esql.md).
+:::
 
