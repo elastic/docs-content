@@ -474,6 +474,6 @@ To try out similar steps from the {{es}} Python client, go to [](/solutions/sear
 The following resources will help you understand {{es}} concepts better and dive into the basics of query languages for searching data:
 
 * [Fundamentals of Elasticsearch](/manage-data/data-store.md)
-* [Search and filter with Query DSL](/solutions/search/querydsl-full-text-filter-tutorial.md)
+* [Search and filter with Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
 * [Search using ES|QL](/solutions/search/esql-search-tutorial.md)
 

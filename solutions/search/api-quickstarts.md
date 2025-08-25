@@ -16,7 +16,7 @@ Prefer working in Python? Check out our executable [Python notebooks](https://gi
 Use the following quickstarts to get hands-on experience with Elasticsearch APIs and tools:
 
 - [Index and search data using Elasticsearch APIs](get-started/index-basics.md): Learn about indices, documents, and mappings, and perform a basic search using the Query DSL.
-- [Basic full-text search and filtering in Elasticsearch](querydsl-full-text-filter-tutorial.md): Learn about different options for querying data, including full-text search and filtering, using the Query DSL.
+- [Basic full-text search and filtering in Elasticsearch](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md): Learn about different options for querying data, including full-text search and filtering, using the Query DSL.
 - [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md): Learn how to analyze data using different types of aggregations, including metrics, buckets, and pipelines.
 % - [Getting started with {{esql}}](esql-getting-started.md): Learn how to query and aggregate your data using {{esql}}.
 - [Search and filter with {{esql}}](esql-search-tutorial.md): Learn how to perform full-text and semantic search in {{esql}}, combined with filtering.
