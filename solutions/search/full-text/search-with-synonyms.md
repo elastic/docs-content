@@ -159,8 +159,6 @@ foo => baz
 foo => foo bar, baz
 ```
 
-// ... existing content up to the end of Method 3 ...
-
 To update an existing synonyms set, upload new files to your cluster. Synonyms set files must be kept in sync on every cluster node.
 
 When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers)
