@@ -13,7 +13,7 @@ Cloud Connect enables you to use {{ecloud}} services in your ECE, ECK, or self-m
 
 AutoOps is the first service available for use with Cloud Connect. More services are coming soon.
 
-### AutoOps
+## AutoOps
 
 [AutoOps](/deploy-manage/monitor/autoops.md) is a monitoring tool that helps you manage your cluster with real-time issue detection, performance recommendations, and resolution paths. By analyzing hundreds of {{es}} metrics, your configuration, and your usage patterns, AutoOps recommends operational and monitoring insights that deliver real savings in administration time and hardware cost. 
 
@@ -23,11 +23,15 @@ Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-clou
 
 Find answers to your questions about Cloud Connect.
 
-:::{dropdown} Does using Cloud Connect require additional payment?
+* [Does using Cloud Connect require additional payment?](#cloud-connect-payment)
+* [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cloud-connect-ech)
+* [Are more services going to be available with Cloud Connect?](#more-cloud-connected-services)
 
-Each cloud connected service has its own licensing and payment requirements. 
+$$$cloud-connect-payment$$$Does using Cloud Connect require additional payment?
 
-:::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
+:   Each cloud connected service has its own licensing and payment requirements. 
+
+:   :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 :::
 
 :::
@@ -35,8 +39,7 @@ Each cloud connected service has its own licensing and payment requirements.
 :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
-:::{dropdown} Are more services going to be available with Cloud Connect?
+$$$more-cloud-connected-services$$$Are more services going to be available with Cloud Connect?
 
-Yes. AutoOps is the first of many cloud connected services to come. The next planned service is the Elastic Inference Service (EIS), which will provide GPU-powered inference for use cases like semantic search and text embeddings.
-:::
+:   Yes. AutoOps is the first of many cloud connected services to come. The next planned service is the Elastic Inference Service (EIS), which will provide GPU-powered inference for use cases like semantic search and text embeddings.
 
