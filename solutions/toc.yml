@@ -15,7 +15,6 @@ toc:
               - file: search/get-started/semantic-search.md
       - file: search/api-quickstarts.md
         children:
-          - file: search/querydsl-full-text-filter-tutorial.md
           - file: search/esql-search-tutorial.md
       - file: search/ingest-for-search.md
         children:
