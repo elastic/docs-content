@@ -91,14 +91,14 @@ The AI Assistant connects to one of these supported LLM providers:
    - The provider's API endpoint URL
    - Your authentication key or secret
 
-::::{important}
-    {{obs-ai-assistant}} doesn’t support connecting to a private LLM. Elastic doesn’t recommend using private LLMs with the AI Assistant.
-::::
-
 ### Elastic Managed LLM [elastic-managed-llm-obs-ai-assistant]
 
 :::{include} ../_snippets/elastic-managed-llm.md
 :::
+
+### Connect to a custom local LLM
+
+[Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
@@ -530,3 +530,8 @@ Anonymization has the following limitations:
 ### Token limits [obs-ai-token-limits]
 
 Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](kibana://reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).
+
+
+## AI Assistant for Security
+
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in {{elastic-sec}}, refer to [AI Assistant for Security](/solutions/security/ai/ai-assistant.md).
