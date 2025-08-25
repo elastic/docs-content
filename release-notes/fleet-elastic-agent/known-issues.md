@@ -18,11 +18,11 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} Manual DEB/RPM upgrades fail when "Agent tamper protection" is enabled
+:::{dropdown} Manual DEB/RPM upgrades of {{fleet}}-managed agents fail when "Agent tamper protection" is enabled
 
 **Applies to**: {{agent}} 8.19.2, 9.1.2
 
-On August 19, 2025, a known issue was discovered where manual DEB/RPM upgrades of {{agent}} fail if the {{elastic-defend}} integration is installed and **Agent tamper protection** is enabled in the agent policy. When this occurs, the log contains an output similar to the following:
+On August 19, 2025, a known issue was discovered where manual DEB/RPM upgrades of {{fleet}}-managed {{agents}} fail if the {{elastic-defend}} integration is installed and **Agent tamper protection** is enabled in the agent policy. When this occurs, the log contains an output similar to the following:
 
 ```
 Invalid uninstall token: exit status 28
