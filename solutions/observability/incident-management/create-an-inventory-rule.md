@@ -31,11 +31,11 @@ When you select **Create inventory alert**, the parameters you configured on the
 
 ::::
 
-
-
 ## Inventory conditions [inventory-conditions]
 
 Conditions for each rule can be applied to specific metrics relating to the inventory type you select. You can choose the aggregation type, the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. When creating the rule, you can still get notified if no data is returned for the specific metric or if the rule fails to query {{es}}.
+
+When creating a rule for `Hosts`, you also need to select a data collection schema in the **Schema** field. Select **Elastic System Integration** for host data collected using the Elastic System Integration or **OpenTelemetry** for host data collected using OpenTelemetry.
 
 In this example, Kubernetes Pods is the selected inventory type. The conditions state that you will receive a critical alert for any pods within the `ingress-nginx` namespace with a memory usage of 95% or above and a warning alert if memory usage is 90% or above. The chart shows the results of applying the rule to the last 20 minutes of data. Note that the chart time range is 20 times the value of the look-back window specified in the `FOR THE LAST` field.
 
