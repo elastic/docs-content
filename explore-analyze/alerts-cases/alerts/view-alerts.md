@@ -77,11 +77,11 @@ Alert flapping is turned on by default. You can modify the criteria for changing
     Once a flapping alert is recovered, it cannot be changed to flapping again. Only new alerts with repeated status changes are candidates for the flapping status. 
 
 `untracked`
-:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
+:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
 ## Mute alerts [mute-alerts]
 
-If an alert is active or flapping, you can mute it to temporarily suppress future actions. In both **{{stack-manage-app}} > Alerts** and **{{rules-ui}}**, you can open the action menu (…) for the appropriate alert and select **Mute**. To permanently suppress actions for an alert, open the actions menu and select **Mark as untracked**.
+If an alert is active or flapping, you can mute it to temporarily suppress future actions. In both **{{stack-manage-app}} > Alerts** and **{{rules-ui}}**, you can open the action menu (…) for the appropriate alert and select **Mute**. To permanently suppress actions for an alert, open the actions menu and select **Mark as untracked**. When an alert is marked as untracked, its status can no longer be changed.
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
 
