@@ -94,7 +94,7 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
 | [**Reindexing from remote**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) | ✅ | **Planned** | Anticipated in a future release |
 | **Repository management** | ✅ | Managed | Automatically managed by Elastic |
-| [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](/explore-analyze/query-filter/languages/esql.md) |
+| [**Scripted metric aggregations**](elasticsearch://reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) | ✅ | ❌ | Not available in Serverless<br>The alternative for this in Serverless is [ES|QL](elasticsearch://reference/query-languages/esql.md) |
 | [**Search applications**](/solutions/search/search-applications.md) | - UI and APIs <br>- Maintenance mode (beta) | - API-only <br>- Maintenance mode (beta) | UI not available in Serverless |
 | **Shard management** | User-configurable | Managed by Elastic | No manual shard allocation in Serverless |
 | [**Watcher**](/explore-analyze/alerts-cases/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
