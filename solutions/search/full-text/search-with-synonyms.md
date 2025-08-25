@@ -25,7 +25,7 @@ $$$ece-add-custom-bundle-example-cacerts$$$
 
 $$$ece-add-custom-bundle-example-LDAP$$$
 
-Synonyms are words or phrases that share the same or similar meaning. Synonyms allow you to:
+Synonyms are words or phrases that share the same or similar meaning. Searching using synonyms allows you to:
 
 * Improve search relevance by finding relevant documents that use different terms to express the same concept.
 * Make domain-specific vocabulary more user-friendly, allowing users to use search terms they are more familiar with.
@@ -39,23 +39,31 @@ To use synonyms in {{es}}, you need to follow this workflow:
 2. **Configure analyzers** -  Configure your token filters and analyzers to use them
 3. **Test and apply** - Verify your configuration works correctly
 
-## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
-
-You have multiple options for creating synonym sets and rules.
-
-### Synonym rule formats
+## Synonym rule formats
 
 Synonym rules define which terms should be treated as equivalent during search and indexing.
 
-There are two main formats for synonym rules:
+There are two main formats for synonym rules: explicit mappings and equivalent mappings.
 
-**Explicit mappings** use `=>` to specify exact replacements:
+#### Explicit mappings
+
+Explicit mappings use `=>` to specify exact replacements:
+
 ```
 i-pod, i pod => ipod
 sea biscuit, sea biscit => seabiscuit
 ```
 
-**Equivalent synonyms** use commas to group interchangeable terms:
+With explicit mappings, the relationship is one-way. In the previous examples:
+- `i-pod` and `i pod` will be replaced with `ipod`, but `ipod` will not be replaced with `i-pod` or `i pod`
+- `sea biscuit` and `sea biscit` will be replaced with `seabiscuit`, but `seabiscuit` will not be replaced with `sea biscuit` or `sea biscit`
+
+This is different from equivalent synonyms, which can create bidirectional relationships when `expand=true`.
+
+#### Equivalent mappings
+
+Equivalent synonyms use commas to group interchangeable terms:
+
 ```
 ipod, i-pod, i pod
 foozball, foosball
@@ -72,6 +80,10 @@ The behavior of equivalent synonyms depends on the `expand` parameter in your to
   - `ipod` → `ipod`
   - `i-pod` → `ipod`
   - `i pod` → `ipod`
+
+## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
+
+You have multiple options for creating synonym sets and rules.
 
 ### Method 1: {{kib}} UI
 
@@ -102,6 +114,10 @@ create or update a synonym set with APIs, refer to the [Create or update synonym
 Changes in your synonyms sets will automatically reload the associated analyzers.
 
 ### Method 3: File-based [synonyms-store-synonyms-file]
+
+```{applies_to}
+serverless: unavailable
+```
 
 You can store your synonyms set in a file.
 
@@ -142,6 +158,8 @@ foo => baz
 # is equivalent to
 foo => foo bar, baz
 ```
+
+// ... existing content up to the end of Method 3 ...
 
 To update an existing synonyms set, upload new files to your cluster. Synonyms set files must be kept in sync on every cluster node.
 
