@@ -12,7 +12,7 @@ products:
 
 $$$ece-add-custom-bundle-example-synonyms$$$
 ::::{note}
-Learn about [adding custom synonym bundles](/solutions/search/full-text/search-with-synonyms.md#ece-add-custom-bundle-example-synonyms) to your {{ece}} deployment.
+Learn about [adding custom synonym bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) to your {{ece}} deployment.
 ::::
 
 % TODO: these bundle links do not belong here
@@ -36,16 +36,16 @@ Synonyms are words or phrases that share the same or similar meaning. Synonyms a
 To use synonyms in {{es}}, you need to follow this workflow:
 
 1. **Create synonym sets and rules** - Define which terms are equivalent and where to store your synonym sets
-2. **Configure analyzers** - Apply synonyms during text analysis
+2. **Configure analyzers** -  Configure your token filters and analyzers to use them
 3. **Test and apply** - Verify your configuration works correctly
 
 ## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
 
-You can create synonym sets and rules using several methods:
+You have multiple options for creating synonym sets and rules.
 
 ### Synonym rule formats
 
-Before creating synonym sets, you need to understand how to write synonym rules. Synonym rules define which terms should be treated as equivalent during search and indexing.
+Synonym rules define which terms should be treated as equivalent during search and indexing.
 
 There are two main formats for synonym rules:
 
@@ -64,8 +64,14 @@ lol, laughing out loud
 ```
 
 The behavior of equivalent synonyms depends on the `expand` parameter in your token filter configuration:
-- If `expand=true`: `ipod, i-pod, i pod` expands to `ipod, i-pod, i pod`
-- If `expand=false`: `ipod, i-pod, i pod` maps to just `ipod`
+- If `expand=true`: `ipod, i-pod, i pod` creates bidirectional mappings:
+  - `ipod` ↔ `i-pod`
+  - `ipod` ↔ `i pod` 
+  - `i-pod` ↔ `i pod`
+- If `expand=false`: `ipod, i-pod, i pod` maps all terms to the first term as canonical:
+  - `ipod` → `ipod`
+  - `i-pod` → `ipod`
+  - `i pod` → `ipod`
 
 ### Method 1: {{kib}} UI
 
@@ -74,7 +80,7 @@ serverless:
   elasticsearch:
 ```
 
-You can create and manage synonym sets and synonym rules using the {{kib}} user interface. This provides a user-friendly way to manage synonyms without using APIs or file uploads.
+You can create and manage synonym sets and synonym rules using the {{kib}} user interface.
 
 To create a synonym set using the UI:
 
@@ -91,7 +97,7 @@ The UI supports the same synonym rule formats as the file-based approach. Change
 ### Method 2: REST API [synonyms-store-synonyms-api]
 
 You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets. For examples of how to 
-create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/search-with-synonyms.md) page.
+create or update a synonym set with APIs, refer to the [Create or update synonyms set API examples](/solutions/search/full-text/create-update-synonyms-api-example.md) page.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
 
@@ -119,8 +125,8 @@ sea biscuit, sea biscit => seabiscuit
 # This allows the same synonym file to be used in different synonym handling strategies.
 # Examples:
 ipod, i-pod, i pod
-foozball , foosball
-universe , cosmos
+foozball, foosball
+universe, cosmos
 lol, laughing out loud
 
 # If expand==true in the synonym token filter configuration,
@@ -159,6 +165,13 @@ Once your synonyms sets are created, you can start configuring your token filter
 Synonyms sets must exist before they can be added to indices. If an index is created referencing a nonexistent synonyms set, the index will remain in a partially created and inoperable state. The only way to recover from this scenario is to ensure the synonyms set exists then either delete and re-create the index, or close and re-open the index.
 ::::
 
+{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
+
+* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): Recommended as it can correctly handle multi-word synonyms.
+* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
+
+Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
+
 ::::{warning}
 Invalid synonym rules can cause errors when applying analyzer changes. For reloadable analyzers, this prevents reloading and applying changes. You must correct errors in the synonym rules and reload the analyzer.
 
@@ -168,13 +181,6 @@ An index with invalid synonym rules cannot be reopened, making it inoperable whe
 * The index is opened from a closed state
 * A node restart occurs (which reopens the node assigned shards)
 ::::
-
-{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](elasticsearch://reference/text-analysis/token-filter-reference.md) to include synonyms:
-
-* [Synonym graph](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md): It is recommended to use it, as it can correctly handle multi-word synonyms ("hurriedly", "in a hurry").
-* [Synonym](elasticsearch://reference/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
-
-Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
 
 ## Step 3: Test your analyzer [synonyms-test-analyzer]
 
