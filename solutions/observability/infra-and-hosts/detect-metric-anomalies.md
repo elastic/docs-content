@@ -17,7 +17,7 @@ You can create {{ml}} jobs to detect and inspect memory usage and network traffi
 You can model system memory usage, along with inbound and outbound network traffic across hosts or pods. You can detect unusual increases in memory usage and unusually high inbound or outbound traffic across hosts or pods.
 
 ## Prerequisites
-To use create ML jobs to detect metric anomalies, you need to meet the follow requirements:
+To create ML jobs to detect metric anomalies, you need to meet the following requirements:
 
 * **For Observability serverless projects**, the **Editor** role or higher is required to create {{ml}} jobs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 * Metric anomaly detection does not work for OpenTelemetry hosts.

@@ -37,7 +37,7 @@ To learn more about the metrics shown on this page, refer to the [Metrics refere
 **Don’t see any metrics?**
 
 
-If you haven’t added data yet, click **Add data → Host** and select how you want to monitor your host—Elastic Agent or OpenTelemetry.
+If you haven’t added data yet, click **Add data → Host** and select how you want to monitor your host—OpenTelemetry or Elastic Agent.
 
 For more on collecting host data, refer to:
 * [OpenTelemetry](opentelemetry://reference/edot-collector/config/configure-metrics-collection.md#process-metrics)
@@ -157,7 +157,7 @@ To learn more about creating and managing rules, refer to [Alerting](/solutions/
 
 ## Select data collection schema
 
-The **Schema** selector shows the available data collection schemas for the current query. If both Elastic System Integration data and OTel data are available, the selector defaults to OTel. Select **Elastic System Integration** from the **Schema** selector to see results in your ECS data for the current query.
+The **Schema** selector shows the available data collection schemas for the current query. If host data from both the Elastic System Integration and OpenTelemetry are available, the selector defaults to **OpenTelemetry**. Select **Elastic System Integration** to see host data collected using the Elastic System Integration.
 
 
 
@@ -412,4 +412,4 @@ This could mean that the APM agent has not been configured to use the correct ho
 To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-intake-service-event-api.md#kubernetes-data).
 
 ### I don't see all of my host data [observability-analyze-hosts-i-dont-see-all-of-my-host-data]
-If you have host data from both the Elastic Systems integration and OpenTelemetry (OTel), the selector defaults to OTel. If you want to see Elastic System Integration data for your current query, select **Elastic System Integration** from the **Schema** selector.
+If you have host data from both the Elastic System Integration and OpenTelemetry (OTel), the selector defaults to OTel. If you want to see Elastic System Integration data for your current query, select **Elastic System Integration** from the **Schema** selector.
