@@ -18,7 +18,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * {{serverless-full}} is now available in three new Microsoft Azure [regions](/deploy-manage/deploy/elastic-cloud/regions.md): 
     * `northeurope` (North Europe), located in Ireland 
     * `australiaeast` (Australia East), located in Victoria, Australia
-    * ` westus2` (West US 2), located in Washington, United Stated
+    * ` westus2` (West US 2), located in Washington, United States
 
 ## August 18, 2025 [serverless-changelog-08182025]
 
