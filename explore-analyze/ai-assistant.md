@@ -22,7 +22,7 @@ $$$token-limits$$$
 
 **AI Assistant** is a chat-based interactive tool that can help with a variety of tasks throughout Elasticsearch and Kibana, including:
 
-- **Constructing queries**: Assists you in building queries to search and analyze your data, including converting queries from other languages to [ES|QL](query-filter/languages/esql.md).
+- **Constructing queries**: Assists you in building queries to search and analyze your data, including converting queries from other languages to [ES|QL](elasticsearch://reference/query-languages/esql.md).
 - **Indexing data**: Guides you on how to index data into Elasticsearch.
 - **Using APIs**: Calls Elasticsearch APIs on your behalf if you need specific operations performed.
 - **Generating sample data**: Helps you create sample data for testing and development purposes.

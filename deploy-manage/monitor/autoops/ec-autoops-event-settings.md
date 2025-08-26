@@ -13,7 +13,7 @@ products:
 AutoOps events are triggered when specific conditions are met and are closed when those conditions are no longer satisfied. An event can be triggered by multiple conditions, and each event comes with a default setting that can be adjusted differently for each connected deployment.
 
 ::::{note}
-Only **Organization owners** can set up notifications.
+Only **Organization owners** can configure these settings.
 ::::
 
 

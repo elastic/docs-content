@@ -16,6 +16,35 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+
+:::{dropdown} Error when using the Kubernetes OpenTelemetry quickstart onboarding flow
+Applies to: {{stack}}
+
+**Details**
+
+Users with Helm version 3.18.5 or later will see an error similar to the following when using the [Kubernetes OpenTelemetry quickstart](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) onboarding flow:
+
+```
+Error: values don't meet the specifications of the schema(s) in the following chart(s):
+opentelemetry-operator:
+"file:///values.schema.json#" is not valid against metaschema: jsonschema validation failed with 'https://json-schema.org/draft/2019-09/schema#'
+- at '': 'allOf' failed
+  - at '/properties/manager': 'allOf' failed
+    - at '/properties/manager/properties/featureGates': 'allOf' failed
+      - at '/properties/manager/properties/featureGates/examples': got string, want array
+```
+
+For more information, check:
+* [Issue 232667](https://github.com/elastic/kibana/pull/232667)
+* [Issue 9535](https://github.com/elastic/elastic-agent/pull/9535)
+
+**Workaround**
+
+Downgrade Helm to version 3.18.4.
+
+:::
+
+
 :::{dropdown} Observability AI Assistant - Elastic Managed LLM may be automatically selected as default connector
 
 Applies to: {{stack}} 9.x
