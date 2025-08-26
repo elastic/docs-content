@@ -18,7 +18,7 @@ Find answers to your questions about AutoOps for ECE, ECK, and self-managed clus
 * [Which deployment types can be connected to AutoOps?](#deployment-types)
 
 **Questions about setting up**
-* [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cloud-connect-ech)
+* [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cc-autoops-ech)
 * [Can I use AutoOps for my clusters if my environment is air-gapped?](#autoops-air-gapped)
 * [Can I use macOS to install {{agent}} for this feature?](#macos-install)
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
@@ -42,9 +42,8 @@ $$$deployment-types$$$ Which deployment types can be connected to AutoOps?
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment.
 
 ## Questions about setting up
-:::
-
-:::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
+$$$cc-autoops-ech$$$ Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?
+:   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
 $$$autoops-air-gapped$$$ Can I use AutoOps for my clusters if my environment is air-gapped?

@@ -24,14 +24,18 @@ Learn how to set up and use [](/deploy-manage/monitor/autoops/cc-autoops-as-clou
 Find answers to your questions about Cloud Connect.
 
 * [Does using Cloud Connect require additional payment?](#cloud-connect-payment)
-* [Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?](#cloud-connect-ech)
+* [Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?](#cloud-connect-ech)
 * [Are more services going to be available with Cloud Connect?](#more-cloud-connected-services)
 
 $$$cloud-connect-payment$$$Does using Cloud Connect require additional payment?
-:   Each cloud connected service has its own licensing and payment requirements.
+:   Each cloud connected service has its own licensing and payment requirements. 
 :   :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 :::
 
+$$$cloud-connect-ech$$$Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?
+:   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
+:::
+
 $$$more-cloud-connected-services$$$Are more services going to be available with Cloud Connect?
-:   Yes. AutoOps is the first of many cloud connected services to come. The next planned service is the Elastic Inference Service (EIS), which will provide GPU-powered inference for use cases like semantic search and text embeddings.
+:   Yes. AutoOps is the first of many cloud connected services to come. The next planned service is the Elastic Inference Service (EIS), which will provide GPU-powered inference for use cases like semantic search and text embeddings. 
 
