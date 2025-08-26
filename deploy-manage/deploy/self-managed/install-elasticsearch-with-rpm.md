@@ -17,7 +17,7 @@ sub:
 
 # Install {{es}} with RPM [rpm]
 
-The RPM package for {{es}} can be [downloaded from our website](#install-rpm) or from our  [RPM repository](#rpm-repo). It can be used to install {{es}} on any RPM-based system such as OpenSuSE, SLES, Centos, Red Hat, and Oracle Enterprise.
+The RPM package for {{es}} can be [downloaded from our website](#install-rpm) or from our  [RPM repository](#rpm-repo). It can be used to install {{es}} on any RPM-based system such as openSUSE, SLES, CentOS, Red Hat Enterprise Linux, and Oracle Linux.
 
 ::::{note}
 RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Refer to [Install {{es}} from archive on Linux or MacOS](install-elasticsearch-from-archive-on-linux-macos.md) instead.
@@ -74,9 +74,9 @@ type=rpm-md
 ```
 ::: 
 
-:::{tab-item} OpenSuSE distributions
+:::{tab-item} openSUSE distributions
 :sync: suse
-For OpenSuSE based distributions, create a file called `elasticsearch.repo` in the `/etc/zypp/repos.d/` directory and include the following configuration:
+For openSUSE based distributions, create a file called `elasticsearch.repo` in the `/etc/zypp/repos.d/` directory and include the following configuration:
 
 ```ini subs=true
 [elasticsearch]
@@ -108,7 +108,7 @@ If you use CentOS, or Red Hat Enterprise Linux 7 and earlier, enter the followin
 sudo yum install --enablerepo=elasticsearch elasticsearch
 ```
 :::
-:::{tab-item} OpenSuSE distributions
+:::{tab-item} openSUSE distributions
 :sync: suse
 Enter the following command:
 
