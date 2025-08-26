@@ -28,12 +28,12 @@ $$$ece-add-custom-bundle-example-LDAP$$$
 Synonyms are words or phrases that share the same or similar meaning. Searching using synonyms allows you to:
 
 * Improve search relevance by finding relevant documents that use different terms to express the same concept.
-* Make domain-specific vocabulary more user-friendly, allowing users to use search terms they are more familiar with.
-* Define common misspellings and typos to transparently handle common mistakes.
+* Make domain-specific vocabulary more user-friendly.
+* Define misspellings and typos to transparently handle common mistakes.
 
 ## How synonyms work in Elasticsearch
 
-To use synonyms in {{es}}, you need to follow this workflow:
+To use synonyms in {{es}}, follow this workflow:
 
 1. **Create synonym sets and rules** - Define which terms are equivalent and where to store your synonym sets
 2. **Configure analyzers** -  Configure your token filters and analyzers to use them
@@ -121,7 +121,7 @@ serverless: unavailable
 
 You can store your synonyms set in a file.
 
-A synonyms set file needs to be uploaded to all your cluster nodes, and be located in the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+Make sure you upload a synonyms set file for all your cluster nodes, to the configuration directory for your {{es}} distribution. If you're using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
 An example synonyms file:
 
