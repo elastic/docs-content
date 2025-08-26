@@ -46,6 +46,10 @@ In Serverless, Elastic automatically manages:
 
 ## Compare features [elasticsearch-differences-serverless-infrastructure-management]
 
+$$$elasticsearch-differences-serverless-feature-categories$$$
+$$$elasticsearch-differences-serverless-features-replaced$$$
+$$$elasticsearch-differences-serverless-feature-planned$$$
+
 ### Core platform capabilities
 
 This table compares the core platform capabilities between {{ech}} deployments and Serverless projects:
