@@ -84,7 +84,7 @@ The only number function that you can use with **clientip** is **Unique count**,
 
 3. In the layer pane, click **Unique count of clientip**.
 
-    1. In the **Name** field, enter `Unique visitors`.
+    1. Open **Primary metric**. Go to **Appearance** and in the **Name** field, enter `Unique visitors`.
     2. Click **Close**.
 
 4. Click **Save and return**.
