@@ -35,9 +35,9 @@ Synonyms are words or phrases that share the same or similar meaning. Searching 
 
 To use synonyms in {{es}}, follow this workflow:
 
-1. **Create synonym sets and rules** - Define which terms are equivalent and where to store your synonym sets
-2. **Configure analyzers** -  Configure your token filters and analyzers to use them
-3. **Test and apply** - Verify your configuration works correctly
+1. **Create synonym sets and rules**: Define which terms are equivalent and where to store your synonym sets.
+2. **Configure analyzers**: Configure your token filters and analyzers to use them.
+3. **Test and apply**: Verify your configuration works correctly.
 
 ## Synonym rule formats
 
@@ -97,8 +97,8 @@ You can create and manage synonym sets and synonym rules using the {{kib}} user 
 To create a synonym set using the UI:
 
 1. Navigate to **Elasticsearch** > **Synonyms** or use the [global search field](/explore-analyze/query-filter/filtering.md#_finding_your_apps_and_objects)
-2. Click **Get started**
-3. Enter a name for your synonym set
+2. Click **Get started**.
+3. Enter a name for your synonym set.
 4. Add your synonym rules in the editor by adding terms to match against:
    - Add **Equivalent rules** by adding multiple equivalent terms. For example: `ipod, i-pod, i pod`
    - Add **Explicit rules** by adding multiple terms that map to a single term. For example: `i-pod, i pod => ipod`
