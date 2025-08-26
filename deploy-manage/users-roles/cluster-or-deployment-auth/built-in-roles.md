@@ -115,8 +115,10 @@ $$$built-in-roles-remote-monitoring-agent$$$ `remote_monitoring_agent`
 $$$built-in-roles-remote-monitoring-collector$$$ `remote_monitoring_collector`
 :   Grants the minimum privileges required to collect monitoring data for the {{stack}}.
 
-$$$built-in-roles-reporting-user$$$ `reporting_user`
-:   Grants the necessary privileges required to use {{reporting}} features in {{kib}}, including generating and downloading reports. This role implicitly grants access to all {{kib}} reporting features, with each user having access only to their own reports. Note that reporting users should also be assigned additional roles that grant read access to the [indices](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) that will be used to generate reports.
+$$$built-in-roles-reporting-user$$$ `reporting_user` {applies_to}`stack: deprecated 9.0`
+:   This role is deprecated. Use [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) instead.
+    
+    Grants the necessary privileges required to use {{reporting}} features in {{kib}}, including generating and downloading reports. This role implicitly grants access to all {{kib}} reporting features, with each user having access only to their own reports. Note that reporting users should also be assigned additional roles that grant read access to the [indices](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv) that will be used to generate reports.
 
 $$$built-in-roles-rollup-admin$$$ `rollup_admin`
 :   Grants `manage_rollup` cluster privileges, which enable you to manage and execute all rollup actions.
