@@ -106,26 +106,26 @@ For more details about default {{ilm-init}} policy settings, refer to [Create a 
 
 To set up a data stream, first create an index template to specify the lifecycle policy. Because the template is for a data stream, it must also include a `data_stream` definition.
 
-For example, you might create a template named `timeseries_template` and use for a future data stream named `timeseries`.
+For example, you might create a template named `timeseries_template` and use it for a future data stream named `timeseries`.
 
 To enable {{ilm-init}} to manage the data stream, the template configures one {{ilm-init}} setting:
 
 * `index.lifecycle.name` specifies the name of the lifecycle policy that you want to apply to the data stream.
 
-You can use the {{kib}} **Create template** wizard to add the template or the [Create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to add an index template to a cluster and apply the lifecycle policy to indices matching the template.
+Use the {{kib}} **Create template** wizard to add a template or the [Create or update index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to add a template and apply the lifecycle policy to indices matching the template.
 
 ::::{tab-set}
 :group: kibana-api
 :::{tab-item} {{kib}}
 :sync: kibana
-To add an index template to a cluster, go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
+To add an index template to a cluster using the wizard, go to **Stack Management > Index Management**. In the **Index Templates** tab, click **Create template**.
 
 ![Create template page](/manage-data/images/elasticsearch-reference-create-index-template.png "")
 
 This wizard invokes the create or update index template API to create the index template with the options you specify.
 
 :::{tip} 
-For more information about the available index template options that you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
+To learn about which index template options you can specify, refer to [Create an index template to apply the lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#apply-policy-template).
 :::
 :::
 
@@ -180,7 +180,7 @@ This process repeats each time a rollover condition is met. You can search acros
 
 ### Check lifecycle progress [ilm-gs-check-progress]
 
-To get status information for managed indices, you can use {{kib}} to [view their current status, including details about the ILM policy](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md) or the {{ilm-init}} explain API. This lets you find out things like:
+Use {{kib}} to [view the current status of your managed indices](/manage-data/lifecycle/index-lifecycle-management/policy-view-status.md) and details about the ILM policy, or the {{ilm-init}} explain API. Find out things like:
 
 * What phase an index is in and when it entered that phase.
 * The current action and what step is being performed.
