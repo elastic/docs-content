@@ -48,7 +48,7 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 ## Step 2: Install {{es}}
 
-You have several options for installing the {{es}} RPM package:
+You have two options for installing the {{es}} RPM package:
 
 * [From the RPM repository](#rpm-repo)
 * [Manually](#install-rpm)
@@ -91,7 +91,7 @@ type=rpm-md
 :::
 :::: 
 
-1. Install {{es}} from the repository you defined earlier.
+2. Install {{es}} from the repository you defined earlier.
 
 ::::{tab-set}
 :group:linux-distros
