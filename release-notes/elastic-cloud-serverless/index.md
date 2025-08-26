@@ -9,6 +9,33 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## August 25, 2025 [serverless-changelog-08252025]
+
+### Features and enhancements [serverless-changelog-08252025-features-enhancements]
+* Adds support for a new `url` variable type in {{fleet}} packages, enabling improved input validation of URL values [#231062]({{kib-pull}}231062)
+* Adds the `kibana.alert.grouping` field to the **Synthetics monitor status** rule in {{obs-serverless}}  [#230513]({{kib-pull}}230513)
+* Enables polling and sampling for EDOT central configuration in {{obs-serverless}} [#231835]({{kib-pull}}231835)
+* Adds a check to confirm that uploaded files are indexed and searchable in {{ml-cap}} [#231614]({{kib-pull}}231614)
+* Updates sections and improves field handling in {{ml-cap}} [#231037]({{kib-pull}}231037)
+* Improves the layout of the custom URLs list in {{ml-cap}} [#231751]({{kib-pull}}231751)
+
+### Fixes [serverless-changelog-08252025-fixes]
+* Fixes a rendering issue that affected progress elements in Canvas [#232432]({{kib-pull}}232432)
+* Fixes the enforcement of deployment mode restrictions when creating package policies in {{fleet}} [#231679]({{kib-pull}}231679)
+* Ensures transform index templates include `index.mapping.ignore_malformed: true` to prevent failures due to invalid values in source indices in {{fleet}} [#232439]({{kib-pull}}232439)
+* Fixes visibility issues with the DocViewer flyout in **Saved Search** embeddables in Discover [#229108]({{kib-pull}}229108)
+* Restores legacy monitor filters in {{obs-serverless}} [#231562]({{kib-pull}}231562)
+* Handles multi-line values more reliably in {{obs-serverless}} [#230929]({{kib-pull}}230929)
+* Fixes broken views on AI Assistant settings pages for non-Enterprise license holders in {{obs-serverless}} [#231989]({{kib-pull}}231989)
+* Enables the recovery strategy toggle for monitor status rules in {{obs-serverless}} [#231091]({{kib-pull}}231091)
+* Fixes AI Assistant anonymization rules to avoid nested or overlapping masks when processing text in {{obs-serverless}} [#231981]({{kib-pull}}231981)
+* Fixes an issue that prevented the contextual flyout from showing full details in vulnerability findings in {{sec-serverless}} [#231778]({{kib-pull}}231778)
+* Includes various bug fixes and improvements to the Manifest Manager in {{sec-serverless}} [#231039]({{kib-pull}}231039)
+* Fixes an issue where the `unusedUrlsCLeanupTask` run interval did not update correctly when changed [#231883]({{kib-pull}}231883)
+* Updates the prompt text for the `mv_slice` feature in {{ml-cap}} [#231870]({{kib-pull}}231870)
+* Fixes a broken link in the **Build** breadcrumb that incorrectly pointed to the search indices page in {{es-serverless}} [#232504]({{kib-pull}}232504)
+* Fixes inconsistencies in case activity statistics [#231948]({{kib-pull}}231948)
+* Adds support for a `reporting_user` role with a reserved set of privileges [#231533]({{kib-pull}}231533)
 
 
 ## August 18, 2025 [serverless-changelog-08182025]
@@ -51,10 +78,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes a bug that made the {{esql}} form read-only in the Rule upgrade flyout [#231699]({{kib-pull}}231699)
 * Removes the default port the from interactive setup cluster address form, unless specified [#230582]({{kib-pull}}230582)
 * Fixes positioning of the **Add rule** popover on the Role Mappings page [#231551]({{kib-pull}}231551)
-
-
-
-
 
 ## August 11, 2025 [serverless-changelog-08112025]
 
