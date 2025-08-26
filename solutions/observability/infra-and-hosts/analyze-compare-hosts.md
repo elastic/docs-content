@@ -41,7 +41,7 @@ If you haven’t added data yet, click **Add data → Host** and select how you 
 
 For more on collecting host data, refer to:
 * [OpenTelemetry](opentelemetry://reference/edot-collector/config/configure-metrics-collection.md#process-metrics)
-* [Elastic System Integration](integration-docs://reference/system.md)
+* [Elastic System integration](integration-docs://reference/system.md)
 
 ::::
 
@@ -155,21 +155,24 @@ To learn more about creating and managing rules, refer to [Alerting](/solutions/
 
 ::::
 
-## Select data collection schema
+## Select the data collection schema[host-schema-selector]
 
-The **Schema** selector shows the available data collection schemas for the current query. If host data from both the Elastic System Integration and OpenTelemetry are available, the selector defaults to **OpenTelemetry**. Select **Elastic System Integration** to see host data collected using the Elastic System Integration.
-
+The **Schema** menu shows the available data collection schemas for the current query. If host data from both the Elastic System integration and OpenTelemetry are available, the selector defaults to **OpenTelemetry**. Select **Elastic System Integration** to see host data collected by the Elastic System integration.
 
 
 ## View host details [view-host-details]
 
 Without leaving the **Hosts** page, you can view enhanced metrics relating to each host running in your infrastructure. In the list of hosts, find the host you want to monitor, then click the **Toggle dialog with details** icon ![expand icon](/solutions/images/serverless-expand-icon.png "") to display the host details overlay.
 
+The host details overlay adapts according to the [selected schema](#host-schema-selector). When viewing host data collected using OpenTelemetry, you see the following differences:
+
+* Anomaly detection isn't available for OpenTelemetry hosts, so there is no **Anomalies** tab.
+* The Lens charts use the OpenTelemetry formulas //LINK TO THE Host Metrics Ref
+
 ::::{tip}
 To expand the overlay and view more detail, click **Open as page** in the upper-right corner.
 
 ::::
-
 
 The host details overlay contains the following tabs:
 
@@ -217,6 +220,10 @@ The **Metrics** tab shows host metrics organized by type and is more complete th
 
 
 :::::{dropdown} Processes
+:::{note}
+To view processes for OpenTelemetry hosts, you need to configure the EDOT collector to send process metrics. Refer to [Process metrics](opentelemetry://reference/edot-collector/config/configure-metrics-collection.md#process-metrics) for more information.
+:::
+
 The **Processes** tab lists the total number of processes (`system.process.summary.total`) running on the host, along with the total number of processes in these various states:
 
 * Running (`system.process.summary.running`)
@@ -285,6 +292,10 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 
 :::::{dropdown} Anomalies
+:::{note}
+Anomaly detection isn't available for OpenTelemetry hosts. When the **Schema** is set to OpenTelemetry, this isn't available.
+:::
+
 The **Anomalies** tab displays a list of each single metric {{anomaly-detect}} job for the specific host. By default, anomaly jobs are sorted by time, showing the most recent jobs first.
 
 Along with the name of each anomaly job, detected anomalies with a severity score equal to 50 or higher are listed. These scores represent a severity of "warning" or higher in the selected time period. The **summary** value represents the increase between the actual value and the expected ("typical") value of the host metric in the anomaly record result.
@@ -402,7 +413,7 @@ This missing data can be hard to spot at first glance. The green boxes outline r
 
 In the Hosts view, you might see a question mark icon (![Question mark icon](/solutions/images/serverless-questionInCircle.svg "")) before a host name with a tooltip note stating that the host has been detected by APM.
 
-When a host is detected by APM, but is not collecting full metrics (for example, through the [system integration](integration-docs://reference/system/index.md)), it will be listed as a host with the partial metrics collected by APM.
+When a host is detected by APM, but is not collecting full metrics (for example, through the [Elastic System integration](integration-docs://reference/system/index.md)), it will be listed as a host with the partial metrics collected by APM.
 
 
 ### I don’t recognize a host name and I see a question mark icon next to it [observability-analyze-hosts-i-dont-recognize-a-host-name-and-i-see-a-question-mark-icon-next-to-it]
@@ -412,4 +423,4 @@ This could mean that the APM agent has not been configured to use the correct ho
 To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-intake-service-event-api.md#kubernetes-data).
 
 ### I don't see all of my host data [observability-analyze-hosts-i-dont-see-all-of-my-host-data]
-If you have host data from both the Elastic System Integration and OpenTelemetry (OTel), the selector defaults to OTel. If you want to see Elastic System Integration data for your current query, select **Elastic System Integration** from the **Schema** selector.
+If you have host data from both the Elastic System integration and OpenTelemetry (OTel), the selector defaults to OTel. If you want to see Elastic System integration data for your current query, select **Elastic System Integration** from the **Schema** selector.

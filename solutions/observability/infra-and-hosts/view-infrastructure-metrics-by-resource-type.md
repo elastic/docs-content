@@ -57,18 +57,21 @@ You can also use the search bar to create structured queries using [{{kib}} Quer
 
 To examine the metrics for a specific time, use the time filter to select the date and time.
 
-
 ## View host metrics [analyze-hosts-inventory]
 
 By default the **Infrastructure Inventory** page displays a waffle map that shows the hosts you are monitoring and the current CPU usage for each host. Alternatively, you can click the **Table view** icon ![table view icon](/solutions/images/observability-table-view-icon.png "") to switch to a table view.
 
 Without leaving the **Infrastructure Inventory** page, you can view enhanced metrics relating to each host running in your infrastructure. On the waffle map, select a host to display the host details overlay.
 
+::::{note}
+When showing `Hosts`, the **Schema** dropdown menu shows the available data collection schemas for the current query. If data from both the Elastic System integration and OpenTelemetry are available, the schema defaults to **OpenTelemetry**. Select **Elastic System Integration** to see data collected by the Elastic System integration.
+::::
+
+
 ::::{tip}
 To expand the overlay and view more detail, click **Open as page** in the upper-right corner.
 
 ::::
-
 
 The host details overlay contains the following tabs:
 

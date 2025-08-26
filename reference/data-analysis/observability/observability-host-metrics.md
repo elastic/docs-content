@@ -17,6 +17,7 @@ Learn about key host metrics displayed in the Infrastructure UI:
 * [Log](#key-metrics-log)
 * [Network](#key-metrics-network)
 * [Disk](#key-metrics-network)
+* [OpenTelemetry](#key-metrics-opentelemetry)
 * [Legacy](#legacy-metrics)
 
 
@@ -84,6 +85,9 @@ Learn about key host metrics displayed in the Infrastructure UI:
 | **Disk Write IOPS** | Average count of write operations from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.diskio.write.count), kql='system.diskio.write.count: *')`<br> |
 | **Disk Write Throughput** | Average number of bytes written from the device per second.<br><br>**Field Calculation**: `counter_rate(max(system.diskio.write.bytes), kql='system.diskio.write.bytes: *')`<br> |
 
+## OpenTelemetry metrics [opentelemetry-metrics]
+| Metric | Description |
+| --- | --- |
 
 ## Legacy metrics [legacy-metrics]
 
