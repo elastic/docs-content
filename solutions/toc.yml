@@ -463,6 +463,8 @@ toc:
               - file: observability/incident-management/create-an-slo.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
+        children:
+          - file: observability/connect-to-own-local-llm.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
