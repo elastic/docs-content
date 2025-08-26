@@ -11,15 +11,25 @@ products:
 
 You can manage ingest pipelines through Elasticsearch APIs or Kibana UIs.
 
-The **Ingest Pipelines** under **Management** has a set of tools for creating and managing indices optimized for search use cases (non-time series data). You can also manage your ingest pipelines in this UI.
+The **Pipelines** tab has a set of tools for creating and managing indices optimized for search use cases (non-time series data). You can also manage your ingest pipelines in this UI.
 
 ## Find pipelines [ingest-pipeline-search-where]
 
-To find this in {{kib}} UI:
+To work with ingest pipelines using these UI tools, you’ll be using the **Pipelines** tab.
 
-{applies_to}`stack: ga 9.0` Go to **Management > Stack Management > Ingest > Ingest pipelines**.
+To find this tab in the Kibana UI:
 
-{applies_to}`serverless: ga` Go to **Project settings > Management > Data > Ingest pipelines**.
+1. Go to **Build > Connectors**.
+2. Select the connector you want to work with. For example, `azure-blob-storage`.
+3. On the index’s overview page, open the **Pipelines** tab.
+4. From here, you can follow the instructions to create custom pipelines, and set up ML inference pipelines.
+
+The tab is highlighted in this screenshot:
+
+:::{image} /solutions/images/elasticsearch-reference-ingest-pipeline-ent-search-ui.png
+:alt: ingest pipeline ent search ui
+:screenshot:
+:::
 
 ## Overview [ingest-pipeline-search-in-enterprise-search]
 
@@ -56,7 +66,7 @@ Aside from the pipeline itself, you have a few configuration options which contr
 * **Reduce Whitespace** - This controls whether or not consecutive, leading, and trailing whitespaces should be removed. This can help to display more content in some search experiences.
 * **Run ML Inference** - Only available on index-specific pipelines. This controls whether or not the optional `<index-name>@ml-inference` pipeline will be run. Enabled by default.
 
-For Elastic web crawler and connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. These settings can be changed there directly, or through the Kibana UI at **Search > Content > Indices > <your index> > Pipelines > Settings**.
+For Elastic web crawler and connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. These settings can be changed there directly, or through the Kibana UI at **Build > Connectors > Available connectors > <your connector> > Pipelines > Settings**.
 
 You can also change the deployment wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. These settings can be changed there directly, or from the Kibana UI at **Search > Content > Settings** tab. Changing the deployment wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overridden by the index-specific settings.
 
