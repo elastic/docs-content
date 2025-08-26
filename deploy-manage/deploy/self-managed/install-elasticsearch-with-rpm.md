@@ -55,7 +55,28 @@ You have several options for installing the {{es}} RPM package:
 
 ### Install from the RPM repository [rpm-repo]
 
-Create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
+1. Define a repository for {{es}}.
+
+::::{tab-set}
+:group:linux-distros
+:::{tab-item} RedHat distributions
+:sync: rhel
+For RedHat based distributions, create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory and include the following configuration: 
+
+```ini subs=true
+[elasticsearch]
+name={{es}} repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=0
+type=rpm-md
+```
+::: 
+
+:::{tab-item} OpenSuSE distributions
+:sync: suse
+For OpenSuSE based distributions, create a file called `elasticsearch.repo` in the `/etc/zypp/repos.d/` directory and include the following configuration:
 
 ```ini subs=true
 [elasticsearch]
@@ -67,19 +88,38 @@ enabled=0
 autorefresh=1
 type=rpm-md
 ```
-And your repository is ready for use. You can now install {{es}} with one of the following commands:
+:::
+:::: 
+
+1. Install {{es}} from the repository you defined earlier.
+
+::::{tab-set}
+:group:linux-distros
+:::{tab-item} RedHat distributions
+:sync: rhel
+If you use Fedora, or Red Hat Enterprise Linux 8 and later, enter the following command:
 
 ```sh
-sudo yum install --enablerepo=elasticsearch elasticsearch <1>
-sudo dnf install --enablerepo=elasticsearch elasticsearch <2>
-sudo zypper modifyrepo --enable elasticsearch && \
-  sudo zypper install elasticsearch; \
-  sudo zypper modifyrepo --disable elasticsearch <3>
+sudo dnf install --enablerepo=elasticsearch elasticsearch
 ```
 
-1. Use `yum` on CentOS and older Red Hat based distributions.
-2. Use `dnf` on Fedora and other newer Red Hat distributions.
-3. Use `zypper` on OpenSUSE based distributions.
+If you use CentOS, or Red Hat Enterprise Linux 7 and earlier, enter the following command:
+```sh
+sudo yum install --enablerepo=elasticsearch elasticsearch
+```
+:::
+:::{tab-item} OpenSuSE distributions
+:sync: suse
+Enter the following command:
+
+```sh
+sudo zypper modifyrepo --enable elasticsearch && \
+  sudo zypper install elasticsearch; \
+  sudo zypper modifyrepo --disable elasticsearch
+```
+::: 
+:::: 
+
 
 ### Download and install the RPM manually [install-rpm]
 
