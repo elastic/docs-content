@@ -32,10 +32,6 @@ $$$cloud-connect-payment$$$Does using Cloud Connect require additional payment?
 :   :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 :::
 
-:::
-:::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
-:::
-
 $$$more-cloud-connected-services$$$Are more services going to be available with Cloud Connect?
 :   Yes. AutoOps is the first of many cloud connected services to come. The next planned service is the Elastic Inference Service (EIS), which will provide GPU-powered inference for use cases like semantic search and text embeddings.
 
