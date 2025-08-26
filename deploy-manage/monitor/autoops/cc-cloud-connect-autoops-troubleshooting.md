@@ -33,33 +33,6 @@ $$$disconnected-cluster$$$My cluster was disconnected from {{ecloud}} and I want
 $$$next-steps$$$After running the installation command, I can't move on to the next steps.
 :   If an error appears on the screen, follow the suggestion in the error message and try to run the command again. If the issue is not resolved, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
 
-<!-- :::{dropdown} I’m trying to create a Cloud organization, but I’m already part of a different one.
-
-:::{include} /deploy-manage/monitor/_snippets/single-cloud-org.md
-:::
-
-:::
-
-:::{dropdown} I need to uninstall {{agent}}.
-
-Refer to [](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md) for instructions.
-:::
-
-:::{dropdown} My cluster was disconnected from {{ecloud}} and I want to reconnect it.
-
-If the cluster was disconnected by one of the users in your Cloud organization, you can repeat the [installation process](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md) to reconnect. If not, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
-
-:::{include} /deploy-manage/monitor/_snippets/disconnect-cluster.md
-:::
-
-:::
-
-:::{dropdown} After running the installation command, I can't move on to the next steps.
-
-If an error appears on the screen, follow the suggestion in the error message and try to run the command again. If the issue is not resolved, explore [additional resources](/troubleshoot/index.md#troubleshoot-additional-resources) or [contact us](/troubleshoot/index.md#contact-us).
-::: 
--->
-
 ## Potential errors
 
 The following table shows the errors you might encounter if something goes wrong while you set up and use AutoOps on your clusters.
