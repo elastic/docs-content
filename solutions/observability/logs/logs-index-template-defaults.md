@@ -1,5 +1,5 @@
 ---
-navigation_title: Default log component templates
+navigation_title: Default `logs` index template
 description: Learn what the default component templates and ingest pipeline hooks for logs do.
 applies_to:
   stack: all
@@ -8,13 +8,13 @@ products:
   - id: observability
 ---
 
-# Default log component templates
+# Default `logs` index template
 
-Elastic ships a set of reusable component templates and an optional `@custom` ingest pipeline that standardize how log data streams are mapped, indexed, and preprocessed.
+Elastic applies a managed index template to data streams that follow the `logs-*-*` index pattern. This index template references a set of reusable component templates and an optional `@custom` ingest pipeline that standardizes how log data streams are mapped, indexed, and preprocessed.
 
-These defaults apply automatically to any data stream named `logs-*-*`, unless you override them with your own higher-priority index template.
+The managed `logs` index template has a priority of `100` and is automatically applied to any data stream following the `logs-*-*` index pattern, unless you override it with your own higher-priority index template.
 
-All of the default log components templates follow the same lifecycle:
+Depending on your deployment, the `logs` index template applies one of the following data retention policies by default:
 
 * In {{stack}} (self-managed and {{ecloud}}): lifecycle is managed by [Index Lifecycle Management (ILM)](../../../manage-data/lifecycle/index-lifecycle-management.md). By default, rollover occurs when the primary shard reaches 50 GB or the index age reaches 30 days.
 * In {{serverless-full}}: lifecycle is managed by [Data Stream Lifecycle (DSL)](../../../manage-data/lifecycle/data-stream.md). By default, logs are retained for 30 days. 
@@ -23,7 +23,7 @@ Refer to [Logs index template reference](logs-index-template-reference.md) for i
 
 ## Component templates
 
-The managed logs index template is composed of the following component templates:
+The managed `logs` index template is composed of the following component templates:
 
 ### `logs@mappings`
 
@@ -39,7 +39,7 @@ Provides general mappings for logs data streams:
 
 Configures default index settings for logs data streams: 
 
-  * Sets `@timestamp` from ingest time if missing.  
+  * Sets `@timestamp` to ingest time if missing.  
   * Contains a hook to the optional [`logs@custom`](#customize-preprocessing-with-logscustom) pipeline.  
   * Sets `ignore_malformed` to `true` globally. With this setting, documents with malformed fields can be indexed without causing ingestion failures. Refer to [ignore_malformed](elasticsearch://reference/elasticsearch/mapping-reference/ignore-malformed.md) for a list of supported fields.
 
@@ -58,9 +58,9 @@ Each logs data stream runs through the default ingest pipeline. However, you can
 
 ## Using logs templates without naming conventions
 
-If you don’t follow the `logs-*-*` naming scheme, the managed logs index template will not apply automatically.
+If your logs data streams do not follow the `logs-*-*` naming scheme, the managed logs index template will not apply automatically.
 
-You can still use the defaults by composing standard component templates into your own index template. For example:
+You can still use the default component templates by adding them to your own index template. For example:
 
 ```json
 PUT _index_template/my-logs-template
