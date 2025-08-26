@@ -126,17 +126,22 @@ Restoring from a snapshot is often the fastest and most reliable way to migrate 
 
 System indices can be restored by including their corresponding [feature states](/deploy-manage/tools/snapshot-and-restore.md#feature-state) in the restore operation, allowing you to retain internal configurations related to security, {{kib}}, or other stack features.
 
-This method is especially useful when you want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state.
+This method is especially useful when:
 
-To use this method, the new cluster must have access to the snapshot repository that contains the data from the old cluster. Also ensure that both clusters use [compatible versions](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
+* You want to fully replicate the source cluster or when remote reindexing is not possible, for example if the source cluster is in a degraded or unreachable state. 
+* Your old cluster contains mostly static data, allowing you to snapshot the source cluster, restore in the new cluster, and continue operations. 
 
-For more information, refer to [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster)
+When your source cluster is actively ingesting data, such as logs, metrics, or traces, and you need a seamless migration with minimal downtime, consider using the [minimal downtime migration](migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md).
+
+### Requirements [ec-restore-snapshots-requirements]
+* The new cluster must have access to the snapshot repository that contains the data from the old cluster.
+* Both clusters must use [compatible versions](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
+
+For more information, refer to [Restore into a different cluster](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-different-cluster).
 
 ::::{note}
-For {{ece}} users, while it is most common to have Amazon S3 buckets, you should be able to restore from any addressable external storage that has your {{es}} snapshots.
+For {{ece}}, Amazon S3 us the most common snapshot storage, but you can restor from any accesible external storage that contains your {{es}} snapshots.
 ::::
-
-The following steps assume you already have a snapshot repository configured in the old cluster, with at least one valid snapshot containing the data you want to migrate.
 
 ### Step 1: Set up the repository in the new cluster [migrate-repo-setup]
 

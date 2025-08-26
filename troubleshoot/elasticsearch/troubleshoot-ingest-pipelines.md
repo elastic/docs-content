@@ -19,7 +19,7 @@ You can edit ingest pipelines under {{kib}}'s **Stack Management > Ingest Pipeli
 
 Ingest pipelines can be [Simulated](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) during testing, but after go-live are triggered during event ingest from
 
-* The query parameter `pipeline` flag the [create doc](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) or [update doc](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update_) or [bulk modify docs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) API request.
+* The query parameter `pipeline` flag the [create doc](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) or [update doc](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update) or [bulk modify docs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) API request.
 * The ingest target's backing [index setting](https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules#dynamic-index-settings) for `index.default_pipeline` and/or `index.final_pipeline`.
 * An Ingest Pipeline may sub-call another as a [pipelinen processor](https://www.elastic.co/docs/reference/enrich-processor/pipeline-processor).
 
