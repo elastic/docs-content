@@ -154,9 +154,15 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.0.6-features-enhancements]
 * Improves the reliability of {{elastic-defend}}'s connection to its kernel driver. This should reduce the instances of temporary `DEGRADED` policy statuses at boot due to `connect_kernel` failures.
+* Makes {elastic-defend} malware scan queue operate more efficiently by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* To help identify which parts of elastic-endpoint.exe are using a significant amount of CPU, {elastic-defend} on Windows can now include CPU profiling data in diagnostics.  To request CPU profiling data via the command line, see the [Agent command reference](https://www.elastic.co/docs/reference/fleet/agent-command-reference#_options).  To request CPU profiling data via Kibana, check the "Collect additional CPU metrics" box when requesting Agent diagnostics.
+* Enriches {elastic-defend} macOS network connect events with `network.direction`. Possible values are ingress and egress.
 
 ### Fixes [elastic-security-9.0.6-fixes]
 * Prevents the {{esql}} form from locking in read-only mode in the rule upgrade flyout [#231699]({{kib-pull}}231699).
+* Fixes a bug in {elastic-defend} where the fqdn feature flag was not being persisted across system/endpoint restarts
+* Fix a race condition in {elastic-defend} that may occasionally result in corrupted process command lines on Windows.  When this occurs, `process.command_line`, `process.args_count` and `process.args` may be incorrect, leading to false positives.
+* Fixes a bug in {elastic-defend} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path
 
 ## 9.0.5 [elastic-security-9.0.5-release-notes]
 
