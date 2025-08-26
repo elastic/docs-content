@@ -17,7 +17,7 @@ sub:
 
 # Install {{es}} with RPM [rpm]
 
-The RPM package for {{es}} can be [downloaded from our website](#install-rpm) or from our  [RPM repository](#rpm-repo). It can be used to install {{es}} on any RPM-based system such as openSUSE, SLES, CentOS, Red Hat Enterprise Linux, and Oracle Linux.
+The RPM package for {{es}} can be [downloaded from our website](#install-rpm) or from our  [RPM repository](#rpm-repo). It can be used to install {{es}} on any RPM-based system such as openSUSE, SUSE Linux Enterprise Server (SLES), CentOS, Red Hat Enterprise Linux (RHEL), and Oracle Linux.
 
 ::::{note}
 RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Refer to [Install {{es}} from archive on Linux or MacOS](install-elasticsearch-from-archive-on-linux-macos.md) instead.
