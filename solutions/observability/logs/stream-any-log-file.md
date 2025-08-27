@@ -10,7 +10,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Stream any log file [logs-stream]
+# Stream any log file using {{agent}} [logs-stream]
 
 This guide shows you how to manually configure a standalone {{agent}} to send your log data to {{es}} using the `elastic-agent.yml` file.
 
@@ -97,7 +97,7 @@ Expand-Archive .\elastic-agent-{{version.stack}}-windows-x86_64.zip
 ::::::{tab-item} DEB
 
 :::{tip}
-To simplify upgrading to future versions of Elastic Agent, we recommended that you use the tarball distribution instead of the RPM distribution.
+To simplify upgrading to future versions of Elastic Agent, use the tarball distribution instead of the RPM distribution.
 You can install Elastic Agent in an unprivileged mode that does not require root privileges.
 :::
 
@@ -110,7 +110,7 @@ sudo dpkg -i elastic-agent-{{version.stack}}-amd64.deb
 ::::::{tab-item} RPM
 
 :::{tip}
-To simplify upgrading to future versions of Elastic Agent, we recommended that you use the tarball distribution instead of the RPM distribution.
+To simplify upgrading to future versions of Elastic Agent, use the tarball distribution instead of the RPM distribution.
 You can install Elastic Agent in an unprivileged mode that does not require root privileges.
 :::
 
@@ -124,7 +124,7 @@ sudo rpm -vi elastic-agent-{{version.stack}}-x86_64.rpm
 
 ### Step 2: Install and start the {{agent}} [logs-stream-install-agent]
 
-After downloading and extracting the installation package, you’re ready to install the {{agent}}. From the agent directory, run the install command that corresponds with your system:
+After downloading and extracting the installation package, you're ready to install the {{agent}}. From the agent directory, run the install command that corresponds with your system:
 
 ::::{note}
 On macOS, Linux (tar package), and Windows, run the `install` command to install and start {{agent}} as a managed service and start the service. The DEB and RPM packages include a service unit for Linux systems with systemd. For these systems, you must enable and start the service.
