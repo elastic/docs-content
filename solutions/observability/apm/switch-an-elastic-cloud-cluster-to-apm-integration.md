@@ -26,7 +26,7 @@ APM data collection will be interrupted while the migration is in progress. The 
 
 With a Superuser account, complete these steps:
 
-1. In {{kib}}, go to **Observability -> APM -> Services**, and then click **Settings → Schema**.
+1. In the main menu, go to **Applications -> Service Inventory** or find `Service Inventory` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and then select **Settings → Schema**.
 
     :::{image} /solutions/images/observability-schema-agent.png
     :alt: switch to {{agent}}
