@@ -54,8 +54,8 @@ The downsampling operation traverses the source TSDS index and performs the foll
     * `counter` field type:
         * `last_value` is stored.
 
-4. For all other fields, the most recent value is copied to the target index.
-5. The original index is deleted and replaced by the downsampled index. Within a data stream, only one index can exist for a time period.
+4. For all other fields, copies the most recent value to the target index.
+5. Deletes the original index and replaces it with the downsampled index. Within a data stream, only one index can exist for a time period.
 
 The new, downsampled index is created on the data tier of the original index and inherits the original settings, like number of shards and replicas.
 

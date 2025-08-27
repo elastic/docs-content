@@ -12,7 +12,7 @@ products:
 # Reindex a TSDS [tsds-reindex]
 
 :::{warning}
-🚧 Work in progress 🚧
+🚧 Work in progress, not ready for review 🚧
 :::
 
 ## Introduction [tsds-reindex-intro]
