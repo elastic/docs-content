@@ -16,7 +16,7 @@ This quickstart uses some basic sample data to show how you might use a TSDS to 
 ## Prerequisites
 
 * Familiarity with time series data stream [concepts](time-series-data-stream-tsds.md) 
-* Access to [Dev Tools Console](/explore-analyze/query-filter/tools/console.md) in Kibana, or another way to make {{es}} API requests
+* Access to [{{dev-tools-app}} console](/explore-analyze/query-filter/tools/console.md) in Kibana, or another way to make {{es}} API requests
 * Required permissions: 
     * [Cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `manage_ilm` and `manage_index_templates`
     * [Index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `create_doc` and `create_index`
@@ -32,7 +32,7 @@ Data streams created with this quickstart template have the following characteri
 * Two measurements or metric fields: `temperature`, `humidity `
 * A timestamp field: `@timestamp` 
 
-To create the template, paste the following index template API request into the Dev Tools Console, or use another method to make the request:
+To create the template, paste the following index template API request into the {{dev-tools-app}} console, or use another method to make the request:
 
 % TODO improve callout comments
 
@@ -87,7 +87,7 @@ In step 1, you specified the template index pattern `quickstart-*`. In this step
 By default, new data streams accept documents with `@timestamp` values up to 2 hours before stream creation and 30 minutes after the current time. Specify timestamps that fall within this range, or adjust the `index.look_ahead_time` and `index.look_back_time` [settings](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) to suit your use case.  
 :::
 
-Paste the following bulk API request (with adjusted timestamps if needed) into the Dev Tools Console, or use another method to make the request.
+Paste the following bulk API request (with adjusted timestamps if needed) into the {{dev-tools-app}} console, or use another method to make the request.
 
 % TODO In practice, bulk requests use more compact formatting. The structure is expanded below for clarity.
 
@@ -125,7 +125,7 @@ If you get an error about timestamp values, check the error response for the val
 
 Now that your data stream has some documents, you can query the data. This sample aggregation calculates average temperature by location, in hourly buckets. (You don't need to understand the details of aggregations to follow this example.) 
 
-Paste the following search API request into the Dev Tools Console, or use another method to make the request:
+Paste the following search API request into the {{dev-tools-app}} console, or use another method to make the request:
 
 ```console
 POST quickstart-weather/_search  
