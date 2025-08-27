@@ -32,5 +32,5 @@ This section explains the available downsampling options and helps you understan
 ## Next steps
 % TODO confirm patterns
 
-* [](run-downsampling.md)
 * [](downsampling-concepts.md)
+* [](run-downsampling.md)

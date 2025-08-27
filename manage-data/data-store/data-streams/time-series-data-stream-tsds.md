@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds.html
+navigation_title: "Time series data streams"
 applies_to:
   stack: ga
   serverless: ga
@@ -11,7 +12,7 @@ products:
 # Time series data streams (TSDS) [tsds]
 
 :::{warning}
-🚧 Work in progress 🚧
+🚧 Work in progress, not ready for review 🚧
 :::
 
 A time series data stream (TSDS) models timestamped metrics data as one or more time series.
@@ -23,7 +24,7 @@ You can use a TSDS to store metrics data more efficiently. In our benchmarks, me
 
 Both a [regular data stream](../data-streams.md) and a TSDS can store timestamped metrics data. Only use a TSDS if you typically add metrics data to {{es}} in near real-time and `@timestamp` order.
 
-A TSDS is only intended for metrics data. For other timestamped data, such as logs or traces, use a [logs data stream](logs-data-stream.md) or regular data stream.
+Use a time series data stream for metrics data only. For other timestamped data, such as logs or traces, use a [logs data stream](logs-data-stream.md) or regular data stream.
 
 
 ## Differences from a regular data stream [differences-from-regular-data-stream]
