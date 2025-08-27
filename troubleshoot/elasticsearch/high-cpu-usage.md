@@ -83,7 +83,7 @@ High CPU usage is often caused by excessive JVM garbage collection (GC) activity
 
 For optimal JVM performance, garbage collection should meet these criteria:
 
-| GC Type | Completion Time | Occurrence Frequency |
+| GC type | Completion time | Frequency |
 |---------|----------------|---------------------|
 | Young GC | <50ms | ~once per 10 seconds |
 | Old GC | <1s | ≤once per 10 minutes |
@@ -105,7 +105,7 @@ For details on diagnosing and resolving these issues, refer to [](hotspotting.md
 
 ### Oversharding [high-cpu-usage-oversharding]
 
-Oversharding occurs when a cluster has too many shards, often times caused by shards being smaller than optimal. While Elasticsearch doesn’t have a strict minimum shard size, an excessive number of small shards can negatively impact performance. Each shard consumes cluster resources since Elasticsearch must maintain metadata and manage shard states across all nodes.
+Oversharding occurs when a cluster has too many shards, often times caused by shards being smaller than optimal. While {{es}} doesn’t have a strict minimum shard size, an excessive number of small shards can negatively impact performance. Each shard consumes cluster resources because {{es}} must maintain metadata and manage shard states across all nodes.
 
 If you have too many small shards, you can address this by doing the following:
 
