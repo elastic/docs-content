@@ -109,11 +109,7 @@ To visualize the **bytes** field over time:
    :::
 
 
-To emphasize the change in **Median of bytes** over time, change the visualization type to **Line** with one of the following options:
-
-* In the **Suggestions**, click the line chart.
-* In the editor toolbar, open the **Visualization type** dropdown, then select **Line**.
-* In the layer pane, open the **Layer visualization type** menu, then click **Line**.
+To emphasize the change in **Median of bytes** over time, change the visualization type to **Line**. In the layer pane, open the **Layer visualization type** menu, then click **Line**.
 
 To increase the minimum time interval:
 
