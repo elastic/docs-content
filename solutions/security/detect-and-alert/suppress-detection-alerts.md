@@ -13,7 +13,7 @@ products:
 
 # Suppress detection alerts [security-alert-suppression]
 
-Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by [detection rules](/solutions/security/detect-and-alert/about-detection-rules.md) Normally, when a rule meets its criteria repeatedly, it creates multiple alerts, one for each time the rule’s criteria are met. When alert suppression is configured, duplicate qualifying events are grouped, and only one alert is created for each group. 
+Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by [detection rules](/solutions/security/detect-and-alert/about-detection-rules.md). Normally, when a rule meets its criteria repeatedly, it creates multiple alerts, one for each time the rule’s criteria are met. When alert suppression is configured, alerts for duplicate events are not created. Instead, the qualifying events are grouped, and only one alert is created for each group. 
 
 Depending on the rule type, you can configure alert suppression to create alerts each time the rule runs, or once within a specified time window. You can also specify multiple fields to group events by unique combinations of values.
 
@@ -35,32 +35,20 @@ Alert suppression is not available for Elastic prebuilt rules. However, if you w
 
 You can configure alert suppression when [creating](/solutions/security/detect-and-alert/create-detection-rule.md) or editing a rule.  
 
-1. When configuring the rule (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group duplicate events for alert suppression:
+1. When configuring the rule (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group alerts for alert suppression:
 
     * **All rule types except the threshold rule:** In **Suppress alerts by**, enter 1-3 field names to group events by the fields' values.
-    
-       If you specify a field with multiple values, duplicate events are grouped, and only one alert is created for each group. Note how each rule type is handled:
-
-       * **Custom query rules:** Duplicate events are grouped by each unique value and an alert is created for each group. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, events are grouped separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3` and an alert is created for each group.
-
-        * **Indicator match, event correlation (non-sequence queries only), new terms, {{esql}}, or {{ml}} rules:** Events with identical array values are grouped together. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts with the entire array are grouped and only one alert is created for the group.
-           
-        * **Event correlation (sequence queries only) rules:** Events with an exact match are grouped. Note that the event's field values must be identical and in the same order. For example, if you specify the field `myips` and one sequence alert has `[1.1.1.1, 0.0.0.0]` and another sequence alert has `[1.1.1.1, 192.168.0.1]`, neither of those alerts are suppressed, despite sharing an array element.
-
     * **Threshold rule only:** In **Group by**, enter up to 3 field names to group events by the fields' values, or leave the setting empty to group all qualifying events together. 
+
+
+    ::::{tip}
     
-       If you specify a field with multiple values, duplicate events are grouped by each unique value. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts are suppressed separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3`.
-
-2. Choose how often to create alerts for duplicate events. This interval is called the _suppression window_. 
-
-    ::::{note}
-    
-    Note the following about your rule's suppression window:
-
-    * {applies_to}`stack: ga 9.0` {applies_to}`stack: ga 9.1` Avoid closing alerts generated for suppression before the suppression window ends. Closing alerts early can interrupt alert suppression or cause unexpected changes. 
-    * {applies_to}`stack: ga 9.2` Configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting to...
+    Refer to [Suppressing fields with an array of values](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-fields-with-multiple-values) learn how fields with multiple values are handled.
 
     ::::
+
+
+2. Choose how often to create alerts for duplicate events:
 
     * **Per rule execution**: Create an alert each time the rule runs and an event meets its criteria.
     * **Per time period**: Create one alert for all qualifying events that occur within a specified time window, beginning from when an event first meets the rule criteria and creates the alert. This is the only option available when configuring alert suppression for threshold rules.
@@ -74,9 +62,8 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
 3. Under **If a suppression field is missing**, choose how to handle events with missing suppression fields (events in which one or more of the **Suppress alerts by** fields don’t exist):
 
     ::::{note}
-    These options are not available for threshold rules.
+    These options are available for all rule types except threshold rules.
     ::::
-
 
     * **Suppress and group alerts for events with missing fields**: Create one alert for each group of events with missing fields. Missing fields get a `null` value, which is used to group and suppress alerts.
     * **Do not suppress alerts for events with missing fields**: Create a separate alert for each matching event. This basically falls back to normal alert creation for events with missing suppression fields.
@@ -89,6 +76,18 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
 
 ::::
 
+
+### Suppression for fields with an array of values [security-alert-suppression-fields-with-multiple-values]
+
+When specifying fields to suppress alerts by, you can select fields that have multiple values. When alerts for those fields are generated, they're handled as follows:
+
+* **Custom query rules:** Alerts are grouped by each unique value and an alert is created for each group. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts are grouped separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3` and an alert is created for each group.
+
+* **Indicator match, event correlation (non-sequence queries only), new terms, {{esql}}, or {{ml}} rules:** Alerts with identical array values are grouped together. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts with the entire array are grouped and only one alert is created for the group.
+           
+* **Event correlation (sequence queries only) rules:** Alerts that are an exact match are grouped. To be an exact match, array values must be identical and in the same order. For example, if you specify the field `myips` and one sequence alert has `[1.1.1.1, 0.0.0.0]` and another sequence alert has `[1.1.1.1, 192.168.0.1]`, neither of those alerts are suppressed, despite sharing an array element.
+
+* **Threshold rule only:** Alerts are grouped by each unique value. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts are suppressed separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3`.
 
 
 ## Confirm suppressed alerts [security-alert-suppression-confirm-suppressed-alerts]
@@ -136,6 +135,12 @@ With alert suppression, detection alerts aren’t created for the grouped source
     :::
 
 * Alert details flyout — Select **Take action** → **Investigate in timeline**.
+
+## Close alerts generated by alert suppression [security-alert-suppression-close-alerts]
+
+In general, avoid closing alerts generated for suppression before the suppression window ends. The suppression window is... 
+
+Closing alerts early can interrupt alert suppression or cause unexpected changes. In {{stack}} 9.2.0, configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting to...
 
 
 ## Alert suppression limit by rule type [security-alert-suppression-alert-suppression-limit-by-rule-type]
