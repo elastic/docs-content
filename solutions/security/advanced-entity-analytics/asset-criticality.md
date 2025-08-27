@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Asset criticality [asset-criticality]
@@ -30,7 +33,7 @@ For example, you can assign **Extreme impact** to business-critical entities, or
 
 ## View and assign asset criticality [_view_and_assign_asset_criticality]
 
-Entities do not have a default asset criticality level. You can either assign asset criticality to your entities individually, or [bulk assign](#bulk-assign-asset-criticality) it to multiple entities by importing a text file. Alternatively, you can assign and manage asset criticality records through the [*Asset criticality API*](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-entity-analytics-api).
+Entities do not have a default asset criticality level. You can either assign asset criticality to your entities individually, or [bulk assign](#bulk-assign-asset-criticality) it to multiple entities by importing a text file. Alternatively, you can assign and manage asset criticality records through the [Asset criticality API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-entity-analytics-api).
 
 When you assign, change, or unassign an individual entity’s asset criticality level, that entity’s risk score is immediately recalculated.
 
@@ -63,7 +66,10 @@ You can view, assign, change, or unassign asset criticality from the following p
     :::
 
 
-If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the [**Entities** section](../dashboards/entity-analytics-dashboard.md#entity-entities) of the Entity Analytics dashboard:
+If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the **Entities** section on the following pages:
+
+* {applies_to}`stack: ga 9.1` {applies_to}`serverless: unavailable` [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md)
+* [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 :::{image} /solutions/images/security-entities-section.png
 :alt: Entities section
@@ -85,7 +91,7 @@ The file must contain three columns, with each entity record listed on a separat
     * `high_impact`
     * `medium_impact`
     * `low_impact`
-    * `unassigned` (available in {{serverless-short}} only)
+    * {applies_to}`stack: ga 9.1` `unassigned`
 
 
 The maximum file size is 1 MB.

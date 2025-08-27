@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-ps1.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-client-apps-ps1.html
+products:
+  - id: elasticsearch
 ---
 
 # Microsoft PowerShell [sql-client-apps-ps1]
@@ -11,7 +13,7 @@ mapped_pages:
 You can use the {{es}} ODBC driver to access {{es}} data from Microsoft PowerShell.
 
 ::::{important}
-Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, please reach out to its vendor.
+Elastic does not endorse, promote or provide support for this application; for native Elasticsearch integration in this product, reach out to its vendor.
 ::::
 
 

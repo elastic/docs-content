@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-customize-deployment-components.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-customize-deployment-components.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Customize deployment components [ec-customize-deployment-components]
@@ -127,7 +129,7 @@ Refer to [Manage your Integrations Server](manage-integrations-server.md) to lea
 
 ## Security [ec_security]
 
-Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up traffic filters, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.
+Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up network security, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.
 
 
 ## Actions [ec_actions]

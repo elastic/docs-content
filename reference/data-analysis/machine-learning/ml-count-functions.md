@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html
+products:
+  - id: machine-learning
 ---
 
 # Count functions [ml-count-functions]

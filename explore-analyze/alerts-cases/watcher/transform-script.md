@@ -1,10 +1,11 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "Script {{watcher-transform}}"
+navigation_title: Script {{watcher-transform}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-script.html
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
 ---
 
 # Script payload transform [transform-script]

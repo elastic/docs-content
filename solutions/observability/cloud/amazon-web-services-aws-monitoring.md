@@ -1,9 +1,12 @@
 ---
-navigation_title: "AWS"
+navigation_title: AWS
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-amazon-web-services.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: ga
+products:
+  - id: observability
 ---
 
 

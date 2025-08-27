@@ -6,6 +6,8 @@ mapped_pages:
 applies_to:
   deployment:
     eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Install ECK using the YAML manifests [k8s-install-yaml-manifests]
@@ -16,7 +18,7 @@ To learn about other installation methods, refer to [](/deploy-manage/deploy/clo
 
 During the installation, the following components are installed or updated:
 
-* `CustomResourceDefinition` objects for all supported resource types ({{es}}, {{kib}}, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash).
+* `CustomResourceDefinition` objects for all supported resource types ({{eck_resources_list}}).
 * `Namespace` named `elastic-system` to hold all operator resources.
 * `ServiceAccount`, `ClusterRole` and `ClusterRoleBinding` to allow the operator to manage resources throughout the cluster.
 * `ValidatingWebhookConfiguration` to validate Elastic custom resources on admission.
@@ -40,7 +42,7 @@ To deploy the ECK operator:
 1. Install Elastic's [custom resource definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) with [`create`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/):
 
     ```sh subs=true
-    kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
+    kubectl create -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.yaml
     ```
 
     You'll see output similar to the following as resources are created:
@@ -51,7 +53,6 @@ To deploy the ECK operator:
     customresourcedefinition.apiextensions.k8s.io/beats.beat.k8s.elastic.co created
     customresourcedefinition.apiextensions.k8s.io/elasticmapsservers.maps.k8s.elastic.co created
     customresourcedefinition.apiextensions.k8s.io/elasticsearches.elasticsearch.k8s.elastic.co created
-    customresourcedefinition.apiextensions.k8s.io/enterprisesearches.enterprisesearch.k8s.elastic.co created
     customresourcedefinition.apiextensions.k8s.io/kibanas.kibana.k8s.elastic.co created
     customresourcedefinition.apiextensions.k8s.io/logstashes.logstash.k8s.elastic.co created
     ```
@@ -59,7 +60,7 @@ To deploy the ECK operator:
 2. Using [`kubectl apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/), install the operator with its RBAC rules:
 
     ```sh subs=true
-    kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
+    kubectl apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml
     ```
 
     ::::{note}

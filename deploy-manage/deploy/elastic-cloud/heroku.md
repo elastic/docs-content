@@ -1,4 +1,5 @@
 ---
+navigation_title: Heroku
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-getting-started.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-about.html
@@ -7,7 +8,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
-navigation_title: Heroku
+products:
+  - id: cloud-hosted
 ---
 
 # {{es}} Add-On for Heroku [ech-getting-started]
@@ -28,7 +30,7 @@ Not all features of {{ecloud}} are available to Heroku users. Specifically, you 
 
 Generally, if a feature is shown as available in the [{{heroku}} console](https://cloud.elastic.co?page=docs&placement=docs-body), you can use it.
 
-[{{es}} Machine Learning](https://www.elastic.co/guide/en/machine-learning/current/index.html), [Elastic APM](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Elastic Fleet Server](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) are not supported by the {{es}} Add-On for Heroku.
+[{{es}} Machine Learning](/explore-analyze/machine-learning.md), [Elastic APM](/solutions/observability/apm/index.md) and [Elastic Fleet Server](/reference/fleet/index.md) are not supported by the {{es}} Add-On for Heroku.
 
 For other restrictions that apply to all of {{ecloud}}, refer to [](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md).
 
@@ -80,7 +82,7 @@ You might want to add more layers of security to your deployment, such as:
 
 * Add more users to the deployment with third-party authentication providers and services like [SAML](../../users-roles/cluster-or-deployment-auth/saml.md), [OpenID Connect](../../users-roles/cluster-or-deployment-auth/openid-connect.md), or [Kerberos](../../users-roles/cluster-or-deployment-auth/kerberos.md).
 * Do not use clients that only support HTTP to connect to {{ecloud}}. If you need to do so, you should use a reverse proxy setup.
-* Create [traffic filters](../../security/traffic-filtering.md) and apply them to your deployments.
+* Create [network security policies](/deploy-manage/security/network-security.md) and apply them to your deployments.
 * If needed, you can [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) the `elastic` password.
 
 ### Scale or adjust your deployment [echscale_or_adjust_your_deployment]

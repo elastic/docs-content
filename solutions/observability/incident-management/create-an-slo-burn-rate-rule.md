@@ -1,9 +1,11 @@
 ---
+navigation_title: SLO burn rate
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-burn-rate-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-create-slo-burn-rate-alert-rule.html
-
-navigation_title: "SLO burn rate"
+products:
+  - id: observability
+  - id: cloud-serverless
 ---
 
 # Create an SLO burn rate rule [observability-create-slo-burn-rate-alert-rule]
@@ -12,9 +14,9 @@ navigation_title: "SLO burn rate"
 
 ::::{important}
 
-**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, The **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
-**For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+**For Elastic Stack**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 
@@ -29,7 +31,7 @@ Choose which SLO to monitor and then define multiple burn rate windows with appr
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create an SLO burn rate rule directly from **Observability*** → ***SLOs**. Click the more options icon (![More options](/solutions/images/serverless-boxesVertical.svg "")) to the right of the SLO you want to add a burn rate rule for, and select **![Bell](/solutions/images/serverless-bell.svg "") Create new alert rule** from the menu.
+These steps show how to use the **Alerts** UI. You can also create an SLO burn rate rule directly from **Observability** → **SLOs**. Click the more options icon (![More options](/solutions/images/serverless-boxesVertical.svg "")) to the right of the SLO you want to add a burn rate rule for, and select **![Bell](/solutions/images/serverless-bell.svg "") Create new alert rule** from the menu.
 
 When you use the UI to create an SLO, a default SLO burn rate alert rule is created automatically. The burn rate rule will use the default configuration and no connector. You must configure a connector if you want to receive alerts for SLO breaches.
 
@@ -63,25 +65,25 @@ To add actions to rules, you must first create a connector for that service (for
 :::::{dropdown} Connector types
 Connectors provide a central place to store connection information for services and integrations with third party systems. The following connectors are available when defining actions for alerting rules:
 
-* [Cases](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html)
-* [D3 Security](https://www.elastic.co/guide/en/kibana/current/d3security-action-type.html)
-* [Email](https://www.elastic.co/guide/en/kibana/current/email-action-type.html)
-* [{{ibm-r}}](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html)
-* [Index](https://www.elastic.co/guide/en/kibana/current/index-action-type.html)
-* [Jira](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html)
-* [Microsoft Teams](https://www.elastic.co/guide/en/kibana/current/teams-action-type.html)
-* [Observability AI Assistant](https://www.elastic.co/guide/en/kibana/current/obs-ai-assistant-action-type.html)
-* [{{opsgenie}}](https://www.elastic.co/guide/en/kibana/current/opsgenie-action-type.html)
-* [PagerDuty](https://www.elastic.co/guide/en/kibana/current/pagerduty-action-type.html)
-* [Server log](https://www.elastic.co/guide/en/kibana/current/server-log-action-type.html)
-* [{{sn-itom}}](https://www.elastic.co/guide/en/kibana/current/servicenow-itom-action-type.html)
-* [{{sn-itsm}}](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html)
-* [{{sn-sir}}](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html)
-* [Slack](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html)
-* [{{swimlane}}](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html)
-* [Torq](https://www.elastic.co/guide/en/kibana/current/torq-action-type.html)
-* [{{webhook}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html)
-* [xMatters](https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html)
+* [Cases](kibana://reference/connectors-kibana/cases-action-type.md)
+* [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant](kibana://reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -89,7 +91,7 @@ Some connector types are paid commercial features, while others are free. For a 
 ::::
 
 
-For more information on creating connectors, refer to [Connectors](../../../deploy-manage/manage-connectors.md).
+For more information on creating connectors, refer to [Connectors](/deploy-manage/manage-connectors.md).
 
 :::::
 
@@ -122,13 +124,16 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
 
 `context.burnRateThreshold`
 :   The burn rate threshold value.
+
+`context.grouping` {applies_to}`stack: ga 9.1`
+:   The object containing groups that are reporting data.
 
 `context.longWindow`
 :   The window duration with the associated burn rate value.
@@ -162,5 +167,5 @@ The following variables are specific to this rule type. You can also specify [va
 
 Learn how to view alerts and triage SLO burn rate breaches:
 
-* [View alerts](../../../solutions/observability/incident-management/view-alerts.md)
-* [SLO burn rate breaches](../../../solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
+* [View alerts](/solutions/observability/incident-management/view-alerts.md)
+* [SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)

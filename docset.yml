@@ -10,9 +10,9 @@ exclude:
 
 cross_links:
   - apm-agent-android
+  - apm-agent-ios
   - apm-agent-dotnet
   - apm-agent-go
-  - apm-agent-ios
   - apm-agent-java
   - apm-agent-nodejs
   - apm-agent-php
@@ -26,11 +26,14 @@ cross_links:
   - cloud
   - cloud-on-k8s
   - curator
+  - detection-rules
   - ecctl
   - ecs
   - ecs-dotnet
   - ecs-logging
   - ecs-logging-go-zap
+  - ecs-logging-go-zerolog
+  - ecs-logging-go-logrus
   - ecs-logging-java
   - ecs-logging-nodejs
   - ecs-logging-php
@@ -38,6 +41,11 @@ cross_links:
   - ecs-logging-ruby
   - eland
   - elastic-serverless-forwarder
+  - elastic-otel-dotnet
+  - elastic-otel-java
+  - elastic-otel-node
+  - elastic-otel-php
+  - elastic-otel-python
   - elasticsearch
   - elasticsearch-hadoop
   - elasticsearch-java
@@ -53,8 +61,8 @@ cross_links:
   - kibana
   - logstash
   - logstash-docs-md
+  - opentelemetry
   - search-ui
-  - security-docs
 
 toc:
   - file: index.md
@@ -69,6 +77,7 @@ toc:
   - toc: reference
   - toc: extend
   - file: archive.md
+  - file: versions.md
   - hidden: 404.md
 
 subs:
@@ -77,12 +86,15 @@ subs:
   ech:   "Elastic Cloud Hosted"
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
+  edot:  "Elastic Distribution of OpenTelemetry"
+  motlp: "Elastic Cloud Managed OTLP Endpoint"
+  edot-cf:   "EDOT Cloud Forwarder"
   serverless-full:   "Elastic Cloud Serverless"
   serverless-short:   "Serverless"
   es-serverless:   "Elasticsearch Serverless"
   obs-serverless:   "Elastic Observability Serverless"
   sec-serverless:   "Elastic Security Serverless"
-  ess-leadin-short:   "Our hosted Elasticsearch Service is available on AWS, GCP, and Azure, and you can https://cloud.elastic.co/registration{ess-utm-params}[try it for free]."
+  ess-leadin-short:   "Our hosted Elasticsearch Service is available on AWS, GCP, and Azure, and you can try it for free: https://cloud.elastic.co/registration."
   apm-app:   "APM app"
   uptime-app:   "Uptime app"
   synthetics-app:   "Synthetics app"
@@ -136,6 +148,7 @@ subs:
   kib:   "Kibana"
   ls:   "Logstash"
   beats:   "Beats"
+  agentbeat:   "Agentbeat"
   auditbeat:   "Auditbeat"
   filebeat:   "Filebeat"
   heartbeat:   "Heartbeat"
@@ -187,6 +200,7 @@ subs:
   ilm:   "index lifecycle management"
   ilm-cap:   "Index lifecycle management"
   ilm-init:   "ILM"
+  dlm-init:   "DLM"
   search-snap:   "searchable snapshot"
   search-snaps:   "searchable snapshots"
   search-snaps-cap:   "Searchable snapshots"
@@ -269,12 +283,25 @@ subs:
   agent-pull:   "https://github.com/elastic/elastic-agent/pull/"
   fleet-server-issue:   "https://github.com/elastic/fleet-server/issues/"
   fleet-server-pull:   "https://github.com/elastic/fleet-server/pull/"
+  es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
-  stack-version: "9.0.0"
-  eck_version: "3.0.0"
-  apm_server_version: "9.0.0"
-  version: "9.0.0"
+  eck_helm_minimum_version: "3.2.0"
+  eck_resources_list: "Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
+  eck_resources_list_short: "APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash"
   release-date: "2-April-2025"
   heroku: "Elasticsearch Add-on for Heroku"
   obs-ai-assistant: "Elastic AI Assistant for Observability and Search"
+  apm-server: "APM Server"
   apm-server-or-mis: "APM Server or the managed intake service"
+  apis: https://www.elastic.co/docs/api/
+  es-apis: https://www.elastic.co/docs/api/doc/elasticsearch/
+  es-serverless-apis: https://www.elastic.co/docs/api/doc/elasticsearch-serverless/
+  kib-apis: https://www.elastic.co/docs/api/doc/kibana/
+  kib-serverless-apis: https://www.elastic.co/docs/api/doc/serverless/
+  ls-apis: https://www.elastic.co/docs/api/doc/logstash/
+  cloud-apis: https://www.elastic.co/docs/api/doc/cloud/
+  cloud-billing-apis: https://www.elastic.co/docs/api/doc/cloud-billing/
+  cloud-serverless-apis: https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/
+  ece-apis: https://www.elastic.co/docs/api/doc/cloud-enterprise/
+  intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
+  models-app: "Trained Models"

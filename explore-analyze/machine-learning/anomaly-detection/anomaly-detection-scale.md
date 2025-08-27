@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/anomaly-detection-scale.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/anomaly-detection-scale.html
+products:
+  - id: machine-learning
 ---
 
 # Working with anomaly detection at scale [anomaly-detection-scale]
@@ -92,7 +94,7 @@ You may want to use `chunking_config` to tune your search speed when your {{dfee
 
 In certain cases, you cannot do aggregations to increase performance. For example, categorization jobs use the full log message to detect anomalies, so this data cannot be aggregated. If you have many influencer fields, it may not be beneficial to use an aggregation either. This is because only a few documents in each bucket may have the combination of all the different influencer fields.
 
-Please consult [Aggregating data for faster performance](ml-configuring-aggregation.md) to learn more.
+See [Aggregating data for faster performance](ml-configuring-aggregation.md) to learn more.
 
 ## 9. Optimize the results retention [results-retention]
 
@@ -118,7 +120,7 @@ For more information, refer to [Model snapshots](/explore-analyze/machine-learni
 
 ## 12. Optimize your search queries [search-queries]
 
-If you are operating on a big scale, make sure that your {{dfeed}} query is as efficient as possible. There are different ways to write {{es}} queries and some of them are more efficient than others. Please consult [Tune for search speed](../../../deploy-manage/production-guidance/optimize-performance/search-speed.md) to learn more about {{es}} performance tuning.
+If you are operating on a big scale, make sure that your {{dfeed}} query is as efficient as possible. There are different ways to write {{es}} queries and some of them are more efficient than others. See [Tune for search speed](../../../deploy-manage/production-guidance/optimize-performance/search-speed.md) to learn more about {{es}} performance tuning.
 
 You need to clone or recreate an existing job if you want to optimize its search query.
 

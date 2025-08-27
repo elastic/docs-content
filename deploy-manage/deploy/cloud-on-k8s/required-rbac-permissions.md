@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-eck-permissions.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-eck-permissions.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Required RBAC permissions [k8s-eck-permissions]
@@ -73,12 +75,12 @@ These permissions are needed to manage each {{stack}} application. For example, 
 
 | Name | API group | Optional? |
 | --- | --- | --- |
-| `Elasticsearch<br>Elasticsearch/status<br>Elasticsearch/finalizers` | `elasticsearch.k8s.elastic.co` | no |
-| `Kibana<br>Kibana/status<br>Kibana/finalizers` | `kibana.k8s.elastic.co` | no |
-| `APMServer<br>APMServer/status<br>APMServer/finalizers` | `apm.k8s.elastic.co` | no |
-| `EnterpriseSearch<br>EnterpriseSearch/status<br>EnterpriseSearch/finalizers` | `enterprisesearch.k8s.elastic.co` | no |
-| `Beat<br>Beat/status<br>Beat/finalizers` | `beat.k8s.elastic.co` | no |
-| `Agent<br>Agent/status<br>Agent/finalizers` | `agent.k8s.elastic.co` | no |
-| `ElasticMapsServer<br>ElasticMapsServer/status<br>ElasticMapsServer/finalizers` | `maps.k8s.elastic.co` | no |
-| `Logstash<br>Logstash/status<br>Logstash/finalizers` | `logstashes.k8s.elastic.co` | no |
+| `Elasticsearch`<br>`Elasticsearch/status`<br>`Elasticsearch/finalizers` | `elasticsearch.k8s.elastic.co` | no |
+| `Kibana`<br>`Kibana/status`<br>`Kibana/finalizers` | `kibana.k8s.elastic.co` | no |
+| `APMServer`<br>`APMServer/status`<br>`APMServer/finalizers` | `apm.k8s.elastic.co` | no |
+| `EnterpriseSearch`<br>`EnterpriseSearch/status`<br>`EnterpriseSearch/finalizers` | `enterprisesearch.k8s.elastic.co` | no |
+| `Beat`<br>`Beat/status`<br>`Beat/finalizers` | `beat.k8s.elastic.co` | no |
+| `Agent`<br>`Agent/status`<br>`Agent/finalizers` | `agent.k8s.elastic.co` | no |
+| `ElasticMapsServer`<br>`ElasticMapsServer/status`<br>`ElasticMapsServer/finalizers` | `maps.k8s.elastic.co` | no |
+| `Logstash`<br>`Logstash/status`<br>`Logstash/finalizers` | `logstashes.k8s.elastic.co` | no |
 

@@ -1,18 +1,20 @@
 ---
+navigation_title: Use Elastic prebuilt rules
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/prebuilt-rules-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-prebuilt-rules-management.html
-
-navigation_title: "Use Elastic prebuilt rules"
 applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Install and manage Elastic prebuilt rules [security-prebuilt-rules-management]
 
-Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](security-docs://reference/prebuilt-rules/index.md), keep them updated, and make sure they have the data needed to run successfully.
+Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](detection-rules://index.md), keep them updated, and make sure they have the data needed to run successfully.
 
 * [Install and enable Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules)
 * [Prebuilt rule tags](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#prebuilt-rule-tags)

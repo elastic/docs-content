@@ -1,10 +1,12 @@
 ---
 navigation_title: "{{eck}}"
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-licensing.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-licensing.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Manage your license in {{eck}} [k8s-licensing]
@@ -151,10 +153,10 @@ elastic_licensing_enterprise_resource_units_total{license_level="enterprise"} 1
 # HELP elastic_licensing_memory_gibibytes_apm Memory used by APM server in GiB
 # TYPE elastic_licensing_memory_gibibytes_apm gauge
 elastic_licensing_memory_gibibytes_apm{license_level="enterprise"} 0.5
-# HELP elastic_licensing_memory_gibibytes_elasticsearch Memory used by {{es}} in GiB
+# HELP elastic_licensing_memory_gibibytes_elasticsearch Memory used by Elasticsearch in GiB
 # TYPE elastic_licensing_memory_gibibytes_elasticsearch gauge
 elastic_licensing_memory_gibibytes_elasticsearch{license_level="enterprise"} 18
-# HELP elastic_licensing_memory_gibibytes_kibana Memory used by {{kib}} in GiB
+# HELP elastic_licensing_memory_gibibytes_kibana Memory used by Kibana in GiB
 # TYPE elastic_licensing_memory_gibibytes_kibana gauge
 elastic_licensing_memory_gibibytes_kibana{license_level="enterprise"} 1
 # HELP elastic_licensing_memory_gibibytes_logstash Memory used by Logstash in GiB

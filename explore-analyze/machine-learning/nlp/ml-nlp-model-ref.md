@@ -1,10 +1,12 @@
 ---
+navigation_title: Compatible third party models
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-model-ref.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Compatible third party models"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-model-ref.html
+products:
+  - id: machine-learning
 ---
 
 # Compatible third party models [ml-nlp-model-ref]
@@ -13,9 +15,7 @@ mapped_pages:
 The minimum dedicated ML node size for deploying and using the {{nlp}} models is 16 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
-The {{stack-ml-features}} support transformer models that conform to the standard BERT model interface and use the WordPiece tokenization algorithm.
-
-The current list of supported architectures is:
+The {{stack-ml-features}} support transformer models with the following architectures:
 
 * BERT
 * BART

@@ -1,13 +1,15 @@
 ---
-navigation_title: "Server logs"
+navigation_title: Server logs
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-kibana-server-logs.html
 applies_to:
   deployment:
     ess: all
     ece: all
     self: all
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-kibana-server-logs.html
+products:
+  - id: kibana
 ---
 
 # Using Kibana server logs [kibana-troubleshooting-kibana-server-logs]
@@ -59,7 +61,7 @@ The next step is to define what [observability tools](https://www.elastic.co/obs
 
 To debug {{kib}} with the APM UI, you must set up the APM infrastructure. You can find instructions for the setup process [on the Observability integrations page](/solutions/observability/logs/stream-application-logs.md).
 
-Once you set up the APM infrastructure, you can enable the APM agent and put {{kib}} under load to collect APM events. To analyze the collected metrics and logs, use the APM UI as demonstrated [in the docs](../../solutions/observability/apps/transactions-2.md#transaction-trace-sample).
+Once you set up the APM infrastructure, you can enable the APM agent and put {{kib}} under load to collect APM events. To analyze the collected metrics and logs, use the APM UI as demonstrated [in the docs](/solutions/observability/apm/transactions-ui.md#transaction-trace-sample).
 
 
 ## Plain {{kib}} logs [plain-kibana-logs]

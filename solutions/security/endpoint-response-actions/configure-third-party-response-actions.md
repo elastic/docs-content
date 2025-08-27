@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Configure third-party response actions
@@ -35,7 +38,9 @@ Expand a section below for your endpoint security system:
 
     * Give the API client the minimum privilege required to read CrowdStrike data and perform actions on enrolled hosts. Consider creating separate API clients for reading data and performing actions, to limit privileges allowed by each API client.
 
-        * To isolate and release hosts, the API client must have `Read` access for Alerts, and `Read` and `Write` access for Hosts.
+        * To isolate and release hosts: `Read` access for `Alerts`, and `Read` and `Write` access for `Hosts`.
+
+        * To run a script on a host: `Read` and `Write` access for `Real time response`; for elevated access, `Write` access for `Real time response (admin)` is also required.
 
     * Take note of the client ID, client secret, and base URL; you’ll need them in later steps when you configure {{elastic-sec}} components to access CrowdStrike.
     * The base URL varies depending on your CrowdStrike account type:
@@ -85,10 +90,16 @@ Expand a section below for your endpoint security system:
 
 
 ::::{dropdown} Set up Microsoft Defender for Endpoint response actions
-1. **Create API access information in Microsoft Azure.** Create two new applications in your Azure domain and grant them the following minimum API permissions:
+1. **Create API access information in Microsoft Azure.** Create new applications in your Azure domain and grant them the following minimum API permissions:
 
-    * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
-    * Microsoft Defender for Endpoint connector: Permission to read machine information as well as isolate and release a machine (`Windows Defender ATP: Machine.Isolate and Machine.Read.All`).
+    * To isolate and release hosts:
+
+        * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
+        * Microsoft Defender for Endpoint connector: Permission to read machine information as well as isolate and release a machine (`Windows Defender ATP: Machine.Read.All` and `Machine.Isolate`).
+
+    * {applies_to}`stack: ga 9.1` To run a script on a host:
+    
+        * Microsoft Defender for Endpoint connector: Permission to  manage live response library files as well as run live response on a specific machine (`Windows Defender ATP: Library.Manage` and `Machine.LiveResponse`)
 
     Refer to the [Microsoft Defender for Endpoint integration documentation](https://docs.elastic.co/en/integrations/microsoft_defender_endpoint) or [Microsoft’s documentation](https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp) for details on creating a new Azure application.
 

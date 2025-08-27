@@ -1,7 +1,9 @@
 ---
-navigation_title: "Log threshold"
+navigation_title: Log threshold
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-threshold-alert.html
+products:
+  - id: observability
 ---
 
 
@@ -152,10 +154,13 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the `server.publicBaseUrl` is not configured.
+
+`context.grouping` {applies_to}`stack: ga 9.2`
+:   The object containing groups that are reporting data.
 
 `context.interval`
 :   The length and unit of time period where the alert conditions were met.

@@ -1,6 +1,10 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ingest-pipeline-search.html
 applies_to:
   stack:
+products:
+  - id: elasticsearch
 ---
 
 # Ingest pipelines for search use cases [ingest-pipeline-search]
@@ -37,7 +41,7 @@ These tools can be particularly helpful by providing a layer of customization an
 
 It can be a lot of work to set up and manage production-ready pipelines from scratch. Considerations such as error handling, conditional execution, sequencing, versioning, and modularization must all be taken into account.
 
-To this end, when you create indices for search use cases, (including web crawler, search connectors and API indices), each index already has a pipeline set up with several processors that optimize your content for search.
+To this end, when you create indices for search use cases, (including web crawler, content connectors and API indices), each index already has a pipeline set up with several processors that optimize your content for search.
 
 This pipeline is called `search-default-ingestion`. While it is a "managed" pipeline (meaning it should not be tampered with), you can view its details via the Kibana UI or the Elasticsearch API. You can also [read more about its contents below](#ingest-pipeline-search-details-generic-reference).
 
@@ -64,7 +68,7 @@ Aside from the pipeline itself, you have a few configuration options which contr
 
 For Elastic web crawler and connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. These settings can be changed there directly, or through the Kibana UI at **Search > Content > Indices > <your index> > Pipelines > Settings**.
 
-You can also change the deployment wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. These settings can be changed there directly, or from the Kibana UI at **Search > Content > Settings** tab. Changing the deployment wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overriden by the index-specific settings.
+You can also change the deployment wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. These settings can be changed there directly, or from the Kibana UI at **Search > Content > Settings** tab. Changing the deployment wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overridden by the index-specific settings.
 
 
 ### Using the API [ingest-pipeline-search-pipeline-settings-using-the-api]

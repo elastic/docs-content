@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration-examples.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration-examples.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configuration Examples [k8s-beat-configuration-examples]
@@ -17,8 +19,8 @@ The examples in this section are purely descriptive and should not be considered
 
 ## Metricbeat for Kubernetes monitoring [k8s_metricbeat_for_kubernetes_monitoring]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/metricbeat_hosts.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/metricbeat_hosts.yaml
 ```
 
 Deploys Metricbeat as a DaemonSet that monitors the usage of the following resources:
@@ -29,8 +31,8 @@ Deploys Metricbeat as a DaemonSet that monitors the usage of the following resou
 
 ## Filebeat with autodiscover [k8s_filebeat_with_autodiscover]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/filebeat_autodiscover.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/filebeat_autodiscover.yaml
 ```
 
 Deploys Filebeat as a DaemonSet with the autodiscover feature enabled. It collects logs from Pods in every namespace and loads them to the connected {{es}} cluster.
@@ -38,8 +40,8 @@ Deploys Filebeat as a DaemonSet with the autodiscover feature enabled. It collec
 
 ## Filebeat with autodiscover for metadata [k8s_filebeat_with_autodiscover_for_metadata]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/filebeat_autodiscover_by_metadata.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/filebeat_autodiscover_by_metadata.yaml
 ```
 
 Deploys Filebeat as a DaemonSet with the autodiscover feature enabled. Logs from Pods that match the following criteria are shipped to the connected {{es}} cluster:
@@ -50,8 +52,8 @@ Deploys Filebeat as a DaemonSet with the autodiscover feature enabled. Logs from
 
 ## Filebeat without autodiscover [k8s_filebeat_without_autodiscover]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/filebeat_no_autodiscover.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/filebeat_no_autodiscover.yaml
 ```
 
 Deploys Filebeat as a DaemonSet with the autodiscover feature disabled. Uses the entire logs directory on the host as the input source. This configuration does not require any RBAC resources as no Kubernetes APIs are used.
@@ -59,8 +61,8 @@ Deploys Filebeat as a DaemonSet with the autodiscover feature disabled. Uses the
 
 ## {{es}} and {{kib}} Stack Monitoring [k8s_elasticsearch_and_kibana_stack_monitoring]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/stack_monitoring.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/stack_monitoring.yaml
 ```
 
 Deploys Metricbeat configured for {{es}} and {{kib}} [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) and Filebeat using autodiscover. Deploys one monitored {{es}} cluster and one monitoring {{es}} cluster. You can access the Stack Monitoring app in the monitoring cluster’s {{kib}}.
@@ -73,8 +75,8 @@ In this example, TLS verification is disabled when Metricbeat communicates with 
 
 ## Heartbeat monitoring {{es}} and {{kib}} health [k8s_heartbeat_monitoring_elasticsearch_and_kibana_health]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/heartbeat_es_kb_health.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/heartbeat_es_kb_health.yaml
 ```
 
 Deploys Heartbeat as a single Pod deployment that monitors the health of {{es}} and {{kib}} by TCP probing their Service endpoints. Heartbeat expects that {{es}} and {{kib}} are deployed in the `default` namespace.
@@ -82,8 +84,8 @@ Deploys Heartbeat as a single Pod deployment that monitors the health of {{es}} 
 
 ## Auditbeat [k8s_auditbeat]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/auditbeat_hosts.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/auditbeat_hosts.yaml
 ```
 
 Deploys Auditbeat as a DaemonSet that checks file integrity and audits file operations on the host system.
@@ -91,8 +93,8 @@ Deploys Auditbeat as a DaemonSet that checks file integrity and audits file oper
 
 ## Packetbeat monitoring DNS and HTTP traffic [k8s_packetbeat_monitoring_dns_and_http_traffic]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/packetbeat_dns_http.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/packetbeat_dns_http.yaml
 ```
 
 Deploys Packetbeat as a DaemonSet that monitors DNS on port `53` and HTTP(S) traffic on ports `80`, `8000`, `8080` and `9200`.
@@ -100,8 +102,8 @@ Deploys Packetbeat as a DaemonSet that monitors DNS on port `53` and HTTP(S) tra
 
 ## OpenShift monitoring [k8s_openshift_monitoring]
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/beats/openshift_monitoring.yaml
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/openshift_monitoring.yaml
 ```
 
 Deploys Metricbeat as a DaemonSet that monitors the host resource usage (CPU, memory, network, filesystem), OpenShift resources (Nodes, Pods, Containers, Volumes), API Server and Filebeat using autodiscover. Deploys an {{es}} cluster and {{kib}} to centralize data collection.

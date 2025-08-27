@@ -1,10 +1,12 @@
 ---
-navigation_title: "Legacy collection methods"
+navigation_title: Legacy collection methods
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/collecting-monitoring-data.html
 applies_to:
   deployment:
     self: deprecated 7.16.0
+products:
+  - id: elasticsearch
 ---
 
 
@@ -29,7 +31,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     1. Verify that the `xpack.monitoring.elasticsearch.collection.enabled` setting is `true`, which is its default value, on each node in the cluster.
 
         ::::{note}
-        You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
+        You can specify this setting in either the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
         ::::
 
 
@@ -38,7 +40,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     2. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the cluster. By default, it is disabled (`false`).
 
         ::::{note}
-        You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
+        You can specify this setting in either the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
         ::::
 
 
@@ -86,19 +88,19 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
 3. If you choose to use an `http` exporter:
 
-    1. On the cluster that you want to monitor (often called the *production cluster*), configure each node to send metrics to your monitoring cluster. Configure an HTTP exporter in the `xpack.monitoring.exporters` settings in the `elasticsearch.yml` file. For example:
+    1. On the cluster that you want to monitor (often called the *production cluster*), configure each node to send metrics to your monitoring cluster. Configure an HTTP exporter in the `xpack.monitoring.exporters` settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file. For example:
 
         ```yaml
         xpack.monitoring.exporters:
           id1:
             type: http
-            host: ["http://es-mon-1:9200", "http://es-mon-2:9200"]
+            host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
         ```
 
     2. If the Elastic {{security-features}} are enabled on the monitoring cluster, you must provide appropriate credentials when data is shipped to the monitoring cluster:
 
         1. Create a user on the monitoring cluster that has the [`remote_monitoring_agent` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the [`remote_monitoring_user` built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
-        2. Add the user ID and password settings to the HTTP exporter settings in the `elasticsearch.yml` file and keystore on each node.<br>
+        2. Add the user ID and password settings to the HTTP exporter settings in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file and keystore on each node.<br>
 
             For example:
 
@@ -106,7 +108,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["http://es-mon-1:9200", "http://es-mon-2:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth.username: remote_monitoring_user
                 # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore
             ```
@@ -119,7 +121,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["https://es-mon1:9200", "https://es-mon-2:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth:
                   username: remote_monitoring_user
                   # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore
@@ -133,7 +135,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             xpack.monitoring.exporters:
               id1:
                 type: http
-                host: ["https://es-mon1:9200", "https://es-mon-2:9200"]
+                host: ["<ES_MONITORING_HOST1_URL>:9200", "<ES_MONITORING_HOST2_URL>:9200"]
                 auth:
                   username: remote_monitoring_user
                   # "xpack.monitoring.exporters.id1.auth.secure_password" must be set in the keystore
@@ -143,7 +145,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
             ```
 
 4. Configure your cluster to route monitoring data from sources such as {{kib}}, Beats, and {{ls}} to the monitoring cluster. For information about configuring each product to collect and send monitoring data, see [Monitor a cluster](../../monitor.md).
-5. If you updated settings in the `elasticsearch.yml` files on your production cluster, restart {{es}}. See [*Stopping Elasticsearch*](../../maintenance/start-stop-services/start-stop-elasticsearch.md) and [*Starting Elasticsearch*](../../maintenance/start-stop-services/start-stop-elasticsearch.md).
+5. If you updated settings in the `elasticsearch.yml` files on your production cluster, restart {{es}}. See [](../../maintenance/start-stop-services/start-stop-elasticsearch.md).
 
     ::::{tip}
     You may want to temporarily [disable shard allocation](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) before you restart your nodes to avoid unnecessary shard reallocation during the install process.

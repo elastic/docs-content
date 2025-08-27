@@ -1,7 +1,10 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-watcher.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Enable Watcher [enable-watcher]
@@ -34,18 +37,13 @@ For more information on sending alerts by email, check [Email action](../../../e
 
 ## Cloud email service limits [cloud-email-service-limits]
 
-The following quotas apply when using the Elastic email service:
-
-* Email sending quota: 500 emails per 15min period
-* Maximum number of recipients per message: 30 recipients per email (To, CC and BCC all count as recipients).
-* Maximum message size (including attachments): 10 MB per message (after base64 encoding).
-* The email-sender can’t be customized (Any custom `From:` header will be removed)
+Refer to [Email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
 
 ## Advanced usage [advanced_usage]
 
 ### Slack and PagerDuty integration [advanced-usage]
 
-Under the hood, Alerting is configured through `elasticsearch.yml`. If you want to customize your Alerting settings, you can provide custom `elasticsearch.yml` snippet which is appended to your configuration.
+Under the hood, Alerting is configured through [`elasticsearch.yml`](/deploy-manage/stack-settings.md). If you want to customize your Alerting settings, you can provide custom `elasticsearch.yml` snippet which is appended to your configuration.
 
 To provide the custom snippet, you can use the console [Elasticsearch settings editor](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) for your deployment.
 
@@ -59,7 +57,7 @@ There are three steps to integrate Elasticsearch with Slack:
 
 To add a webhook in Slack, select the settings icon, then choose **Add an app** and search for `webhook`.
 
-The following example shows a configuration with multiple Slack accounts (`account1`, `account2`, and `account3`) specified in `elasticsearch.yml`:
+The following example shows a configuration with multiple Slack accounts (`account1`, `account2`, and `account3`) specified in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
 ```sh
 xpack.notification.slack:

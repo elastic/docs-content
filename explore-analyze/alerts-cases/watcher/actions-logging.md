@@ -1,10 +1,11 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "Logging action"
+navigation_title: Logging action
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-logging.html
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
 ---
 
 # Logging action [actions-logging]

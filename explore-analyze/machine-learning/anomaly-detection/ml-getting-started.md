@@ -1,10 +1,12 @@
 ---
+navigation_title: Tutorial
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Tutorial"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
+products:
+  - id: machine-learning
 ---
 
 # Tutorial: Getting started with anomaly detection [ml-getting-started]
@@ -115,7 +117,7 @@ After the {{dfeeds}} are started and the {{anomaly-jobs}} have processed some da
 Depending on the capacity of your machine, you might need to wait a few seconds for the {{ml}} analysis to generate initial results.
 ::::
 
-:::{image} /explore-analyze/images/machine-learning-ml-gs-web-results.jpg
+:::{image} /explore-analyze/images/machine-learning-ml-gs-web-results.png
 :alt: Create jobs for the sample web logs
 :screenshot:
 :::
@@ -130,7 +132,7 @@ One of the sample jobs (`low_request_rate`), is a *single metric {{anomaly-job}}
 
 Let’s start by looking at this simple job in the **Single Metric Viewer**:
 
-1. Select the **Jobs** tab in **{{ml-app}}** to see the list of your {{anomaly-jobs}}.
+1. Select the **Anomaly Detection Jobs** tab in **{{ml-app}}** to see the list of your {{anomaly-jobs}}.
 2. Click the chart icon in the **Actions** column for your `low_request_rate` job to view its results in the **Single Metric Viewer**.
 3. Use the relative mode of the date picker to select a start date one week in the past and an end date one month in the future to cover the majority of the analyzed data points.
 
@@ -315,4 +317,4 @@ In general, it is a good idea to start with single metric {{anomaly-jobs}} for y
 
 If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](/reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
 
-If you encounter problems, we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](http://support.elastic.co). Or post in the [Elastic forum](https://discuss.elastic.co/).
+If you encounter problems, we’re here to help. If you are an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](http://support.elastic.co). Or post in the [Elastic forum](https://discuss.elastic.co/).

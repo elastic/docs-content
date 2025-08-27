@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-http-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-http-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Elastic Maps HTTP configuration [k8s-maps-http-configuration]
@@ -31,10 +33,10 @@ You can disable the generation of the self-signed certificate and hence disable 
 
 ### Ingress and {{kib}} configuration [k8s-maps-ingress]
 
-To use Elastic Maps Server from your {{kib}} instances, you need to configure {{kib}} to fetch maps from your Elastic Maps Server instance by using the [`map.emsUrl`](/explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server-kibana) configuration key. The value of this setting needs to be the URL where the Elastic Maps Server instance is reachable from your browser. The certificates presented by Elastic Maps Server need to be trusted by the browser, and the URL must have the same origin as the URL where your {{kib}} is hosted to avoid cross origin resource issues. Check the [recipe section](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/recipes/) for an example on how to set this up using an Ingress resource.
+To use Elastic Maps Server from your {{kib}} instances, you need to configure {{kib}} to fetch maps from your Elastic Maps Server instance by using the [`map.emsUrl`](/explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server-kibana) configuration key. The value of this setting needs to be the URL where the Elastic Maps Server instance is reachable from your browser. The certificates presented by Elastic Maps Server need to be trusted by the browser, and the URL must have the same origin as the URL where your {{kib}} is hosted to avoid cross origin resource issues. Check the [recipe section](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes/) for an example on how to set this up using an Ingress resource.
 
 :::{admonition} Support scope for Ingress Controllers
-[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is a standard Kubernetes concept. While ECK-managed workloads can be publicly exposed using ingress resources, and we provide [example configurations](/deploy-manage/deploy/cloud-on-k8s/recipes.md), setting up an Ingress controller requires in-house Kubernetes expertise. 
+[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) is a standard Kubernetes concept. While ECK-managed workloads can be publicly exposed using ingress resources, and we provide [example configurations](/deploy-manage/deploy/cloud-on-k8s/recipes.md), setting up an Ingress controller requires in-house Kubernetes expertise.
 
 If ingress configuration is challenging or unsupported in your environment, consider using standard `LoadBalancer` services as a simpler alternative.
 :::

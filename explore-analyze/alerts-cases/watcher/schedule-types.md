@@ -1,9 +1,10 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/_schedule_types.html
 applies_to:
   stack: ga
-  serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/master/_schedule_types.html
+products:
+  - id: elasticsearch
 ---
 
 # Schedule Types [_schedule_types]
@@ -32,7 +33,7 @@ If you don’t specify the `minute` attribute for an `hourly` schedule, it defau
 
 To configure a once an hour schedule, you specify a single time with the `minute` attribute.
 
-For example, the following `hourly` schedule triggers at minute 30 every hour-- `12:30`, `13:30`, `14:30`, …​:
+For example, the following `hourly` schedule triggers at minute 30 every hour-- `12:30`, `13:30`, `14:30`, …:
 
 ```js
 {
@@ -47,7 +48,7 @@ For example, the following `hourly` schedule triggers at minute 30 every hour-- 
 
 ### Configuring a multiple times hourly schedule [_configuring_a_multiple_times_hourly_schedule]
 
-To configure an `hourly` schedule that triggers at multiple times during the hour, you specify an array of minutes. For example, the following schedule triggers every 15 minutes every hour--`12:00`, `12:15`, `12:30`, `12:45`, `1:00`, `1:15`, …​:
+To configure an `hourly` schedule that triggers at multiple times during the hour, you specify an array of minutes. For example, the following schedule triggers every 15 minutes every hour--`12:00`, `12:15`, `12:30`, `12:45`, `1:00`, `1:15`, …:
 
 ```js
 {

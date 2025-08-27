@@ -4,12 +4,14 @@ mapped_pages:
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
 ---
 
 # Full-text search [full-text-search]
 
 ::::{tip}
-Would you prefer to start with a hands-on example? Refer to our [full-text search tutorial](querydsl-full-text-filter-tutorial.md).
+Would you prefer to start with a hands-on example? Refer to our [full-text search tutorial](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md).
 ::::
 
 Full-text search, also known as lexical search, is a technique for fast, efficient searching through text fields in documents. Documents and search queries are transformed to enable returning [relevant](https://www.elastic.co/what-is/search-relevance) results instead of simply exact term matches. Fields of type [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md#text-field-type) are analyzed and indexed for full-text search.
@@ -23,7 +25,7 @@ You can combine full-text search with [semantic search using vectors](semantic-s
 
 For a high-level overview of how full-text search works, refer to [How full-text search works](full-text/how-full-text-works.md).
 
-For a hands-on introduction to full-text search, refer to the [full-text search tutorial](querydsl-full-text-filter-tutorial.md).
+For a hands-on introduction to full-text search, refer to the [full-text search tutorial](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md).
 
 
 ## Learn more [full-text-search-learn-more]
@@ -45,7 +47,7 @@ Learn about the core components of full-text search:
 Learn how to build full-text search queries using {{es}}'s query languages:
 
 * [Full-text queries using Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md)
-* [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/esql-functions-operators.md#esql-search-functions)
+* [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md)
 
 **Advanced topics**
 

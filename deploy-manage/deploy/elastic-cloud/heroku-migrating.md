@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Migrate between plans [ech-migrating]

@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Set up an enrich processor [enrich-setup]
@@ -48,7 +50,7 @@ You also can set up [{{beats}}](beats://reference/index.md), such as a [{{filebe
 
 ## Create an enrich policy [create-enrich-policy]
 
-After adding enrich data to your source indices, use the [create enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an enrich policy.
+After adding enrich data to your source indices, use the [create enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy) or [Index Management in {{kib}}](/manage-data/data-store/index-basics.md#manage-enrich-policies) to create an enrich policy.
 
 ::::{warning}
 Once created, you can’t update or change an enrich policy. See [Update an enrich policy](#update-enrich-policies).
@@ -59,7 +61,7 @@ Once created, you can’t update or change an enrich policy. See [Update an enri
 
 ## Execute the enrich policy [execute-enrich-policy]
 
-Once the enrich policy is created, you need to execute it using the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an [enrich index](data-enrichment.md#enrich-index).
+Once the enrich policy is created, you need to execute it using the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) or [Index Management in {{kib}}](/manage-data/data-store/index-basics.md#manage-enrich-policies) to create an [enrich index](data-enrichment.md#enrich-index).
 
 :::{image} /manage-data/images/elasticsearch-reference-enrich-policy-index.svg
 :alt: enrich policy index
@@ -68,7 +70,7 @@ Once the enrich policy is created, you need to execute it using the [execute enr
 The *enrich index* contains documents from the policy’s source indices. Enrich indices always begin with `.enrich-*`, are read-only, and are [force merged](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge).
 
 ::::{warning}
-Enrich indices should only be used by the [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) or the [{{esql}} `ENRICH` command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich). Avoid using enrich indices for other purposes.
+Enrich indices should only be used by the [enrich processor](elasticsearch://reference/enrich-processor/enrich-processor.md) or the [{{esql}} `ENRICH` command](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-enrich). Avoid using enrich indices for other purposes.
 
 ::::
 
@@ -121,7 +123,7 @@ Once created, you can’t update or change an enrich policy. Instead, you can:
 
 1. Create and [execute](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) a new enrich policy.
 2. Replace the previous enrich policy with the new enrich policy in any in-use enrich processors or {{esql}} queries.
-3. Use the [delete enrich policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-delete-policy) API or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to delete the previous enrich policy.
+3. Use the [delete enrich policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-delete-policy) API or [Index Management in {{kib}}](/manage-data/data-store/index-basics.md#manage-enrich-policies) to delete the previous enrich policy.
 
 
 ## Enrich components [ingest-enrich-components]

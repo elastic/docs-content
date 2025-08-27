@@ -1,12 +1,16 @@
 ---
+navigation_title: Build search queries
 mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/search-with-elasticsearch.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data-the-search-api.html
-navigation_title: Build search queries
 applies_to:
   stack:
   serverless:
+products:
+  - id: elasticsearch
+  - id: cloud-serverless
 ---
 
 # Build your search queries
@@ -29,7 +33,6 @@ These query languages are complementary, not mutually exclusive. You can use dif
 You can use the [{{es}} REST APIs](https://www.elastic.co/docs/api/doc/elasticsearch) to search your data using any HTTP client, including the [{{es}} client libraries](site-or-app/clients.md), or directly in [Console](/explore-analyze/query-filter/tools/console.md). You can also run searches using [Discover](/explore-analyze/discover.md) in the UI.
 ::::
 
-
 ::::{tip}
-Try our hands-on [quick start tutorials](api-quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
+Try our hands-on [quickstart guides](/solutions/search/get-started/quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
 ::::

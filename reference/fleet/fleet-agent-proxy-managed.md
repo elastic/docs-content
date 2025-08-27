@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-managed.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Fleet managed Elastic Agent connectivity using a proxy server [fleet-agent-proxy-managed]
@@ -14,7 +17,7 @@ This page describes where a proxy server is allowed in your deployment and how t
 {{fleet}} central management enables you to define your proxy servers and then configure an output or the {{fleet-server}} to be reachable through any of these proxies. This also enables you to modify the proxy server details if needed without having to re-install {{agents}}.
 
 :::{image} images/agent-proxy-server-managed-deployment.png
-:alt: Image showing connections between {{fleet}} managed {agent}
+:alt: Image showing connections between {{fleet}} managed {{agent}}
 :::
 
 In this scenario Fleet Server and Elasticsearch are deployed in {{ecloud}} and reachable on port 443.
@@ -76,7 +79,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
     :::::{admonition}
     ::::{warning}
-    If agents are unable to reach the configured proxy server, they will not be able to write data to the output that has the proxy server configured. When changing the proxy of an output, please ensure that the affected agents all have connectivity to the proxy itself.
+    If agents are unable to reach the configured proxy server, they will not be able to write data to the output that has the proxy server configured. When changing the proxy of an output, ensure that the affected agents all have connectivity to the proxy itself.
     ::::
 
 
@@ -99,7 +102,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
     :::::{admonition}
     ::::{warning}
-    If agents are unable to reach the configured proxy server, they will not be able to download binaries from the agent download source that has the proxy server configured. When changing the proxy of an agent binary source, please ensure that the affected agents all have connectivity to the proxy itself.
+    If agents are unable to reach the configured proxy server, they will not be able to download binaries from the agent download source that has the proxy server configured. When changing the proxy of an agent binary source, ensure that the affected agents all have connectivity to the proxy itself.
     ::::
 
 
@@ -191,11 +194,6 @@ Equally important is the Certificate Authority that the agents need to use to va
 :::{image} images/elastic-agent-edit-proxy-secure-settings.png
 :alt: Screen capture of the Edit Proxy UI
 :::
-
-::::{note}
-Currently {{agents}} will not present a certificate for Control Plane traffic to the {{fleet-server}}. Some proxy servers are setup to mandate that the client setting up a connection presents a certificate to them before allowing that client to connect. This issue will be resolved by [issue #2248](https://github.com/elastic/elastic-agent/issues/2248). Our recommendation is to avoid adding a secure proxy as such in a {{fleet-server}} configuration flyout.
-::::
-
 
 ::::{note}
 In case {{kib}} is behind a proxy server or is otherwise unable to access the {{package-registry}} to download package metadata and content, refer to [Set the proxy URL of the {{package-registry}}](/reference/fleet/epr-proxy-setting.md).

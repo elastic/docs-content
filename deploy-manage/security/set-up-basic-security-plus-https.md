@@ -1,10 +1,12 @@
 ---
-navigation_title: "Set up HTTPS"
+navigation_title: Set up HTTPS
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
 applies_to:
   deployment:
     self: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html
+products:
+  - id: elasticsearch
 ---
 
 % Scope: HTTP certificates setup / manual configuration / multi or single node cluster
@@ -106,7 +108,7 @@ Once TLS is enabled, all client communications with the cluster will be encrypte
 5. On **every** node in your cluster, complete the following steps:
 
     1. Copy the relevant `http.p12` certificate to the `$ES_PATH_CONF` directory.
-    2. Edit the `elasticsearch.yml` file to enable HTTPS security and specify the location of the `http.p12` security certificate.
+    2. Edit the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file to enable HTTPS security and specify the location of the `http.p12` security certificate.
 
         ```yaml
         xpack.security.http.ssl.enabled: true

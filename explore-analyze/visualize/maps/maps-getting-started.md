@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/maps-getting-started.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/maps-getting-started.html
+products:
+  - id: kibana
 ---
 
 # Build a map to compare metrics by country or region [maps-getting-started]
@@ -185,7 +187,10 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
        :screenshot:
        :::
 
+### Filter pill actions
 
+:::{include} ../../_snippets/global-filters.md
+:::
 
 ## What’s next? [_whats_next_6]
 

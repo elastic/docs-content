@@ -1,11 +1,13 @@
 ---
-navigation_title: "Configure SAML SSO"
+navigation_title: Configure SAML SSO
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
 applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-hosted
 ---
 
 # Configure {{ecloud}} SAML single sign-on [ec-saml-sso]
@@ -124,7 +126,7 @@ Add the information that you collected to {{ecloud}}.
 4. Click **Update configuration**.
 
 ::::{tip}
-The **Only allow login through my identity provider** option is disabled by default. You must verify your SSO configuration by logging in using SSO to enable this option.
+The **Enforce SAML SSO** option is disabled by default. You must verify your SSO configuration by logging in using SSO to enable this option.
 ::::
 
 
@@ -173,14 +175,14 @@ To protect your account from being accidentally locked out when this option is e
 
 1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
 2. In the **User authentication** section, click **Edit**.
-3. Toggle the **Only allow login through my identity provider** option on to enable enforcement.
+3. Toggle the **Enforce SAML SSO** option on to enable enforcement.
 
 
 ### Disable enforcement [ec_disable_enforcement]
 
 1. Open your organization’s [**Security**](https://cloud.elastic.co/account/idp) tab.
 2. In the **User authentication** section, click **Edit**.
-3. Toggle the **Only allow login through my identity provider** option off to disable enforcement.
+3. Toggle the **Enforce SAML SSO** option off to disable enforcement.
 
 If you are unable to access the {{ecloud}} Console for any reason, use the following API call to disable enforcement. The API key that you use must have organization owner level privileges to disable enforcement.
 

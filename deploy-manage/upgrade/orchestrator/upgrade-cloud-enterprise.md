@@ -5,6 +5,8 @@ mapped_pages:
 applies_to:
   deployment:
     ece:
+products:
+  - id: cloud-enterprise
 ---
 
 % The upgrade procedure is expected to change with ECE 3.8.0 release. This document is currently a temporary draft, pending to be refined.
@@ -20,24 +22,24 @@ Periodically, you might need to upgrade an {{ece}} installation as new versions 
 Before initiating the ECE upgrade process, review the [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) to ensure the operating system (OS), Docker, or Podman versions you're running are compatible with the ECE version you’re upgrading to. We recommend that Docker, Podman, and the operating system are at the target version before starting the ECE upgrade.
 
 :::{note}
-During the upgrade window, there might be a short time period when you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 20.10 on Ubuntu 20.04 and plan to upgrade to ECE 3.7 on the same OS, you will need to upgrade Docker to version 24.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
+During the upgrade window, there might be a short period of time during which you run a combination of versions that is not explicitly supported. For example, if you are on ECE 3.5 with Docker version 18.09 on SLES 12 and plan to upgrade to ECE 3.8 on the same OS, you will need to upgrade Docker to version 24.0 or 25.0 first. In this case, and only during your upgrade window, we will support the mixed OS and container engine versions. In general, this won’t be a problem. However, should anything become a blocker for the upgrade, [reach out to support for help](/troubleshoot/index.md#contact-us).
 :::
 
 ## The upgrade version matrix [ece-upgrade-version-matrix]
 
-The following table shows the recommended upgrade paths from older {{ece}} versions to 4.0.0.
+The following table shows the recommended upgrade paths from older {{ece}} versions to {{version.ece}}.
 
 | Upgrade from | Recommended upgrade path to 4.0 |
 | --- | --- |
-| Any 3.x version | 1. Upgrade to 3.8.0<br>2. Upgrade to 4.0.0<br> |
-| 2.13 | 1. Upgrade to 3.8.0<br>2. Upgrade to 4.0.0<br> |
-| 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to 4.0.0<br> |
-| 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to 4.0.0<br> |
+| Any 3.x version | 1. Upgrade to 3.8.0<br>2. Upgrade to {{version.ece}}<br> |
+| 2.13 | 1. Upgrade to 3.8.0<br>2. Upgrade to {{version.ece}}<br> |
+| 2.5-2.12 | 1. Upgrade to 2.13.4<br>2. Upgrade to 3.8.0<br>3. Upgrade to {{version.ece}}<br> |
+| 2.0-2.4 | 1. Upgrade to 2.5.1<br>2. Upgrade to 2.13.4<br>3. Upgrade to 3.8.0<br>4. Upgrade to {{version.ece}}<br> |
 
-If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to 4.0.0:
+If you have to upgrade to any of the intermediate versions, follow the upgrade instructions of the relevant release before upgrading to {{version.ece}}:
 - [ECE 2.5 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.5/ece-upgrade.html)
 - [ECE 2.13 Upgrade](https://www.elastic.co/guide/en/cloud-enterprise/2.13/ece-upgrade.html)
-  
+
   :::{note}
   We don't recommend upgrading to 2.13.0, as it can cause issues and you may lose access to the admin console. We strongly recommend upgrading to 2.13.4.
   :::
@@ -84,7 +86,7 @@ Before starting the upgrade process, verify that your setup meets the following 
 - **Proxies and load balancing**. To avoid any downtime for {{ece}}, the installation must include more than one proxy and must use a load balancer as recommended. If only a single proxy is configured or if the installation is not using a load balancer, some downtime is expected when the containers on the proxies are upgraded. Each container upgrade typically takes five to ten seconds, times the number of containers on a typical host.
 - **For *offline* or *air-gapped* installations**. Additional steps are required to upgrade {{ece}}. After downloading the installation script for the new version, pull and load the required container images and push them to a private Docker registry. To learn more about pulling and loading Docker images, check Install [ECE offline](../../../deploy-manage/deploy/cloud-enterprise/air-gapped-install.md).
 - Check the security cluster’s zone count. Due to internal limitations in ECE, the built-in security cluster cannot be scaled to two zones during the ECE upgrade procedure. If the zone count is set to 2 zones, scale the cluster to 3 or 1 zone(s) before upgrading ECE.
-- **[Verify if you can upgrade directly](#ece-upgrade-version-matrix)**. When upgrading to ECE 4.0 or a higher version: 
+- **[Verify if you can upgrade directly](#ece-upgrade-version-matrix)**. When upgrading to ECE 4.0 or a higher version:
   - You need to first upgrade to ECE 3.8.0 or later. Refer to the [ECE version 3.8.0 upgrade instructions](https://www.elastic.co/guide/en/cloud-enterprise/3.8/ece-upgrade.html) for details.
 
   :::{warning}
@@ -92,7 +94,7 @@ Before starting the upgrade process, verify that your setup meets the following 
   :::
 
   - Ensure that your system deployments are at their [expected versions](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md). Since ECE 3.6.1, the upgrade process automatically upgrades system deployments to the required version. If the {{ece}} platform was upgraded successfully and yet one or more system deployments were not upgraded to [their expected version](/deploy-manage/deploy/cloud-enterprise/default-system-deployment-versions.md) during the very last phase of the {{ece}} upgrade, you can re-run the `elastic-cloud-enterprise.sh upgrade --cloud-enterprise-version <your target version>` command to retry system deployment upgrade only.
-  - Check that your deployments are running on {{stack}} version 7.0.0 or above.
+  - Check that your deployments are running on {{stack}} version 8.0.0 or above.
 - Before running the upgrade command, ensure that you include the same installation flags that were used during the initial setup. Some deployment configurations, such as those using Podman or SELinux, require specific flags to be passed again during the upgrade. Failure to do so may result in compatibility errors.
 
 ## Certificate rotation [ece-upgrade-certificates]
@@ -104,7 +106,7 @@ If your ECE installation is still using the default, auto-generated certificates
 - Apply a valid license. It is required to have an `Enterprise resource unit`-compatible license applied before upgrading to ECE 2.7 or later. The most reliable way to check if your license is compatible is to use the {{ece}} API and check the value of the license version field:
 
     ```sh
-    curl -X GET -u admin:PASSWORD -k https://COORDINATOR_HOST:12443/api/v1/platform/license
+    curl -X GET -u admin:PASSWORD -k https://$COORDINATOR_HOST:12443/api/v1/platform/license
     {
       "license": {
         "version": 4,
@@ -115,7 +117,7 @@ If your ECE installation is still using the default, auto-generated certificates
 
 If the license version is not 4 or higher, you must request an updated license from [Elastic Support](/troubleshoot/index.md#contact-us). Once you receive your new license, make sure {{ece}} is upgraded to at least version 2.5.0, and then upload the new license in the Settings page under the Platform menu.
 
-In versions from 2.6 to 2.10 included, some or all platform certificates are generated with a 398-day expiration. Installations that ran on these versions, even temporarily, must have their certificates rotated manually before expiry. For details, check our [KB article](https://support.elastic.co/knowledge/ECE-Certificate-Rotation).
+In versions from 2.6 to 2.10 included, some or all platform certificates are generated with a 398-day expiration. Installations that ran on these versions, even temporarily, must have their certificates rotated manually before expiry. For details, check our [KB article](https://ela.st/ece-certificate-rotation).
 
 
 ## Perform the upgrade [ece-upgrade-steps]
@@ -126,7 +128,7 @@ To upgrade an {{ece}} installation, download the latest installation script. Log
 * If your ECE installation was set up using **Podman** instead of Docker, append the `--podman` flag when running the upgrade command.
 * If your installation uses **SELinux**, append the `--selinux` flag when running the upgrade command.
 * If you configured a **custom Docker registry** during installation using the `--docker-registry` or `--ece-docker-repository` parameters, include the same parameters when running the upgrade.
-* Starting in ECE 3.8.0, `upgrade` requires `--user` and `--pass` arguments, or a path to the `bootstrap-secrets.json` file, if the file does not exist already at the expected default path. Please see [elastic-cloud-enterprise.sh upgrade](cloud://reference/cloud-enterprise/ece-installation-script-upgrade.md) for details.
+* Starting in ECE 3.8.0, `upgrade` requires `--user` and `--pass` arguments, or a path to the `bootstrap-secrets.json` file, if the file does not exist already at the expected default path. See [elastic-cloud-enterprise.sh upgrade](cloud://reference/cloud-enterprise/ece-installation-script-upgrade.md) for details.
 ::::
 
 ```sh
@@ -139,8 +141,8 @@ You can follow along while each container for {{ece}} is upgraded on the hosts t
 
 By default, ECE updates to the most current available version. If you want to upgrade to a specific ECE version, use the `--cloud-enterprise-version` option:
 
-```sh
-bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --user admin --pass $PASSWORD --cloud-enterprise-version 4.0.0
+```sh subs=true
+bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) upgrade --user admin --pass $PASSWORD --cloud-enterprise-version {{version.ece}}
 ```
 
 

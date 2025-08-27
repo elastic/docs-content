@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Elastic Security UI
@@ -79,7 +82,7 @@ Inline actions include the following (some actions are unavailable in some conte
 * **Filter Out**: Add a filter that excludes the selected value.
 * **Add to timeline**: Add a filter to Timeline for the selected value.
 * **Toggle column in table**: Add or remove the selected field as a column in the alerts or events table. (This action is only available on an alert’s or event’s details flyout.)
-* **Show top *x***: Display a pop-up window that shows the selected field’s top events or detection alerts.
+* **Show top _x_**: Display a pop-up window that shows the selected field’s top events or detection alerts.
 * **Copy to Clipboard**: Copy the selected field-value pair to paste elsewhere.
 
 
@@ -181,6 +184,23 @@ The Assets section allows you to manage the following features:
     * [Response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
 
 * [Cloud security](/solutions/security/cloud.md)
+
+
+### Entity analytics
+```yaml {applies_to}
+stack: preview 9.1
+serverless: unavailable
+```
+
+:::{admonition} Requirements
+To access this section, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#access-privileged-user-monitoring).
+:::
+
+Expand this section to access the following pages:
+
+- [Entity analytics](/solutions/security/advanced-entity-analytics/overview.md): Access a comprehensive overview of entity risk scores and anomalies identified by prebuilt {{anomaly-jobs}}.
+- [Privileged user monitoring](/solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md): Set up your privileged users and monitor their activities to identify suspicious behavior. 
+
 
 ### {{ml-cap}} [security-ui-ml-cap]
 

@@ -1,7 +1,9 @@
 ---
-navigation_title: "TLS certificate"
+navigation_title: TLS certificate
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/tls-certificate-alert.html
+products:
+  - id: observability
 ---
 
 # Create a TLS certificate rule [tls-certificate-alert]
@@ -11,8 +13,12 @@ In {{kib}}, you can create a rule that notifies you when one or more of your mon
 
 There are two types of TLS certificate rule:
 
-* [Synthetics TLS certificate rule](#tls-rule-synthetics) for use with [Elastic Synthetics](../apps/synthetic-monitoring.md).
-* [8.15.0] [Uptime TLS rule](#tls-rule-uptime) for use with the {{uptime-app}}.
+* [Synthetics TLS certificate rule](#tls-rule-synthetics) for use with [Elastic Synthetics](/solutions/observability/synthetics/index.md).
+* [Uptime TLS rule](#tls-rule-uptime) for use with the {{uptime-app}}.
+
+  :::{admonition} Deprecated in 8.15.0
+  Uptime was deprecated in 8.15.0. Use Synthetics instead.
+  :::
 
 
 ## Synthetics TLS certificate rule [tls-rule-synthetics]
@@ -104,7 +110,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.checkedAt`
 :   Timestamp of the monitor run.
@@ -162,7 +168,7 @@ serverless: unavailable
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md) instead of the {{uptime-app}}.
+Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 ::::
 
 
@@ -195,7 +201,7 @@ In this example, the conditions are met when any of the TLS certificates on site
 
 Extend your rules by connecting them to actions that use the following supported built-in integrations. Actions are {{kib}} services or integrations with third-party systems that run as background tasks on the {{kib}} server when rule conditions are met.
 
-You can configure action types on the [Settings](../apps/configure-settings.md#configure-uptime-alert-connectors) page.
+You can configure action types on the [Settings](/solutions/observability/uptime/configure-settings.md#configure-uptime-alert-connectors) page.
 
 * [D3 Security](kibana://reference/connectors-kibana/d3security-action-type.md)
 * [Email](kibana://reference/connectors-kibana/email-action-type.md)
@@ -256,7 +262,7 @@ Use the default notification message or customize it. You can add more context t
 :screenshot:
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](/explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.agingCommonNameAndDate`
 :   The common names and expiration date/time of the detected certs.

@@ -1,4 +1,5 @@
 ---
+navigation_title: In ECE and ECH
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-autoscaling.html
   - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
@@ -12,7 +13,9 @@ applies_to:
   deployment:
     ece: ga
     ess: ga
-navigation_title: "In ECE and ECH"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
 ---
 
 # Autoscaling in {{ece}} and {{ech}}
@@ -40,7 +43,7 @@ Currently, autoscaling behavior is as follows:
 * **Data tiers**
 
     * Each {{es}} [data tier](../../manage-data/lifecycle/data-tiers.md) scales upward based on the amount of available storage. When we detect more storage is needed, autoscaling will scale up each data tier independently to ensure you can continue and ingest more data to your hot and content tier, or move data to the warm, cold, or frozen data tiers.
-    * In addition to scaling up existing data tiers, a new data tier will be automatically added when necessary, based on your [index lifecycle management policies](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html).
+    * In addition to scaling up existing data tiers, a new data tier will be automatically added when necessary, based on your [index lifecycle management policies](/manage-data/lifecycle/index-lifecycle-management.md).
     * To control the maximum size of each data tier and ensure it will not scale above a certain size, you can use the maximum size per zone field.
     * Autoscaling based on memory or CPU, as well as autoscaling downward, is not currently supported. In case you want to adjust the size of your data tier to add more memory or CPU, or in case you deleted data and want to scale it down, you can set the current size per zone of each data tier manually.
 
@@ -68,7 +71,7 @@ For a data tier, an autoscaling event can be triggered in the following cases:
 
 * Through ILM  policies. For example, if a deployment has only hot nodes and autoscaling is enabled, it automatically creates warm or cold nodes, if an ILM policy is trying to move data from hot to warm or cold nodes.
 
-On machine learning nodes, scaling is determined by an estimate of the memory and CPU requirements for the currently configured jobs and trained models. When a new machine learning job tries to start, it looks for a node with adequate native memory and CPU capacity. If one cannot be found, it stays in an `opening` state. If this waiting job exceeds the queueing limit set in the machine learning decider, a scale up is requested. Conversely, as machine learning jobs run, their memory and CPU usage might decrease or other running jobs might finish or close. In this case, if the duration of decreased resource usage exceeds the set value for `down_scale_delay`, a scale down is requested. Check [Machine learning decider](autoscaling-deciders.md)for more detail. To learn more about machine learning jobs in general, check [Create anomaly detection jobs](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-create-job)
+On machine learning nodes, scaling is determined by an estimate of the memory and CPU requirements for the currently configured jobs and trained models. When a new machine learning job tries to start, it looks for a node with adequate native memory and CPU capacity. If one cannot be found, it stays in an `opening` state. If this waiting job exceeds the queueing limit set in the machine learning decider, a scale up is requested. Conversely, as machine learning jobs run, their memory and CPU usage might decrease or other running jobs might finish or close. In this case, if the duration of decreased resource usage exceeds the set value for `down_scale_delay`, a scale down is requested. Check [Machine learning decider](autoscaling-deciders.md) for more detail. To learn more about machine learning jobs in general, check [Create anomaly detection jobs](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-create-job).
 
 On a highly available deployment, autoscaling events are always applied to instances in each availability zone simultaneously, to ensure consistency.
 
@@ -147,12 +150,11 @@ To help you better understand the available autoscaling settings, this example d
 
     1. Open the **Edit** page for your deployment to get the current and maximum size per zone of each {{es}} data tier. In this example, the hot data and content tier has the following settings:
 
-        |     |     |     |
-        | --- | --- | --- |
-        | **Current size per zone** | **Maximum size per zone** |  |
-        | 45GB storage | 1.41TB storage |  |
-        | 1GB RAM | 32GB RAM |  |
-        | Up to 2.5 vCPU | 5 vCPU |  |
+        | Current size per zone | Maximum size per zone |
+        | --- | --- |
+        | 45GB storage | 1.41TB storage |
+        | 1GB RAM | 32GB RAM |
+        | Up to 2.5 vCPU | 5 vCPU |
 
         The fault tolerance for the data tier is set to 2 availability zones.
 
@@ -166,11 +168,10 @@ To help you better understand the available autoscaling settings, this example d
 
     1. From the deployment **Edit** page you can check the minimum and maximum size of your deployment’s machine learning instances. In this example, the machine learning instance has the following settings:
 
-        |     |     |     |
-        | --- | --- | --- |
-        | **Minimum size per zone** | **Maximum size per zone** |  |
-        | 1GB RAM | 64GB RAM |  |
-        | 0.5 vCPU up to 8 vCPU | 32 vCPU |  |
+        | Minimum size per zone | Maximum size per zone |
+        | --- | --- |
+        | 1GB RAM | 64GB RAM |
+        | 0.5 vCPU up to 8 vCPU | 32 vCPU |
 
         The fault tolerance for the machine learning instance is set to 1 availability zone.
 

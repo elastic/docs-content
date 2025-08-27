@@ -1,11 +1,9 @@
 ---
-navigation_title: "Install with RPM"
+navigation_title: RPM
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rpm.html
-navigation_title: "RPM"
-applies_to:
-  deployment:
-    self:
+products:
+  - id: kibana
 ---
 
 # Install {{kib}} with RPM [rpm]
@@ -43,7 +41,7 @@ You have the following options for installing the {{es}} RPM package:
 
 Create a file called `kibana.repo` in the `/etc/yum.repos.d/` directory for RedHat based distributions, or in the `/etc/zypp/repos.d/` directory for OpenSuSE based distributions, containing:
 
-```sh
+```sh subs=true
 [kibana-9.X]
 name={{kib}} repository for 9.x packages
 baseurl=https://artifacts.elastic.co/packages/9.x/yum
@@ -69,17 +67,34 @@ sudo zypper install kibana <3>
 
 ### Download and install the RPM manually [install-rpm]
 
-The RPM for {{kib}} {{stack-version}} can be downloaded from the website and installed as follows:
+The RPM for {{kib}} {{version.stack}} can be downloaded from the website and installed as follows:
 
+::::{tab-set}
+
+:::{tab-item} Latest
+To download and install the {{kib}} {{version.stack}} RPM, enter:
 ```sh subs=true
-wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-x86_64.rpm
-wget https://artifacts.elastic.co/downloads/kibana/kibana-{{stack-version}}-x86_64.rpm.sha512
-shasum -a 512 -c kibana-{{stack-version}}-x86_64.rpm.sha512 <1>
-sudo rpm --install kibana-{{stack-version}}-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-{{version.stack}}-x86_64.rpm.sha512
+shasum -a 512 -c kibana-{{version.stack}}-x86_64.rpm.sha512 <1>
+sudo rpm --install kibana-{{version.stack}}-x86_64.rpm
 ```
 
 1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-<version>-x86_64.rpm: OK`.
+:::
 
+:::{tab-item} Specific version
+Because {{kib}} is an {{stack}} product, you must install the same version number as the rest of your {{stack}} components. Replace `<SPECIFIC.VERSION.NUMBER>` with the version that's used across your entire stack. For example, you can use {{version.stack.base}}.
+```sh subs=true
+wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+wget https://artifacts.elastic.co/downloads/kibana/kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512
+shasum -a 512 -c kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm.sha512 <1>
+sudo rpm --install kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm
+```
+
+1. Compares the SHA of the downloaded RPM and the published checksum, which should output `kibana-<SPECIFIC.VERSION.NUMBER>-x86_64.rpm: OK`.
+:::
+::::
 
 ## Step 3: Start {{es}} and generate an enrollment token for {{kib}} [rpm-enroll]
 

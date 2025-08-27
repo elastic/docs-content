@@ -1,7 +1,10 @@
 ---
-navigation_title: "rename"
+navigation_title: rename
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/rename-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Rename fields from events [rename-processor]

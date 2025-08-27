@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Elasticsearch ingest pipelines [ingest]
@@ -17,10 +19,6 @@ A pipeline consists of a series of configurable tasks called [processors](elasti
 :::
 
 You can create and manage ingest pipelines using {{kib}}'s **Ingest Pipelines** feature or the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). {{es}} stores pipelines in the [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state).
-
-:::{note}
-To run an {{es}} pipeline in {{serverless-full}}, refer to [{{es}} Ingest pipelines (Serverless)](./ingest-pipelines-serverless.md).
-:::
 
 ## Prerequisites [ingest-prerequisites]
 
@@ -45,7 +43,7 @@ In {{kib}}, open the main menu and click **Stack Management > Ingest Pipelines**
 To create a pipeline, click **Create pipeline > New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
 
 ::::{tip}
-The **New pipeline from CSV** option lets you use a CSV to create an ingest pipeline that maps custom data to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other datasets. To get started, check [Map custom data to ECS](ecs://reference/ecs-converting.md).
+The **New pipeline from CSV** option lets you use a CSV to create an ingest pipeline that maps custom data to the [Elastic Common Schema (ECS)](ecs://reference/index.md). Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other datasets. To get started, check [Map custom data to ECS](ecs://reference/ecs-converting.md).
 ::::
 
 
@@ -272,7 +270,7 @@ $$$pipeline-custom-logs-index-template$$$
 
 2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
 
-    You can create this template using {{kib}}'s [**Index Management**](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
+    You can create this template using {{kib}}'s [**Index Management**](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) feature or the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
     For example, the following request creates a template matching `logs-my_app-*`. The template uses a component template that contains the `index.default_pipeline` index setting.
 

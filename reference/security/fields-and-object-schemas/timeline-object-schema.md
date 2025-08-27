@@ -1,11 +1,14 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/security/current/timeline-object-schema.html
+  - https://www.elastic.co/guide/en/serverless/current/security-timeline-object-schema.html
 applies_to:
   stack: all
   serverless:
     security: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/security/current/timeline-object-schema.html
-  - https://www.elastic.co/guide/en/serverless/current/security-timeline-object-schema.html
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Timeline schema [timeline-object-schema]
@@ -19,10 +22,8 @@ All column, dropzone, and filter fields must be [ECS fields](ecs://reference/ind
 
 This screenshot maps the Timeline UI components to their JSON objects:
 
-:::{image} /reference/images/security-timeline-object-ui.png
-:alt: timeline object ui
-:screenshot:
-:::
+% TO DO: Use `:class: screenshot`
+![timeline object ui](../images/security-timeline-object-ui.png)
 
 1. [Title](#timeline-object-title) (`title`)
 2. [Global notes](#timeline-object-global-notes) (`globalNotes`)

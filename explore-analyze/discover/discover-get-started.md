@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/discover-get-started.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/discover-get-started.html
+products:
+  - id: kibana
 ---
 
 # Explore fields and data with Discover [discover-get-started]
@@ -28,7 +30,7 @@ Select the data you want to explore, and then specify the time range in which to
 1. Find **Discover** in the navigation menu or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the data you want to explore.
    ::::{tip}
-   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
+   By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](/manage-data/data-store/aliases.md). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.
 
    You can also [try {{esql}}](try-esql.md), that lets you query any data you have in {{es}} without specifying a {{data-source}} first.
    ::::
@@ -69,7 +71,7 @@ You can later filter the data that shows in the chart and in the table by specif
 3. Select the **Plus** icon to add fields to the results table. You can also drag them from the list into the table.
 
    ![How to add a field as a column in the table](/explore-analyze/images/kibana-discover-add-field.png "title =50%")
-   
+
    When you add fields to the table, the **Summary** column is replaced.
    ![Document table with fields for manufacturer](/explore-analyze/images/kibana-document-table.png "")
 
@@ -127,7 +129,7 @@ In the following example, we’re adding 2 fields: A simple "Hello world" field,
 If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
 
 1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
-   
+
    ![Top values for the day_of_week field](/explore-analyze/images/kibana-discover-day-of-week.png "title =60%")
 
 2. In the popup, click **Visualize**.
@@ -204,7 +206,7 @@ Dive into an individual document to view its fields and the documents that occur
    * You can pin some fields by clicking the left column to keep them displayed even if you filter the table.
 
    ::::{tip}
-   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values.
+   You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values. This toggle isn't available from the **View single document** page.
    ::::
 
 3. To navigate to a view of the document that you can bookmark and share, select **View single document**.
@@ -219,6 +221,10 @@ Dive into an individual document to view its fields and the documents that occur
 One of the unique capabilities of **Discover** is the ability to combine free text search with filtering based on structured data. To search all fields, enter a simple string in the query bar.
 
 ![Search field in Discover](/explore-analyze/images/kibana-discover-search-field.png "")
+
+:::{note}
+Free text searches that don't specify a field may not return expected results depending on how the [`index.query.default_field` index setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-query-default-field) is configured for the indices matching the current data view.
+:::
 
 To search particular fields and build more complex queries, use the [Kibana Query language](../query-filter/languages/kql.md). As you type, KQL prompts you with the fields you can search and the operators you can use to build a structured query.
 
@@ -247,18 +253,24 @@ For example, exclude results from the ecommerce sample data view where day of we
 4. Continue your exploration by adding more filters.
 5. To remove a filter, click the close icon (x) next to its name in the filter bar.
 
+#### Filter pill actions
+
+:::{include} ../_snippets/global-filters.md
+:::
+
 
 ### Search and filter using ES|QL [_search_and_filter_using_esql]
 
 You can use **Discover** with the Elasticsearch Query Language, ES|QL. When using ES|QL, you don’t have to select a data view. It’s your query that determines the data to explore and display in Discover.
 
 You can switch to the ES|QL mode of Discover from the application menu bar.
-
-:::{tip}
 If you've entered a KQL or Lucene query in the default mode of Discover, it automatically converts to ES|QL.
-:::
 
 Note that in ES|QL mode, the **Documents** tab is named **Results**.
+
+:::{important}
+{applies_to}`stack: ga 9.1` When an ES|QL query times out, partial results that are available are shown. The timeout is defined by the `search:timeout` advanced setting, which is set to 10 minutes (600000 ms) by default. In serverless projects, this advanced setting is not customizable and the timeout is set to 10 minutes.
+:::
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 
@@ -275,7 +287,7 @@ Save your Discover session so you can use it later, generate a CSV report, or us
 
 ### Share your Discover session [share-your-findings]
 
-To share your search and **Discover** view with a larger audience, click **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share your search and **Discover** view with a larger audience, click {icon}`share` **Share** in the application menu bar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Generate alerts [alert-from-Discover]

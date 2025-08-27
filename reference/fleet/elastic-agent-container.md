@@ -1,13 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-container.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Run Elastic Agent in a container [elastic-agent-container]
 
-You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
+You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
 Note that running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don’t currently provide {{agent}} container images for Windows.
+
+In version 9.0.0, the default Ubuntu-based Docker images used for {{agent}} have been changed to Red Hat UBI (Universal Base Image) minimal based images, to reduce the overall footprint of the agent Docker images and to improve compliance with enterprise standards. Refer to [#6427]({{agent-pull}}6427) for details.
 
 Considerations:
 
@@ -34,29 +39,45 @@ Considerations:
 
 ## Step 1: Pull the image [_step_1_pull_the_image]
 
-There are two images for Elastic Agent, elastic-agent and elastic-agent-complete. The elastic-agent image contains all the binaries for running Beats, while the elastic-agent-complete image contains these binaries plus additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
+There are various flavors of images for {{agent}}, elastic-agent and elastic-agent-complete. Refer to [Install {{agents}}](./install-elastic-agents.md) for full details about each flavor.
 
 Run the `docker pull` command against the Elastic Docker registry:
 
+### Basic flavor
+
 ```terminal subs=true
-docker pull docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}}
+docker pull docker.elastic.co/elastic-agent/elastic-agent-slim:{{version.stack}}
 ```
 
 Alternately, you can use the hardened [Wolfi](https://github.com/wolfi-dev/) image. Using Wolfi images requires Docker version 20.10.10 or later. For details about why the Wolfi images have been introduced, refer to our article [Reducing CVEs in Elastic container images](https://www.elastic.co/blog/reducing-cves-in-elastic-container-images).
 
 ```terminal subs=true
-docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:{{stack-version}}
+docker pull docker.elastic.co/elastic-agent/elastic-agent-slim-wolfi:{{version.stack}}
 ```
+
+### Server flavor
+
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
+```
+
+To run the server flavor using the hardened [Wolfi](https://github.com/wolfi-dev/) image, run:
+
+```terminal subs=true
+docker pull docker.elastic.co/elastic-agent/elastic-agent-wolfi:{{version.stack}}
+```
+
+### Complete flavor
 
 If you want to run Synthetics tests, run the docker pull command to fetch the elastic-agent-complete image:
 
 ```terminal subs=true
-docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{stack-version}}
+docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 To run Synthetics tests using the hardened [Wolfi](https://github.com/wolfi-dev/) image, run:
 
 ```terminal subs=true
-docker pull docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:{{stack-version}}
+docker pull docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:{{version.stack}}
 ```
 
 ## Step 2: Optional: Verify the image [_step_2_optional_verify_the_image]
@@ -65,11 +86,11 @@ Although it’s optional, we highly recommend verifying the signatures included 
 
 Elastic images are signed with Cosign which is part of the [Sigstore](https://www.sigstore.dev) project. Cosign supports container signing, verification, and storage in an OCI registry. Install the appropriate Cosign application for your operating system.
 
-Run the following commands to verify the **elastic-agent** container image signature for Elastic Agent v{{stack-version}}:
+Run the following commands to verify the **elastic-agent** container image signature for Elastic Agent v{{version.stack}}:
 
 ```terminal subs=true
 wget https://artifacts.elastic.co/cosign.pub <1>
-cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <2>
+cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <2>
 ```
 1. Download the Elastic public key to verify container signature
 2. Verify the container against the Elastic public key
@@ -78,12 +99,12 @@ If you’re using the elastic-agent-complete image, run the commands as follows:
 
 ```terminal subs=true
 wget https://artifacts.elastic.co/cosign.pub
-cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent-complete:{{stack-version}}
+cosign verify --key cosign.pub docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 The command prints the check results and the signature payload in JSON format, for example:
 
 ```terminal subs=true
-Verification for docker.elastic.co/elastic-agent/elastic-agent-complete:{{stack-version}} --
+Verification for docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}} --
 The following checks were performed on each of these signatures:
   - The cosign claims were validated
   - Existence of the claims in the transparency log was verified offline
@@ -95,7 +116,7 @@ The following checks were performed on each of these signatures:
 The Elastic Agent container command offers a wide variety of options. To see the full list, run:
 
 ```terminal subs=true
-docker run --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} elastic-agent container -h
+docker run --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} elastic-agent container -h
 ```
 
 ## Step 4: Run the Elastic Agent image [_step_4_run_the_elastic_agent_image]
@@ -110,13 +131,13 @@ docker run \
   --env FLEET_ENROLL=1 \ <1>
   --env FLEET_URL=<fleet-server-host-url> \ <2>
   --env FLEET_ENROLLMENT_TOKEN=<enrollment-token> \ <3>
-  --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <4>
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <4>
 ```
 
 1. Set to 1 to enroll the {{agent}} into {{fleet-server}}.
 2. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management → {{fleet}} → Fleet Settings**, and copy the {{fleet-server}} host URL.
 3. The token to use for enrollment. Close the flyout panel and select **Enrollment tokens**. Find the Agent policy you want to enroll {{agent}} into, and display and copy the secret token. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
-4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -132,7 +153,7 @@ docker run \
   --env FLEET_SERVER_SERVICE_TOKEN=<service-token> \ <3>
   --env FLEET_SERVER_POLICY_ID=<fleet-server-policy> \ <4>
   -p 8220:8220 \ <5>
-  --rm docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <6>
+  --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <6>
 ```
 
 1. Set to 1 to bootstrap Fleet Server on this Elastic Agent.
@@ -140,7 +161,7 @@ docker run \
 3. The {{fleet}} service token. [Generate one in the {{fleet}} UI](/reference/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens) if you don’t have one already.
 4. ID of the {{fleet-server}} policy. We recommend only having one fleet-server policy. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
 5. publish container port 8220 to host.
-6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -168,7 +189,7 @@ If you’d like to run {{agent}} in a Docker container on a read-only file syste
 For example:
 
 ```bash subs=true
-docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <1>
+docker run --rm --mount source=$(pwd)/state,destination=/state -e {STATE_PATH}=/state --read-only docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <1>
 ```
 
 1. Where `{STATE_PATH}` is the path to a stateful directory to mount where {{agent}} application data can be stored.
@@ -214,7 +235,7 @@ You can run {{agent}} in docker-compose. The example below shows how to enroll a
 version: "3"
 services:
   elastic-agent:
-    image: docker.elastic.co/elastic-agent/elastic-agent:{{stack-version}} <1>
+    image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}} <1>
     container_name: elastic-agent
     restart: always
     user: root                                                       <2>
@@ -224,7 +245,7 @@ services:
       - FLEET_URL=<fleet-server-url>
 ```
 
-1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
+1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 2. Synthetic browser monitors require this set to `elastic-agent`.
 
 
@@ -280,7 +301,7 @@ agent.monitoring:
 
 The above configuration exposes a monitoring endpoint at `http://localhost:6791/processes`.
 
-::::{dropdown} `http://localhost:6791/processes` output
+::::{dropdown} http://localhost:6791/processes output
 ```json
 {
    "processes":[
@@ -326,7 +347,7 @@ The above configuration exposes a monitoring endpoint at `http://localhost:6791/
 
 Each process ID in the `/processes` output can be accessed for more details.
 
-::::{dropdown} `http://localhost:6791/processes/{{process-name}}` output
+::::{dropdown} http://localhost:6791/processes/\{\{process-name\}\} output
 ```json
 {
    "beat":{

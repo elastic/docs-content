@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-hardware-prereq.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-hardware-prereq.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Hardware prerequisites [ece-hardware-prereq]
@@ -61,5 +63,5 @@ The size of your ECE deployment has a bearing on the JVM heap sizes that you sho
 The ECE management services provided by the coordinators and directors require fast SSD storage to work correctly. For smaller deployments that co-locate the ECE management services with proxies and allocators on the same hosts, you must use fast SSD storage for your entire deployment. If SSD-only storage is not feasible, [some of the ECE management services need to be separated](ece-roles.md).
 
 ::::{note}
-When using SSDs on an external (shared) storage system, please check with your storage vendor whether TRIM [should be disabled](https://www.elastic.co/blog/is-your-elasticsearch-trimmed) on the ECE hosts to avoid unnecessary stress on the storage system.
+When using SSDs on an external (shared) storage system, check with your storage vendor whether TRIM [should be disabled](https://www.elastic.co/blog/is-your-elasticsearch-trimmed) on the ECE hosts to avoid unnecessary stress on the storage system.
 ::::

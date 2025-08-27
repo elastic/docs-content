@@ -6,15 +6,23 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Agentless integrations [agentless-integrations]
 
 Agentless integrations provide a means to ingest data while avoiding the orchestration, management, and maintenance needs associated with standard ingest infrastructure. Using agentless integrations makes manual agent deployment unnecessary, allowing you to focus on your data instead of the agent that collects it.
 
-We support the following agentless integrations: 
+::::{important}
+There are currently no additional costs associated with deploying agentless integrations. 
+There is currently a limit of 5 agentless integrations per project. 
+::::
 
 ## Generally available (GA) agentless integrations
+
+We fully support the following agentless integrations: 
 
 Cloud security posture management (CSPM). Using this integration’s agentless deployment option, you can enable Elastic’s CSPM capabilities just by providing the necessary credentials. Agentless CSPM deployments support AWS, Azure, and GCP accounts.
 
@@ -27,18 +35,22 @@ Agentless deployment for the following integrations is in beta and is subject to
 ::::
 
 1. AbuseCH
-2. CrowdStrike  
-3. Google SecOps 
-4. Google Security Command Center
-5. Google Workspace
-6. Microsoft 365 Defender
-7. Microsoft Defender for Endpoint
-8. Microsoft Sentinel
-9. Okta
-10. Qualys VMDR
-11. SentinelOne Zscaler
-12. Tenable IO
-13. Wiz
-14. Zscaler ZIA
+2. Cloud Asset Discovery
+3. CrowdStrike  
+4. Elastic Security
+5. Google SecOps 
+6. Google Security Command Center
+7. Google Workspace
+8. Microsoft 365 Defender
+9. Microsoft Defender for Endpoint
+10. Microsoft Sentinel
+11. Okta
+12. Qualys VMDR
+13. SentinelOne
+14. Splunk
+15. Tenable IO
+16. Wiz
+17. Zscaler ZIA
+
 
 To learn more about these integrations and find setup guides, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).

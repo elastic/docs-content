@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Network page
@@ -37,7 +40,7 @@ There are several ways to drill down:
 You can start an investigation using the map, and the map refreshes to show related data when you run a query or update the time range.
 
 ::::{tip}
-To add and remove layers, click on the **Options** menu (**…​**) in the top right corner of the map.
+To add and remove layers, click on the **Options** menu (**…**) in the top right corner of the map.
 ::::
 
 
@@ -57,7 +60,7 @@ There are also tabs for viewing and investigating specific types of data:
 * **Events**: All network events. To display alerts received from external monitoring tools, scroll down to the events table and select **Show only external alerts** on the right.
 * **Flows**: Source and destination IP addresses and countries.
 * **DNS**: DNS network queries.
-* **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](/solutions/observability/apps/application-performance-monitoring-apm.md) are monitored by default).
+* **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](/solutions/observability/apm/index.md) are monitored by default).
 * **TLS**: Handshake details.
 * **Anomalies**: Anomalies discovered by [machine learning jobs](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 

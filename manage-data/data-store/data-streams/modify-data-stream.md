@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Modify a data stream [modify-data-streams]
@@ -212,9 +214,8 @@ To change a [dynamic index setting](elasticsearch://reference/elasticsearch/inde
 
 
 ::::{important}
-To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](../../lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#switch-lifecycle-policies).
+To change the `index.lifecycle.name` setting, first use the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy) to remove the existing {{ilm-init}} policy. See [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
 ::::
-
 
 
 ### Change a static index setting for a data stream [change-static-index-setting-for-a-data-stream]
@@ -499,3 +500,24 @@ POST _aliases
 }
 ```
 
+## Modify the backing indices of a data stream [data-streams-modify-backing-indices]
+
+Use the [modify API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream) to modify the backing indices of a data stream. Multiple actions can be specified in a single modify request, and they will be executed atomically.
+
+```console
+POST /_data_stream/_modify
+{
+  "actions": [
+    {
+      "add_backing_index": {
+        "data_stream": "my-data-stream",
+        "index": "new-index"
+      },
+      "remove_backing_index": {
+        "data_stream": "my-data-stream",
+        "index": "old-index"
+      }
+    }
+  ]
+}
+```

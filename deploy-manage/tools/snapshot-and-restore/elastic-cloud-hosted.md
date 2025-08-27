@@ -1,11 +1,13 @@
 ---
+navigation_title: "{{ech}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-custom-repository.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
-navigation_title: "{{ech}}"
 applies_to:
   deployment:
     ess:
+products:
+  - id: cloud-hosted
 ---
 
 # Manage snapshot repositories in {{ech}}
@@ -60,7 +62,7 @@ In **{{ech}}**, snapshot repositories are automatically registered for you, but 
 * {{kib}}'s **Snapshot and Restore** feature
 * {{es}}'s [snapshot repository management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot)
 
-To manage repositories in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore*** > ***Repositories**. To register a snapshot repository, click **Register repository**.
+To manage repositories in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore** > **Repositories**. To register a snapshot repository, click **Register repository**.
 
 You can also register a repository using the [Create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository).
 
@@ -116,13 +118,13 @@ The API returns:
 
 Depending on the concrete repository implementation the numbers shown for bytes free as well as the number of blobs removed will either be an approximation or an exact result. Any non-zero value for the number of blobs removed implies that unreferenced blobs were found and subsequently cleaned up.
 
-Please note that most of the cleanup operations executed by this endpoint are automatically executed when deleting any snapshot from a repository. If you regularly delete snapshots, you will in most cases not get any or only minor space savings from using this functionality and should lower your frequency of invoking it accordingly.
+Note that most of the cleanup operations executed by this endpoint are automatically executed when deleting any snapshot from a repository. If you regularly delete snapshots, you will in most cases not get any or only minor space savings from using this functionality and should lower your frequency of invoking it accordingly.
 
 ## Back up a repository [snapshots-repository-backup]
 
 You may wish to make an independent backup of your repository, for instance so that you have an archive copy of its contents that you can use to recreate the repository in its current state at a later date.
 
-You must ensure that {{es}} does not write to the repository while you are taking the backup of its contents. If {{es}} writes any data to the repository during the backup then the contents of the backup may not be consistent and it may not be possible to recover any data from it in future. Prevent writes to the repository by unregistering the repository from the cluster which has write access to it.
+You must ensure that {{es}} does not write to the repository while you are taking the backup of its contents. If {{es}} writes any data to the repository during the backup then the contents of the backup may not be consistent and it may not be possible to recover any data from it in future. Prevent writes to the repository by unregistering the repository from the cluster which has write access to it, or by registering it with `readonly: true`.
 
 Alternatively, if your repository supports it, you may take an atomic snapshot of the underlying filesystem and then take a backup of this filesystem snapshot. It is very important that the filesystem snapshot is taken atomically.
 

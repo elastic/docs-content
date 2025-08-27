@@ -1,9 +1,11 @@
 ---
-navigation_title: "Get started on Serverless"
+navigation_title: Get started on Serverless
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html
 applies_to:
   serverless:
+products:
+  - id: cloud-serverless
 ---
 
 # Get started with {{es}} Serverless [elasticsearch-get-started]
@@ -104,7 +106,7 @@ To get started using the in-product tutorial, navigate to the **Getting Started*
 
 If you’re already familiar with Elasticsearch, you can jump right into setting up a connection and ingesting data as per your needs.
 
-1. Retrieve your [connection details](get-started.md).
+1. Retrieve your [connection details](search-connection-details.md).
 2. Ingest your data. Elasticsearch provides several methods for ingesting data:
 
     * [{{es}} API](ingest-for-search.md)
@@ -119,4 +121,4 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
 ## Next steps [elasticsearch-next-steps]
 
 * Once you’ve added data to your {{es-serverless}} project, you can use [Playground](rag/playground.md) to test and tweak {{es}} queries and chat with your data, using GenAI.
-* You can also try our hands-on [quick start tutorials](https://www.elastic.co/guide/en/elasticsearch/reference/current/quickstart.html#quickstart-list) in the core {{es}} documentation.
+* You can also try our hands-on [quickstart guides](/solutions/search/get-started/quickstarts.md) in the core {{es}} documentation.

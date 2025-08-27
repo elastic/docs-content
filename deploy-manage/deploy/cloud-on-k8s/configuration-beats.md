@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configuration [k8s-beat-configuration]
@@ -17,14 +19,14 @@ You can upgrade the Beat version or change settings by editing the YAML specific
 
 The Beat configuration is defined in the `config` element:
 
-```yaml
+```yaml subs=true
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
 metadata:
   name: quickstart
 spec:
   type: heartbeat
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRef:
     name: quickstart
   config:
@@ -42,14 +44,14 @@ spec:
 
 Alternatively, it can be provided through a Secret specified in the `configRef` element:
 
-```yaml
+```yaml subs=true
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
 metadata:
   name: heartbeat-quickstart
 spec:
   type: heartbeat
-  version: 8.16.1
+  version: {{version.stack}}
   elasticsearchRef:
     name: quickstart
   configRef:
@@ -103,7 +105,7 @@ ECK supports the deployment of any Community Beat.
 2. Set the `image` element to point to the image to be deployed.
 3. Make sure the following roles exist in {{es}}:
 
-    * If `elasticsearchRef` is provided, create the role `eck_beat_es_$type_role`, where `$type` is the Beat type. For example, when deploying `kafkabeat`, the role name is `eck_beat_es_kafkabeat_role`. This role must have the permissions required by the Beat. Check the [{{es}} documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html) for more details.
+    * If `elasticsearchRef` is provided, create the role `eck_beat_es_$type_role`, where `$type` is the Beat type. For example, when deploying `kafkabeat`, the role name is `eck_beat_es_kafkabeat_role`. This role must have the permissions required by the Beat. Check the [{{es}} documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for more details.
     * If `kibanaRef` is provided, create the role `eck_beat_kibana_$type_role` with the permissions required to setup {{kib}} dashboards.
 
 

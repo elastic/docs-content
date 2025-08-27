@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Timeline [security-timelines-ui]
@@ -235,7 +238,7 @@ From the **Correlation** tab, you can also do the following:
 ::::
 
 
-The [Elasticsearch Query Language ({{esql}})](/explore-analyze/query-filter/languages/esql.md) provides a powerful way to filter, transform, and analyze event data stored in {{es}}. {{esql}} queries use "pipes" to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
+The [Elasticsearch Query Language ({{esql}})](elasticsearch://reference/query-languages/esql.md) provides a powerful way to filter, transform, and analyze event data stored in {{es}}. {{esql}} queries use "pipes" to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
 
 You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, you can:
 
@@ -254,7 +257,7 @@ You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, yo
     * Finally, it keeps the default Timeline fields (`@timestamp`, `message`, `event.category`, `event.action`, `host.name`, `source.ip`, `destination.ip`, and `user.name`) in the output.
 
         ::::{tip}
-        When querying indices that tend to be large (for example, `logs-*`), performance can be impacted by the number of fields returned in the output. To optimize performance, we recommend using the [`KEEP`](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-keep) command to specify fields that you want returned. For example, add the clause `KEEP @timestamp, user.name` to the end of your query to specify that you only want the `@timestamp` and `user.name` fields returned.
+        When querying indices that tend to be large (for example, `logs-*`), performance can be impacted by the number of fields returned in the output. To optimize performance, we recommend using the [`KEEP`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-keep) command to specify fields that you want returned. For example, add the clause `KEEP @timestamp, user.name` to the end of your query to specify that you only want the `@timestamp` and `user.name` fields returned.
         ::::
 
 

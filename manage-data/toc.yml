@@ -20,6 +20,9 @@ toc:
               - file: data-store/data-streams/run-downsampling-using-data-stream-lifecycle.md
               - file: data-store/data-streams/reindex-tsds.md
           - file: data-store/data-streams/logs-data-stream.md
+          - file: data-store/data-streams/failure-store.md
+            children:
+              - file: data-store/data-streams/failure-store-recipes.md
       - file: data-store/mapping.md
         children:
           - file: data-store/mapping/dynamic-mapping.md
@@ -36,6 +39,7 @@ toc:
               - file: data-store/mapping/index-runtime-field.md
               - file: data-store/mapping/explore-data-with-runtime-fields.md
           - file: data-store/mapping/removal-of-mapping-types.md
+          - file: data-store/mapping/update-mappings-examples.md
       - file: data-store/text-analysis.md
         children:
           - file: data-store/text-analysis/concepts.md
@@ -54,7 +58,7 @@ toc:
         children:
           - file: data-store/templates/simulate-multi-component-templates.md
           - file: data-store/templates/ignore-missing-component-templates.md
-          - file: data-store/templates/index-template-management.md
+          - hidden: data-store/templates/index-template-management.md
       - file: data-store/aliases.md
       - file: data-store/manage-data-from-the-command-line.md
   - file: ingest.md
@@ -95,10 +99,12 @@ toc:
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
         children:
-          - file: ingest/transform-enrich/ingest-pipelines-serverless.md
+          - file: ingest/transform-enrich/ingest-lag.md
           - file: ingest/transform-enrich/ingest-pipelines.md
             children:
               - file: ingest/transform-enrich/example-parse-logs.md
+              - file: ingest/transform-enrich/readable-maintainable-ingest-pipelines.md
+              - file: ingest/transform-enrich/error-handling.md
           - file: ingest/transform-enrich/logstash-pipelines.md
           - file: ingest/transform-enrich/data-enrichment.md
             children:
@@ -119,14 +125,18 @@ toc:
               - file: lifecycle/index-lifecycle-management/skip-rollover.md
               - file: lifecycle/index-lifecycle-management/tutorial-automate-rollover.md
           - file: lifecycle/index-lifecycle-management/configure-lifecycle-policy.md
+          - file: lifecycle/index-lifecycle-management/policy-apply.md
+          - file: lifecycle/index-lifecycle-management/policy-view-status.md
+          - file: lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md
           - file: lifecycle/index-lifecycle-management/policy-updates.md
           - file: lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md
           - file: lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md
           - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
-          - file: lifecycle/index-lifecycle-management/index-management-in-kibana.md
-          - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
+          - hidden: lifecycle/index-lifecycle-management/index-management-in-kibana.md
           - file: lifecycle/index-lifecycle-management/migrate-index-management.md
-          - file: lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md
+            children:
+              - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
+              - file: lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md
       - file: lifecycle/data-stream.md
         children:
           - file: lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md
@@ -146,4 +156,5 @@ toc:
     children:
       - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-internal-indices.md
+      - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md

@@ -1,10 +1,12 @@
 ---
+navigation_title: Install with Docker
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
-navigation_title: "Install with Docker"
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # Install {{es}} with Docker [docker]
@@ -15,7 +17,7 @@ Docker images for {{es}} are available from the Elastic Docker registry. A list 
 :::
 
 ::::{tip}
-If you just want to test {{es}} in local development, refer to [Run {{es}} locally](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). Please note that this setup is not suitable for production environments.
+If you just want to test {{es}} in local development, refer to [Run {{es}} locally](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). Note that this setup is not suitable for production environments.
 ::::
 
 Review the following guides to install {{es}} with Docker:

@@ -7,11 +7,14 @@ applies_to:
   deployment:
     ess: all
   serverless: all
+products:
+  - id: cloud-hosted
+  - id: cloud-serverless
 ---
 
 # Billing
 
-Elastic charges a recurring fee for using our offerings on {{ecloud}}. In this section, you'll learn how to about the dimensions used to calculate your bill, how to monitor account usage, how to manage billing, and more.
+Elastic charges a recurring fee for using our offerings on {{ecloud}}. In this section, you'll learn about the dimensions used to calculate your bill, how to monitor account usage, how to manage billing, and more.
 
 ## Pricing model
 

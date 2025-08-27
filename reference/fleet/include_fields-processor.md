@@ -1,7 +1,10 @@
 ---
-navigation_title: "include_fields"
+navigation_title: include_fields
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/include_fields-processor.html
+products:
+  - id: fleet
+  - id: elastic-agent
 ---
 
 # Keep fields from events [include_fields-processor]

@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-kubernetes-pod-metrics.html
   - https://www.elastic.co/guide/en/observability/current/kubernetes-pod-metrics.html
+products:
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Kubernetes pod metrics [observability-kubernetes-pod-metrics]
@@ -15,4 +18,4 @@ To analyze Kubernetes pod metrics, you can select view filters based on the foll
 | **Inbound Traffic** | Derivative of the maximum of `kubernetes.pod.network.rx.bytes` scaled to a 1 second rate. |
 | **Outbound Traffic** | Derivative of the maximum of `kubernetes.pod.network.tx.bytes` scaled to a 1 second rate. |
 
-For information about the fields used by the Infrastructure UI to display Kubernetes pod metrics, see the [Infrastructure app fields](/reference/observability/serverless/infrastructure-app-fields.md).
+For information about the fields used by the Infrastructure UI to display Kubernetes pod metrics, see the [Infrastructure app fields](/reference/observability/fields-and-object-schemas.md).

@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-orchestrating-elastic-stack-applications.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
+applies_to:
+  deployment:
+    eck: all
+products:
+  - id: cloud-kubernetes
 ---
 
 # Configure deployments [k8s-orchestrating-elastic-stack-applications]
@@ -16,6 +18,8 @@ This section provides details around {{kib}} and {{es}} configuration when runni
 * [**{{kib}} configuration**](kibana-configuration.md): Learn how to connect {{kib}} to an {{es}} cluster, apply advanced configuration settings, and tune the HTTP configuration.
 
 Additionally, the following topics apply to both {{es}} and {{kib}}, and in some cases, to other applications supported by ECK:
+
+* [**Users and roles**](/deploy-manage/users-roles/cluster-or-deployment-auth/managed-credentials-eck.md): Learn how to work with managed credentials, create custom users, and configure authentication realms.
 
 * [**Access services**](accessing-services.md): Learn how to access to the orchestrated clusters and how to adapt the Kubernetes services to your needs.
 

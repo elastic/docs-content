@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-quickstart.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-quickstart.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Quickstart [k8s-beat-quickstart]
@@ -18,7 +20,7 @@ mapped_pages:
       name: quickstart
     spec:
       type: filebeat
-      version: 8.16.1
+      version: {{version.stack}}
       elasticsearchRef:
         name: quickstart
       config:
@@ -65,9 +67,9 @@ mapped_pages:
     kubectl get beat
     ```
 
-    ```sh
+    ```sh subs=true
     NAME                  HEALTH   AVAILABLE   EXPECTED   TYPE       VERSION   AGE
-    quickstart            green    3           3          filebeat   8.16.1     2m
+    quickstart            green    3           3          filebeat   {{version.stack}}     2m
     ```
 
 3. List all the Pods belonging to a given Beat.

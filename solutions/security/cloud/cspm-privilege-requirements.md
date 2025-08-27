@@ -6,11 +6,14 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # CSPM privilege requirements
 
-This page lists required privileges for {{elastic-sec}}'s CSPM features. There are three access levels: read, write, and manage. Each access level and its requirements are described below.
+This page lists required privileges for {{elastic-sec}}'s CSPM features. There are three access levels: read, write, and manage. Each access level and its requirements are described next on this page.
 
 
 ## Read [_read]

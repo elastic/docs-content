@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
 ---
 
 # S3 repository [repository-s3]
@@ -11,10 +13,12 @@ applies_to:
 You can use AWS S3 as a repository for [Snapshot/Restore](../snapshot-and-restore.md).
 
 ::::{note}
-If you are looking for a hosted solution of {{es}} on AWS, please visit [https://www.elastic.co/cloud/](https://www.elastic.co/cloud/).
+If you are looking for a hosted solution of {{es}} on AWS, visit [https://www.elastic.co/cloud/](https://www.elastic.co/cloud/).
 ::::
 
 See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough of connecting an AWS S3 repository.
+
+{{es}} communicates with S3 through a dedicated S3 client module. Clients are configured through a combination of [secure settings](../../security/secure-settings.md) defined in the {{es}} keystore, and [standard settings](/deploy-manage/stack-settings.md) defined in `elasticsearch.yml`. If you don't provide explicit S3 client configuration, {{es}} will try to obtain credentials from the environment it's running in.
 
 ## Getting started [repository-s3-usage]
 
@@ -35,7 +39,7 @@ PUT _snapshot/my_s3_repository
 
 ## Client settings [repository-s3-client]
 
-The client that you use to connect to S3 has a number of settings available. The settings have the form `s3.client.CLIENT_NAME.SETTING_NAME`. By default, `s3` repositories use a client named `default`, but this can be modified using the [repository setting](#repository-s3-repository) `client`. For example, to use a client named `my-alternate-client`, register the repository as follows:
+The S3 client that you use to connect to S3 has a number of settings available. The settings have the form `s3.client.CLIENT_NAME.SETTING_NAME`. By default, `s3` repositories use a client named `default`, but this can be modified using the [repository setting](#repository-s3-repository) `client`. For example, to use an S3 client named `my-alternate-client`, register the repository as follows:
 
 ```console
 PUT _snapshot/my_s3_repository
@@ -48,7 +52,7 @@ PUT _snapshot/my_s3_repository
 }
 ```
 
-Most client settings can be added to the `elasticsearch.yml` configuration file with the exception of the secure settings, which you add to the {{es}} keystore. For more information about creating and updating the {{es}} keystore, see [Secure settings](../../security/secure-settings.md).
+Most S3 client settings can be added to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file with the exception of the secure settings, which you add to the {{es}} keystore. For more information about creating and updating the {{es}} keystore, see [Secure settings](../../security/secure-settings.md).
 
 For example, if you want to use specific credentials to access S3 then run the following commands to add these credentials to the keystore.
 
@@ -75,7 +79,10 @@ bin/elasticsearch-keystore remove s3.client.default.session_token
 
 Define the relevant secure settings in each node’s keystore before starting the node. The secure settings described here are all [reloadable](../../security/secure-settings.md#reloadable-secure-settings) so you may update the keystore contents on each node while the node is running and then call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to apply the updated settings to the nodes in the cluster. After this API completes, {{es}} will use the updated setting values for all future snapshot operations, but ongoing operations may continue to use older setting values.
 
-The following list contains the available client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the `elasticsearch.yml` file.
+The following list contains the available S3 client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
+
+`region`
+:   Specifies the region to use. When set, determines the signing region and regional endpoint to use, unless the endpoint is overridden via the `endpoint` setting. If not set, {{es}} will attempt to determine the region automatically using the AWS SDK.
 
 `access_key` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   An S3 access key. If set, the `secret_key` setting must also be specified. If unset, the client will use the instance or container role instead.
@@ -87,10 +94,12 @@ The following list contains the available client settings. Those that must be st
 :   An S3 session token. If set, the `access_key` and `secret_key` settings must also be specified.
 
 `endpoint`
-:   The S3 service endpoint to connect to. This defaults to `s3.amazonaws.com` but the [AWS documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) lists alternative S3 endpoints. If you are using an [S3-compatible service](#repository-s3-compatible-services) then you should set this to the service’s endpoint.
+:   The S3 service endpoint to connect to. This defaults to the regional endpoint corresponding to the configured `region`, but the [AWS documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) lists alternative S3 endpoints. If you are using an [S3-compatible service](#repository-s3-compatible-services) then you should set this to the service’s endpoint. The endpoint should specify the protocol and host name, e.g. `https://s3.ap-southeast-4.amazonaws.com`, `http://minio.local:9000`.
+
+    When using HTTPS, this repository type validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the root certificate authority is in this truststore using the JVM’s `keytool` tool. If you have a custom certificate authority for your S3 repository and you use the {{es}} [bundled JDK](../../deploy/self-managed/installing-elasticsearch.md#jvm-version), then you will need to reinstall your CA certificate every time you upgrade {{es}}.
 
 `protocol`
-:   The protocol to use to connect to S3. Valid values are either `http` or `https`. Defaults to `https`. When using HTTPS, this repository type validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the root certificate authority is in this truststore using the JVM’s `keytool` tool. If you have a custom certificate authority for your S3 repository and you use the {{es}} [bundled JDK](../../deploy/self-managed/installing-elasticsearch.md#jvm-version), then you will need to reinstall your CA certificate every time you upgrade {{es}}.
+:   The protocol to use to connect to S3. Valid values are either `http` or `https`. Defaults to `https`. Note that this setting is deprecated since 8.19 and is only used if `endpoint` is set to a URL that does not include a scheme. Users should migrate to including the scheme in the `endpoint` setting. 
 
 `proxy.host`
 :   The host name of a proxy to connect to S3 through.
@@ -116,9 +125,6 @@ The following list contains the available client settings. Those that must be st
 `max_retries`
 :   The number of retries to use when an S3 request fails. The default value is `3`.
 
-`use_throttle_retries`
-:   Whether retries should be throttled (i.e. should back off). Must be `true` or `false`. Defaults to `true`.
-
 `path_style_access`
 :   Whether to force the use of the path style access pattern. If `true`, the path style access pattern will be used. If `false`, the access pattern will be automatically determined by the AWS Java SDK (See [AWS documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#setPathStyleAccessEnabled-java.lang.Boolean-) for details). Defaults to `false`.
 
@@ -131,12 +137,6 @@ In versions `7.0`, `7.1`, `7.2` and `7.3` all bucket operations used the [now-de
 
 `disable_chunked_encoding`
 :   Whether chunked encoding should be disabled or not. If `false`, chunked encoding is enabled and will be used where appropriate. If `true`, chunked encoding is disabled and will not be used, which may mean that snapshot operations consume more resources and take longer to complete. It should only be set to `true` if you are using a storage service that does not support chunked encoding. See the [AWS Java SDK documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Builder.html#disableChunkedEncoding--) for details. Defaults to `false`.
-
-`region`
-:   Allows specifying the signing region to use. Specificing this setting manually should not be necessary for most use cases. Generally, the SDK will correctly guess the signing region to use. It should be considered an expert level setting to support S3-compatible APIs that require [v4 signatures](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) and use a region other than the default `us-east-1`. Defaults to empty string which means that the SDK will try to automatically determine the correct signing region.
-
-`signer_override`
-:   Allows specifying the name of the signature algorithm to use for signing requests by the S3 client. Specifying this setting should not be necessary for most use cases. It should be considered an expert level setting to support S3-compatible APIs that do not support the signing algorithm that the SDK automatically determines for them. See the [AWS Java SDK documentation](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/ClientConfiguration.html#setSignerOverride-java.lang.String-) for details. Defaults to empty string which means that no signing algorithm override will be used.
 
 
 ## Repository settings [repository-s3-repository]
@@ -382,11 +382,16 @@ There are a number of storage systems that provide an S3-compatible API, and the
 
 By default {{es}} communicates with your storage system using HTTPS, and validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the JVM-wide truststore includes an entry for your repository. If you wish to use unsecured HTTP communication instead of HTTPS, set `s3.client.CLIENT_NAME.protocol` to `http`.
 
-[MinIO](https://minio.io) is an example of a storage system that provides an S3-compatible API. The `s3` repository type allows {{es}} to work with MinIO-backed repositories as well as repositories stored on AWS S3. Other S3-compatible storage systems may also work with {{es}}, but these are not covered by the {{es}} test suite.
-
-There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3’s behaviour in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency and performance at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Please do not report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
+There are many systems, including some from very well-known storage vendors, which claim to offer an S3-compatible API despite failing to emulate S3’s behavior in full. If you are using such a system for your snapshots, consider using a [shared filesystem repository](shared-file-system-repository.md) based on a standardized protocol such as NFS to access your storage system instead. The `s3` repository type requires full compatibility with S3. In particular it must support the same set of API endpoints, with the same parameters, return the same errors in case of failures, and offer consistency and performance at least as good as S3 even when accessed concurrently by multiple nodes. You will need to work with the supplier of your storage system to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
 
 You can perform some basic checks of the suitability of your storage system using the [repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, these checks do not guarantee full compatibility.
+
+$$$using-minio-with-elasticsearch$$$
+::::{admonition} Using MinIO with {{es}}
+[MinIO](https://minio.io) is an example of a storage system that provides an S3-compatible API. The `s3` repository type allows {{es}} to work with MinIO-backed repositories as well as repositories stored on AWS S3. The {{es}} test suite includes some checks which aim to detect deviations in behavior between MinIO and AWS S3. Elastic will report directly to the MinIO project any deviations in behavior found by these checks. If you are running a version of MinIO whose behavior deviates from that of AWS S3 then you must upgrade your MinIO installation. If in doubt, please contact the MinIO support team for further information.
+
+The performance, reliability, and durability of a MinIO-backed repository depend on the properties of the underlying infrastructure and on the details of your MinIO configuration. You must design your storage infrastructure and configure MinIO in a way that ensures your MinIO-backed repository has performance, reliability, and durability characteristics which match AWS S3 in order for it to be fully S3-compatible. If you need assistance with your MinIO configuration, please contact the MinIO support team.
+::::
 
 Most storage systems can be configured to log the details of their interaction with {{es}}. If you are investigating a suspected incompatibility with AWS S3, it is usually simplest to collect these logs and provide them to the supplier of your storage system for further analysis. If the incompatibility is not clear from the logs emitted by the storage system, configure {{es}} to log every request it makes to the S3 API by [setting the logging level](/deploy-manage/monitor/logging-configuration/update-elasticsearch-logging-levels.md) of the `com.amazonaws.request` logger to `DEBUG`.
 

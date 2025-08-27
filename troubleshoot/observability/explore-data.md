@@ -5,6 +5,8 @@ applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
 ---
 
 # Explore data [exploratory-data-visualizations]
@@ -36,7 +38,7 @@ To customize a visualization further, click **Open in Lens** from the toolbar to
 | --- | --- |
 | KPI over time | The KPI over time histogram represents the performance indicators based on themetric you select, such as page views or monitor duration. |
 | Performance distribution | The Performance distribution time-series chart enables you to examine theperceived performance of your web applications based on the metric you select. |
-| Core web vitals | The Core web vitals chart is a graphical representation of key metrics, such asloading performance, load responsiveness, and visual stability, for each of yourweb applications.<br>To learn more about metrics such as Largest contentful paint, Interaction to next paint,and Cumulative layout shift, see [{{user-experience}} metrics](../../solutions/observability/apps/real-user-monitoring-user-experience.md#user-experience-metrics). |
+| Core web vitals | The Core web vitals chart is a graphical representation of key metrics, such asloading performance, load responsiveness, and visual stability, for each of yourweb applications.<br>To learn more about metrics such as Largest contentful paint, Interaction to next paint,and Cumulative layout shift, see [{{user-experience}} metrics](/solutions/observability/applications/user-experience.md#user-experience-metrics). |
 | Device distribution | The Device distribution chart displays device information such as OS, carrier name, and connection type. |
 
 For a breakdown of which data types are available for which reports, see [What data types can I explore?](#data-types)
@@ -64,7 +66,7 @@ To create a multi-series visualization:
     * User experience (RUM)
     * Mobile experience
 
-4. Click **Select report metric** and select the options and filters you need. You will see a **Missing…​** warning if required fields (highlighted with red underline) are incomplete.
+4. Click **Select report metric** and select the options and filters you need. You will see a **Missing…** warning if required fields (highlighted with red underline) are incomplete.
 5. Click **Apply changes** to see the updated visualization, or repeat the **Add series** process to expand the visualization.
 6. To add the visualization to an existing case, click **Add to case** and select the correct case.
 

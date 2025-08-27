@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Time series data stream (TSDS) [tsds]
@@ -93,7 +95,7 @@ To mark a field as a metric, you must specify a metric type using the `time_seri
 
 Accepted metric types vary based on the field type:
 
-:::::{dropdown} Valid values for `time_series_metric`
+:::::{dropdown} Valid values for time_series_metric
 `counter`
 :   A cumulative metric that only monotonically increases or resets to `0` (zero). For example, a count of errors or completed tasks.
 

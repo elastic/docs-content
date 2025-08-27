@@ -3,15 +3,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
   - https://www.elastic.co/guide/en/kibana/current/playground.html
 applies_to:
-  stack:
-  serverless:
+  stack: preview 9.0, beta 9.1
+  serverless: beta
+products:
+  - id: cloud-serverless
+  - id: kibana
 ---
 
 # Playground [playground]
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
 
 Use Playground to combine your Elasticsearch data with the power of large language models (LLMs) for retrieval augmented generation (RAG). The chat interface translates your natural language questions into {{es}} queries, retrieves the most relevant results from your {{es}} documents, and passes those documents to the LLM to generate tailored responses.
 
@@ -141,7 +140,7 @@ There are many options for ingesting data into {{es}}, including:
 * [Elastic connectors](elasticsearch://reference/search-connectors/index.md) for data synced from third-party sources
 * The {{es}} [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) for JSON documents
 
-    ::::{dropdown} **Expand** for example
+    ::::{dropdown} Expand for example
     To add a few documents to an index called `books` run the following in Dev Tools Console:
 
     ```console

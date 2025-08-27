@@ -1,4 +1,5 @@
 ---
+navigation_title: JWT
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-JWT.html
@@ -10,7 +11,10 @@ applies_to:
     ess:
     ece:
     eck:
-navigation_title: "JWT"
+products:
+  - id: cloud-hosted
+  - id: cloud-enterprise
+  - id: elasticsearch
 ---
 
 # JWT authentication [jwt-auth-realm]
@@ -70,7 +74,7 @@ Not every access token is formatted as a JSON Web Token (JWT). For it to be comp
 
 ## Configure {{es}} to use a JWT realm [jwt-realm-configuration]
 
-To use JWT authentication, create the realm in the `elasticsearch.yml` file to configure it within the {{es}} authentication chain.
+To use JWT authentication, create the realm in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file to configure it within the {{es}} authentication chain.
 
 The JWT realm has a few mandatory settings, plus optional settings that are described in [JWT realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-jwt-settings).
 
@@ -91,7 +95,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
     order: 3
     token_type: id_token
     client_authentication.type: shared_secret
-    allowed_issuer: "https://issuer.example.com/jwt/"
+    allowed_issuer: "<example-issuer-url>/jwt/"
     allowed_audiences: [ "8fb85eba-979c-496c-8ae2-a57fde3f12d0" ]
     allowed_signature_algorithms: [RS256,HS256]
     pkc_jwkset_path: jwt/jwkset.json
@@ -132,7 +136,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
     order: 4
     token_type: access_token
     client_authentication.type: shared_secret
-    allowed_issuer: "https://issuer.example.com/jwt/"
+    allowed_issuer: "<example-issuer-url>/jwt/"
     allowed_subjects: [ "123456-compute@admin.example.com" ]
     allowed_subject_patterns: [ "wild*@developer?.example.com", "/[a-z]+<1-10>\\@dev\\.example\\.com/"]
     allowed_audiences: [ "elasticsearch" ]
@@ -140,7 +144,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
       token_use: access
       version: ["1.0", "2.0"]
     allowed_signature_algorithms: [RS256,HS256]
-    pkc_jwkset_path: "https://idp-42.example.com/.well-known/configuration"
+    pkc_jwkset_path: "<example-idp-url>/.well-known/configuration"
     fallback_claims.sub: client_id
     fallback_claims.aud: scope
     claims.principal: sub
@@ -174,7 +178,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
 
    * The `shared_secret` value for `client_authentication.type`
 
-      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret1`)
+      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret`)
    * The HMAC keys for `allowed_signature_algorithms`
 
       (`xpack.security.authc.realms.jwt.jwt1.hmac_jwkset`)
@@ -280,7 +284,7 @@ You can relax validation of any of the time-based claims by setting `allowed_clo
 
 ## Role mapping [jwt-authorization]
 
-You can map LDAP groups to roles in the following ways:
+You can map JWT groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
 * Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
@@ -335,7 +339,7 @@ If you use this API in the JWT realm, the following claims are available for rol
 
 If you [delegate authorization](../../../deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) to other realms from the JWT realm, only the `principal` claim is available for role lookup. When delegating the assignment and lookup of roles to another realm from the JWT realm, claims for `dn`, `groups`, `mail`, `metadata`, and `name` are not used for the {{es}} user’s values. Only the JWT `principal` claim is passed to the delegated authorization realms. The realms that are delegated for authorization - not the JWT realm - become responsible for populating all of the {{es}} user’s values.
 
-The following example shows how you define delegation authorization in the `elasticsearch.yml` file to multiple other realms from the JWT realm. A JWT realm named `jwt2` is delegating authorization to multiple realms:
+The following example shows how you define delegation authorization in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file to multiple other realms from the JWT realm. A JWT realm named `jwt2` is delegating authorization to multiple realms:
 
 ```yaml
 xpack.security.authc.realms.jwt.jwt2.authorization_realms: file1,native1,ldap1,ad1
@@ -480,7 +484,7 @@ HMAC UTF-8: hmac-oidc-key-string-for-hs256-algorithm
 
 ### JWT realm settings [hmac-oidc-example-jwt-realm]
 
-To define a JWT realm, add the following realm settings to `elasticsearch.yml`.
+To define a JWT realm, add the following realm settings to [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
 ```yaml
 xpack.security.authc.realms.jwt.jwt8.order: 8 <1>

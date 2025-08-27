@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-functions-type-conversion.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-functions-type-conversion.html
+products:
+  - id: elasticsearch
 ---
 
 # Type Conversion Functions [sql-functions-type-conversion]

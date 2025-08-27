@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Open and manage cases [security-cases-open-manage]
@@ -46,7 +49,7 @@ Open a new case to keep track of security issues and share their details with co
 :screenshot:
 :::
 
-% This wasn't in the Serverless docs. Might be an ESS-only feature.
+% Check with Lisa if email notifications is an ESS-only feature. Not in Serverless docs: https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
 
 ## Add email notifications [cases-ui-notifications]
 
@@ -64,7 +67,7 @@ For self-managed {{kib}}:
 1. Create a preconfigured email connector.
 
     ::::{note}
-    At this time, email notifications support only [preconfigured email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md), which are defined in the `kibana.yml` file.
+    At this time, email notifications support only [preconfigured email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md), which are defined in the [`kibana.yml`](/deploy-manage/stack-settings.md) file.
     ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting to the name of your email connector.
@@ -122,7 +125,7 @@ Click on an existing case to access its summary. The case summary, located under
 
 ### Manage case comments [cases-manage-comments]
 
-To edit, delete, or quote a comment, select the appropriate option from the **More actions** menu (**…​**).
+To edit, delete, or quote a comment, select the appropriate option from the **More actions** menu (**…**).
 
 :::{image} /solutions/images/security-cases-manage-comments.png
 :alt: Shows you a summary of the case
@@ -156,7 +159,7 @@ To upload files to a case, click the **Files** tab:
 
 You can set file types and sizes by configuring your [{{kib}} case settings](kibana://reference/configuration-reference/cases-settings.md).
 
-% The following note was grabbed from the Serverless docs. Check if this is Serverless only or if it's for both.
+% Check with Lisa whether following note is only applicable to Serverless or if it's for ESS too.
 
 ::::{note}
 There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
@@ -200,7 +203,7 @@ To add a Lens visualization to a comment within your case:
 5. Click **Preview** to show how the visualization will appear in the case comment.
 6. Click **Add Comment** to add the visualization to your case.
 
-Alternatively, while viewing a [dashboard](/solutions/security/dashboards.md) you can open a panel’s menu then click **More actions (…​) → Add to existing case** or **More actions (…​) → Add to new case**.
+Alternatively, while viewing a [dashboard](/solutions/security/dashboards.md) you can open a panel’s menu then click **More actions (…) → Add to existing case** or **More actions (…) → Add to new case**.
 
 After a visualization has been added to a case, you can modify or interact with it by clicking the **Open Visualization** option in the case’s comment menu.
 
@@ -251,10 +254,11 @@ Go to the **Similar cases** tab to access other cases with the same observables.
 
 ### Copy the case UUID [cases-copy-case-uuid]
 
-Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the Cases page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…​), select **Copy Case ID**.
+Each case has a universally unique identifier (UUID) that you can copy and share. To copy a case’s UUID to a clipboard, go to the Cases page and select **Actions** → **Copy Case ID** for the case you want to share. Alternatively, go to a case’s details page, then from the **More actions** menu (…), select **Copy Case ID**.
 
 :::{image} /solutions/images/security-cases-copy-case-id.png
-:alt: Copy Case ID option in More actions menu 30%
+:alt: Copy Case ID option in More actions menu
+:width: 250px
 :screenshot:
 :::
 

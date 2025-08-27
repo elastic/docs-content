@@ -1,10 +1,12 @@
 ---
+navigation_title: Run a job
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Run a job"
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html
+products:
+  - id: machine-learning
 ---
 
 # Run a job [ml-ad-run-jobs]
@@ -22,7 +24,7 @@ If your data is located outside of {{es}}, you cannot use {{kib}} to create your
 
 ## Create an {{anomaly-job}} [ml-ad-create-job]
 
-You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job). {{kib}} also provides wizards to simplify the process, which vary depending on whether you are using the {{ml-app}} app, {{security-app}} or {{observability}} apps. To open **Anomaly Detection**, find **{{ml-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
+You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job). {{kib}} also provides wizards to simplify the process, which vary depending on whether you are using the {{ml-app}} app, {{security-app}} or {{observability}} apps. To start creating an {{anomaly-job}}, navigate to the **Anomaly Detection Jobs** page in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
 :::{image} /explore-analyze/images/machine-learning-ml-create-job.png
 :alt: Create New Job
@@ -129,7 +131,9 @@ One way to update the roles that are stored within the {{dfeed}} without changin
 
 ::::
 
-If the data that you want to analyze is not stored in {{es}}, you cannot use {{dfeeds}}. You can however send batches of data directly to the job by using the [post data to jobs API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-data). [7.11.0]
+:::{admonition} Deprecated in 7.11.0
+If the data that you want to analyze is not stored in {{es}}, you cannot use {{dfeeds}}. You can however send batches of data directly to the job by using the [post data to jobs API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-post-data).
+:::
 
 ## Open the job [ml-ad-open-job]
 

@@ -1,10 +1,12 @@
 ---
 navigation_title: Edit stack settings
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/editing-user-settings.html
 applies_to:
   deployment:
     ece: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/editing-user-settings.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Edit stack user settings [editing-user-settings]

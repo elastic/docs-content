@@ -1,10 +1,12 @@
 ---
-navigation_title: "Kafka"
+navigation_title: Kafka
 mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/ts-plugins.html
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: logstash
 ---
 
 # Troubleshoot Logstash plugin for Kafka [ts-kafka]
@@ -91,9 +93,6 @@ Logstash’s Kafka Input is causing a much higher number of commits to the offse
 For Kafka Broker versions 0.10.2.1 to 1.0.x: The problem is caused by a bug in Kafka. [https://issues.apache.org/jira/browse/KAFKA-6362](https://issues.apache.org/jira/browse/KAFKA-6362) The client’s best option is upgrading their Kafka Brokers to version 1.1 or newer.
 
 For older versions of Kafka or if the above does not fully resolve the issue: The problem can also be caused by setting the value for `poll_timeout_ms` too low relative to the rate at which the Kafka Brokers receive events themselves (or if Brokers periodically idle between receiving bursts of events). Increasing the value set for `poll_timeout_ms` proportionally decreases the number of offsets commits in this scenario. For example, raising it by 10x will lead to 10x fewer offset commits.
-
-
-#
 
 **Symptoms**
 

@@ -21,6 +21,7 @@ toc:
           - file: elasticsearch/remote-clusters.md
           - file: elasticsearch/diagnose-unassigned-shards.md
           - file: elasticsearch/troubleshooting-shards-capacity-issues.md
+          - file: elasticsearch/cluster-allocation-api-examples.md
       - file: elasticsearch/data.md
         children:
           - file: elasticsearch/allow-all-cluster-allocation.md
@@ -31,6 +32,8 @@ toc:
           - file: elasticsearch/increase-shard-limit.md
           - file: elasticsearch/increase-cluster-shard-limit.md
           - file: elasticsearch/corruption-troubleshooting.md
+          - file: elasticsearch/troubleshoot-ingest-pipelines.md
+
       - file: elasticsearch/capacity.md
         children:  
         - file: elasticsearch/fix-data-node-out-of-disk.md
@@ -65,26 +68,15 @@ toc:
           - file: elasticsearch/security/trb-security-internalserver.md
           - file: elasticsearch/security/trb-security-setup.md
           - file: elasticsearch/security/trb-security-path.md
-      - file: elasticsearch/clients.md
+          - file: elasticsearch/security/token-invalid-expired.md
+
+      - file: elasticsearch/errors.md
         children:
-          - file: elasticsearch/elasticsearch-client-java-api-client/java.md
-            children:
-              - file: elasticsearch/elasticsearch-client-java-api-client/missing-required-property.md
-              - file: elasticsearch/elasticsearch-client-java-api-client/error-no-such-method.md
-              - file: elasticsearch/elasticsearch-client-java-api-client/apache-errors.md
-              - file: elasticsearch/elasticsearch-client-java-api-client/typed-keys-serialization.md
-          - file: elasticsearch/elasticsearch-client-net-api/net.md
-            children:
-              - file: elasticsearch/elasticsearch-client-net-api/logging.md
-              - file: elasticsearch/elasticsearch-client-net-api/logging-with-onrequestcompleted.md
-              - file: elasticsearch/elasticsearch-client-net-api/logging-with-fiddler.md
-              - file: elasticsearch/elasticsearch-client-net-api/debugging.md
-                children:
-                  - file: elasticsearch/elasticsearch-client-net-api/audit-trail.md
-                  - file: elasticsearch/elasticsearch-client-net-api/debug-information.md
-                  - file: elasticsearch/elasticsearch-client-net-api/debug-mode.md
-          - file: elasticsearch/elasticsearch-client-javascript-api/nodejs.md
-          - file: elasticsearch/elasticsearch-client-ruby-api/ruby.md
+          - file: elasticsearch/all-shards-failed.md
+          - file: elasticsearch/failed-to-parse-field-of-type.md
+          - file: elasticsearch/unable-to-retrieve-node-fs-stats.md
+          - file: elasticsearch/unable-to-parse-response-body.md
+      - file: elasticsearch/clients.md
       - file: elasticsearch/diagnostic.md
       - file: elasticsearch/more-topics.md
         children:
@@ -151,6 +143,7 @@ toc:
   - file: ingest.md
     children:
       # - file: ingest/enterprise-search/crawls.md
+      - toc: ingest/opentelemetry
       - file: ingest/logstash.md
         children:
           - file: ingest/logstash/plugins.md
@@ -159,6 +152,7 @@ toc:
               - file: ingest/logstash/azure-event-hub.md
           - file: ingest/logstash/health-report-pipelines.md
           - file: ingest/logstash/contribute.md
+          - file: ingest/logstash/diagnostic.md
       - file: ingest/fleet/fleet-elastic-agent.md
         children:
           - file: ingest/fleet/common-problems.md

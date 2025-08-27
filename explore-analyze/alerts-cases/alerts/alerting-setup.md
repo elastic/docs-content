@@ -1,10 +1,12 @@
 ---
+navigation_title: Set up
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/alerting-setup.html
 applies_to:
   stack: ga
   serverless: ga
-navigation_title: "Set up"
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/alerting-setup.html
+products:
+  - id: kibana
 ---
 
 # Set up [alerting-setup]
@@ -15,7 +17,7 @@ mapped_pages:
 
 If you are using an **on-premises** {{stack}} deployment:
 
-* In the `kibana.yml` configuration file, add the [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/alerting-settings.md#general-alert-action-settings) setting.
+* In the [`kibana.yml`](/deploy-manage/stack-settings.md) configuration file, add the [`xpack.encryptedSavedObjects.encryptionKey`](kibana://reference/configuration-reference/alerting-settings.md#general-alert-action-settings) setting.
 * For emails to have a footer with a link back to {{kib}}, set the [`server.publicBaseUrl`](kibana://reference/configuration-reference/general-settings.md#server-publicbaseurl) configuration setting.
 
 If you are using an **on-premises** {{stack}} deployment with [**security**](../../../deploy-manage/security.md):
@@ -49,7 +51,11 @@ Likewise, you can customize the **Rules Settings** sub-feature privileges relate
 
 To create a rule that uses the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md), you must also have `All` privileges for the **Cases** feature.
 
-The rule type also affects the privileges that are required. For example, to create or edit {{ml}} rules, you must have `all` privileges for the **Analytics > {{ml-app}}** feature. For {{stack-monitor-app}} rules, you must have the `monitoring_user` role. For {{observability}} rules, you must have `all` privileges for the appropriate {{observability}} features. For Security rules, refer to [Detections prerequisites and requirements](../../../solutions/security/detect-and-alert/detections-requirements.md).
+The rule type also affects the privileges that are required to create and edit rules. For example:
+* For {{ml}} rules, you must have `all` privileges for the **Analytics > {{ml-app}}** feature.
+* For {{stack-monitor-app}} rules, you must have the `monitoring_user` role.
+* For most {{observability}} rules, you must have `all` privileges for the appropriate {{observability}} features. However, for a custom threshold rule, you only need the `stack alerts` privilege.
+* For Security rules, refer to [Detections prerequisites and requirements](../../../solutions/security/detect-and-alert/detections-requirements.md).
 
 ::::
 
@@ -95,7 +101,7 @@ When you disable a rule, it retains the associated API key which is reused when 
 
 You can generate a new API key at any time in **{{stack-manage-app}} > {{rules-ui}}** or in the rule details page by selecting **Update API key** in the actions menu.
 
-If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication](https://www.elastic.co/guide/en/kibana/current/api.html#api-authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
+If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication](https://www.elastic.co/docs/api/doc/kibana/authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
 
 ::::{important}
 If a rule requires certain privileges, such as index privileges, to run and a user without those privileges updates the rule, the rule will no longer function. Conversely, if a user with greater or administrator privileges modifies the rule, it will begin running with increased privileges. The same behavior occurs when you change the API key in the header of your API calls.

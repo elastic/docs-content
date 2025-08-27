@@ -6,16 +6,7 @@ toc:
       - file: query-filter/languages.md
         children:
           - file: query-filter/languages/querydsl.md
-          - file: query-filter/languages/esql.md
-            children:
-              - file: query-filter/languages/esql-getting-started.md
-              - file: query-filter/languages/esql-rest.md
-              - file: query-filter/languages/esql-kibana.md
-              - file: query-filter/languages/esql-elastic-security.md
-              - file: query-filter/languages/esql-multi-index.md
-              - file: query-filter/languages/esql-cross-clusters.md
-              - file: query-filter/languages/esql-task-management.md
-              - file: query-filter/languages/esql-examples.md
+          - file: query-filter/languages/esql-kibana.md
           - file: query-filter/languages/sql.md
             children:
               - file: query-filter/languages/sql-overview.md
@@ -118,6 +109,7 @@ toc:
       - file: transforms/transform-limitations.md
   - file: elastic-inference.md
     children:
+      - file: elastic-inference/eis.md
       - file: elastic-inference/inference-api.md
   - file: machine-learning.md
     children:
@@ -210,8 +202,6 @@ toc:
           - file: machine-learning/nlp/ml-nlp-limitations.md
       - file: machine-learning/machine-learning-in-kibana.md
         children:
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
           - file: machine-learning/machine-learning-in-kibana/inference-processing.md
   - file: scripting.md
@@ -272,6 +262,7 @@ toc:
       - file: visualize/text-panels.md
       - file: visualize/image-panels.md
       - file: visualize/link-panels.md
+      - file: visualize/alert-panels.md
       - file: visualize/canvas.md
         children:
           - file: visualize/canvas/edit-workpads.md
@@ -400,6 +391,7 @@ toc:
           - file: alerts-cases/watcher/example-watches.md
             children:
               - file: alerts-cases/watcher/watch-cluster-status.md
+              - file: alerts-cases/watcher/execute-watch.md
           - file: alerts-cases/watcher/watcher-limitations.md
       - file: alerts-cases/cases.md
         children:

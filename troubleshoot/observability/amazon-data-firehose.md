@@ -1,11 +1,13 @@
 ---
-navigation_title: "Amazon Data Firehose"
+navigation_title: Amazon Data Firehose
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-aws-firehose-troubleshooting.html
 applies_to:
   stack: all
   serverless:
     observability: all
+products:
+  - id: observability
 ---
 
 
@@ -27,5 +29,5 @@ There are several facets to optimizing the underlying Elasticsearch performance,
 
 ## Support [aws-firehose-troubleshooting-support]
 
-If you encounter further problems, please [contact us](/troubleshoot/index.md#contact-us).
+If you encounter further problems, [contact us](/troubleshoot/index.md#contact-us).
 

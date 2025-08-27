@@ -1,9 +1,11 @@
 ---
-navigation_title: "Elastic for Security"
+navigation_title: Elastic for Security
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-billing.html
 applies_to:
   serverless: all
+products:
+  - id: cloud-serverless
 ---
 
 # Elastic for Security billing dimensions [security-billing]
@@ -67,3 +69,8 @@ For [CNVM](../../../solutions/security/cloud/cloud-native-vulnerability-manageme
 Logs, events, alerts, and configuration data ingested into your security project are billed using the **Ingest** and **Retention** pricing described above.
 
 For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
+
+
+## Elastic Managed LLM
+
+The default [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) enables you to leverage AI-powered search as a service without deploying a model in your serverless project. It's configured by default to use with the Security AI Assistant, Attack Discovery, and other applicable AI features as a part of your "Complete" tier subscription. Using the default LLM will use tokens and incur related token-based add-on billing for your serverless project.

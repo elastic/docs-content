@@ -1,9 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-change-login-method.html
-applies:
+applies_to:
   serverless: all
-  hosted: all
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Add a login method [ec-change-login-method]

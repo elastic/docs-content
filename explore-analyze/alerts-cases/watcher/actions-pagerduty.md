@@ -1,10 +1,11 @@
 ---
-applies_to:
-  stack: ga
-  serverless: ga
-navigation_title: "PagerDuty action"
+navigation_title: PagerDuty action
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-pagerduty.html
+applies_to:
+  stack: ga
+products:
+  - id: elasticsearch
 ---
 
 # PagerDuty action [actions-pagerduty]
@@ -17,7 +18,7 @@ You configure PagerDuty actions in the `actions` array. Action-specific attribut
 
 The following snippet shows a simple PagerDuty action definition:
 
-```js
+```json
 "actions" : {
   "notify-pagerduty" : {
     "transform" : { ... },
@@ -35,7 +36,7 @@ The following snippet shows a simple PagerDuty action definition:
 
 To give the PagerDuty incident some more context, you can attach the payload as well as an array of contexts to the action.
 
-```js
+```json
 "actions" : {
   "notify-pagerduty" : {
     "throttle_period" : "5m",
@@ -100,7 +101,7 @@ $$$pagerduty-event-trigger-context-attributes$$$
 
 ## Configuring PagerDuty accounts [configuring-pagerduty]
 
-You configure the accounts {{watcher}} uses to communicate with PagerDuty in the `xpack.notification.pagerduty` namespace in `elasticsearch.yml`.
+You configure the accounts {{watcher}} uses to communicate with PagerDuty in the `xpack.notification.pagerduty` namespace in [`elasticsearch.yml`](/deploy-manage/stack-settings.md).
 
 To configure a PagerDuty account, you need the API integration key for the PagerDuty service you want to send notifications to. To get the key:
 
@@ -121,7 +122,7 @@ bin/elasticsearch-keystore add xpack.notification.pagerduty.account.my_pagerduty
 Storing the service api key in the YAML file or via cluster update settings is still supported, but the keystore setting should be used.
 ::::
 
-You can also specify defaults for the [PagerDuty event attributes](#pagerduty-event-trigger-incident-attributes): .
+You can also specify defaults for the [PagerDuty event attributes](#pagerduty-event-trigger-incident-attributes):
 
 ```yaml
 xpack.notification.pagerduty:

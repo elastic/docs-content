@@ -1,13 +1,15 @@
 ---
-navigation_title: "Migration and upgrades"
+navigation_title: Migration and upgrades
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/resolve-migrations-failures.html
 applies_to:
   deployment:
     ess: all
     ece: all
     self: all
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/kibana/current/resolve-migrations-failures.html
+products:
+  - id: kibana
 ---
 
 # Troubleshoot {{kib}} migration and upgrades [resolve-migrations-failures]
@@ -93,8 +95,9 @@ You can configure {{kib}} to automatically discard all corrupt objects and trans
 migrations.discardCorruptObjects: "8.4.0"
 ```
 
-**WARNING:** Enabling the flag above will cause the system to discard all corrupt objects, as well as those causing transform errors. Thus, it is HIGHLY recommended that you carefully review the list of conflicting objects in the logs.
-
+:::{warning}
+Enabling the flag above will cause the system to discard all corrupt objects, as well as those causing transform errors. Thus, it is HIGHLY recommended that you carefully review the list of conflicting objects in the logs.
+:::
 
 ## Documents for unknown saved objects [unknown-saved-object-types]
 

@@ -6,6 +6,10 @@ applies_to:
   deployment:
     ess:
     self:
+    eck:
+    ece:
+products:
+  - id: elasticsearch
 ---
 
 # Reading indices from older {{es}} versions [archive-indices]

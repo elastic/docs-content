@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-deploy-model.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-deploy-model.html
+products:
+  - id: machine-learning
 ---
 
 # Deploy the model in your cluster [ml-nlp-deploy-model]
@@ -14,7 +16,7 @@ You can deploy a model multiple times by assigning a unique deployment ID when s
 
 You can optimize your deplyoment for typical use cases, such as search and ingest. When you optimize for ingest, the throughput will be higher, which increases the number of {{infer}} requests that can be performed in parallel. When you optimize for search, the latency will be lower during search processes. When you have dedicated deployments for different purposes, you ensure that the search speed remains unaffected by ingest workloads, and vice versa. Having separate deployments for search and ingest mitigates performance issues resulting from interactions between the two, which can be hard to diagnose.
 
-:::{image} /explore-analyze/images/machine-learning-ml-nlp-deployment-id-elser-v2.png
+:::{image} /explore-analyze/images/ml-nlp-deployment-id-elser.png
 :alt: Model deployment on the Trained Models UI.
 :screenshot:
 :::
@@ -31,7 +33,7 @@ You can define the resource usage level of the NLP model during model deployment
 * Medium: This level limits resources to 32 vCPUs, which may be suitable for development, testing, and demos depending on your parameters. It is not recommended for production use.
 * High: This level may use the maximum number of vCPUs available for this deployment from the Cloud console. If the maximum is 2 vCPUs or fewer, this level is equivalent to the medium or low level.
 
-For the resource levels when adaptive resources are enabled, refer to <[*Trained model autoscaling*](../../../deploy-manage/autoscaling/trained-model-autoscaling.md).
+For the resource levels when adaptive resources are enabled, refer to [Trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md).
 
 ## Request queues and search priority [infer-request-queues]
 

@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html
 applies_to:
   stack: ga
   serverless: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html
+products:
+  - id: elasticsearch
 ---
 
 # Accessing document fields and special variables [modules-scripting-fields]
@@ -177,7 +179,7 @@ The `doc['field']` will throw an error if `field` is missing from the mappings. 
 ::::
 
 
-::::{admonition} Doc values and `text` fields
+::::{admonition} Doc values and text fields
 :class: note
 
 The `doc['field']` syntax can also be used for [analyzed `text` fields](elasticsearch://reference/elasticsearch/mapping-reference/text.md) if [`fielddata`](elasticsearch://reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param) is enabled, but **BEWARE**: enabling fielddata on a `text` field requires loading all of the terms into the JVM heap, which can be very expensive both in terms of memory and CPU. It seldom makes sense to access `text` fields from scripts.
@@ -239,7 +241,7 @@ GET my-index-000001/_search
 
 ### Stored fields [modules-scripting-stored]
 
-*Stored fields* — fields explicitly marked as [`"store": true`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-store.md) in the mapping — can be accessed using the `_fields['field_name'].value` or `_fields['field_name']` syntax:
+*Stored fields* — fields explicitly marked as [`"store": true`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-store.md) in the mapping — can be accessed using the `_fields['field_name'].value` or `_fields['field_name']` syntax:
 
 ```console
 PUT my-index-000001
@@ -277,7 +279,7 @@ GET my-index-000001/_search
 }
 ```
 
-::::{admonition} Stored vs `_source`
+::::{admonition} Stored vs _source
 :class: tip
 
 The `_source` field is just a special stored field, so the performance is similar to that of other stored fields. The `_source` provides access to the original document body that was indexed (including the ability to distinguish `null` values from empty fields, single-value arrays from plain scalars, etc).

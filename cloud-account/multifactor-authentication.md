@@ -1,30 +1,29 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-account-security-mfa.html
-applies:
+applies_to:
   serverless: all
-  hosted: all
+  deployment:
+    ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Multifactor authentication [ec-account-security-mfa]
 
-If you use a password-based login, Elastic requires you to enable multifactor authentication (MFA) for added security on your {{ecloud}} account.
-
-You can choose from the following methods:
+Multifactor authentication (MFA) is **mandatory** when you log in to {{ecloud}} using a standard email/password combination, and can't be turned off. It helps protecting your account by adding an extra identity verification step when you log in. You can choose and define the MFA method to use based on your preference:
 
 * Set up an **authenticator app** such as Google Authenticator, Microsoft Authenticator, or Okta Verify. These apps generate a time-based one-time password (TOTP) that you enter along with your password when you log in.
 * Authenticate using a **hardware security key or biometric data**, such as a YubiKey or a fingerprint reader.
 * Receive a verification code through **email**. You enter this code along with your password when you log in.
 
+::::{note} 
+You can no longer configure SMS as a multifactor authentication method. 
+::::
+
 Elastic recommends that you enable multiple methods so that you can still access your account if you lose access to one method.
 
 If you use only a Google or Microsoft account to log in, then you can’t configure MFA in {{ecloud}}. You can check and manage your multifactor authentication options in your Google or Microsoft account security settings.
-
-::::{note} 
-You can no longer configure SMS as a multifactor authentication method. If you already use SMS for multifactor authentication, then you can continue using it. You’ll be prompted to switch to a new MFA method in the future.
-
-::::
-
 
 ## Configure an authenticator app [ec-account-security-mfa-authenticator]
 
@@ -61,7 +60,7 @@ To enable multifactor authentication using an authenticator app, you must verify
 
 You can remove a multifactor authentication method after it’s added by clicking **Remove**.
 
-Before you remove an authentication method, you must set up an alternate method. If you can’t use any of your configured authentication methods — for example, if your device is lost or stolen — then [contact support](../troubleshoot/index.md).
+Before you remove an authentication method, you must set up an alternate method. If you can’t use any of your configured authentication methods — for example, if your device is lost or stolen — then [contact support](../troubleshoot/index.md).
 
 
 ## Frequently asked questions [ec-account-security-mfa-faq]
@@ -100,21 +99,19 @@ No, the Elastic Cloud default MFA enforcement does not apply when selecting **Lo
 
 **My team uses a generic account or distribution/mailing list and shares the password to access Elastic Cloud. How will my team be able to log in and access our Elastic Cloud organization after the MFA enforcement?**
 
-There are ways to work around the limitations of generic account access, but the more secure approach is to use one Elastic account for each Elastic Cloud user.
-
-You can explore the following workarounds:
-
-* Grant your team members access to that account’s Elastic Cloud organization by inviting and making them organization members. This may involve creating additional Elastic user accounts for each team member, depending on their organization access and ownership needs since we have yet to support multi-organization membership. When each team member has their own account to access your Elastic Cloud organization, they will be able to set up their own MFA  method.
-* Use the email MFA method, assuming all of your team members have access to the generic account or distribution list’s mailbox.
-* Keep using the generic account to log in and set up multifactor authentication [using an authenticator app](#ec-account-security-mfa-authenticator).
-
-  During the setup, take a photo of the QR code, or note its numeric version, and share it across your team. This code is sensitive and should be stored and shared securely. For example, it should be stored in an encrypted place using a secure algorithm such as AES-256, and transmitted over a secure encrypted channel such as TLS 1.3.
-
-  This QR code is the "base" number used by the Authenticator app to generate codes based on the current time. There is no danger of synchronization issues. However, there is risk of a breach if the QR code picture or number is compromised.
+The only secure and recommended approach is to use one Elastic account for each {{ecloud}} user. You can grant your team members access to that account’s {{ecloud}} organization by inviting and making them organization members. This may involve creating additional Elastic user accounts for each team member, depending on their organization access and ownership needs, because Elastic does not support multi-organization membership. When each team member has their own account to access your {{ecloud}} organization, they will be able to set up their own MFA method.
 
 
 **After I set up an MFA method, will I need to answer an MFA challenge every time I authenticate through Elastic Cloud?**
 
 For now, you will need to answer an MFA challenge on every login, but we are working on adding a **Trust this device** option, which will "silence" the MFA challenge for one month per user session.
+
+**Can I use multiple email addresses for MFA?**
+
+No, only one email address can be used for MFA verification. In alignment with security best practices, Elastic Cloud is designed to use only one designated email address for MFA purposes. This email is used to send your one-time verification codes during login. If you need to update your MFA email address, review [Update your email address](update-your-email-address.md) for more information.
+
+
+
+
 
 

@@ -1,11 +1,13 @@
 ---
+navigation_title: With a self-managed cluster
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-self-managed.html
 applies_to:
   deployment:
     ess: ga
     self: ga
-navigation_title: With a self-managed cluster
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-self-managed.html
+products:
+  - id: cloud-hosted
 ---
 
 # Access clusters of a self-managed environment [ec-remote-cluster-self-managed]
@@ -37,7 +39,6 @@ If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsear
 ### Prerequisites and limitations [ec_prerequisites_and_limitations_4]
 
 * The local and remote deployments must be on {{stack}} 8.14 or later.
-* API key authentication can’t be used in combination with traffic filters.
 * Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
 
 
@@ -59,8 +60,8 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
-3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+3. From the navigation menu, select **Security**.
+4. Locate **Remote connections** and select **Add API key**.
 
     1. Add a setting:
 
@@ -120,7 +121,7 @@ If you later need to update the remote connection with different permissions, yo
 
 A deployment can be configured to trust all or specific deployments in any environment:
 
-1. From the **Security** menu, select **Remote Connections > Add trusted environment** and choose **Self-managed**, then click **Next**.
+1. From the **Security** page, select **Remote Connections > Add trusted environment** and choose **Self-managed**. Then click **Next**.
 2. Select **Certificates** as authentication mechanism and click **Next**.
 3. Upload the public certificate for the Certificate Authority of the self-managed environment (the one used to sign all the cluster certificates). The certificate needs to be in PEM format and should not contain the private key. If you only have the key in p12 format, then you can create the necessary file like this: `openssl pkcs12 -in elastic-stack-ca.p12 -out newfile.crt.pem -clcerts -nokeys`
 4. Select the clusters to trust. There are two options here depending on the subject name of the certificates presented by the nodes in your self managed cluster:
@@ -132,12 +133,12 @@ A deployment can be configured to trust all or specific deployments in any envir
         Trust management will not work properly in clusters without an `otherName` value specified, as is the case by default in an out-of-the-box [{{es}} installation](../deploy/self-managed/installing-elasticsearch.md). To have the {{es}} certutil generate new certificates with the `otherName` attribute, use the file input with the `cn` attribute as in the example below.
         ::::
 
-5. . Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
+5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s **Security** page.
 6. Select **Create trust** to complete the configuration.
 7. Configure the self-managed cluster to trust this deployment, so that both deployments are configured to trust each other:
 
    * Download the Certificate Authority used to sign the certificates of your deployment nodes (it can be found in the Security page of your deployment)
-   * Trust this CA either using the [setting](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) `xpack.security.transport.ssl.certificate_authorities` in `elasticsearch.yml` or by [adding it to the trust store](../security/different-ca.md).
+   * Trust this CA either using the [setting](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md) `xpack.security.transport.ssl.certificate_authorities` in [`elasticsearch.yml`](/deploy-manage/stack-settings.md) or by [adding it to the trust store](../security/different-ca.md).
 
 8. Generate certificates with an `otherName` attribute using the {{es}} certutil. Create a file called `instances.yaml` with all the details of the nodes in your on-premise cluster like below. The `dns` and `ip` settings are optional, but `cn` is mandatory for use with the `trust_restrictions` path setting in the next step. Next, run `./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12 -in instances.yaml` to create new certificates for all the nodes at once. You can then copy the resulting files into each node.
 
@@ -232,11 +233,6 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       ::::
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.
-
-      :::{image} /deploy-manage/images/cloud-ce-copy-remote-cluster-parameters.png
-      :alt: Remote Cluster Parameters in Deployment
-      :screenshot:
-      :::
 
       ::::{note}
       If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).

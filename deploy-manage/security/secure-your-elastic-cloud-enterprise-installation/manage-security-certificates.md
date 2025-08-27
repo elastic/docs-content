@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-certificates.html
 applies_to:
   deployment:
     ece: ga
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-certificates.html
+products:
+  - id: cloud-enterprise
 ---
 
 # Manage security certificates [ece-manage-certificates]
@@ -20,10 +22,10 @@ Cloud UI certificate
 Proxy certificate
 :   Used to connect securely to {{es}} clusters and {{kib}}. You should use a wildcard certificate rooted at the [cluster endpoint that you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (`*.example.com`, for example). A wildcard certificate is required, because the first label of the DNS address is distinct for {{es}} clusters and {{kib}} (`bc898abb421843918ebc31a513169a.example.com`, for example).
 
-    If you wish to enable [custom endpoint aliases](../../deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) in ECE 2.10 or later, please also follow the directions for adding Subject Alternative Name (SAN) entries to support these aliases.
+    If you wish to enable [custom endpoint aliases](../../deploy/cloud-enterprise/enable-custom-endpoint-aliases.md) in ECE 2.10 or later, also follow the directions for adding Subject Alternative Name (SAN) entries to support these aliases.
 
     ::::{note} 
-    If you plan to deploy [Integration Servers](../../deploy/cloud-enterprise/manage-integrations-server.md), you must add two additional wildcard subdomains, `*.fleet.<your-domain>` and `*.apm.<your-domain>`, to the Subject Alternative Names (SANs) attached to the proxy wildcard certificate. Based on the previous example, your proxy certificates should end up with those three wildcards: `*.example.com, `*.fleet.example.com`, and `*.apm.example.com`.
+    If you plan to deploy [Integration Servers](../../deploy/cloud-enterprise/manage-integrations-server.md), you must add two additional wildcard subdomains, `*.fleet.<your-domain>` and `*.apm.<your-domain>`, to the Subject Alternative Names (SANs) attached to the proxy wildcard certificate. Based on the previous example, your proxy certificates should end up with those three wildcards: `*.example.com`, `*.fleet.example.com`, and `*.apm.example.com`.
     ::::
 
 

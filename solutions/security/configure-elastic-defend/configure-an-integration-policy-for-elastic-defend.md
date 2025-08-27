@@ -6,6 +6,9 @@ applies_to:
   stack: all
   serverless:
     security: all
+products:
+  - id: security
+  - id: cloud-serverless
 ---
 
 # Configure an integration policy for {{elastic-defend}}
@@ -45,8 +48,8 @@ To configure an integration policy:
 4. Click the **Trusted applications**, **Event filters**, **Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md), [Event filters](/solutions/security/manage-elastic-defend/event-filters.md), [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
 
     * Expand and view an artifact: Click the arrow next to its name.
-    * View an artifact’s details: Click the actions menu (**…​**), then select **View full details**.
-    * Unassign an artifact: Click the actions menu (**…​**), then select **Remove from policy**. This does not delete the artifact; this just unassigns it from the current policy.
+    * View an artifact’s details: Click the actions menu (**…**), then select **View full details**.
+    * Unassign an artifact: Click the actions menu (**…**), then select **Remove from policy**. This does not delete the artifact; this just unassigns it from the current policy.
     * Assign an existing artifact: Click **Assign *x* to policy**, then select an item from the flyout. This view lists any existing artifacts that aren’t already assigned to the current policy.
 
     ::::{note}
@@ -92,7 +95,7 @@ If you have the appropriate license or project feature, you can customize these 
 
 ### Manage quarantined files [manage-quarantined-files]
 
-When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically, {{elastic-defend}} will remove the file from its current location, encrypt it with the encryption key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
+When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically, {{elastic-defend}} will remove the file from its current location, apply a rolling XOR with the key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
 
 The quarantine folder location varies by operating system:
 
@@ -104,6 +107,10 @@ The quarantine folder location varies by operating system:
 To restore a quarantined file to its original state and location, [add an exception](/solutions/security/detect-and-alert/add-manage-exceptions.md) to the rule that identified the file as malicious. If the exception would’ve stopped the rule from identifying the file as malicious, {{elastic-defend}} restores the file.
 
 You can access a quarantined file by using the `get-file` [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the response console. To do this, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter. This action doesn’t restore the file to its original location, so you will need to do this manually.
+
+::::{important}
+When you retrieve a quarantined file using `get-file`, the XOR obfuscation is automatically reversed, and the original malicious file is retrieved.
+::::
 
 ::::{note}
 * In {{stack}}, response actions and the response console UI are [Enterprise subscription](https://www.elastic.co/pricing) features.
@@ -255,7 +262,7 @@ If you don’t want to sync antivirus registration, you can set it manually with
 
 ## Advanced policy settings (optional) [adv-policy-settings]
 
-Users with unique configuration and security requirements can select **Show advanced settings** while configuring an {{elastic-defend}} integration policy to support advanced use cases. Hover over each setting to view its description.
+Users with unique configuration and security requirements can select **Show advanced settings** while configuring an {{elastic-defend}} integration policy to support advanced use cases. Hover over each setting to view a short description or refer to [](/reference/security/defend-advanced-settings.md) for more detailed explanations.
 
 ::::{note}
 Advanced settings are not recommended for most users.

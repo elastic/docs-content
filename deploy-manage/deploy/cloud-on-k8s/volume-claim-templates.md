@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-volume-claim-templates.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-volume-claim-templates.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Volume claim templates [k8s-volume-claim-templates]
@@ -41,13 +43,13 @@ ECK automatically deletes PersistentVolumeClaim resources if the owning {{es}} n
 
 In addition, you can control what ECK should do with the PersistentVolumeClaims if you delete the {{es}} cluster altogether through the `volumeClaimDeletePolicy` attribute.
 
-```yaml
+```yaml subs=true
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: es
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   volumeClaimDeletePolicy: DeleteOnScaledownOnly
   nodeSets:
   - name: default

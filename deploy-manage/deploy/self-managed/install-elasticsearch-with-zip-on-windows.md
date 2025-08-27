@@ -1,18 +1,20 @@
 ---
+navigation_title: Install on Windows
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
-sub:
-  es-conf: "%ES_HOME%\\config"
-  slash: "\\"
-  export: "$"
-  escape: "^"
-  auto: ".bat"
-  ipcommand: "ipconfig /all"
-  ipvalue: "inet"
-navigation_title: Install on Windows
 applies_to:
   deployment:
     self:
+products:
+  - id: elasticsearch
+sub:
+  es-conf: "%ES_HOME%\\config"
+  slash: \
+  export: $
+  escape: ^
+  auto: .bat
+  ipcommand: ipconfig /all
+  ipvalue: inet
 ---
 
 # Install {{es}} with .zip on Windows [zip-windows]
@@ -39,14 +41,41 @@ On Windows, the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime
 
 ## Step 1: Download and install the `.zip` package [install-windows]
 
-% link url manually set
-Download the `.zip` archive for {{es}} {{stack-version}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{stack-version}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-windows-x86_64.zip)
+::::{tab-set}
 
-Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<version>`, which we will refer to as `%ES_HOME%`. In a terminal window, `cd` to the `%ES_HOME%` directory, for instance:
+:::{tab-item} Latest
+% link url manually set
+Download the `.zip` archive for {{es}} {{version.stack}} from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{version.stack}}-windows-x86_64.zip)
+
+Unzip it with your favorite unzip tool. This will create a folder with the following name:
+
+```text subs=true
+elasticsearch-{{version.stack}}
+```
+
+We will refer to this folder as `%ES_HOME%`. 
+
+In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
 
 ```sh subs=true
-cd C:\Program Files\elasticsearch-{{stack-version}}
+cd C:\Program Files\elasticsearch-{{version.stack}}
 ```
+:::
+
+:::{tab-item} Specific version
+Download the `.zip` archive for the {{es}} version that you want from the [Past Releases](https://www.elastic.co/downloads/past-releases) page.
+
+Unzip it with your favorite unzip tool. This will create a folder called `elasticsearch-<SPECIFIC.VERSION.NUMBER>`, where `<SPECIFIC.VERSION.NUMBER>` is the version you downloaded. We will refer to this folder as `%ES_HOME%`. 
+
+In a terminal window, `cd` to the `%ES_HOME%` directory, for example:
+
+```sh subs=true
+cd C:\Program Files\elasticsearch-<SPECIFIC.VERSION.NUMBER>
+```
+Replace `<SPECIFIC.VERSION.NUMBER>` with the {{es}} version you installed.
+:::
+::::
+
 
 ## Step 2: Enable automatic creation of system indices [windows-enable-indices]
 
@@ -108,10 +137,10 @@ You can install {{es}} as a service that runs in the background or starts automa
 1. Install {{es}} as a service. The name of the service and the value of `ES_JAVA_HOME` will be made available during install:
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat install
+    .\bin\elasticsearch-service.bat install
     ```
-    
-    Response: 
+
+    Response:
     ```
     Installing service      :  "elasticsearch-service-x64"
     Using ES_JAVA_HOME (64-bit):  "C:\jvm\jdk1.8"
@@ -127,7 +156,7 @@ You can install {{es}} as a service that runs in the background or starts automa
 2. Start {{es}} as a service. When {{es}} starts, authentication is enabled by default:
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>bin\elasticsearch-service.bat start
+    .\bin\elasticsearch-service.bat start
     ```
 
     ::::{note}
@@ -137,16 +166,12 @@ You can install {{es}} as a service that runs in the background or starts automa
 3. Generate a password for the `elastic` user with the [`elasticsearch-reset-password`](elasticsearch://reference/elasticsearch/command-line-tools/reset-password.md) tool. The password is output to the command line.
 
     ```sh subs=true
-    C:\Program Files\elasticsearch-{{stack-version}}\bin>\bin\elasticsearch-reset-password -u elastic
+    .\bin\elasticsearch-reset-password -u elastic
     ```
 
 #### Manage {{es}} as a service on Windows [windows-service-manage]
 
-Run the `elasticsearch-service.bat` script in the `bin\` folder to install, remove, manage, or configure the service and potentially start and stop the service from the command line.
-
-```sh subs=true
-C:\Program Files\elasticsearch-{{stack-version}}\bin>elasticsearch-service.bat
-```
+Use the `elasticsearch-service.bat` script located in the `bin\` folder to install, remove, manage, start, or stop the service from the command line. Starting and stopping are only available if the service is already installed.
 
 Usage:
 ```
@@ -183,8 +208,8 @@ The {{es}} service can be configured prior to installation by setting the follow
 | `SERVICE_ID` | A unique identifier for the service. Useful if installing multiple instances on the same machine. Defaults to `elasticsearch-service-x64`. |
 | `SERVICE_USERNAME` | The user to run as, defaults to the local system account. |
 | `SERVICE_PASSWORD` | The password for the user specified in `%SERVICE_USERNAME%`. |
-| `SERVICE_DISPLAY_NAME` | The name of the service. Defaults to `{{es}}<version> %SERVICE_ID%`. |
-| `SERVICE_DESCRIPTION` | The description of the service. Defaults to `{{es}}<version> Windows Service - https://elastic.co`. |
+| `SERVICE_DISPLAY_NAME` | The name of the service. Defaults to `Elasticsearch<version> %SERVICE_ID%`. |
+| `SERVICE_DESCRIPTION` | The description of the service. Defaults to `Elasticsearch<version> Windows Service - https://elastic.co`. |
 | `ES_JAVA_HOME` | The installation directory of the desired JVM to run the service under. |
 | `SERVICE_LOG_DIR` | Service log directory, defaults to `%ES_HOME%\logs`. Note that this does not control the path for the {{es}} logs; the path for these is set via the setting `path.logs` in the `elasticsearch.yml` configuration file, or on the command line. |
 | `ES_PATH_CONF` | Configuration file directory (which needs to include `elasticsearch.yml`, `jvm.options`, and `log4j2.properties` files), defaults to `%ES_HOME%\config`. |
@@ -248,7 +273,7 @@ Because the initial node in the cluster is bootstrapped as a single-node cluster
 
 ## Directory layout of `.zip` archive [windows-layout]
 
-The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `%ES_HOME%` — the directory created when unpacking the archive.
+The `.zip` package is entirely self-contained. All files and directories are, by default, contained within `%ES_HOME%` — the directory created when unpacking the archive.
 
 This is very convenient because you don’t have to create any directories to start using {{es}}, and uninstalling {{es}} is as easy as removing the `%ES_HOME%` directory. However, it is advisable to change the default locations of the config directory, the data directory, and the logs directory so that you do not delete important data later on.
 

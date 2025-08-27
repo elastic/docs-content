@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   stack: ga
   serverless: ga
+products:
+  - id: elasticsearch
 ---
 
 # Logs data stream [logs-data-stream]
@@ -46,7 +48,7 @@ PUT _index_template/my-index-template
 
 After the index template is created, new indices that use the template will be configured as a logs data stream. You can start indexing data and [using the data stream](use-data-stream.md).
 
-You can also set the index mode and adjust other template settings in [the Elastic UI](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md).
+You can also set the index mode and adjust other template settings in [the Elastic UI](/manage-data/data-store/index-basics.md#index-management-manage-index-templates).
 
 
 ## Synthetic source [logsdb-synthetic-source]
@@ -143,7 +145,7 @@ By default, `logsdb` index mode sets `ignore_malformed` to `true`. With this set
 
 ### `ignore_above` [logs-db-ignore-above]
 
-In `logsdb` index mode, the `index.mapping.ignore_above` setting is applied by default at the index level to ensure efficient storage and indexing of large keyword fields.The index-level default for `ignore_above` is 8191 *characters.* Using UTF-8 encoding, this results in a limit of 32764 bytes, depending on character encoding.
+In `logsdb` index mode, the `index.mapping.ignore_above` setting is applied by default at the index level to ensure efficient storage and indexing of large keyword fields. This applies to all members of the keyword type family (keyword, constant_keyword, and wildcard). The index-level default for `ignore_above` is 8191 *characters.* Using UTF-8 encoding, this results in a limit of 32764 bytes, depending on character encoding.
 
 The mapping-level `ignore_above` setting takes precedence. If a specific field has an `ignore_above` value defined in its mapping, that value overrides the index-level `index.mapping.ignore_above` value. This default behavior helps to optimize indexing performance by preventing excessively large string values from being indexed.
 

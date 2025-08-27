@@ -1,9 +1,11 @@
 ---
-navigation_title: "Index lifecycle management"
+navigation_title: Index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-index-lifecycle-management.html
 applies_to:
   stack:
+products:
+  - id: observability
 ---
 
 
@@ -54,7 +56,7 @@ Complete the following steps to configure a custom index lifecycle policy.
 5. Click **Save policy**.
 
 ::::{tip}
-See [Manage the index lifecycle](../../../manage-data/lifecycle/index-lifecycle-management.md) to learn more about {{ilm-init}} policies.
+See [Manage the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md) to learn more about {{ilm-init}} policies.
 ::::
 
 

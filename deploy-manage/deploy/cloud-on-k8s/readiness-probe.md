@@ -1,9 +1,11 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-readiness.html
 applies_to:
   deployment:
     eck: all
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-readiness.html
+products:
+  - id: cloud-kubernetes
 ---
 
 # Readiness probe [k8s-readiness]
@@ -14,9 +16,9 @@ By default, the readiness probe checks that the Pod responds to HTTP requests wi
 
 This example describes how to increase the API call timeout to ten seconds and the overall check time to twelve seconds:
 
-```yaml
+```yaml subs=true
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   nodeSets:
     - name: default
       count: 1

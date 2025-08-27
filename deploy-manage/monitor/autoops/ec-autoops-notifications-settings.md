@@ -4,6 +4,8 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+products:
+  - id: cloud-hosted
 ---
 
 # Notifications Settings [ec-autoops-notifications-settings]
@@ -11,7 +13,7 @@ applies_to:
 AutoOps can notify you of new events opened or closed through various methods and operation management tools. With a customizable mechanism, you can specify which events you want to be notified about, how you wish to receive these notifications, and their frequency.
 
 ::::{note}
-Only organization owners can configure these settings.
+Only **Organization owners** can configure these settings.
 ::::
 
 

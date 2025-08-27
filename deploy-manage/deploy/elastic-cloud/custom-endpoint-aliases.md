@@ -1,10 +1,12 @@
 ---
-applies_to:
-  deployment:
-    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-regional-deployment-aliases.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-regional-deployment-aliases.html
+applies_to:
+  deployment:
+    ess: ga
+products:
+  - id: cloud-hosted
 ---
 
 # Custom endpoint aliases
@@ -30,7 +32,7 @@ New deployments are assigned a default alias derived from the deployment name. T
 To add an alias to an existing deployment:
 
 1. From the **Hosted deployments** menu, select a deployment.
-2. Under **Custom endpoint alias**, select **Edit**.
+2. Under **Connection alias**, select **Create an alias**.
 3. Define a new alias. Make sure you choose something meaningful to you.
 
     ::::{tip}
@@ -45,8 +47,8 @@ To add an alias to an existing deployment:
 To remove an alias from your deployment, or if you want to re-assign an alias to another deployment, follow these steps:
 
 1. From the **Hosted deployments** menu, select a deployment.
-2. Under **Custom endpoint alias**, select **Edit**.
-3. Remove the text from the **Custom endpoint alias** text box.
+2. Under *Connection alias**, select **Edit**.
+3. Remove the text from the **Connection alias** text box.
 4. Select **Update alias**.
 
 ::::{note}

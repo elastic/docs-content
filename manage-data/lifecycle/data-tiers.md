@@ -5,12 +5,19 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
 applies_to:
   stack: ga
-  serverless: ga
+products:
+  - id: elasticsearch
+  - id: cloud-enterprise
+  - id: cloud-hosted
 ---
 
 # Data tiers
 
 A *data tier* is a collection of [nodes](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) within a cluster that share the same [data node role](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles), and a hardware profile that’s appropriately sized for the role. Elastic recommends that nodes in the same tier share the same hardware profile to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
+
+:::{admonition} Serverless manages data storage for you
+By abstracting cluster management tasks, {{serverless-full}} adjusts data storage and scaling based on your workload. Certain [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md) allow you to customize how your data is stored and calibrate the performance of your data.
+:::
 
 ## Available data tiers [available-tier]
 
@@ -48,7 +55,7 @@ Learn more about each data tier, including when and how it should be used.
 
 Data stored in the content tier is generally a collection of items such as a product catalog or article archive. Unlike time series data, the value of the content remains relatively constant over time, so it doesn’t make sense to move it to a tier with different performance characteristics as it ages. Content data typically has long data retention requirements, and you want to be able to retrieve items quickly regardless of how old they are.
 
-Content tier nodes are usually optimized for query performance—​they prioritize processing power over IO throughput so they can process complex searches and aggregations and return results quickly. While they are also responsible for indexing, content data is generally not ingested at as high a rate as time series data such as logs and metrics. From a resiliency perspective the indices in this tier should be configured to use one or more replicas.
+Content tier nodes are usually optimized for query performance—they prioritize processing power over IO throughput so they can process complex searches and aggregations and return results quickly. While they are also responsible for indexing, content data is generally not ingested at as high a rate as time series data such as logs and metrics. From a resiliency perspective the indices in this tier should be configured to use one or more replicas.
 
 The content tier is required and is often deployed within the same node grouping as the hot tier. System indices and other indices that aren’t part of a data stream are automatically allocated to the content tier.
 
@@ -383,7 +390,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 5. Restore indices from the searchable snapshots.
 
     1. Follow the steps to [specify the data tier based allocation inclusion rules](/manage-data/lifecycle/data-tiers.md#update-data-tier-allocation-rules).
-    2. Remove the associated ILM policy (set it to `null`). If you want to apply a different ILM policy, follow the steps to [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md#switch-lifecycle-policies).
+    2. Remove the associated ILM policy (set it to `null`). If you want to apply a different ILM policy, follow the steps to [Switch lifecycle policies](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md#switch-lifecycle-policies).
     3. If needed, specify the alias for rollover, otherwise set it to `null`.
     4. Optionally, specify the desired number of replica shards.
 
@@ -441,7 +448,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
 ### Self-managed deployments [configure-data-tiers-on-premise]
 
-For self-managed deployments, each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) is configured in `elasticsearch.yml`. For example, the highest-performance nodes in a cluster might be assigned to both the hot and content tiers:
+For self-managed deployments, each node’s [data role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) is configured in [`elasticsearch.yml`](/deploy-manage/stack-settings.md). For example, the highest-performance nodes in a cluster might be assigned to both the hot and content tiers:
 
 ```yaml
 node.roles: ["data_hot", "data_content"]
@@ -466,7 +473,7 @@ At the time of index creation, you can override the default setting by explicitl
 
 You can override this setting after index creation by [updating the index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to the preferred value.
 
-This setting also accepts multiple tiers in order of preference. This prevents indices from remaining unallocated if no nodes are available in the preferred tier. For example, when {{ilm}} migrates an index to the cold phase, it sets the index `_tier_preference` to `data_cold,data_warm,data_hot`.
+This setting also accepts multiple tiers in order of preference. This prevents indices from remaining unallocated if there are no nodes in the cluster for the preferred tier. For example, when {{ilm}} migrates an index to the cold phase, it sets the index `_tier_preference` to `data_cold,data_warm,data_hot`.
 
 To remove the data tier preference setting, set the `_tier_preference` value to `null`. This allows the index to allocate to any data node within the cluster. Setting the `_tier_preference` to `null` does not restore the default value. Note that, in the case of managed indices, a [migrate](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action might apply a new value in its place.
 

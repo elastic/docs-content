@@ -1,10 +1,12 @@
 ---
-navigation_title: "Collect monitoring data with {{metricbeat}}"
+navigation_title: Collect monitoring data with {{metricbeat}}
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitoring-metricbeat.html
 applies_to:
   deployment:
     self: all
+products:
+  - id: kibana
 ---
 
 
@@ -24,7 +26,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 
 1. Disable the default collection of {{kib}} monitoring metrics.
 
-    Add the following setting in the {{kib}} configuration file (`kibana.yml`):
+    Add the following setting in the {{kib}} configuration file ([`kibana.yml`](/deploy-manage/stack-settings.md)):
 
     ```yaml
     monitoring.kibana.collection.enabled: false
@@ -36,7 +38,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 3. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is disabled (`false`).
 
     ::::{note}
-    You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
+    You can specify this setting in either the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
     ::::
 
 
@@ -125,7 +127,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
     ```yaml
     output.elasticsearch:
       # Array of hosts to connect to.
-      hosts: ["http://es-mon-1:9200", "http://es-mon2:9200"] <1>
+      hosts: ["<ES_MONITORING_HOST1_URL>:9200", "http://es-mon2:9200"] <1>
 
       # Optional protocol and basic auth credentials.
       #protocol: "https"

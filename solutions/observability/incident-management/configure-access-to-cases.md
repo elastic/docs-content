@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/grant-cases-access.html
+products:
+  - id: observability
 ---
 
 # Configure access to cases [grant-cases-access]
@@ -12,7 +14,7 @@ If you are using an on-premises {{kib}} deployment and want your email notificat
 ::::
 
 
-For more details, refer to [feature access based on user privileges](../../../deploy-manage/manage-spaces.md#spaces-control-user-access).
+For more details, refer to [feature access based on user privileges](/deploy-manage/manage-spaces.md#spaces-control-user-access).
 
 :::{image} /solutions/images/observability-cases-privileges.png
 :alt: cases privileges
