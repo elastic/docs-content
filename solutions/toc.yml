@@ -10,13 +10,10 @@ toc:
           - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
             children:
+              - file: search/get-started/index-basics.md
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
       - file: search/api-quickstarts.md
-        children:
-          - file: search/elasticsearch-basics-quickstart.md
-          - file: search/querydsl-full-text-filter-tutorial.md
-          - file: search/esql-search-tutorial.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -466,6 +463,8 @@ toc:
               - file: observability/incident-management/create-an-slo.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
+        children:
+          - file: observability/connect-to-own-local-llm.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
@@ -503,9 +502,11 @@ toc:
             children: 
               - file: security/ai/ease/ease-alerts.md
               - file: security/ai/ease/ease-value-report.md
+              - file: security/ai/ease/ease-upgrade.md
           - file: security/ai/ai-assistant.md
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
+              - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/attack-discovery.md
           - file: security/ai/set-up-connectors-for-large-language-models-llm.md
             children:

@@ -16,12 +16,12 @@ products:
 This page provides an overview of how to use {{esql}} for search use cases.
 
 ::::{tip}
-For a hands-on tutorial check out [Search and filter with {{esql}}](esql-search-tutorial.md).
+For a hands-on tutorial check out [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md).
 ::::
 
 ## {{esql}} search quick reference
 
-The following table summarizes the key search features available in [{{esql}}](/explore-analyze/query-filter/languages/esql.md) and when they were introduced, organized chronologically by release.
+The following table summarizes the key search features available in [{{esql}}](elasticsearch://reference/query-languages/esql.md) and when they were introduced, organized chronologically by release.
 
 | Feature | Description | Available since |
 |---------|-------------|----------------|
@@ -76,7 +76,7 @@ The following functions provide text-based search capabilities in {{esql}} with 
 - Use the compact [operator syntax (:)](elasticsearch://reference/query-languages/esql/functions-operators/operators.md#esql-match-operator) for simple text matching with default parameters.
 - Use the [MATCH function syntax](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md#esql-match) for more control over the query, such as specifying analyzers, fuzziness, and other parameters.
 
-Refer to the [tutorial](esql-search-tutorial.md#step-3-basic-search-operations) for examples of both syntaxes.
+Refer to the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-3-basic-search-operations) for examples of both syntaxes.
 
 ### `MATCH_PHRASE` function
 
@@ -104,19 +104,19 @@ For migrating queries from other Kibana interfaces, the `KQL` function preserves
 
 In {{esql}}, you can perform semantic searches on [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field types using the same match syntax as full-text search.
 
-Refer to [semantic search with semantic_text](/solutions/search/semantic-search/semantic-search-semantic-text.md) for an example or follow the [tutorial](esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
+Refer to [semantic search with semantic_text](/solutions/search/semantic-search/semantic-search-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
 
 ### Hybrid search
 
 [Hybrid search](/solutions/search/hybrid-search.md) combines lexical and semantic search with custom weights to leverage both exact keyword matching and semantic understanding.
 
-Refer to [hybrid search with semantic_text](hybrid-semantic-text.md) for an example or follow the [tutorial](esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
+Refer to [hybrid search with semantic_text](hybrid-semantic-text.md) for an example or follow the [tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md#step-5-semantic-search-and-hybrid-search).
 
 ## Next steps [esql-for-search-next-steps]
 
 ### Tutorials and how-to guides [esql-for-search-tutorials]
 
-- [Search and filter with {{esql}}](esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {{esql}}, with concrete examples of the functionalities described in this page
+- [Search and filter with {{esql}}](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md): Hands-on tutorial for getting started with search tools in {{esql}}, with concrete examples of the functionalities described in this page
 
 ### Technical reference [esql-for-search-reference]
 

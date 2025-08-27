@@ -85,14 +85,23 @@ When you use {{agent}} and {{fleet-server}}, these limitations apply:
 * Running {{agent}} in [OpenTelemetry mode](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/README.md) is not yet supported. This includes all receivers, such as Filebeat Receiver, Metricbeat Receiver, [Prometheus Receiver](https://www.elastic.co/docs/reference/integrations/prometheus).
 * Some Elastic Integrations are not FIPS compatible, as they depend on functionality that is not yet supported for FIPS configuration. In general, when using {{agent}} and {{fleet-server}}, the same restrictions listed previously for {{metricbeat}} and {{filebeat}} modules, inputs, and processors apply.
 
-  These Elastic Integrations have components that are **not** FIPS compatible, and **cannot** be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
+### Elastic Integrations that are not FIPS compatible [ingest-limitations-integrations]
 
-  - [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
-  - [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
-  - [SQL Input](integration-docs://reference/sql.md) 
-  - [PostgreSQL Integration](integration-docs://reference/postgresql.md)
-  - [MongoDB Integration](integration-docs://reference/mongodb.md)
-  - [MySQL Integration](integration-docs://reference/mysql.md)
-  - [Microsoft SQL Server Integration](integration-docs://reference/microsoft_sqlserver.md)
-  - [Oracle Integration](integration-docs://reference/oracle.md)
+These Elastic Integrations have components that are **not** FIPS compatible, and **cannot** be used in FIPS environments, even if combined with other ingest tools that offer FIPS mode. 
 
+- [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
+- [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
+- [Azure AI Foundry Integration](integration-docs://reference/azure_ai_foundry.md)
+- [Azure App Service Integration](integration-docs://reference/azure_app_service.md)
+- [Azure Application Insights Integration](integration-docs://reference/azure_application_insights.md)
+- [Azure Billing Metrics Integration](integration-docs://reference/azure_billing.md)
+- [Azure Functions Integration](integration-docs://reference/azure_functions.md)
+- [Custom Azure Logs Integration](integration-docs://reference/azure_logs.md)
+- [Azure Resource Metrics Integration](integration-docs://reference/azure_metrics.md)
+- [Azure OpenAI Integration](integration-docs://reference/azure_openai.md)
+- [SQL Input](integration-docs://reference/sql.md) 
+- [PostgreSQL Integration](integration-docs://reference/postgresql.md)
+- [MongoDB Integration](integration-docs://reference/mongodb.md)
+- [MySQL Integration](integration-docs://reference/mysql.md)
+- [Microsoft SQL Server Integration](integration-docs://reference/microsoft_sqlserver.md)
+- [Oracle Integration](integration-docs://reference/oracle.md)

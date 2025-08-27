@@ -137,7 +137,7 @@ Optionally open [Discover](/explore-analyze/discover.md) from the navigation men
 
 A keyword search, also known as lexical search or [full-text search](/solutions/search/full-text.md) finds relevant documents in your indices using exact matches, patterns, or similarity scoring.
 The guided workflow provides an example that uses [Query DSL](/explore-analyze/query-filter/languages/querydsl.md).
-Alternatively, try out [{{es}} Query Language](/explore-analyze/query-filter/languages/esql.md) ({{esql}}) to find documents that match a specific keyword:
+Alternatively, try out [{{es}} Query Language](elasticsearch://reference/query-languages/esql.md) ({{esql}}) to find documents that match a specific keyword:
 
 ```py
 response = client.esql.query(

@@ -14,7 +14,7 @@ You can find installation and configuration details for all integrations in the 
 
 When you install an integration, an [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy is configured automatically to manage the integration's component [data streams](/manage-data/data-store/data-streams.md) and their backing indices. To view or adjust how your integration data is managed, a first step is to find the data streams that you're interested in. There are a few ways to do this:
 
-::::{dropdown} Find the data stream for a {{kib}} visualation
+::::{dropdown} Find the data stream for a {{kib}} visualization
 To find the data stream associated with a visualization in a {{kib}}:
 
 1. Open **Dashboards** from the {{kib}} menu and select a dashboard to view. For example, with the [System integration](integration-docs://reference/system.md) installed, you can open the `[Metrics System] Host overview` dashboard to find visualizations about the host system being monitored.
