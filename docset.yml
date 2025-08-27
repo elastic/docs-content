@@ -200,6 +200,7 @@ subs:
   ilm:   "index lifecycle management"
   ilm-cap:   "Index lifecycle management"
   ilm-init:   "ILM"
+  dlm-init:   "DLM"
   search-snap:   "searchable snapshot"
   search-snaps:   "searchable snapshots"
   search-snaps-cap:   "Searchable snapshots"
