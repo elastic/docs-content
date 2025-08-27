@@ -13,25 +13,9 @@ products:
 
 # Suppress detection alerts [security-alert-suppression]
 
+Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by [detection rules](/solutions/security/detect-and-alert/about-detection-rules.md) Normally, when a rule meets its criteria repeatedly, it creates multiple alerts, one for each time the rule’s criteria are met. When alert suppression is configured, duplicate qualifying events are grouped, and only one alert is created for each group. 
 
-::::{admonition} Requirements and notices
-* In {{stack}} alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing) or the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
-* {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
-* This functionality is in technical preview for event correlation rules only and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-
-::::
-
-Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by these detection rule types:
-
-* [Custom query](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule)
-* [Threshold](/solutions/security/detect-and-alert/create-detection-rule.md#create-threshold-rule)
-* [Indicator match](/solutions/security/detect-and-alert/create-detection-rule.md#create-indicator-rule)
-* [Event correlation](/solutions/security/detect-and-alert/create-detection-rule.md#create-eql-rule)
-* [New terms](/solutions/security/detect-and-alert/create-detection-rule.md#create-new-terms-rule)
-* [{{esql}}](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule)
-* [{{ml-cap}}](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule)
-
-Normally, when a rule meets its criteria repeatedly, it creates multiple alerts, one for each time the rule’s criteria are met. When alert suppression is configured, duplicate qualifying events are grouped, and only one alert is created for each group. Depending on the rule type, you can configure alert suppression to create alerts each time the rule runs, or once within a specified time window. You can also specify multiple fields to group events by unique combinations of values.
+Depending on the rule type, you can configure alert suppression to create alerts each time the rule runs, or once within a specified time window. You can also specify multiple fields to group events by unique combinations of values.
 
 The {{security-app}} displays several indicators in the Alerts table and the alert details flyout when a detection alert is created with alert suppression enabled. You can view the original events associated with suppressed alerts by investigating the alert in Timeline.
 
@@ -42,31 +26,44 @@ Alert suppression is not available for Elastic prebuilt rules. However, if you w
 
 ## Configure alert suppression [security-alert-suppression-configure-alert-suppression]
 
-You can configure alert suppression when you create or edit a supported rule type. Refer to documentation for creating [custom query](/solutions/security/detect-and-alert/create-detection-rule.md#create-custom-rule), [threshold](/solutions/security/detect-and-alert/create-detection-rule.md#create-threshold-rule), [event correlation](/solutions/security/detect-and-alert/create-detection-rule.md#create-eql-rule), [new terms](/solutions/security/detect-and-alert/create-detection-rule.md#create-new-terms-rule), [{{esql}}](/solutions/security/detect-and-alert/create-detection-rule.md#create-esql-rule), or [{{ml}}](/solutions/security/detect-and-alert/create-detection-rule.md#create-ml-rule) rules for detailed instructions.
+::::{admonition} Requirements and notices
+* In {{stack}} alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing) or the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
+* This functionality is in technical preview for event correlation rules only and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 
-1. When configuring the rule type (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group events for alert suppression:
+::::
 
-    * **Custom query, indicator match, threshold, event correlation, new terms, {{ml}}, and {{esql}} rules:** In **Suppress alerts by**, enter 1-3 field names to group events by the fields' values.
-    * **Threshold rule:** In **Group by**, enter up to 3 field names to group events by the fields' values, or leave the setting empty to group all qualifying events together.
+You can configure alert suppression when [creating](/solutions/security/detect-and-alert/create-detection-rule.md) or editing a rule.  
+
+1. When configuring the rule (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group duplicate events for alert suppression:
+
+    * **All rule types except the threshold rule:** In **Suppress alerts by**, enter 1-3 field names to group events by the fields' values.
+    
+       If you specify a field with multiple values, duplicate events are grouped, and only one alert is created for each group. Note how each rule type is handled:
+
+       * **Custom query rules:** Duplicate events are grouped by each unique value and an alert is created for each group. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, events are grouped separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3` and an alert is created for each group.
+
+        * **Indicator match, event correlation (non-sequence queries only), new terms, {{esql}}, or {{ml}} rules:** Events with identical array values are grouped together. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts with the entire array are grouped and only one alert is created for the group.
+           
+        * **Event correlation (sequence queries only) rules:** Events with an exact match are grouped. Note that the event's field values must be identical and in the same order. For example, if you specify the field `myips` and one sequence alert has `[1.1.1.1, 0.0.0.0]` and another sequence alert has `[1.1.1.1, 192.168.0.1]`, neither of those alerts are suppressed, despite sharing an array element.
+
+    * **Threshold rule only:** In **Group by**, enter up to 3 field names to group events by the fields' values, or leave the setting empty to group all qualifying events together. 
+    
+       If you specify a field with multiple values, duplicate events are grouped by each unique value. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts are suppressed separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3`.
+
+2. Choose how often to create alerts for duplicate events. This interval is called the _suppression window_. 
 
     ::::{note}
-    If you specify a field with multiple values, alerts with that field are handled as follows:
+    
+    Note the following about your rule's suppression window:
 
-    * **Custom query or threshold rules:** Alerts are grouped by each unique value. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts will be suppressed separately for each value of `127.0.0.1`, `127.0.0.2`, and `127.0.0.3`.
-    * **Indicator match, event correlation (non-sequence queries only), new terms, {{esql}}, or {{ml}} rules:** Alerts with the specified field name and identical array values are grouped together. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts with the entire array are grouped and only one alert is created for the group.
-    * **Event correlation (sequence queries only) rules:** If the specified field contains an array of values, suppression only happens if the field’s values are an exact match and in the same order. For example, if you specify the field `myips` and one sequence alert has [1.1.1.1, 0.0.0.0] and another sequence alert has [1.1.1.1, 192.168.0.1], neither of those alerts will be suppressed, despite sharing an array element.
+    * {applies_to}`stack: ga 9.0` {applies_to}`stack: ga 9.1` Avoid closing alerts generated for suppression before the suppression window ends. Closing alerts early can interrupt alert suppression or cause unexpected changes. 
+    * {applies_to}`stack: ga 9.2` Configure the `securitySolution:suppressionBehaviorOnAlertClosure` advanced setting to...
 
     ::::
-
-2. If available, select how often to create alerts for duplicate events:
-
-    ::::{note}
-    Both options are available for custom query, indicator match, event correlation, new terms, {{esql}}, and {{ml}} rules. Threshold rules only have the **Per time period** option.
-    ::::
-
 
     * **Per rule execution**: Create an alert each time the rule runs and an event meets its criteria.
-    * **Per time period**: Create one alert for all qualifying events that occur within a specified time window, beginning from when an event first meets the rule criteria and creates the alert.
+    * **Per time period**: Create one alert for all qualifying events that occur within a specified time window, beginning from when an event first meets the rule criteria and creates the alert. This is the only option available when configuring alert suppression for threshold rules.
 
         For example, if a rule runs every 5 minutes but you don’t need alerts that frequently, you can set the suppression time period to a longer time, such as 1 hour. If the rule meets its criteria, it creates an alert at that time, and for the next hour, it’ll suppress any subsequent qualifying events.
 
