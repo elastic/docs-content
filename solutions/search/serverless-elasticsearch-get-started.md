@@ -55,13 +55,23 @@ Use your {{ecloud}} account to create a fully-managed {{es}} project:
 6. Once the project is ready, select **Continue**.
 
 ::::{tip}
+
+**The General Purpose (GP) profile is recommended when your use case is based on:**
+
+- full text search
+- sparse vector-based semantic search (such as ELSER)
+- dense vectors compressed using BBQ (enabled by default)
+- sparse vectors
+
+**The Vector Optimized (VO) profile is recommended when your use case is based on:**
+
+- uncompressed dense vectors with high dimensionality
+
 Learn how billing works for your project in [Elasticsearch billing dimensions](../../deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
 
 ::::
 
-
 Now your project is ready to start creating indices, adding data, and performing searches. You can choose one of the following options to proceed.
-
 
 ## Option 1: Follow the guided index flow [elasticsearch-follow-guided-index-flow]
 
