@@ -14,17 +14,17 @@ This is particularly useful for time-series data, such as logs or metrics where 
 
 Without rollover, a single index would continue to grow, causing search performance to drop and having a higher administrative burden on the cluster.
 
-The rollover feature is an important part of how [index lifecycle](../index-lifecycle-management/index-lifecycle.md) (ILM) and [data stream lifecycles](../data-stream.md) (DLM) work to keep your indices fast and manageable. By switching the write target of an index, the rollover action provides the following benefits:
+The rollover feature is an important part of how [index lifecycle](../index-lifecycle-management/index-lifecycle.md) ({{ilm-init}}) and [data stream lifecycles](../data-stream.md) ({{dlm-init}}) work to keep your indices fast and manageable. By switching the write target of an index, the rollover action provides the following benefits:
 
-* **Lifecycle** - works with lifecycle management (ILM or DLM) to transition the index through its lifecycle actions and allows for granular control over retention cycles
+* **Lifecycle** - works with lifecycle management ({{ilm-init}} or {{dlm-init}}) to transition the index through its lifecycle actions and allows for granular control over retention cycles
 * **Optimized performance** - keeps shard sizes within recommended limits (10-50 GB)
 * **Queries run faster** - improves search performance
 
-Rollover can be triggered via the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), ILM, or DLM.
+Rollover can be triggered via the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover), {{ilm-init}}, or {{dlm-init}}.
 
-## How rollover works in ILM
+## How rollover works in {{ilm-init}}
 
-You define a rollover action in the hot phase of an index lifecycle policy. It will run when any of the configured thresholds are met and the write index contains at least one document.
+You define a rollover action in the hot phase of an index lifecycle policy. It will run when any of the configured conditions are met and the write index contains at least one document.
 You can configure the following rollover conditions:
 
 * **Size** - an index will rollover when its shards reach a set size, for example 50 GB.
@@ -35,7 +35,7 @@ You can configure the following rollover conditions:
 Rolling over to a new index based on size, document count, or age is preferable to time-based rollovers. Rolling over at an arbitrary time often results in many small indices, which can have a negative impact on performance and resource usage.
 ::::
 
-After rollover, indices move through other configured index lifecycle phases: warm, cold, frozen, and/or delete. Rollover creates a new write index while the old one continues through the lifecycle phases.
+After rollover, indices move through other configured index lifecycle phases: warm, cold, frozen, and delete. Rollover creates a new write index while the previous one continues through the lifecycle phases.
 
 **Special rules:**
 
@@ -52,21 +52,22 @@ Decide your approach to index rotation based on your use case and requirements.
 | Legacy indexing setup  | [Alias-based rollover](rollover.md#rollover-with-aliases) | Configure rollover with lifecycle management, *advanced setup*, control over rollover timing    |
 | Small, static datasets | No rollover                                               | Simpler management                                                                              |
 
-^1^ Rollover is handled automatically in {{es-serverless}} projects. {applies_to}`serverless: ga`
+^1^ Rollover is handled automatically for data streams in {{es-serverless}} projects. {applies_to}`serverless: ga`
 
 :::{tip}
-For new projects, use data streams. They're simple to manage with lifecycle policies where you define phases and actions that handle rollover automatically.
+For new projects, use data streams. Unlike aliases, they're simpler to manage by defining lifecycle actions without requiring additional configuration for rollover.
 :::
 
 
 ### Rotating your indices with data streams [rollover-data-stream]
 
-We recommend using [data streams](../../data-store/data-streams.md) to manage time series data. When set up to use an ILM policy that includes rollover, a data stream automatically manages the rotation of your indices. This ensures you can write to the data stream without additional configuration.
+We recommend using [data streams](../../data-store/data-streams.md) to manage time series data. When set up to use an {{ilm-init}} policy that includes rollover, a data stream manages the rotation of your indices without additional configuration.
 When targeting a data stream, each time the current write index reaches a specified age or size, a new backing index is generated (with an incremented number and timestamp), and it becomes the data stream's writing index.
 
 Each data stream requires an [index template](../../data-store/templates.md) that contains the following:
 
 * A name or wildcard (`*`) pattern for the data stream.
+* A configuration that indicates a data stream is used for the index pattern.
 * Optional: The mappings and settings applied to each backing index when it’s created.
 
 For more information about this approach, refer to the [Manage time series data with data streams](../index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-with-data-streams) tutorial.
