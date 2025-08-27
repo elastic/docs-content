@@ -28,31 +28,31 @@ Find answers to your questions about AutoOps for ECE, ECK, and self-managed clus
 * [What information does {{agent}} extract from my cluster?](#extracted-info)
 
 ## General questions
-$$$why-autoops$$$ Why should I use AutoOps for my clusters?
+$$$why-autoops$$$ **Why should I use AutoOps for my clusters?** 
 :   AutoOps simplifies the operation of your {{es}} clusters by providing real-time monitoring, performance insights, and issue detection. It helps you identify and resolve problems like ingestion bottlenecks and unbalanced shards, reducing manual effort and preventing performance issues. 
 
-$$$additional-payment$$$ Does this feature require additional payment?
+$$$additional-payment$$$ **Does this feature require additional payment?**
 :   :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 ::: 
 
-$$$es-versions$$$ Which versions of {{es}} does AutoOps support?
+$$$es-versions$$$ **Which versions of {{es}} does AutoOps support?**
 :   AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.co/support/eol).
 
-$$$deployment-types$$$ Which deployment types can be connected to AutoOps?
+$$$deployment-types$$$ **Which deployment types can be connected to AutoOps?**
 :   You can connect to AutoOps on a standalone {{stack}}, ECE ({{ece}}), or ECK ({{eck}}) deployment.
 
 ## Questions about setting up
-$$$cc-autoops-ech$$$ Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?
+$$$cc-autoops-ech$$$ **Can I use Cloud Connect to connect my {{ech}} clusters to AutoOps?**
 :   :::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
 :::
 
-$$$autoops-air-gapped$$$ Can I use AutoOps for my clusters if my environment is air-gapped?
+$$$autoops-air-gapped$$$ **Can I use AutoOps for my clusters if my environment is air-gapped?**
 :   Not at this time. AutoOps is currently only available as a cloud service and you need an internet connection to send metrics to {{ecloud}}. For air-gapped environments, we plan to offer a locally deployable version in the future.
 
-$$$macos-install$$$ Can I use macOS to install {{agent}} for this feature?
+$$$macos-install$$$ **Can I use macOS to install {{agent}} for this feature?**
 :   macOS is not a supported platform for installing {{agent}} and connecting your clusters to AutoOps.
 
-$$$elastic-ip-address$$$ Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?
+$$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?**
 :   You may need to define an IP address if your organization’s settings will block the agent from sending out data. 
 
     To enable IP ranges, {{ecloud}} offers a selection of static IP addresses. All traffic directed to {{ecloud}} deployments, whether originating from the public internet, your private cloud network through the public internet, or your on-premise network through the public internet utilizes Ingress Static IPs as the network destination. 
@@ -60,12 +60,12 @@ $$$elastic-ip-address$$$ Do I have to define an Elastic IP address to enable the
 :   For more information, refer to [](/deploy-manage/security/elastic-cloud-static-ips.md).
 
 ## Questions about collected metrics
-$$$autoops-metrics$$$ Where are AutoOps metrics stored, and does it cost extra to ship metrics data to {{ecloud}}?
+$$$autoops-metrics$$$ **Where are AutoOps metrics stored, and does it cost extra to ship metrics data to {{ecloud}}?**
 :   You can choose the CSP and region in which your cluster metrics will be stored from a list of [available regions](/deploy-manage/monitor/autoops/ec-autoops-regions.md). 
 
     Shipping metrics to {{ecloud}} may come at an additional cost. For example, when sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs will be determined by your agreement with that CSP.
 
-$$$extracted-info$$$ What information does {{agent}} extract from my cluster?
+$$$extracted-info$$$ **What information does {{agent}} extract from my cluster?**
 :   {{agent}} only extracts and sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. The following metrics are collected:
 
     | API | Description | Collected data |
