@@ -167,7 +167,7 @@ Without leaving the **Hosts** page, you can view enhanced metrics relating to ea
 The host details overlay adapts according to the [selected schema](#host-schema-selector). When viewing host data collected using OpenTelemetry, you see the following differences:
 
 * Anomaly detection isn't available for OpenTelemetry hosts, so there is no **Anomalies** tab.
-* The Lens charts use the [OpenTelemetry formulas](/reference/data-analysis/observability/observability-host-metrics.md#key-metrics-opentelemetry).
+* The Lens charts use the [OpenTelemetry field calculation formulas](/reference/data-analysis/observability/observability-host-metrics.md#open-telemetry-host-metrics).
 
 ::::{tip}
 To expand the overlay and view more detail, click **Open as page** in the upper-right corner.

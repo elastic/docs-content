@@ -9,13 +9,15 @@ products:
 
 # Host metrics [observability-host-metrics]
 
-Learn about key host metrics displayed in the Infrastructure UI.
+Learn about key host metrics displayed in the Infrastructure UI:
 
 * [Elastic System integration host metrics](#ecs-host-metrics)
 * [OpenTelemetry host metrics](#open-telemetry-host-metrics)
 
 
-## Elastic system integration host metrics [ecs-host-metrics]
+## Elastic System integration host metrics [ecs-host-metrics]
+
+Refer to the following sections for host metrics and field calculation formulas for the Elastic System integration data:
 
 * [Hosts](#key-metrics-hosts)
 * [CPU usage](#key-metrics-cpu)
@@ -102,6 +104,8 @@ The UI and any new rules you create will use the new metric definition. However,
 | **Network Outbound (TX) (legacy)** | Number of bytes that have been sent per second on the public interfaces of the hosts.<br><br>**Field Calculation**: `average(host.network.egress.bytes) * 8 / (max(metricset.period, kql='host.network.egress.bytes: *') / 1000)`<br> |
 
 ## OpenTelemetry host metrics [open-telemetry-host-metrics]
+
+Refer to the following sections for host metrics and field calculation formulas for OpenTelemetry data:
 
 * [Hosts](#otel-metrics-hosts)
 * [CPU usage](#otel-metrics-cpu)
