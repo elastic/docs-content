@@ -330,3 +330,6 @@ redirects:
 
 # Related to https://github.com/elastic/elasticsearch/pull/133362
   'solutions/search/querydsl-full-text-filter-tutorial.md': 'elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2719
+  'solutions/search/api-quickstarts.md': 'solutions/search/get-started/quickstarts.md'
