@@ -26,13 +26,7 @@ This quickstart uses some basic sample data to show how you might use a TSDS to 
 
 To create a data stream, you'll need an index template. The template defines the data stream structure and settings. (For this quickstart, you don't need to understand template details.)
 
-Data streams created with this quickstart template have the following characteristics:
-
-* Two identifying dimension fields: `sensor_id`, `location`
-* Two measurements or metric fields: `temperature`, `humidity `
-* A timestamp field: `@timestamp` 
-
-To create the template, paste the following index template API request into the {{dev-tools-app}} console, or use another method to make the request:
+This example template has two identifying dimension fields and two measurements or metric fields. Paste the following index template API request into the {{dev-tools-app}} console, or use another method to make the request.
 
 % TODO improve callout comments
 
@@ -54,7 +48,7 @@ PUT _index_template/quickstart-tsds-template
         },
         "location": {
           "type": "keyword",
-          "time_series_dimension": true   
+          "time_series_dimension": true   # Another dimension field
         },
         "temperature": {
           "type": "half_float",
@@ -62,7 +56,7 @@ PUT _index_template/quickstart-tsds-template
          },
         "humidity": {
           "type": "half_float",
-          "time_series_metric": "gauge"   
+          "time_series_metric": "gauge"   # A second measurement
         },
         "@timestamp": {
           "type": "date"
@@ -73,7 +67,6 @@ PUT _index_template/quickstart-tsds-template
 }
 
 ```
-
 
 This example defines a `@timestamp` field for illustration purposes. In most cases, you can use the default `@timestamp` field (which has a default type of `date`) instead of defining a timestamp in the mapping. 
 
