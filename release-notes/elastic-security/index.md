@@ -160,9 +160,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-security-9.0.6-fixes]
 * Prevents the {{esql}} form from locking in read-only mode in the rule upgrade flyout [#231699]({{kib-pull}}231699).
-* Fixes a bug in {elastic-defend} where the fqdn feature flag was not being persisted across system/endpoint restarts
-* Fix a race condition in {elastic-defend} that may occasionally result in corrupted process command lines on Windows.  When this occurs, `process.command_line`, `process.args_count` and `process.args` may be incorrect, leading to false positives.
-* Fixes a bug in {elastic-defend} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path
+* Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag was not being persisted across system/endpoint restarts.
+* Fix a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count` and `process.args`, leading to false positives.
+* Fixes a bug in {{elastic-defend}} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
 
 ## 9.0.5 [elastic-security-9.0.5-release-notes]
 
