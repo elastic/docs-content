@@ -45,7 +45,7 @@ You can enable debug logging using environment variables.
 For general EDOT Java agent debugging, try:
 
 ```bash
-export OTEL_JAVAAGENT_LOG_LEVEL=debug
+export ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=debug
 java -jar your-app.jar
 ```
 The output is captured span information from the agent itself, in a JSON format.
@@ -126,27 +126,37 @@ node your-app.js
 
 ## PHP
 
-Set this environment variable:
+Elastic’s PHP agent doesn't use the standard `OTEL_LOG_LEVEL` variable. Instead, enable debug-level logging with the agent’s own configuration options: `ELASTIC_OTEL_LOG_LEVEL_FILE`, `ELASTIC_OTEL_LOG_LEVEL_STDERR`, or `ELASTIC_OTEL_LOG_LEVEL_SYSLOG`. Refer to [Logging configuration](opentelemetry://reference/edot-sdks/php/configuration.md#logging-configuration) for more details.
 
-::::{tab-set}
-
-:::{tab-item} macOS
+For deeper troubleshooting, you can also enable diagnostic data collection. For example:
 
 ```bash
-export OTEL_LOG_LEVEL=debug
-php your-application.php
+export ELASTIC_OTEL_DEBUG_DIAGNOSTIC_FILE=/tmp/php_diag_%p_%t.txt php test.php
 ```
-:::
 
-:::{tab-item} Windows
+Ensure the file path is writable by the PHP process. If multiple PHP processes are running, use directives in the diagnostic file name to generate unique files and prevent overwriting. You can use:
 
-```powershell
-$env:OTEL_LOG_LEVEL="debug"
-```
-:::
-::::
+* `%p` to insert the process ID
 
-Make sure to rerun your PHP application.
+* `%t` to insert the UNIX timestamp
+
+After setting the variable, restart the PHP process you're collecting diagnostics for, then send an HTTP request or run a script (for PHP-CLI).
+
+The collected information includes:
+
+* Process ID and parent process ID
+
+* User ID of the worker process
+
+* Loaded PHP extensions
+
+* Output from the `phpinfo()` function
+
+* Memory usage and maps `(/proc/{{id}}/maps` and `/proc/{{id}}/smaps_rollup)`
+
+* Process status `(/proc/{{id}}/status)`
+
+Disable diagnostic collection when you're done by unsetting the variable or restoring the previous configuration.
 
 
 ## Resources
