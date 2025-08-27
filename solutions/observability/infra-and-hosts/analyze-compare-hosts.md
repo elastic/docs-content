@@ -157,7 +157,7 @@ To learn more about creating and managing rules, refer to [Alerting](/solutions/
 
 ## Select the data collection schema[host-schema-selector]
 
-The **Schema** menu shows the available data collection schemas for the current query. If host data from both the Elastic System integration and OpenTelemetry are available, the selector defaults to **OpenTelemetry**. Select **Elastic System Integration** to see host data collected by the Elastic System integration.
+The **Schema** menu shows the available data collection schemas for the current query. If host data from both the Elastic System integration and OpenTelemetry is available, the selector defaults to **OpenTelemetry**. Select **Elastic System Integration** to see host data collected by the Elastic System integration.
 
 
 ## View host details [view-host-details]
@@ -293,7 +293,7 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 :::::{dropdown} Anomalies
 :::{note}
-Anomaly detection isn't available for OpenTelemetry hosts. When the **Schema** is set to OpenTelemetry, this isn't available.
+Anomaly detection isn't available for OpenTelemetry hosts. When the **Schema** is set to OpenTelemetry, this tab isn't available.
 :::
 
 The **Anomalies** tab displays a list of each single metric {{anomaly-detect}} job for the specific host. By default, anomaly jobs are sorted by time, showing the most recent jobs first.
