@@ -1,5 +1,5 @@
 ---
-navigation_title: View the lifecycle status of an index
+navigation_title: View the lifecycle status of an index or data stream
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-lifecycle-policy.html
 applies_to:
@@ -8,9 +8,9 @@ products:
   - id: elasticsearch
 ---
 
-# View the lifecycle status of an index [view-lifecycle-status]
+# View the lifecycle status of an index or data stream [view-lifecycle-status]
 
-For any existing managed index in your cluster, you can access the ILM policy applied to it and details such as its current phase.
+For any existing managed index or data stream in your cluster, you can access the ILM policy applied to it and its current status.
 
 :::::{tab-set}
 :group: kibana-api

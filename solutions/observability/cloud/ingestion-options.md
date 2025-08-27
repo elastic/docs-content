@@ -3,7 +3,8 @@ navigation_title: Ingestion options
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/ingest-aws-options.html
 applies_to:
-  stack:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
 ---

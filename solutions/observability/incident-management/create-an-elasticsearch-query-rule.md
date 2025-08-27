@@ -53,7 +53,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
 
     * If you use [KQL](../../../explore-analyze/query-filter/languages/kql.md) or [Lucene](../../../explore-analyze/query-filter/languages/lucene-query-syntax.md), you must specify a data view then define a text-based query. For example, `http.request.referrer: "https://example.com"`.
 
-   * If you use [ES|QL](../../../explore-analyze/query-filter/languages/esql.md), you must provide a source command followed by an optional series of processing commands, separated by pipe characters (|).
+   * If you use [ES|QL](elasticsearch://reference/query-languages/esql.md), you must provide a source command followed by an optional series of processing commands, separated by pipe characters (|).
 
         For example:
 
@@ -194,6 +194,9 @@ The following variables are specific to this rule type. You can also specify [va
 
 `context.date`
 :   The date, in ISO format, that the rule met the condition. Example: `2022-02-03T20:29:27.732Z`.
+
+`context.grouping` {applies_to}`stack: ga 9.1`
+:   The object containing groups that are reporting data.
 
 `context.hits`
 :   The most recent documents that matched the query. Using the [Mustache](https://mustache.github.io/) template array syntax, you can iterate over these hits to get values from the {{es}} documents into your actions.
