@@ -13,7 +13,6 @@ toc:
               - file: search/get-started/index-basics.md
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
-      - file: search/api-quickstarts.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -398,6 +397,7 @@ toc:
         children:
           - file: observability/logs/get-started-with-system-logs.md
           - file: observability/logs/stream-any-log-file.md
+          - file: observability/logs/stream-any-log-file-using-edot-collector.md
           - file: observability/logs/stream-application-logs.md
             children:
               - file: observability/logs/plaintext-application-logs.md

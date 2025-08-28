@@ -105,7 +105,7 @@ Elastic provides a powerful LLM observability framework including key metrics, l
 
 Refer to [LLM observability](/solutions/observability/applications/llm-observability.md) for more information.
 :::
-
+::::
 :::::
 ::::::
 
@@ -178,5 +178,5 @@ Many [{{observability}} integrations](https://www.elastic.co/integrations/data-i
 ### Other resources
 
 * [What's Elastic {{observability}}](/solutions/observability/get-started/what-is-elastic-observability.md)
-* [What’s new in Elastic Stack](/release-notes/elastic-observability/index.md)
+* [What's new in Elastic Stack](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
