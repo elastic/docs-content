@@ -48,8 +48,8 @@ Use your {{ecloud}} account to create a fully-managed {{es}} project:
 3. Choose the {{es}} project type.
 4. Select a **configuration** for your project, based on your use case.
 
-    * **General purpose**: This option is suitable for all standard search and vector workloads. It is performant and less expensive than the other option for most use cases.
-    * **Optimized for vectors**: This option provides great performance on vector search for uncompressed vectors with high dimensionality.
+    * **General purpose**: For general search use cases across various data types.
+    * **Optimized for Vectors**: For search use cases using vectors and near real-time retrieval.
 
 5. Provide a name for the project and optionally edit the project settings, such as the cloud platform [region](../../deploy-manage/deploy/elastic-cloud/regions.md). Select **Create project** to continue.
 6. Once the project is ready, select **Continue**.
