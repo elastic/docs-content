@@ -21,7 +21,7 @@ The {{security-app}} displays several indicators in the Alerts table and the ale
 
 ::::{note}
 
-When modifying Elastic prebuilt rules, you can also add on alert suppression. Refer to [Modify existing rules settings](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings) to learn about the requirements for editing prebuilt rules and the rule settings that you change.
+When modifying Elastic prebuilt rules, you can also add on alert suppression. Refer to [Modify existing rules settings](/solutions/security/detect-and-alert/manage-detection-rules.md#edit-rules-settings) to learn about the requirements for editing prebuilt rules and the rule settings that you can change.
 
 ::::
 
