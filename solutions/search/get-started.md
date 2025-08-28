@@ -42,7 +42,7 @@ If you want to ingest your data first and transform or reindex it as needed late
 To learn about adding data, go to [](/solutions/search/ingest-for-search.md).
 For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 
-If you're planning to perform vector or semantic AI-powered search, the approach that requires the least configuration involves adding `semantic_text` fields when you ingest your data.
+If you're planning to perform a vector or semantic AI-powered search, the approach that requires the least configuration involves adding `semantic_text` fields when ingesting your data.
 Try it out with [](/solutions/search/get-started/semantic-search.md).
 
 :::{tip}
