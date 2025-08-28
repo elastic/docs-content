@@ -39,17 +39,3 @@ $$$cc-ech$$$ **Can I use Cloud Connect to connect my Elastic Cloud Hosted cluste
 $$$cc-more-services$$$ **Are more services going to be available with Cloud Connect?**
 :   Yes. AutoOps is the first of many cloud connected services to come. The next planned service is the Elastic Inference Service (EIS), which will provide GPU-powered inference for use cases like semantic search and text embeddings.
 
-Find answers to your questions about Cloud Connect.
-
-### Does using Cloud Connect require additional payment?
-Each cloud connected service has its own licensing and payment requirements. 
-:::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
-:::
-
-### Can I use Cloud Connect to connect my Elastic Cloud Hosted clusters to AutoOps?
-:::{include} /deploy-manage/_snippets/autoops-cc-ech-faq.md
-:::
-
-### Are more services going to be available with Cloud Connect?
-Yes. AutoOps is the first of many cloud connected services to come. The next planned service is the Elastic Inference Service (EIS), which will provide GPU-powered inference for use cases like semantic search and text embeddings. 
-
