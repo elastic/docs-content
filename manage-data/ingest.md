@@ -16,9 +16,9 @@ products:
   - id: elasticsearch
 ---
 
-# Ingestion
+# Bring your data to Elastic
 
-Bring your data! Whether you call it *adding*, *indexing*, or *ingesting* data, you have to get the data into {{es}} before you can search it, visualize it, and use it for insights.
+Whether you call it *adding*, *indexing*, or *ingesting* data, you have to get the data into {{es}} before you can search it, visualize it, and use it for insights.
 
 Our ingest tools are flexible, and support a wide range of scenarios. We can help you with everything from popular and straightforward use cases, all the way to advanced use cases that require additional processing in order to modify or reshape your data before it goes to {{es}}.
 
