@@ -46,7 +46,7 @@ If you're planning to perform a vector or semantic AI-powered search, the approa
 Try it out with [](/solutions/search/get-started/semantic-search.md).
 
 :::{tip}
-If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the [quickstarts](/solutions/search/get-started/quickstarts.md).
+If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/search/get-started/quickstarts.md).
 :::
 ::::
 
