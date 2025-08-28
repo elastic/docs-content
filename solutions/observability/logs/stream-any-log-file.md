@@ -427,5 +427,6 @@ If you're still running into issues, see [{{agent}} troubleshooting](/troublesho
 
 After you have your agent configured and are streaming log data to {{es}}:
 
+* Refer to the [Explore log data](/solutions/observability/logs/discover-logs.md) documentation for information on exploring your log data in the UI, including searching and filtering your log data, getting information about the structure of log fields, and displaying your findings in a visualization.
 * Refer to the [Parse and organize logs](/solutions/observability/logs/parse-route-logs.md) documentation for information on extracting structured fields from your log data, rerouting your logs to different data streams, and filtering and aggregating your log data.
 * Refer to the [Filter and aggregate logs](/solutions/observability/logs/filter-aggregate-logs.md) documentation for information on filtering and aggregating your log data to find specific information, gain insight, and monitor your systems more efficiently.
