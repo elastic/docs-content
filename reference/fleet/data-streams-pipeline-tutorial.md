@@ -113,6 +113,8 @@ Now that a new field is being set in your {{es}} documents, you’ll want to ass
 
 :::{{note}}
 Mapping and template changes are applied when a new backing index is created. To apply updated mappings immediately, roll over the data stream, then continue.
+
+For more information, refer to [Index basics](../../manage-data/data-store/index-basics.md).
 :::
 
 In the **Edit integration** workflow, do the following:
