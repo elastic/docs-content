@@ -30,7 +30,7 @@ Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-
 ::::
 
 ::::{step} Identify your search goals
-You can choose multiple [search approaches](search-approaches.md) (for example, full-text and semantic search) depending on your use case.
+Depending on your use case, you can choose multiple [search approaches](search-approaches.md) (for example, full-text and semantic search).
 Each approach affects your options for storing and querying your data.
 
 :::{tip}
