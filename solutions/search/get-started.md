@@ -10,6 +10,7 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 navigation_title: Get started
+description: To try out an {{es}} project or solution, pick your deployment type, search goals, and ingestion method.
 ---
 
 # Get started with {{es}}
@@ -23,13 +24,12 @@ If you're looking for an introduction to the {{stack}} or the {{es}} product, go
 :::::{stepper}
 ::::{step} Choose your deployment type
 
-Elastic provides several self-managed or Elastic-managed options.
+Elastic provides several self-managed and Elastic-managed options.
 For simplicity and speed, try out [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md) or [run {{es}} locally](/solutions/search/run-elasticsearch-locally.md).
 Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
 ::::
 
 ::::{step} Identify your search goals
-
 You can choose multiple [search approaches](search-approaches.md) (for example, full-text and semantic search) depending on your use case.
 Each approach affects your options for storing and querying your data.
 
