@@ -49,7 +49,7 @@ The sparse vector approach uses the ELSER model to expand content with semantica
 
 ## Choosing your project's profile
 ```{applies_to}
-serverless
+serverless:
 ```
 
 When selecting a profile configuration for your project, it's recommended to consider your vector search use case.
