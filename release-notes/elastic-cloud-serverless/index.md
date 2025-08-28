@@ -9,6 +9,18 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+
+## August 28, 2025 [serverless-changelog-08282025]
+
+### Features and enhancements [serverless-changelog-08282025-features-enhancements]
+
+* {{serverless-full}} is now available in three new Microsoft Azure [regions](/deploy-manage/deploy/elastic-cloud/regions.md): 
+    * `northeurope` (North Europe), located in Ireland 
+    * `australiaeast` (Australia East), located in Victoria, Australia
+    * ` westus2` (West US 2), located in Washington, United States
+
+
+
 ## August 25, 2025 [serverless-changelog-08252025]
 
 ### Features and enhancements [serverless-changelog-08252025-features-enhancements]
@@ -38,14 +50,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds support for a `reporting_user` role with a reserved set of privileges [#231533]({{kib-pull}}231533)
 
 
-## August 28, 2025 [serverless-changelog-08282025]
-
-### Features and enhancements [serverless-changelog-08282025-features-enhancements]
-
-* {{serverless-full}} is now available in three new Microsoft Azure [regions](/deploy-manage/deploy/elastic-cloud/regions.md): 
-    * `northeurope` (North Europe), located in Ireland 
-    * `australiaeast` (Australia East), located in Victoria, Australia
-    * ` westus2` (West US 2), located in Washington, United States
 
 ## August 18, 2025 [serverless-changelog-08182025]
 
