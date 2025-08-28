@@ -315,7 +315,7 @@ Key configuration elements:
 
 * `receivers.filelog/platformlogs.include`: Specifies the path to your log files. You can use patterns like `/var/log/*.log`.
 * `processors.resourcedetection`: Automatically detects and adds host system information to your logs.
-* `extensions.file_storage`: Provides persistent storage for the collector's state.
+* `extensions.file_storage`: Provides persistent storage for the Collector's state.
 * `exporters`: Configures how data is sent to Elasticsearch (Elastic Stack) or OTLP endpoint (Serverless).
 :::::
 
