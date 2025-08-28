@@ -29,7 +29,6 @@ Alert suppression is not available for Elastic prebuilt rules. However, if you w
 ::::{admonition} Requirements and notices
 * In {{stack}} alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing). In [{{serverless-short}}, you must have the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
-* This functionality is in technical preview for event correlation rules only and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 
 ::::
 
