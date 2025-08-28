@@ -136,7 +136,7 @@ With alert suppression, detection alerts aren’t created for the grouped source
 * Alert details flyout — Select **Take action** → **Investigate in timeline**.
 
 
-## Impact of closing suppression alerts [security-alert-suppression-impact-close-alerts]
+## Impact of closing suppressed alerts [security-alert-suppression-impact-close-alerts]
 
 As a best practice, avoid closing suppresssion alerts (alerts generated for alert suppression) before an active suppression window ends. Closing alerts early can interrupt alert suppression or cause unexpected changes. 
 
