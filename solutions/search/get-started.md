@@ -61,3 +61,13 @@ You can pick a programming language [client](/reference/elasticsearch-clients/in
 Each decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.
 ::::
 :::::
+
+## Related resources
+
+Use these resources to learn more about {{es}} or get started in a different way:
+
+- [](/deploy-manage/deploy/deployment-comparison.md)
+- [](/solutions/search/get-started/quickstarts.md)
+- [Get started with Query DSL search and filters](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
+- [Get started with ES|QL queries](elasticsearch://reference/query-languages/esql/esql-getting-started.md)
+- [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md)
