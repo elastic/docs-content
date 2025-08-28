@@ -42,13 +42,13 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 ## Data storage and billing [elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]
 
-{{es-serverless}} projects store data in the [Search AI Lake](/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
+{{es-serverless}} projects store data in the [Search AI Lake](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings). You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
 ## Managing {{es}} costs [elasticsearch-billing-managing-elasticsearch-costs]
 
 You can control costs using the following strategies:
 
-* **Search Power setting:** [Search Power](/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying or you can reduce provisioned resources to cut costs.
+* **Search Power setting:** [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying or you can reduce provisioned resources to cut costs.
 * **Search boost window**: By limiting the number of days of [time series data](/solutions/search/ingest-for-search.md#elasticsearch-ingest-time-series-data) that are available for caching, you can reduce the number of search VCUs required.
 * **Machine learning trained model autoscaling:** [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) is always enabled and cannot be disabled, ensuring efficient resource usage, reduced costs, and optimal performance without manual configuration.
 
