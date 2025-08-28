@@ -94,7 +94,7 @@ When specifying fields to suppress alerts by, you can select fields that have mu
 The {{security-app}} displays several indicators of whether a detection alert was created with alert suppression enabled, and how many qualifying alerts were suppressed.
 
 ::::{important}
-Changing an alert's status `Closed` can affect suppression. Refer to [Impact of closing suppressed alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts) to learn more.
+Changing an alert's status to `Closed` can affect suppression. Refer to [Impact of closing suppressed alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts) to learn more.
 ::::
 
 
