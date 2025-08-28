@@ -7,7 +7,7 @@ applies_to:
     elasticsearch: ga
 products:
   - id: cloud-serverless
-description: The cost of {{es-serverless}} projects is affected by the type and number of virtual compute units used.
+description: Learn about how costs for Elasticsearch Serverless projects are calculated, and strategies you can use to lower your costs.
 ---
 
 # {{es}} billing dimensions [elasticsearch-billing]
