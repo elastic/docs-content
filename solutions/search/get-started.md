@@ -28,5 +28,5 @@ Building a search experience with {{es}} requires a number of fundamental implem
 Each decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.
 
 ::::{tip}
-Already have an {{es}} deployment? You can get started with our hands-on [quick start tutorials](api-quickstarts.md), or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
+Already have an {{es}} deployment? You can get started with our hands-on [quickstart guides](/solutions/search/get-started/quickstarts.md), or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
 ::::
