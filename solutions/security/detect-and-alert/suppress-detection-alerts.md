@@ -92,7 +92,7 @@ When specifying fields to suppress alerts by, you can select fields that have mu
 The {{security-app}} displays several indicators of whether a detection alert was created with alert suppression enabled, and how many duplicate alerts were suppressed.
 
 ::::{important}
-Moving an alert to the `Closed` status can affect suppression. Refer to [Impact of closing suppression alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts) to learn more.
+Moving an alert to the `Closed` status can affect suppression. Refer to [Impact of closing suppressed alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts) to learn more.
 ::::
 
 
@@ -136,7 +136,7 @@ With alert suppression, detection alerts aren’t created for the grouped source
 * Alert details flyout — Select **Take action** → **Investigate in timeline**.
 
 
-## Impact of closing suppression alerts [security-alert-suppression-impact-close-alerts]
+## Impact of closing suppressed alerts [security-alert-suppression-impact-close-alerts]
 
 As a best practice, avoid closing suppresssion alerts (alerts generated for alert suppression) before an active suppression window ends. Closing alerts early can interrupt alert suppression or cause unexpected changes. 
 
@@ -149,7 +149,7 @@ For example, say you set the suppression time period to 5 minutes and specify to
 :width: 450px
 :::
 
-{applies_to}`stack: ga 9.2` To ensure suppression continues after closing suppression alerts, you can set the `securitySolution:suppressionBehaviorOnAlertClosure` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#suppression-window-behavior) to **Continue until supppression window ends**. The default selection is **Restart suppression**, which enforces the behavior described above.
+{applies_to}`stack: ga 9.2` You can change the default behavior and continue suppressing alerts until the end of suppression window after you closed an investigated alert. To do this, change the `securitySolution:suppressionBehaviorOnAlertClosure` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#suppression-window-behavior) to **Continue until suppression window ends**.
 
 ## Alert suppression limit by rule type [security-alert-suppression-alert-suppression-limit-by-rule-type]
 
