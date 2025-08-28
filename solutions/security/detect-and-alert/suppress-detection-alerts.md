@@ -27,7 +27,7 @@ Alert suppression is not available for Elastic prebuilt rules. However, if you w
 ## Configure alert suppression [security-alert-suppression-configure-alert-suppression]
 
 ::::{admonition} Requirements and notices
-* In {{stack}} alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing) or the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* In {{stack}} alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing). In [{{serverless-short}}, you must have the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
 * This functionality is in technical preview for event correlation rules only and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 
@@ -96,7 +96,7 @@ When specifying fields to suppress alerts by, you can select fields that have mu
 The {{security-app}} displays several indicators of whether a detection alert was created with alert suppression enabled, and how many duplicate alerts were suppressed.
 
 ::::{important}
-After an alert is moved to the `Closed` status, it will no longer suppress new alerts. To prevent interruptions or unexpected changes in suppression, avoid closing alerts before the suppression interval ends.
+Moving an alert to the `Closed` status can affect suppression. Refer to [Impact of closing suppression alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-impact-close-alerts) to learn more.
 ::::
 
 
