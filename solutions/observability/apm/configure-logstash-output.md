@@ -288,7 +288,7 @@ To use SSL mutual authentication:
 
         ```yaml
         output.logstash:
-          hosts: ["logs.example.com:5044"]
+          hosts: ["<HOST_URL>:<PORT>"]
           ssl.certificate_authorities: ["/etc/ca.crt"]
           ssl.certificate: "/etc/client.crt"
           ssl.key: "/etc/client.key"
