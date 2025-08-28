@@ -123,10 +123,19 @@ node your-app.js
 :::
 ::::
 
+This produces debug-level logs from the SDK itself.
+
+If you also want to inspect the actual telemetry your app is generating, configure exporters to log traces, metrics, or logs to the console. For example:
 
 ## PHP
 
-Elastic’s PHP agent doesn't use the standard `OTEL_LOG_LEVEL` variable. Instead, enable debug-level logging with the agent’s own configuration options: `ELASTIC_OTEL_LOG_LEVEL_FILE`, `ELASTIC_OTEL_LOG_LEVEL_STDERR`, or `ELASTIC_OTEL_LOG_LEVEL_SYSLOG`. Refer to [Logging configuration](opentelemetry://reference/edot-sdks/php/configuration.md#logging-configuration) for more details.
+While the EDOT PHP agent supports the standard `OTEL_LOG_LEVEL` variable, you must also configure at least one of the Elastic-specific sink options to direct logs to a destination:
+
+* `ELASTIC_OTEL_LOG_LEVEL_FILE`
+* `ELASTIC_OTEL_LOG_LEVEL_STDERR`
+* `ELASTIC_OTEL_LOG_LEVEL_SYSLOG`
+
+Refer to [Logging configuration](opentelemetry://reference/edot-sdks/php/configuration.md#logging-configuration) for more details.
 
 For deeper troubleshooting, you can also enable diagnostic data collection. For example:
 
