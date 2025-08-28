@@ -151,7 +151,7 @@ For example, say you set the suppression time period to 5 minutes and specify to
 :width: 450px
 :::
 
-{applies_to}`stack: ga 9.2` You can change the default behavior and continue suppressing alerts until the end of suppression window after you closed an investigated alert. To do this, change the `securitySolution:suppressionBehaviorOnAlertClosure` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#suppression-window-behavior) to **Continue until suppression window ends**.
+{applies_to}`stack: ga 9.2` You can change the default behavior and continue suppressing alerts until the end of suppression window after you close an investigated alert. To do this, change the `securitySolution:suppressionBehaviorOnAlertClosure` [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#suppression-window-behavior) to **Continue until suppression window ends**.
 
 ## Alert suppression limit by rule type [security-alert-suppression-alert-suppression-limit-by-rule-type]
 
