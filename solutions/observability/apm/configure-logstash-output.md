@@ -325,10 +325,10 @@ To use SSL mutual authentication:
 Before running APM Server, you should validate the {{ls}} server’s certificate. You can use `curl` to validate the certificate even though the protocol used to communicate with {{ls}} is not based on HTTP. For example:
 
 ```shell
-curl -v --cacert ca.crt https://logs.example.com:5044
+curl -v --cacert ca.crt <HOST_URL>:<PORT>
 ```
 
-If the test is successful, you’ll receive an empty response error:
+If the test is successful, you’ll receive an empty response error. Here's an example response assuming the `HOST_URL` was `logs.example.com` and `PORT` was `5044`:
 
 ```shell
 * Rebuilt URL to: https://logs.example.com:5044/
