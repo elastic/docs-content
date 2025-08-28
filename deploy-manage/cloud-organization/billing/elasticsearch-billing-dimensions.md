@@ -28,7 +28,7 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 ## VCU types: search, indexing, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
 
-{{es-serverless}} uses three VCU types:
+{{es-serverless}} uses the following VCU types:
 
 * **Indexing:** The VCUs used to index incoming documents. Indexing VCUs account for compute resources consumed for ingestion. This is based on ingestion rate and amount of data ingested at any given time. Transforms and ingest pipelines also contribute to ingest VCU consumption.
 * **Search:** The VCUs used to return search results with the latency and queries per second (QPS) you require. Search VCUs are calculated as a factor of the compute resources needed to run search queries, search throughput, and latency. Search VCUs are not charged per search request. Instead, they are a factor of the compute resources that scale up and down based on amount of searchable data, search load (QPS), and performance (latency and availability).
