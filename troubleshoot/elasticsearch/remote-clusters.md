@@ -227,7 +227,7 @@ If the anonymous user does not the have necessary privileges to make a connectio
 
 ```txt
 org.elasticsearch.transport.RemoteTransportException: [remote-node][192.168.0.42:9309][cluster:internal/remote_cluster/handshake]
-Caused by: org.elasticsearch.ElasticsearchSecurityException: action [cluster:internal/remote_cluster/handshake] is **unauthorized** for user [anonymous_foo] with effective roles [reporting_user], this action is granted by the cluster privileges [cross_cluster_search,cross_cluster_replication,manage,all]
+Caused by: org.elasticsearch.ElasticsearchSecurityException: action [cluster:internal/remote_cluster/handshake] is **unauthorized** for user [anonymous_foo] with effective roles [kibana_admin], this action is granted by the cluster privileges [cross_cluster_search,cross_cluster_replication,manage,all]
 ```
 
 If the anonymous user has necessary privileges, for example it is a superuser, the local cluster logs `requires channel profile to be [_remote_cluster], but got [default]`:

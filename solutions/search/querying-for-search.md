@@ -33,7 +33,6 @@ These query languages are complementary, not mutually exclusive. You can use dif
 You can use the [{{es}} REST APIs](https://www.elastic.co/docs/api/doc/elasticsearch) to search your data using any HTTP client, including the [{{es}} client libraries](site-or-app/clients.md), or directly in [Console](/explore-analyze/query-filter/tools/console.md). You can also run searches using [Discover](/explore-analyze/discover.md) in the UI.
 ::::
 
-
 ::::{tip}
-Try our hands-on [quick start tutorials](api-quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
+Try our hands-on [quickstart guides](/solutions/search/get-started/quickstarts.md) to get started, or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
 ::::
