@@ -34,7 +34,7 @@ $$$faq-autoops-issue-resolution$$$Can AutoOps currently automatically resolve is
 :   AutoOps only analyzes metrics, and is a read-only solution.
 
 $$$faq-autoops-data-retention$$$How long does Elastic retain AutoOps data?
-:   Currently, AutoOps has a four-day retention period for all {{ech}} customers.
+:   Currently, AutoOps has a 10 day retention period for all {{ech}} customers.
 
 $$$faq-autoops-metrics-storage$$$Where are AutoOps metrics stored, and does AutoOps affect customer ECU usage?
 :   AutoOps metrics are stored internally within the Elastic infrastructure, not on customer deployments. So using AutoOps does not consume customer ECU.

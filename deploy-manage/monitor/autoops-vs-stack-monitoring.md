@@ -18,7 +18,7 @@ Review how these tools differ in their provisioning, set up procedure, method of
 ### Resource provisioning and billing
 
 #### AutoOps [ao-resource]
-AutoOps stores and backs up your monitoring data internally on {{ecloud}} infrastructure so you don’t need to think about provisioning, sizing, and availability. The data is retained for four days by default. Using AutoOps is free for {{ecloud}} customers and is offered to [all subscription tiers](https://www.elastic.co/subscriptions/cloud).
+AutoOps stores and backs up your monitoring data internally on {{ecloud}} infrastructure so you don’t need to think about provisioning, sizing, and availability. The data is retained for 10 days by default. Using AutoOps is free for {{ecloud}} customers and is offered to [all subscription tiers](https://www.elastic.co/subscriptions/cloud).
 
 #### Stack Monitoring [sm-resource]
 With Stack Monitoring, you are responsible for storing your monitoring data. This requires provisioning the necessary resources based on your performance and retention needs as well as paying for the allocated resources. The default retention period is six days.
