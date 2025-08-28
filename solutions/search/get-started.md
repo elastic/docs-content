@@ -54,6 +54,10 @@ If you're not ready to add your own data, you can use [sample data](/manage-data
 
 Not sure where to start exploring or which features may be relevant for you?
 View our [quickstarts](/solutions/search/get-started/quickstarts.md), which help you complete a core task so you can get up and running.
-For example, to learn about using clients to integrate with {{es}} in your application, check out [](/solutions/search/get-started/keyword-search-python.md).
+For example, learn about [index and search basics](/solutions/search/get-started/index-basics.md).
+
+Your next steps will be to choose a method to write queries and interact with {{es}}.
+You can pick a programming language [client](/reference/elasticsearch-clients/index.md) that matches your application and choose which [query languages](/solutions/search/querying-for-search.md) you will use to express your search logic.
+Each decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.
 ::::
 :::::
