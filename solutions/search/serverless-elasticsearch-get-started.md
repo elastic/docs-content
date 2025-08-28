@@ -56,10 +56,10 @@ Use your {{ecloud}} account to create a fully-managed {{es}} project:
 
 ::::{tip}
 
-**The General Purpose (GP) profile is recommended when your use case is based on:**
+**The General Purpose (GP) profile is recommended for most search use cases such as:**
 
 - full text search
-- sparse vector-based semantic search (such as ELSER)
+- sparse vector-based semantic search (such as when using ELSER)
 - dense vectors compressed using BBQ (enabled by default)
 - sparse vectors
 
