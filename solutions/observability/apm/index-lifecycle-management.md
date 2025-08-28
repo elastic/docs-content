@@ -139,10 +139,11 @@ POST /traces-apm-default/_rollover/
 
 ## Namespace-level index lifecycle policies [apm-data-streams-custom-policy-namespace]
 
-It is also possible to create more granular index lifecycle policies that apply to individual namespaces. This process is similar to the above tutorial, but includes cloning and modify the existing index template to use a new `*@custom` component template.
+It is also possible to create more granular index lifecycle policies that apply to individual namespaces. This process is similar to the above tutorial, but includes cloning the original index template(s) and use the index lifecycle you've created in it.
 
 :::{important}
-Cloning index templates is extremely risky because cloned templates are not automatically updated when you upgrade to a new product version. Users may find themselves in situations where their configurations are outdated because cloned templates are being used instead of the latest templates.  
+The only situation where cloning index templates cannot be avoided is when a user needs namespace-specific customizations to a data stream.
+Cloning index templates is extremely risky because cloned templates are not automatically updated when you upgrade to a new product version. Users may find themselves in situations where their configurations are outdated because cloned templates are being used instead of the latest templates.
 
 Any customization done using cloned index templates must be repeated _every time_ you upgrade to a new version. 
 :::
