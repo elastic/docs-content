@@ -47,7 +47,7 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
     ::::
 
 
-2. Choose how often to create alerts for duplicate events:
+2. Choose how often to create alerts for qualifying events:
 
     * **Per rule execution**: Create an alert each time the rule runs and an event meets its criteria.
     * **Per time period**: Create one alert for all qualifying events that occur within a specified time window, beginning from when an event first meets the rule criteria and creates the alert. This is the only option available when configuring alert suppression for threshold rules.
