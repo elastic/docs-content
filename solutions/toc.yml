@@ -397,6 +397,7 @@ toc:
         children:
           - file: observability/logs/get-started-with-system-logs.md
           - file: observability/logs/stream-any-log-file.md
+          - file: observability/logs/stream-any-log-file-using-edot-collector.md
           - file: observability/logs/stream-application-logs.md
             children:
               - file: observability/logs/plaintext-application-logs.md
