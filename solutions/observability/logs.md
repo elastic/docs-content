@@ -22,7 +22,7 @@ Elastic Observability allows you to deploy and manage logs at a petabyte scale, 
 
 ## Send log data to your project [observability-log-monitoring-send-logs-data-to-your-project]
 
-You can send logs data to your project in different ways depending on your needs. When choosing between these options, consider the different features and functionalities between them. 
+You can send log data to your project in different ways depending on your needs. When choosing between these options, consider the different features and functionalities between them. 
 
 Refer to [Ingest tools overview](/manage-data/ingest/tools.md) for more information on which option best fits your situation.
 
