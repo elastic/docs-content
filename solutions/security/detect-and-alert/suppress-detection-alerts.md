@@ -43,7 +43,7 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
 
     ::::{tip}
     
-    Refer to [Suppression for fields with an array of values x](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-fields-with-multiple-values) learn how fields with multiple values are handled.
+    Refer to [Suppression for fields with an array of values](/solutions/security/detect-and-alert/suppress-detection-alerts.md#security-alert-suppression-fields-with-multiple-values) learn how fields with multiple values are handled.
 
     ::::
 
