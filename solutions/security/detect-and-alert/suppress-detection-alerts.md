@@ -87,7 +87,7 @@ When specifying fields to suppress alerts by, you can select fields that have mu
 
 * **Indicator match, event correlation (non-sequence queries only), new terms, {{esql}}, or {{ml}} rules:** Alerts with identical array values are grouped together. For example, if you suppress alerts by `destination.ip` of `[127.0.0.1, 127.0.0.2, 127.0.0.3]`, alerts with the entire array are grouped and only one alert is created for the group.
            
-* **Event correlation (sequence queries only) rules:** Alerts that are an exact match are grouped. To be an exact match, array values must be identical and in the same order. For example, if you specify the field `myips` and one sequence alert has `[1.1.1.1, 0.0.0.0]` and another sequence alert has `[1.1.1.1, 192.168.0.1]`, neither of those alerts are suppressed, despite sharing an array element.
+* **Event correlation (sequence queries only) rules:** Alerts that are an exact match are grouped. To be an exact match, array values must be identical and in the same order. For example, if you specify the field `myips` and one sequence alert has `[1.1.1.1, 0.0.0.0]` and another sequence alert has `[1.1.1.1, 192.168.0.1]`, neither of those alerts is suppressed, despite sharing an array element.
 
 ## Confirm suppressed alerts [security-alert-suppression-confirm-suppressed-alerts]
 
