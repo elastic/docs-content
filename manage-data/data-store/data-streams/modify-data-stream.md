@@ -251,6 +251,7 @@ If wanted, you can [roll over the data stream](../data-streams/use-data-stream.m
 
 To apply static setting changes to existing backing indices, you must create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 
+See [this video](https://www.youtube.com/watch?v=fHL7SkQr7Wc) for a walkthrough of updating [`number_of_shards`](https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules#_static_index_settings).
 
 ### Use reindex to change mappings or settings [data-streams-use-reindex-to-change-mappings-settings]
 
