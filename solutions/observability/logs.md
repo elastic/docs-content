@@ -20,9 +20,9 @@ Elastic Observability allows you to deploy and manage logs at a petabyte scale, 
 * [Run pattern analysis on log data](/solutions/observability/logs/run-pattern-analysis-on-log-data.md): Find patterns in unstructured log messages and make it easier to examine your data.
 * [Troubleshoot logs](/troubleshoot/observability/troubleshoot-logs.md): Find solutions for errors you might encounter while onboarding your logs.
 
-## Send logs data to your project [observability-log-monitoring-send-logs-data-to-your-project]
+## Send log data to your project [observability-log-monitoring-send-logs-data-to-your-project]
 
-You can send logs data to your project in different ways depending on your needs. When choosing between these options, consider the different features and functionalities between them. 
+You can send log data to your project in different ways depending on your needs. When choosing between these options, consider the different features and functionalities between them. 
 
 Refer to [Ingest tools overview](/manage-data/ingest/tools.md) for more information on which option best fits your situation.
 
