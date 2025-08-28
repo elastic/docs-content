@@ -75,6 +75,9 @@ You can [change your subscription level](/deploy-manage/cloud-organization/billi
 `ES|QL cross-cluster search`
 :   Discontinue all [ES|QL CCS queries](elasticsearch://reference/query-languages/esql/esql-cross-clusters.md) or upgrade license tier to Enterprise.
 
+`Inference API`
+:   TBC
+
 ::::{note}
 After you have made your changes to the deployment, it can take up to one hour to clear the notification banner.
 ::::
