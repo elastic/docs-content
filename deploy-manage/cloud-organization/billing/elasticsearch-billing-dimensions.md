@@ -24,11 +24,6 @@ The number of VCUs you need is determined by:
 * Search Power setting
 * Machine learning usage
 
-The number of VCUs is also affected by your choice of configuration:
-
-* The general purpose configuration is suitable for all standard search and vector workloads. It is performant and less expensive than the vector optimized configuration for most use cases.
-* The optimized for vectors configuration provides great performance on vector search for uncompressed vectors with high dimensionality. However, it uses approximately four times more VCUs than the general purpose configuration.
-
 For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pricing page](https://www.elastic.co/pricing/serverless-search).
 
 ## VCU types: search, indexing, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
@@ -48,13 +43,15 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 
 You can control costs using the following strategies:
 
-* **Search Power setting:** [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying or you can reduce provisioned resources to cut costs.
+* **Search Power setting**: [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying or you can reduce provisioned resources to cut costs.
 * **Search boost window**: By limiting the number of days of [time series data](/solutions/search/ingest-for-search.md#elasticsearch-ingest-time-series-data) that are available for caching, you can reduce the number of search VCUs required.
-* **Machine learning trained model autoscaling:** [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) is always enabled and cannot be disabled, ensuring efficient resource usage, reduced costs, and optimal performance without manual configuration.
+* **Machine learning trained model autoscaling**: [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md) is always enabled and cannot be disabled, ensuring efficient resource usage, reduced costs, and optimal performance without manual configuration.
 
   Trained model deployments automatically scale down to zero allocations after 24 hours without any inference requests. When they scale up again, they remain active for 5 minutes before they can scale down. During these cooldown periods, you will continue to be billed for the active resources.
-* **Indexing strategies:** Consider your indexing strategies and how they might impact overall VCU usage and costs:
-  
+* **Indexing strategies** Consider your indexing strategies and how they might impact overall VCU usage and costs:
   * To ensure optimal performance and cost-effectiveness for your project, it's important to consider how you structure your data. Consolidate small indices for better efficiency. In general, avoid a design where your project contains hundreds of very small indices, specifically those under 1GB each.
   * Why is this important? Every index in {{es}} has a certain amount of resource overhead. This is because {{es}} needs to maintain metadata for each index to keep it running smoothly. When you have a very large number of small indices, the combined overhead from all of them can consume more CPU resources than if the same data were stored in fewer, larger indices. This can lead to higher resource consumption and hence higher costs and potentially impact the overall performance of your project.
   * If your use case naturally generates many small, separate streams of data, the recommended approach is to implement a process to consolidate them into fewer, larger indices. This practice leads to more efficient resource utilization. By grouping your data into larger indices, you can ensure a more performant and cost-efficient experience with {{es-serverless}}.
+* **Configuration profiles**:
+  * The general purpose profile offers a great performance for the price especially for most search use cases. It is the right profile for full-text search, semantic search using ELSER or sparse vector embeddings, sparse vectors, and dense vectors that use compression such as BBQ. It is recommended to use the general purpose profile for most search use cases.
+  * The vector optimized profile is recommended only for uncompressed dense vectors when you want better performance. Though the per VCU cost is the same for general purpose and vector optimized profiles, the latter provides a larger amount of RAM for searchable data. This leads to higher VCU consumption and is more expensive while providing significantly better performance for uncompressed vector data.
