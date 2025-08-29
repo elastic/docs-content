@@ -287,7 +287,7 @@ Add a panel title:
 
 1. On the dashboard, click **Create visualization**.
 2. Open the **Visualization type** dropdown, then select **Treemap**.
-3. From the **Available fields** list, drag **Records** to the **Size by** field in the layer pane.
+3. From the **Available fields** list, drag **Records** to the **Metric** field in the layer pane.
 4. In the layer pane, click **Add or drag-and-drop a field** for **Group by**.
 
 Create a filter for each website traffic source:
@@ -325,7 +325,7 @@ Add the user geography grouping:
 Remove the documents that do not match the filter criteria:
 
 1. In the layer pane, click **Top 3 values of geo.srcdest**.
-2. Click **Advanced**, deselect **Group other values as "Other"**, then click **Close**.
+2. Click **Advanced**, deselect **Group remaining values as "Other"**, then click **Close**.
 
    :::{image} /explore-analyze/images/kibana-lens_treemapMultiLevelChart_7.16.png
    :alt: Treemap visualization
