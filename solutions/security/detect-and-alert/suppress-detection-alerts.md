@@ -38,7 +38,10 @@ You can configure alert suppression when [creating](/solutions/security/detect-a
 
 1. When configuring the rule (the **Define rule** step for a new rule, or the **Definition** tab for an existing rule), specify how you want to group alerts for alert suppression:
 
-    * **All rule types except the threshold rule:** In **Suppress alerts by**, enter 1-3 field names to group events by the fields' values.
+    * **All rule types except the threshold rule:** In **Suppress alerts by**, enter 1 or more field names to group alerts by the fields' values. The maximum limit of fields that you can enter is as follows:
+       * {applies_to}`stack: ga 9.0.0, ga 9.1.0` Enter up to 3 fields.
+       * {applies_to}`stack: ga 9.2.0`: Enter up to 5 fields.
+
     * **Threshold rule only:** In **Group by**, enter up to 3 field names to group events by the fields' values, or leave the setting empty to group all qualifying events together. 
 
 
@@ -142,7 +145,7 @@ With alert suppression, detection alerts aren’t created for the grouped source
 
 By default, if you close a suppressed alert while a suppression window is still active, suppression resets. Subsequently, any new qualifying alerts are suppressed and added to a new alert for suppression.
 
-For example, say you set the suppression time period to 5 minutes and specify to group alerts by the `host.name` field. The first time an event meets the rule's criteria, an alert is created. Over the next 5 minutes, any subsequent qualifying alerts are suppressed and grouped by unique `host.name` value. If you close that first alert before the active suppression window ends (the 5 minute suppression time period), alert suppression ends and restarts when the next qualifying alert meets the suppression criteria. 
+For example, say you set the suppression time period to 5 minutes and specify to group alerts by the `host.name` field. The first time an event meets the rule's criteria, an alert is created. Over the next 5 minutes, any subsequent qualifying alerts are suppressed and grouped by unique `host.name` value. If you close that first alert before the active suppression window ends (the 5 minute suppression time period), alert suppression stops and restarts when the next qualifying alert meets the suppression criteria. 
 
 
 :::{image} /solutions/images/security-alert-suppression-close-alert-example.png
