@@ -33,11 +33,9 @@ Provides general mappings for logs data streams:
 
 * Disables automatic date detection for string fields to avoid mis-parsing.  
 * Defines ECS `data_stream.*` fields:
-  * `data_stream.type`: constant_keyword, value `logs`  
-  * `data_stream.dataset`: constant_keyword, for example `nginx.access` (must be ≤ 100 characters, no `-`)
-  * `data_stream.namespace`: constant_keyword, for example `production` (must be ≤ 100 characters, no `-`)
-
-  Refer to [Data Stream fields](ecs://reference/ecs-data_stream.md) for more information.
+  * [`data_stream.type`](ecs://reference/ecs-data_stream.md#field-data-stream-type): constant_keyword, value `logs`  
+  * [`data_stream.dataset`](ecs://reference/ecs-data_stream.md#field-data-stream-dataset): constant_keyword, for example `nginx.access` (must be ≤ 100 characters, no `-`)
+  * [`data_stream.namespace`](ecs://reference/ecs-data_stream.md#field-data-stream-namespace): constant_keyword, for example `production` (must be ≤ 100 characters, no `-`)
 
 ### `logs@settings`
 
