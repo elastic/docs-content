@@ -364,6 +364,10 @@ Decrease the size of the following panels, then move the panels to the first row
 Now that you have a complete overview of your web server data, save the dashboard.
 
 1. In the toolbar, click **Save**.
-2. On the **Settings** window, enter `Logs dashboard` in the **Title** field.
+2. On the **Save dashboard** window, enter `Logs dashboard` in the **Title** field.
 3. Select **Store time with dashboard**.
-4. Click **Apply** and then **Save**. You will be identified as the **creator** of the dashboard. If you or another user edit the dashboard, you can also view the **last editor** when checking the dashboard information.
+4. Click **Save**. You will be identified as the **creator** of the dashboard. If you or another user edit the dashboard, you can also view the **last editor** when checking the dashboard information.
+
+:::{image} /explore-analyze/images/kibana-dashboard-creator-editor.png
+:alt: Information panel of a dashboard showing its creator and last editor
+:::
