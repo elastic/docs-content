@@ -177,3 +177,10 @@ In addition to practical advice, AI Assistant can offer conceptual advice, tips,
 
 * “How do I set up a {{ml}} job in {{elastic-sec}} to detect anomalies in network traffic volume over time?”
 * “I need to monitor for unusual file creation patterns that could indicate ransomware activity. How would I construct this query using EQL?”
+
+
+## Learn more 
+
+- For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
+
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in Observability and Search, refer to [{{obs-ai-assistant}}](/solutions/observability/observability-ai-assistant.md).
