@@ -14,6 +14,8 @@ Elastic applies a managed index template to data streams that follow the `logs-*
 
 The managed `logs` index template has a priority of `100` and is automatically applied to any data stream following the `logs-*-*` index pattern, unless you override it with your own higher-priority index template.
 
+By default, this index template also enables [LogsDB index mode](../../..//manage-data/data-store/data-streams/logs-data-stream.md), which optimizes storage and query performance for log data streams.
+
 Depending on your deployment, the `logs` index template applies one of the following data retention policies by default:
 
 * In {{stack}} (self-managed and {{ecloud}}): lifecycle is managed by [Index Lifecycle Management (ILM)](../../../manage-data/lifecycle/index-lifecycle-management.md). By default, rollover occurs when the primary shard reaches 50 GB or the index age reaches 30 days.
@@ -35,13 +37,17 @@ Provides general mappings for logs data streams:
   * `data_stream.dataset`: constant_keyword, for example `nginx.access` (must be ≤ 100 characters, no `-`)
   * `data_stream.namespace`: constant_keyword, for example `production` (must be ≤ 100 characters, no `-`)
 
+  Refer to [Data Stream fields](ecs://reference/ecs-data_stream.md) for more information.
+
 ### `logs@settings`
 
 Configures default index settings for logs data streams: 
 
-  * Sets `@timestamp` to ingest time if missing.  
-  * Contains a hook to the optional [`logs@custom`](#customize-preprocessing-with-logscustom) pipeline.  
+  * References the managed ingest pipeline `logs@default-pipeline`, which:
+    * Sets `@timestamp` to the ingest time if it is missing.  
+    * Contains a hook to the optional [`logs@custom`](#customize-preprocessing-with-logscustom) pipeline.   
   * Sets `ignore_malformed` to `true` globally. With this setting, documents with malformed fields can be indexed without causing ingestion failures. Refer to [ignore_malformed](elasticsearch://reference/elasticsearch/mapping-reference/ignore-malformed.md) for a list of supported fields.
+  * Sets `ignore_dynamic_beyond_limit` to `true`, which allows dynamically mapped fields to be added even when the total field limit is exceeded. Extra fields are ignored instead of causing ingestion to fail. Refer to [Mapping limit settings](elasticsearch://reference/elasticsearch/index-settings/mapping-limit.md) for more information.
 
 ### `ecs@mappings`
 
