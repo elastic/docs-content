@@ -29,7 +29,7 @@ When modifying Elastic prebuilt rules, you can also add on alert suppression. Re
 ## Configure alert suppression [security-alert-suppression-configure-alert-suppression]
 
 ::::{admonition} Requirements and notices
-* In {{stack}} alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing). In [{{serverless-short}}, you must have the appropriate [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* To use alert suppression in {{stack}} and {{serverless-short}}, you must have the appropriate [subscription](https://www.elastic.co/pricing). 
 * {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
 
 ::::
