@@ -59,6 +59,8 @@ You can control costs using the following strategies:
   This can lead to higher resource consumption and hence higher costs and potentially impact the overall performance of your project.
   
   If your use case naturally generates many small, separate streams of data, the recommended approach is to implement a process to consolidate them into fewer, larger indices. This practice leads to more efficient resource utilization. By grouping your data into larger indices, you can ensure a more performant and cost-efficient experience with {{es-serverless}}.
-* **Configuration profiles**:
-  * The general purpose profile offers a great performance for the price especially for most search use cases. It is the right profile for full-text search, semantic search using ELSER or sparse vector embeddings, sparse vectors, and dense vectors that use compression such as BBQ. It is recommended to use the general purpose profile for most search use cases.
-  * The vector optimized profile is recommended only for uncompressed dense vectors when you want better performance. Though the per VCU cost is the same for general purpose and vector optimized profiles, the latter provides a larger amount of RAM for searchable data. This leads to higher VCU consumption and is more expensive while providing significantly better performance for uncompressed vector data.
+* **Configuration profiles**: When you create a project, the configuration profile also affects the VCU usage and costs.
+
+  The **General purpose** profile is suitable for most search use cases. For example, it is the right profile for full-text search, sparse vectors, and dense vectors that use compression such as BBQ.
+  
+  The **Optimized for vectors** profile is recommended only for uncompressed dense vectors with high dimensionality. Though the per VCU cost is the same for general purpose and vector optimized profiles, the latter provides a larger amount of RAM for searchable data. This leads to higher VCU consumption in order to improve the performance for uncompressed vector data.
