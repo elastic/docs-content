@@ -1,4 +1,9 @@
-# {{beats}} and {{agent}} capabilities [beats-agent-comparison]
+---
+mapped_pages:
+  - https://www.elastic.co/guide/en/fleet/current/beats-agent-comparison.html
+---
+
+# {{beats}} and {{agent}} capabilities
 
 Elastic provides two main ways to send data to {{es}}:
 
