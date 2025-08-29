@@ -287,7 +287,7 @@ Add a panel title:
 
 1. On the dashboard, click **Create visualization**.
 2. Open the **Visualization type** dropdown, then select **Treemap**.
-3. From the **Available fields** list, drag **Records** to the **Size by** field in the layer pane.
+3. From the **Available fields** list, drag **Records** to the **Metric** field in the layer pane.
 4. In the layer pane, click **Add or drag-and-drop a field** for **Group by**.
 
 Create a filter for each website traffic source:
@@ -325,7 +325,7 @@ Add the user geography grouping:
 Remove the documents that do not match the filter criteria:
 
 1. In the layer pane, click **Top 3 values of geo.srcdest**.
-2. Click **Advanced**, deselect **Group other values as "Other"**, then click **Close**.
+2. Click **Advanced**, deselect **Group remaining values as "Other"**, then click **Close**.
 
    :::{image} /explore-analyze/images/kibana-lens_treemapMultiLevelChart_7.16.png
    :alt: Treemap visualization
@@ -364,10 +364,6 @@ Decrease the size of the following panels, then move the panels to the first row
 Now that you have a complete overview of your web server data, save the dashboard.
 
 1. In the toolbar, click **Save**.
-2. On the **Save dashboard** window, enter `Logs dashboard` in the **Title** field.
+2. On the **Settings** window, enter `Logs dashboard` in the **Title** field.
 3. Select **Store time with dashboard**.
-4. Click **Save**. You will be identified as the **creator** of the dashboard. If you or another user edit the dashboard, you can also view the **last editor** when checking the dashboard information.
-
-:::{image} /explore-analyze/images/kibana-dashboard-creator-editor.png
-:alt: Information panel of a dashboard showing its creator and last editor
-:::
+4. Click **Apply** and then **Save**. You will be identified as the **creator** of the dashboard. If you or another user edit the dashboard, you can also view the **last editor** when checking the dashboard information.
