@@ -127,6 +127,12 @@ This produces debug-level logs from the SDK itself.
 
 If you also want to inspect the actual telemetry your app is generating, configure exporters to log traces, metrics, or logs to the console. For example:
 
+```sh
+export OTEL_TRACES_EXPORTER=otlp, console
+export OTEL_METRICS_EXPORTER=otlp, console
+node --import @elastic/opentelemetry-node your-app.js
+```
+
 ## PHP
 
 While the EDOT PHP agent supports the standard `OTEL_LOG_LEVEL` variable, you must also configure at least one of the Elastic-specific sink options to direct logs to a destination:
