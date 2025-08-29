@@ -89,7 +89,7 @@ The `securitySolution:defaultThreatIndex` advanced setting specifies threat inte
 
 
 
-You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
+You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti_*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
 
 ::::{important}
 Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) for more information.
