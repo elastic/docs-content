@@ -333,3 +333,6 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2719
   'solutions/search/api-quickstarts.md': 'solutions/search/get-started/quickstarts.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2745
+  'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'
