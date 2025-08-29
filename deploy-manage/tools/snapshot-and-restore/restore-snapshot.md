@@ -28,8 +28,8 @@ This guide also provides tips for [restoring to another cluster](#restore-differ
 
 ## Prerequisites
 - To use Kibana’s Snapshot and Restore feature, you must have the following permissions:
-  - [Cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
-  - [Index privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `all` on the monitor index
+  - [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `monitor`, `manage_slm`, `cluster:admin/snapshot`, and `cluster:admin/repository`
+  - [Index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `all` on the monitor index
 - You can only restore a snapshot to a running cluster with an elected [master node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be registered and available to the cluster.
 - The snapshot and cluster versions must be compatible. See [Snapshot compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
 - To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any cluster blocks that prevent writes. The restore operation ignores index blocks.

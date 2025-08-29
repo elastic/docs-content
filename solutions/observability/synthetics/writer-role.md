@@ -32,9 +32,9 @@ Create a **writer role**, called something like `synthetics_writer`:
 
     | Type | Privilege | Purpose |
     | --- | --- | --- |
-    | [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_own_api_key` | Allows access to all security-related operations on {{es}} API keys that are owned by the current authenticated user. |
-    | [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_security` | Allows access to all security-related operations such as CRUD operations on users and roles and cache clearing. |
-    | [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_api_key` | Allows access to all security-related operations on {{es}} API keys. |
+    | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_own_api_key` | Allows access to all security-related operations on {{es}} API keys that are owned by the current authenticated user. |
+    | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_security` | Allows access to all security-related operations such as CRUD operations on users and roles and cache clearing. |
+    | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_api_key` | Allows access to all security-related operations on {{es}} API keys. |
 
 ## Limited write access [synthetics-write-privileges-limited]
 
@@ -44,8 +44,8 @@ Instead to you can create a writer role, called something like `synthetics_write
 
 | Type | Privilege | Purpose |
 | --- | --- | --- |
-| [Index](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `read` | Read-only access to synthetics indices. |
-| [Index](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `.alerts-observability.uptime.alerts-*`: `read` | Read-only access to synthetics alert indices. |
+| [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `read` | Read-only access to synthetics indices. |
+| [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `.alerts-observability.uptime.alerts-*`: `read` | Read-only access to synthetics alert indices. |
 | [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) | `Synthetics and Uptime`: `All` | Access to the {{synthetics-app}} in {{kib}}. |
 
 Additional privileges will depend on the factors below.
@@ -75,7 +75,7 @@ If the user should be able to create and update monitors using [projects](/solut
 
 | Type | Privilege | Purpose |
 | --- | --- | --- |
-| [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_own_api_key` | Allows access to all security-related operations on {{es}} API keys that are owned by the current authenticated user. |
-| [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_security` | Allows access to all security-related operations such as CRUD operations on users and roles and cache clearing. |
-| [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_api_key` | Allows access to all security-related operations on {{es}} API keys. |
+| [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_own_api_key` | Allows access to all security-related operations on {{es}} API keys that are owned by the current authenticated user. |
+| [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_security` | Allows access to all security-related operations such as CRUD operations on users and roles and cache clearing. |
+| [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_api_key` | Allows access to all security-related operations on {{es}} API keys. |
 

@@ -79,7 +79,7 @@ To use these features:
 stack: ga
 ```
 
-If you use {{es}} {{security-features}}, the following [security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) are required:
+If you use {{es}} {{security-features}}, the following [security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) are required:
 
 * The `monitor` cluster privilege to access {{kib}}'s **Index Management** features.
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index’s data.

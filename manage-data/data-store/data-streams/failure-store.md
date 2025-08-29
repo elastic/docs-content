@@ -303,7 +303,7 @@ Documents redirected to the failure store in the event of a failed ingest pipeli
 
 Furthermore, failed documents are likely to be structured differently than normal data in a data stream, and thus special care should be taken when making use of [document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security) or [field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#field-level-security). Any security policies that expect to utilize these features for both regular documents and failure documents should account for any differences in document structure between the two document types.
 
-To limit visibility on potentially sensitive data, users require the [`read_failure_store`](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) index privilege for a data stream in order to search that data stream's failure store data.
+To limit visibility on potentially sensitive data, users require the [`read_failure_store`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) index privilege for a data stream in order to search that data stream's failure store data.
 :::
 
 Searching a data stream's failure store can be done by making use of the existing search APIs available in {{es}}. 

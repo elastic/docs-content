@@ -37,7 +37,7 @@ Common use cases for kNN include:
   - Queries are represented as vectors with the same dimension. You should use the same model to generate the query vector as you used to generate the document vectors.
   - If you already have vectors, refer to the [Bring your own dense vectors](bring-own-vectors.md) guide.
 
-* To complete the steps in this guide, you must have the following [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices):
+* To complete the steps in this guide, you must have the following [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices):
 
     * `create_index` or `manage` to create an index with a `dense_vector` field
     * `create`, `index`, or `write` to add data to the index you created

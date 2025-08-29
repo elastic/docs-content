@@ -42,7 +42,7 @@ For Serverless users, this is an API-only feature. You can create and manage sea
 
 Your deployment must include the {{es}} and {{kib}} services.
 
-Managing search applications requires the `manage_search_application` cluster privilege, and also requires the `manage` [index privilege](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) on all indices associated with the search application.
+Managing search applications requires the `manage_search_application` cluster privilege, and also requires the `manage` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) on all indices associated with the search application.
 
 
 ## Overview [search-application-overview-summary] 

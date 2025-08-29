@@ -77,7 +77,7 @@ Consider an admin role and an analyst role. The admin role has higher privileges
 
 This example uses the role management API, but a similar configuration can be set up using the [Create users](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and [Users](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users) pages in {{kib}}. 
 
-1.  Create an admin role named `my_admin_role`. This role has `manage` [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) on the entire cluster, and on a subset of indices. This role also contains the `run_as` privilege, which enables any user with this role to submit requests on behalf of the specified `analyst_user`.
+1.  Create an admin role named `my_admin_role`. This role has `manage` [privileges](elasticsearch://reference/elasticsearch/security-privileges.md) on the entire cluster, and on a subset of indices. This role also contains the `run_as` privilege, which enables any user with this role to submit requests on behalf of the specified `analyst_user`.
 
     You can set up a similar role using the [role management UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) in {{kib}} by selecting an `analyst_user` from the **Run As privileges** dropdown menu in the **Elasticsearch** section.
 

@@ -32,13 +32,13 @@ Create a **setup role**, called something like `synthetics_setup`:
 
         | Type | Privilege | Purpose |
         | --- | --- | --- |
-        | [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `monitor` | Allows the user to retrieve cluster details. |
-        | [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `manage_ilm` | Allows the user access to all index lifecycle management operations related to managing policies. |
-        | [Cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) | `read_pipeline` | Gives the user read-only access to the ingest pipline. |
-        | [Index](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `view_index_metadata` | Gives the user read-only access to index and data stream metadata. |
-        | [Index](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `create_doc` | Allows the user to index documents. |
-        | [Index](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `auto_configure` | Permits auto-creation of indices and data streams. |
-        | [Index](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) | `synthetics-*`: `monitor` | Gives access to all actions that are required for monitoring (recovery, segments info, index stats, and status). |
+        | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `monitor` | Allows the user to retrieve cluster details. |
+        | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_ilm` | Allows the user access to all index lifecycle management operations related to managing policies. |
+        | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `read_pipeline` | Gives the user read-only access to the ingest pipline. |
+        | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `view_index_metadata` | Gives the user read-only access to index and data stream metadata. |
+        | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `create_doc` | Allows the user to index documents. |
+        | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `auto_configure` | Permits auto-creation of indices and data streams. |
+        | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `monitor` | Gives access to all actions that are required for monitoring (recovery, segments info, index stats, and status). |
 
 ::::{note}
 If users with the setup role also need to create, modify, and delete monitors, add the privileges defined in the [writer role](/solutions/observability/synthetics/writer-role.md).

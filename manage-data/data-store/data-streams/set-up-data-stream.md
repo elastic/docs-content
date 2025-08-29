@@ -206,7 +206,7 @@ After it's been created, you can view and manage this and other data streams fro
 
 ## Secure the data stream [secure-data-stream]
 
-Use [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to control access to a data stream. Granting privileges on a data stream grants the same privileges on its backing indices.
+Use [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) to control access to a data stream. Granting privileges on a data stream grants the same privileges on its backing indices.
 
 For an example, see [Data stream privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
 
@@ -235,7 +235,7 @@ GET _data_stream/my-data-stream
 
 ## Delete a data stream [delete-data-stream]
 
-To delete a data stream and its backing indices in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) for the data stream.
+To delete a data stream and its backing indices in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](elasticsearch://reference/elasticsearch/security-privileges.md) for the data stream.
 
 You can also use the [delete data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-stream).
 

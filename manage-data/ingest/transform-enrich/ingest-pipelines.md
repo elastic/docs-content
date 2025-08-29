@@ -23,7 +23,7 @@ You can create and manage ingest pipelines using {{kib}}'s **Ingest Pipelines** 
 ## Prerequisites [ingest-prerequisites]
 
 * Nodes with the [`ingest`](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#node-ingest-node) node role handle pipeline processing. To use ingest pipelines, your cluster must have at least one node with the `ingest` role. For heavy ingest loads, we recommend creating [dedicated ingest nodes](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#node-ingest-node).
-* If the {{es}} security features are enabled, you must have the `manage_pipeline` [cluster privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) to manage ingest pipelines. To use {{kib}}'s **Ingest Pipelines** feature, you also need the `cluster:monitor/nodes/info` cluster privileges.
+* If the {{es}} security features are enabled, you must have the `manage_pipeline` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) to manage ingest pipelines. To use {{kib}}'s **Ingest Pipelines** feature, you also need the `cluster:monitor/nodes/info` cluster privileges.
 * Pipelines including the `enrich` processor require additional setup. See [*Enrich your data*](data-enrichment.md).
 
 

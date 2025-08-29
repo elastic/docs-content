@@ -51,7 +51,7 @@ To use {{elastic-sec}}, your role must have at least:
 ::::
 
 
-For more information about index privileges, refer to [{{es}} security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+For more information about index privileges, refer to [{{es}} security privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 
 
 ## Feature-specific requirements [security-requirements-overview-feature-specific-requirements]
