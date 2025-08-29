@@ -140,7 +140,7 @@ With alert suppression, detection alerts aren’t created for the grouped source
 
 ## Impact of closing suppressed alerts [security-alert-suppression-impact-close-alerts]
 
-As a best practice, avoid closing suppresssion alerts (alerts generated for alert suppression) before an active suppression window ends. Closing alerts early can interrupt alert suppression or cause unexpected changes. 
+By default, if you close a suppressed alert while a suppression window is still active, suppression resets. Subsequently, any new qualifying alerts are suppressed and added to a new alert for suppression.
 
 For example, say you set the suppression time period to 5 minutes and specify to group alerts by the `host.name` field. The first time an event meets the rule's criteria, an alert is created. Over the next 5 minutes, any subsequent duplicate events are suppressed and grouped by unique `host.name` value. If you close that first alert before the active suppression window ends (the 5 minute suppression time period), alert suppression ends and restarts when the next qualifying event meets the suppression criteria. 
 
