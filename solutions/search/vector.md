@@ -1,4 +1,5 @@
 ---
+navigation_title: Vector search
 applies_to:
   stack:
   serverless:
