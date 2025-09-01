@@ -25,6 +25,7 @@ This page guides you through the basics of working with {{esql}} in the {{kib}} 
   - Enrich investigation data with lookups and dynamic field creation
   - Perform IP geolocation, threat intelligence, and cloud provider identification from a single query
   - Use aggregated values in detection rules for more accurate alerts
+  - Find more details and examples in [{{esql}} for {{elastic-sec}} use cases](/solutions/security/esql-for-security.md) 
 
 :::{tip}
 Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).

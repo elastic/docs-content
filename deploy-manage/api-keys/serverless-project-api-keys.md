@@ -72,7 +72,7 @@ For example, the following `role_descriptors` object defines a `books-read-only`
 }
 ```
 
-For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices).
+For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices).
 
 
 ## Update an API key [api-keys-update-an-api-key]
