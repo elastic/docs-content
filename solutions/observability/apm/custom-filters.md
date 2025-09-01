@@ -64,7 +64,7 @@ Say you decide to [capture HTTP request bodies](/solutions/observability/apm/bui
 
 ```json
 {
-  "email": "test@abc.com",
+  "email": "test@example.com",
   "password": "hunter2"
 }
 ```
@@ -206,7 +206,7 @@ POST _ingest/pipeline/apm_redacted_body_password/_simulate
         "http": {
           "request": {
             "body": {
-              "original": """{"email": "test@abc.com", "password": "hunter2"}"""
+              "original": """{"email": "test@example.com", "password": "hunter2"}"""
             }
           }
         }
@@ -249,7 +249,7 @@ The API response should be similar to this:
               "body" : {
                 "original" : {
                   "password" : "redacted",
-                  "email" : "test@abc.com"
+                  "email" : "test@example.com"
                 }
               }
             }

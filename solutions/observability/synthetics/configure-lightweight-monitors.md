@@ -403,7 +403,7 @@ $$$monitor-http-proxy_url$$$
     **Example**:
 
     ```yaml
-    http://proxy.mydomain.com:3128
+    http://proxy.example.com:3128
     ```
 
 $$$monitor-http-username$$$
@@ -496,7 +496,7 @@ check.request:
   headers:
     'Content-Type': 'application/x-www-form-urlencoded'
   # urlencode the body:
-  body: "name=first&email=someemail%40someemailprovider.com"
+  body: "name=first&email=someemail%40example.com"
 ```
 
 **`response`**
