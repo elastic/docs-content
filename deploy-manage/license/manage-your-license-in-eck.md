@@ -111,14 +111,14 @@ You can check the expiry date of your license in the [elastic-licensing](#k8s-ge
 To avoid any unintended downgrade of individual {{es}} clusters to a Basic license while installing the new license, we recommend installing the new Enterprise license as a new Kubernetes secret next to your existing Enterprise license.
 ::::
 
-To update your license, please refer to the [Add a license](#k8s-add-license.md) documentation and utilize a different Kubernetes secret name for your new license. For instance:
+To update your license, please refer to the [Add a license](#k8s-add-license) documentation and utilize a different Kubernetes secret name for your new license. For instance:
 
 ```shell
 kubectl create secret generic eck-license-new --from-file=<path/to/your/new/license.json> -n elastic-system
 kubectl label secret eck-license-new "license.k8s.elastic.co/scope"=operator -n elastic-system
 ```
 
-After creating the new license secret, you can follow the [Get usage data](#k8s-get-usage-data.md) guide to verify the status of your new license. For example, ensure that the `eck_license_expiry_date` reflects the expiration date of your new license. Once the new license is confirmed, you may safely delete the old license secret.
+After creating the new license secret, you can follow the [Get usage data](#k8s-get-usage-data) guide to verify the status of your new license. For example, ensure that the `eck_license_expiry_date` reflects the expiration date of your new license. Once the new license is confirmed, you may safely delete the old license secret.
 
 
 ## Get usage data [k8s-get-usage-data]
