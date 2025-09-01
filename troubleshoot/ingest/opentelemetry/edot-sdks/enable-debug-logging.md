@@ -110,7 +110,7 @@ Set this environment variable before starting your app:
 
 ```bash
 export OTEL_LOG_LEVEL=debug
-node your-app.js
+node --import @elastic/opentelemetry-node your-app.js
 ```
 :::
 
@@ -118,7 +118,7 @@ node your-app.js
 
 ```powershell
 $env:OTEL_LOG_LEVEL="debug" 
-node your-app.js
+node --import @elastic/opentelemetry-node your-app.js
 ```
 :::
 ::::
