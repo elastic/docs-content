@@ -3,32 +3,34 @@ applies_to:
   stack:
   serverless:
 ---
-# Dense vector
+# Dense vector search in Elasticsearch
 
-Dense neural embeddings capture semantic meaning by translating content into fixed-length vectors of floating-point numbers. Similar content maps to nearby points in the vector space, making them ideal for:
+**Dense vectors in Elasticsearch** use neural embeddings to represent semantic meaning. They translate text, images, or other data into fixed-length vectors of floating-point numbers. Content with similar meaning is mapped to nearby points in vector space, making dense vector search a powerful technique for:
 
-- Finding semantically similar content
-- Matching questions with answers
-- Image similarity search
-- Content-based recommendations
+- Finding semantically similar documents  
+- Matching natural language questions with relevant answers  
+- Performing image and multimedia similarity search  
+- Delivering personalized, content-based recommendations  
 
 ## Working with dense vectors in {{es}}
 
 :::{tip}
-Using the `semantic_text` field type provides automatic model management and sensible defaults. [Learn more](../semantic-search/semantic-search-semantic-text.md).
+For most use cases, the [`semantic_text` field type](../semantic-search/semantic-search-semantic-text.md) is the recommended starting point. It provides automatic model management and sensible defaults on top of dense vector search.
 :::
 
-Dense vector search requires both index configuration and a strategy for generating embeddings. To use dense vectors in {{es}}:
+To implement **dense vector search in Elasticsearch**, you need both an index configuration and a way to generate embeddings:
 
-1. Index documents with embeddings
-  - You can generate embeddings within {{es}}
-    - Refer to [this overview](../semantic-search.md#using-nlp-models) of the main options
-  - You can also [bring your own embeddings](bring-own-vectors.md)
-    - Use the `dense_vector` field type
-2. Query the index using the [`knn` search](knn.md)
+1. **Index documents with embeddings**  
+   - Generate embeddings directly in {{es}}  
+     - See the [overview of NLP model options](../semantic-search.md#using-nlp-models)  
+   - Or [bring your own embeddings](bring-own-vectors.md)  
+     - Store them using the `dense_vector` field type  
 
-## Better Binary Quantization (BBQ) [bbq]
+2. **Query the index with k-NN search**  
+   - Use the [`knn` query](knn.md) to retrieve results based on vector similarity  
 
-Better Binary Quantization (BBQ) is a vector quantization method for `dense_vector` fields that compresses vectors for faster and more memory-efficient similarity search. BBQ can improve relevance and cost efficiency, especially when used with HNSW.
+## Better Binary Quantization (BBQ) for dense vectors [bbq]
 
-For details on how BBQ works, supported algorithms, and configuration examples, refer to [Better Binary Quantization (BBQ)](https://www.elastic.co/docs/reference/elasticsearch/index-settings/bbq)
+**Better Binary Quantization (BBQ)** is an advanced vector quantization technique for `dense_vector` fields. It compresses embeddings into compact binary form, enabling faster k-NN search and reducing memory usage. This improves both search relevance and cost efficiency, especially when paired with the HNSW (Hierarchical Navigable Small World) algorithm.
+
+Learn more about how BBQ works, supported algorithms, and configuration examples in the [Better Binary Quantization (BBQ) documentation](https://www.elastic.co/docs/reference/elasticsearch/index-settings/bbq).
