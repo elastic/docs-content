@@ -3,20 +3,20 @@ applies_to:
   stack:
   serverless:
 ---
-# Vector search in Elasticsearch
+# Vector search in {{es}}
 
 :::{tip}
 Looking for a minimal configuration approach? The `semantic_text` field type provides an abstraction over vector search implementations with sensible defaults and automatic model management. It’s the recommended way to start with Elasticsearch vector search. [Learn more about semantic_text](semantic-search/semantic-search-semantic-text.md).
 :::
 
-**Vector search in Elasticsearch** uses vector embeddings to power modern, AI-driven search experiences. With vectorized content, Elasticsearch retrieves results based on meaning and similarity—not just keywords or exact term matches. This enables applications like semantic search, question answering, recommendations, and image similarity.
+**Vector search in {{es}}** uses vector embeddings to power modern, AI-driven search experiences. With vectorized content, Elasticsearch retrieves results based on meaning and similarity—not just keywords or exact term matches. This enables applications like semantic search, question answering, recommendations, and image similarity.
 
 Vector search is a core component of most [semantic search](semantic-search.md) workflows, but it can also be used independently for custom similarity matching. Learn more about the broader benefits in the [AI-powered search overview](ai-search/ai-search.md).
 
 This guide focuses on the more manual technical implementations of vector search, outside of the higher-level `semantic_text` workflow.  
 The right approach depends on your requirements, data type, and use case.
 
-## Vector queries and field types in Elasticsearch
+## Vector queries and field types in {{es}} [vector-queries-and-field-types]
 
 Here’s a quick reference for the main **vector field types** and **query types** you can use:
 
