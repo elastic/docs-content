@@ -91,14 +91,14 @@ The AI Assistant connects to one of these supported LLM providers:
    - The provider's API endpoint URL
    - Your authentication key or secret
 
-::::{important}
-    {{obs-ai-assistant}} doesn’t support connecting to a private LLM. Elastic doesn’t recommend using private LLMs with the AI Assistant.
-::::
-
 ### Elastic Managed LLM [elastic-managed-llm-obs-ai-assistant]
 
 :::{include} ../_snippets/elastic-managed-llm.md
 :::
+
+### Connect to a custom local LLM
+
+[Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 

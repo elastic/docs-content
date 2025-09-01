@@ -88,7 +88,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
         If you use index aliases, you must also grant `read` and `view_index_metadata` privileges to underlying indices to generate CSV reports.
         :::
 
-        For more information, refer to [Security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+        For more information, refer to [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 
 3. Add the {{kib}} privileges.
 
@@ -167,12 +167,12 @@ PUT <kibana host>:<port>/api/security/role/custom_reporting_user
 
 If you are using an external identity provider, such as LDAP or Active Directory, you can assign roles to individual users or groups of users. Role mappings are configured in [`config/role_mapping.yml`](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
-For example, assign the `kibana_admin` and `reporting_user` roles to the Bill Murray user:
+For example, assign the `kibana_admin` and `custom_reporting_user` roles to the Bill Murray user:
 
 ```yaml
 kibana_admin:
   - "cn=Bill Murray,dc=example,dc=com"
-reporting_user:
+custom_reporting_user:
   - "cn=Bill Murray,dc=example,dc=com"
 ```
 

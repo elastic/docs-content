@@ -103,7 +103,7 @@ POST _tasks/<task_id>/_cancel
 
 ## Perform hybrid search [hybrid-search-perform-search]
 
-After reindexing the data into the `semantic-embeddings` index, you can perform hybrid search to combine semantic and lexical search results. Choose between [retrievers](retrievers-overview.md) or [{{esql}}](/explore-analyze/query-filter/languages/esql.md) syntax to execute the query.
+After reindexing the data into the `semantic-embeddings` index, you can perform hybrid search to combine semantic and lexical search results. Choose between [retrievers](retrievers-overview.md) or [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax to execute the query.
 
 ::::{tab-set}
 :group: query-type
