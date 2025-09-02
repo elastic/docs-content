@@ -15,7 +15,7 @@ To import geospatical data into the Elastic Stack, the data must be indexed as [
 
 ## Security privileges [import-geospatial-privileges]
 
-The {{stack-security-features}} provide roles and privileges that control which users can upload files. You can manage your roles, privileges, and spaces in **{{stack-manage-app}}** in {{kib}}. For more information, see [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md), [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), and [{{kib}} role management](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+The {{stack-security-features}} provide roles and privileges that control which users can upload files. You can manage your roles, privileges, and spaces in **{{stack-manage-app}}** in {{kib}}. For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md), [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md), and [{{kib}} role management](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 To upload GeoJSON files, shapefiles, and draw features in {{kib}} with **Maps**, you must have:
 

@@ -39,7 +39,9 @@ For more details, refer to [{{kib}} privileges](../../../deploy-manage/users-rol
 
 ## Create and manange maintenance windows [manage-maintenance-windows]
 
-In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-settings}} > {{manage-app}} > {{maint-windows-app}}** in Serverless, you can create, edit, and archive maintenance windows.
+In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-settings}} > {{manage-app}} > {{maint-windows-app}}** in Serverless, you can create, edit, cancel, and archive maintenance windows. 
+
+{applies_to}`stack: ga 9.1` In {{stack}} 9.1.0 and later, you can also delete maintenance windows that are running, canceled, or archived. Be aware that you can't recover maintenance windows once you delete them.
 
 When you create a maintenance window, you must provide a name and a schedule. You can optionally configure it to repeat daily, monthly, yearly, or on a custom interval.
 
