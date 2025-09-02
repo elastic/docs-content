@@ -41,6 +41,9 @@ The following Azure regions are currently available:
 | Region | Name |
 | :--- | :--- |
 | eastus | East US |
+| northeurope | North Europe |
+| australiaeast | Australia East |
+| westus2 | West US 2 |
 
 ## Google Cloud Platform (GCP) regions [regions-gcp-regions]
 

@@ -19,6 +19,8 @@ This section provides details around {{kib}} and {{es}} configuration when runni
 
 Additionally, the following topics apply to both {{es}} and {{kib}}, and in some cases, to other applications supported by ECK:
 
+* [**Users and roles**](/deploy-manage/users-roles/cluster-or-deployment-auth/managed-credentials-eck.md): Learn how to work with managed credentials, create custom users, and configure authentication realms.
+
 * [**Access services**](accessing-services.md): Learn how to access to the orchestrated clusters and how to adapt the Kubernetes services to your needs.
 
 * [**Customize Pods**](customize-pods.md): Learn how to adapt the `podTemplate` field to your needs.

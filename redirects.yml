@@ -13,9 +13,9 @@ redirects:
   'solutions/observability/apps.md': 'solutions/observability/applications/index.md'
   'solutions/observability/apps/application-performance-monitoring-apm.md': 'solutions/observability/apm/index.md'
   'solutions/observability/apps/get-started-with-apm.md': 'solutions/observability/apm/get-started.md'
-  'solutions/observability/apps/get-started-apm-serverless.md': 'solutions/observability/apm/get-started-serverless.md'
-  'solutions/observability/apps/fleet-managed-apm-server.md': 'solutions/observability/apm/get-started-fleet-managed-apm-server.md'
-  'solutions/observability/apps/apm-server-binary.md': 'solutions/observability/apm/get-started-apm-server-binary.md'
+  'solutions/observability/apps/get-started-apm-serverless.md': 'solutions/observability/apm/get-started.md'
+  'solutions/observability/apps/fleet-managed-apm-server.md': 'solutions/observability/apm/apm-server-fleet-managed.md'
+  'solutions/observability/apps/apm-server-binary.md': 'solutions/observability/apm/apm-server-binary.md'
   'solutions/observability/apps/learn-about-application-data-types.md': 'solutions/observability/apm/data-types.md'
   'solutions/observability/apps/spans.md': 'solutions/observability/apm/spans.md'
   'solutions/observability/apps/transactions.md': 'solutions/observability/apm/transactions.md'
@@ -216,7 +216,7 @@ redirects:
   'deploy-manage/security/traffic-filtering.md': 'deploy-manage/security/network-security.md'
   'deploy-manage/security/private-link-traffic-filters.md': 'deploy-manage/security/private-connectivity.md'
   'deploy-manage/security/ip-traffic-filtering.md': 'deploy-manage/security/ip-filtering.md'
-  'deploy-manage/security/gcp-private-service-connect-traffic-filters.md': 
+  'deploy-manage/security/gcp-private-service-connect-traffic-filters.md':
     to: 'deploy-manage/security/private-connectivity-gcp.md'
     anchors:
       'ec-psc-create-traffic-filter-psc-rule-set': 'create-private-connection-policy'
@@ -224,7 +224,7 @@ redirects:
       'ec-edit-traffic-filter-psc-rule-set': 'edit-private-connection-policy'
       'remove-filter-deployment': 'remove-private-connection-policy'
       'ec-delete-traffic-filter-psc-rule-set': 'delete-private-connection-policy'
-  'deploy-manage/security/aws-privatelink-traffic-filters.md': 
+  'deploy-manage/security/aws-privatelink-traffic-filters.md':
     to: 'deploy-manage/security/private-connectivity-aws.md'
     anchors:
       'ec-associate-traffic-filter-private-link-rule-set': 'associate-private-connection-policy'
@@ -232,7 +232,7 @@ redirects:
       'ec-delete-traffic-filter-private-link-rule-set': 'delete-private-connection-policy'
       'remove-filter-deployment': 'remove-private-connection-policy'
       'ec-create-traffic-filter-private-link-rule-set': 'create-private-connection-policy'
-  'deploy-manage/security/azure-private-link-traffic-filters.md': 
+  'deploy-manage/security/azure-private-link-traffic-filters.md':
     to: 'deploy-manage/security/private-connectivity-azure.md'
     anchors:
       'ec-associate-traffic-filter-private-link-rule-set': 'associate-private-connection-policy'
@@ -240,7 +240,7 @@ redirects:
       'remove-filter-deployment': 'remove-private-connection-policy'
       'ec-azure-delete-traffic-filter-private-link-rule-set': 'delete-private-connection-policy'
       ec-azure-create-traffic-filter-private-link-rule-set': 'create-private-connection-policy'
-  'deploy-manage/security/ec-traffic-filtering-through-the-api.md': 
+  'deploy-manage/security/ec-traffic-filtering-through-the-api.md':
     to: 'deploy-manage/security/network-security-api.md'
     anchors:
       'ec-create-a-traffic-filter-rule-set': 'create-ip-filter-policy'
@@ -253,13 +253,13 @@ redirects:
       'ec-associate-rule-set-with-a-deployment': 'associate-policy-rs-with-deployment'
       'ec-delete-rule-set-association-with-a-deployment': 'delete-policy-rs-association-with-deployment'
       'ec-delete-a-rule-set': 'delete-policy-rs'
-  'deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md': 
+  'deploy-manage/security/claim-traffic-filter-link-id-ownership-through-api.md':
     to: 'deploy-manage/security/claim-private-connection-api.md'
     anchors:
       'ec-claim-a-traffic-filter-link-id': 'claim-private-connection-id'
       'ec-list-claimed-traffic-filter-link-id': 'list-claimed-private-connection-ids'
       'ec-unclaim-a-traffic-filter-link-id': 'unclaim-private-connection-id'
-  'solutions/observability/synthetics/traffic-filters.md': 
+  'solutions/observability/synthetics/traffic-filters.md':
     to: 'solutions/observability/synthetics/network-security.md'
     anchors:
       '_add_the_traffic_filter': '_add_the_ip_filter'
@@ -283,12 +283,53 @@ redirects:
     to: 'deploy-manage/remote-clusters/ece-enable-ccs.md'
     anchors:
       'ece-ccs-ccr-traffic-filtering': 'ece-ccs-ccr-network-security'
-  
+
 # Related to https://github.com/elastic/docs-content/pull/2010
   'manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md': 'manage-data/data-store/index-basics.md'
 
-  # Related to https://github.com/elastic/docs-content/pull/2097
+# Related to https://github.com/elastic/docs-content/pull/2097
   'explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md': 'explore-analyze/machine-learning/anomaly-detection.md'
   'explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-dfa-analytics.md': 'explore-analyze/machine-learning/data-frame-analytics.md'
 
   'solutions/search/retrievers-examples.md': 'elasticsearch://reference/elasticsearch/rest-apis/retrievers/retrievers-examples.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2010
+  'manage-data/data-store/templates/index-template-management.md': 'manage-data/data-store/index-basics.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2136
+  'deploy-manage/security/fips-140-2.md': 'deploy-manage/security/fips.md'
+
+# Related to
+  'solutions/observability/apm/get-started-serverless.md': 'solutions/observability/apm/get-started.md'
+  'solutions/observability/apm/get-started-fleet-managed-apm-server.md': 'solutions/observability/apm/apm-server-fleet-managed.md'
+  'solutions/observability/apm/get-started-apm-server-binary.md': 'solutions/observability/apm/apm-server-binary.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2396
+  'solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
+  'solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
+  
+  # https://github.com/elastic/docs-content/pull/2658
+  'explore-analyze/query-filter/languages/esql.md': 'elasticsearch://reference/query-languages/esql.md'
+  'explore-analyze/query-filter/languages/esql-examples.md': 'elasticsearch://reference/query-languages/esql/esql-examples.md'
+  'explore-analyze/query-filter/languages/esql-elastic-security.md': 'solutions/security/esql-for-security.md'
+  'explore-analyze/query-filter/languages/esql-where.md': 'explore-analyze/query-filter/languages/esql-kibana.md'
+  'explore-analyze/query-filter/languages/esql-cross-clusters.md': 'elasticsearch://reference/query-languages/esql/esql-cross-clusters.md'
+  'explore-analyze/query-filter/languages/esql-getting-started.md': 'elasticsearch://reference/query-languages/esql/esql-getting-started.md'
+  'explore-analyze/query-filter/languages/esql-multi-index.md': 'elasticsearch://reference/query-languages/esql/esql-multi-index.md'
+  'explore-analyze/query-filter/languages/esql-multi.md': 'elasticsearch://reference/query-languages/esql/esql-multi.md'
+  'explore-analyze/query-filter/languages/esql-rest.md': 'elasticsearch://reference/query-languages/esql/esql-rest.md'
+  'explore-analyze/query-filter/languages/esql-task-management.md': 'elasticsearch://reference/query-languages/esql/esql-task-management.md'
+  'explore-analyze/query-filter/languages/esql-troubleshooting.md': 'elasticsearch://reference/query-languages/esql/esql-troubleshooting.md'
+  'solutions/search/esql-search-tutorial.md': 'elasticsearch://reference/query-languages/esql/esql-search-tutorial.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2639
+  'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
+  
+# Related to https://github.com/elastic/docs-content/pull/2245/
+  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
+
+# Related to https://github.com/elastic/elasticsearch/pull/133362
+  'solutions/search/querydsl-full-text-filter-tutorial.md': 'elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2719
+  'solutions/search/api-quickstarts.md': 'solutions/search/get-started/quickstarts.md'
