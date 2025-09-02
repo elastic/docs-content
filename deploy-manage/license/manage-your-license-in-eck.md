@@ -118,7 +118,9 @@ kubectl create secret generic eck-license-new --from-file=<path/to/your/new/lice
 kubectl label secret eck-license-new "license.k8s.elastic.co/scope"=operator -n elastic-system
 ```
 
-After creating the new license secret, you can follow the [Get usage data](#k8s-get-usage-data) guide to verify the status of your new license. For example, ensure that the `eck_license_expiry_date` reflects the expiration date of your new license. Once the new license is confirmed, you may safely delete the old license secret.
+After creating the new license, verify its status as described in [Get usage data](#k8s-get-usage-data). For example, ensure that the `eck_license_expiry_date` reflects the expiration date of your new license.
+
+Once the new license is confirmed, you may safely delete the old license secret.
 
 
 ## Get usage data [k8s-get-usage-data]
