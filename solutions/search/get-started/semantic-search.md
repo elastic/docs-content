@@ -22,14 +22,10 @@ By playing with a simple use case, you'll take the first steps toward understand
 
 ## Prerequisites
 
-- If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a project that is optimized for vectors. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+- If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a project with a general purpose configuration. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
 - If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role.
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
-
-<!--
-TBD: What is the impact of this "optimized for vectors" option?
--->
 
 ## Create a vector database
 
