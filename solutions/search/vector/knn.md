@@ -10,10 +10,10 @@ products:
   - id: cloud-serverless
 ---
 
-# kNN search in Elasticsearch [knn-search]
+# kNN search in {{es}} [knn-search]
 
-A *k-nearest neighbor* (kNN) search finds the *k* closest vectors to a query vector using a similarity metric such as cosine or L2 norm.  
-With **Elasticsearch kNN search**, you can power applications that retrieve results based on semantic meaning rather than exact keyword matches.
+A *k-nearest neighbor* (kNN) search finds the *k* nearest vectors to a query vector using a similarity metric such as cosine or L2 norm.  
+With {{es}} kNN search, you can retrieve results based on semantic meaning rather than exact keyword matches.
 
 Common use cases for kNN vector similarity search include:
 
@@ -28,42 +28,40 @@ Common use cases for kNN vector similarity search include:
 
 * **Analysis**
   * Anomaly detection
-  * Pattern recognition and matching
+  * Pattern matching
 
 ## Prerequisites [knn-prereqs]
 
-To run a kNN search in Elasticsearch:
+To run a kNN search in {{es}}:
 
 * Your data must be vectorized. You can [use an NLP model in {{es}}](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md) or generate vectors outside {{es}}.
-  - Use the [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) field type for dense vectors.
-  - Query vectors must have the same dimension and be created with the same model as the document vectors.
-  - Already have vectors? See [Bring your own dense vectors](bring-own-vectors.md).
+  * Use the [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) field type for dense vectors.
+  * Query vectors must have the same dimension and be created with the same model as the document vectors.
+  * Already have vectors? Refer to [Bring your own dense vectors](bring-own-vectors.md).
 
 * Required [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices):
-  - `create_index` or `manage` to create an index with a `dense_vector` field  
-  - `create`, `index`, or `write` to add data  
-  - `read` to search the index  
+  * `create_index` or `manage` to create an index with a `dense_vector` field
+  * `create`, `index`, or `write` to add data
+  * `read` to search the index
 
 ## kNN methods [knn-methods]
 
-{{es}} supports two approaches to kNN search:
+{{es}} supports two methods for kNN search:
 
 * [**Approximate kNN**](#approximate-knn): Fast, scalable similarity search using the `knn` option, `knn` query, or a `knn` retriever. Ideal for most production workloads.  
-* [**Exact, brute-force kNN**](#exact-knn): Uses a `script_score` query with a vector function for 100% accurate results. Best for small datasets or precise scoring.
+* [**Exact, brute-force kNN**](#exact-knn): Uses a `script_score` query with a vector function. Best for small datasets or precise scoring.
 
-Approximate kNN offers low latency and good accuracy, while exact kNN provides perfect accuracy but does not scale well for large datasets.
+Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With this approach, a `script_score` query must scan each matching document to compute the vector function, which can result in slow search speeds. However, you can improve latency by using a [query](../../../explore-analyze/query-filter/languages/querydsl.md) to limit the number of matching documents passed to the function. If you filter your data to a small subset of documents, you can get good search performance using this approach.
 
 ## Approximate kNN [approximate-knn]
 
 ::::{warning}
-Approximate kNN search has specific resource requirements. All vector data must fit in the node’s page cache for efficient performance. See the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
+Approximate kNN search has specific resource requirements. All vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
 ::::
-
-Approximate kNN is the most common method for **vector similarity search in Elasticsearch**. It uses the HNSW (Hierarchical Navigable Small World) graph algorithm to find the nearest neighbors.
 
 To run an approximate kNN search:
 
-1. Map one or more `dense_vector` fields with indexing enabled and define the `similarity` metric.  
+1. Map one or more `dense_vector` fields. Approximate kNN search requires the following mapping options:  
 
     * A `similarity` value. This value determines the similarity metric used to score documents based on similarity between the query and document vector. For a list of available metrics, see the [`similarity`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-similarity) parameter documentation. The `similarity` setting defaults to `cosine`.
 
@@ -121,15 +119,15 @@ To run an approximate kNN search:
     }
     ```
 
-The document `_score` is a positive 32-bit floating-point number that ranks result relevance. In **Elasticsearch kNN search**, `_score` is derived from the chosen vector similarity metric between the query and document vectors. See [`similarity`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-similarity) for details on how kNN scores are computed.
+The document `_score` is a positive 32-bit floating-point number that ranks result relevance. In {{es}} kNN search, `_score` is derived from the chosen vector similarity metric between the query and document vectors. Refer to [`similarity`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-similarity) for details on how kNN scores are computed.
 
 ::::{note}
-Support for approximate kNN search was added in version 8.0. Before 8.0, `dense_vector` fields couldn’t enable `index` in the mapping. If you created an index prior to 8.0 with `dense_vector` fields, reindex into a new mapping with `index: true` (the default) to use approximate kNN.
+Support for approximate kNN search was added in version 8.0. Before 8.0, `dense_vector` fields did not support enabling `index` in the mapping. If you created an index prior to 8.0 with `dense_vector` fields, reindex using a new mapping with `index: true` (which is the default value) to use approximate kNN.
 ::::
 
 ### Indexing considerations [knn-indexing-considerations]
 
-For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320). Building HNSW graphs is compute-intensive, so indexing vectors can take time; you may need to increase client request timeouts for index and bulk operations. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) covers indexing performance, sizing, and configuration trade-offs that affect search latency and recall.
+For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320). Building HNSW graphs is compute-intensive, so indexing vectors can take time; you may need to increase client request timeouts for index and bulk operations. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) covers indexing performance, sizing, and configuration trade-offs that affect search performance.
 
 In addition to search-time parameters, HNSW exposes index-time settings that balance graph build cost, search speed, and accuracy. When defining your `dense_vector` mapping, use [`index_options`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-index-options) to set these parameters:
 
@@ -155,12 +153,12 @@ PUT image-index
 
 ### Tune approximate kNN for speed or accuracy [tune-approximate-knn-for-speed-accuracy]
 
-To assemble results, the kNN API first gathers `num_candidates` approximate neighbors per shard, computes similarity to the query vector, selects the top `k` per shard, and merges them into the global top `k` nearest neighbors.
+To gather results, the kNN API first finds a `num_candidates` number of approximate neighbors per shard, computes similarity to the query vector, selects the top `k` per shard, and merges them into the global top `k` nearest neighbors.
 
 * Increase `num_candidates` to improve recall and accuracy (at the cost of higher latency).
 * Decrease `num_candidates` for faster queries (with a potential accuracy trade-off).
 
-Choosing `num_candidates` is the primary knob for optimizing the latency/recall trade-off in Elasticsearch vector similarity search.
+Choosing `num_candidates` is the primary knob for optimizing the latency/recall trade-off in {{es}} vector similarity search.
 
 ### Approximate kNN using byte vectors [approximate-knn-using-byte-vectors]
 
@@ -231,13 +229,13 @@ POST byte-image-index/_search
 
 ### Byte quantized kNN search [knn-search-quantized-example]
 
-If you want to provide `float` vectors but still get the memory savings of `byte` vectors, use the [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) feature. Quantization indexes your `float32` embeddings as compact byte vectors (int8 or int4) while retaining the original `float` vectors in the index for higher-fidelity scoring and analysis. This reduces memory usage and can improve cache locality and query throughput for large vector collections.
+If you want to provide `float` vectors but still get the memory savings of `byte` vectors, use the [quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) feature. Quantization allows you to provide `float` vectors, but internally they are indexed as `byte` vectors. Additionally, the original `float` vectors are still retained in the index.
 
 ::::{note}
 The default index type for `dense_vector` is `int8_hnsw`.
 ::::
 
-To use quantization, set the `dense_vector` mapping’s `index_options.type` to `int8_hnsw` or `int4_hnsw`.
+To use quantization, set the `dense_vector` index type to `int8_hnsw` or `int4_hnsw`.
 
 ```console
 PUT quantized-image-index
@@ -288,7 +286,7 @@ PUT quantized-image-index
     }
     ```
 
-Because the original `float` vectors are retained alongside the quantized index, you can enable **reranking** with full-precision scores: retrieve candidates quickly via the `int8_hnsw` (or `int4_hnsw`) index, then **rescore** the top `k` hits using the original `float` vectors. This two-stage **kNN search** workflow combines the speed and memory efficiency of **quantized vectors** with the accuracy of full-precision vector similarity in Elasticsearch.
+Because the original `float` vectors are retained alongside the quantized index, you can use them for re-scoring: retrieve candidates quickly via the `int8_hnsw` (or `int4_hnsw`) index, then rescore the top `k` hits using the original `float` vectors. This provides the best of both worlds, fast search and accurate scoring.
 
 ```console
 POST quantized-image-index/_search
@@ -323,7 +321,7 @@ POST quantized-image-index/_search
 
 ### Filtered kNN search [knn-search-filter-example]
 
-The kNN search API supports restricting vector similarity search with a **filter**. The request returns the top `k` nearest neighbors **that also satisfy the filter query**, enabling targeted, pre-filtered approximate kNN in Elasticsearch.
+The kNN search API supports restricting vector similarity search with a filter. The request returns the top `k` nearest neighbors that also satisfy the filter query, enabling targeted, pre-filtered approximate kNN in {{es}}.
 
 The following request performs an approximate kNN search filtered by the `file-type` field:
 
@@ -347,21 +345,21 @@ POST image-index/_search
 ```
 
 ::::{note}
-The filter is applied during approximate kNN search to ensure that k matching documents are returned. In contrast, post-filtering applies the filter after the approximate kNN step and can return fewer than k results—even when enough relevant documents exist.
+The filter is applied **during** approximate kNN search to ensure that `k` matching documents are returned. In contrast, post-filtering applies the filter **after** the approximate kNN step and can return fewer than `k` results; even when enough relevant documents exist.
 ::::
 
 ### Approximate kNN search and filtering [approximate-knn-search-and-filtering]
 
-In approximate kNN search with an HNSW index, applying filters can **decrease performance**—the engine must explore more of the graph to gather enough candidates that satisfy the filter and reach `num_candidates`. This contrasts with conventional query filtering, where stricter filters often speed up queries.
+In approximate kNN search with an HNSW index, applying filters can decrease performance as the engine must explore more of the graph to gather enough candidates that satisfy the filter and reach `num_candidates`. This contrasts with conventional query filtering, where stricter filters often speed up queries.
 
-To minimize the impact of filtering, Lucene uses these per-segment strategies:
+To avoid significant performance drawbacks, Lucene implements the following strategies per segment:
 
-* If the filtered document count is **≤ num_candidates**, the search **bypasses HNSW** and runs a **brute-force** scan over the filtered docs.
-* During HNSW exploration, if the **nodes explored** exceeds the number of documents that satisfy the filter, the search **stops exploring** the graph and **switches** to a brute-force scan over the filtered docs.
+* If the filtered document count is less than or equal to num_candidates, the search bypasses the HNSW graph and uses a brute force search on the filtered documents.
+* While exploring the HNSW graph, if the number of nodes explored exceeds the number of documents that satisfy the filter, the search will stop exploring the graph and switch to a brute force search over the filtered documents.
 
 ### Combine approximate kNN with other features [_combine_approximate_knn_with_other_features]
 
-You can perform **hybrid retrieval** by combining the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) with a standard [`query`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-query). This blends vector similarity with lexical relevance, filters, and aggregations—useful for production-grade Elasticsearch vector search workflows.
+You can perform **hybrid retrieval** by combining the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) with a standard [`query`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-query). This blends vector similarity with lexical relevance, filters, and aggregations.
 
 ```console
 POST image-index/_search
@@ -385,19 +383,20 @@ POST image-index/_search
 }
 ```
 
-This search retrieves the **global top `k = 5` vector neighbors across all shards**, unions them with the matches from the `match` query (a boolean *OR* disjunction), and then returns the **top 10** overall results by score.
-Each hit’s score is the **sum** of the vector (`knn`) score and the lexical (`query`) score. You can use `boost` values to weight each signal in the sum. For the example above:
+This search finds the global top `k = 5` vector matches, combines them with the matches from the `match` query, and finally returns the 10 top-scoring results. The `knn` and `query` matches are combined through a disjunction, as if you took a boolean *or* between them. The top `k` vector results represent the global nearest neighbors across all index shards.
+
+The score of each hit is the sum of the `knn` and `query` scores. You can specify a `boost` value to give a weight to each score in the sum. In the example above, the scores will be calculated as
 
 ```
 score = 0.9 * match_score + 0.1 * knn_score
 ```
 
-You can also combine the `knn` option with [`aggregations`](../../../explore-analyze/query-filter/aggregations.md). In general, {{es}} computes aggregations over all documents in the final match set. For approximate kNN alone, aggregations run over the **top `k` nearest neighbors**. If a `query` is also present, aggregations run over the **combined** set of `knn` and `query` matches.
+The `knn` option can also be used with [`aggregations`](../../../explore-analyze/query-filter/aggregations.md). In general, {{es}} computes aggregations over all documents that match the search. So for approximate kNN search, aggregations are calculated on the top `k` nearest documents. If the search also includes a `query`, then aggregations are calculated on the combined set of `knn` and `query` matches.
 
 ### Perform semantic search [knn-semantic-search]
 
 :::{tip}
-Looking for a minimal-configuration path? The `semantic_text` field type abstracts these vector search implementations with sensible defaults and automatic model management. It’s the recommended approach for most users. [Learn more about semantic_text](../semantic-search/semantic-search-semantic-text.md).
+Looking for a minimal configuration approach? The `semantic_text` field type abstracts these vector search implementations with sensible defaults and automatic model management. It's the recommended approach for most users. [Learn more about semantic_text](../semantic-search/semantic-search-semantic-text.md).
 :::
 
 Use kNN to run **semantic search in Elasticsearch** with a deployed [text embedding model](../../../explore-analyze/machine-learning/nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding). Instead of literal term matching, semantic search retrieves results based on the **intent** and **contextual meaning** of the query.
