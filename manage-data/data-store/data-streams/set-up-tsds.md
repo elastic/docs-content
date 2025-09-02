@@ -28,8 +28,8 @@ To set up a [time series data stream (TSDS)](../data-streams/time-series-data-st
 * Before you create a TSDS, you should be familiar with [data streams](../data-streams.md) and [TSDS concepts](time-series-data-stream-tsds.md).
 * To follow this tutorial, you must have the following permissions:
 
-    * [Cluster privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `manage_ilm` and `manage_index_templates`.
-    * [Index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `create_doc` and `create_index` for any TSDS you create or convert. To roll over a TSDS, you must have the `manage` privilege.
+    * [Cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `manage_ilm` and `manage_index_templates`.
+    * [Index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `create_doc` and `create_index` for any TSDS you create or convert. To roll over a TSDS, you must have the `manage` privilege.
 
 
 
@@ -194,7 +194,7 @@ PUT _data_stream/metrics-weather_sensors-dev
 
 ## Secure the TSDS [secure-tsds]
 
-Use [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to control access to a TSDS. Granting privileges on a TSDS grants the same privileges on its backing indices.
+Use [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) to control access to a TSDS. Granting privileges on a TSDS grants the same privileges on its backing indices.
 
 For an example, refer to [Data stream privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
 
