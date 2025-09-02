@@ -36,8 +36,8 @@ Refer to the following table to find the MITRE ATT&CK® version that's mapped to
 
 | MITRE ATT\&CK® version | {{elastic-sec}} version |
 | :---- | :---- |
-| [**v16.1**](https://attack.mitre.org/resources/updates/updates-october-2024/) | **9.0.0-9.0.6**, **9.1.0-9.1.2** |
-| [**v17.1**](https://attack.mitre.org/resources/updates/updates-april-2025/) | **9.1.3+** |
+| [v16.1](https://attack.mitre.org/resources/updates/updates-october-2024/) | • {applies_to}`stack: ga 9.0.0-9.0.6` <br> • {applies_to}`stack: ga 9.1.0-9.1.3`|
+| [v17.1](https://attack.mitre.org/resources/updates/updates-april-2025/) |  • {applies_to}`stack: ga 9.2.0`  <br> • {applies_to}`serverless: `|
 
 ::::{note}
 {{serverless-short}} always uses the latest MITRE ATT&CK® versions that's been mapped to {{elastic-sec}}.
