@@ -31,7 +31,17 @@ If you have data from a source that doesn't yet have an integration, you can use
 
 ::::{{step}} Get started with your use case 
 Not sure where to start exploring {{elastic-sec}} 
-or which features may be relevant to you? Continue to the next topic to view our quickstart guides, each of which is tailored to a specific use case and helps you complete a core task so you can get up and running. 
+or which features may be relevant to you? Continue to the next topic to view our [quickstart guides](../security/get-started/quickstarts.md), each of which is tailored to a specific use case and helps you complete a core task so you can get up and running. 
 ::::
 
 :::::
+
+## Related resources 
+
+Use these resources to learn more about Security or get started in a different way.
+
+* Migrate your SIEM rules from Splunk's Search Processing Language (SPL) to Elasticsearch Query Language ({{esql}}) using [Automatic Migration](../security/get-started/automatic-migration.md). 
+* Check out the numerous [Security integrations](https://www.elastic.co/integrations/data-integrations?solution=security) that are available to collect and process your data.  
+* Get started with [AI for Security](../security/ai.md). 
+* View our [release notes](../../release-notes/elastic-security/index.md) for the latest updates. 
+
