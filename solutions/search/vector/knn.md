@@ -399,19 +399,19 @@ The `knn` option can also be used with [`aggregations`](../../../explore-analyze
 Looking for a minimal configuration approach? The `semantic_text` field type abstracts these vector search implementations with sensible defaults and automatic model management. It's the recommended approach for most users. [Learn more about semantic_text](../semantic-search/semantic-search-semantic-text.md).
 :::
 
-Use kNN to run **semantic search in Elasticsearch** with a deployed [text embedding model](../../../explore-analyze/machine-learning/nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding). Instead of literal term matching, semantic search retrieves results based on the **intent** and **contextual meaning** of the query.
+kNN search enables you to perform semantic search by using a previously deployed [text embedding model](../../../explore-analyze/machine-learning/nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding). Instead of literal matching on search terms, semantic search retrieves results based on the intent and the contextual meaning of a search query.
 
-Under the hood, the text-embedding NLP model converts your input query string (provided as `model_text`) into a dense vector. The query vector is compared against an index containing dense vectors created with the **same** text-embedding {{ml}} model. Results are the nearest neighbors in vector space—i.e., semantically similar as learned by the model.
+Under the hood, the text embedding NLP model converts your input query string (provided as `model_text`) into a dense vector. The query vector is compared against an index containing dense vectors created with the same text embedding {{ml}} model. The search results are semantically similar as learned by the model.
 
 ::::{important}
 To perform semantic search:
 
-* You need an index that contains dense-vector representations of the input data to search against.
-* You must use the same text-embedding model for search that you used to create the document vectors.
-* The text-embedding NLP model deployment must be started.
+* You need an index that contains dense vector representations of the input data to search against.
+* You must use the same text embedding model for search that you used to create the document vectors.
+* The text embedding NLP model deployment must be started.
 ::::
 
-Reference the deployed text-embedding model or its deployment in the `query_vector_builder` object, and provide the search string as `model_text`:
+Reference the deployed text embedding model or the model deployment in the `query_vector_builder` object, and provide the search string as `model_text`:
 
 ```js
 (...)
@@ -431,7 +431,7 @@ Reference the deployed text-embedding model or its deployment in the `query_vect
 (...)
 ```
 
-1. The {{nlp}} task to perform — it must be `text_embedding`.
+1. The {{nlp}} task to perform. It must be `text_embedding`.
 2. The ID of the text embedding model used to generate the query’s dense vector. Use the same model that produced the document embeddings in the target index. You can also provide the `deployment_id` as the `model_id` value.
 3. The query string from which the model generates the dense vector representation.
 
@@ -470,9 +470,9 @@ POST image-index/_search
 }
 ```
 
-This search retrieves the **global top `k = 5` neighbors for `image-vector`** and the **global top `k = 10` for `title-vector`**. These vector result sets are unioned with the matches from the `match` query, and the **top 10** overall documents are returned. Multiple `knn` clauses and the `query` clause are combined via a disjunction (boolean *OR*). The top `k` vector results for each clause are computed **globally across all shards**.
+This search retrieves the global top `k = 5` neighbors for `image-vector` and the global top `k = 10` for `title-vector`. These vector result sets are combined with the matches from the `match` query, and the top 10 overall documents are returned. Multiple `knn` clauses and the `query` clause are combined via a disjunction (boolean *OR*). The top `k` vector results represent the global nearest neighbors across all index shards.
 
-The scoring for a document with the configured boosts is the weighted sum of the lexical and vector scores:
+The scoring for a document with the above configured boosts would be:
 
 ```
 score = 0.9 * match_score + 0.1 * knn_score_image-vector + 0.5 * knn_score_title-vector
@@ -480,13 +480,13 @@ score = 0.9 * match_score + 0.1 * knn_score_image-vector + 0.5 * knn_score_title
 
 ### Search kNN with expected similarity [knn-similarity-search]
 
-By design, kNN tries to return **`k` nearest neighbors**. When you combine `knn` with a restrictive `filter`, you might exclude all truly relevant documents. In that case, the search can still return `k` neighbors—even if those results are **far away in vector space** and effectively irrelevant.
+While kNN is a powerful tool, it always tries to return `k` nearest neighbors. Consequently, when using `knn` with a `filter`, you could filter out all relevant documents and only have irrelevant ones left to search. In that situation, `knn` will still do its best to return `k` nearest neighbors, even though those neighbors could be far away in the vector space.
 
-To control this, use the `similarity` parameter in the `knn` clause. This sets a **minimum similarity threshold** a vector must meet to be considered a match. The kNN search flow with this parameter is:
+To control this, use the `similarity` parameter in the `knn` clause. This sets a minimum similarity threshold a vector must meet to be considered a match. The `knn` search flow with this parameter is:
 
 * Apply any user-provided `filter` queries.
 * Explore the vector space to gather `k` candidates.
-* Exclude any vectors with similarity **below** the configured `similarity` threshold.
+* Exclude any vectors with similarity below the configured `similarity` threshold.
 
 ::::{note}
 `similarity` is the true [similarity](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-similarity) value **before** it is transformed into `_score` and before any boosts are applied.
@@ -501,7 +501,7 @@ For each configured [similarity](elasticsearch://reference/elasticsearch/mapping
   * `_score < 1`: `1 - (1 / _score)`
   * `_score >= 1`: `_score - 1`
 
-Example: the query searches for the given `query_vector`, with a `filter` applied, and requires that matches meet or exceed the specified `similarity` threshold. Results below the threshold are **not returned**, even if fewer than `k` neighbors remain.
+Example: the query searches for the given `query_vector`, with a `filter` applied, and requires that matches meet or exceed the specified `similarity` threshold. Results below the threshold are not returned, even if fewer than `k` neighbors remain.
 
 ```console
 POST image-index/_search
@@ -523,14 +523,14 @@ POST image-index/_search
 }
 ```
 
-In this data set, the only document with `file-type = png` has the vector `[42, 8, -15]`. The `l2_norm` distance between `[42, 8, -15]` and `[1, 5, -20]` is `41.412`, which exceeds the configured `similarity` threshold of `36`. As a result, this search returns **no hits**.
+In this data set, the only document with `file-type = png` has the vector `[42, 8, -15]`. The `l2_norm` distance between `[42, 8, -15]` and `[1, 5, -20]` is `41.412`, which exceeds the configured `similarity` threshold of `36`. As a result, this search returns no hits.
 
 ### Nested kNN Search [nested-knn-search]
 
-When text exceeds a model’s token limit, you typically **chunk** it before generating embeddings for each chunk. By combining [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) fields with [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), you can perform **nearest-passage retrieval** without duplicating top-level document metadata.  
-Note: nested kNN queries only support [score_mode](elasticsearch://reference/query-languages/query-dsl/query-dsl-nested-query.md#nested-top-level-params)=`max`.
+When text exceeds a model’s token limit, chunking must be performed before generating embeddings for each chunk. By combining [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) fields with [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), you can perform nearest passage retrieval without copying top-level document metadata.  
+Note that nested kNN queries only support [score_mode](elasticsearch://reference/query-languages/query-dsl/query-dsl-nested-query.md#nested-top-level-params)=`max`.
 
-Here is a simple passage-vectors index that stores per-passage vectors and top-level metadata for filtering.
+Here is a simple passage vectors index that stores vectors and some top-level metadata for filtering.
 
 ```console
 PUT passage_vectors
@@ -606,7 +606,7 @@ POST passage_vectors/_search
 }
 ```
 
-Note that even with **4 total nested vectors**, the response still returns **two documents**. In **nested kNN search** over `dense_vector` fields, Elasticsearch **diversifies results at the parent (top-level) document**: it returns the top `k` parent documents, each scored by its **nearest passage vector** (for example, `paragraph.vector`).
+Note that even with 4 total nested vectors, the response still returns two documents. kNN search over nested dense vectors will always diversify the top results over the top-level document; `"k"` top-level documents will be returned, scored by their nearest passage vector (for example, `"paragraph.vector"`).
 
 ```console-result
 {
@@ -658,14 +658,14 @@ Note that even with **4 total nested vectors**, the response still returns **two
 
 #### Filtering in nested KNN search [nested-knn-search-filtering]
 
-Want to filter by metadata in a nested kNN search? Add a `filter` to your `knn` clause. The search will return the top `k` parent documents whose nearest nested vectors also satisfy the filter criteria.
+Want to filter by metadata in a nested kNN search? Add a `filter` to your `knn` clause.
 
 To ensure correct results, each individual filter must target either:
 
 * Top-level metadata 
 * `nested` metadata {applies_to}`stack: ga 9.2`
   :::{note}
-  A single `knn` search can include multiple filters—some over top-level metadata and others over nested metadata.
+  A single `knn` search can include multiple filters: some over top-level metadata and others over nested metadata.
   :::
 
 ```console
@@ -692,7 +692,7 @@ POST passage_vectors/_search
 }
 ```
 
-With the top-level `creation_time` filter applied, only **one** document falls within the specified range.
+With the top-level `creation_time` filter applied, only one document falls within the specified range.
 
 ```console-result
 {
@@ -756,7 +756,7 @@ POST passage_vectors/_search
 }
 ```
 
-The next example combines two filters—one on nested metadata and one on top-level metadata. Parent documents are scored only by vectors with "paragraph.language": "EN" and whose parent documents fall within the specified creation-time range.
+The next example combines two filters: one on nested metadata and one on top-level metadata. Parent documents are scored only by vectors with "paragraph.language": "EN" and whose parent documents fall within the specified time range.
 
 ```console
 POST passage_vectors/_search
@@ -819,10 +819,10 @@ Retrieving "inner_hits" when filtering on sibling nested fields is not supported
 
 ### Nested kNN Search with Inner hits [nested-knn-search-inner-hits]
 
-To extract the **nearest passage** for each matched parent document, add [inner_hits](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md) to the `knn` clause. Inner hits return the highest-scoring nested object(s)—for example, the closest passage vector and its fields—alongside the parent hit, which is ideal for nearest-passage retrieval and chunked content workflows.
+To extract the nearest passage for each matched parent document, add [inner_hits](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md) to the `knn` clause.
 
 ::::{note}
-When using `inner_hits` with **multiple** `knn` clauses, set a unique [`inner_hits.name`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md#inner-hits-options) for each clause to avoid naming collisions that would fail the search request.
+When using `inner_hits` with multiple `knn` clauses, set a unique [`inner_hits.name`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-inner-hits.md#inner-hits-options) for each clause to avoid naming collisions that would fail the search request.
 ::::
 
 ```console
@@ -966,13 +966,13 @@ Now the result will contain the nearest found paragraph when searching.
 
 ### Search with nested vectors for chunked content [nested-knn-search-chunked-content]
 
-Use **nested kNN search** with `dense_vector` fields and `inner_hits` in Elasticsearch to retrieve the most relevant passages from structured, chunked documents.
+Use nested kNN search with `dense_vector` fields and `inner_hits` in {{es}} to retrieve the most relevant passages from structured, chunked documents.
 
 This approach is ideal when you:
 
 * Chunk your content into paragraphs, sections, or other nested structures.
 * Want to retrieve only the most relevant nested section of each matching document.
-* Generate your own vectors with a custom model instead of relying on the [`semantic_text`](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text) field provided by Elastic’s semantic search capability.
+* Generate your own vectors with a custom model instead of relying on the [`semantic_text`](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text) field provided by Elastic's semantic search capability.
 
 #### Create the index mapping
 
@@ -1039,7 +1039,7 @@ POST nested_vector_index/_search
 }
 ```
 
-The `inner_hits` block returns the most relevant paragraphs for each top-level document. Use `inner_hits.size` to control how many passages are returned. If your query includes multiple kNN clauses, set a unique `inner_hits.name` for each clause to avoid naming conflicts in the response.
+The `inner_hits` block returns the most relevant paragraphs within each top-level document. Use the `size` parameter to control how many matches are returned. If your query includes multiple kNN clauses, set a unique `name` for each clause to avoid naming conflicts in the response.
 
 ```json
 {
@@ -1160,40 +1160,40 @@ The `inner_hits` block returns the most relevant paragraphs for each top-level d
 
 ### Limitations for approximate kNN search [approximate-knn-limitations]
 
-* When using kNN search in [{{ccs}}](../../../solutions/search/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../solutions/search/cross-cluster-search.md#ccs-min-roundtrips) option is **not** supported.
+* When using kNN search in [{{ccs}}](../../../solutions/search/cross-cluster-search.md), the [`ccs_minimize_roundtrips`](../../../solutions/search/cross-cluster-search.md#ccs-min-roundtrips) option is not supported.
 * {{es}} uses the [HNSW algorithm](https://arxiv.org/abs/1603.09320) for efficient kNN. Like most approximate methods, HNSW trades perfect accuracy for speed, so results aren’t always the true *k* closest neighbors.
 
 ::::{note}
-Approximate kNN always uses the [`dfs_query_then_fetch`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) search type to gather the **global** top `k` matches across shards. You can’t set `search_type` explicitly for kNN search.
+Approximate kNN always uses the [`dfs_query_then_fetch`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) search type to gather the global top `k` matches across shards. You can’t set `search_type` explicitly for kNN search.
 ::::
 
 ### Oversampling and rescoring for quantized vectors [dense-vector-knn-search-rescoring]
 
-When using [quantized vectors](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for kNN search, you can balance **performance** and **accuracy** by:
+When using [quantized vectors](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for kNN search, can optionally rescore results to balance performance and accuracy, by doing:
 
 * **Oversampling** — retrieving more candidates per shard.
 * **Rescoring** — recalculating scores on those oversampled candidates using the original (non-quantized) vectors.
 
 Because final scores are computed with the original `float` vectors, rescoring combines:
 
-* The speed and memory benefits of approximate retrieval with quantized vectors.
-* The accuracy of full-precision similarity for the top candidates.
+* The performance and memory benefits of approximate retrieval with quantized vectors.
+* The accuracy of using the original vectors for rescoring the top candidates.
 
 All quantization introduces some accuracy loss, and higher compression generally increases that loss. In practice:
 
 * `int8` typically needs little to no rescoring.
-* `int4` often benefits from rescoring for higher accuracy or recall; **1.5×–2×** oversampling usually recovers most loss.
-* `bbq` commonly requires rescoring except on very large indices or models designed for aggressive quantization; **3×–5×** oversampling is generally sufficient, but higher may be needed for low-dimension vectors or embeddings that quantize poorly.
+* `int4` often benefits from rescoring for higher accuracy or recall; 1.5×–2× oversampling usually recovers most loss.
+* `bbq` commonly requires rescoring except on very large indices or models specifically designed for quantization; 3×–5× oversampling is generally sufficient, but higher may be needed for low-dimension vectors or embeddings that quantize poorly.
 
 #### The `rescore_vector` option
 ```{applies_to}
 stack: preview 9.0, ga 9.1
 ```
 
-Use `rescore_vector` to enable built-in reranking. When you specify an oversample value, approximate kNN will:
+Use `rescore_vector` to automatically perform reranking. When you specify an `oversample` value, approximate kNN will:
 
-* Retrieve `num_candidates` per shard.
-* Rescore the top `k * oversample` per shard using the original vectors.
+* Retrieve `num_candidates` candidates per shard.
+* Rescore the top `k * oversample` candidates per shard using the original vectors.
 * Return the top `k` rescored candidates.
 
 Here is an example of using the `rescore_vector` option with the `oversample` parameter:
