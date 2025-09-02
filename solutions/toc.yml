@@ -414,6 +414,8 @@ toc:
           - file: observability/logs/log-data-sources.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
+            children:
+              - file: observability/logs/logs-index-template-defaults.md
           - file: observability/logs/streams/streams.md
             children:
             - file: observability/logs/streams/management/extract.md
