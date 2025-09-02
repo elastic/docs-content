@@ -64,6 +64,7 @@ By default the **Infrastructure Inventory** page displays a waffle map that show
 Without leaving the **Infrastructure Inventory** page, you can view enhanced metrics relating to each host running in your infrastructure. On the waffle map, select a host to display the host details overlay.
 
 ::::{note}
+{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
 When showing `Hosts`, the **Schema** dropdown menu shows the available data collection schemas for the current query. If data from both the Elastic System integration and OpenTelemetry is available, the schema defaults to **OpenTelemetry**. Select **Elastic System Integration** to see data collected by the Elastic System integration.
 ::::
 
@@ -120,6 +121,7 @@ The **Metrics** tab shows host metrics organized by type and is more complete th
 
 :::::{dropdown} Processes
 :::{note}
+{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
 To view processes for OpenTelemetry hosts, you need to configure the EDOT collector to send process metrics. Refer to [Process metrics](opentelemetry://reference/edot-collector/config/configure-metrics-collection.md#process-metrics) for more information.
 :::
 
@@ -192,6 +194,7 @@ To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Lo
 
 :::::{dropdown} Anomalies
 :::{note}
+{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
 Anomaly detection isn't available for OpenTelemetry hosts. When the **Schema** is set to OpenTelemetry, this tab isn't available.
 :::
 

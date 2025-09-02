@@ -36,6 +36,7 @@ When you select **Create inventory alert**, the parameters you configured on the
 Conditions for each rule can be applied to specific metrics relating to the inventory type you select. You can choose the aggregation type, the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. When creating the rule, you can still get notified if no data is returned for the specific metric or if the rule fails to query {{es}}.
 
 :::{note}
+{applies_to}`{stack: "ga 9.2", serverless: "ga"}`
 Most inventory types respect the default data collection method (for example, [Elastic system integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
 :::
 
