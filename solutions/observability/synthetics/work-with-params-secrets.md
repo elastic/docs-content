@@ -84,7 +84,7 @@ You can use params in both lightweight and browser monitors created in either a 
 
 ### In a Synthetics project [synthetics-params-secrets-use-project]
 
-For lightweight monitors in a Synthetics project, wrap the name of the param in `${}` (for example, `${my_url}`).
+For lightweight monitors in a Synthetics project, wrap the name of the param in `"${}"` (for example, `"${my_url}"`). 
 
 ```yaml
 - type: http
