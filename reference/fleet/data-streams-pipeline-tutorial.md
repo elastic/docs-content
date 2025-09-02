@@ -71,12 +71,7 @@ Add the pipeline you created in step one.
 
 2. Click **Create pipeline** to return to the **Edit integration** page.
 
-
-### Roll over the data stream (optional) [_roll_over_the_data_stream_optional]
-
-For pipeline changes to take effect immediately, you must roll over the data stream. If you do not, the changes will not take effect until the next scheduled roll over. Select **Apply now and rollover**.
-
-After the data stream rolls over, note the name of the custom ingest pipeline. In this tutorial, it’s `metrics-system.cpu@custom`. The name follows the pattern `<type>-<dataset>@custom`:
+After saving, note the name of the custom ingest pipeline. In this tutorial, it’s `metrics-system.cpu@custom`. The name follows the pattern `<type>-<dataset>@custom`:
 
 * type: `metrics`
 * dataset: `system.cpu`
@@ -116,6 +111,12 @@ If your custom pipeline is working correctly, this query will return at least on
 
 Now that a new field is being set in your {{es}} documents, you’ll want to assign a new mapping for that field. Use the `@custom` component template to apply custom mappings to an integration data stream.
 
+:::{{note}}
+Mapping and template changes are applied when a new backing index is created. To apply updated mappings immediately, roll over the data stream, then continue.
+
+For more information, refer to [Index basics](../../manage-data/data-store/index-basics.md).
+:::
+
 In the **Edit integration** workflow, do the following:
 
 1. Under **Advanced options** select the pencil icon to edit the `@custom` component template.
@@ -126,8 +127,11 @@ In the **Edit integration** workflow, do the following:
 
 3. Click **Add field**.
 4. Click **Review** to fast-forward to the review step and click **Save component template** to return to the **Edit integration** workflow.
-5. For changes to take effect immediately, select **Apply now and rollover**.
+5. To apply the new mapping immediately, roll over the data stream. You can do this with the rollover API, for example:
 
+    ```console
+    POST metrics-system.cpu-default/_rollover  
+    ```
 
 ## Step 5: Test the custom mappings (optional) [data-streams-pipeline-five]
 
