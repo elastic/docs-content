@@ -27,6 +27,27 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.1.3 [elastic-security-9.1.3-release-notes]
+
+### Fixes [elastic-security-9.1.3-fixes]
+* Fixes a bug that prevented the vulnerability findings contextual flyout from showing details [#231778]({{kib-pull}}231778).
+* Fixes an issue preventing the creation of Knowledge Base Index Entries in deployments with a large number of indices/mappings [#231376]({{kib-pull}}231376).
+* Fixes a bug where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
+
+## 9.1.2 [elastic-security-9.1.2-release-notes]
+
+### Features and enhancements [elastic-security-9.1.2-features-enhancements]
+* Adds Automatic Import documentation links for users in log description and the error message so that users have better access to the data types that are valid [#229375]({{kib-pull}}229375).
+* To help identify which parts of `elastic-endpoint.exe` are using a significant amount of CPU, {{elastic-defend}} on Windows can now include CPU profiling data in diagnostics. To request CPU profiling data using the command line, refer to [{{agent}} command reference](/reference/fleet/agent-command-reference.md#_options). To request CPU profiling data using {{kib}}, check the **Collect additional CPU metrics** box when requesting {{agent}} diagnostics.
+* Improves {{elastic-defend}} malware scan queue efficiency on Windows by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* Allows {{elastic-defend}} to automatically recover in some situations when it loses connectivity with {{agent}}.
+
+### Fixes [elastic-security-9.1.2-fixes]
+* Fixes privileged user monitoring index sync in non-default {{kib}} spaces [#230420]({{kib-pull}}230420).
+* Only creates a privileged user monitoring default index source if one doesn't currently exist [#229693]({{kib-pull}}229693).
+* Fixes a race condition in {{elastic-defend}} that may occasionally result in corrupted process command lines on Windows. When this occurs, `process.command_line`, `process.args_count` and `process.args` may be incorrect, leading to false positives.
+* Due to an issue in macOS, {{elastic-defend}} would sometimes send network events without `user.name` populated. {{elastic-defend}} will now identify these events and populate `user.name` if necessary.
+
 ## 9.1.1 [elastic-security-9.1.1-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.1-features-enhancements]
@@ -136,9 +157,40 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
 
+## 9.0.6 [elastic-security-9.0.6-release-notes]
+
+### Features and enhancements [elastic-security-9.0.6-features-enhancements]
+* Improves the reliability of {{elastic-defend}}'s connection to its kernel driver. This should reduce the instances of temporary `DEGRADED` policy statuses at boot due to `connect_kernel` failures.
+* Improves {{elastic-defend}} malware scan queue efficiency by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* To help identify which parts of `elastic-endpoint.exe` are using a significant amount of CPU, {{elastic-defend}} on Windows can now include CPU profiling data in diagnostics. To request CPU profiling data using the command line, refer to [{{agent}} command reference](/reference/fleet/agent-command-reference.md#_options). To request CPU profiling data using {{kib}}, check the **Collect additional CPU metrics** box when requesting {{agent}} diagnostics.
+* Enriches {{elastic-defend}} macOS network connect events with `network.direction`. Possible values are `ingress` and `egress`.
+
+### Fixes [elastic-security-9.0.6-fixes]
+* Prevents the {{esql}} form from locking in read-only mode in the rule upgrade flyout [#231699]({{kib-pull}}231699).
+* Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag was not being persisted across system/endpoint restarts.
+* Fix a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count` and `process.args`, leading to false positives.
+* Fixes a bug in {{elastic-defend}} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
+
+## 9.0.5 [elastic-security-9.0.5-release-notes]
+
+### Features and enhancements [elastic-security-9.0.5-features-enhancements]
+* Adds the `detection_rule_upgrade_status` object to snapshot telemetry schema [#223086]({{kib-pull}}223086).
+* Reduces {{elastic-defend}} CPU when processing events from the System process on Windows.
+* Allows {{elastic-defend}} to automatically recover in some situations when it loses connectivity with {{agent}}.
+* Shortens the time it takes {{elastic-defend}} to recover from a `DEGRADED` status caused by communication issues with {{agent}}.
+* Due to an issue in macOS, {{elastic-defend}} would sometimes send network events without `user.name` populated. {{elastic-defend}} will now identify these events and populate `user.name` if necessary.
+* Reduces {{elastic-defend}} CPU usage for ETW events, API events, and Behavioral Protections. In some cases, this may be a significant reduction.
+
+
+### Fixes [elastic-security-9.0.5-fixes]
+* Fixes a bug where Security AI Assistant settings landed on the wrong page for users on the Basic license  [#229163]({{kib-pull}}229163).
+* Fixes an issue in {{elastic-defend}} performance metrics that resulted in `endpoint_uptime_percent` always being 0 for behavioral rules.
+* Fixes an issue in {{elastic-defend}} that could result in a crash if a {{ls}} output configuration is specified containing a certificate that cannot not be parsed.
+
 ## 9.0.4 [elastic-security-9.0.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.0.4-features-enhancements]
+* Adds the `elastic_customized_total`, `elastic_noncustomized_total`, and `is_customized` fields to snapshot telemetry schema [#222370]({{kib-pull}}222370).
 * Improves logging of fatal exceptions in {{elastic-defend}}.
 
 ### Fixes [elastic-security-9.0.4-fixes]

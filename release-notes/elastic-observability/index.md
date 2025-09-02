@@ -21,9 +21,23 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.1.3 [elastic-observability-9.1.3-release-notes]
+
+### Fixes [elastic-observability-9.1.3-fixes]
+
+* Fixes Synthetics monitor filters [#231562]({{kib-pull}}2301562).
+
+## 9.1.2 [elastic-observability-9.1.2-release-notes]
+
+### Fixes [elastic-observability-9.1.2-fixes]
+
+* Fixes lock manager setup bug [#230519]({{kib-pull}}230519).
+* Adds timestamp range filter to exclude frozen tier [#230375]({{kib-pull}}230375).
+* Adjusts end-to-end onboarding tests to work in serverless environment [#229969]({{kib-pull}}229969).
+
 ## 9.1.1 [elastic-observability-9.1.1-release-notes]
 
-### Fixes [elastic-observability-9.1.0-fixes]
+### Fixes [elastic-observability-9.1.1-fixes]
 
 * Fixes global parameters sync for non-default private locations [#230157]({{kib-pull}}230157).
 
@@ -176,6 +190,21 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Applies chunking algorithm for `getIndexBasicStats` in Dataset Health [#221153]({{kib-pull}}221153).
 * Improves finding functions in Universal Profiling [#210437]({{kib-pull}}210437).
 * Adds logical `AND` to monitor tags and locations filter [#217985]({{kib-pull}}217985).
+
+## 9.0.6 [elastic-observability-9.0.6-release-notes]
+
+### Fixes [elastic-observability-9.0.6-fixes]
+* Fixes AI Assistant for Observability settings to only show for Enterprise users [#231989]({{kib-pull}}231989).
+
+## 9.0.5 [elastic-observability-9.0.5-release-notes]
+
+### Features and enhancements[elastic-observability-9.0.5-features]
+* Submit a comment in a case by pressing `ctrl/cmd` + `enter` [#228473]({{kib-pull}}228473).
+
+### Fixes [elastic-observability-9.0.5-fixes]
+* Instructs AI Assistant not to perform destructive actions [#229497]({{kib-pull}}229497).
+* Fixes service error for table column sorting [#229199]({{kib-pull}}229199).
+* Fixes Dependencies inventory page issue where loading spinner spins indefinitely when no data exists [#228094]({{kib-pull}}228094).
 
 ## 9.0.4 [elastic-observability-9.0.4-release-notes]
 

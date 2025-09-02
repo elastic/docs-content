@@ -26,6 +26,39 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [fleet-elastic-agent-next-fixes]
 % *
 
+## 9.1.3 [fleet-elastic-agent-9.1.3-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.1.3-features-enhancements]
+
+**Elastic Agent**
+
+* Adjust the timeout for Elastic Defend check command. [#9213](https://github.com/elastic/elastic-agent/pull/9213)
+* Update OTel components to v0.130.0. [#9362](https://github.com/elastic/elastic-agent/pull/9362)
+
+### Fixes [fleet-elastic-agent-9.1.3-fixes]
+
+**Elastic Agent**
+
+* Upgrade Go version to 1.24.6. [#9287](https://github.com/elastic/elastic-agent/pull/9287)
+* On Windows, retry saving the Agent information file to disk. [#9224](https://github.com/elastic/elastic-agent/pull/9224) [#5862](https://github.com/elastic/elastic-agent/issues/5862)
+
+  Saving the Agent information file involves renaming/moving a file to its final destination. However, on Windows, it is sometimes not possible to rename/move a file to its destination file because the destination file is locked by another process (for example, an antivirus software). In such cases, we now retry the save operation on Windows.
+
+* Correct hints annotations parsing to resolve only `${kubernetes.*}` placeholders instead of resolving all `${...}` patterns. [#9307](https://github.com/elastic/elastic-agent/pull/9307)
+* Treat exit code 28 from Endpoint binary as non-fatal. [#9320](https://github.com/elastic/elastic-agent/pull/9320)
+* Fixed jitter backoff strategy reset. [#9342](https://github.com/elastic/elastic-agent/pull/9342) [#8864](https://github.com/elastic/elastic-agent/issues/8864)
+* Fix Docker container failing to start with `no matching vars: ${env.ELASTICSEARCH_API_KEY:}` and similar errors by restoring support for `:` to set default values. [#9451](https://github.com/elastic/elastic-agent/pull/9451) [#9328](https://github.com/elastic/elastic-agent/issues/9328)
+* Fix deb upgrade by stopping `elastic-agent` service before stopping endpoint. [#9462](https://github.com/elastic/elastic-agent/pull/9462)
+
+**Fleet Server**
+
+* Fix 503 handling in enrollment. [#5232](https://github.com/elastic/fleet-server/pull/5232) [#5197](https://github.com/elastic/fleet-server/issues/5197)
+* Remove extra ES search when preparing agent policy. [#5283](https://github.com/elastic/fleet-server/pull/5283)
+
+## 9.1.2 [fleet-elastic-agent-9.1.2-release-notes]
+
+There are no new features, enhancements, or fixes in this release.
+
 ## 9.1.1 [fleet-elastic-agent-9.1.1-release-notes]
 
 ### Features and enhancements [fleet-elastic-agent-9.1.1-features-enhancements]
@@ -50,12 +83,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 **Elastic Agent**
 
-* Adds a new configuration setting, `agent.upgrade.rollback.window`. [#8065]({{agent-pull}}8065) [#6881]({{agent-issue}}6881)
+* Adds a new configuration setting, `agent.upgrade.rollback.window` in preparation for enabling upgrade rollbacks in a future release. [#8065]({{agent-pull}}8065) [#6881]({{agent-issue}}6881)
 
-  The value of the `agent.upgrade.rollback.window` setting determines the period after upgrading
-  Elastic Agent when a rollback to the previous version can be triggered. This is an optional
-  setting, with a default value of `168h` (7 days). The value can be any string that is parseable
-  by <https://pkg.go.dev/time#ParseDuration>.
 * Removes resource/k8s processor and uses k8sattributes processor for service attributes. [#8599]({{agent-pull}}8599)
 
   This PR removes the `resource/k8s` processor in honour of the k8sattributes processor that
@@ -89,7 +118,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Makes pbkdf2 settings validation FIPS compliant. [#4542]({{fleet-server-pull}}4542)
 * Updates to Go v1.24.0. [#4543]({{fleet-server-pull}}4543)
 * Adds version metadata to version command output. [#4820]({{fleet-server-pull}}4820)
-* Adds rollback attribute to upgrade actions. [#4838]({{fleet-server-issue}}4838)
+* Adds rollback attribute to upgrade actions in preparation for enabling upgrade rollbacks in a future release. [#4838]({{fleet-server-issue}}4838)
 
 ### Fixes [fleet-elastic-agent-9.1.0-fixes]
 
@@ -117,6 +146,42 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Mutex protection for remote bulker config. [#4776]({{fleet-server-pull}}4776)
 * Enable dead code elimination. [#4784]({{fleet-server-pull}}4784)
 * Include the base error for JSON decode error responses. [#5069]({{fleet-server-pull}}5069)
+
+## 9.0.6 [fleet-elastic-agent-9.0.6-release-notes]
+
+### Features and enhancements [fleet-elastic-agent-9.0.6-features-enhancements]
+
+**Elastic Agent**
+
+* Adjust the timeout for Elastic Defend check command. [#9213](https://github.com/elastic/elastic-agent/pull/9213)
+
+### Fixes [fleet-elastic-agent-9.0.6-fixes]
+
+**Elastic Agent**
+
+* Upgrade Go version to 1.24.6. [#9287](https://github.com/elastic/elastic-agent/pull/9287)
+* On Windows, retry saving the Agent information file to disk. [#9224](https://github.com/elastic/elastic-agent/pull/9224) [#5862](https://github.com/elastic/elastic-agent/issues/5862)
+
+  Saving the Agent information file involves renaming/moving a file to its final destination. However, on Windows, it is sometimes not possible to rename/move a file to its destination file because the destination file is locked by another process (for example, an antivirus software). In such cases, we now retry the save operation on Windows.
+
+* Correct hints annotations parsing to resolve only `${kubernetes.*}` placeholders instead of resolving all `${...}` patterns. [#9307](https://github.com/elastic/elastic-agent/pull/9307)
+* Treat exit code 28 from Endpoint binary as non-fatal. [#9320](https://github.com/elastic/elastic-agent/pull/9320)
+* Fixed jitter backoff strategy reset. [#9342](https://github.com/elastic/elastic-agent/pull/9342) [#8864](https://github.com/elastic/elastic-agent/issues/8864)
+* Fix Docker container failing to start with `no matching vars: ${env.ELASTICSEARCH_API_KEY:}` and similar errors by restoring support for `:` to set default values. [#9451](https://github.com/elastic/elastic-agent/pull/9451) [#9328](https://github.com/elastic/elastic-agent/issues/9328)
+* Fix deb upgrade by stopping `elastic-agent` service before upgrading. [#9462](https://github.com/elastic/elastic-agent/pull/9462)
+
+**Fleet Server**
+
+* Fix 503 handling in enrollment. [#5232](https://github.com/elastic/fleet-server/pull/5232) [#5197](https://github.com/elastic/fleet-server/issues/5197)
+* Remove extra ES search when preparing agent policy. [#5283](https://github.com/elastic/fleet-server/pull/5283)
+
+## 9.0.5 [fleet-elastic-agent-9.0.5-release-notes]
+
+### Fixes [fleet-elastic-agent-9.0.5-fixes]
+
+**Fleet Server**
+
+* Fix upgrade details `download_rate` as string handling. [#5217]({{fleet-server-pull}}5217) [#5227]({{fleet-server-pull}}5227) [#5176]({{fleet-server-pull}}5176) [#5164]({{fleet-server-issue}}5164)
 
 ## 9.0.4 [fleet-elastic-agent-9.0.4-release-notes]
 
