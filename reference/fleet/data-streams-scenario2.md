@@ -17,17 +17,17 @@ This tutorial explains how to apply a custom index lifecycle policy to the `logs
 
 ## Step 1: Create an index lifecycle policy [data-streams-scenario2-step1]
 
-1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the global search field.
 2. Click **Create policy**.
 
-Name your new policy. For this tutorial, you can use `my-ilm-policy`. Customize the policy to your liking, and when you’re done, click **Save policy**.
+Name your new policy. For this tutorial, you can use `my-ilm-policy`. Customize the policy to your liking, and when you're done, click **Save policy**.
 
 
 ## Step 2: View index templates [data-streams-scenario2-step2]
 
 The **Index Templates** view in {{kib}} shows you all of the index templates available to automatically apply settings, mappings, and aliases to indices:
 
-1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+1. To open **Index Management**, find **Stack Management** in the main menu or use the global search field.
 2. Select **Index Templates**.
 3. Search for `system` to see all index templates associated with the System integration.
 4. Select the index template that matches the data stream for which you want to set up an ILM policy. For this example, you can select the `logs-system.auth` index template.

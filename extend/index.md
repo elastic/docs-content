@@ -20,7 +20,7 @@ This approach is ideal for shipping data, logs, metrics, and traces. By building
 * You want to provide a standardized, out-of-the-box experience for other users.  
 * You need to process and structure data according to the Elastic Common Schema (ECS).
 
-**Ready to start?** Head over to the [Create an Integration](/extend/integrations) guide.
+**Ready to start?** Head over to the [Create an Integration](integrations://extend/index.md) guide.
 
 ## Path 2: Develop against the REST APIs
 
@@ -51,7 +51,7 @@ For complete control and custom development, you can interact directly with Elas
 * You need to automate administrative tasks, such as creating users or managing index lifecycle policies.  
 * You are integrating Elastic's search and analytics capabilities into another platform.
 
-Ready to get started? Explore the [Elasticsearch API Reference](/reference/elasticsearch/rest-apis) and the [Kibana API Reference](https://www.elastic.co/docs/api/doc/kibana/).
+Ready to get started? Explore the [Elasticsearch API Reference](elasticsearch://reference/elasticsearch/rest-apis/index.md) and the [Kibana API Reference](https://www.elastic.co/docs/api/doc/kibana/).
 
 ## Contributing to Elastic documentation
 

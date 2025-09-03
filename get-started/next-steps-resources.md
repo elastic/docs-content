@@ -84,7 +84,7 @@ Want to learn more about how availability badges are used? Check the [Elastic Do
 You can browse documentation for different versions of our products in two ways:
 
 * **Version menu:** On most documentation pages, you'll find a version menu. Clicking this menu allows you to switch to a different version of the documentation for the content you are currently viewing.  
-* **All documentation versions page:** For a complete list of all available documentation versions for all Elastic products, you can visit the [All documentation versions](/versions) page.
+* **All documentation versions page:** For a complete list of all available documentation versions for all Elastic products, you can visit the [All documentation versions](/versions.md) page.
 
 ### Find docs for your product version
 
@@ -173,4 +173,4 @@ If you prefer a deep dive where you can learn at your own pace, check out our si
 
 ## Glossary 
 
-To help you understand the terminology used throughout our documentation, we provide a [glossary of common Elastic terms](get-started/glossary.md). This is a great resource for new users or anyone looking to clarify the meaning of a specific term.
+To help you understand the terminology used throughout our documentation, we provide a [glossary of common Elastic terms](/reference/glossary/index.md). This is a great resource for new users or anyone looking to clarify the meaning of a specific term.

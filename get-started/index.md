@@ -21,7 +21,7 @@ You'll also find other useful information, such as how to use our docs, training
 
 ## What is Elastic? [what-is-es]
 
-:::{image} /images/illustration-hero-platform-search-security-observability-2x_v2.png
+:::{image} /get-started/images/elastic-platform.png
 :alt: The Elastic platform
 :::
 
