@@ -53,7 +53,7 @@ To run a kNN search in {{es}}:
 
 Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With this approach, a `script_score` query must scan each matching document to compute the vector function, which can result in slow search speeds. However, you can improve latency by using a [query](../../../explore-analyze/query-filter/languages/querydsl.md) to limit the number of matching documents passed to the function. If you filter your data to a small subset of documents, you can get good search performance using this approach.
 
-## Approximate kNN [approximate-knn]
+## Approximate kNN search [approximate-knn]
 
 ::::{warning}
 Approximate kNN search has specific resource requirements. All vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
@@ -1308,7 +1308,7 @@ POST /my-index/_search
 3. The number of candidates to use for the initial approximate `knn` search. This will search using the quantized vectors and return the top 20 candidates per shard to then be scored
 4. The script to score the results. Script score will interact directly with the originally provided float32 vector.
 
-## Exact kNN [exact-knn]
+## Exact kNN search [exact-knn]
 
 To run an exact kNN search, use a `script_score` query with a vector function.
 
