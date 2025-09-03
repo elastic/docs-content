@@ -16,7 +16,7 @@ You can [convert into other programming languages](/explore-analyze/query-filter
 
 You can follow this guide using any {{es}} deployment.
 To see all deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type).
-To get started quickly, spin up a cluster [locally in Docker](/solutions/search/run-elasticsearch-locally.md).
+To get started quickly, spin up a cluster [locally in Docker](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
 ## Add data to {{es}} [getting-started-index-creation]
 
