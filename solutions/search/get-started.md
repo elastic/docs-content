@@ -46,11 +46,12 @@ If you want to ingest your data first and transform or reindex it as needed late
 ::::
 ::::{{step}} Ingest your data
 
-To learn about adding data, go to [](/solutions/search/ingest-for-search.md).
-For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
-
-If you're planning to perform a vector or semantic AI-powered search, the approach that requires the least configuration involves adding `semantic_text` fields when ingesting your data.
+If your goals include vector or semantic AI-powered search, create vectorized data with built-in and third-party natural language processing (NLP) models and store it in an {{es}} vector database.
+The approach that requires the least configuration involves adding `semantic_text` fields when ingesting your data.
 Try it out with [](/solutions/search/get-started/semantic-search.md).
+
+To learn about adding data for other search goals, go to [](/solutions/search/ingest-for-search.md).
+For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 
 :::{tip}
 If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/search/get-started/quickstarts.md).
