@@ -88,3 +88,9 @@ A **query** is a question you ask about your data, and Elastic provides several 
 * **Event Query Language (EQL)** is a specialized language designed to query sequences of events, which is particularly useful for security analytics and threat hunting.
 
 Learn more in [Explore and analyze data with Kibana](/explore-analyze/index.md) 
+
+### Use the APIs to automate operations and management
+
+Nearly every aspect of Elasticsearch can be configured and managed programmatically through its extensive REST APIs. This allows you to automate repetitive tasks and integrate Elastic management into your existing operational workflows. You can use the APIs to manage indices, update cluster settings, run complex queries, and configure security. 
+
+The **Console** tool in Kibana provides an interactive way to send requests directly to the Elasticsearch API and view the responses. For secure, automated access, you can create and manage **API keys** to authenticate your scripts and applications. This API-first approach is fundamental to enabling infrastructure-as-code practices and managing your deployments at scale.
