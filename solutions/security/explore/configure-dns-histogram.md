@@ -18,8 +18,9 @@ If the DNS histogram is empty, follow these steps to populate the data.
 
 Add the `dns.question.name` field to the Events table to confirm that DNS data is available.
 
-1. On the **Network** page, select the **Events** tab.
-2. In the Events table, click **Fields**, then add the `dns.question.name` field.
+1. Go to the **Network** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
+2. Select the **Events** tab.
+3. In the Events table, click **Fields**, then add the `dns.question.name` field.
 
 ## Create a custom ingest pipeline
 
@@ -31,9 +32,9 @@ Create an ingest pipeline that extracts registered domains (for example, `exampl
    1. From the **Processor** dropdown, select **Registered domain**.
    2. Under **Field**, enter `dns.question.name`.
    3. Under **Target field (optional)**, enter `dns.question.registered_domain`.
-   4. Toggle **Ignore missing**.
+   4. Turn **Ignore missing** on.
    5. Under **Condition (optional)**, enter `ctx?.dns?.question?.name != null`.
-   6. Toggle **Ignore failures for this processor**.
+   6. Turn **Ignore failures for this processor** on.
    7. Select **Add processor**.
 4. Select **Create pipeline**. This custom pipeline is automatically picked up by the existing `logs-endpoint.events.network-<version>` pipeline.
 
