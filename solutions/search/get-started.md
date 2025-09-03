@@ -25,7 +25,14 @@ If you're looking for an introduction to the {{stack}} or the {{es}} product, go
 ::::{step} Choose your deployment type
 
 Elastic provides several self-managed and Elastic-managed options.
-For simplicity and speed, try out [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md) or [run {{es}} locally](/solutions/search/run-elasticsearch-locally.md).
+For simplicity and speed, try out [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md).
+
+Alternatively, create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:
+
+```sh
+curl -fsSL https://elastic.co/start-local | sh
+```
+
 Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
 ::::
 
