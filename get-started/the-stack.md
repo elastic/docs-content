@@ -68,7 +68,7 @@ Elasticsearch is built to be a resilient and scalable distributed system. It run
 
 Learn more in [The {{es}} data store](/manage-data/data-store.md)
 
-### Visualize and query your data
+### Visualize and query your data [kibana-navigation-search]
 
 While {{es}} stores your data, **Kibana** is the user interface where you can explore, visualize, and manage it. It provides a window into your data, allowing you to quickly gain insights and understand trends.
 
