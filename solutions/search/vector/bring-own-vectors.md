@@ -18,8 +18,8 @@ In this introduction to [vector search](/solutions/search/vector.md), you’ll s
 
 ## Prerequisites
 
-* If you're using {{es-serverless}}, create a project optimized for vectors. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
-* If you're using {{ech}} or a self-managed cluster, start {{es}} and {{kib}}. The simplest way to complete this guide is to log in with a user that has the `superuser` built-in role.
+- If you're using {{es-serverless}}, create a project with the general purpose configuration. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+- If you're using {{ech}} or a self-managed cluster, start {{es}} and {{kib}}. The simplest method to complete the steps in this guide is to log in with a user that has the `superuser` built-in role.
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
