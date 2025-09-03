@@ -124,7 +124,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 
 | Metric | Description |
 | --- | --- |
-| **CPU Usage (%)** | Average of percentage of CPU time spent in states other than Idle and IOWait, normalized by the number of CPU cores. Includes both time spent on user space and kernel space. 100% means all CPUs of the host are busy.<br><br>**Field Calculation**: `1-(average(metrics.system.cpu.utilization,kql='state: idle') + average(metrics.system.cpu.utilization,kql='state: wait'))`<br> |
+| **CPU Usage (%)** | Average percentage of CPU time spent in states other than Idle and IOWait, normalized by the number of CPU cores. Includes both time spent on user space and kernel space. 100% means all CPUs of the host are busy.<br><br>**Field Calculation**: `1-(average(metrics.system.cpu.utilization,kql='state: idle') + average(metrics.system.cpu.utilization,kql='state: wait'))`<br> |
 | **CPU Usage - iowait (%)** | The percentage of CPU time spent in wait (on disk).<br><br>**Field Calculation**: `average(metrics.system.cpu.utilization,kql='state: wait') / max(metrics.system.cpu.logical.count)`<br> |
 | **CPU Usage - irq (%)** | The percentage of CPU time spent servicing and handling hardware interrupts.<br><br>**Field Calculation**: `average(metrics.system.cpu.utilization,kql='state: interrupt') / max(metrics.system.cpu.logical.count)`<br> |
 | **CPU Usage - nice (%)** | The percentage of CPU time spent on low-priority processes.<br><br>**Field Calculation**: `average(metrics.system.cpu.utilization,kql='state: nice') / max(metrics.system.cpu.logical.count)`<br> |

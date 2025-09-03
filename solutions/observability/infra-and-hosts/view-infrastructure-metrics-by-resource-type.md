@@ -65,7 +65,7 @@ Without leaving the **Infrastructure Inventory** page, you can view enhanced met
 
 ::::{note}
 {applies_to}`{stack: "ga 9.2", serverless: "ga"}`
-When showing `Hosts`, the **Schema** dropdown menu shows the available data collection schemas for the current query. If data from both the Elastic System integration and OpenTelemetry is available, the schema defaults to **OpenTelemetry**. Select **Elastic System Integration** to see data collected by the Elastic System integration.
+When showing **Hosts**, the **Schema** dropdown menu shows the available data collection schemas for the current query. If data from both the Elastic System integration and OpenTelemetry is available, the schema defaults to **OpenTelemetry**. Select **Elastic System Integration** to see data collected by the Elastic System integration.
 ::::
 
 
