@@ -1,4 +1,5 @@
 ---
+navigation_title: Solutions
 mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/stack-components.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
@@ -10,92 +11,80 @@ products:
   - id: kibana
 ---
 
-# The {{stack}}
+# Solutions and the Search AI platform
 
-This section provides an overview of the {{stack}} and its components.
+Let's take a closer look at each of our three solutions, their use cases and core concepts so you can decide which product best suits your business needs. 
 
-$$$kibana-navigation-search$$$
+- Use [{{es}}](/solutions/search.md) if you want to build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights. 
 
-## An overview of the {{stack}} [stack-components]
+- Use [Elastic {{observability}}](/solutions/observability.md) if you want to monitor the health and performance of your IT environments and applications or send telemetry data. 
 
-What is the {{stack}}? It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
+- Use [{{elastic-sec}}](/solutions/security.md) if you want to leverage search and analytics to monitor data, detect anomalous activity, and protect against cyber threats in real time.
 
-The products in the {{es}} are designed to be used together and releases are synchronized to simplify the installation and upgrade process.
+You can also check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations are utilizing our products for their specific business needs.    
 
-You have many options for deploying the {{stack}} to suit your needs. You can deploy it on your own hardware, in the cloud, or use a managed service on {{ecloud}}.
+## Search AI platform overview
 
-:::{tip}
-To learn how to deploy {{es}}, {{kib}}, and supporting orchestration technologies, refer to [](/deploy-manage/index.md). To learn how to deploy additional ingest and consume components, refer to the documentation for the component.
-:::
+Elastic's Search AI platform is built around the {{stack}}, a group of open source products and components designed for ingesting, storing, searching, analyzing, and visualizing data.
 
-![Components of the Elastic Stack](/get-started/images/stack-components-diagram.svg)
+Continue reading to learn how these components work together. 
 
-### Ingest [_ingest]
+### Ingest data from a wide variety of sources
 
-Elastic provides a number of components that ingest data. Collect and ship logs, metrics, and other types of data with {{agent}} or {{beats}}. Manage your {{agents}} with {{fleet}}. Collect detailed performance information with Elastic APM.
+**Ingestion** is the process of collecting data from your sources and sending it to {{es}}. The Elastic platform is engineered for flexibility, designed to ingest data from a wide variety of sources. 
 
-If you want to transform or enrich data before it’s stored, you can use {{es}} ingest pipelines or {{ls}}.
+#### Elasticsearch
 
-Trying to decide which ingest component to use? Refer to [Adding data to {{es}}](/manage-data/ingest.md) to help you decide.
+When building custom search experiences or indexing general data, you have several direct and flexible ingestion options:
 
-#### {{fleet}} and {{agent}} [stack-components-agent]
+* **Native APIs and language clients:** Index any JSON document directly using the {{es}} REST API or the official clients for languages like Python, Java, Go, and more.  
+* **Web crawler:** Ingest content from public or private websites to make them searchable.  
+* **Enterprise connectors:** Use pre-built connectors to sync data from external content sources like SharePoint, Confluence, Jira, and databases like MongoDB or PostgreSQL into {{es}}.
 
-{{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. Each agent has a single policy to which you can add integrations for new data sources, security protections, and more.
+#### Elastic Observability
 
-{{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
+For full-stack observability, ingest logs, metrics, traces, and profiles using these OpenTelemetry-native methods:
 
-[Learn more about {{fleet}} and {{agent}}](/reference/fleet/index.md).
+* **{{edot}}:** Use Elastic's supported OpenTelemetry SDKs for custom application instrumentation and the Collector for vendor-neutral infrastructure telemetry.  
+* **{{agent}}:** A single agent to collect infrastructure logs and metrics from hosts, containers, and cloud services using pre-built integrations.  
+* **APM Agents:** Provide streamlined, out-of-the-box auto-instrumentation of your applications to capture detailed traces and performance metrics.  
+* **{{ls}} and {{beats}}:** Leverage these battle-tested tools for advanced log processing pipelines (Logstash) and lightweight data shipping (Beats).
 
-#### APM [stack-components-apm]
+#### Elastic Security
 
-Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly. [Learn more about APM](/solutions/observability/apm/index.md).
+**{{agent}}** is the core ingestion method for security data. As a single, unified agent, it's purpose-built to collect the rich data needed for modern threat detection and response, including:
 
-#### {{beats}} [stack-components-beats]
+* **Endpoint Security:** Collects detailed event data for threat prevention, detection (EDR), and response directly from your endpoints.  
+* **System & Audit Logs:** Gathers security-relevant logs and audit trails from hosts across your environment.  
+* **Network Activity:** Captures network data to help detect intrusions and suspicious behavior.
 
-{{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](beats://reference/index.md).
+Fleets of Elastic Agents are managed centrally, simplifying deployment and policy enforcement across thousands of hosts.
 
-#### {{es}} ingest pipelines [stack-components-ingest-pipelines]
+### Store your data
 
-Ingest pipelines let you perform common transformations on your data before indexing them into {{es}}. You can configure one or more "processor" tasks to run sequentially, making specific changes to your documents before storing them in {{es}}. [Learn more about ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md).
+{{es}} is the heart of the Elastic Stack, functioning as the central place to store and search your data. It stores data as **JSON documents**, which are structured data objects. These documents are organized into **indices**, which you can think of as collections of similar documents.
 
-#### {{ls}} [stack-components-logstash]
+Elasticsearch is built to be a resilient and scalable distributed system. It runs as a **cluster** of one or more servers, called **nodes**. When you add data to an index, it's divided into pieces called **shards**, which are spread across the various nodes in the cluster. This architecture allows Elasticsearch to handle large volumes of data and ensures that your data remains available even if a node fails.
 
-{{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](logstash://reference/index.md).
+Learn more in [The {{es}} data store](/manage-data/data-store.md)
 
+### Visualize and query your data
 
-### Store [_store]
+While {{es}} stores your data, **Kibana** is the user interface where you can explore, visualize, and manage it. It provides a window into your data, allowing you to quickly gain insights and understand trends.
 
-#### {{es}} [stack-components-elasticsearch]
+With Kibana, you can:
 
-{{es}} is the distributed search and analytics engine at the heart of the {{stack}}. It provides near real-time search and analytics for all types of data. Whether you have structured or unstructured text, numerical data, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches. {{es}} provides a REST API that enables you to store data in {{es}} and retrieve it. The REST API also provides access to {{es}}'s search and analytics capabilities. [Learn more about {{es}}](/get-started/index.md).
+* Use **Discover** to interactively search and filter your raw data.  
+* Build custom **visualizations** like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
+* Assemble your visualizations into interactive **dashboards** to get a comprehensive overview of your information.  
+* Analyze geospatial data using the powerful **Maps** application.
 
+At the same time, Kibana works as the user interface of all Elastic solutions, like Elastic Security and Elastic Observability, providing ways of configuring Elastic to suit your needs and offering interactive guidance.
 
-### Consume [_consume]
+A **query** is a question you ask about your data, and Elastic provides several powerful languages to do so. You can query data directly through the API or through the user interface in Kibana.
 
-Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use the {{es}} clients to access data in {{es}} directly from common programming languages.
+* **Kibana Query Language (KQL)** is the text-based language used in the **Discover** search bar, perfect for interactive filtering and exploration.  
+* **Elasticsearch Query Language (ES|QL)** is a powerful, modern query language that uses a familiar pipe-based syntax to transform and aggregate your data at search time.  
+* **Event Query Language (EQL)** is a specialized language designed to query sequences of events, which is particularly useful for security analytics and threat hunting.
 
-#### {{kib}} [stack-components-kibana]
-
-{{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](/explore-analyze/index.md).
-
-#### {{es}} clients [stack-components-elasticsearch-clients]
-
-The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others. Both official and community contributed clients are available. [Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
-
-## Version compatibility
-```{applies_to}
-deployment:
-  self:
-```
-
-:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
-:::
-
-## Installation order
-```{applies_to}
-deployment:
-  self:
-```
-
-:::{include} /deploy-manage/deploy/_snippets/installation-order.md
-:::
+Learn more in [Explore and analyze data with Kibana](/explore-analyze/index.md) 
