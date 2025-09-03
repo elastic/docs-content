@@ -10,13 +10,13 @@ products:
 description: An introduction to vectors and knn search in Elasticsearch.
 ---
 
-# Bring your own dense vectors [bring-your-own-vectors]
+# Bring your own dense vectors to {{es}} [bring-your-own-vectors]
 
 {{es}} enables you to store and search mathematical representations of your content - _embeddings_ or _vectors_ - which power AI-driven relevance. There are two types of vector representation - _dense_ and _sparse_ - suited to different queries and use cases (for example, finding similar images and content or storing expanded terms and weights).
 
 In this introduction to [vector search](/solutions/search/vector.md), you’ll store and search for dense vectors in {{es}}. You’ll also learn the syntax for querying these documents with a [k-nearest neighbour](/solutions/search/vector/knn.md) (kNN) query.
 
-## Prerequisites
+## Prerequisites for vector search
 
 - If you're using {{es-serverless}}, create a project with the general purpose configuration. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
 - If you're using {{ech}} or a self-managed cluster, start {{es}} and {{kib}}. The simplest method to complete the steps in this guide is to log in with a user that has the `superuser` built-in role.
@@ -127,7 +127,7 @@ POST /amazon-reviews/_search
 2. The `k` parameter specifies the number of results to return.
 3. The `num_candidates` parameter is optional. It limits the number of candidates returned by the search node. This can improve performance and reduce costs.
 
-## Next steps
+## Next steps: implementing vector search
 
 If you want to try a similar workflow from an {{es}} client, use the guided index workflow:
 
@@ -140,7 +140,7 @@ When you finish your tests and no longer need the sample data set, delete the in
 DELETE /amazon-reviews
 ```
 
-## Learn more [bring-your-own-vectors-learn-more]
+## Learn more about vector search [bring-your-own-vectors-learn-more]
 
 In these simple examples, we send a raw vector for the query text. In a real-world scenario, you won’t know the query text ahead of time. You’ll generate query vectors on the fly using the same embedding model that produced the document vectors. For this, deploy a text embedding model in {{es}} and use the[`query_vector_builder` parameter](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
 
