@@ -15,32 +15,42 @@ products:
 
 # No application-level telemetry visible in Kibana
 
-This page helps you diagnose the most common reasons application-level telemetry doesn’t appear when using {{edot}} (EDOT) SDKs:
+This page helps you diagnose why application-level telemetry doesn’t appear when using {{edot}} (EDOT) SDKs:
 
-* [The SDK is disabled (`OTEL_SDK_DISABLED`)](#sdk-disabled)
+* [The SDK is turned off (`OTEL_SDK_DISABLED`)](#sdk-disabled)
 * [Auto-instrumentation or SDK initialization runs at the wrong time](#auto-instrumentation-not-attached)
 * [The runtime or framework isn’t supported, or is only partially supported](#framework-not-supported)
 
+## Quick triage checklist
+
+| What you see                     | Check                                   | Likely fix |
+|----------------------------------|-----------------------------------------------|------------|
+| No telemetry at all              | `OTEL_SDK_DISABLED`, exporters = `none`, sampler `always_off` | Unset `OTEL_SDK_DISABLED`, pick an exporter, use a non-zero sampler |
+| No/partial data from web requests | Loader order (preload/agent flags early)     | Move loader earlier and restart the process |
+| Only custom code shows spans     | Framework not supported/recognized           | Align versions or add manual instrumentation |
+| Works locally, not on prod       | Different env/flags in container or service  | Match prod env settings and restart |
+| Still unsure                     | Enable debug logging                         | Inspect logs for disabled/unsupported/delayed initialization hints |
+
 ## No telemetry and logs mention `SDK disabled` [sdk-disabled]
 
-If the logs mention `SDK disabled` or nothing at all, the SDK is likely disabled by configuration.
+If the logs mention `SDK disabled` or nothing at all, the SDK is likely deactivated in the configuration.
 
 Check the following:
 
 * **Environment variable**  
 
-	Many SDKs honor `OTEL_SDK_DISABLED=true` (or the equivalent in config files or flags). You can print the current value of the variable, for example: `printenv OTEL_SDK_DISABLED`.
+	Many SDKs honor `OTEL_SDK_DISABLED=true`, or the equivalent in config files or flags. You can print the current value of the variable, for example: `printenv OTEL_SDK_DISABLED`.
 
-	For more SDK-specific details, see the [EDOT Node.js setup guide](opentelemetry://reference/edot-sdks/nodejs/setup/index.md) or [EDOT Python troubleshooting](../edot-sdks/python/index.md).
+	For more SDK-specific details, refer to the [EDOT Node.js setup guide](opentelemetry://reference/edot-sdks/nodejs/setup/index.md) or [EDOT Python troubleshooting](../edot-sdks/python/index.md).
 
-* **Exporter settings that effectively disable signals**  
+* **Exporter settings that effectively turn off signals**  
 
 	* `OTEL_TRACES_EXPORTER=none`, `OTEL_METRICS_EXPORTER=none`, or `OTEL_LOGS_EXPORTER=none`
 	* Sampler turned off: `OTEL_TRACES_SAMPLER=always_off` or sampling probability set to `0.0`
 
 * **Multiple configuration sources**  
 
-	CI/CD pipelines or container manifests (such as Kubernetes `env:` blocks) may override local settings. These environments often require setting variables at deployment time.
+	CI/CD pipelines or container manifests, such as Kubernetes `env:` blocks, might override local settings. These environments often require setting variables at deployment time.
 
 ### Resolution [res-sdk-disabled]
 
@@ -62,7 +72,7 @@ If telemetry is still missing, you can enable debug logging. Refer to [Enable de
 
 ## Auto-instrumentation isn’t attaching [auto-instrumentation-not-attached]
 
-If auto-instrumentation isn’t attaching, or only partial data appears, the SDK or loader may be initializing too late, after the app or framework has already started.
+If auto-instrumentation isn’t attaching, or only partial data appears, the SDK or loader might be initializing too late, after the app or framework has already started.
 
 Check the following:
 
@@ -125,13 +135,3 @@ To fix the issue, try the following:
 * **Retest with a minimal app**
 
 	Strip down to core dependencies to rule out issues introduced by third-party libraries.
-
-## Quick triage checklist
-
-| What you see                     | Check                                   | Likely fix |
-|----------------------------------|-----------------------------------------------|------------|
-| No telemetry at all              | `OTEL_SDK_DISABLED`, exporters = `none`, sampler `always_off` | Unset `OTEL_SDK_DISABLED`, pick an exporter, use a non-zero sampler |
-| No/partial data from web requests | Loader order (preload/agent flags early)     | Move loader earlier and restart the process |
-| Only custom code shows spans     | Framework not supported/recognized           | Align versions or add manual instrumentation |
-| Works locally, not on prod       | Different env/flags in container or service  | Match prod env settings and restart |
-| Still unsure                     | Enable debug logging                         | Inspect logs for disabled/unsupported/delayed initialization hints |
