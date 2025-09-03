@@ -7,45 +7,29 @@ mapped_pages:
 products:
   - id: elasticsearch
   - id: elastic-stack
+  - id: observability
+  - id: security
 ---
-# Get started
 
-## Overview [what-is-es]
+# Elastic fundamentals
 
-[{{es}}](https://github.com/elastic/elasticsearch) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time. [{{kib}}](https://github.com/elastic/kibana) is the graphical user interface for {{es}}. It’s a powerful tool for visualizing and analyzing your data, and for managing and monitoring the Elastic Stack.
+Welcome to Elastic fundamentals! 
 
-{{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with {{kib}}, it powers these Elastic solutions and use cases:
+In this section, we'll walk you through the basics of what our products offer, what they do, how they can help your business, and the different ways you can set them up. You'll get a quick look at the core features and concepts, real-world use cases, and deployment options so you can get a clear sense of how everything fits together. 
 
-* **[Elasticsearch](/solutions/search.md)**: Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.
-* **[Observability](/solutions/observability.md)**: Resolve problems with open, flexible, and unified observability powered by advanced machine learning and analytics.
-* **[Security](/solutions/security.md)**: Detect, investigate, and respond to threats with AI-driven security analytics to protect your organization at scale.
+You'll also find other useful information, such as how to use our docs, training resources, and a link to our glossary so you can familiarize yourself with our terminology. Whether you're exercising your options and are curious about what Elastic can offer, are just getting started, or are looking to dive deeper, this is a great place to begin.
 
-:::{tip}
-Refer to our [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples of how Elastic is used in real-world scenarios.
+## What is Elastic? [what-is-es]
+
+:::{image} /images/illustration-hero-platform-search-security-observability-2x_v2.png
+:alt: The Elastic platform
 :::
 
-## Choose your deployment type
+Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Search AI platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value. 
 
-:::{include} /deploy-manage/_snippets/deployment-options-overview.md
-:::
+Elastic offers three main solutions or types ofprojects: 
 
-## Explore the solutions
-
-Elasticsearch supports diverse use cases. Select a solution and follow its dedicated getting-started guide:
-
-|     |     |
-| :---: | --- |
-| ![elasticsearch](images/64x64_Color_elasticsearch-logo-color-64px.png "elasticsearch =50%") | **Elasticsearch**<br> Create seamless search experiences for apps, websites, or workplaces.<br><br>[**Get started →**](../solutions/search/get-started.md)<br> |
-| ![observability](images/64x64_Color_observability-logo-color-64px.png "observability =50%") | **Observability**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/observability/get-started.md)<br> |
-| ![security](images/64x64_Color_security-logo-color-64px.png "security =50%") | **Security**<br> Monitor logs, metrics, and traces to gain insight into your systems.<br><br>[**Get started →**](../solutions/security/get-started.md)<br> |
-
-## Next steps
-
-To learn more about our products and solutions, check out:
-
-- [{{es}} and {{kib}}](introduction.md), the core components of the {{stack}}.
-  - [The stack](/get-started/the-stack.md) to understand the relationship between core and optional components of an Elastic deployment.
-- [The out-of-the-box solutions and use cases](/solutions/index.md) that Elastic supports.
-- [Deploying Elastic](./deployment-options.md) for your use case.
-- [Versioning and availability](./versioning-availability.md) in Elastic deployments.
+* [{{es}}](/solutions/search.md): Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.  
+* [Elastic {{observability}}](/solutions/observability.md): Gain comprehensive visibility into applications, infrastructure, and user experience through logs, metrics, traces, and other telemetry data, all in a single interface.    
+* [{{elastic-sec}}](/solutions/security.md): Combine SIEM, endpoint security, and cloud security to provide comprehensive tools for threat detection and prevention, investigation, and response. 
 
