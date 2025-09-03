@@ -146,4 +146,4 @@ In these simple examples, we send a raw vector for the query text. In a real-wor
 
 For an example of using pipelines to generate text embeddings, check out [](/solutions/search/vector/dense-versus-sparse-ingest-pipelines.md).
 
-To learn about more the search options in {{es}}, such as semantic, full-text, and hybrid, go to [](/solutions/search/search-approaches.md).
+To learn more about the search options in {{es}}, such as semantic, full-text, and hybrid, refer to [](/solutions/search/search-approaches.md).
