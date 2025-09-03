@@ -12,7 +12,7 @@ description: An introduction to vectors and knn search in Elasticsearch.
 
 # Bring your own dense vectors [bring-your-own-vectors]
 
-{{es}} enables you to store and search mathematical representations of your content — _embeddings_ or _vectors_ - which power AI-driven relevance. There are two types of vector representation — _dense_ and _sparse_ — suited to different queries and use cases (for example, finding similar images and content or storing expanded terms and weights).
+{{es}} enables you to store and search mathematical representations of your content - _embeddings_ or _vectors_ - which power AI-driven relevance. There are two types of vector representation - _dense_ and _sparse_ - suited to different queries and use cases (for example, finding similar images and content or storing expanded terms and weights).
 
 In this introduction to [vector search](/solutions/search/vector.md), you’ll store and search for dense vectors in {{es}}. You’ll also learn the syntax for querying these documents with a [k-nearest neighbour](/solutions/search/vector/knn.md) (kNN) query.
 
