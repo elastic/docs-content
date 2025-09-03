@@ -29,13 +29,9 @@ Check the following:
 
 * **Environment variable**  
 
-	Many SDKs honor `OTEL_SDK_DISABLED=true` (or the equivalent in config files or flags). You can print the current value of the variable, for example:
+	Many SDKs honor `OTEL_SDK_DISABLED=true` (or the equivalent in config files or flags). You can print the current value of the variable, for example: `printenv OTEL_SDK_DISABLED`.
 
-	  ```bash
-	  printenv OTEL_SDK_DISABLED
-	  ```
-
-	For details, see the [EDOT Node.js setup guide](opentelemetry://reference/edot-sdks/nodejs/setup/index.md) or [EDOT Python troubleshooting](../edot-sdks/python/index.md).
+	For more SDK-specific details, see the [EDOT Node.js setup guide](opentelemetry://reference/edot-sdks/nodejs/setup/index.md) or [EDOT Python troubleshooting](../edot-sdks/python/index.md).
 
 * **Exporter settings that effectively disable signals**  
 
@@ -46,7 +42,7 @@ Check the following:
 
 	CI/CD pipelines or container manifests (such as Kubernetes `env:` blocks) may override local settings. These environments often require setting variables at deployment time.
 
-### Resolution
+### Resolution [res-sdk-disabled]
 
 To fix the issue, try the following:
 
@@ -56,11 +52,11 @@ To fix the issue, try the following:
 
 * **Enable exporters/sampler**
 
-	Choose a valid exporter (for example, `otlp`) and a sampling strategy with a non-zero probability (for example, `parentbased_traceidratio` with a ratio > 0).
+	Choose a valid exporter (for example `otlp`) and a sampling strategy with a non-zero probability (for example, `parentbased_traceidratio` with a ratio > 0).
 
 * **Restart the process**
 
-	Do that after changing any configuration. Some SDKs only read environment variables at startup.
+	Restart after changing any configuration. Some SDKs only read environment variables at startup.
 
 If telemetry is still missing, you can enable debug logging. Refer to [Enable debug logging for EDOT SDKs](https://www.elastic.co/docs/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging/) for guidance.
 
@@ -76,28 +72,29 @@ Check the following:
 
 * **Start-up mechanism by language**
 
-	* **Java**: Use the `-javaagent:` flag as early as possible (for example using `JAVA_TOOL_OPTIONS`) so it loads before `main()`.
-	* **Node.js**: Use a preloader (for example `NODE_OPTIONS=--require <entry>`) or import the SDK before bootstrapping the app.  
-	  Refer to [Node.js SDK setup](opentelemetry://reference/edot-sdks/nodejs/setup/index.md).
+	* **Java**: Use the `-javaagent:` flag as early as possible so it loads before `main()`.
+	* **Node.js**: Use a preloader (for example `NODE_OPTIONS=--require <entry>`) or import the SDK before bootstrapping the app. Refer to [Node.js SDK setup](opentelemetry://reference/edot-sdks/nodejs/setup/index.md) for more information.
 	* **Python**: Use the launcher (`opentelemetry-instrument`) or import/initialize the SDK before the framework.
 	* **.NET**: Set profiler environment variables before starting the process.
 	* **PHP**: Ensure the extension is loaded and PHP/FPM/Apache is fully restarted.
 
 	If using Docker or Kubernetes confirm preloading flags or environment variables are placed where the actual process starts.
 
-### Resolution
+### Resolution [res-instrumentation]
 
-To fix the issue, try the following:
+To fix the issue, try the following steps:
 
 1. Move agent/loader flags to the earliest possible point in your startup chain.
 2. Confirm the loader runs. Debug logs should show detected instrumentations or patched modules.
 3. Fully restart the service, as reloads are often insufficient for preloaders/agents.
 
-> **Tip:** In debug logs, look for lines that mention “installing instrumentation for …” or “detected framework … version …”. Lack of these hints usually means the loader didn’t run early enough.
+:::{tip}
+In debug logs, look for lines that mention `installing instrumentation for …` or `detected framework … version …`. Lack of these hints usually means the loader didn’t run early enough.
+:::
 
 ## App starts, SDK loads, but no telemetry for your framework [framework-not-supported]
 
-If the app and SDK load correctly but no spans, metrics, or logs appear for your framework, the runtime, framework, or library may not be supported or is only partially instrumented.
+If the app and SDK load correctly but no spans, metrics, or logs appear for your framework, the runtime, framework, or library may not be supported or are only partially instrumented.
 
 Check the following:
 
@@ -113,7 +110,7 @@ Check the following:
 
 	Some scenarios may require manual instrumentation.
 
-### Resolution
+### Resolution [res-framework]
 
 To fix the issue, try the following:
 
@@ -131,10 +128,10 @@ To fix the issue, try the following:
 
 ## Quick triage checklist
 
-| What you see                     | Check next                                   | Likely fix |
+| What you see                     | Check                                   | Likely fix |
 |----------------------------------|-----------------------------------------------|------------|
 | No telemetry at all              | `OTEL_SDK_DISABLED`, exporters = `none`, sampler `always_off` | Unset `OTEL_SDK_DISABLED`, pick an exporter, use a non-zero sampler |
-| No/partial data from web requests | Loader order (preload/agent flags early)     | Move loader earlier; restart process |
+| No/partial data from web requests | Loader order (preload/agent flags early)     | Move loader earlier and restart the process |
 | Only custom code shows spans     | Framework not supported/recognized           | Align versions or add manual instrumentation |
-| Works locally, not on prod       | Different env/flags in container or service  | Match prod env settings; restart |
+| Works locally, not on prod       | Different env/flags in container or service  | Match prod env settings and restart |
 | Still unsure                     | Enable debug logging                         | Inspect logs for disabled/unsupported/delayed initialization hints |
