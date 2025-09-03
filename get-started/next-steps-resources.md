@@ -2,6 +2,8 @@
 
 We've designed our docs to help you find the information you need quickly and efficiently, whether you're a new user or an experienced professional.
 
+## Information architecture
+
 Our documentation is organized to guide you through your journey with Elastic, from learning the basics to deploying and managing complex solutions. 
 
 Here is a detailed breakdown of the documentation structure:
