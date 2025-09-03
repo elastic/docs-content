@@ -30,7 +30,7 @@ Common use cases for kNN vector similarity search include:
   * Anomaly detection
   * Pattern matching
 
-## Prerequisites [knn-prereqs]
+## Prerequisites for kNN search [knn-prereqs]
 
 To run a kNN search in {{es}}:
 
@@ -44,7 +44,7 @@ To run a kNN search in {{es}}:
   * `create`, `index`, or `write` to add data
   * `read` to search the index
 
-## kNN methods [knn-methods]
+## kNN search methods: approxiamte and exact kNN [knn-methods]
 
 {{es}} supports two methods for kNN search:
 
@@ -53,7 +53,7 @@ To run a kNN search in {{es}}:
 
 Approximate kNN offers low latency and good accuracy, while exact kNN guarantees accurate results but does not scale well for large datasets. With this approach, a `script_score` query must scan each matching document to compute the vector function, which can result in slow search speeds. However, you can improve latency by using a [query](../../../explore-analyze/query-filter/languages/querydsl.md) to limit the number of matching documents passed to the function. If you filter your data to a small subset of documents, you can get good search performance using this approach.
 
-## Approximate kNN [approximate-knn]
+## Approximate kNN search [approximate-knn]
 
 ::::{warning}
 Approximate kNN search has specific resource requirements. All vector data must fit in the node’s page cache for efficient performance. Refer to the [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for configuration tips.
@@ -125,7 +125,7 @@ The document `_score` is a positive 32-bit floating-point number that ranks resu
 Support for approximate kNN search was added in version 8.0. Before 8.0, `dense_vector` fields did not support enabling `index` in the mapping. If you created an index prior to 8.0 with `dense_vector` fields, reindex using a new mapping with `index: true` (which is the default value) to use approximate kNN.
 ::::
 
-### Indexing considerations [knn-indexing-considerations]
+### Indexing considerations for approximate kNN search [knn-indexing-considerations]
 
 For approximate kNN, {{es}} stores dense vector values per segment as an [HNSW graph](https://arxiv.org/abs/1603.09320). Building HNSW graphs is compute-intensive, so indexing vectors can take time; you may need to increase client request timeouts for index and bulk operations. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) covers indexing performance, sizing, and configuration trade-offs that affect search performance.
 
@@ -525,7 +525,7 @@ POST image-index/_search
 
 In this data set, the only document with `file-type = png` has the vector `[42, 8, -15]`. The `l2_norm` distance between `[42, 8, -15]` and `[1, 5, -20]` is `41.412`, which exceeds the configured `similarity` threshold of `36`. As a result, this search returns no hits.
 
-### Nested kNN Search [nested-knn-search]
+### Nested kNN search [nested-knn-search]
 
 When text exceeds a model’s token limit, chunking must be performed before generating embeddings for each chunk. By combining [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) fields with [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md), you can perform nearest passage retrieval without copying top-level document metadata.  
 Note that nested kNN queries only support [score_mode](elasticsearch://reference/query-languages/query-dsl/query-dsl-nested-query.md#nested-top-level-params)=`max`.
@@ -1308,7 +1308,7 @@ POST /my-index/_search
 3. The number of candidates to use for the initial approximate `knn` search. This will search using the quantized vectors and return the top 20 candidates per shard to then be scored
 4. The script to score the results. Script score will interact directly with the originally provided float32 vector.
 
-## Exact kNN [exact-knn]
+## Exact kNN search [exact-knn]
 
 To run an exact kNN search, use a `script_score` query with a vector function.
 
