@@ -179,6 +179,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enhances the integrations overview by rendering an accordion for sample events in Data ingestion and Fleet [#228799]({{kib-pull}}228799)
 * Displays related dashboard tags directly in the {{obs-serverless}} UI [#228902]({{kib-pull}}228902)
 * Adds the `kibana.alert.grouping` field to {{esql}} rule definitions [#228580]({{kib-pull}}228580)
+* Adds support for ingress IP filters. IP filter policies allow you to restrict traffic coming into your project to specific IP addresses or CIDR blocks.
 
 ### Fixes [serverless-changelog-07282025-fixes]
 * Fixes incorrect handling of the `pollEnabled` configuration in reporting [#228707]({{kib-pull}}228707)

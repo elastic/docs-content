@@ -50,7 +50,7 @@ To check the number of tripped [circuit breakers](elasticsearch://reference/elas
 GET /_nodes/stats/breaker
 ```
 
-These statistics are cumulative from node startup. For more information, see [circuit breaker errors](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md).
+These statistics are cumulative from node startup. For more information, see [circuit breaker errors](circuit-breaker-errors.md).
 
 See [this video](https://www.youtube.com/watch?v=k3wYlRVbMSw) for a walkthrough of diagnosing circuit breaker errors.
 
