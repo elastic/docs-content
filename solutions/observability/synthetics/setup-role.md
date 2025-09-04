@@ -17,10 +17,10 @@ As a best practice, **grant the setup role to administrators only**, and use a m
 
 Create a **setup role**, called something like `synthetics_setup`:
 
-1. Start with the `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices.
+1. Start with the `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices.
 
     ::::{note}
-    The `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) will grant write access to *all* {{kib}} apps. If you want to limit write access to the {{synthetics-app}} only, refer to [Limited write access](/solutions/observability/synthetics/writer-role.md#synthetics-write-privileges-limited).
+    The `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor) will grant write access to *all* {{kib}} apps. If you want to limit write access to the {{synthetics-app}} only, refer to [Limited write access](/solutions/observability/synthetics/writer-role.md#synthetics-write-privileges-limited).
 
     If you choose this approach, you will still need to grant the privileges in the next step.
 

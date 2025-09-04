@@ -33,7 +33,7 @@ Features available to you can differ based on deployment type, product lifecycle
 
 | Factor | Description |
 | ----- | ----- |
-| Deployment type | The environment where the feature is available, for example, {{stack}}, {{serverless-full}}, {{ece}}, {{eck}} |
+| Deployment type | The environment where the feature is available, for example, self-managed, {{serverless-full}}, {{ece}}, {{eck}} |
 | Lifecycle state | The development or support status of the feature, for example, GA, Technical preview, Beta |
 | Version | The specific version the lifecycle state applies to |
 
@@ -41,9 +41,11 @@ Features available to you can differ based on deployment type, product lifecycle
 
 | Lifecycle state | Description |
 | ----- | ----- |
-| Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
-| Beta | Feature is nearing general availability but not yet production-ready |
 | Technical preview | Feature is in early development stage |
+| Beta | Feature is nearing general availability but not yet production-ready |
+| Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
+| Deprecated | Feature is still usable but is set to be removed or replaced in a future update |
+| Removed | Feature can no longer be used |
 | Unavailable | Feature is not supported in this deployment type or version |
 
 ### Examples of where availability can vary
@@ -52,8 +54,8 @@ Features available to you can differ based on deployment type, product lifecycle
 | ----- | ----- |
 | Elastic Stack versions | [{{stack}}](/get-started/the-stack.md) version 9.0.0 and later, including 9.1.0 |
 | Deployment types | [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md), [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), and [Self-managed deployments](/deploy-manage/deploy/self-managed.md) |
-| Deployment versions | [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) 4.0.0 and later, [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) 3.0.0 and later |
-| Serverless project types | {{es}}, {{observability}}, and {{elastic-sec}} |
+| Orchestrator versions | [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) 4.0.0 and later, [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) 3.0.0 and later |
+| Serverless project types | {{es}}, Elastic {{observability}}, and {{elastic-sec}} |
 
 
 
