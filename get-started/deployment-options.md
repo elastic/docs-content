@@ -23,14 +23,14 @@ The choice you make determines how much time you'll spend on infrastructure mana
 These are the most common deployment types and their main features:
 
 * **[{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md)**: Get a hosted solution up and running in minutes.
-  * **[{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)**: This managed SaaS offering provides you with a dedicated cluster on your choice of cloud provider (AWS, GCP, or Azure). It offers a high degree of control over your cluster's configuration, allowing you to fine-tune nodes, hardware, and versions to meet specific performance and architectural requirements. Sign up for a [14-day free trial](https://cloud.elastic.co/registration).
-  * **[{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)**: This fully managed SaaS offering abstracts away all underlying infrastructure, automatically and seamlessly scaling resources to meet your workload demands. It's designed for operational simplicity, with usage-based pricing that allows you to focus on your data without managing clusters. Sign up for a [14-day free trial](https://cloud.elastic.co/serverless-registration).
+  * **[{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)**: This managed SaaS offering managed through [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) provides you with a dedicated cluster on your choice of cloud provider (AWS, GCP, or Azure). It offers a high degree of control over your cluster's configuration, allowing you to fine-tune nodes, hardware, and versions to meet specific performance and architectural requirements. Sign up for a [14-day free trial](https://cloud.elastic.co/registration).
+  * **[{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)**: This fully managed SaaS offering managed through [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) abstracts away all underlying infrastructure, automatically and seamlessly scaling resources to meet your workload demands. It's designed for operational simplicity, with usage-based pricing that allows you to focus on your data without managing clusters. Sign up for a [14-day free trial](https://cloud.elastic.co/serverless-registration).
 * **[Local development](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md)**: Get started quickly with {{es}} and {{kib}} in Docker for local development and testing.
 
 ## Advanced options
 
 * **[Self-managed](/deploy-manage/deploy/self-managed.md)**: This approach allows you to install, operate, and maintain the {{stack}} on your own hardware, whether on-premises or in your private cloud. It provides maximum control over your environment.
-* **[{{ece}}](/deploy-manage/deploy/cloud-enterprise.md)**: This Elastic self-managed offering allows you to provision, manage, and monitor {{es}} and {{kib}} at any scale, on any infrastructure, while managing everything from a single console. It's ideal if you want to use the full {{stack}} while maintaining control over your data and infrastructure.
+* **[{{ece}}](/deploy-manage/deploy/cloud-enterprise.md)**: This Elastic self-managed offering allows you to provision, manage, and monitor {{es}} and {{kib}} at any scale, on any infrastructure, while managing everything from a single console.
 * **[{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md)**: This extends Kubernetes by providing an official operator for deploying and managing Elastic products. It's ideal if you want to run and orchestrate Elastic on your own Kubernetes platform.
 
 :::{tip}

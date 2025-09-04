@@ -1,4 +1,4 @@
-# Extend the Elastic platform 
+# Extend and contribute 
 
 You can extend and build on the Elastic Platform in several ways. Whether you need to get data into Elasticsearch, add new functionality, edit the documentation, or build a custom application, here is an overview of the primary development paths to help you choose the right one for your project.
 
