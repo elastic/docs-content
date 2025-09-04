@@ -35,7 +35,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Ensures that maintenance windows with scoped queries apply to all rule types [#232307]({{kib-pull}}232307)
 * Fixes pagination issues in alerting tables [#233030]({{kib-pull}}233030)
 * Removes unused `availableOptions` from {{esql}} values in query saved objects [#231690]({{kib-pull}}231690)
-* Removes unnecessary output warning messages in serverless deployments [#232785]({{kib-pull}}232785)
+* Removes unnecessary output warning messages in {{serverless-short}} deployments [#232785]({{kib-pull}}232785)
 * Requires the `agents:all` privilege to use **Manage auto-upgrade agent** UI actions [#232429]({{kib-pull}}232429)
 * Fixes read permission failures on the lookup indexes route [#233282]({{kib-pull}}233282)
 * Refactors anonymization logic to walk JSON objects instead of stringifying them [#232319]({{kib-pull}}232319)
