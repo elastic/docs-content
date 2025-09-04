@@ -44,3 +44,9 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 ::::{note}
 `Llama 3.3` is currently supported with simulated function calling.
 ::::
+
+## Evaluate your own model
+
+You can run the {{obs-ai-assistant}} evaluation framework against any model you connect. See the [evaluation framework README](https://github.com/elastic/kibana/blob/main/x-pack/solutions/observability/plugins/observability_ai_assistant_app/scripts/evaluation/README.md) for setup and usage details.
+
+You can use it to benchmark a custom or self-hosted model against the use cases in this matrix, then compare your results with the scores above.
