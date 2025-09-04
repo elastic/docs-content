@@ -37,36 +37,33 @@ Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-
 ::::
 
 ::::{step} Identify your search goals
-Depending on your use case, you can choose multiple [search approaches](search-approaches.md) (for example, full-text and semantic search).
+Depending on your use case, you can choose multiple [search approaches](search-approaches.md), for example full-text and semantic search.
 Each approach affects your options for storing and querying your data.
 
-:::{tip}
-If you want to ingest your data first and transform or reindex it as needed later, you can skip to the next step.
-:::
+If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/search/get-started/semantic-search.md).
+
+If you prefer to ingest your data first and transform or reindex it as needed later, skip to the next step.
 ::::
 ::::{{step}} Ingest your data
 
 If your goals include vector or semantic AI-powered search, create vectorized data with built-in and third-party natural language processing (NLP) models and store it in an {{es}} vector database.
 The approach that requires the least configuration involves adding `semantic_text` fields when ingesting your data.
-Try it out with [](/solutions/search/get-started/semantic-search.md).
+This method is described in [](/solutions/search/semantic-search/semantic-search-semantic-text.md).
 
 To learn about adding data for other search goals, go to [](/solutions/search/ingest-for-search.md).
 For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 
-:::{tip}
 If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/search/get-started/quickstarts.md).
-:::
 ::::
 
-::::{{step}} Get started with your use case
-
-Not sure where to start exploring or which features may be relevant for you?
-View our [quickstarts](/solutions/search/get-started/quickstarts.md), which help you complete a core task so you can get up and running.
-For example, learn about [index and search basics](/solutions/search/get-started/index-basics.md).
+::::{{step}} Build your search queries
 
 Your next steps will be to choose a method to write queries and interact with {{es}}.
 You can pick a programming language [client](/reference/elasticsearch-clients/index.md) that matches your application and choose which [query languages](/solutions/search/querying-for-search.md) you will use to express your search logic.
 Each decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.
+
+Not sure where to start exploring?
+Get an introduction to [index and search basics](/solutions/search/get-started/index-basics.md) or [build your first search query with Python](/solutions/search/get-started/keyword-search-python.md).
 ::::
 :::::
 
@@ -75,7 +72,6 @@ Each decision builds on the previous ones, offering flexibility to mix and match
 Use these resources to learn more about {{es}} or get started in a different way:
 
 - [](/deploy-manage/deploy/deployment-comparison.md)
-- [](/solutions/search/get-started/quickstarts.md)
 - [Get started with Query DSL search and filters](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
 - [Get started with ES|QL queries](elasticsearch://reference/query-languages/esql/esql-getting-started.md)
 - [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md)
