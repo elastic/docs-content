@@ -37,18 +37,20 @@ Agentless deployment for the following integrations is in beta and is subject to
 1. AbuseCH
 2. Cloud Asset Discovery
 3. CrowdStrike  
-4. Google SecOps 
-5. Google Security Command Center
-6. Google Workspace
-7. Microsoft 365 Defender
-8. Microsoft Defender for Endpoint
-9. Microsoft Sentinel
-10. Okta
-11. Qualys VMDR
-12. SentinelOne
-13. Tenable IO
-14. Wiz
-15. Zscaler ZIA
+4. Elastic Security
+5. Google SecOps 
+6. Google Security Command Center
+7. Google Workspace
+8. Microsoft 365 Defender
+9. Microsoft Defender for Endpoint
+10. Microsoft Sentinel
+11. Okta
+12. Qualys VMDR
+13. SentinelOne
+14. Splunk
+15. Tenable IO
+16. Wiz
+17. Zscaler ZIA
 
 
 To learn more about these integrations and find setup guides, refer to [Elastic integrations](https://docs.elastic.co/en/integrations/).

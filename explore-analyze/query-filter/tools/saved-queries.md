@@ -18,7 +18,7 @@ Saved queries are different than [saved Discover sessions](/explore-analyze/disc
 
 ## Saved query access [_saved_query_access]
 
-If you have insufficient privileges to manage saved queries, you will be unable to load or save queries from the saved query management popover. For more information, see [Granting access to Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md)
+If you have insufficient privileges to manage saved queries, you will be unable to load or save queries from the saved query management popover. For more information, see [Granting access to Kibana](elasticsearch://reference/elasticsearch/roles.md)
 
 
 ## Save a query [_save_a_query]

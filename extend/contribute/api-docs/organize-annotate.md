@@ -304,6 +304,11 @@ class FooRequest {
 
 This example shows the "later addition" scenario where `laterAddition` was added after the initial API release, requiring a parameter-level availability annotation with a later version than the API-level availability.
 
+:::::{important}
+The `since` field is only available for `stack`. If the API is introduced in multiple major versions (eg: `8.19.0` and `9.1.0`), use the appropriate value in each branch.
+:::::
+
+
 **Deprecation notices** use the `@deprecated` annotation:
 
 ```ts

@@ -24,11 +24,11 @@ In this quickstart guide, you’ll learn how to create the Kubernetes resources 
 :sync: stack
 
 * A running {{stack}} deployment, either self-managed or orchestrated by platforms like {{ech}}, {{ece}}, or {{eck}}, with internet access. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-* A user with the `superuser` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
+* A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
 
 :::{dropdown} Expand to view required privileges
-* [**Cluster**](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
-* [**Index**](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `{ names: ['logs-*-*', 'metrics-*-*'], privileges: ['auto_configure', 'create_doc'] }`
+* [**Cluster**](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
+* [**Index**](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `{ names: ['logs-*-*', 'metrics-*-*'], privileges: ['auto_configure', 'create_doc'] }`
 * [**Kibana**](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md): `{ spaces: ['*'], feature: { fleet: ['all'], fleetv2: ['all'] } }`
 :::
 
