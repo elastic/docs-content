@@ -20,7 +20,7 @@ You do not have to set up a proxy if LM Studio is running locally, or on the sam
 ::::
 
 ::::{note}
-For information about the performance of open-source models on tasks within {{obs-ai-assistant}}, refer to the [LLM performance matrix](/solutions/observability/llm-performance-matrix.md).
+For information about the performance of open-source models on tasks within the {{obs-ai-assistant}}, refer to the [LLM performance matrix](/solutions/observability/llm-performance-matrix.md).
 ::::
 
 This example uses a server hosted in GCP to configure LM Studio with the [Llama-3.3-70B-Instruct](https://huggingface.co/lmstudio-community/Llama-3.3-70B-Instruct-GGUF) model.
