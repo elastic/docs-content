@@ -8,7 +8,7 @@ products:
 
 # Manually apply a lifecycle policy to an index [apply-policy-manually]
 
-When you create a new {{es}} index, if the index name matches an index pattern configured in an [index template](/manage-data/data-store/templates.md#index-templates), the new index automatically inherits any settings, mappings, and aliases that are defined in the index template or in any component templates that the index template references. If the template specifies a lifecycle policy, that policy is applied automatically to the newly created index. This process is described in detail in [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md).
+When you create a new {{es}} index, it automatically picks up settings, mappings, and aliases from any matching [index template](/manage-data/data-store/templates.md#index-templates) and its component templates. If the template specifies a lifecycle policy, that policy is applied to the new index as soon as it's created. This process is described in detail in [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md).
 
 You can also apply a lifecycle policy manually to existing indices, as described on this page. This is useful if you want to:
  * Configure the indices to move through different [data tiers](/manage-data/lifecycle/data-tiers.md) as they age.
