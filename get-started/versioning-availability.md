@@ -33,7 +33,7 @@ Features available to you can differ based on deployment type, product lifecycle
 
 | Factor | Description |
 | ----- | ----- |
-| Deployment type | The environment where the feature is available, for example, {{stack}}, {{serverless-full}}, {{ece}}, {{eck}} |
+| Deployment type | The environment where the feature is available, for example, self-managed, {{serverless-full}}, {{ece}}, {{eck}} |
 | Lifecycle state | The development or support status of the feature, for example, GA, Technical preview, Beta |
 | Version | The specific version the lifecycle state applies to |
 
