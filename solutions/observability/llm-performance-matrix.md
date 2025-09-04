@@ -22,32 +22,32 @@ Rating legend
 **Good** – Possibly adequate for many use cases but with noticeable tradeoffs.<br>
 **Poor** – Significant issues; not recommended for production for the use case.
 
-Recommended models are those rated **Excellent** or **Great**.
+Recommended models are those rated **Excellent** or **Great** for the paticular use case.
 ::::
 
 ## Proprietary models [_proprietary_models]
 
 Models from third-party LLM providers.
 
-| Provider | Model | **Alert questions** | **APM questions** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Knowledge retrieval** | **Contextual insights** |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Amazon Bedrock | **Claude Sonnet 3.5** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Amazon Bedrock | **Claude Sonnet 3.7** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Amazon Bedrock | **Claude Sonnet 4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Google Gemini    | **Gemini 2.0 Flash**  | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Google Gemini    | **Gemini 2.5 Flash**  | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Amazon Bedrock | **Claude Sonnet 3.5** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Amazon Bedrock | **Claude Sonnet 3.7** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Amazon Bedrock | **Claude Sonnet 4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Google Gemini    | **Gemini 2.0 Flash**  | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Google Gemini    | **Gemini 2.5 Flash**  | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
 
 
 ## Open-source models [_open_source_models]
 
 Models you can [deploy and manage yourself](/solutions/observability/connect-to-own-local-llm.md).
 
-| Provider | Model | **Alert questions** | **APM questions** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Knowledge retrieval** | **Contextual insights** |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Meta | **Llama-3.3-70B-Instruct** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Meta | **Llama-3.3-70B-Instruct** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
 
 ::::{note}
 `Llama 3.3` is currently supported with simulated function calling.
