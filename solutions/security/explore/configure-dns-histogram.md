@@ -10,7 +10,7 @@ products:
 
 # Configure the DNS histogram
 
-The DNS histogram (**Top domains by dns.question.registered_domain**) on the **Network** page helps you visualize domain activity in your environment. Depending on your {{kib}} setup—for example, if you're using {{elastic-defend}}—you may need to add the `dns.question.registered_domain` field so that DNS data appears correctly.
+The DNS histogram (**Top domains by dns.question.registered_domain**) on the **Network** page helps you visualize domain activity in your environment. If you're using {{elastic-defend}}, you may need to add the `dns.question.registered_domain` field so that DNS data appears correctly.
 
 If the DNS histogram is empty, follow these steps to populate the data.
 
