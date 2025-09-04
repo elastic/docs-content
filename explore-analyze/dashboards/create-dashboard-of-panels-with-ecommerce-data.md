@@ -160,7 +160,7 @@ Add a layer to display the customer traffic:
        :::
 
 4. From the **Available fields** list, drag **order_date** to the **Horizontal Axis** field in the second layer.
-5. To change the position of the legend, open the **Legend** menu, then select the **Alignment** arrow that points up.
+5. To change the position of the legend, open the **Legend** menu, then select the **Position** arrow that points up.
 
    :::{image} /explore-analyze/images/kibana-lens_mixedXYChart_7.16.png
    :alt: Layer visualization type menu
