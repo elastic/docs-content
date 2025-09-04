@@ -31,13 +31,13 @@ Models from third-party LLM providers.
 
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Amazon Bedrock | **Claude Sonnet 3.5** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Amazon Bedrock | **Claude Sonnet 3.5** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Excellent |
 | Amazon Bedrock | **Claude Sonnet 3.7** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
 | Amazon Bedrock | **Claude Sonnet 4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Google Gemini    | **Gemini 2.0 Flash**  | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Google Gemini    | **Gemini 2.5 Flash**  | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Excellent |
+| Google Gemini    | **Gemini 2.0 Flash**  | Excellent | Good | Great | Excellent | Excellent | Great | Great | Excellent |
+| Google Gemini    | **Gemini 2.5 Flash**  | Excellent | Great | Excellent | Excellent | Excellent | Great | Great | Excellent |
+| Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Excellent | Excellent | Excellent | Great | Great | Excellent | Excellent |
 
 
 ## Open-source models [_open_source_models]
