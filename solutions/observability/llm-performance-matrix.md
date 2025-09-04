@@ -14,9 +14,13 @@ _Last updated: 4 September 2025_
 
 This page summarizes internal test results comparing large language models (LLMs) across {{obs-ai-assistant}} use cases. To learn more about these use cases, refer to [AI Assistant](/solutions/observability/observability-ai-assistant.md).
 
-::::{important}
-Ratings (best to worst): `Excellent`, `Great`, `Good`, `Poor`. 
-Models rated `Excellent` or `Great` are recommended for that use case; those rated `Good` or `Poor` are not recommended for that use case.
+::::{important} Rating legend
+**Excellent** – Highly accurate and reliable for the use case.
+**Great** – Strong performance with minor limitations.
+**Good** – Possibly adequate for many use cases but with noticeable tradeoffs.
+**Poor** – Significant issues; not recommended for production for the use case.
+
+Recommended models are those rated **Excellent** or **Great**.
 ::::
 
 ## Proprietary models [_proprietary_models]
@@ -40,8 +44,8 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 
 | Provider | Model | **Alert questions** | **APM questions** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Knowledge retrieval** | **Contextual insights** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Meta | **Llama 3.3 70B** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Mistral | **Mistral Small 3.2** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Meta | **Llama-3.3-70B-Instruct** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
+| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
 
 ::::{note}
 `Llama 3.3` is currently supported with simulated function calling.
