@@ -22,10 +22,10 @@ For users who need to create, modify, and delete monitors, provide write access.
 
 Create a **writer role**, called something like `synthetics_writer`:
 
-1. Start with the `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices.
+1. Start with the `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor). This role grants full access to all features in {{kib}} (including the {{observability}} solution) and read-only access to data indices.
 
     ::::{note}
-    The `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) will grant write access to *all* {{kib}} apps. If you want to limit write access to the {{synthetics-app}} only, refer to [Limited write access](#synthetics-write-privileges-limited).
+    The `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor) will grant write access to *all* {{kib}} apps. If you want to limit write access to the {{synthetics-app}} only, refer to [Limited write access](#synthetics-write-privileges-limited).
     ::::
 
 2. *If the user should have permission to create, modify, and delete project monitors*, they will need an API key that can be used to `push` monitors. To create API keys, the user will also need *at least one* of the following privileges in addition to the privileges included in the `editor` built-in role:
@@ -38,7 +38,7 @@ Create a **writer role**, called something like `synthetics_writer`:
 
 ## Limited write access [synthetics-write-privileges-limited]
 
-If you want to limit write access to the {{synthetics-app}} only, do *not* use the `editor` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+If you want to limit write access to the {{synthetics-app}} only, do *not* use the `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor).
 
 Instead to you can create a writer role, called something like `synthetics_writer_limited`, and start by granting the following privileges:
 

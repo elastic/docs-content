@@ -63,6 +63,8 @@ GET _cluster/allocation/explain?filter_path=index,node_allocation_decisions.node
 }
 ```
 
+For common API response examples, see [Using the cluster allocation API for troubleshooting](https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples).
+
 
 ## Fix a red or yellow cluster status [fix-red-yellow-cluster-status]
 
