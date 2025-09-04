@@ -5,16 +5,16 @@ applies_to:
 ---
 # Sparse vector search in {{es}} [sparse-vector-search]
 
-When working with sparse vectors in {{es}}, you’ll use the [**Elastic Learned Sparse Encoder (ELSER)**](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) at index and query time to expand content into semantically related, weighted terms.
+When working with sparse vectors in {{es}}, you'll use the [**Elastic Learned Sparse Encoder (ELSER)**](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) at index and query time to expand content into semantically related, weighted terms.
 
-This approach adds semantic understanding **while preserving explainability**: each document and query becomes a set of weighted terms you can inspect and reason about.
+This approach preserves explainability while adding semantic understanding, with each document or query expanded into a set of weighted terms.
 
 Sparse vector search with ELSER is ideal for:
 
 - Enhanced keyword search with semantic expansion
-- Use cases requiring **explainable** results
-- Domain-specific search where terminology matters
-- Large-scale deployments needing efficient retrieval
+- Use cases requiring explainable results
+- Domain-specific search
+- Large-scale deployments
 
 ## Working with sparse vectors in {{es}}
 
