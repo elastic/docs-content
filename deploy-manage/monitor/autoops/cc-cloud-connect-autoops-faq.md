@@ -63,7 +63,7 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
 $$$autoops-metrics$$$ **Where are AutoOps metrics stored, and does it cost extra to ship metrics data to {{ecloud}}?**
 :   You can choose the CSP and region in which your cluster metrics will be stored.
 
-    :::{include} _snippets/autoops-cc-regions.md
+    :::{include} ../_snippets/autoops-cc-regions.md
     :::
 
     Shipping metrics to {{ecloud}} may come at an additional cost. For example, when sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs will be determined by your agreement with that CSP.
