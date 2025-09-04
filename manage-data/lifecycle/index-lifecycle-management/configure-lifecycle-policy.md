@@ -10,7 +10,7 @@ products:
 
 # Configure a lifecycle policy [set-up-lifecycle-policy]
 
-An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy defines how your indices are managed over time, automating when and how they transition as they age. You can use {{ilm-init}} to manage both data streams and standalone indices. When used with the latter, some additional configuration is required compared to the more automated process for data streams. This page describes the steps to configure an {{ilm-init}} lifecycle policy for both scenarios.
+An [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) policy defines how your indices are managed over time, automating when and how they transition as they age. You can use {{ilm-init}} to manage both indices and [data streams](/manage-data/data-store/data-streams.md). There are fewer configuration steps required to set up ILM with data streams. In comparison, configuring ILM with indices requires you to create an initial managed index and alias in addition to defining a policy and creating a template to apply it. This page describes the steps to configure an {{ilm-init}} lifecycle policy for both scenarios.
 
 :::{note}
 This page is specifically about using {{ilm-init}} with indices or data streams. If you're looking for a simpler, less feature-rich lifecycle management option for data streams only, refer to [Data stream lifecycle](/manage-data/lifecycle/data-stream.md). Check [Data lifecycle](/manage-data/lifecycle.md) to compare these lifecycle management options.
