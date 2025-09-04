@@ -27,7 +27,7 @@ You'll also find other useful information, such as how to use our docs, training
 
 Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Search AI platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value. 
 
-Elastic offers three main solutions or types ofprojects: 
+Elastic offers three main solutions or types of projects: 
 
 * [{{es}}](/solutions/search.md): Build powerful search and RAG applications using Elasticsearch's vector database, AI toolkit, and advanced retrieval capabilities.  
 * [Elastic {{observability}}](/solutions/observability.md): Gain comprehensive visibility into applications, infrastructure, and user experience through logs, metrics, traces, and other telemetry data, all in a single interface.    
