@@ -81,9 +81,11 @@ Default {{ilm}} policies are created automatically when you install an [Elastic 
 To automatically back up your indices and manage snapshots, use [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
 ::::
 
-## Troubleshooting {{ilm-init}}
+## Pausing and troubleshooting {{ilm-init}}
 
-In the event of any issues running {{ilm-init}}, refer to [Troubleshoot index lifecycle management](/troubleshoot/elasticsearch/start-ilm.md) for the steps to start and stop {{ilm-init}}, and to check the lifecycle status. For detailed troubleshooting steps, refer to [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md).
+In case you want to temporarily pause the {{ilm-init}} service while you perform maintenance, make other changes to your cluster, or do any troubleshooting, refer to [Start and stop {{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md).
+
+In the event of any issues running {{ilm-init}}, refer to [Fix index lifecycle management errors](/troubleshoot/elasticsearchindex-lifecycle-management-errors.md) for detailed troubleshooting guidance. 
 
 ## Migrate to {{ilm-init}}
 

@@ -322,9 +322,6 @@ redirects:
   'explore-analyze/query-filter/languages/esql-troubleshooting.md': 'elasticsearch://reference/query-languages/esql/esql-troubleshooting.md'
   'solutions/search/esql-search-tutorial.md': 'elasticsearch://reference/query-languages/esql/esql-search-tutorial.md'
 
-# Related to https://github.com/elastic/docs-content/pull/2569
-  'manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md': 'troubleshoot/elasticsearch/start-ilm.md'
-
 # Related to https://github.com/elastic/docs-content/pull/2639
   'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
   
