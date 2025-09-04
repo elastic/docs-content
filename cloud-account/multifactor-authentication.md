@@ -21,7 +21,11 @@ Multifactor authentication (MFA) is **mandatory** when you log in to {{ecloud}} 
 You can no longer configure SMS as a multifactor authentication method. 
 ::::
 
-Elastic recommends that you enable multiple methods so that you can still access your account if you lose access to one method.
+::::{important} 
+
+Elastic strongly recommends that you enable multiple methods so that you can still access your account if you lose access to one method.
+
+::::
 
 If you use only a Google or Microsoft account to log in, then you can’t configure MFA in {{ecloud}}. You can check and manage your multifactor authentication options in your Google or Microsoft account security settings.
 
