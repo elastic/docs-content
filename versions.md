@@ -79,3 +79,4 @@ To access our previous documentation system, which contains the documentation fo
 - Elastic Cloud Enterprise — [other versions](https://www.elastic.co/guide/en/cloud-enterprise/index.html)
 - Elastic Cloud on Kubernetes — [other versions](https://www.elastic.co/guide/en/cloud-on-k8s/index.html)
 - Elastic Cloud Control — [other versions](https://www.elastic.co/guide/en/ecctl/index.html)
+
