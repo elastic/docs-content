@@ -3,8 +3,51 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
 products:
   - id: elasticsearch
+applies_to:
+  stack:
+  serverless:
 ---
+# Solutions and use cases [introduction]
 
+Let's take a closer look at each of our three solutions, their use cases and core concepts so you can decide which product best suits your business needs. 
+
+- Use [{{es}}](/solutions/search.md) if you want to build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights. 
+
+- Use [Elastic {{observability}}](/solutions/observability.md) if you want to monitor the health and performance of your IT environments and applications or send telemetry data. 
+
+- Use [{{elastic-sec}}](/solutions/security.md) if you want to leverage search and analytics to monitor data, detect anomalous activity, and protect against cyber threats in real time.
+
+You can also check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations are utilizing our products for their specific business needs.
+<!--TBD: Call out how solutions map to Serverless project types? -->
+<!-- Content moved from the-stack.md
+## Get data into Elasticsearch
+
+When building custom search experiences or indexing general data, you have several direct and flexible ingestion options:
+
+* **Native APIs and language clients:** Index any JSON document directly using the {{es}} REST API or the official clients for languages like Python, Java, Go, and more.  
+* **Web crawler:** Ingest content from public or private websites to make them searchable.  
+* **Enterprise connectors:** Use pre-built connectors to sync data from external content sources like SharePoint, Confluence, Jira, and databases like MongoDB or PostgreSQL into {{es}}.
+
+## Get data into Elastic Observability
+
+For full-stack observability, ingest logs, metrics, traces, and profiles using these OpenTelemetry-native methods:
+
+* **{{edot}}:** Use Elastic's supported OpenTelemetry SDKs for custom application instrumentation and the Collector for vendor-neutral infrastructure telemetry.  
+* **{{agent}}:** A single agent to collect infrastructure logs and metrics from hosts, containers, and cloud services using pre-built integrations.  
+* **APM Agents:** Provide streamlined, out-of-the-box auto-instrumentation of your applications to capture detailed traces and performance metrics.  
+* **{{ls}} and {{beats}}:** Leverage these battle-tested tools for advanced log processing pipelines (Logstash) and lightweight data shipping (Beats).
+
+## Get data into Elastic Security
+
+**{{agent}}** is the core ingestion method for security data. As a single, unified agent, it's purpose-built to collect the rich data needed for modern threat detection and response, including:
+
+* **Endpoint Security:** Collects detailed event data for threat prevention, detection (EDR), and response directly from your endpoints.  
+* **System & Audit Logs:** Gathers security-relevant logs and audit trails from hosts across your environment.  
+* **Network Activity:** Captures network data to help detect intrusions and suspicious behavior.
+
+Fleets of Elastic Agents are managed centrally, simplifying deployment and policy enforcement across thousands of hosts.
+-->
+<!-- Existing content from introduction.md
 # Use cases [introduction]
 $$$what-is-kib$$$
 $$$what-is-es$$$
@@ -58,3 +101,4 @@ $$$try-kibana$$$
 $$$_view_all_kib_has_to_offer$$$
 $$$_audit_access$$$
 $$$_secure_access$$$
+-->
