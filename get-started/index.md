@@ -33,3 +33,24 @@ Elastic offers three main solutions or types of projects:
 * [Elastic {{observability}}](/solutions/observability.md): Gain comprehensive visibility into applications, infrastructure, and user experience through logs, metrics, traces, and other telemetry data, all in a single interface.    
 * [{{elastic-sec}}](/solutions/security.md): Combine SIEM, endpoint security, and cloud security to provide comprehensive tools for threat detection and prevention, investigation, and response. 
 
+## Explore the fundamentals
+
+Continue your journey with these essential guides that will help you understand and work with Elastic:
+
+* **[Solutions and the Search AI platform](/get-started/the-stack.md)**: Dive deeper into how the Elastic Stack components work together, learn about data ingestion methods, and understand the core concepts of storing, visualizing, and querying your data.
+
+* **[Deployment options](/get-started/deployment-options.md)**: Explore the different ways you can deploy Elastic, from fully managed serverless solutions to self-managed installations, and choose the approach that best fits your operational needs.
+
+* **[Versioning and availability](/get-started/versioning-availability.md)**: Learn how Elastic handles versioning, understand feature availability across different deployment types, and navigate our continuously updated documentation with confidence.
+
+* **[How to use the documentation](/get-started/howto-use-the-docs.md)**: Discover how our documentation is organized, learn about training resources, find the right version information for your products, and understand how to contribute to our community.
+
+## Training resources 
+
+Whether you are just getting started with Elastic, an expert, or simply want to expand your knowledge, we provide role-based and solution-based training to empower you to get the most out of our solutions. You can even receive accreditation for completing our courses. 
+
+Ready to dive in? Check out [https://www.elastic.co/training](https://www.elastic.co/training) to browse our virtual and on-demand training courses. If you're not sure where to start, check out the [Elasticsearch Engineer](https://www.elastic.co/training/elasticsearch-engineer) course. 
+
+To explore particular, more granular facets of the Elastic Stack, check out our [demo gallery](https://www.elastic.co/demo-gallery). You can filter by solution or subject area and choose the training style that best suits you. 
+
+If you prefer a deep dive where you can learn at your own pace, check out our six-part [Beginner's Crash Course to Elastic Stack](https://www.youtube.com/playlist?list=PL_mJOmq4zsHZYAyK606y7wjQtC0aoE6Es) on YouTube.

@@ -1,4 +1,4 @@
-# Next steps & resources
+# How to use the documentation
 
 We've designed our docs to help you find the information you need quickly and efficiently, whether you're a new user or an experienced professional.
 
@@ -162,16 +162,6 @@ Find the documentation for your Elastic product versions or releases.
 | [Elastic APM Real User Monitoring JavaScript Agent](https://www.elastic.co/docs/release-notes/apm/agents/rum-js) | 5.0.0 and later |
 | [Elastic APM AWS Lambda extension](https://www.elastic.co/docs/release-notes/apm/aws-lambda/release-notes) | 1.0.0 and later |
 | [Elastic APM Attacher for Kubernetes](https://www.elastic.co/docs/reference/apm/k8s-attacher) | 1.1.3 |
-
-## Training resources 
-
-Whether you are just getting started with Elastic, an expert, or simply want to expand your knowledge, we provide role-based and solution-based training to empower you to get the most out of our solutions. You can even receive accreditation for completing our courses. 
-
-Ready to dive in? Check out [https://www.elastic.co/training](https://www.elastic.co/training) to browse our virtual and on-demand training courses. If you're not sure where to start, check out the [Elasticsearch Engineer](https://www.elastic.co/training/elasticsearch-engineer) course. 
-
-To explore particular, more granular facets of the Elastic Stack, check out our [demo gallery](https://www.elastic.co/demo-gallery). You can filter by solution or subject area and choose the training style that best suits you. 
-
-If you prefer a deep dive where you can learn at your own pace, check out our six-part [Beginner's Crash Course to Elastic Stack](https://www.youtube.com/playlist?list=PL_mJOmq4zsHZYAyK606y7wjQtC0aoE6Es) on YouTube. 
 
 ## Glossary 
 
