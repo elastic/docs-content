@@ -20,7 +20,9 @@ You can also [](/manage-data/lifecycle/index-lifecycle-management/policy-view-st
 
 ### Stop {{ilm-init}} 
 
-You can stop {{ilm}} to suspend management operations for all indices. For example, you might stop {{ilm}} when performing scheduled maintenance or making changes to the cluster that could impact the execution of {{ilm-init}} actions.
+By default, the {{ilm}} service is in the RUNNING state and manages all indices that have lifecycle policies.
+
+You can stop {{ilm-init}} to suspend management operations for all indices. For example, you might stop {{ilm}} when performing scheduled maintenance or making changes to the cluster that could impact the execution of {{ilm-init}} actions.
 
 ::::{important}
 When you stop {{ilm-init}}, [{{slm-init}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) operations are also suspended. No snapshots will be taken as scheduled until you restart {{ilm-init}}. In-progress snapshots are not affected.
