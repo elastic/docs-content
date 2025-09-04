@@ -661,6 +661,9 @@ toc:
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
           - file: monitor/autoops/ec-autoops-events.md
+            children:
+              - file: monitor/autoops/ec-autoops-event-settings.md
+              - file: monitor/autoops/ec-autoops-notifications-settings.md
           - file: monitor/autoops/views.md
             children:
               - file: monitor/autoops/ec-autoops-overview-view.md
@@ -669,9 +672,7 @@ toc:
               - file: monitor/autoops/ec-autoops-index-view.md
               - file: monitor/autoops/ec-autoops-shards-view.md
               - file: monitor/autoops/ec-autoops-template-optimizer.md
-          - file: monitor/autoops/ec-autoops-notifications-settings.md
-          - file: monitor/autoops/ec-autoops-event-settings.md
-          - file: monitor/autoops/ec-autoops-dismiss-event.md
+          - hidden: monitor/autoops/ec-autoops-dismiss-event.md
           - file: monitor/autoops/ec-autoops-regions.md
           - file: monitor/autoops/ec-autoops-faq.md
           - hidden: monitor/autoops/cc-autoops-as-cloud-connected.md

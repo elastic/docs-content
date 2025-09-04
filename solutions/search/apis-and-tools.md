@@ -20,7 +20,7 @@ This page is handy list of the most important APIs and tools you need to build, 
 | Endpoint | Function |
 |----------|----------|
 | [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-search) | Searches and aggregations written in [Query DSL](/explore-analyze/query-filter/languages/querydsl.md) and [retrievers](retrievers-overview.md) syntax |
-| [`_query`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-esql)| Endpoint for [{{esql}}](/explore-analyze/query-filter/languages/esql.md) queries |
+| [`_query`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-esql)| Endpoint for [{{esql}}](elasticsearch://reference/query-languages/esql.md) queries |
 | [`_explain`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-explain) | Provides detailed explanation of how a specific document matches a query with scoring breakdown |
 | [`_count`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-count) | Returns count of documents matching a query without retrieving results |
 | [`_validate/query`](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-validate-query) | Validates query syntax without executing the search |
