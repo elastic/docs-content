@@ -17,7 +17,7 @@ Here is a detailed breakdown of the documentation structure:
 
 ### Applicability badges
 
-Because Elastic products can be deployed in different ways (like on Elastic Cloud, in your own data center, or with our Serverless offering) and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
+Because Elastic products can be deployed in different ways (like on Elastic Cloud or in your own data center) and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
 
 These badges appear at the top of a page or section and tell you which products, deployment models, and versions the content applies to. They also indicate the maturity level of a feature, such as **beta**, **technical preview**, or **generally available (GA)**. This system ensures that you can identify content specific to your environment and version.
 
