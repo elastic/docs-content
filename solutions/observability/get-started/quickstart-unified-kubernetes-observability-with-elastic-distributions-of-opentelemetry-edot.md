@@ -131,7 +131,7 @@ After installation is complete and all relevant data is flowing into Elastic, th
 
 ### Work with Kubernetes logs
 
-You can search and analyze Kubernetes logs using Elastic’s Discover capability. Find **Discover** in the main menu or use the global search field.
+You can search and analyze Kubernetes logs using Elastic’s Discover capability. Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} /solutions/images/screenshot-observability-monitoring-k8s-kubernetes-logs-can-be-searched.png
 :alt: Kubernetes logs in Discover

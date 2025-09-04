@@ -77,7 +77,7 @@ You can also chat with AI Assistant from several particular pages in {{elastic-s
 * [Data Quality dashboard](/solutions/security/dashboards/data-quality-dashboard.md): Select the **Incompatible fields** tab, then click **Chat**. (This is only available for fields marked red, indicating they’re incompatible).
 
 ::::{note}
-Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the global search field to search for "AI Assistant for Security" or open the menu in the upper-right of the AI Assistant chat window.
+Each user’s chat history (up to the 99 most recent conversations) and custom Quick Prompts are automatically saved, so you can leave {{elastic-sec}} and return to a conversation later. Chat history appears to the left of the AI Assistant chat window, and on the **Conversations** tab of the **AI Assistant settings** menu. To access the settings menu, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to search for "AI Assistant for Security" or open the menu in the upper-right of the AI Assistant chat window.
 ::::
 
 ## Interact with AI Assistant [interact-with-assistant]
@@ -124,7 +124,7 @@ To adjust AI Assistant's settings from the chat window, click the **More** (thre
 
 The first three options (**AI Assistant settings**, **Knowledge Base**, and **Anonymization**) open the corresponding tabs of the **Security AI settings** page. The **Chat options** affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md), and content from Elastic's Security Labs and [product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
 
-The **Security AI settings** page provides a range of configuration options for AI Assistant. To access it directly, use the global search field to search for "AI Assistant for Security".
+The **Security AI settings** page provides a range of configuration options for AI Assistant. To access it directly, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to search for "AI Assistant for Security".
 
 It has the following tabs:
 

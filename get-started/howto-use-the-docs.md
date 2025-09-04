@@ -1,23 +1,19 @@
 # How to use the documentation
 
-We've designed our docs to help you find the information you need quickly and efficiently, whether you're a new user or an experienced professional.
-
-## Information architecture
-
 Our documentation is organized to guide you through your journey with Elastic, from learning the basics to deploying and managing complex solutions. 
 
 Here is a detailed breakdown of the documentation structure:
 
-* **Elastic fundamentals**: Understand the basics of Elasticsearch and the Elastic Stack, deployment options, and key use cases.  
-* **Solutions and use cases**: Learn use cases, evaluate, and implement Elastic's solutions: Observability, Search, and Security.  
-* **Manage data**: Learn about data store primitives, ingestion and enrichment, managing the data lifecycle, and migrating data.  
-* **Explore and analyze**: Get value from data through querying, visualization, machine learning, and alerting.  
-* **Deploy and manage**: Deploy and manage production-ready clusters. Covers deployment options and maintenance tasks.  
-* **Manage your Cloud account**: A dedicated section for user-facing cloud account tasks like resetting passwords.  
-* **Troubleshoot**: Identify and resolve problems.  
-* **Extend and contribute**: How to contribute to or integrate with Elastic, from open source to plugins to integrations.  
-* **Release notes**: Contains release notes and changelogs for each new release.  
-* **Reference**: Reference material for core tasks and manuals for optional products. 
+* [**Elastic fundamentals**](/get-started/index.md): Understand the basics of Elasticsearch and the Elastic Stack, deployment options, and key use cases.  
+* [**Solutions and use cases**](/solutions/index.md): Learn use cases, evaluate, and implement Elastic's solutions: Observability, Search, and Security.  
+* [**Manage data**](/manage-data/index.md): Learn about data store primitives, ingestion and enrichment, managing the data lifecycle, and migrating data.  
+* [**Explore and analyze**](/explore-analyze/index.md): Get value from data through querying, visualization, machine learning, and alerting.  
+* [**Deploy and manage**](/deploy-manage/index.md): Deploy and manage production-ready clusters. Covers deployment options and maintenance tasks.  
+* [**Manage your Cloud account**](/cloud-account/index.md): A dedicated section for user-facing cloud account tasks like resetting passwords.  
+* [**Troubleshoot**](/troubleshoot/index.md): Identify and resolve problems.  
+* [**Extend and contribute**](/extend/index.md): How to contribute to or integrate with Elastic, from open source to plugins to integrations.  
+* [**Release notes**](/release-notes/index.md): Contains release notes and changelogs for each new release.  
+* [**Reference**](/reference/index.md): Reference material for core tasks and manuals for optional products. 
 
 ### Applicability badges
 

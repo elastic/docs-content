@@ -107,7 +107,7 @@ The alert cleanup task permanently deletes alerts in your `.alert-*` indices. Ma
 
 Remove old or rarely-accessed alerts in your space by running an alert cleanup task, which deletes alerts according to the criteria that you define. Alerts that are attached to cases are not deleted. 
 
-1. Open the **Rules** page by going to **Stack Management > Alerts and Insights > Rules** in the main menu or using the global search field.
+1. Open the **Rules** page by going to **Stack Management > Alerts and Insights > Rules** in the main menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Settings** to open the settings for all rules in the space.
 3. In the **Clean up alert history** section, click **Clean up**.
 4. Define criteria for the alert cleanup task. You can choose to delete alerts that are active or inactive and meet a certain age.

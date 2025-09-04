@@ -30,9 +30,9 @@ Continue reading to learn how these components work together.
 
 ### Ingest data from a wide variety of sources
 
-**Ingestion** is the process of collecting data from your sources and sending it to {{es}}. The Elastic platform is engineered for flexibility, designed to ingest data from a wide variety of sources. 
+**Ingestion** is the process of collecting data from your sources and sending it to {{es}}. The Elastic platform is engineered for flexibility, designed to ingest data from a wide variety of sources.
 
-#### Elasticsearch
+#### Get data into Elasticsearch
 
 When building custom search experiences or indexing general data, you have several direct and flexible ingestion options:
 
@@ -40,7 +40,7 @@ When building custom search experiences or indexing general data, you have sever
 * **Web crawler:** Ingest content from public or private websites to make them searchable.  
 * **Enterprise connectors:** Use pre-built connectors to sync data from external content sources like SharePoint, Confluence, Jira, and databases like MongoDB or PostgreSQL into {{es}}.
 
-#### Elastic Observability
+#### Get data into Elastic Observability
 
 For full-stack observability, ingest logs, metrics, traces, and profiles using these OpenTelemetry-native methods:
 
@@ -49,7 +49,7 @@ For full-stack observability, ingest logs, metrics, traces, and profiles using t
 * **APM Agents:** Provide streamlined, out-of-the-box auto-instrumentation of your applications to capture detailed traces and performance metrics.  
 * **{{ls}} and {{beats}}:** Leverage these battle-tested tools for advanced log processing pipelines (Logstash) and lightweight data shipping (Beats).
 
-#### Elastic Security
+#### Get data into Elastic Security
 
 **{{agent}}** is the core ingestion method for security data. As a single, unified agent, it's purpose-built to collect the rich data needed for modern threat detection and response, including:
 
@@ -65,7 +65,7 @@ Fleets of Elastic Agents are managed centrally, simplifying deployment and polic
 
 Elasticsearch is built to be a resilient and scalable distributed system. It runs as a **cluster** of one or more servers, called **nodes**. When you add data to an index, it's divided into pieces called **shards**, which are spread across the various nodes in the cluster. This architecture allows Elasticsearch to handle large volumes of data and ensures that your data remains available even if a node fails.
 
-Learn more in [The {{es}} data store](/manage-data/data-store.md)
+Learn more in [The {{es}} data store](/manage-data/data-store.md).
 
 ### Visualize and query your data [kibana-navigation-search]
 
@@ -82,14 +82,17 @@ At the same time, Kibana works as the user interface of all Elastic solutions, l
 
 A **query** is a question you ask about your data, and Elastic provides several powerful languages to do so. You can query data directly through the API or through the user interface in Kibana.
 
-* **Kibana Query Language (KQL)** is the text-based language used in the **Discover** search bar, perfect for interactive filtering and exploration.  
+* **Query DSL** is a full-featured JSON-style query language that enables complex searching, filtering, and aggregations. It is the original and most powerful query language for Elasticsearch today.
 * **Elasticsearch Query Language (ES|QL)** is a powerful, modern query language that uses a familiar pipe-based syntax to transform and aggregate your data at search time.  
 * **Event Query Language (EQL)** is a specialized language designed to query sequences of events, which is particularly useful for security analytics and threat hunting.
+* **Kibana Query Language (KQL)** is the text-based language used in the **Discover** search bar, perfect for interactive filtering and exploration.  
 
-Learn more in [](/explore-analyze/index.md) 
+Learn more in [](/explore-analyze/index.md).
 
 ### Use the APIs to automate operations and management
 
 Nearly every aspect of Elasticsearch can be configured and managed programmatically through its extensive REST APIs. This allows you to automate repetitive tasks and integrate Elastic management into your existing operational workflows. You can use the APIs to manage indices, update cluster settings, run complex queries, and configure security. 
 
 The **Console** tool in Kibana provides an interactive way to send requests directly to the Elasticsearch API and view the responses. For secure, automated access, you can create and manage **API keys** to authenticate your scripts and applications. This API-first approach is fundamental to enabling infrastructure-as-code practices and managing your deployments at scale.
+
+Learn more in [Elastic APIs](https://www.elastic.co/docs/api).
