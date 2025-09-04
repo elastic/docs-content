@@ -87,7 +87,7 @@ A **query** is a question you ask about your data, and Elastic provides several 
 * **Elasticsearch Query Language (ES|QL)** is a powerful, modern query language that uses a familiar pipe-based syntax to transform and aggregate your data at search time.  
 * **Event Query Language (EQL)** is a specialized language designed to query sequences of events, which is particularly useful for security analytics and threat hunting.
 
-Learn more in [Explore and analyze data with Kibana](/explore-analyze/index.md) 
+Learn more in [](/explore-analyze/index.md) 
 
 ### Use the APIs to automate operations and management
 
