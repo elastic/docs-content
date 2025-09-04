@@ -85,7 +85,7 @@ To automatically back up your indices and manage snapshots, use [snapshot lifecy
 
 In case you want to temporarily pause the {{ilm-init}} service while you perform maintenance, make other changes to your cluster, or do any troubleshooting, refer to [Start and stop {{ilm-init}}](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md).
 
-In the event of any issues running {{ilm-init}}, refer to [Fix index lifecycle management errors](/troubleshoot/elasticsearchindex-lifecycle-management-errors.md) for detailed troubleshooting guidance. 
+In the event of any issues running {{ilm-init}}, refer to [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md) for detailed troubleshooting guidance. 
 
 ## Migrate to {{ilm-init}}
 
