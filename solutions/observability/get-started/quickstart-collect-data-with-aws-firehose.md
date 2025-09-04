@@ -78,7 +78,7 @@ Data collection with AWS Firehose is supported on {{ech}} deployments in AWS, Az
 :sync: stack
 
 * An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
-* A user with the `superuser` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
+* A user with the `superuser` [built-in role](elasticsearch://reference/elasticsearch/roles.md) or the privileges required to onboard data.
 
     ::::{dropdown} Expand to view required privileges
     * [**Cluster**](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster): `['monitor', 'manage_own_api_key']`
