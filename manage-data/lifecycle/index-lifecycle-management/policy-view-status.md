@@ -15,7 +15,7 @@ For any existing managed index or data stream in your cluster, you can access th
 You can view the lifecycle status of an index or data stream in {{kib}} or using the {{es}} API.
 
 :::{tip}
-If you're investigating an {{ilm-init}}-related problem, you can also refer to [Troubleshoot index and snapshot lifecycle management](/troubleshoot/elasticsearch/start-ilm.md) and [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md) in the {{es}} chapter of the **Troubleshoot** section.
+If you're investigating an {{ilm-init}}-related problem, refer to [Troubleshoot index and snapshot lifecycle management](/troubleshoot/elasticsearch/start-ilm.md) and [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md) in the {{es}} chapter of the **Troubleshoot** section.
 :::
 
 :::::{tab-set}
