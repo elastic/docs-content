@@ -17,7 +17,7 @@ products:
 * This tutorial predates the [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) and the [`semantic_text` field type](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md). Today there are simpler, higher-level options for semantic search than the ones outlined in this tutorial. The semantic text workflow is the recommended way to perform semantic search for most use cases.
 ::::
 
-**This guide shows how to implement semantic search in {es} with deployed NLP models; from selecting a model, to configuring ingest pipelines, to running queries.**
+**This guide shows how to implement semantic search in {{es}} with deployed NLP models: from selecting a model, to configuring ingest pipelines, to running queries.**
 
 ## Select an NLP model [deployed-select-nlp-model]
 
@@ -27,7 +27,7 @@ While bringing your own text embedding model is possible, achieving strong resul
 
 To lower the barrier, Elastic provides [**Elastic Learned Sparse EncodeR (ELSER)**](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md), a pre-trained sparse vector model (English-only) that delivers strong out-of-the-box relevance without fine-tuning. This adaptability makes it suitable for various NLP use cases out of the box. Unless you have an ML team, we recommend starting with ELSER.
 
-Sparse vectors are mostly zeros with a small number of non-zero values. This representation is commonly used for textual data. With ELSER, both documents and queries are represented as high-dimensional sparse vectors. Each non-zero element of the vector corresponds to a term in the model vocabulary. The ELSER vocabulary contains around 30000 terms, so the sparse vectors created by ELSER contain about 30000 values, the majority of which are zero. Effectively the ELSER model is replacing the terms in the original query with other terms that have been learnt to exist in the documents that best match the original search terms in a training dataset, and weights to control how important each is.
+Sparse vectors are mostly zeros with a small number of non-zero values. This representation is commonly used for textual data. With ELSER, both documents and queries are represented as high-dimensional sparse vectors. Each non-zero element of the vector corresponds to a term in the model vocabulary. The ELSER vocabulary contains around 30000 terms, so the sparse vectors created by ELSER contain about 30000 values, the majority of which are zero. The ELSER model replaces the terms in the original query with other terms learned from the training dataset that appear in documents matching the original search terms, and assigns weights to control their importance.
 
 ## Deploy the model in {{es}} [deployed-deploy-nlp-model]
 
