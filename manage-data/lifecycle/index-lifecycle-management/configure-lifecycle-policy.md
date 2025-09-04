@@ -18,7 +18,7 @@ This page is specifically about using {{ilm-init}} with indices or data streams.
 
 **Consider these aspects when configuring an {{ilm-init}} policy:**
 
-* For {{ilm-init}} to manage an index or data stream, you need to specify a valid policy in the `index.lifecycle.name` index setting.
+* To manage an index or data stream with {{ilm-init}}, you need to specify a valid policy in the `index.lifecycle.name` index setting.
 
 * To configure a lifecycle policy for [rolling indices](rollover.md) or data streams, you create the policy and add it to the [index template](../../data-store/templates.md). Data streams are generally recommended in favor of rolling indices due to the lesser amount of manual configuration required. When you use {{ilm-init}} with rolling indices, you must, additionally, create an initial managed index (ensuring that it is named appropriately) and assign an alias to it. This additional process is described in [Step 3](#create-initial-index) on this page.
 
