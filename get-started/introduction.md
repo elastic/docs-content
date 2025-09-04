@@ -9,7 +9,7 @@ applies_to:
 ---
 # Solutions and use cases [introduction]
 
-Let's take a closer look at each of our three solutions, their use cases and core concepts so you can decide which product best suits your business needs. 
+Let's take a closer look at each of our three solutions, their use cases and core concepts so you can decide which product best suits your business needs.
 
 - Use [{{es}}](/solutions/search.md) if you want to build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights. 
 
@@ -49,8 +49,6 @@ Fleets of Elastic Agents are managed centrally, simplifying deployment and polic
 -->
 <!-- Existing content from introduction.md
 # Use cases [introduction]
-$$$what-is-kib$$$
-$$$what-is-es$$$
 
 The {{stack}} is used for a wide and growing range of use cases. Here are a few examples:
 
@@ -84,9 +82,10 @@ The {{stack}} is used for a wide and growing range of use cases. Here are a few 
 [**Get started with {{elastic-sec}} →**](../solutions/security/get-started.md)
 
 This is just a sample of search, observability, and security use cases enabled by {{ecloud}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
-
+-->
 % TODO: cleanup these links, consolidate with Explore and analyze
-
+$$$what-is-kib$$$
+$$$what-is-es$$$
 $$$visualize-and-analyze$$$
 $$$extend-your-use-case$$$
 $$$_manage_your_data$$$
@@ -101,4 +100,3 @@ $$$try-kibana$$$
 $$$_view_all_kib_has_to_offer$$$
 $$$_audit_access$$$
 $$$_secure_access$$$
--->
