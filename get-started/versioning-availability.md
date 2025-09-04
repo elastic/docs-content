@@ -41,9 +41,11 @@ Features available to you can differ based on deployment type, product lifecycle
 
 | Lifecycle state | Description |
 | ----- | ----- |
-| Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
-| Beta | Feature is nearing general availability but not yet production-ready |
 | Technical preview | Feature is in early development stage |
+| Beta | Feature is nearing general availability but not yet production-ready |
+| Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
+| Deprecated | Feature is still usable but is set to be removed or replaced in a future update |
+| Removed | Feature can no longer be used |
 | Unavailable | Feature is not supported in this deployment type or version |
 
 ### Examples of where availability can vary
