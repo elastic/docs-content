@@ -43,8 +43,6 @@ Continue your journey with these essential guides that will help you understand 
 
 * **[Versioning and availability](/get-started/versioning-availability.md)**: Learn how Elastic handles versioning, understand feature availability across different deployment types, and navigate our continuously updated documentation with confidence.
 
-* **[How to use the documentation](/get-started/howto-use-the-docs.md)**: Discover how our documentation is organized, learn about training resources, find the right version information for your products, and understand how to contribute to our community.
-
 ## Training resources 
 
 Whether you are just getting started with Elastic, an expert, or simply want to expand your knowledge, we provide role-based and solution-based training to empower you to get the most out of our solutions. You can even receive accreditation for completing our courses. 
@@ -54,3 +52,7 @@ Ready to dive in? Check out [https://www.elastic.co/training](https://www.elasti
 To explore particular, more granular facets of the Elastic Stack, check out our [demo gallery](https://www.elastic.co/demo-gallery). You can filter by solution or subject area and choose the training style that best suits you. 
 
 If you prefer a deep dive where you can learn at your own pace, check out our six-part [Beginner's Crash Course to Elastic Stack](https://www.youtube.com/playlist?list=PL_mJOmq4zsHZYAyK606y7wjQtC0aoE6Es) on YouTube.
+
+:::{tip}
+Read **[How to use the documentation](/get-started/howto-use-the-docs.md)** to discover how our documentation is organized, lfind the right version information for your products, and understand how to contribute to our community.
+:::

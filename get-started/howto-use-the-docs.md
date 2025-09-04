@@ -15,13 +15,13 @@ Here is a detailed breakdown of the documentation structure:
 * [**Release notes**](/release-notes/index.md): Contains release notes and changelogs for each new release.  
 * [**Reference**](/reference/index.md): Reference material for core tasks and manuals for optional products. 
 
-### Applicability badges
+## Applicability badges
 
 Because Elastic products can be deployed in different ways (like on Elastic Cloud, in your own data center, or with our Serverless offering) and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
 
 These badges appear at the top of a page or section and tell you which products, deployment models, and versions the content applies to. They also indicate the maturity level of a feature, such as **beta**, **technical preview**, or **generally available (GA)**. This system ensures that you can identify content specific to your environment and version.
 
-### Page options
+## Page options
 
 On each documentation page, you'll find several links that allow you to interact with the content:
 
@@ -29,11 +29,7 @@ On each documentation page, you'll find several links that allow you to interact
 * **Edit this page**: Selecting this link will take you directly to the page's source file in our GitHub repository. From there, you can propose edits, which our team will review.  
 * **Report an issue**: If you've found a problem, like a typo, a technical error, or confusing content, but don't want to edit the page yourself, use this link. It will open a new issue in our GitHub repository, pre-filled with information about the page you were on, so you can describe the problem in detail.
 
-### How to contribute
-
-We value contributions from our community. For detailed instructions on how to contribute to both the main documentation and the API references, refer to our [contribution guide](https://www.elastic.co/docs/extend/contribute/).
-
-### Versioned documentation
+## Versioned documentation
 
 Starting with Elastic Stack 9.0, Elastic no longer publishes separate documentation sets for each minor release. Instead, all changes in the 9.x series are included in a single, continuously updated documentation set.
 
@@ -45,7 +41,7 @@ This approach helps:
 
 We clearly mark content added or changed in a specific version using availability badges. The availability badges appear in page headers, section headers, and inline.
 
-#### Elastic Stack example
+### Elastic Stack example
 
 {applies_to}`stack: ga 9.1.0`
 
@@ -55,7 +51,7 @@ This means the feature is:
 * Generally Available (GA)  
 * Introduced in version 9.1.0
 
-#### Serverless example
+### Serverless example
 
 {applies_to}`serverless: ga` {applies_to}`security: beta`
 
@@ -64,7 +60,7 @@ This means the feature is:
 * Generally Available for Elasticsearch Serverless projects  
 * Beta for Elastic Security Serverless projects
 
-#### Elastic Cloud Enterprise example
+### Elastic Cloud Enterprise example
 
 {applies_to}`ece: deprecated 4.1.0`
 
@@ -77,18 +73,18 @@ This means the feature is:
 Want to learn more about how availability badges are used? Check the [Elastic Docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/).
 :::
 
-### Accessing previous versions
+## Accessing previous versions
 
 You can browse documentation for different versions of our products in two ways:
 
 * **Version menu:** On most documentation pages, you'll find a version menu. Clicking this menu allows you to switch to a different version of the documentation for the content you are currently viewing.  
 * **All documentation versions page:** For a complete list of all available documentation versions for all Elastic products, you can visit the [All documentation versions](/versions.md) page.
 
-### Find docs for your product version
+## Find docs for your product version
 
 Find the documentation for your Elastic product versions or releases.
 
-#### Elastic Stack product versions
+### Elastic Stack product versions
 
 | Product | Version |
 | ----- | ----- |
@@ -101,7 +97,7 @@ Find the documentation for your Elastic product versions or releases.
 | [Elastic APM](https://www.elastic.co/docs/release-notes/apm) | 9.0.0 and later |
 | [Elastic Security](https://www.elastic.co/docs/release-notes/security) | 9.0.0 and later |
 
-#### Deployment type versions or releases
+### Deployment type versions or releases
 
 | Product | Version or release |
 | ----- | ----- |
@@ -110,7 +106,7 @@ Find the documentation for your Elastic product versions or releases.
 | [Elastic Cloud Enterprise](https://www.elastic.co/docs/release-notes/cloud-enterprise) | 4.0.0 and later |
 | [Elastic Cloud on Kubernetes](https://www.elastic.co/docs/release-notes/cloud-on-k8s) | 3.0.0 and later |
 
-#### Schema, library, and tool versions
+### Schema, library, and tool versions
 
 | Product | Version or release |
 | ----- | ----- |
@@ -137,7 +133,7 @@ Find the documentation for your Elastic product versions or releases.
 | [Elastic integrations](https://www.elastic.co/docs/reference/integrations/all_integrations) | All versions |
 | [Search UI JavaScript library](https://www.elastic.co/docs/reference/search-ui) | 1.24.0 and later |
 
-#### APM agent and tool versions
+### APM agent and tool versions
 
 | Product | Version |
 | ----- | ----- |
@@ -162,3 +158,7 @@ Find the documentation for your Elastic product versions or releases.
 ## Glossary 
 
 To help you understand the terminology used throughout our documentation, we provide a [glossary of common Elastic terms](/reference/glossary/index.md). This is a great resource for new users or anyone looking to clarify the meaning of a specific term.
+
+## How to contribute
+
+We value contributions from our community. For detailed instructions on how to contribute to both the main documentation and the API references, refer to our [contribution guide](https://www.elastic.co/docs/extend/contribute/).

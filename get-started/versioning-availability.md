@@ -13,7 +13,7 @@ Learn how Elastic products are versioned, the lifecycle of features, and how to 
 
 ## Understanding versioning
 
-Each deployment type has a unique versioning strategy. For example, Serverless and ECH have releases that are distinguished by their date. Because Serverless is automatically updated, you always have the latest updates.
+Most Elastic products, like {{es}} or {{kib}}, share the same versioning pattern, based on the {{stack}}. Orchestrators such as {{ece}} and {{eck}}, and other tools such as code clients and SDKs, are versioned independently of the Elastic Stack. The {{ecloud}} console and {{serverless-short}} projects are always automatically updated with the latest changes.
 
 The Elastic Stack products use semantic versioning in the `X.Y.Z` format, such as `9.0.0`.
 
