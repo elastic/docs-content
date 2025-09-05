@@ -95,8 +95,7 @@ After you create your private connection policy, you can [edit](#edit-private-co
     2. After creating the private DNS zone, associate the zone with your VNet by creating a [virtual network link](https://learn.microsoft.com/en-us/azure/dns/private-dns-getstarted-portal).
     3. Create a DNS A record pointing to the private endpoint, with the following information:
 
-        * **Name**: 
-          If you have [blank], then the name should match the Elasticsearch cluster ID of your deployment.
+        * **Name**: The Elasticsearch cluster ID of the deployment that you plan to access over private link.
 
           :::{dropdown} Find your cluster ID
           1. On the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page, find your deployment and select **Manage**. 
@@ -104,7 +103,9 @@ After you create your private connection policy, you can [edit](#edit-private-co
           3. Beside the **Elasticsearch** application, click **Copy cluster ID**.
           :::
 
-          If you [blank], then you can use `*` as the record name.             
+          If you plan to use only one private link in this DNS zone, then you can use a wildcard `*` as the record name.
+
+          If you plan to access multiple deployments using the same private link and don't use a wildcard as the record name, then you need to create a DNS A record for each deployment.             
           
         * **Type**: `A`
         * **Value**: The private endpoint IP address.
