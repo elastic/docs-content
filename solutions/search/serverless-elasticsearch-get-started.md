@@ -44,15 +44,10 @@ On this page, you will learn how to:
 Use your {{ecloud}} account to create a fully-managed {{es}} project:
 
 1. Navigate to [cloud.elastic.co](https://cloud.elastic.co?page=docs&placement=docs-body) and create a new account or log in to your existing account.
-2. Within **Serverless Projects**, choose **Create project**.
-3. Choose the {{es}} project type.
-4. Select a **configuration** for your project, based on your use case.
-
-    * **General purpose**: For general search use cases across various data types.
-    * **Optimized for Vectors**: For search use cases using vectors and near real-time retrieval.
-
-5. Provide a name for the project and optionally edit the project settings, such as the cloud platform [region](../../deploy-manage/deploy/elastic-cloud/regions.md). Select **Create project** to continue.
-6. Once the project is ready, select **Continue**.
+1. Within **Serverless Projects**, choose **Create project**.
+1. Choose the {{es}} project type.
+1. Provide a name for the project and optionally edit the project settings, such as the cloud platform [region](../../deploy-manage/deploy/elastic-cloud/regions.md). Select **Create project** to continue.
+1. Once the project is ready, select **Continue**.
 
 ::::{tip}
 Learn how billing works for your project in [Elasticsearch billing dimensions](../../deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
