@@ -22,15 +22,17 @@ To achieve that, it supports:
 
 A data stream lifecycle also supports downsampling the data stream backing indices. See [the downsampling example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) for more details.
 
-## Availability
+## Data stream lifecycle availability
 
-Note the availability of data stream lifecycle to ensure that it's applicable for your use case:
+Note the availability of data stream lifecycle to ensure that it's applicable for your use case.
 
-* Data stream lifecycle is supported only for data streams and cannot be used with standalone indices.
+* Data stream lifecycle is supported only for data streams and cannot be used with indices.
 
-* Like [{{ilm-cap}} ({{ilm-init}})](/manage-data/lifecycle/index-lifecycle-management.md), data stream lifecycle is supported in both {{ecloud}} and self-managed environments. Data stream lifecycle is less feature rich than {{ilm-init}} and is focused on simplicity. For a detailed comparison refer to [Data lifecycle](/manage-data/lifecycle.md).
+* Data stream lifecycle is supported for all deployment types on the versioned {{stack}} as well as for an {{es-serverless}} environment. Compared with {{ilm-init}}, which is not available for {{serverless-short}}, data stream lifecycle is focused on simplicity, optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored. For a detailed comparison of {{ilm-init}} and data stream lifecycle refer to [Data lifecycle](/manage-data/lifecycle.md).
 
+<!--
 * Owing to its simplicity compared with {{ilm-init}}, data stream lifecycle is the data lifecycle tool used with {{es-serverless}}. For an {{ecloud}} or self-managed environment, {{ilm-init}} helps you to balance hardware costs with performance for your data, but this complexity isn't required in a {{serverless-short}} environment in which your cluster performance is managed automatically.
+-->
 
 ## How does it work? [data-streams-lifecycle-how-it-works]
 
