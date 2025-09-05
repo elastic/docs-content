@@ -24,7 +24,7 @@ To follow the steps, you must have a recent version of a Python interpreter.
 
 ::::{step} Create a project
 
-Create an [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md) general purpose project.
+Create an [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md) project.
 To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
 To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
