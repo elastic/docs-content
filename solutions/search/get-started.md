@@ -30,6 +30,11 @@ For simplicity and speed, try out [{{es-serverless}}](/solutions/search/serverle
 ::::{dropdown} Create an {{es-serverless}} project
 :::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
 :::
+
+Choose the {{es}} project type and provide a name.
+You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
+
+When your project is created, you're ready to start creating indices, adding data, and performing searches.
 ::::
 
 Alternatively, create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:
