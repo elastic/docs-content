@@ -51,9 +51,6 @@ In an {{ecloud}} or self-managed environment, ILM lets you automatically transit
 **[Read more in {{ilm-cap}} ->](/manage-data/lifecycle/index-lifecycle-management.md)**
 
 ## Data stream lifecycle [data-stream-lifecycle]
-```{applies_to}
-serverless: ga
-```
 
 **Data stream lifecycle** is less feature rich but is focused on simplicity. It allows you to do the following:
 
