@@ -15,12 +15,12 @@ _Last updated: 4 September 2025_
 This page summarizes internal test results comparing large language models (LLMs) across {{obs-ai-assistant}} use cases. To learn more about these use cases, refer to [AI Assistant](/solutions/observability/observability-ai-assistant.md).
 
 ::::{important}
-Rating legend
+Rating legend:
 
-**Excellent** – Highly accurate and reliable for the use case.<br>
-**Great** – Strong performance with minor limitations.<br>
-**Good** – Possibly adequate for many use cases but with noticeable tradeoffs.<br>
-**Poor** – Significant issues; not recommended for production for the use case.
+**Excellent:** Highly accurate and reliable for the use case.<br>
+**Great:** Strong performance with minor limitations.<br>
+**Good:** Possibly adequate for many use cases but with noticeable tradeoffs.<br>
+**Poor:** Significant issues; not recommended for production for the use case.
 
 Recommended models are those rated **Excellent** or **Great** for the particular use case.
 ::::
