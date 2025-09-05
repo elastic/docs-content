@@ -307,7 +307,7 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/2396
   'solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
   'solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos.md'
-  
+
   # https://github.com/elastic/docs-content/pull/2658
   'explore-analyze/query-filter/languages/esql.md': 'elasticsearch://reference/query-languages/esql.md'
   'explore-analyze/query-filter/languages/esql-examples.md': 'elasticsearch://reference/query-languages/esql/esql-examples.md'
@@ -324,7 +324,7 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2639
   'deploy-manage/monitor/autoops/ec-autoops-dismiss-event.md': 'deploy-manage/monitor/autoops/ec-autoops-events.md'
-  
+
 # Related to https://github.com/elastic/docs-content/pull/2245/
   'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
 
@@ -336,3 +336,8 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2745
   'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'
+
+  'release-notes/fleet-elastic-agent/index.md': 'fleet-server://release-notes/index.md'
+  'release-notes/fleet-elastic-agent/breaking-changes.md': 'fleet-server://release-notes/breaking-changes.md'
+  'release-notes/fleet-elastic-agent/deprecations.md': 'fleet-server://release-notes/deprecations.md'
+  'release-notes/fleet-elastic-agent/known-issues.md': 'fleet-server://release-notes/known-issues.md'

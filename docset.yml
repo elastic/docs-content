@@ -40,6 +40,7 @@ cross_links:
   - ecs-logging-python
   - ecs-logging-ruby
   - eland
+  - elastic-agent
   - elastic-serverless-forwarder
   - elastic-otel-dotnet
   - elastic-otel-java
@@ -55,6 +56,7 @@ cross_links:
   - elasticsearch-py
   - elasticsearch-rs
   - elasticsearch-ruby
+  - fleet-server
   - go-elasticsearch
   - integration-docs
   - integrations
