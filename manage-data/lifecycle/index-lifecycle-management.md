@@ -7,35 +7,42 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-configure-index-management.html
 applies_to:
   stack: ga
+  serverless: unavailable
 products:
   - id: elasticsearch
 ---
 
 # Index lifecycle management
 
-{{ilm-cap}} ({{ilm-init}}) provides an integrated and streamlined way to manage time-based data such as logs and metrics, making it easier to follow best practices for managing your indices.
-
-You can configure {{ilm-init}} policies to automatically manage indices according to your performance, resiliency, and retention requirements. For example, you could use {{ilm-init}} to:
+{{ilm-cap}} ({{ilm-init}}) provides an integrated and streamlined way to manage your time series data. You can configure {{ilm-init}} policies to automatically manage indices according to your performance, resiliency, and retention requirements. For example, you could use {{ilm-init}} to:
 
 * Spin up a new index when an index reaches a certain size or number of documents
 * Create a new index each day, week, or month and archive previous ones
 * Delete stale indices to enforce data retention standards
 
-::::{tip}
-{{ilm-init}} is not available on {{es-serverless}}.
+## {{ilm-init}} availability
 
-:::{dropdown} Why?
-In an {{ecloud}} or self-managed environment, ILM lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{es-serverless}} eliminates this complexity by optimizing your cluster performance for you.
+Note the availability of {{ilm-init}} to ensure that it's applicable for your use case.
 
-Data stream lifecycle is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary hardware-centric concepts like data tiers.
-:::
-::::
+* You can use {{ilm-init}} to manage indices and data streams:
 
-::::{important}
-To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
-::::
+    * **Indices:** You use {{ilm-init}} to manage a specific index or set of indices by defining a lifecycle policy and applying it to the indices or an index alias. Each index is then evaluated against its policy and transitions through phases (`hot`, `warm`, `cold`, `frozen`, `delete`) based on pre-defined conditions. This approach allows for more granular control over each index but requires considerably more effort compared to using a data stream, which is our recommended option.
 
-## Actions
+    * **Data streams:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
+
+* {{ilm-init}} is available for all deployment types on the versioned {{stack}} but is not available for {{es-serverless}}. In a {{serverless-short}} environment, data stream lifecycle (see the following tip) is available as a data lifecycle option.
+
+    :::{tip}
+    {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{es-serverless}} eliminates this complexity by optimizing your cluster performance for you. In a {{serverless-short}} environment, data stream lifecycle is available as a data management option.
+
+    {applies_to}`stack: ga` {applies_to}`serverless: ga` [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers. For a detailed comparison of {{ilm-init}} and data stream lifecycle refer to [Data lifecycle](/manage-data/lifecycle.md).
+    :::
+
+    ::::{important}
+    To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
+    ::::
+
+## Index lifecycle actions
 
 {{ilm-init}} policies can trigger actions like:
 
