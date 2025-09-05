@@ -47,7 +47,7 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Great | Great | Excellent |
-| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Good | Great | Excellent | Excellent | Good | Great | Excellent |
+| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Good | Great | Excellent | Excellent | Poor | Great | Excellent |
 
 ::::{note}
 `Llama 3.3` is currently supported with simulated function calling.
