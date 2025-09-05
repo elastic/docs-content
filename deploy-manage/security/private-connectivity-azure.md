@@ -103,7 +103,7 @@ After you create your private connection policy, you can [edit](#edit-private-co
           3. Beside the **Elasticsearch** application, click **Copy cluster ID**.
           :::
 
-          If you plan to use only one private link in this DNS zone, then you can use a wildcard `*` as the record name.
+          If you plan to use only one private endpoint in this DNS zone, then you can use a wildcard `*` as the record name.
 
           If you plan to access multiple deployments using the same private link and don't use a wildcard as the record name, then you need to create a DNS A record for each deployment.             
           
