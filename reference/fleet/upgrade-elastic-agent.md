@@ -80,7 +80,9 @@ With the right [subscription level](https://www.elastic.co/subscriptions), you c
 
 3. In the Upgrade agent window, select or specify an upgrade version and click **Upgrade agent**.
 
-    In certain cases the latest available {{agent}} version may not be recognized by {{kib}}. For instance, this occurs when the {{kib}} version is lower than the {{agent}} version. You can specify a custom version for {{agent}} to upgrade to by entering the version into the **Upgrade version** text field.
+    {{kib}} provides a list of available {{agent}} versions for upgrade. A version number ending with a build identifier `+build{yyyymmddhhmm}` indicates an [Independent Agent Release version](./fleet-agent-release.md#independent-agent-release).
+
+    In certain cases, the latest available {{agent}} version may not be recognized by {{kib}}. For instance, this occurs when the {{kib}} version is lower than the {{agent}} version. You can specify a custom version for {{agent}} to upgrade to by entering the version into the **Upgrade version** text field.
 
     :::{image} images/upgrade-agent-custom.png
     :alt: Menu for upgrading a single {{agent}}
