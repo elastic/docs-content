@@ -13,6 +13,7 @@ toc:
           - file: data-store/data-streams/manage-data-stream.md
           - file: data-store/data-streams/time-series-data-stream-tsds.md
             children:
+              - file: data-store/data-streams/quickstart-tsds.md
               - file: data-store/data-streams/set-up-tsds.md
               - file: data-store/data-streams/downsampling-time-series-data-stream.md
               - file: data-store/data-streams/run-downsampling-with-ilm.md
