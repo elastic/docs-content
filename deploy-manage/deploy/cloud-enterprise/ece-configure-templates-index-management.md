@@ -37,16 +37,11 @@ Index curation (Curator) {applies_to}`stack: deprecated 6.7`
 
 To configure {{ilm}} as part of your deployment template:
 
-1. On the **Index Management** page, select the **{{ilm}}** index curation method.
+On the **Index Management** page, under **{{ilm}} ({{ilm-init}})**, specify the node attributes for your data configurations. 
 
-2. To configure {{ilm-init}}, specify the node attributes for your data configurations. 
+Node attributes are simple key-value pairs, such as `node_type: hot`, `node_type: warm`, and `node_type: cold`. These node attributes add defining metadata attributes to each data configuration in your template that tell your users what they can be used for. What you define here should help guide your users when they set up their index lifecycle management policy in {{kib}}, such as a hot-warm policy.
 
-   Node attributes are simple key-value pairs, such as `node_type: hot`, `node_type: warm`, and `node_type: cold`. These node attributes add defining metadata attributes to each data configuration in your template that tell your users what they can be used for. What you define here should help guide your users when they set up their index lifecycle management policy in {{kib}}, such as a hot-warm policy.
-
-    1. Specify an attribute key-value pair in the **Node attributes** field, with the key and value separated by a colon.
-    2. Repeat the previous step until you have added all the node attributes that you want to be available to your users when they create an index lifecycle policy later on.
-3. Optionally, configure additional index curation methods.
-4. Select **Next**.
+For each data tier, specify an attribute key-value pair in the **Node attributes** field, with the key and value separated by a colon. Repeat this process until you have added all the node attributes that you want to be available to your users when they create an index lifecycle policy later on.
 
 ## Configure index curation
 ```{applies_to}
@@ -59,19 +54,17 @@ Index curation has been deprecated in favor of [index lifecycle management](/man
 
 To configure index curation as part of your deployment template:
 
-1. On the **Index Management** page, select the **index curation** index curation method.
+1. On the **Index Management** page, under **Index curation**, click **Configure**.
 
-2. Configure index curation:
+2. Configure index curation by adding an index pattern:
 
     1. Select the hot data configuration where new indices get created initially.
     2. Select the warm nodes where older indices get moved to later on when they get curated.
-    3. Specify which indices get curated by including at least one data view.
+    3. Specify which indices get curated by including at least one index pattern.
 
         By default, the pattern is `*`, which means that all indices get curated. For logging use cases, you could specify to curate only the `logstash-*`, `metricbeat-*`, or `filebeat-*` data views, for example.
 
     4. Specify the time interval after which indices get curated.
-3. Optionally, configure additional index curation methods.
-3. Select **Next**.
 
 ## Next steps
 
