@@ -677,6 +677,7 @@ toc:
           - file: security/explore/network-page.md
             children:
               - file: security/explore/configure-network-map-data.md
+              - file: security/explore/configure-dns-histogram.md
           - file: security/explore/users-page.md
       - file: security/advanced-entity-analytics.md
         children:
