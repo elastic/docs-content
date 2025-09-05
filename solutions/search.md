@@ -30,7 +30,7 @@ Here are a few common real-world applications:
 | **Chatbots/RAG**                     | Enable natural conversations, provide context, maintain knowledge  | Vector search, ML models, knowledge base integration          |
 | **Geospatial search**                | Process location queries, sort by proximity, filter by area        | Geo-mapping, spatial indexing, distance calculations          |
 
-## {{es-serverless}} [what-is-elasticsearch-serverless]
+## {{es-serverless}} [elasticsearch-serverless]
 
 {{es-serverless}} is one of the three available project types on [{{serverless-full}}](/deploy-manage/deploy.md).
 

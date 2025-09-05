@@ -29,6 +29,9 @@ To follow the steps, you must have a recent version of a Python interpreter.
 
 Choose the {{es}} project type and provide a name.
 You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
+
+To add the sample data in subsequent steps, you must have a `developer` or `admin` predefined role or an equivalent custom role.
+To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 ::::
 ::::{step} Create an index
 
