@@ -64,8 +64,9 @@ To learn about adding data for other search goals, go to [](/solutions/search/in
 For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 
 If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/search/get-started/quickstarts.md).
-:::::
 
+The {{es}} home page in the UI also provides workflow guides for creating indices and ready-to-use code examples for ingesting data by using REST APIs.
+:::::
 :::::{{step}} Build your search queries
 
 Your next steps will be to choose a method to write queries and interact with {{es}}.
