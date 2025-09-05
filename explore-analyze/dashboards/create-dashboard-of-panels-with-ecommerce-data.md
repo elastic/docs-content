@@ -178,7 +178,7 @@ To view change over time as a percentage, create an **Area percentage** chart th
 
 1. On the dashboard, click **Create visualization**.
 2. From the **Available fields** list, drag **Records** to the workspace.
-3. Open the **Visualization type** dropdown, then select **Area percentage**.
+3. Open the **Visualization type** dropdown, then select **Area**.
 
 For each order category, create a filter:
 
@@ -200,7 +200,7 @@ For each order category, create a filter:
     * **Label** — `Accessories`
 
 6. Click **Close**.
-7. Open the **Legend** menu, then select the **Alignment** arrow that points up.
+7. Open the **Legend** menu, then select the **Position** arrow that points up.
 
    :::{image} /explore-analyze/images/kibana-lens_areaPercentageNumberOfOrdersByCategory_8.3.png
    :alt: Prices share by category
