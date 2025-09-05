@@ -236,7 +236,7 @@ Filter the results to display the data for only Saturday and Sunday:
         The [KQL filter](../query-filter/languages/kql.md) displays all documents where `day_of_week` matches `Saturday` or `Sunday`.
 
 4. Click **Close**.
-5. Open the **Legend** menu, then click **Hide** next to **Display**.
+5. Open the **Legend** menu, then click **Hide** next to **Visibility**.
 
    :::{image} /explore-analyze/images/kibana-lens_areaChartCumulativeNumberOfSalesOnWeekend_7.16.png
    :alt: Area chart with cumulative sum of orders made on the weekend
