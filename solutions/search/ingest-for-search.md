@@ -11,9 +11,7 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 ---
-
 # Ingest for search use cases
-
 
 $$$elasticsearch-ingest-time-series-data$$$
 ::::{note}
@@ -32,7 +30,7 @@ If you just want to do a quick test, you can load [sample data](/manage-data/ing
 
 ## Use APIs [es-ingestion-overview-apis]
 
-You can use the [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-document) to add data to your {{es}} indices, using any HTTP client, including the [{{es}} client libraries](/solutions/search/site-or-app/clients.md).
+You can use the [`_bulk` API]({{es-apis}}group/endpoint-document) to add data to your {{es}} indices, using any HTTP client, including the [{{es}} client libraries](/solutions/search/site-or-app/clients.md).
 
 While the {{es}} APIs can be used for any data type, Elastic provides specialized tools that optimize ingestion for specific use cases.
 
@@ -42,9 +40,14 @@ You can use these specialized tools to add general content to {{es}} indices.
 
 | Method | Description | Notes |
 |--------|-------------|-------|
-| [**Web crawler**](https://github.com/elastic/crawler) | Programmatically discover and index content from websites and knowledge bases | Crawl public-facing web content or internal sites accessible via HTTP proxy |
-| [**Content connectors**](https://github.com/elastic/connectors) | Third-party integrations to popular content sources like databases, cloud storage, and business applications | Choose from a range of Elastic-built connectors or build your own in Python using the Elastic connector framework|
+| [**Elastic Open Web Crawler**](https://github.com/elastic/crawler) | Programmatically discover and index content from websites and knowledge bases | Crawl public-facing web content or internal sites accessible via HTTP proxy |
+| [**Content connectors**](elasticsearch://reference/search-connectors/index.md) | Third-party integrations to popular content sources like databases, cloud storage, and business applications | Choose from a range of Elastic-built connectors or build your own in Python using the Elastic connector framework|
 | [**File upload**](/manage-data/ingest/upload-data-files.md)| One-off manual uploads through the UI | Useful for testing or very small-scale use cases, but not recommended for production workflows |
+
+If you’re already familiar with Elasticsearch, you can jump right into setting up a connection and ingesting data as per your needs.
+
+1. Retrieve your [connection details](search-connection-details.md).
+2. Ingest your data. Elasticsearch provides several methods for ingesting data:
 
 ### Process data at ingest time
 
