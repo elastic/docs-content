@@ -22,7 +22,7 @@ Rating legend
 **Good** – Possibly adequate for many use cases but with noticeable tradeoffs.<br>
 **Poor** – Significant issues; not recommended for production for the use case.
 
-Recommended models are those rated **Excellent** or **Great** for the paticular use case.
+Recommended models are those rated **Excellent** or **Great** for the particular use case.
 ::::
 
 ## Proprietary models [_proprietary_models]
