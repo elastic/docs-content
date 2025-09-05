@@ -21,11 +21,21 @@ New to {{es}}? Start building a search experience by setting up your first deplo
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
 :::
 
-:::::{stepper}
-::::{step} Choose your deployment type
+::::::{stepper}
+:::::{step} Choose your deployment type
 
 Elastic provides several self-managed and Elastic-managed options.
-For simplicity and speed, try out [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md).
+For simplicity and speed, try out [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md):
+
+::::{dropdown} Create an {{es-serverless}} project
+:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
+:::
+
+Choose the {{es}} project type and provide a name.
+You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
+
+When your project is created, you're ready to move on to the next step and to start creating indices, adding data, and performing searches.
+::::
 
 Alternatively, create a [local development installation](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) in Docker:
 
@@ -34,17 +44,17 @@ curl -fsSL https://elastic.co/start-local | sh
 ```
 
 Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-your-deployment-type) to learn more.
-::::
+:::::
 
-::::{step} Identify your search goals
+:::::{step} Identify your search goals
 Depending on your use case, you can choose multiple [search approaches](search-approaches.md), for example full-text and semantic search.
 Each approach affects your options for storing and querying your data.
 
 If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/search/get-started/semantic-search.md).
 
 If you prefer to ingest your data first and transform or reindex it as needed later, skip to the next step.
-::::
-::::{{step}} Ingest your data
+:::::
+:::::{{step}} Ingest your data
 
 If your goals include vector or semantic AI-powered search, create vectorized data with built-in and third-party natural language processing (NLP) models and store it in an {{es}} vector database.
 The approach that requires the least configuration involves adding `semantic_text` fields when ingesting your data.
@@ -54,9 +64,9 @@ To learn about adding data for other search goals, go to [](/solutions/search/in
 For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 
 If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/search/get-started/quickstarts.md).
-::::
+:::::
 
-::::{{step}} Build your search queries
+:::::{{step}} Build your search queries
 
 Your next steps will be to choose a method to write queries and interact with {{es}}.
 You can pick a programming language [client](/reference/elasticsearch-clients/index.md) that matches your application and choose which [query languages](/solutions/search/querying-for-search.md) you will use to express your search logic.
@@ -64,8 +74,8 @@ Each decision builds on the previous ones, offering flexibility to mix and match
 
 Not sure where to start exploring?
 Get an introduction to [index and search basics](/solutions/search/get-started/index-basics.md) or [build your first search query with Python](/solutions/search/get-started/keyword-search-python.md).
-::::
 :::::
+::::::
 
 ## Related resources
 
