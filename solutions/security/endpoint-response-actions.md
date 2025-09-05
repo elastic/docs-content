@@ -291,12 +291,29 @@ You can also use this optional parameter:
   The response console does not support double-dash (`--`) syntax within the `--Args` parameter.
   :::
 
-Predefined role: **SOC manager** or **Endpoint operations analyst**
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
 
-Required custom role privilege: **Execute Operations**
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
 
 Example: `runscript --ScriptName="Script2.sh" --Args="-Verbose true"`
 
+#### SentinelOne
+```yaml {applies_to}
+stack: ga 9.2
+```
+For SentinelOne, you must include the following parameter to identify the script you want to run:
+
+* `--script`: The name of the script to run. Select from a list of saved custom scripts.
+
+You can also use this optional parameter:
+
+* `--inputParams`: Additional command-line arguments passed to the script to customize its execution.
+
+Predefined role (in {{serverless-short}}): **SOC manager** or **Endpoint operations analyst**
+
+Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Execute Operations**
+
+Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.backup.txt"`
 
 ## Supporting commands and parameters [supporting-commands-parameters]
 
@@ -329,7 +346,7 @@ You can also get a list of commands in the [Help panel](/solutions/security/endp
 
 ## Help panel [help-panel]
 
-Click ![Help icon](/solutions/images/security-help-icon.png "title =20x20") **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
+Click {icon}`question` **Help** in the upper-right to open the **Help** panel, which lists available response action commands and parameters as a reference.
 
 ::::{note}
 This panel displays only the response actions that you have the user role or privileges to perform.
