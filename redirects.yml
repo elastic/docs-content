@@ -336,3 +336,6 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2745
   'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2795
+  'get-started/the-stack.md': 'get-started/search-ai-platform.md'

@@ -37,7 +37,7 @@ Elastic offers three main solutions or types of projects:
 
 Continue your journey with these essential guides that will help you understand and work with Elastic:
 
-* **[Solutions and the Search AI platform](/get-started/the-stack.md)**: Dive deeper into how the Elastic Stack—our suite of open-source tools including Elasticsearch, Kibana, Beats, and Logstash—components work together, learn about data ingestion methods, and understand the core concepts of storing, visualizing, and querying your data.
+* **[Solutions and the Search AI platform](/get-started/search-ai-platform.md)**: Dive deeper into how the Elastic Stack—our suite of open-source tools including Elasticsearch, Kibana, Beats, and Logstash—components work together, learn about data ingestion methods, and understand the core concepts of storing, visualizing, and querying your data.
 
 * **[Deployment options](/get-started/deployment-options.md)**: Explore the different ways you can deploy Elastic, from fully managed serverless solutions to self-managed installations, and choose the approach that best fits your operational needs.
 

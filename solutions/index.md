@@ -11,7 +11,7 @@ products:
 # Solutions and use cases
 
 :::{tip}
-New to Elastic? Refer to [get started](/get-started/the-stack.md) to understand the Elastic Stack and its components, and your deployment options.
+New to Elastic? Refer to [get started](/get-started/search-ai-platform.md) to understand the Elastic Stack and its components, and your deployment options.
 :::
 
 Users reach for Elastic products, features, and tools for three main use cases: observability, security, and search.

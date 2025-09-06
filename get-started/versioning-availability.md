@@ -52,7 +52,7 @@ Features available to you can differ based on deployment type, product lifecycle
 
 | Category | Example |
 | ----- | ----- |
-| Elastic Stack versions | [{{stack}}](/get-started/the-stack.md) version 9.0.0 and later, including 9.1.0 |
+| Elastic Stack versions | [{{search-platform}}](/get-started/search-ai-platform.md) version 9.0.0 and later, including 9.1.0 |
 | Deployment types | [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md), [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), and [Self-managed deployments](/deploy-manage/deploy/self-managed.md) |
 | Orchestrator versions | [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) 4.0.0 and later, [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) 3.0.0 and later |
 | Serverless project types | {{es}}, Elastic {{observability}}, and {{elastic-sec}} |
