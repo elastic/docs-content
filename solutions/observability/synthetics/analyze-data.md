@@ -19,7 +19,7 @@ The Synthetics UI gives you a high-level overview of your service’s availabili
 
 The Synthetics **Overview** tab provides you with a high-level view of all the services you are monitoring to help you quickly diagnose outages and other connectivity issues within your network.
 
-To access this page, find `Synthetics` in the [global search field](/get-started/the-stack.md#kibana-navigation-search) and make sure you’re on the **Overview** tab.
+To access this page, find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and make sure you’re on the **Overview** tab.
 
 This overview includes a snapshot of the current status of all monitors, the number of errors that occurred over the last 6 hours, and the number of alerts over the last 12 hours. All monitors created using projects or using the UI will be listed below with information about the location, current status, and duration average.
 

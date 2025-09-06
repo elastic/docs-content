@@ -24,7 +24,7 @@ In most cases, you also need to deploy **{{kib}}**. {{kib}} provides the user in
 Your choice of deployment type determines how you'll set up and manage these core components, as well as any additional components you need.
 
 :::{admonition} Other {{stack}} components
-This section focuses on deploying and managing {{es}} and {{kib}}, as well as supporting orchestration technologies. However, depending on your use case, you might need to deploy [other {{stack}} components](/get-started/the-stack.md). For example, you might need to add components to ingest logs or metrics.
+This section focuses on deploying and managing {{es}} and {{kib}}, as well as supporting orchestration technologies. However, depending on your use case, you might need to deploy [other components](/get-started/search-ai-platform.md). For example, you might need to add components to ingest logs or metrics.
 
 To learn how to deploy optional {{stack}} components, refer to the following sections:
 * [Fleet and Elastic Agent](/reference/fleet/index.md)
@@ -88,6 +88,9 @@ Consider this when choosing your deployment type:
 
 - Choose {{serverless-full}} if you want automatic access to the latest features and don't want to manage version compatibility
 - Choose other deployment types if you need more control over version management
+
+:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
+:::
 
 :::{tip}
 Learn more about [versioning and availability](/get-started/versioning-availability.md).
