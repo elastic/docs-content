@@ -19,6 +19,7 @@ toc:
       - file: fleet-server-monitoring.md
   - file: install-elastic-agents.md
     children:
+      - file: fleet-agent-release-process.md
       - file: install-fleet-managed-elastic-agent.md
       - file: install-standalone-elastic-agent.md
         children:
