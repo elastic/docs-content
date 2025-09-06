@@ -29,11 +29,17 @@ Self-hosted options:
 For a comparison of these deployment options, refer to [Choosing your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) and [](/deploy-manage/deploy/deployment-comparison.md).
 :::
 
+## Installation order
+
+:::{include} /deploy-manage/deploy/_snippets/installation-order.md
+:::
+
 ## Section overview
 
 This section focuses on deploying {{es}} and {{kib}} without an orchestrator.
 
-Depending on your use case, you might need to deploy other components, such as APM, Fleet, or Logstash. Deploying those components is not covered in this section. [Learn more about optional components](/get-started/search-ai-platform.md).
+Depending on your use case, you might need to deploy other components, such as APM, Fleet, or Logstash.
+Deploying those components is not covered in this section. [Learn more about optional components](/get-started/search-ai-platform.md).
 
 This section covers the following tasks:
 
