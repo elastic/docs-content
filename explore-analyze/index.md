@@ -19,6 +19,19 @@ $$$elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library$
 
 The Elasticsearch platform and its UI, also known as Kibana, provide a comprehensive suite of tools to help you search, interact with, explore, and analyze your data effectively. These features empower you to gain deep insights, uncover trends, and take actionable steps based on your findings. This page is an overview of the key capabilities.
 
+If you'd like to explore some features but don't have data ready yet, some sample data sets are available in {{kib}} for you to install and play with.
+
+### Add sample data [gs-get-data-into-kibana]
+
+Sample data sets come with sample visualizations, dashboards, and more to help you explore {{kib}} before you ingest or add your own data.
+
+1. Open the **Integrations** page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the list of integrations, select **Sample Data**.
+3. On the page that opens, select **Other sample data sets**.
+4. Install the sample data sets that you want.
+
+Once installed, you can access the sample data in the various {{kib}} apps available to you.
+
 ## Querying and filtering
 
 Elasticsearch’s robust query capabilities enable you to retrieve specific data from your datasets. Using the Query DSL (Domain Specific Language), you can build powerful, flexible queries that support:
@@ -105,16 +118,3 @@ You can set up alerts to monitor your data continuously. Alerts notify you when 
 ## Bringing it all together
 
 Elasticsearch's features integrate seamlessly, offering an end-to-end solution for exploring, analyzing, and acting on data. If you want to explore any of the listed features in greater depth, refer to their respective documentation pages and check the provided hands-on examples and tutorials.
-
-If you'd like to explore some features but don't have data ready yet, some sample data sets are available in {{kib}} for you to install and play with.
-
-### Add sample data [gs-get-data-into-kibana]
-
-Sample data sets come with sample visualizations, dashboards, and more to help you explore {{kib}} before you ingest or add your own data.
-
-1. Open the **Integrations** page from the navigation menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the list of integrations, select **Sample Data**.
-3. On the page that opens, select **Other sample data sets**.
-4. Install the sample data sets that you want.
-
-Once installed, you can access the sample data in the various {{kib}} apps available to you.
