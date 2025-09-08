@@ -66,7 +66,7 @@ A role has a unique name and identifies a set of permissions that translate to p
 
 Review these topics to learn how to configure RBAC in your cluster or deployment:
 
-* Learn about [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md)
+* Learn about [built-in roles](elasticsearch://reference/elasticsearch/roles.md)
 * [Define your own roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
 * Learn about the [Elasticsearch](elasticsearch://reference/elasticsearch/security-privileges.md) and [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges you can assign to roles
 * Learn how to [control access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
