@@ -2,7 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/8.18/ingest-pipeline-search.html
 applies_to:
-  stack:
+  stack: ga
+  deployment:
+    ess: ga
 products:
   - id: elasticsearch
 ---
