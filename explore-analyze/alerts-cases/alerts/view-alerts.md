@@ -81,7 +81,9 @@ Alert flapping is turned on by default. You can modify the criteria for changing
 
 ## Mute alerts [mute-alerts]
 
-If an alert is active or flapping, you can mute it to temporarily suppress future actions. In both **{{stack-manage-app}} > Alerts** and **{{rules-ui}}**, you can open the action menu (…) for the appropriate alert and select **Mute**. To permanently suppress actions for an alert, open the actions menu and select **Mark as untracked**. When an alert is marked as untracked, its status can no longer be changed.
+If an alert is active or flapping, you can mute it to temporarily suppress future actions. In **{{stack-manage-app}} > Alerts**, open the action menu (…) for the appropriate alert, then select **Mute**. While muted, the alert's status will continue to update but rule actions won't run. All future alerts with the same alert ID will also be muted.
+
+To permanently suppress an alert's actions, open the actions menu for the appropriate alert, then select **Mark as untracked**. In this case, the alert's status is no longer updated and actions are no longer run. These changes are only applied to the alert that you untracked and cannot be reverted. Future alerts with the same alert ID are unaffected.
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
 
