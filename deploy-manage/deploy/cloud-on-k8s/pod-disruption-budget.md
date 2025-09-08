@@ -14,11 +14,19 @@ A [Pod Disruption Budget](https://kubernetes.io/docs/tasks/run-application/confi
 
 ECK manages either a single default PDB, or multiple PDBs per {{es}} resource according to the license available.
 
-## Enterprise licensed customers
+:::{note}
+In ECK 3.1 and earlier, all clusters follow the [non-enterprise behavior](#non-enterprise-licensed-customers), regardless of license type.
+:::
+
+### Enterprise licensed customers
+```{applies_to}
+deployment:
+  eck: ga 3.2
+```
 
 A separate PDB is created for each type of nodeSet defined in the manifest allowing upgrade or maintenance operations to be more quickly executed. The PDBs allow one {{es}} Pod per nodeSet to simultaneously be taken down as long as the cluster has the health defined in the following table:
 
-| Role | Cluster Health Required | Notes |
+| Role | Cluster health required | Notes |
 |------|------------------------|--------|
 | Master | Yellow |  |
 | Data | Green | All Data roles are grouped together into a single PDB, except for data_frozen. |
@@ -27,13 +35,18 @@ A separate PDB is created for each type of nodeSet defined in the manifest allow
 | ML | Yellow |  |
 | Coordinating | Yellow |  |
 | Transform | Yellow |  |
-| Remote Cluster Client | Yellow |  |
+| Remote cluster client | Yellow |  |
 
 Single-node clusters are not considered highly available and can always be disrupted.
 
-## Non-enterprise licensed customers
+### Non-enterprise licensed customers
+:::{note}
+In ECK 3.1 and earlier, all clusters follow this behavior regardless of license type.
+:::
 
 It allows one {{es}} Pod to be taken down, as long as the cluster has a `green` health. Single-node clusters are not considered highly available and can always be disrupted.
+
+## Overriding the default behavior
 
 In the {{es}} specification, you can change the default behavior as follows:
 
@@ -55,14 +68,15 @@ spec:
           elasticsearch.k8s.elastic.co/cluster-name: quickstart
 ```
 
+This will cause the ECK operator to only create the PodDisruptionBudget defined in the spec and will not create any additional PodDisruptionBudgets.
+
 ::::{note}
 [`maxUnavailable`](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#arbitrary-controllers-and-selectors) cannot be used with an arbitrary label selector, therefore `minAvailable` is used in this example.
 ::::
 
+## Pod disruption budget per nodeSet [k8s-pdb-per-nodeset]
 
-## Pod disruption budget per nodeset [k8s-pdb-per-nodeset]
-
-You can specify a PDB per nodeset or node role.
+You can specify a PDB per nodeSet or node role.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
