@@ -57,7 +57,7 @@ To upgrade your {{agents}}, go to **Management** → **{{fleet}}** → **Agents*
 | [Restart an upgrade for a single agent](#restart-upgrade-single) | Restart an upgrade process that has stalled for a single agent. |
 | [Restart an upgrade for multiple agents](#restart-upgrade-multiple) | Do a bulk restart of the upgrade process for a set of agents. |
 
-With an [{{stack}} subscription level](https://www.elastic.co/subscriptions) that supports **automatic agent binary upgrades**, you can also configure an automatic upgrade of a percentage of the {{agents}} enrolled in an {{agent}} policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](#auto-upgrade-agents). {applies_to}`stack: ga 9.1.0`
+With an [Elastic subscription level](https://www.elastic.co/subscriptions) that supports **automatic agent binary upgrades**, you can also configure an automatic upgrade of a percentage of the {{agents}} enrolled in an {{agent}} policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](#auto-upgrade-agents). {applies_to}`stack: ga 9.1.0`
 
 
 ## Upgrade a single {{agent}} [upgrade-an-agent]
@@ -108,7 +108,7 @@ Note that agents in a rollout period have the status `Updating` until the upgrad
 ## Schedule an upgrade [schedule-agent-upgrade]
 
 ::::{note}
-This feature is available only for certain subscription levels. For more information, check **Scheduled agent binary upgrades** on the [{{stack}} subscriptions](https://www.elastic.co/subscriptions) page.
+This feature is available only for certain subscription levels. For more information, check **Scheduled agent binary upgrades** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
 ::::
 
 1. On the **Agents** tab, select one or more agents, and click **Actions**.
@@ -231,7 +231,7 @@ stack: ga 9.1.0
 ```
 
 ::::{note}
-This feature is available only for certain subscription levels. For more information, check **Automatic agent binary upgrades** on the [{{stack}} subscriptions](https://www.elastic.co/subscriptions) page.
+This feature is available only for certain subscription levels. For more information, check **Automatic agent binary upgrades** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
 ::::
 
 To configure an automatic rollout of a new minor or patch version to a percentage of the agents enrolled in your {{agent}} policy. follow these steps:
