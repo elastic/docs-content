@@ -40,8 +40,6 @@ To use the {{motlp}} you need the following:
 :::::
 
 :::::{step} Locate your {{motlp}}
-% This anchor already exists. Hardcoding it here so i
-:anchor: locate-your-motlp
 
 To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
