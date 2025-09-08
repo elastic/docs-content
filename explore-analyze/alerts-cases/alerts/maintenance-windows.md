@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maintenance-windows.html
   - https://www.elastic.co/guide/en/serverless/current/maintenance-windows.html
 applies_to:
-  stack: ga
+  stack: preview 9.0, ga 9.2
   serverless: ga
 products:
   - id: kibana
@@ -14,10 +14,6 @@ products:
 
 This content applies to: [![Observability](/explore-analyze/images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](/explore-analyze/images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
 
-
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
 
 You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
 
@@ -50,7 +46,9 @@ When you create a maintenance window, you must provide a name and a schedule. Yo
 :screenshot:
 :::
 
-By default, maintenance windows affect all categories of rules. The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting).
+By default, maintenance windows affect all categories of rules. 
+
+{applies_to}`stack: preview 9.0, removed 9.2` {applies_to}`serverless: removed` The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting).
 
 If you turn on **Filter alerts**, you can use KQL to filter the alerts affected by the maintenance window:
 
