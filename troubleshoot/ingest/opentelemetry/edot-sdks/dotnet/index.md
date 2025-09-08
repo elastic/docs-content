@@ -23,7 +23,7 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 For most problems, such as when you don't see data in your Elastic Observability backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Trace` to investigate further.
 
-The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the upstream OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
+The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the contrib OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
 
 ## ASP.NET Core (generic host) logging integration
 
@@ -178,7 +178,7 @@ The following known issues affect EDOT .NET.
 
 ### Missing log records
 
-The upstream SDK currently does not [comply with the spec](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4324) regarding the deduplication of attributes when exporting log records. When you create a log within multiple scopes, each scope may store information using the same logical key. In this situation, the exported data will have duplicated attributes.
+The contrib SDK currently does not [comply with the spec](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4324) regarding the deduplication of attributes when exporting log records. When you create a log within multiple scopes, each scope may store information using the same logical key. In this situation, the exported data will have duplicated attributes.
 
 You are most likely to see this when you log in the scope of a request and enable the `OpenTelemetryLoggerOptions.IncludeScopes` option. ASP.NET Core adds the `RequestId` to multiple scopes. We recommend that you don't enable `IncludeScopes` until the SDK fixes this. When you use the EDOT Collector or the [{{motlp}}](opentelemetry://reference/motlp.md) in serverless, non-compliant log records will fail to be ingested.
 
