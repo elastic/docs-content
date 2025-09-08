@@ -37,7 +37,6 @@ Here are a few common real-world applications:
 This project type enables you to use the core functionality of {{es}}: searching, indexing, storing, and analyzing data of all shapes and sizes.
 
 When using {{es}} on {{serverless-full}} you don’t need to worry about managing the infrastructure that keeps {{es}} distributed and available: nodes, shards, and replicas. These resources are completely automated on the serverless platform, which is designed to scale up and down with your workload.
-
 This automation allows you to focus on building your search applications and solutions.
 
 ::::{tip}
