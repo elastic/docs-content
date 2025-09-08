@@ -49,7 +49,7 @@ toc:
         children:
           - file: search/agent-builder/get-started.md
           - file: search/agent-builder/conversations.md
-          - file: search/agent-builder/agents.md
+          - file: search/agent-builder/agent-builder-agents.md
           - file: search/agent-builder/tools.md
           - file: search/agent-builder/programmatic-access.md
           - file: search/agent-builder/limitations-known-issues.md
