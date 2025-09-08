@@ -10,4 +10,4 @@ These settings can be overridden in the relevant configuration file.
 | 9300 and onwards | TCP |	Transport API. Used for intra-cluster communications and client access via the transport API (Java client). | Elasticsearch [`transport.port`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md#common-network-settings) |
 | 5601 | HTTP |	{{kib}} default access port. | Kibana [`server.port`](kibana://reference/configuration-reference/general-settings.md#server-port) |
 
-Additional ports might be required for [optional {{stack}} components](/get-started/the-stack.md). Refer to the installation guide for the component that you want to install.
+Additional ports might be required for [optional {{stack}} components](/get-started/search-ai-platform.md). Refer to the installation guide for the component that you want to install.
