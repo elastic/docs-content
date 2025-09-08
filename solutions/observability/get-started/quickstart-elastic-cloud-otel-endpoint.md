@@ -106,7 +106,7 @@ exporters:
 ```
 
 1. See [Step 2](#locate-your-motlp)
-2. See [Step 3](##create-an-api-key)
+2. See [Step 3](#create-an-api-key)
 
 Set the API key as an environment variable or directly in the configuration as shown in the example.
 :::
@@ -120,7 +120,7 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>" <2>
 ```
 
 1. See [Step 2](#locate-your-motlp)
-2. See [Step 3](##create-an-api-key)
+2. See [Step 3](#create-an-api-key)
 
 Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`. For example:
 
@@ -153,7 +153,7 @@ exporters:
 ```
 
 1. See [Step 2](#locate-your-motlp)
-2. See [Step 3](##create-an-api-key)
+2. See [Step 3](#create-an-api-key)
 
 And in your deployment spec:
 
