@@ -16,7 +16,7 @@ products:
   - id: elasticsearch
 ---
 
-# Bring your data to Elastic
+# Ingest: Bring your data to Elastic
 
 Whether you call it *adding*, *indexing*, or *ingesting* data, you have to get the data into {{es}} before you can search it, visualize it, and use it for insights.
 
