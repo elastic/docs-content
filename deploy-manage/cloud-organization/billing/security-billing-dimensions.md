@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic for Security
+navigation_title: Security projects
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-billing.html
 applies_to:
@@ -8,7 +8,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Elastic for Security billing dimensions [security-billing]
+# {{elastic-sec}} billing dimensions [security-billing]
 
 {{elastic-sec}} serverless projects provide you with all the capabilities of {{elastic-sec}} to perform SIEM, security analytics, endpoint security, and cloud security workflows. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption based. Security Analytics/SIEM is available in two tiers of carefully selected features to enable common security operations:
 

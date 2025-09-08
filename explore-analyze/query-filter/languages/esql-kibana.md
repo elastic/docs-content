@@ -1,7 +1,8 @@
 ---
-navigation_title: "{{kib}}"
+navigation_title: "ES|QL"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
+  - https://www.elastic.co/guide/en/kibana/current/esql.html
 applies_to:
   stack: ga
   serverless: ga
@@ -9,20 +10,34 @@ products:
   - id: elasticsearch
 ---
 
-# Use ES|QL in Kibana [esql-kibana]
+# Use ES|QL in the {{kib}} UI [esql-kibana]
 
-You can use {{esql}} in {{kib}} to query and aggregate your data, create visualizations, and set up alerts.
+You can use [{{es}} query language ({{esql}})](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md) in {{kib}} to query and aggregate your data, create visualizations, and set up alerts.
+This page guides you through the basics of working with {{esql}} in the {{kib}} UI.
 
-More specifically, {{esql}} is a powerful tool in Kibana that can help you with specific solution use cases. For example:
+{{esql}} is tightly integated with Elastic solutions:
 
-- {{observability}}: {{esql}} makes it much easier to analyze metrics, logs and traces from a single query. Find performance issues fast by defining fields on the fly, enriching data with lookups, and using simultaneous query processing. Combining {{esql}} with {{ml}} and AiOps can improve detection accuracy and use aggregated value thresholds.
-- Security: Use {{esql}} to retrieve important information for investigation by using lookups. Enrich data and create new fields on the go to gain valuable insight for faster decision-making and actions. For example, perform a lookup on an IP address to identify its geographical location, its association with known malicious entities, or whether it belongs to a known cloud service provider all from one search bar. {{esql}} ensures more accurate alerts by incorporating aggregated values in detection rules.
-
-This guide shows you how to use {{esql}} in Kibana. To follow along with the queries, load the "Sample web logs" sample data set by selecting **Sample Data** from the **Integrations** page in {{kib}}, selecting **Other sample data sets**, and clicking **Add data** on the **Sample web logs** card.
+- **{{observability}}**
+  - Query metrics, logs, and traces simultaneously
+  - Define fields dynamically, enrich data with lookups, and process queries in parallel
+  - Integrate with {{ml}} and AiOps for improved detection accuracy using aggregated thresholds
+- **Security**
+  - Enrich investigation data with lookups and dynamic field creation
+  - Perform IP geolocation, threat intelligence, and cloud provider identification from a single query
+  - Use aggregated values in detection rules for more accurate alerts
+  - Find more details and examples in [{{esql}} for {{elastic-sec}} use cases](/solutions/security/esql-for-security.md) 
 
 :::{tip}
 Find the complete list of supported commands, functions, and operators in the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
 :::
+
+## Load sample data
+
+To run the queries in this guide in the {{kib}} UI, you must load the "Sample web logs" sample data set. Follow these steps:
+
+1. Select **Sample Data** from the **Integrations** page in {{kib}}
+2. Select **Other sample data sets**
+3. Click **Add data** on the **Sample web logs** card
 
 ## Enable or disable {{esql}} [esql-kibana-enable]
 

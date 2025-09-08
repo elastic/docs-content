@@ -24,10 +24,11 @@ To follow the steps, you must have a recent version of a Python interpreter.
 
 ::::{step} Create a project
 
-Create an [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md) general purpose project.
-To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
-To learn about role-based access control, go to [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
+:::{include} /deploy-manage/deploy/_snippets/create-serverless-project-intro.md
+:::
 
+Choose the {{es}} project type and provide a name.
+You can optionally edit the project settings, such as the [region](/deploy-manage/deploy/elastic-cloud/regions.md).
 ::::
 ::::{step} Create an index
 
@@ -137,7 +138,7 @@ Optionally open [Discover](/explore-analyze/discover.md) from the navigation men
 
 A keyword search, also known as lexical search or [full-text search](/solutions/search/full-text.md) finds relevant documents in your indices using exact matches, patterns, or similarity scoring.
 The guided workflow provides an example that uses [Query DSL](/explore-analyze/query-filter/languages/querydsl.md).
-Alternatively, try out [{{es}} Query Language](/explore-analyze/query-filter/languages/esql.md) ({{esql}}) to find documents that match a specific keyword:
+Alternatively, try out [{{es}} Query Language](elasticsearch://reference/query-languages/esql.md) ({{esql}}) to find documents that match a specific keyword:
 
 ```py
 response = client.esql.query(

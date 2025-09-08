@@ -51,7 +51,7 @@ After you complete this step, risk scores should automatically begin to successf
 
 ## Resolved
 
-:::{dropdown} In {{sec-serverless}}, installing an {{elastic-defend}} integration or a new agent policy upgrades installed prebuilt rules, reverting user customizations and overwriting user-added actions and exceptions
+:::{dropdown} Installing the {{elastic-defend}} integration or a new agent policy in {{sec-serverless}} forces an upgrade of prebuilt rules
 
 On April 10, 2025, it was discovered that when you install a new {{elastic-defend}} integration or agent policy, the installed prebuilt detection rules upgrade to their latest versions (if any new versions are available). The upgraded rules lose any user-added rule actions, exceptions, and customizations. 
 

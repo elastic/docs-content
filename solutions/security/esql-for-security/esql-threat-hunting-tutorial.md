@@ -8,7 +8,7 @@ products:
 
 # Tutorial: Threat hunting with {{esql}}
 
-This hands-on tutorial demonstrates advanced threat hunting techniques using the [Elasticsearch Query Language ({{esql}})](/explore-analyze/query-filter/languages/esql.md). 
+This hands-on tutorial demonstrates advanced threat hunting techniques using the [Elasticsearch Query Language ({{esql}})](elasticsearch://reference/query-languages/esql.md). 
 
 Following a simulated Advanced Persistent Threat (APT) campaign, we analyze security events across authentication, process execution, and network telemetry to detect:
 
@@ -39,7 +39,7 @@ You can run these queries using:
   - [Timeline](/solutions/security/investigate/timeline.md#esql-in-timeline). Find **Timelines** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
   - [Discover](/explore-analyze/discover/try-esql.md). Find **Discover** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-- **REST API** via [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console). This requires additional formatting:
+- **REST API** via [Dev Tools Console](elasticsearch://reference/query-languages/esql/esql-rest.md#esql-kibana-console). This requires additional formatting:
   :::{dropdown} View Console syntax for {{esql}}
   ```console
   POST /_query?format=txt
@@ -55,7 +55,7 @@ You can run these queries using:
 
 ## Step 0: Add sample data
 
-To follow along with this tutorial, you need to add sample data to your cluster, using the [Dev Tools Console](/explore-analyze/query-filter/languages/esql-rest.md#esql-kibana-console).
+To follow along with this tutorial, you need to add sample data to your cluster, using the [Dev Tools Console](elasticsearch://reference/query-languages/esql/esql-rest.md#esql-kibana-console).
 
 Broadly, there are two types of data:
 
@@ -553,7 +553,7 @@ The response shows the number of task creations, creation hours, and persistence
 
 ## Additional resources
 
-- Explore a curated collection of threat hunting [queries](https://github.com/elastic/detection-rules/tree/main/hunting) in the `elastic/detection-rules` GitHub repo.
+- Explore a curated collection of threat hunting [queries](https://github.com/elastic/detection-rules/tree/main/hunting) in the `elastic/detection-rules` GitHub repo.
   - The corresponding [blog](https://www.elastic.co/security-labs/elevate-your-threat-hunting) provides more information about how to use them in your threat hunting workflows.
 - Explore more threat hunting examples in the following blogs:
   - [Detect and prevent data exfiltration with {{elastic-sec}}](https://www.elastic.co/blog/security-exfiltration)
