@@ -46,9 +46,13 @@ When you create a maintenance window, you must provide a name and a schedule. Yo
 :screenshot:
 :::
 
-By default, maintenance windows affect all categories of rules. 
+By default, maintenance windows affect all categories of rules. The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting).
 
-{applies_to}`stack: preview 9.0, removed 9.2` {applies_to}`serverless: removed` The category-specific maintenance window options alter this behavior. For the definitive list of rule types in each category, refer to the [get rule types API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting).
+::::{note}
+
+{applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` The option to specify rule categories for a maintenance window is unavailable.
+
+::::
 
 If you turn on **Filter alerts**, you can use KQL to filter the alerts affected by the maintenance window:
 
