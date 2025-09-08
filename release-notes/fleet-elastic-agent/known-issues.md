@@ -3,6 +3,7 @@ navigation_title: Known issues
 ---
 
 # {{fleet}} and {{agent}} known issues [fleet-elastic-agent-known-issues]
+
 Known issues are significant defects or limitations that may impact your implementation. These issues are actively being worked on and will be addressed in a future release. Review the {{fleet}} and {{agent}} known issues to help you make informed decisions, such as upgrading to a new version.
 
 % Use the following template to add entries to this page.
@@ -17,9 +18,42 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Manual DEB/RPM upgrades of {{fleet}}-managed agents fail when "Agent tamper protection" is enabled
+
+**Applies to**: {{agent}} 8.19.2, 9.1.2
+
+On August 19, 2025, a known issue was discovered where manual DEB/RPM upgrades of {{fleet}}-managed {{agents}} fail if the {{elastic-defend}} integration is installed and **Agent tamper protection** is enabled in the agent policy. When this occurs, the log contains an output similar to the following:
+
+```
+Invalid uninstall token: exit status 28
+```
+
+This issue only impacts manual DEB/RPM upgrades from {{agent}} 8.19.2 or 9.1.2. Managed upgrades performed through {{fleet}} are not affected.
+
+For more information, refer to [PR #9462](https://github.com/elastic/elastic-agent/pull/9462).
+
+**Workaround**
+
+You can use one of the following workarounds to resolve the issue:
+
+- Stop the `elastic-agent` service:
+
+   Before installing the {{agent}} DEB/RPM package, run `systemctl stop elastic-agent`, then proceed with the installation. This solution works even when reinstalling the same version of {{agent}}.
+
+- Temporarily remove the {{elastic-defend}} integration:
+
+   Before upgrading, move the agent to an agent policy without the {{elastic-defend}} integration. Wait for the change to take effect, proceed with the upgrade, then move the agent to its previous policy.
+
+- Disable **Agent tamper protection**:
+
+   Before upgrading, disable **Agent tamper protection** in the agent policy. Wait for the change to take effect, proceed with the upgrade, then move the agent back to its previous policy.
+
+**Fixed in**: {{agent}} 8.19.3, 9.1.3
+:::
+
 :::{dropdown} [Windows] {{agent}} does not process Windows security events
 
-**Applies to: {{agent}} 8.19.0, 9.1.0 (Windows only)**
+**Applies to**: {{agent}} 8.19.0, 9.1.0 (Windows only)
 
 On August 1, 2025, a known issue was discovered where {{agent}} does not process Windows security events on hosts running Windows 10, Windows 11, and Windows Server 2022.
 
@@ -32,7 +66,7 @@ No workaround is available at the moment, but a fix is expected to be available 
 
 :::{dropdown} {{agents}} remain in an "Upgrade scheduled" state
 
-**Applies to: {{agent}} 8.18.0, 8.18.1, 8.18.2, 8.18.3, 8.18.4, 8.19.0, 9.0.0, 9.0.1, 9.0.2, 9.0.3, 9.1.0**
+**Applies to**: {{agent}} 8.18.0, 8.18.1, 8.18.2, 8.18.3, 8.18.4, 8.19.0, 9.0.0, 9.0.1, 9.0.2, 9.0.3, 9.1.0
 
 On July 2, 2025, a known issue was discovered where {{agent}} remains in an `Upgrade scheduled` state when a scheduled {{agent}} upgrade is cancelled. Attempting to restart the upgrade on the UI returns an error: `The selected agent is not upgradeable: agent is already being upgraded.`.
 
@@ -65,7 +99,7 @@ curl --request POST \
 
 :::{dropdown} [Windows] {{agent}} is unable to re-enroll into {{fleet}}
 
-**Applies to: {{agent}} 9.0.0, 9.0.1, 9.0.2 (Windows only)**
+**Applies to**: {{agent}} 9.0.0, 9.0.1, 9.0.2 (Windows only)
 
 On April 9, 2025, a known issue was discovered where an {{agent}} installed on Windows and previously enrolled into {{fleet}} is unable to re-enroll. Attempting to enroll the {{agent}} fails with the following error:
 
@@ -91,7 +125,7 @@ Until a bug fix is available in a later release, you can resolve the issue tempo
 
 :::{dropdown} [macOS] Osquery integration fails to start on fresh agent installs
 
-**Applies to: {{agent}} 9.0.0 and 9.0.1 (macOS only)**
+**Applies to**: {{agent}} 9.0.0 and 9.0.1 (macOS only)
 
 On May 26th, 2025, a known issue was discovered that causes the `osquery` integration to fail on new {{agent}} installations on macOS. During the installation process, the required `osquery.app/` directory is removed, which prevents the integration from starting.
 

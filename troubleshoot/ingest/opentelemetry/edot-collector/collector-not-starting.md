@@ -119,5 +119,5 @@ If you're deploying the EDOT Collector using the Elastic Helm charts, try to:
 
 ## Resources
 
-* [Upstream Collector configuration documentation](https://opentelemetry.io/docs/collector/configuration/)  
+* [Collector configuration documentation](https://opentelemetry.io/docs/collector/configuration/)
 * [Elastic Stack Kubernetes Helm Charts](https://github.com/elastic/helm-charts)

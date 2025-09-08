@@ -22,7 +22,7 @@ For a contextual logs experience, set the **Solution view** for your space to **
 
 :::{image} ../../images/observability-log-explorer.png
 :alt: Screen capture of Discover
-:class: screenshot
+:screenshot:
 :::
 
 ## Required {{kib}} privileges [logs-explorer-privileges]

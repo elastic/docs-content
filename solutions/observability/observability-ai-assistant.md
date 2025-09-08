@@ -91,14 +91,14 @@ The AI Assistant connects to one of these supported LLM providers:
    - The provider's API endpoint URL
    - Your authentication key or secret
 
-::::{important}
-    {{obs-ai-assistant}} doesn’t support connecting to a private LLM. Elastic doesn’t recommend using private LLMs with the AI Assistant.
-::::
-
 ### Elastic Managed LLM [elastic-managed-llm-obs-ai-assistant]
 
 :::{include} ../_snippets/elastic-managed-llm.md
 :::
+
+### Connect to a custom local LLM
+
+[Connect to LM Studio](/solutions/observability/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
 
 ## Add data to the AI Assistant knowledge base [obs-ai-add-data]
 
@@ -452,8 +452,8 @@ When all rules are disabled (the default), data is forwarded unchanged.
 
 When an anonymization rule is enabled in the [AI Assistant settings](#obs-ai-settings), every message in the request (system prompt, message content, function call arguments/responses) is run through an *anonymization pipeline* before it leaves Kibana:
 
-1. Each enabled **rule** scans the text and replaces any match with a deterministic token such as  
-   `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.  
+1. Each enabled **rule** scans the text and replaces any match with a deterministic token such as
+   `EMAIL_ee4587b4ba681e38996a1b716facbf375786bff7`.
    The prefix (`EMAIL`, `PER`, `LOC`, …) is the *entity class*; the suffix is a deterministic hash of the original value.
 2. The fully masked conversation is sent to the LLM.
 3. After the LLM responds, the original values are restored so the user sees deanonymized text and any persisted conversation history stores the original content. Deanonymization information is stored with the conversation messages to enable the UI to highlight anonymized content.
@@ -506,13 +506,13 @@ The following example shows the anonymized content highlighted in the chat windo
 ### Requirements [obs-ai-anonymization-requirements]
 Anonymization requires the following:
 
-* **Advanced Settings privilege**: Necessary to edit the configuration and enable rules.  
+* **Advanced Settings privilege**: Necessary to edit the configuration and enable rules.
   Once saved, *all* users in the same **Space** benefit from the anonymization (the setting is [space-aware](../../deploy-manage/manage-spaces.md)).
 * **ML privilege and resources**: If you enable a rule of type NER, you must first [deploy and start a named-entity-recognition model](/explore-analyze/machine-learning/nlp/ml-nlp-ner-example.md#ex-ner-deploy) and have sufficient ML capacity.
 
 ::::{important}
-The anonymization pipeline has only been validated with Elastic’s English model  
-[elastic/distilbert-base-uncased-finetuned-conll03-english](https://huggingface.co/elastic/distilbert-base-uncased-finetuned-conll03-english).  
+The anonymization pipeline has only been validated with Elastic’s English model
+[elastic/distilbert-base-uncased-finetuned-conll03-english](https://huggingface.co/elastic/distilbert-base-uncased-finetuned-conll03-english).
 Results for other languages or models may vary.
 ::::
 
@@ -520,9 +520,9 @@ Results for other languages or models may vary.
 Anonymization has the following limitations:
 
 * **Performance (NER)**: Running an NER model can add latency depending on the request. To improve performance of the model, consider scaling up your ML nodes by adjusting deployment parameters: increase `number_of_allocations` for better throughput and `threads_per_allocation` for faster individual requests. For details, refer to [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment).
-* **Structured JSON**: The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax. 
+* **Structured JSON**: The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax.
 * **False negatives / positives**: No model or pattern is perfect. Model accuracy may vary depending on model and input.
-* **JSON malformation risk**: Both NER inference and regex rules can potentially create malformed JSON when anonymizing JSON data such as function responses. This can occur by replacing text across character boundaries, which may break JSON structure causing the whole request to fail. If this occurs, you may need to adjust your regex pattern or disable the NER rule.
+* **JSON malformation risk** {applies_to}`{stack: "removed 9.1.3", serverless: "removed"}`: Both NER inference and regex rules can potentially create malformed JSON when anonymizing JSON data such as function responses. This can occur by replacing text across character boundaries, which may break JSON structure causing the whole request to fail. If this occurs, you may need to adjust your regex pattern or disable the NER rule.
 
 
 ## Known issues [obs-ai-known-issues]
@@ -530,3 +530,8 @@ Anonymization has the following limitations:
 ### Token limits [obs-ai-token-limits]
 
 Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](kibana://reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).
+
+
+## AI Assistant for Security
+
+The capabilities and ways to interact with AI Assistant can differ for each solution. For more information about how AI Assistant works in {{elastic-sec}}, refer to [AI Assistant for Security](/solutions/security/ai/ai-assistant.md).

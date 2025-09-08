@@ -20,19 +20,19 @@ To create a role, open the menu, then click **Stack Management > Roles** and cli
 
 ## Required permissions [_required_permissions_7]
 
-The `manage_security` [cluster privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) is required to access role management.
+The `manage_security` [cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) is required to access role management.
 
 ## Cluster privileges [adding_cluster_privileges]
 
 Cluster privileges grant access to monitoring and management features in {{es}}. They also enable [Stack Management](/deploy-manage/index.md) capabilities in {{kib}}.
 
-Refer to [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) for a complete description of available options.
+Refer to [cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) for a complete description of available options.
 
 ## Index privileges [adding_index_privileges]
 
 Each role can grant access to multiple data indices, and each index can have a different set of privileges. We recommend granting the `read` and `view_index_metadata` privileges to each index that you expect your users to work with in {{kib}}.
 
-Refer to [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for a complete description of available options.
+Refer to [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for a complete description of available options.
 
 Document-level and field-level security affords you even more granularity when it comes to granting access to your data. With document-level security (DLS), you can write an {{es}} query to describe which documents this role grants access to. With field-level security (FLS), you can instruct {{es}} to grant or deny access to specific fields within each document.
 

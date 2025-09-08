@@ -95,7 +95,7 @@ The final step is to use the {{motlp}} endpoint and your Elastic API key to send
 ::::{tab-set}
 
 :::{tab-item} OpenTelemetry Collector example
-To send data to the {{motlp}} from the {{edot}} Collector or the upstream Collector, configure the `otlp` exporter:
+To send data to the {{motlp}} from the {{edot}} Collector or the contrib Collector, configure the `otlp` exporter:
 
 ```yaml
 exporters:
@@ -109,7 +109,7 @@ Set the API key as an environment variable or directly in the configuration as s
 :::
 
 :::{tab-item} OpenTelemetry SDK example
-To send data to the {{motlp}} from {{edot}} SDKs or upstream SDKs, set the following variables in your application's environment:
+To send data to the {{motlp}} from {{edot}} SDKs or contrib SDKs, set the following variables in your application's environment:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
