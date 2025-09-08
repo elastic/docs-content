@@ -106,7 +106,7 @@ Note that agents in a rollout period have the status `Updating` until the upgrad
 ## Schedule an upgrade [schedule-agent-upgrade]
 
 ::::{note}
-This feature is only available for certain subscription levels. For more information, check **Scheduled agent binary upgrades** on the [{{stack}} subscriptions](https://www.elastic.co/subscriptions) page.
+This feature is available only for certain subscription levels. For more information, check **Scheduled agent binary upgrades** on the [{{stack}} subscriptions](https://www.elastic.co/subscriptions) page.
 ::::
 
 1. On the **Agents** tab, select one or more agents, and click **Actions**.
@@ -229,7 +229,7 @@ stack: ga 9.1.0
 ```
 
 ::::{note}
-This feature is only available for certain subscription levels. For more information, check **Automatic agent binary upgrades** on the [{{stack}} subscriptions](https://www.elastic.co/subscriptions) page.
+This feature is available only for certain subscription levels. For more information, check **Automatic agent binary upgrades** on the [{{stack}} subscriptions](https://www.elastic.co/subscriptions) page.
 ::::
 
 To configure an automatic rollout of a new minor or patch version to a percentage of the agents enrolled in your {{agent}} policy. follow these steps:
