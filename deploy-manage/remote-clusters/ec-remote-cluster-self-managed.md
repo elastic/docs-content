@@ -91,7 +91,7 @@ If you later need to update the remote connection with different permissions, yo
 3. Access the **Security** page of the deployment.
 4. Select **Remote Connections > Add trusted environment** and choose **Self-managed**. Then click **Next**.
 5. Select **API keys** as authentication mechanism and click **Next**.
-6. Add a the API key:
+6. Add the API key:
 
     1. Fill both fields.
 
