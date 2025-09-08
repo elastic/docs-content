@@ -23,7 +23,7 @@ You can no longer configure SMS as a multifactor authentication method.
 
 ::::{important} 
 
-Elastic strongly recommends that you enable multiple methods so that you can still access your account if you lose access to one method.
+For enhanced security, we recommend you configure at least two different authentication methods. This redundancy ensures that losing access to one method doesn't impair access to your {{ecloud}} account.
 
 ::::
 
