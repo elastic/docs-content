@@ -40,6 +40,8 @@ To use the {{motlp}} you need the following:
 :::::
 
 :::::{step} Locate your {{motlp}}
+% This anchor already exists. Hardcoding it here so i
+:anchor: locate-your-motlp
 
 To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
@@ -100,10 +102,13 @@ To send data to the {{motlp}} from the {{edot}} Collector or the contrib Collect
 ```yaml
 exporters:
   otlp:
-    endpoint: https://<motlp-endpoint>
+    endpoint: https://<motlp-endpoint> <1>
     headers:
-      Authorization: ApiKey <your-api-key>
+      Authorization: ApiKey <your-api-key> <2>
 ```
+
+1. See [Step 2](#locate-your-motlp)
+2. See [Step 3](##create-an-api-key)
 
 Set the API key as an environment variable or directly in the configuration as shown in the example.
 :::
@@ -112,9 +117,12 @@ Set the API key as an environment variable or directly in the configuration as s
 To send data to the {{motlp}} from {{edot}} SDKs or contrib SDKs, set the following variables in your application's environment:
 
 ```bash
-export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>"
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>" <1>
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>" <2>
 ```
+
+1. See [Step 2](#locate-your-motlp)
+2. See [Step 3](##create-an-api-key)
 
 Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`. For example:
 
@@ -141,10 +149,13 @@ Mount the secret as an environment variable or file, then reference it in your O
 ```yaml
 exporters:
   otlp:
-    endpoint: https://<motlp-endpoint>
+    endpoint: https://<motlp-endpoint> <1>
     headers:
-      Authorization: ${API_KEY}
+      Authorization: ${API_KEY} <2>
 ```
+
+1. See [Step 2](#locate-your-motlp)
+2. See [Step 3](##create-an-api-key)
 
 And in your deployment spec:
 
