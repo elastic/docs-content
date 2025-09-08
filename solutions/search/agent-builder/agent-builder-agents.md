@@ -31,5 +31,5 @@ To create a new agent:
    - Set the **Display name** that users will see
    - Add a **Display description** to explain the agent's purpose
    - Choose an **Avatar color** and **Avatar symbol** (both optional)
-4. Switch to the **Tools** tab to assign [tools](/docs/chat/tools.md) to the agent
+4. Switch to the **Tools** tab to assign [tools](tools.md) to the agent
 5. Click the **Save** button to create your agent

@@ -16,7 +16,7 @@ applies_to:
 - **Interactive chat interface**: Ask questions about your data using natural language in the Chat UI.
 - **Agent-based architecture**: Configure AI assistants with customizable behaviors and tool access.
 - **Modular and extensible tools**: Extend your system with tools for {{es}} data access and manipulation.
-- **ES|QL integration**: Create and execute [ES|QL]([{{esql}}](elasticsearch://reference/query-languages/esql.md))-powered tools for specialized data queries.
+- **ES|QL integration**: Create and execute [ES|QL](elasticsearch://reference/query-languages/esql.md)-powered tools for specialized data queries.
 - **MCP server**: Connect external MCP clients to access chat tools through a standardized interface.
 - **A2A server**: Enable agent-to-agent communication following the A2A protocol specification.
 - **Programmatic APIs**: Create, manage, and execute tools and agents through Kibana APIs.
