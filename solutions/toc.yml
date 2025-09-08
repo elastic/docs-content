@@ -45,6 +45,14 @@ toc:
               - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
               - file: search/semantic-search/cohere-es.md
           - file: search/using-openai-compatible-models.md
+      - file: search/elastic-agent-builder.md
+        children:
+          - file: search/agent-builder/get-started.md
+          - file: search/agent-builder/conversations.md
+          - file: search/agent-builder/agents.md
+          - file: search/agent-builder/tools.md
+          - file: search/agent-builder/programmatic-access.md
+          - file: search/agent-builder/limitations-known-issues.md
       - file: search/rag.md
         children:
           - file: search/rag/playground.md
