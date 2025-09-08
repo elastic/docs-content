@@ -35,7 +35,7 @@ The **Conversations** UI is the synchronous chat interface for interacting with 
 
 Agents are specialized assistants powered by large language models (LLMs) that use tools to answer questions, take action, or support workflows. Each agent translates natural language requests into specific actions using the tools assigned to it.
 
-[**Learn more about agents**](agent-builder/agents.md)
+[**Learn more about agents**](agent-builder/agent-builder-agents.md)
 
 ### Tools [tools-concept]
 
