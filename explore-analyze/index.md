@@ -21,7 +21,7 @@ The Elasticsearch platform and its UI, also known as Kibana, provide a comprehen
 
 If you'd like to explore some features but don't have data ready yet, some sample data sets are available in {{kib}} for you to install and play with.
 
-### Add sample data [gs-get-data-into-kibana]
+## Add sample data [gs-get-data-into-kibana]
 
 Sample data sets come with sample visualizations, dashboards, and more to help you explore {{kib}} before you ingest or add your own data.
 
