@@ -5,7 +5,6 @@ toc:
     children:
       - file: search/get-started.md
         children:
-          - file: search/run-elasticsearch-locally.md
           - file: search/serverless-elasticsearch-get-started.md
           - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
@@ -13,7 +12,6 @@ toc:
               - file: search/get-started/index-basics.md
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
-      - file: search/api-quickstarts.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -398,6 +396,7 @@ toc:
         children:
           - file: observability/logs/get-started-with-system-logs.md
           - file: observability/logs/stream-any-log-file.md
+          - file: observability/logs/stream-any-log-file-using-edot-collector.md
           - file: observability/logs/stream-application-logs.md
             children:
               - file: observability/logs/plaintext-application-logs.md
@@ -414,6 +413,8 @@ toc:
           - file: observability/logs/log-data-sources.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
+            children:
+              - file: observability/logs/logs-index-template-defaults.md
           - file: observability/logs/streams/streams.md
             children:
             - file: observability/logs/streams/management/extract.md
@@ -676,6 +677,7 @@ toc:
           - file: security/explore/network-page.md
             children:
               - file: security/explore/configure-network-map-data.md
+              - file: security/explore/configure-dns-histogram.md
           - file: security/explore/users-page.md
       - file: security/advanced-entity-analytics.md
         children:
