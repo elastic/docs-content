@@ -52,7 +52,7 @@ By default, maintenance windows affect all categories of rules. The category-spe
 
 {applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` The option to specify rule categories for a maintenance window is no longer available. Maintenance windows apply to all rule types.
 
-Note that existing maintenance windows will still be applied to rule categories that were specified. However, if you edit a maintenance window after upgrading or using the latest version of {{serverless-short}}, the rule categories will be removed and the maintenance window will be applied to all rules types.
+Note that existing maintenance windows are still applied to rule categories that were specified. However, if you edit a maintenance window after upgrading or using the latest version of {{serverless-short}}, specified rule categories are removed and the maintenance window will be applied to all rules types.
 
 
 ::::
