@@ -1,5 +1,5 @@
 ---
-navigation_title: Elasticsearch
+navigation_title: Elasticsearch projects
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-billing.html
 applies_to:
@@ -10,7 +10,7 @@ products:
 description: Learn about how costs for Elasticsearch Serverless projects are calculated, and strategies you can use to lower your costs.
 ---
 
-# {{es}} billing dimensions [elasticsearch-billing]
+# {{es-serverless}} billing dimensions [elasticsearch-billing]
 
 {{es-serverless}} projects are priced based on consumption of the underlying infrastructure that supports your use case with the performance characteristics you need.
 Measurements are in virtual compute units (VCUs).
