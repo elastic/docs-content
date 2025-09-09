@@ -32,9 +32,9 @@ These are the most common deployment types and their main features:
 
 ## Advanced options
 
-* **[Self-managed](/deploy-manage/deploy/self-managed.md)**: This approach allows you to install, operate, and maintain the {{stack}} on your own hardware, whether on-premises or in your private cloud. It provides maximum control over your environment.
-* **[{{ece}}](/deploy-manage/deploy/cloud-enterprise.md)**: This Elastic self-managed offering allows you to provision, manage, and monitor {{es}} and {{kib}} at any scale, on any infrastructure, while managing everything from a single console.
-* **[{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md)**: This extends Kubernetes by providing an official operator for deploying and managing Elastic products. It's ideal if you want to run and orchestrate Elastic on your own Kubernetes platform.
+* **[Self-managed](/deploy-manage/deploy/self-managed.md)**: This approach allows you to install, operate, and maintain components of the {{search-platform}} on your own hardware, whether on-premises or in your private cloud. It provides maximum control over your environment.
+* **[{{ece}}](/deploy-manage/deploy/cloud-enterprise.md)**: This Elastic self-managed offering allows you to provision, manage, and monitor components of the {{search-platform}} at any scale, on any infrastructure, while managing everything from a single console.
+* **[{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md)**: This extends Kubernetes by providing an official operator for deploying and managing components of the {{search-platform}}. It's ideal if you want to run and orchestrate Elastic on your own Kubernetes platform.
 
 :::{tip}
 Refer to [Deploy and manage](/deploy-manage/index.md) for detailed information and guidance on selecting the right deployment for your needs.
