@@ -17,7 +17,7 @@ products:
 When enabled, this feature keeps integrations and custom assets synchronized between your main {{es}} cluster and one or more remote {{es}} clusters. 
 
 ::::{note}
-Automatic integrations synchronization is only available with certain subscriptions. For more information, refer to [Subscriptions](https://www.elastic.co/subscriptions).
+This feature is available only for certain subscription levels. For more information, check **Fleet Multi-Cluster support** on the [Elastic subscriptions](https://www.elastic.co/subscriptions) page.
 ::::
 
 ## Requirements

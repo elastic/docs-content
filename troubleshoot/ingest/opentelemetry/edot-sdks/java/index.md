@@ -52,7 +52,7 @@ As debugging output is verbose and might produce noticeable overhead on the appl
 - In case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging).
 - If you need details on the captured data, use [per-signal debugging](#per-signal-debugging).
 
-In case of missing data, check first that the technology used in the application is supported in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](opentelemetry://reference/edot-sdks/java/supported-technologies.md).
+In case of missing data, check first that the technology used in the application is supported in [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](opentelemetry://reference/edot-sdks/java/supported-technologies.md).
 
 ### Agent debugging
 
@@ -122,7 +122,7 @@ Executing the agent jar as an application with `java -jar elastic-otel-javaagent
 
 Also, you can inspect the `Implementation-Version` entry in `META-INF/MANIFEST.MF` file of the agent jar, for example with `unzip -p elastic-otel-javaagent.jar META-INF/MANIFEST.MF|grep 'Implementation-Version'`.
 
-## Versions of the OpenTelemetry upstream dependencies
+## Versions of the OpenTelemetry contrib dependencies
 
 Because EDOT Java is a distribution of [OpenTelemetry Java instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation), it includes the following dependencies:
 
