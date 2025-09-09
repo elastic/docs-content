@@ -9,7 +9,7 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
-## July 7, 2025 [serverless-changelog-07072025]
+## July 8, 2025 [serverless-changelog-07072025]
 
 ### Features and enhancements [serverless-changelog-07072025-features-enhancements]
 
