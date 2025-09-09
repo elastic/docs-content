@@ -86,7 +86,7 @@ A: Request for project backups or restores is currently unsupported, and we are 
 **Q: How can I create {{serverless-full}} service accounts?**  
 A: Create API keys for service accounts in your {{serverless-short}} projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
 
-**Q: What compliance and privacy standards does {{serverless-full}} adhere to?**
+**Q: What compliance and privacy standards does {{serverless-full}} adhere to?**  
 A: Alongside the entire Elastic platform, {{serverless-full}} is independently audited and certified to meet industry-leading compliance and privacy standards. Refer to the [Elastic Trust Center](https://www.elastic.co/trust) for more information. Further details about specific standards are available on our [roadmap](https://www.elastic.co/cloud/serverless/roadmap).
 
 ### Project lifecycle and support
