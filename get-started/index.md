@@ -9,6 +9,9 @@ products:
   - id: elastic-stack
   - id: observability
   - id: security
+applies_to:
+  serverless:
+  stack:
 ---
 
 # Elastic fundamentals

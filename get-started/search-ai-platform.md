@@ -7,6 +7,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
 products:
   - id: elastic-stack
+applies_to:
+  serverless:
+  stack:
 ---
 # {{search-platform}}
 
