@@ -203,7 +203,8 @@ The response shows five sample weather data documents.
 :::
 
 :::{tip}
-If you get an error about timestamp values, check the error response for the valid timestamp range.
+If you get an error about timestamp values, check the error response for the valid timestamp range. For more details, refer to [](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#tsds-accepted-time-range).
+
 :::
 
 ::::
@@ -317,7 +318,6 @@ This quickstart introduced the basics of time series data streams. To learn more
 
 * [](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
 * [](/manage-data/data-store/data-streams/set-up-tsds.md)
-* [Index settings](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series), including `index.look_ahead_time` and `index.look_back_time` for adjusting valid timestamp ranges 
 
 For more information about the APIs used in this quickstart, review the {{es}} API reference documentation:
 
