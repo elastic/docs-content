@@ -11,17 +11,20 @@ products:
 # {{search-platform}}
 
 Elastic provides a fusion of search technology and artifical intelligence in the [{{search-platform}}](https://www.elastic.co/platform).
-It is the foundation for Elastic's two out-of-the-box [solutions](/get-started/introduction.md) and is the platform of choice for developers seeking to build next generation, generative AI powered applications and services.
+It is the foundation for Elastic's [solutions](/get-started/introduction.md) and for developers seeking to build next generation, generative AI powered applications and services.
 
-The {{search-platform}} evolved from the {{stack}} and continues to be open by design.
-It's a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then store, search, analyze, and visualize it.
-
-You have many options for deploying the {{search-platform}} to suit your needs, which are summarized in [](/get-started/deployment-options.md).
+The {{search-platform}} is a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then store, search, analyze, and visualize it.
 
 :::{tip}
+The components that share the same versioning scheme are often referred to as the _{{stack}}_. Learn more in [](/get-started/versioning-availability.md).
+:::
+
+You have many options for deploying the {{search-platform}} to suit your needs, which are summarized in [](/get-started/deployment-options.md).
+<!--
+TBD: Is this necessary to cover here? How can we make this easier to understand and navigation?
 To learn how to deploy {{es}}, {{kib}}, and supporting orchestration technologies, refer to [](/deploy-manage/index.md).
 To learn how to deploy additional ingest and consume components, refer to the documentation for the component.
-:::
+-->
 
 Continue reading to learn how these components work together.
 

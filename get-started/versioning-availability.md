@@ -13,9 +13,12 @@ Learn how Elastic products are versioned, the lifecycle of features, and how to 
 
 ## Understanding versioning
 
-Most Elastic products, like {{es}} or {{kib}}, share the same versioning pattern, based on the {{stack}}. Orchestrators such as {{ece}} and {{eck}}, and other tools such as code clients and SDKs, are versioned independently of the Elastic Stack. The {{ecloud}} console and {{serverless-short}} projects are always automatically updated with the latest changes.
+Many components of the [{{search-platform}}](/get-started/search-ai-platform.md) (such as {{es}} and {{kib}}) share the same versioning pattern.
+In the documentation, this group of components is typically referred to as the {{stack}}.
 
-The Elastic Stack products use semantic versioning in the `X.Y.Z` format, such as `9.0.0`.
+Orchestrators such as {{ece}} and {{eck}}, and other tools such as code clients and SDKs, are versioned independently of the {{search-platform}}. The {{ecloud}} console and {{serverless-short}} projects are always automatically updated with the latest changes.
+
+The components of the {{search-platform}} generally use semantic versioning in the `X.Y.Z` format, such as `9.0.0`.
 
 | Version | Description |
 | ----- | ----- |
@@ -23,7 +26,7 @@ The Elastic Stack products use semantic versioning in the `X.Y.Z` format, such a
 | Minor (Y) | Introduces new features and improvements, while maintaining backward compatibility with the previous minor versions within the same major version. Upgrading to a new minor version should not require any changes to your existing setup. |
 | Patch (Z) | Contains bug fixes and security updates, without introducing new features or breaking changes. Upgrading to a new patch version should be seamless and not require any changes to your existing setup. |
 
-Understanding Elastic Stack versioning is essential for [upgrade planning](/deploy-manage/upgrade.md) and ensuring compatibility.
+Understanding versioning is essential for [upgrade planning](/deploy-manage/upgrade.md) and ensuring compatibility, particularly in the self-managed [deployment option](/get-started/deployment-options.md).
 
 ## Availability of features
 
@@ -52,11 +55,7 @@ Features available to you can differ based on deployment type, product lifecycle
 
 | Category | Example |
 | ----- | ----- |
-| Elastic Stack versions | [{{search-platform}}](/get-started/search-ai-platform.md) version 9.0.0 and later, including 9.1.0 |
+| Platform product or component versions | {{stack}} version 9.0.0 and later, including 9.1.0 |
 | Deployment types | [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md), [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), and [Self-managed deployments](/deploy-manage/deploy/self-managed.md) |
 | Orchestrator versions | [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) 4.0.0 and later, [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) 3.0.0 and later |
 | Serverless project types | {{es}}, Elastic {{observability}}, and {{elastic-sec}} |
-
-
-
-

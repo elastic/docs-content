@@ -1,10 +1,10 @@
 # How to use the documentation
 
-Our documentation is organized to guide you through your journey with Elastic, from learning the basics to deploying and managing complex solutions. 
+Our documentation is organized to guide you through your journey with Elastic, from learning the basics to deploying and managing complex solutions.
 
 Here is a detailed breakdown of the documentation structure:
 
-* [**Elastic fundamentals**](/get-started/index.md): Understand the basics of Elasticsearch and the Elastic Stack, deployment options, and key use cases.  
+* [**Elastic fundamentals**](/get-started/index.md): Understand the basics about the deployment options, platform, and solutions, and features of the documentation.  
 * [**Solutions and use cases**](/solutions/index.md): Learn use cases, evaluate, and implement Elastic's solutions: Observability, Search, and Security.  
 * [**Manage data**](/manage-data/index.md): Learn about data store primitives, ingestion and enrichment, managing the data lifecycle, and migrating data.  
 * [**Explore and analyze**](/explore-analyze/index.md): Get value from data through querying, visualization, machine learning, and alerting.  
@@ -13,13 +13,17 @@ Here is a detailed breakdown of the documentation structure:
 * [**Troubleshoot**](/troubleshoot/index.md): Identify and resolve problems.  
 * [**Extend and contribute**](/extend/index.md): How to contribute to or integrate with Elastic, from open source to plugins to integrations.  
 * [**Release notes**](/release-notes/index.md): Contains release notes and changelogs for each new release.  
-* [**Reference**](/reference/index.md): Reference material for core tasks and manuals for optional products. 
+* [**Reference**](/reference/index.md): Reference material for core tasks and manuals for optional products.
 
 ## Applicability badges
 
-Because Elastic products can be deployed in different ways (like on Elastic Cloud or in your own data center) and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
+Because Elastic products can be deployed in different ways (like on {{ecloud}} or in your own data center) and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
 
 These badges appear at the top of a page or section and tell you which products, deployment models, and versions the content applies to. They also indicate the maturity level of a feature, such as **beta**, **technical preview**, or **generally available (GA)**. This system ensures that you can identify content specific to your environment and version.
+
+:::{tip}
+An {{stack}} badge indicates that a page applies to [{{search-platform}}](/get-started/search-ai-platform.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it will have both {{serverless-short}} and Stack badges.
+:::
 
 ## Page options
 
@@ -47,9 +51,12 @@ We clearly mark content added or changed in a specific version using availabilit
 
 This means the feature is:
 
-* Available on Elastic Stack  
-* Generally Available (GA)  
+* Generally Available (GA) in the [{{search-platform}}](/get-started/search-ai-platform.md) across all deployment options except {{serverless-full}}
 * Introduced in version 9.1.0
+
+:::{tip}
+If a page applies to all deployment options including {{serverless-full}}, it will have both {{serverless-short}} and Stack badges.
+:::
 
 ### Serverless example
 
@@ -57,8 +64,8 @@ This means the feature is:
 
 This means the feature is:
 
-* Generally Available for Elasticsearch Serverless projects  
-* Beta for Elastic Security Serverless projects
+* Generally Available for {{es-serverless}} projects  
+* Beta for {{sec-serverless}} projects
 
 ### Elastic Cloud Enterprise example
 
@@ -155,7 +162,7 @@ Find the documentation for your Elastic product versions or releases.
 | [Elastic APM AWS Lambda extension](https://www.elastic.co/docs/release-notes/apm/aws-lambda/release-notes) | 1.0.0 and later |
 | [Elastic APM Attacher for Kubernetes](https://www.elastic.co/docs/reference/apm/k8s-attacher) | 1.1.3 |
 
-## Glossary 
+## Glossary
 
 To help you understand the terminology used throughout our documentation, we provide a [glossary of common Elastic terms](/reference/glossary/index.md). This is a great resource for new users or anyone looking to clarify the meaning of a specific term.
 
