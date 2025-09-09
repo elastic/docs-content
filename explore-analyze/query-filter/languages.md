@@ -9,7 +9,7 @@ products:
   
 # Query languages [search-analyze-query-languages]
 
-{{es}} provides a number of query languages for interacting with your data. You can use these languages in your requests to {{es}} and {{kib}} APIs, or using the {{kib}} interface.
+{{es}} provides a number of query languages for interacting with your data. You can use these languages programmatically when working with {{es}} and {{kib}} APIs in your application, or interactively using the {{kib}} UI.
 
 
 | Name | Description | Use cases | API endpoint |
