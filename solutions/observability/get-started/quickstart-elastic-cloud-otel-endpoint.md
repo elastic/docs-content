@@ -4,6 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
 applies_to:
   serverless:
+  deployment:
+    ess: preview 9.2
 ---
 
 # Quickstart: Send data to the {{motlp}}
@@ -15,12 +17,7 @@ This endpoint is designed for the following use cases:
 * Logs & Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
 
-In this quickstart guide, you'll learn how to use the {{motlp}} to send logs, metrics, and traces to Elastic.
-
-## Prerequisites
-
-* An {{obs-serverless}} project. To learn more, refer to [create an Observability project](/solutions/observability/get-started.md).
-* A system forwarding logs, metrics, or traces in OTLP (any EDOT Collector or SDK—EDOT or community).
+Keep reading to learn how to use the {{motlp}} to send logs, metrics, and traces to Elastic.
 
 ## Get started
 
@@ -34,7 +31,7 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 
 To use the {{motlp}} you need the following:
 
-* An Elastic Observability Serverless project. Security projects are not yet supported.
+* An {{obs-serverless}} or an {{ech}} project. Security projects are not yet supported.
 * An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include the OpenTelemetry Collector (EDOT, Contrib, or other distributions), OpenTelemetry SDKs (EDOT, upstream, or other distributions), or any other forwarder that supports the OTLP protocol.
 
 :::::
@@ -43,22 +40,22 @@ To use the {{motlp}} you need the following:
 
 To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
+::::{tab-set}
+
+:::{tab-item} Elastic Cloud Serverless
 1. In {{ecloud}}, create an Observability project or open an existing one.
 2. Select your project's name and then select **Manage project**.
 3. Locate the **Connection alias** and select **Edit**.
 4. Copy the **Managed OTLP endpoint** URL.
+:::
 
-% ## commented out until mOTLP on ECH is available
-% ### Elastic Cloud on Elasticsearch ({{ech}})
-% 1. Open your deployment in the Elastic Cloud console.
-% 2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
-% 3. Copy the endpoint URL shown.
-% ## Self-Managed
-% For self-managed environments, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
-%
-% :::{note}
-% Please reach out to support, and then Engineering can look into increasing it based on the license tier or for experimentation purposes.
-% :::
+:::{tab-item} Elastic Cloud Hosted
+1. Open your deployment in the Elastic Cloud console.
+2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
+3. Copy the endpoint URL shown.
+:::
+
+::::
 
 :::::
 
@@ -181,13 +178,17 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data. This marks a significant improvement over the [existing functionality](/solutions/observability/apm/use-opentelemetry-with-apm.md), which primarily focuses on traces and the APM use case.
 
+## Self-managed environments
+
+To send data to the {{motlp}} from a self-managed environment, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
+
 ## Troubleshoot
 
 The following sections provide troubleshooting information for the {{motlp}}.
 
-### I don't have a Collector or SDK running
+### You don't have a Collector or SDK running
 
-Don't have a collector or SDK running? Spin up an EDOT collector in just a few steps:
+Don't have a collector or SDK running? Spin up an EDOT collector in a few steps:
 
 * [Kubernetes Quickstart](opentelemetry://reference/quickstart/serverless/k8s.md)
 * [Hosts & VMs Quickstart](opentelemetry://reference/quickstart/serverless/hosts_vms.md)
@@ -205,9 +206,9 @@ Exporting failed. Dropping data.
 
 You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK.
 
-### Error: too many requests
+### Error: Too many requests
 
-The Managed OTLP endpoint has per-project rate limits in place. If you hit this limit, reach out to our [support team](https://support.elastic.co). Refer to [Rate limiting](opentelemetry://reference/motlp.md#rate-limiting) for more information.
+The Managed OTLP endpoint has per-project rate limits in place. If you reach this limit, reach out to our [support team](https://support.elastic.co). Refer to [Rate limiting](opentelemetry://reference/motlp.md#rate-limiting) for more information.
 
 ## Provide feedback
 
@@ -215,6 +216,6 @@ Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in o
 
 For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
 
-## What's next?
+## What's next
 
 Visualize your OpenTelemetry data. Learn more in [](/solutions/observability/otlp-visualize.md).
