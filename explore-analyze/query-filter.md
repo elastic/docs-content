@@ -15,7 +15,7 @@ products:
 
 * **{{es}} makes JSON documents searchable and aggregatable.** The documents are stored in an [index](/manage-data/data-store/index-basics.md) or [data stream](/manage-data/data-store/data-streams.md), which represent one type of data.
 * **Searchable means that you can find documents through multiple retrieval methods.** This includes filtering by yes/no conditions, keyword and full-text search with relevance scoring, and vector/semantic search to find content based on meaning rather than exact terms. {{kib}} provides many ways for you to construct these searches, from simple filters in dashboards to relevance-ranked queries in its search interfaces.
-* **Aggregatable means that you can extract summaries from matching documents.** The simplest aggregation is **count**, and it is frequently used in combination with the **date histogram**, to see count over time. The **terms** aggregation shows the most frequent values.
+* **Aggregatable means that you can compute statistics and summaries from matching documents to reveal patterns and insights in your dataset.** The simplest aggregation is **count**, and it is frequently used in combination with the **date histogram**, to see count over time. The **terms** aggregation shows the most frequent values.
 
 ## Querying
 
