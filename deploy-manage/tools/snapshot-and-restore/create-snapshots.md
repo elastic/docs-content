@@ -194,9 +194,9 @@ You can update an existing {{slm-init}} policy after it's created. To manage {{s
 For example, you can change the schedule, or snapshot retention-related configurations.
 
 
-![change schedule](/manage-data/images/elasticsearch-reference-change-slm-schedule.png)
+![change schedule](/deploy-manage/images/elasticsearch-reference-change-slm-schedule.png)
 
-![change snapshot retention](/manage-data/images/elasticsearch-reference-change-slm-snapshot-retention.png)
+![change snapshot retention](/deploy-manage/images/elasticsearch-reference-change-slm-snapshot-retention.png)
 
 
 You can also update an {{slm-init}} policy using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm), as described in [Create an {{slm-init}} policy](#create-slm-policy).
@@ -258,7 +258,7 @@ GET _slm/policy/nightly-snapshots
 
 To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the trash icon under the **Actions** column. To delete multiple snapshots at once, select the snapshots from the list and then click **Delete snaphshots**. 
 
-![delete snapshot](/manage-data/images/elasticsearch-reference-delete-snapshots.png)
+![delete snapshot](/deploy-manage/images/elasticsearch-reference-delete-snapshots.png)
 
 You can also use the [delete snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-delete).
 

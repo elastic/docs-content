@@ -82,7 +82,7 @@ To create a space:
 3. If you selected the **Classic** solution view, you can customize the **Feature visibility** as you need it to be for that space.
 
    :::{note}
-   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](elasticsearch://reference/elasticsearch/roles.md).
    :::
 
 4. Customize the avatar of the space to your liking.
