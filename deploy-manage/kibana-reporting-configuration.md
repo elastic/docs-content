@@ -42,6 +42,25 @@ Configuring reporting in your environment involves two main areas:
 
 Depending on your license, the type of users, and whether you prefer using the {{kib}} UI or API, there are multiple ways to [grant access to reporting functionality](#grant-user-access).
 
+::::{admonition} Generate reports in a cross-cluster search environment
+
+To generate reports in a cross-cluster search environment, ensure your role has the appropriate cluster and index privileges to access indices in the remote and local cluster. This may differ based on whether you are using an API key for authentication or directly authenticating as with your user credentials. For more information, refer to [Configure privileges for cross-cluster replication](remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccr).
+
+To provide an example, here is a role that has access to both the index in the remote cluster (`general:filebeat-*`) and the index in the local cluster (`filebeat-*`). The `read_cross_cluster` privilege allows cross-cluster search access to the remote index.
+
+```yaml
+{
+ "indices": [
+  {
+   "names": [ "general:filebeat-*-isam*", "filebeat-*-isam*" ],
+   "privileges": [ "read", "view_index_metadata", "read_cross_cluster" ]
+  }
+ ]
+}
+```
+
+::::
+
 ### Applying system configuration
 
 The following configurations are required at {{es}}, {{kib}}, and OS levels to support {{report-features}}.
