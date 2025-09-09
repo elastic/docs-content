@@ -15,9 +15,6 @@ products:
 
 # Run API requests with Console [console-kibana]
 
-$$$import-export-console-requests$$$
-
-
 **Console** is an interactive UI for sending requests to [{{es}} APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md) and [{{kib}} APIs](https://www.elastic.co/docs/api) and viewing their responses.
 
 :::{image} /explore-analyze/images/kibana-console.png
