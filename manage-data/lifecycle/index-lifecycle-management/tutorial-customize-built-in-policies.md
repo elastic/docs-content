@@ -142,6 +142,10 @@ To apply your new {{ilm-init}} policy to the `logs` index template, create or ed
 
 A `*@custom` component template allows you to customize the mappings and settings of managed index templates, without having to override managed index templates or component templates. This type of component template is automatically picked up by the index template. [Learn more](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
 
+:::{tip}
+If you want your {{ilm-init}} changes to apply only to specific indices, you can create a custom index template directly instead of modifying the custom component template. Use the **Index management** page in {{kib}} or the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to create a new template.
+:::
+
 1. Click on the **Component Template** tab and click **Create component template**.
 2. Under **Logistics**, name the component template `logs@custom`.
 3. Under **Index settings**, set the {{ilm-init}} policy name created in the previous step:
