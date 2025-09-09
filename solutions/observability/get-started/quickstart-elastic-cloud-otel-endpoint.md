@@ -38,7 +38,7 @@ To use the {{motlp}} you need the following:
 
 :::::{step} Locate your {{motlp}}
 
-To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
+To retrieve your {{motlp}} endpoint address, follow these steps:
 
 ::::{tab-set}
 
