@@ -22,7 +22,7 @@ Metrics tools and solutions collect large amounts of time series data over time.
 The downsampling process rolls up documents within a fixed time interval into a single summary document. Each summary document includes statistical representations of the original data: the `min`, `max`, `sum`, and `value_count` for each metric. Data stream [time series dimensions](time-series-data-stream-tsds.md#time-series-dimension) are stored as is, with no changes.
 
 :::{tip}
-You can include downsampling in an [{{ilm}} ({{ilm-init}})](../../lifecycle/index-lifecycle-management.md) policy to automatically manage the volume and associated cost of your metrics data at it ages.
+You can include downsampling in an [{{ilm}} ({{ilm-init}})](../../lifecycle/index-lifecycle-management.md) policy to automatically manage the volume and associated cost of your metrics data as it ages.
 :::
 
 This section explains the available downsampling options and helps you understand the process.
