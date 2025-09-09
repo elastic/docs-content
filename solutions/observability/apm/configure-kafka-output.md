@@ -3,7 +3,7 @@ navigation_title: Kafka
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-kafka-output.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
