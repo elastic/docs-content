@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-infrastructure-metrics.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-infrastructure-metrics.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
