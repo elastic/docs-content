@@ -29,6 +29,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes test suites [#227422]({{kib-pull}}227422)
 * Shows trace context for logs [#232784]({{kib-pull}}232784)
 * Adds IPv6 support to address fields in the Remote Clusters UI [#233415]({{kib-pull}}233415)
+* Updates the {{es-serverless}} project creation in the UI to use the general purpose profile.
+  The API continues to support alternative `optimized_for` options. Refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-managing-elasticsearch-costs).
+  % Relates to https://github.com/elastic/cloud/pull/146418
 
 
 ### Fixes [serverless-changelog-09082025-fixes]
