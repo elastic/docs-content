@@ -41,7 +41,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes import of endpoint exceptions [#233142]({{kib-pull}}233142)
 * Fixes a bug that affected display of mitre attack data [#233805]({{kib-pull}}233805).
 * Prevents users who don't have crud privilege from deleting notes [#233948]({{kib-pull}}233948).
-* Skips spaces tests using `esArchiver` for MKI [#234061]({{kib-pull}}234061).
 * Fixes rule editor flyout for Anomaly Explorer when no filter lists have been configured [#233085]({{kib-pull}}233085)
 * Fixes `FormattedMessage` rendering escaped HTML instead of markup [#234079]({{kib-pull}}234079)
 
