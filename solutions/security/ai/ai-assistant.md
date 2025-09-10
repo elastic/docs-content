@@ -113,9 +113,230 @@ Be sure to specify which language you’d like AI Assistant to use when writing 
 AI Assistant can remember particular information you tell it to remember. For example, you could tell it: "When anwering any question about srv-win-s1-rsa or an alert that references it, mention that this host is in the New York data center". This will cause it to remember the detail you highlighted.
 ::::
 
+## Share conversations
+
+Conversations that you start with AI Assistant are invisible by default for other members of your team. You can share them either with specific teammates, or to everyone with access to the environment. 
+
+There are several ways to share a conversation: 
+
+- Click the **Private** / **Shared** / **Restricted** badge next to the conversation's title. Use the drop down menu to define the chat's sharing behavior. If you select **Restricted** a modal appears where you can select which users have access.
+  ::::{image} /solutions/images/ai-assistant-shared-status-badge.png
+  :alt: AI Assistant chat with the sharing status dropdown open
+  :screenshot:
+  ::::
+- Go to **AI Assistant settings -> Conversations** to view all conversations you've started. Update their sharing settings as desired.
+
+
+Once a conversation is shared, you can copy it's URL to easily link it to your team:
+
+- Open an AI Assistant chat, open the **Conversation settings** menu and select **Copy URL**.
+- Open the **Conversations** tab of the AI Assistant settings page, then select the one you want to share and click **Copy URL**.
+
+When someone shares a chat with you, you can review it but can't continue the conversation, since it is owned by another user. However, you can duplicate a shared conversation and continue where your colleague left off. To copy a shared conversation:
+
+- Open an AI Assistant chat, open the **Conversation settings** menu and select **Duplicate**.
+- Open the **Conversations** tab of the AI Assistant settings page, then select the one you want to duplicate and click **Duplicate**.
+
+There are several audit events related to conversation sharing:
+
+1. .**security_assistant_conversation_shared**
+[%collapsible]
+=====
+   {
+  "event": {
+    "action": "security_assistant_conversation_shared",
+    "category": [
+      "database"
+    ],
+    "type": [
+      "change"
+    ],
+    "outcome": "success"
+  },
+  "user": {
+    "id": "u_xSVO6jcSCvoEcle7e3XVVfBU4Swm1R8-x7pi5bxrSvU_0",
+    "name": "test_daija_glover",
+    "roles": [
+      "superuser"
+    ]
+  },
+  "kibana": {
+    "space_id": "default",
+    "session_id": "1AZ8kfSYHzVO5ZMZ97DrNi1wjN6BFKHTw75KH8WiF7w="
+  },
+  "trace": {
+    "id": "7e080b32-41b4-453b-80fe-b9c1e12a1c57"
+  },
+  "client": {
+    "ip": "127.0.0.1"
+  },
+  "http": {
+    "request": {
+      "headers": {
+        "x-forwarded-for": "127.0.0.1"
+      }
+    }
+  },
+  "service": {
+    "node": {
+      "roles": [
+        "background_tasks",
+        "ui"
+      ]
+    }
+  },
+  "ecs": {
+    "version": "9.0.0"
+  },
+  "@timestamp": "2025-08-26T13:16:10.422-06:00",
+  "message": "User has shared conversation [id=b873b917-2fd0-4452-98e8-8c359f6acbfa, title=\"Getting Started with Elastic Security\"] to all users in the space",
+  "log": {
+    "level": "INFO",
+    "logger": "plugins.security.audit.ecs"
+  },
+  "process": {
+    "pid": 61536,
+    "uptime": 65.705743792
+  },
+  "span": {
+    "id": "8364fa9bf07311d6"
+  }
+}
+=====
+
+2. .**security_assistant_conversation_private**
+[%collapsible]
+=====
+{
+  "event": {
+    "action": "security_assistant_conversation_private",
+    "category": [
+      "database"
+    ],
+    "type": [
+      "change"
+    ],
+    "outcome": "success"
+  },
+  "user": {
+    "id": "u_xSVO6jcSCvoEcle7e3XVVfBU4Swm1R8-x7pi5bxrSvU_0",
+    "name": "test_daija_glover",
+    "roles": [
+      "superuser"
+    ]
+  },
+  "kibana": {
+    "space_id": "default",
+    "session_id": "1AZ8kfSYHzVO5ZMZ97DrNi1wjN6BFKHTw75KH8WiF7w="
+  },
+  "trace": {
+    "id": "ae998403-8453-44ae-a9b8-ac8002c3bf28"
+  },
+  "client": {
+    "ip": "127.0.0.1"
+  },
+  "http": {
+    "request": {
+      "headers": {
+        "x-forwarded-for": "127.0.0.1"
+      }
+    }
+  },
+  "service": {
+    "node": {
+      "roles": [
+        "background_tasks",
+        "ui"
+      ]
+    }
+  },
+  "ecs": {
+    "version": "9.0.0"
+  },
+  "@timestamp": "2025-08-26T13:15:46.300-06:00",
+  "message": "User has made private conversation [id=b873b917-2fd0-4452-98e8-8c359f6acbfa, title=\"Getting Started with Elastic Security\"]",
+  "log": {
+    "level": "INFO",
+    "logger": "plugins.security.audit.ecs"
+  },
+  "process": {
+    "pid": 61536,
+    "uptime": 41.582780958
+  },
+  "span": {
+    "id": "68a0d5f52faa17d4"
+  }
+}
+=====
+
+3. .**security_assistant_conversation_restricted**
+[%collapsible]
+=====
+{
+  "event": {
+    "action": "security_assistant_conversation_restricted",
+    "category": [
+      "database"
+    ],
+    "type": [
+      "change"
+    ],
+    "outcome": "success"
+  },
+  "user": {
+    "id": "u_xSVO6jcSCvoEcle7e3XVVfBU4Swm1R8-x7pi5bxrSvU_0",
+    "name": "test_daija_glover",
+    "roles": [
+      "superuser"
+    ]
+  },
+  "kibana": {
+    "space_id": "default",
+    "session_id": "1AZ8kfSYHzVO5ZMZ97DrNi1wjN6BFKHTw75KH8WiF7w="
+  },
+  "trace": {
+    "id": "b59f9790-87ff-45f0-b28e-1d9ffa6cfb09"
+  },
+  "client": {
+    "ip": "127.0.0.1"
+  },
+  "http": {
+    "request": {
+      "headers": {
+        "x-forwarded-for": "127.0.0.1"
+      }
+    }
+  },
+  "service": {
+    "node": {
+      "roles": [
+        "background_tasks",
+        "ui"
+      ]
+    }
+  },
+  "ecs": {
+    "version": "9.0.0"
+  },
+  "@timestamp": "2025-08-26T14:40:59.897-06:00",
+  "message": "User has restricted conversation [id=b873b917-2fd0-4452-98e8-8c359f6acbfa, title=\"Getting Started with Elastic Security\"] to user ([id=u_LdnmWaOWbWS1ObwqRW2MLWMkWtxCSyiElishzEpew0g_0, name=test_dina_bahringer])",
+  "log": {
+    "level": "INFO",
+    "logger": "plugins.security.audit.ecs"
+  },
+  "process": {
+    "pid": 77921,
+    "uptime": 29.727069625
+  },
+  "span": {
+    "id": "80e57252aceea924"
+  }
+}
+=====
+
 ## Configure AI Assistant [configure-ai-assistant]
 
-To adjust AI Assistant's settings from the chat window, click the **More** (three dots) button in the upper-right.
+To adjust AI Assistant's settings from the chat window, click the **Assistant settings menu** button in the upper-right.
 
 ::::{image} /solutions/images/security-attack-discovery-more-popover.png
 :alt: AI Assistant's more options popover
@@ -128,7 +349,7 @@ The **Security AI settings** page provides a range of configuration options for 
 
 It has the following tabs:
 
-* **Conversations:** When you open AI Assistant from certain pages, such as **Alerts**, it defaults to the relevant conversation type. For each conversation type, choose the default System Prompt, the default connector, and the default model (if applicable). The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. Streaming is currently only available for OpenAI models.
+* **Conversations:** The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. After the streaming setting is a list of all saved conversations. From here you can change their sharing settings, system prompt, and connector.
 * **Connectors:** Manage all LLM connectors.
 * **System Prompts:** Edit existing System Prompts or create new ones. To create a new System Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the System Prompt’s text. Under **Contexts**, select where the System Prompt should appear.
 * **Quick Prompts:** Modify existing Quick Prompts or create new ones. To create a new Quick Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the Quick Prompt’s text.
