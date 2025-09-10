@@ -95,7 +95,7 @@ A successful API call will return a `202 Accepted` response with an empty body.
 To configure data ingestion from the console, go to **Dev Tools** in the navigation menu and run the following command:
 
 ```console
-POST kbn:/internal/profiling/setup/es_resources
+POST kbn:/api/profiling/setup/es_resources
 {}
 ```
 
@@ -103,7 +103,7 @@ To configure data ingestion programmatically using a standalone HTTP client (e.g
 
 ```console
 curl -u elastic:<PASSWORD> -H "kbn-xsrf: true" -H "Content-Type: application/json" \
-    --data "{}" "https://<kibana-host>:<kibana-port>/internal/profiling/setup/es_resources"
+    --data "{}" "https://<kibana-host>:<kibana-port>/api/profiling/setup/es_resources"
 ```
 
 
