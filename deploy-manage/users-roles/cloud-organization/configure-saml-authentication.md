@@ -162,7 +162,7 @@ After you register the IdP in {{ecloud}} and configure your IdP, you can test au
 
 Users who are not a member of the {{ecloud}} organization can authenticate with your IdP to automatically create an {{ecloud}} account provided that their email matches the claimed domain.
 
-To guarantee ongoing access to the organization, you can also run a [role mapping verification](#role-mapping-verification) when you add, edit, or delete role mappings that impact the organization owner role.
+To guarantee ongoing access to the organization, you can also run a [role mapping verification](#role-mapping-verification) when you add, edit, or delete [role mappings](#role-mappings) that impact the organization owner role.
 
 
 ## Enforce SSO [enforce-sso]
