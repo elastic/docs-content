@@ -11,18 +11,17 @@ products:
 
 Use this quickstart to set up a time series data stream (TSDS), ingest a few documents, and run a basic query. These high-level steps help you see how a TSDS works, so you can decide whether it's right for your data.
 
-This quickstart uses simplified weather sensor readings to show how a TSDS helps you analyze data over time. 
+A _time series_ is a sequence of data points collected at regular time intervals. For example, you might track CPU usage or stock price over time. This quickstart uses simplified weather sensor readings to show how a TSDS helps you analyze metrics data over time. 
 
 ## Prerequisites
 
-* Familiarity with [time series data stream concepts](time-series-data-stream-tsds.md)
-* Familiarity with the concepts covered in the [{{es}} index and search basics quickstart](/solutions/search/get-started.md) 
 * Access to [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md) in {{kib}}, or another way to make {{es}} API requests
 
 * Cluster and index permissions: 
-    * [Cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `manage_ilm` and `manage_index_templates`
+    * [Cluster privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster):  `manage_index_templates`
     * [Index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `create_doc` and `create_index`
 
+* Familiarity with [time series data stream concepts](time-series-data-stream-tsds.md) and [{{es}} index and search basics](/solutions/search/get-started.md) 
 
 You can follow this guide using any {{es}} deployment.
 To see all deployment options, refer to [](/deploy-manage/deploy.md#choosing-your-deployment-type).
