@@ -216,6 +216,6 @@ Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in o
 
 For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
 
-## What's next
+## What's next?
 
 Visualize your OpenTelemetry data. Learn more in [](/solutions/observability/otlp-visualize.md).
