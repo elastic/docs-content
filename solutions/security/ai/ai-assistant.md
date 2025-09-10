@@ -139,7 +139,7 @@ When someone shares a chat with you, you can review it but can't continue the co
 
 There are several audit events related to conversation sharing:
 
-1. .**security_assistant_conversation_shared**
+. 1.**security_assistant_conversation_shared**
 [%collapsible]
 =====
    {
@@ -204,7 +204,7 @@ There are several audit events related to conversation sharing:
 }
 =====
 
-2. .**security_assistant_conversation_private**
+. 2.**security_assistant_conversation_private**
 [%collapsible]
 =====
 {
@@ -269,7 +269,7 @@ There are several audit events related to conversation sharing:
 }
 =====
 
-3. .**security_assistant_conversation_restricted**
+. 3.**security_assistant_conversation_restricted**
 [%collapsible]
 =====
 {
