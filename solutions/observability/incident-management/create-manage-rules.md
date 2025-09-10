@@ -68,7 +68,7 @@ From the action menu you can also:
 Incident management resources can help you respond to alerts more efficiently and consistently. You can add these resources to a rule that you are creating or managing. When an alert is generated from that rule, the resources that you added can be accessed from the [alert's details page](/solutions/observability/incident-management/view-alerts.md#observability-view-alerts-view-alert-details). Here are some resources you can add to a rule: 
 
 * **Investigation guide**: An investigation guide provides step-by-step instructions and links to external resources for investigating and responding to alerts. On the alert's details page, you can access the guide from the **Investigation guide** tab.
-* **Related and suggested dashboards**: (Only available for custom threshold rules) Dashboards can provide additional context and information about the alert. You can access them from the **Dashboards** tab on the alert's details page. Related dashboards are linked to the rule that generated the alert. Suggested dashboards are comprised of other dashboards that use lens visualizations that:
+* **Related and suggested dashboards**: (Only available for custom threshold rules) Dashboards can provide additional context and information about the alert. You can access them from the **Related dashboards** tab on the alert's details page. Related dashboards are linked to the rule that generated the alert. Suggested dashboards are comprised of other dashboards that use lens visualizations that:
 
    * Query the same data view
    * Use some of the same fields that are specified in the rule's configuration or are present in alert's genereated by the rule. 
