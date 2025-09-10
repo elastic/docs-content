@@ -115,11 +115,11 @@ AI Assistant can remember particular information you tell it to remember. For ex
 
 ## Share conversations
 
-Conversations that you start with AI Assistant are invisible by default for other members of your team. You can share them either with specific teammates, or to everyone with access to the environment. 
+Conversations that you start with AI Assistant are invisible by default for other members of your team. You can share them either with specific teammates or with everyone with access to the environment. 
 
 There are several ways to share a conversation: 
 
-- Click the **Private** / **Shared** / **Restricted** badge next to the conversation's title. Use the drop down menu to define the chat's sharing behavior. If you select **Restricted** a modal appears where you can select which users have access.
+- Click the **Private** / **Shared** / **Restricted** badge next to the conversation's title. Use the dropdown menu to define the chat's sharing behavior. If you select **Restricted**, a modal appears where you can select which users have access.
   ::::{image} /solutions/images/ai-assistant-shared-status-badge.png
   :alt: AI Assistant chat with the sharing status dropdown open
   :screenshot:
@@ -127,12 +127,12 @@ There are several ways to share a conversation:
 - Go to **AI Assistant settings -> Conversations** to view all conversations you've started. Update their sharing settings as desired.
 
 
-Once a conversation is shared, you can copy it's URL to easily link it to your team:
+Once a conversation is shared, you can copy its URL to easily link it to your team:
 
 - Open an AI Assistant chat, open the **Conversation settings** menu and select **Copy URL**.
 - Open the **Conversations** tab of the AI Assistant settings page, then select the one you want to share and click **Copy URL**.
 
-When someone shares a chat with you, you can review it but can't continue the conversation, since it is owned by another user. However, you can duplicate a shared conversation and continue where your colleague left off. To copy a shared conversation:
+When someone shares a chat with you, you can review it but can't continue the conversation, since it is owned by another user. However, you can duplicate a shared conversation and continue where your colleague left off. To duplicate a shared conversation:
 
 - Open an AI Assistant chat, open the **Conversation settings** menu and select **Duplicate**.
 - Open the **Conversations** tab of the AI Assistant settings page, then select the one you want to duplicate and click **Duplicate**.
@@ -353,7 +353,7 @@ It has the following tabs:
 * **Knowledge base:** Provide additional context to AI Assistant. [Learn more](/solutions/security/ai/ai-assistant-knowledge-base.md).
 
 
-To adjust the settings for a specific chat, click the **Chat options** button in the upper-right of its chat window. 
+To adjust the settings for a specific chat, click the **Conversation settings** button in the upper-right of its chat window. 
 
 ::::{image} /solutions/images/security-ai-assistant-chat-options-menu.png
 :alt: AI Assistant's chat options menu
