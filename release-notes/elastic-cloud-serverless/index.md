@@ -20,7 +20,9 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Uses ID instead of name to group vulnerabilities by resource and cloud account [#225492]({{kib-pull}}225492)
 * Updates the default Gemini model [#225917]({{kib-pull}}225917)
 * Updates the side navigation menu for Serverless [#225709]({{kib-pull}}225709)
-
+* Updates the {{es-serverless}} project creation in the UI to use the general purpose profile.
+  The API continues to support alternative `optimized_for` options. Refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-managing-elasticsearch-costs).
+  % Relates to https://github.com/elastic/cloud/pull/146418
 
 ### Fixes [serverless-changelog-07072025-fixes]
 
