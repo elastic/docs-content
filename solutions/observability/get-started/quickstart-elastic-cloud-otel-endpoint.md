@@ -206,7 +206,7 @@ Exporting failed. Dropping data.
 
 You must format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a collector or SDK.
 
-### Error: Too many requests
+### Error: too many requests
 
 The Managed OTLP endpoint has per-project rate limits in place. If you reach this limit, reach out to our [support team](https://support.elastic.co). Refer to [Rate limiting](opentelemetry://reference/motlp.md#rate-limiting) for more information.
 
