@@ -139,8 +139,7 @@ When someone shares a chat with you, you can review it but can't continue the co
 
 There are several audit events related to conversation sharing click each title to show an example:
 
-.**security_assistant_conversation_shared**
-:::{dropdown} ${1:argument} Dropdown Title
+:::{dropdown} 1. security_assistant_conversation_shared
    {
   "event": {
     "action": "security_assistant_conversation_shared",
@@ -203,7 +202,7 @@ There are several audit events related to conversation sharing click each title 
 }
 :::
 
-:::{dropdown} 2. **security_assistant_conversation_private**
+:::{dropdown} 2. security_assistant_conversation_private
 
 {
   "event": {
@@ -267,7 +266,7 @@ There are several audit events related to conversation sharing click each title 
 }
 :::
 
-:::{dropdown} 3. **security_assistant_conversation_restricted**
+:::{dropdown} 3. security_assistant_conversation_restricted
 {
   "event": {
     "action": "security_assistant_conversation_restricted",
