@@ -26,7 +26,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds **View in discover** button to alert details header [#233259]({{kib-pull}}233259)
 * Adds `send_traces`, `send_metrics`, and `send_logs` agent configuration settings for EDOT Node.js [#233798]({{kib-pull}}233798)
 * Updates missing index pattern table action [#233258]({{kib-pull}}233258)
-* Fixes test suites [#227422]({{kib-pull}}227422)
 * Shows trace context for logs [#232784]({{kib-pull}}232784)
 * Adds IPv6 support to address fields in the Remote Clusters UI [#233415]({{kib-pull}}233415)
 * Updates the {{es-serverless}} project creation in the UI to use the general purpose profile.
