@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-distributed-tracing.html
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-traces.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: cloud-serverless
   - id: observability

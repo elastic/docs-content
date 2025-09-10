@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/infrastructure-and-host-monitoring-intro.html
   - https://www.elastic.co/guide/en/serverless/current/infrastructure-and-host-monitoring-intro.html
 applies_to:
-  stack:
+  stack: ga
   serverless:
 products:
   - id: observability
