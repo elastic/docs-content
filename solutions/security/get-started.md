@@ -22,7 +22,7 @@ To use {{elastic-sec}}, at minimum, you'll need to install {{es}} and {{kib}}—
 ::::{{step}} Ingest your data 
 
 
-After you've deployed {{elastic-sec}}, the next step is to get data into the product before you can search, analyze, or use any visualization tools. The easiest way to get data into Security is through one of our integrations—a pre-packaged collection of assets that allows you to easily collect, store, and visualize any data from any source. You can add an integration directly from the **Get Started** page within the **Ingest your data** section. Choose from one of our recommended integrations, or select one of the other tabs to browse by category. Elastic also provides different [ingestion methods](integration-docs://reference/index.md#ingestion-methods) to meet your infrastructure needs. 
+After you've deployed {{elastic-sec}}, the next step is to get data into the product before you can search, analyze, or use any visualization tools. The easiest way to get data into {{elastic-sec}} is through one of our integrations—a pre-packaged collection of assets that allows you to easily collect, store, and visualize any data from any source. You can add an integration directly from the **Get Started** page within the **Ingest your data** section. Choose from one of our recommended integrations, or select another tab to browse by category. Elastic also provides different [ingestion methods](integration-docs://reference/index.md#ingestion-methods) to meet your infrastructure needs. 
 
 :::{{tip}}
 If you have data from a source that doesn't yet have an integration, you can use our [Automatic Import tool](/solutions/security/get-started/automatic-import.md). 
@@ -31,7 +31,17 @@ If you have data from a source that doesn't yet have an integration, you can use
 
 ::::{{step}} Get started with your use case 
 Not sure where to start exploring {{elastic-sec}} 
-or which features may be relevant to you? Continue to the next topic to view our quickstart guides, each of which is tailored to a specific use case and helps you complete a core task so you can get up and running. 
+or which features may be relevant to you? Continue to the next topic to view our [quickstart guides](../security/get-started/quickstarts.md), each of which is tailored to a specific use case and helps you complete a core task so you can get up and running. 
 ::::
 
 :::::
+
+## Related resources 
+
+Use these resources to learn more about {{elastic-sec}} or get started in a different way.
+
+* Migrate your SIEM rules from Splunk's Search Processing Language (SPL) to Elasticsearch Query Language ({{esql}}) using [Automatic Migration](../security/get-started/automatic-migration.md). 
+* Check out the numerous [Security integrations](https://www.elastic.co/integrations/data-integrations?solution=security) available to collect and process your data.  
+* Get started with [AI for Security](../security/ai.md). 
+* View our [release notes](../../release-notes/elastic-security/index.md) for the latest updates. 
+
