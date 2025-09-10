@@ -35,7 +35,7 @@
 /release-notes/                             @elastic/docs
 
 /release-notes/apm-agents/                  @elastic/ingest-docs
-/release-notes/elastic-cloud-serverless/    @elastic/admin-docs
+/release-notes/elastic-cloud-serverless/    @elastic/admin-docs @elastic/docs-serverless-release-team
 /release-notes/elastic-observability/       @elastic/ski-docs
 /release-notes/elastic-security/            @elastic/ski-docs
 /release-notes/elasticsearch-clients/       @elastic/developer-docs
