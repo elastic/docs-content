@@ -70,9 +70,14 @@ To view the alert in the app that triggered it:
 stack: ga 9.1 
 ```
 
-Check related alerts for patterns and recurring events that might warrant further investigation. From an alert's details page, go to the **Related alerts** tab to view related alerts. 
+Check related alerts for patterns and recurring events that might need further investigation. From an alert's details page, go to the **Related alerts** tab to view related alerts. Within the table, alerts are ordered from most to least relevant. To only view alerts that were created around the same time as the current alert (+/- 30 minutes), apply the **Triggered around the same time** filter.
 
-Relevance to the current alert is based on how closely attributes such as groups, tags, associated rules, and the time of which an alert was created match. Alerts are scored against this criteria and considered relevant if they reach a certain score. Within the related alerts table, alerts are ordered from most to least relevant. You can apply the **Triggered around the same time** filter to only view alerts that were created around the smae time as the current one. 
+The relevancy of other alerts is determined by how closely they match the current alert and other similiarites that they might share. The relevancy scoring proccess is briefly outlined below:
+
+1. Alerts in the space are filtered down to only include alerts that were created about one day before or after the current alert. 
+2. Data from the new subset of alerts is compared against the current alert to identify matching values and similarities. Data such as the time of which alerts were generated or recovered, tags added to the alerts, alert IDs, and more are evaluated.
+3. Alerts are scored based on how closely they match the current alert. Alerts with a score above a certain threshold are considered relevant and are included in the list of related alerts.
+
 
 ## Understand alert statuses [observability-view-alerts-understand-statuses]
 
