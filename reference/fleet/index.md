@@ -109,7 +109,7 @@ When you're ready to upgrade your {{agent}} binaries or integrations, you can in
 
 Some subscription levels support bulk select operations, including:
 
-* Selective binary updates
+* Selective agent binary updates
 * Selective agent policy reassignment
 * Selective agent unenrollment
 

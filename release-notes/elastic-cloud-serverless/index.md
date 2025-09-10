@@ -9,6 +9,45 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## September 1, 2025 
+
+### Features and enhancements [serverless-changelog-09012025-features-enhancements]
+
+* Allows users to configure index settings when importing geospatial files in **File Upload** [#232308]({{kib-pull}}232308)
+* Adds tooltip support for the {{esql}} layer [#232147]({{kib-pull}}232147)
+* Enables automatic content package installation when matching datasets are ingested using the `enableAutoInstallContentPackages` feature flag [#232668]({{kib-pull}}232668)
+* Increases query history capacity to store more than 20 queries [#232955]({{kib-pull}}232955)
+* Improves validation for functions in query inputs [#230139]({{kib-pull}}230139)
+* Adds support for native function calling schema to the OpenAI connector when the API provider is set to "Other" [#232097]({{kib-pull}}232097)
+* Retries inference calls when aborted due to transient errors [#232610]({{kib-pull}}232610)
+* Adds the `raw_request` field to traces for better debugging [#232229]({{kib-pull}}232229)
+* Adds dashboard references to SLO saved objects [#232583]({{kib-pull}}232583)
+* Displays span links when APM indices are available [#232135]({{kib-pull}}232135)
+* Adds a new `policy_response_failure` defend insight type [#231908]({{kib-pull}}231908)
+* Enables conversation sharing in chat interfaces [#230614]({{kib-pull}}230614)
+* Adds a new data view to the Privmon dashboard page [#233264]({{kib-pull}}233264)
+* Improves the layout of custom URLs list in **Data Frame Analytics** [#232575]({{kib-pull}}232575)
+* Adds icons for **AI21 Labs** and **Llama Stack** to the AI connector/inference endpoints creation UI [#232098]({{kib-pull}}232098)
+* Ensures consistent Grok pattern generation across features [#230076]({{kib-pull}}230076)
+
+### Fixes [serverless-changelog-09012025-fixes]
+
+* Ensures that maintenance windows with scoped queries apply to all rule types [#232307]({{kib-pull}}232307)
+* Fixes pagination issues in alerting tables [#233030]({{kib-pull}}233030)
+* Removes unused `availableOptions` from {{esql}} values in query saved objects [#231690]({{kib-pull}}231690)
+* Removes unnecessary output warning messages in {{serverless-short}} deployments [#232785]({{kib-pull}}232785)
+* Requires the `agents:all` privilege to use **Manage auto-upgrade agent** UI actions [#232429]({{kib-pull}}232429)
+* Fixes read permission failures on the lookup indexes route [#233282]({{kib-pull}}233282)
+* Refactors anonymization logic to walk JSON objects instead of stringifying them [#232319]({{kib-pull}}232319)
+* Disables the **Save** button until a file is detected [#233141]({{kib-pull}}233141)
+* Adds a missing **Alert details actions** button to the UI [#233113]({{kib-pull}}233113)
+* Prevents SessionView crashes by normalizing event process arguments [#232462]({{kib-pull}}232462)
+* Adds maximum function call limits to prevent recursive tool invocations [#231719]({{kib-pull}}231719)
+* Ensures validation logic so the Elastic Managed LLM behaves as expected during testing [#231873]({{kib-pull}}231873)
+* Fixes the **Restore status** tab display for system indices [#232839]({{kib-pull}}232839)
+* Fixes responsiveness issues in the Stream management code editor area [#232630]({{kib-pull}}232630)
+* Fixes an empty tooltip issue when creating tags [#232853]({{kib-pull}}232853)
+* Fixes an issue where the **Create tag** modal wouldn't close properly [#233012]({{kib-pull}}233012)
 
 ## August 28, 2025 [serverless-changelog-08282025]
 
