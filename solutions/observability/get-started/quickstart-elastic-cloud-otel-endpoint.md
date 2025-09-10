@@ -188,7 +188,7 @@ The following sections provide troubleshooting information for the {{motlp}}.
 
 ### You don't have a Collector or SDK running
 
-Don't have a collector or SDK running? Spin up an EDOT collector in a few steps:
+Don't have a collector or SDK running? Spin up an EDOT collector in few steps:
 
 * [Kubernetes Quickstart](opentelemetry://reference/quickstart/serverless/k8s.md)
 * [Hosts & VMs Quickstart](opentelemetry://reference/quickstart/serverless/hosts_vms.md)
