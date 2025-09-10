@@ -132,7 +132,7 @@ The `search-default-ingestion` pipeline does not always run all processors. It u
 * `_extract_binary_content` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `attachment`, `set_body`, and `remove_replacement_chars` processors. Note that the document will also need an `_attachment` field populated with base64-encoded binary data in order for the `attachment` processor to have any output. If the `_extract_binary_content` field is missing or `false` on a source document, these processors will be skipped.
 * `_reduce_whitespace` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `remove_extra_whitespace` and `trim` processors. These processors only apply to the `body` field. If the `_reduce_whitespace` field is missing or `false` on a source document, these processors will be skipped.
 
-Content Connector Clients will automatically add these control flow parameters based on the settings in the index’s Pipeline tab. To control what settings any new indices will have upon creation, see the deployment-wide content settings. See [Pipeline Settings](#ingest-pipeline-search-pipeline-settings).
+Connectors will automatically add these control flow parameters based on the settings in the index’s Pipeline tab. To control what settings any new indices will have upon creation, see the deployment-wide content settings. See [Pipeline Settings](#ingest-pipeline-search-pipeline-settings).
 
 
 ### Index-specific ingest pipelines [ingest-pipeline-search-details-specific]
