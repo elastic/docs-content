@@ -232,15 +232,27 @@ To ensure continuous access and control over your organization settings, the fir
 6. If your role mapping contains the Organization owner role, then click **Run test** to run role mapping verification.
 7. Click **Save** to save the role mapping.
 
-### Role mapping verification
+### Verify Organization owner access [role-mapping-verification]
 
-To ensure continuous access to and control over your organization settings, a user must always be granted the Organization owner role through a valid role mapping.
+To maintain uninterrupted control over your organization settings, at least one user must always be granted the Organization owner role through a valid role mapping.
 
-To validate that access is maintained, each time a role mapping that impacts the Organization owner role is created, edited, or deleted, {{ecloud}} verifies that the current user's IdP groups map them to the Organization owner role. 
+Whenever a role mapping that affects the Organization owner role is created, updated, or deleted, {{ecloud}} verifies whether your current IdP groups will still grant you the Organization owner role after the change. 
 
-If you're logged in to {{ecloud}} through a method other than SAML SSO, then you're prompted to log in through their IdP as part of the verification process.
+This verification does not confirm that the role mapping is correct. It only confirms that you, as the currently logged in user, will continue to belong to the Organization owner role after the change.
 
-This verification does not validate the role mapping. It only validates that you, as the currently logged in user, will continue to belong to the Organization owner role after the change is made.
+* **When creating or editing a role mapping:**
+  
+  Click **Run test** to verify your access. A success or failure message appears, showing the SAML response and your currently mapped roles. If verification succeeds, you can save the role mapping.
+
+* **When deleting a role mapping:**
+  
+  Your currently mapped roles are verified after you click **Delete**. If verification succeeds, the role mapping is deleted. If verification fails, a failure message is shown that includes the SAML response and your currently mapped roles, and the mapping is not deleted.
+
+If you're logged in to {{ecloud}} through a method other than SAML SSO, then you're prompted to sign in through your IdP as part of the verification process.
+
+:::{{note}}
+{{ecloud}} runs this check against your IdP groups because you are already an Organization owner and making the change. However, to maintain access, the requirement is that at least one Organization owner is assigned the role through a valid role mapping at all times.
+:::
 
 ## Disable SSO [ec_disable_sso]
 
