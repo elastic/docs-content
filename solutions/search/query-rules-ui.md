@@ -32,7 +32,7 @@ If you prefer to use the Query Rules API, refer to [Query Rules API]({{es-apis}}
 
 For full access to the Query Rules UI, you need the following privileges:
 
-* Appropriate roles to access Kibana. For more information, refer to [Built-in roles](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles) or  [Kibana privileges](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges)
+* Appropriate roles to access Kibana. For more information, refer to [Built-in roles](elasticsearch://reference/elasticsearch/roles.md) or  [Kibana privileges](https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges)
 * A role with `manage_search_query_rules` cluster privilege
 * `ALL` option for `Query Rules` role privilege in the respective Kibana space
 
