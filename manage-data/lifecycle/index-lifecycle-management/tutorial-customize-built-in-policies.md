@@ -21,7 +21,7 @@ products:
 * `traces@lifecycle`
 * `traces-otel@lifecycle`
 
-This tutorial gives the example of customizing how ingested logging data is managed. Rather than use the default lifecycle settings from the built-in `logs@lifecycle` {{ilm-init}} policy, you can use the **Index Lifecycle Policies** feature in {{kib}} to tailor a new policy based on your application’s specific performance, resilience, and retention requirements. This involves three main steps:
+This tutorial covers customizing the way ingested logging data is managed. Rather than use the default lifecycle settings from the built-in `logs@lifecycle` {{ilm-init}} policy, you can use the **Index Lifecycle Policies** feature in {{kib}} to tailor a new policy based on your application’s specific performance, resilience, and retention requirements. This involves three main steps:
  1. [Create a duplicate of the `logs@lifecycle` policy](#example-using-index-lifecycle-policy-duplicate-ilm-policy).
  2. [Modify the new policy to suit your requirements](#ilm-ex-modify-policy).
  3. [Apply the new policy to your log data using a `logs@custom` component template](#example-using-index-lifecycle-policy-apply-policy).
