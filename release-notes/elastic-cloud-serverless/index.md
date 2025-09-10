@@ -11,7 +11,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ## September 8, 2025 [serverless-changelog-09082025]
 
-### Features and enhancements [serverless-changelog-07072025-features-enhancements]
+### Features and enhancements [serverless-changelog-09082025-features-enhancements]
 
 * Adds **Add tags** action to Agent details page [#225433]({{kib-pull}}225433)
 * Adds profiles inspector [#222999]({{kib-pull}}222999)
@@ -24,7 +24,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
   The API continues to support alternative `optimized_for` options. Refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-managing-elasticsearch-costs).
   % Relates to https://github.com/elastic/cloud/pull/146418
 
-### Fixes [serverless-changelog-07072025-fixes]
+### Fixes [serverless-changelog-09082025-fixes]
 
 * Fixes an invalid header error affecting reports [#225919]({{kib-pull}}225919)
 * Refreshes **Values from a query** options on dashboard reload [#225101]({{kib-pull}}225101)
