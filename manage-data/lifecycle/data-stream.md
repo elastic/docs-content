@@ -50,9 +50,9 @@ Since the lifecycle is configured on the data stream level, the process to confi
 
 Four tutorials are available to help you set up and manage data streams with data stream lifecycle:
 
-* To create a new data stream with a lifecycle, add the data stream lifecycle as part of the index template that matches the name of your data stream. See [Tutorial: Create a data stream with a lifecycle](data-stream/tutorial-create-data-stream-with-lifecycle.md) to learn more. When a write operation with the name of your data stream reaches {{es}} then the data stream will be created with the respective data stream lifecycle.
-* To update the lifecycle settings for an existing data stream, use the [data stream lifecycle APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream). See [Tutorial: Update existing data stream](data-stream/tutorial-update-existing-data-stream.md) for details.
-* To fine-tune the retention settings for a data stream managed by data stream lifecycle, using both cluster and data stream level settings, refer to [Tutorial: Configure data stream retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).  
+* To create a new data stream with a lifecycle, add the data stream lifecycle as part of the index template that matches the name of your data stream. See [Tutorial: Create a data stream with a lifecycle](data-stream/tutorial-create-data-stream-with-lifecycle.md) for the detailed steps. When a write operation with the name of your data stream reaches {{es}} then the data stream will be created with the respective data stream lifecycle.
+* To update the lifecycle settings for an individual, existing data stream, use the [data stream lifecycle APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream). See [Tutorial: Update existing data stream](data-stream/tutorial-update-existing-data-stream.md) for details.
+* Retention settings for data streams can be configured both individually, at the data stream level, and globally, for all data streams in a cluster. To learn more, refer to [Tutorial: Configure data stream retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
 * To migrate an existing {{ilm-init}} managed data stream to data stream lifecycle, follow the steps in [Tutorial: Migrate ILM managed data stream to data stream lifecycle](data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md).
 
 ::::{note}
