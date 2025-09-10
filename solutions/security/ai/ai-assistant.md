@@ -137,9 +137,9 @@ When someone shares a chat with you, you can review it but can't continue the co
 - Open an AI Assistant chat, open the **Conversation settings** menu and select **Duplicate**.
 - Open the **Conversations** tab of the AI Assistant settings page, then select the one you want to duplicate and click **Duplicate**.
 
-There are several audit events related to conversation sharing:
+There are several audit events related to conversation sharing click each title to show an example:
 
-. 1.**security_assistant_conversation_shared**
+.**security_assistant_conversation_shared**
 [%collapsible]
 =====
    {
@@ -204,7 +204,7 @@ There are several audit events related to conversation sharing:
 }
 =====
 
-. 2.**security_assistant_conversation_private**
+.**security_assistant_conversation_private**
 [%collapsible]
 =====
 {
@@ -269,7 +269,7 @@ There are several audit events related to conversation sharing:
 }
 =====
 
-. 3.**security_assistant_conversation_restricted**
+.**security_assistant_conversation_restricted**
 [%collapsible]
 =====
 {
