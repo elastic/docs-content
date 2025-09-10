@@ -3,7 +3,7 @@ navigation_title: Switch an {{ecloud}} cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps-ess.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
