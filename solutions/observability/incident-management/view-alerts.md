@@ -66,6 +66,10 @@ To view the alert in the app that triggered it:
 
 ## Find related alerts [observability-view-alerts-find-related-alerts]
 
+```{applies_to}
+stack: ga 9.1 
+```
+
 Related alerts can help you to identify patterns and recurring events that might warrant investigation. When examining an alert's details, you can find related alerts by selecting the **Related alerts** tab. 
 
 Relevance to the current alert is based on how closely other alerts match it. Certain attributes are evaluated for matching, such as groups, tags, associated rules, and the time of which an alert was created. Alerts with more matching attributes are determined as more relevant and placed higher on the list of related alerts. To find related alerts that were created around the same time, apply the **Triggered around the same time** filter.
