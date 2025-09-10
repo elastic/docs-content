@@ -177,7 +177,7 @@ Like the `search-default-ingestion` pipeline, the `<index-name>` pipeline does n
 
 * `_run_ml_inference` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `index_ml_inference_pipeline` processor. If the `_run_ml_inference` field is missing or `false` on a source document, this processor will be skipped.
 
-Content Connector Clients will automatically add these control flow parameters based on the settings in the index’s Pipeline tab. To control what settings any new indices will have upon creation, see the deployment-wide content settings. See [Pipeline Settings](#ingest-pipeline-search-pipeline-settings).
+Connectors will automatically add these control flow parameters based on the settings in the index’s Pipeline tab. To control what settings any new indices will have upon creation, see the deployment-wide content settings. See [Pipeline Settings](#ingest-pipeline-search-pipeline-settings).
 
 
 #### `<index-name>@ml-inference` Reference [ingest-pipeline-search-details-specific-ml-reference]
