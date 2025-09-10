@@ -13,42 +13,35 @@ Review the changes, fixes, and more to {{serverless-full}}.
 
 ### Features and enhancements [serverless-changelog-09082025-features-enhancements]
 
-* Adds **Add tags** action to Agent details page [#225433]({{kib-pull}}225433)
-* Adds profiles inspector [#222999]({{kib-pull}}222999)
-* Adds callouts to Metric, Logs, and Inventory rules [#224387]({{kib-pull}}224387)
-* Adds manual test for bulk import [#225497]({{kib-pull}}225497)
-* Uses ID instead of name to group vulnerabilities by resource and cloud account [#225492]({{kib-pull}}225492)
-* Updates the default Gemini model [#225917]({{kib-pull}}225917)
-* Updates the side navigation menu for Serverless [#225709]({{kib-pull}}225709)
-* Updates the {{es-serverless}} project creation in the UI to use the general purpose profile.
-  The API continues to support alternative `optimized_for` options. Refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-managing-elasticsearch-costs).
-  % Relates to https://github.com/elastic/cloud/pull/146418
+* Makes maintenance windows globally available [#233870]({{kib-pull}}233870)
+* Updates `@elastic/charts` to 71.0.0 and enables new metric chart in Lens [#229815]({{kib-pull}}229815)
+* Adds toggle that grants permission for agents to write to `logs` datastream [#233374]({{kib-pull}}233374).
+* Adds Knowledge Base integration support [#230107]({{kib-pull}}230107)
+* Adds support for duration variable type to {{fleet}} [#231027]({{kib-pull}}231027)
+* Uses native function calling for self-managed LLMs [#232109]({{kib-pull}}232109)
+* Unifies installation settings and improves status display for AI Assistant's Knowledge Base & product documentation [#232559]({{kib-pull}}232559)
+* Links dashboards to SLO [#233265]({{kib-pull}}233265)
+* Disables add-to-case functionality when all selected alerts are already attached [#231877]({{kib-pull}}231877)
+* Disables save button on empty input [#233184]({{kib-pull}}233184)
+* Adds **View in discover** button to alert details header [#233259]({{kib-pull}}233259)
+* Adds `send_traces`, `send_metrics`, and `send_logs` agent configuration settings for EDOT Node.js [#233798]({{kib-pull}}233798)
+* Updates missing index pattern table action [#233258]({{kib-pull}}233258)
+* Fixes test suites [#227422]({{kib-pull}}227422)
+* Shows trace context for logs [#232784]({{kib-pull}}232784)
+* Adds IPv6 support to address fields in the Remote Clusters UI [#233415]({{kib-pull}}233415)
+
 
 ### Fixes [serverless-changelog-09082025-fixes]
 
-* Fixes an invalid header error affecting reports [#225919]({{kib-pull}}225919)
-* Refreshes **Values from a query** options on dashboard reload [#225101]({{kib-pull}}225101)
-* Removes kebab case warnings [#226114]({{kib-pull}}226114)
-* Fixes Lens Embeddable `defaultTitle` from being overwritten after reload [#225664]({{kib-pull}}225664)
-* Prevents recommendation of adhoc dataviews [#225705]({{kib-pull}}225705)
-* Hides **Select All** checkbox from single select controls [#226311]({{kib-pull}}226311)
-* Fixes overwrite of edited query when a request finishes [#224671]({{kib-pull}}224671)
-* Prevents changing selected document when resizing flyout with keyboard [#225594]({{kib-pull}}225594)
-* Fixes dashboard suggestions for custom threshold alerts [#224458]({{kib-pull}}224458)
-* Fixes schema page bug [#225481]({{kib-pull}}225481)
-* Limits environment name length when creating a {{ml}} job [#225973]({{kib-pull}}225973)
-* Fixes broken operation page [#226036]({{kib-pull}}226036)
-* Fixes chat display with `prefers-reduce-motion` [#226552]({{kib-pull}}226552)
-* Collapses query tool calls [#226078]({{kib-pull}}226078)
-* Adds title to rule gap histogram in the rules dashboard [#225274]({{kib-pull}}225274)
-* Moves alerts redirect higher in the components tree [#225650]({{kib-pull}}225650)
-* Updates entity links to open flyout [#225381]({{kib-pull}}225381)
-* Stops showing {{ml}} rule installation and upgrade errors on Basic license [#224676]({{kib-pull}}224676)
-* Updates Related Interactions input placeholder and validation message [#225775]({{kib-pull}}225775)
-* Anomaly Detection rules: Fallback to the default value when `lookbackInterval` is empty [#225249]({{kib-pull}}225249)
-* Fixes handling of time range in embedded anomaly swim lane [#225803]({{kib-pull}}225803)
-* Adds discernible text to **Refresh data preview** button [#225816]({{kib-pull}}225816)
-* Fixes a bug with context limit error handling in Search Playground when using the Elastic Managed LLM [#225360]({{kib-pull}}225360)
+* Fixes resize bug [#233755]({{kib-pull}}233755)
+* Fixes the page height of the Observability AI Assistant page [#233924]({{kib-pull}}233924)
+* Updates kibana MITRE data to `v17.1` [#231375]({{kib-pull}}231375)
+* Fixes import of endpoint exceptions [#233142]({{kib-pull}}233142)
+* Fixes a bug that affected display of mitre attack data [#233805]({{kib-pull}}233805).
+* Prevents users who don't have crud privilege from deleting notes [#233948]({{kib-pull}}233948).
+* Skips spaces tests using `esArchiver` for MKI [#234061]({{kib-pull}}234061).
+* Fixes rule editor flyout for Anomaly Explorer when no filter lists have been configured [#233085]({{kib-pull}}233085)
+* Fixes `FormattedMessage` rendering escaped HTML instead of markup [#234079]({{kib-pull}}234079)
 
 
 ## September 1, 2025 
