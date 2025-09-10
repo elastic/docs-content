@@ -336,14 +336,14 @@ There are several audit events related to conversation sharing:
 
 ## Configure AI Assistant [configure-ai-assistant]
 
-To adjust AI Assistant's settings from the chat window, click the **Assistant settings menu** button in the upper-right.
+To adjust general AI Assistant settings from the chat window, click the **Assistant settings menu** button in the upper-right. 
 
-::::{image} /solutions/images/security-attack-discovery-more-popover.png
-:alt: AI Assistant's more options popover
+::::{image} /solutions/images/security-ai-assistant-settings-menu.png
+:alt: AI Assistant's settings popover
 :screenshot:
 ::::
 
-The first three options (**AI Assistant settings**, **Knowledge Base**, and **Anonymization**) open the corresponding tabs of the **Security AI settings** page. The **Chat options** affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md), and content from Elastic's Security Labs and [product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
+The first three options (**AI Assistant settings**, **Knowledge Base**, and **Anonymization**) open the corresponding tabs of the **Security AI settings** page. The **Alerts to analyze** button allows you to adjust how many alerts to include as context for your conversation.
 
 The **Security AI settings** page provides a range of configuration options for AI Assistant. To access it directly, use the global search field to search for "AI Assistant for Security".
 
@@ -355,6 +355,18 @@ It has the following tabs:
 * **Quick Prompts:** Modify existing Quick Prompts or create new ones. To create a new Quick Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the Quick Prompt’s text.
 * **Anonymization:** Select fields to include as plaintext, to obfuscate, and to not send when you provide events to AI Assistant as context. [Learn more](/solutions/security/ai/ai-assistant.md#ai-assistant-anonymization).
 * **Knowledge base:** Provide additional context to AI Assistant. [Learn more](/solutions/security/ai/ai-assistant-knowledge-base.md).
+
+
+To adjust the settings for a specific chat, click the **Chat options** button in the upper-right of its chat window. 
+
+::::{image} /solutions/images/security-ai-assistant-chat-options-menu.png
+:alt: AI Assistant's chat options menu
+:screenshot:
+::::
+
+The **Copy URL** and **Duplicate** buttons allow you to share conversations (by sending their URL) and to continue conversations that were shared with you (by duplicating them). The **Delete** option allows you to remove a saved conversation.
+
+Settings in the **Chat options** section affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md), and content from Elastic's Security Labs and [product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
 
 ### Anonymization [ai-assistant-anonymization]
 
