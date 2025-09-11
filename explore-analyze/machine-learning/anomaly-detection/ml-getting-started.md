@@ -122,7 +122,7 @@ Depending on the capacity of your machine, you might need to wait a few seconds 
 :screenshot:
 :::
 
-The {{ml-features}} analyze the input stream of data, model its behavior, and perform analysis based on the detectors in each job. When an event occurs outside of the model, that event is identified as an anomaly. You can immediately see that all three jobs have found anomalies, which are indicated by red blocks in the swim lanes for each job. Swim-lane colors map to the anomaly score: blue indicates low, yellow indicates medium, and red indicates high severity, with different shades representing varying levels within each category.
+The {{ml-features}} analyze the input stream of data, model its behavior, and perform analysis based on the detectors in each job. When an event occurs outside of the model, that event is identified as an anomaly. You can immediately see that all three jobs have found anomalies, which are indicated by red blocks in the swim lanes for each job. Swim lane colors map to the anomaly score: blue indicates low, yellow indicates medium, and red indicates high severity, with different shades representing varying levels within each category.
 
 There are two tools for examining the results from {{anomaly-jobs}} in {{kib}}: the **Anomaly Explorer** and the **Single Metric Viewer**. You can switch between these tools by clicking the icons in the top left corner. You can also edit the job selection to examine a different subset of {{anomaly-jobs}}.
 
