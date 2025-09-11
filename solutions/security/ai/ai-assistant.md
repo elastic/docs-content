@@ -27,11 +27,11 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 
 ::::{admonition} Requirements
 * {applies_to}`stack: ga` An [Enterprise subscription](https://www.elastic.co/pricing).
-* {applies_to}`serverless: ga` A [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* {applies_to}`serverless: ga` An {{sec-serverless}} project with the [EASE or Security Analytics Complete feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * To use AI Assistant, the **Elastic AI Assistant : All** and **Actions and Connectors : Read** [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * A [generative AI connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
-* An [inference endpoint](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Machine Learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
+* A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
 ## Your data and AI Assistant [data-information]
