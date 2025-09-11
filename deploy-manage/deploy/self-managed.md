@@ -29,11 +29,6 @@ Self-hosted options:
 For a comparison of these deployment options, refer to [Choosing your deployment type](/deploy-manage/deploy.md#choosing-your-deployment-type) and [](/deploy-manage/deploy/deployment-comparison.md).
 :::
 
-## Installation order
-
-:::{include} /deploy-manage/deploy/_snippets/installation-order.md
-:::
-
 ## Section overview
 
 This section focuses on deploying {{es}} and {{kib}} without an orchestrator.

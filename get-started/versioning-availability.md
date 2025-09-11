@@ -16,7 +16,7 @@ Learn how Elastic products are versioned, the lifecycle of features, and how to 
 
 ## Understanding versioning
 
-Many components of the [{{search-platform}}](/get-started/search-ai-platform.md) (such as {{es}} and {{kib}}) share the same versioning pattern.
+Many components of the [{{stack}}](/get-started/the-stack.md) (such as {{es}} and {{kib}}) share the same versioning pattern.
 In the documentation, this group of components is typically referred to as the {{stack}}.
 
 Orchestrators such as {{ece}} and {{eck}}, and other tools such as code clients and SDKs, are versioned independently of the {{search-platform}}. The {{ecloud}} console and {{serverless-short}} projects are always automatically updated with the latest changes.

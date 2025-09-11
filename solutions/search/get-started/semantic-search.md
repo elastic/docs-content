@@ -104,7 +104,7 @@ The vectors are stored in {{es}} and are ready to be used for semantic search.
 ::::
 ::::{step} Explore the data
 
-To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To familiarize yourself with this data set, open [Discover](/explore-analyze/discover.md) from the navigation menu or the global search field.
 
 In **Discover**, you can click the expand icon {icon}`expand` to show details about documents in the table:
 

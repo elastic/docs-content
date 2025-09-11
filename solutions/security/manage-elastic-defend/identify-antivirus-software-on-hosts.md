@@ -36,7 +36,7 @@ To use this feature, you need:
 
 ## Scan your hosts for AV software [_scan_your_hosts_for_av_software]
 
-1. Find **Endpoints** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Find **Endpoints** in the navigation menu or use the global search field.
 2. Click on an endpoint to open its details flyout.
 3. Under **Automatic Troubleshooting**, select an LLM connector, or [add](../ai/set-up-connectors-for-large-language-models-llm.md) a new one.
 4. Click **Scan**. After a brief processing period, any detected AV products will appear under **Insights**.

@@ -248,7 +248,7 @@ Provided Grok patterns do not match field value...
 
 Make sure your [grok](elasticsearch://reference/enrich-processor/grok-processor.md) or [dissect](elasticsearch://reference/enrich-processor/dissect-processor.md) processor pattern matches your log document format.
 
-You can build and debug grok patterns in {{kib}} using the [Grok Debugger](../../explore-analyze/query-filter/tools/grok-debugger.md). Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+You can build and debug grok patterns in {{kib}} using the [Grok Debugger](../../explore-analyze/query-filter/tools/grok-debugger.md). Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the global search field.
 
 From here, you can enter sample data representative of the log document you’re trying to ingest and the Grok pattern you want to apply to the data.
 

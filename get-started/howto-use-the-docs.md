@@ -27,7 +27,7 @@ Because Elastic products can be deployed in different ways (like on {{ecloud}} o
 These badges appear at the top of a page or section and tell you which products, deployment models, and versions the content applies to. They also indicate the maturity level of a feature, such as **beta**, **technical preview**, or **generally available (GA)**. This system ensures that you can identify content specific to your environment and version.
 
 :::{tip}
-An {{stack}} badge indicates that a page applies to [{{search-platform}}](/get-started/search-ai-platform.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it will have both {{serverless-short}} and Stack badges.
+An {{stack}} badge indicates that a page applies to [{{stack}}](/get-started/the-stack.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it will have both {{serverless-short}} and Stack badges.
 :::
 
 ## Page options
@@ -56,7 +56,7 @@ We clearly mark content added or changed in a specific version using availabilit
 
 This means the feature is:
 
-* Generally Available (GA) in the [{{search-platform}}](/get-started/search-ai-platform.md) across all deployment options except {{serverless-full}}
+* Generally Available (GA) in the [{{stack}}](/get-started/the-stack.md) across all deployment options except {{serverless-full}}
 * Introduced in version 9.1.0
 
 :::{tip}

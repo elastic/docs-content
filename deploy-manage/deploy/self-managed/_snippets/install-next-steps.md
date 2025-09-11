@@ -6,7 +6,7 @@ You now have a test {{es}} environment set up. Before you start serious developm
 
 You can also do the following:
 
-* Consider installing [additional {{stack}} components](/get-started/search-ai-platform.md).
+* Consider installing [additional {{stack}} components](/get-started/the-stack.md).
 * Learn how to [ingest data into {{es}}](/manage-data/index.md).
 * Learn about [production considerations](/deploy-manage/production-guidance.md).
 * Explore [other topics](/deploy-manage/deploy/self-managed.md#other-important-sections) to learn how to secure and manage your cluster.
