@@ -18,8 +18,8 @@ It is the foundation for Elastic's [solutions](/get-started/introduction.md) and
 
 The {{search-platform}} is a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then store, search, analyze, and visualize it.
 
-<!-- $$$stack-components$$$
-![Components of the {{search-platform}}](/get-started/images/platform-components-diagram.svg) -->
+$$$stack-components$$$
+![Components of the {{search-platform}}](/get-started/images/platform-components-diagram.svg)
 
 :::{tip}
 The components that share the same versioning scheme are often referred to as the _{{stack}}_. Learn more in [](/get-started/versioning-availability.md).
