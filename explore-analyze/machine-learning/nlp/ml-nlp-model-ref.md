@@ -11,6 +11,15 @@ products:
 
 # Compatible third party models [ml-nlp-model-ref]
 
+::::{warning}
+Uploading and running untrusted models can expose your {es} cluster to remote code execution (RCE) vulnerabilities.
+NLP models are a mixture of code and data. If a malicious model is uploaded and used, the model can execute arbitrary code on the {es} server.
+
+**Upload and run models only from providers you trust. Do not upload models from unverified or unknown sources.**
+
+The models listed on this page are all from a trusted source – Hugging Face.
+::::
+
 ::::{note}
 The minimum dedicated ML node size for deploying and using the {{nlp}} models is 16 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::

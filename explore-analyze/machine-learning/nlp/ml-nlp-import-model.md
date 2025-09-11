@@ -10,6 +10,13 @@ products:
 
 # Import the trained model and vocabulary [ml-nlp-import-model]
 
+::::{warning}
+Uploading and running untrusted models can expose your {es} cluster to remote code execution (RCE) vulnerabilities.
+NLP models are a mixture of code and data. If a malicious model is uploaded and used, the model can execute arbitrary code on the {es} server.
+
+**Upload and run models only from providers you trust. Do not upload models from unverified or unknown sources.**
+::::
+
 ::::{important}
 If you want to install a trained model in a restricted or closed network, refer to [these instructions](eland://reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
 ::::
