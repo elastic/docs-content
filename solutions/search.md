@@ -12,11 +12,26 @@ products:
   - id: kibana
 ---
 
-# Elasticsearch
+# The Elasticsearch solution and search use case
 
-{{es}} as a toolbox for your search use case enables you to build powerful search experiences for websites, applications, and enterprise data using Elastic's unified platform.
+The {es} solution and serverless project type combines the core {es} data store, search engine, and vector database technologies with specialized user interfaces and tools, giving you the building blocks to create, deploy, and run your own search applications.
 
-## {{es}} powers search
+## The {es} solution
+
+The Elasticsearch solution and serverless project type provides specialized user interfaces and tools designed to simplify the implementation of search applications:
+
+* **Search and discovery interfaces**: Discover and Dashboards for exploring data, building visualizations, and creating search experiences.
+* **Management interfaces**: Index Management and other tools for configuring and optimizing your search implementation.
+* **Search relevance tools**: Purpose-built UIs for managing synonyms, query rules, and other relevance-enhancing features.
+* **AI toolkit**: RAG Playground and inference endpoints management for building AI-enhanced search experiences.
+* **Complete Elasticsearch REST API**: Full access to Elasticsearch's comprehensive APIs for indexing, searching, and managing data.
+* **Deployment flexibility**: Run in Elastic Cloud, Elastic Serverless, or self-managed environments with consistent interfaces.
+
+## Use cases
+
+You can approach {{es}} use cases from two complementary angles: first, as a data store and vector database where you bring in and manage different types of data, and second, as a search solution where you use those core capabilities as building blocks to create tailored search applications.
+
+### Data store and vector database use case
 
 All of the search capabilities you find on this page are possible because {{es}} is not just a search engine, but it’s also a scalable, cost-efficient [data store](/manage-data/data-store.md).
 You can bring in many types of data, index them in near real time, and keep them stored in a way that makes them both searchable and analyzable. Common examples include, but are not limited to:
@@ -26,9 +41,9 @@ You can bring in many types of data, index them in near real time, and keep them
 * **Geospatial data**: coordinates, maps, and location-based signals.
 * **Vector data**: embeddings from {{ml}} models for semantic or hybrid search.
 
-By bringing all these capabilities together, Elasticsearch serves as a powerful data store, a geospatial search engine, a vector database, and more, all within a single technology. It forms the foundation of Elastic's unified data and search platform, enabling you to work with different data types seamlessly. To learn more, refer to the [{{es}} data store overview](/manage-data/data-store.md).
+By bringing all these capabilities together, Elasticsearch serves as a powerful data store, a geospatial search engine, a vector database, and more,  all within a single technology. It forms the foundation of Elastic's unified data and search platform, enabling you to work with different data types seamlessly. To learn more, refer to the [{{es}} data store overview](/manage-data/data-store.md).
 
-## Search use cases
+### Search use case
 
 Think of {{es}} as a set of powerful building blocks. You bring in your own data, text, logs, metrics, events, vectors, or geospatial information, and {{es}} gives you the tools to store, search, and analyze it. By combining these capabilities, you can design and build the search and discovery experiences that fit your needs, from product catalogs to knowledge bases, chatbots, or geospatial applications.
 
