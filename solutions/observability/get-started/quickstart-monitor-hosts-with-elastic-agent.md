@@ -6,8 +6,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
