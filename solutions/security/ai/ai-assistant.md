@@ -145,7 +145,8 @@ When someone shares a chat with you, you can review it but can't continue the co
 There are several [audit events](kibana://reference/kibana-audit-events.md) related to conversation sharing click each title to show an example:
 
 :::{dropdown} 1. security_assistant_conversation_shared
-   {
+```
+{
   "event": {
     "action": "security_assistant_conversation_shared",
     "category": [
@@ -205,10 +206,11 @@ There are several [audit events](kibana://reference/kibana-audit-events.md) rela
     "id": "8364fa9bf07311d6"
   }
 }
+```
 :::
 
 :::{dropdown} 2. security_assistant_conversation_private
-
+```
 {
   "event": {
     "action": "security_assistant_conversation_private",
@@ -269,9 +271,11 @@ There are several [audit events](kibana://reference/kibana-audit-events.md) rela
     "id": "68a0d5f52faa17d4"
   }
 }
+```
 :::
 
 :::{dropdown} 3. security_assistant_conversation_restricted
+```
 {
   "event": {
     "action": "security_assistant_conversation_restricted",
@@ -332,6 +336,7 @@ There are several [audit events](kibana://reference/kibana-audit-events.md) rela
     "id": "80e57252aceea924"
   }
 }
+```
 :::
 
 ## Configure AI Assistant [configure-ai-assistant]
