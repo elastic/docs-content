@@ -20,21 +20,12 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 
 Changes `event.category` from `security` to `configuration` for Gatekeeper on macOS.
 
-**Impact**<br> 
+**Impact**<br> Gatekeeper events on macOS are now labeled as `event.category == configuration`.
 
-**Action**<br>
-
-::::
-
-::::{dropdown} Changes invalid category for Gatekeeper and TCC events
-
-Changes `event.category` from `security` to `configuration` for Gatekeeper and TCC events on macOS.
-
-**Impact**<br> 
-
-**Action**<br>
+**Action**<br> If you're deploying custom rules using `event.category == security` on macOS, change the query to `event.category == configuration`.
 
 ::::
+
 
 ## 9.0.0 [elastic-security-900-breaking-changes]
 
