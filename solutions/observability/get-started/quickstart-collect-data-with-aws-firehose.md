@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/collect-data-with-aws-firehose.html
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-aws-firehose.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless

@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-api-key.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -164,7 +164,7 @@ You can now apply your newly created API keys in the configuration of each of yo
 ## Alternate API key creation method [apm-configure-api-key-alternative]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
