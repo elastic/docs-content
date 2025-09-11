@@ -83,13 +83,11 @@ You should get a response of `"acknowledged": true` that confirms the template w
 
 ::::
 
-::::{step} Add sample documents
+::::{step} Create data stream and add sample data
 
-To apply the new index template to a new data stream, use a bulk ingest API request. Adding documents automatically creates a new data stream. 
+In this step, create a new data stream called `quickstart-weather` based on the index template defined in Step 1. You can create the data stream and add documents in a single API call.
 
-In step 1, you specified the template index pattern `quickstart-*`. In this step, you set the data stream name to `quickstart-weather`, to match the template pattern.
-
-Use a [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) request, adjusting the timestamps to within a few minutes of the current time:
+Use a [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) request to add multiple documents at once. Make sure to adjust the timestamps to within a few minutes of the current time.
 
 % TODO simplify timestamps
 
