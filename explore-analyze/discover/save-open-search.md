@@ -16,7 +16,7 @@ A saved Discover session is a convenient way to reuse a search that you’ve cre
 
 ## Read-only access [discover-read-only-access]
 
-If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+If you don’t have sufficient privileges to save Discover sessions, the following indicator is displayed and the **Save** button is not visible. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 :::{image} /explore-analyze/images/kibana-read-only-badge.png
 :alt: Example of Discover's read only access indicator in Kibana's header

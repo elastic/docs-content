@@ -3,7 +3,7 @@ navigation_title: Use feature roles
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-feature-roles.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -138,7 +138,7 @@ If you’re using [internal collection](/solutions/observability/apm/use-interna
 
 **Use a built-in user or role**
 
-{{es-security-features}} provides the `apm_system` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) and `apm_system` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) to send monitoring information. You can use the built-in user, if it’s available in your environment, create a user who has the built-in role assigned, or create a user and manually assign the privileges needed to send monitoring information.
+{{es-security-features}} provides the `apm_system` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) and `apm_system` [built-in role](elasticsearch://reference/elasticsearch/roles.md) to send monitoring information. You can use the built-in user, if it’s available in your environment, create a user who has the built-in role assigned, or create a user and manually assign the privileges needed to send monitoring information.
 
 If you use the built-in `apm_system` user, make sure you set the password before using it.
 
@@ -172,7 +172,7 @@ If you’re [using {{metricbeat}}](/solutions/observability/apm/use-metricbeat-t
 
 **Use a built-in user or role**
 
-{{es-security-features}} provides the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md), and the `remote_monitoring_collector` and `remote_monitoring_agent` [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) for collecting and sending monitoring information. You can use the built-in user, if it’s available in your environment, or create a user who has the privileges needed to collect and send monitoring information.
+{{es-security-features}} provides the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md), and the `remote_monitoring_collector` and `remote_monitoring_agent` [built-in roles](elasticsearch://reference/elasticsearch/roles.md) for collecting and sending monitoring information. You can use the built-in user, if it’s available in your environment, or create a user who has the privileges needed to collect and send monitoring information.
 
 If you use the built-in `remote_monitoring_user` user, make sure you set the password before using it.
 

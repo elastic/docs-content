@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-monitoring-aws-lambda.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-aws-lambda-functions.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
