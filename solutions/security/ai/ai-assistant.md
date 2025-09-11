@@ -115,6 +115,11 @@ AI Assistant can remember particular information you tell it to remember. For ex
 
 ## Share conversations
 
+```{applies_to}
+stack: ga 9.2
+serverless: ga
+```
+
 Conversations that you start with AI Assistant are invisible by default for other members of your team. You can share them either with specific teammates or with everyone with access to the environment. 
 
 There are several ways to share a conversation: 
@@ -137,7 +142,7 @@ When someone shares a chat with you, you can review it but can't continue the co
 - Open an AI Assistant chat, open the **Conversation settings** menu and select **Duplicate**.
 - Open the **Conversations** tab of the AI Assistant settings page, then select the one you want to duplicate and click **Duplicate**.
 
-There are several audit events related to conversation sharing click each title to show an example:
+There are several [audit events](kibana://reference/kibana-audit-events.md) related to conversation sharing click each title to show an example:
 
 :::{dropdown} 1. security_assistant_conversation_shared
    {
