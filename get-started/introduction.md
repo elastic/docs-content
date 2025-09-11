@@ -15,9 +15,9 @@ Refer to the following table for a quick reference of which solution you may nee
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
-| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights  | [{{es}}](/solutions/search.md) | Developers, architects, data engineers |
-| Observe and monitor system health and performance or send telemetry data | [Elastic {{observability}}](/solutions/observability.md) | DevOps, SREs, IT operations |
-| Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](/solutions/security.md) | SOC teams, security analysts, IT security admins |
+| Build powerful, scalable searches to quickly search, analyze, and visualize large amounts of data for real-time insights  | [{{es}}](#search-overview) | Developers, architects, data engineers |
+| Observe and monitor system health and performance or send telemetry data | [Elastic {{observability}}](#observability-overview) | DevOps, SREs, IT operations |
+| Monitor data for anomalous activity, detect, prevent, and respond to security incidents | [{{elastic-sec}}](#security-overview) | SOC teams, security analysts, IT security admins |
 
 :::{tip}
 Check out our [customer success stories](https://www.elastic.co/customers/success-stories) to learn how various organizations utilize our products for their specific business needs.
@@ -27,11 +27,11 @@ Each of our solutions is available as a fully managed {{serverless-short}} proje
 
 ## Elasticsearch
 
-### Overview [search-overview]
+### {{es}} overview [search-overview]
 
 {{es}} is an open-source, distributed search and analytics engine built on Apache Lucene, used for high-performance full-text search, log analytics, business analytics, and operational intelligence. It stores data in JSON documents, provides REST APIs for easy interaction, and functions as a NoSQL database that enables fast searches, analytics, and AI-driven applications. Built on Apache Lucene, {{es}} is the core of the Search AI platform. 
 
-### {{es}} use cases [search-use-cases]
+### Elasticsearch use cases [search-use-cases]
 Use {{es}} for a wide range of business needs.   
 
 :::{dropdown} Use cases
@@ -63,15 +63,15 @@ Before you decide what type of search to use with {{es}} or bring in your data, 
 
 ::::
 
-## {{elastic-sec}} 
+## Elastic Security
 
-### Overview 
+### {{elastic-sec}} overview [security-overview]
 
 {{elastic-sec}} is a unified security solution that integrates SIEM (Security Information and Event Management), endpoint security, and cloud security into a single platform so you can detect, prevent, and respond to cyber threats across your entire environment in near real time. Elastic Security leverages {{es}}'s powerful platform for its searching and analytic capabilities, and {{kib}} for its visualization features. By combining prevention, detection, and response capabilities, {{elastic-sec}} helps your organization reduce the risk of successful attacks. 
 
 Install {{elastic-sec}} on one of our Elastic-managed Cloud deployments or your own self-managed infrastructure.  
 
-### {{elastic-sec}} use cases 
+### {{elastic-sec}} use cases [security-use-cases]
 
 Use {{elastic-sec}} for numerous security needs to ensure your systems are protected from the latest threats.
 
@@ -89,11 +89,11 @@ Use {{elastic-sec}} for numerous security needs to ensure your systems are prote
   * **Vulnerability Management:** Uncover vulnerabilities within your cloud infrastructure.
 :::
 
-### Core concepts
+### Elastic Security core concepts [security-concepts]
 
 Before diving into setup and configuration, familiarize yourself with the foundational terms and core concepts that power {{elastic-sec}}. 
 
-:::{dropdown} Concepts
+:::{dropdown} Concepts 
 
 * {{agent}}: A single, unified way to add monitoring for logs, metrics, and other types of data to a host. Elastic Agent can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. 
 * {{elastic-defend}}: {{elastic-sec}}'s Endpoint Detection and Response (EDR) tool that protects endpoints from malicious activity. {{elastic-defend}} uses a combination of techniques like machine learning, behavioral analysis, and prebuilt rules to detect, prevent, and respond to threats in real-time.
@@ -112,13 +112,13 @@ Before diving into setup and configuration, familiarize yourself with the founda
 
 ## Elastic {{observability}} 
 
-### Overview [observability-overview]
+### Elastic {{observability}} overview [observability-overview]
 
 Elastic {{observability}} provides unified observability across applications and infrastructure. It combines logs, metrics, application traces, user experience data, and more into a single, integrated platform. This consolidation allows for powerful, cross-referenced analysis, enabling teams to move from detecting issues to understanding their root causes with speed and efficiency. By leveraging the search and analytics capabilities of {{es}}, it offers a holistic view of system behavior.
 
 Elastic {{observability}} embraces open standards like OpenTelemetry for flexible data collection, and offers scalable, cost-efficient data retention with tiered storage.
 
-### {{observability}} use cases [observability-use-cases]
+### Elastic {{observability}} use cases [observability-use-cases]
 
 Apply Elastic {{observability}} to various scenarios to improve operational awareness and system reliability. 
 :::{dropdown} Use cases
@@ -134,7 +134,7 @@ Apply Elastic {{observability}} to various scenarios to improve operational awar
 * **Incident Response and Management:** Facilitate the investigation of operational incidents by correlating data from multiple sources, which accelerates root cause analysis and resolution.
 :::
 
-### {{observability}} core concepts [observability-concepts]
+### Elastic {{observability}} core concepts [observability-concepts]
 At the heart of Elastic {{observability}} are several key concepts that enable its capabilities. 
 
 :::{dropdown} Concepts
