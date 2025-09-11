@@ -83,7 +83,7 @@ You should get a response of `"acknowledged": true` that confirms the template w
 
 ::::
 
-::::{step} Create data stream and add sample data
+::::{step} Create a data stream and add sample data
 
 In this step, create a new data stream called `quickstart-weather` based on the index template defined in Step 1. You can create the data stream and add documents in a single API call.
 
