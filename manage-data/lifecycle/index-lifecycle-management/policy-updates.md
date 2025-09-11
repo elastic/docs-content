@@ -1,5 +1,4 @@
 ---
-navigation_title: Update or switch a policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-lifecycle-policy.html
 applies_to:
