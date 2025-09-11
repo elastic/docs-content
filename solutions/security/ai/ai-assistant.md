@@ -359,7 +359,7 @@ To adjust the settings for a specific chat, click the **Conversation settings** 
 :screenshot:
 ::::
 
-The **Copy URL** and **Duplicate** buttons allow you to share conversations (by sending their URL) and to continue conversations that were shared with you (by duplicating them). The **Delete** option allows you to remove a saved conversation.
+The **Copy URL** and **Duplicate** buttons allow you to share conversations (by sending their URL) and to continue conversations that were shared with you (by duplicating them). The **Delete** option appears for the conversation owner only and allows you to remove a saved conversation.
 
 Settings in the **Chat options** section affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md), and content from Elastic's Security Labs and [product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
 
