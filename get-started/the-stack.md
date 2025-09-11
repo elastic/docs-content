@@ -7,97 +7,125 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
 products:
   - id: elastic-stack
-  - id: kibana
 applies_to:
+  serverless:
   stack:
 ---
+# {{search-platform}}
 
-# The {{stack}}
+Elastic provides a fusion of search technology and artifical intelligence in the [{{search-platform}}](https://www.elastic.co/platform).
+It is the foundation for Elastic's [solutions](/get-started/introduction.md) and for developers seeking to build next generation, generative AI powered applications and services.
 
-This section provides an overview of the {{stack}} and its components.
+The {{search-platform}} is a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then store, search, analyze, and visualize it.
 
-$$$kibana-navigation-search$$$
-
-## An overview of the {{stack}} [stack-components]
-
-What is the {{stack}}? It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
-
-The products in the {{es}} are designed to be used together and releases are synchronized to simplify the installation and upgrade process.
-
-You have many options for deploying the {{stack}} to suit your needs. You can deploy it on your own hardware, in the cloud, or use a managed service on {{ecloud}}.
+<!-- $$$stack-components$$$
+![Components of the {{search-platform}}](/get-started/images/platform-components-diagram.svg) -->
 
 :::{tip}
-To learn how to deploy {{es}}, {{kib}}, and supporting orchestration technologies, refer to [](/deploy-manage/index.md). To learn how to deploy additional ingest and consume components, refer to the documentation for the component.
+The components that share the same versioning scheme are often referred to as the _{{stack}}_. Learn more in [](/get-started/versioning-availability.md).
 :::
 
-![Components of the Elastic Stack](/get-started/images/stack-components-diagram.svg)
+You have many options for deploying the {{search-platform}}, which are summarized in [](/get-started/deployment-options.md).
+All deployments include [{{es}}](#stack-components-elasticsearch).
+Although [{{kib}}](#stack-components-kibana) is not required to use {{es}}, it is included by default when you use deployment methods such as {{serverless-full}}.
 
-### Ingest [_ingest]
+Continue reading to learn how these components work together.
 
-Elastic provides a number of components that ingest data. Collect and ship logs, metrics, and other types of data with {{agent}} or {{beats}}. Manage your {{agents}} with {{fleet}}. Collect detailed performance information with Elastic APM.
+## Ingest [_ingest]
 
-If you want to transform or enrich data before it’s stored, you can use {{es}} ingest pipelines or {{ls}}.
+Elastic provides a number of components that ingest data.
+Collect and ship logs, metrics, and other types of data with {{agent}} or {{beats}}.
+Manage your {{agents}} with {{fleet}}.
+Collect detailed performance information with Elastic APM.
 
-Trying to decide which ingest component to use? Refer to [Adding data to {{es}}](/manage-data/ingest.md) to help you decide.
+If you want to transform or enrich data before it's stored, you can use {{es}} ingest pipelines or {{ls}}.
 
-#### {{fleet}} and {{agent}} [stack-components-agent]
+Trying to decide which ingest component to use? Refer to [](/manage-data/ingest.md) to help you decide.
 
-{{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. Each agent has a single policy to which you can add integrations for new data sources, security protections, and more.
+### {{fleet}} and {{agent}} [stack-components-agent]
 
-{{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
+{{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host.
+It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more.
+Each agent has a single policy to which you can add integrations for new data sources, security protections, and more.
+
+{{fleet}} enables you to centrally manage {{agents}} and their policies.
+Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
 
 [Learn more about {{fleet}} and {{agent}}](/reference/fleet/index.md).
 
-#### APM [stack-components-apm]
+### APM [stack-components-apm]
 
-Elastic APM is an application performance monitoring system built on the {{stack}}. It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more. This makes it easy to pinpoint and fix performance problems quickly. [Learn more about APM](/solutions/observability/apm/index.md).
+Elastic APM is an application performance monitoring system.
+It allows you to monitor software services and applications in real-time, by collecting detailed performance information on response time for incoming requests, database queries, calls to caches, external HTTP requests, and more.
+This makes it easy to pinpoint and fix performance problems quickly.
 
-#### {{beats}} [stack-components-beats]
+[Learn more about APM](/solutions/observability/apm/index.md).
 
-{{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](beats://reference/index.md).
+### {{beats}} [stack-components-beats]
 
-#### {{es}} ingest pipelines [stack-components-ingest-pipelines]
+{{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}.
+{{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs.
 
-Ingest pipelines let you perform common transformations on your data before indexing them into {{es}}. You can configure one or more "processor" tasks to run sequentially, making specific changes to your documents before storing them in {{es}}. [Learn more about ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md).
+[Learn more about {{beats}}](beats://reference/index.md).
 
-#### {{ls}} [stack-components-logstash]
+### {{es}} ingest pipelines [stack-components-ingest-pipelines]
 
-{{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](logstash://reference/index.md).
+Ingest pipelines let you perform common transformations on your data before indexing them into {{es}}.
+You can configure one or more "processor" tasks to run sequentially, making specific changes to your documents before storing them in {{es}}.
 
+[Learn more about ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md).
 
-### Store [_store]
+### {{ls}} [stack-components-logstash]
 
-#### {{es}} [stack-components-elasticsearch]
+{{ls}} is a data collection engine with real-time pipelining capabilities.
+It can dynamically unify data from disparate sources and normalize the data into destinations of your choice.
+{{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process.
 
-{{es}} is the distributed search and analytics engine at the heart of the {{stack}}. It provides near real-time search and analytics for all types of data. Whether you have structured or unstructured text, numerical data, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches. {{es}} provides a REST API that enables you to store data in {{es}} and retrieve it. The REST API also provides access to {{es}}'s search and analytics capabilities. [Learn more about {{es}}](/get-started/index.md).
+[Learn more about {{ls}}](logstash://reference/index.md).
 
+## Store, search, and analyze [_store]
 
-### Consume [_consume]
+{{es}} is the distributed search, storage, and analytics engine at the heart of the {{search-platform}}.
 
-Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use the {{es}} clients to access data in {{es}} directly from common programming languages.
+### {{es}} [stack-components-elasticsearch]
 
-#### {{kib}} [stack-components-kibana]
+{{es}} provides near real-time search and analytics for all types of data.
+Whether you have structured or unstructured text, numerical data, vectors, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches.
 
-{{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](/explore-analyze/index.md).
+{{es}} is built to be a resilient and scalable distributed system.
+It runs as a cluster of one or more servers, called nodes.
+When you add data to an index, it's divided into pieces called shards, which are spread across the various nodes in the cluster.
+This architecture allows {{es}} to handle large volumes of data and ensures that your data remains available even if a node fails.
 
-#### {{es}} clients [stack-components-elasticsearch-clients]
+Nearly every aspect of {{es}} can be configured and managed programmatically through its REST APIs.
+This allows you to automate repetitive tasks and integrate Elastic management into your existing operational workflows.
+For example, you can use the APIs to manage indices, update cluster settings, run complex queries, and configure security.
+This API-first approach is fundamental to enabling infrastructure-as-code practices and managing deployments at scale.
 
-The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others. Both official and community contributed clients are available. [Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
+Learn more about [the {{es}} data store](/manage-data/data-store.md), its [distributed architecture](/deploy-manage/distributed-architecture.md), and [APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md).
 
-## Version compatibility
-```{applies_to}
-deployment:
-  self:
-```
+## Explore [_consume]
 
-:::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
-:::
+Use {{kib}} to explore and visualize the data that's stored in {{es}} and to manage the {{search-platform}}.
+You can use the {{es}} clients to access data directly by using common programming languages.
 
-## Installation order
-```{applies_to}
-deployment:
-  self:
-```
+### {{kib}} [stack-components-kibana]
 
-:::{include} /deploy-manage/deploy/_snippets/installation-order.md
-:::
+With {{kib}}, you can:
+
+* Use **Discover** to interactively search and filter your raw data.  
+* Build custom visualizations like charts, graphs, and metrics with tools like **Lens**, which offers a drag-and-drop experience.  
+* Assemble your visualizations into interactive dashboards to get a comprehensive overview of your information.  
+* Analyze geospatial data using the powerful **Maps** application.
+
+It also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
+For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
+
+[Learn more about {{kib}}](/explore-analyze/index.md).
+
+### {{es}} clients [stack-components-elasticsearch-clients]
+
+The clients provide a convenient mechanism to manage API requests and responses to and from {{es}} from popular languages such as Java, Ruby, Go, Python, and others.
+Both official and community contributed clients are available.
+
+[Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
