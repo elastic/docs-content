@@ -9,7 +9,9 @@ products:
 
 # Tutorial: Customize built-in policies
 
-{{es}} includes the following built-in {{ilm-init}} policies:
+{{es}} includes a set of built-in {{ilm-init}} policies that govern how managed indices transition as they age. This guide demonstrates how you can customize the lifecycle of a managed index, to adjust how the index transitions across [data tiers](/manage-data/lifecycle/data-tiers.md) and what [actions](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md#ilm-phase-actions), such as downsampling or shrinking, are performed on the index during each lifecycle phase.
+
+[{{agent}}](/reference/fleet/index.md) uses the following set of built-in {{ilm-init}} policies to manage backing indices for its data streams:
 
 * `logs@lifecycle`
 * `logs-otel@lifecycle`
@@ -19,8 +21,16 @@ products:
 * `traces@lifecycle`
 * `traces-otel@lifecycle`
 
-{{agent}} uses these policies to manage backing indices for its data streams. This tutorial shows you how to use {{kib}}’s **Index Lifecycle Policies** to customize these policies based on your application’s performance, resilience, and retention requirements.
+This tutorial covers customizing the way ingested logging data is managed. Rather than use the default lifecycle settings from the built-in `logs@lifecycle` {{ilm-init}} policy, you can use the **Index Lifecycle Policies** feature in {{kib}} to tailor a new policy based on your application’s specific performance, resilience, and retention requirements. This involves three main steps:
+ 1. [Create a duplicate of the `logs@lifecycle` policy](#example-using-index-lifecycle-policy-duplicate-ilm-policy).
+ 2. [Modify the new policy to suit your requirements](#ilm-ex-modify-policy).
+ 3. [Apply the new policy to your log data using a `logs@custom` component template](#example-using-index-lifecycle-policy-apply-policy).
 
+:::{tip}
+If you're using [Elastic integrations](https://docs.elastic.co/en/integrations) and are not yet familiar with which data streams are associated with them, refer to [Manage the lifecycle policy for integrations data](/manage-data/lifecycle/index-lifecycle-management/manage-lifecycle-integrations-data.md).
+
+If you're looking for a more advanced use case, such as customizing an ILM policy for a selected set of data streams in one or more integrations or namespaces, check the set of tutorials in [Customize data retention policies](/reference/fleet/data-streams-ilm-tutorial.md) in the {{fleet}} and {{agent}} reference documentation.
+:::
 
 ## Scenario [example-using-index-lifecycle-policy-scenario]
 
@@ -131,6 +141,10 @@ Copies of managed {{ilm-init}} policies are also marked as **Managed**. You can 
 To apply your new {{ilm-init}} policy to the `logs` index template, create or edit the `logs@custom` component template.
 
 A `*@custom` component template allows you to customize the mappings and settings of managed index templates, without having to override managed index templates or component templates. This type of component template is automatically picked up by the index template. [Learn more](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
+
+:::{tip}
+If you want your {{ilm-init}} changes to apply only to specific indices, you can create a custom index template directly instead of modifying the custom component template. Use the **Index management** page in {{kib}} or the [index template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) API to create a new template.
+:::
 
 1. Click on the **Component Template** tab and click **Create component template**.
 2. Under **Logistics**, name the component template `logs@custom`.
