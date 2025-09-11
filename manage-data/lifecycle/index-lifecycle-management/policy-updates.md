@@ -10,13 +10,13 @@ products:
 
 # Update or switch a lifecycle policy
 
-
 You can change how the lifecycle of an index or collection of rolling indices is managed by modifying the current policy or switching to a different policy.
 
 To ensure that policy updates don’t put an index into a state where it can’t exit the current phase, the phase definition is cached in the index metadata when it enters the phase. If changes can be safely applied, {{ilm-init}} updates the cached phase definition. If they cannot, phase execution continues using the cached definition.
 
 When the index advances to the next phase, it uses the phase definition from the updated policy.
 
+If you'd like to configure an index not currently managed by {{ilm-init}} to be governed by an lifecycle policy, refer to [Manually apply a policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md).
 
 ## How changes are applied [ilm-apply-changes]
 
