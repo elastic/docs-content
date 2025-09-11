@@ -14,7 +14,6 @@ products:
 
 # Ingest for search use cases
 
-
 $$$elasticsearch-ingest-time-series-data$$$
 ::::{note}
 This page covers ingest methods specifically for search use cases. If you're working with a different use case, refer to the [ingestion overview](/manage-data/ingest.md) for more options.
@@ -32,7 +31,11 @@ If you just want to do a quick test, you can load [sample data](/manage-data/ing
 
 ## Use APIs [es-ingestion-overview-apis]
 
-You can use the [`_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-document) to add data to your {{es}} indices, using any HTTP client, including the [{{es}} client libraries](/solutions/search/site-or-app/clients.md).
+You can use the [`_bulk` API]({{es-apis}}group/endpoint-document) to add data to your {{es}} indices, using any HTTP client, including the [{{es}} client libraries](/solutions/search/site-or-app/clients.md).
+
+::::{tip}
+To connect to an {{es-serverless}} project, you must [find the connection details](/solutions/search/search-connection-details.md).
+::::
 
 While the {{es}} APIs can be used for any data type, Elastic provides specialized tools that optimize ingestion for specific use cases.
 
