@@ -11,7 +11,7 @@ products:
 
 # Deploy a {{kib}} instance [k8s-deploy-kibana]
 
-To deploy a simple [{{kib}}](/get-started/the-stack.md#stack-components-kibana) specification, with one {{kib}} instance:
+To deploy a simple {{kib}} specification, with one {{kib}} instance:
 
 1. Specify a {{kib}} instance and associate it with your {{es}} `quickstart` cluster created previously under [Deploying an {{es}} cluster](elasticsearch-deployment-quickstart.md):
 
