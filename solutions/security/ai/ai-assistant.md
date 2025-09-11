@@ -115,7 +115,7 @@ AI Assistant can remember particular information you tell it to remember. For ex
 
 ## Share conversations
 
-Conversations that you start with AI Assistant are invisible by default for other members of your team. You can share them either with specific teammates or with everyone with access to the environment. 
+Conversations that you start with AI Assistant are not visible by default for other members of your team. You can share them either with specific teammates or with everyone with access to the environment. 
 
 There are several ways to share a conversation: 
 
