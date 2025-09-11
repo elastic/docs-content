@@ -25,43 +25,43 @@ Check out our [customer success stories](https://www.elastic.co/customers/succes
 
 Each of our solutions is available as a fully managed {{serverless-short}} project or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options. 
 
-## Elastic {{observability}} 
+## Elasticsearch
 
-### Overview [observability-overview]
+### Overview [search-overview]
 
-Elastic {{observability}} provides unified observability across applications and infrastructure. It combines logs, metrics, application traces, user experience data, and more into a single, integrated platform. This consolidation allows for powerful, cross-referenced analysis, enabling teams to move from detecting issues to understanding their root causes with speed and efficiency. By leveraging the search and analytics capabilities of {{es}}, it offers a holistic view of system behavior.
+{{es}} is an open-source, distributed search and analytics engine built on Apache Lucene, used for high-performance full-text search, log analytics, business analytics, and operational intelligence. It stores data in JSON documents, provides REST APIs for easy interaction, and functions as a NoSQL database that enables fast searches, analytics, and AI-driven applications. Built on Apache Lucene, {{es}} is the core of the Search AI platform. 
 
-Elastic {{observability}} embraces open standards like OpenTelemetry for flexible data collection, and offers scalable, cost-efficient data retention with tiered storage.
+### {{es}} use cases [search-use-cases]
+Use {{es}} for a wide range of business needs.   
 
-### {{observability}} use cases [observability-use-cases]
-
-Apply Elastic {{observability}} to various scenarios to improve operational awareness and system reliability. 
 :::{dropdown} Use cases
-* **Log Monitoring and Analytics:** Centralize and analyze petabytes of log data from any source. This enables quick searching, ad-hoc queries with ES|QL, and visualization with prebuilt dashboards to diagnose issues.
-* **Application Performance Monitoring (APM):** Gain code-level visibility into application performance. By collecting and analyzing traces with native OTel support, teams can identify bottlenecks, track errors, and optimize the end-user experience.
-* **Infrastructure Monitoring:** Monitor metrics from servers, virtual machines, containers, and serverless environments with over 400 out-of-the-box integrations, including OpenTelemetry. This provides deep insights into resource utilization and overall system health.
-* **Digital Experience Monitoring:**
-  * **Real User Monitoring (RUM):** Capture and analyze data on how real users interact with web applications to improve perceived performance.
-  * **Synthetic Monitoring:** Proactively simulate user journeys and API calls to test application availability and functionality.
-  * **Uptime Monitoring:** Continuously check the status of services and applications to ensure they are available.
-* **Universal Profiling:** Gain visibility into system performance and identify expensive lines of code without application instrumentation, helping to increase CPU efficiency and reduce cloud spend.
-* **LLM Observability:** Gain deep insights into the performance, usage, and costs of Large Language Model (LLM) prompts and responses.
-* **Incident Response and Management:** Facilitate the investigation of operational incidents by correlating data from multiple sources, which accelerates root cause analysis and resolution.
+* **Full-text search:** Find specific words or phrases within large volumes of text-based data, such as documents, articles, or product descriptions. Documents and search queries are transformed to enable returning relevant results instead of exact term matches. 
+* **Semantic search:** Go beyond keyword matching to understand the user's intent. Understanding synonyms and related concepts helps your search engine recognize what users mean, not just what they type.
+* **Hybrid search:** Get the best of both worlds by combining traditional keyword search with modern, meaning-based vector search. This ensures your users get the most accurate and relevant results every time.
+* **Vector database:** Search for data based on its meaning and context, not just keywords. Understanding the underlying concepts allows you to find similar items, like pictures with the same style or songs with a similar vibe.
+* **Retrieval Augmented Generation (RAG):** Connect your generative AI applications (like chatbots) to your private data. This allows your AI to provide more accurate, up-to-date, and relevant answers based on your proprietary information.
+* **Geospatial search:** Build location-aware features into your applications. This allows you to do things like find all available services within a certain radius, calculate the distance between two points, or identify the most efficient delivery routes.
 :::
 
-### {{observability}} core concepts [observability-concepts]
-At the heart of Elastic {{observability}} are several key concepts that enable its capabilities. 
+### {{es}} core concepts [search-concepts]
+Before you decide what type of search to use with {{es}} or bring in your data, familiarize yourself with the following {{es}} concepts.
 
-:::{dropdown} Concepts
-* The three pillars of {{observability}} are: 
-  * Logs: Timestamped records of events that provide detailed, contextual information.
-  * Metrics: Numerical measurements of system performance and health over time.
-  * Traces: A representation of the end-to-end journey of a request as it travels through a distributed system.
-* OpenTelemetry: Elastic Observability offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the Elastic Distribution of OpenTelemetry (EDOT).
-* AIOps and AI Assistant: Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config anomaly detection, pattern analysis, and the ability to surface correlations and root causes.
-* Alerting and Cases: A built-in feature for creating rules to detect complex conditions and trigger actions. It allows teams to stay aware of potential issues and use Cases to track investigation details, assign tasks, and collaborate on resolutions.
-* Service Level Objectives (SLOs): A framework for defining and monitoring the reliability of a service. Elastic Observability allows for creating and tracking SLOs to ensure that performance targets are being met.
-:::
+::::{dropdown} Concepts
+
+* **Index:** A collection of documents with similar characteristics that are uniquely identified by a name or an alias. The name is used to target the index in search queries and other operations.
+ **Field:** The smallest individual unit of data within a document. It represents a specific property or attribute of the data you're indexing (for example, title, author, date, summary, etc.). Fields are critical for indexing, as they determine how data is analyzed and stored to enable efficient searching.
+* **Document:** Any structured data encoded in JSON. {{es}} organizes and stores data into documents. 
+* **Primary shard:** A self-contained Lucene index that contains some or all data for an index. Shards allow {{es}} to scale horizontally by splitting an index's data into smaller, manageable partitions, improving performance. Each document in an index belongs to one primary shard.
+* **Replica:** A copy of a primary shard. Replicas maintain redundant copies of your data across the nodes in your cluster. This protects against hardware failure and increases capacity to serve read requests like searching or retrieving a document.
+* **Node:** A single running instance of the {{es}} server. 
+* **Cluster:** A collection of one or more nodes that holds all your data and provides indexing and search capabilities across all nodes. {{es}} clusters feature primary and replica shards to provide failover in the case of a node going down. When a primary shard goes down, the replica takes its place.
+  :::{note}
+  If you're running {{es}} on a serverless deployment, you don't have to worry a bout shards, nodes, or clusters. Elastic manages these for you. 
+  :::
+* **Mapping:** The process that defines how a document and its fields  are stored and indexed.
+* **Client:** Software or an application that facilitates communication and interaction with an {{es}} cluster. It enables applications written in various programming languages to send requests to {{es}}, process the response, and then push that data into the cluster. 
+
+::::
 
 ## {{elastic-sec}} 
 
@@ -109,43 +109,45 @@ Before diving into setup and configuration, familiarize yourself with the founda
 * AI Assistant: A generative AI-powered tool that helps with tasks like alert investigation, incident response, and query generation. It utilizes natural language processing and knowledge retrieval to provide context-aware assistance, summarize threats, suggest next steps, and automate workflows. Use AI Assistant to better understand and respond to security incidents.
 :::
 
-## Elasticsearch
 
-### Overview [search-overview]
+## Elastic {{observability}} 
 
-{{es}} is an open-source, distributed search and analytics engine built on Apache Lucene, used for high-performance full-text search, log analytics, business analytics, and operational intelligence. It stores data in JSON documents, provides REST APIs for easy interaction, and functions as a NoSQL database that enables fast searches, analytics, and AI-driven applications. Built on Apache Lucene, {{es}} is the core of the Search AI platform. 
+### Overview [observability-overview]
 
-### {{es}} use cases [search-use-cases]
-Use {{es}} for a wide range of business needs.   
+Elastic {{observability}} provides unified observability across applications and infrastructure. It combines logs, metrics, application traces, user experience data, and more into a single, integrated platform. This consolidation allows for powerful, cross-referenced analysis, enabling teams to move from detecting issues to understanding their root causes with speed and efficiency. By leveraging the search and analytics capabilities of {{es}}, it offers a holistic view of system behavior.
 
+Elastic {{observability}} embraces open standards like OpenTelemetry for flexible data collection, and offers scalable, cost-efficient data retention with tiered storage.
+
+### {{observability}} use cases [observability-use-cases]
+
+Apply Elastic {{observability}} to various scenarios to improve operational awareness and system reliability. 
 :::{dropdown} Use cases
-* **Full-text search:** Find specific words or phrases within large volumes of text-based data, such as documents, articles, or product descriptions. Documents and search queries are transformed to enable returning relevant results instead of exact term matches. 
-* **Semantic search:** Go beyond keyword matching to understand the user's intent. Understanding synonyms and related concepts helps your search engine recognize what users mean, not just what they type.
-* **Hybrid search:** Get the best of both worlds by combining traditional keyword search with modern, meaning-based vector search. This ensures your users get the most accurate and relevant results every time.
-* **Vector database:** Search for data based on its meaning and context, not just keywords. Understanding the underlying concepts allows you to find similar items, like pictures with the same style or songs with a similar vibe.
-* **Retrieval Augmented Generation (RAG):** Connect your generative AI applications (like chatbots) to your private data. This allows your AI to provide more accurate, up-to-date, and relevant answers based on your proprietary information.
-* **Geospatial search:** Build location-aware features into your applications. This allows you to do things like find all available services within a certain radius, calculate the distance between two points, or identify the most efficient delivery routes.
+* **Log Monitoring and Analytics:** Centralize and analyze petabytes of log data from any source. This enables quick searching, ad-hoc queries with ES|QL, and visualization with prebuilt dashboards to diagnose issues.
+* **Application Performance Monitoring (APM):** Gain code-level visibility into application performance. By collecting and analyzing traces with native OTel support, teams can identify bottlenecks, track errors, and optimize the end-user experience.
+* **Infrastructure Monitoring:** Monitor metrics from servers, virtual machines, containers, and serverless environments with over 400 out-of-the-box integrations, including OpenTelemetry. This provides deep insights into resource utilization and overall system health.
+* **Digital Experience Monitoring:**
+  * **Real User Monitoring (RUM):** Capture and analyze data on how real users interact with web applications to improve perceived performance.
+  * **Synthetic Monitoring:** Proactively simulate user journeys and API calls to test application availability and functionality.
+  * **Uptime Monitoring:** Continuously check the status of services and applications to ensure they are available.
+* **Universal Profiling:** Gain visibility into system performance and identify expensive lines of code without application instrumentation, helping to increase CPU efficiency and reduce cloud spend.
+* **LLM Observability:** Gain deep insights into the performance, usage, and costs of Large Language Model (LLM) prompts and responses.
+* **Incident Response and Management:** Facilitate the investigation of operational incidents by correlating data from multiple sources, which accelerates root cause analysis and resolution.
 :::
 
-### {{es}} core concepts [search-concepts]
-Before you decide what type of search to use with {{es}} or bring in your data, familiarize yourself with the following {{es}} concepts.
+### {{observability}} core concepts [observability-concepts]
+At the heart of Elastic {{observability}} are several key concepts that enable its capabilities. 
 
-::::{dropdown} Concepts
+:::{dropdown} Concepts
+* The three pillars of {{observability}} are: 
+  * Logs: Timestamped records of events that provide detailed, contextual information.
+  * Metrics: Numerical measurements of system performance and health over time.
+  * Traces: A representation of the end-to-end journey of a request as it travels through a distributed system.
+* OpenTelemetry: Elastic Observability offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the Elastic Distribution of OpenTelemetry (EDOT).
+* AIOps and AI Assistant: Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config anomaly detection, pattern analysis, and the ability to surface correlations and root causes.
+* Alerting and Cases: A built-in feature for creating rules to detect complex conditions and trigger actions. It allows teams to stay aware of potential issues and use Cases to track investigation details, assign tasks, and collaborate on resolutions.
+* Service Level Objectives (SLOs): A framework for defining and monitoring the reliability of a service. Elastic Observability allows for creating and tracking SLOs to ensure that performance targets are being met.
+:::
 
-* **Index:** A collection of documents with similar characteristics that are uniquely identified by a name or an alias. The name is used to target the index in search queries and other operations.
- **Field:** The smallest individual unit of data within a document. It represents a specific property or attribute of the data you're indexing (for example, title, author, date, summary, etc.). Fields are critical for indexing, as they determine how data is analyzed and stored to enable efficient searching.
-* **Document:** Any structured data encoded in JSON. {{es}} organizes and stores data into documents. 
-* **Primary shard:** A self-contained Lucene index that contains some or all data for an index. Shards allow {{es}} to scale horizontally by splitting an index's data into smaller, manageable partitions, improving performance. Each document in an index belongs to one primary shard.
-* **Replica:** A copy of a primary shard. Replicas maintain redundant copies of your data across the nodes in your cluster. This protects against hardware failure and increases capacity to serve read requests like searching or retrieving a document.
-* **Node:** A single running instance of the {{es}} server. 
-* **Cluster:** A collection of one or more nodes that holds all your data and provides indexing and search capabilities across all nodes. {{es}} clusters feature primary and replica shards to provide failover in the case of a node going down. When a primary shard goes down, the replica takes its place.
-  :::{note}
-  If you're running {{es}} on a serverless deployment, you don't have to worry a bout shards, nodes, or clusters. Elastic manages these for you. 
-  :::
-* **Mapping:** The process that defines how a document and its fields  are stored and indexed.
-* **Client:** Software or an application that facilitates communication and interaction with an {{es}} cluster. It enables applications written in various programming languages to send requests to {{es}}, process the response, and then push that data into the cluster. 
-
-::::
 
 <!--TBD: Call out how solutions map to Serverless project types? -->
 <!-- Content moved from the-stack.md
