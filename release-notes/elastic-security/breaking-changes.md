@@ -15,6 +15,27 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.0.7 [elastic-security-900-breaking-changes]
+::::{dropdown} Changes invalid category for Gatekeeper
+
+Changes `event.category` from `security` to `configuration` for Gatekeeper on macOS.
+
+**Impact**<br> 
+
+**Action**<br>
+
+::::
+
+::::{dropdown} Changes invalid category for Gatekeeper and TCC events
+
+Changes `event.category` from `security` to `configuration` for Gatekeeper and TCC events on macOS.
+
+**Impact**<br> 
+
+**Action**<br>
+
+::::
+
 ## 9.0.0 [elastic-security-900-breaking-changes]
 
 ::::{dropdown} Removes legacy security rules bulk endpoints
