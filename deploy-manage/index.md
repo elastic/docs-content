@@ -17,7 +17,7 @@ To get started with Elastic, you need to choose a deployment method and deploy {
 
 In this section, you'll learn about how to deploy and manage all aspects of your Elastic environment. You'll learn how to design resilient, highly available clusters and deployments, and how to maintain and scale your environment to grow with your use case.
 
-This section focuses on deploying and managing the core components of the {{stack}}: {{es}} and {{kib}}. It also documents deploying and managing supporting orchestration technologies. However, depending on your use case, you might need to deploy other components. [Learn more](/get-started/search-ai-platform.md).
+This section focuses on deploying and managing the core components of the {{stack}}: {{es}} and {{kib}}. It also documents deploying and managing supporting orchestration technologies. However, depending on your use case, you might need to deploy other components. [Learn more](/get-started/the-stack.md).
 
 :::{tip}
 To get started quickly, you can set up a [local development and testing environment](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md), or sign up for a [Serverless](https://cloud.elastic.co/serverless-registration) or [Hosted](https://cloud.elastic.co/registration) trial in {{ecloud}}.

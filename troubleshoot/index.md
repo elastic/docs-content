@@ -19,8 +19,7 @@ This section contains troubleshooting resources and guidance to help you resolve
 If you can't find your issue here, explore the [additional resources](#troubleshoot-additional-resources) or [contact us](#contact-us).
 
 :::{note}
-You might need to review troubleshooting content for more than one product or topic area.
-Most Elastic deployments use multiple components from the [](/get-started/search-ai-platform.md), plus a deployment orchestrator. Check all topics relevant to your infrastructure.
+You might need to review troubleshooting content for more than one product or topic area. Most Elastic deployments use multiple components from the [Elastic Stack](/get-started/the-stack.md), plus a deployment orchestrator. Check all topics relevant to your infrastructure.
 :::
 
 * [{{es}}](/troubleshoot/elasticsearch.md)

@@ -131,11 +131,11 @@ Features available to you can differ based on deployment type, product lifecycle
 ### Examples of where availability can vary
 
 | Category | Example |
-|-------|-------------|
-| {{stack}} versions | {{stack}} version 9.0.0 and later, including 9.1.0 |
-| Deployment types | [Elastic Cloud Serverless](/deploy-manage/deploy/elastic-cloud/serverless.md), [Elastic Cloud Hosted](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md), [Elastic Cloud Enterprise (ECE)](/deploy-manage/deploy/cloud-enterprise.md), [Elastic Cloud on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md), and [Self-managed deployments](/deploy-manage/deploy/self-managed.md) |
-| Deployment versions | [Elastic Cloud Enterprise (ECE)](/deploy-manage/deploy/cloud-enterprise.md) 4.0.0 and later, [Elastic Cloud on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md) 3.0.0 and later |
-| Serverless project types | {{es}}, {{observability}}, and {{elastic-sec}}
+| ----- | ----- |
+| {{stack}} versions | [{{stack}}](/get-started/the-stack.md) version 9.0.0 and later, including 9.1.0 |
+| Deployment types | [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md), [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), and [Self-managed deployments](/deploy-manage/deploy/self-managed.md) |
+| Orchestrator versions | [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md) 4.0.0 and later, [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md) 3.0.0 and later |
+| Serverless project types | {{es}}, Elastic {{observability}}, and {{elastic-sec}} |
 
 ## Find docs for your product version
 
