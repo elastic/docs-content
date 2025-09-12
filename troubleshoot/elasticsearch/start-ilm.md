@@ -9,9 +9,9 @@ products:
   - id: elasticsearch
 ---
 
-# Troubleshoot index and snapshot lifecycle management
+# Troubleshoot snapshot and index lifecycle management
 
-If the automatic [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) or [{{slm}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) ({{slm-init}}) service is not operating as expected, you might need to check its lifecycle status, stop, or restart the service. You may also want to halt services during routine maintenance.
+If the automatic [{{slm}}](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) ({{slm-init}}) or [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) service is not operating as expected, you might need to check its lifecycle status, stop, or restart the service. You may also want to halt services during routine maintenance.
 
 All of the procedures on this page use the {{es}} APIs. To run these steps using {{kib}}:
 
@@ -31,10 +31,7 @@ All of the procedures on this page use the {{es}} APIs. To run these steps using
 
 4. Use the Dev Tools Console to run the API requests as described.
 
-## Check status, stop, and restart {{ilm-init}} [check-stop-start-ilm]
 
-:::{include} ../../manage-data/_snippets/start-stop-ilm.md
-:::
 
 ## Check status, stop, and restart {{slm-init}} [check-stop-start-slm]
 
@@ -90,7 +87,7 @@ The response will look like this:
 }
 ```
 
-### Start {{slm}} [start-slm]
+### Start {{slm-init}} [start-slm]
 
 In the event that automatic {{slm}} is disabled, new backup snapshots will not be created automatically.
 
@@ -121,3 +118,8 @@ The response will look like this:
   "operation_mode": "RUNNING"
 }
 ```
+
+## Check status, stop, and restart {{ilm-init}} [check-stop-start-ilm]
+
+:::{include} ../../manage-data/_snippets/start-stop-ilm.md
+:::
