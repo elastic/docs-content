@@ -341,3 +341,4 @@ redirects:
   'release-notes/fleet-elastic-agent/breaking-changes.md': 'fleet-server://release-notes/breaking-changes.md'
   'release-notes/fleet-elastic-agent/deprecations.md': 'fleet-server://release-notes/deprecations.md'
   'release-notes/fleet-elastic-agent/known-issues.md': 'fleet-server://release-notes/known-issues.md'
+
