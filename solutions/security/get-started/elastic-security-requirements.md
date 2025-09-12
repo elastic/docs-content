@@ -80,7 +80,7 @@ The [Elastic Common Schema (ECS)](ecs://reference/index.md) defines a common set
 
 ## Third-party collectors NOT mapped to ECS [security-requirements-overview-third-party-collectors-not-mapped-to-ecs]
 
-The use of third party connectors that do not map data to ECS, including third-party and open source OTel Collectors, is not supported by Elastic Security.
+The use of third party connectors that do not map data to ECS, including third-party and open source OTel collectors, is not supported by Elastic Security.
 
 ## Cross-cluster searches [security-cross-cluster-searches]
 
