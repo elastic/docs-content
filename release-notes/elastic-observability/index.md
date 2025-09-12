@@ -191,6 +191,11 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves finding functions in Universal Profiling [#210437]({{kib-pull}}210437).
 * Adds logical `AND` to monitor tags and locations filter [#217985]({{kib-pull}}217985).
 
+## 9.0.7 [elastic-observability-9.0.7-release-notes]
+
+### Features and enhancements[elastic-observability-9.0.7-features]
+There are no user-facing changes in the 9.0.7 release.
+
 ## 9.0.6 [elastic-observability-9.0.6-release-notes]
 
 ### Fixes [elastic-observability-9.0.6-fixes]
