@@ -31,13 +31,11 @@ Models from third-party LLM providers.
 
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Amazon Bedrock | **Claude Sonnet 3.5** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Excellent |
-| Amazon Bedrock | **Claude Sonnet 3.7** | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| Amazon Bedrock | **Claude Sonnet 4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent |
-| OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Excellent |
-| Google Gemini    | **Gemini 2.0 Flash**  | Excellent | Good | Great | Excellent | Excellent | Great | Great | Excellent |
-| Google Gemini    | **Gemini 2.5 Flash**  | Excellent | Great | Excellent | Excellent | Excellent | Great | Great | Excellent |
-| Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Excellent | Excellent | Excellent | Great | Great | Excellent | Excellent |
+| Amazon Bedrock | **Claude Sonnet 3.5** | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Great | Excellent |
+| Amazon Bedrock | **Claude Sonnet 3.7** | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Great | Excellent |
+| Amazon Bedrock | **Claude Sonnet 4**   | Excellent | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Excellent |
+| OpenAI    | **GPT-4.1**           | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Great | Excellent |
+| Google Gemini    | **Gemini 2.5 Pro**    | Excellent | Excellent | Excellent | Excellent | Excellent | Great | Good | Excellent |
 
 
 ## Open-source models [_open_source_models]
@@ -46,8 +44,8 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 
 | Provider | Model | **Alert questions** | **APM questions** | **Contextual insights** | **Documentation retrieval** | **Elasticsearch operations** | **{{esql}} generation** | **Execute connector** | **Knowledge retrieval** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Great | Great | Excellent |
-| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Good | Great | Excellent | Excellent | Poor | Great | Excellent |
+| Meta | **Llama-3.3-70B-Instruct** | Excellent | Good | Great | Excellent | Excellent | Good | Good | Excellent |
+| Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Excellent | Excellent | Poor | Great | Excellent |
 
 ::::{note}
 `Llama-3.3-70B-Instruct` is currently supported with simulated function calling.
