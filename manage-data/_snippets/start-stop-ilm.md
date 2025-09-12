@@ -20,7 +20,7 @@ You can also [](/manage-data/lifecycle/index-lifecycle-management/policy-view-st
 
 ### Stop {{ilm-init}} 
 
-By default, the {{ilm}} service is in the RUNNING state and manages all indices that have lifecycle policies.
+By default, the {{ilm}} service is in the `RUNNING` state and manages all indices that have lifecycle policies.
 
 You can stop {{ilm-init}} to suspend management operations for all indices. For example, you might stop {{ilm}} when performing scheduled maintenance or making changes to the cluster that could impact the execution of {{ilm-init}} actions.
 
