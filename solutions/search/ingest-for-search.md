@@ -11,7 +11,6 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 ---
-
 # Ingest for search use cases
 
 $$$elasticsearch-ingest-time-series-data$$$
@@ -45,8 +44,8 @@ You can use these specialized tools to add general content to {{es}} indices.
 
 | Method | Description | Notes |
 |--------|-------------|-------|
-| [**Web crawler**](https://github.com/elastic/crawler) | Programmatically discover and index content from websites and knowledge bases | Crawl public-facing web content or internal sites accessible via HTTP proxy |
-| [**Content connectors**](https://github.com/elastic/connectors) | Third-party integrations to popular content sources like databases, cloud storage, and business applications | Choose from a range of Elastic-built connectors or build your own in Python using the Elastic connector framework|
+| [**Elastic Open Web Crawler**](https://github.com/elastic/crawler) | Programmatically discover and index content from websites and knowledge bases | Crawl public-facing web content or internal sites accessible via HTTP proxy |
+| [**Content connectors**](elasticsearch://reference/search-connectors/index.md) | Third-party integrations to popular content sources like databases, cloud storage, and business applications | Choose from a range of Elastic-built connectors or build your own in Python using the Elastic connector framework|
 | [**File upload**](/manage-data/ingest/upload-data-files.md)| One-off manual uploads through the UI | Useful for testing or very small-scale use cases, but not recommended for production workflows |
 
 ### Process data at ingest time
