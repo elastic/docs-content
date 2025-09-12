@@ -129,3 +129,6 @@ The clients provide a convenient mechanism to manage API requests and responses 
 Both official and community contributed clients are available.
 
 [Learn more about the {{es}} clients](/reference/elasticsearch-clients/index.md).
+
+<!-- TO-DO: Remove lingering anchors -->
+$$$kibana-navigation-search$$$
