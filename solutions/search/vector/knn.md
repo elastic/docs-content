@@ -46,7 +46,7 @@ To run a kNN search in {{es}}:
 
 :::{tip}
 The default type of {{es-serverless}} project is suitable for this use case unless you plan to use uncompressed dense vectors (`int4` or `int8` quantization strategies) with high dimensionality.
-Refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
+Refer to [](dense-vector.md#vector-profiles).
 :::
 
 ## kNN search methods: approxiamte and exact kNN [knn-methods]
