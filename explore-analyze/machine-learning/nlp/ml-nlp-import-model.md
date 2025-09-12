@@ -10,6 +10,12 @@ products:
 
 # Import the trained model and vocabulary [ml-nlp-import-model]
 
+::::{warning}
+Untrusted models can execute arbitrary code on your {{es}} server, exposing your cluster to remote code execution (RCE) vulnerabilities.
+
+**Only use models from trusted sources and never use models from unverified or unknown providers.**
+::::
+
 ::::{important}
 If you want to install a trained model in a restricted or closed network, refer to [these instructions](eland://reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
 ::::
