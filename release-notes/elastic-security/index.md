@@ -30,7 +30,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.1.4 [elastic-security-9.1.4-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.4-features-enhancements]
-* Adds more Linux diagnostic process `ptrace` events
+* Adds more Linux diagnostic process `ptrace` events.
 
 ### Fixes [elastic-security-9.1.4-fixes]
 * Fixes a bug where the toggle column functionality only functioned on the **Alerts** page [#234278]({{kib-pull}}234278).
