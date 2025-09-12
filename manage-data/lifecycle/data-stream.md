@@ -10,7 +10,7 @@ products:
 
 # Data stream lifecycle [data-stream-lifecycle]
 
-A data stream lifecycle is the built-in mechanism data streams use to manage their lifecycle. It enables you to easily automate the management of your data streams according to your retention requirements. For example, you could configure the lifecycle to:
+A data stream lifecycle is the built-in mechanism [data streams](/manage-data/data-store/data-streams.md) use to manage their lifecycle. It enables you to easily automate the management of your data streams according to your retention requirements. For example, you could configure the lifecycle to:
 
 * Ensure that data indexed in the data stream will be kept at least for the retention time you defined.
 * Ensure that data older than the retention period will be deleted automatically by {{es}} at a later time.
@@ -22,6 +22,13 @@ To achieve that, it supports:
 
 A data stream lifecycle also supports downsampling the data stream backing indices. See [the downsampling example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) for more details.
 
+## Data stream lifecycle availability
+
+Note the availability of data stream lifecycle to ensure that it's applicable for your use case:
+
+* Data stream lifecycle is supported only for data streams and cannot be used with individual indices.
+
+* Data stream lifecycle is supported for all deployment types on the versioned {{stack}} as well as for {{es-serverless}}.
 
 ## How does it work? [data-streams-lifecycle-how-it-works]
 
