@@ -65,6 +65,10 @@ To add a trusted application:
         * `is`: Must be *exactly* equal to `Value`; wildcards are not supported. This operator is required for the `Hash` and `Signature` field types.
         * `matches`: Can include wildcards in `Value`, such as `C:\path\*\app.exe`. This option is only available for the `Path` field type. Available wildcards are `?` (match one character) and `*` (match zero or more characters).
 
+          ::::{note}
+          Unlike detection rule exceptions, trusted applications do not require escaping special characters.
+          ::::
+
     4. `Value`: Enter the hash value, file path, or signer name. To add an additional value, click **AND**.
 
         ::::{note}
@@ -87,6 +91,10 @@ To add a trusted application:
        * `is one of`
        * `is not one of`
        * `matches` | `does not match`:  Allows you to use wildcards in `Value`, such as `C:\path\*\app.exe`.  Available wildcards are `?` (match one character) and `*` (match zero or more characters).
+
+          ::::{note}
+          Unlike detection rule exceptions, trusted applications do not require escaping special characters.
+          ::::
 
           ::::{important}
           Using wildcards can impact performance. To create a more efficient trusted application using wildcards, use multiple conditions and make them as specific as possible. For example, adding conditions using `process.name` or `file.name` can help limit the scope of wildcard matching.

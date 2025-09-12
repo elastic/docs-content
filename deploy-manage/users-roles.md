@@ -122,7 +122,7 @@ After a user is authenticated, use role-based access control to determine whethe
 
 Key tasks for managing user authorization include: 
 
-* Assigning [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or [defining your own](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
+* Assigning [built-in roles](elasticsearch://reference/elasticsearch/roles.md) or [defining your own](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
 * [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 * [Setting up field- and document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 
