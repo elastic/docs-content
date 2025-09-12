@@ -27,6 +27,17 @@ Dense vector search requires both index configuration and a strategy for generat
     - Use the `dense_vector` field type
 2. Query the index using the [`knn` search](knn.md)
 
+### General and vector optimized projects [vector-profiles]
+```{applies_to}
+serverless:
+```
+
+When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasticsearchproject) to create an {{es-serverless}} project, you can choose between two profiles: `general_purpose` and `vector`.
+The general purpose profile is recommended for most search use cases, including full text search, sparse vectors, and dense vectors that use compression such as BBQ.
+The vector profile is recommended only when your use case is based on uncompressed dense vectors with high dimensionality.
+
+For more information about how the profile affects virtual compute unit (VCU) allocation and costs, refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
+
 ## Better Binary Quantization (BBQ) [bbq]
 
 Better Binary Quantization (BBQ) is a vector quantization method for `dense_vector` fields that compresses vectors for faster and more memory-efficient similarity search. BBQ can improve relevance and cost efficiency, especially when used with HNSW.

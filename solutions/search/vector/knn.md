@@ -12,7 +12,6 @@ products:
 
 # kNN search [knn-search]
 
-
 A *k-nearest neighbor* (kNN) search finds the *k* nearest vectors to a query vector, as measured by a similarity metric.
 
 Common use cases for kNN include:
@@ -35,13 +34,18 @@ Common use cases for kNN include:
 * To run a kNN search, your data must be transformed into vectors. You can [use an NLP model in {{es}}](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md), or generate them outside {{es}}.
   - Dense vectors need to use the [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) field type.
   - Queries are represented as vectors with the same dimension. You should use the same model to generate the query vector as you used to generate the document vectors.
-  - If you already have vectors, refer to the [Bring your own dense vectors](bring-own-vectors.md) guide.
+  - If you already have vectors, refer to [](bring-own-vectors.md).
 
 * To complete the steps in this guide, you must have the following [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices):
 
     * `create_index` or `manage` to create an index with a `dense_vector` field
     * `create`, `index`, or `write` to add data to the index you created
     * `read` to search the index
+
+:::{tip}
+The default type of {{es-serverless}} project is suitable for this use case unless you plan to use uncompressed dense vectors (`int4` or `int8` quantization strategies) with high dimensionality.
+Refer to [](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
+:::
 
 ## kNN methods [knn-methods]
 

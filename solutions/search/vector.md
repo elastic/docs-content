@@ -46,28 +46,3 @@ The sparse vector approach uses the ELSER model to expand content with semantica
 - Large-scale deployments
 
 [Learn more about sparse vector search with ELSER](vector/sparse-vector.md).
-
-## Choosing your project's profile
-```{applies_to}
-serverless:
-```
-
-When selecting a profile configuration for your project, it's recommended to consider your vector search use case.
-You can choose between two profiles: the General Purpose profile and the Vector Optimized profile.
-
-**The General Purpose (GP) profile is recommended for most search use cases, including:**
-
-- full text search
-- sparse vector-based semantic search (such as when using ELSER)
-- dense vectors compressed using BBQ (enabled by default)
-- sparse vectors
-
-**The Vector Optimized (VO) profile is recommended when your use case is based on:**
-
-- uncompressed dense vectors with high dimensionality
-
-::::{tip}
-
-Learn how billing works for your project in [Elasticsearch billing dimensions](../../deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
-
-::::
