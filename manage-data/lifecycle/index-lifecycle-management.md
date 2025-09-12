@@ -20,6 +20,10 @@ products:
 * Create a new index each day, week, or month and archive previous ones
 * Delete stale indices to enforce data retention standards
 
+    ::::{important}
+    To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
+    ::::
+
 ## {{ilm-init}} availability
 
 Note the availability of {{ilm-init}} to ensure that it's applicable for your use case.
@@ -30,17 +34,13 @@ Note the availability of {{ilm-init}} to ensure that it's applicable for your us
 
     * **Data streams:** A [data stream](/manage-data/data-store/data-streams.md) acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure {{ilm-init}} using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
 
-* {{ilm-init}} is available for all deployment types on the versioned {{stack}} but is not available for {{es-serverless}}. In a {{serverless-short}} environment, data stream lifecycle (see the following tip) is available as a data lifecycle option.
+* {{ilm-init}} is available for all deployment types on the versioned {{stack}} but is not available for {{es-serverless}}. In a {{serverless-short}} environment, [data stream lifecycle](/manage-data/lifecycle/data-stream.md) is available as a data lifecycle option.
 
-    :::{tip}
-    {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{es-serverless}} eliminates this complexity by optimizing your cluster performance for you. In a {{serverless-short}} environment, data stream lifecycle is available as a data management option.
+    :::{admonition} Simpler lifecycle management in Serverless environments
+    {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{ilm-init}} is not available in {{serverless-short}} because in that environment your cluster performance is optimized for you. Instead, data stream lifecycle is available as a data management option.
 
-    {applies_to}`stack: ga` {applies_to}`serverless: ga` [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers. For a detailed comparison of {{ilm-init}} and data stream lifecycle refer to [Data lifecycle](/manage-data/lifecycle.md).
+    Data stream lifecycle is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers. For a detailed comparison of {{ilm-init}} and data stream lifecycle refer to [Data lifecycle](/manage-data/lifecycle.md).
     :::
-
-    ::::{important}
-    To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
-    ::::
 
 ## Index lifecycle actions
 
