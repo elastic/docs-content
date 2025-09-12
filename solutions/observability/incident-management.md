@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/incident-management.html
   - https://www.elastic.co/guide/en/serverless/current/incident-management.html
 applies_to:
-  stack:
+  stack: ga
   serverless:
 products:
   - id: observability

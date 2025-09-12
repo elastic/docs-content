@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-spans.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-trace-sample-timeline.html
 applies_to:
-  stack:
+  stack: ga
   serverless:
 products:
   - id: observability

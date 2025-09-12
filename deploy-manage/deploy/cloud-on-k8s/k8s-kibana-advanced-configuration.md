@@ -24,13 +24,13 @@ You can [customize the {{kib}} Pod](customize-pods.md) using a [Pod Template](ht
 
 The following example demonstrates how to create a {{kib}} deployment with custom node affinity, increased heap size, and resource limits.
 
-```yaml
+```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: kibana-sample
 spec:
-  version: 8.16.1
+  version: {{version.stack}}
   count: 1
   elasticsearchRef:
     name: "elasticsearch-sample"

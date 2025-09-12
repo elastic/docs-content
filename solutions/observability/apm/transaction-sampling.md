@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-sampling.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-transaction-sampling.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -28,8 +28,8 @@ Elastic APM supports two types of sampling:
 ## Head-based sampling [apm-head-based-sampling]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 In head-based sampling, the sampling decision for each trace is made when the trace is initiated. Each trace has a defined and equal probability of being sampled.
@@ -108,7 +108,7 @@ Refer to the documentation of your favorite OpenTelemetry agent or SDK for more 
 ## Tail-based sampling [apm-tail-based-sampling]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
@@ -146,7 +146,7 @@ Due to [OpenTelemetry tail-based sampling limitations](/solutions/observability/
 
 Tail-based sampling (TBS), by definition, requires storing events locally temporarily, such that they can be retrieved and forwarded when a sampling decision is made.
 
-In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, sampling will be bypassed.
+In an APM Server implementation, the events are stored temporarily on disk instead of in memory for better scalability. Therefore, it requires local disk storage proportional to the APM event ingestion rate and additional memory to facilitate disk reads and writes. If the [storage limit](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-storage_limit-ref) is insufficient, trace events are indexed or discarded based on the [discard on write failure](/solutions/observability/apm/tail-based-sampling.md#sampling-tail-discard-on-write-failure-ref) configuration.
 
 It is recommended to use fast disks, ideally Solid State Drives (SSD) with high I/O per second (IOPS), when enabling tail-based sampling. Disk throughput and I/O may become performance bottlenecks for tail-based sampling and APM event ingestion overall. Disk writes are proportional to the event ingest rate, while disk reads are proportional to both the event ingest rate and the sampling rate.
 
@@ -194,8 +194,8 @@ The tail-based sampling implementation in version 9.0 offers significantly bette
 ## Sampled data and visualizations [_sampled_data_and_visualizations]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 A sampled trace retains all data associated with it. A non-sampled trace drops all [span](/solutions/observability/apm/spans.md) and [transaction](/solutions/observability/apm/transactions.md) data.[^1^](#footnote-1) Regardless of the sampling decision, all traces retain [error](/solutions/observability/apm/errors.md) data.
@@ -215,8 +215,8 @@ These calculation methods ensure that the APM app provides the most accurate met
 ## Sample rates [_sample_rates]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 What’s the best sampling rate? Unfortunately, there isn’t one. Sampling is dependent on your data, the throughput of your application, data retention policies, and other factors. A sampling rate from `.1%` to `100%` would all be considered normal. You’ll likely decide on a unique sample rate for different scenarios. Here are some examples:
@@ -231,8 +231,8 @@ Regardless of the above, cost conscious customers are likely to be fine with a l
 ## Configure head-based sampling [apm-configure-head-based-sampling]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 There are three ways to adjust the head-based sampling rate of your APM agents:
@@ -260,7 +260,7 @@ Each agent provides a configuration value used to set the transaction sample rat
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 

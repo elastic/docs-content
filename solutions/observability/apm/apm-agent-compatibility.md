@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-server-compatibility.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -17,12 +17,6 @@ The chart below outlines the compatibility between different versions of Elastic
 | {{apm-agent}} version | APM integration version |
 | --- | --- |
 | `1.x` | ≥ `8.2` |
-
-## Android agent [_android_agent]
-
-| {{apm-agent}} version | APM integration version |
-| --- | --- |
-| `0.x` | ≥ `8.12` |
 
 ## Go agent [_go_agent]
 

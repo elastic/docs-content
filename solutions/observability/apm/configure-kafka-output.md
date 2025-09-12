@@ -3,7 +3,7 @@ navigation_title: Kafka
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-kafka-output.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -138,7 +138,7 @@ output.kafka:
         message: "ERR"
 ```
 
-This configuration results in topics named _critical-{{version}}_, _error-{{version}}_, and _logs-{{version}}_.
+This configuration results in topics named _critical-{{version.stack}}_, _error-{{version.stack}}_, and _logs-{{version.stack}}_.
 
 ### `key` [_key]
 

@@ -1,8 +1,8 @@
 ---
 mapped_pages:
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 ---
 
 # Data stream routing [apm-open-telemetry-data-stream-routing]

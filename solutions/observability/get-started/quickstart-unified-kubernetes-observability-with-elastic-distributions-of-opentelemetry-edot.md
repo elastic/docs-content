@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-k8s-otel-edot.html
   - https://www.elastic.co/guide/en/serverless/current/monitor-k8s-otel-edot.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -23,10 +23,6 @@ All the components will be deployed through the [opentelemetry-kube-stack](https
 * `Instrumentation` object for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/).
 
 For a more detailed description of the components and advanced configuration, refer to [elastic/opentelemetry](opentelemetry://reference/index.md).
-
-::::{important}
-The [{{ecloud}} Managed OTLP Endpoint](opentelemetry://reference/motlp.md) functionality for Serverless is in technical preview. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
 
 ## Prerequisites [_prerequisites_2]
 

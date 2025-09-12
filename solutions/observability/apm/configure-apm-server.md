@@ -1,9 +1,10 @@
 ---
+navigation_title: Configure
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-apm-settings.html
   - https://www.elastic.co/guide/en/observability/current/apm-configuring-howto-apm-server.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: cloud-hosted
   - id: observability

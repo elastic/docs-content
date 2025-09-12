@@ -40,7 +40,7 @@ To create workpads, you must meet the minimum requirements.
 * If you need to set up {{kib}}, use [our free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs).
 * Make sure you have [data indexed into {{es}}](/manage-data/ingest.md) and a [data view](../find-and-organize/data-views.md).
 * Have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
-* Make sure you have sufficient privileges to create and save workpads. When the read-only indicator appears, you have insufficient privileges, and the options to create and save workpads are unavailable. For more information, refer to [Granting access to {{kib}}](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+* Make sure you have sufficient privileges to create and save workpads. When the read-only indicator appears, you have insufficient privileges, and the options to create and save workpads are unavailable. For more information, refer to [Granting access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md).
 
 You can open **Canvas** using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -142,7 +142,7 @@ Organize and separate your ideas by adding more pages.
 
 ## Share your workpad [workpad-share-options]
 
-To share workpads with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
+To share workpads with a larger audience, click {icon}`share` **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
 
 ## Export workpads [export-single-workpad]

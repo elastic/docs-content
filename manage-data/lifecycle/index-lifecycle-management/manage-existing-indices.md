@@ -15,14 +15,14 @@ If you’ve been using Curator or some other mechanism to manage periodic indice
 * Reindex into an {{ilm-init}}-managed index.
 
 ::::{note}
-Starting in Curator version 5.7, Curator ignores {{ilm-init}} managed indices.
+Starting in Curator version 5.7, Curator ignores {{ilm-init}}-managed indices.
 ::::
 
 
 
 ## Apply policies to existing time series indices [ilm-existing-indices-apply]
 
-The simplest way to transition to managing your periodic indices with {{ilm-init}} is to [configure an index template](configure-lifecycle-policy.md#apply-policy-template) to apply a lifecycle policy to new indices. Once the index you are writing to is being managed by {{ilm-init}}, you can [manually apply a policy](configure-lifecycle-policy.md#apply-policy-multiple) to your older indices.
+The simplest way to transition to managing your periodic indices with {{ilm-init}} is to [configure an index template](configure-lifecycle-policy.md#apply-policy-template) to apply a lifecycle policy to new indices. Once the index you are writing to is being managed by {{ilm-init}}, you can [manually apply a policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md) to your older indices.
 
 Define a separate policy for your older indices that omits the rollover action. Rollover is used to manage where new data goes, so isn’t applicable.
 
@@ -104,4 +104,3 @@ To reindex into the managed index:
     Querying using this alias will now search your new data and all of the reindexed data.
 
 6. Once you have verified that all of the reindexed data is available in the new managed indices, you can safely remove the old indices.
-

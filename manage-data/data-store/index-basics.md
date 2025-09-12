@@ -79,7 +79,7 @@ To use these features:
 stack: ga
 ```
 
-If you use {{es}} {{security-features}}, the following [security privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) are required:
+If you use {{es}} {{security-features}}, the following [security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) are required:
 
 * The `monitor` cluster privilege to access {{kib}}'s **Index Management** features.
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index’s data.
@@ -289,7 +289,7 @@ You’re now ready to create new indices using your index template.
     GET /my-index-000001,my-index-000002
     ```
 
-### Manage component templates
+### Manage component templates [index-management-manage-component-templates]
 
 Component templates are a type of [template](/manage-data/data-store/templates.md) used as reusable building blocks within index templates to configure index settings, mappings, and aliases.
 
@@ -303,7 +303,7 @@ Create, edit, clone, and delete your component templates in the **Component Temp
 * To show details and perform operations, click the template name.
 * To create new component templates, use the **Create component template** wizard.
 
-### Manage enrich policies
+### Manage enrich policies [manage-enrich-policies]
 
 An [enrich policy](/manage-data/ingest/transform-enrich/data-enrichment.md#enrich-policy) is a set of configuration options used to add data from your existing indices to incoming documents during ingest. An enrich policy contains:
 

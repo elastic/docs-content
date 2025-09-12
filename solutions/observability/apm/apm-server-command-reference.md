@@ -3,7 +3,7 @@ navigation_title: Command reference
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-command-line-options.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -177,7 +177,7 @@ Also see [Global flags](#apm-global-flags).
 
 ```sh subs=true
 apm-server export config
-apm-server export template --es.version {{version}} --index myindexname
+apm-server export template --es.version {{version.stack}} --index myindexname
 ```
 
 ## `help` command [apm-help-command]
