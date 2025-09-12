@@ -107,7 +107,7 @@ GET .ds-my-data-stream-test/_lifecycle/explain
 ```
 
 :::{tip}
-You can use a wildcard (`*`) in the data stream name to retrieve the lifecycle status for all data streams matching a pattern.
+You can use a wildcard (`*`) in the data stream name to retrieve the lifecycle status for all data streams matching the pattern.
 :::
 
 The result will look like this:
