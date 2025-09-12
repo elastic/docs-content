@@ -43,7 +43,7 @@ PUT _index_template/my-index-template
   }
 }
 ```
-1. In this case the index template will be applied to a data stream named `my-data-stream-test`. You can optionally use a wildcard (`*`) in the index pattern to match all data streams created (either manually or using a an indexing request) that have a name matching the specified pattern.
+1. In this case the index template will be applied to a data stream named `my-data-stream-test`. You can optionally use a wildcard (`*`) in the index pattern to match all data streams created (either manually or using an indexing request) that have a name matching the specified pattern.
 
 ## Create a data stream [create-data-stream-with-lifecycle]
 
