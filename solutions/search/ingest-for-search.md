@@ -48,11 +48,6 @@ You can use these specialized tools to add general content to {{es}} indices.
 | [**Content connectors**](elasticsearch://reference/search-connectors/index.md) | Third-party integrations to popular content sources like databases, cloud storage, and business applications | Choose from a range of Elastic-built connectors or build your own in Python using the Elastic connector framework|
 | [**File upload**](/manage-data/ingest/upload-data-files.md)| One-off manual uploads through the UI | Useful for testing or very small-scale use cases, but not recommended for production workflows |
 
-If you’re already familiar with Elasticsearch, you can jump right into setting up a connection and ingesting data as per your needs.
-
-1. Retrieve your [connection details](search-connection-details.md).
-2. Ingest your data. Elasticsearch provides several methods for ingesting data:
-
 ### Process data at ingest time
 
 You can also transform and enrich your content at ingest time using [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md).
