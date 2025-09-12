@@ -57,4 +57,4 @@ The following GCP regions are currently available:
 
 When procuring {{ecloud}} through [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=overview), or [GCP Marketplace](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud), only the regions corresponding to the same cloud service provider can be used. This ensures that you can enjoy the benefits of the marketplace, such as {{ecloud}} contributing towards your spend commitment with cloud providers.
 
-You can support a multi-cloud strategy by subscribing to a separate {{ecloud}} organization, either from another marketplace, or directly at [cloud.elastic.co](https://cloud.elastic.co).
+You can implement a multi-cloud strategy by creating a separate {{ecloud}} organization, either from another marketplace, or directly at [cloud.elastic.co](https://cloud.elastic.co).
