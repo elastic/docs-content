@@ -31,6 +31,10 @@ Here are a few common real-world applications:
 | **Geospatial search**                | Process location queries, sort by proximity, filter by area        | Geo-mapping, spatial indexing, distance calculations          |
 
 ## {{es-serverless}} [elasticsearch-serverless]
+```{applies_to}
+serverless:
+  elasticsearch: ga
+```
 
 {{es-serverless}} is one of the three available project types on [{{serverless-full}}](/deploy-manage/deploy.md).
 
