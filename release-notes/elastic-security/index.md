@@ -163,6 +163,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Prevents users without appropriate privileges from deleting notes [#233948]({{kib-pull}}233948).
 * Fixes a bug that prevented the **MITRE ATT&CK** section from appearing in the alert details flyout [#233805]({{kib-pull}}233805).
 * Updates {{kib}} MITRE ATT&CK data to v17.1 [#231375]({{kib-pull}}231375).
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
 * Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
 
 ## 9.0.6 [elastic-security-9.0.6-release-notes]
