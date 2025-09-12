@@ -3,21 +3,26 @@ navigation_title: Find connection details
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
 applies_to:
-  stack:
+  deployment:
+    ess:
   serverless:
+    elasticsearch: 
 products:
   - id: kibana
 ---
 
 # Find connection details [search-space-connection-details]
 
+To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on your deployment type.
+For secure connections, we recommend using [API keys](/deploy-manage/api-keys.md) for authentication.
 
-To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on your deployment type. For secure connections, we recommend using an API key for authentication.
-
-The following sections describe how to find your Cloud ID and create API keys in both {{ecloud}} and {{serverless-short}} deployments.
+The following sections describe how to find your Cloud ID and create API keys in both {{ecloud}} and {{serverless-short}} deployments. For {{ece}}, refer to [](/deploy-manage/deploy/cloud-enterprise/connect-elasticsearch.md).
 
 ## Elastic Cloud and self-hosted deployments [_elastic_cloud_and_self_hosted_deployments]
-
+```{applies_to}
+  deployment:
+    ess:
+```
 
 ### Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
@@ -35,8 +40,6 @@ The following sections describe how to find your Cloud ID and create API keys in
     :alt: cloud id
     :screenshot:
     :::
-
-
 
 ### Create an API key [create-an-api-key-cloud-self-managed]
 
@@ -59,6 +62,10 @@ The following sections describe how to find your Cloud ID and create API keys in
 
 
 ## Serverless deployments [_serverless_deployments]
+```{applies_to}
+  serverless:
+    elasticsearch:
+```
 
 ### Find your Elasticsearch endpoint [find-cloud-id-serverless]
 
@@ -75,10 +82,9 @@ The **Cloud ID** is also available in the **Connection Details** section. Toggle
 
 ::::
 
-
 ### Create an API key [create-an-api-key-serverless]
 
-1. Go to the serverless project’s home page.
+1. Go to the serverless project's home page.
 2. In the **Connect to Elasticsearch** section, select **Create API key**.
 
     :::{image} /solutions/images/kibana-serverless-create-an-api-key.png
@@ -88,6 +94,8 @@ The **Cloud ID** is also available in the **Connection Details** section. Toggle
 
 3. Enter the API key details, and select **Create API key**.
 4. Copy and securely store the API key, since it won't appear again.
+
+For more information about the types of API keys that exist in {{serverless-short}} projects and how you can use them to control security privileges, refer to [](/deploy-manage/api-keys/serverless-project-api-keys.md).
 
 ### Test connection [elasticsearch-get-started-test-connection]
 
@@ -122,4 +130,4 @@ You should receive a response similar to the following:
 }
 ```
 
-Now you’re ready to start adding data to your {{es-serverless}} project.
+Now you're ready to start adding data to your {{es-serverless}} project.
