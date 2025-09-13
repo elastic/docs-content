@@ -5,7 +5,6 @@ toc:
     children:
       - file: search/get-started.md
         children:
-          - file: search/run-elasticsearch-locally.md
           - file: search/serverless-elasticsearch-get-started.md
           - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
@@ -423,7 +422,6 @@ toc:
                 - file: observability/logs/streams/management/extract/date.md
                 - file: observability/logs/streams/management/extract/dissect.md
                 - file: observability/logs/streams/management/extract/grok.md
-                - file: observability/logs/streams/management/extract/key-value.md
             - file: observability/logs/streams/management/retention.md
             - file: observability/logs/streams/management/advanced.md
       - file: observability/incident-management.md
@@ -501,7 +499,7 @@ toc:
       - file: security/ai.md
         children:
           - file: security/ai/ease/ease-intro.md
-            children: 
+            children:
               - file: security/ai/ease/ease-alerts.md
               - file: security/ai/ease/ease-value-report.md
               - file: security/ai/ease/ease-upgrade.md
@@ -678,6 +676,7 @@ toc:
           - file: security/explore/network-page.md
             children:
               - file: security/explore/configure-network-map-data.md
+              - file: security/explore/configure-dns-histogram.md
           - file: security/explore/users-page.md
       - file: security/advanced-entity-analytics.md
         children:
