@@ -16,9 +16,7 @@ products:
 
 You can manage and authenticate users with the built-in `file` realm. With the `file` realm, users are defined in local files on each node in the cluster.
 
-The `file` realm is useful as a fallback or recovery realm. For example in cases where the cluster is unresponsive or the security index is unavailable, or when you forget the password for your administrative users. In this type of scenario, the `file` realm is a convenient workaround: you can define a new `admin` user in the `file` realm and use it to log in and reset the credentials of all other users.
-
-You can configure only one file realm on {{es}} nodes.
+The `file` realm is useful as a fallback or recovery realm. For example in cases where the cluster is unresponsive or the security index is unavailable, or when you forget the password for your administrative users. In this type of scenario, the `file` realm is a convenient workaround: you can define a new `admin` user in the `file` realm and use it to log in and reset the credentials of all other users. For more information, see [file-based recovery](troubleshoot/elasticsearch/file-based-recovery.md).
 
 Refer to [enabling a file realm user for recovery](https://www.youtube.com/watch?v=sueO7sz1buw) for a video walkthrough. 
 
@@ -36,16 +34,10 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
     For example, the following snippet shows a `file` realm configuration that sets the `order` to zero so the realm is checked first:
 
     ```yaml
-    xpack:
-      security:
-        authc:
-          realms:
-            file:
-              file1:
-                order: 0
+    xpack.security.authc.realms.file.file1.order: 0
     ```
 
-2. If you're using a self-managed {{es}} cluster, optionally change how often the `users` and `users_roles` files are checked.
+2. (Optional) For self-managed deployments, you may change how often the `users` and `users_roles` files are checked.
 
     By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) file.
 
@@ -53,9 +45,7 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
     Because `resource.reload.interval.high` is a common setting in {{es}}, changing its value may effect other schedules in the system.
     :::
 
-3. Restart {{es}}.
-
-   In {{eck}}, this change is propagated automatically.
+3. In self-managed deployments, if either prior setting is modified, you will need to [rolling restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) those {{es}} nodes for your changes to take effect. In {{eck}}, changes are automatically propagated.
 
 
 ## Add users
