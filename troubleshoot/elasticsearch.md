@@ -30,6 +30,7 @@ If you're using {{ech}}, you can use AutoOps to monitor your cluster. AutoOps si
 * [](/troubleshoot/elasticsearch/increase-shard-limit.md)
 * [](/troubleshoot/elasticsearch/increase-cluster-shard-limit.md)
 * [](/troubleshoot/elasticsearch/corruption-troubleshooting.md)
+* [](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md)
 
 ## Management [troubleshooting-management]
 
