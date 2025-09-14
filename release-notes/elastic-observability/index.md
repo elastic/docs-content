@@ -21,6 +21,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.1.3 [elastic-observability-9.1.3-release-notes]
+
+### Fixes [elastic-observability-9.1.3-fixes]
+
+* Fixes Synthetics monitor filters [#231562]({{kib-pull}}2301562).
+
 ## 9.1.2 [elastic-observability-9.1.2-release-notes]
 
 ### Fixes [elastic-observability-9.1.2-fixes]
@@ -184,6 +190,11 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Applies chunking algorithm for `getIndexBasicStats` in Dataset Health [#221153]({{kib-pull}}221153).
 * Improves finding functions in Universal Profiling [#210437]({{kib-pull}}210437).
 * Adds logical `AND` to monitor tags and locations filter [#217985]({{kib-pull}}217985).
+
+## 9.0.6 [elastic-observability-9.0.6-release-notes]
+
+### Fixes [elastic-observability-9.0.6-fixes]
+* Fixes AI Assistant for Observability settings to only show for Enterprise users [#231989]({{kib-pull}}231989).
 
 ## 9.0.5 [elastic-observability-9.0.5-release-notes]
 

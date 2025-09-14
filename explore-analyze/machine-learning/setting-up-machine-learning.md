@@ -120,4 +120,4 @@ Within a {{kib}} space, to upload and import files in the **{{data-viz}}**, you 
 * `ingest_admin` built-in role, or `manage_ingest_pipelines` cluster privilege
 * `create`, `create_index`, `manage` and `read` index privileges for destination indices
 
-For more information, see [Security privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) and [{{kib}} privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+For more information, see [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) and [{{kib}} privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).

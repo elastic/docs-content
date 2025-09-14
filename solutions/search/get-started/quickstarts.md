@@ -24,7 +24,10 @@ Follow the steps in these guides to get started quickly:
 
 ## Related resources
 
+The following resources go deeper into specific features or use cases:
+
 - [Get started with Query DSL search and filters](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md)
 - [Get started with ES|QL queries](elasticsearch://reference/query-languages/esql/esql-getting-started.md)
 - [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md)
 - [](/solutions/search/hybrid-semantic-text.md)
+- [](/solutions/search/vector/bring-own-vectors.md)
