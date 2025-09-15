@@ -1,4 +1,5 @@
 ---
+navigation_title: Troubleshooting and limitations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Troubleshooting and limitations [alerting-troubleshooting]
+# Troubleshooting and limitations of alerting in {{kib}} [alerting-troubleshooting]
 
 Alerting provides many options for diagnosing problems with rules and connectors.
 
