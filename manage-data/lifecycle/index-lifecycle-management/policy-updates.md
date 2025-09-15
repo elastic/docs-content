@@ -15,7 +15,7 @@ To ensure that policy updates don’t put an index into a state where it can’t
 
 When the index advances to the next phase, it uses the phase definition from the updated policy.
 
-If you'd like to configure an index not currently managed by {{ilm-init}} to be governed by an lifecycle policy, refer to [Manually apply a policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md).
+To configure an index not currently managed by {{ilm-init}} to be governed by an lifecycle policy, refer to [Manually apply a policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md).
 
 ## How changes are applied [ilm-apply-changes]
 
