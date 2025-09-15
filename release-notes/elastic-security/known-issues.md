@@ -17,6 +17,13 @@ Known issues are significant defects or limitations that may impact your impleme
 % :::
 
 
+:::{dropdown} Filters may not apply correctly on the Alerts page
+Applies to: 9.1.0, 9.1.1, 9.1.2, and 9.1.3 
+
+**Impact**
+
+After upgrading to 9.1.0 and later, some users may experience inconsistent results when applying filters to the Alerts page. 
+:::
 
 :::{dropdown} The {{elastic-agent}} Docker image is not available at `docker.elastic.co/beats/elastic-agent:9.0.0`
 
