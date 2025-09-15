@@ -48,7 +48,7 @@ Downsampling is applied to the individual backing indices of the TSDS. The downs
 
 1. Creates a new document for each group of documents with  matching `_tsid` values (time series dimension fields), grouped into buckets that correspond to timestamps in a specific interval.
 
-    For example, a TSDS index that contains metrics sampled every 10 seconds can be downsampled to an hourly index. All documents within aa given hour interval are summarized and stored as a single document in the downsampled index.
+    For example, a TSDS index that contains metrics sampled every 10 seconds can be downsampled to an hourly index. All documents within a given hour interval are summarized and stored as a single document in the downsampled index.
 
 2. For each new document, copies all [time series dimensions](time-series-data-stream-tsds.md#time-series-dimension) from the source index to the target index. Dimensions in a TSDS are constant, so this step happens only once per bucket.
 3. For each [time series metric](time-series-data-stream-tsds.md#time-series-metric) field, computes aggregations for all documents in the bucket.
