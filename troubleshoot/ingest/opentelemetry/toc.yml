@@ -20,5 +20,6 @@ toc:
       - file: edot-sdks/php/index.md
       - file: edot-sdks/python/index.md
       - file: edot-sdks/enable-debug-logging.md
+      - file: edot-sdks/proxy.md
   - file: no-data-in-kibana.md
   - file: contact-support.md
