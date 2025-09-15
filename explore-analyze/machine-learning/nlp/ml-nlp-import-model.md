@@ -11,7 +11,7 @@ products:
 # Import the trained model and vocabulary [ml-nlp-import-model]
 
 ::::{warning}
-PyTorch models can execute code on your {{es}} server exposing your cluster to potential security vulnerabilities.
+PyTorch models can execute code on your {{es}} server, exposing your cluster to potential security vulnerabilities.
 
 **Only use models from trusted sources and never use models from unverified or unknown providers.**
 ::::
