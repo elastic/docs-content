@@ -9,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Transforms limitations [transform-limitations]
+# {{transforms}} limitations [transform-limitations]
 
 The following limitations and known problems apply to the {{version.stack}} release of the Elastic {{transform}} feature. The limitations are grouped into the following categories:
 
