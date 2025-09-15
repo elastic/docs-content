@@ -2,7 +2,7 @@
 navigation_title: Breaking changes
 ---
 # {{elastic-sec}} breaking changes [elastic-security-breaking-changes]
-Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the {{elastic-sec}} breaking changes and take the necessary steps to mitigate any issues. To learn how to upgrade, check [Upgrade](/deploy-manage/upgrade.md).
+Breaking changes can impact your Elastic applications, potentially disrupting normal operations. Before you upgrade, carefully review the {{elastic-sec}} breaking changes and take the necessary steps to mitigate any issues. To learn how to upgrade, check [](/deploy-manage/upgrade.md).
 
 % ## Next version [elastic-security-X.X.X-breaking-changes]
 
