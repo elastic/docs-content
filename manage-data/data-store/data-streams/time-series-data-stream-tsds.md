@@ -8,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Time series data stream (TSDS) [tsds]
+# Time series data streams [tsds]
 
 A time series data stream (TSDS) models timestamped metrics data as one or more time series.
 
@@ -219,4 +219,4 @@ Internally, each TSDS backing index uses [index sorting](elasticsearch://referen
 
 ## What’s next? [tsds-whats-next]
 
-Now that you know the basics, you’re ready to [create a TSDS](../data-streams/time-series-data-stream-tsds.md) or [convert an existing data stream to a TSDS](../data-streams/time-series-data-stream-tsds.md).
+Now that you know the basics, you’re ready to [create a TSDS](../data-streams/set-up-tsds.md) or [convert an existing data stream to a TSDS](../data-streams/set-up-tsds.md#convert-existing-data-stream-to-tsds).

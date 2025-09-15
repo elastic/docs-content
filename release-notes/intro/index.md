@@ -26,7 +26,7 @@ Looking for earlier versions? Go to [Release docs](https://www.elastic.co/guide/
 
 ## Recommended: Upgrade to the latest version
 
-We recommend upgrading to the latest supported version to take advantage of the newest features, performance improvements, and security updates. Learn how to [Upgrade](/deploy-manage/upgrade.md).
+We recommend upgrading to the latest supported version to take advantage of the newest features, performance improvements, and security updates. Learn how to [](/deploy-manage/upgrade.md).
 
 ## Additional release resources
 
