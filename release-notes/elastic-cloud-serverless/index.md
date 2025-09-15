@@ -294,7 +294,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Enables custom roles by default [#227878]({{kib-pull}}227878)
 * Allows submitting case comments by pressing **⌘+Enter** (or **Ctrl+Enter**) [#228473]({{kib-pull}}228473)
 * Increases the number of supported **Group by** fields in threshold rules from 3 to 5 [#227465]({{kib-pull}}227465)
-* Adds the **Search AI Lake** view to AutoOps for {{serverless-full}} to provide storage usage insights.
+* Adds the **Search AI Lake** view to AutoOps for {{serverless-full}} to provide storage usage insights
 
 ### Fixes [serverless-changelog-07222025-fixes]
 
