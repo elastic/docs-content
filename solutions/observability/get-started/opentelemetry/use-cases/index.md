@@ -16,7 +16,7 @@ products:
 
 Explore specific use cases for the {{edot}}:
 
-- [Kubernetes observability](/reference/use-cases/kubernetes/index.md)
-- [LLM observability](/reference/use-cases/llms/index.md)
+- [Kubernetes observability](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/index.md)
+- [LLM observability](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md)
 
 

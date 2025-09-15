@@ -23,4 +23,4 @@ Select the quickstart guide for your environment from the following list:
 
 ## Troubleshooting
 
-Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

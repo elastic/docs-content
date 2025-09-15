@@ -30,12 +30,12 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs.
 
 :::::{step} Download the EDOT Collector
 
-[Download the EDOT Collector](/reference/edot-collector/download.md) for your operating system, extract the archive and move to the extracted directory.
+[Download the EDOT Collector](elastic-agent://reference/edot-collector/download.md) for your operating system, extract the archive and move to the extracted directory.
 :::::
 
 :::::{step} Configure the EDOT Collector
 
-Retrieve your [{{es}} endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
+Retrieve your [{{es}} endpoint](/solutions/search/search-connection-details.md) and [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
 
 ::::{tab-set}
 
@@ -110,13 +110,13 @@ sudo ./otelcol --config otel.yml
 To collect telemetry from applications and use the EDOT Collector as a gateway,
 instrument your target applications following the setup instructions:
 
-- [Android](/reference/edot-sdks/android/index.md)
-- [.NET](/reference/edot-sdks/dotnet/setup/index.md)
-- [iOS](/reference/edot-sdks/ios/index.md)
-- [Java](/reference/edot-sdks/java/setup/index.md)
-- [Node.js](/reference/edot-sdks/nodejs/setup/index.md)
-- [PHP](/reference/edot-sdks/php/setup/index.md)
-- [Python](/reference/edot-sdks/python/setup/index.md)
+- [Android]apm-agent-android://reference/index.md)
+- [.NET]elastic-otel-dotnet://reference/setup/index.md)
+- [iOS]apm-agent-ios://reference/index.md)
+- [Java]elastic-otel-java://reference/setup/index.md)
+- [Node.js]elastic-otel-node://reference/setup/index.md)
+- [PHP]elastic-otel-php://reference/setup/index.md)
+- [Python]elastic-otel-python://reference/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 
@@ -137,4 +137,4 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ## Troubleshooting
 
-Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

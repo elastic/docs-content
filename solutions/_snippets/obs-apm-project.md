@@ -5,7 +5,7 @@ Bring traces, logs, and metrics into Elastic APM to help you troubleshoot and op
 ::::{tab-set}
 :::{tab-item} OpenTelemetry
 
-The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry://reference/edot-sdks/index.md) facilitate the collection of traces, metrics, and logs in OpenTelemetry format into Elastic APM.
+The [Elastic Distribution of OpenTelemetry (EDOT) SDKs](opentelemetry:/opentelemetry://reference/edot-sdks/index.md) facilitate the collection of traces, metrics, and logs in OpenTelemetry format into Elastic APM.
 
 1. Select **Add data** from the main menu and then select **Application**.
 2. Select **OpenTelemetry**.

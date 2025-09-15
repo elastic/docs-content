@@ -17,7 +17,7 @@ products:
 
 Before setting up observability for Kubernetes, make sure you have the following:
 
-- Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [{{es}} serverless](docs-content://solutions/search/serverless-elasticsearch-get-started.md) project.
+- Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [{{es}} serverless](/solutions/search/serverless-elasticsearch-get-started.md) project.
 
 - A Kubernetes version supported by the OpenTelemetry Operator. Refer to the operator's [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix) for more details.
 
@@ -38,7 +38,7 @@ Where `<STACK_VERSION>` is the version of the Elastic Stack you are using, for e
 For Serverless, use the [latest version of the values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml). For version 8.16.0, use [this chart](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml).
 
 :::{important}
-When [installing the release](/reference/use-cases/kubernetes/deployment.md), make sure you use the right `--version` and `-f <values-file>` parameters.
+When [installing the release](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md), make sure you use the right `--version` and `-f <values-file>` parameters.
 
 The latest Helm chart version is {{kube-stack-version}}.
 :::

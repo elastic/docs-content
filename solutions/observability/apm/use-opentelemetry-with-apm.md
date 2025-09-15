@@ -23,7 +23,7 @@ Elastic offers several distributions of OpenTelemetry. Each [Elastic Distributio
 
 ## Why use the Elastic Distributions of OpenTelemetry?
 
-With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry://reference/edot-sdks/index.md) you have access to all the features of the OpenTelemetry SDK that it customizes, plus:
+With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry:/opentelemetry://reference/edot-sdks/index.md) you have access to all the features of the OpenTelemetry SDK that it customizes, plus:
 
 * You can get access to SDK improvements and bug fixes contributed by the Elastic team before the changes are available in the OpenTelemetry repositories.
 * The distribution configures the collection of tracing and metrics signals, applying opinionated defaults, such as which sources are collected by default.

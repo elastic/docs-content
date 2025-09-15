@@ -6,4 +6,4 @@ Retrieve your {{es}} URL and your API key:
     2. Next to your deployment, select **Manage**.
     3. Under **Applications** next to **{{es}}**, select **Copy endpoint**.
 
-2. Create an API Key following [these instructions](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md).
+2. Create an API Key following [these instructions](/deploy-manage/api-keys/elasticsearch-api-keys.md).
