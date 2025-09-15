@@ -9,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Manage trusted environments for remote connections in Elastic Cloud Enterprise [ece-edit-remove-trusted-environment]
+# Manage trusted environments for remote connections in {{ece}} [ece-edit-remove-trusted-environment]
 
 From a deployment’s **Security** page, you can manage trusted environments that were created previously. This can happen when:
 
