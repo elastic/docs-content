@@ -7,9 +7,10 @@ applies_to:
     ess:
 products:
   - id: cloud-hosted
+navigation_title: Google Cloud Storage
 ---
 
-# Configure a snapshot repository using GCS [ec-gcs-snapshotting]
+# Configure a GCS snapshot repository in {{ech}}
 
 Configure a custom snapshot repository using your Google Cloud Storage account.
 
