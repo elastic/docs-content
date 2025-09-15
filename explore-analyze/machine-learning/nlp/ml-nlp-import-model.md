@@ -11,7 +11,7 @@ products:
 # Import the trained model and vocabulary [ml-nlp-import-model]
 
 ::::{warning}
-Untrusted models can execute arbitrary code on your {{es}} server, exposing your cluster to remote code execution (RCE) vulnerabilities.
+PyTorch models can execute code on your {{es}} server exposing your cluster to potential security vulnerabilities.
 
 **Only use models from trusted sources and never use models from unverified or unknown providers.**
 ::::
