@@ -6,9 +6,10 @@ applies_to:
 products:
   - id: observability
   - id: apm
+navigation_title: Index lifecycle management
 ---
 
-# Index lifecycle management [apm-ilm-how-to]
+# Index lifecycle management for APM indices [apm-ilm-how-to]
 
 Lifecycle policies allow you to automate the lifecycle of your APM indices as they grow and age. A default policy is applied to each APM data stream, but can be customized depending on your business needs.
 

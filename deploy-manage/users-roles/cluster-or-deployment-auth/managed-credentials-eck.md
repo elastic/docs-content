@@ -52,7 +52,7 @@ spec:
 
 ## Rotate auto-generated credentials [k8s-rotate-credentials]
 
-You can force the auto-generated credentials to be regenerated with new values by deleting the appropriate Secret. For example, to change the password for the `elastic` user from the [quickstart example](../../../deploy-manage/deploy/cloud-on-k8s/deploy-an-orchestrator.md), use the following command:
+You can force the auto-generated credentials to be regenerated with new values by deleting the appropriate Secret. For example, to change the password for the `elastic` user from the [quickstart example](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md), use the following command:
 
 ```sh
 kubectl delete secret quickstart-es-elastic-user
