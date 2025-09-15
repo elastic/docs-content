@@ -54,6 +54,8 @@ PUT _data_stream/my-data-stream/_lifecycle
    ]
 }
 ```
+
+The downsampling action runs after the [index time series end time](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed. 
 :::
 
 :::{tab-item} Index lifecycle
