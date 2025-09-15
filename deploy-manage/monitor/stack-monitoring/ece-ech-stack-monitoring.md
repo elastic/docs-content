@@ -73,7 +73,7 @@ Elastic manages the installation and configuration of the monitoring agent for y
 - Enabling logging and monitoring increases the resource consumption of the deployment. For production systems, we recommend sizing deployments with logging and monitoring enabled to at least 4 GB of RAM on each {{es}} instance.
 - Enabling logging and monitoring can trigger a plan change on your deployment. You can monitor the plan change progress from the deployment's **Activity** page.
 
-::::{tip}
+:::{tip}
 The monitoring deployment and production deployment must be on the same major version, cloud provider, and region.
 :::
 
