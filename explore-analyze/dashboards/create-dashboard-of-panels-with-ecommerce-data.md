@@ -160,7 +160,7 @@ Add a layer to display the customer traffic:
        :::
 
 4. From the **Available fields** list, drag **order_date** to the **Horizontal Axis** field in the second layer.
-5. To change the position of the legend, open the **Legend** menu, then select the **Alignment** arrow that points up.
+5. To change the position of the legend, open the **Legend** menu, then select the **Position** arrow that points up.
 
    :::{image} /explore-analyze/images/kibana-lens_mixedXYChart_7.16.png
    :alt: Layer visualization type menu
@@ -178,7 +178,7 @@ To view change over time as a percentage, create an **Area percentage** chart th
 
 1. On the dashboard, click **Create visualization**.
 2. From the **Available fields** list, drag **Records** to the workspace.
-3. Open the **Visualization type** dropdown, then select **Area percentage**.
+3. Open the **Visualization type** dropdown, then select **Area**.
 
 For each order category, create a filter:
 
@@ -200,7 +200,7 @@ For each order category, create a filter:
     * **Label** — `Accessories`
 
 6. Click **Close**.
-7. Open the **Legend** menu, then select the **Alignment** arrow that points up.
+7. Open the **Legend** menu, then select the **Position** arrow that points up.
 
    :::{image} /explore-analyze/images/kibana-lens_areaPercentageNumberOfOrdersByCategory_8.3.png
    :alt: Prices share by category
@@ -236,7 +236,7 @@ Filter the results to display the data for only Saturday and Sunday:
         The [KQL filter](../query-filter/languages/kql.md) displays all documents where `day_of_week` matches `Saturday` or `Sunday`.
 
 4. Click **Close**.
-5. Open the **Legend** menu, then click **Hide** next to **Display**.
+5. Open the **Legend** menu, then click **Hide** next to **Visibility**.
 
    :::{image} /explore-analyze/images/kibana-lens_areaChartCumulativeNumberOfSalesOnWeekend_7.16.png
    :alt: Area chart with cumulative sum of orders made on the weekend
