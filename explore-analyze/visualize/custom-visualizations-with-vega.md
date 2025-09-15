@@ -1126,7 +1126,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 * [preview] Using the Elastic Map Service in Vega maps
 * Additional tooltip styling
 * Advanced setting to enable URL loading from any domain
-* Debugging support using the {{kib}} inspector or browser console
+* Debugging support using the {{kib}} inspector
 * (Vega only) Expression functions which can update the time range and dashboard filters
 
 
@@ -1165,7 +1165,7 @@ padding: {
 To learn more, read about [Vega autosize](https://vega.github.io/vega/docs/specification/#autosize) and [Vega-Lite autosize](https://vega.github.io/vega-lite/docs/size.html).
 
 ::::{note}
-Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite/docs/size.html#limitations) which can affect the height and width of your visualization, but these limitations do not exist in Vega. To disable these warnings, you can [add extra options to your spec](#vega-additional-configuration-options).
+Autosize in Vega-Lite has [several limitations](https://vega.github.io/vega-lite/docs/size.html#limitations) which can affect the height and width of your visualization, but these limitations do not exist in Vega.
 ::::
 
 
@@ -1472,7 +1472,7 @@ The runtime data is read from the [runtime scope](https://vega.github.io/vega/do
 :screenshot:
 :::
 
-To debug more complex specs copy the Vega spec from the `Spec` tab and use the [online Vega Editor](https://vega.github.io/editor/) to debug it.
+To debug more complex specs, copy the Vega spec from the **Spec** tab and use the [online Vega Editor](https://vega.github.io/editor/) to debug it.
 
 
 ##### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
