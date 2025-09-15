@@ -54,13 +54,12 @@ Downsampling is applied to the individual backing indices of the TSDS. The downs
 3. For each [time series metric](time-series-data-stream-tsds.md#time-series-metric) field, computes aggregations for all documents in the bucket.
 
     * `gauge` field type:
-        * `min`, `max`, `sum`, and `value_count` are stored 
-        * `value_count` is stored as type `aggregate_metric_double`
+        * `min`, `max`, `sum`, and `value_count` are stored as type `aggregate_metric_double`
     * `counter` field type:
         * `last_value` is stored.
 
 4. For all other fields, copies the most recent value to the target index.
-5. Deletes the original index and replaces it with the downsampled index. Within a data stream, only one index can exist for a time period.
+5. Replaces the original index with the downsampled index, then deletes the original index.
 
 The new, downsampled index is created on the data tier of the original index and inherits the original settings, like number of shards and replicas.
 
@@ -72,33 +71,10 @@ You can downsample a downsampled index. The subsequent downsampling interval mus
 
 ### Source and target index field mappings [downsample-api-mappings]
 
-Fields in the target downsampled index are created based on fields in the original source index, as follows:
+Fields in the target downsampled index are created with the same mapping as in the source index, with one exception: `time_series_metric: gauge` fields are changed to `aggregate_metric_double`.
 
-1. **Dimensions:** Fields mapped with the `time-series-dimension` parameter are created in the target downsampled index with the same mapping as in the source index.
-2. **Metrics:** Fields mapped with the `time_series_metric` parameter are created in the target downsampled index with the same mapping as in the source index, with one exception: `time_series_metric: gauge` fields are changed to `aggregate_metric_double`.
-3. **Labels:** Label fields (fields that are neither dimensions nor metrics) are created in the target downsampled index with the same mapping as in the source index.
 
-% TODO ^^ make this more concise / a table?
 
-## Querying downsampled indices [querying-downsampled-indices]
-
-To query a downsampled index, use the [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [`_async_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoints. 
-
-* You can query multiple raw data and downsampled indices in a single request, and a single request can include downsampled indices with multiple downsampling intervals (for example, `15m`, `1h`, `1d`).
-* When you run queries in {{kib}} and through Elastic solutions, a standard response is returned, with no indication that some of the queried indices are downsampled.
-* [Date histogram aggregations](elasticsearch://reference/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) support `fixed_intervals` only (not calendar-aware intervals).
-* Time-based histogram aggregations use a uniform bucket size, without regard to the downsampling time interval specified in the request.
-
-### Time zone offsets
-
-Date histograms are based on UTC values. Some time zone situations require offsetting (shifting the time buckets) when downsampling:
-     
-* For time zone `+5:30` (India), offset by 30 minutes -- for example, `2020-01-01T10:30:00.000` instead of `2020-03-07T10:00:00.000`. Or use a downsampling interval of 15 minutes instead of offsetting.
-* For intervals based on days rather than hours, adjust the buckets to the appropriate time zone -- for example, `2020-03-07T19:00:00.000` instead of `2020-03-07T00:00:00.000` for `America/New_York`. 
-
-When offsetting is applied, responses include the field `downsampled_results_offset: true`.
-
-For more details, refer to [Date histogram aggregation: Time zone](elasticsearch://reference/aggregations/search-aggregations-bucket-datehistogram-aggregation.md#datehistogram-aggregation-time-zone).
 
 
 
