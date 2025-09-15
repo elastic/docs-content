@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/handle-no-results-found-message.html
   - https://www.elastic.co/guide/en/serverless/current/observability-handle-no-results-found-message.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: cloud-serverless

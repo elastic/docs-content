@@ -40,7 +40,7 @@ To view only the configuration and status of {{transforms}}, you must have:
 
 * `transform_user` built-in role or `monitor_transform` cluster privileges
 
-For more information about {{es}} roles and privileges, refer to [Built-in roles](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) and [Security privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
+For more information about {{es}} roles and privileges, refer to [Built-in roles](elasticsearch://reference/elasticsearch/roles.md) and [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md).
 
 ### {{kib}} user [transform-kib-security-privileges]
 

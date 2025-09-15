@@ -553,7 +553,7 @@ The response shows the number of task creations, creation hours, and persistence
 
 ## Additional resources
 
-- Explore a curated collection of threat hunting [queries](https://github.com/elastic/detection-rules/tree/main/hunting) in the `elastic/detection-rules` GitHub repo.
+- Explore a curated collection of threat hunting [queries](https://github.com/elastic/detection-rules/tree/main/hunting) in the `elastic/detection-rules` GitHub repo.
   - The corresponding [blog](https://www.elastic.co/security-labs/elevate-your-threat-hunting) provides more information about how to use them in your threat hunting workflows.
 - Explore more threat hunting examples in the following blogs:
   - [Detect and prevent data exfiltration with {{elastic-sec}}](https://www.elastic.co/blog/security-exfiltration)

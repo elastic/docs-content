@@ -20,7 +20,7 @@ In this section, you'll learn about how to deploy and manage all aspects of your
 This section focuses on deploying and managing the core components of the {{stack}}: {{es}} and {{kib}}. It also documents deploying and managing supporting orchestration technologies. However, depending on your use case, you might need to deploy other components. [Learn more](/get-started/the-stack.md).
 
 :::{tip}
-To get started quickly, you can set up a [local development and testing environment](/solutions/search/run-elasticsearch-locally.md), or sign up for a [Serverless](https://cloud.elastic.co/serverless-registration) or [Hosted](https://cloud.elastic.co/registration) trial in {{ecloud}}.
+To get started quickly, you can set up a [local development and testing environment](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md), or sign up for a [Serverless](https://cloud.elastic.co/serverless-registration) or [Hosted](https://cloud.elastic.co/registration) trial in {{ecloud}}.
 :::
 
 ## Design and deploy

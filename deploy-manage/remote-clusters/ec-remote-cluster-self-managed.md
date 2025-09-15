@@ -229,7 +229,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
     * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
 
       ::::{tip}
-      If you’re using API keys as security model, change the port into `9443`.
+      If you’re using API keys as security model, change the port to `9443`.
       ::::
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.

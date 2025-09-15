@@ -11,7 +11,7 @@
 /deploy-manage/                             @elastic/admin-docs
 /explore-analyze/                           @elastic/core-docs @elastic/experience-docs 
 /extend/                                    @elastic/core-docs
-/get-started/                               @elastic/core-docs
+/get-started/                               @elastic/core-docs @elastic/project-docs
 
 /manage-data/                               @elastic/admin-docs
 /manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs 
@@ -44,9 +44,11 @@
 
 /solutions/                                 @elastic/experience-docs @elastic/developer-docs 
 /solutions/observability/                   @elastic/experience-docs
-/solutions/observability/get-started/       @elastic/ski-docs
+/solutions/observability/get-started/       @elastic/ski-docs @elastic/project-docs
 /solutions/search/                          @elastic/developer-docs
+/solutions/search/get-started/              @elastic/developer-docs @elastic/project-docs
 /solutions/security/                        @elastic/experience-docs
+/solutions/security/get-started             @elastic/experience-docs @elastic/project-docs
 
 /troubleshoot/                              @elastic/docs
 /troubleshoot/deployments/                  @elastic/admin-docs
