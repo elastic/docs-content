@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Open and manage cases in Kibana [manage-cases]
+# Open and manage cases in {{kib}} [manage-cases]
 
 To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case features in {{kib}}.
 

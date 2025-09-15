@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Common issues with Kibana alerting [alerting-common-issues]
+# Common issues with {{kib}} alerting [alerting-common-issues]
 
 This page describes how to resolve common problems you might encounter with Alerting.
 

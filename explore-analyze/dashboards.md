@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Visualize data with Kibana dashboards [dashboard]
+# Visualize data with {{kib}} dashboards [dashboard]
 
 Dashboards are the best way to visualize and share insights from your {{es}} data.
 

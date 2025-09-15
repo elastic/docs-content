@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Configure access to cases in Kibana [setup-cases]
+# Configure access to cases in {{kib}} [setup-cases]
 
 To access cases in **{{stack-manage-app}}**, you must have the appropriate {{kib}} privileges:
 

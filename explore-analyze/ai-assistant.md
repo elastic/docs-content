@@ -17,7 +17,7 @@ products:
   - id: cloud-serverless
 ---
 
-# AI assistants in Kibana
+# AI assistants in {{kib}}
 
 $$$token-limits$$$
 

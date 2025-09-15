@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Manage cases with Kibana [cases]
+# Manage cases with {{kib}} [cases]
 
 Cases are used to open and track issues directly in {{kib}}. You can add assignees and tags to your cases, set their severity and status, and add alerts, comments, and visualizations. You can create cases automatically when alerts occur or send cases to external incident management systems by configuring connectors.
 

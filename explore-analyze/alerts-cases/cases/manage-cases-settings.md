@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Manage case settings in Kibana [manage-cases-settings]
+# Manage case settings in {{kib}} [manage-cases-settings]
 
 To change case closure options and add custom fields, templates, and connectors for external incident management systems, go to **{{stack-manage-app}} > Cases** and click **Settings**.
 
