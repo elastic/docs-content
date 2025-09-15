@@ -363,7 +363,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Uses `id` instead of `name` to group vulnerabilities by resource and cloud account in {{sec-serverless}} [#225492]({{kib-pull}}225492)
 * Updates Gemini model in {{sec-serverless}} [#225917]({{kib-pull}}225917)
 * Updates the navigation menu in {{es-serverless}} [#225709]({{kib-pull}}225709)
-* Adds performance charts to the **Usage and performance** section on the project overview page in {{serverless-full}}. 
+* Adds performance charts to the **Usage and performance** section on the project overview page in {{serverless-full}}
 
 
 ### Fixes [serverless-changelog-07072025-fixes]
