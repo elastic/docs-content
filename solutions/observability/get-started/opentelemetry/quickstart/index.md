@@ -1,5 +1,5 @@
 ---
-navigation_title: Quickstart
+navigation_title: OpenTelemetry quickstarts
 description: Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts. The guides cover installing the EDOT Collector, enabling auto-instrumentation, and configuring data collection for metrics, logs, and traces in Elastic Observability.
 applies_to:
    stack:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Quickstart guides
+# OpenTelemetry quickstarts
 
 Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts.
 
@@ -34,9 +34,9 @@ Select a guide based on the environment of your target system and your Elastic d
 
 | Deployment Model       | Kubernetes                              | Docker                                  | Hosts or VMs                          |
 |-------------------------|-----------------------------------------|-----------------------------------------|---------------------------------------|
-| Self-managed Elastic Stack | [Kubernetes on self-managed]/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed]/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts or VMs on self-managed]/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
-| {{serverless-full}}  | [Kubernetes on serverless]/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)     | [Docker on serverless]/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)     | [Hosts or VMs on serverless]/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)     |
-| {{ech}}      | [Kubernetes on hosted]/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md)               | [Docker on hosted]/solutions/observability/get-started/opentelemetry/quickstart/ech/docker.md)               | [Hosts or VMs on hosted]/solutions/observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md)               |
+| Self-managed Elastic Stack | [Kubernetes on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md) | [Docker on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker.md) | [Hosts or VMs on self-managed](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md) |
+| {{serverless-full}}  | [Kubernetes on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)     | [Docker on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)     | [Hosts or VMs on serverless](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)     |
+| {{ech}}      | [Kubernetes on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/k8s.md)               | [Docker on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/docker.md)               | [Hosts or VMs on hosted](/solutions/observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md)               |
 
 ## Troubleshooting
 

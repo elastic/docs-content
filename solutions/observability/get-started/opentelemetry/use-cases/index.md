@@ -1,5 +1,5 @@
 ---
-navigation_title: Use cases
+navigation_title: OpenTelemetry use cases
 description: Overview of different use cases for the {{edot}}.
 applies_to:
   stack:
@@ -12,7 +12,7 @@ products:
   - id: observability
 ---
 
-# Use cases
+# OpenTelemetry use cases
 
 Explore specific use cases for the {{edot}}:
 
