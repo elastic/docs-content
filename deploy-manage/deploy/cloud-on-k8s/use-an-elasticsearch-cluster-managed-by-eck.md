@@ -27,11 +27,11 @@ Managing APM Server, {{kib}} and {{es}} with ECK allows a smooth and secured int
       elasticsearchRef:
         name: quickstart
       kibanaRef:
-        name: quickstart
+        name: quickstart <1>
     EOF
     ```
 
-2. A reference to a {{kib}} instance is only required for APM Server versions 8.0.0 and later.
+    1. A reference to a {{kib}} instance is only required for APM Server versions 8.0.0 and later.
 
 
 ::::{note}
