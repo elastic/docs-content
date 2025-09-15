@@ -9,6 +9,11 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## September 17, 2025 [serverless-changelog-09172025]
+
+### Features and enhancements [serverless-changelog-09172025-features-enhancements]
+* {{serverless-full}} is now available in three new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP South Carolina (`us-east1`), GCP North Virginia (`us-east4`), and Oregon (`us-west1`).
+
 ## September 8, 2025 [serverless-changelog-09082025]
 
 ### Features and enhancements [serverless-changelog-09082025-features-enhancements]
