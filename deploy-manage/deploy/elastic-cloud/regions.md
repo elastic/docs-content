@@ -54,3 +54,11 @@ The following GCP regions are currently available:
 | asia-south1 | Mumbai |
 | europe-west1 | Belgium |
 | us-central1 | Iowa |
+
+
+## Marketplaces
+
+When procuring {{ecloud}} through [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=overview), or [GCP Marketplace](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud), only the regions corresponding to the same cloud service provider can be used. This ensures that you can enjoy the benefits of the marketplace, such as {{ecloud}} contributing towards your spend commitment with cloud providers.
+
+You can implement a multi-cloud strategy by creating a separate {{ecloud}} organization, either from another marketplace, or directly at [cloud.elastic.co](https://cloud.elastic.co).
+For example, if you have created a project in `eu-central-1` after signing up on AWS Marketplace, you can provision another project in GCP `europe-west1` by signing up for a second {{ecloud}} organization on GCP Marketplace, using another email address.
