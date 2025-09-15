@@ -1,5 +1,5 @@
 ---
-navigation_title: Logging examples
+navigation_title: Examples
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/log-settings-examples.html
 applies_to:
