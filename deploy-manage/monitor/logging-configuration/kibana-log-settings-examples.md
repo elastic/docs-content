@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Examples of {{kib}} logging [log-settings-examples]
+# Examples of {{kib}} logging configurations [log-settings-examples]
 
 Here are some configuration examples for the most common logging use cases:
 
