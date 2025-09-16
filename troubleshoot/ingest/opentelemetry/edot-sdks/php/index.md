@@ -19,11 +19,11 @@ Use the information on this page to troubleshoot issues using EDOT PHP.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
-As a first step, review the [supported technologies](opentelemetry://reference/edot-sdks/php/supported-technologies.md) to ensure your application is supported by the agent. Are you using a PHP version that EDOT PHP supports? Are the versions of your dependencies in the supported version range to be instrumented?
+As a first step, review the [supported technologies](elastic-otel-php://reference/edot-php/supported-technologies.md) to ensure your application is supported by the agent. Are you using a PHP version that EDOT PHP supports? Are the versions of your dependencies in the supported version range to be instrumented?
 
 ## Turn on logging
 
-When diagnosing issues with the agent's operation, logs play a key role. You can find a detailed explanation of the logging configuration options in [Configuration](opentelemetry://reference/edot-sdks/php/configuration.md#logging-configuration).
+When diagnosing issues with the agent's operation, logs play a key role. You can find a detailed explanation of the logging configuration options in [Configuration](elastic-otel-php://reference/edot-php/configuration.md#logging-configuration).
 
 In most cases, setting the logging level to `debug` is sufficient. You can also use `trace` can be used, but keep in mind that the amount of generated data might be significant.
 
@@ -42,7 +42,7 @@ Upload your complete debug logs to a service like [GitHub Gist](https://gist.git
 
 If you suspect that the agent might be causing disruptions to a production application, you can deactivate the agent while you troubleshoot.
 
-To deactivate the agent, set the [`elastic_otel.enabled`](opentelemetry://reference/edot-sdks/php/configuration.md#general-configuration) setting to `false`.
+To deactivate the agent, set the [`elastic_otel.enabled`](elastic-otel-php://reference/edot-php/configuration.md#general-configuration) setting to `false`.
 
 :::{note}
 You need to restart your application for the changes to apply.
@@ -75,7 +75,7 @@ When turned off, the agent falls back to a PHP-based serializer, which has lower
 
 ### `open_basedir` PHP configuration option
 
-If you see a similar entry in the agent log, this indicates an incorrect `open_basedir` configuration. For more details, refer to [Limitations](opentelemetry://reference/edot-sdks/php/setup/limitations.md#open_basedir-php-configuration-option).
+If you see a similar entry in the agent log, this indicates an incorrect `open_basedir` configuration. For more details, refer to [Limitations](elastic-otel-php://reference/edot-php/setup/limitations.md#open_basedir-php-configuration-option).
 
 ```
 EDOT PHP bootstrap file (...php/bootstrap_php_part.php) is located outside of paths allowed by open_basedir ini setting.

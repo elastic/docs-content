@@ -48,7 +48,7 @@ To help Elastic Support investigate the problem efficiently, please include the 
 
 ### Deployment context
 
-* Are you using a [standalone EDOT Collector](opentelemetry://reference/edot-collector/config/default-config-standalone.md) or [Kubernetes](opentelemetry://reference/edot-collector/config/default-config-k8s.md)?
+* Are you using a [standalone EDOT Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md) or [Kubernetes](elastic-agent://reference/edot-collector/config/default-config-k8s.md)?
 * If applicable, include:
   * Helm chart version and values (for Kubernetes)
   * Container image version
