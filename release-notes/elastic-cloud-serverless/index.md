@@ -9,6 +9,43 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+## September 15, 2025 [serverless-changelog-09152025]
+
+### Features and enhancements [serverless-changelog-09152025-features-enhancements]
+
+* Improves the {{esql}} suggestions logic when a query changes [#231767]({{kib-pull}}231767)
+* Updates the appearance popover in Lens metric charts [#233992]({{kib-pull}}233992)
+* Adds support for installing `alerting_rule_template` assets from packages [#233533]({{kib-pull}}233533)
+* Removes the default query limit of 10 [#234349]({{kib-pull}}234349)
+* Adds support for remote cluster lookup mode indices in the editor [#232907]({{kib-pull}}232907)
+* Extends {{esql}} autocomplete to include columns from lookup indices and enrichment policies after `LOOKUP JOIN` and `ENRICH` commands [#233221]({{kib-pull}}233221)
+* Adds a trace waterfall visualization for logs [#234072]({{kib-pull}}234072)
+* Adds end-to-end UI tests for onboarding page validation [#232363]({{kib-pull}}232363)
+* Updates the Playwright end-to-end tests to support Logs Essentials tier functionality [#234644]({{kib-pull}}234644)
+* Introduces a Security Risk Scoring AI Assistant tool [#233647]({{kib-pull}}233647)
+* Enables the SentinelOne `runscript` response action [#234492]({{kib-pull}}234492)
+* Extends the `origin_info_collection` advanced policy setting to include `origin_url`, `origin_referrer_url`, and `Ext.windows.zone_identifier` fields for Windows process events [#234268]({{kib-pull}}234268)
+* Restricts access to the Value report page to `admin` and `soc_manager` roles in complete tier [#234377]({{kib-pull}}234377)
+* Ensures the **Tech Preview** badge is shown for the default inference endpoint for e5 on the inference endpoints UI [#234811]({{kib-pull}}234811)
+* Ensures mapped fields are remembered across simulations [#233799]({{kib-pull}}233799)
+
+### Fixes [serverless-changelog-09152025-fixes]
+
+* Hides the side navigation during report generation [#234675]({{kib-pull}}234675)
+* Fixes a bug where the save modal allowed duplicate saves of dashboards, visualizations, and other assets [#233933]({{kib-pull}}233933)
+* Fixes an issue with special character handling when creating a pipeline from the flyout [#233651]({{kib-pull}}233651)
+* Fixes a bug where the toggle column only worked on the Alerts page [#234278]({{kib-pull}}234278)
+* Correctly updates the `@timestamp` and `event.ingested` fields when a privileged user is updated [#233735]({{kib-pull}}233735)
+* Returns a `500` response code if there is an error during monitoring engine initialization [#234368]({{kib-pull}}234368)
+* Fixes table highlighting issues in flyouts [#234222]({{kib-pull}}234222)
+* Fixes issues in AI Assistant where it didn't append conversation messages or update titles [#233219]({{kib-pull}}233219)
+* Enables repeated System Prompt navigation from the **Conversations** tab [#234812]({{kib-pull}}234812)
+* Increases the `bulkGet` limit [#234151]({{kib-pull}}234151)
+* Fixes an issue on the API Keys Management page that occurred when loading API keys with null names [#234083]({{kib-pull}}234083)
+* Fixes an Anomaly Detection bug where custom URLs omitted generated fields in datafeed preview requests [#234709]({{kib-pull}}234709)
+* Ensures full tool traces are displayed in flyouts [#234654]({{kib-pull}}234654)
+
+
 ## September 8, 2025 [serverless-changelog-09082025]
 
 ### Features and enhancements [serverless-changelog-09082025-features-enhancements]
