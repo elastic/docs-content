@@ -1,5 +1,5 @@
 ---
-navigation_title: Manage your Integrations Server
+navigation_title: Manage Integrations Server
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-integrations-server.html
 applies_to:
