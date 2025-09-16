@@ -6,9 +6,10 @@ applies_to:
     ess: ga
 products:
   - id: cloud-hosted
+navigation_title: Switch from APM to Integrations Server
 ---
 
-# Switch from APM to Integrations Server payload [ec-integrations-server-apm-switch]
+# Switch from APM to Integrations Server payload on {{ech}} [ec-integrations-server-apm-switch]
 
 This example shows how to use the {{ecloud}} RESTful API to switch from using [APM & Fleet Server](#ec-manage-apm-and-fleet) to [Integrations Server](manage-integrations-server.md).
 

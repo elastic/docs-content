@@ -1,4 +1,5 @@
 ---
+navigation_title: View and manage alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/view-alerts.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# View and manage alerts [view-alerts]
+# View and manage alerts in {{kib}} [view-alerts]
 
 When the conditions of a rule are met, it creates an alert. If the rule has actions, they run at the defined frequency. For example, the rule can send email notifications for each alert at a custom interval. For an introduction to the concepts of rules, alerts, and actions, refer to [Alerting](../alerts.md).
 

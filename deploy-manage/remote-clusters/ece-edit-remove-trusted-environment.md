@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage trusted environments
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-edit-remove-trusted-environment.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Edit or remove a trusted environment [ece-edit-remove-trusted-environment]
+# Manage trusted environments for remote connections in {{ece}} [ece-edit-remove-trusted-environment]
 
 From a deployment’s **Security** page, you can manage trusted environments that were created previously. This can happen when:
 
