@@ -13,7 +13,7 @@ products:
 
 Downsampling reduces the footprint of your [time series data](time-series-data-stream-tsds.md) by storing it at reduced granularity.
 
-Metrics tools and solutions collect large amounts of time series data over time. As the data ages, it becomes less relevant to the current state of the system. _Downsampling_ lets you reduce the resolution and precision of older data, in exchange for decreased storage space.
+Metrics tools and solutions collect large amounts of time series data over time. As the data ages, it becomes less relevant to the current state of the system. You can _downsample_ older data, reducing resolution and precision in exchange for increased storage space.
 
 This section explains the available downsampling options and helps you understand the process.
 
