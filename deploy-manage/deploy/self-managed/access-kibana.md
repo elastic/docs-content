@@ -1,4 +1,5 @@
 ---
+navigation_title: Access {{kib}}
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/access.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Access {{kib}} [access]
+# Access {{kib}} in a self-managed cluster [access]
 
 Access {{kib}} through the web application on port 5601.
 

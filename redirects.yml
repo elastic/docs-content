@@ -337,7 +337,14 @@ redirects:
 # Related to https://github.com/elastic/docs-content/pull/2745
   'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'
 
+# Related to https://github.com/elastic/docs-content/pull/2818
+# Redirects files internally
   'release-notes/fleet-elastic-agent/index.md': 'fleet-server://release-notes/index.md'
   'release-notes/fleet-elastic-agent/breaking-changes.md': 'fleet-server://release-notes/breaking-changes.md'
   'release-notes/fleet-elastic-agent/deprecations.md': 'fleet-server://release-notes/deprecations.md'
   'release-notes/fleet-elastic-agent/known-issues.md': 'fleet-server://release-notes/known-issues.md'
+# Redirects `path_prefix`
+  'release-notes/fleet/index.md': 'fleet-server://release-notes/index.md'
+  'release-notes/fleet/breaking-changes.md': 'fleet-server://release-notes/breaking-changes.md'
+  'release-notes/fleet/deprecations.md': 'fleet-server://release-notes/deprecations.md'
+  'release-notes/fleet/known-issues.md': 'fleet-server://release-notes/known-issues.md'
