@@ -9,10 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-
-
-
-# Legacy collection methods [collecting-monitoring-data]
+# Legacy collection methods for self-managed {{es}} [collecting-monitoring-data]
 
 
 ::::{admonition} Deprecated in 7.16

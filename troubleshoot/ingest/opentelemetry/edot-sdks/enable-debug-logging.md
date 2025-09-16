@@ -141,7 +141,7 @@ While the EDOT PHP agent supports the standard `OTEL_LOG_LEVEL` variable, you mu
 * `ELASTIC_OTEL_LOG_LEVEL_STDERR`
 * `ELASTIC_OTEL_LOG_LEVEL_SYSLOG`
 
-Refer to [Logging configuration](opentelemetry://reference/edot-sdks/php/configuration.md#logging-configuration) for more details.
+Refer to [Logging configuration](elastic-otel-php://reference/edot-php/configuration.md#logging-configuration) for more details.
 
 For deeper troubleshooting, you can also enable diagnostic data collection. For example:
 
