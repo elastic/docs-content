@@ -22,17 +22,18 @@ On [serverless](../deploy/elastic-cloud/serverless.md) scaling {{kib}} is fully 
 
 {{kib}}'s HTTP traffic is diverse and can be unpredictable. Traffic includes serving static assets like files, processing large search responses from {{es}} and managing CRUD operations against complex domain objects like SLOs. The scale of the load created by each of these kinds of traffic will vary depending on your usage patterns. While difficult to predict, there are 2 important aspects to consider when provisioning CPU and memory resources for your {{kib}} instances:
 
-1. Concurrency: how many users do you expect to be interacting with {{kib}} simultaneously which is largely **CPU bound**
-2. Request and response size: how large (usually measured in bytes) are the requests and responses you expect to {{kib}} to service which largely **memory bound**
+1. Concurrency: how many users do you expect to be interacting with {{kib}} simultaneously, which is largely **CPU-bound**
+2. Request and response size: how large (usually measured in bytes) are the requests and responses you expect {{kib}} to service, which is largely **memory-bound**
 
 ::::{important}
-The nature of traffic is not only diverse, but also unpredictable. Traffic to {{kib}} often comes in short bursts or spikes that can overwhelm an underprovisioned {{kib}}. In production environments an overwhelmed {{kib}} will typically manifest as 502 or 503 error responses from {{kib}}.
+
+The nature of traffic is not only diverse, but also unpredictable. Traffic to {{kib}} often comes in short bursts or spikes that can overwhelm an underprovisioned {{kib}}. In production environments, an overwhelmed {{kib}} will typically manifest as 502 or 503 error responses from {{kib}}.
 
 A valuable strategy known as load balancing helps to mitigate this bursty nature of traffic by horizontally scaling your {{kib}} deployments and improving {{kib}}'s availability. See the guide on [load balancing traffic](./kibana-load-balance-traffic.md). The rest of this guide will focus on provisioning CPU and memory (also known as vertically scaling) a single Kibana for handling your traffic load, but is not a replacement for load balancing traffic.
 ::::
 
 ::::{important}
-CPU and memory boundedness often interact in important ways. If CPU-bound activity is reaching it's limit memory pressure will likely increase as {{kib}} has less time for activities like garbage collection. If memory-bound activity is reaching it's limit there may be more CPU work to free claimed memory, increasing CPU pressure.
+CPU and memory boundedness often interact in important ways. If CPU-bound activity is reaching its limit, memory pressure will likely increase as {{kib}} has less time for activities like garbage collection. If memory-bound activity is reaching its limit, there may be more CPU work to free claimed memory, increasing CPU pressure.
 ::::
 
 ### Answer the following questions before scaling Kibana up or down [_before_sizing_kibana]
@@ -43,19 +44,21 @@ Follow [the production guidance for {{es}} first](./elasticsearch-in-production-
 
 #### What requests is {{kib}} sending to {{es}}?
 
-In user interfaces like Dashboards or Discover one can see the full query that {{kib}} is sending to {{es}}. This is a good way to get an idea of the volume of data and work a {{kib}} visualization or dashboard is creating for {{es}}. Dashboards with many visualizations will generate higher load for {{es}} and {{kib}}.
+In user interfaces like Dashboards or Discover, one can see the full query that {{kib}} is sending to {{es}}. This is a good way to get an idea of the volume of data and work a {{kib}} visualization or dashboard is creating for {{es}}. Dashboards with many visualizations will generate higher load for {{es}} and {{kib}}.
 
 ### A simple sizing strategy
 
-If you know max number of expected concurrent users start {{kib}} on **1 CPU** and **1.5GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards. If you are experiencing performance issues, adding an additional **0.5 CPUs** and **1.5GB** per 10 concurrent should ensure {{kib}} is not resource starved for common analytics usage.
+Follow this strategy if you know the max number of expected concurrent users.
+
+Start {{kib}} on **1 CPU** and **1.5GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards. If you are experiencing performance issues, adding an additional **0.5 CPUs** and **1.5GB** per 10 concurrent users should ensure {{kib}} is not resource-starved for common analytics usage.
 
 ::::{important}
-This advice does not apply to scaling {{kib}} for task manager. If you intend to use {{kib}} alerting capabilites see [task manager scaling guidance](./kibana-task-manager-scaling-considerations.md).
+This advice does not apply to scaling {{kib}} for task manager. If you intend to use {{kib}} alerting capabilities see [task manager scaling guidance](./kibana-task-manager-scaling-considerations.md).
 ::::
 
-**{{ece}}, {{ech}} and {{eck}}** users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. Note: size increments are predetermined and may not fit this simple sizing strategy exactly.
+**{{ece}}, {{ech}}, and {{eck}}** users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. Note: size increments are predetermined and may not fit this simple sizing strategy exactly.
 
-**Self-managed** users must provision memory to the host that {{kib}} is running on as well as configure allocated heap, see [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md). **Note:** Node.js suggests allocating 80% of available host memory to heap, assuming that Kibana is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example: allowing for HTTP sockets to allocated.
+**Self-managed** users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md). **Note:** Node.js suggests allocating 80% of available host memory to heap, assuming that Kibana is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example: allowing for HTTP sockets to be allocated.
 
 **Serverless** manages {{kib}}'s resources automatically.
 
@@ -71,7 +74,7 @@ In order to understand the impact of your usage patterns on **a {{kib}} instance
 
 The rest of this guide will assume you have visibility into the following important metrics for a {{kib}} instance:
 
-1. Event loop delay (ELD) in milliseconds - this is a Node.js concept that roughly translates to: the number of milliseconds by which processing of events is delayed due to CPU intensive activities
+1. Event loop delay (ELD) in milliseconds - this is a Node.js concept that roughly translates to the number of milliseconds by which processing of events is delayed due to CPU-intensive activities
 2. Heap size in bytes - the amount of bytes currently held in memory dedicated to {{kib}}'s heap space
 3. HTTP connections - the number of sockets that the Kibana server has open
 
@@ -79,19 +82,19 @@ The rest of this guide will assume you have visibility into the following import
 
 Event loop delay (ELD) is an important metric for understanding whether Kibana is engaged in CPU-bound activity.
 
-**As a general target ELD should be below 200ms 95% of the time**. Higher delays may mean {{kib}} is CPU starved. Sporadic increases above 200ms may mean that Kibana is periodically processing CPU intensive activities like large responses from Elasticsearch whereas consistently high ELD may mean Kibana is struggling to service tasks and requests.
+**As a general target, ELD should be below 200ms 95% of the time**. Higher delays may mean {{kib}} is CPU-starved. Sporadic increases above 200ms may mean that Kibana is periodically processing CPU-intensive activities like large responses from Elasticsearch, whereas consistently high ELD may mean Kibana is struggling to service tasks and requests.
 
-Consider the impact of ELD on user experience. If users are able to use {{kib}} without the frustration that comes from a blocked CPU provisioning additional CPU resources will not be impactful. Monitoring ELD over time is a solid strategy for knowing when additional CPU resource is needed.
+Consider the impact of ELD on user experience. If users are able to use {{kib}} without the frustration that comes from a blocked CPU, provisioning additional CPU resources will not be impactful. Monitoring ELD over time is a solid strategy for knowing when additional CPU resource is needed.
 
-**{{ece}}, {{ech}} and {{eck}}** users can adjust {{kib}}'s CPU and memory by viewing their deployment and editing the {{kib}} instance's resource configuration.
+**{{ece}}, {{ech}}, and {{eck}}** users can adjust {{kib}}'s CPU and memory by viewing their deployment and editing the {{kib}} instance's resource configuration.
 
 **Self-managed** users are responsible for managing CPU.
 
 ##### Memory [kibana-traffic-load-memory-sizing]
 
-Heap size relative is an important metric to track. If {{kib}}'s heap size grows beyond the heap limit {{kib}} will crash. By monitoring heap size you can help ensure that {{kib}} has enough memory available.
+Heap size is an important metric to track. If {{kib}}'s heap size grows beyond the heap limit, {{kib}} will crash. By monitoring heap size, you can help ensure that {{kib}} has enough memory available.
 
-**{{ece}}, {{ech}} and {{eck}}** users can adjust {{kib}}'s CPU and memory by viewing their deployment and editing the {{kib}} instance's resource configuration.
+**{{ece}}, {{ech}}, and {{eck}}** users can adjust {{kib}}'s CPU and memory by viewing their deployment and editing the {{kib}} instance's resource configuration.
 
-**Self-managed** users must provision memory to the host that {{kib}} is running on as well as configure allocated heap, see [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md). **Note:** Node.js suggests allocating 80% of available memory to heap. This allows for memory resources to be used for other activities, for example: allowing for HTTP sockets to allocated.
+**Self-managed** users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md). **Note:** Node.js suggests allocating 80% of available memory to heap. This allows for memory resources to be used for other activities, for example: allowing for HTTP sockets to be allocated.
 
