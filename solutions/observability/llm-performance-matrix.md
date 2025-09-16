@@ -54,7 +54,7 @@ Models you can [deploy and manage yourself](/solutions/observability/connect-to-
 | Mistral | **Mistral-Small-3.2-24B-Instruct-2506** | Excellent | Poor | Great | Great | Excellent | Poor | Good | Excellent |
 
 ::::{note}
-`Llama-3.3-70B-Instruct` is currently supported with simulated function calling.
+`Llama-3.3-70B-Instruct` is supported with simulated function calling.
 ::::
 
 ## Evaluate your own model
