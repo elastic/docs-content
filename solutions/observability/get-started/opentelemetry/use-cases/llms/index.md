@@ -41,7 +41,7 @@ Follow these steps to instrument LLMs using EDOT.
 
 ### Instrument your LLM application
 
-Select the environment and target system from the [quick start overview]/solutions/observability/get-started/opentelemetry/quickstart/index.md) and follow the setup instructions to instrument your LLM application. Instrumentation for the supported technologies is enabled by default.
+Select the environment and target system from the [quick start overview](/solutions/observability/get-started/opentelemetry/quickstart/index.md) and follow the setup instructions to instrument your LLM application. Instrumentation for the supported technologies is enabled by default.
 
 ### Configuration
 
