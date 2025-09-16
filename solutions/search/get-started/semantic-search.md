@@ -22,14 +22,10 @@ By playing with a simple use case, you'll take the first steps toward understand
 
 ## Prerequisites
 
-- If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), create a project that is optimized for vectors. To add the sample data, you must have a `developer` or `admin` predefined role or an equivalent custom role.
-- If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/solutions/search/run-elasticsearch-locally.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role.
+- If you're using [{{es-serverless}}](/solutions/search/serverless-elasticsearch-get-started.md), you must have a `developer` or `admin` predefined role or an equivalent custom role to add the sample data.
+- If you're using [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) or [running {{es}} locally](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md), start {{es}} and {{kib}}. To add the sample data, log in with a user that has the `superuser` built-in role.
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
-
-<!--
-TBD: What is the impact of this "optimized for vectors" option?
--->
 
 ## Create a vector database
 
@@ -132,7 +128,7 @@ You therefore only need to pick a query language and a method for comparing the 
 
 {{es}} provides a variety of query languages for interacting with your data.
 For an overview of their features and use cases, check out [](/explore-analyze/query-filter/languages.md).
-The [Elasticsearch Query Language](/explore-analyze/query-filter/languages/esql.md) (ES|QL) is designed to be easy to read and write.
+The [Elasticsearch Query Language](elasticsearch://reference/query-languages/esql.md) (ES|QL) is designed to be easy to read and write.
 It enables you to query your data directly in **Discover**, so it's a good one to start with.
 
 Go to **Discover** and select **Try ES|QL** from the application menu bar.

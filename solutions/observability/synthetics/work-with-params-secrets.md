@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-params-secrets.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-params-secrets.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -84,7 +84,7 @@ You can use params in both lightweight and browser monitors created in either a 
 
 ### In a Synthetics project [synthetics-params-secrets-use-project]
 
-For lightweight monitors in a Synthetics project, wrap the name of the param in `${}` (for example, `${my_url}`).
+For lightweight monitors in a Synthetics project, wrap the name of the param in `"${}"` (for example, `"${my_url}"`).
 
 ```yaml
 - type: http

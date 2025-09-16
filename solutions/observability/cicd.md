@@ -285,7 +285,7 @@ To learn more about the integration of Jenkins with Elastic {{observability}}, s
 
 There are out of the box {{kib}} dashboards that help visualize some metrics for the CI/CD platform.
 
-Using the [Import API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-dashboards) or the {{kib}} UI, you can [install dashboards](https://github.com/jenkinsci/opentelemetry-plugin/blob/master/docs/DASHBOARDS.md#elastic) that are compatible with version 7.12 or higher.
+Using the [Import saved objects API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-post-saved-objects-import) or the {{kib}} UI, you can [install dashboards](https://github.com/jenkinsci/opentelemetry-plugin/blob/master/docs/DASHBOARDS.md#elastic) that are compatible with version 7.12 or higher.
 
 For instance, you can follow the below steps:
 

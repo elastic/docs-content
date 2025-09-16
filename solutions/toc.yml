@@ -5,18 +5,13 @@ toc:
     children:
       - file: search/get-started.md
         children:
-          - file: search/run-elasticsearch-locally.md
           - file: search/serverless-elasticsearch-get-started.md
           - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
             children:
+              - file: search/get-started/index-basics.md
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
-      - file: search/api-quickstarts.md
-        children:
-          - file: search/elasticsearch-basics-quickstart.md
-          - file: search/querydsl-full-text-filter-tutorial.md
-          - file: search/esql-search-tutorial.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -105,6 +100,34 @@ toc:
               - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
               - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
+          - file: observability/get-started/opentelemetry/quickstart/index.md
+            children:
+              - file: observability/get-started/opentelemetry/quickstart/self-managed/index.md
+                children:
+                  - file: observability/get-started/opentelemetry/quickstart/self-managed/k8s.md
+                  - file: observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md
+                  - file: observability/get-started/opentelemetry/quickstart/self-managed/docker.md
+              - file: observability/get-started/opentelemetry/quickstart/serverless/index.md
+                children:
+                  - file: observability/get-started/opentelemetry/quickstart/serverless/k8s.md
+                  - file: observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md
+                  - file: observability/get-started/opentelemetry/quickstart/serverless/docker.md
+              - file: observability/get-started/opentelemetry/quickstart/ech/index.md
+                children:
+                  - file: observability/get-started/opentelemetry/quickstart/ech/k8s.md
+                  - file: observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md
+                  - file: observability/get-started/opentelemetry/quickstart/ech/docker.md
+          - file: observability/get-started/opentelemetry/use-cases/index.md
+            children:
+              - file: observability/get-started/opentelemetry/use-cases/kubernetes/index.md
+                children:
+                  - file: observability/get-started/opentelemetry/use-cases/kubernetes/prerequisites-compatibility.md
+                  - file: observability/get-started/opentelemetry/use-cases/kubernetes/components.md
+                  - file: observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md
+                  - file: observability/get-started/opentelemetry/use-cases/kubernetes/instrumenting-applications.md
+                  - file: observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md
+                  - file: observability/get-started/opentelemetry/use-cases/kubernetes/customization.md
+              - folder: observability/get-started/opentelemetry/use-cases/llms
           - file: observability/get-started/other-tutorials/index.md
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
@@ -401,6 +424,7 @@ toc:
         children:
           - file: observability/logs/get-started-with-system-logs.md
           - file: observability/logs/stream-any-log-file.md
+          - file: observability/logs/stream-any-log-file-using-edot-collector.md
           - file: observability/logs/stream-application-logs.md
             children:
               - file: observability/logs/plaintext-application-logs.md
@@ -417,6 +441,8 @@ toc:
           - file: observability/logs/log-data-sources.md
           - file: observability/logs/add-service-name-to-logs.md
           - file: observability/logs/logs-index-template-reference.md
+            children:
+              - file: observability/logs/logs-index-template-defaults.md
           - file: observability/logs/streams/streams.md
             children:
             - file: observability/logs/streams/management/extract.md
@@ -424,7 +450,6 @@ toc:
                 - file: observability/logs/streams/management/extract/date.md
                 - file: observability/logs/streams/management/extract/dissect.md
                 - file: observability/logs/streams/management/extract/grok.md
-                - file: observability/logs/streams/management/extract/key-value.md
             - file: observability/logs/streams/management/retention.md
             - file: observability/logs/streams/management/advanced.md
       - file: observability/incident-management.md
@@ -466,6 +491,8 @@ toc:
               - file: observability/incident-management/create-an-slo.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
+        children:
+          - file: observability/connect-to-own-local-llm.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
@@ -500,12 +527,14 @@ toc:
       - file: security/ai.md
         children:
           - file: security/ai/ease/ease-intro.md
-            children: 
+            children:
               - file: security/ai/ease/ease-alerts.md
               - file: security/ai/ease/ease-value-report.md
+              - file: security/ai/ease/ease-upgrade.md
           - file: security/ai/ai-assistant.md
             children:
               - file: security/ai/ai-assistant-knowledge-base.md
+              - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/attack-discovery.md
           - file: security/ai/set-up-connectors-for-large-language-models-llm.md
             children:
@@ -675,6 +704,7 @@ toc:
           - file: security/explore/network-page.md
             children:
               - file: security/explore/configure-network-map-data.md
+              - file: security/explore/configure-dns-histogram.md
           - file: security/explore/users-page.md
       - file: security/advanced-entity-analytics.md
         children:

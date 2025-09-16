@@ -10,6 +10,8 @@ products:
 
 # Organize dashboard panels [arrange-panels]
 
+Customize your dashboard layout by arranging panels into logical groups and adjusting their size and position. When panels are well organized, it makes your dashboard easier to read, faster to load, and helps its viewers locate important information quicker.
+
 ## Arrange panels in collapsible sections [collapsible-sections]
 ```{applies_to}
 stack: ga 9.1

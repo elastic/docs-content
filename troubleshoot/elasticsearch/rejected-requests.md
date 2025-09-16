@@ -50,7 +50,7 @@ To check the number of tripped [circuit breakers](elasticsearch://reference/elas
 GET /_nodes/stats/breaker
 ```
 
-These statistics are cumulative from node startup. For more information, see [circuit breaker errors](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md).
+These statistics are cumulative from node startup. For more information, see [circuit breaker errors](circuit-breaker-errors.md).
 
 See [this video](https://www.youtube.com/watch?v=k3wYlRVbMSw) for a walkthrough of diagnosing circuit breaker errors.
 
@@ -67,13 +67,35 @@ These stats are cumulative from node startup.
 
 Indexing pressure rejections appear as an `EsRejectedExecutionException`, and indicate that they were rejected due to `combined_coordinating_and_primary`, `coordinating`, `primary`, or `replica`.
 
-These errors are often related to [backlogged tasks](task-queue-backlog.md), [bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) sizing, or the ingest target's [`refresh_interval` setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md).
+These errors are often related to [backlogged tasks](task-queue-backlog.md), [bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) sizing, or the ingest target's [`refresh_interval` setting](elasticsearch://reference/elasticsearch/index-settings/index-modules.md).  
+
+::::{note}
+{applies_to}`stack: ga 9.1`{applies_to}`serverless: ga`
+Another cause of indexing pressure rejections might be the use of the [`semantic_text`](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text) field type, which can cause rejections when indexing large batches of documents if the batch may otherwise incur an Out of Memory (OOM) error.
+::::  
 
 See [this video](https://www.youtube.com/watch?v=QuV8QqSfc0c) for a walkthrough of diagnosing indexing pressure rejections.
 
 
 ## Prevent rejected requests [prevent-rejected-requests]
 
-**Fix high CPU and memory usage**
+### Fix high CPU and memory usage [fix-high-cpu-memory-usage]
 
 If {{es}} regularly rejects requests and other tasks, your cluster likely has high CPU usage or high JVM memory pressure. For tips, see [High CPU usage](high-cpu-usage.md) and [High JVM memory pressure](high-jvm-memory-pressure.md).
+
+### Fix for `semantic_text` ingestion issues [fix-semantic-text-ingestion-issues]
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+When bulk indexing documents with the `semantic_text` field type, you may encounter rejections due to high memory usage during inference processing. 
+These rejections will appear as an `InferenceException` in your cluster logs.
+
+**To resolve this issue:**
+
+1. Reduce the batch size of documents in your indexing requests.
+2. If reducing batch size doesn't resolve the issue, then consider scaling up your machine resources.
+3. {applies_to}`serverless: unavailable` A last resort option is to adjust the `indexing_pressure.memory.coordinating.limit` cluster setting. The default value is 10% of the heap. Increasing this limit allows more memory to be used for coordinating operations before rejections occur. 
+::::{warning}
+This adjustment should only be considered after exhausting other options, as setting this value too high may risk Out of Memory (OOM) errors in your cluster. A cluster restart is required for this change to take effect.
+::::

@@ -3,7 +3,7 @@ navigation_title: Switch an {{ecloud}} cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-integration-upgrade-steps-ess.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -22,11 +22,11 @@ Use the {{ecloud}} Console to upgrade the {{stack}} to version {{version.stack}}
 
 ## Switch to {{agent}} [apm-integration-upgrade-ess-2]
 
-APM data collection will be interrupted while the migration is in progress. The process of migrating should only take a few minutes.
+APM data collection will be interrupted while the migration is in progress. The migration process should take only a few minutes.
 
-With a Superuser account, complete the following steps:
+With a Superuser account, complete these steps:
 
-1. In {{kib}}, go to the **Applications** app and click **Settings** → **Schema**.
+1. In the main menu, go to **Applications -> Service Inventory** or find `Service Inventory` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and then select **Settings → Schema**.
 
     :::{image} /solutions/images/observability-schema-agent.png
     :alt: switch to {{agent}}

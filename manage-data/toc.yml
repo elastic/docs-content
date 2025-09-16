@@ -13,6 +13,7 @@ toc:
           - file: data-store/data-streams/manage-data-stream.md
           - file: data-store/data-streams/time-series-data-stream-tsds.md
             children:
+              - file: data-store/data-streams/quickstart-tsds.md
               - file: data-store/data-streams/set-up-tsds.md
               - file: data-store/data-streams/downsampling-time-series-data-stream.md
               - file: data-store/data-streams/run-downsampling-with-ilm.md
@@ -99,9 +100,12 @@ toc:
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
         children:
+          - file: ingest/transform-enrich/ingest-lag.md
           - file: ingest/transform-enrich/ingest-pipelines.md
             children:
               - file: ingest/transform-enrich/example-parse-logs.md
+              - file: ingest/transform-enrich/readable-maintainable-ingest-pipelines.md
+              - file: ingest/transform-enrich/error-handling.md
           - file: ingest/transform-enrich/logstash-pipelines.md
           - file: ingest/transform-enrich/data-enrichment.md
             children:
@@ -153,4 +157,5 @@ toc:
     children:
       - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
       - file: migrate/migrate-internal-indices.md
+      - file: migrate/migrate-data-between-elasticsearch-clusters-with-minimal-downtime.md
   - file: use-case-use-elasticsearch-to-manage-time-series-data.md
