@@ -151,11 +151,11 @@ Your export endpoint URL is the value for the `OTEL_EXPORTER_OTLP_ENDPOINT` conf
 
 ### Cloud hosted and self-managed deployments
 
-For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](opentelemetry://reference/edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by [downloading](elastic-agent://reference/edot-collector/download.md) and [configuring an EDOT Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
+For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](elastic-agent://reference/edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by [downloading](elastic-agent://reference/edot-collector/download.md) and [configuring an EDOT Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
 
 ### Local testing deployment
 
-You can quickly launch a local [EDOT Collector](opentelemetry://reference/edot-collector/index.md) service and use it as your export endpoint for testing by running the EDOT Collector launcher as mentioned in the [Sample application guide](https://github.com/elastic/apm-agent-android/tree/main/sample-app#how-to-run). Note that it's not necessary to follow the whole guide, only the parts relevant to launching the EDOT Collector.
+You can quickly launch a local [EDOT Collector](elastic-agent://reference/edot-collector/index.md) service and use it as your export endpoint for testing by running the EDOT Collector launcher as mentioned in the [Sample application guide](https://github.com/elastic/apm-agent-android/tree/main/sample-app#how-to-run). Note that it's not necessary to follow the whole guide, only the parts relevant to launching the EDOT Collector.
 
 ## Create an API key [create-api-key]
 

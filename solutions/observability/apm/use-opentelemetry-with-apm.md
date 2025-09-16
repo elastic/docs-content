@@ -27,7 +27,7 @@ With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry://ref
 
 * You can get access to SDK improvements and bug fixes contributed by the Elastic team before the changes are available in the OpenTelemetry repositories.
 * The distribution configures the collection of tracing and metrics signals, applying opinionated defaults, such as which sources are collected by default.
-* By sending data through the [EDOT Collector](opentelemetry://reference/edot-collector/index.md), you make sure to onboard infrastructure logs and metrics.
+* By sending data through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md), you make sure to onboard infrastructure logs and metrics.
 
 To set up OpenTelemetry with Elastic, refer to these guides for each language:
 

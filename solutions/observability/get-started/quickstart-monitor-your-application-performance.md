@@ -38,9 +38,9 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 
 ## Install the EDOT Collector [_install_edot_collector]
 
-The EDOT Collector in [Agent mode](opentelemetry://reference/edot-collector/modes.md#edot-collector-as-agent) collects infrastructure and application telemetry data sent by the EDOT SDKs and forwards it to Elastic.
+The EDOT Collector in [Agent mode](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-agent) collects infrastructure and application telemetry data sent by the EDOT SDKs and forwards it to Elastic.
 
-Refer to the [EDOT Quickstarts](opentelemetry://reference/quickstart/index.md) to install the EDOT Collector for your deployment mode.
+Refer to the [EDOT Quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md) to install the EDOT Collector for your deployment mode.
 
 ## Collect application telemetry data [_collect_your_data]
 
@@ -66,7 +66,7 @@ Follow these steps to collect application telemetry data using the EDOT SDKs:
 4. Configure your EDOT SDK to send data to the APM endpoint. The **OpenTelemetry** tab provides the required configuration values.
 
 :::{note}
-If your application runs on Kubernetes, the OpenTelemetry operator automatically instruments your application, provided you've added language-specific annotations. Refer to [Auto-instrument applications](opentelemetry://reference/quickstart/self-managed/k8s.md).
+If your application runs on Kubernetes, the OpenTelemetry operator automatically instruments your application, provided you've added language-specific annotations. Refer to [Auto-instrument applications](/solutions/observability/get-started/opentelemetry/quickstart/self-managed/k8s.md).
 :::
 
 ::::
@@ -88,7 +88,7 @@ If your application runs on Kubernetes, the OpenTelemetry operator automatically
 4. Configure your EDOT SDK to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md). The **OpenTelemetry** tab provides the required configuration values.
 
 :::{note}
-If your application runs on Kubernetes, the OpenTelemetry operator automatically instruments your application, provided you've added language-specific annotations. Refer to [Auto-instrument applications](opentelemetry://reference/quickstart/serverless/k8s.md).
+If your application runs on Kubernetes, the OpenTelemetry operator automatically instruments your application, provided you've added language-specific annotations. Refer to [Auto-instrument applications](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md).
 :::
 
 ::::
