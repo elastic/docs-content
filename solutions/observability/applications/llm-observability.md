@@ -37,7 +37,7 @@ EDOT includes many types of LLM instrumentation. This [table](/solutions/observa
 
 ### Getting started
 
-Check [these instructions](opentelemetry://solutions/observability/get-started/opentelemetry/use-cases/llms/index.md) on how to setup and collect OpenTelemetry data for your LLM applications.
+Check [these instructions](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md) on how to setup and collect OpenTelemetry data for your LLM applications.
 
 ## Use cases
 
