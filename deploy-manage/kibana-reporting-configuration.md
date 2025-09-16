@@ -229,7 +229,7 @@ These steps apply only to **self-managed deployments**. Orchestrated deployments
 
 To automatically generate reports with {{watcher}}, you must configure {{watcher}} to trust the {{kib}} server certificate.
 
-1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [Getting started with security](/deploy-manage/security.md).
+1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [](/deploy-manage/security.md).
 2. Configure TLS/SSL encryption for the {{kib}} server. For more information, see [*Encrypt TLS communications in {{kib}}*](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 3. Specify the {{kib}} server CA certificate chain in [`elasticsearch.yml`](/deploy-manage/stack-settings.md):
 
