@@ -151,7 +151,7 @@ Your export endpoint URL is the value for the `OTEL_EXPORTER_OTLP_ENDPOINT` conf
 
 ### Cloud hosted and self-managed deployments
 
-For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](opentelemetry://reference/edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by [downloading](opentelemetry:/elastic-agent://reference/edot-collector/download.md) and [configuring an EDOT Collector](opentelemetry:/elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
+For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](opentelemetry://reference/edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by [downloading](elastic-agent://reference/edot-collector/download.md) and [configuring an EDOT Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
 
 ### Local testing deployment
 
