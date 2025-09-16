@@ -121,9 +121,9 @@ The possible values for the annotation are detailed in the [Operator documentati
 
 For details on instrumenting specific languages, refer to:
 
-- [Instrumenting Java]elastic-otel-java://reference/setup/k8s.md)
-- [Instrumenting Python]elastic-otel-python://reference/setup/index.md)
-- [Instrumenting Node.js]elastic-otel-node://reference/setup/index.md)
+- [Instrumenting Java](elastic-otel-java://reference/setup/k8s.md)
+- [Instrumenting Python](elastic-otel-python://reference/setup/index.md)
+- [Instrumenting Node.js](elastic-otel-node://reference/setup/index.md)
 
 ### Namespace based annotations example
 
