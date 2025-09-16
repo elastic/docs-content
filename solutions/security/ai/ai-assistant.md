@@ -26,13 +26,12 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 ::::
 
 ::::{admonition} Requirements
-* {{stack}} users: {{stack}} version 8.8.1 or later. Also note the Generative AI connector was renamed to OpenAI connector in 8.11.0.
-* {{stack}} users: an [Enterprise subscription](https://www.elastic.co/pricing).
-* {{serverless-short}} users: a [Security Analytics Complete subscription](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* {applies_to}`stack: ga` An [Enterprise subscription](https://www.elastic.co/pricing).
+* {applies_to}`serverless: ga` An {{sec-serverless}} project with the [EASE or Security Analytics Complete feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * To use AI Assistant, the **Elastic AI Assistant : All** and **Actions and Connectors : Read** [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * A [generative AI connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md), which AI Assistant uses to generate responses.
-
+* A [machine learning node](/explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
 ## Your data and AI Assistant [data-information]
