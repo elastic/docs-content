@@ -92,7 +92,7 @@ The AI Assistant connects to one of these supported LLM providers:
    - Your authentication key or secret
 
 ::::{admonition} Recommended models
-While the AI Assistant is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/llm-performance-matrix.md) to select models that perform well with your desired use cases.
+While the {{obs-ai-assistant}} is compatible with many different models, refer to the [Large language model performance matrix](/solutions/observability/llm-performance-matrix.md) to select models that perform well with your desired use cases.
 
 ::::
 

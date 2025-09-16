@@ -42,9 +42,10 @@ Models from third-party LLM providers.
 
 ## Open-source models [_open_source_models]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
 
 Models you can [deploy and manage yourself](/solutions/observability/connect-to-own-local-llm.md).
 
