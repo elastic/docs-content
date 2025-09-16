@@ -10,7 +10,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Connect {{ece}} deployments to self-managed remote clusters [ece-remote-cluster-self-managed]
+# Connect {{ece}} deployments to self-managed clusters [ece-remote-cluster-self-managed]
 
 This section explains how to configure a deployment to connect remotely to self-managed clusters.
 

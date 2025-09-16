@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Connect {{ech}} deployments to self-managed remote clusters [ec-remote-cluster-self-managed]
+# Connect {{ech}} deployments to self-managed clusters [ec-remote-cluster-self-managed]
 
 This section explains how to configure a deployment to connect remotely to self-managed clusters.
 

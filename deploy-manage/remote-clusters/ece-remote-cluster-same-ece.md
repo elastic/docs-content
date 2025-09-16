@@ -1,5 +1,5 @@
 ---
-navigation_title: Within the same ECE environment
+navigation_title: To the same ECE environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-same-ece.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access other deployments of the same {{ece}} environment [ece-remote-cluster-same-ece]
+# Connect to deployments in the same {{ece}} environment [ece-remote-cluster-same-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to the same {{ece}} environment.
 

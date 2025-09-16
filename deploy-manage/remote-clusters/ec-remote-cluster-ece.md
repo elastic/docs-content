@@ -1,5 +1,5 @@
 ---
-navigation_title: With {{ece}}
+navigation_title: To {{ece}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Access deployments of an {{ece}} environment [ec-remote-cluster-ece]
+# Connect {{ech}} deployments to an {{ece}} environment [ec-remote-cluster-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ECE}} (ECE) environment.
 
