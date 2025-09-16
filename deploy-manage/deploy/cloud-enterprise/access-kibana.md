@@ -1,4 +1,5 @@
 ---
+navigation_title: Access {{kib}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-access-kibana.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana.html
@@ -9,7 +10,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access {{kib}} [ece-access-kibana]
+# Access {{kib}} on {{ece}} [ece-access-kibana]
 
 {{kib}} is an open source analytics and visualization platform designed to search, view, and interact with data stored in {{es}} indices.
 
