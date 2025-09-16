@@ -11,10 +11,6 @@ products:
 
 # Set up a time series data stream [set-up-tsds]
 
-:::{warning}
-🚧 Work in progress, not ready for review 🚧
-:::
-
 To set up a [time series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md), complete these steps:
 
 1. Check the [prerequisites](#tsds-prereqs).
