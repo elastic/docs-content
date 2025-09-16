@@ -56,12 +56,50 @@ Before you decide what type of search to use with {{es}} or bring in your data, 
 * **Node:** A single running instance of the {{es}} server. 
 * **Cluster:** A collection of one or more nodes that holds all your data and provides indexing and search capabilities across all nodes. {{es}} clusters feature primary and replica shards to provide failover in the case of a node going down. When a primary shard goes down, the replica takes its place.
   :::{note}
-  If you're running {{es}} on a serverless deployment, you don't have to worry a bout shards, nodes, or clusters. Elastic manages these for you. 
+  If you're running {{es}} on a serverless deployment, you don't have to worry about shards, nodes, or clusters. Elastic manages these for you. 
   :::
 * **Mapping:** The process that defines how a document and its fields  are stored and indexed.
 * **Client:** Software or an application that facilitates communication and interaction with an {{es}} cluster. It enables applications written in various programming languages to send requests to {{es}}, process the response, and then push that data into the cluster. 
 
 ::::
+
+## Elastic {{observability}} 
+
+### {{observability}} overview [observability-overview]
+
+Elastic {{observability}} provides unified observability across applications and infrastructure. It combines logs, metrics, application traces, user experience data, and more into a single, integrated platform. This consolidation allows for powerful, cross-referenced analysis, enabling teams to move from detecting issues to understanding their root causes with speed and efficiency. By leveraging the search and analytics capabilities of {{es}}, it offers a holistic view of system behavior.
+
+Elastic {{observability}} embraces open standards like OpenTelemetry for flexible data collection, and offers scalable, cost-efficient data retention with tiered storage.
+
+### {{observability}} use cases [observability-use-cases]
+
+Apply {{observability}} to various scenarios to improve operational awareness and system reliability. 
+:::{dropdown} Use cases
+* **Log Monitoring and Analytics:** Centralize and analyze petabytes of log data from any source. This enables quick searching, ad-hoc queries with ES|QL, and visualization with prebuilt dashboards to diagnose issues.
+* **Application Performance Monitoring (APM):** Gain code-level visibility into application performance. By collecting and analyzing traces with native OTel support, teams can identify bottlenecks, track errors, and optimize the end-user experience.
+* **Infrastructure Monitoring:** Monitor metrics from servers, virtual machines, containers, and serverless environments with over 400 out-of-the-box integrations, including OpenTelemetry. This provides deep insights into resource utilization and overall system health.
+* **Digital Experience Monitoring:**
+  * **Real User Monitoring (RUM):** Capture and analyze data on how real users interact with web applications to improve perceived performance.
+  * **Synthetic Monitoring:** Proactively simulate user journeys and API calls to test application availability and functionality.
+  * **Uptime Monitoring:** Continuously check the status of services and applications to ensure they are available.
+* **Universal Profiling:** Gain visibility into system performance and identify expensive lines of code without application instrumentation, helping to increase CPU efficiency and reduce cloud spend.
+* **LLM Observability:** Gain deep insights into the performance, usage, and costs of Large Language Model (LLM) prompts and responses.
+* **Incident Response and Management:** Facilitate the investigation of operational incidents by correlating data from multiple sources, which accelerates root cause analysis and resolution.
+:::
+
+### {{observability}} core concepts [observability-concepts]
+At the heart of Elastic {{observability}} are several key concepts that enable its capabilities. 
+
+:::{dropdown} Concepts
+* The three pillars of {{observability}} are: 
+  * **Logs:** Timestamped records of events that provide detailed, contextual information.
+  * **Metrics:** Numerical measurements of system performance and health over time.
+  * **Traces:** A representation of the end-to-end journey of a request as it travels through a distributed system.
+* **OpenTelemetry:** {{Observability}} offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the Elastic Distribution of OpenTelemetry (EDOT).
+* **AIOps and AI Assistant:** Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config anomaly detection, pattern analysis, and the ability to surface correlations and root causes.
+* **Alerting and Cases:** A built-in feature for creating rules to detect complex conditions and trigger actions. It allows teams to stay aware of potential issues and use Cases to track investigation details, assign tasks, and collaborate on resolutions.
+* **Service Level Objectives (SLOs):** A framework for defining and monitoring the reliability of a service. Elastic Observability allows for creating and tracking SLOs to ensure that performance targets are being met.
+:::
 
 ## {{elastic-sec}}
 
@@ -108,46 +146,6 @@ Before diving into setup and configuration, familiarize yourself with the founda
 * **Security posture management:** Includes two Cloud Security features–Cloud Security Posture Management (CSPM) and Kubernetes Security Posture Management (KSPM)–that help you evaluate the services and resources in your cloud environment, such as storage, compute, IAM, and more—against security guidelines defined by the Center for Internet Security (CIS). These features help you identify and remediate configuration risks in your environment. 
 * **AI Assistant:** A generative AI-powered tool that helps with tasks like alert investigation, incident response, and query generation. It utilizes natural language processing and knowledge retrieval to provide context-aware assistance, summarize threats, suggest next steps, and automate workflows. Use AI Assistant to better understand and respond to security incidents.
 :::
-
-
-## Elastic {{observability}} 
-
-### {{observability}} overview [observability-overview]
-
-Elastic {{observability}} provides unified observability across applications and infrastructure. It combines logs, metrics, application traces, user experience data, and more into a single, integrated platform. This consolidation allows for powerful, cross-referenced analysis, enabling teams to move from detecting issues to understanding their root causes with speed and efficiency. By leveraging the search and analytics capabilities of {{es}}, it offers a holistic view of system behavior.
-
-Elastic {{observability}} embraces open standards like OpenTelemetry for flexible data collection, and offers scalable, cost-efficient data retention with tiered storage.
-
-### {{observability}} use cases [observability-use-cases]
-
-Apply {{observability}} to various scenarios to improve operational awareness and system reliability. 
-:::{dropdown} Use cases
-* **Log Monitoring and Analytics:** Centralize and analyze petabytes of log data from any source. This enables quick searching, ad-hoc queries with ES|QL, and visualization with prebuilt dashboards to diagnose issues.
-* **Application Performance Monitoring (APM):** Gain code-level visibility into application performance. By collecting and analyzing traces with native OTel support, teams can identify bottlenecks, track errors, and optimize the end-user experience.
-* **Infrastructure Monitoring:** Monitor metrics from servers, virtual machines, containers, and serverless environments with over 400 out-of-the-box integrations, including OpenTelemetry. This provides deep insights into resource utilization and overall system health.
-* **Digital Experience Monitoring:**
-  * **Real User Monitoring (RUM):** Capture and analyze data on how real users interact with web applications to improve perceived performance.
-  * **Synthetic Monitoring:** Proactively simulate user journeys and API calls to test application availability and functionality.
-  * **Uptime Monitoring:** Continuously check the status of services and applications to ensure they are available.
-* **Universal Profiling:** Gain visibility into system performance and identify expensive lines of code without application instrumentation, helping to increase CPU efficiency and reduce cloud spend.
-* **LLM Observability:** Gain deep insights into the performance, usage, and costs of Large Language Model (LLM) prompts and responses.
-* **Incident Response and Management:** Facilitate the investigation of operational incidents by correlating data from multiple sources, which accelerates root cause analysis and resolution.
-:::
-
-### {{observability}} core concepts [observability-concepts]
-At the heart of Elastic {{observability}} are several key concepts that enable its capabilities. 
-
-:::{dropdown} Concepts
-* The three pillars of {{observability}} are: 
-  * **Logs:** Timestamped records of events that provide detailed, contextual information.
-  * **Metrics:** Numerical measurements of system performance and health over time.
-  * **Traces:** A representation of the end-to-end journey of a request as it travels through a distributed system.
-* **OpenTelemetry:** {{Observability}} offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the Elastic Distribution of OpenTelemetry (EDOT).
-* **AIOps and AI Assistant:** Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config anomaly detection, pattern analysis, and the ability to surface correlations and root causes.
-* **Alerting and Cases:** A built-in feature for creating rules to detect complex conditions and trigger actions. It allows teams to stay aware of potential issues and use Cases to track investigation details, assign tasks, and collaborate on resolutions.
-* **Service Level Objectives (SLOs):** A framework for defining and monitoring the reliability of a service. Elastic Observability allows for creating and tracking SLOs to ensure that performance targets are being met.
-:::
-
 
 <!--TBD: Call out how solutions map to Serverless project types? -->
 <!-- Content moved from the-stack.md

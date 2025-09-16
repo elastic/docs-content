@@ -9,7 +9,7 @@ Our documentation is organized to guide you through your journey with Elastic, f
 
 Here is a detailed breakdown of the documentation structure:
 
-* [**Elastic fundamentals**](/get-started/index.md): Understand the basics about the deployment options, platform, and solutions, and features of the documentation.  
+* [**Elastic fundamentals**](/get-started/index.md): Understand the basics about the deployment options, platform, solutions, and features of the documentation.  
 * [**Solutions and use cases**](/solutions/index.md): Learn use cases, evaluate, and implement Elastic's solutions: Observability, Search, and Security.  
 * [**Manage data**](/manage-data/index.md): Learn about data store primitives, ingestion and enrichment, managing the data lifecycle, and migrating data.  
 * [**Explore and analyze**](/explore-analyze/index.md): Get value from data through querying, visualization, machine learning, and alerting.  
@@ -18,16 +18,16 @@ Here is a detailed breakdown of the documentation structure:
 * [**Troubleshoot**](/troubleshoot/index.md): Identify and resolve problems.  
 * [**Extend and contribute**](/extend/index.md): How to contribute to or integrate with Elastic, from open source to plugins to integrations.  
 * [**Release notes**](/release-notes/index.md): Contains release notes and changelogs for each new release.  
-* [**Reference**](/reference/index.md): Reference material for core tasks and manuals for optional products.
+* [**Reference**](/reference/index.md): Reference material for core tasks and manuals for other Elastic products.
 
 ## Applicability badges
 
-Because Elastic products can be deployed in different ways (like on {{ecloud}} or in your own data center) and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
+Because you can deploy Elastic products in different ways (like on {{ecloud}} or in your own data center) and have different versions, not all documentation applies to every user. To help you quickly see if a topic is relevant to your situation, we use **applicability badges**.
 
 These badges appear at the top of a page or section and tell you which products, deployment models, and versions the content applies to. They also indicate the maturity level of a feature, such as **beta**, **technical preview**, or **generally available (GA)**. This system ensures that you can identify content specific to your environment and version.
 
 :::{tip}
-An {{stack}} badge indicates that a page applies to [{{stack}}](/get-started/the-stack.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it will have both {{serverless-short}} and Stack badges.
+A **Stack** badge indicates that a page applies to [{{stack}}](/get-started/the-stack.md) components across all deployment options except {{serverless-full}}. If a page applies to all deployment options, it will have **{{serverless-short}}** and Stack badges.
 :::
 
 ## Page options
@@ -35,7 +35,7 @@ An {{stack}} badge indicates that a page applies to [{{stack}}](/get-started/the
 On each documentation page, you'll find several links that allow you to interact with the content:
 
 * **View as Markdown**: This link shows you the raw Markdown source code for the page you're viewing. This can be helpful if you want to reuse the source or feed the document to AI.  
-* **Edit this page**: Selecting this link will take you directly to the page's source file in our GitHub repository. From there, you can propose edits, which our team will review.  
+* **Edit this page**: Selecting this link will take you directly to the page's source file in its GitHub repository. From there, you can propose edits, which our team will review.  
 * **Report an issue**: If you've found a problem, like a typo, a technical error, or confusing content, but don't want to edit the page yourself, use this link. It will open a new issue in our GitHub repository, pre-filled with information about the page you were on, so you can describe the problem in detail.
 
 ## Versioned documentation
