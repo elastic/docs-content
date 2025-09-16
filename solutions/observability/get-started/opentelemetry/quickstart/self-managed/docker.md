@@ -97,13 +97,13 @@ docker compose up -d
 To collect telemetry from applications and use the EDOT Collector as a gateway,
 instrument your target applications following the setup instructions:
 
-- [Android](apm-agent-android://reference/index.md)
-- [.NET](elastic-otel-dotnet://reference/setup/index.md)
-- [iOS](apm-agent-ios://reference/index.md)
-- [Java](elastic-otel-java://reference/setup/index.md)
-- [Node.js](elastic-otel-node://reference/setup/index.md)
-- [PHP](elastic-otel-php://reference/setup/index.md)
-- [Python](elastic-otel-python://reference/setup/index.md)
+- [Android](apm-agent-android://reference/edot-android/index.md)
+- [.NET](elastic-otel-dotnet://reference/edot-dotnet/setup/index.md)
+- [iOS](apm-agent-ios://reference/edot-ios/index.md)
+- [Java](elastic-otel-java://reference/edot-java/setup/index.md)
+- [Node.js](elastic-otel-node://reference/edot-node/setup/index.md)
+- [PHP](elastic-otel-php://reference/edot-php/setup/index.md)
+- [Python](elastic-otel-python://reference/edot-python/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 ::::

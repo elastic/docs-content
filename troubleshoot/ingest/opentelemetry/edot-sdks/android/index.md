@@ -17,7 +17,7 @@ mapped_pages:
 
 # Troubleshooting the EDOT Android SDK
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](opentelemetry://reference/edot-sdks/android/getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](apm-agent-android://reference/edot-android/getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/apm-agent-android/issues).
 
@@ -25,11 +25,11 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 The SDK creates logs that allow you to see what it's working on and what might have failed at some point. You can find the logs in [logcat](https://developer.android.com/studio/debug/logcat), filtered by the tag `ELASTIC_AGENT`.
 
-For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](opentelemetry://reference/edot-sdks/android/configuration.md#internal-logging-policy) configuration.
+For more information about the SDK's internal logs, as well as how to configure them, refer to the [internal logging policy](apm-agent-android://reference/edot-android/configuration.md#internal-logging-policy) configuration.
 
 ## Connectivity to the {{stack}}
 
-If after following the [getting started](opentelemetry://reference/edot-sdks/android/getting-started.md) guide and configuring your {{stack}} [endpoint parameters](opentelemetry://reference/edot-sdks/android/configuration.md#export-connectivity), you can't see your application's data in {{kib}}, you can follow the following tips to try and figure out what could be wrong.
+If after following the [getting started](apm-agent-android://reference/edot-android/getting-started.md) guide and configuring your {{stack}} [endpoint parameters](apm-agent-android://reference/edot-android/configuration.md#export-connectivity), you can't see your application's data in {{kib}}, you can follow the following tips to try and figure out what could be wrong.
 
 ### Check out the logs
 

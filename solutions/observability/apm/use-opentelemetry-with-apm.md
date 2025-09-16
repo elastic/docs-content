@@ -31,11 +31,11 @@ With an [Elastic Distribution of OpenTelemetry language SDK](opentelemetry://ref
 
 To set up OpenTelemetry with Elastic, refer to these guides for each language:
 
-* [**Elastic Distribution of OpenTelemetry Java**](opentelemetry://reference/edot-sdks/java/index.md)
-* [**Elastic Distribution of OpenTelemetry .NET**](opentelemetry://reference/edot-sdks/dotnet/index.md)
-* [**Elastic Distribution of OpenTelemetry Node.js**](opentelemetry://reference/edot-sdks/nodejs/index.md)
-* [**Elastic Distribution of OpenTelemetry Python**](opentelemetry://reference/edot-sdks/python/index.md)
-* [**Elastic Distribution of OpenTelemetry PHP**](opentelemetry://reference/edot-sdks/php/index.md)
+* [**Elastic Distribution of OpenTelemetry Java**](elastic-otel-java://reference/edot-java/index.md)
+* [**Elastic Distribution of OpenTelemetry .NET**](elastic-otel-dotnet://reference/edot-dotnet/index.md)
+* [**Elastic Distribution of OpenTelemetry Node.js**](elastic-otel-node://reference/edot-node/index.md)
+* [**Elastic Distribution of OpenTelemetry Python**](elastic-otel-python://reference/edot-python/index.md)
+* [**Elastic Distribution of OpenTelemetry PHP**](elastic-otel-php://reference/edot-php/index.md)
 
 ::::{important}
 For a complete overview of OpenTelemetry and Elastic, explore [**Elastic Distributions of OpenTelemetry**](opentelemetry://reference/index.md).
