@@ -1,6 +1,6 @@
 ---
 navigation_title: Docker
-description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{ech}} to collect host metrics, logs and application traces.
+description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
 applies_to:
   stack:
   deployment:
