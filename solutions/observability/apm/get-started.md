@@ -5,8 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -15,7 +15,7 @@ products:
 
 # Get started with traces and APM [apm-getting-started-apm-server]
 
-Elastic APM receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents. 
+Elastic APM receives performance data from your APM agents, validates and processes it, and then transforms the data into {{es}} documents.
 
 In this guide you’ll learn how to collect and send Application Performance Monitoring (APM) data to Elastic, then explore and visualize the data in real time.
 

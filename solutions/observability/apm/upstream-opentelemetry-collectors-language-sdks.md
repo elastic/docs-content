@@ -3,28 +3,28 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-direct.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry-opentelemetry-native-support.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
   - id: cloud-serverless
 ---
 
-# Upstream OpenTelemetry Collectors and language SDKs [apm-open-telemetry-direct]
+# Contrib OpenTelemetry Collectors and language SDKs [apm-open-telemetry-direct]
 
 The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means logs, metrics, and trace data collected from your applications and infrastructure can be sent directly to the {{stack}}.
 
-* Send data to Elastic from an upstream [OpenTelemetry Collector](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-connect-open-telemetry-collector)
-* Send data to Elastic from an upstream [OpenTelemetry language SDK](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel)
+* Send data to Elastic from a contrib [OpenTelemetry Collector](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-connect-open-telemetry-collector)
+* Send data to Elastic from a contrib [OpenTelemetry language SDK](/solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md#apm-instrument-apps-otel)
 
 To compare approaches and choose the best approach for your use case, refer to [OpenTelemetry](/solutions/observability/apm/use-opentelemetry-with-apm.md).
 
 ::::{important}
-The Elastic Distribution of OpenTelemetry Collector (EDOT Collector) include additional features and configurations to seamlessly integrate with Elastic. Refer to [EDOT compared to upstream OpenTelemetry](opentelemetry:///reference/compatibility/edot-vs-upstream.md) for a comparison.
+The Elastic Distribution of OpenTelemetry Collector (EDOT Collector) include additional features and configurations to seamlessly integrate with Elastic. Refer to [EDOT compared to contrib OpenTelemetry](opentelemetry:///reference/compatibility/edot-vs-upstream.md) for a comparison.
 ::::
 
-## Send data from an upstream OpenTelemetry Collector [apm-connect-open-telemetry-collector]
+## Send data from a contrib OpenTelemetry Collector [apm-connect-open-telemetry-collector]
 
 Connect your OpenTelemetry Collector instances to Elastic {{observability}} or {{obs-serverless}} using the OTLP exporter:
 
@@ -147,10 +147,10 @@ You’re now ready to export traces and metrics from your services and applicati
 When using the OpenTelemetry Collector, send data through the [`OTLP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter). Using other methods, like the [`elasticsearch` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter), bypasses all of the validation and data processing that Elastic performs. In addition, your data will not be viewable in your Observability project if you use the `elasticsearch` exporter.
 ::::
 
-## Send data from an upstream OpenTelemetry SDK [apm-instrument-apps-otel]
+## Send data from a contrib OpenTelemetry SDK [apm-instrument-apps-otel]
 
 ::::{note}
-The following instructions show how to send data directly from an upstream OpenTelemetry SDK to Elastic, which is appropriate when getting started. However, sending data from an OpenTelemetry SDK to the OpenTelemetry Collector is preferred, as the Collector processes and exports data to Elastic. Read more about when and how to use a collector in the [OpenTelemetry documentation](https://opentelemetry.io/docs/collector/#when-to-use-a-collector).
+The following instructions show how to send data directly from a contrib OpenTelemetry SDK to Elastic, which is appropriate when getting started. However, sending data from an OpenTelemetry SDK to the OpenTelemetry Collector is preferred, as the Collector processes and exports data to Elastic. Read more about when and how to use a collector in the [OpenTelemetry documentation](https://opentelemetry.io/docs/collector/#when-to-use-a-collector).
 ::::
 
 To export traces and metrics to Elastic, instrument your services and applications with the OpenTelemetry API, SDK, or both. For example, if you are a Java developer, you need to instrument your Java app with the [OpenTelemetry agent for Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation). See the [OpenTelemetry Instrumentation guides](https://opentelemetry.io/docs/instrumentation/) to download the OpenTelemetry agent or SDK for your language.
@@ -174,7 +174,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
      com.mycompany.checkout.CheckoutServiceServer
 ```
 
-1. The OpenTelemetry logs intake via APM Server is currently in technical preview. {applies_to}`product: preview`
+1. The OpenTelemetry logs intake through the APM Server is currently in technical preview. {applies_to}`product: preview`
 
 `OTEL_RESOURCE_ATTRIBUTES`
 :   Fields that describe the service and the environment that the service runs in. See [attributes](/solutions/observability/apm/attributes.md) for more information.
@@ -215,7 +215,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
      com.mycompany.checkout.CheckoutServiceServer
 ```
 
-1. The OpenTelemetry logs intake via Elastic is currently in technical preview. {applies_to}`product: preview`
+1. The OpenTelemetry logs intake through Elastic is currently in technical preview. {applies_to}`product: preview`
 
 `OTEL_RESOURCE_ATTRIBUTES`
 :   Fields that describe the service and the environment that the service runs in. See [attributes](/solutions/observability/apm/attributes.md) for more information.
@@ -262,7 +262,7 @@ Many L7 load balancers handle HTTP and gRPC traffic separately and rely on expli
 * Use the `otlp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "GRPC"` on the K8s Ingress object proxying to APM Server.
 * Use the `otlphttp` exporter in the EDOT collector. Set annotation `nginx.ingress.kubernetes.io/backend-protocol: "HTTP"` (or `"HTTPS"` if APM Server expects TLS) on the K8s Ingress object proxying to APM Server.
 
-The preferred approach is to deploy a L4 (TCP) load balancer (e.g. [NLB](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html) on AWS) in front of APM Server, which forwards raw TCP traffic transparently without protocol inspection.
+The preferred approach is to deploy a L4 (TCP) load balancer (for example, [NLB](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html) on AWS) in front of APM Server, which forwards raw TCP traffic transparently without protocol inspection.
 
 For more information on how to configure an AWS ALB to support gRPC, see this AWS blog post: [Application Load Balancer Support for End-to-End HTTP/2 and gRPC](https://aws.amazon.com/blogs/aws/new-application-load-balancer-support-for-end-to-end-http-2-and-grpc/).
 
