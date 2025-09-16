@@ -35,8 +35,6 @@ A valuable strategy known as load balancing helps to mitigate this bursty nature
 CPU and memory boundedness often interact in important ways. If CPU-bound activity is reaching it's limit memory pressure will likely increase as {{kib}} has less time for activities like garbage collection. If memory-bound activity is reaching it's limit there may be more CPU work to free claimed memory, increasing CPU pressure.
 ::::
 
-Please note, there is a [separate guide for sizing Kibana for reporting use cases](./kibana-reporting-production-considerations.md).
-
 ### Answer the following questions before scaling Kibana up or down [_before_sizing_kibana]
 
 #### Is the {{es}} cluster correctly sized?
