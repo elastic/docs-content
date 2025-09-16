@@ -19,7 +19,7 @@ You can use the [guided onboarding](#deploy-using-the-guided-onboarding) or [dep
 
 ## Deploy using the guided onboarding
 
-The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](/deploy-manage/api-keys/elasticsearch-api-keys.md) and the needed [Integrations](https://www.elastic.co/docs/current/en/integrations) in the background.
+The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](/deploy-manage/api-keys/elasticsearch-api-keys.md) and the needed [Integrations](integrations-docs://reference/index.md) in the background.
 
 Follow these steps to use the guided onboarding:
 
