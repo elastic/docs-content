@@ -8,13 +8,14 @@ products:
   - id: elasticsearch
 ---
 
-# Tutorial: Update existing data stream [tutorial-manage-existing-data-stream]
+# Tutorial: Update the lifecycle of a data stream [tutorial-manage-existing-data-stream]
 
-To update the lifecycle of an existing data stream, perform the following actions:
+Follow these steps to configure or remove data stream lifecycle settings for an existing, individual data stream:
 
-1. [Set a data stream’s lifecycle](#set-lifecycle)
-2. [Remove lifecycle for a data stream](#delete-lifecycle)
+- [Set a data stream’s lifecycle](#set-lifecycle)
+- [Remove the lifecycle for a data stream](#delete-lifecycle)
 
+Note that these steps are for data stream lifecycle only. For the steps to configure {{ilm}}, refer to the [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md). For a comparison between the two, refer to [](/manage-data/lifecycle.md).
 
 ## Set a data stream’s lifecycle [set-lifecycle] 
 
@@ -143,7 +144,7 @@ The response will look like:
 :::
 :::::
 
-## Remove lifecycle for a data stream [delete-lifecycle] 
+## Remove the lifecycle for a data stream [delete-lifecycle] 
 
 To remove the lifecycle of a data stream you can use the **Index Management** tools in {{kib}} or the {{es}} [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle). 
 
