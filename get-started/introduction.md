@@ -25,13 +25,13 @@ Check out our [customer success stories](https://www.elastic.co/customers/succes
 
 Each of our solutions is available as a fully managed {{serverless-short}} project or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options. 
 
-## Elasticsearch
+## {{es}}
 
 ### {{es}} overview [search-overview]
 
 {{es}} is an open-source, distributed search and analytics engine built on Apache Lucene, used for high-performance full-text search, log analytics, business analytics, and operational intelligence. It stores data in JSON documents, provides REST APIs for easy interaction, and functions as a NoSQL database that enables fast searches, analytics, and AI-driven applications. Built on Apache Lucene, {{es}} is the core of the Search AI platform. 
 
-### Elasticsearch use cases [search-use-cases]
+### {{es}} use cases [search-use-cases]
 Use {{es}} for a wide range of business needs.   
 
 :::{dropdown} Use cases
@@ -63,15 +63,15 @@ Before you decide what type of search to use with {{es}} or bring in your data, 
 
 ::::
 
-## Elastic Security
+## {{elastic-sec}}
 
-### {{elastic-sec}} overview [security-overview]
+### Security overview [security-overview]
 
 {{elastic-sec}} is a unified security solution that integrates SIEM (Security Information and Event Management), endpoint security, and cloud security into a single platform so you can detect, prevent, and respond to cyber threats across your entire environment in near real time. Elastic Security leverages {{es}}'s powerful platform for its searching and analytic capabilities, and {{kib}} for its visualization features. By combining prevention, detection, and response capabilities, {{elastic-sec}} helps your organization reduce the risk of successful attacks. 
 
 Install {{elastic-sec}} on one of our Elastic-managed Cloud deployments or your own self-managed infrastructure.  
 
-### {{elastic-sec}} use cases [security-use-cases]
+### Security use cases [security-use-cases]
 
 Use {{elastic-sec}} for numerous security needs to ensure your systems are protected from the latest threats.
 
@@ -89,38 +89,38 @@ Use {{elastic-sec}} for numerous security needs to ensure your systems are prote
   * **Vulnerability Management:** Uncover vulnerabilities within your cloud infrastructure.
 :::
 
-### Elastic Security core concepts [security-concepts]
+### Security core concepts [security-concepts]
 
 Before diving into setup and configuration, familiarize yourself with the foundational terms and core concepts that power {{elastic-sec}}. 
 
 :::{dropdown} Concepts 
 
-* {{agent}}: A single, unified way to add monitoring for logs, metrics, and other types of data to a host. Elastic Agent can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. 
-* {{elastic-defend}}: {{elastic-sec}}'s Endpoint Detection and Response (EDR) tool that protects endpoints from malicious activity. {{elastic-defend}} uses a combination of techniques like machine learning, behavioral analysis, and prebuilt rules to detect, prevent, and respond to threats in real-time.
-* {{elastic-endpoint}}: The installed component that performs {{elastic-defend}}'s threat monitoring and prevention capabilities. 
-* Detection engine: The framework that detects threats by using rules to search for suspicious events in data sources and generating alerts when those rules meet the defined criteria.  
-* Detection rules: Sets of conditions that identify potential threats and malicious activities. Rules analyze various data sources, including logs and network traffic, to detect anomalies, suspicious behaviors, or known attack patterns. {{elastic-sec}} ships out-of-the-box prebuilt rules, or you can create your own custom rules. 
-* Alerts: A notification that's generated when a rule’s criteria are met. You can then investigate an alert to dive into deeper details.  
-* Machine learning and anomaly detection: Anomaly detection jobs identify anomalous events or patterns in your data. Use these with machine learning detection rules to generate alerts when behavior deviates from normal activity.
-* Entity analytics: A threat detection feature that combines the power of Elastic’s detection engine and machine learning capabilities to identify unusual user behaviors across hosts, users, and services. Entity analytics uses a risk scoring engine to calculate a risk score, which is evaluated at a recurring interval. 
-* Cases: A tool that allows you to collect and share information about security issues. Opening a case lets you track key investigation details and collect alerts in a central location. You can also send cases to external systems.
-* Timeline: A threat hunting tool that allows you to investigate security events so you can gather and analyze data related to alerts or suspicious activity. You can add events to Timeline from various sources, build custom queries, and import/export a Timeline to collaborate and share. 
-* Security posture management: Includes two Cloud Security features–Cloud Security Posture Management (CSPM) and Kubernetes Security Posture Management (KSPM)--that help you evaluate the services and resources in your cloud environment, such as storage, compute, IAM, and more — against security guidelines defined by the Center for Internet Security (CIS). These features help you identify and remediate configuration risks in your environment. 
-* AI Assistant: A generative AI-powered tool that helps with tasks like alert investigation, incident response, and query generation. It utilizes natural language processing and knowledge retrieval to provide context-aware assistance, summarize threats, suggest next steps, and automate workflows. Use AI Assistant to better understand and respond to security incidents.
+* **{{agent}}:** A single, unified way to add monitoring for logs, metrics, and other types of data to a host. Elastic Agent can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. 
+* **{{elastic-defend}}:** {{elastic-sec}}'s Endpoint Detection and Response (EDR) tool that protects endpoints from malicious activity. {{elastic-defend}} uses a combination of techniques like machine learning, behavioral analysis, and prebuilt rules to detect, prevent, and respond to threats in real-time.
+* **{{elastic-endpoint}}:** The installed component that performs {{elastic-defend}}'s threat monitoring and prevention capabilities. 
+* **Detection engine:** The framework that detects threats by using rules to search for suspicious events in data sources and generating alerts when those rules meet the defined criteria.  
+* **Detection rules:** Sets of conditions that identify potential threats and malicious activities. Rules analyze various data sources, including logs and network traffic, to detect anomalies, suspicious behaviors, or known attack patterns. {{elastic-sec}} ships out-of-the-box prebuilt rules, or you can create your own custom rules. 
+* **Alerts:** A notification that's generated when a rule’s criteria are met. You can then investigate an alert to dive into deeper details.  
+* **Machine learning and anomaly detection:** Anomaly detection jobs identify anomalous events or patterns in your data. Use these with machine learning detection rules to generate alerts when behavior deviates from normal activity.
+* **Entity analytics:** A threat detection feature that combines the power of Elastic’s detection engine and machine learning capabilities to identify unusual user behaviors across hosts, users, and services. Entity analytics uses a risk scoring engine to calculate a risk score, which is evaluated at a recurring interval. 
+* **Cases:** A tool that allows you to collect and share information about security issues. Opening a case lets you track key investigation details and collect alerts in a central location. You can also send cases to external systems.
+* **Timeline:** A threat hunting tool that allows you to investigate security events so you can gather and analyze data related to alerts or suspicious activity. You can add events to Timeline from various sources, build custom queries, and import/export a Timeline to collaborate and share. 
+* **Security posture management:** Includes two Cloud Security features–Cloud Security Posture Management (CSPM) and Kubernetes Security Posture Management (KSPM)–that help you evaluate the services and resources in your cloud environment, such as storage, compute, IAM, and more—against security guidelines defined by the Center for Internet Security (CIS). These features help you identify and remediate configuration risks in your environment. 
+* **AI Assistant:** A generative AI-powered tool that helps with tasks like alert investigation, incident response, and query generation. It utilizes natural language processing and knowledge retrieval to provide context-aware assistance, summarize threats, suggest next steps, and automate workflows. Use AI Assistant to better understand and respond to security incidents.
 :::
 
 
 ## Elastic {{observability}} 
 
-### Elastic {{observability}} overview [observability-overview]
+### {{observability}} overview [observability-overview]
 
 Elastic {{observability}} provides unified observability across applications and infrastructure. It combines logs, metrics, application traces, user experience data, and more into a single, integrated platform. This consolidation allows for powerful, cross-referenced analysis, enabling teams to move from detecting issues to understanding their root causes with speed and efficiency. By leveraging the search and analytics capabilities of {{es}}, it offers a holistic view of system behavior.
 
 Elastic {{observability}} embraces open standards like OpenTelemetry for flexible data collection, and offers scalable, cost-efficient data retention with tiered storage.
 
-### Elastic {{observability}} use cases [observability-use-cases]
+### {{observability}} use cases [observability-use-cases]
 
-Apply Elastic {{observability}} to various scenarios to improve operational awareness and system reliability. 
+Apply {{observability}} to various scenarios to improve operational awareness and system reliability. 
 :::{dropdown} Use cases
 * **Log Monitoring and Analytics:** Centralize and analyze petabytes of log data from any source. This enables quick searching, ad-hoc queries with ES|QL, and visualization with prebuilt dashboards to diagnose issues.
 * **Application Performance Monitoring (APM):** Gain code-level visibility into application performance. By collecting and analyzing traces with native OTel support, teams can identify bottlenecks, track errors, and optimize the end-user experience.
@@ -134,18 +134,18 @@ Apply Elastic {{observability}} to various scenarios to improve operational awar
 * **Incident Response and Management:** Facilitate the investigation of operational incidents by correlating data from multiple sources, which accelerates root cause analysis and resolution.
 :::
 
-### Elastic {{observability}} core concepts [observability-concepts]
+### {{observability}} core concepts [observability-concepts]
 At the heart of Elastic {{observability}} are several key concepts that enable its capabilities. 
 
 :::{dropdown} Concepts
 * The three pillars of {{observability}} are: 
-  * Logs: Timestamped records of events that provide detailed, contextual information.
-  * Metrics: Numerical measurements of system performance and health over time.
-  * Traces: A representation of the end-to-end journey of a request as it travels through a distributed system.
-* OpenTelemetry: Elastic Observability offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the Elastic Distribution of OpenTelemetry (EDOT).
-* AIOps and AI Assistant: Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config anomaly detection, pattern analysis, and the ability to surface correlations and root causes.
-* Alerting and Cases: A built-in feature for creating rules to detect complex conditions and trigger actions. It allows teams to stay aware of potential issues and use Cases to track investigation details, assign tasks, and collaborate on resolutions.
-* Service Level Objectives (SLOs): A framework for defining and monitoring the reliability of a service. Elastic Observability allows for creating and tracking SLOs to ensure that performance targets are being met.
+  * **Logs:** Timestamped records of events that provide detailed, contextual information.
+  * **Metrics:** Numerical measurements of system performance and health over time.
+  * **Traces:** A representation of the end-to-end journey of a request as it travels through a distributed system.
+* **OpenTelemetry:** {{Observability}} offers first-class, production-grade support for OpenTelemetry. This allows organizations to use vendor-neutral instrumentation and stream native OTel data without proprietary agents, leveraging the Elastic Distribution of OpenTelemetry (EDOT).
+* **AIOps and AI Assistant:** Leverages predictive analytics and an LLM-powered AI Assistant to reduce the time required to detect, investigate, and resolve incidents. This includes zero-config anomaly detection, pattern analysis, and the ability to surface correlations and root causes.
+* **Alerting and Cases:** A built-in feature for creating rules to detect complex conditions and trigger actions. It allows teams to stay aware of potential issues and use Cases to track investigation details, assign tasks, and collaborate on resolutions.
+* **Service Level Objectives (SLOs):** A framework for defining and monitoring the reliability of a service. Elastic Observability allows for creating and tracking SLOs to ensure that performance targets are being met.
 :::
 
 

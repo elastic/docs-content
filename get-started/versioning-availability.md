@@ -107,7 +107,7 @@ Understanding versioning is essential for [upgrade planning](/deploy-manage/upgr
 
 ## Availability of features
 
-Features available to you can differ based on deployment type, product lifecycle stage, and specific version.
+Available features can differ based on deployment type, product lifecycle stage, and specific version.
 
 ### Feature availability factors
 
@@ -122,11 +122,11 @@ Features available to you can differ based on deployment type, product lifecycle
 | Lifecycle state | Description |
 | ----- | ----- |
 | Technical preview | Feature is in early development stage |
-| Beta | Feature is nearing general availability but not yet production-ready |
+| Beta | Feature is nearing general availability, but not yet production ready |
 | Generally Available (GA) | Production-ready feature. When unspecified, GA is the default |
-| Deprecated | Feature is still usable but is set to be removed or replaced in a future update |
+| Deprecated | Feature is still usable, but is planned to be removed or replaced in a future update |
 | Removed | Feature can no longer be used |
-| Unavailable | Feature is not supported in this deployment type or version |
+| Unavailable | Feature is unsupported in this deployment type or version |
 
 ### Examples of where availability can vary
 
