@@ -61,12 +61,12 @@ The API key created previously will be used by the local deployment to authentic
     On the **Hosted deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the navigation menu, select **Security**.
-4. Locate **Remote connections** and select **Add API key**.
+4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
 
     1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
 
@@ -143,7 +143,9 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
+    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
+
+      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
     * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
 
       ::::{tip}
@@ -192,6 +194,10 @@ PUT /_cluster/settings
   }
 }
 ```
+
+::::{note}
+When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
+::::
 
 ### Using the {{ecloud}} RESTful API [ec_using_the_elasticsearch_service_restful_api_2]
 
