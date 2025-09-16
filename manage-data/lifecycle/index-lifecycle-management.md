@@ -20,9 +20,9 @@ products:
 * Create a new index each day, week, or month and archive previous ones
 * Delete stale indices to enforce data retention standards
 
-    ::::{important}
-    To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
-    ::::
+::::{important}
+To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
+::::
 
 ## {{ilm-init}} availability
 
