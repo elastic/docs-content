@@ -120,16 +120,16 @@ stack: ga 9.2
 serverless: ga
 ```
 
-Conversations that you start with AI Assistant are invisible by default for other members of your team. You can share them either with specific teammates or with everyone with access to the environment. 
+Conversations that you start with AI Assistant are private by default and not visible to other members of your team. You have two ways to share conversations - either with selected members or more broadly to everyone with access to the space.
 
-There are several ways to share a conversation: 
+To share a conversation, do one of the following:
 
-- Click the **Private** / **Shared** / **Restricted** badge next to the conversation's title. Use the dropdown menu to define the chat's sharing behavior. If you select **Restricted**, a modal appears where you can select which users have access.
+- Click the **Private** / **Shared** / **Restricted** badge next to the conversation's title. Use the dropdown menu to define the chat's visibility. If you select **Restricted**, a modal appears where you can select which users have access.
   ::::{image} /solutions/images/ai-assistant-shared-status-badge.png
   :alt: AI Assistant chat with the sharing status dropdown open
   :screenshot:
   ::::
-- Go to **AI Assistant settings -> Conversations** to view all conversations you've started. Update their sharing settings as desired.
+- Go to **AI Assistant settings -> Conversations** to view all conversations you've started. Update their visibility as desired.
 
 
 Once a conversation is shared, you can copy its URL to easily link it to your team:
@@ -354,7 +354,7 @@ The **Security AI settings** page provides a range of configuration options for 
 
 It has the following tabs:
 
-* **Conversations:** The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. After the streaming setting is a list of all saved conversations. From here you can change their sharing settings, system prompt, and connector.
+* **Conversations:** The **Streaming** setting controls whether AI Assistant’s responses appear word-by-word (streamed), or as a complete block of text. After the streaming setting is a list of all saved conversations. From here you can change their visibility, system prompt, and connector.
 * **Connectors:** Manage all LLM connectors.
 * **System Prompts:** Edit existing System Prompts or create new ones. To create a new System Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the System Prompt’s text. Under **Contexts**, select where the System Prompt should appear.
 * **Quick Prompts:** Modify existing Quick Prompts or create new ones. To create a new Quick Prompt, type a unique name in the **Name** field, then press **enter**. Under **Prompt**, enter or update the Quick Prompt’s text.
@@ -369,7 +369,7 @@ To adjust the settings for a specific chat, click the **Conversation settings** 
 :screenshot:
 ::::
 
-The **Copy URL** and **Duplicate** buttons allow you to share conversations (by sending their URL) and to continue conversations that were shared with you (by duplicating them). The **Delete** option appears for the conversation owner only and allows you to remove a saved conversation.
+The **Copy URL** and **Duplicate** options allow you to share conversations (by sending their URL) and to continue conversations that were shared with you (by duplicating them). The **Delete** option appears for the conversation owner only and allows you to remove a saved conversation.
 
 Settings in the **Chat options** section affect display-only user settings: whether to show or hide anonymized values, and whether to include citations. When citations are enabled, AI Assistant will refer you to information sources including data you've shared with it, information you've added to the [knowledge base](/solutions/security/ai/ai-assistant-knowledge-base.md), and content from Elastic's Security Labs and [product documentation](/solutions/security/ai/ai-assistant-knowledge-base.md#elastic-docs).
 
