@@ -49,9 +49,13 @@ In user interfaces like Dashboards or Discover one can see the full query that {
 
 ### A simple sizing strategy
 
-As a general starting point, {{kib}} on **1 CPU** and **1.5GB** of memory should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards. If you are experiencing performance issues, doubling the provisioned resources per 10 concurrent users is a simple and safe strategy for ensuring {{kib}} is not resource starved.
+If you know max number of expected concurrent users start {{kib}} on **1 CPU** and **1.5GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards. If you are experiencing performance issues, adding an additional **0.5 CPUs** and **1.5GB** per 10 concurrent should ensure {{kib}} is not resource starved for common analytics usage.
 
-**{{ece}}, {{ech}} and {{eck}}** users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. Note: size increments will be predetermined and
+::::{important}
+This advice does not apply to scaling {{kib}} for task manager. If you intend to use {{kib}} alerting capabilites see [task manager scaling guidance](./kibana-task-manager-scaling-considerations.md).
+::::
+
+**{{ece}}, {{ech}} and {{eck}}** users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. Note: size increments are predetermined and may not fit this simple sizing strategy exactly.
 
 **Self-managed** users must provision memory to the host that {{kib}} is running on as well as configure allocated heap, see [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md). **Note:** Node.js suggests allocating 80% of available host memory to heap, assuming that Kibana is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example: allowing for HTTP sockets to allocated.
 
@@ -70,14 +74,16 @@ In order to understand the impact of your usage patterns on **a {{kib}} instance
 The rest of this guide will assume you have visibility into the following important metrics for a {{kib}} instance:
 
 1. Event loop delay (ELD) in milliseconds - this is a Node.js concept that roughly translates to: the number of milliseconds by which processing of events is delayed due to CPU intensive activities
-2. Memory size in bytes - the amount of bytes currently on the heap
+2. Heap size in bytes - the amount of bytes currently held in memory dedicated to {{kib}}'s heap space
 3. HTTP connections - the number of sockets that the Kibana server has open
 
 ##### CPU [kibana-traffic-load-cpu-sizing]
 
 Event loop delay (ELD) is an important metric for understanding whether Kibana is engaged in CPU-bound activity.
 
-**As a general target ELD should be below 200ms 95% of the time**. Higher delays may mean {{kib}} is CPU starved. Sporadic increases above 200ms may mean that Kibana is periodically processing CPU intensive activities like large responses from Elasticsearch. It is important to consider the impact of ELD on user experience. If users are able to use {{kib}} without the frustration that comes from a blocked CPU provisioning additional CPU resources will not be impactful. However, monitoring ELD over time is a solid strategy for ensuring your Kibana is not exhausting CPU resources.
+**As a general target ELD should be below 200ms 95% of the time**. Higher delays may mean {{kib}} is CPU starved. Sporadic increases above 200ms may mean that Kibana is periodically processing CPU intensive activities like large responses from Elasticsearch whereas consistently high ELD may mean Kibana is struggling to service tasks and requests.
+
+Consider the impact of ELD on user experience. If users are able to use {{kib}} without the frustration that comes from a blocked CPU provisioning additional CPU resources will not be impactful. Monitoring ELD over time is a solid strategy for knowing when additional CPU resource is needed.
 
 **{{ece}}, {{ech}} and {{eck}}** users can adjust {{kib}}'s CPU and memory by viewing their deployment and editing the {{kib}} instance's resource configuration.
 
