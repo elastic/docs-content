@@ -40,7 +40,7 @@ To learn more about the metrics shown on this page, refer to the [Metrics refere
 If you haven’t added data yet, click **Add data → Host** and select how you want to monitor your host—OpenTelemetry or Elastic Agent.
 
 For more on collecting host data, refer to:
-* [OpenTelemetry](opentelemetry://reference/edot-collector/config/configure-metrics-collection.md#process-metrics)
+* [OpenTelemetry](elastic-agent://reference/edot-collector/config/configure-metrics-collection.md#process-metrics)
 * [Elastic System integration](integration-docs://reference/system.md)
 
 ::::
@@ -226,7 +226,7 @@ The **Metrics** tab shows host metrics organized by type and is more complete th
 :::::{dropdown} Processes
 :::{note}
 {applies_to}`{stack: "ga 9.2", serverless: "ga"}`
-To view processes for OpenTelemetry hosts, you need to configure the EDOT collector to send process metrics. Refer to [Process metrics](opentelemetry://reference/edot-collector/config/configure-metrics-collection.md#process-metrics) for more information.
+To view processes for OpenTelemetry hosts, you need to configure the EDOT collector to send process metrics. Refer to [Process metrics](elastic-agent://reference/edot-collector/config/configure-metrics-collection.md#process-metrics) for more information.
 :::
 
 The **Processes** tab lists the total number of processes (`system.process.summary.total`) running on the host, along with the total number of processes in these various states:
