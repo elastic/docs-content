@@ -8,6 +8,7 @@ applies_to:
 products:
   - id: elasticsearch
 ---
+% TODO flesh out after the rest of the section has been restructured
 
 # Downsampling a time series data stream [downsampling]
 
@@ -16,11 +17,6 @@ Downsampling reduces the footprint of your [time series data](time-series-data-s
 Metrics tools and solutions collect large amounts of time series data over time. As the data ages, it becomes less relevant to the current state of the system. You can _downsample_ older data to reduce its resolution and precision, freeing up storage space.
 
 This section explains the available downsampling options and helps you understand the process.
-
-% TODO add subsection links and conceptual links after restructuring
-
-## Next steps
-% TODO confirm patterns
 
 * [](downsampling-concepts.md)
 * [](run-downsampling.md)
