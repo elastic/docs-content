@@ -1,4 +1,5 @@
 ---
+navigation_title: Quickstart
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
 applies_to:
@@ -11,7 +12,7 @@ products:
   - id: kibana
 ---
 
-# Quickstart [tutorial-secure-access-to-kibana]
+# Quickstart: Native {{es}} user and role management [tutorial-secure-access-to-kibana]
 
 If you plan to use native {{es}} user and role management, then you can manage your users and roles completely within your {{kib}} instance. 
 
