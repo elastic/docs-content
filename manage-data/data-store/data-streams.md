@@ -13,7 +13,7 @@ products:
 
 # Data streams [data-streams]
 
-A data stream represents an index abstraction that's optimized for storing append-only time series data. It stores data across multiple backing indices while giving you a single named resource to use for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.
+A data stream acts as a layer of abstraction over a set of indices that are optimized for storing append-only time series data. It stores data across multiple backing indices while giving you a single named resource to use for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.
 
 You can submit indexing and search requests directly to a data stream. The stream automatically routes the request to backing indices that store the stream’s data. You can use [{{ilm}} ({{ilm-init}})](../lifecycle/index-lifecycle-management.md) to automate the management of these backing indices. For example, you can use {{ilm-init}} to automatically move older backing indices to less expensive hardware and delete unneeded indices. {{ilm-init}} can help you reduce costs and overhead as your data grows.
 
