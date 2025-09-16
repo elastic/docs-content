@@ -1,6 +1,6 @@
 ---
 navigation_title: Self-managed
-description: Before following the quickstart guides to setup your EDOT deployment, make sure to install your self-managed Elastic Stack.
+description: Before following the quickstart guides to set up your EDOT deployment, make sure to install your self-managed Elastic Stack.
 applies_to:
   stack:
   serverless:
