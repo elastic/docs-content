@@ -3,12 +3,12 @@ navigation_title: Hosts and VMs
 description: Learn how to set up the EDOT Collector and EDOT SDKs with Elastic Cloud Hosted to collect host metrics, logs and application traces.
 applies_to:
   stack:
-  serverless:
-    observability:
+  deployment:
+    ess: ga
   product:
     edot_collector: ga
 products:
-  - id: cloud-serverless
+  - id: cloud-hosted
   - id: observability
   - id: edot-collector
 ---
