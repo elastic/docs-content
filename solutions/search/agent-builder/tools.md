@@ -8,6 +8,10 @@ applies_to:
 
 # Tools in {{agent-builder}}
 
+:::{warning}
+WIP: this page needs better IA
+:::
+
 Agents use tools to search, retrieve, and take meaningful steps on your behalf.
 
 Tools can be thought of as functions: modular, reusable actions that agents can call to interact with your {{es}} data.
