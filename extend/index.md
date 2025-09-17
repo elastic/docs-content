@@ -51,7 +51,7 @@ For complete control and custom development, you can interact directly with Elas
 * You need to automate administrative tasks, such as creating users or managing index lifecycle policies.  
 * You are integrating Elastic's search and analytics capabilities into another platform.
 
-Ready to get started? Explore the [Elasticsearch API Reference](elasticsearch://reference/elasticsearch/rest-apis/index.md) and the [Kibana API Reference](https://www.elastic.co/docs/api/doc/kibana/).
+Ready to get started? Explore the [Elastic API Reference]({{apis}}).
 
 ## Contributing to Elastic documentation
 
