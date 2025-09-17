@@ -23,6 +23,8 @@ In this introduction to [vector search](/solutions/search/vector.md), you’ll s
   
 To learn about role-based access control, check out [](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
+To learn about {{es-serverless}} project profiles, refer to [](dense-vector.md#vector-profiles).
+
 ## Create a vector database
 
 When you create vectors (or _vectorize_ your data), you convert complex content (text, images, audio, video) into multidimensional numeric representations. These vectors are stored in specialized data structures that enable efficient similarity search and fast kNN distance calculations.
@@ -43,7 +45,8 @@ Each document in our simple data set will have:
 * An embedding of that review: stored in a `review_vector` field, which is defined as a [`dense_vector`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) data type.
 
 :::{tip}
-The `dense_vector` type automatically uses `int8_hnsw` quantization by default to reduce the memory footprint when searching float vectors. Learn how to balance performance and accuracy in [Dense vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization).
+The `dense_vector` type automatically uses quantization by default to reduce the memory footprint when searching float vectors.
+Learn more about the default quantization strategy and balancing performance and accuracy in [Dense vector field type](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md).
 :::
 
 The following API request defines the `review_text` and `review_vector` fields:
