@@ -9,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Create and manage rules with {{kib}} [create-and-manage-rules]
+# Create and manage alerting rules with {{kib}} [create-and-manage-rules]
 
 The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
 
