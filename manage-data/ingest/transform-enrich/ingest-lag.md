@@ -1,6 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/docs/manage-data/ingest/transform-enrich/calculate-ingest-lag.html
 applies_to:
   stack: ga
   serverless: ga
@@ -99,16 +97,6 @@ As discussed above `@timestamp` is set to the timestamp from within the collecte
 
 Regardless of the chosen architecture, add a `remove` processor at the end of the pipeline to drop the `_tmp` field. The raw timestamps from the various processing steps are not needed, as the latency in seconds should be sufficient. For additional pipeline architectures, refer to [Ingest architectures](../ingest-reference-architectures.md).
 
-## Logstash
-
-When Logstash is added to the architecture we must add a timestamp, this can only be done by using Ruby and the simplest form is this:
-
-```
-ruby {
-  code => "event.set('[_tmp][logstash_seen]', Time.now());"
-}
-```
-
 ### Elastic Agent to Elasticsearch
 
 Use `@timestamp` and `event.ingested` to calculate the difference. This will give you the following document. The `event.ingestion.latency` is in seconds.
@@ -156,8 +144,17 @@ POST _ingest/pipeline/_simulate
     }
 }
 ```
+### Logstash
 
-### Elastic Agent => Logstash => Elasticsearch
+When Logstash is added to the architecture we must add a timestamp, this can only be done by using Ruby and the simplest form is this:
+
+```
+ruby {
+  code => "event.set('[_tmp][logstash_seen]', Time.now());"
+}
+```
+
+#### Elastic Agent => Logstash => Elasticsearch
 
 Elastic Agent populates the `@timestamp` field, but Logstash doesn't add any timestamp by default. Add a temporary timestamp, for example by setting `_tmp.logstash_seen`. With this, you can calculate the following latency values:
 
@@ -236,7 +233,7 @@ POST _ingest/pipeline/_simulate
 }
 ```
 
-### Elastic Agent => Logstash => Kafka => Logstash => Elasticsearch
+#### Elastic Agent => Logstash => Kafka => Logstash => Elasticsearch
 
 As with the previous scenario, adding an additional hop introduces another point where latency can occur. The recommendation is to add another temporary timestamp field. For more details, refer to the previous section.
 
