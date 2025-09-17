@@ -6,7 +6,7 @@ applies_to:
 navigation_title: Security
 ---
 
-# Elastic Security reference
+# {{elastic-sec}} reference
 
 This section contains reference information for {{elastic-sec}} features, including:
 
