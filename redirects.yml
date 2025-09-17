@@ -348,3 +348,7 @@ redirects:
   'release-notes/fleet/breaking-changes.md': 'fleet-server://release-notes/breaking-changes.md'
   'release-notes/fleet/deprecations.md': 'fleet-server://release-notes/deprecations.md'
   'release-notes/fleet/known-issues.md': 'fleet-server://release-notes/known-issues.md'
+
+# Related to https://github.com/elastic/docs-content/issues/2985
+
+  'troubleshoot/observability/apm-agent-swift/apm-ios-agent.md': 'troubleshoot/ingest/opentelemetry/edot-sdks/ios/index.md'
