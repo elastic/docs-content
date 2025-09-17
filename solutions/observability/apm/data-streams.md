@@ -2,13 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-streams.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
+navigation_title: Data streams
 ---
 
-# Data streams [apm-data-streams]
+# APM data streams [apm-data-streams]
 
 ::::{note}
 {{agent}} uses data streams to store append-only time series data across multiple indices. Data streams are well-suited for logs, metrics, traces, and other continuously generated data, and offer a host of benefits over other indexing strategies:

@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration examples
 ---
 
-# Configuration Examples [k8s-elastic-agent-fleet-configuration-examples]
+# Fleet managed agents configuration examples on {{eck}} [k8s-elastic-agent-fleet-configuration-examples]
 
 This section contains manifests that illustrate common use cases, and can be your starting point in exploring {{agent}} deployed with ECK. These manifests are self-contained and work out-of-the-box on any non-secured {{k8s}} cluster. They all contain a three-node {{es}} cluster, a single {{kib}} instance and a single {{fleet-server}} instance.
 

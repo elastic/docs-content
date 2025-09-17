@@ -1,4 +1,5 @@
 ---
+navigation_title: AI assistants
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-ai-assistant.html
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html
@@ -16,7 +17,7 @@ products:
   - id: cloud-serverless
 ---
 
-# AI assistant
+# AI assistants in {{kib}}
 
 $$$token-limits$$$
 
