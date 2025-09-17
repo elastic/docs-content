@@ -64,7 +64,7 @@ Learn more in [Agent Chat](chat.md).
 
 ::::{step} Start building agents and tools
 
-Once you've tested the built-in **Elastic AI Agent** with the [built-in tools](tools.md#built-in-tools), you'll want to start [building your own agents](agent-builder-agents.md#create-a-new-agent) with custom instructions and creating your own [tools](tools.md) to assign them.
+Once you've tested the built-in **Elastic AI Agent** with the [default Elastic tools](tools.md, you'll want to start [building your own agents](agent-builder-agents.md#create-a-new-agent) with custom instructions and creating your own [tools](tools.md#create-custom-tools) to assign them.
 
 ::::
 

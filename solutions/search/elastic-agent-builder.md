@@ -28,7 +28,7 @@ The {{agent-builder}} framework is built around several key components that work
 
 The **Agent Chat** UI is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
-[**Learn more about conversations**](agent-builder/conversations.md)
+[**Learn more about Agent Chat**](agent-builder/chat.md)
 
 ### Agents
 
