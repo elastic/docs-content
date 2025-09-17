@@ -44,7 +44,7 @@ In ECE, a deployment is a managed {{stack}} environment that provides users with
 
 The section covers the following tasks:
 
-* [Deploy ECE orchestrator](./cloud-enterprise/deploy-an-orchestrator.md)
+* [Deploy an ECE orchestrator](./cloud-enterprise/deploy-an-orchestrator.md)
     - [Prepare the environment](./cloud-enterprise/prepare-environment.md)
     - [Install ECE](./cloud-enterprise/install.md)
     - [Air gapped installations](./cloud-enterprise/air-gapped-install.md)
