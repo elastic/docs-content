@@ -9,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# {{transforms}} API quick reference [transform-api-quickref]
+# {{transforms-cap}} API quick reference [transform-api-quickref]
 
 All {{transform}} endpoints have the following base:
 
