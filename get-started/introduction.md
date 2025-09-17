@@ -9,9 +9,8 @@ applies_to:
 ---
 # Solutions and use cases [introduction]
 
-Elastic offers three major search-powered solutions: {{es}}, {{observability}}, and {{elastic-sec}}— all built on {{es}}. Whether you're building a search experience, monitoring your infrastructure, or securing your environment, this topic helps you understand what each Elastic solution offers—and how to choose the right one for your business needs.
-
-Refer to the following table for a quick reference of which solution you may need based on your needs. 
+Elastic offers three major search-powered solutions: {{es}}, {{observability}}, and {{elastic-sec}}— all built on an open source, extensible platform.
+Whether you're building a search experience, monitoring your infrastructure, or securing your environment, this topic helps you understand what each Elastic solution offers—and how to choose the right one for your business needs.
 
 | Your need | Recommended solution | Best for |
 |-----------|-------------------|----------|
@@ -25,43 +24,41 @@ Check out our [customer success stories](https://www.elastic.co/customers/succes
 
 Each of our solutions is available as a fully managed {{serverless-short}} project or a self-managed deployment. Refer to [deployment options](../get-started/deployment-options.md) to learn about these options. 
 
-## {{es}}
+## {{es}} [search-overview]
 
-### {{es}} overview [search-overview]
+{{es-serverless}} projects and the {{es}} solution combine the core {{es}} data store, search engine, and vector database technologies with specialized user interfaces and tools, giving you the building blocks to create, deploy, and run your own search applications.
 
-{{es}} is an open-source, distributed search and analytics engine built on Apache Lucene, used for high-performance full-text search, log analytics, business analytics, and operational intelligence. It stores data in JSON documents, provides REST APIs for easy interaction, and functions as a NoSQL database that enables fast searches, analytics, and AI-driven applications. Built on Apache Lucene, {{es}} is the core of the Search AI platform. 
-
+<!--
 ### {{es}} use cases [search-use-cases]
-Use {{es}} for a wide range of business needs.   
-
-:::{dropdown} Use cases
-* **Full-text search:** Find specific words or phrases within large volumes of text-based data, such as documents, articles, or product descriptions. Documents and search queries are transformed to enable returning relevant results instead of exact term matches. 
-* **Semantic search:** Go beyond keyword matching to understand the user's intent. Understanding synonyms and related concepts helps your search engine recognize what users mean, not just what they type.
-* **Hybrid search:** Get the best of both worlds by combining traditional keyword search with modern, meaning-based vector search. This ensures your users get the most accurate and relevant results every time.
-* **Vector database:** Search for data based on its meaning and context, not just keywords. Understanding the underlying concepts allows you to find similar items, like pictures with the same style or songs with a similar vibe.
-* **Retrieval Augmented Generation (RAG):** Connect your generative AI applications (like chatbots) to your private data. This allows your AI to provide more accurate, up-to-date, and relevant answers based on your proprietary information.
-* **Geospatial search:** Build location-aware features into your applications. This allows you to do things like find all available services within a certain radius, calculate the distance between two points, or identify the most efficient delivery routes.
-:::
-
+-->
+For an overview of search use cases, including full-text, geospatial, semantic, and vector search, and retrieval augmented generation (RAG), go to [](/solutions/search.md).
+To try out some simple search use cases, go to [](/solutions/search/get-started/quickstarts.md).
+<!--
 ### {{es}} core concepts [search-concepts]
-Before you decide what type of search to use with {{es}} or bring in your data, familiarize yourself with the following {{es}} concepts.
+-->
+For an introduction to core {{es}} concepts such as indices, documents, and mappings, refer to [](/manage-data/data-store.md).
+To dive more deeply into the building blocks of an {{es}} cluster, including nodes, shards, primaries, and replicas, refer to [](/deploy-manage/distributed-architecture.md).
 
-::::{dropdown} Concepts
+<!--
+The following concepts are not unique to this solution.
+ ::::{dropdown} Concepts
+
+The following concepts relate to core {{es}} features and thus apply to all solutions:
 
 * **Index:** A collection of documents with similar characteristics that are uniquely identified by a name or an alias. The name is used to target the index in search queries and other operations.
- **Field:** The smallest individual unit of data within a document. It represents a specific property or attribute of the data you're indexing (for example, title, author, date, summary, etc.). Fields are critical for indexing, as they determine how data is analyzed and stored to enable efficient searching.
-* **Document:** Any structured data encoded in JSON. {{es}} organizes and stores data into documents. 
+* **Document:** Any structured data encoded in JSON. {{es}} organizes and stores data into documents.
+* **Field:** The smallest individual unit of data within a document. It represents a specific property or attribute of the data you're indexing (for example, title, author, date, or summary). Fields are critical for indexing, as they determine how data is analyzed and stored to enable efficient searching.
+* **Mapping:** The process that defines how a document and its fields are stored and indexed.
+* **Client:** Software or an application that facilitates communication and interaction with an {{es}} cluster. It enables applications written in various programming languages to send requests to {{es}}, process the response, and then push that data into the cluster.
 * **Primary shard:** A self-contained Lucene index that contains some or all data for an index. Shards allow {{es}} to scale horizontally by splitting an index's data into smaller, manageable partitions, improving performance. Each document in an index belongs to one primary shard.
 * **Replica:** A copy of a primary shard. Replicas maintain redundant copies of your data across the nodes in your cluster. This protects against hardware failure and increases capacity to serve read requests like searching or retrieving a document.
 * **Node:** A single running instance of the {{es}} server. 
 * **Cluster:** A collection of one or more nodes that holds all your data and provides indexing and search capabilities across all nodes. {{es}} clusters feature primary and replica shards to provide failover in the case of a node going down. When a primary shard goes down, the replica takes its place.
   :::{note}
-  If you're running {{es}} on a serverless deployment, you don't have to worry about shards, nodes, or clusters. Elastic manages these for you. 
+  If you're using an {{es-serverless}} project, you don't have to worry about shards, nodes, or clusters. Elastic manages these for you.
   :::
-* **Mapping:** The process that defines how a document and its fields  are stored and indexed.
-* **Client:** Software or an application that facilitates communication and interaction with an {{es}} cluster. It enables applications written in various programming languages to send requests to {{es}}, process the response, and then push that data into the cluster. 
-
-::::
+ ::::
+-->
 
 ## Elastic {{observability}} 
 
