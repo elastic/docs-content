@@ -157,9 +157,13 @@ PUT _inference/sparse_embedding/word_chunks
 
 #### `recursive`
 
-{applies_to}`stack: ga 9.1`
+```{applies_to}
+stack: ga 9.1`
+```
 
 The `recursive` strategy splits the input text based on a configurable list of separator patterns (for example, newlines or Markdown headers). The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to sentence-level splitting.
+
+##### Markdown separator group
 
 The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures chunking with the `recursive` strategy using the markdown separator group and a maximum of 200 words per chunk.
 
@@ -180,9 +184,39 @@ PUT _inference/sparse_embedding/recursive_markdown_chunks
 }
 ```
 
+##### Custom separator group
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures chunking with the `recursive` strategy. It uses a custom list of separators to split plaintext into chunks of up to 180 words.
+
+
+```console
+PUT _inference/sparse_embedding/recursive_custom_chunks
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "recursive",
+    "max_chunk_size": 180,
+    "separators": [
+      "^(#{1,6})\\s",
+      "\\n\\n",
+      "\\n[-*]\\s",
+      "\\n\\d+\\.\\s",
+      "\\n"
+    ]
+  }
+}
+```
+
 #### `none`
 
-{applies_to}`stack: ga 9.1`
+```{applies_to}
+stack: ga 9.1`
+```
 
 The `none` strategy disables chunking and processes the entire input text as a single block, without any splitting or overlap. When using this strategy, you can instead [pre-chunk](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking) the input by providing an array of strings, where each element acts as a separate chunk to be sent directly to the inference service without further chunking.
 
