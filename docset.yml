@@ -272,10 +272,7 @@ subs:
   observability:   "Observability"
   api-query-parms-title:   "Query parameters"
   api-examples-title:   "Examples"
-  agent-issue:   "https://github.com/elastic/elastic-agent/issues/"
   agent-pull:   "https://github.com/elastic/elastic-agent/pull/"
-  fleet-server-issue:   "https://github.com/elastic/fleet-server/issues/"
-  fleet-server-pull:   "https://github.com/elastic/fleet-server/pull/"
   es-pull:   "https://github.com/elastic/elasticsearch/pull/"
   kib-pull:   "https://github.com/elastic/kibana/pull/"
   eck_helm_minimum_version: "3.2.0"
@@ -297,3 +294,4 @@ subs:
   ece-apis: https://www.elastic.co/docs/api/doc/cloud-enterprise/
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
+  kube-stack-version: 0.6.3

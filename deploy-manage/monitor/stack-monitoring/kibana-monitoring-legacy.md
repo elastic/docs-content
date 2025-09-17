@@ -12,7 +12,7 @@ products:
 
 
 
-# Legacy collection methods [monitoring-kibana]
+# Legacy collection methods for self-managed {{kib}} [monitoring-kibana]
 
 
 If you enable the Elastic {{monitor-features}} in your cluster, you can optionally collect metrics about {{kib}}.

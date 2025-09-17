@@ -1,4 +1,5 @@
 ---
+navigation_title: Nodes
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-nodes-view.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Nodes [ec-autoops-nodes-view]
+# Nodes view in AutoOps [ec-autoops-nodes-view]
 
 The **Nodes** view provides a thorough overview on the essential metrics for all monitored deployment nodes. You can delve into specific nodes to observe metrics over extended periods. This includes data on the indexing rate and latency, search rate and latency, as well as details concerning thread pools, data, circuit breakers, network, disk, and additional elements.
 

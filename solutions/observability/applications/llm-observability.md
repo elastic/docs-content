@@ -33,11 +33,11 @@ You can instrument the application with one of the following Elastic Distributio
 - [Node.js](https://github.com/elastic/elastic-otel-node)
 - [Java](https://github.com/elastic/elastic-otel-java)
 
-EDOT includes many types of LLM instrumentation. This [table](opentelemetry://reference/use-cases/llms/index.md#supported-technologies) lists the supported technologies.
+EDOT includes many types of LLM instrumentation. This [table](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md#supported-technologies) lists the supported technologies.
 
 ### Getting started
 
-Check [these instructions](opentelemetry://reference/use-cases/llms/index.md) on how to setup and collect OpenTelemetry data for your LLM applications.
+Check [these instructions](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md) on how to setup and collect OpenTelemetry data for your LLM applications.
 
 ## Use cases
 
