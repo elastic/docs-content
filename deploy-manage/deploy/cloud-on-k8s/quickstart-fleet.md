@@ -1,4 +1,5 @@
 ---
+navigation_title: Quickstart
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-quickstart.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Quickstart [k8s-elastic-agent-fleet-quickstart]
+# Quickstart: Running {{fleet}} on {{eck}} [k8s-elastic-agent-fleet-quickstart]
 
 1. To deploy {{fleet-server}}, {{agents}}, {{es}}, and {{kib}}, apply the following specification:
 

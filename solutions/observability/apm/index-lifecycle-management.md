@@ -2,13 +2,14 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-ilm-how-to.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
+navigation_title: Index lifecycle management
 ---
 
-# Index lifecycle management [apm-ilm-how-to]
+# Index lifecycle management for APM indices [apm-ilm-how-to]
 
 Lifecycle policies allow you to automate the lifecycle of your APM indices as they grow and age. A default policy is applied to each APM data stream, but can be customized depending on your business needs.
 
@@ -145,8 +146,8 @@ It is also possible to create more granular index lifecycle policies that apply 
 
 :::{important}
 - Cloning index templates is extremely risky because cloned templates are not automatically updated when you upgrade to a new product version. Users may find themselves in situations where their configurations are outdated because cloned templates are being used instead of the latest templates. <br><br>
-Any customization done using cloned index templates must be repeated _every time_ you upgrade to a new version. 
+Any customization done using cloned index templates must be repeated _every time_ you upgrade to a new version.
 
-- Do not edit built-in index templates, add extra component templates, or change template order. Interfering with templates can disrupt how APM data is processed. 
+- Do not edit built-in index templates, add extra component templates, or change template order. Interfering with templates can disrupt how APM data is processed.
 
 :::
