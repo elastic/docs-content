@@ -74,7 +74,7 @@ $$$built-in-roles-kibana-dashboard$$$ `kibana_dashboard_only_user`
 :   (This role is deprecated, use [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) instead). Grants read-only access to the {{kib}} Dashboard in every [space in {{kib}}](/deploy-manage/manage-spaces.md). This role does not have access to editing tools in {{kib}}.
 
 $$$built-in-roles-kibana-system$$$ `kibana_system`
-:   Grants access necessary for the {{kib}} system user to read from and write to the {{kib}} indices, manage index templates and tokens, and check the availability of the {{es}} cluster. It also permits activating, searching, and retrieving user profiles, as well as updating user profile data for the `kibana-*` namespace. This role grants read access to the `.monitoring-*` indices and read and write access to the `.reporting-*` indices. For more information, see [Configuring Security in {{kib}}](/deploy-manage/security.md).
+:   Grants access necessary for the {{kib}} system user to read from and write to the {{kib}} indices, manage index templates and tokens, and check the availability of the {{es}} cluster. It also permits activating, searching, and retrieving user profiles, as well as updating user profile data for the `kibana-*` namespace. This role grants read access to the `.monitoring-*` indices and read and write access to the `.reporting-*` indices.
 
     ::::{note}
     This role should not be assigned to users as the granted permissions may change between releases.
