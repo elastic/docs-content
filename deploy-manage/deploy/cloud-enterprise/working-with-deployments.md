@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage deployments
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-stack-getting-started.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-deployments.html
@@ -13,7 +14,7 @@ products:
 % document scope: This doc focuses on everything that can be achieved from the deployment UI
 % TBD: include a link to a doc to manage deployments through ECE API. Same for Deploy an orchestrator section (ECE API links are still pending because we still haven't published the reference docs)
 
-# Manage deployments [ece-stack-getting-started]
+# Manage deployments in {{ece}} [ece-stack-getting-started]
 
 {{ece}} allows you to manage one or more instances of the {{stack}} through **deployments**.
 
