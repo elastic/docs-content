@@ -154,7 +154,7 @@ ruby {
 }
 ```
 
-#### Elastic Agent => Logstash => Elasticsearch
+### Elastic Agent => Logstash => Elasticsearch
 
 Elastic Agent populates the `@timestamp` field, but Logstash doesn't add any timestamp by default. Add a temporary timestamp, for example by setting `_tmp.logstash_seen`. With this, you can calculate the following latency values:
 
@@ -233,7 +233,7 @@ POST _ingest/pipeline/_simulate
 }
 ```
 
-#### Elastic Agent => Logstash => Kafka => Logstash => Elasticsearch
+### Elastic Agent => Logstash => Kafka => Logstash => Elasticsearch
 
 As with the previous scenario, adding an additional hop introduces another point where latency can occur. The recommendation is to add another temporary timestamp field. For more details, refer to the previous section.
 
