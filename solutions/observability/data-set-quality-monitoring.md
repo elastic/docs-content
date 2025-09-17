@@ -21,7 +21,7 @@ By default, the page only shows log data sets. To see other data set types, sele
 
 ## Required roles and privileges
 
-Users with the `viewer` [role](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) can only view the **Data Set Quality** summary. To view the **Active Data Sets** and **Estimated Data** summaries, you need the `monitor` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the `logs-*-*` index.
+Users with the `viewer` [role](elasticsearch://reference/elasticsearch/roles.md) can only view the **Data Set Quality** summary. To view the **Active Data Sets** and **Estimated Data** summaries, you need the `monitor` [index privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the `logs-*-*` index.
 
 ## Monitor data sets
 

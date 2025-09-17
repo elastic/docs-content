@@ -74,7 +74,7 @@ For {{ech}} deployments, the following predefined roles are available:
 There are two ways for a user to access {{kib}} instances of an {{ech}} deployment:
 
 * [Directly with {{es}} credentials](/deploy-manage/users-roles/cluster-or-deployment-auth.md). In this case, users and their roles are managed directly in {{kib}}. Users in this case don’t need to be members of the {{ecloud}} organization to access the deployment. Note that if you have several deployments, you need to manage users for each of them, individually.
-* Through your {{ecloud}} organization. In this case, users who are members of your organization log in to {{ecloud}} and can open the deployments they have access to. Their access level is determined by the roles assigned to them from the **Organization** page. {{ecloud}} roles are mapped to [{{stack}} roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) on a per-deployment level. When logging in to a specific deployment, users get the stack role that maps to their {{ecloud}} role for that particular deployment.
+* Through your {{ecloud}} organization. In this case, users who are members of your organization log in to {{ecloud}} and can open the deployments they have access to. Their access level is determined by the roles assigned to them from the **Organization** page. {{ecloud}} roles are mapped to [{{stack}} roles](elasticsearch://reference/elasticsearch/roles.md) on a per-deployment level. When logging in to a specific deployment, users get the stack role that maps to their {{ecloud}} role for that particular deployment.
 
 The following table shows the default mapping:
 
