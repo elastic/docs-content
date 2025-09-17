@@ -36,7 +36,7 @@ A valuable strategy known as load balancing helps to mitigate this bursty nature
 CPU and memory boundedness often interact in important ways. If CPU-bound activity is reaching its limit, memory pressure will likely increase as {{kib}} has less time for activities like garbage collection. If memory-bound activity is reaching its limit, there may be more CPU work to free claimed memory, increasing CPU pressure.
 ::::
 
-### Answer the following questions before scaling Kibana up or down [_before_sizing_kibana]
+### Answer the following questions before sizing Kibana up or down [_before_sizing_kibana]
 
 #### Is the {{es}} cluster correctly sized?
 
@@ -50,7 +50,7 @@ In user interfaces like Dashboards or Discover, one can see the full query that 
 
 Follow this strategy if you know the max number of expected concurrent users.
 
-Start {{kib}} on **1 CPU** and **1.5GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards. If you are experiencing performance issues, adding an additional **0.5 CPUs** and **1.5GB** per 10 concurrent users should ensure {{kib}} is not resource-starved for common analytics usage.
+Start {{kib}} on **1 CPU** and **2GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards. If you are experiencing performance issues, adding an additional **0.5 CPUs** and **2GB** per 10 concurrent users should ensure {{kib}} is not resource-starved for common analytics usage.
 
 ::::{important}
 This advice does not apply to scaling {{kib}} for task manager. If you intend to use {{kib}} alerting capabilities see [task manager scaling guidance](./kibana-task-manager-scaling-considerations.md).
@@ -70,7 +70,7 @@ On [serverless](../deploy/elastic-cloud/serverless.md) scaling and configuring {
 
 #### Monitoring [_monitoring-kibana-metrics]
 
-In order to understand the impact of your usage patterns on **a {{kib}} instance** use the Stack Monitoring feature. See [the guide for {{kib}} deployed on {{ech}} or {{ece}}](../monitor/stack-monitoring/ece-ech-stack-monitoring.md) or the [the guide for self-managed {{kib}}](../monitor/stack-monitoring/kibana-monitoring-self-managed.md).
+In order to understand the impact of your usage patterns on **a single {{kib}} instance** use the Stack Monitoring feature. See [the guide for {{kib}} deployed on {{ech}} or {{ece}}](../monitor/stack-monitoring/ece-ech-stack-monitoring.md) or the [the guide for self-managed {{kib}}](../monitor/stack-monitoring/kibana-monitoring-self-managed.md).
 
 The rest of this guide will assume you have visibility into the following important metrics for a {{kib}} instance:
 
@@ -82,11 +82,13 @@ The rest of this guide will assume you have visibility into the following import
 
 Event loop delay (ELD) is an important metric for understanding whether Kibana is engaged in CPU-bound activity.
 
-**As a general target, ELD should be below 200ms 95% of the time**. Higher delays may mean {{kib}} is CPU-starved. Sporadic increases above 200ms may mean that Kibana is periodically processing CPU-intensive activities like large responses from Elasticsearch, whereas consistently high ELD may mean Kibana is struggling to service tasks and requests.
+**As a general target, ELD should be at below ~200ms 95% of the time**. Higher delays may mean {{kib}} is CPU-starved. Sporadic increases above 200ms may mean that Kibana is periodically processing CPU-intensive activities like large responses from Elasticsearch, whereas consistently high ELD may mean Kibana is struggling to service tasks and requests.
 
-Consider the impact of ELD on user experience. If users are able to use {{kib}} without the frustration that comes from a blocked CPU, provisioning additional CPU resources will not be impactful. Monitoring ELD over time is a solid strategy for knowing when additional CPU resource is needed.
+Before increasing CPU resources, consider the impact of ELD on user experience. If users are able to use {{kib}} without the frustration that comes from a blocked CPU, provisioning additional CPU resources will not be impactful, although having spare resources in case of unexpected spikes is useful.
 
-**{{ece}}, {{ech}}, and {{eck}}** users can adjust {{kib}}'s CPU and memory by viewing their deployment and editing the {{kib}} instance's resource configuration.
+Monitoring {{kib}}'s ELD over time is a solid strategy for knowing when additional CPU resource is needed based on your usage patterns.
+
+**{{ece}}, {{ech}}, and {{eck}}** users can adjust {{kib}}'s CPU and memory by viewing their deployment and editing the {{kib}} instance's resource configuration in predefined increments.
 
 **Self-managed** users are responsible for managing CPU.
 
