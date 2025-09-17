@@ -35,7 +35,7 @@ Refer to the [Spaces documentation](/deploy-manage/manage-spaces.md) for more in
 
 After your spaces are set up, the next step to securing access is to provision your roles. Roles are a collection of privileges that allow you to perform actions in {{kib}} and {{es}}. Roles are assigned to users, and to [system accounts](built-in-users.md) that power the {{stack}}.
 
-You can create your own roles, or use any of the [built-in roles](built-in-roles.md). Some built-in roles are intended for {{stack}} components and should not be assigned to end users directly.
+You can create your own roles, or use any of the [built-in roles](elasticsearch://reference/elasticsearch/roles.md). Some built-in roles are intended for {{stack}} components and should not be assigned to end users directly.
 
 An example of a built-in role is `kibana_admin`. Assigning this role to your users will grant access to all of {{kib}}'s features. This includes the ability to manage spaces.
 
