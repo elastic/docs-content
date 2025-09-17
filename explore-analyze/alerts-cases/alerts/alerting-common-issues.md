@@ -1,4 +1,5 @@
 ---
+navigation_title: Common issues
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-common-issues.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Common Issues [alerting-common-issues]
+# Common issues with {{kib}} alerting [alerting-common-issues]
 
 This page describes how to resolve common problems you might encounter with Alerting.
 
