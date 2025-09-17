@@ -1,7 +1,4 @@
----  
-mapped_pages:
-- (8.19 docs)
-
+---
 applies_to:
   stack: ga 9.1
   serverless: ga
