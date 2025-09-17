@@ -1,5 +1,5 @@
 ---
-navigation_title: Migrate the CCS deployment template
+navigation_title: Migrate from the CCS deployment template
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-ccs.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Migrate the cross-cluster search deployment template [ece-migrate-ccs]
+# Migrate from the cross-cluster search deployment template in {{ece}} [ece-migrate-ccs]
 
 The cross-cluster search deployment template is now deprecated was removed in {{ece}} 3.0. You no longer need to use the dedicated cross-cluster template to search across deployments. Instead, you can now use any template to [configure remote clusters](ece-enable-ccs.md) and search across them. Existing deployments created using this template are not affected, but they are required to migrate to another template before upgrading to {{stack}} 8.x.
 

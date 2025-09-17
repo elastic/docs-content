@@ -115,7 +115,6 @@ toc:
           - file: observability/apm/enable-apm-server-binary-debugging.md
           - file: observability/apm/apm-server-performance-diagnostic.md
           - file: observability/apm-agent-go/apm-go-agent.md
-          - file: observability/apm-agent-swift/apm-ios-agent.md
           - file: observability/apm-agent-java/apm-java-agent.md
           - file: observability/apm-agent-dotnet/apm-net-agent.md
           - file: observability/apm-agent-nodejs/apm-nodejs-agent.md
