@@ -8,7 +8,7 @@ products:
 navigation_title: Configure settings
 ---
 
-# Configure infrastructure and host metrics settings[observability-configure-intra-settings]
+# Configure infrastructure and host metrics settings [observability-configure-intra-settings]
 
 ::::{note}
 
