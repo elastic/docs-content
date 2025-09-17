@@ -2,8 +2,6 @@
 navigation_title: "Tools"
 applies_to:
   stack: preview 9.2
-  deployment: 
-    self: unavailable
   serverless:
     elasticsearch: preview
 ---
@@ -33,10 +31,10 @@ There are two main types of tools in {{agent-builder}}:
 - **{{esql}} tools**: Execute [{{esql}}](elasticsearch://reference/query-languages/esql.md) queries against your indices, allowing agents to retrieve and analyze data using the Elasticsearch query language.
 - **Index tools**: Provide core capabilities for working with indices, enabling you to search indices, retrieve documents by ID, view index mappings, discover relevant indices, and list available indices.
 
-{{agent-builder}} ships with a set of built-in system tools whose names are dot-prefixed. For example: `.execute_esql`.
+{{agent-builder}} ships with a set of built-in built-in tools whose names are dot-prefixed. For example: `.execute_esql`.
 Users can also create [custom tools](#create-custom-tools).
 
-Key system tools include:
+Key built-in tools include:
 
 - **`.execute_esql`**: Executes an {{esql}} query and returns the results in a tabular format
 - **`.generate_esql`**: Generates an {{esql}} query from a natural language query
@@ -46,16 +44,16 @@ Key system tools include:
 - **`.list_indices`**: Lists the indices in the {{es}} cluster the current user has access to
 - **`.search`**: A powerful tool for searching and analyzing data within a specific {{es}} index
 
-System tools cannot be modified or deleted, but serve as building blocks for more complex interactions.
+Built-in tools cannot be modified or deleted, but serve as building blocks for more complex interactions.
 
 ### Find available tools
 
 Find the list of available tools on the **Tools** landing page in the UI.
 
-You can also use the following API call, which returns detailed information about system tools, including their parameters and descriptions.
+You can also use the following API call, which returns detailed information about built-in tools, including their parameters and descriptions.
 
 ```
-GET kbn://api/chat/tools
+GET kbn://api/agent_builder/tools
 ```
 
 ## Tool parameters
@@ -84,7 +82,7 @@ You can create custom tools to help agents interact with your data in specific w
 2. Click the blue **New tool** button
 3. Select the tool type you want to create
 4. Fill in the required fields:
-   - **Name**: Enter a descriptive name for your tool (without a dot prefix)
+   - **Name**: Enter a descriptive name for your tool
    - **Description**: Write a clear explanation of what the tool does and when it should be used
    - Tool-specific configuration ({{esql}} query or index settings)
    - **Parameters**: For {{esql}} tools, define any parameters your query needs
@@ -98,7 +96,7 @@ You can also create tools programmatically:
 For {{esql}} tools:
 
 ```json
-POST kbn://api/chat/tools
+POST kbn://api/agent_builder/tools
 {
   "id": "recent_orders", <1>
   "description": "Find recent orders for a specific customer. Use this tool when users ask about their recent orders or purchase history.", <2>
@@ -126,12 +124,12 @@ POST kbn://api/chat/tools
 For index search tools:
 
 ```json
-POST kbn://api/chat/tools
+POST kbn://api/agent_builder/tools
 {
   "id": "search_products", <1>
   "description": "Search the products catalog for specific items. Use this when users are looking for product information.", <2>
   "configuration": {
-    "index": "products", <3>
+    "pattern": "products", <3>
     "fields": ["name", "description", "category", "tags"] <4>
   },
   "type": "index_search", <5>
@@ -141,10 +139,12 @@ POST kbn://api/chat/tools
 
 1. Unique identifier for the tool
 2. Description explaining when and how to use this tool
-3. The specific index this tool will search against
+3. The specific index pattern this tool will search against
 4. Fields within the index that should be searchable
-5. Tool type specifier (use "index_search" for index search tools)
+5. Tool type specifier (use `index_search` for index search tools)
 6. Optional tags for organization
+7. **Use appropriate tags**: Add relevant tags to make tools easier to find and organize
+8. **Limit tool count**: More tools are not always better. Try to keep each agent focused with a limited number of relevant tools.
 
 ### Testing your tools
 
@@ -167,18 +167,15 @@ Testing helps ensure your tool returns useful results and handles parameters cor
 5. **Add comprehensive parameter descriptions**: Help the agent understand what values to use
 6. **Include `LIMIT` clauses in {{esql}} queries**: Prevent returning excessive results
 7. **Use appropriate tags**: Add relevant tags to make tools easier to find and organize
+8. **Limit tool count**: More tools are not always better. Try to keep each agent focused with a limited number of relevant tools.
 
 ## Tool namespaces
 
-Tool namespacing helps organize and identify tools by their source. System tools use a dot prefix (`.tool_name`) to indicate they are built-in capabilities. This convention:
+Tool namespacing helps organize and identify tools by their source. Built-in tools use a consistent prefix (`platform.core`) to indicate they are built-in capabilities. This convention:
 
 - Prevents naming conflicts between system and custom tools
 - Makes it easy to identify tool sources
 - Provides a consistent pattern for tool identification
-
-:::{note}
-Custom tool IDs cannot be dot-prefixed, because the ID must start and end with a letter or number.
-:::
 
 ## Manage tools
 
@@ -205,4 +202,4 @@ Custom tools can be modified or removed as needed:
 2. Click the edit icon to update the tool or the delete icon to remove it
 3. For updates, modify the tool properties and save your changes
 
-Note that system tools cannot be modified or deleted.
+Note that built-in tools cannot be modified or deleted.

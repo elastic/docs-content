@@ -1,8 +1,7 @@
 ---
+navigation_title: "Agent Builder"
 applies_to:
   stack: preview 9.2
-  deployment: 
-    self: unavailable
   serverless:
     elasticsearch: preview
 ---
@@ -13,8 +12,8 @@ applies_to:
 
 ## Key capabilities
 
-- **Interactive chat interface**: Ask questions about your data using natural language in the Chat UI.
-- **Agent-based architecture**: Configure AI assistants with customizable behaviors and tool access.
+- **Interactive chat interface**: Ask questions about your {{es}} data using natural language in the Agent Chat UI.
+- **Agent-based architecture**: Configure AI-powered agents with customizable behaviors and tool access.
 - **Modular and extensible tools**: Extend your system with tools for {{es}} data access and manipulation.
 - **ES|QL integration**: Create and execute [ES|QL](elasticsearch://reference/query-languages/esql.md)-powered tools for specialized data queries.
 - **MCP server**: Connect external MCP clients to access chat tools through a standardized interface.
@@ -25,15 +24,15 @@ applies_to:
 
 The {{agent-builder}} framework is built around several key components that work together to provide a flexible and powerful conversational experience.
 
-### Conversations
+### Agent Chat UI
 
-The **Conversations** UI is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
+The **Agent Chat** UI is the synchronous chat interface for interacting with agents through natural language. The chat UI enables real-time communication where you can ask questions, request data analysis, and receive immediate responses from your configured agents.
 
 [**Learn more about conversations**](agent-builder/conversations.md)
 
 ### Agents
 
-Agents are specialized assistants powered by large language models (LLMs) that use tools to answer questions, take action, or support workflows. Each agent translates natural language requests into specific actions using the tools assigned to it.
+Agents are powered by custom LLM instructions and the ability to use tools to answer questions, take action, or support workflows. Each agent translates natural language requests into specific actions using the tools assigned to it.
 
 [**Learn more about agents**](agent-builder/agent-builder-agents.md)
 
