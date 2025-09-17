@@ -30,7 +30,7 @@ To implement dense vector search in {{es}}, you need both an index configuration
 2. **Query the index with k-NN search**
    - Use the [`knn` query](knn.md) to retrieve results based on vector similarity
 
-### General and vector optimized projects [vector-profiles]
+### General purpose and vector optimized projects [vector-profiles]
 ```{applies_to}
 serverless:
 ```
