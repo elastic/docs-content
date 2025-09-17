@@ -3,7 +3,7 @@ navigation_title: Configure APM Agent Central Configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configure-agent-config.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm

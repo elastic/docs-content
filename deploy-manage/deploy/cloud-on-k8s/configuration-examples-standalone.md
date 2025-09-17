@@ -6,9 +6,10 @@ applies_to:
     eck: all
 products:
   - id: cloud-kubernetes
+navigation_title: Configuration examples
 ---
 
-# Configuration examples [k8s-elastic-agent-configuration-examples]
+# Standalone Elastic Agent configuration examples on {{eck}} [k8s-elastic-agent-configuration-examples]
 
 This section contains manifests that illustrate common use cases, and can be your starting point in exploring Elastic Agent deployed with ECK. These manifests are self-contained and work out-of-the-box on any non-secured Kubernetes cluster. They all contain a three-node {{es}} cluster and a single {{kib}} instance. Add the corresponding integration package to {{kib}} to install the dashboards, visualizations and other assets for each of these examples as described in [the Elastic Agent documentation](/reference/fleet/install-elastic-agents.md).
 

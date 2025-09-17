@@ -3,8 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-reduce-apm-storage.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-reduce-your-data-usage.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -38,7 +38,7 @@ Stack trace collection settings are managed in each APM agent. You can enable an
 ## Delete data [delete_data]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
@@ -82,7 +82,7 @@ To open **Index Management**, find **Stack Management** in the main menu or use 
 ## Update existing data [apm-update-data]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 

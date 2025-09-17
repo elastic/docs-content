@@ -26,7 +26,6 @@ To add a processor:
     - [Date](./extract/date.md)
     - [Dissect](./extract/dissect.md)
     - [Grok](./extract/grok.md)
-    - [Key-Value (KV)](./extract/key-value.md)
     - GeoIP
     - Rename
     - Set
