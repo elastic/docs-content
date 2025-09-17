@@ -3,13 +3,13 @@ navigation_title: "{{es}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-elasticsearch-output.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
 ---
 
-# Configure the Elasticsearch output [apm-elasticsearch-output]
+# Configure the Elasticsearch output for APM Server[apm-elasticsearch-output]
 
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")

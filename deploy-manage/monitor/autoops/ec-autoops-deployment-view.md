@@ -1,4 +1,5 @@
 ---
+navigation_title: Deployment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-deployment-view.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Deployment [ec-autoops-deployment-view]
+# Deployment view in AutoOps [ec-autoops-deployment-view]
 
 The **Deployment** view is the event control panel that allows you to see which issues are affecting the {{es}} cluster and get a list of action items to address them.
 

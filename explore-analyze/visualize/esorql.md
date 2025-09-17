@@ -1,4 +1,5 @@
 ---
+navigation_title: ES|QL
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# ES|QL [esql-visualizations]
+# ES|QL visualizations [esql-visualizations]
 
 You can add {{esql}} visualizations to a dashboard directly from queries in Discover, or you can start from a dashboard.
 

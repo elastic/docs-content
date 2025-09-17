@@ -9,9 +9,10 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+navigation_title: Configure case settings
 ---
 
-# Configure case settings [security-cases-settings]
+# Configure case settings for {{elastic-sec}} [security-cases-settings]
 
 This page explains how to change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types.
 First, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**. In {{serverless-short}}, you can access case settings in an {{elastic-sec}} project, go to **Cases** → **Settings**.
