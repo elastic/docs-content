@@ -24,15 +24,9 @@ Tools enable agents to work with {{es}} data. When an agent receives a natural l
 
 Each tool is an atomic operation with a defined signature - accepting typed parameters and returning structured results in a format the agent can parse, transform, and incorporate into its response generation.
 
-## Tool types
+## Built-in tools
 
-There are two main types of tools in {{agent-builder}}:
-
-- **{{esql}} tools**: Execute [{{esql}}](elasticsearch://reference/query-languages/esql.md) queries against your indices, allowing agents to retrieve and analyze data using the Elasticsearch query language.
-- **Index tools**: Provide core capabilities for working with indices, enabling you to search indices, retrieve documents by ID, view index mappings, discover relevant indices, and list available indices.
-
-{{agent-builder}} ships with a set of built-in built-in tools whose names are dot-prefixed. For example: `.execute_esql`.
-Users can also create [custom tools](#create-custom-tools).
+{{agent-builder}} ships with a comprehensive set of built-in tools that provide core capabilities for working with your {{es}} data. These tools are ready to use. They cannot be modified or deleted.
 
 Key built-in tools include:
 
@@ -44,7 +38,16 @@ Key built-in tools include:
 - **`.list_indices`**: Lists the indices in the {{es}} cluster the current user has access to
 - **`.search`**: A powerful tool for searching and analyzing data within a specific {{es}} index
 
-Built-in tools cannot be modified or deleted, but serve as building blocks for more complex interactions.
+Built-in tools serve as building blocks for more complex interactions and provide the foundation for agent capabilities.
+
+## Custom tools
+
+You can extend the built-in tool catalog with your own custom tool definitions. Custom tools offer flexibility in how they interact with your data:
+
+- **Scoped tools**: Define tools that are scoped to a specific index or pattern, allowing the LLM to decide how to query those indices based on the user's request
+- **Explicit query tools**: Define tools with explicit {{esql}} queries for precise, pre-defined data retrieval operations
+
+This flexibility allows you to create tools that match your specific use cases and data access patterns.
 
 ### Find available tools
 
@@ -64,11 +67,11 @@ Parameters enable tools to be dynamic and adaptable to different queries. Each p
 - A **type** (such as keyword, number, boolean)
 - A **description** that helps the agent understand when and how to use it
 
-For {{esql}} tools, parameters are defined in the query using the syntax `?parameter_name` and must be configured when creating the tool.
+For tools with explicit queries, parameters are defined in the query using the syntax `?parameter_name` and must be configured when creating the tool.
 
 Parameters can be:
 - **Manually defined**: You explicitly define the parameters a tool needs
-- **Inferred from query**: For {{esql}} tools, you can use the "Infer parameters from query" button to automatically detect parameters in your {{esql}} statement
+- **Inferred from query**: For tools with explicit queries, you can use the "Infer parameters from query" button to automatically detect parameters in your query statement
 
 Providing clear, descriptive parameter names and descriptions helps agents properly use your tools when answering queries.
 
@@ -84,8 +87,8 @@ You can create custom tools to help agents interact with your data in specific w
 4. Fill in the required fields:
    - **Name**: Enter a descriptive name for your tool
    - **Description**: Write a clear explanation of what the tool does and when it should be used
-   - Tool-specific configuration ({{esql}} query or index settings)
-   - **Parameters**: For {{esql}} tools, define any parameters your query needs
+   - Tool-specific configuration (explicit query or index settings)
+   - **Parameters**: For tools with explicit queries, define any parameters your query needs
    - **Tags**: (Optional) Add labels to categorize and organize your tools
 5. Click **Save** to create your tool
 
@@ -93,7 +96,7 @@ You can create custom tools to help agents interact with your data in specific w
 
 You can also create tools programmatically:
 
-For {{esql}} tools:
+For tools with explicit {{esql}} queries:
 
 ```json
 POST kbn://api/agent_builder/tools
@@ -118,7 +121,7 @@ POST kbn://api/agent_builder/tools
 2. Detailed description that helps the agent understand when to use this tool
 3. {{esql}} query with parameters prefixed by `?`
 4. Parameter definition including type and description
-5. Tool type specifier (use "esql" for {{esql}} tools)
+5. Tool type specifier (use "esql" for tools with explicit {{esql}} queries)
 6. Optional tags for categorization
 
 For index search tools:
@@ -143,8 +146,6 @@ POST kbn://api/agent_builder/tools
 4. Fields within the index that should be searchable
 5. Tool type specifier (use `index_search` for index search tools)
 6. Optional tags for organization
-7. **Use appropriate tags**: Add relevant tags to make tools easier to find and organize
-8. **Limit tool count**: More tools are not always better. Try to keep each agent focused with a limited number of relevant tools.
 
 ### Testing your tools
 
@@ -165,7 +166,7 @@ Testing helps ensure your tool returns useful results and handles parameters cor
 3. **Limit scope**: Focus each tool on a specific task rather than creating overly complex tools
 4. **Use meaningful parameter names**: Choose names that clearly indicate what the parameter represents
 5. **Add comprehensive parameter descriptions**: Help the agent understand what values to use
-6. **Include `LIMIT` clauses in {{esql}} queries**: Prevent returning excessive results
+6. **Include `LIMIT` clauses in explicit queries**: Prevent returning excessive results
 7. **Use appropriate tags**: Add relevant tags to make tools easier to find and organize
 8. **Limit tool count**: More tools are not always better. Try to keep each agent focused with a limited number of relevant tools.
 
