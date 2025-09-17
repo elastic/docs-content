@@ -9,7 +9,7 @@ products:
 navigation_title: Configure settings
 ---
 
-# Configure uptime monitoring settings [configure-uptime-settings]
+# Configure Uptime monitoring settings [configure-uptime-settings]
 
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
