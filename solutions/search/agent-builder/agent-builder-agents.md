@@ -68,10 +68,10 @@ Configure the essential agent settings in the **settings** tab:
 
 1. Enter an **Agent ID**, a unique identifier for reference in code.
 1. Add **Custom instructions**.<br><br>Custom instructions are appended to the system prompt that enables core agent features like visualization and citations. The custom instructions define the agent's personality and determine how it will interact with users and perform tasks.
+
     :::{note}
     Your custom instructions are added to the system prompt to define the agent's behavior. The system prompt enables core features like visualization and citations.
     :::
-
 1. Set the **Display name** that users will see.
 1. Add a **Display description** to explain the agent's purpose
 
