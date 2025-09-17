@@ -1,16 +1,16 @@
 ---
-navigation_title: Migrate to {{ilm-init}} (self-managed)
+navigation_title: Migrate to {{ilm-init}} (self-managed and ECK)
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-with-existing-indices.html
 applies_to:
-  stack: ga
   deployment:
     self: ga
+    eck: ga
 products:
   - id: elasticsearch
 ---
 
-# Migrate to {{ilm-init}} on self-managed deployments [ilm-with-existing-indices]
+# Migrate to {{ilm-init}} on self-managed and {{eck}} deployments [ilm-with-existing-indices]
 
 If you’ve been using Curator or some other mechanism to manage periodic indices, you have a couple of options when [migrating to {{ilm-init}}](./migrate-index-management.md):
 

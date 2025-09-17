@@ -13,15 +13,15 @@ products:
 
 # Migrate to {{ilm-init}} [migrate-ilm]
 
-You may already be using index curation, which is now deprecated, or another mechanism to manage the lifecycle of your indices. To help you adapt your existing indices from using earlier lifecycle mechanisms to use {{ilm}}, a few guides are available:
+You may already be another mechanism to manage the lifecycle of your indices. To help you adapt your existing indices to use {{ilm}}, a few guides are available:
 
 [](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md) {applies_to}`ess:` {applies_to}`ece:`
 :   Describes how to migrate {{es}} indices in an {{ech}} or {{ece}} deployment from using deprecated index curation or another periodic indices management mechanism to use {{ilm}}.
 
-[](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md) {applies_to}`self:`
+[](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)  {applies_to}`self:` {applies_to}`eck:`
 :   Describes how to migrate {{es}} indices in a self-managed environment from using deprecated index curation, or any other lifecycle mechanism, to use {{ilm}}.
 
 [](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md) {applies_to}`stack:`
-:   Describes how to migrate from using custom node attributes and attribute-based allocation filters to move indices through data tiers in a hot-warm-cold architecture, to use {{ilm}}.
+:   Describes how to migrate from using custom node attributes and attribute-based allocation filters to using built-in node roles, enabling {{ilm-init}} to automatically move indices between data tiers.
 
-If you are configuring {{ilm-init}} for new indices, refer to [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md). If you plan to manually apply an {{ilm}} policy to existing indices that are not already using another type of lifecycle management, refer to [Manually apply a lifecycle policy to an index](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md).
+If you are configuring {{ilm-init}} for new indices, refer to [](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md). If you plan to manually apply an {{ilm}} policy to existing indices that are not already using another type of lifecycle management, refer to [](/manage-data/lifecycle/index-lifecycle-management/policy-apply.md).
