@@ -5,7 +5,7 @@ applies_to:
     security: all
 ---
 
-# Security
+# Elastic Security reference
 
 This section contains reference information for {{elastic-sec}} features, including:
 
