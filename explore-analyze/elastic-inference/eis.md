@@ -31,11 +31,7 @@ stack: preview 9.1
 serverless: preview
 ```
 
-ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability. 
-
-### Private preview access
-
-Private preview access is available by submitting the form provided [here](https://docs.google.com/forms/d/e/1FAIpQLSfp2rLsayhw6pLVQYYp4KM6BFtaaljplWdYowJfflpOICgViA/viewform).
+ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
 
 ### Limitations
 

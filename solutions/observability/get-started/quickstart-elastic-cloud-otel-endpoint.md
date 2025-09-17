@@ -189,9 +189,9 @@ The following sections provide troubleshooting information for the {{motlp}}.
 
 Don't have a collector or SDK running? Spin up an EDOT collector in just a few steps:
 
-* [Kubernetes Quickstart](opentelemetry://reference/quickstart/serverless/k8s.md)
-* [Hosts & VMs Quickstart](opentelemetry://reference/quickstart/serverless/hosts_vms.md)
-* [Docker Quickstart](opentelemetry://reference/quickstart/serverless/docker.md)
+* [Kubernetes Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s.md)
+* [Hosts & VMs Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md)
+* [Docker Quickstart](/solutions/observability/get-started/opentelemetry/quickstart/serverless/docker.md)
 
 ### Api Key prefix not found
 

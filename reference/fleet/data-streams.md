@@ -4,9 +4,10 @@ mapped_pages:
 products:
   - id: fleet
   - id: elastic-agent
+navigation_title: Data streams
 ---
 
-# Data streams [data-streams]
+# Agent-created data streams [data-streams]
 
 {{agent}} uses data streams to store time series data across multiple indices while giving you a single named resource for requests. Data streams are well-suited for logs, metrics, traces, and other continuously generated data. They offer a host of benefits over other indexing strategies:
 
