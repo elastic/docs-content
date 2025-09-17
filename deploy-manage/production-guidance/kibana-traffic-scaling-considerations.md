@@ -49,12 +49,12 @@ In user interfaces like Dashboards or Discover, one can see the full query that 
 
 Follow this strategy if you know the max number of expected concurrent users.
 
-Start {{kib}} on **2.1 vCPU** and **2GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards. If you are experiencing performance issues, adding an additional **2.1 vCPUs** and **2GB** per 10 concurrent users is a safe _minimum_ ensure {{kib}} is not resource-starved for common analytics use cases. This is known as **vertical scaling** and should typically be employed up to a maximum of **8.4 vCPU** and **8GB** of memory. In combination, it is recommended to employ **horizontal scaling** as outlined in the guide on [load balancing traffic](./kibana-load-balance-traffic.md).
+Start {{kib}} on **2.1 vCPU** and **2GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards. If you are experiencing performance issues, adding an additional **2.1 vCPUs** and **2GB** per 10 concurrent users is a safe _minimum_ to ensure {{kib}} is not resource-starved for common analytics use cases. This is known as **vertical scaling** and should typically be employed up to a maximum of **8.4 vCPU** and **8GB** of memory. In combination, it is recommended to employ **horizontal scaling** as outlined in the guide on [load balancing traffic](./kibana-load-balance-traffic.md).
 
-For example, according to this simple strategy, if you want:
+Consider these examples:
 
-1. {{kib}} to serve 50 concurrent users you would need **10.5 vCPU** and **10GB** of memory which, on {{ech}} and {{ece}} translates to: **2 {{kib}} instances of 8.4 vCPU and 8GB memory each** or **3 {{kib}} instances of 8.4 vCPU and 4GB memory each**
-2. {{kib}} to serve 100 concurrent users you would need **25.2 vCPU** and **20GB** of memory which translates to: **3 {{kib}} instances of 8.4 vCPU and 8GB memory each**.
+* {{kib}} to should serve 50 concurrent users: **10.5 vCPU** and **10GB** of memory which on {{ech}} and {{ece}} translates to: **2 {{kib}} instances of 8.4 vCPU and 8GB memory each** or **3 {{kib}} instances of 8.4 vCPU and 4GB memory each**
+* {{kib}} to serve 100 concurrent users you would need **25.2 vCPU** and **20GB** of memory which on {{ech}} and {{ece}} translates to: **3 {{kib}} instances of 8.4 vCPU and 8GB memory each**.
 
 ::::{important}
 This advice does not apply to scaling {{kib}} for task manager. If you intend to use {{kib}} alerting capabilities see [task manager scaling guidance](./kibana-task-manager-scaling-considerations.md).
