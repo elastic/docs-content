@@ -10,5 +10,19 @@ products:
 
 # Start and stop index lifecycle management [start-stop-ilm]
 
-:::{include} /manage-data/_snippets/start-stop-ilm.md
+Follow these steps to check the current {{ilm-init}} status, and to stop or restart it as needed.
+
+### Get {{ilm-init}} status 
+
+:::{include} /manage-data/_snippets/ilm-status.md
+:::
+
+### Stop {{ilm-init}} 
+
+:::{include} /manage-data/_snippets/ilm-stop.md
+:::
+
+### Start {{ilm-init}} 
+
+:::{include} /manage-data/_snippets/ilm-start.md
 :::
