@@ -9,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Examples [transform-examples]
+# {{transforms-cap}} examples [transform-examples]
 
 These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](/explore-analyze/index.md). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
 
