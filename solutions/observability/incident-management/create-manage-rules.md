@@ -5,9 +5,10 @@ mapped_pages:
 products:
   - id: observability
   - id: cloud-serverless
+navigation_title: Create and manage rules
 ---
 
-# Create and manage rules [observability-create-manage-rules]
+# Create and manage rules for Elastic {{observability}} [observability-create-manage-rules]
 
 ::::{note}
 
