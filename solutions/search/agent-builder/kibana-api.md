@@ -14,7 +14,24 @@ These APIs allow you to programmatically work with the {{agent-builder}} abstrac
 
 For the full API documentation, refer to the [Kibana API reference](https://www.elastic.co/docs/api/doc/kibana/).
 
-For information on generating API keys, see [API keys](https://www.elastic.co/docs/solutions/search/search-connection-details).
+## Using the APIs
+
+The examples in this documentation use Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) syntax.
+```console
+GET kbn://api/agent_builder/tools
+```
+
+To use these APIs with tools like `curl`, replace the `kbn://` protocol with your Kibana URL.
+
+ 
+```bash
+curl -X GET "https://<KIBANA_URL>/api/agent_builder/tools" \
+     -H "Authorization: ApiKey <API_KEY>"
+```
+:::{tip}
+To generate API keys, search for `API keys` in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+[Learn more](https://www.elastic.co/docs/solutions/search/search-connection-details).
+:::
 
 ## Available APIs
 % TODO: we may remove this list once the API reference is live, but probably helpful in the short term
@@ -22,75 +39,117 @@ For information on generating API keys, see [API keys](https://www.elastic.co/do
 ### Tools
 
 List all tools
-:   `GET kbn://api/agent_builder/tools`
+:   ```console
+    GET kbn://api/agent_builder/tools
+    ```
 
 Create a tool
-:   `POST kbn://api/agent_builder/tools`
+:   ```console
+    POST kbn://api/agent_builder/tools
+    ```
 
 Get a tool by ID
-:   `GET kbn://api/agent_builder/tools/{id}`
+:   ```console
+    GET kbn://api/agent_builder/tools/{id}
+    ```
 
 Delete a tool by ID
-:   `DELETE kbn://api/agent_builder/tools/{id}`
+:   ```console
+    DELETE kbn://api/agent_builder/tools/{id}
+    ```
 
 Update a tool by ID
-:   `PUT kbn://api/agent_builder/tools/{toolId}`
+:   ```console
+    PUT kbn://api/agent_builder/tools/{toolId}
+    ```
 
 Execute a tool
-:   `POST kbn://api/agent_builder/tools/_execute`
+:   ```console
+    POST kbn://api/agent_builder/tools/_execute
+    ```
 
 ### Agents
 
 List all agents
-:   `GET kbn://api/agent_builder/agents`
+:   ```console
+    GET kbn://api/agent_builder/agents
+    ```
 
 Create an agent
-:   `POST kbn://api/agent_builder/agents`
+:   ```console
+    POST kbn://api/agent_builder/agents
+    ```
 
 Get an agent by ID
-:   `GET kbn://api/agent_builder/agents/{id}`
+:   ```console
+    GET kbn://api/agent_builder/agents/{id}
+    ```
 
 Update an agent by ID
-:   `PUT kbn://api/agent_builder/agents/{id}`
+:   ```console
+    PUT kbn://api/agent_builder/agents/{id}
+    ```
 
 Delete an agent by ID
-:   `DELETE kbn://api/agent_builder/agents/{id}`
+:   ```console
+    DELETE kbn://api/agent_builder/agents/{id}
+    ```
 
 ### Chat and Conversations
 
 Chat with an agent
-:   `POST kbn://api/agent_builder/converse`
+:   ```console
+    POST kbn://api/agent_builder/converse
+    ```
 
 Chat with an agent and stream events
-:   `POST kbn://api/agent_builder/converse/async`
+:   ```console
+    POST kbn://api/agent_builder/converse/async
+    ```
 
 List conversations
-:   `GET kbn://api/agent_builder/conversations`
+:   ```console
+    GET kbn://api/agent_builder/conversations
+    ```
 
 Get conversation by ID
-:   `GET kbn://api/agent_builder/conversations/{conversation_id}`
+:   ```console
+    GET kbn://api/agent_builder/conversations/{conversation_id}
+    ```
 
 Delete conversation by ID
-:   `DELETE kbn://api/agent_builder/conversations/{conversation_id}`
+:   ```console
+    DELETE kbn://api/agent_builder/conversations/{conversation_id}
+    ```
 
 ### MCP Server
 
 Get MCP server configuration
-:   `GET kbn://api/agent_builder/mcp`
+:   ```console
+    GET kbn://api/agent_builder/mcp
+    ```
 
 Create or configure MCP server
-:   `POST kbn://api/agent_builder/mcp`
+:   ```console
+    POST kbn://api/agent_builder/mcp
+    ```
 
 Delete MCP server configuration
-:   `DELETE kbn://api/agent_builder/mcp`
+:   ```console
+    DELETE kbn://api/agent_builder/mcp
+    ```
 
 ### A2A Protocol
 
 Refer to [](a2a-server.md) for more information.
 
 Get A2A agent card configuration
-:   `GET kbn://api/agent_builder/a2a/{agentId}.json`
+:   ```console
+    GET kbn://api/agent_builder/a2a/{agentId}.json
+    ```
 
 Execute A2A agent task
-:   `POST kbn://api/agent_builder/a2a/{agentId}`
+:   ```console
+    POST kbn://api/agent_builder/a2a/{agentId}
+    ```
 
