@@ -21,6 +21,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.1.4 [elastic-observability-9.1.4-release-notes]
+
+### Enhancements [elastic-observability-9.1.4-enhancements]
+
+* Save button is disabled in user-specific system prompt flyout when there's no input [#231562]({{kib-pull}}2301562).
+
+
 ## 9.1.3 [elastic-observability-9.1.3-release-notes]
 
 ### Fixes [elastic-observability-9.1.3-fixes]
@@ -190,6 +197,11 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Applies chunking algorithm for `getIndexBasicStats` in Dataset Health [#221153]({{kib-pull}}221153).
 * Improves finding functions in Universal Profiling [#210437]({{kib-pull}}210437).
 * Adds logical `AND` to monitor tags and locations filter [#217985]({{kib-pull}}217985).
+
+## 9.0.7 [elastic-observability-9.0.7-release-notes]
+
+### Features and enhancements[elastic-observability-9.0.7-features]
+There are no user-facing changes in the 9.0.7 release.
 
 ## 9.0.6 [elastic-observability-9.0.6-release-notes]
 

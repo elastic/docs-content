@@ -5,7 +5,7 @@ applies_to:
     ece:
 ---
 
-# Configure a snapshot repository using AWS S3 [ece-aws-custom-repository]
+# Configure an AWS S3 snapshot repository in {{ece}} [ece-aws-custom-repository]
 
 To store {{es}} snapshots in AWS S3, you need to configure a snapshot repository in {{ece}} (ECE). This guide explains how to add an Amazon S3 repository using the Cloud UI and provides details on required settings and advanced configurations.
 

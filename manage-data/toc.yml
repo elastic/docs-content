@@ -134,8 +134,9 @@ toc:
           - file: lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md
           - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
           - hidden: lifecycle/index-lifecycle-management/index-management-in-kibana.md
-          - file: lifecycle/index-lifecycle-management/migrate-index-management.md
+          - file: lifecycle/index-lifecycle-management/migrate-ilm.md
             children:
+              - file: lifecycle/index-lifecycle-management/migrate-index-management.md
               - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
               - file: lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md
       - file: lifecycle/data-stream.md

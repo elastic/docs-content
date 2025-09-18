@@ -107,30 +107,18 @@ By default, documents are split into sentences and grouped in sections up to 250
 
 Several strategies are available for chunking: 
 
-`sentence`
-:   The `sentence` strategy splits the input text at sentence boundaries. Each chunk contains one or more complete sentences ensuring that the integrity of sentence-level context is preserved, except when a sentence causes a chunk to exceed a word count of `max_chunk_size`, in which case it will be split across chunks. The `sentence_overlap` option defines the number of sentences from the previous chunk to include in the current chunk which is either `0` or `1`.
+#### `sentence` 
 
-`word`
-:   The `word` strategy splits the input text on individual words up to the `max_chunk_size` limit. The `overlap` option is the number of words from the previous chunk to include in the current chunk.
+The `sentence` strategy splits the input text at sentence boundaries. Each chunk contains one or more complete sentences ensuring that the integrity of sentence-level context is preserved, except when a sentence causes a chunk to exceed a word count of `max_chunk_size`, in which case it will be split across chunks. The `sentence_overlap` option defines the number of sentences from the previous chunk to include in the current chunk which is either `0` or `1`.
 
-`recursive`{applies_to}`stack: ga 9.1`
-:   The `recursive` strategy splits the input text based on a configurable list of separator patterns (for example, newlines or Markdown headers). The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to sentence-level splitting.
-
-`none` {applies_to}`stack: ga 9.1`
-
-:   The `none` strategy disables chunking and processes the entire input text as a single block, without any splitting or overlap. When using this strategy, you can instead [pre-chunk](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking) the input by providing an array of strings, where each element acts as a separate chunk to be sent directly to the inference service without further chunking.
-
-The default chunking strategy is `sentence`.
-
-#### Example of configuring the chunking behavior
-
-The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model by default and configures the chunking behavior.
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures the chunking behavior with the `sentence` strategy.
 
 ```console
-PUT _inference/sparse_embedding/small_chunk_size
+PUT _inference/sparse_embedding/sentence_chunks
 {
   "service": "elasticsearch",
   "service_settings": {
+    "model_id": ".elser_model_2",
     "num_allocations": 1,
     "num_threads": 1
   },
@@ -138,6 +126,113 @@ PUT _inference/sparse_embedding/small_chunk_size
     "strategy": "sentence",
     "max_chunk_size": 100,
     "sentence_overlap": 0
+  }
+}
+```
+
+The default chunking strategy is `sentence`.
+
+#### `word`
+
+The `word` strategy splits the input text on individual words up to the `max_chunk_size` limit. The `overlap` option is the number of words from the previous chunk to include in the current chunk. 
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures the chunking behavior with the `word` strategy, setting a maximum of 120 words per chunk and an overlap of 40 words between chunks.
+
+```console
+PUT _inference/sparse_embedding/word_chunks
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "word",
+    "max_chunk_size": 120,
+    "overlap": 40
+  }
+}
+```
+
+#### `recursive`
+
+```{applies_to}
+stack: ga 9.1`
+```
+
+The `recursive` strategy splits the input text based on a configurable list of separator patterns (for example, newlines or Markdown headers). The chunker applies these separators in order, recursively splitting any chunk that exceeds the `max_chunk_size` word limit. If no separator produces a small enough chunk, the strategy falls back to sentence-level splitting.
+
+##### Markdown separator group
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures chunking with the `recursive` strategy using the markdown separator group and a maximum of 200 words per chunk.
+
+```console
+PUT _inference/sparse_embedding/recursive_markdown_chunks
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "recursive",
+    "max_chunk_size": 200,
+    "separator_group": "markdown"
+  }
+}
+```
+
+##### Custom separator group
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and configures chunking with the `recursive` strategy. It uses a custom list of separators to split plaintext into chunks of up to 180 words.
+
+
+```console
+PUT _inference/sparse_embedding/recursive_custom_chunks
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "recursive",
+    "max_chunk_size": 180,
+    "separators": [
+      "^(#{1,6})\\s",
+      "\\n\\n",
+      "\\n[-*]\\s",
+      "\\n\\d+\\.\\s",
+      "\\n"
+    ]
+  }
+}
+```
+
+#### `none`
+
+```{applies_to}
+stack: ga 9.1`
+```
+
+The `none` strategy disables chunking and processes the entire input text as a single block, without any splitting or overlap. When using this strategy, you can instead [pre-chunk](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking) the input by providing an array of strings, where each element acts as a separate chunk to be sent directly to the inference service without further chunking.
+
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and disables chunking by setting the strategy to `none`.
+
+```console
+PUT _inference/sparse_embedding/none_chunking
+{
+  "service": "elasticsearch",
+  "service_settings": {
+    "model_id": ".elser_model_2",
+    "num_allocations": 1,
+    "num_threads": 1
+  },
+  "chunking_settings": {
+    "strategy": "none"
   }
 }
 ```

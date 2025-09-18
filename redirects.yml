@@ -350,6 +350,9 @@ redirects:
   'release-notes/fleet/deprecations.md': 'fleet-server://release-notes/deprecations.md'
   'release-notes/fleet/known-issues.md': 'fleet-server://release-notes/known-issues.md'
 
+# Related to https://github.com/elastic/docs-content/issues/2985
+
+  'troubleshoot/observability/apm-agent-swift/apm-ios-agent.md': 'troubleshoot/ingest/opentelemetry/edot-sdks/ios/index.md'
+
 # Related to https://github.com/elastic/docs-content/pull/2843
   'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/search/get-started.md'
-

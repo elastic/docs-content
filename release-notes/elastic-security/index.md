@@ -27,6 +27,16 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.1.4 [elastic-security-9.1.4-release-notes]
+
+### Features and enhancements [elastic-security-9.1.4-features-enhancements]
+* Adds more Linux diagnostic process `ptrace` events.
+
+### Fixes [elastic-security-9.1.4-fixes]
+* Fixes a bug where the toggle column functionality only functioned on the **Alerts** page [#234278]({{kib-pull}}234278).
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
+* Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
+
 ## 9.1.3 [elastic-security-9.1.3-release-notes]
 
 ### Fixes [elastic-security-9.1.3-fixes]
@@ -156,6 +166,15 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a memory growth bug in {{elastic-defend}} on Linux when both **Collect session data** and **Capture terminal output** are enabled.
 * Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
+
+## 9.0.7 [elastic-security-9.0.7-release-notes]
+
+### Fixes [elastic-security-9.0.7-fixes]
+* Prevents users without appropriate privileges from deleting notes [#233948]({{kib-pull}}233948).
+* Fixes a bug that prevented the **MITRE ATT&CK** section from appearing in the alert details flyout [#233805]({{kib-pull}}233805).
+* Updates {{kib}} MITRE ATT&CK data to v17.1 [#231375]({{kib-pull}}231375).
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
+* Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
 
 ## 9.0.6 [elastic-security-9.0.6-release-notes]
 

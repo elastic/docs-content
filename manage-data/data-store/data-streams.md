@@ -13,7 +13,7 @@ products:
 
 # Data streams [data-streams]
 
-A data stream lets you store append-only time series data across multiple indices while giving you a single named resource for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.
+A data stream acts as a layer of abstraction over a set of indices that are optimized for storing append-only time series data. It stores data across multiple backing indices while giving you a single named resource to use for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.
 
 You can submit indexing and search requests directly to a data stream. The stream automatically routes the request to backing indices that store the stream’s data. You can use [{{ilm}} ({{ilm-init}})](../lifecycle/index-lifecycle-management.md) to automate the management of these backing indices. For example, you can use {{ilm-init}} to automatically move older backing indices to less expensive hardware and delete unneeded indices. {{ilm-init}} can help you reduce costs and overhead as your data grows.
 
@@ -39,7 +39,7 @@ A data stream consists of one or more [hidden](elasticsearch://reference/elastic
 :alt: data streams diagram
 :::
 
-A data stream requires a matching [index template](templates.md). The template contains the mappings and settings used to configure the stream’s backing indices.
+A data stream requires a matching [index template](templates.md). The template contains the mappings and settings used to configure the stream’s backing indices and defines the {{ilm-init}} policy that the data stream uses.
 
 Every document indexed to a data stream must contain a `@timestamp` field, mapped as a [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) field type. If the index template doesn’t specify a mapping for the `@timestamp` field, {{es}} maps `@timestamp` as a `date` field with default options.
 

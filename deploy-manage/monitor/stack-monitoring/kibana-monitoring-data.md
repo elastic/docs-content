@@ -43,7 +43,7 @@ deployment:
 2. Verify that `monitoring.ui.enabled` is set to `true`, which is the default value, in the [`kibana.yml`](/deploy-manage/stack-settings.md) file. For more information, see [Monitoring settings](kibana://reference/configuration-reference/monitoring-settings.md).
 3. If the Elastic {{security-features}} are enabled on the monitoring cluster, you must provide a user ID and password so {{kib}} can retrieve the data.
 
-    1. Create a user that has the `monitoring_user` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md) on the monitoring cluster.
+    1. Create a user that has the `monitoring_user` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-monitoring-user) on the monitoring cluster.
 
         ::::{note}
         Make sure the `monitoring_user` role has read privileges on `metrics-*` indices. If it doesn’t, create a new role with `read` and `read_cross_cluster` index privileges on `metrics-*`, then assign the new role (along with `monitoring_user`) to your user.
@@ -54,7 +54,7 @@ deployment:
 4. (Optional) If you're using a self-managed cluster, then optionally configure {{kib}} to encrypt communications between the {{kib}} server and the monitoring cluster. See [Encrypt TLS communications in {{kib}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 5. If the Elastic {{security-features}} are enabled on the {{kib}} server, only users that have the authority to access {{kib}} indices and to read the monitoring indices can use the monitoring dashboards.
 
-    Create users that have the `monitoring_user` and `kibana_admin` [built-in roles](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). If you created a new role with read privileges on `metrics-*` indices, also assign that role to the users.
+    Create users that have the `monitoring_user` and `kibana_admin` [built-in roles](elasticsearch://reference/elasticsearch/roles.md). If you created a new role with read privileges on `metrics-*` indices, also assign that role to the users.
 
     ::::{note}
     These users must exist on the monitoring cluster. If you are accessing a remote monitoring cluster, you must use credentials that are valid on both the {{kib}} server and the monitoring cluster.
@@ -93,8 +93,8 @@ On the **Stack Monitoring** page, you’ll see cluster alerts that require your 
 :screenshot:
 :::
 
-If you encounter problems, see [Troubleshooting monitoring](../monitoring-data/monitor-troubleshooting.md).
+If you encounter problems, refer to [](/deploy-manage/monitor/monitoring-data/monitor-troubleshooting.md).
 
 :::{tip}
 If you're using {{ech}} or {{ece}}, then you can also get a direct link to the relevant **Stack Monitoring** page from the deployment's **Logs and metrics** page. [Learn more](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md#access-kibana-monitoring).
-::::
+:::
