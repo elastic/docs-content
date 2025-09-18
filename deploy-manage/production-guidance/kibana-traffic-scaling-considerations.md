@@ -18,7 +18,6 @@ products:
 On [{{serverless-full}}](../deploy/elastic-cloud/serverless.md) scaling {{kib}} is fully managed for you.
 ::::
 
-## Introduction [_introduction]
 
 {{kib}}'s HTTP traffic is diverse and can be unpredictable. Traffic includes serving static assets like files, processing large search responses from {{es}} and managing CRUD operations against complex domain objects like SLOs. The scale of the load created by each of these kinds of traffic will vary depending on your usage patterns. While difficult to predict, there are 2 important aspects to consider when provisioning CPU and memory resources for your {{kib}} instances:
 
