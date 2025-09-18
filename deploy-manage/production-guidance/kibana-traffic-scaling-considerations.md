@@ -80,7 +80,7 @@ Building on the simple strategy outlined above, we can make more precise adjustm
 
 ### Gather usage information [_monitoring-kibana-metrics]
 
-In order to understand the impact of your usage patterns on a single {{kib}} instance, use the [stack monitoring](/docs/deploy-manage/monitor/stack-monitoring) feature.
+In order to understand the impact of your usage patterns on a single {{kib}} instance, use the [stack monitoring](../monitor/stack-monitoring.md) feature.
 
 Using stack monitoring, you can gather the following metrics for your {{kib}} instance:
 
