@@ -86,6 +86,9 @@ To configure data ingestion, you need elevated privileges, typically the `elasti
 If you’re upgrading from a previous version with Universal Profiling enabled, see the [upgrade guide](upgrade-universal-profiling.md).
 
 
+```{applies_to}
+stack: ga 9.2
+```
 ### Programmatic configuration [profiling-configure-data-ingestion-programmatic]
 
 If you prefer to configure data ingestion programmatically, you can use a Kibana API call. This call can be made either through the "Dev Tools" console in Kibana or with any standalone HTTP client (such as `curl` or `wget`). In both cases, the API call must be executed using the `elastic` user credentials to ensure the necessary permissions.
