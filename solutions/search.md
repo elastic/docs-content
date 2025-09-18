@@ -69,3 +69,12 @@ Search is one of the common use cases built on {{es}}. With your own data (text,
 * [The {{es}} data store](/manage-data/data-store.md)
 * [Content connectors](elasticsearch::docs/reference/search-connectors/index.md)
 * [{{es}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/v9/)
+
+::::{tip}
+Considering whether {{es}} on {{serverless-full}} is the right deployment option for your needs?
+
+These resources can help you compare and decide:
+
+* [What’s different?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md): Understand the differences between {{serverless-full}} and other deployment types.
+* [Billing](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md): Learn about the billing model for {{es}} on {{serverless-full}}.
+::::
