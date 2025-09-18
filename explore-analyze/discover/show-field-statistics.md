@@ -15,6 +15,10 @@ Explore the fields in your data with the **Field statistics** view in **Discover
 * What does the latency look like when one of the containers is down on a Sunday?
 * Is the field type and format in the data view appropriate for the data and its cardinality?
 
+:::{note}
+Field statistics aren't available when **Discover** is in {{esql}} mode.
+:::
+
 This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. Go to **Discover**.
