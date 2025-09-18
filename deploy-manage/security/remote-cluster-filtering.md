@@ -81,23 +81,23 @@ To create a remote cluster filter:
 5. Add a meaningful name and description for the rule set.
 6. In the **Organization ID** and **{{es}} ID** fields, enter the organization or cluster ID of the deployments from which you want to allow traffic. Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
 
-    ::::note
+    :::note
     * ECE supports filtering remote cluster traffic from deployments in the same ECE system, in other ECE environments, or in {{ecloud}}.
     * For ECE systems, use the **Environment ID** from **Platform → Trust Management → Trust parameters** as the organization ID.
     * In {{ecloud}}, the organization ID is shown on the organization page in the top-right menu.
     * To get a deployment’s {{es}} ID, select **Copy cluster ID** on its management page in the Cloud UI.
-    ::::    
+    :::    
 
 7. Select if this rule set should be automatically attached to new deployments.
 8. Select **Create filter** to create the remote cluster filter.
 
-::::{important}
+:::{important}
 Because this type of filter operates at the proxy level, if the local deployments or organizations in the filter belong to a different ECE environment or to ECH, you must add the transport TLS CA certificate of the local environment to the ECE proxy:
 
 * Find the TLS CA certificate in the **Security -> Remote Connections -> CA certificates** section of any deployment of the environment that initiates the remote connection. In {{ecloud}}, each provider and region has its own CA certificate, while in ECE a single CA certificate is used per installation.
     
 * To add a CA certificate to the ECE proxy, go to **Platform -> Settings -> TLS certificates** in the UI and update the certificate chain used when configuring your ECE installation. Append the required CA certificates to the end of the chain. The final chain should look like this: `Proxy private key`, `Proxy SSL certificate`, `Proxy CA(s)`, followed by the remaining CAs. For more details, refer to [Add a proxy certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md#ece-tls-proxy).
-::::
+:::
 
 
 ::::
