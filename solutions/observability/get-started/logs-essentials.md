@@ -113,7 +113,7 @@ For more information about creating dashboards, refer to [Create your first dash
 
 ::::::{step} Set up alerts
 
-Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. Elastic {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [Create and manage rules](/solutions/observability/incident-management/create-manage-rules.md) to get started.
+Elastic {{observability}} lets you define rules of different types which detect complex conditions and trigger relevant actions. Elastic {{observability}} can send alerts to email, Slack, and other third-party systems. Refer to [](/solutions/observability/incident-management/create-manage-rules.md) to get started.
 
 ::::::
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage Integrations Server
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-integrations-server.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Manage your Integrations server [ec-manage-integrations-server]
+# Manage Integrations server in {{ech}} [ec-manage-integrations-server]
 
 For deployments that are version 8.0 and later, you have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apm/index.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 

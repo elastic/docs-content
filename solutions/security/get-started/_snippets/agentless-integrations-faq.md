@@ -40,7 +40,7 @@ On the **{{fleet}}** page, the agent associated with an agentless integration ha
     ```
 
 
-For instructions on checking {{fleet}} logs, refer to [{{fleet}} troubleshooting](/troubleshoot/ingest/fleet/common-problems.md).
+For instructions on checking {{fleet}} logs, refer to [](/troubleshoot/ingest/fleet/common-problems.md).
 
 
 ## How do I delete an agentless integration? [_how_do_i_delete_an_agentless_integration]
