@@ -77,6 +77,7 @@ The non-ECS fields listed below are beta and subject to change.
 | `kibana.alert.ancestors.*` | Type: object |
 | `kibana.alert.depth` | Type: Long |
 | `kibana.alert.new_terms` | The value of the new term that generated this alert.<br>Type: keyword |
+| `kibana.alert.original_data_stream.*` {applies_to}`stack: ga 9.1`| Data stream information from the original source event, including `dataset`, `namespace`, and `type` fields.<br>Type: object |
 | `kibana.alert.original_event.*` | Type: object |
 | `kibana.alert.original_time` | The value copied from the source event (`@timestamp`).<br>Type: date |
 | `kibana.alert.reason` | Type: keyword |
