@@ -202,11 +202,11 @@ Keep the following in mind when rotating certificates and certificate authoritie
 
 * **Agent restart required**
 
-  Elastic Agent does not support hot reloading of updated certificates or CA files. You must restart the agent to apply changes.
+  {{agent}} does not support hot reloading of updated certificates or CA files. You must restart the agent to apply changes.
 
 * **Directory loading not supported**
 
-  Unlike Beats, Elastic Agent does not support passing a directory of CAs (for example, `--capath`) or monitoring a directory for changes. You must reference a specific file.
+  Unlike {{beats}}, {{agent}} does not support passing a directory of CAs (for example, `--capath`) or monitoring a directory for changes. You must reference a specific file.
 
 * **Rotation without re-enrollment**
 
