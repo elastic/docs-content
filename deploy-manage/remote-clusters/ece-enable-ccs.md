@@ -60,3 +60,7 @@ The steps, information, and authentication method required to configure CCS and 
     * [From an {{ech}} deployment](/deploy-manage/remote-clusters/ec-remote-cluster-ece.md)
     * [From a self-managed cluster](/deploy-manage/remote-clusters/remote-clusters-self-managed.md)
     * [From an ECK environment](ece-enable-ccs-for-eck.md)
+
+## Remote clusters and network security [ece-ccs-ccr-network-security]
+
+Content moved to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).

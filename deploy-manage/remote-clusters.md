@@ -52,7 +52,7 @@ In {{ech}} (ECH) and {{ece}} (ECE), the remote clusters functionality interacts 
   For remote clusters configured using the TLS certificate–based security model, network security policies or rule sets have no effect on remote clusters functionality. Connections established with this method (mTLS) are already considered secure and are always accepted, regardless of any filtering policies or rule sets applied on the local or remote deployment to restrict other traffic.
 
 * **API key–based authentication (recommended):**
-  When remote clusters use the API key–based authentication model, network security policies or rule sets on the **destination deployment** do affect remote cluster functionality if enabled. In this case, you can use traffic filters to explicitly control which deployments are allowed to connect to the remote clusters service endpoint.
+  When remote clusters use the API key–based authentication model, network security policies or rule sets on the **destination (remote) deployment** do affect remote cluster functionality if enabled. In this case, you can use traffic filters to explicitly control which deployments are allowed to connect to the remote cluster service endpoint.
 
   ::::{note}
   Because of [how network security works](/deploy-manage/security/network-security.md#how-network-security-works):
