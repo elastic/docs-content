@@ -1,5 +1,5 @@
 ---
-navigation_title: Kibana traffic scaling considerations
+Traffic scaling considerations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-traffic-scaling-considerations.html
 applies_to:
