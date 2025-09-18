@@ -12,7 +12,7 @@ products:
   - id: kibana
 ---
 
-# {{kib}} traffic scaling guide [kibana-traffic-scaling-considerations]
+# Scale {{kib}} for your traffic workload
 
 ::::{important}
 On [serverless](../deploy/elastic-cloud/serverless.md) scaling {{kib}} is fully managed for you.
