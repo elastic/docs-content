@@ -609,7 +609,8 @@ toc:
                   - file: users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md
                   - file: users-roles/cluster-or-deployment-auth/kibana-role-management.md
                   - file: users-roles/cluster-or-deployment-auth/role-restriction.md
-              - file: users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md                  
+              - title: "Elasticsearch privileges"
+                crosslink: elasticsearch://reference/elasticsearch/security-privileges.md              
               - file: users-roles/cluster-or-deployment-auth/kibana-privileges.md
               - file: users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md
                 children:

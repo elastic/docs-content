@@ -18,8 +18,8 @@ A _time series_ is a sequence of data points collected at regular time intervals
 * Access to [{{dev-tools-app}} Console](/explore-analyze/query-filter/tools/console.md) in {{kib}}, or another way to make {{es}} API requests
 
 * Cluster and index permissions: 
-    * [Cluster privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster):  `manage_index_templates`
-    * [Index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices): `create_doc` and `create_index`
+    * [Cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster):  `manage_index_templates`
+    * [Index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices): `create_doc` and `create_index`
 
 * Familiarity with [time series data stream concepts](time-series-data-stream-tsds.md) and [{{es}} index and search basics](/solutions/search/get-started.md) 
 
