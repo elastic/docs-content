@@ -65,7 +65,7 @@ For detailed troubleshooting guidance, see [Troubleshooting](../../troubleshoot/
 
 ## Scaling guidance [task-manager-scaling-guidance]
 
-How you deploy {{kib}} largely depends on your use case. Predicting the throughout a deployment might require to support Task Management is difficult because features can schedule an unpredictable number of tasks at a variety of scheduled cadences.
+How you deploy {{kib}} largely depends on your use case. Predicting the throughput a deployment requires to support Task Management is difficult because features can schedule an unpredictable number of tasks at a variety of scheduled cadences.
 
 However, there is a relatively straight forward method you can follow to produce a rough estimate based on your expected usage.
 
