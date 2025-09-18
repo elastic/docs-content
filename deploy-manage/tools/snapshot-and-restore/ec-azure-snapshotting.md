@@ -7,11 +7,12 @@ applies_to:
     ess:
 products:
   - id: cloud-hosted
+navigation_title: Azure Blob Storage
 ---
 
-# Configure a snapshot repository using Azure Blob storage [ec-azure-snapshotting]
+# Configure an Azure Blob Storage snapshot repository in {{ech}} [ec-azure-snapshotting]
 
-Configure a custom snapshot repository using your Azure Blob storage account.
+Configure a custom snapshot repository using your Azure Blob Storage account.
 
 
 ## Prepare a container [ec-prepare-azure-container]

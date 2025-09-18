@@ -1,4 +1,5 @@
 ---
+navigation_title: Examples
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/log-settings-examples.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Examples [log-settings-examples]
+# Examples of {{kib}} logging configurations [log-settings-examples]
 
 Here are some configuration examples for the most common logging use cases:
 

@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/synthetics-migrate-from-integration.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---
