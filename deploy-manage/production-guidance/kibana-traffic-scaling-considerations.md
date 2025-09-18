@@ -69,7 +69,7 @@ This advice does not apply to scaling {{kib}} for task manager. If you intend to
 ### Adjust resource allocations for {{kib}}
 The way that you alter the resources allocated to your {{kib}} instance depends on your deployment type.
 * **[{{ech}}](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) and [{{ece}}](/deploy-manage/deploy/elastic-cloud/configure.md):** Users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. In these environments, size increments are predetermined.
-* **{{eck}}:** Users can configure pod memory and CPU resources. [Follow the {{kib}} guide for their version of {{eck}}](https://www.elastic.co/guide/en/cloud-on-k8s/index.html)
+* **{{eck}}:** Users can configure pod memory and CPU resources. [Follow the {{kib}} guide](https://www.elastic.co/guide/en/cloud-on-k8s/index.html) for the version of {{eck}} you are running.
 * **Self-managed:** Users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
 
 :::{note}
