@@ -5,9 +5,10 @@ mapped_pages:
 products:
   - id: observability
   - id: cloud-serverless
+navigation_title: Configure settings
 ---
 
-# Configure settings [observability-configure-intra-settings]
+# Configure infrastructure and host metrics settings [observability-configure-intra-settings]
 
 ::::{note}
 

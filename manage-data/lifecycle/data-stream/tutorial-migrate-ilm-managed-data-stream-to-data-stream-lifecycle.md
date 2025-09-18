@@ -312,8 +312,6 @@ GET _data_stream/dsl-data-stream
 3. The new write index received the `false` value for the `prefer_ilm` setting, as we configured in the index template
 4. The new write index is managed by `Data stream lifecycle`
 
-
-
 ## Migrate data stream back to ILM [migrate-from-dsl-to-ilm]
 
 We can easily change this data stream to be managed by {{ilm-init}} because we didn’t remove the {{ilm-init}} policy when we [updated the index template](#update-index-template-for-dsl).
@@ -333,7 +331,7 @@ PUT _data_stream/dsl-data-stream/_lifecycle
 }
 ```
 
-1. The `enabled` flag can be ommitted and defaults to `true` however, here we explicitly configure it to `false` Let’s check the state of the data stream:
+1. The `enabled` flag can be omitted and defaults to `true` however, here we explicitly configure it to `false` Let’s check the state of the data stream:
 
 
 ```console

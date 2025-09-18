@@ -78,7 +78,9 @@ The [Elastic Common Schema (ECS)](ecs://reference/index.md) defines a common set
 {{elastic-sec}} requires [ECS-compliant data](ecs://reference/index.md). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [{{elastic-sec}} ECS field reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
 ::::
 
+## Third-party collectors NOT mapped to ECS [security-requirements-overview-third-party-collectors-not-mapped-to-ecs]
 
+{{elastic-sec}} does not support the use of third-party connectors that do not map data to ECS, including third-party and open source OTel collectors.
 
 ## Cross-cluster searches [security-cross-cluster-searches]
 

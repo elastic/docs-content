@@ -1,4 +1,5 @@
 ---
+navigation_title: Quickstart
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-quickstart.html
 applies_to:
@@ -8,9 +9,9 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Quickstart [k8s-elastic-agent-quickstart]
+# Quickstart: Running standalone {{agent}} on {{eck}} [k8s-elastic-agent-quickstart]
 
-1. Apply the following specification to deploy Elastic Agent with the System metrics integration to harvest CPU metrics from the Agent Pods. ECK automatically configures the secured connection to an {{es}} cluster named `quickstart`, created in the [{{es}} quickstart](deploy-an-orchestrator.md).
+1. Apply the following specification to deploy Elastic Agent with the System metrics integration to harvest CPU metrics from the Agent Pods. ECK automatically configures the secured connection to an {{es}} cluster named `quickstart`, created in [](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md).
 
     ```yaml subs=true
     cat <<EOF | kubectl apply -f -

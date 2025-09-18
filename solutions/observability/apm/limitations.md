@@ -25,7 +25,7 @@ products:
 * The application logs data stream (`app_logs`) has dynamic mapping disabled. This means the automatic detection and mapping of new fields is disabled (see issue [#9093](https://github.com/elastic/apm-server/issues/9093)).
 
 ::::{note}
-Logs ingest through the [EDOT Collector](opentelemetry://reference/edot-collector/index.md) is fully supported.
+Logs ingest through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) is fully supported.
 ::::
 
 ## OpenTelemetry Line Protocol (OTLP) [apm-open-telemetry-otlp-limitations]

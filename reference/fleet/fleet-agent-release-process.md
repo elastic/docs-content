@@ -11,7 +11,7 @@ products:
 
 ## Scheduled releases
 
-{{agent}} follows a release process aligned with the broader {{stack}} release schedule. The latest features, enhancements, and fixes are documented in the [release notes](../../release-notes/fleet-elastic-agent/index.md).
+{{agent}} follows a release process aligned with the broader {{stack}} release schedule. The latest features, enhancements, and fixes are documented in the [release notes](elastic-agent://release-notes/index.md).
 
 ## Independent {{agent}} releases [independent-agent-releases]
 
