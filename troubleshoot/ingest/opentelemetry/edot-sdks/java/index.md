@@ -1,6 +1,6 @@
 ---
 navigation_title: EDOT Java
-description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, covering connectivity, agent identification, and debugging.
+description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) Java agent, covering connectivity, agent identification, and debugging.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting the EDOT Java Agent
+# Troubleshooting the EDOT Java agent
 
 Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](elastic-otel-java://reference/edot-java/supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
 

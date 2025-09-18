@@ -1,4 +1,5 @@
 ---
+navigation_title: Manage Integrations Server 
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-integrations-server.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Manage your Integrations Server [ece-manage-integrations-server]
+# Manage Integrations Server in {{ece}} [ece-manage-integrations-server]
 
 For deployments that are version 8.0 and later, you have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apm/index.md) and [Fleet Server](/reference/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the {{es}} cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 
@@ -43,7 +44,7 @@ New certificates must be generated for both these endpoints. Check [Enable custo
 
 ## Using the API to manage Integrations Server [ece_using_the_api_to_manage_integrations_server]
 
-To manage Integrations Server through the API you need to include an Integrations Server payload when creating or updating a deployment. Check [Enable Integrations Server through the API](../../../deploy-manage/deploy/cloud-enterprise/manage-integrations-server.md) for an example.
+To manage Integrations Server through the API you need to include an Integrations Server payload when creating or updating a deployment. Check [Enable Integrations Server through the API](../../../deploy-manage/deploy/cloud-enterprise/ece-integrations-server-api-example.md) for an example.
 
 Check [Switch from APM to Integrations Server payload](../../../deploy-manage/deploy/cloud-enterprise/switch-from-apm-to-integrations-server-payload.md) for an example of how to switch from APM & Fleet Server to Integrations Server.
 
