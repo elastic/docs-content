@@ -9,7 +9,7 @@ products:
   - id: apm
 ---
 
-# Configure the Elasticsearch output [apm-elasticsearch-output]
+# Configure the Elasticsearch output for APM Server[apm-elasticsearch-output]
 
 ::::{note}
 ![supported deployment methods](/solutions/images/observability-binary-yes-fm-no.svg "")
