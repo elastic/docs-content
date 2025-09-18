@@ -32,7 +32,7 @@ Most MCP clients (such as Claude Desktop, Cursor, VS Code, etc.) have similar co
 
 {
   "mcpServers": {
-    "elastic": {
+    "elastic-agent-builder": {
       "command": "npx",
       "args": [
         "mcp-remote",
