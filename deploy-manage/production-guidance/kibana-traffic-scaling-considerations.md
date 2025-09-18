@@ -50,6 +50,7 @@ Start {{kib}} on **1 vCPU** and **2GB** of memory. This should comfortably serve
 If you are experiencing performance issues, you can scale {{kib}} vertically by adding the following resources for every 10 additional concurrent users:
 * 1 vCPU
 * 2GB of memory
+
 These amounts are a safe minimum to ensure that {{kib}} is not resource-starved for common analytics use cases.
 It is recommended to scale vertically to a maximum of **8.4 vCPU** and **8GB** of memory.
 You should also combine vertical scaling with horizontal scaling to handle greater concurrency or bursty traffic. Refer to [](./kibana-load-balance-traffic.md) for guidance.
@@ -60,19 +61,20 @@ This advice does not apply to scaling {{kib}} for task manager. If you intend to
 
 ### Scaling examples
 
-| Concurrent users | Total vCPU | Total memory | ECH and ECE deployment size |
+| Concurrent users | Total vCPU | Total memory | ECH and ECE deployment examples |
 | --- | --- | --- | --- |
-| 50 | 5 | 10 | • {{kib}} instance of 8.4 vCPU and 16GB memory in 1 availability zone (creates 2 8GB nodes per availability zone)<br><br>• {{kib}} instance of 8.4 vCPU and 8GB memory each across 2 availability zones<br><br>• {{kib}} instances of 8.4 vCPU and 4GB memory each across 3 availability zones |
-| 100 | 10 | 20 | • {{kib}} instance of 12 vCPU and 24GB memory in 1 availability zone (creates 3 8GB nodes per availability zone)<br><br>• {{kib}} instance of 8.4 vCPU and 8GB memory each across 3 availability zones<br><br>|
+| 50 | 5 vCPU | 10GB | • {{kib}} instance of 8.4 vCPU and 16GB memory in 1 availability zone (creates 2 8GB nodes per availability zone)<br><br>• {{kib}} instance of 8.4 vCPU and 8GB memory each across 2 availability zones<br><br>• {{kib}} instances of 8.4 vCPU and 4GB memory each across 3 availability zones |
+| 100 | 10 vCPU | 20GB | • {{kib}} instance of 12 vCPU and 24GB memory in 1 availability zone (creates 3 8GB nodes per availability zone)<br><br>• {{kib}} instance of 8.4 vCPU and 8GB memory each across 3 availability zones<br><br>|
 
 ### Adjust resource allocations for {{kib}}
 The way that you alter the resources allocated to your {{kib}} instance depends on your deployment type.
 * **[{{ech}}](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) and [{{ece}}](/deploy-manage/deploy/elastic-cloud/configure.md):** Users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. In these environments, size increments are predetermined.
 * **{{eck}}:** Users can configure pod memory and CPU resources. [Follow the {{kib}} guide for their version of {{eck}}](https://www.elastic.co/guide/en/cloud-on-k8s/index.html)
 * **Self-managed:** Users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
-	:::{note}
-	Node.js suggests allocating 80% of available host memory to heap, assuming that {{kib}} is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example, allowing for HTTP sockets to be allocated.
-	:::
+
+:::{note}
+Node.js suggests allocating 80% of available host memory to heap, assuming that {{kib}} is the only server process running on the (virtual) host. This allows for memory resources to be used for other activities, for example, allowing for HTTP sockets to be allocated.
+:::
 
 ## Advanced scaling using stack monitoring metrics
 
@@ -103,7 +105,4 @@ Monitoring {{kib}}'s ELD over time is a solid strategy for knowing when addition
 Heap size is an important metric to track. If {{kib}}'s heap size grows beyond the heap limit, {{kib}} will crash. By monitoring heap size, you can help ensure that {{kib}} has enough memory available.
 
 Self-managed users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
-:::{note}
-Node.js suggests allocating 80% of available memory to heap. This allows for memory resources to be used for other activities, for example: allowing for HTTP sockets to be allocated.
-:::
 
