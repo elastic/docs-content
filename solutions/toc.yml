@@ -503,6 +503,7 @@ toc:
       - file: observability/observability-ai-assistant.md
         children:
           - file: observability/connect-to-own-local-llm.md
+          - file: observability/llm-performance-matrix.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
