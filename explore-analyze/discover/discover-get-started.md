@@ -22,6 +22,26 @@ Learn how to use **Discover** to:
 * You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
 * You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 
+## Context-aware data exploration [context-aware-discover]
+
+**Discover** can provide tailored experiences for the following data types when accessed from specific Serverless project types or {{kib}} solution views:
+
+* Observability:
+  * **[Logs exploration](/solutions/observability/logs/explore-logs.md)**
+% LINK/PAGE TBD  * **Traces exploration**
+% LINK/PAGE TBD  * **Metrics exploration**
+% * Security: 
+% LINK/PAGE TBD  * **Security data exploration**
+
+This context-aware experience is determined by both your solution context and the type of data you query. When both conditions align, **Discover** provides specific capabilities useful for exploring that specific type of data, and integrates features or paths to other relevant solution applications.
+
+When you access **Discover** outside of a specific solution context, or when working with data types that don't have specialized experiences, you get the default **Discover** interface with all its core functionality for general-purpose data exploration.
+
+### Context-awareness with multiple data types
+
+In context-aware mode, it can happen that your query includes multiple data types for which a tailored experience exists. For example, if you query both `logs-*` and `traces-*` indices within an Observability context. 
+
+In this case **Discover** provides the default experience until it's able to detect that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
 
 ## Load data into Discover [find-the-data-you-want-to-use]
 
