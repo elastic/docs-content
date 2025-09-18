@@ -19,7 +19,7 @@ products:
 
 # Defining roles [defining-roles]
 
-If [built-in roles](built-in-roles.md) do not address your use case, then you can create additional custom roles.
+If [built-in roles](elasticsearch://reference/elasticsearch/roles.md) do not address your use case, then you can create additional custom roles.
 
 In this section, you'll learn about the [data structure of a role](#role-structure), and about the [methods for defining and managing custom roles](#managing-custom-roles).
 

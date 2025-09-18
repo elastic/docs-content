@@ -12,7 +12,7 @@ navigation_title: Release notes
 
 Stay up to date with the latest changes, fixes, known issues, and deprecations in Elastic products. 
 
-Release notes cover the all the latest Elastic product changes, including the following:
+Release notes cover all the latest Elastic product changes, including the following:
 * {{stack}} {{version.stack.base}} and later, including the most recent {{version.stack}} release
 * {{serverless-full}}, including updates to {{es}}, and {{observability}} and {{elastic-sec}} solutions
 
@@ -26,7 +26,7 @@ Looking for earlier versions? Go to [Release docs](https://www.elastic.co/guide/
 
 ## Recommended: Upgrade to the latest version
 
-We recommend upgrading to the latest supported version to take advantage of the newest features, performance improvements, and security updates. Learn how to [Upgrade](/deploy-manage/upgrade.md).
+We recommend upgrading to the latest supported version to take advantage of the newest features, performance improvements, and security updates. Learn how to [](/deploy-manage/upgrade.md).
 
 ## Additional release resources
 

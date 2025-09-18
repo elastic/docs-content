@@ -77,7 +77,7 @@ The API key created previously will be used by the local deployment to authentic
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
