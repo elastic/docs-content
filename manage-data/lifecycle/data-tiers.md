@@ -523,4 +523,4 @@ For example:
 Defining the `migrate` action with `"enabled": false` for a data tier [disables automatic {{ilm-init}} shard migration](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md#ilm-disable-migrate-ex). This is useful if, for example, you’re using the [allocate action](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md) to manually specify allocation rules.          
 
 #### Important Note: 
-Do not disable automatic ILM migration without manually defining ILM allocation rules. If data migration is disabled without allocation rules defined, this can prevent data from moving to the specified data tier, although the data has successfully moved through the ILM policy with a status of `complete`.
+Do not disable automatic {{ilm-init}} migration without manually defining {{ilm-init}} allocation rules. If data migration is disabled without allocation rules defined, this can prevent data from moving to the specified data tier, even though the data has successfully moved through the {{ilm-init}} policy with a status of `complete`.
