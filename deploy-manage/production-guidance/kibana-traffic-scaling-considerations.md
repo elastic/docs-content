@@ -94,7 +94,7 @@ Using stack monitoring, you can gather the following metrics for your {{kib}} in
 
 Event loop delay (ELD) is an important metric for understanding whether {{kib}} is engaged in CPU-bound activity.
 
-**As a general target, ELD should be at below ~200ms 95% of the time**. Higher delays may mean {{kib}} is CPU-starved. Sporadic increases above 200ms may mean that {{kib}} is periodically processing CPU-intensive activities like large responses from {{es}}, whereas consistently high ELD may mean {{kib}} is struggling to service tasks and requests.
+**As a general target, ELD should be below ~220ms 95% of the time**. Higher delays may mean {{kib}} is CPU-starved. Sporadic increases above 200ms may mean that {{kib}} is periodically processing CPU-intensive activities like large responses from {{es}}, whereas consistently high ELD may mean {{kib}} is struggling to service tasks and requests.
 
 Before increasing CPU resources, consider the impact of ELD on user experience. If users are able to use {{kib}} without the frustration that comes from a blocked CPU, provisioning additional CPU resources will not be impactful, although having spare resources in case of unexpected spikes is useful.
 
