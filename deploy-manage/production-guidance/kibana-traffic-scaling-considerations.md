@@ -15,7 +15,7 @@ products:
 # Scale {{kib}} for your traffic workload
 
 ::::{important}
-On [serverless](../deploy/elastic-cloud/serverless.md) scaling {{kib}} is fully managed for you.
+On [{{serverless-full}}](../deploy/elastic-cloud/serverless.md) scaling {{kib}} is fully managed for you.
 ::::
 
 ## Introduction [_introduction]
