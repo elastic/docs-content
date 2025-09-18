@@ -77,7 +77,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 
 ::::
 
@@ -111,7 +111,7 @@ If you later need to update the remote connection with different permissions, yo
     ::::
 
 
-If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
+If you need to update the remote connection with different permissions later, refer to [Change a cross-cluster API key used for a remote connection](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 
 ::::
 ::::::
@@ -229,7 +229,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
     * **Proxy address**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.<br>
 
       ::::{tip}
-      If you’re using API keys as security model, change the port into `9443`.
+      If you’re using API keys as security model, change the port to `9443`.
       ::::
 
     * **Server name**: This value can be found on the **Security** page of the {{ech}} deployment you want to use as a remote.

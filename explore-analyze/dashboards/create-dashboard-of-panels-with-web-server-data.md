@@ -49,7 +49,7 @@ To create the visualizations in this tutorial, you’ll use the following fields
 * **timestamp**
 * **bytes**
 * **clientip**
-* **referer.keyword**
+* **referer**
 
 Click a field name to view more details, such as its top values and distribution.
 
@@ -84,7 +84,7 @@ The only number function that you can use with **clientip** is **Unique count**,
 
 3. In the layer pane, click **Unique count of clientip**.
 
-    1. In the **Name** field, enter `Unique visitors`.
+    1. Open **Primary metric**. Go to **Appearance** and in the **Name** field, enter `Unique visitors`.
     2. Click **Close**.
 
 4. Click **Save and return**.
@@ -109,11 +109,7 @@ To visualize the **bytes** field over time:
    :::
 
 
-To emphasize the change in **Median of bytes** over time, change the visualization type to **Line** with one of the following options:
-
-* In the **Suggestions**, click the line chart.
-* In the editor toolbar, open the **Visualization type** dropdown, then select **Line**.
-* In the layer pane, open the **Layer visualization type** menu, then click **Line**.
+To emphasize the change in **Median of bytes** over time, change the visualization type to **Line**. In the layer pane, open the **Layer visualization type** menu, then click **Line**.
 
 To increase the minimum time interval:
 
@@ -291,7 +287,7 @@ Add a panel title:
 
 1. On the dashboard, click **Create visualization**.
 2. Open the **Visualization type** dropdown, then select **Treemap**.
-3. From the **Available fields** list, drag **Records** to the **Size by** field in the layer pane.
+3. From the **Available fields** list, drag **Records** to the **Metric** field in the layer pane.
 4. In the layer pane, click **Add or drag-and-drop a field** for **Group by**.
 
 Create a filter for each website traffic source:
@@ -329,7 +325,7 @@ Add the user geography grouping:
 Remove the documents that do not match the filter criteria:
 
 1. In the layer pane, click **Top 3 values of geo.srcdest**.
-2. Click **Advanced**, deselect **Group other values as "Other"**, then click **Close**.
+2. Click **Advanced**, deselect **Group remaining values as "Other"**, then click **Close**.
 
    :::{image} /explore-analyze/images/kibana-lens_treemapMultiLevelChart_7.16.png
    :alt: Treemap visualization

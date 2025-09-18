@@ -3,7 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html
   - https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-your-data.html
-  - https://www.elastic.co/customer-success/data-ingestion
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-ingestion-overview.html
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-intro.html
 applies_to:
@@ -16,7 +15,7 @@ products:
   - id: elasticsearch
 ---
 
-# Bring your data to Elastic
+# Ingest: Bring your data to Elastic
 
 Whether you call it *adding*, *indexing*, or *ingesting* data, you have to get the data into {{es}} before you can search it, visualize it, and use it for insights.
 
