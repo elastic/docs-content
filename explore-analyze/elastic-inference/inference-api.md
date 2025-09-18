@@ -220,7 +220,7 @@ stack: ga 9.1`
 
 The `none` strategy disables chunking and processes the entire input text as a single block, without any splitting or overlap. When using this strategy, you can instead [pre-chunk](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking) the input by providing an array of strings, where each element acts as a separate chunk to be sent directly to the inference service without further chunking.
 
-The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the `ELSER` model and disables chunking by setting the strategy to `none`.
+The following example creates an {{infer}} endpoint with the `elasticsearch` service that deploys the ELSER model and disables chunking by setting the strategy to `none`.
 
 ```console
 PUT _inference/sparse_embedding/none_chunking
