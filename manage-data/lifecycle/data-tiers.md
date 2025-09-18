@@ -500,8 +500,8 @@ This setting will not unallocate a currently allocated shard, but might prevent 
 You can explicitly disable data allocation for  data tier migration in an ILM policy with the following setting:
 ```sh
     "migrate": {
-            "enabled": false
-          }
+      "enabled": false
+    }
 ```
 
 For example:
