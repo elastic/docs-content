@@ -1,5 +1,5 @@
 ---
-navigation_title: With {{ecloud}}
+navigation_title: To {{ecloud}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-ece-ess.html
 applies_to:
@@ -10,10 +10,9 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access deployments of an {{ecloud}} organization [ece-remote-cluster-ece-ess]
+# Connect {{ece}} deployments to an {{ecloud}} organization [ece-remote-cluster-ece-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ecloud}} organization.
-
 
 ## Allow the remote connection [ece_allow_the_remote_connection_3]
 

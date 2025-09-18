@@ -330,7 +330,7 @@ POST /_security/role/staging_apm_viewer
 
 The last thing to do is assign users to the newly created roles above. Users will only have access to the data within the spaces that they are granted.
 
-For information on how to create users and assign them roles with the {{kib}} UI, see [Securing access to Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
+For information on how to create users and assign them roles with the {{kib}} UI, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
 
 Alternatively, you can use the {{es}} [Create or update users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user).
 

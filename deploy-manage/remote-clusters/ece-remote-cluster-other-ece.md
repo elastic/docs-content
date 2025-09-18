@@ -1,5 +1,5 @@
 ---
-navigation_title: With a different ECE environment
+navigation_title: To a different ECE environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-other-ece.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access deployments of another {{ece}} environment [ece-remote-cluster-other-ece]
+# Connect to deployments in a different {{ece}} environment [ece-remote-cluster-other-ece]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ece}} environment.
 

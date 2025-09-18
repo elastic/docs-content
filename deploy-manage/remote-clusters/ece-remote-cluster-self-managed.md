@@ -1,5 +1,5 @@
 ---
-navigation_title: With a self-managed cluster
+navigation_title: To a self-managed cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-self-managed.html
 applies_to:
@@ -10,7 +10,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access clusters of a self-managed environment [ece-remote-cluster-self-managed]
+# Connect {{ece}} deployments to self-managed clusters [ece-remote-cluster-self-managed]
 
 This section explains how to configure a deployment to connect remotely to self-managed clusters.
 

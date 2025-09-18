@@ -3,7 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html
   - https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-your-data.html
-  - https://www.elastic.co/customer-success/data-ingestion
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-ingestion-overview.html
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-intro.html
 applies_to:

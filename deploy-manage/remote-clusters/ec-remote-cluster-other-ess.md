@@ -1,5 +1,5 @@
 ---
-navigation_title: With a different {{ecloud}} organization
+navigation_title: To a different {{ecloud}} organization
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-other-ess.html
 applies_to:
@@ -9,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Access deployments of another {{ecloud}} organization [ec-remote-cluster-other-ess]
+# Connect to deployments in another {{ecloud}} organization [ec-remote-cluster-other-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ecloud}} organization.
 

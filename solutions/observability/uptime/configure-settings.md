@@ -6,9 +6,10 @@ applies_to:
   serverless: unavailable
 products:
   - id: observability
+navigation_title: Configure settings
 ---
 
-# Configure settings [configure-uptime-settings]
+# Configure Uptime monitoring settings [configure-uptime-settings]
 
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning

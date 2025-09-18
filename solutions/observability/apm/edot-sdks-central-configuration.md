@@ -34,12 +34,12 @@ Supported configurations are also tagged with the ![dynamic config](/solutions/i
 
 | Language/Platform | EDOT SDK | Configuration Reference |
 | --- | --- | --- |
-| Android | EDOT Android SDK | [Configuration reference](opentelemetry://reference/edot-sdks/android/configuration.md) |
-| iOS | EDOT iOS SDK | [Configuration reference](opentelemetry://reference/edot-sdks/ios/configuration.md) |
-| Java | EDOT Java SDK | [Configuration reference](opentelemetry://reference/edot-sdks/java/configuration.md) |
-| Node.js | EDOT Node.js SDK | [Configuration reference](opentelemetry://reference/edot-sdks/nodejs/configuration.md) |
-| PHP | EDOT PHP SDK | [Configuration reference](opentelemetry://reference/edot-sdks/php/configuration.md) |
-| Python | EDOT Python SDK | [Configuration reference](opentelemetry://reference/edot-sdks/python/configuration.md) |
+| Android | EDOT Android SDK | [Configuration reference](apm-agent-android://reference/edot-android/configuration.md) |
+| iOS | EDOT iOS SDK | [Configuration reference](apm-agent-ios://reference/edot-ios/configuration.md) |
+| Java | EDOT Java SDK | [Configuration reference](elastic-otel-java://reference/edot-java/configuration.md) |
+| Node.js | EDOT Node.js SDK | [Configuration reference](elastic-otel-node://reference/edot-node/configuration.md) |
+| PHP | EDOT PHP SDK | [Configuration reference](elastic-otel-php://reference/edot-php/configuration.md) |
+| Python | EDOT Python SDK | [Configuration reference](elastic-otel-python://reference/edot-python/configuration.md) |
 
 ## EDOT configuration [_edot_configuration]
 
