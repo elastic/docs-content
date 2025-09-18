@@ -1,4 +1,5 @@
 ---
+navigation_title: Common problems
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-common-problems.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-troubleshooting.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Common problems [apm-common-problems]
+# Common problems with APM [apm-common-problems]
 
 This section describes common problems you might encounter when using APM Server and the Applications UI in {{kib}}.
 

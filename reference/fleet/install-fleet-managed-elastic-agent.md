@@ -99,6 +99,6 @@ If the status hangs at Enrolling, make sure the `elastic-agent` process is runni
 If you run into problems:
 
 * Check the {{agent}} logs. If you use the default policy, agent logs and metrics are collected automatically unless you change the default settings. For more information, refer to [Monitor {{agent}} in {{fleet}}](/reference/fleet/monitor-elastic-agent.md).
-* Refer to the [troubleshooting guide](/troubleshoot/ingest/fleet/common-problems.md).
+* Refer to [](/troubleshoot/ingest/fleet/common-problems.md).
 
 For information about managing {{agent}} in {{fleet}}, refer to [Centrally manage {{agent}}s in {{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md).

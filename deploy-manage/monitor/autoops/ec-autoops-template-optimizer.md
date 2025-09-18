@@ -1,4 +1,5 @@
 ---
+navigation_title: Template Optimizer
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-template-optimizer.html
 applies_to:
@@ -8,9 +9,9 @@ products:
   - id: cloud-hosted
 ---
 
-# Template Optimizer [ec-autoops-template-optimizer]
+# Template Optimizer view in AutoOps [ec-autoops-template-optimizer]
 
-The **Template Optimizer View** offers detailed recommendations for optimizing templates.
+The **Template Optimizer** view offers detailed recommendations for optimizing templates.
 
 :::{image} /deploy-manage/images/cloud-autoops-template-optimizer.png
 :alt: The Template Optimizer view
