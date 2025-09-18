@@ -17,7 +17,7 @@ In these instructions, we show you how you can download the security certificate
 You can change the certificates for the following ECE components separately:
 
 Cloud UI certificate
-:   Used to connect securely to the Cloud UI.
+:   Used to connect securely to the Cloud UI and to make RESTful API calls.
 
 Proxy certificate
 :   Used to connect securely to {{es}} clusters and {{kib}}. You should use a wildcard certificate rooted at the [cluster endpoint that you set](../../deploy/cloud-enterprise/change-endpoint-urls.md) (`*.example.com`, for example). A wildcard certificate is required, because the first label of the DNS address is distinct for {{es}} clusters and {{kib}} (`bc898abb421843918ebc31a513169a.example.com`, for example).
