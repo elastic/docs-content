@@ -81,7 +81,7 @@ To create a remote cluster filter:
 5. Add a meaningful name and description for the rule set.
 6. In the **Organization ID** and **{{es}} ID** fields, enter the organization or cluster ID of the deployments from which you want to allow traffic. Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
 
-    :::note
+    :::{note}
     * ECE supports filtering remote cluster traffic from deployments in the same ECE system, in other ECE environments, or in {{ecloud}}.
     * For ECE systems, use the **Environment ID** from **Platform → Trust Management → Trust parameters** as the organization ID.
     * In {{ecloud}}, the organization ID is shown on the organization page in the top-right menu.
