@@ -343,6 +343,7 @@ redirects:
   'release-notes/fleet-elastic-agent/breaking-changes.md': 'fleet-server://release-notes/breaking-changes.md'
   'release-notes/fleet-elastic-agent/deprecations.md': 'fleet-server://release-notes/deprecations.md'
   'release-notes/fleet-elastic-agent/known-issues.md': 'fleet-server://release-notes/known-issues.md'
+
 # Redirects `path_prefix`
   'release-notes/fleet/index.md': 'fleet-server://release-notes/index.md'
   'release-notes/fleet/breaking-changes.md': 'fleet-server://release-notes/breaking-changes.md'
@@ -352,3 +353,6 @@ redirects:
 # Related to https://github.com/elastic/docs-content/issues/2985
 
   'troubleshoot/observability/apm-agent-swift/apm-ios-agent.md': 'troubleshoot/ingest/opentelemetry/edot-sdks/ios/index.md'
+
+# Related to https://github.com/elastic/docs-content/pull/2843
+  'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/search/get-started.md'
