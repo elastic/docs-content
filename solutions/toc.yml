@@ -5,7 +5,6 @@ toc:
     children:
       - file: search/get-started.md
         children:
-          - file: search/serverless-elasticsearch-get-started.md
           - file: search/search-connection-details.md
           - file: search/get-started/quickstarts.md
             children:
