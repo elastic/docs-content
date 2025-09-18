@@ -33,7 +33,7 @@ Topics covered include:
 
 * [High availability and traffic distribution](./kibana-load-balance-traffic.md): For self-managed deployments, learn how to load balance traffic across multiple {{kib}} instances, how to balance traffic to different deployments, and how to distribute {{kib}} traffic across multiple {{es}} instances.
 
-* [Scaling {{kib}} based on traffic](./kibana-traffic-scaling-considerations.md): For self-managed and {{ech}} deployments, learn the quantity of CPU and memory resources needed by {{kib}} to handle expected traffic.
+* [Scaling {{kib}} based on traffic](./kibana-traffic-scaling-considerations.md): Learn the quantity of CPU and memory resources needed by {{kib}} to handle expected traffic.
 
 * [Configure {{kib}} memory usage](./kibana-configure-memory.md): Configure {{kib}} memory limit in self-managed deployments.
 
