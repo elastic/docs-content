@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic Cloud Hosted
+navigation_title: On Elastic Cloud Hosted
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html
 applies_to:
@@ -9,9 +9,9 @@ products:
   - id: cloud-hosted
 ---
 
-# Remote clusters with {{ech}} [ec-enable-ccs]
+# Remote clusters on {{ech}} [ec-enable-ccs]
 
-You can configure an {{ech}} deployment to remotely access or (be accessed by) a cluster from:
+You can configure an {{ech}} deployment to either connect to remote clusters or accept connections from:
 
 * Another {{ech}} deployment of your {{ecloud}} organization, across any region or cloud provider (AWS, GCP, Azure…)
 * An {{ech}} deployment of another {{ecloud}} organization

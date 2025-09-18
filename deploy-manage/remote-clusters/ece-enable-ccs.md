@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic Cloud Enterprise
+navigation_title: On Elastic Cloud Enterprise
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html
 applies_to:
@@ -9,9 +9,9 @@ products:
   - id: cloud-enterprise
 ---
 
-# Remote clusters with {{ece}} [ece-enable-ccs]
+# Remote clusters on {{ece}} [ece-enable-ccs]
 
-You can configure an {{ece}} deployment to remotely access or (be accessed by) a cluster from:
+You can configure an {{ece}} deployment to either connect to remote clusters or accept connections from:
 
 * Another deployment of your ECE installation
 * A deployment running on a different ECE installation
