@@ -6,8 +6,7 @@ For example, you might define a policy named `timeseries_policy` that has the fo
 * A `delete` phase that sets `min_age` to remove the index 90 days after rollover.
 
 ::::{note}
-The `min_age` value is relative to the rollover time, not the index creation time. [Learn more](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md#min-age-calculation).
-
+The `min_age` value is relative to the rollover time, not the index creation time. [Learn more](../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md#min-age-calculation).
 ::::
 
 
