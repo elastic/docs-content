@@ -6,6 +6,12 @@ applies_to:
     elasticsearch: preview
 ---
 
+:::{warning}
+WIP
+
+These pages are hidden from the docs TOC and have `noindexed` meta headers.
+:::
+
 # Work programmatically with {{agent-builder}}
 
 {{agent-builder}} provides comprehensive APIs and additional integration options for programmatic access and automation.

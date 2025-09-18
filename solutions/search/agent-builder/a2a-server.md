@@ -6,6 +6,12 @@ applies_to:
     elasticsearch: preview
 ---
 
+:::{warning}
+WIP
+
+These pages are hidden from the docs TOC and have `noindexed` meta headers.
+:::
+
 # Agent-to-Agent (A2A) server
 
 The [**Agent-to-Agent (A2A) server**](https://github.com/a2aproject/A2A) enables external A2A clients to communicate with {{agent-builder}} agents.

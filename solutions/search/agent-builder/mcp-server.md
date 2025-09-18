@@ -8,6 +8,12 @@ applies_to:
 
 # MCP server
 
+:::{warning}
+WIP
+
+These pages are hidden from the docs TOC and have `noindexed` meta headers.
+:::
+
 The [**Model Context Protocol (MCP) server**](https://modelcontextprotocol.io/docs/getting-started/intro) provides a standardized interface for external clients to access {{agent-builder}} tools.
 
 ## MCP server endpoint

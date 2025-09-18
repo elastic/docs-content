@@ -6,7 +6,18 @@ applies_to:
     elasticsearch: preview
 ---
 
+:::{warning}
+WIP
+
+These pages are hidden from the docs TOC and have `noindexed` meta headers.
+:::
+
 # Get started with {{agent-builder}}
+
+:::{tip}
+See the [overview page](../elastic-agent-builder.md) for full list of docs pages.
+:::
+% TODO: Delete this tip when unhide pages
 
 Learn how get started by enabling the {{agent-builder}} features and begin chatting with your data.
 

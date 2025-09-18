@@ -6,6 +6,12 @@ applies_to:
     elasticsearch: preview
 ---
 
+:::{warning}
+WIP
+
+These pages are hidden from the docs TOC and have `noindexed` meta headers.
+:::
+
 # {{agent-builder}} 
 
 {{agent-builder}} is an AI-powered conversation framework for working with {{es}} data using natural language. It features both a chat UI for synchronous interaction and extensive programmatic access through APIs, MCP and A2A servers.

@@ -6,6 +6,12 @@ applies_to:
     elasticsearch: preview
 ---
 
+:::{warning}
+WIP
+
+These pages are hidden from the docs TOC and have `noindexed` meta headers.
+:::
+
 # Limitations and known issues in {{agent-builder}}
 
 ## Model selection

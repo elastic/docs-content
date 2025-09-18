@@ -6,6 +6,12 @@ applies_to:
     elasticsearch: preview
 ---
 
+:::{warning}
+WIP
+
+These pages are hidden from the docs TOC and have `noindexed` meta headers.
+:::
+
 # {{agent-builder}}: Agents
 
 Agents engage in natural language conversations with users and interact with your {{es}} data through tools.

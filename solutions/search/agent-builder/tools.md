@@ -6,11 +6,13 @@ applies_to:
     elasticsearch: preview
 ---
 
-# Tools in {{agent-builder}}
-
 :::{warning}
-WIP: this page needs better IA
+WIP
+
+These pages are hidden from the docs TOC and have `noindexed` meta headers.
 :::
+
+# Tools in {{agent-builder}}
 
 Agents use tools to search, retrieve, and take meaningful steps on your behalf.
 
