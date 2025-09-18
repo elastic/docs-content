@@ -20,12 +20,12 @@ Initally, {{agent-builder}} only supports working with the [Elastic Managed LLM]
 
 Locally this picks the first AI connector available.
 
-Initally, there are no UI controls to select which connector (and therefore which model) to use.
+This can be changed under Stack Management -> AI -> GenAI Settings -> Default AI Connector.
 
 ## Known issues
 
 
-- **Default agent misinterprets SQL syntax as ES|QL**
+- **Default agent can misinterpret SQL syntax as ES|QL**
   - The `.execute_esql` tool is designed only for [{{esql}}](elasticsearch://reference/query-languages/esql.md) syntax, not other query languages
   - When using SQL syntax with the default agent, it attempts to use the `.execute_esql` tool instead of recognizing the input as SQL
   - This results in parsing errors like this:
@@ -41,3 +41,22 @@ Initally, there are no UI controls to select which connector (and therefore whic
     ]
     ``` 
 
+- **Not all LLMs are compatible**
+  - While Elastic offers LLM connectors for many different vendors and models, not all LLMs are robust enough to be used with {{agent-builder}}.
+  - Errors such as:
+    ```console-response
+    Error: Invalid function call syntax
+    ```
+    or
+    ```
+    Error executing agent: No tool calls found in the response.
+    ```
+    may indicate that your selected model is ill-equipped for the precise response structure necessary for {{agent-builder}}.
+  - We recommend using the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) 
+
+- **{{agent-builder}} is not accessible**
+  - {{agent-builder}} was added in a private preview in September, 2025 for Serverless, and in 9.2.0 for Elastic Cloud.
+  - While in this preview stage, {{agent-builder}} is not enabled by default.
+  - To enable it, you must go to Stack Management -> Kibana -> Advanced Settings -> Elastic Agent Builder, and enable it.
+
+    
