@@ -6,7 +6,7 @@ products:
   - id: elasticsearch
 ---
 
-# {{ilm}} tutorials
+# {{ilm-cap}} tutorials
 
 A collection of tutorials is available to help you control the lifecycle of your data using {{ilm}}.
 
