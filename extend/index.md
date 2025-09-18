@@ -27,7 +27,7 @@ This approach is ideal for shipping data, logs, metrics, and traces. By building
 For complete control and custom development, you can interact directly with Elastic's REST APIs. This path is perfect for building custom applications, automating complex workflows, and integrating Elastic into your existing infrastructure in a bespoke way. For example, you can programmatically manage your cluster, run complex queries, manage security settings, and interact with Kibana.
 
 * The APIs provide direct access to the core capabilities of Elasticsearch and Kibana. If you can do it in the UI, you can automate it with the API.  
-* Elastic provides and supports official clients for popular languages like Java, Go, .NET, PHP, Python, Ruby, and JavaScript. These clients simplify interacting with the API, handling requests, and processing responses.  
+* Elastic provides and supports official [clients](/reference/elasticsearch-clients/index.md) for popular languages like Java, Go, .NET, PHP, Python, Ruby, and JavaScript. These clients simplify interacting with the API, handling requests, and processing responses.
 * The APIs are secured using role-based access control (RBAC). You can create API keys or use bearer tokens with fine-grained permissions to ensure your interactions are safe.
 
 ### Elastic APIs at a glance
