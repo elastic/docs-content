@@ -10,7 +10,7 @@ products:
 
 # Data stream lifecycle [data-stream-lifecycle]
 
-A data stream lifecycle is the built-in mechanism data streams use to manage their lifecycle. It enables you to easily automate the management of your data streams according to your retention requirements. For example, you could configure the lifecycle to:
+A data stream lifecycle is the built-in mechanism [data streams](/manage-data/data-store/data-streams.md) use to manage their lifecycle. It enables you to easily automate the management of your data streams according to your retention requirements. For example, you could configure the lifecycle to:
 
 * Ensure that data indexed in the data stream will be kept at least for the retention time you defined.
 * Ensure that data older than the retention period will be deleted automatically by {{es}} at a later time.
@@ -22,6 +22,13 @@ To achieve that, it supports:
 
 A data stream lifecycle also supports downsampling the data stream backing indices. See [the downsampling example](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) for more details.
 
+## Data stream lifecycle availability
+
+Note the availability of data stream lifecycle to ensure that it's applicable for your use case:
+
+* Data stream lifecycle is supported only for data streams and cannot be used with individual indices.
+
+* Data stream lifecycle is supported for all deployment types on the versioned {{stack}} as well as for {{es-serverless}}.
 
 ## How does it work? [data-streams-lifecycle-how-it-works]
 
@@ -48,11 +55,12 @@ Steps `2-4` apply only to backing indices that are not already managed by {{ilm-
 
 Since the lifecycle is configured on the data stream level, the process to configure a lifecycle on a new data stream and on an existing one differ.
 
-In the following sections, we will go through the following tutorials:
+Four tutorials are available to help you set up and manage data streams with data stream lifecycle:
 
-* To create a new data stream with a lifecycle, you need to add the data stream lifecycle as part of the index template that matches the name of your data stream (see [Tutorial: Create a data stream with a lifecycle](data-stream/tutorial-create-data-stream-with-lifecycle.md)). When a write operation with the name of your data stream reaches {{es}} then the data stream will be created with the respective data stream lifecycle.
-* To update the lifecycle of an existing data stream you need to use the [data stream lifecycle APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream) to edit the lifecycle on the data stream itself (see [Tutorial: Update existing data stream](data-stream/tutorial-update-existing-data-stream.md)).
-* Migrate an existing {{ilm-init}} managed data stream to Data stream lifecycle using [Tutorial: Migrate ILM managed data stream to data stream lifecycle](data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md).
+* To create a new data stream with a lifecycle, add the data stream lifecycle as part of the index template that matches the name of your data stream. See [Tutorial: Create a data stream with a lifecycle](data-stream/tutorial-create-data-stream-with-lifecycle.md) for the detailed steps. When a write operation with the name of your data stream reaches {{es}} then the data stream will be created with the respective data stream lifecycle.
+* To update the lifecycle settings for an individual, existing data stream, use the [data stream lifecycle APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream). See [Tutorial: Update existing data stream](data-stream/tutorial-update-existing-data-stream.md) for details.
+* Retention settings for data streams can be configured both individually, at the data stream level, and globally, for all data streams in a cluster. To learn more, refer to [Tutorial: Configure data stream retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
+* To migrate an existing {{ilm-init}} managed data stream to data stream lifecycle, follow the steps in [Tutorial: Migrate ILM managed data stream to data stream lifecycle](data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md).
 
 ::::{note}
 Updating the data stream lifecycle of an existing data stream is different from updating the settings or the mapping, because it is applied on the data stream level and not on the individual backing indices.

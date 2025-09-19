@@ -35,13 +35,13 @@ Each APM agent has a list of supported configurations. After selecting a Service
 Supported configurations are also tagged with the ![dynamic config](/solutions/images/observability-dynamic-config.svg "") badge in each APM agent’s configuration reference:
 
 Android agent
-:   [Configuration reference](opentelemetry://reference/edot-sdks/android/configuration.md)
+:   [Configuration reference](apm-agent-android://reference/edot-android/configuration.md)
 
 Go agent
 :   [Configuration reference](apm-agent-go://reference/configuration.md)
 
 iOS agent
-:   [Configuration reference](opentelemetry://reference/edot-sdks/ios/configuration.md)
+:   [Configuration reference](apm-agent-ios://reference/edot-ios/configuration.md)
 
 Java agent
 :   [Configuration reference](apm-agent-java://reference/configuration.md)

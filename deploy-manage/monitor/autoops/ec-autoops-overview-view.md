@@ -1,4 +1,5 @@
 ---
+navigation_title: Overview
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-overview-view.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Overview [ec-autoops-overview-view]
+# Overview in AutoOps [ec-autoops-overview-view]
 
 The **Overview** page displays the current status of customer deployments in {{ech}} that are linked to the same Elastic organization.
 

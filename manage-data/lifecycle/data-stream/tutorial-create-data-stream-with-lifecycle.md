@@ -30,7 +30,7 @@ You can use the [create index template API](https://www.elastic.co/docs/api/doc/
 ```console
 PUT _index_template/my-index-template
 {
-  "index_patterns": ["my-data-stream*"],
+  "index_patterns": ["my-data-stream-test"], <1>
   "data_stream": { },
   "priority": 500,
   "template": {
@@ -43,7 +43,7 @@ PUT _index_template/my-index-template
   }
 }
 ```
-
+1. In this case the index template will be applied to a data stream named `my-data-stream-test`. You can optionally use a wildcard (`*`) in the index pattern to match all data streams created (either manually or using an indexing request) that have a name matching the specified pattern.
 
 ## Create a data stream [create-data-stream-with-lifecycle]
 
@@ -52,13 +52,13 @@ You can create a data stream in two ways:
 1. By manually creating the stream using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
 
     ```console
-    PUT _data_stream/my-data-stream
+    PUT _data_stream/my-data-stream-test
     ```
 
 2. By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
 
     ```console
-    PUT my-data-stream/_bulk
+    PUT my-data-stream-test/_bulk
     { "create":{ } }
     { "@timestamp": "2099-05-06T16:21:15.000Z", "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736" }
     { "create":{ } }
@@ -72,7 +72,7 @@ You can create a data stream in two ways:
 You can use the [get data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle) to see the data stream lifecycle of your data stream and the [explain data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle) to see the exact state of each backing index.
 
 ```console
-GET _data_stream/my-data-stream/_lifecycle
+GET _data_stream/my-data-stream-test/_lifecycle
 ```
 
 The result will look like this:
@@ -81,7 +81,7 @@ The result will look like this:
 {
   "data_streams": [
     {
-      "name": "my-data-stream",                                     <1>
+      "name": "my-data-stream-test",                                <1>
       "lifecycle": {
         "enabled": true,                                            <2>
         "data_retention": "7d",                                     <3>
@@ -103,16 +103,20 @@ The result will look like this:
 If you want to see more information about how the data stream lifecycle is applied on individual backing indices use the [explain data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
 
 ```console
-GET .ds-my-data-stream-*/_lifecycle/explain
+GET .ds-my-data-stream-test/_lifecycle/explain
 ```
+
+:::{tip}
+You can use a wildcard (`*`) in the data stream name to retrieve the lifecycle status for all data streams matching the pattern.
+:::
 
 The result will look like this:
 
 ```console-result
 {
   "indices": {
-    ".ds-my-data-stream-2023.04.19-000001": {
-      "index": ".ds-my-data-stream-2023.04.19-000001",      <1>
+    ".ds-my-data-stream-test-2023.04.19-000001": {
+      "index": ".ds-my-data-stream-test-2023.04.19-000001",      <1>
       "managed_by_lifecycle": true,                               <2>
       "index_creation_date_millis": 1681918009501,
       "time_since_index_creation": "1.6m",                  <3>

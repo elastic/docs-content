@@ -3,8 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html
   - https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html
   - https://www.elastic.co/guide/en/serverless/current/project-setting-data.html
-  - https://www.elastic.co/customer-success/data-ingestion
-  - https://github.com/elastic/ingest-docs/pull/1373
 applies_to:
   stack: ga
   serverless: ga

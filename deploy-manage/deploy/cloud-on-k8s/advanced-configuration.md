@@ -1,4 +1,5 @@
 ---
+navigation_title: Advanced configuration
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-advanced-configuration.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Advanced configuration [k8s-apm-advanced-configuration]
+# Advanced configuration for {{apm-server}} on {{eck}} [k8s-apm-advanced-configuration]
 
 This section covers the following topics:
 
