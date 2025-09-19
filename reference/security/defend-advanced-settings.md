@@ -37,7 +37,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.alerts.hash.md5`
 :   Added in 8.16.0.
 
-    *Include MD5 hashes in alerts. Even if set to `false`, MD5 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: `false`.*
+    *Include MD5 hashes in alerts. Even if set to false, MD5 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: <=8.17: true, >=8.18: false.*
 
     {{elastic-endpoint}} doesn't generate MD5 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, MD5 hashes were always included.
 
@@ -45,7 +45,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.alerts.hash.sha1`
 :   Added in 8.16.0.
 
-    *Include SHA-1 hashes in alerts. Even if set to `false`, SHA-1 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: `false`.*
+    *Include SHA-1 hashes in alerts. Even if set to `false`, SHA-1 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: <=8.17: true, >=8.18: `false`.*
 
     {{elastic-endpoint}} doesn't generate SHA-1 hashes in alerts unless alert exceptions, trusted apps, or blocklisting requires them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, SHA-1 hashes were always included.
 
@@ -149,7 +149,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.global.proxy_disable`
 :   Added in 8.8.0.
 
-    *Disable the use of a proxy when downloading protection artifact updates. Default: `false`*
+    *Disable the use of a proxy when downloading protection artifact updates. Default: `false`.*
 
     This allows you to disable the use of a proxy even if one is provided by other configuration.
 
@@ -181,7 +181,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.artifacts.user.proxy_disable`
 :   Added in 8.8.0.
 
-    *Disable the use of a proxy when downloading user artifact updates. Default: `false`*
+    *Disable the use of a proxy when downloading user artifact updates. Default: `false`.*
 
     This allows you to disable the use of a proxy for reaching {{fleet}} Server even if one is provided by other configuration.
 
@@ -281,7 +281,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.aggregate_network`
 :   Added in 8.18.0.
 
-    *Reduce event volume by merging related network events into fewer aggregate events. Default: `true`.*
+    *Reduce event volume by merging related network events into fewer aggregate events. Default: <=8.17: `false`, >=8.18: `true`.*
 
     {{elastic-endpoint}} [merges rapid network connect and disconnect events](/solutions/security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md#merged-process-network) into a single event document. Use this setting to disable that behavior.
 
@@ -391,7 +391,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.deduplicate_network_events`
 :   Added in 8.15.0.
 
-    *Deduplicate network events based on repeated Src-IP/Dst-IP/Dst-Port/PID tuple grouping. Default: `true`.*
+    *Deduplicate network events based on repeated Src-IP/Dst-IP/Dst-Port/PID tuple grouping. Default: <=8.14: `false`, >=8.15: `true`.*
 
     To limit data volume, {{elastic-endpoint}} doesn't emit network events for [repeated connections](/solutions/security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md#network-event-deduplication) based on the Src-IP/Dst-IP/Dst-Port/PID tuple grouping. Use this setting to disable that suppression.
 
@@ -430,7 +430,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.events.enable_caps`
 :   Added in 8.14.0.
 
-    *Include Linux process capabilities in process events written to {{es}}. Capabilities must be enabled for some SIEM detection rules. Warning: enabling this will increase data volume. Default: `false`.*
+    *Include Linux process capabilities in process events written to {{es}}. Capabilities must be enabled for some SIEM detection rules. Warning: enabling this will increase data volume. Default: <=8.13: `true`, >=8.14: `false`.*
 
     Use this setting to enable reporting of process capabilities on Linux. {{elastic-endpoint}} began reporting these capabilities in 8.11.0, but this was disabled by default in 8.14.0 due to data volume concerns. This setting must be enabled for some SIEM detection rules, but all malicious behavior detection rules running within {{elastic-defend}} work regardless of its status.
 
@@ -459,7 +459,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.hash.md5`
 :   Added in 8.16.0.
 
-    *Include MD5 hashes in processes and libraries in events. Even if set to `false`, MD5 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: `false`.*
+    *Include MD5 hashes in processes and libraries in events. Even if set to `false`, MD5 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: <=8.17: `true`, >=8.18: `false`.*
 
     {{elastic-endpoint}} doesn't generate MD5 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of MD5 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, MD5 hashes were always included.
 
@@ -467,7 +467,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.hash.sha1`
 :   Added in 8.16.0.
 
-    *Include SHA-1 hashes in processes and libraries in events. Even if set to `false`, SHA-1 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: `false`.*
+    *Include SHA-1 hashes in processes and libraries in events. Even if set to `false`, SHA-1 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: <=8.17: `true`, >=8.18: `false`.*
 
     {{elastic-endpoint}} doesn't generate SHA-1 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-1 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, SHA-1 hashes were always included.
 
@@ -475,7 +475,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.hash.sha256`
 :   Added in 8.16.0.
 
-    *Include SHA-256 hashes in processes and libraries in events. Even if set to `false`, SHA-256 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: `false`.*
+    *Include SHA-256 hashes in processes and libraries in events. Even if set to `false`, SHA-256 hashes will still be included if alert exceptions, trusted apps, or blocklisting require them. Default: <=8.17: `true`, >=8.18: `false`.*
 
     {{elastic-endpoint}} doesn't generate SHA-256 hashes in events unless event filters or trusted apps require them, in which case this setting is ignored. This setting was added in 8.16 to allow users to opt out of SHA-256 hashing; starting with 8.18, users are opted out by default. Prior to 8.16, SHA-256 hashes were always included.
 
@@ -511,12 +511,12 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac,windows].advanced.events.process_ancestry_length`
 :   Added in 8.15.0.
 
-    *Maximum number of process ancestry entries to include in process events. Default: `5`.*
+    *Maximum number of process ancestry entries to include in process events. Default: <=8.14: `20`, >=8.15: `5`.*
 
     Use this setting to control how many ancestor processes {{elastic-endpoint}} includes in the `process.ancestry` field. Prior to 8.15, this field contained the last 20 ancestor processes; starting with 8.15, it was reduced to the last 5, to limit data volume.
 
 
-`windows.advanced.events.registry.enforce_registry_filters`
+`windows.advanced.events.enforce_registry_filters`
 :   Added in 8.15.0.
 
     *Reduce data volume by filtering out registry events which are not relevant to behavioral protections. Default: `true`.*
@@ -605,7 +605,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `linux.advanced.kernel.capture_mode`
 :   Added in 8.2.0.
 
-    *Allows users to control whether kprobes or eBPF are used to gather data. Options are `kprobe`, `ebpf`, or `auto`. `auto` uses eBPF if possible, otherwise it uses kprobe. Default: `auto`.*
+    *Control whether kprobes or eBPF are used to gather data. Options are `kprobe`, `ebpf`, or `auto`. `auto` uses eBPF if possible, otherwise it uses kprobe. Default: `auto`.*
 
     On Linux, {{elastic-endpoint}} can monitor system events using kprobes or eBPF. By default, {{elastic-endpoint}} automatically chooses the best option, but you can use this setting to override that behavior.
 
@@ -733,7 +733,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.kernel.ppl.harden_images`
 :   Added in 8.9.0.
 
-    *Mitigate attacks like PPLFault by preventing Protected Process Light (PPL) processes from loading DLLs over the network. Default: `true`*.
+    *Mitigate attacks like PPLFault by preventing Protected Process Light (PPL) processes from loading DLLs over the network. Default: `true`.*.
 
 
 `[mac,windows].advanced.kernel.process`
@@ -971,19 +971,19 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.image_load.origin_info_collection`
 :   Added in 8.19.0.
 
-    *Include `dll.origin_url`, `dll.origin_referrer_url`, and `dll.Ext.windows.zone_identifier` in image load events. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: `false`.*
+    *Include `dll.origin_url`, `dll.origin_referrer_url`, and `dll.Ext.windows.zone_identifier` in image load events. These fields normally show where the loaded DLL was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
 
 
 `windows.advanced.events.process.origin_info_collection`
 :   Added in 8.19.0.
 
-    *Include `process.origin_url`, `process.origin_referrer_url`, and `process.Ext.windows.zone_identifier` in process events. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: `false`.*
+    *Include `process.origin_url`, `process.origin_referrer_url`, and `process.Ext.windows.zone_identifier` in process events. These fields normally show where the process's executable file was downloaded from, using information taken from the file's Mark of the Web. Default: <=9.1: `false`, >=9.2: `true`.*
 
 
 `windows.advanced.events.file.origin_info_collection`
 :   Added in 8.19.0.
 
-    *Include `file.origin_url`, `file.origin_referrer_url`, and `file.Ext.windows.zone_identifier` in file events. These fields show the details of file's Mark of the Web. Default: `true`*
+    *Include `file.origin_url`, `file.origin_referrer_url`, and `file.Ext.windows.zone_identifier` in file events. These fields show the details of file's Mark of the Web. Default: `true`.*
 
 
 `windows.advanced.events.security.provider_etw`
