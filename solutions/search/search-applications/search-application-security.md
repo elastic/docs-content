@@ -11,7 +11,7 @@ products:
 
 
 
-# Security [search-application-security]
+# Security for search applications [search-application-security]
 
 
 When building a frontend application for search use cases, there are two main approaches to returning search results:

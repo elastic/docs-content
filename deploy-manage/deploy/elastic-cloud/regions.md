@@ -54,7 +54,9 @@ The following GCP regions are currently available:
 | asia-south1 | Mumbai |
 | europe-west1 | Belgium |
 | us-central1 | Iowa |
-
+| us-east1 | South Carolina |
+| us-east4 | Virginia |
+| us-west1 | Oregon |
 
 ## Marketplaces
 

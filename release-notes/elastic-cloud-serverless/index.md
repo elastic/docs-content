@@ -9,6 +9,13 @@ products:
 # {{serverless-full}} changelog [elastic-cloud-serverless-changelog]
 Review the changes, fixes, and more to {{serverless-full}}.
 
+
+## September 19, 2025 [serverless-changelog-09192025]
+
+### Features and enhancements [serverless-changelog-09192025-features-enhancements]
+* {{serverless-full}} is now available in three new Google Cloud Platform [regions](/deploy-manage/deploy/elastic-cloud/regions.md): GCP South Carolina (`us-east1`), GCP Virginia (`us-east4`), and GCP Oregon (`us-west1`).
+
+
 ## September 15, 2025 [serverless-changelog-09152025]
 
 ### Features and enhancements [serverless-changelog-09152025-features-enhancements]
@@ -44,7 +51,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Fixes an issue on the API Keys Management page that occurred when loading API keys with null names [#234083]({{kib-pull}}234083)
 * Fixes an Anomaly Detection bug where custom URLs omitted generated fields in datafeed preview requests [#234709]({{kib-pull}}234709)
 * Ensures full tool traces are displayed in flyouts [#234654]({{kib-pull}}234654)
-
 
 ## September 8, 2025 [serverless-changelog-09082025]
 

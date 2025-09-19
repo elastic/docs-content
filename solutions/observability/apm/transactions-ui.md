@@ -1,4 +1,5 @@
 ---
+navigation_title: Transactions UI
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-transactions.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-transactions.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Transactions [apm-transactions]
+# Transactions UI in Elastic APM [apm-transactions]
 
 A *transaction* describes an event captured by an Elastic APM agent instrumenting a service. APM agents automatically collect performance metrics on HTTP requests, database queries, and much more.
 
