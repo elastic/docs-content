@@ -364,10 +364,12 @@ redirects:
   'deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md': 'elasticsearch://reference/elasticsearch/roles.md'
   'deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md': 'elasticsearch://reference/elasticsearch/security-privileges.md'
 
+# APM Agent files (owned by ingest-docs)
   'solutions/observability/apm/apm-agent-central-configuration.md': 'solutions/observability/apm/apm-agents/central-configuration.md'
   'solutions/observability/apm/create-upload-source-maps-rum.md': 'solutions/observability/apm/apm-agents/create-upload-source-maps-rum.md'
   'solutions/observability/apm/elastic-apm-agents.md': 'solutions/observability/apm/apm-agents/index.md'
   'solutions/observability/apm/real-user-monitoring-rum.md': 'solutions/observability/apm/apm-agents/real-user-monitoring-rum.md'
+# APM Server files (owned by ingest-docs)
   'solutions/observability/apm/apm-server-advanced-setup.md': 'solutions/observability/apm/apm-server/advanced-setup.md'
   'solutions/observability/apm/apm-server-api.md': 'solutions/observability/apm/apm-server/api.md'
   'solutions/observability/apm/apm-agent-authorization.md': 'solutions/observability/apm/apm-server/apm-agent-authorization.md'
@@ -407,10 +409,7 @@ redirects:
   'solutions/observability/apm/use-internal-collection-to-send-monitoring-data.md': 'solutions/observability/apm/apm-server/use-internal-collection-to-send-monitoring-data.md'
   'solutions/observability/apm/use-metricbeat-to-send-monitoring-data.md': 'solutions/observability/apm/apm-server/use-metricbeat-to-send-monitoring-data.md'
   'solutions/observability/apm/use-select-metrics-emitted-directly-to-monitoring-cluster.md': 'solutions/observability/apm/apm-server/use-select-metrics-emitted-directly-to-monitoring-cluster.md'
-  'solutions/observability/apm/apm-k8s-attacher.md': 'solutions/observability/apm/ingest/apm-k8s-attacher.md'
-  'solutions/observability/apm/collect-application-data.md': 'solutions/observability/apm/ingest/index.md'
-  'solutions/observability/apm/jaeger.md': 'solutions/observability/apm/ingest/jaeger.md'
-  'solutions/observability/apm/monitor-aws-lambda-functions.md': 'solutions/observability/apm/ingest/monitor-aws-lambda-functions.md'
+# APM OpenTelemetry pages
   'solutions/observability/apm/attributes.md': 'solutions/observability/apm/opentelemetry/attributes.md'
   'solutions/observability/apm/collect-metrics.md': 'solutions/observability/apm/opentelemetry/collect-metrics.md'
   'solutions/observability/apm/data-stream-routing.md': 'solutions/observability/apm/opentelemetry/data-stream-routing.md'
@@ -420,3 +419,8 @@ redirects:
   'solutions/observability/apm/upstream-opentelemetry-collectors-language-sdks.md': 'solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md'
   'solutions/observability/apm/configure-output.md': 'solutions/observability/apm/apm-server/configure-output.md'
   'solutions/observability/apm/monitor-apm-server-binary.md': 'solutions/observability/apm/apm-server/monitor-binary.md'
+# Other ingest-related APM pages
+  'solutions/observability/apm/apm-k8s-attacher.md': 'solutions/observability/apm/ingest/apm-k8s-attacher.md'
+  'solutions/observability/apm/collect-application-data.md': 'solutions/observability/apm/ingest/index.md'
+  'solutions/observability/apm/jaeger.md': 'solutions/observability/apm/ingest/jaeger.md'
+  'solutions/observability/apm/monitor-aws-lambda-functions.md': 'solutions/observability/apm/ingest/monitor-aws-lambda-functions.md'
