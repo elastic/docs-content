@@ -35,9 +35,9 @@ This guide covers the following remote cluster filtering tasks:
 ## Create a remote cluster filter [create-remote-cluster-filter]
 
 :::::{tab-set}
-
+:group: deployment
 ::::{tab-item} {{ech}}
-
+:sync: ech
 Remote cluster filters are presented in {{ecloud}} as a type of Private Connection filters. To create a remote cluster filter:
 
 :::{include} _snippets/network-security-page.md
@@ -70,6 +70,7 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
 ::::
 
 ::::{tab-item} {{ece}}
+:sync: ece
 
 To create a remote cluster filter:
 
@@ -108,8 +109,11 @@ Because this type of filter operates at the proxy level, if the local deployment
 After you've created the network security policy or rule set, you'll need to associate it with your deployment. To do that:
 
 :::::::{tab-set}
+:group: deployment
 
 ::::::{tab-item} {{ech}}
+:sync: ech
+
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Hosted deployments** page, select your deployment.
 3. Select the **Security** tab on the left-hand side menu bar.
@@ -118,6 +122,8 @@ After you've created the network security policy or rule set, you'll need to ass
 ::::::
 
 ::::::{tab-item} {{ece}}
+:sync: ece
+
 1. Open the deployment management page in the Cloud UI.
 2. Select the **Security** tab on the left-hand side menu bar.
 3. Under **Traffic filters**, select **Apply filter**.
@@ -131,8 +137,10 @@ After you've created the network security policy or rule set, you'll need to ass
 To remove a network security policy or rule set association from your deployment:
 
 :::::::{tab-set}
+:group: deployment
 
 ::::::{tab-item} {{ech}}
+:sync: ech
 
 You can remove associations from your deployments directly from the policy settings or from the deployment security page.
 
@@ -154,6 +162,8 @@ You can remove associations from your deployments directly from the policy setti
 ::::::
 
 ::::::{tab-item} {{ece}}
+:sync: ece
+
 1. Open the deployment management page in the Cloud UI.
 2. Select the **Security** tab on the left-hand side menu bar.
 3. Under **Traffic filters**, select **Remove**.
@@ -167,8 +177,11 @@ You can remove associations from your deployments directly from the policy setti
 You can edit a remote cluster filter policy name or change the list of allowed Organization IDs and {{es}} cluster IDs. To do that:
 
 :::::::{tab-set}
+:group: deployment
 
 ::::::{tab-item} {{ech}}
+:sync: ech
+
 :::{include} _snippets/network-security-page.md
 :::
 4. Find the remote cluster policy you want to edit, then select the **Edit** {icon}`pencil` button.
@@ -176,6 +189,8 @@ You can edit a remote cluster filter policy name or change the list of allowed O
 ::::::
 
 ::::::{tab-item} {{ece}}
+:sync: ece
+
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Security**.
 3. Find the rule set you want to edit.
@@ -192,14 +207,19 @@ If you need to remove a remote cluster filter policy, you must first [remove any
 To delete a filter:
 
 :::::::{tab-set}
+:group: deployment
 
 ::::::{tab-item} {{ech}}
+:sync: ech
+
 :::{include} _snippets/network-security-page.md
 :::
 4. Find the rule set you want to edit, then select the **Delete** {icon}`trash` button. The icon is inactive if there are deployments associated with the filter.
 ::::::
 
 ::::::{tab-item} {{ece}}
+:sync: ece
+
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Security**.
 3. Find the rule set you want to edit.
