@@ -6,7 +6,7 @@ products:
   - id: kibana
 ---
 
-# Explore Canvas functions and its expression language for Kibana [canvas-function-reference]
+# Explore Canvas functions and its expression language for {{kib}} [canvas-function-reference]
 
 Behind the scenes, Canvas is driven by a powerful expression language, with dozens of functions and other capabilities, including table transforms, type casting, and sub-expressions.
 
