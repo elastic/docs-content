@@ -15,7 +15,7 @@ products:
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ECE}} (ECE) environment.
 
 ::::{note}
-If network security filters are applied to the remote cluster on ECE, the remote cluster administrator must configure a [remote cluster security filter](/deploy-manage/security/remote-cluster-filtering.md), using either the organization ID or the Elasticsearch cluster ID of the local ECH cluster as the filtering criteria. For detailed instructions, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
+If network security filters are applied to the remote cluster on ECE, the remote cluster administrator must configure a [remote cluster security filter](/deploy-manage/security/remote-cluster-filtering.md), using either the organization ID or the Elasticsearch cluster ID of the local ECH cluster as the filtering criteria. For more information, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
 ::::
 
 ## Allow the remote connection [ec_allow_the_remote_connection_3]

@@ -14,7 +14,7 @@ products:
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ecloud}} organization.
 
-::::{note}
+::::{note} aaa
 * [Network security](../security/network-security.md) policies are not supported for cross-cluster operations from an {{ece}} environment to a remote {{ech}} deployment when using the API key–based authentication model.
 
 * If you configure remote clusters with the deprecated TLS certificate–based authentication model, connections work regardless of network security policies on the remote deployment.  
