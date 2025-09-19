@@ -20,7 +20,7 @@ You can configure an {{ech}} deployment to either connect to remote clusters or 
 * A self-managed installation.
 
 ::::{note}
-Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security) for details on how remote clusters interact with network security filters and the implications for your deployments.
+Refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security) for details on how remote clusters interact with network security policies and the implications for your deployments.
 ::::
 
 
