@@ -22,7 +22,7 @@ If you have an {{es}} cluster set up for local development or testing, you can c
 Ensure your system meets the following requirements before proceeding:
 
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol).
-* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
+* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
 ## Connect to AutoOps (private preview) [connect-to-autoops]
@@ -92,9 +92,9 @@ Select one of the following methods to install {{agent}}:
 
 * **Kubernetes**
 * **Docker**
+* **Linux**
 <!-- Not applicable for private preview
-* Linux
-* Windows
+* **Windows**
 -->
 
 :::{important} 
@@ -204,7 +204,7 @@ If you manually assign privileges, you won't be able to allow {{agent}} to acces
 
 :::::
 * **System architecture**: Select the system architecture of the machine running the agent.
-* **Metrics storage location**: Select where to store your metrics data from the list of available cloud service providers and regions.
+* **Metrics storage location**: Select where to store your metrics data from the list of available regions.
   
   :::{include} ../_snippets/autoops-cc-regions.md
   :::
@@ -220,8 +220,8 @@ The wizard will generate an installation command based on your configuration. De
 * Docker
     * Docker
     * Docker compose
-<!-- Not applicable for private preview
 * Linux
+<!-- Not applicable for private preview
 * Windows
 -->
 
