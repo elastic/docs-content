@@ -356,3 +356,7 @@ redirects:
 
 # Related to https://github.com/elastic/docs-content/pull/2843
   'solutions/search/serverless-elasticsearch-get-started.md': 'solutions/search/get-started.md'
+
+# Remove duplicate reference content
+  'deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md': 'elasticsearch://reference/elasticsearch/roles.md'
+  'deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md': 'elasticsearch://reference/elasticsearch/security-privileges.md'

@@ -1,5 +1,5 @@
 ---
-navigation_title: With {{ecloud}}
+navigation_title: To {{ecloud}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-ece-ess.html
 applies_to:
@@ -10,10 +10,9 @@ products:
   - id: cloud-enterprise
 ---
 
-# Access deployments of an {{ecloud}} organization [ece-remote-cluster-ece-ess]
+# Connect {{ece}} deployments to an {{ecloud}} organization [ece-remote-cluster-ece-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ecloud}} organization.
-
 
 ## Allow the remote connection [ece_allow_the_remote_connection_3]
 
@@ -58,12 +57,12 @@ The API key created previously will be used by the local deployment to authentic
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 3. From the deployment menu, select **Security**.
-4. Locate **Remote connections** and select **Add an API key**.
+4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
 
     1. Fill both fields.
 
-        * For the **Setting name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
-        * For the **Secret**, paste the encoded cross-cluster API key.
+        * For the **Remote cluster name**, enter the the alias of your choice. You will use this alias to connect to the remote cluster later. It must be lowercase and only contain letters, numbers, dashes and underscores.
+        * For the **Cross-cluster API key**, paste the encoded cross-cluster API key.
 
     2. Click **Add** to save the API key to the keystore.
 
@@ -145,7 +144,9 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 
-    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
+    * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish local and remote indices.
+
+      When using API key authentication, this alias must match the **Remote cluster name** you configured when adding the API key in the Cloud UI.
     * **Proxy address**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.<br>
 
       ::::{tip}
@@ -204,6 +205,10 @@ PUT /_cluster/settings
   }
 }
 ```
+
+::::{note}
+When using API key authentication, the cluster alias must match the one you configured when adding the API key in the Cloud UI.
+::::
 
 ### Using the {{ece}} RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api_3]
 
