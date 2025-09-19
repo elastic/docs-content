@@ -25,14 +25,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Enhancements [elastic-observability-9.1.4-enhancements]
 
-* Save button is disabled in user-specific system prompt flyout when there's no input [#231562]({{kib-pull}}2301562).
+* Save button is disabled in user-specific system prompt flyout when there's no input [#233184]({{kib-pull}}233184).
 
 
 ## 9.1.3 [elastic-observability-9.1.3-release-notes]
 
 ### Fixes [elastic-observability-9.1.3-fixes]
 
-* Fixes Synthetics monitor filters [#231562]({{kib-pull}}2301562).
+* Fixes Synthetics monitor filters [#231562]({{kib-pull}}231562).
 
 ## 9.1.2 [elastic-observability-9.1.2-release-notes]
 
