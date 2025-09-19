@@ -42,12 +42,11 @@ The non-ECS fields listed below are beta and subject to change.
 | [`client.*`](ecs://reference/ecs-client.md) | ECS `client.*` fields copied from the source document, if present, for custom query and indicator match rules. |
 | [`cloud.*`](ecs://reference/ecs-cloud.md) | ECS `cloud.*` fields copied from the source document, if present, for custom query and indicator match rules. |
 | [`container.*`](ecs://reference/ecs-container.md) | ECS `container.* fields` copied from the source document, if present, for custom query and indicator match rules. |
-| [`data_stream.*`](ecs://reference/ecs-data_stream.md) | ECS `data_stream.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>**Note:** These fields may be constant keywords in the source documents, but are copied into the alert documents as keywords. |
 | [`destination.*`](ecs://reference/ecs-destination.md) | ECS `destination.*` fields copied from the source document, if present, for custom query and indicator match rules. |
 | [`dll.*`](ecs://reference/ecs-dll.md) | ECS `dll.*` fields copied from the source document, if present, for custom query and indicator match rules. |
 | [`dns.*`](ecs://reference/ecs-dns.md) | ECS `dns.*` fields copied from the source document, if present, for custom query and indicator match rules. |
 | [`error.*`](ecs://reference/ecs-error.md) | ECS `error.*` fields copied from the source document, if present, for custom query and indicator match rules. |
-| [`event.*`](ecs://reference/ecs-event.md) | ECS `event.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>**Note:** categorization fields above (`event.kind`, `event.category`, `event.type`, `event.outcome`) are listed separately above. |
+| [`event.*`](ecs://reference/ecs-event.md) | ECS `event.*` fields copied from the source document, if present, for custom query and indicator match rules.<br>**Note:** categorization fields (`event.kind`, `event.category`, `event.type`, `event.outcome`) are listed separately. |
 | [`file.*`](ecs://reference/ecs-file.md) | ECS `file.*` fields copied from the source document, if present, for custom query and indicator match rules. |
 | [`group.*`](ecs://reference/ecs-group.md) | ECS `group.*` fields copied from the source document, if present, for custom query and indicator match rules. |
 | [`host.*`](ecs://reference/ecs-host.md) | ECS `host.*` fields copied from the source document, if present, for custom query and indicator match rules. |
@@ -77,7 +76,8 @@ The non-ECS fields listed below are beta and subject to change.
 | `kibana.alert.ancestors.*` | Type: object |
 | `kibana.alert.depth` | Type: Long |
 | `kibana.alert.new_terms` | The value of the new term that generated this alert.<br>Type: keyword |
-| `kibana.alert.original_event.*` | Type: object |
+| `kibana.alert.original_data_stream.*` {applies_to}`stack: ga 9.1`| Data stream information copied from the original source event, including `dataset`, `namespace`, and `type` fields.<br>Type: object |
+| `kibana.alert.original_event.*` | Event information copied from the original source event.<br>Type: object |
 | `kibana.alert.original_time` | The value copied from the source event (`@timestamp`).<br>Type: date |
 | `kibana.alert.reason` | Type: keyword |
 | `kibana.alert.rule.author` | The value of the `author` who created the rule. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params).<br>Type: keyword |
