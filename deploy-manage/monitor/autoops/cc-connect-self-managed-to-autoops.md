@@ -92,9 +92,9 @@ Select one of the following methods to install {{agent}}:
 
 * **Kubernetes**
 * **Docker**
+* **Linux**
 <!-- Not applicable for private preview
-* Linux
-* Windows
+* **Windows**
 -->
 
 :::{important} 
@@ -220,8 +220,8 @@ The wizard will generate an installation command based on your configuration. De
 * Docker
     * Docker
     * Docker compose
-<!-- Not applicable for private preview
 * Linux
+<!-- Not applicable for private preview
 * Windows
 -->
 
