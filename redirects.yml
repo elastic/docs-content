@@ -364,6 +364,7 @@ redirects:
   'deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md': 'elasticsearch://reference/elasticsearch/roles.md'
   'deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md': 'elasticsearch://reference/elasticsearch/security-privileges.md'
 
+# Related to https://github.com/elastic/docs-content/issues/1449
 # APM Agent files (owned by ingest-docs)
   'solutions/observability/apm/apm-agent-central-configuration.md': 'solutions/observability/apm/apm-agents/central-configuration.md'
   'solutions/observability/apm/create-upload-source-maps-rum.md': 'solutions/observability/apm/apm-agents/create-upload-source-maps-rum.md'
@@ -409,7 +410,7 @@ redirects:
   'solutions/observability/apm/use-internal-collection-to-send-monitoring-data.md': 'solutions/observability/apm/apm-server/use-internal-collection-to-send-monitoring-data.md'
   'solutions/observability/apm/use-metricbeat-to-send-monitoring-data.md': 'solutions/observability/apm/apm-server/use-metricbeat-to-send-monitoring-data.md'
   'solutions/observability/apm/use-select-metrics-emitted-directly-to-monitoring-cluster.md': 'solutions/observability/apm/apm-server/use-select-metrics-emitted-directly-to-monitoring-cluster.md'
-# APM OpenTelemetry pages
+# APM OpenTelemetry pages (owned by ingest-docs)
   'solutions/observability/apm/attributes.md': 'solutions/observability/apm/opentelemetry/attributes.md'
   'solutions/observability/apm/collect-metrics.md': 'solutions/observability/apm/opentelemetry/collect-metrics.md'
   'solutions/observability/apm/data-stream-routing.md': 'solutions/observability/apm/opentelemetry/data-stream-routing.md'
