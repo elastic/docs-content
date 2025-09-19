@@ -41,7 +41,7 @@ When you access **Discover** outside of a specific solution context, or when wor
 
 In context-aware mode, it can happen that your query includes multiple data types for which a tailored experience exists. For example, if you query both `logs-*` and `traces-*` indices within an Observability context. 
 
-In this case **Discover** provides the default experience until it's able to detect that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
+In this case **Discover** provides the default experience until it detects that you're interacting with a single type of data. For example, when you [](#look-inside-a-document).
 
 ## Load data into Discover [find-the-data-you-want-to-use]
 
