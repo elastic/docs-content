@@ -11,7 +11,7 @@ products:
   - id: observability
 ---
 
-# Observability reference for the Elastic Stack
+# Elastic {{observability}} reference
 
 This section contains reference information for Elastic Observability features, including:
 
