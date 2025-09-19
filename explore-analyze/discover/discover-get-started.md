@@ -24,7 +24,7 @@ Learn how to use **Discover** to:
 
 ## Context-aware data exploration [context-aware-discover]
 
-**Discover** can provide tailored experiences for the following data types when accessed from specific Serverless project types or {{kib}} solution views:
+**Discover** provides tailored experiences for the following data types when accessed from specific Serverless project types or {{kib}} solution views:
 
 * Observability:
   * **[Logs exploration](/solutions/observability/logs/explore-logs.md)**
