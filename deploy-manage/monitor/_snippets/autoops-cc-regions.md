@@ -1,5 +1,3 @@
-Choose from the following AWS regions:
-
 | Region | Name |
 | --- | --- | 
 | us-east-2 | Ohio |

@@ -1,4 +1,5 @@
 ---
+navigation_title: Limitations
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry-known-limitations.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry-limitations.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Limitations [apm-open-telemetry-known-limitations]
+# OpenTelemetry limitations in Elastic APM [apm-open-telemetry-known-limitations]
 
 ## OpenTelemetry traces [apm-open-telemetry-traces-limitations]
 
