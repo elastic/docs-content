@@ -79,8 +79,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
     ::::
 
     ::::{note}
-    When using ES|QL, it is possible to append new fields with commands such as eval.  It is NOT possible to apply exceptions to these appended fields.  The excpetions are only applied to the index source fields.
-    * eval - https://www.elastic.co/docs/reference/query-languages/esql/commands/eval
+    When using ES|QL, you can append new fields with commands such as [`EVAL`](https://www.elastic.co/docs/reference/query-languages/esql/commands/eval), but you can't apply exceptions to these appended fields. Exceptions are only applied to the index source fields.
     ::::
 
     1. **Field**: Select a field to identify the event being filtered.
