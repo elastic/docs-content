@@ -37,11 +37,6 @@ ELSER on EIS enables you to use the ELSER model on GPUs, without having to manag
 
 While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
 
-#### Access
-
-This feature is being gradually rolled out to Serverless and Cloud Hosted customers.
-It may not be available to all users at launch.
-
 #### Uptime
 
 There are no uptime guarantees during the Technical Preview.
