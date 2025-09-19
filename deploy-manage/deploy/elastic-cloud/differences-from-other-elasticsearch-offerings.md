@@ -58,7 +58,7 @@ This table compares the core platform capabilities between {{ech}} deployments a
 |----------|----------------------|--------------------|--------|
 | **Audit logging** | ✅ | **Planned** | Anticipated in a future release |
 | **Authentication realms** | ✅ | ✅ | Managed at organization level in Serverless; deployment level in Hosted |
-| **BYO-Key for Encryption at Rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
+| **BYO-Key for encryption at rest** | ✅ | **Planned** | Anticipated in a future release; data in Serverless is stored on cloud-provider encrypted object storage |
 | **Cloud provider support** | - AWS <br>- GCP <br>- Azure | - AWS <br>- Azure <br>- GCP | - [{{ech}} regions](cloud://reference/cloud-hosted/regions.md)<br>- [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md) |
 | **Cluster scaling** | Manual with autoscaling option | Managed | Automatic scaling eliminates capacity planning - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Custom plugins and bundles** | ✅ | ❌ | Not available in Serverless |
@@ -86,6 +86,7 @@ This table compares Elasticsearch capabilities between {{ech}} deployments and S
 | [**AI Assistant**](/solutions/observability/observability-ai-assistant.md) | ✅ | ✅ | |
 | **Behavioral analytics** | ❌ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | [**Clone index API**](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone) | ✅ | **Planned** | Anticipated in a future release |
+| [**Bulk indexing**](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#_use_bulk_requests) |  ✅ | ✅ | The maximum bulk request response time in {{serverless-short}} is 200ms |
 | [**Cross-cluster replication**](/deploy-manage/tools/cross-cluster-replication.md) | ✅ | **Planned** | Anticipated in a future release |
 | [**Cross-cluster search**](/solutions/search/cross-cluster-search.md) | ✅ | **Planned** | Anticipated in a future release |
 | **Data lifecycle management** | - [ILM](/manage-data/lifecycle/index-lifecycle-management.md) <br>- [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) | [Data stream lifecycle](/manage-data/lifecycle/data-stream.md) only | - No data tiers in Serverless <br>- Optimized for common lifecycle management needs |
@@ -217,6 +218,8 @@ Available settings
     * Mapping parameters
     * Search/query settings
     * Indexing settings such as `refresh_interval`
+
+  Some settings might have different default values or value constraints in {{serverless-short}}. This information is documented in the settings reference.
 
 Managed settings
 :   **Infrastructure-related settings**: Settings that affect cluster resources or data distribution are not available to end users. These include:
