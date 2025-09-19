@@ -79,9 +79,10 @@ Data streams are designed for append-only data, where the data stream name can b
 **Data streams naming pattern**<br>
 {{es}} uses a structured naming convention for the backing indices of data streams, following this pattern:
 
-```console
+```
 .ds-<DATA-STREAM-NAME>-<yyyy.MM.dd>-<GENERATION>
 ```
+
 For more information about the data stream naming pattern, refer to the [Generation](../../data-store/data-streams.md#data-streams-generation) section of the Data streams page.
 
 ### Rotating your indices with aliases [rollover-with-aliases]
