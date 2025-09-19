@@ -160,7 +160,7 @@ To ensure optimal performance in Serverless Elasticsearch projects, follow these
 | **General search (non data-stream)** | 300GB | General purpose |
 | **Other uses (non data-stream)** | 600GB | General purpose |
 
-If you expect that you will have large datasets that exceed the recommended maximum size, consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md), or configuring [data stream lifecycle](/manage-data/lifecycle/data-stream) to prevent data streams from growing larger than the maximum size. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
+If you expect that you will have large datasets that exceed the recommended maximum size, consider creating multiple smaller indices that you can query using an [alias](/manage-data/data-store/aliases.md), or configuring [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to prevent data streams from growing larger than the maximum size. You should design your indexing and data lifecycle strategy with the size and growth of your data in mind.
 
 These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) for more information.
 
