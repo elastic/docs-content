@@ -1,4 +1,5 @@
 ---
+navigation_title: Metrics
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-data-model-metrics.html
 applies_to:
@@ -9,7 +10,7 @@ products:
   - id: apm
 ---
 
-# Metrics [apm-data-model-metrics]
+# Metrics in Elastic APM [apm-data-model-metrics]
 
 :::{include} _snippets/apm-server-vs-mis.md
 :::

@@ -1,11 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-function-reference.html
+navigation_tile: Canvas function reference
 products:
   - id: kibana
 ---
 
-# Canvas function reference [canvas-function-reference]
+# Explore Canvas functions and its expression language for {{kib}} [canvas-function-reference]
 
 Behind the scenes, Canvas is driven by a powerful expression language, with dozens of functions and other capabilities, including table transforms, type casting, and sub-expressions.
 
