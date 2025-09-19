@@ -104,11 +104,11 @@ Learn more about log correlation in the agent-specific ingestion guides:
 
 The {{edot}} (EDOT) provides SDKs for multiple programming languages with built-in support for log correlation:
 
-* [Java](opentelemetry://reference/edot-sdks/java/index.md)
-* [.NET](opentelemetry://reference/edot-sdks/dotnet/index.md)
-* [Node.js](opentelemetry://reference/edot-sdks/nodejs/index.md)
-* [PHP](opentelemetry://reference/edot-sdks/php/index.md)
-* [Python](opentelemetry://reference/edot-sdks/python/index.md)
+* [Java](elastic-otel-java://reference/edot-java/index.md)
+* [.NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
+* [Node.js](elastic-otel-node://reference/edot-node/index.md)
+* [PHP](elastic-otel-php://reference/edot-php/index.md)
+* [Python](elastic-otel-python://reference/edot-python/index.md)
 
 For more information about EDOT, refer to [Elastic Distribution of OpenTelemetry (EDOT)](opentelemetry://reference/index.md).
 

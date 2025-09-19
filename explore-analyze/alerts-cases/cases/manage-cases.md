@@ -1,4 +1,5 @@
 ---
+navigation_title: Open and manage cases
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-cases.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: kibana
 ---
 
-# Open and manage cases [manage-cases]
+# Open and manage cases in {{kib}} [manage-cases]
 
 To perform these tasks, you must have [full access](setup-cases.md) to the appropriate case features in {{kib}}.
 
