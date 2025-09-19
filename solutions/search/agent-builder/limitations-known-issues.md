@@ -16,11 +16,9 @@ These pages are hidden from the docs TOC and have `noindexed` meta headers.
 
 ## Model selection
 
-Initally, {{agent-builder}} only supports working with the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) running on the Elastic Inference Service which uses Claude Sonnet 3.7, on {{ech}} and {{serverless-full}}. 
+Initially, {{agent-builder}} only supports working with the [Elastic Managed LLM](kibana://reference/connectors-kibana/elastic-managed-llm.md) running on the Elastic Inference Service, on {{ech}} and {{serverless-full}}. 
 
 Locally this picks the first AI connector available.
-
-This can be changed under Stack Management -> AI -> GenAI Settings -> Default AI Connector.
 
 ## Known issues
 
