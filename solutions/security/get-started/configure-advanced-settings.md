@@ -124,6 +124,28 @@ You can change these settings, which affect the news feed displayed on the {{ela
 * `securitySolution:enableNewsFeed`: Enables the security news feed on the Security **Overview** page.
 * `securitySolution:newsFeedUrl`: The URL from which the security news feed content is retrieved.
 
+## Enable graph visualization
+```{applies_to}
+stack: preview 9.1
+serverless: preview
+```
+Turn on the `securitySolution:enableGraphVisualization` setting to integrate the GraphViz visualization into the Alert and Event flyouts for supported event types. When enabled, it appears in the **Visualization** section of the flyout and can be viewed in full-screen mode.
+
+## Enable asset inventory
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+
+Turn on the `securitySolution:enableAssetInventory` setting to enable the Asset Inventory in your environment.
+
+## Enable cloud connector deployment
+```{applies_to}
+stack: preview 9.2
+serverless: preview
+```
+
+Turn on the `securitySolution:enableCloudConnector` setting to enable Cloud Connector deployment for Elastic's CSPM and Asset Inventory integrations.
 
 ## Exclude cold and frozen tier data from analyzer queries [exclude-cold-frozen-tiers]
 
