@@ -21,7 +21,7 @@ Select the quickstart guide for your environment from the following list:
 - [Docker on self-managed](docker.md)
 - [Hosts or VMs on self-managed](hosts_vms.md)
 
-Before following the quickstart guides to set up your EDOT deployment, make sure to [install your self-managed Elastic Stack](/solutions/observability/apm/use-opentelemetry-with-apm.md).
+Before following the quickstart guides to set up your EDOT deployment, make sure to [install your self-managed Elastic Stack](/solutions/observability/apm/opentelemetry/index.md).
 
 ## Troubleshooting
 

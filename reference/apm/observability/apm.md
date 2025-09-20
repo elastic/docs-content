@@ -21,4 +21,4 @@ Metrics are another vital source of information when debugging production system
 
 ## Give Elastic APM a try [_give_elastic_apm_a_try]
 
-Want to quickly spin up an APM deployment? Refer to [Get started for APM](/solutions/observability/apm/get-started.md). To host everything yourself instead, refer to [Set up APM Server](/solutions/observability/apm/apm-server-setup.md).
+Want to quickly spin up an APM deployment? Refer to [Get started for APM](/solutions/observability/apm/get-started.md). To host everything yourself instead, refer to [Set up APM Server](/solutions/observability/apm/apm-server/setup.md).

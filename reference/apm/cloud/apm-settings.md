@@ -12,7 +12,7 @@ Change how Elastic APM runs by providing your own user settings. Starting in {{s
 {{fleet}}-managed APM integration
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
 
-    Check [APM configuration reference](/solutions/observability/apm/configure-apm-server.md) for information on how to configure Elastic APM in this mode.
+    Check [APM configuration reference](/solutions/observability/apm/apm-server/configure.md) for information on how to configure Elastic APM in this mode.
 
 
 Standalone APM Server (legacy)
@@ -47,7 +47,7 @@ If a setting is not supported by {{ech}}, you will get an error message when you
 
 ## Supported standalone APM settings (legacy) [ec-apm-settings]
 
-{{ech}} generally supports the settings listed in [APM documentation](/solutions/observability/apm/configure-apm-server.md) under "APM Server binary" when running APM in standalone mode (legacy). For versions before 9, refer to [older documentation](https://www.elastic.co/guide/en/observability/8.18/apm-configuring-howto-apm-server.html).
+{{ech}} generally supports the settings listed in [APM documentation](/solutions/observability/apm/apm-server/configure.md) under "APM Server binary" when running APM in standalone mode (legacy). For versions before 9, refer to [older documentation](https://www.elastic.co/guide/en/observability/8.18/apm-configuring-howto-apm-server.html).
 
 ::::{note}
 Some settings are intentionally restricted to maintain system stability.

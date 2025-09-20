@@ -157,24 +157,26 @@ toc:
                   - file: observability/apm/errors.md
                   - file: observability/apm/metrics.md
                   - file: observability/apm/metadata.md
-              - file: observability/apm/collect-application-data.md
+              - file: observability/apm/ingest/index.md
                 children:
-                  - file: observability/apm/use-opentelemetry-with-apm.md
+                  - folder: observability/apm/opentelemetry
+                    file: index.md
                     children:
-                      - file: observability/apm/upstream-opentelemetry-collectors-language-sdks.md
-                      - file: observability/apm/collect-metrics.md
-                      - file: observability/apm/edot-sdks-central-configuration.md
-                      - file: observability/apm/limitations.md
-                      - file: observability/apm/attributes.md
-                      - file: observability/apm/data-stream-routing.md
-                  - file: observability/apm/elastic-apm-agents.md
+                      - file: upstream-opentelemetry-collectors-language-sdks.md
+                      - file: collect-metrics.md
+                      - file: edot-sdks-central-configuration.md
+                      - file: limitations.md
+                      - file: attributes.md
+                      - file: data-stream-routing.md
+                  - folder: observability/apm/apm-agents
+                    file: index.md
                     children:
-                      - file: observability/apm/apm-agent-central-configuration.md
-                      - file: observability/apm/real-user-monitoring-rum.md
-                      - file: observability/apm/create-upload-source-maps-rum.md
-                  - file: observability/apm/apm-k8s-attacher.md
-                  - file: observability/apm/monitor-aws-lambda-functions.md
-                  - file: observability/apm/jaeger.md
+                      - file: central-configuration.md
+                      - file: real-user-monitoring-rum.md
+                      - file: create-upload-source-maps-rum.md
+                  - file: observability/apm/ingest/apm-k8s-attacher.md
+                  - file: observability/apm/ingest/monitor-aws-lambda-functions.md
+                  - file: observability/apm/ingest/jaeger.md
               - file: observability/apm/view-analyze-data.md
                 children:
                   - file: observability/apm/overviews.md
@@ -246,59 +248,60 @@ toc:
                   - file: observability/apm/storage-sizing-guide.md
                   - file: observability/apm/reduce-storage.md
                   - file: observability/apm/explore-data-in-elasticsearch.md
-              - file: observability/apm/apm-server.md
+              - folder: observability/apm/apm-server
+                file: index.md
                 children:
-                  - file: observability/apm/apm-server-setup.md
+                  - file: setup.md
                     children:
-                      - file: observability/apm/apm-server-fleet-managed.md
-                      - file: observability/apm/apm-server-binary.md
-                  - file: observability/apm/configure-apm-server.md
+                      - file: fleet-managed.md
+                      - file: binary.md
+                  - file: configure.md
                     children:
-                      - file: observability/apm/general-configuration-options.md
-                      - file: observability/apm/configure-anonymous-authentication.md
-                      - file: observability/apm/apm-agent-authorization.md
-                      - file: observability/apm/configure-apm-agent-central-configuration.md
-                      - file: observability/apm/configure-apm-instrumentation.md
-                      - file: observability/apm/configure-kibana-endpoint.md
-                      - file: observability/apm/configure-logging.md
-                      - file: observability/apm/configure-output.md
+                      - file: general-configuration-options.md
+                      - file: configure-anonymous-authentication.md
+                      - file: apm-agent-authorization.md
+                      - file: apm-agent-central-configuration.md
+                      - file: configure-apm-instrumentation.md
+                      - file: configure-kibana-endpoint.md
+                      - file: configure-logging.md
+                      - file: configure-output.md
                         children:
-                          - file: observability/apm/configure-output-for-elasticsearch-service-on-elastic-cloud.md
-                          - file: observability/apm/configure-elasticsearch-output.md
-                          - file: observability/apm/configure-logstash-output.md
-                          - file: observability/apm/configure-kafka-output.md
-                          - file: observability/apm/configure-redis-output.md
-                          - file: observability/apm/configure-console-output.md
-                      - file: observability/apm/configure-project-paths.md
-                      - file: observability/apm/configure-real-user-monitoring-rum.md
-                      - file: observability/apm/ssl-tls-settings.md
+                          - file: configure-output-for-elasticsearch-service-on-elastic-cloud.md
+                          - file: configure-elasticsearch-output.md
+                          - file: configure-logstash-output.md
+                          - file: configure-kafka-output.md
+                          - file: configure-redis-output.md
+                          - file: configure-console-output.md
+                      - file: configure-project-paths.md
+                      - file: configure-real-user-monitoring-rum.md
+                      - file: ssl-tls-settings.md
                         children:
-                          - file: observability/apm/ssl-tls-output-settings.md
-                          - file: observability/apm/ssl-tls-input-settings.md
-                      - file: observability/apm/tail-based-sampling.md
-                      - file: observability/apm/use-environment-variables-in-configuration.md
-                      - file: observability/apm/apm-server-advanced-setup.md
+                          - file: ssl-tls-output-settings.md
+                          - file: ssl-tls-input-settings.md
+                      - file: tail-based-sampling.md
+                      - file: use-environment-variables-in-configuration.md
+                      - file: advanced-setup.md
                         children:
-                          - file: observability/apm/installation-layout.md
-                          - file: observability/apm/secrets-keystore-for-secure-settings.md
-                          - file: observability/apm/apm-server-command-reference.md
-                          - file: observability/apm/tune-data-ingestion.md
-                          - file: observability/apm/high-availability.md
-                          - file: observability/apm/apm-server-systemd.md
-                  - file: observability/apm/monitor-apm-server.md
+                          - file: installation-layout.md
+                          - file: secrets-keystore-for-secure-settings.md
+                          - file: command-reference.md
+                          - file: tune-data-ingestion.md
+                          - file: high-availability.md
+                          - file: systemd.md
+                  - file: monitor.md
                     children:
-                      - file: observability/apm/monitor-fleet-managed-apm-server.md
-                      - file: observability/apm/monitor-apm-server-binary.md
+                      - file: monitor-fleet-managed.md
+                      - file: monitor-binary.md
                         children:
-                          - file: observability/apm/use-internal-collection-to-send-monitoring-data.md
-                          - file: observability/apm/use-metricbeat-to-send-monitoring-data.md
-                          - file: observability/apm/use-select-metrics-emitted-directly-to-monitoring-cluster.md
+                          - file: use-internal-collection-to-send-monitoring-data.md
+                          - file: use-metricbeat-to-send-monitoring-data.md
+                          - file: use-select-metrics-emitted-directly-to-monitoring-cluster.md
               - file: observability/apm/apis.md
                 children:
                   - file: observability/apm/apm-ui-api.md
-                  - file: observability/apm/apm-server-api.md
+                  - file: observability/apm/apm-server/api.md
                     children:
-                      - file: observability/apm/apm-server-information-api.md
+                      - file: observability/apm/apm-server/information-api.md
                       - file: observability/apm/elastic-apm-events-intake-api.md
                       - file: observability/apm/elastic-apm-agent-configuration-api.md
                       - file: observability/apm/opentelemetry-intake-api.md

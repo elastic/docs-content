@@ -39,7 +39,7 @@ This section describes how to configure and manage secure settings in each keyst
 * [{{kib}} secure settings](./secure-settings.md#kibana)
 
 :::{tip}
-For information about the APM keystore, refer to [](/solutions/observability/apm/secrets-keystore-for-secure-settings.md).
+For information about the APM keystore, refer to [](/solutions/observability/apm/apm-server/secrets-keystore-for-secure-settings.md).
 :::
 
 ## {{es}} secure settings [elasticsearch]
