@@ -1,4 +1,5 @@
 ---
+navigation_title: Traces UI
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-traces.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-traces.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Traces [apm-traces]
+# Traces UI in Elastic APM [apm-traces]
 
 ::::{tip}
 Traces link together related transactions to show an end-to-end performance of how a request was served and which services were part of it. In addition to the Traces overview, you can view your application traces in the [trace sample timeline waterfall](/solutions/observability/apm/trace-sample-timeline.md).

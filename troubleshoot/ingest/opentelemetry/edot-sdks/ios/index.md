@@ -1,16 +1,23 @@
 ---
-navigation_title: APM iOS Agent
+navigation_title: EDOT iOS
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/troubleshooting.html
+description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) iOS agent, covering connectivity, agent identification, and debugging.
 applies_to:
-  stack: all
+  stack:
+  serverless:
+    observability:
+  product:
+    edot_ios: ga
 products:
-  - id: apm-agent
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-sdk
 ---
 
-# Troubleshoot APM iOS Agent [troubleshooting]
+# Troubleshooting the EDOT iOS agent [troubleshooting]
 
-Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! As a first step, ensure your app is compatible with the agent’s [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
+When troubleshooting the EDOT iOS agent, ensure your app is compatible with the agent’s [supported technologies](apm-agent-ios://reference/edot-ios/supported-technologies.md).
 
 If you’re an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
 

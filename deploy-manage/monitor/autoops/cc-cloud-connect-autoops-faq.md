@@ -14,6 +14,7 @@ Find answers to your questions about AutoOps for ECE, ECK, and self-managed clus
 **General questions**
 * [Why should I use AutoOps for my clusters?](#why-autoops)
 * [Does this feature require additional payment?](#additional-payment)
+* [Is there an added cost for shipping metrics data to {{ecloud}}?](#autoops-metrics-cost)
 * [Which versions of {{es}} does AutoOps support?](#es-versions)
 * [Which deployment types can be connected to AutoOps?](#deployment-types)
 
@@ -24,7 +25,7 @@ Find answers to your questions about AutoOps for ECE, ECK, and self-managed clus
 * [Do I have to define an Elastic IP address to enable the agent to send data to {{ecloud}}?](#elastic-ip-address)
 
 **Questions about collected metrics**
-* [Where are AutoOps metrics stored, and does it cost extra to ship metrics data to {{ecloud}}?](#autoops-metrics)
+* [Where are AutoOps metrics stored?](#autoops-metrics-storage)
 * [What information does {{agent}} extract from my cluster?](#extracted-info)
 
 ## General questions
@@ -34,6 +35,11 @@ $$$why-autoops$$$ **Why should I use AutoOps for my clusters?**
 $$$additional-payment$$$ **Does this feature require additional payment?**
 :   :::{include} /deploy-manage/_snippets/autoops-cc-payment-faq.md
 ::: 
+
+$$$autoops-metrics-cost$$$ **Is there an added cost for shipping metrics data to {{ecloud}}?**
+:   Elastic does not charge extra for this service, but your cloud service provider (CSP) might. When sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs will be determined by your agreement with that CSP. 
+
+    You can [choose the CSP region where your data is stored](#autoops-metrics-storage). 
 
 $$$es-versions$$$ **Which versions of {{es}} does AutoOps support?**
 :   AutoOps is compatible with all [supported {{es}} versions](https://www.elastic.co/support/eol).
@@ -60,13 +66,11 @@ $$$elastic-ip-address$$$ **Do I have to define an Elastic IP address to enable t
 :   For more information, refer to [](/deploy-manage/security/elastic-cloud-static-ips.md).
 
 ## Questions about collected metrics
-$$$autoops-metrics$$$ **Where are AutoOps metrics stored, and does it cost extra to ship metrics data to {{ecloud}}?**
-:   You can choose the CSP and region in which your cluster metrics will be stored.
+$$$autoops-metrics-storage$$$ **Where are AutoOps metrics stored?**
+:   You can choose where to store your metrics from the following AWS regions:
 
     :::{include} ../_snippets/autoops-cc-regions.md
     :::
-
-    Shipping metrics to {{ecloud}} may come at an additional cost. For example, when sending metrics data from your cluster in a CSP region to {{ecloud}}, shipping costs will be determined by your agreement with that CSP.
 
 $$$extracted-info$$$ **What information does {{agent}} extract from my cluster?**
 :   {{agent}} only extracts and sends cluster metrics to {{ecloud}}, not the underlying data within your cluster. The following metrics are collected:
