@@ -6,9 +6,10 @@ applies_to:
 products:
   - id: observability
   - id: apm
+navigation_title: API keys
 ---
 
-# API keys [apm-api-key]
+# API keys for Elastic APM [apm-api-key]
 
 :::{include} _snippets/apm-server-vs-mis.md
 :::
