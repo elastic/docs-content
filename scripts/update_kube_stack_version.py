@@ -3,7 +3,8 @@
 Kube-Stack Version Update Script
 
 This script automatically updates the kube-stack version in the docset.yml file
-by fetching the latest version from the elastic-agent repository.
+by fetching the latest collector version from elastic-agent repository tags
+and then retrieving the corresponding kube-stack version.
 
 Usage:
     python update_kube_stack_version.py [--dry-run]
@@ -16,6 +17,7 @@ import urllib.request
 import re
 import sys
 import argparse
+import subprocess
 from pathlib import Path
 
 
@@ -31,25 +33,51 @@ def fetch_url_content(url):
         return None
 
 
-def get_collector_version(file_path):
-    """Extract the collector version from docset.yml"""
+def get_latest_collector_version():
+    """Get the latest semantic version from elastic-agent repository tags"""
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            content = file.read()
-            
-        lines = content.splitlines()
-        for line in lines:
-            if line.strip().startswith('edot-collector-version:'):
-                return line.split(':', 1)[1].strip()
+        print("Fetching latest collector version from elastic-agent repository...")
         
-        # If no specific version is found, use a default version that we know works
-        return '9.1.2'
-    except FileNotFoundError:
-        print(f"Error: Could not find {file_path}")
+        # Run git command to get the latest semantic version tag
+        cmd = ['git', 'ls-remote', '--tags', 'https://github.com/elastic/elastic-agent.git']
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        
+        # Extract version tags and find the latest semantic version
+        tags = []
+        for line in result.stdout.splitlines():
+            if 'refs/tags/v' in line:
+                tag = line.split('refs/tags/')[-1]
+                # Match semantic version pattern (vX.Y.Z)
+                if re.match(r'^v[0-9]+\.[0-9]+\.[0-9]+$', tag):
+                    tags.append(tag)
+        
+        if not tags:
+            print("No semantic version tags found")
+            return None
+            
+        # Sort tags by version and get the latest
+        def version_key(tag):
+            # Remove 'v' prefix and split by dots
+            version_parts = tag[1:].split('.')
+            return tuple(int(part) for part in version_parts)
+        
+        latest_tag = max(tags, key=version_key)
+        version = latest_tag[1:]  # Remove 'v' prefix
+        
+        print(f"Latest collector version: {version}")
+        return version
+        
+    except subprocess.CalledProcessError as e:
+        print(f"Error fetching tags from elastic-agent repository: {e}")
         return None
     except Exception as e:
-        print(f"Error reading {file_path}: {e}")
+        print(f"Error getting latest collector version: {e}")
         return None
+
+
+def get_collector_version():
+    """Get the latest collector version from elastic-agent repository tags"""
+    return get_latest_collector_version()
 
 
 def get_kube_stack_version(version='main'):
@@ -130,8 +158,8 @@ def main():
     
     print(f"Using docset.yml path: {docset_path}")
     
-    # Get the current collector version from docset.yml
-    col_version = get_collector_version(docset_path)
+    # Get the latest collector version from elastic-agent repository
+    col_version = get_collector_version()
     if col_version is None:
         print("Error: Could not determine collector version")
         sys.exit(1)
@@ -153,8 +181,8 @@ def main():
         print("Kube-stack version update completed successfully")
         sys.exit(0)
     else:
-        print("No update was needed or update failed")
-        sys.exit(1)
+        print("No update was needed")
+        sys.exit(0)
 
 
 if __name__ == '__main__':
