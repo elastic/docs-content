@@ -54,7 +54,7 @@ jobs:
           - Updated kube-stack version in docset.yml
           
           This PR was created automatically by the weekly kube-stack version update workflow.
-        branch: update-kube-stack-version
+        branch: update-kube-stack-version-${{ github.run_id }}
         delete-branch: true
         labels: |
           automated
