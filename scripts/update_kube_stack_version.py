@@ -18,6 +18,8 @@ import re
 import sys
 import argparse
 import subprocess
+import os
+import datetime
 from pathlib import Path
 
 
@@ -25,11 +27,14 @@ def fetch_url_content(url):
     """Fetch content from a URL"""
     try:
         print(f"Attempting to fetch: {url}")
-        with urllib.request.urlopen(url) as response:
+        with urllib.request.urlopen(url, timeout=30) as response:
             content = response.read().decode('utf-8')
         return content
     except urllib.error.URLError as e:
         print(f"Failed to retrieve content: {e.reason}")
+        return None
+    except Exception as e:
+        print(f"Unexpected error fetching URL: {e}")
         return None
 
 
@@ -40,7 +45,11 @@ def get_latest_collector_version():
         
         # Run git command to get the latest semantic version tag
         cmd = ['git', 'ls-remote', '--tags', 'https://github.com/elastic/elastic-agent.git']
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True, timeout=60)
+        
+        if not result.stdout.strip():
+            print("No output from git ls-remote command")
+            return None
         
         # Extract version tags and find the latest semantic version
         tags = []
@@ -67,8 +76,13 @@ def get_latest_collector_version():
         print(f"Latest collector version: {version}")
         return version
         
+    except subprocess.TimeoutExpired:
+        print("Timeout while fetching tags from elastic-agent repository")
+        return None
     except subprocess.CalledProcessError as e:
         print(f"Error fetching tags from elastic-agent repository: {e}")
+        if e.stderr:
+            print(f"Error details: {e.stderr}")
         return None
     except Exception as e:
         print(f"Error getting latest collector version: {e}")
@@ -146,10 +160,86 @@ def update_docset_kube_stack_version(version, docset_path, dry_run=False):
         return False
 
 
+def create_pr(version, dry_run=False):
+    """Create a pull request with the kube-stack version update"""
+    if dry_run:
+        print(f"[DRY RUN] Would create PR for kube-stack version {version}")
+        return True
+    
+    try:
+        # Generate a unique branch name with timestamp and random suffix
+        timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        import random
+        random_suffix = random.randint(1000, 9999)
+        branch_name = f"update-kube-stack-{version}-{timestamp}-{random_suffix}"
+        
+        print(f"Creating branch: {branch_name}")
+        
+        # Check if we're already on a branch (avoid detached HEAD)
+        try:
+            current_branch = subprocess.run(['git', 'branch', '--show-current'], 
+                                          capture_output=True, text=True, check=True).stdout.strip()
+            if not current_branch:
+                print("Warning: Not on any branch, checking out main first")
+                subprocess.run(['git', 'checkout', 'main'], check=True)
+        except subprocess.CalledProcessError:
+            print("Warning: Could not determine current branch")
+        
+        # Create and checkout new branch
+        subprocess.run(['git', 'checkout', '-b', branch_name], check=True)
+        
+        # Add and commit changes
+        subprocess.run(['git', 'add', 'docset.yml'], check=True)
+        subprocess.run(['git', 'commit', '-m', f'chore: update kube-stack version to {version} [skip ci]'], check=True)
+        
+        # Push the branch
+        subprocess.run(['git', 'push', '-u', 'origin', branch_name], check=True)
+        
+        # Create PR using GitHub CLI if available, otherwise provide instructions
+        try:
+            pr_body = f"""This PR automatically updates the kube-stack version in `docset.yml` to {version} based on the latest version from the elastic-agent repository.
+
+**Changes:**
+- Updated kube-stack version from previous version to {version}
+
+This PR was created automatically by the kube-stack version update script."""
+            
+            result = subprocess.run([
+                'gh', 'pr', 'create',
+                '--title', f'chore: update kube-stack version to {version}',
+                '--body', pr_body,
+                '--label', 'automated,documentation'
+            ], capture_output=True, text=True, check=True)
+            
+            print(f"Created PR: {result.stdout.strip()}")
+            
+        except (subprocess.CalledProcessError, FileNotFoundError) as e:
+            print(f"GitHub CLI not available or failed: {e}")
+            print("Branch created and pushed successfully. Please create PR manually:")
+            print(f"Branch: {branch_name}")
+            print(f"Title: chore: update kube-stack version to {version}")
+            print(f"URL: https://github.com/elastic/docs-content/compare/{branch_name}")
+            # Don't fail the script if GitHub CLI is not available
+            return True
+        
+        return True
+        
+    except subprocess.CalledProcessError as e:
+        print(f"Error creating PR: {e}")
+        return False
+    except Exception as e:
+        print(f"Error creating PR: {e}")
+        return False
+
+
 def main():
     parser = argparse.ArgumentParser(description='Update kube-stack version in docset.yml')
     parser.add_argument('--dry-run', action='store_true', 
                        help='Show what would be updated without making changes')
+    parser.add_argument('--create-pr', action='store_true', default=True,
+                       help='Create a pull request for the changes (default: True)')
+    parser.add_argument('--no-pr', action='store_false', dest='create_pr',
+                       help='Do not create a pull request, just update the file')
     args = parser.parse_args()
     
     # Get the script directory and construct paths relative to it
@@ -178,10 +268,20 @@ def main():
     success = update_docset_kube_stack_version(kube_stack_version, docset_path, args.dry_run)
     
     if success:
-        print("Kube-stack version update completed successfully")
-        sys.exit(0)
+        if args.create_pr:
+            # Create PR for the changes
+            pr_success = create_pr(kube_stack_version, args.dry_run)
+            if pr_success:
+                print("Kube-stack version update and PR creation completed successfully")
+                sys.exit(0)
+            else:
+                print("Kube-stack version updated but PR creation failed")
+                sys.exit(1)
+        else:
+            print("Kube-stack version update completed successfully")
+            sys.exit(0)
     else:
-        print("No update was needed")
+        print("No update was needed - kube-stack version is already up to date")
         sys.exit(0)
 
 
