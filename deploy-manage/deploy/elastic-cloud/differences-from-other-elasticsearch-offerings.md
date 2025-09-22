@@ -219,7 +219,7 @@ Available settings
     * Search/query settings
     * Indexing settings such as `refresh_interval`
 
-  Some settings might have different default values or value constraints in {{serverless-short}}. This information is documented in the settings reference.
+  Some settings might have different default values or value constraints in {{serverless-short}}. This information is documented in the [settings reference](elasticsearch://reference/elasticsearch/index-settings/index.md).
 
 Managed settings
 :   **Infrastructure-related settings**: Settings that affect cluster resources or data distribution are not available to end users. These include:
