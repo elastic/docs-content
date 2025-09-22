@@ -55,7 +55,7 @@ By understanding and adjusting the way your data is indexed, retained, and searc
 
 ### Data retention [ec_data_retention]
 
-The total amount of data being searched affects search performance. Check the tutorial [Automate rollover with index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) (ILM) to automate data retention policies.
+The total amount of data being searched affects search performance. Check the [{{ilm}} tutorials](/manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md) to learn about automating data retention policies.
 
 
 ### Tune for search speed [ec_tune_for_search_speed]

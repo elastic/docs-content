@@ -85,9 +85,9 @@ The `found-snapshots` repository is specific to your cluster. To use another clu
 
 You can also use any of the following custom repository types with {{search-snaps}}:
 
-* [Google Cloud Storage (GCS)](../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
-* [Azure Blob Storage](../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
-* [Amazon Web Services (AWS)](../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
+* [Google Cloud Storage (GCS)](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
+* [Azure Blob Storage](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
+* [Amazon Web Services (AWS)](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
 ::::::
 
 ::::::{tab-item} Self-managed

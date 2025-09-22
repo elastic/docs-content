@@ -3,7 +3,7 @@ navigation_title: Operate the backend
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-self-managed-ops.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
 ---
