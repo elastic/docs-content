@@ -181,7 +181,6 @@ subs:
   stack-monitor-features:   "Elastic Stack monitoring features"
   watcher:   "Watcher"
   alert-features:   "alerting features"
-  reporting:   "X-Pack reporting"
   report-features:   "reporting features"
   graph-features:   "graph analytics features"
   searchprofiler:   "Search Profiler"
