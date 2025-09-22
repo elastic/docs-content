@@ -20,7 +20,7 @@ To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-m
 ## Prerequisites [_prerequisites]
 
 * [Set up {{es}} monitoring](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md) and optionally [create a monitoring cluster](/deploy-manage/monitor/stack-monitoring/es-self-monitoring-prod.md).
-* Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md).
+* Create a user on the production cluster that has the `remote_monitoring_collector` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-remote-monitoring-collector).
 
 
 ## Add {{kib}} monitoring data [_add_kib_monitoring_data]

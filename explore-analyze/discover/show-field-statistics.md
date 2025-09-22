@@ -15,6 +15,10 @@ Explore the fields in your data with the **Field statistics** view in **Discover
 * What does the latency look like when one of the containers is down on a Sunday?
 * Is the field type and format in the data view appropriate for the data and its cardinality?
 
+:::{note}
+Field statistics aren't available when **Discover** is in {{esql}} mode.
+:::
+
 This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. Go to **Discover**.
@@ -46,5 +50,5 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
    :::
 
 7. Explore additional field types to see the statistics that **Discover** provides.
-8. To create a visualization of the field data, click ![Click the magnifying glass icon to create a visualization of the data in Lens](/explore-analyze/images/kibana-visualization-icon.png "") or ![Click the Maps icon to explore the data in a map](/explore-analyze/images/kibana-map-icon.png "") in the **Actions** column.
+8. To create a Lens visualization of the field data, click ![the magnifying glass icon to create a visualization of the data in Lens](/explore-analyze/images/kibana-visualization-icon.png "") or ![the Maps icon to explore the data in a map](/explore-analyze/images/kibana-map-icon.png "") in the **Actions** column.
 

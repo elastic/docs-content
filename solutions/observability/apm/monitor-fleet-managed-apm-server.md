@@ -112,7 +112,7 @@ See the [{{agent}} command reference](/reference/fleet/agent-command-reference.m
     3. APM Server metrics are exposed at `/processes/apm-server-default`. Add this location as the `basepath`.
     4. Set the `username` and `password` settings as required by your environment. If Elastic {{security-features}} are enabled, you must provide a username and password so that {{metricbeat}} can collect metrics successfully:
 
-        1. Create a user on the {{es}} cluster that has the `remote_monitoring_collector` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+        1. Create a user on the {{es}} cluster that has the `remote_monitoring_collector` [built-in role](elasticsearch://reference/elasticsearch/roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
         2. Add the `username` and `password` settings to the beat module configuration file.
 
 4. Optional: Disable the system module in the {{metricbeat}}.
@@ -154,7 +154,7 @@ See the [{{agent}} command reference](/reference/fleet/agent-command-reference.m
 
     If the {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
 
-    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+    1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](elasticsearch://reference/elasticsearch/roles.md). Alternatively, if it’s available in your environment, use the `remote_monitoring_user` [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.
 
     For more information about these configuration options, see [Configure the {{es}} output](beats://reference/metricbeat/elasticsearch-output.md).

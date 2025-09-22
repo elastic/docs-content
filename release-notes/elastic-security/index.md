@@ -27,6 +27,23 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.1.4 [elastic-security-9.1.4-release-notes]
+
+### Features and enhancements [elastic-security-9.1.4-features-enhancements]
+* Adds more Linux diagnostic process `ptrace` events.
+
+### Fixes [elastic-security-9.1.4-fixes]
+* Fixes a bug where the toggle column functionality only functioned on the **Alerts** page [#234278]({{kib-pull}}234278).
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
+* Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
+
+## 9.1.3 [elastic-security-9.1.3-release-notes]
+
+### Fixes [elastic-security-9.1.3-fixes]
+* Fixes a bug that prevented the vulnerability findings contextual flyout from showing details [#231778]({{kib-pull}}231778).
+* Fixes an issue preventing the creation of Knowledge Base Index Entries in deployments with a large number of indices/mappings [#231376]({{kib-pull}}231376).
+* Fixes a bug where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
+
 ## 9.1.2 [elastic-security-9.1.2-release-notes]
 
 ### Features and enhancements [elastic-security-9.1.2-features-enhancements]
@@ -149,6 +166,29 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a memory growth bug in {{elastic-defend}} on Linux when both **Collect session data** and **Capture terminal output** are enabled.
 * Fixes a bug in {{elastic-defend}} where Linux network events would have source and destination byte counts swapped.
 * Fixes an issue where {{elastic-defend}} may incorrectly set the artifact channel in policy responses, and adds `manifest_type` to policy responses.
+
+## 9.0.7 [elastic-security-9.0.7-release-notes]
+
+### Fixes [elastic-security-9.0.7-fixes]
+* Prevents users without appropriate privileges from deleting notes [#233948]({{kib-pull}}233948).
+* Fixes a bug that prevented the **MITRE ATT&CK** section from appearing in the alert details flyout [#233805]({{kib-pull}}233805).
+* Updates {{kib}} MITRE ATT&CK data to v17.1 [#231375]({{kib-pull}}231375).
+* Fixes a bug where Linux capabilities were included in {{elastic-endpoint}} network events despite being disabled.
+* Makes the delivery of {{elastic-endpoint}} command line commands more robust. In rare cases, commands could previously fail due to interprocess communication issues.
+
+## 9.0.6 [elastic-security-9.0.6-release-notes]
+
+### Features and enhancements [elastic-security-9.0.6-features-enhancements]
+* Improves the reliability of {{elastic-defend}}'s connection to its kernel driver. This should reduce the instances of temporary `DEGRADED` policy statuses at boot due to `connect_kernel` failures.
+* Improves {{elastic-defend}} malware scan queue efficiency by not blocking scan requests when an oplock for the file being scanned cannot be acquired.
+* To help identify which parts of `elastic-endpoint.exe` are using a significant amount of CPU, {{elastic-defend}} on Windows can now include CPU profiling data in diagnostics. To request CPU profiling data using the command line, refer to [{{agent}} command reference](/reference/fleet/agent-command-reference.md#_options). To request CPU profiling data using {{kib}}, check the **Collect additional CPU metrics** box when requesting {{agent}} diagnostics.
+* Enriches {{elastic-defend}} macOS network connect events with `network.direction`. Possible values are `ingress` and `egress`.
+
+### Fixes [elastic-security-9.0.6-fixes]
+* Prevents the {{esql}} form from locking in read-only mode in the rule upgrade flyout [#231699]({{kib-pull}}231699).
+* Fixes a bug in {{elastic-defend}} where the `fqdn` feature flag was not being persisted across system/endpoint restarts.
+* Fix a race condition in {{elastic-defend}} that occasionally resulted in corrupted process command lines on Windows. This could cause incorrect values for `process.command_line`, `process.args_count` and `process.args`, leading to false positives.
+* Fixes a bug in {{elastic-defend}} where Linux endpoints would report `process.executable` as a relative, instead of absolute, path.
 
 ## 9.0.5 [elastic-security-9.0.5-release-notes]
 

@@ -13,6 +13,7 @@ toc:
           - file: data-store/data-streams/manage-data-stream.md
           - file: data-store/data-streams/time-series-data-stream-tsds.md
             children:
+              - file: data-store/data-streams/quickstart-tsds.md
               - file: data-store/data-streams/set-up-tsds.md
               - file: data-store/data-streams/downsampling-time-series-data-stream.md
               - file: data-store/data-streams/run-downsampling-with-ilm.md
@@ -99,6 +100,7 @@ toc:
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
         children:
+          - file: ingest/transform-enrich/ingest-lag.md
           - file: ingest/transform-enrich/ingest-pipelines.md
             children:
               - file: ingest/transform-enrich/example-parse-logs.md
@@ -122,7 +124,6 @@ toc:
           - file: lifecycle/index-lifecycle-management/rollover.md
             children:
               - file: lifecycle/index-lifecycle-management/skip-rollover.md
-              - file: lifecycle/index-lifecycle-management/tutorial-automate-rollover.md
           - file: lifecycle/index-lifecycle-management/configure-lifecycle-policy.md
           - file: lifecycle/index-lifecycle-management/policy-apply.md
           - file: lifecycle/index-lifecycle-management/policy-view-status.md
@@ -130,10 +131,16 @@ toc:
           - file: lifecycle/index-lifecycle-management/policy-updates.md
           - file: lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md
           - file: lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md
-          - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
-          - hidden: lifecycle/index-lifecycle-management/index-management-in-kibana.md
-          - file: lifecycle/index-lifecycle-management/migrate-index-management.md
+          - file: lifecycle/index-lifecycle-management/ilm-tutorials.md
             children:
+              - file: lifecycle/index-lifecycle-management/tutorial-time-series-with-data-streams.md
+              - file: lifecycle/index-lifecycle-management/tutorial-time-series-without-data-streams.md
+              - file: lifecycle/index-lifecycle-management/tutorial-general-content-with-data-streams.md
+              - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
+          - hidden: lifecycle/index-lifecycle-management/index-management-in-kibana.md
+          - file: lifecycle/index-lifecycle-management/migrate-ilm.md
+            children:
+              - file: lifecycle/index-lifecycle-management/migrate-index-management.md
               - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
               - file: lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md
       - file: lifecycle/data-stream.md

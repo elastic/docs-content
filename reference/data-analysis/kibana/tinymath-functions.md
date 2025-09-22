@@ -3,9 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tinymath-functions.html
 products:
   - id: kibana
+navigation_title: TinyMath functions
 ---
 
-# TinyMath functions [canvas-tinymath-functions]
+# TinyMath functions for data analysis [canvas-tinymath-functions]
 
 TinyMath provides a set of functions that can be used with the Canvas expression language to perform complex math calculations. Read on for detailed information about the functions available in TinyMath, including what parameters each function accepts, the return value of that function, and examples of how each function behaves.
 

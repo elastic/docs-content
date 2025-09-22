@@ -42,7 +42,7 @@ Common causes of failure in the {{elastic-defend}} integration policy include mi
 * [Resolve a potential system deadlock](../../troubleshoot/security/elastic-defend.md#linux-deadlock) (Linux)
 
 ::::{tip}
-If the {{elastic-defend}} integration policy is not the cause of the `Unhealthy` agent status, refer to [{{fleet}} troubleshooting](../ingest/fleet/common-problems.md) for help with the {{agent}}.
+If the {{elastic-defend}} integration policy is not the cause of the `Unhealthy` agent status, refer to [](/troubleshoot/ingest/fleet/common-problems.md) for help with the {{agent}}.
 ::::
 
 

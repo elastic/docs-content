@@ -1,6 +1,7 @@
 toc:
   - file: index.md
   - file: fleet-agent-serverless-restrictions.md
+  - file: beats-agent-comparison.md
   - file: migrate-from-beats-to-elastic-agent.md
     children:
       - file: migrate-auditbeat-to-agent.md
@@ -18,6 +19,7 @@ toc:
       - file: fleet-server-monitoring.md
   - file: install-elastic-agents.md
     children:
+      - file: fleet-agent-release-process.md
       - file: install-fleet-managed-elastic-agent.md
       - file: install-standalone-elastic-agent.md
         children:

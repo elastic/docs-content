@@ -446,7 +446,7 @@ POST /_security/role/logstash-reader
 }
 ```
 
-Assign your {{kib}} users a role that grants [access to {{kib}}](../users-roles/cluster-or-deployment-auth/built-in-roles.md), as well as your `logstash_reader` role. For example, the following request creates the `cross-cluster-kibana` user and assigns the `kibana-access` and `logstash-reader` roles.
+Assign your {{kib}} users a role that grants [access to {{kib}}](elasticsearch://reference/elasticsearch/roles.md), as well as your `logstash_reader` role. For example, the following request creates the `cross-cluster-kibana` user and assigns the `kibana-access` and `logstash-reader` roles.
 
 ```console
 PUT /_security/user/cross-cluster-kibana

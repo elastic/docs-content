@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/get-started-with-apm-server-binary.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
   - id: apm
@@ -214,7 +214,7 @@ All that’s left is to compile and run your application. That’s it!
 
 **Learn more in the agent reference**
 
-Read more in the [APM Android Agent Reference](opentelemetry://reference/edot-sdks/android/index.md).
+Read more in the [APM Android Agent Reference](apm-agent-android://reference/edot-android/index.md).
 ::::::
 
 ::::::{tab-item} Go
@@ -340,7 +340,7 @@ var config = AgentConfigBuilder()
 
 **Learn more in the agent reference**
 
-Read more in the [APM iOS Agent Reference](opentelemetry://reference/edot-sdks/ios/index.md).
+Read more in the [APM iOS Agent Reference](apm-agent-ios://reference/edot-ios/index.md).
 ::::::
 
 ::::::{tab-item} Java
@@ -676,7 +676,7 @@ Set up the agent with `<script>` tags or by using a bundler.
 Add a <script> tag to load the bundle and use the `elasticApm` global object to initialize the agent:
 
 ```html
-<script src="https://<your-cdn-host>.com/path/to/elastic-apm-rum.umd.min-<version>.js" crossorigin></script>
+<script src="<YOUR_URL>/path/to/elastic-apm-rum.umd.min-<VERSION>.js" crossorigin></script>
 <script>
   elasticApm.init({
     serviceName: '<instrumented-app>',
@@ -695,10 +695,10 @@ Loading the script asynchronously ensures the agent script will not block other 
     var j = d.createElement(s),
       t = d.getElementsByTagName(s)[0]
 
-    j.src = 'https://<your-cdn-host>.com/path/to/elastic-apm-rum.umd.min-<version>.js'
+    j.src = '<YOUR_URL>/path/to/elastic-apm-rum.umd.min-<VERSION>.js'
     j.onload = function() {elasticApm.init(c)}
     t.parentNode.insertBefore(j, t)
-  })(document, 'script', {serviceName: '<instrumented-app>', serverUrl: '<apm-server-url>'})
+  })(document, 'script', {serviceName: '<INSTRUMENTED_APP>', serverUrl: '<APM_SERVER_URL>'})
 </script>
 ```
 

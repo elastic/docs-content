@@ -73,6 +73,10 @@ Elastic manages the installation and configuration of the monitoring agent for y
 - Enabling logging and monitoring increases the resource consumption of the deployment. For production systems, we recommend sizing deployments with logging and monitoring enabled to at least 4 GB of RAM on each {{es}} instance.
 - Enabling logging and monitoring can trigger a plan change on your deployment. You can monitor the plan change progress from the deployment's **Activity** page.
 
+:::{tip}
+The monitoring deployment and production deployment must be on the same major version, cloud provider, and region.
+:::
+
 To enable monitoring on your deployment:
 
 :::{include} /deploy-manage/_snippets/find-manage-deployment-ech-and-ece.md
@@ -147,7 +151,7 @@ The `*` indicates that we also index the archived files of each type of log.
 Check the respective product documentation for more information about the logging capabilities of each product.
 
 ## Restrictions and limitations [restrictions-monitoring]
-
+* The monitoring deployment and production deployment must be on the same major version, cloud provider, and region.
 * To avoid compatibility issues, ensure your monitoring cluster and production cluster run on the same {{stack}} version. Monitoring clusters that use 9.x do work with production clusters that use the latest release of 8.x, but this setup should only occur when upgrading clusters to the same version.
 * $$$cross-region-monitor$$$ Monitoring across regions is not supported. If you need to move your existing monitoring to the same region, you can do a reindex or create a new deployment and select the snapshot from the old deployment.
 * The logs shipped to a monitoring cluster use an ILM managed data stream (`elastic-cloud-logs-<version>`). If you need to delete indices due to space, do not delete the current `is_write_enabled: true` index.
