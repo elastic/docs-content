@@ -34,7 +34,7 @@ Use this table to quickly spot the usual causes and fixes.
 | Works locally, not on prod       | Different environment/flags in container or service  | Match prod environment settings and restart |
 | Still unsure                     | Enable debug logging                         | Inspect logs for disabled/unsupported/delayed initialization hints |
 
-### EDOT central config toggles at a glance
+### EDOT central configuration toggles at a glance
 
 If you use central configuration using OpAMP, these options can mute or change signals even when local `OTEL_*` looks correct.
 
@@ -56,7 +56,7 @@ Check the following:
 
 * **Environment variable**  
 
-	Many SDKs honor `OTEL_SDK_DISABLED=true`, or the equivalent in config files or flags. You can print the current value of the variable, for example: `printenv OTEL_SDK_DISABLED`.
+	Many SDKs honor `OTEL_SDK_DISABLED=true`, or the equivalent in configuration files or flags. You can print the current value of the variable, for example: `printenv OTEL_SDK_DISABLED`.
 
 	For SDK-specific details, see:
 	* [Java](opentelemetry://reference/edot-sdks/java/setup/index.md)
@@ -112,7 +112,7 @@ Check the following:
 	4. **Webhook and injector logs**: Inspect the Operator and injector webhook logs for errors or skipped injections.
 	5. **Restart and rollout**: After changing the `Instrumentation` or annotations, perform a rollout so containers start with the updated environment variables and startup flags.
 
-	If you use EDOT-specific images or settings, align the Instrumentation config with EDOT’s SDK guidance for that language (see links below).
+	If you use EDOT-specific images or settings, align the Instrumentation configuration with EDOT’s SDK guidance for that language (see links below).
 
 
 * **Start-up mechanism by language**
