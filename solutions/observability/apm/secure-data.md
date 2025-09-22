@@ -56,6 +56,6 @@ You should review the following fields regularly to ensure sensitive data is not
 | `process.args` | Process arguments. | [Database statements](/solutions/observability/apm/built-in-data-filters.md#apm-filters-database-statements) |
 | `span.db.statement` | Database statement. | [Database statements](/solutions/observability/apm/built-in-data-filters.md#apm-filters-database-statements) |
 | `stacktrace.vars` | A flat mapping of local variables captured in the stack frame | [Custom filters](/solutions/observability/apm/custom-filters.md) |
-| `url.query` | The query string of the request, e.g. `?pass=hunter2`. | [Custom filters](/solutions/observability/apm/custom-filters.md) |
+| `url.query` | The query string of the request, for example `?pass=hunter2`. | [Custom filters](/solutions/observability/apm/custom-filters.md) |
 | `user.*` | Logged-in user information. | [Custom filters](/solutions/observability/apm/custom-filters.md) |
 | `user_agent.*` | Device and version making the network request. | [Personal data](/solutions/observability/apm/built-in-data-filters.md#apm-filters-personal-data) |

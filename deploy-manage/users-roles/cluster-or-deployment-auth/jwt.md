@@ -25,8 +25,8 @@ When a JWT realm is used to authenticate with {{es}}, a distinction is made betw
 
 The JWT realm supports two token types, `id_token` (the default) and `access_token`:
 
-1. `id_token`: An application authenticates and identifies a user with an authentication flow, e.g. OpenID Connect (OIDC), and then accesses {{es}} on behalf of the authenticated user using a JSON Web Token (JWT) conforming to OIDC ID Token specification. This option is available in deployments using {{stack}} 8.2+.
-2. `access_token`: An application accesses {{es}} using its own identity, encoded as a JWT, e.g. The application authenticates itself to a central identity platform using an OAuth2 Client Credentials Flow and then uses the resulting JWT-based access token to connect to {{es}}. This option is available in deployments using {{stack}} 8.7+.
+1. `id_token`: An application authenticates and identifies a user with an authentication flow, for example OpenID Connect (OIDC), and then accesses {{es}} on behalf of the authenticated user using a JSON Web Token (JWT) conforming to OIDC ID Token specification. This option is available in deployments using {{stack}} 8.2+.
+2. `access_token`: An application accesses {{es}} using its own identity, encoded as a JWT, for example The application authenticates itself to a central identity platform using an OAuth2 Client Credentials Flow and then uses the resulting JWT-based access token to connect to {{es}}. This option is available in deployments using {{stack}} 8.7+.
 
 ::::{note}
 A single JWT realm can only work with a single token type. To handle both token types, you must configure at least two JWT realms. You should choose the token type carefully based on the use case because it impacts on how validations are performed.

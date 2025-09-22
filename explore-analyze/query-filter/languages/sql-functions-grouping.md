@@ -134,7 +134,7 @@ null           |10
 ```
 
 ::::{important}
-When the histogram in SQL is applied on **DATE** type instead of **DATETIME**, the interval specified is truncated to the multiple of a day. E.g.: for `HISTOGRAM(CAST(birth_date AS DATE), INTERVAL '2 3:04' DAY TO MINUTE)` the interval actually used will be `INTERVAL '2' DAY`. If the interval specified is less than 1 day, e.g.: `HISTOGRAM(CAST(birth_date AS DATE), INTERVAL '20' HOUR)` then the interval used will be `INTERVAL '1' DAY`.
+When the histogram in SQL is applied on **DATE** type instead of **DATETIME**, the interval specified is truncated to the multiple of a day. For example: for `HISTOGRAM(CAST(birth_date AS DATE), INTERVAL '2 3:04' DAY TO MINUTE)` the interval actually used will be `INTERVAL '2' DAY`. If the interval specified is less than 1 day, for example: `HISTOGRAM(CAST(birth_date AS DATE), INTERVAL '20' HOUR)` then the interval used will be `INTERVAL '1' DAY`.
 ::::
 
 
@@ -144,5 +144,5 @@ All intervals specified for a date/time HISTOGRAM will use a [fixed interval](el
 
 
 ::::{important}
-Histogram in SQL cannot be applied on **TIME** type. E.g.: `HISTOGRAM(CAST(birth_date AS TIME), INTERVAL '10' MINUTES)` is currently not supported.
+Histogram in SQL cannot be applied on **TIME** type. For example: `HISTOGRAM(CAST(birth_date AS TIME), INTERVAL '10' MINUTES)` is currently not supported.
 ::::

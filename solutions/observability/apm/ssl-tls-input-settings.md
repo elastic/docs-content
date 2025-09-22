@@ -35,7 +35,7 @@ apm-server.ssl.key: "/path/to/apm-server.key"
 ```
 
 ::::{tip}
-If APM agents are authenticating themselves using a certificate that cannot be authenticated through known CAs (e.g. self signed certificates), use the `ssl.certificate_authorities` to set a custom CA. This will automatically modify the `ssl.client_authentication` configuration to require authentication.
+If APM agents are authenticating themselves using a certificate that cannot be authenticated through known CAs (for example self signed certificates), use the `ssl.certificate_authorities` to set a custom CA. This will automatically modify the `ssl.client_authentication` configuration to require authentication.
 ::::
 ::::::
 

@@ -37,17 +37,17 @@ These fields are subject to change. However, most of these fields are generic fo
 | `availability_zones` | The number of availability zones supported by the target cluster |
 | `response_length` | The number of bytes written in the response body |
 | `connection_id` | A unique ID represented a single client connection, multiple requests may use a single connection |
-| `status_reason` | An optional reason to explain the response code - e.g. `BLOCKED_BY_TRAFFIC_FILTER` |
+| `status_reason` | An optional reason to explain the response code - for example `BLOCKED_BY_TRAFFIC_FILTER` |
 | `request_start` | The time the request was received in milliseconds `ms` since unix epoch |
 | `request_port` | The port used for the request |
 | `request_scheme` | The scheme (HTTP/HTTPS) used for the request |
 | `message` | An optional message associated with a proxy error |
-| `action` | The type of elasticsearch request (e.g. search/bulk etc) |
+| `action` | The type of elasticsearch request (for example search/bulk etc) |
 | `handling_cluster` | The cluster the request was forwarded to |
 | `request_id` | A unique ID for each request (returned on the response as `X-Cloud-Request-Id` - can be used to correlate client requests with proxy logs) |
 | `tls_version` | A code indicating the TLS version used for the request - `1.0 769`,`1.1 770`,`1.2 771`,`1.3 772` |
 | `instance_count` | The number of instances in the target cluster |
-| `cluster_type` | The type of cluster the request was routed to (e.g. {{es}}, {{kib}}, APM) |
+| `cluster_type` | The type of cluster the request was routed to (for example {{es}}, {{kib}}, APM) |
 | `request_method` | The HTTP method for the request |
 | `backend_connection_id` | A unique ID for the upstream request to the product, the proxy maintains connection pools so this should be re-used |
 

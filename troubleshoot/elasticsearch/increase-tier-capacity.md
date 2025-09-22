@@ -61,7 +61,7 @@ The response will look like this:
 }
 ```
 
-1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
+1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. for example in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
 
 
 Now that you know the tier, you want to increase the number of nodes in that tier so that the replicas can be allocated. To do this you can either increase the size per zone to increase the number of nodes in the availability zone(s) you were already using, or increase the number of availability zones. Go back to the deployment’s landing page by clicking on the three horizontal bars on the top left of the screen and choosing **Manage this deployment**. On that page click the **Manage** button, and choose **Edit deployment**. Note that you must be logged in to [https://cloud.elastic.co/](https://cloud.elastic.co/) in order to do this. In the {{es}} section, find the tier where the replica shards could not be assigned.
@@ -156,7 +156,7 @@ The response will look like this:
 }
 ```
 
-1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
+1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. for example in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
 
 
 Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspect the [`index.number_of_replicas`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) index setting and decrease the configured value:

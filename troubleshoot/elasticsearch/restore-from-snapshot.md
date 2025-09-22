@@ -194,7 +194,7 @@ In order to restore the indices and data streams that are missing data:
 
 
     ::::{note}
-    If any [feature states](../../deploy-manage/tools/snapshot-and-restore.md#feature-state) need to be restored we’ll need to specify them using the `feature_states` field and the indices that belong to the feature states we restore must not be specified under `indices`. The [Health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) returns both the `indices` and `feature_states` that need to be restored for the restore from snapshot diagnosis. e.g.:
+    If any [feature states](../../deploy-manage/tools/snapshot-and-restore.md#feature-state) need to be restored we’ll need to specify them using the `feature_states` field and the indices that belong to the feature states we restore must not be specified under `indices`. The [Health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) returns both the `indices` and `feature_states` that need to be restored for the restore from snapshot diagnosis. for example:
     ::::
 
 
@@ -382,7 +382,7 @@ In order to restore the indices that are missing shards:
 
 
     ::::{note}
-    If any [feature states](../../deploy-manage/tools/snapshot-and-restore.md#feature-state) need to be restored we’ll need to specify them using the `feature_states` field and the indices that belong to the feature states we restore must not be specified under `indices`. The [Health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) returns both the `indices` and `feature_states` that need to be restored for the restore from snapshot diagnosis. e.g.:
+    If any [feature states](../../deploy-manage/tools/snapshot-and-restore.md#feature-state) need to be restored we’ll need to specify them using the `feature_states` field and the indices that belong to the feature states we restore must not be specified under `indices`. The [Health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) returns both the `indices` and `feature_states` that need to be restored for the restore from snapshot diagnosis. for example:
     ::::
 
 

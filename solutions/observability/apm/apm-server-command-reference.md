@@ -102,7 +102,7 @@ To create an APM Server user with the required privileges for creating and manag
 :   Required for the `verify` subcommand. Specifies the credentials for which to check privileges. Credentials are the base64 encoded representation of the API key’s `id:api_key`.
 
 **`--expiration TIME`**
-:   When used with `create`, specifies the expiration for the key, e.g., "1d" (default never).
+:   When used with `create`, specifies the expiration for the key, for example, "1d" (default never).
 
 **`--id ID`**
 :   ID of the API key. Valid with the `info` and `invalidate` subcommands. When used with `info`, queries the specified ID. When used with `invalidate`, deletes the specified ID.

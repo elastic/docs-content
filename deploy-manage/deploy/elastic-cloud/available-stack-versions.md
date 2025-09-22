@@ -22,7 +22,7 @@ This section describes our version policy for {{ech}}, including:
 
 ## Available {{stack}} versions [ec-version-policy-available]
 
-{{stack}} uses a versions code that is constructed of three numbers separated by dots: the leftmost number is the number of the major release, the middle number is the number of the minor release and the rightmost number is the number of the maintenance release (e.g., 8.3.2 means major release 8, minor release 3 and maintenance release 2).
+{{stack}} uses a versions code that is constructed of three numbers separated by dots: the leftmost number is the number of the major release, the middle number is the number of the minor release and the rightmost number is the number of the maintenance release (for example, 8.3.2 means major release 8, minor release 3 and maintenance release 2).
 
 You might sometimes notice additional versions listed in the user interface beyond the versions we currently support and maintain, such as [release candidate builds](#ec-release-builds) and older versions. If a version is listed in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
 

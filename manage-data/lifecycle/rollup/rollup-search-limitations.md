@@ -31,7 +31,7 @@ When using the [Rollup search](https://www.elastic.co/docs/api/doc/elasticsearch
 * Only one rollup index may be specified. If more than one are supplied an exception will be thrown
 * Index patterns may be used, but if they match more than one rollup index an exception will be thrown.
 
-This limitation is driven by the logic that decides which jobs are the "best" for any given query. If you have ten jobs stored in a single index, which cover the source data with varying degrees of completeness and different intervals, the query needs to determine which set of jobs to actually search. Incorrect decisions can lead to inaccurate aggregation results (e.g. over-counting doc counts, or bad metrics). Needless to say, this is a technically challenging piece of code.
+This limitation is driven by the logic that decides which jobs are the "best" for any given query. If you have ten jobs stored in a single index, which cover the source data with varying degrees of completeness and different intervals, the query needs to determine which set of jobs to actually search. Incorrect decisions can lead to inaccurate aggregation results (for example over-counting doc counts, or bad metrics). Needless to say, this is a technically challenging piece of code.
 
 To help simplify the problem, we have limited search to just one rollup index at a time (which may contain multiple jobs). In the future we may be able to open this up to multiple rollup jobs.
 

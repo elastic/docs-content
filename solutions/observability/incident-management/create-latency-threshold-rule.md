@@ -18,7 +18,7 @@ products:
 ::::
 
 
-You can create a latency threshold rule to alert you when the latency of a specific transaction type in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name. Add actions to raise alerts via services or third-party integrations e.g. mail, Slack, Jira.
+You can create a latency threshold rule to alert you when the latency of a specific transaction type in a service exceeds a defined threshold. Threshold rules can be set at different levels: environment, service, transaction type, and/or transaction name. Add actions to raise alerts via services or third-party integrations for example mail, Slack, Jira.
 
 :::{image} /solutions/images/serverless-alerts-create-rule-apm-latency-threshold.png
 :alt: Create rule for APM latency threshold alert

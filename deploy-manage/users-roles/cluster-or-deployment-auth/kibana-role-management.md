@@ -96,7 +96,7 @@ You can assign the same privileges, document-level, and field-level as for [loca
 
     1. The name of your remote cluster in the **Remote clusters** field.
     2. The name of the index in your remote cluster in the **Remote indices** field.
-    3. The allowed actions in the **Privileges** field. (e.g. `read` and `view_index_metadata`)
+    3. The allowed actions in the **Privileges** field. (for example `read` and `view_index_metadata`)
 
 <br>
 :::{image} /deploy-manage/images/kibana-create-role-remote-index-example.png

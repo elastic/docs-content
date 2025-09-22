@@ -113,7 +113,7 @@ The following describes the structure of the global privileges entry:
 ```
 
 1. The privilege for the ability to manage application privileges
-2. The list of application names that may be managed. This list supports wildcards (e.g. `"myapp-*"`) and regular expressions (e.g. `"/app[0-9]*/"`)
+2. The list of application names that may be managed. This list supports wildcards (for example `"myapp-*"`) and regular expressions (for example `"/app[0-9]*/"`)
 3. The privilege for the ability to write the `access` and `data` of any user profile
 4. The list of names, wildcards and regular expressions to which the write privilege is restricted to
 

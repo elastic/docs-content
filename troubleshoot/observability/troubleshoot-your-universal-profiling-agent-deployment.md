@@ -130,7 +130,7 @@ We recommend only enabling debug logs on a single instance of Universal Profilin
 
 ## Improve load times [profiling-improve-load-time]
 
-The amount of data loaded for the flamegraph, topN functions, and traces view can lead to latency when using a slow connection (e.g. DSL or mobile).
+The amount of data loaded for the flamegraph, topN functions, and traces view can lead to latency when using a slow connection (for example DSL or mobile).
 
 Setting the Kibana cluster option `server.compression.brotli.enabled: true` reduces the amount of data transferred and should reduce load time.
 

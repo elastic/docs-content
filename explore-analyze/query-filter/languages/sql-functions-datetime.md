@@ -36,7 +36,7 @@ The table below shows the mapping between {{es}} and Elasticsearch SQL:
 `INTERVAL` allows either `YEAR` and `MONTH` to be mixed together *or* `DAY`, `HOUR`, `MINUTE` and `SECOND`.
 
 ::::{tip}
-Elasticsearch SQL accepts also the plural for each time unit (e.g. both `YEAR` and `YEARS` are valid).
+Elasticsearch SQL accepts also the plural for each time unit (for example both `YEAR` and `YEARS` are valid).
 ::::
 
 
@@ -533,7 +533,7 @@ DATE_FORMAT(
 **Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern is one of the specifiers used in the [MySQL DATE_FORMAT() function](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-format).
 
 ::::{note}
-If the 1st argument is of type `time`, then pattern specified by the 2nd argument cannot contain date related units (e.g. *dd*, *MM*, *yyyy*, etc.). If it contains such units an error is returned. Ranges for month and day specifiers (%c, %D, %d, %e, %m) start at one, unlike MySQL, where they start at zero, due to the fact that MySQL permits the storing of incomplete dates such as *2014-00-00*. Elasticsearch in this case returns an error.
+If the 1st argument is of type `time`, then pattern specified by the 2nd argument cannot contain date related units (for example *dd*, *MM*, *yyyy*, etc.). If it contains such units an error is returned. Ranges for month and day specifiers (%c, %D, %d, %e, %m) start at one, unlike MySQL, where they start at zero, due to the fact that MySQL permits the storing of incomplete dates such as *2014-00-00*. Elasticsearch in this case returns an error.
 ::::
 
 
@@ -581,7 +581,7 @@ DATE_PARSE(
 **Description**: Returns a date by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.html).
 
 ::::{note}
-If the parsing pattern does not contain all valid date units (e.g. *HH:mm:ss*, *dd-MM HH:mm:ss*, etc.) an error is returned as the function needs to return a value of `date` type which will contain date part.
+If the parsing pattern does not contain all valid date units (for example *HH:mm:ss*, *dd-MM HH:mm:ss*, etc.) an error is returned as the function needs to return a value of `date` type which will contain date part.
 ::::
 
 
@@ -630,7 +630,7 @@ DATETIME_FORMAT(
 **Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.html).
 
 ::::{note}
-If the 1st argument is of type `time`, then pattern specified by the 2nd argument cannot contain date related units (e.g. *dd*, *MM*, *yyyy*, etc.). If it contains such units an error is returned.
+If the 1st argument is of type `time`, then pattern specified by the 2nd argument cannot contain date related units (for example *dd*, *MM*, *yyyy*, etc.). If it contains such units an error is returned.
 ::::
 
 
@@ -678,7 +678,7 @@ DATETIME_PARSE(
 **Description**: Returns a datetime by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.html).
 
 ::::{note}
-If the parsing pattern contains only date or only time units (e.g. *dd/MM/yyyy*, *HH:mm:ss*, etc.) an error is returned as the function needs to return a value of `datetime` type which must contain both.
+If the parsing pattern contains only date or only time units (for example *dd/MM/yyyy*, *HH:mm:ss*, etc.) an error is returned as the function needs to return a value of `datetime` type which must contain both.
 ::::
 
 
@@ -735,7 +735,7 @@ TIME_PARSE(
 **Description**: Returns a time by parsing the 1st argument using the format specified in the 2nd argument. The parsing format pattern used is the one from [`java.time.format.DateTimeFormatter`](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/time/format/DateTimeFormatter.html).
 
 ::::{note}
-If the parsing pattern contains only date units (e.g. *dd/MM/yyyy*) an error is returned as the function needs to return a value of `time` type which will contain only time.
+If the parsing pattern contains only date units (for example *dd/MM/yyyy*) an error is returned as the function needs to return a value of `time` type which will contain only time.
 ::::
 
 
@@ -789,7 +789,7 @@ DATE_PART(
 
 **Output**: integer
 
-**Description**: Extract the specified unit from a date/datetime. It’s similar to [`EXTRACT`](#sql-functions-datetime-extract) but with different names and aliases for the units and provides more options (e.g.: `TZOFFSET`).
+**Description**: Extract the specified unit from a date/datetime. It’s similar to [`EXTRACT`](#sql-functions-datetime-extract) but with different names and aliases for the units and provides more options (for example: `TZOFFSET`).
 
 | Datetime units to extract |
 | --- |
@@ -996,7 +996,7 @@ FORMAT(
 **Description**: Returns the date/datetime/time as a string using the [format](https://docs.microsoft.com/en-us/sql/t-sql/functions/format-transact-sql#arguments) specified in the 2nd argument. The formatting pattern used is the one from [Microsoft SQL Server Format Specification](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings).
 
 ::::{note}
-If the 1st argument is of type `time`, then pattern specified by the 2nd argument cannot contain date related units (e.g. *dd*, *MM*, *yyyy*, etc.). If it contains such units an error is returned.<br> Format specifier `F` will be working similar to format specifier `f`. It will return the fractional part of seconds, and the number of digits will be same as of the number of `Fs` provided as input (up to 9 digits). Result will contain `0` appended in the end to match with number of `F` provided. e.g.: for a time part `10:20:30.1234` and pattern `HH:mm:ss.FFFFFF`, the output string of the function would be: `10:20:30.123400`.<br> Format specifier `y` will return year-of-era instead of one/two low-order digits. eg.: For year `2009`, `y` will be returning `2009` instead of `9`. For year `43`, `y` format specifier will return `43`. - Special characters like `"` , `\` and `%` will be returned as it is without any change. eg.: formatting date `17-sep-2020` with `%M` will return `%9`
+If the 1st argument is of type `time`, then pattern specified by the 2nd argument cannot contain date related units (for example *dd*, *MM*, *yyyy*, etc.). If it contains such units an error is returned.<br> Format specifier `F` will be working similar to format specifier `f`. It will return the fractional part of seconds, and the number of digits will be same as of the number of `Fs` provided as input (up to 9 digits). Result will contain `0` appended in the end to match with number of `F` provided. for example: for a time part `10:20:30.1234` and pattern `HH:mm:ss.FFFFFF`, the output string of the function would be: `10:20:30.123400`.<br> Format specifier `y` will return year-of-era instead of one/two low-order digits. eg.: For year `2009`, `y` will be returning `2009` instead of `9`. For year `43`, `y` format specifier will return `43`. - Special characters like `"` , `\` and `%` will be returned as it is without any change. eg.: formatting date `17-sep-2020` with `%M` will return `%9`
 ::::
 
 
@@ -1044,7 +1044,7 @@ TO_CHAR(
 **Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern conforms to [PostgreSQL Template Patterns for Date/Time Formatting](https://www.postgresql.org/docs/13/functions-formatting.html).
 
 ::::{note}
-If the 1st argument is of type `time`, then the pattern specified by the 2nd argument cannot contain date related units (e.g. *dd*, *MM*, *YYYY*, etc.). If it contains such units an error is returned.<br> The result of the patterns `TZ` and `tz` (time zone abbreviations) in some cases differ from the results returned by the `TO_CHAR` in PostgreSQL. The reason is that the time zone abbreviations specified by the JDK are different from the ones specified by PostgreSQL. This function might show an actual time zone abbreviation instead of the generic `LMT` or empty string or offset returned by the PostgreSQL implementation. The summer/daylight markers might also differ between the two implementations (e.g. will show `HT` instead of `HST` for Hawaii).<br> The `FX`, `TM`, `SP` pattern modifiers are not supported and will show up as `FX`, `TM`, `SP` literals in the output.
+If the 1st argument is of type `time`, then the pattern specified by the 2nd argument cannot contain date related units (for example *dd*, *MM*, *YYYY*, etc.). If it contains such units an error is returned.<br> The result of the patterns `TZ` and `tz` (time zone abbreviations) in some cases differ from the results returned by the `TO_CHAR` in PostgreSQL. The reason is that the time zone abbreviations specified by the JDK are different from the ones specified by PostgreSQL. This function might show an actual time zone abbreviation instead of the generic `LMT` or empty string or offset returned by the PostgreSQL implementation. The summer/daylight markers might also differ between the two implementations (for example will show `HT` instead of `HST` for Hawaii).<br> The `FX`, `TM`, `SP` pattern modifiers are not supported and will show up as `FX`, `TM`, `SP` literals in the output.
 ::::
 
 

@@ -167,11 +167,11 @@ The default is 3.
 
 ### `flush_bytes` [_flush_bytes]
 
-The bulk request size threshold, in bytes, before flushing to {{es}}. The value must have a suffix, e.g. `"2MB"`. The default is `1MB`.
+The bulk request size threshold, in bytes, before flushing to {{es}}. The value must have a suffix, for example `"2MB"`. The default is `1MB`.
 
 ### `flush_interval` [_flush_interval]
 
-The maximum duration to accumulate events for a bulk request before being flushed to {{es}}. The value must have a duration suffix, e.g. `"5s"`. The default is `1s`.
+The maximum duration to accumulate events for a bulk request before being flushed to {{es}}. The value must have a duration suffix, for example `"5s"`. The default is `1s`.
 
 ### `backoff.init` [_backoff_init]
 

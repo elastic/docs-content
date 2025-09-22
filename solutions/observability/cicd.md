@@ -528,7 +528,7 @@ The following example shows a canary deployment pipeline that leverages Elastic 
 
 Perform the health check by invoking the `KIBANA_URL/internal/apm/services` API to compare the transaction error rate of the service on the newly deployed instances with a threshold value. Pass the following parameters to the invocation:
 
-* `start` and `end`: time interval using the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format (e.g. "2021-09-01T13:24:12Z" which is a UTC time)
+* `start` and `end`: time interval using the [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format (for example "2021-09-01T13:24:12Z" which is a UTC time)
 * `kuery`: used to filter on the service name and, for example, the new version being deployed to narrow down to the canary instances. Example `service.name:"MY_SERVICE_NAME" AND service.version:"1.2.3"`
 * `environment`: the environment on which the canary instances are deployed. Example: `production`.
 

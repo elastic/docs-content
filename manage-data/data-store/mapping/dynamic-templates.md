@@ -265,7 +265,7 @@ PUT my-index/_doc/1
 
 ## `path_match` and `path_unmatch` [path-match-unmatch]
 
-The `path_match` and `path_unmatch` parameters work in the same way as `match` and `unmatch`, but operate on the full dotted path to the field, not just the final name, e.g. `some_object.*.some_field`.
+The `path_match` and `path_unmatch` parameters work in the same way as `match` and `unmatch`, but operate on the full dotted path to the field, not just the final name, for example `some_object.*.some_field`.
 
 This example copies the values of any fields in the `name` object to the top-level `full_name` field, except for the `middle` field:
 

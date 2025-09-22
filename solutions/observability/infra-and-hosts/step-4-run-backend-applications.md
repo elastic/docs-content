@@ -487,7 +487,7 @@ With the config file in place in your system, you can run the containers with th
 
 With the above commands, the backend containers will serve the HTTP endpoints on the host ports 8260 and 8240, respectively. We provided the `-v` flag to mount the configuration files in the containers, and then we used the `-c` flag to tell the applications to read the configuration files from the mounted path.
 
-Container processes will be running in the background, you can check the logs with `docker logs <container_name>`, e.g.
+Container processes will be running in the background, you can check the logs with `docker logs <container_name>`, for example
 
 ```shell
 docker logs pf-elastic-collector

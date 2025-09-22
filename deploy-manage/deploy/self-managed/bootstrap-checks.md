@@ -62,7 +62,7 @@ To avoid these issues, start the JVM with an initial heap size equal to the maxi
 
 $$$bootstrap-checks-file-descriptor$$$
 
-File descriptors are a Unix construct for tracking open "files". In Unix though, [everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file). For example, "files" could be a physical file, a virtual file (e.g., `/proc/loadavg`), or network sockets. {{es}} requires lots of file descriptors (e.g., every shard is composed of multiple segments and other files, plus connections to other nodes, etc.). This bootstrap check is enforced on OS X and Linux.
+File descriptors are a Unix construct for tracking open "files". In Unix though, [everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file). For example, "files" could be a physical file, a virtual file (for example, `/proc/loadavg`), or network sockets. {{es}} requires lots of file descriptors (for example, every shard is composed of multiple segments and other files, plus connections to other nodes, etc.). This bootstrap check is enforced on OS X and Linux.
 
 To pass the file descriptor check, you might have to configure [file descriptors](file-descriptors.md).
 :::
@@ -71,7 +71,7 @@ To pass the file descriptor check, you might have to configure [file descriptors
 
 $$$bootstrap-checks-memory-lock$$$
 
-When the JVM does a major garbage collection it touches every page of the heap. If any of those pages are swapped out to disk they will have to be swapped back in to memory. That causes lots of disk thrashing that {{es}} would much rather use to service requests. There are several ways to configure a system to disallow swapping. One way is by requesting the JVM to lock the heap in memory through `mlockall` (Unix) or virtual lock (Windows). This is done via the {{es}} setting [`bootstrap.memory_lock`](setup-configuration-memory.md#bootstrap-memory_lock). However, there are cases where this setting can be passed to {{es}} but {{es}} is not able to lock the heap (e.g., if the `elasticsearch` user does not have `memlock unlimited`). The memory lock check verifies that **if** the `bootstrap.memory_lock` setting is enabled, that the JVM was successfully able to lock the heap.
+When the JVM does a major garbage collection it touches every page of the heap. If any of those pages are swapped out to disk they will have to be swapped back in to memory. That causes lots of disk thrashing that {{es}} would much rather use to service requests. There are several ways to configure a system to disallow swapping. One way is by requesting the JVM to lock the heap in memory through `mlockall` (Unix) or virtual lock (Windows). This is done via the {{es}} setting [`bootstrap.memory_lock`](setup-configuration-memory.md#bootstrap-memory_lock). However, there are cases where this setting can be passed to {{es}} but {{es}} is not able to lock the heap (for example, if the `elasticsearch` user does not have `memlock unlimited`). The memory lock check verifies that **if** the `bootstrap.memory_lock` setting is enabled, that the JVM was successfully able to lock the heap.
 
 To pass the memory lock check, you might have to configure [`bootstrap.memory_lock`](setup-configuration-memory.md#bootstrap-memory_lock).
 :::
@@ -136,7 +136,7 @@ To pass the serial collector check, you must not start {{es}} with the serial co
 
 $$$bootstrap-checks-syscall-filter$$$
 
-{{es}} installs system call filters of various flavors depending on the operating system (e.g., seccomp on Linux). These system call filters are installed to prevent the ability to execute system calls related to forking as a defense mechanism against arbitrary code execution attacks on {{es}}. The system call filter check ensures that if system call filters are enabled, then they were successfully installed.
+{{es}} installs system call filters of various flavors depending on the operating system (for example, seccomp on Linux). These system call filters are installed to prevent the ability to execute system calls related to forking as a defense mechanism against arbitrary code execution attacks on {{es}}. The system call filter check ensures that if system call filters are enabled, then they were successfully installed.
 
 To pass the system call filter check you must fix any configuration errors on your system that prevented system call filters from installing (check your logs).
 :::

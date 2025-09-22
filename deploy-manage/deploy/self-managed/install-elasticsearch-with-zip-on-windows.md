@@ -238,7 +238,7 @@ Most changes (like JVM settings) made through the manager GUI will require a res
 
 * The service automatically configures a private temporary directory for use by {{es}} when it is running. This private temporary directory is configured as a sub-directory of the private temporary directory for the user running the installation. If the service will run under a different user, you can configure the location of the temporary directory that the service should use by setting the environment variable `ES_TMPDIR` to the preferred location before you execute the service installation.
 
-* The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service, but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. Upgrading across JVM types (e.g. JRE versus SE) is not supported, and requires the service to be reinstalled.
+* The system environment variable `ES_JAVA_HOME` should be set to the path of the JDK installation that you want the service to use. If you upgrade the JDK, you are not required to the reinstall the service, but you must set the value of the system environment variable `ES_JAVA_HOME` to the path to the new JDK installation. Upgrading across JVM types (for example JRE versus SE) is not supported, and requires the service to be reinstalled.
 
 ## Step 5: Check that {{es}} is running [_check_that_elasticsearch_is_running_2]
 

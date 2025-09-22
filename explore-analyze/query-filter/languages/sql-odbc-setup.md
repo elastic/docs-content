@@ -18,7 +18,7 @@ Once the driver has been installed, in order for an application to be able to co
 
 DSN (*data source name*) is a generic name given to the set of parameters an ODBC driver needs to connect to a database.
 
-We will refer to these parameters as *connection parameters* or *DSN* (despite some of these parameters configuring some other aspects of a driver’s functions; e.g. logging, buffer sizes…).
+We will refer to these parameters as *connection parameters* or *DSN* (despite some of these parameters configuring some other aspects of a driver’s functions; for example logging, buffer sizes…).
 
 Using a DSN is the most widely used, simplest and safest way of performing the driver configuration. Constructing a connection string, on the other hand, is the most crude way and consequently the least common method.
 

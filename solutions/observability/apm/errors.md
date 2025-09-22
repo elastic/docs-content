@@ -29,7 +29,7 @@ An Error contains:
 In addition, agents provide options for users to capture custom [metadata](/solutions/observability/apm/metadata.md). Metadata can be indexed - [`labels`](/solutions/observability/apm/metadata.md#apm-data-model-labels), or not-indexed - [`custom`](/solutions/observability/apm/metadata.md#apm-data-model-custom).
 
 ::::{tip}
-Most agents limit keyword fields (e.g. `error.id`) to 1024 characters, non-keyword fields (e.g. `error.exception.message`) to 10,000 characters.
+Most agents limit keyword fields (for example `error.id`) to 1024 characters, non-keyword fields (for example `error.exception.message`) to 10,000 characters.
 ::::
 
 Errors are stored in error indices.

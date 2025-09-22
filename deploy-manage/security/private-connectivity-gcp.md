@@ -104,7 +104,7 @@ Creating a private connection policy and associating it with your deployments al
     ::::
 
 
-    Note down the **PSC Connection ID**, e.g. `18446744072646845332`.
+    Note down the **PSC Connection ID**, for example `18446744072646845332`.
 
 2. Create a DNS record.
 

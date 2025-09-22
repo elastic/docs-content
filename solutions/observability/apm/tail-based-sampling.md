@@ -205,7 +205,7 @@ For more information, check the related [Kibana issue](https://github.com/elasti
 
 If a transaction is consistently not sampled after enabling tail-based sampling, verify that your instrumentation is not missing root transactions (transactions without a parent). APM Server makes sampling decisions when a distributed trace ends, which occurs when the root transaction ends. If the root transaction is not received by APM Server, it cannot make a sampling decision and will silently drop all associated trace events.
 
-This issue often arises when it is assumed that a particular service (e.g., service A) always produces the root transaction, but in reality, another service (e.g., service B) may precede it. If service B is not instrumented or sends data to a different APM Server cluster, the root transaction will be missing. To resolve this, ensure that all relevant services are instrumented and send data to the same APM Server cluster, or adjust the trace continuation strategy accordingly.
+This issue often arises when it is assumed that a particular service (for example, service A) always produces the root transaction, but in reality, another service (for example, service B) may precede it. If service B is not instrumented or sends data to a different APM Server cluster, the root transaction will be missing. To resolve this, ensure that all relevant services are instrumented and send data to the same APM Server cluster, or adjust the trace continuation strategy accordingly.
 
 To identify traces missing a root transaction, run the following {{esql}} query during a period when tail-based sampling is disabled. Use a short time range to limit the number of results:
 

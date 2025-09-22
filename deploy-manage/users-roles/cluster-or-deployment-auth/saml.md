@@ -431,10 +431,10 @@ By default, {{es}} will sign *all* outgoing SAML messages if a signing certifica
 If you want to use **PEM formatted** keys and certificates for signing, then you should configure the following settings on the SAML realm:
 
 `signing.certificate`
-:   The path to the PEM formatted certificate file. e.g. `saml/saml-sign.crt`
+:   The path to the PEM formatted certificate file. for example `saml/saml-sign.crt`
 
 `signing.key`
-:   The path to the PEM formatted key file. e.g. `saml/saml-sign.key`
+:   The path to the PEM formatted key file. for example `saml/saml-sign.key`
 
 `signing.secure_key_passphrase`
 :   The passphrase for the key, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
@@ -444,10 +444,10 @@ If you want to use **PEM formatted** keys and certificates for signing, then you
 If you want to use **PKCS#12 formatted** files or a **Java Keystore** for signing, then you should configure the following settings on the SAML realm:
 
 `signing.keystore.path`
-:   The path to the PKCS#12 or JKS keystore. e.g. `saml/saml-sign.p12`
+:   The path to the PKCS#12 or JKS keystore. for example `saml/saml-sign.p12`
 
 `signing.keystore.alias`
-:   The alias of the key within the keystore. e.g. `signing-key`
+:   The alias of the key within the keystore. for example `signing-key`
 
 `signing.keystore.secure_password`
 :   The passphrase for the keystore, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
@@ -495,10 +495,10 @@ If an `Assertion` contains both encrypted and plain-text attributes, then failur
 If you want to use **PEM formatted** keys and certificates for SAML encryption, then you should configure the following settings on the SAML realm:
 
 `encryption.certificate`
-:   The path to the PEM formatted certificate file. e.g. `saml/saml-crypt.crt`
+:   The path to the PEM formatted certificate file. for example `saml/saml-crypt.crt`
 
 `encryption.key`
-:   The path to the PEM formatted key file. e.g. `saml/saml-crypt.key`
+:   The path to the PEM formatted key file. for example `saml/saml-crypt.key`
 
 `encryption.secure_key_passphrase`
 :   The passphrase for the key, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
@@ -509,10 +509,10 @@ If you want to use **PEM formatted** keys and certificates for SAML encryption, 
 If you want to use **PKCS#12 formatted** files or a **Java Keystore** for SAML encryption, then you should configure the following settings on the SAML realm:
 
 `encryption.keystore.path`
-:   The path to the PKCS#12 or JKS keystore. e.g. `saml/saml-crypt.p12`
+:   The path to the PKCS#12 or JKS keystore. for example `saml/saml-crypt.p12`
 
 `encryption.keystore.alias`
-:   The alias of the key within the keystore. e.g. `encryption-key`
+:   The alias of the key within the keystore. for example `encryption-key`
 
 `encryption.keystore.secure_password`
 :   The passphrase for the keystore, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
@@ -636,7 +636,7 @@ If your users also exist in a repository that can be directly accessed by {{es}}
 In this case, you perform the following steps:
 
 1. In your SAML realm, assigned a SAML attribute to act as the lookup userid, by configuring the `attributes.principal` setting.
-2. Create a new realm that can lookup users from your local repository (e.g. an `ldap` realm)
+2. Create a new realm that can lookup users from your local repository (for example an `ldap` realm)
 3. In your SAML realm, set `authorization_realms` to the name of the realm you created in step 2.
 
 ## Configure {{kib}} [saml-configure-kibana]
@@ -732,7 +732,7 @@ xpack.security.authc.realms.saml.saml_eng:
   attributes.principal: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
 ```
 
-It is possible to have one or more {{kib}} instances that use SAML, while other instances use basic authentication against another realm type (e.g. [Native](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) or [LDAP](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md)).
+It is possible to have one or more {{kib}} instances that use SAML, while other instances use basic authentication against another realm type (for example [Native](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) or [LDAP](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md)).
 
 ## Troubleshooting SAML realm configuration [saml-troubleshooting]
 

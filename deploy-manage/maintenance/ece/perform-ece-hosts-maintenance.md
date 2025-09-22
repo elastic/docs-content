@@ -93,7 +93,7 @@ After the host shows a green status in the Cloud UI, the host is part of your EC
 
 ## By shutting down the host (less destructive) [ece-perform-host-maintenance-shutdown-host]
 
-This method lets you perform potentially destructive maintenance actions on hosts. It works by temporarily shutting down an ECE host, e.g. for data center moves or planned power outages. It is offered as an non-guaranteed and less destructive alternative to fully [deleting a host](#ece-perform-host-maintenance-delete-runner) from your ECE installation.
+This method lets you perform potentially destructive maintenance actions on hosts. It works by temporarily shutting down an ECE host, for example for data center moves or planned power outages. It is offered as an non-guaranteed and less destructive alternative to fully [deleting a host](#ece-perform-host-maintenance-delete-runner) from your ECE installation.
 
 To shut down the host:
 

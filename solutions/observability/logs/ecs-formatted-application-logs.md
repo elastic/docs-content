@@ -325,7 +325,7 @@ Refer to the [Filter and aggregate logs](/solutions/observability/logs/filter-ag
 
 % - [ ] ./raw-migrated-files/docs-content/serverless/observability-ecs-application-logs.md
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+% Internal links rely on the following IDs being on this page (for example as a heading ID, paragraph ID, etc):
 
 $$$apm-agent-ecs-reformatting$$$
 

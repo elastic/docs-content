@@ -19,7 +19,7 @@ products:
 
 Elasticsearch tries to take advantage of all the available resources by distributing data (index shards) among nodes in the cluster.
 
-Users might want to influence this data distribution by configuring the [index.routing.allocation.total_shards_per_node](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) index setting to a custom value (for e.g. `1` in case of a highly trafficked index). Various configurations limiting how many shards an index can have located on one node can lead to shards being unassigned due to the cluster not having enough nodes to satisfy the index configuration.
+Users might want to influence this data distribution by configuring the [index.routing.allocation.total_shards_per_node](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md#total-shards-per-node) index setting to a custom value (for for example `1` in case of a highly trafficked index). Various configurations limiting how many shards an index can have located on one node can lead to shards being unassigned due to the cluster not having enough nodes to satisfy the index configuration.
 
 In order to fix this follow the next steps:
 
@@ -99,7 +99,7 @@ The response will look like this:
 }
 ```
 
-1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
+1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. for example in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
 
 
 Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspecting the configuration for the `index.routing.allocation.total_shards_per_node` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and increasing the configured value will allow more shards to be assigned on the same node.

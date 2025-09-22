@@ -17,7 +17,7 @@ Rollups will be removed in a future version. [Migrate](migrating-from-rollup-to-
 ::::
 
 
-To preserve flexibility, Rollup Jobs are defined based on how future queries may need to use the data. Traditionally, systems force the admin to make decisions about what metrics to rollup and on what interval. E.g. The average of `cpu_time` on an hourly basis. This is limiting; if, in the future, the admin wishes to see the average of `cpu_time` on an hourly basis *and* partitioned by `host_name`, they are out of luck.
+To preserve flexibility, Rollup Jobs are defined based on how future queries may need to use the data. Traditionally, systems force the admin to make decisions about what metrics to rollup and on what interval. For example The average of `cpu_time` on an hourly basis. This is limiting; if, in the future, the admin wishes to see the average of `cpu_time` on an hourly basis *and* partitioned by `host_name`, they are out of luck.
 
 Of course, the admin can decide to rollup the `[hour, host]` tuple on an hourly basis, but as the number of grouping keys grows, so do the number of tuples the admin needs to configure. Furthermore, these `[hours, host]` tuples are only useful for hourly rollups… daily, weekly, or monthly rollups all require new configurations.
 

@@ -1035,7 +1035,7 @@ The [Approximate kNN search](vector/knn.md#approximate-knn) doesn’t support mi
 
 Advantages of minimizing roundtrips:
 
-1. For cross-cluster searches that query a large number of shards, the minimize roundtrips option typically provides much better performance. This is especially true if the clusters being searched have high network latency (e.g., distant geographic regions).
+1. For cross-cluster searches that query a large number of shards, the minimize roundtrips option typically provides much better performance. This is especially true if the clusters being searched have high network latency (for example, distant geographic regions).
 2. When doing an async {{ccs}}, the `GET _async_search/<search_id>` endpoint will provide both top hits and aggregations from all clusters that have reported back results even while the search is still running on other clusters. In other words, it provides "incremental" partial results as the search progresses. Note that if the local cluster is included in the search, it has special handling in that it can show partial aggregations (but not partial top hits) while the search on the local cluster is still running.
 
 Not minimizing roundtrips when using async-search allows you to get back incremental results of any aggregations in your query as individual shards complete (rather than whole clusters) while the search is still running, but top hits are not shown until the search has completed on all clusters.

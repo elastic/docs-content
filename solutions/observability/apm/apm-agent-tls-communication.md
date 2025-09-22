@@ -47,7 +47,7 @@ apm-server.ssl.key: "/path/to/apm-server.key"
 A full list of configuration options is available in [SSL/TLS input settings](/solutions/observability/apm/ssl-tls-input-settings.md).
 
 ::::{tip}
-If APM agents are authenticating themselves using a certificate that cannot be authenticated through known CAs (e.g. self signed certificates), use the `ssl.certificate_authorities` to set a custom CA. This will automatically modify the `ssl.client_authentication` configuration to require authentication.
+If APM agents are authenticating themselves using a certificate that cannot be authenticated through known CAs (for example self signed certificates), use the `ssl.certificate_authorities` to set a custom CA. This will automatically modify the `ssl.client_authentication` configuration to require authentication.
 ::::
 ::::::
 
@@ -55,7 +55,7 @@ If APM agents are authenticating themselves using a certificate that cannot be a
 
 ### Step 3: Configure APM agents [apm-agent-self-sign-3]
 
-When the APM server uses a certificate that is not chained to a publicly-trusted certificate (e.g. self-signed), additional configuration is required in the {{apm-agent}}:
+When the APM server uses a certificate that is not chained to a publicly-trusted certificate (for example self-signed), additional configuration is required in the {{apm-agent}}:
 
 * **Go agent**: certificate pinning through [`ELASTIC_APM_SERVER_CERT`](apm-agent-go://reference/configuration.md#config-server-cert)
 * **Python agent**: certificate pinning through [`server_cert`](apm-agent-python://reference/configuration.md#config-server-cert)

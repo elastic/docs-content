@@ -145,7 +145,7 @@ GET /_cat/indices/partial-*
 
 ##### Non-searchable snapshot data tier [ece-disable-non-searchable-snapshot-data-tier]
 
-{{ech}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (e.g., hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
+{{ech}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (for example, hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
 
 To learn more about ILM, or shard allocation filtering, check the following documentation:
 

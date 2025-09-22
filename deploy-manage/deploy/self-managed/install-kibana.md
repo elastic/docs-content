@@ -44,11 +44,11 @@ To support certain older Linux platforms (most notably CentOS7/RHEL7), {{kib}} f
 :::{include} /deploy-manage/deploy/_snippets/stack-version-compatibility.md
 :::
 
-Running different major version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.x and {{es}} 8.x) is not supported, nor is running a minor version of {{kib}} that is newer than the version of {{es}} (e.g. {{kib}} 8.14 and {{es}} 8.13).
+Running different major version releases of {{kib}} and {{es}} (for example {{kib}} 9.x and {{es}} 8.x) is not supported, nor is running a minor version of {{kib}} that is newer than the version of {{es}} (for example {{kib}} 8.14 and {{es}} 8.13).
 
-Running a minor version of {{es}} that is higher than {{kib}} will generally work in order to facilitate an upgrade process where {{es}} is upgraded first (e.g. {{kib}} 8.14 and {{es}} 8.15). In this configuration, a warning will be logged on {{kib}} server startup, so it’s only meant to be temporary until {{kib}} is upgraded to the same version as {{es}}.
+Running a minor version of {{es}} that is higher than {{kib}} will generally work in order to facilitate an upgrade process where {{es}} is upgraded first (for example {{kib}} 8.14 and {{es}} 8.15). In this configuration, a warning will be logged on {{kib}} server startup, so it’s only meant to be temporary until {{kib}} is upgraded to the same version as {{es}}.
 
-Running different patch version releases of {{kib}} and {{es}} (e.g. {{kib}} 9.0.0 and {{es}} 9.0.1) is generally supported, though we encourage users to run the same versions of {{kib}} and {{es}} down to the patch version.
+Running different patch version releases of {{kib}} and {{es}} (for example {{kib}} 9.0.0 and {{es}} 9.0.1) is generally supported, though we encourage users to run the same versions of {{kib}} and {{es}} down to the patch version.
 
 
 ## Installation order

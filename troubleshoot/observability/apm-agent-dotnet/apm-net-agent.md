@@ -84,7 +84,7 @@ The default value is `file` if `OTEL_DOTNET_AUTO_LOG_DIRECTORY` is set or `OTEL_
 If you added the agent to your application as per the [ASP.NET Core](apm-agent-dotnet://reference/setup-asp-net-core.md) document with the `AddAllElasticApm` or `AddElasticApm` method, it will integrate with the [ASP.NET Core logging infrastructure](https://learn.microsoft.com/aspnet/core/fundamentals/logging). This means the Agent will pick up the configured logging provider and log as any other component logs.
 
 ::::{important}
-In this scenario, the `LogLevel` APM agent configuration (e.g. setting the `ELASTIC_APM_LOG_LEVEL` environment variable) DOES NOT control the verbosity of the agent logs. The agent logs are controlled by the ASP.NET Core logging configuration from `IConfiguration`, typically configured via `appsettings.json`.
+In this scenario, the `LogLevel` APM agent configuration (for example setting the `ELASTIC_APM_LOG_LEVEL` environment variable) DOES NOT control the verbosity of the agent logs. The agent logs are controlled by the ASP.NET Core logging configuration from `IConfiguration`, typically configured via `appsettings.json`.
 
 ::::
 

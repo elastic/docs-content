@@ -200,7 +200,7 @@ You can cancel a search request using the [task management API](https://www.elas
 
 Generally the total hit count can’t be computed accurately without visiting all matches, which is costly for queries that match lots of documents. The `track_total_hits` parameter allows you to control how the total number of hits should be tracked. Given that it is often enough to have a lower bound of the number of hits, such as "there are at least 10000 hits", the default is set to `10,000`. This means that requests will count the total hit accurately up to `10,000` hits. It is a good trade off to speed up searches if you don’t need the accurate number of hits after a certain threshold.
 
-When set to `true` the search response will always track the number of hits that match the query accurately (e.g. `total.relation` will always be equal to `"eq"` when `track_total_hits` is set to true). Otherwise the `"total.relation"` returned in the `"total"` object in the search response determines how the `"total.value"` should be interpreted. A value of `"gte"` means that the `"total.value"` is a lower bound of the total hits that match the query and a value of `"eq"` indicates that `"total.value"` is the accurate count.
+When set to `true` the search response will always track the number of hits that match the query accurately (for example `total.relation` will always be equal to `"eq"` when `track_total_hits` is set to true). Otherwise the `"total.relation"` returned in the `"total"` object in the search response determines how the `"total.value"` should be interpreted. A value of `"gte"` means that the `"total.value"` is a lower bound of the total hits that match the query and a value of `"eq"` indicates that `"total.value"` is the accurate count.
 
 ```console
 GET my-index-000001/_search
@@ -233,7 +233,7 @@ GET my-index-000001/_search
 ```
 
 1. The total number of hits that match the query.
-2. The count is accurate (e.g. `"eq"` means equals).
+2. The count is accurate (for example `"eq"` means equals).
 
 
 It is also possible to set `track_total_hits` to an integer. For instance the following query will accurately track the total hit count that match the query up to 100 documents:

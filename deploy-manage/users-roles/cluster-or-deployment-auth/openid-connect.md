@@ -410,7 +410,7 @@ If your users also exist in a repository that can be directly accessed by {{es}}
 In this case, you perform the following steps:
 
 1. In your OpenID Connect realm, assign a claim to act as the lookup userid, by configuring the `claims.principal` setting.
-2. Create a new realm that can look up users from your local repository (e.g. an `ldap` realm).
+2. Create a new realm that can look up users from your local repository (for example an `ldap` realm).
 3. In your OpenID Connect realm, set `authorization_realms` to the name of the realm you created in step 2.
 
 ## Configure {{kib}} [oidc-configure-kibana]

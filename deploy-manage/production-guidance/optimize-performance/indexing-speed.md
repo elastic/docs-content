@@ -42,9 +42,9 @@ The operation that consists of making changes visible to search - called a [refr
 
 By default, {{es}} periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.
 
-This is the optimal configuration if you have no or very little search traffic (e.g. less than one search request every 5 minutes) and want to optimize for indexing speed. This behavior aims to automatically optimize bulk indexing in the default case when no searches are performed. In order to opt out of this behavior set the refresh interval explicitly.
+This is the optimal configuration if you have no or very little search traffic (for example less than one search request every 5 minutes) and want to optimize for indexing speed. This behavior aims to automatically optimize bulk indexing in the default case when no searches are performed. In order to opt out of this behavior set the refresh interval explicitly.
 
-On the other hand, if your index experiences regular search requests, this default behavior means that {{es}} will refresh your index every 1 second. If you can afford to increase the amount of time between when a document gets indexed and when it becomes visible, increasing the [`index.refresh_interval`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-refresh-interval-setting) to a larger value, e.g. `30s`, might help improve indexing speed.
+On the other hand, if your index experiences regular search requests, this default behavior means that {{es}} will refresh your index every 1 second. If you can afford to increase the amount of time between when a document gets indexed and when it becomes visible, increasing the [`index.refresh_interval`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-refresh-interval-setting) to a larger value, for example `30s`, might help improve indexing speed.
 
 ### Disable refresh interval
 

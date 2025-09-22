@@ -19,25 +19,25 @@ Static IP addresses are [subject to change](#ec-warning), and not all [cloud pro
 
 Suitable usage of ingress static IPs to introduce network controls:
 
-* All traffic **towards {{ecloud}} deployments** from the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (e.g. {{es}} traffic, {{kib}} traffic, etc) uses Ingress Static IPs as network destination
+* All traffic **towards {{ecloud}} deployments** from the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (for example {{es}} traffic, {{kib}} traffic, etc) uses Ingress Static IPs as network destination
 
 Not suitable usage of ingress static IPs to introduce network controls:
 
-* Traffic over private cloud service provider connections (e.g. AWS Privatelink, GCP Private Service Connect, Azure Private Link)
+* Traffic over private cloud service provider connections (for example AWS Privatelink, GCP Private Service Connect, Azure Private Link)
 * Traffic to the [Cloud Console](http://cloud.elastic.co)
-* Traffic to non {{ecloud}} websites and services hosted by Elastic (e.g. www.elastic.co)
+* Traffic to non {{ecloud}} websites and services hosted by Elastic (for example www.elastic.co)
 
 
 ## Egress Static IPs: Traffic From {{ecloud}} [ec-egress] 
 
 Suitable usage of egress static IPs to introduce network controls:
 
-* Traffic **from {{ecloud}} deployments** towards the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (e.g. custom Slack alerts, Email alerts, {{kib}} alerts, etc.) uses Egress Static IPs as network source
+* Traffic **from {{ecloud}} deployments** towards the public Internet, your private cloud network over the public Internet, or your on-premises network over the public Internet (for example custom Slack alerts, Email alerts, {{kib}} alerts, etc.) uses Egress Static IPs as network source
 * Cross-cluster replication/cross-cluster search traffic **from {{ecloud}} deployments** towards on-premises {{ece}} deployments protected by on-premises firewalls or {{ece}} IP filters
 
 Not suitable usage of egress static IPs to introduce network controls:
 
-* Snapshot traffic that stays within the same cloud provider and regional boundaries (e.g. an {{ecloud}} deployment hosted in aws-us-east-1 using an S3 bucket also hosted in aws-us-east-1 as a snapshot repository)
+* Snapshot traffic that stays within the same cloud provider and regional boundaries (for example an {{ecloud}} deployment hosted in aws-us-east-1 using an S3 bucket also hosted in aws-us-east-1 as a snapshot repository)
 
 
 ## Supported Regions [ec-regions] 

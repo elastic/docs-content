@@ -249,7 +249,7 @@ If the document could have been redirected to a data stream's failure store but 
 3. The response status is `400 Bad Request` due to the mapping problem.
 
 
-If the document was redirected to a data stream's failure store but that failed document could not be stored (e.g. due to shard unavailability or a similar problem), then the `failure_store` field on the response will be `failed`, and the response will display the error for the original failure, as well as a suppressed error detailing why the failure could not be stored:
+If the document was redirected to a data stream's failure store but that failed document could not be stored (for example due to shard unavailability or a similar problem), then the `failure_store` field on the response will be `failed`, and the response will display the error for the original failure, as well as a suppressed error detailing why the failure could not be stored:
 
 ```console-result
 {
@@ -470,7 +470,7 @@ Failure documents have a uniform structure that is handled internally by {{es}}.
     :   (`keyword`, optional) If the failure occurred in an ingest processor that is annotated with a tag, the tag contents will be present here.
 
     `error.processor_type`
-    :   (`keyword`, optional) If the failure occurred in an ingest processor, this will contain the processor type. (e.g. `script`, `append`, `enrich`, etc.)
+    :   (`keyword`, optional) If the failure occurred in an ingest processor, this will contain the processor type. (for example `script`, `append`, `enrich`, etc.)
 
 #### Failure document source [use-failure-store-document-source]
 

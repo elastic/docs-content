@@ -803,7 +803,7 @@ $$$glossary-vega$$$ Vega
 :   A declarative language used to create interactive visualizations. See [Vega](/explore-analyze/dashboards.md).
 
 $$$glossary-visualization$$$ visualization
-:   A graphical representation of query results in {{kib}} (e.g., a histogram, line graph, pie chart, or heat map).
+:   A graphical representation of query results in {{kib}} (for example, a histogram, line graph, pie chart, or heat map).
 
 
 ## W [w-glos]

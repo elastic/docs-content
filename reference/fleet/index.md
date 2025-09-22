@@ -14,7 +14,7 @@ products:
 
 # {{fleet}} and {{elastic-agent}} overview [fleet-and-elastic-agent]
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+% Internal links rely on the following IDs being on this page (for example as a heading ID, paragraph ID, etc):
 $$$package-registry-intro$$$
 
 ## {{agent}} [elastic-agent]

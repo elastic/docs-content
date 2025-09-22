@@ -94,7 +94,7 @@ The following list contains the available S3 client settings. Those that must be
 :   An S3 session token. If set, the `access_key` and `secret_key` settings must also be specified.
 
 `endpoint`
-:   The S3 service endpoint to connect to. This defaults to the regional endpoint corresponding to the configured `region`, but the [AWS documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) lists alternative S3 endpoints. If you are using an [S3-compatible service](#repository-s3-compatible-services) then you should set this to the service’s endpoint. The endpoint should specify the protocol and host name, e.g. `https://s3.ap-southeast-4.amazonaws.com`, `http://minio.local:9000`.
+:   The S3 service endpoint to connect to. This defaults to the regional endpoint corresponding to the configured `region`, but the [AWS documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) lists alternative S3 endpoints. If you are using an [S3-compatible service](#repository-s3-compatible-services) then you should set this to the service’s endpoint. The endpoint should specify the protocol and host name, for example `https://s3.ap-southeast-4.amazonaws.com`, `http://minio.local:9000`.
 
     When using HTTPS, this repository type validates the repository’s certificate chain using the JVM-wide truststore. Ensure that the root certificate authority is in this truststore using the JVM’s `keytool` tool. If you have a custom certificate authority for your S3 repository and you use the {{es}} [bundled JDK](../../deploy/self-managed/installing-elasticsearch.md#jvm-version), then you will need to reinstall your CA certificate every time you upgrade {{es}}.
 
@@ -374,7 +374,7 @@ If the symlink exists, it will be used by default by all S3 repositories that do
 
 ## AWS VPC bandwidth settings [repository-s3-aws-vpc]
 
-AWS instances resolve S3 endpoints to a public IP. If the {{es}} instances reside in a private subnet in an AWS VPC then all traffic to S3 will go through the VPC’s NAT instance. If your VPC’s NAT instance is a smaller instance size (e.g. a t2.micro) or is handling a high volume of network traffic your bandwidth to S3 may be limited by that NAT instance’s networking bandwidth limitations. Instead we recommend creating a [VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) that enables connecting to S3 in instances that reside in a private subnet in an AWS VPC. This will eliminate any limitations imposed by the network bandwidth of your VPC’s NAT instance.
+AWS instances resolve S3 endpoints to a public IP. If the {{es}} instances reside in a private subnet in an AWS VPC then all traffic to S3 will go through the VPC’s NAT instance. If your VPC’s NAT instance is a smaller instance size (for example a t2.micro) or is handling a high volume of network traffic your bandwidth to S3 may be limited by that NAT instance’s networking bandwidth limitations. Instead we recommend creating a [VPC endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html) that enables connecting to S3 in instances that reside in a private subnet in an AWS VPC. This will eliminate any limitations imposed by the network bandwidth of your VPC’s NAT instance.
 
 Instances residing in a public subnet in an AWS VPC will connect to S3 via the VPC’s internet gateway and not be bandwidth limited by the VPC’s NAT instance.
 

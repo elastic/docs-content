@@ -107,7 +107,7 @@ default
 ```
 
 ::::{note}
-All result expressions must be of compatible data types. More specifically all result expressions should have a compatible data type with the 1st *non-null* result expression. E.g.:
+All result expressions must be of compatible data types. More specifically all result expressions should have a compatible data type with the 1st *non-null* result expression. For example:
 
 for the following query:
 
@@ -300,7 +300,7 @@ TRUE           |null
 ```
 
 ::::{tip}
-**IIF** functions can be combined to implement more complex logic simulating the [`CASE`](#sql-functions-conditional-case) expression. E.g.:
+**IIF** functions can be combined to implement more complex logic simulating the [`CASE`](#sql-functions-conditional-case) expression. For example:
 
 ```sql
 IIF(a = 1, 'one', IIF(a = 2, 'two', IIF(a = 3, 'three', 'many')))

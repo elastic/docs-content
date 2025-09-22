@@ -160,8 +160,8 @@ The extensions properties are implemented as patterned fields that are always pr
 | `x-codeSamples` | Defines code examples and their programming language. [Docs](https://docs.bump.sh/help/specification-support/doc-code-samples/) |
 | `x-displayName` | Overrides tag names at the document level to align with documentation standards. |
 | `x-feedbackLink` | Adds a link for users to send feedback. [Docs](https://docs.bump.sh/help/publish-documentation/feedback/) |
-| `x-model` | Used to abbreviate deeply nested/recursive API sections (e.g., Elasticsearch query DSL). Should include an `externalDocs` link. Currently only applied via overlays. |
-| `x-state` | Indicates lifecycle state (e.g., “Technical preview; added in 9.1.0”). Appears next to the operation/property. |
+| `x-model` | Used to abbreviate deeply nested/recursive API sections (for example, Elasticsearch query DSL). Should include an `externalDocs` link. Currently only applied via overlays. |
+| `x-state` | Indicates lifecycle state (for example, “Technical preview; added in 9.1.0”). Appears next to the operation/property. |
 | `x-topics` | Adds extra pages shown below the introduction. [Docs](https://docs.bump.sh/help/enhance-documentation-content/topics/) |
 
 :::{note}

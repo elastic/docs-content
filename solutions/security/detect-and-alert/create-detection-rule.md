@@ -316,7 +316,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 2. Create an indicator match rule and fill in the following fields:
 
     1. **Index patterns**: The Elastic Security event indices on which the rule runs.
-    2. **Custom query**: The query and filters used to retrieve the required results from the Elastic Security event indices (e.g., `host.domain :*`).
+    2. **Custom query**: The query and filters used to retrieve the required results from the Elastic Security event indices (for example, `host.domain :*`).
     3. **Indicator index patterns**: Value lists are stored in a hidden index called `.items-<Kibana space>`. Enter the name of the {{kib}} space in which this rule will run in this field.
     4. **Indicator index query**: Enter the value `list_id :`, followed by the name of the value list you want to use as your indicator index (uploaded in Step 1 above).
     5. **Indicator mapping**

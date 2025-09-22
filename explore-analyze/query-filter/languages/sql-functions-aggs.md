@@ -151,7 +151,7 @@ FIRST(
 
 **Output**: same type as the input
 
-**Description**: Returns the first non-`null` value (if such exists) of the `field_name` input column sorted by the `ordering_field_name` column. If `ordering_field_name` is not provided, only the `field_name` column is used for the sorting. E.g.:
+**Description**: Returns the first non-`null` value (if such exists) of the `field_name` input column sorted by the `ordering_field_name` column. If `ordering_field_name` is not provided, only the `field_name` column is used for the sorting. For example:
 
 | a | b |
 | --- | --- |
@@ -221,7 +221,7 @@ F             |   Sumant
 M             |   Remzi
 ```
 
-`FIRST_VALUE` is a name alias and can be used instead of `FIRST`, e.g.:
+`FIRST_VALUE` is a name alias and can be used instead of `FIRST`, for example:
 
 ```sql
 SELECT gender, FIRST_VALUE(first_name, birth_date) FROM emp GROUP BY gender ORDER BY gender;
@@ -270,7 +270,7 @@ LAST(
 
 **Output**: same type as the input
 
-**Description**: It’s the inverse of [`FIRST/FIRST_VALUE`](#sql-functions-aggs-first). Returns the last non-`null` value (if such exists) of the `field_name` input column sorted descending by the `ordering_field_name` column. If `ordering_field_name` is not provided, only the `field_name` column is used for the sorting. E.g.:
+**Description**: It’s the inverse of [`FIRST/FIRST_VALUE`](#sql-functions-aggs-first). Returns the last non-`null` value (if such exists) of the `field_name` input column sorted descending by the `ordering_field_name` column. If `ordering_field_name` is not provided, only the `field_name` column is used for the sorting. For example:
 
 | a | b |
 | --- | --- |
@@ -340,7 +340,7 @@ F          |   Valdiodio
 M          |   Hilari
 ```
 
-`LAST_VALUE` is a name alias and can be used instead of `LAST`, e.g.:
+`LAST_VALUE` is a name alias and can be used instead of `LAST`, for example:
 
 ```sql
 SELECT gender, LAST_VALUE(first_name, birth_date) FROM emp GROUP BY gender ORDER BY gender;

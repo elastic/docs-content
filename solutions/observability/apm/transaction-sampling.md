@@ -292,7 +292,7 @@ This example defines three tail-based sampling polices:
 
 1. Samples 100% of traces in `production` with the trace name `"GET /very_important_route"`
 2. Samples 1% of traces in `production` with the trace name `"GET /not_important_route"`
-3. Default policy to sample all remaining traces at 10%, e.g. traces in a different environment, like `dev`, or traces with any other name
+3. Default policy to sample all remaining traces at 10%, for example traces in a different environment, like `dev`, or traces with any other name
 
 ### Example configuration 2 [_example_configuration_2]
 

@@ -1229,7 +1229,7 @@ url: {
             min: { %timefilter%: "min" }
             max: { %timefilter%: "max" }
           }
-          // Use this for linear (e.g. line, area) graphs
+          // Use this for linear (for example line, area) graphs
           // Without it, empty buckets will not show up
           min_doc_count: 0
         }
@@ -1312,7 +1312,7 @@ Specify a query with individual range and dashboard context. The query is equiva
 ```
 
 ::::{note}
-When using `"%context%": true` or defining a value for `"%timefield%"` the body cannot contain a query. To customize the query within the VEGA specification (e.g. add an additional filter, or shift the timefilter), define your query and use the placeholders as in the example above. The placeholders will be replaced by the actual context of the dashboard or visualization once parsed.
+When using `"%context%": true` or defining a value for `"%timefield%"` the body cannot contain a query. To customize the query within the VEGA specification (for example add an additional filter, or shift the timefilter), define your query and use the placeholders as in the example above. The placeholders will be replaced by the actual context of the dashboard or visualization once parsed.
 ::::
 
 
@@ -1443,7 +1443,7 @@ The visualization automatically injects a `"projection"`, which you can use to c
 
 The files that the external URLs load must allow [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). The remote URL must include `Access-Control-Allow-Origin`, which allows requests from the {{kib}} URL.
 
-You can make the current time range part of the external as a millisecond timestamp by using the placeholders `%timefilter_min%` and `%timefilter_max%`, e.g. `http://example.com?min=%timefilter_min%`.
+You can make the current time range part of the external as a millisecond timestamp by using the placeholders `%timefilter_min%` and `%timefilter_max%`, for example `http://example.com?min=%timefilter_min%`.
 
 
 ##### Vega Inspector [vega-inspector]

@@ -102,7 +102,7 @@ POST kbn:/api/profiling/setup/es_resources
 {}
 ```
 
-To configure data ingestion programmatically using a standalone HTTP client (e.g., `curl`), run the following command:
+To configure data ingestion programmatically using a standalone HTTP client (for example, `curl`), run the following command:
 
 ```console
 curl -u elastic:<PASSWORD> -H "kbn-xsrf: true" -H "Content-Type: application/json" \

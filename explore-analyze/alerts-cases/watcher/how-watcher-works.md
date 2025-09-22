@@ -226,7 +226,7 @@ Starting with 5.0, Elasticsearch is shipped with the new [Painless](../../script
 
 Scripts can reference any of the values in the watch execution context or values explicitly passed through script parameters.
 
-For example, if the watch metadata contains a `color` field (e.g. `"metadata" : {"color": "red"}`), you can access its value with the via the `ctx.metadata.color` variable. If you pass in a `color`  parameter as part of the condition or transform definition (e.g. `"params" : {"color": "red"}`), you can access its value via the `color` variable.
+For example, if the watch metadata contains a `color` field (for example `"metadata" : {"color": "red"}`), you can access its value with the via the `ctx.metadata.color` variable. If you pass in a `color`  parameter as part of the condition or transform definition (for example `"params" : {"color": "red"}`), you can access its value via the `color` variable.
 
 
 ### Using templates [templates]

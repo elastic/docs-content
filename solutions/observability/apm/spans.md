@@ -452,7 +452,7 @@ The agent uses the same-kind strategy if two adjacent spans have the same:
 
 * span type
 * span subtype
-* `destination.service.resource` (e.g. database name)
+* `destination.service.resource` (for example database name)
 
 #### Exact-Match strategy [apm-span-compression-exact]
 
@@ -461,7 +461,7 @@ The agent uses the exact-match strategy if two adjacent spans have the same:
 * span name
 * span type
 * span subtype
-* `destination.service.resource` (e.g. database name)
+* `destination.service.resource` (for example database name)
 
 ### Settings [apm-span-compression-settings]
 

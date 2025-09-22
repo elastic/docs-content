@@ -379,7 +379,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.callstacks.use_hardware`
 :   Added in 8.16.0.
 
-    *Use hardware callstacks (e.g. Intel CET) if supported by the OS and CPU. Default: `true`.*
+    *Use hardware callstacks (for example Intel CET) if supported by the OS and CPU. Default: `true`.*
 
 
 `windows.advanced.events.check_debug_registers`
@@ -438,7 +438,7 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `windows.advanced.events.event_on_access.file_paths`
 :   Added in 8.15.0.
 
-    *Provide a comma-separated list of additional wildcard patterns that will be monitored for read access. At most one match per pattern per process will be reported. If possible, drive letters will be converted to NT paths (e.g. `\Device\HarddiskVolume4`), but conversion will fail for per-user drives, such as network drives. Put only commas (no spaces) between entries. Wildcard matching is case-insensitive. Check Microsoft FsRtlIsNameInExpression documentation for wildcard matching rules. Default: none.*
+    *Provide a comma-separated list of additional wildcard patterns that will be monitored for read access. At most one match per pattern per process will be reported. If possible, drive letters will be converted to NT paths (for example `\Device\HarddiskVolume4`), but conversion will fail for per-user drives, such as network drives. Put only commas (no spaces) between entries. Wildcard matching is case-insensitive. Check Microsoft FsRtlIsNameInExpression documentation for wildcard matching rules. Default: none.*
 
 `windows.advanced.events.event_on_access.registry_paths`
 :   Added in 8.15.0.

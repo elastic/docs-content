@@ -65,7 +65,7 @@ PUT index
 
 ## Watch your shard size [_watch_your_shard_size]
 
-Larger shards are going to be more efficient at storing data. To increase the size of your shards, you can decrease the number of primary shards in an index by [creating indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) with fewer primary shards, creating fewer indices (e.g. by leveraging the [Rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover)), or modifying an existing index using the [Shrink API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink).
+Larger shards are going to be more efficient at storing data. To increase the size of your shards, you can decrease the number of primary shards in an index by [creating indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) with fewer primary shards, creating fewer indices (for example by leveraging the [Rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover)), or modifying an existing index using the [Shrink API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink).
 
 Keep in mind that large shard sizes come with drawbacks, such as long full recovery times.
 

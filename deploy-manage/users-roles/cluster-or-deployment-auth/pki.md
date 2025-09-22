@@ -155,7 +155,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     If you're using a self-managed cluster, then the file must be present on each node.
     :::
 
-    The file’s path defaults to `ES_PATH_CONF/role_mapping.yml`. You can specify a different path (which must be within `ES_PATH_CONF`) by using the `files.role_mapping` realm setting (e.g. `xpack.security.authc.realms.pki.pki1.files.role_mapping`).
+    The file’s path defaults to `ES_PATH_CONF/role_mapping.yml`. You can specify a different path (which must be within `ES_PATH_CONF`) by using the `files.role_mapping` realm setting (for example `xpack.security.authc.realms.pki.pki1.files.role_mapping`).
 
     The distinguished name for a PKI user follows X.500 naming conventions which place the most specific fields (like `cn` or `uid`) at the beginning of the name and the most general fields (like `o` or `dc`) at the end of the name. Some tools, such as *openssl*, may print out the subject name in a different format.
 

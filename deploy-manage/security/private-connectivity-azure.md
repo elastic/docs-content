@@ -63,7 +63,7 @@ Private Link Services are set up by Elastic in all supported Azure regions under
 
 ## Set up a private connection
 
-The process of setting up the private connection with Azure Private link is split between Azure (e.g. by using Azure portal), and the {{ecloud}} UI. These are the high-level steps:
+The process of setting up the private connection with Azure Private link is split between Azure (for example by using Azure portal), and the {{ecloud}} UI. These are the high-level steps:
 
 | Azure portal | {{ecloud}} |
 | --- | --- |

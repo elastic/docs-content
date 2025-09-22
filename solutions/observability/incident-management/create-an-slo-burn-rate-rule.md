@@ -23,7 +23,7 @@ products:
 
 Create an SLO burn rate rule to get alerts when the burn rate is too high over a defined threshold for two different lookback periods: a long period and a short period that is 1/12th of the long period. For example, if your long lookback period is one hour, your short lookback period is five minutes.
 
-Choose which SLO to monitor and then define multiple burn rate windows with appropriate severity. For each period, the burn rate is computed as the error rate divided by the error budget. When the burn rates for both periods surpass the threshold, an alert is triggered. Add actions to raise alerts via services or third-party integrations e.g. mail, Slack, Jira.
+Choose which SLO to monitor and then define multiple burn rate windows with appropriate severity. For each period, the burn rate is computed as the error rate divided by the error budget. When the burn rates for both periods surpass the threshold, an alert is triggered. Add actions to raise alerts via services or third-party integrations for example mail, Slack, Jira.
 
 :::{image} /solutions/images/serverless-slo-alerts-create-rule.png
 :alt: Create rule for failed transaction rate threshold
@@ -51,7 +51,7 @@ To create an SLO burn rate rule:
     * **Burn rate threshold**: Enter a burn rate for this window.
     * **Action Group**: Select a severity for this window.
 
-7. Define the interval to check the rule e.g. check every 1 minute.
+7. Define the interval to check the rule for example check every 1 minute.
 8. (Optional) Set up **Actions**.
 9. **Save** your rule.
 

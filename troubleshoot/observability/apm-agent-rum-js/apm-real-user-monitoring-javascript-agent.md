@@ -41,7 +41,7 @@ In order to get visibility of the error’s detail, you must do two things.
 
 
 ::::{note}
-`Access-Control-Allow-Origin: *` will not match `localhost` in some browsers (e.g. [in Chrome](https://bugs.chromium.org/p/chromium/issues/detail?id=67743)), causing `Script error` messages in local development environments when the configuration is otherwise correct.
+`Access-Control-Allow-Origin: *` will not match `localhost` in some browsers (for example [in Chrome](https://bugs.chromium.org/p/chromium/issues/detail?id=67743)), causing `Script error` messages in local development environments when the configuration is otherwise correct.
 ::::
 
 

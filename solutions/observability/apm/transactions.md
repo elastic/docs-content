@@ -39,11 +39,11 @@ In addition, agents provide options for users to capture custom [metadata](/solu
 
 Transactions are grouped by their `type` and `name` in the Applications UI’s [Transaction overview](/solutions/observability/apm/transactions-ui.md). If you’re using a supported framework, APM agents will automatically handle the naming for you. If you’re not, or if you wish to override the default, all agents have API methods to manually set the `type` and `name`.
 
-* `type` should be a keyword of specific relevance in the service’s domain, e.g. `request`, `backgroundjob`, etc.
-* `name` should be a generic designation of a transaction in the scope of a single service, e.g. `GET /users/:id`, `UsersController#show`, etc.
+* `type` should be a keyword of specific relevance in the service’s domain, for example `request`, `backgroundjob`, etc.
+* `name` should be a generic designation of a transaction in the scope of a single service, for example `GET /users/:id`, `UsersController#show`, etc.
 
 ::::{tip}
-Most agents limit keyword fields (e.g. `labels`) to 1024 characters, non-keyword fields (e.g. `span.db.statement`) to 10,000 characters.
+Most agents limit keyword fields (for example `labels`) to 1024 characters, non-keyword fields (for example `span.db.statement`) to 10,000 characters.
 ::::
 
 ## Data streams [_data_streams_2]

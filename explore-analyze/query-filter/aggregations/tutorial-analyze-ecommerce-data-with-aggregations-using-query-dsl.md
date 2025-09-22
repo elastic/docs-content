@@ -510,7 +510,7 @@ GET kibana_sample_data_ecommerce/_search
 1. Descriptive name for the time-series aggregation results.
 2. The `date_histogram` aggregation groups documents into time-based buckets, similar to terms aggregation but for dates.
 3. Uses [calendar and fixed time intervals](elasticsearch://reference/aggregations/search-aggregations-bucket-datehistogram-aggregation.md#calendar_and_fixed_intervals) to handle months with different lengths. `"day"` ensures consistent daily grouping regardless of timezone.
-4. Formats dates in response using [date patterns](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md) (e.g. "yyyy-MM-dd"). Refer to [date math expressions](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) for additional options.
+4. Formats dates in response using [date patterns](elasticsearch://reference/elasticsearch/mapping-reference/mapping-date-format.md) (for example "yyyy-MM-dd"). Refer to [date math expressions](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#date-math) for additional options.
 5. When `min_doc_count` is 0, returns buckets for days with no orders, useful for continuous time series visualization.
 
 ::::{dropdown} Example response

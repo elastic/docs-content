@@ -62,7 +62,7 @@ Throughout this documentation, we used [`llama-3.3-70b-instruct`](https://lmstud
 
 | Attribute | Description |
 | --- | --- |
-| **Model Name** | LLM model name, sometimes with a version number (e.g., Llama, Mistral). |
+| **Model Name** | LLM model name, sometimes with a version number (for example, Llama, Mistral). |
 | **Parameter Size** | Number of parameters, which measures the size and complexity of a model (more parameters = more data it can process, learn from, generate, and predict). |
 | **Tokens / Context Window** | Tokens are small chunks of input information that don't necessarily correspond to characters. Use the [Tokenizer](https://platform.openai.com/tokenizer) to estimate how many tokens a prompt contains. The context window defines how much information the model can process at once. If the number of input tokens exceeds this limit, the input is truncated. |
 | **Quantization Format** | Type of quantization applied. Quantization reduces overall parameters and increases model speed, but reduces accuracy. Most models now support GPU offloading rather than CPU offloading. |

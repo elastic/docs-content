@@ -20,7 +20,7 @@ ECK can be installed in two modes, depending on the namespaces the operator is a
 2. **Namespace-restricted installation**: Limited to specific, pre-defined namespaces. Use the `namespaces` [configuration flag](./configure-eck.md) to limit the namespaces in which the operator is allowed to work.
 
 ::::{note}
-You can install multiple instances of ECK in the same Kubernetes cluster, but only if the CRDs are compatible across all operator instances (e.g., by ensuring they run the same version). If running multiple instances, you must also disable cluster-wide features like the [validating webhook](../../../deploy-manage/deploy/cloud-on-k8s/configure-validating-webhook.md).
+You can install multiple instances of ECK in the same Kubernetes cluster, but only if the CRDs are compatible across all operator instances (for example, by ensuring they run the same version). If running multiple instances, you must also disable cluster-wide features like the [validating webhook](../../../deploy-manage/deploy/cloud-on-k8s/configure-validating-webhook.md).
 ::::
 
 ::::{warning}

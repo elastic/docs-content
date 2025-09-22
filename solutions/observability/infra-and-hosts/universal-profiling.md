@@ -69,7 +69,7 @@ The different views on the stacktraces page show:
 * **Threads:** stacktraces grouped by the process' thread name
 * **Traces:** un-grouped stacktraces
 * **Hosts:** stacktraces grouped by machine’s hostname or IP address
-* **Deployments:** stacktraces grouped by deployment name set by the container orchestration (e.g. {{k8s}} `ReplicaSet`, `DaemonSet`, or `StatefulSet` name)
+* **Deployments:** stacktraces grouped by deployment name set by the container orchestration (for example {{k8s}} `ReplicaSet`, `DaemonSet`, or `StatefulSet` name)
 * **Containers:** stacktraces grouped by container name discovered by the host-agent
 
 The stacktraces view provides valuable information that you can use to:
@@ -95,7 +95,7 @@ Below the top graph, there are individual graphs that show the individual trend-
 The percentage displayed in the top-right corner of every individual graph is the relative number of occurrences of every time over the total of samples in the group.
 
 ::::{note}
-The displayed percentage is different from the percentage of CPU usage. Universal Profiling is not meant to show absolute monitoring data. Instead, it allows for relative comparisons between software running in your infrastructure (e.g. which is the most expensive?)
+The displayed percentage is different from the percentage of CPU usage. Universal Profiling is not meant to show absolute monitoring data. Instead, it allows for relative comparisons between software running in your infrastructure (for example which is the most expensive?)
 ::::
 
 
@@ -170,7 +170,7 @@ In all of the Universal Profiling views, the search bar accepts a filter in the 
 Most notably, you may want to filter on:
 
 * `profiling.project.id`: the corresponding value of `project-id` host-agent flag, logical group of deployed host-agents
-* `process.thread.name`: the process' thread name, e.g. `python`, `java`, or `kauditd`
+* `process.thread.name`: the process' thread name, for example `python`, `java`, or `kauditd`
 * `orchestrator.resource.name`: the name of the group of the containerized deployment as set by the orchestrator
 * `container.name`: the name of the single container instance, as set by the container engine
 * `host.name` or `host.ip`: the machine’s hostname or IP address (useful for debugging issues on a single Virtual Machine)

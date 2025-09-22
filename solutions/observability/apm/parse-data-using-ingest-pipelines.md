@@ -20,7 +20,7 @@ Elastic APM supports custom ingest pipelines. A custom pipeline allows you to tr
 
 Each data stream ships with a default pipeline. This default pipeline calls an initially non-existent and non-versioned "`@custom`" ingest pipeline. If left uncreated, this pipeline has no effect on your data. However, if utilized, this pipeline can be used for custom data processing, adding fields, sanitizing data, and more.
 
-In addition, ingest pipelines can also be used to direct application metrics (`metrics-apm.app.*`) to a data stream with a different dataset, e.g. to combine metrics for two applications. Sending other APM data to alternate data streams, like traces (`traces-apm.*`), logs (`logs-apm.*`), and internal metrics (`metrics-apm.internal*`) is not currently supported.
+In addition, ingest pipelines can also be used to direct application metrics (`metrics-apm.app.*`) to a data stream with a different dataset, for example to combine metrics for two applications. Sending other APM data to alternate data streams, like traces (`traces-apm.*`), logs (`logs-apm.*`), and internal metrics (`metrics-apm.internal*`) is not currently supported.
 
 ## `@custom` ingest pipeline naming convention [custom-ingest-pipeline-naming]
 

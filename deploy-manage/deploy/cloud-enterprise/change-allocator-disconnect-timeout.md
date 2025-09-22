@@ -14,7 +14,7 @@ One of the responsibilities of the allocator is to monitor the health of the clu
 
 By default, the platform will wait 10 minutes before considering a particular instance unhealthy.
 
-While the 10 minutes timeout is long, this is based on the assumption that a short-lived zookeeper disconnect it more likely than a disconnected allocator, and that the allocator will reconnect shortly. In the meantime the workloads running on the allocator are healthy and can be accessed. This assumption may not hold for your use case, e.g., your allocators are frequently restarted.
+While the 10 minutes timeout is long, this is based on the assumption that a short-lived zookeeper disconnect it more likely than a disconnected allocator, and that the allocator will reconnect shortly. In the meantime the workloads running on the allocator are healthy and can be accessed. This assumption may not hold for your use case, for example, your allocators are frequently restarted.
 
 The timeout can be changed by running the following script. Use the `TIMEOUT_MINUTES` to set a different timeout. At least 2 minutes is recommended, to avoid false positives in case of allocator container restarts.
 

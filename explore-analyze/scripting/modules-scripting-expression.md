@@ -28,9 +28,9 @@ See the [expressions module documentation](https://lucene.apache.org/core/10_0_0
 
 Variables in `expression` scripts are available to access:
 
-* document fields, e.g. `doc['myfield'].value`
-* variables and methods that the field supports, e.g. `doc['myfield'].empty`
-* Parameters passed into the script, e.g. `mymodifier`
+* document fields, for example `doc['myfield'].value`
+* variables and methods that the field supports, for example `doc['myfield'].empty`
+* Parameters passed into the script, for example `mymodifier`
 * The current document’s score, `_score` (only available when used in a `script_score`)
 
 You can use Expressions scripts for `script_score`, `script_fields`, sort scripts, and numeric aggregation scripts, simply set the `lang` parameter to `expression`.
@@ -49,9 +49,9 @@ You can use Expressions scripts for `script_score`, `script_fields`, sort script
 | `doc['field_name'].avg()` | The average of the values in this document. |
 | `doc['field_name'].sum()` | The sum of the values in this document. |
 
-When a document is missing the field completely, by default the value will be treated as `0`. You can treat it as another value instead, e.g. `doc['myfield'].empty ? 100 : doc['myfield'].value`
+When a document is missing the field completely, by default the value will be treated as `0`. You can treat it as another value instead, for example `doc['myfield'].empty ? 100 : doc['myfield'].value`
 
-When a document has multiple values for the field, by default the minimum value is returned. You can choose a different value instead, e.g. `doc['myfield'].sum()`.
+When a document has multiple values for the field, by default the minimum value is returned. You can choose a different value instead, for example `doc['myfield'].sum()`.
 
 When a document is missing the field completely, by default the value will be treated as `0`.
 
@@ -65,16 +65,16 @@ Date fields are treated as the number of milliseconds since January 1, 1970 and 
 | Expression | Description |
 | --- | --- |
 | `doc['field_name'].date.centuryOfEra` | Century (1-2920000) |
-| `doc['field_name'].date.dayOfMonth` | Day (1-31), e.g. `1` for the first of the month. |
-| `doc['field_name'].date.dayOfWeek` | Day of the week (1-7), e.g. `1` for Monday. |
-| `doc['field_name'].date.dayOfYear` | Day of the year, e.g. `1` for January 1. |
+| `doc['field_name'].date.dayOfMonth` | Day (1-31), for example `1` for the first of the month. |
+| `doc['field_name'].date.dayOfWeek` | Day of the week (1-7), for example `1` for Monday. |
+| `doc['field_name'].date.dayOfYear` | Day of the year, for example `1` for January 1. |
 | `doc['field_name'].date.era` | Era: `0` for BC, `1` for AD. |
 | `doc['field_name'].date.hourOfDay` | Hour (0-23). |
 | `doc['field_name'].date.millisOfDay` | Milliseconds within the day (0-86399999). |
 | `doc['field_name'].date.millisOfSecond` | Milliseconds within the second (0-999). |
 | `doc['field_name'].date.minuteOfDay` | Minute within the day (0-1439). |
 | `doc['field_name'].date.minuteOfHour` | Minute within the hour (0-59). |
-| `doc['field_name'].date.monthOfYear` | Month within the year (1-12), e.g. `1` for January. |
+| `doc['field_name'].date.monthOfYear` | Month within the year (1-12), for example `1` for January. |
 | `doc['field_name'].date.secondOfDay` | Second within the day (0-86399). |
 | `doc['field_name'].date.secondOfMinute` | Second within the minute (0-59). |
 | `doc['field_name'].date.year` | Year (-292000000 - 292000000). |
@@ -98,7 +98,7 @@ The following example computes distance in kilometers from Washington, DC:
 
 `haversin(38.9072, 77.0369, doc['field_name'].lat, doc['field_name'].lon)`
 
-In this example the coordinates could have been passed as parameters to the script, e.g. based on geolocation of the user.
+In this example the coordinates could have been passed as parameters to the script, for example based on geolocation of the user.
 
 
 ## Limitations [_limitations_5] 

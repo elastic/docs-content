@@ -202,7 +202,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
           }
         },
         "availability_zone": {
-          "description": "AvailabilityZone where the monitored service is running, e.g. us-east-1a",
+          "description": "AvailabilityZone where the monitored service is running, for example us-east-1a",
           "type": [
             "null",
             "string"
@@ -277,12 +277,12 @@ The managed intake service uses JSON Schema to validate requests. The specificat
           }
         },
         "provider": {
-          "description": "Provider that is used, e.g. aws, azure, gcp, digitalocean.",
+          "description": "Provider that is used, for example aws, azure, gcp, digitalocean.",
           "type": "string",
           "maxLength": 1024
         },
         "region": {
-          "description": "Region where the monitored service is running, e.g. us-east-1",
+          "description": "Region where the monitored service is running, for example us-east-1",
           "type": [
             "null",
             "string"
@@ -435,7 +435,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
           ]
         },
         "environment": {
-          "description": "Environment in which the monitored service is running, e.g. \`production\` or \`staging\`.",
+          "description": "Environment in which the monitored service is running, for example \`production\` or \`staging\`.",
           "type": [
             "null",
             "string"
@@ -709,7 +709,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
           "maxLength": 1024
         },
         "id": {
-          "description": "ID identifies the logged in user, e.g. can be the primary key of the user",
+          "description": "ID identifies the logged in user, for example can be the primary key of the user",
           "type": [
             "null",
             "string",
@@ -1052,7 +1052,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
               ],
               "properties": {
                 "full": {
-                  "description": "Full, possibly agent-assembled URL of the request, e.g. https://example.com:443/search?q=elasticsearch#top.",
+                  "description": "Full, possibly agent-assembled URL of the request, for example https://example.com:443/search?q=elasticsearch#top.",
                   "type": [
                     "null",
                     "string"
@@ -1060,7 +1060,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
                   "maxLength": 1024
                 },
                 "hash": {
-                  "description": "Hash of the request URL, e.g. 'top'",
+                  "description": "Hash of the request URL, for example 'top'",
                   "type": [
                     "null",
                     "string"
@@ -1068,7 +1068,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
                   "maxLength": 1024
                 },
                 "hostname": {
-                  "description": "Hostname information of the request, e.g. 'example.com'.\"",
+                  "description": "Hostname information of the request, for example 'example.com'.\"",
                   "type": [
                     "null",
                     "string"
@@ -1076,7 +1076,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
                   "maxLength": 1024
                 },
                 "pathname": {
-                  "description": "Path of the request, e.g. '/search'",
+                  "description": "Path of the request, for example '/search'",
                   "type": [
                     "null",
                     "string"
@@ -1084,7 +1084,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
                   "maxLength": 1024
                 },
                 "port": {
-                  "description": "Port of the request, e.g. '443'. Can be sent as string or int.",
+                  "description": "Port of the request, for example '443'. Can be sent as string or int.",
                   "type": [
                     "null",
                     "string",
@@ -1093,7 +1093,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
                   "maxLength": 1024
                 },
                 "protocol": {
-                  "description": "Protocol information for the recorded request, e.g. 'https:'.",
+                  "description": "Protocol information for the recorded request, for example 'https:'.",
                   "type": [
                     "null",
                     "string"
@@ -1235,7 +1235,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
               }
             },
             "environment": {
-              "description": "Environment in which the monitored service is running, e.g. \`production\` or \`staging\`.",
+              "description": "Environment in which the monitored service is running, for example \`production\` or \`staging\`.",
               "type": [
                 "null",
                 "string"
@@ -1475,7 +1475,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
               "maxLength": 1024
             },
             "id": {
-              "description": "ID identifies the logged in user, e.g. can be the primary key of the user",
+              "description": "ID identifies the logged in user, for example can be the primary key of the user",
               "type": [
                 "null",
                 "string",
@@ -1505,7 +1505,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
         "type": "object",
         "properties": {
           "destination_service_resource": {
-            "description": "DestinationServiceResource identifies the destination service resource being operated on. e.g. 'http://elastic.co:80', 'elasticsearch', 'rabbitmq/queue_name'.",
+            "description": "DestinationServiceResource identifies the destination service resource being operated on. for example 'http://elastic.co:80', 'elasticsearch', 'rabbitmq/queue_name'.",
             "type": [
               "null",
               "string"
@@ -1568,7 +1568,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
             "maxLength": 512
           },
           "service_target_type": {
-            "description": "ServiceTargetType identifies the type of the target service being operated on e.g. 'oracle', 'rabbitmq'",
+            "description": "ServiceTargetType identifies the type of the target service being operated on for example 'oracle', 'rabbitmq'",
             "type": [
               "null",
               "string"
@@ -1928,7 +1928,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
   "type": "object",
   "properties": {
     "action": {
-      "description": "Action holds the specific kind of event within the sub-type represented by the span (e.g. query, connect)",
+      "description": "Action holds the specific kind of event within the sub-type represented by the span (for example query, connect)",
       "type": [
         "null",
         "string"
@@ -2012,14 +2012,14 @@ The managed intake service uses JSON Schema to validate requests. The specificat
               ]
             },
             "statement": {
-              "description": "Statement of the recorded database event, e.g. query.",
+              "description": "Statement of the recorded database event, for example query.",
               "type": [
                 "null",
                 "string"
               ]
             },
             "type": {
-              "description": "Type of the recorded database event., e.g. sql, cassandra, hbase, redis.",
+              "description": "Type of the recorded database event., for example sql, cassandra, hbase, redis.",
               "type": [
                 "null",
                 "string"
@@ -2042,7 +2042,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
           ],
           "properties": {
             "address": {
-              "description": "Address is the destination network address: hostname (e.g. 'localhost'), FQDN (e.g. 'elastic.co'), IPv4 (e.g. '127.0.0.1') IPv6 (e.g. '::1')",
+              "description": "Address is the destination network address: hostname (for example 'localhost'), FQDN (for example 'elastic.co'), IPv4 (for example '127.0.0.1') IPv6 (for example '::1')",
               "type": [
                 "null",
                 "string"
@@ -2050,7 +2050,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
               "maxLength": 1024
             },
             "port": {
-              "description": "Port is the destination network port (e.g. 443)",
+              "description": "Port is the destination network port (for example 443)",
               "type": [
                 "null",
                 "integer"
@@ -2064,7 +2064,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
               ],
               "properties": {
                 "name": {
-                  "description": "Name is the identifier for the destination service, e.g. 'http://elastic.co', 'elasticsearch', 'rabbitmq' ( DEPRECATED: this field will be removed in a future release",
+                  "description": "Name is the identifier for the destination service, for example 'http://elastic.co', 'elasticsearch', 'rabbitmq' ( DEPRECATED: this field will be removed in a future release",
                   "type": [
                     "null",
                     "string"
@@ -2072,12 +2072,12 @@ The managed intake service uses JSON Schema to validate requests. The specificat
                   "maxLength": 1024
                 },
                 "resource": {
-                  "description": "Resource identifies the destination service resource being operated on e.g. 'http://elastic.co:80', 'elasticsearch', 'rabbitmq/queue_name' DEPRECATED: this field will be removed in a future release",
+                  "description": "Resource identifies the destination service resource being operated on for example 'http://elastic.co:80', 'elasticsearch', 'rabbitmq/queue_name' DEPRECATED: this field will be removed in a future release",
                   "type": "string",
                   "maxLength": 1024
                 },
                 "type": {
-                  "description": "Type of the destination service, e.g. db, elasticsearch. Should typically be the same as span.type. DEPRECATED: this field will be removed in a future release",
+                  "description": "Type of the destination service, for example db, elasticsearch. Should typically be the same as span.type. DEPRECATED: this field will be removed in a future release",
                   "type": [
                     "null",
                     "string"
@@ -2312,7 +2312,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
               }
             },
             "environment": {
-              "description": "Environment in which the monitored service is running, e.g. \`production\` or \`staging\`.",
+              "description": "Environment in which the monitored service is running, for example \`production\` or \`staging\`.",
               "type": [
                 "null",
                 "string"
@@ -2755,7 +2755,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
       ]
     },
     "subtype": {
-      "description": "Subtype is a further sub-division of the type (e.g. postgresql, elasticsearch)",
+      "description": "Subtype is a further sub-division of the type (for example postgresql, elasticsearch)",
       "type": [
         "null",
         "string"
@@ -3115,7 +3115,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
               ],
               "properties": {
                 "full": {
-                  "description": "Full, possibly agent-assembled URL of the request, e.g. https://example.com:443/search?q=elasticsearch#top.",
+                  "description": "Full, possibly agent-assembled URL of the request, for example https://example.com:443/search?q=elasticsearch#top.",
                   "type": [
                     "null",
                     "string"
@@ -3123,7 +3123,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
                   "maxLength": 1024
                 },
                 "hash": {
-                  "description": "Hash of the request URL, e.g. 'top'",
+                  "description": "Hash of the request URL, for example 'top'",
                   "type": [
                     "null",
                     "string"
@@ -3131,7 +3131,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
                   "maxLength": 1024
                 },
                 "hostname": {
-                  "description": "Hostname information of the request, e.g. 'example.com'.\"",
+                  "description": "Hostname information of the request, for example 'example.com'.\"",
                   "type": [
                     "null",
                     "string"
@@ -3139,7 +3139,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
                   "maxLength": 1024
                 },
                 "pathname": {
-                  "description": "Path of the request, e.g. '/search'",
+                  "description": "Path of the request, for example '/search'",
                   "type": [
                     "null",
                     "string"
@@ -3147,7 +3147,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
                   "maxLength": 1024
                 },
                 "port": {
-                  "description": "Port of the request, e.g. '443'. Can be sent as string or int.",
+                  "description": "Port of the request, for example '443'. Can be sent as string or int.",
                   "type": [
                     "null",
                     "string",
@@ -3156,7 +3156,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
                   "maxLength": 1024
                 },
                 "protocol": {
-                  "description": "Protocol information for the recorded request, e.g. 'https:'.",
+                  "description": "Protocol information for the recorded request, for example 'https:'.",
                   "type": [
                     "null",
                     "string"
@@ -3298,7 +3298,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
               }
             },
             "environment": {
-              "description": "Environment in which the monitored service is running, e.g. \`production\` or \`staging\`.",
+              "description": "Environment in which the monitored service is running, for example \`production\` or \`staging\`.",
               "type": [
                 "null",
                 "string"
@@ -3538,7 +3538,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
               "maxLength": 1024
             },
             "id": {
-              "description": "ID identifies the logged in user, e.g. can be the primary key of the user",
+              "description": "ID identifies the logged in user, for example can be the primary key of the user",
               "type": [
                 "null",
                 "string",
@@ -3592,7 +3592,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
           "minItems": 0
         },
         "code": {
-          "description": "Code that is set when the error happened, e.g. database error code.",
+          "description": "Code that is set when the error happened, for example database error code.",
           "type": [
             "null",
             "string",
@@ -3814,7 +3814,7 @@ The managed intake service uses a JSON Schema to validate requests. The specific
           "type": "string"
         },
         "param_message": {
-          "description": "ParamMessage should contain the same information as Message, but with placeholders where parameters were logged, e.g. 'error connecting to %s'. The string is not interpreted, allowing differnt placeholders per client languange. The information might be used to group errors together.",
+          "description": "ParamMessage should contain the same information as Message, but with placeholders where parameters were logged, for example 'error connecting to %s'. The string is not interpreted, allowing differnt placeholders per client languange. The information might be used to group errors together.",
           "type": [
             "null",
             "string"
@@ -4378,7 +4378,7 @@ The managed intake service uses JSON Schema to validate requests. The specificat
       ],
       "properties": {
         "subtype": {
-          "description": "Subtype is a further sub-division of the type (e.g. postgresql, elasticsearch)",
+          "description": "Subtype is a further sub-division of the type (for example postgresql, elasticsearch)",
           "type": [
             "null",
             "string"

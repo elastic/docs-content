@@ -82,7 +82,7 @@ service:
 4. Elastic {{observability}} endpoint configuration. APM Server supports a ProtoBuf payload via both the OTLP protocol over gRPC transport [(OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc) and the OTLP protocol over HTTP transport [(OTLP/HTTP)](https://opentelemetry.io/docs/specs/otlp/#otlphttp). To learn more about these exporters, see the OpenTelemetry Collector documentation: [OTLP/HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) or [OTLP/gRPC exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter). When adding an endpoint to an existing configuration an optional name component can be added, like `otlp/elastic`, to distinguish endpoints as described in the [OpenTelemetry Collector Configuration Basics](https://opentelemetry.io/docs/collector/configuration/#basics).
 5. Hostname and port of the APM Server endpoint. For example, `elastic-apm-server:8200`.
 6. Credential for Elastic APM [secret token authorization](/solutions/observability/apm/secret-token.md) (`Authorization: "Bearer a_secret_token"`) or [API key authorization](/solutions/observability/apm/api-keys.md) (`Authorization: "ApiKey an_api_key"`).
-7. Environment-specific configuration parameters can be conveniently passed in as environment variables documented [here](https://opentelemetry.io/docs/collector/configuration/#environment-variables) (e.g. `ELASTIC_APM_SERVER_ENDPOINT` and `ELASTIC_APM_SECRET_TOKEN`).
+7. Environment-specific configuration parameters can be conveniently passed in as environment variables documented [here](https://opentelemetry.io/docs/collector/configuration/#environment-variables) (for example `ELASTIC_APM_SERVER_ENDPOINT` and `ELASTIC_APM_SECRET_TOKEN`).
 8. To send OpenTelemetry logs to {{stack}} version 8.0+, declare a `logs` pipeline. {applies_to}`product: preview`
 
 :::
@@ -134,7 +134,7 @@ service:
 4. {{obs-serverless}} endpoint configuration. Elastic supports a ProtoBuf payload via both the OTLP protocol over gRPC transport [(OTLP/gRPC)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md#otlpgrpc) and the OTLP protocol over HTTP transport [(OTLP/HTTP)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md#otlphttp). To learn more about these exporters, see the OpenTelemetry Collector documentation: [OTLP/HTTP Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) or [OTLP/gRPC exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter).
 5. Hostname and port of the Elastic endpoint. For example, `elastic-apm-server:8200`.
 6. Credential for Elastic APM API key authorization (`Authorization: "ApiKey an_api_key"`).
-7. Environment-specific configuration parameters can be conveniently passed in as environment variables documented [here](https://opentelemetry.io/docs/collector/configuration/#configuration-environment-variables) (e.g. `ELASTIC_APM_SERVER_ENDPOINT` and `ELASTIC_APM_API_KEY`).
+7. Environment-specific configuration parameters can be conveniently passed in as environment variables documented [here](https://opentelemetry.io/docs/collector/configuration/#configuration-environment-variables) (for example `ELASTIC_APM_SERVER_ENDPOINT` and `ELASTIC_APM_API_KEY`).
 8. To send OpenTelemetry logs to your project, declare a `logs` pipeline. {applies_to}`product: preview`
 
 :::

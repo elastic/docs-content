@@ -262,12 +262,12 @@ Known issues:
 
 * When [`profiling_inferred_spans_enabled` ([1.15.0] experimental)](apm-agent-java://reference/config-profiling.md#config-profiling-inferred-spans-enabled) is set to `true`, it uses a native library that collects low-level information from the JVM. All known issues so far had been fixed. Try to disable it if you think the crash may be related. We continuously upgrade to the latest async profiler version, so upgrading your agent to the latest version may already contain a fix.
 
-Whenever you encounter a JVM crash, report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java). Look for the crash log (e.g. an `hs_err_pid<PID>.log`) and provide it when reporting, as well as all factors describing you setup and scenario.
+Whenever you encounter a JVM crash, report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java). Look for the crash log (for example an `hs_err_pid<PID>.log`) and provide it when reporting, as well as all factors describing you setup and scenario.
 
 
 ### JVM Hangs [trouble-shooting-jvm-hangs]
 
-If your JVM gets hang when attaching the Java agent, create a thread dump (e.g. through `jstack`) and report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java).
+If your JVM gets hang when attaching the Java agent, create a thread dump (for example through `jstack`) and report through [our forum](https://discuss.elastic.co/c/observability/apm/58) or by opening an issue on our [GitHub repository](https://github.com/elastic/apm-agent-java).
 
 
 ### Custom Java runtimes using `jlink` [trouble-shooting-jlink]

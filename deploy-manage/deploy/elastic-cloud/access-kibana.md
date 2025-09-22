@@ -21,7 +21,7 @@ products:
 % - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-access-kibana.md
 % - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-enable-kibana2.md
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+% Internal links rely on the following IDs being on this page (for example as a heading ID, paragraph ID, etc):
 
 
 $$$ec-enable-kibana2$$$

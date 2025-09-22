@@ -27,7 +27,7 @@ APM agents automatically pick up basic host-level metrics, including system and 
 Infrastructure and application metrics are important sources of information when debugging production systems, which is why we’ve made it easy to filter metrics for specific hosts or containers in the {{kib}} [metrics overview](/solutions/observability/apm/metrics-ui.md).
 
 ::::{tip}
-Most agents limit keyword fields to 1024 characters, non-keyword fields (e.g. `system.memory.total`) to 10,000 characters.
+Most agents limit keyword fields to 1024 characters, non-keyword fields (for example `system.memory.total`) to 10,000 characters.
 ::::
 
 Metrics are stored in metric indices.

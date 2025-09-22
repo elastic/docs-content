@@ -37,7 +37,7 @@ In {{es}}, this process of writing and opening a new segment is called a *refres
 
 By default, {{es}} periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. This is why we say that {{es}} has *near* real-time search: document changes are not visible to search immediately, but will become visible within this timeframe.
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+% Internal links rely on the following IDs being on this page (for example as a heading ID, paragraph ID, etc):
 
 $$$img-pre-refresh$$$
 

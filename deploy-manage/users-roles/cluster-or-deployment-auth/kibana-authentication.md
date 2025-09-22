@@ -27,7 +27,7 @@ After you configure an authentication method in {{es}}, you can configure an aut
 
 ## Multiple authentication providers [multiple-authentication-providers]
 
-Enable multiple authentication mechanisms at the same time by specifying a prioritized list of the authentication *providers* (typically of various types) in the configuration. Providers are consulted in ascending order. Make sure each configured provider has a unique name (e.g. `basic1` or `saml1` in the configuration example) and `order` setting. In the event that two or more providers have the same name or `order`, {{kib}} will fail to start.
+Enable multiple authentication mechanisms at the same time by specifying a prioritized list of the authentication *providers* (typically of various types) in the configuration. Providers are consulted in ascending order. Make sure each configured provider has a unique name (for example `basic1` or `saml1` in the configuration example) and `order` setting. In the event that two or more providers have the same name or `order`, {{kib}} will fail to start.
 
 When two or more providers are configured, you can choose the provider you want to use on the Login Selector UI. The order the providers appear is determined by the `order` setting. The appearance of the specific provider entry can be customized with the `description`, `hint`, and `icon` settings.
 
@@ -36,7 +36,7 @@ To provide login instructions to users, use the `xpack.security.loginHelp` setti
 ::::
 
 
-If you don’t want a specific provider to show up at the Login Selector UI (e.g. to only support third-party initiated login) you can hide it with `showInSelector` setting set to `false`. However, in this case, the provider is presented in the provider chain and may be consulted during authentication based on its `order`. To disable the provider, use the `enabled` setting.
+If you don’t want a specific provider to show up at the Login Selector UI (for example to only support third-party initiated login) you can hide it with `showInSelector` setting set to `false`. However, in this case, the provider is presented in the provider chain and may be consulted during authentication based on its `order`. To disable the provider, use the `enabled` setting.
 
 ::::{tip}
 The Login Selector UI can also be disabled or enabled with `xpack.security.authc.selector.enabled` setting.
@@ -370,7 +370,7 @@ You can configure [session idle timeout](/deploy-manage/security/kibana-session-
 ## HTTP authentication [http-authentication]
 
 ::::{important}
-Be very careful when you modify HTTP authentication settings as it may indirectly affect other important {{kib}} features that implicitly rely on HTTP authentication (e.g. Reporting).
+Be very careful when you modify HTTP authentication settings as it may indirectly affect other important {{kib}} features that implicitly rely on HTTP authentication (for example Reporting).
 
 ::::
 
