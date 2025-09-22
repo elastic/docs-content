@@ -139,7 +139,7 @@ Use this option to set the Kafka topic for each {{agent}} event.
 
     You can also set a custom field. This is useful if you need to construct a more complex or structured topic name.
     
-    To set a dynamic topic value for outputting {{agent}} data to Kafka, you can add the [`add_fields` processor](/reference/fleet/add_fields-processor.md) to any integration policies on your Fleet-managed {{agents}}.
+    To set a dynamic topic value for outputting {{agent}} data to Kafka, you can add the [`add_fields` processor](/reference/fleet/add_fields-processor.md) to any integration policies on your {{fleet}}-managed {{agents}}.
     
     For example, the following `add_fields` processor creates a dynamic topic value by interpolating multiple [data stream fields](ecs://reference/ecs-data_stream.md):
 
