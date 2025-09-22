@@ -14,19 +14,20 @@ products:
 
 # Scale {{kib}} for your traffic workload
 
-{{kib}}'s HTTP traffic is diverse and can be unpredictable. Traffic includes serving static assets like files, processing large search responses from {{es}} and managing CRUD operations against complex domain objects like SLOs. The scale of the load created by each of these kinds of traffic will vary depending on your usage patterns. While difficult to predict, there are two important aspects to consider when provisioning CPU and memory resources for your {{kib}} instances:
+{{kib}}'s HTTP traffic is diverse and can be unpredictable. Traffic includes serving static assets like files, processing large search responses from {{es}}, and managing CRUD operations against complex domain objects like SLOs. The scale of the load created by each of these kinds of traffic will vary depending on your usage patterns. While difficult to predict, there are two important aspects to consider when provisioning CPU and memory resources for your {{kib}} instances:
 
-* **Concurrency**: How many users you expect to be interacting with {{kib}} simultaneously is largely **CPU-bound**. Approaching this limit will increase response times.
+* **Concurrency**: How many users you expect to be interacting with {{kib}} simultaneously. Concurrency performance is largely **CPU-bound**. Approaching this limit increases response times.
 * **Request and response size**: The size of requests and responses you expect {{kib}} to service. Performance when managing large requests and responses is largely **memory-bound**. Approaching this limit increases response times and may cause {{kib}} to crash.
 
 ::::{tip}
 On [{{serverless-full}}](../deploy/elastic-cloud/serverless.md) scaling {{kib}} is fully managed for you.
 ::::
 
-CPU and memory boundedness often interact in important ways. If CPU-bound activity is reaching its limit, memory pressure will likely increase as {{kib}} has less time for activities like garbage collection. If memory-bound activity is reaching its limit, there may be more CPU work to free claimed memory, increasing CPU pressure. Tracking CPU and memory metrics over time can be very useful for understanding where your {{kib}} is experiencing a bottleneck. See the sizing guidance below.
+CPU and memory boundedness often interact in important ways. If CPU-bound activity is reaching its limit, memory pressure will likely increase as {{kib}} has less time for activities like garbage collection. If memory-bound activity is reaching its limit, there may be more CPU work to free claimed memory, increasing CPU pressure. [Tracking CPU and memory metrics over time](#advanced-scaling-using-stack-monitoring-metrics) can be very useful for understanding where your {{kib}} is experiencing a bottleneck.
 
 ::::{note}
-The nature of traffic is not only diverse, but also unpredictable. Traffic to {{kib}} often comes in short bursts or spikes that can overwhelm an underprovisioned {{kib}} instance. In production environments, an overwhelmed {{kib}} instance will typically return 502 or 503 error responses.
+Traffic to {{kib}} often comes in short bursts or spikes that can overwhelm an underprovisioned {{kib}} instance. In production environments, an overwhelmed {{kib}} instance will typically return 502 or 503 error responses.
+
 Load balancing helps to mitigate traffic spikes by horizontally scaling your {{kib}} deployments and improving {{kib}}'s availability. To learn more about load balancing, refer to [](./kibana-load-balance-traffic.md).
 ::::
 
@@ -47,16 +48,19 @@ In user interfaces like Dashboards or Discover, you can view the full query that
 Follow this strategy if you know the maximum number of expected concurrent users.
 
 Start {{kib}} on **1 vCPU** and **2GB** of memory. This should comfortably serve a set of 10 concurrent users performing analytics activities like browsing dashboards.
+
 If you are experiencing performance issues, you can scale {{kib}} vertically by adding the following resources for every 10 additional concurrent users:
 * 1 vCPU
 * 2GB of memory
 
 These amounts are a safe minimum to ensure that {{kib}} is not resource-starved for common analytics use cases.
+
 It is recommended to scale vertically to a maximum of **8.4 vCPU** and **8GB** of memory.
+
 You should also combine vertical scaling with horizontal scaling to handle greater concurrency or bursty traffic. Refer to [](./kibana-load-balance-traffic.md) for guidance.
 
 ::::{important}
-This advice does not apply to scaling {{kib}} for task manager. If you intend to use {{kib}} alerting capabilities see [](./kibana-task-manager-scaling-considerations.md).
+This advice does not apply to scaling {{kib}} for task manager. If you intend to use {{kib}} alerting capabilities, see [](./kibana-task-manager-scaling-considerations.md).
 ::::
 
 ### Scaling examples
@@ -66,10 +70,10 @@ This advice does not apply to scaling {{kib}} for task manager. If you intend to
 | 50 | 5 vCPU | 10GB | • {{kib}} instance of 8.4 vCPU and 16GB memory in 1 availability zone (creates 2 8GB nodes per availability zone)<br><br>• {{kib}} instance of 8.4 vCPU and 8GB memory each across 2 availability zones<br><br>• {{kib}} instances of 8.4 vCPU and 4GB memory each across 3 availability zones |
 | 100 | 10 vCPU | 20GB | • {{kib}} instance of 12 vCPU and 24GB memory in 1 availability zone (creates 3 8GB nodes per availability zone)<br><br>• {{kib}} instance of 8.4 vCPU and 8GB memory each across 3 availability zones<br><br>|
 
-### Adjust resource allocations for {{kib}}
+## Adjust resource allocations for {{kib}}
 The way that you alter the resources allocated to your {{kib}} instance depends on your deployment type.
 * **[{{ech}}](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) and [{{ece}}](/deploy-manage/deploy/elastic-cloud/configure.md):** Users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. In these environments, size increments are predetermined.
-* **{{eck}}:** Users can configure pod memory and CPU resources. [Follow the {{kib}} guide](https://www.elastic.co/guide/en/cloud-on-k8s/index.html) for the version of {{eck}} you are running.
+* **{{eck}}:** Users can configure pod memory and CPU resources. Refer to [](/docs/deploy-manage/deploy/cloud-on-k8s/manage-compute-resources).
 * **Self-managed:** Users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
 
 :::{note}
@@ -78,7 +82,7 @@ Node.js suggests allocating 80% of available host memory to heap, assuming that 
 
 ## Advanced scaling using stack monitoring metrics
 
-Building on the simple strategy outlined above, we can make more precise adjustments to resource allocations. **Self-managed** users manage their CPU and memory allocations independently and can employ the strategy below to further tailor resources based on performance metrics.
+Building on the simple strategy outlined above, we can identify where {{kib}} is resource constrained more precisely. **Self-managed** and **{{eck}}** users manage CPU and memory allocations independently and can further tailor resources based on performance metrics.
 
 ### Gather usage information [_monitoring-kibana-metrics]
 
