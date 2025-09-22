@@ -32,8 +32,7 @@ Proxy certificate
     After the certificates have been installed, connecting securely to {{es}}, {{kib}}, and the Cloud UI or making secure RESTful API calls to ECE should not result in any security warnings or errors.
 
 Adminconsole certificate
-:   Used to connect securely to make RESTful API calls.
-
+:   This certificate facilitates a secure connection to an alternative API port, which can be used in rare scenarios where the UI is unavailable. We recommend reusing the UI certificate for this purpose.
 
 
 ## Before you begin [ece_before_you_begin_7] 
@@ -325,18 +324,7 @@ To add an Adminconsole certificate from the Cloud UI:
 
 To get the details of the certificate you added, select **Show certificate chain**.
 
-To add an Adminconsole certificate from the command line:
-
-1. Add the certificate for the Adminconsole to your {{ece}} installation, where `CA_CERTIFICATE_FILENAME` is the name of the CA certificate you downloaded earlier and `ADMINCONSOLE_PEM_FILENAME` is the name of the concatenated file containing your RSA private key, server certificate, and CA certificate:
-
-    ```
-    curl --cacert CA_CERTIFICATE_FILENAME -H 'Content-Type: application/json' --data-binary @ADMINCONSOLE_PEM_FILENAME --user "admin:PASSWORD" "https://admin:12443/api/v1/platform/configuration/security/tls/adminconsole"
-    ```
-
-2. Log out of the Cloud UI and log in again.
-3. Verify that you are now using the new certificate chain. There should be no security warnings when you connect to the  Cloud UI over HTTPS in your web browser.
-
-    Alternatively, you can also check the certificate using the openssl command:
+You can verify the new certificate chain by using the openssl command:
 
     ```
     openssl s_client -CAfile CA_CERTIFICATE_FILENAME -showcerts -connect containerhost:12343 < /dev/zero
