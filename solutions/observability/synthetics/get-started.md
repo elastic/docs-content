@@ -11,7 +11,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Get started with Synthetics in Elastic Observability [observability-synthetics-get-started]
+# Get started with Synthetics in Elastic {{observability}} [observability-synthetics-get-started]
 
 To set up a synthetic monitor, you need to configure the monitor, run it, and send data back to Elastic. After setup is complete, the data will be available in your serverless Observability project or in {{kib}} to view, analyze, and alert on.
 
