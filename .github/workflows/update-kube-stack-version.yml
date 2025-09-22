@@ -29,4 +29,33 @@ jobs:
     - name: Run kube-stack version update script
       run: |
         cd scripts
-        python update_kube_stack_version.py --create-pr
+        python update_kube_stack_version.py --prepare-git
+    
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Create Pull Request
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "chore: update kube-stack version"
+        title: "chore: update kube-stack version"
+        body: |
+          This PR automatically updates the kube-stack version in `docset.yml` based on the latest version from the elastic-agent repository.
+          
+          **Changes:**
+          - Updated kube-stack version in docset.yml
+          
+          This PR was created automatically by the weekly kube-stack version update workflow.
+        branch: update-kube-stack-version
+        delete-branch: true
+        labels: |
+          automated
+          documentation

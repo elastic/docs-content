@@ -160,75 +160,25 @@ def update_docset_kube_stack_version(version, docset_path, dry_run=False):
         return False
 
 
-def create_pr(version, dry_run=False):
-    """Create a pull request with the kube-stack version update"""
+def prepare_git_changes(version, dry_run=False):
+    """Prepare git changes for PR creation (used by GitHub Actions)"""
     if dry_run:
-        print(f"[DRY RUN] Would create PR for kube-stack version {version}")
+        print(f"[DRY RUN] Would prepare git changes for kube-stack version {version}")
         return True
     
     try:
-        # Generate a unique branch name with timestamp and random suffix
-        timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        import random
-        random_suffix = random.randint(1000, 9999)
-        branch_name = f"update-kube-stack-{version}-{timestamp}-{random_suffix}"
-        
-        print(f"Creating branch: {branch_name}")
-        
-        # Check if we're already on a branch (avoid detached HEAD)
-        try:
-            current_branch = subprocess.run(['git', 'branch', '--show-current'], 
-                                          capture_output=True, text=True, check=True).stdout.strip()
-            if not current_branch:
-                print("Warning: Not on any branch, checking out main first")
-                subprocess.run(['git', 'checkout', 'main'], check=True)
-        except subprocess.CalledProcessError:
-            print("Warning: Could not determine current branch")
-        
-        # Create and checkout new branch
-        subprocess.run(['git', 'checkout', '-b', branch_name], check=True)
-        
         # Add and commit changes
         subprocess.run(['git', 'add', 'docset.yml'], check=True)
         subprocess.run(['git', 'commit', '-m', f'chore: update kube-stack version to {version} [skip ci]'], check=True)
         
-        # Push the branch
-        subprocess.run(['git', 'push', '-u', 'origin', branch_name], check=True)
-        
-        # Create PR using GitHub CLI if available, otherwise provide instructions
-        try:
-            pr_body = f"""This PR automatically updates the kube-stack version in `docset.yml` to {version} based on the latest version from the elastic-agent repository.
-
-**Changes:**
-- Updated kube-stack version from previous version to {version}
-
-This PR was created automatically by the kube-stack version update script."""
-            
-            result = subprocess.run([
-                'gh', 'pr', 'create',
-                '--title', f'chore: update kube-stack version to {version}',
-                '--body', pr_body,
-                '--label', 'automated,documentation'
-            ], capture_output=True, text=True, check=True)
-            
-            print(f"Created PR: {result.stdout.strip()}")
-            
-        except (subprocess.CalledProcessError, FileNotFoundError) as e:
-            print(f"GitHub CLI not available or failed: {e}")
-            print("Branch created and pushed successfully. Please create PR manually:")
-            print(f"Branch: {branch_name}")
-            print(f"Title: chore: update kube-stack version to {version}")
-            print(f"URL: https://github.com/elastic/docs-content/compare/{branch_name}")
-            # Don't fail the script if GitHub CLI is not available
-            return True
-        
+        print(f"Git changes prepared for kube-stack version {version}")
         return True
         
     except subprocess.CalledProcessError as e:
-        print(f"Error creating PR: {e}")
+        print(f"Error preparing git changes: {e}")
         return False
     except Exception as e:
-        print(f"Error creating PR: {e}")
+        print(f"Error preparing git changes: {e}")
         return False
 
 
@@ -236,10 +186,8 @@ def main():
     parser = argparse.ArgumentParser(description='Update kube-stack version in docset.yml')
     parser.add_argument('--dry-run', action='store_true', 
                        help='Show what would be updated without making changes')
-    parser.add_argument('--create-pr', action='store_true', default=True,
-                       help='Create a pull request for the changes (default: True)')
-    parser.add_argument('--no-pr', action='store_false', dest='create_pr',
-                       help='Do not create a pull request, just update the file')
+    parser.add_argument('--prepare-git', action='store_true', default=False,
+                       help='Prepare git changes for PR creation (used by GitHub Actions)')
     args = parser.parse_args()
     
     # Get the script directory and construct paths relative to it
@@ -268,14 +216,14 @@ def main():
     success = update_docset_kube_stack_version(kube_stack_version, docset_path, args.dry_run)
     
     if success:
-        if args.create_pr:
-            # Create PR for the changes
-            pr_success = create_pr(kube_stack_version, args.dry_run)
-            if pr_success:
-                print("Kube-stack version update and PR creation completed successfully")
+        if args.prepare_git:
+            # Prepare git changes for GitHub Actions PR creation
+            git_success = prepare_git_changes(kube_stack_version, args.dry_run)
+            if git_success:
+                print("Kube-stack version update and git changes prepared successfully")
                 sys.exit(0)
             else:
-                print("Kube-stack version updated but PR creation failed")
+                print("Kube-stack version updated but git preparation failed")
                 sys.exit(1)
         else:
             print("Kube-stack version update completed successfully")
