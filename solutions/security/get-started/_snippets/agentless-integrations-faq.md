@@ -29,7 +29,7 @@ If the **Make this {{fleet}} server the default one** setting was already enable
 
 ## Why can't I upgrade my agentless integration to a newer version?
 
-On versions of {{stack}} before v9.2, agentless integrations can't be upgraded to newer versions of the integration. To get a newer version in your environment, upgrade to {{stack}} v9.2+ or delete and re-install the desired integration.
+On versions of {{stack}} before v9.2, agentless integrations can't be upgraded to newer versions of the integration. To get a newer version in your {{stack}} environment, upgrade to {{stack}} v9.2+ or delete and re-install the desired integration.
 
 
 ## How do I troubleshoot an `Unhealthy` agent? [_how_do_i_troubleshoot_an_unhealthy_agent]
