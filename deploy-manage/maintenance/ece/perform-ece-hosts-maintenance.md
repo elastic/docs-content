@@ -20,12 +20,13 @@ These steps show how you can safely perform maintenance on hosts in your ECE ins
 You can perform these maintenance actions on the hosts in your ECE installation using one of these methods:
 
 * [By disabling the Docker daemon (nondestructive)](#ece-perform-host-maintenance-docker-disable)
+* [By disabling the Podman related services (nondestructive)](#ece-perform-host-maintenance-podman-disable) - **For Podman Only** 
 * [By deleting the host (destructive)](#ece-perform-host-maintenance-delete-runner)
 * [By shutting down the host (less destructive)](#ece-perform-host-maintenance-delete-runner)
 
 Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted {{es}} clusters and {{kib}} instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
 
-## By disabling the Docker daemon [ece-perform-host-maintenance-docker-disable]
+## By disabling the Docker daemon (Non Destructive) [ece-perform-host-maintenance-docker-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Docker daemon. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
@@ -64,6 +65,69 @@ To perform host maintenance:
     ```sh
     sudo reboot
     ```
+
+7. If you enabled maintenance mode in Step 1: Take the allocator out of maintenance mode.
+8. Optional for allocators: ECE will start using the allocator again as you create new or change existing clusters, but it will not automatically redistribute nodes to an allocator after it becomes available. If you want to move nodes back to the same allocator after host maintenance, you need to manually [move the nodes](move-nodes-instances-from-allocators.md) and specify the allocator as a target.
+9. Verify that all ECE services and deployments are back up by checking that the host shows a green status in the Cloud UI.
+
+After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
+
+## By disabling the Podman related services (Non Destructive) [ece-perform-host-maintenance-podman-disable]
+
+:::{note}
+This section only applies to Podman. 
+:::
+
+This method lets you perform maintenance actions on hosts without first removing the associated host from your {{ece}} installation. It works by disabling the Podman related services. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
+
+To perform host maintenance:
+
+1. Recommended: If the host holds the allocator role and you have enough spare capacity:
+   1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
+   2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available {{es}} clusters and ensures that other clusters without high availability remain available.
+   ::::{important}
+   Skipping Step 1 will affect the availability of clusters with nodes on the allocator.
+   ::::
+
+2. Disable the Podman Service, Podman Socket, and Podman Restart Service
+
+    ```sh
+    sudo systemctl disable podman.service
+    sudo systemctl disable podman.socket
+    sudo systemctl disable podman-restart.service
+    ```
+
+3. Reboot the host:
+
+    ```sh
+    sudo reboot
+    ```
+
+After rebooting, confirm there are no running containers:
+- `sudo podman ps` - Output should be empty
+
+If an `frc-*` or `fac-*` container is found to be running for some reason, stop it:
+- `sudo podman stop $(sudo podman ps -a --filter "name=fac" --filter "name=frc" --format "{{.ID}}")`
+
+4. Perform your maintenance on the host, such as patching the operating system.
+5. Re-enable the Podman related services:
+
+    ```sh
+    sudo systemctl enable podman.service
+    sudo systemctl enable podman.socket
+    sudo systemctl enable podman-restart.service
+    ```
+
+6. Reboot the host again:
+
+    ```sh
+    sudo reboot
+    ```
+
+Confirm the containers have started:
+- `sudo podman ps -a`
+  - use `-a` flag so no containers are overlooked 
+
 
 7. If you enabled maintenance mode in Step 1: Take the allocator out of maintenance mode.
 8. Optional for allocators: ECE will start using the allocator again as you create new or change existing clusters, but it will not automatically redistribute nodes to an allocator after it becomes available. If you want to move nodes back to the same allocator after host maintenance, you need to manually [move the nodes](move-nodes-instances-from-allocators.md) and specify the allocator as a target.
