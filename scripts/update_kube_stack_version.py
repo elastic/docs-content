@@ -13,7 +13,6 @@ This script:
 import re
 import sys
 import requests
-import yaml
 from pathlib import Path
 from typing import Optional
 
