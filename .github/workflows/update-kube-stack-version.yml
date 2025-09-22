@@ -12,19 +12,24 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: '3.13'
+    
+    - name: Set up Git configuration
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
     
     - name: Run kube-stack version update script
       run: |
         cd scripts
-        python update_kube_stack_version.py
+        python update_kube_stack_version.py --prepare-git
     
     - name: Check for changes
       id: verify-changed-files
@@ -35,30 +40,21 @@ jobs:
           echo "changed=false" >> $GITHUB_OUTPUT
         fi
     
-    - name: Commit and push changes
-      if: steps.verify-changed-files.outputs.changed == 'true'
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add docs/docset.yml
-        git commit -m "chore: update kube-stack version [skip ci]"
-        git push
-    
     - name: Create Pull Request
       if: steps.verify-changed-files.outputs.changed == 'true'
-      uses: peter-evans/create-pull-request@v5
+      uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "chore: update kube-stack version"
         title: "chore: update kube-stack version"
         body: |
-          This PR automatically updates the kube-stack version in `docs/docset.yml` based on the latest version from the elastic-agent repository.
+          This PR automatically updates the kube-stack version in `docset.yml` based on the latest version from the elastic-agent repository.
           
           **Changes:**
           - Updated kube-stack version in docset.yml
           
           This PR was created automatically by the weekly kube-stack version update workflow.
-        branch: update-kube-stack-version
+        branch: update-kube-stack-version-${{ github.run_id }}
         delete-branch: true
         labels: |
           automated

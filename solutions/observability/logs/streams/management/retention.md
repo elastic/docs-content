@@ -1,10 +1,11 @@
 ---
+navigation_title: Manage data retention
 applies_to:
   serverless: preview
   stack: preview 9.1
 ---
 
-# Manage data retention [streams-data-retention]
+# Manage data retention for log streams [streams-data-retention]
 
 Use the **Data retention** tab on the **Manage stream** page to set how long your stream retains data and to get insight into your stream's data ingestion and storage size.
 
