@@ -65,10 +65,10 @@ This advice does not apply to scaling {{kib}} for task manager. If you intend to
 
 ### Scaling examples
 
-| Concurrent users | Total vCPU | Total memory | ECH and ECE deployment examples |
+| Concurrent users | Minimum vCPU | Minimum memory | ECH and ECE deployment examples |
 | --- | --- | --- | --- |
-| 50 | 5 vCPU | 10GB | • {{kib}} instance of 8.4 vCPU and 16GB memory in 1 availability zone (creates 2 8GB nodes per availability zone)<br><br>• {{kib}} instance of 8.4 vCPU and 8GB memory each across 2 availability zones<br><br>• {{kib}} instances of 8.4 vCPU and 4GB memory each across 3 availability zones |
-| 100 | 10 vCPU | 20GB | • {{kib}} instance of 12 vCPU and 24GB memory in 1 availability zone (creates 3 8GB nodes per availability zone)<br><br>• {{kib}} instance of 8.4 vCPU and 8GB memory each across 3 availability zones<br><br>|
+| 50 | 5 vCPU | 10GB | • {{kib}} size per zone of 16GB RAM and 8 vCPU in 1 availability zone (creates 2 x 8GB nodes)<br><br>• {{kib}} size per zone of 8GB RAM and up to 8 vCPU across 2 availability zones<br><br>• {{kib}} size per zone of 4GB RAM and up to 8 vCPU across 3 availability zones |
+| 100 | 10 vCPU | 20GB | • {{kib}} size per zone of 24 GB RAM and 12 vCPU in 1 availability zone (creates 3 x 8GB nodes)<br><br>• {{kib}} size per zone of 8GB RAM and up to 8 vCPU across 3 availability zones<br><br>|
 
 ## Adjust resource allocations for {{kib}}
 The way that you alter the resources allocated to your {{kib}} instance depends on your deployment type.
