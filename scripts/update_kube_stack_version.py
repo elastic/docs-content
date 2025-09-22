@@ -167,8 +167,12 @@ def prepare_git_changes(version, dry_run=False):
         return True
     
     try:
+        # Get the script directory and construct paths relative to it
+        script_dir = Path(__file__).parent
+        docset_path = script_dir.parent / 'docset.yml'
+        
         # Add and commit changes
-        subprocess.run(['git', 'add', 'docset.yml'], check=True)
+        subprocess.run(['git', 'add', str(docset_path)], check=True)
         subprocess.run(['git', 'commit', '-m', f'chore: update kube-stack version to {version} [skip ci]'], check=True)
         
         print(f"Git changes prepared for kube-stack version {version}")
