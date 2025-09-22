@@ -13,6 +13,7 @@ This script:
 import re
 import sys
 import requests
+import time
 from pathlib import Path
 from typing import Optional
 
@@ -20,55 +21,71 @@ from typing import Optional
 def get_latest_elastic_agent_version() -> str:
     """
     Retrieve the latest semantic version from the elastic-agent repository by fetching all tags
-    and finding the highest version.
+    and finding the highest version with retry logic.
     
     Returns:
         str: The latest version tag (e.g., 'v8.12.0')
         
     Raises:
-        Exception: If unable to fetch version information
+        Exception: If unable to fetch version information after retries
     """
-    try:
-        # Get all tags from GitHub API
-        url = "https://api.github.com/repos/elastic/elastic-agent/tags"
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
-        
-        tags_data = response.json()
-        if not tags_data:
-            raise Exception("No tags found in repository")
-        
-        # Extract version tags matching pattern vX.Y.Z
-        version_pattern = re.compile(r'^v(\d+)\.(\d+)\.(\d+)$')
-        versions = []
-        
-        for tag in tags_data:
-            tag_name = tag.get('name', '')
-            if version_pattern.match(tag_name):
-                # Extract version components for sorting
-                match = version_pattern.match(tag_name)
-                major, minor, patch = map(int, match.groups())
-                versions.append((major, minor, patch, tag_name))
-        
-        if not versions:
-            raise Exception("No valid version tags found")
-        
-        # Sort by version components and get the latest
-        versions.sort(key=lambda x: (x[0], x[1], x[2]))
-        latest_version = versions[-1][3]
-        
-        print(f"Latest elastic-agent version: {latest_version}")
-        return latest_version
-        
-    except requests.RequestException as e:
-        raise Exception(f"Failed to fetch tags: {e}")
-    except Exception as e:
-        raise Exception(f"Error retrieving version: {e}")
+    url = "https://api.github.com/repos/elastic/elastic-agent/tags"
+    max_retries = 3
+    retry_delay = 2  # seconds
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Fetching elastic-agent tags (attempt {attempt + 1}/{max_retries})")
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            
+            tags_data = response.json()
+            if not tags_data:
+                raise Exception("No tags found in repository")
+            
+            # Extract version tags matching pattern vX.Y.Z
+            version_pattern = re.compile(r'^v(\d+)\.(\d+)\.(\d+)$')
+            versions = []
+            
+            for tag in tags_data:
+                tag_name = tag.get('name', '')
+                if version_pattern.match(tag_name):
+                    # Extract version components for sorting
+                    match = version_pattern.match(tag_name)
+                    major, minor, patch = map(int, match.groups())
+                    versions.append((major, minor, patch, tag_name))
+            
+            if not versions:
+                raise Exception("No valid version tags found")
+            
+            # Sort by version components and get the latest
+            versions.sort(key=lambda x: (x[0], x[1], x[2]))
+            latest_version = versions[-1][3]
+            
+            print(f"Latest elastic-agent version: {latest_version}")
+            return latest_version
+            
+        except requests.RequestException as e:
+            if attempt < max_retries - 1:
+                print(f"Attempt {attempt + 1} failed: {e}")
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                raise Exception(f"Failed to fetch tags after {max_retries} attempts: {e}")
+        except Exception as e:
+            if attempt < max_retries - 1:
+                print(f"Attempt {attempt + 1} failed: {e}")
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                raise Exception(f"Error retrieving version after {max_retries} attempts: {e}")
 
 
 def fetch_k8s_go_content(version: str) -> str:
     """
-    Fetch the content of the k8s.go file from the elastic-agent repository.
+    Fetch the content of the k8s.go file from the elastic-agent repository with retry logic.
     
     Args:
         version (str): The version tag to fetch
@@ -77,18 +94,29 @@ def fetch_k8s_go_content(version: str) -> str:
         str: The content of the k8s.go file
         
     Raises:
-        Exception: If unable to fetch the file content
+        Exception: If unable to fetch the file content after retries
     """
-    try:
-        url = f"https://raw.githubusercontent.com/elastic/elastic-agent/{version}/testing/integration/k8s/k8s.go"
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
-        
-        print(f"Successfully fetched k8s.go from version {version}")
-        return response.text
-        
-    except requests.RequestException as e:
-        raise Exception(f"Failed to fetch k8s.go file: {e}")
+    url = f"https://raw.githubusercontent.com/elastic/elastic-agent/{version}/testing/integration/k8s/k8s.go"
+    max_retries = 3
+    retry_delay = 2  # seconds
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Fetching k8s.go from version {version} (attempt {attempt + 1}/{max_retries})")
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            
+            print(f"Successfully fetched k8s.go from version {version}")
+            return response.text
+            
+        except requests.RequestException as e:
+            if attempt < max_retries - 1:
+                print(f"Attempt {attempt + 1} failed: {e}")
+                print(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                raise Exception(f"Failed to fetch k8s.go file after {max_retries} attempts: {e}")
 
 
 def extract_kube_stack_version(content: str) -> str:
