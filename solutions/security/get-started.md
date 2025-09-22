@@ -10,7 +10,7 @@ products:
   - id: security
 ---
 
-# Get started with Elastic Security [getting-started]
+# Get started with {{elastic-sec}} [getting-started]
 
 New to {{elastic-sec}}? Follow the instructions in this topic to get started. Then, review the rest of the Get Started section to learn how to use the UI, review requirements, and discover more about our security features.
 
