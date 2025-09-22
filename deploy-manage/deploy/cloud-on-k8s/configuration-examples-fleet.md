@@ -66,3 +66,11 @@ kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{versio
 ```
 
 Deploys an {{fleet}}-enrolled {{agent}} that can be used as for [Synthetic monitoring](/solutions/observability/synthetics/index.md). This {{agent}} uses the `elastic-agent-complete` image. The agent policy still needs to be [registered as private location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-add) in {{kib}}.
+
+## Fleet Server exposed internally and externally [k8s_fleet_server_lb]
+
+```sh subs=true
+kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/elastic-agent/fleet-ingress-setup.yaml
+```
+
+This example shows how to expose the Fleet Server to the outside world using a Kubernetes Ingress resource. The Fleet Server is configured to use custom TLS certificates, and all communications are secured with TLS. The same Fleet Server is also accessible from within the cluster, allowing agents to connect to it regardless of their location. Refer to the comments in the `fleet-ingress-setup.yaml` file for more details on how to set up the Ingress resource and TLS certificates to enable this configuration.
