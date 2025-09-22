@@ -57,4 +57,4 @@ The steps, information, and authentication method required to configure CCS and 
 
 ## Remote clusters and network security [ec-ccs-ccr-network-security]
 
-Content moved to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).
+If you have [network security policies] applied to your deployment, then you might need to take extra steps to allow a cluster to make requests to your cluster.  Some remote cluster configurations are not compatible with network security, including incoming connections from {{eck}} and self-managed clusters. To learn more, refer to [Remote clusters and network security](/deploy-manage/remote-clusters.md#network-security).

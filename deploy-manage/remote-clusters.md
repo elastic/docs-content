@@ -64,10 +64,10 @@ This section explains how remote clusters interact with network security when us
 
 ### Filter types for remote clusters traffic
 
-Traffic filtering for remote clusters incoming connections using API key authentication supports two types of filters:
+Network security for remote cluster incoming connections using API key authentication supports two types of filters:
 
-* [IP-based filters](/deploy-manage/security/ip-filtering.md), which allow traffic based on IP addresses or CIDR ranges. These can be difficult to manage in orchestration environments, where the source IP of individual {{es}} instances may change.  
-* [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md), which allow filtering by Organization or {{es}} cluster ID. This method is more reliable and recommended, as it combines mTLS with API key authentication for stronger security.
+* [IP filters](/deploy-manage/security/ip-filtering.md), which allow traffic based on IP addresses or CIDR ranges. These can be difficult to manage in orchestrated environments, where the source IP of individual {{es}} instances may change.  
+* [Remote cluster filters](/deploy-manage/security/remote-cluster-filtering.md), which allow filtering by organization ID or {{es}} cluster ID. This method is more reliable and recommended, as it combines mTLS with API key authentication for stronger security.
 
 ### Use cases for remote clusters and network security
 

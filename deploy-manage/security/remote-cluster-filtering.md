@@ -8,7 +8,7 @@ navigation_title: "Remote cluster filters"
 
 # Remote cluster filtering
 
-In {{ech}} (ECH) and {{ece}} (ECE), remote cluster filters let you control incoming traffic from other deployments that use the [Remote clusters functionality](/deploy-manage/remote-clusters.md) with [API key–based authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md).
+In {{ech}} (ECH) and {{ece}} (ECE), remote cluster filters let you control incoming traffic from other deployments that use the [remote clusters functionality](/deploy-manage/remote-clusters.md) with API key–based authentication.
 
 ::::{note} about terminology
 In the case of remote clusters, the {{es}} cluster or deployment initiating the connection and requests is often referred to as the **local cluster**, while the {{es}} cluster or deployment receiving the requests is referred to as the **remote cluster**.
@@ -38,7 +38,7 @@ This guide covers the following remote cluster filtering tasks:
 :group: deployment
 ::::{tab-item} {{ech}}
 :sync: ech
-Remote cluster filters are presented in {{ecloud}} as a type of Private Connection filters. To create a remote cluster filter:
+Remote cluster filters are presented in {{ecloud}} as a type of Private Connection filter. To create a remote cluster filter:
 
 :::{include} _snippets/network-security-page.md
 :::
@@ -49,7 +49,7 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
     Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 
-6. In the **Connectivity** section, select **Remote cluster**.
+6. Under**Connectivity**, select **Remote cluster**.
 7. Add a meaningful name and description for the filter.
 8. In the **Organization ID** and **{{es}} ID** fields, enter the organization or cluster ID of the {{ecloud}} deployments from which you want to allow traffic. Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
 
@@ -85,7 +85,7 @@ To create a remote cluster filter:
     * ECE supports filtering remote cluster traffic from deployments in the same ECE system, in other ECE environments, or in {{ecloud}}.
     * For ECE systems, use the **Environment ID** from **Platform → Trust Management → Trust parameters** as the organization ID.
     * In {{ecloud}}, the organization ID is shown on the organization page in the top-right menu.
-    * To get a deployment’s {{es}} ID, select **Copy cluster ID** on its management page in the Cloud UI.
+    * To get a deployment’s {{es}} ID, select **Copy cluster ID** on its management page in the Cloud UI or {{ecloud}} console.
     :::    
 
 7. Select if this rule set should be automatically attached to new deployments.
@@ -94,7 +94,7 @@ To create a remote cluster filter:
 :::{important}
 Because this type of filter operates at the proxy level, if the local deployments or organizations in the filter belong to a different ECE environment or to ECH, you must add the transport TLS CA certificate of the local environment to the ECE proxy:
 
-* Find the TLS CA certificate in the **Security -> Remote Connections -> CA certificates** section of any deployment of the environment that initiates the remote connection. In {{ecloud}}, each provider and region has its own CA certificate, while in ECE a single CA certificate is used per installation.
+* Find the TLS CA certificate in the **Security -> Remote Connections -> CA certificates** section of any deployment of the environment that initiates the remote connection. In {{ecloud}}, each provider and region has its own CA certificate, while in ECE a single CA certificate is used for the entire installation.
     
 * To add a CA certificate to the ECE proxy, go to **Platform -> Settings -> TLS certificates** in the UI and update the certificate chain used when configuring your ECE installation. Append the required CA certificates to the end of the chain. The final chain should look like this: `Proxy private key`, `Proxy SSL certificate`, `Proxy CA(s)`, followed by the remaining CAs. For more details, refer to [Add a proxy certificate](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md#ece-tls-proxy).
 :::
@@ -114,11 +114,18 @@ After you've created the network security policy or rule set, you'll need to ass
 ::::::{tab-item} {{ech}}
 :sync: ech
 
-1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Hosted deployments** page, select your deployment.
-3. Select the **Security** tab on the left-hand side menu bar.
-4. Under **Network security**, select **Apply policies** > **Private connection**.
-5. Choose the security policy you want to apply and select **Apply**.
+#### From a deployment
+
+:::{include} _snippets/associate-filter.md
+:::
+
+#### From the policy settings
+
+:::{include} _snippets/network-security-page.md
+:::
+5. Find the policy you want to edit.
+6. Under **Apply to resources**, associate the policy with one or more deployments.
+7. Click **Update** to save your changes.
 ::::::
 
 ::::::{tab-item} {{ece}}
