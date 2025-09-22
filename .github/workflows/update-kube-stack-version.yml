@@ -40,7 +40,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add docs/docset.yml
+        git add docset.yml
         git commit -m "chore: update kube-stack version [skip ci]"
         git push
     
@@ -52,7 +52,7 @@ jobs:
         commit-message: "chore: update kube-stack version"
         title: "chore: update kube-stack version"
         body: |
-          This PR automatically updates the kube-stack version in `docs/docset.yml` based on the latest version from the elastic-agent repository.
+          This PR automatically updates the kube-stack version in `docset.yml` based on the latest version from the elastic-agent repository.
           
           **Changes:**
           - Updated kube-stack version in docset.yml
