@@ -34,7 +34,9 @@ jobs:
     - name: Check for changes
       id: verify-changed-files
       run: |
-        if [ -n "$(git status --porcelain)" ]; then
+        # Check if there are commits ahead of origin/main
+        COMMITS_AHEAD=$(git rev-list --count origin/main..HEAD)
+        if [ "$COMMITS_AHEAD" -gt 0 ]; then
           echo "changed=true" >> $GITHUB_OUTPUT
         else
           echo "changed=false" >> $GITHUB_OUTPUT
