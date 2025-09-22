@@ -503,6 +503,7 @@ toc:
         children:
           - file: observability/connect-to-own-local-llm.md
           - file: observability/llm-performance-matrix.md
+      - hidden: observability/wired-streams.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
