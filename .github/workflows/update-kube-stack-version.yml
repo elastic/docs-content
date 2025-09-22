@@ -34,8 +34,9 @@ jobs:
     - name: Check for changes
       id: verify-changed-files
       run: |
-        # Check if there are commits ahead of origin/main
-        COMMITS_AHEAD=$(git rev-list --count origin/main..HEAD)
+        # Check if there are commits ahead of the remote HEAD
+        REMOTE_HEAD=$(git ls-remote --symref origin HEAD | awk '/^ref:/ {print $2}' | sed 's|refs/heads/||')
+        COMMITS_AHEAD=$(git rev-list --count origin/$REMOTE_HEAD..HEAD)
         if [ "$COMMITS_AHEAD" -gt 0 ]; then
           echo "changed=true" >> $GITHUB_OUTPUT
         else
