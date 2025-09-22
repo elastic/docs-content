@@ -295,5 +295,5 @@ subs:
   intake-apis: https://www.elastic.co/docs/api/doc/observability-serverless/
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
-  kube-stack-version: 0.6.3
+  kube-stack-version: 0.9.1
 
