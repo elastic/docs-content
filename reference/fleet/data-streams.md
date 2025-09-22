@@ -7,7 +7,7 @@ products:
 navigation_title: Data streams
 ---
 
-# Agent-created data streams [data-streams]
+# {{agent}} data streams for {{fleet}} [data-streams]
 
 {{agent}} uses data streams to store time series data across multiple indices while giving you a single named resource for requests. Data streams are well-suited for logs, metrics, traces, and other continuously generated data. They offer a host of benefits over other indexing strategies:
 
