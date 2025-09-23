@@ -182,4 +182,4 @@ Refer to the [Observability overview](/solutions/observability/get-started/what-
 
 ## Manage your data [_manage_your_data]
 
-Now that you're ingesting and gathering insights from your data, learn how to manage your [data lifecycle](/manage-data/lifecycle.md). These features in {{es}} allow you to govern how long your {{agent}} data is retained, and to tune performance by configuring background operations that optimize how your data is stored.
+Now that you're ingesting data and using it gather insights, learn how to manage your [data lifecycle](/manage-data/lifecycle.md). These features in {{es}} allow you to govern how long your {{agent}} data is retained, and to tune performance by configuring background operations that optimize how your data is stored.
