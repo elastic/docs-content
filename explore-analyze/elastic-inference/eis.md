@@ -1,8 +1,11 @@
 ---
 navigation_title: Elastic Inference Service (EIS)
 applies_to:
-  stack: ga 9.0
   serverless: ga
+  deployment:
+    ess: ga
+    eck: ga
+    ece: ga
 ---
 
 # Elastic {{infer-cap}} Service [elastic-inference-service-eis]
@@ -27,7 +30,9 @@ ELSER requests are managed by Elastic's own EIS infrastructure.
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
 ```{applies_to}
-stack: preview 9.1
+ess: preview 9.1
+eck: preview 9.1
+ece: preview 9.1
 serverless: preview
 ```
 
