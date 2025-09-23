@@ -40,7 +40,7 @@ While we do encourage experimentation, we do not recommend implementing producti
 
 #### Region Availability 
 
-As mentoned ELSER on EIS is only available in AWS `us-east-1`. Endpoints in other CSPs and regions including GovCloud regions are not yet supported. 
+ELSER on EIS is only available in AWS `us-east-1`. Endpoints in other CSPs and regions including GovCloud regions are not yet supported. 
 
 #### Uptime
 
