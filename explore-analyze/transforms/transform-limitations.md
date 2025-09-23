@@ -148,7 +148,7 @@ If you see this error, do not delete the transform. If a transform was already d
 - With the API, run:
 
   ```console
-    POST kbn:/api/observability/slos/<SLO_ID>/_reset
+  POST kbn:/api/observability/slos/<SLO_ID>/_reset
   ```
 
 #### Large numbers of {{transform}} can cause PIT storms [transforms-pit-storms]
@@ -159,7 +159,18 @@ When many transforms run concurrently, especially in environments with large num
 
 A PIT storm increases the memory pressure on hot nodes. This may result in rising memory usage and long garbage collection cycles. In practice, searches and writes may slow down or queue until the node recovers, and in severe cases a restart may be required.
 
-To fix this issue, upgrade to the following versions or later: 8.18.8, 8.19.5, 9.0.8, 9.1.5, or 9.2.0.
+As a workaround, you can disable PIT for a specific transform:
+
+```console
+POST _transform/<transform_id>/_update
+{
+  "settings": {
+    "use_point_in_time": false
+  }
+}
+```
+
+To fix this issue permanently, upgrade to the following versions or later: 8.18.8, 8.19.5, 9.0.8, 9.1.5, or 9.2.0.
 
 ## Limitations in {{kib}} [transform-ui-limitations]
 
