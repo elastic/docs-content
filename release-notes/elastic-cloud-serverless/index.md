@@ -27,7 +27,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds a default placeholder icon for future AI connectors [#235166]({{kib-pull}}235166)
 * Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
 * Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
-* Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into serverless resources (VCUs) and performances
+* Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into {{serverless-short}} resources (VCUs) and performances
 % Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
 
 ### Fixes [serverless-changelog-09222025-fixes]
