@@ -130,11 +130,9 @@ After you've created the network security policy or rule set, you'll need to ass
 
 ::::::{tab-item} {{ece}}
 :sync: ece
+:::{include} _snippets/associate-filter-ece.md
+:::
 
-1. Open the deployment management page in the Cloud UI.
-2. Select the **Security** tab on the left-hand side menu bar.
-3. Under **Traffic filters**, select **Apply filter**.
-3. Choose the filter you want to apply and select **Apply filter**.
 ::::::
 
 :::::::
@@ -171,10 +169,9 @@ You can remove associations from your deployments directly from the policy setti
 ::::::{tab-item} {{ece}}
 :sync: ece
 
-1. Open the deployment management page in the Cloud UI.
-2. Select the **Security** tab on the left-hand side menu bar.
-3. Under **Traffic filters**, select **Remove**.
-3. Choose the filter you want to remove.
+:::{include} _snippets/detach-filter-ece.md
+:::
+
 ::::::
 
 :::::::
