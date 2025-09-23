@@ -22,7 +22,7 @@ If you have an {{es}} cluster set up for local development or testing, you can c
 Ensure your system meets the following requirements before proceeding:
 
 * Your cluster is on a [supported {{es}} version](https://www.elastic.co/support/eol).
-* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions).
+* Your cluster is on an [Enterprise self-managed license](https://www.elastic.co/subscriptions) or an active self-managed [trial](https://cloud.elastic.co/registration).
 * The agent you install for the connection is allowed to send metrics to {{ecloud}}.
 
 ## Connect to AutoOps (private preview) [connect-to-autoops]
