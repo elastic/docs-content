@@ -35,7 +35,6 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Skips automatic scrolling when a panel is visible [#233226]({{kib-pull}}233226)
 * Fixes an issue with the Actions column header size [#235227]({{kib-pull}}235227)
 * Clears time field sorting when switching from Classic to {{esql}} mode [#235338]({{kib-pull}}235338)
-* Removes the experimental feature flag for privileged user monitoring [#233960]({{kib-pull}}233960)
 * Fixes a bug where previously installed product docs (E5) were not upgraded during a Kibana version upgrade [#234792]({{kib-pull}}234792)
 * Improves the accessibility of the badges on individual stream pages [#235625]({{kib-pull}}235625)
 * Fixes the autocomplete configuration for the `pinned` retriever by removing the `match_criteria` field [#234903]({{kib-pull}}234903)
