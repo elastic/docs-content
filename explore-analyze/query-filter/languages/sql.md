@@ -50,6 +50,6 @@ The following chapters aim to cover everything from usage, to syntax and drivers
 [Functions and Operators](elasticsearch://reference/query-languages/sql/sql-functions.md)
 :   List of functions and operators supported.
 
-[Limitations](sql-limitations.md)
+[Limitations](elasticsearch://reference/query-languages/sql/sql-limitations.md)
 :   Elasticsearch SQL current limitations.
 

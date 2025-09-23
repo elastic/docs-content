@@ -45,8 +45,6 @@ toc:
                   - file: query-filter/languages/sql-client-apps-workbench.md
                   - file: query-filter/languages/sql-client-apps-tableau-desktop.md
                   - file: query-filter/languages/sql-client-apps-tableau-server.md
-              - file: query-filter/languages/sql-syntax-reserved.md
-              - file: query-filter/languages/sql-limitations.md
           - file: query-filter/languages/eql.md
             children:
               - file: query-filter/languages/example-detect-threats-with-eql.md

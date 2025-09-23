@@ -396,6 +396,8 @@ redirects:
   'explore-analyze/query-filter/languages/sql-functions-geo.md': 'elasticsearch://reference/query-languages/sql/sql-functions-geo.md'
   'explore-analyze/query-filter/languages/sql-functions-conditional.md': 'elasticsearch://reference/query-languages/sql/sql-functions-conditional.md'
   'explore-analyze/query-filter/languages/sql-functions-system.md': 'elasticsearch://reference/query-languages/sql/sql-functions-system.md'
+  'explore-analyze/query-filter/languages/sql-syntax-reserved.md': 'elasticsearch://reference/query-languages/sql/sql-syntax-reserved.md'
+  'explore-analyze/query-filter/languages/sql-limitations.md': 'elasticsearch://reference/query-languages/sql/sql-limitations.md'
 
 # Related to https://github.com/elastic/docs-content/pull/3101
   'solutions/observability/logs/streams/streams.md': 'solutions/observability/streams/streams.md'
