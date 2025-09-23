@@ -123,6 +123,44 @@ If your data uses the [date nanosecond data type](elasticsearch://reference/elas
 
 If you use ILM to have time-based indices, consider using the [Date index name](elasticsearch://reference/enrich-processor/date-index-name-processor.md) instead. The processor works without duplicated documents if your {{transform}} contains a `group_by` based on `date_histogram`.
 
+### SLO transforms at scale may misreport state and increase PIT activity
+
+When running a large number of SLO {{transforms}}, two types of limitations can appear:
+
+- {{transforms-cap}} may [misreport](#transforms-inaccurate-errors) their state and suggest deletion even though they are still valid
+- Point-in-time (PIT) requests may [accumulate](#transforms-pit-storms), creating extra activity on the cluster and slowing down operations
+
+#### {{transforms-cap}} can return inaccurate errors that suggest deletion [transforms-inaccurate-errors]
+
+The {{transforms-cap}} API and the {{transforms-cap}} page in {{kib}} (**Stack Management** > **{{transforms-cap}})** may display misleading error messages for {{transforms}} created by service level objectives (SLOs).
+
+The message typically reads:
+
+```console
+Found task for transform [...], but no configuration for it. To delete this transform use DELETE with force=true.
+```
+Although the error suggests that the {{transform}} is broken and should be deleted, this is usually not the case. The error is caused by a bug in how the {{transforms}} are queried and presented by the API and UI. Deleting the {{transform}} can unnecessarily break related SLOs.
+
+If you see this error, do not delete the transform. If a transform was already deleted, you can restore it by resetting the SLO, either in the {{kib}} or with the API:
+
+- In Kibana, go to the **Observability** > **SLOs application**, open the menu for the affected SLO, and click **Reset**. 
+
+- With the API, run:
+
+  ```console
+    POST kbn:/api/observability/slos/<SLO_ID>/_reset
+  ```
+
+#### Large numbers of {{transform}} can cause PIT storms [transforms-pit-storms]
+
+Transforms rely on point-in-time (PIT) searches to ensure that queries are consistent while data is changing. Each transform can open and close multiple PITs during its lifetime. 
+
+When many transforms run concurrently, especially in environments with large numbers of SLOs (hundreds to more than 1000 transforms), PITs can be opened and closed in quick succession. Because PITs are closed asynchronously, the close operation does not wait for the previous request to complete. This can create a backlog of PIT close requests, known as a PIT storm.
+
+A PIT storm increases the memory pressure on hot nodes. This may result in rising memory usage and long garbage collection cycles. In practice, searches and writes may slow down or queue until the node recovers, and in severe cases a restart may be required.
+
+To fix this issue, upgrade to the following versions or later: 8.18.8, 8.19.5, 9.0.8, 9.1.5, or 9.2.0.
+
 ## Limitations in {{kib}} [transform-ui-limitations]
 
 ### {{transforms-cap}} are visible in all {{kib}} spaces [transform-space-limitations]
