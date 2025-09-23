@@ -22,7 +22,8 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 Requests through the `Elastic Managed LLM` are currently proxying to AWS Bedrock in AWS US regions, beginning with `us-east-1`.
 The request routing does not restrict the location of your deployments.
 
-ELSER requests are managed by Elastic's own EIS infrastructure.
+ELSER requests are managed by Elastic's own EIS infrastructure also hosted in AWS US regions, beginning with `us-east-1`.
+
 
 ## ELSER via Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
@@ -37,10 +38,9 @@ ELSER on EIS enables you to use the ELSER model on GPUs, without having to manag
 
 While we do encourage experimentation, we do not recommend implementing production use cases on top of this feature while it is in Technical Preview.
 
-#### Access
+#### Region Availability 
 
-This feature is being gradually rolled out to Serverless and Cloud Hosted customers.
-It may not be available to all users at launch.
+As mentoned ELSER on EIS is only available in AWS `us-east-1`. Endpoints in other CSPs and regions including GovCloud regions are not yet supported. 
 
 #### Uptime
 
