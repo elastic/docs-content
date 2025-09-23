@@ -45,19 +45,6 @@ toc:
                   - file: query-filter/languages/sql-client-apps-workbench.md
                   - file: query-filter/languages/sql-client-apps-tableau-desktop.md
                   - file: query-filter/languages/sql-client-apps-tableau-server.md
-              - file: query-filter/languages/sql-spec.md
-                children:
-                  - file: query-filter/languages/sql-lexical-structure.md
-                  - file: query-filter/languages/sql-commands.md
-                  - file: query-filter/languages/sql-syntax-describe-table.md
-                  - file: query-filter/languages/sql-syntax-select.md
-                  - file: query-filter/languages/sql-syntax-show-catalogs.md
-                  - file: query-filter/languages/sql-syntax-show-columns.md
-                  - file: query-filter/languages/sql-syntax-show-functions.md
-                  - file: query-filter/languages/sql-syntax-show-tables.md
-                  - file: query-filter/languages/sql-data-types.md
-                  - file: query-filter/languages/sql-index-patterns.md
-                  - file: query-filter/languages/sql-index-frozen.md
               - file: query-filter/languages/sql-functions.md
                 children:
                   - file: query-filter/languages/sql-operators.md

@@ -10,7 +10,7 @@ products:
 
 # Aggregate Functions [sql-functions-aggs]
 
-Functions for computing a *single* result from a set of input values. Elasticsearch SQL supports aggregate functions only alongside [grouping](sql-syntax-select.md#sql-syntax-group-by) (implicit or explicit).
+Functions for computing a *single* result from a set of input values. Elasticsearch SQL supports aggregate functions only alongside [grouping](elasticsearch://reference/query-languages/sql/sql-syntax-select.md#sql-syntax-group-by) (implicit or explicit).
 
 
 ## General Purpose [sql-functions-aggs-general]

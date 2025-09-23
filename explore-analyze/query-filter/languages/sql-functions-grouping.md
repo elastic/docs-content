@@ -10,7 +10,7 @@ products:
 
 # Grouping Functions [sql-functions-grouping]
 
-Functions for creating special *grouping*s (also known as *bucketing*); as such these need to be used as part of the [grouping](sql-syntax-select.md#sql-syntax-group-by).
+Functions for creating special *grouping*s (also known as *bucketing*); as such these need to be used as part of the [grouping](elasticsearch://reference/query-languages/sql/sql-syntax-select.md#sql-syntax-group-by).
 
 ## `HISTOGRAM` [sql-functions-grouping-histogram]
 

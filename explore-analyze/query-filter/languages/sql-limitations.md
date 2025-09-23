@@ -172,14 +172,14 @@ By default,`geo_points` fields are indexed and have doc values. However only lat
 Elasticsearch SQL retrieves column values using the [search API’s `fields` parameter](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param). Any limitations on the `fields` parameter also apply to Elasticsearch SQL queries. For example, if `_source` is disabled for any of the returned fields or at index level, the values cannot be retrieved.
 
 
-## Aggregations in the [`PIVOT`](sql-syntax-select.md#sql-syntax-pivot) clause [aggs-in-pivot]
+## Aggregations in the [`PIVOT`](elasticsearch://reference/query-languages/sql/sql-syntax-select.md#sql-syntax-pivot) clause [aggs-in-pivot]
 
-The aggregation expression in [`PIVOT`](sql-syntax-select.md#sql-syntax-pivot) will currently accept only one aggregation. It is thus not possible to obtain multiple aggregations for any one pivoted column.
+The aggregation expression in [`PIVOT`](elasticsearch://reference/query-languages/sql/sql-syntax-select.md#sql-syntax-pivot) will currently accept only one aggregation. It is thus not possible to obtain multiple aggregations for any one pivoted column.
 
 
-## Using a subquery in [`PIVOT`](sql-syntax-select.md#sql-syntax-pivot)'s `IN`-subclause [subquery-in-pivot]
+## Using a subquery in [`PIVOT`](elasticsearch://reference/query-languages/sql/sql-syntax-select.md#sql-syntax-pivot)'s `IN`-subclause [subquery-in-pivot]
 
-The values that the [`PIVOT`](sql-syntax-select.md#sql-syntax-pivot) query could pivot must be provided in the query as a list of literals; providing a subquery instead to build this list is not currently supported. For example, in this query:
+The values that the [`PIVOT`](elasticsearch://reference/query-languages/sql/sql-syntax-select.md#sql-syntax-pivot) query could pivot must be provided in the query as a list of literals; providing a subquery instead to build this list is not currently supported. For example, in this query:
 
 ```sql
 SELECT * FROM test_emp PIVOT (SUM(salary) FOR languages IN (1, 2))
