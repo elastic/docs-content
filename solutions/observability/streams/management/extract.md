@@ -71,7 +71,7 @@ If you edit the stream again, note the following:
 - Changing existing processors or re-ordering them may cause unexpected results. Because the pipeline may have already processed the documents used for sampling, the UI cannot accurately simulate changes to existing data.
 - Adding a new processor and moving it before an existing processor may cause unexpected results. The UI only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 
-![Screenshot of the Grok processor UI](<../../../../images/logs-streams-grok.png>)
+![Screenshot of the Grok processor UI](<../../../images/logs-streams-grok.png>)
 
 ### Ignore failures [streams-ignore-failures]
 
@@ -87,15 +87,15 @@ Documents fail processing for different reasons. Streams helps you to easily fin
 
 In the following screenshot, the **Failed** percentage shows that not all messages matched the provided Grok pattern:
 
-![Screenshot showing some failed documents](<../../../../images/logs-streams-parsed.png>)
+![Screenshot showing some failed documents](<../../../images/logs-streams-parsed.png>)
 
 You can filter your documents by selecting **Parsed** or **Failed** at the top of the table. Select **Failed** to see the documents that weren't parsed correctly:
 
-![Screenshot showing the documents UI with Failed selected](<../../../../images/logs-streams-failures.png>)
+![Screenshot showing the documents UI with Failed selected](<../../../images/logs-streams-failures.png>)
 
 Failures are displayed at the bottom of the process editor:
 
-![Screenshot showing failure notifications](<../../../../images/logs-streams-processor-failures.png>)
+![Screenshot showing failure notifications](<../../../images/logs-streams-processor-failures.png>)
 
 These failures may require action, but in some cases, they serve more as warnings.
 
@@ -103,7 +103,7 @@ These failures may require action, but in some cases, they serve more as warning
 
 As part of processing, Streams also checks for mapping conflicts by simulating the change end to end. If a mapping conflict is detected, Streams marks the processor as failed and displays a failure message like the following:
 
-![Screenshot showing mapping conflict notifications](<../../../../images/logs-streams-mapping-conflicts.png>)
+![Screenshot showing mapping conflict notifications](<../../../images/logs-streams-mapping-conflicts.png>)
 
 You can then use the information in the failure message to find and troubleshoot mapping issues going forward.
 
@@ -111,7 +111,7 @@ You can then use the information in the failure message to find and troubleshoot
 
 Once saved, the processor provides a quick look at the processor's success rate and the fields that it added.
 
-![Screenshot showing field stats](<../../../../images/logs-streams-field-stats.png>)
+![Screenshot showing field stats](<../../../images/logs-streams-field-stats.png>)
 
 ## Advanced: How and where do these changes get applied to the underlying datastream? [streams-applied-changes]
 

@@ -364,3 +364,11 @@ redirects:
   'deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md': 'elasticsearch://reference/elasticsearch/roles.md'
   'deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md': 'elasticsearch://reference/elasticsearch/security-privileges.md'
 
+# Related to https://github.com/elastic/docs-content/pull/3101
+  'solutions/observability/logs/streams/streams.md': 'solutions/observability/streams/streams.md'
+  'solutions/observability/logs/streams/management/extract.md': 'solutions/observability/streams/management/extract.md'
+  'solutions/observability/logs/streams/management/extract/date.md': 'solutions/observability/streams/management/extract/date.md'
+  'solutions/observability/logs/streams/management/extract/dissect.md': 'solutions/observability/streams/management/extract/dissect.md'
+  'solutions/observability/logs/streams/management/extract/grok.md': 'solutions/observability/streams/management/extract/grok.md'
+  'solutions/observability/logs/streams/management/retention.md': 'solutions/observability/streams/management/retention.md'
+  'solutions/observability/logs/streams/management/advanced.md': 'solutions/observability/streams/management/advanced.md'

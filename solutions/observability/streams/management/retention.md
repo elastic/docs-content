@@ -9,7 +9,7 @@ applies_to:
 
 Use the **Data retention** tab on the **Manage stream** page to set how long your stream retains data and to get insight into your stream's data ingestion and storage size.
 
-![Screenshot of the data retention UI](<../../../../images/logs-streams-retention.png>)
+![Screenshot of the data retention UI](<../../../images/logs-streams-retention.png>)
 
 The **Data retention** page is made up of the following components that can help you determine how long you want your stream to retain data:
 
@@ -30,15 +30,15 @@ The **Retention period** is the minimum number of days after which the data is d
 1. Select **Edit data retention** → **Set specific retention days**.
 1. From here, set the period of time you want to retain data for this stream.
 
-To define a global default retention policy, refer to [project settings](../../../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+To define a global default retention policy, refer to [project settings](../../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ### Follow an ILM policy
 ```{applies_to}
 stack: ga 9.1
 ```
-[ILM policies](../../../../../manage-data/lifecycle/index-lifecycle-management.md) let you automate and standardize data retention across streams and other data streams. To have your streams follow an existing policy:
+[ILM policies](../../../../manage-data/lifecycle/index-lifecycle-management.md) let you automate and standardize data retention across streams and other data streams. To have your streams follow an existing policy:
 
 1. Select **Edit data retention** → **Use a lifecycle policy**.
 1. Select a pre-defined ILM policy from the list.
 
-You can also create a new ILM policy. Refer to [Configure a lifecycle policy](../../../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) for more information.
+You can also create a new ILM policy. Refer to [Configure a lifecycle policy](../../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) for more information.
