@@ -107,7 +107,7 @@ Self-managed users must provision memory to the host that {{kib}} is running on 
 Refer to the [guidance on adjusting {{kib}}'s allocated resources](#adjust-resource-allocations) once you have determined memory sizing.
 
 ## Adjust resource allocations for {{kib}} [adjust-resource-allocations]
-After you determine the resources that you want to allocate to your {{kib}} instance, you can alter your deployment to reflect the new allocation. The way that you alter the resources allocated to your {{kib}} instance depends on your deployment type.
+The way that you alter the resources allocated to your {{kib}} instance depends on your deployment type:
 * **[{{ech}}](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) and [{{ece}}](/deploy-manage/deploy/elastic-cloud/configure.md):** Users can adjust {{kib}}'s memory by viewing their deployment and editing the {{kib}} instance's resource configuration. In these environments, size increments are predetermined.
 * **{{eck}}:** Users can configure pod memory and CPU resources. Refer to [](../deploy/cloud-on-k8s/manage-compute-resources.md).
 * **Self-managed:** Users must provision memory to the host that {{kib}} is running on as well as configure allocated heap. See [the guidance on configuring {{kib}} memory](./kibana-configure-memory.md).
