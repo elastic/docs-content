@@ -25,16 +25,16 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Adds advanced options for opting out of collecting ransomware diagnostics on Mac [#235193]({{kib-pull}}235193)
 * Adds the **Tech Preview** badge for the preconfigured `rerank` endpoint in the inference endpoints UI [#235222]({{kib-pull}}235222)
 * Adds a default placeholder icon for future AI connectors [#235166]({{kib-pull}}235166)
-* Adds search functionality to the details page of query rules [#232579]({{kib-pull}}232579)
-* Adds a link to Agent Builder in the View Data dropdown [#234679]({{kib-pull}}234679)
-* Adds the AutoOps Search tier page, which provides project-level insights as well as deeper insights into Serverless resources (VCUs) and performances.
+* Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
+* Adds a link to Agent Builder in the **View Data** dropdown [#234679]({{kib-pull}}234679)
+* Adds the AutoOps Search tier page, which provides project-level insights and deeper insights into serverless resources (VCUs) and performances
 % Relates to https://github.com/elastic/autoops/issues/20 and https://github.com/elastic/autoops/issues/200
 
 ### Fixes [serverless-changelog-09222025-fixes]
 
 * Skips automatic scrolling when a panel is visible [#233226]({{kib-pull}}233226)
 * Fixes an issue with the Actions column header size [#235227]({{kib-pull}}235227)
-* Clears time field sorting when switching from Classic to {{esql}} mode [#235338]({{kib-pull}}235338)
+* Clears time field sorting when switching from classic to {{esql}} mode [#235338]({{kib-pull}}235338)
 * Fixes a bug where previously installed product docs (E5) were not upgraded during a Kibana version upgrade [#234792]({{kib-pull}}234792)
 * Improves the accessibility of the badges on individual stream pages [#235625]({{kib-pull}}235625)
 * Fixes the autocomplete configuration for the `pinned` retriever by removing the `match_criteria` field [#234903]({{kib-pull}}234903)
