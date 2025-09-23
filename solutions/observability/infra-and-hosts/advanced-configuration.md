@@ -2,12 +2,13 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-advanced-configuration.html
 applies_to:
-  stack:
+  stack: ga
 products:
   - id: observability
+navigation_title: Advanced configuration
 ---
 
-# Advanced configuration [profiling-advanced-configuration]
+# Advanced configuration for Elastic Universal Profiling [profiling-advanced-configuration]
 
 After completing the steps in the [Get started](get-started-with-universal-profiling.md) documentation, you may need to continue to more advanced configuration for your deployment. See the following sections for more information:
 
@@ -17,7 +18,7 @@ After completing the steps in the [Get started](get-started-with-universal-profi
 * [Override kernel version check ](override-kernel-version-check.md): Configure the Universal Profiling Agent to bypass the kernel version compatibility check.
 * [Environment variables for the Universal Profiling Agent ](environment-variables-to-configure-universal-profiling-agent.md): Configure the Universal Profiling Agent using the environment.
 
-::::{warning} 
+::::{warning}
 Command line arguments to the Universal Profiling Agent take precedence over environment variables, and environment variables take precedence over the configuration file.
 ::::
 

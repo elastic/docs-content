@@ -1,4 +1,5 @@
 ---
+navigation_title: View and manage alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/view-observability-alerts.html
   - https://www.elastic.co/guide/en/serverless/current/observability-view-alerts.html
@@ -11,7 +12,7 @@ products:
   - id: cloud-serverless
 ---
 
-# View and manage alerts [observability-view-alerts]
+# View and manage alerts in Elastic Observability [observability-view-alerts]
 
 ::::{note}
 
@@ -94,7 +95,7 @@ Alert flapping is turned on by default. You can modify the criteria for changing
     Once a flapping alert is recovered, it cannot be changed to flapping again. Only new alerts with repeated status changes are candidates for the flapping status. 
 
 `untracked`
-:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated. You can choose to move active alerts to this state when you disable or delete rules.
+:   The rule is disabled, or you’ve marked the alert as untracked. To mark the alert as untracked, go to the **Alerts** table, click the {icon}`boxes_horizontal` icon to expand the **More actions** menu, and click **Mark as untracked**. When an alert is marked as untracked, actions are no longer generated and the alert's status can no longer be changed. You can choose to move active alerts to this state when you disable or delete rules.
 
 
 ## Customize the alerts table [observability-view-alerts-customize-the-alerts-table]

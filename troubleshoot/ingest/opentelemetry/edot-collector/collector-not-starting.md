@@ -79,7 +79,7 @@ If you're deploying the EDOT Collector in a standalone configuration, try to:
    
    * **For managed OTLP endpoint**: use relevant receivers and export using the `otlp` exporter
    
-   Refer to [Default configuration of the EDOT Collector (Standalone)](opentelemetry://reference/edot-collector/config/default-config-standalone.md) for full examples for each use case.
+   Refer to [Default configuration of the EDOT Collector (Standalone)](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for full examples for each use case.
 
 
 * Check for port conflicts

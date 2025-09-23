@@ -7,8 +7,7 @@ products:
   - id: elastic-agent
 ---
 
-# Configure the {{es}} output [elasticsearch-output]
-
+# Configure the {{es}} output for {{agent}} [elasticsearch-output]
 
 The {{es}} output sends events directly to {{es}} by using the {{es}} HTTP API.
 

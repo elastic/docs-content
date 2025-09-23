@@ -8,9 +8,10 @@ applies_to:
     ess:
 products:
   - id: cloud-hosted
+navigation_title: AWS S3
 ---
 
-# Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]
+# Configure an AWS S3 snapshot repository in {{ech}} [ec-aws-custom-repository]
 
 Configure a custom snapshot repository using an S3 storage bucket in your AWS account.
 

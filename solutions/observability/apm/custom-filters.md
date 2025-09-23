@@ -2,8 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-custom-filter.html
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: apm
@@ -16,7 +16,7 @@ Custom filters, including [ingest pipeline filters](#apm-filters-ingest-pipeline
 ## Ingest pipeline filters [apm-filters-ingest-pipeline]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
@@ -34,8 +34,8 @@ For a step-by-step example, refer to [Tutorial: Use an ingest pipeline to redact
 ## APM agent filters [apm-filters-in-agent]
 
 ```{applies_to}
-stack:
-serverless:
+stack: ga
+serverless: ga
 ```
 
 Some APM agents offer a way to manipulate or drop APM events *before* they are sent to APM Server.
@@ -56,7 +56,7 @@ Refer to the relevant agent’s documentation for more information and examples:
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial]
 
 ```{applies_to}
-stack:
+stack: ga
 serverless: unavailable
 ```
 
