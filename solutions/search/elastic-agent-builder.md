@@ -14,7 +14,9 @@ These pages are hidden from the docs TOC and have `noindexed` meta headers.
 
 # {{agent-builder}} 
 
-{{agent-builder}} is a set of AI-powered capabilities for developing and interacting with Agents that work with your {{es}} data. Agent Builder simplifies building data-driven agents with intuitive UI and API interfaces, so you don't have to compose the different pieces separately. It includes a built-in agent for natural language conversations with any {{es}} data or instance, as well as programmatic interfaces for tools, agents, and conversations using Elastic APIs, MCP, and A2A.
+{{agent-builder}} is a set of AI-powered capabilities for developing and interacting with Agents that work with your {{es}} data. Agent Builder simplifies building data-driven agents with intuitive UI and API interfaces, so you don't have to compose the different pieces separately.
+
+You can use the built-in agent for natural language conversations with any {{es}} data or instance, or work programmatically with tools, agents, and conversations using Elastic APIs, MCP, and A2A.
 
 ## Key capabilities
 
