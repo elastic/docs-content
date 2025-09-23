@@ -17,7 +17,7 @@ Instead, you can use {{ml}} models for ingest, search, and chat independently of
 
 * Your Elastic deployment or project comes with a default [`Elastic Managed LLM` connector](https://www.elastic.co/docs/reference/kibana/connectors-kibana/elastic-managed-llm). This connector is used in the AI Assistant, Attack Discovery, Automatic Import and Search Playground.
 
-* You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview 9.1` {applies_to}`self: unavailable` {applies_to}`serverless: preview`
+* You can use [ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to perform semantic search as a service (ELSER on EIS). {applies_to}`stack: preview 9.1` {applies_to}`serverless: preview`
 
 ## Region and hosting [eis-regions]
 
@@ -31,8 +31,6 @@ ELSER requests are managed by Elastic's own EIS infrastructure.
 ```{applies_to}
 stack: preview 9.1
 serverless: preview
-deployment:
-  self: unavailable
 ```
 
 ELSER on EIS enables you to use the ELSER model on GPUs, without having to manage your own ML nodes. We expect better performance for throughput and latency than ML nodes, and will continue to benchmark, remove limitations and address concerns as we move towards General Availability.
