@@ -51,7 +51,7 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
     Network security policies are bound to a single region, and can be assigned only to deployments or projects in the same region. If you want to associate a policy with resources in multiple regions, then you have to create the same policy in all the regions you want to apply it to.
     :::
 
-6. Under**Connectivity**, select **Remote cluster**.
+6. Under **Connectivity**, select **Remote cluster**.
 7. Add a meaningful name and description for the filter.
 8. In the **Organization ID** and **{{es}} ID** fields, enter the organization or cluster ID of the {{ecloud}} deployments from which you want to allow traffic. Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
 
