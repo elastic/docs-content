@@ -452,15 +452,15 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
-          - file: observability/logs/streams/streams.md
+          - file: observability/streams/streams.md
             children:
-            - file: observability/logs/streams/management/extract.md
+            - file: observability/streams/management/extract.md
               children:
-                - file: observability/logs/streams/management/extract/date.md
-                - file: observability/logs/streams/management/extract/dissect.md
-                - file: observability/logs/streams/management/extract/grok.md
-            - file: observability/logs/streams/management/retention.md
-            - file: observability/logs/streams/management/advanced.md
+                - file: observability/streams/management/extract/date.md
+                - file: observability/streams/management/extract/dissect.md
+                - file: observability/streams/management/extract/grok.md
+            - file: observability/streams/management/retention.md
+            - file: observability/streams/management/advanced.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -503,6 +503,7 @@ toc:
         children:
           - file: observability/connect-to-own-local-llm.md
           - file: observability/llm-performance-matrix.md
+      - hidden: observability/streams/wired-streams.md
       - file: observability/observability-serverless-feature-tiers.md
   - file: security.md
     children:
