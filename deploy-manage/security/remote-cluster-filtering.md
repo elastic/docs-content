@@ -8,7 +8,7 @@ navigation_title: "Remote cluster filters"
 
 # Remote cluster filtering
 
-In {{ech}} (ECH) and {{ece}} (ECE), remote cluster filters let you control incoming traffic from other deployments that use the [remote clusters functionality](/deploy-manage/remote-clusters.md) with API key–based authentication.
+In {{ech}} (ECH) and {{ece}} (ECE), remote cluster filters let you control incoming traffic from other deployments that use the [remote clusters functionality](/deploy-manage/remote-clusters.md) with API key–based authentication. These filters are specific to ECH and ECE and are not applicable when connecting from {{es}} clusters that run in {{eck}} or are self-managed, because they rely on the certificates and proxy mechanisms provided by ECH and ECE.
 
 ::::{note} about terminology
 In the case of remote clusters, the {{es}} cluster or deployment initiating the connection and requests is often referred to as the **local cluster**, while the {{es}} cluster or deployment receiving the requests is referred to as the **remote cluster**.
@@ -54,7 +54,9 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
 8. In the **Organization ID** and **{{es}} ID** fields, enter the organization or cluster ID of the {{ecloud}} deployments from which you want to allow traffic. Provide one or both values; traffic is allowed if it matches either ID. To add multiple rules to the filter, use the plus (`+`) button.
 
     ::::{tip}
-    Find the organization ID on the organization page in the top-right menu, and the {{es}} ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
+    * Find the organization ID on the organization page in the top-right menu, and the {{es}} ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
+
+    * {{ecloud}} supports filtering remote cluster traffic from deployments in the same and other ECH organizations, but not from ECE environments. Refer to the list of [supported use cases](/deploy-manage/remote-clusters.md#use-cases-network-security) for more information.
     ::::
 
 9.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments. After you associate the filter with a deployment, it will allow remote cluster traffic coming from the organization or {{es}} IDs defined in the rules.
