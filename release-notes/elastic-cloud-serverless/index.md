@@ -22,7 +22,7 @@ Review the changes, fixes, and more to {{serverless-full}}.
 * Creates functional tests for the Logs Essentials tier [#234904]({{kib-pull}}234904)
 * Sets up the saved object infrastructure for Cloud Connectors and implements the end-to-end persistence flow for creating integrations with Cloud Connector support [#230137]({{kib-pull}}230137)
 * Removes the **Tech Preview** badge and feature flag for Automatic Troubleshooting [#234853]({{kib-pull}}234853)
-* Adds advanced options for opting out of collecting ransomware diagnostics on Mac [#235193]({{kib-pull}}235193)
+* Adds advanced options for opting out of collecting ransomware diagnostics on macOS [#235193]({{kib-pull}}235193)
 * Adds the **Tech Preview** badge for the preconfigured `rerank` endpoint in the inference endpoints UI [#235222]({{kib-pull}}235222)
 * Adds a default placeholder icon for future AI connectors [#235166]({{kib-pull}}235166)
 * Adds search functionality to the Query rules details page [#232579]({{kib-pull}}232579)
