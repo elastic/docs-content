@@ -66,7 +66,6 @@ To view the alert in the app that triggered it:
 * From the **Alerts** table, click the {icon}`eye` icon.
 
 ## Review related alerts [observability-view-alerts-find-related-alerts]
-
 ```{applies_to}
 stack: ga 9.1 
 ```
